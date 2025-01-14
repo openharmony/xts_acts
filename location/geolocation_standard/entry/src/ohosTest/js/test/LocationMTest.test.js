@@ -21,6 +21,8 @@ import osaccount from '@ohos.account.osAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import notificationManager from '@ohos.notificationManager';
 import wifiManager from '@ohos.wifiManager'
+import wantAgent from '@ohos.wantAgent'
+import FenceExtensionAbility from '@ohos.app.ability.FenceExtensionAbility'
 
 let LocationRequestScenario = {UNSET : 0x300 ,NAVIGATION : 0x301 ,
     TRAJECTORY_TRACKING : 0x302 ,CAR_HAILING : 0x303,
@@ -103,6 +105,47 @@ async function applyPermission() {
     }
 }
 
+export class MyFenceExtensionAbility extends FenceExtensionAbility {
+    async onFenceStatusChange(transition, additions) {
+        console.info('on geofence transition, id:' + transition.geofenceId +
+            ",event:" + transition.transitionEvent + ",addtions:" + JSON.stringify(additions))
+        let wantAgentInfo = {
+            wants: [
+                {
+                    bundleName: 'ohos.acts.location.geolocation.function',
+                    abilityName: 'EntryAbility',
+                    parameters:
+                    {
+                        "geofenceId": transition.geofenceId,
+                        "transitionEvent": transition.transitionEvent
+                    }
+                }
+            ],
+            actionType: wantAgent.OperationType.START_ABILITY,
+            requestCode: 100
+        }
+        let wantAgentMy = await wantAgent.getWantAgent(wantAgentInfo)
+        let notificationRequest = {
+            id: 1,
+            content: {
+                notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                normal: {
+                    title: 'geofence',
+                    text: 'on geofence transition'
+                }
+            },
+            notificationSlotType: notificationManager.SlotType.SOCIAL_COMMUNICATION,
+            wantAgent: wantAgentMy
+        };
+        notificationManager.publish(notificationRequest);
+        expect(true).assertEqual(transition != null);
+    }
+
+    onDestroy() {
+        console.info('MyFenceExtensionAbility destroy');
+        expect(true).assertTrue()
+    }
+}
 
 export default function geolocationTest_geo7() {
 
@@ -2178,6 +2221,34 @@ export default function geolocationTest_geo7() {
             expect(true).assertEqual(mac != '');
         } catch(error) {
             expect(true).assertEqual(JSON.stringify(error) != null);
+        }
+        done();
+    })
+
+    /**
+    * @tc.number    : SUB_HSS_LOCATIONSYSTEM_FENCE_EXTENSION_ABILITY_0001
+    * @tc.name      : testFenceExtensionAbility01
+    * @tc.desc      : Test Report Fence Transition.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+    it('testFenceExtensionAbility01', 0, async function (done) {
+        try {
+            let fenceExt = new MyFenceExtensionAbility()
+            expect(true).assertTrue(fenceExt != null)
+            let event =
+                geoLocationManager.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_ENTER
+            let transition = {
+                geofenceId: 1,
+                transitionEvent: event
+            }
+            let addition = ""
+            fenceExt.onFenceStatusChange(transition, addition)
+            fenceExt.onDestroy()
+            expect(true).assertTrue()
+        } catch(error) {
+            expect(true).assertEqual(JSON.stringify(error) != null)
         }
         done();
     })

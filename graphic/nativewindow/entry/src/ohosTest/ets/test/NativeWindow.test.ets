@@ -15,6 +15,7 @@
 
 import { describe, expect, it } from '@ohos/hypium'
 import nativeWindow from 'libnativewindow.so'
+import { BusinessError } from '@kit.BasicServicesKit'
 
 export default function nativeWindowTest() {
   describe('NativeWindowTest', () => {
@@ -1392,6 +1393,76 @@ export default function nativeWindowTest() {
      */
     it('testNativeWindowSetMetadataValue_metadata_type', 3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowSetMetadataValue_metadata_type();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_1517
+     * @tc.name       : testNativeWindowCreateNativeWindow
+     * @tc.desc       : testNativeWindowCreateNativeWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCreateNativeWindow', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowCreateNativeWindow();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_1518
+     * @tc.name       : testNativeWindowNativeWindowSetSetScalingMode
+     * @tc.desc       : testNativeWindowNativeWindowSetSetScalingMode
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowNativeWindowSetSetScalingMode', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowNativeWindowSetSetScalingMode();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_1519
+     * @tc.name       : testNativeWindowNativeWindowSetMetaData
+     * @tc.desc       : testNativeWindowNativeWindowSetMetaData
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowNativeWindowSetMetaData', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowNativeWindowSetMetaData();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_1520
+     * @tc.name       : testNativeWindowNativeWindowSetMetaDataSet
+     * @tc.desc       : testNativeWindowNativeWindowSetMetaDataSet
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowNativeWindowSetMetaDataSet', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowNativeWindowSetMetaDataSet();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_1521
+     * @tc.name       : testNativeWindowNativeWindowSetMetaDataSet
+     * @tc.desc       : testNativeWindowNativeWindowSetMetaDataSet
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowNativeWindowSetTunnelHandle', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowNativeWindowSetTunnelHandle();
       expect(result).assertEqual(0);
       done();
     });

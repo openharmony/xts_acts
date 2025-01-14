@@ -225,6 +225,7 @@ int32_t VDecNdkSample::ConfigureVideoDecoder()
     (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, DEFAULT_HEIGHT);
     (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_NV12);
     (void)OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, DEFAULT_FRAME_RATE);
+    (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY, 1);
     int ret = OH_VideoDecoder_Configure(vdec_, format);
     OH_AVFormat_Destroy(format);
     return ret;
@@ -601,12 +602,21 @@ void VDecNdkSample::CheckOutputDescription()
         int32_t cropRight = 0;
         int32_t stride = 0;
         int32_t sliceHeight = 0;
+        int32_t picWidth = 0;
+        int32_t picHeight = 0;
+        int32_t qp_average = 0;
+        double mse = 1.0;
         OH_AVFormat_GetIntValue(newFormat, OH_MD_KEY_VIDEO_CROP_TOP, &cropTop);
         OH_AVFormat_GetIntValue(newFormat, OH_MD_KEY_VIDEO_CROP_BOTTOM, &cropBottom);
         OH_AVFormat_GetIntValue(newFormat, OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft);
         OH_AVFormat_GetIntValue(newFormat, OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
         OH_AVFormat_GetIntValue(newFormat, OH_MD_KEY_VIDEO_STRIDE, &stride);
         OH_AVFormat_GetIntValue(newFormat, OH_MD_KEY_VIDEO_SLICE_HEIGHT, &sliceHeight);
+        OH_AVFormat_GetIntValue(newFormat, OH_MD_KEY_VIDEO_PIC_WIDTH, &picWidth);
+        OH_AVFormat_GetIntValue(newFormat, OH_MD_KEY_VIDEO_PIC_HEIGHT, &picHeight);
+        OH_AVFormat_GetIntValue(newFormat, OH_MD_KEY_VIDEO_ENCODER_QP_AVERAGE, &qp_average);
+        OH_AVFormat_GetDoubleValue(newFormat, OH_MD_KEY_VIDEO_ENCODER_MSE, &mse);
+
         if (cropTop != expectCropTop || cropBottom != expectCropBottom || cropLeft != expectCropLeft) {
             errCount++;
         }

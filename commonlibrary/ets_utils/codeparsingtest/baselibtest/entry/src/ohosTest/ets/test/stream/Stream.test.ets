@@ -15,6 +15,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { stream } from '@kit.ArkTS';
 
+function sleep(ms: number) {
+  return new Promise<void>((resolve, reject) => setTimeout(resolve, ms));
+}
+
 let writeSuccess = false;
 
 class Resettable {
@@ -71,8 +75,9 @@ export default function StreamTest() {
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
     })
-    afterEach(() => {
+    afterEach(async () => {
       new Resettable();
+      await sleep(50);
     })
     afterAll(() => {
       // Presets a clear action, which is performed after all test cases of the test suite end.

@@ -49,3 +49,10 @@ target_link_libraries(UdsConetformNdk PUBLIC
      libudmf.so
 )
 
+add_library(UdsNdkex SHARED uds_ndk_ex_test.cpp)
+
+target_link_libraries(UdsNdkex PUBLIC
+     libace_napi.z.so
+     libhilog_ndk.z.so
+     libudmf.so
+)

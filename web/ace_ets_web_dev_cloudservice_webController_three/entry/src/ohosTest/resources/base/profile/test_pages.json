@@ -1,8 +1,0 @@
-{
-  "src": [
-      "testability/pages/Index",
-      "testability/pages/webViewNativeMediaPlayerProps",
-      "testability/pages/webViewNativeMediaPlayerProps2"
-  ]
-}
-

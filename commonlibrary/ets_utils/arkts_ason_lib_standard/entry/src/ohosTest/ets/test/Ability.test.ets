@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { ArkTSUtils, collections, lang } from '@kit.ArkTS'
+import { ArkTSUtils, collections, lang, HashMap, HashSet } from '@kit.ArkTS'
+import { SendableTestClass, NormalTestClass } from './exportFunc'
 
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {
@@ -510,6 +511,191 @@ export default function abilityTest() {
       let obj = ArkTSUtils.ASON.parse(jsonText, undefined, options) as lang.ISendable;
       let str = ArkTSUtils.ASON.stringify(obj);
       expect(str).assertEqual('{"feature":{"arr":[1,3,5]}}');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass030
+     * @tc.name      : ArkTS ASON stringify Map and Set
+     * @tc.desc      : ArkTS ASON stringify Map and Set
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass030", 0, async (done: Function) => {
+      let jsonText = '{"text":"ASON support MAP Test Start","largeNumber":112233445566778899,"people":{"name":"Mary","sex":"1","height":"165"}}';
+      let options : ArkTSUtils.ASON.ParseOptions = {
+        bigIntMode: ArkTSUtils.ASON.BigIntMode.PARSE_AS_BIGINT,
+        parseReturnType: ArkTSUtils.ASON.ParseReturnType.MAP,
+      }
+      let map = ArkTSUtils.ASON.parse(jsonText, undefined, options);
+      let output = ArkTSUtils.ASON.stringify(map);
+      expect(output).assertEqual('{"text":"ASON support MAP Test Start","largeNumber":112233445566778899,"people":{"name":"Mary","sex":"1","height":"165"}}');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass031
+     * @tc.name      : ArkTS ASON stringify Map and Set
+     * @tc.desc      : ArkTS ASON stringify Map and Set
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass031", 0, async (done: Function) => {
+      let jsonText = '{"args1":true,"args2":false,"args3":null}';
+      let options : ArkTSUtils.ASON.ParseOptions = {
+        bigIntMode: ArkTSUtils.ASON.BigIntMode.PARSE_AS_BIGINT,
+        parseReturnType: ArkTSUtils.ASON.ParseReturnType.MAP,
+      }
+      let map = ArkTSUtils.ASON.parse(jsonText, undefined, options);
+      let output = ArkTSUtils.ASON.stringify(map);
+      expect(output).assertEqual('{"args1":true,"args2":false,"args3":null}');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass032
+     * @tc.name      : ArkTS ASON stringify Map and Set
+     * @tc.desc      : ArkTS ASON stringify Map and Set
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass032", 0, async (done: Function) => {
+      let jsonText = '{"people":{"name":"Mary","sex":"1","height":165,"args":{"arr":[1,2,3],"check":true,"num":null}}}';
+      let options : ArkTSUtils.ASON.ParseOptions = {
+        bigIntMode: ArkTSUtils.ASON.BigIntMode.PARSE_AS_BIGINT,
+        parseReturnType: ArkTSUtils.ASON.ParseReturnType.MAP,
+      }
+      let map = ArkTSUtils.ASON.parse(jsonText, undefined, options);
+      let output = ArkTSUtils.ASON.stringify(map);
+      expect(output).assertEqual('{"people":{"name":"Mary","sex":"1","height":165,"args":{"arr":[1,2,3],"check":true,"num":null}}}');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass033
+     * @tc.name      : ArkTS ASON stringify Map and Set
+     * @tc.desc      : ArkTS ASON stringify Map and Set
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass033", 0, async (done: Function) => {
+      let set = new Set<number>();
+      set.add(1);
+      set.add(2);
+      set.add(3);
+      let output = ArkTSUtils.ASON.stringify(set);
+      expect(output).assertEqual('[1,2,3]');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass034
+     * @tc.name      : ArkTS ASON stringify Map and Set
+     * @tc.desc      : ArkTS ASON stringify Map and Set
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass034", 0, async (done: Function) => {
+      let set = new collections.Set<number>();
+      set.add(1);
+      set.add(2);
+      set.add(3);
+      let output = ArkTSUtils.ASON.stringify(set);
+      expect(output).assertEqual('[1,2,3]');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass035
+     * @tc.name      : ArkTS ASON stringify Map and Set
+     * @tc.desc      : ArkTS ASON stringify Map and Set
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass035", 0, async (done: Function) => {
+      let set = new HashSet<number>();
+      set.add(1);
+      set.add(2);
+      set.add(3);
+      let output = ArkTSUtils.ASON.stringify(set);
+      expect(output).assertEqual('[1,2,3]');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass036
+     * @tc.name      : ArkTS ASON stringify Map and Set
+     * @tc.desc      : ArkTS ASON stringify Map and Set
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass036", 0, async (done: Function) => {
+      let arr = new collections.Array<string>();
+      arr.push("a", "b", "c");
+      let sendableObj = new SendableTestClass(arr);
+      let set = new collections.Set<SendableTestClass>();
+      set.add(sendableObj);
+      let map = new collections.Map<string, collections.Set<SendableTestClass>>();
+      map.set("set", set);
+      let output = ArkTSUtils.ASON.stringify(map);
+      expect(output).assertEqual('{"set":[{"arr":["a","b","c"]}]}');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass037
+     * @tc.name      : ArkTS ASON stringify Map and Set
+     * @tc.desc      : ArkTS ASON stringify Map and Set
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass037", 0, async (done: Function) => {
+      let arr = new Array<string>();
+      arr.push("a", "b", "c");
+      let obj = new NormalTestClass(arr);
+      let set = new Set<Object>();
+      set.add(obj);
+      let map = new Map<string, Set<Object>>();
+      map.set("set", set);
+      let hashSet = new HashSet<Object>();
+      hashSet.add(map);
+      let hashMap = new HashMap<string, HashSet<Object>>();
+      hashMap.set("hashSet", hashSet);
+      let output = ArkTSUtils.ASON.stringify(hashMap);
+      expect(output).assertEqual('{"hashSet":[{"set":[{"arr":["a","b","c"]}]}]}');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass038
+     * @tc.name      : ArkTS ASON stringify Map and Set
+     * @tc.desc      : ArkTS ASON stringify Map and Set
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass038", 0, async (done: Function) => {
+      let map = new Map<string, Object>();
+      let set = new Set<Object>();
+      let hashMap = new HashMap<string, Object>();
+      let hashSet = new HashSet<Object>();
+      map.set("set", set);
+      set.add(hashMap);
+      hashMap.set("hashSet", hashSet);
+      hashSet.add(map);
+      try {
+        ArkTSUtils.ASON.stringify(map);
+      } catch (e) {
+        expect(e.message).assertEqual('stack contains value, usually caused by circular structure');
+      }
       done();
     })
   })

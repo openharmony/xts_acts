@@ -1,8 +1,0 @@
-{
-  "src": [
-    "testability/pages/Index",
-    "testability/pages/webSetNetErrorCode",
-    "testability/pages/webSetNetErrorCodeChen1",
-    "testability/pages/webSetNetErrorCodeFly"
-  ]
-}

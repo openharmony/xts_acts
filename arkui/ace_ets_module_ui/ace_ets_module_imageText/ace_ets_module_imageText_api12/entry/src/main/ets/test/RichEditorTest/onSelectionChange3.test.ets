@@ -67,6 +67,11 @@ export default function onSelectionChange3() {
       expect(Obj1_1.$attrs.content).assertEqual('1');
 
       let copy = await driver.findComponent(ON.text('复制'))
+      if (!copy) {
+        richEditor.click();
+        await CommonFunc.sleep(1000);
+        copy = await driver.findComponent(ON.text('复制'))
+      }
       await copy.click()
       await CommonFunc.sleep(1000);
       let text1_2 = getInspectorByKey('onSelectionChange3_text1');
@@ -77,6 +82,11 @@ export default function onSelectionChange3() {
       await richEditor.longClick();
       await CommonFunc.sleep(1000);
       let paste = await driver.findComponent(ON.text('粘贴'))
+      if (!paste) {
+        richEditor.click();
+        await CommonFunc.sleep(1000);
+        paste = await driver.findComponent(ON.text('粘贴'))
+      }
       await paste.click()
       await CommonFunc.sleep(1000);
       let text1_3 = getInspectorByKey('onSelectionChange3_text1');

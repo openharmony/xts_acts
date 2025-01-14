@@ -765,3 +765,7 @@ export const requirementRouterPageStateTest: (a: string) => void;
 export const getRouterData: () => number[][];
 
 export const resourceNapiValueTest: (a: string, b: object) => void;
+
+export const swipeAxisGestureTest: (a: string) => void;
+
+export const GetGestureDataAxis: () => number[][];

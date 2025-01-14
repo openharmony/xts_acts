@@ -28,6 +28,17 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
+class DrawingNativeMatrixPart2Test : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override
+    {
+        // 设置代码
+        std::cout << "DrawingNativeMatrixPart2Test Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeMatrixPart2Test errorCodeReset before each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1500
@@ -37,14 +48,18 @@ namespace Drawing {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixPostTranslateNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixPostTranslateNormal, TestSize.Level0) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
     EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPostTranslate, passing decimal numbers
     OH_Drawing_MatrixPostTranslate(matrix, 1.5, 2.5);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. OH_Drawing_MatrixPostTranslate, passing integers
     OH_Drawing_MatrixPostTranslate(matrix, 3, 4);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
 }
@@ -57,7 +72,7 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPostTranslateNormal, TestSize.Level0
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixPostTranslateNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixPostTranslateNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
     EXPECT_NE(matrix, nullptr);
@@ -81,7 +96,7 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPostTranslateNull, TestSize.Level3) 
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixPostTranslateAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixPostTranslateAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
     EXPECT_NE(matrix, nullptr);
@@ -101,7 +116,7 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPostTranslateAbnormal, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixPostTranslateMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixPostTranslateMaximum, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
     EXPECT_NE(matrix, nullptr);
@@ -121,7 +136,7 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPostTranslateMaximum, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixPostTranslateMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixPostTranslateMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
     EXPECT_NE(matrix, nullptr);
@@ -144,14 +159,20 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPostTranslateMultipleCalls, TestSize
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixResetNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixResetNormal, TestSize.Level0) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixReset with the identity matrix
     OH_Drawing_MatrixReset(matrix);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 3. OH_Drawing_MatrixReset with a non-identity matrix
     OH_Drawing_MatrixSetMatrix(matrix, 2, 1, 3, 1, 2, 2, 3, 1, 1);
     OH_Drawing_MatrixReset(matrix);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
 }
@@ -164,7 +185,7 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixResetNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixResetNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixResetNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixReset with nullptr as the parameter, check the error code with OH_Drawing_ErrorCodeGet, no
     // crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_MatrixReset(nullptr);
@@ -179,9 +200,11 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixResetNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixResetMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixResetMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. Call OH_Drawing_MatrixSetMatrix 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_MatrixSetMatrix(matrix, 2, 1, 3, 1, 2, 2, 3, 1, 1);
@@ -207,16 +230,24 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixResetMultipleCalls, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixConcatNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixConcatNormal, TestSize.Level0) {
     // Define matrices a and b
     OH_Drawing_Matrix *a = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(a, nullptr);
     OH_Drawing_MatrixSetMatrix(a, 1, 0, 0, 0, -1, 0, 0, 0, 1);
     OH_Drawing_Matrix *b = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(b, nullptr);
     OH_Drawing_MatrixSetMatrix(b, 1, 0, 0, 0, 1, 0, 0, 0, 1);
     OH_Drawing_Matrix *c = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(c, nullptr);
     // 1. Call OH_Drawing_MatrixConcat with matrices a and b of different sizes,
     // and use OH_Drawing_MatrixGetAll to get the result of matrix a multiplied by matrix b
     OH_Drawing_MatrixConcat(c, b, a);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     float values[9];
     OH_Drawing_MatrixGetAll(c, values);
     EXPECT_EQ(values[0], 1);
@@ -234,9 +265,11 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixConcatNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixConcatNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixConcatNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixConcat, passing nullptr as the first parameter, check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixConcat(nullptr, matrix, matrix);
@@ -261,14 +294,20 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixConcatNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixConcatMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixConcatMultipleCalls, TestSize.Level3) {
     // 1. Call OH_Drawing_MatrixConcat 10 times with matrices a and b of different sizes,
     // and use OH_Drawing_MatrixGetAll to get the result of matrix a multiplied by matrix b
     OH_Drawing_Matrix *a = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(a, nullptr);
     OH_Drawing_MatrixSetMatrix(a, 1, 0, 0, 0, -1, 0, 0, 0, 1);
     OH_Drawing_Matrix *b = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(b, nullptr);
     OH_Drawing_MatrixSetMatrix(b, 1, 0, 0, 0, 1, 0, 0, 0, 1);
     OH_Drawing_Matrix *c = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(c, nullptr);
     for (int i = 0; i < 10; i++) {
         OH_Drawing_MatrixConcat(c, b, a);
         float values[9];
@@ -297,11 +336,19 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixConcatMultipleCalls, TestSize.Level3
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixInvertNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixInvertNormal, TestSize.Level0) {
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_Matrix *inverse = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(inverse, nullptr);
     OH_Drawing_MatrixInvert(matrix, inverse);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixInvert(inverse, matrix);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_MatrixDestroy(inverse);
 }
@@ -314,9 +361,11 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixInvertNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixInvertNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixInvertNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixInvert with the first parameter as nullptr, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixInvert(nullptr, matrix);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -336,10 +385,14 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixInvertNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixInvertMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixInvertMultipleCalls, TestSize.Level3) {
     // 1. Call OH_Drawing_MatrixInvert 10 times with matrices of different sizes
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_Matrix *inverse = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(inverse, nullptr);
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 0, 0, -1, 0, 0, 0, 1);
     for (int i = 0; i < 10; i++) {
         OH_Drawing_MatrixInvert(matrix, inverse);
@@ -369,7 +422,7 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixInvertMultipleCalls, TestSize.Level3
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixSetPolyToPolyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixSetPolyToPolyNormal, TestSize.Level0) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
     EXPECT_NE(matrix, nullptr);
@@ -378,12 +431,15 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixSetPolyToPolyNormal, TestSize.Level0
     OH_Drawing_Point2D src[] = {{0, 0}, {100, 0}, {100, 100}, {0, 100}, {0, 100}};
     OH_Drawing_Point2D dst[] = {{0, 0}, {100, 30}, {100, 70}, {0, 100}, {0, 100}};
     OH_Drawing_MatrixSetPolyToPoly(matrix, src, dst, 1);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. OH_Drawing_MatrixSetPolyToPoly, iterate count from 0 to 4, keeping the length of the array consistent with
     // count
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<float> dis(0, 100);
     for (int i = 0; i < 5; i++) {
+        OH_Drawing_ErrorCodeReset();
         OH_Drawing_Point2D src[i];
         OH_Drawing_Point2D dst[i];
         for (int j = 0; j < i; j++) {
@@ -392,6 +448,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixSetPolyToPolyNormal, TestSize.Level0
             dst[j] = {dis(gen), dis(gen)};
         }
         OH_Drawing_MatrixSetPolyToPoly(matrix, src, dst, i);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     }
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
@@ -405,9 +463,11 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixSetPolyToPolyNormal, TestSize.Level0
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixSetPolyToPolyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixSetPolyToPolyNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixSetPolyToPoly, the first parameter is nullptr, check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_Point2D src[] = {{0, 0}, {100, 0}, {100, 100}, {0, 100}, {0, 100}};
@@ -434,9 +494,11 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixSetPolyToPolyNull, TestSize.Level3) 
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixSetPolyToPolyAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixSetPolyToPolyAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixSetPolyToPoly, pass -1 as count, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_Point2D src[] = {{0, 0}, {100, 0}, {100, 100}, {0, 100}};
     OH_Drawing_Point2D dst[] = {{0, 0}, {100, 30}, {100, 70}, {0, 100}};
@@ -457,9 +519,11 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixSetPolyToPolyAbnormal, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixSetPolyToPolyMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixSetPolyToPolyMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. Call OH_Drawing_MatrixSetPolyToPoly 10 times
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -481,9 +545,11 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixSetPolyToPolyMultipleCalls, TestSize
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixMapPointsNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixMapPointsNormal, TestSize.Level0) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_Point2D src[] = {{0, 0}, {100, 0}, {100, 100}, {0, 100}, {0, 100}};
     OH_Drawing_Point2D dst[] = {{0, 0}, {100, 30}, {100, 70}, {0, 100}, {0, 100}};
     // 2. OH_Drawing_MatrixMapPoints, pass the float value 1.52 as count
@@ -504,9 +570,11 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMapPointsNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixMapPointsNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixMapPointsNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_Point2D src[] = {{0, 0}, {100, 0}, {100, 100}, {0, 100}, {0, 100}};
     OH_Drawing_Point2D dst[] = {{0, 0}, {100, 30}, {100, 70}, {0, 100}, {0, 100}};
     // 2. OH_Drawing_MatrixMapPoints, the first parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
@@ -533,9 +601,11 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMapPointsNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixMapPointsAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixMapPointsAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_Point2D src[] = {{0, 0}, {100, 0}, {100, 100}, {0, 100}, {0, 100}};
     OH_Drawing_Point2D dst[] = {{0, 0}, {100, 30}, {100, 70}, {0, 100}, {0, 100}};
     // 2. OH_Drawing_MatrixMapPoints, pass -1 as count, check the error code with OH_Drawing_ErrorCodeGet
@@ -553,14 +623,19 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMapPointsAbnormal, TestSize.Level3) 
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixMapPointsMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixMapPointsMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_Point2D src[] = {{0, 0}, {100, 0}, {100, 100}, {0, 100}, {0, 100}};
     OH_Drawing_Point2D dst[] = {{0, 0}, {100, 30}, {100, 70}, {0, 100}, {0, 100}};
     // 2. Call OH_Drawing_MatrixMapPoints 10 times
     for (int i = 0; i < 10; i++) {
+        OH_Drawing_ErrorCodeReset();
         OH_Drawing_MatrixMapPoints(matrix, src, dst, 5);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     }
     // 3. Free memory
     OH_Drawing_MatrixDestroy(matrix);
@@ -574,17 +649,31 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMapPointsMultipleCalls, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixMapRectNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixMapRectNormal, TestSize.Level0) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixMapRect, src and dst are the same
     OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(src, nullptr);
     OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(dst, nullptr);
     OH_Drawing_MatrixMapRect(matrix, src, dst);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 3. OH_Drawing_MatrixMapRect, src and dst are different
     OH_Drawing_Rect *src2 = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(src2, nullptr);
     OH_Drawing_Rect *dst2 = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(dst2, nullptr);
     OH_Drawing_MatrixMapRect(matrix, src2, dst2);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_RectDestroy(src);
@@ -601,12 +690,18 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMapRectNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixMapRectNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixMapRectNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixMapRect, the first parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(src, nullptr);
     OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(dst, nullptr);
     OH_Drawing_MatrixMapRect(nullptr, src, dst);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. OH_Drawing_MatrixMapRect, the second parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
@@ -629,17 +724,26 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMapRectNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixMapRectMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixMapRectMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. Call OH_Drawing_MatrixMapRect 10 times with different src and dst
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<float> dis(100, 200);
     for (int i = 0; i < 10; i++) {
+        OH_Drawing_ErrorCodeReset();
         OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, dis(gen), dis(gen));
+        // add assert
+        EXPECT_NE(src, nullptr);
         OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, dis(gen), dis(gen));
+        // add assert
+        EXPECT_NE(dst, nullptr);
         OH_Drawing_MatrixMapRect(matrix, src, dst);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
         OH_Drawing_RectDestroy(src);
         OH_Drawing_RectDestroy(dst);
     }
@@ -655,18 +759,28 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMapRectMultipleCalls, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixIsEqualNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixIsEqualNormal, TestSize.Level0) {
     // 1. OH_Drawing_MatrixIsEqual with the same matrix
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_MatrixSetMatrix(matrix, 1, 2, 3, 4, 5, 6, 7, 8, 9);
     OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix2, nullptr);
     OH_Drawing_MatrixSetMatrix(matrix2, 1, 2, 3, 4, 5, 6, 7, 8, 9);
     bool ret = OH_Drawing_MatrixIsEqual(matrix, matrix2);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     EXPECT_EQ(ret, true);
     // 2. OH_Drawing_MatrixIsEqual with different matrices
     OH_Drawing_Matrix *matrix3 = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix3, nullptr);
     OH_Drawing_MatrixSetMatrix(matrix3, 2, 2, 3, 4, 5, 6, 7, 8, 9);
     ret = OH_Drawing_MatrixIsEqual(matrix, matrix3);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     EXPECT_EQ(ret, false);
     // 3. Free memory
     OH_Drawing_MatrixDestroy(matrix);
@@ -682,9 +796,11 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixIsEqualNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixIsEqualNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixIsEqualNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_MatrixSetMatrix(matrix, 1, 2, 3, 4, 5, 6, 7, 8, 9);
     // 2. OH_Drawing_MatrixIsEqual, the first parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixIsEqual(nullptr, matrix);
@@ -704,10 +820,14 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixIsEqualNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixIsEqualMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixIsEqualMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix2, nullptr);
     // 2. Call OH_Drawing_MatrixIsEqual 10 times with alternating different or same matrices
     for (int i = 0; i < 10; i++) {
         if (i % 2 == 0) {
@@ -735,14 +855,20 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixIsEqualMultipleCalls, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixIsIdentityNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixIsIdentityNormal, TestSize.Level0) {
     // 1. OH_Drawing_MatrixIsIdentity with an identity matrix
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     bool ret = OH_Drawing_MatrixIsIdentity(matrix);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     EXPECT_EQ(ret, true);
     // 2. OH_Drawing_MatrixIsIdentity with a non-identity matrix
     OH_Drawing_MatrixSetMatrix(matrix, 1, 2, 3, 4, 5, 6, 7, 8, 9);
     ret = OH_Drawing_MatrixIsIdentity(matrix);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     EXPECT_EQ(ret, false);
     // 3. Free memory
     OH_Drawing_MatrixDestroy(matrix);
@@ -756,9 +882,11 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixIsIdentityNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixIsIdentityNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixIsIdentityNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixIsIdentity with nullptr as parameter, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixIsIdentity(nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -774,16 +902,20 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixIsIdentityNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMatrixTest, testMatrixIsIdentityMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixIsIdentityMultipleCalls, TestSize.Level3) {
     // Call OH_Drawing_MatrixIsIdentity 10 times with alternating identity or non-identity matrices
     for (int i = 0; i < 10; i++) {
         if (i % 2 == 0) {
             OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+            // add assert
+            EXPECT_NE(matrix, nullptr);
             bool ret = OH_Drawing_MatrixIsIdentity(matrix);
             EXPECT_EQ(ret, true);
             OH_Drawing_MatrixDestroy(matrix);
         } else {
             OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+            // add assert
+            EXPECT_NE(matrix, nullptr);
             OH_Drawing_MatrixSetMatrix(matrix, 1, 2, 3, 4, 5, 6, 7, 8, 9);
             bool ret = OH_Drawing_MatrixIsIdentity(matrix);
             EXPECT_EQ(ret, false);

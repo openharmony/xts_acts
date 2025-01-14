@@ -15,6 +15,7 @@
 
 import { describe, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
+import display from '@ohos.display'
 
 async function asyncTest() {
     return 1;
@@ -28,6 +29,22 @@ class TestClass {
 
 export default function softwareJsTest() {
     describe('SoftwareJsTest', function () {
+        
+        beforeAll(async function (done) {
+            let driver = Driver.create()
+            await driver.delayMs(1000)
+            await driver.triggerKey(18)
+            await driver.delayMs(1000)
+            let defaultDisplay = display.getDefaultDisplaySync()
+            if (defaultDisplay.state != display.DisplayState.STATE_ON) {
+                await driver.wakeUpDisplay()
+                await driver.delayMs(1000)
+                await driver.swipe(300, 600, 300, 100)
+                await driver.delayMs(1000)
+            }
+            done()
+        })
+      
         /*
          * @tc.number: STD-SOFTWARE-0200
          * @tc.name: testJsAsyncAwait0100

@@ -39,6 +39,7 @@ export default function signNormalNotAccessBiometricExecute() {
                 console.info(`${args[2]} onResult ${onResult}`);
                 console.info('onResult.token is ' + onResult.token);
                 console.info('onResult.authType is ' + onResult.authType);
+                console.info('onResult.result is ' + onResult.result);
                 expect(onResult.result).assertEqual(args[3]);
               } catch (e) {
                 console.info('error is ' + e);
@@ -138,7 +139,7 @@ export default function signNormalNotAccessBiometricExecute() {
     it('SUB_Security_IAM_authWidget_API_0130', Level.LEVEL2, async function (done) {
       console.info("SUB_Security_IAM_authWidget_API_0130 start");
       let reuseDuration1 = [-1, 300001, 0];
-      let reuseDuration2 = [1, 5, 300000];
+      let reuseDuration2 = [1, 5, userAuth.MAX_ALLOWABLE_REUSE_DURATION];
       const widgetParam = {
         title: '请输入密码',
       };

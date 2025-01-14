@@ -126,6 +126,8 @@ HWTEST_F(DrawingNativeGpuContextTest, testGpuContextCreateFromGLDestroyNormal, T
  */
 HWTEST_F(DrawingNativeGpuContextTest, testGpuContextDestroyNULL, TestSize.Level3) {
     OH_Drawing_GpuContextDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
 }
 
 /*

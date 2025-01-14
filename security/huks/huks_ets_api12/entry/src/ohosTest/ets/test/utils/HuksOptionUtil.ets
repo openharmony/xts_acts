@@ -13,21 +13,23 @@
  * limitations under the License.
  */
 import huks from '@ohos.security.huks';
+import { StringToUint8Array } from './CommonUtil';
+import { SignVerify, SignVerifyData } from './SignVerifyUtil';
 
-export function genParam(paramTag: huks.HuksTag, paramValue: boolean | number | bigint | Uint8Array): huks.HuksParam {
+export function GenParam(paramTag: huks.HuksTag, paramValue: boolean | number | bigint | Uint8Array): huks.HuksParam {
   return {
     tag: paramTag,
     value: paramValue
   } as huks.HuksParam;
 }
 
-export function setParam(huksOption: huks.HuksOptions, paramTag: huks.HuksTag, paramValue: boolean | number | bigint | Uint8Array): void {
+export function SetParam(huksOption: huks.HuksOptions, paramTag: huks.HuksTag, paramValue: boolean | number | bigint | Uint8Array): void {
   let properties: Array<huks.HuksParam> = huksOption.properties as Array<huks.HuksParam>;
-  deleteParam(huksOption, paramTag);
-  properties.push(genParam(paramTag, paramValue));
+  DeleteParam(huksOption, paramTag);
+  properties.push(GenParam(paramTag, paramValue));
 }
 
-export function deleteParam(huksOption: huks.HuksOptions, paramTag: huks.HuksTag): void {
+export function DeleteParam(huksOption: huks.HuksOptions, paramTag: huks.HuksTag): void {
   let properties: Array<huks.HuksParam> = huksOption.properties as Array<huks.HuksParam>;
   for (let i = 0; i < properties.length; i++) {
     if (properties[i].tag == paramTag) {
@@ -37,7 +39,7 @@ export function deleteParam(huksOption: huks.HuksOptions, paramTag: huks.HuksTag
   }
 }
 
-export function getDataBySize(size: number): string {
+export function GetDataBySize(size: number): string {
   if (size <= 0) {
     return "";
   }
@@ -46,3 +48,46 @@ export function getDataBySize(size: number): string {
   return strArr.join("");
 }
 
+export async function CheckSoftware() {
+  let dsaAlias = "useDsaToCheckSoftware";
+  let dsaOptions: huks.HuksOptions = {
+    properties: [
+      GenParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_DSA),
+      GenParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024),
+      GenParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN)
+    ]
+  };
+  try {
+    await huks.generateKeyItem(dsaAlias, dsaOptions);
+    await huks.deleteKeyItem(dsaAlias, dsaOptions);
+    return true
+  } catch (err) {
+    return false;
+  }
+}
+
+export async function CheckWearable() {
+  let rsaAlias = "useRsaToCheckWearable";
+  let rsaOptions: huks.HuksOptions = {
+    properties: [
+      GenParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_RSA),
+      GenParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024),
+      GenParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY),
+      GenParam(huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_ISO_IEC_9796_2),
+      GenParam(huks.HuksTag.HUKS_TAG_DIGEST, huks.HuksKeyDigest.HUKS_DIGEST_SHA1),
+    ]
+  };
+  let signVerifyData: SignVerifyData = {
+    updateDataArr: null,
+    finishData: StringToUint8Array(GetDataBySize(128)),
+    signatureData: null
+  }
+  try {
+    await huks.generateKeyItem(rsaAlias, rsaOptions);
+    await SignVerify(rsaAlias, rsaOptions, signVerifyData);
+    await huks.deleteKeyItem(rsaAlias, rsaOptions);
+    return true
+  } catch (err) {
+    return false;
+  }
+}

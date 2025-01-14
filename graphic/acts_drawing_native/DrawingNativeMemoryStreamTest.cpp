@@ -30,7 +30,17 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeMemoryStreamTest : public testing::Test {};
+class DrawingNativeMemoryStreamTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override
+    {
+        // 设置代码
+        std::cout << "DrawingNativeMemoryStreamTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeMemoryStreamTest errorCodeReset before each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MEMORY_STREAM_0100
@@ -44,9 +54,17 @@ HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateNormal, TestSize.L
     // 1. Call OH_Drawing_MemoryStreamCreate with copyData set to true
     char data[10] = {0};
     OH_Drawing_MemoryStream *stream = OH_Drawing_MemoryStreamCreate(data, 10, true);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    // add assert
+    EXPECT_NE(stream, nullptr);
     OH_Drawing_MemoryStreamDestroy(stream);
     // 2. Call OH_Drawing_MemoryStreamCreate with copyData set to false
     stream = OH_Drawing_MemoryStreamCreate(data, 10, false);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    // add assert
+    EXPECT_NE(stream, nullptr);
     OH_Drawing_MemoryStreamDestroy(stream);
 }
 
@@ -83,6 +101,10 @@ HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateNull, TestSize.Lev
 HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_MemoryStreamCreate with a negative value as the second parameter
     OH_Drawing_MemoryStream *stream = OH_Drawing_MemoryStreamCreate(nullptr, -10, true);
+    // add assert  ---待验证
+    EXPECT_EQ(stream, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 2. Free memory
     OH_Drawing_MemoryStreamDestroy(stream);
 }
@@ -100,6 +122,8 @@ HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateMultipleCalls, Tes
     for (int i = 0; i < 10; i++) {
         char data[10] = {i};
         OH_Drawing_MemoryStream *stream = OH_Drawing_MemoryStreamCreate(data, 10, true);
+        // add assert
+        EXPECT_NE(stream, nullptr);
         OH_Drawing_MemoryStreamDestroy(stream);
     }
 }

@@ -3,6 +3,14 @@
     {
       "name": "start_window_background",
       "value": "#FFFFFF"
+    },
+    {
+      "name": "ohos_id_color_button_normal",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "appColorTest1",
+      "value": "#FFFFFF"
     }
   ]
 }

@@ -220,6 +220,7 @@ public:
     Camera_ErrorCode SessionIsVideoStabilizationModeSupported(uint32_t mode);
     Camera_ErrorCode SessionGetVideoStabilizationMode(void);
     Camera_ErrorCode SessionSetVideoStabilizationMode(uint32_t mode);
+    Camera_ErrorCode SessionSetQualityPrioritization(uint32_t quality);
 
     // RegisterCallback
     Camera_ErrorCode CameraManagerRegisterCallback(void);
@@ -342,6 +343,10 @@ public:
         size_t cameraIndex = BACK_CAMERA);
     Camera_ErrorCode ReleaseCamera(void);
     Camera_ErrorCode ReadyCreatePhotoOutputWithoutSurface();
+    inline uint32_t GetCameraDeviceSize()
+    {
+        return size_;
+    }
 
 private:
     NDKCamera(const NDKCamera&) = delete;
@@ -349,7 +354,7 @@ private:
 
     Camera_Manager* cameraManager_;
     Camera_CaptureSession* captureSession_;
-    uint32_t size_;
+    uint32_t size_; // 记录支持的Camera_Device列表的大小。
     const Camera_Profile* profile_;
     const Camera_Profile* photoProfile_;
     const Camera_VideoProfile* videoProfile_;

@@ -17,10 +17,16 @@ import textAreaInputTest from './TextTest/textAreaInputTest.test';
 import KeyboardAvoidModeTest from './UIContext/KeyboardAvoidMode.test';
 import StyledString from './styledString/StyledString.test';
 import RichEditorOnHoverTest from './RichEditorTest/onHover.test';
-import SearchAutoDisableTest from './SearchTest/autoDisable.test';
 import imageSpanJsunit from './imageSpanTest/imageSpan.test';
-import MovingPhotoViewTest from './MovingPhotoViewTest/MovingPhotoView.test';
+import onSubmitTest from './onSubmitTest/onSubmitTest.test';
+import StyledStringURL from './styledString/StyledStringURL.test';
+import textCaretColor from './TextTest/textCaretColor.test';
 import getRectsForRangeTest from './RichEditorTest/getRectsForRange.test'
+import SetFrameRateRangeTest from './Marquee/marqueeFrame.test';
+import marqueeNode from './Marquee/marqueeNode.test';
+import textAreaNode from "./TextAreaTest/textAreaNode.test";
+import SymbolGlyphNodeTest from "./SymbolGlyphTest/SymbolGlyphNode.test";
+import ImageOrientationTest from './ImageOrientation/ImageOrientation.test';
 
 
 export default function testsuite() {
@@ -28,8 +34,14 @@ export default function testsuite() {
   KeyboardAvoidModeTest();
   StyledString();
   RichEditorOnHoverTest();
-  SearchAutoDisableTest();
   imageSpanJsunit();
-  MovingPhotoViewTest();
+  onSubmitTest();
+  StyledStringURL();
+  textCaretColor();
   getRectsForRangeTest();
+  SetFrameRateRangeTest();
+  marqueeNode();
+  textAreaNode();
+  SymbolGlyphNodeTest();
+  ImageOrientationTest();
 }

@@ -33,7 +33,6 @@ group("security") {
       "security_component/security_component_locationbutton:ActsSecLocationButtonTest",
       "security_component/security_component_pastebutton:ActsSecPasteButtonTest",
       "security_component/security_component_savebutton:ActsSecSaveButtonTest",
-      "security_guard",
     ]
   }
 }

@@ -509,6 +509,7 @@ export default function abilityTest2() {
           "flags": 0,
           "action": "",
           "parameters": {},
+          "fds": {},
           "entities": []
         }
       };

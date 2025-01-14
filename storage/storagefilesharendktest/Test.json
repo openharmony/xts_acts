@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsStorageFileshareNdk.hap",
+                "ActsStorageFileshareNdkTest.hap",
                 "ActsStorageFileshareNdkMainTest.hap"
             ],
             "type": "AppInstallKit",

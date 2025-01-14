@@ -18,5 +18,6 @@ group("ActsAceEtsModulePickerTest") {
     "ace_ets_module_picker_api12:ActsAceEtsModulePickerApi12Test",
     "ace_ets_module_picker_api13:ActsAceEtsModulePickerApi13Test",
     "ace_ets_module_picker_api14:ActsAceEtsModulePickerApi14Test",
+    "ace_ets_module_picker_api16:ActsAceEtsModulePickerApi16Test",
   ]
 }

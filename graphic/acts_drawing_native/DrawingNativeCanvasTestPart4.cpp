@@ -44,6 +44,17 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
+class DrawingNativeCanvasPart4Test : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override
+    {
+        // 设置代码
+        std::cout << "DrawingNativeCanvasPart4Test Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeCanvasPart4Test errorCodeReset before each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2900
@@ -53,23 +64,37 @@ namespace Drawing {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasSkewNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewNormal, TestSize.Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_CanvasSkew with positive skew values on the x and y axes
     OH_Drawing_CanvasSkew(canvas, 1.0, 1.0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call drawing class interface
     OH_Drawing_Rect *rect1 = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect1, nullptr);
     OH_Drawing_CanvasDrawRect(canvas, rect1);
     // 4. OH_Drawing_CanvasSkew with negative skew values on the x and y axes
     OH_Drawing_CanvasSkew(canvas, -1.0, -1.0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Call drawing class interface
     OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect2, nullptr);
     OH_Drawing_CanvasDrawRect(canvas, rect2);
     // 6. OH_Drawing_CanvasSkew with positive skew value on the x-axis and negative skew value on the y-axis
     OH_Drawing_CanvasSkew(canvas, 1.0, -1.0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 7. Call drawing class interface
     OH_Drawing_Rect *rect3 = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect3, nullptr);
     OH_Drawing_CanvasDrawRect(canvas, rect3);
     // 8. Free memory
     OH_Drawing_RectDestroy(rect1);
@@ -86,11 +111,15 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasSkewNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasSkewNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewNull, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_CanvasSkew with the first parameter as null
     OH_Drawing_CanvasSkew(nullptr, 2, 2);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. OH_Drawing_CanvasSkew with the second parameter as 0
     OH_Drawing_CanvasSkew(canvas, 0, 2);
     // 4. OH_Drawing_CanvasSkew with the third parameter as 0
@@ -107,9 +136,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasSkewNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasSkewMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewMaximum, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_CanvasSkew with the skew amount sx on the x-axis as the maximum value
     OH_Drawing_CanvasSkew(canvas, FLT_MAX, 1);
     // 3. OH_Drawing_CanvasSkew with the skew amount sy on the y-axis as the maximum value
@@ -126,7 +157,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasSkewMaximum, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasSkewInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
@@ -138,9 +169,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasSkewInputDestroyed, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasSkewMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Call OH_Drawing_CanvasSkew 10 times, each time with a different skew value
     for (int i = 0; i < 10; i++) {
         float skew = i * 0.1;
@@ -148,6 +181,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasSkewMultipleCalls, TestSize.Level3) 
     }
     // 3. Call drawing class interface
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_CanvasDrawRect(canvas, rect);
     // 4. Free memory
     OH_Drawing_RectDestroy(rect);
@@ -162,12 +197,16 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasSkewMultipleCalls, TestSize.Level3) 
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasGetWidthtestCanvasGetHeightNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightNormal, TestSize.Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Switch the binding to a bitmap canvas using OH_Drawing_CanvasBind, and verify the canvas information by
     // calling OH_Drawing_CanvasGetHeight and OH_Drawing_CanvasGetWidth
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 200;
     constexpr uint32_t height = 200;
@@ -190,9 +229,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetWidthtestCanvasGetHeightNormal, T
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasGetWidthtestCanvasGetHeightNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightNull, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_CanvasGetHeight with null input
     int32_t canvasHeight = OH_Drawing_CanvasGetHeight(nullptr);
     EXPECT_EQ(canvasHeight, 0);
@@ -211,13 +252,17 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetWidthtestCanvasGetHeightNull, Tes
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasGetWidthtestCanvasGetHeightMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Switch the binding to a bitmap canvas with different widths and heights 10 times, and verify the canvas
     // information by calling OH_Drawing_CanvasGetHeight and OH_Drawing_CanvasGetWidth after each switch
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        // add assert
+        EXPECT_NE(bitmap, nullptr);
         OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
         uint32_t width = 200 + i * 10;
         uint32_t height = 200 + i * 10;
@@ -232,6 +277,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetWidthtestCanvasGetHeightMultipleC
     // 3. Switch the binding to different widths and heights of bitmap canvas 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        // add assert
+        EXPECT_NE(bitmap, nullptr);
         OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
         uint32_t width = 200 + i * 10;
         uint32_t height = 200 + i * 10;
@@ -260,7 +307,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetWidthtestCanvasGetHeightMultipleC
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasGetWidthtestCanvasGetHeightInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
@@ -272,15 +319,19 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetWidthtestCanvasGetHeightInputDest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasGetWidthtestCanvasGetHeightMultipleCallsBoudary, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightMultipleCallsBoudary, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Switch the binding to a bitmap canvas with different widths and heights 10 times, and verify the canvas
     // information by calling OH_Drawing_CanvasGetHeight and OH_Drawing_CanvasGetWidth after each switch
     constexpr uint32_t width = 4096;
     constexpr uint32_t height = 2160;
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        // add assert
+        EXPECT_NE(bitmap, nullptr);
         OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
         OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
         OH_Drawing_CanvasBind(canvas, bitmap);
@@ -293,6 +344,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetWidthtestCanvasGetHeightMultipleC
     // 3. Switch the binding to different widths and heights of bitmap canvas 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        // add assert
+        EXPECT_NE(bitmap, nullptr);
         OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
         OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
         OH_Drawing_CanvasBind(canvas, bitmap);
@@ -319,13 +372,19 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetWidthtestCanvasGetHeightMultipleC
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsNormal, TestSize.Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_RectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 3. OH_Drawing_CanvasGetLocalClipBounds
     OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. OH_Drawing_CanvasDrawRect
     OH_Drawing_CanvasDrawRect(canvas, rect);
     // 5. Free memory
@@ -341,26 +400,44 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsNormal, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsNull, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_RectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 3. OH_Drawing_CanvasGetLocalClipBounds with the first parameter as null
     OH_Drawing_CanvasGetLocalClipBounds(nullptr, rect);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 4. OH_Drawing_CanvasGetLocalClipBounds with the second parameter as null
     OH_Drawing_CanvasGetLocalClipBounds(canvas, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 5. OH_Drawing_CanvasGetLocalClipBounds with OH_Drawing_Rect created with left, top, right, bottom as 0
     rect = OH_Drawing_RectCreate(0, 100, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
     rect = OH_Drawing_RectCreate(100, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
     rect = OH_Drawing_RectCreate(100, 100, 0, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
     rect = OH_Drawing_RectCreate(100, 100, 100, 0);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
     // 6. OH_Drawing_CanvasGetLocalClipBounds with OH_Drawing_Rect created with all values as 0
     rect = OH_Drawing_RectCreate(0, 0, 0, 0);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
     // 7. Free memory
     OH_Drawing_RectDestroy(rect);
@@ -374,32 +451,50 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsNull, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_CanvasGetLocalClipBounds with OH_Drawing_Rect created with negative values for left, top, right,
     // and bottom
     OH_Drawing_Rect *rect1 = OH_Drawing_RectCreate(-100, 100, 100, 100);
+    // add assert
+    EXPECT_NE(rect1, nullptr);
     OH_Drawing_CanvasGetLocalClipBounds(canvas, rect1);
     OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(100, -100, 100, 100);
+    // add assert
+    EXPECT_NE(rect2, nullptr);
     OH_Drawing_CanvasGetLocalClipBounds(canvas, rect2);
     OH_Drawing_Rect *rect3 = OH_Drawing_RectCreate(100, 100, -100, 100);
+    // add assert
+    EXPECT_NE(rect3, nullptr);
     OH_Drawing_CanvasGetLocalClipBounds(canvas, rect3);
     OH_Drawing_Rect *rect4 = OH_Drawing_RectCreate(100, 100, 100, -100);
+    // add assert
+    EXPECT_NE(rect4, nullptr);
     OH_Drawing_CanvasGetLocalClipBounds(canvas, rect4);
     // 3. OH_Drawing_CanvasGetLocalClipBounds with OH_Drawing_Rect src created with the top-left coordinate equal to the
     // bottom-right coordinate or the top-left coordinate equal to the bottom-right coordinate
     OH_Drawing_Rect *rect5 = OH_Drawing_RectCreate(100, 200, 200, 200);
+    // add assert
+    EXPECT_NE(rect5, nullptr);
     OH_Drawing_CanvasGetLocalClipBounds(canvas, rect5);
     OH_Drawing_Rect *rect6 = OH_Drawing_RectCreate(200, 100, 200, 200);
+    // add assert
+    EXPECT_NE(rect6, nullptr);
     OH_Drawing_CanvasGetLocalClipBounds(canvas, rect6);
     // 4. OH_Drawing_CanvasGetLocalClipBounds with OH_Drawing_Rect src created with the top-left coordinate equal to the
     // bottom-right coordinate
     OH_Drawing_Rect *rect7 = OH_Drawing_RectCreate(100, 100, 100, 100);
+    // add assert
+    EXPECT_NE(rect7, nullptr);
     OH_Drawing_CanvasGetLocalClipBounds(canvas, rect7);
     // 5. OH_Drawing_CanvasGetLocalClipBounds with OH_Drawing_Rect src created with the top-left coordinate greater than
     // the bottom-right coordinate
     OH_Drawing_Rect *rect8 = OH_Drawing_RectCreate(200, 200, 100, 100);
+    // add assert
+    EXPECT_NE(rect8, nullptr);
     OH_Drawing_CanvasGetLocalClipBounds(canvas, rect8);
     // 6. Free memory
     OH_Drawing_RectDestroy(rect1);
@@ -421,19 +516,25 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsAbnormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Switch the binding to a bitmap canvas with different widths and heights 10 times, and verify the canvas
     // information by calling OH_Drawing_CanvasGetLocalClipBounds after each switch
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        // add assert
+        EXPECT_NE(bitmap, nullptr);
         OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
         uint32_t width = 200;
         uint32_t height = 200;
         OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
         OH_Drawing_CanvasBind(canvas, bitmap);
         OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, width, height);
+        // add assert
+        EXPECT_NE(rect, nullptr);
         OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
         OH_Drawing_RectDestroy(rect);
         OH_Drawing_BitmapDestroy(bitmap);
@@ -441,18 +542,24 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsMultipleCalls, Tes
     // 3. Switch the binding to different widths and heights of bitmap canvas 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        // add assert
+        EXPECT_NE(bitmap, nullptr);
         OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
         uint32_t width = 200 + i * 10;
         uint32_t height = 200 + i * 10;
         OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
         OH_Drawing_CanvasBind(canvas, bitmap);
         OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, width, height);
+        // add assert
+        EXPECT_NE(rect, nullptr);
         OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
         OH_Drawing_RectDestroy(rect);
         OH_Drawing_BitmapDestroy(bitmap);
     }
     // 4. Call OH_Drawing_CanvasGetLocalClipBounds 10 times to verify the canvas
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     for (int i = 0; i < 10; i++) {
         OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
     }
@@ -469,7 +576,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsMultipleCalls, Tes
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
@@ -481,19 +588,25 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsInputDestroyed, Te
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsMultipleCallsBoundary, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsMultipleCallsBoundary, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Switch the binding to a bitmap canvas with different widths and heights 10 times, and verify the canvas
     // information by calling OH_Drawing_CanvasGetLocalClipBounds after each switch
     uint32_t width = 4096;
     uint32_t height = 2160;
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        // add assert
+        EXPECT_NE(bitmap, nullptr);
         OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
         OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
         OH_Drawing_CanvasBind(canvas, bitmap);
         OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, width, height);
+        // add assert
+        EXPECT_NE(rect, nullptr);
         OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
         OH_Drawing_RectDestroy(rect);
         OH_Drawing_BitmapDestroy(bitmap);
@@ -501,10 +614,14 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsMultipleCallsBound
     // 3. Switch the binding to different widths and heights of bitmap canvas 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        // add assert
+        EXPECT_NE(bitmap, nullptr);
         OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
         OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
         OH_Drawing_CanvasBind(canvas, bitmap);
         OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, width, height);
+        // add assert
+        EXPECT_NE(rect, nullptr);
         OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
         OH_Drawing_RectDestroy(rect);
         OH_Drawing_BitmapDestroy(bitmap);
@@ -527,16 +644,24 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsMultipleCallsBound
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasConcatMatrixtestCanvasGetTotalMatrixNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixtestCanvasGetTotalMatrixNormal, TestSize.Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 0, 0, -1, 0, 0, 0, 1);
     // 3. Call OH_Drawing_CanvasConcatMatrix to get the 3x3 matrix of the canvas by calling
     // OH_Drawing_CanvasGetTotalMatrix
     OH_Drawing_CanvasConcatMatrix(canvas, matrix);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_Matrix *totalMatrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(totalMatrix, nullptr);
     OH_Drawing_CanvasGetTotalMatrix(canvas, totalMatrix);
     EXPECT_NE(totalMatrix, nullptr);
     // 4. Free memory
@@ -553,16 +678,24 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasConcatMatrixtestCanvasGetTotalMatrix
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasConcatMatrixNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixNull, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 0, 0, -1, 0, 0, 0, 1);
     // 3. OH_Drawing_CanvasConcatMatrix with the first parameter as null
     OH_Drawing_CanvasConcatMatrix(nullptr, matrix);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 4. OH_Drawing_CanvasConcatMatrix with the second parameter as null
     OH_Drawing_CanvasConcatMatrix(canvas, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 5. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_CanvasDestroy(canvas);
@@ -576,15 +709,23 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasConcatMatrixNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasGetTotalMatrixNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetTotalMatrixNull, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 3. OH_Drawing_CanvasGetTotalMatrix with the first parameter as null
     OH_Drawing_CanvasGetTotalMatrix(nullptr, matrix);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 4. OH_Drawing_CanvasGetTotalMatrix with the second parameter as null
     OH_Drawing_CanvasGetTotalMatrix(canvas, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 5. Free memory
     OH_Drawing_MatrixDestroy(matrix);
 }
@@ -597,45 +738,71 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetTotalMatrixNull, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasConcatMatrixtestCanvasGetTotalMatrixMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixtestCanvasGetTotalMatrixMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_MatrixCreateScale
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(10, 10, 10, 10);
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 3. Call OH_Drawing_CanvasConcatMatrix to get the 3x3 matrix of the canvas by calling
     // OH_Drawing_CanvasGetTotalMatrix
     OH_Drawing_CanvasConcatMatrix(canvas, matrix);
     OH_Drawing_Matrix *totalMatrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(totalMatrix, nullptr);
     OH_Drawing_CanvasGetTotalMatrix(canvas, totalMatrix);
     // 4. OH_Drawing_MatrixCreateRotation
     OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateRotation(180, 1, 1);
+    // add assert
+    EXPECT_NE(matrix2, nullptr);
     // 5. Call OH_Drawing_CanvasConcatMatrix to get the 3x3 matrix of the canvas by calling
     // OH_Drawing_CanvasGetTotalMatrix
     OH_Drawing_CanvasConcatMatrix(canvas, matrix2);
     OH_Drawing_Matrix *totalMatrix2 = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(totalMatrix2, nullptr);
     OH_Drawing_CanvasGetTotalMatrix(canvas, totalMatrix2);
     // 6. OH_Drawing_MatrixCreateTranslation
     OH_Drawing_Matrix *matrix3 = OH_Drawing_MatrixCreateTranslation(10, 10);
+    // add assert
+    EXPECT_NE(matrix3, nullptr);
     // 7. Call OH_Drawing_CanvasConcatMatrix to get the 3x3 matrix of the canvas by calling
     // OH_Drawing_CanvasGetTotalMatrix
     OH_Drawing_CanvasConcatMatrix(canvas, matrix3);
     OH_Drawing_Matrix *totalMatrix3 = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(totalMatrix3, nullptr);
     OH_Drawing_CanvasGetTotalMatrix(canvas, totalMatrix3);
     // 8. Repeat steps 2-7 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(10, 10, 10, 10);
+        // add assert
+        EXPECT_NE(matrix, nullptr);
         OH_Drawing_CanvasConcatMatrix(canvas, matrix);
         OH_Drawing_Matrix *totalMatrix = OH_Drawing_MatrixCreate();
+        // add assert
+        EXPECT_NE(totalMatrix, nullptr);
         OH_Drawing_CanvasGetTotalMatrix(canvas, totalMatrix);
 
         OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateRotation(180, 1, 1);
+        // add assert
+        EXPECT_NE(matrix2, nullptr);
         OH_Drawing_CanvasConcatMatrix(canvas, matrix2);
         OH_Drawing_Matrix *totalMatrix2 = OH_Drawing_MatrixCreate();
+        // add assert
+        EXPECT_NE(totalMatrix2, nullptr);
         OH_Drawing_CanvasGetTotalMatrix(canvas, totalMatrix2);
 
         OH_Drawing_Matrix *matrix3 = OH_Drawing_MatrixCreateTranslation(10, 10);
+        // add assert
+        EXPECT_NE(matrix3, nullptr);
         OH_Drawing_CanvasConcatMatrix(canvas, matrix3);
         OH_Drawing_Matrix *totalMatrix3 = OH_Drawing_MatrixCreate();
+        // add assert
+        EXPECT_NE(totalMatrix3, nullptr);
         OH_Drawing_CanvasGetTotalMatrix(canvas, totalMatrix3);
 
         OH_Drawing_MatrixDestroy(matrix);
@@ -665,7 +832,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasConcatMatrixtestCanvasGetTotalMatrix
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasConcatMatrixtestCanvasGetTotalMatrixInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixtestCanvasGetTotalMatrixInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
@@ -677,7 +844,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasConcatMatrixtestCanvasGetTotalMatrix
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawShadowNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowNormal, TestSize.Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
@@ -694,7 +861,10 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawShadowNormal, TestSize.Level0) {
     OH_Drawing_Point3D p1{0.0, 0.0, 0.0};
     OH_Drawing_Point3D p2{10.0, 10.0, 10.0};
     for (int i = 0; i < 4; i++) {
+        OH_Drawing_ErrorCodeReset();
         OH_Drawing_CanvasDrawShadow(canvas, path, p1, p2, 10, 0xFF000000, 0xFF000000, flags[i]);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     }
     // 4. Free memory
     OH_Drawing_PathDestroy(path);
@@ -709,17 +879,25 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawShadowNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawShadowNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowNull, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 3. OH_Drawing_CanvasDrawShadow with the first parameter as null
     OH_Drawing_Point3D p1{0.0, 0.0, 0.0};
     OH_Drawing_Point3D p2{10.0, 10.0, 10.0};
     OH_Drawing_CanvasDrawShadow(nullptr, path, p1, p2, 10, 0xFF000000, 0xFF000000, SHADOW_FLAGS_ALL);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 4. OH_Drawing_CanvasDrawShadow with the second parameter as null
     OH_Drawing_CanvasDrawShadow(canvas, nullptr, p1, p2, 10, 0xFF000000, 0xFF000000, SHADOW_FLAGS_ALL);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 5. OH_Drawing_CanvasDrawShadow with the third parameter as null
     // Unable to test, compilation error
     // 6. OH_Drawing_CanvasDrawShadow with the fourth parameter as null
@@ -743,11 +921,15 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawShadowNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawShadowAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 3. OH_Drawing_CanvasDrawShadow, the third parameter planeParams x, y, z are set to negative values
     OH_Drawing_Point3D p1{-1.0, -1.0, -1.0};
     OH_Drawing_Point3D p2{10.0, 10.0, 10.0};
@@ -775,11 +957,15 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawShadowAbnormal, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawShadowMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowMaximum, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     OH_Drawing_Point3D p1{1.0, 1.0, 1.0};
     OH_Drawing_Point3D p2{10.0, 10.0, 10.0};
     // 3. OH_Drawing_CanvasDrawShadow, set the x, y, z values in the planeParams parameter to maximum values
@@ -808,7 +994,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawShadowMaximum, TestSize.Level3) 
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawShadowInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
@@ -820,12 +1006,18 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawShadowInputDestroyed, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasClearNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearNormal, TestSize.Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_CanvasClear, covering the minimum value 0x00000000 and the maximum value 0xFFFFFFFF for color
     OH_Drawing_CanvasClear(canvas, 0x00000000);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_CanvasClear(canvas, 0xFFFFFFFF);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Free memory
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -838,11 +1030,15 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasClearNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasClearNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearNull, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_CanvasClear with the first parameter as null
     OH_Drawing_CanvasClear(nullptr, 0x00000000);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. Free memory
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -855,9 +1051,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasClearNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasClearAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_CanvasClear with the parameter color set to a negative value
     OH_Drawing_CanvasClear(canvas, -1);
     // 3. OH_Drawing_CanvasClear with the parameter color set to a floating-point value
@@ -874,9 +1072,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasClearAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasClearMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Call OH_Drawing_CanvasClear 10 times, each time with a different color
     for (int i = 0; i < 10; i++) {
         OH_Drawing_CanvasClear(canvas, 0x11111111 + i * 10);
@@ -893,7 +1093,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasClearMultipleCalls, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasClearInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
@@ -905,9 +1105,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasClearInputDestroyed, TestSize.Level3
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasClearMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearMaximum, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_CanvasClear with the parameter color set to the maximum value
     OH_Drawing_CanvasClear(canvas, 0xFFFFFFFF);
     // 3. Free memory
@@ -922,14 +1124,20 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasClearMaximum, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasSetMatrixNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixNormal, TestSize.Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 0, 0, -1, 0, 0, 0, 1);
     // 3. Call OH_Drawing_CanvasSetMatrix and use OH_Drawing_MatrixGetValue to get the matrix information
     OH_Drawing_CanvasSetMatrix(canvas, matrix);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     float val = OH_Drawing_MatrixGetValue(matrix, 0);
     EXPECT_EQ(val, 1);
 
@@ -946,21 +1154,28 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasSetMatrixNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasSetMatrixNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixNull, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 0, 0, -1, 0, 0, 0, 1);
     // 3. OH_Drawing_CanvasSetMatrix with the first parameter as null
     OH_Drawing_CanvasSetMatrix(nullptr, matrix);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 4. OH_Drawing_CanvasSetMatrix with the second parameter as null
     OH_Drawing_CanvasSetMatrix(canvas, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 5. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_CanvasDestroy(canvas);
 }
-
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_3502
  * @tc.name: testCanvasSetMatrixMultipleCalls
@@ -969,11 +1184,15 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasSetMatrixNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasSetMatrixMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 0, 0, -1, 0, 0, 0, 1);
     // 3. Call OH_Drawing_CanvasSetMatrix 10 times, and after each call, call OH_Drawing_MatrixGetValue to get the
     // matrix information
@@ -995,7 +1214,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasSetMatrixMultipleCalls, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasSetMatrixInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
@@ -1007,11 +1226,15 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasSetMatrixInputDestroyed, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasResetMatrixNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasResetMatrixNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_CanvasCreate to create a canvas object
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Call OH_Drawing_CanvasResetMatrix
     OH_Drawing_CanvasResetMatrix(canvas);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Free memory
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -1024,9 +1247,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasResetMatrixNormal, TestSize.Level0) 
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasResetMatrixNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasResetMatrixNull, TestSize.Level3) {
     // 1. Call OH_Drawing_CanvasResetMatrix with a null parameter
     OH_Drawing_CanvasResetMatrix(nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 }
 
 /*
@@ -1037,11 +1262,15 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasResetMatrixNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasResetMatrixMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasResetMatrixMultipleCalls, TestSize.Level3) {
     // 1. Call OH_Drawing_CanvasCreate to create a canvas object
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Call OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 0, 0, -1, 0, 0, 0, 1);
     // 3. Call OH_Drawing_CanvasSetMatrix 10 times, call OH_Drawing_CanvasResetMatrix 10 times, and get matrix
     // information using OH_Drawing_MatrixGetValue
@@ -1049,7 +1278,10 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasResetMatrixMultipleCalls, TestSize.L
         OH_Drawing_CanvasSetMatrix(canvas, matrix);
     }
     for (int i = 0; i < 10; i++) {
+        OH_Drawing_ErrorCodeReset();
         OH_Drawing_CanvasResetMatrix(canvas);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     }
     // 4. Call OH_Drawing_CanvasSetMatrix, OH_Drawing_CanvasResetMatrix, and get matrix information using
     // OH_Drawing_MatrixGetValue
@@ -1076,7 +1308,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasResetMatrixMultipleCalls, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawImageRectWithSrcNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectWithSrcNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_CanvasCreate to create a canvas object
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
@@ -1085,15 +1317,23 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawImageRectWithSrcNormal, TestSize
     EXPECT_NE(image, nullptr);
     // 3. Call OH_Drawing_RectCreate to create a rectangle object
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 4. Call OH_Drawing_RectCreate to create a rectangle object
     OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect2, nullptr);
     // 5. Call OH_Drawing_SamplingOptionsCreate to create a sampling options object
     OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode::FILTER_MODE_NEAREST,
                                                                            OH_Drawing_MipmapMode::MIPMAP_MODE_NEAREST);
     EXPECT_NE(options, nullptr);
     // 6. Call OH_Drawing_CanvasDrawImageRectWithSrc with the sixth parameter iterating through the enumeration
     OH_Drawing_CanvasDrawImageRectWithSrc(canvas, image, rect, rect2, options, STRICT_SRC_RECT_CONSTRAINT);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_CanvasDrawImageRectWithSrc(canvas, image, rect, rect2, options, FAST_SRC_RECT_CONSTRAINT);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 7. Free memory
     OH_Drawing_RectDestroy(rect);
     OH_Drawing_RectDestroy(rect2);
@@ -1110,23 +1350,35 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawImageRectWithSrcNormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawImageRectWithSrcNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectWithSrcNull, TestSize.Level3) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     EXPECT_NE(image, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect2, nullptr);
     OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode::FILTER_MODE_NEAREST,
                                                                            OH_Drawing_MipmapMode::MIPMAP_MODE_NEAREST);
     // 1. Call OH_Drawing_CanvasDrawImageRectWithSrc with the first parameter being nullptr
     OH_Drawing_CanvasDrawImageRectWithSrc(nullptr, image, rect, rect2, options, STRICT_SRC_RECT_CONSTRAINT);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 2. Call OH_Drawing_CanvasDrawImageRectWithSrc with the second parameter being nullptr
     OH_Drawing_CanvasDrawImageRectWithSrc(canvas, nullptr, rect, rect2, options, STRICT_SRC_RECT_CONSTRAINT);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. Call OH_Drawing_CanvasDrawImageRectWithSrc with the third parameter being nullptr
     OH_Drawing_CanvasDrawImageRectWithSrc(canvas, image, nullptr, rect2, options, STRICT_SRC_RECT_CONSTRAINT);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 4. Call OH_Drawing_CanvasDrawImageRectWithSrc with the fourth parameter being nullptr
     OH_Drawing_CanvasDrawImageRectWithSrc(canvas, image, rect, nullptr, options, STRICT_SRC_RECT_CONSTRAINT);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 5. Call OH_Drawing_CanvasDrawImageRectWithSrc with the fifth parameter being nullptr
     OH_Drawing_CanvasDrawImageRectWithSrc(canvas, image, rect, rect2, nullptr, STRICT_SRC_RECT_CONSTRAINT);
     // 6. Free memory
@@ -1145,16 +1397,24 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawImageRectWithSrcNull, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawImageRectNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectNormal, TestSize.Level0) {
     // 1. Create a canvas object using OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Create an image object using OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+    // add assert
+    EXPECT_NE(image, nullptr);
     // 3. Create a rectangle object using OH_Drawing_RectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 4. Create a sampling options object using OH_Drawing_SamplingOptionsCreate
     OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode::FILTER_MODE_NEAREST,
                                                                            OH_Drawing_MipmapMode::MIPMAP_MODE_NEAREST);
+    // add assert
+    EXPECT_NE(options, nullptr);
     // 5. Call OH_Drawing_CanvasDrawImageRect
     OH_Drawing_CanvasDrawImageRect(canvas, image, rect, options);
     // 6. Free memory
@@ -1172,18 +1432,32 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawImageRectNormal, TestSize.Level0
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawImageRectNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectNull, TestSize.Level3) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+    // add assert
+    EXPECT_NE(image, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode::FILTER_MODE_NEAREST,
                                                                            OH_Drawing_MipmapMode::MIPMAP_MODE_NEAREST);
+    // add assert
+    EXPECT_NE(options, nullptr);
     // 1. Call OH_Drawing_CanvasDrawImageRect with the first parameter as null
     OH_Drawing_CanvasDrawImageRect(nullptr, image, rect, options);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 2. Call OH_Drawing_CanvasDrawImageRect with the second parameter as null
     OH_Drawing_CanvasDrawImageRect(canvas, nullptr, rect, options);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. Call OH_Drawing_CanvasDrawImageRect with the third parameter as null
     OH_Drawing_CanvasDrawImageRect(canvas, image, nullptr, options);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 4. Call OH_Drawing_CanvasDrawImageRect with the fourth parameter as null
     OH_Drawing_CanvasDrawImageRect(canvas, image, rect, nullptr);
     // 5. Free memory
@@ -1201,7 +1475,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawImageRectNull, TestSize.Level3) 
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawVerticesNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesNormal, TestSize.Level0) {
     OH_Drawing_Point2D point_one = {0, 0};
     OH_Drawing_Point2D point_two = {100, 100};
     OH_Drawing_Point2D point_three = {300, 100};
@@ -1215,11 +1489,16 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawVerticesNormal, TestSize.Level0)
     uint16_t indices[3] = {0, 1, 2};
     // 1. Call OH_Drawing_CanvasCreate to create a canvas object
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Call OH_Drawing_CanvasDrawVertices with the second parameter iterating through the enum
     OH_Drawing_VertexMode mode[] = {VERTEX_MODE_TRIANGLES, VERTEX_MODE_TRIANGLES_STRIP, VERTEX_MODE_TRIANGLE_FAN};
     for (int i = 0; i < 3; i++) {
+        OH_Drawing_ErrorCodeReset();
         OH_Drawing_CanvasDrawVertices(canvas, mode[i], 3, points_vertices, texs_vertices, colors, 3, indices,
                                       BLEND_MODE_COLOR);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     }
     // 3. Call OH_Drawing_CanvasDrawVertices with the ninth parameter iterating through the enum
     OH_Drawing_BlendMode blendMode[] = {
@@ -1233,8 +1512,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawVerticesNormal, TestSize.Level0)
         BLEND_MODE_LUMINOSITY,
     };
     for (int i = 0; i < 30; i++) {
+        OH_Drawing_ErrorCodeReset();
         OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 3, points_vertices, texs_vertices, colors, 3,
                                       indices, blendMode[i]);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     }
     // 4. Free memory
     OH_Drawing_CanvasDestroy(canvas);
@@ -1248,7 +1530,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawVerticesNormal, TestSize.Level0)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawVerticesNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesNull, TestSize.Level3) {
     OH_Drawing_Point2D point_one = {0, 0};
     OH_Drawing_Point2D point_two = {100, 100};
     OH_Drawing_Point2D point_three = {300, 100};
@@ -1262,16 +1544,24 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawVerticesNull, TestSize.Level3) {
     uint16_t indices[3] = {0, 1, 2};
 
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
 
     // 1. Call OH_Drawing_CanvasDrawVertices with the first parameter as nullptr
     OH_Drawing_CanvasDrawVertices(nullptr, VERTEX_MODE_TRIANGLES, 3, points_vertices, texs_vertices, colors, 3, indices,
                                   BLEND_MODE_COLOR);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 2. Call OH_Drawing_CanvasDrawVertices with the third parameter as 0
     OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 0, points_vertices, texs_vertices, colors, 3, indices,
                                   BLEND_MODE_COLOR);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. Call OH_Drawing_CanvasDrawVertices with the fourth parameter as nullptr
     OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 3, nullptr, texs_vertices, colors, 3, indices,
                                   BLEND_MODE_COLOR);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 4. Call OH_Drawing_CanvasDrawVertices with the fifth parameter as nullptr
     OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 3, points_vertices, nullptr, colors, 3, indices,
                                   BLEND_MODE_COLOR);
@@ -1296,9 +1586,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawVerticesNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawVerticesAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesAbnormal, TestSize.Level3) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
 
     // 2. Call OH_Drawing_CanvasDrawVertices with a floating-point number as the third parameter
     // Compilation error, cannot pass a floating-point number
@@ -1318,7 +1610,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawVerticesAbnormal, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawVerticesMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesMaximum, TestSize.Level3) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Point2D point_one = {0, 0};
     OH_Drawing_Point2D point_two = {100, 100};
@@ -1333,6 +1625,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawVerticesMaximum, TestSize.Level3
     uint16_t indices[3] = {0, 1, 2};
 
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
 
     if (0) {
         // todo cpp crash
@@ -1356,11 +1650,15 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawVerticesMaximum, TestSize.Level3
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsNormal, TestSize.Level0) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Call OH_Drawing_CanvasReadPixels
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 200;
     constexpr uint32_t height = 200;
@@ -1368,6 +1666,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsNormal, TestSize.Level0) {
     void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_CanvasReadPixels(canvas, &imageInfo, pixels, 0, 0, 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Free memory
     OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_CanvasDestroy(canvas);
@@ -1381,10 +1681,14 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsNull, TestSize.Level3) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 1. Call OH_Drawing_CanvasReadPixels with the first parameter as nullptr
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 200;
     constexpr uint32_t height = 200;
@@ -1392,10 +1696,16 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsNull, TestSize.Level3) {
     void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_CanvasReadPixels(nullptr, &imageInfo, pixels, 0, 0, 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 2. Call OH_Drawing_CanvasReadPixels with the second parameter as nullptr
     OH_Drawing_CanvasReadPixels(canvas, nullptr, pixels, 0, 0, 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. Call OH_Drawing_CanvasReadPixels with the third parameter as nullptr
     OH_Drawing_CanvasReadPixels(canvas, &imageInfo, nullptr, 0, 0, 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 4. Free memory
     OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_CanvasDestroy(canvas);
@@ -1409,7 +1719,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsMismatch, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsMismatch, TestSize.Level3) {
     // Deprecated
 }
 
@@ -1421,11 +1731,15 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsMismatch, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsAbnormal, TestSize.Level3) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Call OH_Drawing_CanvasReadPixels with the fourth parameter as a negative number or a floating-point number
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 200;
     constexpr uint32_t height = 200;
@@ -1451,11 +1765,15 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsAbnormal, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsMaximum, TestSize.Level3) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Call OH_Drawing_CanvasReadPixels with the fourth parameter as the maximum value 0xFFFFFFFF
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 200;
     constexpr uint32_t height = 200;
@@ -1480,11 +1798,15 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsMaximum, TestSize.Level3) 
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsBoundary, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsBoundary, TestSize.Level0) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Call OH_Drawing_CanvasReadPixels
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 4096;
     constexpr uint32_t height = 2160;
@@ -1505,13 +1827,19 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsBoundary, TestSize.Level0)
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsToBitmapNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapNormal, TestSize.Level0) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Create a bitmap object by calling OH_Drawing_BitmapCreate
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     // 3. Call OH_Drawing_CanvasReadPixelsToBitmap
     OH_Drawing_CanvasReadPixelsToBitmap(canvas, bitmap, 1, 1);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Free memory
     OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_CanvasDestroy(canvas);
@@ -1525,13 +1853,21 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsToBitmapNormal, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsToBitmapNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapNull, TestSize.Level3) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     // 1. Call OH_Drawing_CanvasReadPixelsToBitmap with the first parameter as null
     OH_Drawing_CanvasReadPixelsToBitmap(nullptr, bitmap, 1, 1);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 2. Call OH_Drawing_CanvasReadPixelsToBitmap with the second parameter as null
     OH_Drawing_CanvasReadPixelsToBitmap(canvas, nullptr, 1, 1);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. Call OH_Drawing_CanvasReadPixelsToBitmap with the third parameter as 0
     OH_Drawing_CanvasReadPixelsToBitmap(canvas, bitmap, 0, 1);
     // 4. Call OH_Drawing_CanvasReadPixelsToBitmap with the fourth parameter as 0
@@ -1549,11 +1885,15 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsToBitmapNull, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsToBitmapAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapAbnormal, TestSize.Level3) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Create a bitmap object by calling OH_Drawing_BitmapCreate
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     // 3. Call OH_Drawing_CanvasReadPixelsToBitmap with the third parameter as a floating-point number
     OH_Drawing_CanvasReadPixelsToBitmap(canvas, bitmap, 1.0f, 0);
     // 4. Call OH_Drawing_CanvasReadPixelsToBitmap with the fourth parameter as a floating-point number
@@ -1571,11 +1911,15 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsToBitmapAbnormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsToBitmapMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapMaximum, TestSize.Level3) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     // 2. Create a bitmap object by calling OH_Drawing_BitmapCreate
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     // 3. Call OH_Drawing_CanvasReadPixelsToBitmap with the third parameter set to the maximum value 0x7FFFFFFF
     OH_Drawing_CanvasReadPixelsToBitmap(canvas, bitmap, 0x7FFFFFFF, 0);
     // 4. Call OH_Drawing_CanvasReadPixelsToBitmap with the fourth parameter set to the maximum value 0x7FFFFFFF
@@ -1592,10 +1936,12 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsToBitmapMaximum, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacter, TestSize.Level1)
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawSingleCharacter, TestSize.Level1)
 {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     const char* strOne = "a";
     const char* strTwo = "你好";
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
@@ -1622,15 +1968,21 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacter, TestSize.Level1
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacterNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawSingleCharacterNormal, TestSize.Level0) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     //2. OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // add assert
+    EXPECT_NE(brush, nullptr);
     //3. OH_Drawing_BrushSetColor
     OH_Drawing_BrushSetColor(brush, 0xFFFFFFFF);
     //4. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    // add assert
+    EXPECT_NE(font, nullptr);
     //5. OH_Drawing_FontSetTextSize
     const float textSize = 10.f;
     OH_Drawing_FontSetTextSize(font, textSize);
@@ -1662,15 +2014,21 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacterNormal, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacterNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawSingleCharacterNull, TestSize.Level3) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     //2. OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // add assert
+    EXPECT_NE(brush, nullptr);
     //3. OH_Drawing_BrushSetColor
     OH_Drawing_BrushSetColor(brush, 0xFFFFFFFF);
     //4. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    // add assert
+    EXPECT_NE(font, nullptr);
     //5. OH_Drawing_FontSetTextSize
     const float textSize = 10.f;
     OH_Drawing_FontSetTextSize(font, textSize);
@@ -1678,13 +2036,13 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacterNull, TestSize.Le
     float x = 0.f;
     float y = 0.f;
     const char *str = "a";
-    OH_Drawing_CanvasDrawSingleCharacter(nullptr, str, font, x, y);
+    EXPECT_EQ(OH_Drawing_CanvasDrawSingleCharacter(nullptr, str, font, x, y), OH_DRAWING_ERROR_INVALID_PARAMETER);
     //7. OH_Drawing_CanvasDrawSingleCharacter parameter str is empty
     str = "";
     OH_Drawing_CanvasDrawSingleCharacter(canvas, str, font, x, y);
     //8. OH_Drawing_CanvasDrawSingleCharacter parameter font is empty
     str = "a";
-    OH_Drawing_CanvasDrawSingleCharacter(canvas, str, nullptr, x, y);
+    EXPECT_EQ(OH_Drawing_CanvasDrawSingleCharacter(canvas, str, nullptr, x, y), OH_DRAWING_ERROR_INVALID_PARAMETER);
     //9. OH_Drawing_CanvasDrawSingleCharacter parameter str to 0 characters
     OH_Drawing_CanvasDrawSingleCharacter(canvas, str, font, x, y);
     //10.free memory
@@ -1701,9 +2059,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacterNull, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPointNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawPointNormal, TestSize.Level0) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     //2. OH_Drawing_Point2D create an array of points
     OH_Drawing_Point2D texs_one = {0.0f, 0.0f};
     OH_Drawing_Point2D texs_two = {1.0f, 1.0f};
@@ -1729,14 +2089,18 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPointNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPointNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawPointNull, TestSize.Level3) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     //2. OH_Drawing_CanvasDrawPoint the first parameter is empty
     const OH_Drawing_Point2D point = {0.0f, 0.0f};
-    OH_Drawing_CanvasDrawPoint(nullptr, &point);
+    // add assert
+    EXPECT_EQ(OH_Drawing_CanvasDrawPoint(nullptr, &point), OH_DRAWING_ERROR_INVALID_PARAMETER);
     //3. OH_Drawing_CanvasDrawPoint the second parameter is empty
-    OH_Drawing_CanvasDrawPoint(canvas, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_CanvasDrawPoint(canvas, nullptr), OH_DRAWING_ERROR_INVALID_PARAMETER);
     //4.free memory
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -1749,11 +2113,13 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPointNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPointMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawPointMultipleCalls, TestSize.Level3) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvases[10];
     for (int i = 0; i < 10; i++) {
         canvases[i]= OH_Drawing_CanvasCreate();
+        // add assert
+        EXPECT_NE(canvases[i], nullptr);
     }
     //2. Call OH_Drawing_CanvasDrawPoint 10 times
     OH_Drawing_Point2D point1 = {0.0f, 0.0f};
@@ -1770,9 +2136,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPointMultipleCalls, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorNormal, TestSize.Level0) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     //2. OH_Drawing_CanvasDrawColor enumeration traversal
     uint32_t color[3] = {0xFFFF0000, 0xFFFF0000, 0xFFFF0000};
     OH_Drawing_BlendMode blendMode[] = {
@@ -1800,9 +2168,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorNull, TestSize.Level3) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     //2. OH_Drawing_CanvasDrawColor with the first parameter as nullptr
     OH_Drawing_BlendMode blendMode[] = {
         BLEND_MODE_CLEAR,      BLEND_MODE_SRC,        BLEND_MODE_DST,         BLEND_MODE_SRC_OVER,
@@ -1816,7 +2186,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorNull, TestSize.Level3) {
     };
     uint32_t color = 0xFFFF0000;
     for (int i = 0; i < 29; i++) {
-    OH_Drawing_CanvasDrawColor(nullptr, color, blendMode[i]);
+    // add assert
+    EXPECT_EQ(OH_Drawing_CanvasDrawColor(nullptr, color, blendMode[i]), OH_DRAWING_ERROR_INVALID_PARAMETER);
     }
     //3. OH_Drawing_CanvasDrawColor with the first parameter as 0
     for (int i = 0; i < 29; i++) {
@@ -1834,9 +2205,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorMaximum, TestSize.Level3) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     //2. OH_Drawing_CanvasDrawColor with the second parameter set to the maximum value
     OH_Drawing_BlendMode blendMode[] = {
         BLEND_MODE_CLEAR,      BLEND_MODE_SRC,        BLEND_MODE_DST,         BLEND_MODE_SRC_OVER,
@@ -1850,7 +2223,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorMaximum, TestSize.Level3) {
     };
     uint32_t color = 0x00000000;
     for (int i = 0; i < 29; i++) {
-        OH_Drawing_CanvasDrawColor(nullptr, color, blendMode[i]);
+        // add assert
+        EXPECT_EQ(OH_Drawing_CanvasDrawColor(nullptr, color, blendMode[i]), OH_DRAWING_ERROR_INVALID_PARAMETER);
     }
     //3. free memory
     OH_Drawing_CanvasDestroy(canvas);
@@ -1864,9 +2238,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorMaximum, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorMultipleCalls, TestSize.Level3) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     //2. Call OH_Drawing_CanvasDrawColor 10 times
     uint32_t color = 0xFFFF0000;
     OH_Drawing_BlendMode blendMode[] = {
@@ -1889,12 +2265,18 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawColorMultipleCalls, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasIsClipEmptyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasIsClipEmptyNormal, TestSize.Level0) {
     //1. OH_Drawing_RectCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_Rect  *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     //2. OH_Drawing_RoundRectCreate
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 1.0f, 1.0f);
+    // add assert
+    EXPECT_NE(roundRect, nullptr);
     //3. OH_Drawing_CanvasClipRoundRect with the parameter clipOp set DIFFERENCE
     OH_Drawing_CanvasClipOp clipOp = {OH_Drawing_CanvasClipOp::DIFFERENCE};
     bool doAntiAlias[] = {true, false};
@@ -1920,12 +2302,18 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasIsClipEmptyNormal, TestSize.Level0) 
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasIsClipEmptyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasIsClipEmptyNull, TestSize.Level3) {
     //1. OH_Drawing_RectCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_Rect  *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     //2. OH_Drawing_RoundRectCreate
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 1.0f, 1.0f);
+    // add assert
+    EXPECT_NE(roundRect, nullptr);
     //3. OH_Drawing_CanvasClipRoundRect with the parameter clipOp set DIFFERENCE
     OH_Drawing_CanvasClipOp clipOp = {OH_Drawing_CanvasClipOp::DIFFERENCE};
     bool doAntiAlias[] = {true, false};
@@ -1935,10 +2323,12 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasIsClipEmptyNull, TestSize.Level3) {
     //4. OH_Drawing_CanvasIsClipEmpty with the first parameter as null
     bool isClipEmpty[] = {true, false};
     for (int i = 0; i < 2; i++) {
-        OH_Drawing_CanvasIsClipEmpty(nullptr, &isClipEmpty[i]);
+        // add assert
+        EXPECT_EQ(OH_Drawing_CanvasIsClipEmpty(nullptr, &isClipEmpty[i]), OH_DRAWING_ERROR_INVALID_PARAMETER);
     }
     //5. OH_Drawing_CanvasIsClipEmpty with the second parameter as null
-    OH_Drawing_CanvasIsClipEmpty(canvas, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_CanvasIsClipEmpty(canvas, nullptr), OH_DRAWING_ERROR_INVALID_PARAMETER);
     //6. free memory
     OH_Drawing_CanvasDestroy(canvas);
     OH_Drawing_RectDestroy(rect);
@@ -1953,12 +2343,18 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasIsClipEmptyNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasIsClipEmptyMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasIsClipEmptyMultipleCalls, TestSize.Level3) {
     //1. OH_Drawing_RectCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_Rect  *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     //2. OH_Drawing_RoundRectCreate
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 1.0f, 1.0f);
+    // add assert
+    EXPECT_NE(roundRect, nullptr);
     //3. OH_Drawing_CanvasClipRoundRect with the parameter clipOp set DIFFERENCE
     OH_Drawing_CanvasClipOp clipOp = {OH_Drawing_CanvasClipOp::DIFFERENCE};
     bool doAntiAlias[] = {true, false};
@@ -1991,9 +2387,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasIsClipEmptyMultipleCalls, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasGetImageInfoNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetImageInfoNormal, TestSize.Level0) {
     //1. OH_Drawing_BitmapCreate
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     //2. OH_Drawing_BitmapGetPixels
     void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
     //3. OH_Drawing_BitmapBuild
@@ -2007,8 +2405,12 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetImageInfoNormal, TestSize.Level0)
     const uint32_t rowBytes = width * bytesPerPixel + padding;
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_Bitmap *frompixels = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+    // add assert
+    EXPECT_EQ(frompixels, (nullptr));
     //5. OH_Drawing_CanvasBind
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_CanvasBind(canvas, bitmap);
     //6. OH_Drawing_CanvasGetImageInfo
     OH_Drawing_CanvasGetImageInfo(canvas, &imageInfo);
@@ -2026,9 +2428,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetImageInfoNormal, TestSize.Level0)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasGetImageInfoNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetImageInfoNull, TestSize.Level3) {
     //1. OH_Drawing_BitmapCreate
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     //2. OH_Drawing_BitmapGetPixels
     void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
     //3. OH_Drawing_BitmapBuild
@@ -2042,13 +2446,19 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetImageInfoNull, TestSize.Level3) {
     const uint32_t rowBytes = width * bytesPerPixel + padding;
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_Bitmap *frompixels = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+    // add assert
+    EXPECT_EQ(frompixels, nullptr);
     //5. OH_Drawing_CanvasBind
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_CanvasBind(canvas, bitmap);
     //6. OH_Drawing_CanvasGetImageInfo with the first parameter as null
-    OH_Drawing_CanvasGetImageInfo(nullptr, &imageInfo);
+    // add assert
+    EXPECT_EQ(OH_Drawing_CanvasGetImageInfo(nullptr, &imageInfo), OH_DRAWING_ERROR_INVALID_PARAMETER);
     //7. OH_Drawing_CanvasGetImageInfo with the second parameter as null
-    OH_Drawing_CanvasGetImageInfo(canvas, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_CanvasGetImageInfo(canvas, nullptr), OH_DRAWING_ERROR_INVALID_PARAMETER);
     //8. free memory
     OH_Drawing_CanvasDestroy(canvas);
     OH_Drawing_BitmapDestroy(bitmap);
@@ -2063,9 +2473,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetImageInfoNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasGetImageInfoMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetImageInfoMultipleCalls, TestSize.Level3) {
     //1. OH_Drawing_BitmapCreate
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     //2. OH_Drawing_BitmapGetPixels
     void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
     //3. OH_Drawing_BitmapBuild
@@ -2079,8 +2491,12 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetImageInfoMultipleCalls, TestSize.
     const uint32_t rowBytes = width * bytesPerPixel + padding;
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_Bitmap *frompixels = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+    // add assert
+    EXPECT_EQ(frompixels, nullptr);
     //5. OH_Drawing_CanvasBind
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_CanvasBind(canvas, bitmap);
     //6. Call OH_Drawing_CanvasGetImageInfo 10 times
     OH_Drawing_Canvas *canvases[10];
@@ -2107,13 +2523,19 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetImageInfoMultipleCalls, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRegionNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClipRegionNormal, TestSize.Level0) {
     //1. OH_Drawing_RectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_CanvasClipOp clipOp = {OH_Drawing_CanvasClipOp::DIFFERENCE};
     //2. OH_Drawing_RegionCreate
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
+    // add assert
+    EXPECT_NE(region, nullptr);
     //3. OH_Drawing_RegionSetRect
     OH_Drawing_RegionSetRect(region, rect);
     //4. OH_Drawing_CanvasClipRegion
@@ -2132,19 +2554,27 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRegionNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRegionNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClipRegionNull, TestSize.Level3) {
     //1. OH_Drawing_RectCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_CanvasClipOp clipOp = {OH_Drawing_CanvasClipOp::DIFFERENCE};
     //2. OH_Drawing_RegionCreate
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
+    // add assert
+    EXPECT_NE(region, nullptr);
     //3. OH_Drawing_RegionSetRect
     OH_Drawing_RegionSetRect(region, rect);
     //4. OH_Drawing_CanvasClipRegion with the first parameter as nullptr
-    OH_Drawing_CanvasClipRegion(nullptr, region, clipOp);
+    // add assert
+    EXPECT_EQ(OH_Drawing_CanvasClipRegion(nullptr, region, clipOp), OH_DRAWING_ERROR_INVALID_PARAMETER);
     //5. OH_Drawing_CanvasClipRegion with the second parameter as nullptr
-    OH_Drawing_CanvasClipRegion(canvas, nullptr, clipOp);
+    // add assert
+    EXPECT_EQ(OH_Drawing_CanvasClipRegion(canvas, nullptr, clipOp), OH_DRAWING_ERROR_INVALID_PARAMETER);
     //6. free memory
     OH_Drawing_CanvasDestroy(canvas);
     OH_Drawing_RectDestroy(rect);
@@ -2159,16 +2589,22 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRegionNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRegionMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClipRegionMultipleCalls, TestSize.Level3) {
     //1. OH_Drawing_RectCreate
     OH_Drawing_Canvas *canvases[10];
     for (int i = 0; i < 10; i++) {
         canvases[i]= OH_Drawing_CanvasCreate();
+        // add assert
+        EXPECT_NE(canvases[i], nullptr);
     }
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_CanvasClipOp clipOp = {OH_Drawing_CanvasClipOp::DIFFERENCE};
     //2. OH_Drawing_RegionCreate
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
+    // add assert
+    EXPECT_NE(region, nullptr);
     //3. OH_Drawing_RegionSetRect
     OH_Drawing_RegionSetRect(region, rect);
     //4. Call OH_Drawing_CanvasClipRegion 10 times

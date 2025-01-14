@@ -56,7 +56,7 @@ class XtsBuild:
     def parse_cmdline(self):
         cmdline_args = [
             'suite', 'target_arch', 'use_musl', 'target_subsystem', 'system_size', 'product_name', 'pr_path_list',
-            'cache_type'
+            'cache_type', 'make_osp', 'target_app_dir'
         ]
         cmdline = {'use_musl': 'false', 'system_size': 'standard', 'target_arch': 'arm'}
         for p in self._commandline:
@@ -89,7 +89,13 @@ class XtsBuild:
 
             if cmdline.get('pr_path_list'):
                 self._gn_args['pr_path_list'] = cmdline.get('pr_path_list')
-
+            
+            if cmdline.get('make_osp'):
+                self._gn_args['make_osp'] = cmdline.get('make_osp')
+            
+            if cmdline.get('target_app_dir'):
+                self._gn_args['target_app_dir'] = cmdline.get('target_app_dir')
+            
             self._args['target-cpu'] = cmdline.get('target_arch')
             self._other_args['get-warning-list'] = 'false'
             self._other_args['stat-ccache'] = 'true'

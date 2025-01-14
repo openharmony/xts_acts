@@ -19,6 +19,7 @@ import { BusinessError } from '@ohos.base';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import { emitter } from '@kit.BasicServicesKit';
+import bundle from '@ohos.bundle.bundleManager';
 
 let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
 let eventData: emitter.EventData = {
@@ -32,18 +33,31 @@ let innerEvent: emitter.InnerEvent = {
   priority: emitter.EventPriority.HIGH
 };
 
+let targetVersion: number = 12;
+
 export default function abilityDelegatorStage() {
   describe('abilityDelegatorStage', () => {
-    beforeAll(() => {
+    beforeAll((done: Function) => {
       hilog.info(0x0000, 'abilityDelegatorStageTag', '%{public}s',
         'SUB_Ability_AbilityTools_AbilityDelegator_Stage_12700 beforeAll');
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+
+      bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).then(data => {
+        console.info('getBundleInfoForSelf' + JSON.stringify(data));
+        targetVersion = data.targetVersion;
+        console.info('getBundleInfoForSelf targetVersion=' + targetVersion);
+        done();
+      }).catch((err: BusinessError) => {
+        console.info('getBundleInfoForSelf fail' + JSON.stringify(err));
+        console.info('getBundleInfoForSelf fail targetVersion=' + targetVersion);
+        done();
+      })
     });
 
     afterEach(async (done: Function) => {
       emitter.emit(innerEvent, eventData);
       setTimeout(() => {
-        console.log("SUB_AA_AbilityStageMonitor afterEach called");
+        console.log('SUB_AA_AbilityStageMonitor afterEach called');
         done();
       }, 1000);
     })
@@ -66,7 +80,11 @@ export default function abilityDelegatorStage() {
         }, (err: BusinessError, data: void) => {
           console.info('startAbility callback err ' + JSON.stringify(err.code));
           if (err) {
-            expect(err.code).assertEqual(2097152);
+            if (targetVersion >= 16) {
+              expect(err.code).assertEqual(16000001);
+            } else {
+              expect(err.code).assertEqual(2097152);
+            }
             done();
           } else {
             expect(false).assertTrue();
@@ -104,7 +122,11 @@ export default function abilityDelegatorStage() {
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, 'abilityDelegatorStageTag', '%{public}s',
             'SUB_Ability_AbilityTools_AbilityDelegator_Stage_12800 failed');
-          expect(err.code).assertEqual(2097152);
+          if (targetVersion >= 16) {
+            expect(err.code).assertEqual(16000001);
+          } else {
+            expect(err.code).assertEqual(2097152);
+          }
           done();
         })
       } catch (error) {

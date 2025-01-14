@@ -468,7 +468,7 @@ static napi_value Wcpncpy_One(napi_env env, napi_callback_info info)
 static napi_value Wcrtomb_One(napi_env env, napi_callback_info info)
 {
     wchar_t wcs = L'A';
-    char s[PARAM_20];
+    char s[PARAM_20] = {PARAM_0};
     mbstate_t pr;
     memset(&pr, PARAM_0, sizeof(pr));
     int ret = MINUSONE;

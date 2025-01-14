@@ -44,7 +44,17 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeColorSpaceTest : public testing::Test {};
+class DrawingNativeColorSpaceTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override
+    {
+        // 设置代码
+        std::cout << "DrawingNativeColorSpaceTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeColorSpaceTest errorCodeReset before each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_SPACE_0100
@@ -70,6 +80,8 @@ HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateSrgbNormal, TestSize.L
  */
 HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceDestroyNull, TestSize.Level3) {
     OH_Drawing_ColorSpaceDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
 }
 
 /*

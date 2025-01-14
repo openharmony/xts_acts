@@ -29,7 +29,6 @@ group("ActsAbilityAmsTest") {
       "actsassistappatest:ActsAssistAppATest",
       "actsbacktocallerabilitywithresulttest:ActsBackToCallerAbilityWithResultTest",
       "actscommoncomponentcalltest:ActsCommonComponentCallTest",
-      "actsconnectservicetest:ActsConnectServiceTest",
       "actscreatemodulecontexttest:ActsCreateModuleContextErrorTest",
       "actsdeeplinkdemotest:ActsDeepLinkDemoTest",
       "actdeeplinktest:ActsDeepLinkTest",

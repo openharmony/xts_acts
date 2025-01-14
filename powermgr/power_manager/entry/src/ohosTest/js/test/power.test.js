@@ -271,6 +271,26 @@ describe('PowerTest', function () {
     })
 
     /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0111
+     * @tc.name testSystem_API_Test_power_Manager_0501
+     * @tc.desc Test the third-party application call suspend will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_power_Manager_0501', 0, async function (done) {
+        let TAG = 'System_API_Test_power_Manager_0501';
+        try {
+            power.suspend();
+            console.info(TAG + ' suspend end');
+        } catch (error) {
+            console.info(TAG + ` suspend err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0120
      * @tc.name testSystem_API_Test_power_Manager_0600
      * @tc.desc Test the third-party application call setPowerMode will be blocked

@@ -26,22 +26,55 @@
 
 #include <arkui/native_node_napi.h>
 #include <arkui/styled_string.h>
+#include "styledString_test.h"
 #define STR_TEXT  "<div ><p style=\"text-align: start;word-break: break_word;text-overflow: clip;\"><span style=\"font-size: 40.00px;font-style: normal;font-weight: normal;color: #0000FFFF;font-family: HarmonyOS Sans;\">hello</span></p></div>"
 #define SIZE 10
+#define SUCC 0
+#define FAIL (-1)
 #define LENGTH 175
 #define MAX_RESULT_SIZE 10000
+#define LIG true
 
 namespace ArkUICapiTest {
 
-napi_value testStyledString001(napi_env env, napi_callback_info info)
+napi_value StyledStringTest::testStyledString001(napi_env env, napi_callback_info info)
 {
-    uint8_t data_bytes[] = {2,1,0,79,0,5,32,5,104,101,108,108,111,88,36,33,0,0,0,0,0,0,68,64,0,89,34,255,0,0,255,90,38,0,91,47,0,92,46,10,93,37,0,94,41,0,95,48,0,96,34,255,0,0,0,97,49,0,98,50,0,99,36,33,0,0,0,0,0,0,0,0,0,100,36,33,0,0,0,0,0,0,0,0,0,101,36,33,0,0,0,0,0,0,0,0,0,102,36,33,0,0,0,0,0,0,0,0,0,103,36,33,0,0,0,0,0,0,0,0,0,104,51,0,105,36,33,0,0,0,0,0,0,0,0,0,106,52,1,107,53,0,109,255,111,36,33,0,0,0,0,0,0,0,0,0,145,55,2,146,56,0,147,57,2,81,1,32,5,104,101,108,108,111,0};
+    size_t argc = 1;
+    size_t resultNumber = 0;
+    napi_value args[1];
+    napi_get_cb_info(env, info, &argc, args, NULL, NULL);
+    if (argc < 1) {
+        napi_throw_type_error(env, NULL, "Expected one argument");
+        return nullptr;
+    }
+    napi_value typedarray = args[0];
+    napi_typedarray_type type;
+    size_t length, byte_offset;
+    napi_value arraybuffer;
+    if (napi_get_typedarray_info(env, typedarray, &type, &length, NULL, &arraybuffer, &byte_offset) != napi_ok) {
+        napi_throw_type_error(env, NULL, "Expected a TypedArray argument");
+        return nullptr;
+    }
+    if (type != napi_uint8_array) {
+        napi_throw_type_error(env, NULL, "Expected a Uint8Array argument");
+        return nullptr;
+    }
+    void *data;
+    size_t byte_length;
+    if (napi_get_arraybuffer_info(env, arraybuffer, &data, &byte_length)) {
+        napi_throw_type_error(env, NULL, "Failed to get ArrayBuffer info");
+        return nullptr;
+    }
     
-    size_t arraySize = LENGTH / sizeof(uint8_t);
+    
+    uint8_t *data_bytes = static_cast<uint8_t *>(data) + byte_offset;
+
+    size_t arraySize = length / sizeof(uint8_t);
     auto *styledStringDescriber = OH_ArkUI_StyledString_Descriptor_Create(); // ArkUI_StyledString_Descriptor {(C++) 属性字符串，html}
     // 反序列化接口，把data_byte信息写到styledStringDescriber。
     auto status = OH_ArkUI_UnmarshallStyledStringDescriptor(data_bytes, arraySize, styledStringDescriber);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "testStyledString001", "UnmarshallingStyledStringDescriber status is %{public}d",status);
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "testStyledString001", 
+      "UnmarshallingStyledStringDescriber status is %{public}d",status);
     ASSERT_EQ(status, 0);
     // (c++)属性字符串 -> html
     auto html = OH_ArkUI_ConvertToHtml(styledStringDescriber);
@@ -51,10 +84,12 @@ napi_value testStyledString001(napi_env env, napi_callback_info info)
     size_t resultSize;
     size_t size = SIZE;
     uint8_t *buffer = (uint8_t *)malloc(size * sizeof(uint8_t));
+    napi_value result = nullptr;
     if (OH_ArkUI_MarshallStyledStringDescriptor(buffer, size, styledStringDescriber, &resultSize) != 0) {
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testStyledString001", "resultSize is :[%{public}zu]", resultSize);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testStyledString001", 
+          "resultSize is :[%{public}zu]", resultSize);
         if(resultSize <= 0 || resultSize >= MAX_RESULT_SIZE) {
-            return nullptr; 
+            return nullptr;
         }
         uint8_t *buffer2 = (uint8_t *)malloc(resultSize * sizeof(uint8_t));
         size_t resultSize2;
@@ -72,8 +107,14 @@ napi_value testStyledString001(napi_env env, napi_callback_info info)
                     break;
                 }
             }
+            ASSERT_EQ(isAllEqual, LIG);
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testStyledString001", "序列化前后的数组是否完全一致：[%{public}d]",
                          isAllEqual);
+            napi_create_int32(env, SUCC, &result);
+        }
+        else {
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testStyledString001", "序列化前后的数组不完全一致");
+            napi_create_int32(env, FAIL, &result);
         }
 
         free(buffer);
@@ -81,8 +122,7 @@ napi_value testStyledString001(napi_env env, napi_callback_info info)
     }
     OH_ArkUI_StyledString_Descriptor_Destroy(styledStringDescriber);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testStyledString001", "testStyledString001 end succ");
-    napi_value result = nullptr;  
-    napi_create_int32(env, 0, &result);                                                                                 
+    
     return result;
 }
 

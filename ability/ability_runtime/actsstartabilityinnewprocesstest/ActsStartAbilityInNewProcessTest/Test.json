@@ -27,7 +27,7 @@
                 "reboot",
                 "power-shell wakeup",
                 "power-shell timeout -o 2147483647",
-                "uinput -T -m 300 2700 280 200",
+                "uinput -T -m 300 1279 280 200",
                 "uinput -T -d 1070 1070 -u 1070 1070",
                 "power-shell setmode 602"
             ],
@@ -39,7 +39,7 @@
                 "reboot",
                 "power-shell wakeup",
                 "power-shell timeout -o 2147483647",
-                "uinput -T -m 300 2700 280 200",
+                "uinput -T -m 300 1279 280 200",
                 "uinput -T -d 1070 1070 -u 1070 1070",
                 "power-shell setmode 602"
             ]

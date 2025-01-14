@@ -22,14 +22,9 @@ function sleep(time: number): Promise<void> {
 }
 
 export const getAllFormsInfoTest = (describeName: string , filterParameter: number) => {
-  const ERR_OK_CODE = 0;
-  const ERR_OK = `success`;
-
   describe(`${describeName}`, () => {
     const callbackName = `FMS_getFormsInfo_0500 callback`;
     const promiseName = `FMS_getFormsInfo_0500 promise`;
-
-    let tempDataC: undefined | FormInfo = undefined;
 
     /**
      * @tc.name: getFormsInfo
@@ -64,14 +59,12 @@ export const getAllFormsInfoTest = (describeName: string , filterParameter: numb
         });
 
         await sleep(2000);
-        expect().not().assertFail();
         done();
         console.log(`==========${callbackName} ${describeName} end==========`);
       } catch (error) {
         console.log(`${callbackName} exception caught: ${JSON.stringify(error)})`);
         console.log(`${callbackName} should not reach here`);
         expect().assertFail();
-        done();
       }
     });
 
@@ -105,15 +98,12 @@ export const getAllFormsInfoTest = (describeName: string , filterParameter: numb
         if(dataC.length !== 0) {
           expect(dataC.length).assertEqual(1);
         }
-
-        expect().not().assertFail();
         done();
         console.log(`==========${promiseName} ${describeName} end==========`);
       } catch (error) {
         console.log(`${promiseName} exception caught: ${JSON.stringify(error)})`);
         console.log(`${promiseName} should not reach here`);
         expect().assertFail();
-        done();
       }
     });
   });

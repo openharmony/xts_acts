@@ -22,6 +22,8 @@
     "MainAbility/pages/keyEvent/KeyEventGetTypeTest",
     "MainAbility/pages/keyEvent/KeyEventGetUnicodeTest",
     "MainAbility/pages/keyEvent/KeyEventSetConsumedTest",
-    "MainAbility/pages/keyEvent/KeyEventStopPropagationTest"
+    "MainAbility/pages/keyEvent/KeyEventStopPropagationTest",
+    "MainAbility/pages/styledString/styledString",
+    "MainAbility/pages/scrollSize/ScrollSizeTest"
   ]
 }

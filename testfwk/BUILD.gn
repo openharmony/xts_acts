@@ -17,8 +17,12 @@ group("testfwk") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "uitest:ActsUiTest",
       "uitestScene:ActsUiTestScene",
+      "uitest_api10:ActsUiTestApi10Test",
+      "uitest_api11:ActsUiTestApi11Test",
+      "uitest_api16:ActsUiTestApi16Test",
+      "uitest_api8:ActsUiTestApi8Test",
+      "uitest_api9:ActsUiTestApi9Test",
     ]
   }
 }

@@ -17,15 +17,21 @@ import commonEventManager from '@ohos.commonEventManager'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base'
 import Want from '@ohos.app.ability.Want';
+import deviceInfo from '@ohos.deviceInfo';
+import { Driver, ON } from '@ohos.UiTest'
 
+let driver = Driver.create();
 
-function sleep(time:number) {
+function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
     setTimeout(() => {
       resolve("ok");
     }, time)
   });
 }
+
+let deviceType = deviceInfo.deviceType;
+console.info("====>the value of the deviceinfo deviceType is: " + deviceType);
 
 export default function ActsOsAccountTest() {
   describe('ActsOsAccountTest', () => {
@@ -68,7 +74,7 @@ export default function ActsOsAccountTest() {
       let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
       console.info("====>get os AccountManager finish====");
       try {
-        let domainInfo : osAccount.DomainAccountInfo = await accountManager.getOsAccountDomainInfo(null);
+        let domainInfo: osAccount.DomainAccountInfo = await accountManager.getOsAccountDomainInfo(null);
         console.info("====>ActsOsAccountGetOsAccountDomainInfo_0100 domainInfo: " + domainInfo);
         expect().assertFail();
         done();
@@ -93,7 +99,7 @@ export default function ActsOsAccountTest() {
       let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
       console.info("====>get os AccountManager finish====");
       try {
-        let domainInfo : osAccount.DomainAccountInfo = await accountManager.getOsAccountDomainInfo(undefined);
+        let domainInfo: osAccount.DomainAccountInfo = await accountManager.getOsAccountDomainInfo(undefined);
         console.info("====>ActsOsAccountGetOsAccountDomainInfo_0200 domainInfo: " + domainInfo);
         expect().assertFail();
         done();
@@ -119,7 +125,7 @@ export default function ActsOsAccountTest() {
       let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
       console.info("====>get os AccountManager finish====");
       try {
-        let domainInfo : osAccount.DomainAccountInfo = await accountManager.getOsAccountDomainInfo(-1);
+        let domainInfo: osAccount.DomainAccountInfo = await accountManager.getOsAccountDomainInfo(-1);
         console.info("====>ActsOsAccountGetOsAccountDomainInfo_0300 domainInfo: " + domainInfo);
         expect().assertFail();
         done();
@@ -144,7 +150,7 @@ export default function ActsOsAccountTest() {
       let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
       console.info("====>get os AccountManager finish====");
       try {
-        let domainInfo : osAccount.DomainAccountInfo = await accountManager.getOsAccountDomainInfo(100000);
+        let domainInfo: osAccount.DomainAccountInfo = await accountManager.getOsAccountDomainInfo(100000);
         console.info("====>ActsOsAccountGetOsAccountDomainInfo_0400 domainInfo: " + domainInfo);
         expect().assertFail();
         done();
@@ -169,7 +175,7 @@ export default function ActsOsAccountTest() {
       let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
       console.info("====>get os AccountManager finish====");
       try {
-        let domainInfo : osAccount.DomainAccountInfo = await accountManager.getOsAccountDomainInfo(0);
+        let domainInfo: osAccount.DomainAccountInfo = await accountManager.getOsAccountDomainInfo(0);
         console.info("====>ActsOsAccountGetOsAccountDomainInfo_0500 domainInfo: " + domainInfo);
         expect(domainInfo == null).assertTrue();
         console.info("====>ActsOsAccountGetOsAccountDomainInfo_0500 end====");
@@ -194,7 +200,7 @@ export default function ActsOsAccountTest() {
       let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
       console.info("====>get os AccountManager finish====");
       try {
-        let domainInfo : osAccount.DomainAccountInfo = await accountManager.getOsAccountDomainInfo(100);
+        let domainInfo: osAccount.DomainAccountInfo = await accountManager.getOsAccountDomainInfo(100);
         console.info("====>ActsOsAccountGetOsAccountDomainInfo_0600 domainInfo: " + domainInfo);
         expect(domainInfo == null).assertTrue();
         console.info("====>ActsOsAccountGetOsAccountDomainInfo_0600 end====");
@@ -216,15 +222,16 @@ export default function ActsOsAccountTest() {
     */
     it('ActsOsAccountGetOsAccountDomainInfo_0700', 0, async (done: Function) => {
       console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 start====");
-      let commonEventSubscribeInfo : commonEventManager.CommonEventSubscribeInfo= {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ["os_account_permission1"]
       }
       console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 createSubscriber");
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        let subscriber : commonEventManager.CommonEventSubscriber = data;
+        let subscriber: commonEventManager.CommonEventSubscriber = data;
         console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 subscribe start");
         commonEventManager.subscribe(subscriber, (err, data) => {
-          console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 subscriberCallback data: " + JSON.stringify(data));
+          console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 subscriberCallback data: " +
+          JSON.stringify(data));
           try {
             expect(data.event).assertEqual("os_account_permission1");
             expect(Number(data.data)).assertEqual(201);
@@ -238,11 +245,31 @@ export default function ActsOsAccountTest() {
           });
         });
       })
-      let wantInfo:Want = {
+      let wantInfo: Want = {
         bundleName: "com.acts.osaccountassistappone",
         abilityName: "com.acts.osaccountassistappone.MainAbility"
       }
       await globalThis.abilityContext.startAbility(wantInfo)
+      if (deviceType === 'phone') {
+        await driver.delayMs(500);
+        let allowed = await driver.findComponent(ON.text("允许"));
+        let allowed1 = await driver.findComponent(ON.text("本次允许"));
+        if (allowed != undefined && allowed != null) {
+          try {
+            await allowed.click();
+            console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 click allowed");
+          } catch (err) {
+            console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 click allowed err:" + JSON.stringify(err));
+          }
+        } else if (allowed1 != undefined && allowed1 != null) {
+          try {
+            await allowed1.click();
+            console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 click allowed1");
+          } catch (err) {
+            console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 click allowed1 err:" + JSON.stringify(err));
+          }
+        }
+      }
     });
 
     /*
@@ -255,15 +282,16 @@ export default function ActsOsAccountTest() {
     */
     it('ActsOsAccountGetOsAccountDomainInfo_0800', 0, async (done: Function) => {
       console.info("====>ActsOsAccountGetOsAccountDomainInfo_0800 start====");
-      let commonEventSubscribeInfo : commonEventManager.CommonEventSubscribeInfo= {
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ["os_account_permission2"]
       }
       console.info("====>ActsOsAccountGetOsAccountDomainInfo_0800 createSubscriber");
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        let subscriber : commonEventManager.CommonEventSubscriber = data;
+        let subscriber: commonEventManager.CommonEventSubscriber = data;
         console.info("====>ActsOsAccountGetOsAccountDomainInfo_0800 subscribe start");
         commonEventManager.subscribe(subscriber, (err, data) => {
-          console.info("====>ActsOsAccountGetOsAccountDomainInfo_0800 subscriberCallback data: " + JSON.stringify(data));
+          console.info("====>ActsOsAccountGetOsAccountDomainInfo_0800 subscriberCallback data: " +
+          JSON.stringify(data));
           try {
             expect(data.event).assertEqual("os_account_permission2");
             expect(Number(data.data)).assertEqual(201);
@@ -277,11 +305,31 @@ export default function ActsOsAccountTest() {
           });
         });
       })
-      let wantInfo:Want = {
+      let wantInfo: Want = {
         bundleName: "com.acts.osaccountassistapptwo",
         abilityName: "com.acts.osaccountassistapptwo.MainAbility"
       }
       await globalThis.abilityContext.startAbility(wantInfo)
+      if (deviceType === 'phone') {
+        await driver.delayMs(500);
+        let allowed = await driver.findComponent(ON.text("允许"));
+        let allowed1 = await driver.findComponent(ON.text("本次允许"));
+        if (allowed != undefined && allowed != null) {
+          try {
+            await allowed.click();
+            console.info("====>ActsOsAccountGetOsAccountDomainInfo_0800 click allowed");
+          } catch (err) {
+            console.info("====>ActsOsAccountGetOsAccountDomainInfo_0800 click allowed err:" + JSON.stringify(err));
+          }
+        } else if (allowed1 != undefined && allowed1 != null) {
+          try {
+            await allowed1.click();
+            console.info("====>ActsOsAccountGetOsAccountDomainInfo_0800 click allowed1");
+          } catch (err) {
+            console.info("====>ActsOsAccountGetOsAccountDomainInfo_0800 click allowed1 err:" + JSON.stringify(err));
+          }
+        }
+      }
     });
   });
 }

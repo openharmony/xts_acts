@@ -45,7 +45,17 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingRecordCmdUtilsDestroyTest : public testing::Test {};
+class DrawingRecordCmdUtilsDestroyTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override
+    {
+        // 设置代码
+        std::cout << "DrawingRecordCmdUtilsDestroyTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingRecordCmdUtilsDestroyTest errorCodeReset before each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECORDER_0200
@@ -59,6 +69,8 @@ HWTEST_F(DrawingRecordCmdUtilsDestroyTest, testRecordCmdUtilsDestroyNormal, Test
     // 1. OH_Drawing_RecordCmdUtilsCreate
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     OH_Drawing_RecordCmdUtils* recordcmd1 = OH_Drawing_RecordCmdUtilsCreate ();
+    // add assert
+    EXPECT_NE(recordcmd1, nullptr);
     // 2. OH_Drawing_RecordCmdUtilsDestroy
     drawingErrorCode = OH_Drawing_RecordCmdUtilsDestroy (recordcmd1);
     EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);

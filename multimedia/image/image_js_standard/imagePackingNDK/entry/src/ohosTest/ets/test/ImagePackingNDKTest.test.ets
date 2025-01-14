@@ -24,6 +24,7 @@ import { common } from '@kit.AbilityKit';
 
 const CODE_SUCCESS = 0;
 const ERR_CODE = 62980115;
+const ERR_CODE1 = 401;
 let pictureFd: number ;
 
 function logger(caseName: string): ESObject{
@@ -253,7 +254,7 @@ async function packToFileErrTest(done: Function, testNum: string, source: image.
   }
 }
 
-async function checkPackingMultiFrames(done: Function, imageSourceApi: image.ImageSource, packConfig: ESObject) {
+async function checkPackForSequenceResult(done: Function, imageSourceApi: image.ImageSource, packConfig: ESObject) {
   if (imageSourceApi == undefined) {
     console.info(' create image source failed');
     expect(false).assertTrue();
@@ -265,11 +266,11 @@ async function checkPackingMultiFrames(done: Function, imageSourceApi: image.Ima
     let disposalTypes = await imageSourceApi.getDisposalTypeList();
     let loopcount = await imageSourceApi.getImageProperties([image.PropertyKey.GIF_LOOP_COUNT]);
     let imageInfo = imageSourceApi.getImageInfoSync();
-    console.info(`checkPackingMultiFrames delayTimes ${delayTimes}`);
-    console.info(`checkPackingMultiFrames disposalTypes ${disposalTypes}`);
-    console.info(`checkPackingMultiFrames loopcount = ${loopcount}`);
-    console.info(`checkPackingMultiFrames width = ${imageInfo.size.width}`);
-    console.info(`checkPackingMultiFrames height = ${imageInfo.size.height}`);
+    console.info(`checkPackForSequenceResult delayTimes ${delayTimes}`);
+    console.info(`checkPackForSequenceResult disposalTypes ${disposalTypes}`);
+    console.info(`checkPackForSequenceResult loopcount = ${loopcount}`);
+    console.info(`checkPackForSequenceResult width = ${imageInfo.size.width}`);
+    console.info(`checkPackForSequenceResult height = ${imageInfo.size.height}`);
     expect(imageInfo.size.width == 600).assertTrue();
     expect(imageInfo.size.height == 400).assertTrue();
     expect(imageInfo.mimeType == "image/gif").assertTrue();
@@ -310,7 +311,7 @@ async function checkPackingMultiFrames(done: Function, imageSourceApi: image.Ima
   }
 }
 
-async function testPackToFileMultiFrames(done: Function, testNum: string, packConfig: ESObject) {
+async function testPackToFileForSequenceNdk(done: Function, testNum: string, packConfig: ESObject) {
   let mlg: ESObject = logger(testNum);
   let path: string, fd: number;
   let variable = await getWriteFd(packConfig.packTarget);
@@ -320,11 +321,11 @@ async function testPackToFileMultiFrames(done: Function, testNum: string, packCo
   let ret = ndkTest.JsPackToFileMultiFrames(packConfig.option, fd, packConfig.frameCount, packConfig.loop);
   mlg.log("ret : " + ret);
   fs.closeSync(fd);
-  if (ret != undefined) {
+  if (ret.code == CODE_SUCCESS) {
     mlg.log('JsPackToFileMultiFrames success');
     await getreadFd(packConfig.packTarget);
     const imageSourceApi = image.createImageSource(pictureFd);
-    await checkPackingMultiFrames(done, imageSourceApi, packConfig);
+    await checkPackForSequenceResult(done, imageSourceApi, packConfig);
   } else {
     mlg.log('JsPackToFileMultiFrames failed');
     expect(false).assertTrue();
@@ -332,16 +333,85 @@ async function testPackToFileMultiFrames(done: Function, testNum: string, packCo
   }
 }
 
-async function testPackToDataMultiFrames(done: Function, testNum: string, packConfig: ESObject) {
+async function testPackToFileForSequenceNdkError(done: Function, testNum: string, packConfig: ESObject) {
   let mlg: ESObject = logger(testNum);
-  let outdataArray = ndkTest.JsPackToDataMultiFrames(packConfig.loop, packConfig.option, packConfig.frameCount);
-  if (outdataArray != undefined) {
+  let path: string, fd: number;
+  let variable = await getWriteFd(packConfig.packTarget);
+  path = variable[0] as string;
+  fd = variable[1] as number;
+  mlg.log(`path: ${path}, fd: ${fd}`);
+  try {
+    let ret = ndkTest.JsPackToFileMultiFrames(packConfig.option, fd, packConfig.frameCount, packConfig.loop);
+    mlg.log(`ret.code : ${JSON.stringify(ret.code)}`)
+    expect(ret.code == ERR_CODE1).assertTrue();
+    done();
+  } catch (error) {
+    console.error("Test exception " + error);
+    expect().assertFail();
+    done();
+  }
+}
+
+async function testPackToFileForSequenceNdkBadParameter(done: Function, testNum: string, packConfig: ESObject) {
+  let mlg: ESObject = logger(testNum);
+  let path: string, fd: number;
+  let variable = await getWriteFd(packConfig.packTarget);
+  path = variable[0] as string;
+  fd = variable[1] as number;
+  mlg.log(`path: ${path}, fd: ${fd}`);
+  try {
+    let ret = ndkTest.JsPackToFileMultiFramesError(packConfig.option, fd, packConfig.frameCount, packConfig.loop,
+      packConfig.mode);
+    mlg.log(`ret.code : ${JSON.stringify(ret.code)}`)
+    expect(ret.code == ERR_CODE1).assertTrue();
+    done();
+  } catch (error) {
+    console.error("Test exception " + error);
+    expect().assertFail();
+    done();
+  }
+}
+
+async function testPackToDataForSequenceNdk(done: Function, testNum: string, packConfig: ESObject) {
+  let mlg: ESObject = logger(testNum);
+  let ret = ndkTest.JsPackToDataMultiFrames(packConfig.loop, packConfig.option, packConfig.frameCount);
+  if (ret.code == CODE_SUCCESS && ret.result != undefined) {
     mlg.log('JsPackToDataMultiFrames success');
-    const imageSourceApi = image.createImageSource(outdataArray);
-    await checkPackingMultiFrames(done, imageSourceApi, packConfig);
+    const imageSourceApi = image.createImageSource(ret.result);
+    await checkPackForSequenceResult(done, imageSourceApi, packConfig);
   } else {
     mlg.log('JsPackToDataMultiFrames failed');
     expect(false).assertTrue();
+    done();
+  }
+}
+
+async function testPackToDataForSequenceNdkError(done: Function, testNum: string, packConfig: ESObject) {
+  let mlg: ESObject = logger(testNum);
+  try {
+    let ret = ndkTest.JsPackToDataMultiFrames(
+      packConfig.loop, packConfig.option, packConfig.frameCount);
+    mlg.log(`ret.code : ${JSON.stringify(ret.code)}`)
+    expect(ret.code == ERR_CODE1).assertTrue();
+    done();
+  } catch (error) {
+    console.error("Test exception " + error);
+    expect().assertFail();
+    done();
+  }
+}
+
+async function testPackToDataForSequenceNdkBadParameter(done: Function, testNum: string, packConfig: ESObject) {
+  let mlg: ESObject = logger(testNum);
+  try {
+    let ret = ndkTest.JsPackToDataMultiFramesError(
+        packConfig.loop, packConfig.option, packConfig.frameCount, packConfig.mode);
+    mlg.log(`ret.code : ${JSON.stringify(ret.code)}`)
+    expect(ret.code == ERR_CODE1).assertTrue();
+    done();
+  } catch (error) {
+    console.error("Test exception " + error);
+    expect().assertFail();
     done();
   }
 }
@@ -375,8 +445,8 @@ async function checkPackGifResult(res: ndkTest.imagePacker, packedFile: string |
   }
 }
 
-async function packGifToFile(done: Function, testNum: string, source: image.ImageSource, path: string, fd: number,
-  packOpts: image.PackingOption | PackingOption_format | PackingOption_quality, packConfig: ESObject) {
+async function packGifToFile(done: Function, testNum: string, source: image.ImageSource | image.PixelMap, path: string, 
+  fd: number, packOpts: image.PackingOption | PackingOption_format | PackingOption_quality, packConfig: ESObject) {
   try {
     let log: ESObject = logger(testNum);
     let packer = ndkTest.create();
@@ -399,7 +469,28 @@ async function packGifToFile(done: Function, testNum: string, source: image.Imag
   }
 }
 
-async function packGifToData(done: Function, testNum: string, source: image.ImageSource,
+async function packGifToFileError(done: Function, testNum: string, source: image.ImageSource | image.PixelMap, 
+  path: string, fd: number, packOpts: image.PackingOption | PackingOption_format | PackingOption_quality) {
+  try {
+    let log: ESObject = logger(testNum);
+    let packer = ndkTest.create()
+    if (packer == undefined || packer.code != CODE_SUCCESS || packer.result == undefined) {
+        log.log("packer create failed");
+        expect().assertFail();
+        done();
+    }
+    let packingRes = ndkTest.packToFile(packer.result, source, fd, packOpts);
+    log.log("packer packingRes.result " + JSON.stringify(packingRes));
+    expect(packingRes.code == ERR_CODE).assertTrue();
+    done();
+  } catch (error) {
+    console.error("Test exception " + error);
+    expect().assertFail();
+    done();
+  }
+}
+
+async function packGifToData(done: Function, testNum: string, source: image.ImageSource | image.PixelMap,
   packOpts: image.PackingOption | PackingOption_format | PackingOption_quality, packConfig: ESObject) {
   try {
     let log: ESObject = logger(testNum);
@@ -410,9 +501,31 @@ async function packGifToData(done: Function, testNum: string, source: image.Imag
       done();
       return;
     }
+     let packingRes = ndkTest.packToData(packer.result, source, packOpts);
+     expect(packingRes.result != undefined).assertTrue();
+     await checkPackGifResult(packingRes, packingRes.result, packConfig);
+     done();
+  } catch (error) {
+    console.error("Test exception " + error);
+    expect().assertFail();
+    done();
+  }
+}
+
+async function packGifToDataError(done: Function, testNum: string, source: image.ImageSource | image.PixelMap,
+  packOpts: image.PackingOption | PackingOption_format | PackingOption_quality) {
+  try {
+    let log: ESObject = logger(testNum);
+    let packer = ndkTest.create()
+    if (packer == undefined || packer.code != CODE_SUCCESS || packer.result == undefined) {
+      log.log("packer create failed");
+      expect().assertFail();
+      done();
+      return
+    }
     let packingRes = ndkTest.packToData(packer.result, source, packOpts);
-    expect(packingRes.result != undefined).assertTrue();
-    await checkPackGifResult(packingRes, packingRes.result, packConfig);
+    log.log("packer packingRes.result " + JSON.stringify(packingRes));
+    expect(packingRes.code == ERR_CODE).assertTrue();
     done();
   } catch (error) {
     console.error("Test exception " + error);
@@ -425,10 +538,10 @@ async function testPackGifToFile(done: Function, testNum: string, packConfig: ES
    let imageSource: image.ImageSource = await createTestImageSource(packConfig.sourceFileName);
    expect(imageSource != undefined).assertTrue();
    console.info(testNum + " create imageSource " + (imageSource != undefined));
-   let source = imageSource;
+   let source: image.ImageSource | image.PixelMap = imageSource;
    if (packConfig.packSource == "PixelMap") {
      try {
-       let source: image.PixelMap= await imageSource.createPixelMap();
+       source = await imageSource.createPixelMap();
        expect(source != undefined).assertTrue();
        console.info(testNum + " create pixel map " + (source != undefined));
      } catch (error) {
@@ -448,6 +561,34 @@ async function testPackGifToFile(done: Function, testNum: string, packConfig: ES
      expect(fd != undefined).assertTrue();
      await packGifToFile(done, testNum, source, path, fd, packOpts, packConfig);
    }
+}
+
+async function testPackGifToFileError(done: Function, testNum: string, 
+  packOpts: image.PackingOption | PackingOption_format, packConfig: ESObject) {
+  let imageSource: image.ImageSource = await createTestImageSource(packConfig.sourceFileName);
+  expect(imageSource != undefined).assertTrue();
+  console.info(testNum + " create imageSource " + (imageSource != undefined))
+  let source: image.ImageSource | image.PixelMap = imageSource;
+  if (packConfig.packSource == "PixelMap") {
+      try {
+        source = await imageSource.createPixelMap();
+        expect(source != undefined).assertTrue();
+        console.info(testNum + " create pixel map " + (source != undefined))
+      } catch (error) {
+          console.info(testNum + " createPixelMap error " + error)
+      }
+  }
+  
+  if (packConfig.packTarget == "Data") {
+      await packGifToDataError(done, testNum, source, packOpts);
+  } else {
+    let path: string, fd: number;
+    let variable = await getWriteFd(packConfig.packTarget);
+    path = variable[0] as string;
+    fd = variable[1] as number;
+    expect(fd != undefined).assertTrue();
+      await packGifToFileError(done, testNum, source, path, fd, packOpts);
+  }
 }
 
 interface packConfig_size {
@@ -1003,22 +1144,21 @@ export default function ImagePackingNDKTest() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0100', 0, async (done: Function) => {
       if (!isSupportGifEncode) {
-        console.info("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0100: This device does not support GIF encoding.");
+        console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
         done();
       } else {
         let packConfig: ESObject = {
           packTarget: "picking_multiFrame_pixel_map.gif",
-          loop: 0,
+          loop: 5,
           frameCount: 3,
-          option: ({
-            delayTimes: [10, 10, 10], disposalTypes: [3, 3, 3]
-          } as packConfig_options)
+          option: ({ delayTimes: [10, 10, 10], disposalTypes: [3, 3, 3] } as packConfig_options)
         }
-        await testPackToFileMultiFrames(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0100",
+        await testPackToFileForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0100", 
           packConfig);
       }
     });
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0200
      * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface uses PixelMap
@@ -1030,7 +1170,7 @@ export default function ImagePackingNDKTest() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0200', 0, async (done: Function) => {
       if (!isSupportGifEncode) {
-        console.info("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0200: This device does not support GIF encoding.");
+        console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
         done();
       } else {
@@ -1038,14 +1178,13 @@ export default function ImagePackingNDKTest() {
           packTarget: "picking_oneFrame_pixel_map.gif",
           loop: 5,
           frameCount: 1,
-          option: ({
-            delayTimes: [10], disposalTypes: [3]
-          } as packConfig_options)
+          option: ({ delayTimes: [10], disposalTypes: [3] } as packConfig_options)
         }
-        await testPackToFileMultiFrames(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0200",
+        await testPackToFileForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0200", 
           packConfig);
       }
     });
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0300
      * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface configuration delaytimes
@@ -1057,21 +1196,20 @@ export default function ImagePackingNDKTest() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0300', 0, async (done: Function) => {
       if (!isSupportGifEncode) {
-        console.info("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0300: This device does not support GIF encoding.");
+        console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
         done();
       } else {
         let packConfig: ESObject = {
           packTarget: "picking_multiFrame_pixel_map_no_loop.gif",
           frameCount: 3,
-          option: ({
-            delayTimes: [10, 10, 10], disposalTypes: [3, 3, 3]
-          } as packConfig_options)
-        };
-        await testPackToFileMultiFrames(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0300",
+          option: ({ delayTimes: [10, 10, 10], disposalTypes: [3, 3, 3] } as packConfig_options)
+        }
+        await testPackToFileForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0300", 
           packConfig);
       }
     });
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0400
      * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface configuration loop
@@ -1083,7 +1221,7 @@ export default function ImagePackingNDKTest() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0400', 0, async (done: Function) => {
       if (!isSupportGifEncode) {
-        console.info("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0400: This device does not support GIF encoding.");
+        console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
         done();
       } else {
@@ -1091,14 +1229,407 @@ export default function ImagePackingNDKTest() {
           packTarget: "picking_oneFrame_pixel_map_no_disposalTypes.gif",
           loop: 5,
           frameCount: 1,
-          option: ({
-            delayTimes: [10, 10, 10]
-          } as delayTimes_alone)
-        };
-        await testPackToFileMultiFrames(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0400",
+          option: ({ delayTimes: [10, 10, 10] } as delayTimes_alone)
+        }
+        await testPackToFileForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0400", 
           packConfig);
       }
     });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0500
+     * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface no disposalTypes and no loopCount
+     * @tc.desc      : 1.getWriteFd
+     *                 2.JsPackToFileMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0500', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "picking_oneFrame_pixel_map_no_disposalTypes_no_loopCount.gif",
+          frameCount: 1,
+          option: ({ delayTimes: [10, 10, 10] } as delayTimes_alone)
+        }
+        await testPackToFileForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0500", 
+          packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0600
+     * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface frameCount less than PixelMapList
+     * @tc.desc      : 1.getWriteFd
+     *                 2.JsPackToFileMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0600', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "picking_multiFrame_pixel_map_0600.gif",
+          loop: 5,
+          frameCount: 1,
+          option: ({ delayTimes: [10, 10, 10], disposalTypes: [3, 3, 3] } as packConfig_options)
+        }
+        await testPackToFileForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0600", 
+          packConfig); 
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0700
+     * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface frameCount more than PixelMapList
+     * @tc.desc      : 1.getWriteFd
+     *                 2.JsPackToFileMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0700', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "picking_multiFrame_pixel_map_0700.gif",
+          loop: 5,
+          frameCount: 5,
+          option: ({ delayTimes: [10, 10, 10], disposalTypes: [3, 3, 3] } as packConfig_options)
+        }
+        await testPackToFileForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0700", 
+          packConfig); 
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0800
+     * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface delayTimeList less than PixelMapList
+     * @tc.desc      : 1.getWriteFd
+     *                 2.JsPackToFileMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0800', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "picking_multiFrame_pixel_map_0800.gif",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [10], disposalTypes: [3, 3, 3] } as packConfig_options)
+        }
+        await testPackToFileForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0800", 
+          packConfig); 
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0900
+     * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface delayTimeList more than PixelMapList
+     * @tc.desc      : 1.getWriteFd
+     *                 2.JsPackToFileMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0900', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "picking_multiFrame_pixel_map_0900.gif",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [10, 10, 10, 20, 30], disposalTypes: [3, 3, 3] } as packConfig_options)
+        }
+        await testPackToFileForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0900", 
+          packConfig); 
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1000
+     * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface disposalTypes less than PixelMapList
+     * @tc.desc      : 1.getWriteFd
+     *                 2.JsPackToFileMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1000', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "picking_multiFrame_pixel_map_1000.gif",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [10, 10, 10], disposalTypes: [3] } as packConfig_options)
+        }
+        await testPackToFileForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1000", 
+          packConfig); 
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1100
+     * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface disposalTypes more than PixelMapList
+     * @tc.desc      : 1.getWriteFd
+     *                 2.JsPackToFileMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1100', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "picking_multiFrame_pixel_map_1100.gif",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [10, 10, 10], disposalTypes: [3, 2, 1, 0] } as packConfig_options)
+        }
+        await testPackToFileForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1100", 
+          packConfig); 
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1200
+     * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface passed wrong frameCount
+     * @tc.desc      : 1.getWriteFd
+     *                 2.JsPackToFileMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1200', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "picking_multiFrame_pixel_map_1200.gif",
+          loop: 5,
+          frameCount: 0,
+          option: ({ delayTimes: [10, 10, 10], disposalTypes: [3, 2, 1] } as packConfig_options)
+        }
+        await testPackToFileForSequenceNdkError(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1200", packConfig); 
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1300
+     * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface passed wrong delayTimeList
+     * @tc.desc      : 1.getWriteFd
+     *                 2.JsPackToFileMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1300', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "picking_multiFrame_pixel_map_1300.gif",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [0], disposalTypes: [3, 2, 1] } as packConfig_options)
+        }
+        await testPackToFileForSequenceNdkError(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1300", packConfig); 
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1400
+     * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface passed wrong disposalTypes
+     * @tc.desc      : 1.getWriteFd
+     *                 2.JsPackToFileMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1400', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "picking_multiFrame_pixel_map_1400.gif",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [10, 10, 10], disposalTypes: [3, 4, 5] } as packConfig_options)
+        }
+        await testPackToFileForSequenceNdkError(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1400", packConfig); 
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1500
+     * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface passed wrong loopCount
+     * @tc.desc      : 1.getWriteFd
+     *                 2.JsPackToFileMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1500', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "picking_multiFrame_pixel_map_1500.gif",
+          loop: -1,
+          frameCount: 3,
+          option: ({ delayTimes: [10, 10, 10], disposalTypes: [3, 1, 0] } as packConfig_options)
+        }
+        await testPackToFileForSequenceNdkError(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1500", packConfig); 
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1600
+     * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface passed wrong loopCount
+     * @tc.desc      : 1.getWriteFd
+     *                 2.JsPackToFileMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1600', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "picking_multiFrame_pixel_map_1600.gif",
+          loop: 65536,
+          frameCount: 3,
+          option: ({ delayTimes: [10, 10, 10], disposalTypes: [3, 1, 0] } as packConfig_options)
+        }
+        await testPackToFileForSequenceNdkError(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1600", packConfig); 
+      }
+    });
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILE_BAD_PARAMETER_IMAGEPACKER_0100
+     * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface wrong parameter imagepacker
+     * @tc.desc      : 1.getWriteFd
+     *                 2.JsPackToFileMultiFramesError
+     *                 mode = BAD_PARAMETER_IMAGEPACKER
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILE_BAD_PARAMETER_IMAGEPACKER_0100', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "picking_multiFrame_pixel_map_err_0100.gif",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [10, 10, 10], disposalTypes: [3, 1, 0] } as packConfig_options),
+          mode: 0
+        }
+        await testPackToFileForSequenceNdkBadParameter(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILE_BAD_PARAMETER_IMAGEPACKER_0100", packConfig); 
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILE_BAD_PARAMETER_PACKINGOPTIONS_0200
+     * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface wrong parameter packingoptions
+     * @tc.desc      : 1.getWriteFd
+     *                 2.JsPackToFileMultiFramesError
+     *                 mode = BAD_PARAMETER_PACKINGOPTIONS
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILE_BAD_PARAMETER_PACKINGOPTIONS_0200', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "picking_multiFrame_pixel_map_err_0200.gif",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [10, 10, 10], disposalTypes: [3, 1, 0] } as packConfig_options),
+          mode: 1
+        }
+        await testPackToFileForSequenceNdkBadParameter(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILE_BAD_PARAMETER_PACKINGOPTIONS_0200", packConfig); 
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILE_BAD_PARAMETER_PIXELMAPS_0300
+     * @tc.name      : test the oH_ImagePacker_PackToFileMultiFrames interface wrong parameter pixelmaps
+     * @tc.desc      : 1.getWriteFd
+     *                 2.JsPackToFileMultiFramesError
+     *                 mode = BAD_PARAMETER_PIXELMAPS
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILE_BAD_PARAMETER_PIXELMAPS_0300', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "picking_multiFrame_pixel_map_err_0300.gif",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [10, 10, 10], disposalTypes: [3, 1, 0] } as packConfig_options),
+          mode: 2
+        }
+        await testPackToFileForSequenceNdkBadParameter(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILE_BAD_PARAMETER_PIXELMAPS_0300", packConfig); 
+      }
+    });
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0100
      * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface uses many PixelMaps
@@ -1109,22 +1640,21 @@ export default function ImagePackingNDKTest() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0100', 0, async (done: Function) => {
       if (!isSupportGifEncode) {
-        console.info("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0100: This device does not support GIF encoding.");
+        console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
         done();
       } else {
-        let packConfig: ESObject= {
-          packTarget: "picking_multiFrame_pixel_map.gif",
+        let packConfig: ESObject = {
+          packTarget: "data",
           loop: 5,
           frameCount: 3,
-          option: ({
-            delayTimes: [20, 20, 20], disposalTypes: [3, 3, 3]
-          } as packConfig_options)
+          option: ({ delayTimes: [20, 20, 20], disposalTypes: [3, 3, 3] } as packConfig_options)
         }
-        await testPackToDataMultiFrames(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0100",
+        await testPackToDataForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0100", 
           packConfig);
       }
     });
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0200
      * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface uses PixelMap
@@ -1135,7 +1665,7 @@ export default function ImagePackingNDKTest() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0200', 0, async (done: Function) => {
       if (!isSupportGifEncode) {
-        console.info("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0200: This device does not support GIF encoding.");
+        console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
         done();
       } else {
@@ -1143,14 +1673,13 @@ export default function ImagePackingNDKTest() {
           packTarget: "data",
           loop: 0,
           frameCount: 1,
-          option: ({
-            delayTimes: [10], disposalTypes: [3]
-          } as packConfig_options)
-        };
-        await testPackToDataMultiFrames(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0200",
+          option: ({ delayTimes: [10], disposalTypes: [3] } as packConfig_options)
+        }
+        await testPackToDataForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0200", 
           packConfig);
       }
     });
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0300
      * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface configuration delaytimes
@@ -1161,21 +1690,20 @@ export default function ImagePackingNDKTest() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0300', 0, async (done: Function) => {
       if (!isSupportGifEncode) {
-        console.info("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0300: This device does not support GIF encoding.");
+        console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
         done();
       } else {
         let packConfig: ESObject = {
           packTarget: "data",
           frameCount: 3,
-          option: ({
-            delayTimes: [30, 30, 30], disposalTypes: [3, 3, 3]
-          } as packConfig_options)
-        };
-        await testPackToDataMultiFrames(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0300",
+          option: ({ delayTimes: [30, 30, 30], disposalTypes: [3, 3, 3] } as packConfig_options)
+        }
+        await testPackToDataForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0300", 
           packConfig);
       }
     });
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0400
      * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface configuration loop
@@ -1186,7 +1714,7 @@ export default function ImagePackingNDKTest() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0400', 0, async (done: Function) => {
       if (!isSupportGifEncode) {
-        console.info("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0400: This device does not support GIF encoding.");
+        console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
         done();
       } else {
@@ -1194,14 +1722,420 @@ export default function ImagePackingNDKTest() {
           packTarget: "data",
           loop: 0,
           frameCount: 1,
-          option: ({
-            delayTimes: [30, 30, 30]
-          } as delayTimes_alone)
-        };
-        await testPackToDataMultiFrames(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0400",
+          option: ({ delayTimes: [30, 30, 30] } as delayTimes_alone)
+        }
+        await testPackToDataForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0400", 
           packConfig);
       }
     });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0500
+     * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface no disposalTypes and noloop
+     * @tc.desc      : 1.JsPackToDataMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0500', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "data",
+          frameCount: 3,
+          option: ({ delayTimes: [30, 30, 30] } as delayTimes_alone)
+        }
+        await testPackToDataForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0500", 
+          packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0600
+     * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface frameCount less than PixelMapList
+     * @tc.desc      : 1.JsPackToDataMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0600', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "data",
+          loop: 5,
+          frameCount: 1,
+          option: ({ delayTimes: [20, 20, 20], disposalTypes: [3, 3, 3] } as packConfig_options)
+        }
+        await testPackToDataForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0600", 
+          packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0700
+     * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface frameCount more than PixelMapList
+     * @tc.desc      : 1.JsPackToDataMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0700', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "data",
+          loop: 5,
+          frameCount: 5,
+          option: ({ delayTimes: [20, 20, 20], disposalTypes: [3, 3, 3] } as packConfig_options)
+        }
+        await testPackToDataForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0700", 
+          packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0800
+     * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface delayTimeList less than PixelMapList
+     * @tc.desc      : 1.JsPackToDataMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0800', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "data",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [20], disposalTypes: [3, 3, 3] } as packConfig_options)
+        }
+        await testPackToDataForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0800", 
+          packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0900
+     * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface delayTimeList more than PixelMapList
+     * @tc.desc      : 1.JsPackToDataMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0900', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "data",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [10, 10, 10, 20, 30], disposalTypes: [3, 3, 3] } as packConfig_options)
+        }
+        await testPackToDataForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0900", 
+          packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_1000
+     * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface disposalTypes less than PixelMapList
+     * @tc.desc      : 1.JsPackToDataMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_1000', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "data",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [20, 20, 20], disposalTypes: [3] } as packConfig_options)
+        }
+        await testPackToDataForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_1000", 
+          packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_1100
+     * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface disposalTypes more than PixelMapList
+     * @tc.desc      : 1.JsPackToDataMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_1100', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "data",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [20, 20, 20], disposalTypes: [3, 2, 1, 0] } as packConfig_options)
+        }
+        await testPackToDataForSequenceNdk(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_1100", 
+          packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1200
+     * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface passed wrong frameCount
+     * @tc.desc      : 1.JsPackToDataMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1200', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+            packTarget: "data",
+            loop: 5,
+            frameCount: 0,
+            option: ({ delayTimes: [20, 20, 20], disposalTypes: [3, 3, 3] } as packConfig_options)
+        }
+        await testPackToDataForSequenceNdkError(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1200", packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1300
+     * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface passed wrong delayTimeList
+     * @tc.desc      : 1.JsPackToDataMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1300', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "data",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [0], disposalTypes: [3, 3, 3] } as packConfig_options)
+        }
+        await testPackToDataForSequenceNdkError(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1300", packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1400
+     * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface passed wrong disposalTypes
+     * @tc.desc      : 1.JsPackToDataMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1400', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "data",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [20, 20, 20], disposalTypes: [3, 4, 5] } as packConfig_options)
+        }
+        await testPackToDataForSequenceNdkError(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1400", packConfig);
+      }
+    });
+
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1500
+    * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface passed wrong loopCount
+    * @tc.desc      : 1.JsPackToDataMultiFrames
+    * @tc.size      : MEDIUM
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1500', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "data",
+          loop: -1,
+          frameCount: 3,
+          option: ({ delayTimes: [20, 20, 20], disposalTypes: [3, 3, 3] } as packConfig_options)
+        }
+        await testPackToDataForSequenceNdkError(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1500", packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1600
+     * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface passed wrong loopCount
+     * @tc.desc      : 1.JsPackToDataMultiFrames
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1600', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "data",
+          loop: 65536,
+          frameCount: 3,
+          option: ({ delayTimes: [20, 20, 20], disposalTypes: [3, 3, 3] } as packConfig_options)
+        }
+        await testPackToDataForSequenceNdkError(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1600", packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_IMAGEPACKER_0100
+     * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface wrong parameter imagepacker
+     * @tc.desc      : 1.testPackToDataForSequenceNdkError
+     *                 mode = BAD_PARAMETER_IMAGEPACKER
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_IMAGEPACKER_0100', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "data",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [20, 20, 20], disposalTypes: [3, 3, 3] } as packConfig_options),
+          mode: 0
+        }
+        await testPackToDataForSequenceNdkBadParameter(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_IMAGEPACKER_0100", packConfig);
+      }
+    });
+
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_PACKINGOPTIONS_0200
+    * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface wrong parameter packingoptions
+    * @tc.desc      : 1.testPackToDataForSequenceNdkBadParameter
+    *                 mode = BAD_PARAMETER_PACKINGOPTIONS
+    * @tc.size      : MEDIUM
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_PACKINGOPTIONS_0200', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "data",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [20, 20, 20], disposalTypes: [3, 3, 3] } as packConfig_options),
+          mode: 1
+        }
+        await testPackToDataForSequenceNdkBadParameter(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_PACKINGOPTIONS_0200", packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_PIXELMAPS_0300
+     * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface wrong parameter pixelmaps
+     * @tc.desc      : 1.testPackToDataForSequenceNdkBadParameter
+     *                 mode = BAD_PARAMETER_PIXELMAPS
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_PIXELMAPS_0300', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "data",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [20, 20, 20], disposalTypes: [3, 3, 3] } as packConfig_options),
+          mode: 2
+        }
+        await testPackToDataForSequenceNdkBadParameter(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_PIXELMAPS_0300", packConfig);
+      }
+    });
+
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_OUTDATA_0400
+    * @tc.name      : test the oH_ImagePacker_PackToDataMultiFrames interface uses many outData
+    * @tc.desc      : 1.testPackToDataForSequenceNdkBadParameter
+    *                 mode = BAD_PARAMETER_OUTDATA
+    * @tc.size      : MEDIUM
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_OUTDATA_0400', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packConfig: ESObject = {
+          packTarget: "data",
+          loop: 5,
+          frameCount: 3,
+          option: ({ delayTimes: [20, 20, 20], disposalTypes: [3, 3, 3] } as packConfig_options),
+          mode: 3
+        }
+        await testPackToDataForSequenceNdkBadParameter(done, 
+          "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_OUTDATA_0400", packConfig);
+      }
+    });
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_0100
      * @tc.name      : test pack gif imageSource to file
@@ -1213,7 +2147,7 @@ export default function ImagePackingNDKTest() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_0100', 0, async (done: Function) => {
       if (!isSupportGifEncode) {
-        console.info("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_0100: This device does not support GIF encoding.");
+        console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
         done();
       } else {
@@ -1221,14 +2155,12 @@ export default function ImagePackingNDKTest() {
           sourceFileName: "moving_test.gif",
           packTarget: "test_write_gif_image_source.gif",
           packSource: "ImageSource",
-          size: ({
-            width: 198,
-            height: 202
-          } as packConfig_size)
-        };
+          size: ({ width: 198, height: 202 } as packConfig_size)
+        }
         await testPackGifToFile(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_0100", packConfig);
       }
     });
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_0200
      * @tc.name      : test pack gif pixel map to file
@@ -1240,7 +2172,7 @@ export default function ImagePackingNDKTest() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_0200', 0, async (done: Function) => {
       if (!isSupportGifEncode) {
-        console.info("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_0200: This device does not support GIF encoding.");
+        console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
         done();
       } else {
@@ -1248,14 +2180,12 @@ export default function ImagePackingNDKTest() {
           sourceFileName: "moving_test.gif",
           packTarget: "test_write_gif_pixel_map.gif",
           packSource: "PixelMap",
-          size: ({
-            width: 198,
-            height: 202
-          } as packConfig_size)
-        };
+          size: ({ width: 198, height: 202 } as packConfig_size)
+        }
         await testPackGifToFile(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_0200", packConfig);
       }
     });
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_0100
      * @tc.name      : test pack gif imageSource to buffer
@@ -1267,7 +2197,7 @@ export default function ImagePackingNDKTest() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_0100', 0, async (done: Function) => {
       if (!isSupportGifEncode) {
-        console.info("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_0100: This device does not support GIF encoding.");
+        console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
         done();
       } else {
@@ -1275,14 +2205,12 @@ export default function ImagePackingNDKTest() {
           sourceFileName: "moving_test.gif",
           packTarget: "Data",
           packSource: "ImageSource",
-          size: ({
-            width: 198,
-            height: 202
-          } as packConfig_size)
-        };
+          size: ({ width: 198, height: 202 } as packConfig_size)
+        }
         await testPackGifToFile(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_0100", packConfig);
       }
     });
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_0200
      * @tc.name      : test pack gif pixel map to buffer
@@ -1294,7 +2222,7 @@ export default function ImagePackingNDKTest() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_0200', 0, async (done: Function) => {
       if (!isSupportGifEncode) {
-        console.info("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_0200: This device does not support GIF encoding.");
+        console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
         done();
       } else {
@@ -1302,12 +2230,119 @@ export default function ImagePackingNDKTest() {
           sourceFileName: "moving_test.gif",
           packTarget: "Data",
           packSource: "PixelMap",
-          size: ({
-            width: 198,
-            height: 202
-          } as packConfig_size)
-        };
+          size: ({ width: 198, height: 202 } as packConfig_size)
+        }
         await testPackGifToFile(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_0200", packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_ERROR_0100
+     * @tc.name      : sub_multimedia_image_packerndk_pack_gif_to_file_err_001
+     * @tc.desc      : 1.packingtestndk create
+     *               : 2.create image source-png
+     *               : 3.packing image source to array buffer-format: "moving_test.gif"
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_ERROR_0100', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packOpts: image.PackingOption = { format: "image/gif", quality: 123 };
+        let packConfig: ESObject = {
+          sourceFileName: "moving_test.gif",
+          packTarget: "test_write_gif_image_source.gif",
+          packSource: "ImageSource",
+          size: ({ width: 198, height: 202 } as packConfig_size)
+        }
+        await testPackGifToFileError(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_0100", packOpts,
+          packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_ERROR_0200
+     * @tc.name      : sub_multimedia_image_packerndk_pack_gif_to_file_err_002
+     * @tc.desc      : 1.packingtestndk create
+     *               : 2.create image source-png
+     *               : 3.packing image source to array buffer-format: "moving_test.gif"
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_ERROR_0200', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packOpts: PackingOption_format = { format: "image/gif" };
+        let packConfig: ESObject = {
+          sourceFileName: "moving_test.gif",
+          packTarget: "test_write_gif_pixel_map.gif",
+          packSource: "PixelMap",
+          size: ({ width: 198, height: 202 } as packConfig_size)
+        }
+        await testPackGifToFileError(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_0100", packOpts,
+          packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_ERROR_0100
+     * @tc.name      : sub_multimedia_image_packerndk_pack_gif_to_data_err_001
+     * @tc.desc      : 1.packingtestndk create
+     *                 2.packing imageSource into a buffer
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_ERROR_0100', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packOpts: image.PackingOption = { format: "image/gif", quality: 123 };
+        let packConfig: ESObject = {
+          sourceFileName: "moving_test.gif",
+          packTarget: "Data",
+          packSource: "ImageSource",
+          size: ({ width: 198, height: 202 } as packConfig_size)
+        }
+        await testPackGifToFileError(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_ERROR_0100", 
+          packOpts, packConfig);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_ERROR_0200
+     * @tc.name      : sub_multimedia_image_packerndk_pack_gif_to_data_err_002
+     * @tc.desc      : 1.packingtestndk create
+     *                 2.packing pixel map into a buffer
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_ERROR_0200', 0, async (done: Function) => {
+      if (!isSupportGifEncode) {
+        console.info("This device does not support GIF encoding.")
+        expect(true).assertTrue();
+        done();
+      } else {
+        let packOpts: PackingOption_format = { format: "image/gif" };
+        let packConfig: ESObject = {
+          sourceFileName: "moving_test.gif",
+          packTarget: "Data",
+          packSource: "PixelMap",
+          size: ({ width: 198, height: 202 } as packConfig_size)
+        }
+        await testPackGifToFileError(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_ERROR_0200", 
+          packOpts, packConfig);
       }
     });
   })

@@ -21,10 +21,10 @@ import nativeRender from 'libnativerender.so'
 async function flingComponentV(key: string, isForward: boolean, speed: number = 10, distance: number = 20) {
   let driver = Driver.create();
   let rect = Utils.getComponentRect(key);
-  let centerX = Utils.getRectHorizontalCenterX(rect)
-  let centerY = Utils.getRectVerticalCenterY(rect)
-  let Y1 = centerY - distance;
-  let Y2 = centerY + distance;
+  let centerX = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect))
+  let centerY = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect))
+  let Y1 = Math.round(centerY - vp2px(distance))
+  let Y2 = Math.round(centerY + vp2px(distance))
   let stepLen = 20;
   if (isForward) {
     await driver.fling({
@@ -44,10 +44,10 @@ async function flingComponentV(key: string, isForward: boolean, speed: number = 
 async function flingComponentH(key: string, isLeft: boolean, speed: number = 10, distance: number = 20) {
   let driver = Driver.create();
   let rect = Utils.getComponentRect(key);
-  let centerX = Utils.getRectHorizontalCenterX(rect)
-  let centerY = Utils.getRectVerticalCenterY(rect)
-  let X1 = centerX - distance;
-  let X2 = centerX + distance;
+  let centerX = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect))
+  let centerY = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect))
+  let X1 = Math.round(centerX - vp2px(distance))
+  let X2 = Math.round(centerX + vp2px(distance))
   let stepLen = 20;
   if (isLeft) {
     await driver.fling({
@@ -79,7 +79,7 @@ export default function listCloseAllActionTest() {
     */
     it('testListCloseAllAction001', 0, async (done: Function) => {
       await Utils.pushPage(`list/ListCloseAllActionTest`);
-      await flingComponentH("list1", true, 1000, 200);
+      await flingComponentH("list1", true, 1000, 100);
       await Utils.clickComponent('callbackButton0')
       await Utils.sleep(3000)
       let dataArray: number[][] = nativeRender.listGetCloseAllActionRetData()
@@ -99,7 +99,7 @@ export default function listCloseAllActionTest() {
     */
     it('testListCloseAllAction002', 0, async (done: Function) => {
       await Utils.pushPage(`list/ListCloseAllActionTest`);
-      await flingComponentH("list1", true, 1000, 200);
+      await flingComponentH("list1", true, 1000, 100);
       await Utils.clickComponent('nullCallbackButton0')
       await Utils.sleep(3000)
       let dataArray: number[][] = nativeRender.listGetCloseAllActionRetData()
@@ -119,7 +119,7 @@ export default function listCloseAllActionTest() {
     */
     it('testListCloseAllAction003', 0, async (done: Function) => {
       await Utils.pushPage(`list/ListCloseAllActionTest`);
-      await flingComponentV("list2", true, 1000, 200);
+      await flingComponentV("list2", true, 1000, 100);
       await Utils.clickComponent('callbackButton1')
       await Utils.sleep(3000)
       let dataArray: number[][] = nativeRender.listGetCloseAllActionRetData()
@@ -139,7 +139,7 @@ export default function listCloseAllActionTest() {
     */
     it('testListCloseAllAction004', 0, async (done: Function) => {
       await Utils.pushPage(`list/ListCloseAllActionTest`);
-      await flingComponentV("list2", true, 1000, 200);
+      await flingComponentV("list2", true, 1000, 100);
       await Utils.clickComponent('nullCallbackButton1')
       await Utils.sleep(3000)
       let dataArray: number[][] = nativeRender.listGetCloseAllActionRetData()

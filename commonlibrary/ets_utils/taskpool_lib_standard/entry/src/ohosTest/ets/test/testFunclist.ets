@@ -15,10 +15,11 @@
 
 import { taskpool, collections} from '@kit.ArkTS'
 import { BusinessError } from '@ohos.base'
-import { StrCat, A, B, printStrArgs, printArgs } from './exportFunclist'
+import { StrCat, A, B, printStrArgs, printArgs, multiplyFunc } from './exportFunclist'
 import HashMap from '@ohos.util.HashMap';
 import { errorManager } from '@kit.AbilityKit';
 import { SendableClass, SimpleSendable, SendableClassTest } from './sendable';
+import { MeasureText } from '@kit.ArkUI';
 
 export async function currentFun(): Promise<void> {
   "use concurrent"
@@ -426,4 +427,26 @@ export function sendableClassTest(classT : SendableClassTest) : number {
   let num = classT.foo();
   num += classT.func();
   return num;
+}
+
+@Concurrent
+export async function promiseTest(value: number): Promise<number> {
+  let promise = Promise.resolve();
+  await new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, 200);
+  });
+  promise.then(() => {});
+  let num: number = multiplyFunc(value);
+  return num;
+}
+
+@Concurrent
+export async function measureTest(): Promise<boolean> {
+  let textWidth: number = MeasureText.measureText({
+    textContent: "Hello World",
+    fontSize: '150px'
+  });
+  return textWidth != 0;
 }

@@ -18,7 +18,9 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import commonEventManager from '@ohos.commonEventManager';
 let onWindowStageRestoreResult = false;
-
+function sleep(ms: number) {
+  return new Promise<void>(resolve => setTimeout(resolve, ms));
+}
 export default class ThreeAbility extends UIAbility {
 
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -31,7 +33,7 @@ export default class ThreeAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'ThreeAbility== onCreate want 3333');
   }
 
-  onDestroy() {
+  async onDestroy(): Promise<void>{
     hilog.info(0x0000, 'testTag', '%{public}s', 'ThreeAbility== onDestroy');
     commonEventManager.publish('ACTS_GetWindowStage', {
       parameters: {
@@ -40,6 +42,7 @@ export default class ThreeAbility extends UIAbility {
     }, (err) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'ThreeAbility== commonEventManager publish end' + JSON.stringify(err));
     })
+    await sleep(1000);
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
