@@ -86,7 +86,7 @@ export default function ListSwipeTest() {
       console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop);
       // 2.swipe right
       let rectCenter: number[] = getRectCenter(JSON.parse(strJson).$rect)
-      await driver.swipe(Math.round(globalThis.winLeft + rectCenter[0]),
+      await driver.swipe(Math.round(globalThis.winLeft + rectCenter[0] - (rectCenter[3] - rectCenter[2]) / 4),
         Math.round(globalThis.winTop + rectCenter[1]),
         Math.round(globalThis.winLeft + rectCenter[0] + (rectCenter[3] -rectCenter[2]) / 4),
         Math.round(globalThis.winTop + rectCenter[1]))
