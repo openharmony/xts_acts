@@ -21,7 +21,7 @@ group("ActsAbilityAmsTest") {
       "abilitymultiinstancetestb:AbilityMultiInstanceTestB",
       "abilitymultiinstancetestc:AbilityMultiInstanceTestC",
       "abilitymultiinstancetestd:AbilityMultiInstanceTestD",
-      "actdeeplinktest:ActsDeepLinkTest",
+      "actsdeeplinktest:ActsDeepLinkTest",
       "actsabilitymultiinstancetest:ActsAbilityMultiInstanceTest",
       "actsapplicationstartabilityauxiliary:ActsApplicationStartAbilityAuxiliary",
       "actsapplicationstartabilityauxiliary_2:ActsApplicationStartAbilityAuxiliary_2",
