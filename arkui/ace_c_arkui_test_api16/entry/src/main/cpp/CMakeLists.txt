@@ -14,6 +14,7 @@ add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
     postFrame/post_frame_callback_test.cpp
+    swiper/swiper_test.cpp
 )
 
 add_library(nativefunc SHARED

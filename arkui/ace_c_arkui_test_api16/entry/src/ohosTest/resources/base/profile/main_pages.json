@@ -2,7 +2,8 @@
   "src": [
     "MainAbility/pages/XTSIndex",
     "MainAbility/pages/testgesture",
-    "MainAbility/pages/postFrame/TestPostFrameCallback"
+    "MainAbility/pages/postFrame/TestPostFrameCallback",
+    "MainAbility/pages/swiper/SwiperAutoPlayTest"
 
   ]
 }
