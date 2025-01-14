@@ -38,7 +38,7 @@ struct textArea_center {
       Scroll(this.scroll){
         Column(){
           Button('点击关闭键盘').width('90%')
-            .height(150)
+            .height('33%')
             .borderRadius(15)
             .fontSize(16)
             .margin(0)
@@ -69,7 +69,7 @@ struct textArea_center {
           ForEach(this.arr,(item:number) => {
             Text(item.toString())
               .width('90%')
-              .height('33%')
+              .height(150)
               .backgroundColor(0xFFFFFF)
               .borderRadius(15)
               .fontSize(16)
