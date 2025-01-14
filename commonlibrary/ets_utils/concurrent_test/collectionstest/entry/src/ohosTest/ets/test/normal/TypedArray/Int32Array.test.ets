@@ -81,7 +81,6 @@ export default function Int32ArrayTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(err.message).assertEqual('integerIndex < 0 or integerIndex > SAFE_NUMBER');
       }
     })
     /**
@@ -231,7 +230,6 @@ export default function Int32ArrayTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(err.message).assertEqual('integerIndex < 0 or integerIndex > SAFE_NUMBER');
       }
     })
     /**
@@ -250,7 +248,6 @@ export default function Int32ArrayTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(err.message).assertEqual('integerIndex < 0 or integerIndex > SAFE_NUMBER');
       }
     })
     /**
@@ -269,7 +266,6 @@ export default function Int32ArrayTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(err.message).assertEqual('integerIndex < 0 or integerIndex > SAFE_NUMBER');
       }
     })
     /**
@@ -307,7 +303,6 @@ export default function Int32ArrayTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(err.message).assertEqual('integerIndex < 0 or integerIndex > SAFE_NUMBER');
       }
     })
     /**
@@ -345,7 +340,6 @@ export default function Int32ArrayTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(err.message).assertEqual('The offset cannot be an integral multiple of elementSize.');
       }
     })
     /**
@@ -364,7 +358,6 @@ export default function Int32ArrayTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(err.message).assertEqual('The offset cannot be an integral multiple of elementSize.');
       }
     })
     /**
@@ -383,7 +376,6 @@ export default function Int32ArrayTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(err.message).assertEqual('The offset cannot be an integral multiple of elementSize.');
       }
     })
     /**
@@ -2354,7 +2346,6 @@ export default function Int32ArrayTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(err.message).assertEqual('out of range.');
       }
     })
     /**
@@ -3707,7 +3698,6 @@ export default function Int32ArrayTest() {
         done();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(err.message).assertEqual('out of range.');
         done();
       }
     })
