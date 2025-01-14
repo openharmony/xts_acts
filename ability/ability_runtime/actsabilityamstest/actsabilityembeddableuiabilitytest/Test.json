@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAbilityToTestInterfaceTest.hap",
+                "ActsAbilityEmbeddableUIAbilityTest.hap",
                 "ActsAbilityToTestInterfaceMainTest.hap"
             ],
             "type": "AppInstallKit",
