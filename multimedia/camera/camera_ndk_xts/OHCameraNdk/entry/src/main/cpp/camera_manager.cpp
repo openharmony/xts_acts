@@ -16,7 +16,7 @@
 #include "camera_manager.h"
 
 CameraCallbackCode NDKCamera::cameraCallbackCode_ = NO_RECEIVED;
-
+volatile bool g_isCaptureReady = false;
 void CameraManagerStatusCallback(Camera_Manager *cameraManager, Camera_StatusInfo *status)
 {
     NDKCamera::cameraCallbackCode_ = CAMERA_MANAGER_STATUS;
@@ -288,10 +288,29 @@ Camera_ErrorCode NDKCamera::PreviewOutputUnRegisterCallback(int useCaseCode)
     }
     return ret_;
 }
+
+void PhotoOutputCaptureReadyCallback(Camera_PhotoOutput* photoOutput)
+{
+    while (g_isCaptureReady) {};
+    g_isCaptureReady = true;
+    LOG("RegisterPhotoOutputCaptureReadyCallback");
+}
+
+Camera_ErrorCode NDKCamera::PhotoOutputRegisterCaptureReadyCallback()
+{
+    LOG("PhotoOutputRegisterCaptureReadyCallback");
+    return OH_PhotoOutput_RegisterCaptureReadyCallback(photoOutput_, PhotoOutputCaptureReadyCallback);
+}
+Camera_ErrorCode NDKCamera::PhotoOutputUnRegisterCaptureReadyCallback()
+{
+    LOG("PhotoOutputUnRegisterCaptureReadyCallback");
+    return OH_PhotoOutput_UnregisterCaptureReadyCallback(photoOutput_, PhotoOutputCaptureReadyCallback);
+}
+
+
 Camera_ErrorCode NDKCamera::CreatePhotoOutput(char *photoSurfaceId, int useCaseCode)
 {
     profile_ = cameraOutputCapability_->photoProfiles[0];
-
     if (useCaseCode == PARAMETER_OK) {
         ret_ = OH_CameraManager_CreatePhotoOutput(cameraManager_, profile_, photoSurfaceId, &photoOutput_);
     } else if (useCaseCode == PARAMETER4_ERROR) {
@@ -1072,6 +1091,7 @@ Camera_ErrorCode NDKCamera::EnableMirror(int useCaseCode)
     }
     return ret_;
 }
+
 Camera_ErrorCode NDKCamera::PhotoOutputCapture(int useCaseCode)
 {
     if (useCaseCode == PARAMETER_OK) {
@@ -1083,10 +1103,13 @@ Camera_ErrorCode NDKCamera::PhotoOutputCapture(int useCaseCode)
 }
 Camera_ErrorCode NDKCamera::TakePictureWithPhotoSettings(Camera_PhotoCaptureSetting photoSetting, int useCaseCode)
 {
+    while (!g_isCaptureReady) {}
     if (useCaseCode == PARAMETER_OK) {
         ret_ = OH_PhotoOutput_Capture_WithCaptureSetting(photoOutput_, photoSetting);
+        g_isCaptureReady = false;
     } else if (useCaseCode == PARAMETER2_ERROR) {
         ret_ = OH_PhotoOutput_Capture_WithCaptureSetting(photoOutput_, photoSetting);
+        g_isCaptureReady = false;
     } else {
         ret_ = OH_PhotoOutput_Capture_WithCaptureSetting(nullptr, photoSetting);
     }

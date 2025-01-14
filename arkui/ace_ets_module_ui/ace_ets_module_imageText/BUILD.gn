@@ -18,5 +18,6 @@ group("ActsAceEtsModuleImageTextTest") {
     "ace_ets_module_imageText_api12:ActsAceEtsModuleImageTextApi12Test",
     "ace_ets_module_imageText_api13:ActsAceEtsModuleImageTextApi13Test",
     "ace_ets_module_imageText_api14:ActsAceEtsModuleImageTextApi14Test",
+    "ace_ets_module_imageText_api16:ActsAceEtsModuleImageTextApi16Test",
   ]
 }

@@ -102,14 +102,14 @@ async function nextStep(mySteps: Array<number | Array<Array<string>>>, done: Fun
       audioRecorder = null;
       break;
     case CHECK_STATE:
-        mySteps.shift();
-        trackArray = mySteps[0];
-        recorderTime = mySteps[1];
-        mySteps.shift();
-        mySteps.shift();
-        await videoRecorderBase.checkVideos(fdPath, ((recorderTime as ESObject) as number), ((trackArray as ESObject ) as Array<Array<string>>), null);
-        nextStep(mySteps, done);
-        break;
+      mySteps.shift();
+      trackArray = mySteps[0];
+      recorderTime = mySteps[1];
+      mySteps.shift();
+      mySteps.shift();
+      await videoRecorderBase.checkVideos(fdPath, ((recorderTime as ESObject) as number), ((trackArray as ESObject ) as Array<Array<string>>), null);
+      nextStep(mySteps, done);
+      break;
     case ERROR_STATE:
       console.info('case to wait error callback');
       break;

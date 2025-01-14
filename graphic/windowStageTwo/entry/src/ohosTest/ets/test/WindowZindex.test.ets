@@ -180,13 +180,15 @@ export default function windowZindexTest() {
               let lastWindowClass = await window.getLastWindow(context);
               let properties = lastWindowClass.getWindowProperties();
               console.log(msgStr + 'properties:'+JSON.stringify(properties));
-              expect(properties.windowRect.width).assertEqual(800);
               expect(properties.windowRect.height).assertEqual(1000);
+              expect(properties.windowRect.width).assertEqual(800);
               await subWindow1.destroyWindow();
               await subWindow2.destroyWindow();
               done();
-            }).catch((err: BusinessError) => {
+            }).catch(async (err: BusinessError) => {
               console.error(msgStr + `Failed to raise the window to app top. Cause code: ${err.code}, message: ${err.message}`);
+              await subWindow1.destroyWindow();
+              await subWindow2.destroyWindow();
               if(err.code == 801){
                 done()
               }else {
@@ -348,7 +350,7 @@ export default function windowZindexTest() {
             let promise4 = subWindow1.setRaiseByClickEnabled(true);
             promise4.then(async () => {
               console.info(msgStr + 'Succeeded in setRaiseByClickEnabled the window to app top.');
-              await driver.click(1200,1200);
+              await driver.click(1000,1000);
               let lastWindowClass = await window.getLastWindow(context);
               let properties = lastWindowClass.getWindowProperties();
               console.log(msgStr + 'properties:'+JSON.stringify(properties));
@@ -429,7 +431,7 @@ export default function windowZindexTest() {
             let promise4 = subWindow1.setRaiseByClickEnabled(false);
             promise4.then(async () => {
               console.info(msgStr + 'Succeeded in setRaiseByClickEnabled the window to app top.');
-              await driver.click(1200,1200);
+              await driver.click(1000,1000);
               let lastWindowClass = await window.getLastWindow(context);
               let properties = lastWindowClass.getWindowProperties();
               console.log(msgStr + 'properties:'+JSON.stringify(properties));

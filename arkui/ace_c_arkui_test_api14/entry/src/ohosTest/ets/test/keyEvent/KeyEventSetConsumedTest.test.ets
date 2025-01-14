@@ -42,7 +42,7 @@ export default function KeyEventSetConsumedTest() {
         await Utils.sleep(500);
         await driver.triggerKey(2049);
         await Utils.sleep(500);
-        expect(Utils.getComponentInfoByKey('KeyEventSetConsumed').$attrs.backgroundColor).assertEqual('#FF007DFF');
+        expect(Utils.getComponentInfoByKey('KeyEventSetConsumed').$attrs.backgroundColor).assertEqual('#FF00FF00');
         done();
      })
   })

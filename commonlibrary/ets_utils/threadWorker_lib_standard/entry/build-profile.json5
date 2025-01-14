@@ -67,6 +67,10 @@
         "./src/ohosTest/ets/workers/newworker_0141.js",
         "./src/ohosTest/ets/workers/newworker_0151.js",
         "./src/ohosTest/ets/workers/newworker_0152.js",
+        "./src/ohosTest/ets/workers/parentworker.js",
+        "./src/ohosTest/ets/workers/parentworker1.js",
+        "./src/ohosTest/ets/workers/childworker.js",
+        "./src/ohosTest/ets/workers/childworker1.js",
       ]
     }
   },

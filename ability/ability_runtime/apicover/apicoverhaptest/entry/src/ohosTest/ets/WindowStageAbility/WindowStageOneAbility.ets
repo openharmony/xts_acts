@@ -23,7 +23,9 @@ let onDestroyResult: boolean = false;
 let onWindowStageCreateResult: boolean = true;
 let onWindowStageDestroyResult: boolean = false;
 let onForegroundResult: boolean = true;
-
+function sleep(ms: number) {
+  return new Promise<void>(resolve => setTimeout(resolve, ms));
+}
 export default class OneAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'OneAbility onCreate');
@@ -36,7 +38,7 @@ export default class OneAbility extends UIAbility {
     }
   }
 
-  onDestroy() {
+  async onDestroy(): Promise<void>{
     hilog.info(0x0000, 'testTag', '%{public}s', 'OneAbility onDestroy');
     if (this.context.windowStage) {
       onDestroyResult = true;
@@ -45,7 +47,7 @@ export default class OneAbility extends UIAbility {
       onDestroyResult = false;
       hilog.info(0x0000, 'testTag', '%{public}s', 'onDestroy , windowStage is no exit.');
     }
-    setTimeout(()=>{
+    setTimeout(async ()=>{
       commonEventManager.publish('ACTS_GetWindowStage', {
         parameters: {
           onCreateResult: onCreateResult,
@@ -57,6 +59,7 @@ export default class OneAbility extends UIAbility {
       }, (err) => {
         hilog.info(0x0000, 'testTag', '%{public}s', 'OneAbility commonEventManager publish end' + JSON.stringify(err));
       })
+      await sleep(500);
       if (subscriber) {
         commonEventManager.unsubscribe(subscriber)
       }

@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Copyright (c) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,38 +11,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("photoAccess_js_hap") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":photoAccess_js_assets",
-    ":photoAccess_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsPhotoAccessTest"
-  shared_libraries = [
-    "./entry/src/main/cpp:photoAccessHelperTest",
-    "./entry/src/main/cpp:mediaAssetManager",
-  ]
-  part_name = "media_library"
+ohos_app_assist_suite("ActsPhotoAccessNDKMainTest") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsPhotoAccessNDKMainTest"
   subsystem_name = "multimedia"
+  part_name = "media_library"
 }
 
-ohos_app_scope("photoAccess_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
+ohos_js_app_suite("photoAccess_js_hap") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsPhotoAccessNDKTest"
+  part_name = "media_library"
 
-ohos_js_assets("photoAccess_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("photoAccess_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":photoAccess_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  subsystem_name = "multimedia"
+  deps = [ ":ActsPhotoAccessNDKMainTest" ]
 }

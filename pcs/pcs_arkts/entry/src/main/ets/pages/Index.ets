@@ -34,6 +34,7 @@ struct Index {
   abilityContext: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>('EntryAbilityContext') as common.UIAbilityContext
   audioRenderer: audio.AudioRenderer = {} as audio.AudioRenderer
   @State audioStateText: string = 'Error'
+  private scroller: Scroller = new Scroller()
 
   async aboutToAppear() {
     this.audioRenderer = await this.getAudioRenderer()
@@ -46,57 +47,67 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Button(this.message)
-          .id('firstButton')
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            router.pushUrl({ url: "pages/SecondPage" })
-          })
-        Text($r('app.string.Multilingual_Text'))
-          .id('multilingualText')
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-        Image($rawfile('test.png'))
-          .id('image')
-          .height('20%')
-          .onComplete((event) => {
-            this.imageLoadSuccess = "LoadSuccess"
-          })
-        Text(this.imageLoadSuccess.toString())
-          .id('imageLoadSuccess')
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-        XComponent({
-          id: '',
-          type: 'surface',
-          libraryname: '',
-          controller: mXComponentController
-        }).onLoad(() => {
-          mXComponentController.setXComponentSurfaceSize({ surfaceWidth: 500, surfaceHeight: 500 })
-        })
-          .width('30%')
-          .height('30%')
+        Scroll(this.scroller) {
+          Flex({ direction: FlexDirection.Column }) {
+            Column() {
+              Button(this.message)
+                .id('firstButton')
+                .fontSize(50)
+                .fontWeight(FontWeight.Bold)
+                .onClick(() => {
+                  router.pushUrl({ url: "pages/SecondPage" })
+                })
+              Text($r('app.string.Multilingual_Text'))
+                .id('multilingualText')
+                .fontSize(50)
+                .fontWeight(FontWeight.Bold)
+              Image($rawfile('test.png'))
+                .id('image')
+                .height('20%')
+                .onComplete((event) => {
+                  this.imageLoadSuccess = "LoadSuccess"
+                })
+              Text(this.imageLoadSuccess.toString())
+                .id('imageLoadSuccess')
+                .fontSize(50)
+                .fontWeight(FontWeight.Bold)
+              XComponent({
+                id: '',
+                type: 'surface',
+                libraryname: '',
+                controller: mXComponentController
+              }).onLoad(() => {
+                mXComponentController.setXComponentSurfaceSize({ surfaceWidth: 500, surfaceHeight: 500 })
+              })
+                .width('30%')
+                .height('30%')
 
-        Text(mXComponentController.getXComponentSurfaceId())
-          .id("surfaceId")
+              Text(mXComponentController.getXComponentSurfaceId())
+                .id("surfaceId")
 
-        Button('StartAudio')
-          .id('StartAudio')
-          .fontSize(20)
-          .onClick(async () => {
-            let res = await this.startAudio(this.audioRenderer, this.abilityContext)
-            this.audioStateText = this.audioRenderer ? this.audioRenderer.state.toString() : 'Error'
-          })
-        Button('StopAudio')
-          .id('StopAudio')
-          .fontSize(20)
-          .onClick(async () => {
-            let res = await this.stopAudio(this.audioRenderer, this.abilityContext)
-            this.audioStateText = this.audioRenderer ? this.audioRenderer.state.toString() : 'Error'
-          })
-        Text(this.audioStateText)
-          .id('AudioStateText')
+              Button('StartAudio')
+                .id('StartAudio')
+                .fontSize(20)
+                .onClick(async () => {
+                  let res = await this.startAudio(this.audioRenderer, this.abilityContext)
+                  this.audioStateText = this.audioRenderer ? this.audioRenderer.state.toString() : 'Error'
+                })
+              Button('StopAudio')
+                .id('StopAudio')
+                .fontSize(20)
+                .onClick(async () => {
+                  let res = await this.stopAudio(this.audioRenderer, this.abilityContext)
+                  this.audioStateText = this.audioRenderer ? this.audioRenderer.state.toString() : 'Error'
+                })
+              Text(this.audioStateText)
+                .id('AudioStateText')
+            }
+          }
+          .margin({ right: 10 })
+        }
+        .id('scroll')
+        .scrollBar(BarState.Off)
+        .scrollable(ScrollDirection.Vertical)
       }
       .width('100%')
     }

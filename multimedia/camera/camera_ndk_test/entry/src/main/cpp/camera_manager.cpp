@@ -60,7 +60,7 @@ NDKCamera::NDKCamera(char* str)
       metaDataObjectType_(nullptr), metadataOutput_(nullptr), cameraInput_(nullptr),
       isCameraMuted_(nullptr), previewSurfaceId_(str),
       cameraProfile_(nullptr), videoActiveProfile_(nullptr),
-      ret_(CAMERA_OK)
+      ret_(CAMERA_OK), orientation_(0), cameraDeviceIndex_(0)
 {
     valid_ = false;
     Camera_ErrorCode ret = OH_Camera_GetCameraManager(&cameraManager_);
@@ -1200,6 +1200,19 @@ Camera_ErrorCode NDKCamera::SessionSetVideoStabilizationMode(uint32_t mode)
     return ret;
 }
 
+Camera_ErrorCode NDKCamera::SessionSetQualityPrioritization(uint32_t quality)
+{
+    LOG("SetQualityPrioritization begin.");
+    Camera_QualityPrioritization qualityPrioritization = static_cast<Camera_QualityPrioritization>(quality);
+    Camera_ErrorCode ret = OH_CaptureSession_SetQualityPrioritization(captureSession_, qualityPrioritization);
+    if (ret == CAMERA_OK) {
+        LOG("OH_CaptureSession_SetQualityPrioritization success.");
+    } else {
+        LOG("OH_CaptureSession_SetQualityPrioritization failed. %d ", ret);
+    }
+    return ret;
+}
+
 // CameraManager Callback
 void CameraManagerStatusCallback(Camera_Manager* cameraManager, Camera_StatusInfo* status)
 {
@@ -1504,7 +1517,6 @@ Camera_ErrorCode NDKCamera::CreateCameraInputWithPositionAndType(Camera_Position
     ret_ = OH_CameraManager_CreateCameraInput_WithPositionAndType(cameraManager_, position, type, &cameraInput_);
     if (cameraInput_ == nullptr || ret_ != CAMERA_OK) {
         LOG("ndkXTS CreateCameraInputWithPositionAndType failed = %d. cameraInput_ = %p", ret_, cameraInput_);
-        return CAMERA_INVALID_ARGUMENT;
     }
     LOG("ndkXTS CreateCameraInputWithPositionAndType end.");
     return ret_;

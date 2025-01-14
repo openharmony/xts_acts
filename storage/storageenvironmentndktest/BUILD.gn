@@ -21,11 +21,11 @@ ohos_app_assist_suite("ActsStorageEnvironmentNdkMainTest") {
   subsystem_name = "filemanagement"
 }
 
-ohos_js_app_suite("ActsStorageEnvironmentNdk") {
+ohos_js_app_suite("ActsStorageEnvironmentNdkTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsStorageEnvironmentNdk"
+  hap_name = "ActsStorageEnvironmentNdkTest"
   part_name = "storage_service"
   subsystem_name = "filemanagement"
   deps = [ ":ActsStorageEnvironmentNdkMainTest" ]

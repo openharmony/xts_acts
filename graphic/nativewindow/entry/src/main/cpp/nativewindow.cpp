@@ -232,6 +232,16 @@ napi_property_descriptor desc[] = {
      testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNormal, nullptr, nullptr, nullptr, napi_default,
      nullptr},
     {"testNativeWindowSetMetadataValue_metadata_type", nullptr, testNativeWindowSetMetadataValue_metadata_type, nullptr,
+     nullptr, nullptr, napi_default, nullptr},
+    {"testNativeWindowCreateNativeWindow", nullptr, testNativeWindowCreateNativeWindow, nullptr,
+     nullptr, nullptr, napi_default, nullptr},
+    {"testNativeWindowNativeWindowSetSetScalingMode", nullptr, testNativeWindowNativeWindowSetSetScalingMode, nullptr,
+     nullptr, nullptr, napi_default, nullptr},
+    {"testNativeWindowNativeWindowSetMetaData", nullptr, testNativeWindowNativeWindowSetMetaData, nullptr,
+     nullptr, nullptr, napi_default, nullptr},
+    {"testNativeWindowNativeWindowSetMetaDataSet", nullptr, testNativeWindowNativeWindowSetMetaDataSet, nullptr,
+     nullptr, nullptr, napi_default, nullptr},
+    {"testNativeWindowNativeWindowSetTunnelHandle", nullptr, testNativeWindowNativeWindowSetTunnelHandle, nullptr,
      nullptr, nullptr, napi_default, nullptr}};
 
 EXTERN_C_START

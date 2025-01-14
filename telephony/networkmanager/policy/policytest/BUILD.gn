@@ -16,6 +16,6 @@ ohos_js_app_suite("ActsPolicyTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsPolicyTest"
-  part_name = "netmanager_base"
+  part_name = "sms_mms"
   subsystem_name = "telephony"
 }

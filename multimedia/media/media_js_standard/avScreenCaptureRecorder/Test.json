@@ -15,6 +15,20 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "remount",
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.avscreencapturerecorder/haps/entry_test/files",
+                "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.avscreencapturerecorder/haps/entry_test"
+            ]
+        },
+        {
+            "type": "PushKit",
+            "push": [
+                "./resource/media/codec/audio_encoder/f32le_44100_2_dayuhaitang.pcm -> /data/app/el2/100/base/ohos.acts.multimedia.avscreencapturerecorder/haps/entry_test/files/"
+            ]
         }
     ]
 }

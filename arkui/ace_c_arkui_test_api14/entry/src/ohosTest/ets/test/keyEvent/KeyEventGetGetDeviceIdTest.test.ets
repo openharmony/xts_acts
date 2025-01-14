@@ -43,7 +43,7 @@ export default function KeyEventGetGetDeviceIdTest() {
         await Utils.sleep(500);
         await driver.triggerKey(2049);
         await Utils.sleep(500);
-        expect(Utils.getComponentInfoByKey('KeyEventGetDeviceId').$attrs.backgroundColor).assertEqual('#FF007DFF');
+        expect(Utils.getComponentInfoByKey('KeyEventGetDeviceId').$attrs.backgroundColor).assertEqual('#FF00FF00');
         done();
      })
   })

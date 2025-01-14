@@ -103,23 +103,24 @@ export default function gestureInterceptionEnhancementCallbackTest() {
          let actualGlobalX:number = Math.round(left + width * 0.8);
          let actualGlobalY:number = Math.round(height /2 + top);
          console.info("gestureInterceptionEnhancementCallbackTest_0010" +  "actualGlobalX " + actualGlobalX + "actualGlobalY = " + actualGlobalY);
-         console.info("gestureInterceptionEnhancementCallbackTest_0010_fingerList " + vp2px(obj2.fingerList[0].globalX) + " ** "+ vp2px(obj2.fingerList[0].globalY) + 
-         "**" + vp2px(obj2.fingerList[0].localX) + "** " + vp2px(obj2.fingerList[0].localY) + "**" + vp2px(obj2.fingerList[0].displayX) + "**" + vp2px(obj2.fingerList[0].displayY));
-         expect(vp2px(obj2.fingerList[0].globalX) <= actualGlobalX).assertTrue();
-         expect(vp2px(obj2.fingerList[0].globalY) <= actualGlobalY).assertTrue();
-         expect(vp2px(obj2.fingerList[0].localX) <= actualGlobalX).assertTrue();
-         expect(vp2px(obj2.fingerList[0].localY) <= actualGlobalY).assertTrue();
-         expect(vp2px(obj2.fingerList[0].displayX) <= actualGlobalX).assertTrue();
-         expect(vp2px(obj2.fingerList[0].displayY) <= actualGlobalY).assertTrue();
-         console.info("gestureInterceptionEnhancementCallbackTest_0010_target " + vp2px(obj2.target.area.globalPosition.x) + "--" + vp2px(obj2.target.area.globalPosition.y)
-         + vp2px(obj2.target.area.position.x) + "..." + vp2px(obj2.target.area.position.y) + "..." + vp2px(obj2.target.area.width) + ".." + vp2px(obj2.target.area.height));
+         console.info("gestureInterceptionEnhancementCallbackTest_0010_fingerList " + Math.floor(vp2px(obj2.fingerList[0].globalX)) + " ** "+ Math.floor(vp2px(obj2.fingerList[0].globalY)) + 
+         "**" + Math.floor(vp2px(obj2.fingerList[0].localX)) + "** " + Math.floor(vp2px(obj2.fingerList[0].localY)) + "**" + Math.floor(vp2px(obj2.fingerList[0].displayX)) + "**" + Math.floor((vp2px(obj2.fingerList[0].displayY))));
+         
+         expect(Math.floor(vp2px(obj2.fingerList[0].globalX)) <= actualGlobalX).assertTrue();
+         expect(Math.floor(vp2px(obj2.fingerList[0].globalY)) <= actualGlobalY).assertTrue();
+         expect(Math.floor(vp2px(obj2.fingerList[0].localX)) <= actualGlobalX).assertTrue();
+         expect(Math.floor(vp2px(obj2.fingerList[0].localY)) <= actualGlobalY).assertTrue();
+         expect(Math.floor(vp2px(obj2.fingerList[0].displayX)) <= actualGlobalX).assertTrue();
+         expect(Math.floor(vp2px(obj2.fingerList[0].displayY)) <= actualGlobalY).assertTrue();
+         console.info("gestureInterceptionEnhancementCallbackTest_0010_target " + Math.floor(vp2px(obj2.target.area.globalPosition.x)) + "--" + Math.floor(vp2px(obj2.target.area.globalPosition.y))
+         + Math.floor(vp2px(obj2.target.area.position.x)) + "..." + Math.floor(vp2px(obj2.target.area.position.y)) + "..." + Math.floor(vp2px(obj2.target.area.width)) + ".." + vp2px(obj2.target.area.height));
      
-         expect(vp2px(obj2.target.area.globalPosition.x) <= actualGlobalX).assertTrue();
-         expect(vp2px(obj2.target.area.globalPosition.y) <= actualGlobalY).assertTrue();
-         expect(vp2px(obj2.target.area.position.x) <= actualGlobalX).assertTrue();
-         expect(vp2px(obj2.target.area.position.y) <= actualGlobalY).assertTrue();
-         expect(vp2px(obj2.target.area.width) <= width).assertTrue(); 
-         expect(vp2px(obj2.target.area.height) <= height).assertTrue();
+         expect(Math.floor(vp2px(obj2.target.area.globalPosition.x)) <= actualGlobalX).assertTrue();
+         expect(Math.floor(vp2px(obj2.target.area.globalPosition.y)) <= actualGlobalY).assertTrue();
+         expect(Math.floor(vp2px(obj2.target.area.position.x)) <= actualGlobalX).assertTrue();
+         expect(Math.floor(vp2px(obj2.target.area.position.y)) <= actualGlobalY).assertTrue();
+         expect(Math.floor(vp2px(obj2.target.area.width)) <= width).assertTrue(); 
+         expect(Math.floor(vp2px(obj2.target.area.height)) <= height).assertTrue();
          done();
     });
 

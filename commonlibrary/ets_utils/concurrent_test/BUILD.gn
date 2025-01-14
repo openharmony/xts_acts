@@ -16,6 +16,10 @@ import("//test/xts/tools/build/suite.gni")
 group("concurrent_test") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "concurrentlibtest:ActsConcurrentLibTest" ]
+    deps = [
+      "collectionstaskpooltest:ActsCollectionsTaskPoolTest",
+      "collectionstest:ActsCollectionsTest",
+      "concurrentlibtest:ActsConcurrentLibTest",
+    ]
   }
 }

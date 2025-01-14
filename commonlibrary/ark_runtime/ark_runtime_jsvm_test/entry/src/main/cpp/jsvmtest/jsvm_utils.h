@@ -120,6 +120,7 @@ JSVM_Value Int32(int32_t v);
 JSVM_Value Int64(int64_t v);
 JSVM_Value Uint32(uint32_t v);
 JSVM_Value Double(double v);
+JSVM_Value Object();
 JSVM_Value Global();
 // object property
 JSVM_Value GetProperty(JSVM_Value object, JSVM_Value key);
@@ -166,6 +167,8 @@ bool StrictEquals(JSVM_Value lhs, JSVM_Value rhs);
 // This is a simple log function
 JSVM_Value MyConsoleLog(JSVM_Env env, JSVM_CallbackInfo info);
 void InstallMyConsoleLog(JSVM_Env env);
+void TryTriggerFatalError(JSVM_VM vm);
+void TryTriggerGC();
 }  // namespace jsvm
 
 #endif  // JSVM_UTILS_H

@@ -30,22 +30,28 @@ describe('BatteryStatisticsTest', function () {
      */
     it('System_API_Test_batteryStats_Manager_0100', 0, async function (done) {
         let TAG = 'System_API_Test_batteryStats_Manager_0100';
-        try {
-            batteryStats.getBatteryStats()
-            .then((data) => {
-                console.info(TAG + ' info: ' + data);
-                expect(data === null).assertTrue();
+        let isSupport = canIUse('SystemCapability.PowerManager.BatteryStatistics');
+        if(isSupport) {
+            try {
+                batteryStats.getBatteryStats()
+                .then((data) => {
+                    console.info(TAG + ' info: ' + data);
+                    expect(data === null).assertTrue();
+                    done();
+                })
+                .catch((err) => {
+                    console.info(TAG + ` getBatteryStats err: ${err.code}  ${err.message}`);
+                    expect(err.code).assertEqual(ERROR_CODE);
+                    done();
+                });
+            } catch (error) {
+                console.info(TAG + ` getBatteryStats err: ${error.code}  ${error.message}`);
+                expect(error.code).assertEqual(ERROR_CODE);
                 done();
-            })
-            .catch((err) => {
-                console.info(TAG + ` getBatteryStats err: ${err.code}  ${err.message}`);
-                expect(err.code).assertEqual(ERROR_CODE);
-                done();
-            });
-        } catch (error) {
-            console.info(TAG + ` getBatteryStats err: ${error.code}  ${error.message}`);
-            expect(error.code).assertEqual(ERROR_CODE);
-            done();
+            }
+        } else {
+            console.info(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
+            expect(isSupport).assertFalse();
         }
     })
 
@@ -59,21 +65,27 @@ describe('BatteryStatisticsTest', function () {
      */
     it('System_API_Test_batteryStats_Manager_0200', 0, async function (done) {
         let TAG = 'System_API_Test_batteryStats_Manager_0200';
-        try {
-            batteryStats.getBatteryStats((err, data) => {
-                if (typeof err === 'undefined') {
-                    console.info(TAG + 'battery statistics info: ' + data);
-                    expect().assertFail();
-                } else {
-                    console.info(TAG + ` getBatteryStats err: ${err.code}  ${err.message}`);
-                    expect(err.code).assertEqual(ERROR_CODE);
-                }
+        let isSupport = canIUse('SystemCapability.PowerManager.BatteryStatistics');
+        if(isSupport) {
+            try {
+                batteryStats.getBatteryStats((err, data) => {
+                    if (typeof err === 'undefined') {
+                        console.info(TAG + 'battery statistics info: ' + data);
+                        expect().assertFail();
+                    } else {
+                        console.info(TAG + ` getBatteryStats err: ${err.code}  ${err.message}`);
+                        expect(err.code).assertEqual(ERROR_CODE);
+                    }
+                    done();
+                });
+            } catch (error) {
+                console.info(TAG + ` getBatteryStats err: ${error.code}  ${error.message}`);
+                expect(error.code).assertEqual(ERROR_CODE);
                 done();
-            });
-        } catch (error) {
-            console.info(TAG + ` getBatteryStats err: ${error.code}  ${error.message}`);
-            expect(error.code).assertEqual(ERROR_CODE);
-            done();
+            }
+        } else {
+            console.info(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
+            expect(isSupport).assertFalse();
         }
     })
 
@@ -87,13 +99,19 @@ describe('BatteryStatisticsTest', function () {
      */
     it('System_API_Test_batteryStats_Manager_0300', 0, async function (done) {
         let TAG = 'System_API_Test_batteryStats_Manager_0300';
-        try {
-            let value = batteryStats.getAppPowerValue(10021);
-            console.info(TAG + 'battery statistics value of app is: ' + value);
-        } catch (error) {
-            console.info(TAG + ` getAppPowerValue err: ${error.code}  ${error.message}`);
-            expect(error.code).assertEqual(ERROR_CODE);
-            done();
+        let isSupport = canIUse('SystemCapability.PowerManager.BatteryStatistics');
+        if(isSupport) {
+            try {
+                let value = batteryStats.getAppPowerValue(10021);
+                console.info(TAG + 'battery statistics value of app is: ' + value);
+            } catch (error) {
+                console.info(TAG + ` getAppPowerValue err: ${error.code}  ${error.message}`);
+                expect(error.code).assertEqual(ERROR_CODE);
+                done();
+            }
+        } else {
+            console.info(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
+            expect(isSupport).assertFalse();
         }
     })
 
@@ -107,13 +125,19 @@ describe('BatteryStatisticsTest', function () {
      */
     it('System_API_Test_batteryStats_Manager_0400', 0, async function (done) {
         let TAG = 'System_API_Test_batteryStats_Manager_0400';
-        try {
-            let percent = batteryStats.getAppPowerPercent(10021);
-            console.info(TAG + 'battery statistics percent of app is: ' + percent);
-        } catch (error) {
-            console.info(TAG + ` getAppPowerPercent err: ${error.code}  ${error.message}`);
-            expect(error.code).assertEqual(ERROR_CODE);
-            done();
+        let isSupport = canIUse('SystemCapability.PowerManager.BatteryStatistics');
+        if(isSupport) {
+            try {
+                let percent = batteryStats.getAppPowerPercent(10021);
+                console.info(TAG + 'battery statistics percent of app is: ' + percent);
+            } catch (error) {
+                console.info(TAG + ` getAppPowerPercent err: ${error.code}  ${error.message}`);
+                expect(error.code).assertEqual(ERROR_CODE);
+                done();
+            }
+        } else {
+            console.info(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
+            expect(isSupport).assertFalse();
         }
     })
 
@@ -127,13 +151,19 @@ describe('BatteryStatisticsTest', function () {
      */
     it('System_API_Test_batteryStats_Manager_0500', 0, async function (done) {
         let TAG = 'System_API_Test_batteryStats_Manager_0500';
-        try {
-            let value = batteryStats.getHardwareUnitPowerValue(batteryStats.ConsumptionType.CONSUMPTION_TYPE_USER);
-            console.info(TAG + 'battery statistics value of hardware is: ' + value);
-        } catch (error) {
-            console.info(TAG + ` getHardwareUnitPowerValue err: ${error.code}  ${error.message}`);
-            expect(error.code).assertEqual(ERROR_CODE);
-            done();
+        let isSupport = canIUse('SystemCapability.PowerManager.BatteryStatistics');
+        if(isSupport) {
+            try {
+                let value = batteryStats.getHardwareUnitPowerValue(batteryStats.ConsumptionType.CONSUMPTION_TYPE_USER);
+                console.info(TAG + 'battery statistics value of hardware is: ' + value);
+            } catch (error) {
+                console.info(TAG + ` getHardwareUnitPowerValue err: ${error.code}  ${error.message}`);
+                expect(error.code).assertEqual(ERROR_CODE);
+                done();
+            }
+        } else {
+            console.info(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
+            expect(isSupport).assertFalse();
         }
     })
 
@@ -147,13 +177,19 @@ describe('BatteryStatisticsTest', function () {
      */
     it('System_API_Test_batteryStats_Manager_0600', 0, async function (done) {
         let TAG = 'System_API_Test_batteryStats_Manager_0600';
-        try {
-            let value = batteryStats.getHardwareUnitPowerPercent(batteryStats.ConsumptionType.CONSUMPTION_TYPE_WIFI);
-            console.info(TAG + 'battery statistics percent of hardware is: ' + value);
-        } catch (error) {
-            console.info(TAG + ` getHardwareUnitPowerPercent err: ${error.code}  ${error.message}`);
-            expect(error.code).assertEqual(ERROR_CODE);
-            done();
+        let isSupport = canIUse('SystemCapability.PowerManager.BatteryStatistics');
+        if(isSupport) {
+            try {
+                let value = batteryStats.getHardwareUnitPowerPercent(batteryStats.ConsumptionType.CONSUMPTION_TYPE_WIFI);
+                console.info(TAG + 'battery statistics percent of hardware is: ' + value);
+            } catch (error) {
+                console.info(TAG + ` getHardwareUnitPowerPercent err: ${error.code}  ${error.message}`);
+                expect(error.code).assertEqual(ERROR_CODE);
+                done();
+            }
+        } else {
+            console.info(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
+            expect(isSupport).assertFalse();
         }
     })
 })

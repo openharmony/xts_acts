@@ -216,13 +216,15 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       });
       tempWnd!.on('touchOutside', () => {
         console.info(msgStr + "first listener trigger");
-        num++
-        firstListenFlag = true
+        num++;
+        firstListenFlag = true;
+        console.info(msgStr + "listener trigger num is: " + num);
       });
       tempWnd!.on('touchOutside', () => {
         console.info(msgStr + "second listener trigger");
-        num++
-        secondListenFlag = true
+        num++;
+        secondListenFlag = true;
+        console.info(msgStr + "listener trigger num is: " + num);
       });
       await sleep(800);
       await sleep(800);
@@ -245,7 +247,8 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
         expect().assertFail();
         done();
       })
-      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
+      console.info(msgStr + "finally listener trigger num is: " + num);
+      if (num == 2 && firstListenFlag === false && secondListenFlag === false) {
         await tempWnd!.destroyWindow();
         await tempWnd_two!.destroyWindow();
         done();
@@ -268,15 +271,20 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       console.log(msgStr + 'begin');
       let firstListenFlag: boolean = false
       let secondListenFlag: boolean = false
+      let num: number = 0
 
       let firstCall = () => {
         console.log(msgStr + "first listener trigger")
+        num++;
+        console.info(msgStr + "first listener trigger num is: " + num);
         firstListenFlag = true
         return firstListenFlag
       }
 
       let secondCall = () => {
         console.log(msgStr + "second listener trigger")
+        num++;
+        console.info(msgStr + "second listener trigger num is: " + num);
         secondListenFlag = true
         return secondListenFlag
       }
@@ -340,10 +348,11 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
         expect().assertFail();
         done();
       })
+      console.info(msgStr + "finally listener trigger num is: " + num);
       await sleep(800)
       await (tempWnd as ohosWindow.Window).destroyWindow();
       await (tempWnd_two as ohosWindow.Window).destroyWindow();
-      if (!firstListenFlag && secondListenFlag) {
+      if (!firstListenFlag && secondListenFlag && num == 3) {
         done();
       } else {
         expect().assertFail();

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, afterEach, it, expect } from '@ohos/hypium'
+import { describe, afterEach, beforeAll, it, expect } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import hilog from '@ohos.hilog';
 import { Driver, ON } from '@ohos.UiTest';
@@ -20,14 +20,29 @@ import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import commonEventManager from '@ohos.commonEventManager'
 import { BusinessError } from '@ohos.base';
 import Want from '@ohos.app.ability.Want';
+import bundle from '@ohos.bundle.bundleManager';
 
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let targetVersion: number = 12;
 export default function StartAbilityForResultTest() {
   describe('StartAbilityForResultTest', () => {
 
     let delegator = AbilityDelegatorRegistry.getAbilityDelegator();
     let abilityName = 'SecondAbility';
     let driver = Driver.create();
+
+    beforeAll((done: Function) => {
+      bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).then(data => {
+        console.info('getBundleInfoForSelf' + JSON.stringify(data));
+        targetVersion = data.targetVersion;
+        console.info('getBundleInfoForSelf targetVersion=' + targetVersion);
+        done();
+      }).catch((err: BusinessError) => {
+        console.info('getBundleInfoForSelf fail' + JSON.stringify(err));
+        console.info('getBundleInfoForSelf fail targetVersion=' + targetVersion);
+        done();
+      })
+    });
 
     afterEach((done:Function) => {
       console.log('StartAbilityForResultTest afterEach start');
@@ -60,7 +75,11 @@ export default function StartAbilityForResultTest() {
         }).catch((error:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${error}`);
           expect(error.code == undefined).assertFalse();
-          expect(error.code).assertEqual(2097152);
+          if (targetVersion >= 16) {
+            expect(error.code).assertEqual(16000001);
+          } else {
+            expect(error.code).assertEqual(2097152);
+          }
           done();
         })
       } catch (err) {
@@ -93,7 +112,11 @@ export default function StartAbilityForResultTest() {
         }).catch((error:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${error}`);
           expect(error.code == undefined).assertFalse();
-          expect(error.code).assertEqual(2097152);
+          if (targetVersion >= 16) {
+            expect(error.code).assertEqual(16000001);
+          } else {
+            expect(error.code).assertEqual(2097152);
+          }
           done();
         })
       } catch (err) {
@@ -204,7 +227,11 @@ export default function StartAbilityForResultTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
         }).catch((err:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
-          expect(err.code).assertEqual(2097152);
+          if (targetVersion >= 16) {
+            expect(err.code).assertEqual(16000001);
+          } else {
+            expect(err.code).assertEqual(2097152);
+          }
           done();
         })
       }
@@ -243,7 +270,11 @@ export default function StartAbilityForResultTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
         }).catch((err:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
-          expect(err.code).assertEqual(2097152);
+          if (targetVersion >= 16) {
+            expect(err.code).assertEqual(16000001);
+          } else {
+            expect(err.code).assertEqual(2097152);
+          }
           done();
         })
       }

@@ -33,6 +33,7 @@ group("ActsAceEtsModuleUITest") {
     "ace_ets_module_layout:ActsAceEtsModuleLayoutTest",
     "ace_ets_module_loadingProgress:ActsAceEtsModuleLoadingProgressTest",
     "ace_ets_module_modifier:ActsAceEtsModuleModifierTest",
+    "ace_ets_module_modifierSuite/ace_ets_module_modifier_api14:ActsAceEtsModuleModifier14Test",
     "ace_ets_module_navigation:ActsAceEtsModuleNavigationTest",
     "ace_ets_module_observer:ActsAceEtsModuleObserverTest",
     "ace_ets_module_picker:ActsAceEtsModulePickerTest",

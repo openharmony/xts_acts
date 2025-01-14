@@ -20,9 +20,11 @@ module_output_path = "acts/ActsHwdecoderTest"
 hwdecoder_moduletest_native_include_dirs = [
   "./include",
   "$MEDIA_ROOT_DIR/../../graphic/graphic_2d/interfaces/inner_api",
+  "$MEDIA_ROOT_DIR/../../graphic/graphic_surface/interfaces/inner_api",
   "$MEDIA_ROOT_DIR/interfaces/inner_api/native",
   "$MEDIA_ROOT_DIR/interfaces/kits/c",
   "$MEDIA_ROOT_DIR/../../../third_party/openssl/ohos_lite/include",
+  "$MEDIA_ROOT_DIR/../../../third_party/json/include",
 ]
 
 hwdecoder_moduletest_cflags = [
@@ -60,7 +62,9 @@ ohos_moduletest_suite("ActsHwdecoderTest") {
     sources = [
       "./src/api_test.cpp",
       "./src/func_test.cpp",
+      "./src/hwh265_hdr2sdr_test.cpp",
       "./src/state_test.cpp",
+      "./src/videodec_api11_sample.cpp",
       "./src/videodec_ndk_sample.cpp",
     ]
   }

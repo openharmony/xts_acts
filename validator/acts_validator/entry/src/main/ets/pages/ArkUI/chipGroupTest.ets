@@ -19,6 +19,7 @@ import fs from '@ohos.file.fs';
 import FirstDialog from '../model/FirstDialog';
 import { BusinessError } from '@ohos.base';
 import { ChipGroup, IconGroupSuffix, SymbolGlyphModifier } from '@kit.ArkUI';
+
 const TAG = '[chipGroupTest]';
 
 @Builder
@@ -74,9 +75,10 @@ struct SectionItem {
 struct chipGroupTest {
   @State name: string = 'chipGroupTest';
   @State stepTips: string =
-    '设备支持屏幕朗读时\n' + '操作步骤:\n' + '1、分别点击单选区域和多选区域组件的的后缀图标删除符号，观察朗读内容\n' +'\n' +
+    '设备支持屏幕朗读时\n' + '操作步骤:\n' + '1、分别点击单选区域和多选区域组件的的后缀图标删除符号，观察朗读内容\n' +
+      '\n' +
       '预期结果：1、朗读内容为：保存，按钮，选项后缀图标\n' +
-      '2、朗读内容为：删除，按钮，单指双击即可执行\n';
+      '2、朗读内容为：删除，按钮，删除文本\n';
   @State isVue: boolean = false;
   @State intervalNum: number = 0;
   @State yesEnable: boolean = false
@@ -305,13 +307,33 @@ struct chipGroupTest {
                         }
                       }
                     },
-                    { label: { text: '选项3' }, allowClose: true },
-                    { label: { text: '选项4' }, allowClose: true },
-                    { label: { text: '选项5' }, allowClose: true },
-                    { label: { text: '选项6' }, allowClose: true },
-                    { label: { text: '选项7' }, allowClose: true },
-                    { label: { text: '选项8' }, allowClose: true },
-                    { label: { text: '选项9' }, allowClose: true },
+                    {
+                      label: { text: '选项3' },
+                      closeOptions: {
+                        accessibilityText: '删除',
+                        accessibilityDescription: '删除文本',
+                        accessibilityLevel: 'yes'
+                      },
+                      allowClose: true
+                    },
+                    {
+                      label: { text: '选项4' },
+                      closeOptions: {
+                        accessibilityText: '删除',
+                        accessibilityDescription: '删除文本',
+                        accessibilityLevel: 'yes'
+                      },
+                      allowClose: true
+                    },
+                    {
+                      label: { text: '选项5' },
+                      closeOptions: {
+                        accessibilityText: '删除',
+                        accessibilityDescription: '删除文本',
+                        accessibilityLevel: 'yes'
+                      },
+                      allowClose: true
+                    },
                   ]
                 })
               }
@@ -319,15 +341,51 @@ struct chipGroupTest {
               SectionItem({ title: '单选 有后缀区域' }) {
                 ChipGroup({
                   items: [
-                    { label: { text: '选项1' },allowClose: true },
-                    { label: { text: '选项2' },allowClose: true },
-                    { label: { text: '选项3' },allowClose: true },
-                    { label: { text: '选项4' },allowClose: true },
-                    { label: { text: '选项5' },allowClose: true },
-                    { label: { text: '选项6' },allowClose: true },
-                    { label: { text: '选项7' },allowClose: true },
-                    { label: { text: '选项8' },allowClose: true },
-                    { label: { text: '选项9' },allowClose: true },
+                    {
+                      label: { text: '选项1' },
+                      closeOptions: {
+                        accessibilityText: '删除',
+                        accessibilityDescription: '删除文本',
+                        accessibilityLevel: 'yes'
+                      },
+                      allowClose: true
+                    },
+                    {
+                      label: { text: '选项2' },
+                      closeOptions: {
+                        accessibilityText: '删除',
+                        accessibilityDescription: '删除文本',
+                        accessibilityLevel: 'yes'
+                      },
+                      allowClose: true
+                    },
+                    {
+                      label: { text: '选项3' },
+                      closeOptions: {
+                        accessibilityText: '删除',
+                        accessibilityDescription: '删除文本',
+                        accessibilityLevel: 'yes'
+                      },
+                      allowClose: true
+                    },
+                    {
+                      label: { text: '选项4' },
+                      closeOptions: {
+                        accessibilityText: '删除',
+                        accessibilityDescription: '删除文本',
+                        accessibilityLevel: 'yes'
+                      },
+                      allowClose: true
+                    },
+                    {
+                      label: { text: '选项5' },
+                      closeOptions: {
+                        accessibilityText: '删除',
+                        accessibilityDescription: '删除文本',
+                        accessibilityLevel: 'yes'
+                      },
+                      allowClose: true
+                    },
                   ],
                   suffix: this.Suffix.bind(this),
                 })
@@ -373,13 +431,33 @@ struct chipGroupTest {
                         }
                       }
                     },
-                    { label: { text: '选项3' },allowClose: true },
-                    { label: { text: '选项4' },allowClose: true },
-                    { label: { text: '选项5' },allowClose: true },
-                    { label: { text: '选项6' },allowClose: true },
-                    { label: { text: '选项7' },allowClose: true },
-                    { label: { text: '选项8' },allowClose: true },
-                    { label: { text: '选项9' },allowClose: true },
+                    {
+                      label: { text: '选项3' },
+                      closeOptions: {
+                        accessibilityText: '删除',
+                        accessibilityDescription: '删除文本',
+                        accessibilityLevel: 'yes'
+                      },
+                      allowClose: true
+                    },
+                    {
+                      label: { text: '选项4' },
+                      closeOptions: {
+                        accessibilityText: '删除',
+                        accessibilityDescription: '删除文本',
+                        accessibilityLevel: 'yes'
+                      },
+                      allowClose: true
+                    },
+                    {
+                      label: { text: '选项5' },
+                      closeOptions: {
+                        accessibilityText: '删除',
+                        accessibilityDescription: '删除文本',
+                        accessibilityLevel: 'yes'
+                      },
+                      allowClose: true
+                    },
                   ],
                   multiple: true
                 })
@@ -388,15 +466,51 @@ struct chipGroupTest {
               SectionItem({ title: '多选 有后缀区域' }) {
                 ChipGroup({
                   items: [
-                    { label: { text: '选项1' },allowClose: true },
-                    { label: { text: '选项2' },allowClose: true },
-                    { label: { text: '选项3' },allowClose: true },
-                    { label: { text: '选项4' },allowClose: true },
-                    { label: { text: '选项5' },allowClose: true },
-                    { label: { text: '选项6' },allowClose: true },
-                    { label: { text: '选项7' },allowClose: true },
-                    { label: { text: '选项8' },allowClose: true },
-                    { label: { text: '选项9' },allowClose: true },
+                    {
+                      label: { text: '选项1' },
+                      closeOptions: {
+                        accessibilityText: '删除',
+                        accessibilityDescription: '删除文本',
+                        accessibilityLevel: 'yes'
+                      },
+                      allowClose: true
+                    },
+                    {
+                      label: { text: '选项2' },
+                      closeOptions: {
+                        accessibilityText: '删除',
+                        accessibilityDescription: '删除文本',
+                        accessibilityLevel: 'yes'
+                      },
+                      allowClose: true
+                    },
+                    {
+                      label: { text: '选项3' },
+                      closeOptions: {
+                        accessibilityText: '删除',
+                        accessibilityDescription: '删除文本',
+                        accessibilityLevel: 'yes'
+                      },
+                      allowClose: true
+                    },
+                    {
+                      label: { text: '选项4' },
+                      closeOptions: {
+                        accessibilityText: '删除',
+                        accessibilityDescription: '删除文本',
+                        accessibilityLevel: 'yes'
+                      },
+                      allowClose: true
+                    },
+                    {
+                      label: { text: '选项5' },
+                      closeOptions: {
+                        accessibilityText: '删除',
+                        accessibilityDescription: '删除文本',
+                        accessibilityLevel: 'yes'
+                      },
+                      allowClose: true
+                    },
                   ],
                   suffix: this.Suffix.bind(this),
                   multiple: true,

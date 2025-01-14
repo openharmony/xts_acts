@@ -45,7 +45,7 @@ class Test {
       }).catch((err: Base.BusinessError) => {
         console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
       });
-    }, 2000)
+    }, 4000)
   }
   onDestroy() {
     console.info(printLog1 + 'onDestroy');

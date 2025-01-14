@@ -725,7 +725,7 @@ async function seekLoopWithCallback(avPlayer: media.AVPlayer) {
     new Promise<string>((resolve, reject) => {
       avPlayer?.on('seekDone', seekDoneTime => {
         console.info(`case seekDone called seekDoneTime is ${seekDoneTime}`);
-        resolve("ok");;
+        resolve("ok");
       });
       avPlayer.seek(loopTime);
       console.info(`case seekLoopWithCallback loopTime is ${loopTime}`);

@@ -359,5 +359,72 @@ export default function nativeVsyncTest() {
       expect(result).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_MultiCallbackNormal_0100
+     * @tc.name       : testOHNativeVSyncMultiCallbackNormal
+     * @tc.desc       : test OHNativeVSyncMultiCallbackNormal
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncRequestFrameWithMultiCallbackNormal', 0, async (done: Function) => {
+      let result: Array<number> = vsync.oHNativeVSyncRequestFrameWithMultiCallbackNormal();
+      console.info("testOHNativeVSyncRequestFrameWithMultiCallbackNormal result:" + result);
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+    
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_MultiCallbackNormal_0200
+     * @tc.name       : testOHNativeVSyncMultiCallbackNormal01
+     * @tc.desc       : test OHNativeVSyncMultiCallbackNormal01
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncRequestFrameWithMultiCallbackNormal01', 0, async (done: Function) => {
+      let result: Array<number> = vsync.oHNativeVSyncRequestFrameWithMultiCallbackNormal01();
+      console.info("testOHNativeVSyncRequestFrameWithMultiCallbackNormal01 result:" + result);
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_MultiCallbackAbNormal_0100
+     * @tc.name       : testOHNativeVSyncMultiCallbackAbNormal
+     * @tc.desc       : test testOHNativeVSyncMultiCallbackAbNormal
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHNativeVSyncRequestFrameWithMultiCallbackAbNormal', 0, async (done: Function) => {
+      let result: Array<number> = vsync.oHNativeVSyncRequestFrameWithMultiCallbackAbNormal();
+      console.info("testOHNativeVSyncRequestFrameWithMultiCallbackAbNormal result:" + result);
+      expect(result[0]).assertEqual(40001000);
+      expect(result[1]).assertEqual(40001000);
+      expect(result[2]).assertEqual(40001000);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_MultiCallbackAbNormal_0200
+     * @tc.name       : testOHNativeVSyncMultiCallbackAbNormal01
+     * @tc.desc       : test testOHNativeVSyncMultiCallbackAbNormal01
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHNativeVSyncRequestFrameWithMultiCallbackAbNormal01', 0, async (done: Function) => {
+      let result: Array<number> = vsync.oHNativeVSyncRequestFrameWithMultiCallbackAbNormal01();
+      console.info("testOHNativeVSyncRequestFrameWithMultiCallbackAbNormal01 result:" + result);
+      expect(result[0]).assertEqual(40001000);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
   })
 }

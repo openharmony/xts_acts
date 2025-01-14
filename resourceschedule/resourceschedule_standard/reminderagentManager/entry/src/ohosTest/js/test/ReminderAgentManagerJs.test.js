@@ -116,10 +116,12 @@ export default function ReminderAgentManagerTest() {
          */
         it("reminderRequestAttribute_0003", 0, async function (done) {
             console.info('----------------------reminderRequestAttribute_0003---------------------------');
+            const currentYear = new Date().getFullYear();
+            const nextYear = currentYear + 1
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
                 dateTime: {
-                    year: 2025,
+                    year: nextYear,
                     month: 1,
                     day: 11,
                     hour: 11,

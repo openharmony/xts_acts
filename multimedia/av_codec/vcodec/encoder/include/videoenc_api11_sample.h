@@ -36,10 +36,10 @@
 #include "media_description.h"
 #include "av_common.h"
 #include "external_window.h"
-#include "native_buffer_inner.h"
+#include "native_buffer.h"
 namespace OHOS {
 namespace Media {
-class VEncSignal {
+class VEncAPI11Signal {
 public:
     std::mutex inMutex_;
     std::mutex outMutex_;
@@ -49,6 +49,12 @@ public:
     std::queue<uint32_t> outIdxQueue_;
     std::queue<OH_AVBuffer *> inBufferQueue_;
     std::queue<OH_AVBuffer *> outBufferQueue_;
+};
+struct fileInfo {
+    std::string fileDir;
+    OH_NativeBuffer_Format format;
+    uint32_t width;
+    uint32_t height;
 };
 
 typedef struct LtrTestParameter {
@@ -72,10 +78,18 @@ public:
     uint32_t DEFAULT_BITRATE = 5000000;
     uint32_t DEFAULT_QUALITY = 30;
     double DEFAULT_FRAME_RATE = 30.0;
+    bool isAVCEncoder = true;
+    OH_HEVCProfile hevcProfile = HEVC_PROFILE_MAIN;
+    OH_AVCProfile avcProfile = AVC_PROFILE_BASELINE;
     int32_t DEFAULT_QP = 20;
     uint32_t DEFAULT_BITRATE_MODE = CBR;
+    int32_t DEFAULT_PROFILE = HEVC_PROFILE_MAIN;
     OH_AVPixelFormat DEFAULT_PIX_FMT = AV_PIXEL_FORMAT_NV12;
     uint32_t DEFAULT_KEY_FRAME_INTERVAL = 1000;
+    uint32_t DEFAULT_RANGE_FLAG = 0;
+    uint32_t DEFAULT_COLOR_PRIMARIES = COLOR_PRIMARY_BT709;
+    uint32_t DEFAULT_TRANSFER_CHARACTERISTICS = TRANSFER_CHARACTERISTIC_BT709;
+    uint32_t DEFAULT_MATRIX_COEFFICIENTS = MATRIX_COEFFICIENT_BT709;
     uint32_t repeat_time = 0;
     int32_t CreateVideoEncoder(const char *codecName);
     int32_t ConfigureVideoEncoder();
@@ -110,7 +124,11 @@ public:
     int32_t state_EOS();
     void InputFuncSurface();
     uint32_t ReadOneFrameYUV420SP(uint8_t *dst);
-    void ReadOneFrameRGBA8888(uint8_t *dst);
+    uint32_t ReadOneFrameRGBA8888(uint8_t *dst);
+    uint32_t ReadOneFrameYUVP010(uint8_t *dst);
+    uint32_t ReadOneFrameFromList(uint8_t *dst, int32_t &fileIndex);
+    uint32_t ReadOneFrameByType(uint8_t *dst, OH_NativeBuffer_Format format);
+    int32_t OpenFileFail();
     int32_t CheckAttrFlag(OH_AVCodecBufferAttr attr);
     void OutputFuncFail();
     void OutputFunc();
@@ -122,7 +140,9 @@ public:
     void DumpLtrInfo(OH_AVBuffer *buffer);
     void DumpQPInfo(OH_AVBuffer *buffer);
     void DumpInfo(OH_AVCodecBufferAttr attr, OH_AVBuffer *buffer);
-    VEncSignal *signal_;
+    void readMultiFilesFunc();
+    int32_t InitBuffer(OHNativeWindowBuffer *&ohNativeWindowBuffer, OH_NativeBuffer *&nativeBuffer, uint8_t *&dst);
+    VEncAPI11Signal *signal_;
     uint32_t errCount = 0;
     bool enableForceIDR = false;
     uint32_t outCount = 0;
@@ -131,10 +151,12 @@ public:
     bool sleepOnFPS = false;
     bool SURF_INPUT = false;
     bool enableAutoSwitchParam = false;
+    bool enableColorSpaceParams = false;
     bool enableAutoSwitchBufferParam = false;
     bool needResetBitrate = false;
     bool needResetFrameRate = false;
     bool needResetQP = false;
+    bool enableQP = false;
     bool repeatRun = false;
     bool showLog = false;
     bool enableLTR = false;
@@ -149,7 +171,15 @@ public:
     bool TEMPORAL_ENABLE = false;
     bool TEMPORAL_JUMP_MODE = false;
     bool TEMPORAL_DEFAULT = false;
+    bool TEMPORAL_UNIFORMLY = false;
     bool getQpMse = false;
+    std::vector<fileInfo> fileInfos;
+    bool readMultiFiles = false;
+    bool setFormatRbgx = false;
+    bool configMain = false;
+    bool configMain10 = false;
+    bool setFormat8Bit = false;
+    bool setFormat10Bit = false;
 private:
     std::atomic<bool> isRunning_ { false };
     std::unique_ptr<std::ifstream> inFile_;

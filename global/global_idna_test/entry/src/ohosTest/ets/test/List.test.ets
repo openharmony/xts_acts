@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import abilityTest from './Ability.test';
+import FivePointOneTest from './FivePointOne.test';
 
 export default function testsuite() {
   abilityTest();
+  FivePointOneTest();
 }

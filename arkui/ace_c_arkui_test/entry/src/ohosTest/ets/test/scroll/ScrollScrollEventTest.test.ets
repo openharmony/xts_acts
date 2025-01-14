@@ -22,7 +22,8 @@ async function fling_p(id: string) {
   let driver = Driver.create();
   let refresh = await driver.findComponent(ON.id(id));
   let rect = await refresh.getBounds();
-  await driver.fling({x: rect.left + 40, y: rect.top + 70},{x: rect.left + 40, y: rect.top + 10},5,600);
+  await driver.fling({x: Math.round(rect.left + vp2px(40)), y: Math.round(rect.top + vp2px(70))},
+    {x: Math.round(rect.left + vp2px(40)), y: Math.round(rect.top + vp2px(10))},5,600);
 
 }
 

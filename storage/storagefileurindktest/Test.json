@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsStorageFileUriNdk.hap",
+                "ActsStorageFileUriNdkTest.hap",
                 "ActsStorageFileUriNdkMainTest.hap"
             ],
             "type": "AppInstallKit",

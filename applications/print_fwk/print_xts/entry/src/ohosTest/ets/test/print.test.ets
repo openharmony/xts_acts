@@ -416,5 +416,87 @@ export default function printTest() {
         console.log('getPrinterInformationById failed, error: ' + JSON.stringify(error));
       })
     })
+
+    /**
+     * @tc.number print_function_1000
+     * @tc.name Test print
+     * @tc.desc check the enum api
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_1000', 0, () => {
+      let printerStates = [
+        print.PrinterState.PRINTER_ADDED,
+        print.PrinterState.PRINTER_REMOVED,
+        print.PrinterState.PRINTER_CAPABILITY_UPDATED,
+        print.PrinterState.PRINTER_CONNECTED,
+        print.PrinterState.PRINTER_DISCONNECTED,
+        print.PrinterState.PRINTER_RUNNING
+      ];
+      console.log('printerStates: ' + JSON.stringify(printerStates));
+
+      let jobStates = [
+        print.PrintJobState.PRINT_JOB_PREPARE,
+        print.PrintJobState.PRINT_JOB_QUEUED,
+        print.PrintJobState.PRINT_JOB_RUNNING,
+        print.PrintJobState.PRINT_JOB_BLOCKED,
+        print.PrintJobState.PRINT_JOB_COMPLETED
+      ];
+      console.log('jobStates: ' + JSON.stringify(jobStates));
+
+      let jobSubStates = [
+        print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS,
+        print.PrintJobSubState.PRINT_JOB_COMPLETED_FAILED,
+        print.PrintJobSubState.PRINT_JOB_COMPLETED_CANCELLED,
+        print.PrintJobSubState.PRINT_JOB_COMPLETED_FILE_CORRUPTED,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_OFFLINE,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_BUSY,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_CANCELLED,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_OUT_OF_PAPER,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_OUT_OF_INK,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_OUT_OF_TONER,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_JAMMED,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_DOOR_OPEN,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_SERVICE_REQUEST,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_LOW_ON_INK,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_LOW_ON_TONER,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_REALLY_LOW_ON_INK,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_BAD_CERTIFICATE,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_ACCOUNT_ERROR,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_PRINT_PERMISSION_ERROR,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_PRINT_COLOR_PERMISSION_ERROR,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_NETWORK_ERROR,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_SERVER_CONNECTION_ERROR,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_LARGE_FILE_ERROR,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_FILE_PARSING_ERROR,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_SLOW_FILE_CONVERSION,
+        print.PrintJobSubState.PRINT_JOB_RUNNING_UPLOADING_FILES,
+        print.PrintJobSubState.PRINT_JOB_RUNNING_CONVERTING_FILES,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_UNKNOWN
+      ];
+      console.log('jobSubStates: ' + JSON.stringify(jobSubStates));
+
+      let errorCodes = [
+        print.PrintErrorCode.E_PRINT_NONE,
+        print.PrintErrorCode.E_PRINT_NO_PERMISSION,
+        print.PrintErrorCode.E_PRINT_INVALID_PARAMETER,
+        print.PrintErrorCode.E_PRINT_GENERIC_FAILURE,
+        print.PrintErrorCode.E_PRINT_RPC_FAILURE,
+        print.PrintErrorCode.E_PRINT_SERVER_FAILURE,
+        print.PrintErrorCode.E_PRINT_INVALID_EXTENSION,
+        print.PrintErrorCode.E_PRINT_INVALID_PRINTER,
+        print.PrintErrorCode.E_PRINT_INVALID_PRINT_JOB,
+        print.PrintErrorCode.E_PRINT_FILE_IO
+      ];
+      console.log('errorCodes: ' + JSON.stringify(errorCodes));
+
+      let applicationEvents = [
+        print.ApplicationEvent.APPLICATION_CREATED,
+        print.ApplicationEvent.APPLICATION_CLOSED_FOR_STARTED,
+        print.ApplicationEvent.APPLICATION_CLOSED_FOR_CANCELED
+      ];
+      console.log('applicationEvents: ' + JSON.stringify(applicationEvents));
+    })
   })
 }

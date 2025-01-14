@@ -19,5 +19,5 @@ ohos_js_app_suite("ActsNetworkMgrConnectionNopTest") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsNetworkMgrConnectionNopTest"
   subsystem_name = "telephony"
-  part_name = "netmanager_base"
+  part_name = "sms_mms"
 }

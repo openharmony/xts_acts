@@ -17,6 +17,9 @@ import EmptyTest from './Empty.test';
 import EsimNoPermissionPublic from './EsimNoPermissionPublic.test';
 
 export default function testsuite() {
-  EmptyTest();
-  EsimNoPermissionPublic();
+    if (canIUse("SystemCapability.Telephony.CoreService.Esim")) {
+      EsimNoPermissionPublic();
+    } else {
+      EmptyTest();
+    }
 }

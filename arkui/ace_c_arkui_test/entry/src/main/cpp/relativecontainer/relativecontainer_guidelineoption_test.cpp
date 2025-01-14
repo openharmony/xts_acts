@@ -84,12 +84,12 @@ static napi_value TestRelativeContainerGuidelineOptionGetId001(napi_env env, nap
     const char* guidelineId = "line1";
     OH_ArkUI_GuidelineOption_SetId(guideline, guidelineId, PARAM_0);
     auto ret = OH_ArkUI_GuidelineOption_GetId(guideline, PARAM_0);
-    OH_ArkUI_GuidelineOption_Dispose(guideline);
     if (::strcmp(ret, guidelineId) != PARAM_0) {
         napi_value errorResult = nullptr;
         napi_create_int32(env, PARAM_NEGATIVE_1, &errorResult);
         return errorResult;
     }
+    OH_ArkUI_GuidelineOption_Dispose(guideline);
     NAPI_END;
 }
 

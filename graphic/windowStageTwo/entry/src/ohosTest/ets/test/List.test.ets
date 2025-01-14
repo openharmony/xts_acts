@@ -21,6 +21,7 @@ import windowPropertiesTest from './WindowProperties.test';
 import windowManageTest from './WindowManage.test';
 import windowInterface from './WindowInterface.test';
 import windowZindexTest from './WindowZindex.test';
+import extensionWindowPropertiesTest from './ExtensionWindowProperties.test';
 export default function testsuite() {
   windowInterface();
   windowTitleBarTest();
@@ -31,4 +32,5 @@ export default function testsuite() {
   windowMaximizeTest();
   windowImmersiveTest();
   windowPropertiesTest();
+  extensionWindowPropertiesTest();
 }
