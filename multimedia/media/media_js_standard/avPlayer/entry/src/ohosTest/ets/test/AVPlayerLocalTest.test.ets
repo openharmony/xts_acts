@@ -883,7 +883,9 @@ export default function AVPlayerLocalTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_0200', 0, async (done: Function) => {
       if (fileDescriptor) {
-        let playbackStrategy: media.PlaybackStrategy = { showFirstFrameOnPrepare: true }
+        let playbackStrategy: media.PlaybackStrategy = {
+            mutedMediaType: media.MediaType.MEDIA_TYPE_AUD,
+            showFirstFrameOnPrepare: true }
         testSetPlaybackStrategy(fileDescriptor, avPlayer, done, playbackStrategy);
       }
     });
