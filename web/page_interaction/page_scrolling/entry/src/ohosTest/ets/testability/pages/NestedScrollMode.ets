@@ -15,7 +15,8 @@
 import web_webview from '@ohos.web.webview';
 import Utils from '../../test/Utils';
 import { BusinessError } from '@ohos.base';
-import { Driver, ON } from '@ohos.UiTest';
+import CommonFunc from '../../test/Common';
+import { Driver, ON,MouseButton  } from '@ohos.UiTest';
 import events_emitter from '@ohos.events.emitter';
 
 
@@ -90,10 +91,9 @@ struct WebComponent {
                     }).key('innerWidth1')
                   Button("web test").key('NestedScrollModeTest').onClick(async () => {
                     console.info("key==>" + this.str)
-                    let webRect = Utils.getComponentRect('NestedScrollModeWeb');
-                    console.log('webRect' + webRect)
-                    let X = Utils.getRectHorizontalCenterX(webRect)
-                    let Y = Utils.getRectVerticalCenterY(webRect) - 400
+                    let pointer = CommonFunc.getComponentRect('NestedScrollModeWeb')
+                    let X = pointer.left + 330
+                    let Y = pointer.top + 330
                     let driver: Driver = await Driver.create()
                     let button1 = await driver.findComponent(ON.id('innerWidth1'));
                     await button1.click()
@@ -105,6 +105,7 @@ struct WebComponent {
                         let driver: Driver = await Driver.create()
                         console.log('swipe01' + this.offsetX)
                         this.controller2.scrollBy(this.text4, 0, 1)
+                        await driver.mouseClick({x:X, y:Y}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
                         await driver.swipe(X, Y, X - 200, Y);
                         await Utils.sleep(1000);
                         if (this.offsetX == 0 && this.HorizontalX > 10) {
@@ -121,6 +122,7 @@ struct WebComponent {
                         await Utils.sleep(1000);
                         //web向右滚到头了,this.offsetX 等于0
                         this.controller2.scrollBy(-this.text4, 0, 1)
+                        await driver.mouseClick({x:X, y:Y}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
                         await driver.swipe(X, Y, X + 400, Y);
                         if (this.offsetX == 0 && this.HorizontalX < 10) {
                           Utils.emitEvent(true, 20241130)
@@ -137,6 +139,7 @@ struct WebComponent {
                       case "NestedScrollMode03": {
                         let driver: Driver = await Driver.create()
                         this.controller2.scrollBy(0, this.text5, 1);
+                        await driver.mouseClick({x:X, y:Y}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
                         await driver.swipe(X, Y, X, Y - 200);
                         await Utils.sleep(2000);
                         //子组件向上滚到头了
@@ -156,7 +159,8 @@ struct WebComponent {
                         let driver: Driver = await Driver.create()
                         console.log('swipe07' + this.offsetY)
                         this.controller2.scrollBy(0, -this.text5, 1);
-                        await driver.swipe(X, Y, X, Y + 200);
+                        await driver.mouseClick({x:X, y:Y}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+                        await driver.swipe(X, Y, X, Y + 400);
                         await Utils.sleep(1000);
                         //子组件滚到头为0
                         if (this.offsetY == 0 && this.HorizontalY < 10) {
@@ -218,7 +222,7 @@ struct WebComponent {
                       this.offsetX = event.xOffset;
                       this.offsetY = event.yOffset;
                     })
-                    .key('NestedScrollModeWeb')
+
                     .border({ width: 5, color: '#ef3e53' })
                     .onScroll((event) => {
                       console.info("xOffset = " + event.xOffset);
@@ -235,6 +239,7 @@ struct WebComponent {
               }
             }
             .width("100%")
+            .key('NestedScrollModeWeb')
             .height(1000)
             .border({ width: 5 })
             .scrollable(this.ScrollDirection)
@@ -246,6 +251,7 @@ struct WebComponent {
           }
         }
         .width("100%")
+
         .height("100%")
         .border({ width: 5 })
         .scrollable(ScrollDirection.Vertical)
