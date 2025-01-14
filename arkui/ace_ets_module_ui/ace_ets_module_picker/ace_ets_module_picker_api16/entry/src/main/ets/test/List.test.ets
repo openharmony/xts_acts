@@ -15,6 +15,8 @@
 
 
 import buttonType from './buttonType/buttonTypeApi.test';
+import enableCascadeTest from './timePicker/enableCascadeTest.test';
 export default function testsuite() {
   buttonType();
+  enableCascadeTest();
 }
