@@ -43,12 +43,23 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
       console.info('window_layout_test beforeAll end');
     })
     beforeEach(async ()=>{
+      let msg = 'window_focus_test';
+      console.log(msg + ' beforeEach start!!!');
       if(tempWnd !== null && tempWnd !== undefined){
-        await (tempWnd as window.Window).destroyWindow();
+        await (tempWnd as window.Window).destroyWindow().then(() => {
+          console.info(msg + ' Succeeded in destroying the window.');
+        }).catch((err: BusinessError) => {
+          console.error(msg + `Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
       }
       if(subWin !== null && subWin !== undefined){
-        await (subWin as window.Window).destroyWindow();
+        await (subWin as window.Window).destroyWindow().then(() => {
+          console.info(msg + ' Succeeded in destroying the window.');
+        }).catch((err: BusinessError) => {
+          console.error(msg + `Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
       }
+      console.log(msg + ' beforeEach end!!!')
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5090
