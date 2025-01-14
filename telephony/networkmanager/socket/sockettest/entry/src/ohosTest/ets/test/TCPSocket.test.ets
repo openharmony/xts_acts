@@ -21,6 +21,10 @@ function expectSuccess(): void {
   expect(true).assertTrue();
 }
 
+function sleep(ms: number) {
+    return new Promise<void>(resolve => setTimeout(resolve, ms));
+}
+
 function expectFail(info: string = ''): void {
   try {
     expect(false).assertTrue();
@@ -965,6 +969,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect0100';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
@@ -1010,6 +1015,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect0200';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1050,6 +1056,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect0300';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1090,6 +1097,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect0400';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1138,6 +1146,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect0500';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1182,6 +1191,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect0600';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1227,6 +1237,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect0700';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1272,6 +1283,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect0800';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1315,6 +1327,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1000';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1362,6 +1375,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1100';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1409,6 +1423,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1200';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1456,6 +1471,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1300';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1503,6 +1519,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1400';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1550,6 +1567,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1500';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1597,6 +1615,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1600';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let tcpConnectOptions: socket.TCPConnectOptions = {
@@ -1637,6 +1656,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1700';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
@@ -1685,6 +1705,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1800';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1725,6 +1746,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect1900';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1765,6 +1787,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2000';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1814,6 +1837,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2100';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1862,6 +1886,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2200';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1908,6 +1933,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2300';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1954,6 +1980,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2400';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -1998,6 +2025,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2500';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2046,6 +2074,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2600';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2094,6 +2123,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2700';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2142,6 +2172,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2800';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2190,6 +2221,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect2900';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2238,6 +2270,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect3000';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2286,6 +2319,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect3100';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2334,6 +2368,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnect3200';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let tcpConnectOptions: socket.TCPConnectOptions = {
@@ -2376,6 +2411,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend0100';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2422,6 +2458,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend0200';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
         let listenAddress: socket.NetAddress = {
@@ -2468,6 +2505,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend0400';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2513,6 +2551,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend0500';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2556,6 +2595,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend0600';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2602,6 +2642,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend0700';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2649,6 +2690,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend0800';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2696,6 +2738,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend0900';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2743,6 +2786,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1000';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2790,6 +2834,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1100';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2837,6 +2882,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1200';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2884,6 +2930,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1300';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2931,6 +2978,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1400';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -2978,6 +3026,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1500';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -3025,6 +3074,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1600';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -3072,6 +3122,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1700';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
@@ -3120,6 +3171,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend1900';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
@@ -3165,6 +3217,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2000';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
@@ -3210,6 +3263,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2100';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -3257,6 +3311,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2200';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -3305,6 +3360,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2300';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -3353,6 +3409,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2400';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -3401,6 +3458,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2500';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -3449,6 +3507,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2600';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -3497,6 +3556,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2700';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -3545,6 +3605,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2800';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -3593,6 +3654,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend2900';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -3641,6 +3703,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketSend3000';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -3722,6 +3785,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketClose0200';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -3764,6 +3828,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketClose0300';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
@@ -3842,6 +3907,7 @@ export default function TCPSocketTest() {
     it('testNetworkMgrSocketTCPSocketClose0500', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketClose0500';
       console.info(`${caseName} test start`);
+      await sleep(500);
       try {
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
@@ -3885,6 +3951,7 @@ export default function TCPSocketTest() {
     it('testNetworkMgrSocketTCPSocketClose0600', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketClose0500';
       console.info(`${caseName} test start`);
+      await sleep(500);
       try {
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
@@ -3966,6 +4033,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetRemoteAddress0200';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -4012,6 +4080,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetRemoteAddress0300';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
@@ -4093,6 +4162,7 @@ export default function TCPSocketTest() {
     it('testNetworkMgrSocketTCPSocketGetRemoteAddress0500', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetRemoteAddress0500';
       console.info(`${caseName} test start`);
+      await sleep(500);
       try {
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
@@ -4140,6 +4210,7 @@ export default function TCPSocketTest() {
     it('testNetworkMgrSocketTCPSocketGetRemoteAddress0600', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetRemoteAddress0600';
       console.info(`${caseName} test start`);
+      await sleep(500);
       try {
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
@@ -4226,6 +4297,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetState0200';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -4267,6 +4339,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetState0300';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -4312,6 +4385,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetState0400';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
@@ -4396,6 +4470,7 @@ export default function TCPSocketTest() {
     it('testNetworkMgrSocketTCPSocketGetState0600', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetState0600'
       console.info(`${caseName} test start`);
+      await sleep(500);
       try {
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
@@ -4439,6 +4514,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetState0700';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -4485,6 +4561,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetState0800';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
@@ -4567,6 +4644,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetSocketFd0200';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -4606,6 +4684,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetSocketFd0300';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let bindAddress: socket.NetAddress = {
@@ -4649,6 +4728,7 @@ export default function TCPSocketTest() {
       let caseName: string = 'testNetworkMgrSocketTCPSocketGetSocketFd0400';
       try {
         console.info(`${caseName} test start`);
+        await sleep(500);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
         let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
