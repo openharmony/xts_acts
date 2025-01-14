@@ -20,6 +20,7 @@ import { testAVPlayerFun, setSource, setSubtitle, PlayTest } from './AVPlayerTes
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
+import { bundleManager } from '@kit.AbilityKit';
 
 const VIDEO_SOURCE = 'H264_AAC.mp4';
 const AUDIO_SOURCE = '01.mp3';
@@ -883,9 +884,22 @@ export default function AVPlayerLocalTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_0200', 0, async (done: Function) => {
       if (fileDescriptor) {
-        let playbackStrategy: media.PlaybackStrategy = {
-            mutedMediaType: media.MediaType.MEDIA_TYPE_AUD,
-            showFirstFrameOnPrepare: true }
+        let playbackStrategy: media.PlaybackStrategy = { showFirstFrameOnPrepare: true }
+        try {
+          bundleManager.getBundleInfoForSelf(0).then((data) => {
+              console.info(`case data.targetVersion is ${data.targetVersion}`);
+              if (data.targetVersion < 16) {
+                console.info(`case data.targetVersion < 16 ENTER`);
+                playbackStrategy.mutedMediaType = media.MediaType.MEDIA_TYPE_AUD;
+              }
+            }).catch((err: BusinessError) => {
+              console.error(`case data.targetVersion ERROR`);
+              done();
+            });
+        } catch (err) {
+          console.error(`case getBundleInfoForSelf error, errMessage is ${err.message}`);
+          done();
+        }
         testSetPlaybackStrategy(fileDescriptor, avPlayer, done, playbackStrategy);
       }
     });
