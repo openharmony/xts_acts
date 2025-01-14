@@ -1011,8 +1011,9 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       expect(!!lastWindow).assertTrue();
       console.log(msgStr + 'lastWindow is:' + JSON.stringify(lastWindow))
       let properties = (lastWindow as ohosWindow.Window).getWindowProperties();
-      expect(properties.windowRect.width).assertEqual(400);
-      expect(properties.windowRect.height).assertEqual(400);
+      let SubProperties = (subWindow as ohosWindow.Window).getWindowProperties();
+      console.log(msgStr + 'SubProperties is:' + JSON.stringify(SubProperties));
+      expect(properties.id).assertEqual(SubProperties.id);
       await (subWindow as ohosWindow.Window).destroyWindow();
     })
     /**
@@ -1063,8 +1064,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       let lastWindow_properties = (lastWindow as ohosWindow.Window).getWindowProperties();
       let mainWin = windowStage.getMainWindowSync();
       let mainWin_properties = (mainWin as ohosWindow.Window).getWindowProperties();
-      expect(lastWindow_properties.windowRect.width).assertEqual(mainWin_properties.windowRect.width);
-      expect(lastWindow_properties.windowRect.height).assertEqual(mainWin_properties.windowRect.height);
+      expect(lastWindow_properties.id).assertEqual(mainWin_properties.id);
       await (tempWnd as ohosWindow.Window).destroyWindow();
     })
     /**
