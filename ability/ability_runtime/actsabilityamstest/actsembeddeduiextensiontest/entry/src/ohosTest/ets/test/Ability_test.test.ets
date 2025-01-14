@@ -35,13 +35,16 @@ export default function AbilityRuntime_Test() {
     beforeAll(() => {
       try {
         info = systemParameterEnhance.getSync('persist.sys.abilityms.multi_process_model')
+        console.log('sdas',info)
       } catch (e) {
         console.log('getSync unexpected error: ' + e);
       }
     })
 
     afterEach(() => {
-      router.back()
+      if (info =='true') {
+        router.back()
+      }
     })
     /**
      * @tc.number SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4600

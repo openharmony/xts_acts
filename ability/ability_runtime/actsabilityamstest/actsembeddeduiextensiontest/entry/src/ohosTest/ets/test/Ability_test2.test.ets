@@ -39,7 +39,9 @@ export default function AbilityRuntime2_Test() {
       }
     })
     afterEach(() => {
-      router.back()
+      if (info == 'true') {
+        router.back()
+      }
     })
 
     /**
