@@ -1522,6 +1522,7 @@ static napi_value GetAllSystemHotkeys(napi_env env, napi_callback_info info)
     napi_value result;
     int32_t count = 1;
     Input_Result ret = OH_Input_GetAllSystemHotkeys(nullptr, &count);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Input_Api_Ndk_GetAllSystemHotkeys_0100 ret:%{public}d", ret);
     napi_create_int32(env, ret == INPUT_SUCCESS ? 1 : 0, &result);
     return result;
 }
@@ -1532,6 +1533,7 @@ static napi_value CreateAllSystemHotkeys(napi_env env, napi_callback_info info)
     int32_t count = 1;
     OH_Input_GetAllSystemHotkeys(nullptr, &count);
     Input_Hotkey **hotkey = OH_Input_CreateAllSystemHotkeys(count);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Input_Api_Ndk_CreateAllSystemHotkeys_0100 hotkey:%{public}d", hotkey);
     napi_create_int32(env, hotkey != nullptr ? 1 : 0, &result);
     OH_Input_DestroyAllSystemHotkeys(hotkey, count);
     return result;
@@ -1544,6 +1546,7 @@ static napi_value GetAllSystemHotkeys2(napi_env env, napi_callback_info info)
     Input_Result ret = OH_Input_GetAllSystemHotkeys(nullptr, &count);
     Input_Hotkey **hotkey = OH_Input_CreateAllSystemHotkeys(count);
     ret = OH_Input_GetAllSystemHotkeys(hotkey, &count);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Input_Api_Ndk_GetAllSystemHotkeys_0200 ret:%{public}d", ret);
     napi_create_int32(env, ret == INPUT_SUCCESS ? 1 : 0, &result);
     OH_Input_DestroyAllSystemHotkeys(hotkey, count);
     return result;
@@ -1975,6 +1978,7 @@ static napi_value AddHotkeyMonitor23(napi_env env, napi_callback_info info)
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2300 ret:%{public}d", ret);
     napi_create_int32(env, ((ret == INPUT_OCCUPIED_BY_OTHER || ret == INPUT_OCCUPIED_BY_SYSTEM)
         && hotkey == nullptr) ? 1 : 0, &result);
     return result;

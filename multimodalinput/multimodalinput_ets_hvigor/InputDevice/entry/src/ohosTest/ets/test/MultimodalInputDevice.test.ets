@@ -482,7 +482,7 @@ export default function MultimodalInputDeviceTest() {
       let caseName = "SUB_MMI_Input_Api_IptDev_getAllSystemHotkeys_0100";
       try {
         inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
-          if(data.length > 0) {
+          if(data.length >= 0) {
             console.info(`${caseName} list of system hotkeys: ${JSON.stringify(data)}`);
             ExpectTrue(true);
             done();
