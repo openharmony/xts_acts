@@ -127,7 +127,7 @@ export default function locationComponentTest() {
               console.info("====>[Test_Security_Button_Location_0100] END====");
               done()
             }
-        } else {
+          } else {
             console.info("====>[Test_Security_Button_Location_0100] 设置权限失败");
             expect().assertFail()
             console.info("====>[Test_Security_Button_Location_0100] END====");
@@ -224,20 +224,20 @@ export default function locationComponentTest() {
       try {
         let clickCallback = (clickData:events_emitter.EventData) => {
           if(clickData.data !=undefined){
-          console.info("====>[Test_Security_Button_Location_0200] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.info("====>[Test_Security_Button_Location_0200] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
-          if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
-            console.info("====>[Test_Security_Button_Location_0200] 设置权限成功");
-            expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
-            console.info("====>[Test_Security_Button_Location_0200] END====");
-            done();
+            console.info("====>[Test_Security_Button_Location_0200] get clickEvent result is: " + JSON.stringify(clickEvent));
+            console.info("====>[Test_Security_Button_Location_0200] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+            if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+              console.info("====>[Test_Security_Button_Location_0200] 设置权限成功");
+              expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
+              console.info("====>[Test_Security_Button_Location_0200] END====");
+              done();
+            } else {
+              console.info("====>[Test_Security_Button_Location_0200] 设置权限失败");
+              expect().assertFail()
+              console.info("====>[Test_Security_Button_Location_0200] END====");
+              done();
+            }
           } else {
-            console.info("====>[Test_Security_Button_Location_0200] 设置权限失败");
-            expect().assertFail()
-            console.info("====>[Test_Security_Button_Location_0200] END====");
-            done();
-          }
-        } else {
             console.info("====>[Test_Security_Button_Location_0200] 设置权限失败");
             expect().assertFail()
             console.info("====>[Test_Security_Button_Location_0200] END====");
@@ -1116,10 +1116,10 @@ export default function locationComponentTest() {
             "borderWid": 5,
             "borderCol": 0xffffffff,
             "borderRad": 5,
-            "left": 12,
-            "right": 12,
-            "top": 4,
-            "bottom": 4,
+            "left": 6,
+            "right": 6,
+            "top": 2,
+            "bottom": 2,
             "middle": 4
           }
         }
@@ -1220,10 +1220,10 @@ export default function locationComponentTest() {
             "borderWid": 5,
             "borderCol": 0xffffffff,
             "borderRad": 5,
-            "left": 12,
-            "right": 12,
-            "top": 4,
-            "bottom": 4,
+            "left": 6,
+            "right": 6,
+            "top": 2,
+            "bottom": 2,
             "middle": 4
           }
         }
@@ -1324,10 +1324,10 @@ export default function locationComponentTest() {
             "borderWid": 5,
             "borderCol": 0xffffffff,
             "borderRad": 5,
-            "left": 12,
-            "right": 12,
-            "top": 4,
-            "bottom": 4,
+            "left": 6,
+            "right": 6,
+            "top": 2,
+            "bottom": 2,
             "middle": 4
           }
         }
@@ -1435,7 +1435,7 @@ export default function locationComponentTest() {
             "middle": 4
           }
         }
-         try{
+        try{
           window.getLastWindow(globalThis.abilityContext, (err, data) => {
             const errCode = err.code;
             if(errCode){
@@ -1552,7 +1552,7 @@ export default function locationComponentTest() {
             "middle": 4
           }
         }
-         try{
+        try{
           window.getLastWindow(globalThis.abilityContext, (err, data) => {
             const errCode = err.code;
             if(errCode){
@@ -1677,7 +1677,7 @@ export default function locationComponentTest() {
           console.info('====>[Test_Security_Button_Location_1600] button_iconSize is: ' + button_iconSize);
           let offsetObj:ESObject = {
             "iconSize": `${button_iconSize}px`
-            };
+          };
           ObjectUtils.assign(eventData.data,offsetObj);
         });
         await Utils.sleep(1000);
@@ -2284,10 +2284,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 12,
-            "right": 12,
-            "top": 4,
-            "bottom": 4,
+            "left": 6,
+            "right": 6,
+            "top": 2,
+            "bottom": 2,
             "middle": 4
           }
         }

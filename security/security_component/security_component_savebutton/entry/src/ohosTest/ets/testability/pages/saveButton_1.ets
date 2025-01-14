@@ -39,476 +39,509 @@ struct saveButton_1 {
   @State borderWid: number = 0
   @State borderCol: number = 0xffffffff
   @State borderRad: number = 0
-  @State left: number = 24
-  @State right: number = 24
-  @State top: number = 8
-  @State bottom: number = 8
+  @State left: number = 12
+  @State right: number = 12
+  @State top: number = 4
+  @State bottom: number = 4
   @State middle: number = 4
   @State heightValue: number = 4
   marginValue:ESObject = {top:30, bottom:20, left:10, right:10}
+  @State isShow: number = 0
 
   build() {
     Row(){
       Column(){
         Row() {
-          SaveButton({ icon: SaveIconStyle.LINES, text: SaveDescription.DOWNLOAD_FILE, buttonType: this.bgType })
-            .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
-              try {
-                let clickData:events_emitter.EventData = {
-                  data: {
-                    "clickResult": result,
+          Column() {
+            SaveButton({ icon: SaveIconStyle.LINES, text: SaveDescription.DOWNLOAD_FILE, buttonType: this.bgType })
+              .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
+                try {
+                  let clickData:events_emitter.EventData = {
+                    data: {
+                      "clickResult": result,
+                    }
                   }
-                }
-                let clickEvent:events_emitter.InnerEvent = {
-                  eventId: 2,
-                  priority: events_emitter.EventPriority.LOW
-                }
-                console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
-                events_emitter.emit(clickEvent, clickData)
-              } catch (err) {
-                console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
-              }
-            })
-            .iconSize(this.iconSize)
-            .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
-            .markAnchor({ x: this.anchorX, y: this.anchorY })
-            .offset({ x: this.offsetX, y: 0 })
-            .fontSize(this.fontSize)
-            .fontStyle(this.fontStyle)
-            .fontWeight(this.fontWeight)
-            .fontFamily(this.fontFamily)
-            .fontColor('0xFFFFF000')
-            .iconColor(this.iconColor)
-            .backgroundColor(this.bgColor)
-            .borderStyle(this.borderSty)
-            .borderWidth(this.borderWid)
-            .borderColor(this.borderCol)
-            .borderRadius(this.borderRad)
-            .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
-            .textIconSpace(this.middle)
-            .key("keySave2")
-        }.width('100%').height(this.heightValue).margin(this.marginValue)
-        Row() {
-          SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.SAVE, buttonType: this.bgType })
-            .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
-              try {
-                let clickData:events_emitter.EventData = {
-                  data: {
-                    "clickResult": result,
+                  let clickEvent:events_emitter.InnerEvent = {
+                    eventId: 2,
+                    priority: events_emitter.EventPriority.LOW
                   }
+                  console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
+                  events_emitter.emit(clickEvent, clickData)
+                } catch (err) {
+                  console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
                 }
-                let clickEvent:events_emitter.InnerEvent = {
-                  eventId: 2,
-                  priority: events_emitter.EventPriority.LOW
-                }
-                console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
-                events_emitter.emit(clickEvent, clickData)
-              } catch (err) {
-                console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
-              }
-            })
-            .iconSize(this.iconSize)
-            .layoutDirection(SecurityComponentLayoutDirection.VERTICAL)
-            .markAnchor({ x: this.anchorX, y: this.anchorY })
-            .offset({ x: this.offsetX, y: 0 })
-            .fontSize(this.fontSize)
-            .fontStyle(this.fontStyle)
-            .fontWeight(this.fontWeight)
-            .fontFamily(this.fontFamily)
-            .fontColor('0xFFFFF000')
-            .iconColor(this.iconColor)
-            .backgroundColor(this.bgColor)
-            .borderStyle(this.borderSty)
-            .borderWidth(this.borderWid)
-            .borderColor(this.borderCol)
-            .borderRadius(this.borderRad)
-            .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
-            .textIconSpace(this.middle)
-            .key("keySave3")
-        }.width('100%').height(this.heightValue).margin(this.marginValue)
-        Row() {
-          SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.SAVE_IMAGE, buttonType: this.bgType })
-            .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
-              try {
-                let clickData:events_emitter.EventData = {
-                  data: {
-                    "clickResult": result,
+              })
+              .iconSize(this.iconSize)
+              .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
+              .markAnchor({ x: this.anchorX, y: this.anchorY })
+              .offset({ x: this.offsetX, y: 0 })
+              .fontSize(this.fontSize)
+              .fontStyle(this.fontStyle)
+              .fontWeight(this.fontWeight)
+              .fontFamily(this.fontFamily)
+              .fontColor('0xFFFFF000')
+              .iconColor(this.iconColor)
+              .backgroundColor(this.bgColor)
+              .borderStyle(this.borderSty)
+              .borderWidth(this.borderWid)
+              .borderColor(this.borderCol)
+              .borderRadius(this.borderRad)
+              .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
+              .textIconSpace(this.middle)
+              .key("keySave2")
+          }
+          .visibility(this.isShow === 0 ? Visibility.Visible : Visibility.None)
+
+          Column() {
+            SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.SAVE, buttonType: this.bgType })
+              .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
+                try {
+                  let clickData:events_emitter.EventData = {
+                    data: {
+                      "clickResult": result,
+                    }
                   }
-                }
-                let clickEvent:events_emitter.InnerEvent = {
-                  eventId: 2,
-                  priority: events_emitter.EventPriority.LOW
-                }
-                console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
-                events_emitter.emit(clickEvent, clickData)
-              } catch (err) {
-                console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
-              }
-            })
-            .iconSize(this.iconSize)
-            .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
-            .markAnchor({ x: this.anchorX, y: this.anchorY })
-            .offset({ x: this.offsetX, y: 0 })
-            .fontSize(this.fontSize)
-            .fontStyle(this.fontStyle)
-            .fontWeight(this.fontWeight)
-            .fontFamily(this.fontFamily)
-            .fontColor('0xFFFFF000')
-            .iconColor(this.iconColor)
-            .backgroundColor(this.bgColor)
-            .borderStyle(this.borderSty)
-            .borderWidth(this.borderWid)
-            .borderColor(this.borderCol)
-            .borderRadius(this.borderRad)
-            .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
-            .textIconSpace(this.middle)
-            .key("keySave4")
-        }.width('100%').height(this.heightValue).margin(this.marginValue)
-        Row() {
-          SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.SAVE_FILE, buttonType: this.bgType })
-            .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
-              try {
-                let clickData:events_emitter.EventData = {
-                  data: {
-                    "clickResult": result,
+                  let clickEvent:events_emitter.InnerEvent = {
+                    eventId: 2,
+                    priority: events_emitter.EventPriority.LOW
                   }
+                  console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
+                  events_emitter.emit(clickEvent, clickData)
+                } catch (err) {
+                  console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
                 }
-                let clickEvent:events_emitter.InnerEvent = {
-                  eventId: 2,
-                  priority: events_emitter.EventPriority.LOW
-                }
-                console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
-                events_emitter.emit(clickEvent, clickData)
-              } catch (err) {
-                console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
-              }
-            })
-            .iconSize(this.iconSize)
-            .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
-            .markAnchor({ x: this.anchorX, y: this.anchorY })
-            .offset({ x: this.offsetX, y: 0 })
-            .fontSize(this.fontSize)
-            .fontStyle(this.fontStyle)
-            .fontWeight(this.fontWeight)
-            .fontFamily(this.fontFamily)
-            .fontColor('0xFFFFF000')
-            .iconColor(this.iconColor)
-            .backgroundColor(this.bgColor)
-            .borderStyle(this.borderSty)
-            .borderWidth(this.borderWid)
-            .borderColor(this.borderCol)
-            .borderRadius(this.borderRad)
-            .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
-            .textIconSpace(this.middle)
-            .key("keySave5")
-        }.width('100%').height(this.heightValue).margin(this.marginValue)
-        Row() {
-          SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD_AND_SHARE, buttonType: this.bgType })
-            .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
-              try {
-                let clickData:events_emitter.EventData = {
-                  data: {
-                    "clickResult": result,
+              })
+              .iconSize(this.iconSize)
+              .layoutDirection(SecurityComponentLayoutDirection.VERTICAL)
+              .markAnchor({ x: this.anchorX, y: this.anchorY })
+              .offset({ x: this.offsetX, y: 0 })
+              .fontSize(this.fontSize)
+              .fontStyle(this.fontStyle)
+              .fontWeight(this.fontWeight)
+              .fontFamily(this.fontFamily)
+              .fontColor('0xFFFFF000')
+              .iconColor(this.iconColor)
+              .backgroundColor(this.bgColor)
+              .borderStyle(this.borderSty)
+              .borderWidth(this.borderWid)
+              .borderColor(this.borderCol)
+              .borderRadius(this.borderRad)
+              .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
+              .textIconSpace(this.middle)
+              .key("keySave3")
+          }
+          .visibility(this.isShow === 1 ? Visibility.Visible : Visibility.None)
+
+          Column() {
+            SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.SAVE_IMAGE, buttonType: this.bgType })
+              .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
+                try {
+                  let clickData:events_emitter.EventData = {
+                    data: {
+                      "clickResult": result,
+                    }
                   }
-                }
-                let clickEvent:events_emitter.InnerEvent = {
-                  eventId: 2,
-                  priority: events_emitter.EventPriority.LOW
-                }
-                console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
-                events_emitter.emit(clickEvent, clickData)
-              } catch (err) {
-                console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
-              }
-            })
-            .iconSize(this.iconSize)
-            .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
-            .markAnchor({ x: this.anchorX, y: this.anchorY })
-            .offset({ x: this.offsetX, y: 0 })
-            .fontSize(this.fontSize)
-            .fontStyle(this.fontStyle)
-            .fontWeight(this.fontWeight)
-            .fontFamily(this.fontFamily)
-            .fontColor('0xFFFFF000')
-            .iconColor(this.iconColor)
-            .backgroundColor(this.bgColor)
-            .borderStyle(this.borderSty)
-            .borderWidth(this.borderWid)
-            .borderColor(this.borderCol)
-            .borderRadius(this.borderRad)
-            .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
-            .textIconSpace(this.middle)
-            .key("keySave6")
-        }.width('100%').height(this.heightValue).margin(this.marginValue)
-        Row() {
-          SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.RECEIVE, buttonType: this.bgType })
-            .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
-              try {
-                let clickData:events_emitter.EventData = {
-                  data: {
-                    "clickResult": result,
+                  let clickEvent:events_emitter.InnerEvent = {
+                    eventId: 2,
+                    priority: events_emitter.EventPriority.LOW
                   }
+                  console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
+                  events_emitter.emit(clickEvent, clickData)
+                } catch (err) {
+                  console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
                 }
-                let clickEvent:events_emitter.InnerEvent = {
-                  eventId: 2,
-                  priority: events_emitter.EventPriority.LOW
-                }
-                console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
-                events_emitter.emit(clickEvent, clickData)
-              } catch (err) {
-                console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
-              }
-            })
-            .iconSize(this.iconSize)
-            .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
-            .markAnchor({ x: this.anchorX, y: this.anchorY })
-            .offset({ x: this.offsetX, y: 0 })
-            .fontSize(this.fontSize)
-            .fontStyle(this.fontStyle)
-            .fontWeight(this.fontWeight)
-            .fontFamily(this.fontFamily)
-            .fontColor('0xFFFFF000')
-            .iconColor(this.iconColor)
-            .backgroundColor(this.bgColor)
-            .borderStyle(this.borderSty)
-            .borderWidth(this.borderWid)
-            .borderColor(this.borderCol)
-            .borderRadius(this.borderRad)
-            .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
-            .textIconSpace(this.middle)
-            .key("keySave7")
-        }.width('100%').height(this.heightValue).margin(this.marginValue)
-      }.width('50%').height('100%')
-      Column(){
-        Row() {
-          SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.CONTINUE_TO_RECEIVE, buttonType: this.bgType })
-            .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
-              try {
-                let clickData:events_emitter.EventData = {
-                  data: {
-                    "clickResult": result,
+              })
+              .iconSize(this.iconSize)
+              .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
+              .markAnchor({ x: this.anchorX, y: this.anchorY })
+              .offset({ x: this.offsetX, y: 0 })
+              .fontSize(this.fontSize)
+              .fontStyle(this.fontStyle)
+              .fontWeight(this.fontWeight)
+              .fontFamily(this.fontFamily)
+              .fontColor('0xFFFFF000')
+              .iconColor(this.iconColor)
+              .backgroundColor(this.bgColor)
+              .borderStyle(this.borderSty)
+              .borderWidth(this.borderWid)
+              .borderColor(this.borderCol)
+              .borderRadius(this.borderRad)
+              .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
+              .textIconSpace(this.middle)
+              .key("keySave4")
+          }
+          .visibility(this.isShow === 2 ? Visibility.Visible : Visibility.None)
+
+          Column() {
+            SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.SAVE_FILE, buttonType: this.bgType })
+              .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
+                try {
+                  let clickData:events_emitter.EventData = {
+                    data: {
+                      "clickResult": result,
+                    }
                   }
-                }
-                let clickEvent:events_emitter.InnerEvent = {
-                  eventId: 2,
-                  priority: events_emitter.EventPriority.LOW
-                }
-                console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
-                events_emitter.emit(clickEvent, clickData)
-              } catch (err) {
-                console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
-              }
-            })
-            .iconSize(this.iconSize)
-            .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
-            .markAnchor({ x: this.anchorX, y: this.anchorY })
-            .offset({ x: this.offsetX, y: 0 })
-            .fontSize(this.fontSize)
-            .fontStyle(this.fontStyle)
-            .fontWeight(this.fontWeight)
-            .fontFamily(this.fontFamily)
-            .fontColor('0xFFFFF000')
-            .iconColor(this.iconColor)
-            .backgroundColor(this.bgColor)
-            .borderStyle(this.borderSty)
-            .borderWidth(this.borderWid)
-            .borderColor(this.borderCol)
-            .borderRadius(this.borderRad)
-            .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
-            .textIconSpace(this.middle)
-            .key("keySave8")
-        }.width('100%').height(this.heightValue).margin(this.marginValue)
-        Row() {
-          SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.SAVE_TO_GALLERY, buttonType: this.bgType })
-            .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
-              try {
-                let clickData:events_emitter.EventData = {
-                  data: {
-                    "clickResult": result,
+                  let clickEvent:events_emitter.InnerEvent = {
+                    eventId: 2,
+                    priority: events_emitter.EventPriority.LOW
                   }
+                  console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
+                  events_emitter.emit(clickEvent, clickData)
+                } catch (err) {
+                  console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
                 }
-                let clickEvent:events_emitter.InnerEvent = {
-                  eventId: 2,
-                  priority: events_emitter.EventPriority.LOW
-                }
-                console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
-                events_emitter.emit(clickEvent, clickData)
-              } catch (err) {
-                console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
-              }
-            })
-            .iconSize(this.iconSize)
-            .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
-            .markAnchor({ x: this.anchorX, y: this.anchorY })
-            .offset({ x: this.offsetX, y: 0 })
-            .fontSize(this.fontSize)
-            .fontStyle(this.fontStyle)
-            .fontWeight(this.fontWeight)
-            .fontFamily(this.fontFamily)
-            .fontColor('0xFFFFF000')
-            .iconColor(this.iconColor)
-            .backgroundColor(this.bgColor)
-            .borderStyle(this.borderSty)
-            .borderWidth(this.borderWid)
-            .borderColor(this.borderCol)
-            .borderRadius(this.borderRad)
-            .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
-            .textIconSpace(this.middle)
-            .key("keySave9")
-        }.width('100%').height(this.heightValue).margin(this.marginValue)
-        Row() {
-          SaveButton({ icon: SaveIconStyle.LINES, text: SaveDescription.EXPORT_TO_GALLERY, buttonType: this.bgType })
-            .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
-              try {
-                let clickData:events_emitter.EventData = {
-                  data: {
-                    "clickResult": result,
+              })
+              .iconSize(this.iconSize)
+              .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
+              .markAnchor({ x: this.anchorX, y: this.anchorY })
+              .offset({ x: this.offsetX, y: 0 })
+              .fontSize(this.fontSize)
+              .fontStyle(this.fontStyle)
+              .fontWeight(this.fontWeight)
+              .fontFamily(this.fontFamily)
+              .fontColor('0xFFFFF000')
+              .iconColor(this.iconColor)
+              .backgroundColor(this.bgColor)
+              .borderStyle(this.borderSty)
+              .borderWidth(this.borderWid)
+              .borderColor(this.borderCol)
+              .borderRadius(this.borderRad)
+              .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
+              .textIconSpace(this.middle)
+              .key("keySave5")
+          }
+          .visibility(this.isShow === 3 ? Visibility.Visible : Visibility.None)
+
+          Column() {
+            SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD_AND_SHARE, buttonType: this.bgType })
+              .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
+                try {
+                  let clickData:events_emitter.EventData = {
+                    data: {
+                      "clickResult": result,
+                    }
                   }
-                }
-                let clickEvent:events_emitter.InnerEvent = {
-                  eventId: 2,
-                  priority: events_emitter.EventPriority.LOW
-                }
-                console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
-                events_emitter.emit(clickEvent, clickData)
-              } catch (err) {
-                console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
-              }
-            })
-            .iconSize(this.iconSize)
-            .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
-            .markAnchor({ x: this.anchorX, y: this.anchorY })
-            .offset({ x: this.offsetX, y: 0 })
-            .fontSize(this.fontSize)
-            .fontStyle(this.fontStyle)
-            .fontWeight(this.fontWeight)
-            .fontFamily(this.fontFamily)
-            .fontColor('0xFFFFF000')
-            .iconColor(this.iconColor)
-            .backgroundColor(this.bgColor)
-            .borderStyle(this.borderSty)
-            .borderWidth(this.borderWid)
-            .borderColor(this.borderCol)
-            .borderRadius(this.borderRad)
-            .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
-            .textIconSpace(this.middle)
-            .key("keySave15")
-        }.width('100%').height(this.heightValue).margin(this.marginValue)
-        Row() {
-          SaveButton({ icon: SaveIconStyle.LINES, text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: this.bgType })
-            .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
-              try {
-                let clickData:events_emitter.EventData = {
-                  data: {
-                    "clickResult": result,
+                  let clickEvent:events_emitter.InnerEvent = {
+                    eventId: 2,
+                    priority: events_emitter.EventPriority.LOW
                   }
+                  console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
+                  events_emitter.emit(clickEvent, clickData)
+                } catch (err) {
+                  console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
                 }
-                let clickEvent:events_emitter.InnerEvent = {
-                  eventId: 2,
-                  priority: events_emitter.EventPriority.LOW
-                }
-                console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
-                events_emitter.emit(clickEvent, clickData)
-              } catch (err) {
-                console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
-              }
-            })
-            .iconSize(this.iconSize)
-            .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
-            .markAnchor({ x: this.anchorX, y: this.anchorY })
-            .offset({ x: this.offsetX, y: 0 })
-            .fontSize(this.fontSize)
-            .fontStyle(this.fontStyle)
-            .fontWeight(this.fontWeight)
-            .fontFamily(this.fontFamily)
-            .fontColor('0xFFFFF000')
-            .iconColor(this.iconColor)
-            .backgroundColor(this.bgColor)
-            .borderStyle(this.borderSty)
-            .borderWidth(this.borderWid)
-            .borderColor(this.borderCol)
-            .borderRadius(this.borderRad)
-            .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
-            .textIconSpace(this.middle)
-            .key("keySave16")
-        }.width('100%').height(this.heightValue).margin(this.marginValue)
-        Row() {
-          SaveButton({ icon: SaveIconStyle.LINES, text: SaveDescription.RESAVE_TO_GALLERY, buttonType: this.bgType })
-            .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
-              try {
-                let clickData:events_emitter.EventData = {
-                  data: {
-                    "clickResult": result,
+              })
+              .iconSize(this.iconSize)
+              .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
+              .markAnchor({ x: this.anchorX, y: this.anchorY })
+              .offset({ x: this.offsetX, y: 0 })
+              .fontSize(this.fontSize)
+              .fontStyle(this.fontStyle)
+              .fontWeight(this.fontWeight)
+              .fontFamily(this.fontFamily)
+              .fontColor('0xFFFFF000')
+              .iconColor(this.iconColor)
+              .backgroundColor(this.bgColor)
+              .borderStyle(this.borderSty)
+              .borderWidth(this.borderWid)
+              .borderColor(this.borderCol)
+              .borderRadius(this.borderRad)
+              .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
+              .textIconSpace(this.middle)
+              .key("keySave6")
+          }
+          .visibility(this.isShow === 4 ? Visibility.Visible : Visibility.None)
+
+          Column() {
+            SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.RECEIVE, buttonType: this.bgType })
+              .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
+                try {
+                  let clickData:events_emitter.EventData = {
+                    data: {
+                      "clickResult": result,
+                    }
                   }
-                }
-                let clickEvent:events_emitter.InnerEvent = {
-                  eventId: 2,
-                  priority: events_emitter.EventPriority.LOW
-                }
-                console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
-                events_emitter.emit(clickEvent, clickData)
-              } catch (err) {
-                console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
-              }
-            })
-            .iconSize(this.iconSize)
-            .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
-            .markAnchor({ x: this.anchorX, y: this.anchorY })
-            .offset({ x: this.offsetX, y: 0 })
-            .fontSize(this.fontSize)
-            .fontStyle(this.fontStyle)
-            .fontWeight(this.fontWeight)
-            .fontFamily(this.fontFamily)
-            .fontColor('0xFFFFF000')
-            .iconColor(this.iconColor)
-            .backgroundColor(this.bgColor)
-            .borderStyle(this.borderSty)
-            .borderWidth(this.borderWid)
-            .borderColor(this.borderCol)
-            .borderRadius(this.borderRad)
-            .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
-            .textIconSpace(this.middle)
-            .key("keySave17")
-        }.width('100%').height(this.heightValue).margin(this.marginValue)
-        Row() {
-          SaveButton({ icon: SaveIconStyle.LINES, text: SaveDescription.SAVE_ALL, buttonType: this.bgType })
-            .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
-              try {
-                let clickData:events_emitter.EventData = {
-                  data: {
-                    "clickResult": result,
+                  let clickEvent:events_emitter.InnerEvent = {
+                    eventId: 2,
+                    priority: events_emitter.EventPriority.LOW
                   }
+                  console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
+                  events_emitter.emit(clickEvent, clickData)
+                } catch (err) {
+                  console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
                 }
-                let clickEvent:events_emitter.InnerEvent = {
-                  eventId: 2,
-                  priority: events_emitter.EventPriority.LOW
+              })
+              .iconSize(this.iconSize)
+              .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
+              .markAnchor({ x: this.anchorX, y: this.anchorY })
+              .offset({ x: this.offsetX, y: 0 })
+              .fontSize(this.fontSize)
+              .fontStyle(this.fontStyle)
+              .fontWeight(this.fontWeight)
+              .fontFamily(this.fontFamily)
+              .fontColor('0xFFFFF000')
+              .iconColor(this.iconColor)
+              .backgroundColor(this.bgColor)
+              .borderStyle(this.borderSty)
+              .borderWidth(this.borderWid)
+              .borderColor(this.borderCol)
+              .borderRadius(this.borderRad)
+              .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
+              .textIconSpace(this.middle)
+              .key("keySave7")
+          }
+          .visibility(this.isShow === 5 ? Visibility.Visible : Visibility.None)
+
+          Column() {
+            SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.CONTINUE_TO_RECEIVE, buttonType: this.bgType })
+              .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
+                try {
+                  let clickData:events_emitter.EventData = {
+                    data: {
+                      "clickResult": result,
+                    }
+                  }
+                  let clickEvent:events_emitter.InnerEvent = {
+                    eventId: 2,
+                    priority: events_emitter.EventPriority.LOW
+                  }
+                  console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
+                  events_emitter.emit(clickEvent, clickData)
+                } catch (err) {
+                  console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
                 }
-                console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
-                events_emitter.emit(clickEvent, clickData)
-              } catch (err) {
-                console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
-              }
+              })
+              .iconSize(this.iconSize)
+              .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
+              .markAnchor({ x: this.anchorX, y: this.anchorY })
+              .offset({ x: this.offsetX, y: 0 })
+              .fontSize(this.fontSize)
+              .fontStyle(this.fontStyle)
+              .fontWeight(this.fontWeight)
+              .fontFamily(this.fontFamily)
+              .fontColor('0xFFFFF000')
+              .iconColor(this.iconColor)
+              .backgroundColor(this.bgColor)
+              .borderStyle(this.borderSty)
+              .borderWidth(this.borderWid)
+              .borderColor(this.borderCol)
+              .borderRadius(this.borderRad)
+              .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
+              .textIconSpace(this.middle)
+              .key("keySave8")
+          }
+          .visibility(this.isShow === 6 ? Visibility.Visible : Visibility.None)
+
+          Column() {
+            SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.SAVE_TO_GALLERY, buttonType: this.bgType })
+              .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
+                try {
+                  let clickData:events_emitter.EventData = {
+                    data: {
+                      "clickResult": result,
+                    }
+                  }
+                  let clickEvent:events_emitter.InnerEvent = {
+                    eventId: 2,
+                    priority: events_emitter.EventPriority.LOW
+                  }
+                  console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
+                  events_emitter.emit(clickEvent, clickData)
+                } catch (err) {
+                  console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
+                }
+              })
+              .iconSize(this.iconSize)
+              .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
+              .markAnchor({ x: this.anchorX, y: this.anchorY })
+              .offset({ x: this.offsetX, y: 0 })
+              .fontSize(this.fontSize)
+              .fontStyle(this.fontStyle)
+              .fontWeight(this.fontWeight)
+              .fontFamily(this.fontFamily)
+              .fontColor('0xFFFFF000')
+              .iconColor(this.iconColor)
+              .backgroundColor(this.bgColor)
+              .borderStyle(this.borderSty)
+              .borderWidth(this.borderWid)
+              .borderColor(this.borderCol)
+              .borderRadius(this.borderRad)
+              .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
+              .textIconSpace(this.middle)
+              .key("keySave9")
+          }
+          .visibility(this.isShow === 7 ? Visibility.Visible : Visibility.None)
+
+          Column() {
+            SaveButton({ icon: SaveIconStyle.LINES, text: SaveDescription.EXPORT_TO_GALLERY, buttonType: this.bgType })
+              .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
+                try {
+                  let clickData:events_emitter.EventData = {
+                    data: {
+                      "clickResult": result,
+                    }
+                  }
+                  let clickEvent:events_emitter.InnerEvent = {
+                    eventId: 2,
+                    priority: events_emitter.EventPriority.LOW
+                  }
+                  console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
+                  events_emitter.emit(clickEvent, clickData)
+                } catch (err) {
+                  console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
+                }
+              })
+              .iconSize(this.iconSize)
+              .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
+              .markAnchor({ x: this.anchorX, y: this.anchorY })
+              .offset({ x: this.offsetX, y: 0 })
+              .fontSize(this.fontSize)
+              .fontStyle(this.fontStyle)
+              .fontWeight(this.fontWeight)
+              .fontFamily(this.fontFamily)
+              .fontColor('0xFFFFF000')
+              .iconColor(this.iconColor)
+              .backgroundColor(this.bgColor)
+              .borderStyle(this.borderSty)
+              .borderWidth(this.borderWid)
+              .borderColor(this.borderCol)
+              .borderRadius(this.borderRad)
+              .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
+              .textIconSpace(this.middle)
+              .key("keySave15")
+          }
+          .visibility(this.isShow === 8 ? Visibility.Visible : Visibility.None)
+
+          Column() {
+            SaveButton({ icon: SaveIconStyle.LINES, text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: this.bgType })
+              .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
+                try {
+                  let clickData:events_emitter.EventData = {
+                    data: {
+                      "clickResult": result,
+                    }
+                  }
+                  let clickEvent:events_emitter.InnerEvent = {
+                    eventId: 2,
+                    priority: events_emitter.EventPriority.LOW
+                  }
+                  console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
+                  events_emitter.emit(clickEvent, clickData)
+                } catch (err) {
+                  console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
+                }
+              })
+              .iconSize(this.iconSize)
+              .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
+              .markAnchor({ x: this.anchorX, y: this.anchorY })
+              .offset({ x: this.offsetX, y: 0 })
+              .fontSize(this.fontSize)
+              .fontStyle(this.fontStyle)
+              .fontWeight(this.fontWeight)
+              .fontFamily(this.fontFamily)
+              .fontColor('0xFFFFF000')
+              .iconColor(this.iconColor)
+              .backgroundColor(this.bgColor)
+              .borderStyle(this.borderSty)
+              .borderWidth(this.borderWid)
+              .borderColor(this.borderCol)
+              .borderRadius(this.borderRad)
+              .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
+              .textIconSpace(this.middle)
+              .key("keySave16")
+          }
+          .visibility(this.isShow === 9 ? Visibility.Visible : Visibility.None)
+
+          Column() {
+            SaveButton({ icon: SaveIconStyle.LINES, text: SaveDescription.RESAVE_TO_GALLERY, buttonType: this.bgType })
+              .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
+                try {
+                  let clickData:events_emitter.EventData = {
+                    data: {
+                      "clickResult": result,
+                    }
+                  }
+                  let clickEvent:events_emitter.InnerEvent = {
+                    eventId: 2,
+                    priority: events_emitter.EventPriority.LOW
+                  }
+                  console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
+                  events_emitter.emit(clickEvent, clickData)
+                } catch (err) {
+                  console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
+                }
+              })
+              .iconSize(this.iconSize)
+              .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
+              .markAnchor({ x: this.anchorX, y: this.anchorY })
+              .offset({ x: this.offsetX, y: 0 })
+              .fontSize(this.fontSize)
+              .fontStyle(this.fontStyle)
+              .fontWeight(this.fontWeight)
+              .fontFamily(this.fontFamily)
+              .fontColor('0xFFFFF000')
+              .iconColor(this.iconColor)
+              .backgroundColor(this.bgColor)
+              .borderStyle(this.borderSty)
+              .borderWidth(this.borderWid)
+              .borderColor(this.borderCol)
+              .borderRadius(this.borderRad)
+              .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
+              .textIconSpace(this.middle)
+              .key("keySave17")
+          }
+          .visibility(this.isShow === 10 ? Visibility.Visible : Visibility.None)
+
+          Column() {
+            SaveButton({ icon: SaveIconStyle.LINES, text: SaveDescription.SAVE_ALL, buttonType: this.bgType })
+              .onClick((event: ClickEvent, result: SaveButtonOnClickResult) => {
+                try {
+                  let clickData:events_emitter.EventData = {
+                    data: {
+                      "clickResult": result,
+                    }
+                  }
+                  let clickEvent:events_emitter.InnerEvent = {
+                    eventId: 2,
+                    priority: events_emitter.EventPriority.LOW
+                  }
+                  console.debug("====>page_SaveButton onclick result:" + JSON.stringify(result))
+                  events_emitter.emit(clickEvent, clickData)
+                } catch (err) {
+                  console.debug("====>page_SaveButton emit action state err: " + JSON.stringify(err.message))
+                }
+              })
+              .iconSize(this.iconSize)
+              .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
+              .markAnchor({ x: this.anchorX, y: this.anchorY })
+              .offset({ x: this.offsetX, y: 0 })
+              .fontSize(this.fontSize)
+              .fontStyle(this.fontStyle)
+              .fontWeight(this.fontWeight)
+              .fontFamily(this.fontFamily)
+              .fontColor('0xFFFFF000')
+              .iconColor(this.iconColor)
+              .backgroundColor(this.bgColor)
+              .borderStyle(this.borderSty)
+              .borderWidth(this.borderWid)
+              .borderColor(this.borderCol)
+              .borderRadius(this.borderRad)
+              .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
+              .textIconSpace(this.middle)
+              .key("keySave18")
+          }
+          .visibility(this.isShow === 11 ? Visibility.Visible : Visibility.None)
+
+          Button('点击切换安全控件')
+            .width('50%')
+            .height(40)
+            .offset({x:-100, y:50})
+            .onClick(() => {
+              this.isShow++
             })
-            .iconSize(this.iconSize)
-            .layoutDirection(SecurityComponentLayoutDirection.HORIZONTAL)
-            .markAnchor({ x: this.anchorX, y: this.anchorY })
-            .offset({ x: this.offsetX, y: 0 })
-            .fontSize(this.fontSize)
-            .fontStyle(this.fontStyle)
-            .fontWeight(this.fontWeight)
-            .fontFamily(this.fontFamily)
-            .fontColor('0xFFFFF000')
-            .iconColor(this.iconColor)
-            .backgroundColor(this.bgColor)
-            .borderStyle(this.borderSty)
-            .borderWidth(this.borderWid)
-            .borderColor(this.borderCol)
-            .borderRadius(this.borderRad)
-            .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
-            .textIconSpace(this.middle)
-            .key("keySave18")
-        }.width('100%').height(this.heightValue).margin(this.marginValue)
-      }.width('50%').height('100%')
-    }.width('100%')
+            .id('switchButton')
+        }.width(100)
+      }.width('100%').alignItems(HorizontalAlign.Center)
+    }.height('100%')
   }
 }

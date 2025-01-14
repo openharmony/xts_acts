@@ -3064,7 +3064,7 @@ export default function pasteComponentTest_1() {
               console.info("====>[Test_Security_Button_PasteScenarios_2800] END====");
               done();
             }
-         } else {
+          } else {
             console.info("====>[Test_Security_Button_PasteScenarios_2800] 设置权限失败");
             expect().assertFail()
             console.info("====>[Test_Security_Button_PasteScenarios_2800] END====");

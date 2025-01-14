@@ -1675,7 +1675,7 @@ export default function saveComponentTest() {
           console.info('====>[Test_Security_Button_Save_1600] button_iconSize is: ' + button_iconSize);
           let offsetObj:ESObject = {
             "iconSize": `${button_iconSize}px`
-            };
+          };
           ObjectUtils.assign(eventData.data,offsetObj);
         });
         await Utils.sleep(1000);

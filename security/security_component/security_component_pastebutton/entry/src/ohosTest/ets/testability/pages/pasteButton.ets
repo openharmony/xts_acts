@@ -191,7 +191,7 @@ struct pasteButton {
             .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
             .textIconSpace(this.middle)
             .key("keyPaste")
-        }.width(150)
+        }.width(100)
       }.width('100%').alignItems(HorizontalAlign.Center)
     }.height('100%')
   }
