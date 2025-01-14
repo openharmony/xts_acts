@@ -108,7 +108,7 @@ export default function AbilityRuntime_Test() {
           await button.click();
           await driver.delayMs(1000);
         } catch (e) {
-          hilog.info(0x0000, TAG, '%{public}s', TEST_SUITE_NAME + 'Driver error ' + e?.message);
+          hilog.info(0x0000, TAG, '%{public}s', TEST_SUITE__NAME + 'Driver error ' + e?.message);
         }
       }
     })
