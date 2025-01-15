@@ -15,10 +15,42 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import inputMethod from '@ohos.inputMethod';
 import subtype from '@ohos.InputMethodSubtype';
+import deviceinfo from '@ohos.deviceInfo';
+import { BusinessError } from '@ohos.base';
 
 export default function inputMethodNormalStageJSUnit() {
   describe('inputMethodNormalStageJSUnit', () => {
     console.info("====>************* inputMethodNormalStageJSUnit settings Test start*************");
+    /**
+     * beforeAll: Test case-level clearance conditions, which are executed after each test case is executed.
+     */
+    beforeAll(async(done: Function) => {
+      if(deviceinfo.deviceType === 'wearable'){
+        let inputMethodSetting = inputMethod.getSetting();
+        console.info('====> getSetting success!')
+        inputMethodSetting.listInputMethod((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
+          let t = setTimeout(async ()=>{
+            console.info('====>Succeeded in listing inputMethod: ' + JSON.stringify(data));
+            const ATTRIBUTE: inputMethod.TextConfig = {
+              inputAttribute: {
+                textInputType: 0, enterKeyType: 0
+              }
+            }
+            try {
+              let data = await inputMethod.getController().attach(false, ATTRIBUTE);
+              console.info(`====> execution success, data: ${JSON.stringify(data)}`);
+            } catch (error) {
+              console.info(`====> catch error, error: [${error.code}, ${error.message}]`);
+            }
+            clearTimeout(t);
+            done();
+          }, 3000)
+        });
+      }else{
+        console.info('====>deviceType is not wearable!')
+        done();
+      }
+    })
 
     /*
      * @tc.number  inputMethodNormalStage_test_switchCurrentInputMethodAndSubtype_001

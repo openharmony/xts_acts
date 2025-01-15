@@ -23,6 +23,7 @@
                 "param set persist.usb.setting.gadget_conn_prompt false",
                 "reboot",
                 "power-shell wakeup",
+                "param set skip_scb_charging 1",
                 "power-shell timeout -o 2147483647",
                 "uinput -T -m 300 720 300 360 200",
                 "uinput -T -m 650 2500 650 1380 200",

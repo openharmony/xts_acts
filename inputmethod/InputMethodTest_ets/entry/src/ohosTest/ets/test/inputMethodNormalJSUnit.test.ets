@@ -16,19 +16,44 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import inputMethod from '@ohos.inputMethod';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import display from '@ohos.display';
+import deviceinfo from '@ohos.deviceInfo';
+import { BusinessError } from '@ohos.base';
 
 export default function inputMethodNormalJSUnit() {
   describe('inputMethodNormalJSUnit', () => {
     console.info("====>************* inputMethodNormalJSUnit settings Test start*************");
 
     beforeAll(async (done: Function) => {
-      let display_info = display.getDefaultDisplaySync();
-      let getFocusCmd = '';
-      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      getFocusCmd = `uinput -T -c ${display_info.width * 0.5}  ${Math.round(display_info.height * 0.4)}`;
-      console.debug('====>runCmd info:' + getFocusCmd);
-      await abilityDelegator.executeShellCommand(getFocusCmd);
-      done();
+      if(deviceinfo.deviceType === 'wearable'){
+        let inputMethodSetting = inputMethod.getSetting();
+        console.info('====> getSetting success!')
+        inputMethodSetting.listInputMethod((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
+          let t = setTimeout(async ()=>{
+            console.info('====>Succeeded in listing inputMethod: ' + JSON.stringify(data));
+            const ATTRIBUTE: inputMethod.TextConfig = {
+              inputAttribute: {
+                textInputType: 0, enterKeyType: 0
+              }
+            }
+            try {
+              let data = await inputMethod.getController().attach(false, ATTRIBUTE);
+              console.info(`====> execution success, data: ${JSON.stringify(data)}`);
+            } catch (error) {
+              console.info(`====> catch error, error: [${error.code}, ${error.message}]`);
+            }
+            clearTimeout(t);
+            done();
+          }, 3000)
+        });
+      } else {
+        let display_info = display.getDefaultDisplaySync();
+        let getFocusCmd = '';
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        getFocusCmd = `uinput -T -c ${display_info.width * 0.5}  ${Math.round(display_info.height * 0.4)}`;
+        console.debug('====>runCmd info:' + getFocusCmd);
+        await abilityDelegator.executeShellCommand(getFocusCmd);
+        done();
+      }
     })
 
     /*
