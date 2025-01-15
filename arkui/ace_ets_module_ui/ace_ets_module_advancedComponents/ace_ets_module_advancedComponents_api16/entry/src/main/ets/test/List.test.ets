@@ -19,6 +19,7 @@ import toolBarAccessibilityTest from './toolBar/tooBarAccessibilityPage.test';
 import progressButtonV2PageTest from './progressButtonV2/progressButtonV2Page.test';
 import subHeaderV2PageTest from './subHeaderV2/subHeaderV2Page.test';
 import toolBarV2PageTest from './toolBarV2/toolBarV2Page.test';
+import toolBarV2ItemStateTest from './toolBarV2/toolBarV2ItemState.test';
 
 export default function testsuite() {
   composeListItemPageTest();
@@ -27,4 +28,5 @@ export default function testsuite() {
   progressButtonV2PageTest();
   subHeaderV2PageTest();
   toolBarV2PageTest();
+  toolBarV2ItemStateTest();
 }
