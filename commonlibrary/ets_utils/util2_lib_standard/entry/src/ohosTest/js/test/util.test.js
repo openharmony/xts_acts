@@ -7340,6 +7340,63 @@ describe('Base64HelperTest', function () {
                                              "string and the length greater than 0.");
         }
     })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODE_BASE64_THROW_ERROR_007
+     * @tc.name: test_decode_base64_throwError_007
+     * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
+       array into a newly allocated u8 array.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('test_decode_base64_throwError_007', 0, async function () {
+        let base64Helper = new util.Base64Helper();
+        base64Helper.decode('1').then((val) => {
+        }).catch((e) => {
+          expect(e.toString()).assertContain('BusinessError: Parameter error. The type of the parameter must be a string and must be valid and legal');
+          expect(e.code).assertContain(401);
+          expect(e.message).assertContain("Parameter error. The type of the parameter must be a string and must be valid and legal");
+        })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODE_BASE64_THROW_ERROR_008
+     * @tc.name: test_decode_base64_throwError_008
+     * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
+       array into a newly allocated u8 array.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('test_decode_base64_throwError_008', 0, async function () {
+        let base64Helper = new util.Base64Helper();
+        base64Helper.decode('12').then((val) => {
+        }).catch((e) => {
+          expect(e.toString()).assertContain('BusinessError: Parameter error. The type of the parameter must be a string and must be valid and legal');
+          expect(e.code).assertContain(401);
+          expect(e.message).assertContain("Parameter error. The type of the parameter must be a string and must be valid and legal");
+        })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODE_BASE64_THROW_ERROR_009
+     * @tc.name: test_decode_base64_throwError_009
+     * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
+       array into a newly allocated u8 array.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+       it('test_decode_base64_throwError_009', 0, async function () {
+        let base64Helper = new util.Base64Helper();
+        base64Helper.decode('150').then((val) => {
+        }).catch((e) => {
+          expect(e.toString()).assertContain('BusinessError: Parameter error. The type of the parameter must be a string and must be valid and legal');
+          expect(e.code).assertContain(401);
+          expect(e.message).assertContain("Parameter error. The type of the parameter must be a string and must be valid and legal");
+        })
+    })
 })
 
 describe('DecodeEncodeTest', function () {
