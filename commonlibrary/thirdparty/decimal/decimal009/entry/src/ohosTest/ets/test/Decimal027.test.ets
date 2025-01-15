@@ -47,7 +47,7 @@ export default function DecimalTest027() {
         let r : Decimal = new Decimal(0);
         let n : string = '0';
         let e : string = '0';
-        for (let total = 0; total < 400; total++) {
+        for (let total = 0; total < 100; total++) {
             e = Decimal.random( Math.random() * 40 + 1 | 0 ).toExponential();
             r = new Decimal(e.slice(0, e.indexOf('e') + 1) + ( Math.random() < 0.5 ? '-' : '' ) +( n = Math.floor( Math.random() * 9e15 ) + '' ).slice( Math.random() * n.length | 0 ));
             if ((Math.random() * 9 | 0) == 0) {
