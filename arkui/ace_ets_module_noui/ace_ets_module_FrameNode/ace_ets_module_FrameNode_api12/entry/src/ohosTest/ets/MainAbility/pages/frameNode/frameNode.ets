@@ -76,15 +76,15 @@ struct frameNode1{
   @State boolean2:boolean=false
   build() {
     Column({space:2}) {
-      Text('ChildrenCount:'+this.count1).id('frameNode_1')
-      Button('appendChild')
+      Text('ChildrenCount:'+this.count1).id('frameNode_1').height('2%')
+      Button('appendChild').height('2%')
         .id('frameNode_2')
         .onClick(()=>{
         let child =new FrameNode( AppStorage.get<UIContext>('UIContent')!)
         frameNode!.appendChild(child)
         this.count1=frameNode!.getChildrenCount()
       })
-      Button('insertChildAfter')
+      Button('insertChildAfter').height('2%')
         .id('frameNode_3')
         .onClick(()=>{
         let sibling=frameNode!.getChild(this.index)
@@ -92,23 +92,23 @@ struct frameNode1{
         frameNode!.insertChildAfter(child,sibling)
         this.count1=frameNode!.getChildrenCount()
       })
-      Button('removeChild')
+      Button('removeChild').height('2%')
         .id('frameNode_4')
         .onClick(()=>{
         let sibling=frameNode!.getChild(this.index)
         frameNode!.removeChild(sibling)
         this.count1=frameNode!.getChildrenCount()
       })
-      Button('clearChildren')
+      Button('clearChildren').height('2%')
         .id('frameNode_5')
         .onClick(()=>{
         frameNode!.clearChildren()
         this.count1=frameNode!.getChildrenCount()
       })
-      Text('frameNode:'+this.frameNode1).id('frameNode_6')
-      Text('frameNode:'+this.frameNode2).id('frameNode_7')
-      Text('frameNode:'+this.frameNode3).id('frameNode_8')
-      Button('frameNode')
+      Text('frameNode:'+this.frameNode1).id('frameNode_6').height('2%')
+      Text('frameNode:'+this.frameNode2).id('frameNode_7').height('2%')
+      Text('frameNode:'+this.frameNode3).id('frameNode_8').height('2%')
+      Button('frameNode').height('2%')
         .id('frameNode_9')
         .onClick(()=>{
         if(this.myNodeController!.rootNode!.getFirstChild()==frameNode!){
@@ -121,11 +121,11 @@ struct frameNode1{
           this.frameNode3='getPreviousSibling'
         }
       })
-        Text('getRenderNode:'+this.getRenderNode1).id('frameNode_10')
-        Text('getRenderNode:'+this.getRenderNode2).id('frameNode_11')
-        Text('getRenderNode:'+this.getRenderNode3).id('frameNode_12')
+        Text('getRenderNode:'+this.getRenderNode1).id('frameNode_10').height('2%')
+        Text('getRenderNode:'+this.getRenderNode2).id('frameNode_11').height('2%')
+        Text('getRenderNode:'+this.getRenderNode3).id('frameNode_12').height('2%')
 
-      Button('getRenderNode')
+      Button('getRenderNode').height('2%')
         .id('frameNode_13')
         .onClick(()=>{
         if(this.myNodeController.rootNode!.getParent()!.getRenderNode()==null){
@@ -138,8 +138,8 @@ struct frameNode1{
           this.getRenderNode3='getRenderNode3'
         }
       })
-      Text('builderNode:'+this.count3).id('frameNode_14')
-      Button('builderNode')
+      Text('builderNode:'+this.count3).id('frameNode_14').height('2%')
+      Button('builderNode').height('2%')
         .id('frameNode_15')
         .onClick(()=>{
         this.count3=this.myNodeController!.textNode!.getFrameNode()!.getChildrenCount()
