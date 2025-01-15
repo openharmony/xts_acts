@@ -21,6 +21,7 @@ group("ActsAbilityAmsTest") {
       "abilitymultiinstancetestb:AbilityMultiInstanceTestB",
       "abilitymultiinstancetestc:AbilityMultiInstanceTestC",
       "abilitymultiinstancetestd:AbilityMultiInstanceTestD",
+      "actsabilityembeddableuiabilitytest:ActsAbilityEmbeddableUIAbilityTest",
       "actsabilitymultiinstancetest:ActsAbilityMultiInstanceTest",
       "actsapplicationstartabilityauxiliary:ActsApplicationStartAbilityAuxiliary",
       "actsapplicationstartabilityauxiliary_2:ActsApplicationStartAbilityAuxiliary_2",
