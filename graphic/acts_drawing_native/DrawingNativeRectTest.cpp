@@ -38,6 +38,12 @@ class DrawingNativeRectTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeRectTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeRectTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeRectTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -133,6 +139,7 @@ HWTEST_F(DrawingNativeRectTest, testRectIntersectNull, TestSize.Level3) {
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectIntersect(nullptr, other);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_RectIntersect with the second parameter as nullptr, Returns error code
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectIntersect(rect, nullptr);
@@ -219,6 +226,7 @@ HWTEST_F(DrawingNativeRectTest, testRectJoinNull, TestSize.Level3) {
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectJoin(nullptr, other);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_RectJoin with the second parameter as nullptr, Returns error code
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectJoin(rect, nullptr);
@@ -1024,6 +1032,7 @@ HWTEST_F(DrawingNativeRectTest, testRectCopyNull, TestSize.Level3) {
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectCopy(nullptr, dst);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_RectCopy with nullptr as the second parameter, returns error code
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectCopy(src, nullptr);

@@ -55,6 +55,12 @@ class DrawingRecordCmdUtilsFinishRecordingTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingRecordCmdUtilsFinishRecordingTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingRecordCmdUtilsFinishRecordingTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingRecordCmdUtilsFinishRecordingTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*

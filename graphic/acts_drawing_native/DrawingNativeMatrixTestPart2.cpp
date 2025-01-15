@@ -38,6 +38,12 @@ class DrawingNativeMatrixPart2Test : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeMatrixPart2Test errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeMatrixPart2Test Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeMatrixPart2Test errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -274,10 +280,12 @@ HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixConcatNull, TestSize.Level3) {
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixConcat(nullptr, matrix, matrix);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. OH_Drawing_MatrixConcat, passing nullptr as the second parameter, check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixConcat(matrix, nullptr, matrix);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_MatrixConcat, passing nullptr as the third parameter, check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixConcat(matrix, matrix, nullptr);
@@ -369,6 +377,7 @@ HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixInvertNull, TestSize.Level3) {
     // 2. OH_Drawing_MatrixInvert with the first parameter as nullptr, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixInvert(nullptr, matrix);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. OH_Drawing_MatrixInvert with the second parameter as nullptr, check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixInvert(matrix, nullptr);
@@ -580,12 +589,15 @@ HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixMapPointsNull, TestSize.Level3)
     // 2. OH_Drawing_MatrixMapPoints, the first parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixMapPoints(nullptr, src, dst, 5);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. OH_Drawing_MatrixMapPoints, the second parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixMapPoints(matrix, nullptr, dst, 5);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_MatrixMapPoints, the third parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixMapPoints(matrix, src, nullptr, 5);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 5. OH_Drawing_MatrixMapPoints, the fourth parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixMapPoints(matrix, src, dst, 0);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -704,9 +716,11 @@ HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixMapRectNull, TestSize.Level3) {
     EXPECT_NE(dst, nullptr);
     OH_Drawing_MatrixMapRect(nullptr, src, dst);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. OH_Drawing_MatrixMapRect, the second parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixMapRect(matrix, nullptr, dst);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_MatrixMapRect, the third parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixMapRect(matrix, src, nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -805,6 +819,7 @@ HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixIsEqualNull, TestSize.Level3) {
     // 2. OH_Drawing_MatrixIsEqual, the first parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixIsEqual(nullptr, matrix);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. OH_Drawing_MatrixIsEqual, the second parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixIsEqual(matrix, nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);

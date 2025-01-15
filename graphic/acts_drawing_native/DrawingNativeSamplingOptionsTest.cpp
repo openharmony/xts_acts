@@ -35,6 +35,12 @@ class DrawingNativeSamplingOptionsTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeSamplingOptionsTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeSamplingOptionsTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeSamplingOptionsTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*

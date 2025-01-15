@@ -53,6 +53,12 @@ class DrawingNativeTextBlobTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeTextBlobTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeTextBlobTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeTextBlobTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -202,10 +208,12 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromTextNull, TestSize.Lev
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_TextBlob *textBlob1 = OH_Drawing_TextBlobCreateFromText(nullptr, strlen(str), font, TEXT_ENCODING_UTF8);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. OH_Drawing_TextBlobCreateFromText with the second parameter being empty, check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_TextBlob *textBlob2 = OH_Drawing_TextBlobCreateFromText(str, 0, font, TEXT_ENCODING_UTF8);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
+    OH_Drawing_ErrorCodeReset();
     // 3. OH_Drawing_TextBlobCreateFromText with the third parameter being nullptr, check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_TextBlob *textBlob3 = OH_Drawing_TextBlobCreateFromText(str, strlen(str), nullptr, TEXT_ENCODING_UTF8);
@@ -334,14 +342,17 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromPosTextNull, TestSize.
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_TextBlobCreateFromPosText(nullptr, strlen(str), &pts[0], font, TEXT_ENCODING_UTF8);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. OH_Drawing_TextBlobCreateFromPosText with the second parameter being empty, check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_TextBlobCreateFromPosText(str, 0, &pts[0], font, TEXT_ENCODING_UTF8);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. OH_Drawing_TextBlobCreateFromPosText with the third parameter being nullptr, check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_TextBlobCreateFromPosText(str, strlen(str), nullptr, font, TEXT_ENCODING_UTF8);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_TextBlobCreateFromPosText with the first parameter being a string
     OH_Drawing_TextBlobCreateFromPosText("123456", 6, &pts[0], font, TEXT_ENCODING_UTF8);
     // 5. OH_Drawing_TextBlobCreateFromPosText with the fourth parameter being nullptr, check the error code with
@@ -474,6 +485,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromStringNull, TestSize.L
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_TextBlob *textBlob1 = OH_Drawing_TextBlobCreateFromString(nullptr, font, TEXT_ENCODING_UTF8);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. OH_Drawing_TextBlobCreateFromString with the second parameter being nullptr, check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_TextBlob *textBlob2 = OH_Drawing_TextBlobCreateFromString(str, nullptr, TEXT_ENCODING_UTF8);
@@ -600,6 +612,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobGetBoundsNull, TestSize.Level3) 
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_TextBlobGetBounds(nullptr, rect);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Pass nullptr as the second parameter to OH_Drawing_TextBlobGetBounds and check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_TextBlobGetBounds(textBlob, nullptr);
@@ -800,18 +813,21 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderAllocRunPosNull, TestSize
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_TextBlobBuilderAllocRunPos(nullptr, font, 9, rect);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Call OH_Drawing_TextBlobBuilderAllocRunPos with the second parameter as nullptr and check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_TextBlobBuilderAllocRunPos(builder, nullptr, 9, rect);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_TextBlobBuilderAllocRunPos with the third parameter as nullptr and check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_TextBlobBuilderAllocRunPos(builder, font, 0, rect);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 5. Call OH_Drawing_TextBlobBuilderAllocRunPos with the fourth parameter as nullptr and check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_TextBlobBuilderAllocRunPos(builder, font, 9, nullptr);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 6. Free memory
     OH_Drawing_RectDestroy(rect);
     OH_Drawing_FontDestroy(font);

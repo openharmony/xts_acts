@@ -54,6 +54,12 @@ class DrawingNativeCanvasPart4Test : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeCanvasPart4Test errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeCanvasPart4Test Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeCanvasPart4Test errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -413,6 +419,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsNull, TestSiz
     OH_Drawing_CanvasGetLocalClipBounds(nullptr, rect);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_CanvasGetLocalClipBounds with the second parameter as null
     OH_Drawing_CanvasGetLocalClipBounds(canvas, nullptr);
     // add assert
@@ -692,6 +699,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixNull, TestSize.Leve
     OH_Drawing_CanvasConcatMatrix(nullptr, matrix);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_CanvasConcatMatrix with the second parameter as null
     OH_Drawing_CanvasConcatMatrix(canvas, nullptr);
     // add assert
@@ -722,6 +730,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetTotalMatrixNull, TestSize.Le
     OH_Drawing_CanvasGetTotalMatrix(nullptr, matrix);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_CanvasGetTotalMatrix with the second parameter as null
     OH_Drawing_CanvasGetTotalMatrix(canvas, nullptr);
     // add assert
@@ -894,6 +903,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowNull, TestSize.Level3
     OH_Drawing_CanvasDrawShadow(nullptr, path, p1, p2, 10, 0xFF000000, 0xFF000000, SHADOW_FLAGS_ALL);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_CanvasDrawShadow with the second parameter as null
     OH_Drawing_CanvasDrawShadow(canvas, nullptr, p1, p2, 10, 0xFF000000, 0xFF000000, SHADOW_FLAGS_ALL);
     // add assert
@@ -1168,6 +1178,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixNull, TestSize.Level3)
     OH_Drawing_CanvasSetMatrix(nullptr, matrix);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_CanvasSetMatrix with the second parameter as null
     OH_Drawing_CanvasSetMatrix(canvas, nullptr);
     // add assert
@@ -1367,14 +1378,17 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectWithSrcNull, TestS
     OH_Drawing_CanvasDrawImageRectWithSrc(nullptr, image, rect, rect2, options, STRICT_SRC_RECT_CONSTRAINT);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Call OH_Drawing_CanvasDrawImageRectWithSrc with the second parameter being nullptr
     OH_Drawing_CanvasDrawImageRectWithSrc(canvas, nullptr, rect, rect2, options, STRICT_SRC_RECT_CONSTRAINT);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Call OH_Drawing_CanvasDrawImageRectWithSrc with the third parameter being nullptr
     OH_Drawing_CanvasDrawImageRectWithSrc(canvas, image, nullptr, rect2, options, STRICT_SRC_RECT_CONSTRAINT);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_CanvasDrawImageRectWithSrc with the fourth parameter being nullptr
     OH_Drawing_CanvasDrawImageRectWithSrc(canvas, image, rect, nullptr, options, STRICT_SRC_RECT_CONSTRAINT);
     // add assert
@@ -1450,10 +1464,12 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectNull, TestSize.Lev
     OH_Drawing_CanvasDrawImageRect(nullptr, image, rect, options);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Call OH_Drawing_CanvasDrawImageRect with the second parameter as null
     OH_Drawing_CanvasDrawImageRect(canvas, nullptr, rect, options);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Call OH_Drawing_CanvasDrawImageRect with the third parameter as null
     OH_Drawing_CanvasDrawImageRect(canvas, image, nullptr, options);
     // add assert
@@ -1552,11 +1568,13 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesNull, TestSize.Leve
                                   BLEND_MODE_COLOR);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Call OH_Drawing_CanvasDrawVertices with the third parameter as 0
     OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 0, points_vertices, texs_vertices, colors, 3, indices,
                                   BLEND_MODE_COLOR);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Call OH_Drawing_CanvasDrawVertices with the fourth parameter as nullptr
     OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 3, nullptr, texs_vertices, colors, 3, indices,
                                   BLEND_MODE_COLOR);
@@ -1698,10 +1716,12 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsNull, TestSize.Level3
     OH_Drawing_CanvasReadPixels(nullptr, &imageInfo, pixels, 0, 0, 0);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Call OH_Drawing_CanvasReadPixels with the second parameter as nullptr
     OH_Drawing_CanvasReadPixels(canvas, nullptr, pixels, 0, 0, 0);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Call OH_Drawing_CanvasReadPixels with the third parameter as nullptr
     OH_Drawing_CanvasReadPixels(canvas, &imageInfo, nullptr, 0, 0, 0);
     // add assert
@@ -1864,6 +1884,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapNull, TestSiz
     OH_Drawing_CanvasReadPixelsToBitmap(nullptr, bitmap, 1, 1);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Call OH_Drawing_CanvasReadPixelsToBitmap with the second parameter as null
     OH_Drawing_CanvasReadPixelsToBitmap(canvas, nullptr, 1, 1);
     // add assert
@@ -2186,12 +2207,12 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorNull, TestSize.Level3)
     };
     uint32_t color = 0xFFFF0000;
     for (int i = 0; i < 29; i++) {
-    // add assert
-    EXPECT_EQ(OH_Drawing_CanvasDrawColor(nullptr, color, blendMode[i]), OH_DRAWING_ERROR_INVALID_PARAMETER);
+        // add assert
+        EXPECT_EQ(OH_Drawing_CanvasDrawColor(nullptr, color, blendMode[i]), OH_DRAWING_ERROR_INVALID_PARAMETER);
     }
     //3. OH_Drawing_CanvasDrawColor with the first parameter as 0
     for (int i = 0; i < 29; i++) {
-    OH_Drawing_CanvasDrawColor(canvas, 0, blendMode[i]);
+        OH_Drawing_CanvasDrawColor(canvas, 0, blendMode[i]);
     }
     //4. free memory
     OH_Drawing_CanvasDestroy(canvas);

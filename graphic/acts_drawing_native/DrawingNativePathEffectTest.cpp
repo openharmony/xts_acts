@@ -44,6 +44,12 @@ class DrawingNativePathEffectTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativePathEffectTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativePathEffectTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativePathEffectTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -80,6 +86,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectNull, TestSize.Lev
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_PathEffect *pathEffect1 = OH_Drawing_CreateDashPathEffect(nullptr, 2, 1.0);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. OH_Drawing_CreateDashPathEffect with 0 as the second parameter, check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_PathEffect *pathEffect2 = OH_Drawing_CreateDashPathEffect(intervals, 0, 1.0);

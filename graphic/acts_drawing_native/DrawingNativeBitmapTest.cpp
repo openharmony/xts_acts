@@ -53,6 +53,12 @@ class DrawingNativeBitmapTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeBitmapTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeBitmapTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeBitmapTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -658,7 +664,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXNull, TestSize.Level3) {
     OH_Drawing_BitmapGetImageInfo(nullptr, imageInfo);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-
+    OH_Drawing_ErrorCodeReset();
     OH_Drawing_BitmapGetImageInfo(cBitmap, nullptr);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);

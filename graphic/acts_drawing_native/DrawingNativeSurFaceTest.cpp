@@ -106,6 +106,9 @@ void DrawingNativeSurFaceTest::TearDown()
     eglSurface_ = EGL_NO_SURFACE;
     eglContext_ = EGL_NO_CONTEXT;
     eglDisplay_ = EGL_NO_DISPLAY;
+    std::cout << "DrawingNativeSurFaceTest Setup code called after each test case." << std::endl;
+    OH_Drawing_ErrorCodeReset();
+    std::cout << "DrawingNativeSurFaceTest errorCodeReset after each test case." << std::endl;
 }
 
 /*

@@ -39,6 +39,12 @@ class DrawingNativeRoundRectTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeRoundRectTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeRoundRectTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeRoundRectTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -241,6 +247,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerNull, TestSize.Lev
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_RoundRectSetCorner(nullptr, CORNER_POS_TOP_LEFT, {10.0f, 10.0f});
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. OH_Drawing_RoundRectSetCorner with 0 as the third parameter
     OH_Drawing_RoundRectSetCorner(roundRect, CORNER_POS_TOP_LEFT, {0, 0});
     // 4. OH_Drawing_RoundRectGetCorner with nullptr as the first parameter, check the error code using
