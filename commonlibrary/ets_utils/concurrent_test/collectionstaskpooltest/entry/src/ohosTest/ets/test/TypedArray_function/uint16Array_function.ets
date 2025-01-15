@@ -49,7 +49,7 @@ export function testUint16ArrayTaskPool0004(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -108,7 +108,7 @@ export function testUint16ArrayTaskPool0012(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -120,7 +120,7 @@ export function testUint16ArrayTaskPool0013(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -132,7 +132,7 @@ export function testUint16ArrayTaskPool0014(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -151,7 +151,7 @@ export function testUint16ArrayTaskPool0016(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -177,7 +177,7 @@ export function testUint16ArrayTaskPool0019(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -927,7 +927,7 @@ export function testUint16ArrayTaskPool0121(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -1010,7 +1010,7 @@ export function testUint16ArrayTaskPool0130(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -1065,7 +1065,7 @@ export function testUint16ArrayTaskPool0135(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent

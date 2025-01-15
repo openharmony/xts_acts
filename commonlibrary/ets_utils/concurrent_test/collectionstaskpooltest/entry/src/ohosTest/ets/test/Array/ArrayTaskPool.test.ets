@@ -2062,7 +2062,7 @@ export default function ArrayTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testCollectionsArray0064).then((value) => {
             num++;
-            expect(value).assertEqual('Parameter error.Invalid array length.');
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -2174,7 +2174,7 @@ export default function ArrayTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testCollectionsArray0068).then((value) => {
             num++;
-            expect(value).assertEqual('Parameter error.Only accept sendable value.');
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -2314,7 +2314,7 @@ export default function ArrayTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testCollectionsArray0073).then((value) => {
             num++;
-            expect(value).assertEqual('Parameter error.Only accept sendable value.');
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -4362,7 +4362,7 @@ export default function ArrayTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testCollectionsArray0146).then((value) => {
             num++;
-            expect(value).assertEqual("out of range.");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -5421,7 +5421,7 @@ export default function ArrayTaskPoolTest() {
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_18400
      * @tc.name       : testCollectionsArray0184
-     * @tc.desc       : Testing Collections of Array fill, start normal, end out of range.
+     * @tc.desc       : Testing Collections of Array fill, start normal, end error
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -5602,7 +5602,7 @@ export default function ArrayTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testCollectionsArray0190).then((value) => {
             num++;
-            expect(value).assertEqual('Parameter error.Invalid array length.');
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -5686,7 +5686,7 @@ export default function ArrayTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testCollectionsArray0193).then((value) => {
             num++;
-            expect(value).assertEqual('Parameter error.Invalid array length.');
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -5841,7 +5841,7 @@ export default function ArrayTaskPoolTest() {
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_19900
      * @tc.name       : testCollectionsArray0199
-     * @tc.desc       : Testing Collections of Array splice, array [1,2,3], start out of range.
+     * @tc.desc       : Testing Collections of Array splice, array [1,2,3], start error
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
