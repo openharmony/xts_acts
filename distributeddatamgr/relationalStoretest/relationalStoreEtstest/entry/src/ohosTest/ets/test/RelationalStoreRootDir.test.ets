@@ -1,16 +1,14 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 import data_relationalStore from '@ohos.data.relationalStore'
-import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import common from '@ohos.app.ability.common';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const TAG = "[RELATIONAL_STORE_JSKITS_TEST]"
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
   "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
 
-let store2  : data_relationalStore.RdbStore | undefined = undefined;
 
-const delegator = AbilityDelegatorRegistry.getAbilityDelegator();
-const context = delegator.getAppContext().getApplicationContext();
+let context: common.UIAbilityContext;
 
 
 const valueBucket1 : data_relationalStore.ValuesBucket =  {
@@ -38,6 +36,7 @@ export default function rdbrootDirTest() {
     beforeAll(async () => {
       console.log(TAG + "*************Unit Test Start*************");
       console.info(TAG + 'beforeAll');
+      context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
     });
 
     beforeEach(async ()  => {
@@ -78,6 +77,8 @@ export default function rdbrootDirTest() {
         expect().assertFail();
         done()
       } catch (err) {
+        await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
+        console.log(TAG +"delete rdbstore success");
         expect(err.code).assertEqual("14800010");
         console.log(TAG +"failed, error code: "+err.code, "err message:"+ err.message);
         done();
@@ -103,15 +104,17 @@ export default function rdbrootDirTest() {
       const STORE_CONFIG1 : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
         securityLevel: data_relationalStore.SecurityLevel.S1,
-        customDir: "entry/rdb",
+        customDir: "rdb",
         rootDir: "invalidPath"
       }
       try {
         data_relationalStore.getRdbStore(context,STORE_CONFIG1 , (err: BusinessError, rdbStore: data_relationalStore.RdbStore) => {
           expect().assertFail();
+          done()
         })
-        done()
       } catch (err) {
+        data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
+        console.log(TAG +"delete rdbstore success");
         expect(err.code).assertEqual("14800010");
         console.log(TAG +"failed, error code: "+err.code, "err message:"+ err.message);
         done();
@@ -138,13 +141,15 @@ export default function rdbrootDirTest() {
         name: "rootDirTest1.db",
         securityLevel: data_relationalStore.SecurityLevel.S3,
         rootDir: "/data/storage/el2/database",
-        customDir: "rdb"
+        customDir: "relationalstore/rdb"
       }
       try {
         await data_relationalStore.getRdbStore(context, STORE_CONFIG1);
         expect().assertFail();
         done()
       } catch (err) {
+        await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
+        console.log(TAG +"delete rdbstore success");
         expect(err.code).assertEqual("14800010");
         console.log(TAG +"failed, error code: "+err.code, "err message:"+ err.message);
         done();
@@ -171,7 +176,7 @@ export default function rdbrootDirTest() {
         name: "rootDirTest1.db",
         securityLevel: data_relationalStore.SecurityLevel.S3,
         rootDir: "/data/storage/el2/database",
-        customDir: "rdb"
+        customDir: "relationalstore/rdb"
       }
       try {
         data_relationalStore.getRdbStore(context,STORE_CONFIG1 , (err: BusinessError, rdbStore: data_relationalStore.RdbStore) => {
@@ -179,6 +184,8 @@ export default function rdbrootDirTest() {
         })
         done()
       } catch (err) {
+        data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
+        console.log(TAG +"delete rdbstore success");
         expect(err.code).assertEqual("14800010");
         console.log(TAG +"failed, error code: "+err.code, "err message:"+ err.message);
         done();
@@ -219,7 +226,6 @@ export default function rdbrootDirTest() {
         expect(resultSet.rowCount).assertEqual(3);
         console.log(TAG+"resultSet.rowCount=" + resultSet.rowCount)
         await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
-        rdbStore = undefined;
         console.log(TAG + "delete rdbstore success");
         done()
       } catch (err) {
@@ -267,7 +273,6 @@ export default function rdbrootDirTest() {
           expect(resultSet.rowCount).assertEqual(3);
           console.log(TAG + "resultSet.rowCount=" + resultSet.rowCount)
           data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
-          rdbStore = undefined;
           console.log(TAG + "delete rdbstore success");
           done();
         }
@@ -309,7 +314,6 @@ export default function rdbrootDirTest() {
         console.log(TAG+"catch err: failed, err: code=" + err.code + " message=" + err.message)
         expect(err.code).assertEqual(801);
         await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
-        rdbStore = undefined;
         console.log(TAG + "delete rdbstore success");
         done();
       }
@@ -349,7 +353,6 @@ export default function rdbrootDirTest() {
           console.log(TAG+"catch err: failed, err: code=" + err.code + " message=" + err.message)
           expect(err.code).assertEqual(801);
           data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
-          rdbStore = undefined;
           console.log(TAG + "delete rdbstore success");
           done();
         }
@@ -374,8 +377,6 @@ export default function rdbrootDirTest() {
       try {
         let rdbStore: data_relationalStore.RdbStore | undefined = undefined;
         rdbStore = await data_relationalStore.getRdbStore(context,STORE_CONFIG)
-        rdbStore.executeSync(CREATE_TABLE_TEST);
-        rdbStore.close();
         const STORE_CONFIG1  : data_relationalStore.StoreConfig = {
           name: "rootDirTest.db",
           securityLevel: data_relationalStore.SecurityLevel.S1,
@@ -386,12 +387,14 @@ export default function rdbrootDirTest() {
         rdbStore = undefined
         console.log(TAG + "delete rdbstore success"+rdbStore);
         expect(rdbStore).assertEqual(undefined)
+        done();
       }catch (err) {
         console.log(TAG + "catch err: failed, err: code=" + err.code + " message=" + err.message)
         expect().assertFail();
+        done();
       }
       console.log(TAG + "************* rdbrootDirTest0900 end *************");
-      done();
+
     })
 
     /**
@@ -410,8 +413,6 @@ export default function rdbrootDirTest() {
       }
       let rdbStore: data_relationalStore.RdbStore | undefined = undefined;
       rdbStore = await data_relationalStore.getRdbStore(context,STORE_CONFIG)
-      rdbStore.executeSync(CREATE_TABLE_TEST);
-      rdbStore.close();
       const STORE_CONFIG1  : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
         securityLevel: data_relationalStore.SecurityLevel.S3,
@@ -459,8 +460,10 @@ export default function rdbrootDirTest() {
         expect().assertFail();
         done()
       } catch (err) {
-        console.log(TAG + "catch err: failed, err: code=" + err.code + " message=" + err.message);
+        await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
+        console.log(TAG +"delete rdbstore success");
         expect(err.code).assertEqual("14800010");
+        console.log(TAG + "catch err: failed, err: code=" + err.code + " message=" + err.message);
         done()
       }
       console.log(TAG + "************* rdbrootDirTest1100 end *************");
@@ -492,11 +495,13 @@ export default function rdbrootDirTest() {
           expect().assertFail();
         })
       } catch (err) {
-        console.log(TAG + "catch err: failed, err: code=" + err.code + " message=" + err.message);
+        data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
+        console.log(TAG +"delete rdbstore success");
         expect(err.code).assertEqual("14800010");
-        console.log(TAG + "************* rdbrootDirTest1200 end *************");
+        console.log(TAG + "catch err: failed, err: code=" + err.code + " message=" + err.message);
         done();
       }
+      console.log(TAG + "************* rdbrootDirTest1200 end *************");
     })
 
     /**
@@ -522,11 +527,12 @@ export default function rdbrootDirTest() {
       try {
         await data_relationalStore.deleteRdbStore(context,STORE_CONFIG1)
         expect().assertFail();
-        console.log(TAG + "************* testRdbStore0025 end *************");
         done();
       } catch (err) {
-        console.log(TAG + "catch err: failed, err: code=" + err.code + " message=" + err.message);
+        await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
+        console.log(TAG +"delete rdbstore success");
         expect(err.code).assertEqual("14800010");
+        console.log(TAG + "catch err: failed, err: code=" + err.code + " message=" + err.message);
         done();
       }
       console.log(TAG + "************* rdbrootDirTest1300 end *************");
@@ -558,8 +564,10 @@ export default function rdbrootDirTest() {
           done()
         })
       } catch (err) {
-        console.log("catch err: failed, err: code=" + err.code + " message=" + err.message);
+        data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
+        console.log(TAG +"delete rdbstore success");
         expect(err.code).assertEqual("14800010");
+        console.log("catch err: failed, err: code=" + err.code + " message=" + err.message);
         done();
       }
       console.log(TAG + "************* rdbrootDirTest1400 end *************");
@@ -592,6 +600,8 @@ export default function rdbrootDirTest() {
         expect().assertFail();
         done()
       } catch (err) {
+        await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
+        console.log(TAG +"delete rdbstore success");
         expect(err.code).assertEqual("14800010");
         console.log(TAG +"failed, error code: "+err.code, "err message:"+ err.message);
         done();
@@ -621,13 +631,15 @@ export default function rdbrootDirTest() {
         name: "rootDirTest1.db",
         securityLevel: data_relationalStore.SecurityLevel.S1,
         rootDir: "/data/storage/el2/database",
-        customDir: "rdb"
+        customDir: "relationalstore/rdb"
       }
       try {
         await data_relationalStore.getRdbStore(context, STORE_CONFIG1);
         expect().assertFail();
         done()
       } catch (err) {
+        data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
+        console.log(TAG +"delete rdbstore success");
         expect(err.code).assertEqual("14800010");
         console.log(TAG +"failed, error code: "+err.code, "err message:"+ err.message);
         done();
@@ -670,7 +682,6 @@ export default function rdbrootDirTest() {
         expect(resultSet.rowCount).assertEqual(3);
         console.log(TAG+"resultSet.rowCount=" + resultSet.rowCount)
         await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
-        rdbStore = undefined;
         console.log(TAG + "delete rdbstore success");
         done()
       } catch (err) {
@@ -717,7 +728,6 @@ export default function rdbrootDirTest() {
         console.log(TAG+"catch err: failed, err: code=" + err.code + " message=" + err.message)
         expect(err.code).assertEqual(801);
         await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
-        rdbStore = undefined;
         console.log(TAG + "delete rdbstore success");
         done();
       }
@@ -749,8 +759,8 @@ export default function rdbrootDirTest() {
         const STORE_CONFIG1  : data_relationalStore.StoreConfig = {
           name: "rootDirTest.db",
           securityLevel: data_relationalStore.SecurityLevel.S1,
-          rootDir: "/data/storage/el2/database/",
-          customDir: "relationalstore/rdb/tester/test"
+          rootDir: "/data/storage/el2/database/relationalstore/rdb/",
+          customDir: "tester/test"
         }
         let rdbStore1 = await data_relationalStore.getRdbStore(context, STORE_CONFIG1)
         let predicates = new data_relationalStore.RdbPredicates('test');
@@ -758,7 +768,6 @@ export default function rdbrootDirTest() {
         expect(resultSet.rowCount).assertEqual(3);
         console.log(TAG+"resultSet.rowCount=" + resultSet.rowCount)
         await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
-        rdbStore = undefined;
         console.log(TAG + "delete rdbstore success");
         done()
       } catch (err) {
@@ -801,7 +810,6 @@ export default function rdbrootDirTest() {
         expect(resultSet.rowCount).assertEqual(3);
         console.log(TAG+"resultSet.rowCount=" + resultSet.rowCount)
         await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
-        rdbStore = undefined;
         console.log(TAG + "delete rdbstore success");
         done()
       } catch (err) {
@@ -829,7 +837,7 @@ export default function rdbrootDirTest() {
       const STORE_CONFIG1 : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
         securityLevel: data_relationalStore.SecurityLevel.S1,
-        customDir: "rdb",
+        customDir: "relationalstore/rdb",
         rootDir: "data/storage/el2/database"
       }
       try {
@@ -837,6 +845,8 @@ export default function rdbrootDirTest() {
         expect().assertFail();
         done()
       } catch (err) {
+        await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
+        console.log(TAG +"delete rdbstore success");
         expect(err.code).assertEqual("14800010");
         console.log(TAG +"failed, error code: "+err.code, "err message:"+ err.message);
         done();
@@ -876,7 +886,6 @@ export default function rdbrootDirTest() {
         expect(resultSet.rowCount).assertEqual(3);
         console.log(TAG+"resultSet.rowCount=" + resultSet.rowCount)
         await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
-        rdbStore = undefined;
         console.log(TAG + "delete rdbstore success");
         done()
       } catch (err) {
@@ -900,28 +909,20 @@ export default function rdbrootDirTest() {
         name: "rootDirTest.db",
         securityLevel: data_relationalStore.SecurityLevel.S1,
       }
-      let rdbStore: data_relationalStore.RdbStore | undefined = undefined;
-      rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG)
-      rdbStore.executeSync(CREATE_TABLE_TEST);
-      rdbStore.batchInsertSync('test', valueBuckets);
-      console.log(TAG+"context.databaseDir=" + context.databaseDir)
-      rdbStore.close();
+      await data_relationalStore.getRdbStore(context, STORE_CONFIG)
+      console.log(TAG + "get rdbstore success");
       const STORE_CONFIG1 : data_relationalStore.StoreConfig = {
         name: "rootDirTest.db",
         securityLevel: data_relationalStore.SecurityLevel.S1,
         rootDir: undefined,
-        customDir: "data/storage/el2/database/rdb/"
+        customDir: "data/storage/el2/database/relationalstore/rdb/"
       }
       try{
         let rdbStore1:data_relationalStore.RdbStore | undefined = undefined;
         rdbStore1 = await data_relationalStore.getRdbStore(context, STORE_CONFIG1)
         console.log(TAG + "rdbStore1=" + rdbStore1)
         expect(rdbStore1 != undefined).assertTrue()
-        await data_relationalStore.deleteRdbStore(context, STORE_CONFIG1);
-        rdbStore1 = undefined;
-        console.log(TAG + "delete rdbstore1 success");
         await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
-        rdbStore = undefined;
         console.log(TAG + "delete rdbstore success");
         done()
       }catch (err) {
