@@ -15,6 +15,7 @@ add_library(nativerender SHARED
     napi_render_init.cpp
     postFrame/post_frame_callback_test.cpp
     swiper/swiper_test.cpp
+    progress/progress_linear_style_test.cpp
 )
 
 add_library(nativefunc SHARED
