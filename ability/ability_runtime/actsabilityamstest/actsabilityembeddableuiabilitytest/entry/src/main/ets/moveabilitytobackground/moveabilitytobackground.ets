@@ -69,9 +69,12 @@ export default class MoveAbilityToBackground extends EmbeddableUIAbility {
     }).catch((err: BusinessError) => {
       console.log(`moveAbilityToBackground error: ${JSON.stringify(err)}.`);
     });
+    setTimeout(() => {
+      this.context.terminateSelf(()=>{
+      });
+    }, 2000);
     console.info(`moveabilitytobackground state is ${key}`);
-    this.context.terminateSelf(()=>{
-    });
+
 
   }
 
