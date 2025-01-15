@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import postFrameCallbackTest from "./postFrame/PostFrameCallbackTest.test"
+import swiperTest from "./swiper/SwiperTest.test"
 
 export default function testsuite() {
-  postFrameCallbackTest()
+  postFrameCallbackTest();
+  swiperTest();
 }

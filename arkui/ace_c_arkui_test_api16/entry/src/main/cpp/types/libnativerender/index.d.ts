@@ -15,3 +15,5 @@
 export const postFrameCallbackTest: (a: string) => void;
 
 export const testPostFrameCallback: (a: string) => void;
+
+export const swiperAutoPlayTest: (a: string) => void;
