@@ -27,7 +27,7 @@ export default function webInitTest() {
 
     afterEach(async (done: Function) => {
       console.info("WebInitTest afterEach start");
-      await Utils.sleep(1000);
+      await Utils.sleep(2000);
       console.info("WebInitTest afterEach end");
       done();
     })
@@ -50,6 +50,7 @@ export default function webInitTest() {
      */
     it('ContextMenuMediaType', 0, async (done: Function) => {
       Utils.emitEvent("emitContextMenuMediaType", 10)
+      await Utils.sleep(2000);
       Utils.registerEvent("ContextMenuMediaType", 1, 33, done);
       sendEventByKey('WebInitTestButton', 10, '');
     })
@@ -60,6 +61,7 @@ export default function webInitTest() {
      */
     it('ContextMenuInputFieldType', 0, async (done: Function) => {
       Utils.emitEvent("emitContextMenuInputFieldType", 10)
+      await Utils.sleep(2000);
       Utils.registerEvent("ContextMenuInputFieldType", 1, 34, done);
       Utils.registerEvent("ContextMenuInputFieldType", 4, 35, done);
       Utils.registerEvent("ContextMenuInputFieldType", 5, 36, done);
@@ -72,6 +74,7 @@ export default function webInitTest() {
      */
     it('ContextMenuEditStateFlags', 0, async (done: Function) => {
       Utils.emitEvent("emitContextMenuEditStateFlags", 10)
+      await Utils.sleep(2000);
       Utils.registerEvent("ContextMenuEditStateFlags", 0, 37, done);
       Utils.registerEvent("ContextMenuEditStateFlags", 1, 38, done);
       Utils.registerEvent("ContextMenuEditStateFlags", 2, 39, done);
@@ -86,6 +89,7 @@ export default function webInitTest() {
      */
     it('testGetFavicon',0,async (done: Function) =>{
       Utils.emitEvent("emitGetFavicon", 10)  
+      await Utils.sleep(2000);
       Utils.registerEvent("testGetFavicon",null,114,done);
       sendEventByKey('WebInitTestButton',10,'');
     })
@@ -96,6 +100,7 @@ export default function webInitTest() {
      */
     it('testGetFaviconAgain',0,async (done: Function) =>{
       Utils.emitEvent("emitGetFaviconAgain", 10)
+      await Utils.sleep(2000);
       Utils.registerEvent("testGetFaviconAgain",true,116,done);
       sendEventByKey('WebInitTestButton',10,'');
     })

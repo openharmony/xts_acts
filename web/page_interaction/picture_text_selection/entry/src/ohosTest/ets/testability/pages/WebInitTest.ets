@@ -53,14 +53,6 @@ struct WebInitTest {
       console.info("valueChangeCallBack:" + JSON.stringify(eventData));
       if (eventData.data != null && eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
-        try {
-          this.controller.loadUrl("resource://rawfile/index.html");
-        } catch (error) {
-          console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-        }
-        this.interceptUrl = ''
-        this.consoleMsg = ''
-        this.consoleCorsError = false
       }
     }
   }
@@ -84,9 +76,9 @@ struct WebInitTest {
                 try {
                   this.flag = true
                   this.controller.loadUrl("resource://rawfile/index.html");
-                  setTimeout(() => {
-                    this.controller.searchAllAsync("首页");
-                  }, 3000)
+                  await Utils.sleep(3000)
+                  this.controller.searchAllAsync("首页");
+                  
                 } catch (error) {
                   console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
                 }
@@ -95,6 +87,7 @@ struct WebInitTest {
               case "emitContextMenuMediaType": {
                 try {
                   let con = ContextMenuMediaType.Image;
+                  await Utils.sleep(1000)
                   Utils.emitEvent(con, 33);
                   console.log("result: " + con);
                 } catch (error) {
@@ -105,8 +98,11 @@ struct WebInitTest {
               case "emitContextMenuInputFieldType": {
                 try {
                   Utils.emitEvent(ContextMenuInputFieldType.PlainText, 34);
+                  await Utils.sleep(1000)
                   Utils.emitEvent(ContextMenuInputFieldType.Telephone, 35);
+                  await Utils.sleep(1000)
                   Utils.emitEvent(ContextMenuInputFieldType.Other, 36);
+                  await Utils.sleep(1000)
                   console.log("result: " + ContextMenuInputFieldType.PlainText);
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -116,10 +112,15 @@ struct WebInitTest {
               case "emitContextMenuEditStateFlags": {
                 try {
                   Utils.emitEvent(ContextMenuEditStateFlags.NONE, 37);
+                  await Utils.sleep(1000)
                   Utils.emitEvent(ContextMenuEditStateFlags.CAN_CUT, 38);
+                  await Utils.sleep(1000)
                   Utils.emitEvent(ContextMenuEditStateFlags.CAN_COPY, 39);
+                  await Utils.sleep(1000)
                   Utils.emitEvent(ContextMenuEditStateFlags.CAN_PASTE, 40);
+                  await Utils.sleep(1000)
                   Utils.emitEvent(ContextMenuEditStateFlags.CAN_SELECT_ALL, 41);
+                  await Utils.sleep(1000)
                   console.log("result: " + ContextMenuEditStateFlags.CAN_SELECT_ALL);
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -129,6 +130,7 @@ struct WebInitTest {
               case "emitGetFavicon": {
                 try {
                   this.controller.loadUrl($rawfile('indexCopy.html'))
+                  await Utils.sleep(2000)
                   this.pixelmap = this.controller.getFavicon();
                   this.pixelmap.getImageInfo().then(imageInfo => {
                     if (imageInfo == undefined) {
@@ -146,7 +148,7 @@ struct WebInitTest {
               case "emitGetFaviconAgain": {
                 try {
                   this.controller.loadUrl($rawfile('secondCopy.html'))
-                  await Utils.sleep(1000)
+                  await Utils.sleep(2000)
                   this.pixelmap = this.controller.getFavicon();
                   this.pixelmap.getImageInfo().then(imageInfo => {
                     if (imageInfo == undefined) {
@@ -206,11 +208,9 @@ struct WebInitTest {
             ret.numberOfMatches.toString();
             console.log("searchResult" + searchResult);
             if(this.flag){
-              setTimeout(() => {
-                Utils.emitEvent(searchResult, 16);
-                this.controller.clearMatches();
-                this.flag=false
-              }, 3000)
+              Utils.emitEvent(searchResult, 16);
+              this.controller.clearMatches();
+              this.flag=false
             }
           })
       }
