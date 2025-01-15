@@ -47,9 +47,9 @@ constexpr uint32_t DEFAULT_HEIGHT = 1280;
 constexpr OH_AVPixelFormat DEFAULT_PIXELFORMAT = AV_PIXEL_FORMAT_NV12;
 static int32_t g_aFlag = 0;
 static int32_t g_vFlag = 0;
-static int32_t testPass = 0;
-static int32_t testFailed = 1;
-int32_t testResult = testPass;
+static int32_t g_testPass = 0;
+static int32_t g_testFailed = 1;
+int32_t g_testResult = g_testPass;
 static atomic<double> frameNum;
 static OH_AVScreenCapture *screenCaptureNormal;
 static struct OH_AVScreenCapture_ContentFilter *g_contentFilter;
@@ -162,12 +162,12 @@ static napi_value normalAVScreenCaptureTestStop(napi_env env, napi_callback_info
 
     if (result3 == AV_SCREEN_CAPTURE_ERR_OK && ((result1 == AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT) ||
         (result1 == AV_SCREEN_CAPTURE_ERR_OK && averageFrameNum < (maxFrameRate * exceedPercentage)))) {
-        testResult = testPass;
+        g_testResult = g_testPass;
     } else {
-        testResult = testFailed;
+        g_testResult = g_testFailed;
     }
     napi_value res;
-    napi_create_int32(env, testResult, &res);
+    napi_create_int32(env, g_testResult, &res);
     return res;
 }
 
