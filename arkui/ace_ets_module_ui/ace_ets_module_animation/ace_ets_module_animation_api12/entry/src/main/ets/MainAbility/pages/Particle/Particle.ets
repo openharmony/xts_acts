@@ -46,7 +46,7 @@ struct ParticleExample1 {
 
         Stack() {
           Text()
-            .width(300).height(300).backgroundColor(Color.Black)
+            .width(100).height(100).backgroundColor(Color.Black)
           Particle({ particles: [
             {
               emitter: {
@@ -144,8 +144,8 @@ struct ParticleExample1 {
             }
           ]
           })
-            .width(300)
-            .height(300)
+            .width(100)
+            .height(100)
             .disturbanceFields(this.fieldsValue)
             .id("Particle")
         }
