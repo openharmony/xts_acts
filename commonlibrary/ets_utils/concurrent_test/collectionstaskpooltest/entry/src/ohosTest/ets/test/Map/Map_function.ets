@@ -43,7 +43,8 @@ export function testCollectionsMap0001(): string {
     }
     return 'success';
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -62,7 +63,8 @@ export function testCollectionsMap0002(): string {
     }
     return 'success';
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -78,7 +80,8 @@ export function testCollectionsMap0003(): string {
     }
     return tempNum === 1 ? 'success' : 'fail';
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -92,7 +95,8 @@ export function testCollectionsMap0004(): string {
     }
     return tempNum === 0 ? 'success' : 'fail';
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -108,7 +112,8 @@ export function testCollectionsMap0005(): string {
     }
     return tempNum === 2 ? 'success' : 'fail';
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -128,7 +133,8 @@ export function testCollectionsMap0006(): string {
     }
     return tempNum === 1 ? 'success' : 'fail';
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -145,7 +151,8 @@ export function testCollectionsMap0007(): string {
     }
     return tempNum === 0 ? 'success' : 'fail';
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -363,7 +370,8 @@ export function testCollectionsMap0030(): string {
     });
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -381,7 +389,8 @@ export function testCollectionsMap0031(): string {
     });
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 

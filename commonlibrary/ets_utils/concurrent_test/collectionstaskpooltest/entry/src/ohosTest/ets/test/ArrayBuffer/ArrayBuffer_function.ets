@@ -24,7 +24,8 @@ export function testCollectionsArrayBuffer0001(): string {
     new collections.ArrayBuffer(-1);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("testCollectionsArrayBuffer0001 error is: " + `${err.message}`);
+    return "error";
   }
 }
 

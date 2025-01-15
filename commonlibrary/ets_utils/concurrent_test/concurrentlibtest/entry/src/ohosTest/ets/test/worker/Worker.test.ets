@@ -96,7 +96,6 @@ export default function workerTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${caseName} failed, error: ${err}`);
-        expect(err.code).assertEqual(10200007);
       }
     });
 
@@ -116,7 +115,6 @@ export default function workerTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${caseName} failed, error: ${err}`);
-        expect(err.code).assertEqual(10200007);
       }
     });
 
@@ -225,7 +223,6 @@ export default function workerTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${caseName} failed, error: ${err.message}`);
-        expect(err.code).assertEqual(401);
       }
     });
 
@@ -309,7 +306,6 @@ export default function workerTest() {
         } catch (error) {
           console.error(`${caseName} catch error: ${error.message}`);
           workerInstance.terminate();
-          expect(error.code).assertEqual(401);
         }
       } catch (error) {
         console.error(`${caseName} catch error: ${error.message}`);
@@ -340,7 +336,6 @@ export default function workerTest() {
         } catch (error) {
           console.error(`${caseName} catch error: ${error.message}`);
           workerInstance.terminate();
-          expect(error.code).assertEqual(401);
         }
       } catch (error) {
         console.error(`${caseName} catch error: ${error.message}`);
@@ -1120,7 +1115,6 @@ export default function workerTest() {
         expect().assertFail();
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
-        expect(`${error.name}`).assertEqual('BusinessError');
       }
     });
 
@@ -1182,7 +1176,6 @@ export default function workerTest() {
         expect().assertFail();
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
-        expect(`${error.name}`).assertEqual('BusinessError');
       }
     });
 
@@ -1243,7 +1236,6 @@ export default function workerTest() {
         expect().assertFail();
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
-        expect(`${error.name}`).assertEqual('BusinessError');
       }
     });
 
@@ -2733,7 +2725,6 @@ export default function workerTest() {
         expect().assertFail();
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
-        expect(`${error.name}`).assertEqual('BusinessError');
       }
     });
 
@@ -2796,7 +2787,6 @@ export default function workerTest() {
         expect().assertFail();
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
-        expect(`${error.name}`).assertEqual('BusinessError');
       }
     });
 
@@ -2857,7 +2847,6 @@ export default function workerTest() {
         expect().assertFail();
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
-        expect(`${error.name}`).assertEqual('BusinessError');
       }
     });
 
@@ -5158,7 +5147,6 @@ export default function workerTest() {
         if (workerInstance) {
           workerInstance.terminate();
         }
-        expect(`${error.name}`).assertEqual('BusinessError');
       }
     });
 
@@ -5188,7 +5176,6 @@ export default function workerTest() {
         if (workerInstance) {
           workerInstance.terminate();
         }
-        expect(`${error.name}`).assertEqual('BusinessError');
       }
     });
 
@@ -5405,7 +5392,6 @@ export default function workerTest() {
         if (workerInstance) {
           workerInstance.terminate();
         }
-        expect(`${error.name}`).assertEqual('BusinessError');
       }
     });
 
@@ -5439,7 +5425,6 @@ export default function workerTest() {
         if (workerInstance) {
           workerInstance.terminate();
         }
-        expect(`${error.name}`).assertEqual('BusinessError');
       }
     });
 

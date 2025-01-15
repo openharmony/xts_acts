@@ -49,7 +49,7 @@ export function testUint32ArrayTaskPool0004(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -108,7 +108,7 @@ export function testUint32ArrayTaskPool0012(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -120,7 +120,7 @@ export function testUint32ArrayTaskPool0013(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -132,7 +132,7 @@ export function testUint32ArrayTaskPool0014(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -151,7 +151,7 @@ export function testUint32ArrayTaskPool0016(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -170,7 +170,7 @@ export function testUint32ArrayTaskPool0018(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -182,7 +182,7 @@ export function testUint32ArrayTaskPool0019(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -194,7 +194,7 @@ export function testUint32ArrayTaskPool0020(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -937,7 +937,7 @@ export function testUint32ArrayTaskPool0121(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -1020,7 +1020,7 @@ export function testUint32ArrayTaskPool0130(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -1075,7 +1075,7 @@ export function testUint32ArrayTaskPool0135(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent

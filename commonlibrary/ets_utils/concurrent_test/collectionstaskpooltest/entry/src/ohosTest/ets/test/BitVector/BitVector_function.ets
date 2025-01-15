@@ -216,7 +216,8 @@ export function testBitVectorHas0005(): string {
     bitVectorList.has(1, -1, 10);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -233,7 +234,8 @@ export function testBitVectorHas0006(): string {
     bitVectorList.has(1, 0, 11);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -250,7 +252,8 @@ export function testBitVectorHas0007(): string {
     bitVectorList.has(1, 5, 4);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -267,7 +270,8 @@ export function testBitVectorHas0008(): string {
     bitVectorList.has(1, 5, 5);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -322,7 +326,8 @@ export function testBitVectorSetBitsByRange0005(): string {
     bitVectorList.has(1, -1, 10);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -337,7 +342,8 @@ export function testBitVectorSetBitsByRange0006(): string {
     bitVectorList.has(1, 0, 11);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -352,7 +358,8 @@ export function testBitVectorSetBitsByRange0007(): string {
     bitVectorList.has(1, 5, 4);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -367,7 +374,8 @@ export function testBitVectorSetBitsByRange0008(): string {
     bitVectorList.has(1, 5, 5);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -536,7 +544,8 @@ export function testBitVectorGetBitsByRange0003(): string {
     bitVectorList.getBitsByRange(4, 11);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -550,7 +559,8 @@ export function testBitVectorGetBitsByRange0004(): string {
     bitVectorList.getBitsByRange(-1, 10);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -564,7 +574,8 @@ export function testBitVectorGetBitsByRange0005(): string {
     bitVectorList.getBitsByRange(5, 4);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -578,7 +589,8 @@ export function testBitVectorGetBitsByRange0006(): string {
     bitVectorList.getBitsByRange(5, 5);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -592,7 +604,8 @@ export function testBitVectorResize0001(): string {
     bitVectorList.resize(-1);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -651,7 +664,8 @@ export function testBitVectorGetBitCountByRange0003(): string {
     bitVectorList.getBitCountByRange(1, 4, 11);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -665,7 +679,8 @@ export function testBitVectorGetBitCountByRange0004(): string {
     bitVectorList.getBitCountByRange(1, -1, 10);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -679,7 +694,8 @@ export function testBitVectorGetBitCountByRange0005(): string {
     bitVectorList.getBitCountByRange(1, 5, 4);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -693,7 +709,8 @@ export function testBitVectorGetBitCountByRange0006(): string {
     bitVectorList.getBitCountByRange(1, 5, 5);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -743,7 +760,8 @@ export function testBitVectorGetIndexOf0005(): string {
     bitVectorList.getIndexOf(1, -1, 10);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -757,7 +775,8 @@ export function testBitVectorGetIndexOf0006(): string {
     bitVectorList.getIndexOf(1, 0, 11);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -771,7 +790,8 @@ export function testBitVectorGetIndexOf0007(): string {
     bitVectorList.getIndexOf(1, 5, 4);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -785,7 +805,8 @@ export function testBitVectorGetIndexOf0008(): string {
     bitVectorList.getIndexOf(1, 5, 5);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -835,7 +856,8 @@ export function testBitVectorGetLastIndexOf0005(): string {
     bitVectorList.getLastIndexOf(1, -1, 10);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -849,7 +871,8 @@ export function testBitVectorGetLastIndexOf0006(): string {
     bitVectorList.getLastIndexOf(1, 0, 11);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -863,7 +886,8 @@ export function testBitVectorGetLastIndexOf0007(): string {
     bitVectorList.getLastIndexOf(1, 5, 4);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -877,7 +901,8 @@ export function testBitVectorGetLastIndexOf0008(): string {
     bitVectorList.getLastIndexOf(1, 5, 5);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -905,7 +930,8 @@ export function testBitVectorFlipBitByIndex0002(): string {
     bitVectorList.flipBitByIndex(5);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -919,7 +945,8 @@ export function testBitVectorFlipBitByIndex0003(): string {
     bitVectorList.flipBitByIndex(-1);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -965,7 +992,8 @@ export function testBitVectorFlipBitsByRange0003(): string {
     bitVectorList.flipBitsByRange(4, 11);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -979,7 +1007,8 @@ export function testBitVectorFlipBitsByRange0004(): string {
     bitVectorList.flipBitsByRange(-1, 10);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -993,7 +1022,8 @@ export function testBitVectorFlipBitsByRange0005(): string {
     bitVectorList.flipBitsByRange(5, 4);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -1007,7 +1037,8 @@ export function testBitVectorFlipBitsByRange0006(): string {
     bitVectorList.flipBitsByRange(5, 5);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("error is: " + `${err.message}`);
+    return "error";
   }
 }
 

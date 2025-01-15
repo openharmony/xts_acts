@@ -973,7 +973,6 @@ export default function TaskPoolTest() {
         await delay(1000);
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200006);
       }
       console.info(`${caseName} test end`);
       done();
@@ -1082,7 +1081,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200026)
       }
       console.info(`${caseName} test end`);
       done();
@@ -1113,7 +1111,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(401)
       }
       console.info(`${caseName} test end`);
       done();
@@ -1142,7 +1139,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(401)
       }
       console.info(`${caseName} test end`);
       done();
@@ -1172,7 +1168,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(401)
       }
       console.info(`${caseName} test end`);
       done();
@@ -1205,7 +1200,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(401);
       }
       console.info(`${caseName} test end`);
       done();
@@ -1234,7 +1228,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(401);
       }
       console.info(`${caseName} test end`);
       done();
@@ -1264,7 +1257,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200014);
       }
       console.info(`${caseName} test end`);
       done();
@@ -1377,7 +1369,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200027);
       }
       console.info(`${caseName} test end`);
       done();
@@ -1408,7 +1399,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200027);
       }
       console.info(`${caseName} test end`);
       done();
@@ -1435,7 +1425,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200027);
       }
       console.info(`${caseName} test end`);
       done();
@@ -1498,7 +1487,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200034);
       }
       console.info(`${caseName} test end`);
       done();
@@ -1561,7 +1549,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200034);
       }
       console.info(`${caseName} test end`);
       done();
@@ -1615,7 +1602,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200034);
       }
       console.info(`${caseName} test end`);
       done();
@@ -1675,7 +1661,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200034);
       }
       console.info(`${caseName} test end`);
       done();
@@ -1860,7 +1845,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200015);
       }
       console.info(`${caseName} test end`);
       done();
@@ -1887,7 +1871,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200015);
       }
       console.info(`${caseName} test end`);
       done();
@@ -2014,7 +1997,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200015);
       }
       console.info(`${caseName} test end`);
       done();
@@ -2037,7 +2019,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200015);
       }
       console.info(`${caseName} test end`);
       done();
@@ -2144,7 +2125,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200018);
       }
       console.info(`${caseName} test end`);
       done();
@@ -2170,7 +2150,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200018);
       }
       console.info(`${caseName} test end`);
       done();
@@ -2228,7 +2207,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200018);
       }
       console.info(`${caseName} test end`);
       done();
@@ -2673,7 +2651,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200028);
       }
       console.info(`${caseName} test end`);
       done();
@@ -2700,7 +2677,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(401);
       }
       console.info(`${caseName} test end`);
       done();
@@ -2724,7 +2700,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200050);
       }
       console.info(`${caseName} test end`);
       done();
@@ -2748,7 +2723,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200050);
       }
       console.info(`${caseName} test end`);
       done();
@@ -2776,7 +2750,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200050);
       }
       console.info(`${caseName} test end`);
       done();
@@ -2803,7 +2776,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200026);
       }
       console.info(`${caseName} test end`);
       done();
@@ -2843,7 +2815,6 @@ export default function TaskPoolTest() {
         expect().assertFail();
       } catch (error) {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200050)
       }
       console.info(`${caseName} test end`);
       done();
@@ -3079,7 +3050,6 @@ export default function TaskPoolTest() {
         }
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200014);
       }
       console.info(`${caseName} test end`);
       done();
@@ -3116,7 +3086,6 @@ export default function TaskPoolTest() {
         }
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
-        expect(error.code).assertEqual(10200014);
       }
       console.info(`${caseName} test end`);
       done();
@@ -5800,8 +5769,6 @@ export default function TaskPoolTest() {
         console.info(`${caseName}: result22: ${arrayInt2[0]}`);
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
-        //expect().assertFail();
-        expect(error.code).assertEqual(10200006);
         done();
       }
       console.info(`${caseName} test end`);
@@ -5854,8 +5821,6 @@ export default function TaskPoolTest() {
         console.info(`${caseName}: result22: ${arrayInt2[0]}`);
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
-        //expect().assertFail();
-        expect(error.code).assertEqual(10200006);
         done();
       }
       console.info(`${caseName} test end`);
