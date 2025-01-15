@@ -29,6 +29,7 @@ const LABEL_USB = "usb";
 const LABEL_WIFI = "wifi";
 const LABEL_CAMERA = "camera";
 const LABEL_SNAPSHOT_SKIP_FOR_ACCOUNT = "snapshotSkip";
+const LABEL_RESET_FACTORY = "resetFactory";
 
 export default function restrictionsTest() {
   describe('restrictions_test', () => {
@@ -308,6 +309,27 @@ function testSetDisallowedPolicy() {
       expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_CAMERA)).assertFalse();
     } catch (error) {
       expect(false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0113
+   * @tc.name      : test_set_disallowed_policy_0113
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0113", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_RESET_FACTORY, false);
+      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_RESET_FACTORY)).assertFalse();
+    } catch (error) {
+      expect(error.code == 801).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
