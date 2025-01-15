@@ -15123,19 +15123,19 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_RawDataBuffer_0100", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_RawDataBuffer_0100---------------------------");
+            let TEST_LEN_32K = 32 * 1024;
+            let data = new rpc.MessageSequence();
             try {
-                let TEST_LEN_32K = 32 * 1024;
-                let data = new rpc.MessageSequence();
                 let buffer = new ArrayBuffer(TEST_LEN_32K);
                 let size = buffer.byteLength;
                 let int32View = new Int32Array(buffer);
-                for (let i = 0; i < int32View.length; i++) {
-                    int32View[i] = i * 2 + 1;
-                }
+                int32View.fill(1);
                 data.writeRawDataBuffer(buffer, size);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_RawDataBuffer_0100 error is:" + error);
                 expect(error == null).assertTrue();
+            } finally {
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_RawDataBuffer_0100---------------------------");
         });
@@ -15150,19 +15150,19 @@ export default function ActsRpcClientJsTest() {
          */
         it("SUB_DSoftbus_IPC_API_RawDataBuffer_0200", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_RawDataBuffer_0200---------------------------");
+            let TEST_LEN_128M = 128 * 1024 * 1024;
+            let data = new rpc.MessageSequence();
             try {
-                let TEST_LEN_128M = 128 * 1024 * 1024;
-                let data = new rpc.MessageSequence();
                 let buffer = new ArrayBuffer(TEST_LEN_128M);
                 let size = buffer.byteLength;
                 let int32View = new Int32Array(buffer);
-                for (let i = 0; i < int32View.length; i++) {
-                    int32View[i] = i * 2 + 1;
-                }
+                int32View.fill(1);
                 data.writeRawDataBuffer(buffer, size);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_RawDataBuffer_0200 error is:" + error);
                 expect(error == null).assertTrue();
+            } finally {
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_RawDataBuffer_0200---------------------------");
         });
@@ -15177,21 +15177,21 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_RawDataBuffer_0300", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_RawDataBuffer_0300---------------------------");
+            let TEST_LEN_32K = 32 * 1024;
+            let data = new rpc.MessageSequence();
             try {
-                let TEST_LEN_32K = 32 * 1024;
-                let data = new rpc.MessageSequence();
                 let buffer = new ArrayBuffer(TEST_LEN_32K);
                 let size = buffer.byteLength;
                 let int32View = new Int32Array(buffer);
-                for (let i = 0; i < int32View.length; i++) {
-                    int32View[i] = i * 2 + 1;
-                }
+                int32View.fill(1);
                 let errSize = 0;
                 data.writeRawDataBuffer(buffer, 0);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_RawDataBuffer_0300 error is:" + error);
                 let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_RawDataBuffer_0300---------------------------");
         });
@@ -15206,21 +15206,21 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_RawDataBuffer_0400", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_RawDataBuffer_0400---------------------------");
+            let TEST_LEN_32K = 32 * 1024;
+            let data = new rpc.MessageSequence();
             try {
-                let TEST_LEN_32K = 32 * 1024;
-                let data = new rpc.MessageSequence();
                 let buffer = new ArrayBuffer(TEST_LEN_32K);
                 let size = buffer.byteLength;
                 let int32View = new Int32Array(buffer);
-                for (let i = 0; i < int32View.length; i++) {
-                    int32View[i] = i * 2 + 1;
-                }
+                int32View.fill(1);
                 let errSize = -1;
                 data.writeRawDataBuffer(buffer, errSize);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_RawDataBuffer_0400 error is:" + error);
                 let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_RawDataBuffer_0400---------------------------");
         });
@@ -15235,20 +15235,20 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_RawDataBuffer_0500", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_RawDataBuffer_0500---------------------------");
+            let TEST_LEN_128M = 128 * 1024 * 1024;
+            let data = new rpc.MessageSequence();
             try {
-                let TEST_LEN_128M = 128 * 1024 * 1024;
-                let data = new rpc.MessageSequence();
                 let buffer = new ArrayBuffer(TEST_LEN_128M + 4);
                 let size = buffer.byteLength;
                 let int32View = new Int32Array(buffer);
-                for (let i = 0; i < int32View.length; i++) {
-                    int32View[i] = i * 2 + 1;
-                }
+                int32View.fill(1);
                 data.writeRawDataBuffer(buffer, size);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_RawDataBuffer_0500 error is:" + error);
                 let errCode = `${rpc.ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_RawDataBuffer_0500---------------------------");
         });
@@ -15263,25 +15263,25 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_RawDataBuffer_0600", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_RawDataBuffer_0600---------------------------");
+            let TEST_LEN_32K = 32 * 1024;
+            let data = new rpc.MessageSequence();
             try {
-                let TEST_LEN_32K = 32 * 1024;
-                let data = new rpc.MessageSequence();
                 let buffer = new ArrayBuffer(TEST_LEN_32K);
                 let size = buffer.byteLength;
                 let int32View = new Int32Array(buffer);
-                for (let i = 0; i < int32View.length; i++) {
-                    int32View[i] = i * 2 + 1;
-                }
+                int32View.fill(1);
                 data.writeRawDataBuffer(buffer, size);
                 let readBuffer = data.readRawDataBuffer(size);
-                let readInt32Arr = Int32Array(readBuffer);
+                let readInt32Arr = new Int32Array(readBuffer);
                 expect(readInt32Arr.length == int32View.length).assertTrue();
                 for (let i = 0; i < readInt32Arr.length; i++) {
                     expect(readInt32Arr[i]).assertEqual(int32View[i]);
                 }
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_RawDataBuffer_0600 error is:" + error);
-                expect(error.code == null).assertTrue();
+                expect(error== null).assertTrue();
+            } finally {
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_RawDataBuffer_0600---------------------------");
         });
@@ -15296,25 +15296,25 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_RawDataBuffer_0700", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_RawDataBuffer_0700---------------------------");
+            let TEST_LEN_64K = 64 * 1024;
+            let data = new rpc.MessageSequence();
             try {
-                let TEST_LEN_64K = 64 * 1024;
-                let data = new rpc.MessageSequence();
-                let buffer = new ArrayBuffer(TEST_LEN_64K + 1);
+                let buffer = new ArrayBuffer(TEST_LEN_64K + 4);
                 let size = buffer.byteLength;
                 let int32View = new Int32Array(buffer);
-                for (let i = 0; i < int32View.length; i++) {
-                    int32View[i] = i * 2 + 1;
-                }
+                int32View.fill(1);
                 data.writeRawDataBuffer(buffer, size);
                 let readBuffer = data.readRawDataBuffer(size);
-                let readInt32Arr = Int32Array(readBuffer);
+                let readInt32Arr = new Int32Array(readBuffer);
                 expect(readInt32Arr.length == int32View.length).assertTrue();
                 for (let i = 0; i < readInt32Arr.length; i++) {
                     expect(readInt32Arr[i]).assertEqual(int32View[i]);
                 }
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_RawDataBuffer_0700 error is:" + error);
-                expect(error.code == null).assertTrue();
+                expect(error== null).assertTrue();
+            } finally {
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_RawDataBuffer_0700---------------------------");
         });
@@ -15329,21 +15329,21 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_RawDataBuffer_0800", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_RawDataBuffer_0800---------------------------");
+            let TEST_LEN_128M = 128 * 1024 * 1024;
+            let data = new rpc.MessageSequence();
             try {
-                let TEST_LEN_128M = 128 * 1024 * 1024;
-                let data = new rpc.MessageSequence();
                 let buffer = new ArrayBuffer(TEST_LEN_128M);
                 let size = buffer.byteLength;
                 let int32View = new Int32Array(buffer);
-                for (let i = 0; i < int32View.length; i++) {
-                    int32View[i] = i * 2 + 1;
-                }
+                int32View.fill(1);
                 data.writeRawDataBuffer(buffer, size);
                 let readBuffer = data.readRawDataBuffer(TEST_LEN_128M + 1);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_RawDataBuffer_0800 error is:" + error);
                 let errCode = `${rpc.ErrorCode.READ_DATA_FROM_MESSAGE_SEQUENCE_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_RawDataBuffer_0800---------------------------");
         });
@@ -15358,22 +15358,22 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_RawDataBuffer_0900", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_RawDataBuffer_0900---------------------------");
+            let TEST_LEN_32K = 32 * 1024;
+            let data = new rpc.MessageSequence();
             try {
-                let TEST_LEN_32K = 32 * 1024;
-                let data = new rpc.MessageSequence();
                 let buffer = new ArrayBuffer(TEST_LEN_32K);
                 let size = buffer.byteLength;
                 let int32View = new Int32Array(buffer);
-                for (let i = 0; i < int32View.length; i++) {
-                    int32View[i] = i * 2 + 1;
-                }
+                int32View.fill(1);
                 data.writeRawDataBuffer(buffer, size);
                 let readBuffer = data.readRawDataBuffer(0);
-                let readInt32Arr = Int32Array(readBuffer);
+                let readInt32Arr = new Int32Array(readBuffer);
                 expect(readInt32Arr.length == 0).assertTrue();
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_RawDataBuffer_0900 error is:" + error);
-                expect(error.code == null).assertTrue();
+                expect(error== null).assertTrue();
+            } finally {
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_RawDataBuffer_0900---------------------------");
         });
@@ -15388,22 +15388,22 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_RawDataBuffer_1000", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_RawDataBuffer_1000---------------------------");
+            let TEST_LEN_32K = 32 * 1024;
+            let data = new rpc.MessageSequence();
             try {
-                let TEST_LEN_32K = 32 * 1024;
-                let data = new rpc.MessageSequence();
                 let buffer = new ArrayBuffer(TEST_LEN_32K);
                 let size = buffer.byteLength;
                 let int32View = new Int32Array(buffer);
-                for (let i = 0; i < int32View.length; i++) {
-                    int32View[i] = i * 2 + 1;
-                }
+                int32View.fill(1);
                 data.writeRawDataBuffer(buffer, size);
                 let readBuffer = data.readRawDataBuffer(-1);
-                let readInt32Arr = Int32Array(readBuffer);
+                let readInt32Arr = new Int32Array(readBuffer);
                 expect(readInt32Arr.length == 0).assertTrue();
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_RawDataBuffer_1000 error is:" + error);
-                expect(error.code == null).assertTrue();
+                expect(error== null).assertTrue();
+            } finally {
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_RawDataBuffer_1000---------------------------");
         });
@@ -15418,23 +15418,23 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_RawDataBuffer_1100", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_RawDataBuffer_1100---------------------------");
+            let TEST_LEN_32K = 32 * 1024;
+            let data = new rpc.MessageSequence();
             try {
-                let TEST_LEN_32K = 32 * 1024;
-                let data = new rpc.MessageSequence();
                 let buffer = new ArrayBuffer(TEST_LEN_32K);
                 let size = buffer.byteLength;
                 let int32View = new Int32Array(buffer);
-                for (let i = 0; i < int32View.length; i++) {
-                    int32View[i] = i * 2 + 1;
-                }
+                int32View.fill(1);
                 data.writeRawDataBuffer(buffer, size);
                 let readBuffer = data.readRawDataBuffer(TEST_LEN_32K - 1);
-                let readInt32Arr = Int32Array(readBuffer);
+                let readInt32Arr = new Int32Array(readBuffer);
                 expect(readInt32Arr.length == 0).assertTrue();
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_RawDataBuffer_1100 error is:" + error);
                 let errCode = `${rpc.ErrorCode.READ_DATA_FROM_MESSAGE_SEQUENCE_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_RawDataBuffer_1100---------------------------");
         });
@@ -15449,22 +15449,24 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_NewAshmen_0100", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_NewAshmen_0100---------------------------");
+            let TEST_LEN_32 = 32;
+            let data = new rpc.MessageSequence();
+            let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
             try {
-                let TEST_LEN_32 = 32;
-                let data = new rpc.MessageSequence();
-                let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
                 ashmem.mapReadWriteAshmem();
                 let buffer = new ArrayBuffer(TEST_LEN_32);
                 let size = buffer.byteLength;
                 let ashnenInt32Arr = new Int32Array(buffer);
-                for (let i = 0; i < ashnenInt32Arr.length; i++) {
-                    ashnenInt32Arr[i] = i * 2 + 1;
-                }
+                ashnenInt32Arr.fill(1);
                 ashmem.writeDataToAshmem(buffer, size, 0);
                 data.writeAshmem(ashmem);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_0100 error is:" + error);
                 expect(error == null).assertTrue();
+            } finally {
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_NewAshmen_0100---------------------------");
         });
@@ -15479,10 +15481,10 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_NewAshmen_0200", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_NewAshmen_0200---------------------------");
+            let TEST_LEN_M = 1024 * 1024;
+            let data = new rpc.MessageSequence();
+            let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_M);
             try {
-                let TEST_LEN_M = 1024 * 1024;
-                let data = new rpc.MessageSequence();
-                let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_M);
                 ashmem.mapReadWriteAshmem();
                 let buffer = new ArrayBuffer(TEST_LEN_M);
                 let size = buffer.byteLength;
@@ -15493,6 +15495,10 @@ export default function ActsRpcClientJsTest() {
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_0200 error is:" + error);
                 expect(error == null).assertTrue();
+            } finally {
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_NewAshmen_0200---------------------------");
         });
@@ -15507,11 +15513,11 @@ export default function ActsRpcClientJsTest() {
        */
         it("SUB_DSoftbus_IPC_API_NewAshmen_0300", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_NewAshmen_0300---------------------------");
+            let TEST_LEN_128M = 128 * 1024 * 1024;
+            let TEST_LEN_M = 1024 * 1024;
+            let data = new rpc.MessageSequence();
+            let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_128M);
             try {
-                let TEST_LEN_128M = 128 * 1024 * 1024;
-                let TEST_LEN_M = 1024 * 1024;
-                let data = new rpc.MessageSequence();
-                let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_128M);
                 ashmem.mapReadWriteAshmem();
                 let buffer = new ArrayBuffer(TEST_LEN_M);
                 let size = buffer.byteLength;
@@ -15523,6 +15529,10 @@ export default function ActsRpcClientJsTest() {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_0300 error is:" + error);
                 let errCode = `${rpc.ErrorCode.WRITE_TO_ASHMEM_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_NewAshmen_0300---------------------------");
         });
@@ -15537,11 +15547,11 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_NewAshmen_0400", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_NewAshmen_0400---------------------------");
+            let TEST_LEN_128M = 128 * 1024 * 1024;
+            let TEST_LEN_M = 1024 * 1024;
+            let data = new rpc.MessageSequence();
+            let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_128M);
             try {
-                let TEST_LEN_128M = 128 * 1024 * 1024;
-                let TEST_LEN_M = 1024 * 1024;
-                let data = new rpc.MessageSequence();
-                let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_128M);
                 ashmem.mapReadWriteAshmem();
                 let buffer = new ArrayBuffer(TEST_LEN_M);
                 let size = buffer.byteLength;
@@ -15553,6 +15563,10 @@ export default function ActsRpcClientJsTest() {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_0400 error is:" + error);
                 let errCode = `${rpc.ErrorCode.WRITE_TO_ASHMEM_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_NewAshmen_0400---------------------------");
         });
@@ -15567,10 +15581,10 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_NewAshmen_0500", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_NewAshmen_0500---------------------------");
+            let TEST_LEN_128M = 128 * 1024 * 1024;
+            let data = new rpc.MessageSequence();
+            let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_128M);
             try {
-                let TEST_LEN_128M = 128 * 1024 * 1024;
-                let data = new rpc.MessageSequence();
-                let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_128M);
                 ashmem.mapReadWriteAshmem();
                 let buffer = new ArrayBuffer(TEST_LEN_128M);
                 let size = buffer.byteLength;
@@ -15582,6 +15596,10 @@ export default function ActsRpcClientJsTest() {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_0500 error is:" + error);
                 let errCode = `${rpc.ErrorCode.WRITE_TO_ASHMEM_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_NewAshmen_0500---------------------------");
         });
@@ -15596,10 +15614,10 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_NewAshmen_0600", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_NewAshmen_0600---------------------------");
+            let TEST_LEN_32 = 32;
+            let data = new rpc.MessageSequence();
+            let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
             try {
-                let TEST_LEN_32 = 32;
-                let data = new rpc.MessageSequence();
-                let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
                 ashmem.mapReadWriteAshmem();
                 let buffer = new ArrayBuffer(TEST_LEN_32);
                 let size = buffer.byteLength;
@@ -15611,6 +15629,10 @@ export default function ActsRpcClientJsTest() {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_0600 error is:" + error);
                 let errCode = `${rpc.ErrorCode.WRITE_TO_ASHMEM_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_NewAshmen_0600---------------------------");
         });
@@ -15625,10 +15647,10 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_NewAshmen_0700", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_NewAshmen_0700---------------------------");
+            let TEST_LEN_32 = 32;
+            let data = new rpc.MessageSequence();
+            let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
             try {
-                let TEST_LEN_32 = 32;
-                let data = new rpc.MessageSequence();
-                let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
                 ashmem.mapReadWriteAshmem();
                 let buffer = new ArrayBuffer(TEST_LEN_32);
                 let size = buffer.byteLength;
@@ -15640,6 +15662,10 @@ export default function ActsRpcClientJsTest() {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_0700 error is:" + error);
                 let errCode = `${rpc.ErrorCode.WRITE_TO_ASHMEM_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_NewAshmen_0700---------------------------");
         });
@@ -15654,10 +15680,10 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_NewAshmen_0800", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_NewAshmen_0800---------------------------");
+            let TEST_LEN_32 = 32;
+            let data = new rpc.MessageSequence();
+            let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
             try {
-                let TEST_LEN_32 = 32;
-                let data = new rpc.MessageSequence();
-                let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
                 ashmem.mapReadWriteAshmem();
                 let buffer = new ArrayBuffer(TEST_LEN_32);
                 let size = buffer.byteLength;
@@ -15669,6 +15695,10 @@ export default function ActsRpcClientJsTest() {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_0800 error is:" + error);
                 let errCode = `${rpc.ErrorCode.WRITE_TO_ASHMEM_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_NewAshmen_0800---------------------------");
         });
@@ -15683,28 +15713,30 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_NewAshmen_0900", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_NewAshmen_0900---------------------------");
+            let TEST_LEN_32 = 32;
+            let data = new rpc.MessageSequence();
+            let ashmem = rpc.Ashmem.create('ashmem', 1024 * 1024);
             try {
-                let TEST_LEN_32 = 32;
-                let data = new rpc.MessageSequence();
-                let ashmem = rpc.Ashmem.create('ashmem', 1024 * 1024);
                 ashmem.mapReadWriteAshmem();
                 let buffer = new ArrayBuffer(TEST_LEN_32);
                 let size = buffer.byteLength;
                 let ashnenInt32Arr = new Int32Array(buffer);
-                for (let i = 0; i < ashnenInt32Arr.length; i++) {
-                    ashnenInt32Arr[i] = i * 2 + 1;
-                }
+                ashnenInt32Arr.fill(1);
                 ashmem.writeDataToAshmem(buffer, size, 0);
                 data.writeAshmem(ashmem);
                 let readBuffuer = ashmem.readDataFromAshmem(size, 0);
-                let readInt32Arr = new new Int32Array(readBuffuer);
+                let readInt32Arr = new Int32Array(readBuffuer);
                 expect(readInt32Arr.length == ashnenInt32Arr.length).assertTrue();
                 for (let i = 0; i < readInt32Arr.length; i++) {
                     expect(readInt32Arr[i]).assertEqual(ashnenInt32Arr[i]);
                 }
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_0900 error is:" + error);
-                expect(error.code == null).assertTrue();
+                expect(error== null).assertTrue();
+            } finally {
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_NewAshmen_0900---------------------------");
         });
@@ -15719,28 +15751,30 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_NewAshmen_1000", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_NewAshmen_1000---------------------------");
+            let TEST_LEN_64K = 64 * 1024;
+            let data = new rpc.MessageSequence();
+            let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_64K);
             try {
-                let TEST_LEN_64K = 64 * 1024;
-                let data = new rpc.MessageSequence();
-                let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_64K);
                 ashmem.mapReadWriteAshmem();
                 let buffer = new ArrayBuffer(TEST_LEN_64K);
                 let size = buffer.byteLength;
                 let ashnenInt32Arr = new Int32Array(buffer);
-                for (let i = 0; i < ashnenInt32Arr.length; i++) {
-                    ashnenInt32Arr[i] = i * 2 + 1;
-                }
+                ashnenInt32Arr.fill(1);
                 ashmem.writeDataToAshmem(buffer, size, 0);
                 data.writeAshmem(ashmem);
                 let readBuffuer = ashmem.readDataFromAshmem(size, 0);
-                let readInt32Arr = new new Int32Array(readBuffuer);
+                let readInt32Arr = new Int32Array(readBuffuer);
                 expect(readInt32Arr.length == ashnenInt32Arr.length).assertTrue();
                 for (let i = 0; i < readInt32Arr.length; i++) {
                     expect(readInt32Arr[i]).assertEqual(ashnenInt32Arr[i]);
                 }
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_1000 error is:" + error);
-                expect(error.code == null).assertTrue();
+                expect(error== null).assertTrue();
+            } finally {
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_NewAshmen_1000---------------------------");
         });
@@ -15755,17 +15789,15 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_NewAshmen_1100", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_NewAshmen_1100---------------------------");
+            let TEST_LEN_64K = 64 * 1024;
+            let data = new rpc.MessageSequence();
+            let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_64K);
             try {
-                let TEST_LEN_64K = 64 * 1024;
-                let data = new rpc.MessageSequence();
-                let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_64K);
                 ashmem.mapReadWriteAshmem();
                 let buffer = new ArrayBuffer(TEST_LEN_64K);
                 let size = buffer.byteLength;
                 let ashnenInt32Arr = new Int32Array(buffer);
-                for (let i = 0; i < ashnenInt32Arr.length; i++) {
-                    ashnenInt32Arr[i] = i * 2 + 1;
-                }
+                ashnenInt32Arr.fill(1);
                 ashmem.writeDataToAshmem(buffer, size, 0);
                 data.writeAshmem(ashmem);
                 let readBuffuer = ashmem.readDataFromAshmem(0, 0);
@@ -15773,6 +15805,10 @@ export default function ActsRpcClientJsTest() {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_1100 error is:" + error);
                 let errCode = `${rpc.ErrorCode.READ_FROM_ASHMEM_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_NewAshmen_1100---------------------------");
         });
@@ -15787,17 +15823,15 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_NewAshmen_1200", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_NewAshmen_1200---------------------------");
+            let TEST_LEN_64K = 64 * 1024;
+            let data = new rpc.MessageSequence();
+            let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_64K);
             try {
-                let TEST_LEN_64K = 64 * 1024;
-                let data = new rpc.MessageSequence();
-                let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_64K);
                 ashmem.mapReadWriteAshmem();
                 let buffer = new ArrayBuffer(TEST_LEN_64K);
                 let size = buffer.byteLength;
                 let ashnenInt32Arr = new Int32Array(buffer);
-                for (let i = 0; i < ashnenInt32Arr.length; i++) {
-                    ashnenInt32Arr[i] = i * 2 + 1;
-                }
+                ashnenInt32Arr.fill(1);
                 ashmem.writeDataToAshmem(buffer, size, 0);
                 data.writeAshmem(ashmem);
                 let readBuffuer = ashmem.readDataFromAshmem(-1, 0);
@@ -15805,6 +15839,10 @@ export default function ActsRpcClientJsTest() {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_1200 error is:" + error);
                 let errCode = `${rpc.ErrorCode.READ_FROM_ASHMEM_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_NewAshmen_1200---------------------------");
         });
@@ -15819,17 +15857,15 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_NewAshmen_1300", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_NewAshmen_1300---------------------------");
+            let TEST_LEN_64K = 64 * 1024;
+            let data = new rpc.MessageSequence();
+            let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_64K);
             try {
-                let TEST_LEN_64K = 64 * 1024;
-                let data = new rpc.MessageSequence();
-                let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_64K);
                 ashmem.mapReadWriteAshmem();
                 let buffer = new ArrayBuffer(TEST_LEN_64K);
                 let size = buffer.byteLength;
                 let ashnenInt32Arr = new Int32Array(buffer);
-                for (let i = 0; i < ashnenInt32Arr.length; i++) {
-                    ashnenInt32Arr[i] = i * 2 + 1;
-                }
+                ashnenInt32Arr.fill(1);
                 ashmem.writeDataToAshmem(buffer, size, 0);
                 data.writeAshmem(ashmem);
                 let readBuffuer = ashmem.readDataFromAshmem(size, -1);
@@ -15837,6 +15873,10 @@ export default function ActsRpcClientJsTest() {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_1300 error is:" + error);
                 let errCode = `${rpc.ErrorCode.READ_FROM_ASHMEM_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_NewAshmen_1300---------------------------");
         });
@@ -15851,17 +15891,15 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_NewAshmen_1400", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_NewAshmen_1400---------------------------");
+            let TEST_LEN_32 = 32;
+            let data = new rpc.MessageSequence();
+            let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
             try {
-                let TEST_LEN_32 = 32;
-                let data = new rpc.MessageSequence();
-                let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
                 ashmem.mapReadWriteAshmem();
                 let buffer = new ArrayBuffer(TEST_LEN_32);
                 let size = buffer.byteLength;
                 let ashnenInt32Arr = new Int32Array(buffer);
-                for (let i = 0; i < ashnenInt32Arr.length; i++) {
-                    ashnenInt32Arr[i] = i * 2 + 1;
-                }
+                ashnenInt32Arr.fill(1);
                 ashmem.writeDataToAshmem(buffer, size, 0);
                 data.writeAshmem(ashmem);
                 let readBuffuer = ashmem.readDataFromAshmem(size, TEST_LEN_32 + 1);
@@ -15869,6 +15907,10 @@ export default function ActsRpcClientJsTest() {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_1400 error is:" + error);
                 let errCode = `${rpc.ErrorCode.READ_FROM_ASHMEM_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_NewAshmen_1400---------------------------");
         });
@@ -15883,17 +15925,15 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_NewAshmen_1500", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_NewAshmen_1500---------------------------");
+            let TEST_LEN_32 = 32;
+            let data = new rpc.MessageSequence();
+            let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
             try {
-                let TEST_LEN_32 = 32;
-                let data = new rpc.MessageSequence();
-                let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
                 ashmem.mapReadWriteAshmem();
                 let buffer = new ArrayBuffer(TEST_LEN_32);
                 let size = buffer.byteLength;
                 let ashnenInt32Arr = new Int32Array(buffer);
-                for (let i = 0; i < ashnenInt32Arr.length; i++) {
-                    ashnenInt32Arr[i] = i * 2 + 1;
-                }
+                ashnenInt32Arr.fill(1);
                 ashmem.writeDataToAshmem(buffer, size, 0);
                 data.writeAshmem(ashmem);
                 let readBuffuer = ashmem.readDataFromAshmem(TEST_LEN_32 + 1, 0)
@@ -15901,6 +15941,10 @@ export default function ActsRpcClientJsTest() {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_1500 error is:" + error);
                 let errCode = `${rpc.ErrorCode.READ_FROM_ASHMEM_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_NewAshmen_1500---------------------------");
         });
@@ -15915,17 +15959,15 @@ export default function ActsRpcClientJsTest() {
         */
         it("SUB_DSoftbus_IPC_API_NewAshmen_1600", 0, async function () {
             console.info("---------------------start SUB_DSoftbus_IPC_API_NewAshmen_1600---------------------------");
+            let TEST_LEN_32 = 32;
+            let data = new rpc.MessageSequence();
+            let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
             try {
-                let TEST_LEN_32 = 32;
-                let data = new rpc.MessageSequence();
-                let ashmem = rpc.Ashmem.create('ashmem', TEST_LEN_32);
                 ashmem.mapReadWriteAshmem();
                 let buffer = new ArrayBuffer(TEST_LEN_32);
                 let size = buffer.byteLength;
                 let ashnenInt32Arr = new Int32Array(buffer);
-                for (let i = 0; i < ashnenInt32Arr.length; i++) {
-                    ashnenInt32Arr[i] = i * 2 + 1;
-                }
+                ashnenInt32Arr.fill(1);
                 ashmem.writeDataToAshmem(buffer, size, 0);
                 data.writeAshmem(ashmem);
                 let readBuffuer = ashmem.readDataFromAshmem(TEST_LEN_32 + 1, 1);
@@ -15933,6 +15975,10 @@ export default function ActsRpcClientJsTest() {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_1600 error is:" + error);
                 let errCode = `${rpc.ErrorCode.READ_FROM_ASHMEM_ERROR}`;
                 expect(error.code == errCode).assertTrue();
+            } finally {
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+                data.reclaim();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_NewAshmen_1600---------------------------");
         });
