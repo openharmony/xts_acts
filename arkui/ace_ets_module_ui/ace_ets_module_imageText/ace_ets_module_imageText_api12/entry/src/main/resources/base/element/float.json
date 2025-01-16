@@ -31,6 +31,10 @@
     {
       "name":"leading_Margin",
       "value":"20"
+    },
+    {
+      "name":"text_con_width",
+      "value":"200vp"
     }
   ]
 }
