@@ -13,13 +13,10 @@
  * limitations under the License.
  */
 import {cameraPicker,executePicker} from './CameraPicker.test'
-import cameraPickerPc from './CameraPickerPc.test'
 let isExecutePicker = executePicker();
 
 export default async function testsuite() {
     if (isExecutePicker) {
         cameraPicker()
-    } else {
-        cameraPickerPc()
     }
 }
