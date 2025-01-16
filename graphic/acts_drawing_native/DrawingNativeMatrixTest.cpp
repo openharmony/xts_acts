@@ -38,6 +38,12 @@ class DrawingNativeMatrixTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeMatrixTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeMatrixTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeMatrixTest errorCodeReset after each test case." << std::endl;
+    }
 };
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0100
@@ -384,6 +390,7 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixNull, TestSize.Lev
     // 2. OH_Drawing_MatrixSetMatrix with the first parameter as null, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixSetMatrix(nullptr, 1, 0, 0, 0, -1, 0, 0, 0, 1);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. OH_Drawing_MatrixSetMatrix with the second to tenth parameters as null
     OH_Drawing_MatrixSetMatrix(matrix, 0, 1, 1, 1, 1, 1, 1, 1, 1);
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 1, 1, 1, 1, 1, 1, 1);
@@ -1098,10 +1105,12 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixSetRectToRectNull, TestSize.Level3) 
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixSetRectToRect(nullptr, rectSrc, rectDst, SCALE_TO_FIT_FILL);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. OH_Drawing_MatrixSetRectToRect, the second parameter is null, check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixSetRectToRect(matrix, nullptr, rectDst, SCALE_TO_FIT_FILL);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_MatrixSetRectToRect, the third parameter is null, check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixSetRectToRect(matrix, rectSrc, nullptr, SCALE_TO_FIT_FILL);

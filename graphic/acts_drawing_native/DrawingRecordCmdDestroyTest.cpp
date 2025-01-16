@@ -57,6 +57,12 @@ class DrawingRecordCmdDestroyTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingRecordCmdDestroyTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingRecordCmdDestroyTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingRecordCmdDestroyTest errorCodeReset after each test case." << std::endl;
+    }
 };
 void drawCircle(OH_Drawing_Canvas *canvas, int position)
 {

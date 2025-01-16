@@ -54,6 +54,12 @@ class DrawingNativeCanvasPart3Test : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeCanvasPart3Test errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeCanvasPart3Test Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeCanvasPart3Test errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -106,6 +112,7 @@ HWTEST_F(DrawingNativeCanvasPart3Test, testCanvasDrawOvalNull, TestSize.Level3) 
     OH_Drawing_CanvasDrawOval(nullptr, rect);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_CanvasDrawOval with OH_Drawing_Rect created with 0 for left, top, right, and bottom
     OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(0, 200, 200, 200);
     // add assert
@@ -305,6 +312,7 @@ HWTEST_F(DrawingNativeCanvasPart3Test, testCanvasDrawArcNull, TestSize.Level3) {
     OH_Drawing_CanvasDrawArc(nullptr, rect, 0.0f, 90.0f);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_CanvasDrawArc with OH_Drawing_Rect created with 0 for left, top, right, and bottom
     OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(0, 100, 200, 200);
     OH_Drawing_CanvasDrawArc(canvas, rect2, 0.0f, 90.0f);
@@ -524,6 +532,7 @@ HWTEST_F(DrawingNativeCanvasPart3Test, testCanvasDrawRoundRectNull, TestSize.Lev
     OH_Drawing_CanvasDrawRoundRect(nullptr, roundRect);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_CanvasDrawRoundRect with the second parameter being nullptr
     OH_Drawing_CanvasDrawRoundRect(canvas, nullptr);
     // add assert
@@ -840,6 +849,7 @@ HWTEST_F(DrawingNativeCanvasPart3Test, testCanvasDrawTextBlobNull, TestSize.Leve
     OH_Drawing_CanvasDrawTextBlob(nullptr, textBlob, 10, 10);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_CanvasDrawTextBlob with the second parameter being nullptr
     OH_Drawing_CanvasDrawTextBlob(canvas, nullptr, 10, 10);
     // add assert
@@ -986,6 +996,7 @@ HWTEST_F(DrawingNativeCanvasPart3Test, testCanvasClipRectNull, TestSize.Level3) 
     OH_Drawing_CanvasClipRect(nullptr, rect, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_CanvasClipRect with the second parameter OH_Drawing_Rect created with left, top, right, and bottom
     // values being 0
     OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(0, 10, 100, 100);
@@ -1185,6 +1196,7 @@ HWTEST_F(DrawingNativeCanvasPart3Test, testCanvasClipRoundRectNull, TestSize.Lev
     OH_Drawing_CanvasClipRoundRect(nullptr, roundRect, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_CanvasClipRoundRect with the second parameter being null
     OH_Drawing_CanvasClipRoundRect(canvas, nullptr, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
     // add assert
@@ -1502,6 +1514,7 @@ HWTEST_F(DrawingNativeCanvasPart3Test, testCanvasClipPathNull, TestSize.Level3) 
     OH_Drawing_CanvasClipPath(nullptr, path, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 5. OH_Drawing_CanvasClipPath with the second parameter being null
     OH_Drawing_CanvasClipPath(canvas, nullptr, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
     // add assert

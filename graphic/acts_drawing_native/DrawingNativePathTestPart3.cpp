@@ -45,6 +45,12 @@ class DrawingNativePathPart3Test : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativePathPart3Test errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativePathPart3Test Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativePathPart3Test errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -203,6 +209,7 @@ HWTEST_F(DrawingNativePathPart3Test, testPathGetPositionTangentNull, TestSize.Le
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_PathGetPositionTangent(nullptr, true, 50, nullptr, nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Call OH_Drawing_PathGetPositionTangent with the third parameter as 0.00, no crash
     OH_Drawing_Point2D position;
     OH_Drawing_Point2D tangent;
@@ -213,6 +220,7 @@ HWTEST_F(DrawingNativePathPart3Test, testPathGetPositionTangentNull, TestSize.Le
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_PathGetPositionTangent(path, true, 50, nullptr, &tangent);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 5. Call OH_Drawing_PathGetPositionTangent with the fifth parameter as nullptr, expect
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_PathGetPositionTangent(path, true, 50, &position, nullptr);
@@ -402,6 +410,7 @@ HWTEST_F(DrawingNativePathPart3Test, testPathOpNull, TestSize.Level3) {
     OH_Drawing_PathOp(nullptr, src, OH_Drawing_PathOpMode::PATH_OP_MODE_INTERSECT);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathOp with the second parameter as nullptr, expect OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE
     OH_Drawing_PathOp(path, nullptr, OH_Drawing_PathOpMode::PATH_OP_MODE_INTERSECT);
     // add assert
@@ -516,6 +525,7 @@ HWTEST_F(DrawingNativePathPart3Test, testPathGetMatrixNull, TestSize.Level3) {
     // 3. Call OH_Drawing_PathGetMatrix with the first parameter as nullptr, expect OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_PathGetMatrix(nullptr, true, 50, matrix, GET_POSITION_MATRIX);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathGetMatrix with the third parameter as 0.00, the call should fail without crashing
     bool getMatrix = OH_Drawing_PathGetMatrix(path, true, 0.00, matrix, GET_POSITION_MATRIX);
     // add assert

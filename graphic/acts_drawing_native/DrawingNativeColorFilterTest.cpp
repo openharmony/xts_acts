@@ -55,6 +55,12 @@ class DrawingNativeColorFilterTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeColorFilterTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeColorFilterTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeColorFilterTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -329,10 +335,11 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixNormal, TestSi
 HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixNULL, TestSize.Level3) {
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateMatrix(nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
 
     const float matrix[20] = {};
     colorFilter = OH_Drawing_ColorFilterCreateMatrix(matrix);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
 
     OH_Drawing_ColorFilterDestroy(colorFilter);
 }

@@ -45,6 +45,12 @@ class DrawingNativePathPart2Test : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativePathPart2Test errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativePathPart2Test Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativePathPart2Test errorCodeReset after each test case." << std::endl;
+    }
 };
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_1900
@@ -97,6 +103,7 @@ HWTEST_F(DrawingNativePathPart2Test, testPathAddArcNull, TestSize.Level3) {
     // error code.
     OH_Drawing_PathAddArc(nullptr, rect, 0.0, 0.0);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddArc with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddArc(path, nullptr, 0.0, 0.0);
@@ -227,6 +234,7 @@ HWTEST_F(DrawingNativePathPart2Test, testPathAddPathNull, TestSize.Level3) {
     OH_Drawing_MatrixSetMatrix(matrix, 5, 4, 0, 0, -1, 0, 0, 0, 1);
     OH_Drawing_PathAddPath(nullptr, src, matrix);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddPath with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddPath(path, nullptr, matrix);
@@ -306,6 +314,7 @@ HWTEST_F(DrawingNativePathPart2Test, testPathAddPathWithMatrixAndModeNull, TestS
     OH_Drawing_MatrixSetMatrix(matrix, 5, 4, 0, 0, -1, 0, 0, 0, 1);
     OH_Drawing_PathAddPathWithMatrixAndMode(nullptr, src, matrix, PATH_ADD_MODE_APPEND);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddPathWithMatrixAndMode with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddPathWithMatrixAndMode(path, nullptr, matrix, PATH_ADD_MODE_APPEND);
@@ -375,6 +384,7 @@ HWTEST_F(DrawingNativePathPart2Test, testPathAddPathWithModeNull, TestSize.Level
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddPathWithMode(nullptr, src, PATH_ADD_MODE_APPEND);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddPathWithMode with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddPathWithMode(path, nullptr, PATH_ADD_MODE_APPEND);
@@ -442,6 +452,7 @@ HWTEST_F(DrawingNativePathPart2Test, testPathAddPathWithOffsetAndModeNull, TestS
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddPathWithOffsetAndMode(nullptr, src, 10.0, 10.0, PATH_ADD_MODE_APPEND);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddPathWithOffsetAndMode with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddPathWithOffsetAndMode(path, nullptr, 10.0, 10.0, PATH_ADD_MODE_APPEND);
@@ -576,6 +587,7 @@ HWTEST_F(DrawingNativePathPart2Test, testPathAddOvalNull, TestSize.Level3) {
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddOval(nullptr, rect, PATH_DIRECTION_CW);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddOval with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddOval(path, nullptr, PATH_DIRECTION_CW);
@@ -671,10 +683,12 @@ HWTEST_F(DrawingNativePathPart2Test, testPathAddPolygonNull, TestSize.Level3) {
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddPolygon(nullptr, points, 4, true);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Call OH_Drawing_PathAddPolygon with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddPolygon(path, nullptr, 4, true);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddPolygon with the third parameter as 0, expecting OH_DRAWING_ERROR_INVALID_PARAMETER
     // error code.
     OH_Drawing_PathAddPolygon(path, points, 0, true);
@@ -924,6 +938,7 @@ HWTEST_F(DrawingNativePathPart2Test, testPathBuildFromSvgStringNull, TestSize.Le
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathBuildFromSvgString(nullptr, "M 0 0 L 100 100");
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Call OH_Drawing_PathBuildFromSvgString with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathBuildFromSvgString(path, nullptr);
@@ -1106,6 +1121,7 @@ HWTEST_F(DrawingNativePathPart2Test, testPathTransformNull, TestSize.Level3) {
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathTransform(nullptr, matrix);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathTransform with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathTransform(path, nullptr);
@@ -1209,6 +1225,7 @@ HWTEST_F(DrawingNativePathPart2Test, testPathTransformWithPerspectiveClipNull, T
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathTransformWithPerspectiveClip(nullptr, matrix, dst, true);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 5. Call OH_Drawing_PathTransformWithPerspectiveClip with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathTransformWithPerspectiveClip(src, nullptr, dst, true);
@@ -1440,6 +1457,7 @@ HWTEST_F(DrawingNativePathPart2Test, testPathGetBoundsNull, TestSize.Level3) {
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathGetBounds(nullptr, rect);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathGetBounds with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathGetBounds(path, nullptr);

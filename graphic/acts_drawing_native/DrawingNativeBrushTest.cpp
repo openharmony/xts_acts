@@ -55,6 +55,12 @@ class DrawingNativeBrushTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeBrushTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeBrushTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeBrushTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -811,6 +817,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetFilterNull, TestSize.Level3) {
     OH_Drawing_BrushGetFilter(nullptr, filter);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Call OH_Drawing_BrushGetFilter with nullptr as the second parameter
     OH_Drawing_BrushGetFilter(brush, nullptr);
     // add assert

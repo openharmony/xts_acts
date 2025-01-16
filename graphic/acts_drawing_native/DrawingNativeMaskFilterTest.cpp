@@ -39,6 +39,12 @@ class DrawingNativeMaskFilterTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeMaskFilterTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeMaskFilterTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeMaskFilterTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*

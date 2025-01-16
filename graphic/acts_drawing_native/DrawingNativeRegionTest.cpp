@@ -37,6 +37,12 @@ class DrawingNativeRegionTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeRegionTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeRegionTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeRegionTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*

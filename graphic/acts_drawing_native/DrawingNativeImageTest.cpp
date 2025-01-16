@@ -36,6 +36,12 @@ class DrawingNativeImageTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeImageTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeImageTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeImageTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -148,6 +154,7 @@ HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapNULL, TestSize.Level3) 
     // 3. OH_Drawing_ImageBuildFromBitmap with a null parameter, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_ImageBuildFromBitmap(nullptr, bitmap);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_ImageBuildFromBitmap with a null parameter, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_ImageBuildFromBitmap(image, nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -263,6 +270,7 @@ HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightNULL, TestSize.Level3) {
     // 1. OH_Drawing_ImageGetWidth with a null parameter, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_ImageGetWidth(nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. OH_Drawing_ImageGetHeight with a null parameter, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_ImageGetHeight(nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);

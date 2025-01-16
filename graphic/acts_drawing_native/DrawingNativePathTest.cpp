@@ -45,6 +45,12 @@ class DrawingNativePathTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativePathTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativePathTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativePathTest errorCodeReset after each test case." << std::endl;
+    }
 };
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_0100
@@ -1646,6 +1652,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerNull, TestSize.L
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_PathAddRectWithInitialCorner(nullptr, rect, OH_Drawing_PathDirection::PATH_DIRECTION_CW, 0);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddRectWithInitialCorner with the second parameter as nullptr, expect
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_PathAddRectWithInitialCorner(path, nullptr, OH_Drawing_PathDirection::PATH_DIRECTION_CW, 0);
@@ -1779,6 +1786,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddRoundRectNull, TestSize.Level3) {
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_PathAddRoundRect(nullptr, roundRect, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddRoundRect with the second parameter as nullptr, expect
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_PathAddRoundRect(path, nullptr, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
@@ -1848,6 +1856,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddOvalWithInitialPointNull, TestSize.Le
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_PathAddOvalWithInitialPoint(nullptr, rect, 10, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddOvalWithInitialPoint with the second parameter as nullptr, expect
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_PathAddOvalWithInitialPoint(path, nullptr, 10, OH_Drawing_PathDirection::PATH_DIRECTION_CW);

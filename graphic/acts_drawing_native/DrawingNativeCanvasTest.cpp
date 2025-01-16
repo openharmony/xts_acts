@@ -54,6 +54,12 @@ class DrawingNativeCanvasTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeCanvasTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeCanvasTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeCanvasTest errorCodeReset after each test case." << std::endl;
+    }
 };
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_0100
@@ -140,7 +146,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasBindNull, TestSize.Level3) {
     OH_Drawing_CanvasBind(nullptr, bitmap);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-
+    OH_Drawing_ErrorCodeReset();
     // step 3
     OH_Drawing_CanvasBind(canvas, nullptr);
     // add assert
@@ -307,12 +313,12 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasAttachPenDetachPenNull, TestSize.Lev
     OH_Drawing_CanvasAttachPen(nullptr, pen);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-
+    OH_Drawing_ErrorCodeReset();
     // step 3
     OH_Drawing_CanvasAttachPen(canvas, nullptr);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-
+    OH_Drawing_ErrorCodeReset();
     // step 4
     OH_Drawing_CanvasDetachPen(nullptr);
     // add assert
@@ -508,12 +514,12 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasAttachBrushDetachBrushNull, TestSize
     OH_Drawing_CanvasAttachBrush(nullptr, brush);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-
+    OH_Drawing_ErrorCodeReset();
     // step 3
     OH_Drawing_CanvasAttachBrush(canvas, nullptr);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-
+    OH_Drawing_ErrorCodeReset();
     // step 4
     OH_Drawing_CanvasDetachBrush(nullptr);
     // add assert
@@ -1577,7 +1583,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPathNull, TestSize.Level3) {
     OH_Drawing_CanvasDrawPath(nullptr, path);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-
+    OH_Drawing_ErrorCodeReset();
     // 4. Pass null as the second argument for OH_Drawing_CanvasDrawPath.
     OH_Drawing_CanvasDrawPath(canvas, nullptr);
     // add assert

@@ -40,6 +40,12 @@ class DrawingNativeMemoryStreamTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeMemoryStreamTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeMemoryStreamTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeMemoryStreamTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -82,6 +88,7 @@ HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateNull, TestSize.Lev
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_MemoryStream *stream = OH_Drawing_MemoryStreamCreate(nullptr, 10, true);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. OH_Drawing_MemoryStreamCreate with the second parameter set to 0, check the error code using
     // OH_Drawing_ErrorCodeGet
     stream = OH_Drawing_MemoryStreamCreate(data, 0, true);

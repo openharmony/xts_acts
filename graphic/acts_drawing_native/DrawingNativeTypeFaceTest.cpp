@@ -57,6 +57,12 @@ class DrawingNativeTypeFaceTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeTypeFaceTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeTypeFaceTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeTypeFaceTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -107,6 +113,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDefaultNull, TestSize.Leve
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontSetTypeface(nullptr, typeface);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. OH_Drawing_FontSetTypeface, pass nullptr as the second parameter
     OH_Drawing_FontSetTypeface(font, nullptr);
     OH_Drawing_Typeface *typefaceGet = OH_Drawing_FontGetTypeface(font);
@@ -169,6 +176,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileNull, TestSize.Lev
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_Typeface *typefaceFromFile = OH_Drawing_TypefaceCreateFromFile(nullptr, 0);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. OH_Drawing_TypefaceCreateFromFile, pass nullptr as the second parameter
     OH_Drawing_Typeface *typefaceFromFile2 =
         OH_Drawing_TypefaceCreateFromFile("/system/fonts/NotoSansBengaliUI-Regular", 0);
@@ -237,6 +245,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromStreamNull, TestSize.L
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_Typeface *typeface1 = OH_Drawing_TypefaceCreateFromStream(nullptr, 1);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. OH_Drawing_TypefaceCreateFromStream, pass nullptr as the second parameter
     OH_Drawing_Typeface *typeface2 = OH_Drawing_TypefaceCreateFromStream(memoryStream, 0);
     // 4. OH_Drawing_TypefaceCreateFromStream, pass nullptr as the parameter and check the error code with

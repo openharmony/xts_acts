@@ -43,6 +43,12 @@ class DrawingNativeShaderEffectTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeShaderEffectTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeShaderEffectTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeShaderEffectTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -211,11 +217,13 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateLinearGradientWith
     OH_Drawing_ShaderEffect *effect1 =
         OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(nullptr, &end, colors, pos, 3, modes[0], matrix);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix with the second parameter set to nullptr, check the
     // error code using OH_Drawing_ErrorCodeGet
     OH_Drawing_ShaderEffect *effect2 =
         OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(&start, nullptr, colors, pos, 3, modes[0], matrix);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix with the third parameter set to nullptr, check the
     // error code using OH_Drawing_ErrorCodeGet
     OH_Drawing_ShaderEffect *effect3 =
@@ -444,11 +452,13 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateLinearGradienNull,
     OH_Drawing_ShaderEffect *linearGradientEffect =
         OH_Drawing_ShaderEffectCreateLinearGradient(nullptr, endPt, colors, pos, 3, CLAMP);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. OH_Drawing_ShaderEffectCreateLinearGradient with the second parameter set to nullptr, check the error code
     // using OH_Drawing_ErrorCodeGet
     OH_Drawing_ShaderEffect *linearGradientEffect2 =
         OH_Drawing_ShaderEffectCreateLinearGradient(startPt, nullptr, colors, pos, 3, CLAMP);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. OH_Drawing_ShaderEffectCreateLinearGradient with the third parameter set to nullptr, check the error code
     // using OH_Drawing_ErrorCodeGet
     OH_Drawing_ShaderEffect *linearGradientEffect3 =
@@ -862,6 +872,7 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateRadialGradientWith
     OH_Drawing_ShaderEffect *effect =
         OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(nullptr, radius, colors, pos, 3, CLAMP, matrix);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Call OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix with the second parameter set to nullptr
     OH_Drawing_ShaderEffect *effect2 =
         OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(&start, radius, nullptr, pos, 3, CLAMP, matrix);
@@ -1069,6 +1080,7 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateSweepGradientNull,
     // code using OH_Drawing_ErrorCodeGet
     OH_Drawing_ShaderEffect *effect = OH_Drawing_ShaderEffectCreateSweepGradient(nullptr, colors, pos, 3, CLAMP);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Call OH_Drawing_ShaderEffectCreateSweepGradient with the second parameter set to nullptr and check the error
     // code using OH_Drawing_ErrorCodeGet
     OH_Drawing_ShaderEffect *effect2 = OH_Drawing_ShaderEffectCreateSweepGradient(centerPt, nullptr, pos, 3, CLAMP);
@@ -1262,6 +1274,7 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateImageShaderNull, T
     EXPECT_NE(matrix, nullptr);
     OH_Drawing_ShaderEffectCreateImageShader(nullptr, CLAMP, CLAMP, options, matrix);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Call OH_Drawing_ShaderEffectCreateImageShader with the fourth parameter set to nullptr and check the error
     // code using OH_Drawing_ErrorCodeGet
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
@@ -1379,6 +1392,7 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateTwoPointConicalGra
     OH_Drawing_ShaderEffect *effect = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         nullptr, startRadius, &endPt, endRadius, colors, pos, 3, CLAMP, matrix);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Call OH_Drawing_ShaderEffectCreateTwoPointConicalGradient with the second parameter set to nullptr
     OH_Drawing_ShaderEffect *effect2 = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt, 0, &endPt, endRadius, colors, pos, 3, CLAMP, matrix);
@@ -1387,6 +1401,7 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateTwoPointConicalGra
     OH_Drawing_ShaderEffect *effect3 = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt, startRadius, nullptr, endRadius, colors, pos, 3, CLAMP, matrix);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_ShaderEffectCreateTwoPointConicalGradient with the fourth parameter set to nullptr
     OH_Drawing_ShaderEffect *effect4 = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt, startRadius, &endPt, 0, colors, pos, 3, CLAMP, matrix);

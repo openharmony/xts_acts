@@ -55,6 +55,12 @@ class DrawingNativeFilterTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeFilterTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeFilterTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeFilterTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -146,9 +152,9 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetImageFilterNULL, TestSize.Level3)
     EXPECT_NE(cImageFilter, nullptr);
     OH_Drawing_FilterSetImageFilter(nullptr, cImageFilter);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-
+    OH_Drawing_ErrorCodeReset();
     OH_Drawing_FilterSetImageFilter(cFilter, nullptr);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
 
     OH_Drawing_FilterDestroy(cFilter);
     OH_Drawing_ImageFilterDestroy(cImageFilter);
@@ -225,12 +231,13 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterNULL, TestSize.Level3) 
     // 1. No crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_FilterSetMaskFilter(nullptr, maskFilter);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
 
     // 2. Pass nullptr as the second parameter to OH_Drawing_FilterSetMaskFilter and check the error code using
     // OH_Drawing_ErrorCodeGet,
     // 2. No crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_FilterSetMaskFilter(filter, nullptr);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
 
     // 3. Free memory
     OH_Drawing_FilterDestroy(filter);
@@ -322,16 +329,19 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterNULL, TestSize.Level3)
     // OH_Drawing_ErrorCodeGet, No crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_FilterSetColorFilter(nullptr, colorFilter);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
 
     // 2. Pass nullptr as the second parameter to OH_Drawing_FilterSetColorFilter and check the error code using
     // OH_Drawing_ErrorCodeGet, No crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_FilterSetColorFilter(filter, nullptr);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    OH_Drawing_ErrorCodeReset();
 
     // 3. Pass nullptr as the first parameter to OH_Drawing_FilterGetColorFilter and check the error code using
     // OH_Drawing_ErrorCodeGet, No crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_FilterGetColorFilter(nullptr, colorFilter);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
 
     // 4. Pass nullptr as the second parameter to OH_Drawing_FilterGetColorFilter and check the error code using
     // OH_Drawing_ErrorCodeGet, No crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER

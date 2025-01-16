@@ -54,6 +54,12 @@ class DrawingNativeColorTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeColorTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeColorTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeColorTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*

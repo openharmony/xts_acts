@@ -54,6 +54,12 @@ class DrawingNativeFontTest : public testing::Test {
         OH_Drawing_ErrorCodeReset();
         std::cout << "DrawingNativeFontTest errorCodeReset before each test case." << std::endl;
     }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeFontTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeFontTest errorCodeReset after each test case." << std::endl;
+    }
 };
 
 /*
@@ -160,6 +166,7 @@ HWTEST_F(DrawingNativeFontTest, testFontSetBaselineSnapNULL, TestSize.Level3) {
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontSetBaselineSnap(nullptr, false);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Call OH_Drawing_FontIsBaselineSnap with nullptr as the parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontIsBaselineSnap(nullptr);
@@ -255,6 +262,7 @@ HWTEST_F(DrawingNativeFontTest, testFontSetSubpixelNULL, TestSize.Level3) {
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontSetSubpixel(nullptr, false);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Call OH_Drawing_FontIsSubpixel with nullptr as the parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontIsSubpixel(nullptr);
@@ -356,6 +364,7 @@ HWTEST_F(DrawingNativeFontTest, testFontSetForceAutoHintingNULL, TestSize.Level3
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontSetForceAutoHinting(nullptr, false);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Call OH_Drawing_FontIsForceAutoHinting with nullptr as the parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontIsForceAutoHinting(nullptr);
@@ -459,6 +468,7 @@ HWTEST_F(DrawingNativeFontTest, testFontSetTypefaceNULL, TestSize.Level3) {
     EXPECT_NE(typeface, nullptr);
     OH_Drawing_FontSetTypeface(nullptr, typeface);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Call OH_Drawing_FontSetTypeface with nullptr as the second parameter, call OH_Drawing_FontGetTypeface to get
     // the default value
     OH_Drawing_FontSetTypeface(font, nullptr);
@@ -571,6 +581,7 @@ HWTEST_F(DrawingNativeFontTest, testFontSetTextSizeNULL, TestSize.Level3) {
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontSetTextSize(nullptr, 100);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Call OH_Drawing_FontSetTextSize with 0 as the second parameter
     OH_Drawing_FontSetTextSize(font, 0);
     float textSize = OH_Drawing_FontGetTextSize(font);
@@ -716,6 +727,7 @@ HWTEST_F(DrawingNativeFontTest, testFontCountTextNULL, TestSize.Level3) {
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontCountText(nullptr, str, strlen(str), TEXT_ENCODING_UTF8);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Pass nullptr as the second parameter to OH_Drawing_FontCountText and check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontCountText(font, nullptr, strlen(str), TEXT_ENCODING_UTF8);
@@ -838,18 +850,22 @@ HWTEST_F(DrawingNativeFontTest, testFontTextToGlyphsNULL, TestSize.Level3) {
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontTextToGlyphs(nullptr, str, strlen(str), TEXT_ENCODING_UTF8, glyphs, count);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Pass nullptr as the second parameter to OH_Drawing_FontTextToGlyphs and check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontTextToGlyphs(font, nullptr, strlen(str), TEXT_ENCODING_UTF8, glyphs, count);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Pass an empty string as the third parameter to OH_Drawing_FontTextToGlyphs and check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontTextToGlyphs(font, str, 0, TEXT_ENCODING_UTF8, glyphs, count);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 5. Pass nullptr as the fifth parameter to OH_Drawing_FontTextToGlyphs and check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontTextToGlyphs(font, str, strlen(str), TEXT_ENCODING_UTF8, nullptr, count);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 6. Pass 0 as the sixth parameter to OH_Drawing_FontTextToGlyphs and check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontTextToGlyphs(font, str, strlen(str), TEXT_ENCODING_UTF8, glyphs, 0);
@@ -911,6 +927,7 @@ HWTEST_F(DrawingNativeFontTest, testFontTextToGlyphsAbnormal, TestSize.Level3) {
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontTextToGlyphs(font, str, strlen(str), TEXT_ENCODING_UTF8, glyphs, -1);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Release memory
     OH_Drawing_FontDestroy(font);
 }
@@ -991,14 +1008,17 @@ HWTEST_F(DrawingNativeFontTest, testFontGetWidthsNULL, TestSize.Level3) {
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontGetWidths(nullptr, glyphs, glyphsCount, widths);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Pass nullptr as the second parameter to OH_Drawing_FontGetWidths and check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontGetWidths(font, nullptr, glyphsCount, widths);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Pass 0 as the third parameter to OH_Drawing_FontGetWidths and check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontGetWidths(font, glyphs, 0, widths);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 5. Pass nullptr as the fourth parameter to OH_Drawing_FontGetWidths and check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontGetWidths(font, glyphs, glyphsCount, nullptr);
@@ -1151,6 +1171,7 @@ HWTEST_F(DrawingNativeFontTest, testFontSetLinearTextNULL, TestSize.Level3) {
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontSetLinearText(nullptr, false);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Pass nullptr as the parameter to OH_Drawing_FontIsLinearText and check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontIsLinearText(nullptr);
@@ -1252,6 +1273,7 @@ HWTEST_F(DrawingNativeFontTest, testFontSetTextSkewXNULL, TestSize.Level3) {
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontSetTextSkewX(nullptr, 10);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Pass 0 as the second parameter to OH_Drawing_FontSetTextSkewX
     OH_Drawing_FontSetTextSkewX(font, 0);
     // 4. Pass nullptr as the parameter to OH_Drawing_FontGetTextSkewX and check the error code using
@@ -1400,6 +1422,7 @@ HWTEST_F(DrawingNativeFontTest, testFontSetFakeBoldTextNULL, TestSize.Level3) {
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontSetFakeBoldText(nullptr, false);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Pass nullptr as the parameter to OH_Drawing_FontIsFakeBoldText and check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontIsFakeBoldText(nullptr);
@@ -1505,6 +1528,7 @@ HWTEST_F(DrawingNativeFontTest, testFontSetScaleXNULL, TestSize.Level3) {
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontSetScaleX(nullptr, 10);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Call OH_Drawing_FontSetScaleX with 0 as the second parameter
     OH_Drawing_FontSetScaleX(font, 0);
     // 4. Call OH_Drawing_FontGetScaleX with nullptr as the parameter and check the error code using
@@ -1658,6 +1682,7 @@ HWTEST_F(DrawingNativeFontTest, testFontSetHintingNULL, TestSize.Level3) {
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontSetHinting(nullptr, FONT_HINTING_NONE);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Call OH_Drawing_FontGetHinting with nullptr as the parameter and check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontGetHinting(nullptr);
@@ -1760,6 +1785,7 @@ HWTEST_F(DrawingNativeFontTest, testFontSetEmbeddedBitmapsNULL, TestSize.Level3)
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontSetEmbeddedBitmaps(nullptr, false);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Call OH_Drawing_FontIsEmbeddedBitmaps with nullptr as the parameter and check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontIsEmbeddedBitmaps(nullptr);
@@ -1860,6 +1886,7 @@ HWTEST_F(DrawingNativeFontTest, testFontSetEdgingNULL, TestSize.Level3) {
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontSetEdging(nullptr, FONT_EDGING_ALIAS);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. Call OH_Drawing_FontGetEdging with nullptr as the parameter and check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontGetEdging(nullptr);
@@ -1957,6 +1984,7 @@ HWTEST_F(DrawingNativeFontTest, testFontGetMetricsNULL, TestSize.Level3) {
     OH_Drawing_Font_Metrics cFontMetrics;
     OH_Drawing_FontGetMetrics(nullptr, &cFontMetrics);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Call OH_Drawing_FontGetMetrics with nullptr as the second parameter and check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontGetMetrics(font, nullptr);
