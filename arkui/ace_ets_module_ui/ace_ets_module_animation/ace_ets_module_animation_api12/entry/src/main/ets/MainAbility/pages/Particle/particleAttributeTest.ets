@@ -24,8 +24,8 @@ struct ParticleExample2 {
       }
       Stack() {
         Text()
-          .width(100)
-          .height(100)
+          .width('50%')
+          .height('50%')
           .backgroundColor(Color.Black)
         Particle({ particles: [
           {
@@ -138,7 +138,7 @@ struct ParticleExample2 {
             }
           }
         ]
-        }).width(100).height(100).disturbanceFields([{
+        }).width('50%').height('50%').disturbanceFields([{
           strength: 10,
           shape: DisturbanceFieldShape.RECT,
           size: { width: 100, height: 100 },
