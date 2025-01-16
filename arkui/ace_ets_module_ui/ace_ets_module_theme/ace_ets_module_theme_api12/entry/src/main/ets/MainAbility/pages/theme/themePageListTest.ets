@@ -71,7 +71,7 @@ struct themePageList {
             ListItem() {
               Text('' + item)
                 .width('100%')
-                .height(100)
+                .height(10)
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
                 .borderRadius(10)
@@ -81,9 +81,9 @@ struct themePageList {
         }.width('90%').height('30%')
         .scrollBar(BarState.Off)
       }
-      .margin({
-        top: '50vp'
-      })
+      // .margin({
+      //   top: '50vp'
+      // })
 
       WithTheme({ theme: this.themeArray[this.themeIndex] }) {
         // WithTheme作用域
@@ -94,7 +94,7 @@ struct themePageList {
               ListItem() {
                 Text('' + item)
                   .width('100%')
-                  .height(100)
+                  .height(10)
                   .fontSize(16)
                   .textAlign(TextAlign.Center)
                   .borderRadius(10)
