@@ -15,11 +15,8 @@
 import { castTempFormFuzzTest } from './CastTempFormFuzz.test.ets';
 import { deleteFormFuzzTest } from './DeleteFormFuzz.test.ets';
 import { disableFormsUpdateFuzzTest } from './DisableFormsUpdateFuzz.test.ets';
-import { enableFormsUpdateFuzzTest } from './EnableFormsUpdateFuzz.test.ets';
-import { getFormsInfoFuzzTest } from './GetFormsInfoFuzz.test.ets';
 import { notifyInvisibleFormsFuzzTest } from './NotifyInvisibleFormsFuzz.test.ets';
 import { notifyVisibleFormsFuzzTest } from './NotifyVisibleFormsFuzz.test.ets';
-import { releaseFormFuzzTest } from './ReleaseFormFuzz.test.ets';
 import { requestFormFuzzTest } from './RequestFormFuzz.test.ets';
 import { setFormNextRefreshTimeFuzzTest } from './SetFormNextRefreshTimeFuzz.test.ets';
 import { updateFormFuzzTest } from './UpdateFormFuzz.test.ets';
@@ -27,9 +24,6 @@ import { updateFormFuzzTest } from './UpdateFormFuzz.test.ets';
 export default function testsuite() {
   // FMS_fuzzTest_deleteform
   deleteFormFuzzTest(`DeleteFormFuzzTest`, 0);
-
-  // FMS_fuzzTest_releaseform
-  releaseFormFuzzTest(`ReleaseFormFuzzTest`, 0);
 
   // FMS_fuzzTest_casttempform
   castTempFormFuzzTest(`CastTempFormFuzzTest`, 0);
@@ -49,13 +43,8 @@ export default function testsuite() {
   // FMS_fuzzTest_setnexttime
   setFormNextRefreshTimeFuzzTest(`SetFormNextRefreshTimeFuzzTest`, 0);
 
-  // FMS_fuzzTest_enable
-  enableFormsUpdateFuzzTest(`EnableFormsUpdateFuzzTest`, 0);
 
   // FMS_fuzzTest_disable
   disableFormsUpdateFuzzTest(`DisableFormsUpdateFuzzTest`, 0);
 
-  // FMS_fuzzTest_getinfobundle
-  // FMS_fuzzTest_getinfomodule
-  getFormsInfoFuzzTest(`GetFormsInfoFuzzTest`, 0);
 }

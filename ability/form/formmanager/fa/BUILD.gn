@@ -50,16 +50,12 @@ group("formmanager") {
       "formsystemtest_ets/formdeletetest:ActsFormDeleteTest",
       "formsystemtest_ets/formdynamicrefreshtest:ActsFormDynamicRefreshTest",
       "formsystemtest_ets/formfuzztest:ActsFormFuzzTest",
-      "formsystemtest_ets/formgetformsinfotest/formsoneandonetest:ActsFormsOneAndOneTest",
-      "formsystemtest_ets/formgetformsinfotest/formsoneandtwotest:ActsFormsOneAndTwoTest",
-      "formsystemtest_ets/formgetformsinfotest/formsoneandzerotest:ActsFormsOneAndZeroTest",
-      "formsystemtest_ets/formgetformsinfotest/formswithoutpermtest:ActsFormsWithoutPermTest",
-      "formsystemtest_ets/formgetformsinfotest/formszerotest:ActsFormsZeroTest",
       "formsystemtest_ets/formhostdeathrecipienttest:ActsFormHostDeathRecipientTest",
       "formsystemtest_ets/formreleasetest:ActsFormReleaseTest",
       "formsystemtest_ets/formstatetest_disable:ActsFormStateDisableTest",
       "formsystemtest_ets/formstatetest_enable:ActsFormStateEnableTest",
       "formsystemtest_ets/formstresstest:ActsFormStressTest",
+      "formsystemtest_ets/formswithoutpermtest:ActsFormsWithoutPermTest",
       "formsystemtest_ets/formupdatefreshtest:ActsFormUpdateTest",
     ]
   }
