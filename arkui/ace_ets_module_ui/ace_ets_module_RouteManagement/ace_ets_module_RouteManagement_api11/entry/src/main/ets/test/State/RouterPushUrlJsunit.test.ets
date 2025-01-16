@@ -145,13 +145,15 @@ export default function RouterPushUrlJsunit() {
     it('RouterPushUrlJsunit_0005', 0, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0005] START');
       let driver = Driver.create();
-      let btn = await driver.findComponent(ON.id('turn_RouterPushReplace_noParms'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn = await scrollBar.scrollSearch(ON.id('turn_RouterPushReplace_noParms'));
       await driver.delayMs(waitUiReadyMs);
       await btn.click();
       let Length = router.getLength()
       expect(Length).assertEqual("1")
       await driver.delayMs(waitUiReadyMs);
-      let text = await driver.findComponent(ON.id('Text_RouterPushTwo'));
+      let scrollBar2: Component = await driver.findComponent(ON.type('Scroll'));
+      let text = await scrollBar2.scrollSearch(ON.id('Text_RouterPushTwo'));
       await driver.delayMs(waitUiReadyMs);
       let txt = await text.getText()
       expect(txt).assertEqual("RouterPushTwo ")
@@ -162,13 +164,15 @@ export default function RouterPushUrlJsunit() {
       console.info('[RouterPushUrlJsunit_0006] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
-      let btn = await driver.findComponent(ON.id('turn_RouterPushReplace_hasParms'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn = await scrollBar.scrollSearch(ON.id('turn_RouterPushReplace_hasParms'));
       await driver.delayMs(waitUiReadyMs);
       await btn.click();
       let Length = router.getLength()
       expect(Length).assertEqual("1")
       await driver.delayMs(waitUiReadyMs);
-      let text = await driver.findComponent(ON.id('Text_RouterPushTwo'));
+      let scrollBar2: Component = await driver.findComponent(ON.type('Scroll'));
+      let text = await scrollBar2.scrollSearch(ON.id('Text_RouterPushTwo'));
       await driver.delayMs(waitUiReadyMs);
       let txt = await text.getText()
       expect(txt).assertEqual("RouterPushTwo params")
@@ -179,11 +183,13 @@ export default function RouterPushUrlJsunit() {
       console.info('[RouterPushUrlJsunit_0007] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
-      let btn = await driver.findComponent(ON.id('turn_UIRouterPushUrlTwo_noParms'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn = await scrollBar.scrollSearch(ON.id('turn_UIRouterPushUrlTwo_noParms'));
       await driver.delayMs(waitUiReadyMs);
       await btn.click();
       await driver.delayMs(waitUiReadyMs);
-      let text = await driver.findComponent(ON.id('Text_UIRouterPushTwo'));
+      let scrollBar2: Component = await driver.findComponent(ON.type('Scroll'));
+      let text = await scrollBar2.scrollSearch(ON.id('Text_UIRouterPushTwo'));
       await driver.delayMs(waitUiReadyMs);
       let txt = await text.getText()
       expect(txt).assertEqual("UIRouterPushTwo ")
@@ -194,11 +200,13 @@ export default function RouterPushUrlJsunit() {
       console.info('[RouterPushUrlJsunit_0008] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
-      let btn = await driver.findComponent(ON.id('turn_UIRouterPushUrlTwo_hasParms'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn = await scrollBar.scrollSearch(ON.id('turn_UIRouterPushUrlTwo_hasParms'));
       await driver.delayMs(waitUiReadyMs);
       await btn.click();
       await driver.delayMs(waitUiReadyMs);
-      let text = await driver.findComponent(ON.id('Text_UIRouterPushTwo'));
+      let scrollBar2: Component = await driver.findComponent(ON.type('Scroll'));
+      let text = await scrollBar2.scrollSearch(ON.id('Text_UIRouterPushTwo'));
       await driver.delayMs(waitUiReadyMs);
       let txt = await text.getText()
       expect(txt).assertEqual("UIRouterPushTwo params")
@@ -212,7 +220,8 @@ export default function RouterPushUrlJsunit() {
       await driver.delayMs(waitUiReadyMs);
       let Length = router.getLength()
       expect("Length = " + Length).assertEqual("Length = 1")
-      let btn1 = await driver.findComponent(ON.id('turn_UIRouterPushUrlTwo_noParms'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn1 = await scrollBar.scrollSearch(ON.id('turn_UIRouterPushUrlTwo_noParms'));
       await driver.delayMs(waitUiReadyMs);
       await btn1.click();
       await driver.delayMs(waitUiReadyMs);
@@ -220,7 +229,8 @@ export default function RouterPushUrlJsunit() {
       expect("pageTwoLength = " + pageTwoLength).assertEqual("pageTwoLength = 2")
       let pages = router.getState();
       expect(pages.index).assertEqual(2)
-      let btn2 = await driver.findComponent(ON.id('turn_UIRouterPushUrlOne_RouterMode_Standard'));
+      let scrollBar2: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn2 = await scrollBar2.scrollSearch(ON.id('turn_UIRouterPushUrlOne_RouterMode_Standard'));
       await driver.delayMs(waitUiReadyMs);
       await btn2.click();
       await driver.delayMs(waitUiReadyMs);
@@ -238,7 +248,8 @@ export default function RouterPushUrlJsunit() {
       await driver.delayMs(waitUiReadyMs);
       let Length = router.getLength()
       expect(Length).assertEqual("1")
-      let btn1 = await driver.findComponent(ON.id('turn_UIRouterPushUrlTwo_noParms'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn1 = await scrollBar.scrollSearch(ON.id('turn_UIRouterPushUrlTwo_noParms'));
       await driver.delayMs(waitUiReadyMs);
       await btn1.click();
       await driver.delayMs(waitUiReadyMs);
@@ -246,7 +257,8 @@ export default function RouterPushUrlJsunit() {
       expect("pageTwoLength = " + pageTwoLength).assertEqual("pageTwoLength = 2")
       let pages = router.getState();
       expect(pages.index).assertEqual(2)
-      let btn2 = await driver.findComponent(ON.id('turn_UIRouterPushUrlOne_RouterMode_Single'));
+      let scrollBar2: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn2 = await scrollBar2.scrollSearch(ON.id('turn_UIRouterPushUrlOne_RouterMode_Single'));
       await driver.delayMs(waitUiReadyMs);
       await btn2.click();
       await driver.delayMs(waitUiReadyMs);
@@ -260,13 +272,15 @@ export default function RouterPushUrlJsunit() {
     it('RouterPushUrlJsunit_0011', 0, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0011] START');
       let driver = Driver.create();
-      let btn = await driver.findComponent(ON.id('turn_UIRouterPushReplace_noParms'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn = await scrollBar.scrollSearch(ON.id('turn_UIRouterPushReplace_noParms'));
       await driver.delayMs(waitUiReadyMs);
       await btn.click();
       let Length = router.getLength()
       expect(Length).assertEqual("1")
       await driver.delayMs(waitUiReadyMs);
-      let text = await driver.findComponent(ON.id('Text_UIRouterPushTwo'));
+      let scrollBar2: Component = await driver.findComponent(ON.type('Scroll'))
+      let text = await scrollBar2.scrollSearch(ON.id('Text_UIRouterPushTwo'));
       await driver.delayMs(waitUiReadyMs);
       let txt = await text.getText()
       expect(txt).assertEqual("UIRouterPushTwo ")
@@ -277,13 +291,15 @@ export default function RouterPushUrlJsunit() {
       console.info('[RouterPushUrlJsunit_0012] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
-      let btn = await driver.findComponent(ON.id('turn_UIRouterPushReplace_hasParms'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn = await scrollBar.scrollSearch(ON.id('turn_UIRouterPushReplace_hasParms'));
       await driver.delayMs(waitUiReadyMs);
       await btn.click();
       let Length = router.getLength()
       expect(Length).assertEqual("1")
       await driver.delayMs(waitUiReadyMs);
-      let text = await driver.findComponent(ON.id('Text_UIRouterPushTwo'));
+      let scrollBar2: Component = await driver.findComponent(ON.type('Scroll'));
+      let text = await scrollBar2.scrollSearch(ON.id('Text_UIRouterPushTwo'));
       await driver.delayMs(waitUiReadyMs);
       let txt = await text.getText()
       expect(txt).assertEqual("UIRouterPushTwo params")

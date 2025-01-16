@@ -26,43 +26,45 @@ struct router_PageB {
   }
 
   build() {
-    Column({ space: 5 }) {
-      Text(this.amount).id('amount1').fontSize(20).margin({ top: 50 })
-      Text(this.page + '').id('page1').fontSize(20).margin({ top: 50 })
-      Button("跳转pageC")
-        .type(ButtonType.Capsule)
-        .margin({ bottom: 50 })
-        .id("RouterB1")
-        .onClick(() => {
-          router.pushUrl({
-            url: "MainAbility/pages/back_router/pageC"
+    Scroll() {
+      Column({ space: 5 }) {
+        Text(this.amount).id('amount1').fontSize(20).margin({ top: 50 })
+        Text(this.page + '').id('page1').fontSize(20).margin({ top: 50 })
+        Button("跳转pageC")
+          .type(ButtonType.Capsule)
+          .margin({ bottom: 50 })
+          .id("RouterB1")
+          .onClick(() => {
+            router.pushUrl({
+              url: "MainAbility/pages/back_router/pageC"
+            })
           })
-        })
-      Button("返回上一级")
-        .type(ButtonType.Capsule)
-        .id("RouteB2")
-        .onClick(() => {
-          router.back()
-        })
-      Button('CLEAR')
-        .id('clear')
-        .type(ButtonType.Capsule)
-        .margin(20)
-        .onClick(() => {
-          router.clear()
-          this.amount = router.getLength()
-          this.page = router.getState().index;
-        })
-      Button("ReturnBack")
-        .type(ButtonType.Capsule)
-        .id("ReturnBack")
-        .onClick(() => {
-          router.back({ url: 'pages/back_router/pageB' });
-          this.amount = router.getLength()
-          this.page = router.getState().index;
-        })
-      Text(this.amount).id('index')
-      Text(this.page + '').id('length')
-    }.width('100%').height('100%')
+        Button("返回上一级")
+          .type(ButtonType.Capsule)
+          .id("RouteB2")
+          .onClick(() => {
+            router.back()
+          })
+        Button('CLEAR')
+          .id('clear')
+          .type(ButtonType.Capsule)
+          .margin(20)
+          .onClick(() => {
+            router.clear()
+            this.amount = router.getLength()
+            this.page = router.getState().index;
+          })
+        Button("ReturnBack")
+          .type(ButtonType.Capsule)
+          .id("ReturnBack")
+          .onClick(() => {
+            router.back({ url: 'pages/back_router/pageB' });
+            this.amount = router.getLength()
+            this.page = router.getState().index;
+          })
+        Text(this.amount).id('index')
+        Text(this.page + '').id('length')
+      }.width('100%')
+    }
   }
 }

@@ -107,13 +107,17 @@ export default function aboutToAppearRouterTest() {
       //返回B页
       expect(obj2.$attrs.content).assertEqual("4");
       expect(obj3.$attrs.content).assertEqual("4");
-      let button5 = await driver.findComponent(ON.id('RouteB2'));
+
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let button5 = await scrollBar.scrollSearch(ON.id('RouteB2'));
       await button5.click();
       await CommonFunc.sleep(1000);
       //返回A页
       expect(obj1.$attrs.content).assertEqual("3");
       expect(obj.$attrs.content).assertEqual("3");
-      let button6 = await driver.findComponent(ON.id('RouterA2'));
+      
+      let scrollBar2: Component = await driver.findComponent(ON.type('Scroll'));
+      let button6 = await scrollBar2.scrollSearch(ON.id('RouterA2'));
       await button6.click();
       await CommonFunc.sleep(1000);
       //返回初始页

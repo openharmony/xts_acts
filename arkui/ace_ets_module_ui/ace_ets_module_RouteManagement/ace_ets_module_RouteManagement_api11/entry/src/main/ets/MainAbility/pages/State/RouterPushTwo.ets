@@ -38,7 +38,7 @@ struct RouterPushTwo {
   @State routerUI: Router|undefined = undefined
 
   build() {
-    Row() {
+    Scroll() {
       Column() {
         Text("RouterPushTwo " + this.params)
           .fontSize(50)
@@ -98,7 +98,6 @@ struct RouterPushTwo {
             }, router.RouterMode.Single)
           })
       }
-      .height('100%')
     }
   }
 }
