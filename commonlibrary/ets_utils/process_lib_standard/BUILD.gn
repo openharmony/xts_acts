@@ -18,6 +18,6 @@ ohos_js_app_suite("process_js_test") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsProcessJSApiTest"
-  subsystem_name = "bundlemanager"
-  part_name = "bundle_framework"
+  part_name = "ets_utils"
+  subsystem_name = "commonlibrary"
 }
