@@ -95,8 +95,6 @@ export default function abilityTest() {
                 checkResultArray(expectResult, value)
                 done();
             });
-            expect().not().assertFail();
-            done();
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0100 end");
         });
 
@@ -119,7 +117,6 @@ export default function abilityTest() {
                 expect().assertFail();
                 done();
             }
-            expect().not().assertFail();
             done();
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0200 end");
         });
@@ -142,7 +139,6 @@ export default function abilityTest() {
                 expect().assertFail();
                 done();
             })
-            expect().not().assertFail();
             done();
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0300 end");
         });
@@ -166,8 +162,6 @@ export default function abilityTest() {
                 checkResultArray(expectResult, value);
                 done();
             });
-            expect().not().assertFail();
-            done();
             console.info("SUB_AA_OpenHarmony_getFormsInfo_0105 end");
         });
 
@@ -192,8 +186,6 @@ export default function abilityTest() {
                 checkResultArray(expectResult, value);
                 done();
             });
-            expect().not().assertFail();
-            done();
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0600 end");
         });
 
@@ -218,8 +210,6 @@ export default function abilityTest() {
                 checkResultArray(expectResult, value);
                 done();
             });
-            expect().not().assertFail();
-            done();
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0700 end");
         });
 
@@ -243,8 +233,6 @@ export default function abilityTest() {
                 expect(value.length).assertEqual(0);
                 done();
             });
-            expect().not().assertFail();
-            done();
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0800 end");
         });
 
@@ -269,8 +257,6 @@ export default function abilityTest() {
                 checkResult(module1FormInfo, value[0]);
                 done();
             });
-            expect().not().assertFail();
-            done();
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0900 end");
         });
 
@@ -294,8 +280,6 @@ export default function abilityTest() {
                 expect(value.length).assertEqual(0);
                 done();
             });
-            expect().not().assertFail();
-            done();
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1000 end");
         });
 
@@ -314,16 +298,12 @@ export default function abilityTest() {
                 await formProvider.getFormsInfo(filter).then((value) => {
                     expect(value.length).assertEqual(2);
                     checkResultArray(expectResult, value);
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: BusinessError) => {
                     console.info('formProvider::GetFormsInfoTest failed' + JSON.stringify(err));
                     expect().assertFail();
                     done();
                 })
             }
-
-            expect().not().assertFail();
             done();
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1200 end");
         });
@@ -345,16 +325,12 @@ export default function abilityTest() {
                 await formProvider.getFormsInfo(filter).then((value) => {
                     expect(value.length).assertEqual(2);
                     checkResultArray(expectResult, value);
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: BusinessError) => {
                     console.info('formProvider::GetFormsInfoTest failed' + JSON.stringify(err));
                     expect().assertFail();
                     done();
                 })
             }
-
-            expect().not().assertFail();
             done();
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1300 end");
         });
@@ -375,15 +351,11 @@ export default function abilityTest() {
             formProvider.getFormsInfo(filter).then((value) => {
                 expect(value.length).assertEqual(2);
                 checkResultArray(expectResult, value);
-                expect().not().assertFail();
-                done();
             }).catch((err: BusinessError) => {
                 console.info('formProvider::GetFormsInfoTest failed' + JSON.stringify(err));
                 expect().assertFail();
                 done();
             })
-
-            expect().not().assertFail();
             done();
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1400 end");
         });
@@ -404,16 +376,12 @@ export default function abilityTest() {
             let formProviderGetFormsInfo = async () => {
                 await formProvider.getFormsInfo(filter).then((value) => {
                     expect(value.length).assertEqual(0);
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: BusinessError) => {
                     console.info('formProvider::GetFormsInfoTest failed' + JSON.stringify(err));
                     expect().assertFail();
                     done();
                 })
             }
-
-            expect().not().assertFail();
             done();
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1500 end");
         });
@@ -435,16 +403,12 @@ export default function abilityTest() {
                 await formProvider.getFormsInfo(filter).then((value) => {
                     expect(value.length).assertEqual(1);
                     checkResult(module1FormInfo, value[0])
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: BusinessError) => {
                     console.info('formProvider::GetFormsInfoTest failed' + JSON.stringify(err));
                     expect().assertFail();
                     done();
                 })
             }
-
-            expect().not().assertFail();
             done();
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1600 end");
         });
@@ -469,7 +433,6 @@ export default function abilityTest() {
                 expect().assertFail();
                 done();
             })
-            expect().not().assertFail();
             done();
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1700 end");
         });
