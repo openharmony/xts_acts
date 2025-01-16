@@ -102,6 +102,9 @@ export default function saveComponentTest_1() {
         console.info("====>[Test_Security_Button_Save_2300] button is:" + JSON.stringify(button));
         await button[0].click();
         await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
+        await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_2300] clickSecComponent err : " + JSON.stringify(err));
       }
@@ -160,7 +163,10 @@ export default function saveComponentTest_1() {
         let button = await driver.findComponents(ON.type('SaveButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Save_2400] button is:" + JSON.stringify(button));
-        await button[1].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_2400] clickSecComponent err : " + JSON.stringify(err));
@@ -220,7 +226,10 @@ export default function saveComponentTest_1() {
         let button = await driver.findComponents(ON.type('SaveButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Save_2500] button is:" + JSON.stringify(button));
-        await button[2].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_2500] clickSecComponent err : " + JSON.stringify(err));
@@ -280,7 +289,10 @@ export default function saveComponentTest_1() {
         let button = await driver.findComponents(ON.type('SaveButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Save_2600] button is:" + JSON.stringify(button));
-        await button[3].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_2600] clickSecComponent err : " + JSON.stringify(err));
@@ -340,7 +352,10 @@ export default function saveComponentTest_1() {
         let button = await driver.findComponents(ON.type('SaveButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Save_2700] button is:" + JSON.stringify(button));
-        await button[4].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_2700] clickSecComponent err : " + JSON.stringify(err));
@@ -400,7 +415,10 @@ export default function saveComponentTest_1() {
         let button = await driver.findComponents(ON.type('SaveButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Save_2800] button is:" + JSON.stringify(button));
-        await button[5].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_2800] clickSecComponent err : " + JSON.stringify(err));
@@ -460,7 +478,10 @@ export default function saveComponentTest_1() {
         let button = await driver.findComponents(ON.type('SaveButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Save_2900] button is:" + JSON.stringify(button));
-        await button[6].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_2900] clickSecComponent err : " + JSON.stringify(err));
@@ -522,7 +543,10 @@ export default function saveComponentTest_1() {
         let button = await driver.findComponents(ON.type('SaveButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Save_3000] button is:" + JSON.stringify(button));
-        await button[7].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_3000] clickSecComponent err : " + JSON.stringify(err));
@@ -586,7 +610,10 @@ export default function saveComponentTest_1() {
         let button = await driver.findComponents(ON.type('SaveButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Save_3100] button is:" + JSON.stringify(button));
-        await button[8].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_3100] clickSecComponent err : " + JSON.stringify(err));
@@ -650,7 +677,10 @@ export default function saveComponentTest_1() {
         let button = await driver.findComponents(ON.type('SaveButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Save_3200] button is:" + JSON.stringify(button));
-        await button[9].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_3200] clickSecComponent err : " + JSON.stringify(err));
@@ -714,7 +744,10 @@ export default function saveComponentTest_1() {
         let button = await driver.findComponents(ON.type('SaveButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Save_3300] button is:" + JSON.stringify(button));
-        await button[10].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_3300] clickSecComponent err : " + JSON.stringify(err));
@@ -778,7 +811,10 @@ export default function saveComponentTest_1() {
         let button = await driver.findComponents(ON.type('SaveButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Save_3400] button is:" + JSON.stringify(button));
-        await button[11].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_3400] clickSecComponent err : " + JSON.stringify(err));

@@ -224,7 +224,7 @@ struct pasteButton_1 {
               minHeight: this.minHeight,
               maxHeight: this.maxHeight
             })
-        }.width(150)
+        }.width(100)
       }.width('100%').alignItems(HorizontalAlign.Center)
     }.height('100%')
   }

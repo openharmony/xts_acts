@@ -103,6 +103,9 @@ export default function locationComponentTest_1() {
         console.info("====>[Test_Security_Button_Location_2300] button is:" + JSON.stringify(button));
         await button[0].click();
         await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
+        await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Location_2300] clickSecComponent err : " + JSON.stringify(err));
       }
@@ -161,7 +164,10 @@ export default function locationComponentTest_1() {
         let button = await driver.findComponents(ON.type('LocationButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Location_2400] button is:" + JSON.stringify(button));
-        await button[1].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Location_2400] clickSecComponent err : " + JSON.stringify(err));
@@ -221,7 +227,10 @@ export default function locationComponentTest_1() {
         let button = await driver.findComponents(ON.type('LocationButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Location_2500] button is:" + JSON.stringify(button));
-        await button[2].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Location_2500] clickSecComponent err : " + JSON.stringify(err));
@@ -283,7 +292,10 @@ export default function locationComponentTest_1() {
         let button = await driver.findComponents(ON.type('LocationButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Location_2600] button is:" + JSON.stringify(button));
-        await button[3].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Location_2600] clickSecComponent err : " + JSON.stringify(err));
@@ -345,7 +357,10 @@ export default function locationComponentTest_1() {
         let button = await driver.findComponents(ON.type('LocationButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Location_2700] button is:" + JSON.stringify(button));
-        await button[4].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Location_2700] clickSecComponent err : " + JSON.stringify(err));
@@ -407,7 +422,10 @@ export default function locationComponentTest_1() {
         let button = await driver.findComponents(ON.type('LocationButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Location_2800] button is:" + JSON.stringify(button));
-        await button[5].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Location_2800] clickSecComponent err : " + JSON.stringify(err));
@@ -469,7 +487,10 @@ export default function locationComponentTest_1() {
         let button = await driver.findComponents(ON.type('LocationButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Location_2900] button is:" + JSON.stringify(button));
-        await button[6].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Location_2900] clickSecComponent err : " + JSON.stringify(err));
@@ -496,20 +517,20 @@ export default function locationComponentTest_1() {
       try {
         let clickCallback = (clickData:events_emitter.EventData) => {
           if(clickData.data !=undefined){
-          console.info("====>[Test_Security_Button_Location_3000] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.info("====>[Test_Security_Button_Location_3000] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
-          if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
-            console.info("====>[Test_Security_Button_Location_3000] 设置权限成功");
-            expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
-            console.info("====>[Test_Security_Button_Location_3000] END====");
-            done();
+            console.info("====>[Test_Security_Button_Location_3000] get clickEvent result is: " + JSON.stringify(clickEvent));
+            console.info("====>[Test_Security_Button_Location_3000] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+            if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+              console.info("====>[Test_Security_Button_Location_3000] 设置权限成功");
+              expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
+              console.info("====>[Test_Security_Button_Location_3000] END====");
+              done();
+            } else {
+              console.info("====>[Test_Security_Button_Location_3000] 设置权限失败");
+              expect().assertFail()
+              console.info("====>[Test_Security_Button_Location_3000] END====");
+              done();
+            }
           } else {
-            console.info("====>[Test_Security_Button_Location_3000] 设置权限失败");
-            expect().assertFail()
-            console.info("====>[Test_Security_Button_Location_3000] END====");
-            done();
-          }
-        } else {
             console.info("====>[Test_Security_Button_Location_3000] 设置权限失败");
             expect().assertFail()
             console.info("====>[Test_Security_Button_Location_3000] END====");
@@ -529,7 +550,10 @@ export default function locationComponentTest_1() {
         let button = await driver.findComponents(ON.type('LocationButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Location_3000] button is:" + JSON.stringify(button));
-        await button[7].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Location_3000] clickSecComponent err : " + JSON.stringify(err));
@@ -556,20 +580,20 @@ export default function locationComponentTest_1() {
       try {
         let clickCallback = (clickData:events_emitter.EventData) => {
           if(clickData.data !=undefined){
-          console.info("====>[Test_Security_Button_Location_3100] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.info("====>[Test_Security_Button_Location_3100] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
-          if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
-            console.info("====>[Test_Security_Button_Location_3100] 设置权限成功");
-            expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
-            console.info("====>[Test_Security_Button_Location_3100] END====");
-            done();
+            console.info("====>[Test_Security_Button_Location_3100] get clickEvent result is: " + JSON.stringify(clickEvent));
+            console.info("====>[Test_Security_Button_Location_3100] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+            if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+              console.info("====>[Test_Security_Button_Location_3100] 设置权限成功");
+              expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
+              console.info("====>[Test_Security_Button_Location_3100] END====");
+              done();
+            } else {
+              console.info("====>[Test_Security_Button_Location_3100] 设置权限失败");
+              expect().assertFail()
+              console.info("====>[Test_Security_Button_Location_3100] END====");
+              done();
+            }
           } else {
-            console.info("====>[Test_Security_Button_Location_3100] 设置权限失败");
-            expect().assertFail()
-            console.info("====>[Test_Security_Button_Location_3100] END====");
-            done();
-          }
-        } else {
             console.info("====>[Test_Security_Button_Location_3100] 设置权限失败");
             expect().assertFail()
             console.info("====>[Test_Security_Button_Location_3100] END====");
@@ -589,7 +613,10 @@ export default function locationComponentTest_1() {
         let button = await driver.findComponents(ON.type('LocationButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Location_3100] button is:" + JSON.stringify(button));
-        await button[8].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Location_3100] clickSecComponent err : " + JSON.stringify(err));
@@ -616,20 +643,20 @@ export default function locationComponentTest_1() {
       try {
         let clickCallback = (clickData:events_emitter.EventData) => {
           if(clickData.data !=undefined){
-          console.info("====>[Test_Security_Button_Location_3200] get clickEvent result is: " + JSON.stringify(clickEvent));
-          console.info("====>[Test_Security_Button_Location_3200] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
-          if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
-            console.info("====>[Test_Security_Button_Location_3200] 设置权限成功");
-            expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
-            console.info("====>[Test_Security_Button_Location_3200] END====");
-            done();
+            console.info("====>[Test_Security_Button_Location_3200] get clickEvent result is: " + JSON.stringify(clickEvent));
+            console.info("====>[Test_Security_Button_Location_3200] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+            if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+              console.info("====>[Test_Security_Button_Location_3200] 设置权限成功");
+              expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
+              console.info("====>[Test_Security_Button_Location_3200] END====");
+              done();
+            } else {
+              console.info("====>[Test_Security_Button_Location_3200] 设置权限失败");
+              expect().assertFail()
+              console.info("====>[Test_Security_Button_Location_3200] END====");
+              done();
+            }
           } else {
-            console.info("====>[Test_Security_Button_Location_3200] 设置权限失败");
-            expect().assertFail()
-            console.info("====>[Test_Security_Button_Location_3200] END====");
-            done();
-          }
-        } else {
             console.info("====>[Test_Security_Button_Location_3200] 设置权限失败");
             expect().assertFail()
             console.info("====>[Test_Security_Button_Location_3200] END====");
@@ -649,7 +676,10 @@ export default function locationComponentTest_1() {
         let button = await driver.findComponents(ON.type('LocationButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Location_3200] button is:" + JSON.stringify(button));
-        await button[9].click();
+        await button[0].click();
+        await Utils.sleep(1000);
+        let button2 = await driver.findComponents(ON.id('switchButton'));
+        await button2[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Location_3200] clickSecComponent err : " + JSON.stringify(err));
