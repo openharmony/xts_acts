@@ -34,8 +34,8 @@ export default function DeviceStatusUnitTest() {
 
         /**
          * @tc.number    : SUB_MSDP_DeviceStatus_API_Stationary_0100
-         * @tc.name      : Stationary callback interface test
-         * @tc.desc      : Stationary callback interface test.
+         * @tc.name      : SUB_MSDP_DeviceStatus_API_Stationary_0100
+         * @tc.desc      : Stationary callback interface test
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 2
@@ -75,8 +75,8 @@ export default function DeviceStatusUnitTest() {
 
         /**
          * @tc.number    : SUB_MSDP_DeviceStatus_API_Stationary_0200
-         * @tc.name      : Stationary callback interface test
-         * @tc.desc      : Stationary callback interface test.
+         * @tc.name      : SUB_MSDP_DeviceStatus_API_Stationary_0200
+         * @tc.desc      : Stationary callback interface test
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 2
@@ -116,8 +116,8 @@ export default function DeviceStatusUnitTest() {
 
         /**
          * @tc.number    : SUB_MSDP_DeviceStatus_API_Stationary_0300
-         * @tc.name      : Stationary callback interface test
-         * @tc.desc      : Stationary callback interface test.
+         * @tc.name      : SUB_MSDP_DeviceStatus_API_Stationary_0300
+         * @tc.desc      : Stationary callback interface test
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 2
@@ -160,8 +160,8 @@ export default function DeviceStatusUnitTest() {
 
         /**
          * @tc.number    : SUB_MSDP_DeviceStatus_API_Stationary_0400
-         * @tc.name      : Stationary callback interface test
-         * @tc.desc      : Stationary callback interface test.
+         * @tc.name      : SUB_MSDP_DeviceStatus_API_Stationary_0400
+         * @tc.desc      : Stationary callback interface test
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 2
@@ -201,8 +201,8 @@ export default function DeviceStatusUnitTest() {
 
         /**
          * @tc.number    : SUB_MSDP_DeviceStatus_API_Stationary_0500
-         * @tc.name      : Stationary callback interface test
-         * @tc.desc      : Stationary callback interface test.
+         * @tc.name      : SUB_MSDP_DeviceStatus_API_Stationary_0500
+         * @tc.desc      : Stationary callback interface test
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 2
