@@ -33,7 +33,8 @@
           "sharedHspOne"
         ],
         "sources": [
-          "./Test.ets"
+          "./Test.ets",
+          "./src/ohosTest/ets/Test2.ets"
         ]
       }
     }

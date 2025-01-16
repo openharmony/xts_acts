@@ -26,11 +26,21 @@ export function hspSOAdd(a:number, b:number) {
     let har: ESObject = testNapi.loadModuleWithInfo('harTwo', 'com.acts.arttsnapiloadtest/entry_test');
     return har.add(a, b);
   }
-  
+
+  export function otherHarAdd2(a:number, b:number, tag: string): number {
+    console.info(tag, 'otherHarAdd2 call')
+    return testNapi.loadModule('harTwo', a, b);
+  }
+
   export function otherFileHarAdd(a:number, b:number, tag: string): number {
     console.info(tag, 'otherFileHarAdd call')
     let harFile: ESObject = testNapi.loadModuleWithInfo('harTwo/Index', 'com.acts.arttsnapiloadtest/entry_test');
     return harFile.add(a, b);
+  }
+
+  export function otherFileHarAdd2(a:number, b:number, tag: string): number {
+    console.info(tag, 'otherFileHarAdd2 call')
+    return testNapi.loadModule('harTwo/Index', a, b);
   }
   
   export function otherHspAdd(a:number, b:number, tag: string): number {
@@ -38,11 +48,21 @@ export function hspSOAdd(a:number, b:number) {
     let hsp: ESObject = testNapi.loadModuleWithInfo('hspTwo', 'com.acts.arttsnapiloadtest/entry_test');
     return hsp.add(a, b);
   }
+
+  export function otherHspAdd2(a:number, b:number, tag: string): number {
+    console.info(tag, 'otherHspAdd2 call')
+    return testNapi.loadModule('hspTwo', a, b);
+  }
   
   export function otherHspFileAdd(a:number, b:number, tag: string): number {
     console.info(tag, 'otherHspFileAdd call')
     let hspFile: ESObject = testNapi.loadModuleWithInfo('hspTwo/Test', 'com.acts.arttsnapiloadtest/entry_test');
     return hspFile.add(a, b);
+  }
+
+  export function otherHspFileAdd2(a:number, b:number, tag: string): number {
+    console.info(tag, 'otherHspFileAdd2 call')
+    return testNapi.loadModule('hspTwo/Test', a, b);
   }
   
   export function loadSystemModule(tag: string): boolean {
@@ -51,6 +71,15 @@ export function hspSOAdd(a:number, b:number) {
     try {
       testHilog.info(0x0000, 'SystemModule', tag + ' hilog print success');
       return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  export function loadSystemModule2(tag: string): boolean {
+    console.info(tag, 'otherHspFileAdd call')
+    try {
+      return testNapi.loadModuleWithLog(0x0000, 'SystemModule', tag + ' hilog print success');
     } catch (err) {
       return false;
     }

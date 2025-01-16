@@ -14,6 +14,7 @@
  */
 
 export { MainPage } from './src/main/ets/components/mainpage/MainPage';
+export { add2 } from './src/main/ets/Test';
 export function add(a:number, b:number) {
   return a + b;
 }
