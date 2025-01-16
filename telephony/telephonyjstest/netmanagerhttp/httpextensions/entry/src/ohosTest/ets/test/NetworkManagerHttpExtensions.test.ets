@@ -52,7 +52,7 @@ export default function NetworkManagerHttpExtensions() {
       let caseName = 'SUB_Telephony_netstack_Http_Extensions_Xts_0200';
       let httpRequest = net_http.createHttp();
       try {
-        await httpRequest.request("https://www.zhihu.com", {
+        let resp = await httpRequest.request("https://www.zhihu.com", {
           connectTimeout: 3000,
           dnsServers: ['11.1.11.1'],
         });
