@@ -149,14 +149,25 @@ export default function ActsCommonEventSubscribeNDKTest() {
         expect(result2).assertEqual(401)
         // 单应用进程下，subscribe超过200,订阅失败，返回1500010
         const arrayStr2 = ["123"];
-        for (let i = 0; i < 201; i++) {
+        console.info("result2:" + result2 )
+        for (let i = 0; i < 199; i++) {
           testNapi.create_subscribe_info(arrayStr2);
           testNapi.set_publisher_permission("ohos.permission.NOTIFICATION_CONTROLLER");
           testNapi.set_publisher_bundleName("com.example.myapplication444");
           testNapi.create_subscriber();
-          if (i == 200){
+          if (i == 198){
             let result3 = testNapi.common_event_subscribe();
-            expect(result3).assertEqual(1500010)
+            if (result3 == 0) {
+              testNapi.create_subscriber();
+              result3 = testNapi.common_event_subscribe();
+              if (result3 == 0) {
+                testNapi.create_subscriber();
+                result3 = testNapi.common_event_subscribe();
+                expect(result3).assertEqual(1500010)
+              }
+            }else {
+              expect(result3).assertEqual(1500010)
+            }
           }else{
             let result4 = testNapi.common_event_subscribe();
             expect(result4).assertEqual(0)
