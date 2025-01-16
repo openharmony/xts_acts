@@ -70,7 +70,7 @@ struct AnimatorTest1 {
           .backgroundColor(Color.Red)
       }
       .width('100%')
-      .height(100)
+      .height('50%')
 
       Column() {
         Text(this.onFrameText)
