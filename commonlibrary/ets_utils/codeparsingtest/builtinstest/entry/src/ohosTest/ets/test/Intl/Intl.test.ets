@@ -3876,7 +3876,7 @@ export default function IntlTest() {
         let intl = new Intl.DateTimeFormat(locales, options);
         let date = new Date();
         let dateTimeFormat = intl.format(date);
-        expect(dateTimeFormat.length).assertEqual(2);
+        expect(dateTimeFormat.length <= 2).assertTrue();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();

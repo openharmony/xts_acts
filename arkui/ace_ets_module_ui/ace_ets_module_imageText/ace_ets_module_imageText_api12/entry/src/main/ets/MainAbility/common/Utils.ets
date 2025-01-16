@@ -15,6 +15,7 @@
 import RectValue from './Rect';
 
 export default class Utils {
+  public static FONT_FAMILY = 'Verdana';
   static rect_left: number;
   static rect_top: number;
   static rect_right: number;

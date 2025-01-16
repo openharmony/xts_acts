@@ -32,9 +32,14 @@ interface PackingOption_quality {
   quality: number;
 }
 
-export const JsPackToFileMultiFrames: (a: packConfig_options, b: number, c: number, d: number) => number;
+export const JsPackToFileMultiFrames: (a: packConfig_options, b: number, c: number, d: number) => imagePacker;
 
-export const JsPackToDataMultiFrames: (a: number, b: packConfig_options, c: number) => number;
+export const JsPackToDataMultiFrames: (a: number, b: packConfig_options, c: number) => imagePacker;
+
+export const JsPackToFileMultiFramesError: (a: packConfig_options, b: number, c: number, d: number,
+  e: number) => imagePacker;
+
+export const JsPackToDataMultiFramesError: (a: number, b: packConfig_options, c: number, d: number) => imagePacker;
 
 export const create: () => imagePacker;
 

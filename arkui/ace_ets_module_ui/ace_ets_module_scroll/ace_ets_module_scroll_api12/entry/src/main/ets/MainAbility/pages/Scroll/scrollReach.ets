@@ -20,6 +20,7 @@ struct scrollReachExample {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   @State onReachStartText: string = 'onReachStart'
   @State onReachEndText: string = 'onReachEnd'
+  @State onText:string = 'onScrollEdge'
 
   build() {
     Column() {
@@ -27,6 +28,8 @@ struct scrollReachExample {
         .id('scroll_reachStart')
       Text(this.onReachEndText)
         .id('scroll_reachEnd')
+      Text(this.onText)
+        .id('scroll_edge')
 
       Scroll(this.scroller) {
         Column() {
@@ -48,6 +51,10 @@ struct scrollReachExample {
       })
       .onDidScroll(()=>{
         console.info('onDidScroll !')
+      })
+      .onScrollEdge((side: Edge) => {
+        this.onText = 'onScrollEdge:succ'
+        console.info('To the edge')
       })
       .onReachStart(() => {
         this.onReachStartText = 'onReachStart:succ'

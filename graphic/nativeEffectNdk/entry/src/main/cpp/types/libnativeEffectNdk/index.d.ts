@@ -28,3 +28,4 @@ export const oHFilterSetColorMatrix001: () => number;
 export const oHFilterGetEffectPixelMap: () => number;
 export const oHFilterRelease: () => number;
 export const oHFilterRelease001: () => number;
+export const oHFilterBlurWithTileMode001: () => number;

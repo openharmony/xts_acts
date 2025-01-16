@@ -593,6 +593,7 @@ import refreshOffsetTest from './refresh/RefreshOffsetTest.test'
 import refreshPullDownRatioTest from './refresh/RefreshPullDownRatioTest.test'
 import refreshPullToRefreshTest from './refresh/RefreshPullToRefreshTest.test'
 import refreshRefreshingTest from './refresh/RefreshRefreshingTest.test'
+import refreshContentTest from './refresh/RefreshContentTest.test'
 import sliderOnChangeTest from './slider/SliderOnChangeTest.test'
 import sliderBlockColorTest from './slider/SliderBlockColorTest.test'
 import sliderBlockStyleTest from './slider/SliderBlockStyleTest.test'
@@ -828,7 +829,6 @@ import unitPaddingPercentTest from "./unit/UnitPaddingPercentTest.test"
 import unitBorderRadiusPercentTest from "./unit/UnitBorderRadiusPercentTest.test"
 import toolsLayoutRectTest from "./tools/ToolsLayoutRectTest.test"
 import hybirdGetNodeHandleTest from "./hybird/HybirdGetNodeHandleTest.test"
-import responseConfigUpdateTest from "./response/ResponseConfigUpdateTest.test"
 import requirementPanGestureTest from './requirement/RequirementPanGestureTest.test'
 import customComponentLayoutConstraintTest from './customcomponent/CustomComponentLayoutConstraintTest.test'
 import customDialogSetContentTest from "./customdialog/CustomDialogSetContentTest.test"
@@ -889,6 +889,12 @@ import listChildrenMainSizeTest from './list/ListChildrenMainSizeTest.test'
 import listCloseAllActionTest from './list/ListCloseAllActionTest.test'
 import listNestedScrollEventTest from './list/ListNestedScrollEventTest.test'
 import listNestedScrollTest from './list/ListNestedScrollTest.test'
+
+import textInputOnTextSelectionAllChangeTest from './textinput/TextInputOnTextSelectionAllChangeTest.test'
+import customComponentSecondaryLayoutTest from "./customcomponent/CustomComponentSecondaryLayoutTest.test"
+import requirementRouterPageStateTest from './requirement/RequirementRouterPageStateTest.test'
+import resourceNapiValueTest from './resourcenapivalue/ResourceNapiValueTest.test'
+
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
   datePickerAccessibilityGroupTest()
@@ -983,6 +989,7 @@ export default function testsuite() {
   refreshPullDownRatioTest()
   refreshPullToRefreshTest()
   refreshRefreshingTest()
+  refreshContentTest()
   textInputBackgroundColorTest()
   textInputBackgroundImageTest()
   textInputCaretColorTest()
@@ -1362,9 +1369,13 @@ export default function testsuite() {
   columnWidthTest()
   columnHeightTest()
   rowHeightTest()
+  rowJustifyContentTest()
+  rowAlignItemsTest()
   sliderWidthTest()
   sliderHeightTest()
   columnPaddingTest()
+  columnJustifyContentTest()
+  columnAlignItemsTest()
   columnForegroundBlurStyleTest()
   commonAttrsAlignTest()
   commonAttrsDirectionTest()
@@ -1466,6 +1477,10 @@ export default function testsuite() {
   relativecontaineAlignmentRuleOptionTest()
   relativecontaineBarrierOptionTest()
   testGesture()
+  gestureGestureAttrsTest()
+  gestureCreateGestureTest()
+  gestureGestureInterrupterTest()
+  gestureGestureInfoTest()
   gestureNestScrollTest()
   gridColumnGapTest()
   gridRowsTemplateTest()
@@ -1669,6 +1684,7 @@ export default function testsuite() {
   gridAdapterTest()
   radioOnChangeCheckedTest()
   refreshOffsetEventTest()
+  refreshOnOffsetChangeTest()
   unitLengthMetricsTest()
   unitWidthPercentTest()
   unitHeightPercentTest()
@@ -1754,4 +1770,8 @@ export default function testsuite() {
   listCloseAllActionTest()
   listNestedScrollEventTest()
   listNestedScrollTest()
+  textInputOnTextSelectionAllChangeTest()
+  customComponentSecondaryLayoutTest()
+  requirementRouterPageStateTest()
+  resourceNapiValueTest()
 }

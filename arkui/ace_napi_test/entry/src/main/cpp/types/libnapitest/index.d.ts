@@ -392,6 +392,9 @@ export const createSendableTypedArraRstNull: () => Array<string>;
 export const createSendableTypedArraBufferNull: () => Array<string>;
 export const createSendableTypedArrayNotType: () => Array<string>;
 export const createSendableTypedArrayNotBuffer: () => Array<string>;
+export const createSendableFloat64ArrayTest: () => number;
+export const createSendableBigInt64ArrayTest: () => number;
+export const createSendableBigUint64ArrayTest: () => number;
 export const wrapSendableEnvNull: (para1:object, para2:string) => void;
 export const NapiWrapSendableObj1Null: (para1:object, para2:string) => void;
 export const NapiWrapSendableObj2Null: (para1:object, para2:string) => void;
@@ -536,5 +539,9 @@ export const deleteSerializationDataNull: () => number;
 export const createBigintWordsCountIntMax: () => number;
 export const makeCallbackTextNull: (para1, para2, para3) => void;
 export const createThreadsafeFunctionMaxQueueSizeNegative: () => number;
+export const hasOwnPropertyCheckpro: () =>boolean;
+export const hasOwnPropertyCheckOwnpro: () =>boolean;
+export const createTypeErrorRes:() => Error;
+export const createRangeErrorRes:() => Error;
 
 

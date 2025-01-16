@@ -19,7 +19,7 @@ import common from '@ohos.app.ability.common';
 let context: common.UIAbilityContext;
 const TAG = '[RelationalStore_JSKITS_TEST]'
 const CREATE_TABLE_TEST = 'CREATE TABLE IF NOT EXISTS test (' + 'id INTEGER PRIMARY KEY AUTOINCREMENT, ' + 'data1 text,' + 'data2 long, ' + 'data3 double,' + 'data4 blob)';
-
+const CREATE_TABLE_TEST1 = "CREATE TABLE IF NOT EXISTS EMPLOYEE (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT NOT NULL, age INTEGER, salary REAL, blobType BLOB)";
 const STORE_CONFIG = {
     name: 'Resultset.db',
     securityLevel: data_Rdb.SecurityLevel.S1
@@ -2088,6 +2088,44 @@ describe('relationalStoreResultSetTest', function () {
             console.log(TAG + "************* testBigData0001 end *************");
         }
     })
+
+    /**
+     * @tc.name testRdbStoreResultSetGetValuetest0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetEtsAPITest_8300
+     * @tc.desc RelationalStore resultSet test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testRdbStoreResultSetGetValuetest0100', 0, async (done: Function) => {
+        console.info(TAG + "************* testRdbStoreResultSetGetValuetest0100 start *************");
+        rdbStore?.executeSql(CREATE_TABLE_TEST1, null);
+        let u8 = new Uint8Array()
+        const valueBucket: data_Rdb.ValuesBucket = {
+            "name": "zhangsan",
+            "blobType": u8,
+        };
+        try {
+            let rowId = await (rdbStore as data_Rdb.RdbStore).insert("EMPLOYEE", valueBucket)
+            console.info(TAG + `Insert is successful, val = ${rowId}`);
+            let resultSet: data_Rdb.ResultSet | undefined = undefined;
+            let predicates = new data_Rdb.RdbPredicates("EMPLOYEE");
+            let result = await (rdbStore as data_Rdb.RdbStore).query(predicates)
+            resultSet = result;
+            expect((resultSet as data_Rdb.ResultSet).goToFirstRow()).assertTrue()
+            const codes = (resultSet as data_Rdb.ResultSet).getValue((resultSet as data_Rdb.ResultSet).getColumnIndex("blobType"));
+            console.info(TAG + "codes:" + codes)
+            expect(codes).assertInstanceOf("Null")
+            const row = (resultSet as data_Rdb.ResultSet).getRow();
+            console.info(TAG + "row.blobType:" + JSON.stringify(row.blobType));
+            expect(row.blobType).assertInstanceOf("Null")
+            done()
+        } catch (err) {
+            console.error(TAG + `Insert is failed, code is ${err.code},message is ${err.message}`);
+            expect().assertFail()
+        }
+        console.info(TAG + "************* testRdbStoreResultSetGetValuetest0100 end *************");
+    });
     
     console.info(TAG + '*************Unit Test End*************');
 })

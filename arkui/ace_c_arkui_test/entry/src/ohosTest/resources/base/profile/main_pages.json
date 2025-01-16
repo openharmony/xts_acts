@@ -285,7 +285,10 @@
     "MainAbility/pages/lazyforeach/LazyForEachReloadItemTest",
     "MainAbility/pages/lazyforeach/LazyForEachRemoveItemTest",
     "MainAbility/pages/lazyforeach/LazyForEachSetItemTest",
+    
     "MainAbility/pages/lazyforeach/LazyForEachSetNodeIdTest",
+    "MainAbility/pages/textarea/TextAreaSelectionMenuHiddenTest",
+    "MainAbility/pages/textarea/TextAreaInputFilterTest",
     "MainAbility/pages/scroll/ScrollScrollEventOnWillScrollTest",
     "MainAbility/pages/scroll/ScrollScrollEventOnDidScrollTest",
     "MainAbility/pages/scroll/ScrollScrollEventOnWillDidScrollTest",
@@ -337,7 +340,13 @@
     "MainAbility/pages/waterflow/WaterFlowScrollPageTest",
     "MainAbility/pages/waterflow/WaterFlowNestedScroll1Test",
     "MainAbility/pages/waterflow/WaterFlowNestedScroll2Test",
-    "MainAbility/pages/waterflow/WaterFlowNestedScroll3Test"
-    
+    "MainAbility/pages/waterflow/WaterFlowNestedScroll3Test",
+    "MainAbility/pages/textinput/TextInputSelectionMenuHiddenTest",
+    "MainAbility/pages/textinput/TextInputInputFilterTest",
+    "MainAbility/pages/textinput/TextInputOnTextSelectionAllChangeTest",
+    "MainAbility/pages/customcomponent/CustomComponentSecondaryLayoutTest",
+    "MainAbility/pages/requirement/RequirementRouterPageStateTest",
+    "MainAbility/pages/resourcenapivalue/ResourceNapiValueTest",
+    "MainAbility/pages/gesture/AxisGestureTest"
   ]
 }

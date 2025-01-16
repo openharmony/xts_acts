@@ -47,6 +47,14 @@
           }
         ]
       }
+    ],
+    "extensionAbilities": [
+      {
+        "name": "PrintExtension",
+        "srcEntry": "./ets/testability/PrintExtension.ets",
+        "description": "PrintExtension",
+        "type": "print"
+      }
     ]
   }
 }

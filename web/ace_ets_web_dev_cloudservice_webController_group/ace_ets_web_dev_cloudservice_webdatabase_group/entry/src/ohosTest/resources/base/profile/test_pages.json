@@ -1,7 +1,0 @@
-{
-  "src": [
-    "testability/pages/Index",
-    "testability/pages/webviewGeolocationPermissions",
-    "testability/pages/webviewGetAndSetHttpAuthUsernamePassword"
-  ]
-}

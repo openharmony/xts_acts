@@ -18,6 +18,7 @@ import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 import router from '@ohos.router';
+import nativeRender from 'libnativerender.so'
 
 export default function gestureTest() {
 
@@ -47,7 +48,54 @@ export default function gestureTest() {
       expect(Utils.getComponentInfoByKey('longPressID').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
-
+     /*
+     * @tc.number     : SUB_ARKUI_CAPI_Axis_Event_GESTURE001
+     * @tc.name       : testAxisGestureTest001
+     * @tc.desc       : test the axis event data when mouse scroll
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testAxisGestureTest001', 0, async (done: Function) => {
+      let PAGE_TAG = 'AxisGestureTest';
+      await Utils.pushPage(`gesture/${PAGE_TAG}`);
+      await Utils.sleep(1000)
+      let driver = await Driver.create()
+      await Utils.sleep(1000)
+      let rect = Utils.getComponentRect("swipeAxisID");
+      let x = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect));
+      let y = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect));
+      console.info("testSwipeGesture001  x= " +  x  + ", y = " + y);
+      await driver.mouseScroll({x:x, y:y}, true, 30);
+      let dataArray: number[][] = nativeRender.GetGestureDataAxis();
+      let router: number[] = dataArray[0];
+      console.log("time:"+router[0]+",sourceType:"+router[1]+",toolType:"+router[2]+",pointerCount:"+router[3]+",pointerId:"+router[4]+
+      ",pointerIdOne:"+router[5]+",x:"+router[6]+",XIndex:"+router[7]+",y:"+router[8]+",yIndex:"+router[9]+",displayX:"+router[10]+",displayXIndex:"+router[11]+
+      ",displayY:"+router[12]+",displayYIndex:"+router[13]+",windowX:"+router[14]+",windowXIndex:"+router[15]+",windowY:"+router[16]+
+      ",windowYIndex:"+router[17]+",vertical:"+router[18]+",horizontal:"+router[19]+",pinch:"+router[20])
+      expect(router[0] > 0).assertTrue();
+      expect(router[1]).assertEqual(1)
+      expect(router[2]).assertEqual(3)
+      expect(router[3]).assertEqual(1)
+      expect(router[4]).assertEqual(0)
+      expect(router[5]).assertEqual(0)
+      expect(router[6] <= x).assertTrue();
+      expect(router[7] <= x).assertTrue();  
+      expect(router[8] <= x).assertTrue();
+      expect(router[9] <= x).assertTrue();    
+      expect(router[10] <= x).assertTrue(); 
+      expect(router[11] <= x).assertTrue();
+      expect(router[12] <= y).assertTrue();
+      expect(router[13] <= y).assertTrue();  
+      expect(router[14] <= x).assertTrue();
+      expect(router[15] <= x).assertTrue(); 
+      expect(router[16] <= y).assertTrue(); 
+      expect(router[17] <= y).assertTrue();
+      expect(router[18] <= 15).assertTrue();
+      expect(router[19] <= 0).assertTrue();  
+      expect(router[20] <= 0).assertTrue();
+      done();
+    });
     /*
      * @tc.number     : SUB_ARKUI_CAPI_SWIPE_GESTURE001
      * @tc.name       : testSwipeGesture001

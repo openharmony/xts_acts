@@ -2417,4 +2417,433 @@ describe('XmlSerializerXmlPullParserTest', function () {
             expect(e.code).assertEqual(401);
         }
     })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_10100
+     * @tc.name: testParseXml001
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml001', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '    <!--Hello, World!-->' +
+            '    <company>John &amp; Hans</company>' +
+            '    <lens>Work</lens>' +
+            '    <h:table xmlns:h="http://www.w3.org/TR/html4/">' +
+            '        <h:tr>' +
+            '            <h:td>Apples</h:td>' +
+            '        </h:tr>' +
+            '    </h:table>' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer, 'UTF-8');
+        let result = '';
+        function func(name, value) {
+            result += name + ':' + value + ' ';
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, attributeValueCallbackFunction:func}
+        pullParse.parseXml(options);
+        let str = 'importance:high logged:true xmlns:h:http://www.w3.org/TR/html4/';
+        expect(result.trim()).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_10200
+     * @tc.name: testParseXml002
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml002', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '    <![CDATA[funcrion \n matchwo(a,6)]]>' +
+            '    <!--Hello, World!-->' +
+            '    <company>John &amp; Hans</company>' +
+            '    <title>Happy</title>' +
+            '    <lens>Play</lens>' +
+            '    <?go there?>' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(name, value) {
+            result += name + value;
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func}
+        pullParse.parseXml(options);
+        let str = 'note    funcrion \n matchwo(a,6)    Hello, World!    companyJohn & Hanscompany    ' +
+                  'titleHappytitle    lensPlaylens    go therenote';
+        expect(result.trim()).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_10300
+     * @tc.name: testParseXml003
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml003', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high">' +
+            '    <title>Happy</title>' +
+            '    <todo>Work</todo>' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(key, value) {
+            result += 'key:' + key + ' value:'+ value.getColumnNumber() + '  ';
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        pullParse.parseXml(options);
+        let str = 'key:0 value:1  key:2 value:63  key:10 value:67  key:2 value:74  key:4 value:79  ' +
+                  'key:3 value:87  key:10 value:91  key:2 value:97  key:4 value:101  key:3 value:108  ' +
+                  'key:3 value:115  key:1 value:115';
+        expect(result.trim()).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_10400
+     * @tc.name: testParseXml004
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml004', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '    <title>Happy</title>' +
+            '    <todo>Work</todo>' +
+            '    <todo>Play</todo>' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(key, value) {
+            result += 'key:' + key + ' value:'+ value.getDepth() + '  ';
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        pullParse.parseXml(options);
+        let str = 'key:0 value:0  key:2 value:1  key:10 value:1  key:2 value:2  key:4 value:2  ' +
+                  'key:3 value:2  key:10 value:1  key:2 value:2  key:4 value:2  key:3 value:2  ' +
+                  'key:10 value:1  key:2 value:2  key:4 value:2  key:3 value:2  key:3 value:1  key:1 value:0';
+        expect(result.trim()).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_10500
+     * @tc.name: testParseXml005
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml005', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '    <title>Happy</title>' +
+            '    <todo>Work</todo>' +
+            '    <todo>Play</todo>' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uin8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uin8.buffer);
+        let result = '';
+        function func(key, value) {
+            result += 'key:'+ key + ' value:' + value.getLineNumber() + '  ';
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        pullParse.parseXml(options);
+        let str = 'key:0 value:1  key:2 value:1  key:10 value:1  key:2 value:1  key:4 value:1  ' +
+                  'key:3 value:1  key:10 value:1  key:2 value:1  key:4 value:1  key:3 value:1  ' +
+                  'key:10 value:1  key:2 value:1  key:4 value:1  key:3 value:1  key:3 value:1  key:1 value:1';
+        expect(result.trim()).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_10600
+     * @tc.name: testParseXml006
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml006', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high">' +
+            '    <title>Happy</title>' +
+            '    <todo>Work</todo>' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(key, value) {
+            if (key == xml.EventType.START_TAG || key == xml.EventType.END_TAG) {
+                result += 'key:' + key + ' value:' + value.getName() + '  ';
+            }
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        pullParse.parseXml(options);
+        let str = 'key:2 value:note  key:2 value:title  key:3 value:title  ' +
+                  'key:2 value:todo  key:3 value:todo  key:3 value:note';
+        expect(result.trim()).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_10700
+     * @tc.name: testParseXml007
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml007', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high">' +
+            '<h:table xmlns:h="html4">' +
+            '<h:tr><h:td>Bananas</h:td></h:tr>' +
+            '</h:table>' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(key, value) {
+            if (key == xml.EventType.START_TAG || key == xml.EventType.END_TAG) {
+                result += 'key:' + key + ' value:' + value.getNamespace() + '  ';
+            }
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:false, tokenValueCallbackFunction:func}
+        pullParse.parseXml(options);
+        let str = 'key:2 value:  key:2 value:html4  key:2 value:html4  key:2 value:html4  ' +
+                  'key:3 value:html4  key:3 value:html4  key:3 value:html4  key:3 value:';
+        expect(result.trim()).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_10800
+     * @tc.name: testParseXml008
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml008', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high">' +
+            '<h:table xmlns:h="html4">' +
+            '<h:tr><h:td>Bananas</h:td></h:tr>' +
+            '</h:table>' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(key, value) {
+            if (key == xml.EventType.START_TAG || key == xml.EventType.END_TAG) {
+                result += 'key:' + key + ' value:' + value.getPrefix() + '  ';
+            }
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:false, tokenValueCallbackFunction:func}
+        pullParse.parseXml(options);
+        let str = 'key:2 value:  key:2 value:h  key:2 value:h  key:2 value:h  ' +
+                  'key:3 value:h  key:3 value:h  key:3 value:h  key:3 value:';
+        expect(result.trim()).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_10900
+     * @tc.name: testParseXml009
+     * @tc.desc: Starts parsing he XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml009', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '    <title>Happy</title>' +
+            '    <todo>Work</todo>' +
+            '    <todo>Play</todo>' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(key, value) {
+            if (key == xml.EventType.TEXT) {
+                result += 'key:' + key + ' value:' + value.getText() + '  ';
+            }
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        pullParse.parseXml(options);
+        let str = 'key:4 value:Happy  key:4 value:Work  key:4 value:Play';
+        expect(result.trim()).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_11000
+     * @tc.name: testParseXml010
+     * @tc.desc: Starts parsing he XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml010', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high">' +
+            '<title/>' +
+            '<todo>Work</todo>' +
+            '<todo/>' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(key, value) {
+            if (key == xml.EventType.START_TAG) {
+                result += 'key:' + key + ' value:' + value.isEmptyElementTag() + '  ';
+            }
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        pullParse.parseXml(options);
+        let str = 'key:2 value:false  key:2 value:true  key:2 value:false  key:2 value:true';
+        expect(result.trim()).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_11100
+     * @tc.name: testParseXml011
+     * @tc.desc: Starts parsing he XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParse011', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '    <title>Happy</title>' +
+            '    <todo>Work</todo>' +
+            '    <todo>Play</todo>' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(key, value) {
+            if (key == xml.EventType.START_TAG) {
+                result += 'key:' + key + ' value:' + value.getAttributeCount() + '  ';
+            }
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        pullParse.parseXml(options);
+        let str = 'key:2 value:2  key:2 value:0  key:2 value:0  key:2 value:0';
+        expect(result.trim()).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_11200
+     * @tc.name: testParseXml012
+     * @tc.desc: Starts parsing he XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParse012', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '    <title>Hello\nWorld</title>' +
+            '    <todo>Work\n</todo>' +
+            '    <mess><![CDATA[This is a \n CDATA section]]></mess>' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(key, value) {
+            if (key === xml.EventType.TEXT || key === xml.EventType.CDSECT) {
+                result += value.getText() + ' ';
+            }
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        pullParse.parseXml(options);
+        let str = 'Hello\nWorld Work\n This is a \n CDATA section';
+        expect(result.trim()).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_11300
+     * @tc.name: testParseXml013
+     * @tc.desc: Starts parsing he XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParse013', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="hi&amp;gh" logged="&lt;true">' +
+            '    <title>Hello&gt;World&apos;</title>' +
+            '    <todo>Wo&quot;rk</todo>' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let resAttr = '';
+        let result = '';
+        function funcAttr(name, value) {
+            resAttr += name + ', ' + value + ' ';
+            return true;
+        }
+        function func(name, value) {
+            if (name == xml.EventType.TEXT) {
+                result += value.getText() + ' ';
+            }
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, attributeValueCallbackFunction: funcAttr,
+            tokenValueCallbackFunction:func}
+        pullParse.parseXml(options);
+        let str = 'Hello>World\' Wo"rk';
+        let strAttr = 'importance, hi&gh logged, <true';
+        expect(result.trim()).assertEqual(str);
+        expect(resAttr.trim()).assertEqual(strAttr);
+    })
 })}

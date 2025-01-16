@@ -41,7 +41,7 @@ export default function swiperAdapterTest() {
       let driver = Driver.create();
       let component = await driver.findComponent(ON.id("swiper"));
       await Utils.sleep(2000);
-      expect(Utils.getComponentInfoByKey('swiper').$attrs.backgroundColor).assertEqual('#FF00FF00');
+      expect(Utils.getComponentInfoByKey('text').$attrs.backgroundColor).assertEqual('#FFFF0000');
       done();
     });
   })

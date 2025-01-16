@@ -13,5 +13,8 @@
 
 group("ActsAceEtsModuleXNodeTest") {
   testonly = true
-  deps = [ "ace_ets_module_XNode_api12:ActsAceEtsModuleXNodeApi12Test" ]
+  deps = [
+    "ace_ets_module_XNode_api12:ActsAceEtsModuleXNodeApi12Test",
+    "ace_ets_module_XNode_api14:ActsAceEtsModuleXNodeApi14Test",
+  ]
 }

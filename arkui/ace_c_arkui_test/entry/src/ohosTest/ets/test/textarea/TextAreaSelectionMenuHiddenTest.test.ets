@@ -16,18 +16,14 @@
 import { expect, describe, it, afterEach } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
+import { Driver, ON } from '@ohos.UiTest';
 
 export default function textAreaSelectionMenuHiddenTest() {
 
   describe('TextAreaSelectionMenuHiddenTest', () => {
-
-    afterEach(async (done: Function) => {
-      await Utils.sleep(100);
-      done();
-    })
-
+    let PAGE_TAG = 'TextAreaSelectionMenuHiddenTest';
     /*
-     * @tc.number: SUB_ARKUI_CAPI_TEXTAREA_SELECTIONMENUHIDDEN_0100
+     * @tc.number: SUB_ARKUI_CAPI_TEXTAREA_SELECTIONMENUHIDDEN_0001
      * @tc.name: testTextAreaSelectionMenuHidden001
      * @tc.desc: testing SelectionMenuHidden for textArea with normal value
      * @tc.size: MediumTest
@@ -35,34 +31,14 @@ export default function textAreaSelectionMenuHiddenTest() {
      * @tc.level: Level 1
      */
     it('testTextAreaSelectionMenuHidden001', 0, async (done: Function) => {
-      expect(nativeFunc.testTextAreaSelectionMenuHidden001()).assertEqual(0)
-      done();
-    });
-
-    /*
-     * @tc.number: SUB_ARKUI_CAPI_TEXTAREA_SELECTIONMENUHIDDEN_0200
-     * @tc.name: testTextAreaSelectionMenuHidden002
-     * @tc.desc: testing SelectionMenuHidden for textArea with boundary value
-     * @tc.size: MediumTest
-     * @tc.type: Function
-     * @tc.level: Level 1
-     */
-    it('testTextAreaSelectionMenuHidden002', 0, async (done: Function) => {
-      expect(nativeFunc.testTextAreaSelectionMenuHidden002()).assertEqual(0)
-      done();
-    });
-
-    /*
-     * @tc.number: SUB_ARKUI_CAPI_TEXTAREA_SELECTIONMENUHIDDEN_0300
-     * @tc.name: testTextAreaSelectionMenuHidden003
-     * @tc.desc: testing SelectionMenuHidden for textArea with abnormal value
-     * @tc.size: MediumTest
-     * @tc.type: Function
-     * @tc.level: Level 1
-     */
-    it('testTextAreaSelectionMenuHidden003', 0, async (done: Function) => {
-      expect(nativeFunc.testTextAreaSelectionMenuHidden003()).assertEqual(0)
-      done();
+      await Utils.pushPage(`textarea/${PAGE_TAG}`);
+      focusControl.requestFocus('textArea')
+      await Utils.sleep(1000)
+      await Utils.clickComponent('textArea')
+      await Utils.sleep(1000)
+      let driver:Driver = Driver.create();
+      await driver.assertComponentExist(ON.text('全选'));
+      done()
     });
   })
 }

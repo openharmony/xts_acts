@@ -61,12 +61,17 @@ export default function scrollReachJsunit() {
       let button = await driver.findComponent(ON.id('scrollEdge_btn'));
       await button.click();
       await CommonFunc.sleep(3000);
-      console.info('[RepeatEachJsunit_0100] ScrollBottom success');
+      console.info('[scrollReachJsunit_0100] ScrollBottom success');
 
       let onReachEndText = await driver.findComponent(ON.id('scroll_reachEnd'));
       let text2 = await onReachEndText.getText();
-      console.info('[GridCallbackJsunit_1000] onReachEndText: ' + text2);
+      console.info('[scrollReachJsunit_0100] onReachEndText: ' + text2);
       expect(text2).assertEqual('onReachEnd:succ');
+      
+      let onScrollEdgeText = await driver.findComponent(ON.id('scroll_edge'));
+      let text3 = await onScrollEdgeText.getText();
+      console.info('[scrollReachJsunit_0100] onScrollEdgeText: ' + text3);
+      expect(text3).assertEqual('onScrollEdge:succ');
       await CommonFunc.sleep(1000);
 
       console.info('[scrollReachJsunit_0100] END');

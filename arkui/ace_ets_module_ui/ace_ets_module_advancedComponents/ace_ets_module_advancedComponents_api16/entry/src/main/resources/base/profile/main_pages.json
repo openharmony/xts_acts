@@ -1,0 +1,11 @@
+{
+  "src": [
+    "MainAbility/pages/index/Index",
+    "MainAbility/pages/composeListItem/composeListItemPageTest",
+    "MainAbility/pages/composeListItem/composeListItemOperateItemSymbolStyle",
+    "MainAbility/pages/toolBar/toolBarAccessibilityPage",
+    "MainAbility/pages/progressButtonV2/progressButtonV2Page",
+    "MainAbility/pages/subHeaderV2/subHeaderV2Page",
+    "MainAbility/pages/toolBarV2/toolBarV2Page"
+  ]
+}

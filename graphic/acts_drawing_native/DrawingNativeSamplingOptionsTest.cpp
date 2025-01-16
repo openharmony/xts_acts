@@ -16,6 +16,7 @@
 #include "drawing_sampling_options.h"
 #include "drawing_types.h"
 #include "gtest/gtest.h"
+#include "drawing_error_code.h"
 #include <random>
 
 using namespace testing;
@@ -24,7 +25,17 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeSamplingOptionsTest : public testing::Test {};
+class DrawingNativeSamplingOptionsTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override
+    {
+        // 设置代码
+        std::cout << "DrawingNativeSamplingOptionsTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeSamplingOptionsTest errorCodeReset before each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SAMPLING_OPTIONS_0100
@@ -48,6 +59,8 @@ HWTEST_F(DrawingNativeSamplingOptionsTest, testSamplingOptionsCreateDestroyDestr
     for (OH_Drawing_FilterMode filterMode : filterModes) {
         for (OH_Drawing_MipmapMode mipmapMode : mipmapModes) {
             OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(filterMode, mipmapMode);
+            // add assert
+            EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
             EXPECT_NE(options, nullptr);
             // 2. Destroy the objects created in step 1 with OH_Drawing_SamplingOptionsDestroy
             OH_Drawing_SamplingOptionsDestroy(options);
@@ -66,6 +79,8 @@ HWTEST_F(DrawingNativeSamplingOptionsTest, testSamplingOptionsCreateDestroyDestr
 HWTEST_F(DrawingNativeSamplingOptionsTest, testSamplingOptionsCreateDestroyDestroyNull, TestSize.Level3) {
     // 1. OH_Drawing_SamplingOptionsDestroy with empty parameter
     OH_Drawing_SamplingOptionsDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
 }
 
 /*

@@ -6,6 +6,8 @@
         "MainAbility/pages/LazyForEach/LazyForEachAdd",
         "MainAbility/pages/LazyForEach/LazyForEachDelete",
         "MainAbility/pages/LazyForEach/LazyForEachMove",
+        "MainAbility/pages/LazyForEach/LazyForEachReload",
+        "MainAbility/pages/LazyForEach/LazyForEachVisibleAreaChange",
         "MainAbility/pages/LazyForEach/LazyForEachSingleBoolean",
         "MainAbility/pages/LazyForEach/LazyForEachSingleNumber",
         "MainAbility/pages/LazyForEach/LazyForEachSingleString",
@@ -77,6 +79,8 @@
         "MainAbility/pages/Foreach1/Foreach6",
         "MainAbility/pages/FreezeV2/Freeze001",
         "MainAbility/pages/FreezeV2/Freeze002",
+        "MainAbility/pages/FreezeV2/Freeze003",
+        "MainAbility/pages/FreezeV2/Freeze003Page",
         "MainAbility/pages/Provider/Provider1",
         "MainAbility/pages/Provider/Provider2",
         "MainAbility/pages/Provider/Provider3",
@@ -180,6 +184,7 @@
         "MainAbility/pages/makeObserved/MakeObserved0300",
         "MainAbility/pages/watch/WatchLink0050",
         "MainAbility/pages/provide_consume/ProvideConsume0010",
-        "MainAbility/pages/Provider/Provider0270"
+        "MainAbility/pages/Provider/Provider0270",
+        "MainAbility/pages/state/StateUndefined0010"
     ]
 }

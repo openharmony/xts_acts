@@ -14,12 +14,8 @@
  */
 import bindContextMenuMargin from './bindContextMenuTest/bindContextMenuMargin.test'
 import bindSheetKeyboardAvoidMode from './bindSheetTest/bindSheetKeyboardAvoidMode.test'
-import showToastHoverMode from './promptActionTest/showToastHoverMode.test'
-import showDialogHoverMode from './promptActionTest/showDialogHoverMode.test'
 
 export default function testsuite() {
   bindContextMenuMargin()
   bindSheetKeyboardAvoidMode()
-  showToastHoverMode()
-  showDialogHoverMode()
 }

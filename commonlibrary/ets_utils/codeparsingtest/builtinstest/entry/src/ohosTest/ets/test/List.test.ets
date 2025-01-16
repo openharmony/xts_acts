@@ -10,6 +10,7 @@ import reflectTest from './Reflect/Reflect.test';
 import localeTest from './Locale/Locale.test';
 import objectTest from './Object/Object.test';
 import intlTest from './Intl/Intl.test';
+import promiseTest from './Promise/Promise.test';
 
 export default function testsuite() {
   booleanTest();
@@ -24,4 +25,5 @@ export default function testsuite() {
   localeTest();
   objectTest();
   intlTest();
+  promiseTest();
 }

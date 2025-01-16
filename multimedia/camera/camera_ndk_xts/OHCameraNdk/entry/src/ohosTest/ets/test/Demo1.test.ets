@@ -22,10 +22,12 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundleManager from '@ohos.bundle.bundleManager';
 import account from '@ohos.account.osAccount';
+import { Context } from '@kit.AbilityKit';
 
 const TAG = "CAMERA_LOGTAG_JS";
 const CAMERA_OK = 0;
 const CAMERA_ERROR_7400101 = 7400101; //参数错误
+const VIDEO = 1;
 let mediaUtil = MediaUtils.getInstance()
 let videoRecorder: media.AVRecorder;
 let videoSurfaceId: string;
@@ -50,6 +52,7 @@ let videoConfig: media.AVRecorderConfig = {
 
 async function getVideoSurfaceID() {
   console.info(TAG + 'start getVideoSurfaceID ');
+  const mContext: Context = getContext();
   try {
     videoRecorder = await media.createAVRecorder();
   } catch (error) {
@@ -60,7 +63,7 @@ async function getVideoSurfaceID() {
     console.error(`createAVRecorder call failed`);
   }
   console.info(TAG + 'createAVRecorder videoRecorder : ' + JSON.stringify(videoRecorder));
-  videoConfig.url = `fd://${await mediaUtil.createAndGetUriVideo()}`;
+  videoConfig.url = `fd://${await mediaUtil.createAndGetUriVideoNew(VIDEO, mContext)}`;
   console.info(TAG + 'getVideoSurfaceID videoConfig.url : ' + JSON.stringify(videoConfig.url));
   videoConfig.videoSourceType = media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES;
   console.info(TAG + 'getVideoSurfaceID videoConfig.videoSourceType : ' + videoConfig.videoSourceType);

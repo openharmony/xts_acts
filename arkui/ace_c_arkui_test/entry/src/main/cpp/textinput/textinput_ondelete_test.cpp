@@ -21,7 +21,7 @@
 
 namespace ArkUICapiTest {
 
-#define TEXT_INPUT_ON_DELETE_STRING "textinputondelete"
+#define TEXT_INPUT_ON_DELETE_STRING "textinput"
 static ArkUI_NodeHandle textInput = nullptr;
 std::vector<int32_t> TextInputOnDeleteTest::deleteOffset = {};
 static napi_value SetArrayNapiDataWithDelete(const std::vector<int32_t>& data, napi_env env)
@@ -77,6 +77,52 @@ static auto createRowNode(ArkUI_NativeNodeAPI_1* nodeAPI)
 
     return nodeHandle;
 }
+static void processOnWillDeleteEvent(
+    ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeEvent* event, ArkUI_NodeHandle nodeHandler)
+{
+    ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_GREEN } };
+    ArkUI_AttributeItem background_color_item = { background_color_value,
+        sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
+    nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+    ArkUI_NumberValue value[PARAM_2];
+    OH_ArkUI_NodeEvent_GetNumberValue(event, PARAM_0, value);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+        "processOnWillDeleteEvent NODE_TEXT_INPUT_ON_WILL_DELETE deleteOffset: %{public}f", value[PARAM_0].f32);
+    PushBackIntToData(TextInputOnDeleteTest::deleteOffset, value[PARAM_0].f32);
+    OH_ArkUI_NodeEvent_GetNumberValue(event, PARAM_1, value);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+        "processOnWillDeleteEvent NODE_TEXT_INPUT_ON_WILL_DELETE direction: %{public}d", value[PARAM_1].i32);
+    char deleteStr[PARAM_64];
+    char* deleteValue[PARAM_1] = { deleteStr };
+    int32_t bufSize[PARAM_1] = { PARAM_64 };
+    OH_ArkUI_NodeEvent_GetStringValue(event, PARAM_0, deleteValue, bufSize);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+        "processOnWillDeleteEvent NODE_TEXT_INPUT_ON_WILL_DELETE deleteValue: %{public}s", deleteValue[PARAM_0]);
+    ArkUI_NumberValue returnValue[] = { { .i32 = true } };
+    OH_ArkUI_NodeEvent_SetReturnNumberValue(event, returnValue, 1);
+}
+static void processOnDidDeleteEvent(
+    ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeEvent* event, ArkUI_NodeHandle nodeHandler)
+{
+    ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_BLUE } };
+    ArkUI_AttributeItem background_color_item = { background_color_value,
+        sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
+    nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+    ArkUI_NumberValue value[PARAM_2];
+    OH_ArkUI_NodeEvent_GetNumberValue(event, PARAM_0, value);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+        "processOnDidDeleteEvent NODE_TEXT_INPUT_ON_DID_DELETE deleteOffset: %{public}f", value[PARAM_0].f32);
+    PushBackIntToData(TextInputOnDeleteTest::deleteOffset, value[PARAM_0].f32);
+    OH_ArkUI_NodeEvent_GetNumberValue(event, PARAM_1, value);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+        "processOnDidDeleteEvent NODE_TEXT_INPUT_ON_DID_DELETE direction: %{public}d", value[PARAM_1].i32);
+    char deleteStr[PARAM_64];
+    char* deleteValue[PARAM_1] = { deleteStr };
+    int32_t bufSize[PARAM_1] = { PARAM_64 };
+    OH_ArkUI_NodeEvent_GetStringValue(event, PARAM_0, deleteValue, bufSize);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+        "processOnDidDeleteEvent NODE_TEXT_INPUT_ON_DID_DELETE deleteValue: %{public}s", deleteValue[PARAM_0]);
+}
 static void OnEventReceive(ArkUI_NodeEvent* event)
 {
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TextInputOnDeleteTest", "TextInputOnDeleteTest OnEventReceive");
@@ -95,22 +141,11 @@ static void OnEventReceive(ArkUI_NodeEvent* event)
     auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
     switch (eventId) {
         case ON_DID_DELETE_ID: {
-            ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_BLUE } };
-            ArkUI_AttributeItem background_color_item = { background_color_value,
-                sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
-            nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+            processOnDidDeleteEvent(nodeAPI, event, nodeHandler);
             return;
         }
         case ON_WILL_DELETE_ID: {
-            ArkUI_NumberValue deleteValue[] = { { .f32 = 0 } };
-            OH_ArkUI_NodeEvent_GetNumberValue(event, 0, deleteValue);
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TextInputOnDeleteTest",
-                "TextInputOnDeleteTest ON_WILL_DELETE_ID deleteValue: %{public}f", deleteValue[PARAM_0].f32);
-            PushBackIntToData(TextInputOnDeleteTest::deleteOffset, deleteValue[PARAM_0].f32);
-            ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_GREEN } };
-            ArkUI_AttributeItem background_color_item = { background_color_value,
-                sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
-            nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+            processOnWillDeleteEvent(nodeAPI, event, nodeHandler);
             return;
         }
         default:

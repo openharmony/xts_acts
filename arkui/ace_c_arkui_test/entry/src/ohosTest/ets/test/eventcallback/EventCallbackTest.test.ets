@@ -13,13 +13,18 @@
  * limitations under the License.
  */
 
-import { afterEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeAll, describe, expect, it } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver, ON } from '@kit.TestKit';
 
 export default function eventCallbackTest() {
 
   describe('EventCallbackTest', () => {
+
+    beforeAll(async (done: Function) => {
+      await Utils.sleep(2000);
+      done();
+    });
 
     afterEach(async (done: Function) => {
       await Utils.sleep(1000);

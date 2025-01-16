@@ -41,7 +41,7 @@ static napi_value OsGetDlpPermissionInfoA(napi_env env, napi_callback_info info)
 static napi_value OsGetOriginalFileNameA(napi_env env, napi_callback_info info)
 {
     const char *fileName = "test.txt.dlp"; //表示dlp文件名，用以获取原始文件名
-    char *originalFileName = NULL; //表示原始文件名
+    char *originalFileName = nullptr; //表示原始文件名
     DLP_ErrCode ret = OH_DLP_GetOriginalFileName(fileName, &originalFileName);
     if (ret == DLP_ErrCode::ERR_OH_SUCCESS) {
         napi_value result = nullptr;
@@ -80,7 +80,7 @@ static napi_value OsSetSandboxAppConfigA(napi_env env, napi_callback_info info)
 
 static napi_value OsGetSandboxAppConfigA(napi_env env, napi_callback_info info)
 {
-    char *configInfo = NULL; //输出json化后的沙箱应用配置信息
+    char *configInfo = nullptr; //输出json化后的沙箱应用配置信息
     DLP_ErrCode ret = OH_DLP_GetSandboxAppConfig(&configInfo);
     if (ret == DLP_ErrCode::ERR_OH_SUCCESS) {
         napi_value result = nullptr;

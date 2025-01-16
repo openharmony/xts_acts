@@ -844,7 +844,7 @@ export default function ObjectInterfaceTest() {
             return;
           }
           console.info("contactsApi_queryContact_test_500  keyData = " + JSON.stringify(keyData));
-          if (JSON.stringify(keyData != undefined)) {
+          if (JSON.stringify(keyData) != undefined) {
             let promise = contact.queryContact(context,keyData, holder, attr);
             promise.then((data) => {
               console.info("contactsApi_queryContact_test_500  data = " + JSON.stringify(data));

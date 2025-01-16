@@ -20,6 +20,7 @@ import { BusinessError } from '@ohos.base';
 import { Context } from '@ohos.abilityAccessCtrl';
 import common from '@ohos.app.ability.common';
 import settings from '@ohos.settings';
+import image from '@ohos.multimedia.image';
 
 function expectedError(TRUE_FLAG: boolean, error: BusinessError, caseName: string, apiName: string, done: Function, code: number) {
   let msgStr: string = 'jsUnittest ' + caseName + ' ' + apiName + ' failed, err: ';
@@ -1450,7 +1451,11 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
 
       expect(!!mainWin).assertTrue();
-      (mainWin as ohosWindow.Window).snapshot((err, data) => {
+      let properties = (mainWin as ohosWindow.Window).getWindowProperties();
+      let windowWidth:number = properties.windowRect.width;
+      let windowHeight:number = properties.windowRect.height;
+      console.log(msgStr + 'mainWin.getWindowProperties' + JSON.stringify(properties));
+      (mainWin as ohosWindow.Window).snapshot(async (err, pixelMap: image.PixelMap) => {
         if (err && err.code) {
           console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));
           try {
@@ -1461,10 +1466,16 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
           done();
           return;
         }
-        done();
-        console.log(msgStr + 'snapshot success data:' + JSON.stringify(data));
+        console.info(msgStr + 'Succeeded in snapshotting window.');
+        await pixelMap.getImageInfo().then((imageInfo: image.ImageInfo) => {
+          console.log(msgStr + 'pixelMap imageInfo' + JSON.stringify(imageInfo));
+          let imageWidth:number = imageInfo.size.width;
+          let imageHeight:number = imageInfo.size.height;
+          expect(imageWidth).assertEqual(windowWidth);
+          expect(imageHeight).assertEqual(windowHeight);
+          done();
+        })
       })
-
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0320

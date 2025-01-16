@@ -43,7 +43,7 @@ export default function textAreaOnInsertTest() {
       let dataArray: number[][] = nativeRender.getTextAreaInsertData();
       console.log('testTextAreaOnInsert001', JSON.stringify(dataArray))
       let textAreaInsertData: number[] = dataArray[0];
-      expect(textAreaInsertData[0] == 9).assertEqual(true)
+      expect(textAreaInsertData[0] == 8 && textAreaInsertData[1] == 9).assertEqual(true)
       done()
     })
 

@@ -1016,13 +1016,12 @@ static napi_value OHDrawingGetRunPositions001(napi_env env, napi_callback_info i
 static napi_value OHDrawingGetFontCollectionGlobalInstance001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    OH_Drawing_FontCollection *fontCollection = OH_Drawing_CreateFontCollection();
+    OH_Drawing_FontCollection *fontCollection = OH_Drawing_GetFontCollectionGlobalInstance();
     if (fontCollection != nullptr) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
     }
-    OH_Drawing_DestroyFontCollection(fontCollection);
     return result;
 }
 

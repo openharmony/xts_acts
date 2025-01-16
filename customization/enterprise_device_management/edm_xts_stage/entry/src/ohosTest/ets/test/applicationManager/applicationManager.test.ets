@@ -29,6 +29,7 @@ import {
 import adminManager from '@ohos.enterprise.adminManager';
 import applicationManager from '@ohos.enterprise.applicationManager';
 import Want from '@ohos.app.ability.Want';
+import sysDeviceInfo from '@ohos.deviceInfo';
 
 export default function applicationManagerTest() {
   describe('applicationManager_test', () => {
@@ -590,6 +591,10 @@ export default function applicationManagerTest() {
      * @tc.size      : MediumTest
      */
     it("test_addKeepAliveApps_004", 0, async (done: Function) => {
+      if (sysDeviceInfo.deviceType != '2in1') {
+        done();
+        return;
+      }
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);

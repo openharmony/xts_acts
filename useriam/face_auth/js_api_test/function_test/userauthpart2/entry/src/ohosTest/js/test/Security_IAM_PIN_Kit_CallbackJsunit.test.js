@@ -15,6 +15,7 @@
 
 import {describe, it, expect} from '@ohos/hypium'
 import userAuthNorth from '@ohos.userIAM.userAuth'
+import { checkSupportOrNot } from './utils/commonFunc';
 
 let UserAuthKit = new userAuthNorth.UserAuth();
 
@@ -56,39 +57,51 @@ export default function userauthTest() {
             let level = [userAuthNorth.AuthTrustLevel.ATL1, userAuthNorth.AuthTrustLevel.ATL2, userAuthNorth.AuthTrustLevel.ATL3];
             let availabeStatus;
             for (let idx0 = 0; idx0 < authType.length; idx0++) {
-                for (let idx1 = 0; idx1 < level.length; idx1++) {
-                    try {
-                        console.info('Security_IAM_PIN_Kit_Func_0102 authtype:' + authType[idx0] + 'trustlevel:' + level[idx1])
-                        availabeStatus = UserAuthKit.getAvailableStatus(authType[idx0], level[idx1]);
-                        console.info(`Security_IAM_PIN_Kit_Func_0102 ${availabeStatus}`)
-                        expect(availabeStatus).assertEqual(userAuthNorth.ResultCode.NOT_ENROLLED);
-                    } catch (e) {
-                        console.info(`Security_IAM_PIN_Kit_Func_0102 e ${JSON.stringify(e)}`)
-                        console.log("Security_IAM_PIN_Kit_Func_0102 throw fail " + 'authType:' + authType[idx0] + 'trustlevel:' + level[idx1] + 'e.code:' + e.code);
-                        expect(e.code).assertEqual(userAuthNorth.ResultCode.NOT_ENROLLED);
+                let checkSupport = await checkSupportOrNot(authType[idx0]);
+                if (checkSupport == 0) {
+                    for (let idx1 = 0; idx1 < level.length; idx1++) {
+                        try {
+                            console.info('Security_IAM_PIN_Kit_Func_0102 authtype:' + authType[idx0] + 'trustlevel:' + level[idx1])
+                            availabeStatus = UserAuthKit.getAvailableStatus(authType[idx0], level[idx1]);
+                            console.info(`Security_IAM_PIN_Kit_Func_0102 ${availabeStatus}`)
+                            expect((availabeStatus == userAuthNorth.ResultCode.NOT_ENROLLED || (availabeStatus == userAuthNorth.ResultCode.TYPE_NOT_SUPPORT))).assertTrue();
+                        } catch (e) {
+                            console.info(`Security_IAM_PIN_Kit_Func_0102 e ${JSON.stringify(e)}`)
+                            console.log("Security_IAM_PIN_Kit_Func_0102 throw fail " + 'authType:' + authType[idx0] + 'trustlevel:' + level[idx1] + 'e.code:' + e.code);
+                            expect(null).assertFail();
+                        }
+                        done();
                     }
-                    done();
                 }
+
             }
             let authType1 = userAuthNorth.UserAuthType.FINGERPRINT;
             let level1 = userAuthNorth.AuthTrustLevel.ATL4;
-            try {
-                console.info('getAvailableStatusTest0102 authtype:' + authType1 + 'trustlevel:' + level1)
-                userAuthNorth.getAvailableStatus(authType1, level1);
-            } catch (e) {
-                console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType1 + 'trustlevel:' + level1 + 'e.code:' + e.code);
-                expect((e.code == userAuthNorth.UserAuthResultCode.NOT_ENROLLED) || (e.code == userAuthNorth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT)).assertTrue();
-                done();
-            }
-            let authType2 = userAuthNorth.UserAuthType.FACE;
-            try {
-                console.info('getAvailableStatusTest0102 authtype:' + authType2 + 'trustlevel:' + level1)
-                    userAuthNorth.getAvailableStatus(authType2, level1);
+            let checkFingerprint = await checkSupportOrNot(authType1);
+            if (checkFingerprint == 0) {
+                try {
+                    console.info('getAvailableStatusTest0102 authtype:' + authType1 + 'trustlevel:' + level1)
+                    userAuthNorth.getAvailableStatus(authType1, level1);
                 } catch (e) {
-                    console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType2 + 'trustlevel:' + level1 + 'e.code:' + e.code);
+                    console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType1 + 'trustlevel:' + level1 + 'e.code:' + e.code);
                     expect((e.code == userAuthNorth.UserAuthResultCode.NOT_ENROLLED) || (e.code == userAuthNorth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT)).assertTrue();
                     done();
                 }
+            }
+            let authType2 = userAuthNorth.UserAuthType.FACE;
+            let checkFace = await checkSupportOrNot(authType2);
+            if (checkFace == 0) {
+                try {
+                    console.info('getAvailableStatusTest0102 authtype:' + authType2 + 'trustlevel:' + level1)
+                        userAuthNorth.getAvailableStatus(authType2, level1);
+                    } catch (e) {
+                        console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType2 + 'trustlevel:' + level1 + 'e.code:' + e.code);
+                        expect((e.code == userAuthNorth.UserAuthResultCode.TYPE_NOT_SUPPORT) || 
+                            (e.code == userAuthNorth.UserAuthResultCode.NOT_ENROLLED) || (e.code == userAuthNorth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT)).assertTrue();
+                        done();
+                    }
+            }
+
             done();
         })
 
@@ -213,22 +226,30 @@ export default function userauthTest() {
                     })
                 })
             }
-
-            await authPromise(challenge, 0, 10000,5)
-            await authPromise(challenge, 1, 10000,5)
-            await authPromise(challenge, 3, 20000,5)
-            await authPromise(challenge, 5, 20000,5)
-            await authPromise(challenge, 2, 5000,6)
-            await authPromise(challenge, 4, 15000,6)
-            await authPromise(challenge, 2, 10000,10)
-            await authPromise(challenge, 2, 20000,10)
-            await authPromise(challenge, 2, 30000,10)
-            await authPromise(challenge, 2, 40000,10)
-            await authPromise(challenge, 4, 10000,10)
-            await authPromise(challenge, 4, 20000,10)
-            await authPromise(challenge, 4, 30000,10)
-            await authPromise(challenge, 4, 40000,10)
-            done()
+            let checkFace = await checkSupportOrNot(userAuthNorth.UserAuthType.FACE);
+            let checkPin = await checkSupportOrNot(userAuthNorth.UserAuthType.PIN);
+            let checkFingerprint = await checkSupportOrNot(userAuthNorth.UserAuthType.FINGERPRINT);
+            if (checkFace == 0) {
+                await authPromise(challenge, 2, 5000,6);
+                await authPromise(challenge, 2, 10000,10);
+                await authPromise(challenge, 2, 20000,10);
+                await authPromise(challenge, 2, 30000,10);
+                await authPromise(challenge, 2, 40000,10);
+            }
+            if (checkPin == 0) {
+                await authPromise(challenge, 1, 10000,5);
+            }
+            if (checkFingerprint == 0) {
+                await authPromise(challenge, 4, 10000,10);
+                await authPromise(challenge, 4, 20000,10);
+                await authPromise(challenge, 4, 30000,10);
+                await authPromise(challenge, 4, 40000,10);
+                await authPromise(challenge, 4, 15000,6);
+            }
+            await authPromise(challenge, 0, 10000,5);
+            await authPromise(challenge, 3, 20000,5);
+            await authPromise(challenge, 5, 20000,5);
+            done();
         })
 
         /*

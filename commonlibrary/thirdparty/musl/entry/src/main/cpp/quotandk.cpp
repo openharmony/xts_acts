@@ -25,6 +25,7 @@ static napi_value Quotactl(napi_env env, napi_callback_info info)
 {
     int cmd = QCMD(Q_GETQUOTA, USRQUOTA);
     struct dqblk strinfo = {PARAM_0};
+    //Test syscall encapsulation interface
     int ret = quotactl(cmd, "/dev", getuid(), (char *)(&strinfo));
     napi_value result;
     napi_create_int32(env, ret, &result);

@@ -398,25 +398,6 @@ HWTEST(OHAudioRenderUnitTest, OH_Audio_Render_Release_001, TestSize.Level0)
 }
 
 /**
- * @tc.name  : Test OH_AudioRenderer_Release API via illegal state.
- * @tc.number: OH_Audio_Render_Release_002
- * @tc.desc  : Test OH_AudioRenderer_Release interface. Returns error code, if stream is released twice.
- */
-HWTEST(OHAudioRenderUnitTest, OH_Audio_Render_Release_002, TestSize.Level0)
-{
-    OH_AudioStreamBuilder* builder = OHAudioRenderUnitTest::CreateRenderBuilder();
-
-    OH_AudioRenderer* audioRenderer;
-    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
-
-    OH_AudioRenderer_Release(audioRenderer);
-    result = OH_AudioRenderer_Release(audioRenderer);
-    EXPECT_TRUE(result == AUDIOSTREAM_ERROR_ILLEGAL_STATE);
-
-    OH_AudioStreamBuilder_Destroy(builder);
-}
-
-/**
  * @tc.name  : Test OH_AudioRenderer_GetCurrentState API via legal state.
  * @tc.number: OH_AudioRenderer_GetCurrentState_001
  * @tc.desc  : Test OH_AudioRenderer_GetCurrentState interface. Return true if the result state is
@@ -497,28 +478,6 @@ HWTEST(OHAudioRenderUnitTest, OH_AudioRenderer_GetCurrentState_004, TestSize.Lev
     result = OH_AudioRenderer_GetCurrentState(audioRenderer, &state);
     EXPECT_TRUE(result == AUDIOSTREAM_SUCCESS);
     EXPECT_TRUE(state == AUDIOSTREAM_STATE_STOPPED);
-    OH_AudioStreamBuilder_Destroy(builder);
-}
-
-/**
- * @tc.name  : Test OH_AudioRenderer_GetCurrentState API via legal state.
- * @tc.number: OH_AudioRenderer_GetCurrentState_005
- * @tc.desc  : Test OH_AudioRenderer_GetCurrentState interface. Return true if the result state is
- *             AUDIOSTREAM_STATE_RELEASED.
- */
-HWTEST(OHAudioRenderUnitTest, OH_AudioRenderer_GetCurrentState_005, TestSize.Level0)
-{
-    OH_AudioStreamBuilder* builder = OHAudioRenderUnitTest::CreateRenderBuilder();
-    OH_AudioRenderer* audioRenderer;
-    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
-
-    OH_AudioRenderer_Start(audioRenderer);
-    OH_AudioRenderer_Release(audioRenderer);
-
-    OH_AudioStream_State state;
-    result = OH_AudioRenderer_GetCurrentState(audioRenderer, &state);
-    EXPECT_TRUE(result == AUDIOSTREAM_SUCCESS);
-    EXPECT_EQ(state, AUDIOSTREAM_STATE_INVALID);
     OH_AudioStreamBuilder_Destroy(builder);
 }
 

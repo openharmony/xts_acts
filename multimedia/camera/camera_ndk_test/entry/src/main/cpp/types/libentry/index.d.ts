@@ -311,6 +311,8 @@ export const oHCameraInputOpenSecureCamera: (index:number) => secureCamera;
 
 export const oHCameraManagerSetSceneMode: (index:number) => number;
 
+export const oHCameraManagerGetSupportedCameraInfos: (index:number) => Array<cameraInfo>;
+
 export const oHCaptureSessionRegisterCallbackOn: (index:number) => number;
 
 export const oHCaptureSessionUnregisterCallbackOff: (index:number) => number;
@@ -440,3 +442,5 @@ export const sessionUnregisterAutoDeviceSwitchStatusChange: (index:number) => nu
 export const cameraManagerRegisterFoldStatusChange: (index:number) => number;
  
 export const cameraManagerUnregisterFoldStatusChange: (index:number) => number;
+
+export const sessionSetQualityPrioritization: (index:number) => number;

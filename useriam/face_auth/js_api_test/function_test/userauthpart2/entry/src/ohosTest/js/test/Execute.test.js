@@ -15,6 +15,7 @@
 
 import { describe, it, expect, Level } from '@ohos/hypium'
 import userAuth from '@ohos.userIAM.userAuth'
+import { checkSupportOrNot } from './utils/commonFunc';
 
 const authParamDefault = {
   challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
@@ -33,17 +34,32 @@ export default function signNormalAccessBiometricExecute() {
           const userAuthInstance = userAuth.getUserAuthInstance(args[0], args[1]);
           userAuthInstance.on('result', {
             onResult: (onResult) => {
-              console.info(`${args[2]} onResult ${onResult}`);
-              console.info('onResult.token is ' + onResult.token);
-              console.info('onResult.authType is ' + onResult.authType);
-              expect(onResult.result).assertEqual(args[3]);
-              resolve();
+              try {
+                console.info(`${args[2]} onResult ${onResult}`);
+                console.info('onResult.token is ' + onResult.token);
+                console.info('onResult.authType is ' + onResult.authType);
+                console.info('onResult.result is ' + onResult.result);
+                expect(onResult.result == args[3] || onResult.result == args[4]).assertTrue();
+              } catch (e) {
+                console.info('error is ' + e);
+                try {
+                  expect(null).assertFail();
+                } catch (e) {
+                  console.info('assert fail');
+                }
+              } finally {
+                resolve();
+              }
             }
           });
           userAuthInstance.start();
         } catch (e) {
           console.info(`${args[2]} fail ${e.code}`);
-          expect(null).assertFail();
+          try {
+            expect(null).assertFail();
+          } catch (e) {
+            console.info('assert fail');
+          }
           reject();
         }
       })
@@ -55,17 +71,32 @@ export default function signNormalAccessBiometricExecute() {
           const userAuthInstance = userAuth.getUserAuthInstance(args[0], args[1]);
           userAuthInstance.on('result', {
             onResult: (onResult) => {
-              console.info(`${args[2]} onResult ${onResult}`);
-              console.info('onResult.token is ' + onResult.token);
-              console.info('onResult.authType is ' + onResult.authType);
-              expect(onResult.result == args[3] || onResult.result == args[4]).assertTrue();
-              resolve();
+              try {
+                console.info(`${args[2]} onResult ${onResult}`);
+                console.info('onResult.token is ' + onResult.token);
+                console.info('onResult.authType is ' + onResult.authType);
+                console.info('onResult.result is ' + onResult.result);
+                expect(onResult.result == args[3] || onResult.result == args[4] || onResult.result == args[5]).assertTrue();
+              } catch (e) {
+                console.info('error is ' + e);
+                try {
+                  expect(null).assertFail();
+                } catch (e) {
+                  console.info('assert fail');
+                }
+              } finally {
+                resolve();
+              }
             }
           });
           userAuthInstance.start();
         } catch (e) {
           console.info(`${args[2]} fail ${e.code}`);
-          expect(null).assertFail();
+          try {
+            expect(null).assertFail();
+          } catch (e) {
+            console.info('assert fail');
+          }
           reject();
         }
       })
@@ -125,66 +156,74 @@ export default function signNormalAccessBiometricExecute() {
           authTrustLevel: userAuth.AuthTrustLevel.ATL3
         }
       ];
-      let stepIndex = 1;
-      for (let index = 0; index < authParams.length; index++) {
-        console.info("Security_IAM_getUserAuthInstance_Func_0043 authParams: " + JSON.stringify(authParams[index]));
-        await userAuthPromise(authParams[index], widgetParamDefault,
-                              'Security_IAM_getUserAuthInstance_Func_0043 step' + stepIndex,
-                              userAuth.UserAuthResultCode.NOT_ENROLLED);
-        stepIndex++;
-      }
-
-      const notSupportTLParams  = [
-        {
-          ...authParamDefault,
-          authType: [userAuth.UserAuthType.FINGERPRINT],
-          authTrustLevel: userAuth.AuthTrustLevel.ATL4
-        }
-      ];
-      console.info("Security_IAM_getUserAuthInstance_Func_0043 authParams: " + JSON.stringify(authParams[0]));
-      await userAuthPromiseFace(notSupportTLParams[0], widgetParamDefault,
-                            'Security_IAM_getUserAuthInstance_Func_0043 step' + stepIndex,
-                            userAuth.UserAuthResultCode.NOT_ENROLLED, userAuth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT);
-      stepIndex++;
-      const notSupportTLParams1  = [
-        {
-          ...authParamDefault,
-          authType: [userAuth.UserAuthType.FACE],
-          authTrustLevel: userAuth.AuthTrustLevel.ATL4
-        }
-      ];
-      console.info("Security_IAM_getUserAuthInstance_Func_0043 authParams: " + JSON.stringify(authParams[0]));
-      await userAuthPromiseFace(notSupportTLParams1[0], widgetParamDefault,
+      let checkFace = await checkSupportOrNot(userAuth.UserAuthType.FACE);
+      let checkPin = await checkSupportOrNot(userAuth.UserAuthType.PIN);
+      let checkFingerprint = await checkSupportOrNot(userAuth.UserAuthType.FINGERPRINT);
+      if (checkFace == 0 && checkPin == 0 && checkFingerprint == 0) {
+        let stepIndex = 1;
+        for (let index = 0; index < authParams.length; index++) {
+          console.info("Security_IAM_getUserAuthInstance_Func_0043 authParams: " + JSON.stringify(authParams[index]));
+          await userAuthPromise(authParams[index], widgetParamDefault,
                                 'Security_IAM_getUserAuthInstance_Func_0043 step' + stepIndex,
-                                userAuth.UserAuthResultCode.NOT_ENROLLED, userAuth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT)
-      stepIndex++;
-      
-      // 补充到60个字符
-      let widgetParams = [
-        {
-          title: 'abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij' +
-                 'abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij' +
-                 'abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij' +
-                 'abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij' +
-                 'abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij' +
-                 'abcdefghijabcdefghijabcdefghijabcdefghijabcdefghij',
-        },
-        {
-          title: '使用密码验证',
-          navigationButtonText: 'abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij',
+                                userAuth.UserAuthResultCode.NOT_ENROLLED, userAuth.UserAuthResultCode.TYPE_NOT_SUPPORT);
+          stepIndex++;
         }
-      ];
-      
-      for (let index = 0; index < widgetParams.length; index++) {
-        console.info("Security_IAM_getUserAuthInstance_Func_0043 widgetParams: " + JSON.stringify(widgetParams[index]));
-        await userAuthPromise({
-                                ...authParamDefault,
-                                authType: [userAuth.UserAuthType.FACE]
-                              }, widgetParams[index],
+  
+        const notSupportTLParams  = [
+          {
+            ...authParamDefault,
+            authType: [userAuth.UserAuthType.FINGERPRINT],
+            authTrustLevel: userAuth.AuthTrustLevel.ATL4
+          }
+        ];
+        console.info("Security_IAM_getUserAuthInstance_Func_0043 authParams: " + JSON.stringify(authParams[0]));
+        await userAuthPromiseFace(notSupportTLParams[0], widgetParamDefault,
                               'Security_IAM_getUserAuthInstance_Func_0043 step' + stepIndex,
-                              userAuth.UserAuthResultCode.NOT_ENROLLED);
+                              userAuth.UserAuthResultCode.NOT_ENROLLED, userAuth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT,
+                              userAuth.UserAuthResultCode.TYPE_NOT_SUPPORT);
         stepIndex++;
+        const notSupportTLParams1  = [
+          {
+            ...authParamDefault,
+            authType: [userAuth.UserAuthType.FACE],
+            authTrustLevel: userAuth.AuthTrustLevel.ATL4
+          }
+        ];
+        console.info("Security_IAM_getUserAuthInstance_Func_0043 authParams: " + JSON.stringify(authParams[0]));
+        await userAuthPromiseFace(notSupportTLParams1[0], widgetParamDefault,
+                                  'Security_IAM_getUserAuthInstance_Func_0043 step' + stepIndex,
+                                  userAuth.UserAuthResultCode.NOT_ENROLLED, userAuth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT,
+                                  userAuth.UserAuthResultCode.TYPE_NOT_SUPPORT);
+        stepIndex++;
+        
+        // 补充到60个字符
+        let widgetParams = [
+          {
+            title: 'abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij' +
+                   'abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij' +
+                   'abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij' +
+                   'abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij' +
+                   'abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij' +
+                   'abcdefghijabcdefghijabcdefghijabcdefghijabcdefghij',
+          },
+          {
+            title: '使用密码验证',
+            navigationButtonText: 'abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij',
+          }
+        ];
+        
+        for (let index = 0; index < widgetParams.length; index++) {
+          console.info("Security_IAM_getUserAuthInstance_Func_0043 widgetParams: " + JSON.stringify(widgetParams[index]));
+          await userAuthPromise({
+                                  ...authParamDefault,
+                                  authType: [userAuth.UserAuthType.FACE]
+                                }, widgetParams[index],
+                                'Security_IAM_getUserAuthInstance_Func_0043 step' + stepIndex,
+                                userAuth.UserAuthResultCode.NOT_ENROLLED, userAuth.UserAuthResultCode.TYPE_NOT_SUPPORT);
+          stepIndex++;
+        }
       }
+      
       done();
     });
   

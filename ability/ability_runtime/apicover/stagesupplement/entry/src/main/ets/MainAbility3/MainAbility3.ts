@@ -21,7 +21,9 @@ import window from '@ohos.window';
 
 let printLog3 = "Stage:MainAbility3:";
 let listPush3 = "Stage_MainAbility3_";
-
+function sleep(ms: number) {
+  return new Promise<void>(resolve => setTimeout(resolve, ms));
+}
 export default class MainAbility3 extends Ability {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info(printLog3 + "onCreate");
@@ -51,12 +53,13 @@ export default class MainAbility3 extends Ability {
     }, 2000);
   }
 
-  onDestroy() {
+  async onDestroy(): Promise<void>{
     console.info(printLog3 + "onDestroy");
 
     commonEvent.publish(listPush3 + "onDestroy", (err) => {
       console.info(printLog3 + listPush3 + "onDestroy");
     });
+    await sleep(1000);
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {

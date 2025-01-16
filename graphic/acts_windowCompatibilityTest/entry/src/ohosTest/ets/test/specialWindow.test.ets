@@ -30,27 +30,58 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
     let subWinWithOPs: window.Window | void;
 
     beforeEach(async ()=>{
+      let msg = 'special_window_test';
+      console.log(msg +  ' beforeEach start!!!');
       if(windowClass !== null && windowClass !== undefined){
-        await (windowClass as window.Window).destroyWindow();
+        await (windowClass as window.Window).destroyWindow().then(() => {
+          console.info(msg + 'Succeeded in destroying the window.');
+        }).catch((err: BusinessError) => {
+          console.error(msg + `Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
       }
       if(subWin !== null && subWin !== undefined){
-        await (subWin as window.Window).destroyWindow();
+        await (subWin as window.Window).destroyWindow().then(() => {
+          console.info(msg + ' Succeeded in destroying the window.');
+        }).catch((err: BusinessError) => {
+          console.error(msg + `Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
       }
       if(subWinFirst !== null && subWinFirst !== undefined){
-        await (subWinFirst as window.Window).destroyWindow();
+        await (subWinFirst as window.Window).destroyWindow().then(() => {
+          console.info(msg + ' Succeeded in destroying the window.');
+        }).catch((err: BusinessError) => {
+          console.error(msg + `Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
       }
       if(subWinSecond !== null && subWinSecond !== undefined){
-        await (subWinSecond as window.Window).destroyWindow();
+        await (subWinSecond as window.Window).destroyWindow().then(() => {
+          console.info(msg + ' Succeeded in destroying the window.');
+        }).catch((err: BusinessError) => {
+          console.error(msg + `Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
       }
       if(subWinThird !== null && subWinThird !== undefined){
-        await (subWinThird as window.Window).destroyWindow();
+        await (subWinThird as window.Window).destroyWindow().then(() => {
+          console.info(msg + ' Succeeded in destroying the window.');
+        }).catch((err: BusinessError) => {
+          console.error(msg + `Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
       }
       if(tempWnd !== null && tempWnd !== undefined){
-        await (tempWnd as window.Window).destroyWindow();
+        await (tempWnd as window.Window).destroyWindow().then(() => {
+          console.info(msg + ' Succeeded in destroying the window.');
+        }).catch((err: BusinessError) => {
+          console.error(msg + `Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
       }
       if(subWinWithOPs !== null && subWinWithOPs !== undefined){
-        await (subWinWithOPs as window.Window).destroyWindow();
+        await (subWinWithOPs as window.Window).destroyWindow().then(() => {
+          console.info(msg + ' Succeeded in destroying the window.');
+        }).catch((err: BusinessError) => {
+          console.error(msg + `Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
       }
+      console.log(msg +  ' beforeEach end!!!')
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4620

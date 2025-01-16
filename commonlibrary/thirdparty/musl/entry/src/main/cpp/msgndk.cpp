@@ -14,9 +14,11 @@
  */
 
 #include "napi/native_api.h"
+#include <cerrno>
 #include <cstring>
 #include <js_native_api_types.h>
 #include <sys/msg.h>
+#include <hilog/log.h>
 
 #define PARAM_1 1
 #define NO_ERR 0
@@ -31,9 +33,16 @@
 #define MMAPERROR (-98)
 #define TEST_SIZE 4096
 #define FLAG 0666
+
+#undef LOG_DOMAIN
+#undef LOG_TAG
+#define LOG_DOMAIN 0xFEFE
+#define LOG_TAG "MUSL_LIBCTEST"
+
 static napi_value Msgget(napi_env env, napi_callback_info info)
 {
     int msqid;
+    //Test syscall encapsulation interface
     msqid = msgget(IPC_PRIVATE, FLAG);
     int retVal = FAIL;
     if (msqid < PARAM_0) {
@@ -51,7 +60,14 @@ static napi_value Msgsnd(napi_env env, napi_callback_info info)
     int msqid;
     struct msgbuf buf;
     int sendlength;
+    napi_value result = nullptr;
+    errno = 0;
     msqid = msgget(IPC_PRIVATE, FLAG);
+    if (msqid == FAIL) {
+        OH_LOG_INFO(LOG_APP, "Msgsnd msgget msqid: %{public}d errno: %{public}d", msqid, errno);
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
     buf.mtype = PARAM_1;
     strcpy(buf.mtext, "AA");
     sendlength = sizeof(struct msgbuf) - sizeof(long);
@@ -62,7 +78,6 @@ static napi_value Msgsnd(napi_env env, napi_callback_info info)
     } else {
         retVal = SUCCESS;
     }
-    napi_value result = nullptr;
     napi_create_int32(env, retVal, &result);
     return result;
 }
@@ -74,7 +89,14 @@ typedef struct {
 static napi_value Msgrcv(napi_env env, napi_callback_info info)
 {
     int msqid;
+    napi_value result = nullptr;
+    errno = 0;
     msqid = msgget(IPC_PRIVATE, FLAG);
+    if (msqid == FAIL) {
+        OH_LOG_INFO(LOG_APP, "Msgrcv msgget msqid: %{public}d errno: %{public}d", msqid, errno);
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
     MSG_DATA msginfo;
     bzero(&msginfo, sizeof(msginfo));
     int ret = msgrcv(msqid, &msginfo, sizeof(msginfo.message), PARAM_5, IPC_NOWAIT);
@@ -84,7 +106,6 @@ static napi_value Msgrcv(napi_env env, napi_callback_info info)
     } else {
         retVal = SUCCESS;
     }
-    napi_value result = nullptr;
     napi_create_int32(env, retVal, &result);
     return result;
 }
@@ -96,8 +117,14 @@ static napi_value Msgctl(napi_env env, napi_callback_info info)
     struct msgbuf buf;
     int ret;
     int sendlength;
+    napi_value result = nullptr;
+    errno = 0;
     msqid = msgget(IPC_PRIVATE, FLAG);
-
+    if (msqid == FAIL) {
+        OH_LOG_INFO(LOG_APP, "Msgctl msgget msqid: %{public}d errno: %{public}d", msqid, errno);
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
     buf.mtype = PARAM_1;
     strcpy(buf.mtext, "AS");
     sendlength = sizeof(struct msgbuf) - sizeof(long);
@@ -113,7 +140,6 @@ static napi_value Msgctl(napi_env env, napi_callback_info info)
     } else {
         retVal = SUCCESS;
     }
-    napi_value result = nullptr;
     napi_create_int32(env, retVal, &result);
     return result;
 }

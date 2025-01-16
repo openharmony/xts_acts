@@ -24,12 +24,12 @@ async function panGesture(id: string, x1: number, y1: number, x2: number, y2: nu
   let refresh = await driver.findComponent(ON.id(id));
   let rect = await refresh.getBounds();
   const p1: Point = {
-    x: rect.left + x1,
-    y: rect.top + y1
+    x: Math.round(rect.left + vp2px(x1)),
+    y: Math.round(rect.top + vp2px(y1))
   };
   const p2: Point = {
-    x: rect.left + x2,
-    y: rect.top + y2
+    x: Math.round(rect.left + vp2px(x2)),
+    y: Math.round(rect.top + vp2px(y2))
   };
   await driver.fling(p1, p2, 5, 200)
 }
@@ -39,14 +39,14 @@ async function pinchGesture(id: string) {
   let refresh = await driver.findComponent(ON.id(id));
   let rect = await refresh.getBounds();
   let point: PointerMatrix = PointerMatrix.create(2, 4);
-  point.setPoint(0, 0, { x: rect.left + 50, y: rect.top + 50 });
-  point.setPoint(0, 1, { x: rect.left + 40, y: rect.top + 40 });
-  point.setPoint(0, 2, { x: rect.left + 30, y: rect.top + 30 });
-  point.setPoint(0, 3, { x: rect.left + 20, y: rect.top + 20 });
-  point.setPoint(1, 0, { x: rect.left + 60, y: rect.top + 60 });
-  point.setPoint(1, 1, { x: rect.left + 70, y: rect.top + 70 });
-  point.setPoint(1, 2, { x: rect.left + 80, y: rect.top + 80 });
-  point.setPoint(1, 3, { x: rect.left + 90, y: rect.top + 90 });
+  point.setPoint(0, 0, { x: Math.round(rect.left + vp2px(50)), y:Math.round( rect.top + vp2px(50)) });
+  point.setPoint(0, 1, { x: Math.round(rect.left + vp2px(40)), y: Math.round(rect.top + vp2px(40)) });
+  point.setPoint(0, 2, { x: Math.round(rect.left + vp2px(30)), y: Math.round(rect.top + vp2px(30)) });
+  point.setPoint(0, 3, { x: Math.round(rect.left + vp2px(20)), y: Math.round(rect.top + vp2px(20)) });
+  point.setPoint(1, 0, { x: Math.round(rect.left + vp2px(60)), y: Math.round(rect.top + vp2px(60)) });
+  point.setPoint(1, 1, { x: Math.round(rect.left + vp2px(70)), y: Math.round(rect.top + vp2px(70)) });
+  point.setPoint(1, 2, { x: Math.round(rect.left + vp2px(80)), y: Math.round(rect.top + vp2px(80)) });
+  point.setPoint(1, 3, { x: Math.round(rect.left + vp2px(90)), y: Math.round(rect.top + vp2px(90)) });
   await driver.injectMultiPointerAction(point, 200);
 }
 
@@ -55,14 +55,14 @@ async function rotationGesture(id: string) {
   let refresh = await driver.findComponent(ON.id(id));
   let rect = await refresh.getBounds();
   let point: PointerMatrix = PointerMatrix.create(2, 4);
-  point.setPoint(0, 0, { x: rect.left + 50, y: rect.top + 50 });
-  point.setPoint(0, 1, { x: rect.left + 50, y: rect.top + 40 });
-  point.setPoint(0, 2, { x: rect.left + 50, y: rect.top + 30 });
-  point.setPoint(0, 3, { x: rect.left + 50, y: rect.top + 20 });
-  point.setPoint(1, 0, { x: rect.left + 60, y: rect.top + 60 });
-  point.setPoint(1, 1, { x: rect.left + 60, y: rect.top + 70 });
-  point.setPoint(1, 2, { x: rect.left + 60, y: rect.top + 80 });
-  point.setPoint(1, 3, { x: rect.left + 60, y: rect.top + 90 });
+  point.setPoint(0, 0, { x: Math.round(rect.left + vp2px(50)), y: Math.round(rect.top + vp2px(50)) });
+  point.setPoint(0, 1, { x: Math.round(rect.left + vp2px(50)), y: Math.round(rect.top + vp2px(40)) });
+  point.setPoint(0, 2, { x: Math.round(rect.left + vp2px(50)), y: Math.round(rect.top + vp2px(30)) });
+  point.setPoint(0, 3, { x: Math.round(rect.left + vp2px(50)), y: Math.round(rect.top + vp2px(20)) });
+  point.setPoint(1, 0, { x: Math.round(rect.left + vp2px(60)), y: Math.round(rect.top + vp2px(60)) });
+  point.setPoint(1, 1, { x: Math.round(rect.left + vp2px(60)), y: Math.round(rect.top + vp2px(70)) });
+  point.setPoint(1, 2, { x: Math.round(rect.left + vp2px(60)), y: Math.round(rect.top + vp2px(80)) });
+  point.setPoint(1, 3, { x: Math.round(rect.left + vp2px(60)), y: Math.round(rect.top + vp2px(90)) });
   await driver.injectMultiPointerAction(point, 200);
 }
 

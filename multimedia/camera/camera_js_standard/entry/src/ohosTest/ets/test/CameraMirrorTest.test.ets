@@ -589,7 +589,14 @@ export default function CameraMirrorTest() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100', 2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100--------------");
-
+      let isSupported: boolean = false;
+      isSupported = mPhotoOutput.isMovingPhotoSupported()
+      if (isSupported == false) {
+        console.info('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100 not Support MovingPhoto');
+        expect(true).assertTrue();
+        done();
+        return;
+      }
       if (mCameraNum == 0) {
         console.info(TAG +
           "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100 FAILED with NoCamera");

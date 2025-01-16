@@ -78,6 +78,8 @@ export default function stepperAction027() {
       await button3.click();
       await driver.delayMs(1000);
       await driver.assertComponentExist(ON.text('Page One'));
+	  await driver.setDisplayRotation(DisplayRotation.ROTATION_0);
+	  await driver.delayMs(500);
       done();
     });
   })

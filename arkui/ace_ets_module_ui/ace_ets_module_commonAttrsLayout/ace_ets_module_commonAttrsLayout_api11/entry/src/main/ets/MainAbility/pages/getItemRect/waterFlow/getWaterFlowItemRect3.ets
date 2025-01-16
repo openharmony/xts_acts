@@ -213,7 +213,7 @@ struct getWaterFlowItemRect3 {
       .rowsGap(5)
       .backgroundColor(0xFAEEE0)
       .width('100%')
-      .height(500)
+      .height('50%')
 
       Button('点击获取信息').onClick((event: ClickEvent) => {
         this.x = this.scroller.getItemRect(this.index).x

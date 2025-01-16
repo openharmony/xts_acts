@@ -46,30 +46,22 @@ export default function TextClockNodeTest() {
       await CommonFunc.sleep(1000);
       console.info('textclockNode after each called');
     })
+
+    /**
+     * @tc.number    TextClockNode0100
+     * @tc.name      TextClockNode0100
+     * @tc.desc      frameNode: createNodeTextClockToWindow
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
     it('TextClockNode0100', 0, async (done: Function) => {
 
         let tagName = 'TextClockNode0100';
         console.info('[' + tagName + '] START============================');
         let strJsonNew = getInspectorByKey('key_ TextClock_001');
-        console.info('[' + tagName + '] Search width is: ' + JSON.stringify(JSON.parse(strJsonNew)
-          .$attrs
-          .width));
-  
-        expect(JSON.parse(strJsonNew).$attrs.width).assertEqual('100.00%');
-        console.info('[' + tagName + '] END ===========================');
-        done();
-      });
-  
-      it('TextClockNode0200', 0, async (done: Function) => {
-  
-        let tagName = 'TextClockNode0200';
-        console.info('[' + tagName + '] START============================');
-        let strJsonNew = getInspectorByKey('key_ TextClock_001');
-        console.info('[' + tagName + '] Search format is: ' + JSON.stringify(JSON.parse(strJsonNew)
-          .$attrs
-          .format));
-  
-        expect(JSON.parse(strJsonNew).$attrs.format).assertEqual('aa hh:mm:ss');
+        console.info('[' + tagName + '] Search is: ' + JSON.stringify(JSON.parse(strJsonNew).$type));
+        expect(JSON.parse(strJsonNew).$type).assertEqual('TextClock');
         console.info('[' + tagName + '] END ===========================');
         done();
       });

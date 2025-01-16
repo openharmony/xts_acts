@@ -14,25 +14,40 @@
  */
 
 #include "napi/native_api.h"
+#include <cerrno>
 #include <fcntl.h>
 #include <js_native_api_types.h>
 #include <sys/swap.h>
 #include <unistd.h>
+#include <hilog/log.h>
 
 #define INIT (-1)
+#define FAIL (-1)
 #define SUCCESS 0
 #define PARAM_1 1
 #define MPARAM_1 (-1)
 #define PARAM_0777 0777
 
+#undef LOG_DOMAIN
+#undef LOG_TAG
+#define LOG_DOMAIN 0xFEFE
+#define LOG_TAG "MUSL_LIBCTEST"
+
 static napi_value SwapOn(napi_env env, napi_callback_info info)
 {
     int flags = SWAP_FLAG_PREFER, backParam = PARAM_1;
+    napi_value result = nullptr;
     const char *path = "/data/storage/el2/base/files/Fzl.txt";
+    errno = 0;
     int fd = open(path, O_CREAT, PARAM_0777);
+    if (fd == FAIL) {
+        OH_LOG_INFO(LOG_APP, "SwapOn open failed: fd %{public}d errno : %{public}d", fd, errno);
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
+    // Test syscall encapsulation interface
     backParam = swapon(path, flags);
     close(fd);
-    napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
 }
@@ -40,14 +55,21 @@ static napi_value SwapOn(napi_env env, napi_callback_info info)
 static napi_value SwapOff(napi_env env, napi_callback_info info)
 {
     int flags = SWAP_FLAG_PREFER, checkParam, backParam = PARAM_1;
+    napi_value result = nullptr;
     const char *path = "/data/storage/el2/base/files/Fzl.txt";
+    errno = 0;
     int fd = open(path, O_CREAT, PARAM_0777);
+    if (fd == FAIL) {
+        OH_LOG_INFO(LOG_APP, "SwapOff open failed: fd %{public}d errno : %{public}d", fd, errno);
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
+    // Test syscall encapsulation interface
     checkParam = swapon(path, flags);
     if (checkParam != MPARAM_1) {
         backParam = swapoff(path);
     }
     close(fd);
-    napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
 }

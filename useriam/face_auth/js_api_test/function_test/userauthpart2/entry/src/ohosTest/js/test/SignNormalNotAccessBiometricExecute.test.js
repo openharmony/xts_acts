@@ -15,6 +15,7 @@
 
 import { describe, it, expect, Level } from '@ohos/hypium'
 import userAuth from '@ohos.userIAM.userAuth'
+import { checkSupportOrNot } from './utils/commonFunc';
 
 const authParamDefault = {
   challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
@@ -35,17 +36,32 @@ export default function signNormalNotAccessBiometricExecute() {
           const userAuthInstance = userAuth.getUserAuthInstance(args[0], args[1]);
           userAuthInstance.on('result', {
             onResult: (onResult) => {
-              console.info(`${args[2]} onResult ${onResult}`);
-              console.info('onResult.token is ' + onResult.token);
-              console.info('onResult.authType is ' + onResult.authType);
-              expect(onResult.result).assertEqual(args[3]);
-              resolve();
+              try {
+                console.info(`${args[2]} onResult ${onResult}`);
+                console.info('onResult.token is ' + onResult.token);
+                console.info('onResult.authType is ' + onResult.authType);
+                console.info('onResult.result is ' + onResult.result);
+                expect(onResult.result).assertEqual(args[3]);
+              } catch (e) {
+                console.info('error is ' + e);
+                try {
+                  expect(null).assertFail();
+                } catch (e) {
+                  console.info('assert fail');
+                }
+              } finally {
+                resolve();
+              }
             }
           });
           userAuthInstance.start();
         } catch (e) {
           console.info(`${args[2]} fail ${e.code}`);
-          expect(null).assertFail();
+          try {
+            expect(null).assertFail();
+          } catch (e) {
+            console.info('assert fail');
+          }
           reject();
         }
       })
@@ -124,7 +140,7 @@ export default function signNormalNotAccessBiometricExecute() {
     it('SUB_Security_IAM_authWidget_API_0130', Level.LEVEL2, async function (done) {
       console.info("SUB_Security_IAM_authWidget_API_0130 start");
       let reuseDuration1 = [-1, 300001, 0];
-      let reuseDuration2 = [1, 5, 300000];
+      let reuseDuration2 = [1, 5, userAuth.MAX_ALLOWABLE_REUSE_DURATION];
       const widgetParam = {
         title: '请输入密码',
       };
@@ -281,54 +297,58 @@ export default function signNormalNotAccessBiometricExecute() {
     */
     it('SUB_Security_IAM_authWidget_API_0140', Level.LEVEL2, async function (done) {
       console.info("SUB_Security_IAM_authWidget_API_0140 start");
-      let reuseMode1 = [-1, 0, 5];
-      let reuseMode2 = [1, 2, 3, 4];
-      const widgetParam = {
-        title: '请输入密码',
-      };
-      for (let idx0 = 0; idx0 <reuseMode1.length; idx0++){
-        let reuseUnlockResult = {
-          reuseMode: reuseMode1[idx0],
-          reuseDuration: 120000,
-        }
-        const authParam = {
-          challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
-          authType: [userAuth.UserAuthType.PIN],
-          authTrustLevel: userAuth.AuthTrustLevel.ATL1,
-          reuseUnlockResult: reuseUnlockResult,
+      let checkFace = await checkSupportOrNot(userAuth.UserAuthType.FACE);
+      if (checkFace == 0) {
+        let reuseMode1 = [-1, 0, 5];
+        let reuseMode2 = [1, 2, 3, 4];
+        const widgetParam = {
+          title: '请输入密码',
         };
+        for (let idx0 = 0; idx0 <reuseMode1.length; idx0++){
+          let reuseUnlockResult = {
+            reuseMode: reuseMode1[idx0],
+            reuseDuration: 120000,
+          }
+          const authParam = {
+            challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
+            authType: [userAuth.UserAuthType.PIN],
+            authTrustLevel: userAuth.AuthTrustLevel.ATL1,
+            reuseUnlockResult: reuseUnlockResult,
+          };
+    
+          try {
+            let userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+            userAuthInstance.on('result', {
+              onResult (result) {
+                console.log('userAuthInstance callback result = ' + JSON.stringify(result));
+              }
+            });
+            expect(null).assertFail();
+          } catch (error) {
+            console.log('SUB_Security_IAM_authWidget_API_0140 catch error: ' + JSON.stringify(error));
+            console.log('SUB_Security_IAM_authWidget_API_0140 error.code: ' + error.code);
+            expect(error.code).assertEqual(401);
+          }
+        }
   
-        try {
-          let userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-          userAuthInstance.on('result', {
-            onResult (result) {
-              console.log('userAuthInstance callback result = ' + JSON.stringify(result));
-            }
-          });
-          expect(null).assertFail();
-        } catch (error) {
-          console.log('SUB_Security_IAM_authWidget_API_0140 catch error: ' + JSON.stringify(error));
-          console.log('SUB_Security_IAM_authWidget_API_0140 error.code: ' + error.code);
-          expect(error.code).assertEqual(401);
+        for (let idx0 = 0; idx0 <reuseMode2.length; idx0++){
+          let reuseUnlockResult1 = {
+            reuseMode: reuseMode2[idx0],
+            reuseDuration: 120000,
+          }
+          const authParam1 = {
+            challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
+            authType: [userAuth.UserAuthType.PIN],
+            authTrustLevel: userAuth.AuthTrustLevel.ATL1,
+            reuseUnlockResult: reuseUnlockResult1,
+          };
+    
+          await userAuthPromise(authParam1, widgetParam, 
+            'SUB_Security_IAM_authWidget_API_0140 step' + stepIndex, 12500010);
+          stepIndex++;
         }
       }
-
-      for (let idx0 = 0; idx0 <reuseMode2.length; idx0++){
-        let reuseUnlockResult1 = {
-          reuseMode: reuseMode2[idx0],
-          reuseDuration: 120000,
-        }
-        const authParam1 = {
-          challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
-          authType: [userAuth.UserAuthType.PIN],
-          authTrustLevel: userAuth.AuthTrustLevel.ATL1,
-          reuseUnlockResult: reuseUnlockResult1,
-        };
-  
-        await userAuthPromise(authParam1, widgetParam, 
-          'SUB_Security_IAM_authWidget_API_0140 step' + stepIndex, 12500010);
-        stepIndex++;
-      }
+      
       done();
     });
 

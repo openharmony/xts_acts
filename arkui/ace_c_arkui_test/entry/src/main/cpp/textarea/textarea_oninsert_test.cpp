@@ -57,6 +57,45 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1* nodeAPI)
     nodeAPI->setAttribute(nodeHandle, NODE_BACKGROUND_COLOR, &background_color_item);
     return nodeHandle;
 }
+static void handleOnWillInsertEvent(
+    ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeEvent* event, ArkUI_NodeHandle nodeHandler)
+{
+    ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_BLUE } };
+    ArkUI_AttributeItem background_color_item = { background_color_value,
+        sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
+    nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+    ArkUI_NumberValue value[1];
+    OH_ArkUI_NodeEvent_GetNumberValue(event, 0, value);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+        "handleOnWillInsertEvent NODE_TEXT_AREA_ON_WILL_INSERT insertOffset: %{public}f", value[PARAM_0].f32);
+    PushBackIntToData(TextAreaOnInsertTest::insertOffset, value[PARAM_0].f32);
+    char insert[PARAM_64];
+    char* insertValue[PARAM_1] = { insert };
+    int32_t bufSize[PARAM_1] = { PARAM_64 };
+    OH_ArkUI_NodeEvent_GetStringValue(event, PARAM_0, insertValue, bufSize);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+        "handleOnWillInsertEvent NODE_TEXT_AREA_ON_WILL_INSERT insertValue: %{public}s", insertValue[PARAM_0]);
+    ArkUI_NumberValue returnValue[] = { { .i32 = true } };
+    OH_ArkUI_NodeEvent_SetReturnNumberValue(event, returnValue, PARAM_1);
+}
+static void handleOnDidInsertEvent(ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeEvent* event, ArkUI_NodeHandle nodeHandler)
+{
+    ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_GREEN } };
+    ArkUI_AttributeItem background_color_item = { background_color_value,
+        sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
+    nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+    ArkUI_NumberValue value[PARAM_1];
+    OH_ArkUI_NodeEvent_GetNumberValue(event, 0, value);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+        "handleOnDidInsertEvent NODE_TEXT_AREA_ON_DID_INSERT insertOffset: %{public}f", value[PARAM_0].f32);
+    PushBackIntToData(TextAreaOnInsertTest::insertOffset, value[PARAM_0].f32);
+    char insert[PARAM_64];
+    char* insertValue[PARAM_1] = { insert };
+    int32_t bufSize[PARAM_1] = { PARAM_64 };
+    OH_ArkUI_NodeEvent_GetStringValue(event, 0, insertValue, bufSize);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+        "handleOnDidInsertEvent NODE_TEXT_AREA_ON_DID_INSERT insertValue: %{public}s", insertValue[PARAM_0]);
+}
 static void OnEventReceive(ArkUI_NodeEvent* event)
 {
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TextAreaOnInsertTest", "OnEventReceive");
@@ -76,22 +115,11 @@ static void OnEventReceive(ArkUI_NodeEvent* event)
     OH_ArkUI_NodeEvent_SetReturnNumberValue(event, return_value, 1);
     switch (eventId) {
         case ON_TEXT_AREA_DID_INSERT_ID: {
-            ArkUI_NumberValue insertValue[] = { { .f32 = 0 } };
-            OH_ArkUI_NodeEvent_GetNumberValue(event, 0, insertValue);
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TextAreaOnInsertTest",
-                "TextAreaOnInsertTest ON_TEXT_AREA_DID_INSERT_ID insertValue: %{public}f", insertValue[PARAM_0].f32);
-            PushBackIntToData(TextAreaOnInsertTest::insertOffset, insertValue[PARAM_0].f32);
-            ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_GREEN } };
-            ArkUI_AttributeItem background_color_item = { background_color_value,
-                sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
-            nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+            handleOnDidInsertEvent(nodeAPI, event, nodeHandler);
             return;
         }
         case ON_TEXT_AREA_WILL_INSERT_ID: {
-            ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_BLUE } };
-            ArkUI_AttributeItem background_color_item = { background_color_value,
-                sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
-            nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+            handleOnWillInsertEvent(nodeAPI, event, nodeHandler);
             return;
         }
         default:

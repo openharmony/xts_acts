@@ -20,6 +20,7 @@
     "description": "$string:module_test_desc",
     "mainElement": "TestAbility",
     "deviceTypes": [
+      "wearable",
       "phone",
       "tablet",
       "2in1"

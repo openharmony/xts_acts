@@ -35,7 +35,7 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
         ArkUI_NodeComponentEvent *result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
         float offset = result->data[0].f32;
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "refreshTest", "offset=%{public}f", offset);
-        if (offset > PARAM_0) {
+        if (offset > PARAM_100) {
             ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_YELLOW } };
             ArkUI_AttributeItem background_color_item = { background_color_value,
                 sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };

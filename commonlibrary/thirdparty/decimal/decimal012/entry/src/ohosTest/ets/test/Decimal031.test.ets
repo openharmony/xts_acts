@@ -107,12 +107,20 @@ function test_dpSd_020 (n: number, dp: number, sd: Number, zs: boolean) {
 function test_dpSd_021 (n: string, dp: number, sd: Number, zs: boolean) {
     expect(sd).assertEqual(new Decimal(n).precision(zs));
 }
+async function Delay(delay: number): Promise<void> {
+  return new Promise((resolve:Function)=>{
+    setTimeout(()=>{
+        resolve('Hello World!');
+    },delay);
+  });
+}
 export default function DecimalTest031() {
     describe("DecimalTest031", () => {
     beforeAll(() => {
         console.info("beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.");
     });
-    beforeEach(() => {
+    beforeEach(async() => {
+        await Delay(1000);
         console.info("beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.");
     });
     afterEach(() => {

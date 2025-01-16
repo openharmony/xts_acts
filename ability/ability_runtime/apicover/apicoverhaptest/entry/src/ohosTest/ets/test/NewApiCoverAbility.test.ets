@@ -222,7 +222,8 @@ export default function NewApiCoverTest() {
       setTimeout(async ()=>{
         console.info("SUB_AA_UpdateConfiguration_0200 ----> start assert." + AppStorage.get<string>("UpdateConfigurationTest_0200"));
         try{
-          expect(AppStorage.get<string>("UpdateConfigurationTest_0200")).assertEqual('English');
+          expect(AppStorage.get<string>("UpdateConfigurationTest_Ability_0200")).assertEqual('English');
+          expect(AppStorage.get<string>("UpdateConfigurationTest_AbilityStage_0200")).assertEqual('English');
         }catch{}
         console.info("SUB_AA_UpdateConfiguration_0200 ----> end assert.");
         await abilityManager.updateConfiguration({language: 'chinese'})
@@ -236,7 +237,8 @@ export default function NewApiCoverTest() {
       setTimeout(()=>{
         console.info("SUB_AA_UpdateConfiguration_0200 ----> start assert." + AppStorage.get<string>("UpdateConfigurationTest_0200"));
         try{
-          expect(AppStorage.get<string>("UpdateConfigurationTest_0200")).assertEqual('chinese');
+          expect(AppStorage.get<string>("UpdateConfigurationTest_Ability_0200")).assertEqual('chinese');
+          expect(AppStorage.get<string>("UpdateConfigurationTest_AbilityStage_0200")).assertEqual('chinese');
         }catch{}
         console.info("SUB_AA_UpdateConfiguration_0200 ----> end assert.");
         console.info("SUB_AA_UpdateConfiguration_0200 ----> set promise to null after all");

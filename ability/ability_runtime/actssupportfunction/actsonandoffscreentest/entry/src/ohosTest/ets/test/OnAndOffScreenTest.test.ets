@@ -168,6 +168,7 @@ export default function OnAndOffScreenTest() {
             setTimeout(async () => {
               commonEventManager.unsubscribe(subscriber, async (err, data) => {
                 console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+                console.log(TAG + "lifeList: " + JSON.stringify(lifeList));
                 expect(JSON.stringify(lifeList)).assertEqual(JSON.stringify(listCheck));
                 expect(status1).assertTrue();
                 done();
@@ -258,6 +259,7 @@ export default function OnAndOffScreenTest() {
             setTimeout(async () => {
               commonEventManager.unsubscribe(subscriber, async (err, data) => {
                 console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+                console.log(TAG + "lifeList: " + JSON.stringify(lifeList));
                 expect(JSON.stringify(lifeList)).assertEqual(JSON.stringify(listCheck));
                 expect(status1).assertTrue();
                 done();
@@ -348,6 +350,7 @@ export default function OnAndOffScreenTest() {
             setTimeout(async () => {
               commonEventManager.unsubscribe(subscriber, async (err, data) => {
                 console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+                console.log(TAG + "lifeList: " + JSON.stringify(lifeList));
                 expect(JSON.stringify(lifeList)).assertEqual(JSON.stringify(listCheck));
                 expect(status1).assertTrue();
                 done();
@@ -432,28 +435,8 @@ export default function OnAndOffScreenTest() {
         commonEventManager.subscribe(subscriber, async (err, data) => {
           console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
 
-          if (data.event == onCreate) {
-            lifeList.push("onCreate");
-          }
-
-          if (data.event == onWindowStageCreate) {
-            lifeList.push("onWindowStageCreate");
-          }
-
-          if (data.event == onForeground) {
-            lifeList.push("onForeground");
-          }
-
           if (data.event == onBackground) {
-            lifeList.push("onBackground");
-          }
-
-          if (data.event == onWindowStageDestroy) {
-            lifeList.push("onWindowStageDestroy");
-          }
-
-          if (data.event == onDestroy) {
-            lifeList.push("onDestroy");
+            lifeList = data.parameters!.lifeList;
           }
 
           if (data.event == onForeground2) {
@@ -476,6 +459,7 @@ export default function OnAndOffScreenTest() {
             setTimeout(async () => {
               commonEventManager.unsubscribe(subscriber, async (err, data) => {
                 console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+                console.log(TAG + "lifeList: " + JSON.stringify(lifeList));
                 expect(JSON.stringify(lifeList)).assertEqual(JSON.stringify(listCheck));
                 expect(status1).assertTrue();
                 done();

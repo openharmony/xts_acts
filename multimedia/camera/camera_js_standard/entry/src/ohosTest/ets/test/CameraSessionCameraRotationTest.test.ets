@@ -189,22 +189,7 @@ export default function CameraSessionCameraRotationTest() {
     console.info('Enter getCameraSupportDevicesArray');
 
     mCameraDevicesArray = mCameraManager.getSupportedCameras();
-    /*
-    mCameraManager.getSupportedCameras(async (err, data) => {
-        console.info(TAG + "Entering getCameraSupportDevicesArray callback");
-        if (!err) {
-            if (data != null || data != undefined) {
-                mCameraDevicesArray = data;
-                console.info(TAG + "Entering getCameraSupportDevicesArray PASSED with CameraDevicesArray is: " + data);
-            } else {
-                console.info(TAG + "Entering getCameraSupportDevicesArray FAILED with CameraDevicesArray is: " + data);
-            }
-        } else {
-            console.info(TAG + "Entering getCameraSupportDevicesArray FAILED : " + err.message);
-        }
-    })
-    await sleep(3000);
-    */
+    
     if (isEmpty(mCameraDevicesArray)) {
       console.info(TAG + "getSupportedCameras FAILED");
       return false;
@@ -290,11 +275,18 @@ export default function CameraSessionCameraRotationTest() {
 
     let cameraOutputCap =
       mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx], mode);
-
+    let ratio = 4 / 3;
+    if (mode == cameraObj.SceneMode.NORMAL_VIDEO) {
+        ratio = 16 / 9;
+    }
     if (!isEmpty(cameraOutputCap)) {
       if (!isEmpty(cameraOutputCap.previewProfiles)) {
         console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);
         for (let i = 0; i < cameraOutputCap.previewProfiles.length; i++) {
+          let currentRatio = cameraOutputCap.previewProfiles[i].size.width / cameraOutputCap.previewProfiles[i].size.height;
+          if (Math.abs(currentRatio - ratio) > 0.01) {
+              continue;
+          }
           mPreviewOutput = mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], surfaceIds);
           if (!isEmpty(mPreviewOutput)) {
             break;
@@ -312,6 +304,10 @@ export default function CameraSessionCameraRotationTest() {
         console.info(TAG + "cameraOutputCap.photoProfiles.length: " + cameraOutputCap.photoProfiles.length);
 
         for (let i = 0; i < cameraOutputCap.photoProfiles.length; i++) {
+          let currentRatio = cameraOutputCap.photoProfiles[i].size.width / cameraOutputCap.photoProfiles[i].size.height;
+          if (Math.abs(currentRatio - ratio) > 0.01) {
+              continue;
+          }
           mPhotoOutput = mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[i]);
           if (!isEmpty(mPhotoOutput)) {
             break;
@@ -327,6 +323,10 @@ export default function CameraSessionCameraRotationTest() {
       if (!isEmpty(cameraOutputCap.videoProfiles)) {
         console.info(TAG + "cameraOutputCap.videoProfiles.length: " + cameraOutputCap.videoProfiles.length);
         for (let i = 0; i < cameraOutputCap.videoProfiles.length; i++) {
+          let currentRatio = cameraOutputCap.videoProfiles[i].size.width / cameraOutputCap.videoProfiles[i].size.height;
+          if (Math.abs(currentRatio - ratio) > 0.01) {
+              continue;
+          }
           try {
             console.info(TAG +
               `createVideoOutput FAILED + ${cameraOutputCap.videoProfiles[i]} + ${mVideoSurface} +${i}`);
@@ -357,13 +357,16 @@ export default function CameraSessionCameraRotationTest() {
 
     if (!isEmpty(mPreviewOutput)) {
       await mPreviewOutput.release();
+      mPreviewOutput = null!;
     }
 
     if (!isEmpty(mPhotoOutput)) {
       await mPhotoOutput.release();
+      mPhotoOutput = null!;
     }
     if (!isEmpty(mVideoOutput)) {
       await mVideoOutput.release();
+      mVideoOutput = null!;
     }
     console.info('Exit releaseOutput');
 
@@ -417,20 +420,8 @@ export default function CameraSessionCameraRotationTest() {
     }
     await sleep(1000);
 
-    mCameraSession.commitConfig();
+    await mCameraSession.commitConfig();
 
-    /*
-    await mCameraSession.start(async (err) => {
-        console.info(TAG + "Entering mCameraSession start callback");
-        if (!err) {
-            console.info(TAG + "Entering mCameraSession start PASSED ");
-        } else {
-            console.info(TAG + "Entering mCameraSession start FAILED : " + err.message);
-        }
-    })
-
-    await sleep(100);
-    */
     console.info(TAG + "Exit startCameraSession");
 
     return true;
@@ -438,20 +429,8 @@ export default function CameraSessionCameraRotationTest() {
 
   let stopCameraSession = async () => {
     console.info(TAG + "Enter stopCameraSession");
-
+    
     mCameraSession.beginConfig();
-    /*
-    mCameraSession.stop(async (err) => {
-        console.info(TAG + "Entering mCameraSession stop callback");
-        if (!err) {
-            console.info(TAG + "Entering mCameraSession stop PASSED ");
-        } else {
-            console.info(TAG + "Entering mCameraSession stop FAILED : " + err.message);
-        }
-    })
-
-    await sleep(100);
-    */
 
     if (!isEmpty(mCameraInput)) {
       console.info(TAG + "Start to removeInput input");
@@ -551,7 +530,7 @@ export default function CameraSessionCameraRotationTest() {
               cameraPhotoRotation);
             expect().assertFail();
           }
-          await stopCameraSession();startCameraSession
+          await stopCameraSession();
           console.info(TAG +
             "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0100 end for camera");
         }
@@ -560,6 +539,7 @@ export default function CameraSessionCameraRotationTest() {
       } catch (err) {
         console.info(TAG +
           `Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0100 error + ${err}+ ${err.code}+ ${err.message}`);
+        expect().assertFail();
         done();
       }
 
@@ -612,6 +592,7 @@ export default function CameraSessionCameraRotationTest() {
       } catch (err) {
         console.info(TAG +
           `Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0100 error + ${err}+ ${err.code}+ ${err.message}`);
+        expect().assertFail();
         done();
       }
     })
@@ -637,8 +618,9 @@ export default function CameraSessionCameraRotationTest() {
         } else {
           console.info(TAG +
             "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100 start for camera");
-          await startCameraSession(0, cameraObj.SceneMode.NORMAL_VIDEO);
+          await startCameraSession(0, cameraObj.SceneMode.NORMAL_PHOTO);
           let cameraPreviewRotation = mPreviewOutput.getPreviewRotation(cameraObj.ImageRotation.ROTATION_0);
+          mPreviewOutput.setPreviewRotation(cameraObj.ImageRotation.ROTATION_0, false);
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100 finish");
           if (cameraPreviewRotation == cameraObj.ImageRotation.ROTATION_90 ||
             cameraPreviewRotation == cameraObj.ImageRotation.ROTATION_270 ||
@@ -662,6 +644,7 @@ export default function CameraSessionCameraRotationTest() {
       } catch (err) {
         console.info(TAG +
           `Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100 error + ${err}+ ${err.code}+ ${err.message}`);
+        expect().assertFail();
         done();
       }
     })

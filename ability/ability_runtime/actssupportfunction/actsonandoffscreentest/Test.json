@@ -23,11 +23,8 @@
             "run-command": [
                 "power-shell wakeup",
                 "power-shell setmode 602",
-                "bm disable -n com.huawei.hmos.hwstartupguide",
-                "reboot",
-                "power-shell wakeup",
-                "power-shell setmode 602",
-                "uinput -T -m 300 2700 280 200",
+                "power-shell timeout -o 864000000",
+                "uinput -T -m 300 1279 280 200",
                 "uinput -T -d 1070 1070 -u 1070 1070"
             ]
         }

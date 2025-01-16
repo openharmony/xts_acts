@@ -159,7 +159,6 @@
 #include "grid/grid_nodeadapter_test.h"
 #include "refresh/refresh_offsetEvent_test.h"
 #include "hybird/hybird_getnodehandle_test.h"
-#include "response/response_configupdate_test.h"
 #include "requirement/requirement_pangesture_test.h"
 #include "customcomponent/customcomponent_measurenode_test.h"
 #include "customcomponent/customcomponent_getcontextdrawcanvas_test.h"
@@ -168,6 +167,8 @@
 #include "customcomponent/customcomponent_registernodecustomevent_test.h"
 #include "customcomponent/customcomponent_unregisternodecustomevent_test.h"
 #include "lazyforeach/lazyforeach_test.h"
+#include "textarea/textarea_selectionmenuhidden_test.h"
+#include "textarea/textarea_inputfilter_test.h"
 #include "scroll/scroll_scroll_event_test.h"
 #include "button/button_label_test.h"
 #include "xcomponent/xcomponent_id_test.h"
@@ -176,6 +177,14 @@
 #include "waterFlower/waterflow_scroll_by_test.h"
 #include "waterFlower/waterflow_scroll_page_test.h"
 #include "waterFlower/waterflow_scrolloffset_test.h"
+
+#include "textinput/textinput_selectionmenuhidden_test.h"
+#include "textinput/textinput_inputfilter_test.h"
+#include "textinput/textinput_ontextselectionallchange_test.h"
+#include "customcomponent/customcomponent_secondarylayout_test.h"
+#include "requirement/requirement_routerpagestate_test.h"
+#include "resourcenapivalue/resourcenapivalue_test.h"
+
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -761,8 +770,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"hybirdGetNodeHandleTest", nullptr, HybirdGetNodeHandleTest::CreateNativeNode,
          nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"responseConfigUpdateTest", nullptr, ResponseConfigUpdateTest::CreateNativeNode,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
         {"requirementPanGestureTest", nullptr, RequirementPanGestureTest::CreateNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"customComponentMeasureNodeTest", nullptr, CustomComponentMeasureNodeTest::CreateNativeNode,
@@ -811,6 +818,10 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"lazyForEachSetItemTest", nullptr, LazyForEachTest::CreateNativeNodeSetItem, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"textAreaSelectionMenuHiddenTest", nullptr, TextAreaSelectionMenuHiddenTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"textAreaInputFilterTest", nullptr, TextAreaInputFilterTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
         {"scrollScrollEventOnWillScrollTest", nullptr, ScrollScrollEventTest::CreateNativeNodeOnWillScroll,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"scrollScrollEventOnDidScrollTest", nullptr, ScrollScrollEventTest::CreateNativeNodeOnDidScroll,
@@ -915,6 +926,29 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, napi_default, nullptr },
         { "waterFlowGetNestedScrollData", nullptr, WaterFlowNestedScrollTest::WaterFlowGetNestedScrollData, nullptr,
             nullptr, nullptr, napi_default, nullptr },
+        {"textInputSelectionMenuHiddenTest", nullptr, TextInputSelectionMenuHiddenTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"textInputInputFilterTest", nullptr, TextInputInputFilterTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"textInputOnTextSelectionAllChangeTest", nullptr, TextInputOnTextSelectionAllChangeTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"getTextInputSelectAllData", nullptr, TextInputOnTextSelectionAllChangeTest::GetTextInputSelectAllData,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"customComponentSecondaryLayoutTest", nullptr, CustomComponentSecondaryLayoutTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"getSecondaryLayoutData", nullptr, CustomComponentSecondaryLayoutTest::GetSecondaryLayoutData,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"requirementRouterPageStateTest", nullptr, RequirementRouterPageStateTest::CreateNativeNode, nullptr,
+         nullptr, nullptr, napi_default, nullptr },
+        {"getRouterData", nullptr, RequirementRouterPageStateTest::GetRouterData, nullptr, nullptr,
+         nullptr, napi_default, nullptr },
+        {"resourceNapiValueTest", nullptr, ResourceNapiValueTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+
+         {"swipeAxisGestureTest", nullptr, GestureTest::CreateSwipeAxisNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"GetGestureDataAxis", nullptr, GestureTest::GetGestureDataAxis, nullptr, nullptr,
+         nullptr, napi_default, nullptr },
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

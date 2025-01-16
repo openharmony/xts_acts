@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export function stringToUint8Array(str: string) {
+export function StringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -20,7 +20,7 @@ export function stringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
-export function uint8ArrayToString(fileData: Uint8Array) {
+export function Uint8ArrayToString(fileData: Uint8Array) {
   let str: string = "";
   for (let i = 0; i < fileData.length; i++) {
     str += String.fromCharCode(fileData[i]);

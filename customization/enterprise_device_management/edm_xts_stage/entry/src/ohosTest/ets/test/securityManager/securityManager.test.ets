@@ -23,6 +23,8 @@ import sysDeviceInfo from '@ohos.deviceInfo';
 
 const PATCH = 'patch';
 const ENCRYPTION = 'encryption';
+const INT_VALID_ACCOUNTID = 100;
+const INT_INVALID_ACCOUNTID = 0xFFFFFFFF;
 
 const PASSWORD_POLICY: securityManager.PasswordPolicy = {
   complexityRegex: 'g',
@@ -128,6 +130,7 @@ export default function securityManagerTest() {
     testGetPasswordPolicy();
 
     testInstallUserCertificate();
+    testGetUserCertificates();
     testUninstallUserCertificate();
 
     testSetClipboardPolicy();
@@ -658,6 +661,220 @@ function testInstallUserCertificate() {
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_INSTALL_USER_CERTIFICATE_JS_0201
+   * @tc.name      : test_install_user_certificate_0201
+   * @tc.desc      : test securityManager installUserCertificate  with normal admin and specific valid accountId
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_install_user_certificate_0201", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      securityManager.installUserCertificate(SELFWANT, CERTIFICATE, INT_VALID_ACCOUNTID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_INSTALL_USER_CERTIFICATE_JS_0202
+   * @tc.name      : test_install_user_certificate_0202
+   * @tc.desc      : test securityManager installUserCertificate with invalid admin and specific valid accountId
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_install_user_certificate_0202", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.installUserCertificate(INVALID_WANT, CERTIFICATE, INT_VALID_ACCOUNTID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_INSTALL_USER_CERTIFICATE_JS_0203
+   * @tc.name      : test_install_user_certificate_0203
+   * @tc.desc      : test securityManager installUserCertificate invalid cert with specific valid accountId
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_install_user_certificate_0203", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.installUserCertificate(SELFWANT, CERTIFICATE_INVALID, INT_VALID_ACCOUNTID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9201001).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_INSTALL_USER_CERTIFICATE_JS_0204
+   * @tc.name      : test_install_user_certificate_0204
+   * @tc.desc      : test securityManager installUserCertificate with specific valid accountId
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_install_user_certificate_0204", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let path: string = securityManager.installUserCertificate(SELFWANT, CERTIFICATE, INT_VALID_ACCOUNTID);
+      expect(path !== undefined).assertTrue();
+      await securityManager.uninstallUserCertificate(SELFWANT, path);
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_INSTALL_USER_CERTIFICATE_JS_0205
+   * @tc.name      : test_install_user_certificate_0205
+   * @tc.desc      : test securityManager installUserCertificate with specific invalid accountId
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_install_user_certificate_0205", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let path: string = securityManager.installUserCertificate(SELFWANT, CERTIFICATE, INT_INVALID_ACCOUNTID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_INSTALL_USER_CERTIFICATE_JS_0206
+   * @tc.name      : test_install_user_certificate_0206
+   * @tc.desc      : test securityManager installUserCertificate with max alias and specific valid accountId
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_install_user_certificate_0206", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let path: string = securityManager.installUserCertificate(SELFWANT, CERTIFICATE_MAX_ALIAS, INT_VALID_ACCOUNTID);
+      expect(path !== undefined).assertTrue();
+      await securityManager.uninstallUserCertificate(SELFWANT, path);
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_INSTALL_USER_CERTIFICATE_JS_0207
+   * @tc.name      : test_install_user_certificate_0207
+   * @tc.desc      : test securityManager installUserCertificate with invalid alias
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_install_user_certificate_0207", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.installUserCertificate(SELFWANT, CERTIFICATE_INVALID_ALIAS, INT_VALID_ACCOUNTID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+}
+
+function testGetUserCertificates() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_USER_CERTIFICATES_SYNC_JS_0101
+   * @tc.name      : test_get_user_certificates_sync_0101
+   * @tc.desc      : test securityManager getUserCertificatesSync with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_user_certificates_sync_0101", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      securityManager.getUserCertificates(SELFWANT, INT_VALID_ACCOUNTID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_USER_CERTIFICATES_SYNC_JS_0102
+   * @tc.name      : test_get_user_certificates_sync_0102
+   * @tc.desc      : test securityManager getUserCertificatesSync with invalid admin param
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_user_certificates_sync_0102", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.getUserCertificates(INVALID_WANT, INT_VALID_ACCOUNTID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_USER_CERTIFICATES_SYNC_JS_0103
+   * @tc.name      : test_get_user_certificates_sync_0103
+   * @tc.desc      : test securityManager getUserCertificatesSync success
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_user_certificates_sync_0103", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let result: Array<string> = securityManager.getUserCertificates(SELFWANT, INT_VALID_ACCOUNTID);
+      expect(result).not().assertUndefined();
+    } catch (error) {
+      expect(false).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }

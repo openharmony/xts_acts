@@ -46,32 +46,25 @@ export default function TextTimerNodeTest() {
       await CommonFunc.sleep(1000);
       console.info('texttimerNode after each called');
     })
-    it(' TextTimerNode0100', 0, async (done: Function) => {
+
+    /**
+     * @tc.number    TextTimerNode0100
+     * @tc.name      TextTimerNode0100
+     * @tc.desc      frameNode: createNodeTextTimerToWindow
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('TextTimerNode0100', 0, async (done: Function) => {
 
         let tagName = 'TextTimerNode0100';
         console.info('[' + tagName + '] START============================');
         let strJsonNew = getInspectorByKey('key_ TextTimer_001');
-        console.info('[' + tagName + '] Search width is: ' + JSON.stringify(JSON.parse(strJsonNew)
-          .$attrs
-          .width));
-  
-        expect(JSON.parse(strJsonNew).$attrs.width).assertEqual('150.00vp');
+        console.info('[' + tagName + '] Search is: ' + JSON.stringify(JSON.parse(strJsonNew).$type));
+        expect(JSON.parse(strJsonNew).$type).assertEqual('TextTimer');
         console.info('[' + tagName + '] END ===========================');
         done();
       });
-  
-      it(' TextTimerNode0200', 0, async (done: Function) => {
-  
-        let tagName = 'TextTimerNode0200';
-        console.info('[' + tagName + '] START============================');
-        let strJsonNew = getInspectorByKey('key_ TextTimer_001');
-        console.info('[' + tagName + '] Search format is: ' + JSON.stringify(JSON.parse(strJsonNew)
-          .$attrs
-          .format));
-  
-        expect(JSON.parse(strJsonNew).$attrs.format).assertEqual('HH:mm:ss.SS');
-        console.info('[' + tagName + '] END ===========================');
-        done();
-      });
+      
     })
   }

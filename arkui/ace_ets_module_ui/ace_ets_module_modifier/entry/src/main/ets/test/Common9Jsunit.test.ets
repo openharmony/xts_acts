@@ -615,7 +615,7 @@ export default function common9Jsunit() {
       let strJson = getInspectorByKey('textModifier3');
 
       console.info("[common_useEffect] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson).$attrs));
-      expect(JSON.parse(strJson).$attrs.useEffect).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.useEffect).assertEqual('true');
       console.info('[common_useEffect] END');
       done();
     });

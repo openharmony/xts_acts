@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 import effectKitTest from './effectKit.test';
-import effectKitBTest from './effectKit.test';
+import effectKitBTest from './effectKitB.test';
 import common from '@ohos.app.ability.common';
 import ohosWindow from '@ohos.window';
 
 export default function testsuite(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage, abilityStorage: LocalStorage) {
   effectKitTest(context, windowStage,abilityStorage);
-  effectKitBTest(context, windowStage,abilityStorage);
+  effectKitBTest();
 }

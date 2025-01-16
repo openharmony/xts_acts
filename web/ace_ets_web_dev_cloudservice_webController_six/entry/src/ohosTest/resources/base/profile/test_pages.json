@@ -1,8 +1,0 @@
-{
-  "src": [
-      "testability/pages/Index",
-      "testability/pages/webAdsBlockManager",
-      "testability/pages/webViewObjectPositionReport",
-      "testability/pages/webViewAvoidArea"
-  ]
-}

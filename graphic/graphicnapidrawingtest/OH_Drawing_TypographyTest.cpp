@@ -24,6 +24,8 @@
 #include "drawing_pen.h"
 #include "drawing_text_declaration.h"
 #include "drawing_text_typography.h"
+#include "drawing_text_line.h"
+#include "drawing_text_lineTypography.h"
 #ifndef USE_GRAPHIC_TEXT_GINE
 #include "rosen_text/ui/typography.h"
 #include "rosen_text/ui/typography_create.h"
@@ -45,6 +47,60 @@ using namespace testing::ext;
 
 namespace OHOS {
 class OH_Drawing_TypographyTest : public testing::Test {
+public:
+    void SetUp() override
+    {
+        typoStyle_ = nullptr;
+        txtStyle_ = nullptr;
+        fontCollection_ = nullptr;
+        handler_ = nullptr;
+        typography_ = nullptr;
+        cBitmap_ = nullptr;
+        canvas_ = nullptr;
+    }
+
+    void TearDown() override
+    {
+        if (canvas_ != nullptr) {
+            OH_Drawing_CanvasDestroy(canvas_);
+            canvas_ = nullptr;
+        }
+        if (typography_ != nullptr) {
+            OH_Drawing_DestroyTypography(typography_);
+            typography_ = nullptr;
+        }
+        if (handler_ != nullptr) {
+            OH_Drawing_DestroyTypographyHandler(handler_);
+            handler_ = nullptr;
+        }
+        if (txtStyle_ != nullptr) {
+            OH_Drawing_DestroyTextStyle(txtStyle_);
+            txtStyle_ = nullptr;
+        }
+        if (typoStyle_ != nullptr) {
+            OH_Drawing_DestroyTypographyStyle(typoStyle_);
+            typoStyle_ = nullptr;
+        }
+        if (cBitmap_ != nullptr) {
+            OH_Drawing_BitmapDestroy(cBitmap_);
+            cBitmap_ = nullptr;
+        }
+        if (fontCollection_ != nullptr) {
+            OH_Drawing_DestroyFontCollection(fontCollection_);
+            fontCollection_ = nullptr;
+        }
+    }
+
+    void PrepareCreateTextLine(const std::string& text);
+
+protected:
+    OH_Drawing_TypographyStyle* typoStyle_ = nullptr;
+    OH_Drawing_TextStyle* txtStyle_ = nullptr;
+    OH_Drawing_FontCollection* fontCollection_ = nullptr;
+    OH_Drawing_TypographyCreate* handler_ = nullptr;
+    OH_Drawing_Typography* typography_ = nullptr;
+    OH_Drawing_Bitmap* cBitmap_ = nullptr;
+    OH_Drawing_Canvas* canvas_ = nullptr;
 };
 
 const double ARC_FONT_SIZE = 30;
@@ -61,6 +117,45 @@ static TypographyStyle* ConvertToOriginalText(OH_Drawing_TypographyStyle* style)
 static TextStyle* ConvertToOriginalText(OH_Drawing_TextStyle* style)
 {
     return reinterpret_cast<TextStyle*>(style);
+}
+
+void OH_Drawing_TypographyTest::PrepareCreateTextLine(const std::string& text)
+{
+    double maxWidth = 500.0;
+    uint32_t height = 40;
+    typoStyle_ = OH_Drawing_CreateTypographyStyle();
+    EXPECT_TRUE(typoStyle_ != nullptr);
+    txtStyle_ = OH_Drawing_CreateTextStyle();
+    EXPECT_TRUE(txtStyle_ != nullptr);
+    fontCollection_ = OH_Drawing_CreateFontCollection();
+    EXPECT_TRUE(fontCollection_ != nullptr);
+    handler_ = OH_Drawing_CreateTypographyHandler(typoStyle_, fontCollection_);
+    EXPECT_TRUE(handler_ != nullptr);
+    OH_Drawing_SetTextStyleColor(txtStyle_, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+    double fontSize = 30;
+    OH_Drawing_SetTextStyleFontSize(txtStyle_, fontSize);
+    OH_Drawing_SetTextStyleFontWeight(txtStyle_, FONT_WEIGHT_400);
+    bool halfLeading = true;
+    OH_Drawing_SetTextStyleHalfLeading(txtStyle_, halfLeading);
+    const char* fontFamilies[] = {"Roboto"};
+    OH_Drawing_SetTextStyleFontFamilies(txtStyle_, 1, fontFamilies);
+    OH_Drawing_TypographyHandlerPushTextStyle(handler_, txtStyle_);
+    OH_Drawing_TypographyHandlerAddText(handler_, text.c_str());
+    OH_Drawing_TypographyHandlerPopTextStyle(handler_);
+    typography_ = OH_Drawing_CreateTypography(handler_);
+    EXPECT_TRUE(typography_ != nullptr);
+    OH_Drawing_TypographyLayout(typography_, maxWidth);
+    double position[2] = {10.0, 15.0};
+    cBitmap_ = OH_Drawing_BitmapCreate();
+    EXPECT_TRUE(cBitmap_ != nullptr);
+    OH_Drawing_BitmapFormat cFormat {COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    uint32_t width = 20;
+    OH_Drawing_BitmapBuild(cBitmap_, width, height, &cFormat);
+    canvas_ = OH_Drawing_CanvasCreate();
+    EXPECT_TRUE(canvas_ != nullptr);
+    OH_Drawing_CanvasBind(canvas_, cBitmap_);
+    OH_Drawing_CanvasClear(canvas_, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0xFF));
+    OH_Drawing_TypographyPaint(typography_, canvas_, position[0], position[1]);
 }
 
 /*
@@ -2685,5 +2780,105 @@ HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTestWithIndent, TestSiz
     OH_Drawing_TypographyPaint(typography, cCanvas, position[0], position[1]);
     OH_Drawing_DestroyTypography(typography);
     OH_Drawing_DestroyTypographyHandler(handler);
+}
+
+/*
+ * @tc.name: OHDrawingAddTextStyleDecoration001
+ * @tc.desc: test for Add Text Style Decoration
+ * @tc.type: FUNC
+ */
+HWTEST_F(OH_Drawing_TypographyTest, OHDrawingAddTextStyleDecoration001, TestSize.Level1)
+{
+    OH_Drawing_TextStyle* txtStyle = OH_Drawing_CreateTextStyle();
+    EXPECT_NE(txtStyle, nullptr);
+    OH_Drawing_SetTextStyleDecoration(txtStyle, TEXT_DECORATION_NONE);
+
+    OH_Drawing_AddTextStyleDecoration(txtStyle, TEXT_DECORATION_UNDERLINE);
+    OH_Drawing_AddTextStyleDecoration(txtStyle, TEXT_DECORATION_OVERLINE);
+#ifndef USE_GRAPHIC_TEXT_GINE
+    EXPECT_EQ(ConvertToOriginalText(txtStyle)->decoration_, TextDecoration::UNDERLINE | TextDecoration::OVERLINE);
+#else
+    EXPECT_EQ(ConvertToOriginalText(txtStyle)->decoration, TextDecoration::UNDERLINE | TextDecoration::OVERLINE);
+#endif
+    OH_Drawing_RemoveTextStyleDecoration(txtStyle, TEXT_DECORATION_UNDERLINE);
+#ifndef USE_GRAPHIC_TEXT_GINE
+    EXPECT_EQ(ConvertToOriginalText(txtStyle)->decoration_, TextDecoration::OVERLINE);
+#else
+    EXPECT_EQ(ConvertToOriginalText(txtStyle)->decoration, TextDecoration::OVERLINE);
+#endif
+    OH_Drawing_RemoveTextStyleDecoration(txtStyle, -1);
+#ifndef USE_GRAPHIC_TEXT_GINE
+    EXPECT_EQ(ConvertToOriginalText(txtStyle)->decoration_, TextDecoration::OVERLINE);
+#else
+    EXPECT_EQ(ConvertToOriginalText(txtStyle)->decoration, TextDecoration::OVERLINE);
+#endif
+    OH_Drawing_RemoveTextStyleDecoration(nullptr, TEXT_DECORATION_LINE_THROUGH);
+#ifndef USE_GRAPHIC_TEXT_GINE
+    EXPECT_EQ(ConvertToOriginalText(txtStyle)->decoration_, TextDecoration::OVERLINE);
+#else
+    EXPECT_EQ(ConvertToOriginalText(txtStyle)->decoration, TextDecoration::OVERLINE);
+#endif
+    OH_Drawing_AddTextStyleDecoration(txtStyle,
+        TEXT_DECORATION_UNDERLINE | TEXT_DECORATION_OVERLINE | TEXT_DECORATION_LINE_THROUGH);
+#ifndef USE_GRAPHIC_TEXT_GINE
+    EXPECT_EQ(ConvertToOriginalText(txtStyle)->decoration_,
+        TextDecoration::UNDERLINE | TextDecoration::OVERLINE | TextDecoration::LINE_THROUGH);
+#else
+    EXPECT_EQ(ConvertToOriginalText(txtStyle)->decoration,
+        TextDecoration::UNDERLINE | TextDecoration::OVERLINE | TextDecoration::LINE_THROUGH);
+#endif
+    OH_Drawing_RemoveTextStyleDecoration(txtStyle, TEXT_DECORATION_UNDERLINE | TEXT_DECORATION_LINE_THROUGH);
+#ifndef USE_GRAPHIC_TEXT_GINE
+    EXPECT_EQ(ConvertToOriginalText(txtStyle)->decoration_, TextDecoration::OVERLINE);
+#else
+    EXPECT_EQ(ConvertToOriginalText(txtStyle)->decoration, TextDecoration::OVERLINE);
+#endif
+    OH_Drawing_RemoveTextStyleDecoration(nullptr, TEXT_DECORATION_UNDERLINE | TEXT_DECORATION_LINE_THROUGH);
+
+    OH_Drawing_DestroyTextStyle(txtStyle);
+}
+
+/*
+ * @tc.name: OHDrawingSetTypographyTextTab001
+ * @tc.desc: test for Set Typography Text Tab
+ * @tc.type: FUNC
+ */
+HWTEST_F(OH_Drawing_TypographyTest, OHDrawingSetTypographyTextTab001, TestSize.Level1)
+{
+    OH_Drawing_TextTab* textTab = OH_Drawing_CreateTextTab(TEXT_ALIGN_LEFT, -1.0);
+    OH_Drawing_TypographyStyle* typoStyle = OH_Drawing_CreateTypographyStyle();
+    OH_Drawing_SetTypographyTextTab(typoStyle, textTab);
+    OH_Drawing_SetTypographyTextTab(nullptr, textTab);
+    OH_Drawing_SetTypographyTextTab(typoStyle, nullptr);
+    EXPECT_EQ(ConvertToOriginalText(typoStyle)->tab.alignment, TextAlign::LEFT);
+    EXPECT_EQ(ConvertToOriginalText(typoStyle)->tab.location, -1.0);
+    OH_Drawing_DestroyTextTab(textTab);
+    OH_Drawing_DestroyTypographyStyle(typoStyle);
+}
+
+/*
+ * @tc.name: OHDrawingTextLineEnumerateCaretOffsets001
+ * @tc.desc: test for Text Line Enumerate Caret Offsets
+ * @tc.type: FUNC
+ */
+HWTEST_F(OH_Drawing_TypographyTest, OHDrawingTextLineEnumerateCaretOffsets001, TestSize.Level1)
+{
+    PrepareCreateTextLine("\n\n\n");
+    OH_Drawing_Array* textLines = OH_Drawing_TypographyGetTextLines(typography_);
+    size_t size = OH_Drawing_GetDrawingArraySize(textLines);
+    EXPECT_EQ(size, 4);
+
+    for (size_t index = 0; index < size; index++) {
+        OH_Drawing_TextLine* textLine = OH_Drawing_GetTextLineByIndex(textLines, index);
+        EXPECT_TRUE(textLine != nullptr);
+
+        OH_Drawing_TextLineEnumerateCaretOffsets(textLine, [](double offset, int32_t index, bool leadingEdge) {
+            EXPECT_GE(index, 0);
+            EXPECT_EQ(offset, 0.0);
+            EXPECT_TRUE(leadingEdge);
+            return false;
+        });
+    }
+    OH_Drawing_DestroyTextLines(textLines);
 }
 }

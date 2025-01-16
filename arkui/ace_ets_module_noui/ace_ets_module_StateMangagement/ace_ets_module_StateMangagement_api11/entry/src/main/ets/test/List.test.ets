@@ -155,6 +155,8 @@ import swiperTest from './twoWayBindTest/swiper.test';
 import textAreaTest from './twoWayBindTest/textArea.test';
 import textInputTest from './twoWayBindTest/textInput.test';
 import toggleTest from './twoWayBindTest/toggle.test';
+import StorageDeprecatedTest from './Zhuang/StorageDeprecatedTest.test';
+import PersistentTest0040 from './Zhuang/PersistentTest0040.test';
 
 export default function testsuite() {
   allowOverride();
@@ -283,4 +285,6 @@ export default function testsuite() {
   textAreaTest();
   textInputTest();
   toggleTest();
+  StorageDeprecatedTest();
+  PersistentTest0040();
 }

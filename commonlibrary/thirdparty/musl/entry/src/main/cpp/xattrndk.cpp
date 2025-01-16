@@ -14,6 +14,7 @@
  */
 
 #include "napi/native_api.h"
+#include <cerrno>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -23,6 +24,7 @@
 #include <node_api.h>
 #include <sys/xattr.h>
 #include <unistd.h>
+#include <hilog/log.h>
 
 #define ONEVAL 1
 #define MINUSONE (-1)
@@ -48,10 +50,22 @@
 #define SIZE_4096 4096
 #define SIZE_8192 8192
 
+#undef LOG_DOMAIN
+#undef LOG_TAG
+#define LOG_DOMAIN 0xFEFE
+#define LOG_TAG "MUSL_LIBCTEST"
+
 static napi_value Lgetxattr(napi_env env, napi_callback_info info)
 {
+    napi_value result = nullptr;
     mode_t perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
+    errno = 0;
     int fd = open("/data/storage/el2/base/files/test.txt", O_RDWR | O_CREAT, perms);
+    if (fd == FAIL) {
+        OH_LOG_INFO(LOG_APP, "Lgetxattr open failed: ret %{public}d errno : %{public}d", fd, errno);
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
     char str[] = "dat";
     write(fd, str, sizeof(str));
     close(fd);
@@ -66,7 +80,6 @@ static napi_value Lgetxattr(napi_env env, napi_callback_info info)
         ret = FAIL;
     }
     remove("/data/storage/el2/base/files/test.txt");
-    napi_value result = nullptr;
     if (ret != FAIL) {
         napi_create_int32(env, FAIL, &result);
     } else {
@@ -78,8 +91,14 @@ static napi_value Lgetxattr(napi_env env, napi_callback_info info)
 static napi_value Setxattr(napi_env env, napi_callback_info info)
 {
     mode_t perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
+    napi_value result = nullptr;
+    errno = 0;
     int fd = open("/data/storage/el2/base/files/test.txt", O_RDWR | O_CREAT, perms);
-
+    if (fd == FAIL) {
+        OH_LOG_INFO(LOG_APP, "Setxattr open failed: ret %{public}d errno : %{public}d", fd, errno);
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
     char str[] = "dat";
     write(fd, str, sizeof(str));
     close(fd);
@@ -91,7 +110,6 @@ static napi_value Setxattr(napi_env env, napi_callback_info info)
         ret = FAIL;
     }
     remove("/data/storage/el2/base/files/test.txt");
-    napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
@@ -99,8 +117,14 @@ static napi_value Setxattr(napi_env env, napi_callback_info info)
 static napi_value Getxattr(napi_env env, napi_callback_info info)
 {
     mode_t perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
+    napi_value result = nullptr;
+    errno = 0;
     int fd = open("/data/storage/el2/base/files/test.txt", O_RDWR | O_CREAT, perms);
-
+    if (fd == FAIL) {
+        OH_LOG_INFO(LOG_APP, "Setxattr open failed: ret %{public}d errno : %{public}d", fd, errno);
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
     char str[] = "dat";
     write(fd, str, sizeof(str));
     close(fd);
@@ -114,7 +138,6 @@ static napi_value Getxattr(napi_env env, napi_callback_info info)
         ret = FAIL;
     }
     remove("/data/storage/el2/base/files/test.txt");
-    napi_value result = nullptr;
     if (ret != FAIL) {
         napi_create_int32(env, FAIL, &result);
     } else {
@@ -126,8 +149,14 @@ static napi_value Getxattr(napi_env env, napi_callback_info info)
 static napi_value Listxattr(napi_env env, napi_callback_info info)
 {
     mode_t perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
+    napi_value result = nullptr;
+    errno = 0;
     int fd = open("/data/storage/el2/base/files/test.txt", O_RDWR | O_CREAT, perms);
-
+    if (fd == FAIL) {
+        OH_LOG_INFO(LOG_APP, "Listxattr open failed: ret %{public}d errno : %{public}d", fd, errno);
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
     char str[] = "dat";
     write(fd, str, sizeof(str));
     close(fd);
@@ -142,7 +171,6 @@ static napi_value Listxattr(napi_env env, napi_callback_info info)
         ret = FAIL;
     }
     remove("/data/storage/el2/base/files/test.txt");
-    napi_value result = nullptr;
     if (ret != FAIL) {
         napi_create_int32(env, FAIL, &result);
     } else {
@@ -154,8 +182,14 @@ static napi_value Listxattr(napi_env env, napi_callback_info info)
 static napi_value LListxattr(napi_env env, napi_callback_info info)
 {
     mode_t perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
+    napi_value result = nullptr;
+    errno = 0;
     int fd = open("/data/storage/el2/base/files/test.txt", O_RDWR | O_CREAT, perms);
-
+    if (fd == FAIL) {
+        OH_LOG_INFO(LOG_APP, "LListxattr open failed: ret %{public}d errno : %{public}d", fd, errno);
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
     char str[] = "dat";
     write(fd, str, sizeof(str));
     close(fd);
@@ -171,7 +205,6 @@ static napi_value LListxattr(napi_env env, napi_callback_info info)
     }
     remove("/data/storage/el2/base/files/test.txt");
 
-    napi_value result = nullptr;
     if (ret != FAIL) {
         napi_create_int32(env, FAIL, &result);
     } else {
@@ -183,11 +216,17 @@ static napi_value LListxattr(napi_env env, napi_callback_info info)
 static napi_value FListXAttr(napi_env env, napi_callback_info info)
 {
     ssize_t size_t = PARAM_0, len = PARAM_64;
+    napi_value result = nullptr;
+    errno = 0;
     int firstParam = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT, PARAM_0777);
+    if (firstParam == FAIL) {
+        OH_LOG_INFO(LOG_APP, "FListXAttr open failed: ret %{public}d errno : %{public}d", firstParam, errno);
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
     char secondParam[] = "/data/storage/el2/base/files";
     size_t = flistxattr(firstParam, secondParam, len);
     close(firstParam);
-    napi_value result = nullptr;
     napi_create_int32(env, size_t, &result);
     return result;
 }
@@ -195,12 +234,18 @@ static napi_value FListXAttr(napi_env env, napi_callback_info info)
 static napi_value Lsetxattr(napi_env env, napi_callback_info info)
 {
     mode_t perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
+    napi_value result = nullptr;
+    errno = 0;
     int fd = open("/data/storage/el2/base/files/test.txt", O_RDWR | O_CREAT, perms);
+    if (fd == FAIL) {
+        OH_LOG_INFO(LOG_APP, "Lsetxattr open failed: ret %{public}d errno : %{public}d", fd, errno);
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
     char str[] = "dat";
     write(fd, str, sizeof(str));
     close(fd);
     int ret = lsetxattr("/data/storage/el2/base/files/test.txt", "user.txt", "dat", PARAM_3, XATTR_CREATE);
-    napi_value result = nullptr;
     if (ret == NO_ERR) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
@@ -213,10 +258,16 @@ static napi_value Lsetxattr(napi_env env, napi_callback_info info)
 static napi_value Removexattr(napi_env env, napi_callback_info info)
 {
     char path[] = "/data/storage/el2/base/files/Fzl.txt";
+    napi_value ret = nullptr;
+    errno = 0;
     int fd = open(path, O_CREAT | O_WRONLY, PARAM_0667);
+    if (fd == FAIL) {
+        OH_LOG_INFO(LOG_APP, "Removexattr open failed: ret %{public}d errno : %{public}d", fd, errno);
+        napi_create_int32(env, FAIL, &ret);
+        return ret;
+    }
     setxattr(path, "user.foo", "bar", PARAM_4, XATTR_CREATE);
     int result = removexattr(path, "user.foo");
-    napi_value ret = nullptr;
     napi_create_int32(env, result, &ret);
     close(fd);
     return ret;
@@ -225,10 +276,16 @@ static napi_value Removexattr(napi_env env, napi_callback_info info)
 static napi_value Lremovexattr(napi_env env, napi_callback_info info)
 {
     char path[] = "/data/storage/el2/base/files/Fzl.txt";
+    napi_value ret = nullptr;
+    errno = 0;
     int fd = open(path, O_CREAT | O_WRONLY, PARAM_0667);
+    if (fd == FAIL) {
+        OH_LOG_INFO(LOG_APP, "Lremovexattr open failed: ret %{public}d errno : %{public}d", fd, errno);
+        napi_create_int32(env, FAIL, &ret);
+        return ret;
+    }
     lsetxattr(path, "user.foo", "bar", PARAM_4, XATTR_CREATE);
     int result = lremovexattr(path, "user.foo");
-    napi_value ret = nullptr;
     napi_create_int32(env, result, &ret);
     close(fd);
     if (access(path, F_OK) == PARAM_0) {
@@ -240,14 +297,18 @@ static napi_value Fremovexattr(napi_env env, napi_callback_info info)
 {
     const char *path = "/data/storage/el2/base/files/Fzl.txt";
     char buf[10];
-
+    napi_value ret = nullptr;
+    errno = 0;
     int fd = open(path, O_CREAT | O_WRONLY, PARAM_0667);
-
+    if (fd == FAIL) {
+        OH_LOG_INFO(LOG_APP, "Fremovexattr open failed: ret %{public}d errno : %{public}d", fd, errno);
+        napi_create_int32(env, FAIL, &ret);
+        return ret;
+    }
     int result = fsetxattr(fd, "user.foo", "bar", PARAM_4, PARAM_0);
     result = fgetxattr(fd, "user.foo", buf, sizeof(buf));
     result = fremovexattr(fd, "user.foo");
     close(fd);
-    napi_value ret = nullptr;
     napi_create_int32(env, result, &ret);
     return ret;
 }
@@ -255,12 +316,16 @@ static napi_value Fremovexattr(napi_env env, napi_callback_info info)
 static napi_value Fsetxattr(napi_env env, napi_callback_info info)
 {
     const char *path = "/data/storage/el2/base/files/Fzl.txt";
-
+    napi_value ret = nullptr;
+    errno = 0;
     int fd = open(path, O_CREAT | O_WRONLY, PARAM_0667);
-
+    if (fd == FAIL) {
+        OH_LOG_INFO(LOG_APP, "Fsetxattr open failed: ret %{public}d errno : %{public}d", fd, errno);
+        napi_create_int32(env, FAIL, &ret);
+        return ret;
+    }
     int result = fsetxattr(fd, "user.foo", "bar", PARAM_4, PARAM_0);
     close(fd);
-    napi_value ret = nullptr;
     napi_create_int32(env, result, &ret);
     return ret;
 }

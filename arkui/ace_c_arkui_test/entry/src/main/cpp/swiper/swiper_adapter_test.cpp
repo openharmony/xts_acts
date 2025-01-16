@@ -32,6 +32,7 @@ static void OnAdapterEventReceive(ArkUI_NodeAdapterEvent *event)
     if (NODE_ADAPTER_EVENT_ON_ADD_NODE_TO_ADAPTER == type) {
         auto text = std::make_shared<TextComponent>();
         text->SetBackgroundColor(COLOR_RED);
+        text->SetId("text");
         OH_ArkUI_NodeAdapterEvent_SetItem(event, text->GetComponent());
     }
 }

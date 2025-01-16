@@ -79,10 +79,12 @@ export default function performanceTest() {
       try {
         let driver = Driver.create()
         await driver.delayMs(2000)
-        let startAudio = await driver.findComponent(ON.id('StartAudio').inWindow('com.acts.pcs.arktstest'))
+        let scroll = await driver.findComponent(ON.id('scroll').inWindow('com.acts.pcs.arktstest'))
+        await driver.delayMs(1000)
+        let startAudio = await scroll.scrollSearch(ON.id('StartAudio').inWindow('com.acts.pcs.arktstest'))
         await startAudio.click()
         await driver.delayMs(2000)
-        let audioStateText = await driver.findComponent(ON.id('AudioStateText').inWindow('com.acts.pcs.arktstest'))
+        let audioStateText = await scroll.scrollSearch(ON.id('AudioStateText').inWindow('com.acts.pcs.arktstest'))
         expect(await audioStateText.getText()).assertEqual(audio.AudioState.STATE_RUNNING.toString())
         await driver.delayMs(2000)
         expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
@@ -110,10 +112,10 @@ export default function performanceTest() {
         }
         expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'EntryAbility', abilityContext)).assertTrue()
         await driver.delayMs(2000)
-        audioStateText = await driver.findComponent(ON.id('AudioStateText').inWindow('com.acts.pcs.arktstest'))
+        audioStateText = await scroll.scrollSearch(ON.id('AudioStateText').inWindow('com.acts.pcs.arktstest'))
         expect(await audioStateText.getText()).assertEqual(audio.AudioState.STATE_RUNNING.toString())
         await driver.delayMs(2000)
-        let stopAudio = await driver.findComponent(ON.id('StopAudio').inWindow('com.acts.pcs.arktstest'))
+        let stopAudio = await scroll.scrollSearch(ON.id('StopAudio').inWindow('com.acts.pcs.arktstest'))
         await stopAudio.click()
         await driver.delayMs(2000)
       } catch (error) {

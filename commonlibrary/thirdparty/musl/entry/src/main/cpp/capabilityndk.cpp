@@ -28,6 +28,7 @@ static napi_value Capset(napi_env env, napi_callback_info info)
 {
     struct __user_cap_header_struct cap_header;
     struct __user_cap_data_struct cap_data;
+    //Test syscall encapsulation interface
     cap_header.pid = getpid();
     cap_header.version = _LINUX_CAPABILITY_VERSION_1;
     int ret = FAIL;

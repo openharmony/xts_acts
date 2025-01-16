@@ -15,7 +15,7 @@
 
 import formHost from '@ohos.application.formHost';
 import { describe, expect, it } from '@ohos/hypium'
-import FormInfo from '@ohos.application.formInfo';
+
 
 
 function sleep(time: number): Promise<void> {
@@ -23,9 +23,6 @@ function sleep(time: number): Promise<void> {
 }
 
 export const getAllFormsInfoTest = (describeName: string, filterParameter: number) => {
-  const ERR_OK_CODE = 0;
-  const ERR_OK = `success`;
-
   describe(`${describeName}`, () => {
     const callbackName = `FMS_getFormsInfo_0600 callback`;
     const promiseName = `FMS_getFormsInfo_0600 promise`;
@@ -64,13 +61,11 @@ export const getAllFormsInfoTest = (describeName: string, filterParameter: numbe
           console.log(`==========${callbackName} ${describeName} end==========`);
         });
         await sleep(2000);
-        expect().not().assertFail();
         done()
       } catch (error) {
         console.log(`${callbackName} exception caught: ${JSON.stringify(error)})`);
         console.log(`${callbackName} should not reach here`);
         expect().assertFail();
-        done();
       }
     });
 
@@ -110,7 +105,6 @@ export const getAllFormsInfoTest = (describeName: string, filterParameter: numbe
         console.log(`${promiseName} exception caught: ${JSON.stringify(error)})`);
         console.log(`${promiseName} should not reach here`);
         expect().assertFail();
-        done();
       }
     });
   });

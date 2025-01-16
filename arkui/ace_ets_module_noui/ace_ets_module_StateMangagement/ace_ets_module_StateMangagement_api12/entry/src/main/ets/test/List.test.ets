@@ -23,9 +23,12 @@ import Foreach5 from './Foreach1/Foreach5.test';
 import Foreach6 from './Foreach1/Foreach6.test';
 import FreezeV2Test from './FreezeV2/Freeze001.test';
 import FreezeV2Test03 from './FreezeV2/Freeze002.test';
+import FreezeV2Child from './FreezeV2/Freeze003.test';
 import LazyForEachAdd from './LazyForEach/LazyForEachAdd.test';
 import LazyForEachDelete from './LazyForEach/LazyForEachDelete.test';
 import LazyForEachMove from './LazyForEach/LazyForEachMove.test';
+import LazyForEachReload from './LazyForEach/LazyForEachReload.test';
+import LazyForEachVisibleAreaChange from './LazyForEach/LazyForEachVisibleAreaChange.test';
 import LazyForEachSingleBoolean from './LazyForEach/LazyForEachSingleBoolean.test';
 import LazyForEachSingleNumber from './LazyForEach/LazyForEachSingleNumber.test';
 import LazyForEachSingleString from './LazyForEach/LazyForEachSingleString.test';
@@ -191,6 +194,7 @@ import MakeObservedTest0300 from './makeObservedTest/MakeObservedTest0300.test';
 import WatchLinkTest0050 from './watchTest/WatchLinkTest0050.test';
 import ProvideConsumeTest0010 from './provide_consume/ProvideConsumeTest0010.test';
 import ProviderTest0270 from './ProviderTest/ProviderTest0270.test';
+import StateUndefinedTest0010 from './state/StateUndefinedTest0010.test';
 
 export default function testsuite() {
 
@@ -205,9 +209,12 @@ export default function testsuite() {
   Foreach6();
   FreezeV2Test();
   FreezeV2Test03();
+  FreezeV2Child();
   LazyForEachAdd();
   LazyForEachDelete();
   LazyForEachMove();
+  LazyForEachReload();
+  LazyForEachVisibleAreaChange();
   LazyForEachSingleBoolean();
   LazyForEachSingleNumber();
   LazyForEachSingleString();
@@ -372,4 +379,5 @@ export default function testsuite() {
   WatchLinkTest0050();
   ProvideConsumeTest0010();
   ProviderTest0270();
+  StateUndefinedTest0010();
 }

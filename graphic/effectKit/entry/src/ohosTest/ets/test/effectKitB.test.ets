@@ -18,7 +18,7 @@ import effectKit from '@ohos.effectKit';
 import { testPng, testJpg } from '../model/testImg';
 import { BusinessError } from '@ohos.base';
 
-export default function effectKitBTest(context, windowStage) {
+export default function effectKitBTest() {
   describe('effectKitBTest', () => {
     console.log('describe effectKitBTest start!!!');
 
@@ -68,7 +68,7 @@ export default function effectKitBTest(context, windowStage) {
           expect().assertFail()
           done()
         }
-      }).catch(err => {
+      }).catch((err:BusinessError) => {
         console.info(msgStr + ' Failed in createPixelMap. ' + JSON.stringify(err));
         expect().assertFail()
         done()
@@ -76,7 +76,7 @@ export default function effectKitBTest(context, windowStage) {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICEFFECTKIT_JS_API_0010
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICEFFECTKIT_JS_API_0020
      * @tc.name      : testInvert
      * @tc.desc      : Read the first color value of the image. The number is specified by colorCount. The result is written into the Color array and returned in synchronization mode.
      * @tc.size      : MediumTest
@@ -121,7 +121,7 @@ export default function effectKitBTest(context, windowStage) {
           expect().assertFail()
           done()
         }
-      }).catch(err => {
+      }).catch((err:BusinessError) => {
         console.info(msgStr + ' Failed in createPixelMap. ' + JSON.stringify(err));
         expect().assertFail()
         done()
@@ -129,7 +129,7 @@ export default function effectKitBTest(context, windowStage) {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICEFFECTKIT_JS_API_0010
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICEFFECTKIT_JS_API_0030
      * @tc.name      : testSetColorMatrix
      * @tc.desc      : Read the first color value of the image. The number is specified by colorCount. The result is written into the Color array and returned in synchronization mode.
      * @tc.size      : MediumTest
@@ -180,13 +180,67 @@ export default function effectKitBTest(context, windowStage) {
           expect().assertFail()
           done()
         }
-      }).catch(err => {
+      }).catch((err:BusinessError) => {
         console.info(msgStr + ' Failed in createPixelMap. ' + JSON.stringify(err));
         expect().assertFail()
         done()
       })
     })
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICEFFECTKIT_JS_API_0040
+     * @tc.name      : testTileMode
+     * @tc.desc      : Enumeration of the shader effect tile mode.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTileMode', 0, (done: Function) => {
+      let msg = 'testTileMode'
+      console.log(msg + ' begin')
+      expect(effectKit.TileMode.CLAMP).assertEqual(0)
+      expect(effectKit.TileMode.REPEAT).assertEqual(1)
+      expect(effectKit.TileMode.MIRROR).assertEqual(2)
+      expect(effectKit.TileMode.DECAL).assertEqual(3)
+      done()
+    })
+    
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICEFFECTKIT_JS_API_0050
+     * @tc.name      : testBlurTileMode
+     * @tc.desc      : Adds the blur effect to the effect list. The result is returned to the first node of the effect list
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testBlurTileMode', 0, (done: Function) => {
+      let msgStr = 'testBlurTileMode'
+      console.log(msgStr + ' begin');
+      const color = new ArrayBuffer(96);
+      let opts : image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {
+          height: 4,
+          width: 6
+        }
+      };
+      image.createPixelMap(color, opts).then((pixelMap) => {
+        console.info(msgStr + ' Succeed in createPixelMap. ');
+        let radius = 30;
+        let headFilter = effectKit.createEffect(pixelMap);
+        if (headFilter != null) {
+          headFilter.blur(radius, effectKit.TileMode.DECAL);
+          console.info(msgStr + ' Succeed in headFilter.blur. ');
+          expect(true).assertTrue()
+          done()
+        }
+      }).catch((err:BusinessError) => {
+        console.info(msgStr + ' Failed in createPixelMap. ' + JSON.stringify(err));
+        expect().assertFail()
+        done()
+      })
+    })
 
   })
 }

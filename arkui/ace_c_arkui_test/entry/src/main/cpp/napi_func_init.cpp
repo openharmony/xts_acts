@@ -496,7 +496,6 @@
 #include "radio/radio_radioStyle_test.cpp"
 #include "radio/radio_checked_test.cpp"
 #include "textarea/textarea_bluronsubmit_test.cpp"
-#include "textarea/textarea_selectionmenuhidden_test.cpp"
 #include "textarea/textarea_showcounter_test.cpp"
 #include "textarea/textarea_selectedbackgroundcolor_test.cpp"
 #include "textarea/textarea_placeholder_test.cpp"
@@ -505,7 +504,6 @@
 #include "textarea/textarea_height_test.cpp"
 #include "textarea/textarea_position_test.cpp"
 #include "textinput/textinput_bluronsubmit_test.cpp"
-#include "textinput/textinput_selectionmenuhidden_test.cpp"
 #include "textinput/textinput_placeholder_test.cpp"
 #include "textinput/textinput_width_test.cpp"
 #include "textinput/textinput_height_test.cpp"
@@ -569,6 +567,7 @@
 #include "refresh/refresh_pulldownratio_test.cpp"
 #include "refresh/refresh_pulltorefresh_test.cpp"
 #include "refresh/refresh_refreshing_test.cpp"
+#include "refresh/refresh_content_test.cpp"
 #include "textarea/textarea_backgroundcolor_test.cpp"
 #include "textarea/textarea_borderradius_test.cpp"
 #include "textarea/textarea_caretcolor_test.cpp"
@@ -650,7 +649,6 @@
 #include "textarea/textarea_text_test.cpp"
 #include "textarea/textarea_fontfeature_test.cpp"
 #include "textarea/textarea_maxlines_test.cpp"
-#include "textarea/textarea_inputfilter_test.cpp"
 #include "textarea/textarea_enterkeytype_test.cpp"
 #include "textarea/textarea_enablekeyboardonfocus_test.cpp"
 #include "textarea/textarea_showkeyboardonfocus_test.cpp"
@@ -677,7 +675,6 @@
 #include "textinput/textinput_selectall_test.cpp"
 #include "textinput/textinput_maxlines_test.cpp"
 #include "textinput/textinput_numberoflines_test.cpp"
-#include "textinput/textinput_inputfilter_test.cpp"
 #include "textinput/textinput_showkeyboardonfocus_test.cpp"
 #include "textinput/textinput_caretoffset_test.cpp"
 #include "textinput/textinput_contentlinecount_test.cpp"
@@ -4726,12 +4723,6 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"testTextAreaBlurOnSubmit003", nullptr, TestTextAreaBlurOnSubmit003, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"testTextAreaSelectionMenuHidden001", nullptr, TestTextAreaSelectionMenuHidden001, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"testTextAreaSelectionMenuHidden002", nullptr, TestTextAreaSelectionMenuHidden002, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"testTextAreaSelectionMenuHidden003", nullptr, TestTextAreaSelectionMenuHidden003, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
         {"testTextAreaShowCounter001", nullptr, TestTextAreaShowCounter001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testTextAreaShowCounter002", nullptr, TestTextAreaShowCounter002, nullptr, nullptr, nullptr,
@@ -4776,12 +4767,6 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"testTextInputBlurOnSubmit003", nullptr, TestTextInputBlurOnSubmit003, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"testTextInputSelectionMenuHidden001", nullptr, TestTextInputSelectionMenuHidden001, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"testTextInputSelectionMenuHidden002", nullptr, TestTextInputSelectionMenuHidden002, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"testTextInputSelectionMenuHidden003", nullptr, TestTextInputSelectionMenuHidden003, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
         {"testTextInputPlaceholder001", nullptr, TestTextInputPlaceholder001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testTextInputCaretStyle001", nullptr, TestTextInputCaretStyle001, nullptr, nullptr, nullptr, napi_default,
@@ -4904,6 +4889,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testRefreshRefreshing003", nullptr, TestRefreshRefreshing003, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testRefreshRefreshing004", nullptr, TestRefreshRefreshing004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshContent001", nullptr, TestRefreshContent001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshContent002", nullptr, TestRefreshContent002, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testTextAreaBackgroundColor001", nullptr, TestTextAreaBackGroundColor001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
@@ -6421,10 +6410,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr },
         {"testTextAreaMaxLines004", nullptr, TestTextAreaMaxLines004, nullptr, nullptr, nullptr, napi_default,
          nullptr },
-        {"testTextAreaInputFilter001", nullptr, TestTextAreaInputFilter001, nullptr, nullptr, nullptr, napi_default,
-         nullptr },
-        {"testTextAreaInputFilter002", nullptr, TestTextAreaInputFilter002, nullptr, nullptr, nullptr, napi_default,
-         nullptr },
         {"testTextAreaEnterKeyType001", nullptr, TestTextAreaEnterKeyType001, nullptr, nullptr, nullptr, napi_default,
          nullptr },
         {"testTextAreaEnterKeyType002", nullptr, TestTextAreaEnterKeyType002, nullptr, nullptr, nullptr, napi_default,
@@ -6686,10 +6671,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testTextInputNumberOfLines003", nullptr, TestTextInputNumberOfLines003, nullptr, nullptr, nullptr,
          napi_default, nullptr },
         {"testTextInputNumberOfLines004", nullptr, TestTextInputNumberOfLines004, nullptr, nullptr, nullptr,
-         napi_default, nullptr },
-        {"testTextInputInputFilter001", nullptr, TestTextInputInputFilter001, nullptr, nullptr, nullptr,
-         napi_default, nullptr },
-        {"testTextInputInputFilter002", nullptr, TestTextInputInputFilter002, nullptr, nullptr, nullptr,
          napi_default, nullptr },
         {"testTextInputShowKeyboardOnFocus001", nullptr, TestTextInputShowKeyboardOnFocus001, nullptr, nullptr,
          nullptr, napi_default, nullptr },

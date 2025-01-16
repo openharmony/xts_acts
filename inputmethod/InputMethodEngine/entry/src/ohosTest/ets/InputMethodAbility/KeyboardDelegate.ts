@@ -263,6 +263,10 @@ export class KeyboardDelegate {
           console.info(TAG + '====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 event:' + data.event);
           that.Sub_Misc_inputMethod_getEditorAttribute_sync_0231();
           break;
+        case 233:
+          console.info(TAG + '====>Sub_Misc_inputMethod_getEditorAttribute_sync_0233 event:' + data.event);
+          that.Sub_Misc_inputMethod_getEditorAttribute_sync_0233();
+          break;
         case 240:
           console.info(TAG + '====>Sub_Misc_inputMethod_moveCursor_sync_0240 event:' + data.event);
           that.Sub_Misc_inputMethod_moveCursor_sync_0240();
@@ -1439,6 +1443,23 @@ export class KeyboardDelegate {
       JSON.stringify(err));
     }
     commoneventmanager.publish("Sub_Misc_inputMethod_getEditorAttribute_sync_0231", commonEventPublishData,
+      this.publishCallback);
+  }
+
+  async Sub_Misc_inputMethod_getEditorAttribute_sync_0233() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethod_getEditorAttribute_sync_0233 data');
+    let commonEventPublishData = {
+      data: "FAILED"
+    };
+    let attribute = this.InputClient.getEditorAttributeSync();
+    console.info(TAG + '====>Sub_Misc_inputMethod_getEditorAttribute_sync_0233 getEditorAttributeSync: ' +
+    JSON.stringify(attribute));
+    if (attribute.bundleName === 'com.acts.inputmethodengine.test') {
+      commonEventPublishData = {
+        data: "SUCCESS"
+      };
+    }
+    commoneventmanager.publish("Sub_Misc_inputMethod_getEditorAttribute_sync_0233", commonEventPublishData,
       this.publishCallback);
   }
 

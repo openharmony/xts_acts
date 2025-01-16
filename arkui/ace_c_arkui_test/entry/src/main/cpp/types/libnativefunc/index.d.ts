@@ -4681,12 +4681,6 @@ export const testTextAreaBlurOnSubmit002: () => number;
 
 export const testTextAreaBlurOnSubmit003: () => number;
 
-export const testTextAreaSelectionMenuHidden001: () => number;
-
-export const testTextAreaSelectionMenuHidden002: () => number;
-
-export const testTextAreaSelectionMenuHidden003: () => number;
-
 export const testTextAreaShowCounter001: () => number;
 
 export const testTextAreaShowCounter002: () => number;
@@ -4734,12 +4728,6 @@ export const testTextInputBlurOnSubmit001: () => number;
 export const testTextInputBlurOnSubmit002: () => number;
 
 export const testTextInputBlurOnSubmit003: () => number;
-
-export const testTextInputSelectionMenuHidden001: () => number;
-
-export const testTextInputSelectionMenuHidden002: () => number;
-
-export const testTextInputSelectionMenuHidden003: () => number;
 
 export const testTextInputPlaceholder001: () => number;
 
@@ -5056,6 +5044,10 @@ export const testRefreshRefreshing002: () => number;
 export const testRefreshRefreshing003: () => number;
 
 export const testRefreshRefreshing004: () => number;
+
+export const testRefreshContent001: () => number;
+
+export const testRefreshContent002: () => number;
 
 export const testTextAreaBackgroundColor001: () => number;
 
@@ -7051,8 +7043,6 @@ export const testTextAreaMaxLines001 : () => number;
 export const testTextAreaMaxLines002 : () => number;
 export const testTextAreaMaxLines003 : () => number;
 export const testTextAreaMaxLines004 : () => number;
-export const testTextAreaInputFilter001 : () => number;
-export const testTextAreaInputFilter002 : () => number;
 export const testTextAreaEnterKeyType001 : () => number;
 export const testTextAreaEnterKeyType002 : () => number;
 export const testTextAreaEnterKeyType003 : () => number;
@@ -7187,8 +7177,6 @@ export const testTextInputNumberOfLines001 : () => number;
 export const testTextInputNumberOfLines002 : () => number;
 export const testTextInputNumberOfLines003 : () => number;
 export const testTextInputNumberOfLines004 : () => number;
-export const testTextInputInputFilter001 : () => number;
-export const testTextInputInputFilter002 : () => number;
 export const testTextInputShowKeyboardOnFocus001 : () => number;
 export const testTextInputShowKeyboardOnFocus002 : () => number;
 export const testTextInputShowKeyboardOnFocus003 : () => number;

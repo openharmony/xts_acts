@@ -21,10 +21,10 @@ import nativeRender from 'libnativerender.so'
 async function flingComponentV(key: string, isForward: boolean, speed: number = 500, distance: number = 40) {
   let driver = Driver.create();
   let rect = Utils.getComponentRect(key);
-  let centerX = Utils.getRectHorizontalCenterX(rect)
-  let centerY = Utils.getRectVerticalCenterY(rect)
-  let Y1 = centerY - distance;
-  let Y2 = centerY + distance;
+  let centerX = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect));
+  let centerY = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect));
+  let Y1 = Math.round(centerY - vp2px(distance));
+  let Y2 = Math.round(centerY + vp2px(distance));
   let stepLen = 20;
   if (isForward) {
     await driver.fling({

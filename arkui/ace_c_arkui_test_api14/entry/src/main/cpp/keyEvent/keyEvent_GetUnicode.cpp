@@ -48,8 +48,7 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
     auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-
-    if (type != -1) {
+    if (type == 0) {
         ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
         ArkUI_AttributeItem background_color_item = {background_color_value,
                                                      sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};

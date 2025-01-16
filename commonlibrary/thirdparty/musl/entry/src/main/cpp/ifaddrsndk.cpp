@@ -14,38 +14,55 @@
  */
 
 #include "napi/native_api.h"
+#include <cerrno>
 #include <ifaddrs.h>
 #include <js_native_api_types.h>
 #include <net/if.h>
 #include <sys/inotify.h>
 #include <utmp.h>
 #include <uv.h>
+#include <hilog/log.h>
 
 #define NO_ERR 0
 #define SUCCESS 1
 #define FAIL (-1)
+
+#undef LOG_DOMAIN
+#undef LOG_TAG
+#define LOG_DOMAIN 0xFEFE
+#define LOG_TAG "MUSL_LIBCTEST"
+
 static napi_value Getifaddrs(napi_env env, napi_callback_info info)
 {
     struct ifaddrs *ifc;
-    int ret = getifaddrs(&ifc);
     napi_value result = nullptr;
+    errno = 0;
+    int ret = getifaddrs(&ifc);
+    if (ret != NO_ERR) {
+        OH_LOG_INFO(LOG_APP, "Getifaddrs getifaddrs failed: ret %{public}d errno : %{public}d", ret, errno);
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
     napi_create_int32(env, ret, &result);
     freeifaddrs(ifc);
     return result;
 }
 static napi_value Freeifaddrs(napi_env env, napi_callback_info info)
 {
+    napi_value result = nullptr;
     errno = NO_ERR;
     struct ifaddrs *ifc;
-    int gitInfo = getifaddrs(&ifc);
-    if (gitInfo == NO_ERR) {
-        freeifaddrs(ifc);
+    int res = getifaddrs(&ifc);
+    if (res != NO_ERR) {
+        OH_LOG_INFO(LOG_APP, "Freeifaddrs getifaddrs failed: res %{public}d errno : %{public}d", res, errno);
+        napi_create_int32(env, FAIL, &result);
+        return result;
     }
+    freeifaddrs(ifc);
     int ret = FAIL;
     if (errno == NO_ERR) {
         ret = SUCCESS;
     }
-    napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }

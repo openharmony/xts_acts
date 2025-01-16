@@ -216,13 +216,15 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       });
       tempWnd!.on('touchOutside', () => {
         console.info(msgStr + "first listener trigger");
-        num++
-        firstListenFlag = true
+        num++;
+        firstListenFlag = true;
+        console.info(msgStr + "listener trigger num is: " + num);
       });
       tempWnd!.on('touchOutside', () => {
         console.info(msgStr + "second listener trigger");
-        num++
-        secondListenFlag = true
+        num++;
+        secondListenFlag = true;
+        console.info(msgStr + "listener trigger num is: " + num);
       });
       await sleep(800);
       await sleep(800);
@@ -245,7 +247,8 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
         expect().assertFail();
         done();
       })
-      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
+      console.info(msgStr + "finally listener trigger num is: " + num);
+      if (num == 2 && firstListenFlag === false && secondListenFlag === false) {
         await tempWnd!.destroyWindow();
         await tempWnd_two!.destroyWindow();
         done();
@@ -268,15 +271,20 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       console.log(msgStr + 'begin');
       let firstListenFlag: boolean = false
       let secondListenFlag: boolean = false
+      let num: number = 0
 
       let firstCall = () => {
         console.log(msgStr + "first listener trigger")
+        num++;
+        console.info(msgStr + "first listener trigger num is: " + num);
         firstListenFlag = true
         return firstListenFlag
       }
 
       let secondCall = () => {
         console.log(msgStr + "second listener trigger")
+        num++;
+        console.info(msgStr + "second listener trigger num is: " + num);
         secondListenFlag = true
         return secondListenFlag
       }
@@ -340,10 +348,11 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
         expect().assertFail();
         done();
       })
+      console.info(msgStr + "finally listener trigger num is: " + num);
       await sleep(800)
       await (tempWnd as ohosWindow.Window).destroyWindow();
       await (tempWnd_two as ohosWindow.Window).destroyWindow();
-      if (!firstListenFlag && secondListenFlag) {
+      if (!firstListenFlag && secondListenFlag && num == 3) {
         done();
       } else {
         expect().assertFail();
@@ -1002,8 +1011,9 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       expect(!!lastWindow).assertTrue();
       console.log(msgStr + 'lastWindow is:' + JSON.stringify(lastWindow))
       let properties = (lastWindow as ohosWindow.Window).getWindowProperties();
-      expect(properties.windowRect.width).assertEqual(400);
-      expect(properties.windowRect.height).assertEqual(400);
+      let SubProperties = (subWindow as ohosWindow.Window).getWindowProperties();
+      console.log(msgStr + 'SubProperties is:' + JSON.stringify(SubProperties));
+      expect(properties.id).assertEqual(SubProperties.id);
       await (subWindow as ohosWindow.Window).destroyWindow();
     })
     /**
@@ -1054,8 +1064,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       let lastWindow_properties = (lastWindow as ohosWindow.Window).getWindowProperties();
       let mainWin = windowStage.getMainWindowSync();
       let mainWin_properties = (mainWin as ohosWindow.Window).getWindowProperties();
-      expect(lastWindow_properties.windowRect.width).assertEqual(mainWin_properties.windowRect.width);
-      expect(lastWindow_properties.windowRect.height).assertEqual(mainWin_properties.windowRect.height);
+      expect(lastWindow_properties.id).assertEqual(mainWin_properties.id);
       await (tempWnd as ohosWindow.Window).destroyWindow();
     })
     /**

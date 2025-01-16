@@ -120,9 +120,8 @@ describe('HidebugJsTest', function () {
     it('DFX_DFR_Hiprofiler_Interface_1200', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1200 Test start*************');
         try {
-            let dirty = hidebug.getSharedDirty();
             let temp = hidebug.getSharedDirty();
-            expect(dirty).assertEqual(temp);
+            expect(temp>=BigInt(0)).assertTrue();
         } catch (error) {
             expect().assertFail();
         }

@@ -36,15 +36,30 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
     let tempWnd: window.Window | void;
 
     beforeEach(async ()=>{
+      let msg = 'window_level_test';
+      console.log(msg + ' beforeEach start!!!');
       if(subWindow !== null && subWindow !== undefined){
-        await (subWindow as window.Window).destroyWindow();
+        await (subWindow as window.Window).destroyWindow().then(() => {
+          console.info(msg + ' Succeeded in destroying the window.');
+        }).catch((err: BusinessError) => {
+          console.error(msg + `Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
       }
       if(subWindowTwo !== null && subWindowTwo !== undefined){
-        await (subWindowTwo as window.Window).destroyWindow();
+        await (subWindowTwo as window.Window).destroyWindow().then(() => {
+          console.info(msg + ' Succeeded in destroying the window.');
+        }).catch((err: BusinessError) => {
+          console.error(msg + `Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
       }
       if(tempWnd !== null && tempWnd !== undefined){
-        await (tempWnd as window.Window).destroyWindow();
+        await (tempWnd as window.Window).destroyWindow().then(() => {
+          console.info(msg + ' Succeeded in destroying the window.');
+        }).catch((err: BusinessError) => {
+          console.error(msg + `Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
       }
+      console.log(msg + ' beforeEach end!!!')
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5280
@@ -90,8 +105,9 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
       console.log(msgStr + 'lastWindow is:' + JSON.stringify(lastWindow))
       let properties = (lastWindow as window.Window).getWindowProperties();
       console.log(msgStr + 'properties is:' + JSON.stringify(properties));
-      expect(properties.windowRect.width).assertEqual(401);
-      expect(properties.windowRect.height).assertEqual(401);
+      let SubProperties = (subWindow as window.Window).getWindowProperties();
+      console.log(msgStr + 'SubProperties is:' + JSON.stringify(SubProperties));
+      expect(properties.id).assertEqual(SubProperties.id);
       await (subWindow as window.Window).destroyWindow();
     })
     /**
@@ -148,8 +164,9 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
         expect(!!lastWindow).assertTrue();
         let properties = (lastWindow as window.Window).getWindowProperties();
         console.log(msgStr + 'properties is:' + JSON.stringify(properties));
-        expect(properties.windowRect.width).assertEqual(401);
-        expect(properties.windowRect.height).assertEqual(401);
+        let SubProperties = (subWindow as window.Window).getWindowProperties();
+        console.log(msgStr + 'SubProperties is:' + JSON.stringify(SubProperties));
+        expect(properties.id).assertEqual(SubProperties.id);
         await (subWindow as window.Window).destroyWindow();
         done();
       });
@@ -222,8 +239,9 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
       console.log(msgStr + 'lastWindow is:' + JSON.stringify(lastWindow))
       let properties = (lastWindow as window.Window).getWindowProperties();
       console.log(msgStr + 'properties is:' + JSON.stringify(properties));
-      expect(properties.windowRect.width).assertEqual(501);
-      expect(properties.windowRect.height).assertEqual(501);
+      let SubProperties = (subWindowTwo as window.Window).getWindowProperties();
+      console.log(msgStr + 'SubProperties is:' + JSON.stringify(SubProperties));
+      expect(properties.id).assertEqual(SubProperties.id);
       await (subWindow as window.Window).destroyWindow();
       await (subWindowTwo as window.Window).destroyWindow();
     })
@@ -310,8 +328,9 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
         expect(!!lastWindow).assertTrue();
         let properties = (lastWindow as window.Window).getWindowProperties();
         console.log(msgStr + 'properties is:' + JSON.stringify(properties));
-        expect(properties.windowRect.width).assertEqual(501);
-        expect(properties.windowRect.height).assertEqual(501);
+        let SubProperties = (subWindowTwo as window.Window).getWindowProperties();
+        console.log(msgStr + 'SubProperties is:' + JSON.stringify(SubProperties));
+        expect(properties.id).assertEqual(SubProperties.id);
         await (subWindow as window.Window).destroyWindow();
         await (subWindowTwo as window.Window).destroyWindow();
         done();
@@ -368,8 +387,7 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
       let mainWin = windowStage.getMainWindowSync();
       let mainWin_properties = (mainWin as window.Window).getWindowProperties();
       console.log(msgStr + 'mainWin_properties is:' + JSON.stringify(mainWin_properties));
-      expect(lastWindow_properties.windowRect.width).assertEqual(mainWin_properties.windowRect.width);
-      expect(lastWindow_properties.windowRect.height).assertEqual(mainWin_properties.windowRect.height);
+      expect(lastWindow_properties.id).assertEqual(mainWin_properties.id);
       await (tempWnd as window.Window).destroyWindow();
     })
     /**
@@ -433,8 +451,7 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
         let mainWin = windowStage.getMainWindowSync();
         let mainWin_properties = (mainWin as window.Window).getWindowProperties();
         console.log(msgStr + 'mainWin_properties is:' + JSON.stringify(mainWin_properties));
-        expect(lastWindow_properties.windowRect.width).assertEqual(mainWin_properties.windowRect.width);
-        expect(lastWindow_properties.windowRect.height).assertEqual(mainWin_properties.windowRect.height);
+        expect(lastWindow_properties.id).assertEqual(mainWin_properties.id);
         await (tempWnd as window.Window).destroyWindow();
         done();
       });

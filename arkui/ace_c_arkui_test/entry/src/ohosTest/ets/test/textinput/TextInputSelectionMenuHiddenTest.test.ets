@@ -13,56 +13,34 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { beforeAll, describe, expect, it } from '@ohos/hypium';
 import Utils from '../common/Utils';
-import nativeFunc from 'libnativefunc.so'
-
+import nativeRender from 'libnativerender.so'
+import { Driver, ON } from '@ohos.UiTest';
 export default function textInputSelectionMenuHiddenTest() {
 
   describe('TextInputSelectionMenuHiddenTest', () => {
 
-    afterEach(async (done: Function) => {
-      await Utils.sleep(100);
-      done();
+    let PAGE_TAG = 'TextInputSelectionMenuHiddenTest';
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_TEXTINPUT_SELECTION_MENU_HIDDEN_0001
+    * @tc.name       : testTextInputSelectionMenuHidden001
+    * @tc.desc       : test onInsert event callback
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testTextInputSelectionMenuHidden001', 0, async (done: Function) => {
+      await Utils.pushPage(`textinput/${PAGE_TAG}`);
+      focusControl.requestFocus('textInput1')
+      await Utils.sleep(1000)
+      await Utils.clickComponent('textInput1')
+      await Utils.sleep(1000)
+      let driver:Driver = Driver.create();
+      await driver.assertComponentExist(ON.text('全选'));
+      done()
+      done()
     })
 
-    /*
-     * @tc.number: SUB_ARKUI_CAPI_TEXTINPUT_SELECTIONMENUHIDDEN_0100
-     * @tc.name: testTextInputSelectionMenuHidden001
-     * @tc.desc: testing SelectionMenuHidden for textInput with normal value
-     * @tc.size: MediumTest
-     * @tc.type: Function
-     * @tc.level: Level 1
-     */
-    it('testTextInputSelectionMenuHidden001', 0, async (done: Function) => {
-      expect(nativeFunc.testTextInputSelectionMenuHidden001()).assertEqual(0)
-      done();
-    });
-
-    /*
-     * @tc.number: SUB_ARKUI_CAPI_TEXTINPUT_SELECTIONMENUHIDDEN_0200
-     * @tc.name: testTextInputSelectionMenuHidden002
-     * @tc.desc: testing SelectionMenuHidden for textInput with boundary value
-     * @tc.size: MediumTest
-     * @tc.type: Function
-     * @tc.level: Level 1
-     */
-    it('testTextInputSelectionMenuHidden002', 0, async (done: Function) => {
-      expect(nativeFunc.testTextInputSelectionMenuHidden002()).assertEqual(0)
-      done();
-    });
-
-    /*
-     * @tc.number: SUB_ARKUI_CAPI_TEXTINPUT_SELECTIONMENUHIDDEN_0300
-     * @tc.name: testTextInputSelectionMenuHidden003
-     * @tc.desc: testing SelectionMenuHidden for textInput with abnormal value
-     * @tc.size: MediumTest
-     * @tc.type: Function
-     * @tc.level: Level 1
-     */
-    it('testTextInputSelectionMenuHidden003', 0, async (done: Function) => {
-      expect(nativeFunc.testTextInputSelectionMenuHidden003()).assertEqual(0)
-      done();
-    });
   })
 }

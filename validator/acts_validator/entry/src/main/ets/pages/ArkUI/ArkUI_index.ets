@@ -66,6 +66,8 @@ struct IndexPage {
     { title: 'CanvasShadowColor', uri: 'pages/ArkUI/CanvasShadowColor' },
     { title: 'CanvasShadowOffsetX', uri: 'pages/ArkUI/CanvasShadowOffsetX' },
     { title: 'CanvasShadowOffsetY', uri: 'pages/ArkUI/CanvasShadowOffsetY' },
+    { title: 'chipTest', uri: 'pages/ArkUI/chipTest' },
+    { title: 'chipGroupTest', uri: 'pages/ArkUI/chipGroupTest' },
     { title: 'DatePickerDialog', uri: 'pages/ArkUI/DatePickerDialog' },
     { title: 'Marquee', uri: 'pages/ArkUI/Marquee' },
     { title: 'PatternLock', uri: 'pages/ArkUI/PatternLock' },

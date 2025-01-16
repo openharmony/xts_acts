@@ -227,5 +227,19 @@ export default function nativeEffectTest() {
       expect(result).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterBlurWithTileMode001
+     * @tc.name       : testOHFilterBlurWithTileMode001
+     * @tc.desc       : test OH_Filter_BlurWithTileMode001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHFilterBlurWithTileMode001', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHFilterBlurWithTileMode001();
+      expect(result).assertEqual(0);
+      done();
+    });
   })
 }

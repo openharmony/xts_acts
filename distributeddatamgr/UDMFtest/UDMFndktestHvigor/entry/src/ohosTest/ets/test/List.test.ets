@@ -17,6 +17,7 @@ import UdmfNdkTest from './UdmfNdkTest';
 import UdsNdkTest from './UdsNdkTest';
 import UtdNdkTest from './UtdNdkTest';
 import ContentNdkTest from './ContentNdkTest';
+import UdsNdkexTest from './udsndkex.test';
 
 export default function testsuite() {
   pasteboardNdkTest();
@@ -24,4 +25,5 @@ export default function testsuite() {
   UdsNdkTest();
   UtdNdkTest();
   ContentNdkTest();
+  UdsNdkexTest();
 }

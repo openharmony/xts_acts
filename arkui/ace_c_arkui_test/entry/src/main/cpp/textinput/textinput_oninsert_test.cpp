@@ -58,6 +58,46 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1* nodeAPI)
 
     return nodeHandle;
 }
+static void processOnWillInsertEvent(
+    ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeEvent* event, ArkUI_NodeHandle nodeHandler)
+{
+    ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_GREEN } };
+    ArkUI_AttributeItem background_color_item = { background_color_value,
+        sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
+    nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+    ArkUI_NumberValue value[PARAM_1];
+    OH_ArkUI_NodeEvent_GetNumberValue(event, PARAM_0, value);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+        "processOnWillInsertEvent NODE_TEXT_INPUT_ON_WILL_INSERT insertOffset: %{public}f", value[PARAM_0].f32);
+    PushBackIntToData(TextInputOnInsertTest::insertOffset, value[PARAM_0].f32);
+    char insert[PARAM_64];
+    char* insertValue[PARAM_1] = { insert };
+    int32_t bufSize[PARAM_1] = { PARAM_64 };
+    OH_ArkUI_NodeEvent_GetStringValue(event, PARAM_0, insertValue, bufSize);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+        "processOnWillInsertEvent NODE_TEXT_INPUT_ON_WILL_INSERT insertValue: %{public}s", insertValue[PARAM_0]);
+    ArkUI_NumberValue returnValue[] = { { .i32 = true } };
+    OH_ArkUI_NodeEvent_SetReturnNumberValue(event, returnValue, PARAM_1);
+}
+static void processOnDidInsertEvent(
+    ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeEvent* event, ArkUI_NodeHandle nodeHandler)
+{
+    ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_YELLOW } };
+    ArkUI_AttributeItem background_color_item = { background_color_value,
+        sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
+    nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+    ArkUI_NumberValue value[PARAM_1];
+    OH_ArkUI_NodeEvent_GetNumberValue(event, 0, value);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+        "processOnDidInsertEvent NODE_TEXT_INPUT_ON_DID_INSERT insertOffset: %{public}f", value[PARAM_0].f32);
+    PushBackIntToData(TextInputOnInsertTest::insertOffset, value[PARAM_0].f32);
+    char insert[PARAM_64];
+    char* insertValue[PARAM_1] = { insert };
+    int32_t bufSize[PARAM_1] = { PARAM_64 };
+    OH_ArkUI_NodeEvent_GetStringValue(event, PARAM_0, insertValue, bufSize);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+        "processOnDidInsertEvent NODE_TEXT_INPUT_ON_DID_INSERT insertValue: %{public}s", insertValue[PARAM_0]);
+}
 static void OnEventReceive(ArkUI_NodeEvent* event)
 {
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TextInputOnInsertTest", "TextInputOnInsertTest OnEventReceive");
@@ -66,7 +106,6 @@ static void OnEventReceive(ArkUI_NodeEvent* event)
             "TextInputOnInsertTest OnEventReceive: event is null");
         return;
     }
-
     int32_t eventId = OH_ArkUI_NodeEvent_GetTargetId(event);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TextInputOnInsertTest",
         "TextInputOnInsertTest OnEventReceive eventId: %{public}d", eventId);
@@ -74,26 +113,13 @@ static void OnEventReceive(ArkUI_NodeEvent* event)
     ArkUI_NativeNodeAPI_1* nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
     auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-    ArkUI_NumberValue return_value[] = { { .i32 = 1 } };
-    OH_ArkUI_NodeEvent_SetReturnNumberValue(event, return_value, 1);
     switch (eventId) {
         case ON_DID_INSERT_ID: {
-            ArkUI_NumberValue insertValue[] = { { .f32 = 0 } };
-            OH_ArkUI_NodeEvent_GetNumberValue(event, 0, insertValue);
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TextInputOnInsertTest",
-                "TextInputOnInsertTest ON_DID_INSERT_ID insertValue: %{public}f", insertValue[PARAM_0].f32);
-            PushBackIntToData(TextInputOnInsertTest::insertOffset, insertValue[PARAM_0].f32);
-            ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_GREEN } };
-            ArkUI_AttributeItem background_color_item = { background_color_value,
-                sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
-            nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+            processOnDidInsertEvent(nodeAPI, event, nodeHandler);
             return;
         }
         case ON_WILL_INSERT_ID: {
-            ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_BLUE } };
-            ArkUI_AttributeItem background_color_item = { background_color_value,
-                sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
-            nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+            processOnWillInsertEvent(nodeAPI, event, nodeHandler);
             return;
         }
         default:
@@ -135,7 +161,6 @@ napi_value TextInputOnInsertTest::CreateNativeNode(napi_env env, napi_callback_i
     nodeAPI->setAttribute(textInput, NODE_TEXT_INPUT_TEXT, &content_item);
 
     nodeAPI->addChild(column, textInput);
-
     nodeAPI->registerNodeEventReceiver(&OnEventReceive);
 
     std::string id(xComponentID);
@@ -144,13 +169,11 @@ napi_value TextInputOnInsertTest::CreateNativeNode(napi_env env, napi_callback_i
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TextInputOnInsertTest",
             "TextInputOnInsertTest OH_NativeXComponent_AttachNativeRootNode failed");
     }
-
     napi_value exports;
     if (napi_create_object(env, &exports) != napi_ok) {
         napi_throw_type_error(env, nullptr, "TextInputOnInsertTest napi_create_object failed");
         return nullptr;
     }
-
     return exports;
 }
 napi_value TextInputOnInsertTest::GetTextInputInsertData(napi_env env, napi_callback_info info)

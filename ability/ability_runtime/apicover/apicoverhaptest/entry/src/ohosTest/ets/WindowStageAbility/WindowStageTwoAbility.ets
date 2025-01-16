@@ -22,9 +22,11 @@ let onForegroundResult1: boolean = false;
 let onForegroundResult2: boolean = false;
 let onBackgroundResult: boolean = false;
 let onNewWantResult: boolean = false;
-
+function sleep(ms: number) {
+  return new Promise<void>(resolve => setTimeout(resolve, ms));
+}
 export default class TwoAbility extends UIAbility {
-  onDestroy() {
+  async onDestroy(): Promise<void>{
     hilog.info(0x0000, 'testTag', '%{public}s', 'TwoAbility onDestroy');
     commonEventManager.publish('ACTS_GetWindowStage', {
       parameters: {
@@ -36,6 +38,7 @@ export default class TwoAbility extends UIAbility {
     }, (err) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'OneAbility commonEventManager publish end' + JSON.stringify(err));
     })
+    await sleep(1000);
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {

@@ -31,12 +31,12 @@ export default function windowImmersiveTest() {
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
-      isPCStatus = settings.getValueSync(context,'isStatusBarExist','')
+      isPCStatus = settings.getValueSync(context,'isStatusBarExist','',settings.domainName.USER_PROPERTY)
       //isPCStatus == '' 非PC设备
       //isPCStatus == '1' PC设备状态栏dock未融合
       //isPCStatus == '0' PC设备状态栏dock融合
       console.info(`beforeAll isPCStatus: ${isPCStatus}`);
-      isAutoWindow = settings.getValueSync(context,'window_pcmode_switch_status','');
+      isAutoWindow = settings.getValueSync(context,'window_pcmode_switch_status','',settings.domainName.DEVICE_SHARED);
       //isAutoWindow == '' 非PAD设备
       //isAutoWindow == 'true' PAD设备自由多窗模式
       //isAutoWindow == 'false' PAD设备非自由多窗模式
@@ -502,7 +502,7 @@ export default function windowImmersiveTest() {
     it('testOnSystemAvoidAreaChange', 0, async (done: Function) => {
       let caseName = 'TestOnSystemAvoidAreaChange';
       try {
-        if(isPCStatus == ''|| isPCStatus == '1'){
+        if(deviceType != 'wearable' && (isPCStatus == ''|| isPCStatus == '1')){
           let windowClass = windowStage.getMainWindowSync();
           windowClass.on('systemAvoidAreaChange', (data) => {
           console.info(`${caseName} Succeeded in enabling the listener for system avoid area changes. Data: ${JSON.stringify(data)}`);
@@ -539,7 +539,7 @@ export default function windowImmersiveTest() {
     it('testOnRepeatSystemAvoidAreaChange', 0, async (done: Function) => {
       let caseName = 'TestOnRepeatSystemAvoidAreaChange';
       try {
-        if(isPCStatus == ''|| isPCStatus == '1'){
+        if(deviceType != 'wearable' && (isPCStatus == ''|| isPCStatus == '1')){
           let windowClass = windowStage.getMainWindowSync();
           const callback1 = () => {
             console.info(`${caseName} callback1 Succeeded in enabling the listener for system avoid area changes.`);
@@ -626,7 +626,7 @@ export default function windowImmersiveTest() {
     it('testOnAvoidAreaChange', 0, async (done: Function) => {
       let caseName = 'TestOnAvoidAreaChange';
       try {
-        if(isPCStatus == ''|| isPCStatus == '1'){
+        if(deviceType != 'wearable' && (isPCStatus == ''|| isPCStatus == '1')){
           let windowClass = windowStage.getMainWindowSync();
           windowClass.on('avoidAreaChange', (data) => {
           console.info(`${caseName} Succeeded in enabling the listener for avoid area changes. Data: ${JSON.stringify(data)}`);
@@ -1660,23 +1660,27 @@ export default function windowImmersiveTest() {
      * @tc.desc      To verify the function of enabling and disabling lawful interception in the system and window
      */
      it('testOnOff_WindowSizeChange_Callback', 0, async (done: Function) => {
-      let msgStr = 'onOff_Test_002';
+      let msgStr = 'testOnOff_WindowSizeChange_Callback';
       console.log(msgStr + ' begin');
       let height:Number;
+      let names: Array<'status' | 'navigation'> = ['status'];
       const systemAvoidAreaChangeCallback = (data:window.AvoidArea) => {
-        console.log('windowTest OnOffTest2 callback  ' + JSON.stringify(data));
+        console.log(msgStr +' :' + JSON.stringify(data));
             height = data.bottomRect.height;
       };
-      if(isPCStatus == ''|| isPCStatus == '1'){
+      if(deviceType != 'wearable' &&(isPCStatus == ''|| isPCStatus == '1')){
         windowStage.getMainWindow((err, data) => {
               if (err.code != 0) {
                   console.log(msgStr + ' getTopWindow callback fail ' + JSON.stringify(err.code));
                   expect().assertFail();
                   done();
               } else {
-                  expect(data != null).assertTrue();
-                  data.on('systemAvoidAreaChange', systemAvoidAreaChangeCallback);
-                  data.setLayoutFullScreen(false, (err) => {
+                expect(data != null).assertTrue();
+                  let promise = data.setWindowSystemBarEnable(names);
+                    promise.then(() => {
+                    console.info(msgStr+ 'Succeeded in setting the system bar to be invisible.');
+                    data.on('systemAvoidAreaChange', systemAvoidAreaChangeCallback);
+                    data.setLayoutFullScreen(false, (err) => {
                       console.log(msgStr + ' setLayoutFullScreen(false) err info is ' + JSON.stringify(err));
                       data.setLayoutFullScreen(true, (err) => {
                           console.log(msgStr + ' setLayoutFullScreen(true) err info is ' + JSON.stringify(err));
@@ -1705,6 +1709,12 @@ export default function windowImmersiveTest() {
                           })
                       })
                   })
+                }).catch((err: BusinessError) => {
+                  console.error(msgStr+`Failed to set the system bar to be invisible. Cause code: ${err.code}, message: ${err.message}`);
+                  expect().assertFail();
+                                              done();
+                });
+                  
               }
           })
       }
