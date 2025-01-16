@@ -144,7 +144,6 @@ export default function ActsCommonEventSubscribeNDKTest() {
         let result1 = testNapi.create_subscribe_info(arrayStr);
         hilog.info(0x0000, 'testTag', 'The array is empty, create subscribe info : %{public}d', result1);
         expect(result1).assertEqual(401)
-        console.info("result1:" + result1 )
         testNapi.create_subscriber();
         let result2 = testNapi.common_event_subscribe();
         expect(result2).assertEqual(401)
@@ -153,14 +152,11 @@ export default function ActsCommonEventSubscribeNDKTest() {
         console.info("result2:" + result2 )
         for (let i = 0; i < 199; i++) {
           testNapi.create_subscribe_info(arrayStr2);
-          console.info("Sub_Notification_Ces_Subscriber_NDK_0005 create_subscribe_info" + i  )
           testNapi.set_publisher_permission("ohos.permission.NOTIFICATION_CONTROLLER");
           testNapi.set_publisher_bundleName("com.example.myapplication444");
-          console.info("Sub_Notification_Ces_Subscriber_NDK_0005 create_subscriber" + i )
           testNapi.create_subscriber();
           if (i == 198){
             let result3 = testNapi.common_event_subscribe();
-            console.info("Sub_Notification_Ces_Subscriber_NDK_0005 testcase" + i)
             if (result3 == 0) {
               testNapi.create_subscriber();
               result3 = testNapi.common_event_subscribe();
