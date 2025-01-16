@@ -27,7 +27,8 @@ const CREATE_TABLE_TEST = "CREATE VIRTUAL TABLE IF NOT EXISTS test USING fts4(na
 
 const STORE_CONFIG: data_Rdb.StoreConfig = {
     name: RDB_DB_ICUNAME,
-    securityLevel: data_Rdb.SecurityLevel.S1
+    securityLevel: data_Rdb.SecurityLevel.S1,
+	tokenizer: data_Rdb.Tokenizer.ICU_TOKENIZER
 }
 
 let rdbStore:data_Rdb.RdbStore;
