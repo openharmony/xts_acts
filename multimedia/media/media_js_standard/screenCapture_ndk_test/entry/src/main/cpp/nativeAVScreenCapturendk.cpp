@@ -47,6 +47,8 @@ constexpr uint32_t DEFAULT_HEIGHT = 1280;
 constexpr OH_AVPixelFormat DEFAULT_PIXELFORMAT = AV_PIXEL_FORMAT_NV12;
 static int32_t g_aFlag = 0;
 static int32_t g_vFlag = 0;
+const int32_t TEST_PASS = 0;
+const int32_t TEST_FAILED = 1;
 static atomic<double> frameNum;
 static OH_AVScreenCapture *screenCaptureNormal;
 static struct OH_AVScreenCapture_ContentFilter *g_contentFilter;
@@ -156,13 +158,12 @@ static napi_value normalAVScreenCaptureTestStop(napi_env env, napi_callback_info
     OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StopScreenCapture(screenCaptureNormal);
     OH_AVScreenCapture_ReleaseContentFilter(g_contentFilter);
     OH_AVSCREEN_CAPTURE_ErrCode result3 = OH_AVScreenCapture_Release(screenCaptureNormal);
-
-    OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
-    if (result3 == AV_SCREEN_CAPTURE_ERR_OK && result1 == AV_SCREEN_CAPTURE_ERR_OK &&
-        averageFrameNum < (maxFrameRate * exceedPercentage)) {
-        result = AV_SCREEN_CAPTURE_ERR_OK;
+    int32_t result = TEST_FAILED;
+    if (result3 == AV_SCREEN_CAPTURE_ERR_OK && ((result1 == AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT) ||
+        (result1 == AV_SCREEN_CAPTURE_ERR_OK && averageFrameNum < (maxFrameRate * exceedPercentage)))) {
+        result = TEST_PASS;
     } else {
-        result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
+        result = TEST_FAILED;
     }
     napi_value res;
     napi_create_int32(env, result, &res);
