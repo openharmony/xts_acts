@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,10 +13,15 @@
  * limitations under the License.
  */
 
-import abilityTest from './Ability.test'
-import uiExtContentSessionTest from './UIExtContentSession.test';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
 
-export default function testsuite() {
-  uiExtContentSessionTest();
-  abilityTest();
+export default class EntryBackupAbility extends BackupExtensionAbility {
+  async onBackup() {
+    hilog.info(0x0000, 'testTag', 'onBackup ok');
+  }
+
+  async onRestore(bundleVersion: BundleVersion) {
+    hilog.info(0x0000, 'testTag', 'onRestore ok %{public}s', JSON.stringify(bundleVersion));
+  }
 }
