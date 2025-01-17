@@ -17,6 +17,7 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import * as aw from './aw/AssetAwSync';
 import asset from '@ohos.security.asset';
+import deviceInfo from '@ohos.deviceInfo';
 
 
 export default function AssetSynctest() {
