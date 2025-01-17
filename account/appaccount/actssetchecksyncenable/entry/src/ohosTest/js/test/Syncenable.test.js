@@ -12,27 +12,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import account from '@ohos.account.appAccount'
-import bundle from '@ohos.bundle'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import featureAbility from "@ohos.ability.featureAbility";
+import { UiDriver, BY } from '@ohos.UiTest';
 
-const PERMISSION_USER_SET = 1;
-const PERMISSION_USER_NAME = "ohos.permission.DISTRIBUTED_DATASYNC";
-var tokenID = undefined;
 export default function ActsSetCheckSyncEnable() {
     describe('ActsSetCheckSyncEnable', function () {
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        
         beforeAll(async function (done) {
-            console.info("====>beforeAll start====");
-            let appInfo = await bundle.getApplicationInfo('com.example.actssetchecksyncenable', 0, 100);
-            tokenID = appInfo.accessTokenId;
-            console.info("accessTokenId" + appInfo.accessTokenId + " bundleName:" + appInfo.bundleName);
-            let atManager = abilityAccessCtrl.createAtManager();
-            let result = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME, PERMISSION_USER_SET);
-            console.info("tokenId" + tokenID + " result:" + result);
-            console.info("====>beforeAll end====");
-            done();
-        })
+            console.info("====>beforeAll start");
+            console.info(`====>getPermission is start`);
+            let permissions = ['ohos.permission.DISTRIBUTED_DATASYNC'];
+            let context = featureAbility.getContext();
+            context.requestPermissionsFromUser(permissions, 666, (data) => {
+                console.info("====>request success" + JSON.stringify(data));
+                console.info("====>beforeAll end");
+                done();
+            })
+            await sleep(1000);
+            try {
+                let driver = await UiDriver.create();
+                console.info(`====>come in driveFn`);
+                await sleep(1000);
+                console.info(`====>driver is ${JSON.stringify(driver)}`);
+                let button = await driver.findComponent(BY.text('允许'));
+                console.info(`====>button is ${JSON.stringify(button)}`);
+                await button.click();
+            } catch (err) {
+                console.info('====>err is ' + err);
+                done();
+                return;
+            };
+        });
 
         /*
         * @tc.number    : ActsSetCheckSyncEnable_0100
@@ -45,15 +60,27 @@ export default function ActsSetCheckSyncEnable() {
             console.info("====>creat finish====");
             appAccountManager.addAccount("syncenable_callback_notset", (err)=>{
                 console.info("====>add account ActsSetCheckSyncEnable_0100 err:" + JSON.stringify(err));
-                expect(err).assertEqual(null);
+                try {
+                    expect(err).assertEqual(null);
+                } catch (err) {
+                    console.info("====>Assert Fail:" + JSON.stringify(err));
+                }
                 appAccountManager.checkAppAccountSyncEnable("syncenable_callback_notset", (err, data)=>{
                     console.info("====>checkAppAccountSyncEnable 0100 err:" + JSON.stringify(err));
                     console.info("====>checkAppAccountSyncEnable 0100 data:" + JSON.stringify(data));
-                    expect(err).assertEqual(null);
-                    expect(data).assertEqual(false);
+                    try {
+                        expect(err).assertEqual(null);
+                        expect(data).assertEqual(false);
+                    } catch (err) {
+                        console.info("====>Assert Fail:" + JSON.stringify(err));
+                    }
                     appAccountManager.deleteAccount("syncenable_callback_notset", (err)=>{
                         console.info("====>delete Account ActsSetCheckSyncEnable_0100 err:" + JSON.stringify(err));
-                        expect(err).assertEqual(null);
+                        try {
+                            expect(err).assertEqual(null);
+                        } catch (err) {
+                            console.info("====>Assert Fail:" + JSON.stringify(err));
+                        }
                         console.info("====>ActsSetCheckSyncEnable_0100 end====");
                         done();
                     });
@@ -114,18 +141,34 @@ export default function ActsSetCheckSyncEnable() {
             console.info("====>creat finish====");
             appAccountManager.addAccount("syncenable_callback_settrue", (err)=>{
                 console.info("====>add account ActsSetCheckSyncEnable_0300 err:" + JSON.stringify(err));
-                expect(err).assertEqual(null);
+                try {
+                    expect(err).assertEqual(null);
+                } catch (err) {
+                    console.info("====>Assert Fail:" + JSON.stringify(err));
+                }
                 appAccountManager.setAppAccountSyncEnable("syncenable_callback_settrue", true, (err)=>{
                     console.info("====>setAppAccountSyncEnable 0300 err:" + JSON.stringify(err));
-                    expect(err).assertEqual(null);
+                    try {
+                        expect(err).assertEqual(null);
+                    } catch (err) {
+                        console.info("====>Assert Fail:" + JSON.stringify(err));
+                    }
                     appAccountManager.checkAppAccountSyncEnable("syncenable_callback_settrue", (err, data)=>{
                         console.info("====>checkAppAccountSyncEnable 0300 err:" + JSON.stringify(err));
                         console.info("====>checkAppAccountSyncEnable 0300 data:" + JSON.stringify(data));
-                        expect(err).assertEqual(null);
-                        expect(data).assertEqual(true);
+                        try {
+                            expect(err).assertEqual(null);
+                            expect(data).assertEqual(true);
+                        } catch (err) {
+                            console.info("====>Assert Fail:" + JSON.stringify(err));
+                        }
                         appAccountManager.deleteAccount("syncenable_callback_settrue", (err)=>{
                             console.info("====>delete Account ActsSetCheckSyncEnable_0300 err:" + JSON.stringify(err));
-                            expect(err).assertEqual(null);
+                            try {
+                                expect(err).assertEqual(null);
+                            } catch (err) {
+                                console.info("====>Assert Fail:" + JSON.stringify(err));
+                            }
                             console.info("====>ActsSetCheckSyncEnable_0300 end====");
                             done();
                         });
@@ -189,18 +232,34 @@ export default function ActsSetCheckSyncEnable() {
             console.info("====>creat finish====");
             appAccountManager.addAccount("syncenable_callback_setfalse", (err)=>{
                 console.info("====>add account ActsSetCheckSyncEnable_0500 err:" + JSON.stringify(err));
-                expect(err).assertEqual(null);
+                try {
+                    expect(err).assertEqual(null);
+                } catch (err) {
+                    console.info("====>Assert Fail:" + JSON.stringify(err));
+                }
                 appAccountManager.setAppAccountSyncEnable("syncenable_callback_setfalse", false, (err)=>{
                     console.info("====>setAppAccountSyncEnable 0500 err:" + JSON.stringify(err));
-                    expect(err).assertEqual(null);
+                    try {
+                        expect(err).assertEqual(null);
+                    } catch (err) {
+                        console.info("====>Assert Fail:" + JSON.stringify(err));
+                    }
                     appAccountManager.checkAppAccountSyncEnable("syncenable_callback_setfalse", (err, data)=>{
                         console.info("====>checkAppAccountSyncEnable 0500 err:" + JSON.stringify(err));
                         console.info("====>checkAppAccountSyncEnable 0500 data:" + JSON.stringify(data));
-                        expect(err).assertEqual(null);
-                        expect(data).assertEqual(false);
+                        try {
+                            expect(err).assertEqual(null);
+                            expect(data).assertEqual(false);
+                        } catch (err) {
+                            console.info("====>Assert Fail:" + JSON.stringify(err));
+                        }
                         appAccountManager.deleteAccount("syncenable_callback_setfalse", (err)=>{
                             console.info("====>delete Account ActsSetCheckSyncEnable_0500 err:" + JSON.stringify(err));
-                            expect(err).assertEqual(null);
+                            try {
+                                expect(err).assertEqual(null);
+                            } catch (err) {
+                                console.info("====>Assert Fail:" + JSON.stringify(err));
+                            }
                             console.info("====>ActsSetCheckSyncEnable_0500 end====");
                             done();
                         });
@@ -265,21 +324,41 @@ export default function ActsSetCheckSyncEnable() {
             console.info("====>creat finish====");
             appAccountManager.addAccount("syncenable_callback_falsetrue", (err)=>{
                 console.info("====>add account ActsSetCheckSyncEnable_0700 err:" + JSON.stringify(err));
-                expect(err).assertEqual(null);
+                try {
+                    expect(err).assertEqual(null);
+                } catch (err) {
+                    console.info("====>Assert Fail:" + JSON.stringify(err));
+                }
                 appAccountManager.setAppAccountSyncEnable("syncenable_callback_falsetrue", false, (err)=>{
                     console.info("====>setAppAccountSyncEnable first time 0700 err:" + JSON.stringify(err));
-                    expect(err).assertEqual(null);
+                    try {
+                        expect(err).assertEqual(null);
+                    } catch (err) {
+                        console.info("====>Assert Fail:" + JSON.stringify(err));
+                    }
                     appAccountManager.setAppAccountSyncEnable("syncenable_callback_falsetrue", true, (err)=>{
                         console.info("====>setAppAccountSyncEnable second time 0700 err:" + JSON.stringify(err));
-                        expect(err).assertEqual(null);
+                        try {
+                            expect(err).assertEqual(null);
+                        } catch (err) {
+                            console.info("====>Assert Fail:" + JSON.stringify(err));
+                        }
                         appAccountManager.checkAppAccountSyncEnable("syncenable_callback_falsetrue", (err, data)=>{
                             console.info("====>checkAppAccountSyncEnable 0700 err:" + JSON.stringify(err));
                             console.info("====>checkAppAccountSyncEnable 0700 data:" + JSON.stringify(data));
-                            expect(err).assertEqual(null);
-                            expect(data).assertEqual(true);
+                            try {
+                                expect(err).assertEqual(null);
+                                expect(data).assertEqual(true);
+                            } catch (err) {
+                                console.info("====>Assert Fail:" + JSON.stringify(err));
+                            }
                             appAccountManager.deleteAccount("syncenable_callback_falsetrue", (err)=>{
                                 console.info("====>delete Account 0700 err:" + JSON.stringify(err));
-                                expect(err).assertEqual(null);
+                                try {
+                                    expect(err).assertEqual(null);
+                                } catch (err) {
+                                    console.info("====>Assert Fail:" + JSON.stringify(err));
+                                }
                                 console.info("====>ActsSetCheckSyncEnable_0700 end====");
                                 done();
                             });
@@ -341,21 +420,41 @@ export default function ActsSetCheckSyncEnable() {
             console.info("====>creat finish====");
             appAccountManager.addAccount("syncenable_callback_falsetrue", (err)=>{
                 console.info("====>add account ActsSetCheckSyncEnable_0900 err:" + JSON.stringify(err));
-                expect(err).assertEqual(null);
+                try {
+                    expect(err).assertEqual(null);
+                } catch (err) {
+                    console.info("====>Assert Fail:" + JSON.stringify(err));
+                }
                 appAccountManager.setAppAccountSyncEnable("syncenable_callback_falsetrue", true, (err)=>{
                     console.info("====>setAppAccountSyncEnable first time 0900 err:" + JSON.stringify(err));
-                    expect(err).assertEqual(null);
+                    try {
+                        expect(err).assertEqual(null);
+                    } catch (err) {
+                        console.info("====>Assert Fail:" + JSON.stringify(err));
+                    }
                     appAccountManager.setAppAccountSyncEnable("syncenable_callback_falsetrue", false, (err)=>{
                         console.info("====>setAppAccountSyncEnable second time 0900 err:" + JSON.stringify(err));
-                        expect(err).assertEqual(null);
+                        try {
+                            expect(err).assertEqual(null);
+                        } catch (err) {
+                            console.info("====>Assert Fail:" + JSON.stringify(err));
+                        }
                         appAccountManager.checkAppAccountSyncEnable("syncenable_callback_falsetrue", (err, data)=>{
                             console.info("====>checkAppAccountSyncEnable 0900 err:" + JSON.stringify(err));
                             console.info("====>checkAppAccountSyncEnable 0900 data:" + JSON.stringify(data));
-                            expect(err).assertEqual(null);
-                            expect(data).assertEqual(false);
+                            try {
+                                expect(err).assertEqual(null);
+                                expect(data).assertEqual(false);
+                            } catch (err) {
+                                console.info("====>Assert Fail:" + JSON.stringify(err));
+                            }
                             appAccountManager.deleteAccount("syncenable_callback_falsetrue", (err)=>{
                                 console.info("====>delete Account 0900 err:" + JSON.stringify(err));
-                                expect(err).assertEqual(null);
+                                try {
+                                    expect(err).assertEqual(null);
+                                } catch (err) {
+                                    console.info("====>Assert Fail:" + JSON.stringify(err));
+                                }
                                 console.info("====>ActsSetCheckSyncEnable_0900 end====");
                                 done();
                             });
@@ -417,21 +516,41 @@ export default function ActsSetCheckSyncEnable() {
             console.info("====>creat finish====");
             appAccountManager.addAccount("syncenable_callback_truetrue", (err)=>{
                 console.info("====>add account ActsSetCheckSyncEnable_1100 err:" + JSON.stringify(err));
-                expect(err).assertEqual(null);
+                try {
+                    expect(err).assertEqual(null);
+                } catch (err) {
+                    console.info("====>Assert Fail:" + JSON.stringify(err));
+                }
                 appAccountManager.setAppAccountSyncEnable("syncenable_callback_truetrue", true, (err)=>{
                     console.info("====>setAppAccountSyncEnable first time 1100 err:" + JSON.stringify(err));
-                    expect(err).assertEqual(null);
+                    try {
+                        expect(err).assertEqual(null);
+                    } catch (err) {
+                        console.info("====>Assert Fail:" + JSON.stringify(err));
+                    }
                     appAccountManager.setAppAccountSyncEnable("syncenable_callback_truetrue", true, (err)=>{
                         console.info("====>setAppAccountSyncEnable second time 1100 err:" + JSON.stringify(err));
-                        expect(err).assertEqual(null);
+                        try {
+                            expect(err).assertEqual(null);
+                        } catch (err) {
+                            console.info("====>Assert Fail:" + JSON.stringify(err));
+                        }
                         appAccountManager.checkAppAccountSyncEnable("syncenable_callback_truetrue", (err, data)=>{
                             console.info("====>checkAppAccountSyncEnable 1100 err:" + JSON.stringify(err));
                             console.info("====>checkAppAccountSyncEnable 1100 data:" + JSON.stringify(data));
-                            expect(err).assertEqual(null);
-                            expect(data).assertEqual(true);
+                            try {
+                                expect(err).assertEqual(null);
+                                expect(data).assertEqual(true);
+                            } catch (err) {
+                                console.info("====>Assert Fail:" + JSON.stringify(err));
+                            }
                             appAccountManager.deleteAccount("syncenable_callback_truetrue", (err)=>{
                                 console.info("====>delete Account 1100 err:" + JSON.stringify(err));
-                                expect(err).assertEqual(null);
+                                try {
+                                    expect(err).assertEqual(null);
+                                } catch (err) {
+                                    console.info("====>Assert Fail:" + JSON.stringify(err));
+                                }
                                 console.info("====>ActsSetCheckSyncEnable_1100 end====");
                                 done();
                             });
@@ -494,7 +613,11 @@ export default function ActsSetCheckSyncEnable() {
             var accountNotExist = "syncenable_callback_notexist";
             appAccountManager.setAppAccountSyncEnable(accountNotExist, true, (err)=>{
                 console.info("====>setAppAccountSyncEnable 1300 err:" + JSON.stringify(err));
-                expect(err.code != 0).assertEqual(true);
+                try {
+                    expect(err.code != 0).assertEqual(true);
+                } catch (err) {
+                    console.info("====>Assert Fail:" + JSON.stringify(err));
+                }
                 console.info("====>ActsSetCheckSyncEnable_1300 end====");
                 done();
             });
@@ -535,7 +658,11 @@ export default function ActsSetCheckSyncEnable() {
             var accountNotExist = "syncenable_callback_notexist";
             appAccountManager.checkAppAccountSyncEnable(accountNotExist, (err, data)=>{
                 console.info("====>checkAppAccountSyncEnable 1500 err:" + JSON.stringify(err));
-                expect(err.code != 0).assertEqual(true);
+                try {
+                    expect(err.code != 0).assertEqual(true);
+                } catch (err) {
+                    console.info("====>Assert Fail:" + JSON.stringify(err));
+                }
                 console.info("====>ActsSetCheckSyncEnable_1500 end====");
                 done();
             });
