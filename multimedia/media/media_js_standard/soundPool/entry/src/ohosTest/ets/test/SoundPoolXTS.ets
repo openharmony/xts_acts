@@ -5223,5 +5223,154 @@ export default function soundPoolTest() {
       done();
       return;
     })
+
+    /* *
+      * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_FINISH_WITH_STREAMID_0100
+      * @tc.name      : test play finish with streamId
+      * @tc.desc      : Function test
+    */
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_FINISH_WITH_STREAMID_0100', 0, async (done: Function) => {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_FINISH_WITH_STREAMID_0100 in`);
+      try {
+        let streamId_: Array<number> = [];
+        let soundId_: Array<number> = [];
+        let playStreamId_: Array<number> = [];
+        let time = 0;
+        let matchNum = 0;
+        await createSoundPool();
+        if (!soundPool) {
+          console.error(`${TAG}:createSoundPool soundPool is null`);
+          expectFalse();
+          done();
+          return;
+        }
+        soundPool.on('error', (error) => {
+          console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+          expectFalse();
+        })
+        soundPool.on('playFinishedWithStreamId', (streamId) => {
+          console.info(`${TAG}: on playFinished called! streamId is: ${streamId}`);
+          playStreamId_[time] = streamId;
+          time++;
+        })
+        soundId_[0] = await soundPool.load(fd1, 0, length1);
+        soundId_[1] = await soundPool.load(fd2, 0, length2);
+        await sleep(1000);
+        streamId_[0] = await soundPool.play(soundId_[0]);
+        streamId_[1] = await soundPool.play(soundId_[1]);
+        await sleep(8000);
+        for (let i = 0; i < 2; i++) {
+          await soundPool.stop(streamId_[i]);
+          await soundPool.unload(soundId_[i]);
+        }
+
+        if (time == 2) {
+          console.info(`${TAG}: two stream play success`);
+        } else {
+          console.info(`${TAG}: two stream play fail! time: ${time}`);
+          expectFalse();
+        }
+
+        for (let i = 0; i < 2; i++) {
+          for (let j = 0; j < 2; j++) {
+            if (playStreamId_[i] == streamId_[j]) {
+              matchNum++;
+            }
+          }
+        }
+        if (matchNum == 2) {
+          console.info(`${TAG}: two stream match`);
+        } else {
+          console.info(`${TAG}: two stream match fail! matchNum: ${matchNum}`);
+          expectFalse();
+        }
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expectFalse();
+      }
+      done();
+      return;
+    })
+
+    /* *
+      * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_FINISH_WITH_TWO_CALLBACK_0100
+      * @tc.name      : test play finish with streamId
+      * @tc.desc      : Function test
+    */
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_FINISH_WITH_TWO_CALLBACK_0100', 0, async (done: Function) => {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_FINISH_WITH_TWO_CALLBACK_0100 in`);
+      try {
+        let streamId_: Array<number> = [];
+        let soundId_: Array<number> = [];
+        let playStreamId_: Array<number> = [];
+        let time = 0;
+        let timeStreamId = 0;
+        let matchNum = 0;
+        await createSoundPool();
+        if (!soundPool) {
+          console.error(`${TAG}:createSoundPool soundPool is null`);
+          expectFalse();
+          done();
+          return;
+        }
+        soundPool.on('error', (error) => {
+          console.error(`${TAG}: onError called! error happened, message is: ${error.message}`);
+          expectFalse();
+        })
+        soundPool.on('playFinished', () => {
+          console.info(`${TAG}: on playFinished called!`);
+          time++;
+        })
+        soundPool.on('playFinishedWithStreamId', (streamId) => {
+          console.info(`${TAG}: on playFinished called! streamId is: ${streamId}`);
+          playStreamId_[timeStreamId] = streamId;
+          timeStreamId++;
+        })
+        soundId_[0] = await soundPool.load(fd1, 0, length1);
+        soundId_[1] = await soundPool.load(fd2, 0, length2);
+        await sleep(1000);
+        streamId_[0] = await soundPool.play(soundId_[0]);
+        streamId_[1] = await soundPool.play(soundId_[1]);
+        await sleep(8000);
+        for (let i = 0; i < 2; i++) {
+          await soundPool.stop(streamId_[i]);
+          await soundPool.unload(soundId_[i]);
+        }
+
+        if (time == 0) {
+          console.info(`${TAG}: two stream play success`);
+        } else {
+          console.info(`${TAG}: two stream play fail! time: ${time}`);
+          expectFalse();
+        }
+
+        if (timeStreamId == 2) {
+          console.info(`${TAG}: two stream play success`);
+        } else {
+          console.info(`${TAG}: two stream play fail! timeStreamId: ${timeStreamId}`);
+          expectFalse();
+        }
+
+        for (let i = 0; i < 2; i++) {
+          for (let j = 0; j < 2; j++) {
+            if (playStreamId_[i] == streamId_[j]) {
+              matchNum++;
+            }
+          }
+        }
+        if (matchNum == 2) {
+          console.info(`${TAG}: two stream match`);
+        } else {
+          console.info(`${TAG}: two stream match fail! matchNum: ${matchNum}`);
+          expectFalse();
+        }
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expectFalse();
+      }
+      done();
+      return;
+    })
+
   })
 }
