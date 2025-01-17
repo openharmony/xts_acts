@@ -547,20 +547,20 @@ workerPort.onmessage = (e: MessageEvents) => {
     }
     case 'NapiWrapSendable': {
       let value = napitest.NapiCreateSendableObject();
-      napitest.NapiWrapSendable(value, "data");
+      napitest.NapiWrapSendable(value, 'data');
       console.info('Worker: NapiWrapSendable value is: ', value);
-      let res1 = napitest.NapiUnwrapSendable(value) == "data";
-      let res2 = napitest.NapiRemoveWrapSendable(value) == "data";
+      let res1 = napitest.NapiUnwrapSendable(value) == 'data';
+      let res2 = napitest.NapiRemoveWrapSendable(value) == 'data';
       let res3 = napitest.NapiUnwrapSendable(value) == undefined;
       workerPort.postMessage(res1 && res2 && res3);
       break;
     }
     case 'NapiWrapSendableWithSize': {
       let value = napitest.NapiCreateSendableObject();
-      napitest.NapiWrapSendableWithSize(value, "data");
+      napitest.NapiWrapSendableWithSize(value, 'data');
       console.info('Worker: NapiWrapSendableWithSize value is: ', value);
-      let res1 = napitest.NapiUnwrapSendable(value) == "data";
-      let res2 = napitest.NapiRemoveWrapSendable(value) == "data";
+      let res1 = napitest.NapiUnwrapSendable(value) == 'data';
+      let res2 = napitest.NapiRemoveWrapSendable(value) == 'data';
       let res3 = napitest.NapiUnwrapSendable(value) == undefined;
       workerPort.postMessage(res1 && res2 && res3);
       break;
