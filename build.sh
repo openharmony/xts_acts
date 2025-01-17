@@ -19,7 +19,6 @@ BASE_HOME=$(dirname $(cd $(dirname $0); pwd))
 BASE_HOME=${BASE_HOME}/../..
 ACTS_ROOT="$BASE_HOME/test/xts/acts"
 
-export PATH=${BASE_HOME}/prebuilts/python/linux-x86/3.11.4/bin:$PATH
 python3 -B ${ACTS_ROOT}/build.py $@
 
 exit 0
