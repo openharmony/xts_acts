@@ -31,4 +31,6 @@ export default function testsuite() {
   subHeaderV2PageTest();
   toolBarV2PageTest();
   toolBarV2ItemStateTest();
+  editableTitleBarAccessibilityTest();
+  subHeaderAccessibilityTest();
 }
