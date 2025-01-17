@@ -127,6 +127,12 @@ struct PickerComponent {
 
   private onVideoPlayStateChanged(state: VideoPlayerState): void {
     console.info('onVideoPlayStateChanged', state)
+    if(state === 3) {
+      console.log('state is SEEK_START')
+    }
+    if(state === 4) {
+      console.log('state is SEEK_FINISH')
+    }
   }
 
   private onAlbumClick(albumInfo: AlbumInfo): boolean {
