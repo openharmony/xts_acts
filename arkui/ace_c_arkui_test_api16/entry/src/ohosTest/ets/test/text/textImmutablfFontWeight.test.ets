@@ -29,7 +29,8 @@ export default function textImmutablfFontWeight(){
      * @tc.number     : SUB_ARKUI_CAPI_textImmutablfFontWeight_0100
      * @tc.name       : textImmutablfFontWeight_001
      * @tc.desc       : The text component supports the configuration 
-                          that does not follow the infinite weight
+                          that does not follow the infinite weight. 
+                          The input invalid value is 850.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -44,7 +45,8 @@ export default function textImmutablfFontWeight(){
      * @tc.number     : SUB_ARKUI_CAPI_textImmutablfFontWeight_0200
      * @tc.name       : textImmutablfFontWeight_002
      * @tc.desc       : The text component supports the configuration 
-                          that does not follow the infinite weight
+                          that does not follow the infinite weight. 
+                          The normal value AKUI_FONT_WEIGHT_W100 is transferred.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -59,7 +61,8 @@ export default function textImmutablfFontWeight(){
      * @tc.number     : SUB_ARKUI_CAPI_textImmutablfFontWeight_0300
      * @tc.name       : textImmutablfFontWeight_003
      * @tc.desc       : The text component supports the configuration 
-                          that does not follow the infinite weight
+                          that does not follow the infinite weight. 
+                          The normal value AKUI_FONT_WEIGHT_W200 is transferred.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -74,7 +77,8 @@ export default function textImmutablfFontWeight(){
      * @tc.number     : SUB_ARKUI_CAPI_textImmutablfFontWeight_0400
      * @tc.name       : textImmutablfFontWeight_004
      * @tc.desc       : The text component supports the configuration 
-                          that does not follow the infinite weight
+                          that does not follow the infinite weight. 
+                          The normal value ARKUI_FONT_WEIGHT_W300 is transferred.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -89,7 +93,8 @@ export default function textImmutablfFontWeight(){
      * @tc.number     : SUB_ARKUI_CAPI_textImmutablfFontWeight_0500
      * @tc.name       : textImmutablfFontWeight_005
      * @tc.desc       : The text component supports the configuration 
-                          that does not follow the infinite weight
+                          that does not follow the infinite weight. 
+                          The normal value ARKUI_FONT_WEIGHT_W400 is transferred.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -104,7 +109,8 @@ export default function textImmutablfFontWeight(){
      * @tc.number     : SUB_ARKUI_CAPI_textImmutablfFontWeight_0600
      * @tc.name       : textImmutablfFontWeight_006
      * @tc.desc       : The text component supports the configuration 
-                          that does not follow the infinite weight
+                          that does not follow the infinite weight. 
+                          The normal value ARKUI_FONT_WEIGHT_W500 is transferred.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -119,7 +125,8 @@ export default function textImmutablfFontWeight(){
      * @tc.number     : SUB_ARKUI_CAPI_textImmutablfFontWeight_0700
      * @tc.name       : textImmutablfFontWeight_007
      * @tc.desc       : The text component supports the configuration 
-                          that does not follow the infinite weight
+                          that does not follow the infinite weight. 
+                          The normal value ARKUI_FONT_WEIGHT_W600 is transferred.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -134,7 +141,8 @@ export default function textImmutablfFontWeight(){
      * @tc.number     : SUB_ARKUI_CAPI_textImmutablfFontWeight_0800
      * @tc.name       : textImmutablfFontWeight_008
      * @tc.desc       : The text component supports the configuration 
-                          that does not follow the infinite weight
+                          that does not follow the infinite weight. 
+                          The normal value ARKUI_FONT_WEIGHT_W700 is transferred.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -149,7 +157,8 @@ export default function textImmutablfFontWeight(){
      * @tc.number     : SUB_ARKUI_CAPI_textImmutablfFontWeight_0900
      * @tc.name       : textImmutablfFontWeight_009
      * @tc.desc       : The text component supports the configuration 
-                          that does not follow the infinite weight
+                          that does not follow the infinite weight. 
+                          The normal value ARKUI_FONT_WEIGHT_W800 is transferred.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -164,7 +173,8 @@ export default function textImmutablfFontWeight(){
      * @tc.number     : SUB_ARKUI_CAPI_textImmutablfFontWeight_1000
      * @tc.name       : textImmutablfFontWeight_010
      * @tc.desc       : The text component supports the configuration 
-                          that does not follow the infinite weight
+                          that does not follow the infinite weight. 
+                          The normal value ARKUI_FONT_WEIGHT_W900 is transferred.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -179,7 +189,8 @@ export default function textImmutablfFontWeight(){
      * @tc.number     : SUB_ARKUI_CAPI_textImmutablfFontWeight_1100
      * @tc.name       : textImmutablfFontWeight_011
      * @tc.desc       : The text component supports the configuration 
-                          that does not follow the infinite weight
+                          that does not follow the infinite weight. 
+                          The normal value ARKUI_FONT_WEIGHT_BOLD is transferred.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -194,7 +205,8 @@ export default function textImmutablfFontWeight(){
      * @tc.number     : SUB_ARKUI_CAPI_textImmutablfFontWeight_1200
      * @tc.name       : textImmutablfFontWeight_012
      * @tc.desc       : The text component supports the configuration 
-                          that does not follow the infinite weight
+                          that does not follow the infinite weight. 
+                          The normal value ARKUI_FONT_WEIGHT_NORMAL is transferred.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -209,7 +221,8 @@ export default function textImmutablfFontWeight(){
      * @tc.number     : SUB_ARKUI_CAPI_textImmutablfFontWeight_1300
      * @tc.name       : textImmutablfFontWeight_013
      * @tc.desc       : The text component supports the configuration 
-                          that does not follow the infinite weight
+                          that does not follow the infinite weight. 
+                          The normal value ARKUI_FONT_WEIGHT_BOLDER is transferred.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -224,7 +237,8 @@ export default function textImmutablfFontWeight(){
      * @tc.number     : SUB_ARKUI_CAPI_textImmutablfFontWeight_1400
      * @tc.name       : textImmutablfFontWeight_014
      * @tc.desc       : The text component supports the configuration 
-                          that does not follow the infinite weight
+                          that does not follow the infinite weight. 
+                          The normal value ARKUI_FONT_WEIGHT_LIGHTER is transferred.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -239,7 +253,8 @@ export default function textImmutablfFontWeight(){
      * @tc.number     : SUB_ARKUI_CAPI_textImmutablfFontWeight_1500
      * @tc.name       : textImmutablfFontWeight_015
      * @tc.desc       : The text component supports the configuration 
-                          that does not follow the infinite weight
+                          that does not follow the infinite weight. 
+                          The normal value ARKUI_FONT_WEIGHT_MEDIUM is transferred.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -254,7 +269,8 @@ export default function textImmutablfFontWeight(){
      * @tc.number     : SUB_ARKUI_CAPI_textImmutablfFontWeight_1600
      * @tc.name       : textImmutablfFontWeight_016
      * @tc.desc       : The text component supports the configuration 
-                          that does not follow the infinite weight
+                          that does not follow the infinite weight. 
+                          The normal value ARKUI_FONT_WEIGHT_REGULAR is transferred.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
