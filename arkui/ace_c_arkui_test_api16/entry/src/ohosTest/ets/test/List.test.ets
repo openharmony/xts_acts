@@ -15,9 +15,11 @@
 import ProgressLinearStyleTest from "./progress/progressLinearStyleTest.test"
 import postFrameCallbackTest from "./postFrame/PostFrameCallbackTest.test"
 import swiperTest from "./swiper/SwiperTest.test"
+import textImmutablfFontWeight from "./text/textImmutablfFontWeight.test"
 
 export default function testsuite() {
   postFrameCallbackTest();
   swiperTest();
-  ProgressLinearStyleTest()
+  ProgressLinearStyleTest();
+  textImmutablfFontWeight();
 }
