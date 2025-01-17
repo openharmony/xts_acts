@@ -97,12 +97,9 @@ struct WebInitTest {
               }
               case "emitContextMenuInputFieldType": {
                 try {
-                  Utils.emitEvent(ContextMenuInputFieldType.PlainText, 34);
-                  await Utils.sleep(1000)
-                  Utils.emitEvent(ContextMenuInputFieldType.Telephone, 35);
-                  await Utils.sleep(1000)
-                  Utils.emitEvent(ContextMenuInputFieldType.Other, 36);
-                  await Utils.sleep(1000)
+                  await Utils.emitEvent(ContextMenuInputFieldType.PlainText, 34);
+                  await Utils.emitEvent(ContextMenuInputFieldType.Telephone, 35);
+                  await Utils.emitEvent(ContextMenuInputFieldType.Other, 36);
                   console.log("result: " + ContextMenuInputFieldType.PlainText);
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -111,16 +108,11 @@ struct WebInitTest {
               }
               case "emitContextMenuEditStateFlags": {
                 try {
-                  Utils.emitEvent(ContextMenuEditStateFlags.NONE, 37);
-                  await Utils.sleep(1000)
-                  Utils.emitEvent(ContextMenuEditStateFlags.CAN_CUT, 38);
-                  await Utils.sleep(1000)
-                  Utils.emitEvent(ContextMenuEditStateFlags.CAN_COPY, 39);
-                  await Utils.sleep(1000)
-                  Utils.emitEvent(ContextMenuEditStateFlags.CAN_PASTE, 40);
-                  await Utils.sleep(1000)
-                  Utils.emitEvent(ContextMenuEditStateFlags.CAN_SELECT_ALL, 41);
-                  await Utils.sleep(1000)
+                  await Utils.emitEvent(ContextMenuEditStateFlags.NONE, 37);
+                  await Utils.emitEvent(ContextMenuEditStateFlags.CAN_CUT, 38);
+                  await Utils.emitEvent(ContextMenuEditStateFlags.CAN_COPY, 39);
+                  await Utils.emitEvent(ContextMenuEditStateFlags.CAN_PASTE, 40);
+                  await Utils.emitEvent(ContextMenuEditStateFlags.CAN_SELECT_ALL, 41);
                   console.log("result: " + ContextMenuEditStateFlags.CAN_SELECT_ALL);
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
