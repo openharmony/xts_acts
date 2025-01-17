@@ -1263,6 +1263,16 @@ export default function TextPicker() {
       let callback = (event: events_emitter.EventData) => {
         let result: number = event?.data?.msg;
         console.info('testPicker27 state =:' + JSON.stringify(result));
+        let vedioCallBackState: number = event?.data?.vedioCallBackState;
+        if (vedioCallBackState === 3) {
+            expect(true).assertTrue();
+            console.log('state is SEEK_START:' + vedioCallBackState);
+        } else if (vedioCallBackState === 4) {
+            expect(true).assertTrue();
+            console.log('state is SEEK_FINISH:' + vedioCallBackState);
+        } else {
+            expect(true).assertFalse();
+        }
       }
       let event: events_emitter.InnerEvent = {
         eventId: code,
