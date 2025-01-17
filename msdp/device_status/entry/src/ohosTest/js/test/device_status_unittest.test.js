@@ -46,7 +46,6 @@ export default function DeviceStatusUnitTest() {
             try {
                 p_done = done;
                 stationary.on("still", 3, 1000000000, pub_callback);
-                expect(true).assertTrue();
             } catch (error) {
                 console.error('error Log' + error);
                 done();
@@ -87,7 +86,6 @@ export default function DeviceStatusUnitTest() {
             try {
                 p_done = done;
                 stationary.on("relativeStill", 2, 1000000000, pub_callback);
-                expect(true).assertTrue();
             } catch (error) {
                 console.error('error Log' + error);
                 done();
@@ -172,7 +170,6 @@ export default function DeviceStatusUnitTest() {
             try {
                 p_done = done;
                 stationary.on("relativeStill", 1, 1000000000, pub_callback);
-                expect(true).assertTrue();
             } catch (error) {
                 console.error('error Log' + error);
                 done();
