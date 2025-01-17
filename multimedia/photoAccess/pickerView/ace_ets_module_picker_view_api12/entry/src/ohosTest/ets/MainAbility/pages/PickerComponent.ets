@@ -49,7 +49,7 @@ struct PickerComponent {
   private eventId: number = 0;
   // 控制缩略图是否显示
   @State private isBrowserShow: boolean = false;
-  @State vedioCallBackState: string = '';
+  @State vedioCallBackState: VideoPlayerState = 0;
 
   private selectedItemsDeletedCallback: ItemsDeletedCallback =
     (baseItemInfos: Array<BaseItemInfo>) => this.onSelectedItemsDeleted(baseItemInfos);
