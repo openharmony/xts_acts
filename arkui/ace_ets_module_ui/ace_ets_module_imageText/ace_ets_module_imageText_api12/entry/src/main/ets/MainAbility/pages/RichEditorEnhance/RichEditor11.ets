@@ -23,7 +23,7 @@ struct RichEditor11 {
       Text(''+this.len).id('RichEditor11_Text')
       RichEditor({controller:this.controller})
         .onReady(()=>{
-          this.controller.addTextSpan('测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试')
+          this.controller.addTextSpan('This is longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong text')
         })
         .height(35)
         .id('RichEditor11_double')

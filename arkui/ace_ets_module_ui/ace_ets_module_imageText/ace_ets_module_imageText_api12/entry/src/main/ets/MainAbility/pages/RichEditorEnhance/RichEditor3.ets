@@ -46,7 +46,7 @@ struct RichEditor3 {
               }
             }
           })
-        }).id('getSPans').height('5%')
+        }).id('getSPans').height('5%').width('30%')
         Button('getSelection').onClick(() => {
           this.layoutStyleBorderRadius = '';
           this.layoutStyleMargin = '';
@@ -66,7 +66,7 @@ struct RichEditor3 {
               }
             }
           })
-        }).id('getSelection').height('5%')
+        }).id('getSelection').height('5%').width('30%')
         Button('setContent').onClick(() => {
           this.controller.addTextSpan('测试文字测试文字测试文字测试文字', {
             paragraphStyle: {
@@ -83,7 +83,7 @@ struct RichEditor3 {
               }
             }
           })
-        }).id('setContent').height('5%')
+        }).id('setContent').height('5%').width('30%')
       }
       RichEditor({ controller: this.controller })
         .id('RichEditorGetAttribute')
@@ -148,19 +148,19 @@ struct RichEditor3 {
       Row(){
         Text('PSTextAlign:').fontSize(10)
         Text(this.paragraphStyleTextAlign + this.paragraphStyleTextAlignDelete).id('PSTextAlign').fontSize(10)
-      }.margin({top:10}).width('100%')
+      }.width('100%')
       Row(){
         Text('PSLeadingMargin:').fontSize(10)
         Text(this.paragraphStyleLeadingMargin + this.paragraphStyleLeadingMarginDelete).id('PSLeadingMargin').fontSize(10)
-      }.margin({top:10}).width('100%')
+      }.width('100%')
       Row(){
         Text('LSBorderRadius:').fontSize(10)
         Text(this.layoutStyleBorderRadius + this.layoutStyleBorderRadiusDelete).id('LSBorderRadius').fontSize(10)
-      }.margin({top:10}).width('100%')
+      }.width('100%')
       Row(){
         Text('LSMargin:').fontSize(10)
         Text(this.layoutStyleMargin + this.layoutStyleMarginDelete).id('LSMargin').fontSize(10)
-      }.margin({top:10}).width('100%')
+      }.width('100%')
     }
     .width('100%')
     .height('100%')
