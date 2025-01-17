@@ -33,8 +33,8 @@ struct APIParticleEmitter {
         .key('APIParticleEmitter_Text01')
       Stack() {
         Text()
-          .width(300)
-          .height(300)
+          .width('50%')
+          .height('50%')
           .backgroundColor(Color.Black)
         Stack()
         Particle({ particles: [
@@ -84,8 +84,8 @@ struct APIParticleEmitter {
           },
         ]
         })
-          .width(300)
-          .height(300)
+          .width('50%')
+          .height('50%')
           .emitter(this.emitterProperties)
           .key('APIParticleEmitter_Particle')
       }

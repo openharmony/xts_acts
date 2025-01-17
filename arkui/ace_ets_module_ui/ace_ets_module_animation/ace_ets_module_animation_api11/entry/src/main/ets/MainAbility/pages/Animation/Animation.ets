@@ -131,6 +131,9 @@ struct AnimatorInterpolatingSpringTest {
                   this.backAnimator.pause()
                 }
               })
+          }
+
+          Row() {
             Button('finish')
               .key('finish')
               .fontSize(10)
@@ -192,22 +195,22 @@ struct AnimatorInterpolatingSpringTest {
                   console.info(this.TAG, "animator not ended");
                 }
               })
-            Column() {
-              Text(`curve:${this.curve}`).key('curve')
-              Row() {
-                Button('interpolating-springn')
-                  .key('interpolating-springn')
-                  .onClick(() => {
-                    this.useInterpolating = true;
-                    this.curve = `interpolating-spring(${this.velocity},1,${this.stiffnes},${this.damping})`;
-                  })
-                Button('linear')
-                  .key('linear')
-                  .onClick(() => {
-                    this.useInterpolating = false
-                    this.curve = 'linear'
-                  })
-              }
+          }
+          Column() {
+            Text(`curve:${this.curve}`).key('curve')
+            Row() {
+              Button('interpolating-springn')
+                .key('interpolating-springn')
+                .onClick(() => {
+                  this.useInterpolating = true;
+                  this.curve = `interpolating-spring(${this.velocity},1,${this.stiffnes},${this.damping})`;
+                })
+              Button('linear')
+                .key('linear')
+                .onClick(() => {
+                  this.useInterpolating = false
+                  this.curve = 'linear'
+                })
             }
           }
 
@@ -265,7 +268,9 @@ struct AnimatorInterpolatingSpringTest {
                 .onClick(() => {
                   this.damping = 15;
                 })
-              Button('30')
+            }
+            Row() {
+               Button('30')
                 .onClick(() => {
                   this.damping = 30;
                 })
@@ -305,7 +310,9 @@ struct AnimatorInterpolatingSpringTest {
                 .onClick(() => {
                   this.fill = 'forwards'
                 })
-              Button('backwards')
+            }
+            Row() {
+               Button('backwards')
                 .onClick(() => {
                   this.fill = 'backwards'
                 })
@@ -327,6 +334,8 @@ struct AnimatorInterpolatingSpringTest {
                 .onClick(() => {
                   this.myDirection = 'reverse'
                 })
+            }
+            Row() {
               Button('alternate').fontSize(10)
                 .onClick(() => {
                   this.myDirection = 'alternate'
@@ -353,6 +362,8 @@ struct AnimatorInterpolatingSpringTest {
                 .onClick(() => {
                   this.iteration = -1;
                 })
+            }
+            Row() {
               Button('0')
                 .onClick(() => {
                   this.iteration = 0;
