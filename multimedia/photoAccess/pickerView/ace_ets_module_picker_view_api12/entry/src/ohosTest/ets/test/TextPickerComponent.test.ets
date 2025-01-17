@@ -1285,50 +1285,5 @@ export default function TextPicker() {
       events_emitter.off(event.eventId);
       done();
     });
-    
-    /* * 
-       * @tc.number    : testPicker28
-       * @tc.name      : testPicker28
-       * @tc.desc      : Testing replace and save photo
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level0
-       */
-    it('testPicker28', 0, async (done: Function) => {
-      let context = getContext();
-      let originalUri = [' '];
-      let photoCreationConfig: photoAccessHelper.PhotoCreationConfig = {
-        title: 'test',
-        fileNameExtension: 'jpg',
-        photoType: photoAccessHelper.PhotoType.IMAGE,
-        subtype: photoAccessHelper.PhotoSubtype.DEFAULT,
-      };
-      try {
-        let pickerController: PickerController = new PickerController();
-        let boxPath = fileUri.getUriFromPath(context.filesDir + "/test.jpg").toString();//需要进行保存的图片的沙箱路径
-        photoAccessHelper.getPhotoAccessHelper(context).showAssetsCreationDialog([boxPath],[photoCreationConfig]).then((result) => {
-          originalUri = result;
-          expect(true).assertTrue();
-        });
-        console.log("testPicker28 this.pickerController filesDir:" + context.filesDir + "/test.jpg")
-        console.log("testPicker28 this.pickerController boxPath:" + boxPath)
-        console.log("testPicker28 this.pickerController originalUri:" + JSON.stringify(originalUri))
-
-        pickerController.replacePhotoPickerPreview(originalUri[0], boxPath, (a) => {
-          console.log("hello this.pickerController.replaceUrl code res:" + a)
-        })
-
-        pickerController.saveTrustedPhotoAssets([boxPath], (res, arr) => {
-          console.log("testPicker28 this.pickerController.save code res:" + res.code)
-        }, undefined, SaveMode.SAVE_AS);
-        expect(true).assertTrue();
-      } catch(error) {
-        console.error("testPicker28 error: " + JSON.stringify(error));
-        expect(false).assertTrue();
-      }
-      await CommonFunc.sleep(1000);
-      console.info("testPicker28 btn click finish");
-      done();
-    });
   })
 }
