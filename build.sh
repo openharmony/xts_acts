@@ -15,10 +15,6 @@
 
 set -e
 
-BASE_HOME=$(dirname $(cd $(dirname $0); pwd))
-BASE_HOME=${BASE_HOME}/../..
-ACTS_ROOT="$BASE_HOME/test/xts/acts"
-
-python3 -B ${ACTS_ROOT}/build.py $@
+python3 -B $(dirname $(cd $(dirname $0); pwd))/acts/build.py $@
 
 exit 0
