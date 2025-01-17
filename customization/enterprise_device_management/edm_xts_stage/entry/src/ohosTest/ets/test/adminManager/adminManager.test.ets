@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 import { describe, expect, it } from '@ohos/hypium';
+import Want from '@ohos.app.ability.Want'
 import { ENTINFO1, SELFWANT, SELFHAPNAME, SUBSCRIBE_EVENTS, SUBSCRIBE_INVALID_EVENTS,
-  BUNDLENAME1 } from '../commom.ets';
+  BUNDLENAME1, INVALID_WANT, PARAMETERS, INVALID_PARAMETERS } from '../commom.ets';
 
 import adminManager from '@ohos.enterprise.adminManager';
 
@@ -404,6 +405,168 @@ export default function adminManagerTest() {
         expect(error.code == 401).assertTrue();
       } finally {
         await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_STARTADMINPROVISION_001
+     * @tc.name      : test_startAdminProvision_001
+     * @tc.desc      : test startAdminProvision method with invalid admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_startAdminProvision_001", 0, async (done: Function) => {
+      try {
+        adminManager.startAdminProvision(INVALID_WANT, adminManager.AdminType.ADMIN_TYPE_BYOD, AppStorage.get("test"), PARAMETERS);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_STARTADMINPROVISION_002
+     * @tc.name      : test_startAdminProvision_002
+     * @tc.desc      : test startAdminProvision method with invalid adminType
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_startAdminProvision_002", 0, async (done: Function) => {
+      try {
+        adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_NORMAL, AppStorage.get("test"), PARAMETERS);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_STARTADMINPROVISION_003
+     * @tc.name      : test_startAdminProvision_003
+     * @tc.desc      : test startAdminProvision method with invalid context
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_startAdminProvision_003", 0, async (done: Function) => {
+      try {
+        adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_BYOD, null, PARAMETERS);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_STARTADMINPROVISION_004
+     * @tc.name      : test_startAdminProvision_004
+     * @tc.desc      : test startAdminProvision method with invalid parameter
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_startAdminProvision_004", 0, async (done: Function) => {
+      try {
+        adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_BYOD, AppStorage.get("test"), INVALID_PARAMETERS);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GETADMINS_001
+     * @tc.name      : test_getAdmins_001
+     * @tc.desc      : test getadmins method
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_getAdmins_001", 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+      try {
+        let res: Array<Want> = await adminManager.getAdmins();
+        expect(res.length == 1).assertTrue();
+        expect(res[0].bundleName == SELFWANT.bundleName);
+        expect(res[0].abilityName == SELFWANT.abilityName);
+        expect(res[0].parameters?.adminType == 0);
+      } catch (error) {
+        expect(false).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GETADMINS_002
+     * @tc.name      : test_getAdmins_002
+     * @tc.desc      : test getadmins method
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_getAdmins_002", 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        let res: Array<Want> = await adminManager.getAdmins();
+        expect(res.length == 1).assertTrue();
+        expect(res[0].bundleName == SELFWANT.bundleName);
+        expect(res[0].abilityName == SELFWANT.abilityName);
+        expect(res[0].parameters?.adminType == 1);
+      } catch (error) {
+        expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GETADMINS_003
+     * @tc.name      : test_getAdmins_003
+     * @tc.desc      : test getadmins method
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_getAdmins_003", 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_BYOD);
+      try {
+        let res: Array<Want> = await adminManager.getAdmins();
+        expect(res.length == 1).assertTrue();
+        expect(res[0].bundleName == SELFWANT.bundleName);
+        expect(res[0].abilityName == SELFWANT.abilityName);
+        expect(res[0].parameters?.adminType == 2);
+      } catch (error) {
+        expect(false).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GETADMINS_004
+     * @tc.name      : test_getAdmins_004
+     * @tc.desc      : test getadmins method
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_getAdmins_004", 0, async (done: Function) => {
+      try {
+        let res: Array<Want> = await adminManager.getAdmins();
+        expect(res.length == 0).assertTrue();
+      } catch (error) {
+        expect(false).assertTrue();
       }
       done();
     })
