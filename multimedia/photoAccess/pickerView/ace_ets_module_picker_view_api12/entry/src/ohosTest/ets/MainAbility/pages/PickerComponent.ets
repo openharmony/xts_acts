@@ -49,6 +49,7 @@ struct PickerComponent {
   private eventId: number = 0;
   // 控制缩略图是否显示
   @State private isBrowserShow: boolean = false;
+  @State vedioCallBackState: string = '';
 
   private selectedItemsDeletedCallback: ItemsDeletedCallback =
     (baseItemInfos: Array<BaseItemInfo>) => this.onSelectedItemsDeleted(baseItemInfos);
@@ -127,12 +128,7 @@ struct PickerComponent {
 
   private onVideoPlayStateChanged(state: VideoPlayerState): void {
     console.info('onVideoPlayStateChanged', state)
-    if(state === 3) {
-      console.log('state is SEEK_START')
-    }
-    if(state === 4) {
-      console.log('state is SEEK_FINISH')
-    }
+    this.vedioCallBackState = state;
   }
 
   private onAlbumClick(albumInfo: AlbumInfo): boolean {
