@@ -18,9 +18,8 @@ import GridScrollEdgeCallbackJsunit from './component/GridScrollEdgeCallback.tes
 import ScrollScrollEdgeCallbackJsunit from './component/ScrollScrollEdgeCallback.test.ets';
 import ListScrollEdgeCallbackJsunit from './component/ListScrollEdgeCallback.test.ets';
 export default function testsuite() {
-  // textInputUnderlineColorTest();
-  WaterFlowScrollEdgeCallbackJsunit()
   ScrollScrollEdgeCallbackJsunit()
   ListScrollEdgeCallbackJsunit()
   GridScrollEdgeCallbackJsunit()
+  WaterFlowScrollEdgeCallbackJsunit()
 }

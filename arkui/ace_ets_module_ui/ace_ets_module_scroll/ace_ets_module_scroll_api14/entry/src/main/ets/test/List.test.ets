@@ -59,14 +59,14 @@ export default function testsuite() {
   gridAniTrue()
   irregularAniGrid()
   repeatAniGrid()
-  waterFlowAniTrue()
   gridNode();
   griditemNode();
   barBackEffect()
   nodeTypeGrid()
   listScrollerBar()
-  clipContent()
   cachedShowGrid()
   cachedShowList()
   cachedShowFlow()
+  waterFlowAniTrue()
+  clipContent()
 }

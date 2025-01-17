@@ -42,12 +42,12 @@ struct cachedCountShowListExample {
 
   build() {
     Column() {
-      List({ space: 10, initialIndex: 0 }) {
+      List({ initialIndex: 0 }) {
         ForEach(this.arr, (item: string) => {
           ListItem() {
             Text(item)
               .width('100%')
-              .height('30%')
+              .height('34%')
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .borderRadius(10)
@@ -62,7 +62,7 @@ struct cachedCountShowListExample {
       .width('90%')
       .height('40%')
       .friction(0.6)
-      .padding(4)
+      .padding('3%')
       .scrollBar(BarState.On)
       .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
       .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {

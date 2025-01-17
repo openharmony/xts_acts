@@ -24,6 +24,14 @@ struct GridScrollEdgeCallback {
     Column({ space: 5 }) {
       Text('Scroller组件绑定至平铺的Grid容器组件').fontColor(0x000000)
         .fontSize(16).width('90%')
+      Text(this.text1).id('GridTextByScrollEdge01')
+      Button('点我滚动')
+        .id('GridScrollEdgeCallback01')
+        .onClick(() => { // 这里
+          this.scroller.scrollEdge(Edge.Bottom, { velocity: 0 })
+          this.text1 = 'ScrollEdgeSuccess'
+        })
+        .width('100%')
       Grid(this.scroller) {
         ForEach(this.numbers, (val: string) => {
           ForEach(this.numbers, (val: string) => {
@@ -47,14 +55,6 @@ struct GridScrollEdgeCallback {
       .width('90%')
       .backgroundColor(0xFAEEE0)
       .height('70%')
-      Text(this.text1).id('GridTextByScrollEdge01')
-      Button('点我滚动')
-        .id('GridScrollEdgeCallback01')
-        .onClick(() => { // 这里
-          this.scroller.scrollEdge(Edge.Bottom, { velocity: 0 })
-          this.text1 = 'ScrollEdgeSuccess'
-        })
-        .width('100%')
     }
     .width('100%')
     .height('100%')

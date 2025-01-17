@@ -36,7 +36,7 @@ struct ListAnimationCallback {
           ListItem() {
             Text('' + item)
               .width('100%')
-              .height(50)
+              .height('12%')
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .borderRadius(10)

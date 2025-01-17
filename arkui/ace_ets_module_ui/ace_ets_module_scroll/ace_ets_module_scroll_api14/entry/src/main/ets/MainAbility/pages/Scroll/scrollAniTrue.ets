@@ -33,7 +33,7 @@ struct animationScrollTrueExample {
           ForEach(this.arr, (item: number) => {
             Text(item.toString())
               .width('100%')
-              .height(50)
+              .height('15%')
               .backgroundColor(0xFFFFFF)
               .borderRadius(15)
               .fontSize(16)

@@ -27,7 +27,7 @@ class ArrayGrid {
 @Entry
 @ComponentV2
 struct totalGridRepeat {
-  @Local arrayGrid: ArrayGrid = new ArrayGrid(30);
+  @Local arrayGrid: ArrayGrid = new ArrayGrid(20);
   @Local totalCount: number = this.arrayGrid.arr.length;
   scroller: Scroller = new Scroller();
   @Local onText:string = 'Grid: '
@@ -54,12 +54,14 @@ struct totalGridRepeat {
           })
           .template('number', (r) => {
             GridItem() {
-              Text(r.index! + ":" + r.item + "Reuse");
+              Text(r.index! + ":" + r.item + "Reuse")
+              .height('8%')
             }
           })
           .each((r) => {
             GridItem() {
-              Text(r.index! + ":" + r.item + "eachMessage");
+              Text(r.index! + ":" + r.item + "eachMessage")
+              .height('8%')
             }
           })
       }
