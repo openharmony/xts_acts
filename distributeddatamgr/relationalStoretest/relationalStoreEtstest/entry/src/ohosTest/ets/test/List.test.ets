@@ -40,6 +40,7 @@ import rdbStorePluginLibsTest from './RelationalStorePluginLibsJsunit.test';
 import rdbDecryptTest from './RelationalStoreDecrpy.test';
 import relationalStoreMultiTransTest from './relationalStoreMultiTest.test'
 import RelationalStoreIcu from './RelationalStoreIcu.test';
+import rdbrootDirTest from './RelationalStoreRootDir.test';
 
 export default function testsuite() {
   relationalStoreEncryptTest()
@@ -70,5 +71,6 @@ export default function testsuite() {
   rdbDecryptTest()
   relationalStoreMultiTransTest();
   RelationalStoreIcu();
+  rdbrootDirTest();
 }
 
