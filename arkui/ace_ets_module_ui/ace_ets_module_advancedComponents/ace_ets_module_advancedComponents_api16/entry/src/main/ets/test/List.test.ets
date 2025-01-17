@@ -20,6 +20,8 @@ import progressButtonV2PageTest from './progressButtonV2/progressButtonV2Page.te
 import subHeaderV2PageTest from './subHeaderV2/subHeaderV2Page.test';
 import toolBarV2PageTest from './toolBarV2/toolBarV2Page.test';
 import toolBarV2ItemStateTest from './toolBarV2/toolBarV2ItemState.test';
+import editableTitleBarAccessibilityTest from './editableTitleBar/editableTitleBarAccessibilityPage.test';
+import subHeaderAccessibilityTest from './subHeader/subHeaderAccessibilityPage.test';
 
 export default function testsuite() {
   composeListItemPageTest();

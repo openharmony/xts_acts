@@ -7,6 +7,8 @@
     "MainAbility/pages/progressButtonV2/progressButtonV2Page",
     "MainAbility/pages/subHeaderV2/subHeaderV2Page",
     "MainAbility/pages/toolBarV2/toolBarV2Page",
-    "MainAbility/pages/toolBarV2/toolBarV2ItemState"
+    "MainAbility/pages/toolBarV2/toolBarV2ItemState",
+    "MainAbility/pages/editableTitleBar/editableTitleBarAccessibilityPage",
+    "MainAbility/pages/subHeader/subHeaderAccessibilityPage"
   ]
 }
