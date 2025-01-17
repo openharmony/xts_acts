@@ -17,6 +17,7 @@ import graphicTextBTest from './graphicTextB.test'
 import graphicTextCTest from './graphicTextC.test'
 import graphicTextClass from './graphicTextClass.test'
 import graphicTextEnum from './graphicTextEnum.test'
+import graphicTextHadTest from './graphicTextHad.test'
 import graphicTextInterface from './graphicTextInterface.test'
 import graphicFontDescriptorTest from './graphicFontDescriptor.test'
 import LineMetricsTest from './LineMetricsTest.test'
@@ -30,6 +31,7 @@ export default function testsuite() {
   graphicTextCTest()
   graphicTextClass();
   graphicTextEnum();
+  graphicTextHadTest()
   graphicTextInterface();
   graphicFontDescriptorTest()
   LineMetricsTest();
