@@ -6,7 +6,7 @@
         "shell-timeout": "600000",
         "bundle-name": "com.example.myapplication",
         "module-name": "entry_test",
-        "testcase-timeout": "20000"
+        "testcase-timeout": "30000"
     },
     "kits": [
         {

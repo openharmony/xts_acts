@@ -20,7 +20,7 @@ import {
   SELFHAPNAME,
   APP_IDS_1,
   DEFAULT_USER_ID,
-  TEST_USER_ID,
+  INVALID_USER_ID,
   AUTOSTARTAPP1,
   AUTOSTARTAPP2,
   TEST_BUNDLENAME
@@ -83,7 +83,7 @@ export default function applicationManagerTest() {
     it("test_addDisallowedRunningBundlesSync_003", 0, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-        applicationManager.addDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, TEST_USER_ID);
+        applicationManager.addDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, INVALID_USER_ID);
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
@@ -163,7 +163,7 @@ export default function applicationManagerTest() {
     it("test_removeDisallowedRunningBundlesSync_003", 0, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-        applicationManager.removeDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, TEST_USER_ID);
+        applicationManager.removeDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, INVALID_USER_ID);
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
@@ -243,7 +243,7 @@ export default function applicationManagerTest() {
     it("test_getDisallowedRunningBundlesSync_003", 0, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-        applicationManager.getDisallowedRunningBundlesSync(SELFWANT, TEST_USER_ID);
+        applicationManager.getDisallowedRunningBundlesSync(SELFWANT, INVALID_USER_ID);
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
@@ -572,7 +572,7 @@ export default function applicationManagerTest() {
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-        applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, TEST_USER_ID);
+        applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, INVALID_USER_ID);
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
@@ -684,7 +684,7 @@ export default function applicationManagerTest() {
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-        applicationManager.removeKeepAliveApps(SELFWANT, keepAliveApps, TEST_USER_ID);
+        applicationManager.removeKeepAliveApps(SELFWANT, keepAliveApps, INVALID_USER_ID);
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();

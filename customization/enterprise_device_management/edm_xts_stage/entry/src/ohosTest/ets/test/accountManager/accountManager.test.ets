@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, it, expect } from "@ohos/hypium";
-import { ENTINFO1, SELFWANT, SELFHAPNAME, DEFAULT_USER_ID, ERR_USER_ID, appIdsInit } from "../commom.ets";
+import { describe, beforeAll, afterAll, it, expect } from "@ohos/hypium";
+import { ENTINFO1, SELFWANT, SELFHAPNAME, DEFAULT_USER_ID, INVALID_USER_ID, appIdsInit } from "../commom.ets";
 
 import accountManager from '@ohos.enterprise.accountManager';
 import adminManager from '@ohos.enterprise.adminManager';
@@ -24,8 +24,18 @@ export default function accountManagerTest() {
 
   describe('accountManager_test', () => {
 
+    let localIds: Array<number> = [];
+
     beforeAll((done: Function) => {
       appIdsInit();
+      done();
+    })
+
+    afterAll((done: Function) => {
+      let osAccountManager = osAccount.getAccountManager();
+      localIds.forEach((localId) => {
+        osAccountManager.removeOsAccount(localId);
+      })
       done();
     })
 
@@ -239,6 +249,7 @@ export default function accountManagerTest() {
         let newAccount: osAccount.OsAccountInfo = await accountManager.addOsAccountAsync(SELFWANT,
           accountName, osAccount.OsAccountType.ADMIN);
         localId = newAccount.localId;
+        localIds.push(localId);
         console.info(' --- disallowOsAccountAddition_test_008 newAccount.localId: ' + localId);
         accountManager.disallowOsAccountAddition(SELFWANT, true, localId);
         expect(true).assertTrue();
@@ -257,7 +268,6 @@ export default function accountManagerTest() {
       } finally {
         if (isMultiAccountEnabled) {
           accountManager.disallowOsAccountAddition(SELFWANT, false, localId);
-          await osAccountManager.removeOsAccount(localId);
         }
         await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
@@ -277,7 +287,7 @@ export default function accountManagerTest() {
       console.info(' --- disallowOsAccountAddition_test_009  -------- START --------');
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
       try {
-        accountManager.disallowOsAccountAddition(SELFWANT, true, ERR_USER_ID);
+        accountManager.disallowOsAccountAddition(SELFWANT, true, INVALID_USER_ID);
         expect(false).assertTrue();
       } catch (error) {
         console.info(' --- disallowOsAccountAddition_test_009 error 401 is expected, actually catch: ' + error.code);
@@ -521,7 +531,7 @@ export default function accountManagerTest() {
     it("addOsAccountAsync_test_004", 0, async (done: Function) => {
       console.info(' --- addOsAccountAsync_test_004  -------- START --------');
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-      let accountName: string = "test_name";
+      let accountName: string = "test_name2";
       let localId: number = 0;
       let osAccountManager = osAccount.getAccountManager();
       let isMultiAccountEnabled: boolean = await osAccountManager.checkMultiOsAccountEnabled();
@@ -530,15 +540,13 @@ export default function accountManagerTest() {
         let newAccount: osAccount.OsAccountInfo = await accountManager.addOsAccountAsync(SELFWANT,
           accountName, osAccount.OsAccountType.ADMIN);
         localId = newAccount.localId;
+        localIds.push(localId);
         console.info(' --- addOsAccountAsync_test_004 newAccount.localId: ' + localId);
         expect(newAccount.localName == accountName).assertTrue();
       } catch (error) {
         console.info(' --- addOsAccountAsync_test_004 error is unexpected when multi account is enabled, actually catch: ' + error.code);
         expect(isMultiAccountEnabled).assertFalse();
       } finally {
-        if (isMultiAccountEnabled) {
-          await osAccountManager.removeOsAccount(localId);
-        }
         await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
       done();
@@ -556,7 +564,7 @@ export default function accountManagerTest() {
     it("addOsAccountAsync_test_005", 0, async (done: Function) => {
       console.info(' --- addOsAccountAsync_test_005  -------- START --------');
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-      let accountName: string = "test_name";
+      let accountName: string = "test_name3";
       let localId: number = 0;
       let osAccountManager = osAccount.getAccountManager();
       let isMultiAccountEnabled: boolean = await osAccountManager.checkMultiOsAccountEnabled();
@@ -565,15 +573,13 @@ export default function accountManagerTest() {
         let newAccount: osAccount.OsAccountInfo = await accountManager.addOsAccountAsync(SELFWANT,
           accountName, osAccount.OsAccountType.NORMAL);
         localId = newAccount.localId;
+        localIds.push(localId);
         console.info(' --- addOsAccountAsync_test_005 newAccount.localId: ' + localId);
         expect(newAccount.localName == accountName).assertTrue();
       } catch (error) {
         console.info(' --- addOsAccountAsync_test_005 error is unexpected when multi account is enabled, actually catch: ' + error.code);
         expect(isMultiAccountEnabled).assertFalse();
       } finally {
-        if (isMultiAccountEnabled) {
-          await osAccountManager.removeOsAccount(localId);
-        }
         await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
       done();
@@ -591,7 +597,7 @@ export default function accountManagerTest() {
     it("addOsAccountAsync_test_006", 0, async (done: Function) => {
       console.info(' --- addOsAccountAsync_test_006  -------- START --------');
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-      let accountName: string = "test_name";
+      let accountName: string = "test_name4";
       let localId: number = 0;
       let osAccountManager = osAccount.getAccountManager();
       let isMultiAccountEnabled: boolean = await osAccountManager.checkMultiOsAccountEnabled();
@@ -600,15 +606,13 @@ export default function accountManagerTest() {
         let newAccount: osAccount.OsAccountInfo = await accountManager.addOsAccountAsync(SELFWANT,
           accountName, osAccount.OsAccountType.GUEST);
         localId = newAccount.localId;
+        localIds.push(localId);
         console.info(' --- addOsAccountAsync_test_006 newAccount.localId: ' + localId);
         expect(newAccount.localName == accountName).assertTrue();
       } catch (error) {
         console.info(' --- addOsAccountAsync_test_006 error is unexpected when multi account is enabled, actually catch: ' + error.code);
         expect(isMultiAccountEnabled).assertFalse();
       } finally {
-        if (isMultiAccountEnabled) {
-          await osAccountManager.removeOsAccount(localId);
-        }
         await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
       done();
