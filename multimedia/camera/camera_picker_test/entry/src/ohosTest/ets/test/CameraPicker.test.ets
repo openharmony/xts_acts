@@ -63,7 +63,7 @@ export function executePicker() : boolean {
   return isExecute;
 }
 
-export default function cameraPicker() {
+export function cameraPicker() {
 
   describe('cameraPicker', () => {
     console.info(TAG + '----------CameraPickerTest--------------');
