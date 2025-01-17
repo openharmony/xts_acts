@@ -14,6 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import deviceInfo from '@ohos.deviceInfo';
 
 import account from '@ohos.account.distributedAccount'
 const LOGININFO = {
@@ -26,6 +27,9 @@ const LOGOUTINFO = {
     id: '12345',
     event: "Ohos.account.event.LOGOUT"
 }
+
+let deviceType = deviceInfo.deviceType;
+console.info("====>the value of the deviceinfo deviceType is: " + deviceType);
 
 export default function ActsDAGetSetTest() {
     describe('ActsDAGetSetTest', function () {
@@ -582,8 +586,15 @@ export default function ActsDAGetSetTest() {
         * @tc.type     : Function
         */
         it('setOsAccountDistributedInfo_test011', 0, async function (done) {
-            const accountAbility = account.getDistributedAccountAbility()
-            var limitAvatar = ''.padEnd(10 * 1024 * 1024 + 1, 'o')          
+            const accountAbility = account.getDistributedAccountAbility();
+            let limitAvatar = '';
+            if (deviceType === 'wearable') {
+                console.info("====>test011 the wearable cannot construct 10M data");
+                done();
+                return;
+            } else {
+                limitAvatar = ''.padEnd(10 * 1024 * 1024 + 1, 'o');
+            }        
             console.info('====>setOsAccountDistributedInfo_test011 avatar_length:' + limitAvatar.length)
             let obj = {
                 id: '12345',
@@ -609,8 +620,16 @@ export default function ActsDAGetSetTest() {
         * @tc.type     : Function
         */
         it('setOsAccountDistributedInfo_test012', 0, async function (done) {
-            const accountAbility = account.getDistributedAccountAbility()
-            var limitAvatar = ''.padEnd(10 * 1024 * 1024 + 1, 'o')
+            console.info("====>setOsAccountDistributedInfo_test012 start");
+            const accountAbility = account.getDistributedAccountAbility();
+            let limitAvatar = '';
+            if (deviceType === 'wearable') {
+                console.info("====>test012 the wearable cannot construct 10M data");
+                done();
+                return;
+            } else {
+                limitAvatar = ''.padEnd(10 * 1024 * 1024 + 1, 'o');
+            }
             console.info('====>setOsAccountDistributedInfo_test012 avatar_length:' + limitAvatar.length)
             let obj = {
                 id: '12345',
