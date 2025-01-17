@@ -420,5 +420,29 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
       }
       done();
     });
+
+    /**
+     * @tc.number SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0040
+     * @tc.name test openInstallCertificateDialog with abnormal parameters
+     * @tc.desc abnormal test
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0040', 0, async (done: Function) => {
+      console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0040: started ");
+      const context :common.Context = GlobalContext.getContext();
+      let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
+      let certificateScope: certManagerDialog.CertificateScope = certManagerDialog.CertificateScope.CURRENT_USER;
+      try {
+        await certManagerDialog.openInstallCertificateDialog(null, certificateType, certificateScope, caCert)
+        expect(null).assertFail()
+      } catch (err) {
+        console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0040: e.code " + err.code);
+        expect(err.code).assertEqual(29700004);
+      }
+      done();
+    });
+
   })
 }
