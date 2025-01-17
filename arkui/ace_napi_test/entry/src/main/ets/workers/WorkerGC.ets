@@ -310,7 +310,7 @@ workerPort.onmessage = (e: MessageEvents) => {
       break;
     }
     case 'setNamedProperty': {
-      let value = napitest.setNamedProperty([1, 2], "e", false);
+      let value = napitest.setNamedProperty([1, 2], 'e', false);
       ArkTools.forceFullGC();
       console.info('Worker: setNamedProperty value is: ', value);
       workerPort.postMessage(value);
@@ -326,7 +326,7 @@ workerPort.onmessage = (e: MessageEvents) => {
         name: 'zhangsan',
         age: 18
       };
-      let value = napitest.getNamedProperty(peop, "name");
+      let value = napitest.getNamedProperty(peop, 'name');
       ArkTools.forceFullGC();
       console.info('Worker: getNamedProperty value is: ', value);
       workerPort.postMessage(value);
@@ -342,7 +342,7 @@ workerPort.onmessage = (e: MessageEvents) => {
         name: 'zhangsan',
         age: 18
       };
-      let value = napitest.hasNamedProperty(peop, "name");
+      let value = napitest.hasNamedProperty(peop, 'name');
       ArkTools.forceFullGC();
       console.info('Worker: hasNamedProperty value is: ', value);
       workerPort.postMessage(value);
@@ -524,7 +524,7 @@ workerPort.onmessage = (e: MessageEvents) => {
       break;
     }
     case 'getModuleFileName': {
-      let value = napitest.getModuleFileName().indexOf(".so");
+      let value = napitest.getModuleFileName().indexOf('.so');
       ArkTools.forceFullGC();
       console.info('Worker: getModuleFileName value is: ', value);
       workerPort.postMessage(value);
