@@ -28,7 +28,42 @@ const TAG = "CameraPickerTest: ";
 
 const sleep = (delay: number) => new Promise<void>((resolve) => setTimeout(resolve, delay));
 
-export default function cameraPicker() {
+export function executePicker() : boolean {
+  const cameraAvailable = canIUse('SystemCapability.Multimedia.Camera.Core');
+  let context = getContext();
+
+  let isSupportedCameras = true;
+  let isExecute = false;
+  let mCameraManager: camera.CameraManager;
+  let mCameraDevicesArray: Array<camera.CameraDevice>;
+
+  let isEmpty = (data: ESObject) => {
+    if (data == null || data == undefined) {
+      return true;
+    }
+    return false;
+  }
+
+  console.info(TAG + 'Enter getCameraManagerInstance');
+  mCameraManager = camera.getCameraManager(context);
+  if (isEmpty(mCameraManager)) {
+    console.info(TAG + "getCameraManager FAILED");
+    return false;
+  }
+  console.info(TAG + 'Exit getCameraManagerInstance');
+  mCameraDevicesArray = mCameraManager.getSupportedCameras();
+  if (isEmpty(mCameraDevicesArray)) {
+    isSupportedCameras = false;
+  }
+  if (cameraAvailable && isSupportedCameras) {
+    isExecute = true;
+  } else {
+    isExecute = false;
+  }
+  return isExecute;
+}
+
+export function cameraPicker() {
 
   describe('cameraPicker', () => {
     console.info(TAG + '----------CameraPickerTest--------------');
