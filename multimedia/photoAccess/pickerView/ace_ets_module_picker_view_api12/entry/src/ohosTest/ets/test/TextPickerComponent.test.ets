@@ -42,6 +42,8 @@ import {
   RecentPhotoOptions,
   PhotoSource,
 } from '@ohos.file.RecentPhotoComponent';
+const SEEK_START = 3;
+const SEEK_FINISH = 4;
 
 async function routeToUrl(options: router.RouterOptions) {
   try {
@@ -1264,10 +1266,10 @@ export default function TextPicker() {
         let result: number = event?.data?.msg;
         console.info('testPicker27 state =:' + JSON.stringify(result));
         let vedioCallBackState: number = event?.data?.vedioCallBackState;
-        if (vedioCallBackState === 3) {
+        if (vedioCallBackState === SEEK_START) {
             expect(true).assertTrue();
             console.log('state is SEEK_START:' + vedioCallBackState);
-        } else if (vedioCallBackState === 4) {
+        } else if (vedioCallBackState === SEEK_FINISH) {
             expect(true).assertTrue();
             console.log('state is SEEK_FINISH:' + vedioCallBackState);
         } else {
