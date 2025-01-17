@@ -35,7 +35,7 @@ struct EditableTitleBarAccessibilityPage {
               accessibilityDescription: '单指双击即可取消', //该项屏幕朗读播报描述为'单指双击即可取消'
               accessibilityLevel: 'yes', //该项可被无障碍屏幕朗读聚焦
               action: () => {
-                promptAction.showToast({ message: "show toast index 2" });
+                promptAction.showToast({ message: 'show toast index 2' });
               }
             }
           ],
