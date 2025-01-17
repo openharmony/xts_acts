@@ -33,7 +33,7 @@ struct preview {
     Column() {
       Image($r('app.media.icon'))
         .id("MyPreview")
-        .onClick(()=>{
+        .onClick(() => {
           this.text = "true";
         })
         .width("200px")
@@ -42,30 +42,26 @@ struct preview {
   }
 
   build() {
-    Column({ space: 50 }) {
-      Column() {
-        Column() {
-          Text('preview-builder')
-            .width(200)
-            .height(100)
-            .textAlign(TextAlign.Center)
-            .margin(100)
-            .fontSize(30)
-            .bindContextMenu(this.isShown, this.MyMenu,
-              {
-                preview: this.MyPreview,
-                onDisappear: ()=>{
-                  this.isShown = false;
-                },
-                previewAnimationOptions: {scale: [0.8, 1.0]},
-              })
-          Button(this.text)
-            .id("preview")
-            .onClick(()=>{
-              this.isShown = true;
-            })
-        }
-      }.width('100%')
+    Column({ space: 10 }) {
+      Text('preview-builder')
+        .textAlign(TextAlign.Center)
+        .bindContextMenu(this.isShown, this.MyMenu,
+          {
+            preview: this.MyPreview,
+            onDisappear: () => {
+              this.isShown = false;
+            },
+            previewAnimationOptions: { scale: [0.8, 1.0] },
+          })
+      Button(this.text)
+        .id("preview")
+        .onClick(() => {
+          this.isShown = true;
+        })
+
     }
+    .justifyContent(FlexAlign.Center)
+    .height('100%')
+    .width('100%')
   }
 }
