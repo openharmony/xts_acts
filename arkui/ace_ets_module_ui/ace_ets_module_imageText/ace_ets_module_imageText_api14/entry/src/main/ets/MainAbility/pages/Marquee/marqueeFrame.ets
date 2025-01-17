@@ -43,11 +43,14 @@ struct Frame {
         .margin({bottom: 20})
         .id('dynamicMarquee')
         .onAppear(() => {
-          let dynamicMarquee = this.getUIContext().requireDynamicSyncScene('dynamicMarquee')
-          if(dynamicMarquee){
-            this.scenes = dynamicMarquee as MarqueeDynamicSyncScene[]
-            if (this.scenes) {
-              this.requireFlag = 'MarqueerequireDynamicSyncScene succ'
+          let currentUIContext: UIContext = this.getUIContext()
+          if(currentUIContext){
+            let dynamicMarquee = currentUIContext.requireDynamicSyncScene('dynamicMarquee')
+            if(dynamicMarquee){
+              this.scenes = dynamicMarquee as MarqueeDynamicSyncScene[]
+              if (this.scenes) {
+                this.requireFlag = 'MarqueerequireDynamicSyncScene succ'
+              }
             }
           }
         })
