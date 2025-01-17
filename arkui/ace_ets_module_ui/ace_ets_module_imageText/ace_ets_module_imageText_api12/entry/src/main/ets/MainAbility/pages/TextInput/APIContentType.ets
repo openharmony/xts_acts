@@ -22,11 +22,10 @@ struct APIContentType {
 
   build() {
     Column() {
-      Text(this.text).key('APIContentTypeText')
+      Text(this.text).key('APIContentTypeText').margin({top:20}).fontSize(10)
       TextInput({ placeholder: 'input your password...' }).key('APIContentTypeTextInput')
         .width('95%')
-        .height(40)
-        .margin(20)
+        .height('10%')
         .type(InputType.Password)
         .maxLength(9)
         .showPasswordIcon(true)
@@ -41,12 +40,11 @@ struct APIContentType {
         .onClick(() => {
           let strJson = getInspectorByKey('APIContentTypeTextInput');
           this.text = JSON.parse(strJson).$attrs.contentType + ''
-        })
+        }).height('5%')
 
       TextInput({ placeholder: 'input your password...' }).key('ContentType_23')
         .width('95%')
-        .height(40)
-        .margin(20)
+        .height('10%')
         .type(InputType.Password)
         .maxLength(9)
         .showPasswordIcon(true)
@@ -61,11 +59,10 @@ struct APIContentType {
         .onClick(() => {
           let strJson = getInspectorByKey('ContentType_23');
           this.text = JSON.parse(strJson).$attrs.contentType + ''
-        })
+        }).height('5%')
       TextInput({ placeholder: 'input your password...' }).key('ContentType_24')
         .width('95%')
-        .height(40)
-        .margin(20)
+        .height('10%')
         .type(InputType.Password)
         .maxLength(9)
         .showPasswordIcon(true)
@@ -80,11 +77,10 @@ struct APIContentType {
         .onClick(() => {
           let strJson = getInspectorByKey('ContentType_24');
           this.text = JSON.parse(strJson).$attrs.contentType + ''
-        })
+        }).height('5%')
       TextInput({ placeholder: 'input your password...' }).key('ContentType_25')
         .width('95%')
-        .height(40)
-        .margin(20)
+        .height('10%')
         .type(InputType.Password)
         .maxLength(9)
         .showPasswordIcon(true)
@@ -99,7 +95,7 @@ struct APIContentType {
         .onClick(() => {
           let strJson = getInspectorByKey('ContentType_25');
           this.text = JSON.parse(strJson).$attrs.contentType + ''
-        })
-    }.width('100%')
+        }).height('5%')
+    }.width('100%').height('100%')
   }
 }

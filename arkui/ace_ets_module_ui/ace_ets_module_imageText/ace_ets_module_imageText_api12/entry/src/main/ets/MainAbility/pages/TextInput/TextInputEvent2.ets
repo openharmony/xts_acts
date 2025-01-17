@@ -33,16 +33,16 @@ struct TextInputEvent2 {
 
   build() {
     Column() {
-      Text(this.insertValue).key('TextInputEvent2Text')
-      Text(this.insertValue2).key('TextInputEvent2Text2')
-      Text(this.insertValue3).key('TextInputEvent2Text3')
-      Text(this.insertValue4).key('TextInputEvent2Text4')
-      Text(this.insertValue5).key('TextInputEvent2Text5')
-      Text(this.insertValue6).key('TextInputEvent2Text6')
-
+      Text(this.insertValue).key('TextInputEvent2Text').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+      Text(this.insertValue2).key('TextInputEvent2Text2').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+      Text(this.insertValue3).key('TextInputEvent2Text3').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+      Text(this.insertValue4).key('TextInputEvent2Text4').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+      Text(this.insertValue5).key('TextInputEvent2Text5').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+      Text(this.insertValue6).key('TextInputEvent2Text6').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
       Row() {
         TextInput()
-          .height(60)
+          .height('10%')
+          .fontSize(10)
           .width(100)
           .onWillInsert((info: InsertValue) => {
             this.insertValue += '0'
@@ -62,7 +62,8 @@ struct TextInputEvent2 {
           .key('TextInput2Event')
 
         TextInput({ text: '0' })
-          .height(60)
+          .height('10%')
+          .fontSize(10)
           .width(100)
           .onWillInsert((info: InsertValue) => {
             this.insertValue = ''
@@ -83,7 +84,8 @@ struct TextInputEvent2 {
 
       Row() {
         TextInput({ text: '0' })
-          .height(60)
+          .height('10%')
+          .fontSize(10)
           .width(100)
           .onWillInsert((info: InsertValue) => {
             this.insertValue3 = '0'
@@ -102,7 +104,8 @@ struct TextInputEvent2 {
           .key('TextInput2Event3')
 
         TextInput({ text: '0' })
-          .height(60)
+          .height('10%')
+          .fontSize(10)
           .width(100)
           .onWillInsert((info: InsertValue) => {
             this.insertValue3 = '0'
@@ -123,7 +126,8 @@ struct TextInputEvent2 {
 
       Row() {
         TextInput({ text: this.text })
-          .height(60)
+          .height('10%')
+          .fontSize(10)
           .width(100)
           .type(this.type)
           .textIndent(this.textIndent)
@@ -136,7 +140,8 @@ struct TextInputEvent2 {
           .key('TextInput2Event5')
 
         TextInput({ text: this.text })
-          .height(60)
+          .height('10%')
+          .fontSize(10)
           .width(100)
           .inputFilter('[a-z]', (e) => {
             console.log(JSON.stringify(e))
@@ -147,8 +152,6 @@ struct TextInputEvent2 {
           })
           .key('TextInput2Event6')
       }
-
-
       Row () {
         Button('change')
           .key('TextInput2EventBt')
@@ -157,12 +160,12 @@ struct TextInputEvent2 {
             this.textIndent = 10
             this.style = TextInputStyle.Inline
             this.textOverFlow = TextOverflow.Clip
-          })
+          }).height('5%')
         Button('change')
           .key('TextInput2EventBt2')
           .onClick((event: ClickEvent) => {
             this.text = 'text'
-          })
+          }).height('5%')
       }
     }
     .height('100%')

@@ -29,36 +29,78 @@ struct onSubmitTest {
   build() {
     Column() {
       Column(){
-        Text(this.enterKeyType+'')
-          .width('100%')
-          .padding(5)
+        Text(this.searchText)
+          .height('10%')
+          .fontSize(10)
           .textAlign(TextAlign.Center)
           .border({ width: 1 })
           .borderWidth(1)
           .borderColor(Color.Blue)
-          .margin(10)
+          .id('searchText')
+        Text(this.searchEventText)
+          .height('10%')
+          .fontSize(10)
+          .textAlign(TextAlign.Center)
+          .border({ width: 1 })
+          .borderWidth(1)
+          .borderColor(Color.Blue)
+          .id('event')
+        Text(this.searchIsEditing+'')
+          .height('10%')
+          .fontSize(10)
+          .textAlign(TextAlign.Center)
+          .border({ width: 1 })
+          .borderWidth(1)
+          .borderColor(Color.Blue)
+          .id('searchIsEditing')
+        Search()
+          .height('10%')
+          .border({ width: 1 })
+          .borderWidth(1)
+          .borderColor(Color.Red)
+          .onSubmit((searchContent: string, event: SubmitEvent) => {
+            this.searchText = searchContent
+            this.searchEventText = event.text
+            console.log('trigger search onsubmit: '+searchContent );
+            console.log('trigger event onsubmit: '+event.text );
+            if(this.isCallKeepEditableState) {
+              event.keepEditableState();
+            }
+          })
+          .onEditChange((isEditing: boolean) => {
+            this.searchIsEditing = isEditing
+          })
+          .id('Search')
+      }
+      Column(){
+        Text(this.enterKeyType+'')
+          .height('10%')
+          .fontSize(10)
+          .textAlign(TextAlign.Center)
+          .border({ width: 1 })
+          .borderWidth(1)
+          .borderColor(Color.Blue)
           .id('enterKeyType')
         Text(this.textAreaEventText)
-          .width('100%')
-          .padding(5)
+          .height('10%')
+          .fontSize(10)
           .textAlign(TextAlign.Center)
           .border({ width: 1 })
           .borderWidth(1)
           .borderColor(Color.Blue)
-          .margin(10)
           .id('TextAreaevent')
         Text(this.textAreaIsEditing+'')
-          .width('100%')
-          .padding(5)
+          .height('10%')
+          .fontSize(10)
           .textAlign(TextAlign.Center)
           .border({ width: 1 })
           .borderWidth(1)
           .borderColor(Color.Blue)
-          .margin(10)
           .id('TextAreaIsEdit')
         TextArea()
           .width('100%')
-          .height(50)
+          .height('10%')
+          .fontSize(10)
           .border({ width: 1 })
           .borderWidth(1)
           .borderColor(Color.Red)
@@ -77,58 +119,10 @@ struct onSubmitTest {
             this.textAreaIsEditing = isEditing
           })
           .id('TextArea')
-      }.margin(10)
-      Column(){
-        Text(this.searchText)
-          .width('100%')
-          .padding(5)
-          .textAlign(TextAlign.Center)
-          .border({ width: 1 })
-          .borderWidth(1)
-          .borderColor(Color.Blue)
-          .margin(10)
-          .id('searchText')
-        Text(this.searchEventText)
-          .width('100%')
-          .padding(5)
-          .textAlign(TextAlign.Center)
-          .border({ width: 1 })
-          .borderWidth(1)
-          .borderColor(Color.Blue)
-          .margin(10)
-          .id('event')
-        Text(this.searchIsEditing+'')
-          .width('100%')
-          .padding(5)
-          .textAlign(TextAlign.Center)
-          .border({ width: 1 })
-          .borderWidth(1)
-          .borderColor(Color.Blue)
-          .margin(10)
-          .id('searchIsEditing')
-        Search()
-          .width('100%')
-          .height(50)
-          .border({ width: 1 })
-          .borderWidth(1)
-          .borderColor(Color.Red)
-          .onSubmit((searchContent: string, event: SubmitEvent) => {
-            this.searchText = searchContent
-            this.searchEventText = event.text
-            console.log('trigger search onsubmit: '+searchContent );
-            console.log('trigger event onsubmit: '+event.text );
-            if(this.isCallKeepEditableState) {
-              event.keepEditableState();
-            }
-          })
-		  .onEditChange((isEditing: boolean) => {
-            this.searchIsEditing = isEditing
-          })
-          .id('Search')
-      }.margin(10)
+      }
       Button('isCallKeepEditableState:'+this.isCallKeepEditableState).onClick(()=>{
         this.isCallKeepEditableState = !this.isCallKeepEditableState
-      }).id('changeIsCallKeepEditableState')
+      }).id('changeIsCallKeepEditableState').height('5%')
     }.height('100%')
   }
 }

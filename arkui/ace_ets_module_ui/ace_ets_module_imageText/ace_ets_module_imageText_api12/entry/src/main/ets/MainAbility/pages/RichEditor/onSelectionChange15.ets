@@ -30,7 +30,7 @@ struct onSelectionChange15 {
               style:
               {
                 fontColor: Color.Orange,
-                fontSize: 50
+                fontSize: 20
               }
             })
         })

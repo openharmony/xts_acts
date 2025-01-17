@@ -27,27 +27,27 @@ struct RichEditor3 {
   @State paragraphStyleLeadingMarginDelete:string = '';
   build() {
     Column() {
-      Row(){
-        Button("getSPans").onClick(() => {
+      Column(){
+        Button('getSPans').onClick(() => {
           this.layoutStyleBorderRadius = '';
           this.layoutStyleMargin = '';
           this.paragraphStyleTextAlign = '';
           this.paragraphStyleLeadingMargin = '';
           this.controller.getSpans({ start: -1, end: -1 }).forEach((item,index) => {
             if(typeof(item as RichEditorImageSpanResult)['imageStyle'] != 'undefined'){
-              this.layoutStyleBorderRadius += JSON.stringify(index + ":" + (item as RichEditorImageSpanResult).imageStyle?.layoutStyle?.borderRadius)
-              this.layoutStyleMargin += JSON.stringify(index + ":" + (item as RichEditorImageSpanResult).imageStyle.layoutStyle?.margin)
+              this.layoutStyleBorderRadius += JSON.stringify(index + ':' + (item as RichEditorImageSpanResult).imageStyle?.layoutStyle?.borderRadius)
+              this.layoutStyleMargin += JSON.stringify(index + ':' + (item as RichEditorImageSpanResult).imageStyle.layoutStyle?.margin)
             } else {
               if(typeof(item as RichEditorTextSpanResult)['symbolSpanStyle'] != 'undefined') {
                 console.log('跳过')
               }else {
-                this.paragraphStyleTextAlign += JSON.stringify(index + ":" + (item as RichEditorTextSpanResult).paragraphStyle?.textAlign)
-                this.paragraphStyleLeadingMargin += JSON.stringify(index + ":" + (item as RichEditorTextSpanResult).paragraphStyle?.leadingMargin)
+                this.paragraphStyleTextAlign += JSON.stringify(index + ':' + (item as RichEditorTextSpanResult).paragraphStyle?.textAlign)
+                this.paragraphStyleLeadingMargin += JSON.stringify(index + ':' + (item as RichEditorTextSpanResult).paragraphStyle?.leadingMargin)
               }
             }
           })
-        }).id("getSPans")
-        Button("getSelection").onClick(() => {
+        }).id('getSPans').height('5%')
+        Button('getSelection').onClick(() => {
           this.layoutStyleBorderRadius = '';
           this.layoutStyleMargin = '';
           this.paragraphStyleTextAlign = '';
@@ -55,20 +55,20 @@ struct RichEditor3 {
           let selection = this.controller.getSelection().spans;
           selection.forEach((item,index) => {
             if(typeof(item as RichEditorImageSpanResult)['imageStyle'] != 'undefined'){
-              this.layoutStyleBorderRadius += JSON.stringify(index + ":" + (item as RichEditorImageSpanResult).imageStyle.layoutStyle?.borderRadius)
-              this.layoutStyleMargin += JSON.stringify(index + ":" + (item as RichEditorImageSpanResult).imageStyle.layoutStyle?.margin)
+              this.layoutStyleBorderRadius += JSON.stringify(index + ':' + (item as RichEditorImageSpanResult).imageStyle.layoutStyle?.borderRadius)
+              this.layoutStyleMargin += JSON.stringify(index + ':' + (item as RichEditorImageSpanResult).imageStyle.layoutStyle?.margin)
             } else {
               if(typeof(item as RichEditorTextSpanResult)['symbolSpanStyle'] != 'undefined') {
                 console.log('跳过')
               }else {
-                this.paragraphStyleTextAlign += JSON.stringify(index + ":" + (item as RichEditorTextSpanResult).paragraphStyle?.textAlign)
-                this.paragraphStyleLeadingMargin += JSON.stringify(index + ":" + (item as RichEditorTextSpanResult).paragraphStyle?.leadingMargin)
+                this.paragraphStyleTextAlign += JSON.stringify(index + ':' + (item as RichEditorTextSpanResult).paragraphStyle?.textAlign)
+                this.paragraphStyleLeadingMargin += JSON.stringify(index + ':' + (item as RichEditorTextSpanResult).paragraphStyle?.leadingMargin)
               }
             }
           })
-        }).id("getSelection").margin(20)
-        Button("setContent").onClick(() => {
-          this.controller.addTextSpan("测试文字测试文字测试文字测试文字", {
+        }).id('getSelection').height('5%')
+        Button('setContent').onClick(() => {
+          this.controller.addTextSpan('测试文字测试文字测试文字测试文字', {
             paragraphStyle: {
               textAlign: TextAlign.Start,
               leadingMargin: 32
@@ -76,18 +76,18 @@ struct RichEditor3 {
           })
           this.controller.addImageSpan($r('app.media.app_icon'), {
             imageStyle: {
-              size: ["80px", "80px"],
+              size: ['80px', '80px'],
               layoutStyle: {
                 borderRadius: 20,
                 margin: 20
               }
             }
           })
-        }).id("setContent")
+        }).id('setContent').height('5%')
       }
       RichEditor({ controller: this.controller })
         .id('RichEditorGetAttribute')
-        .width("100%")
+        .width('100%')
         .border({ width: 1, radius: 5 })
         .aboutToDelete((value: RichEditorDeleteValue) => {
           this.layoutStyleBorderRadius = '';
@@ -98,16 +98,16 @@ struct RichEditor3 {
             if(typeof(item as RichEditorImageSpanResult)['imageStyle'] != 'undefined'){
               this.layoutStyleBorderRadiusDelete = '';
               this.layoutStyleMarginDelete = '';
-              this.layoutStyleBorderRadiusDelete += JSON.stringify(index + ":" + (item as RichEditorImageSpanResult).imageStyle.layoutStyle?.borderRadius)
-              this.layoutStyleMarginDelete += JSON.stringify(index + ":" + (item as RichEditorImageSpanResult).imageStyle.layoutStyle?.margin)
+              this.layoutStyleBorderRadiusDelete += JSON.stringify(index + ':' + (item as RichEditorImageSpanResult).imageStyle.layoutStyle?.borderRadius)
+              this.layoutStyleMarginDelete += JSON.stringify(index + ':' + (item as RichEditorImageSpanResult).imageStyle.layoutStyle?.margin)
             } else {
               if(typeof(item as RichEditorTextSpanResult)['symbolSpanStyle'] != 'undefined') {
                 console.log('跳过')
               }else {
                 this.paragraphStyleTextAlignDelete = '';
                 this.paragraphStyleLeadingMarginDelete = '';
-                this.paragraphStyleTextAlignDelete += JSON.stringify(index + ":" + (item as RichEditorTextSpanResult).paragraphStyle?.textAlign)
-                this.paragraphStyleLeadingMarginDelete += JSON.stringify(index + ":" + (item as RichEditorTextSpanResult).paragraphStyle?.leadingMargin)
+                this.paragraphStyleTextAlignDelete += JSON.stringify(index + ':' + (item as RichEditorTextSpanResult).paragraphStyle?.textAlign)
+                this.paragraphStyleLeadingMarginDelete += JSON.stringify(index + ':' + (item as RichEditorTextSpanResult).paragraphStyle?.leadingMargin)
               }
             }
           })
@@ -121,14 +121,14 @@ struct RichEditor3 {
           let selection = value.spans;
           selection.forEach((item,index) => {
             if(typeof(item as RichEditorImageSpanResult)['imageStyle'] != 'undefined'){
-              this.layoutStyleBorderRadius += JSON.stringify(index + ":" + (item as RichEditorImageSpanResult).imageStyle.layoutStyle?.borderRadius)
-              this.layoutStyleMargin += JSON.stringify(index + ":" + (item as RichEditorImageSpanResult).imageStyle.layoutStyle?.margin)
+              this.layoutStyleBorderRadius += JSON.stringify(index + ':' + (item as RichEditorImageSpanResult).imageStyle.layoutStyle?.borderRadius)
+              this.layoutStyleMargin += JSON.stringify(index + ':' + (item as RichEditorImageSpanResult).imageStyle.layoutStyle?.margin)
             } else {
               if(typeof(item as RichEditorTextSpanResult)['symbolSpanStyle'] != 'undefined') {
                 console.log('跳过')
               }else {
-                this.paragraphStyleTextAlign += JSON.stringify(index + ":" + (item as RichEditorTextSpanResult).paragraphStyle?.textAlign)
-                this.paragraphStyleLeadingMargin += JSON.stringify(index + ":" + (item as RichEditorTextSpanResult).paragraphStyle?.leadingMargin)
+                this.paragraphStyleTextAlign += JSON.stringify(index + ':' + (item as RichEditorTextSpanResult).paragraphStyle?.textAlign)
+                this.paragraphStyleLeadingMargin += JSON.stringify(index + ':' + (item as RichEditorTextSpanResult).paragraphStyle?.leadingMargin)
               }
             }
           })
@@ -146,23 +146,23 @@ struct RichEditor3 {
           }
         })
       Row(){
-        Text('PSTextAlign:')
-        Text(this.paragraphStyleTextAlign + this.paragraphStyleTextAlignDelete).id("PSTextAlign")
-      }.margin({top:10}).width("100%")
+        Text('PSTextAlign:').fontSize(10)
+        Text(this.paragraphStyleTextAlign + this.paragraphStyleTextAlignDelete).id('PSTextAlign').fontSize(10)
+      }.margin({top:10}).width('100%')
       Row(){
-        Text('PSLeadingMargin:')
-        Text(this.paragraphStyleLeadingMargin + this.paragraphStyleLeadingMarginDelete).id("PSLeadingMargin")
-      }.margin({top:10}).width("100%")
+        Text('PSLeadingMargin:').fontSize(10)
+        Text(this.paragraphStyleLeadingMargin + this.paragraphStyleLeadingMarginDelete).id('PSLeadingMargin').fontSize(10)
+      }.margin({top:10}).width('100%')
       Row(){
-        Text('LSBorderRadius:')
-        Text(this.layoutStyleBorderRadius + this.layoutStyleBorderRadiusDelete).id("LSBorderRadius")
-      }.margin({top:10}).width("100%")
+        Text('LSBorderRadius:').fontSize(10)
+        Text(this.layoutStyleBorderRadius + this.layoutStyleBorderRadiusDelete).id('LSBorderRadius').fontSize(10)
+      }.margin({top:10}).width('100%')
       Row(){
-        Text('LSMargin:')
-        Text(this.layoutStyleMargin + this.layoutStyleMarginDelete).id("LSMargin")
-      }.margin({top:10}).width("100%")
+        Text('LSMargin:').fontSize(10)
+        Text(this.layoutStyleMargin + this.layoutStyleMarginDelete).id('LSMargin').fontSize(10)
+      }.margin({top:10}).width('100%')
     }
     .width('100%')
-    .height("100%")
+    .height('100%')
   }
 }

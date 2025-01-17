@@ -25,15 +25,15 @@ struct SearchEvent {
 
   build() {
     Column() {
-      Text(this.insertValue).key('SearchEventText')
-      Text(this.insertValue2).key('SearchEventText2')
-      Text(this.insertValue3).key('SearchEventText3')
-      Text(this.insertValue4).key('SearchEventText4')
-      Text(this.insertValue5).key('SearchEventText5')
-      Text(this.insertValue6).key('SearchEventText6')
+      Text(this.insertValue).key('SearchEventText').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+      Text(this.insertValue2).key('SearchEventText2').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+      Text(this.insertValue3).key('SearchEventText3').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+      Text(this.insertValue4).key('SearchEventText4').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+      Text(this.insertValue5).key('SearchEventText5').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+      Text(this.insertValue6).key('SearchEventText6').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
 
       Search({ value: this.text })
-        .height(60)
+        .height('5%')
         .onWillInsert((info: InsertValue) => {
           this.insertValue = info.insertOffset + ''
           this.insertValue2 = info.insertValue
@@ -54,7 +54,7 @@ struct SearchEvent {
         .key('SearchEvent')
 
       Search({ value: '0' })
-        .height(60)
+        .height('5%')
         .onWillInsert((info: InsertValue) => {
           this.insertValue = info.insertOffset + ''
           this.insertValue2 = info.insertValue
@@ -67,7 +67,7 @@ struct SearchEvent {
         .key('SearchEvent2')
 
       Search({ value: '0' })
-        .height(60)
+        .height('5%')
         .onWillDelete((info: DeleteValue) => {
           this.insertValue5 = info.deleteOffset + ''
           this.insertValue6 = info.deleteValue
@@ -80,6 +80,7 @@ struct SearchEvent {
         .onClick((event: ClickEvent) => {
           this.text = ''
         })
+        .height('5%')
 
 
     }
