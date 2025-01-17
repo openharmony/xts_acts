@@ -24,7 +24,9 @@
     },
     "sourceOption": {
       "workers": [
-        "./src/main/ets/workers/worker.ets"
+        "./src/main/ets/workers/worker.ets",
+        "./src/main/ets/workers/MyWorker.ets",
+        "./src/main/ets/workers/WorkerGC.ets",
       ]
     }
   },
