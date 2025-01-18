@@ -33,22 +33,24 @@ export default function DeviceStatusUnitTest() {
         }
 
         /**
-         * @tc.number DeviceStatus_001
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
+         * @tc.number    : SUB_MSDP_DeviceStatus_API_Stationary_0100
+         * @tc.name      : SUB_MSDP_DeviceStatus_API_Stationary_0100
+         * @tc.desc      : Stationary callback interface test
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
          */
-        it('msdp_test_devices_status_001', 0, function (done) {
-            console.log("msdp_test_devices_status_001 on start");
+        it('SUB_MSDP_DeviceStatus_API_Stationary_0100', 0, function (done) {
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0100 on start");
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
-                stationary.on("still", 3, 1, pub_callback);
+                stationary.on("still", 3, 1000000000, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
                 done();
             }
-            console.log("msdp_test_devices_status_001 once start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0100 once start");
             try {
                 p_done = done;
                 stationary.once("still", pub_callback);
@@ -56,7 +58,7 @@ export default function DeviceStatusUnitTest() {
                 console.error('error=' + error);
                 done();
             }
-            console.log("msdp_test_devices_status_001 off start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0100 off start");
             setTimeout(function () {
                 try {
                     p_done = done;
@@ -71,22 +73,24 @@ export default function DeviceStatusUnitTest() {
         })
 
         /**
-         * @tc.number DeviceStatus_002
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
+         * @tc.number    : SUB_MSDP_DeviceStatus_API_Stationary_0200
+         * @tc.name      : SUB_MSDP_DeviceStatus_API_Stationary_0200
+         * @tc.desc      : Stationary callback interface test
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
          */
-        it('msdp_test_devices_status_002', 0, function (done) {
-            console.log("msdp_test_devices_status_002 on start");
+        it('SUB_MSDP_DeviceStatus_API_Stationary_0200', 0, function (done) {
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0200 on start");
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
-                stationary.on("relativeStill", 3, 1, pub_callback);
+                stationary.on("relativeStill", 2, 1000000000, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
                 done();
             }
-            console.log("msdp_test_devices_status_002 once start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0200 once start");
             try {
                 p_done = done;
                 stationary.once("relativeStill", pub_callback);
@@ -94,7 +98,7 @@ export default function DeviceStatusUnitTest() {
                 console.error('error=' + error);
                 done();
             }
-            console.log("msdp_test_devices_status_002 off start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0200 off start");
             setTimeout(function () {
                 try {
                     p_done = done;
@@ -109,30 +113,36 @@ export default function DeviceStatusUnitTest() {
         })
 
         /**
-         * @tc.number DeviceStatus_003
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
+         * @tc.number    : SUB_MSDP_DeviceStatus_API_Stationary_0300
+         * @tc.name      : SUB_MSDP_DeviceStatus_API_Stationary_0300
+         * @tc.desc      : Stationary callback interface test
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
          */
-        it('msdp_test_devices_status_003', 0, function (done) {
-            console.log("msdp_test_devices_status_003 on start");
+        it('SUB_MSDP_DeviceStatus_API_Stationary_0300', 0, function (done) {
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0300 on start");
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
-                stationary.on("Type_Unknow", 3, 1, pub_callback);
+                stationary.on("Type_Unknow", 3, 1000000000, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
+                console.info(`stationary.on fail: ${JSON.stringify(error, ['code', 'message'])}`);
+                expect(error.code).assertEqual(401);
                 done();
             }
-            console.log("msdp_test_devices_status_003 once start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0300 once start");
             try {
                 p_done = done;
                 stationary.once("Type_Unknow", pub_callback);
             } catch (error) {
                 console.error('error=' + error);
+                console.info(`stationary.once fail: ${JSON.stringify(error, ['code', 'message'])}`);
+                expect(error.code).assertEqual(401);
                 done();
             }
-            console.log("msdp_test_devices_status_003 off start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0300 off start");
             setTimeout(function () {
                 try {
                     p_done = done;
@@ -147,22 +157,24 @@ export default function DeviceStatusUnitTest() {
         })
 
         /**
-         * @tc.number DeviceStatus_004
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
+         * @tc.number    : SUB_MSDP_DeviceStatus_API_Stationary_0400
+         * @tc.name      : SUB_MSDP_DeviceStatus_API_Stationary_0400
+         * @tc.desc      : Stationary callback interface test
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
          */
-        it('msdp_test_devices_status_004', 0, function (done) {
-            console.log("msdp_test_devices_status_004 on start");
+        it('SUB_MSDP_DeviceStatus_API_Stationary_0400', 0, function (done) {
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0400 on start");
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
-                stationary.on("relativeStill", 3, 1, pub_callback);
+                stationary.on("relativeStill", 1, 1000000000, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
                 done();
             }
-            console.log("msdp_test_devices_status_004 once start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0400 once start");
             try {
                 p_done = done;
                 stationary.once("relativeStill", pub_callback);
@@ -170,7 +182,7 @@ export default function DeviceStatusUnitTest() {
                 console.error('error=' + error);
                 done();
             }
-            console.log("msdp_test_devices_status_004 off start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0400 off start");
             setTimeout(function () {
                 try {
                     p_done = done;
@@ -185,22 +197,26 @@ export default function DeviceStatusUnitTest() {
         })
 
         /**
-         * @tc.number DeviceStatus_005
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
+         * @tc.number    : SUB_MSDP_DeviceStatus_API_Stationary_0500
+         * @tc.name      : SUB_MSDP_DeviceStatus_API_Stationary_0500
+         * @tc.desc      : Stationary callback interface test
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
          */
-        it('msdp_test_devices_status_005', 0, function (done) {
-            console.log("msdp_test_devices_status_005 on start");
+        it('SUB_MSDP_DeviceStatus_API_Stationary_0500', 0, function (done) {
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0500 on start");
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
                 stationary.on("relativeStill", 3, 1, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
+                console.info(`stationary.on fail: ${JSON.stringify(error, ['code', 'message'])}`);
+                expect(error.code).assertEqual(401);
                 done();
             }
-            console.log("msdp_test_devices_status_005 once start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0500 once start");
             try {
                 p_done = done;
                 stationary.once("relativeStill", pub_callback);
@@ -208,7 +224,7 @@ export default function DeviceStatusUnitTest() {
                 console.error('error=' + error);
                 done();
             }
-            console.log("msdp_test_devices_status_005 off start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0500 off start");
             setTimeout(function () {
                 try {
                     p_done = done;
