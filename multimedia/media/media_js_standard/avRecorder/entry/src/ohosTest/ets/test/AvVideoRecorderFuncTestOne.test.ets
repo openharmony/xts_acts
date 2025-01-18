@@ -283,6 +283,11 @@ export default function avVideoRecorderTestOne() {
 
     beforeAll(async () => {
       console.info('beforeAll in1');
+      if (!canIUse("SystemCapability.Multimedia.Camera.Core")) {
+        console.error("SystemCapability.Multimedia.Camera.Core not support")
+        isSupportCameraVideoProfiles = false;
+        return;
+      }
       screen = await getScreen();
     
       let context = getContext();
