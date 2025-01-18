@@ -22,11 +22,11 @@
 #include <string>
 #include <thread>
 
-
 #include "gtest/gtest.h"
 #include "videodec_ndk_sample.h"
 #include "avcodec_codec_name.h"
 #include "native_avcapability.h"
+
 using namespace std;
 using namespace OHOS;
 using namespace OHOS::Media;
