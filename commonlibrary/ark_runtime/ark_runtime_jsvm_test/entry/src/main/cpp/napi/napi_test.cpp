@@ -6064,32 +6064,32 @@ static JSVM_Value GetTypedArrayInfo(JSVM_Env env, JSVM_CallbackInfo info)
     size_t byteOffset;
     size_t length;
     JSVM_Value arrayBuffer = nullptr;
-    OH_JSVM_GetTypedarrayInfo(env, args[0], &type, &length, &data, &arrayBuffer, &byteOffset);
+    JSVM_Status status = OH_JSVM_GetTypedarrayInfo(env, args[0], &type, &length, &data, &arrayBuffer, &byteOffset);
 
     JSVM_Value result = nullptr;
     switch (infoTypeParam) {
         case INFO_TYPE:
             JSVM_Value int8_type;
-            OH_JSVM_GetBoolean(env, type == JSVM_INT8_ARRAY, &int8_type);
+            OH_JSVM_GetBoolean(env, status == JSVM_OK ? type == JSVM_INT8_ARRAY : false, &int8_type);
             result = int8_type;
             break;
         case INFO_LENGTH:
             strcpy_s(g_dataType, sizeof(g_dataType), "int");
             JSVM_Value jsvmLength;
-            OH_JSVM_CreateInt32(env, length, &jsvmLength);
+            OH_JSVM_CreateInt32(env, status == JSVM_OK ? length : 0, &jsvmLength);
             result = jsvmLength;
             break;
         case INFO_BYTE_OFFSET:
             strcpy_s(g_dataType, sizeof(g_dataType), "int");
             JSVM_Value jsvmOffset;
-            OH_JSVM_CreateInt32(env, byteOffset, &jsvmOffset);
+            OH_JSVM_CreateInt32(env, status == JSVM_OK ? byteOffset : 0, &jsvmOffset);
             result = jsvmOffset;
             break;
         case INFO_ARRAY_BUFFER:
             bool isArrayBuffer;
             OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer);
             JSVM_Value isArray;
-            OH_JSVM_GetBoolean(env, isArrayBuffer, &isArray);
+            OH_JSVM_GetBoolean(env, status == JSVM_OK ? isArrayBuffer : false, &isArray);
             result = isArray;
             break;
         default:
