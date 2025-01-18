@@ -23,7 +23,12 @@
 #include <multimedia/player_framework/native_avformat.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include "hilog/log.h"
 
+#define AUDIO_LOG_TAG "AVCODEC_TAGLOG"
+#define AUDIO_LOG_DOMAIN 0x3200
+
+#define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_INFO, AUDIO_LOG_DOMAIN, AUDIO_LOG_TAG, fmt, ##__VA_ARGS__)
 
 #define FAIL (-1)
 #define SUCCESS 0
@@ -49,8 +54,9 @@ static napi_value AVSourceCreateWithFD(napi_env env, napi_callback_info info)
 {
     int backParam = FAIL;
     OH_AVSource *checkParam = nullptr;
-    char fileName[] = {"/data/storage/el2/base/files/demo.mp4"};
+    char fileName[] = {"/data/storage/el2/base/haps/entry_test/files/demo1.mp4"};
     int fd = open(fileName, O_RDONLY, PARAM_0666);
+    LOG("AVSourceCreateWithFD fd is %{public}d", fd);
     struct stat fileStatus {};
     size_t fileSize = PARAM_0;
     if (stat(fileName, &fileStatus) == ZEROVAL) {
@@ -78,8 +84,9 @@ static napi_value AVSourceDestroy(napi_env env, napi_callback_info info)
     OH_AVSource *getSource = nullptr;
     napi_value result = nullptr;
     OH_AVErrCode checkParam;
-    char fileName[] = {"/data/storage/el2/base/files/demo.mp4"};
+    char fileName[] = {"/data/storage/el2/base/haps/entry_test/files/demo1.mp4"};
     int fd = open(fileName, O_RDONLY, PARAM_0666);
+    LOG("AVSourceDestroy fd is %{public}d", fd);
     struct stat fileStatus {};
     size_t fileSize = PARAM_0;
     if (stat(fileName, &fileStatus) == ZEROVAL) {
@@ -106,8 +113,9 @@ static napi_value AVSourceGetSourceFormat(napi_env env, napi_callback_info info)
     int backParam = FAIL;
     OH_AVSource *getSource = nullptr;
     OH_AVFormat *checkParam = nullptr;
-    char fileName[] = {"/data/storage/el2/base/files/demo.mp4"};
+    char fileName[] = {"/data/storage/el2/base/haps/entry_test/files/demo1.mp4"};
     int fd = open(fileName, O_RDONLY, PARAM_0666);
+    LOG("AVSourceGetSourceFormat fd is %{public}d", fd);
     struct stat fileStatus {};
     size_t fileSize = PARAM_0;
     if (stat(fileName, &fileStatus) == ZEROVAL) {
@@ -131,14 +139,25 @@ static napi_value AVSourceGetSourceFormat(napi_env env, napi_callback_info info)
     return result;
 }
 
+size_t GetFileSize(const char *fileName) {
+    if (fileName == nullptr) {
+        return 0;
+    }
+    struct stat statbuf;
+    stat(fileName, &statbuf);
+    size_t filesize = statbuf.st_size;
+    return filesize;
+}
+
 static napi_value AVSourceGetTrackFormat(napi_env env, napi_callback_info info)
 {
     int backParam = FAIL;
     OH_AVSource *getSource = nullptr;
     OH_AVFormat *checkParam = nullptr;
     napi_value result = nullptr;
-    char fileName[] = {"/data/storage/el2/base/files/demo.mp4"};
+    char fileName[] = {"/data/storage/el2/base/haps/entry_test/files/demo1.mp4"};
     int fd = open(fileName, O_RDONLY, PARAM_0666);
+    LOG("AVSourceGetTrackFormat fd is %{public}d", fd);
     struct stat fileStatus {};
     size_t fileSize = PARAM_0;
     if (stat(fileName, &fileStatus) == ZEROVAL) {
