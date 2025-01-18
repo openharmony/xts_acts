@@ -48,11 +48,11 @@ struct optimizeParserBudget {
       Utils.emitEvent(res, 102);
     },
     toString: (str: ESObject) => {
-      console.info("ets toString:" + String(str));
+      console.info('ets toString:' + String(str));
     },
     register: (res: ESObject) => {
       Utils.emitEvent(res, 86);
-      return "web222";
+      return 'web222';
     }
   }
   build(){
@@ -76,7 +76,7 @@ struct optimizeParserBudget {
           }
         })
       }
-      Text("" + this.text);
+      Text('' + this.text);
       Web({ src: $rawfile('index.html'), controller: this.webviewController})
         .javaScriptAccess(true)
         .optimizeParserBudget(this.budgetValue)
