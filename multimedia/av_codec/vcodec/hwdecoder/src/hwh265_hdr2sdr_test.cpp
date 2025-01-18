@@ -23,7 +23,6 @@
 #include "native_avcapability.h"
 #include "native_buffer.h"
 
-
 #define MAX_THREAD 16
 
 using namespace std;
@@ -88,27 +87,29 @@ namespace {
  */
 HWTEST_F(HwdecHdr2SdrNdkTest, HEVC_HW_HDR2SDR_FUNC_002, TestSize.Level2)
 {
-    if (!access("/system/lib64/media/", 0)) {
-        vdec_ = OH_VideoDecoder_CreateByName(g_codecNameHEVC.c_str());
-        ASSERT_NE(NULL, vdec_);
-        format = OH_AVFormat_Create();
-        ASSERT_NE(NULL, format);
-        ASSERT_EQ(true, OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_DECODER_OUTPUT_COLOR_SPACE,
-        OH_COLORSPACE_BT709_LIMIT));
-        ASSERT_EQ(true, OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_RGBA));
-        ASSERT_EQ(AV_ERR_INVALID_VAL, OH_VideoDecoder_Configure(vdec_, format));
-    }
-    else {
-        vdec_ = OH_VideoDecoder_CreateByName(g_codecNameHEVC.c_str());
-        ASSERT_NE(NULL, vdec_);
-        format = OH_AVFormat_Create();
-        ASSERT_NE(NULL, format);
-        ASSERT_EQ(true, OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, DEFAULT_HEIGHT));
-        ASSERT_EQ(true, OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, DEFAULT_WIDTH));
-        ASSERT_EQ(true, OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_DECODER_OUTPUT_COLOR_SPACE,
-        OH_COLORSPACE_BT709_LIMIT));
-        ASSERT_EQ(true, OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_RGBA));
-        ASSERT_EQ(AV_ERR_VIDEO_UNSUPPORTED_COLOR_SPACE_CONVERSION, OH_VideoDecoder_Configure(vdec_, format));
+    if (cap_hevc) {
+        if (!access("/system/lib64/media/", 0)) {
+            vdec_ = OH_VideoDecoder_CreateByName(g_codecNameHEVC.c_str());
+            ASSERT_NE(NULL, vdec_);
+            format = OH_AVFormat_Create();
+            ASSERT_NE(NULL, format);
+            ASSERT_EQ(true, OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_DECODER_OUTPUT_COLOR_SPACE,
+            OH_COLORSPACE_BT709_LIMIT));
+            ASSERT_EQ(true, OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_RGBA));
+            ASSERT_EQ(AV_ERR_INVALID_VAL, OH_VideoDecoder_Configure(vdec_, format));
+        }
+        else {
+            vdec_ = OH_VideoDecoder_CreateByName(g_codecNameHEVC.c_str());
+            ASSERT_NE(NULL, vdec_);
+            format = OH_AVFormat_Create();
+            ASSERT_NE(NULL, format);
+            ASSERT_EQ(true, OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, DEFAULT_HEIGHT));
+            ASSERT_EQ(true, OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, DEFAULT_WIDTH));
+            ASSERT_EQ(true, OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_DECODER_OUTPUT_COLOR_SPACE,
+            OH_COLORSPACE_BT709_LIMIT));
+            ASSERT_EQ(true, OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_RGBA));
+            ASSERT_EQ(AV_ERR_VIDEO_UNSUPPORTED_COLOR_SPACE_CONVERSION, OH_VideoDecoder_Configure(vdec_, format));
+        }
     }
 }
 } //namespace
