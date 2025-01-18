@@ -3,7 +3,8 @@
         "general": [
             "default",
             "tablet",
-            "wearable"
+            "wearable",
+            "2in1"
         ],
         "custom": [
             {

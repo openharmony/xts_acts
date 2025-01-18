@@ -20,7 +20,7 @@
     "mainElement": "EntryAbility",
     "deviceTypes": [
       "default",
-      "tablet"
+      "tablet",
       "wearable",
       "2in1"
     ],
