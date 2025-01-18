@@ -21,7 +21,6 @@
 #include "native_avcodec_base.h"
 #include "avcodec_codec_name.h"
 #include "native_avcapability.h"
-
 namespace {
 OH_AVCodec *venc_ = NULL;
 OH_AVCapability *cap = nullptr;
@@ -85,23 +84,29 @@ namespace {
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_001, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    OH_AVFormat *format = OH_AVFormat_Create();
-    (void)OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, -1);
-    EXPECT_EQ(AV_ERR_INVALID_VAL, vEncSample->SetParameter(format));
-    (void)OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, LONG_MAX);
-    EXPECT_EQ(AV_ERR_INVALID_VAL, vEncSample->SetParameter(format));
-    OH_AVFormat_Destroy(format);
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        OH_AVFormat *format = OH_AVFormat_Create();
+        (void)OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, -1);
+        EXPECT_EQ(AV_ERR_INVALID_VAL, vEncSample->SetParameter(format));
+        (void)OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, LONG_MAX);
+        EXPECT_EQ(AV_ERR_INVALID_VAL, vEncSample->SetParameter(format));
+        OH_AVFormat_Destroy(format);
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
 
 /**
@@ -139,22 +144,28 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_002, TestSize.Level0)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_003, TestSize.Level0)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->DEFAULT_BITRATE_MODE = CBR;
-    vEncSample->DEFAULT_KEY_FRAME_INTERVAL = -1;
-    vEncSample->enableAutoSwitchParam = true;
-    vEncSample->needResetBitrate = true;
-    vEncSample->OUT_DIR = "/data/test/media/cbr_-1_.h264";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->DEFAULT_BITRATE_MODE = CBR;
+        vEncSample->DEFAULT_KEY_FRAME_INTERVAL = -1;
+        vEncSample->enableAutoSwitchParam = true;
+        vEncSample->needResetBitrate = true;
+        vEncSample->OUT_DIR = "/data/test/media/cbr_-1_.h264";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
 
 /**
@@ -164,22 +175,28 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_003, TestSize.Level0)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_004, TestSize.Level0)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->DEFAULT_BITRATE_MODE = CBR;
-    vEncSample->DEFAULT_KEY_FRAME_INTERVAL = 0;
-    vEncSample->enableAutoSwitchParam = true;
-    vEncSample->needResetBitrate = true;
-    vEncSample->OUT_DIR = "/data/test/media/cbr_0_.h264";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->DEFAULT_BITRATE_MODE = CBR;
+        vEncSample->DEFAULT_KEY_FRAME_INTERVAL = 0;
+        vEncSample->enableAutoSwitchParam = true;
+        vEncSample->needResetBitrate = true;
+        vEncSample->OUT_DIR = "/data/test/media/cbr_0_.h264";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
 
 /**
@@ -189,23 +206,28 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_004, TestSize.Level0)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_005, TestSize.Level0)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->DEFAULT_BITRATE_MODE = CBR;
-    vEncSample->enableAutoSwitchParam = true;
-    vEncSample->needResetBitrate = true;
-    vEncSample->OUT_DIR = "/data/test/media/cbr_1s_.h264";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->DEFAULT_BITRATE_MODE = CBR;
+        vEncSample->enableAutoSwitchParam = true;
+        vEncSample->needResetBitrate = true;
+        vEncSample->OUT_DIR = "/data/test/media/cbr_1s_.h264";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
-
 
 /**
  * @tc.number    : RESET_BITRATE_006
@@ -214,21 +236,27 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_005, TestSize.Level0)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_006, TestSize.Level0)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->DEFAULT_BITRATE_MODE = VBR;
-    vEncSample->enableAutoSwitchParam = true;
-    vEncSample->needResetBitrate = true;
-    vEncSample->OUT_DIR = "/data/test/media/vbr_1s_.h264";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->DEFAULT_BITRATE_MODE = VBR;
+        vEncSample->enableAutoSwitchParam = true;
+        vEncSample->needResetBitrate = true;
+        vEncSample->OUT_DIR = "/data/test/media/vbr_1s_.h264";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
 
 /**
@@ -238,23 +266,29 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_006, TestSize.Level0)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_007, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    OH_AVFormat *format = OH_AVFormat_Create();
-    (void)OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, -1);
-    EXPECT_EQ(AV_ERR_INVALID_VAL, vEncSample->SetParameter(format));
-    (void)OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, LONG_MAX);
-    EXPECT_EQ(AV_ERR_INVALID_VAL, vEncSample->SetParameter(format));
-    OH_AVFormat_Destroy(format);
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        OH_AVFormat *format = OH_AVFormat_Create();
+        (void)OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, -1);
+        EXPECT_EQ(AV_ERR_INVALID_VAL, vEncSample->SetParameter(format));
+        (void)OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, LONG_MAX);
+        EXPECT_EQ(AV_ERR_INVALID_VAL, vEncSample->SetParameter(format));
+        OH_AVFormat_Destroy(format);
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
 
 /**
@@ -292,22 +326,28 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_008, TestSize.Level0)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_009, TestSize.Level0)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->DEFAULT_BITRATE_MODE = CBR;
-    vEncSample->DEFAULT_KEY_FRAME_INTERVAL = -1;
-    vEncSample->enableAutoSwitchParam = true;
-    vEncSample->needResetBitrate = true;
-    vEncSample->OUT_DIR = "/data/test/media/cbr_-1_.h264";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->DEFAULT_BITRATE_MODE = CBR;
+        vEncSample->DEFAULT_KEY_FRAME_INTERVAL = -1;
+        vEncSample->enableAutoSwitchParam = true;
+        vEncSample->needResetBitrate = true;
+        vEncSample->OUT_DIR = "/data/test/media/cbr_-1_.h264";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
 
 /**
@@ -317,22 +357,28 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_009, TestSize.Level0)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_010, TestSize.Level0)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->DEFAULT_BITRATE_MODE = CBR;
-    vEncSample->DEFAULT_KEY_FRAME_INTERVAL = 0;
-    vEncSample->enableAutoSwitchParam = true;
-    vEncSample->needResetBitrate = true;
-    vEncSample->OUT_DIR = "/data/test/media/cbr_0_.h264";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->DEFAULT_BITRATE_MODE = CBR;
+        vEncSample->DEFAULT_KEY_FRAME_INTERVAL = 0;
+        vEncSample->enableAutoSwitchParam = true;
+        vEncSample->needResetBitrate = true;
+        vEncSample->OUT_DIR = "/data/test/media/cbr_0_.h264";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
 
 /**
@@ -342,21 +388,27 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_010, TestSize.Level0)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_011, TestSize.Level0)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->DEFAULT_BITRATE_MODE = CBR;
-    vEncSample->enableAutoSwitchParam = true;
-    vEncSample->needResetBitrate = true;
-    vEncSample->OUT_DIR = "/data/test/media/cbr_1s_.h264";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->DEFAULT_BITRATE_MODE = CBR;
+        vEncSample->enableAutoSwitchParam = true;
+        vEncSample->needResetBitrate = true;
+        vEncSample->OUT_DIR = "/data/test/media/cbr_1s_.h264";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
 
 /**
@@ -366,21 +418,27 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_011, TestSize.Level0)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_012, TestSize.Level0)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->DEFAULT_BITRATE_MODE = VBR;
-    vEncSample->enableAutoSwitchParam = true;
-    vEncSample->needResetBitrate = true;
-    vEncSample->OUT_DIR = "/data/test/media/vbr_1s_.h264";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->DEFAULT_BITRATE_MODE = VBR;
+        vEncSample->enableAutoSwitchParam = true;
+        vEncSample->needResetBitrate = true;
+        vEncSample->OUT_DIR = "/data/test/media/vbr_1s_.h264";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
 
 /**
@@ -520,22 +578,28 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_002, TestSize.Level1)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_003, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->enableAutoSwitchParam = true;
-    vEncSample->needResetFrameRate = true;
-    vEncSample->DEFAULT_KEY_FRAME_INTERVAL = -1;
-    vEncSample->DEFAULT_BITRATE_MODE = CBR;
-    vEncSample->OUT_DIR = "/data/test/media/cbr_-1_r_.h264";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->enableAutoSwitchParam = true;
+        vEncSample->needResetFrameRate = true;
+        vEncSample->DEFAULT_KEY_FRAME_INTERVAL = -1;
+        vEncSample->DEFAULT_BITRATE_MODE = CBR;
+        vEncSample->OUT_DIR = "/data/test/media/cbr_-1_r_.h264";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
 
 /**
@@ -545,22 +609,28 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_003, TestSize.Level1)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_004, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->enableAutoSwitchParam = true;
-    vEncSample->needResetFrameRate = true;
-    vEncSample->DEFAULT_KEY_FRAME_INTERVAL = 0;
-    vEncSample->DEFAULT_BITRATE_MODE = CBR;
-    vEncSample->OUT_DIR = "/data/test/media/cbr_0_r_.h264";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->enableAutoSwitchParam = true;
+        vEncSample->needResetFrameRate = true;
+        vEncSample->DEFAULT_KEY_FRAME_INTERVAL = 0;
+        vEncSample->DEFAULT_BITRATE_MODE = CBR;
+        vEncSample->OUT_DIR = "/data/test/media/cbr_0_r_.h264";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
 
 /**
@@ -570,21 +640,27 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_004, TestSize.Level1)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_005, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->enableAutoSwitchParam = true;
-    vEncSample->needResetFrameRate = true;
-    vEncSample->DEFAULT_BITRATE_MODE = CBR;
-    vEncSample->OUT_DIR = "/data/test/media/cbr_1s_r_.h264";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->enableAutoSwitchParam = true;
+        vEncSample->needResetFrameRate = true;
+        vEncSample->DEFAULT_BITRATE_MODE = CBR;
+        vEncSample->OUT_DIR = "/data/test/media/cbr_1s_r_.h264";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
 
 /**
@@ -594,23 +670,28 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_005, TestSize.Level1)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_006, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->enableAutoSwitchParam = true;
-    vEncSample->needResetFrameRate = true;
-    vEncSample->DEFAULT_BITRATE_MODE = VBR;
-    vEncSample->OUT_DIR = "/data/test/media/vbr_1s_r_.h264";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->enableAutoSwitchParam = true;
+        vEncSample->needResetFrameRate = true;
+        vEncSample->DEFAULT_BITRATE_MODE = VBR;
+        vEncSample->OUT_DIR = "/data/test/media/vbr_1s_r_.h264";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
-
 
 /**
  * @tc.number    : RESET_FRAMERATE_007
@@ -645,22 +726,28 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_007, TestSize.Level1)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_008, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->enableAutoSwitchParam = true;
-    vEncSample->needResetFrameRate = true;
-    vEncSample->DEFAULT_KEY_FRAME_INTERVAL = -1;
-    vEncSample->DEFAULT_BITRATE_MODE = CBR;
-    vEncSample->OUT_DIR = "/data/test/media/cbr_-1_r_.h265";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->enableAutoSwitchParam = true;
+        vEncSample->needResetFrameRate = true;
+        vEncSample->DEFAULT_KEY_FRAME_INTERVAL = -1;
+        vEncSample->DEFAULT_BITRATE_MODE = CBR;
+        vEncSample->OUT_DIR = "/data/test/media/cbr_-1_r_.h265";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
 
 /**
@@ -670,22 +757,28 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_008, TestSize.Level1)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_009, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->enableAutoSwitchParam = true;
-    vEncSample->needResetFrameRate = true;
-    vEncSample->DEFAULT_KEY_FRAME_INTERVAL = 0;
-    vEncSample->DEFAULT_BITRATE_MODE = CBR;
-    vEncSample->OUT_DIR = "/data/test/media/cbr_0_r_.h265";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->enableAutoSwitchParam = true;
+        vEncSample->needResetFrameRate = true;
+        vEncSample->DEFAULT_KEY_FRAME_INTERVAL = 0;
+        vEncSample->DEFAULT_BITRATE_MODE = CBR;
+        vEncSample->OUT_DIR = "/data/test/media/cbr_0_r_.h265";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
 
 /**
@@ -695,21 +788,27 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_009, TestSize.Level1)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_010, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->enableAutoSwitchParam = true;
-    vEncSample->needResetFrameRate = true;
-    vEncSample->DEFAULT_BITRATE_MODE = CBR;
-    vEncSample->OUT_DIR = "/data/test/media/cbr_1s_r_.h265";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->enableAutoSwitchParam = true;
+        vEncSample->needResetFrameRate = true;
+        vEncSample->DEFAULT_BITRATE_MODE = CBR;
+        vEncSample->OUT_DIR = "/data/test/media/cbr_1s_r_.h265";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
 
 /**
@@ -719,21 +818,27 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_010, TestSize.Level1)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_011, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->enableAutoSwitchParam = true;
-    vEncSample->needResetFrameRate = true;
-    vEncSample->DEFAULT_BITRATE_MODE = VBR;
-    vEncSample->OUT_DIR = "/data/test/media/vbr_1s_r_.h265";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->enableAutoSwitchParam = true;
+        vEncSample->needResetFrameRate = true;
+        vEncSample->DEFAULT_BITRATE_MODE = VBR;
+        vEncSample->OUT_DIR = "/data/test/media/vbr_1s_r_.h265";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
 
 /**
@@ -1394,24 +1499,31 @@ HWTEST_F(HwEncSetParamNdkTest, SET_FORCE_IDR_002, TestSize.Level1)
  */
 HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_001, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_BITRATE_MODE = VBR;
-    vEncSample->DEFAULT_RANGE_FLAG = 1;
-    vEncSample->enableColorSpaceParams = true;
-    vEncSample->DEFAULT_COLOR_PRIMARIES = 100;
-    vEncSample->DEFAULT_TRANSFER_CHARACTERISTICS = 10000;
-    vEncSample->DEFAULT_MATRIX_COEFFICIENTS = 10000;
-    vEncSample->OUT_DIR = "/data/test/media/vbr_i.h264";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_INVALID_VAL, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_INVALID_STATE, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_BITRATE_MODE = VBR;
+        vEncSample->DEFAULT_RANGE_FLAG = 1;
+        vEncSample->enableColorSpaceParams = true;
+        vEncSample->DEFAULT_COLOR_PRIMARIES = 100;
+        vEncSample->DEFAULT_TRANSFER_CHARACTERISTICS = 10000;
+        vEncSample->DEFAULT_MATRIX_COEFFICIENTS = 10000;
+        vEncSample->OUT_DIR = "/data/test/media/vbr_i.h264";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_INVALID_VAL, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_INVALID_STATE, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
+
 /**
  * @tc.number    : COLORSPACE_CONFIG_002
  * @tc.name      : COLORSPACE 264
@@ -1419,24 +1531,31 @@ HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_001, TestSize.Level1)
  */
 HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_002, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_BITRATE_MODE = VBR;
-    vEncSample->DEFAULT_RANGE_FLAG = 1;
-    vEncSample->enableColorSpaceParams = true;
-    vEncSample->DEFAULT_COLOR_PRIMARIES = COLOR_PRIMARY_BT709;
-    vEncSample->DEFAULT_TRANSFER_CHARACTERISTICS = TRANSFER_CHARACTERISTIC_BT709;
-    vEncSample->DEFAULT_MATRIX_COEFFICIENTS = MATRIX_COEFFICIENT_BT709;
-    vEncSample->OUT_DIR = "/data/test/media/bt_709_h264.h264";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_BITRATE_MODE = VBR;
+        vEncSample->DEFAULT_RANGE_FLAG = 1;
+        vEncSample->enableColorSpaceParams = true;
+        vEncSample->DEFAULT_COLOR_PRIMARIES = COLOR_PRIMARY_BT709;
+        vEncSample->DEFAULT_TRANSFER_CHARACTERISTICS = TRANSFER_CHARACTERISTIC_BT709;
+        vEncSample->DEFAULT_MATRIX_COEFFICIENTS = MATRIX_COEFFICIENT_BT709;
+        vEncSample->OUT_DIR = "/data/test/media/bt_709_h264.h264";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
+
 /**
  * @tc.number    : COLORSPACE_CONFIG_003
  * @tc.name      : COLORSPACE 265
@@ -1444,24 +1563,31 @@ HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_002, TestSize.Level1)
  */
 HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_003, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_BITRATE_MODE = VBR;
-    vEncSample->DEFAULT_RANGE_FLAG = 1;
-    vEncSample->enableColorSpaceParams = true;
-    vEncSample->DEFAULT_COLOR_PRIMARIES = COLOR_PRIMARY_BT709;
-    vEncSample->DEFAULT_TRANSFER_CHARACTERISTICS = TRANSFER_CHARACTERISTIC_BT709;
-    vEncSample->DEFAULT_MATRIX_COEFFICIENTS = MATRIX_COEFFICIENT_BT709;
-    vEncSample->OUT_DIR = "/data/test/media/bt_709_h265.h265";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_BITRATE_MODE = VBR;
+        vEncSample->DEFAULT_RANGE_FLAG = 1;
+        vEncSample->enableColorSpaceParams = true;
+        vEncSample->DEFAULT_COLOR_PRIMARIES = COLOR_PRIMARY_BT709;
+        vEncSample->DEFAULT_TRANSFER_CHARACTERISTICS = TRANSFER_CHARACTERISTIC_BT709;
+        vEncSample->DEFAULT_MATRIX_COEFFICIENTS = MATRIX_COEFFICIENT_BT709;
+        vEncSample->OUT_DIR = "/data/test/media/bt_709_h265.h265";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
+
 /**
  * @tc.number    : COLORSPACE_CONFIG_004
  * @tc.name      : COLORSPACE 265
@@ -1469,24 +1595,31 @@ HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_003, TestSize.Level1)
  */
 HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_004, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_BITRATE_MODE = VBR;
-    vEncSample->DEFAULT_RANGE_FLAG = 0;
-    vEncSample->enableColorSpaceParams = true;
-    vEncSample->DEFAULT_COLOR_PRIMARIES = COLOR_PRIMARY_BT2020;
-    vEncSample->DEFAULT_TRANSFER_CHARACTERISTICS = TRANSFER_CHARACTERISTIC_PQ;
-    vEncSample->DEFAULT_MATRIX_COEFFICIENTS = MATRIX_COEFFICIENT_BT2020_NCL;
-    vEncSample->OUT_DIR = "/data/test/media/bt_2020_PQ_h265.h265";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_BITRATE_MODE = VBR;
+        vEncSample->DEFAULT_RANGE_FLAG = 0;
+        vEncSample->enableColorSpaceParams = true;
+        vEncSample->DEFAULT_COLOR_PRIMARIES = COLOR_PRIMARY_BT2020;
+        vEncSample->DEFAULT_TRANSFER_CHARACTERISTICS = TRANSFER_CHARACTERISTIC_PQ;
+        vEncSample->DEFAULT_MATRIX_COEFFICIENTS = MATRIX_COEFFICIENT_BT2020_NCL;
+        vEncSample->OUT_DIR = "/data/test/media/bt_2020_PQ_h265.h265";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
+
 /**
  * @tc.number    : COLORSPACE_CONFIG_005
  * @tc.name      : COLORSPACE 265
@@ -1494,24 +1627,31 @@ HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_004, TestSize.Level1)
  */
 HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_005, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_BITRATE_MODE = VBR;
-    vEncSample->DEFAULT_RANGE_FLAG = 0;
-    vEncSample->enableColorSpaceParams = true;
-    vEncSample->DEFAULT_COLOR_PRIMARIES = COLOR_PRIMARY_BT2020;
-    vEncSample->DEFAULT_TRANSFER_CHARACTERISTICS = TRANSFER_CHARACTERISTIC_HLG;
-    vEncSample->DEFAULT_MATRIX_COEFFICIENTS = MATRIX_COEFFICIENT_BT2020_NCL;
-    vEncSample->OUT_DIR = "/data/test/media/bt_2020_HLG_h265.h265";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_BITRATE_MODE = VBR;
+        vEncSample->DEFAULT_RANGE_FLAG = 0;
+        vEncSample->enableColorSpaceParams = true;
+        vEncSample->DEFAULT_COLOR_PRIMARIES = COLOR_PRIMARY_BT2020;
+        vEncSample->DEFAULT_TRANSFER_CHARACTERISTICS = TRANSFER_CHARACTERISTIC_HLG;
+        vEncSample->DEFAULT_MATRIX_COEFFICIENTS = MATRIX_COEFFICIENT_BT2020_NCL;
+        vEncSample->OUT_DIR = "/data/test/media/bt_2020_HLG_h265.h265";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
+
 /**
  * @tc.number    : COLORSPACE_CONFIG_006
  * @tc.name      : COLORSPACE 265
@@ -1519,24 +1659,31 @@ HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_005, TestSize.Level1)
  */
 HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_006, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_BITRATE_MODE = VBR;
-    vEncSample->DEFAULT_RANGE_FLAG = 0;
-    vEncSample->enableColorSpaceParams = true;
-    vEncSample->DEFAULT_COLOR_PRIMARIES = COLOR_PRIMARY_P3D65;
-    vEncSample->DEFAULT_TRANSFER_CHARACTERISTICS = TRANSFER_CHARACTERISTIC_PQ;
-    vEncSample->DEFAULT_MATRIX_COEFFICIENTS = MATRIX_COEFFICIENT_BT2020_NCL;
-    vEncSample->OUT_DIR = "/data/test/media/bt_2020_P3D65_h265.h265";
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
+    if(cap) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_BITRATE_MODE = VBR;
+        vEncSample->DEFAULT_RANGE_FLAG = 0;
+        vEncSample->enableColorSpaceParams = true;
+        vEncSample->DEFAULT_COLOR_PRIMARIES = COLOR_PRIMARY_P3D65;
+        vEncSample->DEFAULT_TRANSFER_CHARACTERISTICS = TRANSFER_CHARACTERISTIC_PQ;
+        vEncSample->DEFAULT_MATRIX_COEFFICIENTS = MATRIX_COEFFICIENT_BT2020_NCL;
+        vEncSample->OUT_DIR = "/data/test/media/bt_2020_P3D65_h265.h265";
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
+    else{
+        return;
+    }
 }
+
 /**
  * @tc.number    : FRAMENUM_JUDGMENT_001
  * @tc.name      : Increase frame rate judgment
