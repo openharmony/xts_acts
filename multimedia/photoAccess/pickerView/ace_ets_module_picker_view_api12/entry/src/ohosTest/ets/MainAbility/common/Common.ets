@@ -4,6 +4,7 @@ export enum EventType {
   ALBUM_INFO,
   SELECT_CLICKTYPE,
   RECENT_PHOTO_INFO,
+  VIDEO_PLAY_STATE,
 }
 
 export default class CommonFunc {

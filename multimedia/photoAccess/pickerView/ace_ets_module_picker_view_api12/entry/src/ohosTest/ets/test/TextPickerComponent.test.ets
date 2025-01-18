@@ -42,6 +42,8 @@ import {
   RecentPhotoOptions,
   PhotoSource,
 } from '@ohos.file.RecentPhotoComponent';
+const SEEK_START = 3;
+const SEEK_FINISH = 4;
 
 async function routeToUrl(options: router.RouterOptions) {
   try {
@@ -1246,6 +1248,53 @@ export default function TextPicker() {
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       router.back();
       console.info("testPicker24 finish");
+      done();
+    });
+
+    /* * 
+       * @tc.number    : testPicker27
+       * @tc.name      : testPicker27
+       * @tc.desc      : Testing video play state changed callback
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('testPicker27', 0, async (done: Function) => {
+      let code: number = EventType.VIDEO_PLAY_STATE;
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      let callback = (event: events_emitter.EventData) => {
+        let result: number = event?.data?.msg;
+        console.info('testPicker27 state =:' + JSON.stringify(result));
+        let vedioCallBackState: number = event?.data?.vedioCallBackState;
+        if (vedioCallBackState === SEEK_START) {
+            expect(true).assertTrue();
+            console.log('state is SEEK_START:' + vedioCallBackState);
+        } else if (vedioCallBackState === SEEK_FINISH) {
+            expect(true).assertTrue();
+            console.log('state is SEEK_FINISH:' + vedioCallBackState);
+        } else {
+            expect(true).assertFalse();
+        }
+      }
+      let event: events_emitter.InnerEvent = {
+        eventId: code,
+        priority: events_emitter.EventPriority.LOW
+      }
+      events_emitter.on(event, callback);
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/PickerComponent',
+        params: {
+          eventId: code,
+          pickerOptions: pickerOptions,
+        }
+      }
+      await routeToUrl(options);
+      let strJson: string = getInspectorByKey('PhotoPickerComponent');
+      console.info("testPicker27 JSON.parse(strJson) is" + strJson);
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
+      router.back();
+      console.info("testPicker27 finish");
+      events_emitter.off(event.eventId);
       done();
     });
   })
