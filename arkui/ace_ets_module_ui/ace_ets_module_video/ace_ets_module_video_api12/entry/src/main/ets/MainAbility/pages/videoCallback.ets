@@ -34,7 +34,7 @@ struct videoCallbackTest {
         controller: this.controller
       })
         .width('100%')
-        .height(600)
+        .height('50%')
         .autoPlay(this.isAutoPlay)
         .controls(this.showControls)
         .onStart(() => {

@@ -22,27 +22,29 @@ struct APICanvasSize {
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Canvas(this.context)
-        .width(300)
-        .height(300)
+        .width(100)
+        .height(100)
         .backgroundColor('#ffff00')
         .onReady(() => {
           this.context.canvas.drawCircle(50, 50, 50)
           this.context.invalidate()
         })
 
-      Button('get size width').key('APICanvasSizeButton1')
-        .onClick((event: ClickEvent) => {
-        this.sizeWidth = this.context.size.width
-      })
-      Button('get size height').key('APICanvasSizeButton2')
-        .onClick((event: ClickEvent) => {
-        this.sizeHeight = this.context.size.height
-      })
-      Text(this.sizeWidth + '').key('APICanvasSizeText1')
-      Text(this.sizeHeight + '').key('APICanvasSizeText2')
+      Row() {
+        Button('get width').key('APICanvasSizeButton1')
+          .onClick((event: ClickEvent) => {
+          this.sizeWidth = this.context.size.width
+        })
+        Button('get height').key('APICanvasSizeButton2')
+          .onClick((event: ClickEvent) => {
+          this.sizeHeight = this.context.size.height
+        })
+      }
 
-
-
+      Row() {
+        Text(this.sizeWidth + '').key('APICanvasSizeText1')
+        Text(this.sizeHeight + '').key('APICanvasSizeText2') 
+      }
     }
     .width('100%')
     .height('100%')
