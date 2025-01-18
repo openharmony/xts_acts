@@ -22,9 +22,12 @@
 #include <string>
 #include <thread>
 
-
 #include "gtest/gtest.h"
 #include "videodec_ndk_sample.h"
+#include "native_avcapability.h"
+namespace {
+    OH_AVCapability *cap = nullptr;
+} // namespace
 using namespace std;
 using namespace OHOS;
 using namespace OHOS::Media;
@@ -53,15 +56,18 @@ VDecNdkSample *vDecSample = NULL;
 
 void SwdecStateNdkTest::SetUp(void)
 {
-    vDecSample = new VDecNdkSample();
-    string codeName = "OH.Media.Codec.Decoder.Video.AVC";
-    int32_t ret = vDecSample->CreateVideoDecoder(codeName);
-    ASSERT_EQ(AV_ERR_OK, ret);
-    ret = vDecSample->SetVideoDecoderCallback();
-    ASSERT_EQ(AV_ERR_OK, ret);
-    ret = vDecSample->ConfigureVideoDecoder();
-    ASSERT_EQ(AV_ERR_OK, ret);
-    vDecSample->INP_DIR = "/data/test/media/1920_1080_10_30Mb.h264";
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, false, SOFTWARE);
+    if (cap) {
+        vDecSample = new VDecNdkSample();
+        string codeName = "OH.Media.Codec.Decoder.Video.AVC";
+        int32_t ret = vDecSample->CreateVideoDecoder(codeName);
+        ASSERT_EQ(AV_ERR_OK, ret);
+        ret = vDecSample->SetVideoDecoderCallback();
+        ASSERT_EQ(AV_ERR_OK, ret);
+        ret = vDecSample->ConfigureVideoDecoder();
+        ASSERT_EQ(AV_ERR_OK, ret);
+        vDecSample->INP_DIR = "/data/test/media/1920_1080_10_30Mb.h264";
+    }
 }
 
 void SwdecStateNdkTest::TearDown(void)
