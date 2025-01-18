@@ -21,7 +21,6 @@
 #include "native_avformat.h"
 #include "sync_fence.h"
 
-
 #include "video_processing_callback_impl.h"
 #include "video_processing_callback_native.h"
 #include "video_processing_impl.h"
