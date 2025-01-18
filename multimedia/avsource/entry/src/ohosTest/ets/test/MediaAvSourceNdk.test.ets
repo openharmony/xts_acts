@@ -26,13 +26,14 @@ function getContext(): Context {
   return context;
 }
 
-
 export default function mediaAvSourceNdkTest() {
   describe('AvcodecAVSourceTest', () => {
 
     beforeAll(async () => {
       let context = getContext()
       let dir = context.filesDir + "/";
+      console.info('context.filesDir is ' + dir);
+      /*
       try {
         let ml_face_model_file = dir + "demo.mp4";
         context.resourceManager.getRawFileContent("demo.mp4", (error, model_buffer) => {
@@ -41,8 +42,8 @@ export default function mediaAvSourceNdkTest() {
               `[rawfile_copy_to_sandbox] demo.mp4 is
               copy failed:${error.code}, message: ${error.message}.`);
           } else {
-            let file = fs.openSync(ml_face_model_file, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-            fs.writeSync(file.fd, model_buffer.buffer);
+            let file = fs.openSync(ml_face_model_file, fs.OpenMode.READ_WRITE);
+            //fs.writeSync(file.fd, model_buffer.buffer);
             fs.closeSync(file);
             console.log("[rawfile_copy_to_sandbox] demo.mp4 is copy success");
           }
@@ -50,7 +51,7 @@ export default function mediaAvSourceNdkTest() {
       } catch (error) {
         console.info("[rawfile_copy_to_sandbox] getRawFileDescriptor api run failed" + error);
       }
-
+      */
       console.info("[rawfile_copy_to_sandbox] sandbox path:" + dir);
       await Utils.sleep(2000)
     })
