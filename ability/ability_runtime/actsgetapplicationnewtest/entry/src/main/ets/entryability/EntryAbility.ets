@@ -140,9 +140,8 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
-  onForeground(): void {
-    // Ability has brought to foreground
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag ', 'HotStartAbility onNewWant');
     try {
       hilog.info(0x0000, 'testTag', 'Ability onCreate');
       let context1 = application.getApplicationContext();
@@ -224,6 +223,11 @@ export default class EntryAbility extends UIAbility {
     } catch (err) {
       hilog.info(0x0000, 'testTag', 'context1: %{public}s', JSON.stringify(err));
     }
+  }
+
+  onForeground(): void {
+    // Ability has brought to foreground
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
   }
 
   onBackground(): void {
