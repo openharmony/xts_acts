@@ -152,5 +152,27 @@ export default function api16CertNoPermissionTestUnit() {
       done();
     });
 
+    /**
+     * @tc.number SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0010
+     * @tc.name test uninstallUserTrustedCertificateSync interface
+     * @tc.desc abnormal test
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0010', 0, async (done: Function) => {
+      console.info('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0010 start');
+      let uir ='oh:t=c;o=vBBPFaSL5wncpUKn4dS5328FRSfoAuqpLVlURCWK_nEA;u=0;a=20010044';
+      try {
+        certManager.uninstallUserTrustedCertificateSync(uir);
+        expect(null).assertFail();
+      } catch (error) {
+        console.error(`SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0010 error.code: ${error.code}, message: ${error.message}`);
+        expect(error.code).assertEqual(certManager.CMErrorCode.CM_ERROR_NO_PERMISSION);
+      }
+      console.info('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0010 end');
+      done();
+    });
+
   })
 }
