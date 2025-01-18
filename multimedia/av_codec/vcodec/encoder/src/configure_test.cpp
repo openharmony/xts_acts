@@ -21,6 +21,7 @@
 #include "native_avcodec_base.h"
 #include "avcodec_codec_name.h"
 #include "native_avcapability.h"
+
 namespace {
 OH_AVCodec *venc_ = NULL;
 OH_AVFormat *format;

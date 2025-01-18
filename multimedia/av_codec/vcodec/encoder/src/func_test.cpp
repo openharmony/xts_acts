@@ -22,6 +22,7 @@
 #include "avcodec_codec_name.h"
 #include "native_avcapability.h"
 
+
 namespace {
 OH_AVCodec *venc_ = NULL;
 OH_AVCapability *cap = nullptr;

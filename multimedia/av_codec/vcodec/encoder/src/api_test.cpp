@@ -22,6 +22,7 @@
 #include "native_avcodec_videoencoder.h"
 #include "videoenc_sample.h"
 #include "native_avcapability.h"
+
 using namespace std;
 using namespace OHOS;
 using namespace OHOS::Media;

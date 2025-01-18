@@ -23,6 +23,7 @@
 #include "native_avcapability.h"
 #include "native_buffer.h"
 
+
 #define MAX_THREAD 16
 
 using namespace std;

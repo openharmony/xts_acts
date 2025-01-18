@@ -22,6 +22,7 @@
 #include <string>
 #include <thread>
 
+
 #include "gtest/gtest.h"
 #include "videodec_ndk_sample.h"
 using namespace std;

@@ -16,6 +16,7 @@
 import { describe, it, expect } from "@ohos/hypium"
 import native from 'libnativendk.so'
 
+
 export default function nativeNdkTest() {
   describe('AvcodecAVCapabilityTest', () => {
 

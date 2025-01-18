@@ -16,6 +16,7 @@
 #include <gtest/gtest.h>
 #include <fstream>
 
+
 #include "image_processing.h"
 #include "image_processing_types.h"
 #include "image_processing_impl.h"

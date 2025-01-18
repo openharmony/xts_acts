@@ -23,6 +23,7 @@
 
 #define MAX_THREAD 16
 
+
 using namespace std;
 using namespace OHOS;
 using namespace OHOS::Media;

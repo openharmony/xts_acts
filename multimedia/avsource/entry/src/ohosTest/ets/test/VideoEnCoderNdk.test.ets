@@ -19,6 +19,7 @@ import videoencoderndk from 'libvideoencoderndk.so'
 export default function videoEnCoderNdkTest() {
   describe('AvcodecVideoEncoderTest', () => {
 
+
     /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEOENCODER_OH_VIDEOENCODER_CREATEBYMIME_0100
      * @tc.name       : testOHVideoEncoderCreateByMime001
