@@ -145,33 +145,33 @@ export default function marginTest() {
     describe: 'SetAll',
     setValue: {
       margin: {
-        top: 200,
-        right: 100,
-        bottom: 100,
-        left: 100
+        top: 20,
+        right: 30,
+        bottom: 30,
+        left: 20
       }
     },
     expectValue: {
       margin: {
-        top: '200.00vp', right: '100.00vp', bottom: '100.00vp', left: '100.00vp'
+        top: '20.00vp', right: '30.00vp', bottom: '30.00vp', left: '20.00vp'
       },
-      top: vp2px(200),
-      right: vp2px(100),
-      bottom: vp2px(100),
-      left: vp2px(100)
+      top: vp2px(20),
+      right: vp2px(30),
+      bottom: vp2px(30),
+      left: vp2px(20)
     }
   }, {
     describe: 'SetTop',
     setValue: {
       margin: {
-        top: 200
+        top: 50
       }
     },
     expectValue: {
       margin: {
-        top: '200.00vp', right: '0.00vp', bottom: '0.00vp', left: '0.00vp'
+        top: '50.00vp', right: '0.00vp', bottom: '0.00vp', left: '0.00vp'
       },
-      top: vp2px(200),
+      top: vp2px(50),
       right: vp2px(0),
       bottom: vp2px(0),
       left: vp2px(0)
@@ -180,15 +180,15 @@ export default function marginTest() {
     describe: 'SetRight',
     setValue: {
       margin: {
-        right: 200
+        right: 50
       }
     },
     expectValue: {
       margin: {
-        top: '0.00vp', right: '200.00vp', bottom: '0.00vp', left: '0.00vp'
+        top: '0.00vp', right: '50.00vp', bottom: '0.00vp', left: '0.00vp'
       },
       top: vp2px(0),
-      right: vp2px(200),
+      right: vp2px(50),
       bottom: vp2px(0),
       left: vp2px(0)
     }
@@ -196,33 +196,33 @@ export default function marginTest() {
     describe: 'SetBottom',
     setValue: {
       margin: {
-        bottom: 200
+        bottom: 50
       }
     },
     expectValue: {
       margin: {
-        top: '0.00vp', right: '0.00vp', bottom: '200.00vp', left: '0.00vp'
+        top: '0.00vp', right: '0.00vp', bottom: '50.00vp', left: '0.00vp'
       },
       top: vp2px(0),
       right: vp2px(0),
-      bottom: vp2px(200),
+      bottom: vp2px(50),
       left: vp2px(0)
     }
   }, {
     describe: 'SetLeft',
     setValue: {
       margin: {
-        left: 200
+        left: 50
       }
     },
     expectValue: {
       margin: {
-        top: '0.00vp', right: '0.00vp', bottom: '0.00vp', left: '200.00vp'
+        top: '0.00vp', right: '0.00vp', bottom: '0.00vp', left: '50.00vp'
       },
       top: vp2px(0),
       right: vp2px(0),
       bottom: vp2px(0),
-      left: vp2px(200)
+      left: vp2px(50)
     }
   }]
 

@@ -70,7 +70,7 @@ struct CanvasAttrsTest {
             if (item == 2) {
               Canvas(this.context)
                 .width('100%')
-                .height(150)
+                .height('20%')
                 .backgroundColor('#ffff00')
                 .onReady(() => {
                   this.context.font = '30vp sans-serif'
@@ -91,7 +91,7 @@ struct CanvasAttrsTest {
             } else {
               Text(item.toString())
                 .width('100%')
-                .height(150)
+                .height('20%')
                 .backgroundColor(Color.Blue)
                 .borderRadius(15)
                 .fontSize(16)
