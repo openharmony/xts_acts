@@ -65,8 +65,9 @@ export default function APICanvasSizeTest() {
 
       let strJson = getInspectorByKey('APICanvasSizeText1');
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[APICanvasSizeTest_0100] canvas width is: " + JSON.stringify(obj.$attrs.content));
-      expect(Math.abs(Math.floor(Number(obj.$attrs.content)-widthParent*0.8))<=1).assertTrue();
+      console.info("[APICanvasSizeTest_0100] text1 content is: " + JSON.stringify(obj.$attrs.content));
+      console.info("[APICanvasSizeTest_0100] canvas width is: " + JSON.stringify(vp2px(Number(obj.$attrs.content))));
+      expect(Math.abs(Math.floor(vp2px(Number(obj.$attrs.content))-widthParent*0.8))<=1).assertTrue();
       console.info('[APICanvasSizeTest_0100] END');
       done();
     });
@@ -95,8 +96,9 @@ export default function APICanvasSizeTest() {
 
       let strJson = getInspectorByKey('APICanvasSizeText2');
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[APICanvasSizeTest_0200] canvas height is: " + JSON.stringify(obj.$attrs.content));
-      expect(Math.abs(Math.floor(Number(obj.$attrs.content)-heightParent*0.5))<=1).assertTrue();
+      console.info("[APICanvasSizeTest_0200] text2 content is: " + JSON.stringify(obj.$attrs.content));
+      console.info("[APICanvasSizeTest_0200] canvas height is: " + JSON.stringify(vp2px(Number(obj.$attrs.content))));
+      expect(Math.abs(Math.floor(vp2px(Number(obj.$attrs.content))-heightParent*0.5))<=1).assertTrue();
       console.info('[APICanvasSizeTest_0200] END');
       done();
     });
