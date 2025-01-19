@@ -131,7 +131,7 @@ export default function ApiCoverTest() {
         })
         .catch((error: BusinessError) => {
           console.error(`Ability: startServiceExtensionAbilityWithAccount failed: ${JSON.stringify(error)}`);
-          if(canIuse("SystemCapability.Security.DataLossPrevention")){
+          if(canIUse("SystemCapability.Security.DataLossPrevention")){
             console.log(`Ability: startServiceExtensionAbilityWithAccount with DLP: ${JSON.stringify(error)}`);
             expect(CROSS_USER_DENY).assertEqual(error.code);
           }else{
@@ -162,7 +162,7 @@ export default function ApiCoverTest() {
         })
         .catch((error: BusinessError) => {
           console.error(`Ability: stopServiceExtensionAbilityWithAccount failed: ${JSON.stringify(error)}`);
-          if(canIuse("SystemCapability.Security.DataLossPrevention")){
+          if(canIUse("SystemCapability.Security.DataLossPrevention")){
             console.log(`Ability: startServiceExtensionAbilityWithAccount with DLP: ${JSON.stringify(error)}`);
             expect(CROSS_USER_DENY).assertEqual(error.code);
           }else{
@@ -242,11 +242,11 @@ export default function ApiCoverTest() {
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.startServiceExtensionAbilityWithAccount(want, 999, (err, data) => {
         if (err.code) {
           console.error(`Ability: startServiceExtensionAbilityWithAccount failed: ${JSON.stringify(err)}`);
-          if(canIuse("SystemCapability.Security.DataLossPrevention")){
-            console.log(`Ability: startServiceExtensionAbilityWithAccount with DLP: ${JSON.stringify(error)}`);
-            expect(CROSS_USER_DENY).assertEqual(error.code);
+          if(canIUse("SystemCapability.Security.DataLossPrevention")){
+            console.log(`Ability: startServiceExtensionAbilityWithAccount with DLP: ${JSON.stringify(err)}`);
+            expect(CROSS_USER_DENY).assertEqual(err.code);
           }else{
-            expect(16000006).assertEqual(error.code);
+            expect(16000006).assertEqual(err.code);
           }
         } else {
           console.log(`Ability: startServiceExtensionAbilityWithAccount success: ${JSON.stringify(data)}`);
@@ -273,11 +273,11 @@ export default function ApiCoverTest() {
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.stopServiceExtensionAbilityWithAccount(want, 999, (err, data) => {
         if (err.code) {
           console.error(`Ability: stopServiceExtensionAbilityWithAccount failed: ${JSON.stringify(err)}`);
-          if(canIuse("SystemCapability.Security.DataLossPrevention")){
-            console.log(`Ability: startServiceExtensionAbilityWithAccount with DLP: ${JSON.stringify(error)}`);
-            expect(CROSS_USER_DENY).assertEqual(error.code);
+          if(canIUse("SystemCapability.Security.DataLossPrevention")){
+            console.log(`Ability: startServiceExtensionAbilityWithAccount with DLP: ${JSON.stringify(err)}`);
+            expect(CROSS_USER_DENY).assertEqual(err.code);
           }else{
-            expect(16000006).assertEqual(error.code);
+            expect(16000006).assertEqual(err.code);
           }
         } else {
           console.log(`Ability: stopServiceExtensionAbilityWithAccount success: ${JSON.stringify(data)}`);
