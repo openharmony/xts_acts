@@ -30,7 +30,7 @@ struct Index {
     Row() {
       Column() {
         Text(this.startSecond)
-          .fontSize(50)
+          .fontSize("2%")
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             let want: Want = {
@@ -41,26 +41,26 @@ struct Index {
           });
 
         Text(this.jsCrash)
-          .fontSize(50)
+          .fontSize("2%")
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             throw Error();
           });
         Text(this.appFreeze)
-          .fontSize(50)
+          .fontSize("2%")
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             while (true) {
             }
           });
         Text(this.terminateSelf)
-          .fontSize(50)
+          .fontSize("2%")
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             (getContext() as common.UIAbilityContext).terminateSelf();
           });
         Text(this.startFeature)
-          .fontSize(50)
+          .fontSize("2%")
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             let want: Want = {
