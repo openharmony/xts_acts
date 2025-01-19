@@ -27,7 +27,7 @@ struct ScrollFlingCallback {
         .fontSize(16).width('90%')
       Button('更换速度 1000')
         .id('btn_scroll_fling_01')
-        .onClick(() => { 
+        .onClick(() => { // 这里
           this.scroller.fling(1000)
           console.info('ScrollFlingCallback_0100 start to emit action state')
           this.scroller_fling_1 = '1000'
@@ -39,13 +39,12 @@ struct ScrollFlingCallback {
         .fontSize(16).width('90%').key('key_scroll_fling_text2')
       Button('更换速度 -1000')
         .id('btn_scroll_fling_02')
-        .onClick(() => { 
+        .onClick(() => { // 这里
           this.scroller.fling(-1000)
           console.info('ScrollFlingCallback_0200 start to emit action state')
           this.scroller_fling_2 = '-1000'
         })
         .width('100%')
-		
       Scroll(this.scroller) {
         Column() {
           ForEach(this.arr, (item: number) => {
@@ -67,7 +66,6 @@ struct ScrollFlingCallback {
       .friction(0.6)
       .height('70%')
       .edgeEffect(EdgeEffect.None)
-
     }
     .width('100%')
     .height('100%')

@@ -25,9 +25,10 @@ struct GridFlingCallback {
     Column({ space: 5 }) {
       Text('Scroller组件绑定至平铺的Grid容器组件').fontColor(0x000000)
         .fontSize(16).width('90%')
+
       Button('更换速度 1000')
         .id('btn_grid_fling_01')
-        .onClick(() => { 
+        .onClick(() => { // 这里
           this.scroller.fling(1000)
           console.info('GridFlingCallbackTest_0100 start to emit action state')
           this.scroller_fling_1 = '1000'
@@ -37,7 +38,7 @@ struct GridFlingCallback {
         .fontSize(16).width('90%').key('key_grid_fling_text1')
       Button('更换速度 -1000')
         .id('btn_grid_fling_02')
-        .onClick(() => { 
+        .onClick(() => { // 这里
           this.scroller.fling(-1000)
           console.info('GridFlingCallbackTest_0200 start to emit action state')
           this.scroller_fling_2 = '-1000'
@@ -45,7 +46,6 @@ struct GridFlingCallback {
         .width('100%')
       Text('' + this.scroller_fling_2).fontColor(0x000000)
         .fontSize(16).width('90%').key('key_grid_fling_text2')
-		
       Grid(this.scroller) {
         ForEach(this.numbers, (val: string) => {
           ForEach(this.numbers, (val: string) => {

@@ -25,7 +25,6 @@ struct ListAnimationCallback {
       Text('List: '+ this.onText)
         .id('animate_callback_text')
         .width('90%')
-        .height('10%')
       Button('next page2')
         .id('list_animation_true')
         .onClick(() => {

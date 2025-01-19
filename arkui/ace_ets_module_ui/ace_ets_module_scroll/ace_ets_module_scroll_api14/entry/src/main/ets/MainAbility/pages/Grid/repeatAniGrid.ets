@@ -34,12 +34,9 @@ struct totalGridRepeat {
 
   build() {
     Column({ space: 5 }) {
-      Scroll(){
-        Text(''+ this.onText)
-          .id('grid_repeat_true_onText')
-      }
-	  .width('90%')
-	  .height('10%')
+      Text(''+ this.onText)
+        .id('grid_repeat_true_onText')
+        .width('90%')
 
       Button('next page true')
         .id('grid_repeat_animation_true')
@@ -55,13 +52,13 @@ struct totalGridRepeat {
           .template('number', (r) => {
             GridItem() {
               Text(r.index! + ":" + r.item + "Reuse")
-              .height('8%')
+                .height('8%')
             }
           })
           .each((r) => {
             GridItem() {
               Text(r.index! + ":" + r.item + "eachMessage")
-              .height('8%')
+                .height('8%')
             }
           })
       }

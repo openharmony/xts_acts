@@ -22,9 +22,9 @@ import offsetRemainScroll from './ScrollTest/offsetRemainScroll.test';
 
 export default function testsuite() {
   headerListJsunit()
+  waterFlowFad()
   tabsOpacityJsunit()
   bindTabsScroll()
   listItemGroupComponent()
   offsetRemainScroll()
-  waterFlowFad()
 }

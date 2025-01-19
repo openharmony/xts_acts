@@ -32,12 +32,9 @@ struct irregularGridAnimationExample {
 
   build() {
     Column({ space: 5 }) {
-      Scroll(){
-        Text(''+ this.onText)
-          .id('irGrid_true_onText')
-      }
-	  .width('90%')
-	  .height('10%')
+      Text(''+ this.onText)
+        .id('irGrid_true_onText')
+        .width('90%')
 
       Button('next page true')
         .id('irGrid_next_animation_true')

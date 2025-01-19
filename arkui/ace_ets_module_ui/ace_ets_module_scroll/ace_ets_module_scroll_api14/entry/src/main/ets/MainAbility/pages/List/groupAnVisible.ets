@@ -77,10 +77,9 @@ struct groupAnimationVisibleExample {
 
       Text(this.onText)
         .id('group_visible_mess')
-      List({ space: 10, scroller: this.scroller }) {
+      List({ scroller: this.scroller }) {
         LazyForEach(this.dataBean, (item0: DataBean, groupIndex: number) => {
           ListItemGroup({
-            space: 10,
             style: ListItemGroupStyle.CARD
           }) {
             LazyForEach(item0.value, (item: string, itemIndex: number) => {
