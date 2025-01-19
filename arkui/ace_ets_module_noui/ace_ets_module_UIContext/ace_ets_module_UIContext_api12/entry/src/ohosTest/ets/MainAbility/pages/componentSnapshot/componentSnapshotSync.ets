@@ -24,7 +24,6 @@ struct componentSnapshotSync{
   @State code3:string =''
   @State code4:string =''
   build() {
-     Scroll() {
       Column({space:5}){
       Text(''+this.code).key('ERRORcODE')
       Text(''+this.code1).key('ERRORcODE1')
@@ -93,5 +92,5 @@ struct componentSnapshotSync{
       }
     }.width('100%').height('100%')
   }
-  }
+  
 }
