@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
+import Utils from '../../MainAbility/common/Utils';
 export default function APICanvasSizeTest() {
   describe('APICanvasSizeTest', () => {
     beforeEach(async (done: Function) => {
@@ -51,14 +52,21 @@ export default function APICanvasSizeTest() {
       console.info('APICanvasSizeTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
+
+      let rectParent = Utils.getComponentRect('APICanvasSizeFlex');
+      let widthParent = rectParent.right - rectParent.left
+      let heightParent =  rectParent.bottom - rectParent.top
+      console.info("[APICanvasSizeTest_0100] widthParent is: " + widthParent);
+      console.info("[APICanvasSizeTest_0100] heightParent is: " + heightParent);
+
       let button1 = await driver.findComponent(ON.id('APICanvasSizeButton1'));
       await button1.click();
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('APICanvasSizeText1');
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[APICanvasSizeTest_0100] component obj is: " + JSON.stringify(obj));
-      expect(Math.abs(Math.round(Number(obj.$attrs.content))-100)<=1).assertTrue();
+      console.info("[APICanvasSizeTest_0100] canvas width is: " + JSON.stringify(obj.$attrs.content));
+      expect(Math.abs(Math.floor(Number(obj.$attrs.content)-widthParent*0.8))<=1).assertTrue();
       console.info('[APICanvasSizeTest_0100] END');
       done();
     });
@@ -74,14 +82,21 @@ export default function APICanvasSizeTest() {
       console.info('APICanvasSizeTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
+
+      let rectParent = Utils.getComponentRect('APICanvasSizeFlex');
+      let widthParent = rectParent.right - rectParent.left
+      let heightParent =  rectParent.bottom - rectParent.top
+      console.info("[APICanvasSizeTest_0200] widthParent is: " + widthParent);
+      console.info("[APICanvasSizeTest_0200] heightParent is: " + heightParent);
+
       let button1 = await driver.findComponent(ON.id('APICanvasSizeButton2'));
       await button1.click();
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('APICanvasSizeText2');
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[APICanvasSizeTest_0200] component obj is: " + JSON.stringify(obj));
-      expect(Math.abs(Math.round(Number(obj.$attrs.content))-100)<=1).assertTrue();
+      console.info("[APICanvasSizeTest_0200] canvas height is: " + JSON.stringify(obj.$attrs.content));
+      expect(Math.abs(Math.floor(Number(obj.$attrs.content)-heightParent*0.5))<=1).assertTrue();
       console.info('[APICanvasSizeTest_0200] END');
       done();
     });

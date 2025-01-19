@@ -22,8 +22,8 @@ struct APICanvasSize {
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Canvas(this.context)
-        .width(100)
-        .height(100)
+        .width('80%')
+        .height('50%')
         .backgroundColor('#ffff00')
         .onReady(() => {
           this.context.canvas.drawCircle(50, 50, 50)
@@ -46,6 +46,7 @@ struct APICanvasSize {
         Text(this.sizeHeight + '').key('APICanvasSizeText2') 
       }
     }
+    .id('APICanvasSizeFlex')
     .width('100%')
     .height('100%')
   }
