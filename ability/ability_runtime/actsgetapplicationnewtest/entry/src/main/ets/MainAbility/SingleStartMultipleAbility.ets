@@ -22,16 +22,16 @@ import { BusinessError } from '@ohos.base';
 
 export default class SingleStartMultipleAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    hilog.info(0x0000, 'StartupTest SingleStartMultipleAbility', '%{public}s', 'Ability onCreate');
+    hilog.info(0x0000, 'testTag', 'SingleStartMultipleAbility onCreate');
     setTimeout(() => {
       this.context.startAbility({
         bundleName: 'com.example.contexttest',
         abilityName: 'MultipleAbility',
         moduleName: 'entry',
       }, (err: BusinessError) => {
-        console.info('====>[RelyEntryAbility] 0500 startAbility err:' + JSON.stringify(err));
+        console.info('SingleStartMultipleAbility startAbility err:' + JSON.stringify(err));
       })
-    }, 3000)
+    }, 3000);
   }
 
   onDestroy() {

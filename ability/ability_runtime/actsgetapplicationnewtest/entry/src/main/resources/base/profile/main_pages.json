@@ -2,7 +2,6 @@
   "src": [
     "pages/Index",
     "pages/SingleStartMultipleAbility",
-    "pages/HotPage",
     "pages/IndexExtension"
   ]
 }

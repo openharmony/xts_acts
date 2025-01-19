@@ -126,34 +126,7 @@ struct Index {
             hilog.info(0x0000, 'testTag', 'context1: %{public}s', JSON.stringify(err));
           }
         })
-
-      Button('process create')
-        .id('process1')
-        .margin(10)
-        .width('60%')
-        .fontSize(20)
-        .fontColor(Color.White)
-        .type(ButtonType.Capsule)
-        .onClick(() => {
-          try {
-            let args: ChildProcessArgs = {
-              entryParams: 'sendSanToAppSpawn'
-            };
-            let options: ChildProcessOptions = {
-              isolationMode: false
-            };
-            let arkProcessPath = 'entry/./ets/process/DemoProcess.ts';
-            childProcessManager.startArkChildProcess(arkProcessPath, args, options)
-              .then((data) => {
-                console.log(`startChildProcess success, pid: ${data}`);
-              }, (err: BusinessError) => {
-                console.error(`startChildProcess error, errorCode: ${err.code}`);
-              })
-          } catch (err) {
-            console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}`);
-          }
-        })
-    }
+      }
     .height('100%')
   }
 }
