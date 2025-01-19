@@ -73,7 +73,8 @@ export default function UIContextComponentSnapshot() {
       console.info('UIContextComponentSnapshot_0200 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
-      let button = await driver.findComponent(ON.id('gPromise1'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let button= await scrollBar.scrollSearch(ON.id('gPromise1'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strcontent = getInspectorByKey('ERRORcODE1');
@@ -94,7 +95,8 @@ export default function UIContextComponentSnapshot() {
       console.info('UIContextComponentSnapshot_0300 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
-      let button = await driver.findComponent(ON.id('gPromise2'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let button = await scrollBar.scrollSearch(ON.id('gPromise2'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strcontent = getInspectorByKey('ERRORcODE2');
@@ -114,7 +116,8 @@ export default function UIContextComponentSnapshot() {
       console.info('UIContextComponentSnapshot_0400 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
-      let button = await driver.findComponent(ON.id('gPromise3'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let button = await scrollBar.scrollSearch(ON.id('gPromise3'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strcontent = getInspectorByKey('ERRORcODE3');
