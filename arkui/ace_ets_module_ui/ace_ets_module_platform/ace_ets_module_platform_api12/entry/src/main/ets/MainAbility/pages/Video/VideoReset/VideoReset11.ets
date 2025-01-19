@@ -26,13 +26,13 @@ struct VideoReset11 {
   @State loopValue: boolean = false
 
   build() {
-    Column({space:5}) {
+    Column({space:2}) {
       Video({
         src: this.videoSrc,
         controller: this.controller
       })
-        .width('300vp')
-        .height('200vp')
+        .width('80%')
+        .height('40%')
         .autoPlay(this.autoPlayValue)
         .onPrepared(()=>{
           console.log('testTag:' + 'onPrepared')
@@ -49,10 +49,11 @@ struct VideoReset11 {
           this.text3 = 'onFinish'
           console.log('testTag:' + 'onFinish')
         })
-
-      Text(this.text1).id('VideoReset11_text1')
-      Text(this.text2).id('VideoReset11_text2')
-      Text(this.text3).id('VideoReset11_text3')
+      Row({space:2}) {
+        Text(this.text1).id('VideoReset11_text1')
+        Text(this.text2).id('VideoReset11_text2')
+        Text(this.text3).id('VideoReset11_text3')
+      }
 
       Row({space:2}) {
         Button('start').onClick(() => {
