@@ -36,7 +36,7 @@ struct RouterPushOne {
   @State routerUI: Router|undefined = undefined
 
   build() {
-    Row() {
+    Scroll() {
       Column() {
         Text(this.message)
         Text("RouterPushThree " + JSON.stringify(router.getParams()))
@@ -147,7 +147,6 @@ struct RouterPushOne {
             })
           })
       }
-      .height('100%')
     }
   }
 }
