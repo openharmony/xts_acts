@@ -60,16 +60,14 @@ export default function nodeWaterFlow() {
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
       let size = await driver.getDisplaySize();
-      if (size.x != 466 && size.y != 466) {
-        let button = await driver.findComponent(ON.type('WaterFlow'));
-        let type1 = await button.getType();
-        await CommonFunc.sleep(1000);
-        let strJson = getInspectorByKey('waterFlow_node');
-        let obj: ESObject = JSON.parse(strJson);
-        console.info("[nodeWaterFlow_0100] component obj is: " + JSON.stringify(obj));
-        expect(obj.$type).assertEqual(type1);
-        console.info('[nodeWaterFlow_0100] END');
-      }
+      let button = await driver.findComponent(ON.type('WaterFlow'));
+      let type1 = await button.getType();
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('waterFlow_node');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[nodeWaterFlow_0100] component obj is: " + JSON.stringify(obj));
+      expect(obj.$type).assertEqual(type1);
+      console.info('[nodeWaterFlow_0100] END');
       done();
     });
 
@@ -86,16 +84,14 @@ export default function nodeWaterFlow() {
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
       let size = await driver.getDisplaySize();
-      if (size.x != 466 && size.y != 466) {
-        let button = await driver.findComponent(ON.type('FlowItem'));
-        let type2 = await button.getType();
-        await CommonFunc.sleep(1000);
-        let strJson = getInspectorByKey('flowItem_node');
-        let obj: ESObject = JSON.parse(strJson);
-        console.info("[nodeWaterFlow_0200] component obj is: " + JSON.stringify(obj));
-        expect(obj.$type).assertEqual(type2);
-        console.info('[nodeWaterFlow_0200] END');
-      }
+      let button = await driver.findComponent(ON.type('FlowItem'));
+      let type2 = await button.getType();
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('flowItem_node');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[nodeWaterFlow_0200] component obj is: " + JSON.stringify(obj));
+      expect(obj.$type).assertEqual(type2);
+      console.info('[nodeWaterFlow_0200] END');
       done();
     });
 
