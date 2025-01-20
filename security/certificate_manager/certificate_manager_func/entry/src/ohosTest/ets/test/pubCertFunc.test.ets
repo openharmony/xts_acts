@@ -403,7 +403,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
         }
 
         try {
-          await certManagerDialog.openInstallCertificateDialog(context, certificateType, 2, caCert)
+          await certManagerDialog.openInstallCertificateDialog(context, certificateType, 3, caCert)
           expect(null).assertFail()
         } catch (err) {
           console.log("SUB_Security_CertManager_openInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
