@@ -49,7 +49,7 @@ struct APIsetOnTouch {
       Text("this is a Text").key('APIsetOnTouchText01')
         .fontSize(16)
         .borderWidth(1)
-        .margin({top: 40})
+        //.margin({top: 40})
 
       Text(this.text1).key('APIsetOnTouchText02')
         .fontWeight(700).fontColor(Color.Green)
@@ -60,7 +60,7 @@ struct APIsetOnTouch {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
         .width(300)
-        .height(100)
+        .height('30%')
 
     }.width("100%")
   }
