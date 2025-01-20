@@ -30,11 +30,11 @@ struct UIContextComponentSnapshot{
       Text(''+this.code3).key('ERRORcODE3')
 
       Row({space:5}){
-        Image(this.pixmap).width(190).height(190).border({color:Color.Black,width:2}).objectFit(ImageFit.None)
+        Image(this.pixmap).width('10%').height('10%').border({color:Color.Black,width:2}).objectFit(ImageFit.None)
 
       }
       Row({space:5}){
-        Image($r('app.media.icon')).width(50).height(50).id('image1')
+        Image($r('app.media.icon')).width('5%').height('5%').id('image1')
         Column({space:10}){
           Button('UIcontext getSync-0.1')
             .id('gPromise')
@@ -45,7 +45,7 @@ struct UIContextComponentSnapshot{
               } catch (error) {
                 this.code = error.code
               }
-            }).margin(10)
+            }).height('5%')
           Button('UIcontext getSync1')
             .id('gPromise1')
             .onClick(()=>{
@@ -55,7 +55,7 @@ struct UIContextComponentSnapshot{
               } catch (error) {
                 this.code1 = error.code
               }
-            }).margin(10)
+            }).height('5%')
           Button('UIcontext getSync-2')
             .id('gPromise2')
             .onClick(()=>{
@@ -65,7 +65,7 @@ struct UIContextComponentSnapshot{
               } catch (error) {
                 this.code2 = error.code
               }
-            }).margin(10)
+            }).height('5%')
           Button('UIcontext getSync0.5')
             .id('gPromise3')
             .onClick(()=>{
@@ -75,7 +75,7 @@ struct UIContextComponentSnapshot{
               } catch (error) {
                 this.code3 = error.code
               }
-            }).margin(10)
+            }).height('5%')
         }
       }
     }.width('100%').height('100%')

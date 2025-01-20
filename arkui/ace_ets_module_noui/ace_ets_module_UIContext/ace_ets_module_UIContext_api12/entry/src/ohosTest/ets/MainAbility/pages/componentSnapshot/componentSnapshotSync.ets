@@ -24,7 +24,7 @@ struct componentSnapshotSync{
   @State code3:string =''
   @State code4:string =''
   build() {
-    Column({space:5}){
+      Column({space:5}){
       Text(''+this.code).key('ERRORcODE')
       Text(''+this.code1).key('ERRORcODE1')
       Text(''+this.code2).key('ERRORcODE2')
@@ -32,11 +32,11 @@ struct componentSnapshotSync{
       Text(''+this.code4).key('ERRORcODE4')
 
       Row({space:5}){
-        Image(this.pixmap).width(190).height(190).border({color:Color.Black,width:2}).objectFit(ImageFit.None)
+        Image(this.pixmap).width('10%').height('10%').border({color:Color.Black,width:2}).objectFit(ImageFit.None)
       }
       Row({space:5}){
-        Image($r('app.media.icon')).width(50).height(50).id('image1')
-        Image($r('app.media.icon')).width(50).height(50).id('image2').visibility(Visibility.None)
+        Image($r('app.media.icon')).width('5%').height('5%').id('image1')
+        Image($r('app.media.icon')).width('5%').height('5%').id('image2').visibility(Visibility.None)
         Column({space:10}){
           Button('getSync1')
             .id('gPromise')
@@ -47,7 +47,7 @@ struct componentSnapshotSync{
               } catch (error) {
                 this.code = error.code
               }
-            }).margin(10)
+            }).height('5%')
           Button('getSync-0.1')
             .id('gPromise1')
             .onClick(()=>{
@@ -57,7 +57,7 @@ struct componentSnapshotSync{
               } catch (error) {
                 this.code1 = error.code
               }
-            }).margin(10)
+            }).height('5%')
           Button('getSync-2')
             .id('gPromise2')
             .onClick(()=>{
@@ -67,7 +67,7 @@ struct componentSnapshotSync{
               } catch (error) {
                 this.code2 = error.code
               }
-            }).margin(10)
+            }).height('5%')
           Button('getSyncab')
             .id('gPromise3')
             .onClick(()=>{
@@ -77,7 +77,7 @@ struct componentSnapshotSync{
               } catch (error) {
                 this.code3 = error.code
               }
-            }).margin(10)
+            }).height('5%')
           Button('getSyncabtest')
             .id('gPromise4')
             .onClick(()=>{
@@ -87,9 +87,10 @@ struct componentSnapshotSync{
               } catch (error) {
                 this.code4 = error.code
               }
-            }).margin(10)
+            }).height('5%')
         }
       }
     }.width('100%').height('100%')
   }
+  
 }
