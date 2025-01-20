@@ -187,6 +187,361 @@ HWTEST_F(DrawingNativePathEffectTest, testPathEffectDestroyNull, TestSize.Level3
     EXPECT_TRUE(true);
 }
 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_EFFECT_0300
+ * @tc.name: testCreateCornerPathEffectNormal
+ * @tc.desc: test for testCreateCornerPathEffectNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativePathEffectTest, testCreateCornerPathEffectNormal, TestSize.Level0) {
+    // 1. OH_Drawing_CreateCornerPathEffect with normal parameter
+    OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreateCornerPathEffect(10.0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_NE(pathEffect, nullptr);
+    // 2. Free memory
+    OH_Drawing_PathEffectDestroy(pathEffect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_EFFECT_0301
+ * @tc.name: testCreateCornerPathEffectNull
+ * @tc.desc: test for testCreateCornerPathEffectNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathEffectTest, testCreateCornerPathEffectNull, TestSize.Level3) {
+    // 1. OH_Drawing_CreateCornerPathEffect with 0 as the parameter
+    OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreateCornerPathEffect(0);
+    // add assert
+    EXPECT_EQ(pathEffect, nullptr);
+    // 2. Free memory
+    OH_Drawing_PathEffectDestroy(pathEffect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_EFFECT_0302
+ * @tc.name: testCreateCornerPathEffectAbnormal
+ * @tc.desc: test for testCreateCornerPathEffectAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathEffectTest, testCreateCornerPathEffectAbnormal, TestSize.Level3) {
+    // 1. OH_Drawing_CreateCornerPathEffect with 0xFFFFFFFF as the parameter
+    OH_Drawing_PathEffect *pathEffect1 = OH_Drawing_CreateCornerPathEffect(0xFFFFFFFF);
+    // add assert
+    EXPECT_EQ(pathEffect1, nullptr);
+    // 2. OH_Drawing_CreateCornerPathEffect with 0.0001 as the parameter
+    OH_Drawing_PathEffect *pathEffect2 = OH_Drawing_CreateCornerPathEffect(0.0001);
+    // add assert
+    EXPECT_EQ(pathEffect2, nullptr);
+    // 3. OH_Drawing_CreateCornerPathEffect with -0.1 as the parameter
+    OH_Drawing_PathEffect *pathEffect3 = OH_Drawing_CreateCornerPathEffect(-0.1);
+    // add assert
+    EXPECT_EQ(pathEffect3, nullptr);
+    // 4. OH_Drawing_CreateCornerPathEffect with -1 as the parameter
+    OH_Drawing_PathEffect *pathEffect4 = OH_Drawing_CreateCornerPathEffect(-1);
+    // add assert
+    EXPECT_EQ(pathEffect4, nullptr);
+    // 5. Free memory
+    OH_Drawing_PathEffectDestroy(pathEffect1);
+    OH_Drawing_PathEffectDestroy(pathEffect2);
+    OH_Drawing_PathEffectDestroy(pathEffect3);
+    OH_Drawing_PathEffectDestroy(pathEffect4);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_EFFECT_0400
+ * @tc.name: testCreateDiscreatePathEffectNormal
+ * @tc.desc: test for testCreateDiscreatePathEffectNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativePathEffectTest, testCreateDiscreatePathEffectNormal, TestSize.Level0) {
+    // 1. OH_Drawing_CreateDiscretePathEffect with normal parameter
+    OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreateDiscretePathEffect(10.0, 2.0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_NE(pathEffect, nullptr);
+    // 2. Free memory
+    OH_Drawing_PathEffectDestroy(pathEffect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_EFFECT_0401
+ * @tc.name: testCreateDiscreatePathEffectNull
+ * @tc.desc: test for testCreateDiscreatePathEffectNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathEffectTest, testCreateDiscreatePathEffectNull, TestSize.Level3) {
+    // 1. OH_Drawing_CreateDiscretePathEffect with 0 as the first parameter
+    OH_Drawing_PathEffect *pathEffect1 = OH_Drawing_CreateDiscretePathEffect(0, 2.0);
+    // add assert
+    EXPECT_EQ(pathEffect1, nullptr);
+    // 2. OH_Drawing_CreateDiscretePathEffect with 0 as the second parameter
+    OH_Drawing_PathEffect *pathEffect2 = OH_Drawing_CreateDiscretePathEffect(10.0, 0);
+    // add assert
+    EXPECT_EQ(pathEffect2, nullptr);
+    // 3. Free memory
+    OH_Drawing_PathEffectDestroy(pathEffect1);
+    OH_Drawing_PathEffectDestroy(pathEffect2);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_EFFECT_0402
+ * @tc.name: testCreateDiscreatePathEffectAbnormal
+ * @tc.desc: test for testCreateDiscreatePathEffectAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathEffectTest, testCreateDiscreatePathEffectAbnormal, TestSize.Level3) {
+    // 1. OH_Drawing_CreateDiscretePathEffect with 0xFFFFFFFF as the first parameter, 0xFFFFFFFF as the second parameter
+    OH_Drawing_PathEffect *pathEffect1 = OH_Drawing_CreateDiscretePathEffect(0xFFFFFFFF, 0xFFFFFFFF);
+    // add assert
+    EXPECT_EQ(pathEffect1, nullptr);
+    // 2. OH_Drawing_CreateDiscretePathEffect with 0xFFFFFFFF as the first parameter, normal value as the second parameter
+    OH_Drawing_PathEffect *pathEffect2 = OH_Drawing_CreateDiscretePathEffect(0xFFFFFFFF, 2.0);
+    // add assert
+    EXPECT_EQ(pathEffect2, nullptr);
+    // 3. OH_Drawing_CreateDiscretePathEffect with 0xFFFFFFFF as the first parameter, -0.1 as the second parameter
+    OH_Drawing_PathEffect *pathEffect3 = OH_Drawing_CreateDiscretePathEffect(0xFFFFFFFF, -0.1);
+    // add assert
+    EXPECT_EQ(pathEffect3, nullptr);
+    // 4. OH_Drawing_CreateDiscretePathEffect with 0xFFFFFFFF as the first parameter, -1 as the second parameter
+    OH_Drawing_PathEffect *pathEffect4 = OH_Drawing_CreateDiscretePathEffect(0xFFFFFFFF, -1);
+    // add assert
+    EXPECT_EQ(pathEffect4, nullptr);
+    // 5. OH_Drawing_CreateDiscretePathEffect with -0.1 as the first parameter, normal value as the second parameter
+    OH_Drawing_PathEffect *pathEffect5 = OH_Drawing_CreateDiscretePathEffect(-0.1, 2.0);
+    // add assert
+    EXPECT_EQ(pathEffect5, nullptr);
+    // 6. OH_Drawing_CreateDiscretePathEffect with -1 as the first parameter, normal value as the second parameter
+    OH_Drawing_PathEffect *pathEffect6 = OH_Drawing_CreateDiscretePathEffect(-1, 2.0);
+    // add assert
+    EXPECT_EQ(pathEffect6, nullptr);
+    // 8. Free memory
+    OH_Drawing_PathEffectDestroy(pathEffect1);
+    OH_Drawing_PathEffectDestroy(pathEffect2);
+    OH_Drawing_PathEffectDestroy(pathEffect3);
+    OH_Drawing_PathEffectDestroy(pathEffect4);
+    OH_Drawing_PathEffectDestroy(pathEffect5);
+    OH_Drawing_PathEffectDestroy(pathEffect6);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_EFFECT_0500
+ * @tc.name: testCreateComposePathEffectNormal
+ * @tc.desc: test for testCreateComposePathEffectNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativePathEffectTest, testCreateComposePathEffectNormal, TestSize.Level0) {
+    // 1. OH_Drawing_CreateCornerPathEffect
+    OH_Drawing_PathEffect *cornerPathEffect = OH_Drawing_CreateCornerPathEffect(10.0);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_NE(cornerPathEffect, nullptr);
+
+    // 2. OH_Drawing_CreateDiscretePathEffect
+    OH_Drawing_PathEffect *discretePathEffect = OH_Drawing_CreateDiscretePathEffect(10.0, 2.0);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_NE(discretePathEffect, nullptr);
+
+    // 3. OH_Drawing_CreateComposePathEffect with normal parameters
+    OH_Drawing_PathEffect *composePathEffect = OH_Drawing_CreateComposePathEffect(cornerPathEffect, discretePathEffect);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_NE(composePathEffect, nullptr);
+
+    // 4. Free memory
+    OH_Drawing_PathEffectDestroy(cornerPathEffect);
+    OH_Drawing_PathEffectDestroy(discretePathEffect);
+    OH_Drawing_PathEffectDestroy(composePathEffect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_EFFECT_0501
+ * @tc.name: testCreateComposePathEffectNull
+ * @tc.desc: test for testCreateComposePathEffectNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathEffectTest, testCreateComposePathEffectNull, TestSize.Level3) {
+    // 1. OH_Drawing_CreateCornerPathEffect
+    OH_Drawing_PathEffect *cornerPathEffect = OH_Drawing_CreateCornerPathEffect(10.0);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_NE(cornerPathEffect, nullptr);
+
+    // 2. OH_Drawing_CreateDiscretePathEffect
+    OH_Drawing_PathEffect *discretePathEffect = OH_Drawing_CreateDiscretePathEffect(10.0, 2.0);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_NE(discretePathEffect, nullptr);
+
+    // 3. OH_Drawing_CreateComposePathEffect with first parameter as nullptr
+    OH_Drawing_PathEffect *composePathEffect1 = OH_Drawing_CreateComposePathEffect(nullptr, discretePathEffect);
+    EXPECT_EQ(composePathEffect1, nullptr);
+
+    // 4. OH_Drawing_CreateComposePathEffect with second parameter as nullptr
+    OH_Drawing_PathEffect *composePathEffect2 = OH_Drawing_CreateComposePathEffect(cornerPathEffect, nullptr);
+    EXPECT_EQ(composePathEffect2, nullptr);
+
+    // 5. Free memory
+    OH_Drawing_PathEffectDestroy(cornerPathEffect);
+    OH_Drawing_PathEffectDestroy(discretePathEffect);
+    OH_Drawing_PathEffectDestroy(composePathEffect1);
+    OH_Drawing_PathEffectDestroy(composePathEffect2);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_EFFECT_0600
+ * @tc.name: testCreatePathDashEffectNormal
+ * @tc.desc: test for testCreatePathDashEffectNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectNormal, TestSize.Level0) {
+    // 1. OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. OH_Drawing_PathAddRect
+    OH_Drawing_PathAddRect(path, 10, 10, 100, 100, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    // 3. OH_Drawing_PathCreate
+    OH_Drawing_Path *path2 = OH_Drawing_PathCreate();
+    EXPECT_NE(path2, nullptr);
+    // 4. OH_Drawing_PathMoveTo
+    OH_Drawing_PathMoveTo(path2, 50.0f, 50.0f);
+    // 5. OH_Drawing_PathLineTo
+    OH_Drawing_PathLineTo(path2, 100.0f, 50.0f);
+    // 6. OH_Drawing_CreatePathDashEffect 参数正常入参并且遍历第四个枚举参数
+    OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreatePathDashEffect(path2, 50.0f, 50.0f, PATH_EFFECT_TRANSLATE);
+    pathEffect = OH_Drawing_CreatePathDashEffect(path2, 50.0f, 50.0f, PATH_EFFECT_ROTATE);
+    pathEffect = OH_Drawing_CreatePathDashEffect(path2, 50.0f, 50.0f, PATH_EFFECT_MORPH);
+    // 7. 释放内存
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_PathDestroy(path2);
+    OH_Drawing_PathEffectDestroy(pathEffect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_EFFECT_0601
+ * @tc.name: testCreatePathDashEffectNull
+ * @tc.desc: test for testCreatePathDashEffectNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectNull, TestSize.Level3) {
+    // 1. OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. OH_Drawing_PathAddRect
+    OH_Drawing_PathAddRect(path, 10, 10, 100, 100, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    // 3. OH_Drawing_PathCreate
+    OH_Drawing_Path *path2 = OH_Drawing_PathCreate();
+    // 4. OH_Drawing_PathMoveTo
+    OH_Drawing_PathMoveTo(path2, 50.0f, 50.0f);
+    // 5. OH_Drawing_PathLineTo
+    OH_Drawing_PathLineTo(path2, 100.0f, 50.0f);
+    // 6. OH_Drawing_CreatePathDashEffect第一个参数传nullptr
+    OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreatePathDashEffect(nullptr, 50.0f, 50.0f, PATH_EFFECT_TRANSLATE);
+    // 7. OH_Drawing_CreatePathDashEffect第二个参数传0
+    pathEffect = OH_Drawing_CreatePathDashEffect(path2, 0, 50.0f, PATH_EFFECT_TRANSLATE);
+    // 8. OH_Drawing_CreatePathDashEffect第三个参数传0
+    pathEffect = OH_Drawing_CreatePathDashEffect(path2, 50.0f, 0, PATH_EFFECT_TRANSLATE);
+    // 9. 释放内存
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_PathDestroy(path2);
+    OH_Drawing_PathEffectDestroy(pathEffect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_EFFECT_0602
+ * @tc.name: testCreatePathDashEffectAbnormal
+ * @tc.desc: test for testCreatePathDashEffectAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectAbnormal, TestSize.Level3) {
+    // 1. OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. OH_Drawing_PathAddRect
+    OH_Drawing_PathAddRect(path, 10, 10, 100, 100, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    // 3. OH_Drawing_PathCreate
+    OH_Drawing_Path *path2 = OH_Drawing_PathCreate();
+    // 4. OH_Drawing_PathMoveTo
+    OH_Drawing_PathMoveTo(path2, 50.0f, 50.0f);
+    // 5. OH_Drawing_PathLineTo
+    OH_Drawing_PathLineTo(path2, 100.0f, 50.0f);
+    // 6. OH_Drawing_CreatePathDashEffect第二个参数传0xFFFFFFFF
+    OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreatePathDashEffect(path2, 0xFFFFFFFF, 50.0f, PATH_EFFECT_TRANSLATE);
+    // 7. OH_Drawing_CreatePathDashEffect第二个参数传0.0001
+    pathEffect = OH_Drawing_CreatePathDashEffect(path2, 0.0001, 50.0f, PATH_EFFECT_TRANSLATE);
+    // 8. OH_Drawing_CreatePathDashEffect第二个参数传-0.1
+    pathEffect = OH_Drawing_CreatePathDashEffect(path2, -0.1, 50.0f, PATH_EFFECT_TRANSLATE);
+    // 9. OH_Drawing_CreatePathDashEffect第二个参数传-1
+    pathEffect = OH_Drawing_CreatePathDashEffect(path2, -1, 50.0f, PATH_EFFECT_TRANSLATE);
+    // 10. 释放内存
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_PathDestroy(path2);
+    OH_Drawing_PathEffectDestroy(pathEffect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_EFFECT_0700
+ * @tc.name: testCreateSumPathEffectNormal
+ * @tc.desc: test for testCreateSumPathEffectNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativePathEffectTest, testCreateSumPathEffectNormal, TestSize.Level0) {
+    // 1. OH_Drawing_CreateCornerPathEffect
+    OH_Drawing_PathEffect *firstPathEffect = OH_Drawing_CreateCornerPathEffect(50.0f);
+    // 2. OH_Drawing_CreateDiscreatePathEffect
+    OH_Drawing_PathEffect *secondPathEffect = OH_Drawing_CreateDiscretePathEffect(50.0f, 50.0f);
+    // 3. OH_Drawing_CreateSumPathEffect正常入参
+    OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreateSumPathEffect(firstPathEffect, secondPathEffect);
+    // 4. 释放内存
+    OH_Drawing_PathEffectDestroy(firstPathEffect);
+    OH_Drawing_PathEffectDestroy(secondPathEffect);
+    OH_Drawing_PathEffectDestroy(pathEffect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_EFFECT_0701
+ * @tc.name: testCreateSumPathEffectNull
+ * @tc.desc: test for testCreateSumPathEffectNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathEffectTest, testCreateSumPathEffectNull, TestSize.Level3) {
+    // 1. OH_Drawing_CreateCornerPathEffect
+    OH_Drawing_PathEffect *firstPathEffect = OH_Drawing_CreateCornerPathEffect(50.0f);
+    // 2. OH_Drawing_CreateDiscreatePathEffect
+    // 找不到这个函数 OH_Drawing_PathEffect* OH_Drawing_CreateDiscretePathEffect(float segLength, float deviation);
+    OH_Drawing_PathEffect *secondPathEffect = OH_Drawing_CreateDiscretePathEffect(50.0f, 50.0f);
+    // 3. OH_Drawing_CreateSumPathEffect 第一个参数传nullptr
+    OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreateSumPathEffect(nullptr, secondPathEffect);
+    // 4. OH_Drawing_CreateSumPathEffect 第二个参数传nullptr
+    pathEffect = OH_Drawing_CreateSumPathEffect(firstPathEffect, nullptr);
+    // 5. 释放内存
+    OH_Drawing_PathEffectDestroy(firstPathEffect);
+    OH_Drawing_PathEffectDestroy(secondPathEffect);
+    OH_Drawing_PathEffectDestroy(pathEffect);
+}
+
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS
