@@ -26,6 +26,11 @@ const widgetParamDefault = {
   title: '使用密码验证',
 };
 
+const widgetParam = {
+  title: '请输入密码',
+  uiContext: null,
+};
+
 export default function signNormalAccessBiometricExecute() {
   describe('signNormalAccessBiometricExecute', function () {
     function userAuthPromise(...args){
