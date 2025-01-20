@@ -19,7 +19,7 @@ group("ActsWebPageDownloadTest") {
       "ace_web_page_download_cloudservice_controller_group_eleven:ActsAceWebPageDownloadCloudServiceControllerGroupElevenTest",
       "ace_web_page_download_cloudservice_controller_group_twelve:ActsAceWebPageDownloadCloudServiceControllerGroupTwelveTest",
       "ace_web_page_download_enhanced_one:ActsAceWebPageDownloadEnhancedTest",
-      "ace_web_page_download_enhanced_two:ActsAceWebPageDownloadTestTwo",
+      "ace_web_page_download_enhanced_two:ActsAceWebPageDownloadTestTwoTest",
     ]
   }
 }
