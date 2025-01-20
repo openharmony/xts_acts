@@ -86,7 +86,7 @@ HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_0200, TestSize.Level1)
  */
 HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_0300, TestSize.Level0)
 {
-     if(cap){
+     if (cap) {
         auto vDecSample = make_shared<VDecNdkSample>();
         vDecSample->INP_DIR = INP_DIR_1080_30;
         vDecSample->DEFAULT_WIDTH = 1920;
@@ -106,7 +106,7 @@ HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_0300, TestSize.Level0)
  */
 HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_0400, TestSize.Level0)
 {
-    if(cap){
+    if (cap) {
         auto vDecSample = make_shared<VDecNdkSample>();
         vDecSample->INP_DIR = INP_DIR_1080_30;
         vDecSample->SURFACE_OUTPUT = true;
@@ -129,7 +129,7 @@ HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_0400, TestSize.Level0)
  */
 HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_0700, TestSize.Level1)
 {
-    if(cap){
+    if (cap) {
         auto vDecSample = make_shared<VDecNdkSample>();
         vDecSample->INP_DIR = INP_DIR_1080_30;
         vDecSample->DEFAULT_WIDTH = 1920;
@@ -152,7 +152,7 @@ HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_0700, TestSize.Level1)
  */
 HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_0800, TestSize.Level1)
 {
-    if(cap){
+    if (cap) {
         auto vDecSample = make_shared<VDecNdkSample>();
         vDecSample->INP_DIR = INP_DIR_1080_30;
         vDecSample->DEFAULT_WIDTH = 1920;
@@ -176,7 +176,7 @@ HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_0800, TestSize.Level1)
 
 HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_4000, TestSize.Level1)
 {
-    if(cap){
+    if (cap) {
         auto vDecSample = make_shared<VDecNdkSample>();
         vDecSample->INP_DIR = INP_DIR_1080_30;
         vDecSample->DEFAULT_WIDTH = 1920;
@@ -197,7 +197,7 @@ HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_4000, TestSize.Level1)
  */
 HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_1000, TestSize.Level1)
 {
-    if(cap){
+    if (cap) {
         auto vDecSample = make_shared<VDecNdkSample>();
         vDecSample->INP_DIR = INP_DIR_1080_30;
         vDecSample->DEFAULT_WIDTH = 1920;
@@ -227,7 +227,7 @@ HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_1000, TestSize.Level1)
  */
 HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_1100, TestSize.Level1)
 {
-    if(cap){
+    if (cap) {
         auto vDecSample = make_shared<VDecNdkSample>();
         vDecSample->INP_DIR = INP_DIR_1080_30;
         vDecSample->DEFAULT_WIDTH = 1920;
@@ -256,7 +256,7 @@ HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_1100, TestSize.Level1)
  */
 HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_1200, TestSize.Level2)
 {
-    if(cap){
+    if (cap) {
         auto vDecSample = make_shared<VDecNdkSample>();
         vDecSample->INP_DIR = INP_DIR_1080_30;
         vDecSample->DEFAULT_WIDTH = 1920;
@@ -280,7 +280,7 @@ HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_1200, TestSize.Level2)
  */
 HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_1300, TestSize.Level2)
 {
-    if(cap){
+    if (cap) {
         auto vDecSample = make_shared<VDecNdkSample>();
         vDecSample->INP_DIR = INP_DIR_1080_30;
         vDecSample->DEFAULT_WIDTH = 1920;
@@ -304,7 +304,7 @@ HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_1300, TestSize.Level2)
  */
 HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_1400, TestSize.Level2)
 {
-    if(cap){
+    if (cap) {
         auto vDecSample = make_shared<VDecNdkSample>();
         vDecSample->INP_DIR = INP_DIR_720_30;
         vDecSample->DEFAULT_WIDTH = 1920;
@@ -327,7 +327,7 @@ HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_1400, TestSize.Level2)
  */
 HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_1500, TestSize.Level2)
 {
-    if(cap){
+    if (cap) {
         auto vDecSample = make_shared<VDecNdkSample>();
         vDecSample->INP_DIR = INP_DIR_1080_30;
         vDecSample->DEFAULT_WIDTH = 1280;
@@ -350,7 +350,7 @@ HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_1500, TestSize.Level2)
  */
 HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_1600, TestSize.Level2)
 {
-    if(cap){
+    if (cap) {
         auto vDecSample = make_shared<VDecNdkSample>();
         vDecSample->INP_DIR = "/data/test/media/resolutionChange.h264";
         vDecSample->DEFAULT_WIDTH = 1104;

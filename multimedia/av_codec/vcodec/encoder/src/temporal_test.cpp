@@ -105,7 +105,7 @@ namespace {
 HWTEST_F(HwEncTemporalNdkTest, VIDEO_TEMPORAL_ENCODE_API_0020, TestSize.Level2)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         OH_AVErrCode ret = AV_ERR_OK;
         venc_ = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
         ASSERT_NE(nullptr, venc_);
@@ -126,8 +126,7 @@ HWTEST_F(HwEncTemporalNdkTest, VIDEO_TEMPORAL_ENCODE_API_0020, TestSize.Level2)
         } else {
             ASSERT_EQ(ret, AV_ERR_OK);
         }
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -140,7 +139,7 @@ HWTEST_F(HwEncTemporalNdkTest, VIDEO_TEMPORAL_ENCODE_API_0020, TestSize.Level2)
 HWTEST_F(HwEncTemporalNdkTest, VIDEO_TEMPORAL_ENCODE_API_0030, TestSize.Level2)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         OH_AVErrCode ret = AV_ERR_OK;
         venc_ = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
         ASSERT_NE(nullptr, venc_);
@@ -161,8 +160,7 @@ HWTEST_F(HwEncTemporalNdkTest, VIDEO_TEMPORAL_ENCODE_API_0030, TestSize.Level2)
         } else {
             ASSERT_EQ(ret, AV_ERR_OK);
         }
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -175,7 +173,7 @@ HWTEST_F(HwEncTemporalNdkTest, VIDEO_TEMPORAL_ENCODE_API_0030, TestSize.Level2)
 HWTEST_F(HwEncTemporalNdkTest, VIDEO_TEMPORAL_ENCODE_FUNCTION_0010, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         int32_t temporalGopSize = 2;
         if (!access("/system/lib64/media/", 0)) {
             auto vEncSample = make_unique<VEncAPI11Sample>();
@@ -190,8 +188,7 @@ HWTEST_F(HwEncTemporalNdkTest, VIDEO_TEMPORAL_ENCODE_FUNCTION_0010, TestSize.Lev
             vEncSample->TEMPORAL_ENABLE = true;
             ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder_Temporal(temporalGopSize));
         }
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -1115,7 +1112,7 @@ HWTEST_F(HwEncTemporalNdkTest, LTR_FUNC_016, TestSize.Level1)
 HWTEST_F(HwEncTemporalNdkTest, VIDEO_UNIFORMLY_ENCODE_FUNCTION_0100, TestSize.Level0)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->OUT_DIR = "/data/test/media/VIDEO_UNIFORMLY_ENCODE_FUNCTION_0100.h264";
         vEncSample->INP_DIR = INP_DIR_720;
@@ -1132,8 +1129,7 @@ HWTEST_F(HwEncTemporalNdkTest, VIDEO_UNIFORMLY_ENCODE_FUNCTION_0100, TestSize.Le
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }

@@ -139,7 +139,8 @@ static napi_value AVSourceGetSourceFormat(napi_env env, napi_callback_info info)
     return result;
 }
 
-size_t GetFileSize(const char *fileName) {
+size_t GetFileSize(const char *fileName)
+{
     if (fileName == nullptr) {
         return 0;
     }

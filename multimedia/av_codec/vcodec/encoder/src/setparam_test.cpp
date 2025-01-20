@@ -85,7 +85,7 @@ namespace {
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_001, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -103,8 +103,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_001, TestSize.Level1)
         OH_AVFormat_Destroy(format);
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -145,7 +144,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_002, TestSize.Level0)
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_003, TestSize.Level0)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -162,8 +161,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_003, TestSize.Level0)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -176,7 +174,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_003, TestSize.Level0)
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_004, TestSize.Level0)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -193,8 +191,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_004, TestSize.Level0)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -207,7 +204,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_004, TestSize.Level0)
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_005, TestSize.Level0)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -223,8 +220,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_005, TestSize.Level0)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -237,7 +233,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_005, TestSize.Level0)
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_006, TestSize.Level0)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -253,8 +249,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_006, TestSize.Level0)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -267,7 +262,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_006, TestSize.Level0)
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_007, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -285,8 +280,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_007, TestSize.Level1)
         OH_AVFormat_Destroy(format);
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -327,7 +321,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_008, TestSize.Level0)
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_009, TestSize.Level0)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -344,8 +338,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_009, TestSize.Level0)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -358,7 +351,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_009, TestSize.Level0)
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_010, TestSize.Level0)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -375,8 +368,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_010, TestSize.Level0)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -389,7 +381,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_010, TestSize.Level0)
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_011, TestSize.Level0)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -405,8 +397,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_011, TestSize.Level0)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -419,7 +410,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_011, TestSize.Level0)
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_012, TestSize.Level0)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -435,8 +426,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_012, TestSize.Level0)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -579,7 +569,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_002, TestSize.Level1)
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_003, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -596,8 +586,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_003, TestSize.Level1)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -610,7 +599,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_003, TestSize.Level1)
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_004, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -627,8 +616,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_004, TestSize.Level1)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -641,7 +629,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_004, TestSize.Level1)
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_005, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -657,8 +645,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_005, TestSize.Level1)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -671,7 +658,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_005, TestSize.Level1)
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_006, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -687,8 +674,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_006, TestSize.Level1)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -727,7 +713,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_007, TestSize.Level1)
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_008, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -744,8 +730,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_008, TestSize.Level1)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -758,7 +743,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_008, TestSize.Level1)
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_009, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -775,8 +760,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_009, TestSize.Level1)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -789,7 +773,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_009, TestSize.Level1)
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_010, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -805,8 +789,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_010, TestSize.Level1)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -819,7 +802,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_010, TestSize.Level1)
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_011, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -835,8 +818,7 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_011, TestSize.Level1)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -1500,7 +1482,7 @@ HWTEST_F(HwEncSetParamNdkTest, SET_FORCE_IDR_002, TestSize.Level1)
 HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_001, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -1518,8 +1500,7 @@ HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_001, TestSize.Level1)
         ASSERT_EQ(AV_ERR_INVALID_STATE, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -1532,7 +1513,7 @@ HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_001, TestSize.Level1)
 HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_002, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -1550,8 +1531,7 @@ HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_002, TestSize.Level1)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -1564,7 +1544,7 @@ HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_002, TestSize.Level1)
 HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_003, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -1582,8 +1562,7 @@ HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_003, TestSize.Level1)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -1596,7 +1575,7 @@ HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_003, TestSize.Level1)
 HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_004, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -1614,8 +1593,7 @@ HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_004, TestSize.Level1)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -1628,7 +1606,7 @@ HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_004, TestSize.Level1)
 HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_005, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -1646,8 +1624,7 @@ HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_005, TestSize.Level1)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -1660,7 +1637,7 @@ HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_005, TestSize.Level1)
 HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_006, TestSize.Level1)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         auto vEncSample = make_unique<VEncAPI11Sample>();
         vEncSample->INP_DIR = INP_DIR_720;
         vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
@@ -1678,8 +1655,7 @@ HWTEST_F(HwEncSetParamNdkTest, COLORSPACE_CONFIG_006, TestSize.Level1)
         ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
-    }
-    else{
+    } else {
         return;
     }
 }

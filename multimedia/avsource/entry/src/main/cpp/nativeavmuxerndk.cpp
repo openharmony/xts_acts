@@ -42,7 +42,8 @@ static napi_value OHAVMuxerCreate(napi_env env, napi_callback_info info)
 {
     OH_AVMuxer *muxer = nullptr;
     OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
-    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4", O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4",
+	                         O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
     LOG("OHAVMuxerCreate fd is %{public}d", fileDescribe);
     muxer = OH_AVMuxer_Create(fileDescribe, format);
     int returnValue = FAIL;
@@ -69,7 +70,8 @@ static napi_value OHAVMuxerSetRotation(napi_env env, napi_callback_info info)
     attrInfo.offset = ZEROVAL;
     attrInfo.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME;
     OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
-    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4", O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4",
+	                        O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
     LOG("OHAVMuxerSetRotation fd is %{public}d", fileDescribe);
     muxer = OH_AVMuxer_Create(fileDescribe, format);
     OH_AVFormat *trackFormat = OH_AVFormat_Create();
@@ -105,7 +107,8 @@ static napi_value OHAVMuxerSetFormat(napi_env env, napi_callback_info info)
     attrInfo.offset = ZEROVAL;
     attrInfo.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME;
     OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
-    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4", O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4",
+	                        O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
     LOG("OHAVMuxerSetFormat fd is %{public}d", fileDescribe);
     muxer = OH_AVMuxer_Create(fileDescribe, format);
     OH_AVFormat *trackFormat = OH_AVFormat_Create();
@@ -146,7 +149,8 @@ static napi_value OHAVMuxerStart(napi_env env, napi_callback_info info)
     attrInfo.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME;
     OH_AVMemory *sample = OH_AVMemory_Create(ONEONEVAL);
     OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
-    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4", O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4",
+	                        O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
     LOG("OHAVMuxerStart fd is %{public}d", fileDescribe);
     muxer = OH_AVMuxer_Create(fileDescribe, format);
     OH_AVFormat *trackFormat = OH_AVFormat_Create();
@@ -185,7 +189,8 @@ static napi_value OHAVMuxerStop(napi_env env, napi_callback_info info)
     attrInfo.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME;
     OH_AVMemory *sample = OH_AVMemory_Create(ONEONEVAL);
     OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
-    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4", O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4",
+	                        O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
     LOG("OHAVMuxerStop fd is %{public}d", fileDescribe);
     muxer = OH_AVMuxer_Create(fileDescribe, format);
     OH_AVFormat *trackFormat = OH_AVFormat_Create();
@@ -224,7 +229,8 @@ static napi_value OHAVMuxerWriteSample(napi_env env, napi_callback_info info)
     int trackId = audioTrackId;
     OH_AVMemory *sample = OH_AVMemory_Create(TWOTWOVAL);
     OH_AVOutputFormat format = AV_OUTPUT_FORMAT_DEFAULT;
-    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4", O_RDWR | O_TRUNC, PARAM_0666);
+    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4",
+	                        O_RDWR | O_TRUNC, PARAM_0666);
     LOG("OHAVMuxerWriteSample fd is %{public}d", fileDescribe);
     muxer = OH_AVMuxer_Create(fileDescribe, format);
     OH_AVFormat *trackFormat = OH_AVFormat_Create();
@@ -263,7 +269,8 @@ static napi_value OHAVMuxerWriteSampleBuffer(napi_env env, napi_callback_info in
     OH_AVBuffer *sample = OH_AVBuffer_Create(TWOTWOVAL);
     OH_AVBuffer_SetBufferAttr(sample, &attrInfo);
     OH_AVOutputFormat format = AV_OUTPUT_FORMAT_DEFAULT;
-    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4", O_RDWR | O_TRUNC, PARAM_0666);
+    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4",
+	                        O_RDWR | O_TRUNC, PARAM_0666);
     LOG("OHAVMuxerWriteSampleBuffer fd is %{public}d", fileDescribe);
     muxer = OH_AVMuxer_Create(fileDescribe, format);
     OH_AVFormat *trackFormat = OH_AVFormat_Create();
@@ -302,7 +309,8 @@ static napi_value OHAVMuxerAddTrack(napi_env env, napi_callback_info info)
     attrInfo.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME;
     OH_AVMemory *sample = OH_AVMemory_Create(ONEONEVAL);
     OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
-    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4", O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4",
+	                        O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
     LOG("OHAVMuxerAddTrack fd is %{public}d", fileDescribe);
     muxer = OH_AVMuxer_Create(fileDescribe, format);
     OH_AVFormat *trackFormat = OH_AVFormat_Create();
@@ -332,7 +340,8 @@ static napi_value OHAVMuxerDestroy(napi_env env, napi_callback_info info)
 {
     OH_AVMuxer *muxer = nullptr;
     OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
-    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4", O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4",
+	                        O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
     LOG("OHAVMuxerDestroy fd is %{public}d", fileDescribe);
     muxer = OH_AVMuxer_Create(fileDescribe, format);
     int returnValue = FAIL;
@@ -374,7 +383,8 @@ static napi_value OHAVMuxerSetRotationAbnormal(napi_env env, napi_callback_info 
     attrInfo.offset = ZEROVAL;
     attrInfo.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME;
     OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
-    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4", O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4",
+	                        O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
     LOG("OHAVMuxerSetRotationAbnormal fd is %{public}d", fileDescribe);
     muxer = OH_AVMuxer_Create(fileDescribe, format);
     OH_AVFormat *trackFormat = OH_AVFormat_Create();
@@ -410,7 +420,8 @@ static napi_value OHAVMuxerSetFormatAbnormal(napi_env env, napi_callback_info in
     attrInfo.offset = ZEROVAL;
     attrInfo.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME;
     OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
-    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4", O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4",
+	                        O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
     LOG("OHAVMuxerSetFormatAbnormal fd is %{public}d", fileDescribe);
     muxer = OH_AVMuxer_Create(fileDescribe, format);
     OH_AVFormat *trackFormat = OH_AVFormat_Create();
@@ -451,7 +462,8 @@ static napi_value OHAVMuxerStartAbnormal(napi_env env, napi_callback_info info)
     attrInfo.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME;
     OH_AVMemory *sample = OH_AVMemory_Create(ONEONEVAL);
     OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
-    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4", O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4",
+	                        O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
     LOG("OHAVMuxerStartAbnormal fd is %{public}d", fileDescribe);
     muxer = OH_AVMuxer_Create(fileDescribe, format);
     OH_AVFormat *trackFormat = OH_AVFormat_Create();
@@ -487,7 +499,8 @@ static napi_value OHAVMuxerStopAbnormal(napi_env env, napi_callback_info info)
     attrInfo.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME;
     OH_AVMemory *sample = OH_AVMemory_Create(ONEONEVAL);
     OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
-    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4", O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4",
+	                        O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
     LOG("OHAVMuxerStopAbnormal fd is %{public}d", fileDescribe);
     muxer = OH_AVMuxer_Create(fileDescribe, format);
     OH_AVFormat *trackFormat = OH_AVFormat_Create();
@@ -523,7 +536,8 @@ static napi_value OHAVMuxerWriteSampleAbnormal(napi_env env, napi_callback_info 
     attrInfo.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME;
     OH_AVMemory *sample = OH_AVMemory_Create(ONEONEVAL);
     OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
-    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4", O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4",
+	                        O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
     LOG("OHAVMuxerWriteSampleAbnormal fd is %{public}d", fileDescribe);
     muxer = OH_AVMuxer_Create(fileDescribe, format);
     OH_AVFormat *trackFormat = OH_AVFormat_Create();
@@ -559,7 +573,8 @@ static napi_value OHAVMuxerAddTrackAbnormal(napi_env env, napi_callback_info inf
     attrInfo.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME;
     OH_AVMemory *sample = OH_AVMemory_Create(ONEONEVAL);
     OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
-    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4", O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4",
+	                        O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
     muxer = OH_AVMuxer_Create(fileDescribe, format);
     OH_AVFormat *trackFormat = OH_AVFormat_Create();
     OH_AVMuxer_SetRotation(muxer, rotation);
@@ -605,7 +620,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"OHAVMuxerWriteSampleBuffer", nullptr, OHAVMuxerWriteSampleBuffer, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHAVMuxerAddTrack", nullptr, OHAVMuxerAddTrack, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHAVMuxerDestroy", nullptr, OHAVMuxerDestroy, nullptr, nullptr, nullptr, napi_default, nullptr},
-
         {"oHAVMuxerCreateAbnormal", nullptr, OHAVMuxerCreateAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHAVMuxerSetRotationAbnormal", nullptr, OHAVMuxerSetRotationAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},

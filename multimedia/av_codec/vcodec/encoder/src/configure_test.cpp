@@ -90,7 +90,7 @@ namespace {
 HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_HEVC_CAPABILITY_1800, TestSize.Level2)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         OH_AVErrCode ret = AV_ERR_OK;
         OH_AVRange range;
         memset_s(&range, sizeof(OH_AVRange), 0, sizeof(OH_AVRange));
@@ -112,8 +112,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_HEVC_CAPABILITY_1800, TestSize.Leve
         ASSERT_NE(nullptr, venc_);
         (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, range.minVal - 1);
         EXPECT_NE(AV_ERR_OK, OH_VideoEncoder_Configure(venc_, format));
-    }
-    else{
+    } else {
         return;
     }   
 }
@@ -126,7 +125,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_HEVC_CAPABILITY_1800, TestSize.Leve
 HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_4000, TestSize.Level2)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         OH_AVErrCode ret = AV_ERR_OK;
         OH_AVRange range;
         memset_s(&range, sizeof(OH_AVRange), 0, sizeof(OH_AVRange));
@@ -151,8 +150,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_4000, TestSize.Level2)
         ASSERT_NE(nullptr, venc_);
         (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, range.minVal - 1);
         EXPECT_NE(AV_ERR_OK, OH_VideoEncoder_Configure(venc_, format));
-    }
-    else{
+    } else {
         return;
     } 
 }
@@ -165,7 +163,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_4000, TestSize.Level2)
 HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_4400, TestSize.Level2)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         OH_AVErrCode ret = AV_ERR_OK;
         OH_AVRange range;
         memset_s(&range, sizeof(OH_AVRange), 0, sizeof(OH_AVRange));
@@ -190,8 +188,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_4400, TestSize.Level2)
         ASSERT_NE(nullptr, venc_);
         (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, range.minVal - 1);
         EXPECT_NE(AV_ERR_OK, OH_VideoEncoder_Configure(venc_, format));
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -204,7 +201,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_4400, TestSize.Level2)
 HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_4410, TestSize.Level2)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         OH_AVErrCode ret = AV_ERR_OK;
         OH_AVRange range;
         memset_s(&range, sizeof(OH_AVRange), 0, sizeof(OH_AVRange));
@@ -229,8 +226,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_4410, TestSize.Level2)
         ASSERT_NE(nullptr, venc_);
         (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, range.minVal - 1);
         EXPECT_NE(AV_ERR_OK, OH_VideoEncoder_Configure(venc_, format));
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -243,7 +239,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_4410, TestSize.Level2)
 HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_4700, TestSize.Level2)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         OH_AVErrCode ret = AV_ERR_OK;
         OH_AVRange range;
         memset_s(&range, sizeof(OH_AVRange), 0, sizeof(OH_AVRange));
@@ -268,8 +264,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_4700, TestSize.Level2)
         ASSERT_NE(nullptr, venc_);
         (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, range.minVal - 1);
         EXPECT_NE(AV_ERR_OK, OH_VideoEncoder_Configure(venc_, format));
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -282,7 +277,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_4700, TestSize.Level2)
 HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_4710, TestSize.Level2)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         OH_AVErrCode ret = AV_ERR_OK;
         OH_AVRange range;
         memset_s(&range, sizeof(OH_AVRange), 0, sizeof(OH_AVRange));
@@ -307,8 +302,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_4710, TestSize.Level2)
         ASSERT_NE(nullptr, venc_);
         (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, range.minVal - 1);
         EXPECT_NE(AV_ERR_OK, OH_VideoEncoder_Configure(venc_, format));
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -321,7 +315,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_4710, TestSize.Level2)
 HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_5000, TestSize.Level2)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         OH_AVErrCode ret = AV_ERR_OK;
         OH_AVRange range;
         memset_s(&range, sizeof(OH_AVRange), 0, sizeof(OH_AVRange));
@@ -346,8 +340,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_5000, TestSize.Level2)
         ASSERT_NE(nullptr, venc_);
         (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, range.minVal - 1);
         EXPECT_NE(AV_ERR_OK, OH_VideoEncoder_Configure(venc_, format));
-    }
-    else{
+    } else {
         return;
     }
 }
@@ -359,7 +352,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_5000, TestSize.Level2)
 HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_5010, TestSize.Level2)
 {
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap) {
+    if (cap) {
         OH_AVErrCode ret = AV_ERR_OK;
         OH_AVRange range;
         memset_s(&range, sizeof(OH_AVRange), 0, sizeof(OH_AVRange));
@@ -384,8 +377,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_5010, TestSize.Level2)
         ASSERT_NE(nullptr, venc_);
         (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, range.minVal - 1);
         EXPECT_NE(AV_ERR_OK, OH_VideoEncoder_Configure(venc_, format));
-    }
-    else{
+    } else {
         return;
     }
 }
