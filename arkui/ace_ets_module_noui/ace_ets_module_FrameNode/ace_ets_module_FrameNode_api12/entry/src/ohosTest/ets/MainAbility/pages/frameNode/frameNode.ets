@@ -148,7 +148,7 @@ struct frameNode1{
         .visibility(Visibility.Hidden)
         .borderWidth(1)
         .width(20)
-        .height(30)
+        .height('10%')
     }
     .width('100%')
     .height('100%')
