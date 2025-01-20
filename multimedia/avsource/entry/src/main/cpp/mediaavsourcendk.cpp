@@ -99,7 +99,7 @@ static napi_value AVSourceDestroy(napi_env env, napi_callback_info info)
     getSource = OH_AVSource_CreateWithFD(fd, PARAM_0, fileSize);
     if (getSource != nullptr) {
         checkParam = OH_AVSource_Destroy(getSource);
-        if(checkParam == AV_ERR_OK){
+        if (checkParam == AV_ERR_OK) {
             backParam = SUCCESS;
         }
     }
