@@ -22,7 +22,7 @@ struct Third {
     Row() {
       Column() {
         Text(this.message)
-          .fontSize("2%")
+          .fontSize('2%')
           .fontWeight(FontWeight.Bold)
       }
       .width('100%')
