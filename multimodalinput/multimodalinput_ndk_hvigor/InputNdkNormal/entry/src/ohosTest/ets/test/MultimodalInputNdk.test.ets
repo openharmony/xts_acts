@@ -2933,17 +2933,9 @@ export default function MultimodalInputNdkTest() {
       try {
         let data = input.GetAllSystemHotkeys();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
-            console.info(`${caseName} list of system hotkeys: ${JSON.stringify(data)}`);
-            ExpectTrue(data.length == 0);
-            done();
-          });
-        }
+        console.info(`${caseName} success`);
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -2999,17 +2991,9 @@ export default function MultimodalInputNdkTest() {
       try {
         let data = input.GetAllSystemHotkeys2();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
-            console.info(`${caseName} list of system hotkeys: ${JSON.stringify(data)}`);
-            ExpectTrue(data.length == 0);
-            done();
-          });
-        }
+        console.info(`${caseName} success`);
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
@@ -3836,17 +3820,9 @@ export default function MultimodalInputNdkTest() {
       try {
         let data = input.AddHotkeyMonitor23();
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
-        if (data == 1) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
-            console.info(`${caseName} list of system hotkeys: ${JSON.stringify(data)}`);
-            ExpectTrue(data.length == 0);
-            done();
-          });
-        }
+        console.info(`${caseName} success`);
+        ExpectTrue(data == 1);
+        done();
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
         ExpectFalse(true);
