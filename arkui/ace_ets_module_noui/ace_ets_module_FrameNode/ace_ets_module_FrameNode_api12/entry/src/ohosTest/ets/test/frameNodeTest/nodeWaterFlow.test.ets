@@ -59,7 +59,6 @@ export default function nodeWaterFlow() {
       console.info('nodeWaterFlow_0100 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
-      let size = await driver.getDisplaySize();
       let button = await driver.findComponent(ON.type('WaterFlow'));
       let type1 = await button.getType();
       await CommonFunc.sleep(1000);
@@ -83,7 +82,6 @@ export default function nodeWaterFlow() {
       console.info('nodeWaterFlow_0200 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
-      let size = await driver.getDisplaySize();
       let button = await driver.findComponent(ON.type('FlowItem'));
       let type2 = await button.getType();
       await CommonFunc.sleep(1000);
