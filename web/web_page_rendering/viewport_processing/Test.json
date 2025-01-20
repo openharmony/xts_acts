@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsViewportProcessingTest.hap"
+                "ActsWebViewportProcessingTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

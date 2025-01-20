@@ -15,8 +15,8 @@ group("antiTracking") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "anti_tracking_one:ActsAntiTrackingOneTest",
-      "anti_tracking_two:ActsAntiTrackingTwoTest",
+      "anti_tracking_one:ActsWebAntiTrackingOneTest",
+      "anti_tracking_two:ActsWebAntiTrackingTwoTest",
     ]
   }
 }

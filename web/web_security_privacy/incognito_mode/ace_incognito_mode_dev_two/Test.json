@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAceIncognitoModeDevTwoTest.hap"
+                "ActsWebIncognitoModeDevTwoTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -13,10 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsSafeLoadingOneTest") {
+ohos_js_app_suite("ActsWebSafeLoadingOneTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsSafeLoadingOneTest"
+  hap_name = "ActsWebSafeLoadingOneTest"
   part_name = "webview"
 }

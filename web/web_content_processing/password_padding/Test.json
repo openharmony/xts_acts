@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsPasswordPaddingTest.hap"
+            "ActsWebPasswordPaddingTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

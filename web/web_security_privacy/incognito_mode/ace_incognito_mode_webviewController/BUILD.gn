@@ -13,10 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsAceIncognitoModeWebViewControllerTest") {
+ohos_js_app_suite("ActsWebIncognitoModeWebViewControllerTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceIncognitoModeWebViewControllerTest"
+  hap_name = "ActsWebIncognitoModeWebViewControllerTest"
   part_name = "webview"
 }

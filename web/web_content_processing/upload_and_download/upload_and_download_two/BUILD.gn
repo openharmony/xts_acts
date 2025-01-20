@@ -13,10 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsUploadAndDownloadTwoTest") {
+ohos_js_app_suite("ActsWebUploadAndDownloadTwoTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsUploadAndDownloadTwoTest"
+  hap_name = "ActsWebUploadAndDownloadTwoTest"
   part_name = "webview"
 }

@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsDarkColorModeTest.hap"
+            "ActsWebDarkColorModeTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
