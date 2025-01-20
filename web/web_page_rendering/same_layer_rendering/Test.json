@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsSameLayerRenderingTest.hap"
+                "ActsWebSameLayerRenderingTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

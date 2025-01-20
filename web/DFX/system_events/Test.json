@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsSystemEventsTest.hap"
+                "ActsWebSystemEventsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

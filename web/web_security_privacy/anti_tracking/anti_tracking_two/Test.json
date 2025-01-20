@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsAntiTrackingTwoTest.hap"
+            "ActsWebAntiTrackingTwoTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

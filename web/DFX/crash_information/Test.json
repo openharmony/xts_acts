@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsCrashInformationTest.hap"
+                "ActsWebCrashInformationTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

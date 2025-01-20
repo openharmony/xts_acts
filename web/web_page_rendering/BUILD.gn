@@ -15,11 +15,11 @@ group("webPageRenderingTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "basic_rendering:ActsBasicRenderingTest",
-      "dark_color_mode:ActsDarkColorModeTest",
-      "same_layer_rendering:ActsSameLayerRenderingTest",
-      "screen_capture:ActsScreenCaptureTest",
-      "viewport_processing:ActsViewportProcessingTest",
+      "basic_rendering:ActsWebBasicRenderingTest",
+      "dark_color_mode:ActsWebDarkColorModeTest",
+      "same_layer_rendering:ActsWebSameLayerRenderingTest",
+      "screen_capture:ActsWebScreenCaptureTest",
+      "viewport_processing:ActsWebViewportProcessingTest",
       "web_page_font:ActsWebPageFontTest",
       "web_page_zoom_rotate:ActsWebPageZoomRotateTest",
     ]

@@ -13,10 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsDarkColorModeTest") {
+ohos_js_app_suite("ActsWebDarkColorModeTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsDarkColorModeTest"
+  hap_name = "ActsWebDarkColorModeTest"
   part_name = "webview"
 }

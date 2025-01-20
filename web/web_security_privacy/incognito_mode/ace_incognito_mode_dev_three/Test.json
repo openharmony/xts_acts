@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceIncognitoModeDevThreeTest.hap"
+            "ActsWebIncognitoModeDevThreeTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

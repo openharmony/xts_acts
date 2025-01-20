@@ -15,11 +15,11 @@ group("ActsIncognitoModeTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "ace_incognito_mode_cloudservice_controller_group_eight:ActsAceIncognitoModeCloudServiceControllerGroupEightTest",
-      "ace_incognito_mode_controller_five:ActsAceIncognitoModeControllerFiveTest",
-      "ace_incognito_mode_dev_three:ActsAceIncognitoModeDevThreeTest",
-      "ace_incognito_mode_dev_two:ActsAceIncognitoModeDevTwoTest",
-      "ace_incognito_mode_webviewController:ActsAceIncognitoModeWebViewControllerTest",
+      "ace_incognito_mode_cloudservice_controller_group_eight:ActsWebIncognitoModeCloudServiceControllerGroupEightTest",
+      "ace_incognito_mode_controller_five:ActsWebIncognitoModeControllerFiveTest",
+      "ace_incognito_mode_dev_three:ActsWebIncognitoModeDevThreeTest",
+      "ace_incognito_mode_dev_two:ActsWebIncognitoModeDevTwoTest",
+      "ace_incognito_mode_webviewController:ActsWebIncognitoModeWebViewControllerTest",
     ]
   }
 }
