@@ -32,24 +32,21 @@ struct listAnimationVisibleExample {
 
   build() {
     Column(){
-      Column(){
-        Text('List: ' + this.lastViewIndex)
-          .id('visible_last_index')
-
-        Button('设置显隐: ' + this.mViewShow[this.mViewShowIndex])
-          .id('list_visible_change')
-          .onClick(() => {
-            if (this.mViewShowIndex == 2) {
-              this.mViewShowIndex = -1
-            }
-            this.mViewShowIndex++
-          })
-        Button('scrollPage:向下带动画翻页')
-          .id('visible_anTrue')
-          .onClick(() => {
-            this.scroller.scrollPage({ next: true, animation: true })
-          })
-      }.height('20%')
+      Text('List: ' + this.lastViewIndex)
+        .id('visible_last_index')
+      Button('设置显隐: ' + this.mViewShow[this.mViewShowIndex])
+        .id('list_visible_change')
+        .onClick(() => {
+          if (this.mViewShowIndex == 2) {
+            this.mViewShowIndex = -1
+          }
+          this.mViewShowIndex++
+        })
+      Button('scrollPage:向下带动画翻页')
+        .id('visible_anTrue')
+        .onClick(() => {
+          this.scroller.scrollPage({ next: true, animation: true })
+        })
 
       List({ scroller: this.scroller }) {
         ForEach(this.arr, (item: string, itemIndex: number) => {

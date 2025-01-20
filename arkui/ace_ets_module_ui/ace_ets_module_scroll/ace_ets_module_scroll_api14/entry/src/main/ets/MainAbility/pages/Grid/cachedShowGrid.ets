@@ -43,14 +43,14 @@ struct cachedCountShowGridExample {
   }
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Grid(this.scroller) {
         ForEach(this.arr, (item: string,index:number) => {
           GridItem({style:GridItemStyle.PLAIN}) {
             Text('' + item)
               .id('show_grid_' + item)
               .width('100%')
-              .height('30%')
+              .height('34%')
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .borderRadius(10)
@@ -60,13 +60,11 @@ struct cachedCountShowGridExample {
       }
       .id('cachedCount_show_grid')
       .columnsTemplate('1fr 1fr 1fr')
-      .columnsGap(10)
-      .rowsGap(10)
       .friction(0.6)
       .clip(this.clip1)
       .cachedCount(2, this.show1)
       .border({width:1})
-      .padding(4)
+      .padding('3%')
       .width('90%')
       .height('40%')
       .scrollBar(BarState.On)

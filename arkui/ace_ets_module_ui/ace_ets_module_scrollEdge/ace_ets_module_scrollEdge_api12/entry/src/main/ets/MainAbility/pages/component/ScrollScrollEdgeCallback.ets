@@ -24,6 +24,14 @@ struct ScrollScrollEdgeCallback {
     Column({ space: 5 }) {
       Text('Scroller组件绑定至Scroll容器组件').fontColor(0x000000)
         .fontSize(16).width('90%')
+      Text(this.text1).id('ScrollTextByScrollEdge01')
+      Button('点我滚动')
+        .id('ScrollScrollEdgeCallback01')
+        .onClick(() => { // 这里
+          this.scroller.scrollEdge(Edge.Bottom, { velocity: 0 })
+          this.text1 = 'ScrollEdgeSuccess'
+        })
+        .width('100%')
       Scroll(this.scroller) {
         Column() {
           ForEach(this.arr, (item: number) => {
@@ -45,14 +53,6 @@ struct ScrollScrollEdgeCallback {
       .friction(0.6)
       .height('70%')
       .edgeEffect(EdgeEffect.None)
-      Text(this.text1).id('ScrollTextByScrollEdge01')
-      Button('点我滚动')
-        .id('ScrollScrollEdgeCallback01')
-        .onClick(() => { // 这里
-          this.scroller.scrollEdge(Edge.Bottom, { velocity: 0 })
-          this.text1 = 'ScrollEdgeSuccess'
-        })
-        .width('100%')
     }
   }
 }

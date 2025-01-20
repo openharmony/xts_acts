@@ -28,23 +28,20 @@ struct listAnimationHeightExample {
 
   build() {
     Column(){
-      Column(){
-        Text('List: ' + this.lastViewIndex)
-          .id('height_last_index')
-
-        Button('scrollPage:向下带动画翻页')
-          .id('height_anTrue')
-          .onClick(() => {
-            this.scroller.scrollPage({ next: true, animation: true })
-          })
-      }.height('20%')
+      Text('List: ' + this.lastViewIndex)
+        .id('height_last_index')
+      Button('scrollPage:向下带动画翻页')
+        .id('height_anTrue')
+        .onClick(() => {
+          this.scroller.scrollPage({ next: true, animation: true })
+        })
 
       List({ scroller: this.scroller }) {
         ForEach(this.arr, (item: number, itemIndex: number) => {
           ListItem() {
             Text('Item:'+ item + ', itemIndex:' + itemIndex)
               .width('100%')
-              .height(item % 3 == 0 ? 0 : 100)
+              .height(item % 3 == 0 ? 0 : '25%')
               .textAlign(TextAlign.Center)
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)

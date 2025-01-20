@@ -46,14 +46,14 @@ struct cachedCountShowFlowExample {
   }
 
   build() {
-    Column({ space: 2 }) {
+    Column() {
       WaterFlow({ scroller:this.scroller }) {
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
             Column() {
               Text('N' + item)
                 .width('100%')
-                .height('30%')
+                .height('34%')
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
                 .borderRadius(10)
@@ -65,15 +65,13 @@ struct cachedCountShowFlowExample {
       }
       .id('cachedCount_show_flow')
       .columnsTemplate('1fr 1fr 1fr')
-      .columnsGap(10)
-      .rowsGap(10)
       .clip(this.clip1)
       .cachedCount(6, this.show1)
       .border({width:1})
       .width('90%')
       .height('40%')
       .friction(0.6)
-      .padding(4)
+      .padding('3%')
       .scrollBar(BarState.On)
       .onScrollIndex((first: number, last: number) => {
         console.info('onScrollIndex first:' + first.toString() + ' last:' + last.toString())

@@ -47,12 +47,9 @@ struct waterFlowNextAnimationExample {
 
   build() {
     Column({ space: 5 }) {
-      Scroll(){
-        Text(''+ this.onText)
-          .id('waterFlow_true_onText')
-      }
-	  .width('90%')
-	  .height('10%')
+      Text(''+ this.onText)
+        .id('waterFlow_true_onText')
+        .width('90%')
 
       Button('next page true')
         .id('waterFlow_animation_true')

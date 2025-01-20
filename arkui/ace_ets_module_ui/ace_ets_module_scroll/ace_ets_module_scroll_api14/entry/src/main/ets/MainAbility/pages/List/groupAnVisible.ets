@@ -27,7 +27,7 @@ class DataBean {
 struct groupAnimationVisibleExample {
   @State dataBean: MyDataSource<DataBean> = new MyDataSource<DataBean>();
   scroller: Scroller = new Scroller()
-  @State mHeight: number[] = [50, 0]
+  @State mHeight: string[] = ['11%', '0%']
   @State mHeightIndex: number = 0
   @State mViewShow: Visibility[] = [Visibility.Visible, Visibility.Hidden, Visibility.None]
   @State mViewShowIndex: number = 0
@@ -53,36 +53,33 @@ struct groupAnimationVisibleExample {
 
   build() {
     Column(){
-      Column(){
-        Button('group设置显隐: ' + this.mViewShow[this.mViewShowIndex])
-          .id('group_visible_change')
-          .onClick(() => {
-            if (this.mViewShowIndex == 2) {
-              this.mViewShowIndex = -1
-            }
-            this.mViewShowIndex++
-          })
-        Button('listItem设置显隐: ' + this.mViewShow1[this.mViewShowIndex1])
-          .id('listItem_visible_change')
-          .onClick(() => {
-            if (this.mViewShowIndex1 == 2) {
-              this.mViewShowIndex1 = -1
-            }
-            this.mViewShowIndex1++
-          })
-        Button('scrollPage:向下带动画翻页')
-          .id('visible_anTrue_group')
-          .onClick(() => {
-            this.scroller.scrollPage({ next: true, animation: true })
-          })
-      }.height('20%')
+      Button('group设置显隐: ' + this.mViewShow[this.mViewShowIndex])
+        .id('group_visible_change')
+        .onClick(() => {
+          if (this.mViewShowIndex == 2) {
+            this.mViewShowIndex = -1
+          }
+          this.mViewShowIndex++
+        })
+      Button('listItem设置显隐: ' + this.mViewShow1[this.mViewShowIndex1])
+        .id('listItem_visible_change')
+        .onClick(() => {
+          if (this.mViewShowIndex1 == 2) {
+            this.mViewShowIndex1 = -1
+          }
+          this.mViewShowIndex1++
+        })
+      Button('scrollPage:向下带动画翻页')
+        .id('visible_anTrue_group')
+        .onClick(() => {
+          this.scroller.scrollPage({ next: true, animation: true })
+        })
 
       Text(this.onText)
         .id('group_visible_mess')
-      List({ space: 10, scroller: this.scroller }) {
+      List({ scroller: this.scroller }) {
         LazyForEach(this.dataBean, (item0: DataBean, groupIndex: number) => {
           ListItemGroup({
-            space: 20,
             style: ListItemGroupStyle.CARD
           }) {
             LazyForEach(item0.value, (item: string, itemIndex: number) => {

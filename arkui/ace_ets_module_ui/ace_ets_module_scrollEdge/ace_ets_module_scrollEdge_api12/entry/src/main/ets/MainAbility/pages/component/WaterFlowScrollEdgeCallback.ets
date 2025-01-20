@@ -52,6 +52,14 @@ struct WaterFlowScrollEdgeCallback {
       Column({ space: 2 }) {
         Text('Scroller组件绑定至平铺的WaterFlow容器组件').fontColor(0x000000)
           .fontSize(16).width('90%')
+        Text(this.text1).id('WaterFlowTextByScrollEdge01')
+        Button('点我滚动')
+          .id('WaterFlowScrollEdgeCallback01')
+          .onClick(() => { // 这里
+            this.scroller.scrollEdge(Edge.Bottom, { velocity: 0 })
+            this.text1 = 'ScrollEdgeSuccess'
+          })
+          .width('100%')
         WaterFlow({ scroller: this.scroller }) {
           LazyForEach(this.dataSource, (item: number) => {
             FlowItem() {
@@ -71,14 +79,6 @@ struct WaterFlowScrollEdgeCallback {
         .backgroundColor(0xFAEEE0)
         .width('100%')
         .height(600)
-         Text(this.text1).id('WaterFlowTextByScrollEdge01')
-        Button('点我滚动')
-          .id('WaterFlowScrollEdgeCallback01')
-          .onClick(() => { // 这里
-            this.scroller.scrollEdge(Edge.Bottom, { velocity: 0 })
-            this.text1 = 'ScrollEdgeSuccess'
-          })
-          .width('100%')
       }
       .width('100%')
       .backgroundColor(0xDCDCDC)

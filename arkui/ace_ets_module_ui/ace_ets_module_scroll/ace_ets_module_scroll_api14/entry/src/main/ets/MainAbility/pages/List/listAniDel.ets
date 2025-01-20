@@ -53,7 +53,7 @@ struct animationListDelExample {
           ListItem() {
             Text('item-' + item)
               .width('100%')
-              .height(50)
+              .height('20%')
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .borderRadius(10)

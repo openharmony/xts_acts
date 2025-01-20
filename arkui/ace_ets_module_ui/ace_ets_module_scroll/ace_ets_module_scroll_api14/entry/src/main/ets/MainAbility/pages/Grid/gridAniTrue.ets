@@ -23,12 +23,9 @@ struct gridNextAnimationTrueExample {
 
   build() {
     Column({ space: 5 }) {
-      Scroll(){
-        Text(''+ this.onText)
-          .id('grid_true_onText')
-      }
-	  .width('90%')
-	  .height('10%')
+      Text(''+ this.onText)
+        .id('grid_true_onText')
+        .width('90%')
 
       Button('next page true')
         .id('grid_next_animation_true')
@@ -44,7 +41,7 @@ struct gridNextAnimationTrueExample {
                 .fontSize(16)
                 .backgroundColor(0xF9CF93)
                 .width('100%')
-                .height(80)
+                .height('30%')
                 .textAlign(TextAlign.Center)
             }
           }, (day: string) => day)

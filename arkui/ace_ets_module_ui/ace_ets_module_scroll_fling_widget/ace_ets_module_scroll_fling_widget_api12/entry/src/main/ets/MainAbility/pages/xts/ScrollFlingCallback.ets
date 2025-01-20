@@ -25,6 +25,26 @@ struct ScrollFlingCallback {
     Column({ space: 5 }) {
       Text('Scroller组件绑定至Scroll容器组件').fontColor(0x000000)
         .fontSize(16).width('90%')
+      Button('更换速度 1000')
+        .id('btn_scroll_fling_01')
+        .onClick(() => { // 这里
+          this.scroller.fling(1000)
+          console.info('ScrollFlingCallback_0100 start to emit action state')
+          this.scroller_fling_1 = '1000'
+        })
+        .width('100%')
+      Text('' + this.scroller_fling_1).fontColor(0x000000)
+        .fontSize(16).width('90%').key('key_scroll_fling_text1')
+      Text('' + this.scroller_fling_2).fontColor(0x000000)
+        .fontSize(16).width('90%').key('key_scroll_fling_text2')
+      Button('更换速度 -1000')
+        .id('btn_scroll_fling_02')
+        .onClick(() => { // 这里
+          this.scroller.fling(-1000)
+          console.info('ScrollFlingCallback_0200 start to emit action state')
+          this.scroller_fling_2 = '-1000'
+        })
+        .width('100%')
       Scroll(this.scroller) {
         Column() {
           ForEach(this.arr, (item: number) => {
@@ -46,32 +66,10 @@ struct ScrollFlingCallback {
       .friction(0.6)
       .height('70%')
       .edgeEffect(EdgeEffect.None)
-
-
-      Button('更换速度 1000')
-        .id('btn_scroll_fling_01')
-        .onClick(() => { // 这里
-          this.scroller.fling(1000)
-          console.info('ScrollFlingCallback_0100 start to emit action state')
-          this.scroller_fling_1 = '1000'
-        })
-        .width('100%')
-      Text('' + this.scroller_fling_1).fontColor(0x000000)
-        .fontSize(16).width('90%').key('key_scroll_fling_text1')
-      Text('' + this.scroller_fling_2).fontColor(0x000000)
-        .fontSize(16).width('90%').key('key_scroll_fling_text2')
-      Button('更换速度 -1000')
-        .id('btn_scroll_fling_02')
-        .onClick(() => { // 这里
-          this.scroller.fling(-1000)
-          console.info('ScrollFlingCallback_0200 start to emit action state')
-          this.scroller_fling_2 = '-1000'
-        })
-        .width('100%')
-        .width('100%')
-        .height('100%')
-        .backgroundColor(0xDCDCDC)
-        .padding({ top: 5 })
     }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 })
   }
 }

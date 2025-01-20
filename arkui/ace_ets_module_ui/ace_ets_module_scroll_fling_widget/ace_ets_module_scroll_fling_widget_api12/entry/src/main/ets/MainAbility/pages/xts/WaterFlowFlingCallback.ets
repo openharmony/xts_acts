@@ -53,6 +53,27 @@ struct WaterFlowFlingCallback {
       Column({ space: 2 }) {
         Text('Scroller组件绑定至平铺的WaterFlow容器组件').fontColor(0x000000)
           .fontSize(16).width('90%')
+        Button('更换速度 1000')
+          .id('btn_waterflow_fling_01')
+          .onClick(() => { 
+            this.scroller.fling(1000)
+            console.info('WaterFlowFlingCallbackTest_0100 start to emit action state')
+            this.scroller_fling_1 = '1000'
+          })
+          .width('100%')
+        Text('' + this.scroller_fling_1).fontColor(0x000000)
+          .fontSize(16).width('90%').key('key_waterflow_fling_text1')
+        Text('' + this.scroller_fling_2).fontColor(0x000000)
+          .fontSize(16).width('90%').key('key_waterflow_fling_text2')
+        Button('更换速度 -1000')
+          .id('btn_waterflow_fling_02')
+          .onClick(() => { 
+            this.scroller.fling(-1000)
+            console.info('WaterFlowFlingCallbackTest_0200 start to emit action state')
+            this.scroller_fling_2 = '-1000'
+          })
+          .width('100%')
+		  
         WaterFlow({ scroller: this.scroller }) {
           LazyForEach(this.dataSource, (item: number) => {
             FlowItem() {
@@ -72,27 +93,6 @@ struct WaterFlowFlingCallback {
         .backgroundColor(0xFAEEE0)
         .width('100%')
         .height('60%')
-
-        Button('更换速度 1000')
-          .id('btn_waterflow_fling_01')
-          .onClick(() => { // 这里
-            this.scroller.fling(1000)
-            console.info('WaterFlowFlingCallbackTest_0100 start to emit action state')
-            this.scroller_fling_1 = '1000'
-          })
-          .width('100%')
-        Text('' + this.scroller_fling_1).fontColor(0x000000)
-          .fontSize(16).width('90%').key('key_waterflow_fling_text1')
-        Text('' + this.scroller_fling_2).fontColor(0x000000)
-          .fontSize(16).width('90%').key('key_waterflow_fling_text2')
-        Button('更换速度 -1000')
-          .id('btn_waterflow_fling_02')
-          .onClick(() => { // 这里
-            this.scroller.fling(-1000)
-            console.info('WaterFlowFlingCallbackTest_0200 start to emit action state')
-            this.scroller_fling_2 = '-1000'
-          })
-          .width('100%')
 
       }
       .width('100%')

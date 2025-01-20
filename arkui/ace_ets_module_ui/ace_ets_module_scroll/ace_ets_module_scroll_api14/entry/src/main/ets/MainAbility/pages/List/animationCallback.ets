@@ -25,7 +25,6 @@ struct ListAnimationCallback {
       Text('List: '+ this.onText)
         .id('animate_callback_text')
         .width('90%')
-        .height('10%')
       Button('next page2')
         .id('list_animation_true')
         .onClick(() => {
@@ -36,7 +35,7 @@ struct ListAnimationCallback {
           ListItem() {
             Text('' + item)
               .width('100%')
-              .height(50)
+              .height('12%')
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .borderRadius(10)
