@@ -30,7 +30,7 @@ let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 function sleep(ms: number) {
   return new Promise<void>(resolve => setTimeout(resolve, ms));
 }
-let isNotSupport:boolean;
+let isNotSupport:boolean = false;
 export default function OnAndOffScreenTest() {
 
   describe('OnAndOffScreenTest', () => {
@@ -41,7 +41,7 @@ export default function OnAndOffScreenTest() {
     let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
     let id: number | undefined = undefined;
     beforeAll(async (done: Function) => {
-      console.log(TAG1 + "beforeAll called");
+      console.log(TAG1 + "beforeAll called, current device:" + deviceType);
       let myReason = 'test FaShowOnLockTest';
       isNotSupport = fs.accessSync("/system/variant/watch/base/etc/power_config/power_suspend.json",fs.AccessModeType.EXIST);
       console.log(TAG1 + "isNotSupport" + isNotSupport);
@@ -428,98 +428,97 @@ export default function OnAndOffScreenTest() {
       if(isNotSupport){
         console.log(TAG + "isNotSupport" + isNotSupport);
         done();
-      }else{
-        let status1: boolean | undefined = undefined;
-        let lifeList: string[] = [];
-        let listCheck = ["onCreate", "onWindowStageCreate", "onForeground", "onBackground"];
-        let onCreate = "StageOnAndOffScreen_MainAbility2_onCreate";
-        let onWindowStageCreate = "StageOnAndOffScreen_MainAbility2_onWindowStageCreate";
-        let onForeground = "StageOnAndOffScreen_MainAbility2_onForeground";
-        let onBackground = "StageOnAndOffScreen_MainAbility2_onBackground";
-        let onWindowStageDestroy = "StageOnAndOffScreen_MainAbility2_onWindowStageDestroy";
-        let onDestroy = "StageOnAndOffScreen_MainAbility2_onDestroy";
-        let onForeground2 = "StageOnAndOffScreen_MainAbility3_onForeground";
-        let onBackground2 = "StageOnAndOffScreen_MainAbility3_onBackground";
+      }
+      let status1: boolean | undefined = undefined;
+      let lifeList: string[] = [];
+      let listCheck = ["onCreate", "onWindowStageCreate", "onForeground", "onBackground"];
+      let onCreate = "StageOnAndOffScreen_MainAbility2_onCreate";
+      let onWindowStageCreate = "StageOnAndOffScreen_MainAbility2_onWindowStageCreate";
+      let onForeground = "StageOnAndOffScreen_MainAbility2_onForeground";
+      let onBackground = "StageOnAndOffScreen_MainAbility2_onBackground";
+      let onWindowStageDestroy = "StageOnAndOffScreen_MainAbility2_onWindowStageDestroy";
+      let onDestroy = "StageOnAndOffScreen_MainAbility2_onDestroy";
+      let onForeground2 = "StageOnAndOffScreen_MainAbility3_onForeground";
+      let onBackground2 = "StageOnAndOffScreen_MainAbility3_onBackground";
 
-        let subscriber: commonEventManager.CommonEventSubscriber;
-        let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: [onCreate, onWindowStageCreate, onForeground, onBackground, onWindowStageDestroy, onDestroy,
-            onForeground2, onBackground2]
-        }
-        await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
-          console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
-          subscriber = data;
+      let subscriber: commonEventManager.CommonEventSubscriber;
+      let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: [onCreate, onWindowStageCreate, onForeground, onBackground, onWindowStageDestroy, onDestroy,
+          onForeground2, onBackground2]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        subscriber = data;
 
-          commonEventManager.subscribe(subscriber, async (err, data) => {
-            console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
 
-            if (data.event == onBackground) {
-              lifeList = data.parameters!.lifeList;
-            }
+          if (data.event == onBackground) {
+            lifeList = data.parameters!.lifeList;
+          }
 
-            if (data.event == onForeground2) {
-              if (deviceType === '2in1') {
-                setTimeout(async () => {
-                  commonEventManager.unsubscribe(subscriber, async (err, data) => {
-                    console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
-                    expect(status1).assertTrue();
-                    done();
-                  });
-                }, 2500);
-              } else {
-                await sleep(500)
-                let cmd = "uinput -K -d 18 -u 18";
-                await executeShellCommand(cmd, TAG);
-              }
-            }
-
-            if (data.event == onBackground2) {
+          if (data.event == onForeground2) {
+            if (deviceType === '2in1') {
               setTimeout(async () => {
                 commonEventManager.unsubscribe(subscriber, async (err, data) => {
                   console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
-                  console.log(TAG + "lifeList: " + JSON.stringify(lifeList));
-                  expect(JSON.stringify(lifeList)).assertEqual(JSON.stringify(listCheck));
                   expect(status1).assertTrue();
                   done();
                 });
-              }, sleepTimeOne);
+              }, 2500);
+            } else {
+              await sleep(500)
+              let cmd = "uinput -K -d 18 -u 18";
+              await executeShellCommand(cmd, TAG);
             }
-          });
-        }).catch((error: BusinessError) => {
-          console.log(TAG + "createSubscriber data : " + JSON.stringify(error));
-          expect().assertFail();
-          done();
-        })
+          }
 
-        await power.isScreenOn().then((data) => {
-          console.log(TAG + "isScreenOn status1 data = " + JSON.stringify(data));
-          status1 = data;
-        }).catch((error: BusinessError) => {
-          console.log(TAG + "isScreenOn status1 error = " + JSON.stringify(error));
-          expect().assertFail();
-          done();
-        })
+          if (data.event == onBackground2) {
+            setTimeout(async () => {
+              commonEventManager.unsubscribe(subscriber, async (err, data) => {
+                console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+                console.log(TAG + "lifeList: " + JSON.stringify(lifeList));
+                expect(JSON.stringify(lifeList)).assertEqual(JSON.stringify(listCheck));
+                expect(status1).assertTrue();
+                done();
+              });
+            }, sleepTimeOne);
+          }
+        });
+      }).catch((error: BusinessError) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
 
-        let wantNum: Want = {
-          bundleName: "ohos.acts.aafwk.test.stageonandoffscreen",
-          abilityName: "MainAbility2"
-        }
-        await globalThis.abilityTestContext.startAbility(wantNum).then((data:void) => {
-          console.log(TAG + "startAbility data = " + JSON.stringify(data));
-        }).catch((error: BusinessError) => {
-          console.log(TAG + "startAbility error = " + JSON.stringify(error));
-          expect().assertFail();
-          done();
-        })
-        await driver.delayMs(2000);
-        let allowed = await driver.findComponent(ON.text("打开"));
-        if (allowed) {
-          console.log("find button");
-          let point = await allowed.getBoundsCenter();
-          console.log('point.x : ' + point.x + 'point.y : ' + point.y);
+      await power.isScreenOn().then((data) => {
+        console.log(TAG + "isScreenOn status1 data = " + JSON.stringify(data));
+        status1 = data;
+      }).catch((error: BusinessError) => {
+        console.log(TAG + "isScreenOn status1 error = " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
 
-          await driver.click(point.x, point.y);
-        }
+      let wantNum: Want = {
+        bundleName: "ohos.acts.aafwk.test.stageonandoffscreen",
+        abilityName: "MainAbility2"
+      }
+      await globalThis.abilityTestContext.startAbility(wantNum).then((data:void) => {
+        console.log(TAG + "startAbility data = " + JSON.stringify(data));
+      }).catch((error: BusinessError) => {
+        console.log(TAG + "startAbility error = " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x + 'point.y : ' + point.y);
+
+        await driver.click(point.x, point.y);
       }
     })
 
