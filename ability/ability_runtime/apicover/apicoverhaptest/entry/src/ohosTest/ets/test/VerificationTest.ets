@@ -323,6 +323,10 @@ export default function verificationTest() {
       TAG = 'SUB_AA_OpenHarmony_RequestPermissionsFromUser_0200 ==>';
       console.info(TAG + " start");
       try {
+        console.info(TAG + `come in driveFn`);
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        let driver = await UiDriver.create();
+        console.info(TAG + `driver is ${JSON.stringify(driver)}`);
         let wantNum: Want = {
           bundleName: 'ohos.acts.aafwk.test.fasupplement',
           abilityName: 'ohos.acts.aafwk.test.fasupplement.MainAbility3',
@@ -335,11 +339,7 @@ export default function verificationTest() {
             console.info(TAG + "startAbility err = " + JSON.stringify(err));
             expect().assertFail();
           });
-        console.info(TAG + `come in driveFn`);
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-        let driver = await UiDriver.create();
-        console.info(TAG + `driver is ${JSON.stringify(driver)}`);
-        await sleep(1500);
+        await sleep(2000);
         console.info(TAG + `UiDriver start`);
         let button = await driver.findComponent(BY.text('允许'));
         if(button == null){
