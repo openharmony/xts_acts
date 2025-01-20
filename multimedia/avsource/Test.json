@@ -29,8 +29,8 @@
             "type": "PushKit",
             "pre-push": [],
             "push": [
-                "./resource/media/MP4_ROTATE_90.mp4 ->/data/app/el2/100/base/com.multimedia.napitest/haps/entry_test/files/"
-                "./resource/media/MP4_ROTATE_180.mp4 ->/data/app/el2/100/base/com.multimedia.napitest/haps/entry_test/files/"
+                "./resource/media/demo.mp4 ->/data/app/el2/100/base/com.multimedia.napitest/haps/entry_test/files/"
+                "./resource/media/demo1.mp4 ->/data/app/el2/100/base/com.multimedia.napitest/haps/entry_test/files/"
             ]
         },
 		{
