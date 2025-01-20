@@ -482,19 +482,23 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNull, TestSize.Le
     EXPECT_NE(dstRect, nullptr);
 
     // canvas参数传nullptr
-    auto result = OH_Drawing_CanvasDrawPixelMapNine(nullptr, pixelmap, center, dstRect, OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
+    auto result = OH_Drawing_CanvasDrawPixelMapNine(nullptr, pixelmap, center, dstRect,
+        OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
     EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // pixelmap参数传nullptr
-    result = OH_Drawing_CanvasDrawPixelMapNine(canvas, nullptr, center, dstRect, OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
+    result = OH_Drawing_CanvasDrawPixelMapNine(canvas, nullptr, center, dstRect,
+        OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
     EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // center参数传nullptr
-    result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelmap, nullptr, dstRect, OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
+    result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelmap, nullptr, dstRect,
+        OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
     EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // dstRect参数传nullptr
-    result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelmap, center, nullptr, OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
+    result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelmap, center, nullptr,
+        OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
     EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // 调用销毁函数销毁指针
@@ -524,7 +528,8 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNormal, TestSize.
     EXPECT_NE(dstRect, nullptr);
 
     // 正常传参
-    auto result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelmap, center, dstRect, OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
+    auto result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelmap, center, dstRect,
+        OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
 
     // 调用销毁函数销毁指针
@@ -555,7 +560,8 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineCalls, TestSize.L
 
     // 正常传参，调用1000次
     for (int i = 0; i < 1000; ++i) {
-        auto result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelmap, center, dstRect, OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
+        auto result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelmap, center,
+            dstRect, OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
         EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     }
 

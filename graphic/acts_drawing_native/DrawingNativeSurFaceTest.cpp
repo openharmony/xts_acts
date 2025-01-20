@@ -239,7 +239,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceGetCanvasNormal, TestSize.Level0) 
     OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     surface_ = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext_, true, imageInfo);
     EXPECT_NE(surface_, nullptr);
-    // 2. OH_Drawing_SurfaceGetCanvas, get the canvas object from the surface object, a pointer to the surface object,
+    //2.OH_Drawing_SurfaceGetCanvas, get the canvas object from the surface object,a pointer to the surface object
     // and call the drawing interface
     canvas_ = OH_Drawing_SurfaceGetCanvas(surface_);
     // add assert
@@ -291,7 +291,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceGetCanvasBoundary, TestSize.Level0
     OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     surface_ = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext_, true, imageInfo);
     EXPECT_NE(surface_, nullptr);
-    // 2. OH_Drawing_SurfaceGetCanvas, get the canvas object from the surface object, a pointer to the surface object,
+    //2. OH_Drawing_SurfaceGetCanvas, get the canvas object from the surface object,a pointer to the surface object
     // and call the drawing interface
     canvas_ = OH_Drawing_SurfaceGetCanvas(surface_);
     EXPECT_NE(canvas_, nullptr);
@@ -315,7 +315,6 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenNormal, TestSize.Lev
     const int32_t width = 4096;
     const int32_t height = 2160;
     OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
-    // OH_Drawing_Surface* OH_Drawing_SurfaceCreateOnScreen(OH_Drawing_GpuContext* gpuContext, OH_Drawing_Image_Info imageInfo, void* window);
     // 1. OH_Drawing_SurfaceCreateOnScreen
     OHNativeWindow *nativeWindow_ = nullptr;
     surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, static_cast<void *>(nativeWindow_));
@@ -384,9 +383,10 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenMultipleCalls, TestS
     }
     
     for (int index = 0; index < 10; ++index) {
-      surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfos[index], static_cast<void *>(nativeWindow_));
-      // Free memory
-      OH_Drawing_SurfaceDestroy(surface_);
+        surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfos[index],
+            static_cast<void *>(nativeWindow_));
+        // Free memory
+        OH_Drawing_SurfaceDestroy(surface_);
     }
 }
 
@@ -423,7 +423,6 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushNormal, TestSize.Level0) {
  */
 HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushNull, TestSize.Level3) {
     OH_Drawing_ErrorCode errorCode = OH_Drawing_SurfaceFlush(nullptr);
-    // OH_Drawing_SurfaceFlush(, nullptr);
     EXPECT_NE(errorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
 }
 
@@ -477,13 +476,13 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushMultipleCalls, TestSize.Level
 
     // 1. OH_Drawing_CanvasDrawRect-OH_Drawing_SurfaceFlush循环调用10次
     for (int i = 0; i < 10; ++i) {
-      OH_Drawing_CanvasDrawRect(canvas, rect);
-      OH_Drawing_SurfaceFlush(surface_);
+        OH_Drawing_CanvasDrawRect(canvas, rect);
+        OH_Drawing_SurfaceFlush(surface_);
     }
 
     // 2. OH_Drawing_SurfaceFlush直接循环调用10次
     for (int i = 0; i < 10; ++i) {
-      OH_Drawing_SurfaceFlush(surface_);
+        OH_Drawing_SurfaceFlush(surface_);
     }
     // 3. 创建不同surface（通过创建不同imageinfo）-OH_Drawing_SurfaceFlush循环调用10次
     OH_Drawing_ColorFormat formats[] = {
@@ -506,7 +505,8 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushMultipleCalls, TestSize.Level
     }
 
     for (int index = 0; index < 10; ++index) {
-      surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfos[index], static_cast<void *>(nativeWindow_));
+      surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfos[index],
+        static_cast<void *>(nativeWindow_));
       OH_Drawing_SurfaceFlush(surface_);
     }
 
@@ -527,7 +527,8 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushTiming, TestSize.Level3) {
     EXPECT_NE(gpuContext_, nullptr);
     const int32_t width = 4096;
     const int32_t height = 2160;
-    OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888,
+        ALPHA_FORMAT_OPAQUE};
     OHNativeWindow *nativeWindow_ = nullptr;
 
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
@@ -535,23 +536,27 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushTiming, TestSize.Level3) {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 100, 200, 300);
     EXPECT_NE(rect, nullptr);
     // 1. OH_Drawing_SurfaceCreateOnScreen-OH_Drawing_CanvasDrawRect-OH_Drawing_SurfaceFlush正常时序
-    surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, static_cast<void *>(nativeWindow_));
+    surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo,
+        static_cast<void *>(nativeWindow_));
     OH_Drawing_CanvasDrawRect(canvas, rect);
     OH_Drawing_SurfaceFlush(surface_);
 
     // 2. OH_Drawing_SurfaceCreateOnScreen-OH_Drawing_SurfaceFlush创建surface之后直接调用flush
-    surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, static_cast<void *>(nativeWindow_));
+    surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo,
+        static_cast<void *>(nativeWindow_));
     OH_Drawing_SurfaceFlush(surface_);
 
     // 3. 创建两个canvas-创建两个surface-各自进行绘制-各自flush
     OH_Drawing_Canvas *canvas1 = OH_Drawing_CanvasCreate();
     OH_Drawing_Rect *rect1 = OH_Drawing_RectCreate(10, 100, 200, 300);
     OH_Drawing_CanvasDrawRect(canvas1, rect1);
-    OH_Drawing_Surface* surface1 = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, static_cast<void *>(nativeWindow_));
+    OH_Drawing_Surface* surface1 = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo,
+        static_cast<void *>(nativeWindow_));
     OH_Drawing_Canvas *canvas2 = OH_Drawing_CanvasCreate();
     OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(10, 100, 200, 300);
     OH_Drawing_CanvasDrawRect(canvas2, rect2);
-    OH_Drawing_Surface* surface2 = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, static_cast<void *>(nativeWindow_));
+    OH_Drawing_Surface* surface2 = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo,
+        static_cast<void *>(nativeWindow_));
 
     OH_Drawing_SurfaceDestroy(surface_);
     OH_Drawing_SurfaceDestroy(surface1);

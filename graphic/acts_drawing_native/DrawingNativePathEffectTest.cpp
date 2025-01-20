@@ -303,27 +303,27 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateDiscreatePathEffectNull, TestSiz
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathEffectTest, testCreateDiscreatePathEffectAbnormal, TestSize.Level3) {
-    // 1. OH_Drawing_CreateDiscretePathEffect with 0xFFFFFFFF as the first parameter, 0xFFFFFFFF as the second parameter
+    // 1. OH_Drawing_CreateDiscretePathEffect with 0xFFFFFFFF as the first and second parameter
     OH_Drawing_PathEffect *pathEffect1 = OH_Drawing_CreateDiscretePathEffect(0xFFFFFFFF, 0xFFFFFFFF);
     // add assert
     EXPECT_EQ(pathEffect1, nullptr);
-    // 2. OH_Drawing_CreateDiscretePathEffect with 0xFFFFFFFF as the first parameter, normal value as the second parameter
+    // 2. OH_Drawing_CreateDiscretePathEffect with 0xFFFFFFFF as the first parameter
     OH_Drawing_PathEffect *pathEffect2 = OH_Drawing_CreateDiscretePathEffect(0xFFFFFFFF, 2.0);
     // add assert
     EXPECT_EQ(pathEffect2, nullptr);
-    // 3. OH_Drawing_CreateDiscretePathEffect with 0xFFFFFFFF as the first parameter, -0.1 as the second parameter
+    // 3. OH_Drawing_CreateDiscretePathEffect with 0xFFFFFFFF as the first parameter
     OH_Drawing_PathEffect *pathEffect3 = OH_Drawing_CreateDiscretePathEffect(0xFFFFFFFF, -0.1);
     // add assert
     EXPECT_EQ(pathEffect3, nullptr);
-    // 4. OH_Drawing_CreateDiscretePathEffect with 0xFFFFFFFF as the first parameter, -1 as the second parameter
+    // 4. OH_Drawing_CreateDiscretePathEffect with 0xFFFFFFFF as the first parameter
     OH_Drawing_PathEffect *pathEffect4 = OH_Drawing_CreateDiscretePathEffect(0xFFFFFFFF, -1);
     // add assert
     EXPECT_EQ(pathEffect4, nullptr);
-    // 5. OH_Drawing_CreateDiscretePathEffect with -0.1 as the first parameter, normal value as the second parameter
+    // 5. OH_Drawing_CreateDiscretePathEffect with -0.1 as the first parameter
     OH_Drawing_PathEffect *pathEffect5 = OH_Drawing_CreateDiscretePathEffect(-0.1, 2.0);
     // add assert
     EXPECT_EQ(pathEffect5, nullptr);
-    // 6. OH_Drawing_CreateDiscretePathEffect with -1 as the first parameter, normal value as the second parameter
+    // 6. OH_Drawing_CreateDiscretePathEffect with -1 as the first parameter
     OH_Drawing_PathEffect *pathEffect6 = OH_Drawing_CreateDiscretePathEffect(-1, 2.0);
     // add assert
     EXPECT_EQ(pathEffect6, nullptr);
@@ -356,7 +356,8 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateComposePathEffectNormal, TestSiz
     EXPECT_NE(discretePathEffect, nullptr);
 
     // 3. OH_Drawing_CreateComposePathEffect with normal parameters
-    OH_Drawing_PathEffect *composePathEffect = OH_Drawing_CreateComposePathEffect(cornerPathEffect, discretePathEffect);
+    OH_Drawing_PathEffect *composePathEffect = OH_Drawing_CreateComposePathEffect(cornerPathEffect,
+        discretePathEffect);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     EXPECT_NE(composePathEffect, nullptr);
 
@@ -422,7 +423,8 @@ HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectNormal, TestSize.L
     // 5. OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path2, 100.0f, 50.0f);
     // 6. OH_Drawing_CreatePathDashEffect 参数正常入参并且遍历第四个枚举参数
-    OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreatePathDashEffect(path2, 50.0f, 50.0f, PATH_EFFECT_TRANSLATE);
+    OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreatePathDashEffect(path2, 50.0f, 50.0f,
+        PATH_EFFECT_TRANSLATE);
     pathEffect = OH_Drawing_CreatePathDashEffect(path2, 50.0f, 50.0f, PATH_EFFECT_ROTATE);
     pathEffect = OH_Drawing_CreatePathDashEffect(path2, 50.0f, 50.0f, PATH_EFFECT_MORPH);
     // 7. 释放内存
@@ -452,7 +454,8 @@ HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectNull, TestSize.Lev
     // 5. OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path2, 100.0f, 50.0f);
     // 6. OH_Drawing_CreatePathDashEffect第一个参数传nullptr
-    OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreatePathDashEffect(nullptr, 50.0f, 50.0f, PATH_EFFECT_TRANSLATE);
+    OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreatePathDashEffect(nullptr, 50.0f, 50.0f,
+        PATH_EFFECT_TRANSLATE);
     // 7. OH_Drawing_CreatePathDashEffect第二个参数传0
     pathEffect = OH_Drawing_CreatePathDashEffect(path2, 0, 50.0f, PATH_EFFECT_TRANSLATE);
     // 8. OH_Drawing_CreatePathDashEffect第三个参数传0
@@ -484,7 +487,8 @@ HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectAbnormal, TestSize
     // 5. OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path2, 100.0f, 50.0f);
     // 6. OH_Drawing_CreatePathDashEffect第二个参数传0xFFFFFFFF
-    OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreatePathDashEffect(path2, 0xFFFFFFFF, 50.0f, PATH_EFFECT_TRANSLATE);
+    OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreatePathDashEffect(path2, 0xFFFFFFFF,
+        50.0f, PATH_EFFECT_TRANSLATE);
     // 7. OH_Drawing_CreatePathDashEffect第二个参数传0.0001
     pathEffect = OH_Drawing_CreatePathDashEffect(path2, 0.0001, 50.0f, PATH_EFFECT_TRANSLATE);
     // 8. OH_Drawing_CreatePathDashEffect第二个参数传-0.1
@@ -530,7 +534,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateSumPathEffectNull, TestSize.Leve
     // 1. OH_Drawing_CreateCornerPathEffect
     OH_Drawing_PathEffect *firstPathEffect = OH_Drawing_CreateCornerPathEffect(50.0f);
     // 2. OH_Drawing_CreateDiscreatePathEffect
-    // 找不到这个函数 OH_Drawing_PathEffect* OH_Drawing_CreateDiscretePathEffect(float segLength, float deviation);
+    // 找不到这个函数 OH_Drawing_PathEffect* OH_Drawing_CreateDiscretePathEffect(float segLength,float deviation);
     OH_Drawing_PathEffect *secondPathEffect = OH_Drawing_CreateDiscretePathEffect(50.0f, 50.0f);
     // 3. OH_Drawing_CreateSumPathEffect 第一个参数传nullptr
     OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreateSumPathEffect(nullptr, secondPathEffect);
