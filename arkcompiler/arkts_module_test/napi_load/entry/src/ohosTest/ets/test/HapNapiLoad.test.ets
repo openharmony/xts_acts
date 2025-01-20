@@ -457,7 +457,7 @@ export default function HapNapiLoadTest() {
       console.info(TAG, 'har: ', JSON.stringify(har))
       let argc1 = 2;
       let argc2 = 3;
-      let result: number = har.add(argc1, argc2);
+      let result: number = har.add2(argc1, argc2);
       console.info(TAG, 'result: ', result);
       expect(result).assertEqual(5);
     })
