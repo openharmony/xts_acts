@@ -29,7 +29,7 @@ export default function ScrollEffectEdge() {
       try {
         router.clear();
         let pages: router.RouterState = router.getState();
-        if (pages == null || !("ListSwipe" == pages.name)) {
+        if (pages == null || !("ScrollEffectEdge" == pages.name)) {
           await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
           })
