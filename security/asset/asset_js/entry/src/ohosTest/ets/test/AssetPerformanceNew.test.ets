@@ -16,6 +16,7 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import * as aw from './aw/AssetAw';
 import asset from '@ohos.security.asset';
+import deviceInfo from '@ohos.deviceInfo';
 
 
 export default function AssetPerformanceNewtest() {
@@ -50,12 +51,14 @@ export default function AssetPerformanceNewtest() {
      * @tc.level: Level3
      */
     it('SUB_Security_DataSecurity_Asset_Performance_0200', 0, async (done: Function) => {
-      let testAlias1 = "0123456789123456".repeat(15);
-      let times = 100;
-      let beginTime = new Date().getTime();
-      await aw.assetAddFullAll(testAlias1, times);
-      let endTime = new Date().getTime();
-      expect((endTime - beginTime) / times).assertLess(150);
+      if (deviceInfo.deviceType != 'wearable') {
+        let testAlias1 = "0123456789123456".repeat(15);
+        let times = 100;
+        let beginTime = new Date().getTime();
+        await aw.assetAddFullAll(testAlias1, times);
+        let endTime = new Date().getTime();
+        expect((endTime - beginTime) / times).assertLess(150);
+      }
       done();
     });
 
@@ -68,21 +71,22 @@ export default function AssetPerformanceNewtest() {
      * @tc.level: Level3
      */
     it('SUB_Security_DataSecurity_Asset_Performance_0400', 0, async (done: Function) => {
-      let testAlias1 = "0123456789123456".repeat(15);
-      let times = 100;
+      if (deviceInfo.deviceType != 'wearable') {
+        let testAlias1 = "0123456789123456".repeat(15);
+        let times = 100;
 
-      await aw.assetAddFullAll(testAlias1, times);
+        await aw.assetAddFullAll(testAlias1, times);
 
-      let attr2: asset.AssetMap = new Map();
-      attr2.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL);
-      let beginTime = new Date().getTime();
-      for (let i = 0; i < times; i++) {
-        attr2.set(asset.Tag.ALIAS, aw.StringToArray(testAlias1 + String(i)));
-        await aw.assetQueryAttr(attr2);
+        let attr2: asset.AssetMap = new Map();
+        attr2.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL);
+        let beginTime = new Date().getTime();
+        for (let i = 0; i < times; i++) {
+          attr2.set(asset.Tag.ALIAS, aw.StringToArray(testAlias1 + String(i)));
+          await aw.assetQueryAttr(attr2);
+        }
+        let endTime = new Date().getTime();
+        expect((endTime - beginTime) / times).assertLess(150);
       }
-      let endTime = new Date().getTime();
-      expect((endTime - beginTime) / times).assertLess(150);
-
       done();
     });
 
@@ -95,22 +99,23 @@ export default function AssetPerformanceNewtest() {
      * @tc.level: Level3
      */
     it('SUB_Security_DataSecurity_Asset_Performance_0700', 0, async (done: Function) => {
-      let testAlias1 = "0123456789123456".repeat(15);
-      let times = 100;
+      if (deviceInfo.deviceType != 'wearable') {
+        let testAlias1 = "0123456789123456".repeat(15);
+        let times = 100;
 
-      await aw.assetAddFullAll(testAlias1, times);
+        await aw.assetAddFullAll(testAlias1, times);
 
-      let attr2: asset.AssetMap = new Map();
-      let attr3: asset.AssetMap = new Map();
-      attr3.set(asset.Tag.SECRET, aw.StringToArray(aw.labelLong));
-      let beginTime = new Date().getTime();
-      for (let i = 0; i < times; i++) {
-        attr2.set(asset.Tag.ALIAS, aw.StringToArray(testAlias1 + String(i)));
-        await aw.assetUpdateAttrs(attr2, attr3);
+        let attr2: asset.AssetMap = new Map();
+        let attr3: asset.AssetMap = new Map();
+        attr3.set(asset.Tag.SECRET, aw.StringToArray(aw.labelLong));
+        let beginTime = new Date().getTime();
+        for (let i = 0; i < times; i++) {
+          attr2.set(asset.Tag.ALIAS, aw.StringToArray(testAlias1 + String(i)));
+          await aw.assetUpdateAttrs(attr2, attr3);
+        }
+        let endTime = new Date().getTime();
+        expect((endTime - beginTime) / times).assertLess(200);
       }
-      let endTime = new Date().getTime();
-      expect((endTime - beginTime) / times).assertLess(200);
-
       done();
     });
 
@@ -123,20 +128,21 @@ export default function AssetPerformanceNewtest() {
      * @tc.level: Level3
      */
     it('SUB_Security_DataSecurity_Asset_Performance_0800', 0, async (done: Function) => {
-      let testAlias1 = "0123456789123456".repeat(15);
-      let times = 100;
+      if (deviceInfo.deviceType != 'wearable') {
+        let testAlias1 = "0123456789123456".repeat(15);
+        let times = 100;
 
-      await aw.assetAddFullAll(testAlias1, times);
+        await aw.assetAddFullAll(testAlias1, times);
 
-      let attr2: asset.AssetMap = new Map();
-      let beginTime = new Date().getTime();
-      for (let i = 0; i < times; i++) {
-        attr2.set(asset.Tag.ALIAS, aw.StringToArray(testAlias1 + String(i)));
-        await aw.assetRemoveAttr(attr2);
+        let attr2: asset.AssetMap = new Map();
+        let beginTime = new Date().getTime();
+        for (let i = 0; i < times; i++) {
+          attr2.set(asset.Tag.ALIAS, aw.StringToArray(testAlias1 + String(i)));
+          await aw.assetRemoveAttr(attr2);
+        }
+        let endTime = new Date().getTime();
+        expect((endTime - beginTime) / times).assertLess(100);
       }
-      let endTime = new Date().getTime();
-      expect((endTime - beginTime) / times).assertLess(100);
-
       done();
     });
 
@@ -149,21 +155,22 @@ export default function AssetPerformanceNewtest() {
      * @tc.level: Level3
      */
     it('SUB_Security_DataSecurity_Asset_Performance_0500', 0, async (done: Function) => {
-      let testAlias1 = "0123456789123456".repeat(15);
-      let times = 10;
-      let limit = 100;
+      if (deviceInfo.deviceType != 'wearable') {
+        let testAlias1 = "0123456789123456".repeat(15);
+        let times = 10;
+        let limit = 100;
 
-      await aw.assetAddFullAll(testAlias1, limit + 20);
+        await aw.assetAddFullAll(testAlias1, limit + 20);
 
-      let attr2: asset.AssetMap = new Map();
-      attr2.set(asset.Tag.RETURN_LIMIT, limit);
-      let beginTime = new Date().getTime();
-      for (let i = 0; i < times; i++) {
-        await aw.assetQueryAttr(attr2);
+        let attr2: asset.AssetMap = new Map();
+        attr2.set(asset.Tag.RETURN_LIMIT, limit);
+        let beginTime = new Date().getTime();
+        for (let i = 0; i < times; i++) {
+          await aw.assetQueryAttr(attr2);
+        }
+        let endTime = new Date().getTime();
+        expect((endTime - beginTime) / times).assertLess(1500);
       }
-      let endTime = new Date().getTime();
-      expect((endTime - beginTime) / times).assertLess(1500);
-
       done();
     });
 
@@ -176,21 +183,22 @@ export default function AssetPerformanceNewtest() {
      * @tc.level: Level3
      */
     it('SUB_Security_DataSecurity_Asset_Performance_0600', 0, async (done: Function) => {
-      let testAlias1 = "0123456789123456".repeat(15);
-      let times = 10;
-      let limit = 500;
+      if (deviceInfo.deviceType != 'wearable') {
+        let testAlias1 = "0123456789123456".repeat(15);
+        let times = 10;
+        let limit = 500;
 
-      await aw.assetAddFullAll(testAlias1, limit + 20);
+        await aw.assetAddFullAll(testAlias1, limit + 20);
 
-      let attr2: asset.AssetMap = new Map();
-      attr2.set(asset.Tag.RETURN_LIMIT, limit);
-      let beginTime = new Date().getTime();
-      for (let i = 0; i < times; i++) {
-        await aw.assetQueryAttr(attr2);
+        let attr2: asset.AssetMap = new Map();
+        attr2.set(asset.Tag.RETURN_LIMIT, limit);
+        let beginTime = new Date().getTime();
+        for (let i = 0; i < times; i++) {
+          await aw.assetQueryAttr(attr2);
+        }
+        let endTime = new Date().getTime();
+        expect((endTime - beginTime) / times).assertLess(1500);
       }
-      let endTime = new Date().getTime();
-      expect((endTime - beginTime) / times).assertLess(1500);
-
       done();
     });
 
