@@ -502,7 +502,7 @@ HWTEST_F(HwdecFuncNdkTest, OUTPUT_DECS_FUNC_002, TestSize.Level0)
  */
 HWTEST_F(HwdecFuncNdkTest, OUTPUT_DECS_FUNC_003, TestSize.Level0)
 {
-    if (cap) { 
+    if (cap) {
         auto vDecSample = make_shared<VDecNdkSample>();
         vDecSample->INP_DIR = "/data/test/media/3840x2160.h264";
         if ((widthRange.maxVal>=UHD_RESOLUTION[0]) && (heightRange.maxVal>=UHD_RESOLUTION[1])) {

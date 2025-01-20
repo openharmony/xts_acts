@@ -86,7 +86,7 @@ HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_0200, TestSize.Level1)
  */
 HWTEST_F(SwdecFuncNdkTest, VIDEO_SWDEC_FUNCTION_0300, TestSize.Level0)
 {
-     if (cap) {
+    if (cap) {
         auto vDecSample = make_shared<VDecNdkSample>();
         vDecSample->INP_DIR = INP_DIR_1080_30;
         vDecSample->DEFAULT_WIDTH = 1920;

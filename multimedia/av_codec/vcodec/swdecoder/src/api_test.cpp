@@ -1537,7 +1537,8 @@ HWTEST_F(SwdecApiNdkTest, VIDEO_SWDEC_CAP_API_6500, TestSize.Level2)
     if (cap) {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, false, SOFTWARE);
         ASSERT_NE(nullptr, capability);
-        ASSERT_EQ(false, OH_AVCapability_AreVideoSizeAndFrameRateSupported(capability, DEFAULT_WIDTH, DEFAULT_HEIGHT, 0));
+        ASSERT_EQ(false, OH_AVCapability_AreVideoSizeAndFrameRateSupported(capability,DEFAULT_WIDTH,
+            DEFAULT_HEIGHT, 0));
     }
 }
 
@@ -1562,7 +1563,8 @@ HWTEST_F(SwdecApiNdkTest, VIDEO_SWDEC_CAP_API_6700, TestSize.Level2)
     if (cap) {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, false, SOFTWARE);
         ASSERT_NE(nullptr, capability);
-        ASSERT_EQ(true, OH_AVCapability_AreVideoSizeAndFrameRateSupported(capability, DEFAULT_WIDTH, DEFAULT_HEIGHT, 30));
+        ASSERT_EQ(true, OH_AVCapability_AreVideoSizeAndFrameRateSupported(capability, DEFAULT_WIDTH,
+            DEFAULT_HEIGHT, 30));
     }
 }
 
@@ -1628,7 +1630,8 @@ HWTEST_F(SwdecApiNdkTest, VIDEO_SWDEC_CAP_API_7100, TestSize.Level2)
         OH_AVErrCode ret = AV_ERR_OK;
         const int32_t *pixelFormat = nullptr;
         uint32_t pixelFormatNum = 0;
-        OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, false, SOFTWARE);
+        OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC,
+            false, SOFTWARE);
         ASSERT_NE(nullptr, capability);
         ret = OH_AVCapability_GetVideoSupportedPixelFormats(capability, &pixelFormat, &pixelFormatNum);
         ASSERT_NE(nullptr, pixelFormat);

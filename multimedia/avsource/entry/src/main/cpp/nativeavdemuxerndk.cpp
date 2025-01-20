@@ -33,7 +33,7 @@
 #define TWOVAL 2
 #define ONEONEVAL 11
 #define PARAM_1 1
-#define TWOTWOVAL 1024 * 1280 * 1.5
+#define TWOTWOVAL (1024 * 1280 * 1.5)
 #define SUCCESS 0
 #define FAIL (-1)
 #define DENSITY 240
@@ -49,7 +49,8 @@
 #define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_INFO, AUDIO_LOG_DOMAIN, AUDIO_LOG_TAG, fmt, ##__VA_ARGS__)
 
 
-size_t GetFileSize(const char *fileName) {
+size_t GetFileSize(const char *fileName)
+{
     if (fileName == nullptr) {
         return 0;
     }

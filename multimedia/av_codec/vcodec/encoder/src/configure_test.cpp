@@ -114,7 +114,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_HEVC_CAPABILITY_1800, TestSize.Leve
         EXPECT_NE(AV_ERR_OK, OH_VideoEncoder_Configure(venc_, format));
     } else {
         return;
-    }   
+    }
 }
 
 /**
@@ -152,7 +152,7 @@ HWTEST_F(HwEncConfigureNdkTest, VIDEO_ENCODE_CAPABILITY_4000, TestSize.Level2)
         EXPECT_NE(AV_ERR_OK, OH_VideoEncoder_Configure(venc_, format));
     } else {
         return;
-    } 
+    }
 }
 
 /**

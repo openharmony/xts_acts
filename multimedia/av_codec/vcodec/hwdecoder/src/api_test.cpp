@@ -1216,7 +1216,7 @@ HWTEST_F(HwdecApiNdkTest, VIDEO_HWDEC_CAP_API_1700, TestSize.Level2)
         ASSERT_GT(widthRange.maxVal, 0);
     } else {
         return;
-    } 
+    }
 }
 
 /**
@@ -1420,7 +1420,7 @@ HWTEST_F(HwdecApiNdkTest, VIDEO_HWDEC_CAP_API_6200, TestSize.Level2)
     ret = OH_AVCapability_GetVideoHeightRange(capability, &heightRange);
     cout << "minval=" << heightRange.minVal << "  maxval=" << heightRange.maxVal << endl;
     ret = OH_AVCapability_GetVideoWidthRangeForHeight(capability, heightRange.maxVal, &widthRange);
-    cout << "minval=" << widthRange.minVal << "  maxval=" << widthRange.maxVal << endl; 
+    cout << "minval=" << widthRange.minVal << "  maxval=" << widthRange.maxVal << endl;
     ret = OH_AVCapability_GetVideoFrameRateRangeForSize(capability, 1280, 720, &range);
     ASSERT_EQ(AV_ERR_OK, ret);
     cout << "minval=" << range.minVal << "  maxval=" << range.maxVal << endl;

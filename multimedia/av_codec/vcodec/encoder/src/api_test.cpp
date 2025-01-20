@@ -198,7 +198,7 @@ HWTEST_F(HwEncApiNdkTest, VIDEO_ENCODE_ILLEGAL_PARA_0600, TestSize.Level2)
  * @tc.desc      : api test
  */
 HWTEST_F(HwEncApiNdkTest, VIDEO_ENCODE_ILLEGAL_PARA_0700, TestSize.Level2)
-{   
+{
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
     if (cap) {
         venc_ = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
@@ -206,13 +206,13 @@ HWTEST_F(HwEncApiNdkTest, VIDEO_ENCODE_ILLEGAL_PARA_0700, TestSize.Level2)
 
         OH_AVCodecAsyncCallback cb2_;
         cb2_.onError = NULL;
-        cb2_.onStreamChanged = NULL; 
+        cb2_.onStreamChanged = NULL;
         cb2_.onNeedInputData = NULL;
         cb2_.onNeedOutputData = NULL;
         ASSERT_EQ(AV_ERR_OK, OH_VideoEncoder_SetCallback(venc_, cb2_, static_cast<void *>(signal_)));
     } else {
         return;
-    }  
+    }
 }
 
 /**
