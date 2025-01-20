@@ -143,12 +143,21 @@ export default function api16CertFuncTestTwoUnit() {
           console.error("SUB_Security_CertManager_InstallUserTrustedCertificates_0015 cmResult.certList?.length is 0.");
           expect(null).assertFail();
         } else {
+          console.info('SUB_Security_CertManager_InstallUserTrustedCertificates_0015 ' + cmResult.certList?.length);
           expect(cmResult.certList?.length > 0).assertTrue();
+        }
+        try {
+          certManager.uninstallUserTrustedCertificateSync(certUri);
+          console.info(`SUB_Security_CertManager_InstallUserTrustedCertificates_0015 uninstallUserTrustedCertificateSync success`);
+        } catch (e) {
+          console.error(`SUB_Security_CertManager_InstallUserTrustedCertificates_0015 error.code: ${e.code}, message: ${e.message}`);
+          expect(null).assertFail();
         }
       } catch (error) {
         console.error(`SUB_Security_CertManager_InstallUserTrustedCertificates_0015 error.code: ${error.code}, message: ${error.message}`);
         expect(null).assertFail();
       }
+
       console.info('SUB_Security_CertManager_InstallUserTrustedCertificates_0015 end');
       done();
     });
@@ -186,13 +195,210 @@ export default function api16CertFuncTestTwoUnit() {
           console.error("SUB_Security_CertManager_InstallUserTrustedCertificates_0016 cmResult.certList?.length is 0.");
           expect(null).assertFail();
         } else {
+          console.info('SUB_Security_CertManager_InstallUserTrustedCertificates_0016 ' + cmResult.certList?.length);
           expect(cmResult.certList?.length > 0).assertTrue();
+        }
+        try {
+          certManager.uninstallUserTrustedCertificateSync(certUri);
+          console.info(`SUB_Security_CertManager_InstallUserTrustedCertificates_0016 uninstallUserTrustedCertificateSync success`);
+        } catch (e) {
+          console.error(`SUB_Security_CertManager_InstallUserTrustedCertificates_0016 error.code: ${e.code}, message: ${e.message}`);
+          expect(null).assertFail();
         }
       } catch (error) {
         console.error(`SUB_Security_CertManager_InstallUserTrustedCertificates_0016 error.code: ${error.code}, message: ${error.message}`);
         expect(null).assertFail();
       }
       console.info('SUB_Security_CertManager_InstallUserTrustedCertificates_0016 end');
+      done();
+    });
+
+
+    /**
+     * @tc.number SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0011
+     * @tc.name test uninstallUserTrustedCertificateSync interface
+     * @tc.desc abnormal test
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0011', 0, async (done: Function) => {
+      console.info('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0011 start');
+      let uir ='test';
+      try {
+        certManager.uninstallUserTrustedCertificateSync(undefined);
+        expect(null).assertFail();
+      } catch (error) {
+        console.error(`SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0011 error.code: ${error.code}, message: ${error.message}`);
+        expect(error.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
+      }
+
+      try {
+        certManager.uninstallUserTrustedCertificateSync(null);
+        expect(null).assertFail();
+      } catch (error) {
+        console.error(`SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0011 error.code: ${error.code}, message: ${error.message}`);
+        expect(error.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
+      }
+
+      try {
+        certManager.uninstallUserTrustedCertificateSync(uir);
+        expect(null).assertFail();
+      } catch (error) {
+        console.error(`SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0011 error.code: ${error.code}, message: ${error.message}`);
+        expect(error.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
+      }
+      console.info('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0011 end');
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0012
+     * @tc.name test uninstallUserTrustedCertificateSync interface
+     * @tc.desc abnormal test
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0012', 0, async (done: Function) => {
+      console.info('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0012 start');
+      try {
+        let result: certManager.CMResult = certManager.installUserTrustedCertificateSync(caCert, certManager.CertScope.GLOBAL_USER);
+        let certUri = result.uri;
+        if (certUri === undefined) {
+          console.error("SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0012 certUri is undefined.");
+          expect(null).assertFail();
+        } else {
+          console.info("SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0012 certUri is " + certUri);
+          expect(certUri.search('oh:t=c;o=vBBPFaSL5wncpUKn4dS5328FRSfoAuqpLVlURCWK_nEA;u=0') != -1).assertTrue();
+        }
+        try {
+          certManager.uninstallUserTrustedCertificateSync(certUri);
+          console.info(`SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0012 uninstallUserTrustedCertificateSync success`);
+        } catch (e) {
+          console.error(`SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0012 error.code: ${e.code}, message: ${e.message}`);
+          expect(null).assertFail();
+        }
+        certManager.uninstallUserTrustedCertificateSync(certUri);
+        expect(null).assertFail();
+      } catch (error) {
+        console.error(`SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0012 error.code: ${error.code}, message: ${error.message}`);
+
+        expect(error.code).assertEqual(certManager.CMErrorCode.CM_ERROR_NO_FOUND);
+      }
+      console.info('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0012 end');
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0013
+     * @tc.name test uninstallUserTrustedCertificateSync interface
+     * @tc.desc abnormal test
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0013', 0, async (done: Function) => {
+      console.info('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0013 start');
+      try {
+        let result: certManager.CMResult = certManager.installUserTrustedCertificateSync(caCert, certManager.CertScope.GLOBAL_USER);
+        let certUri = result.uri;
+        if (certUri === undefined) {
+          console.error("SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0013 certUri is undefined.");
+          expect(null).assertFail();
+        } else {
+          console.info("SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0013 certUri is " + certUri);
+          expect(certUri.search('oh:t=c;o=vBBPFaSL5wncpUKn4dS5328FRSfoAuqpLVlURCWK_nEA;u=0') != -1).assertTrue();
+        }
+        let certUri1 = certUri?.replace('0', '101');
+        console.info("SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0013 certUri1 is " + certUri1);
+        try {
+          certManager.uninstallUserTrustedCertificateSync(certUri1);
+          expect(null).assertFail();
+        } catch (e) {
+          console.error(`SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0013 error.code: ${e.code}, message: ${e.message}`);
+          expect(e.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
+        }
+        certManager.uninstallUserTrustedCertificateSync(certUri);
+        console.info(`SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0013 uninstallUserTrustedCertificateSync success`);
+      } catch (error) {
+        console.error(`SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0013 error.code: ${error.code}, message: ${error.message}`);
+        expect(null).assertFail();
+      }
+
+      console.info('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0013 end');
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0014
+     * @tc.name test uninstallUserTrustedCertificateSync interface
+     * @tc.desc normal test
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0014', 0, async (done: Function) => {
+      console.info('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0014 start');
+      try {
+        let result: certManager.CMResult = certManager.installUserTrustedCertificateSync(caCert, certManager.CertScope.CURRENT_USER);
+        let certUri = result.uri;
+        if (certUri === undefined) {
+          console.error("SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0014 certUri is undefined.");
+          expect(null).assertFail();
+        } else {
+          console.info("SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0014 certUri is " + certUri);
+          expect(certUri.search('oh:t=c;o=vBBPFaSL5wncpUKn4dS5328FRSfoAuqpLVlURCWK_nEA;u=100') != -1).assertTrue();
+        }
+
+        try {
+          certManager.uninstallUserTrustedCertificateSync(certUri);
+          console.info(`SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0014 uninstallUserTrustedCertificateSync success`);
+        } catch (e) {
+          console.error(`SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0014 error.code: ${e.code}, message: ${e.message}`);
+          expect(null).assertFail();
+        }
+      } catch (error) {
+        console.error(`SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0014 error.code: ${error.code}, message: ${error.message}`);
+        expect(null).assertFail();
+      }
+      console.info('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0014 end');
+      done();
+    });
+    /**
+     * @tc.number SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0015
+     * @tc.name test uninstallUserTrustedCertificateSync interface
+     * @tc.desc normal test
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0015', 0, async (done: Function) => {
+      console.info('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0015 start');
+      try {
+        let result: certManager.CMResult = certManager.installUserTrustedCertificateSync(caCert, certManager.CertScope.GLOBAL_USER);
+        let certUri = result.uri;
+        if (certUri === undefined) {
+          console.error("SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0015 certUri is undefined.");
+          expect(null).assertFail();
+        } else {
+          console.info("SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0015 certUri is " + certUri);
+          expect(certUri.search('oh:t=c;o=vBBPFaSL5wncpUKn4dS5328FRSfoAuqpLVlURCWK_nEA;u=0') != -1).assertTrue();
+        }
+
+        try {
+          certManager.uninstallUserTrustedCertificateSync(certUri);
+          console.info(`SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0015 uninstallUserTrustedCertificateSync success`);
+        } catch (e) {
+          console.error(`SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0015 error.code: ${e.code}, message: ${e.message}`);
+          expect(null).assertFail();
+        }
+      } catch (error) {
+        console.error(`SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0015 error.code: ${error.code}, message: ${error.message}`);
+        expect(null).assertFail();
+      }
+
+      console.info('SUB_Security_CertManager_UninstallUserTrustedCertificateSync_0015 end');
       done();
     });
 
