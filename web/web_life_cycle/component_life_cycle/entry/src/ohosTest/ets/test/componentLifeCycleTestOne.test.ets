@@ -208,7 +208,7 @@ export default function componentLifeCycleTestOne() {
      *@tc.level Level 1
      */
     it('testWebViewGetAndSetRenderProcessMode01', 0, async (done: Function) => {
-      Utils.emitEvent("emitWebViewGetAndSetRenderProcessMode01", 10);
+      await Utils.emitEvent("emitWebViewGetAndSetRenderProcessMode01", 10);
       Utils.registerEvent("testWebViewGetAndSetRenderProcessMode01", 'success', 8006, done);
       sendEventByKey('HttpAuthHandlerButton', 10, '');
     })
@@ -221,7 +221,7 @@ export default function componentLifeCycleTestOne() {
      *@tc.level Level 1
      */
     it('testWebViewGetAndSetRenderProcessMode02', 0, async (done: Function) => {
-      Utils.emitEvent("emitWebViewGetAndSetRenderProcessMode02", 10);
+      await Utils.emitEvent("emitWebViewGetAndSetRenderProcessMode02", 10);
       Utils.registerEvent("testWebViewGetAndSetRenderProcessMode02", 'success', 8007, done);
       sendEventByKey('HttpAuthHandlerButton', 10, '');
     })
@@ -235,7 +235,7 @@ export default function componentLifeCycleTestOne() {
      *@tc.level Level 2
      */
     it('testWebViewOnRenderProcessResponding', 0, async (done: Function) => {
-      Utils.emitEvent("emitWebViewOnRenderProcessResponding", 10);
+      await Utils.emitEvent("emitWebViewOnRenderProcessResponding", 10);
       Utils.registerEvent("testWebViewOnRenderProcessResponding", true, 1336, done);
       sendEventByKey('HttpAuthHandlerButton', 10, '');
     })
@@ -249,7 +249,7 @@ export default function componentLifeCycleTestOne() {
      *@tc.level Level 2
      */
     it('testWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT', 0, async (done: Function) => {
-      Utils.emitEvent("emitWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT", 10);
+      await Utils.emitEvent("emitWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT", 10);
       Utils.registerEvent("testWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT", true, 1338, done);
       sendEventByKey('HttpAuthHandlerButton', 10, '');
     })
