@@ -77,19 +77,19 @@ struct frameNode1{
 
   build() {
     Column({space:2}) {
-        Text('nodeContainer:'+this.text1).id('nodeContainer_1')
-        Text('nodeContainer:'+this.text2).id('nodeContainer_2')
-        Text('nodeContainer:'+this.text3).id('nodeContainer_3')
-        Text('nodeContainer:'+this.text4).id('nodeContainer_4')
-        Text('nodeContainer:'+this.text5).id('nodeContainer_5')
-        Text('nodeContainer:'+this.count2).id('nodeContainer_6')
-      Button('nodeContainer:count')
+        Text('nodeContainer:'+this.text1).id('nodeContainer_1').height('2%')
+        Text('nodeContainer:'+this.text2).id('nodeContainer_2').height('2%')
+        Text('nodeContainer:'+this.text3).id('nodeContainer_3').height('2%')
+        Text('nodeContainer:'+this.text4).id('nodeContainer_4').height('2%')
+        Text('nodeContainer:'+this.text5).id('nodeContainer_5').height('2%')
+        Text('nodeContainer:'+this.count2).id('nodeContainer_6').height('2%')
+      Button('nodeContainer:count').height('2%')
         .id('nodeContainer_7')
         .onClick(()=>{
           let nodeContainerNode=this.myNodeController.rootNode!.getParent()
           this.count2=nodeContainerNode!.getChildrenCount()
         })
-      Button('nodeContainer')
+      Button('nodeContainer').height('2%')
         .id('nodeContainer_8')
         .onClick(()=>{
         let nodeContainerNode=this.myNodeController.rootNode!.getParent()
@@ -110,9 +110,9 @@ struct frameNode1{
           this.text5='getParent'
         }
       })
-        Text('isModifiable:' + this.boolean1).id('nodeContainer_9')
-        Text('isModifiable:' + this.boolean2).id('nodeContainer_10')
-      Button('isModifiable')
+        Text('isModifiable:' + this.boolean1).id('nodeContainer_9').height('2%')
+        Text('isModifiable:' + this.boolean2).id('nodeContainer_10').height('2%')
+      Button('isModifiable').height('2%')
         .id('nodeContainer_11')
         .onClick(()=>{
         this.boolean1=this.myNodeController.rootNode!.isModifiable()
@@ -120,16 +120,16 @@ struct frameNode1{
         console.log('3',this.myNodeController.rootNode!.getParent()!.isModifiable())
         this.boolean2=this.myNodeController.rootNode!.getParent()!.isModifiable()
       })
-      Text('builderNode:'+this.builderNode).id('nodeContainer_12')
-      Button('builderNode')
+      Text('builderNode:'+this.builderNode).id('nodeContainer_12').height('2%')
+      Button('builderNode').height('2%')
         .id('nodeContainer_13')
         .onClick(()=>{
          if(this.myNodeController!.rootNode!.getChild(1)==this.myNodeController!.textNode!.getFrameNode()){
             this.builderNode='builderNode'
          }
         })
-      Text('isModifiable:'+this.boolean3).id('nodeContainer_14')
-      Button('isModifiable')
+      Text('isModifiable:'+this.boolean3).id('nodeContainer_14').height('2%')
+      Button('isModifiable').height('2%')
         .id('nodeContainer_15')
         .onClick(()=>{
        this.boolean3 = this.myNodeController!.textNode!.getFrameNode()!.isModifiable()

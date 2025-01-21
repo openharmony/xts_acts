@@ -45,17 +45,15 @@ struct APIsetOnclick {
   }
   build() {
     Column({space:40}) {
-      Text("this is a Text").key('APIsetOnclickText01')
+      Text("this is a Text").key('APIsetOnclickText01').height('5%')
         .fontSize(16)
         .borderWidth(1)
-        .margin({top: 40})
 
-      NodeContainer(this.myNodeController)
+      NodeContainer(this.myNodeController).height('30%')
         .borderWidth(1)
         .width(300)
-        .height(100)
 
-      Text(this.text1).key('APIsetOnclickText02')
+      Text(this.text1).key('APIsetOnclickText02').height('5%')
         .fontWeight(700).fontColor(Color.Green)
         .onClick(() => {
           this.text1 = storage.get('PropAPIsetOnclick') as string
