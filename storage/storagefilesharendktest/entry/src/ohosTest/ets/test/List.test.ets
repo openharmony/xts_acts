@@ -12,8 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import EmptyTest from './Empty.test'
 import permissionNdkTest from './permission.test'
 export default function testsuite() {
-  permissionNdkTest()
+  if (canIUse(" SystemCapability.FileManagement.AppFileService.FolderAuthorization")){
+    permissionNdkTest()
+  }else{
+    EmptyTest()
+  }
 }
