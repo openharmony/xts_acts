@@ -53,14 +53,15 @@ struct GetAttachedFramenodeByID {
     Column({ space: 4 }) {
       NodeContainer(this.myNodeController)
         .width('100%')
-        .height(400)
+        .height('30%')
 
       Text(this.message)
         .id("GetAttachedFramenodeByIDText")
         .fontSize(50)
         .fontWeight(700)
+        .height('10%')
 
-      Button('点击测试getAttachedFrameNode')
+      Button('点击测试getAttachedFrameNode').height('10%')
         .id("GetAttachedFramenodeByIDButton")
         .onClick(() => {
           let frame = this.getUIContext().getAttachedFrameNodeById('sallychild1')
@@ -75,7 +76,7 @@ struct GetAttachedFramenodeByID {
           }
         })
 
-      Button('点击测试getAttachedFrameNode2')
+      Button('点击测试getAttachedFrameNode2').height('10%')
         .id("GetAttachedFramenodeByIDButton2")
         .onClick(() => {
           let frame = this.getUIContext().getAttachedFrameNodeById('sallychild2')
@@ -87,5 +88,6 @@ struct GetAttachedFramenodeByID {
           }
         })
     }
+    .height('100%')
   }
 }

@@ -60,12 +60,13 @@ struct createNodeLoadTest {
       Column(){
         Row() {
           NodeContainer(this.myNodeController);
-        }
-        Text(this.type).margin(30).id("createNodeLoadText")
+        }.height('30%')
+        Text(this.type).margin(30).id("createNodeLoadText").height('10%')
         Button("getInspectorInfo").id("createNodeLoadType").onClick(() => {
           this.type = this.myNodeController?.getNodeType()
-        })
+        }).height('10%')
       }
+      .height('100%')
     }
 
   }

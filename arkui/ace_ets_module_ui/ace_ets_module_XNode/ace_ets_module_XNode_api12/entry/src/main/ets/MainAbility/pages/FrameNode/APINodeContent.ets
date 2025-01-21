@@ -55,26 +55,26 @@ struct APINodeContent {
   @State text1: number = 0;
 
   build() {
-    Row() {
+    Scroll() {
       Column() {
-        Text(`${this.text1}`).id('APINodeContent_Text')
-        Button('get context').width('50%').id('APINodeContent_Button_get')
+        Text(`${this.text1}`).id('APINodeContent_Text').height('10%')
+        Button('get context').width('50%').id('APINodeContent_Button_get').height('10%')
           .onClick(() => {
             this.text1 = storage.get('NodeContentFlagAPI') as number
           })
-        ContentSlot(this.controller.GetContent())
+        ContentSlot(this.controller.GetContent()).height('30%')
 
-        Button("AddToSlot").id('APINodeContent_Button_AddToSlot')
+        Button("AddToSlot").id('APINodeContent_Button_AddToSlot').height('10%')
           .onClick(() => {
             this.controller.AddNode()
           })
-        Button("RemoveBack").id('APINodeContent_Button_RemoveBack')
+        Button("RemoveBack").id('APINodeContent_Button_RemoveBack').height('10%')
           .onClick(() => {
             this.controller.RemoveNode()
           })
       }
       .width('100%')
+      .height('100%')
     }
-    .height('100%')
   }
 }

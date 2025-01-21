@@ -60,12 +60,13 @@ struct createNodeBlankTest {
       Column(){
         Row() {
           NodeContainer(this.myNodeController);
-        }
-        Text(this.type).margin(30).id("createNodeBlankText")
+        }.height('30%')
+        Text(this.type).margin(30).id("createNodeBlankText").height('10%')
         Button("getInspectorInfo").id("createNodeBlankType").onClick(() => {
           this.type = this.myNodeController?.getNodeType()
-        })
+        }).height('10%')
       }
+      .height('100%')
     }
 
   }

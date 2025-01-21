@@ -54,10 +54,14 @@ export default function APINodeContentTest() {
       console.info('APINodeContentTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('APINodeContent_Button_AddToSlot'));
+
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let button = await scrollBar.scrollSearch(ON.id('APINodeContent_Button_AddToSlot'));
+      //let button = await driver.findComponent(ON.id('APINodeContent_Button_AddToSlot'));
       await button.click();
       await CommonFunc.sleep(2000);
-      let button2 = await driver.findComponent(ON.id('APINodeContent_Button_get'));
+      let button2 = await scrollBar.scrollSearch(ON.id('APINodeContent_Button_get'));
+      //let button2 = await driver.findComponent(ON.id('APINodeContent_Button_get'));
       await button2.click();
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('APINodeContent_Text');
@@ -80,16 +84,21 @@ export default function APINodeContentTest() {
       console.info('APINodeContentTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let button1 = await driver.findComponent(ON.id('APINodeContent_Button_RemoveBack'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let button1 = await scrollBar.scrollSearch(ON.id('APINodeContent_Button_RemoveBack'));
+      //let button1 = await driver.findComponent(ON.id('APINodeContent_Button_RemoveBack'));
       await button1.click();
       await CommonFunc.sleep(1000);
-      let button2 = await driver.findComponent(ON.id('APINodeContent_Button_RemoveBack'));
+      let button2 = await scrollBar.scrollSearch(ON.id('APINodeContent_Button_RemoveBack'));
+      //let button2 = await driver.findComponent(ON.id('APINodeContent_Button_RemoveBack'));
       await button2.click();
       await CommonFunc.sleep(1000);
-      let button3 = await driver.findComponent(ON.id('APINodeContent_Button_RemoveBack'));
+      let button3 = await scrollBar.scrollSearch(ON.id('APINodeContent_Button_RemoveBack'));
+      //let button3 = await driver.findComponent(ON.id('APINodeContent_Button_RemoveBack'));
       await button3.click();
       await CommonFunc.sleep(1000);
-      let button9 = await driver.findComponent(ON.id('APINodeContent_Button_get'));
+      let button9 = await scrollBar.scrollSearch(ON.id('APINodeContent_Button_get'));
+      //let button9 = await driver.findComponent(ON.id('APINodeContent_Button_get'));
       await button9.click();
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('APINodeContent_Text');
@@ -97,13 +106,16 @@ export default function APINodeContentTest() {
       console.info("[APINodeContentTest_0200] component obj is: ",obj, obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('0');
       await CommonFunc.sleep(500);
-      let button4 = await driver.findComponent(ON.id('APINodeContent_Button_AddToSlot'));
+      let button4 = await scrollBar.scrollSearch(ON.id('APINodeContent_Button_AddToSlot'));
+      //let button4 = await driver.findComponent(ON.id('APINodeContent_Button_AddToSlot'));
       await button4.click();
       await CommonFunc.sleep(1000);
-      let button5 = await driver.findComponent(ON.id('APINodeContent_Button_AddToSlot'));
+      let button5 = await scrollBar.scrollSearch(ON.id('APINodeContent_Button_AddToSlot'));
+      //let button5 = await driver.findComponent(ON.id('APINodeContent_Button_AddToSlot'));
       await button5.click();
       await CommonFunc.sleep(1000);
-      let button8 = await driver.findComponent(ON.id('APINodeContent_Button_get'));
+      let button8 = await scrollBar.scrollSearch(ON.id('APINodeContent_Button_get'));
+      //let button8 = await driver.findComponent(ON.id('APINodeContent_Button_get'));
       await button8.click();
       await CommonFunc.sleep(1000);
       let strJson2 = getInspectorByKey('APINodeContent_Text');

@@ -60,12 +60,13 @@ struct createNodeSearchTest {
       Column(){
         Row() {
           NodeContainer(this.myNodeController);
-        }
-        Text(this.type).margin(30).id("createNodeSearchText")
+        }.height('30%')
+        Text(this.type).margin(30).id("createNodeSearchText").height('10%')
         Button("getInspectorInfo").id("createNodeSearchType").onClick(() => {
           this.type = this.myNodeController?.getNodeType()
-        })
+        }).height('10%')
       }
+      .height('100%')
     }
 
   }
