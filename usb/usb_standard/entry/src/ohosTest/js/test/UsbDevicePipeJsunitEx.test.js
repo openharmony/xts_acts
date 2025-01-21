@@ -935,7 +935,6 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
         var isClaim = usbManager.releaseInterface(gPipe, tmpInterface);
         console.info(TAG, 'usb case testReleaseInterface002 function return: ' + isClaim);
         expect(isClaim == 0).assertTrue();
-        toReleaseInterface('testReleaseInterface002', j, k);
       }
     }
   })
@@ -973,7 +972,6 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
         var isClaim = usbManager.releaseInterface(gPipe, tmpInterface);
         console.info(TAG, 'usb case testReleaseInterface003 function return: ' + isClaim);
         expect(isClaim == 0).assertTrue();
-        toReleaseInterface('testReleaseInterface003', j, k);
       }
     }
   })
@@ -1011,7 +1009,6 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
         var isClaim = usbManager.releaseInterface(gPipe, tmpInterface);
         console.info(TAG, 'usb case testReleaseInterface004 function return: ' + isClaim);
         expect(isClaim == 0).assertTrue();
-        toReleaseInterface('testReleaseInterface004', j, k);
       }
     }
   })
@@ -1049,7 +1046,6 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
         var isClaim = usbManager.releaseInterface(gPipe, tmpInterface);
         console.info(TAG, 'usb case testReleaseInterface005 function return: ' + isClaim);
         expect(isClaim == 0).assertTrue();
-        toReleaseInterface('testReleaseInterface005', j, k);
       }
     }
   })
