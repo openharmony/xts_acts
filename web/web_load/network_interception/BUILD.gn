@@ -21,7 +21,7 @@ group("ActsWebNetworkInterceptionTest") {
       "ace_network_interception_cloudservice_controller_four:ActsWebNetworkInterceptionCloudServiceControllerFourTest",
       "ace_network_interception_cloudservice_controller_group_nine:ActsWebNetworkInterceptionCloudServiceControllerGroupNineTest",
       "ace_network_interception_cloudservice_controller_group_twelve:ActsWebNetworkInterceptionCloudServiceControllerGroupTwelveTest",
-      "ace_network_interception_dev:ActWebNetworkInterceptionDevTest",
+      "ace_network_interception_dev:ActsWebNetworkInterceptionDevTest",
       "ace_network_interception_dev_four:ActsWebNetworkInterceptionDevFourTest",
       "ace_network_interception_enhanced_one:ActsWebNetworkInterceptionEnhancedTest",
       "ace_network_interception_enhanced_two:ActsWebNetworkInterceptionEnhancedTwoTest",
