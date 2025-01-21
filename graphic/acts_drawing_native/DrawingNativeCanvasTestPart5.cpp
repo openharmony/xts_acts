@@ -256,11 +256,11 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectCalls, TestSize.
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
+    OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 100, 200, 200);
     bool quickReject = false;
 
     // 正常传参，rect在画布内，调用1000次
     for (int i = 0; i < 1000; ++i) {
-        OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 100, 200, 200);
         auto result = OH_Drawing_CanvasQuickRejectRect(canvas, rect, &quickReject);
         EXPECT_EQ(result, OH_DRAWING_SUCCESS);
     }
@@ -474,37 +474,63 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNull, TestSize.
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
-    OH_Drawing_PixelMap* pixelmap = OH_Drawing_PixelMapCreate();
-    EXPECT_NE(pixelmap, nullptr);
+    OH_Drawing_CanvasClear(canvas, 0xFFFFFFFF);
+    OH_Pixelmap_InitializationOptions* createOps = nullptr;
+    auto ret = OH_PixelmapInitializationOptions_Create(&createOps);
+    int32_t imageWidth = 100;
+    int32_t imageHeight = 100;
+    OH_PixelmapInitializationOptions_SetWidth(createOps, imageWidth);
+    OH_PixelmapInitializationOptions_SetHeight(createOps, imageHeight);
+    OH_PixelmapInitializationOptions_SetPixelFormat(createOps, 3);    // 3 is RGBA fromat
+    OH_PixelmapInitializationOptions_SetSrcPixelFormat(createOps, 3); // 3 is RGBA fromat
+    OH_PixelmapInitializationOptions_SetAlphaType(createOps, 2);      // 2 is ALPHA_FORMAT_PREMUL
+    size_t bufferSize = imageWidth * imageHeight * 4;                 // 4 for test
+    void* bitmapAddr = malloc(bufferSize);
+    if (bitmapAddr == nullptr) {
+        return;
+    }
+    for (int i = 0; i < imageWidth * imageHeight; i++) {
+        ((uint32_t*)bitmapAddr)[i] = DRAW_COLORBLUE;
+    }
+    OH_PixelmapNative* pixelMapNative = nullptr;
+    OH_Drawing_SamplingOptions* samplingOptions =
+        OH_Drawing_SamplingOptionsCreate(FILTER_MODE_NEAREST, MIPMAP_MODE_NEAREST);
+    ret = OH_PixelmapNative_CreatePixelmap((uint8_t*)bitmapAddr, bufferSize, createOps, &pixelMapNative);
+    OH_Drawing_PixelMap* pixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMapNative);
     OH_Drawing_Rect* center = OH_Drawing_RectCreate(0, 0, 100, 100);
     EXPECT_NE(center, nullptr);
     OH_Drawing_Rect* dstRect = OH_Drawing_RectCreate(0, 0, 200, 200);
     EXPECT_NE(dstRect, nullptr);
 
     // canvas参数传nullptr
-    auto result = OH_Drawing_CanvasDrawPixelMapNine(nullptr, pixelmap, center, dstRect,
+    auto result1 = OH_Drawing_CanvasDrawPixelMapNine(nullptr, pixelMap, center, dstRect,
         OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
-    EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(result1, OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // pixelmap参数传nullptr
-    result = OH_Drawing_CanvasDrawPixelMapNine(canvas, nullptr, center, dstRect,
+    auto result2 = OH_Drawing_CanvasDrawPixelMapNine(canvas, nullptr, center, dstRect,
         OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
-    EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(result2, OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // center参数传nullptr
-    result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelmap, nullptr, dstRect,
+    auto result3 = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelMap, nullptr, dstRect,
         OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
-    EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(result3, OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // dstRect参数传nullptr
-    result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelmap, center, nullptr,
+    auto result4 = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelMap, center, nullptr,
         OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
-    EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(result4, OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // 调用销毁函数销毁指针
+    OH_Drawing_SamplingOptionsDestroy(samplingOptions);
+    OH_PixelmapNative_Release(pixelMapNative);
+    free(bitmapAddr);
+    OH_PixelmapInitializationOptions_Release(createOps);
+    OH_Drawing_CanvasDetachPen(canvas);
+    OH_Drawing_CanvasDetachBrush(canvas);
     OH_Drawing_RectDestroy(dstRect);
     OH_Drawing_RectDestroy(center);
-    OH_Drawing_PixelMapDestroy(pixelmap);
     OH_Drawing_CanvasDestroy(canvas);
 }
 
@@ -520,8 +546,29 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNormal, TestSiz
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
-    OH_Drawing_PixelMap* pixelmap = OH_Drawing_PixelMapCreate();
-    EXPECT_NE(pixelmap, nullptr);
+    OH_Drawing_CanvasClear(canvas, 0xFFFFFFFF);
+    OH_Pixelmap_InitializationOptions* createOps = nullptr;
+    auto ret = OH_PixelmapInitializationOptions_Create(&createOps);
+    int32_t imageWidth = 100;
+    int32_t imageHeight = 100;
+    OH_PixelmapInitializationOptions_SetWidth(createOps, imageWidth);
+    OH_PixelmapInitializationOptions_SetHeight(createOps, imageHeight);
+    OH_PixelmapInitializationOptions_SetPixelFormat(createOps, 3);    // 3 is RGBA fromat
+    OH_PixelmapInitializationOptions_SetSrcPixelFormat(createOps, 3); // 3 is RGBA fromat
+    OH_PixelmapInitializationOptions_SetAlphaType(createOps, 2);      // 2 is ALPHA_FORMAT_PREMUL
+    size_t bufferSize = imageWidth * imageHeight * 4;                 // 4 for test
+    void* bitmapAddr = malloc(bufferSize);
+    if (bitmapAddr == nullptr) {
+        return;
+    }
+    for (int i = 0; i < imageWidth * imageHeight; i++) {
+        ((uint32_t*)bitmapAddr)[i] = DRAW_COLORBLUE;
+    }
+    OH_PixelmapNative* pixelMapNative = nullptr;
+    OH_Drawing_SamplingOptions* samplingOptions =
+        OH_Drawing_SamplingOptionsCreate(FILTER_MODE_NEAREST, MIPMAP_MODE_NEAREST);
+    ret = OH_PixelmapNative_CreatePixelmap((uint8_t*)bitmapAddr, bufferSize, createOps, &pixelMapNative);
+    OH_Drawing_PixelMap* pixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMapNative);
     OH_Drawing_Rect* center = OH_Drawing_RectCreate(0, 0, 100, 100);
     EXPECT_NE(center, nullptr);
     OH_Drawing_Rect* dstRect = OH_Drawing_RectCreate(0, 0, 200, 200);
@@ -533,9 +580,14 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNormal, TestSiz
     EXPECT_EQ(result, OH_DRAWING_SUCCESS);
 
     // 调用销毁函数销毁指针
+    OH_Drawing_SamplingOptionsDestroy(samplingOptions);
+    OH_PixelmapNative_Release(pixelMapNative);
+    free(bitmapAddr);
+    OH_PixelmapInitializationOptions_Release(createOps);
+    OH_Drawing_CanvasDetachPen(canvas);
+    OH_Drawing_CanvasDetachBrush(canvas);
     OH_Drawing_RectDestroy(dstRect);
     OH_Drawing_RectDestroy(center);
-    OH_Drawing_PixelMapDestroy(pixelmap);
     OH_Drawing_CanvasDestroy(canvas);
 }
 
@@ -551,8 +603,29 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineCalls, TestSize
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
-    OH_Drawing_PixelMap* pixelmap = OH_Drawing_PixelMapCreate();
-    EXPECT_NE(pixelmap, nullptr);
+    OH_Drawing_CanvasClear(canvas, 0xFFFFFFFF);
+    OH_Pixelmap_InitializationOptions* createOps = nullptr;
+    auto ret = OH_PixelmapInitializationOptions_Create(&createOps);
+    int32_t imageWidth = 100;
+    int32_t imageHeight = 100;
+    OH_PixelmapInitializationOptions_SetWidth(createOps, imageWidth);
+    OH_PixelmapInitializationOptions_SetHeight(createOps, imageHeight);
+    OH_PixelmapInitializationOptions_SetPixelFormat(createOps, 3);    // 3 is RGBA fromat
+    OH_PixelmapInitializationOptions_SetSrcPixelFormat(createOps, 3); // 3 is RGBA fromat
+    OH_PixelmapInitializationOptions_SetAlphaType(createOps, 2);      // 2 is ALPHA_FORMAT_PREMUL
+    size_t bufferSize = imageWidth * imageHeight * 4;                 // 4 for test
+    void* bitmapAddr = malloc(bufferSize);
+    if (bitmapAddr == nullptr) {
+        return;
+    }
+    for (int i = 0; i < imageWidth * imageHeight; i++) {
+        ((uint32_t*)bitmapAddr)[i] = DRAW_COLORBLUE;
+    }
+    OH_PixelmapNative* pixelMapNative = nullptr;
+    OH_Drawing_SamplingOptions* samplingOptions =
+        OH_Drawing_SamplingOptionsCreate(FILTER_MODE_NEAREST, MIPMAP_MODE_NEAREST);
+    ret = OH_PixelmapNative_CreatePixelmap((uint8_t*)bitmapAddr, bufferSize, createOps, &pixelMapNative);
+    OH_Drawing_PixelMap* pixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMapNative);
     OH_Drawing_Rect* center = OH_Drawing_RectCreate(0, 0, 100, 100);
     EXPECT_NE(center, nullptr);
     OH_Drawing_Rect* dstRect = OH_Drawing_RectCreate(0, 0, 200, 200);
@@ -566,9 +639,14 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineCalls, TestSize
     }
 
     // 调用销毁函数销毁指针
+    OH_Drawing_SamplingOptionsDestroy(samplingOptions);
+    OH_PixelmapNative_Release(pixelMapNative);
+    free(bitmapAddr);
+    OH_PixelmapInitializationOptions_Release(createOps);
+    OH_Drawing_CanvasDetachPen(canvas);
+    OH_Drawing_CanvasDetachBrush(canvas);
     OH_Drawing_RectDestroy(dstRect);
     OH_Drawing_RectDestroy(center);
-    OH_Drawing_PixelMapDestroy(pixelmap);
     OH_Drawing_CanvasDestroy(canvas);
 }
 

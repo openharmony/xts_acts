@@ -78,6 +78,7 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
 
   include_dirs = [
     "$comPath/rosen/modules/2d_engine",
+    "$comPath/interfaces/inner_api/common",
     "//third_party/googletest/googletest/include",
   ]
   enable_text_gine = true
