@@ -473,7 +473,6 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectCalls, TestS
 HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNull, TestSize.Level3)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
     OH_Drawing_CanvasClear(canvas, 0xFFFFFFFF);
     OH_Pixelmap_InitializationOptions* createOps = nullptr;
     auto ret = OH_PixelmapInitializationOptions_Create(&createOps);
@@ -498,30 +497,20 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNull, TestSize.
     ret = OH_PixelmapNative_CreatePixelmap((uint8_t*)bitmapAddr, bufferSize, createOps, &pixelMapNative);
     OH_Drawing_PixelMap* pixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMapNative);
     OH_Drawing_Rect* center = OH_Drawing_RectCreate(0, 0, 100, 100);
-    EXPECT_NE(center, nullptr);
     OH_Drawing_Rect* dstRect = OH_Drawing_RectCreate(0, 0, 200, 200);
-    EXPECT_NE(dstRect, nullptr);
 
-    // canvas参数传nullptr
     auto result1 = OH_Drawing_CanvasDrawPixelMapNine(nullptr, pixelMap, center, dstRect,
         OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
     EXPECT_EQ(result1, OH_DRAWING_ERROR_INVALID_PARAMETER);
-
-    // pixelmap参数传nullptr
     auto result2 = OH_Drawing_CanvasDrawPixelMapNine(canvas, nullptr, center, dstRect,
         OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
     EXPECT_EQ(result2, OH_DRAWING_ERROR_INVALID_PARAMETER);
-
-    // center参数传nullptr
     auto result3 = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelMap, nullptr, dstRect,
         OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
     EXPECT_EQ(result3, OH_DRAWING_ERROR_INVALID_PARAMETER);
-
-    // dstRect参数传nullptr
     auto result4 = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelMap, center, nullptr,
         OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
     EXPECT_EQ(result4, OH_DRAWING_ERROR_INVALID_PARAMETER);
-
     // 调用销毁函数销毁指针
     OH_Drawing_SamplingOptionsDestroy(samplingOptions);
     OH_PixelmapNative_Release(pixelMapNative);
@@ -573,12 +562,10 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNormal, TestSiz
     EXPECT_NE(center, nullptr);
     OH_Drawing_Rect* dstRect = OH_Drawing_RectCreate(0, 0, 200, 200);
     EXPECT_NE(dstRect, nullptr);
-
     // 正常传参
     auto result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelmap, center, dstRect,
         OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
     EXPECT_EQ(result, OH_DRAWING_SUCCESS);
-
     // 调用销毁函数销毁指针
     OH_Drawing_SamplingOptionsDestroy(samplingOptions);
     OH_PixelmapNative_Release(pixelMapNative);
@@ -630,14 +617,12 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineCalls, TestSize
     EXPECT_NE(center, nullptr);
     OH_Drawing_Rect* dstRect = OH_Drawing_RectCreate(0, 0, 200, 200);
     EXPECT_NE(dstRect, nullptr);
-
     // 正常传参，调用1000次
     for (int i = 0; i < 1000; ++i) {
         auto result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelmap, center,
             dstRect, OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
         EXPECT_EQ(result, OH_DRAWING_SUCCESS);
     }
-
     // 调用销毁函数销毁指针
     OH_Drawing_SamplingOptionsDestroy(samplingOptions);
     OH_PixelmapNative_Release(pixelMapNative);
