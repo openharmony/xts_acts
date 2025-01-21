@@ -37,6 +37,11 @@
 #include "drawing_shader_effect.h"
 #include "drawing_text_blob.h"
 #include "drawing_typeface.h"
+#include "drawing_pixel_map.h"
+#include "../../../multimedia/image_framework/include/image/pixelmap_native.h"
+#include "../../../multimedia/image_framework/include/image/image_source_native.h"
+
+
 
 using namespace testing;
 using namespace testing::ext;
@@ -563,7 +568,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNormal, TestSiz
     OH_Drawing_Rect* dstRect = OH_Drawing_RectCreate(0, 0, 200, 200);
     EXPECT_NE(dstRect, nullptr);
     // 正常传参
-    auto result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelmap, center, dstRect,
+    auto result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelMap, center, dstRect,
         OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
     EXPECT_EQ(result, OH_DRAWING_SUCCESS);
     // 调用销毁函数销毁指针
@@ -619,7 +624,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineCalls, TestSize
     EXPECT_NE(dstRect, nullptr);
     // 正常传参，调用1000次
     for (int i = 0; i < 1000; ++i) {
-        auto result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelmap, center,
+        auto result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelMap, center,
             dstRect, OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
         EXPECT_EQ(result, OH_DRAWING_SUCCESS);
     }
