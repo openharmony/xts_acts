@@ -20,7 +20,7 @@
 #include "drawing_gpu_context.h"
 #include "drawing_surface.h"
 #include "gtest/gtest.h"
-#include <native_window/external_window.h>
+#include "window.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -309,9 +309,8 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceGetCanvasBoundary, TestSize.Level0
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenNormal, TestSize.Level0) {
-    // 1、OH_Drawing_SurfaceCreateOnScreen正常入参调用2、释放内存
-    OH_Drawing_GpuContextOptions options{true};
-    gpuContext_ = OH_Drawing_GpuContextCreateFromGL(options);
+    // 1、OH_Drawing_SurfaceCreateOnScreen正常入参调用
+    gpuContext_ = OH_Drawing_GpuContextCreate();
     EXPECT_NE(gpuContext_, nullptr);
     const int32_t width = 4096;
     const int32_t height = 2160;
@@ -319,6 +318,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenNormal, TestSize.Lev
     // 1. OH_Drawing_SurfaceCreateOnScreen
     OHNativeWindow *nativeWindow_ = nullptr;
     surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, static_cast<void *>(nativeWindow_));
+    gpuCanvas_ = OH_Drawing_SurfaceGetCanvas(surface_);
     // 2. Free memory
     OH_Drawing_SurfaceDestroy(surface_);
 }
@@ -341,8 +341,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenNull, TestSize.Level
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // 2. OH_Drawing_SurfaceCreateOnScreen第二个参数传空
-    OH_Drawing_GpuContextOptions options{true};
-    gpuContext_ = OH_Drawing_GpuContextCreateFromGL(options);
+    gpuContext_ = OH_Drawing_GpuContextCreate();
     surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, nullptr, static_cast<void *>(nativeWindow_));
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. Free memory
@@ -359,8 +358,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenNull, TestSize.Level
  */
 HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenMultipleCalls, TestSize.Level3) {
     OHNativeWindow *nativeWindow_ = nullptr;
-    OH_Drawing_GpuContextOptions options{true};
-    gpuContext_ = OH_Drawing_GpuContextCreateFromGL(options);
+    gpuContext_ = OH_Drawing_GpuContextCreate();
     EXPECT_NE(gpuContext_, nullptr);
     const int32_t width = 4096;
     const int32_t height = 2160;
@@ -386,6 +384,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenMultipleCalls, TestS
     for (int index = 0; index < 10; ++index) {
         surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfos[index],
             static_cast<void *>(nativeWindow_));
+        EXPECT_NE(surface_, nullptr);
         // Free memory
         OH_Drawing_SurfaceDestroy(surface_);
     }
@@ -400,16 +399,18 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenMultipleCalls, TestS
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushNormal, TestSize.Level0) {
-    OH_Drawing_GpuContextOptions options{true};
-    gpuContext_ = OH_Drawing_GpuContextCreateFromGL(options);
+    OHNativeWindow *nativeWindow_ = nullptr;
+    gpuContext_ = OH_Drawing_GpuContextCreate();
     EXPECT_NE(gpuContext_, nullptr);
     // 1. OH_Drawing_SurfaceCreateFromGpuContext
     const int32_t width = 4096;
     const int32_t height = 2160;
     OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
-    surface_ = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext_, true, imageInfo);
+    surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, static_cast<void *>(nativeWindow_));
+    EXPECT_NE(surface_, nullptr);
     // 2. OH_Drawing_SurfaceFlush
-    OH_Drawing_SurfaceFlush(surface_);
+    auto result = OH_Drawing_SurfaceFlush(surface_);
+    EXPECT_EQ(result, OH_DRAWING_SUCCESS);
     // 3. Free memory
     OH_Drawing_SurfaceDestroy(surface_);
 }
@@ -447,7 +448,8 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushAbnormal, TestSize.Level3) {
     // 2. OH_Drawing_SurfaceCreateOnScreen
     surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, static_cast<void *>(nativeWindow_));
     // 3. OH_Drawing_SurfaceFlush
-    OH_Drawing_SurfaceFlush(surface_);
+    auto result = OH_Drawing_SurfaceFlush(surface_);
+    EXPECT_NE(result, OH_DRAWING_SUCCESS);
     // 4. Free memory
     OH_Drawing_SurfaceDestroy(surface_);
 }
@@ -461,8 +463,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushAbnormal, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushMultipleCalls, TestSize.Level3) {
-    OH_Drawing_GpuContextOptions options{true};
-    gpuContext_ = OH_Drawing_GpuContextCreateFromGL(options);
+    gpuContext_ = OH_Drawing_GpuContextCreate();
     EXPECT_NE(gpuContext_, nullptr);
     const int32_t width = 4096;
     const int32_t height = 2160;
@@ -478,12 +479,14 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushMultipleCalls, TestSize.Level
     // 1. OH_Drawing_CanvasDrawRect-OH_Drawing_SurfaceFlush循环调用10次
     for (int i = 0; i < 10; ++i) {
         OH_Drawing_CanvasDrawRect(canvas, rect);
-        OH_Drawing_SurfaceFlush(surface_);
+        auto result1 = OH_Drawing_SurfaceFlush(surface_);
+        EXPECT_EQ(result1, OH_DRAWING_SUCCESS);
     }
 
     // 2. OH_Drawing_SurfaceFlush直接循环调用10次
     for (int i = 0; i < 10; ++i) {
-        OH_Drawing_SurfaceFlush(surface_);
+        auto result2 = OH_Drawing_SurfaceFlush(surface_);
+        EXPECT_EQ(result2, OH_DRAWING_SUCCESS);
     }
     // 3. 创建不同surface（通过创建不同imageinfo）-OH_Drawing_SurfaceFlush循环调用10次
     OH_Drawing_ColorFormat formats[] = {
@@ -508,7 +511,8 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushMultipleCalls, TestSize.Level
     for (int index = 0; index < 10; ++index) {
         surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfos[index],
         static_cast<void *>(nativeWindow_));
-        OH_Drawing_SurfaceFlush(surface_);
+        auto result3 = OH_Drawing_SurfaceFlush(surface_);
+        EXPECT_EQ(result3, OH_DRAWING_SUCCESS);
     }
 
     OH_Drawing_SurfaceDestroy(surface_);

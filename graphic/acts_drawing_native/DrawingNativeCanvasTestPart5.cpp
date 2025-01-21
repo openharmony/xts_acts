@@ -70,7 +70,7 @@ class DrawingNativeCanvasPart5Test : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathNull, TestSize.Level3)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathNull, TestSize.Level3)
 {
     // OH_Drawing_CanvasCreate
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
@@ -81,16 +81,16 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathNull, TestSize.Lev
     bool quickReject = false;
 
     // canvas参数传nullptr
-    auto result = OH_Drawing_CanvasQuickRejectPath(nullptr, path, &quickReject);
-    EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    auto result1 = OH_Drawing_CanvasQuickRejectPath(nullptr, path, &quickReject);
+    EXPECT_EQ(result1, OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // path参数传nullptr
-    result = OH_Drawing_CanvasQuickRejectPath(canvas, nullptr, &quickReject);
-    EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    auto result2 = OH_Drawing_CanvasQuickRejectPath(canvas, nullptr, &quickReject);
+    EXPECT_EQ(result2, OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // quickReject参数传nullptr
-    result = OH_Drawing_CanvasQuickRejectPath(canvas, path, nullptr);
-    EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    auto result3 = OH_Drawing_CanvasQuickRejectPath(canvas, path, nullptr);
+    EXPECT_EQ(result3, OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // 调用销毁函数销毁指针
     OH_Drawing_PathDestroy(path);
@@ -105,7 +105,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathNull, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathNormal, TestSize.Level1)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathNormal, TestSize.Level1)
 {
     // OH_Drawing_CanvasCreate
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
@@ -117,21 +117,21 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathNormal, TestSize.L
 
     // 正常传参，path部分在画布内
     OH_Drawing_PathAddRect(path, -100, 100, 200, 300, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    auto result = OH_Drawing_CanvasQuickRejectPath(canvas, path, &quickReject);
+    auto result1 = OH_Drawing_CanvasQuickRejectPath(canvas, path, &quickReject);
     // add assert
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result1, OH_DRAWING_SUCCESS);
 
     // 正常传参，path在画布外
     OH_Drawing_PathAddRect(path, -100, 100, -200, 300, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    result = OH_Drawing_CanvasQuickRejectPath(canvas, path, &quickReject);
+    auto result2 = OH_Drawing_CanvasQuickRejectPath(canvas, path, &quickReject);
     // add assert
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result2, OH_DRAWING_SUCCESS);
 
     // 正常传参，path只有一个顶点与画布相接
     OH_Drawing_PathAddRect(path, -100, -100, 0, 0, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    result = OH_Drawing_CanvasQuickRejectPath(canvas, path, &quickReject);
+    auto result3 = OH_Drawing_CanvasQuickRejectPath(canvas, path, &quickReject);
     // add assert
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result3, OH_DRAWING_SUCCESS);
 
     // 调用销毁函数销毁指针
     OH_Drawing_PathDestroy(path);
@@ -146,7 +146,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathNormal, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 2
  */
-TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathCalls, TestSize.Level2)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathCalls, TestSize.Level2)
 {
     // OH_Drawing_CanvasCreate
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
@@ -161,7 +161,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathCalls, TestSize.Le
         OH_Drawing_PathAddRect(path, 100, 100, 200, 200, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
         auto result = OH_Drawing_CanvasQuickRejectPath(canvas, path, &quickReject);
         // add assert
-        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+        EXPECT_EQ(result, OH_DRAWING_SUCCESS);
     }
 
     // 调用销毁函数销毁指针
@@ -177,7 +177,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathCalls, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectNull, TestSize.Level3)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectNull, TestSize.Level3)
 {
     // OH_Drawing_CanvasCreate
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
@@ -188,16 +188,16 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectNull, TestSize.Lev
     bool quickReject = false;
 
     // canvas参数传nullptr
-    auto result = OH_Drawing_CanvasQuickRejectRect(nullptr, rect, &quickReject);
-    EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    auto result1 = OH_Drawing_CanvasQuickRejectRect(nullptr, rect, &quickReject);
+    EXPECT_EQ(result1, OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // rect参数传nullptr
-    result = OH_Drawing_CanvasQuickRejectRect(canvas, nullptr, &quickReject);
-    EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    auto result2 = OH_Drawing_CanvasQuickRejectRect(canvas, nullptr, &quickReject);
+    EXPECT_EQ(result2, OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // quickReject参数传nullptr
-    result = OH_Drawing_CanvasQuickRejectRect(canvas, rect, nullptr);
-    EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    auto result3 = OH_Drawing_CanvasQuickRejectRect(canvas, rect, nullptr);
+    EXPECT_EQ(result3, OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // 调用销毁函数销毁指针
     OH_Drawing_RectDestroy(rect);
@@ -212,7 +212,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectNull, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectNormal, TestSize.Level1)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectNormal, TestSize.Level1)
 {
     // OH_Drawing_CanvasCreate
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
@@ -222,20 +222,20 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectNormal, TestSize.L
     // 正常传参，rect部分在画布内
     OH_Drawing_Rect* rect1 = OH_Drawing_RectCreate(-100, 0, 300, 200);
     EXPECT_NE(rect1, nullptr);
-    auto result = OH_Drawing_CanvasQuickRejectRect(canvas, rect1, &quickReject);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    auto result1 = OH_Drawing_CanvasQuickRejectRect(canvas, rect1, &quickReject);
+    EXPECT_EQ(result1, OH_DRAWING_SUCCESS);
 
     // 正常传参，rect在画布外
     OH_Drawing_Rect* rect2 = OH_Drawing_RectCreate(-100, -100, -200, -200);
     EXPECT_NE(rect2, nullptr);
-    result = OH_Drawing_CanvasQuickRejectRect(canvas, rect2, &quickReject);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    auto result2 = OH_Drawing_CanvasQuickRejectRect(canvas, rect2, &quickReject);
+    EXPECT_EQ(result2, OH_DRAWING_SUCCESS);
 
     // 正常传参，rect比画布大包含画布
     OH_Drawing_Rect* rect3 = OH_Drawing_RectCreate(-20, -20, 999999, 999999);
     EXPECT_NE(rect3, nullptr);
-    result = OH_Drawing_CanvasQuickRejectRect(canvas, rect3, &quickReject);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    auto result3 = OH_Drawing_CanvasQuickRejectRect(canvas, rect3, &quickReject);
+    EXPECT_EQ(result3, OH_DRAWING_SUCCESS);
 
     // 调用销毁函数销毁指针
     OH_Drawing_RectDestroy(rect1);
@@ -252,7 +252,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectNormal, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 2
  */
-TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectCalls, TestSize.Level2)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectCalls, TestSize.Level2)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
@@ -262,7 +262,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectCalls, TestSize.Le
     for (int i = 0; i < 1000; ++i) {
         OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 100, 200, 200);
         auto result = OH_Drawing_CanvasQuickRejectRect(canvas, rect, &quickReject);
-        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+        EXPECT_EQ(result, OH_DRAWING_SUCCESS);
     }
 
     // 调用销毁函数销毁指针
@@ -278,7 +278,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectCalls, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterNull, TestSize.Level3)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterNull, TestSize.Level3)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
@@ -306,7 +306,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterNull, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterNormal, TestSize.Level1)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterNormal, TestSize.Level1)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
@@ -314,20 +314,20 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterNormal, TestSize
     // 正常传参，useCenter参数传true
     OH_Drawing_Rect* rect1 = OH_Drawing_RectCreate(0, 0, 100, 100);
     EXPECT_NE(rect1, nullptr);
-    auto result = OH_Drawing_CanvasDrawArcWithCenter(canvas, rect1, 0, 180, true);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    auto result1 = OH_Drawing_CanvasDrawArcWithCenter(canvas, rect1, 0, 180, true);
+    EXPECT_EQ(result1, OH_DRAWING_SUCCESS);
 
     // 正常传参，useCenter参数传true，起始角度小于0，扫描角度大于360
     OH_Drawing_Rect* rect2 = OH_Drawing_RectCreate(0, 0, 100, 100);
     EXPECT_NE(rect2, nullptr);
-    result = OH_Drawing_CanvasDrawArcWithCenter(canvas, rect2, -10.0, 650, true);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    auto result2 = OH_Drawing_CanvasDrawArcWithCenter(canvas, rect2, -10.0, 650, true);
+    EXPECT_EQ(result2, OH_DRAWING_SUCCESS);
 
     // 正常传参，useCenter参数传false，起始角度大于0，扫描角度小于0
     OH_Drawing_Rect* rect3 = OH_Drawing_RectCreate(0, 0, 100, 100);
     EXPECT_NE(rect3, nullptr);
-    result = OH_Drawing_CanvasDrawArcWithCenter(canvas, rect3, 66, -120, false);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    auto result3 = OH_Drawing_CanvasDrawArcWithCenter(canvas, rect3, 66, -120, false);
+    EXPECT_EQ(result3, OH_DRAWING_SUCCESS);
 
     // 调用销毁函数销毁指针
     OH_Drawing_RectDestroy(rect1);
@@ -344,7 +344,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterNormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 2
  */
-TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterCalls, TestSize.Level2)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterCalls, TestSize.Level2)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 100, 300, 300);
@@ -352,7 +352,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterCalls, TestSize.
     // 正常传参，rect在画布内，调用1000次
     for (int i = 0; i < 1000; ++i) {
         auto result = OH_Drawing_CanvasDrawArcWithCenter(canvas, rect, 0, 180, true);
-        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+        EXPECT_EQ(result, OH_DRAWING_SUCCESS);
     }
 
     // 调用销毁函数销毁指针
@@ -368,7 +368,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterCalls, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectNull, TestSize.Level3)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectNull, TestSize.Level3)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 200, 200);
@@ -404,7 +404,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectNull, TestSize
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectNormal, TestSize.Level1)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectNormal, TestSize.Level1)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 200, 200);
@@ -413,16 +413,16 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectNormal, TestSi
     OH_Drawing_RoundRect* inner = OH_Drawing_RoundRectCreate(rect1, 10, 10);
 
     // 正常传参，outer>inner
-    auto result = OH_Drawing_CanvasDrawNestedRoundRect(canvas, outer, inner);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    auto result1 = OH_Drawing_CanvasDrawNestedRoundRect(canvas, outer, inner);
+    EXPECT_EQ(result1, OH_DRAWING_SUCCESS);
 
     // 正常传参，outer<inner
     rect = OH_Drawing_RectCreate(50, 50, 100, 100);
     outer = OH_Drawing_RoundRectCreate(rect, 10, 10);
     rect1 = OH_Drawing_RectCreate(0, 0, 200, 200);
     inner = OH_Drawing_RoundRectCreate(rect1, 10, 10);
-    result = OH_Drawing_CanvasDrawNestedRoundRect(canvas, outer, inner);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    auto result2 = OH_Drawing_CanvasDrawNestedRoundRect(canvas, outer, inner);
+    EXPECT_EQ(result2, OH_DRAWING_SUCCESS);
 
     // 调用销毁函数销毁指针
     OH_Drawing_RoundRectDestroy(inner);
@@ -440,7 +440,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectNormal, TestSi
  * @tc.type  : Function
  * @tc.level : Level 2
  */
-TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectCalls, TestSize.Level2)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectCalls, TestSize.Level2)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 200, 200);
@@ -451,7 +451,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectCalls, TestSiz
     // 正常传参，rect在画布内，调用1000次
     for (int i = 0; i < 1000; ++i) {
         auto result = OH_Drawing_CanvasDrawNestedRoundRect(canvas, outer, inner);
-        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+        EXPECT_EQ(result, OH_DRAWING_SUCCESS);
     }
 
     // 调用销毁函数销毁指针
@@ -470,7 +470,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectCalls, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNull, TestSize.Level3)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNull, TestSize.Level3)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
@@ -516,7 +516,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNull, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNormal, TestSize.Level1)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNormal, TestSize.Level1)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
@@ -530,7 +530,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNormal, TestSize.
     // 正常传参
     auto result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelmap, center, dstRect,
         OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result, OH_DRAWING_SUCCESS);
 
     // 调用销毁函数销毁指针
     OH_Drawing_RectDestroy(dstRect);
@@ -547,7 +547,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNormal, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 2
  */
-TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineCalls, TestSize.Level2)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineCalls, TestSize.Level2)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
@@ -562,7 +562,7 @@ TEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineCalls, TestSize.L
     for (int i = 0; i < 1000; ++i) {
         auto result = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelmap, center,
             dstRect, OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
-        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+        EXPECT_EQ(result, OH_DRAWING_SUCCESS);
     }
 
     // 调用销毁函数销毁指针
