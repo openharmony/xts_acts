@@ -58,9 +58,9 @@ struct themePageList {
   build() {
     Column() {
       Column({ space: '8vp' }) {
-        Text(`未使用WithTheme`)
+        Text(`未使用WithTheme`).height('5%')
         // 点击按钮切换局部换肤
-        Button(`切换theme配色：${this.themeNames[this.themeIndex]}`)
+        Button(`切换theme配色：${this.themeNames[this.themeIndex]}`).height('5%')
           .onClick(() => {
             this.themeIndex = (this.themeIndex + 1) % themePageList.themeCount;
           }).key('themeClick')
@@ -71,7 +71,7 @@ struct themePageList {
             ListItem() {
               Text('' + item)
                 .width('100%')
-                .height(100)
+                .height('10%')
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
                 .borderRadius(10)
@@ -94,7 +94,7 @@ struct themePageList {
               ListItem() {
                 Text('' + item)
                   .width('100%')
-                  .height(100)
+                  .height('10%')
                   .fontSize(16)
                   .textAlign(TextAlign.Center)
                   .borderRadius(10)
