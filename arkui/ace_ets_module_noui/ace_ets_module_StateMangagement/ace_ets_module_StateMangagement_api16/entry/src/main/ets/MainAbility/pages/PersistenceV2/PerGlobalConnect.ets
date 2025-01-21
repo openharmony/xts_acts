@@ -16,15 +16,15 @@ import { PersistenceV2, Type } from '@ohos.arkui.StateManagement';
 
 @ObservedV2
 class PerSampleChild {
-  @Trace p1: number = 0;
-  p2: number = 10;
+  @Trace public p1: number = 0;
+  public p2: number = 10;
 }
 
 @ObservedV2
 export class PerSample {
   // 对于复杂对象需要@Type修饰，确保序列化成功
   @Type(PerSampleChild)
-  @Trace f: PerSampleChild = new PerSampleChild();
+  @Trace public f: PerSampleChild = new PerSampleChild();
 }
 
 // 接受序列化失败的回调
