@@ -23,6 +23,7 @@ import { BusinessError } from '@ohos.base';
 import eventEmitter from '@ohos.events.emitter';
 import { hdrCapability } from '@kit.ArkGraphics2D';
 import Common from './Common';
+const TAG = "avVideoRecorderTestOne: ";
 
 let commonFun = new Common();
 
