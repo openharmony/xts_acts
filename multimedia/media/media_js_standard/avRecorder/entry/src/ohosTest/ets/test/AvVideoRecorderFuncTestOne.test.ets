@@ -10545,16 +10545,22 @@ export function executeAVVideoRecorder() : boolean {
   }
 
   console.info(TAG + 'Enter getCameraManagerInstance');
-  mCameraManager = camera.getCameraManager(context);
-  if (isEmpty(mCameraManager)) {
-    console.info(TAG + "getCameraManager FAILED");
+  try {
+    mCameraManager = camera.getCameraManager(context);
+    if (isEmpty(mCameraManager)) {
+      console.info(TAG + "getCameraManager FAILED");
+      isExecute = false;
+      return isExecute;
+    }
+    console.info(TAG + 'Exit getCameraManagerInstance');
+    mCameraDevicesArray = mCameraManager.getSupportedCameras();
+    if (isEmpty(mCameraDevicesArray)) {
+      isSupportedCameras = false;
+    }
+  } catch (err) {
+    console.error(TAG + "getCameraManager FAILED. errorMessage:",err);
     isExecute = false;
     return isExecute;
-  }
-  console.info(TAG + 'Exit getCameraManagerInstance');
-  mCameraDevicesArray = mCameraManager.getSupportedCameras();
-  if (isEmpty(mCameraDevicesArray)) {
-    isSupportedCameras = false;
   }
   if (cameraAvailable && isSupportedCameras) {
     isExecute = true;
