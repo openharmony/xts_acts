@@ -17,6 +17,9 @@ import webview from '@ohos.web.webview';
 import Utils from '../../test/Utils';
 import business_error from '@ohos.base';
 import { BuilderNode, FrameNode, NodeController, NodeRenderType } from '@ohos.arkui.node';
+import window from '@ohos.window';
+import common from '@ohos.app.ability.common';
+import display from '@ohos.display';
 
 declare class Params {
   text : string
@@ -124,6 +127,16 @@ struct webViewObjectPositionReport {
   @State isChange: boolean = false;
   @State oldPosition: string = '';
   @State newPosition: string = '';
+  @State oldWindowOrientation: number = 0;
+
+  aboutToAppear () {
+    this.oldWindowOrientation = display.getDefaultDisplaySync().orientation;
+    console.log('oldWindowOrientation===>' + this.oldWindowOrientation);
+    let context = getContext(this) as common.UIAbilityContext;
+    window.getLastWindow(context).then((lastWindow) => {
+      lastWindow.setPreferredOrientation(window.Orientation.PORTRAIT);
+    })
+  }
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -131,6 +144,19 @@ struct webViewObjectPositionReport {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
+  }
+
+  onPageHide() {
+    let context = getContext(this) as common.UIAbilityContext;
+    if (this.oldWindowOrientation === 0) {
+      window.getLastWindow(context).then((lastWindow) => {
+        lastWindow.setPreferredOrientation(window.Orientation.PORTRAIT);
+      })
+    } else if (this.oldWindowOrientation === 1) {
+      window.getLastWindow(context).then((lastWindow) => {
+        lastWindow.setPreferredOrientation(window.Orientation.LANDSCAPE);
+      })
+    }
   }
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
