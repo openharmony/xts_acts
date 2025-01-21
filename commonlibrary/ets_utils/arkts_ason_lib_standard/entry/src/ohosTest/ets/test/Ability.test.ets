@@ -698,5 +698,195 @@ export default function abilityTest() {
       }
       done();
     })
+
+    /**
+     * @tc.number    : ASONTestClass039
+     * @tc.name      : ArkTS ASON stringify Map and Set
+     * @tc.desc      : ArkTS ASON stringify Map and Set
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass039", 0, async (done: Function) => {
+      let map = new Map<string | null | number | boolean, string | null | number | boolean>();
+      map.set("a1", "A1");
+      map.clear();
+      map.set(1, 1);
+      map.set(true, true);
+      let str = ArkTSUtils.ASON.stringify(map);
+      expect(str).assertEqual('{"1":1,"true":true}');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass040
+     * @tc.name      : ArkTS ASON stringify Map and Set
+     * @tc.desc      : ArkTS ASON stringify Map and Set
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass040", 0, async (done: Function) => {
+      let map = new collections.Map<string | null | number | boolean, string | null | number | boolean>();
+      map.set("a1", "A1");
+      map.clear();
+      map.set(1, 1);
+      map.set(true, true);
+      let str = ArkTSUtils.ASON.stringify(map);
+      expect(str).assertEqual('{"1":1,"true":true}');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass041
+     * @tc.name      : ArkTS ASON stringify Map and Set
+     * @tc.desc      : ArkTS ASON stringify Map and Set
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass041", 0, async (done: Function) => {
+      let set = new Set<string | null | number | boolean>();
+      set.add("a1");
+      set.clear();
+      set.add(1);
+      set.add(true);
+      let str = ArkTSUtils.ASON.stringify(set);
+      expect(str).assertEqual('[1,true]');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass042
+     * @tc.name      : ArkTS ASON stringify Map and Set
+     * @tc.desc      : ArkTS ASON stringify Map and Set
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass042", 0, async (done: Function) => {
+      let set = new collections.Set<string | null | number | boolean>();
+      set.add("a1");
+      set.clear();
+      set.add(1);
+      set.add(true);
+      let str = ArkTSUtils.ASON.stringify(set);
+      expect(str).assertEqual('[1,true]');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass043
+     * @tc.name      : ArkTS ASON stringify Map and Set undefined
+     * @tc.desc      : ArkTS ASON stringify Map and Set undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass043", 0, async (done: Function) => {
+      let map = new Map<string | null | number | boolean | undefined, string | null | number | boolean | undefined>();
+      map.set("a1", 1);
+      map.set(undefined, "a2");
+      map.set(null, undefined);
+      map.set(undefined, undefined);
+      map.set(undefined, null);
+      let str = ArkTSUtils.ASON.stringify(map);
+      expect(str).assertEqual('{"a1":1,"undefined":null}');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass044
+     * @tc.name      : ArkTS ASON stringify Map and Set undefined
+     * @tc.desc      : ArkTS ASON stringify Map and Set undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass044", 0, async (done: Function) => {
+      let map = new collections.Map<string | null | number | boolean | undefined, string | null | number | boolean | undefined>();
+      map.set("a1", 1);
+      map.set(undefined, "a2");
+      map.set(null, undefined);
+      map.set(undefined, undefined);
+      map.set(undefined, null);
+      let str = ArkTSUtils.ASON.stringify(map);
+      expect(str).assertEqual('{"a1":1,"undefined":null}');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass045
+     * @tc.name      : ArkTS ASON stringify Map and Set undefined
+     * @tc.desc      : ArkTS ASON stringify Map and Set undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass045", 0, async (done: Function) => {
+      let map = new HashMap<string | null | number | boolean | undefined, string | null | number | boolean | undefined>();
+      map.set("a1", 1);
+      map.set(null, undefined);
+      let str = ArkTSUtils.ASON.stringify(map);
+      expect(str).assertEqual('{"a1":1}');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass046
+     * @tc.name      : ArkTS ASON stringify Map and Set undefined
+     * @tc.desc      : ArkTS ASON stringify Map and Set undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass046", 0, async (done: Function) => {
+      let set = new Set<string | null | number | boolean | undefined>();
+      set.add("a1");
+      set.add(undefined);
+      set.add(1);
+      set.add(true);
+      let str = ArkTSUtils.ASON.stringify(set);
+      expect(str).assertEqual('["a1",null,1,true]');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass047
+     * @tc.name      : ArkTS ASON stringify Map and Set undefined
+     * @tc.desc      : ArkTS ASON stringify Map and Set undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass047", 0, async (done: Function) => {
+      let set = new collections.Set<string | null | number | boolean | undefined>();
+      set.add("a1");
+      set.add(undefined);
+      set.add(1);
+      set.add(true);
+      let str = ArkTSUtils.ASON.stringify(set);
+      expect(str).assertEqual('["a1",null,1,true]');
+      done();
+    })
+
+    /**
+     * @tc.number    : ASONTestClass048
+     * @tc.name      : ArkTS ASON stringify Map and Set undefined
+     * @tc.desc      : ArkTS ASON stringify Map and Set undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("ASONTestClass048", 0, async (done: Function) => {
+      let set = new HashSet<string | null | number | boolean | undefined>();
+      set.add("a1");
+      set.add(undefined);
+      set.add(1);
+      set.add(true);
+      let str = ArkTSUtils.ASON.stringify(set);
+      expect(str).assertEqual('["a1",1,null,true]');
+      done();
+    })
   })
 }
