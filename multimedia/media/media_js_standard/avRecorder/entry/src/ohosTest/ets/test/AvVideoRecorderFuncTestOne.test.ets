@@ -27,7 +27,7 @@ const TAG = "avVideoRecorderTestOne: ";
 
 let commonFun = new Common();
 
-export default function avVideoRecorderTestOne() {
+export function avVideoRecorderTestOne() {
   describe('avVideoRecorderTestOne', () => {
     let screen: boolean = false;
     let avRecorder: media.AVRecorder | null = null;
