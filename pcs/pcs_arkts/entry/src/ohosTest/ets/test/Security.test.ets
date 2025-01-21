@@ -55,6 +55,11 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testPermissionUserGrant0100', 0, async (done: Function) => {
+      if(!canIUse("SystemCapability.Multimedia.Camera.Core")) {
+        expect(true).assertTrue()
+        done()
+        return
+      }
       let permissions: Array<Permissions> = ['ohos.permission.CAMERA']
       await PermissionUtils.getPermission(abilityContext, permissions)
       await PermissionUtils.grantPermission()
