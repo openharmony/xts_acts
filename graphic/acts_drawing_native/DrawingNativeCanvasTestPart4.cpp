@@ -1527,7 +1527,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesNormal, TestSize.Le
         BLEND_MODE_MULTIPLY,   BLEND_MODE_HUE,        BLEND_MODE_SATURATION,  BLEND_MODE_COLOR,
         BLEND_MODE_LUMINOSITY,
     };
-    for (int i = 0; i < 30; i++) {
+    for (int i = 0; i < 29; i++) {
         OH_Drawing_ErrorCodeReset();
         OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 3, points_vertices, texs_vertices, colors, 3,
                                       indices, blendMode[i]);
