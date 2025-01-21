@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAceOpenWebPageEnhancedTestThree.hap"
+                "ActsWebOpenWebPageEnhancedThreeTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

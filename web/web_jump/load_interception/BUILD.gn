@@ -11,13 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsLoadInterceptionTest") {
+group("ActsWebLoadInterceptionTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "ace_load_interception_cloudservice_controller_group_six:ActsAceLoadInterceptionCloudServiceControllerGroupSixTest",
-      "ace_load_interception_enhanced_one:ActsAceLoadInterceptionEnhancedTest",
-      "ace_load_interception_enhanced_two:ActsAceLoadInterceptionEnhancedTestTwo",
+      "ace_load_interception_cloudservice_controller_group_six:ActsWebLoadInterceptionCloudServiceControllerGroupSixTest",
+      "ace_load_interception_enhanced_one:ActsWebLoadInterceptionEnhancedTest",
+      "ace_load_interception_enhanced_two:ActsWebLoadInterceptionEnhancedTwoTest",
     ]
   }
 }

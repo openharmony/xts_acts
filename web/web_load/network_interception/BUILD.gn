@@ -11,24 +11,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsNetworkInterceptionTest") {
+group("ActsWebNetworkInterceptionTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "ace_network_interception_cloudservice_controller:ActsAceNetworkInterceptionCloudServiceControllerTest",
-      "ace_network_interception_cloudservice_controller_enhanced:ActsAceNetworkInterceptionCloudServiceControllerEnhancedTest",
-      "ace_network_interception_cloudservice_controller_five:ActsAceNetworkInterceptionCloudServiceControllerFiveTest",
-      "ace_network_interception_cloudservice_controller_four:ActsAceNetworkInterceptionCloudServiceControllerFourTest",
-      "ace_network_interception_cloudservice_controller_group_nine:ActsAceNetworkInterceptionCloudServiceControllerGroupNineTest",
-      "ace_network_interception_cloudservice_controller_group_twelve:ActsAceNetworkInterceptionCloudServiceControllerGroupTwelveTest",
-      "ace_network_interception_dev:ActsAceNetworkInterceptionDevTest",
-      "ace_network_interception_dev_four:ActsAceNetworkInterceptionDevFourTest",
-      "ace_network_interception_enhanced_one:ActsAceNetworkInterceptionEnhancedTest",
-      "ace_network_interception_enhanced_two:ActsAceNetworkInterceptionEnhancedTestTwo",
-      "ace_network_interception_webController:ActsAceNetworkInterceptionWebControllerTest",
-      "ace_network_interception_web_scheme_handler_four_napis:ActsAceNetworkInterceptionNativeWebSchemeHandlerFourTest",
-      "ace_network_interception_web_scheme_handler_napis:ActsAceNetworkInterceptionNativeWebSchemeHandlerOneTest",
-      "ace_network_interception_webviewController:ActsAceNetworkInterceptionWebViewControllerTest",
+      "ace_network_interception_cloudservice_controller:ActsWebNetworkInterceptionCloudServiceControllerTest",
+      "ace_network_interception_cloudservice_controller_enhanced:ActsWebNetworkInterceptionCloudServiceControllerEnhancedTest",
+      "ace_network_interception_cloudservice_controller_five:ActsWebNetworkInterceptionCloudServiceControllerFiveTest",
+      "ace_network_interception_cloudservice_controller_four:ActsWebNetworkInterceptionCloudServiceControllerFourTest",
+      "ace_network_interception_cloudservice_controller_group_nine:ActsWebNetworkInterceptionCloudServiceControllerGroupNineTest",
+      "ace_network_interception_cloudservice_controller_group_twelve:ActsWebNetworkInterceptionCloudServiceControllerGroupTwelveTest",
+      "ace_network_interception_dev:ActWebNetworkInterceptionDevTest",
+      "ace_network_interception_dev_four:ActsWebNetworkInterceptionDevFourTest",
+      "ace_network_interception_enhanced_one:ActsWebNetworkInterceptionEnhancedTest",
+      "ace_network_interception_enhanced_two:ActsWebNetworkInterceptionEnhancedTwoTest",
+      "ace_network_interception_webController:ActsWebNetworkInterceptionWebControllerTest",
+      "ace_network_interception_web_scheme_handler_four_napis:ActsWebNetworkInterceptionNativeWebSchemeHandlerFourTest",
+      "ace_network_interception_web_scheme_handler_napis:ActsWebNetworkInterceptionNativeWebSchemeHandlerOneTest",
+      "ace_network_interception_webviewController:ActsWebNetworkInterceptionWebViewControllerTest",
     ]
   }
 }

@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceNetworkInterceptionCloudServiceControllerTest.hap"
+            "ActsWebNetworkInterceptionCloudServiceControllerTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

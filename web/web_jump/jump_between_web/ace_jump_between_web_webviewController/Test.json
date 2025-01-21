@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAceJumpBetweenWebWebViewControllerTest.hap"
+                "ActsWebJumpBetweenWebWebViewControllerTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

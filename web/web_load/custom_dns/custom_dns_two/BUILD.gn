@@ -13,10 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsCustomDnsTwoTest") {
+ohos_js_app_suite("ActsWebCustomDnsTwoTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsCustomDnsTwoTest"
+  hap_name = "ActsWebCustomDnsTwoTest"
   part_name = "webview"
 }

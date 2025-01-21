@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsCustomDnsTwoTest.hap"
+                "ActsWebCustomDnsTwoTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
