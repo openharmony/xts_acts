@@ -49,7 +49,6 @@ struct APIsetOnTouch {
       Text("this is a Text").key('APIsetOnTouchText01')
         .fontSize(16)
         .borderWidth(1)
-        //.margin({top: 40})
 
       Text(this.text1).key('APIsetOnTouchText02')
         .fontWeight(700).fontColor(Color.Green)
