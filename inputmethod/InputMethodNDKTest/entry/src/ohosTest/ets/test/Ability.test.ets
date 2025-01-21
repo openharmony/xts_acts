@@ -9,31 +9,26 @@ export default function abilityTest() {
   describe('ActsAbilityTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(async(done: Function) => {
-      if(deviceinfo.deviceType === 'wearable'){
-        let inputMethodSetting = inputMethod.getSetting();
-        console.info('====> getSetting success!')
-        inputMethodSetting.listInputMethod((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
-          let t = setTimeout(async ()=>{
-            console.info('====>Succeeded in listing inputMethod: ' + JSON.stringify(data));
-            const ATTRIBUTE: inputMethod.TextConfig = {
-              inputAttribute: {
-                textInputType: 0, enterKeyType: 0
-              }
+      let inputMethodSetting = inputMethod.getSetting();
+      console.info('====> getSetting success!')
+      inputMethodSetting.listInputMethod((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
+        let t = setTimeout(async ()=>{
+          console.info('====>Succeeded in listing inputMethod: ' + JSON.stringify(data));
+          const ATTRIBUTE: inputMethod.TextConfig = {
+            inputAttribute: {
+              textInputType: 0, enterKeyType: 0
             }
-            try {
-              let data = await inputMethod.getController().attach(false, ATTRIBUTE);
-              console.info(`====> execution success, data: ${JSON.stringify(data)}`);
-            } catch (error) {
-              console.info(`====> catch error, error: [${error.code}, ${error.message}]`);
-            }
-            clearTimeout(t);
-            done();
-          }, 3000)
-        });
-      }else{
-        console.info('====>deviceType is not wearable!')
-        done();
-      }
+          }
+          try {
+            let data = await inputMethod.getController().attach(false, ATTRIBUTE);
+            console.info(`====> execution success, data: ${JSON.stringify(data)}`);
+          } catch (error) {
+            console.info(`====> catch error, error: [${error.code}, ${error.message}]`);
+          }
+          clearTimeout(t);
+          done();
+        }, 3000)
+      });
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
