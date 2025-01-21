@@ -19,6 +19,8 @@
 #include "drawing_error_code.h"
 #include "drawing_gpu_context.h"
 #include "drawing_surface.h"
+#include "drawing_canvas.h"
+#include "drawing_rect.h"
 #include "gtest/gtest.h"
 
 using namespace testing;
@@ -42,6 +44,7 @@ class DrawingNativeSurFaceTest : public testing::Test {
     OH_Drawing_GpuContext *gpuContext_ = nullptr;
     OH_Drawing_Surface *surface_ = nullptr;
     OH_Drawing_Canvas *canvas_ = nullptr;
+    
 };
 
 void DrawingNativeSurFaceTest::SetUpTestCase() {}
@@ -316,7 +319,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenNormal, TestSize.Lev
     OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     // 1. OH_Drawing_SurfaceCreateOnScreen
     surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, nullptr);
-    gpuCanvas_ = OH_Drawing_SurfaceGetCanvas(surface_);
+    canvas_ = OH_Drawing_SurfaceGetCanvas(surface_);
     // 2. Free memory
     OH_Drawing_SurfaceDestroy(surface_);
 }
@@ -339,7 +342,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenNull, TestSize.Level
 
     // 2. OH_Drawing_SurfaceCreateOnScreen第二个参数传空
     gpuContext_ = OH_Drawing_GpuContextCreate();
-    surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, nullptr, nullptr);
+    surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, NULL, nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. Free memory
     OH_Drawing_SurfaceDestroy(surface_);

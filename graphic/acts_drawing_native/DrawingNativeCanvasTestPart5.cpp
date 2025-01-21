@@ -38,10 +38,8 @@
 #include "drawing_text_blob.h"
 #include "drawing_typeface.h"
 #include "drawing_pixel_map.h"
-#include "../../../multimedia/image_framework/include/image/pixelmap_native.h"
-#include "../../../multimedia/image_framework/include/image/image_source_native.h"
-
-
+#include "image/pixelmap_native.h"
+#include "image/image_source_native.h"
 
 using namespace testing;
 using namespace testing::ext;
