@@ -20,6 +20,7 @@
 #include "drawing_gpu_context.h"
 #include "drawing_surface.h"
 #include "gtest/gtest.h"
+#include <native_window/external_window.h>
 
 using namespace testing;
 using namespace testing::ext;
@@ -505,9 +506,9 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushMultipleCalls, TestSize.Level
     }
 
     for (int index = 0; index < 10; ++index) {
-      surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfos[index],
+        surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfos[index],
         static_cast<void *>(nativeWindow_));
-      OH_Drawing_SurfaceFlush(surface_);
+        OH_Drawing_SurfaceFlush(surface_);
     }
 
     OH_Drawing_SurfaceDestroy(surface_);
