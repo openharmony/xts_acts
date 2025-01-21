@@ -26,7 +26,7 @@ struct Index {
          Row() {
            Column() {
              Text(this.message)
-               .fontSize(50)
+               .fontSize("2%")
                .fontWeight(FontWeight.Bold)
              Button() {
                Text('next page')
