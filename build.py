@@ -71,7 +71,7 @@ class XtsBuild:
                 self.usage()
                 return -1
         if cmdline.get('target_subsystem'):
-            os.environ['target_subsystem'] = ''
+            os.environ['target_subsystem'] = cmdline.get('target_subsystem')
 
         # print("args_dict = {}".format(cmdline))
         self._gn_args['build_xts'] = 'true'
