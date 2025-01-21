@@ -21,6 +21,15 @@ import editMenuOptions from './TextTest/editMenuOptions.test';
 import marqueeOptionsTest1 from './TextTest/marqueeOptions1.test';
 import marqueeOptionsTest2 from './TextTest/marqueeOptions2.test';
 
+import textAreaEllipsisModeTest from './EllipsisModeTest/textAreaEllipsisModeTest.test';
+import textInputEllipsisModeTest from './EllipsisModeTest/textInputEllipsisModeTest.test';
+import searchFontScaleTest from './FontScaleTest/searchFontScaleTest.test';
+import textAreaFontScaleTest from './FontScaleTest/textAreaFontScaleTest.test';
+import textInputFontScaleTest from './FontScaleTest/textInputFontScaleTest.test';
+import searchHalfLeadingTest from './HalfLeadingTest/searchHalfLeadingTest.test';
+import textAreaHalfLeadingTest from './HalfLeadingTest/textAreaHalfLeadingTest.test';
+import textInputHalfLeadingTest from './HalfLeadingTest/textInputHalfLeadingTest.test';
+
 export default function testsuite() {
   textAreaInputTest();
   preventDefault();
@@ -29,4 +38,13 @@ export default function testsuite() {
   editMenuOptions();
   marqueeOptionsTest1();
   marqueeOptionsTest2();
+  
+  textAreaEllipsisModeTest();
+  textInputEllipsisModeTest();
+  searchFontScaleTest();
+  textAreaFontScaleTest();
+  textInputFontScaleTest();
+  searchHalfLeadingTest();
+  textAreaHalfLeadingTest();
+  textInputHalfLeadingTest();
 }

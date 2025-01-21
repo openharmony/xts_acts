@@ -7,6 +7,14 @@
     "MainAbility/pages/Text/minMaxFontSize",
     "MainAbility/pages/Text/editMenuOptions",
     "MainAbility/pages/Text/marqueeOptions1",
-    "MainAbility/pages/Text/marqueeOptions2"
+    "MainAbility/pages/Text/marqueeOptions2",
+    "MainAbility/pages/FontScaleTest/searchFontScaleTest",
+    "MainAbility/pages/FontScaleTest/textAreaFontScaleTest",
+    "MainAbility/pages/FontScaleTest/textInputFontScaleTest",
+    "MainAbility/pages/HalfLeadingTest/searchHalfLeadingTest",
+    "MainAbility/pages/HalfLeadingTest/textAreaHalfLeadingTest",
+    "MainAbility/pages/HalfLeadingTest/textInputHalfLeadingTest",
+    "MainAbility/pages/EllipsisModeTest/textAreaEllipsisModeTest",
+    "MainAbility/pages/EllipsisModeTest/textInputEllipsisModeTest"
   ]
 }
