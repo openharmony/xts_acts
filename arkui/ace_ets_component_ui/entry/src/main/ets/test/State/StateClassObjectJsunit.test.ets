@@ -13,18 +13,31 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function StateClassObjectJsunit() {
-  describe('StateClassObjectJsunit', function () {
-    beforeEach(async function (done) {
+  describe('StateClassObjectJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("StateClassObjectJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/StateClassObject',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/StateClassObject',
       }
       try {
         router.clear();
@@ -32,7 +45,7 @@ export default function StateClassObjectJsunit() {
         console.info("get StateClassObjectJsunit state pages: " + JSON.stringify(pages));
         if (!("StateClassObject" == pages.name)) {
           console.info("get StateClassObjectJsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push StateClassObjectJsunit success: " + JSON.stringify(result));
         }
@@ -42,22 +55,24 @@ export default function StateClassObjectJsunit() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
-      router.back({uri:"MainAbility/pages/index/index"});
+      router.back({
+        url: "MainAbility/pages/index/index"
+      });
     });
 
-    it('StateClassObjectJsunit_0100', 0, async function (done) {
+    it('StateClassObjectJsunit_0100', 0, async (done: Function) => {
 
       console.info('StateClassObjectJsunit_0100 START');
       let strJson1 = getInspectorByKey('text_Object');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StateClassObjectJsunit_0100] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StateClassObjectJsunit_0100] title: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("Hello");
 
       let strJson2 = getInspectorByKey('text_Class');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StateClassObjectJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StateClassObjectJsunit_0100] title: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("World");
@@ -66,7 +81,7 @@ export default function StateClassObjectJsunit() {
       done();
     });
 
-    it('StateClassObjectJsunit_0200', 0, async function (done) {
+    it('StateClassObjectJsunit_0200', 0, async (done: Function) => {
 
       console.info('StateClassObjectJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -74,13 +89,13 @@ export default function StateClassObjectJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('text_Object');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StateClassObjectJsunit_0200] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StateClassObjectJsunit_0200] title: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("Hi");
 
       let strJson2 = getInspectorByKey('text_Class');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StateClassObjectJsunit_0200] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StateClassObjectJsunit_0200] title: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("ArkUI");
@@ -89,7 +104,7 @@ export default function StateClassObjectJsunit() {
       done();
     });
 
-    it('StateClassObjectJsunit_0300', 0, async function (done) {
+    it('StateClassObjectJsunit_0300', 0, async (done: Function) => {
 
       console.info('StateClassObjectJsunit_0300 START');
       let driver = await UiDriver.create()
@@ -97,7 +112,7 @@ export default function StateClassObjectJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_Object');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateClassObjectJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[StateClassObjectJsunit_0300] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Hello ArkUI");
@@ -105,7 +120,7 @@ export default function StateClassObjectJsunit() {
       done();
     });
 
-    it('StateClassObjectJsunit_0400', 0, async function (done) {
+    it('StateClassObjectJsunit_0400', 0, async (done: Function) => {
 
       console.info('StateClassObjectJsunit_0400 START');
       let driver = await UiDriver.create()
@@ -113,7 +128,7 @@ export default function StateClassObjectJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_Class');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateClassObjectJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[StateClassObjectJsunit_0400] name: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Harmony");

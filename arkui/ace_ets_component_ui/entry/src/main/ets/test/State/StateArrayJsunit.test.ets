@@ -13,18 +13,31 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function StateArrayJsunit() {
-  describe('StateArrayJsunit', function () {
-    beforeEach(async function (done) {
+  describe('StateArrayJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("StateArrayJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/StateArray',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/StateArray',
       }
       try {
         router.clear();
@@ -32,7 +45,7 @@ export default function StateArrayJsunit() {
         console.info("get StateArrayJsunit state pages: " + JSON.stringify(pages));
         if (!("StateArray" == pages.name)) {
           console.info("get StateArrayJsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push StateArrayJsunit success: " + JSON.stringify(result));
         }
@@ -42,20 +55,20 @@ export default function StateArrayJsunit() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
-      await CommonFunc.sleep(500);      
+      await CommonFunc.sleep(500);
       let button = await driver.findComponent(ON.id('StateArray_reset'));
       await button.click();
       console.log('reset button click succ')
       await CommonFunc.sleep(1000);
     });
 
-    it('StateArrayJsunit_0100', 0, async function (done) {
+    it('StateArrayJsunit_0100', 0, async (done: Function) => {
 
       console.info('StateArrayJsunit_0100 START');
       let strJson = getInspectorByKey('text_Array');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArrayJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateArrayJsunit_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('title：[{"value":11},{"value":1}]');
@@ -63,7 +76,7 @@ export default function StateArrayJsunit() {
       done();
     });
 
-    it('StateArrayJsunit_0200', 0, async function (done) {
+    it('StateArrayJsunit_0200', 0, async (done: Function) => {
 
       console.info('StateArrayJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -71,7 +84,7 @@ export default function StateArrayJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_Array');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArrayJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[StateArrayJsunit_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('title：[{"value":8},{"value":1}]');
@@ -79,7 +92,7 @@ export default function StateArrayJsunit() {
       done();
     });
 
-    it('StateArrayJsunit_0300', 0, async function (done) {
+    it('StateArrayJsunit_0300', 0, async (done: Function) => {
 
       console.info('StateArrayJsunit_0300 START');
       let driver = await UiDriver.create()
@@ -87,7 +100,7 @@ export default function StateArrayJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_Array');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArrayJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[StateArrayJsunit_0300] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('title：[{"value":11}]');
@@ -95,7 +108,7 @@ export default function StateArrayJsunit() {
       done();
     });
 
-    it('StateArrayJsunit_0400', 0, async function (done) {
+    it('StateArrayJsunit_0400', 0, async (done: Function) => {
 
       console.info('StateArrayJsunit_0400 START');
       let driver = await UiDriver.create()
@@ -103,7 +116,7 @@ export default function StateArrayJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_Array');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArrayJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[StateArrayJsunit_0400] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('title：[{"value":11},{"value":1},{"value":12}]');
@@ -111,11 +124,11 @@ export default function StateArrayJsunit() {
       done();
     });
 
-    it('StateArrayJsunit_0500', 0, async function (done) {
+    it('StateArrayJsunit_0500', 0, async (done: Function) => {
 
       console.info('StateArrayJsunit_0500 START');
       let strJson = getInspectorByKey('text_ClassA');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArrayJsunit_0500] component obj is: " + JSON.stringify(obj));
       console.info("[StateArrayJsunit_0500] ClassA: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('ClassA：{"value":"Hello","data":{"value":6}}');
@@ -123,7 +136,7 @@ export default function StateArrayJsunit() {
       done();
     });
 
-    it('StateArrayJsunit_0600', 0, async function (done) {
+    it('StateArrayJsunit_0600', 0, async (done: Function) => {
 
       console.info('StateArrayJsunit_0600 START');
       let driver = await UiDriver.create()
@@ -131,7 +144,7 @@ export default function StateArrayJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_ClassA');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArrayJsunit_0600] component obj is: " + JSON.stringify(obj));
       console.info("[StateArrayJsunit_0600] ClassA: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('ClassA：{"value":"World","data":{"value":6}}');
@@ -139,7 +152,7 @@ export default function StateArrayJsunit() {
       done();
     });
 
-    it('StateArrayJsunit_0700', 0, async function (done) {
+    it('StateArrayJsunit_0700', 0, async (done: Function) => {
 
       console.info('StateArrayJsunit_0700 START');
       let driver = await UiDriver.create()
@@ -147,7 +160,7 @@ export default function StateArrayJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_ClassA');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArrayJsunit_0700] component obj is: " + JSON.stringify(obj));
       console.info("[StateArrayJsunit_0700] ClassA: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('ClassA：{"value":"Hello","data":{"value":8}}');

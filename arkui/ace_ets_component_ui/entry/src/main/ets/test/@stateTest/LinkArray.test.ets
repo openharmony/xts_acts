@@ -13,18 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
-
+import router from '@ohos.router';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 export default function LinkArray() {
-  describe('LinkArray', function () {
-    beforeEach(async function (done) {
+  describe('LinkArray', () => {
+    beforeEach(async (done: Function) => {
       console.info("LinkArray beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/@state/LinkArray',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/@state/LinkArray',
       }
       try {
         router.clear();
@@ -32,7 +43,7 @@ export default function LinkArray() {
         console.info("get LinkArray state pages: " + JSON.stringify(pages));
         if (!("LinkArray" == pages.name)) {
           console.info("get LinkArray state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push LinkArray success: " + JSON.stringify(result));
         }
@@ -48,7 +59,7 @@ export default function LinkArray() {
     * @tc.desc  : To test that the Link decorator supports union types.
     * @tc.level : Level 2
     */
-    it('LinkArray_0100', 0, async function (done) {
+    it('LinkArray_0100', 0, async (done: Function) => {
       console.info('LinkArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -56,7 +67,7 @@ export default function LinkArray() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('LinkArray');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[LinkArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[LinkArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is [10]');
@@ -69,7 +80,7 @@ export default function LinkArray() {
     * @tc.desc  : To test that the Link decorator supports union types.
     * @tc.level : Level 2
     */
-    it('LinkArray_0200', 0, async function (done) {
+    it('LinkArray_0200', 0, async (done: Function) => {
       console.info('LinkArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -77,7 +88,7 @@ export default function LinkArray() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('LinkArray');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[LinkArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[LinkArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is [true]');
@@ -90,7 +101,7 @@ export default function LinkArray() {
     * @tc.desc  : To test that the Link decorator supports union types.
     * @tc.level : Level 2
     */
-    it('LinkArray_0300', 0, async function (done) {
+    it('LinkArray_0300', 0, async (done: Function) => {
       console.info('LinkArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -98,7 +109,7 @@ export default function LinkArray() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('LinkArray');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[LinkArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[LinkArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Boolean]" number is true');
@@ -111,7 +122,7 @@ export default function LinkArray() {
     * @tc.desc  : To test that the Link decorator supports union types.
     * @tc.level : Level 2
     */
-    it('LinkArray_0400', 0, async function (done) {
+    it('LinkArray_0400', 0, async (done: Function) => {
       console.info('LinkArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -119,15 +130,13 @@ export default function LinkArray() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('LinkArrayNew');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[LinkArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[LinkArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is 200');
       console.info('[LinkArray_0100] END');
       done();
     });
-
-
 
   })
 }

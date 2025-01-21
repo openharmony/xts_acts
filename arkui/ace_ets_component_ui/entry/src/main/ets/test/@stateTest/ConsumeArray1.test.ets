@@ -13,18 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
-
+import router from '@ohos.router';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 export default function ConsumeArray1() {
-  describe('ConsumeArray1', function () {
-    beforeEach(async function (done) {
+  describe('ConsumeArray1', () => {
+    beforeEach(async (done: Function) => {
       console.info("ConsumeArray1 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/@state/ConsumeArray1',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/@state/ConsumeArray1',
       }
       try {
         router.clear();
@@ -32,7 +43,7 @@ export default function ConsumeArray1() {
         console.info("get ConsumeArray1 state pages: " + JSON.stringify(pages));
         if (!("ConsumeArray1" == pages.name)) {
           console.info("get ConsumeArray1 state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push ConsumeArray1 success: " + JSON.stringify(result));
         }
@@ -43,14 +54,13 @@ export default function ConsumeArray1() {
       done();
     });
 
-
-     /* *
-    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_1110
-    * @tc.name  : ConsumeArray_0500
-    * @tc.desc  : To test that the Consume decorator supports union types.
-    * @tc.level : Level 2
-    */
-    it('ConsumeArray_0500', 0, async function (done) {
+    /* *
+   * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_1110
+   * @tc.name  : ConsumeArray_0500
+   * @tc.desc  : To test that the Consume decorator supports union types.
+   * @tc.level : Level 2
+   */
+    it('ConsumeArray_0500', 0, async (done: Function) => {
       console.info('ConsumeArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -58,20 +68,20 @@ export default function ConsumeArray1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ConsumeArray1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ConsumeArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ConsumeArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is [10]');
       console.info('[ConsumeArray_0100] END');
       done();
     });
-      /* *
-    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_1120
-    * @tc.name  : ConsumeArray_0600
-    * @tc.desc  : To test that the Consume decorator supports union types.
-    * @tc.level : Level 2
-    */
-    it('ConsumeArray_0600', 0, async function (done) {
+    /* *
+  * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_1120
+  * @tc.name  : ConsumeArray_0600
+  * @tc.desc  : To test that the Consume decorator supports union types.
+  * @tc.level : Level 2
+  */
+    it('ConsumeArray_0600', 0, async (done: Function) => {
       console.info('ConsumeArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -79,20 +89,20 @@ export default function ConsumeArray1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ConsumeArray1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ConsumeArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ConsumeArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Date]" number is "2021-08-08T00:00:00.000Z"');
       console.info('[ConsumeArray_0100] END');
       done();
     });
-      /* *
-    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_1130
-    * @tc.name  : ConsumeArray_0700
-    * @tc.desc  : To test that the Consume decorator supports union types.
-    * @tc.level : Level 2
-    */
-    it('ConsumeArray_0700', 0, async function (done) {
+    /* *
+  * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_1130
+  * @tc.name  : ConsumeArray_0700
+  * @tc.desc  : To test that the Consume decorator supports union types.
+  * @tc.level : Level 2
+  */
+    it('ConsumeArray_0700', 0, async (done: Function) => {
       console.info('ConsumeArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -100,20 +110,20 @@ export default function ConsumeArray1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ConsumeArray1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ConsumeArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ConsumeArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is ["20"]');
       console.info('[ConsumeArray_0100] END');
       done();
     });
-      /* *
-    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_1140
-    * @tc.name  : ConsumeArray_0800
-    * @tc.desc  : To test that the Consume decorator supports union types.
-    * @tc.level : Level 2
-    */
-    it('ConsumeArray_0800', 0, async function (done) {
+    /* *
+  * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_1140
+  * @tc.name  : ConsumeArray_0800
+  * @tc.desc  : To test that the Consume decorator supports union types.
+  * @tc.level : Level 2
+  */
+    it('ConsumeArray_0800', 0, async (done: Function) => {
       console.info('ConsumeArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -121,20 +131,20 @@ export default function ConsumeArray1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ConsumeArray1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ConsumeArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ConsumeArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is [{"number":30}]');
       console.info('[ConsumeArray_0100] END');
       done();
     });
-      /* *
-    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_1150
-    * @tc.name  : StateArray_0900
-    * @tc.desc  : To test that the Consume decorator supports union types.
-    * @tc.level : Level 2
-    */
-    it('ConsumeArray_0900', 0, async function (done) {
+    /* *
+  * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_1150
+  * @tc.name  : StateArray_0900
+  * @tc.desc  : To test that the Consume decorator supports union types.
+  * @tc.level : Level 2
+  */
+    it('ConsumeArray_0900', 0, async (done: Function) => {
       console.info('StateArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -142,14 +152,13 @@ export default function ConsumeArray1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ConsumeArray1New');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is 200');
       console.info('[StateArray_0100] END');
       done();
     });
-
   })
 }
 

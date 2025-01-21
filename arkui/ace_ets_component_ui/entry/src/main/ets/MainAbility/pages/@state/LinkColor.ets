@@ -12,12 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import CommonFunc from '../../../MainAbility/common/Common';
+
 @Component
 struct Child_AAs {
   @Link color: undefined | null | ResourceColor;
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 5 }) {
 
       Text("设置变量color类型pink-->Orange")
       Button('change')
@@ -67,7 +69,7 @@ struct Child_AAs {
         })
         .key('state6')
 
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }
 
@@ -78,8 +80,8 @@ struct Index_AAs{
 
   build() {
     Column() {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.color)) + " number is " + JSON.stringify(this.color))
-        .fontSize(20).margin(30).key('LinkColor')
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.color)) + " number is " + JSON.stringify(this.color))
+        .fontSize(20).margin(10).key('LinkColor')
       Child_AAs({color: this.color})
 
     }

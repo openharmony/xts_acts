@@ -13,18 +13,31 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function ObjectLinkSecJsunit() {
-  describe('ObjectLinkSecJsunit', function () {
-    beforeEach(async function (done) {
+  describe('ObjectLinkSecJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("ObjectLinkSecJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/ObjectLinkSec',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/ObjectLinkSec',
       }
       try {
         router.clear();
@@ -32,7 +45,7 @@ export default function ObjectLinkSecJsunit() {
         console.info("get ObjectLinkSecJsunit state pages: " + JSON.stringify(pages));
         if (!("ObjectLinkSec" == pages.name)) {
           console.info("get ObjectLinkSecJsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push ObjectLinkSecJsunit success: " + JSON.stringify(result));
         }
@@ -42,16 +55,18 @@ export default function ObjectLinkSecJsunit() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
-      router.back({uri:"MainAbility/pages/index/index"});
+      router.back({
+        url: "MainAbility/pages/index/index"
+      });
     });
 
-    it('ObjectLinkSecJsunit_0100', 0, async function (done) {
+    it('ObjectLinkSecJsunit_0100', 0, async (done: Function) => {
 
       console.info('ObjectLinkSecJsunit_0100 START');
       let strJson = getInspectorByKey('sec_state');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkSecJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkSecJsunit_0100] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("5");
@@ -59,7 +74,7 @@ export default function ObjectLinkSecJsunit() {
       done();
     });
 
-    it('ObjectLinkSecJsunit_0200', 0, async function (done) {
+    it('ObjectLinkSecJsunit_0200', 0, async (done: Function) => {
 
       console.info('ObjectLinkSecJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -67,7 +82,7 @@ export default function ObjectLinkSecJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sec_state');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkSecJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkSecJsunit_0200] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("5");
@@ -75,11 +90,11 @@ export default function ObjectLinkSecJsunit() {
       done();
     });
 
-    it('ObjectLinkSecJsunit_0300', 0, async function (done) {
+    it('ObjectLinkSecJsunit_0300', 0, async (done: Function) => {
 
       console.info('ObjectLinkSecJsunit_0300 START');
       let strJson = getInspectorByKey('sec_provide');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkSecJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkSecJsunit_0300] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("5");
@@ -87,7 +102,7 @@ export default function ObjectLinkSecJsunit() {
       done();
     });
 
-    it('ObjectLinkSecJsunit_0400', 0, async function (done) {
+    it('ObjectLinkSecJsunit_0400', 0, async (done: Function) => {
 
       console.info('ObjectLinkSecJsunit_0400 START');
       let driver = await UiDriver.create()
@@ -95,7 +110,7 @@ export default function ObjectLinkSecJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sec_provide');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkSecJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkSecJsunit_0400] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("5");

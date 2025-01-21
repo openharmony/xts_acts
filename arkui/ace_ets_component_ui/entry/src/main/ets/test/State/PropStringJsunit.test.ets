@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import  CommonFunc from '../../MainAbility/utils/Common'
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc from '../../MainAbility/common/Common'
 
 
 export default function PropStringJsunit() {
-  describe('PropStringJsunit', function () {
-    beforeEach(async function (done) {
+  describe('PropStringJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("PropStringJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/PropString',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/PropString',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function PropStringJsunit() {
         console.info("get PropStringJsunit state pages: " + JSON.stringify(pages));
         if (!("PropString" == pages.name)) {
           console.info("get PropStringJsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push PropStringJsunit success: " + JSON.stringify(result));
         }
@@ -42,14 +55,14 @@ export default function PropStringJsunit() {
       done();
     });
 
-    it('PropStringJsunit_0200', 0, async function (done) {
+    it('PropStringJsunit_0200', 0, async (done: Function) => {
       console.info('PropStringJsunit_0200 START');
       let driver = await Driver.create()
       let button = await driver.findComponent(ON.id('PropString_A'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropString_A');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropStringJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[PropStringJsunit_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Father State: Hi');
@@ -57,7 +70,7 @@ export default function PropStringJsunit() {
       done();
     });
 
-    it('PropStringJsunit_0400', 0, async function (done) {
+    it('PropStringJsunit_0400', 0, async (done: Function) => {
 
       console.info('PropStringJsunit_0400 START');
       let driver = await UiDriver.create()
@@ -65,13 +78,13 @@ export default function PropStringJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ChildPropString_A');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropStringJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[PropStringJsunit_0400] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Child Prop: World');
 
       let strJson1 = getInspectorByKey('PropString_A');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[PropStringJsunit_0200] component obj is: " + JSON.stringify(obj1));
       console.info("[PropStringJsunit_0200] title: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('Father State: Hi');

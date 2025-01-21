@@ -12,15 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import CommonFunc from '../../../MainAbility/common/Common';
+
 @Entry
 @Component
 struct MyComponent_AZ {
   @State  hight: ResourceStr | Length = 50;
 
   build() {
-    Column({ space: 20 }) {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.hight)) + " number is " + JSON.stringify(this.hight))
-        .fontSize(20).margin(30).key('StateHight')
+    Column({ space: 5 }) {
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.hight)) + " number is " + JSON.stringify(this.hight))
+        .fontSize(20).margin(10).key('StateHight')
       Text("设置变量number类型50-->100")
       Button('change')
         .height(this.hight)
@@ -45,6 +47,6 @@ struct MyComponent_AZ {
         })
         .key('StateHeight3')
 
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }

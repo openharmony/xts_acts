@@ -13,18 +13,31 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function ObjectLinkCanJsunit() {
-  describe('ObjectLinkCanJsunit', function () {
-    beforeEach(async function (done) {
+  describe('ObjectLinkCanJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("ObjectLinkCanJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/ObjectLinkCan',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/ObjectLinkCan',
       }
       try {
         router.clear();
@@ -32,7 +45,7 @@ export default function ObjectLinkCanJsunit() {
         console.info("get ObjectLinkCanJsunit state pages: " + JSON.stringify(pages));
         if (!("ObjectLinkCan" == pages.name)) {
           console.info("get ObjectLinkCanJsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push ObjectLinkCanJsunit success: " + JSON.stringify(result));
         }
@@ -42,16 +55,16 @@ export default function ObjectLinkCanJsunit() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
-      await CommonFunc.sleep(500);      
+      await CommonFunc.sleep(500);
       let button = await driver.findComponent(ON.id('ObjectLinkFar2_reset'));
       await button.click();
       console.log('reset button click succ')
       await CommonFunc.sleep(1000);
     });
 
-    it('ObjectLinkCanJsunit_0100', 0, async function (done) {
+    it('ObjectLinkCanJsunit_0100', 0, async (done: Function) => {
 
       console.info('ObjectLinkCanJsunit_0100 START');
       let driver = await UiDriver.create()
@@ -59,13 +72,13 @@ export default function ObjectLinkCanJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('farClassBN');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[ObjectLinkCanJsunit_0100] component obj1 is: " + JSON.stringify(obj1));
       console.info("[ObjectLinkCanJsunit_0100] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("ClassBN + 1: 5");
 
       let strJson2 = getInspectorByKey('sonClassBN');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[ObjectLinkCanJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       console.info("[ObjectLinkCanJsunit_0100] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("ClassBN的numB值: 6");
@@ -74,7 +87,7 @@ export default function ObjectLinkCanJsunit() {
       done();
     });
 
-    it('ObjectLinkCanJsunit_0200', 0, async function (done) {
+    it('ObjectLinkCanJsunit_0200', 0, async (done: Function) => {
 
       console.info('ObjectLinkCanJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -82,13 +95,13 @@ export default function ObjectLinkCanJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('farClassBN3');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[ObjectLinkCanJsunit_0200] component obj1 is: " + JSON.stringify(obj1));
       console.info("[ObjectLinkCanJsunit_0200] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("ClassBN 赋值3: 5");
 
       let strJson2 = getInspectorByKey('sonClassBN');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[ObjectLinkCanJsunit_0200] component obj2 is: " + JSON.stringify(obj2));
       console.info("[ObjectLinkCanJsunit_0200] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("ClassBN的numB值: 3");
@@ -97,7 +110,7 @@ export default function ObjectLinkCanJsunit() {
       done();
     });
 
-    it('ObjectLinkCanJsunit_0300', 0, async function (done) {
+    it('ObjectLinkCanJsunit_0300', 0, async (done: Function) => {
 
       console.info('ObjectLinkCanJsunit_0300 START');
       let driver = await UiDriver.create()
@@ -105,19 +118,19 @@ export default function ObjectLinkCanJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sonClassBN');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkCanJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkCanJsunit_0300] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("ClassBN的numB值: 6");
 
       let strJson1 = getInspectorByKey('farClassBN');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[ObjectLinkCanJsunit_0300] component obj1 is: " + JSON.stringify(obj1));
       console.info("[ObjectLinkCanJsunit_0300] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("ClassBN + 1: 5");
 
       let strJson2 = getInspectorByKey('farClassBN3');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[ObjectLinkCanJsunit_0300] component obj2 is: " + JSON.stringify(obj2));
       console.info("[ObjectLinkCanJsunit_0300] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("ClassBN 赋值3: 5");

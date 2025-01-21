@@ -59,6 +59,10 @@ struct ChildDate2 {
         .onClick(() => {
           this.selectedDate2.setUTCMilliseconds(this.selectedDate2.getUTCMilliseconds() + 1)
         })
+      Button("Reset").id("ChildDate2_reset")
+        .onClick(() => {
+          this.selectedDate2 = new Date('2021-08-08')
+        })
 
       DatePicker({
         start: new Date('1970-1-1'),
@@ -117,6 +121,10 @@ struct PropDate2 {
         .id("setUTCMilliseconds")
         .onClick(() => {
           this.selectedDate.setUTCMilliseconds(this.selectedDate.getUTCMilliseconds() + 1)
+        })
+      Button("Reset").id("PropDate2_reset")
+        .onClick(() => {
+          this.selectedDate = new Date('2021-08-08')
         })
 
       DatePicker({
