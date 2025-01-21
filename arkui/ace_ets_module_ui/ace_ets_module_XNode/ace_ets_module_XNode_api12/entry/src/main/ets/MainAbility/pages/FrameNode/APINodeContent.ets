@@ -62,7 +62,7 @@ struct APINodeContent {
           .onClick(() => {
             this.text1 = storage.get('NodeContentFlagAPI') as number
           })
-        ContentSlot(this.controller.GetContent()).height('30%')
+        ContentSlot(this.controller.GetContent())
 
         Button("AddToSlot").id('APINodeContent_Button_AddToSlot').height('10%')
           .onClick(() => {
