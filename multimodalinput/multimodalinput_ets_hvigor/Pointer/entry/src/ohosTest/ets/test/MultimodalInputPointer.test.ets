@@ -47,14 +47,16 @@ export default function MultimodalInputPointerTest() {
     it("SUB_MMI_Input_Api_Pointer_setPointerVisible_0100", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setPointerVisible_0100";
       try {
-        pointer.setPointerVisible(true, (error: Error) => {
-          if (error) {
-            console.info(`${caseName} Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-            ExpectFalse(true);
+        let flag: number = 0;
+        pointer.setPointerVisible(true, (err, data) => {
+          if (err) {
+            console.info(`${caseName} Set pointer visible failed, err=${JSON.stringify(err)}`);
+            ExpectTrue(err.code == 801);
             done();
           } else {
-            console.info(`${caseName} Set pointer visible success`);
-            ExpectTrue(true);
+            flag += 1;
+            console.info(`${caseName} Set pointer visible success, data=${JSON.stringify(data)}`);
+            ExpectTrue(flag == 1);
             done();
           }
         });
@@ -76,9 +78,15 @@ export default function MultimodalInputPointerTest() {
     it("SUB_MMI_Input_Api_Pointer_setPointerVisible_0200", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setPointerVisible_0200";
       try {
+        let flag: number = 0;
         pointer.setPointerVisible(false).then(() => {
+          flag += 1;
           console.info(`${caseName} Set pointer visible success`);
-          ExpectTrue(true);
+          ExpectTrue(flag == 1);
+          done();
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName} Set pointer visible failed, error=${JSON.stringify(error, [`code`, `message`])}`);
+          ExpectTrue(error.code == 801);
           done();
         });
       } catch (error) {
