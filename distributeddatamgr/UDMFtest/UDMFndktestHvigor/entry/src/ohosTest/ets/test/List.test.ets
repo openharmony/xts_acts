@@ -20,10 +20,14 @@ import ContentNdkTest from './ContentNdkTest';
 import UdsNdkexTest from './udsndkex.test';
 
 export default function testsuite() {
-  pasteboardNdkTest();
-  UdmfNdkTest();
-  UdsNdkTest();
-  UtdNdkTest();
-  ContentNdkTest();
-  UdsNdkexTest();
+  if (canIUse("SystemCapability.DistributedDataManager.UDMF.Core")){
+    pasteboardNdkTest();
+    UdmfNdkTest();
+    UdsNdkTest();
+    UtdNdkTest();
+    ContentNdkTest();
+    UdsNdkexTest();
+  } else {
+    EmptyTest()
+  } 
 }

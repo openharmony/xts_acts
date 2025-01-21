@@ -13,8 +13,12 @@
  * limitations under the License.
  */
 import DragWithOutPPermissionTest from './Ability.test';
+import EmptyTest from './Empty.test';
 
 export default function testsuite() {
-  DragWithOutPPermissionTest()
-
+  if (canIUse("SystemCapability.DistributedDataManager.UDMF.Core")){
+    DragWithOutPPermissionTest()
+  } else {
+    EmptyTest()
+  }  
 }

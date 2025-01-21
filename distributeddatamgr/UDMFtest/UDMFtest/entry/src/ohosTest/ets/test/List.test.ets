@@ -22,15 +22,20 @@ import UtdfMimeTypeTest from './UtdfMimeTypeTest'
 import UtdfileNameTest from './UtdfileNameExtentionsTest'
 import UDMFApiDataStructTest from './UDMFApiDataStruct.test'
 import UDMFSupportClipboardApiTest from './UDMFSupportClipboardApi.test'
+import EmptyTest from './Empty.test';
 
 export default function testsuite() {
-  UDMFDragBigDataJsApiTest()
-  UDMFApiCallback()
-  UDMFApiDescriptorTest()
-  UDMFApiPromise()
-  UDMFApiTest()
-  UtdfMimeTypeTest()
-  UtdfileNameTest()
-  UDMFApiDataStructTest()
-  UDMFSupportClipboardApiTest()
+  if (canIUse("SystemCapability.DistributedDataManager.UDMF.Core")){
+    UDMFDragBigDataJsApiTest()
+    UDMFApiCallback()
+    UDMFApiDescriptorTest()
+    UDMFApiPromise()
+    UDMFApiTest()
+    UtdfMimeTypeTest()
+    UtdfileNameTest()
+    UDMFApiDataStructTest()
+    UDMFSupportClipboardApiTest()
+  } else {
+    EmptyTest()
+  } 
 }
