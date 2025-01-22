@@ -1607,8 +1607,8 @@ static napi_value AddHotkeyMonitor(napi_env env, napi_callback_info info)
     int32_t ret2 = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, ((ret1 == INPUT_SERVICE_EXCEPTION
-        && ret2 == INPUT_SUCCESS && hotkey == nullptr) || (ret1 == 801 && ret2 == 801)) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret1 == INPUT_SERVICE_EXCEPTION && ret2 == INPUT_SUCCESS
+		&& hotkey == nullptr) || (ret1 == INPUT_SERVICE_EXCEPTION && ret2 == 801)) ? 1 : 0, &result);
     return result;
 }
 
