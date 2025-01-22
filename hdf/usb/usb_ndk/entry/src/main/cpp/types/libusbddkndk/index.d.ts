@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -40,6 +40,7 @@ export const usbSendControlWriteRequestOne: (a: number) => number;
 export const usbSendControlWriteRequestTwo: (a: number) => number;
 export const usbSendControlWriteRequestThree: (a: number) => number;
 export const usbSendControlWriteRequestFour: (a: number) => number;
+export const usbSendControlWriteRequestFive: (a: number) => number;
 export const usbSendPipeRequestOne: (a: number) => number;
 export const usbSendPipeRequestTwo: (a: number) => number;
 export const usbSendPipeRequestThree: (a: number) => number;
