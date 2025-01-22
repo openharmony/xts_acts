@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAceLoadInterceptionEnhancedTest.hap"
+                "ActsWebLoadInterceptionEnhancedTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

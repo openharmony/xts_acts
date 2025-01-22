@@ -15,9 +15,9 @@ group("ActsApplicationInterworkingTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "inject_javascript:ActsInjectJavascriptTest",
-      "run_javascript:ActsRunJavascriptTest",
-      "sending_messages_to_each_other:ActsSendingMessagesToEachotherTest",
+      "inject_javascript:ActsWebInjectJavascriptTest",
+      "run_javascript:ActsWebRunJavascriptTest",
+      "sending_messages_to_each_other:ActsWebSendingMessagesToEachotherTest",
     ]
   }
 }

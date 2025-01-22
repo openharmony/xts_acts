@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAceNetworkInterceptionDevTest.hap"
+                "ActsWebNetworkInterceptionDevTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

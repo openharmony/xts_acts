@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsForwardBackwardCacheFourTest.hap"
+                "ActsWebForwardBackwardCacheFourTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -11,16 +11,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsLoadStatusTest") {
+group("ActsWebLoadStatusTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "ace_load_status_cloudservice_webController_five:ActsAceLoadStatusCloudServiceWebControllerFiveTest",
-      "ace_load_status_cloudservice_webController_group_eight:ActsAceLoadStatusCloudServiceWebControllerGroupEightTest",
-      "ace_load_status_dev:ActsAceLoadStatusDevTest",
-      "ace_load_status_enhanced_one:ActsAceLoadStatusEnhancedTest",
-      "ace_load_status_enhanced_three:ActsAceLoadStatusEnhancedTestThree",
-      "ace_load_status_enhanced_two:ActsAceLoadStatusEnhancedTestTwo",
+      "ace_load_status_cloudservice_webController_five:ActsWebLoadStatusCloudServiceWebControllerFiveTest",
+      "ace_load_status_cloudservice_webController_group_eight:ActsWebLoadStatusCloudServiceWebControllerGroupEightTest",
+      "ace_load_status_dev:ActsWebLoadStatusDevTest",
+      "ace_load_status_enhanced_one:ActsWebLoadStatusEnhancedTest",
+      "ace_load_status_enhanced_three:ActsWebLoadStatusEnhancedThreeTest",
+      "ace_load_status_enhanced_two:ActsWebLoadStatusEnhancedTwoTest",
     ]
   }
 }

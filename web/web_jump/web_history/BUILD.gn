@@ -15,9 +15,9 @@ group("ActsWebHistoryTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "ace_web_history_enhanced_one:ActsAceWebHistoryEnhancedTest",
-      "ace_web_history_enhanced_three:ActsAceWebHistoryEnhancedTestThree",
-      "ace_web_history_enhanced_two:ActsAceWebHistoryEnhancedTwo",
+      "ace_web_history_enhanced_one:ActsWebHistoryEnhancedTest",
+      "ace_web_history_enhanced_three:ActsWebHistoryEnhancedThreeTest",
+      "ace_web_history_enhanced_two:ActsWebHistoryEnhancedTwoTest",
     ]
   }
 }

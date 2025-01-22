@@ -11,12 +11,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("leatherCandyCache") {
+group("ActsWebLeatherCandyCacheTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "leather_candy_cache_one:ActsLeatherCandyCacheOneTest",
-      "leather_candy_cache_two:ActsLeatherCandyCacheTwoTest",
+      "leather_candy_cache_one:ActsWebLeatherCandyCacheOneTest",
+      "leather_candy_cache_two:ActsWebLeatherCandyCacheTwoTest",
     ]
   }
 }

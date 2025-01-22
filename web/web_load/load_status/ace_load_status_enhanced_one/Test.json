@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAceLoadStatusEnhancedTest.hap"
+                "ActsWebLoadStatusEnhancedTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

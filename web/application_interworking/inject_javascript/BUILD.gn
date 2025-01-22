@@ -11,12 +11,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsInjectJavascriptTest") {
+group("ActsWebInjectJavascriptTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "inject_javascript_one:ActsInjectJavascriptOneTest",
-      "inject_javascript_two:ActsInjectJavacriptTwoTest",
+      "inject_javascript_one:ActsWebInjectJavascriptOneTest",
+      "inject_javascript_two:ActsWebInjectJavacriptTwoTest",
     ]
   }
 }

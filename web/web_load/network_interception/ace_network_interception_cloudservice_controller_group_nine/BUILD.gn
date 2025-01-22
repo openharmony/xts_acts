@@ -14,10 +14,10 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_app_suite(
-    "ActsAceNetworkInterceptionCloudServiceControllerGroupNineTest") {
+    "ActsWebNetworkInterceptionCloudServiceControllerGroupNineTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceNetworkInterceptionCloudServiceControllerGroupNineTest"
+  hap_name = "ActsWebNetworkInterceptionCloudServiceControllerGroupNineTest"
   part_name = "webview"
 }

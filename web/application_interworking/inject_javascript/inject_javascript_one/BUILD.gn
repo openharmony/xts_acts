@@ -13,10 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsInjectJavascriptOneTest") {
+ohos_js_app_suite("ActsWebInjectJavascriptOneTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsInjectJavascriptOneTest"
+  hap_name = "ActsWebInjectJavascriptOneTest"
   part_name = "webview"
 }

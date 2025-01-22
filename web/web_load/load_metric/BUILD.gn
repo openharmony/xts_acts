@@ -11,14 +11,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsLoadMetricTest") {
+group("ActsWebLoadMetricTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "ace_load_metric_dev:ActsAceLoadMetricDevTest",
-      "ace_load_metric_dev_two:ActsAceLoadMetricDevTwoTest",
-      "ace_load_metric_enhanced_three:ActsAceLoadMetricEnhancedTestThree",
-      "ace_load_metric_enhanced_two:ActsAceLoadMetricEnhancedTestTwo",
+      "ace_load_metric_dev:ActsWebLoadMetricDevTest",
+      "ace_load_metric_dev_two:ActsWebLoadMetricDevTwoTest",
+      "ace_load_metric_enhanced_three:ActsWebLoadMetricEnhancedThreeTest",
+      "ace_load_metric_enhanced_two:ActsWebLoadMetricEnhancedTwoTest",
     ]
   }
 }
