@@ -40,6 +40,8 @@
 #include "drawing_pixel_map.h"
 #include "image/pixelmap_native.h"
 
+#define DRAW_COLORBLUE 0xFF0000FF
+
 using namespace testing;
 using namespace testing::ext;
 
