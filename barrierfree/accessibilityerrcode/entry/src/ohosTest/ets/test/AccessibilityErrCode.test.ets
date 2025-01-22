@@ -1017,6 +1017,9 @@ export default function abilityTest() {
               expect(ElementAttributeValue.indexOf("offset") != -1).assertTrue();
               expect(ElementAttributeValue.indexOf("hotArea") != -1).assertTrue();
               expect(ElementAttributeValue.indexOf("accessibilityText") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("customComponentType") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("accessibilityNextFocusId") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("extraInfo") != -1).assertTrue();
             });
             rootElement.actionNames((err, data) => {
               console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));

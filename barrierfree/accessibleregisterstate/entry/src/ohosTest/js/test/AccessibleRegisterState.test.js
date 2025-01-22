@@ -65,5 +65,22 @@ describe('AccessibleRegisterState', function () {
       expect(true).assertTrue();
       done();
     })
+    
+    /*
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0300
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0300
+    * @tc.desc    on(screenReaderStateChange)
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0300', 0, async function (done) {
+      console.info('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0300');
+      let callbackdata = (data) => {
+      }
+      accessibility.on('screenReaderStateChange', callbackdata);
+      accessibility.off('screenReaderStateChange', callbackdata);
+      expect(true).assertTrue();
+      done();
+    })
 })
 }
