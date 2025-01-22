@@ -18,6 +18,10 @@ import { BusinessError } from '@ohos.base';
 import buffer from '@ohos.buffer';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import * as signVerifyPromise from './utils/signAndVerify/signVerifyPromise';
+import { GlobalContext } from '../../../../src/main/ets/pages/HomePage';
+import certManagerDialog from '@ohos.security.certManagerDialog';
+import deviceInfo from '@ohos.deviceInfo';
+import type common from '@ohos.app.ability.common';
 
 let caCert = new Uint8Array([0x30, 0x82, 0x04, 0x31, 0x30, 0x82, 0x03, 0x19, 0xa0, 0x03, 0x02, 0x01, 0x02, 0x02, 0x01, 0x00,
   0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x01, 0x05, 0x05, 0x00, 0x30,
@@ -402,6 +406,142 @@ export default function api16CertFuncTestTwoUnit() {
       done();
     });
 
+    /**
+     * @tc.number SUB_Security_CertManager_OpenUninstallCertificateDialog_0011
+     * @tc.name test OpenUninstallCertificateDialog with abnormal parameters
+     * @tc.desc abnormal test
+     * @tc.size SmallTest
+     * @tc.level Level2
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_OpenUninstallCertificateDialog_0011', 0, async (done: Function) => {
+      console.log("SUB_Security_CertManager_OpenUninstallCertificateDialog_0011: started ");
+      let uir ='oh:t=c;o=vBBPFaSL5wncpUKn4dS5328FRSfoAuqpLVlURCWK_nEA;u=0;a=20010044';
+      const context :common.Context = GlobalContext.getContext();
+      if (deviceInfo.deviceType == '2in1') {
+        let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
+        try {
+          await certManagerDialog.openUninstallCertificateDialog(null, certificateType, uir)
+          expect(null).assertFail();
+        } catch (err) {
+          console.log("SUB_Security_CertManager_OpenUninstallCertificateDialog_0011: e.code " + err.code);
+          expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
+        }
+
+        try {
+          await certManagerDialog.openUninstallCertificateDialog(context, 2, uir)
+          expect(null).assertFail();
+        } catch (err) {
+          console.log("SUB_Security_CertManager_OpenUninstallCertificateDialog_0011: e.code " + err.code);
+          expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
+        }
+
+        try {
+          await certManagerDialog.openUninstallCertificateDialog(context, certificateType, 'test')
+          expect(null).assertFail();
+        } catch (err) {
+          console.log("SUB_Security_CertManager_OpenUninstallCertificateDialog_0011: e.code " + err.code);
+          expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
+        }
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CertManager_OpenUninstallCertificateDialog_0012
+     * @tc.name test openUninstallCertificateDialog with abnormal parameters
+     * @tc.desc abnormal test
+     * @tc.size SmallTest
+     * @tc.level Level2
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_OpenUninstallCertificateDialog_0012', 0, async (done: Function) => {
+      console.log("SUB_Security_CertManager_OpenUninstallCertificateDialog_0012: started ");
+      let uir ='oh:t=c;o=vBBPFaSL5wncpUKn4dS5328FRSfoAuqpLVlURCWK_nEA;u=100;a=20010044';
+      const context :common.Context = GlobalContext.getContext();
+      if (deviceInfo.deviceType == '2in1') {
+        let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
+        try {
+          await certManagerDialog.openUninstallCertificateDialog(context, certificateType, uir)
+          expect(null).assertFail();
+        } catch (err) {
+          console.log("SUB_Security_CertManager_OpenUninstallCertificateDialog_0012: e.code " + err.code);
+          expect(err.code).assertEqual(certManagerDialog.CertificateDialogErrorCode.ERROR_OPERATION_FAILED);
+        }
+      }
+      done();
+    });
+
+
+    /**
+     * @tc.number SUB_Security_CertManager_OpenUninstallCertificateDialog_0014
+     * @tc.name test OpenUninstallCertificateDialog with abnormal parameters
+     * @tc.desc abnormal test
+     * @tc.size SmallTest
+     * @tc.level Level2
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_OpenUninstallCertificateDialog_0014', 0, async (done: Function) => {
+      console.log("SUB_Security_CertManager_OpenUninstallCertificateDialog_0014: started ");
+      let keyUri: string | undefined;
+      const context :common.Context = GlobalContext.getContext();
+      if (deviceInfo.deviceType == '2in1') {
+        let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
+        let certificateScope: certManagerDialog.CertificateScope = certManagerDialog.CertificateScope.CURRENT_USER;
+            try {
+              let result: certManager.CMResult = certManager.installUserTrustedCertificateSync(caCert, certManager.CertScope.GLOBAL_USER);
+              let certUri = result.uri;
+              if (certUri === undefined) {
+                console.error("SUB_Security_CertManager_OpenUninstallCertificateDialog_0014 certUri is undefined.");
+                expect(null).assertFail();
+              } else {
+                console.info("SUB_Security_CertManager_OpenUninstallCertificateDialog_0014 certUri is " + certUri);
+                expect(certUri.search('oh:t=c;o=vBBPFaSL5wncpUKn4dS5328FRSfoAuqpLVlURCWK_nEA;u=0') != -1).assertTrue();
+              }
+              let certUri1 = certUri?.replace('0', '101');
+              console.info("SUB_Security_CertManager_OpenUninstallCertificateDialog_0014 certUri1 is " + certUri1);
+              try {
+                await certManagerDialog.openUninstallCertificateDialog(context, certificateType, certUri1);
+                expect(null).assertFail();
+              } catch (e) {
+                console.error(`SUB_Security_CertManager_OpenUninstallCertificateDialog_0014 error.code: ${e.code}, message: ${e.message}`);
+                expect(e.code).assertEqual(certManagerDialog.CertificateDialogErrorCode.ERROR_OPERATION_FAILED);
+              }
+              certManager.uninstallUserTrustedCertificateSync(certUri);
+              console.info(`SUB_Security_CertManager_OpenUninstallCertificateDialog_0014 uninstallUserTrustedCertificateSync success`);
+            } catch (error) {
+              console.error(`SUB_Security_CertManager_OpenUninstallCertificateDialog_0014 error.code: ${error.code}, message: ${error.message}`);
+              expect(null).assertFail();
+            }
+            console.info('SUB_Security_CertManager_OpenUninstallCertificateDialog_0014 end');
+        }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CertManager_OpenUninstallCertificateDialog_0015
+     * @tc.name test openUninstallCertificateDialog with abnormal parameters
+     * @tc.desc abnormal test
+     * @tc.size SmallTest
+     * @tc.level Level2
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_OpenUninstallCertificateDialog_0015', 0, async (done: Function) => {
+      console.log("SUB_Security_CertManager_OpenUninstallCertificateDialog_0015: started ");
+      let uir ='oh:t=c;o=vBBPFaSL5wncpUKn4dS5328FRSfoAuqpLVlURCWK_nEA;u=0;a=20010044';
+      const context :common.Context = GlobalContext.getContext();
+      if (deviceInfo.deviceType != '2in1') {
+        let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
+        try {
+          await certManagerDialog.openUninstallCertificateDialog(context, certificateType, uir)
+          expect(null).assertFail();
+        } catch (err) {
+          console.log("SUB_Security_CertManager_OpenUninstallCertificateDialog_0015: e.code " + err.code);
+          expect(err.code).assertEqual(certManagerDialog.CertificateDialogErrorCode.ERROR_DEVICE_NOT_SUPPORTED);
+        }
+      }
+      done();
+    });
 
   })
 }
