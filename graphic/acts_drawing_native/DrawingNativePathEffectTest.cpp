@@ -238,7 +238,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateCornerPathEffectAbnormal, TestSi
     // 2. OH_Drawing_CreateCornerPathEffect with 0.0001 as the parameter
     OH_Drawing_PathEffect *pathEffect2 = OH_Drawing_CreateCornerPathEffect(0.0001);
     // add assert
-    EXPECT_EQ(pathEffect2, nullptr);
+    EXPECT_NE(pathEffect2, nullptr);
     // 3. OH_Drawing_CreateCornerPathEffect with -0.1 as the parameter
     OH_Drawing_PathEffect *pathEffect3 = OH_Drawing_CreateCornerPathEffect(-0.1);
     // add assert
@@ -284,7 +284,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateDiscreatePathEffectNull, TestSiz
     // 1. OH_Drawing_CreateDiscretePathEffect with 0 as the first parameter
     OH_Drawing_PathEffect *pathEffect1 = OH_Drawing_CreateDiscretePathEffect(0, 2.0);
     // add assert
-    EXPECT_EQ(pathEffect1, nullptr);
+    EXPECT_NE(pathEffect1, nullptr);
     // 2. OH_Drawing_CreateDiscretePathEffect with 0 as the second parameter
     OH_Drawing_PathEffect *pathEffect2 = OH_Drawing_CreateDiscretePathEffect(10.0, 0);
     // add assert

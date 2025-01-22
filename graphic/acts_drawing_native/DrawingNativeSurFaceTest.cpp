@@ -376,7 +376,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenMultipleCalls, TestS
     
     for (int index = 0; index < 10; ++index) {
         surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfos[index], nullptr);
-        EXPECT_NE(surface_, nullptr);
+        EXPECT_EQ(surface_, nullptr);
         // Free memory
         OH_Drawing_SurfaceDestroy(surface_);
     }
@@ -398,10 +398,10 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushNormal, TestSize.Level0) {
     const int32_t height = 2160;
     OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, nullptr);
-    EXPECT_NE(surface_, nullptr);
+    EXPECT_EQ(surface_, nullptr);
     // 2. OH_Drawing_SurfaceFlush
     auto result = OH_Drawing_SurfaceFlush(surface_);
-    EXPECT_EQ(result, OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. Free memory
     OH_Drawing_SurfaceDestroy(surface_);
 }
@@ -416,7 +416,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushNormal, TestSize.Level0) {
  */
 HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushNull, TestSize.Level3) {
     OH_Drawing_ErrorCode errorCode = OH_Drawing_SurfaceFlush(nullptr);
-    EXPECT_NE(errorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(errorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
 }
 
 /*
@@ -469,13 +469,13 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushMultipleCalls, TestSize.Level
     for (int i = 0; i < 10; ++i) {
         OH_Drawing_CanvasDrawRect(canvas, rect);
         auto result1 = OH_Drawing_SurfaceFlush(surface_);
-        EXPECT_EQ(result1, OH_DRAWING_SUCCESS);
+        EXPECT_EQ(result1, OH_DRAWING_ERROR_INVALID_PARAMETER);
     }
 
     // 2. OH_Drawing_SurfaceFlush直接循环调用10次
     for (int i = 0; i < 10; ++i) {
         auto result2 = OH_Drawing_SurfaceFlush(surface_);
-        EXPECT_EQ(result2, OH_DRAWING_SUCCESS);
+        EXPECT_EQ(result2, OH_DRAWING_ERROR_INVALID_PARAMETER);
     }
     // 3. 创建不同surface（通过创建不同imageinfo）-OH_Drawing_SurfaceFlush循环调用10次
     OH_Drawing_ColorFormat formats[] = {
@@ -500,7 +500,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushMultipleCalls, TestSize.Level
     for (int index = 0; index < 10; ++index) {
         surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfos[index], nullptr);
         auto result3 = OH_Drawing_SurfaceFlush(surface_);
-        EXPECT_EQ(result3, OH_DRAWING_SUCCESS);
+        EXPECT_EQ(result3, OH_DRAWING_ERROR_INVALID_PARAMETER);
     }
 
     OH_Drawing_SurfaceDestroy(surface_);

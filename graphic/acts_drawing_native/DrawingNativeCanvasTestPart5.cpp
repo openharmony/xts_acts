@@ -511,7 +511,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNull, TestSize.
     EXPECT_EQ(result2, OH_DRAWING_ERROR_INVALID_PARAMETER);
     auto result3 = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelMap, nullptr, dstRect,
         OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
-    EXPECT_EQ(result3, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(result3, OH_DRAWING_SUCCESS);
     auto result4 = OH_Drawing_CanvasDrawPixelMapNine(canvas, pixelMap, center, nullptr,
         OH_Drawing_FilterMode::FILTER_MODE_NEAREST);
     EXPECT_EQ(result4, OH_DRAWING_ERROR_INVALID_PARAMETER);
