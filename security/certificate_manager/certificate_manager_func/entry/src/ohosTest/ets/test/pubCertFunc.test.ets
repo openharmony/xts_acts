@@ -362,15 +362,15 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
     });
 
     /**
-     * @tc.number SUB_Security_CertManager_openInstallCertificateDialogCertJsApi_Func_0020
+     * @tc.number SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020
      * @tc.name test openInstallCertificateDialog with abnormal parameters
      * @tc.desc abnormal test
      * @tc.size SmallTest
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_openInstallCertificateDialogCertJsApi_Func_0020', 0, async (done: Function) => {
-      console.log("SUB_Security_CertManager_openInstallCertificateDialogCertJsApi_Func_0020: started ");
+    it('SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020', 0, async (done: Function) => {
+      console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020: started ");
       if (deviceInfo.deviceType == '2in1') {
         const context :common.Context = GlobalContext.getContext();
         let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
@@ -379,7 +379,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
           await certManagerDialog.openInstallCertificateDialog(null, certificateType, certificateScope, caCert)
           expect(null).assertFail()
         } catch (err) {
-          console.log("SUB_Security_CertManager_openInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
+          console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
           expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
         }
 
@@ -387,7 +387,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
           await certManagerDialog.openInstallCertificateDialog(context, null, certificateScope, caCert)
           expect(null).assertFail()
         } catch (err) {
-          console.log("SUB_Security_CertManager_openInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
+          console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
           expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
         }
 
@@ -395,7 +395,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
           await certManagerDialog.openInstallCertificateDialog(context, 2, certificateScope, caCert)
           expect(null).assertFail()
         } catch (err) {
-          console.log("SUB_Security_CertManager_openInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
+          console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
           expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
         }
 
@@ -403,7 +403,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
           await certManagerDialog.openInstallCertificateDialog(context, certificateType, null, caCert)
           expect(null).assertFail()
         } catch (err) {
-          console.log("SUB_Security_CertManager_openInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
+          console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
           expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
         }
 
@@ -411,7 +411,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
           await certManagerDialog.openInstallCertificateDialog(context, certificateType, 3, caCert)
           expect(null).assertFail()
         } catch (err) {
-          console.log("SUB_Security_CertManager_openInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
+          console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
           expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
         }
 
@@ -419,7 +419,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
           await certManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, null)
           expect(null).assertFail()
         } catch (err) {
-          console.log("SUB_Security_CertManager_openInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
+          console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
           expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
         }
       }
