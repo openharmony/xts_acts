@@ -144,26 +144,21 @@ export default function newSEServicetest() {
          */
         it('SUB_Communication_NFC_secureElement_js_0400', 0, async function (done)  {
             try {
-                            let nfcOmaReaderList2 = [];
-                            getReader = Service.getReaders();  
-                            console.info("[nfc_test]4 getReader value  is: " + getReader);                                    
-                            let getReader00 = getReader[0];
-                            let getReader01 = getReader[1];
-                            console.info("[nfc_test]4 getReaders results list 0 is" + getReader00);
-                            let getReader000 = getReader00.getName();
-                            let getReader001 = getReader01.getName();
-                            console.info("[nfc_test]4 The getReader name is: " + getReader000 + "/" + getReader001);
-                    try {
-                        if ( getReader000 == 'eSE'){
-                             nfcOmaReaderList2 = getReader00;                            
-                   }else {
-                             console.info("[nfc_test]4 info");
-                             nfcOmaReaderList2 = getReader01;                             
-                   }
-                        
-                    } catch (error) { 
-                                     console.info("[nfc_test]4 error " + error);                       
-                    }
+                        let nfcOmaReaderList2 = [];
+                        getReader = Service.getReaders();  
+                        console.info("[nfc_test]4 getReader value  is: " + getReader);                                    
+                        for (let i = 0; i < getReader.length; i++) {
+                        if (!getReader[i].isSecureElementPresent()) {
+                            console.info("[NFC_test]4 se not present : " + i);
+                            continue;
+                        }
+                        if (getReader[i].getName() != "eSE") {
+                            console.info("[NFC_test]4 se reader not ese.");
+                            continue;
+                        }
+                        nfcOmaReaderList2 = getReader[i];
+                        }                              
+                    console.info("[nfc_test]4 nfcOmaReaderList2 getReader name is: " + nfcOmaReaderList2.getName());
                 if (nfcOmaReaderList2 == undefined) {
                     console.info("[NFC_test]4 This function is not supported because the phone NFC chip is ST chip.");
                 } else {
