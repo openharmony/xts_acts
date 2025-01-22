@@ -34,7 +34,7 @@ struct RichEditor2 {
         ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
           GridItem() {
             Button(item + "")
-              .width('10').onClick(() => {
+              .width('10%').onClick(() => {
               this.controller.addTextSpan(item + '', {
                 offset: this.controller.getCaretOffset(),
                 style:
@@ -47,7 +47,7 @@ struct RichEditor2 {
             })
           }
         })
-      }.maxCount(3).columnsGap(2).rowsGap(2).padding(1)
+      }.maxCount(3).columnsGap('1%').rowsGap('1%').padding('1%')
     }.backgroundColor(Color.Gray)
     .height('50%')
   }
