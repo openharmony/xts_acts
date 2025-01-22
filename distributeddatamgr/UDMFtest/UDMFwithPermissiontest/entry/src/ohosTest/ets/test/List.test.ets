@@ -14,7 +14,12 @@
  */
 
 import DragPerssionNormalTest from './Ability.test';
+import EmptyTest from './Empty.test';
 
 export default function testsuite() {
-  DragPerssionNormalTest()
+  if (canIUse("SystemCapability.DistributedDataManager.UDMF.Core")){
+    DragPerssionNormalTest()
+  } else {
+    EmptyTest()
+  } 
 }
