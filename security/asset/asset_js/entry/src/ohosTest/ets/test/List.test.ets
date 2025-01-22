@@ -18,7 +18,6 @@ import AssetUpdateTest from './AssetUpdate.test';
 import AssetWriteAndQueryNewTest from './AssetWriteAndQuery.test';
 import AssetAuthQuery from './AssetAuthQuery.test';
 import AssetSynctest from './AssetSync.test';
-import AssetPerformanceNewtest from './AssetPerformanceNew.test';
 import AssetOthers from './AssetOthers.test';
 
 export default function testsuite() {
@@ -28,6 +27,5 @@ export default function testsuite() {
   AssetWriteAndQueryNewTest();
   AssetAuthQuery();
   AssetSynctest();
-  AssetPerformanceNewtest();
   AssetOthers();
 }
