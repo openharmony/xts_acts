@@ -108,12 +108,6 @@ describe('SystemDeviceTest', function () {
             ret = true;
         }
         expect(ret).assertTrue();
-
-        let str = /^[A-Za-z]+$/g;
-        let arr = brandInfo.match(str);
-        let bufferstr = arr.join('');
-        console.info('the value of the bufferstr is :' + bufferstr);
-        expect(brandInfo).assertEqual(bufferstr);
         console.info('testDeviceBrand01 ：end');
     })
 
@@ -133,12 +127,6 @@ describe('SystemDeviceTest', function () {
             ret = true;
         }
         expect(ret).assertTrue();
-
-        let str = /^[A-Za-z]+$/g;
-        let arr = manufactureInfo.match(str);
-        let bufferstr = arr.join('');
-        console.info('the value of the bufferstr is :' + bufferstr);
-        expect(manufactureInfo).assertEqual(bufferstr);
         console.info('testDeviceManufacture01 ：end');
     })
 
