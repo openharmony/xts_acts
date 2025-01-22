@@ -60,7 +60,9 @@ class MyNodeController extends NodeController {
     for (let a = 0; a < 25; a++) {
       let gridItem = typeNode.createNode(uiContext, 'GridItem');
       gridItem.initialize(undefined);
-      gridItem.initialize({ style:GridItemStyle.NONE }).backgroundColor(0xF9CF93);
+      gridItem.initialize({ style:GridItemStyle.NONE })
+      .key('key_ gridItem_001')
+      .backgroundColor(0xF9CF93);
       let context = typeNode.createNode(uiContext, 'Text');
       context.initialize((a % 5).toString())
         .fontSize(16)
@@ -68,7 +70,6 @@ class MyNodeController extends NodeController {
         .height(80)
         .textAlign(TextAlign.Center)
         .focusable(true)
-        .key('key_ gridItem_001');
       gridItem.appendChild(context);
       grid.appendChild(gridItem);
     }
