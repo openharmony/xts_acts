@@ -14,9 +14,22 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 
 export default function TimePickerJsunit() {
@@ -66,14 +79,16 @@ export default function TimePickerJsunit() {
       let hour1 = await hour.getText();
       console.info("[TimePickerJsunit_0100] hour1: " + JSON.stringify(hour1));
       expect(hour1).assertEqual('hour:8');
-      await driver.swipe(Math.round((right-left)/ 6 + left), Math.round(middle + 80), Math.round((right-left) / 6 + left), Math.round(middle - 80));
+      await driver.swipe(Math.round((right - left) / 6 + left), Math.round(middle + 80),
+        Math.round((right - left) / 6 + left), Math.round(middle - 80));
       await CommonFunc.sleep(6000);
       let hour2 = await hour.getText();
       console.info("[TimePickerJsunit_0100] hour2: " + JSON.stringify(hour2));
       expect(hour2).assertEqual('hour:20');
 
       // Verify hour
-      await driver.swipe(Math.round(right / 2), Math.round(middle + 100), Math.round(right / 2), Math.round(middle - 100));
+      await driver.swipe(Math.round(right / 2), Math.round(middle + 100), Math.round(right / 2),
+        Math.round(middle - 100));
       await CommonFunc.sleep(6000);
       let hour3 = await hour.getText();
       console.info("[TimePickerJsunit_0100] hour3: " + JSON.stringify(hour3));
@@ -84,7 +99,8 @@ export default function TimePickerJsunit() {
       let minute1 = await minute.getText();
       console.info("[TimePickerJsunit_0100] minute1: " + JSON.stringify(minute1));
       expect(minute1).assertEqual('minute:0');
-      await driver.swipe(Math.round(right * 5 / 6), Math.round(middle + 100), Math.round(right * 5 / 6), Math.round(middle - 100));
+      await driver.swipe(Math.round(right * 5 / 6), Math.round(middle + 100), Math.round(right * 5 / 6),
+        Math.round(middle - 100));
       await CommonFunc.sleep(6000);
       let minute2 = await minute.getText();
       console.info("[TimePickerJsunit_0100] minute2: " + JSON.stringify(minute2));
@@ -121,32 +137,37 @@ export default function TimePickerJsunit() {
     it('TimePickerJsunit_0300', 0, async (done: Function) => {
       // Verify 24-hour function of TimePicker component
       console.info('[TimePickerJsunit_0300] START');
-      let driver = await UiDriver.create()
-      let switchButton = await driver.findComponent(BY.key('button'));
+      let driver = await Driver.create()
+      let switchButton = await driver.findComponent(ON.id('button'));
       await switchButton.click();
       await CommonFunc.sleep(1000);
-      let timePicker = CommonFunc.getComponentRectOnScreen('timePicker');
-      let top = timePicker.top
-      let bottom = timePicker.bottom
-      let right = timePicker.right
-      let middle = (top + bottom) / 2
+
+      let timePicker = await driver.findComponent(ON.id('timePicker'));
+      let rect = await timePicker.getBounds();
+      let left = rect.left
+      let top = rect.top
+      let bottom = rect.bottom
+      let right = rect.right
 
       // Verify hour
-      let hour = await driver.findComponent(BY.key('hour'));
+      let hour = await driver.findComponent(ON.id('hour'));
       let hour1 = await hour.getText();
       console.info("[TimePickerJsunit_0300] hour1: " + JSON.stringify(hour1));
-      await driver.swipe(Math.round(right * 0.24), Math.round(middle + 100), Math.round(right * 0.24), Math.round(middle - 100));
+      await driver.swipe(Math.round(left + (right - left) / 4), Math.round(top + (bottom - top) / 2),
+        Math.round(left + (right - left) / 4), Math.round(top + (bottom - top) * 0.75));
+
       await CommonFunc.sleep(6000);
-      let hourComponent = await driver.findComponent(BY.key('hour'));
+      let hourComponent = await driver.findComponent(ON.id('hour'));
       let hour2 = await hourComponent.getText();
       console.info("[TimePickerJsunit_0300] hour2: " + JSON.stringify(hour2));
       expect(hour1 == hour2).assertFalse();
 
       // Verify minute
-      let minute = await driver.findComponent(BY.key('minute'));
+      let minute = await driver.findComponent(ON.id('minute'));
       let minute1 = await minute.getText();
       console.info("[TimePickerJsunit_0300] minute1: " + JSON.stringify(minute1));
-      await driver.swipe(Math.round(right * 0.76), Math.round(middle + 100), Math.round(right * 0.76), Math.round(middle - 100));
+      await driver.swipe(Math.round(left + (right - left) * 0.75), Math.round(top + (bottom - top) / 2),
+        Math.round(left + (right - left) * 0.75), Math.round(top + (bottom - top) * 0.75));
       await CommonFunc.sleep(6000);
       let minute2 = await minute.getText();
       console.info("[TimePickerJsunit_0300] minute2: " + JSON.stringify(minute2));
