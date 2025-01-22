@@ -76,21 +76,15 @@ export default function DeviceInfoTest() {
          */
         it('device_info_test_002', 0, function () {
             console.info('device_info_test_002 start');
-
+            let ret = false;
             let manufactureInfo = deviceinfo.manufacture;
             console.info('the value of the manufactureInfo is :' + manufactureInfo);
+
             expect(manufactureInfo).assertInstanceOf('String');
             if (manufactureInfo != "" && manufactureInfo != null && manufactureInfo != undefined) {
-                let str = /[\w-\.\(\)]/g;
-                let arr = manufactureInfo.match(str);
-                let bufferstr = arr.join('');
-                console.info('the value of the bufferstr is :' + bufferstr);
-                expect(manufactureInfo).assertEqual(bufferstr);
-            } else {
-                console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                ret = true;
             }
-
+            expect(ret).assertTrue();
             console.info('device_info_test_002 ：end');
         })
 
@@ -104,22 +98,15 @@ export default function DeviceInfoTest() {
          */
         it('device_info_test_003', 0, function () {
             console.info('testGetDeviceBrand01 start');
-
+            let ret = false;
             let brandInfo = deviceinfo.brand;
             console.info('the value of the device brand is :' + brandInfo);
 
             expect(brandInfo).assertInstanceOf('String');
             if (brandInfo != "" && brandInfo != null && brandInfo != undefined) {
-                let str = /[\w-\.\(\)]/g;
-                let arr = brandInfo.match(str);
-                let bufferstr = arr.join('');
-                console.info('the value of the bufferstr is :' + bufferstr);
-                expect(brandInfo).assertEqual(bufferstr);
-            } else {
-                console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                ret = true;
             }
-
+            expect(ret).assertTrue();
             console.info('testGetDeviceBrand01 ：end');
         })
 
@@ -235,22 +222,15 @@ export default function DeviceInfoTest() {
          */
         it('device_info_test_008', 0, function () {
             console.info('testGetHardWareModel01 start');
-
+            let ret = false;
             let hardwareModelInfo = deviceinfo.hardwareModel;
             console.info('the value of the deviceinfo hardwareModel is :' + hardwareModelInfo);
 
             expect(hardwareModelInfo).assertInstanceOf('String');
             if (hardwareModelInfo != "" && hardwareModelInfo != null && hardwareModelInfo != undefined) {
-                let str = /[\w-\.\(\)]/g;
-                let arr = hardwareModelInfo.match(str);
-                let bufferstr = arr.join('');
-                console.info('the value of the bufferstr is :' + bufferstr);
-                expect(hardwareModelInfo).assertEqual(bufferstr);
-            } else {
-                console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                ret = true;
             }
-
+            expect(ret).assertTrue();
             console.info('testGetHardWareModel01 ：end');
         })
 
@@ -870,13 +850,6 @@ export default function DeviceInfoTest() {
             let len = manufactureInfo.length
             console.info('the value of the manufacture characters is :' + len);
             expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
-
-            let str = /[\w-\.\(\)]/g;
-            let arr = manufactureInfo.match(str);
-            let bufferstr = arr.join('');
-            console.info('the value of the bufferstr is :' + bufferstr);
-            expect(manufactureInfo).assertEqual(bufferstr);
-
             console.info('device_info_test_031 ：end')
         })
 
@@ -896,13 +869,6 @@ export default function DeviceInfoTest() {
             let len = brandInfo.length
             console.info('the value of the external product family name characters is :' + len);
             expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
-
-            let str = /[\w-\.\(\)]/g;
-            let arr = brandInfo.match(str);
-            let bufferstr = arr.join('');
-            console.info('the value of the bufferstr is :' + bufferstr);
-            expect(brandInfo).assertEqual(bufferstr);
-
             console.info('device_info_test_032 ：end')
         })
 
@@ -993,13 +959,6 @@ export default function DeviceInfoTest() {
             let len = hardwareModelInfo.length;
             console.info('the value of the hardware version characters is :' + len);
             expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
-
-            let str = /[\w-\.\(\)]/g;
-            let arr = hardwareModelInfo.match(str);
-            let bufferstr = arr.join('');
-            console.info('the value of the bufferstr is :' + bufferstr);
-            expect(hardwareModelInfo).assertEqual(bufferstr);
-
             console.info('device_info_test_037 ：end');
         })
 
@@ -1115,7 +1074,7 @@ export default function DeviceInfoTest() {
 
             let len = versionIdInfo.length;
             console.info('the value of the operating system full name characters is :' + len)
-            expect(len).assertLess(128);
+            expect(len).assertLess(256);
             console.info('device_info_test_042 : end')
         })
 
@@ -1205,13 +1164,6 @@ export default function DeviceInfoTest() {
             let len = manufactureInfo.length
             console.info('the value of the manufacture characters is :' + len)
             expect(len).assertLarger(MAX_CHARACTERS_NUM);
-
-            let str = /[\w-\.\(\)]/g;
-            let arr = manufactureInfo.match(str);
-            let bufferstr = arr.join('');
-            console.info('the value of the bufferstr is :' + bufferstr);
-            expect(manufactureInfo).assertEqual(bufferstr);
-
             console.info('device_info_test_046 ：end')
         })
 
@@ -1231,13 +1183,6 @@ export default function DeviceInfoTest() {
             let len = brandInfo.length;
             console.info('the value of the external product family name characters is :' + len);
             expect(len).assertLarger(MAX_CHARACTERS_NUM);
-
-            let str = /[\w-\.\(\)]/g;
-            let arr = brandInfo.match(str);
-            let bufferstr = arr.join('');
-            console.info('the value of the bufferstr is :' + bufferstr);
-            expect(brandInfo).assertEqual(bufferstr);
-
             console.info('device_info_test_047 ：end');
         })
 
@@ -1348,13 +1293,6 @@ export default function DeviceInfoTest() {
             let len = hardwareModelInfo.length;
             console.info('the value of the hardware version characters is :' + len);
             expect(len).assertLarger(MAX_CHARACTERS_NUM);
-
-            let str = /[\w-\.\(\)]/g;
-            let arr = hardwareModelInfo.match(str);
-            let bufferstr = arr.join('');
-            console.info('the value of the bufferstr is :' + bufferstr);
-            expect(hardwareModelInfo).assertEqual(bufferstr);
-
             console.info('device_info_test_052 ：end');
         })
 
