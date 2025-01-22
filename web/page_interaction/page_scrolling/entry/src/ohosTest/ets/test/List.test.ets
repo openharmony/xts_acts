@@ -26,7 +26,7 @@ import webNestedScrollOptionsScrollForwardHorizontalTest from './WebNestedScroll
 import ScrollPage from './ScrollPage.test'
 import NestedScrollMode from './NestedScrollMode.test'
 import scrollEvent from './scrollEvent.test'
-
+import scrollBarJsunit from './ScrollBarJsunit.test'
 export default function testsuite() {
   webResourceResponseGet()
   webViewOnScroll()
@@ -41,4 +41,5 @@ export default function testsuite() {
   webNestedScrollOptionsScrollForwardHorizontalTest()
   NestedScrollMode()
   scrollEvent();
+  scrollBarJsunit()
 }
