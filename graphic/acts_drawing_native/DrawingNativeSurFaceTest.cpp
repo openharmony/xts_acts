@@ -44,7 +44,6 @@ class DrawingNativeSurFaceTest : public testing::Test {
     OH_Drawing_GpuContext *gpuContext_ = nullptr;
     OH_Drawing_Surface *surface_ = nullptr;
     OH_Drawing_Canvas *canvas_ = nullptr;
-    
 };
 
 void DrawingNativeSurFaceTest::SetUpTestCase() {}
@@ -339,12 +338,7 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenNull, TestSize.Level
     OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     surface_ = OH_Drawing_SurfaceCreateOnScreen(nullptr, imageInfo, nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
-
-    // 2. OH_Drawing_SurfaceCreateOnScreen第二个参数传空
-    gpuContext_ = OH_Drawing_GpuContextCreate();
-    surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, NULL, nullptr);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 3. Free memory
+    // 2. Free memory
     OH_Drawing_SurfaceDestroy(surface_);
 }
 

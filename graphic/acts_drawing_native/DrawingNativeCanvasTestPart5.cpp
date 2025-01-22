@@ -39,7 +39,6 @@
 #include "drawing_typeface.h"
 #include "drawing_pixel_map.h"
 #include "image/pixelmap_native.h"
-#include "image/image_source_native.h"
 
 using namespace testing;
 using namespace testing::ext;
