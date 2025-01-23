@@ -45,15 +45,9 @@ export default function MultimodalInputKeyCodeTest() {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_SWITCHVIDEOMODE_0100";
       try {
         let KEYCODE_SWITCHVIDEOMODE = KeyCode.KEYCODE_SWITCHVIDEOMODE;
-        if(KEYCODE_SWITCHVIDEOMODE == 2841) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail, KeyCode value is ${JSON.stringify(KEYCODE_SWITCHVIDEOMODE)}`);
-          ExpectFalse(true);
-          done();
-        }
+        console.info(`${caseName} success, keyCode value ${JSON.stringify(KEYCODE_SWITCHVIDEOMODE)}`);
+        ExpectTrue(KEYCODE_SWITCHVIDEOMODE == 2841);
+        done();
       } catch (error) {
         console.info(`${caseName} fail, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
@@ -73,15 +67,9 @@ export default function MultimodalInputKeyCodeTest() {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_SEARCH_0100";
       try {
         let KEYCODE_SEARCH = KeyCode.KEYCODE_SEARCH;
-        if(KEYCODE_SEARCH == 9) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail, KeyCode value is ${JSON.stringify(KEYCODE_SEARCH)}`);
-          ExpectFalse(true);
-          done();
-        }
+        console.info(`${caseName} success, keyCode value ${JSON.stringify(KEYCODE_SEARCH)}`);
+        ExpectTrue(KEYCODE_SEARCH == 9);
+        done();
       } catch (error) {
         console.info(`${caseName} fail, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
@@ -101,15 +89,9 @@ export default function MultimodalInputKeyCodeTest() {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_MEDIA_RECORD_0100";
       try {
         let KEYCODE_MEDIA_RECORD = KeyCode.KEYCODE_MEDIA_RECORD;
-        if(KEYCODE_MEDIA_RECORD == 2089) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail, KeyCode value is ${JSON.stringify(KEYCODE_MEDIA_RECORD)}`);
-          ExpectFalse(true);
-          done();
-        }
+        console.info(`${caseName} success, keyCode value ${JSON.stringify(KEYCODE_MEDIA_RECORD)}`);
+        ExpectTrue(KEYCODE_MEDIA_RECORD == 2089);
+        done();
       } catch (error) {
         console.info(`${caseName} fail, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
@@ -129,15 +111,31 @@ export default function MultimodalInputKeyCodeTest() {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_ASSISTANT_0100";
       try {
         let KEYCODE_ASSISTANT = KeyCode.KEYCODE_ASSISTANT;
-        if(KEYCODE_ASSISTANT == 2722) {
-          console.info(`${caseName} success`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} fail, KeyCode value is ${JSON.stringify(KEYCODE_ASSISTANT)}`);
-          ExpectFalse(true);
-          done();
-        }
+        console.info(`${caseName} success, keyCode value ${JSON.stringify(KEYCODE_ASSISTANT)}`);
+        ExpectTrue(KEYCODE_ASSISTANT == 2722);
+        done();
+      } catch (error) {
+        console.info(`${caseName} fail, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectFalse(true);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_KEYCODE_DAGGER_LONG_PRESS_0100
+     * @tc.name: SUB_MMI_Input_Api_KEYCODE_DAGGER_LONG_PRESS_0100
+     * @tc.desc: Test keycode KEYCODE_DAGGER_LONG_PRESS.
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_KEYCODE_DAGGER_LONG_PRESS_0100", 0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_KEYCODE_DAGGER_LONG_PRESS_0100";
+      try {
+        let KEYCODE_DAGGER_LONG_PRESS = KeyCode.KEYCODE_DAGGER_LONG_PRESS;
+        console.info(`${caseName} success, keyCode value ${JSON.stringify(KEYCODE_DAGGER_LONG_PRESS)}`);
+        ExpectTrue(KEYCODE_DAGGER_LONG_PRESS == 3213);
+        done();
       } catch (error) {
         console.info(`${caseName} fail, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
