@@ -1609,7 +1609,7 @@ static napi_value AddHotkeyMonitor(napi_env env, napi_callback_info info)
     OH_Input_DestroyHotkey(&hotkey);
     napi_create_int32(env, ((ret1 == INPUT_SERVICE_EXCEPTION && ret2 == INPUT_SUCCESS
 		&& hotkey == nullptr) || (ret1 == INPUT_SERVICE_EXCEPTION &&
-        ret2 == COMMON_CAPABILITY_NOT_SUPPORTED)) ? 1 : 0, &result);
+        ret2 == INPUT_DEVICE_NOT_SUPPORTED)) ? 1 : 0, &result);
     return result;
 }
 
