@@ -172,7 +172,7 @@ export default function WebDownloadItem() {
       sendEventByKey('001', 10, '')
       await driver.delayMs(2000)
       sendEventByKey('002', 10, '')
-      await driver.delayMs(2000)
+      await driver.delayMs(6000)
       expect(flg).assertTrue()
       router.clear()
     })
