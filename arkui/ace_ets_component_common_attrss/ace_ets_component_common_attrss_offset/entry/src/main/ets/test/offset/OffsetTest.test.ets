@@ -49,8 +49,8 @@ export default function OffsetTest() {
     'ListItemGroup']
 
   //The size of the parent component, when set as a percentage, serves as the calculation basis.
-  let parentWidth = 300;
-  let parentHeight = 400;
+  let parentWidth = 200;
+  let parentHeight = 200;
   let subassemblyWidth = 100;
   let subassemblyHeight = 100;
 
