@@ -49,23 +49,24 @@ struct NavigationLevelTest13 {
   build() {
     Column({space:5}){
       Navigation(this.pageInfos) {
-        Column({space:10}) {
-          Navigation(this.childNavStack) {
-            Button('push Path to parent Navigation')
-              .id('NavigationLevelTest13_btn1')
-              .onClick(() => {
-                let parentStack = this.childNavStack.getParent();
-                parentStack?.pushPath({ name: "pageOne"})
-                console.log('parent:' + JSON.stringify(parentStack))
-              })
-              .height('5%')
+        Scroll() {
+          Column({space:10}) {
+            Navigation(this.childNavStack) {
+              Button('push Path to parent Navigation')
+                .id('NavigationLevelTest13_btn1')
+                .onClick(() => {
+                  let parentStack = this.childNavStack.getParent();
+                  parentStack?.pushPath({ name: "pageOne"})
+                  console.log('parent:' + JSON.stringify(parentStack))
+                })
+            }
+            .clip(true)
+            .mode(NavigationMode.Stack)
+            .backgroundColor(Color.Orange)
+            .width('80%')
+            .height('80%')
+            .title('ChildNavigation')
           }
-          .clip(true)
-          .mode(NavigationMode.Stack)
-          .backgroundColor(Color.Orange)
-          .width('80%')
-          .height('80%')
-          .title('ChildNavigation')
         }
       }
       .mode(NavigationMode.Stack)

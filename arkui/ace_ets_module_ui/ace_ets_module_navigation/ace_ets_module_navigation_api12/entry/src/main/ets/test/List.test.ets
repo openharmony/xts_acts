@@ -227,7 +227,6 @@ export default function testsuite() {
   NavPathStack9()
   NavPathStack10()
   NavPathStack11()
-  NavPathStack12()
   NavPathStack13()
   NavPathStack14()
   NavPathStack15()
@@ -236,7 +235,6 @@ export default function testsuite() {
   NavPathStack18()
   NavPathStack19()
   NavPathStack20()
-  NavPathStack22()
   NavPathStack23()
   NavPathStack24()
 
@@ -328,6 +326,7 @@ export default function testsuite() {
   navigation_add2_2()
   navigation_add3_1()
   navigation_add3_2()
+  navigation_add4_1()
   queryNavigationInfoTest()
 
   Navigation_L0_1()
@@ -341,7 +340,6 @@ export default function testsuite() {
   Navigation_L0_8()
   Navigation_L0_9()
   Navigation_L0_10()
-  Navigation_L0_11()
   Navigation_L0_12()
   Navigation_L0_13()
   Navigation_L0_14()
@@ -378,8 +376,9 @@ export default function testsuite() {
   NavigationLevelTest22();
   NavigationLevelTest23();
   NavPathInfoIsEntry();
-  navigation_add4_1()
-  NavPathStack21()
   StepperTest1()
-  
+  NavPathStack12()
+  NavPathStack21()
+  NavPathStack22()
+  Navigation_L0_11()
 }
