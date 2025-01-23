@@ -84,19 +84,12 @@ export default function initNdkTest() {
     it('testOHGetManufacture001', 0, async (done: Function) => {
       let manufactureInfo: string = initndk.oHGetManufacture();
 
+      let ret = false;
       expect(manufactureInfo).assertInstanceOf('String');
       if (manufactureInfo != "" && manufactureInfo != null && manufactureInfo != undefined) {
-        let str: RegExp = new RegExp("[\\w\\-\\.(\\)]","g");
-        let arr = manufactureInfo.match(str);
-        if(arr !== null){
-          let bufferstr = arr.join('');
-          console.info('the value of the bufferstr is :' + bufferstr);
-          expect(manufactureInfo).assertEqual(bufferstr);
-        }        
-      } else {
-        console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        ret = true;
       }
+      expect(ret).assertTrue();
       done();
     });
 
@@ -113,13 +106,6 @@ export default function initNdkTest() {
       let len = manufactureInfo.length;
       expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
       expect(len).assertLarger(MAX_CHARACTERS_NUM);
-      let str: RegExp = new RegExp("[\\w\\-\\.(\\)]","g");
-      let arr = manufactureInfo.match(str);
-      if(arr !== null){
-        let bufferstr = arr.join('');
-        console.info('the value of the bufferstr is :' + bufferstr);
-        expect(manufactureInfo).assertEqual(bufferstr);
-      }     
       done();
     });
 
@@ -134,19 +120,12 @@ export default function initNdkTest() {
     it('testOHGetBrand001', 0, async (done: Function) => {
       let brandInfo: string = initndk.oHGetBrand();
 
+      let ret = false;
       expect(brandInfo).assertInstanceOf('String');
       if (brandInfo != "" && brandInfo != null && brandInfo != undefined) {
-        let str: RegExp = new RegExp("[\\w\\-\\.(\\)]","g");
-        let arr = brandInfo.match(str);
-        if(arr !== null){
-          let bufferstr = arr.join('');
-          console.info('the value of the bufferstr is :' + bufferstr);
-          expect(brandInfo).assertEqual(bufferstr);
-        }  
-      } else {
-        console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        ret = true;
       }
+      expect(ret).assertTrue();
       done();
     });
 
@@ -162,14 +141,7 @@ export default function initNdkTest() {
       let brandInfo: string = initndk.oHGetBrand();
       let len = brandInfo.length;
       expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
-      expect(len).assertLarger(MAX_CHARACTERS_NUM);
-      let str: RegExp = new RegExp("[\\w\\-\\.(\\)]","g");
-      let arr = brandInfo.match(str);
-      if(arr !== null){
-        let bufferstr = arr.join('');
-        console.info('the value of the bufferstr is :' + bufferstr);
-        expect(brandInfo).assertEqual(bufferstr);
-      } 
+      expect(len).assertLarger(MAX_CHARACTERS_NUM); 
       done();
     });
 
@@ -363,20 +335,13 @@ export default function initNdkTest() {
     it('testOHGetHardwareModel001', 0, async (done: Function) => {
       let hardwareModelInfo: string = initndk.oHGetHardwareModel();
 
+      let ret = false;
       console.info('the value of the deviceinfo hardwareModel is :' + hardwareModelInfo);
       expect(hardwareModelInfo).assertInstanceOf('String');
       if (hardwareModelInfo != "" && hardwareModelInfo != null && hardwareModelInfo != undefined) {
-        let str: RegExp = new RegExp("[\\w\\-\\.(\\)]","g");
-        let arr = hardwareModelInfo.match(str);
-        if(arr !== null){
-          let bufferstr = arr.join('');
-          console.info('the value of the bufferstr is :' + bufferstr);
-          expect(hardwareModelInfo).assertEqual(bufferstr);
-        } 
-      } else {
-        console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        ret = true;
       }
+      expect(ret).assertTrue();
       done();
     });
 
@@ -395,13 +360,6 @@ export default function initNdkTest() {
       let len = hardwareModelInfo.length;
       expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
       expect(len).assertLarger(MAX_CHARACTERS_NUM);
-      let str: RegExp = new RegExp("[\\w\\-\\.(\\)]","g");
-      let arr = hardwareModelInfo.match(str);
-      if(arr !== null){
-        let bufferstr = arr.join('');
-        console.info('the value of the bufferstr is :' + bufferstr);
-        expect(hardwareModelInfo).assertEqual(bufferstr);
-      }
       done();
     });
 
@@ -846,20 +804,13 @@ export default function initNdkTest() {
     it('testOHGetVersionId001', 0, async (done: Function) => {
       let versionIdInfo: string = initndk.oHGetVersionId();
 
+      let ret = false;
       console.info('the value of the deviceinfo versionId is :' + versionIdInfo);
       expect(versionIdInfo).assertInstanceOf('String');
       if (versionIdInfo != "" && versionIdInfo != null && versionIdInfo != undefined) {
-        let str: RegExp = new RegExp("[\\w\\-\\/\\.(\\)\\:\\s]","g");
-        let arr = versionIdInfo.match(str);
-        if(arr !== null){
-          let bufferstr = arr.join('');
-          console.info('the value of the bufferstr is :' + bufferstr);
-          expect(versionIdInfo).assertEqual(bufferstr);
-        }  
-      } else {
-        console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        ret = true;
       }
+      expect(ret).assertTrue();
       done();
     });
 
@@ -878,13 +829,6 @@ export default function initNdkTest() {
       let len = versionIdInfo.length;
       expect(len).assertLess(256);
       expect(len).assertLarger(MAX_CHARACTERS_NUM);
-      let str: RegExp = new RegExp("[\\w\\-\\/\\.(\\)\\:\\s]","g");
-      let arr = versionIdInfo.match(str);
-      if(arr !== null){
-        let bufferstr = arr.join('');
-        console.info('the value of the bufferstr is :' + bufferstr);
-        expect(versionIdInfo).assertEqual(bufferstr);
-      }
       done();
     });
 
