@@ -117,6 +117,7 @@ export default function DeviceInfoTest() {
 
             expect(brandInfo).assertInstanceOf('String');
             if (brandInfo != "" && brandInfo != null && brandInfo != undefined) {
+                ret = true;
                 expect(ret).assertTrue();
 				done();
             } else {
@@ -144,6 +145,7 @@ export default function DeviceInfoTest() {
 
             expect(marketNameInfo).assertInstanceOf('String');
             if (marketNameInfo != "" && marketNameInfo != null && marketNameInfo != undefined) {
+                ret = true;
                 expect(ret).assertTrue();
 				done();
             } else {
