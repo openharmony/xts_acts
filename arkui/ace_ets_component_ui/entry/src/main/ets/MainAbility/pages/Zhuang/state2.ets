@@ -15,30 +15,30 @@
 @Entry
 @Component
 struct state2 {
-  @State color1: Color | undefined | null = Color.Red
-  @State color2: Color | undefined | null = Color.Red
-  @State number1:number | undefined | null = 100
-  @State number2: number | undefined | null = 100
+  @State type1: ButtonType | undefined | null = ButtonType.Circle
+  @State type2: ButtonType | undefined | null = ButtonType.Circle
+  @State number1:number | undefined | null = 10
+  @State number2: number | undefined | null = 10
 
   build() {
     Column({ space: 20 }) {
-      Text("State颜色Red-->undefined")
+      Text("State:type-->undefined")
       Button('button')
-        .backgroundColor(this.color1)
+        .type(this.type1)
         .onClick(() => {
-          this.color1 = undefined
+          this.type1 = undefined
         })
         .key('stBtn1')
 
-      Text("State颜色Red-->null")
+      Text("State:type-->null")
       Button('button')
-        .backgroundColor(this.color2)
+        .type(this.type2)
         .onClick(() => {
-          this.color2 = null
+          this.type2 = null
         })
         .key('stBtn2')
 
-      Text("State文本100-->undefined")
+      Text("State文本10-->undefined")
       Button('button')
         .fontSize(this.number1)
         .onClick(() => {
@@ -46,7 +46,7 @@ struct state2 {
         })
         .key('stBtn3')
 
-      Text("State文本100-->null")
+      Text("State文本10-->null")
       Button('button')
         .fontSize(this.number2)
         .onClick(() => {

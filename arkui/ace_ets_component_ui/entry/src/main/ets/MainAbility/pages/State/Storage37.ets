@@ -16,7 +16,7 @@ AppStorage.clear()
 AppStorage.setOrCreate('PropA', 122);
 let storage37 = new LocalStorage();
 let prop: SubscribedAbstractProperty<number> = AppStorage.prop('PropA');
-let prop1: SubscribedAbstractProperty<number> = AppStorage.prop('sss')
+let prop137: SubscribedAbstractProperty<number> = AppStorage.prop('sss')
 
 @Entry(storage37)
 @Component
@@ -29,7 +29,7 @@ struct LocalStorage37 {
 
   build() {
     Column({ space: 10 }) {
-      Text('' + prop1).id("text37_prop1")
+      Text('' + prop137).id("text37_prop1")
       Text('' + this.link1Date).id("text37_link1Date")
       Text('' + this.link1Date2).id("text37_link1Date2")
       Button(`click`).margin(10).width('100%')

@@ -12,13 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import CommonFunc from '../../../MainAbility/common/Common';
+
 @Component
 struct Child_AY {
   // @Consume装饰的变量通过相同的属性名绑定其祖先组件Ancestors内的@Provide装饰的变量
   @Consume color: undefined | null | ResourceColor;
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 5 }) {
 
 
     }
@@ -35,8 +37,8 @@ struct Ancestors_AY {
 
   build() {
     Column() {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.color)) + " number is " + JSON.stringify(this.color))
-        .fontSize(20).margin(30).key('ProvideColor')
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.color)) + " number is " + JSON.stringify(this.color))
+        .fontSize(20).margin(10).key('ProvideColor')
       Text("设置变量color类型pink-->Orange")
       Button('change')
         .backgroundColor(this.color)
@@ -86,6 +88,6 @@ struct Ancestors_AY {
         .key('state6')
 
       Child_AY()
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }

@@ -12,13 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import CommonFunc from '../../../MainAbility/common/Common';
+
 @Component
 struct Child_AT {
   // @Consume装饰的变量通过相同的属性名绑定其祖先组件Ancestors内的@Provide装饰的变量
   @Consume hight: ResourceStr | Length;
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 5 }) {
 
 
     }
@@ -34,8 +36,8 @@ struct Ancestors_AT {
 
   build() {
     Column() {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.hight)) + " number is " + JSON.stringify(this.hight))
-        .fontSize(20).margin(30).key('ProvideHight')
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.hight)) + " number is " + JSON.stringify(this.hight))
+        .fontSize(20).margin(10).key('ProvideHight')
       Text("设置变量number类型50-->100")
       Button('change')
         .height(this.hight)
@@ -61,6 +63,6 @@ struct Ancestors_AT {
         .key('ProvideHeight3')
 
       Child_AT()
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }

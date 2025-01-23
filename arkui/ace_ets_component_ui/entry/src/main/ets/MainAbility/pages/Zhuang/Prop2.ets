@@ -14,46 +14,58 @@
  */
 @Component
 struct CountDownComponent1{
-  @Prop color1: Color | undefined | null
-  @Prop color2: Color | undefined | null
+  @Prop type1: ButtonType | undefined | null
+  @Prop type2: ButtonType | undefined | null
   @Prop number1: number | undefined | null
   @Prop number2: number | undefined | null
 
   build() {
     Row({ space: 5 }){
       Column({ space: 20 }) {
-        Text("Prop子组件颜色颜色Red-->undefined")
-        Button('button')
-          .backgroundColor(this.color1)
-          .onClick(() => {
-            this.color1 = undefined
-          })
-          .key('ziProp2Btn1')
 
-        Text("Prop子组件颜色Red-->null")
-        Button('button')
-          .backgroundColor(this.color2)
-          .onClick(() => {
-            this.color2 = null
-          })
-          .key('ziProp2Btn2')
+        Row(){
+          Column(){
+            Text("type-->undefined")
+            Button('button')
+              .type(this.type1)
+              .onClick(() => {
+                this.type1 = undefined
+              })
+              .key('ziProp2Btn1')
+          }
 
-        Text("Prop子组件文本100-->undefined")
-        Button('button')
-          .fontSize(this.number1)
-          .onClick(() => {
-            this.number1 = undefined
-          })
-          .key('ziProp2Btn3')
+          Column(){
+            Text("type-->null")
+            Button('button')
+              .type(this.type2)
+              .onClick(() => {
+                this.type2 = null
+              })
+              .key('ziProp2Btn2')
+          }
 
-        Text("Prop子组件文本100-->null")
-        Button('button')
-          .fontSize(this.number2)
-          .onClick(() => {
-            this.number2 = null
-          })
-          .key('ziProp2Btn4')
+        }
 
+        Row(){
+          Column(){
+            Text("文本10-->undefined")
+            Button('button')
+              .fontSize(this.number1)
+              .onClick(() => {
+                this.number1 = undefined
+              })
+              .key('ziProp2Btn3')
+          }
+          Column(){
+            Text("文本10-->null")
+            Button('button')
+              .fontSize(this.number2)
+              .onClick(() => {
+                this.number2 = null
+              })
+              .key('ziProp2Btn4')
+          }
+        }
       }.width('100%').margin({ top: 10 })
     }
 
@@ -63,55 +75,62 @@ struct CountDownComponent1{
 @Entry
 @Component
 struct ParentComponent1 {
-  @State color1: Color | undefined | null = Color.Red
-  @State color2: Color | undefined | null = Color.Red
-  @State number1: number | undefined | null = 100
-  @State number2: number | undefined | null = 100
+  @State type1: ButtonType | undefined | null = ButtonType.Circle
+  @State type2: ButtonType | undefined | null = ButtonType.Circle
+  @State number1: number | undefined | null = 10
+  @State number2: number | undefined | null = 10
 
   build() {
 
     Row() {
       Scroll() {
         Row({ space: 5 }) {
-
           Column({ space: 20 }) {
-            Text("Prop父组件颜色Red-->undefined")
-            Button('button')
-              .backgroundColor(this.color1)
-              .onClick(() => {
-                this.color1 = undefined
-              })
+            Row(){
+              Column(){
+                Text("Prop-->undefined")
+                Button('button')
+                  .type(this.type1)
+                  .onClick(() => {
+                    this.type1 = undefined
+                  })
+                  .key('prop2Btn1')
+              }
+              Column(){
+                Text("Prop-->null")
+                Button('button')
+                  .type(this.type2)
+                  .onClick(() => {
+                    this.type2 = null
+                  })
+                  .key('prop2Btn2')
+              }
 
-              .key('prop2Btn1')
+            }
+            Row(){
+              Column(){
+                Text("文本10-->undefined")
+                Button('button')
+                  .fontSize(this.number1)
+                  .onClick(() => {
+                    this.number1 = undefined
+                  })
+                  .key('prop2Btn3')
 
-            Text("Prop父组件颜色Red-->null")
-            Button('button')
-              .backgroundColor(this.color2)
-              .onClick(() => {
-                this.color2 = null
-              })
-              .key('prop2Btn2')
-
-            Text("Prop父组件文本100-->undefined")
-            Button('button')
-              .fontSize(this.number1)
-              .onClick(() => {
-                this.number1 = undefined
-              })
-              .key('prop2Btn3')
-
-            Text("Prop父组件文本100-->null")
-            Button('button')
-              .fontSize(this.number2)
-              .onClick(() => {
-                 this.number2 = null
-                // this.number2 = 300
-              })
-              .key('prop2Btn4')
-
+              }
+              Column(){
+                Text("文本10-->null")
+                Button('button')
+                  .fontSize(this.number2)
+                  .onClick(() => {
+                    this.number2 = null
+                  })
+                  .key('prop2Btn4')
+              }
+            }
             CountDownComponent1({
-              color1: this.color1,
-              color2: this.color2,
+              type1: this.type1,
+              type2: this.type2,
               number1: this.number1,
               number2: this.number2
             })

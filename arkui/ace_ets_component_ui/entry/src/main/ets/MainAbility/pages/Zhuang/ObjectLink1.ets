@@ -36,7 +36,7 @@ struct ViewC {
     Row() {
         Row({ space: 5 }) {
 
-          Column({ space: 20 }) {
+          Column({ space: 5 }) {
             Text("@ObjectLink颜色子组件undefined-->Pink")
             Button('button')
               .backgroundColor(this.a.color1)
@@ -83,7 +83,7 @@ struct ViewD {
       Scroll() {
         Row({ space: 5 }) {
 
-          Column({ space: 20 }) {
+          Column({ space: 5 }) {
             Text("@ObjectLink父组件颜色undefined-->Pink")
             Button('button')
               .backgroundColor(this.b.color1)

@@ -20,7 +20,7 @@ struct  CompD{
   @Link number2: number | undefined | null
   build(){
     Row({ space: 5 }){
-      Column({ space: 20 }) {
+      Column({ space: 5 }) {
         Text("Link子组件颜色undefined-->Pink")
         Button('button')
           .backgroundColor(this.color1)
@@ -78,7 +78,7 @@ struct In {
       Scroll() {
         Row({ space: 5 }) {
 
-          Column({ space: 20 }) {
+          Column({ space: 5 }) {
             Text("Link父组件颜色undefined-->Pink")
             Button('button')
               .backgroundColor(this.color1)

@@ -13,18 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function ProvideArray() {
-  describe('ProvideArray', function () {
-    beforeEach(async function (done) {
+  describe('ProvideArray', () => {
+    beforeEach(async (done: Function) => {
       console.info("ProvideArray beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/@state/ProvideArray',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/@state/ProvideArray',
       }
       try {
         router.clear();
@@ -32,7 +44,7 @@ export default function ProvideArray() {
         console.info("get ProvideArray state pages: " + JSON.stringify(pages));
         if (!("ProvideArray" == pages.name)) {
           console.info("get ProvideArray state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push ProvideArray success: " + JSON.stringify(result));
         }
@@ -48,7 +60,7 @@ export default function ProvideArray() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('ProvideArray_0100', 0, async function (done) {
+    it('ProvideArray_0100', 0, async (done: Function) => {
       console.info('ProvideArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -56,7 +68,7 @@ export default function ProvideArray() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ProvideArray');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ProvideArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ProvideArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is [10]');
@@ -69,7 +81,7 @@ export default function ProvideArray() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('ProvideArray_0200', 0, async function (done) {
+    it('ProvideArray_0200', 0, async (done: Function) => {
       console.info('ProvideArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -77,7 +89,7 @@ export default function ProvideArray() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ProvideArray');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ProvideArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ProvideArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is [true]');
@@ -90,7 +102,7 @@ export default function ProvideArray() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('ProvideArray_0300', 0, async function (done) {
+    it('ProvideArray_0300', 0, async (done: Function) => {
       console.info('ProvideArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -98,7 +110,7 @@ export default function ProvideArray() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ProvideArray');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ProvideArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ProvideArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Boolean]" number is true');
@@ -111,7 +123,7 @@ export default function ProvideArray() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('ProvideArray_0400', 0, async function (done) {
+    it('ProvideArray_0400', 0, async (done: Function) => {
       console.info('ProvideArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -119,7 +131,7 @@ export default function ProvideArray() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ProvideArrayNew');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ProvideArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ProvideArray_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is 200');

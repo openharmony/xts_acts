@@ -37,7 +37,7 @@ struct Storage11 {
 
       //link给定的键值key不存在，返回undefined
       Button('Link给定的键值key不存在').onClick((event: ClickEvent) => {
-        this.text = AppStorage.link('PropC') + ''
+        this.text = AppStorage.link('PropCABC') + ''
       }).key('Storage11Button2')
 
       //setAndLink给定的键值key存在，返回对应该键值的属性的双向绑定的数据 47

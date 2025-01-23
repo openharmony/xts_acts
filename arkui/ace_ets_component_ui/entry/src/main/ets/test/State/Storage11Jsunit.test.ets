@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function Storage11Jsunit() {
-  describe('Storage11Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('Storage11Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("Storage11Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/Storage11',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/Storage11',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function Storage11Jsunit() {
         console.info("get Storage11Jsunit state pages: " + JSON.stringify(pages));
         if (!("Storage11" == pages.name)) {
           console.info("get Storage11Jsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Storage11Jsunit page result: " + JSON.stringify(result));
         }
@@ -43,7 +56,7 @@ export default function Storage11Jsunit() {
     });
 
     //link给定的键值key存在，返回对应该键值的属性的双向绑定的数据 47
-    it('Storage11Jsunit_0100', 0, async function (done) {
+    it('Storage11Jsunit_0100', 0, async (done: Function) => {
 
       console.info('[Storage11Jsunit_0100] START');
       let driver = await UiDriver.create()
@@ -51,7 +64,7 @@ export default function Storage11Jsunit() {
       await Storage11Button1.click();
       await CommonFunc.sleep(1000);
       let Storage11ContentJson = getInspectorByKey('Storage11Content');
-      let text = JSON.parse(Storage11ContentJson);
+      let text: ESObject = JSON.parse(Storage11ContentJson);
       console.info("[Storage11Jsunit_0100] Storage11Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('47');
       console.info('[Storage11Jsunit_0100] END');
@@ -59,14 +72,14 @@ export default function Storage11Jsunit() {
     });
 
     //link给定的键值key不存在，返回undefined
-    it('Storage11Jsunit_0200', 0, async function (done) {
+    it('Storage11Jsunit_0200', 0, async (done: Function) => {
       console.info('[Storage11Jsunit_0200] START');
       let driver = await UiDriver.create()
       let Storage11Button2 = await driver.findComponent(BY.key('Storage11Button2'));
       await Storage11Button2.click();
       await CommonFunc.sleep(1000);
       let Storage11ContentJson = getInspectorByKey('Storage11Content');
-      let text = JSON.parse(Storage11ContentJson);
+      let text: ESObject = JSON.parse(Storage11ContentJson);
       console.info("[Storage11Jsunit_0200] Storage11Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('undefined');
       console.info('[Storage11Jsunit_0200] END');
@@ -74,14 +87,14 @@ export default function Storage11Jsunit() {
     });
 
     //setAndLink给定的键值key存在，返回对应该键值的属性的双向绑定的数据 47
-    it('Storage11Jsunit_0300', 0, async function (done) {
+    it('Storage11Jsunit_0300', 0, async (done: Function) => {
       console.info('[Storage11Jsunit_0300] START');
       let driver = await UiDriver.create()
       let Storage11Button3 = await driver.findComponent(BY.key('Storage11Button3'));
       await Storage11Button3.click();
       await CommonFunc.sleep(1000);
       let Storage11ContentJson = getInspectorByKey('Storage11Content');
-      let text = JSON.parse(Storage11ContentJson);
+      let text: ESObject = JSON.parse(Storage11ContentJson);
       console.info("[Storage11Jsunit_0300] Storage11Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('47');
       console.info('[Storage11Jsunit_0300] END');
@@ -89,14 +102,14 @@ export default function Storage11Jsunit() {
     });
 
     //setAndLink给定的键值key不存在，初始化新的数据 5
-    it('Storage11Jsunit_0400', 0, async function (done) {
+    it('Storage11Jsunit_0400', 0, async (done: Function) => {
       console.info('[Storage11Jsunit_0400] START');
       let driver = await UiDriver.create()
       let Storage11Button4 = await driver.findComponent(BY.key('Storage11Button4'));
       await Storage11Button4.click();
       await CommonFunc.sleep(1000);
       let Storage11ContentJson = getInspectorByKey('Storage11Content');
-      let text = JSON.parse(Storage11ContentJson);
+      let text: ESObject = JSON.parse(Storage11ContentJson);
       console.info("[Storage11Jsunit_0400] Storage11Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('5');
       console.info('[Storage11Jsunit_0400] END');
@@ -104,14 +117,14 @@ export default function Storage11Jsunit() {
     });
 
     //prop给定的键值key存在，返回对应该键值的属性的双向绑定的数据 47
-    it('Storage11Jsunit_0500', 0, async function (done) {
+    it('Storage11Jsunit_0500', 0, async (done: Function) => {
       console.info('[Storage11Jsunit_0500] START');
       let driver = await UiDriver.create()
       let Storage11Button5 = await driver.findComponent(BY.key('Storage11Button5'));
       await Storage11Button5.click();
       await CommonFunc.sleep(1000);
       let Storage11ContentJson = getInspectorByKey('Storage11Content');
-      let text = JSON.parse(Storage11ContentJson);
+      let text: ESObject = JSON.parse(Storage11ContentJson);
       console.info("[Storage11Jsunit_0500] Storage11Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('47');
       console.info('[Storage11Jsunit_0500] END');
@@ -119,14 +132,14 @@ export default function Storage11Jsunit() {
     });
 
     //prop给定的键值key存在，返回undefined
-    it('Storage11Jsunit_0600', 0, async function (done) {
+    it('Storage11Jsunit_0600', 0, async (done: Function) => {
       console.info('[Storage11Jsunit_0600] START');
       let driver = await UiDriver.create()
       let Storage11Button6 = await driver.findComponent(BY.key('Storage11Button6'));
       await Storage11Button6.click();
       await CommonFunc.sleep(1000);
       let Storage11ContentJson = getInspectorByKey('Storage11Content');
-      let text = JSON.parse(Storage11ContentJson);
+      let text: ESObject = JSON.parse(Storage11ContentJson);
       console.info("[Storage11Jsunit_0600] Storage11Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('undefined');
       console.info('[Storage11Jsunit_0600] END');
@@ -134,14 +147,14 @@ export default function Storage11Jsunit() {
     });
 
     //setAndProp给定的键值key存在，返回对应该键值的属性的双向绑定的数据 47
-    it('Storage11Jsunit_0700', 0, async function (done) {
+    it('Storage11Jsunit_0700', 0, async (done: Function) => {
       console.info('[Storage11Jsunit_0700] START');
       let driver = await UiDriver.create()
       let Storage11Button7 = await driver.findComponent(BY.key('Storage11Button7'));
       await Storage11Button7.click();
       await CommonFunc.sleep(1000);
       let Storage11ContentJson = getInspectorByKey('Storage11Content');
-      let text = JSON.parse(Storage11ContentJson);
+      let text: ESObject = JSON.parse(Storage11ContentJson);
       console.info("[Storage11Jsunit_0700] Storage11Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('47');
       console.info('[Storage11Jsunit_0700] END');
@@ -149,14 +162,14 @@ export default function Storage11Jsunit() {
     });
 
     //setAndProp给定的键值key存在，返回对应该键值的属性的双向绑定的数据 5
-    it('Storage11Jsunit_0800', 0, async function (done) {
+    it('Storage11Jsunit_0800', 0, async (done: Function) => {
       console.info('[Storage11Jsunit_0800] START');
       let driver = await UiDriver.create()
       let Storage11Button8 = await driver.findComponent(BY.key('Storage11Button8'));
       await Storage11Button8.click();
       await CommonFunc.sleep(1000);
       let Storage11ContentJson = getInspectorByKey('Storage11Content');
-      let text = JSON.parse(Storage11ContentJson);
+      let text: ESObject = JSON.parse(Storage11ContentJson);
       console.info("[Storage11Jsunit_0800] Storage11Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('5');
       console.info('[Storage11Jsunit_0800] END');
