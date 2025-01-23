@@ -45,8 +45,8 @@ struct DrawContextGetSize{
 
   build() {
     Column({ space: 10 }) {
-      NodeContainer(this.MyNodeController)
-      Text("width: " + width).key('DrawContext_get_Size_width')
+      NodeContainer(this.MyNodeController).height('30%')
+      Text("width: " + width).key('DrawContext_get_Size_width').height('5%')
       Button('Graphics DrawContext get Size')
         .key('DrawContext_get_Size')
         .onClick(() => {
@@ -55,7 +55,7 @@ struct DrawContextGetSize{
         })
         .margin({ top: 100 })
         .width('100%')
-        .height('100%')
-    }
+        .height('5%')
+    }.height('100%')
   }
 }
