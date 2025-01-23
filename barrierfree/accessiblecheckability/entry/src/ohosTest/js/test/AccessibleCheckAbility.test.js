@@ -164,6 +164,24 @@ describe('AccessibleCheckAbility', function () {
         }
     })
 	
+    /*
+      * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0700
+      * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0700
+      * @tc.desc    The result of isScreenReaderOpenSync() should be boolean type.
+      * @tc.size    SmallTest
+      * @tc.type    User
+      */
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0700', 0, async function (done) {
+        console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0700');
+        try {
+            let status = accessibility.isScreenReaderOpenSync();
+            console.info(`AccessibilityApi: SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0700 result: ${status}`);
+            expect(status).assertEqual(false);
+            done();
+        } catch (exception) {
+            console.error('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0700 failed to isScreenReaderOpenSync because ' + JSON.stringify(exception));
+        }
+    })
 })
 
 }
