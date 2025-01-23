@@ -79,36 +79,37 @@ struct NavPathStack1_6{
       Column(){
         Button('pushPath pageOne').onClick((event: ClickEvent) => {
           this.derivedStack.pushPath({name:'pageOne'})
-        }).id('NavPathStack1_6_btn1')
+        }).id('NavPathStack1_6_btn1').height('5%')
 
         Button('pushPathByName pageTwo').onClick((event: ClickEvent) => {
           this.derivedStack.pushPathByName1('pageTwo',new param('ok'))
-        }).id('NavPathStack1_6_btn2')
+        }).id('NavPathStack1_6_btn2').height('5%')
 
         Button('pushPathByName(onPop) pageThree').onClick((event: ClickEvent) => {
           this.derivedStack.pushPathByName2('pageThree',new param('ok'),(popInfo) => {
             console.log(popInfo.info.name)
           })
-        }).id('NavPathStack1_6_btn3')
+        }).id('NavPathStack1_6_btn3').height('5%')
 
         Button('pushDestination pageOne').onClick((event: ClickEvent) => {
           this.derivedStack.pushDestination({name:'pageOne'})
-        }).id('NavPathStack1_6_btn4')
+        }).id('NavPathStack1_6_btn4').height('5%')
 
         Button('pushDestinationByName pageOne').onClick((event: ClickEvent) => {
           this.derivedStack.pushDestinationByName1('pageOne',new param('ok'))
-        }).id('NavPathStack1_6_btn5')
+        }).id('NavPathStack1_6_btn5').height('5%')
 
         Button('pushDestinationByName(onPop) pageOne').onClick((event: ClickEvent) => {
           this.derivedStack.pushDestinationByName2('pageOne',new param('ok'),(popInfo) => {
             console.log(popInfo.info.name)
           })
-        }).id('NavPathStack1_6_btn6')
+        }).id('NavPathStack1_6_btn6').height('5%')
       }
     }
     .title('navigation')
     .navDestination(this.pageMap)
     .mode(NavigationMode.Split)
+    .navBarWidth('30%')
   }
 }
 

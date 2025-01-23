@@ -236,7 +236,6 @@ export default function testsuite() {
   NavPathStack18()
   NavPathStack19()
   NavPathStack20()
-  NavPathStack21()
   NavPathStack22()
   NavPathStack23()
   NavPathStack24()
@@ -329,9 +328,7 @@ export default function testsuite() {
   navigation_add2_2()
   navigation_add3_1()
   navigation_add3_2()
-  navigation_add4_1()
   queryNavigationInfoTest()
-  StepperTest1()
 
   Navigation_L0_1()
   Navigation_L0_2()
@@ -381,5 +378,8 @@ export default function testsuite() {
   NavigationLevelTest22();
   NavigationLevelTest23();
   NavPathInfoIsEntry();
-
+  navigation_add4_1()
+  NavPathStack21()
+  StepperTest1()
+  
 }

@@ -40,6 +40,7 @@ struct Navigation_L0_13 {
     .width('100%')
     .title('navigation')
     .mode(NavigationMode.Split)
+    .navBarWidth('30%')
   }
 }
 

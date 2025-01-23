@@ -58,6 +58,7 @@ struct NavigationLevelTest13 {
                 parentStack?.pushPath({ name: "pageOne"})
                 console.log('parent:' + JSON.stringify(parentStack))
               })
+              .height('5%')
           }
           .clip(true)
           .mode(NavigationMode.Stack)
