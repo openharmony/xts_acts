@@ -43,8 +43,14 @@ export default function audioInterrupt() {
 
     let driveFn = async () => {
       let dr = Driver.create();
-      let power = await dr?.waitForComponent(ON.text('本次允许', MatchPattern.EQUALS), 500);
-      await power?.click();
+      let button = await dr?.waitForComponent(ON.text('本次允许', MatchPattern.EQUALS), 500);
+      if (button == null || button == undefined) {
+        button = await dr?.waitForComponent(ON.text('允许', MatchPattern.EQUALS), 500);
+      }
+      if (button == null || button == undefined) {
+        button = await dr?.waitForComponent(ON.text('打开', MatchPattern.EQUALS), 500);
+      }
+      await button?.click();
       await sleep(3000);
     }
     let getcreateAVSession = async () => {
