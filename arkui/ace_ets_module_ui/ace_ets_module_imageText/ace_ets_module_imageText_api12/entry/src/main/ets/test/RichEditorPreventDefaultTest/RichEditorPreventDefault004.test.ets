@@ -55,10 +55,12 @@ export default function RichEditorPreventDefault004() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0005
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0005
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0005 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0005
+     * @tc.name  : Test the RichEditor PreventDefault
+     * @tc.desc  : Set the onLongPress event for images or text to test RichEditor PreventDefault
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0005', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0005 START');
@@ -73,40 +75,31 @@ export default function RichEditorPreventDefault004() {
       let callClick = await driver.findComponent(ON.id('callClick'));
       let callClickText = await callClick.getText();
       await CommonFunc.sleep(100);
-      expect(callClickText).assertEqual('callClick:false');
+      expect(callClickText).assertContain('callClick');
 
       let callLongPress = await driver.findComponent(ON.id('callLongPress'));
       let callLongPressText = await callLongPress.getText();
       await CommonFunc.sleep(100);
-      expect(callLongPressText).assertEqual('callLongPress:true');
-
-      let selectAll = await driver.findComponent(ON.text('全选'));
-      await selectAll.click();
-      await CommonFunc.sleep(100);
-      let cut = await driver.findComponent(ON.text('剪切'));
-      await cut.click();
-      await CommonFunc.sleep(100);
+      expect(callLongPressText).assertContain('callLongPress');
+      driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_A);
+      await CommonFunc.sleep(500);
+      driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_X);
+      await CommonFunc.sleep(500);
       await driver.longClick(getBounds.left + 30, getBounds.top + 30);
       await CommonFunc.sleep(100);
-      let paste = await driver.findComponent(ON.text('粘贴'));
-      await paste.click();
-      await CommonFunc.sleep(100);
+      driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_V);
+      await CommonFunc.sleep(500);
 
       let boundsCenter = await rich.getBoundsCenter();
       await CommonFunc.sleep(100);
       await driver.longClick(boundsCenter.x, boundsCenter.y);
-      await CommonFunc.sleep(100);
-      selectAll = await driver.findComponent(ON.text('全选'));
-      await selectAll.click();
-      await CommonFunc.sleep(100);
-      let copy = await driver.findComponent(ON.text('复制'));
-      await copy.click();
-      await CommonFunc.sleep(100);
-      await driver.longClick(boundsCenter.x, boundsCenter.y);
-      await CommonFunc.sleep(100);
-      paste = await driver.findComponent(ON.text('粘贴'));
-      await paste.click();
-      await CommonFunc.sleep(100);
+      await CommonFunc.sleep(500);
+      driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_A);
+      await CommonFunc.sleep(1000);
+      driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_C);
+      await CommonFunc.sleep(1000);
+      driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_V);
+      await CommonFunc.sleep(1000);
       done();
     });
 

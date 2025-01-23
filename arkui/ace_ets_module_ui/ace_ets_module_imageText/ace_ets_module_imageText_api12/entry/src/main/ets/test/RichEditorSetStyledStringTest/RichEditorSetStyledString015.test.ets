@@ -55,10 +55,12 @@ export default function RichEditorSetStyledString015() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0043
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0043
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0043 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0043
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Verify that attribute strings support setCaret0ffset to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0043', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0043 START');
@@ -90,10 +92,12 @@ export default function RichEditorSetStyledString015() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0045
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0045
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0045 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0045
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Verify that attribute strings support setTypingstyle to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0045', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0045 START');
@@ -109,17 +113,23 @@ export default function RichEditorSetStyledString015() {
       let textStyle = await driver.findComponent(ON.id('textStyle'));
       let textStyleText = await textStyle.getText();
       await CommonFunc.sleep(500);
-      let str = 'textStyle:{"fontColor":"#FF0000FF","fontSize":50,"fontStyle":1,"fontWeight":13,' +
-        '"fontFamily":"MiSans-Bold","decoration":{"type":1,"color":"#FF008000"},"fontFeature":""}';
-      expect(textStyleText).assertContain(str);
+      expect(textStyleText).assertContain('"fontColor":"#FF0000FF"');
+      expect(textStyleText).assertContain('"fontFamily":"MiSans-Bold"');
+      expect(textStyleText).assertContain('"fontFeature":""');
+      expect(textStyleText).assertContain('"fontSize":50');
+      expect(textStyleText).assertContain('"fontStyle":1');
+      expect(textStyleText).assertContain('"fontWeight":13');
+      expect(textStyleText).assertContain('"decoration":{"type":1,"color":"#FF008000"}');
       done();
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0044
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0044
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0044 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0044
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Verify that attribute strings support getTypingStyle to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0044', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0044 START');
@@ -134,17 +144,23 @@ export default function RichEditorSetStyledString015() {
       let textStyle = await driver.findComponent(ON.id('textStyle'));
       let textStyleText = await textStyle.getText();
       await CommonFunc.sleep(500);
-      let str = 'textStyle:{"fontColor":"#FF0000FF","fontSize":50,"fontStyle":1,"fontWeight":13,' +
-        '"fontFamily":"MiSans-Bold","decoration":{"type":1,"color":"#FF008000"},"fontFeature":""}';
-      expect(textStyleText).assertContain(str);
+      expect(textStyleText).assertContain('"fontColor":"#FF0000FF"');
+      expect(textStyleText).assertContain('"fontFamily":"MiSans-Bold"');
+      expect(textStyleText).assertContain('"fontFeature":""');
+      expect(textStyleText).assertContain('"fontSize":50');
+      expect(textStyleText).assertContain('"fontStyle":1');
+      expect(textStyleText).assertContain('"fontWeight":13');
+      expect(textStyleText).assertContain('"decoration":{"type":1,"color":"#FF008000"}');
       done();
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0046
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0046
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0046 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0046
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Verify that attribute strings support closeSelectionMenu to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0046', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0046 START');

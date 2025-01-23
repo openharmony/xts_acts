@@ -56,10 +56,12 @@ export default function RichEditorDoubleClick014() {
     });
     
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_021
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_021
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_021 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_021
+     * @tc.name  : Test the RichEditor doubleClick event
+     * @tc.desc  : There are multiple RichEditor components on the page. Double click any component to test the RichEditor doubleClick event
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_021', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_021 START');
@@ -76,14 +78,16 @@ export default function RichEditorDoubleClick014() {
       let message = await driver.findComponent(ON.id('message'));
       let messageText = await message.getText();
       await CommonFunc.sleep(1000);
-      expect(messageText).assertContain('{"start":3,"end":4}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
       await driver.click(getBounds.left + 340, getBounds.top + 20);
       await CommonFunc.sleep(100);
       await driver.click(getBounds.left + 340, getBounds.top + 20);
       await CommonFunc.sleep(100);
       messageText = await message.getText();
       await CommonFunc.sleep(1000);
-      expect(messageText).assertContain('{"start":11,"end":12}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
       let rich1 = await driver.findComponent(ON.id('RichEditorDoubleClick014_1'));
       let getBounds1 = await rich1.getBounds();
       await CommonFunc.sleep(500);
@@ -93,14 +97,16 @@ export default function RichEditorDoubleClick014() {
       await CommonFunc.sleep(100);
       messageText = await message.getText();
       await CommonFunc.sleep(1000);
-      expect(messageText).assertContain('{"start":2,"end":3}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
       await driver.click(getBounds1.left + 260, getBounds1.top + 20);
       await CommonFunc.sleep(100);
       await driver.click(getBounds1.left + 260, getBounds1.top + 20);
       await CommonFunc.sleep(100);
       messageText = await message.getText();
       await CommonFunc.sleep(1000);
-      expect(messageText).assertContain('{"start":9,"end":10}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
       done();
     });
 

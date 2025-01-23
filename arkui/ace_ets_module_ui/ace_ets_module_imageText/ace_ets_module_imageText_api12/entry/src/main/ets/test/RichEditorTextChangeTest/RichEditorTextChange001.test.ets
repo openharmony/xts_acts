@@ -55,10 +55,12 @@ export default function RichEditorTextChange001() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0015
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0015
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0015 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0015
+     * @tc.name  : Test the RichEditor TextChange
+     * @tc.desc  : When the enabled attribute is false, check if it enters editing mode to test RichEditor TextChange
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0015', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0015 START');

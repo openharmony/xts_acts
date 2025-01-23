@@ -44,23 +44,20 @@ struct RichEditorDoubleClick003 {
   }
   build() {
     Column() {
-
-      Column() {
-
-        Text('message:' + this.message).id('message')
-
-        Button('add image').onClick(() => {
-          this.controller.addImageSpan($r('app.media.icon'),
+      Text('message:' + this.message).id('message')
+      Button('add image').onClick(() => {
+        this.controller.addImageSpan($r('app.media.icon'),
+          {
+            imageStyle:
             {
-              imageStyle:
-              {
-                size: ['57px', '57px']
-              }
-            })
-        }).id('addImage')
-        Button('set center').onClick(() => {
-          this.controller.setCaretOffset(2);
-        }).id('setCenter')
+              size: ['57px', '57px']
+            }
+          })
+      }).id('addImage')
+      Button('set center').onClick(() => {
+        this.controller.setCaretOffset(2);
+      }).id('setCenter')
+      Column() {
         RichEditor(this.options)
           .onReady(() => {
             this.controller.addTextSpan('abc 123 test select',
@@ -80,14 +77,15 @@ struct RichEditorDoubleClick003 {
             x: 0,
             y: 0,
             z: 1,
-            angle: 60
+            angle: 50
           }))
           .borderWidth(1)
           .borderColor(Color.Green)
-          .width('100%')
+          .width('30%')
           .height('80')
           .id('RichEditorDoubleClick003')
       }
+      .margin(50)
       .borderWidth(1)
       .borderColor(Color.Red)
       .width('100%')

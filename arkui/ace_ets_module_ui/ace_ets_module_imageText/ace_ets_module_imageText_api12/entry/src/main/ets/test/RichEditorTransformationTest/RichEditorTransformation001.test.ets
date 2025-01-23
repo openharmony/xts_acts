@@ -55,10 +55,12 @@ export default function RichEditorTransformation001() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_001
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_001
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_001 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_001
+     * @tc.name  : Test the RichEditor AffineTransformation
+     * @tc.desc  : Set up a clockwise rotating dual handle test to test RichEditor AffineTransformation
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_001', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_001 START');
@@ -76,10 +78,12 @@ export default function RichEditorTransformation001() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_002
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_002
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_002 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_002
+     * @tc.name  : Test the RichEditor AffineTransformation
+     * @tc.desc  : Set up a clockwise rotating single handle test to test RichEditor AffineTransformation
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 4
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_002', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_002 START');

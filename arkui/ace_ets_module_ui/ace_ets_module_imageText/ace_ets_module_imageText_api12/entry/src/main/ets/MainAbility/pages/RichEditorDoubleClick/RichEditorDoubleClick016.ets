@@ -25,6 +25,7 @@ struct RichEditorDoubleClick016 {
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller };
   @State message: string = '';
+  private changBoolean: boolean = true;
   listener = mediaquery.matchMediaSync('(orientation: 横屏)');
 
   onPortrait() {
@@ -46,14 +47,11 @@ struct RichEditorDoubleClick016 {
     Column() {
 
       Column() {
-
         Text('message:' + this.message).id('message')
         Button('changeOrientation').onClick(() => {
-          this.changeOrientation(true);
+          this.changeOrientation(this.changBoolean);
+          this.changBoolean = !this.changBoolean;
         }).id('changeOrientation')
-        Button('changeOrientationFalse').onClick(() => {
-          this.changeOrientation(false);
-        }).id('changeOrientationFalse')
         RichEditor(this.options)
           .onReady(() => {
             this.controller.addTextSpan('0123456');
@@ -73,7 +71,7 @@ struct RichEditorDoubleClick016 {
       .borderWidth(1)
       .borderColor(Color.Red)
       .width('100%')
-      .height('70%')
+      .height('50%')
     }
   }
 }

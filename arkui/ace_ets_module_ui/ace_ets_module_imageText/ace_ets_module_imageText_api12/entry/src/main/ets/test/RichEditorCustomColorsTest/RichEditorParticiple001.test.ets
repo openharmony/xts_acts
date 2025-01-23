@@ -55,10 +55,12 @@ export default function RichEditorParticiple001() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_AI_PARTICIPLE_0050
-     * @tc.name SUB_ACE_UI_AI_PARTICIPLE_0050
-     * @tc.desc SUB_ACE_UI_AI_PARTICIPLE_0050 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_AI_PARTICIPLE_0050
+     * @tc.name  : Test the RichEditor content Click the result
+     * @tc.desc  : Set the RichEditor graphic mixing to test the RichEditor content Click the result
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
      */
     it('SUB_ACE_UI_AI_PARTICIPLE_0050', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_AI_PARTICIPLE_0050 START');
@@ -73,11 +75,11 @@ export default function RichEditorParticiple001() {
       await select?.click()
       await CommonFunc.sleep(1000);
 
-      let copy = await driver.findComponent(ON.text('复制'))
+      await driver.findComponent(ON.text('复制'))
       await CommonFunc.sleep(1000);
-
-      expect(copy.getId() instanceof Promise).assertEqual(true);
-
+      let obj = getInspectorByKey('select');
+      let Obj1: ESObject = JSON.parse(obj);
+      expect(Obj1.$type).assertEqual('Button');
       done();
     });
 

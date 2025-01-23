@@ -55,10 +55,12 @@ export default function RichEditorShortCutKeys015() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0024
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0024
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0024 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0024
+     * @tc.name  : Test the RichEditor shortCutKeys
+     * @tc.desc  : Set the up and through lines, use CTRL+U shortcut keys to test RichEditor shortCutKeys
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0024', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0024 START');
@@ -76,8 +78,7 @@ export default function RichEditorShortCutKeys015() {
       expect(styleText).assertContain('"decoration":{"type":3');
       await driver.click(pointCenter.x, pointCenter.y);
       await CommonFunc.sleep(500);
-      let selectAll = await driver.findComponent(ON.text('全选'));
-      await selectAll.click();
+      driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_A);
       await CommonFunc.sleep(500);
       driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_U);
       await CommonFunc.sleep(500);

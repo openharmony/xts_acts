@@ -56,10 +56,12 @@ export default function RichEditorThreeStrikes003() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0008
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0008
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0008 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0008
+     * @tc.name  : Test the RichEditor ThreeStrikes
+     * @tc.desc  : When in the selected state, three clicks on the selected area to test RichEditor ThreeStripes
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0008', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0008 START');
@@ -86,10 +88,12 @@ export default function RichEditorThreeStrikes003() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0009
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0009
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0009 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0009
+     * @tc.name  : Test the RichEditor ThreeStrikes
+     * @tc.desc  : When in selected state, three clicks on non selected areas to test RichEditor ThreeStripes
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0009', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0009 START');

@@ -55,10 +55,12 @@ export default function RichEditorStringSpan005() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_stringspan_0018
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_stringspan_0018
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_stringspan_0018 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_stringspan_0018
+     * @tc.name  : Test the RichEditor StringSpan
+     * @tc.desc  : Test RichEditor StringSpan by adding a new text/image attribute string at the end using appendStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_stringspan_0018', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_stringspan_0018 START');

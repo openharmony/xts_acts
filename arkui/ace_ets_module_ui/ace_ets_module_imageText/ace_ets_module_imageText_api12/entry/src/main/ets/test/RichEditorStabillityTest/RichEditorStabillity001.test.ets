@@ -55,10 +55,12 @@ export default function RichEditorStabillity001() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_STABILLITY_0001
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_STABILLITY_0001
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_STABILLITY_0001 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_STABILLITY_0001
+     * @tc.name  : Test the RichEditor Stability
+     * @tc.desc  : Continuously adding textSpan to test RichEditor Stability
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_STABILLITY_0001', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_STABILLITY_0001 START');
