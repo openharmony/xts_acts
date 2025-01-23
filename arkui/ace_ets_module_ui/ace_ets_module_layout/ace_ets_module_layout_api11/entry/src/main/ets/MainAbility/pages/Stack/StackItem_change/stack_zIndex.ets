@@ -42,15 +42,15 @@ struct Stack_ZIndex {
   build() {
     Stack({ alignContent: this.addAlignContent }) {
       Text()
-        .width(200)
-        .height(200)
+        .width('70%')
+        .height('70%')
         .backgroundColor(Color.Red)
         .key('Stack_ZIndex_011')
         .zIndex(this.addZIndex);
-      Text().width(100).height(100).backgroundColor(Color.Blue).key('Stack_ZIndex_012');
+      Text().width('50%').height('50%').backgroundColor(Color.Blue).key('Stack_ZIndex_012');
     }
-    .width(350)
-    .height(350)
+    .width('100%')
+    .height('100%')
     .backgroundColor(Color.White)
     .key('Stack_ZIndex_01')
   }

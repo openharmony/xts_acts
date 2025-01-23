@@ -47,20 +47,20 @@ struct AlignContent_FlexAlign_End_Margin_padding {
           alignContent: FlexAlign.End,
           alignItems: ItemAlign.Start
         }) {
-          Text('1').width(150).height(50).backgroundColor(0xF5DEB3)
+          Text('1').width(60).height(50).backgroundColor(0xF5DEB3)
             .key('AlignContentFlexEndMargin&padding_flex001_1')
-          Text('2').width(150).height(100).backgroundColor(0xD2B48C)
+          Text('2').width(60).height(60).backgroundColor(0xD2B48C)
             .key('AlignContentFlexEndMargin&padding_flex001_2')
-          Text('3').width(150).height(150).backgroundColor(0xD2B48C)
+          Text('3').width(60).height(80).backgroundColor(0xD2B48C)
             .key('AlignContentFlexEndMargin&padding_flex001_3')
-          Text('4').width(150).height(200).backgroundColor(0xF5DEB3)
+          Text('4').width(60).height(90).backgroundColor(0xF5DEB3)
             .key('AlignContentFlexEndMargin&padding_flex001_4')
         }
         .key('AlignContentFlexEndMargin&padding_flex001')
-        .width(400)
-        .height(360)
+        .width(200)
+        .height(200)
         .backgroundColor(0xAFEEEE)
-        .margin(10)
+        .margin(5)
         .padding(this.flexPadding)
       }.key('AlignContentFlexEndMargin&padding_Column_1')
     }
