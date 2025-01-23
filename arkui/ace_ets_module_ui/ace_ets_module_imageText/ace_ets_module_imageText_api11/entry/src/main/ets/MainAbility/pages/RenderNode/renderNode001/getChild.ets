@@ -53,7 +53,7 @@ struct getChild1{
   @State y3 : number = 0
   @State show3 :boolean=false
   build(){
-    Column({space:10}){
+    Column(){
       NodeContainer(this.MyNodeController).height('20%')
       Button('添加子节点').height('5%')
         .key('getChild_0')
@@ -139,7 +139,6 @@ struct getChild1{
         Text('width:'+`${this.width3}`).key('getChild_5_text').height('5%')
       }
     }
-    .margin({top:100})
     .width('100%')
     .height('100%')
   }
