@@ -20,7 +20,7 @@ import FileSahre_DeactivatePermission_test from './deactivatePermission.test'
 import FileSahre_CheckPersistentPermission_test from './checkPersistentPermission.test.js'
 import EmptyTest from './Empty.test.js'
 export default function testsuite() {
-    if (canIUse(" SystemCapability.FileManagement.AppFileService.FolderAuthorization")){
+    if (canIUse("SystemCapability.FileManagement.AppFileService.FolderAuthorization")){
       FileSahre_PersistPermission_test()
       FileShare_RevokePermission_test()
       FileSahre_ActivatePermission_test()
