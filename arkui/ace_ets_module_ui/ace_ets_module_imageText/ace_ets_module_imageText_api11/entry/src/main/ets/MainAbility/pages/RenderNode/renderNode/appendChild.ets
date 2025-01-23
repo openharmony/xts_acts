@@ -93,7 +93,6 @@ struct appendChild1{
           }
         })
     }
-    .margin({top:100})
     .width('100%')
     .height('100%')
   }
