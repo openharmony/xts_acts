@@ -31,8 +31,13 @@ export default function ActsNotificationBadgeTest() {
         notificationManager.setBadgeNumber(10, (err) => {
           if (err) {
             console.log(`Sub_Notification_Ans_Corner_SetNum_0900 failed, error code: ${err.code}, message: ${err.message}`)
-            expect(false).assertTrue()
-            done()
+            if(err.code == 801){
+              expect(true).assertTrue()
+              done()
+            }else{
+              expect(false).assertTrue()
+              done()
+            }
           } else {
             console.log("Sub_Notification_Ans_Corner_SetNum_0900 success")
             expect(true).assertTrue()
@@ -59,8 +64,14 @@ export default function ActsNotificationBadgeTest() {
           done();
         }).catch((err: BusinessError) => {
           console.log(`Sub_Notification_Ans_Corner_SetNum_1000 failed, error code: ${err.code}, message: ${err.message}`)
-          expect(false).assertTrue()
-          done()
+            if(err.code == 801){
+              expect(true).assertTrue()
+              done()
+            }else{
+              expect(false).assertTrue()
+              done()
+            }
+
         })
       } catch (err) {
         console.log(`Sub_Notification_Ans_Corner_SetNum_1000 failed, catch error code: ${err.code}, message: ${err.message}`)

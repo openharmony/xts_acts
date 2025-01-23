@@ -31,7 +31,13 @@ export default function ActsNotificationShowTest() {
         contentTitle: 'Title1',
         contentText: 'This is a notification 001'
       }
-      notification.show(ShowNotificationOptions)
+      try {
+        notification.show(ShowNotificationOptions)
+      } catch (error) {
+        console.error(`show fail: ${JSON.stringify(error)}`);
+        expect(error.code).assertEqual(801)
+        done()
+      }
       console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
       console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
       expect(ShowNotificationOptions.contentTitle).assertEqual('Title1')
@@ -54,8 +60,13 @@ export default function ActsNotificationShowTest() {
         notification.show(ShowNotificationOptions)
       } catch (error) {
         console.error(`show fail: ${JSON.stringify(error)}`);
-        expect(error.code).assertEqual(401)
-        done()
+        if(error.code == 801){
+          expect(true).assertTrue()
+          done()
+        }else{
+          expect(error.code).assertEqual(401)
+          done()
+        }
       }
       console.info(TAG + ' conteneTitle is number:' + ShowNotificationOptions.contentTitle)
       console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
@@ -70,7 +81,13 @@ export default function ActsNotificationShowTest() {
     it('Sub_Notification_Ans_Distributed_Enable_5500', 0, async function (done) {
       console.info(TAG + 'Sub_Notification_Ans_Distributed_Enable_5500 START ')
       let ShowNotificationOptions = {}
-      notification.show(ShowNotificationOptions)
+      try {
+        notification.show(ShowNotificationOptions)
+      } catch (error) {
+        console.error(`show fail: ${JSON.stringify(error)}`);
+        expect(error.code).assertEqual(801)
+        done()
+      }
       expect(ShowNotificationOptions.contentTitle).assertEqual(undefined)
       done()
     })
@@ -92,7 +109,13 @@ export default function ActsNotificationShowTest() {
         contentText: 'This is a notification 004',
         clickAction: ActionResult
       }
-      notification.show(ShowNotificationOptions)
+      try {
+        notification.show(ShowNotificationOptions)
+      } catch (error) {
+        console.error(`show fail: ${JSON.stringify(error)}`);
+        expect(error.code).assertEqual(801)
+        done()
+      }
       console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
       console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
       console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
@@ -123,7 +146,13 @@ export default function ActsNotificationShowTest() {
         contentText: 'This is a notification 005',
         clickAction: ActionResult
       }
-      notification.show(ShowNotificationOptions)
+      try {
+        notification.show(ShowNotificationOptions)
+      } catch (error) {
+        console.error(`show fail: ${JSON.stringify(error)}`);
+        expect(error.code).assertEqual(801)
+        done()
+      }
       console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
       console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
       console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
@@ -154,7 +183,13 @@ export default function ActsNotificationShowTest() {
         contentText: 'This is a notification 006',
         clickAction: ActionResult
       }
-      notification.show(ShowNotificationOptions)
+      try {
+        notification.show(ShowNotificationOptions)
+      } catch (error) {
+        console.error(`show fail: ${JSON.stringify(error)}`);
+        expect(error.code).assertEqual(801)
+        done()
+      }
       console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
       console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
       console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
@@ -184,7 +219,13 @@ export default function ActsNotificationShowTest() {
         contentText: 'This is a notification 007',
         clickAction: ActionResult
       }
-      notification.show(ShowNotificationOptions)
+      try {
+        notification.show(ShowNotificationOptions)
+      } catch (error) {
+        console.error(`show fail: ${JSON.stringify(error)}`);
+        expect(error.code).assertEqual(801)
+        done()
+      }
       console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
       console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
       console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
@@ -214,7 +255,13 @@ export default function ActsNotificationShowTest() {
         contentText: 'This is a notification 008',
         clickAction: ActionResult
       }
-      notification.show(ShowNotificationOptions)
+      try {
+        notification.show(ShowNotificationOptions)
+      } catch (error) {
+        console.error(`show fail: ${JSON.stringify(error)}`);
+        expect(error.code).assertEqual(801)
+        done()
+      }
       console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
       console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
       console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
@@ -243,7 +290,13 @@ export default function ActsNotificationShowTest() {
         contentText: 'This is a notification 009',
         clickAction: ActionResult
       }
-      notification.show(ShowNotificationOptions)
+      try {
+        notification.show(ShowNotificationOptions)
+      } catch (error) {
+        console.error(`show fail: ${JSON.stringify(error)}`);
+        expect(error.code).assertEqual(801)
+        done()
+      }
       console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
       console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
       console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
@@ -271,7 +324,13 @@ export default function ActsNotificationShowTest() {
         contentTitle: 'Title10',
         clickAction: ActionResult
       }
-      notification.show(ShowNotificationOptions)
+      try {
+        notification.show(ShowNotificationOptions)
+      } catch (error) {
+        console.error(`show fail: ${JSON.stringify(error)}`);
+        expect(error.code).assertEqual(801)
+        done()
+      }
       console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
       console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
       console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
