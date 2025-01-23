@@ -16,7 +16,7 @@
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import CommonFunc from '../../../MainAbility/common/Common';
-import { Driver, ON, Component } from '@ohos.UiTest';
+import { Driver, ON } from '@ohos.UiTest';
 
 export default function NavigationLevelTest13() {
   describe('NavigationLevelTest13', () => {
@@ -58,8 +58,8 @@ export default function NavigationLevelTest13() {
 
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
-      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
-      let btn = await scrollBar.scrollSearch(ON.id('NavigationLevelTest13_btn1'));
+
+      let btn = await driver.findComponent(ON.id('NavigationLevelTest13_btn1'));
       await btn.click()
       console.info('[NavigationLevelTest13_0100] btn click');
       await CommonFunc.sleep(1000);
@@ -74,3 +74,4 @@ export default function NavigationLevelTest13() {
     });
   })
 }
+
