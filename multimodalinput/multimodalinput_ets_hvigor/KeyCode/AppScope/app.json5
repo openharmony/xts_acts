@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+/*
+ * Copyright (C) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,10 +13,16 @@
  * limitations under the License.
  */
 
-import MultimodalInputDeviceTest from './MultimodalInputDevice.test';
-import MultimodalInputConsumerTest from './MultimodalInputConsumer.test';
-
-export default function testsuite() {
-  MultimodalInputDeviceTest();
-  MultimodalInputConsumerTest();
+{
+    "app": {
+        "bundleName": "com.acts.multimodalinputkeycodetest",
+        "vendor": "huawei",
+        "versionCode": 1000000,
+        "versionName": "1.0.0",
+        "icon": "$media:icon",
+        "label": "$string:app_name",
+        "description": "$string:description_application",
+        "distributedNotificationEnabled": true,
+        "keepAlive": true
+    }
 }
