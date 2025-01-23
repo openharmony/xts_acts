@@ -61,7 +61,7 @@ struct setRectShapeExample {
 
 
   build() {
-    Row() {
+    Column() {
       NodeContainer(this.myNodeController)
       Text('setRectShape:' + this.setRectShape).margin(10).id("setRectShape") 
       Button('click setRectShape')

@@ -75,13 +75,13 @@ struct onAppearExample {
     Column() {
 
 
-      Button("add CommonEvent to Text")
+      Button("add CommonEvent to Text").height('5%')
         .margin(20)
         .onClick(() => {
           this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling() !)
         })
       if (this.isShow) {
-        Button("this is a Text")
+        Button("this is a Text").height('5%')
           .margin(30)
           .fontSize(16)
           .height(20)
@@ -128,17 +128,18 @@ struct onAppearExample {
         NodeContainer(this.myNodeController)
           .borderWidth(1)
           .width(300)
-          .height(100)
+          .height('30%')
       }
 
 
-      Button(this.changeAppear)
+      Button(this.changeAppear).height('5%')
         .id("setOnDisappear")
         .onClick(() => {
           this.isShow = !this.isShow
         }).margin(15)
 
-      Text(this.Text).margin(20).id("setOnAppear")
+      Text(this.Text).margin(20).id("setOnAppear").height('5%')
     }.width("100%")
+    .height('100%')
   }
 }

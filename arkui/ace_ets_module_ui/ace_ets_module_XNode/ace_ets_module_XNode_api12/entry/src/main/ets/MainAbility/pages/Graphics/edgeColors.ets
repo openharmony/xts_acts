@@ -46,7 +46,7 @@ struct edgeColorsExample {
   @State edgeColorsValue: number = 0
 
   build() {
-    Row() {
+    Column() {
       NodeContainer(this.myNodeController)
       Text('edgeColorsValue:' + this.edgeColorsValue).margin(10).id("edgeColorsValue") //4278190335
       Button('click edgeColorsValue')

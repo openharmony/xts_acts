@@ -85,7 +85,7 @@ struct GetAfterRemove {
       Column() {
         NodeContainer(this.baseNode)
           .width('100%')
-          .height(400)
+          .height('30%')
           .backgroundColor(Color.Gray)
         Row(){
           Text('currentIndex is '+this.idx)
@@ -97,9 +97,9 @@ struct GetAfterRemove {
             .onClick(() => {
               this.idx--
             })
-        }
+        }.height('30%')
 
-        Button('removeChild')
+        Button('removeChild').height('5%')
           .id('removeChildButton')
           .onClick(() => {
             this.baseNode.removeChild(this.idx)
@@ -108,11 +108,11 @@ struct GetAfterRemove {
             this.getParentAfterRemove = this.baseNode.getParentAfterRemove1
           })
 
-        Text(this.getPreviousAfterRemove)
+        Text(this.getPreviousAfterRemove).height('5%')
           .id('getPreviousAfterRemoveText')
-        Text(this.getNextAfterRemove)
+        Text(this.getNextAfterRemove).height('5%')
           .id('getNextAfterRemoveText')
-        Text(this.getParentAfterRemove)
+        Text(this.getParentAfterRemove).height('5%')
           .id('getParentAfterRemoveText')
       }
       .width('100%')

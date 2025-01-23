@@ -93,12 +93,12 @@ struct Dispose1 {
 
   build() {
     Column({ space: 4 }) {
-      NodeContainer(this.myNodeController)
-      Button('FrameNode dispose').id("dispose_click")
+      NodeContainer(this.myNodeController).height('30%')
+      Button('FrameNode dispose').id("dispose_click").height('10%')
         .onClick(() => {
           this.myNodeController.disposeFrameNode();
         }).width('100%')
-      Text(this.result).id("dispose_result")
+      Text(this.result).id("dispose_result").height('10%')
         .onClick(() => {
           this.flag = this.myNodeController.getFrameNode();
           if(this.flag){
@@ -108,5 +108,6 @@ struct Dispose1 {
           }
         }).width('100%')
     }
+    .height('100%')
   }
 }

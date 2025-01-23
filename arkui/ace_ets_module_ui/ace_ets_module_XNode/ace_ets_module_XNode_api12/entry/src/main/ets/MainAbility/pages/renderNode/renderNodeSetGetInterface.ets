@@ -61,9 +61,9 @@ struct renderSetGetInterface{
   build() {
     Row() {
       Column() {
-        NodeContainer(this.myNodeController)
-        Text('bRadiusValue:' + this.bRadiusValue).margin(10).id("bRadiusValue")
-        Button('changeRadius')
+        NodeContainer(this.myNodeController).height('30%')
+        Text('bRadiusValue:' + this.bRadiusValue).margin(10).id("bRadiusValue").height('2%')
+        Button('changeRadius').height('2%')
           .id("changeRadiusClick")
           .onClick(() => {
             borderRadius.topLeft = 20
@@ -72,8 +72,8 @@ struct renderSetGetInterface{
           })
 
 
-        Text('bColor:' + this.bColor).margin(10).id("bColor")
-        Button('changeColor')
+        Text('bColor:' + this.bColor).margin(10).id("bColor").height('2%')
+        Button('changeColor').height('2%')
           .id("bColorChange")
           .onClick(() => {
             borderColor.left = 0xFF00FFEE
@@ -82,8 +82,8 @@ struct renderSetGetInterface{
           })
 
 
-        Text('bWidth:' + this.bWidth).margin(10).id("bWidth")
-        Button('changeWidth')
+        Text('bWidth:' + this.bWidth).margin(10).id("bWidth").height('2%')
+        Button('changeWidth').height('2%')
           .id("bWidthChange")
           .onClick(() => {
             borderWidth.left = 40
@@ -91,8 +91,8 @@ struct renderSetGetInterface{
             this.bWidth = renderNode.borderWidth.left
           })
 
-        Text('bStyle:' + this.bBorderStyle).margin(10).id("bStyle")
-        Button('changeStyle')
+        Text('bStyle:' + this.bBorderStyle).margin(10).id("bStyle").height('2%')
+        Button('changeStyle').height('2%')
           .id("bChangeStyle")
           .onClick(() => {
             borderStyle.left = BorderStyle.Dashed
@@ -101,6 +101,7 @@ struct renderSetGetInterface{
           })
 
       }
+      .height('100%')
     }
   }
 }
