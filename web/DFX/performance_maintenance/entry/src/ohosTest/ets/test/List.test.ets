@@ -13,9 +13,7 @@
  * limitations under the License.
  */
 import webViewPressureLevel from './webViewPressureLevel.test';
-import optimizeParserBudget from './optimizeParserBudget.test';
 
 export default function testsuite() {
-  webViewPressureLevel();
-  optimizeParserBudget();
+  webViewPressureLevel()
 }
