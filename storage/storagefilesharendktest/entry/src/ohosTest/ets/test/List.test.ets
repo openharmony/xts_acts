@@ -15,7 +15,7 @@
 import EmptyTest from './Empty.test'
 import permissionNdkTest from './permission.test'
 export default function testsuite() {
-  if (canIUse(" SystemCapability.FileManagement.AppFileService.FolderAuthorization")){
+  if (canIUse("SystemCapability.FileManagement.AppFileService.FolderAuthorization")){
     permissionNdkTest()
   }else{
     EmptyTest()
