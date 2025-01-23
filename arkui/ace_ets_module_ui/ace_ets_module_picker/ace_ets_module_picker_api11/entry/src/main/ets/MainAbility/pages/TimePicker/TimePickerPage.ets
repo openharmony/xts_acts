@@ -50,7 +50,7 @@ struct TimePickerPage {
   build() {
     Column() {
       Button('切换12小时制/24小时制')
-        .margin({ top: 30 })
+        .fontSize(14)
         .key('button')
         .onClick(() => {
           this.mode = !this.mode
@@ -60,8 +60,8 @@ struct TimePickerPage {
         selected: this.selectedTime,
       })
         .key('timePicker')
-        .width('100%')
-        .height("70%")
+        .width('60%')
+        .height("50%")
         .useMilitaryTime(this.isMilitaryTime)
         .onChange((value: TimePickerResult) => {
           this.hour = value.hour
@@ -69,9 +69,9 @@ struct TimePickerPage {
           this.selectedTime.setHours(value.hour, value.minute)
           console.info('select current date is: ' + JSON.stringify(value))
         })
-      Text('hour:' + this.hour).fontSize(20).margin(10).key('hour')
-      Text('minute:' + this.minute).fontSize(20).margin(10).key('minute')
-      Text('24hour:' + this.mode).fontSize(20).margin(10).key('mode')
-    }
+      Text('hour:' + this.hour).fontSize(14).key('hour')
+      Text('minute:' + this.minute).fontSize(14).key('minute')
+      Text('24hour:' + this.mode).fontSize(14).key('mode')
+    }.alignItems(HorizontalAlign.Center).width('100%').height('90%').margin({ top: 20 })
   }
 }
