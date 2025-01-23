@@ -1976,6 +1976,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
       const message = 'setSubWindowModalModalityTypeTest_0100';
       let windowClass = windowStage.getMainWindowSync()
       await windowClass.setUIContent('testability/pages/WindowTest/Modality')
+      await sleep(300);
       let driver =  Driver.create()
       let btn = await driver.findComponent(ON.id('ModalityText'))
       await sleep(1000)
@@ -1990,7 +1991,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           let windowClass = data;
           await windowClass.setUIContent('testability/pages/Index')
           await windowClass.resizeAsync(400, 500)
-          await windowClass.moveWindowToAsync(400, 100)
+          await windowClass.moveWindowToAsync(400, 400)
           await windowClass.showWindow()
           let promise = windowClass.setSubWindowModal(true, window.ModalityType.WINDOW_MODALITY);
           promise.then(async () => {
@@ -2042,7 +2043,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           let windowClass = data;
           await windowClass.setUIContent('testability/pages/Index')
           await windowClass.resizeAsync(400, 500)
-          await windowClass.moveWindowToAsync(400, 100)
+          await windowClass.moveWindowToAsync(400, 400)
           await windowClass.showWindow()
           let promise = windowClass.setSubWindowModal(true, window.ModalityType.APPLICATION_MODALITY);
           promise.then(async () => {
@@ -2172,7 +2173,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           console.info(`${message} setSubWindowModal success`)
           await windowClass.setUIContent('testability/pages/Index')
           await windowClass.resizeAsync(400, 500)
-          await windowClass.moveWindowToAsync(100, 100)
+          await windowClass.moveWindowToAsync(100, 400)
           await windowClass.showWindow()
           await driver.click(btnCenter.x, btnCenter.y)
           let btnText = await btn.getText()
@@ -2222,7 +2223,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           console.info(`${message} setSubWindowModal success`)
           await windowClass.setUIContent('testability/pages/Index')
           await windowClass.resizeAsync(400, 500)
-          await windowClass.moveWindowToAsync(100, 100)
+          await windowClass.moveWindowToAsync(100, 400)
           await windowClass.showWindow()
           await driver.click(btnCenter.x, btnCenter.y)
           let btnText = await btn.getText()
@@ -2487,7 +2488,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           console.info(`${message} Succeeded in setting window modal`);
           let windowClassStart = windowStageStart.getMainWindowSync()
           await windowClassStart.resizeAsync(700, 800)
-          await windowClassStart.moveWindowToAsync(400, 100)
+          await windowClassStart.moveWindowToAsync(400, 400)
           await driver.click(btnPoint.x, btnPoint.y)
           await sleep(1000)
           let btnTest = await btn.getText()
@@ -2552,7 +2553,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           console.info(`${message} Succeeded in setting window modal`);
           let windowClassStart = windowStageStart.getMainWindowSync()
           await windowClassStart.resizeAsync(700, 800)
-          await windowClassStart.moveWindowToAsync(400, 100)
+          await windowClassStart.moveWindowToAsync(400, 400)
           await driver.click(btnPoint.x, btnPoint.y)
           await sleep(1000)
           let btnTest = await btn.getText()

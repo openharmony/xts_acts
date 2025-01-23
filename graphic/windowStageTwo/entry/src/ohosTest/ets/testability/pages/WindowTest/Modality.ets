@@ -24,7 +24,7 @@ struct Modality {
       Button(this.message).id('ModalityText')
         .onClick(()=>{
           this.message = 'Clicked'
-        })
+        }).height(vp2px(100))
     }
     .height('100%')
     .width('100%')
