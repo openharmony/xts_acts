@@ -508,8 +508,26 @@ import RichEditorDoubleClick018 from './RichEditorDoubleClickTest/RichEditorDoub
 import RichEditorDoubleClick019 from './RichEditorDoubleClickTest/RichEditorDoubleClick019.test'
 
 import RichEditorScroll001 from './RichEditorScrollTest/RichEditorScroll001.test'
+import TextCommonTextComputing1 from './TextTest/MeasureSizeTest/TextCommonTextComputing1.test';
+import TextCommonTextComputing2 from './TextTest/MeasureSizeTest/TextCommonTextComputing2.test';
+import TextCommonTextComputing3 from './TextTest/MeasureSizeTest/TextCommonTextComputing3.test';
+import TextCommonTextComputing4 from './TextTest/MeasureSizeTest/TextCommonTextComputing4.test';
+import TextCommonTextComputing5 from './TextTest/MeasureSizeTest/TextCommonTextComputing5.test';
+import TextCommonTextComputing6 from './TextTest/MeasureSizeTest/TextCommonTextComputing6.test';
+import TextCommonTextComputing7 from './TextTest/MeasureSizeTest/TextCommonTextComputing7.test';
+import TextCommonTextComputing8 from './TextTest/MeasureSizeTest/TextCommonTextComputing8.test';
+import TextCommonTextComputing9 from './TextTest/MeasureSizeTest/TextCommonTextComputing9.test';
 
 export default function testsuite() {
+  TextCommonTextComputing1();
+  TextCommonTextComputing2();
+  TextCommonTextComputing3();
+  TextCommonTextComputing4();
+  TextCommonTextComputing5();
+  TextCommonTextComputing6();
+  TextCommonTextComputing7();
+  TextCommonTextComputing8();
+  TextCommonTextComputing9();
   textAreaInputTest();
   APIContentTypeTest();
   APIUnderlineColorTest();
