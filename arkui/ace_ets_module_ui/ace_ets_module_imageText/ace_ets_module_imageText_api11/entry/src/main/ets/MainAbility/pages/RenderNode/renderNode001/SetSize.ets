@@ -38,12 +38,12 @@ struct setSize {
   build() {
     Row() {
       Column() {
-        NodeContainer(this.MyNodeController)
-        Text('setSize_WidthStatus:' + this.getWidth).margin(10)
+        NodeContainer(this.MyNodeController).height('30%')
+        Text('setSize_WidthStatus:' + this.getWidth).margin(10).height('5%')
           .key('Width_status')
-        Text('setSize_HeightStatus:' + this.getHeight).margin(10)
+        Text('setSize_HeightStatus:' + this.getHeight).margin(10).height('5%')
           .key('Height_status')
-        Button('click to set')
+        Button('click to set').height('5%')
           .onClick(() => {
             renderNode.size = { width: 300, height: 300 }
             renderNode.invalidate()
@@ -51,7 +51,7 @@ struct setSize {
             this.getHeight = renderNode.size.height
           })
           .id('setSize')
-      }.width('100%')
+      }.width('100%').height('100%')
     }.height('100%')
   }
 }

@@ -43,9 +43,9 @@ struct appendChild1{
 
   build(){
     Column({space:10}){
-      NodeContainer(this.MyNodeController)
-      Text("width1: " + this.width1).key('appendChild_width1')
-      Button('appendChild')
+      NodeContainer(this.MyNodeController).height('20%')
+      Text("width1: " + this.width1).key('appendChild_width1').height('5%')
+      Button('appendChild').height('5%')
         .key('appendChild_1')
         .onClick(()=>{
           const child =new RenderNode()
@@ -53,7 +53,7 @@ struct appendChild1{
           const renderNode1 = renderNode.appendChild(child)
           this.width1 = Number(renderNode.getChild(0)?.size.width)
         })
-      Button('在最后添加子节点')
+      Button('在最后添加子节点').height('5%')
         .key('insertChildAfter_1')
         .onClick(()=>{
           const child1 =new RenderNode()
@@ -69,7 +69,7 @@ struct appendChild1{
             this.width1 = 60
           }
         })
-      Button('removeChild')
+      Button('removeChild').height('5%')
         .key('removeChild_1')
         .onClick(()=>{
           const sibling = renderNode.getChild(0)
@@ -81,7 +81,7 @@ struct appendChild1{
           }
         })
 
-      Button('删除所有')
+      Button('删除所有').height('5%')
         .key('clearChild_1')
         .onClick(()=>{
           const sibling = renderNode.getChild(0)

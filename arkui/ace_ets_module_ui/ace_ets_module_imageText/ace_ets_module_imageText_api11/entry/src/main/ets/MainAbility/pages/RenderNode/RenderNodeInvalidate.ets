@@ -37,17 +37,17 @@ struct invalidateExample {
   build() {
     Row() {
       Column() {
-        NodeContainer(this.MyNodeController)
-        Button('Click to set')
+        NodeContainer(this.MyNodeController).height('30%')
+        Button('Click to set').height('5%')
           .id('invalidate_Opacity')
           .onClick(() => {
             renderNode.opacity = 0.5
             renderNode.invalidate()
             this.setOpacity = renderNode.opacity
           })
-        Text('statusOpacity:' + this.setOpacity).margin(10)
+        Text('statusOpacity:' + this.setOpacity).margin(10).height('5%')
           .key('Opacity_reset')
-      }.width('100%')
+      }.width('100%').height('100%')
     }.height('100%')
   }
 }

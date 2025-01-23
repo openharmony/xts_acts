@@ -36,17 +36,17 @@ struct setOpacity {
   build() {
     Row() {
       Column() {
-        NodeContainer(this.MyNodeController)
-        Text('setOpacityStatus:' + this.setOpacity).margin(10)
+        NodeContainer(this.MyNodeController).height('30%')
+        Text('setOpacityStatus:' + this.setOpacity).margin(10).height('5%')
           .key('Opacity_status')
-        Button('Click to set')
+        Button('Click to set').height('5%')
           .onClick(() => {
             renderNode.opacity = 0.5
             renderNode.invalidate()
             this.setOpacity = renderNode.opacity
           })
           .id('setOpacity')
-      }.width('100%')
+      }.width('100%').height('100%')
     }.height('100%')
   }
 }

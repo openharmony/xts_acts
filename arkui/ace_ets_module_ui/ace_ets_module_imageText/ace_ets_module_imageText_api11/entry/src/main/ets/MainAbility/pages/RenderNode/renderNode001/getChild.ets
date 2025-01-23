@@ -54,8 +54,8 @@ struct getChild1{
   @State show3 :boolean=false
   build(){
     Column({space:10}){
-      NodeContainer(this.MyNodeController)
-      Button('添加子节点')
+      NodeContainer(this.MyNodeController).height('20%')
+      Button('添加子节点').height('5%')
         .key('getChild_0')
         .onClick(()=>{
         const child =new RenderNode()
@@ -64,12 +64,12 @@ struct getChild1{
         child.position = {x:100 , y:100}
         renderNode.insertChildAfter(child,sibling)
       })
-      Button('改变子节点的位置')
+      Button('改变子节点的位置').height('5%')
         .key('getChild_1')
         .onClick(()=>{
         this.index++
       })
-      Button('获取RenderNode的getChild接口')
+      Button('获取RenderNode的getChild接口').height('5%')
         .key('getChild_2')
         .onClick(()=>{
         const child0 = renderNode.getChild(this.index)
@@ -81,9 +81,9 @@ struct getChild1{
         }
       })
       if(this.show0){
-        Text('width:'+`${this.width0}`).key('getChild_2_text')
+        Text('width:'+`${this.width0}`).key('getChild_2_text').height('5%')
       }
-      Button('获取RenderNode的getFirstChild接口')
+      Button('获取RenderNode的getFirstChild接口').height('5%')
         .key('getChild_3')
         .onClick(()=>{
         const child1 = renderNode.getFirstChild()
@@ -95,9 +95,9 @@ struct getChild1{
         }
       })
       if(this.show1){
-        Text('width:'+`${this.width1}`).key('getChild_3_text')
+        Text('width:'+`${this.width1}`).key('getChild_3_text').height('5%')
       }
-      Button('获取RenderNode的getNextSibling接口')
+      Button('获取RenderNode的getNextSibling接口').height('5%')
         .key('getChild_4')
         .onClick(()=>{
         const child2 = renderNode.getChild(this.index)
@@ -115,9 +115,9 @@ struct getChild1{
         }
       })
       if(this.show2){
-        Text('width:'+`${this.width2}`).key('getChild_4_text')
+        Text('width:'+`${this.width2}`).key('getChild_4_text').height('5%')
       }
-      Button('获取RenderNode的getPreviousSibling接口')
+      Button('获取RenderNode的getPreviousSibling接口').height('5%')
         .key('getChild_5')
         .onClick(()=>{
         const child3 = renderNode.getChild(this.index)
@@ -136,7 +136,7 @@ struct getChild1{
         }
       })
       if(this.show3){
-        Text('width:'+`${this.width3}`).key('getChild_5_text')
+        Text('width:'+`${this.width3}`).key('getChild_5_text').height('5%')
       }
     }
     .margin({top:100})
