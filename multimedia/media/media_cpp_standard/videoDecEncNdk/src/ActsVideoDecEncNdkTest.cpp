@@ -21,6 +21,13 @@
 #include "native_avformat.h"
 #include "VDecEncNdkSample.h"
 #include "syscap_ndk.h"
+#include "native_avcapability.h"
+namespace {
+    OH_AVCapability *cap_avc = nullptr;
+    bool cap_avc_result = false;
+    OH_AVCapability *cap_mpeg4 = nullptr;
+    bool cap_mpeg4_result = false;
+} // namespace
 
 using namespace std;
 using namespace testing::ext;
@@ -36,7 +43,16 @@ public:
     void TearDown() override;
 };
 
-void ActsVideoDecEncNdkTest::SetUpTestCase() {}
+void ActsVideoDecEncNdkTest::SetUpTestCase() {
+    cap_avc = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
+    if(cap_avc){
+        cap_avc_result = true;
+    }
+    cap_mpeg4 = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_MPEG4, true, HARDWARE);
+    if(cap_mpeg4){
+        cap_mpeg4_result = true;
+    }
+}
 void ActsVideoDecEncNdkTest::TearDownTestCase() {}
 void ActsVideoDecEncNdkTest::SetUp() {}
 void ActsVideoDecEncNdkTest::TearDown() {}
@@ -115,7 +131,7 @@ bool CanUseVideoCodec()
  */
 HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0100, TestSize.Level1)
 {
-    if (!CanUseVideoCodec()) {
+    if (!CanUseVideoCodec() || !cap_avc_result || !cap_mpeg4_result) {
         cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0100 ignore" <<endl;
         return;
     }
@@ -175,7 +191,7 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_010
  */
 HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0200, TestSize.Level1)
 {
-    if (!CanUseVideoCodec()) {
+    if (!CanUseVideoCodec() || !cap_avc_result) {
         cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0200 ignore" <<endl;
         return;
     }
@@ -220,7 +236,7 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_020
  */
 HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0300, TestSize.Level1)
 {
-    if (!CanUseVideoCodec()) {
+    if (!CanUseVideoCodec() || !cap_avc_result) {
         cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0300 ignore" <<endl;
         return;
     }
@@ -262,7 +278,7 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_030
 */
 HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0400, TestSize.Level1)
 {
-    if (!CanUseVideoCodec()) {
+    if (!CanUseVideoCodec() || !cap_avc_result) {
         cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0400 ignore" <<endl;
         return;
     }
@@ -318,7 +334,7 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_040
  */
 HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0500, TestSize.Level1)
 {
-    if (!CanUseVideoCodec()) {
+    if (!CanUseVideoCodec() || !cap_avc_result) {
         cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0500 ignore" <<endl;
         return;
     }
@@ -375,7 +391,7 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_050
  */
 HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0600, TestSize.Level1)
 {
-    if (!CanUseVideoCodec()) {
+    if (!CanUseVideoCodec() || !cap_avc_result) {
         cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0600 ignore" <<endl;
         return;
     }
@@ -430,7 +446,7 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_060
  */
 HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0700, TestSize.Level1)
 {
-    if (!CanUseVideoCodec()) {
+    if (!CanUseVideoCodec() || !cap_avc_result) {
         cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0700 ignore" <<endl;
         return;
     }
