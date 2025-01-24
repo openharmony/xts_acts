@@ -4,7 +4,8 @@
     "MainAbility/pages/testgesture",
     "MainAbility/pages/postFrame/TestPostFrameCallback",
     "MainAbility/pages/swiper/SwiperAutoPlayTest",
-    "MainAbility/pages/progress/TestProgressLinearStyle"
-
+    "MainAbility/pages/progress/TestProgressLinearStyle",
+    "MainAbility/pages/list/ListCaseTest",
+    "MainAbility/pages/listScrollTo/ListScrollToTest"
   ]
 }

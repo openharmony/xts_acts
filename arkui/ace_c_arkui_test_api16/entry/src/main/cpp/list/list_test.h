@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,16 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const postFrameCallbackTest: (a: string) => void;
+#ifndef ARKUI_CAPI_XTS_LIST_TEST_H
+#define ARKUI_CAPI_XTS_LIST_TEST_H
 
-export const testPostFrameCallback: (a: string) => void;
+#include "../common/common.h"
+#include <ace/xcomponent/native_interface_xcomponent.h>
 
-export const swiperAutoPlayTest: (a: string) => void;
+namespace ArkUICapiTest {
 
-export const ProgressLinearStyleTest: (a: string) => void;
-
-export const testProgressLinearStyle: (a: string) => void;
-
-export const listTestCallback: (a: string) => void;
-
-export const listScrollToTestCallback: (a: string) => void;
+class ListTest {
+public:
+    ~ListTest();
+    static napi_value ListCaseTest(napi_env env, napi_callback_info info);
+private:
+};
+} // namespace ArkUICapiTest
+#endif // ARKUI_CAPI_XTS_LIST_TEST_H
