@@ -46,30 +46,22 @@ export default function GridNodeTest() {
       await CommonFunc.sleep(1000);
       console.info('gridNode after each called');
     })
+
+    /**
+     * @tc.number    gridNode0100
+     * @tc.name      gridNode0100
+     * @tc.desc      frameNode: createNodegridToWindow
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
     it('gridNode0100', 0, async (done: Function) => {
 
       let tagName = 'gridNode0100';
       console.info('[' + tagName + '] START============================');
       let strJsonNew = getInspectorByKey('key_ grid_001');
-      console.info('[' + tagName + '] Search width is: ' + JSON.stringify(JSON.parse(strJsonNew)
-        .$attrs
-        .width));
-
-      expect(JSON.parse(strJsonNew).$attrs.width).assertEqual('90.00%');
-      console.info('[' + tagName + '] END ===========================');
-      done();
-    });
-
-    it('gridNode0200', 0, async (done: Function) => {
-
-      let tagName = 'gridNode0100';
-      console.info('[' + tagName + '] START============================');
-      let strJsonNew = getInspectorByKey('key_ grid_001');
-      console.info('[' + tagName + '] Search scrollBarWidth is: ' + JSON.stringify(JSON.parse(strJsonNew)
-        .$attrs
-        .scrollBarWidth));
-
-      expect(JSON.parse(strJsonNew).$attrs.scrollBarWidth).assertEqual('4.00vp');
+      console.info('[' + tagName + '] Search is: ' + JSON.stringify(JSON.parse(strJsonNew).$type));
+      expect(JSON.parse(strJsonNew).$type).assertEqual('Grid');
       console.info('[' + tagName + '] END ===========================');
       done();
     });

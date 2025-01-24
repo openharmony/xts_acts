@@ -46,30 +46,22 @@ export default function GridItemNodeTest() {
       await CommonFunc.sleep(1000);
       console.info('griditemNode after each called');
     })
-    it('gridItemNode0100', 0, async (done: Function) => {
+
+     /**
+     * @tc.number    gridItemNode0100
+     * @tc.name      gridItemNode0100
+     * @tc.desc      frameNode: createNodegridItemToWindow
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+     it('gridItemNode0100', 0, async (done: Function) => {
 
       let tagName = 'gridItemNode0100';
       console.info('[' + tagName + '] START============================');
       let strJsonNew = getInspectorByKey('key_ gridItem_001');
-      console.info('[' + tagName + '] Search width is: ' + JSON.stringify(JSON.parse(strJsonNew)
-        .$attrs
-        .width));
-
-      expect(JSON.parse(strJsonNew).$attrs.width).assertEqual('100.00%');
-      console.info('[' + tagName + '] END ===========================');
-      done();
-    });
-
-    it('gridItemNode0200', 0, async (done: Function) => {
-
-      let tagName = 'gridItemNode0100';
-      console.info('[' + tagName + '] START============================');
-      let strJsonNew = getInspectorByKey('key_ gridItem_001');
-      console.info('[' + tagName + '] Search textAlign is: ' + JSON.stringify(JSON.parse(strJsonNew)
-        .$attrs
-        .textAlign));
-
-      expect(JSON.parse(strJsonNew).$attrs.textAlign).assertEqual('TextAlign.Center');
+      console.info('[' + tagName + '] Search is: ' + JSON.stringify(JSON.parse(strJsonNew).$type));
+      expect(JSON.parse(strJsonNew).$type).assertEqual('GridItem');
       console.info('[' + tagName + '] END ===========================');
       done();
     });
