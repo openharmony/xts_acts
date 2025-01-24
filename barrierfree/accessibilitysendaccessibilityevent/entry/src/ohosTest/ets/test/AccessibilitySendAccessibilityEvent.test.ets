@@ -2691,12 +2691,12 @@ export default function abilityTest() {
             let event = new accessibility.EventInfo(jsonObj);
 
             accessibility.sendAccessibilityEvent(event, (err, result) => {
-                console.error("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9200 error : " + JSON.stringify(err));
+                console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9200 error : " + JSON.stringify(err));
                 if (err && err.code != 0) {
                     console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9200 has error: ${err.code}`);
-                    except(null).assertFail();
+                    expect(null).assertFail();
                 } else {
-                    except(result).assertEqual(undefined);
+                    expect(result).assertEqual(undefined);
                 }
                 done();
             });
