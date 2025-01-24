@@ -1,7 +1,6 @@
 {
   "src": [
     "testability/pages/Index",
-    "testability/pages/webViewPressureLevel",
-    "testability/pages/optimizeParserBudget"
+    "testability/pages/webViewPressureLevel"
   ]
 }
