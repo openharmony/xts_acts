@@ -32,7 +32,7 @@ export default function ActsNotificationShowTest() {
         contentText: 'This is a notification 001'
       }
       try {
-        notification.show(ShowNotificationOptions)
+        await notification.show(ShowNotificationOptions)
         console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
         console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
         expect(ShowNotificationOptions.contentTitle).assertEqual('Title1')
@@ -57,7 +57,7 @@ export default function ActsNotificationShowTest() {
         contentText: 'This is a notification 002'
       }
       try {
-        notification.show(ShowNotificationOptions)
+        await notification.show(ShowNotificationOptions)
         console.info(TAG + ' conteneTitle is number:' + ShowNotificationOptions.contentTitle)
         console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
         expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 002')
@@ -82,7 +82,7 @@ export default function ActsNotificationShowTest() {
       console.info(TAG + 'Sub_Notification_Ans_Distributed_Enable_5500 START ')
       let ShowNotificationOptions = {}
       try {
-        notification.show(ShowNotificationOptions)
+        await notification.show(ShowNotificationOptions)
         expect(ShowNotificationOptions.contentTitle).assertEqual(undefined)
         done()
       } catch (error) {
@@ -111,7 +111,7 @@ export default function ActsNotificationShowTest() {
         clickAction: ActionResult
       }
       try {
-        notification.show(ShowNotificationOptions)
+        await notification.show(ShowNotificationOptions)
         console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
         console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
         console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
@@ -148,7 +148,7 @@ export default function ActsNotificationShowTest() {
         clickAction: ActionResult
       }
       try {
-        notification.show(ShowNotificationOptions)
+        await notification.show(ShowNotificationOptions)
         console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
         console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
         console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
@@ -186,7 +186,7 @@ export default function ActsNotificationShowTest() {
         clickAction: ActionResult
       }
       try {
-        notification.show(ShowNotificationOptions)
+        await notification.show(ShowNotificationOptions)
         console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
         console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
         console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
@@ -223,7 +223,7 @@ export default function ActsNotificationShowTest() {
         clickAction: ActionResult
       }
       try {
-        notification.show(ShowNotificationOptions)
+        await notification.show(ShowNotificationOptions)
         console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
         console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
         console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
@@ -260,7 +260,7 @@ export default function ActsNotificationShowTest() {
         clickAction: ActionResult
       }
       try {
-        notification.show(ShowNotificationOptions)
+        await notification.show(ShowNotificationOptions)
         console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
         console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
         console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
@@ -296,7 +296,7 @@ export default function ActsNotificationShowTest() {
         clickAction: ActionResult
       }
       try {
-        notification.show(ShowNotificationOptions)
+        await notification.show(ShowNotificationOptions)
         console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
         console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
         console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
@@ -331,7 +331,7 @@ export default function ActsNotificationShowTest() {
         clickAction: ActionResult
       }
       try {
-        notification.show(ShowNotificationOptions)
+        await notification.show(ShowNotificationOptions)
         console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
         console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
         console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
