@@ -30,8 +30,50 @@ import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
 
 let filesDir: string | undefined;
 let testContext: common.UIAbilityContext;
+const TAG = "sendableImageAbilityTest: ";
 
 
+export function isSupportedCameras() : boolean {
+  const cameraAvailable = canIUse('SystemCapability.Multimedia.Camera.Core');
+  let context = testContext;
+
+  let isSupportedCameras = true;
+  let isSupportedCameraManager = false;
+  let mCameraManager: camera.CameraManager;
+  let mCameraDevicesArray: Array<camera.CameraDevice>;
+
+  let isEmpty = (data: ESObject) => {
+    if (data == null || data == undefined) {
+      return true;
+    }
+    return false;
+  }
+
+  console.info(TAG + 'Enter getCameraManagerInstance');
+  try {
+    mCameraManager = camera.getCameraManager(context);
+    if (isEmpty(mCameraManager)) {
+      console.info(TAG + "getCameraManager FAILED");
+      isSupportedCameraManager = false;
+      return isSupportedCameraManager;
+    }
+    console.info(TAG + 'Exit getCameraManagerInstance');
+    mCameraDevicesArray = mCameraManager.getSupportedCameras();
+    if (isEmpty(mCameraDevicesArray)) {
+      isSupportedCameras = false;
+    }
+  } catch (err) {
+    console.error(TAG + "getCameraManager FAILED. errorMessage:",err);
+    isSupportedCameraManager = false;
+    return isSupportedCameraManager;
+  }
+  if (cameraAvailable && isSupportedCameras) {
+    isSupportedCameraManager = true;
+  } else {
+    isSupportedCameraManager = false;
+  }
+  return isSupportedCameraManager;
+}
 let sleep = async (delay: number): Promise<void> => {
   return new Promise((resolve, _) => {
     setTimeout(async () => {
@@ -110,7 +152,7 @@ async function getRelease(img: image.Image) {
 }
 
 
-export default function sendableImageSource() {
+export function sendableImageSource() {
   describe('sendableImageAbilityTest', () => {
 
     let filePath: string;
