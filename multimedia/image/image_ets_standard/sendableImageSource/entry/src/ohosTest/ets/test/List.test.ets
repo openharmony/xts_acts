@@ -14,10 +14,10 @@
 */
 
 import {sendableImageSource,isSupportedCameras} from './sendableImage.test';
-let isSupportedCameras = isSupportedCameras();
+let isSupportedCamerasResult = isSupportedCameras();
 
 export default function testsuite() {
-  if(isExecuteAVVideoRecorder){
+  if(isSupportedCamerasResult){
     sendableImageSource();
   }
 }
