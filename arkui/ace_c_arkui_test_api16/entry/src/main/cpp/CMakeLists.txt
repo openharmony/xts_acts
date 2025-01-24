@@ -14,12 +14,15 @@ add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
     postFrame/post_frame_callback_test.cpp
+    list/list_test.cpp
+    listScrollTo/list_scroll_to_test.cpp
     swiper/swiper_test.cpp
     progress/progress_linear_style_test.cpp
 )
 
 add_library(nativefunc SHARED
     napi_func_init.cpp
+    listItemGroup/list_item_group_test.cpp
 )
 
 find_library(
