@@ -356,8 +356,8 @@ export default function multiThreadTest() {
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0200', 0, async (done: Function) => {
-      let isSupportedCameras = isSupportedCameras(); 
-      if(!isSupportedCameras){
+      let isSupportedCamerasResult = isSupportedCameras(); 
+      if(!isSupportedCamerasResult){
         console.info('Failed to obtain the default camera or device object.Not support usb camera');
         expect(true).assertTrue();
         done();
