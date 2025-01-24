@@ -42,7 +42,7 @@ struct navigation_add4_1 {
     .mode(NavigationMode.Stack)
     .navDestination(this.PagesMap)
     .height('100%')
-    .width('350')
+    .width('100%')
   }
 }
 

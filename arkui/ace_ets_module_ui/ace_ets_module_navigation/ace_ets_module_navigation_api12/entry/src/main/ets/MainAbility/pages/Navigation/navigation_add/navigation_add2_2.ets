@@ -108,10 +108,10 @@ struct navigation_add2_2 {
   build() {
     Navigation(this.pageInfos) {
       Column() {
-        Text(this.from).id('navigation_add2_2_text1')
-        Text(this.to).id('navigation_add2_2_text2')
-        Text(this.operation).id('navigation_add2_2_text3')
-        Text('' + this.animated).id('navigation_add2_2_text4')
+        Text(this.from).id('navigation_add2_2_text1').height('5%')
+        Text(this.to).id('navigation_add2_2_text2').height('5%')
+        Text(this.operation).id('navigation_add2_2_text3').height('5%')
+        Text('' + this.animated).id('navigation_add2_2_text4').height('5%')
         Button('pushOne', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -121,8 +121,10 @@ struct navigation_add2_2 {
 
           })
           .key('navigation_add2_2_btn1')
+          .height('5%')
       }
     }.title('NavIndex').navDestination(this.PageMap).mode(NavigationMode.Split)
+    .navBarWidth('30%')
   }
 }
 

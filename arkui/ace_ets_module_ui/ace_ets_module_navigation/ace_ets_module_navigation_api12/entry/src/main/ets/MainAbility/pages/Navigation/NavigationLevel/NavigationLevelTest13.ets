@@ -65,12 +65,13 @@ struct NavigationLevelTest13 {
           .width('80%')
           .height('80%')
           .title('ChildNavigation')
+          .titleMode(NavigationTitleMode.Mini)
         }
       }
       .mode(NavigationMode.Stack)
       .title('Navigation')
       .navDestination(this.PageMap)
+      .titleMode(NavigationTitleMode.Mini)
     }
   }
 }
-
