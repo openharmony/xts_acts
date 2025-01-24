@@ -57,6 +57,16 @@ struct SwiperImplicitanimation0060 {
         this.velocity = extraInfo.velocity.toString()
       })
 
+      Button('切换下').onClick((event: ClickEvent) => {
+        this.swiperController.showNext()
+
+      }).id('btn_implicitanimation_0060_1')
+
+      Button('切换上').onClick((event: ClickEvent) => {
+        this.swiperController.showPrevious()
+
+      }).id('btn_implicitanimation_0060_2')
+
       Button('切换').onClick((event: ClickEvent) => {
         this.swiperController.changeIndex(2)
 

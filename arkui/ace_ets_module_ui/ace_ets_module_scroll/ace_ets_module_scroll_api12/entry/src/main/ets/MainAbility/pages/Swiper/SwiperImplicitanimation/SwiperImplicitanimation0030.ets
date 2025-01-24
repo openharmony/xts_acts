@@ -52,6 +52,16 @@ struct SwiperImplicitanimation0030 {
         this.index = index.toString()
         this.currentOffset = extraInfo.currentOffset.toFixed(0).toString()
       })
+      Button('切换2').onClick((event: ClickEvent) => {
+        this.swiperController.showNext()
+
+      }).id('btn_implicitanimation_0030_1')
+
+      Button('切换').onClick((event: ClickEvent) => {
+        this.swiperController.showPrevious()
+
+      }).id('btn_implicitanimation_0030')
+
       Text(this.index).key('implicitanimation_0030_1')
       Text(this.currentOffset).key('implicitanimation_0030_2')
     }.width('100%')
