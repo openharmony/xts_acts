@@ -39,9 +39,9 @@ struct GridNestedScroll {
   @Styles
   listCard() {
     .backgroundColor(Color.White)
-      .height(72)
-      .width("100%")
-      .borderRadius(12)
+    .height(72)
+    .width("100%")
+    .borderRadius(12)
   }
   build() {
     Column() {
@@ -92,15 +92,15 @@ struct GridNestedScroll {
             }, (day: string) => day)
           }
           .columnsTemplate('1fr 1fr 1fr 1fr')
-            .attributeModifier(this.customModifier as CustomModifier)
-            .height('90%')
-            .onScroll((xOffset: number, yOffset: number) => {
-              console.info("WebView onScroll x = " + xOffset)
-              console.info("WebView onScroll y = " + yOffset)
-              if ((xOffset != 0 || yOffset != 0) && this.selfScrollTime == 0) {
-                this.selfScrollTime = Utils.getSystemTime()
-              }
-            })
+          .attributeModifier(this.customModifier as CustomModifier)
+          .height('90%')
+          .onScroll((xOffset: number, yOffset: number) => {
+            console.info("WebView onScroll x = " + xOffset)
+            console.info("WebView onScroll y = " + yOffset)
+            if ((xOffset != 0 || yOffset != 0) && this.selfScrollTime == 0) {
+              this.selfScrollTime = Utils.getSystemTime()
+            }
+          })
 
           Column().width('100%').height('20%').backgroundColor(Color.Red)
 
@@ -111,6 +111,8 @@ struct GridNestedScroll {
           this.parentScrollTime = Utils.getSystemTime()
         }
       })
+      .width('100%')
+      .height('70%')
     }.key('ColumnSize')
   }
 }

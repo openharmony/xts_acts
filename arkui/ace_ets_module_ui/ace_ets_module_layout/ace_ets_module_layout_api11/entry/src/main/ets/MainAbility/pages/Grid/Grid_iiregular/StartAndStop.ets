@@ -22,6 +22,9 @@ struct StartAndStop {
 
   build() {
     Column({ space: 5 }) {
+      Text(this.text1).key('StartAndStop_start')
+      Text(this.text2).key('StartAndStop_end')
+
       Stack({ alignContent: Alignment.BottomEnd }) {
         Grid(this.scroller) {
           ForEach(this.Number, (day: string) => {
@@ -43,7 +46,7 @@ struct StartAndStop {
         .rowsGap(10)
         .width('80%')
         .backgroundColor(0xFAEEE0)
-        .height(300)
+        .height('70%')
         .scrollBar(BarState.Off)
         .onScrollStart(() => {
           this.text1 = 'onScrollStart'
@@ -52,9 +55,6 @@ struct StartAndStop {
           this.text2 = 'onScrollStop'
         })
         .id('StartandStop')
-
-        Text(this.text1).key('StartAndStop_start')
-        Text(this.text2).key('StartAndStop_end')
 
       }.width('100%').margin({ top: 5 })
     }

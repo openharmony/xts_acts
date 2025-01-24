@@ -114,7 +114,64 @@ struct GridCallbackPage {
   }
 
   build(){
-    Column({ space: 2 }) {
+    Column() {
+      Button('scoll to bottom')
+        .key('bottom')
+        .height('5%')
+        .onClick(() => { // 滑动到底部
+          console.log('滑动到底部')
+          this.scroller.scrollTo({xOffset:0,yOffset:2000})
+        })
+      Button(this.buttonName)
+        .key('button')
+        .height('5%')
+        .onClick(() => { // 点击后滑到下一页
+          this.buttonName = 'clicked'
+          this.scroller.scrollPage({ next: true })
+        })
+      Row(){
+        Text('onScrollIndex:' + this.onScrollIndex).key('onScrollIndex')
+          .fontSize(10).margin({right:5})
+        Text(this.onItemDragStart).key('onItemDragStart')
+          .fontSize(10)
+      }
+      Row(){
+        Text(this.onItemDragEnter).key('onItemDragEnter')
+          .fontSize(10).margin({right:5})
+        Text(this.onItemDragMove).key('onItemDragMove')
+          .fontSize(10)
+      }
+      Row(){
+        Text(this.onItemDragLeave).key('onItemDragLeave')
+          .fontSize(10).margin({right:5})
+        Text(this.onItemDrop).key('onItemDrop')
+          .fontSize(10)
+      }
+      Row() {
+        Text(this.onScrollText).key('onScrollText')
+          .fontSize(10).margin({right:5})
+        Text(this.onReachStartText).key('onReachStartText')
+          .fontSize(10)
+      }
+      Row() {
+        Text(this.onReachEndText).key('onReachEndText')
+          .fontSize(10).margin({right:5})
+        Text(this.onScrollStartText).key('onScrollStartText')
+          .fontSize(10)
+      }
+      Row() {
+        Text(this.onScrollIndexText).key('onScrollIndexText')
+          .fontSize(10).margin({right:5})
+        Text(this.onScrollStopText).key('onScrollStopText')
+          .fontSize(10)
+      }
+      Row(){
+        Text(this.onScrollFrameBeginText).key('onScrollFrameBeginText')
+          .fontSize(10).margin({right:5})
+        Text(this.onScrollBarUpdateText).key('onScrollBarUpdateText')
+          .fontSize(10)
+      }
+
       Text('default').fontColor(0xCCCCCC).fontSize(9).width('90%')
       Grid() {
         GridItem() {
@@ -123,7 +180,7 @@ struct GridCallbackPage {
         }.width('90%')
       }.columnsTemplate('1fr')
       .rowsTemplate('1fr')
-      .height(50)
+      .height('5%')
       .key('grid_default')
 
       Grid() {
@@ -157,7 +214,7 @@ struct GridCallbackPage {
       .width('90%')
       .key('grid1')
       .backgroundColor(0xFAEEE0)
-      .height(150)
+      .height('7%')
       .edgeEffect(EdgeEffect.Spring)
       .onItemDragStart((event: ItemDragInfo, itemIndex: number) => {
         this.onItemDragStart = 'onItemDragStart:succ'
@@ -209,7 +266,7 @@ struct GridCallbackPage {
       })
       .width('90%')
       .backgroundColor(0xFAEEE0)
-      .height(200)
+      .height('50%')
       .onScroll((scrollOffset: number, scrollState: ScrollState) => {
         this.onScrollText = 'onScroll:succ'
         console.info('onScroll scrollOffset:' + scrollOffset.toString() + ' ScrollState:' + ScrollState.toString())
@@ -240,41 +297,6 @@ struct GridCallbackPage {
         return { offsetRemain: offset }
       })
 
-       Row() {
-        Button('scoll to bottom')
-          .key('bottom')
-          .onClick(() => { // 滑动到底部
-            console.log('滑动到底部')
-            this.scroller.scrollTo({xOffset:0,yOffset:2000})
-          })
-        Button(this.buttonName)
-          .key('button')
-          .onClick(() => { // 点击后滑到下一页
-            this.buttonName = 'clicked'
-            this.scroller.scrollPage({ next: true })
-          })
-      }
-      Text('onScrollIndex:' + this.onScrollIndex).key('onScrollIndex')
-      Text(this.onItemDragStart).key('onItemDragStart')
-      Text(this.onItemDragEnter).key('onItemDragEnter')
-      Text(this.onItemDragMove).key('onItemDragMove')
-      Text(this.onItemDragLeave).key('onItemDragLeave')
-      Text(this.onItemDrop).key('onItemDrop')
-      Row() {
-        Text(this.onScrollText).margin({right:10}).key('onScrollText')
-        Text(this.onReachStartText).key('onReachStartText')
-      }
-      Row() {
-        Text(this.onReachEndText).margin({right:10}).key('onReachEndText')
-        Text(this.onScrollStartText).key('onScrollStartText')
-      }
-      Row() {
-        Text(this.onScrollIndexText).margin({right:10}).key('onScrollIndexText')
-        Text(this.onScrollStopText).key('onScrollStopText')
-      }
-
-      Text(this.onScrollFrameBeginText).key('onScrollFrameBeginText')
-      Text(this.onScrollBarUpdateText).key('onScrollBarUpdateText')
     }.width('100%').margin({ top: 2 })
   }
 }

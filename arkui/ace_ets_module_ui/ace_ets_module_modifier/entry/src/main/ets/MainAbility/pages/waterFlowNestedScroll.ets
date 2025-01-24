@@ -86,15 +86,15 @@ struct WaterflowNestedScroll {
               .width('100%')
             }, (item: string) => item)
           }.columnsTemplate('1fr 1fr')
-            .attributeModifier(this.customModifier as CustomModifier)
-            .height('90%')
-            .onScroll((xOffset: number, yOffset: number) => {
-              console.info("WebView onScroll x = " + xOffset)
-              console.info("WebView onScroll y = " + yOffset)
-              if ((xOffset != 0 || yOffset != 0) && this.selfScrollTime == 0) {
-                this.selfScrollTime = Utils.getSystemTime()
-              }
-            })
+          .attributeModifier(this.customModifier as CustomModifier)
+          .height('90%')
+          .onScroll((xOffset: number, yOffset: number) => {
+            console.info("WebView onScroll x = " + xOffset)
+            console.info("WebView onScroll y = " + yOffset)
+            if ((xOffset != 0 || yOffset != 0) && this.selfScrollTime == 0) {
+              this.selfScrollTime = Utils.getSystemTime()
+            }
+          })
           Column().width('100%').height('20%').backgroundColor(Color.Red)
         }.width('100%')
       }.onScroll((xOffset: number, yOffset: number) => {
@@ -103,6 +103,8 @@ struct WaterflowNestedScroll {
           this.parentScrollTime = Utils.getSystemTime()
         }
       })
+      .width('100%')
+      .height('70%')
     }.key('ColumnSize')
   }
 }

@@ -58,7 +58,7 @@ export default function waterFlowNestedScrollJsunit() {
       let x = Math.floor(Utils.getRectHorizontalCenterX(webRect))
       let y = Math.floor(Utils.getRectVerticalCenterY(webRect))
       let driver = Driver.create();
-      await driver.swipe(Math.round(x), Math.round(y + vp2px(140)), Math.round(x), Math.round(y - vp2px(140)));
+      await driver.swipe(Math.round(x), Math.round(y + vp2px(60)), Math.round(x), Math.round(y - vp2px(60)));
       console.info('[ArkUI_Stage_waterFlowNestedScroll01] driver.swipe end');
       try {
         let callBack = (backData: events_emitter.EventData) => {
