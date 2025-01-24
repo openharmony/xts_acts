@@ -25,7 +25,7 @@ const TAG = "multiThreadTest: ";
 
 export function isSupportedCameras() : boolean {
   const cameraAvailable = canIUse('SystemCapability.Multimedia.Camera.Core');
-  let context = testContext;
+  let context: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>('testContext') as common.UIAbilityContext
 
   let isSupportedCameras = true;
   let isSupportedCameraManager = false;
