@@ -23,10 +23,11 @@ import { BusinessError } from '@ohos.base';
 import eventEmitter from '@ohos.events.emitter';
 import { hdrCapability } from '@kit.ArkGraphics2D';
 import Common from './Common';
+const TAG = "avVideoRecorderTestOne: ";
 
 let commonFun = new Common();
 
-export default function avVideoRecorderTestOne() {
+export function avVideoRecorderTestOne() {
   describe('avVideoRecorderTestOne', () => {
     let screen: boolean = false;
     let avRecorder: media.AVRecorder | null = null;
@@ -10526,4 +10527,45 @@ export default function avVideoRecorderTestOne() {
       done();
     })
   })
+}
+export function executeAVVideoRecorder() : boolean {
+  const cameraAvailable = canIUse('SystemCapability.Multimedia.Camera.Core');
+  let context = getContext();
+
+  let isSupportedCameras = true;
+  let isExecute = false;
+  let mCameraManager: camera.CameraManager;
+  let mCameraDevicesArray: Array<camera.CameraDevice>;
+
+  let isEmpty = (data: ESObject) => {
+    if (data == null || data == undefined) {
+      return true;
+    }
+    return false;
+  }
+
+  console.info(TAG + 'Enter getCameraManagerInstance');
+  try {
+    mCameraManager = camera.getCameraManager(context);
+    if (isEmpty(mCameraManager)) {
+      console.info(TAG + "getCameraManager FAILED");
+      isExecute = false;
+      return isExecute;
+    }
+    console.info(TAG + 'Exit getCameraManagerInstance');
+    mCameraDevicesArray = mCameraManager.getSupportedCameras();
+    if (isEmpty(mCameraDevicesArray)) {
+      isSupportedCameras = false;
+    }
+  } catch (err) {
+    console.error(TAG + "getCameraManager FAILED. errorMessage:",err);
+    isExecute = false;
+    return isExecute;
+  }
+  if (cameraAvailable && isSupportedCameras) {
+    isExecute = true;
+  } else {
+    isExecute = false;
+  }
+  return isExecute;
 }
