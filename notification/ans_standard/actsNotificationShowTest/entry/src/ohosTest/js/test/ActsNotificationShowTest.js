@@ -33,16 +33,16 @@ export default function ActsNotificationShowTest() {
       }
       try {
         notification.show(ShowNotificationOptions)
+        console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
+        console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
+        expect(ShowNotificationOptions.contentTitle).assertEqual('Title1')
+        expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 001')
+        done()
       } catch (error) {
         console.error(`show fail: ${JSON.stringify(error)}`);
         expect(error.code).assertEqual(801)
         done()
       }
-      console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
-      console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
-      expect(ShowNotificationOptions.contentTitle).assertEqual('Title1')
-      expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 001')
-      done()
     })
 
     /*
@@ -58,6 +58,9 @@ export default function ActsNotificationShowTest() {
       }
       try {
         notification.show(ShowNotificationOptions)
+        console.info(TAG + ' conteneTitle is number:' + ShowNotificationOptions.contentTitle)
+        console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
+        expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 002')
       } catch (error) {
         console.error(`show fail: ${JSON.stringify(error)}`);
         if(error.code == 801){
@@ -68,9 +71,6 @@ export default function ActsNotificationShowTest() {
           done()
         }
       }
-      console.info(TAG + ' conteneTitle is number:' + ShowNotificationOptions.contentTitle)
-      console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
-      expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 002')
     })
 
     /*
@@ -83,13 +83,14 @@ export default function ActsNotificationShowTest() {
       let ShowNotificationOptions = {}
       try {
         notification.show(ShowNotificationOptions)
+        expect(ShowNotificationOptions.contentTitle).assertEqual(undefined)
+        done()
       } catch (error) {
         console.error(`show fail: ${JSON.stringify(error)}`);
         expect(error.code).assertEqual(801)
         done()
       }
-      expect(ShowNotificationOptions.contentTitle).assertEqual(undefined)
-      done()
+    
     })
 
     /*
@@ -111,22 +112,22 @@ export default function ActsNotificationShowTest() {
       }
       try {
         notification.show(ShowNotificationOptions)
+        console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
+        console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
+        console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
+        console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
+        console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
+        expect(ShowNotificationOptions.contentTitle).assertEqual('Title4')
+        expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 004')
+        expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.actsnotificationshow')
+        expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.actsnotificationshow.MainAbility')
+        expect(ShowNotificationOptions.clickAction.uri).assertEqual('/')
+        done()
       } catch (error) {
         console.error(`show fail: ${JSON.stringify(error)}`);
         expect(error.code).assertEqual(801)
         done()
       }
-      console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
-      console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
-      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
-      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
-      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
-      expect(ShowNotificationOptions.contentTitle).assertEqual('Title4')
-      expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 004')
-      expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.actsnotificationshow')
-      expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.actsnotificationshow.MainAbility')
-      expect(ShowNotificationOptions.clickAction.uri).assertEqual('/')
-      done()
     })
 
     /*
@@ -148,22 +149,23 @@ export default function ActsNotificationShowTest() {
       }
       try {
         notification.show(ShowNotificationOptions)
+        console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
+        console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
+        console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
+        console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
+        console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
+        expect(ShowNotificationOptions.contentTitle).assertEqual('Title5')
+        expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 005')
+        expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.actsnotificationshow')
+        expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.actsnotificationshow.MainAbility')
+        expect(ShowNotificationOptions.clickAction.uri).assertEqual('pages/index/index')
+        done()
       } catch (error) {
         console.error(`show fail: ${JSON.stringify(error)}`);
         expect(error.code).assertEqual(801)
         done()
       }
-      console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
-      console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
-      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
-      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
-      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
-      expect(ShowNotificationOptions.contentTitle).assertEqual('Title5')
-      expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 005')
-      expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.actsnotificationshow')
-      expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.actsnotificationshow.MainAbility')
-      expect(ShowNotificationOptions.clickAction.uri).assertEqual('pages/index/index')
-      done()
+    
     })
 
     /*
@@ -185,21 +187,22 @@ export default function ActsNotificationShowTest() {
       }
       try {
         notification.show(ShowNotificationOptions)
+        console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
+        console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
+        console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
+        console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
+        console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
+        expect(ShowNotificationOptions.contentTitle).assertEqual('Title6')
+        expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 006')
+        expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.actsnotificationshow.MainAbility')
+        expect(ShowNotificationOptions.clickAction.uri).assertEqual('/')
+        done()
       } catch (error) {
         console.error(`show fail: ${JSON.stringify(error)}`);
         expect(error.code).assertEqual(801)
         done()
       }
-      console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
-      console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
-      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
-      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
-      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
-      expect(ShowNotificationOptions.contentTitle).assertEqual('Title6')
-      expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 006')
-      expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.actsnotificationshow.MainAbility')
-      expect(ShowNotificationOptions.clickAction.uri).assertEqual('/')
-      done()
+      
     })
 
     /*
@@ -221,21 +224,22 @@ export default function ActsNotificationShowTest() {
       }
       try {
         notification.show(ShowNotificationOptions)
+        console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
+        console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
+        console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
+        console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
+        console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
+        expect(ShowNotificationOptions.contentTitle).assertEqual('Title7')
+        expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 007')
+        expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.actsnotificationshow')
+        expect(ShowNotificationOptions.clickAction.uri).assertEqual('/')
+        done()
       } catch (error) {
         console.error(`show fail: ${JSON.stringify(error)}`);
         expect(error.code).assertEqual(801)
         done()
       }
-      console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
-      console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
-      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
-      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
-      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
-      expect(ShowNotificationOptions.contentTitle).assertEqual('Title7')
-      expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 007')
-      expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.actsnotificationshow')
-      expect(ShowNotificationOptions.clickAction.uri).assertEqual('/')
-      done()
+      
     })
 
     /*
@@ -257,21 +261,22 @@ export default function ActsNotificationShowTest() {
       }
       try {
         notification.show(ShowNotificationOptions)
+        console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
+        console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
+        console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
+        console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
+        console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
+        expect(ShowNotificationOptions.contentTitle).assertEqual('Title8')
+        expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 008')
+        expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.actsnotificationshow')
+        expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.actsnotificationshow.MainAbility')
+        done()
       } catch (error) {
         console.error(`show fail: ${JSON.stringify(error)}`);
         expect(error.code).assertEqual(801)
         done()
       }
-      console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
-      console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
-      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
-      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
-      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
-      expect(ShowNotificationOptions.contentTitle).assertEqual('Title8')
-      expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 008')
-      expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.actsnotificationshow')
-      expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.actsnotificationshow.MainAbility')
-      done()
+      
     })
 
     /*
@@ -292,20 +297,21 @@ export default function ActsNotificationShowTest() {
       }
       try {
         notification.show(ShowNotificationOptions)
+        console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
+        console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
+        console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
+        console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
+        expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 009')
+        expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.actsnotificationshow')
+        expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.actsnotificationshow.MainAbility')
+        expect(ShowNotificationOptions.clickAction.uri).assertEqual('/')
+        done()
       } catch (error) {
         console.error(`show fail: ${JSON.stringify(error)}`);
         expect(error.code).assertEqual(801)
         done()
       }
-      console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
-      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
-      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
-      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
-      expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 009')
-      expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.actsnotificationshow')
-      expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.actsnotificationshow.MainAbility')
-      expect(ShowNotificationOptions.clickAction.uri).assertEqual('/')
-      done()
+      
     })
 
     /*
@@ -326,20 +332,21 @@ export default function ActsNotificationShowTest() {
       }
       try {
         notification.show(ShowNotificationOptions)
+        console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
+        console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
+        console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
+        console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
+        expect(ShowNotificationOptions.contentTitle).assertEqual('Title10')
+        expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.actsnotificationshow')
+        expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.actsnotificationshow.MainAbility')
+        expect(ShowNotificationOptions.clickAction.uri).assertEqual('/')
+        done()
       } catch (error) {
         console.error(`show fail: ${JSON.stringify(error)}`);
         expect(error.code).assertEqual(801)
         done()
       }
-      console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
-      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
-      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
-      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
-      expect(ShowNotificationOptions.contentTitle).assertEqual('Title10')
-      expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.actsnotificationshow')
-      expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.actsnotificationshow.MainAbility')
-      expect(ShowNotificationOptions.clickAction.uri).assertEqual('/')
-      done()
+      
     })
 
     console.info(TAG + "SUB_NOTIFICATION_ANS_SHOW_TEST END");
