@@ -27,41 +27,38 @@ struct RichEditorFontFeature {
           this.controller.addTextSpan("H2O, difficult \n", {
             style: {
               fontColor: Color.Pink,
-              fontSize: 50,
-              fontFeature: "\"sups\" on"
+              fontFeature: "\"sups\" on",
+              fontSize:10
             }
           })
         })
         .width("90%")
-        .height(200)
+        .height('15%')
         .border({ width: 1, radius: 5 })
         .draggable(false)
         .clip(false)
-        .margin({ bottom: 20 })
-
+        .margin({top:20})
       RichEditor({ controller: this.controller1 })
         .onReady(() => {
           this.controller1.addTextSpan("H2O, difficult \n", {
             style: {
               fontColor: Color.Pink,
-              fontSize: 50,
+              fontSize:10
             }
           })
         })
         .width("90%")
-        .height(200)
+        .height('15%')
         .border({ width: 1, radius: 5 })
         .draggable(false)
         .clip(false)
-        .margin({ bottom: 20 })
-
       Row(){
-        Text("getSpansAPI").id("RichEditorFontFeatureValue_" + this.content).fontSize(15).fontColor(Color.Green)
-        Text("获取FontFeature值为：" + this.content).fontSize(15).fontColor(Color.Green)
-      }.margin({ bottom: 20 })
-
+        Text("getSpansAPI").id("RichEditorFontFeatureValue_" + this.content).fontColor(Color.Green).fontSize(10)
+        Text("获取FontFeature值为：" + this.content).fontColor(Color.Green).fontSize(10)
+      }
       Column({ space: 10 }) {
         Button("更新fontFeather为：'subs' 1")
+          .height('5%')
           .id("RichEditorFontFeature_UpdateBtn1")
           .onClick(() => {
             this.controller.updateSpanStyle({
@@ -74,19 +71,21 @@ struct RichEditorFontFeature {
             })
           })
         Button("更新fontFeather为：'subs' 1, 'liga' 0")
+          .height('5%')
           .id("RichEditorFontFeature_UpdateBtn2")
           .onClick(() => {
-          this.controller.updateSpanStyle({
-            start: -1,
-            end: -1,
-            textStyle:
-            {
-              fontFeature: "\"subs\" 1, \"liga\" 0"
-            }
+            this.controller.updateSpanStyle({
+              start: -1,
+              end: -1,
+              textStyle:
+              {
+                fontFeature: "\"subs\" 1, \"liga\" 0"
+              }
+            })
           })
-        })
         Row(){
           Button("getSpans")
+            .height('5%')
             .id("RichEditorFontFeature_GetSpansBtn")
             .onClick(() => {
               this.controller.getSpans({
@@ -102,6 +101,6 @@ struct RichEditorFontFeature {
             })
         }
       }
-    }
+    }.height('100%')
   }
 }

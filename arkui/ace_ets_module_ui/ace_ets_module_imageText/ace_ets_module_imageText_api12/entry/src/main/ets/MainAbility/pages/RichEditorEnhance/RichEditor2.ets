@@ -24,32 +24,32 @@ struct RichEditor2 {
     Column() {
       Row(){
         Button('按钮高度+').onClick(() => {
-          this.keyHeight += 10
+          this.keyHeight += 5
         })
         Button('按钮高度+').onClick(() => {
-          this.keyHeight -= 10
+          this.keyHeight -= 5
         })
       }
       Grid() {
         ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
           GridItem() {
             Button(item + "")
-              .width(110).onClick(() => {
+              .width('10%').onClick(() => {
               this.controller.addTextSpan(item + '', {
                 offset: this.controller.getCaretOffset(),
                 style:
                 {
                   fontColor: Color.Orange,
-                  fontSize: 30
+                  fontSize: 10
                 }
               })
               this.controller.setCaretOffset(this.controller.getCaretOffset() + item.toString().length)
             })
           }
         })
-      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+      }.maxCount(3).columnsGap('1%').rowsGap('1%').padding('1%')
     }.backgroundColor(Color.Gray)
-    .height(this.keyHeight)
+    .height('50%')
   }
 
   build() {
@@ -64,6 +64,7 @@ struct RichEditor2 {
         .backgroundColor(Color.Pink)
         .width("100%")
         .id("RichEditor_supportAvoidance")
-    }
+        .height('20%')
+    }.height('100%')
   }
 }

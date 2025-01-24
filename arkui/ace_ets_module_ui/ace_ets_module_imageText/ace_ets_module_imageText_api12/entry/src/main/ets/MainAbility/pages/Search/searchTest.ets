@@ -23,8 +23,6 @@ struct searchTest {
 
   build() {
     Column() {
-
-
       Search({ value: this.text2, controller: this.controller })
         .key('searchTest1')
         .width(150)
@@ -36,35 +34,30 @@ struct searchTest {
           if (e) {
             this.text3 += 1
           }
-        })
-
+        }).height('10%')
       Search()
         .width(150)
         .key('searchTest2')
         .onEditChange((e) => {
           this.text1 = e + ''
-        })
-
-      Text(this.text).key('searchTestText1')
-      Text(this.text1).key('searchTestText2')
-      Text(this.text3).key('searchTestText3')
-
+        }).height('10%')
+      Text(this.text).key('searchTestText1').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+      Text(this.text1).key('searchTestText2').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+      Text(this.text3).key('searchTestText3').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
       Button('stop')
         .key('searchTestBt')
         .onClick((event: ClickEvent) => {
           this.controller.stopEditing()
-        })
-
+        }).height('5%')
       Button('text')
         .key('searchTestBt2')
         .onClick((event: ClickEvent) => {
           this.text2 = 'Search SearchSearchSearch SearchSearchSearch'
         })
-
-
+        .height('5%')
     }.margin({
       left:30,
       top:50
-    })
+    }).height('100%')
   }
 }

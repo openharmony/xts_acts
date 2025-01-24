@@ -54,8 +54,8 @@ struct StyledStringDemo {
 
   build() {
     Column(){
-      Text(undefined, { controller: this.controller1 }).height(100)
-      Text(undefined, { controller: this.controller3 }).height(100)
+      Text(undefined, { controller: this.controller1 }).height('10%')
+      Text(undefined, { controller: this.controller3 }).height('10%')
       Row(){
         Button('添加属性字符串').onClick(() => {
           let mutableStyledString1: MutableStyledString = new MutableStyledString('属性字符串', [{
@@ -73,26 +73,22 @@ struct StyledStringDemo {
           }
           this.styledString = mutableStyledString1
           this.controller1.setStyledString(mutableStyledString1)
-        }).margin(5).id('but1')
+        }).width('50%').id('but1')
         Button('toHtml').onClick(() => {
           this.html = StyledString.toHtml(this.styledString)
-        }).margin(5).id('but2')
-        Button('fromHtml').onClick(async () => {
-          let styledString = await StyledString.fromHtml(this.html)
-          this.controller2.setStyledString(styledString)
-        }).margin(5)
-      }
+        }).width('50%').id('but2')
+      }.height('15%')
       Row(){
         Button('getStyles')
           .width('40%')
           .onClick(() => {
             this.text = JSON.stringify(this.mutableStyledString1
-			  .getStyles(0, 8,StyledStringKey.BACKGROUND_COLOR)[0].styledKey)
+              .getStyles(0, 8,StyledStringKey.BACKGROUND_COLOR)[0].styledKey)
           }).margin(5).id('but3')
-      }
-      Text(undefined, { controller: this.controller2 }).height(100)
-      Text(this.html).id('text')
-      Text(this.text).id('text2')
-    }.width('100%')
+      }.height('15%')
+      Text(undefined, { controller: this.controller2 }).height('10%')
+      Text(this.html).id('text').height('10%')
+      Text(this.text).id('text2').height('10%')
+    }.width('100%').height('100%')
   }
 }

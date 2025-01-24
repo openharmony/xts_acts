@@ -33,16 +33,20 @@ struct SearchEvent2 {
 
   build() {
     Column() {
-      Text(this.insertValue).key('SearchEvent2Text')
-      Text(this.insertValue2).key('SearchEvent2Text2')
-      Text(this.insertValue3).key('SearchEvent2Text3')
-      Text(this.insertValue4).key('SearchEvent2Text4')
-      Text(this.insertValue5).key('SearchEvent2Text5')
-      Text(this.insertValue6).key('SearchEvent2Text6')
-
+      Row() {
+        Text(this.insertValue).key('SearchEvent2Text').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+        Text(this.insertValue2).key('SearchEvent2Text2').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+        Text(this.insertValue3).key('SearchEvent2Text3').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+      }
+      Row() {
+        Text(this.insertValue4).key('SearchEvent2Text4').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+        Text(this.insertValue5).key('SearchEvent2Text5').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+        Text(this.insertValue6).key('SearchEvent2Text6').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
+      }
       Row() {
         TextInput()
-          .height(60)
+          .height('10%')
+          .fontSize(10)
           .width(100)
           .onWillInsert((info: InsertValue) => {
             this.insertValue += '0'
@@ -62,7 +66,8 @@ struct SearchEvent2 {
           .key('Search2Event')
 
         TextInput({ text: '0' })
-          .height(60)
+          .height('10%')
+          .fontSize(10)
           .width(100)
           .onWillInsert((info: InsertValue) => {
             this.insertValue = ''
@@ -83,7 +88,8 @@ struct SearchEvent2 {
 
       Row() {
         TextInput({ text: '0' })
-          .height(60)
+          .height('10%')
+          .fontSize(10)
           .width(100)
           .onWillInsert((info: InsertValue) => {
             this.insertValue3 = '0'
@@ -102,7 +108,8 @@ struct SearchEvent2 {
           .key('Search2Event3')
 
         TextInput({ text: '0' })
-          .height(60)
+          .height('10%')
+          .fontSize(10)
           .width(100)
           .onWillInsert((info: InsertValue) => {
             this.insertValue3 = '0'
@@ -123,7 +130,8 @@ struct SearchEvent2 {
 
       Row() {
         TextInput({ text: this.text })
-          .height(60)
+          .height('10%')
+          .fontSize(10)
           .width(100)
           .type(this.type)
           .textIndent(this.textIndent)
@@ -136,7 +144,8 @@ struct SearchEvent2 {
           .key('Search2Event5')
 
         TextInput({ text: this.text })
-          .height(60)
+          .height('10%')
+          .fontSize(10)
           .width(100)
           .inputFilter('[a-z]', (e) => {
             console.log(JSON.stringify(e))
@@ -147,8 +156,6 @@ struct SearchEvent2 {
           })
           .key('Search2Event6')
       }
-
-
       Row () {
         Button('change')
           .key('Search2EventBt')
@@ -157,12 +164,12 @@ struct SearchEvent2 {
             this.textIndent = 10
             this.style = TextInputStyle.Inline
             this.textOverFlow = TextOverflow.Clip
-          })
+          }).height('5%')
         Button('change')
           .key('Search2EventBt2')
           .onClick((event: ClickEvent) => {
             this.text = 'text'
-          })
+          }).height('5%')
       }
     }
     .height('100%')
