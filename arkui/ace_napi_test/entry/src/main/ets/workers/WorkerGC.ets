@@ -20,6 +20,11 @@ declare class ArkTools {
   static forceFullGC(): void;
 }
 
+interface WorkerMessage {
+  messageType: string;
+  value: Length | object | boolean;
+}
+
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
 /**
@@ -30,644 +35,673 @@ const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
  */
 workerPort.onmessage = (e: MessageEvents) => {
   console.info('Worker received message:', e.data);
-  switch (e.data) {
+  const data: WorkerMessage = e.data;
+  switch (data.messageType) {
     case 'getLastError': {
-      let getLastErrorValue = napitest.napiSerialize();
+      const receivedValue = data.value;
+      console.info('Worker: received value is ' + receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiSerialize value is ' + getLastErrorValue);
-      workerPort.postMessage(getLastErrorValue);
+      const value: boolean = receivedValue === 2000;
+      workerPort.postMessage(value);
       break;
     }
     case 'isError': {
-      let isErrorValue = napitest.isError(true);
+      const receivedValue = data.value;
+      console.info('Worker: received value is ' + receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: isError ret is ' + isErrorValue);
-      workerPort.postMessage(isErrorValue);
+      const value: boolean = receivedValue === false;
+      workerPort.postMessage(value);
       break;
     }
     case 'createError': {
-      let createErrorValue = napitest.createError();
+      const receivedValue = data.value;
+      console.info('Worker: received value is ' + receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createError value is ' + createErrorValue);
-      workerPort.postMessage(createErrorValue);
+      const value: boolean = receivedValue === 0;
+      workerPort.postMessage(value);
       break;
     }
     case 'createRangeError': {
-      let createRangeErrorValue = napitest.createRangeError();
+      const receivedValue = data.value;
+      console.info('Worker: received value is ' + receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createRangeError value is ' + createRangeErrorValue);
-      workerPort.postMessage(createRangeErrorValue);
+      const value: boolean = receivedValue === 0;
+      workerPort.postMessage(value);
       break;
     }
     case 'isExceptionPending': {
-      let isExceptionPendingValue = napitest.isExceptionPending();
+      const receivedValue = data.value;
+      console.info('Worker: received value is ' + receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: isExceptionPending value is ' + isExceptionPendingValue);
-      workerPort.postMessage(isExceptionPendingValue);
+      const value: boolean = receivedValue === 0;
+      workerPort.postMessage(value);
       break;
     }
     case 'createReference': {
-      let createReferenceValue = napitest.createReference();
+      const receivedValue = data.value;
+      console.info('Worker: received value is ' + receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createReference value is ' + createReferenceValue);
-      workerPort.postMessage(createReferenceValue);
+      const value: boolean = receivedValue === 0;
+      workerPort.postMessage(value);
       break;
     }
     case 'referenceRefAndUnref': {
-      let referenceRefAndUnrefValue = napitest.referenceRefAndUnref();
+      const receivedValue = data.value;
+      console.info('Worker: received value is ' + receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: referenceRefAndUnref value is ' + referenceRefAndUnrefValue);
-      workerPort.postMessage(referenceRefAndUnrefValue);
+      const value: boolean = receivedValue === 0;
+      workerPort.postMessage(value);
       break;
     }
     case 'createArrayAndGetLength': {
-      let array = [1, 2];
-      let createArrayAndGetLengthValue = napitest.createArrayAndGetLength(array);
-      let createArrayAndGetLengthObj = JSON.stringify(createArrayAndGetLengthValue);
+      const receivedValue = data.value;
+      console.info('Worker: received value is ' + receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createArrayAndGetLength value is ' + createArrayAndGetLengthObj);
-      workerPort.postMessage(createArrayAndGetLengthObj);
+      const value: boolean = receivedValue.toString() === '1,2';
+      workerPort.postMessage(value);
       break;
     }
     case 'createExternal': {
-      let createExternalValue = napitest.createExternal();
+      const receivedValue = data.value;
+      console.info('Worker: received value is ' + receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createExternal value is ' + createExternalValue);
-      workerPort.postMessage(createExternalValue);
+      const value: boolean = receivedValue === 0;
+      workerPort.postMessage(value);
       break;
     }
     case 'createExternalArraybuffer': {
-      let createExternalArraybufferValue = napitest.createExternalArraybuffer();
+      const receivedValue = data.value;
+      console.info('Worker: received value is ' + receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createExternalArraybuffer value is ', createExternalArraybufferValue);
-      let createExternalArraybufferRes = createExternalArraybufferValue instanceof ArrayBuffer;
-      workerPort.postMessage(createExternalArraybufferRes);
+      const value = receivedValue instanceof ArrayBuffer;
+      workerPort.postMessage(value);
       break;
     }
     case 'createObject': {
-      let createObjectValue = napitest.createObject();
+      const receivedValue = data.value;
+      console.info('Worker: createObject value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createObject value is ', createObjectValue);
-      let createObjectRes = createObjectValue instanceof Object;
+      const createObjectRes = receivedValue instanceof Object;
       workerPort.postMessage(createObjectRes);
       break;
     }
     case 'createSymbol': {
-      let symbolValue = napitest.createSymbol('symbol');
+      const receivedValue = data.value;
+      console.info('Worker: createSymbol value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createSymbol value is ' + symbolValue);
-      workerPort.postMessage(symbolValue);
+      const value: boolean = receivedValue === 0;
+      workerPort.postMessage(value);
       break;
     }
     case 'createTypeArray': {
-      let typeArrayValue = napitest.createTypeArray();
+      const receivedValue = data.value;
+      console.info('Worker: createTypeArray value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createTypeArray value is ', typeArrayValue);
-      workerPort.postMessage(typeArrayValue instanceof Int32Array);
+      const isArrayType = receivedValue instanceof Int32Array;
+      workerPort.postMessage(isArrayType);
       break;
     }
     case 'getValueBool': {
-      let boolValue = napitest.getValueBool(false);
+      const receivedValue = data.value;
+      console.info('Worker: getValueBool value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: getValueBool value is ', boolValue);
-      workerPort.postMessage(boolValue);
+      const value: boolean = receivedValue === false;
+      workerPort.postMessage(value);
       break;
     }
     case 'createAndGetInt32': {
-      let int32Value = napitest.createAndGetInt32(32);
+      const receivedValue = data.value;
+      console.info('Worker: createAndGetInt32 value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createAndGetInt32 value is ', int32Value);
-      workerPort.postMessage(int32Value);
+      const value: boolean = receivedValue === 32;
+      workerPort.postMessage(value);
       break;
     }
     case 'createAndGetUInt32': {
-      let uInt32Value = napitest.createAndGetUInt32(32);
+      const receivedValue = data.value;
+      console.info('Worker: createAndGetUInt32 value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createAndGetUInt32 value is ', uInt32Value);
-      workerPort.postMessage(uInt32Value);
+      const value: boolean = receivedValue === 32;
+      workerPort.postMessage(value);
       break;
     }
     case 'createAndGetInt64': {
-      let int64Value = napitest.createAndGetInt64(23);
+      const receivedValue = data.value;
+      console.info('Worker: createAndGetInt64 value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createAndGetInt64 value is ', int64Value);
-      workerPort.postMessage(int64Value);
+      const value: boolean = receivedValue === 23;
+      workerPort.postMessage(value);
       break;
     }
     case 'createDouble': {
-      let doubleValue = napitest.createDouble(24.67);
+      const receivedValue = data.value;
+      console.info('Worker: createDouble value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createDouble value is ', doubleValue);
-      workerPort.postMessage(doubleValue);
+      const value: boolean = receivedValue === 24.67;
+      workerPort.postMessage(value);
       break;
     }
     case 'createAndGetStringUtf16': {
-      let utf16Value = napitest.createAndGetStringUtf16('he');
+      const receivedValue = data.value;
+      console.info('Worker: createAndGetStringUtf16 value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createAndGetStringUtf16 value is ', utf16Value);
-      workerPort.postMessage(utf16Value);
+      const value: boolean = receivedValue === 'he';
+      workerPort.postMessage(value);
       break;
     }
     case 'stringUtf16OfCase': {
-      let utf16CaseValue = napitest.stringUtf16OfCase('abc2r42');
+      const receivedValue = data.value;
+      console.info('Worker: stringUtf16OfCase value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: stringUtf16OfCase value is ', utf16CaseValue);
-      workerPort.postMessage(utf16CaseValue);
+      const value: boolean = receivedValue === 'abc2';
+      workerPort.postMessage(value);
       break;
     }
     case 'getValueDouble': {
-      let valueDouble = napitest.getValueDouble(24.5);
+      const receivedValue = data.value;
+      console.info('Worker: getValueDouble value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: getValueDouble value is ', valueDouble);
-      workerPort.postMessage(valueDouble);
+      const value = receivedValue === 24.5;
+      workerPort.postMessage(value);
       break;
     }
     case 'getValueExternal': {
-      let externalValue = napitest.getValueExternal();
+      const receivedValue = data.value;
+      console.info('Worker: getValueExternal value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: getValueExternal value is ', externalValue);
-      workerPort.postMessage(externalValue);
+      const value = receivedValue === 0;
+      workerPort.postMessage(value);
       break;
     }
     case 'getNull': {
-      let nullValue = napitest.getNull();
+      const receivedValue = data.value;
+      console.info('Worker: getNull value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: getNull value is ', nullValue);
-      workerPort.postMessage(nullValue);
+      const value = receivedValue == 0;
+      workerPort.postMessage(value);
       break;
     }
     case 'getUndefined': {
-      let undefinedValue = napitest.getUndefined();
+      const receivedValue = data.value;
+      console.info('Worker: getUndefined value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: getUndefined value is ', undefinedValue);
-      workerPort.postMessage(undefinedValue);
+      const value = receivedValue == 0;
+      workerPort.postMessage(value);
       break;
     }
     case 'coerceToBool': {
-      let coerceBoolValue = napitest.coerceToBool(0);
+      const receivedValue = data.value;
+      console.info('Worker: coerceToBool value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: coerceToBool value is ', coerceBoolValue);
-      workerPort.postMessage(coerceBoolValue);
+      const value = receivedValue === false;
+      workerPort.postMessage(value);
       break;
     }
     case 'coerceToNumber': {
-      let coerceNumberValue = napitest.coerceToNumber('12');
+      const receivedValue = data.value;
+      console.info('Worker: coerceToNumber value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: coerceToNumber value is ', coerceNumberValue);
-      workerPort.postMessage(coerceNumberValue);
+      const value = receivedValue === 12;
+      workerPort.postMessage(value);
       break;
     }
     case 'coerceToObject': {
-      let obj = napitest.coerceToObject([2, 3]);
+      const receivedValue = data.value;
+      console.info('Worker: coerceToObject value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: coerceToObject value is: ', obj);
-      workerPort.postMessage(JSON.stringify(obj));
+      const value = JSON.stringify(receivedValue) === '[2,3]';
+      workerPort.postMessage(value);
       break;
     }
     case 'coerceToString': {
-      let value = napitest.coerceToString(123);
+      const receivedValue = data.value;
+      console.info('Worker: coerceToString value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: coerceToString value is: ', value);
+      const value = receivedValue === '123';
       workerPort.postMessage(value);
       break;
     }
     case 'typeOf': {
-      let value = napitest.typeOf('test');
+      const receivedValue = data.value;
+      console.info('Worker: typeOf value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: typeOf value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'isArray': {
-      let value = napitest.isArray();
+      const receivedValue = data.value;
+      console.info('Worker: isArray value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: isArray value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'strictEquals': {
-      let value = napitest.strictEquals();
+      const receivedValue = data.value;
+      console.info('Worker: strictEquals value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: strictEquals value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'getPropertyNames': {
-      let value = napitest.getPropertyNames();
+      const receivedValue = data.value;
+      console.info('Worker: getPropertyNames value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: getPropertyNames value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'setProperty': {
-      let value = napitest.setProperty();
+      const receivedValue = data.value;
+      console.info('Worker: setProperty value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: setProperty value is: ', value);
-      workerPort.postMessage(value instanceof Object);
+      const value = receivedValue instanceof Object;
+      workerPort.postMessage(value);
       break;
     }
     case 'getProperty': {
-      let value = napitest.getProperty();
+      const receivedValue = data.value;
+      console.info('Worker: getProperty value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: getProperty value is: ', value);
-      workerPort.postMessage(value instanceof Object);
+      const value = receivedValue instanceof Object;
+      workerPort.postMessage(value);
       break;
     }
     case 'hasProperty': {
-      let value = napitest.hasProperty();
+      const receivedValue = data.value;
+      console.info('Worker: hasProperty value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: hasProperty value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'setAndDeleteProperty': {
-      interface Person {
-        name: string,
-        age: number
-      }
-
-      let peop: Person = { name: 'John', age: 30 };
-      let value = napitest.setAndDeleteProperty(peop, 'a');
+      const receivedValue = data.value;
+      console.info('Worker: setAndDeleteProperty value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: setAndDeleteProperty value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'hasOwnProperty': {
-      interface Person {
-        name: string,
-        age: number
-      }
-
-      let peop: Person = {
-        name: 'zhangsan',
-        age: 18
-      };
-      let value = napitest.hasOwnProperty(peop, 'name');
+      const receivedValue = data.value;
+      console.info('Worker: hasOwnProperty value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: hasOwnProperty value is: ', value);
-      workerPort.postMessage(value);
+      workerPort.postMessage(receivedValue);
       break;
     }
     case 'setNamedProperty': {
-      let value = napitest.setNamedProperty([1, 2], 'e', false);
+      const receivedValue = data.value;
+      console.info('Worker: setNamedProperty value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: setNamedProperty value is: ', value);
-      workerPort.postMessage(value);
+      workerPort.postMessage(receivedValue);
       break;
     }
     case 'getNamedProperty': {
-      interface Person {
-        name: string,
-        age: number
-      }
-
-      let peop: Person = {
-        name: 'zhangsan',
-        age: 18
-      };
-      let value = napitest.getNamedProperty(peop, 'name');
+      const receivedValue = data.value;
+      console.info('Worker: getNamedProperty value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: getNamedProperty value is: ', value);
+      const value = receivedValue === 'zhangsan';
       workerPort.postMessage(value);
       break;
     }
     case 'hasNamedProperty': {
-      interface Person {
-        name: string,
-        age: number
-      }
-
-      let peop: Person = {
-        name: 'zhangsan',
-        age: 18
-      };
-      let value = napitest.hasNamedProperty(peop, 'name');
+      const receivedValue = data.value;
+      console.info('Worker: hasNamedProperty value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: hasNamedProperty value is: ', value);
-      workerPort.postMessage(value);
+      workerPort.postMessage(receivedValue);
       break;
     }
     case 'setElement': {
-      let value = napitest.setElement();
+      const receivedValue = data.value;
+      console.info('Worker: setElement value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: setElement value is: ', value);
-      workerPort.postMessage(value instanceof Object);
+      const value = receivedValue instanceof Object;
+      workerPort.postMessage(value);
       break;
     }
     case 'getElement': {
-      let value = napitest.getElement();
+      const receivedValue = data.value;
+      console.info('Worker: getElement value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: getElement value is: ', value);
-      workerPort.postMessage(value instanceof Object);
+      const value = receivedValue instanceof Object;
+      workerPort.postMessage(value);
       break;
     }
     case 'hasElement': {
-      let value = napitest.hasElement();
+      const receivedValue = data.value;
+      console.info('Worker: hasElement value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: hasElement value is: ', value);
-      workerPort.postMessage(value instanceof Object);
+      const value = receivedValue instanceof Object;
+      workerPort.postMessage(value);
       break;
     }
     case 'deleteElement': {
-      let value = napitest.deleteElement();
+      const receivedValue = data.value;
+      console.info('Worker: deleteElement value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: deleteElement value is: ', value);
-      workerPort.postMessage(value instanceof Object);
+      const value = receivedValue instanceof Object;
+      workerPort.postMessage(value);
       break;
     }
     case 'defineProperties': {
-      let value = napitest.defineProperties();
+      const receivedValue = data.value;
+      console.info('Worker: defineProperties value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: defineProperties value is: ', value);
-      workerPort.postMessage(value instanceof Object);
+      const value = receivedValue instanceof Object;
+      workerPort.postMessage(value);
       break;
     }
     case 'callFunctionNull': {
-      let value = napitest.callFunctionNull(null);
+      const receivedValue = data.value;
+      console.info('Worker: callFunctionNull value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: callFunctionNull value is: ', value);
+      const value = receivedValue === 1;
       workerPort.postMessage(value);
       break;
     }
     case 'napiCreateFunctionFuncNull': {
-      let value = napitest.napiCreateFunctionFuncNull();
+      const receivedValue = data.value;
+      console.info('Worker: napiCreateFunctionFuncNull value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiCreateFunctionFuncNull value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'napiGetCbInfo': {
-      let value = napitest.napiGetCbInfo(12.06);
+      const receivedValue = data.value;
+      console.info('Worker: napiGetCbInfo value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiGetCbInfo value is: ', value);
+      const value = receivedValue === 12.06;
       workerPort.postMessage(value);
       break;
     }
     case 'unwrap': {
-      let value = napitest.unwrap();
+      const receivedValue = data.value;
+      console.info('Worker: unwrap value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: unwrap value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'removeWrap': {
-      let value = napitest.removeWrap();
+      const receivedValue = data.value;
+      console.info('Worker: removeWrap value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: removeWrap value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'getVersion': {
-      let value = napitest.getVersion();
+      const receivedValue = data.value;
+      console.info('Worker: getVersion value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: getVersion value is: ', value);
+      const value = receivedValue === 8;
       workerPort.postMessage(value);
       break;
     }
     case 'createPromise': {
-      let value = napitest.createPromise();
+      const receivedValue = data.value;
+      console.info('Worker: createPromise value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createPromise value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'resolveAndRejectDeferred': {
-      let value = napitest.resolveAndRejectDeferred();
+      const receivedValue = data.value;
+      console.info('Worker: resolveAndRejectDeferred value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: resolveAndRejectDeferred value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'isPromise': {
-      let value = napitest.isPromise();
+      const receivedValue = data.value;
+      console.info('Worker: isPromise value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: isPromise value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'napiCreateThreadsafeFunction': {
-      let value = napitest.napiCreateThreadsafeFunction();
+      const receivedValue = data.value;
+      console.info('Worker: napiCreateThreadsafeFunction value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiCreateThreadsafeFunction value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'napiDeleteSerializationDataTest': {
-      let value = napitest.napiDeleteSerializationData();
+      const receivedValue = data.value;
+      console.info('Worker: napiDeleteSerializationDataTest value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiDeleteSerializationDataTest value is: ', value);
+      const value = receivedValue === 2000;
       workerPort.postMessage(value);
       break;
     }
     case 'napiCallThreadsafeFunction': {
-      let value = napitest.napiCallThreadsafeFunction();
+      const receivedValue = data.value;
+      console.info('Worker: napiCallThreadsafeFunction value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiCallThreadsafeFunction value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'napiAnotherThreadSafeTest': {
-      let value = napitest.ThreadSafeTestNull(() => 666);
+      const receivedValue = data.value;
+      console.info('Worker: napiAnotherThreadSafeTest value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiAnotherThreadSafeTest value is: ', value);
+      const value = receivedValue === 1;
       workerPort.postMessage(value);
       break;
     }
     case 'napiRefThreadsafeFunction': {
-      let value = napitest.napiRefthreadSafeFunction();
+      const receivedValue = data.value;
+      console.info('Worker: napiRefThreadsafeFunction value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiRefThreadsafeFunction value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'napiCreateDate': {
-      let value = napitest.napiCreateDate();
+      const receivedValue = data.value;
+      console.info('Worker: napiCreateDate value is ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiCreateDate value is: ', value);
+      const value = receivedValue === 1;
       workerPort.postMessage(value);
       break;
     }
     case 'napiCreateBigintInt64': {
-      let value = napitest.napiCreateBigintInt64();
+      const receivedValue = data.value;
+      console.info('Worker: napiCreateBigintInt64 value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiCreateBigintInt64 value is: ', value);
+      const value = receivedValue === 1;
       workerPort.postMessage(value);
       break;
     }
     case 'napiCreateBigintUint64': {
-      let value = napitest.napiCreateBigintUint64();
+      const receivedValue = data.value;
+      console.info('Worker: napiCreateBigintUint64 value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiCreateBigintUint64 value is: ', value);
+      const value = receivedValue === 1;
       workerPort.postMessage(value);
       break;
     }
     case 'napiCreateBigintWords': {
-      let value = napitest.napiCreateBigintWords();
+      const receivedValue = data.value;
+      console.info('Worker: napiCreateBigintWords value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiCreateBigintWords value is: ', value);
+      const value = receivedValue === 1;
       workerPort.postMessage(value);
       break;
     }
     case 'GetAllPropertyNamesEnvNull': {
-      let value = napitest.GetAllPropertyNamesEnvNull();
+      const receivedValue = data.value;
+      console.info('Worker: GetAllPropertyNamesEnvNull value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: GetAllPropertyNamesEnvNull value is: ', value);
+      const value = receivedValue === 1;
       workerPort.postMessage(value);
       break;
     }
     case 'napiSetInstanceData': {
-      let value = napitest.napiSetInstanceData();
+      const receivedValue = data.value;
+      console.info('Worker: napiSetInstanceData value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiSetInstanceData value is: ', value);
+      const value = receivedValue === 1;
       workerPort.postMessage(value);
       break;
     }
     case 'getModuleFileName': {
-      let value = napitest.getModuleFileName().indexOf('.so');
+      const receivedValue = data.value;
+      console.info('Worker: getModuleFileName value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: getModuleFileName value is: ', value);
+      const value = receivedValue === 45;
       workerPort.postMessage(value);
       break;
     }
     case 'createAsyncResource': {
-      let value = napitest.createAsyncResource({
-        foo: 'bar'
-      }, false);
+      const receivedValue = data.value;
+      console.info('Worker: createAsyncResource value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createAsyncResource value is: ', value);
+      const value = receivedValue instanceof Object;
       workerPort.postMessage(value);
       break;
     }
     case 'asyncWorkWithQos': {
-      let value = napitest.asyncWorkWithQos(1000, (input) => {
-        ArkTools.forceFullGC();
-      console.info('Worker: asyncWorkWithQos ' + (input * 2));
-        return input * 2;
-      });
+      const receivedValue = data.value;
+      console.info('Worker: asyncWorkWithQos value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: asyncWorkWithQos value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'napiRunScriptPathEnvNull': {
-      let value = napitest.napiRunScriptPathEnvNull();
+      const receivedValue = data.value;
+      console.info('Worker: napiRunScriptPathEnvNull value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiRunScriptPathEnvNull value is: ', value);
+      const value = receivedValue === 1;
       workerPort.postMessage(value);
       break;
     }
     case 'napiLoadModuleTest': {
-      let value = napitest.napiLoadModule();
+      const receivedValue = data.value;
+      console.info('Worker: napiLoadModuleTest value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiLoadModuleTest value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'createObjectWithProperties': {
-      let value = napitest.createObjectWithProperties();
+      const receivedValue = data.value;
+      console.info('Worker: createObjectWithProperties value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createObjectWithProperties value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'createObjectWithNamedProperties': {
-      let value = napitest.createObjectWithNamedProperties();
+      const receivedValue = data.value;
+      console.info('Worker: createObjectWithNamedProperties value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: createObjectWithNamedProperties value is: ', value);
+      const value = receivedValue === 0;
       workerPort.postMessage(value);
       break;
     }
     case 'coerceToNativeBindingObjectEnvNull': {
-      let value = napitest.coerceToNativeBindingObjectEnvNull(null);
+      const receivedValue = data.value;
+      console.info('Worker: coerceToNativeBindingObjectEnvNull value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: coerceToNativeBindingObjectEnvNull value is: ', value);
+      const value = receivedValue === 1;
       workerPort.postMessage(value);
       break;
     }
     case 'napiSerializeTest': {
-      let value = napitest.napiSerialize();
+      const receivedValue = data.value;
+      console.info('Worker: napiSerializeTest value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiSerializeTest value is: ', value);
+      const value = receivedValue === 2000;
       workerPort.postMessage(value);
       break;
     }
     case 'napiDeSerializeTest': {
-      let value = napitest.napiDeSerialize();
+      const receivedValue = data.value;
+      console.info('Worker: napiDeSerializeTest value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiDeSerializeTest value is: ', value);
+      const value = receivedValue === 2000;
       workerPort.postMessage(value);
       break;
     }
     case 'napiIsSendableTest': {
-      let value = napitest.NapiIsSendable([1, 2]);
+      const receivedValue = data.value;
+      console.info('Worker: napiIsSendableTest value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: napiIsSendableTest value is: ', value);
+      const value = receivedValue === false;
       workerPort.postMessage(value);
       break;
     }
-    case 'NapiCreateSendableObject': {
-      let value = napitest.NapiCreateSendableObject();
+    case 'napiCreateSendableObjectTest': {
+      const receivedValue = Number(data.value);
+      console.info('Worker: napiCreateSendableObject value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: NapiCreateSendableObject value is: ', value);
-      workerPort.postMessage(napitest.NapiIsSendable(value));
+      const value = napitest.NapiIsSendable(receivedValue);
+      workerPort.postMessage(value);
       break;
     }
-    case 'NapiCreateSendableArray': {
-      let value = napitest.NapiCreateSendableArray();
+    case 'napiCreateSendableArrayTest': {
+      const receivedValue = Number(data.value);
+      console.info('Worker: napiCreateSendableArrayTest value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: NapiCreateSendableArray value is: ', value);
-      let res = value.length == 0;
-      workerPort.postMessage(res && napitest.NapiIsSendable(value));
+      const value = napitest.NapiIsSendable(receivedValue);
+      workerPort.postMessage(value);
       break;
     }
-    case 'NapiCreateSendableArrayWithLength': {
-      let value = napitest.NapiCreateSendableArrayWithLength();
+    case 'napiCreateSendableArrayWithLengthTest': {
+      const receivedValue = Number(data.value);
+      console.info('Worker: napiCreateSendableArrayWithLengthTest value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: NapiCreateSendableArrayWithLength value is: ', value);
-      let res = value.length == 1;
-      workerPort.postMessage(res && napitest.NapiIsSendable(value));
+      const value = napitest.NapiIsSendable(receivedValue);
+      workerPort.postMessage(value);
       break;
     }
-    case 'NapiCreateSendableArrayBuffer': {
-      let value = napitest.NapiCreateSendableArrayBuffer();
+    case 'napiCreateSendableArrayBufferTest': {
+      const receivedValue = Number(data.value);
+      console.info('Worker: napiCreateSendableArrayBufferTest value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: NapiCreateSendableArrayBuffer value is: ', value);
-      let res = value.byteLength == 1024;
-      workerPort.postMessage(res && napitest.NapiIsSendable(value));
+      const value = napitest.NapiIsSendable(receivedValue);
+      workerPort.postMessage(value);
       break;
     }
-    case 'NapiCreateSendableTypedArray': {
-      let value = napitest.NapiCreateSendableTypedArray();
+    case 'napiCreateSendableTypedArrayTest': {
+      const receivedValue = Number(data.value);
+      console.info('Worker: napiCreateSendableTypedArrayTest value is: ', receivedValue);
       ArkTools.forceFullGC();
-      console.info('Worker: NapiCreateSendableTypedArray value is: ', value);
-      let res = value.byteLength == 1024;
-      workerPort.postMessage(res && napitest.NapiIsSendable(value));
+      const value = napitest.NapiIsSendable(receivedValue);
+      workerPort.postMessage(value);
       break;
     }
-    case 'NapiWrapSendable': {
-      let value = napitest.NapiCreateSendableObject();
-      napitest.NapiWrapSendable(value, 'data');
-      ArkTools.forceFullGC();
-      console.info('Worker: NapiWrapSendable value is: ', value);
-      let res1 = napitest.NapiUnwrapSendable(value) == 'data';
-      let res2 = napitest.NapiRemoveWrapSendable(value) == 'data';
-      let res3 = napitest.NapiUnwrapSendable(value) == undefined;
+    case 'napiWrapSendableTest': {
+      const receivedValue = data.value as object;
+      console.info('Worker: napiWrapSendableTest value is: ', receivedValue);
+      let res1 = napitest.NapiUnwrapSendable(receivedValue) == 'data';
+      let res2 = napitest.NapiRemoveWrapSendable(receivedValue) == 'data';
+      let res3 = napitest.NapiUnwrapSendable(receivedValue) == undefined;
       workerPort.postMessage(res1 && res2 && res3);
       break;
     }
-    case 'NapiWrapSendableWithSize': {
-      let value = napitest.NapiCreateSendableObject();
-      napitest.NapiWrapSendableWithSize(value, 'data');
-      ArkTools.forceFullGC();
-      console.info('Worker: NapiWrapSendableWithSize value is: ', value);
-      let res1 = napitest.NapiUnwrapSendable(value) == 'data';
-      let res2 = napitest.NapiRemoveWrapSendable(value) == 'data';
-      let res3 = napitest.NapiUnwrapSendable(value) == undefined;
+    case 'napiWrapSendableWithSizeTest': {
+      const receivedValue = data.value as object;
+      console.info('Worker: napiWrapSendableWithSizeTest value is: ', receivedValue);
+      let res1 = napitest.NapiUnwrapSendable(receivedValue) == 'data';
+      let res2 = napitest.NapiRemoveWrapSendable(receivedValue) == 'data';
+      let res3 = napitest.NapiUnwrapSendable(receivedValue) == undefined;
       workerPort.postMessage(res1 && res2 && res3);
       break;
     }
     default:
+      console.warn('Worker received unknown message type.');
       break;
   }
 };
