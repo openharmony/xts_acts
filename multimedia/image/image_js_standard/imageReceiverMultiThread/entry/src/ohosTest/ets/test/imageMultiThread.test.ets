@@ -321,6 +321,7 @@ export default function multiThreadTest() {
     });
     beforeAll(async () => {
       console.info('total case before');
+      await sleep(1000);
       await getPermission();
       await permissionClick();
     })

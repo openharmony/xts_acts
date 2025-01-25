@@ -158,7 +158,7 @@ export function sendableImageSource() {
     let filePath: string;
     let fdNumber: number;
     let receiverApi: sendableImage.ImageReceiver
-    let cameraM = camera.getCameraManager(testContext)
+    let cameraM : camera.CameraManager;
 
     let isEmpty = (temp: ESObject) => {
       if (temp == null || temp == undefined) {
@@ -171,6 +171,7 @@ export function sendableImageSource() {
     beforeAll(async () => {
       filesDir = AppStorage.get('pathDir')
       testContext = AppStorage.get<common.UIAbilityContext>('testContext') as common.UIAbilityContext
+      cameraM = camera.getCameraManager(testContext)
       await ability()
       let driver = Driver.create()
       await sleep(500)
