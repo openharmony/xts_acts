@@ -13,11 +13,8 @@
  * limitations under the License.
 */
 
-import {sendableImageSource,isSupportedCameras} from './sendableImage.test';
-let isSupportedCamerasResult = isSupportedCameras();
+import sendableImageSource from './sendableImage.test';
 
 export default function testsuite() {
-  if(isSupportedCamerasResult){
-    sendableImageSource();
-  }
+  sendableImageSource();
 }
