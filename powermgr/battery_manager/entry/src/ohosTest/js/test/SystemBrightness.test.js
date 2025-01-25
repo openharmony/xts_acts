@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import brightness, { BrightnessModeResponse, BrightnessResponse } from '@system.brightness';
+import brightness from '@system.brightness';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default function SystemBrightnessTest() {
@@ -45,16 +45,16 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_0100', 0, async (done: Function) => {
+    it('SystemBrightnessTest_0100', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_0100';
       brightness.getValue({
-        success: (brightnessResponse: BrightnessResponse) => {
+        success: (brightnessResponse) => {
           console.info(`${TAG} brightnessResponse.value:${brightnessResponse.value}`);
           expect(brightnessResponse.value).assertLargerOrEqual(0);
           expect(brightnessResponse.value).assertLessOrEqual(255);
           done();
         },
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
@@ -74,16 +74,16 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_0200', 0, async (done: Function) => {
+    it('SystemBrightnessTest_0200', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_0200';
       brightness.getValue({
-        success: (brightnessResponse: BrightnessResponse) => {
+        success: (brightnessResponse) => {
           console.info(`${TAG} brightnessResponse.value:${brightnessResponse.value}`);
           expect(brightnessResponse.value).assertLargerOrEqual(0);
           expect(brightnessResponse.value).assertLessOrEqual(255);
           done();
         },
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
@@ -100,10 +100,10 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_0300', 0, async (done: Function) => {
+    it('SystemBrightnessTest_0300', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_0300';
       brightness.getValue({
-        success: (brightnessResponse: BrightnessResponse) => {
+        success: (brightnessResponse) => {
           console.info(`${TAG} brightnessResponse.value:${brightnessResponse.value}`);
           expect(brightnessResponse.value).assertLargerOrEqual(0);
           expect(brightnessResponse.value).assertLessOrEqual(255);
@@ -120,10 +120,10 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_0400', 0, async (done: Function) => {
+    it('SystemBrightnessTest_0400', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_0400';
       brightness.getValue({
-        success: (brightnessResponse: BrightnessResponse) => {
+        success: (brightnessResponse) => {
           console.info(`${TAG} brightnessResponse.value:${brightnessResponse.value}`);
           expect(brightnessResponse.value).assertLargerOrEqual(0);
           expect(brightnessResponse.value).assertLessOrEqual(255);
@@ -143,10 +143,10 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_0500', 0, async (done: Function) => {
+    it('SystemBrightnessTest_0500', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_0500';
       brightness.getValue({
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
@@ -170,7 +170,7 @@ export default function SystemBrightnessTest() {
     it('SystemBrightnessTest_0600', 0, () => {
       let TAG = 'SystemBrightnessTest_0600';
       brightness.getValue({
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
@@ -204,14 +204,14 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_0800', 0, async (done: Function) => {
+    it('SystemBrightnessTest_0800', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_0800';
       brightness.setValue({
         value: 128,
         success: () => {
           console.info(`${TAG} setValue success!`);
           brightness.getValue({
-            success: (brightnessResponse: BrightnessResponse) => {
+            success: (brightnessResponse) => {
               console.info(`${TAG} brightnessResponse.value:${brightnessResponse.value}`);
               expect(brightnessResponse.value).assertLargerOrEqual(0);
               expect(brightnessResponse.value).assertLessOrEqual(255);
@@ -220,7 +220,7 @@ export default function SystemBrightnessTest() {
           });
           done();
         },
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
@@ -240,14 +240,14 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_0900', 0, async (done: Function) => {
+    it('SystemBrightnessTest_0900', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_0900';
       brightness.setValue({
         value: 128,
         success: () => {
           console.info(`${TAG} setValue success!`);
           brightness.getValue({
-            success: (brightnessResponse: BrightnessResponse) => {
+            success: (brightnessResponse) => {
               console.info(`${TAG} brightnessResponse.value:${brightnessResponse.value}`);
               expect(brightnessResponse.value).assertLargerOrEqual(0);
               expect(brightnessResponse.value).assertLessOrEqual(255);
@@ -256,7 +256,7 @@ export default function SystemBrightnessTest() {
           });
           done();
         },
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
@@ -273,14 +273,14 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1000', 0, async (done: Function) => {
+    it('SystemBrightnessTest_1000', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_1000';
       brightness.setValue({
         value: 128,
         success: () => {
           console.info(`${TAG} setValue success!`);
           brightness.getValue({
-            success: (brightnessResponse: BrightnessResponse) => {
+            success: (brightnessResponse) => {
               console.info(`${TAG} brightnessResponse.value:${brightnessResponse.value}`);
               expect(brightnessResponse.value).assertLargerOrEqual(0);
               expect(brightnessResponse.value).assertLessOrEqual(255);
@@ -300,14 +300,14 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1100', 0, async (done: Function) => {
+    it('SystemBrightnessTest_1100', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_1100';
       brightness.setValue({
         value: 128,
         success: () => {
           console.info(`${TAG} setValue success!`);
           brightness.getValue({
-            success: (brightnessResponse: BrightnessResponse) => {
+            success: (brightnessResponse) => {
               console.info(`${TAG} brightnessResponse.value:${brightnessResponse.value}`);
               expect(brightnessResponse.value).assertLargerOrEqual(0);
               expect(brightnessResponse.value).assertLessOrEqual(255);
@@ -331,11 +331,11 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1200', 0, async (done: Function) => {
+    it('SystemBrightnessTest_1200', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_1200';
       brightness.setValue({
         value: 128,
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
@@ -360,7 +360,7 @@ export default function SystemBrightnessTest() {
       let TAG = 'SystemBrightnessTest_1300';
       brightness.setValue({
         value: 128,
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
@@ -376,16 +376,16 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1400', 0, async (done: Function) => {
+    it('SystemBrightnessTest_1400', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_1400';
       brightness.getMode({
-        success: (brightnessModeResponse: BrightnessModeResponse) => {
+        success: (brightnessModeResponse) => {
           console.info(`${TAG} brightnessModeResponse.mode:${brightnessModeResponse.mode}`);
           expect(brightnessModeResponse.mode).assertLargerOrEqual(0);
           expect(brightnessModeResponse.mode).assertLessOrEqual(1);
           done();
         },
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
@@ -405,16 +405,16 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1500', 0, async (done: Function) => {
+    it('SystemBrightnessTest_1500', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_1500';
       brightness.getMode({
-        success: (brightnessModeResponse: BrightnessModeResponse) => {
+        success: (brightnessModeResponse) => {
           console.info(`${TAG} brightnessModeResponse.mode:${brightnessModeResponse.mode}`);
           expect(brightnessModeResponse.mode).assertLargerOrEqual(0);
           expect(brightnessModeResponse.mode).assertLessOrEqual(1);
           done();
         },
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
@@ -431,10 +431,10 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1600', 0, async (done: Function) => {
+    it('SystemBrightnessTest_1600', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_1600';
       brightness.getMode({
-        success: (brightnessModeResponse: BrightnessModeResponse) => {
+        success: (brightnessModeResponse) => {
           console.info(`${TAG} brightnessModeResponse.mode:${brightnessModeResponse.mode}`);
           expect(brightnessModeResponse.mode).assertLargerOrEqual(0);
           expect(brightnessModeResponse.mode).assertLessOrEqual(1);
@@ -451,10 +451,10 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1700', 0, async (done: Function) => {
+    it('SystemBrightnessTest_1700', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_1700';
       brightness.getMode({
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
@@ -478,7 +478,7 @@ export default function SystemBrightnessTest() {
     it('SystemBrightnessTest_1800', 0, () => {
       let TAG = 'SystemBrightnessTest_1800';
       brightness.getMode({
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
@@ -494,10 +494,10 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1900', 0, async (done: Function) => {
+    it('SystemBrightnessTest_1900', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_1900';
       brightness.getMode({
-        success: (brightnessModeResponse: BrightnessModeResponse) => {
+        success: (brightnessModeResponse) => {
           console.info(`${TAG} brightnessModeResponse.mode:${brightnessModeResponse.mode}`);
           expect(brightnessModeResponse.mode).assertLargerOrEqual(0);
           expect(brightnessModeResponse.mode).assertLessOrEqual(1);
@@ -517,14 +517,14 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2000', 0, async (done: Function) => {
+    it('SystemBrightnessTest_2000', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_2000';
       brightness.setMode({
         mode: 1,
         success: () => {
           console.info(`${TAG} setMode success`);
           brightness.getMode({
-            success: (brightnessModeResponse: BrightnessModeResponse) => {
+            success: (brightnessModeResponse) => {
               console.info(`${TAG} brightnessModeResponse.mode:${brightnessModeResponse.mode}`);
               expect(brightnessModeResponse.mode).assertEqual(1);
               done();
@@ -532,7 +532,7 @@ export default function SystemBrightnessTest() {
           })
           done();
         },
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect(code).assertEqual(200);
@@ -552,14 +552,14 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2100', 0, async (done: Function) => {
+    it('SystemBrightnessTest_2100', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_2100';
       brightness.setMode({
         mode: 0,
         success: () => {
           console.info(`${TAG} setMode success`);
           brightness.getMode({
-            success: (brightnessModeResponse: BrightnessModeResponse) => {
+            success: (brightnessModeResponse) => {
               console.info(`${TAG} brightnessModeResponse.mode:${brightnessModeResponse.mode}`);
               expect(brightnessModeResponse.mode).assertEqual(0);
               done();
@@ -567,7 +567,7 @@ export default function SystemBrightnessTest() {
           });
           done();
         },
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect(code).assertEqual(200);
@@ -591,7 +591,7 @@ export default function SystemBrightnessTest() {
         success: () => {
           console.info(`${TAG} setMode success`);
           brightness.getMode({
-            success: (brightnessModeResponse: BrightnessModeResponse) => {
+            success: (brightnessModeResponse) => {
               console.info(`${TAG} brightnessModeResponse.mode:${brightnessModeResponse.mode}`);
               expect(brightnessModeResponse.mode).assertEqual(1);
             }
@@ -608,14 +608,14 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2300', 0, async (done: Function) => {
+    it('SystemBrightnessTest_2300', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_2300';
       brightness.setMode({
         mode: 1,
         success: () => {
           console.info(`${TAG} setMode success`);
           brightness.getMode({
-            success: (brightnessModeResponse: BrightnessModeResponse) => {
+            success: (brightnessModeResponse) => {
               console.info(`${TAG} brightnessModeResponse.mode:${brightnessModeResponse.mode}`);
               expect(brightnessModeResponse.mode).assertEqual(1);
               done();
@@ -638,11 +638,11 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2400', 0, async (done: Function) => {
+    it('SystemBrightnessTest_2400', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_2400';
       brightness.setMode({
         mode: 1,
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect(code).assertEqual(200);
@@ -663,7 +663,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2500', 0, async (done: Function) => {
+    it('SystemBrightnessTest_2500', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_2500';
       brightness.setKeepScreenOn({
         keepScreenOn: true,
@@ -671,7 +671,7 @@ export default function SystemBrightnessTest() {
           console.info(`${TAG} setKeepScreenOn success`);
           done();
         },
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect(code).assertEqual(200);
@@ -691,7 +691,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2600', 0, async (done: Function) => {
+    it('SystemBrightnessTest_2600', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_2600';
       brightness.setKeepScreenOn({
         keepScreenOn: false,
@@ -699,7 +699,7 @@ export default function SystemBrightnessTest() {
           console.info(`${TAG} setKeepScreenOn success`);
           done();
         },
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect(code).assertEqual(200);
@@ -716,11 +716,11 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2700', 0, async (done: Function) => {
+    it('SystemBrightnessTest_2700', 0, async (done) => {
       let TAG = 'SystemBrightnessTest_2700';
       brightness.setKeepScreenOn({
         keepScreenOn: true,
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect(code).assertEqual(200);

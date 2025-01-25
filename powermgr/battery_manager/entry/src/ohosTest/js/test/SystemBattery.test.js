@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import battery, { BatteryResponse } from '@system.battery';
+import battery from '@system.battery';
 import batteryInfo from '@ohos.batteryInfo';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
@@ -46,10 +46,10 @@ export default function SystemBatteryTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('get_status_success_test', 0, async (done: Function) => {
+    it('get_status_success_test', 0, async (done) => {
       let TAG = 'get_status_success_test';
       battery.getStatus({
-        success: (batteryResponse: BatteryResponse) => {
+        success: (batteryResponse) => {
           console.info(`${TAG} batteryResponse.charging:${batteryResponse.charging}`);
           console.info(`${TAG} batteryResponse.charging type:${typeof batteryResponse.charging}`);
           expect(typeof batteryResponse.charging).assertEqual('number');
@@ -58,7 +58,7 @@ export default function SystemBatteryTest() {
           expect(batteryResponse.level * 100).assertClose(batteryInfo.batterySOC, 1);
           done();
         },
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
@@ -78,11 +78,11 @@ export default function SystemBatteryTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('get_status_success_null_test', 0, async (done: Function) => {
+    it('get_status_success_null_test', 0, async (done) => {
       let TAG = 'get_status_success_null_test';
       battery.getStatus({
         success: null,
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
@@ -103,10 +103,10 @@ export default function SystemBatteryTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('get_status_success_empty_test', 0, async (done: Function) => {
+    it('get_status_success_empty_test', 0, async (done) => {
       let TAG = 'get_status_success_empty_test';
       battery.getStatus({
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
@@ -127,10 +127,10 @@ export default function SystemBatteryTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('get_status_fail_null_test', 0, async (done: Function) => {
+    it('get_status_fail_null_test', 0, async (done) => {
       let TAG = 'get_status_fail_null_test';
       battery.getStatus({
-        success: (batteryResponse: BatteryResponse) => {
+        success: (batteryResponse) => {
           console.info(`${TAG} batteryResponse.charging:${batteryResponse.charging}`);
           console.info(`${TAG} batteryResponse.charging type:${typeof batteryResponse.charging}`);
           expect(typeof batteryResponse.charging).assertEqual('number');
@@ -154,10 +154,10 @@ export default function SystemBatteryTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('get_status_fail_empty_test', 0, async (done: Function) => {
+    it('get_status_fail_empty_test', 0, async (done) => {
       let TAG = 'get_status_fail_empty_test';
       battery.getStatus({
-        success: (batteryResponse: BatteryResponse) => {
+        success: (batteryResponse) => {
           console.info(`${TAG} batteryResponse.charging:${batteryResponse.charging}`);
           console.info(`${TAG} batteryResponse.charging type:${typeof batteryResponse.charging}`);
           expect(typeof batteryResponse.charging).assertEqual('number');
@@ -180,10 +180,10 @@ export default function SystemBatteryTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('get_status_complete_null_test', 0, async (done: Function) => {
+    it('get_status_complete_null_test', 0, async (done) => {
       let TAG = 'get_status_complete_null_test';
       battery.getStatus({
-        success: (batteryResponse: BatteryResponse) => {
+        success: (batteryResponse) => {
           console.info(`${TAG} batteryResponse.charging:${batteryResponse.charging}`);
           console.info(`${TAG} batteryResponse.charging type:${typeof batteryResponse.charging}`);
           expect(typeof batteryResponse.charging).assertEqual('number');
@@ -192,7 +192,7 @@ export default function SystemBatteryTest() {
           expect(batteryResponse.level * 100).assertClose(batteryInfo.batterySOC, 1);
           done();
         },
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
@@ -210,10 +210,10 @@ export default function SystemBatteryTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('get_status_complete_empty_test', 0, async (done: Function) => {
+    it('get_status_complete_empty_test', 0, async (done) => {
       let TAG = 'get_status_complete_empty_test';
       battery.getStatus({
-        success: (batteryResponse: BatteryResponse) => {
+        success: (batteryResponse) => {
           console.info(`${TAG} batteryResponse.charging:${batteryResponse.charging}`);
           console.info(`${TAG} batteryResponse.charging type:${typeof batteryResponse.charging}`);
           expect(typeof batteryResponse.charging).assertEqual('number');
@@ -222,7 +222,7 @@ export default function SystemBatteryTest() {
           expect(batteryResponse.level * 100).assertClose(batteryInfo.batterySOC, 1);
           done();
         },
-        fail: (msg: string, code: number) => {
+        fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
           expect().assertFail();
