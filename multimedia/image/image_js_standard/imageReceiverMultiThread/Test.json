@@ -5,6 +5,7 @@
         "test-timeout": "800000",
         "bundle-name": "ohos.acts.multimedia.image.receiverMultiThread",
         "module-name": "entry_test",
+        "testcase-timeout": 60000,
         "shell-timeout": "800000"
     },
     "kits": [
