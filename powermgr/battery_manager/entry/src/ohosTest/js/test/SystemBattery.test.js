@@ -74,7 +74,7 @@ export default function SystemBatteryTest() {
      * @tc.number SUB_PowerSystem_SystemBattery_JSTest_0020
      * @tc.name testget_status_success_null_test
      * @tc.desc Battery acquisition kit
-     * @tc.level: Level 1
+     * @tc.level: Level 3
      * @tc.type: Function
      * @tc.size: MediumTest
      */
@@ -99,7 +99,7 @@ export default function SystemBatteryTest() {
      * @tc.number SUB_PowerSystem_SystemBattery_JSTest_0030
      * @tc.name testget_status_success_empty_test
      * @tc.desc Battery acquisition kit
-     * @tc.level: Level 1
+     * @tc.level: Level 3
      * @tc.type: Function
      * @tc.size: MediumTest
      */
