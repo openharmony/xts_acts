@@ -152,7 +152,7 @@ async function getRelease(img: image.Image) {
 }
 
 
-export function sendableImageSource() {
+export default function sendableImageSource() {
   describe('sendableImageAbilityTest', () => {
 
     let filePath: string;
