@@ -61,6 +61,9 @@
       },
       {
         "name": "ohos.permission.WRITE_MEDIA",
+      },
+      {
+        "name": "ohos.permission.INTERNET",
       }
     ]
   }
