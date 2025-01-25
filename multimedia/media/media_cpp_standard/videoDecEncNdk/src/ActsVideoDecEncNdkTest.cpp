@@ -45,11 +45,11 @@ public:
 
 void ActsVideoDecEncNdkTest::SetUpTestCase() {
     cap_avc = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    if(cap_avc) {
+    if (cap_avc) {
         g_capAvcResult = true;
     }
     cap_mpeg4 = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_MPEG4, true, HARDWARE);
-    if(cap_mpeg4) {
+    if (cap_mpeg4) {
         g_capM4Result = true;
     }
 }
