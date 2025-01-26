@@ -16,8 +16,7 @@ import media from '@ohos.multimedia.media'
 import MediaTestBase from './MediaTestBase';
 import { testAVPlayerFun, setSource, PlayTest, sleep } from './AVPlayerTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { http } from '@kit.NetworkKit';
 
 const INITIALIZED = 'initialized';
 const PREPARED = 'prepared';
@@ -118,6 +117,35 @@ function setAVPlayerSeiMessageCb(avPlayer: media.AVPlayer | null, payloadTypes: 
   });
 }
 
+function checkDataCanBeRead(url: string, done: Function) {
+  let httpRequest = http.createHttp();
+
+  httpRequest.on('headersReceive', (header) => {
+    console.info('Header received');
+  });
+
+  httpRequest.request(
+    url,
+    {
+      method: http.RequestMethod.GET,
+      readTimeout: 5000,
+      connectTimeout: 5000,
+      usingCache: false,
+    },
+    (err, data) => {
+      if (!err) {
+        console.info('Data can be read.');
+      } else {
+        console.error('Failed to read data: ' + err.message);
+        done();
+      }
+
+      httpRequest.off('headersReceive');
+      httpRequest.destroy();
+    }
+  );
+}
+
 export default function AVPlayerFlvFuncTest() {
   describe('AVPlayerFlvFuncTest', () => {
     beforeAll(async () => {
@@ -159,13 +187,7 @@ export default function AVPlayerFlvFuncTest() {
     it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SEIMESSAGERECEIVED_0100', 0, async (done: Function) => {
       const videoSrc = 'http://media.iyuns.top:1003/live/SEI-H264.flv';
       payloadTypes = [5];
-      connection.getDefaultNet((error: BusinessError, videoSrc: connection.NetHandle) => {
-        if (error) {
-          console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
-          done();
-        }
-        console.info("Succeeded to get data " + JSON.stringify(videoSrc));
-      });
+      await checkDataCanBeRead(videoSrc, done);
       await testSeiMessage(videoSrc, avPlayer, payloadTypes, done);
     });
   })
