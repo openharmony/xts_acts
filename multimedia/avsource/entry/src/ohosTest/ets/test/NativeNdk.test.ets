@@ -16,6 +16,7 @@
 import { describe, it, expect } from "@ohos/hypium"
 import native from 'libnativendk.so'
 
+
 export default function nativeNdkTest() {
   describe('AvcodecAVCapabilityTest', () => {
 
@@ -93,6 +94,7 @@ export default function nativeNdkTest() {
       expect(result).assertEqual(-1);
       done();
     });
+
 
     /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_ISHARDWARE_0700
