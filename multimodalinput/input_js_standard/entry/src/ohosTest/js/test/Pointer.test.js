@@ -106,7 +106,7 @@ export default function Pointer_test() {
         pointer.setPointerVisible(false, (err, data) => {
           if (err) {
             console.info(`Pointer_SetPointerVisibleTest_001 failed, err=${JSON.stringify(err)}`);
-            expect(err.code).assertTrue(DEVICE_NOT_SUPPORT);
+            expect(err.code).assertEqual(errCode.DEVICE_NOT_SUPPORT);
             done();
           } else {
             console.info(`Pointer_SetPointerVisibleTest_001 success_1. data=${JSON.stringify(data)}`);
@@ -155,7 +155,7 @@ export default function Pointer_test() {
             expect(true).assertTrue();
           }).catch((err) => {
             console.info(`Pointer_PointerVisibleTest_002 failed, err=${JSON.stringify(err)}`);
-            expect(err.code).assertTrue(DEVICE_NOT_SUPPORT);
+            expect(err.code).assertEqual(errCode.DEVICE_NOT_SUPPORT);
             done();
           });
         } catch (error) {
