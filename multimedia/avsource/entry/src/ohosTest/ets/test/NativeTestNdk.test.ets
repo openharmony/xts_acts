@@ -1,782 +1,1743 @@
-    
+
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETAUDIOCHANNELCOUNTRANGE_1700
-     * @tc.name       : testOHAvCapabilityGetAudioChannelCountRange017
-     * @tc.desc       : test OH_AVCapability_GetAudioChannelCountRange
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_1700
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported017
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange017', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangePnormal();
+    it('testOHAvCapabilityAreProfileAndLevelSupported017', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(3,1,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
     });
-    
+
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETAUDIOCHANNELCOUNTRANGE_1800
-     * @tc.name       : testOHAvCapabilityGetAudioChannelCountRange018
-     * @tc.desc       : test OH_AVCapability_GetAudioChannelCountRange
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_1800
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported018
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange018', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeQnormal();
+    it('testOHAvCapabilityAreProfileAndLevelSupported018', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(4,1,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
     });
-    
+
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETAUDIOCHANNELCOUNTRANGE_1900
-     * @tc.name       : testOHAvCapabilityGetAudioChannelCountRange019
-     * @tc.desc       : test OH_AVCapability_GetAudioChannelCountRange
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_1900
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported019
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange019', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeRnormal();
+    it('testOHAvCapabilityAreProfileAndLevelSupported019', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(5,1,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
     });
-    
+
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETAUDIOCHANNELCOUNTRANGE_2000
-     * @tc.name       : testOHAvCapabilityGetAudioChannelCountRange020
-     * @tc.desc       : test OH_AVCapability_GetAudioChannelCountRange
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_2000
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported020
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange020', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeSnormal();
+    it('testOHAvCapabilityAreProfileAndLevelSupported020', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(6,1,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
     });
-    
+
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOWIDTHALIGNMENT_0200
-     * @tc.name       : testOHAvCapabilityGetVideoWidthAlignment002
-     * @tc.desc       : test OH_AVCapability_GetVideoWidthAlignment
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_2100
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported021
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthAlignment002', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentAnormal();
+    it('testOHAvCapabilityAreProfileAndLevelSupported021', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(7,1,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
     });
-    
+
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOWIDTHALIGNMENT_0300
-     * @tc.name       : testOHAvCapabilityGetVideoWidthAlignment003
-     * @tc.desc       : test OH_AVCapability_GetVideoWidthAlignment
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_2200
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported022
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthAlignment003', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentBnormal();
-        expect(result != null).assertTrue();
-	      done();
-      } catch (err) {
-        console.info('testOHAvCapabilityGetVideoWidthAlignment003 failed, error is' + err.message);
-	      expect(false).assertTrue();
-      }
-    });
-    
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOWIDTHALIGNMENT_0400
-     * @tc.name       : testOHAvCapabilityGetVideoWidthAlignment004
-     * @tc.desc       : test OH_AVCapability_GetVideoWidthAlignment
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHAvCapabilityGetVideoWidthAlignment004', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentCnormal();
-      expect(result).assertEqual(0);
-      done();
-    });
-    
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOWIDTHALIGNMENT_0500
-     * @tc.name       : testOHAvCapabilityGetVideoWidthAlignment005
-     * @tc.desc       : test OH_AVCapability_GetVideoWidthAlignment
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHAvCapabilityGetVideoWidthAlignment005', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentDnormal();
-      expect(result).assertEqual(-1);
-      done();
-    });
-    
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOWIDTHALIGNMENT_0600
-     * @tc.name       : testOHAvCapabilityGetVideoWidthAlignment006
-     * @tc.desc       : test OH_AVCapability_GetVideoWidthAlignment
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHAvCapabilityGetVideoWidthAlignment006', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentEnormal();
-        expect(result != null).assertTrue();
-	      done();
-      } catch (err) {
-        console.info('testOHAvCapabilityGetVideoWidthAlignment006 failed, error is' + err.message);
-	      expect(false).assertTrue();
-      }
-    });
-    
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOWIDTHALIGNMENT_0700
-     * @tc.name       : testOHAvCapabilityGetVideoWidthAlignment007
-     * @tc.desc       : test OH_AVCapability_GetVideoWidthAlignment
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHAvCapabilityGetVideoWidthAlignment007', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentFnormal();
-        expect(result != null).assertTrue();
-	      done();
-      } catch (err) {
-        console.info('testOHAvCapabilityGetVideoWidthAlignment007 failed, error is' + err.message);
-	      expect(false).assertTrue();
-      }
-    });
-    
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOWIDTHALIGNMENT_0800
-     * @tc.name       : testOHAvCapabilityGetVideoWidthAlignment008
-     * @tc.desc       : test OH_AVCapability_GetVideoWidthAlignment
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHAvCapabilityGetVideoWidthAlignment008', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentGnormal();
-        expect(result != null).assertTrue();
-        done();
-      } catch(err) {
-        console.info('testOHAvCapabilityGetVideoWidthAlignment008 failed, error is' + err.message);
-        expect(false).assertTrue();
-      }
-    });
-    
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOWIDTHALIGNMENT_0900
-     * @tc.name       : testOHAvCapabilityGetVideoWidthAlignment009
-     * @tc.desc       : test OH_AVCapability_GetVideoWidthAlignment
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHAvCapabilityGetVideoWidthAlignment009', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentHnormal();
-        expect(result != null).assertTrue();
-        done();
-      } catch(err) {
-        console.info('testOHAvCapabilityGetVideoWidthAlignment009 failed, error is' + err.message);
-        expect(false).assertTrue();
-      }
-    });
-    
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOWIDTHALIGNMENT_1000
-     * @tc.name       : testOHAvCapabilityGetVideoWidthAlignment010
-     * @tc.desc       : test OH_AVCapability_GetVideoWidthAlignment
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHAvCapabilityGetVideoWidthAlignment010', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentInormal();
-        expect(result != null).assertTrue();
-        done();
-      } catch(err) {
-        console.info('testOHAvCapabilityGetVideoWidthAlignment010 failed, error is' + err.message);
-        expect(false).assertTrue();
-      }
-    });
-    
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOWIDTHALIGNMENT_1100
-     * @tc.name       : testOHAvCapabilityGetVideoWidthAlignment011
-     * @tc.desc       : test OH_AVCapability_GetVideoWidthAlignment
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHAvCapabilityGetVideoWidthAlignment011', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentJnormal();
-      expect(result).assertEqual(-1);
-      done();
-    });
-    
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOWIDTHALIGNMENT_1200
-     * @tc.name       : testOHAvCapabilityGetVideoWidthAlignment012
-     * @tc.desc       : test OH_AVCapability_GetVideoWidthAlignment
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHAvCapabilityGetVideoWidthAlignment012', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentKnormal();
-      expect(result).assertEqual(-1);
-      done();
-    });
-    
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOWIDTHALIGNMENT_1300
-     * @tc.name       : testOHAvCapabilityGetVideoWidthAlignment013
-     * @tc.desc       : test OH_AVCapability_GetVideoWidthAlignment
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHAvCapabilityGetVideoWidthAlignment013', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentLnormal();
-      expect(result).assertEqual(0);
-      done();
-    });
-    
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOWIDTHALIGNMENT_1400
-     * @tc.name       : testOHAvCapabilityGetVideoWidthAlignment014
-     * @tc.desc       : test OH_AVCapability_GetVideoWidthAlignment
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHAvCapabilityGetVideoWidthAlignment014', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentMnormal();
+    it('testOHAvCapabilityAreProfileAndLevelSupported022', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(1,0,0,1,1,14);
       expect(result).assertEqual(0);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOHEIGHTALIGNMENT_0200
-     * @tc.name       : testOhAvCapabilityGetVideoHeightAlignment002
-     * @tc.desc       : test OH_AVCapability_GetVideoHeightAlignment
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_2300
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported023
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment002', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentAnormal();
+    it('testOHAvCapabilityAreProfileAndLevelSupported023', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(2,0,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOHEIGHTALIGNMENT_0300
-     * @tc.name       : testOhAvCapabilityGetVideoHeightAlignment003
-     * @tc.desc       : test OH_AVCapability_GetVideoHeightAlignment
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_2400
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported024
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment003', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported024', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(7,0,0,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_2500
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported025
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported025', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(3,0,0,1,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_2600
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported026
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported026', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(4,0,0,1,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_2700
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported027
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported027', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(5,0,0,1,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_2800
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported028
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported028', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(6,0,0,1,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_2900
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported029
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported029', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(7,0,0,1,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_3000
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported030
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported030', 0, async (done: Function) => {
       try {
-        let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentBnormal();
+        let result: number = native.decodeMainProcess(1,1,0,1,1,15);
         expect(result != null).assertTrue();
 	      done();
       } catch (err) {
-        console.info('testOhAvCapabilityGetVideoHeightAlignment003 failed, error is' + err.message);
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported030 failed, error is' + err.message);
 	      expect(false).assertTrue();
       }
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOHEIGHTALIGNMENT_0400
-     * @tc.name       : testOhAvCapabilityGetVideoHeightAlignment004
-     * @tc.desc       : test OH_AVCapability_GetVideoHeightAlignment
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_3100
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported031
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment004', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentCnormal();
+    it('testOHAvCapabilityAreProfileAndLevelSupported031', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(2,1,0,1,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_3200
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported032
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported032', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(3,1,0,1,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_3300
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported033
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported033', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(4,1,0,1,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_3400
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported034
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported034', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(5,1,0,1,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_3500
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported035
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported035', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(6,1,0,1,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_3600
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported036
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported036', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(7,1,0,1,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_3700
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported037
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported037', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(1,0,0,1,1,15);
       expect(result).assertEqual(0);
       done();
     });
 
+
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOHEIGHTALIGNMENT_0500
-     * @tc.name       : testOhAvCapabilityGetVideoHeightAlignment005
-     * @tc.desc       : test OH_AVCapability_GetVideoHeightAlignment
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_3800
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported038
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment005', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentDnormal();
+    it('testOHAvCapabilityAreProfileAndLevelSupported038', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(2,0,0,1,1,15);
       expect(result).assertEqual(-1);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOHEIGHTALIGNMENT_0600
-     * @tc.name       : testOhAvCapabilityGetVideoHeightAlignment006
-     * @tc.desc       : test OH_AVCapability_GetVideoHeightAlignment
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_3900
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported039
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment006', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentEnormal();
-        expect(result != null).assertTrue();
-	      done();
-      } catch (err) {
-        console.info('testOhAvCapabilityGetVideoHeightAlignment006 failed, error is' + err.message);
-	      expect(false).assertTrue();
-      }
+    it('testOHAvCapabilityAreProfileAndLevelSupported039', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(3,0,0,1,1,15);
+      expect(result).assertEqual(-1);
+      done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOHEIGHTALIGNMENT_0700
-     * @tc.name       : testOhAvCapabilityGetVideoHeightAlignment007
-     * @tc.desc       : test OH_AVCapability_GetVideoHeightAlignment
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_4000
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported040
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment007', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentFnormal();
-        expect(result != null).assertTrue();
-	      done();
-      } catch (err) {
-        console.info('testOhAvCapabilityGetVideoHeightAlignment007 failed, error is' + err.message);
-	      expect(false).assertTrue();
-      }
+    it('testOHAvCapabilityAreProfileAndLevelSupported040', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(4,0,0,1,1,15);
+      expect(result).assertEqual(-1);
+      done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOHEIGHTALIGNMENT_0800
-     * @tc.name       : testOhAvCapabilityGetVideoHeightAlignment008
-     * @tc.desc       : test OH_AVCapability_GetVideoHeightAlignment
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_4100
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported041
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment008', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported041', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(5,0,0,1,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_4200
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported042
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported042', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(6,0,0,1,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_4300
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported043
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported043', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(7,0,0,1,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_4400
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported044
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported044', 0, async (done: Function) => {
       try {
-        let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentGnormal();
+        let result: number = native.decodeMainProcess(1,1,1,0,1,13);
         expect(result != null).assertTrue();
         done();
-      } catch(err) {
-        console.info('testOhAvCapabilityGetVideoHeightAlignment008 failed, error is' + err.message);
+      } catch (err) {
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported044 failed, error is' + err.message);
         expect(false).assertTrue();
       }
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOHEIGHTALIGNMENT_0900
-     * @tc.name       : testOhAvCapabilityGetVideoHeightAlignment009
-     * @tc.desc       : test OH_AVCapability_GetVideoHeightAlignment
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_4500
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported045
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment009', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentHnormal();
-        expect(result != null).assertTrue();
-        done();
-      } catch(err) {
-        console.info('testOhAvCapabilityGetVideoHeightAlignment009 failed, error is' + err.message);
-        expect(false).assertTrue();
-      }
-    });
-
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOHEIGHTALIGNMENT_1000
-     * @tc.name       : testOhAvCapabilityGetVideoHeightAlignment010
-     * @tc.desc       : test OH_AVCapability_GetVideoHeightAlignment
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOhAvCapabilityGetVideoHeightAlignment010', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentInormal();
+    it('testOHAvCapabilityAreProfileAndLevelSupported045', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(2,1,1,0,1,13);
       expect(result).assertEqual(-1);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOHEIGHTALIGNMENT_1100
-     * @tc.name       : testOhAvCapabilityGetVideoHeightAlignment011
-     * @tc.desc       : test OH_AVCapability_GetVideoHeightAlignment
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_4600
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported046
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment011', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentJnormal();
+    it('testOHAvCapabilityAreProfileAndLevelSupported046', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(3,1,1,0,1,13);
       expect(result).assertEqual(-1);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOHEIGHTALIGNMENT_1200
-     * @tc.name       : testOhAvCapabilityGetVideoHeightAlignment012
-     * @tc.desc       : test OH_AVCapability_GetVideoHeightAlignment
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_4700
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported047
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment012', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported047', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(4,1,1,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_4800
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported048
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported048', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(5,1,1,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_4900
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported049
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported049', 0, async (done: Function) => {
       try {
-        let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentKnormal();
+        let result: number = native.decodeMainProcess(6,1,1,0,1,13);
         expect(result != null).assertTrue();
         done();
-      } catch(err) {
-        console.info('testOhAvCapabilityGetVideoHeightAlignment012 failed, error is' + err.message);
+      } catch (err) {
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported049 failed, error is' + err.message);
         expect(false).assertTrue();
       }
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOHEIGHTALIGNMENT_1300
-     * @tc.name       : testOhAvCapabilityGetVideoHeightAlignment013
-     * @tc.desc       : test OH_AVCapability_GetVideoHeightAlignment
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_5000
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported050
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment013', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentLnormal();
+    it('testOHAvCapabilityAreProfileAndLevelSupported050', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(7,1,1,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_5100
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported051
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported051', 0, async (done: Function) => {
+      try {
+        let result: number = native.decodeMainProcess(1,1,0,0,1,13);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported051 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_5200
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported052
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported052', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(2,1,0,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_5300
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported053
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported053', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(3,1,0,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_5400
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported054
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported054', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(4,1,0,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_5500
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported055
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported055', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(5,1,0,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_5600
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported056
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported056', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(6,1,0,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_5700
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported057
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported057', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(7,1,0,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_5800
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported058
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported058', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(1,0,1,0,1,13);
       expect(result).assertEqual(0);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOHEIGHTALIGNMENT_1400
-     * @tc.name       : testOhAvCapabilityGetVideoHeightAlignment014
-     * @tc.desc       : test OH_AVCapability_GetVideoHeightAlignment
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_5900
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported059
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment014', 0, async (done: Function) => {
-      let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentMnormal();
+    it('testOHAvCapabilityAreProfileAndLevelSupported059', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(2,0,1,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_6000
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported060
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported060', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(3,0,1,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_6100
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported061
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported061', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(4,0,1,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_6200
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported062
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported062', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(5,0,1,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_6300
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported063
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported063', 0, async (done: Function) => {
+      try {
+        let result: number = native.decodeMainProcess(6,0,1,0,1,13);
+        expect(result != null).assertTrue();
+	      done();
+      } catch (err) {
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported063 failed, error is' + err.message);
+	      expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_6400
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported064
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported064', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(7,0,1,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_6500
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported065
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported065', 0, async (done: Function) => {
+      try {
+        let result: number = native.decodeMainProcess(1,0,0,0,1,13);
+        expect(result != null).assertTrue();
+	      done();
+      } catch (err) {
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported065 failed, error is' + err.message);
+	      expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_6600
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported066
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported066', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(2,0,0,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_6700
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported067
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported067', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(3,0,0,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_6800
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported068
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported068', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(4,0,0,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_6900
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported069
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported069', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(5,0,0,0,1,13);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_7000
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported070
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported070', 0, async (done: Function) => {
+      try {
+        let result: number = native.decodeMainProcess(6,0,0,0,1,13);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported070 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_7100
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported071
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported071', 0, async (done: Function) => {
+      try {
+        let result: number = native.decodeMainProcess(7,0,0,0,1,13);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported071 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_7200
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported072
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported072', 0, async (done: Function) => {
+      try {
+        let result: number = native.decodeMainProcess(1,1,1,0,1,14);
+        expect(result != null).assertTrue();
+	      done();
+      } catch (err) {
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported072 failed, error is' + err.message);
+	      expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_7300
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported073
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported073', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(2,1,1,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_7400
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported074
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported074', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(3,1,1,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_7500
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported075
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported075', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(4,1,1,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_7600
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported076
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported076', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(5,1,1,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_7700
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported077
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported077', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(6,1,1,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_7800
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported078
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported078', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(7,1,1,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_7900
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported079
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported079', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(1,1,0,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_8000
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported080
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported080', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(2,1,0,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_8100
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported081
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported081', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(3,1,0,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_8200
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported082
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported082', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(4,1,0,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_8300
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported083
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported083', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(5,1,0,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_8400
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported084
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported084', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(6,1,0,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_8500
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported085
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported085', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(7,1,0,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_8600
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported086
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported086', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(1,0,1,0,1,14);
       expect(result).assertEqual(0);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETENCODERQUALITYRANGE_0100
-     * @tc.name       : testOhAvCapabilityGetEncoderQualityRange001
-     * @tc.desc       : test OH_AVCapability_GetEncoderQualityRange
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_8700
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported087
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetEncoderQualityRange001', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.OH_AVCapability_GetEncoderQualityRange();
-        expect(result != null).assertTrue();
-	      done();
-      } catch (err) {
-        console.info('testOhAvCapabilityGetEncoderQualityRange001 failed, error is' + err.message);
-	      expect(false).assertTrue();
-      }
-    });
-
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETENCODERCOMPLEXITYRANGE_0100
-     * @tc.name       : testOhAvCapabilityGetEncoderComplexityRange001
-     * @tc.desc       : test OH_AVCapability_GetEncoderComplexityRange
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOhAvCapabilityGetEncoderComplexityRange001', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.OH_AVCapability_GetEncoderComplexityRange();
-        expect(result != null).assertTrue();
-	      done();
-      } catch (err) {
-        console.info('testOhAvCapabilityGetEncoderComplexityRange001 failed, error is' + err.message);
-	      expect(false).assertTrue();
-      }
-    });
-
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETAUDIOSUPPORTEDSAMPLERATES_0100
-     * @tc.name       : testOhAvCapabilityGetAudioSupportedSampleRates001
-     * @tc.desc       : test OH_AVCapability_GetAudioSupportedSampleRates
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOhAvCapabilityGetAudioSupportedSampleRates001', 0, async (done: Function) => {
-      expect(mediacodecbasexdlndk.OH_AVCapability_GetAudioSupportedSampleRates()).assertEqual(0);
+    it('testOHAvCapabilityAreProfileAndLevelSupported087', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(2,0,1,0,1,14);
+      expect(result).assertEqual(-1);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETAUDIOCHANNELCOUNTRANGE_0100
-     * @tc.name       : testOhAvCapabilityGetAudioChannelCountRange001
-     * @tc.desc       : test OH_AVCapability_GetAudioChannelCountRange
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_8800
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported088
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetAudioChannelCountRange001', 0, async (done: Function) => {
-      expect(mediacodecbasexdlndk.OH_AVCapability_GetAudioChannelCountRange()).assertEqual(0);
+    it('testOHAvCapabilityAreProfileAndLevelSupported088', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(3,0,1,0,1,14);
+      expect(result).assertEqual(-1);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOWIDTHALIGNMENT_0100
-     * @tc.name       : testOhAvCapabilityGetVideoWidthAlignment001
-     * @tc.desc       : test OH_AVCapability_GetVideoWidthAlignment
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_8900
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported089
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoWidthAlignment001', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.OH_AVCapability_GetVideoWidthAlignment();
-        expect(result != null).assertTrue();
-	      done();
-      } catch (err) {
-        console.info('testOhAvCapabilityGetVideoWidthAlignment001 failed, error is' + err.message);
-	      expect(false).assertTrue();
-      }
-    });
-
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOHEIGHTALIGNMENT_0100
-     * @tc.name       : testOhAvCapabilityGetVideoHeightAlignment001
-     * @tc.desc       : test OH_AVCapability_GetVideoHeightAlignment
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOhAvCapabilityGetVideoHeightAlignment001', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.OH_AVCapability_GetVideoHeightAlignment();
-        expect(result != null).assertTrue();
-	      done();
-      } catch (err) {
-        console.info('testOhAvCapabilityGetVideoHeightAlignment001 failed, error is' + err.message);
-	      expect(false).assertTrue();
-      }
-    });
-
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_AVCAPABILITY_OH_AVCODEC_GETCAPABILITY_0100
-     * @tc.name       : testOhAvCodecGetCapability001
-     * @tc.desc       : test OH_AVCodec_GetCapability
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOhAvCodecGetCapability001', 0, async (done: Function) => {
-      expect(mediacodecbasexdlndk.OH_AVCodec_GetCapability()).assertEqual(0);
+    it('testOHAvCapabilityAreProfileAndLevelSupported089', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(4,0,1,0,1,14);
+      expect(result).assertEqual(-1);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCODEC_GETCAPABILITYBYCATEGORY_0100
-     * @tc.name       : testOhAvCodecGetCapabilityByCategory001
-     * @tc.desc       : test OH_AVCodec_GetCapabilityByCategory
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_9000
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported090
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCodecGetCapabilityByCategory001', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.OH_AVCodec_GetCapabilityByCategory();
-        expect(result != null).assertTrue();
-	      done();
-      } catch (err) {
-        console.info('testOhAvCodecGetCapabilityByCategory001 failed, error is' + err.message);
-	      expect(false).assertTrue();
-      }
-    });
-
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOWIDTHRANGE_0100
-     * @tc.name       : testOhAvCapabilityGetVideoWidthRange001
-     * @tc.desc       : test OH_AVCapability_GetVideoWidthRange
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOhAvCapabilityGetVideoWidthRange001', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.OH_AVCapability_GetVideoWidthRange();
-        expect(result != null).assertTrue();
-	      done();
-      } catch (err) {
-        console.info('testOhAvCapabilityGetVideoWidthRange001 failed, error is' + err.message);
-	      expect(false).assertTrue();
-      }
-    });
-
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOHEIGHTRANGE_0100
-     * @tc.name       : testOhAvCapabilityGetVideoHeightRange001
-     * @tc.desc       : test OH_AVCapability_GetVideoHeightRange
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOhAvCapabilityGetVideoHeightRange001', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.OH_AVCapability_GetVideoHeightRange();
-        expect(result != null).assertTrue();
-	      done();
-      } catch (err) {
-        console.info('testOhAvCapabilityGetVideoHeightRange001 failed, error is' + err.message);
-	      expect(false).assertTrue();
-      }
-    });
-
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_ISVIDEOSIZESUPPORTED_0100
-     * @tc.name       : testOhAvCapabilityIsVideoSizeSupported001
-     * @tc.desc       : test OH_AVCapability_IsVideoSizeSupported
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOhAvCapabilityIsVideoSizeSupported001', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.OH_AVCapability_IsVideoSizeSupported();
-        expect(result != null).assertTrue();
-	      done();
-      } catch (err) {
-        console.info('testOhAvCapabilityIsVideoSizeSupported001 failed, error is' + err.message);
-	      expect(false).assertTrue();
-      }
-    });
-
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOFRAMERATERANGE_0100
-     * @tc.name       : testOhAvCapabilityGetVideoFrameRateRange001
-     * @tc.desc       : test OH_AVCapability_GetVideoFrameRateRange
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOhAvCapabilityGetVideoFrameRateRange001', 0, async (done: Function) => {
-      try {
-            let result: number = mediacodecbasexdlndk.OH_AVCapability_GetVideoFrameRateRange();
-            expect(result != null).assertTrue();
-            done();
-      } catch (err) {
-            console.info('testOhAvCapabilityGetVideoFrameRateRange001 failed, error is' + err.message);
-            expect(false).assertTrue();
-      }
-    });
-
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOFRAMERATERANGEFORSIZE_0100
-     * @tc.name       : testOhAvCapabilityGetVideoFrameRateRangeForSize001
-     * @tc.desc       : test OH_AVCapability_GetVideoFrameRateRangeForSize
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOhAvCapabilityGetVideoFrameRateRangeForSize001', 0, async (done: Function) => {
-      try {
-        let result: number = mediacodecbasexdlndk.OH_AVCapability_GetVideoFrameRateRangeForSize();
-        expect(result != null).assertTrue();
-	      done();
-      } catch (err) {
-        console.info('testOhAvCapabilityGetVideoFrameRateRangeForSize001 failed, error is' + err.message);
-	      expect(false).assertTrue();
-      }
-    });
-
-    /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREVIDEOSIZEANDFRAMERATESUPPORTED_0100
-     * @tc.name       : testOhAvCapabilityAreVideoSizeAndFrameRateSupported001
-     * @tc.desc       : test OH_AVCapability_AreVideoSizeAndFrameRateSupported
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOhAvCapabilityAreVideoSizeAndFrameRateSupported001', 0, async (done: Function) => {
-      expect(mediacodecbasexdlndk.OH_AVCapability_AreVideoSizeAndFrameRateSupported()).assertEqual(0);
+    it('testOHAvCapabilityAreProfileAndLevelSupported090', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(5,0,1,0,1,14);
+      expect(result).assertEqual(-1);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOSUPPORTEDPIXELFORMATS_0100
-     * @tc.name       : testOhAvCapabilityGetVideoSupportedPixelFormats001
-     * @tc.desc       : test OH_AVCapability_GetVideoSupportedPixelFormats
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_9100
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported091
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoSupportedPixelFormats001', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported091', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(6,0,1,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_9200
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported092
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported092', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(7,0,1,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_9300
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported093
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported093', 0, async (done: Function) => {
       try {
-        let result: number = mediacodecbasexdlndk.OH_AVCapability_GetVideoSupportedPixelFormats();
+        let result: number = native.decodeMainProcess(1,0,0,0,1,14);
         expect(result != null).assertTrue();
 	      done();
       } catch (err) {
-        console.info('testOhAvCapabilityGetVideoSupportedPixelFormats001 failed, error is' + err.message);
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported093 failed, error is' + err.message);
 	      expect(false).assertTrue();
       }
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETSUPPORTEDPROFILES_0100
-     * @tc.name       : testOhAvCapabilityGetSupportedProfiles001
-     * @tc.desc       : test OH_AVCapability_GetSupportedProfiles
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_9400
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported094
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetSupportedProfiles001', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported094', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(2,0,0,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_9500
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported095
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported095', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(3,0,0,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_9600
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported096
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported096', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(4,0,0,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_9700
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported097
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported097', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(5,0,0,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_9800
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported098
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported098', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(6,0,0,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_9900
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported099
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported099', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(7,0,0,0,1,14);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_0000
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported100
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported100', 0, async (done: Function) => {
       try {
-        let result: number = mediacodecbasexdlndk.OH_AVCapability_GetSupportedProfiles();
+        let result: number = native.decodeMainProcess(1,1,1,0,1,15);
         expect(result != null).assertTrue();
 	      done();
       } catch (err) {
-        console.info('testOhAvCapabilityGetSupportedProfiles001 failed, error is' + err.message);
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported100 failed, error is' + err.message);
 	      expect(false).assertTrue();
       }
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETSUPPORTEDLEVELSFORPROFILE_0100
-     * @tc.name       : testOhAvCapabilityGetSupportedLevelsForProfile001
-     * @tc.desc       : test OH_AVCapability_GetSupportedLevelsForProfile
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_0100
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported101
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetSupportedLevelsForProfile001', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported101', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(2,1,1,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_0200
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported102
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported102', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(3,1,1,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_0300
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported103
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported103', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(4,1,1,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_0400
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported104
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported104', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(5,1,1,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_0500
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported105
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported105', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(6,1,1,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_0600
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported106
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported106', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(7,1,1,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_0700
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported107
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported107', 0, async (done: Function) => {
       try {
-        let result: number = mediacodecbasexdlndk.OH_AVCapability_GetSupportedLevelsForProfile();
+        let result: number = native.decodeMainProcess(1,1,0,0,1,15);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported107 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_0800
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported108
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported108', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(2,1,0,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_0900
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported109
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported109', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(3,1,0,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_1000
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported110
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported110', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(4,1,0,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_1100
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported111
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported111', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(5,1,0,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_1200
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported112
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported112', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(6,1,0,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_1300
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported113
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported113', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(7,1,0,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_1400
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported114
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported114', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(1,0,1,0,1,15);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_1500
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported115
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported115', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(2,0,1,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_1600
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported116
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported116', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(3,0,1,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_1700
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported117
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported117', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(4,0,1,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_1800
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported118
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported118', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(5,0,1,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_1900
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported119
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported119', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(6,0,1,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_2000
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported120
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported120', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(7,0,1,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_2100
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported121
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported121', 0, async (done: Function) => {
+      try {
+        let result: number = native.decodeMainProcess(1,0,0,0,1,15);
         expect(result != null).assertTrue();
 	      done();
       } catch (err) {
-        console.info('testOhAvCapabilityGetSupportedLevelsForProfile001 failed, error is' + err.message);
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported121 failed, error is' + err.message);
 	      expect(false).assertTrue();
       }
     });
 
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_2200
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported122
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported122', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(2,0,0,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_2300
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported123
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported123', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(3,0,0,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_2400
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported124
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported124', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(4,0,0,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_2500
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported125
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported125', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(5,0,0,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED100_2600
+     * @tc.name       : testOHAvCapabilityAreProfileAndLevelSupported126
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAvCapabilityAreProfileAndLevelSupported126', 0, async (done: Function) => {
+      let result: number = native.decodeMainProcess(6,0,0,0,1,15);
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_ISHARDWARE_0100
+     * @tc.name       : testOhAvCapabilityIsHardware001
+     * @tc.desc       : test OH_AVCapability_IsHardware
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOhAvCapabilityIsHardware001', 0, async (done: Function) => {
+      try {
+        let result: number = native.OH_AVCapability_IsHardware();
+        expect(result != null).assertTrue();
+        done();
+      } catch (err) {
+        console.info('testOhAvCapabilityIsHardware001 failed, error is' + err.message);
+	      expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETNAME_0100
+     * @tc.name       : testOhAvCapabilityGetName001
+     * @tc.desc       : test OH_AVCapability_GetName
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOhAvCapabilityGetName001', 0, async (done: Function) => {
+      expect(native.OH_AVCapability_GetName()).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETMAXSUPPORTEDINSTANCES_0100
+     * @tc.name       : testOhAvCapabilityGetMaxSupportedInstances001
+     * @tc.desc       : test OH_AVCapability_GetMaxSupportedInstances
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOhAvCapabilityGetMaxSupportedInstances001', 0, async (done: Function) => {
+      expect(native.OH_AVCapability_GetMaxSupportedInstances()).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETENCODERBITRATERANGE_0100
+     * @tc.name       : testOhAvCapabilityGetEncoderBitrateRange001
+     * @tc.desc       : test OH_AVCapability_GetEncoderBitrateRange
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOhAvCapabilityGetEncoderBitrateRange001', 0, async (done: Function) => {
+      try {
+        let result: number = native.OH_AVCapability_GetEncoderBitrateRange();
+        expect(result != null).assertTrue();
+        done();
+      } catch (err) {
+        console.info('testOhAvCapabilityGetEncoderBitrateRange001 failed, error is' + err.message);
+	      expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_ISENCODERBITRATEMODESUPPORTED_0100
+     * @tc.name       : testOhAvCapabilityIsEncoderBitrateModeSupported001
+     * @tc.desc       : test OH_AVCapability_IsEncoderBitrateModeSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOhAvCapabilityIsEncoderBitrateModeSupported001', 0, async (done: Function) => {
+      try {
+        let result: number = native.OH_AVCapability_IsEncoderBitrateModeSupported();
+        expect(result != null).assertTrue();
+	      done();
+      } catch (err) {
+        console.info('testOhAvCapabilityIsEncoderBitrateModeSupported001 failed, error is' + err.message);
+	      expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOWIDTHRANGEFORHEIGHT_0100
+     * @tc.name       : testOhAvCapabilityGetVideoWidthRangeForHeight001
+     * @tc.desc       : test OH_AVCapability_GetVideoWidthRangeForHeight
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOhAvCapabilityGetVideoWidthRangeForHeight001', 0, async (done: Function) => {
+      try {
+        let result: number = native.OH_AVCapability_GetVideoWidthRangeForHeight();
+        expect(result != null).assertTrue();
+	      done();
+      } catch (err) {
+        console.info('testOhAvCapabilityGetVideoWidthRangeForHeight001 failed, error is' + err.message);
+	      expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_GETVIDEOHEIGHTRANGEFORWIDTH_0100
+     * @tc.name       : testOhAvCapabilityGetVideoHeightRangeForWidth001
+     * @tc.desc       : test OH_AVCapability_GetVideoHeightRangeForWidth
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOhAvCapabilityGetVideoHeightRangeForWidth001', 0, async (done: Function) => {
+      done();
+      try {
+        let result: number = native.OH_AVCapability_GetVideoHeightRangeForWidth();
+        expect(result != null).assertTrue();
+        done();
+      } catch (err) {
+        console.info('testOhAvCapabilityGetVideoHeightRangeForWidth001 failed, error is' + err.message);
+	      expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCAPABILITY_OH_AVCAPABILITY_AREPROFILEANDLEVELSUPPORTED_0100
+     * @tc.name       : testOhAvCapabilityAreProfileAndLevelSupported001
+     * @tc.desc       : test OH_AVCapability_AreProfileAndLevelSupported
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOhAvCapabilityAreProfileAndLevelSupported001', 0, async (done: Function) => {
+      expect(native.OH_AVCapability_AreProfileAndLevelSupported()).assertEqual(0);
+      done();
+    });
   })
 }
