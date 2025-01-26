@@ -27,6 +27,7 @@ let mediaTestBase = new MediaTestBase()
 let payloadTypes: Array<number> = [];
 
 let seiReceivedDone = false;
+let dataCanBeRead = false;
 let avPlayer: media.AVPlayer | null = null;
 
 async function testSeiMessage(src: string | media.AVFileDescriptor, avPlayer: media.AVPlayer | null, payloadTypes: Array<number>, done: Function) {
@@ -135,6 +136,7 @@ function checkDataCanBeRead(url: string, done: Function) {
     (err, data) => {
       if (!err) {
         console.info('Data can be read.');
+        dataCanBeRead = true;
       } else {
         console.error('Failed to read data: ' + err.message);
         done();
@@ -188,7 +190,11 @@ export default function AVPlayerFlvFuncTest() {
       const videoSrc = 'http://media.iyuns.top:1003/live/SEI-H264.flv';
       payloadTypes = [5];
       await checkDataCanBeRead(videoSrc, done);
-      await testSeiMessage(videoSrc, avPlayer, payloadTypes, done);
+      if (dataCanBeRead) {
+          await testSeiMessage(videoSrc, avPlayer, payloadTypes, done);
+      } else {
+          done();
+      }
     });
   })
 }
