@@ -86,8 +86,6 @@ export default class TerminateSelfWithResult extends EmbeddableUIAbility {
       let message = (err as BusinessError).message;
       console.error(`terminateSelfWithResult failed, code is ${code}, message is ${message}`);
     }
-    this.context.terminateSelf(()=>{
-    });
   }
 
   onBackground(): void {
