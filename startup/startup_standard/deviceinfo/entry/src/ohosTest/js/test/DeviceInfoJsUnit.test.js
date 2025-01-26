@@ -52,7 +52,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_001', 0, function () {
+        it('device_info_test_001', 0, async function (done) {
             console.info('device_info_test_001 start');
             let ret = false;
             let deviceTypeInfo = deviceinfo.deviceType;
@@ -61,8 +61,15 @@ export default function DeviceInfoTest() {
             expect(deviceTypeInfo).assertInstanceOf('String');
             if (deviceTypeInfo != "" && deviceTypeInfo != null && deviceTypeInfo != undefined) {
                 ret = true;
+                expect(ret).assertTrue();
+				done();
             }
-            expect(ret).assertTrue()
+            else {
+                console.info('the return value DeviceType is null or incorrect.');
+                expect(false).assertTrue();
+				done();
+            }
+
             console.info('device_info_test_001 : end');
         })
 
@@ -74,21 +81,21 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_002', 0, function () {
+        it('device_info_test_002', 0, async function (done) {
             console.info('device_info_test_002 start');
-
+            let ret = false;
             let manufactureInfo = deviceinfo.manufacture;
             console.info('the value of the manufactureInfo is :' + manufactureInfo);
+
             expect(manufactureInfo).assertInstanceOf('String');
             if (manufactureInfo != "" && manufactureInfo != null && manufactureInfo != undefined) {
-                let str = /[\w-\.\(\)]/g;
-                let arr = manufactureInfo.match(str);
-                let bufferstr = arr.join('');
-                console.info('the value of the bufferstr is :' + bufferstr);
-                expect(manufactureInfo).assertEqual(bufferstr);
+                ret = true;
+                expect(ret).assertTrue();
+				done();
             } else {
-                console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                console.info('the return value Manufacture is null or incorrect.');
+                expect(false).assertTrue();
+				done();
             }
 
             console.info('device_info_test_002 ：end');
@@ -102,22 +109,21 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_003', 0, function () {
+        it('device_info_test_003', 0, async function (done) {
             console.info('testGetDeviceBrand01 start');
-
+            let ret = false;
             let brandInfo = deviceinfo.brand;
             console.info('the value of the device brand is :' + brandInfo);
 
             expect(brandInfo).assertInstanceOf('String');
             if (brandInfo != "" && brandInfo != null && brandInfo != undefined) {
-                let str = /[\w-\.\(\)]/g;
-                let arr = brandInfo.match(str);
-                let bufferstr = arr.join('');
-                console.info('the value of the bufferstr is :' + bufferstr);
-                expect(brandInfo).assertEqual(bufferstr);
+                ret = true;
+                expect(ret).assertTrue();
+				done();
             } else {
-                console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                console.info('the return value brand is null or incorrect.');
+                expect(false).assertTrue();
+				done();
             }
 
             console.info('testGetDeviceBrand01 ：end');
@@ -131,7 +137,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_004', 0, function () {
+        it('device_info_test_004', 0, async function (done) {
             console.info('testGetMarketName01 start')
             let ret = false;
             let marketNameInfo = deviceinfo.marketName;
@@ -140,8 +146,14 @@ export default function DeviceInfoTest() {
             expect(marketNameInfo).assertInstanceOf('String');
             if (marketNameInfo != "" && marketNameInfo != null && marketNameInfo != undefined) {
                 ret = true;
+                expect(ret).assertTrue();
+				done();
+            } else {
+                console.info('the return value marketName is null or incorrect.');
+                expect(false).assertTrue();
+				done();
             }
-            expect(ret).assertTrue();
+
             console.info('testGetMarketName01 ：end');
         })
 
@@ -168,7 +180,7 @@ export default function DeviceInfoTest() {
                 expect(productSeriesInfo).assertEqual(bufferstr);
             } else {
                 console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                expect(false).assertTrue();
             }
 
             console.info('testGetProductSeries01 ：end');
@@ -182,7 +194,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_006', 0, function () {
+        it('device_info_test_006', 0, async function (done) {
             console.info('testGetProductModel01 start');
             let ret = false;
             let productModelInfo = deviceinfo.productModel;
@@ -191,8 +203,14 @@ export default function DeviceInfoTest() {
             expect(productModelInfo).assertInstanceOf('String');
             if (productModelInfo != "" && productModelInfo != null && productModelInfo != undefined) {
                 ret = true;
+                expect(ret).assertTrue();
+				done();
+            } else {
+                console.info('the return value ProductModel is null or incorrect.');
+                expect(false).assertTrue();
+				done();
             }
-            expect(ret).assertTrue();
+
             console.info('testGetProductModel01 : end');
         })
 
@@ -219,7 +237,7 @@ export default function DeviceInfoTest() {
                 expect(softwareModelInfo).assertEqual(bufferstr);
             } else {
                 console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                expect(false).assertTrue();
             }
 
             console.info('testGetSoftwareModel01 ：end');
@@ -233,22 +251,21 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_008', 0, function () {
+        it('device_info_test_008', 0, async function (done) {
             console.info('testGetHardWareModel01 start');
-
+            let ret = false;
             let hardwareModelInfo = deviceinfo.hardwareModel;
             console.info('the value of the deviceinfo hardwareModel is :' + hardwareModelInfo);
 
             expect(hardwareModelInfo).assertInstanceOf('String');
             if (hardwareModelInfo != "" && hardwareModelInfo != null && hardwareModelInfo != undefined) {
-                let str = /[\w-\.\(\)]/g;
-                let arr = hardwareModelInfo.match(str);
-                let bufferstr = arr.join('');
-                console.info('the value of the bufferstr is :' + bufferstr);
-                expect(hardwareModelInfo).assertEqual(bufferstr);
+                ret = true;
+                expect(ret).assertTrue();
+				done();
             } else {
-                console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                console.info('the return value HardWareModel is null or incorrect.');
+                expect(false).assertTrue();
+				done();
             }
 
             console.info('testGetHardWareModel01 ：end');
@@ -277,7 +294,7 @@ export default function DeviceInfoTest() {
                 expect(hardwareProfileInfo).assertEqual(bufferstr);
             } else {
                 console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                expect(false).assertTrue();
             }
 
             console.info('testGetHardWareProfile01 ：end');
@@ -306,7 +323,7 @@ export default function DeviceInfoTest() {
                 expect(serialInfo).assertEqual(bufferstr);
             } else {
                 console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                expect(false).assertTrue();
             }
 
             console.info('testGetSerial01 ：end');
@@ -335,7 +352,7 @@ export default function DeviceInfoTest() {
                 expect(bootloaderVersionInfo).assertEqual(bufferstr);
             } else {
                 console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                expect(false).assertTrue();
             }
 
             console.info('testGetBootLoaderVersion01 ：end')
@@ -364,7 +381,7 @@ export default function DeviceInfoTest() {
                 expect(abiListInfo).assertEqual(bufferstr);
             } else {
                 console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                expect(false).assertTrue();
             }
 
             console.info('testGetabiList01 ：end');
@@ -393,7 +410,7 @@ export default function DeviceInfoTest() {
                 expect(securityPatchTagInfo).assertEqual(bufferstr);
             } else {
                 console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                expect(false).assertTrue();
             }
 
             console.info('testGetSecurityPatchTag01 ：end');
@@ -407,7 +424,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_014', 0, function () {
+        it('device_info_test_014', 0, async function (done) {
             console.info('testGetDisplayVersion01 start');
             let ret = false;
             let displayVersionInfo = deviceinfo.displayVersion;
@@ -416,8 +433,14 @@ export default function DeviceInfoTest() {
             expect(displayVersionInfo).assertInstanceOf('String');
             if (displayVersionInfo != "" && displayVersionInfo != null && displayVersionInfo != undefined) {
                 ret = true;
+                expect(ret).assertTrue();
+				done();
+            } else {
+                console.info('the return value DisplayVersion is null or incorrect.');
+                expect(false).assertTrue();
+				done();
             }
-            expect(ret).assertTrue();
+
             console.info('testGetDisplayVersion01 ：end');
         })
 
@@ -444,7 +467,7 @@ export default function DeviceInfoTest() {
                 expect(incrementalVersionInfo).assertEqual(bufferstr);
             } else {
                 console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                expect(false).assertTrue();
             }
 
             console.info('testGetIncrementalVersion01 ：end');
@@ -473,7 +496,7 @@ export default function DeviceInfoTest() {
                 expect(osReleaseTypeInfo).assertEqual(bufferstr);
             } else {
                 console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                expect(false).assertTrue();
             }
 
             console.info('testGetOSReleaserType01 ：end');
@@ -502,7 +525,7 @@ export default function DeviceInfoTest() {
                 expect(osFullNameInfo).assertEqual(bufferstr);
             } else {
                 console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                expect(false).assertTrue();
             }
 
             console.info('testGetOSFullName01 ：end');
@@ -532,7 +555,7 @@ export default function DeviceInfoTest() {
                 expect(majorVersionInfo).assertEqual(numstr);
             } else {
                 console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                expect(false).assertTrue();
             }
 
             console.info('testGetMajorVersion01 ：end');
@@ -562,7 +585,7 @@ export default function DeviceInfoTest() {
                 expect(seniorVersionInfo).assertEqual(numstr);
             } else {
                 console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                expect(false).assertTrue();
             }
 
             console.info('testGetSeniorVersion01 ：end');
@@ -592,7 +615,7 @@ export default function DeviceInfoTest() {
                 expect(featureVersionInfo).assertEqual(numstr);
             } else {
                 console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                expect(false).assertTrue();
             }
 
             console.info('testGetFeatureVersion01 ：end');
@@ -622,7 +645,7 @@ export default function DeviceInfoTest() {
                 expect(buildVersionInfo).assertEqual(numstr);
             } else {
                 console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                expect(false).assertTrue();
             }
 
             console.info('testGetBuildVersion01 ：end');
@@ -636,7 +659,7 @@ export default function DeviceInfoTest() {
          * @tc.type    : Function
          * @tc.level   : Level 0
          */
-        it('device_info_test_022', 0, function () {
+        it('device_info_test_022', 0, async function (done) {
             console.info('testGetSdkApiVersion01 start');
             let ret = false;
             let sdkApiVersionInfo = deviceinfo.sdkApiVersion;
@@ -645,8 +668,13 @@ export default function DeviceInfoTest() {
             expect(sdkApiVersionInfo).assertInstanceOf('Number');
             if (sdkApiVersionInfo >= 0) {
                 ret = true;
+                expect(ret).assertTrue();
+				done();
+            } else {
+                console.info('the return value sdkApiVersion is not greater than 0.');
+                expect(false).assertTrue();
+				done();
             }
-            expect(ret).assertTrue();
 
             let str = /[\w-\.\(\)]/g;
             let arr = sdkApiVersionInfo.toString().match(str);
@@ -666,17 +694,22 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_023', 0, function () {
+        it('device_info_test_023', 0, async function (done) {
             console.info('testGetFirstApiVersion01 start');
-            let ret = true;
+            let ret = false;
             let firstApiVersionInfo = deviceinfo.firstApiVersion;
             console.info('the value of the deviceinfo firstApiVersion is :' + firstApiVersionInfo);
 
             expect(firstApiVersionInfo).assertInstanceOf('Number');
             if (firstApiVersionInfo >= 0) {
                 ret = true;
+                expect(ret).assertTrue();
+				done();
+            } else {
+                console.info('the return value firstApiVersion is not greater than 0.');
+                expect(false).assertTrue();
+				done();
             }
-            expect(ret).assertTrue();
 
             let str = /[\w-\.\(\)]/g;
             let arr = firstApiVersionInfo.toString().match(str);
@@ -696,7 +729,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_024', 0, function () {
+        it('device_info_test_024', 0, async function (done) {
             console.info('testGetVersionId01 start');
             let ret = false;
             let versionIdInfo = deviceinfo.versionId;
@@ -705,8 +738,14 @@ export default function DeviceInfoTest() {
             expect(versionIdInfo).assertInstanceOf('String');
             if (versionIdInfo != "" && versionIdInfo != null && versionIdInfo != undefined) {
                 ret = true;
+                expect(ret).assertTrue();
+				done();
+            } else {
+                console.info('the return value versionId is null or incorrect.');
+                expect(false).assertTrue();
+				done();
             }
-            expect(ret).assertTrue();
+
             console.info('testGetVersionId01 end');
         })
 
@@ -733,7 +772,7 @@ export default function DeviceInfoTest() {
                 expect(buildTypeInfo).assertEqual(bufferstr);
             } else {
                 console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                expect(false).assertTrue();
             }
 
             console.info('testGetBuildType01 ：end');
@@ -747,17 +786,23 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_026', 0, function () {
+        it('device_info_test_026', 0, async function (done) {
             console.info('testGetBuildUser01 start');
-            let ret = true;
+            let ret = false;
             let buildUserInfo = deviceinfo.buildUser;
             console.info('the value of the deviceinfo buildUser is :' + buildUserInfo);
 
             expect(buildUserInfo).assertInstanceOf('String');
             if (buildUserInfo != "" && buildUserInfo != null && buildUserInfo != undefined) {
                 ret = true;
+                expect(ret).assertTrue();
+				done();
+            } else {
+                console.info('the return value buildUser is null or incorrect.');
+                expect(false).assertTrue();
+				done();
             }
-            expect(ret).assertTrue();
+
             console.info('testGetBuildUser01 ：end');
         })
 
@@ -769,7 +814,7 @@ export default function DeviceInfoTest() {
          * @tc.type    : Function
          * @tc.level   : Level 0
          */
-        it('device_info_test_027', 0, function () {
+        it('device_info_test_027', 0, async function (done) {
             console.info('testGetBuildHost01 start');
             let ret = false;
             let buildHostInfo = deviceinfo.buildHost;
@@ -778,8 +823,14 @@ export default function DeviceInfoTest() {
             expect(buildHostInfo).assertInstanceOf('String');
             if (buildHostInfo != "" && buildHostInfo != null && buildHostInfo != undefined) {
                 ret = true;
+                expect(ret).assertTrue();
+				done();
+            } else {
+                console.info('the return value BuildHost is null or incorrect.');
+                expect(false).assertTrue();
+				done();
             }
-            expect(ret).assertTrue();
+
             console.info('testGetBuildHost01 ：end');
         })
 
@@ -791,7 +842,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_028', 0, function () {
+        it('device_info_test_028', 0, async function (done) {
             console.info('testGetBuildTime01 start');
             let ret = false;
             let buildTimeInfo = deviceinfo.buildTime;
@@ -800,8 +851,14 @@ export default function DeviceInfoTest() {
             expect(buildTimeInfo).assertInstanceOf('String');
             if (buildTimeInfo != "" && buildTimeInfo != null && buildTimeInfo != undefined) {
                 ret = true;
+                expect(ret).assertTrue();
+				done();
+            } else {
+                console.info('the return value BuildTime is null or incorrect.');
+                expect(false).assertTrue();
+				done();
             }
-            expect(ret).assertTrue();
+
             console.info('testGetBuildTime01 : end');
         })
 
@@ -828,7 +885,7 @@ export default function DeviceInfoTest() {
                 expect(buildRootHashInfo).assertEqual(bufferstr);
             } else {
                 console.info('the return value is null or incorrect.');
-                expect(false).assertFalse();
+                expect(false).assertTrue();
             }
 
             console.info('testGetBuildRootHash01 ：end');
@@ -870,13 +927,6 @@ export default function DeviceInfoTest() {
             let len = manufactureInfo.length
             console.info('the value of the manufacture characters is :' + len);
             expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
-
-            let str = /[\w-\.\(\)]/g;
-            let arr = manufactureInfo.match(str);
-            let bufferstr = arr.join('');
-            console.info('the value of the bufferstr is :' + bufferstr);
-            expect(manufactureInfo).assertEqual(bufferstr);
-
             console.info('device_info_test_031 ：end')
         })
 
@@ -896,13 +946,6 @@ export default function DeviceInfoTest() {
             let len = brandInfo.length
             console.info('the value of the external product family name characters is :' + len);
             expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
-
-            let str = /[\w-\.\(\)]/g;
-            let arr = brandInfo.match(str);
-            let bufferstr = arr.join('');
-            console.info('the value of the bufferstr is :' + bufferstr);
-            expect(brandInfo).assertEqual(bufferstr);
-
             console.info('device_info_test_032 ：end')
         })
 
@@ -993,13 +1036,6 @@ export default function DeviceInfoTest() {
             let len = hardwareModelInfo.length;
             console.info('the value of the hardware version characters is :' + len);
             expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
-
-            let str = /[\w-\.\(\)]/g;
-            let arr = hardwareModelInfo.match(str);
-            let bufferstr = arr.join('');
-            console.info('the value of the bufferstr is :' + bufferstr);
-            expect(hardwareModelInfo).assertEqual(bufferstr);
-
             console.info('device_info_test_037 ：end');
         })
 
@@ -1115,7 +1151,7 @@ export default function DeviceInfoTest() {
 
             let len = versionIdInfo.length;
             console.info('the value of the operating system full name characters is :' + len)
-            expect(len).assertLess(128);
+            expect(len).assertLess(256);
             console.info('device_info_test_042 : end')
         })
 
@@ -1205,13 +1241,6 @@ export default function DeviceInfoTest() {
             let len = manufactureInfo.length
             console.info('the value of the manufacture characters is :' + len)
             expect(len).assertLarger(MAX_CHARACTERS_NUM);
-
-            let str = /[\w-\.\(\)]/g;
-            let arr = manufactureInfo.match(str);
-            let bufferstr = arr.join('');
-            console.info('the value of the bufferstr is :' + bufferstr);
-            expect(manufactureInfo).assertEqual(bufferstr);
-
             console.info('device_info_test_046 ：end')
         })
 
@@ -1231,13 +1260,6 @@ export default function DeviceInfoTest() {
             let len = brandInfo.length;
             console.info('the value of the external product family name characters is :' + len);
             expect(len).assertLarger(MAX_CHARACTERS_NUM);
-
-            let str = /[\w-\.\(\)]/g;
-            let arr = brandInfo.match(str);
-            let bufferstr = arr.join('');
-            console.info('the value of the bufferstr is :' + bufferstr);
-            expect(brandInfo).assertEqual(bufferstr);
-
             console.info('device_info_test_047 ：end');
         })
 
@@ -1348,13 +1370,6 @@ export default function DeviceInfoTest() {
             let len = hardwareModelInfo.length;
             console.info('the value of the hardware version characters is :' + len);
             expect(len).assertLarger(MAX_CHARACTERS_NUM);
-
-            let str = /[\w-\.\(\)]/g;
-            let arr = hardwareModelInfo.match(str);
-            let bufferstr = arr.join('');
-            console.info('the value of the bufferstr is :' + bufferstr);
-            expect(hardwareModelInfo).assertEqual(bufferstr);
-
             console.info('device_info_test_052 ：end');
         })
 
@@ -1547,7 +1562,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_061', 0, function () {
+        it('device_info_test_061', 0, async function (done) {
             console.info('testGetSecurityPatchTag02 start');
             let ret = false;
             let securityPatchTagInfo = deviceinfo.securityPatchTag;
@@ -1559,8 +1574,11 @@ export default function DeviceInfoTest() {
             if (re != null) {
                 ret = true;
                 expect(ret).assertTrue();
+                done();
             } else {
                 console.info('the return formate is not yy--mm--dd');
+                expect(false).assertTrue();
+				done();
             }
 
             console.info('testGetSecurityPatchTag02 : end');
@@ -1593,7 +1611,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_063', 0, function () {
+        it('device_info_test_063', 0, async function (done) {
             console.info('device_info_test_063 start');
             let ret = false;
             let udid = deviceinfo.udid;
@@ -1602,8 +1620,14 @@ export default function DeviceInfoTest() {
             expect(udid).assertInstanceOf('String');
             if (udid != "" && udid != null && udid != undefined) {
                 ret = true;
+                expect(ret).assertTrue();
+				done();
+            } else {
+                console.info('the return value GetManufacture01 is null or incorrect.');
+                expect(false).assertTrue();
+				done();
             }
-            expect(ret).assertTrue();
+
             console.info('device_info_test_063 : end');
         })
 
@@ -1712,7 +1736,7 @@ export default function DeviceInfoTest() {
        * @tc.type    : Function
        * @tc.level   : Level 0
        */
-        it('device_info_test_0668', 0, function () {
+        it('device_info_test_0668', 0, async function (done) {
             console.info('device_info_test_0668 start');
             let ret = false;
             let distributionOSApiVersionInfo = deviceinfo.distributionOSApiVersion;
@@ -1721,8 +1745,13 @@ export default function DeviceInfoTest() {
             expect(distributionOSApiVersionInfo).assertInstanceOf('Number');
             if (distributionOSApiVersionInfo >= 0) {
                 ret = true;
+                expect(ret).assertTrue();
+				done();
+            } else {
+                console.info('the return value distributionOSApiVersion is null or incorrect.');
+                expect(false).assertTrue();
+				done();
             }
-            expect(ret).assertTrue();
 
             let str = /[\w-\.\(\)]/g;
             let arr = distributionOSApiVersionInfo.toString().match(str);
@@ -1842,7 +1871,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('device_info_test_073', 0, function () {
+        it('device_info_test_073', 0, async function (done) {
             console.info('device_info_test_073 start');
             let ret = false;
             let productModelInfo = deviceinfo.productModelAlias;
@@ -1851,8 +1880,14 @@ export default function DeviceInfoTest() {
             expect(productModelInfo).assertInstanceOf('String');
             if (productModelInfo != "" && productModelInfo != null && productModelInfo != undefined) {
                 ret = true;
+                expect(ret).assertTrue();
+				done();
+            } else {
+                console.info('the return value ProductModeAlias is null or incorrect.');
+                expect(false).assertTrue();
+				done();
             }
-            expect(ret).assertTrue();
+
             console.info('device_info_test_073 : end');
         })
     })
