@@ -31,6 +31,7 @@ import SecurityCryptoFwDataBlobToPemTestUnit from './SecurityCryptoFwExternalPem
 import SecurityCryptoFwSECP256K1TestUnit from './SecurityCryptoFwSecp256k1.test'
 import SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit from './SecurityCryptoFwRSAencodeDecodeWithSecret.test'
 import SecurityCryptoFwCmacTestUnit from './SecurityCryptoFwCmac.test'
+import SecurityCryptoFwScryptKdfTestUnit from './SecurityCryptoFwScryptKdf.test'
 
 
 export default function testsuite() {
@@ -52,4 +53,5 @@ export default function testsuite() {
   SecurityCryptoFwSECP256K1TestUnit();
   SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit();
   SecurityCryptoFwCmacTestUnit();
+  SecurityCryptoFwScryptKdfTestUnit();
 }
