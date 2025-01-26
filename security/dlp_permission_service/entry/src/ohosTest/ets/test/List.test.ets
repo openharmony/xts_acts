@@ -12,9 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import EmptyTest from './Empty.test';
 import dlpTest from './DlpTest.test.ets';
 
 export default function testsuite() {
-  dlpTest()
+  if (canIUse("SystemCapability.Security.DataLossPrevention")){
+    dlpTest();
+  }else{
+    EmptyTest()
+  }
 }
