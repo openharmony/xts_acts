@@ -16,6 +16,8 @@ import media from '@ohos.multimedia.media'
 import MediaTestBase from './MediaTestBase';
 import { testAVPlayerFun, setSource, PlayTest, sleep } from './AVPlayerTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const INITIALIZED = 'initialized';
 const PREPARED = 'prepared';
@@ -157,6 +159,13 @@ export default function AVPlayerFlvFuncTest() {
     it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SEIMESSAGERECEIVED_0100', 0, async (done: Function) => {
       const videoSrc = 'http://media.iyuns.top:1003/live/SEI-H264.flv';
       payloadTypes = [5];
+      connection.getDefaultNet((error: BusinessError, videoSrc: connection.NetHandle) => {
+        if (error) {
+          console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
+          done();
+        }
+        console.info("Succeeded to get data " + JSON.stringify(videoSrc));
+      });
       await testSeiMessage(videoSrc, avPlayer, payloadTypes, done);
     });
   })
