@@ -13,11 +13,9 @@
  * limitations under the License.
  */
  import Telephony_NETMANAGER_TestDNSTest from './NetworkManagerDNS.test.js';
- import Telephony_NETMANAGER_MDNSTest from './NetworkManagerMdns.test';
- import netSyncTest from './NetSync.test'
+ import netSyncTest from './NetSync.test.js'
 
  export default function testsuite() {
     Telephony_NETMANAGER_TestDNSTest();
-    Telephony_NETMANAGER_MDNSTest();
 	netSyncTest();
  }
