@@ -774,7 +774,8 @@ describe("VibratorJsTest_misc_8", function () {
             console.log(TAG + ' is not supported on this device.');
             done();
         }
-
+    })
+    
     /*
      * @tc.name:ReliabilityVibratorJsTest13
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
