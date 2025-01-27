@@ -1235,7 +1235,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3700, Function|M
 * @author z30053398
 * @tc.desc The keyvalue is of the boolean type and the bool value is false.
 */
-HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0100, Function|MediumTest|Level3){
+HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0100, Function | MediumTest | Level3) {
     GTEST_LOG_(INFO) << "SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0100 start" << endl;
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(nullptr, "testName", "testValue"), ErrorCode::ERROR_EVENT_CONFIG_IS_NULL);
  
@@ -1270,7 +1270,7 @@ HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0100, Function|M
 * @author z30053398
 * @tc.desc The keyvalue is of the boolean type and the bool value is false.
 */
-HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0200, Function|MediumTest|Level3){
+HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0200, Function | MediumTest | Level3) {
     GTEST_LOG_(INFO) << "SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0200 start" << endl;
     HiAppEvent_Config* configDemo = OH_HiAppEvent_CreateConfig();
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "log_type", "0"), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
@@ -1293,7 +1293,7 @@ HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0200, Function|M
 * @author z30053398
 * @tc.desc The keyvalue is of the boolean type and the bool value is false.
 */
-HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0300, Function|MediumTest|Level3){
+HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0300, Function | MediumTest | Level3) {
     GTEST_LOG_(INFO) << "SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0300 start" << endl;
     ASSERT_EQ(OH_HiAppEvent_SetEventConfig("MAIN_THREAD_JANK", nullptr), ErrorCode::ERROR_INVALID_PARAM_VALUE);
  
@@ -1332,7 +1332,7 @@ HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0300, Function|M
 * @author z30053398
 * @tc.desc The keyvalue is of the boolean type and the bool value is false.
 */
-HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0400, Function|MediumTest|Level3){
+HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0400, Function | MediumTest | Level3) {
     GTEST_LOG_(INFO) << "SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0400 start" << endl;
     HiAppEvent_Config* configDemo = OH_HiAppEvent_CreateConfig();
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "log_type", "1"), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
@@ -1358,7 +1358,7 @@ HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0400, Function|M
 * @author z30053398
 * @tc.desc The keyvalue is of the boolean type and the bool value is false.
 */
-HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0500, Function|MediumTest|Level3){
+HWTEST_F(HiAppEventCPPTest, SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0500, Function | MediumTest | Level3) {
     GTEST_LOG_(INFO) << "SUB_DFX_DFT_HiAppEvent_SetconfigNDK_0500 start" << endl;
     HiAppEvent_Config* configDemo = OH_HiAppEvent_CreateConfig();
     ASSERT_EQ(OH_HiAppEvent_SetConfigItem(configDemo, "log_type", "1"), ErrorCode::HIAPPEVENT_VERIFY_SUCCESSFUL);
