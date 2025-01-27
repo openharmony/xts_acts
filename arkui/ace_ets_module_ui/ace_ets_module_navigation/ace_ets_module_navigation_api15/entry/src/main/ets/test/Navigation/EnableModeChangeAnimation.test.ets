@@ -65,13 +65,14 @@ export default function EnableModeChangeAnimation() {
       await enableTrueId.click()
       console.info('[EnableModeChangeAnimation_0100] enableTrueId click');
       await CommonFunc.sleep(200);
-
-      let splitId = await driver.findComponent(ON.id('splitId'));
+	  
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let splitId = await scrollBar.scrollSearch(ON.id('splitId'));
       await splitId.click()
       console.info('[EnableModeChangeAnimation_0100] splitId click');
       await CommonFunc.sleep(200);
 
-      let stackId = await driver.findComponent(ON.id('stackId'));
+      let stackId = await scrollBar.scrollSearch(ON.id('stackId'));
       await stackId.click()
       console.info('[EnableModeChangeAnimation_0100] stackId click');
       await CommonFunc.sleep(200);
@@ -86,9 +87,9 @@ export default function EnableModeChangeAnimation() {
       done();
     });
 
-    /**
-     * @tc.number    EnableModeChangeAnimation_0200
-     * @tc.name      EnableModeChangeAnimation_0200
+        /**
+     * @tc.number    EnableModeChangeAnimation_0100
+     * @tc.name      EnableModeChangeAnimation_0100
      * @tc.desc      Test EnableModeChangeAnimation false
      * @tc.level     Level 2
      */
@@ -98,18 +99,19 @@ export default function EnableModeChangeAnimation() {
 
       let driver = Driver.create();
       await CommonFunc.sleep(500);
-
-      let enableFalseId = await driver.findComponent(ON.id('enableFalseId'));
+	  
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let enableFalseId = await scrollBar.scrollSearch(ON.id('enableFalseId'));
       await enableFalseId.click()
       console.info('[EnableModeChangeAnimation_0200] enableFalseId click');
       await CommonFunc.sleep(200);
 
-      let splitId = await driver.findComponent(ON.id('splitId'));
+      let splitId = await scrollBar.scrollSearch(ON.id('splitId'));
       await splitId.click()
       console.info('[EnableModeChangeAnimation_0200] splitId click');
       await CommonFunc.sleep(200);
 
-      let stackId = await driver.findComponent(ON.id('stackId'));
+      let stackId = await scrollBar.scrollSearch(ON.id('stackId'));
       await stackId.click()
       console.info('[EnableModeChangeAnimation_0200] stackId click');
       await CommonFunc.sleep(200);
