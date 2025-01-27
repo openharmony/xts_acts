@@ -217,7 +217,15 @@ export class KeyboardController {
           console.debug(TAG + '====>Sub_InputMethod_IME_ScreenRotation_0200 event:' + data.event);
           that.Sub_InputMethod_IME_ScreenRotation_0200();
           break;
-        
+        case 240:
+          console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0100 event:' + data.event);
+          that.Sub_Misc_inputMethod_Panel_onSizeChange_0100();
+          break;
+        case 241:
+          console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0200 event:' + data.event);
+          that.Sub_Misc_inputMethod_Panel_onSizeChange_0200();
+          break;
+
       }
     }
 
@@ -1252,5 +1260,87 @@ export class KeyboardController {
         console.info(TAG + '====>Sub_InputMethod_IME_ScreenRotation_0200 err: ' + JSON.stringify(err));
     }
     commoneventmanager.publish("Sub_InputMethod_IME_ScreenRotation_0200", commonEventPublishData, this.publishCallback);
-  }  
+  }
+
+  private async Sub_Misc_inputMethod_Panel_onSizeChange_0100(): Promise<void> {
+    let commonEventPublishData;
+    console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0100 success');
+    try {
+      if (this.softKeyboardPanel !== null) {
+        this.softKeyboardPanel.on('sizeChange', async (size) => {
+          commonEventPublishData = {
+            data: 'SUCCESS'
+          };
+          console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0100 onSizeChange');
+          this.softKeyboardPanel.off('sizeChange');
+          console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0100 offSizeChange');
+          commoneventmanager.publish('Sub_Misc_inputMethod_Panel_onSizeChange_0100', commonEventPublishData, this.publishCallback);
+        })
+        console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0100 display_info.width1: ' + this.display_info.width);
+        console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0100 display_info.height1: ' + this.display_info.height);
+        await this.softKeyboardPanel.resize(this.display_info.width * 0.5, this.display_info.height * 0.5);
+        console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0100 display_info.width2: ' + this.display_info.width * 0.5);
+        console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0100 display_info.height2: ' + this.display_info.height * 0.5);
+      } else {
+        commonEventPublishData = {
+          data: 'FAILED'
+        };
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0100 this.softKeyboardPanel is null');
+        commoneventmanager.publish('Sub_Misc_inputMethod_Panel_onSizeChange_0100', commonEventPublishData, this.publishCallback);
+      }
+    } catch (error) {
+      commonEventPublishData = {
+        data: 'FAILED'
+      };
+      console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0100 catch error: ' + JSON.stringify(error));
+      commoneventmanager.publish('Sub_Misc_inputMethod_Panel_onSizeChange_0100', commonEventPublishData, this.publishCallback);
+    }
+  }
+
+  private async Sub_Misc_inputMethod_Panel_onSizeChange_0200(): Promise<void> {
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    let count = 0;
+    let timeCount = 0;
+    console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 success');
+    try {
+      if (this.softKeyboardPanel !== null) {
+        this.softKeyboardPanel.on('sizeChange', async (size) => {
+          console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 onSizeChange');
+          this.softKeyboardPanel.off('sizeChange');
+          count += 1;
+          console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 off SizeChange count: ' + count);
+        })
+        let t1 = setInterval(async () => {
+          await this.softKeyboardPanel.resize(this.display_info.width * 0.45, this.display_info.height * 0.45);
+          await this.softKeyboardPanel.resize(this.display_info.width * 0.55, this.display_info.height * 0.55)
+          timeCount += 1;
+          console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 timeCount: ' + timeCount);
+          if (timeCount ===2){
+            clearInterval(t1)
+          }
+        }, 100)
+
+        let t2 = setTimeout(() => {
+          console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 count: ' + count);
+          if (count === 1){
+            commonEventPublishData = {
+              data: 'SUCCESS'
+            };
+          }
+          commoneventmanager.publish('Sub_Misc_inputMethod_Panel_onSizeChange_0200', commonEventPublishData, this.publishCallback);
+          clearTimeout(t2);
+        }, 500)
+
+      } else {
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 this.softKeyboardPanel is null');
+        commoneventmanager.publish('Sub_Misc_inputMethod_Panel_onSizeChange_0200', commonEventPublishData, this.publishCallback);
+      }
+    } catch (error) {
+      console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 catch error: ' + JSON.stringify(error));
+      commoneventmanager.publish('Sub_Misc_inputMethod_Panel_onSizeChange_0200', commonEventPublishData, this.publishCallback);
+    }
+  }
+
 }
