@@ -46,6 +46,16 @@ struct saveButton {
   @State clipSet: boolean = false
   @State columnWidth: string = '100%'
   @State columnHeight: string = '100%'
+  @State maxFontSize: number | undefined = undefined
+  @State minFontSize: number | undefined = undefined
+  @State maxFontScale: number | undefined = undefined
+  @State minFontScale: number | undefined = undefined
+  @State enable: boolean | undefined = undefined
+  @State heightAdaptivePolicy: number | undefined = undefined
+  @State maxLines: number | undefined = undefined
+  @State alignRule: AlignRuleOption | LocalizedAlignRuleOptions | undefined = undefined
+  @State chainDirection: Axis | undefined = undefined
+  @State chainStyle: ChainStyle | undefined = undefined
   private stateChangeCallBack = (eventData:events_emitter.EventData) => {
     if (eventData != null && eventData.data != undefined) {
       console.debug("====>page_saveButton page state change called:" + JSON.stringify(eventData));
@@ -190,6 +200,15 @@ struct saveButton {
             .borderRadius(this.borderRad)
             .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
             .textIconSpace(this.middle)
+            .maxLines(this.maxLines)
+            .maxFontSize(this.maxFontSize)
+            .minFontSize(this.minFontSize)
+            .maxFontScale(this.maxFontScale)
+            .minFontScale(this.minFontScale)
+            .heightAdaptivePolicy(this.heightAdaptivePolicy)
+            .enabled(this.enable)
+            .alignRules(this.alignRule)
+            .chainMode(this.chainDirection, this.chainStyle)
             .key("keySave")
         }.width(100)
       }.width('100%').alignItems(HorizontalAlign.Center)
