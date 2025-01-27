@@ -32,8 +32,7 @@ struct RelativeGuideLine7 {
 
       }
       .key('RelativeGuideLine7')
-      .width(300).height(300)
-      .margin({left: 50, top:100})
+      .width(200).height(200)
       .backgroundColor(Color.Grey)
       .guideLine([
         {id:"guideLine1", direction: Axis.Vertical, position: { start: this.relStart }},
@@ -44,8 +43,8 @@ struct RelativeGuideLine7 {
         Button('change 100')
           .key('RelButton100')
           .onClick(() => {
-            this.relStart = 100
-            this.relEnd = 100
+            this.relStart = 60
+            this.relEnd = 60
           })
       }
 

@@ -20,7 +20,7 @@ struct RelativeChain {
   build() {
     Column() {
       RelativeContainer() {
-        Row().width(100).height(100)
+        Row().width('20%').height('50%')
           .backgroundColor("#FF3333")
           .alignRules({
             left: {anchor: "__container__", align: HorizontalAlign.Start},
@@ -30,7 +30,7 @@ struct RelativeChain {
           .id("RelativeChainRow_1")
           .chainMode(Axis.Horizontal, this.RelativeChain)
 
-        Row().width(100).height(100)
+        Row().width('20%').height('50%')
           .backgroundColor("#FFCC00")
           .alignRules({
             left: {anchor: "RelativeChainRow_1", align: HorizontalAlign.End},
@@ -39,7 +39,7 @@ struct RelativeChain {
           })
           .id("RelativeChainRow_2")
 
-        Row().width(100).height(100)
+        Row().width('20%').height('50%')
           .backgroundColor("#FF6633")
           .alignRules({
             left: {anchor: "RelativeChainRow_2", align: HorizontalAlign.End},
@@ -49,7 +49,7 @@ struct RelativeChain {
           .id("RelativeChainRow_3")
       }
       .id('RelativeChain')
-      .width(400).height(400)
+      .width('50%').height('50%')
       .margin({left: 50, top: 50})
       .backgroundColor(Color.Grey)
 
