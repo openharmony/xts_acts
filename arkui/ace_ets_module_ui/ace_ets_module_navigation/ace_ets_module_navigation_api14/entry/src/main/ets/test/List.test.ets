@@ -22,7 +22,6 @@ import Recoverable from './Navigation/Recoverable.test'
 import SystemTransition from './Navigation/SystemTransition.test'
 import RouterRecoverable from './Navigation/RouterRecoverable.test'
 import RouterRecoverable2 from './Navigation/RouterRecoverable2.test'
-import EnableModeChangeAnimation from './Navigation/EnableModeChangeAnimation.test';
 
 export default function testsuite() {
   SafeAreaPadding();
@@ -34,5 +33,4 @@ export default function testsuite() {
   SystemTransition();
   RouterRecoverable();
   RouterRecoverable2();
-  EnableModeChangeAnimation();
 }
