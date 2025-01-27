@@ -21,15 +21,15 @@ let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0
 struct comSizeAbilityTest_10 {
   build() {
     Scroll() {
-      Column({ space: 20 }) {
+      Column({ space: 5 }) {
         Column() {
           Path()
-            .commands('M0 0 H200 V200 H0 Z')// 单位转化
+            .commands('M0 0 H100 V50 H0 Z')// 单位转化
             .stroke(Color.Green)
             .strokeWidth(3)
             .key("Path_Size")
             .backgroundColor('red')
-            .size({ width: 210, height: 132 })
+            .size({ width: 100, height: 50 })
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
               x: 1,
@@ -51,11 +51,11 @@ struct comSizeAbilityTest_10 {
 
         Column() {
           Polygon()
-            .points([[0, 0], [50, 100], [100, 0]])
+            .points([[0, 0], [50, 50], [100, 0]])
             .fill(Color.Green)
             .key("Polygon_Size")
             .backgroundColor('red')
-            .size({ width: 210, height: 140 })
+            .size({ width: 100, height: 50 })
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
               x: 1,
@@ -80,12 +80,12 @@ struct comSizeAbilityTest_10 {
             .fillOpacity(0)
             .stroke(Color.Green)
             .strokeWidth(8)
-            .points([[20, 0], [0, 100], [100, 90]])
+            .points([[20, 0], [0, 50], [100, 50]])
             .strokeLineJoin(LineJoinStyle.Round)
             .strokeLineCap(LineCapStyle.Round)
             .backgroundColor('red')
             .key("Polyline_Size")
-            .size({ width: 210, height: 125 })
+            .size({ width: 100, height: 50 })
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
               x: 1,

@@ -31,7 +31,7 @@ struct comSizeAbilityTest_05 {
           Gauge({ value: 60 })
             .colors([[0x317AF7, 1], [0x5BA854, 1], [0xE08C3A, 1], [0x9C554B, 1]])
             .key("Gauge_Size")
-            .size({ width: 140, height: 140 })
+            .size({ width: 100, height: 50 })
 
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
@@ -79,7 +79,7 @@ struct comSizeAbilityTest_05 {
           }
           .backgroundColor('green')
           .key("GridRow_Size")
-          .size({ width: 140, height: 140 })
+          .size({ width: 100, height: 50 })
           .translate({ x: 1, y: 1, z: 1 })
           .scale({
             x: 1,
@@ -119,7 +119,7 @@ struct comSizeAbilityTest_05 {
           .columnsGap(10)
           .rowsGap(10)
           .key("Grid_Size")
-          .size({ width: 360, height: 240 })
+          .size({ width: 100, height: 50 })
           .translate({ x: 1, y: 1, z: 1 })
           .scale({
             x: 1,

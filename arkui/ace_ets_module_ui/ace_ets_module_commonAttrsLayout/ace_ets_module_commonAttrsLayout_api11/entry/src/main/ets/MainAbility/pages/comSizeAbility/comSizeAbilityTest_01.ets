@@ -32,10 +32,10 @@ struct comSizeAbilityTest_01 {
             position: BadgePosition.Left,
             style: { badgeSize: 20, badgeColor: '#FA2A2D' }
           }) {
-            Text('文字部分').width(100).height(50).backgroundColor('blue')
+            Text('文字部分').width(100).height(20).backgroundColor('blue')
           }
           .key("Badge_Size")
-          .size({ width: 170, height: 120 })
+          .size({ width: 100, height: 50 })
           .translate({ x: 1, y: 1, z: 1 })
           .scale({
             x: 1,
@@ -58,7 +58,7 @@ struct comSizeAbilityTest_01 {
         Column() {
           Button()
             .key("Button_Size")
-            .size({ width: 90, height: 90 })
+            .size({ width: 90, height: 50 })
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
               x: 1,
@@ -87,7 +87,7 @@ struct comSizeAbilityTest_01 {
               this.context.fillRect(0, 30, 100, 100)
             })
             .key("Canvas_Size")
-            .size({ width: 211, height: 140 })
+            .size({ width: 50, height: 50 })
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
               x: 1,

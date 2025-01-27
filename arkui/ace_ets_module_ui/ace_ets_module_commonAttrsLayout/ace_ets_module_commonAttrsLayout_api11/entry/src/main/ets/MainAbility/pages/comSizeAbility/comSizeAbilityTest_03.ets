@@ -21,12 +21,12 @@ let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0
 struct comSizeAbilityTest_03 {
   build() {
     Scroll() {
-      Column({ space: 20 }) {
+      Column({ space: 5 }) {
         Column() {
           Circle()
             .backgroundColor('red')
             .key("Circle_Size")
-            .size({ width: 310, height: 140 })
+            .size({ width: 100, height: 40 })
 
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
@@ -51,7 +51,7 @@ struct comSizeAbilityTest_03 {
           Column()
             .backgroundColor('red')
             .key("Column_Size")
-            .size({ width: 160, height: 100 })
+            .size({ width: 100, height: 40 })
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
               x: 1,
@@ -74,7 +74,7 @@ struct comSizeAbilityTest_03 {
         Column() {
           Counter()
             .key("Counter_Size")
-            .size({ width: 150, height: 100 })
+            .size({ width: 100, height: 40 })
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
               x: 1,
@@ -98,7 +98,7 @@ struct comSizeAbilityTest_03 {
           Divider()
             .backgroundColor('red')
             .key("Divider_Size")
-            .size({ width: 130, height: 100 })
+            .size({ width: 100, height: 40 })
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
               x: 1,
