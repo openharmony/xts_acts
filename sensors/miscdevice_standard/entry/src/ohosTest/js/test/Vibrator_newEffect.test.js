@@ -808,6 +808,8 @@ describe("VibratorJsTest_misc_8", function () {
                     });
                     console.info(TAG + ' vibrator times:' + times);
                 }
+                console.info(TAG + " end");
+                done();
             } else{
                 console.log(TAG + ' is not supported.');
                 done();
@@ -850,6 +852,8 @@ describe("VibratorJsTest_misc_8", function () {
                     });
                     console.info(TAG + ' vibrator times:' + times);
                 }
+                console.info(TAG + " end");
+                done();                
             } else{
                 console.log(TAG + ' is not supported.');
                 done();
@@ -892,6 +896,8 @@ describe("VibratorJsTest_misc_8", function () {
                     });
                     console.info(TAG + ' vibrator times:' + times);
                 }
+                console.info(TAG + " end");
+                done();                
             } else{
                 console.log(TAG + ' is not supported.');
                 done();
