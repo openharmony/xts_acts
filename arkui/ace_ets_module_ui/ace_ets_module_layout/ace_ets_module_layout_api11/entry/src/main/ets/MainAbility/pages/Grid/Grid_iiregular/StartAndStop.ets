@@ -34,7 +34,7 @@ struct StartAndStop {
                   .fontSize(16)
                   .backgroundColor(0xF9CF93)
                   .width('100%')
-                  .height(80)
+                  .height('25%')
                   .textAlign(TextAlign.Center)
               }
             }, (day: string) => day)
