@@ -9,6 +9,7 @@
     "testability/pages/WebViewEnumAndFontLibrary",
     "testability/pages/WebViewEnumAndSetWebController",
     "testability/pages/WebViewOverviewModeAccess",
-    "testability/pages/WebZoomAccessTest"
+    "testability/pages/WebZoomAccessTest",
+	"testability/pages/enableSmoothDragResize"
   ]
 }
