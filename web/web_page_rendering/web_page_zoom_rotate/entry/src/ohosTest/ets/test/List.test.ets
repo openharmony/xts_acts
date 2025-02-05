@@ -22,6 +22,7 @@ import WebViewEnumAndFontLibrary from './WebViewEnumAndFontLibrary.test';
 import WebViewEnumAndSetWebController from './WebViewEnumAndSetWebController.test';
 import WebViewOverviewModeAccess from './WebViewOverviewModeAccess.test';
 import webZoomAccessTest from './WebZoomAccessTest.test';
+import enableSmoothDragResize from './enableSmoothDragResize.test';
 
 export default function testsuite() {
   webJsunit();
@@ -34,4 +35,5 @@ export default function testsuite() {
   WebViewEnumAndSetWebController();
   WebViewOverviewModeAccess();
   webZoomAccessTest();
+  enableSmoothDragResize()
 }
