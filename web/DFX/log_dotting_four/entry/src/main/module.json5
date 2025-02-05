@@ -21,6 +21,7 @@
     "mainElement": "EntryAbility",
     "deviceTypes": [
       "wearable",
+      "tv",
       "default",
       "tablet"
     ],

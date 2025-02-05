@@ -21,6 +21,7 @@
     "description": "$string:phone_entry_dsc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
+      "tv",
       "default",
       "tablet",
       "2in1",

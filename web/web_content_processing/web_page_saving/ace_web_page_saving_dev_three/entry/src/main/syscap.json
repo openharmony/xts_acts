@@ -1,6 +1,7 @@
 {
     "devices": {
         "general": [
+            "tv",
             "tablet",
             "default",
             "phone",

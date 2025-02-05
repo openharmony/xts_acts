@@ -19,6 +19,7 @@
     "description": "$string:module_test_desc",
     "mainElement": "TestAbility",
     "deviceTypes": [
+      "tv",
       "default",
       "tablet",
       "2in1",

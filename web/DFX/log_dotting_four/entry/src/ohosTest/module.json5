@@ -21,6 +21,7 @@
     "mainElement": "TestAbility",
     "deviceTypes": [
       "wearable",
+      "tv",
       "default",
       "tablet"
     ],
