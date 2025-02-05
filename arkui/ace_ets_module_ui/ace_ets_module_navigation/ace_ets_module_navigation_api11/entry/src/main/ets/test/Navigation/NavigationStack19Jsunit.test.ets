@@ -47,23 +47,26 @@ export default function NavigationStack19Jsunit() {
     */
     it('NavigationStack19Jsunit_0100', 0, async  (done:Function) =>{
       await CommonFunc.sleep(1000);
-      let driver = await UiDriver.create()
+      let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let CZbutton = await driver.findComponent(BY.key('NavigationStack19ListItemText1'));
+      let CZbutton = await driver.findComponent(ON.id('NavigationStack19ListItemText1'));
       await CZbutton.click();
       await CommonFunc.sleep(2000);
-      let YCbutton = await driver.findComponent(BY.key('NavigationStack19True'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let YCbutton = await scrollBar.scrollSearch(ON.id('NavigationStack19True'));
       await YCbutton.click();
       await CommonFunc.sleep(2000);
-      let ZKbutton = await driver.findComponent(BY.key('NavigationStack19False'));
+      let ZKbutton = await scrollBar.scrollSearch(ON.id('NavigationStack19False'));
       await ZKbutton.click();
       await CommonFunc.sleep(2000);
-      let buttoncontent = await driver.findComponent(BY.key('NavigationStack19ButtonContent'));
+      let buttoncontent = await scrollBar.scrollSearch(ON.id('NavigationStack19ButtonContent'));
       await buttoncontent.click();
       await CommonFunc.sleep(2000);
+      await scrollBar.scrollSearch(ON.id('NavigationStack19TextCont'));
       let textcontent = getInspectorByKey('NavigationStack19TextCont');
       console.info('NavigationStack19Jsunit_0100 component textobj is: ' + JSON.parse(textcontent).$attrs.content);
       expect(JSON.parse(textcontent).$attrs.content).assertEqual('clicked1');
+      await scrollBar.scrollSearch(ON.id('NavigationStack19Navigation'));
       let textcontent1 = getInspectorByKey('NavigationStack19Navigation');
       console.info('NavigationStack19Jsunit_0100 component textobj is: ' + JSON.parse(textcontent1).$attrs.title);
       expect(JSON.parse(textcontent1).$attrs.title).assertEqual('NavIndex');

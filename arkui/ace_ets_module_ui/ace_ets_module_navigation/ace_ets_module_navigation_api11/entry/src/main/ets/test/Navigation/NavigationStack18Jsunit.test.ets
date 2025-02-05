@@ -61,18 +61,19 @@ export default function NavigationStack18Jsunit() {
     */
     it('NavigationStack18Jsunit_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
-      let driver = await UiDriver.create()
+      let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let CZbutton = await driver.findComponent(BY.key('NavigationStack18ListItemText1'));
+      let CZbutton = await driver.findComponent(ON.id('NavigationStack18ListItemText1'));
       await CZbutton.click();
       await CommonFunc.sleep(2000);
-      let YCbutton = await driver.findComponent(BY.key('NavigationStack18True'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let YCbutton = await scrollBar.scrollSearch(ON.id('NavigationStack18True'));
       await YCbutton.click();
       await CommonFunc.sleep(2000);
-      let ZKbutton = await driver.findComponent(BY.key('NavigationStack18False'));
+      let ZKbutton = await scrollBar.scrollSearch(ON.id('NavigationStack18False'));
       await ZKbutton.click();
       await CommonFunc.sleep(2000);
-      let buttoncontent = await driver.findComponent(BY.key('NavigationStack18get'));
+      let buttoncontent = await scrollBar.scrollSearch(ON.id('NavigationStack18get'));
       await buttoncontent.click();
       await CommonFunc.sleep(2000);
       let textcontent = getInspectorByKey('NavigationStack18getText');

@@ -22,71 +22,72 @@ struct NavigationStack17 {
   @State flagBlur: string = 'BlurStart'
   @State flagFocus: string = 'FocusStart'
   build() {
-    Column(){
-      Navigation(this.pageInfos) {
-        Column() {
-          List({space:12}){
-            ForEach(this.arr, (item: number) => {
-              ListItem() {
-                NavRouter(){
-                  Text("NavRouter" + item).key(`NavigationStack17ListItemText${item}`)
-                    .width('100%')
-                    .height(60)
-                    .backgroundColor('#FFFFFF')
-                    .borderRadius(24)
-                    .fontSize(16)
-                    .fontWeight(1000)
-                    .textAlign(TextAlign.Center)
-                  NavDestination() {
-                    Text(`${this.text+item}`).key('NavigationStack17TextCont')
-                    Button('button').key('NavigationStack17ButtonContent')
-                      .onClick(() => {
-                        this.text = 'clicked'
-                      })
-                  }.key('NavigationStack17NavDestination')
-                  .onBlur(()=>{
-                    this.flagBlur = 'BlurDone'
-                  })
-                  .onFocus(()=>{
-                    this.flagFocus = 'FocusDone'
-                  })
-                  .backgroundColor(Color.Orange)
-                  .title("NavDestinationTitle"+ item)
-                }
-              }.key(`NavigationStack17ListItem${item}`)
-            },(item: number) => item.toString())
+    Scroll() {
+      Column(){
+        Navigation(this.pageInfos) {
+          Column() {
+            List({space:12}){
+              ForEach(this.arr, (item: number) => {
+                ListItem() {
+                  NavRouter(){
+                    Text("NavRouter" + item).key(`NavigationStack17ListItemText${item}`)
+                      .width('100%')
+                      .height(60)
+                      .backgroundColor('#FFFFFF')
+                      .borderRadius(24)
+                      .fontSize(16)
+                      .fontWeight(1000)
+                      .textAlign(TextAlign.Center)
+                    NavDestination() {
+                      Text(`${this.text+item}`).key('NavigationStack17TextCont')
+                      Button('button').key('NavigationStack17ButtonContent')
+                        .onClick(() => {
+                          this.text = 'clicked'
+                        })
+                    }.key('NavigationStack17NavDestination')
+                    .onBlur(()=>{
+                      this.flagBlur = 'BlurDone'
+                    })
+                    .onFocus(()=>{
+                      this.flagFocus = 'FocusDone'
+                    })
+                    .backgroundColor(Color.Orange)
+                    .title("NavDestinationTitle"+ item)
+                  }
+                }.key(`NavigationStack17ListItem${item}`)
+              },(item: number) => item.toString())
+            }
+            .width('100%')
+            .margin({top:12})
           }
-          .width('100%')
-          .margin({top:12})
         }
+        .height('60%')
+        .title('NavIndex')
+        .titleMode(NavigationTitleMode.Mini)
+        .mode(NavigationMode.Stack)
+        .hideNavBar(this.bool)
+        .navBarWidth(260)
+        .minContentWidth(300)
+        .navBarWidthRange([200,400])
+        .border({width: 1})
+        .height('70%')
+        .width('100%')
+        .backgroundColor(Color.Pink)
+        Text(this.flagBlur).key('NavigationStack17Blur').fontWeight(700)
+        Text(this.flagFocus).key('NavigationStack17Focus').fontWeight(700)
+        Button('YCDHL')
+          .key('NavigationStack17True')
+          .onClick(() => {
+            this.bool = true
+          })
+        Button('展开导航栏')
+          .key('NavigationStack17False')
+          .onClick(() => {
+            this.bool = false
+          })
       }
-      .height('60%')
-      .title('NavIndex')
-      .titleMode(NavigationTitleMode.Mini)
-      .mode(NavigationMode.Stack)
-      .hideNavBar(this.bool)
-      .navBarWidth(260)
-      .minContentWidth(300)
-      .navBarWidthRange([200,400])
-      .border({width: 1})
-      .height('70%')
+      .border({width:1})
       .width('100%')
-      .backgroundColor(Color.Pink)
-      Text(this.flagBlur).key('NavigationStack17Blur').fontWeight(700)
-      Text(this.flagFocus).key('NavigationStack17Focus').fontWeight(700)
-      Button('YCDHL')
-        .key('NavigationStack17True')
-        .onClick(() => {
-          this.bool = true
-        })
-      Button('展开导航栏')
-        .key('NavigationStack17False')
-        .onClick(() => {
-          this.bool = false
-        })
     }
-    .border({width:1})
-    .height('100%')
-    .width(300)
   }
 }

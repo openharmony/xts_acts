@@ -23,78 +23,79 @@ struct NavigationStack15 {
   @State flagFocus: string = 'FocusStart'
   @State mode: NavigationMode = NavigationMode.Stack
   build() {
-    Column(){
-      Navigation(this.pageInfos) {
-        Column() {
-          List({space:12}){
-            ForEach(this.arr, (item: number) => {
-              ListItem() {
-                NavRouter(){
-                  Text("NavRouter" + item).key(`NavigationStack15ListItemText${item}`)
-                    .width('100%')
-                    .height(60)
-                    .backgroundColor('#FFFFFF')
-                    .borderRadius(24)
-                    .fontSize(16)
-                    .fontWeight(1000)
-                    .textAlign(TextAlign.Center)
-                  NavDestination() {
-                    Text(`${this.text+item}`).key('NavigationStack15TextCont')
-                    Button('button').key('NavigationStack15ButtonContent')
-                      .onClick(() => {
-                        this.text = 'clicked'
-                      })
-                  }.key('NavigationStack15NavDestination')
-                  .onBlur(()=>{
-                    this.flagBlur = 'BlurDone'
-                  })
-                  .onFocus(()=>{
-                    this.flagFocus = 'FocusDone'
-                  })
-                  .backgroundColor(Color.Orange)
-                  .title("NavDestinationTitle"+ item)
-                }
-              }.key(`NavigationStack15ListItem${item}`)
-            },(item: number) => item.toString())
+    Scroll() {
+      Column(){
+        Navigation(this.pageInfos) {
+          Column() {
+            List({space:12}){
+              ForEach(this.arr, (item: number) => {
+                ListItem() {
+                  NavRouter(){
+                    Text("NavRouter" + item).key(`NavigationStack15ListItemText${item}`)
+                      .width('100%')
+                      .height(60)
+                      .backgroundColor('#FFFFFF')
+                      .borderRadius(24)
+                      .fontSize(16)
+                      .fontWeight(1000)
+                      .textAlign(TextAlign.Center)
+                    NavDestination() {
+                      Text(`${this.text+item}`).key('NavigationStack15TextCont')
+                      Button('button').key('NavigationStack15ButtonContent')
+                        .onClick(() => {
+                          this.text = 'clicked'
+                        })
+                    }.key('NavigationStack15NavDestination')
+                    .onBlur(()=>{
+                      this.flagBlur = 'BlurDone'
+                    })
+                    .onFocus(()=>{
+                      this.flagFocus = 'FocusDone'
+                    })
+                    .backgroundColor(Color.Orange)
+                    .title("NavDestinationTitle"+ item)
+                  }
+                }.key(`NavigationStack15ListItem${item}`)
+              },(item: number) => item.toString())
+            }
+            .width('100%')
+            .margin({top:12})
           }
-          .width('100%')
-          .margin({top:12})
         }
+        .height('60%')
+        .title('NavIndex')
+        .titleMode(NavigationTitleMode.Mini)
+        .mode(this.mode)
+        .hideNavBar(this.bool)
+        .navBarWidth(260)
+        .minContentWidth(300)
+        .navBarWidthRange([200,400])
+        .border({width: 1})
+        .height('70%')
+        .width('100%')
+        .backgroundColor(Color.Pink)
+        Text(this.flagBlur).key('NavigationStack15Blur').fontWeight(700)
+        Text(this.flagFocus).key('NavigationStack15Focus').fontWeight(700)
+        Button('YCDHL')
+          .key('NavigationStack15True')
+          .onClick(() => {
+            this.bool = true
+          })
+        Button('CZ').key('NavigationStack15CZ')
+          .onClick(() => {
+            this.bool = false
+            this.text = 'start'
+            this.flagBlur = 'BlurStart'
+            this.flagFocus = 'FocusStart'
+            this.pageInfos.clear()
+          })
+        Button('changeModel').key('NavigationStack15clear')
+          .onClick(() => {
+            this.mode = NavigationMode.Split
+          })
       }
-      .height('60%')
-      .title('NavIndex')
-      .titleMode(NavigationTitleMode.Mini)
-      .mode(this.mode)
-      .hideNavBar(this.bool)
-      .navBarWidth(260)
-      .minContentWidth(300)
-      .navBarWidthRange([200,400])
-      .border({width: 1})
-      .height('70%')
+      .border({width:1})
       .width('100%')
-      .backgroundColor(Color.Pink)
-      Text(this.flagBlur).key('NavigationStack15Blur').fontWeight(700)
-      Text(this.flagFocus).key('NavigationStack15Focus').fontWeight(700)
-      Button('YCDHL')
-        .key('NavigationStack15True')
-        .onClick(() => {
-          this.bool = true
-        })
-      Button('CZ').key('NavigationStack15CZ')
-        .onClick(() => {
-          this.bool = false
-          this.text = 'start'
-          this.flagBlur = 'BlurStart'
-          this.flagFocus = 'FocusStart'
-          this.pageInfos.clear()
-        })
-      Button('changeModel').key('NavigationStack15clear')
-        .onClick(() => {
-          this.mode = NavigationMode.Split
-        })
     }
-    .border({width:1})
-    .height('100%')
-    .width(300)
   }
 }

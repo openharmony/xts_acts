@@ -61,6 +61,7 @@ struct navigationApi1{
       }.opacity(this.opacity1)
     }
     .mode(NavigationMode.Split)
+    .navBarWidth('30%')
     .title('main')
     .navDestination(this.PageMap)
     .customNavContentTransition((from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation) => {

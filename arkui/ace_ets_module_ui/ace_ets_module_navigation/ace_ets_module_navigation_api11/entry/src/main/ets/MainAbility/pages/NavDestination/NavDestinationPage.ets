@@ -97,6 +97,7 @@ struct NavDestinationPage {
         .height('100%')
         .margin({ top: 12, left: 12 })
       }
+      .navBarWidth('30%')
       .mode(NavigationMode.Split)
       .hideTitleBar(true)
       .hideToolBar(true)

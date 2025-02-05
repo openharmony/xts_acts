@@ -108,21 +108,7 @@ import stepperAction027 from './stepperTest/stepperAction/stepperAction027.test'
 
 
 export default function testsuite() {
-  stepperLayout001();
-  stepperLayout002();
-  stepperLayout003();
-  stepperLayout004();
-  stepperInterface001();
-  stepperInterface002();
-  stepperInterface003();
-  stepperInterface004();
-  stepperInterface005();
-  stepperInterface006();
-  stepperInterface009();
-  stepperAction001();
-  stepperAction027();
   navigationTypeTest();
-  StepperJsunit11();
   NavigationParamTest();
   NavigationApi();
   NavigationApi2();
@@ -134,9 +120,7 @@ export default function testsuite() {
   QueryNavDestinationInfoNavDestinationJsunit();
   NavigationAttr();
   navigationApi1();
-  sidebar();
   navigationJsunit();
-  stepperJsunit1();
   navigatorJsunit();
   NavRouterJsunit();
   NavDestinationJsunit();
@@ -178,10 +162,35 @@ export default function testsuite() {
   NavigationMode15Jsunit();
   NavigationMode16Jsunit();
   NavigationMode17Jsunit();
-  NavRouter_onStateChange1();
-  NavRouter_onStateChange2();
   NavDestination_onBackPressed();
   navigationuxtest()
+  transitionJsunit();
+  sharedTransitionJsunit();
+  NavigationApiFirst()
+  NavigationApiOther()
+  navigatorTargetJsunit()
+  pageRouteTest()
+  searchOnCutJsunit()
+  navigationJsunittt();
+  navigatorCodeJsunit();
+  NavRouter_onStateChange1();
+  NavRouter_onStateChange2();
+  stepperLayout001();
+  stepperLayout002();
+  stepperLayout003();
+  stepperLayout004();
+  stepperInterface001();
+  stepperInterface002();
+  stepperInterface003();
+  stepperInterface004();
+  stepperInterface005();
+  stepperInterface006();
+  stepperInterface009();
+  stepperAction001();
+  stepperAction027();
+  StepperJsunit11();
+  sidebar();
+  stepperJsunit1();
   SideBarContainer_Attribute();
   SideBarContainerType();
   SideBarContainerType_DefaultValue1();
@@ -189,15 +198,6 @@ export default function testsuite() {
   SideBarContainerType_DefaultValue3();
   SideBarContainerDivider();
   stepperUIJsunit();
-  transitionJsunit();
-  sharedTransitionJsunit();
-  NavigationApiFirst()
   sidebarIconsJsunit()
   stepperItemDisabledJsunit()
-  NavigationApiOther()
-  navigatorTargetJsunit()
-  pageRouteTest()
-  searchOnCutJsunit()
-  navigationJsunittt();
-  navigatorCodeJsunit();
 }
