@@ -16,8 +16,8 @@
 @Component
 struct RelativeChain11 {
   @State RelativeChain: ChainStyle = ChainStyle.SPREAD
-  @State RelativeWidth: number = 100
-  @State RelativeHeight: number = 100
+  @State RelativeWidth: string = '30%'
+  @State RelativeHeight: string = '30%'
   @State text: string = ''
 
   build() {
@@ -68,8 +68,8 @@ struct RelativeChain11 {
 
       }
       .id('RelativeChain11')
-      .width(400).height(100)
-      .margin({left: 50, top: 50})
+      .width('70%').height('30%')
+      .margin({left: 5, top: 5})
       .backgroundColor(Color.Grey)
       Text(this.text).key('RelativeChain11Text')
       // 三个子组件水平垂直方向都成链
@@ -107,8 +107,8 @@ struct RelativeChain11 {
           .id("RelativeChainRow112_3")
       }
       .id('RelativeChain112')
-      .width(400).height(400)
-      .margin({left: 50, top: 50})
+      .width('70%').height('50%')
+      .margin({left: 5, top: 5})
       .backgroundColor(Color.Grey)
 
 
