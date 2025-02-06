@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { BY, UiDriver } from '@kit.TestKit';
+import { BY, Driver, UiDriver } from '@kit.TestKit';
 import { router } from '@kit.ArkUI';
 import Utils from '../../MainAbility/common/Utils';
 
@@ -73,17 +73,20 @@ export default function enableCascadeTest() {
       let top = timePicker.top
       let bottom = timePicker.bottom
       let right = timePicker.right
-      let middle = (top + bottom) / 2
+      let middle = (bottom-top) / 2 + top
+      let left =timePicker.left
       console.info('[TimePickerApienableCascade_001] left: ' + timePicker.left + ', top: ' + timePicker.top +
         ', right:' + timePicker.right + ', bottom:' + timePicker.bottom + 'middle:' + middle);
       let hour = await driver.findComponent(BY.key('hour'));
       let hour1 = await hour.getText();
       console.info('[TimePickerApienableCascade_001] hour1: ' + hour1);
       console.info('[TimePickerApienableCascade_001] hour1: ' + JSON.stringify(hour1));
-      expect(hour1).assertEqual('hour:11');
-      await driver.swipe(Math.round(right / 3), Math.round(middle + 150), Math.round(right / 3 * 2),
-        Math.round(middle - 150));
-      await Utils.sleep(6000);
+      expect(hour1).assertEqual('hour:10');
+      await driver.swipe(Math.round(globalThis.winLeft+(right-left)/2+left), Math.round(globalThis.winTop+middle), Math.round(globalThis.winLeft+(right-left)/2+left),
+        Math.round(0));
+      console.info('[TimePickerApienableCascade_001] winLeft:' + globalThis.winLeft);
+      console.info('[TimePickerApienableCascade_001] winTop:' + globalThis.winTop);
+      await Utils.sleep(8000);
       let hour2 = await hour.getText();
       let index = await hour2.indexOf(':');
       let Hour2 = parseInt(hour2.substring(index + 1, hour2.length).trim())
@@ -117,16 +120,17 @@ export default function enableCascadeTest() {
       let top = timePicker.top
       let bottom = timePicker.bottom
       let right = timePicker.right
-      let middle = (top + bottom) / 2
+      let middle = (bottom-top) / 2 + top
+      let left =timePicker.left
       console.info('[TimePickerApienableCascade_002] left: ' + timePicker.left + ', top: ' + timePicker.top +
         ', right:' + timePicker.right + ', bottom:' + timePicker.bottom + 'middle:' + middle);
       let hour = await driver.findComponent(BY.key('hour'));
       let hour1 = await hour.getText();
       console.info('[TimePickerApienableCascade_002] hour1: ' + JSON.stringify(hour1));
-      expect(hour1).assertEqual('hour:11');
-      await driver.swipe(Math.round(right / 3), Math.round(middle + 150), Math.round(right / 3 * 2),
-        Math.round(middle - 150));
-      await Utils.sleep(6000);
+      expect(hour1).assertEqual('hour:10');
+      await driver.swipe(Math.round(globalThis.winLeft+(right-left)/2+left), Math.round(globalThis.winTop+middle), Math.round(globalThis.winLeft+(right-left)/2+left),
+        Math.round(0));
+      await Utils.sleep(8000);
       let hour2 = await hour.getText();
       let index = await hour2.indexOf(':');
       let Hour2 = parseInt(hour2.substring(index + 1, hour2.length).trim())
@@ -159,16 +163,17 @@ export default function enableCascadeTest() {
       let top = timePicker.top
       let bottom = timePicker.bottom
       let right = timePicker.right
-      let middle = (top + bottom) / 2
+      let middle = (bottom-top) / 2 + top
+      let left =timePicker.left
       console.info('[TimePickerApienableCascade_003] left: ' + timePicker.left + ', top: ' + timePicker.top +
         ', right:' + timePicker.right + ', bottom:' + timePicker.bottom + 'middle:' + middle);
       let hour = await driver.findComponent(BY.key('hour'));
       let hour1 = await hour.getText();
       console.info('[TimePickerApienableCascade_003] hour1: ' + JSON.stringify(hour1));
-      expect(hour1).assertEqual('hour:11');
-      await driver.swipe(Math.round(right / 3), Math.round(middle + 150), Math.round(right / 3 * 2),
-        Math.round(middle - 150));
-      await Utils.sleep(6000);
+      expect(hour1).assertEqual('hour:10');
+      await driver.swipe(Math.round(globalThis.winLeft+(right-left)/2+left), Math.round(globalThis.winTop+middle), Math.round(globalThis.winLeft+(right-left)/2+left),
+        Math.round(0));
+      await Utils.sleep(8000);
       let hour2 = await hour.getText();
       let index = await hour2.indexOf(':');
       let Hour2 = parseInt(hour2.substring(index + 1, hour2.length).trim())
@@ -203,16 +208,17 @@ export default function enableCascadeTest() {
       let top = timePicker.top
       let bottom = timePicker.bottom
       let right = timePicker.right
-      let middle = (top + bottom) / 2
+      let middle = (bottom-top) / 2 + top
+      let left =timePicker.left
       console.info('[TimePickerApienableCascade_004] left: ' + timePicker.left + ', top: ' + timePicker.top +
         ', right:' + timePicker.right + ', bottom:' + timePicker.bottom + 'middle:' + middle);
       let hour = await driver.findComponent(BY.key('hour'));
       let hour1 = await hour.getText();
       console.info('[TimePickerApienableCascade_004] hour1: ' + JSON.stringify(hour1));
-      expect(hour1).assertEqual('hour:11');
-      await driver.swipe(Math.round(right / 3), Math.round(middle + 150), Math.round(right / 3 * 2),
-        Math.round(middle - 150));
-      await Utils.sleep(6000);
+      expect(hour1).assertEqual('hour:10');
+      await driver.swipe(Math.round(globalThis.winLeft+(right-left)/2+left), Math.round(globalThis.winTop+middle), Math.round(globalThis.winLeft+(right-left)/2+left),
+        Math.round(0));
+      await Utils.sleep(8000);
       let hour2 = await hour.getText();
       let index = await hour2.indexOf(':');
       let Hour2 = parseInt(hour2.substring(index + 1, hour2.length).trim())
