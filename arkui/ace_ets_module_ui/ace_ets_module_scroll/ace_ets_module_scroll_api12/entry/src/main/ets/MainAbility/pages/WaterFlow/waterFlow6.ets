@@ -80,7 +80,7 @@ struct WaterFlowEventDemo {
   // 计算FlowItem高度
   getSize() {
     let ret = Math.floor(Math.random() * this.maxSize)
-    return 50
+    return (ret > this.minSize ? ret : this.minSize)
   }
 
   // 设置FlowItem的高度数组
