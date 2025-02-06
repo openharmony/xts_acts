@@ -198,7 +198,8 @@ HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0016, TestSize.Level2)
             OH_AVCODEC_MIMETYPE_VIDEO_AVC, false, HARDWARE);
 		if (capability) {
 			ASSERT_NE(nullptr, capability);
-			ASSERT_NE(nullptr, OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY));
+			bool isLowLatencySupported = OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY);
+			ASSERT_NE(nullptr, &isLowLatencySupported);
 		} else {
 			return;
 		}
