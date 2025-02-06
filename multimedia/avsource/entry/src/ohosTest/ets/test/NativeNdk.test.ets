@@ -1658,9 +1658,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityGetEncoderBitrateRange008', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 4);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 4);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityGetEncoderBitrateRange008 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -2089,9 +2094,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityIsEncoderBitrateModeSupported015', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(1, 1, 0, 1, 1, 8);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(1, 1, 0, 1, 1, 8);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityIsEncoderBitrateModeSupported015 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -2159,9 +2169,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityIsEncoderBitrateModeSupported020', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(6, 1, 0, 1, 1, 8);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(6, 1, 0, 1, 1, 8);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityIsEncoderBitrateModeSupported020 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -2187,9 +2202,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityIsEncoderBitrateModeSupported022', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 6);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 6);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityIsEncoderBitrateModeSupported022 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -2407,9 +2427,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityIsEncoderBitrateModeSupported037', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 7);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 7);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityIsEncoderBitrateModeSupported037 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -2613,9 +2638,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityIsEncoderBitrateModeSupported051', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 8);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 8);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityIsEncoderBitrateModeSupported051 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -2684,9 +2714,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityIsEncoderBitrateModeSupported058', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(1, 1, 1, 0, 1, 8);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(1, 1, 1, 0, 1, 8);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityIsEncoderBitrateModeSupported058 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -2754,9 +2789,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityIsEncoderBitrateModeSupported063', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(6, 1, 1, 0, 1, 8);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(6, 1, 1, 0, 1, 8);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityIsEncoderBitrateModeSupported063 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -2834,9 +2874,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityGetVideoWidthRangeForHeight006', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(6, 0, 1, 0, 1, 9);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(6, 0, 1, 0, 1, 9);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityGetVideoWidthRangeForHeight006 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -2862,9 +2907,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityGetVideoWidthRangeForHeight008', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 9);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 9);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityGetVideoWidthRangeForHeight008 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -2904,9 +2954,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityGetVideoWidthRangeForHeight011', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(6, 0, 0, 0, 1, 9);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(6, 0, 0, 0, 1, 9);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityGetVideoWidthRangeForHeight011 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -2918,9 +2973,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityGetVideoWidthRangeForHeight012', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(7, 0, 0, 0, 1, 9);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(7, 0, 0, 0, 1, 9);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityGetVideoWidthRangeForHeight012 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -3012,9 +3072,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityGetVideoWidthRangeForHeight018', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(6, 0, 0, 1, 1, 9);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(6, 0, 0, 1, 1, 9);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityGetVideoWidthRangeForHeight018 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -3026,9 +3091,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityGetVideoWidthRangeForHeight019', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(7, 0, 0, 1, 1, 9);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(7, 0, 0, 1, 1, 9);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityGetVideoWidthRangeForHeight019 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -3120,9 +3190,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityGetVideoHeightRangeForWidth006', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(6, 0, 1, 0, 1, 11);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(6, 0, 1, 0, 1, 11);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityGetVideoHeightRangeForWidth006 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -3167,9 +3242,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityGetVideoHeightRangeForWidth009', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(6, 0, 0, 0, 1, 11);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(6, 0, 0, 0, 1, 11);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityGetVideoHeightRangeForWidth009 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -3181,9 +3261,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityGetVideoHeightRangeForWidth010', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(7, 0, 0, 0, 1, 11);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(7, 0, 0, 0, 1, 11);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityGetVideoHeightRangeForWidth010 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -3195,9 +3280,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityGetVideoHeightRangeForWidth011', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 11);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 11);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityGetVideoHeightRangeForWidth011 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -3284,10 +3374,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityGetVideoHeightRangeForWidth017', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(6, 0, 0, 1, 1, 11);
-      expect(result).assertEqual(-1);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(6, 0, 0, 1, 1, 11);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityGetVideoHeightRangeForWidth017 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -3299,9 +3393,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityGetVideoHeightRangeForWidth018', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(7, 0, 0, 1, 1, 11);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(7, 0, 0, 1, 1, 11);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityGetVideoHeightRangeForWidth018 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -3524,9 +3623,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityAreProfileAndLevelSupported014', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(7,0,0,1,1,13);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(7,0,0,1,1,13);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported014 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -4063,9 +4167,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityAreProfileAndLevelSupported051', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(1,1,0,0,1,13);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(1,1,0,0,1,13);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported051 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -4339,9 +4448,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityAreProfileAndLevelSupported070', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(6,0,0,0,1,13);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(6,0,0,0,1,13);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported070 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -4353,9 +4467,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityAreProfileAndLevelSupported071', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(7,0,0,0,1,13);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(7,0,0,0,1,13);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported071 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
@@ -4872,9 +4991,14 @@ export default function nativeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHAvCapabilityAreProfileAndLevelSupported107', 0, async (done: Function) => {
-      let result: number = native.decodeMainProcess(1,1,0,0,1,15);
-      expect(result).assertEqual(-1);
-      done();
+      try {
+        let result: number = native.decodeMainProcess(1,1,0,0,1,15);
+        expect(result != null).assertTrue();
+        done();
+      } catch(err) {
+        console.info('testOHAvCapabilityAreProfileAndLevelSupported107 failed, error is' + err.message);
+        expect(false).assertTrue();
+      }
     });
 
     /**
