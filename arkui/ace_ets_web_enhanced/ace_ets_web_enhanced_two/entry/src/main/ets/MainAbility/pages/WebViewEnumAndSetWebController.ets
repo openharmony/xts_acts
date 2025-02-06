@@ -221,7 +221,9 @@ struct WebViewEnumAndSetWebController {
           console.log('onTouchIconUrlReceived:' + event.url)
           console.log('onTouchIconUrlReceived:' + event.precomposed)
           this.precomposedResult = event.precomposed
-          Utils.emitEvent(event.url + '', 1371)
+          if (this.str === 'emitOnTouchIconUrlReceived') {
+            Utils.emitEvent(event.url + '', 1371)
+          }       
         })
         .onScreenCaptureRequest((event) => {
           console.log("1361 case", JSON.stringify(event))
