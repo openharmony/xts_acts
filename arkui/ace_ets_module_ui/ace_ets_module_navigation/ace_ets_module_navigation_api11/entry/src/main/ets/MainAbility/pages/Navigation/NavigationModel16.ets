@@ -22,6 +22,11 @@ struct NavigationModel16 {
   @State strText: string = 'doing'
   build() {
     Column(){
+      Text(this.strText).fontWeight(700).fontSize(22).key('NavigationModel16Txt')
+      Button('切换').key('NavigationModel16But')
+        .onClick(() => {
+          this.mode = NavigationMode.Stack
+      })
       Navigation() {
         Column() {
           List({space:12}){
@@ -58,11 +63,6 @@ struct NavigationModel16 {
         this.currentIndex ++
         this.strText =  'doing' + `${ this.currentIndex }`
       })
-      Text(this.strText).fontWeight(700).fontSize(22).key('NavigationModel16Txt')
-      Button('切换').key('NavigationModel16But')
-        .onClick(() => {
-          this.mode = NavigationMode.Stack
-        })
     }
     .border({width:1})
     .height('100%')

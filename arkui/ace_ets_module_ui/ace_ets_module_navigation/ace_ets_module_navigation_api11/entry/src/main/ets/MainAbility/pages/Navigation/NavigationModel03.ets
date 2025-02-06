@@ -22,13 +22,12 @@ struct NavigationModel03 {
   @State columnWidthIndex: number = 2
   build() {
     Column() {
+      Button('button').key('NavigationModel03button')
+        .onClick(()=>{
+          this.columnWidthIndex = 5
+        })
+      Text(this.strText).key('NavigationModel03text')
       Navigation() {
-        Button('button').key('NavigationModel03button')
-          .onClick(()=>{
-            this.columnWidthIndex = 5
-          })
-        Text(this.strText).key('NavigationModel03text')
-
         List({ space: 12, initialIndex: 0 }) {
           ForEach(this.arr, (item: number) => {
             ListItem() {
@@ -52,6 +51,6 @@ struct NavigationModel03 {
         this.currentIndex ++
         this.strText =  'doing' + `${ this.currentIndex }`
       })
-    }.width(600).height('100%').backgroundColor('#F1F3F5')
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
   }
 }

@@ -65,10 +65,11 @@ export default function NavigationStack10Jsunit() {
       let button = await driver.findComponent(ON.id('NavigationStack10pushPathbut'));
       await button.click();
       await CommonFunc.sleep(2000);
-      let button1 = await driver.findComponent(ON.id('NavigationStack10True'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let button1 = await scrollBar.scrollSearch(ON.id('NavigationStack10True'));
       await button1.click();
       await CommonFunc.sleep(2000);
-      let buttonClear = await driver.findComponent(ON.id('NavigationStack10get'));
+      let buttonClear = await scrollBar.scrollSearch(ON.id('NavigationStack10get'));
       await buttonClear.click();
       await CommonFunc.sleep(2000);
       let strfocus = getInspectorByKey('NavigationStack10getText');

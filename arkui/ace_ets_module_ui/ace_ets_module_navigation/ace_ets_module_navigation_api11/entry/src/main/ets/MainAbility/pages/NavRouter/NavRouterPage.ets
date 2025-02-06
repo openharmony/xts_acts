@@ -48,59 +48,62 @@ struct NavRouterPage {
   }
 
   build() {
-    Column() {
-      Navigation() {
-        List({ space: 12, initialIndex: 0 }) {
-          ForEach(this.arr, (item: number, index: number) => {
-            ListItem() {
-              NavRouter() {
-                Row() {
-                  Image($r('app.media.icon')).width(30).height(30).borderRadius(30).margin({ left: 3, right: 10 })
-                  Text(`NavRouter${item + 1}`)
-                    .fontSize(22)
-                    .fontWeight(500)
-                    .textAlign(TextAlign.Center)
-                }
-                .width(180)
-                .height(72)
-                .backgroundColor(this.dex === index ? '#ccc' : '#fff')
-                .borderRadius(24)
-
-                NavDestination() {
-                  Text(`我是NavDestination第${item + 1}页内容`).fontSize(50)
-                  Flex({ direction: FlexDirection.Row }) {
-                    Row() {
-                      Image($r('app.media.icon')).width(40).height(40).borderRadius(40).margin({ right: 15 })
-                      Text('Hello').fontSize(30).key('textContent')
-                    }.padding({ left: 15 })
+    Scroll() {
+      Column() {
+        Navigation() {
+          List({ space: 12, initialIndex: 0 }) {
+            ForEach(this.arr, (item: number, index: number) => {
+              ListItem() {
+                NavRouter() {
+                  Row() {
+                    Image($r('app.media.icon')).width(30).height(30).borderRadius(30).margin({ left: 3, right: 10 })
+                    Text(`NavRouter${item + 1}`)
+                      .fontSize(22)
+                      .fontWeight(500)
+                      .textAlign(TextAlign.Center)
                   }
-                }.backgroundColor('#ccc')
-                .key('NavDestination' + (item + 1).toString())
-                .title(`NavDestination${item + 1}`)
-              }.key('NavRouter' + (item + 1).toString())
-              .onStateChange((isActivated: boolean) => {
-                if (isActivated) {
-                  this.dex = index;
-                }
-                if (index == 1) {
-                  this.stateChange = 'stateChange ' + isActivated;
-                } else {
-                  this.routerState = 'stateChange ' + isActivated;
-                }
-              })
-            }
-          }, (item: number) => item.toString())
+                  .width(180)
+                  .height(72)
+                  .backgroundColor(this.dex === index ? '#ccc' : '#fff')
+                  .borderRadius(24)
+
+                  NavDestination() {
+                    Text(`我是NavDestination第${item + 1}页内容`).fontSize(50)
+                    Flex({ direction: FlexDirection.Row }) {
+                      Row() {
+                        Image($r('app.media.icon')).width(40).height(40).borderRadius(40).margin({ right: 15 })
+                        Text('Hello').fontSize(30).key('textContent')
+                      }.padding({ left: 15 })
+                    }
+                  }.backgroundColor('#ccc')
+                  .key('NavDestination' + (item + 1).toString())
+                  .title(`NavDestination${item + 1}`)
+                }.key('NavRouter' + (item + 1).toString())
+                .onStateChange((isActivated: boolean) => {
+                  if (isActivated) {
+                    this.dex = index;
+                  }
+                  if (index == 1) {
+                    this.stateChange = 'stateChange ' + isActivated;
+                  } else {
+                    this.routerState = 'stateChange ' + isActivated;
+                  }
+                })
+              }
+            }, (item: number) => item.toString())
+          }
+          .height('100%')
+          .margin({ top: 12, left: 12 })
         }
-        .height('100%')
-        .margin({ top: 12, left: 12 })
+        .mode(NavigationMode.Split)
+        .navBarWidth('30%')
+        .hideTitleBar(true)
+        .hideToolBar(true)
+        .height('80%')
+      Text(this.stateChange).fontSize(20).margin(10).key('testT')
+      Text(this.routerState).fontSize(20).margin(10).key('TestRouter')
       }
-      .mode(NavigationMode.Split)
-      .hideTitleBar(true)
-      .hideToolBar(true)
-      .height('80%')
-    Text(this.stateChange).fontSize(20).margin(10).key('testT')
-    Text(this.routerState).fontSize(20).margin(10).key('TestRouter')
-    }.height('100%')
+    }
   }
 }
 
