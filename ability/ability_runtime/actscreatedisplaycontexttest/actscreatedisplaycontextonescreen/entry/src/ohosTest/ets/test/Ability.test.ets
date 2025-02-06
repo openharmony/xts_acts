@@ -19,6 +19,7 @@ import {
   application,
   common,
   ConfigurationConstant,
+  Context,
   EnvironmentCallback,
   sendableContextManager
 } from '@kit.AbilityKit';
@@ -26,7 +27,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { preferences, relationalStore } from '@kit.ArkData';
 import { resourceManager } from '@kit.LocalizationKit';
 import { display } from '@kit.ArkUI';
-import { worker } from '@kit.ArkTS';
+import { JSON, worker } from '@kit.ArkTS';
 
 
 const TAG: string = 'DisplayContextTest';
@@ -40,6 +41,7 @@ export class SendableObject {
     this.sendableContext = sendableContext;
     this.contextName = contextName;
   }
+
   sendableContext: sendableContextManager.SendableContext;
   contextName: string;
 }
@@ -137,22 +139,25 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1000', 0, () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1000', 0, async (done: Function) => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1000]: start');
       try {
         let displayContext: Context | undefined = uiAbilityContext?.createDisplayContext(disPlayId);
         if (displayContext != undefined) {
           console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1000]: uiAbilityContext' +
           JSON.stringify(displayContext));
-          resourceManagerTest(displayContext).then((data) => {
+          await resourceManagerTest(displayContext).then((data) => {
             console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1000] data : ' + data);
             expect(true).assertEqual(data);
-          })
+          });
+        } else {
+          expect().assertFail();
         }
       } catch (err) {
         console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1000]: ' + err);
         expect().assertFail();
       }
+      done();
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1000]: end');
     })
 
@@ -171,15 +176,9 @@ export default function abilityTest() {
         if (displayContext != undefined) {
           console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1200]: uiAbilityContext' +
           JSON.stringify(displayContext));
-          let appInfoName: string = JSON.stringify(uiAbilityContext?.applicationInfo.name);
-          let appDisplayInfoName: string = JSON.stringify(displayContext.applicationInfo.name);
-          expect(appInfoName).assertEqual(appDisplayInfoName);
-          let appInfoLabelId: number | undefined = uiAbilityContext?.applicationInfo.labelId;
-          let appDisplayInfoLabelId: number = displayContext.applicationInfo.labelId;
-          expect(appInfoLabelId).assertEqual(appDisplayInfoLabelId);
-          let appInfoDescription: string = JSON.stringify(uiAbilityContext?.applicationInfo.description);
-          let appDisplayInfoDescription: string = JSON.stringify(displayContext.applicationInfo.description);
-          expect(appInfoDescription).assertEqual(appDisplayInfoDescription);
+          compareInfo(displayContext);
+        } else {
+          expect().assertFail();
         }
       } catch (err) {
         console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1200]: ' + err);
@@ -204,10 +203,10 @@ export default function abilityTest() {
         JSON.stringify(displayContext));
         let displayProName = displayContext?.processName;
         let proName = uiAbilityContext?.processName;
-        console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1300]: areaProName' +
-          displayProName);
+        console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1300]: areaProName' + displayProName);
         console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1300]: proName' + proName);
-        expect(displayProName).assertContain(proName);
+        expect(displayProName).assertEqual(proName);
+        expect(displayProName).assertEqual('com.acts.createdisplaycontext');
       } catch (err) {
         console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1300]: ' + err);
         expect().assertFail();
@@ -234,6 +233,8 @@ export default function abilityTest() {
           console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1400]: screenDisplayInfo' +
             screenDisplayInfo);
           expect(true).assertEqual(screenDisplayInfo);
+        } else {
+          expect().assertFail();
         }
       } catch (err) {
         console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1400]: ' + err);
@@ -250,26 +251,33 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1600', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1600', 0, async (done: Function) => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1600]: start');
       try {
-        let groupId = "1";
+        let groupId = '1';
         let displayContext = uiAbilityContext?.createDisplayContext(disPlayId);
         if (displayContext != undefined) {
           console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1600]: uiAbilityContext' +
           JSON.stringify(displayContext));
+          let str1: string = '';
+          let str2: string = '';
           await uiAbilityContext?.getGroupDir(groupId).then(async data1 => {
-            hilog.info(DOMAIN_NUMBER, TAG, "getGroupDir result:" + data1);
-            await displayContext?.getGroupDir(groupId).then(data2 => {
-              hilog.info(DOMAIN_NUMBER, TAG, "getGroupDir result:" + data2);
-              expect(JSON.stringify(data1)).assertEqual(JSON.stringify(data2));
-            })
-          })
+            hilog.info(DOMAIN_NUMBER, TAG, 'getGroupDir result:' + data1);
+            str1 = JSON.stringify(data1);
+          });
+          await displayContext?.getGroupDir(groupId).then(data2 => {
+            hilog.info(DOMAIN_NUMBER, TAG, 'getGroupDir result:' + data2);
+            str2 = JSON.stringify(data2);
+          });
+          expect(str1).assertEqual(str2);
+        } else {
+          expect().assertFail();
         }
       } catch (err) {
         console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1600]: ' + err);
         expect().assertFail();
       }
+      done();
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1600]: end');
     })
 
@@ -290,7 +298,9 @@ export default function abilityTest() {
           JSON.stringify(displayContext));
           let result = sendableContext(displayContext);
           expect(true).assertEqual(result);
-        }
+        } else {
+          expect().assertFail();
+        };
       } catch (err) {
         console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1700]: ' + err);
         expect().assertFail();
@@ -306,7 +316,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1800', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1800', 0, async (done: Function) => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1800]: start');
       try {
         let displayContext = uiAbilityContext?.createDisplayContext(disPlayId);
@@ -316,54 +326,42 @@ export default function abilityTest() {
           await getRdbStore(displayContext).then((data: relationalStore.RdbStore) => {
             console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1800]: store: ' + data +
             JSON.stringify(data));
-            expect('{}').assertEqual(JSON.stringify(data));
-          })
+            expect(JSON.stringify(data)).assertEqual('{}');
+          });
+        } else {
+          expect().assertFail();
         }
       } catch (err) {
         console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1800]: ' + err);
         expect().assertFail();
       }
+      done();
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1800]: end');
     })
 
     /*
      * @tc.number: SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1900
-     * @tc.name: DisplayContext_UIAbilityContext_displayId_null_or_undefined_1900
-     * @tc.desc: The display Context created by UIAbilityContext is passed in null/undefined
+     * @tc.name: DisplayContext_UIAbilityContext_displayId_null_1900
+     * @tc.desc: The display Context created by UIAbilityContext is passed in null
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level Level 3
      */
     it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1900', 0, () => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1900]: start');
+      let errCode: number = -1;
       try {
-        let errCode: number = -1;
-        try {
-          let displayContext = uiAbilityContext?.createDisplayContext(null);
-          if (displayContext != undefined) {
-            console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1900]: uiAbilityContext' +
-            JSON.stringify(displayContext));
-          }
-        } catch (err) {
-          let code = (err as BusinessError).code;
-          errCode = code;
-        }
-        expect(401).assertEqual(errCode);
-        try {
-          let displayContext = uiAbilityContext?.createDisplayContext(undefined);
-          if (displayContext != undefined) {
-            console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1900]: uiAbilityContext' +
-            JSON.stringify(displayContext));
-          }
-        } catch (err) {
-          let code = (err as BusinessError).code;
-          errCode = code;
-        }
-        expect(401).assertEqual(errCode);
-      } catch (err) {
-        console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1900]: ' + err);
+        let displayContext = uiAbilityContext?.createDisplayContext(null);
+        console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1900]: uiAbilityContext' +
+        JSON.stringify(displayContext));
         expect().assertFail();
+      } catch (err) {
+        let code = (err as BusinessError).code;
+        errCode = code;
+        console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1900]: errCode' +
+        JSON.stringify(errCode));
       }
+      expect(errCode).assertEqual(401);
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1900]: end');
     })
 
@@ -392,6 +390,8 @@ export default function abilityTest() {
           expect(displayContext.distributedFilesDir).assertEqual(distributedFilesDir_DIR_app);
           expect(displayContext.resourceDir).assertEqual(resourceDir_DIR_app);
           expect(displayContext.cloudFileDir).assertEqual(cloudFile_Dir_app);
+        } else {
+          expect().assertFail();
         }
       } catch (err) {
         console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2000]: ' + err);
@@ -408,15 +408,25 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2100', 0, () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2100', 0, async (done: Function) => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2100]: start');
       let resultTag = -1;
       let environmentId: number = -1;
       let appContext = uiAbilityContext?.createDisplayContext(disPlayId).getApplicationContext();
+      let mode = uiAbilityContext?.config.colorMode;
+      let resetEnvironment = () => {
+        appContext?.off('environment', environmentId);
+        appContext?.setColorMode(mode);
+      };
       let environmentCallback: EnvironmentCallback = {
-        onConfigurationUpdated(config) {
-          console.info(`envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
+        async onConfigurationUpdated(config) {
+          console.log(`[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2100]: envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
           resultTag = 0;
+          expect(resultTag).assertEqual(0);
+          resetEnvironment();
+          await sleep(1000);
+          done();
+          console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2100]: end');
         },
         onMemoryLevel(level) {
           console.log(`onMemoryLevel level: ${level}`);
@@ -424,12 +434,13 @@ export default function abilityTest() {
       };
       if (appContext != undefined) {
         environmentId = appContext.on('environment', environmentCallback);
-        appContext.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
-        setTimeout(() => {
-          appContext?.off('environment', environmentId);
-          expect(resultTag).assertEqual(0);
-          appContext?.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT);
-        }, 2000);
+        if(mode !== ConfigurationConstant.ColorMode.COLOR_MODE_DARK) {
+          appContext.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
+        } else {
+          appContext.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT);
+        }
+      } else {
+        expect().assertFail();
       }
     })
 
@@ -449,14 +460,31 @@ export default function abilityTest() {
           let appContext = displayContext.getApplicationContext();
           console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2400]: uiAbilityContext' +
           JSON.stringify(appContext));
+          let language = uiAbilityContext?.config.language;
+          console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2400]: language' +
+          JSON.stringify(language));
           try {
-            appContext.setLanguage('us');
-            appContext.setLanguage('zh');
-            expect(true).assertTrue();
+            if (language !== 'us') {
+              appContext.setLanguage('us');
+              console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2400]: language' +
+              JSON.stringify(uiAbilityContext?.config.language));
+              expect(uiAbilityContext?.config.language).assertEqual('us');
+              appContext.setLanguage(language);
+              console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2400]: language' +
+              JSON.stringify(uiAbilityContext?.config.language));
+              expect(uiAbilityContext?.config.language).assertEqual(language);
+            } else {
+              appContext.setLanguage('zh');
+              expect(uiAbilityContext?.config.language).assertEqual('zh');
+              appContext.setLanguage(language);
+              expect(uiAbilityContext?.config.language).assertEqual(language);
+            }
           } catch (err) {
             console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2400]: ' + err);
             expect().assertFail();
           }
+        } else {
+          expect().assertFail();
         }
       } catch (err) {
         console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2400]: ' + err);
@@ -477,22 +505,22 @@ export default function abilityTest() {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2500]: start');
       try {
         let displayContext: common.Context;
-        let appContext: common.ApplicationContext;
         let context = await application.createModuleContext(uiAbilityContext, 'entry_test');
         if (context != undefined) {
           displayContext = context.createDisplayContext(disPlayId);
-          appContext = displayContext.getApplicationContext();
-          console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2500]: uiAbilityContext' +
-          JSON.stringify(appContext));
-          expect(appContext.cacheDir).assertEqual(CACHE_DIR_app);
-          expect(appContext.filesDir).assertEqual(FILE_DIR_app);
-          expect(appContext.tempDir).assertEqual(TEMP_DIR_app);
-          expect(appContext.databaseDir).assertEqual(DATABASE_DIR_app);
-          expect(appContext.preferencesDir).assertEqual(preferences_DIR_app);
-          expect(appContext.bundleCodeDir).assertEqual(BUNDLE_DIR_app);
-          expect(appContext.distributedFilesDir).assertEqual(distributedFilesDir_DIR_app);
-          expect(appContext.resourceDir).assertEqual(resourceDir_DIR_app);
-          expect(appContext.cloudFileDir).assertEqual(cloudFile_Dir_app);
+          console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2500]: displayContext' +
+          JSON.stringify(displayContext));
+          expect(displayContext.cacheDir).assertEqual(CACHE_DIR_app);
+          expect(displayContext.filesDir).assertEqual(FILE_DIR_app);
+          expect(displayContext.tempDir).assertEqual(TEMP_DIR_app);
+          expect(displayContext.databaseDir).assertEqual(DATABASE_DIR_app);
+          expect(displayContext.preferencesDir).assertEqual(preferences_DIR_app);
+          expect(displayContext.bundleCodeDir).assertEqual(BUNDLE_DIR_app);
+          expect(displayContext.distributedFilesDir).assertEqual(distributedFilesDir_DIR_app);
+          expect(displayContext.resourceDir).assertEqual(resourceDir_DIR_app);
+          expect(displayContext.cloudFileDir).assertEqual(cloudFile_Dir_app);
+        } else {
+          expect().assertFail();
         }
       } catch (err) {
         console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2500]: ' + err);
@@ -509,27 +537,28 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2600', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2600', 0, async (done: Function) => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2600]: start');
       try {
         let displayContext: common.Context;
-        let appContext: common.ApplicationContext;
         let uiAbilityContext: common.UIAbilityContext | undefined = AppStorage.get('context');
         let context = await application.createModuleContext(uiAbilityContext, 'entry_test');
         if (context != undefined) {
           displayContext = context.createDisplayContext(disPlayId);
-          appContext = displayContext.getApplicationContext();
-          console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2600]: uiAbilityContext' +
-          JSON.stringify(appContext));
-          resourceManagerTest(appContext).then((data) => {
+          console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2600]: displayContext' +
+          JSON.stringify(displayContext));
+          await resourceManagerTest(displayContext).then((data) => {
             console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2600] data : ' + data);
             expect(true).assertEqual(data);
-          })
+          });
+        } else {
+          expect().assertFail();
         }
       } catch (err) {
         console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2600]: ' + err);
         expect().assertFail();
       }
+      done();
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2600]: end');
     })
 
@@ -550,9 +579,9 @@ export default function abilityTest() {
           displayContext = context.createDisplayContext(disPlayId);
           console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2700]: uiAbilityContext' +
           JSON.stringify(displayContext));
-          let appAreaInfo: string = JSON.stringify(displayContext.applicationInfo);
-          let appInfo: string = JSON.stringify(uiAbilityContext?.applicationInfo);
-          expect(appInfo).assertEqual(appAreaInfo);
+          compareInfo(displayContext);
+        } else {
+          expect().assertFail();
         }
       } catch (err) {
         console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2700]: ' + err);
@@ -580,11 +609,14 @@ export default function abilityTest() {
           appContext = displayContext.getApplicationContext();
           console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2800]: uiAbilityContext' +
           JSON.stringify(appContext));
-          let areaProName = displayContext.processName;
+          let displayProName = displayContext.processName;
           let proName = uiAbilityContext?.processName;
-          console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2800]: areaProName' + areaProName);
+          console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2800]: areaProName' + displayProName);
           console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2800]: proName' + proName);
-          expect(areaProName).assertContain(proName);
+          expect(displayProName).assertContain(proName);
+          expect(displayProName).assertEqual('com.acts.createdisplaycontext');
+        } else {
+          expect().assertFail();
         }
       } catch (err) {
         console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2800]: ' + err);
@@ -601,16 +633,18 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2900', 0, () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2900', 0, async () => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2900]: start');
       try {
-        let displayContext = uiAbilityContext?.createDisplayContext(disPlayId);
+        let context = await application.createModuleContext(uiAbilityContext, 'entry_test');
+        let displayContext = context.createDisplayContext(disPlayId);
         if (displayContext != undefined) {
-          let appContext = displayContext.getApplicationContext();
-          console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2900]: uiAbilityContext' +
-          JSON.stringify(appContext));
-          let result = sendableContext(appContext);
+          console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2900]: displayContext' +
+          JSON.stringify(displayContext));
+          let result = sendableContext(displayContext);
           expect(true).assertEqual(result);
+        } else {
+          expect().assertFail();
         }
       } catch (err) {
         console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2900]: ' + err);
@@ -634,16 +668,42 @@ export default function abilityTest() {
         let displayContext = context.createDisplayContext(disPlayId);
         let appContext = displayContext.getApplicationContext();
         await getRdbStore(appContext).then((data: relationalStore.RdbStore) => {
-          console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_3000]: store: ' + data +
+          console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_3000]: store: data' +
           JSON.stringify(data));
-          expect('{}').assertEqual(JSON.stringify(data));
-          done();
-        })
+          expect(JSON.stringify(data)).assertEqual('{}');
+        });
       } catch (err) {
         console.error('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_3000]: ' + err);
         expect().assertFail();
       }
+      done();
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_3000]: end');
+    })
+
+    /*
+     * @tc.number: SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_5000
+     * @tc.name: DisplayContext_UIAbilityContext_displayId_undefined_5000
+     * @tc.desc: The display Context created by UIAbilityContext is passed in undefined
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level Level 3
+     */
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_5000', 0, () => {
+      console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_5000]: start');
+      let errCode: number = -1;
+      try {
+        let displayContext = uiAbilityContext?.createDisplayContext(undefined);
+        console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_5000]: uiAbilityContext' +
+        JSON.stringify(displayContext));
+        expect().assertFail();
+      } catch (err) {
+        let code = (err as BusinessError).code;
+        errCode = code;
+        console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_5000]: errCode' +
+        JSON.stringify(errCode));
+      }
+      expect(errCode).assertEqual(401);
+      console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_5000]: end');
     })
   })
 }
@@ -732,15 +792,15 @@ export async function resourceManagerTest(displayContext: Context): Promise<bool
       console.log(`DisplayContextTest resourceManager.getString, data: ${data}, result: ${result}`);
     }).catch((error: Error) => {
       console.error('DisplayContextTest resourceManager.getString fail' + error.name + error.message);
-    })
+    });
   if (result) {
     await displayContext.resourceManager.getStringValue($r('app.string.ServiceExtAbility_label'))
       .then((data) => {
         result &&= (data === 'label');
         console.log(`DisplayContextTest resourceManager.getStringValue, data: ${data}, result: ${result}`);
       }).catch((error: Error) => {
-        console.error('DisplayContextTest resourceManager.getString fail' + error.name + error.message);
-      })
+        console.error('DisplayContextTest resourceManager.getStringValue fail' + error.name + error.message);
+      });
   }
   if (result) {
     await displayContext.resourceManager.getMedia($r('app.media.background').id)
@@ -748,8 +808,8 @@ export async function resourceManagerTest(displayContext: Context): Promise<bool
         result &&= (data.length > 0);
         console.log(`DisplayContextTest resourceManager.getMedia, data: ${data}, result: ${result}`);
       }).catch((error: Error) => {
-        console.error('DisplayContextTest resourceManager.getString fail' + error.name + error.message);
-      })
+        console.error('DisplayContextTest resourceManager.getMedia fail' + error.name + error.message);
+      });
   }
   if (result) {
     await displayContext.resourceManager.getMediaContent($r('app.media.background'))
@@ -757,8 +817,8 @@ export async function resourceManagerTest(displayContext: Context): Promise<bool
         result &&= (data.length > 0);
         console.log(`DisplayContextTest resourceManager.getMediaContent, data: ${data}, result: ${result}`);
       }).catch((error: Error) => {
-        console.error('DisplayContextTest resourceManager.getString fail' + error.name + error.message);
-      })
+        console.error('DisplayContextTest resourceManager.getMediaContent fail' + error.name + error.message);
+      });
   }
   if (result) {
     await displayContext.resourceManager.getColor($r('app.color.start_window_background').id)
@@ -766,8 +826,8 @@ export async function resourceManagerTest(displayContext: Context): Promise<bool
         result &&= (data > 0);
         console.log(`DisplayContextTest resourceManager.getColor(resId), data: ${data}, result: ${result}`);
       }).catch((error: Error) => {
-        console.error('DisplayContextTest resourceManager.getString fail' + error.name + error.message);
-      })
+        console.error('DisplayContextTest resourceManager.getColor(resId) fail' + error.name + error.message);
+      });
   }
   if (result) {
     await displayContext.resourceManager.getColor($r('app.color.start_window_background'))
@@ -775,8 +835,18 @@ export async function resourceManagerTest(displayContext: Context): Promise<bool
         result &&= (data > 0);
         console.log(`DisplayContextTest resourceManager.getColor(res), data: ${data}, result: ${result}`);
       }).catch((error: Error) => {
-        console.error('DisplayContextTest resourceManager.getString fail' + error.name + error.message);
-      })
+        console.error('DisplayContextTest resourceManager.getColor(res) fail' + error.name + error.message);
+      });
+  }
+  if (result) {
+    await displayContext.resourceManager.getColor($r('sys.color.ohos_id_color_sub_background').id)
+      .then((data) => {
+        result &&= (data > 0);
+        console.log(`DisplayContextTest resourceManager.getStringValue, data: ${data}, result: ${result}`);
+      }).catch((error: Error) => {
+        console.error('DisplayContextTest resourceManager.getStringValue fail' + error.name + error.message);
+        expect().assertFail();
+      });
   }
   console.log(`DisplayContextTest resourceManagerTest end, result: ${result}`);
   return result;
@@ -788,4 +858,46 @@ function sleep(time: number) {
       resolve('ok');
     }, time);
   });
+}
+
+function compareInfo(displayContext: Context) {
+  let appInfoName: string = JSON.stringify(uiAbilityContext?.applicationInfo.name);
+  let appDisplayInfoName: string = JSON.stringify(displayContext.applicationInfo.name);
+  expect(appInfoName).assertEqual(appDisplayInfoName);
+  console.log(`DisplayContextTest resourceManager.getStringValue, appDisplayInfoName: ${appDisplayInfoName}`);
+  let appInfoLabelId: number | undefined = uiAbilityContext?.applicationInfo.labelId;
+  let appDisplayInfoLabelId: number = displayContext.applicationInfo.labelId;
+  expect(appInfoLabelId).assertEqual(appDisplayInfoLabelId);
+  let appInfoDescription: string = JSON.stringify(uiAbilityContext?.applicationInfo.description);
+  let appDisplayInfoDescription: string = JSON.stringify(displayContext.applicationInfo.description);
+  expect(appInfoDescription).assertEqual(appDisplayInfoDescription);
+  expect(uiAbilityContext?.applicationInfo.descriptionId).assertEqual(displayContext.applicationInfo.descriptionId);
+  expect(uiAbilityContext?.applicationInfo.enabled).assertEqual(displayContext.applicationInfo.enabled);
+  expect(uiAbilityContext?.applicationInfo.label).assertEqual(displayContext.applicationInfo.label);
+  expect(uiAbilityContext?.applicationInfo.icon).assertEqual(displayContext.applicationInfo.icon);
+  expect(uiAbilityContext?.applicationInfo.iconId).assertEqual(displayContext.applicationInfo.iconId);
+  expect(JSON.stringify(uiAbilityContext?.applicationInfo.permissions)).assertEqual(JSON.stringify(displayContext.applicationInfo.permissions));
+  expect(uiAbilityContext?.applicationInfo.process).assertEqual(displayContext.applicationInfo.process);
+  expect(uiAbilityContext?.applicationInfo.codePath).assertEqual(displayContext.applicationInfo.codePath);
+  expect(JSON.stringify(uiAbilityContext?.applicationInfo.metadataArray)).assertEqual(JSON.stringify(displayContext.applicationInfo.metadataArray));
+  expect(uiAbilityContext?.applicationInfo.removable).assertEqual(displayContext.applicationInfo.removable);
+  expect(uiAbilityContext?.applicationInfo.accessTokenId).assertEqual(displayContext.applicationInfo.accessTokenId);
+  expect(uiAbilityContext?.applicationInfo.uid).assertEqual(displayContext.applicationInfo.uid);
+  expect(JSON.stringify(uiAbilityContext?.applicationInfo.iconResource)).assertEqual(JSON.stringify(displayContext.applicationInfo.iconResource));
+  expect(JSON.stringify(uiAbilityContext?.applicationInfo.labelResource)).assertEqual(JSON.stringify(displayContext.applicationInfo.labelResource));
+  expect(JSON.stringify(uiAbilityContext?.applicationInfo.descriptionResource)).assertEqual(JSON.stringify(displayContext.applicationInfo.descriptionResource));
+  expect(uiAbilityContext?.applicationInfo.appDistributionType).assertEqual(displayContext.applicationInfo.appDistributionType);
+  expect(uiAbilityContext?.applicationInfo.systemApp).assertEqual(displayContext.applicationInfo.systemApp);
+  expect(uiAbilityContext?.applicationInfo.appProvisionType).assertEqual(displayContext.applicationInfo.appProvisionType);
+  expect(uiAbilityContext?.applicationInfo.bundleType).assertEqual(displayContext.applicationInfo.bundleType);
+  expect(uiAbilityContext?.applicationInfo.debug).assertEqual(displayContext.applicationInfo.debug);
+  expect(uiAbilityContext?.applicationInfo.dataUnclearable).assertEqual(displayContext.applicationInfo.dataUnclearable);
+  expect(uiAbilityContext?.applicationInfo.nativeLibraryPath).assertEqual(displayContext.applicationInfo.nativeLibraryPath);
+  expect(JSON.stringify(uiAbilityContext?.applicationInfo.multiAppMode)).assertEqual(JSON.stringify(displayContext.applicationInfo.multiAppMode));
+  expect(uiAbilityContext?.applicationInfo.appIndex).assertEqual(displayContext.applicationInfo.appIndex);
+  expect(uiAbilityContext?.applicationInfo.installSource).assertEqual(displayContext.applicationInfo.installSource);
+  expect(uiAbilityContext?.applicationInfo.releaseType).assertEqual(displayContext.applicationInfo.releaseType);
+  expect(uiAbilityContext?.applicationInfo.cloudFileSyncEnabled).assertEqual(displayContext.applicationInfo.cloudFileSyncEnabled);
+  expect(uiAbilityContext?.applicationInfo.flags).assertEqual(displayContext.applicationInfo.flags);
+  expect(displayContext.applicationInfo.name).assertEqual('com.acts.createdisplaycontext');
 }
