@@ -22,30 +22,33 @@ struct APIcomponentSnapshotGetSync {
   @State text: string = 'start'
 
   build() {
-    Column() {
-      Row() {
-        Column(){
-          Image(this.pixmap)
-        }
-        .width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.icon')).autoResize(true).width('100px').height('100px').margin(5).id("APIcomponentSnapshotGetSync_root")
-      }
-      Text(this.text).fontSize(26).id('APIcomponentSnapshotGetSync_text')
-      Button("click to generate UI snapshot").id('APIcomponentSnapshotGetSync_button')
-        .onClick(() => {
-          try {
-            let pixelmap = componentSnapshot.getSync("APIcomponentSnapshotGetSync_root", {scale : 2, waitUntilRenderFinished : true})
-            this.pixmap = pixelmap
-            if(this.pixmap !== undefined){
-              this.text = 'end'
+    Scroll() {
+      Column() {
+            Row() {
+              Column(){
+                Image(this.pixmap)
+              }
+              .width(10).height(10).border({ color: Color.Black, width: 2 }).margin(5)
+              Image($r('app.media.icon')).autoResize(true).width('100px').height('100px').margin(5).id("APIcomponentSnapshotGetSync_root")
             }
-          } catch (error) {
-            console.error("getSync errorCode: " + error.code + " message: " + error.message)
+            Text(this.text).fontSize(26).id('APIcomponentSnapshotGetSync_text')
+            Button("click to generate UI snapshot").id('APIcomponentSnapshotGetSync_button')
+              .onClick(() => {
+                try {
+                  let pixelmap = componentSnapshot.getSync("APIcomponentSnapshotGetSync_root", {scale : 2, waitUntilRenderFinished : true})
+                  this.pixmap = pixelmap
+                  if(this.pixmap !== undefined){
+                    this.text = 'end'
+                  }
+                } catch (error) {
+                  console.error("getSync errorCode: " + error.code + " message: " + error.message)
+                }
+              }).margin(10)
           }
-        }).margin(10)
-    }
-    .width('100%')
-    .height('100%')
-    .alignItems(HorizontalAlign.Center)
+          .width('100%')
+          .height('100%')
+          .alignItems(HorizontalAlign.Center)
+     }
+    
   }
 }
