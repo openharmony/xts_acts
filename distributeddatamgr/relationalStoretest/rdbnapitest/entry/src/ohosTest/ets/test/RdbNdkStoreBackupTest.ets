@@ -52,7 +52,7 @@ export default function RdbNdkStoreBackupTest() {
          * @tc.desc: Normal testCase of NDK store for Backup、Restore.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_BackupRestoreTest_0100',0, async (done:FUNCTION) => {
+        it('SUB_DDM_RDB_BackupRestoreTest_0100',0, async (ddone:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_BackupRestoreTest_0100' , ' begin');
             let re = testNapi.SUB_DDM_RDB_BackupRestoreTest_0100();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
@@ -66,7 +66,7 @@ export default function RdbNdkStoreBackupTest() {
          * @tc.desc: backup file name already exists
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_BackupRestoreTest_0300',0, async (done:FUNCTION) => {
+        it('SUB_DDM_RDB_BackupRestoreTest_0300',0, async (ddone:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_BackupRestoreTest_0300' , ' begin');
             let re = testNapi.SUB_DDM_RDB_BackupRestoreTest_0300();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
@@ -79,7 +79,7 @@ export default function RdbNdkStoreBackupTest() {
          * @tc.desc: Exception testCase of NDK store for Backup、Restore.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_BackupRestoreTest_0400',0, async (done:FUNCTION) => {
+        it('SUB_DDM_RDB_BackupRestoreTest_0400',0, async (ddone:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_BackupRestoreTest_0400' , ' begin');
             let re = testNapi.SUB_DDM_RDB_BackupRestoreTest_0400();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
@@ -93,7 +93,7 @@ export default function RdbNdkStoreBackupTest() {
          * @tc.desc: backup file name is empty
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_BackupRestoreTest_0500',0, async (done:FUNCTION) => {
+        it('SUB_DDM_RDB_BackupRestoreTest_0500',0, async (ddone:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_BackupRestoreTest_0500' , ' begin');
             let re = testNapi.SUB_DDM_RDB_BackupRestoreTest_0500();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
@@ -107,7 +107,7 @@ export default function RdbNdkStoreBackupTest() {
          * @tc.desc: backup file name is a space
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_BackupRestoreTest_0600',0, async (done:FUNCTION) => {
+        it('SUB_DDM_RDB_BackupRestoreTest_0600',0, async (ddone:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_BackupRestoreTest_0600' , ' begin');
             let re = testNapi.SUB_DDM_RDB_BackupRestoreTest_0600();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
@@ -121,7 +121,7 @@ export default function RdbNdkStoreBackupTest() {
          * @tc.desc: Backup file name is a null
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_BackupRestoreTest_0700',0, async (done:FUNCTION) => {
+        it('SUB_DDM_RDB_BackupRestoreTest_0700',0, async (ddone:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_BackupRestoreTest_0700' , ' begin');
             let re = testNapi.SUB_DDM_RDB_BackupRestoreTest_0700();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
@@ -135,7 +135,7 @@ export default function RdbNdkStoreBackupTest() {
          * @tc.desc: Restore file name is a null
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_BackupRestoreTest_0800',0, async (done:FUNCTION) => {
+        it('SUB_DDM_RDB_BackupRestoreTest_0800',0, async (ddone:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_BackupRestoreTest_0800' , ' begin');
             let re = testNapi.SUB_DDM_RDB_BackupRestoreTest_0800();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
@@ -149,7 +149,7 @@ export default function RdbNdkStoreBackupTest() {
          * @tc.desc: Restore file name is empty
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_BackupRestoreTest_0900',0, async (done:FUNCTION) => {
+        it('SUB_DDM_RDB_BackupRestoreTest_0900',0, async (ddone:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_BackupRestoreTest_0900' , ' begin');
             let re = testNapi.SUB_DDM_RDB_BackupRestoreTest_0900();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
@@ -163,7 +163,7 @@ export default function RdbNdkStoreBackupTest() {
          * @tc.desc: Restore file name is invalid
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_BackupRestoreTest_0110',0, async (done:FUNCTION) => {
+        it('SUB_DDM_RDB_BackupRestoreTest_0110',0, async (ddone:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_BackupRestoreTest_0110' , ' begin');
             let re = testNapi.SUB_DDM_RDB_BackupRestoreTest_0110();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
