@@ -132,6 +132,7 @@ function checkDataCanBeRead(url: string, done: Function) {
         dataCanBeRead = true;
       } else {
         console.error('Failed to read data: ' + err.message);
+        done();
       }
 
       httpRequest.off('headersReceive');
