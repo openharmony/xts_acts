@@ -9253,12 +9253,13 @@ static napi_value testWasmOperator(napi_env env1, napi_callback_info info)
     OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
     JSVM_EnvScope envScope;
     OH_JSVM_OpenEnvScope(env, &envScope);
-
+#if !defined(JSVM_JITLESS)
     test_CompileWasmModule(env, env1);
     test_CompileWasmFunctionNULL(env, env1);
-    test_IsWasmModuleValueisNULL(env, env1);
     test_CreateWarmCache_wasmmodule_is_null(env, env1);
     test_CreateWarmCache_wasmmodule_is_not_wasmmodule(env, env1);
+#endif
+    test_IsWasmModuleValueisNULL(env, env1);
     test_ReleaseCache_cachedata_is_null(env, env1);
 
     OH_JSVM_CloseEnvScope(env, envScope);
