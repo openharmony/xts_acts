@@ -211,7 +211,9 @@ struct UIExtAbilityPage {
         hilog.info(0x0000, TAG, '%{public}s', 'createSubscriber success');
         this.subscriber = commonEventSubscriber;
         commonEventManager.subscribe(this.subscriber, subscribeCb);
-        commonEventManager.publish(UI_EXTENSION_PAGE5_ON_READY, this.publishCb);
+        setTimeout(()=>{
+          commonEventManager.publish(UI_EXTENSION_PAGE5_ON_READY, this.publishCb);
+        }, 500)
       })
       .catch((err: BusinessError) => {
         hilog.info(0x0000, TAG, 'createSubscriber failed %{public}s', JSON.stringify(err));
