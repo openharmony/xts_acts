@@ -152,9 +152,11 @@ static napi_value Strftime(napi_env env, napi_callback_info info)
     static time_t gTime = TIME_L;
     struct tm *timeptr = localtime(&gTime);
     char buffer[MAX_NUMBER];
-    strftime(buffer, sizeof(buffer) - PARAM_1, valueFirst, timeptr);
+    size_t ret = strftime(buffer, sizeof(buffer) - PARAM_1, valueFirst, timeptr);
     napi_value result = nullptr;
-    napi_create_string_utf8(env, buffer, NAPI_AUTO_LENGTH, &result);
+    if (ret != 0) {
+        napi_create_string_utf8(env, buffer, NAPI_AUTO_LENGTH, &result);
+    }
     return result;
 }
 
@@ -469,11 +471,14 @@ napi_value Asctime(napi_env env, napi_callback_info info)
 napi_value AsctimeR(napi_env env, napi_callback_info info)
 {
     time_t rawtime;
-    struct tm *timeinfo;
+    struct tm *timeinfo = nullptr;
     char buffer[80];
 
     time(&rawtime);
     timeinfo = localtime(&rawtime);
+    if (timeinfo == nullptr) {
+        return nullptr;
+    }
     char *resultVal = asctime_r(timeinfo, buffer);
     int resultValue = FAIL;
     if (resultVal != nullptr) {
