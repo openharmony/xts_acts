@@ -301,7 +301,7 @@ export default function NapiWorkerGCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    /*it('testNapiWorkerGC0010', 0, async () => {
+    it('testNapiWorkerGC0010', 0, async () => {
       const caseName = 'testNapiWorkerGC0010';
       console.info(`${caseName} test start`);
       try {
@@ -311,14 +311,14 @@ export default function NapiWorkerGCTest() {
         const message: WorkerMessage = {
           messageType: 'createExternalArraybuffer', value: createExternalArraybufferValue
         };
-        myWorker.postMessage(message);
+        myWorker.postMessage(message,[createExternalArraybufferValue]);
         await handleWorkerMessages(myWorker, caseName);
       } catch (error) {
         console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
-    });*/
+    });
     /**
      * @tc.number    : SUB_ACE_BASIC_ETS_NAPI_WORKER_GC_1100
      * @tc.name      : testNapiWorkerGC0011
