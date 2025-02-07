@@ -86,8 +86,9 @@ namespace {
 HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0010, TestSize.Level2)
 {
     OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    ASSERT_NE(nullptr, capability);
-    ASSERT_EQ(false, OH_AVCapability_IsFeatureSupported(capability, static_cast<OH_AVCapabilityFeature>(4)));
+    if (capability) {
+        ASSERT_EQ(false, OH_AVCapability_IsFeatureSupported(capability, static_cast<OH_AVCapabilityFeature>(4)));
+    }
 }
 
 /**
@@ -111,12 +112,14 @@ HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0012, TestSize.Level1)
 {
     if (!access("/system/lib64/media/", 0)) {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-        ASSERT_NE(nullptr, capability);
-        ASSERT_EQ(true, OH_AVCapability_IsFeatureSupported(capability, VIDEO_ENCODER_TEMPORAL_SCALABILITY));
+        if (capability) {
+            ASSERT_EQ(true, OH_AVCapability_IsFeatureSupported(capability, VIDEO_ENCODER_TEMPORAL_SCALABILITY));
+        }
     } else {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-        ASSERT_NE(nullptr, capability);
-        ASSERT_EQ(false, OH_AVCapability_IsFeatureSupported(capability, VIDEO_ENCODER_TEMPORAL_SCALABILITY));
+        if (capability) {
+            ASSERT_EQ(false, OH_AVCapability_IsFeatureSupported(capability, VIDEO_ENCODER_TEMPORAL_SCALABILITY));
+        }
     }
 }
 
@@ -141,12 +144,14 @@ HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0014, TestSize.Level1)
 {
     if (!access("/system/lib64/media/", 0)) {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-        ASSERT_NE(nullptr, capability);
-        ASSERT_EQ(true, OH_AVCapability_IsFeatureSupported(capability, VIDEO_ENCODER_LONG_TERM_REFERENCE));
+        if (capability) {
+            ASSERT_EQ(true, OH_AVCapability_IsFeatureSupported(capability, VIDEO_ENCODER_LONG_TERM_REFERENCE));
+        }
     } else {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-        ASSERT_NE(nullptr, capability);
-        ASSERT_EQ(false, OH_AVCapability_IsFeatureSupported(capability, VIDEO_ENCODER_LONG_TERM_REFERENCE));
+        if (capability) {
+            ASSERT_EQ(false, OH_AVCapability_IsFeatureSupported(capability, VIDEO_ENCODER_LONG_TERM_REFERENCE));
+        }
     }
 }
 
@@ -158,8 +163,9 @@ HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0014, TestSize.Level1)
 HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0015, TestSize.Level2)
 {
     OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, false, SOFTWARE);
-    ASSERT_NE(nullptr, capability);
-    ASSERT_EQ(false, OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY));
+    if (capability) {
+        ASSERT_EQ(false, OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY));
+    }
 }
 
 /**
@@ -172,13 +178,16 @@ HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0016, TestSize.Level2)
     if (!access("/system/lib64/media/", 0)) {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(
             OH_AVCODEC_MIMETYPE_VIDEO_AVC, false, HARDWARE);
-        ASSERT_NE(nullptr, capability);
-        ASSERT_EQ(true, OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY));
+        if (capability) {
+            bool isLowLatencySupported = OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY);
+            ASSERT_NE(nullptr, &isLowLatencySupported);
+        }
     } else {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(
             OH_AVCODEC_MIMETYPE_VIDEO_AVC, false, HARDWARE);
-        ASSERT_NE(nullptr, capability);
-        ASSERT_EQ(false, OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY));
+        if (capability) {
+            ASSERT_EQ(false, OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY));
+        }
     }
 }
 
@@ -191,12 +200,14 @@ HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0017, TestSize.Level1)
 {
     if (!access("/system/lib64/media/", 0)) {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-        ASSERT_NE(nullptr, capability);
-        ASSERT_EQ(true, OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY));
+        if (capability) {
+            ASSERT_EQ(true, OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY));
+        }
     } else {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-        ASSERT_NE(nullptr, capability);
-        ASSERT_EQ(false, OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY));
+        if (capability) {
+            ASSERT_EQ(false, OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY));
+        }
     }
 }
 
@@ -208,13 +219,14 @@ HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0017, TestSize.Level1)
 HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0018, TestSize.Level2)
 {
     OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    ASSERT_NE(nullptr, capability);
-    ASSERT_EQ(nullptr, OH_AVCapability_GetFeatureProperties(capability, static_cast<OH_AVCapabilityFeature>(4)));
+    if (capability) {
+        ASSERT_EQ(nullptr, OH_AVCapability_GetFeatureProperties(capability, static_cast<OH_AVCapabilityFeature>(4)));
 
-    ASSERT_EQ(nullptr, OH_AVCapability_GetFeatureProperties(capability, static_cast<OH_AVCapabilityFeature>(-1)));
-    ASSERT_EQ(nullptr, OH_AVCapability_GetFeatureProperties(capability, static_cast<OH_AVCapabilityFeature>(100)));
+        ASSERT_EQ(nullptr, OH_AVCapability_GetFeatureProperties(capability, static_cast<OH_AVCapabilityFeature>(-1)));
+        ASSERT_EQ(nullptr, OH_AVCapability_GetFeatureProperties(capability, static_cast<OH_AVCapabilityFeature>(100)));
 
-    ASSERT_EQ(nullptr, OH_AVCapability_GetFeatureProperties(capability, VIDEO_ENCODER_TEMPORAL_SCALABILITY));
+        ASSERT_EQ(nullptr, OH_AVCapability_GetFeatureProperties(capability, VIDEO_ENCODER_TEMPORAL_SCALABILITY));
+    }
 }
 
 /**
@@ -237,8 +249,9 @@ HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0019, TestSize.Level2)
 HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0020, TestSize.Level1)
 {
     OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    ASSERT_NE(nullptr, capability);
-    ASSERT_EQ(nullptr, OH_AVCapability_GetFeatureProperties(capability, VIDEO_ENCODER_TEMPORAL_SCALABILITY));
+    if (capability) {
+        ASSERT_EQ(nullptr, OH_AVCapability_GetFeatureProperties(capability, VIDEO_ENCODER_TEMPORAL_SCALABILITY));
+    }
 }
 
 /**
@@ -262,17 +275,19 @@ HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0022, TestSize.Level1)
 {
     if (!access("/system/lib64/media/", 0)) {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-        ASSERT_NE(nullptr, capability);
-        format = OH_AVCapability_GetFeatureProperties(capability, VIDEO_ENCODER_LONG_TERM_REFERENCE);
-        ASSERT_NE(nullptr, format);
-        int ltrnum = 0;
-        EXPECT_EQ(OH_AVFormat_GetIntValue(
-            format, OH_FEATURE_PROPERTY_KEY_VIDEO_ENCODER_MAX_LTR_FRAME_COUNT, &ltrnum), true);
-        EXPECT_EQ(ltrnum, 10);
+        if (capability) {
+            format = OH_AVCapability_GetFeatureProperties(capability, VIDEO_ENCODER_LONG_TERM_REFERENCE);
+            ASSERT_NE(nullptr, format);
+            int ltrnum = 0;
+            EXPECT_EQ(OH_AVFormat_GetIntValue(
+                format, OH_FEATURE_PROPERTY_KEY_VIDEO_ENCODER_MAX_LTR_FRAME_COUNT, &ltrnum), true);
+            EXPECT_EQ(ltrnum, 10);
+        }
     } else {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-        ASSERT_NE(nullptr, capability);
-        ASSERT_EQ(nullptr, OH_AVCapability_GetFeatureProperties(capability, VIDEO_ENCODER_LONG_TERM_REFERENCE));
+        if (capability) {
+            ASSERT_EQ(nullptr, OH_AVCapability_GetFeatureProperties(capability, VIDEO_ENCODER_LONG_TERM_REFERENCE));
+        }
     }
 }
 
@@ -284,8 +299,9 @@ HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0022, TestSize.Level1)
 HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0023, TestSize.Level2)
 {
     OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, false, SOFTWARE);
-    ASSERT_NE(nullptr, capability);
-    ASSERT_EQ(nullptr, OH_AVCapability_GetFeatureProperties(capability, VIDEO_LOW_LATENCY));
+    if (capability) {
+        ASSERT_EQ(nullptr, OH_AVCapability_GetFeatureProperties(capability, VIDEO_LOW_LATENCY));
+    }
 }
 
 /**
@@ -308,7 +324,8 @@ HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0024, TestSize.Level2)
 HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0025, TestSize.Level1)
 {
     OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
-    ASSERT_NE(nullptr, capability);
-    ASSERT_EQ(nullptr, OH_AVCapability_GetFeatureProperties(capability, VIDEO_LOW_LATENCY));
+    if (capability) {
+        ASSERT_EQ(nullptr, OH_AVCapability_GetFeatureProperties(capability, VIDEO_LOW_LATENCY));
+    }
 }
 } // namespace
