@@ -63,6 +63,10 @@ export default function comSizeAbilityTest_03() {
     it('comSizeAbilityTestJsunit_07', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_07 START')
       await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      let btn = await driver.findComponent(ON.id('comSizeAbilityTest_03_to_1'));
+      await btn.click()
+      await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("Circle_Size");
       let modePosition1: componentUtils.ComponentInfo = componentUtils.getRectangleById("Circle_Father");
       let Size = modePosition.size
@@ -75,7 +79,6 @@ export default function comSizeAbilityTest_03() {
       let Transform = modePosition.transform
       let Scale = modePosition.scale
       let Rotate = modePosition.rotate
-      let driver = Driver.create();
       let button = await driver.findComponent(ON.id('Circle_Size'));
       let rect = await button.getBounds();
       console.info("[comSizeAbilityTestJsunit_07] component rect is: " + JSON.stringify(rect))
@@ -88,8 +91,8 @@ export default function comSizeAbilityTest_03() {
       console.info("[comSizeAbilityTestJsunit_07] component Scale is: " + JSON.stringify(Scale))
       console.info("[comSizeAbilityTestJsunit_07] component Rotate is: " + JSON.stringify(Rotate))
       await CommonFunc.sleep(1000);
-      expect(Math.abs(SizeWidth - Math.round(vp2px(100))) <= 1).assertTrue();
-      expect(Math.abs(SizeHeight - Math.round(vp2px(40))) <= 1).assertTrue();
+      expect(Math.abs(SizeWidth - Math.round(vp2px(310))) <= 1).assertTrue();
+      expect(Math.abs(SizeHeight - Math.round(vp2px(140))) <= 1).assertTrue();
       expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
       expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
       expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');
@@ -107,6 +110,10 @@ export default function comSizeAbilityTest_03() {
     it('comSizeAbilityTestJsunit_08', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_08 START')
       await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      let btn = await driver.findComponent(ON.id('comSizeAbilityTest_03_to_2'));
+      await btn.click()
+      await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("Column_Size");
       let modePosition1: componentUtils.ComponentInfo = componentUtils.getRectangleById("Column_Father");
       let Size = modePosition.size
@@ -119,7 +126,6 @@ export default function comSizeAbilityTest_03() {
       let Transform = modePosition.transform
       let Scale = modePosition.scale
       let Rotate = modePosition.rotate
-      let driver = Driver.create();
       let button = await driver.findComponent(ON.id('Column_Size'));
       let rect = await button.getBounds();
       console.info("[comSizeAbilityTestJsunit_08] component rect is: " + JSON.stringify(rect))
@@ -132,8 +138,8 @@ export default function comSizeAbilityTest_03() {
       console.info("[comSizeAbilityTestJsunit_08] component Scale is: " + JSON.stringify(Scale))
       console.info("[comSizeAbilityTestJsunit_08] component Rotate is: " + JSON.stringify(Rotate))
       await CommonFunc.sleep(1000);
-      expect(Math.abs(SizeWidth - Math.round(vp2px(100))) <= 1).assertTrue();
-      expect(Math.abs(SizeHeight - Math.round(vp2px(40))) <= 1).assertTrue();
+      expect(Math.abs(SizeWidth - Math.round(vp2px(160))) <= 1).assertTrue();
+      expect(Math.abs(SizeHeight - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
       expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
       expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');
@@ -151,6 +157,10 @@ export default function comSizeAbilityTest_03() {
     it('comSizeAbilityTestJsunit_09', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_09 START')
       await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      let btn = await driver.findComponent(ON.id('comSizeAbilityTest_03_to_3'));
+      await btn.click()
+      await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("Counter_Size");
       let modePosition1: componentUtils.ComponentInfo = componentUtils.getRectangleById("Counter_Father");
       let Size = modePosition.size
@@ -163,7 +173,6 @@ export default function comSizeAbilityTest_03() {
       let Transform = modePosition.transform
       let Scale = modePosition.scale
       let Rotate = modePosition.rotate
-      let driver = Driver.create();
       let button = await driver.findComponent(ON.id('Counter_Size'));
       let rect = await button.getBounds();
       console.info("[comSizeAbilityTestJsunit_09] component rect is: " + JSON.stringify(rect))
@@ -176,8 +185,8 @@ export default function comSizeAbilityTest_03() {
       console.info("[comSizeAbilityTestJsunit_09] component Scale is: " + JSON.stringify(Scale))
       console.info("[comSizeAbilityTestJsunit_09] component Rotate is: " + JSON.stringify(Rotate))
       await CommonFunc.sleep(1000);
-      expect(Math.abs(SizeWidth - Math.round(vp2px(100))) <= 1).assertTrue();
-      expect(Math.abs(SizeHeight - Math.round(vp2px(40))) <= 1).assertTrue();
+      expect(Math.abs(SizeWidth - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(SizeHeight - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
       expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
       expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');
@@ -195,6 +204,10 @@ export default function comSizeAbilityTest_03() {
     it('comSizeAbilityTestJsunit_10', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_10 START')
       await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      let btn = await driver.findComponent(ON.id('comSizeAbilityTest_03_to_4'));
+      await btn.click()
+      await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("Divider_Size");
       let modePosition1: componentUtils.ComponentInfo = componentUtils.getRectangleById("Divider_Father");
       let Size = modePosition.size
@@ -207,7 +220,6 @@ export default function comSizeAbilityTest_03() {
       let Transform = modePosition.transform
       let Scale = modePosition.scale
       let Rotate = modePosition.rotate
-      let driver = Driver.create();
       let button = await driver.findComponent(ON.id('Divider_Size'));
       let rect = await button.getBounds();
       console.info("[comSizeAbilityTestJsunit_10] component rect is: " + JSON.stringify(rect))
@@ -220,8 +232,8 @@ export default function comSizeAbilityTest_03() {
       console.info("[comSizeAbilityTestJsunit_10] component Scale is: " + JSON.stringify(Scale))
       console.info("[comSizeAbilityTestJsunit_10] component Rotate is: " + JSON.stringify(Rotate))
       await CommonFunc.sleep(1000);
-      expect(Math.abs(SizeWidth - Math.round(vp2px(100))) <= 1).assertTrue();
-      expect(Math.abs(SizeHeight - Math.round(vp2px(40))) <= 1).assertTrue();
+      expect(Math.abs(SizeWidth - Math.round(vp2px(130))) <= 1).assertTrue();
+      expect(Math.abs(SizeHeight - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
       expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
       expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');

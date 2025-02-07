@@ -36,6 +36,7 @@ struct comSizeAbilityTest_06 {
   ]
   private arr_list: number[] = [0, 1, 2, 3, 4, 5]
   private arr: number[] = [0]
+  scroller: Scroller = new Scroller()
 
   @Builder
   itemHead(text: string) {
@@ -56,10 +57,24 @@ struct comSizeAbilityTest_06 {
   }
 
   build() {
-    Scroll() {
-      Column({ space: 5 }) {
-        Column() {
-          List({ space: 2 }) {
+    Column() {
+      Row() {
+        Button('to_1').onClick(()=>{
+          this.scroller.scrollToIndex(0)
+        }).key('comSizeAbilityTest_06_to_1')
+
+        Button('to_2').onClick(()=>{
+          this.scroller.scrollToIndex(1)
+        }).key('comSizeAbilityTest_06_to_2')
+
+        Button('to_3').onClick(()=>{
+          this.scroller.scrollToIndex(2)
+        }).key('comSizeAbilityTest_06_to_3')
+      }
+
+      List({ space: 5, initialIndex: 0, scroller: this.scroller }) {
+        ListItem() {
+          List({ space: 20 }) {
             ForEach(this.timetable, (item: TimeTable) => {
               ListItemGroup({ header: this.itemHead(item.title), footer: this.itemFoot(item.projects.length) }) {
                 ForEach(item.projects, (project: string) => {
@@ -76,7 +91,7 @@ struct comSizeAbilityTest_06 {
               .key("ListItemGroup_Size")
               .backgroundColor(0xDCDC59) // 浅蓝色的List
               .divider({ strokeWidth: 1, color: Color.Blue }) // 每行之间的分界线
-              .size({ width: 100, height: 50 })
+              .size({ width: 160, height: 100 })
               .translate({ x: 1, y: 1, z: 1 })
               .scale({
                 x: 1,
@@ -95,16 +110,16 @@ struct comSizeAbilityTest_06 {
               })
               .transform(matrix)
             })
-          }.backgroundColor('red').height(50)
+          }.backgroundColor('red').height(200)
         }
 
-        Column() {
-          List({ space: 2, initialIndex: 0 }) {
+        ListItem() {
+          List({ space: 20, initialIndex: 0 }) {
             ForEach(this.arr, (item: number) => {
               ListItem() {
               }
               .key("ListItem_Size")
-              .size({ width: 100, height: 50 })
+              .size({ width: 200, height: 240 })
               .translate({ x: 1, y: 1, z: 1 })
               .scale({
                 x: 1,
@@ -127,8 +142,8 @@ struct comSizeAbilityTest_06 {
           }.backgroundColor('blue')
         }
 
-        Column() {
-          List({ space: 2, initialIndex: 0 }) {
+        ListItem() {
+          List({ space: 20, initialIndex: 0 }) {
             ForEach(this.arr_list, (item: number) => {
               ListItem() {
                 Text('' + item)
@@ -143,7 +158,7 @@ struct comSizeAbilityTest_06 {
           }
           .backgroundColor('black')
           .key("List_Size")
-          .size({ width: 100, height: 50 })
+          .size({ width: 200, height: 200 })
           .translate({ x: 1, y: 1, z: 1 })
           .scale({
             x: 1,

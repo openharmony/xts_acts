@@ -23,15 +23,30 @@ struct comSizeAbilityTest_05 {
     [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown, Color.Black]
   @State currentBp: string = 'unknown'
   @State Number: String[] = ['0', '1', '2', '3', '4']
+  scroller: Scroller = new Scroller()
 
   build() {
-    Scroll() {
-      Column({ space: 20 }) {
-        Column() {
+    Column() {
+      Row() {
+        Button('to_1').onClick(()=>{
+          this.scroller.scrollToIndex(0)
+        }).key('comSizeAbilityTest_05_to_1')
+
+        Button('to_2').onClick(()=>{
+          this.scroller.scrollToIndex(1)
+        }).key('comSizeAbilityTest_05_to_2')
+
+        Button('to_3').onClick(()=>{
+          this.scroller.scrollToIndex(2)
+        }).key('comSizeAbilityTest_05_to_3')
+      }
+
+      List({ space: 5, initialIndex: 0, scroller: this.scroller }) {
+        ListItem() {
           Gauge({ value: 60 })
             .colors([[0x317AF7, 1], [0x5BA854, 1], [0xE08C3A, 1], [0x9C554B, 1]])
             .key("Gauge_Size")
-            .size({ width: 100, height: 50 })
+            .size({ width: 140, height: 140 })
 
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
@@ -52,7 +67,7 @@ struct comSizeAbilityTest_05 {
             .transform(matrix)
         }
 
-        Column() {
+        ListItem() {
           GridRow({
             columns: 3,
             gutter: { x: 5, y: 5 },
@@ -79,7 +94,7 @@ struct comSizeAbilityTest_05 {
           }
           .backgroundColor('green')
           .key("GridRow_Size")
-          .size({ width: 100, height: 50 })
+          .size({ width: 140, height: 140 })
           .translate({ x: 1, y: 1, z: 1 })
           .scale({
             x: 1,
@@ -99,7 +114,7 @@ struct comSizeAbilityTest_05 {
           .transform(matrix)
         }
 
-        Column() {
+        ListItem() {
           Grid() {
             ForEach(this.Number, (day: string) => {
               ForEach(this.Number, (day: string) => {
@@ -119,7 +134,7 @@ struct comSizeAbilityTest_05 {
           .columnsGap(10)
           .rowsGap(10)
           .key("Grid_Size")
-          .size({ width: 100, height: 50 })
+          .size({ width: 360, height: 240 })
           .translate({ x: 1, y: 1, z: 1 })
           .scale({
             x: 1,

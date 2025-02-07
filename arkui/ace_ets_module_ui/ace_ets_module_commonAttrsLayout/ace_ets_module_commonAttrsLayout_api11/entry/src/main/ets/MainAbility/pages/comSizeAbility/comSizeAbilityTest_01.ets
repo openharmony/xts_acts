@@ -22,20 +22,35 @@ struct comSizeAbilityTest_01 {
   private settings: RenderingContextSettings = new RenderingContextSettings(true)
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
   @State text1: string = ''
+  scroller: Scroller = new Scroller()
 
   build() {
-    Scroll() {
-      Column({ space: 20 }) {
-        Column() {
+    Column() {
+      Row() {
+        Button('to_1').onClick(()=>{
+          this.scroller.scrollToIndex(0)
+        }).key('comSizeAbilityTest_01_to_1')
+
+        Button('to_2').onClick(()=>{
+          this.scroller.scrollToIndex(1)
+        }).key('comSizeAbilityTest_01_to_2')
+
+        Button('to_3').onClick(()=>{
+          this.scroller.scrollToIndex(2)
+        }).key('comSizeAbilityTest_01_to_3')
+      }
+
+      List({ space: 5, initialIndex: 0, scroller: this.scroller }) {
+        ListItem() {
           Badge({
             count: 1,
             position: BadgePosition.Left,
             style: { badgeSize: 20, badgeColor: '#FA2A2D' }
           }) {
-            Text('文字部分').width(100).height(20).backgroundColor('blue')
+            Text('文字部分').width(100).height(50).backgroundColor('blue')
           }
           .key("Badge_Size")
-          .size({ width: 100, height: 50 })
+          .size({ width: 170, height: 120 })
           .translate({ x: 1, y: 1, z: 1 })
           .scale({
             x: 1,
@@ -55,10 +70,10 @@ struct comSizeAbilityTest_01 {
           .transform(matrix)
         }
 
-        Column() {
+        ListItem() {
           Button()
             .key("Button_Size")
-            .size({ width: 90, height: 50 })
+            .size({ width: 90, height: 90 })
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
               x: 1,
@@ -78,7 +93,7 @@ struct comSizeAbilityTest_01 {
             .transform(matrix)
         }
 
-        Column() {
+        ListItem() {
           Canvas(this.context)
             .width('100%')
             .height('100%')
@@ -87,7 +102,7 @@ struct comSizeAbilityTest_01 {
               this.context.fillRect(0, 30, 100, 100)
             })
             .key("Canvas_Size")
-            .size({ width: 50, height: 50 })
+            .size({ width: 211, height: 140 })
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
               x: 1,

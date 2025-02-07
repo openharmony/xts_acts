@@ -19,14 +19,33 @@ let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0
 @Entry
 @Component
 struct comSizeAbilityTest_03 {
+  scroller: Scroller = new Scroller()
   build() {
-    Scroll() {
-      Column({ space: 5 }) {
-        Column() {
+    Column() {
+      Row() {
+        Button('to_1').onClick(()=>{
+          this.scroller.scrollToIndex(0)
+        }).key('comSizeAbilityTest_03_to_1').width('25%')
+
+        Button('to_2').onClick(()=>{
+          this.scroller.scrollToIndex(1)
+        }).key('comSizeAbilityTest_03_to_2').width('25%')
+
+        Button('to_3').onClick(()=>{
+          this.scroller.scrollToIndex(2)
+        }).key('comSizeAbilityTest_03_to_3').width('25%')
+
+        Button('to_4').onClick(()=>{
+          this.scroller.scrollToIndex(3)
+        }).key('comSizeAbilityTest_03_to_4').width('25%')
+      }
+
+      List({ space: 5, initialIndex: 0, scroller: this.scroller }) {
+        ListItem() {
           Circle()
             .backgroundColor('red')
             .key("Circle_Size")
-            .size({ width: 100, height: 40 })
+            .size({ width: 310, height: 140 })
 
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
@@ -47,11 +66,11 @@ struct comSizeAbilityTest_03 {
             .transform(matrix)
         }
 
-        Column() {
+        ListItem() {
           Column()
             .backgroundColor('red')
             .key("Column_Size")
-            .size({ width: 100, height: 40 })
+            .size({ width: 160, height: 100 })
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
               x: 1,
@@ -71,10 +90,10 @@ struct comSizeAbilityTest_03 {
             .transform(matrix)
         }
 
-        Column() {
+        ListItem() {
           Counter()
             .key("Counter_Size")
-            .size({ width: 100, height: 40 })
+            .size({ width: 150, height: 100 })
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
               x: 1,
@@ -94,11 +113,11 @@ struct comSizeAbilityTest_03 {
             .transform(matrix)
         }
 
-        Column() {
+        ListItem() {
           Divider()
             .backgroundColor('red')
             .key("Divider_Size")
-            .size({ width: 100, height: 40 })
+            .size({ width: 130, height: 100 })
             .translate({ x: 1, y: 1, z: 1 })
             .scale({
               x: 1,
