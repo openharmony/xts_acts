@@ -22,7 +22,7 @@
 
 namespace ArkUICapiTest {
 
-#define COLUMN_HEIGHT_700 700
+#define COLUMN_HEIGHT_300 300
 #define COLUMN_WIDTH_150 150
 
 #define TEXT_HEIGHT_100 100
