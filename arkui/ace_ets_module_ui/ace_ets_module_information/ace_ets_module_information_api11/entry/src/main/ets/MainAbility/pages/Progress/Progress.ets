@@ -28,8 +28,8 @@ struct progressTest {
               .key("ArkUX_Stage_Progress_updateColor")
               .mask(this.progress)
               .backgroundColor(Color.Pink)
-              .width('500px')
-              .height('100px')
+              .width('90%')
+              .height('5%')
           }
 
           ListItem() {
@@ -37,8 +37,8 @@ struct progressTest {
               .key("ArkUX_Stage_Progress_updateColor_default")
               .mask(this.progress_default)
               .backgroundColor(Color.Pink)
-              .width('500px')
-              .height('100px')
+              .width('90%')
+              .height('5%')
           }
 
           ListItem() {
@@ -48,7 +48,7 @@ struct progressTest {
                 console.info('ArkUX_Stage_Progress_updateColor_restore onClick');
                 this.progress.updateColor(Color.Gray);
               })
-              .fontSize(10)
+              .fontSize(8)
           }
 
           ListItem() {
@@ -59,21 +59,21 @@ struct progressTest {
                   console.info('ArkUX_Stage_Progress_updateColor_Button_0100 onClick');
                   this.progress.updateColor(0x00ff00);
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
               Button("updateColor_0200")
                 .key("ArkUX_Stage_Progress_updateColor_Button_0200")
                 .onClick((event: ClickEvent) => {
                   console.info('ArkUX_Stage_Progress_updateColor_Button_0200 onClick');
                   this.progress.updateColor("#FFFD0000");
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
               Button("updateColor_0300")
                 .key("ArkUX_Stage_Progress_updateColor_Button_0300")
                 .onClick((event: ClickEvent) => {
                   console.info('ArkUX_Stage_Progress_updateColor_Button_0300 onClick');
                   this.progress.updateColor("#FF8A2BE2");
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
             }
           }
 
@@ -85,21 +85,21 @@ struct progressTest {
                   console.info('ArkUX_Stage_Progress_updateColor_Button_0400 onClick');
                   this.progress.updateColor(Color.Pink);
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
               Button("updateColor_0500")
                 .key("ArkUX_Stage_Progress_updateColor_Button_0500")
                 .onClick((event: ClickEvent) => {
                   console.info('ArkUX_Stage_Progress_updateColor_Button_0500 onClick');
                   this.progress.updateColor($r("app.color.Progress_updateColor"));
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
               Button("updateColor_0600")
                 .key("ArkUX_Stage_Progress_updateColor_Button_0600")
                 .onClick((event: ClickEvent) => {
                   console.info('ArkUX_Stage_Progress_updateColor_Button_0600 onClick');
                   this.progress.updateColor(0xff006cde);
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
             }
           }
 
@@ -111,21 +111,21 @@ struct progressTest {
                   console.info('ArkUX_Stage_Progress_updateColor_Button_0700 onClick');
                   this.progress.updateColor("#33006cde");
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
               Button("updateColor_0800")
                 .key("ArkUX_Stage_Progress_updateColor_Button_0800")
                 .onClick((event: ClickEvent) => {
                   console.info('ArkUX_Stage_Progress_updateColor_Button_0800 onClick');
                   this.progress.updateColor("rgba(0,108,222,0.8)");
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
               Button("updateColor_0900")
                 .key("ArkUX_Stage_Progress_updateColor_Button_0900")
                 .onClick((event: ClickEvent) => {
                   console.info('ArkUX_Stage_Progress_updateColor_Button_0900 onClick');
                   this.progress.updateColor($r("app.color.Progress_updateColor_transparency"));
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
             }
           }
 
@@ -137,21 +137,21 @@ struct progressTest {
                   console.info('ArkUX_Stage_Progress_updateColor_Button_1000 onClick');
                   this.progress.updateColor("");
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
               Button("updateColor_1100")
                 .key("ArkUX_Stage_Progress_updateColor_Button_1100")
                 .onClick((event: ClickEvent) => {
                   console.info('ArkUX_Stage_Progress_updateColor_Button_1100 onClick');
                   this.progress.updateColor(null);
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
               Button("updateColor_1200")
                 .key("ArkUX_Stage_Progress_updateColor_Button_1200")
                 .onClick((event: ClickEvent) => {
                   console.info('ArkUX_Stage_Progress_updateColor_Button_1200 onClick');
                   this.progress.updateColor(undefined);
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
             }
           }
 
@@ -163,7 +163,7 @@ struct progressTest {
                   console.info('ArkUX_Stage_Progress_updateColor_Button_1300 onClick');
                   this.progress.updateColor('bgr(138,43,226)');
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
               Button("updateColor_1400")
                 .key("ArkUX_Stage_Progress_updateColor_Button_1400")
                 .onClick((event: ClickEvent) => {
@@ -171,7 +171,7 @@ struct progressTest {
                   this.progress.updateColor("rgba(0,108,222,70)");
                   this.progress.updateColor(Color.Pink);
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
               Button("updateColor_1500")
                 .key("ArkUX_Stage_Progress_updateColor_Button_1500")
                 .onClick((event: ClickEvent) => {
@@ -179,7 +179,7 @@ struct progressTest {
                   this.progress.updateColor("rgba(0,108,222,70)");
                   this.progress.updateColor(undefined);
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
             }
           }
 
@@ -191,21 +191,21 @@ struct progressTest {
                   console.info('ArkUX_Stage_Progress_updateColor_Button_1600 onClick');
                   this.progress.updateColor(0x00ff00);
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
               Button("updateProgress_0100")
                 .key("ArkUX_Stage_Progress_updateProgress_Button_0100")
                 .onClick((event: ClickEvent) => {
                   console.info('ArkUX_Stage_Progress_updateProgress_Button_0100 onClick');
                   this.progress.updateProgress(0);
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
               Button("updateProgress_0200")
                 .key("ArkUX_Stage_Progress_updateProgress_Button_0200")
                 .onClick((event: ClickEvent) => {
                   console.info('ArkUX_Stage_Progress_updateProgress_Button_0200 onClick');
                   this.progress.updateProgress(5);
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
             }
           }
 
@@ -217,7 +217,7 @@ struct progressTest {
                   console.info('ArkUX_Stage_Progress_updateProgress_Button_0500 onClick');
                   this.progress.updateProgress(null);
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
             }
           }
 
@@ -229,14 +229,14 @@ struct progressTest {
                   console.info('ArkUX_Stage_Progress_updateProgress_Button_0600 onClick');
                   this.progress.updateProgress(undefined);
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
               Button("updateProgress_0700")
                 .key("ArkUX_Stage_Progress_updateProgress_Button_0700")
                 .onClick((event: ClickEvent) => {
                   console.info('ArkUX_Stage_Progress_updateProgress_Button_0700 onClick');
                   this.progress.updateProgress(-2);
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
             }
           }
 
@@ -249,7 +249,7 @@ struct progressTest {
                   this.progress.updateProgress(9);
                   this.progress.updateProgress(1);
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
               Button("updateProgress_1000")
                 .key("ArkUX_Stage_Progress_updateProgress_Button_1000")
                 .onClick((event: ClickEvent) => {
@@ -257,7 +257,7 @@ struct progressTest {
                   this.progress.updateProgress(4);
                   this.progress.updateProgress(null);
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
               Button("updateProgress_1100")
                 .key("ArkUX_Stage_Progress_updateProgress_Button_1100")
                 .onClick((event: ClickEvent) => {
@@ -265,13 +265,11 @@ struct progressTest {
                   this.progress.updateProgress(-2);
                   this.progress.updateProgress(5);
                 })
-                .fontSize(10)
+                .fontSize(8).height('5%').padding(5)
             }
           }
-        }
-      }
-      .width('100%')
-    }
-    .height('100%')
+        }.width('80%')
+      }.width('100%').alignItems(HorizontalAlign.Center)
+    }.height('100%')
   }
 }
