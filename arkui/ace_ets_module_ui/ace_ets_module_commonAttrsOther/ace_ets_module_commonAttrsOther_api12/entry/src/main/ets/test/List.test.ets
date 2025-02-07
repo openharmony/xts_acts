@@ -12,13 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import postDelayedFrameCallbackTest from './UIContextTest/postDelayedFrameCallbackTest';
+import postFrameCallbackTest from './UIContextTest/postFrameCallbackTest';
+import getOverlayManager from './UIContextTest/getOverlayManager.test';
+import OverlayManagerTest_002 from './UIContextTest/OverlayManagerTest_002.test';
+import OverlayManagerTest_005 from './UIContextTest/OverlayManagerTest_005.test';
 import OverlayManagerTest_001 from './UIContextTest/OverlayManagerTest_001.test'
-import OverlayManagerTest_002 from './UIContextTest/OverlayManagerTest_002.test'
+
 import OverlayManagerTest_003 from './UIContextTest/OverlayManagerTest_003.test'
 import OverlayManagerTest_004 from './UIContextTest/OverlayManagerTest_004.test'
-import OverlayManagerTest_005 from './UIContextTest/OverlayManagerTest_005.test'
+
 import OverlayManagerTest_006 from './UIContextTest/OverlayManagerTest_006.test'
-import getOverlayManager from './UIContextTest/getOverlayManager.test'
+
 import getContextMenuController from './UIContextTest/getContextMenuController.test'
 import customPropertyTest from './customPropertyTest/customProperty.test'
 import callbackTest from './callbackTest/callbackTest.test'
@@ -34,16 +40,18 @@ import getPageInfoByUniqueIdTest from './UIContextTest/getPageInfoByUniqueId.tes
 import setFrameRateRangeTest from './UIContextTest/setFrameRateRange.test'
 import AttributeUpdaterTest from './AttributeUpdaterTest/AttributeUpdater.test'
 import componentSnapshotTest from './componentSnapshotTest/componentSnapshot.test'
-import postDelayedFrameCallbackTest from './UIContextTest/postDelayedFrameCallbackTest';
-import postFrameCallbackTest from './UIContextTest/postFrameCallbackTest';
+
 export default function testsuite() {
+  postDelayedFrameCallbackTest();
+  postFrameCallbackTest();
+  getOverlayManager();
   OverlayManagerTest_001()
   OverlayManagerTest_002()
+  OverlayManagerTest_005()
   OverlayManagerTest_003()
   OverlayManagerTest_004()
-  OverlayManagerTest_005()
   OverlayManagerTest_006()
-  getOverlayManager()
+  
   getContextMenuController()
   customPropertyTest()
   callbackTest()
@@ -59,6 +67,5 @@ export default function testsuite() {
   setFrameRateRangeTest();
   AttributeUpdaterTest();
   componentSnapshotTest();
-  postDelayedFrameCallbackTest();
-  postFrameCallbackTest();
+  
 }

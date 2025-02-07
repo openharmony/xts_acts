@@ -25,8 +25,8 @@ struct ComponentSnapshotExample {
   build() {
     Column() {
       Row() {
-        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.icon')).autoResize(true).width(200).height(200).margin(5).id("root")
+        Image(this.pixmap).width(20).height(20).border({ color: Color.Black, width: 2 }).margin(5)
+        Image($r('app.media.icon')).autoResize(true).width(20).height(20).margin(5).id("root")
       }
       Button(this.waitUntilRenderFinished.toString()).id('ComponentSnapshot_id')
         .onClick(() => {
