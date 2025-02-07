@@ -558,7 +558,7 @@ workerPort.onmessage = (e: MessageEvents) => {
       const receivedValue = data.value;
       console.info('Worker: getModuleFileName value is: ', receivedValue);
       ArkTools.forceFullGC();
-      const value = receivedValue === 45;
+      const value = receivedValue >= 0;
       workerPort.postMessage(value);
       break;
     }

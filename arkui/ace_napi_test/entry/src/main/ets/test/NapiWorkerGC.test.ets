@@ -2230,5 +2230,88 @@ export default function NapiWorkerGCTest() {
       }
       console.info(`${caseName} test end`);
     });
+    /**
+     * @tc.number    : SUB_ACE_BASIC_ETS_NAPI_WORKER_SENDABLE_GC_0600
+     * @tc.name      : testNapiWorkerSendableGC0006
+     * @tc.desc      : NapiWorkerTest napiDeSerializeTest
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiWorkerSendableGC0006', 0, async () => {
+      const caseName = 'testNapiWorkerSendableGC0006';
+      console.info(`${caseName} test start`);
+      try {
+        const myWorker = new worker.ThreadWorker('../workers/WorkerGC.ets');
+        const napiCreateSendableTypedArrayValue = napitest.NapiCreateSendableTypedArray();
+        ArkTools.forceFullGC();
+        const message: WorkerMessage = {
+          messageType: 'napiCreateSendableTypedArrayTest',
+          value: napiCreateSendableTypedArrayValue,
+        };
+        myWorker.postMessageWithSharedSendable(message);
+        await handleWorkerMessages(myWorker, caseName);
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+    });
+    /**
+     * @tc.number    : SUB_ACE_BASIC_ETS_NAPI_WORKER_SENDABLE_GC_0700
+     * @tc.name      : testNapiWorkerSendableGC0007
+     * @tc.desc      : NapiWorkerTest napiDeSerializeTest
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiWorkerSendableGC0007', 0, async () => {
+      const caseName = 'testNapiWorkerSendableGC0007';
+      console.info(`${caseName} test start`);
+      try {
+        const myWorker = new worker.ThreadWorker('../workers/WorkerGC.ets');
+        const napiCreateSendableObjectValue = napitest.NapiCreateSendableObject();
+        napitest.NapiWrapSendable(napiCreateSendableObjectValue, 'data');
+        ArkTools.forceFullGC();
+        const message: WorkerMessage = {
+          messageType: 'napiWrapSendableTest',
+          value: napiCreateSendableObjectValue,
+        };
+        myWorker.postMessageWithSharedSendable(message);
+        await handleWorkerMessages(myWorker, caseName);
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+    });
+    /**
+     * @tc.number    : SUB_ACE_BASIC_ETS_NAPI_WORKER_SENDABLE_GC_0800
+     * @tc.name      : testNapiWorkerSendableGC0008
+     * @tc.desc      : NapiWorkerTest napiDeSerializeTest
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiWorkerSendableGC0008', 0, async () => {
+      const caseName = 'testNapiWorkerSendableGC0008';
+      console.info(`${caseName} test start`);
+      try {
+        const myWorker = new worker.ThreadWorker('../workers/WorkerGC.ets');
+        const napiCreateSendableObjectValue = napitest.NapiCreateSendableObject();
+        napitest.NapiWrapSendableWithSize(napiCreateSendableObjectValue, 'data');
+        ArkTools.forceFullGC();
+        const message: WorkerMessage = {
+          messageType: 'napiWrapSendableWithSizeTest',
+          value: napiCreateSendableObjectValue,
+        };
+        myWorker.postMessageWithSharedSendable(message);
+        await handleWorkerMessages(myWorker, caseName);
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+    });
   })
 }
