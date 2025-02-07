@@ -54,6 +54,18 @@ struct ListVisibleExample {
     Column() {
       Text(this.message).id('listVisible_mess')
       Text(this.message1).id('itemVisible_mess')
+      Button('scroll 150').id('listVisible_1')
+        .height('5%')
+        .onClick(() => { // 点击后下滑指定距离150.0vp
+          this.scroller.scrollBy(0, 150)
+        })
+        .margin(30)
+
+      Button('scroll 300').id('listVisible_2')
+        .height('5%')
+        .onClick(() => {
+          this.scroller.scrollBy(0, 300)
+        })
 
       List({ space: 20, initialIndex: 0, scroller: this.scroller }) {
         ForEach(this.visTable, (item: visTable) => {
@@ -78,27 +90,14 @@ struct ListVisibleExample {
         this.message = 'onScrollVisibleContentChange: '+ start.itemGroupArea
         this.message1 = 'itemIndexInGroup: '+ start.itemIndexInGroup
         console.log(' start index: ' + start.index +
-        ' start item group area: ' + start.itemGroupArea +
-        ' start index in group: ' + start.itemIndexInGroup)
+          ' start item group area: ' + start.itemGroupArea +
+          ' start index in group: ' + start.itemIndexInGroup)
         console.log(' end index: ' + end.index +
-        ' end item group area: ' + end.itemGroupArea +
-        ' end index in group: ' + end.itemIndexInGroup)
+          ' end item group area: ' + end.itemGroupArea +
+          ' end index in group: ' + end.itemIndexInGroup)
       })
       .width('90%')
       .height('70%')
-
-      Button('scroll 150').id('listVisible_1')
-        .height('5%')
-        .onClick(() => { // 点击后下滑指定距离150.0vp
-          this.scroller.scrollBy(0, 150)
-        })
-        .margin(30)
-
-      Button('scroll 300').id('listVisible_2')
-        .height('5%')
-        .onClick(() => {
-          this.scroller.scrollBy(0, 300)
-        })
     }
     .width('100%')
     .height('100%')

@@ -71,6 +71,7 @@ struct AlphabetIndexerEnable {
 
         AlphabetIndexer({ arrayValue: this.value, selected: 0 })
           .id('alphabet_enable')
+          .autoCollapse(false) // 关闭自适应折叠模式
           .selectedColor(0xFFFFFF) // 选中项文本颜色
           .popupColor(0xFFFAF0) // 弹出框文本颜色
           .usingPopup(true) // 是否显示弹出框
