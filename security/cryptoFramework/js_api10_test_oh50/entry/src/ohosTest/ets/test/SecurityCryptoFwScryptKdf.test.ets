@@ -720,7 +720,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
           for (let secret of secrets) {
             let res: secretResult = secret as secretResult;
             expect(res.ret).assertFalse();
-            expect(res.code).assertEqual(cryptoFramework.Result.ERR_CRYPTO_OPERATION);
+            expect(res.code).assertEqual(cryptoFramework.Result.INVALID_PARAMS);
           }
         });
         taskpool.cancel(taskGroup);
@@ -777,7 +777,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
       try {
         let n: number = 1024;
         let p: number = 1;
-        let r: number = -1; // 透传openssl后数据反转
+        let r: number = -1;
         let keySize: number = 16;
         let maxMemory: number = p * 128;
 
@@ -788,7 +788,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
           for (let secret of secrets) {
             let res: secretResult = secret as secretResult;
             expect(res.ret).assertFalse();
-            expect(res.code).assertEqual(cryptoFramework.Result.ERR_CRYPTO_OPERATION);
+            expect(res.code).assertEqual(cryptoFramework.Result.INVALID_PARAMS);
           }
         });
         taskpool.cancel(taskGroup);
