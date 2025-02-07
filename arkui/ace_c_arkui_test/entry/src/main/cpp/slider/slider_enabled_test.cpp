@@ -106,7 +106,7 @@ napi_value SliderEnabledTest::CreateNativeNode(napi_env env, napi_callback_info 
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
 
     // set height
-    ArkUI_NumberValue col_height_value[] = {{.f32 = COLUMN_HEIGHT_700}};
+    ArkUI_NumberValue col_height_value[] = {{.f32 = COLUMN_HEIGHT_150}};
     ArkUI_AttributeItem col_height_item = {col_height_value, sizeof(col_height_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(column, NODE_HEIGHT, &col_height_item);
 
