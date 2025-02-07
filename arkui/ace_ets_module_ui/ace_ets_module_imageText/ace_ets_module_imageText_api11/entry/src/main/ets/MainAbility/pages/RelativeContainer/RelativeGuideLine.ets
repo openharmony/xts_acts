@@ -19,7 +19,7 @@ interface linePosition1 {
 @Entry
 @Component
 struct RelativeGuideLine {
-  @State RelWidth: string = '300'
+  @State RelWidth: string = '70%'
   @State guideLineDir1: Axis = Axis.Horizontal
   @State guideLineDir2: Axis = Axis.Vertical
   @State buttonAlign: VerticalAlign = VerticalAlign.Top
@@ -39,101 +39,99 @@ struct RelativeGuideLine {
             left: { anchor: this.anchor2, align: HorizontalAlign.Start }
           })
           .key('RelButton')
-
       }
       .key('RelativeGuideLine1')
-      .width(this.RelWidth).height(300)
-      .margin({left: 50, top:100})
+      .width(this.RelWidth).height('60%')
+      .margin({left: 50, top: 50})
       .backgroundColor(Color.Grey)
       .guideLine([
         {id:"guideLine1", direction: this.guideLineDir1, position: this.linePosition},
         {id:"guideLine2", direction: this.guideLineDir2, position: this.linePosition}
-
       ])
 
-      Row(){
-        // start
-        Button('changeDir').onClick(() => {
-          this.guideLineDir1 = Axis.Vertical
-        }).key('changeDir')
 
-        Button('changeId').onClick(() => {
-          this.guideLineDir1 = Axis.Horizontal
-          this.guideLineDir2 = Axis.Vertical
-          this.anchor2 = 'guideLine2'
-        }).key('changeId')
-      }
+      Column() {
+        Row(){
+          // start
+          Button('changeDir').onClick(() => {
+            this.guideLineDir1 = Axis.Vertical
+          }).key('changeDir')
 
-      Row(){
-        Button('allNoSet').onClick(() => {
-          this.anchor2 = 'guideLine1'
-          this.linePosition = {}
-        }).key('allNoSet')
+          Button('changeId').onClick(() => {
+            this.guideLineDir1 = Axis.Horizontal
+            this.guideLineDir2 = Axis.Vertical
+            this.anchor2 = 'guideLine2'
+          }).key('changeId')
+        }.height('20%')
 
-        Button('setStartVp').onClick(() => {
-          this.anchor2 = 'guideLine1'
-          this.guideLineDir1 = Axis.Horizontal
-          this.linePosition = { start: 50 }
-        }).key('setStartVp')
+        Row(){
+          Button('allNoSet').onClick(() => {
+            this.anchor2 = 'guideLine1'
+            this.linePosition = {}
+          }).key('allNoSet')
 
-      }
+          Button('setStartVp').onClick(() => {
+            this.anchor2 = 'guideLine1'
+            this.guideLineDir1 = Axis.Horizontal
+            this.linePosition = { start: 50 }
+          }).key('setStartVp')
+        }.height('20%')
 
-      Row(){
-        Button('setStartPx').onClick(() => {
-          this.anchor2 = 'guideLine1'
-          this.guideLineDir1 = Axis.Horizontal
-          this.linePosition = { start: '50px' }
-        }).key('setStartPx')
+        Row(){
+          Button('setStartPx').onClick(() => {
+            this.anchor2 = 'guideLine1'
+            this.guideLineDir1 = Axis.Horizontal
+            this.linePosition = { start: '50px' }
+          }).key('setStartPx')
 
 
-        Button('setStartLpx').onClick(() => {
-          this.anchor2 = 'guideLine1'
-          this.guideLineDir1 = Axis.Horizontal
-          this.linePosition = { start: '50lpx' }
-        }).key('setStartLpx')
+          Button('setStartLpx').onClick(() => {
+            this.anchor2 = 'guideLine1'
+            this.guideLineDir1 = Axis.Horizontal
+            this.linePosition = { start: '50lpx' }
+          }).key('setStartLpx')
 
-        Button('setStartPer').onClick(() => {
-          this.anchor2 = 'guideLine1'
-          this.guideLineDir1 = Axis.Horizontal
-          this.linePosition = { start: '50%' }
-        }).key('setStartPer')
+          Button('setStartPer').onClick(() => {
+            this.anchor2 = 'guideLine1'
+            this.guideLineDir1 = Axis.Horizontal
+            this.linePosition = { start: '50%' }
+          }).key('setStartPer')
+        }.height('20%')
 
-      }
+        Row() {
+          Button('setStartRes').onClick(() => {
+            this.anchor2 = 'guideLine1'
+            this.guideLineDir1 = Axis.Horizontal
+            this.linePosition = { start: $r('app.string.start_50') }
+          }).key('setStartRes')
 
-      Row() {
-        Button('setStartRes').onClick(() => {
-          this.anchor2 = 'guideLine1'
-          this.guideLineDir1 = Axis.Horizontal
-          this.linePosition = { start: $r('app.string.start_50') }
-        }).key('setStartRes')
+          Button('changeWidth').onClick(() => {
+            this.RelWidth = 'auto'
+            this.guideLineDir1 = Axis.Vertical
+            this.linePosition = { start: 50 }
+          }).key('changeWidth')
 
-        Button('changeWidth').onClick(() => {
-          this.RelWidth = 'auto'
-          this.guideLineDir1 = Axis.Vertical
-          this.linePosition = { start: 50 }
-        }).key('changeWidth')
+          Button('start 50%').onClick(() => {
+            this.RelWidth = 'auto'
+            this.guideLineDir1 = Axis.Vertical
+            this.linePosition = { start: '50%' }
+          }).key('changeWidth2')
+        }.height('20%')
 
-        Button('start 50%').onClick(() => {
-          this.RelWidth = 'auto'
-          this.guideLineDir1 = Axis.Vertical
-          this.linePosition = { start: '50%' }
-        }).key('changeWidth2')
-      }
+        Row() {
+          Button('end 50').onClick(() => {
+            this.RelWidth = 'auto'
+            this.guideLineDir1 = Axis.Vertical
+            this.linePosition = { end: 50 }
+          }).key('changeWidth3')
 
-      Row() {
-        Button('end 50').onClick(() => {
-          this.RelWidth = 'auto'
-          this.guideLineDir1 = Axis.Vertical
-          this.linePosition = { end: 50 }
-        }).key('changeWidth3')
-
-        Button('start 80').onClick(() => {
-          this.RelWidth = '300'
-          this.guideLineDir1 = Axis.Horizontal
-          this.linePosition = { start: 80 }
-        }).key('changeStart4')
-      }
-
+          Button('start 80').onClick(() => {
+            this.RelWidth = '300'
+            this.guideLineDir1 = Axis.Horizontal
+            this.linePosition = { start: 80 }
+          }).key('changeStart4')
+        }.height('20%')
+      }.height('10%')
     }
     .height('100%')
   }

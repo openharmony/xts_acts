@@ -54,8 +54,11 @@ export default function RelativeChain8() {
 
       await CommonFunc.sleep(1000);
       let rel = CommonFunc.getComponentRect('RelativeChain8');
+      let rel_width = rel.right - rel.left;
+      let rel_height = rel.bottom - rel.top;
+      console.info("[RelativeChain8_001] rel rect_value is: " + JSON.stringify(rel));
       let driver: Driver = Driver.create();
-      await driver.mouseClick({x: Math.round(rel.left + vp2px(50)), y: Math.round(rel.top + vp2px(80))}, MouseButton.MOUSE_BUTTON_LEFT);
+      await driver.mouseClick({x: Math.round(rel.left + rel_width * 0.2), y: Math.round(rel.top + rel_height * 0.5)}, MouseButton.MOUSE_BUTTON_LEFT);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('RelativeChain8Text');
       await CommonFunc.sleep(200);
@@ -80,8 +83,11 @@ export default function RelativeChain8() {
 
       await CommonFunc.sleep(1000);
       let rel = CommonFunc.getComponentRect('RelativeChain82');
+      let rel_width = rel.right - rel.left;
+      let rel_height = rel.bottom - rel.top;
+      console.info("[RelativeChain8_002] rel rect_value is: " + JSON.stringify(rel));
       let driver: Driver = Driver.create();
-      await driver.mouseClick({x: Math.round(rel.left + vp2px(50)), y: Math.round(rel.top + vp2px(80))}, MouseButton.MOUSE_BUTTON_LEFT);
+      await driver.mouseClick({x: Math.round(rel.left + rel_width * 0.2), y: Math.round(rel.top + rel_height * 0.5)}, MouseButton.MOUSE_BUTTON_LEFT);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('RelativeChain8Text');
       await CommonFunc.sleep(200);

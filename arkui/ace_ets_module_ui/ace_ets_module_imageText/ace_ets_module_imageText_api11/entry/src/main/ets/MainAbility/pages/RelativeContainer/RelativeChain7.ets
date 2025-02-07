@@ -16,8 +16,8 @@
 @Component
 struct RelativeChain7 {
   @State RelativeChain: ChainStyle = ChainStyle.SPREAD
-  @State RelativeWidth: number = 100
-  @State RelativeHeight: number = 100
+  @State RelativeWidth: number = 50
+  @State RelativeHeight: number = 50
 
   build() {
     Column() {
@@ -51,8 +51,7 @@ struct RelativeChain7 {
           .id("RelativeChainRow7_3")
       }
       .id('RelativeChain7')
-      .width(400).height(400)
-      .margin({left: 50, top: 50})
+      .width('100%').height('60%')
       .backgroundColor(Color.Grey)
 
       Row() {
@@ -66,18 +65,19 @@ struct RelativeChain7 {
           .onClick(() => {
             this.RelativeChain = ChainStyle.PACKED
           })
-        Button('改变宽度')
-          .key('RelativeWidth')
-          .onClick(() => {
-            this.RelativeWidth = 70
-          })
       }
 
       Row() {
+        Button('改变宽度')
+          .key('RelativeWidth')
+          .onClick(() => {
+            this.RelativeWidth = 60
+          })
+          
         Button('改变高度')
           .key('RelativeHeight')
           .onClick(() => {
-            this.RelativeHeight = 70
+            this.RelativeHeight = 60
           })
       }
 

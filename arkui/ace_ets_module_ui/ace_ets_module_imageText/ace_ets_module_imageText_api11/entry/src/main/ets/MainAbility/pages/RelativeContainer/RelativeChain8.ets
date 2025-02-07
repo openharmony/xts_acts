@@ -16,8 +16,8 @@
 @Component
 struct RelativeChain8 {
   @State RelativeChain: ChainStyle = ChainStyle.SPREAD_INSIDE
-  @State RelativeWidth: number = 100
-  @State RelativeHeight: number = 100
+  @State RelativeWidth: string = '30%'
+  @State RelativeHeight: string = '30%'
   @State text: string = ''
 
   build() {
@@ -62,8 +62,8 @@ struct RelativeChain8 {
           })
       }
       .id('RelativeChain8')
-      .width(400).height(200)
-      .margin({left: 50, top: 50})
+      .width('70%').height('40%')
+      .margin({left: 5, top: 5})
       .backgroundColor(Color.Grey)
 
       RelativeContainer() {
@@ -105,11 +105,11 @@ struct RelativeChain8 {
           })
       }
       .id('RelativeChain82')
-      .width(400).height(200)
-      .margin({left: 50, top: 50})
+      .width('70%').height('40%')
+      .margin({left: 5, top: 5})
       .backgroundColor(Color.Grey)
 
-      Text(this.text).key('RelativeChain8Text').height(50).width('100%')
+      Text(this.text).key('RelativeChain8Text').width('100%')
 
     }
     .height('100%')

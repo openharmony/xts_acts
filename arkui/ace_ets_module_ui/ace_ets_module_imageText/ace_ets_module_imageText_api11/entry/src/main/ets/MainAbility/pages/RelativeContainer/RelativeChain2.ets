@@ -16,12 +16,12 @@
 @Component
 struct RelativeChain2 {
   @State RelativeChain: ChainStyle = ChainStyle.SPREAD
-  @State RelativeHeight: number = 100
+  @State RelativeHeight: string = '20%'
 
   build() {
     Column() {
       RelativeContainer() {
-        Row().width(100).height(this.RelativeHeight)
+        Row().width('50%').height(this.RelativeHeight)
           .backgroundColor("#FF3333")
           .alignRules({
             top: {anchor: "__container__", align: VerticalAlign.Top},
@@ -31,7 +31,7 @@ struct RelativeChain2 {
           .id("RelativeChainRow2_1")
           .chainMode(Axis.Vertical, this.RelativeChain)
 
-        Row().width(100).height(this.RelativeHeight)
+        Row().width('50%').height(this.RelativeHeight)
           .backgroundColor("#FFCC00")
           .alignRules({
             top: {anchor: "RelativeChainRow2_1", align: VerticalAlign.Bottom},
@@ -40,7 +40,7 @@ struct RelativeChain2 {
           })
           .id("RelativeChainRow2_2")
 
-        Row().width(100).height(this.RelativeHeight)
+        Row().width('50%').height(this.RelativeHeight)
           .backgroundColor("#FF6633")
           .alignRules({
             top: {anchor: "RelativeChainRow2_2", align: VerticalAlign.Bottom},
@@ -50,8 +50,7 @@ struct RelativeChain2 {
           .id("RelativeChainRow2_3")
       }
       .id('RelativeChain2')
-      .width(400).height(400)
-      .margin({left: 50, top: 50})
+      .width('80%').height('80%')
       .backgroundColor(Color.Grey)
 
       Row() {
@@ -71,7 +70,7 @@ struct RelativeChain2 {
           .key('Relative2Height')
           .onClick(() => {
             this.RelativeChain = ChainStyle.SPREAD
-            this.RelativeHeight = 70
+            this.RelativeHeight = '30%'
           })
       }
 
