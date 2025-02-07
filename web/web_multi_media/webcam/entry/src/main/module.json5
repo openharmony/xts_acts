@@ -21,6 +21,7 @@
     "description": "$string:phone_entry_dsc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
+      "car",
       "tv",
       "default",
       "tablet",
