@@ -26,7 +26,6 @@ const ERROR = 'error';
 let mediaTestBase = new MediaTestBase()
 let payloadTypes: Array<number> = [];
 
-let seiReceivedDone = false;
 let dataCanBeRead = false;
 let avPlayer: media.AVPlayer | null = null;
 
@@ -98,21 +97,15 @@ function setAVPlayerSeiMessageCb(avPlayer: media.AVPlayer | null, payloadTypes: 
         break;
     }
   });
-  
+
   avPlayer?.on('seiMessageReceived', payloadTypes, (messages: Array<media.SeiMessage>, playbackPosition?: number) => {
     try {
       console.info(`Received SEI message at playbackPosition: ${playbackPosition}`);
-      if (messages && messages.length > 0) {
-        messages.forEach((message, index) => {
-          console.info(`Message ${index}: ${JSON.stringify(message)}`);
-        });
-        seiReceivedDone = true;
-        done();
-      } else {
-        console.warn('No SEI messages received');
-      }
+      expect(messages.length).assertLarger(0);
+      done();
     } catch (error) {
       console.error('Error in SEI message handling:', error);
+      expect().assertFail();
       done();
     }
   });
@@ -191,9 +184,9 @@ export default function AVPlayerFlvFuncTest() {
       payloadTypes = [5];
       await checkDataCanBeRead(videoSrc, done);
       if (dataCanBeRead) {
-          await testSeiMessage(videoSrc, avPlayer, payloadTypes, done);
+        await testSeiMessage(videoSrc, avPlayer, payloadTypes, done);
       } else {
-          done();
+        done();
       }
     });
   })
