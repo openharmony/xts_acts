@@ -196,22 +196,22 @@ HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0016, TestSize.Level2)
     if (!access("/system/lib64/media/", 0)) {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(
             OH_AVCODEC_MIMETYPE_VIDEO_AVC, false, HARDWARE);
-		if (capability) {
-			ASSERT_NE(nullptr, capability);
-			bool isLowLatencySupported = OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY);
-			ASSERT_NE(nullptr, &isLowLatencySupported);
-		} else {
-			return;
-		}
+        if (capability) {
+            ASSERT_NE(nullptr, capability);
+            bool isLowLatencySupported = OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY);
+            ASSERT_NE(nullptr, &isLowLatencySupported);
+        } else {
+            return;
+        }
     } else {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(
             OH_AVCODEC_MIMETYPE_VIDEO_AVC, false, HARDWARE);
-		if (capability) {
-			ASSERT_NE(nullptr, capability);
-			ASSERT_EQ(false, OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY));
-		} else {
-			return;
-		}
+        if (capability) {
+            ASSERT_NE(nullptr, capability);
+            ASSERT_EQ(false, OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY));
+        } else {
+            return;
+        }
     }
 }
 
