@@ -9,7 +9,6 @@
         "MainAbility/pages/Navigation/Recoverable",
         "MainAbility/pages/Navigation/SystemTransition",
         "MainAbility/pages/Navigation/RouterRecoverable",
-        "MainAbility/pages/Navigation/RouterPage2",
-		"MainAbility/pages/Navigation/EnableModeChangeAnimation"
+        "MainAbility/pages/Navigation/RouterPage2"
     ]
 }
