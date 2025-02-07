@@ -47,13 +47,13 @@ struct AlignContent_FlexAlign_End_Margin_padding {
           alignContent: FlexAlign.End,
           alignItems: ItemAlign.Start
         }) {
-          Text('1').width(60).height(50).backgroundColor(0xF5DEB3)
+          Text('1').width(70).height(50).backgroundColor(0xF5DEB3)
             .key('AlignContentFlexEndMargin&padding_flex001_1')
-          Text('2').width(60).height(60).backgroundColor(0xD2B48C)
+          Text('2').width(70).height(60).backgroundColor(0xD2B48C)
             .key('AlignContentFlexEndMargin&padding_flex001_2')
-          Text('3').width(60).height(80).backgroundColor(0xD2B48C)
+          Text('3').width(70).height(80).backgroundColor(0xD2B48C)
             .key('AlignContentFlexEndMargin&padding_flex001_3')
-          Text('4').width(60).height(90).backgroundColor(0xF5DEB3)
+          Text('4').width(70).height(90).backgroundColor(0xF5DEB3)
             .key('AlignContentFlexEndMargin&padding_flex001_4')
         }
         .key('AlignContentFlexEndMargin&padding_flex001')
