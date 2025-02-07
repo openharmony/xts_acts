@@ -318,6 +318,8 @@ export default function windowZindexTest() {
       let caseName: string = 'test_setRaiseByClickEnabled_Two_subWindow_RaiseByClick';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let minWidth = 0;
+      let minHeight = 0;
       let driver: Driver = Driver.create();
       let windowClass = windowStage.getMainWindowSync();
       let storage: LocalStorage = new LocalStorage();
@@ -330,7 +332,10 @@ export default function windowZindexTest() {
             done();
           }
           let subWindow1 = data;
-          subWindow1.resize(1500, 1500);
+          minWidth = Number(subWindow1.getWindowLimits().minWidth);
+          minHeight = Number(subWindow1.getWindowLimits().minHeight);
+          console.log('subWindow WindowLimits:' + minWidth +' '+ minHeight);
+          subWindow1.resizeAsync(minWidth+200, minHeight+200);
           subWindow1.loadContent('testability/pages/First/index2', storage);
           await subWindow1.showWindow();
           console.log(msgStr + 'windowStage.show SubWindow1 success');
@@ -342,7 +347,7 @@ export default function windowZindexTest() {
               done();
             }
             let subWindow2 = data;
-            subWindow2.resize(500, 500);
+            subWindow2.resizeAsync(minWidth+100, minHeight+100);
             subWindow2.loadContent('testability/pages/First/index3', storage);
             await subWindow2.showWindow();
             console.log(msgStr + 'windowStage.show SubWindow2 success');
@@ -350,12 +355,12 @@ export default function windowZindexTest() {
             let promise4 = subWindow1.setRaiseByClickEnabled(true);
             promise4.then(async () => {
               console.info(msgStr + 'Succeeded in setRaiseByClickEnabled the window to app top.');
-              await driver.click(1000,1000);
+              await driver.click(minWidth+150, minHeight+150);
               let lastWindowClass = await window.getLastWindow(context);
               let properties = lastWindowClass.getWindowProperties();
               console.log(msgStr + 'properties:'+JSON.stringify(properties));
-              expect(properties.windowRect.width).assertEqual(1500);
-              expect(properties.windowRect.height).assertEqual(1500);
+              expect(properties.windowRect.width).assertEqual(minWidth+200);
+              expect(properties.windowRect.height).assertEqual(minHeight+200);
               await subWindow1.destroyWindow();
               await subWindow2.destroyWindow();
               done();
@@ -399,6 +404,8 @@ export default function windowZindexTest() {
       let caseName: string = 'test_setRaiseByClickEnabled_Two_subWindow_NoRaiseByClick';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let minWidth = 0;
+      let minHeight = 0;
       let driver: Driver = Driver.create();
       let windowClass = windowStage.getMainWindowSync();
       let storage: LocalStorage = new LocalStorage();
@@ -411,7 +418,10 @@ export default function windowZindexTest() {
             done();
           }
           let subWindow1 = data;
-          subWindow1.resize(1500, 1500);
+          minWidth = Number(subWindow1.getWindowLimits().minWidth);
+          minHeight = Number(subWindow1.getWindowLimits().minHeight);
+          console.log('subWindow WindowLimits:' + minWidth +' '+ minHeight);
+          subWindow1.resizeAsync(minWidth+200, minHeight+200);
           subWindow1.loadContent('testability/pages/First/index2', storage);
           await subWindow1.showWindow();
           console.log(msgStr + 'windowStage.show SubWindow1 success');
@@ -423,7 +433,7 @@ export default function windowZindexTest() {
               done();
             }
             let subWindow2 = data;
-            subWindow2.resize(500, 500);
+            subWindow2.resizeAsync(minWidth+100, minHeight+100);
             subWindow2.loadContent('testability/pages/First/index3', storage);
             await subWindow2.showWindow();
             console.log(msgStr + 'windowStage.show SubWindow2 success');
@@ -431,12 +441,12 @@ export default function windowZindexTest() {
             let promise4 = subWindow1.setRaiseByClickEnabled(false);
             promise4.then(async () => {
               console.info(msgStr + 'Succeeded in setRaiseByClickEnabled the window to app top.');
-              await driver.click(1000,1000);
+              await driver.click(minWidth+150, minHeight+150);
               let lastWindowClass = await window.getLastWindow(context);
               let properties = lastWindowClass.getWindowProperties();
               console.log(msgStr + 'properties:'+JSON.stringify(properties));
-              expect(properties.windowRect.width).assertEqual(500);
-              expect(properties.windowRect.height).assertEqual(500);
+              expect(properties.windowRect.width).assertEqual(minWidth+100);
+              expect(properties.windowRect.height).assertEqual(minHeight+100);
               await subWindow1.destroyWindow();
               await subWindow2.destroyWindow();
               done();

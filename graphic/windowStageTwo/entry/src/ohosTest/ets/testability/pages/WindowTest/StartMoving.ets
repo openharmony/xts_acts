@@ -36,11 +36,11 @@ struct StartMoving {
             try {
               window.getLastWindow(getContext(this), (err: BusinessError, windowClass) => {
                 windowClass.startMoving().then(() => {
-                  this.message += ' success'
+                  this.message = 'startMoving success'
                   console.info('start moving successfully');
                 }).catch((err: BusinessError) => {
                   if (err.code == 801) {
-                    this.message += ' 801'
+                    this.message = 'startMoving 801'
                   }
                   console.error('start moving : ' + err.code + ',message:' + err.message)
                 })
