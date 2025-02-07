@@ -63,8 +63,8 @@ struct SwiperIndexTest {
         }.width('100%').height('100%').backgroundColor(0xD2B48C).key('ckey06')
       }
       .key('swiperkey')
-      .height(300)
-      .width(300)
+      .height('60%')
+      .width('90%')
       .index(this.testSwiperIndex)
       .autoPlay(false)
       .indicator(true)

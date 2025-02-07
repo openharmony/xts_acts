@@ -65,14 +65,14 @@ export default function swiperPageTest() {
 
       // swipe the component of swiper to right
       let driver = await Driver.create();
-      await driver.swipe(Math.round(globalThis.winLeft + Math.round(btRight) - Math.round(vp2px(100))), Math.round(globalThis.winTop + Math.round(btBottom/2)), Math.round(globalThis.winLeft + Math.round(btLeft) + Math.round(vp2px(10))), Math.round(globalThis.winTop + Math.round(btBottom/2)));
+      await driver.swipe(Math.round(globalThis.winLeft + Math.round(btRight) - Math.round(vp2px(20))), Math.round(globalThis.winTop + Math.round(btBottom/2)), Math.round(globalThis.winLeft + Math.round(btLeft) + Math.round(vp2px(10))), Math.round(globalThis.winTop + Math.round(btBottom/2)));
       await CommonFunc.sleep(5000);
       // get the component of text_3
       let text3:Component = await driver.findComponent(ON.text('5'));
       let ttContent = await text3.getText();
       expect(ttContent).assertEqual("5")
       // swipe again
-      await driver.swipe(Math.round(globalThis.winLeft + Math.round(btRight)- vp2px(100)), Math.round(globalThis.winTop + Math.round(btBottom/2)), Math.round(globalThis.winLeft + Math.round(btLeft) + Math.round(vp2px(10))), Math.round(globalThis.winTop + Math.round(btBottom/2)));
+      await driver.swipe(Math.round(globalThis.winLeft + Math.round(btRight)- Math.round(vp2px(20))), Math.round(globalThis.winTop + Math.round(btBottom/2)), Math.round(globalThis.winLeft + Math.round(btLeft) + Math.round(vp2px(10))), Math.round(globalThis.winTop + Math.round(btBottom/2)));
       await CommonFunc.sleep(5000);
       let text7:Component = await driver.findComponent(ON.text('8'));
       let ttContent7 = await text7.getText();
