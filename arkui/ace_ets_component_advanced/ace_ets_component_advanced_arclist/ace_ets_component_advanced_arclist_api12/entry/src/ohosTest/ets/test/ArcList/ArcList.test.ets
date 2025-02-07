@@ -84,7 +84,7 @@ export default function ArcListDemo() {
       expect(obj.$attrs.initialIndex).assertEqual('0');
       expect(obj.$attrs.scrollBar).assertEqual('BarState.Auto');
       expect(obj.$attrs.scrollBarWidth).assertEqual('4.00vp');
-      expect(obj.$attrs.scrollBarColor).assertEqual('#66182431');
+      expect(obj.$attrs.scrollBarColor).assertEqual('#A8182431');
       expect(obj.$attrs.cachedCount).assertEqual('0');
       expect(obj.$attrs.chainAnimation).assertEqual(false);
       expect(obj.$attrs.enableScrollInteraction).assertEqual(true);
