@@ -34,6 +34,7 @@ import {
   PhotoBrowserInfo,
   ClickType,
   BaseItemInfo,
+  SaveMode,
 } from '@ohos.file.PhotoPickerComponent';
 import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo } from '@ohos.file.AlbumPickerComponent';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
@@ -42,6 +43,8 @@ import {
   RecentPhotoOptions,
   PhotoSource,
 } from '@ohos.file.RecentPhotoComponent';
+import { fileUri } from '@kit.CoreFileKit';
+
 const SEEK_START = 3;
 const SEEK_FINISH = 4;
 
@@ -1295,6 +1298,57 @@ export default function TextPicker() {
       router.back();
       console.info("testPicker27 finish");
       events_emitter.off(event.eventId);
+      done();
+    });
+
+    /**
+     * @tc.number    : testPicker28
+     * @tc.name      : testPicker28
+     * @tc.desc      : Testing PhotoPickerComponent replacePhotoPickerPreview and saveTrustedPhotoAssets
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('testPicker28', 0, async (done: Function) => {
+      let context = getContext();
+      let originalUris = [' '];
+      let photoCreationConfig: photoAccessHelper.PhotoCreationConfig = {
+        title: 'test',
+        fileNameExtension: 'jpg',
+        photoType: photoAccessHelper.PhotoType.IMAGE,
+        subtype: photoAccessHelper.PhotoSubtype.DEFAULT,
+      };
+      try {
+        let pickerController: PickerController = new PickerController();
+        let boxPath = fileUri.getUriFromPath(context.filesDir + "/test.jpg").toString();
+        photoAccessHelper.getPhotoAccessHelper(context).showAssetsCreationDialog([boxPath],
+          [photoCreationConfig]).then((result) => {
+          originalUris = result;
+          expect(true).assertTrue();
+        });
+        pickerController.replacePhotoPickerPreview(originalUris[0], boxPath, (a) => {
+          if (!a) {
+            console.log("testPicker28 replacePhotoPickerPreview fail");
+            expect(false).assertTrue();
+          } else {
+            console.log("testPicker28 replacePhotoPickerPreview success");
+            pickerController.saveTrustedPhotoAssets([boxPath], (err, arr) => {
+              if (!err) {
+                console.log("testPicker28 saveTrustedPhotoAssets fail");
+                expect(false).assertTrue();
+              } else {
+                console.log("testPicker28 saveTrustedPhotoAssets success, save uris:" + arr);
+                expect(true).assertTrue();
+              }
+            }, undefined, SaveMode.SAVE_AS);
+          }
+        });
+      } catch (error) {
+        console.log("testPicker28 error:" + JSON.stringify(error));
+        expect(false).assertTrue();
+      }
+      await CommonFunc.sleep(1000);
+      console.log("testPicker28 btn click finish");
       done();
     });
   })
