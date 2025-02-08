@@ -1144,5 +1144,39 @@ export default function CameraErrorCodeUsecaseTest() {
         expect(true).assertTrue();
       }
     });
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME_0100
+     * @tc.name      : cameraManager getHostMessage api
+     * @tc.desc      : cameraManager getHostMessage api
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME_0100--------------");
+      let ret = cameraObj.getCameraHostName();
+      if (ret != 0) {
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME_0100 FAILED");
+        console.info(TAG + "ERRORCODE: " + ret);
+        expect(ret == Camera_ErrorCode.CAMERA_SERVICE_FATAL_ERROR).assertTrue();
+      }
+    });
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_0100
+     * @tc.name      : cameraManager getHostMessage api
+     * @tc.desc      : cameraManager getHostMessage api
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_0100--------------");
+      let ret = cameraObj.getCameraHostName();
+      if (ret != 0) {
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_0100 FAILED");
+        console.info(TAG + "ERRORCODE: " + ret);
+        expect(ret == Camera_ErrorCode.CAMERA_SERVICE_FATAL_ERROR).assertTrue();
+      }
+    });
   })
 }
