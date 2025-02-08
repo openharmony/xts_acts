@@ -182,7 +182,7 @@ export default function windowInterface() {
       let blank = await driver.findComponent(ON.id('startMoving'))
       await sleep(1000)
       let point = await blank.getBoundsCenter();
-      await driver.drag(point.x, point.y, point.x + 100, point.y + 50, 200);
+      await driver.drag(point.x, point.y, point.x - 50, point.y - 50, 200);
       await sleep(1000)
       let text = await driver.findComponent(ON.id('startMovingText'));
       await sleep(1000)
@@ -190,8 +190,8 @@ export default function windowInterface() {
       if (textDragged == 'startMoving success') {
         let windowPointDragged = await windowClass.getWindowProperties().windowRect
         console.info(`${message} windowPoint = ${JSON.stringify(windowPointDragged)}`)
-        expect(windowPointDragged.left).assertEqual(windowPoint.left + 100)
-        expect(windowPointDragged.top).assertEqual(windowPoint.top + 50)
+        expect(windowPointDragged.left).assertEqual(windowPoint.left - 50)
+        expect(windowPointDragged.top).assertEqual(windowPoint.top - 50)
         done()
       } else if (textDragged == 'startMoving 801') {
         expect(true).assertTrue();

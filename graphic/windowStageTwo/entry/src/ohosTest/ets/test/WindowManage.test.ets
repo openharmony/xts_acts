@@ -27,14 +27,20 @@ function createSysSubWindow(context: common.UIAbilityContext, caseName: string):
   };
   return new Promise((resolve, reject) => {
     let subWindowClass: window.Window;
+    let minWidth = 0;
+    let minHeight = 0;
     window.createWindow(config).then(async (data) => {
       subWindowClass = data;
       console.info(`${caseName} Succeeded in creating the system sub window.`);
+      minWidth = Number(subWindowClass.getWindowLimits().minWidth);
+      minHeight = Number(subWindowClass.getWindowLimits().minHeight);
+      console.log('Window WindowLimits:' + minWidth +' '+ minHeight);
       await data.setUIContent('testability/pages/First/index1');
       console.info(`${caseName} Succeeded in loading the system sub window content.`);
       await data.showWindow();
       console.info(`${caseName} Succeeded in showing the system sub window.`);
-      await data.resizeAsync(1000, 1000);
+      await data.resizeAsync(minWidth+200, minHeight+200);
+      await data.moveWindowTo(0, 300);
       console.info(`${caseName} Succeeded in resizing the system sub window.`);
       resolve(data);
     }).catch(async (err: BusinessError) => {
@@ -48,14 +54,19 @@ function createSysSubWindow(context: common.UIAbilityContext, caseName: string):
 function createSubWindow(windowStage: window.WindowStage, caseName: string): Promise<window.Window> {
   return new Promise((resolve, reject) => {
     let subWindowClass: window.Window;
+    let minWidth = 0;
+    let minHeight = 0;
     windowStage.createSubWindow('subWindow').then(async (data) => {
       subWindowClass = data;
       console.info(`${caseName} Succeeded in creating the sub window.`);
+      minWidth = Number(subWindowClass.getWindowLimits().minWidth);
+      minHeight = Number(subWindowClass.getWindowLimits().minHeight);
+      console.log('Window WindowLimits:' + minWidth +' '+ minHeight);
       await data.setUIContent('testability/pages/First/index1');
       console.info(`${caseName} Succeeded in loading the sub window content.`);
       await data.showWindow();
       console.info(`${caseName} Succeeded in showing the sub window.`);
-      await data.resizeAsync(1100, 1100);
+      await data.resizeAsync(minWidth+200, minHeight+200);
       console.info(`${caseName} Succeeded in resizing the sub window.`);
       resolve(data);
     }).catch(async (err: BusinessError) => {
@@ -364,7 +375,7 @@ export default function windowManageTest() {
     it('testGetWindowsByCoordinateWithInvalidDisPlayId', 0, (done: Function) => {
       let caseName = 'TestGetWindowsByCoordinateWithInvalidDisPlayId';
       try {
-        window.getWindowsByCoordinate(5).then((data) => {
+        window.getWindowsByCoordinate(123).then((data) => {
           console.info(`${caseName} Succeeded in getting window from point. Data: ` + JSON.stringify(data));
           expect(false).assertTrue();
           done();
