@@ -21,14 +21,9 @@ struct PageTwo {
     Row(){
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start }) {
         Text(`${this.content}`)
-          // .fontSize(50)
           .fontWeight(FontWeight.Bold)
         TextInput()
           .key('pageTwoinput')
-          // .width(400)
-          // .height(50)
-          // .margin(10)
-          // .borderRadius(0)
           .style(TextInputStyle.Inline)
         Button('点击按钮获取焦点')
           .focusable(true)
@@ -38,19 +33,11 @@ struct PageTwo {
           })
         TextInput()
           .key('pageTwoinputSecond')
-          // .width(400)
-          // .height(50)
-          // .margin(10)
-          // .borderRadius(0)
           .style(TextInputStyle.Inline)
         Button() {
           Text('点击pageTwo')
-            // .fontSize(20)
             .fontWeight(FontWeight.Bold)
         }.type(ButtonType.Capsule)
-        // .margin({
-        //   top: 20
-        // })
         .backgroundColor('#0D9FFB')
         .onClick(() => {
           console.log("click the button")
