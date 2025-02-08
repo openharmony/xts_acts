@@ -62,7 +62,7 @@ struct StyledStringDemo {
             start: 0,
             length: 6,
             styledKey: StyledStringKey.FONT,
-            styledValue: new TextStyle({ fontColor: Color.Green, fontSize: LengthMetrics.px(50) })
+            styledValue: new TextStyle({ fontColor: Color.Green, fontSize: LengthMetrics.vp(50) })
           }]);
           if (this.imagePixelMap !== undefined) {
             let mutableStyledString2 = new MutableStyledString(new ImageAttachment({
