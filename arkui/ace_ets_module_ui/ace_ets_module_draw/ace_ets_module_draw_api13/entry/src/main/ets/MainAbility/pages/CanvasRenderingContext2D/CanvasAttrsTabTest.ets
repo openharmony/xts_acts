@@ -44,8 +44,8 @@ struct CanvasAttrsTabTest {
 
   build() {
     Column() {
-      Text(this.message1).id('visible_content').fontSize(12).width('100%').margin(10).padding(10)
-      Text(this.message2).id('invisible_content').fontSize(12).width('100%').margin(10).padding(10)
+      Text(this.message1).id('visible_content').fontSize(12).width('100%')
+      Text(this.message2).id('invisible_content').fontSize(12).width('100%')
 
       Tabs({ barPosition: BarPosition.Start, index: this.currentIndex, controller: this.controller }) {
         TabContent() {
@@ -135,7 +135,6 @@ struct CanvasAttrsTabTest {
       })
       .width('90%')
       .height('50%')
-      .margin({ top: 52 })
       .backgroundColor('#F1F3F5')
     }.width('100%')
   }

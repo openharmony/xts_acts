@@ -30,11 +30,23 @@ import {
   PointerMatrix
 } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
+import config from '@ohos.accessibility.config';
+import accessibility from '@ohos.accessibility';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function comSizeAbilityTest_01() {
   describe('comSizeAbilityTest_01', () => {
     beforeEach(async (done: Function) => {
       console.info("comSizeAbilityTest_01 beforeEach start")
+
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info('[comSizeAbilityTest_01] enable success');
+      }).catch((err: object) => {
+        console.error(`[comSizeAbilityTest_01] failed to enable, ${err}`)
+      })
+
+      console.info("comSizeAbilityTest_01 beforeEach start 222")
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/comSizeAbility/comSizeAbilityTest_01'
       }
