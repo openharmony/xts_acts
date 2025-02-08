@@ -33,7 +33,7 @@ import CommonFunc from '../../MainAbility/common/Common';
 import config from '@ohos.accessibility.config';
 import accessibility from '@ohos.accessibility';
 const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
-const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
+const BUNDLE_NAME = 'com.arkui.ace.commonAttrsLayout.api11/EntryAbility';
 
 export default function comSizeAbilityTest_01() {
   describe('comSizeAbilityTest_01', () => {
