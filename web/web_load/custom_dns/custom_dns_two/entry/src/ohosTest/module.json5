@@ -22,7 +22,9 @@
       "default",
       "tablet",
       "2in1",
-      "wearable"
+      "wearable",
+      "car",
+      "tv"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
