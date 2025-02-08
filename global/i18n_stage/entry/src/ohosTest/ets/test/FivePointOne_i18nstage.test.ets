@@ -16,7 +16,7 @@
 import Ability from '@ohos.app.ability.UIAbility';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { intl } from '@kit.LocalizationKit';
-import { lengthMetrics } from '@kit.ArkUI';
+import { LengthMetrics } from '@kit.ArkUI';
 import { i18n } from '@kit.LocalizationKit';
 
 export default function FivePointOne_i18nStageTest() {
@@ -690,7 +690,7 @@ export default function FivePointOne_i18nStageTest() {
       });
       let decimal_textStyle = new TextStyle({
         fontColor: Color.Black,
-        fontFamily: "HarmonyOS Sans",
+        fontFamily: "Arial",
         fontSize: LengthMetrics.vp(15),
         fontWeight: FontWeight.Normal,
         fontStyle: FontStyle.Normal
@@ -704,7 +704,7 @@ export default function FivePointOne_i18nStageTest() {
       });
       let unit_textStyle = new TextStyle({
         fontColor: Color.Blue,
-        fontFamily: "HarmonyOS Sans",
+        fontFamily: "Arial",
         fontSize: LengthMetrics.fp(30),
         fontWeight: FontWeight.Medium,
         fontStyle: FontStyle.Italic
@@ -714,7 +714,7 @@ export default function FivePointOne_i18nStageTest() {
         currency: 'EUR',
         currencyDisplay: 'name',
         currencySign: 'accounting',
-        SignDisplay: 'always'
+        signDisplay: 'always'
       });
       let styledNumberFormat = new i18n.StyledNumberFormat(number_format, {
         integer: integer_textStyle,
@@ -726,16 +726,18 @@ export default function FivePointOne_i18nStageTest() {
       console.log('testscw', result.getString());
       expect(result.getString() == "+123,456.79 euros").assertTrue();
 
-      let arrList = result.getStyles(0, tesult.length);
+      let arrList = result.getStyles(0, result.length);
       let testList: Array<string> = [];
-      let resultList: Array<string> = ["#FFFF0000", "Arial", "10", "12", "1", "#FF000000", "HarmonyOS Sans", "15", "10", "0", "#FF008000", "Arial", "20", "14", "0", "#FF0000FF", "HarmonyOS Sans", "30", "13", "1"];
-      for (const arr of arrLsit) {
+      let resultList: Array<string> = ["#FFFF0000", "Arial", "10", "12", "1", "#FF000000", "Arial", "15", "10", "0",
+        "#FF008000", "Arial", "20", "14", "0", "#FF0000FF", "Arial", "30", "13", "1"];
+      for (const arr of arrList) {
         testList.push(arr.styledValue["fontColor"])
         testList.push(arr.styledValue["fontFamily"])
         testList.push(arr.styledValue["fontSize"])
         testList.push(arr.styledValue["fontWeight"])
         testList.push(arr.styledValue["fontStyle"])
-      };
+      }
+      ;
       console.log('testscw', testList.toString());
       expect(testList.toString() == resultList.toString()).assertTrue();
     })
@@ -743,14 +745,14 @@ export default function FivePointOne_i18nStageTest() {
     /**
      * @tc.number   : SUB_GLOBAL_refinedFormat_0310
      * @tc.name     : SUB_GLOBAL_refinedFormat_0310
-     * @tc.desc     : maximumFractionDigits: 2 & maximumSignificantDigits: 6 & roundingPriorty: "lessPrecision"
+     * @tc.desc     : maximumFractionDigits: 2 & maximumSignificantDigits: 6 & roundingPriority: "lessPrecision"
      * @tc.size     : MEDIUM
      * @tc.type     : Function
      * @tc.level    : Level 0
      */
     it('SUB_GLOBAL_refinedFormat_0310', 0, () => {
       let numOptions: intl.NumberOptions = {
-        maximumFractionDigits: 2, maximumSignificantDigits: 6, roundingPriorty: "lessPrecision"
+        maximumFractionDigits: 2, maximumSignificantDigits: 6, roundingPriority: "lessPrecision"
       };
       let numfmt: intl.NumberFormat = new intl.NumberFormat("zh-hans-CN", numOptions);
       let numberFormatted: string = numfmt.format(123.456);
