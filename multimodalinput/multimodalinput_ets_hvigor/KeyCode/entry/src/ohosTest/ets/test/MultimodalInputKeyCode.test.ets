@@ -122,6 +122,50 @@ export default function MultimodalInputKeyCodeTest() {
     });
 
     /**
+     * @tc.number: SUB_MMI_Input_Api_KEYCODE_DAGGER_CLICK_0100
+     * @tc.name: SUB_MMI_Input_Api_KEYCODE_DAGGER_CLICK_0100
+     * @tc.desc: Test keycode KEYCODE_DAGGER_CLICK.
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_KEYCODE_DAGGER_CLICK_0100", 0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_KEYCODE_DAGGER_CLICK_0100";
+      try {
+        let KEYCODE_DAGGER_CLICK = KeyCode.KEYCODE_DAGGER_CLICK;
+        console.info(`${caseName} success, keyCode value ${JSON.stringify(KEYCODE_DAGGER_CLICK)}`);
+        ExpectTrue(KEYCODE_DAGGER_CLICK == 3211);
+        done();
+      } catch (error) {
+        console.info(`${caseName} fail, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectFalse(true);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_KEYCODE_DAGGER_DOUBLE_CLICK_0100
+     * @tc.name: SUB_MMI_Input_Api_KEYCODE_DAGGER_DOUBLE_CLICK_0100
+     * @tc.desc: Test keycode KEYCODE_DAGGER_DOUBLE_CLICK.
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_KEYCODE_DAGGER_DOUBLE_CLICK_0100", 0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_KEYCODE_DAGGER_DOUBLE_CLICK_0100";
+      try {
+        let KEYCODE_DAGGER_DOUBLE_CLICK = KeyCode.KEYCODE_DAGGER_DOUBLE_CLICK;
+        console.info(`${caseName} success, keyCode value ${JSON.stringify(KEYCODE_DAGGER_DOUBLE_CLICK)}`);
+        ExpectTrue(KEYCODE_DAGGER_DOUBLE_CLICK == 3212);
+        done();
+      } catch (error) {
+        console.info(`${caseName} fail, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectFalse(true);
+        done();
+      }
+    });
+
+    /**
      * @tc.number: SUB_MMI_Input_Api_KEYCODE_DAGGER_LONG_PRESS_0100
      * @tc.name: SUB_MMI_Input_Api_KEYCODE_DAGGER_LONG_PRESS_0100
      * @tc.desc: Test keycode KEYCODE_DAGGER_LONG_PRESS.
