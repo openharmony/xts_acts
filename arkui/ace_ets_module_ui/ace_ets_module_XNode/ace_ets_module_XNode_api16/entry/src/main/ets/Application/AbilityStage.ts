@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import gestureEventTest from './FrameNodeTest/gestureEventTest.test';
-import upDownTreeEventTest from './FrameNodeTest/upDownTreeEvent.test';
-import frameNodeIsVisibleTest from './FrameNodeTest/frameNodeIsVisible.test';
+import AbilityStage from "@ohos.app.ability.AbilityStage"
 
-export default function testsuite() {
-  frameNodeIsVisibleTest();
-  upDownTreeEventTest();
-  gestureEventTest();
+export default class MyAbilityStage extends AbilityStage {
+    onCreate() {
+        console.log("[Demo] MyAbilityStage onCreate")
+        globalThis.stageOnCreateRun = 1;
+        globalThis.stageContext = this.context;
+    }
 }
