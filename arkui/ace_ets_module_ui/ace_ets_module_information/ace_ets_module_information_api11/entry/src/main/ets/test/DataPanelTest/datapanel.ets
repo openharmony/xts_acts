@@ -27,6 +27,12 @@ function spliceColor(sysColor: Resource) {
   return newArgb;
 }
 
+function dataPanelDefaultStrokeWidth(sysWidth: Resource) {
+  let resourceStrokeWidth = getContext().resourceManager.getNumber(sysWidth.id)
+  let newStrokeWidth: string = px2vp(resourceStrokeWidth) + '.00vp'
+  return newStrokeWidth;
+}
+
 export default function datapanelTest() {
   describe('ActsDatapanelTest', () => {
     beforeEach(async (done: Function) => {
@@ -1789,7 +1795,7 @@ export default function datapanelTest() {
           console.info("ArkUX_Stage_DataPanel_StrokeWidth_0400 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_DataPanel_StrokeWidth_0400 component obj.$attrs.strokeWidth is: " +
           JSON.stringify(obj.$attrs.strokeWidth));
-          expect(obj.$attrs.strokeWidth).assertEqual("24.00vp");
+          expect(obj.$attrs.strokeWidth).assertEqual(dataPanelDefaultStrokeWidth($r('sys.float.ohos_id_datapanel_thickness')));
           console.info('ArkUX_Stage_DataPanel_StrokeWidth_0400 END ');
           done();
         } catch (err) {
@@ -1816,7 +1822,7 @@ export default function datapanelTest() {
           console.info("ArkUX_Stage_DataPanel_StrokeWidth_0500 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_DataPanel_StrokeWidth_0500 component obj.$attrs.strokeWidth is: " +
           JSON.stringify(obj.$attrs.strokeWidth));
-          expect(obj.$attrs.strokeWidth).assertEqual("24.00vp");
+          expect(obj.$attrs.strokeWidth).assertEqual(dataPanelDefaultStrokeWidth($r('sys.float.ohos_id_datapanel_thickness')));
           console.info('ArkUX_Stage_DataPanel_StrokeWidth_0500 END ');
           done();
         } catch (err) {
@@ -1843,7 +1849,7 @@ export default function datapanelTest() {
           console.info("ArkUX_Stage_DataPanel_StrokeWidth_0600 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_DataPanel_StrokeWidth_0600 component obj.$attrs.strokeWidth is: " +
           JSON.stringify(obj.$attrs.strokeWidth));
-          expect(obj.$attrs.strokeWidth).assertEqual("24.00vp");
+          expect(obj.$attrs.strokeWidth).assertEqual(dataPanelDefaultStrokeWidth($r('sys.float.ohos_id_datapanel_thickness')));
           console.info('ArkUX_Stage_DataPanel_StrokeWidth_0600 END ');
           done();
         } catch (err) {
