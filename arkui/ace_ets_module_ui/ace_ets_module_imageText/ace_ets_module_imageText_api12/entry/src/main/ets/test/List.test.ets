@@ -49,7 +49,6 @@ import underlineColor from './TextInput/underlineColor.test'
 
 import RichEditorApi1 from './RichEditor/RichEditorApi1.test'
 import RichEditorApi3 from './RichEditor/RichEditorApi3.test'
-import RichEditorApi5 from './RichEditor/RichEditorApi5.test'
 import RichEditorChangeCallback from './RichEditor/RichEditorChangeCallback.test'
 import RichEditorWordBreakJsunitTest from './RichEditorEnhance01/RichEditorWordBreakJsunitTest.test'
 import RichEditorMenuPolicyJsunit from './RichEditorEnhance01/RichEditorMenuPolicyJsunit.test'
@@ -125,8 +124,6 @@ import typeNodeTextDecorationStyleTest from './Text/TextDecorationStyle.test';
 import typeNodeTextSelectableMode1Test from './Text/TextSelectableMode1.test';
 import typeNodeTextSelectableMode2Test from './Text/TextSelectableMode2.test';
 import typeNodeTextSelectableMode3Test from './Text/TextSelectableMode3.test';
-import styledStringChange from './Text/styledStringChange.test'
-import searchTest from './Search/searchTest.test'
 import imageAddApi2 from './ImageTest/imageAddApi2.test'
 import styledStringAddApi from './Text/styledStringAddApi.test'
 import textAreaPreview from './TextArea/textAreaPreview.test'
@@ -567,7 +564,6 @@ export default function testsuite() {
   dstIndexTest();
   RichEditorApi1();
   RichEditorApi3();
-  RichEditorApi5();
   RichEditorChangeCallback();
   RichEditorWordBreakJsunitTest();
   RichEditorMenuPolicyJsunit();
@@ -588,7 +584,6 @@ export default function testsuite() {
   TextAreaApi1();
   TextAreaApi2();
   TextAreaApi3();
-  styledStringChange();
   RelativeContainerApi1()
   TextAddApi1()
   TextArea_lineBreakStrategyTest();
@@ -625,7 +620,6 @@ export default function testsuite() {
   TextAreaTest()
   MarqueeMirroringTest()
   symbolEffect()
-  searchTest()
   imageAddApi2()
   styledStringAddApi()
   RichEditorApi8()

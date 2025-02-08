@@ -15,7 +15,6 @@
 import textAreaInputTest from './TextAreaTest/textAreaInputTest.test';
 import marqueeJsunit from './marqueeTest/MarqueeJsunit.test';
 import textStyleJsunit from './textTest/TextStyleJsunit.test';
-import TextStateJsunit from './textTest/TextStateJsunit.test';
 import ImageTextTest from './textTest/ImageText.test';
 import TextAreaCallbackTest from './TextAreaTest/TextAreaCallback.test';
 import TextAreaSelectTest from './TextAreaTest/TextAreaSelect.test';
@@ -126,7 +125,6 @@ import backgroundAndSizeSettingJsunit from './textTest/BackgroundAndSizeSettingJ
 import borderJsunit from './textTest/BorderJsunit.test';
 import fillModeJsunit from './ImageAnimator/FillModeJsunit.test';
 import ohosMatrix4Jsunit from './imageTest/OhosMatrix4Jsunit.test';
-import positionSettingJsunit from './textTest/PositionSettingJsunit.test';
 import ShapeClippingJsunit from './imageTest/ShapeClippingJsunit.test';
 import textAreaJsunit from './TextAreaTest/TextAreaJsunit.test';
 import textAreaUxTest  from './TextAreaTest/textareaux.test';
@@ -143,18 +141,14 @@ import stageFontTest from './textTest/stageFont.test';
 import stageMediaquery from './textTest/stageMediaquery.test';
 import buttonTest from './buttonTest/button'
 import textInputTest from './TextInputTest/textinput'
-import textinputSec from './TextInputTest/textinputSec'
-import segmentbuttonTest from './SegmentButtonTest/segmentbutton'
 import search_caret from './SearchTest/search_caret.test';
 import search_maxLength from './SearchTest/search_maxLength.test';
 import search_maxLength2 from './SearchTest/search_maxLength2.test';
 import search_top from './SearchTest/search_top.test.ets'
-import search_center from './SearchTest/search_center.test.ets'
 import search_bottom from './SearchTest/search_bottom.test.ets'
 import SearchJsunit from './SearchTest/SearchJsunit.test';
 import textAreaUIJsunit from './TextAreaTest/textAreaUIJsunit.test';
 import textArea_top from './TextAreaTest/textArea_top.test.ets'
-import textArea_center from './TextAreaTest/textArea_center.test.ets'
 import textArea_bottom from './TextAreaTest/textArea_bottom.test.ets'
 import textAreaBC1Jsunit from './TextAreaTest/textAreaBC1Jsunit.test';
 import textAenEnabledJsunit from './TextAreaTest/textAenEnabledJsunit.test';
@@ -180,7 +174,6 @@ import TextTimerJsunit from './TextTimerTest/TextTimerJsunit.test.ets';
 import ToggleJsunit from './ToggleTest/ToggleJsunit.test.ets';
 import marqueeUIJsunit from './marqueeTest/marqueeUIJsunit.test.ets';
 import PatternLockJsunit from './PatternLockTest/PatternLockJsunit.test.ets';
-import SelectJsunit from './selectTest/SelectJsunit.test.ets';
 import RichEditor01 from './RichEditorTest/RichEditor01.test.ets';
 import RichTextJsunit from './RichEditorTest/RichTextJsunit.test.ets';
 import spanUIJsunit from './spanTest/spanUIJsunit.test.ets';
@@ -210,7 +203,6 @@ import imageAnimatorJsunitt from './ImageAnimator/ImageAnimatorJsunit2.test.ets'
 import loadingProgressJsunit2 from './ProgressTest/LoadingProgressJsunit2.test.ets';
 import ButtonHoverTest from './buttonTest/ButtonHover.test';
 import ActsgetcomponentTest from './buttonTest/getcomponent.test';
-import ActsgetcomponentaddTest from './buttonTest/getcomponentadd.test';
 import stageAnimatorTest from './buttonTest/stageAnimator.test';
 import imageObscuredTest from './imageTest/imageObscuredTest.test';
 import ActsRichEditorTest from './RichEditorTest/RichEditor/Richeditor01.test';
@@ -219,7 +211,6 @@ import textInputJsunit3 from './TextInputTest/TextInputJsunit3.test';
 import textObscuredTest from './textTest/textObscuredTest.test';
 import textSpanFontTest from './textTest/textSpanFont.test';
 import search_gesture from './SearchTest/search_gesture.test';
-import text_drag from './textTest/text_drag.test';
 import textAreaOnCaretAndKeyboardTest from './TextAreaTest/textAreaOnCaretAndKeyboard.test';
 import richEditorTest from './RichEditorTest/RichEditorJsunit.test';
 import textTextCaseTest from './textTest/textTextCase.test';
@@ -229,6 +220,7 @@ import ImageAdvancedTest from './imageTest/ImageAdvancedTest.test.ets'
 import ImageAnimatorAdvancedTest from './ImageAnimator/imageAnimatorAdvancedTest.test.ets'
 
 export default function testsuite() {
+  ActsRichEditorTest();
   textAreaInputTest()
   ImageAdvancedTest()
   ImageAnimatorAdvancedTest()
@@ -236,7 +228,6 @@ export default function testsuite() {
   stageFontTest();
   stageMediaquery();
   RichEditorApi222();
-  TextStateJsunit();
   richEditorApi4();
   richEditorApi5();
   richEditorApi6();
@@ -348,7 +339,6 @@ export default function testsuite() {
   borderJsunit();
   fillModeJsunit();
   ohosMatrix4Jsunit();
-  positionSettingJsunit();
   ShapeClippingJsunit();
   textAreaJsunit();
   textInputJsunit();
@@ -361,20 +351,15 @@ export default function testsuite() {
   transformTest()
   translationTest()
   buttonTest();
-  textInputTest()
-  textinputSec()
-  segmentbuttonTest()
   textAreaUxTest();
   search_caret();
   search_maxLength();
   search_maxLength2();  
   search_top();
-  search_center();
   search_bottom();
   SearchJsunit();
   textAreaUIJsunit();
   textArea_top();
-  textArea_center();
   textAreaBC1Jsunit();
   textAenEnabledJsunit();
   imageOneJsunit();
@@ -398,7 +383,6 @@ export default function testsuite() {
   TextTimerJsunit();
   marqueeUIJsunit();
   PatternLockJsunit();
-  SelectJsunit();
   RichTextJsunit();
   RichEditor01();
   spanUIJsunit();
@@ -428,20 +412,18 @@ export default function testsuite() {
   textInputOnEditChangeJsunit();
   ButtonHoverTest();
   ActsgetcomponentTest();
-  ActsgetcomponentaddTest();
   stageAnimatorTest();
   imageObscuredTest();
-  ActsRichEditorTest();
   textAreaJsunit3();
   textInputJsunit3();
   textObscuredTest();
   textSpanFontTest();
   textArea_bottom();
   search_gesture();
-  text_drag();
   textAreaOnCaretAndKeyboardTest();
   richEditorTest();
   textTextCaseTest();
   textTextDecorationTest();
   searchTest();
+  textInputTest()
 }

@@ -161,8 +161,10 @@ export default function button3Jsunit() {
       await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('button2');
 
+      let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_size_body1').id)
+	    console.info("[TextInputPageJsunit_0200] size: " +px2fp(resourceSize));
       console.info("[testButton07] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
-      expect(JSON.parse(strJsonNew).$attrs.fontSize).assertEqual('16.00fp');
+      expect(JSON.parse(strJsonNew).$attrs.fontSize).assertEqual('' + px2fp(resourceSize) + '.00fp');
       done();
     });
 
