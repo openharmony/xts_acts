@@ -15,11 +15,12 @@ import("//foundation/arkui/ace_engine/ace_config.gni")
 group("ActsAceEtsModuleFrameNodeTest") {
   testonly = true
   if (ace_engine_feature_wearable) {
-    deps = [ "ace_ets_module_FrameNode_api12:ActsAceEtsModuleFrameNodeApi12Test" ]
+    deps =
+        [ "ace_ets_module_FrameNode_api12:ActsAceEtsModuleFrameNodeApi12Test" ]
   } else {
     deps = [
+      "ace_ets_module_FrameNode_NoWear_api12:ActsAceEtsModuleFrameNodeNoWearApi12Test",
       "ace_ets_module_FrameNode_api12:ActsAceEtsModuleFrameNodeApi12Test",
-      "ace_ets_module_FrameNode_NoWear_api12:ActsAceEtsModuleFrameNodeNoWearApi12Test"
     ]
   }
 }
