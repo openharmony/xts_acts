@@ -85,7 +85,7 @@ export default class ActsActionExtensionAbility extends ActionExtensionAbility {
       }
     };
     commonEventManager.publish('ACTS_TEST_DESTROY', options, function () {});
-    await sleep(1000);
+    await sleep(500);
   }
 
   onSessionDestroy(session) {
