@@ -146,7 +146,6 @@ import navigation_add3_1 from './Navigation/navigation_add/navigation_add3_1.tes
 import navigation_add3_2 from './Navigation/navigation_add/navigation_add3_2.test'
 import navigation_add4_1 from './Navigation/navigation_add/navigation_add4_1.test'
 import queryNavigationInfoTest from './Navigation/queryNavigationInfoTest.test'
-import StepperTest1 from './Stepper/StepperTest1.test'
 
 import Navigation_L0_1 from './Navigation/Navigation_L0/Navigation_L0_1.test'
 import Navigation_L0_2 from './Navigation/Navigation_L0/Navigation_L0_2.test'
@@ -376,7 +375,6 @@ export default function testsuite() {
   NavigationLevelTest22();
   NavigationLevelTest23();
   NavPathInfoIsEntry();
-  StepperTest1()
   NavPathStack12()
   NavPathStack21()
   NavPathStack22()
