@@ -30,7 +30,7 @@ struct Index {
         Text('next page')
       }.type(ButtonType.Capsule)
       .margin({
-        top: 20
+        top: 5
       })
       .backgroundColor('#0D9FFB')
       .onClick(() => {

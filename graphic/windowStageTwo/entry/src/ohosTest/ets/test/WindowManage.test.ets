@@ -40,6 +40,7 @@ function createSysSubWindow(context: common.UIAbilityContext, caseName: string):
       await data.showWindow();
       console.info(`${caseName} Succeeded in showing the system sub window.`);
       await data.resizeAsync(minWidth+200, minHeight+200);
+      await data.moveWindowTo(0, 300);
       console.info(`${caseName} Succeeded in resizing the system sub window.`);
       resolve(data);
     }).catch(async (err: BusinessError) => {
