@@ -18,8 +18,8 @@ import {MessageManager,Callback} from '../../common/MessageManager';
 @Component
 struct TimePickerPage {
   @State isMilitaryTime: boolean = false
-  private selectedTime: Date = new Date('2022-07-22T11:00:00')
-  @State hour: number = 11
+  private selectedTime: Date = new Date('2022-07-22T10:00:00')
+  @State hour: number = 10
   @State minute: number = 0
   @State mode: boolean = true
   messageManager: MessageManager = new MessageManager()
@@ -56,18 +56,18 @@ struct TimePickerPage {
           .margin({ top: 5 })
           .key('12hour')
           .onClick(() => {
-            this.selectedTime = new Date('2022-07-22T11:00:00')
+            this.selectedTime = new Date('2022-07-22T10:00:00')
             this.isMilitaryTime = false
-            this.hour = 11
+            this.hour = 10
           })
 
         Button('切换24小时制')
           .margin({ top: 5 })
           .key('24hour')
           .onClick(() => {
-            this.selectedTime = new Date('2022-07-22T11:00:00')
+            this.selectedTime = new Date('2022-07-22T10:00:00')
             this.isMilitaryTime = true
-            this.hour = 11
+            this.hour = 10
           })
       }
 
