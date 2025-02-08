@@ -189,7 +189,7 @@ export default function ActsAllowTest() {
   * @tc.type      : Function test
   * @tc.level     : Level 2
   */
-    it('Sub_Notification_Ces_Subscriber_Subscribe_08086', 0, async () => {
+    it('Sub_Notification_Ces_Subscriber_Subscribe_08086', 0, async (done: () => void) => {
 
       // 创建订阅者
       try {
