@@ -31,6 +31,12 @@ namespace ArkUICapiTest {
 #define CHECKBOX_HEIGHT_100 100
 #define CHECKBOX_WIDTH_100 100
 
+#define CHECKBOX_WIDTH_WEAR 40
+#define CHECKBOX_HEIGHT_WEAR 40
+
+#define ROW_HEIGHT_WEAR 40
+#define ROW_WIDTH_WEAR 150
+
 #define FOCUSABLE_TRUE 1
 
 class CheckboxEnabledTest {
