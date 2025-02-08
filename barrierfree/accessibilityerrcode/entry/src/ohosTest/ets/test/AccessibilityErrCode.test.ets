@@ -1019,6 +1019,7 @@ export default function abilityTest() {
               expect(ElementAttributeValue.indexOf("accessibilityText") != -1).assertTrue();
               expect(ElementAttributeValue.indexOf("customComponentType") != -1).assertTrue();
               expect(ElementAttributeValue.indexOf("accessibilityNextFocusId") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("accessibilityPreviousFocusId") != -1).assertTrue();
               expect(ElementAttributeValue.indexOf("extraInfo") != -1).assertTrue();
             });
             rootElement.actionNames((err, data) => {
