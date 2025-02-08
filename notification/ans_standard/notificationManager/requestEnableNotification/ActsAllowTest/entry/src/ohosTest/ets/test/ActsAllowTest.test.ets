@@ -20,8 +20,44 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import { logGenerator, succeedGenerator, exitGenerator, sleep, exitSpecialGenerator } from '../common/utils';
 
 import common from '@ohos.app.ability.common';
+import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
 let ctx = getContext(this) as common.UIAbilityContext;
+
+
+// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+let subscriber: commonEventManager.CommonEventSubscriber;
+// 订阅者信息
+let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+  events: ["event"],
+  publisherBundleName: 'com.example.myapplication'
+};
+
+// 订阅公共事件回调
+function SubscribeCB(err: BusinessError, data: commonEventManager.CommonEventData) {
+  if (err) {
+    console.error(`Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info(`Succeeded in subscribing, data is ` + JSON.stringify(data));
+  }
+}
+
+// 创建订阅者回调
+function createCB(err: BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) {
+  if (!err) {
+    console.info(`Succeeded in creating subscriber.`);
+    subscriber = commonEventSubscriber;
+    // 订阅公共事件
+    try {
+      commonEventManager.subscribe(subscriber, SubscribeCB);
+    } catch (error) {
+      let err: BusinessError = error as BusinessError;
+      console.error(`Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
+    }
+  } else {
+    console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+  }
+}
 
 export default function ActsAllowTest() {
   describe('SUB_ACTS_ALLOW_TEST', () => {
@@ -94,6 +130,86 @@ export default function ActsAllowTest() {
         });
       }
     );
-  });
 
+
+  /*
+  * @tc.number    : Sub_Notification_Ans_Publish_updateOnly_0003
+  * @tc.name      : 更新一个不存在的通知，updateOnly传true
+  * @tc.desc      : updateOnly is true
+  * @tc.size      : Large-scaleTest
+  * @tc.type      : Function test
+  * @tc.level     : Level 0
+  */
+    it('Sub_Notification_Ans_Publish_updateOnly_0003', 0, (done: Function) => {
+      // 通知Request对象
+      let notificationRequest: notificationManager.NotificationRequest = {
+        id: 2025012101,
+        notificationSlotType: notificationManager.SlotType.OTHER_TYPES,
+        content: {
+          notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+          normal: {
+            title: "test_titleUpdateOnlytrue",
+            text: "test_text",
+            additionalText: "test_additionalText"
+          }
+        },
+        updateOnly: true,
+        creatorBundleName: '123',
+        creatorUid: 123,
+        creatorPid: 123,
+        creatorUserId: 123,
+        hashCode: '123'
+      };
+      notificationManager.publish(notificationRequest).then(() => {
+        console.info(TAG + "publish update success");
+        expect(false).assertTrue()
+        done();
+      }).catch((err: BusinessError) => {
+        console.log(notificationRequest.creatorBundleName + " publish success1")
+        console.log(notificationRequest.creatorUid + " publish success1")
+        console.log(notificationRequest.creatorPid + " publish success1")
+        console.log(notificationRequest.creatorUserId + " publish success1")
+        console.log(notificationRequest.hashCode + " publish success1")
+        expect(notificationRequest.creatorBundleName).assertEqual('123')
+        expect(notificationRequest.creatorUid).assertEqual(123)
+        expect(notificationRequest.creatorPid).assertEqual(123)
+        expect(notificationRequest.creatorUserId).assertEqual(123)
+        expect(notificationRequest.hashCode).assertEqual('123')
+        console.error(TAG + `publish update fail: ${JSON.stringify(err)}`);
+        expect(err.code == 1600007).assertTrue()
+        done();
+      });
+    })
+
+  /*
+  * @tc.number    : Sub_Notification_Ces_Subscriber_Subscribe_08086
+  * @tc.name      : 调用 createSubscriber 接口，创建订阅者，调用 subscribe 接口，getSubscribeInfo获取订阅者信息，subscribeInfo.publisherBundleName为订阅者包名
+  * @tc.desc      : publisherBundleName test
+  * @tc.size      : Large-scaleTest
+  * @tc.type      : Function test
+  * @tc.level     : Level 2
+  */
+    it('Sub_Notification_Ces_Subscriber_Subscribe_08086', 0, async () => {
+
+      // 创建订阅者
+      try {
+        commonEventManager.createSubscriber(subscribeInfo, createCB);
+      } catch (error) {
+        let err: BusinessError = error as BusinessError;
+        console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+      }
+      await sleep(1500)
+
+      subscriber.getSubscribeInfo().then((subscribeInfo: commonEventManager.CommonEventSubscribeInfo) => {
+        console.info(`Succeeded in getting subscribe info, subscribe info is ` + JSON.stringify(subscribeInfo));
+        expect(subscribeInfo.publisherBundleName).assertEqual('com.example.myapplication')
+        done();
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to get subscribe info. Code is ${err.code}, message is ${err.message}`);
+        expect(false).assertTrue()
+        done();
+      });
+    })
+    
+  });
 };
