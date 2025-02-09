@@ -16,10 +16,19 @@ import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import CommonFunc from '../../MainAbility/common/Common';
+import config from '@ohos.accessibility.config'
+import accessibility from '@ohos.accessibility';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.openharmony.arkui_capi_xts/MainAbility';
 
 export default function patternLockJsunit() {
   describe('appInfoTest_four_5', () => {
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+      }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("patternLock beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/patternLock/patternLock',

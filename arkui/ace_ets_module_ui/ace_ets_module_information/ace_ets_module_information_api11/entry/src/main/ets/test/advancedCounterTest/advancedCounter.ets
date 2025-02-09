@@ -16,10 +16,20 @@ import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router';
 import { Driver, ON, Component } from '@ohos.UiTest'
 import CommonFunc from '../../MainAbility/common/Common';
+import config from '@ohos.accessibility.config'
+import accessibility from '@ohos.accessibility';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.arkui.ace.information/MainAbility';
+
 export default function abilityTest() {
   const SUITE = 'CounterComponent'
   describe('ActsAceCounterComponentTest', () => {
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+      }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       let options: router.RouterOptions = {
         url: "MainAbility/pages/advancedCounter/advancedCounterIndex",
       }

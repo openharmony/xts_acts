@@ -18,10 +18,19 @@ import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern
 import CommonFunc from '../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 import bundle from '@ohos.bundle.bundleManager';
+import config from '@ohos.accessibility.config'
+import accessibility from '@ohos.accessibility';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.arkui.ace.information/MainAbility';
 
 export default function QRCodeUIJsunit() {
   describe('QRCodeUIJsunit', () => {
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+      }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("QRCodeUIJsunit beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Qrcode/QRCodePage',
