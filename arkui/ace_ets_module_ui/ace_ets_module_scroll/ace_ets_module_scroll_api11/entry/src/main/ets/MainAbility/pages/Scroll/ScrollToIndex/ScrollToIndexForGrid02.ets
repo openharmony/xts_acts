@@ -42,13 +42,17 @@ struct ScrollToIndexForGrid02 {
         Column(){
           Flex({ direction: FlexDirection.Row, wrap: FlexWrap.Wrap, justifyContent:FlexAlign.SpaceBetween }) { // 子组件在容器主轴上行布局
             Button('grid-66-true-center', { type: ButtonType.Normal, stateEffect: true })
-              .borderRadius(8).backgroundColor(0x317aff).width(150).height(40)
+              .width('30%')
+              .height('5%')
+              .borderRadius(8).backgroundColor(0x317aff)
               .onClick(() => {
                 this.isSmooth = false
                 this.scrollerForGrid.scrollToIndex(66, true, ScrollAlign.CENTER)
               }).margin(5)
             Button('item-66-true-start', { type: ButtonType.Normal, stateEffect: true })
-              .borderRadius(8).backgroundColor(0x317aff).width(150).height(40)
+              .width('30%')
+              .height('5%')
+              .borderRadius(8).backgroundColor(0x317aff)
               .onClick(() => {
                 this.isSmooth = false
                 const yOffsetStart: number = this.scrollerItemForGrid.currentOffset().yOffset;
@@ -61,13 +65,17 @@ struct ScrollToIndexForGrid02 {
                 },1000)
               }).margin(5)
             Button('item-99-false-start', { type: ButtonType.Normal, stateEffect: true })
-              .borderRadius(8).backgroundColor(0x317aff).width(150).height(40)
+              .width('30%')
+              .height('5%')
+              .borderRadius(8).backgroundColor(0x317aff)
               .onClick(() => {
                 this.isSmooth = false
                 this.scrollerItemForGrid.scrollToIndex(99, false, ScrollAlign.START)
               }).margin(5)
             Button('item-178-true-start', { type: ButtonType.Normal, stateEffect: true })
-              .borderRadius(8).backgroundColor(0x317aff).width(150).height(40)
+              .width('30%')
+              .height('5%')
+              .borderRadius(8).backgroundColor(0x317aff)
               .onClick(() => {
                 this.isSmooth = false
                 const yOffsetStart: number = this.scrollerItemForGrid.currentOffset().yOffset;
@@ -80,25 +88,33 @@ struct ScrollToIndexForGrid02 {
                 },1000)
               }).margin(5)
             Button('item-22-true-end', { type: ButtonType.Normal, stateEffect: true })
-              .borderRadius(8).backgroundColor(0x317aff).width(150).height(40)
+              .width('30%')
+              .height('5%')
+              .borderRadius(8).backgroundColor(0x317aff)
               .onClick(() => {
                 this.isSmooth = false
                 this.scrollerItemForGrid.scrollToIndex(22, true, ScrollAlign.END)
               }).margin(5)
             Button('item-108-false-end', { type: ButtonType.Normal, stateEffect: true })
-              .borderRadius(8).backgroundColor(0x317aff).width(150).height(40)
+              .width('30%')
+              .height('5%')
+              .borderRadius(8).backgroundColor(0x317aff)
               .onClick(() => {
                 this.isSmooth = false
                 this.scrollerItemForGrid.scrollToIndex(108, false, ScrollAlign.END)
               }).margin(5)
             Button('item-100-false-center', { type: ButtonType.Normal, stateEffect: true })
-              .borderRadius(8).backgroundColor(0x317aff).width(150).height(40)
+              .width('30%')
+              .height('5%')
+              .borderRadius(8).backgroundColor(0x317aff)
               .onClick(() => {
                 this.isSmooth = false
                 this.scrollerItemForGrid.scrollToIndex(100, false, ScrollAlign.CENTER)
               }).margin(5)
             Button('moreColumns', { type: ButtonType.Normal, stateEffect: true })
-              .borderRadius(8).backgroundColor(Color.Gray).width(150).height(40)
+              .width('30%')
+              .height('5%')
+              .borderRadius(8).backgroundColor(Color.Gray)
               .onClick(() => {
                 this.isSmooth = false
                 this.scrollerItemForGrid.scrollToIndex(0, false)
@@ -118,7 +134,7 @@ struct ScrollToIndexForGrid02 {
                         .fontSize(16)
                         .backgroundColor(0xF5CF53)
                         .width('90%')
-                        .height(60)
+                        .height('10%')
                         .textAlign(TextAlign.Center)
                     }.id('gridIndex02_' + day)
                   })
@@ -141,7 +157,7 @@ struct ScrollToIndexForGrid02 {
                   .fontSize(16)
                   .backgroundColor(0xF9CF93)
                   .width('95%')
-                  .height(120)
+                  .height('20%')
                   .textAlign(TextAlign.Center)
               }
             }

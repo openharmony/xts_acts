@@ -101,8 +101,9 @@ export default function ApiCommponentAddJsunit() {
       let bottom = gridBottom.bottom;
       let gridRight = CommonFunc.getComponentRect('listadd');
       let right = gridRight.right;
+      let left = gridRight.left;
       let driver = await Driver.create();
-      await driver.swipe(Math.round(top + 50), Math.round(right - 50), Math.round(bottom - 50), Math.round(right - 50));
+      await driver.swipe(Math.round(left + Math.round(vp2px(30))), Math.round(top + Math.round(vp2px(30))), Math.round(left + Math.round(vp2px(20))), Math.round(top + Math.round(vp2px(30))));
       await CommonFunc.sleep(1000);
       // judge whether the top
       let onScrollStartText = await driver.findComponent(ON.id('4'));
@@ -136,7 +137,7 @@ export default function ApiCommponentAddJsunit() {
       // wether if swipe
       let gridText = await driver.findComponent(ON.id('25'));
       let  text = await gridText.getText();
-      console.info("apiCommponentAddJsunit_0300] onScrollText: " + text);
+      console.info("[apiCommponentAddJsunit_0300] onScrollText: " + text);
       expect(text).assertEqual('4');
       done();
     });
