@@ -75,7 +75,6 @@ export default function TabIndexTest() {
     'TextPicker',
     'TimePicker',
     'Toggle',
-    'Web',
     'AlphabetIndexer',
     'Column',
     //    'ColumnSplit',
