@@ -229,6 +229,7 @@ import ImageAdvancedTest from './imageTest/ImageAdvancedTest.test.ets'
 import ImageAnimatorAdvancedTest from './ImageAnimator/imageAnimatorAdvancedTest.test.ets'
 
 export default function testsuite() {
+  ActsRichEditorTest();
   textAreaInputTest()
   ImageAdvancedTest()
   ImageAnimatorAdvancedTest()
@@ -236,7 +237,6 @@ export default function testsuite() {
   stageFontTest();
   stageMediaquery();
   RichEditorApi222();
-  TextStateJsunit();
   richEditorApi4();
   richEditorApi5();
   richEditorApi6();
@@ -361,9 +361,6 @@ export default function testsuite() {
   transformTest()
   translationTest()
   buttonTest();
-  textInputTest()
-  textinputSec()
-  segmentbuttonTest()
   textAreaUxTest();
   search_caret();
   search_maxLength();
@@ -398,7 +395,6 @@ export default function testsuite() {
   TextTimerJsunit();
   marqueeUIJsunit();
   PatternLockJsunit();
-  SelectJsunit();
   RichTextJsunit();
   RichEditor01();
   spanUIJsunit();
@@ -428,10 +424,8 @@ export default function testsuite() {
   textInputOnEditChangeJsunit();
   ButtonHoverTest();
   ActsgetcomponentTest();
-  ActsgetcomponentaddTest();
   stageAnimatorTest();
   imageObscuredTest();
-  ActsRichEditorTest();
   textAreaJsunit3();
   textInputJsunit3();
   textObscuredTest();
@@ -444,4 +438,10 @@ export default function testsuite() {
   textTextCaseTest();
   textTextDecorationTest();
   searchTest();
+  ActsgetcomponentaddTest();
+  SelectJsunit();
+  textinputSec()
+  segmentbuttonTest()
+  TextStateJsunit();
+  textInputTest()
 }

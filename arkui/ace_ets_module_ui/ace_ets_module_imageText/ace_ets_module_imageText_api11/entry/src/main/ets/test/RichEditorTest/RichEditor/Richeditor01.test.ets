@@ -16,6 +16,7 @@
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import router from '@ohos.router';
+import CommonFunc from '../../../MainAbility/common/Common'
 
 export default function ActsRichEditorTest() {
   describe('ActsRichEditorTest', () => {
@@ -56,6 +57,7 @@ export default function ActsRichEditorTest() {
             }
           }
         })
+		await CommonFunc.sleep(1500)
         console.info('Stage_Font_0100 START  :' + JSON.stringify(res));
         expect(typeof (res)).assertEqual('number')
         expect(res).assertEqual(0)

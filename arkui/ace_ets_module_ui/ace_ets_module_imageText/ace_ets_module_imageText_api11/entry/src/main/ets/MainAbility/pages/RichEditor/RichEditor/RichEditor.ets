@@ -21,7 +21,7 @@ struct RichEditorTest {
 
   build() {
     Column() {
-      Text(this.text).key('RichEditor_text').margin(60)
+      Text(this.text).key('RichEditor_text').height('10%')
       RichEditor({ controller: this.controller })
         .onReady(() => {
           this.controller.addTextSpan("0123456789\n", {
@@ -48,6 +48,7 @@ struct RichEditorTest {
             }
           })
         }).key('RichEditor_Start')
+	  .height('10%')
 
         Button("段落右对齐").onClick(() => {
           this.controller.updateParagraphStyle({ start: -1, end: -1,
@@ -56,6 +57,7 @@ struct RichEditorTest {
             }
           })
         }).key('RichEditor_End')
+	  .height('10%')
 
         Button("段落居中").onClick(() => {
           this.controller.updateParagraphStyle({ start: -1, end: -1,
@@ -64,6 +66,7 @@ struct RichEditorTest {
             }
           })
         }).key('RichEditor_Center')
+	  .height('10%')
         Button("getParagraphs").onClick(() => {
           this.spanParagraphs = this.controller.getParagraphs({ start: -1, end: -1 })
           console.log("RichEditor getParagraphs:" + JSON.stringify(this.spanParagraphs))
@@ -72,10 +75,12 @@ struct RichEditorTest {
           let index:number = Number(this.spanParagraphs[0].style.textAlign)
           this.text = TextAlign[index]
         }).key('RichEditor_get')
+	  .height('10%')
 
 
 
       }
     }
+      .height('100%')
   }
 }

@@ -277,8 +277,10 @@ export default function search_gesture() {
       expect(obj1.$attrs.content).assertEqual('0')
 
       //second step: click the center of line and check caret position
-      let clickX2 = Math.round(clickX + fp2px(28));
-      await driver.click(clickX2, clickY)
+      let searchButton: Component = await driver.findComponent(ON.id('Search2Caret13'));
+	    await CommonFunc.sleep(500);
+      await searchButton.click()
+      await CommonFunc.sleep(500);
       await button.click();
       await CommonFunc.sleep(500);
       let strJson2 = getInspectorByKey('SearchCaretIndexText');
@@ -290,7 +292,9 @@ export default function search_gesture() {
       expect(obj2.$attrs.content).assertEqual('2')
 
       //third step: click the center of line and check caret position
-      await searchComponent.click()
+      let searchButton2: Component = await driver.findComponent(ON.id('Search2Caret11'));
+      await CommonFunc.sleep(500);
+      await searchButton2.click()
       await CommonFunc.sleep(500);
       await button.click();
       await CommonFunc.sleep(500);

@@ -17,6 +17,8 @@ import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, MouseButton} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 
 export default function TextInputPageJsunit() {
@@ -96,7 +98,9 @@ export default function TextInputPageJsunit() {
       console.info("[TextInputPageJsunit_0200] textAlign: " + JSON.stringify(obj.$attrs.textAlign));
       expect(obj.$attrs.placeholder).assertEqual('inline style');
       expect(obj.$attrs.type).assertEqual('InputType.Normal');
-      expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"16.00fp","weight":"400","fontFamily":"sans-serif"}');
+	  let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_size_body1').id)
+	  console.info("[TextInputPageJsunit_0200] size: " +px2fp(resourceSize));
+	  expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"'+px2fp(resourceSize)+'.00fp","weight":"400","fontFamily":"sans-serif"}');
       expect(obj.$attrs.enterKeyType).assertEqual('EnterKeyType.Done');
       expect(obj.$attrs.maxLength).assertEqual('INF');
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');

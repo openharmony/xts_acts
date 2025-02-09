@@ -25,27 +25,29 @@ struct SearchGesture {
   controller2: SearchController = new SearchController()
 
   build() {
-    Column( { space: 20 }) {
+    Column() {
+      Text(this.caretXText).key('SearchCaretXText').height('5%').textAlign(TextAlign.Center)
+      Text(this.caretIndexText).key('SearchCaretIndexText').height('5%').textAlign(TextAlign.Center)
       Search({ value: this.changeValue, placeholder: 'Type to search...', controller: this.controller })
-        .searchButton('SEARCH')
+        .searchButton('SEARCH', {fontSize: 5})
         .width('95%')
-        .height(40)
+        .height('10%')
         .backgroundColor('#F5F5F5')
         .placeholderColor(Color.Grey)
         .placeholderFont({ size: 14, weight: 400 })
-        .textFont({ size: 14, weight: 400 })
+        .textFont({ size: 10, weight: 400 })
         .onChange((value: string) => {
           this.changeValue = value
         })
         .key('SearchGesture')
       Search({ value: this.changeValue2, placeholder: 'Type to search...', controller: this.controller2 })
-        .searchButton('SEARCH')
+        .searchButton('SEARCH', {fontSize: 5})
         .width('95%')
-        .height(40)
+        .height('10%')
         .backgroundColor('#F5F5F5')
         .placeholderColor(Color.Grey)
         .placeholderFont({ size: 14, weight: 400 })
-        .textFont({ size: 14, weight: 400 })
+        .textFont({ size: 10, weight: 400 })
         .onChange((value: string) => {
           this.changeValue2 = value
         })
@@ -64,12 +66,19 @@ struct SearchGesture {
             this.positionInfo2 = this.controller2.getCaretOffset()
             this.caretIndexText = this.positionInfo2.index +  ''
           })
-      }
-      Column(){
-        //caretX unit is PX
-        Text(this.caretXText).key('SearchCaretXText')
-        Text(this.caretIndexText).key('SearchCaretIndexText')
-      }
+      }.height('10%')
+      Row(){
+        Button('Caret2:11')
+          .key('Search2Caret11')
+          .onClick(() => {
+            this.controller2.caretPosition(11)
+          })
+        Button('Caret3:11')
+          .key('Search2Caret13')
+          .onClick(() => {
+            this.controller2.caretPosition(2)
+          })
+      }.height('10%')
 
     }.width('100%')
   }
