@@ -59,13 +59,12 @@ export default function SourceToolTest() {
       console.info('SourceTool_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let colum = CommonFunc.getComponentRectOnScreen('PanGestureSourceToolColumn');
-      let top = colum.top
-      let bottom = colum.bottom
-      let left = colum.left
-      let right = colum.right
-      await driver.mouseClick({x:Math.round((left + right) / 2), y: Math.round((top + bottom) / 2)},
-        MouseButton.MOUSE_BUTTON_LEFT);
+      
+      let button: Component = await driver.findComponent(ON.id('PanGestureSourceToolColumn'));
+      
+      let point = await button.getBoundsCenter();
+      
+      await driver.mouseClick(point,MouseButton.MOUSE_BUTTON_LEFT);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sourceTool1_id');
       let obj: ESObject = JSON.parse(strJson);

@@ -16,11 +16,19 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-
+import config from '@ohos.accessibility.config'
+import accessibility from '@ohos.accessibility';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.openharmony.arkui_capi_xts/MainAbility';
 
 export default function onKeyPreImeTest() {
   describe('onKeyPreImeTest', () => {
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+      console.info('enable success');
+      }).catch((err: object) => {
+        console.error('failed to enable, ${err}');
+      })
       console.info("onKeyPreImeTest beforeEach start");
       let options: router.RouterOptions = {
         url: "MainAbility/pages/onKeyEvent/OnKeyPreIme",
