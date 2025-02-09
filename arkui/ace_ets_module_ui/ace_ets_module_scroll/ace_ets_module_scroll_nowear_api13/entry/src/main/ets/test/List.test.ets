@@ -12,17 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import headerListJsunit from './ListTest/headerListJsunit.test'; 
-import tabsOpacityJsunit from './TabsTest/tabsOpacityJsunit.test'; 
-import bindTabsScroll from './TabsTest/bindTabsScroll.test';
-import listItemGroupComponent from './ListTest/listItemGroupComponent.test'; 
-import offsetRemainScroll from './ScrollTest/offsetRemainScroll.test'; 
+import waterFlowFad from './WaterFlowTest/waterFlowFad.test';
 
 export default function testsuite() {
-  headerListJsunit()
-  tabsOpacityJsunit()
-  bindTabsScroll()
-  listItemGroupComponent()
-  offsetRemainScroll()
+  waterFlowFad()
 }
