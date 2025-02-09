@@ -16,9 +16,21 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver} from '@ohos.UiTest';
+import config from '@ohos.accessibility.config';
+import accessibility from '@ohos.accessibility';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.arkui.ace.commonEvents.api11/EntryAbility';
 export default function aboutToAppearTest() {
   describe('aboutToAppearTest', () => {
     beforeEach(async (done: Function) => {
+config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+      console.info(`enable success`);
+      }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
+	done();
+});
+    beforeAll(async (done: Function) => {
       console.info("aboutToAppearTest beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/onAppear/aboutToAppear',

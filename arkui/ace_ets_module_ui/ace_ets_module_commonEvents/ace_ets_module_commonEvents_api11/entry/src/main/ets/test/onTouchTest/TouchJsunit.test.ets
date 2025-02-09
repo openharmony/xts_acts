@@ -17,10 +17,21 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import CommonFunc from '../../MainAbility/common/Common';
-
+import config from '@ohos.accessibility.config';
+import accessibility from '@ohos.accessibility';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.arkui.ace.commonEvents.api11/EntryAbility';
 export default function touchJsunit() {
   describe('touchTest', () => {
     beforeEach(async (done: Function) => {
+config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+      console.info(`enable success`);
+      }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
+	done();
+});
+    beforeAll(async (done: Function) => {
       console.info("touch beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/onTouch/touch',
