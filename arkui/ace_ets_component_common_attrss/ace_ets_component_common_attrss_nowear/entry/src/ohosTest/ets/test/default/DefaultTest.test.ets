@@ -56,6 +56,7 @@ export default function defaultTest() {
     'RowSplit',
     'FlowItem',
     'SideBarContainer',
+    'WaterFlow'
   ]
 
   //Custom params.
