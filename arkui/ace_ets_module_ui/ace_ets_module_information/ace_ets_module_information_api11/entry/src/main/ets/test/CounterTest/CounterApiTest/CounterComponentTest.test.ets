@@ -16,7 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import CommonFunc from "../../../MainAbility/common/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import config from '@ohos.accessibility.config'
+import config from '@ohos.accessibility.config';
 import accessibility from '@ohos.accessibility';
 const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
 const BUNDLE_NAME = 'com.arkui.ace.information/MainAbility';

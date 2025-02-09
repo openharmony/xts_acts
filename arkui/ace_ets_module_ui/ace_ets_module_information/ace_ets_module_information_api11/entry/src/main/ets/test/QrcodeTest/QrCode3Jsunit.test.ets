@@ -18,10 +18,10 @@ import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
 import bundle from '@ohos.bundle.bundleManager';
 import { BusinessError } from '@ohos.base';
-import config from '@ohos.accessibility.config'
+import config from '@ohos.accessibility.config';
 import accessibility from '@ohos.accessibility';
 const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
-const BUNDLE_NAME = 'com.openharmony.arkui_capi_xts/MainAbility';
+const BUNDLE_NAME = 'com.arkui.ace.information/MainAbility';
 
 export default function qrCodeJsunit() {
   describe('qrCodeTest', () => {

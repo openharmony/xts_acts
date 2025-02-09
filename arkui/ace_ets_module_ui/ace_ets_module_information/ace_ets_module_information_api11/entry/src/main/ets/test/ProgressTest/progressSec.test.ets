@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
 import router from '@ohos.router';

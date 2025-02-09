@@ -12,11 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import { Driver, ON, Component } from '@ohos.UiTest'
+import { Driver, ON, Component } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-import config from '@ohos.accessibility.config'
+import config from '@ohos.accessibility.config';
 import accessibility from '@ohos.accessibility';
 const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
 const BUNDLE_NAME = 'com.arkui.ace.information/MainAbility';

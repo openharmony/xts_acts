@@ -14,12 +14,12 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import CommonFunc from '../../MainAbility/common/Common'
-import config from '@ohos.accessibility.config'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import CommonFunc from '../../MainAbility/common/Common';
+import config from '@ohos.accessibility.config';
 import accessibility from '@ohos.accessibility';
 const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
-const BUNDLE_NAME = 'com.openharmony.arkui_capi_xts/MainAbility';
+const BUNDLE_NAME = 'com.arkui.ace.information/MainAbility';
 
 export default function gaugeColorsJsunit() {
   describe('gaugeColorsTest', () => {

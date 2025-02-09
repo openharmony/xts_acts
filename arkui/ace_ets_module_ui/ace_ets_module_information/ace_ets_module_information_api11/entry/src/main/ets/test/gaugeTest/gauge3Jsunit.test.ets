@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -20,7 +20,7 @@ import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 import config from '@ohos.accessibility.config';
 import accessibility from '@ohos.accessibility';
 const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
-const BUNDLE_NAME = 'com.openharmony.arkui_capi_xts/MainAbility';
+const BUNDLE_NAME = 'com.arkui.ace.information/MainAbility';
 const waitUiReadyMs = 1000;
 
 export default function gauge3Jsunit() {
