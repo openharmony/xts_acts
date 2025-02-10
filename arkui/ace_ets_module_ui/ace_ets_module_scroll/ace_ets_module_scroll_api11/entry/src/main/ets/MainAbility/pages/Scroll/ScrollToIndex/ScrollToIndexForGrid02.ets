@@ -144,7 +144,7 @@ struct ScrollToIndexForGrid02 {
                 .rowsGap(10)
                 .width('95%')
                 .backgroundColor(0xFAEEE0)
-                .height(120)
+                .height('20%')
                 .margin({
                   top: 5,
                   bottom: 5
@@ -157,7 +157,7 @@ struct ScrollToIndexForGrid02 {
                   .fontSize(16)
                   .backgroundColor(0xF9CF93)
                   .width('95%')
-                  .height('20%')
+                  .height(120)
                   .textAlign(TextAlign.Center)
               }
             }
