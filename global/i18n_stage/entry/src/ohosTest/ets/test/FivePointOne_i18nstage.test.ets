@@ -332,7 +332,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 0
      */
-    it(`SUB_GLOBAL_I18N_StyledNumberFormat_02_00100`, 0, () => {
+    it('SUB_GLOBAL_I18N_StyledNumberFormat_02_00100', 0, () => {
       let integer_textStyle = new TextStyle({
         fontColor: Color.Red,
         fontFamily: "Arial",
@@ -388,8 +388,7 @@ export default function FivePointOne_i18nStageTest() {
         testList.push(arr.styledValue["fontSize"])
         testList.push(arr.styledValue["fontWeight"])
         testList.push(arr.styledValue["fontStyle"])
-      }
-      ;
+      };
       console.log('testscw', testList.toString());
       expect(testList.toString() == resultList.toString()).assertTrue();
     })
