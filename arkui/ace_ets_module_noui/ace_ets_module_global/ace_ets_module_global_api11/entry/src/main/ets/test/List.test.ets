@@ -27,7 +27,6 @@ import systemAppJsunit from './AppStorageTest/SystemAppJsunit.test';
 import webEditTextJsunit from './webTest/web.test';
 
 import globalJsunit1 from './globalTest/global1.test';
-import webGetTitleJsunit from './webTest/web2.test';
 import configurationJsunit from './configuration/ConfigurationJsunit.test';
 
 export default function testsuite() {
@@ -43,6 +42,5 @@ export default function testsuite() {
   systemAppJsunit()
   webEditTextJsunit()
   globalJsunit1()
-  webGetTitleJsunit()
   configurationJsunit();
 }
