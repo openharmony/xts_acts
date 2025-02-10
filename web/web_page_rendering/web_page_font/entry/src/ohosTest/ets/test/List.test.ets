@@ -25,6 +25,7 @@ import webViewMinLogicalFontSize from './WebViewMinLogicalFontSize.test';
 import webFontTest from './WebFontTest.test';
 import WebViewEnumAndFontLibrary from './WebViewEnumAndFontLibrary.test';
 import WebViewJavaScriptProxyAndOnPageVisible from './WebViewJavaScriptProxyAndOnPageVisible.test';
+import enableFollowSystemFontWeight from './enableFollowSystemFontWeight.test';
 
 export default function testsuite() {
        WebTextAutosizing();
@@ -40,4 +41,5 @@ export default function testsuite() {
        webFontTest();
        WebViewEnumAndFontLibrary();
        WebViewJavaScriptProxyAndOnPageVisible();
+	   enableFollowSystemFontWeight();
 }
