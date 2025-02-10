@@ -19,6 +19,8 @@ import textImmutablfFontWeight from "./text/textImmutablfFontWeight.test"
 import listCaseTest from "./list/ListCaseTest.test"
 import listScrollToIndexTest from "./listScrollTo/ListScrollToTest.test"
 import listItemGroupNodeAdapterTest from "./listItemGroup/ListItemGroupTest.test"
+import TextAreaLetterSpacing from "./textArea/TextAreaLetterSpacing.test"
+import TextInputLetterSpacing from "./textInput/TextInputLetterSpacing.test"
 
 export default function testsuite() {
   postFrameCallbackTest();
@@ -28,4 +30,6 @@ export default function testsuite() {
   listCaseTest();
   listScrollToIndexTest();
   listItemGroupNodeAdapterTest();
+  TextAreaLetterSpacing();
+  TextInputLetterSpacing();
 }
