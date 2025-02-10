@@ -78,8 +78,8 @@ struct Tabs_PadMar {
       .onChange((index: number) => {
         this.currentIndex = index
       })
-      .width(330)
-      .height(300)
+      .width(270)
+      .height(200)
       .padding(this.testPadding)
       .margin(this.testMargin)
       .backgroundColor('#F1F3F5')

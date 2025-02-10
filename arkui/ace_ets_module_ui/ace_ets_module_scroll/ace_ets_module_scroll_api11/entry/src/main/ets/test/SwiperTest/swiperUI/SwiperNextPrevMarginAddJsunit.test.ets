@@ -1224,7 +1224,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let padding: string = obj.$attrs.padding;
 
 
-      expect(padding).assertEqual('100.00vp');
+      expect(padding).assertEqual('10.00vp');
       expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left + vp2px(20 + 40)))) <= 1).assertTrue();
       done();
     });
@@ -1273,10 +1273,10 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(obj.$attrs.padding).assertEqual('3.00vp');
       let nextMargin: string =  obj.$attrs.nextMargin;
       let prevMargin: string =   obj.$attrs.prevMargin;
-      expect(nextMargin).assertEqual("100.00vp");
-      expect(prevMargin).assertEqual("100.00vp");
+      expect(nextMargin).assertEqual("30.00vp");
+      expect(prevMargin).assertEqual("30.00vp");
 
-      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left + vp2px(2*3 + 2 *100)))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left + vp2px(2*3 + 2 *30)))) <= 1).assertTrue();
       done();
     });
 

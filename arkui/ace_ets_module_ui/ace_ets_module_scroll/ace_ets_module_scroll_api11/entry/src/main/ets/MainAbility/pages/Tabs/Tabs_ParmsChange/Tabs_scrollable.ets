@@ -89,7 +89,7 @@ struct Tabs_scrollable {
         this.currentIndex = index
       })
       .width(330)
-      .height(300)
+      .height(120)
       .backgroundColor('#F1F3F5')
 
       Tabs({ index: this.currentIndexTwo }) {
@@ -115,7 +115,7 @@ struct Tabs_scrollable {
         this.currentIndexTwo = index
       })
       .width(330)
-      .height(300)
+      .height(120)
       .backgroundColor('#F1F3F5')
     }.width('100%')
   }

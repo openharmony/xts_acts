@@ -88,16 +88,16 @@ export default function Tabs_scrollable() {
       let Tabs_scrollable_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_001');
       let Tabs_scrollable_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_011');
       let driver = Driver.create();
-      await driver.swipe(Math.round(Tabs_scrollable_011.right - 30),
+      await driver.swipe(Math.round(Tabs_scrollable_011.right - ((Tabs_scrollable_011.right - Tabs_scrollable_011.left) / 6)),
         Math.round(Tabs_scrollable_011.top + ((Tabs_scrollable_011.bottom - Tabs_scrollable_011.top) / 2)),
-        Math.round(Tabs_scrollable_011.left + 30),
+        Math.round(Tabs_scrollable_011.left + ((Tabs_scrollable_011.right - Tabs_scrollable_011.left) / 6)),
         Math.round(Tabs_scrollable_011.top + ((Tabs_scrollable_011.bottom - Tabs_scrollable_011.top) / 2)));
       await CommonFunc.sleep(1000);
       let Tabs_scrollable_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_002');
       let Tabs_scrollable_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_012');
-      await driver.swipe(Math.round(Tabs_scrollable_012.right - 30),
+      await driver.swipe(Math.round(Tabs_scrollable_012.right - ((Tabs_scrollable_012.right - Tabs_scrollable_012.left) / 6)),
         Math.round(Tabs_scrollable_012.top + ((Tabs_scrollable_012.bottom - Tabs_scrollable_012.top) / 2)),
-        Math.round(Tabs_scrollable_012.left + 30),
+        Math.round(Tabs_scrollable_012.left + ((Tabs_scrollable_012.right - Tabs_scrollable_012.left) / 6)),
         Math.round(Tabs_scrollable_012.top + ((Tabs_scrollable_012.bottom - Tabs_scrollable_012.top) / 2)));
       await CommonFunc.sleep(1000);
       let Tabs_scrollable_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_003');
@@ -135,22 +135,19 @@ export default function Tabs_scrollable() {
         ${Math.round(Tabs_scrollable_011.bottom - Tabs_scrollable_011.top)}`);
       
 
-      expect(Math.abs(Math.round(Tabs_scrollable_011.bottom - Tabs_scrollable_011.top) - Math.round(vp2px(244))) <=1 ).assertTrue();
-      expect(Math.abs(Math.round(Tabs_scrollable_012.bottom - Tabs_scrollable_012.top) - Math.round(vp2px(244))) <=1 ).assertTrue(); 
-      expect(Math.abs(Math.round(Tabs_scrollable_013.bottom - Tabs_scrollable_013.top) - Math.round(vp2px(244))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Tabs_scrollable_011.bottom - Tabs_scrollable_011.top) - Math.round(vp2px(64))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Tabs_scrollable_012.bottom - Tabs_scrollable_012.top) - Math.round(vp2px(64))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Tabs_scrollable_013.bottom - Tabs_scrollable_013.top) - Math.round(vp2px(64))) <=1 ).assertTrue();
 
-      //expect(Math.round(Tabs_scrollable_011.bottom - Tabs_scrollable_011.top)).assertEqual(Math.round(vp2px(244)));
-      //expect(Math.round(Tabs_scrollable_012.bottom - Tabs_scrollable_012.top)).assertEqual(Math.round(vp2px(244)));
-      //expect(Math.round(Tabs_scrollable_013.bottom - Tabs_scrollable_013.top)).assertEqual(Math.round(vp2px(244)));
       expect(Math.abs(Tabs_scrollable_011.right - Tabs_scrollable_011.left - vp2px(330)) <= 1).assertTrue();
       expect(Math.abs(Tabs_scrollable_012.right - Tabs_scrollable_012.left - vp2px(330)) <= 1).assertTrue();
       expect(Math.abs(Tabs_scrollable_013.right - Tabs_scrollable_013.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsScrollableToTrue]Tabs_scrollable_001.bottom - Tabs_scrollable_001.top=
         ${Math.round(Tabs_scrollable_001.bottom - Tabs_scrollable_001.top)}`);
-      expect(Math.abs(Math.round(Tabs_scrollable_001.bottom - Tabs_scrollable_001.top) - Math.round(vp2px(244))) <=1 ).assertTrue();
-      expect(Math.abs(Math.round(Tabs_scrollable_002.bottom - Tabs_scrollable_002.top) - Math.round(vp2px(244))) <=1 ).assertTrue();
-      expect(Math.abs(Math.round(Tabs_scrollable_003.bottom - Tabs_scrollable_003.top) - Math.round(vp2px(244))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Tabs_scrollable_001.bottom - Tabs_scrollable_001.top) - Math.round(vp2px(64))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Tabs_scrollable_002.bottom - Tabs_scrollable_002.top) - Math.round(vp2px(64))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Tabs_scrollable_003.bottom - Tabs_scrollable_003.top) - Math.round(vp2px(64))) <=1 ).assertTrue();
 
     
       expect(Math.abs(Tabs_scrollable_001.right - Tabs_scrollable_001.left - vp2px(330)) <= 1).assertTrue();
@@ -196,9 +193,9 @@ export default function Tabs_scrollable() {
       let Tabs_scrollable_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_004');
       let Tabs_scrollable_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_041');
       let driver = Driver.create();
-      await driver.swipe(Math.round(Tabs_scrollable_011.right - 30),
+      await driver.swipe(Math.round(Tabs_scrollable_011.right - ((Tabs_scrollable_011.right - Tabs_scrollable_011.left) / 6)),
         Math.round(Tabs_scrollable_011.top + ((Tabs_scrollable_011.bottom - Tabs_scrollable_011.top) / 2)),
-        Math.round(Tabs_scrollable_011.left + 30),
+        Math.round(Tabs_scrollable_011.left + ((Tabs_scrollable_011.right - Tabs_scrollable_011.left) / 6)),
         Math.round(Tabs_scrollable_011.top + ((Tabs_scrollable_011.bottom - Tabs_scrollable_011.top) / 2)));
       await CommonFunc.sleep(1000);
       let Tabs_scrollable_0012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_004');
@@ -245,11 +242,11 @@ export default function Tabs_scrollable() {
       console.info(`[testTabsScrollableToFalse]Tabs_scrollable_011.bottom - Tabs_scrollable_011.top=
         ${Math.round(Tabs_scrollable_011.bottom - Tabs_scrollable_011.top)}`);
 
-      expect(Math.abs(Math.round(Tabs_scrollable_011.bottom - Tabs_scrollable_011.top) - Math.round(vp2px(244))) <=1 ).assertTrue();
-      expect(Math.abs(Math.round(Tabs_scrollable_012.bottom - Tabs_scrollable_012.top) - Math.round(vp2px(244))) <=1 ).assertTrue();
-      expect(Math.abs(Math.round(Tabs_scrollable_013.bottom - Tabs_scrollable_013.top) - Math.round(vp2px(244))) <=1 ).assertTrue();
-      
-     
+      expect(Math.abs(Math.round(Tabs_scrollable_011.bottom - Tabs_scrollable_011.top) - Math.round(vp2px(64))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Tabs_scrollable_012.bottom - Tabs_scrollable_012.top) - Math.round(vp2px(64))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Tabs_scrollable_013.bottom - Tabs_scrollable_013.top) - Math.round(vp2px(64))) <=1 ).assertTrue();
+
+
       expect(Math.abs(Tabs_scrollable_011.right - Tabs_scrollable_011.left - vp2px(330)) <= 1).assertTrue();
       expect(Math.abs(Tabs_scrollable_012.right - Tabs_scrollable_012.left - vp2px(330)) <= 1).assertTrue();
       expect(Math.abs(Tabs_scrollable_013.right - Tabs_scrollable_013.left - vp2px(330)) <= 1).assertTrue();
@@ -257,10 +254,10 @@ export default function Tabs_scrollable() {
       console.info(`[ ]Tabs_scrollable_001.bottom - Tabs_scrollable_001.top=
         ${Math.round(Tabs_scrollable_001.bottom - Tabs_scrollable_001.top)}`);
 
-      expect(Math.abs(Math.round(Tabs_scrollable_001.bottom - Tabs_scrollable_001.top) - Math.round(vp2px(244))) <=1 ).assertTrue();  
-      
-      expect(Math.abs(Math.round(Tabs_scrollable_002.bottom - Tabs_scrollable_002.top) - Math.round(vp2px(244))) <=1 ).assertTrue();
-      expect(Math.abs(Math.round(Tabs_scrollable_003.bottom - Tabs_scrollable_003.top) - Math.round(vp2px(244))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Tabs_scrollable_001.bottom - Tabs_scrollable_001.top) - Math.round(vp2px(64))) <=1 ).assertTrue();
+
+      expect(Math.abs(Math.round(Tabs_scrollable_002.bottom - Tabs_scrollable_002.top) - Math.round(vp2px(64))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Tabs_scrollable_003.bottom - Tabs_scrollable_003.top) - Math.round(vp2px(64))) <=1 ).assertTrue();
 
      
       expect(Math.abs(Tabs_scrollable_001.right - Tabs_scrollable_001.left - vp2px(330)) <= 1).assertTrue();

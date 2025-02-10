@@ -57,7 +57,7 @@ struct SwiperNextPrevMarginExample82 {
           Text(item)
             .width(300)
             .height(160)
-            .padding(100)
+            .padding(10)
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
             .fontSize(30).key(index+"")
