@@ -10,11 +10,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import("//foundation/arkui/ace_engine/ace_config.gni")
 
 group("ActsAceEtsModuleXNodeTest") {
   testonly = true
-  deps = [
-    "ace_ets_module_XNode_api12:ActsAceEtsModuleXNodeApi12Test",
-    "ace_ets_module_XNode_api14:ActsAceEtsModuleXNodeApi14Test",
-  ]
+  if (ace_engine_feature_wearable) {
+    deps = [
+      "ace_ets_module_XNode_api12:ActsAceEtsModuleXNodeApi12Test",
+      "ace_ets_module_XNode_api14:ActsAceEtsModuleXNodeApi14Test",
+    ]
+  } else {
+    deps = [
+      "ace_ets_module_XNode_api12:ActsAceEtsModuleXNodeApi12Test",
+      "ace_ets_module_XNodeNoWear_api12:ActsAceEtsModuleXNodeNoWearApi12Test",
+      "ace_ets_module_XNode_api14:ActsAceEtsModuleXNodeApi14Test",
+    ]
+  }
+
 }
