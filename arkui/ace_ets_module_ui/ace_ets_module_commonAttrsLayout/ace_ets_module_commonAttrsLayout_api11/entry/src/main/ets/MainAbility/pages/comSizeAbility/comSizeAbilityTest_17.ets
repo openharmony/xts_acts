@@ -27,11 +27,26 @@ let bott: bottom = new bottom()
 struct comSizeAbilityTest_17 {
   private select: number = 1
   private apfruits: string[] = ['选项1', '选项2', '选项3', '选项4']
+  scroller: Scroller = new Scroller()
 
   build() {
-    Scroll() {
-      Column({ space: 20 }) {
-        Column() {
+    Column() {
+      Row() {
+        Button('to_1').onClick(()=>{
+          this.scroller.scrollToIndex(0)
+        }).key('comSizeAbilityTest_17_to_1')
+
+        Button('to_2').onClick(()=>{
+          this.scroller.scrollToIndex(1)
+        }).key('comSizeAbilityTest_17_to_2')
+
+        Button('to_3').onClick(()=>{
+          this.scroller.scrollToIndex(2)
+        }).key('comSizeAbilityTest_17_to_3')
+      }
+
+      List({ space: 5, initialIndex: 0, scroller: this.scroller }) {
+        ListItem() {
           TextPicker({ range: this.apfruits, selected: this.select })
             .onChange((value: string | string[], index: number | number[]) => {
               console.info('Picker item changed, value: ' + value + ', index: ' + index)
@@ -59,7 +74,7 @@ struct comSizeAbilityTest_17 {
             .transform(matrix)
         }.key('TextPicker_Father')
 
-        Column() {
+        ListItem() {
           Text('显示文本组件')
             .key("Text_Size")
             .textAlign(TextAlign.Center)
@@ -84,7 +99,7 @@ struct comSizeAbilityTest_17 {
             .transform(matrix)
         }.key('Text_Father')
 
-        Column() {
+        ListItem() {
           TextInput({ text: '文本内容' })
             .backgroundColor(0XBDDB69)
             .key("TextInput_Size")
