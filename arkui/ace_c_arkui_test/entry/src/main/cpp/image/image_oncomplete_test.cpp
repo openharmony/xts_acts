@@ -60,7 +60,7 @@ ArkUI_NodeHandle ImageOnCompleteTest::CreateSubImageNode(ArkUI_NativeNodeAPI_1 *
                                                          uint32_t eventId)
 {
     float width = SIZE_200;
-    float height = SIZE_200;
+    float height = SIZE_100;
     uint32_t backgroundColor = COLOR_RED;
 
     // create image

@@ -27,7 +27,7 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, bool enabled)
     ArkUI_AttributeItem enabled_item = {enabled_value, sizeof(enabled_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(nodeHandle, NODE_ENABLED, &enabled_item);
 
-    ArkUI_NumberValue width_value[] = {{.f32 = SIZE_100}};
+    ArkUI_NumberValue width_value[] = {{.f32 = SIZE_50}};
     ArkUI_AttributeItem width_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(nodeHandle, NODE_WIDTH, &width_item);
     nodeAPI->setAttribute(nodeHandle, NODE_HEIGHT, &width_item);

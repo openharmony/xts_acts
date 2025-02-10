@@ -100,7 +100,7 @@ napi_value TextInputOnCutTest::CreateNativeNode(napi_env env, napi_callback_info
     auto textInput = createChildNode(nodeAPI);
     auto textInputDisable = createChildNode(nodeAPI);
     
-    ArkUI_NumberValue size_value[] = {{.f32 = SIZE_400}, {.f32 = SIZE_400}};
+    ArkUI_NumberValue size_value[] = {{.f32 = SIZE_300}, {.f32 = SIZE_300}};
     ArkUI_AttributeItem size_item = {size_value, sizeof(size_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(column, NODE_SIZE, &size_item);
 

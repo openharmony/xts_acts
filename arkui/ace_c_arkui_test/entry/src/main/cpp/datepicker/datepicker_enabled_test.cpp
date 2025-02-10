@@ -23,7 +23,7 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, int enabled)
 {
     auto nodeHandle = nodeAPI->createNode(ARKUI_NODE_DATE_PICKER);
 
-    if (enabled != SIZE_100) {
+    if (enabled != SIZE_50) {
         ArkUI_NumberValue enabled_value[] = {{.i32 = enabled}};
         ArkUI_AttributeItem enabled_item = {enabled_value, sizeof(enabled_value) / sizeof(ArkUI_NumberValue)};
         nodeAPI->setAttribute(nodeHandle, NODE_ENABLED, &enabled_item);
@@ -36,12 +36,13 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, int enabled)
     nodeAPI->setAttribute(nodeHandle, NODE_BACKGROUND_COLOR, &background_color_item);
 
     // set width
-    ArkUI_NumberValue width_value[] = {{.f32 = SIZE_200}};
+    ArkUI_NumberValue width_value[] = {{.f32 = SIZE_70}};
     ArkUI_AttributeItem width_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(nodeHandle, NODE_WIDTH, &width_item);
+    nodeAPI->setAttribute(nodeHandle, NODE_HEIGHT, &width_item);
 
     // set margin
-    ArkUI_NumberValue margin_value[] = {{.f32 = SIZE_10}};
+    ArkUI_NumberValue margin_value[] = {{.f32 = SIZE_1}};
     ArkUI_AttributeItem margin_item = {margin_value, sizeof(margin_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(nodeHandle, NODE_MARGIN, &margin_item);
 
