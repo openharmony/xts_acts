@@ -57,8 +57,8 @@ struct SwiperItemPaddingTest {
         }.width('100%').height('100%').backgroundColor(0xD2B48C).key('swiperItemPadding06')
       }
       .key('swiperItemPadding')
-      .height(300)
-      .width(300)
+      .height('60%')
+      .width('90%')
       .indicator(true)
       .loop(true)
       .displayCount(1)

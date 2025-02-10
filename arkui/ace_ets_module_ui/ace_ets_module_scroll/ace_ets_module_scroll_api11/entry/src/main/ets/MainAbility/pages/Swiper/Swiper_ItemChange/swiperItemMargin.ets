@@ -57,8 +57,8 @@ struct SwiperItemMarginTest {
         }.width('100%').height('100%').backgroundColor(0xD2B48C).key('swiperItemMargin06')
       }
       .key('swiperItemMargin')
-      .height(300)
-      .width(300)
+      .height('60%')
+      .width('90%')
       .indicator(true)
       .loop(true)
       .displayCount(1)

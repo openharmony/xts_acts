@@ -53,6 +53,16 @@ struct SwiperExampleT2 {
 
   build() {
     Column({ space: 5 }) {
+      Row({ space: 12 }) {
+        Button('showNext')
+          .onClick(() => {
+            this.swiperController.showNext()
+          })
+        Button('showPrevious')
+          .onClick(() => {
+            this.swiperController.showPrevious()
+          })
+      }.margin(5)
       Swiper(this.swiperController) {
         LazyForEach(this.data, (item: string) => {
           Text(item.toString())
@@ -102,16 +112,6 @@ struct SwiperExampleT2 {
         console.info("current offset: " + extraInfo.currentOffset)
       })
 
-      Row({ space: 12 }) {
-        Button('showNext')
-          .onClick(() => {
-            this.swiperController.showNext()
-          })
-        Button('showPrevious')
-          .onClick(() => {
-            this.swiperController.showPrevious()
-          })
-      }.margin(5)
     }.width('100%')
     .margin({ top: 10 }).backgroundColor(Color.Brown)
   }
