@@ -42,6 +42,7 @@ group("arkui") {
       "ace_c_arkui_test_api13:ActsAceCArkUI13Test",
       "ace_c_arkui_test_api14:ActsAceCArkUI14Test",
       "ace_c_arkui_test_api16:ActsAceCArkUI16Test",
+      "ace_c_arkui_testwearcrop:ActsAceCArkUIWearCropTest",
       "ace_ets_component_advanced:componentAdvancedTest",
       "ace_ets_component_apilack:ActsAceEtsApiLackTest",
       "ace_ets_component_common_attrss:componentAttrssTest",
