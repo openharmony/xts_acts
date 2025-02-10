@@ -19,6 +19,7 @@ export default class MainAbility extends Ability {
         // Ability is creating, initialize resources for this ability
         console.log("[Demo] MainAbility onCreate")
         globalThis.abilityWant = want;
+        AppStorage.setOrCreate("context", this.context);
     }
 
     onDestroy() {

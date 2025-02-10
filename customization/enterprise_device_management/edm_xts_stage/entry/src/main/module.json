@@ -207,6 +207,9 @@
       {
         "name": "ohos.permission.ENTERPRISE_MANAGE_DELEGATED_POLICY",
         "reason": "need use ENTERPRISE_MANAGE_DELEGATED_POLICY"
+      },
+      {
+        "name": "ohos.permission.PERSONAL_MANAGE_RESTRICTIONS"
       }
     ]
   }
