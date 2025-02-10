@@ -1598,7 +1598,7 @@ export default function DeviceInfoTest() {
         /**
          * @tc.number    SUB_STARTUP_JS_DEVCEINFO_0670
          * @tc.name     testGetSecurityPatchTag02
-         * @tc.desc      Get security pactch tag which format is yy--mm--dd test.
+         * @tc.desc      Get security pactch tag which format is yy/mm/dd test.
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
@@ -1617,7 +1617,7 @@ export default function DeviceInfoTest() {
                 expect(ret).assertTrue();
                 done();
             } else {
-                console.info('the return formate is not yy--mm--dd');
+                console.info('the return formate is not yy/mm/dd');
                 expect(false).assertTrue();
 				done();
             }
