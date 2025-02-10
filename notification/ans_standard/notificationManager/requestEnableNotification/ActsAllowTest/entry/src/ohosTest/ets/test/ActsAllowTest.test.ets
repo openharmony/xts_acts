@@ -111,8 +111,16 @@ export default function ActsAllowTest() {
           let exit = exitGenerator(TAG, reject);
           notificationManager.openNotificationSettings(ctx).then(() => {
             succeed(`openNotificationSettings succeeded`);
-          }).catch((err: Error) => {
+          }).catch((err: BusinessError) => {
             exit(`openNotificationSettings err: JSON.stringify(err)`);
+            if (err.code == 801) {
+              expect(true).assertTrue();
+              done();
+            }
+            else {
+              expect().assertFail();
+              done();
+            }
           })
           await sleep(1500);
           let driver = Driver.create();
