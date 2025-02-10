@@ -27,33 +27,38 @@ struct GridRows1 {
   build() {
     Scroll() {
       Column({ space: 5 }) {
+        Button('rowsGap: -5')
+          .height('5%')
+          .onClick(() => {
+            this.rowsGap = -5
+          }).key('GridRows1Bt1')
+
+        Button('rowsGap: 500')
+          .height('5%')
+          .onClick(() => {
+            this.rowsGap = 500
+          }).key('GridRows1Bt2')
+
+        Button('rowsGap: 5')
+          .height('5%')
+          .onClick(() => {
+            this.rowsGap = 5
+          }).key('GridRows1Bt3')
+        
         Grid() {
           ForEach(this.numbers, (day: string) => {
             GridItem() {
               Text(day).fontSize(16).backgroundColor(0xF9CF93)
-            }.width(100).height(100).backgroundColor(Color.Pink).key('GridRows1_' + day)
+            }.width('30%').height('20%').backgroundColor(Color.Pink).key('GridRows1_' + day)
           }, (day: string) => day)
         }
         .key('GridRows1')
-        .height(300)
-        .width(410)
+        .height('60%')
+        .width('100%')
         .columnsGap(0)
         .rowsGap(this.rowsGap)
         .backgroundColor(0xFAEEE0)
 
-        Row() {
-          Button('rowsGap: -5').onClick(() => {
-            this.rowsGap = -5
-          }).key('GridRows1Bt1')
-
-          Button('rowsGap: 500').onClick(() => {
-            this.rowsGap = 500
-          }).key('GridRows1Bt2')
-
-          Button('rowsGap: 5').onClick(() => {
-            this.rowsGap = 5
-          }).key('GridRows1Bt3')
-        }
       }
       .width('90%').margin({ top: 5, left: 5, right: 5 })
       .align(Alignment.Center)
