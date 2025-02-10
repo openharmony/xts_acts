@@ -1,0 +1,7 @@
+{
+  "src": [
+    "MainAbility/pages/XTSIndex",
+    "MainAbility/pages/calendarpicker/CalendarPickerEnabledTest",
+    "MainAbility/pages/calendarpicker/CalendarPickerOnChangeTest"  
+  ]
+}

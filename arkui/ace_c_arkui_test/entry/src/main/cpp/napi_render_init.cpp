@@ -62,7 +62,6 @@
 #include "stack/stack_ontouch_test.h"
 #include "text/text_enabled_test.h"
 #include "manager/plugin_manager.h"
-#include "calendarpicker/calendarpicker_onchange_test.h"
 #include "textpicker/textpicker_onchange_test.h"
 #include "datepicker/datepicker_ondatechange_test.h"
 #include "timepicker/timepicker_onchange_test.h"
@@ -79,7 +78,6 @@
 #include "textarea/textarea_enabled_test.h"
 #include "textinput/textinput_enabled_test.h"
 #include "textinput/textinput_onchange_test.h"
-#include "calendarpicker/calendarpicker_enabled_test.h"
 #include "checkbox/checkbox_enabled_test.h"
 #include "datepicker/datepicker_enabled_test.h"
 #include "slider/slider_enabled_test.h"
@@ -396,8 +394,6 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"stackOnTouchTest", nullptr, StackOnTouchTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"calendarPickerOnChangeTest", nullptr, CalendarPickerOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
         {"textPickerOnChangeTest", nullptr, TextPickerOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"datePickerOnDateChangeTest", nullptr, DatePickerOnDateChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
@@ -429,8 +425,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"textInputEnabledTest", nullptr, TextInputEnabledTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"textInputOnChangeTest", nullptr, TextInputOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"calendarPickerEnabledTest", nullptr, CalendarPickerEnabledTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"checkboxEnabledTest", nullptr, CheckboxEnabledTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},
