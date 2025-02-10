@@ -30,6 +30,7 @@ group("ActsAceEtsModuleScrollTest") {
       "ace_ets_module_scroll_api13:ActsAceEtsModuleScrollApi13Test",
       "ace_ets_module_scroll_api14:ActsAceEtsModuleScrollApi14Test",
       "ace_ets_module_scroll_api16:ActsAceEtsModuleScrollApi16Test",
+      "ace_ets_module_scroll_nowear_api12:ActsAceEtsModuleScrollNowearApi12Test",
       "ace_ets_module_scroll_nowear_api13:ActsAceEtsModuleScrollNowearApi13Test",
       "ace_ets_module_scroll_nowear_api14:ActsAceEtsModuleScrollNowearApi14Test",
     ]
