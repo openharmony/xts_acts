@@ -35,7 +35,7 @@ export default function userauthTest() {
                 userAuthNorth.getAvailableStatus(userAuthNorth.UserAuthType.FACE, 10000);
             } catch (e) {
                 console.log("checkSupportOrNot : Get other error : " + e + ' e.code: ' + e.code);
-                if (e.code != 10) {
+                if (e.code != 12500010) {
                     try {
                         let getversionresult = null;
                         getversionresult = UserAuthKit.getVersion();
