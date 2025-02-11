@@ -30,7 +30,8 @@
             "pre-push": [],
             "push": [
                 "./resource/media/demo.mp4 ->/data/app/el2/100/base/com.multimedia.napitest/haps/entry_test/files/",
-                "./resource/media/demo1.mp4 ->/data/app/el2/100/base/com.multimedia.napitest/haps/entry_test/files/"
+                "./resource/media/demo1.mp4 ->/data/app/el2/100/base/com.multimedia.napitest/haps/entry_test/files/",
+                "./resource/media/codec/audio_decoder/aac_2c_44100hz_199k_lc.dat ->/data/app/el2/100/base/com.multimedia.napitest/haps/entry_test/files/"
             ]
         },
 		{

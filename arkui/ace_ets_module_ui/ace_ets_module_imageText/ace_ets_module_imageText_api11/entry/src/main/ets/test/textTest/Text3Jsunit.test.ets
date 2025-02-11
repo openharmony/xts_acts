@@ -16,6 +16,8 @@ import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function text3Jsunit() {
   describe('text3Jsunit', () => {
@@ -44,8 +46,8 @@ export default function text3Jsunit() {
       await CommonFunc.sleep(1000);
       console.info("text after each called");
     });
-
-    it('testText_0100', 0, async (done: Function) => {
+	let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_font_size').id)    
+	it('testText_0100', 0, async (done: Function) => {
       console.info('testText_0100 START');
       let strJson = getInspectorByKey('text');
       console.info("testText_0100 component strJson:" + strJson);
@@ -268,7 +270,8 @@ export default function text3Jsunit() {
       console.info("testText_1300 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)
         .$attrs
         .fontSize));
-      expect(JSON.parse(strJsonNew).$attrs.fontSize).assertEqual('16.00fp');
+
+	  expect(JSON.parse(strJsonNew).$attrs.fontSize).assertEqual(px2fp(resourceSize)+'.00fp');      
       console.info('testText_1300 END');
       done();
     });
@@ -296,7 +299,8 @@ export default function text3Jsunit() {
       console.info("testText_1400 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)
         .$attrs
         .fontSize));
-      expect(JSON.parse(strJsonNew).$attrs.fontSize).assertEqual('16.00fp');
+
+	  expect(JSON.parse(strJsonNew).$attrs.fontSize).assertEqual(px2fp(resourceSize)+'.00fp');
       console.info('testText_1400 END');
       done();
     });

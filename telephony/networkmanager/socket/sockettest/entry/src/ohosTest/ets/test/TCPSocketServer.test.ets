@@ -369,7 +369,7 @@ export default function TCPSocketServerTest() {
         let listenAddress: socket.NetAddress = {
           address: '127.0.0.1',
           port: 5002,
-          family: 3
+          family: 4
         };
         tcpServer.listen(listenAddress, (err: BusinessError) => {
           if (err) {
@@ -819,7 +819,7 @@ export default function TCPSocketServerTest() {
         let listenAddress: socket.NetAddress = {
           address: '127.0.0.1',
           port: 5010,
-          family: 3
+          family: 4
         };
         tcpServer.listen(listenAddress).then(() => {
           console.info(`${caseName} success`);

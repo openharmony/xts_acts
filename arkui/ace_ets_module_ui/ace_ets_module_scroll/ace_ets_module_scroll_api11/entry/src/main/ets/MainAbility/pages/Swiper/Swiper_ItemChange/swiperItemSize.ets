@@ -71,8 +71,8 @@ struct SwiperItemSizeTest {
         }.width(this.testWidth).height(this.testHeight).backgroundColor(0xD2B48C)
       }
       .key('itemSizekey')
-      .height(300)
-      .width(300)
+      .height('60%')
+      .width('90%')
       .index(this.testIndex)
       .indicator(true)
       .loop(true)

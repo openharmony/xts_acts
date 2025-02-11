@@ -40,12 +40,12 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, int enabled, const c
     nodeAPI->setAttribute(nodeHandle, NODE_BACKGROUND_COLOR, &background_color_item);
 
     // set width
-    ArkUI_NumberValue width_value[] = {{.f32 = CHECKBOX_WIDTH_100}};
+    ArkUI_NumberValue width_value[] = {{.f32 = CHECKBOX_WIDTH_WEAR}};
     ArkUI_AttributeItem width_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(nodeHandle, NODE_WIDTH, &width_item);
 
     // set height
-    ArkUI_NumberValue height_value[] = {{.f32 = CHECKBOX_HEIGHT_100}};
+    ArkUI_NumberValue height_value[] = {{.f32 = CHECKBOX_HEIGHT_WEAR}};
     ArkUI_AttributeItem height_item = {height_value, sizeof(height_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(nodeHandle, NODE_HEIGHT, &height_item);
 
@@ -136,11 +136,11 @@ napi_value CheckboxEnabledTest::CreateNativeNode(napi_env env, napi_callback_inf
     auto checkboxAbnormalBlur = createChildNode(nodeAPI, PARAM_NEGATIVE_1, "OnBlurAbnormalCheckbox");
 
     // set row height
-    ArkUI_NumberValue row_height_value[] = {{.f32 = ROW_HEIGHT_110}};
+    ArkUI_NumberValue row_height_value[] = {{.f32 = ROW_HEIGHT_WEAR}};
     ArkUI_AttributeItem row_height_item = {row_height_value, sizeof(row_height_value) / sizeof(ArkUI_NumberValue)};
 
     // set row width
-    ArkUI_NumberValue row_width_value[] = {{.f32 = ROW_WIDTH_350}};
+    ArkUI_NumberValue row_width_value[] = {{.f32 = ROW_WIDTH_WEAR}};
     ArkUI_AttributeItem row_width_item = {row_width_value, sizeof(row_width_value) / sizeof(ArkUI_NumberValue)};
 
     // set row alignment

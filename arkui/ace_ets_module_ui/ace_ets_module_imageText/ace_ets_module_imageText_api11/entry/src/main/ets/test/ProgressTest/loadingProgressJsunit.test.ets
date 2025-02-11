@@ -75,8 +75,9 @@ export default function loadingProgressJsunit() {
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('loadingProgress');
       let obj: ESObject = JSON.parse(strJson);
+	  let resourceColor = getContext().resourceManager.getColorSync($r('sys.color.ohos_id_color_progress').id).toString(16).toUpperCase()
       console.info('loadingProgressJsunit_0300  component obj is: ' + JSON.stringify(obj));
-      expect(obj.$attrs.color).assertEqual('#FF666666');
+      expect(obj.$attrs.color).assertEqual('#'+resourceColor);
       done();
    });
     

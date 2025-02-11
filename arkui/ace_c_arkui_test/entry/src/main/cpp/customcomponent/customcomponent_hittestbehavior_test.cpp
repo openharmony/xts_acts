@@ -62,14 +62,14 @@ ArkUI_NodeHandle CustomComponentHitTestBehaviorTest::CreateSubCustomComponentNod
     const char *onTouchTestCustomComponent, const char *onTouchTestCustomComponentBrother,
     const char *onTouchTestColumn)
 {
-    float stackWidth = SIZE_100;
-    float stackHeight = SIZE_100;
+    float stackWidth = SIZE_80;
+    float stackHeight = SIZE_80;
     float customWidth = SIZE_60;
     float customHeight = SIZE_60;
-    float customBrotherWidth = SIZE_80;
-    float customBrotherHeight = SIZE_80;
-    float columnWidth = SIZE_40;
-    float columnHeight = SIZE_40;
+    float customBrotherWidth = SIZE_40;
+    float customBrotherHeight = SIZE_40;
+    float columnWidth = SIZE_20;
+    float columnHeight = SIZE_20;
     uint32_t stackBackgroundColor = COLOR_GRAY;
     uint32_t customBackgroundColor = COLOR_RED;
     uint32_t customBrotherBackgroundColor = COLOR_GREEN;
@@ -214,6 +214,8 @@ napi_value CustomComponentHitTestBehaviorTest::CreateNativeNode(napi_env env, na
 
     // create column
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+    auto row = nodeAPI->createNode(ARKUI_NODE_ROW);
+    auto row1 = nodeAPI->createNode(ARKUI_NODE_ROW);
 
     int32_t hitTestBehavior = ArkUI_HitTestMode::ARKUI_HIT_TEST_MODE_DEFAULT;
     string onTouchTestStack = "OnTouchTestStackDefault";
@@ -224,7 +226,7 @@ napi_value CustomComponentHitTestBehaviorTest::CreateNativeNode(napi_env env, na
                                               onTouchTestCustomComponent.c_str(),
                                               onTouchTestCustomComponentBrother.c_str(), onTouchTestColumn.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row, stack);
 
     hitTestBehavior = ArkUI_HitTestMode::ARKUI_HIT_TEST_MODE_BLOCK;
     onTouchTestStack = "OnTouchTestStackBlock";
@@ -235,7 +237,7 @@ napi_value CustomComponentHitTestBehaviorTest::CreateNativeNode(napi_env env, na
                                          onTouchTestCustomComponent.c_str(), onTouchTestCustomComponentBrother.c_str(),
                                          onTouchTestColumn.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row, stack);
 
     hitTestBehavior = ArkUI_HitTestMode::ARKUI_HIT_TEST_MODE_TRANSPARENT;
     onTouchTestStack = "OnTouchTestStackTransparent";
@@ -246,7 +248,8 @@ napi_value CustomComponentHitTestBehaviorTest::CreateNativeNode(napi_env env, na
                                          onTouchTestCustomComponent.c_str(), onTouchTestCustomComponentBrother.c_str(),
                                          onTouchTestColumn.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row, stack);
+    nodeAPI->addChild(column, row);
 
     hitTestBehavior = ArkUI_HitTestMode::ARKUI_HIT_TEST_MODE_NONE;
     onTouchTestStack = "OnTouchTestStackNone";
@@ -257,7 +260,7 @@ napi_value CustomComponentHitTestBehaviorTest::CreateNativeNode(napi_env env, na
                                          onTouchTestCustomComponent.c_str(), onTouchTestCustomComponentBrother.c_str(),
                                          onTouchTestColumn.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row1, stack);
 
     hitTestBehavior = PARAM_NEGATIVE_1;
     onTouchTestStack = "OnTouchTestStackExceptBelow";
@@ -268,7 +271,7 @@ napi_value CustomComponentHitTestBehaviorTest::CreateNativeNode(napi_env env, na
                                          onTouchTestCustomComponent.c_str(), onTouchTestCustomComponentBrother.c_str(),
                                          onTouchTestColumn.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row1, stack);
 
     hitTestBehavior = PARAM_4;
     onTouchTestStack = "OnTouchTestStackExceptAbove";
@@ -279,7 +282,8 @@ napi_value CustomComponentHitTestBehaviorTest::CreateNativeNode(napi_env env, na
                                          onTouchTestCustomComponent.c_str(), onTouchTestCustomComponentBrother.c_str(),
                                          onTouchTestColumn.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row1, stack);
+    nodeAPI->addChild(column, row1);
 
     // bind node callBack event receiver
     nodeAPI->registerNodeEventReceiver(&OnEventReceive);

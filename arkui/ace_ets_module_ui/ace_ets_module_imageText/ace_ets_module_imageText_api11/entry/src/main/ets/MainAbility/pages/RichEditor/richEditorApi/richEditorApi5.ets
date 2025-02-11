@@ -31,7 +31,7 @@ struct richEditorApi5 {
           .borderWidth(1)
           .borderColor(Color.Green)
           .width("100%")
-          .height(400)
+          .height('40%')
           .key('RichEditor5')
 
         Button('setSelection').onClick((event: ClickEvent) => {
@@ -42,7 +42,7 @@ struct richEditorApi5 {
         }).id('richEditorApi5_btn2')
         Text('' + this.text1).key('richEditorApi5_text1')
 
-      }.borderWidth(1).borderColor(Color.Red)
+      }.borderWidth(1).borderColor(Color.Red).height('100%')
     }
   }
 }

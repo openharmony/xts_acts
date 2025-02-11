@@ -23,7 +23,6 @@ struct TextDrag {
         .key('DraggedText')
         .draggable(true)
         .width('60%')
-        .margin(20)
         .copyOption(CopyOptions.LocalDevice)
         .onDragStart(() => {
           this.text = 'Text--onDragStart'
@@ -31,11 +30,11 @@ struct TextDrag {
         .onDragEnd(()=>{
           this.text = 'Text--onDragEnd'
         })
+        .height('30%')
       TextArea({ placeholder: this.text })
         .key('textAreaDrag')
         .width('95%')
-        .height(120)
-        .margin(200)
+        .height('10%')
     }.width('100%')
   }
 }

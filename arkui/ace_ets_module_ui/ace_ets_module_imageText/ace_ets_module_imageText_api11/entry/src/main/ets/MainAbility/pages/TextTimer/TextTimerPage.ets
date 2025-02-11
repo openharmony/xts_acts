@@ -43,7 +43,7 @@ struct TextTimerPage {
       }
       if (message.name == 'format') {
         this.format = message.value
-      }      
+      }
       if (message.name == 'start') {
         this.start = message.value
       }
@@ -62,10 +62,11 @@ struct TextTimerPage {
       TextTimer({ controller: this.textTimerController })
         .fontColor(Color.Black)
         .key('default')
-        .fontSize(50)
+        .fontSize(40)
         .onTimer((utc: number, elapsedTime: number) => {
           console.info('textTimer notCountDown utc is：' + utc + ', elapsedTime: ' + elapsedTime)
         })
+        .height('20%')
       TextTimer({ controller: this.textTimerController, isCountDown: this.isCountDown, count: this.count })
         .format(this.format)
         .fontColor(Color.Black)
@@ -76,11 +77,16 @@ struct TextTimerPage {
           this.elapsedTime = elapsedTime
           console.info('textTimer notCountDown utc is：' + utc + ', elapsedTime: ' + elapsedTime)
         })
-      Text('start:' + this.start).fontSize(20).margin(10).key('start')
-      Text('pause:' + this.pause).fontSize(20).margin(10).key('pause')
-      Text('reset:' + this.reset).fontSize(20).margin(10).key('reset')
-      Text(this.utc.toString()).fontSize(20).margin(10).key('utcNum')
-      Text(this.elapsedTime.toString()).fontSize(20).margin(10).key('elapsedTime')
+        .height('20%')
+      Row(){
+        Text('start:' + this.start).fontSize(20).key('start').width('45%')
+        Text('pause:' + this.pause).fontSize(20).key('pause').width('45%')
+      }.height('10%')
+      Row(){
+        Text('reset:' + this.reset).fontSize(20).key('reset').width('45%')
+        Text(this.utc.toString()).fontSize(20).key('utcNum').width('45%')
+      }.height('10%')
+      Text(this.elapsedTime.toString()).fontSize(20).margin(10).key('elapsedTime').height('10%')
       Row() {
         Button("start").onClick(() => {
           this.start = 'succ'
@@ -94,7 +100,7 @@ struct TextTimerPage {
           this.reset = 'succ'
           this.textTimerController.reset()
         })
-      }
+      }.height('10%')
     }.width('100%').height('100%')
   }
 }

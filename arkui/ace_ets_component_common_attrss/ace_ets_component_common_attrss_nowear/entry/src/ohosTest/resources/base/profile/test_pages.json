@@ -1,9 +1,0 @@
-{
-    "src": [
-        "MainAbility/pages/index/Index",
-        "MainAbility/pages/default/DefaultFocusValuePage",
-        "MainAbility/pages/default/DefaultFlexPage",
-        "MainAbility/pages/default/DefaultPage",
-        "MainAbility/pages/tabIndex/TabIndexPage"
-    ]
-}

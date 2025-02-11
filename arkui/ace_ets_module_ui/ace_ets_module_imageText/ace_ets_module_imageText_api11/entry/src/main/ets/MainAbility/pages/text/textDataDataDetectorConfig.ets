@@ -27,6 +27,7 @@ struct TextExample7 {
   build() {
       Column() {
         Text(this.text1).fontSize(20).id('dataDetectorConfigText')
+        .height('10%')
         Text(
           '电话号码：' + this.phoneNumber + '\n' +
           '链接：' + this.url + '\n' +
@@ -52,21 +53,27 @@ struct TextExample7 {
           .id('text_attr_test')
 
 
-      Button('电话号码').onClick(() => {
-        this.types = [TextDataDetectorType.PHONE_NUMBER]
-      }).id('button.PHONE_NUMBER')
 
-      Button('链接').onClick(() => {
-        this.types = [TextDataDetectorType.URL]
-      }).id('button.URL')
+      Row(){
+        Button('电话号码').onClick(() => {
+          this.types = [TextDataDetectorType.PHONE_NUMBER]
+        }).id('button.PHONE_NUMBER').width('40%')
 
-      Button('邮箱').onClick(() => {
-        this.types = [TextDataDetectorType.EMAIL]
-      }).id('button.EMAIL')
+        Button('链接').onClick(() => {
+          this.types = [TextDataDetectorType.URL]
+        }).id('button.URL').width('40%')
+      }.height('10%')
 
-      Button('地址').onClick(() => {
-        this.types = [TextDataDetectorType.ADDRESS]
-      }).id('button.ADDRESS')
+
+      Row(){
+        Button('邮箱').onClick(() => {
+          this.types = [TextDataDetectorType.EMAIL]
+        }).id('button.EMAIL').width('40%')
+
+        Button('地址').onClick(() => {
+          this.types = [TextDataDetectorType.ADDRESS]
+        }).id('button.ADDRESS').width('40%')
+      }.height('10%')
 
       }
       .width('100%')

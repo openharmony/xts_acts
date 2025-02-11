@@ -880,5 +880,79 @@ describe('AccessTokenTest', function () {
         expect(value).assertEqual(2);
         done();
     })
+
+    /*
+     * @tc.number:SUB_Security_AccessToken_OnTest_0100
+     * @tc.name: Test AT on callback success
+     * @tc.desc: Test on,Subscription Permission Change
+     * @tc.level: Level1
+     * @tc.size: Medium
+     * @tc.type: Function
+     */
+    it("SUB_Security_AccessToken_OnTest_0100", 0, async function (done) {
+        console.info('SUB_Security_AccessToken_OnTest_0100 start');
+        let atManager = abilityAccessCtrl.createAtManager();
+        let callbackFlag = 0;
+        let permissionList = ["ohos.permission.CAMERA"];
+        let type = 'selfPermissionStateChange';
+
+        function waitDone() {
+            try {
+                atManager.off(type, permissionList);
+                console.info('SUB_Security_AccessToken_OnTest_0100 off success');
+            }
+            catch (err) {
+                console.error('SUB_Security_AccessToken_OnTest_0100 off' + err.code);
+            }
+            expect(callbackFlag).assertEqual(1);
+            done();
+        }
+
+        function permissionChangeCallback(data) {
+            expect(data.change).assertEqual(abilityAccessCtrl.PermissionStateChangeType.PERMISSION_REVOKED_OPER);
+            expect(data.tokenID).assertEqual(tokenID);
+            expect(data.permissionName).assertEqual(permissionList[0]);
+        }
+        try {
+            atManager.on(type, permissionList, permissionChangeCallback);
+            callbackFlag = 1;
+            console.info('SUB_Security_AccessToken_OnTest_0100 on success');
+            waitDone()
+        } catch (error) {
+            console.error('SUB_Security_AccessToken_OnTest_0100 error' + error.message + 'error.code' + error.code);
+        }
+    })
+
+    /*
+     * @tc.number:SUB_Security_AccessToken_On_PROTest_0100
+     * @tc.name: Test AT on PERMISSION_REVOKED_OPER Const Attribute
+     * @tc.desc: Test PermissionStateChangeType const PERMISSION_REVOKED_OPER
+     * @tc.level: Level1
+     * @tc.size: Medium
+     * @tc.type: Function
+     */
+    it("SUB_Security_AccessToken_On_PROTest_0100", 0, async function (done) {
+        console.info('----------------------SUB_Security_AccessToken_On_PROTest_0100---------------------------');
+        let value = abilityAccessCtrl.PermissionStateChangeType.PERMISSION_REVOKED_OPER;
+        console.info('SUB_Security_AccessToken_On_PROTest_0100 value is: ' + value);
+        expect(value).assertEqual(0);
+        done();
+    })
+
+    /*
+     * @tc.number:SUB_Security_AccessToken_On_PGOTest_0200
+     * @tc.name: Test AT on PERMISSION_GRANTED_OPER Const Attribute
+     * @tc.desc: Test PermissionStateChangeType const PERMISSION_GRANTED_OPER
+     * @tc.level: Level1
+     * @tc.size: Medium
+     * @tc.type: Function
+     */
+    it("SUB_Security_AccessToken_On_PGOTest_0200", 0, async function (done) {
+        console.info('----------------------SUB_Security_AccessToken_On_PGOTest_0200---------------------------');
+        let value = abilityAccessCtrl.PermissionStateChangeType.PERMISSION_GRANTED_OPER;
+        console.info('SUB_Security_AccessToken_On_PGOTest_0200 value is: ' + value);
+        expect(value).assertEqual(1);
+        done();
+    })
 })
 }

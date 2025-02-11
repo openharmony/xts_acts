@@ -39,9 +39,9 @@ struct ListNestedScroll {
   @Styles
   listCard() {
     .backgroundColor(Color.White)
-      .height(72)
-      .width("100%")
-      .borderRadius(12)
+    .height(72)
+    .width("100%")
+    .borderRadius(12)
   }
   build() {
     Column() {
@@ -85,14 +85,14 @@ struct ListNestedScroll {
             }, (item: string) => item)
           }
           .attributeModifier(this.customModifier as CustomModifier)
-            .height('90%')
-            .onScroll((xOffset: number, yOffset: number) => {
-              console.info("WebView onScroll x = " + xOffset)
-              console.info("WebView onScroll y = " + yOffset)
-              if ((xOffset != 0 || yOffset != 0) && this.selfScrollTime == 0) {
-                this.selfScrollTime = Utils.getSystemTime()
-              }
-            })
+          .height('90%')
+          .onScroll((xOffset: number, yOffset: number) => {
+            console.info("WebView onScroll x = " + xOffset)
+            console.info("WebView onScroll y = " + yOffset)
+            if ((xOffset != 0 || yOffset != 0) && this.selfScrollTime == 0) {
+              this.selfScrollTime = Utils.getSystemTime()
+            }
+          })
           Column().width('100%').height('20%').backgroundColor(Color.Red)
         }.width('100%')
       }.onScroll((xOffset: number, yOffset: number) => {
@@ -101,6 +101,8 @@ struct ListNestedScroll {
           this.parentScrollTime = Utils.getSystemTime()
         }
       })
+      .width('100%')
+      .height('70%')
     }.key('ColumnSize')
   }
 }

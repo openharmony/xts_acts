@@ -128,10 +128,10 @@ struct SwiperExample3 {
           ForEach(this.colorList, (item: ESObject, index) => {
             Text("第" + (item.cardId).toString() + "页")
               .width('90%')
-              .height(160)
+              .height('15%')
               .backgroundColor(item.color)
               .textAlign(TextAlign.Center)
-              .fontSize(30)
+              .fontSize(20)
           })
         }
         .key("SwiperA")
@@ -154,10 +154,10 @@ struct SwiperExample3 {
           ForEach(this.colorList, (item: ESObject, index) => {
             Text("第" + (item.cardId).toString() + "页")
               .width('90%')
-              .height(160)
+              .height('15%')
               .backgroundColor(item.color)
               .textAlign(TextAlign.Center)
-              .fontSize(30)
+              .fontSize(20)
           })
         }
         .key("SwiperB")
@@ -179,10 +179,10 @@ struct SwiperExample3 {
           ForEach(this.colorList, (item: ESObject, index) => {
             Text("第" + (item.cardId).toString() + "页")
               .width('90%')
-              .height(160)
+              .height('15%')
               .backgroundColor(item.color)
               .textAlign(TextAlign.Center)
-              .fontSize(30)
+              .fontSize(20)
           })
         }
         .key("SwiperC")
@@ -204,10 +204,10 @@ struct SwiperExample3 {
           ForEach(this.colorList, (item: ESObject, index) => {
             Text("第" + (item.cardId).toString() + "页")
               .width('90%')
-              .height(160)
+              .height('15%')
               .backgroundColor(item.color)
               .textAlign(TextAlign.Center)
-              .fontSize(30)
+              .fontSize(20)
           })
         }
         .key("SwiperC")
@@ -230,10 +230,10 @@ struct SwiperExample3 {
           LazyForEach(this.data, (item: string) => {
             Text(item)
               .width('90%')
-              .height(160)
+              .height('15%')
               .backgroundColor(0xAFEEEE)
               .textAlign(TextAlign.Center)
-              .fontSize(30)
+              .fontSize(20)
           }, (item: string) => item)
         }
         .key("SwiperD")
@@ -255,10 +255,10 @@ struct SwiperExample3 {
           LazyForEach(this.data, (item: string) => {
             Text(item)
               .width('90%')
-              .height(160)
+              .height('15%')
               .backgroundColor(0xAFEEEE)
               .textAlign(TextAlign.Center)
-              .fontSize(30)
+              .fontSize(20)
           }, (item: string) => item)
         }
         .key("SwiperE")
@@ -280,10 +280,10 @@ struct SwiperExample3 {
           LazyForEach(this.data, (item: string) => {
             Text(item)
               .width('90%')
-              .height(160)
+              .height('15%')
               .backgroundColor(0xAFEEEE)
               .textAlign(TextAlign.Center)
-              .fontSize(30)
+              .fontSize(20)
           }, (item: string) => item)
         }
         .key("SwiperF")

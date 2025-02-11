@@ -99,6 +99,26 @@ interface symVectorSpec {
   tag: number[];
 }
 
+interface cipherSpec {
+  algName: string;
+  index: number;
+}
+
+interface agreementVectorSpec {
+  index: number;
+  not_run?: boolean;
+  vectorSource: string;
+  peer_priKey: string;
+  peer_pubKey: string;
+  local_priKey: string;
+  local_pubKey: string;
+  sharedKey: number[];
+}
+
+interface agreementVectorData extends cipherSpec {
+  agreementVectorSpec: agreementVectorSpec[];
+}
+
 interface symVectorData extends symAlgSpec {
   symVectorSpec: symVectorSpec[];
 }
@@ -2191,6 +2211,28 @@ let digestVectors: mdVectorData[] = [
   },
 ]
 
+let agreementVectors: agreementVectorData[] = [
+  {
+    algName: "X25519",
+    index: 0,
+    agreementVectorSpec: [
+      {
+        index: 0,
+        not_run: false,
+        vectorSource: "RFC7748",
+        peer_priKey: "2a2cb91da5fb77b12a99c0eb872f4cdf4566b25172c1163c7da518730a6d0777",
+        peer_pubKey: "6a4e9baa8ea9a4ebf41a38260d3abf0d5af73eb4dc7d8b7454a7308909f02085",
+        local_priKey: "ebe088ff278b2f1cfdb6182629b13b6fe60e80838b7fe1794b8a4a627e08ab5d",
+        local_pubKey: "4f2b886f147efcad4d67785bc843833f3735e4ecc2615bd3b4c17d7b7ddb9ede",
+        sharedKey: [
+          0x4a, 0x5d, 0x9d, 0x5b, 0xa4, 0xce, 0x2d, 0xe1, 0x72, 0x8e, 0x3b, 0xf4, 0x80, 0x35, 0x0f, 0x25,
+          0xe0, 0x7e, 0x21, 0xc9, 0x47, 0xd1, 0x9e, 0x33, 0x76, 0xf0, 0x9b, 0x3c, 0x1e, 0x16, 0x17, 0x42
+        ]
+      },
+    ]
+  },
+]
+
 export {
   mdVectorSpec,
   mdVectorData,
@@ -2208,5 +2250,8 @@ export {
   digestVectors,
   symVectorData,
   symVectors,
-  symAeadVectors
+  symAeadVectors,
+  agreementVectors,
+  agreementVectorData,
+  agreementVectorSpec
 }
