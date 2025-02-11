@@ -271,7 +271,8 @@ export default function text3Jsunit() {
         .$attrs
         .fontSize));
 
-	  expect(JSON.parse(strJsonNew).$attrs.fontSize).assertEqual(px2fp(resourceSize)+'.00fp');      console.info('testText_1300 END');
+	  expect(JSON.parse(strJsonNew).$attrs.fontSize).assertEqual(px2fp(resourceSize)+'.00fp');      
+      console.info('testText_1300 END');
       done();
     });
 
