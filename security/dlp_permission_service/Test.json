@@ -28,7 +28,7 @@
                 "uinput -K -d 2050 -u 2050",
                 "wait 5",
                 "uinput -T -m 300 2700 280 200",
-                "power-shell setmode 602"
+                "hidumper -s 3301 -a -t"
             ],
             "teardown-command": [
                 "power-shell setmode 601"
