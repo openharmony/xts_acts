@@ -21,7 +21,7 @@ ohos_app_assist_suite("ActsAceEtsModuleCommonEventsApi12NoneTestMain") {
   subsystem_name = "arkui"
 }
 
-ohos_js_app_suite("ActsAceEtsModuleCommonEventsApi12Test") {
+ohos_js_app_suite("ActsAceEtsModuleCommonEventsApi12NoneTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
