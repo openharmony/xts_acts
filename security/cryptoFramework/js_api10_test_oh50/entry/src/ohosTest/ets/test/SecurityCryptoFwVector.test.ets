@@ -280,6 +280,63 @@ export default function SecurityCryptoFwVectorTestUnit() {
       }
       done();
     });
+    
+    /**
+     * @tc.number SUB_Security_CryptoFramework_VectorTest_Func_0700
+     * @tc.name Test X25519 algorithm traversal test. Promise style. Process success
+     * @tc.desc algorithm is X25519
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level1
+     */
+    it("SUB_Security_CryptoFramework_VectorTest_Func_0700", 0, async (done: Function) => {
+      let g_index: number = 0;
+      let g_vector_failed_index: number = 0;
+      try {
+        let agreementVectors: v.agreementVectorData[] = v.agreementVectors;
+        for (let vector of agreementVectors) {
+          let algName: string = vector.algName;
+          g_index = vector.index;
+          for (let data of vector.agreementVectorSpec) {
+            let peer_priKey: string = data.peer_priKey;
+            let peer_pubKey: string = data.peer_pubKey;
+            let local_priKey: string = data.local_priKey;
+            let local_pubKey: string = data.local_pubKey;
+            let sharedKey: number[] = data.sharedKey;
+            let not_run: boolean = data.not_run ? true : false;
+            g_vector_failed_index = data.index;
+            if (not_run) {
+              continue
+            }
+            let peer_Spec: cryptoFramework.X25519KeyPairSpec = {
+              algName: algName,
+              specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+              sk: BigInt("0x" + peer_priKey),
+              pk: BigInt("0x" + peer_pubKey)
+            };
+            let local_Spec: cryptoFramework.X25519KeyPairSpec = {
+              algName: algName,
+              specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+              sk: BigInt("0x" + local_priKey),
+              pk: BigInt("0x" + local_pubKey)
+            };
+            let peer_generator: cryptoFramework.AsyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(peer_Spec);
+            let peer_keyPair: cryptoFramework.KeyPair = await peer_generator.generateKeyPair();
+            let local_generator: cryptoFramework.AsyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(local_Spec);
+            let local_keyPair: cryptoFramework.KeyPair = await local_generator.generateKeyPair();
+            let agreement: cryptoFramework.KeyAgreement = cryptoFramework.createKeyAgreement(algName);
+            let secret: cryptoFramework.DataBlob = await agreement.generateSecret(peer_keyPair.priKey, local_keyPair.pubKey);
+            let ret: boolean = commonUtils.compareDataBlob(secret, {data: new Uint8Array(sharedKey)});
+            expect(ret).assertTrue();
+          }
+        }
+      } catch (error) {
+        console.error(`“${error}“, error code: ${error.code}`);
+        console.info("[FAILED] g_index:" + g_index + " g_vector_failed_index:" + g_vector_failed_index)
+        expect(null).assertFail();
+      }
+      done();
+    });
 
   });
 }
