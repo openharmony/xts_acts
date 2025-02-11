@@ -84,12 +84,12 @@ export default function initNdkTest() {
       expect(manufactureInfo).assertInstanceOf('String');
       if (manufactureInfo != "" && manufactureInfo != null && manufactureInfo != undefined) {
         ret = true;
-          expect(ret).assertTrue();
-          done();
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return value Manufacture is null or incorrect.');
-          expect(false).assertTrue();
-          done();
+        console.info('the return value Manufacture is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
     });
 
@@ -124,12 +124,12 @@ export default function initNdkTest() {
       expect(brandInfo).assertInstanceOf('String');
       if (brandInfo != "" && brandInfo != null && brandInfo != undefined) {
         ret = true;
-          expect(ret).assertTrue();
-          done();
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return value Manufacture is null or incorrect.');
-          expect(false).assertTrue();
-          done();
+        console.info('the return value Manufacture is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
     });
 
@@ -165,12 +165,12 @@ export default function initNdkTest() {
       expect(marketNameInfo).assertInstanceOf('String');
       if (marketNameInfo != "" && marketNameInfo != null && marketNameInfo != undefined) {
         ret = true;
-          expect(ret).assertTrue();
-          done();
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return value marketName is null or incorrect.');
-          expect(false).assertTrue();
-          done();
+        console.info('the return value marketName is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
     });
 
@@ -336,12 +336,12 @@ export default function initNdkTest() {
       expect(hardwareModelInfo).assertInstanceOf('String');
       if (hardwareModelInfo != "" && hardwareModelInfo != null && hardwareModelInfo != undefined) {
         ret = true;
-          expect(ret).assertTrue();
-          done();
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return value HardwareModel is null or incorrect.');
-          expect(false).assertTrue();
-          done();
+        console.info('the return value HardwareModel is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
     });
 
