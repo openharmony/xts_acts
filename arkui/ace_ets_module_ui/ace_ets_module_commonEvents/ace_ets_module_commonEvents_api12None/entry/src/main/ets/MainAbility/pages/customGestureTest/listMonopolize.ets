@@ -66,4 +66,5 @@ struct ListGesture {
       )
     }.height('100%').width('100%').justifyContent(FlexAlign.Center)
   }
+  }
 }
