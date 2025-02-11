@@ -477,12 +477,12 @@ export default function initNdkTest() {
       let re = securityPatchTagInfo.match(reFormat);
       if (re != null) {
         ret = true;
-          expect(ret).assertTrue();
-          done();
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return formate is not yy/mm/dd');
-          expect(false).assertTrue();
-          done();
+        console.info('the return formate is not yy/mm/dd');
+        expect(false).assertTrue();
+        done();
       }
     });
 
@@ -720,12 +720,12 @@ export default function initNdkTest() {
       expect(sdkApiVersionInfo).assertInstanceOf('Number');
       if (sdkApiVersionInfo >= 0) {
         ret = true;
-          expect(ret).assertTrue();
-          done();
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return value SdkApiVersion is null or incorrect.');
-          expect(false).assertTrue();
-          done();
+        console.info('the return value SdkApiVersion is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
     });
 
@@ -764,12 +764,12 @@ export default function initNdkTest() {
       expect(firstApiVersionInfo).assertInstanceOf('Number');
       if (firstApiVersionInfo >= 0) {
         ret = true;
-          expect(ret).assertTrue();
-          done();
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return value FirstApiVersion is null or incorrect.');
-          expect(false).assertTrue();
-          done();
+        console.info('the return value FirstApiVersion is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
     });
 
@@ -789,12 +789,12 @@ export default function initNdkTest() {
       expect(versionIdInfo).assertInstanceOf('String');
       if (versionIdInfo != "" && versionIdInfo != null && versionIdInfo != undefined) {
         ret = true;
-          expect(ret).assertTrue();
-          done();
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return value VersionId is null or incorrect.');
-          expect(false).assertTrue();
-          done();
+        console.info('the return value VersionId is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
     });
 
