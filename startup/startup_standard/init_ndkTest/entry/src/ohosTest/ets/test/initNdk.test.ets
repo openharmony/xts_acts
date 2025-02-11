@@ -87,13 +87,13 @@ export default function initNdkTest() {
       let ret = false;
       expect(manufactureInfo).assertInstanceOf('String');
       if (manufactureInfo != "" && manufactureInfo != null && manufactureInfo != undefined) {
-          ret = true;
-          expect(ret).assertTrue();
-          done();
+        ret = true;
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return value Manufacture is null or incorrect.');
-          expect(false).assertTrue();
-          done();
+        console.info('the return value Manufacture is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
     });
 
@@ -127,13 +127,13 @@ export default function initNdkTest() {
       let ret = false;
       expect(brandInfo).assertInstanceOf('String');
       if (brandInfo != "" && brandInfo != null && brandInfo != undefined) {
-          ret = true;
-          expect(ret).assertTrue();
-          done();
+        ret = true;
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return value Manufacture is null or incorrect.');
-          expect(false).assertTrue();
-          done();
+        console.info('the return value Manufacture is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
     });
 
@@ -168,13 +168,13 @@ export default function initNdkTest() {
       console.info('the value of the deviceinfo marketName is :' + marketNameInfo);
       expect(marketNameInfo).assertInstanceOf('String');
       if (marketNameInfo != "" && marketNameInfo != null && marketNameInfo != undefined) {
-          ret = true;
-          expect(ret).assertTrue();
-          done();
+        ret = true;
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return value marketName is null or incorrect.');
-          expect(false).assertTrue();
-          done();
+        console.info('the return value marketName is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
     });
 
@@ -351,13 +351,13 @@ export default function initNdkTest() {
       console.info('the value of the deviceinfo hardwareModel is :' + hardwareModelInfo);
       expect(hardwareModelInfo).assertInstanceOf('String');
       if (hardwareModelInfo != "" && hardwareModelInfo != null && hardwareModelInfo != undefined) {
-          ret = true;
-          expect(ret).assertTrue();
-          done();
+        ret = true;
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return value HardwareModel is null or incorrect.');
-          expect(false).assertTrue();
-          done();
+        console.info('the return value HardwareModel is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
     });
 
@@ -501,13 +501,13 @@ export default function initNdkTest() {
       let reFormat = new RegExp("^(\\d{4})/(\\d{2})/(\\d{2})$");
       let re = securityPatchTagInfo.match(reFormat);
       if (re != null) {
-          ret = true;
-          expect(ret).assertTrue();
-          done();
+        ret = true;
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return formate is not yy--mm--dd');
-          expect(false).assertTrue();
-          done();
+        console.info('the return formate is not yy--mm--dd');
+        expect(false).assertTrue();
+        done();
       }
     });
 
@@ -763,13 +763,13 @@ export default function initNdkTest() {
       console.info('the value of the deviceinfo sdkApiVersion is :' + sdkApiVersionInfo);
       expect(sdkApiVersionInfo).assertInstanceOf('Number');
       if (sdkApiVersionInfo >= 0) {
-          ret = true;
-          expect(ret).assertTrue();
-          done();
+        ret = true;
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return value SdkApiVersion is null or incorrect.');
-          expect(false).assertTrue();
-          done();
+        console.info('the return value SdkApiVersion is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
     });
 
@@ -809,13 +809,13 @@ export default function initNdkTest() {
       console.info('the value of the deviceinfo firstApiVersion is :' + firstApiVersionInfo);
       expect(firstApiVersionInfo).assertInstanceOf('Number');
       if (firstApiVersionInfo >= 0) {
-          ret = true;
-          expect(ret).assertTrue();
-          done();
+        ret = true;
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return value FirstApiVersion is null or incorrect.');
-          expect(false).assertTrue();
-          done();
+        console.info('the return value FirstApiVersion is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
     });
 
@@ -834,13 +834,13 @@ export default function initNdkTest() {
       console.info('the value of the deviceinfo versionId is :' + versionIdInfo);
       expect(versionIdInfo).assertInstanceOf('String');
       if (versionIdInfo != "" && versionIdInfo != null && versionIdInfo != undefined) {
-          ret = true;
-          expect(ret).assertTrue();
-          done();
+        ret = true;
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return value VersionId is null or incorrect.');
-          expect(false).assertTrue();
-          done();
+        console.info('the return value VersionId is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
     });
 
@@ -1224,13 +1224,13 @@ export default function initNdkTest() {
       console.info('the value of the deviceinfo distributionOSApiVersion is :' + distributionOSApiVersionInfo);
       expect(distributionOSApiVersionInfo).assertInstanceOf('Number');
       if (distributionOSApiVersionInfo >= 0) {
-          ret = true;
-          expect(ret).assertTrue();
-          done();
+        ret = true;
+        expect(ret).assertTrue();
+        done();
       } else {
-          console.info('the return value DistributionOSApiVersion is less than 0.');
-          expect(false).assertTrue();
-          done();
+        console.info('the return value DistributionOSApiVersion is less than 0.');
+        expect(false).assertTrue();
+        done();
       }
     });
 
