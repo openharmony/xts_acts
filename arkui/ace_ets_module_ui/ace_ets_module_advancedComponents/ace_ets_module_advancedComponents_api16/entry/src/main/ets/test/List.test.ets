@@ -15,13 +15,16 @@
 
 import composeListItemPageTest from './composeListItem/composeListItemPageTest.test';
 import composeListItemOperateItemSymbolStyle from './composeListItem/composeListItemOperateItemSymbolStyle.test';
-import toolBarAccessibilityTest from './toolBar/tooBarAccessibilityPage.test';
+import toolBarAccessibilityTest from './toolBar/toolBarAccessibilityPage.test';
 import progressButtonV2PageTest from './progressButtonV2/progressButtonV2Page.test';
 import subHeaderV2PageTest from './subHeaderV2/subHeaderV2Page.test';
 import toolBarV2PageTest from './toolBarV2/toolBarV2Page.test';
 import toolBarV2ItemStateTest from './toolBarV2/toolBarV2ItemState.test';
 import editableTitleBarAccessibilityTest from './editableTitleBar/editableTitleBarAccessibilityPage.test';
 import subHeaderAccessibilityTest from './subHeader/subHeaderAccessibilityPage.test';
+import composeTitleBarAccessibilityTest from './composeTitleBar/composeTitleBarAccessibilityPage.test';
+import selectTitleBarAccessibilityTest from './selectTitleBar/selectTitleBarAccessibilityPage.test';
+import tabTitleBarAccessibilityTest from './tabTitleBar/tabTitleBarAccessibilityPage.test';
 
 export default function testsuite() {
   composeListItemPageTest();
@@ -33,4 +36,7 @@ export default function testsuite() {
   toolBarV2ItemStateTest();
   editableTitleBarAccessibilityTest();
   subHeaderAccessibilityTest();
+  composeTitleBarAccessibilityTest();
+  selectTitleBarAccessibilityTest();
+  tabTitleBarAccessibilityTest();
 }
