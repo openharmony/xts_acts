@@ -98,7 +98,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : i18n.TemperatureType.CELSIUS
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
     it('I18N_test_getTemperatureName_0100', 0, () => {
       let type = i18n.System.getTemperatureName(i18n.TemperatureType.CELSIUS);
@@ -112,7 +112,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : i18n.TemperatureType.FAHRENHEIT
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
     it('I18N_test_getTemperatureName_0200', 0, () => {
       let type = i18n.System.getTemperatureName(i18n.TemperatureType.FAHRENHEIT);
@@ -126,7 +126,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : i18n.TemperatureType.KELVIN
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
     it('I18N_test_getTemperatureName_0300', 0, () => {
       let type = i18n.System.getTemperatureName(i18n.TemperatureType.KELVIN);
@@ -140,7 +140,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : input number zero
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 3
      */
     it('I18N_test_getTemperatureName_0400', 0, () => {
       try {
@@ -157,7 +157,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : en-GB & en-Latn-US
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
     it('I18N_test_getSimplifiedLanguage_01_0100', 0, () => {
       let type_one = i18n.System.getSimplifiedLanguage('en-GB');
@@ -174,7 +174,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : zh-Hant-HK & zh-Hant-TW
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
     it('I18N_test_getSimplifiedLanguage_01_0200', 0, () => {
       let type_one = i18n.System.getSimplifiedLanguage('zh-Hant-HK');
@@ -191,7 +191,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : es-ES & es-US
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
     it('I18N_test_getSimplifiedLanguage_01_0300', 0, () => {
       let type_one = i18n.System.getSimplifiedLanguage('es-ES');
@@ -208,7 +208,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : pt-PT & pt-BR
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
     it('I18N_test_getSimplifiedLanguage_01_0400', 0, () => {
       let type_one = i18n.System.getSimplifiedLanguage('pt-PT');
@@ -225,7 +225,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : en-CN & en-Test
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 3
      */
     it('I18N_test_getSimplifiedLanguage_01_0500', 0, () => {
       let type_one = i18n.System.getSimplifiedLanguage('en-CN');
@@ -242,7 +242,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : zh-Hant-CN & zh-Hant-Test
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 3
      */
     it('I18N_test_getSimplifiedLanguage_01_0600', 0, () => {
       let type_one = i18n.System.getSimplifiedLanguage('zh-Hant-CN');
@@ -259,7 +259,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : es-CN & es-Test
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 3
      */
     it('I18N_test_getSimplifiedLanguage_01_0700', 0, () => {
       let type_one = i18n.System.getSimplifiedLanguage('es-CN');
@@ -276,7 +276,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : pt-CN & pt-Test
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 3
      */
     it('I18N_test_getSimplifiedLanguage_01_0800', 0, () => {
       let type_one = i18n.System.getSimplifiedLanguage('pt-CN');
@@ -293,7 +293,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : bo-CN & bo-Test & bo-Test
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 3
      */
     it('I18N_test_getSimplifiedLanguage_01_0900', 0, () => {
       let type_one = i18n.System.getSimplifiedLanguage('bo-CN');
@@ -313,7 +313,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : pt-CN & pt-Test
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 3
      */
     it('I18N_test_getSimplifiedLanguage_01_1000', 0, () => {
       try {
@@ -330,7 +330,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     :fontColor &fontFamily & fontSize & fontWeight & fontStyle
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
     it('SUB_GLOBAL_I18N_StyledNumberFormat_02_00100', 0, () => {
       let integer_textStyle = new TextStyle({
@@ -394,7 +394,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : maximumFractionDigits: 2 & maximumSignificantDigits: 6 & roundingPriority: "lessPrecision"
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
     it('SUB_GLOBAL_refinedFormat_0310', 0, () => {
       let numOptions: intl.NumberOptions = {
@@ -411,7 +411,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : roundingMode: "halfExpand" & maximumSignificantDigits: 5
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
     it('SUB_GLOBAL_refinedFormat_0630', 0, () => {
       let numOptions: intl.NumberOptions = {
@@ -428,7 +428,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : path /data/out/tmp & delimiter /
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
     it('SUB_GLOBAL_FilePathMirroring_0100', 0, () => {
       let path: string = "/data/out/tmp";
@@ -445,7 +445,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : Date(2024, 11, 13, 6, 30, 25) & 'y'/'M'/'d' 'h':'m':'s'
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
     it('SUB_GLOBAL_refinedFormat_0020', 0, () => {
       let locale: intl.Locale = new intl.Locale("zh-Hans-CN");
@@ -461,7 +461,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : skeletonFormat (1230000) & getSimpleNumberFormatBySkeleton "engineering/sign-always"
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
     it('SUB_GLOBAL_refinedFormat_0790', 0, () => {
       let locale: intl.Locale = new intl.Locale("zh-Hans-CN");
@@ -476,7 +476,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : maximumFractionDigits: 2 & roundingIncrement: 1
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
     it('SUB_GLOBAL_refinedFormat_0320', 0, () => {
       let numOptions: intl.NumberOptions = {
