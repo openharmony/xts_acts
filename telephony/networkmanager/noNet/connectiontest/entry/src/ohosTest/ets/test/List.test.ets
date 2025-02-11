@@ -13,8 +13,13 @@
  *  limitations under the License.
  */
 
-import connectionWithoutNetTest from './ConnectionWithoutNet.test';
+import networkManagerWithoutCardTest from './NetworkManagerWithoutNet.test';
+import EmptyTest from './Empty.test';
+import sim from '@ohos.telephony.sim';
 
-export default function testsuite() {
-  connectionWithoutNetTest();
+export default function testsuite() {if (sim.getMaxSimCount()>1){
+  networkManagerWithoutCardTest();
+}else{
+  EmptyTest()
+}
 }
