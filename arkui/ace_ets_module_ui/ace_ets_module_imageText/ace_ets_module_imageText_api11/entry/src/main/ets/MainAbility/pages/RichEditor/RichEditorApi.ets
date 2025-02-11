@@ -48,10 +48,11 @@ struct RichEditorApi {
   }
 
   build() {
-    Column({ space: 10 }) {
+    Column({ space: 0 }) {
 
       Text(this.spanParagraphs)
         .id('RichEditorApi_text_spanParagraphs')
+        .height('10%').textAlign(TextAlign.Center)
 
 
       RichEditor(this.options)
@@ -61,7 +62,7 @@ struct RichEditorApi {
         .onReady(() => {
           this.controller.addBuilderSpan(() => this.placeholderBuilder(), { offset: 0 })
         })
-        .id('RichEditorApi_addBuilderSpan')
+        .id('RichEditorApi_addBuilderSpan').height('10%')
 
       RichEditor(this.options2)
         .borderWidth(1)
@@ -70,9 +71,10 @@ struct RichEditorApi {
         .onReady(() => {
           this.controller2.addTextSpan('Text', { paragraphStyle: { leadingMargin: '5vp' } })
         })
+        .height('10%')
 
 
-      Row({ space: 5 }) {
+      Row({ space: 0 }) {
         Button("updateParagraphStyle")
           .id('RichEditorApi_btn_updateParagraphStyle')
           .onClick(() => {
@@ -86,11 +88,11 @@ struct RichEditorApi {
 
             )
           })
-      }
+      }.height('10%')
 
 
       Text(this.text1)
-        .id('RichEditorApi_text1')
+        .id('RichEditorApi_text1').height('10%').textAlign(TextAlign.Center)
 
       RichEditor(this.options3)
         .id('RichEditorApi_RichEditor3')
@@ -106,10 +108,10 @@ struct RichEditorApi {
         .borderWidth(1)
         .borderColor(Color.Green)
         .width('300vp')
-        .height('70vp')
+        .height('10%')
 
 
-      Text(this.text2).id('RichEditorApi_text2')
+      Text(this.text2).id('RichEditorApi_text2').height('10%').textAlign(TextAlign.Center)
 
       RichEditor(this.options4)
         .id('RichEditorApi_RichEditor4')
@@ -124,6 +126,6 @@ struct RichEditorApi {
         .borderWidth(1)
         .borderColor(Color.Green)
         .width('300vp')
-    }.width('100%')
+    }.width('100%').height('100%')
   }
 }

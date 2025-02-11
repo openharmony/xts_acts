@@ -33,13 +33,14 @@ struct buttonEnabledDemo {
 
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
       Button(this.but)
         .key("btnEnd")
         .onClick(() => {
           this.but = '点击事件已触发'
         })
         .enabled(true)
+        .height('10%')
 
       Button(this.but1)
         .key("btnEnd1")
@@ -47,6 +48,7 @@ struct buttonEnabledDemo {
           this.but1 = '点击事件已触发'
         })
         .enabled(false)
+        .height('10%')
 
       Button(this.but2)
         .key("btnEnd2")
@@ -54,6 +56,7 @@ struct buttonEnabledDemo {
           this.but2 = '触摸事件已触发'
         })
         .enabled(false)
+        .height('10%')
 
       Button(this.but3)
         .key("btnEnd3")
@@ -61,6 +64,7 @@ struct buttonEnabledDemo {
           this.but3 = '按键事件已触发'
         })
         .enabled(false)
+        .height('10%')
 
       Button(this.but4)
         .key("btnEnd4")
@@ -68,6 +72,7 @@ struct buttonEnabledDemo {
           this.but4 = '鼠标事件onHover 已触发'
         })
         .enabled(false)
+        .height('10%')
 
       Button(this.but5)
         .key("btnEnd5")
@@ -75,6 +80,7 @@ struct buttonEnabledDemo {
           this.but5 = '鼠标事件onMouse 已触发'
         })
         .enabled(false)
+        .height('10%')
 
       Button(this.but6)
         .key("btnEnd6")
@@ -86,6 +92,7 @@ struct buttonEnabledDemo {
           this.but6 = '焦点事件onBlur 已触发'
         })
         .enabled(false)
+        .height('10%')
 
       Button(this.but7)
         .key("btnEnd7")
@@ -127,8 +134,8 @@ struct buttonEnabledDemo {
           this.but7 = '鼠标事件onMouse 已触发'
         })
         .enabled(false)
+        .height('10%')
     }
-    .width('100%')
-    .margin({ top: 20 })
+    .width('100%').height('100%')
   }
 }

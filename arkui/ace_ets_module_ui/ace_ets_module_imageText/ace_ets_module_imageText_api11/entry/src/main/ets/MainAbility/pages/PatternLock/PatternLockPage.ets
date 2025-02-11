@@ -77,7 +77,7 @@ struct PatternLockPage {
 
   build() {
     Column() {
-      Text(this.message).textAlign(TextAlign.Center).margin(20).fontSize(20).key('text')
+      Text(this.message).textAlign(TextAlign.Center).fontSize(10).key('text').height('5%')
       PatternLock(this.patternLockController)
         .sideLength(this.sideLength)
         .circleRadius(this.circleRadius)
@@ -109,17 +109,18 @@ struct PatternLockPage {
             this.message = "Please enter again."
           }
         })
-      Button('Reset PatternLock').key('reSet').margin(30).onClick(() => {
+        .height('25%')
+      Button('Reset PatternLock').key('reSet').onClick(() => {
         // 重置密码锁
         this.patternLockController.reset()
         this.passwords = []
         this.message = 'Please input password'
-      })
+      }).height('5%')
 
-      Text(this.passwords.toString()).margin(20).fontSize(15).key('password1')
+      Text(this.passwords.toString()).fontSize(15).key('password1').height('5%')
       PatternLock(this.patternLockController)
-        .key('default')
-        
+        .key('default').height('25%')
+
       PatternLock(this.patternLockController)
         .key('PatternLock')
         .sideLength(96*3)
@@ -130,6 +131,7 @@ struct PatternLockPage {
         .pathColor($r('sys.color.ohos_id_color_fourth'))
         .pathStrokeWidth(12)
         .autoReset(true)
+        .height('25%')
     }.width('100%').height('100%')
   }
 }

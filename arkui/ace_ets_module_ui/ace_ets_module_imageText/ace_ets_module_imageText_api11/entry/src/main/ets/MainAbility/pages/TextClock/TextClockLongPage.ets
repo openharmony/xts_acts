@@ -42,11 +42,10 @@ struct TextClockLongPage {
               })
               .key('textClock')
               .visibility(this.visible)
-              .margin(10)
               .fontSize(20)
           }
           .width('100%')
-          .height(50)
+          .height('10%')
         }
         ListItem(){
           Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
@@ -57,11 +56,10 @@ struct TextClockLongPage {
                 this.accumulateTime = value
               })
               .visibility(this.visible)
-              .margin(10)
               .fontSize(20)
           }
           .width('100%')
-          .height(50)
+          .height('10%')
         }
         ListItem(){
           Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }){
@@ -72,50 +70,48 @@ struct TextClockLongPage {
                 this.textShadow = JSON.parse(strJson).$attrs.textShadow.slice(0,5)
                 this.fontFeature = JSON.parse(strJson).$attrs.fontFeature
                 this.controller.start()
-              }).height(28).fontSize(10).id('start')
+              }).height('5%').fontSize(10).id('start')
             Button("stop")
               .onClick(() => {
                 // 停止文本时钟
                 this.controller.stop()
-              }).height(28).fontSize(10).id('stop')
+              }).height('5%').fontSize(10).id('stop')
             Button("show")
               .onClick(() => {
                 // 显示控价
                 this.visible = Visibility.Visible
-              }).height(28).fontSize(10).id('show')
+              }).height('5%').fontSize(10).id('show')
             Button("hide")
               .onClick(() => {
                 // 隐藏控件
                 this.visible = Visibility.Hidden
-              }).height(28).fontSize(10).id('hide')
+              }).height('5%').fontSize(10).id('hide')
           }
           .width('100%')
         }
         ListItem(){
           Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }){
             Button('滚动到底部').onClick(()=>{
-                this.scroller.scrollEdge(Edge.Bottom)
-              }).height(28).fontSize(10).id('TextClockLongBottom')
-          }.padding({
-            top:10
-          })
+              this.scroller.scrollEdge(Edge.Bottom)
+            }).height('5%').fontSize(10).id('TextClockLongBottom')
+          }
         }
         ListItem(){
           Text('监控onDateChange事件：'+this.accumulateTime)
             .width("100%").textAlign(TextAlign.Center).id('accumulateTime1')
-        }.height(100)
+        }.height('10%')
         ListItem(){
           Text(this.textShadow+":"+this.fontFeature).width("100%").textAlign(TextAlign.Center)
-        }.height(100).id('textShadowOrFontFeature')
+        }.height('10%').id('textShadowOrFontFeature')
         ForEach(this.arr,(item:number) => {
           ListItem(){
             Text('ListItem'+item).width("100%").textAlign(TextAlign.Center)
-          }.height(100)
+          }.height('10%')
         },(item: string) => item)
         ListItem(){
           Text('监控onDateChange事件：'+this.accumulateTime)
             .width("100%").textAlign(TextAlign.Center).id('accumulateTime2')
-        }.height(100)
+        }.height('10%')
       }
     }
   }

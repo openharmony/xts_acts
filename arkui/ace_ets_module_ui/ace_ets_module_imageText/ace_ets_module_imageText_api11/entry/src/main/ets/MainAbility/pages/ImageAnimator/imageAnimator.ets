@@ -95,8 +95,7 @@ struct ImageAnimatorExample {
         ])
         .duration(this.duration)
         .state(this.state).reverse(this.reverse).fixedSize(this.fixedSize)
-        .fillMode(this.fillMode).iterations(this.iterations).width(340).height(240)
-        .margin({ top: 100 })
+        .fillMode(this.fillMode).iterations(this.iterations).width(340).height('50%')
         .key('imageAnimator')
         .onStart(() => {
           console.info('Start123456')
@@ -122,34 +121,39 @@ struct ImageAnimatorExample {
         .width('100%').height('50%')
 
       Row() {
-        Button('start').width(100).padding(5).onClick(() => {
+        Button('start').width('30%').onClick(() => {
           this.state = AnimationStatus.Running
-        }).margin(5).key('start')
-        Button('pause').width(100).padding(5).onClick(() => {
+        }).key('start')
+        Button('pause').width('30%').onClick(() => {
           this.state = AnimationStatus.Paused     // 显示当前帧图片
-        }).margin(5).key('pause')
-        Button('stop').width(100).padding(5).onClick(() => {
+        }).key('pause')
+        Button('stop').width('30%').onClick(() => {
           this.state = AnimationStatus.Stopped    // 显示动画的起始帧图片
-        }).margin(5)
-      }
+        })
+      }.height('5%')
 
       Row() {
-        Button('reverse').width(100).padding(5).onClick(() => {
+        Button('reverse').width('30%').onClick(() => {
           this.reverse = !this.reverse
-        }).margin(5).key('reverse')
-        Button('once').width(100).padding(5).onClick(() => {
+        }).key('reverse')
+        Button('once').width('30%').onClick(() => {
           this.iterations = 1
-        }).margin(5)
-        Button('infinite').width(100).padding(5).onClick(() => {
+        })
+        Button('infinite').width('30%').onClick(() => {
           this.iterations = -1 // 无限循环播放
-        }).margin(5).key('infinite')
-      }
+        }).key('infinite')
+      }.height('5%')
 
-      Text(this.message1).key('t1')
-      Text(this.message2).key('t2')
-      Text(this.message3).key('t3')
-      Text(this.message4).key('t4')
-      Text(this.message5).key('t5')
+      Row(){
+        Text(this.message1).key('t1').width('45%')
+        Text(this.message2).key('t2').width('45%')
+      }.height('5%')
+      Row(){
+        Text(this.message3).key('t3').width('45%')
+        Text(this.message4).key('t4').width('45%')
+      }.height('5%')
+
+      Text(this.message5).key('t5').height('5%')
     }.width('100%').height('100%')
   }
 }

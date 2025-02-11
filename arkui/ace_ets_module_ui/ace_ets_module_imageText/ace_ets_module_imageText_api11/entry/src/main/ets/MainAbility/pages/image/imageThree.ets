@@ -55,7 +55,7 @@ struct ImageExample3 {
 
   build() {
     Column() {
-      Row({ space: 20 }) {
+      Row() {
         Column() {
           Image($rawfile(this.imageName))
             .alt($rawfile('img2.png'))
@@ -66,7 +66,7 @@ struct ImageExample3 {
             })
             .syncLoad(true)
             .objectFit(ImageFit.Cover)
-            .height(180).width(180)
+            .height('40%').width(180)
             // 图片加载完成后，获取图片尺寸。
             .onComplete((msg: msgObj) => {
               this.widthValue = msg.width
@@ -82,14 +82,18 @@ struct ImageExample3 {
               offset: { x: 0, y: 20 }
             })       
 
-        Text(this.m1).margin({top:40}).key('complete')
-        Text(this.m2).margin({top:40}).key('error')
-        Text(this.m3).margin({top:40}).key('click')
-        Text(this.m4).margin({top:40}).key('Finish')
-        
+          Row(){
+            Text(this.m1).key('complete').width('45%')
+            Text(this.m2).key('error').width('45%')
+          }.height('10%')
+          Row(){
+            Text(this.m3).key('click').width('45%')
+            Text(this.m4).key('Finish').width('45%')
+          }.height('10%')
+
         // 为图片添加点击事件，点击完成后加载特定图片。
         Image(this.src)
-          .width(120).height(120)
+          .width(120).height('30%')
           .onClick(() => {
             if (this.src == this.on || this.src == this.off2on) {
               this.src = this.on2off
@@ -110,6 +114,6 @@ struct ImageExample3 {
           })
         }
       }
-    }.width('100%')
+    }.width('100%').height('100%')
   }
 }
