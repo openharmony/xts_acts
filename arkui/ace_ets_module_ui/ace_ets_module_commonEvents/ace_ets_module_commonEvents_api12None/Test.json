@@ -10,8 +10,8 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceEtsModuleCommonEventsApi12TestNone.hap",
-            "ActsAceEtsModuleCommonEventsApi12TestNoneMain.hap"
+            "ActsAceEtsModuleCommonEventsApi12NoneTest.hap",
+            "ActsAceEtsModuleCommonEventsApi12NoneTestMain.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
