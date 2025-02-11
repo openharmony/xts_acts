@@ -375,7 +375,7 @@ export default function AVSessionJsTest() {
                     console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0100 finished");
                 }
                 done();
-            }else{
+            } else {
                 console.info(`canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast') false`);
                 done();
             }
