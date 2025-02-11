@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import bundle from '@ohos.bundle.bundleManager';
 import router from '@ohos.router';
