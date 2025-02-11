@@ -366,7 +366,7 @@ export default function AVSessionJsTest() {
                     session.on('castDisplayChange', (display) => {
                         if (display.state === avSession.CastDisplayState.STATE_ON) {
                             console.info('castDisplayChange display : ${display.id} ON');
-                        } else if (display.state === avSession.CastDisplayState.STATE_OFF){
+                        } else if (display.state === avSession.CastDisplayState.STATE_OFF) {
                             console.info('castDisplayChange display : ${display.id} OFF');
                         }
                     });
