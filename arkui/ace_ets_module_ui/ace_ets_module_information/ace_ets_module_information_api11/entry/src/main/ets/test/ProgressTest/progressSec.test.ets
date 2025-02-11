@@ -18,8 +18,31 @@ import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
 import router from '@ohos.router';
 import { BusinessError } from '@ohos.base';
+import { resourceManager } from '@kit.LocalizationKit';
 
 let emitKey = "emitUserAgent";
+
+function progressFontWeight(sysFontWeight: Resource) {
+  let fontWeightArr: string[] = [
+    '100',
+    '200',
+    '300',
+    '400',
+    '500',
+    '600',
+    '700',
+    '800',
+    '900',
+    'FontWeight.Bold',
+    'FontWeight.Normal',
+    'FontWeight.Bolder',
+    'FontWeight.Lighter',
+    'FontWeight.Medium',
+    'FontWeight.Regular']
+  let resourceFontWeight = getContext().resourceManager.getNumber(sysFontWeight.id)
+  let newFontWeight: string = fontWeightArr[resourceFontWeight]
+  return newFontWeight;
+}
 
 export default function progressSecTest() {
   describe('ActsProgressSecTest', () => {
@@ -165,7 +188,8 @@ export default function progressSecTest() {
         console.info("ActsProgressSecTest afterEach start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.info("ActsProgressSecTest afterEach start to publish change component data error: " + (err as BusinessError).message);
+        console.info("ActsProgressSecTest afterEach start to publish change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
       done();
@@ -203,7 +227,8 @@ export default function progressSecTest() {
       let finalResult = "#" + calculatedOpicaty.toString(16) + strColor.substr(4, 6);
       console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + finalResult);
 
-      console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + JSON.stringify(obj.$attrs.backgroundColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " +
+      JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100] end");
       done();
@@ -261,7 +286,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(newJson);
       let objDefault: ESObject = JSON.parse(newJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0100]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
       expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual(objDefault.$attrs.capsuleStyle.borderWidth);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0100] end");
       done();
@@ -291,7 +317,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -299,7 +326,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0200]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0200]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
       expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("3.00vp");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0200] end");
       done();
@@ -329,7 +357,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -337,7 +366,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0300]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0300]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
       expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("3.00vp");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0300] end");
       done();
@@ -363,7 +393,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objJudge: ESObject = JSON.parse(strJsonJudge);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
       expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual(objJudge.$attrs.capsuleStyle.borderWidth);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400] end");
       done();
@@ -393,7 +424,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -401,7 +433,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0500]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0500]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
       expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("9.00px");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0500] end");
       done();
@@ -431,7 +464,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0600] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0600] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -439,7 +473,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0600]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0600]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
       expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("9.00vp");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0600] end");
       done();
@@ -469,7 +504,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0700] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0700] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -477,7 +513,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0700]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0700]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
       expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("9.00fp");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0700] end");
       done();
@@ -507,7 +544,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0800] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0800] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -515,7 +553,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0800]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0800]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
       expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("9.00lpx");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0800] end");
       done();
@@ -545,7 +584,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0900] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0900] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -553,7 +593,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0900]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0900]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0900]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0900]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
       expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("0.00vp");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0900] end");
       done();
@@ -583,7 +624,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -593,7 +635,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objDefault: ESObject = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
       expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual(objDefault.$attrs.capsuleStyle.borderWidth);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000] end");
       done();
@@ -623,7 +666,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1100] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_1100] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_1100] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -631,7 +675,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1100]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1100]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1100]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
       expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("10000.00vp");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1100] end");
       done();
@@ -661,7 +706,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -671,7 +717,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objDefault: ESObject = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
       expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual(objDefault.$attrs.capsuleStyle.borderWidth);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200] end");
       done();
@@ -701,7 +748,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -711,7 +759,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objDefault: ESObject = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
       expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual(objDefault.$attrs.capsuleStyle.borderWidth);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300] end");
       done();
@@ -750,7 +799,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + finalResult);
 
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
       expect(obj.$attrs.capsuleStyle.borderColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100] end");
       done();
@@ -780,7 +830,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -788,7 +839,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0200]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0200]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
       expect(obj.$attrs.capsuleStyle.borderColor).assertEqual("#FFFF0000");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0200] end");
       done();
@@ -818,7 +870,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -826,7 +879,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0300]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0300]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
       expect(obj.$attrs.capsuleStyle.borderColor).assertEqual("#FFFF9535");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0300] end");
       done();
@@ -856,7 +910,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -864,7 +919,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0400]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0400]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
       expect(obj.$attrs.capsuleStyle.borderColor).assertEqual("#FFFF0000");
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0400] end");
       done();
@@ -892,7 +948,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objJudge: ESObject = JSON.parse(strJsonJudge);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0500]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
       expect(obj.$attrs.capsuleStyle.borderColor).assertEqual(objJudge.$attrs.capsuleStyle.borderColor);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0500] end");
       done();
@@ -922,7 +979,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0600] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0600] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -952,7 +1010,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + finalResult);
 
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
       expect(obj.$attrs.capsuleStyle.borderColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600] end");
       done();
@@ -982,7 +1041,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0700] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0700] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1012,7 +1072,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + finalResult);
 
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
       expect(obj.$attrs.capsuleStyle.borderColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700] end");
       done();
@@ -1042,7 +1103,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0800] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0800] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1072,7 +1134,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + finalResult);
 
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
       expect(obj.$attrs.capsuleStyle.borderColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800] end");
       done();
@@ -1093,7 +1156,8 @@ export default function progressSecTest() {
       let objDefault: ESObject = JSON.parse(newJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.size));
       expect(obj.$attrs.capsuleStyle.font.size).assertEqual(objDefault.$attrs.capsuleStyle.font.size);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100] end");
       done();
@@ -1123,7 +1187,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1132,7 +1197,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0200]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.size));
       expect(obj.$attrs.capsuleStyle.font.size).assertEqual("16.00fp");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0200] end");
       done();
@@ -1162,7 +1228,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1171,7 +1238,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0300]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.size));
       expect(obj.$attrs.capsuleStyle.font.size).assertEqual("16.00vp");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0300] end");
       done();
@@ -1200,7 +1268,8 @@ export default function progressSecTest() {
       let objJudge: ESObject = JSON.parse(strJsonJudge);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.size));
       expect(obj.$attrs.capsuleStyle.font.size).assertEqual(objJudge.$attrs.capsuleStyle.font.size);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400] end");
       done();
@@ -1230,7 +1299,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1239,7 +1309,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0500]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.size));
       expect(obj.$attrs.capsuleStyle.font.size).assertEqual("18.00px");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0500] end");
       done();
@@ -1269,7 +1340,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0600] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0600] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1278,7 +1350,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0600]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.size));
       expect(obj.$attrs.capsuleStyle.font.size).assertEqual("18.00vp");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0600] end");
       done();
@@ -1308,7 +1381,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0700] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0700] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1317,7 +1391,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0700]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.size));
       expect(obj.$attrs.capsuleStyle.font.size).assertEqual("18.00fp");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0700] end");
       done();
@@ -1347,7 +1422,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0800] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0800] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1356,7 +1432,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0800]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.size));
       expect(obj.$attrs.capsuleStyle.font.size).assertEqual("18.00lpx");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0800] end");
       done();
@@ -1386,7 +1463,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0900] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0900] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1395,7 +1473,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0900]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0900]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0900]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0900]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.size));
       expect(obj.$attrs.capsuleStyle.font.size).assertEqual("0.00fp");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0900] end");
       done();
@@ -1425,7 +1504,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_1000] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_1000] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1436,7 +1516,8 @@ export default function progressSecTest() {
       let objDefault: ESObject = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.size));
       expect(obj.$attrs.capsuleStyle.font.size).assertEqual(objDefault.$attrs.capsuleStyle.font.size);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000] end");
       done();
@@ -1466,7 +1547,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1100] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_1100] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_1100] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1475,7 +1557,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1100]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.size));
       expect(obj.$attrs.capsuleStyle.font.size).assertEqual("10000.00fp");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1100] end");
       done();
@@ -1505,7 +1588,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_1200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_1200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1516,7 +1600,8 @@ export default function progressSecTest() {
       let objDefault: ESObject = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.size));
       expect(obj.$attrs.capsuleStyle.font.size).assertEqual(objDefault.$attrs.capsuleStyle.font.size);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200] end");
       done();
@@ -1546,7 +1631,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_1300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_1300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1557,7 +1643,8 @@ export default function progressSecTest() {
       let objDefault: ESObject = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.size));
       expect(obj.$attrs.capsuleStyle.font.size).assertEqual(objDefault.$attrs.capsuleStyle.font.size);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300] end");
       done();
@@ -1576,7 +1663,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0100]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
       expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0100] end");
       done();
@@ -1606,7 +1694,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1615,7 +1704,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
       expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("700");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0200] end");
       done();
@@ -1645,7 +1735,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1654,7 +1745,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
       expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("700");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0300] end");
       done();
@@ -1684,7 +1776,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1693,7 +1786,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
       expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Lighter");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0400] end");
       done();
@@ -1723,7 +1817,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1732,7 +1827,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
       expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0500] end");
       done();
@@ -1762,7 +1858,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1771,7 +1868,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
       expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Regular");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0600] end");
       done();
@@ -1801,7 +1899,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1810,7 +1909,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
       expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Medium");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0700] end");
       done();
@@ -1840,7 +1940,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1849,7 +1950,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
       expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Bold");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0800] end");
       done();
@@ -1879,7 +1981,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1888,7 +1991,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
       expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Bolder");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_0900] end");
       done();
@@ -1918,7 +2022,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1927,7 +2032,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
       expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1000] end");
       done();
@@ -1957,7 +2063,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -1966,7 +2073,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
       expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1100] end");
       done();
@@ -1996,7 +2104,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2005,7 +2114,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
       expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1200] end");
       done();
@@ -2035,7 +2145,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2044,8 +2155,9 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
-      expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
+      expect(obj.$attrs.capsuleStyle.font.weight).assertEqual(progressFontWeight($r('sys.float.font_weight')));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1300] end");
       done();
     });
@@ -2074,7 +2186,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2083,7 +2196,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.weight));
       expect(obj.$attrs.capsuleStyle.font.weight).assertEqual("FontWeight.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Weight_1400] end");
       done();
@@ -2102,7 +2216,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.style));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0100]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.style));
       expect(obj.$attrs.capsuleStyle.font.style).assertEqual("FontStyle.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0100] end");
       done();
@@ -2132,7 +2247,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Style_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Style_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2141,7 +2257,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.style));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0200]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.style));
       expect(obj.$attrs.capsuleStyle.font.style).assertEqual("FontStyle.Italic");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0200] end");
       done();
@@ -2171,7 +2288,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Style_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Style_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2180,7 +2298,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.style));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0300]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.style));
       expect(obj.$attrs.capsuleStyle.font.style).assertEqual("FontStyle.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0300] end");
       done();
@@ -2210,7 +2329,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Style_0400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Style_0400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2219,7 +2339,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.style));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0400]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.style));
       expect(obj.$attrs.capsuleStyle.font.style).assertEqual("FontStyle.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0400] end");
       done();
@@ -2249,7 +2370,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Style_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Font_Style_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2258,7 +2380,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
-      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.style));
+      console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0500]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.font.style));
       expect(obj.$attrs.capsuleStyle.font.style).assertEqual("FontStyle.Normal");
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Style_0500] end");
       done();
@@ -2278,7 +2401,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(newJson);
       let objDefault: ESObject = JSON.parse(newJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0100]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
       expect(obj.$attrs.capsuleStyle.fontColor).assertEqual(objDefault.$attrs.capsuleStyle.fontColor);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0100] end");
       done();
@@ -2308,7 +2432,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2316,7 +2441,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0200]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0200]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
       expect(obj.$attrs.capsuleStyle.fontColor).assertEqual("#FFFF0000");
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0200] end");
       done();
@@ -2346,7 +2472,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2354,7 +2481,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0300]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0300]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
       expect(obj.$attrs.capsuleStyle.fontColor).assertEqual("#FFFF9535");
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0300] end");
       done();
@@ -2384,7 +2512,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2392,7 +2521,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0400]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0400]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
       expect(obj.$attrs.capsuleStyle.fontColor).assertEqual("#FFFF0000");
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0400] end");
       done();
@@ -2421,7 +2551,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objJudge: ESObject = JSON.parse(strJsonJudge);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0500]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
       expect(obj.$attrs.capsuleStyle.fontColor).assertEqual(objJudge.$attrs.capsuleStyle.fontColor);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0500] end");
       done();
@@ -2451,7 +2582,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0600] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0600] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2461,7 +2593,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objDefault: ESObject = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0600]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
       expect(obj.$attrs.capsuleStyle.fontColor).assertEqual(objDefault.$attrs.capsuleStyle.fontColor);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0600] end");
       done();
@@ -2491,7 +2624,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0700] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0700] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2501,7 +2635,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objDefault: ESObject = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0700]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
       expect(obj.$attrs.capsuleStyle.fontColor).assertEqual(objDefault.$attrs.capsuleStyle.fontColor);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0700] end");
       done();
@@ -2531,7 +2666,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0800] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0800] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2541,7 +2677,8 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objDefault: ESObject = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
+      console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0800]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
       expect(obj.$attrs.capsuleStyle.fontColor).assertEqual(objDefault.$attrs.capsuleStyle.fontColor);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0800] end");
       done();
@@ -2589,7 +2726,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Content_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Content_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Content_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2627,7 +2765,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Content_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Content_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Content_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2665,7 +2804,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Content_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Content_0400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Content_0400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2703,7 +2843,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Content_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Content_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Content_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2741,7 +2882,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Content_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Content_0600] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Content_0600] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2781,7 +2923,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Content_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Content_0700] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Content_0700] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2821,7 +2964,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_Content_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Content_0800] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_Content_0800] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2847,7 +2991,8 @@ export default function progressSecTest() {
 
       let obj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.enableScanEffect));
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0100]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.enableScanEffect));
       expect(obj.$attrs.capsuleStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0100] end");
       done();
@@ -2877,7 +3022,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2885,7 +3031,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0200]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.enableScanEffect));
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0200]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.enableScanEffect));
       expect(obj.$attrs.capsuleStyle.enableScanEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0200] end");
       done();
@@ -2915,7 +3062,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2923,7 +3071,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0300]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.enableScanEffect));
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0300]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.enableScanEffect));
       expect(obj.$attrs.capsuleStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0300] end");
       done();
@@ -2953,7 +3102,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2961,7 +3111,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0400]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.enableScanEffect));
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0400]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.enableScanEffect));
       expect(obj.$attrs.capsuleStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0400] end");
       done();
@@ -2991,7 +3142,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -2999,7 +3151,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0500]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.enableScanEffect));
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0500]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.enableScanEffect));
       expect(obj.$attrs.capsuleStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableScanEffect_0500] end");
       done();
@@ -3016,8 +3169,10 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0100]: " + JSON.stringify(newJson));
 
       let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.showDefaultPercentage));
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0100]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0100]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.showDefaultPercentage));
       expect(obj.$attrs.capsuleStyle.showDefaultPercentage).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0100] end");
       done();
@@ -3047,15 +3202,18 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200]: " + JSON.stringify(obj.$attrs.capsuleStyle.showDefaultPercentage));
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.showDefaultPercentage));
       expect(obj.$attrs.capsuleStyle.showDefaultPercentage).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0200] end");
       done();
@@ -3085,15 +3243,18 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300]: " + JSON.stringify(obj.$attrs.capsuleStyle.showDefaultPercentage));
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.showDefaultPercentage));
       expect(obj.$attrs.capsuleStyle.showDefaultPercentage).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0300] end");
       done();
@@ -3123,15 +3284,18 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.showDefaultPercentage));
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.showDefaultPercentage));
       expect(obj.$attrs.capsuleStyle.showDefaultPercentage).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0400] end");
       done();
@@ -3161,15 +3325,18 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
-      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.showDefaultPercentage));
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle));
+      console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500]: " +
+      JSON.stringify(obj.$attrs.capsuleStyle.showDefaultPercentage));
       expect(obj.$attrs.capsuleStyle.showDefaultPercentage).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_ShowDefaultPercentage_0500] end");
       done();
@@ -3241,7 +3408,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3279,7 +3447,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3346,7 +3515,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3384,7 +3554,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0600] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0600] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3422,7 +3593,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0700] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0700] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3460,7 +3632,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0800] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0800] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3498,7 +3671,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0900] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0900] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0900] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3536,7 +3710,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1000] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_1000] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_1000] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3574,7 +3749,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1100] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_1100] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_1100] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3612,7 +3788,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_1200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_1200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3650,7 +3827,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_1300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_1300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_1300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3706,7 +3884,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Shadow_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Shadow_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Shadow_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3744,7 +3923,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Shadow_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Shadow_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Shadow_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3782,7 +3962,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Shadow_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Shadow_0400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Shadow_0400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3820,7 +4001,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Shadow_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Shadow_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Shadow_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3876,7 +4058,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Status_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Status_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Status_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3914,7 +4097,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Status_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Status_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Status_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3952,7 +4136,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Status_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Status_0400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Status_0400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -3990,7 +4175,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Status_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Status_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Status_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -4019,7 +4205,9 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(newJson);
       let objDefaultColorBegin: ESObject = JSON.parse(newJsonDefaultColorBegin);
       let objDefaultColorEnd: ESObject = JSON.parse(newJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_0100]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4051,7 +4239,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Color_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Color_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -4181,7 +4370,9 @@ export default function progressSecTest() {
 
       let obj: ESObject = JSON.parse(strJson);
       let objJudge: ESObject = JSON.parse(strJsonJudge);
-      let finalResult = "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_0600]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4213,7 +4404,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Color_0700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_0700] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Color_0700] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -4225,7 +4417,9 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_0700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4257,7 +4451,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Color_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_0800] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Color_0800] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -4269,7 +4464,9 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_0800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4292,7 +4489,9 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(newJson);
       let objDefaultColorBegin: ESObject = JSON.parse(newJsonDefaultColorBegin);
       let objDefaultColorEnd: ESObject = JSON.parse(newJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_1100]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4324,7 +4523,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Color_1200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_1200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Color_1200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -4455,7 +4655,9 @@ export default function progressSecTest() {
 
       let obj: ESObject = JSON.parse(strJson);
       let objJudge: ESObject = JSON.parse(strJsonJudge);
-      let finalResult = "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_1600]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4487,7 +4689,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Color_1700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_1700] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Color_1700] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -4499,7 +4702,9 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_1700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4531,7 +4736,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Color_1800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_1800] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Color_1800] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -4543,7 +4749,9 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_1800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4566,7 +4774,9 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(newJson);
       let objDefaultColorBegin: ESObject = JSON.parse(newJsonDefaultColorBegin);
       let objDefaultColorEnd: ESObject = JSON.parse(newJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_2100]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4598,7 +4808,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Color_2200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_2200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Color_2200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -4733,7 +4944,9 @@ export default function progressSecTest() {
 
       let obj: ESObject = JSON.parse(strJson);
       let objJudge: ESObject = JSON.parse(strJsonJudge);
-      let finalResult = "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_2600]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4765,7 +4978,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Color_2700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_2700] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Color_2700] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -4777,7 +4991,9 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_2700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4809,7 +5025,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Color_2800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_2800] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Color_2800] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -4821,7 +5038,9 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_2800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4844,7 +5063,9 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(newJson);
       let objDefaultColorBegin: ESObject = JSON.parse(newJsonDefaultColorBegin);
       let objDefaultColorEnd: ESObject = JSON.parse(newJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_3100]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4876,7 +5097,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Color_3200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_3200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Color_3200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -5013,7 +5235,9 @@ export default function progressSecTest() {
 
       let obj: ESObject = JSON.parse(strJson);
       let objJudge: ESObject = JSON.parse(strJsonJudge);
-      let finalResult = "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_3600]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -5045,7 +5269,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Color_3700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_3700] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Color_3700] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -5057,7 +5282,9 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_3700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -5089,7 +5316,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Color_3800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_3800] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Color_3800] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -5101,7 +5329,9 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_3800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -5124,7 +5354,9 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(newJson);
       let objDefaultColorBegin: ESObject = JSON.parse(newJsonDefaultColorBegin);
       let objDefaultColorEnd: ESObject = JSON.parse(newJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_4100]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -5156,7 +5388,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Color_4200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_4200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Color_4200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -5288,7 +5521,9 @@ export default function progressSecTest() {
 
       let obj: ESObject = JSON.parse(strJson);
       let objJudge: ESObject = JSON.parse(strJsonJudge);
-      let finalResult = "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_4600]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -5320,7 +5555,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Color_4700] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_4700] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Color_4700] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -5332,7 +5568,9 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_4700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -5364,7 +5602,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_Color_4800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_4800] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_Color_4800] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -5376,7 +5615,9 @@ export default function progressSecTest() {
       let obj: ESObject = JSON.parse(strJson);
       let objDefaultColorBegin: ESObject = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd: ESObject = JSON.parse(strJsonDefaultColorEnd);
-      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      let finalResult =
+        "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" +
+        objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_4800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -5396,7 +5637,8 @@ export default function progressSecTest() {
 
       let obj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0100]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0100]: " + JSON.stringify(obj.$attrs.ringStyle.enableScanEffect));
+      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0100]: " +
+      JSON.stringify(obj.$attrs.ringStyle.enableScanEffect));
       expect(obj.$attrs.ringStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0100] end");
       done();
@@ -5426,7 +5668,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -5434,7 +5677,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0200]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0200]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0200]: " + JSON.stringify(obj.$attrs.ringStyle.enableScanEffect));
+      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0200]: " +
+      JSON.stringify(obj.$attrs.ringStyle.enableScanEffect));
       expect(obj.$attrs.ringStyle.enableScanEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0200] end");
       done();
@@ -5464,7 +5708,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -5472,7 +5717,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0300]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0300]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0300]: " + JSON.stringify(obj.$attrs.ringStyle.enableScanEffect));
+      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0300]: " +
+      JSON.stringify(obj.$attrs.ringStyle.enableScanEffect));
       expect(obj.$attrs.ringStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0300] end");
       done();
@@ -5502,7 +5748,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -5510,7 +5757,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0400]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0400]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0400]: " + JSON.stringify(obj.$attrs.ringStyle.enableScanEffect));
+      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0400]: " +
+      JSON.stringify(obj.$attrs.ringStyle.enableScanEffect));
       expect(obj.$attrs.ringStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0400] end");
       done();
@@ -5540,7 +5788,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -5548,7 +5797,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0500]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0500]: " + JSON.stringify(obj.$attrs.ringStyle));
-      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0500]: " + JSON.stringify(obj.$attrs.ringStyle.enableScanEffect));
+      console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0500]: " +
+      JSON.stringify(obj.$attrs.ringStyle.enableScanEffect));
       expect(obj.$attrs.ringStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Ring_EnableScanEffect_0500] end");
       done();
@@ -5566,7 +5816,8 @@ export default function progressSecTest() {
 
       let obj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0100]: " + JSON.stringify(obj.$attrs.linearStyle));
-      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0100]: " + JSON.stringify(obj.$attrs.linearStyle.enableScanEffect));
+      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0100]: " +
+      JSON.stringify(obj.$attrs.linearStyle.enableScanEffect));
       expect(obj.$attrs.linearStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0100] end");
       done();
@@ -5596,7 +5847,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -5604,7 +5856,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0200]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0200]: " + JSON.stringify(obj.$attrs.linearStyle));
-      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0200]: " + JSON.stringify(obj.$attrs.linearStyle.enableScanEffect));
+      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0200]: " +
+      JSON.stringify(obj.$attrs.linearStyle.enableScanEffect));
       expect(obj.$attrs.linearStyle.enableScanEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0200] end");
       done();
@@ -5634,7 +5887,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -5642,7 +5896,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0300]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0300]: " + JSON.stringify(obj.$attrs.linearStyle));
-      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0300]: " + JSON.stringify(obj.$attrs.linearStyle.enableScanEffect));
+      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0300]: " +
+      JSON.stringify(obj.$attrs.linearStyle.enableScanEffect));
       expect(obj.$attrs.linearStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0300] end");
       done();
@@ -5672,7 +5927,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -5680,7 +5936,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0400]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0400]: " + JSON.stringify(obj.$attrs.linearStyle));
-      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0400]: " + JSON.stringify(obj.$attrs.linearStyle.enableScanEffect));
+      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0400]: " +
+      JSON.stringify(obj.$attrs.linearStyle.enableScanEffect));
       expect(obj.$attrs.linearStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0400] end");
       done();
@@ -5710,7 +5967,8 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
@@ -5718,7 +5976,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500]: " + JSON.stringify(obj.$attrs.linearStyle));
-      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500]: " + JSON.stringify(obj.$attrs.linearStyle.enableScanEffect));
+      console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500]: " +
+      JSON.stringify(obj.$attrs.linearStyle.enableScanEffect));
       expect(obj.$attrs.linearStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500] end");
       done();
@@ -5735,7 +5994,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100]: " + JSON.stringify(newJson));
 
       let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100] end");
       done();
@@ -5765,14 +6025,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200] end");
       done();
@@ -5802,14 +6064,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300] end");
       done();
@@ -5839,14 +6103,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400] end");
       done();
@@ -5876,14 +6142,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_number');
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500] end");
       done();
@@ -5900,7 +6168,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100]: " + JSON.stringify(newJson));
 
       let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0100]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0100]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0100] end");
       done();
@@ -5930,14 +6199,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200] end");
       done();
@@ -5967,14 +6238,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300] end");
       done();
@@ -6004,14 +6277,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400] end");
       done();
@@ -6041,14 +6316,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_number');
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500] end");
       done();
@@ -6065,7 +6342,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0100]: " + JSON.stringify(newJson));
 
       let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0100]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0100]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0100] end");
       done();
@@ -6095,14 +6373,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200] end");
       done();
@@ -6132,14 +6412,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300] end");
       done();
@@ -6169,14 +6451,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400] end");
       done();
@@ -6206,14 +6490,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500] end");
       done();
@@ -6230,7 +6516,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100]: " + JSON.stringify(newJson));
 
       let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0100]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0100]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0100] end");
       done();
@@ -6260,14 +6547,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_number');
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200] end");
       done();
@@ -6297,14 +6586,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_number');
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300] end");
       done();
@@ -6334,14 +6625,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_number');
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400] end");
       done();
@@ -6371,14 +6664,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_number');
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500] end");
       done();
@@ -6395,7 +6690,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0100]: " + JSON.stringify(newJson));
 
       let obj: ESObject = JSON.parse(newJson);
-      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0100]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0100]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0100] end");
       done();
@@ -6425,14 +6721,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_number');
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200] end");
       done();
@@ -6462,14 +6760,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_number');
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300] end");
       done();
@@ -6499,14 +6799,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_number');
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400] end");
       done();
@@ -6536,14 +6838,16 @@ export default function progressSecTest() {
         console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500] change component data error: " + (err as BusinessError).message);
+        console.log("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500] change component data error: " +
+        (err as BusinessError).message);
       }
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_number');
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500]: " +
+      JSON.stringify(obj.$attrs.enableSmoothEffect));
       expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
       console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500] end");
       done();
