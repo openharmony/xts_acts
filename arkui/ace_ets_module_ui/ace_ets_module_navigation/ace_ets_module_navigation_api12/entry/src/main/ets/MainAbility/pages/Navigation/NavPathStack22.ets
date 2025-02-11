@@ -172,7 +172,7 @@ struct NavPathStack22{
     Navigation(this.derivedStack){
       Scroll(){
         Column(){
-          Text(this.text1).id('NavPathStack22_text1')
+          Text(this.text1).id('NavPathStack22_text1').height('5%')
           Button('pushPath pageOne').onClick((event: ClickEvent) => {
             this.derivedStack.pushPath({name:'pageOne'})
           }).id('NavPathStack22_btn1').height('5%')
