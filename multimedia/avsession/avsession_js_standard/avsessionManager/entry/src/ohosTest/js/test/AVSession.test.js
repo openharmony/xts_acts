@@ -3692,7 +3692,7 @@ export default function AVSession() {
                     expect(err.code).assertEqual(6600101);
                     done();
                 }
-            }else{
+            } else {
                 console.info(`SystemCapability.Multimedia.AVSession.ExtendedDisplayCast false`);
                 done();
             }
