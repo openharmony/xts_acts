@@ -31,8 +31,8 @@ struct PanGestureSourceTool {
         Button('' + this.sourceTool1).id("sourceTool1_id")
       }
       .id("PanGestureSourceToolColumn")
-      .height(30%)
-      .width(30%)
+      .height('30%')
+      .width('30%')
       .padding(20)
       .border({ width: 3 })
       .margin(50)
