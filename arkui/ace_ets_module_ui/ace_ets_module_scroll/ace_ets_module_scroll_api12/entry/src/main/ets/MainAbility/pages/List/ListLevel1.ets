@@ -151,11 +151,11 @@ struct ListLevel1 {
           })
           .id('currentOffsetButton')
         
-        List({ space: 20, initialIndex: 0, scroller: this.listScroller }) {
+        List({ space: 10, initialIndex: 0, scroller: this.listScroller }) {
           ForEach(this.arr1, (item: number) => {
             ListItem() {
               Text('item' + item)
-                .width(300)
+                .width(200)
                 .height(100)
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
@@ -195,7 +195,8 @@ struct ListLevel1 {
         .id('listlevel1')
         .padding(this.num)
         .listDirection(this.listDirection)
-        .height(300)
+        .width('90%')
+        .height('80%')
         .divider({
           strokeWidth: this.strokeWidth,
           color: 0xFFFFFF,

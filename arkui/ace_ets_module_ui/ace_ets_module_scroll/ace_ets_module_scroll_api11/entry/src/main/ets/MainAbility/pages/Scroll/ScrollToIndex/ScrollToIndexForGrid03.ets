@@ -45,7 +45,65 @@ struct ScrollToIndexForGrid03 {
     Column({ space: 5 }) {
       Text('have smooth...').fontSize(16).width('95%').height(30).backgroundColor(Color.Orange).textAlign(TextAlign.Center)
         .visibility(this.isSmooth ? Visibility.Visible : Visibility.None)
-        .id('isHaveSmooth_Grid03').position({x:12,y:500})
+        .id('isHaveSmooth_Grid03').position({x:12,y:20})
+      Column(){
+        Flex({ direction: FlexDirection.Row, wrap: FlexWrap.Wrap, justifyContent:FlexAlign.SpaceBetween }) { // 子组件在容器主轴上行布局
+          Button('10-true-end', { type: ButtonType.Normal, stateEffect: true })
+            .width('35%')
+            .height('5%')
+            .borderRadius(8).backgroundColor(0x317aff)
+            .onClick(() => {
+              this.isSmooth = false
+              const yOffsetStart: number = this.scrollerForGrid.currentOffset().yOffset;
+              this.scrollerForGrid.scrollToIndex(10, true, ScrollAlign.END)
+              setTimeout(()=> {
+                const yOffsetEnd: number = this.scrollerForGrid.currentOffset().yOffset;
+                console.info('yOffsetStart==>' + yOffsetStart + 'yOffsetEnd==>'+ yOffsetEnd)
+                this.isSmooth = (yOffsetStart == yOffsetEnd) ? false : true;
+                console.info(this.isSmooth + 'isSmooth')
+              },1000)
+            }).margin(10)
+          Button('98-true-Start', { type: ButtonType.Normal, stateEffect: true })
+            .width('35%')
+            .height('5%')
+            .borderRadius(8).backgroundColor(0x317aff)
+            .onClick(() => {
+              this.isSmooth = false
+              const yOffsetStart: number = this.scrollerForGrid.currentOffset().yOffset;
+              this.scrollerForGrid.scrollToIndex(98, true, ScrollAlign.START)
+              setTimeout(()=> {
+                const yOffsetEnd: number = this.scrollerForGrid.currentOffset().yOffset;
+                console.info('yOffsetStart==>' + yOffsetStart + 'yOffsetEnd==>'+ yOffsetEnd)
+                this.isSmooth = (yOffsetStart == yOffsetEnd) ? false : true;
+                console.info(this.isSmooth + 'isSmooth')
+              },1000)
+            }).margin(10)
+          Button('128-true-end', { type: ButtonType.Normal, stateEffect: true })
+            .width('35%')
+            .height('5%')
+            .borderRadius(8).backgroundColor(0x317aff)
+            .onClick(() => {
+              this.isSmooth = false
+              const yOffsetStart: number = this.scrollerForGrid.currentOffset().yOffset;
+              this.scrollerForGrid.scrollToIndex(128, true, ScrollAlign.END)
+              setTimeout(()=> {
+                const yOffsetEnd: number = this.scrollerForGrid.currentOffset().yOffset;
+                console.info('yOffsetStart==>' + yOffsetStart + 'yOffsetEnd==>'+ yOffsetEnd)
+                this.isSmooth = (yOffsetStart == yOffsetEnd) ? false : true;
+                console.info(this.isSmooth + 'isSmooth')
+              },1000)
+
+            }).margin(10)
+          Button('22-false-center', { type: ButtonType.Normal, stateEffect: true })
+            .width('35%')
+            .height('5%')
+            .borderRadius(8).backgroundColor(0x317aff)
+            .onClick(() => {
+              this.isSmooth = false
+              this.scrollerForGrid.scrollToIndex(22, false, ScrollAlign.CENTER)
+            }).margin(10)
+        }
+      }
       Text('scroll').fontColor(0xCCCCCC).fontSize(9).width('90%')
       // 不使用scroll，需要undefined占位
       Grid(this.scrollerForGrid, this.layoutOptions2) {
@@ -66,59 +124,9 @@ struct ScrollToIndexForGrid03 {
       .scrollBar(BarState.Off)
       .width('90%')
       .backgroundColor(0xFAEEE0)
-      .height(260)
+      .height('60%')
       .id("GridID_Grid03")
 
-      Column(){
-        Flex({ direction: FlexDirection.Row, wrap: FlexWrap.Wrap, justifyContent:FlexAlign.SpaceBetween }) { // 子组件在容器主轴上行布局
-          Button('10-true-end', { type: ButtonType.Normal, stateEffect: true })
-            .borderRadius(8).backgroundColor(0x317aff).width(150).height(50)
-            .onClick(() => {
-              this.isSmooth = false
-              const yOffsetStart: number = this.scrollerForGrid.currentOffset().yOffset;
-              this.scrollerForGrid.scrollToIndex(10, true, ScrollAlign.END)
-              setTimeout(()=> {
-                const yOffsetEnd: number = this.scrollerForGrid.currentOffset().yOffset;
-                console.info('yOffsetStart==>' + yOffsetStart + 'yOffsetEnd==>'+ yOffsetEnd)
-                this.isSmooth = (yOffsetStart == yOffsetEnd) ? false : true;
-                console.info(this.isSmooth + 'isSmooth')
-              },1000)
-            }).margin(10)
-          Button('98-true-Start', { type: ButtonType.Normal, stateEffect: true })
-            .borderRadius(8).backgroundColor(0x317aff).width(150).height(50)
-            .onClick(() => {
-              this.isSmooth = false
-              const yOffsetStart: number = this.scrollerForGrid.currentOffset().yOffset;
-              this.scrollerForGrid.scrollToIndex(98, true, ScrollAlign.START)
-              setTimeout(()=> {
-                const yOffsetEnd: number = this.scrollerForGrid.currentOffset().yOffset;
-                console.info('yOffsetStart==>' + yOffsetStart + 'yOffsetEnd==>'+ yOffsetEnd)
-                this.isSmooth = (yOffsetStart == yOffsetEnd) ? false : true;
-                console.info(this.isSmooth + 'isSmooth')
-              },1000)
-            }).margin(10)
-          Button('128-true-end', { type: ButtonType.Normal, stateEffect: true })
-            .borderRadius(8).backgroundColor(0x317aff).width(150).height(50)
-            .onClick(() => {
-              this.isSmooth = false
-              const yOffsetStart: number = this.scrollerForGrid.currentOffset().yOffset;
-              this.scrollerForGrid.scrollToIndex(128, true, ScrollAlign.END)
-              setTimeout(()=> {
-                const yOffsetEnd: number = this.scrollerForGrid.currentOffset().yOffset;
-                console.info('yOffsetStart==>' + yOffsetStart + 'yOffsetEnd==>'+ yOffsetEnd)
-                this.isSmooth = (yOffsetStart == yOffsetEnd) ? false : true;
-                console.info(this.isSmooth + 'isSmooth')
-              },1000)
-
-            }).margin(10)
-          Button('22-false-center', { type: ButtonType.Normal, stateEffect: true })
-            .borderRadius(8).backgroundColor(0x317aff).width(150).height(50)
-            .onClick(() => {
-              this.isSmooth = false
-              this.scrollerForGrid.scrollToIndex(22, false, ScrollAlign.CENTER)
-            }).margin(10)
-        }
-      }.height('20%')
     }.width('100%').margin({ top: 5 })
 
   }

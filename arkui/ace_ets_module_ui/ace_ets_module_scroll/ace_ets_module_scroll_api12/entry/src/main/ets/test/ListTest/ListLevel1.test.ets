@@ -494,7 +494,7 @@ export default function listLevel1Test() {
       console.info("[listLevel1Test_1300] JSON.parse(strJsonRectWidth) is: " + JSON.stringify(JSON.parse(strJsonRectWidth).$attrs.content));
       console.info("[listLevel1Test_1300] JSON.parse(strJsonRectHeight) is: " + JSON.stringify(JSON.parse(strJsonRectHeight).$attrs.content));
       expect(JSON.parse(strJsonRectY).$attrs.content).assertEqual('itemRectY:5');
-      expect(JSON.parse(strJsonRectWidth).$attrs.content).assertEqual('itemRectWidth:300');
+      expect(JSON.parse(strJsonRectWidth).$attrs.content).assertEqual('itemRectWidth:200');
       expect(JSON.parse(strJsonRectHeight).$attrs.content).assertEqual('itemRectHeight:100');
       console.info('listLevel1Test_1300 END');
       done()
