@@ -3675,8 +3675,8 @@ export default function AVSession() {
                 try {
                     session.getAllCastDisplays().then((data) => {
                         if (Array.isArray(data)) {
-                                console.info(`getAllCastDisplays success: ${JSON.stringify(data)}`);
-                                expect(true).assertTrue();
+                            console.info(`getAllCastDisplays success: ${JSON.stringify(data)}`);
+                            expect(true).assertTrue();
                         } else {
                             console.info('getAllCastDisplays failed');
                             expect(false).assertTrue();
