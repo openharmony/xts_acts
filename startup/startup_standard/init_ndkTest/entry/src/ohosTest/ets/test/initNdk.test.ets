@@ -505,7 +505,7 @@ export default function initNdkTest() {
         expect(ret).assertTrue();
         done();
       } else {
-        console.info('the return formate is not yy--mm--dd');
+        console.info('the return formate is not yy/mm/dd');
         expect(false).assertTrue();
         done();
       }
