@@ -373,7 +373,7 @@ export default function TCPSocketTest() {
         let bindAddress: socket.NetAddress = {
           address: '127.0.0.1',
           port: 4554,
-          family: 3
+          family: 4
         };
         tcp.bind(bindAddress, async (err: BusinessError) => {
           if (err) {
@@ -830,7 +830,7 @@ export default function TCPSocketTest() {
         let bindAddress: socket.NetAddress = {
           address: '127.0.0.1',
           port: 6335,
-          family: 3
+          family: 4
         };
         tcp.bind(bindAddress).then(() => {
           console.info(`${caseName} success`);

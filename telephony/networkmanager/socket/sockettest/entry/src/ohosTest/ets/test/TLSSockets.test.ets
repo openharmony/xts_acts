@@ -168,8 +168,14 @@ let addr: socket.NetAddress = {
   family: 1
 };
 
+let addr2: socket.NetAddress = {
+  address: '127.0.0.1',
+  port: 8002,
+  family: 1
+};
+
 let ServerOptions: socket.TLSConnectOptions = {
-  address: addr,
+  address: addr2,
   secureOptions: {
     ca: client_ca,
     key: server_key,

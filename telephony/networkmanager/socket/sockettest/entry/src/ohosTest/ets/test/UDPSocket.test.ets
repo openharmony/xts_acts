@@ -257,9 +257,9 @@ export default function UDPSocketTest() {
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
         let addr: socket.NetAddress = {
-          address: '127.0.0.1',
+          address: '::1',
           port: 0,
-          family: 3
+          family: 2
         };
         udp.bind(addr, (err: BusinessError) => {
           if (err) {
@@ -577,9 +577,9 @@ export default function UDPSocketTest() {
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
         let addr: socket.NetAddress = {
-          address: '127.0.0.1',
+          address: '::1',
           port: 0,
-          family: 3
+          family: 2
         };
         udp.bind(addr).then(() => {
           expectTrue(true);
