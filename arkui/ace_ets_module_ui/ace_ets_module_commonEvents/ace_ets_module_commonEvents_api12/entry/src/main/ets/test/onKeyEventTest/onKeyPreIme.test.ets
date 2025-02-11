@@ -19,7 +19,7 @@ import CommonFunc from '../../MainAbility/common/Common';
 import config from '@ohos.accessibility.config'
 import accessibility from '@ohos.accessibility';
 const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
-const BUNDLE_NAME = 'com.openharmony.arkui_capi_xts/MainAbility';
+const BUNDLE_NAME = 'com.arkui.ace.commonEvents.api12/EntryAbility';
 
 export default function onKeyPreImeTest() {
   describe('onKeyPreImeTest', () => {
