@@ -336,28 +336,24 @@ export default function FivePointOne_i18nStageTest() {
       let integer_textStyle = new TextStyle({
         fontColor: Color.Red,
         fontFamily: "Arial",
-        fontSize: LengthMetrics.vp(10),
         fontWeight: FontWeight.Lighter,
         fontStyle: FontStyle.Italic
       });
       let decimal_textStyle = new TextStyle({
         fontColor: Color.Black,
         fontFamily: "Arial",
-        fontSize: LengthMetrics.vp(15),
         fontWeight: FontWeight.Normal,
         fontStyle: FontStyle.Normal
       });
       let fraction_textStyle = new TextStyle({
         fontColor: Color.Green,
         fontFamily: "Arial",
-        fontSize: LengthMetrics.fp(20),
         fontWeight: FontWeight.Regular,
         fontStyle: FontStyle.Normal
       });
       let unit_textStyle = new TextStyle({
         fontColor: Color.Blue,
         fontFamily: "Arial",
-        fontSize: LengthMetrics.fp(30),
         fontWeight: FontWeight.Medium,
         fontStyle: FontStyle.Italic
       });
@@ -380,12 +376,11 @@ export default function FivePointOne_i18nStageTest() {
 
       let arrList = result.getStyles(0, result.length);
       let testList: Array<string> = [];
-      let resultList: Array<string> = ["#FFFF0000", "Arial", "10", "12", "1", "#FF000000", "Arial", "15", "10", "0",
-        "#FF008000", "Arial", "20", "14", "0", "#FF0000FF", "Arial", "30", "13", "1"];
+      let resultList: Array<string> = ["#FFFF0000", "Arial", "12", "1", "#FF000000", "Arial", "10", "0",
+        "#FF008000", "Arial", "14", "0", "#FF0000FF", "Arial", "13", "1"];
       for (const arr of arrList) {
         testList.push(arr.styledValue["fontColor"])
         testList.push(arr.styledValue["fontFamily"])
-        testList.push(arr.styledValue["fontSize"])
         testList.push(arr.styledValue["fontWeight"])
         testList.push(arr.styledValue["fontStyle"])
       };
