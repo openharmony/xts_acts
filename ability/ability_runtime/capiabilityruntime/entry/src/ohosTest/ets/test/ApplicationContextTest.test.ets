@@ -157,7 +157,7 @@ export default function applicationContextTest() {
       applicationContext.area = contextConstant.AreaMode.EL2;
     })
 	
-	/*
+    /*
      * @tc.number: SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0100
      * @tc.name: SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_0100
      * @tc.desc: The sandbox path is correct
@@ -174,34 +174,42 @@ export default function applicationContextTest() {
 
       applicationContext.area = contextConstant.AreaMode.EL1;
       expect(testNapi.getTempDir()).assertEqual(applicationContext.tempDir);
+      expect(testNapi.getTempDir()).assertEqual("/data/storage/el1/base/temp");
       hilog.info(0x0000, 'testTag', tag + ' tempDir AreaMode=EL1 %{public}s ', testNapi.getTempDir());
 
       applicationContext.area = contextConstant.AreaMode.EL2;
       expect(testNapi.getTempDir()).assertEqual(applicationContext.tempDir);
+      expect(testNapi.getTempDir()).assertEqual("/data/storage/el2/base/temp");
       hilog.info(0x0000, 'testTag', tag + ' tempDir AreaMode=EL2 %{public}s ', testNapi.getTempDir());
 
       applicationContext.area = contextConstant.AreaMode.EL3;
       expect(testNapi.getTempDir()).assertEqual(applicationContext.tempDir);
+      expect(testNapi.getTempDir()).assertEqual("/data/storage/el3/base/temp");
       hilog.info(0x0000, 'testTag', tag + ' tempDir AreaMode=EL3 %{public}s ', testNapi.getTempDir());
 
       applicationContext.area = contextConstant.AreaMode.EL4;
       expect(testNapi.getTempDir()).assertEqual(applicationContext.tempDir);
+      expect(testNapi.getTempDir()).assertEqual("/data/storage/el4/base/temp");
       hilog.info(0x0000, 'testTag', tag + ' tempDir AreaMode=EL4 %{public}s ', testNapi.getTempDir());
 
       applicationContext.area = contextConstant.AreaMode.EL5;
       expect(testNapi.getTempDir()).assertEqual(applicationContext.tempDir);
+      expect(testNapi.getTempDir()).assertEqual("/data/storage/el5/base/temp");
       hilog.info(0x0000, 'testTag', tag + ' tempDir AreaMode=EL5 %{public}s ', testNapi.getTempDir());
 
       applicationContext.area = 100;
       expect(testNapi.getTempDir()).assertEqual(applicationContext.tempDir);
+      expect(testNapi.getTempDir()).assertEqual("/data/storage/el5/base/temp");
       hilog.info(0x0000, 'testTag', tag + ' tempDir AreaMode=100 %{public}s ', testNapi.getTempDir());
 
       applicationContext.area = -4;
       expect(testNapi.getTempDir()).assertEqual(applicationContext.tempDir);
+      expect(testNapi.getTempDir()).assertEqual("/data/storage/el5/base/temp");
       hilog.info(0x0000, 'testTag', tag + ' tempDir AreaMode=-4 %{public}s ', testNapi.getTempDir());
 
       applicationContext.area = 0.5;
       expect(testNapi.getTempDir()).assertEqual(applicationContext.tempDir);
+      expect(testNapi.getTempDir()).assertEqual("/data/storage/el1/base/temp");
       hilog.info(0x0000, 'testTag', tag + ' tempDir AreaMode=-0.5 %{public}s ', testNapi.getTempDir());
 
       // reset to default area
@@ -276,34 +284,42 @@ export default function applicationContextTest() {
 
       applicationContext.area = contextConstant.AreaMode.EL1;
       expect(testNapi.getFilesDir()).assertEqual(applicationContext.filesDir);
+      expect(testNapi.getFilesDir()).assertEqual("/data/storage/el1/base/files");
       hilog.info(0x0000, 'testTag', tag + ' filesDir AreaMode=EL1 %{public}s ', testNapi.getFilesDir());
 
       applicationContext.area = contextConstant.AreaMode.EL2;
       expect(testNapi.getFilesDir()).assertEqual(applicationContext.filesDir);
+      expect(testNapi.getFilesDir()).assertEqual("/data/storage/el2/base/files");
       hilog.info(0x0000, 'testTag', tag + ' filesDir AreaMode=EL2 %{public}s ', testNapi.getFilesDir());
 
       applicationContext.area = contextConstant.AreaMode.EL3;
       expect(testNapi.getFilesDir()).assertEqual(applicationContext.filesDir);
+      expect(testNapi.getFilesDir()).assertEqual("/data/storage/el3/base/files");
       hilog.info(0x0000, 'testTag', tag + ' filesDir AreaMode=EL3 %{public}s ', testNapi.getFilesDir());
 
       applicationContext.area = contextConstant.AreaMode.EL4;
       expect(testNapi.getFilesDir()).assertEqual(applicationContext.filesDir);
+      expect(testNapi.getFilesDir()).assertEqual("/data/storage/el4/base/files");
       hilog.info(0x0000, 'testTag', tag + ' filesDir AreaMode=EL4 %{public}s ', testNapi.getFilesDir());
 
       applicationContext.area = contextConstant.AreaMode.EL5;
       expect(testNapi.getFilesDir()).assertEqual(applicationContext.filesDir);
+      expect(testNapi.getFilesDir()).assertEqual("/data/storage/el5/base/files");
       hilog.info(0x0000, 'testTag', tag + ' filesDir AreaMode=EL5 %{public}s ', testNapi.getFilesDir());
 
       applicationContext.area = 100;
       expect(testNapi.getFilesDir()).assertEqual(applicationContext.filesDir);
+      expect(testNapi.getFilesDir()).assertEqual("/data/storage/el5/base/files");
       hilog.info(0x0000, 'testTag', tag + ' filesDir AreaMode=100 %{public}s ', testNapi.getFilesDir());
 
       applicationContext.area = -4;
       expect(testNapi.getFilesDir()).assertEqual(applicationContext.filesDir);
+      expect(testNapi.getFilesDir()).assertEqual("/data/storage/el5/base/files");
       hilog.info(0x0000, 'testTag', tag + ' filesDir AreaMode=-4 %{public}s ', testNapi.getFilesDir());
 
       applicationContext.area = 0.5;
       expect(testNapi.getFilesDir()).assertEqual(applicationContext.filesDir);
+      expect(testNapi.getFilesDir()).assertEqual("/data/storage/el1/base/files");
       hilog.info(0x0000, 'testTag', tag + ' filesDir AreaMode=-0.5 %{public}s ', testNapi.getFilesDir());
 
       // reset to default area
@@ -379,34 +395,42 @@ export default function applicationContextTest() {
 
       applicationContext.area = contextConstant.AreaMode.EL1;
       expect(testNapi.getPreferencesDir()).assertEqual(applicationContext.preferencesDir);
+      expect(testNapi.getPreferencesDir()).assertEqual("/data/storage/el1/base/preferences");
       hilog.info(0x0000, 'testTag', tag + ' preferencesDir AreaMode=EL1 %{public}s ', testNapi.getPreferencesDir());
 
       applicationContext.area = contextConstant.AreaMode.EL2;
       expect(testNapi.getPreferencesDir()).assertEqual(applicationContext.preferencesDir);
+      expect(testNapi.getPreferencesDir()).assertEqual("/data/storage/el2/base/preferences");
       hilog.info(0x0000, 'testTag', tag + ' preferencesDir AreaMode=EL2 %{public}s ', testNapi.getPreferencesDir());
 
       applicationContext.area = contextConstant.AreaMode.EL3;
       expect(testNapi.getPreferencesDir()).assertEqual(applicationContext.preferencesDir);
+      expect(testNapi.getPreferencesDir()).assertEqual("/data/storage/el3/base/preferences");
       hilog.info(0x0000, 'testTag', tag + ' preferencesDir AreaMode=EL3 %{public}s ', testNapi.getPreferencesDir());
 
       applicationContext.area = contextConstant.AreaMode.EL4;
       expect(testNapi.getPreferencesDir()).assertEqual(applicationContext.preferencesDir);
+      expect(testNapi.getPreferencesDir()).assertEqual("/data/storage/el4/base/preferences");
       hilog.info(0x0000, 'testTag', tag + ' preferencesDir AreaMode=EL4 %{public}s ', testNapi.getPreferencesDir());
 
       applicationContext.area = contextConstant.AreaMode.EL5;
       expect(testNapi.getPreferencesDir()).assertEqual(applicationContext.preferencesDir);
+      expect(testNapi.getPreferencesDir()).assertEqual("/data/storage/el5/base/preferences");
       hilog.info(0x0000, 'testTag', tag + ' preferencesDir AreaMode=EL5 %{public}s ', testNapi.getPreferencesDir());
 
       applicationContext.area = 100;
       expect(testNapi.getPreferencesDir()).assertEqual(applicationContext.preferencesDir);
+      expect(testNapi.getPreferencesDir()).assertEqual("/data/storage/el5/base/preferences");
       hilog.info(0x0000, 'testTag', tag + ' preferencesDir AreaMode=100 %{public}s ', testNapi.getPreferencesDir());
 
       applicationContext.area = -4;
       expect(testNapi.getPreferencesDir()).assertEqual(applicationContext.preferencesDir);
+      expect(testNapi.getPreferencesDir()).assertEqual("/data/storage/el5/base/preferences");
       hilog.info(0x0000, 'testTag', tag + ' preferencesDir AreaMode=-4 %{public}s ', testNapi.getPreferencesDir());
 
       applicationContext.area = 0.5;
       expect(testNapi.getPreferencesDir()).assertEqual(applicationContext.preferencesDir);
+      expect(testNapi.getPreferencesDir()).assertEqual("/data/storage/el1/base/preferences");
       hilog.info(0x0000, 'testTag', tag + ' preferencesDir AreaMode=-0.5 %{public}s ', testNapi.getPreferencesDir());
 
       // reset to default area
@@ -481,34 +505,42 @@ export default function applicationContextTest() {
 
       applicationContext.area = contextConstant.AreaMode.EL1;
       expect(testNapi.getBundleCodeDir()).assertEqual(applicationContext.bundleCodeDir);
+      expect(testNapi.getBundleCodeDir()).assertEqual("/data/storage/el1/bundle");
       hilog.info(0x0000, 'testTag', tag + ' bundleCodeDir AreaMode=EL1 %{public}s ', testNapi.getBundleCodeDir());
 
       applicationContext.area = contextConstant.AreaMode.EL2;
       expect(testNapi.getBundleCodeDir()).assertEqual(applicationContext.bundleCodeDir);
+      expect(testNapi.getBundleCodeDir()).assertEqual("/data/storage/el1/bundle");
       hilog.info(0x0000, 'testTag', tag + ' bundleCodeDir AreaMode=EL2 %{public}s ', testNapi.getBundleCodeDir());
 
       applicationContext.area = contextConstant.AreaMode.EL3;
       expect(testNapi.getBundleCodeDir()).assertEqual(applicationContext.bundleCodeDir);
+      expect(testNapi.getBundleCodeDir()).assertEqual("/data/storage/el1/bundle");
       hilog.info(0x0000, 'testTag', tag + ' bundleCodeDir AreaMode=EL3 %{public}s ', testNapi.getBundleCodeDir());
 
       applicationContext.area = contextConstant.AreaMode.EL4;
       expect(testNapi.getBundleCodeDir()).assertEqual(applicationContext.bundleCodeDir);
+      expect(testNapi.getBundleCodeDir()).assertEqual("/data/storage/el1/bundle");
       hilog.info(0x0000, 'testTag', tag + ' bundleCodeDir AreaMode=EL4 %{public}s ', testNapi.getBundleCodeDir());
 
       applicationContext.area = contextConstant.AreaMode.EL5;
       expect(testNapi.getBundleCodeDir()).assertEqual(applicationContext.bundleCodeDir);
+      expect(testNapi.getBundleCodeDir()).assertEqual("/data/storage/el1/bundle");
       hilog.info(0x0000, 'testTag', tag + ' bundleCodeDir AreaMode=EL5 %{public}s ', testNapi.getBundleCodeDir());
 
       applicationContext.area = 100;
       expect(testNapi.getBundleCodeDir()).assertEqual(applicationContext.bundleCodeDir);
+      expect(testNapi.getBundleCodeDir()).assertEqual("/data/storage/el1/bundle");
       hilog.info(0x0000, 'testTag', tag + ' bundleCodeDir AreaMode=100 %{public}s ', testNapi.getBundleCodeDir());
 
       applicationContext.area = -4;
       expect(testNapi.getBundleCodeDir()).assertEqual(applicationContext.bundleCodeDir);
+      expect(testNapi.getBundleCodeDir()).assertEqual("/data/storage/el1/bundle");
       hilog.info(0x0000, 'testTag', tag + ' bundleCodeDir AreaMode=-4 %{public}s ', testNapi.getBundleCodeDir());
 
       applicationContext.area = 0.5;
       expect(testNapi.getBundleCodeDir()).assertEqual(applicationContext.bundleCodeDir);
+      expect(testNapi.getBundleCodeDir()).assertEqual("/data/storage/el1/bundle");
       hilog.info(0x0000, 'testTag', tag + ' bundleCodeDir AreaMode=-0.5 %{public}s ', testNapi.getBundleCodeDir());
 
       // reset to default area
@@ -583,34 +615,42 @@ export default function applicationContextTest() {
 
       applicationContext.area = contextConstant.AreaMode.EL1;
       expect(testNapi.getDistributedFilesDir()).assertEqual(applicationContext.distributedFilesDir);
+      expect(testNapi.getDistributedFilesDir()).assertEqual("/data/storage/el1/distributedfiles");
       hilog.info(0x0000, 'testTag', tag + ' distributedFilesDir AreaMode=EL1 %{public}s ', testNapi.getDistributedFilesDir());
 
       applicationContext.area = contextConstant.AreaMode.EL2;
       expect(testNapi.getDistributedFilesDir()).assertEqual(applicationContext.distributedFilesDir);
+      expect(testNapi.getDistributedFilesDir()).assertEqual("/data/storage/el2/distributedfiles");
       hilog.info(0x0000, 'testTag', tag + ' distributedFilesDir AreaMode=EL2 %{public}s ', testNapi.getDistributedFilesDir());
 
       applicationContext.area = contextConstant.AreaMode.EL3;
       expect(testNapi.getDistributedFilesDir()).assertEqual(applicationContext.distributedFilesDir);
+      expect(testNapi.getDistributedFilesDir()).assertEqual("/data/storage/el2/distributedfiles");
       hilog.info(0x0000, 'testTag', tag + ' distributedFilesDir AreaMode=EL3 %{public}s ', testNapi.getDistributedFilesDir());
 
       applicationContext.area = contextConstant.AreaMode.EL4;
       expect(testNapi.getDistributedFilesDir()).assertEqual(applicationContext.distributedFilesDir);
+      expect(testNapi.getDistributedFilesDir()).assertEqual("/data/storage/el2/distributedfiles");
       hilog.info(0x0000, 'testTag', tag + ' distributedFilesDir AreaMode=EL4 %{public}s ', testNapi.getDistributedFilesDir());
 
       applicationContext.area = contextConstant.AreaMode.EL5;
       expect(testNapi.getDistributedFilesDir()).assertEqual(applicationContext.distributedFilesDir);
+      expect(testNapi.getDistributedFilesDir()).assertEqual("/data/storage/el2/distributedfiles");
       hilog.info(0x0000, 'testTag', tag + ' distributedFilesDir AreaMode=EL5 %{public}s ', testNapi.getDistributedFilesDir());
 
       applicationContext.area = 100;
       expect(testNapi.getDistributedFilesDir()).assertEqual(applicationContext.distributedFilesDir);
+      expect(testNapi.getDistributedFilesDir()).assertEqual("/data/storage/el2/distributedfiles");
       hilog.info(0x0000, 'testTag', tag + ' distributedFilesDir AreaMode=100 %{public}s ', testNapi.getDistributedFilesDir());
 
       applicationContext.area = -4;
       expect(testNapi.getDistributedFilesDir()).assertEqual(applicationContext.distributedFilesDir);
+      expect(testNapi.getDistributedFilesDir()).assertEqual("/data/storage/el2/distributedfiles");
       hilog.info(0x0000, 'testTag', tag + ' distributedFilesDir AreaMode=-4 %{public}s ', testNapi.getDistributedFilesDir());
 
       applicationContext.area = 0.5;
       expect(testNapi.getDistributedFilesDir()).assertEqual(applicationContext.distributedFilesDir);
+      expect(testNapi.getDistributedFilesDir()).assertEqual("/data/storage/el1/distributedfiles");
       hilog.info(0x0000, 'testTag', tag + ' distributedFilesDir AreaMode=-0.5 %{public}s ', testNapi.getDistributedFilesDir());
 
       // reset to default area
@@ -685,34 +725,42 @@ export default function applicationContextTest() {
 
       applicationContext.area = contextConstant.AreaMode.EL1;
       expect(testNapi.getCloudFileDir()).assertEqual(applicationContext.cloudFileDir);
+      expect(testNapi.getCloudFileDir()).assertEqual("/data/storage/el2/cloud");
       hilog.info(0x0000, 'testTag', tag + ' cloudFileDir AreaMode=EL1 %{public}s ', testNapi.getCloudFileDir());
 
       applicationContext.area = contextConstant.AreaMode.EL2;
       expect(testNapi.getCloudFileDir()).assertEqual(applicationContext.cloudFileDir);
+      expect(testNapi.getCloudFileDir()).assertEqual("/data/storage/el2/cloud");
       hilog.info(0x0000, 'testTag', tag + ' cloudFileDir AreaMode=EL2 %{public}s ', testNapi.getCloudFileDir());
 
       applicationContext.area = contextConstant.AreaMode.EL3;
       expect(testNapi.getCloudFileDir()).assertEqual(applicationContext.cloudFileDir);
+      expect(testNapi.getCloudFileDir()).assertEqual("/data/storage/el2/cloud");
       hilog.info(0x0000, 'testTag', tag + ' cloudFileDir AreaMode=EL3 %{public}s ', testNapi.getCloudFileDir());
 
       applicationContext.area = contextConstant.AreaMode.EL4;
       expect(testNapi.getCloudFileDir()).assertEqual(applicationContext.cloudFileDir);
+      expect(testNapi.getCloudFileDir()).assertEqual("/data/storage/el2/cloud");
       hilog.info(0x0000, 'testTag', tag + ' cloudFileDir AreaMode=EL4 %{public}s ', testNapi.getCloudFileDir());
 
       applicationContext.area = contextConstant.AreaMode.EL5;
       expect(testNapi.getCloudFileDir()).assertEqual(applicationContext.cloudFileDir);
+      expect(testNapi.getCloudFileDir()).assertEqual("/data/storage/el2/cloud");
       hilog.info(0x0000, 'testTag', tag + ' cloudFileDir AreaMode=EL5 %{public}s ', testNapi.getCloudFileDir());
 
       applicationContext.area = 100;
       expect(testNapi.getCloudFileDir()).assertEqual(applicationContext.cloudFileDir);
+      expect(testNapi.getCloudFileDir()).assertEqual("/data/storage/el2/cloud");
       hilog.info(0x0000, 'testTag', tag + ' cloudFileDir AreaMode=100 %{public}s ', testNapi.getCloudFileDir());
 
       applicationContext.area = -4;
       expect(testNapi.getCloudFileDir()).assertEqual(applicationContext.cloudFileDir);
+      expect(testNapi.getCloudFileDir()).assertEqual("/data/storage/el2/cloud");
       hilog.info(0x0000, 'testTag', tag + ' cloudFileDir AreaMode=-4 %{public}s ', testNapi.getCloudFileDir());
 
       applicationContext.area = 0.5;
       expect(testNapi.getCloudFileDir()).assertEqual(applicationContext.cloudFileDir);
+      expect(testNapi.getCloudFileDir()).assertEqual("/data/storage/el2/cloud");
       hilog.info(0x0000, 'testTag', tag + ' cloudFileDir AreaMode=-0.5 %{public}s ', testNapi.getCloudFileDir());
 
       // reset to default area
@@ -787,34 +835,42 @@ export default function applicationContextTest() {
 
       applicationContext.area = contextConstant.AreaMode.EL1;
       expect(testNapi.getDatabaseDir()).assertEqual(applicationContext.databaseDir);
+      expect(testNapi.getDatabaseDir()).assertEqual("/data/storage/el1/database");
       hilog.info(0x0000, 'testTag', tag + ' databaseDir AreaMode=EL1 %{public}s ', testNapi.getDatabaseDir());
 
       applicationContext.area = contextConstant.AreaMode.EL2;
       expect(testNapi.getDatabaseDir()).assertEqual(applicationContext.databaseDir);
+      expect(testNapi.getDatabaseDir()).assertEqual("/data/storage/el2/database");
       hilog.info(0x0000, 'testTag', tag + ' databaseDir AreaMode=EL2 %{public}s ', testNapi.getDatabaseDir());
 
       applicationContext.area = contextConstant.AreaMode.EL3;
       expect(testNapi.getDatabaseDir()).assertEqual(applicationContext.databaseDir);
+      expect(testNapi.getDatabaseDir()).assertEqual("/data/storage/el3/database");
       hilog.info(0x0000, 'testTag', tag + ' databaseDir AreaMode=EL3 %{public}s ', testNapi.getDatabaseDir());
 
       applicationContext.area = contextConstant.AreaMode.EL4;
       expect(testNapi.getDatabaseDir()).assertEqual(applicationContext.databaseDir);
+      expect(testNapi.getDatabaseDir()).assertEqual("/data/storage/el4/database");
       hilog.info(0x0000, 'testTag', tag + ' databaseDir AreaMode=EL4 %{public}s ', testNapi.getDatabaseDir());
 
       applicationContext.area = contextConstant.AreaMode.EL5;
       expect(testNapi.getDatabaseDir()).assertEqual(applicationContext.databaseDir);
+      expect(testNapi.getDatabaseDir()).assertEqual("/data/storage/el5/database");
       hilog.info(0x0000, 'testTag', tag + ' databaseDir AreaMode=EL5 %{public}s ', testNapi.getDatabaseDir());
 
       applicationContext.area = 100;
       expect(testNapi.getDatabaseDir()).assertEqual(applicationContext.databaseDir);
+      expect(testNapi.getDatabaseDir()).assertEqual("/data/storage/el5/database");
       hilog.info(0x0000, 'testTag', tag + ' databaseDir AreaMode=100 %{public}s ', testNapi.getDatabaseDir());
 
       applicationContext.area = -4;
       expect(testNapi.getDatabaseDir()).assertEqual(applicationContext.databaseDir);
+      expect(testNapi.getDatabaseDir()).assertEqual("/data/storage/el5/database");
       hilog.info(0x0000, 'testTag', tag + ' databaseDir AreaMode=-4 %{public}s ', testNapi.getDatabaseDir());
 
       applicationContext.area = 0.5;
       expect(testNapi.getDatabaseDir()).assertEqual(applicationContext.databaseDir);
+      expect(testNapi.getDatabaseDir()).assertEqual("/data/storage/el1/database");
       hilog.info(0x0000, 'testTag', tag + ' databaseDir AreaMode=-0.5 %{public}s ', testNapi.getDatabaseDir());
 
       // reset to default area
@@ -870,7 +926,6 @@ export default function applicationContextTest() {
 
       done();
     })
-
     /*
      * @tc.number: SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1500
      * @tc.name: SUB_Ability_AbilityRuntime_ApplicationContextGetNdkDir_1500

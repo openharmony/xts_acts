@@ -438,6 +438,7 @@ static napi_value TestGetAreaMode(napi_env env, napi_callback_info info)
 
 static napi_value TestGetGetDirectory(napi_env env, napi_callback_info info, AbilityRuntime_GetDirFunc testGetDirFunc)
 {
+    OH_LOG_ERROR(LOG_APP, "enter");
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -465,14 +466,23 @@ static napi_value TestGetGetDirectory(napi_env env, napi_callback_info info, Abi
     int32_t writeLength = 0;
     int32_t errorCodes[errorCodes_SIZE];
     
+    OH_LOG_INFO(LOG_APP, "Calling testGetDirFunc with various parameters");
     errorCodes[0] = testGetDirFunc(NULL, BUF_SIZE, &writeLength);
+    OH_LOG_INFO(LOG_APP, "testGetDirFunc(NULL, BUF_SIZE, &writeLength) returned %d", errorCodes[0]);
     errorCodes[1] = testGetDirFunc(nullptr, BUF_SIZE, &writeLength);
-    errorCodes[2]= testGetDirFunc(buffer, BUF_SIZE, NULL);
+    OH_LOG_INFO(LOG_APP, "testGetDirFunc(nullptr, BUF_SIZE, &writeLength) returned %d", errorCodes[1]);
+    errorCodes[2] = testGetDirFunc(buffer, BUF_SIZE, NULL);
+    OH_LOG_INFO(LOG_APP, "testGetDirFunc(buffer, BUF_SIZE, NULL) returned %d", errorCodes[2]);
     errorCodes[3] = testGetDirFunc(buffer, BUF_SIZE, nullptr);
-    errorCodes[4]= testGetDirFunc(buffer, -1, &writeLength);
+    OH_LOG_INFO(LOG_APP, "testGetDirFunc(buffer, BUF_SIZE, nullptr) returned %d", errorCodes[3]);
+    errorCodes[4] = testGetDirFunc(buffer, -1, &writeLength);
+    OH_LOG_INFO(LOG_APP, "testGetDirFunc(buffer, -1, &writeLength) returned %d", errorCodes[4]);
     errorCodes[5] = testGetDirFunc(buffer, 0, &writeLength);
+    OH_LOG_INFO(LOG_APP, "testGetDirFunc(buffer, 0, &writeLength) returned %d", errorCodes[5]);
     errorCodes[6] = testGetDirFunc(buffer, realCacheDirLen, &writeLength);
+    OH_LOG_INFO(LOG_APP, "testGetDirFunc(buffer, realCacheDirLen, &writeLength) returned %d", errorCodes[6]);
     errorCodes[7] = testGetDirFunc(buffer, realCacheDirLen + 1, &writeLength);
+    OH_LOG_INFO(LOG_APP, "testGetDirFunc(buffer, realCacheDirLen + 1, &writeLength) returned %d", errorCodes[7]);
     
     napi_value resultArray;
     napi_create_array_with_length(env, errorCodes_SIZE, &resultArray);
