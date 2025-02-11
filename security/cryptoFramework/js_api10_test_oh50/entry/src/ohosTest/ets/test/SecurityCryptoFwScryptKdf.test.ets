@@ -843,7 +843,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      */
     it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1900", 0, async (done: Function) => {
       try {
-        let n: number = 512;
+        let n: number = 514;
         let p: number = 1;
         let r: number = 65536;
         let keySize: number = 16;
