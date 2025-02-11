@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) Huawei Technologies Co., Ltd. 2024-2025. All rights reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -25,7 +25,7 @@
     "appEnvironments": [
       {
         "name": "UBSAN_OPTIONS",
-        "value": "print_stacktrace=false abort_on_error=true print_module_map=0 log_exe_name=true"
+        "value": "abort_on_error=false halt_on_error=false check_log_path_on_init=false print_module_map=0 log_exe_name=true log_path=/data/storage/el2/log/ubsanXtsLog"
       },
     ],
   }
