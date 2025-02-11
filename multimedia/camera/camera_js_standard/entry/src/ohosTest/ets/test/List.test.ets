@@ -20,6 +20,7 @@ import cameraSessionFocusTest from './CameraSessionFocusTest.test.ets'
 import cameraSessionZoomRatioTest from './CameraSessionZoomRatioTest.test.ets'
 import cameraSessionVideoStabilizationTest from './CameraSessionVideoStabilizationTest.test.ets'
 import cameraSessionBaseTest from './CameraSessionBaseTest.test.ets'
+import cameraSessionMultiSessionTest from './CameraSessionMultiSessionTest.test.ets'
 import cameraInputTest from './CameraInputTest.test.ets'
 import CameraErrorCodeUsecaseTest from './CameraErrorCodeUsecaseTest.test.ets'
 import cameraManagerTest from './CameraManagerTest.test.ets'
@@ -49,6 +50,7 @@ export default function cameraKit() {
   cameraSessionZoomRatioTest()
   cameraSessionVideoStabilizationTest()
   cameraSessionBaseTest()
+  cameraSessionMultiSessionTest();
   CameraErrorCodeUsecaseTest()
   cameraManagerTest()
   cameraPreconfigTest()
