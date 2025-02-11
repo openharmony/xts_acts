@@ -1630,6 +1630,9 @@ export default function DeviceInfoTest() {
          * @tc.number    SUB_STARTUP_JS_DEVCEINFO_0662
          * @tc.name      testGetUdid
          * @tc.desc      Get udid
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
          */
         it('device_info_test_062', 0, function () {
             console.info('device_info_test_062 start');
@@ -1646,6 +1649,9 @@ export default function DeviceInfoTest() {
          * @tc.number    SUB_STARTUP_JS_DEVCEINFO_0663
          * @tc.name      testGetUuid
          * @tc.desc      Get uuid
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
          */
         it('device_info_test_063', 0, async function (done) {
             console.info('device_info_test_063 start');
@@ -1671,6 +1677,9 @@ export default function DeviceInfoTest() {
          * @tc.number    SUB_STARTUP_JS_DEVCEINFO_0664
          * @tc.name      testGetUdid
          * @tc.desc      Get udid
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
          */
         it('device_info_test_064', 0, function () {
             console.info('device_info_test_064 start');
