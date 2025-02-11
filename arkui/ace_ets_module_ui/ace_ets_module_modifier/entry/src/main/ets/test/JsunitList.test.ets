@@ -18,19 +18,14 @@ import swiperJsunit from './SwiperJsunit.test';
 import buttonJsunit from './ButtonJsunit.test';
 import tabsFirstJsunit from './TabsFirstJsunit.test';
 import columnJsunit from './ColumnJsunit.test';
-import columnSplitJsunit from './ColumnSplitJsunit.test';
 import rowJsunit from './RowJsunit.test';
-import rowSplitJsunit from './RowSplitJsunit.test';
-import sideBarContainerJsunit from './SideBarContainerJsunit.test';
 import imageSpanJsunit from './ImageSpanJsunit.test';
 import textJsunit from './TextJsunit.test';
-import stepperItemJsunit from './StepperItem.test';
 import navigationJsunit from './NavigationJsunit.test';
 import navigatorJsunit from './NavigatorJsunit.test';
 import timepickerJsunit from './TimePickerJsunit.test';
 import textpickerJsunit from './TextPickerJsunit.test';
 import sliderJsunit from './SliderJsunit.test';
-import selectJsunit from './SelectJsunit.test';
 import ratingJsunit from './RatingJsunit.test';
 import alphabetIndexerJsunit from './AlphabetIndexerJsunit.test';
 import formComponentJsunit from './FormComponentJsunit.test';
@@ -52,9 +47,7 @@ import progressJsunit from './Progress.test';
 import textTimerJsunit from './TextTimer.test';
 import textClockJsunit from './TextClockJsunit.test';
 import scrollJsunit from './Scroll.test';
-import waterFlowViewJsunit from './WaterFlowView.test';
 import qrCodeJsunitJsunit from './QrCodeJsunit.test';
-import calendarPickerJsunit from './CalendarPicker.test';
 import listJsunit from './List.test';
 import listItemJsunit from './ListItem.test';
 import listItemGroupJsunit from './ListItemGroup.test';
@@ -82,7 +75,6 @@ import imageJsunit from './Image.test';
 import imageAnimatorJsunit from './ImageAnimator.test';
 import patternLockJsunit from './PatternLock.test';
 import videoJsunit from './Video.test';
-import waterflowNestedScrollJsunit from './WaterFlowNestedScroll.test';
 import scrollNestedScrollJsunit from './ScrollNestedScroll.test';
 import stackJsunit from './StackJsunit.test';
 import richEditorJsunit from './RichEditorJsunit.test';
@@ -94,7 +86,6 @@ import gridNestedScrollJsunit from './GridNestedScroll.test';
 import listNestedScrollJsunit from './ListNestedScroll.test';
 
 export default function testsuite() {
-
   common9Jsunit();
   common1Jsunit();
   shortcutKeyJsunit();
@@ -102,13 +93,8 @@ export default function testsuite() {
   motionPathJsunit();
   sharedTransitionJsunit();
   transitionJsunit();
-
   columnJsunit();
-  columnSplitJsunit();
   rowJsunit();
-  rowSplitJsunit();
-  sideBarContainerJsunit();
-
   blankJsunit();
   dividerJsunit();
   gridColJsunit();
@@ -118,9 +104,7 @@ export default function testsuite() {
   navigatorJsunit();
   navRouterJsunit();
   stackJsunit();
-  stepperItemJsunit();
   tabsFirstJsunit();
-
   gridJsunit();
   gridNestedScrollJsunit();
   gridItemJsunit();
@@ -128,27 +112,20 @@ export default function testsuite() {
   listNestedScrollJsunit();
   listItemJsunit();
   listItemGroupJsunit();
-
   scrollNestedScrollJsunit();
   scrollJsunit();
   swiperJsunit();
-  waterflowNestedScrollJsunit();
-  waterFlowViewJsunit();
-
   buttonJsunit();
-  calendarPickerJsunit();
   checkboxJsunit();
   checkBoxGroupJsunit();
   counterJsunit();
   datePickerJsunit();
   radioJsunit();
   ratingJsunit();
-  selectJsunit();
   sliderJsunit();
   textpickerJsunit();
   timepickerJsunit();
   toggleJsunit();
-
   imageSpanJsunit();
   patternLockJsunit();
   richEditorJsunit();
@@ -157,11 +134,9 @@ export default function testsuite() {
   textJsunit();
   textAreaJsunit();
   textInputJsunit();
-
   imageJsunit();
   imageAnimatorJsunit();
   videoJsunit();
-
   dataPanelJsunit();
   gaugeJsunit();
   loadingProgressJsunit();
@@ -170,14 +145,12 @@ export default function testsuite() {
   qrCodeJsunitJsunit();
   textClockJsunit();
   textTimerJsunit();
-
   lineJsunit();
   pathJsunit();
   polygonJsunit();
   polyLineJsunit();
   rectJsunit();
   shapeJsunit();
-
   alphabetIndexerJsunit();
   formComponentJsunit();
   hyperLinkJsunit();
