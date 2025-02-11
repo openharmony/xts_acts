@@ -271,6 +271,33 @@ HWTEST_F(OH_Drawing_FontMgrTest, OH_Drawing_FontMgrTest013, TestSize.Level1)
     OH_Drawing_FontMgrDestroyFontStyleSet(fontStyleSet);
     OH_Drawing_FontMgrDestroy(mgr);
 }
+
+/*
+ * @tc.number: SUB_GRAPHIC_NAPI_OH_Drawing_FontMgrMatchFamilyStyleCharacter_0100
+ * @tc.name: testOHDrawingFontMgrMatchFamilyStyleCharacterNormalBcp47Null
+ * @tc.desc: test for matching font is not a null pointer, but points to the default font, when bcp47 is a null pointer
+ * @tc.size: MediumTest
+ * @tc.type: Function
+ * @tc.level: Level 0
+ */
+HWTEST_F(OH_Drawing_FontMgrTest, testOHDrawingFontMgrMatchFamilyStyleCharacterNormalBcp47Null, TestSize.Level1)
+{
+    OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
+    EXPECT_NE(mgr, nullptr);
+
+    const char* matchFamilyName = "HarmonyOS-Sans";
+    OH_Drawing_FontStyleStruct normalStyle;
+    normalStyle.weight = FONT_WEIGHT_400;
+    normalStyle.width = FONT_WIDTH_NORMAL;
+    normalStyle.slant = FONT_STYLE_NORMAL;
+
+    OH_Drawing_Typeface *typeface = OH_Drawing_FontMgrMatchFamilyStyleCharacter(mgr, matchFamilyName,
+                                                                                    normalStyle, nullptr, 0, ' ');
+    EXPECT_NE(typeface, nullptr);
+    OH_Drawing_TypefaceDestroy(typeface);
+
+    OH_Drawing_FontMgrDestroy(mgr);
+}
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS
