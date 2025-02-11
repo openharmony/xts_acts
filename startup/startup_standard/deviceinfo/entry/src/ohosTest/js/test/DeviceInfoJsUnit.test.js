@@ -1914,7 +1914,7 @@ export default function DeviceInfoTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-         it('device_info_test_073', 0, function () {
+        it('device_info_test_073', 0, function () {
             console.info('device_info_test_073 start');
             let ret = false;
             let productModelInfo = deviceinfo.productModelAlias;
@@ -1930,7 +1930,7 @@ export default function DeviceInfoTest() {
                 expect(false).assertTrue();
 				done();
             }
-            
+
             console.info('device_info_test_073 : end');
         })
     })
