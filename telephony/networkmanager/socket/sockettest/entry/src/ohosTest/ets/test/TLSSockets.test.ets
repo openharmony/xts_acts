@@ -174,7 +174,7 @@ let addr2: socket.NetAddress = {
 };
 
 let ServerOptions: socket.TLSConnectOptions = {
-  address: addr,
+  address: addr2,
   secureOptions: {
     ca: client_ca,
     key: server_key,
