@@ -11,10 +11,8 @@ struct Index {
   @State keyboardAvoidMode2: number | undefined = 1
   @Builder
   customDialogComponent() {
-    Column() {
+    Column({ space: 5 }) {
       Text('可展示在主窗口外的弹窗')
-        .fontSize(30)
-        .height(100)
       TextInput()
         .id('TextInput')
       Button('点我关闭弹窗')
@@ -23,100 +21,93 @@ struct Index {
         })
         .id('close')
         .backgroundColor(Color.Red)
-        .margin(20)
+
       TextInput()
       TextInput()
       Text('可展示在主窗口外的弹窗')
-        .fontSize(30)
-        .height(100)
       TextInput()
 
       Button('点我关闭弹窗')
         .onClick(() => {
           this.promptAction.closeCustomDialog(this.customDialogComponentId)
         })
-        .margin(20)
+
       TextInput()
       Text('可展示在主窗口外的弹窗')
-        .fontSize(30)
-        .height(100)
       TextInput()
       Button('点我关闭弹窗')
         .onClick(() => {
           this.promptAction.closeCustomDialog(this.customDialogComponentId)
         })
-        .margin(20)
+
       TextInput()
       Text('可展示在主窗口外的弹窗')
-        .fontSize(30)
-        .height(100)
       TextInput()
     }
   }
 
   build() {
-    Row() {
-      Column() {
-        Text(this.mText1)
-          .id('text1')
-        Button('DEFAULT')
-          .id('btn1')
-          .onClick(() => {
-            this.promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              keyboardAvoidMode: KeyboardAvoidMode.DEFAULT,
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info("reason" + JSON.stringify(dismissDialogAction.reason))
-                console.log("dialog onWillDismiss")
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss()
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss()
-                }
-              }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
-            this.mText1 = this.keyboardAvoidMode1 + ''
-            setTimeout(() => {
-              this.promptAction.closeCustomDialog(this.customDialogComponentId)
-            }, 1500)
-          })
 
-        Text(this.mText2)
-          .id('text2')
-        Button('NONE')
-          .id('btn2')
-          .onClick(() => {
-            this.promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              keyboardAvoidMode: KeyboardAvoidMode.NONE,
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info("reason" + JSON.stringify(dismissDialogAction.reason))
-                console.log("dialog onWillDismiss")
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss()
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss()
-                }
+    Column() {
+      Text(this.mText1)
+        .id('text1')
+      Button('DEFAULT')
+        .id('btn1')
+        .onClick(() => {
+          this.promptAction.openCustomDialog({
+            builder: () => {
+              this.customDialogComponent()
+            },
+            keyboardAvoidMode: KeyboardAvoidMode.DEFAULT,
+            onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+              console.info("reason" + JSON.stringify(dismissDialogAction.reason))
+              console.log("dialog onWillDismiss")
+              if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+                dismissDialogAction.dismiss()
               }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
-            this.mText2 = this.keyboardAvoidMode2 + ''
-            setTimeout(() => {
-              this.promptAction.closeCustomDialog(this.customDialogComponentId)
-            }, 1500)
+              if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+                dismissDialogAction.dismiss()
+              }
+            }
+          }).then((dialogId: number) => {
+            this.customDialogComponentId = dialogId
           })
-      }
-      .width('100%')
+          this.mText1 = this.keyboardAvoidMode1 + ''
+          setTimeout(() => {
+            this.promptAction.closeCustomDialog(this.customDialogComponentId)
+          }, 1500)
+        })
+
+      Text(this.mText2)
+        .id('text2')
+      Button('NONE')
+        .id('btn2')
+        .onClick(() => {
+          this.promptAction.openCustomDialog({
+            builder: () => {
+              this.customDialogComponent()
+            },
+            keyboardAvoidMode: KeyboardAvoidMode.NONE,
+            onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+              console.info("reason" + JSON.stringify(dismissDialogAction.reason))
+              console.log("dialog onWillDismiss")
+              if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+                dismissDialogAction.dismiss()
+              }
+              if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+                dismissDialogAction.dismiss()
+              }
+            }
+          }).then((dialogId: number) => {
+            this.customDialogComponentId = dialogId
+          })
+          this.mText2 = this.keyboardAvoidMode2 + ''
+          setTimeout(() => {
+            this.promptAction.closeCustomDialog(this.customDialogComponentId)
+          }, 1500)
+        })
     }
+    .width('100%')
     .height('100%')
   }
 }

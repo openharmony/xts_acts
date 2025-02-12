@@ -30,35 +30,29 @@ struct Index1 {
   }
 
   build() {
-    Column({ space: 50 }) {
-      Column() {
-        Column() {
-         Text(''+ this.start).id('preview_start')
-          Text(''+ this.end).id('preview_end')
-          Text('preview-image')
-            .width(200)
-            .height(100)
-            .textAlign(TextAlign.Center)
-            .margin(100)
-            .fontSize(30)
-            .id('preview-image')
-            .bindContextMenu(this.MyMenu, ResponseType.LongPress,
-              { preview: MenuPreviewMode.IMAGE,
-                previewAnimationOptions: {scale: [this.start, this.end]},
-              })
-            .backgroundColor("#ff3df2f5")
+    Column({ space: 5 }) {
+      Text('' + this.start).id('preview_start')
+      Text('' + this.end).id('preview_end')
+      Text('preview-image')
+        .textAlign(TextAlign.Center)
+        .id('preview-image')
+        .bindContextMenu(this.MyMenu, ResponseType.LongPress,
+          {
+            preview: MenuPreviewMode.IMAGE,
+            previewAnimationOptions: { scale: [this.start, this.end] },
+          })
+        .backgroundColor("#ff3df2f5")
 
-          Button('change开始').onClick(() => {
-            this.start = 10
-          }).id('button_start_preview')
+      Button('change开始').onClick(() => {
+        this.start = 10
+      }).id('button_start_preview')
 
-          Button('change结束').onClick(() => {
-            this.end = 20
-          }).id('button_end_preview')
-
-
-        }
-      }.width('100%')
+      Button('change结束').onClick(() => {
+        this.end = 20
+      }).id('button_end_preview')
     }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
