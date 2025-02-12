@@ -8,8 +8,6 @@
     "MainAbility/pages/Text/editMenuOptions",
     "MainAbility/pages/Text/marqueeOptions1",
     "MainAbility/pages/Text/marqueeOptions2",
-    "MainAbility/pages/TextInput/ContentType1",
-    "MainAbility/pages/TextInput/ContentType2",
     "MainAbility/pages/TextInput/TextInputStopBackPress",
     "MainAbility/pages/TextArea/TextAreaStopBackPress",
     "MainAbility/pages/Search/SearchStopBackPress"
