@@ -44,44 +44,47 @@ struct APIPreDragStatus {
   }
 
   build() {
-    Column({space:10}) {
-      Text(this.text1).key('APIPreDragStatusText01')
-      Text(this.text2).key('APIPreDragStatusText02')
-      Text(this.text3).key('APIPreDragStatusText03')
-      Text(this.text4).key('APIPreDragStatusText04')
-      Text(this.text5).key('APIPreDragStatusText05')
-      Text(this.text6).key('APIPreDragStatusText06')
-      Text(this.text7).key('APIPreDragStatusText07')
-      Column() {
-        Text('this is abstract')
-          .fontSize(30).fontWeight(700)
-          .width('100%')
-      }
-      .key('APIPreDragStatusColumn')
-      .margin({ left: 40, top: 20 })
-      .border({width:3})
-      .width('80%')
-      .height(100)
-      .onDragStart((event) => {
-        let data: UDC.PlainText = new UDC.PlainText();
-        data.abstract = 'this is abstract';
-        data.textContent = 'this is content this is content';
-        (event as DragEvent).setData(new UDC.UnifiedData(data));
-      })
-      .onPreDrag((status: PreDragStatus) => {
-        this.PreDragChange(status);
-      })
+    Scroll(){
+      Column({space:10}) {
+            Text(this.text1).key('APIPreDragStatusText01')
+            Text(this.text2).key('APIPreDragStatusText02')
+            Text(this.text3).key('APIPreDragStatusText03')
+            Text(this.text4).key('APIPreDragStatusText04')
+            Text(this.text5).key('APIPreDragStatusText05')
+            Text(this.text6).key('APIPreDragStatusText06')
+            Text(this.text7).key('APIPreDragStatusText07')
+            Column() {
+              Text('this is abstract')
+                .fontSize(30).fontWeight(20)
+                .width('100%')
+            }
+            .key('APIPreDragStatusColumn')
+            .margin({ left: 40, top: 20 })
+            .border({width:3})
+            .width('80%')
+            .height(10)
+            .onDragStart((event) => {
+              let data: UDC.PlainText = new UDC.PlainText();
+              data.abstract = 'this is abstract';
+              data.textContent = 'this is content this is content';
+              (event as DragEvent).setData(new UDC.UnifiedData(data));
+            })
+            .onPreDrag((status: PreDragStatus) => {
+              this.PreDragChange(status);
+            })
 
-      Button('Init').key('APIPreDragStatusButton')
-        .onClick(()=>{
-          this.text1 = 'start'
-          this.text2= 'start'
-          this.text3 = 'start'
-          this.text4 = 'start'
-          this.text5 = 'start'
-          this.text6 = 'start'
-          this.text7 = 'start'
-        })
+            Button('Init').key('APIPreDragStatusButton')
+              .onClick(()=>{
+                this.text1 = 'start'
+                this.text2= 'start'
+                this.text3 = 'start'
+                this.text4 = 'start'
+                this.text5 = 'start'
+                this.text6 = 'start'
+                this.text7 = 'start'
+              })
+          }
     }
+    
   }
 }
