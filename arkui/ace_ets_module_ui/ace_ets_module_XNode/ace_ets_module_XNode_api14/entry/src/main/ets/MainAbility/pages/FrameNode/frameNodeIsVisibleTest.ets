@@ -26,25 +26,25 @@ struct Index {
       Stack() {
         if (true) {
           Column()
-            .id("column")
+            .id('column')
             .visibility(Visibility.Visible)
         }
       }
-      .id("stack")
+      .id('stack')
       .visibility(Visibility.Hidden)
 
       Button("print")
         .id('print_id')
         .onClick(() => {
-          this.stackNode = this.getUIContext().getFrameNodeById("stack")
-          this.columnNode = this.getUIContext().getFrameNodeById("column")
+          this.stackNode = this.getUIContext().getFrameNodeById('stack')
+          this.columnNode = this.getUIContext().getFrameNodeById('column')
           if (this.stackNode) {
             // Stack节点的可见性，为false
-            console.log("stackNode.isVisible:", this.stackNode.isVisible())
+            console.log('stackNode.isVisible:', this.stackNode.isVisible())
           }
           if (this.columnNode) {
             // Column节点的可见性，变更前为true，变更后为false
-            console.log("columnNode.isVisible:", this.columnNode.isVisible())
+            console.log('columnNode.isVisible:', this.columnNode.isVisible())
             this.columnNodeIsVisible = this.columnNode.isVisible() + ''
           }
         })
