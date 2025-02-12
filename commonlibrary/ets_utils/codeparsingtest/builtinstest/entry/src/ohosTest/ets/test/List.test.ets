@@ -11,6 +11,9 @@ import localeTest from './Locale/Locale.test';
 import objectTest from './Object/Object.test';
 import intlTest from './Intl/Intl.test';
 import promiseTest from './Promise/Promise.test';
+import mapTest from './Map/Map.test';
+import regExpTest from './RegExp/RegExp.test';
+import setTest from './Set/Set.test';
 
 export default function testsuite() {
   booleanTest();
@@ -26,4 +29,7 @@ export default function testsuite() {
   objectTest();
   intlTest();
   promiseTest();
+  mapTest();
+  regExpTest();
+  setTest();
 }
