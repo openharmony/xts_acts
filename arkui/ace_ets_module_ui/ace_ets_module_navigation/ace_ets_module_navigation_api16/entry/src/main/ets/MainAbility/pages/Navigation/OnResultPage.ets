@@ -73,19 +73,19 @@ struct PageTwo {
     NavDestination() {
       Button('pop').id('popId').onClick(() => {
         this.pageInfos.pop('test')
-      });
+      }).height('10%')
       Button('popToIndex').id('popIndexId').onClick(() => {
         this.pageInfos.popToIndex(0, 'popToIndex')
-      });
+      }).height('10%')
       Button('popToName').id('popNameId').onClick(() => {
         this.pageInfos.popToName('pageOne', 'popToName')
-      });
+      }).height('10%')
       Button('popToNameUndefined').id('popUndefinedId').onClick(() => {
         this.pageInfos.popToName('pageOne', undefined)
-      });
+      }).height('10%')
       Button('popToIndexNull').id('popNullId').onClick(() => {
         this.pageInfos.popToIndex(0, null)
-      });
+      }).height('10%')
     }
     .title('pageTwo')
   }
@@ -98,13 +98,13 @@ struct PageThree {
     NavDestination() {
       Button('pop').id('dialogPopId').onClick(() => {
         this.pageInfos.pop('test')
-      });
+      }).height('10%')
       Button('popToIndex').id('dialogPopIndexId').onClick(() => {
         this.pageInfos.popToIndex(0, 'popToIndex')
-      });
+      }).height('10%')
       Button('popToName').id('dialogPopNameId').onClick(() => {
         this.pageInfos.popToName('pageOne', 'popToName')
-      });
+      }).height('10%')
     }
     .title('pageDialog')
     .mode(NavDestinationMode.DIALOG)
