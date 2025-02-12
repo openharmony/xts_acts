@@ -3095,5 +3095,788 @@ export default function TypedArrayTest() {
         expect().assertFail();
       }
     })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_4600
+     * @tc.name       : testPrototypeMap0001
+     * @tc.desc       : Test the function of the interface PrototypeMap.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeMap0001", 0, () => {
+      const TAG = "testPrototypeMap0001"
+      try {
+        const uint8 = new Uint8Array([25, 36, 49]);
+        expect(uint8.map(Math.sqrt).toString()).assertEqual("5,6,7");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_4700
+     * @tc.name       : testPrototypeMap0002
+     * @tc.desc       : Test the function of the interface PrototypeMap.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeMap0002", 0, () => {
+      const TAG = "testPrototypeMap0002"
+      try {
+        const numbers = new Uint8Array([1, 4, 9]);
+        const doubles = numbers.map((num) => num * 2);
+        expect(doubles.join()).assertEqual([2, 8, 18].join());
+        expect(numbers.join()).assertEqual([1, 4, 9].join());
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_4800
+     * @tc.name       : testPrototypeReduce0001
+     * @tc.desc       : Test the function of the interface PrototypeReduce.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeReduce0001", 0, () => {
+      const TAG = "testPrototypeReduce0001"
+      try {
+        const uint8 = new Uint8Array([0, 1, 2, 3]);
+        const sum = (accumulator: number, currentValue: number): number => {
+          return accumulator + currentValue;
+        };
+        expect(uint8.reduce(sum)).assertEqual(6);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_4900
+     * @tc.name       : testPrototypeReduce0002
+     * @tc.desc       : Test the function of the interface PrototypeReduce.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeReduce0002", 0, () => {
+      const TAG = "testPrototypeReduce0002"
+      try {
+        const total = new Uint8Array([0, 1, 2, 3]).reduce((a, b) => a + b);
+        expect(total).assertEqual(6);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_5000
+     * @tc.name       : testPrototypeReduceRight0001
+     * @tc.desc       : Test the function of the interface PrototypeReduceRight.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeReduceRight0001", 0, () => {
+      const TAG = "testPrototypeReduceRight0001";
+      try {
+        const uint8 = new Uint8Array([10, 20, 30]);
+        const result = uint8.reduceRight(
+          (accumulator: string, currentValue: number) => `${accumulator},${currentValue}`, // 去掉空格
+          ''
+        );
+        const finalResult = result.replace(/^,/, '').trim();
+        expect(finalResult).assertEqual("30,20,10");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_5100
+     * @tc.name       : testPrototypeReduceRight0002
+     * @tc.desc       : Test the function of the interface PrototypeReduceRight.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeReduceRight0002", 0, () => {
+      const TAG = "testPrototypeReduceRight0002"
+      try {
+        const total = new Uint8Array([0, 1, 2, 3]).reduceRight((a, b) => a + b);
+        expect(total).assertEqual(6);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_5200
+     * @tc.name       : testPrototypeReverse0001
+     * @tc.desc       : Test the function of the interface PrototypeReverse.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeReverse0001", 0, () => {
+      const TAG = "testPrototypeReverse0001"
+      try {
+        const uint8 = new Uint8Array([1, 2, 3]);
+        expect(uint8.reverse().toString()).assertEqual("3,2,1");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_5300
+     * @tc.name       : testPrototypeSet0001
+     * @tc.desc       : Test the function of the interface PrototypeSet.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSet0001", 0, () => {
+      const TAG = "testPrototypeSet0001"
+      try {
+        const buffer = new ArrayBuffer(8);
+        const uint8 = new Uint8Array(buffer);
+        uint8.set([1, 2, 3], 3);
+        let value = Array.from(uint8).toString();
+        expect(value).assertEqual("0,0,0,1,2,3,0,0");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_5400
+     * @tc.name       : testPrototypeSlice0001
+     * @tc.desc       : Test the function of the interface PrototypeSlice.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSlice0001", 0, () => {
+      const TAG = "testPrototypeSlice0001"
+      try {
+        const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
+        const slicedArray = Array.from(uint8.slice(1, 3));
+        expect(JSON.stringify(slicedArray)).assertEqual(JSON.stringify([20, 30]));
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_5500
+     * @tc.name       : testPrototypeSlice0002
+     * @tc.desc       : Test the function of the interface PrototypeSlice.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSlice0002", 0, () => {
+      const TAG = "testPrototypeSlice0002"
+      try {
+        const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
+        expect(uint8.slice().toString()).assertEqual("10,20,30,40,50");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_5600
+     * @tc.name       : testPrototypeSlice0003
+     * @tc.desc       : Test the function of the interface PrototypeSlice.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSlice0003", 0, () => {
+      const TAG = "testPrototypeSlice0003"
+      try {
+        const uint8 = new Uint8Array([1, 2, 3]);
+        const slicedArray = Array.from(uint8.slice(1));
+        expect(JSON.stringify(slicedArray)).assertEqual(JSON.stringify([2, 3]));
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_5700
+     * @tc.name       : testPrototypeSlice0004
+     * @tc.desc       : Test the function of the interface PrototypeSlice.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSlice0004", 0, () => {
+      const TAG = "testPrototypeSlice0004"
+      try {
+        const uint8 = new Uint8Array([1, 2, 3]);
+        const slicedArray = Array.from(uint8.slice(2))
+        expect(JSON.stringify(slicedArray)).assertEqual(JSON.stringify([3]));
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_5800
+     * @tc.name       : testPrototypeSlice0005
+     * @tc.desc       : Test the function of the interface PrototypeSlice.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSlice0005", 0, () => {
+      const TAG = "testPrototypeSlice0005"
+      try {
+        const uint8 = new Uint8Array([1, 2, 3]);
+        const sliceArray = Array.from(uint8.slice(-2))
+        expect(JSON.stringify(sliceArray)).assertEqual(JSON.stringify([2, 3]));
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_5900
+     * @tc.name       : testPrototypeSlice0006
+     * @tc.desc       : Test the function of the interface PrototypeSlice.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSlice0006", 0, () => {
+      const TAG = "testPrototypeSlice0006"
+      try {
+        const uint8 = new Uint8Array([1, 2, 3]);
+        const sliceArray = Array.from(uint8.slice(0, 1))
+        expect(JSON.stringify(sliceArray)).assertEqual(JSON.stringify([1]));
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_6000
+     * @tc.name       : testPrototypeSome0001
+     * @tc.desc       : Test the function of the interface PrototypeSome.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSome0001", 0, () => {
+      const TAG = "testPrototypeSome0001"
+      try {
+        const isNegative = (element: number, index: number, array: Int8Array): boolean => {
+          return element < 0;
+        };
+        const int8 = new Int8Array([-10, 20, -30, 40, -50]);
+        expect(int8.some(isNegative)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_6100
+     * @tc.name       : testPrototypeSome0002
+     * @tc.desc       : Test the function of the interface PrototypeSome.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSome0002", 0, () => {
+      const TAG = "testPrototypeSome0002"
+      try {
+        const isNegative = (element: number, index: number, array: Int8Array): boolean => {
+          return element < 0;
+        };
+        const positives = new Int8Array([10, 20, 30, 40, 50]);
+        expect(positives.some(isNegative)).assertEqual(false);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_6200
+     * @tc.name       : testPrototypeSome0003
+     * @tc.desc       : Test the function of the interface PrototypeSome.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSome0003", 0, () => {
+      const TAG = "testPrototypeSome0003"
+      try {
+        const isBiggerThan10 = (element: number): boolean => {
+          return element > 10;
+        };
+        const result = new Uint8Array([2, 5, 8, 1, 4]).some(isBiggerThan10);
+        expect(result).assertEqual(false);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_6300
+     * @tc.name       : testPrototypeSome0004
+     * @tc.desc       : Test the function of the interface PrototypeSome.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSome0004", 0, () => {
+      const TAG = "testPrototypeSome0004"
+      try {
+        const isBiggerThan10 = (element: number): boolean => {
+          return element > 10;
+        };
+        expect(new Uint8Array([12, 5, 8, 1, 4]).some(isBiggerThan10)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_6400
+     * @tc.name       : testPrototypeSort0001
+     * @tc.desc       : Test the function of the interface PrototypeSort.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSort0001", 0, () => {
+      const TAG = "testPrototypeSort0001"
+      try {
+        const uint8 = new Uint8Array([40, 10, 50, 20, 30]);
+        uint8.sort()
+        const array = Array.from(uint8)
+        expect(JSON.stringify(array)).assertEqual(JSON.stringify([10, 20, 30, 40, 50]));
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_6500
+     * @tc.name       : testPrototypeSort0002
+     * @tc.desc       : Test the function of the interface PrototypeSort.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSort0002", 0, () => {
+      const TAG = "testPrototypeSort0002"
+      try {
+        let numbers = new Uint8Array([40, 1, 5, 200]);
+        numbers.sort()
+        const array = Array.from(numbers)
+        expect(JSON.stringify(array)).assertEqual(JSON.stringify([1, 5, 40, 200]));
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_6600
+     * @tc.name       : testPrototypeSort0003
+     * @tc.desc       : Test the function of the interface PrototypeSort.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSort0003", 0, () => {
+      const TAG = "testPrototypeSort0003"
+      try {
+        let numbers = [40, 1, 5, 200];
+        numbers.sort()
+        const array = Array.from(numbers)
+        expect(JSON.stringify(array)).assertEqual(JSON.stringify([1, 200, 40, 5]));
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_6700
+     * @tc.name       : testPrototypeSort0004
+     * @tc.desc       : Test the function of the interface PrototypeSort.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSort0004", 0, () => {
+      const TAG = "testPrototypeSort0004"
+      try {
+        let numbers = [40, 1, 5, 200];
+        numbers.sort((a, b) => a - b)
+        expect(JSON.stringify(Array.from(numbers))).assertEqual(JSON.stringify([1, 5, 40, 200]));
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_6800
+     * @tc.name       : testPrototypeSubarray0001
+     * @tc.desc       : Test the function of the interface PrototypeSubarray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSubarray0001", 0, () => {
+      const TAG = "testPrototypeSubarray0001"
+      try {
+        const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
+        const value = Array.from(uint8.subarray(1, 3))
+        expect(JSON.stringify(value)).assertEqual(JSON.stringify([20, 30]));
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_6900
+     * @tc.name       : testPrototypeSubarray0002
+     * @tc.desc       : Test the function of the interface PrototypeSubarray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSubarray0002", 0, () => {
+      const TAG = "testPrototypeSubarray0002"
+      try {
+        const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
+        const value = uint8.subarray(1).toString();
+        expect(value).assertEqual("20,30,40,50");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_7000
+     * @tc.name       : testPrototypeSubarray0003
+     * @tc.desc       : Test the function of the interface PrototypeSubarray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSubarray0003", 0, () => {
+      const TAG = "testPrototypeSubarray0003"
+      try {
+        const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
+        const value = uint8.subarray().toString()
+
+        expect(value).assertEqual("10,20,30,40,50");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_7100
+     * @tc.name       : testPrototypeSubarray0004
+     * @tc.desc       : Test the function of the interface PrototypeSubarray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSubarray0004", 0, () => {
+      const TAG = "testPrototypeSubarray0004"
+      try {
+        const buffer = new ArrayBuffer(8);
+        const uint8 = new Uint8Array(buffer);
+        uint8.set([1, 2, 3])
+        const resultArray = Array.from(uint8)
+        expect(JSON.stringify(resultArray)).assertEqual(JSON.stringify([1, 2, 3, 0, 0, 0, 0, 0]));
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_7200
+     * @tc.name       : testPrototypeSubarray0005
+     * @tc.desc       : Test the function of the interface PrototypeSubarray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testPrototypeSubarray0005", 0, () => {
+      const TAG = "testPrototypeSubarray0005"
+      try {
+        const buffer = new ArrayBuffer(8);
+        const uint8 = new Uint8Array(buffer);
+        uint8.set([1, 2, 3])
+        const subarray = uint8.subarray(0, 4)
+        expect(JSON.stringify(Array.from(subarray))).assertEqual(JSON.stringify([1, 2, 3, 0]));
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_0100
+     * @tc.name       : testTypedArrayPrototypeSymbolIterator0001
+     * @tc.desc       : Test the function of the interface TypedArray.prototype[Symbol.iterator]().
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTypedArrayPrototypeSymbolIterator0001', 0, () => {
+      const TAG = "testTypedArrayPrototypeSymbolIterator0001";
+      try {
+        const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
+        const iterator1 = uint8[Symbol.iterator]();
+        let index = 0;
+        let isEqual = true;
+        for (const value of iterator1) {
+          expect(value).assertEqual(uint8[index]);
+          if (value !== uint8[index]) {
+            isEqual = false;
+          }
+          index++;
+        }
+        expect(isEqual).assertDeepEquals(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_0200
+     * @tc.name       : testTypedArrayPrototypeSymbolIterator0002
+     * @tc.desc       : Test the function of the interface TypedArray.prototype[Symbol.iterator]().
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTypedArrayPrototypeSymbolIterator0002', 0, () => {
+      const TAG = "testTypedArrayPrototypeSymbolIterator0002";
+      try {
+        const arr = new Uint8Array([10, 20, 30, 40, 50]);
+        expect(arr).assertDeepEquals(new Uint8Array([10, 20, 30, 40, 50]));
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_0300
+     * @tc.name       : testTypedArrayPrototypeSymbolIterator0003
+     * @tc.desc       : Test the function of the interface TypedArray.prototype[Symbol.iterator]().
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTypedArrayPrototypeSymbolIterator0003', 0, () => {
+      const TAG = "testTypedArrayPrototypeSymbolIterator0003";
+      try {
+        const arr = new Uint8Array([10, 20, 30, 40, 50]);
+        const arrIter = arr[Symbol.iterator]();
+        expect(arrIter.next().value).assertEqual(10)
+        expect(arrIter.next().value).assertEqual(20)
+        expect(arrIter.next().value).assertEqual(30)
+        expect(arrIter.next().value).assertEqual(40)
+        expect(arrIter.next().value).assertEqual(50);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_0400
+     * @tc.name       : testTypedArrayPrototypeSymbolIterator0004
+     * @tc.desc       : Test the function of the interface TypedArray.prototype[Symbol.iterator]().
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTypedArrayPrototypeSymbolIterator0004', 0, () => {
+      const TAG = "testTypedArrayPrototypeSymbolIterator0004";
+      try {
+        const arr = new Uint8Array([]);
+        const arrIter = arr[Symbol.iterator]();
+        expect(arrIter.next().value).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_0500
+     * @tc.name       : testTypedArrayPrototypeToLocaleString0001
+     * @tc.desc       : Test the function of the interface TypedArray.prototype.toLocaleString().
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTypedArrayPrototypeToLocaleString0001', 0, () => {
+      const TAG = "testTypedArrayPrototypeToLocaleString0001";
+      try {
+        const uint8 = new Uint32Array([500, 8123, 12]);
+        let value = uint8.toLocaleString()
+        expect(value).assertEqual("500,8,123,12");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_0600
+     * @tc.name       : testTypedArrayPrototypeToLocaleString0002
+     * @tc.desc       : Test the function of the interface TypedArray.prototype.toLocaleString().
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTypedArrayPrototypeToLocaleString0002', 0, () => {
+      const TAG = "testTypedArrayPrototypeToLocaleString0002";
+      try {
+        const uint = new Uint32Array([]);
+        let value = uint.toLocaleString()
+        expect(value).assertEqual("");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_0700
+     * @tc.name       : testTypedArrayPrototypeToString0001
+     * @tc.desc       : Test the function of the interface TypedArray.prototype.toString().
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTypedArrayPrototypeToString0001', 0, () => {
+      const TAG = "testTypedArrayPrototypeToString0001";
+      try {
+        const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
+        let value = uint8.toString()
+        expect(value).assertEqual("10,20,30,40,50");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_0800
+     * @tc.name       : testTypedArrayPrototypeToString0002
+     * @tc.desc       : Test the function of the interface TypedArray.prototype.toString().
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTypedArrayPrototypeToString0002', 0, () => {
+      const TAG = "testTypedArrayPrototypeToString0002";
+      try {
+        const uint8 = new Uint8Array([]);
+        let value = uint8.toString()
+        expect(value).assertEqual("");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_0900
+     * @tc.name       : testTypedArrayPrototypeValues0001
+     * @tc.desc       : Test the function of the interface TypedArray.prototype.values().
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTypedArrayPrototypeValues0001', 0, () => {
+      const TAG = "testTypedArrayPrototypeValues0001";
+      try {
+        const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
+        let uint8Value = uint8.values();
+        expect(uint8Value.next().value).assertEqual(10)
+        expect(uint8Value.next().value).assertEqual(20)
+        expect(uint8Value.next().value).assertEqual(30)
+        expect(uint8Value.next().value).assertEqual(40)
+        expect(uint8Value.next().value).assertEqual(50);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_1000
+     * @tc.name       : testTypedArrayPrototypeValues0002
+     * @tc.desc       : Test the function of the interface TypedArray.prototype.values().
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTypedArrayPrototypeValues0002', 0, () => {
+      const TAG = "testTypedArrayPrototypeValues0002";
+      try {
+        const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
+        let uint8Value = uint8.values();
+        let index = 0;
+        let isEqual = true;
+        for (const value of uint8Value) {
+          expect(value).assertEqual(uint8[index]);
+          if (value !== uint8[index]) {
+            isEqual = false;
+          }
+          index++;
+        }
+        expect(isEqual).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TYPED_ARRAY_1100
+     * @tc.name       : testTypedArrayPrototypeValues0003
+     * @tc.desc       : Test the function of the interface TypedArray.prototype.values().
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTypedArrayPrototypeValues0003', 0, () => {
+      const TAG = "testTypedArrayPrototypeValues0003";
+      try {
+        const uint8 = new Uint8Array([]);
+        let uint8Value = uint8.values();
+        expect(uint8Value.next().value).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
   })
 }
