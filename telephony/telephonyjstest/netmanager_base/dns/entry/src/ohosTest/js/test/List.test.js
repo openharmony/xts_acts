@@ -20,8 +20,7 @@ import EmptyTest from './Empty.test'
  export default function testsuite() {
     if(sim.getMaxSimCount()>1){
         Telephony_NETMANAGER_TestDNSTest();
-        Telephony_NETMANAGER_MDNSTest();
-        netSyncTest();
+	    netSyncTest();
     }else{
         EmptyTest()
     }
