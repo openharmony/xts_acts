@@ -137,7 +137,7 @@ export default function OnResultPage() {
       console.info('[OnResultPage_0300] btn2 click');
       await CommonFunc.sleep(200);
 
-      let btn3 = await driver.findComponent(ON.id('popToName'));
+      let btn3 = await driver.findComponent(ON.id('popNameId'));
       await btn3.click()
       console.info('[OnResultPage_0300] btn3 click');
       await CommonFunc.sleep(500);
@@ -170,12 +170,12 @@ export default function OnResultPage() {
       console.info('[OnResultPage_0400] btn2 click');
       await CommonFunc.sleep(200);
 
-      let btn3 = await driver.findComponent(ON.id('popToName'));
+      let btn3 = await driver.findComponent(ON.id('popUndefinedId'));
       await btn3.click()
       console.info('[OnResultPage_0400] btn3 click');
       await CommonFunc.sleep(500);
 
-      let strJson: string = getInspectorByKey('popUndefinedId');
+      let strJson: string = getInspectorByKey('infoId');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[OnResultPage_0400] component obj is: ' + JSON.stringify(obj));
       console.info('[OnResultPage_0400] content obj is: ' + JSON.stringify(obj.$attrs.content));
