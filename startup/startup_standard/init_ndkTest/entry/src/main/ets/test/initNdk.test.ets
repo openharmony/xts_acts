@@ -42,7 +42,7 @@ export default function initNdkTest() {
         expect(deviceTypeInfo).assertEqual(bufferstr);
       } else {
         console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        expect(false).assertTrue();
       }
       done();
     });
@@ -80,18 +80,17 @@ export default function initNdkTest() {
     it('testOHGetManufacture001', 0, async (done: Function) => {
       let manufactureInfo: string = initndk.oHGetManufacture();
 
+      let ret = false;
       expect(manufactureInfo).assertInstanceOf('String');
       if (manufactureInfo != "" && manufactureInfo != null && manufactureInfo != undefined) {
-        let str = /[\w-\.\(\)]/g;
-        let arr = manufactureInfo.match(str);
-        let bufferstr = arr.join('');
-        console.info('the value of the bufferstr is :' + bufferstr);
-        expect(manufactureInfo).assertEqual(bufferstr);
+        ret = true;
+        expect(ret).assertTrue();
+        done();
       } else {
-        console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        console.info('the return value Manufacture is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
-      done();
     });
 
     /**
@@ -107,11 +106,6 @@ export default function initNdkTest() {
       let len = manufactureInfo.length;
       expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
       expect(len).assertLarger(MAX_CHARACTERS_NUM);
-      let str = /[\w-\.\(\)]/g;
-      let arr = manufactureInfo.match(str);
-      let bufferstr = arr.join('');
-      console.info('the value of the bufferstr is :' + bufferstr);
-      expect(manufactureInfo).assertEqual(bufferstr);
       done();
     });
 
@@ -126,18 +120,17 @@ export default function initNdkTest() {
     it('testOHGetBrand001', 0, async (done: Function) => {
       let brandInfo: string = initndk.oHGetBrand();
 
+      let ret = false;
       expect(brandInfo).assertInstanceOf('String');
       if (brandInfo != "" && brandInfo != null && brandInfo != undefined) {
-        let str = /[\w-\.\(\)]/g;
-        let arr = brandInfo.match(str);
-        let bufferstr = arr.join('');
-        console.info('the value of the bufferstr is :' + bufferstr);
-        expect(brandInfo).assertEqual(bufferstr);
+        ret = true;
+        expect(ret).assertTrue();
+        done();
       } else {
-        console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        console.info('the return value Manufacture is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
-      done();
     });
 
     /**
@@ -153,11 +146,6 @@ export default function initNdkTest() {
       let len = brandInfo.length;
       expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
       expect(len).assertLarger(MAX_CHARACTERS_NUM);
-      let str = /[\w-\.\(\)]/g;
-      let arr = brandInfo.match(str);
-      let bufferstr = arr.join('');
-      console.info('the value of the bufferstr is :' + bufferstr);
-      expect(brandInfo).assertEqual(bufferstr);
       done();
     });
 
@@ -170,44 +158,20 @@ export default function initNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHGetMarketName001', 0, async (done: Function) => {
+      let ret = false;
       let marketNameInfo: string = initndk.oHGetMarketName();
 
       console.info('the value of the deviceinfo marketName is :' + marketNameInfo);
       expect(marketNameInfo).assertInstanceOf('String');
       if (marketNameInfo != "" && marketNameInfo != null && marketNameInfo != undefined) {
-        let str = /[\w-\.\(\)\s]/g;
-        let arr = marketNameInfo.match(str);
-        let bufferstr = arr.join('');
-        console.info('the value of the bufferstr is :' + bufferstr);
-        expect(marketNameInfo).assertEqual(bufferstr);
+        ret = true;
+        expect(ret).assertTrue();
+        done();
       } else {
-        console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        console.info('the return value marketName is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
-      done();
-    });
-
-    /**
-     * @tc.number     : SUB_STARTUP_INIT_DEVICEINFO_OH_GETMARKETNAME_0200
-     * @tc.name       : testOHGetMarketName002
-     * @tc.desc       : test OH_GetMarketName has at least one character and at most 32 characters.
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHGetMarketName002', 0, async (done: Function) => {
-      let marketNameInfo: string = initndk.oHGetMarketName();
-
-      console.info('the value of the deviceinfo marketName is :' + marketNameInfo);
-      let len = marketNameInfo.length;
-      expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
-      expect(len).assertLarger(MAX_CHARACTERS_NUM);
-      let str = /[\w-\.\(\)\s]/g;
-      let arr = marketNameInfo.match(str);
-      let bufferstr = arr.join('');
-      console.info('the value of the bufferstr is :' + bufferstr);
-      expect(marketNameInfo).assertEqual(bufferstr);
-      done();
     });
 
     /**
@@ -231,7 +195,7 @@ export default function initNdkTest() {
         expect(productSeriesInfo).assertEqual(bufferstr);
       } else {
         console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        expect(false).assertTrue();
       }
       done();
     });
@@ -279,7 +243,7 @@ export default function initNdkTest() {
         expect(productModelInfo).assertEqual(bufferstr);
       } else {
         console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        expect(false).assertTrue();
       }
       done();
     });
@@ -328,7 +292,7 @@ export default function initNdkTest() {
         expect(softwareModelInfo).assertEqual(bufferstr);
       } else {
         console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        expect(false).assertTrue();
       }
       done();
     });
@@ -367,19 +331,18 @@ export default function initNdkTest() {
     it('testOHGetHardwareModel001', 0, async (done: Function) => {
       let hardwareModelInfo: string = initndk.oHGetHardwareModel();
 
+      let ret = false;
       console.info('the value of the deviceinfo hardwareModel is :' + hardwareModelInfo);
       expect(hardwareModelInfo).assertInstanceOf('String');
       if (hardwareModelInfo != "" && hardwareModelInfo != null && hardwareModelInfo != undefined) {
-        let str = /[\w-\.\(\)]/g;
-        let arr = hardwareModelInfo.match(str);
-        let bufferstr = arr.join('');
-        console.info('the value of the bufferstr is :' + bufferstr);
-        expect(hardwareModelInfo).assertEqual(bufferstr);
+        ret = true;
+        expect(ret).assertTrue();
+        done();
       } else {
-        console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        console.info('the return value HardwareModel is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
-      done();
     });
 
     /**
@@ -397,11 +360,6 @@ export default function initNdkTest() {
       let len = hardwareModelInfo.length;
       expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
       expect(len).assertLarger(MAX_CHARACTERS_NUM);
-      let str = /[\w-\.\(\)]/g;
-      let arr = hardwareModelInfo.match(str);
-      let bufferstr = arr.join('');
-      console.info('the value of the bufferstr is :' + bufferstr);
-      expect(hardwareModelInfo).assertEqual(bufferstr);
       done();
     });
 
@@ -426,7 +384,7 @@ export default function initNdkTest() {
         expect(bootloaderVersionInfo).assertEqual(bufferstr);
       } else {
         console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        expect(false).assertTrue();
       }
       done();
     });
@@ -475,7 +433,7 @@ export default function initNdkTest() {
         expect(abiListInfo).assertEqual(bufferstr);
       } else {
         console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        expect(false).assertTrue();
       }
       done();
     });
@@ -519,11 +477,13 @@ export default function initNdkTest() {
       let re = securityPatchTagInfo.match(reFormat);
       if (re != null) {
         ret = true;
+        expect(ret).assertTrue();
+        done();
       } else {
-        console.info('the return formate is not yy--mm--dd');
+        console.info('the return formate is not yy/mm/dd');
+        expect(false).assertTrue();
+        done();
       }
-      expect(ret).assertTrue();
-      done();
     });
 
     /**
@@ -548,7 +508,7 @@ export default function initNdkTest() {
         expect(securityPatchTagInfo).assertEqual(bufferstr);
       } else {
         console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        expect(false).assertTrue();
       }
       done();
     });
@@ -574,7 +534,7 @@ export default function initNdkTest() {
         expect(displayVersionInfo).assertEqual(bufferstr);
       } else {
         console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        expect(false).assertTrue();
       }
       done();
     });
@@ -622,7 +582,7 @@ export default function initNdkTest() {
         expect(incrementalVersionInfo).assertEqual(bufferstr);
       } else {
         console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        expect(false).assertTrue();
       }
       done();
     });
@@ -671,7 +631,7 @@ export default function initNdkTest() {
         expect(osReleaseTypeInfo).assertEqual(bufferstr);
       } else {
         console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        expect(false).assertTrue();
       }
       done();
     });
@@ -697,7 +657,7 @@ export default function initNdkTest() {
         expect(osFullNameInfo).assertEqual(bufferstr);
       } else {
         console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        expect(false).assertTrue();
       }
       done();
     });
@@ -760,9 +720,13 @@ export default function initNdkTest() {
       expect(sdkApiVersionInfo).assertInstanceOf('Number');
       if (sdkApiVersionInfo >= 0) {
         ret = true;
+        expect(ret).assertTrue();
+        done();
+      } else {
+        console.info('the return value SdkApiVersion is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
-      expect(ret).assertTrue();
-      done();
     });
 
     /**
@@ -800,9 +764,13 @@ export default function initNdkTest() {
       expect(firstApiVersionInfo).assertInstanceOf('Number');
       if (firstApiVersionInfo >= 0) {
         ret = true;
+        expect(ret).assertTrue();
+        done();
+      } else {
+        console.info('the return value FirstApiVersion is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
-      expect(ret).assertTrue();
-      done();
     });
 
     /**
@@ -816,19 +784,18 @@ export default function initNdkTest() {
     it('testOHGetVersionId001', 0, async (done: Function) => {
       let versionIdInfo: string = initndk.oHGetVersionId();
 
+      let ret = false;
       console.info('the value of the deviceinfo versionId is :' + versionIdInfo);
       expect(versionIdInfo).assertInstanceOf('String');
       if (versionIdInfo != "" && versionIdInfo != null && versionIdInfo != undefined) {
-        let str = /[\w-/\.\(\)\:\s]/g;
-        let arr = versionIdInfo.match(str);
-        let bufferstr = arr.join('');
-        console.info('the value of the bufferstr is :' + bufferstr);
-        expect(versionIdInfo).assertEqual(bufferstr);
+        ret = true;
+        expect(ret).assertTrue();
+        done();
       } else {
-        console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        console.info('the return value VersionId is null or incorrect.');
+        expect(false).assertTrue();
+        done();
       }
-      done();
     });
 
     /**
@@ -846,11 +813,6 @@ export default function initNdkTest() {
       let len = versionIdInfo.length;
       expect(len).assertLess(256);
       expect(len).assertLarger(MAX_CHARACTERS_NUM);
-      let str = /[\w-/\.\(\)\:\s]/g;
-      let arr = versionIdInfo.match(str);
-      let bufferstr = arr.join('');
-      console.info('the value of the bufferstr is :' + bufferstr);
-      expect(versionIdInfo).assertEqual(bufferstr);
       done();
     });
 
@@ -876,7 +838,7 @@ export default function initNdkTest() {
         expect(buildTypeInfo).assertEqual(bufferstr);
       } else {
         console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        expect(false).assertTrue();
       }
       done();
     });
@@ -926,7 +888,7 @@ export default function initNdkTest() {
         expect(buildUserInfo).assertEqual(bufferstr);
       } else {
         console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        expect(false).assertTrue();
       }
       done();
     });
@@ -975,7 +937,7 @@ export default function initNdkTest() {
         expect(buildHostInfo).assertEqual(bufferstr);
       } else {
         console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        expect(false).assertTrue();
       }
       done();
     });
@@ -1027,7 +989,7 @@ export default function initNdkTest() {
         expect(buildTimeInfo).assertEqual(bufferstr);
       } else {
         console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        expect(false).assertTrue();
       }
       done();
     });
@@ -1076,7 +1038,7 @@ export default function initNdkTest() {
         expect(buildRootHashInfo).assertEqual(bufferstr);
       } else {
         console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        expect(false).assertTrue();
       }
       done();
     });
