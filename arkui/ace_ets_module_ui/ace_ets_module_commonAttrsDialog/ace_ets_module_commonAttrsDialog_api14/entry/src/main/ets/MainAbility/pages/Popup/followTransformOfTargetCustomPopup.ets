@@ -39,8 +39,8 @@ struct followTransformOfTargetPopup {
             this.followTransformOfTarget = true
           })
         Button('animationBtn').id('animationBtn').onClick(() => {
-          this.translateX = 200
-          this.translateY = 200
+          this.translateX = 100
+          this.translateY = 100
           this.scaleX = 0.5
           this.scaleY = 2
           this.rotateAngle = 90

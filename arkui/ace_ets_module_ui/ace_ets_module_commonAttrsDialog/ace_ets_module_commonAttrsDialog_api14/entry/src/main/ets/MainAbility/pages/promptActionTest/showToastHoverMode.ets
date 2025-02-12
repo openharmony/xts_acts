@@ -22,57 +22,64 @@ struct showToastHoverMode {
   @State hoverModeArea: HoverModeAreaType = HoverModeAreaType.TOP_SCREEN
 
   build() {
-    Column({space:10}) {
-      Text('enableHoverMode ' + this.enableHoverMode).id('text')
-      Text('hoverModeArea ' + this.hoverModeArea).id('text1')
-      Text('enableHoverMode ' + this.enableHoverMode + ' hoverModeArea ' + this.hoverModeArea).id('text2')
-      Button('default hoverModeArea')
-        .id('showToast1')
-        .fontSize(20)
-        .onClick(() => {
-          try {
-            promptAction.showToast({
-              message: 'Hello World',
-              duration: 2000,
-              enableHoverMode: this.enableHoverMode,
-            });
-          } catch (error) {
-            let message = (error as BusinessError).message
-            let code = (error as BusinessError).code
-            console.error(`showToast args error code is ${code}, message is ${message}`);
-          }
-        })
-      Button('Show toast')
-        .id('showToast')
-        .fontSize(20)
-        .onClick(() => {
-          try {
-            promptAction.showToast({
-              message: 'Hello World',
-              duration: 2000,
-              enableHoverMode: this.enableHoverMode,
-              hoverModeArea: this.hoverModeArea
-            });
-          } catch (error) {
-            let message = (error as BusinessError).message
-            let code = (error as BusinessError).code
-            console.error(`showToast args error code is ${code}, message is ${message}`);
-          }
-        })
-      Button('init').id('init').onClick(() => {
-        this.enableHoverMode = false
-        this.hoverModeArea = HoverModeAreaType.TOP_SCREEN
-      })
-      Button('change enableHoverMode ' + this.enableHoverMode)
-        .id('changeEnableHoverMode')
-        .onClick(() => {
-          this.enableHoverMode = !this.enableHoverMode
-        })
-      Button('change hoverModeArea ' + this.hoverModeArea)
-        .id('changeHoverModeArea')
-        .onClick(() => {
-          this.hoverModeArea = HoverModeAreaType.BOTTOM_SCREEN
-        })
-    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+    Scroll() {
+      Column({ space: 5 }) {
+        Text('enableHoverMode ' + this.enableHoverMode).id('text')
+        Text('hoverModeArea ' + this.hoverModeArea).id('text1')
+        Text('enableHoverMode ' + this.enableHoverMode + ' hoverModeArea ' + this.hoverModeArea).id('text2')
+        Button('default hoverModeArea')
+          .height('8%')
+          .id('showToast1')
+          .onClick(() => {
+            try {
+              promptAction.showToast({
+                message: 'Hello World',
+                duration: 2000,
+                enableHoverMode: this.enableHoverMode,
+              });
+            } catch (error) {
+              let message = (error as BusinessError).message
+              let code = (error as BusinessError).code
+              console.error(`showToast args error code is ${code}, message is ${message}`);
+            }
+          })
+        Button('Show toast')
+          .height('8%')
+          .id('showToast')
+          .onClick(() => {
+            try {
+              promptAction.showToast({
+                message: 'Hello World',
+                duration: 2000,
+                enableHoverMode: this.enableHoverMode,
+                hoverModeArea: this.hoverModeArea
+              });
+            } catch (error) {
+              let message = (error as BusinessError).message
+              let code = (error as BusinessError).code
+              console.error(`showToast args error code is ${code}, message is ${message}`);
+            }
+          })
+        Button('init').id('init')
+          .height('8%')
+          .onClick(() => {
+            this.enableHoverMode = false
+            this.hoverModeArea = HoverModeAreaType.TOP_SCREEN
+          })
+        Button('change enableHoverMode ' + this.enableHoverMode)
+          .height('8%')
+          .id('changeEnableHoverMode')
+          .onClick(() => {
+            this.enableHoverMode = !this.enableHoverMode
+          })
+        Button('change hoverModeArea ' + this.hoverModeArea)
+          .height('8%')
+          .id('changeHoverModeArea')
+          .onClick(() => {
+            this.hoverModeArea = HoverModeAreaType.BOTTOM_SCREEN
+          })
+      }.justifyContent(FlexAlign.Center)
+    }
+    .height('100%').width('100%')
   }
 }

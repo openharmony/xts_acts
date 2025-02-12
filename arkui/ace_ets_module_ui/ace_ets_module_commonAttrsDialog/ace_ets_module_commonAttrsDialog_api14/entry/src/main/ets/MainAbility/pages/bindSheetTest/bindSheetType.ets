@@ -23,10 +23,9 @@ struct bindSheetType {
 
   @Builder
   myBuilder() {
-    Column() {
-      Text('This is Model Sheet(bindSheet)').fontSize(20).margin(10)
-      Text(this.sheetTypeValue).fontSize(20).id('sheetTypeValue').margin(10)
-      Text(this.widthValue).fontSize(20).id('widthValue').margin(10)
+    Column({space: 5}) {
+      Text(this.sheetTypeValue).id('sheetTypeValue')
+      Text(this.widthValue).id('widthValue')
       Button('this.sheetType:' + this.sheetType)
         .id('changeType')
         .onClick(() => {
@@ -34,8 +33,6 @@ struct bindSheetType {
       })
       Button('Close Model Sheet')
         .id('close')
-        .margin(10)
-        .fontSize(20)
         .onClick(() => {
           this.isShow = false;
         })
@@ -51,8 +48,6 @@ struct bindSheetType {
         .onClick(() => {
           this.isShow = true
         })
-        .fontSize(20)
-        .margin(10)
         .bindSheet($$this.isShow, this.myBuilder(), {
           height: SheetSize.MEDIUM,
           backgroundColor: Color.Green,
