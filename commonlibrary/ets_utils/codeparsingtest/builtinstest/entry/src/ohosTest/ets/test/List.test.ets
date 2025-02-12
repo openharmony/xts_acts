@@ -14,6 +14,7 @@ import promiseTest from './Promise/Promise.test';
 import mapTest from './Map/Map.test';
 import regExpTest from './RegExp/RegExp.test';
 import setTest from './Set/Set.test';
+import errorTest from './Error/Error.test';
 import weakRefTest from './WeakRef/WeakRef.test';
 import weakSetTest from './WeakSet/WeakSet.test';
 
@@ -34,6 +35,7 @@ export default function testsuite() {
   mapTest();
   regExpTest();
   setTest();
+  errorTest();
   weakRefTest();
   weakSetTest();
 }
