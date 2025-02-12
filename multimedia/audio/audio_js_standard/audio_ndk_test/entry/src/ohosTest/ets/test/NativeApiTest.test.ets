@@ -497,6 +497,48 @@ export default function audioNDK() {
       done()
     })
     /* *
+       * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0200
+       * @tc.name      : GetTimestamp with OH_AudioRenderer_GetAudioTimestampInfo
+       * @tc.desc      : test OH_AudioRenderer_GetAudioTimestampInfo
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+   */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0200', 0, async (done: Function) => {
+      let result = myaudioNdk.audioRenderGetAudioTimestampInfo();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0200 audioRenderGetAudioTimestampInfo: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+    /* *
+       * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0300
+       * @tc.name      : GetTimestamp with OH_AudioRenderer_GetAudioTimestampInfoInterval
+       * @tc.desc      : test OH_AudioRenderer_GetAudioTimestampInfoInterval
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+   */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0300', 0, async (done: Function) => {
+      let result = myaudioNdk.audioRenderGetAudioTimestampInfoInterval();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0300 audioRenderGetAudioTimestampInfoInterval: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+    /* *
+       * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0400
+       * @tc.name      : GetTimestamp with OH_AudioRenderer_GetAudioSpeedTimestampInfo
+       * @tc.desc      : test OH_AudioRenderer_GetAudioSpeedTimestampInfo
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+   */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0400', 0, async (done: Function) => {
+      let result = myaudioNdk.audioRenderGetAudioSpeedTimestampInfo();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0400 audioRenderGetAudioSpeedTimestampInfo: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+    /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESIZEINCALLBACK_0100
        * @tc.name      : GetFrameSizeInCallback with OH_AudioRenderer_GetFrameSizeInCallback
        * @tc.desc      : test OH_AudioRenderer_GetFramesWritten

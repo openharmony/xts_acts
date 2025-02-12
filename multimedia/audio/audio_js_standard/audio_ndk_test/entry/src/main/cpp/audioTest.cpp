@@ -571,6 +571,173 @@ static napi_value AudioRenderGetTimestamp(napi_env env, napi_callback_info info)
     return res;
 }
 
+static napi_value AudioRenderGetAudioTimestampInfo(napi_env env, napi_callback_info info)
+{
+	OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+	
+    OH_AudioRenderer *audioRenderer;
+	OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+	
+	napi_value res;
+	int64_t framePosition0;
+	int64_t timestamp0;
+	OH_AudioStream_Result result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, CLOCK_MONOTONIC, &framePosition0, &timestamp0);
+	if (result == AUDIOSTREAM_SUCCESS){
+		napi_create_int32(env,TEST_FAIL,&res);
+		return res;
+	}
+	OH_AudioRenderer_Start(audioRender);
+	
+	int sleepNum = 30000;
+	uDelay(sleepNum);
+	
+	int64_t framePosition1;
+	int64_t timestamp1;
+	result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, CLOCK_MONOTONIC, &framePosition1, &timestamp1);
+	if (result != AUDIOSTREAM_SUCCESS){
+		napi_create_int32(env,TEST_FAIL,&res);
+		return res;
+	}
+	
+	OH_AudioRenderer_Stop(audioRender);
+	result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, CLOCK_MONOTONIC, &framePosition0, &timestamp0);
+		if (result == AUDIOSTREAM_SUCCESS){
+		napi_create_int32(env,TEST_FAIL,&res);
+		return res;
+	}
+	OH_AudioRenderer_Release(audioRender);
+	OH_AudioStreamBuilder_Destroy(builder);
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioRenderGetAudioTimestampInfoInterval(napi_env env, napi_callback_info info)
+{
+	OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+	
+    OH_AudioRenderer *audioRenderer;
+	OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+	
+	
+	OH_AudioRenderer_Start(audioRender);
+	
+	int sleepNum = 500000;
+	uDelay(sleepNum);
+	
+	napi_value res;
+	float rate = 0.1;
+	int64_t framePositionLastDuration = 0;
+	int64_t timestampLastDuration = 0;
+	OH_AudioStream_Result result = AUDIOSTREAM_SUCCESS;
+	
+	for (int i = 0;i <= 5; ++i){
+		int64_t framePosition1,framePosition2 =0;
+		int64_t timestamp1,timestamp2 =0;
+		result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, CLOCK_MONOTONIC, &framePosition1, &timestamp1);
+		LOG("intervalframePosition1%{public}ld,intervaltimestamp1%{public}ld",framePosition1,timestamp1);
+		
+		uDelay(sleepNum);
+		
+		result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, CLOCK_MONOTONIC, &framePosition2, &timestamp2);
+		LOG("intervalframePosition2%{public}ld,intervaltimestamp2%{public}ld",framePosition2,timestamp2);
+		if (framePositionLastDuration == 0){
+			framePositionLastDuration = framePosition2 - framePosition1;
+			continue;
+		}
+		
+		
+		int64_t timestampCurDuration = timestamp2 - timestamp1;
+		int64_t framePositionCurDuration = (framePosition2 - framePosition1) * ((timestampLastDuration * 1.0) / (timestampCurDuration));
+		
+		LOG("intervalframePositionLastDuration%{public}ld,intervalframePositionCurDuration%{public}ld",framePositionLastDuration,framePositionCurDuration);
+		
+		if (framePositionLastDuration <= framePositionCurDuration * (1 - rate) || 
+			framePositionLastDuration >= framePositionCurDuration * (1 + rate)){
+				napi_create_int32(env,TEST_FAIL，&res);
+				return res;
+			}
+		
+		LOG("intervalframePositionLastDuration%{public}ld",framePositionLastDuration);
+		framePositionLastDuration = framePosition2 - framePosition1;
+		timestampLastDuration = timestamp2 - timestamp1;
+	}
+	OH_AudioRenderer_Stop(audioRender);
+	OH_AudioRenderer_Release(audioRender);
+	OH_AudioStreamBuilder_Destroy(builder);
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioRenderGetAudioSpeedTimestampInfo(napi_env env, napi_callback_info info)
+{
+	OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+	
+    OH_AudioRenderer *audioRenderer;
+	OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+	
+	napi_value res;
+	float rate = 0.1;
+	int64_t framePositionLastDuration = 0;
+	int64_t timestampLastDuration = 0;
+	OH_AudioStream_Result result = AUDIOSTREAM_SUCCESS;
+	
+	int sleepNum = 500000;
+	uDelay(sleepNum);
+	
+	
+	for (float CurSpeed = 0.25;CurSpeed <= 4.00;CurSpeed += 0.25){
+		OH_AudioRenderer_Stop(audioRender);
+		result = OH_AudioRenderer_SetSpeed(audioRender,CurSpeed);
+		LOG("CurSpeed %{public}f,res% {public}d",CurSpeed,result);
+		result = OH_AudioRenderer_Start(audioRender);
+		LOG("Startres %{public}d",result);
+		
+		uDelay(sleepNum);
+		
+		
+		int64_t framePosition1,framePosition2 = 0;
+		int64_t timestamp1,timestamp2 = 0;
+		result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, CLOCK_MONOTONIC, &framePosition1, &timestamp1);
+		LOG("intervalframePosition1%{public}ld,intervaltimestamp1%{public}ld",framePosition1,timestamp1);
+		
+		uDelay(sleepNum);
+		
+		result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, CLOCK_MONOTONIC, &framePosition2, &timestamp2);
+		LOG("intervalframePosition2%{public}ld,intervaltimestamp2%{public}ld",framePosition2,timestamp2);
+		if (framePositionLastDuration == 0){
+			framePositionLastDuration = framePosition2 - framePosition1;
+			timestampLastDuration = timestamp2 - timestamp1;
+			continue;
+		}
+		
+		
+		int64_t timestampCurDuration = timestamp2 - timestamp1;
+		int64_t framePositionCurDuration = (framePosition2 - framePosition1) * ((timestampLastDuration * 1.0) / (timestampCurDuration));
+		
+		
+		LOG("intervalframePositionLastDuration%{public}ld,intervalframePositionCurDuration%{public}ld",framePositionLastDuration,framePositionCurDuration);
+		if (framePositionLastDuration >= framePositionCurDuration){
+			napi_create_int32(env,TEST_FAIL,&res);
+			return res;
+		}
+		
+		if (framePositionLastDuration <= framePositionCurDuration * ((CurSpeed - 0.25) / CurSpeed) * (1 - rate)||
+			framePositionLastDuration >= framePositionCurDuration * ((CurSpeed - 0.25) / CurSpeed) * (1 + rate)){
+				napi_create_int32(env,TEST_FAIL,&res);
+				return res;
+			}
+			
+			
+			framePositionLastDuration = framePosition2 - framePosition1;
+			timestampLastDuration = timestamp2 - timestamp1;
+	}
+	OH_AudioRenderer_Stop(audioRender);
+	OH_AudioRenderer_Release(audioRender);
+	OH_AudioStreamBuilder_Destroy(builder);
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
 static napi_value AudioRenderGetFrameSizeInCallback(napi_env env, napi_callback_info info)
 {
     OH_AudioStreamBuilder *builder = CreateRenderBuilder();
