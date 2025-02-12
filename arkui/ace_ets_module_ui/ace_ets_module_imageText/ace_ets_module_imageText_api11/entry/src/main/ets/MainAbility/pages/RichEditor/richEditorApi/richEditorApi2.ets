@@ -28,7 +28,7 @@ struct richEditorApi2 {
         })
         .borderWidth(1)
         .width('100%')
-        .height(200)
+        .height('50%')
       Button('addImageSpan').onClick((event: ClickEvent) => {
         this.controller.addImageSpan($r('app.media.app_icon'),{
           imageStyle:{
@@ -38,14 +38,14 @@ struct richEditorApi2 {
             }
           }
         })
-      }).height(100).id('richEditorApi2_btn1')
+      }).height('10%').id('richEditorApi2_btn1')
       Button('get').onClick(() => {
         this.controller.getSpans({ start: 0, end: 1 }).forEach((item) => {
           this.text1  +=  JSON.stringify((item as RichEditorImageSpanResult).imageStyle)
         })
-      }).height(100).id('richEditorApi2_btn2')
+      }).height('10%').id('richEditorApi2_btn2')
 
-      Text('' + this.text1).key('richEditorApi2_text1')
+      Text('' + this.text1).key('richEditorApi2_text1').height('10%').textAlign(TextAlign.Center)
     }
     .width('100%').height('100%')
   }

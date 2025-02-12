@@ -30,7 +30,7 @@ struct richEditorApi4 {
           .borderWidth(1)
           .borderColor(Color.Green)
           .width("100%")
-          .height(400)
+          .height('40%')
           .key('richEditorApi4_RichEditor1')
         Button('setTypingStyle').onClick((event: ClickEvent) => {
           this.controller.setTypingStyle(
@@ -45,8 +45,7 @@ struct richEditorApi4 {
         }).id('richEditorApi4_btn2')
         Text('' + this.text1).key('richEditorApi4_text1')
 
-      }.borderWidth(1).borderColor(Color.Red)
+      }.borderWidth(1).borderColor(Color.Red).height('100%')
     }
   }
 }
-

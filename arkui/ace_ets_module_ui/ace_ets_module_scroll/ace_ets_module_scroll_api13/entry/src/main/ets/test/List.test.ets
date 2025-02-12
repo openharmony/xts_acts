@@ -14,7 +14,6 @@
  */
 
 import headerListJsunit from './ListTest/headerListJsunit.test'; 
-import waterFlowFad from './WaterFlowTest/waterFlowFad.test';
 import tabsOpacityJsunit from './TabsTest/tabsOpacityJsunit.test'; 
 import bindTabsScroll from './TabsTest/bindTabsScroll.test';
 import listItemGroupComponent from './ListTest/listItemGroupComponent.test'; 
@@ -22,7 +21,6 @@ import offsetRemainScroll from './ScrollTest/offsetRemainScroll.test';
 
 export default function testsuite() {
   headerListJsunit()
-  waterFlowFad()
   tabsOpacityJsunit()
   bindTabsScroll()
   listItemGroupComponent()

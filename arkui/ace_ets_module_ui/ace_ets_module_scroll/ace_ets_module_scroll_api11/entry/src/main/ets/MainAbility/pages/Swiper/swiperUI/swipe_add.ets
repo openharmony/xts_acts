@@ -54,7 +54,7 @@ struct SwiperAddExample {
     Column({ space: 5 }) {
       Swiper(this.swiperController) {
         LazyForEach(this.data, (item: string) => {
-          Text(item).width('90%').height(160).backgroundColor(0xAFEEEE).textAlign(TextAlign.Center).fontSize(30)
+          Text(item).width('90%').height('60%').backgroundColor(0xAFEEEE).textAlign(TextAlign.Center).fontSize(30)
         }, (item: string) => item)
       }
       .cachedCount(2)

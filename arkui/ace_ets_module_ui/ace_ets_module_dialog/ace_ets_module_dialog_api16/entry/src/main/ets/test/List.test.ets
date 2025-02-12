@@ -13,6 +13,12 @@
  * limitations under the License.
  */
 import maxWidth from './PopupTest/Maxwidth.test'
+import openPopup from './promptActionTest/openPopup.test'
+import updatePopup from './promptActionTest/updatePopup.test'
+import closePopup from './promptActionTest/closePopup.test'
 export default function testsuite() {
     maxWidth();
+    openPopup();
+    updatePopup();
+    closePopup();
 }

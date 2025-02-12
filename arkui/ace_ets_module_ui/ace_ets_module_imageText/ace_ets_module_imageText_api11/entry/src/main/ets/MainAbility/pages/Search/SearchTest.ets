@@ -455,4 +455,3 @@ struct SliderExample {
     .height('100%')
   }
 }
-

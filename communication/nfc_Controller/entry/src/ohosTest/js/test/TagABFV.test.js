@@ -701,6 +701,56 @@ export default function nfcTagABFVTest() {
             }
         })
 
+        /**
+         * @tc.number SUB_Communication_NFC_nfctage_js_2400
+         * @tc.name Test getBarcodeTag
+         * @tc.desc This interface getBarcodeTag
+         * @tc.size since 16
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfctage_js_2400', 0, function ()  {
+            let cTag = {
+                "uid": [0x01, 0x02, 0x03, 0x04],
+                "technology": [10],
+                "supportedProfiles": 1,
+            };
+            try {
+                let data = tag.getBarcodeTag(cTag);
+                console.info("[NFC_test]24 getBarcodeTag data is " + data);
+                expect(data != null).assertTrue();
+            }catch(error){
+                console.info("[NFC_test]24 getBarcodeTag error is " + error)
+                expect().assertFail();
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfctage_js_2500
+         * @tc.name Test getBarcode
+         * @tc.desc This interface getBarcode
+         * @tc.size since 16
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfctage_js_2500', 0, async function (done)  {
+            let dTag = {
+                "uid": [0x01, 0x02, 0x03, 0x04],
+                "technology": [10],
+                "supportedProfiles": 1,
+            };
+            await tag.getBarcodeTag(dTag).getBarcode().then((data) => {
+                console.info("[NFC_test]25 getBarcodedata is " + data + " json: " + JSON.stringify(data));
+                expect(data != null).assertTrue();
+                expect(data instanceof Object).assertTrue();
+                done();
+            }).catch((error)=> {
+                console.info("[NFC_test]25 getBarcode error is " + error)
+                expect().assertFail();
+                done();
+            });
+        })
+
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }

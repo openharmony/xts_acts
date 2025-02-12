@@ -28,7 +28,7 @@ struct Demo {
     Column() {
       Column() {
 
-        Text(this.text1).id('textApi_text1_test')
+        Text(this.text1).id('textApi_text1_test').height('10%').textAlign(TextAlign.Center)
         Text(undefined, this.options1) {
           Span('Hello World')
         }
@@ -45,9 +45,9 @@ struct Demo {
         .borderWidth(1)
         .borderColor(Color.Red)
         .width(200)
-        .height(100)
+        .height('20%').textAlign(TextAlign.Center)
 
-        Text('' + this.text2).id('textApi_text2')
+        Text('' + this.text2).id('textApi_text2').height('10%').textAlign(TextAlign.Center)
         Text(undefined, this.options2) {
           Span('Hello World')
         }
@@ -65,10 +65,10 @@ struct Demo {
         .borderWidth(1)
         .borderColor(Color.Red)
         .width(200)
-        .height(100)
+        .height('20%').textAlign(TextAlign.Center)
 
 
-        Text(this.text3).id('textApi_text3')
+        Text(this.text3).id('textApi_text3').height('10%').textAlign(TextAlign.Center)
         Text(undefined, this.options3) {
           Span('Hello World')
         }
@@ -80,7 +80,7 @@ struct Demo {
         .borderWidth(1)
         .borderColor(Color.Red)
         .width(200)
-        .height(100)
+        .height('20%').textAlign(TextAlign.Center)
 
 
 
@@ -90,7 +90,7 @@ struct Demo {
       .width('100%')
       .backgroundColor(Color.White)
       .alignItems(HorizontalAlign.Start)
-      .padding(25)
+      .height('100%')
     }
     .height('100%')
 

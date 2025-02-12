@@ -59,7 +59,7 @@ void ImageOnErrorTest::OnEventReceive(ArkUI_NodeEvent *event)
 ArkUI_NodeHandle ImageOnErrorTest::CreateSubImageNode(ArkUI_NativeNodeAPI_1 *node_api, const char *id, uint32_t eventId)
 {
     float width = SIZE_200;
-    float height = SIZE_200;
+    float height = SIZE_100;
     uint32_t backgroundColor = COLOR_RED;
 
     // create image

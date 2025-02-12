@@ -11,13 +11,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import("//foundation/arkui/ace_engine/ace_config.gni")
+
 group("ActsAceEtsModuleScrollTest") {
   testonly = true
-  deps = [
-    "ace_ets_module_scroll_api11:ActsAceEtsModuleScrollApi11Test",
-    "ace_ets_module_scroll_api12:ActsAceEtsModuleScrollApi12Test",
-    "ace_ets_module_scroll_api13:ActsAceEtsModuleScrollApi13Test",
-    "ace_ets_module_scroll_api14:ActsAceEtsModuleScrollApi14Test",
-    "ace_ets_module_scroll_api16:ActsAceEtsModuleScrollApi16Test",
-  ]
+  if (ace_engine_feature_wearable) {
+    deps = [
+      "ace_ets_module_scroll_api11:ActsAceEtsModuleScrollApi11Test",
+      "ace_ets_module_scroll_api12:ActsAceEtsModuleScrollApi12Test",
+      "ace_ets_module_scroll_api13:ActsAceEtsModuleScrollApi13Test",
+      "ace_ets_module_scroll_api14:ActsAceEtsModuleScrollApi14Test",
+      "ace_ets_module_scroll_api16:ActsAceEtsModuleScrollApi16Test",
+    ]
+  } else {
+    deps = [
+      "ace_ets_module_scroll_api11:ActsAceEtsModuleScrollApi11Test",
+      "ace_ets_module_scroll_api12:ActsAceEtsModuleScrollApi12Test",
+      "ace_ets_module_scroll_api13:ActsAceEtsModuleScrollApi13Test",
+      "ace_ets_module_scroll_api14:ActsAceEtsModuleScrollApi14Test",
+      "ace_ets_module_scroll_api16:ActsAceEtsModuleScrollApi16Test",
+      "ace_ets_module_scroll_nowear_api12:ActsAceEtsModuleScrollNowearApi12Test",
+      "ace_ets_module_scroll_nowear_api13:ActsAceEtsModuleScrollNowearApi13Test",
+      "ace_ets_module_scroll_nowear_api14:ActsAceEtsModuleScrollNowearApi14Test",
+    ]
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -374,7 +374,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode) => {
             try {
               console.info("====>ActsAccountOptionalParameter_1300 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               console.info("====>ActsAccountOptionalParameter_1300 end====");
               done();
             } catch (err) {
@@ -415,7 +415,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_1400 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_1400 err:" + JSON.stringify(err));
@@ -456,7 +456,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, undefined) => {
             try {
               console.info("====>ActsAccountOptionalParameter_1500 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_1500 err:" + JSON.stringify(err));
@@ -492,7 +492,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode) => {
             try {
               console.info("====>ActsAccountOptionalParameter_1600 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_1600 err:" + JSON.stringify(err));
@@ -529,7 +529,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_1700 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_1700 err:" + JSON.stringify(err));
@@ -570,7 +570,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_1800 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_1800 err:" + JSON.stringify(err));
@@ -611,7 +611,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_1900 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_1900 err:" + JSON.stringify(err));
@@ -652,7 +652,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_2000 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_2000 err:" + JSON.stringify(err));
@@ -693,7 +693,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_2100 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_2100 err:" + JSON.stringify(err));
@@ -734,7 +734,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_2200 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_2200 err:" + JSON.stringify(err));
@@ -775,7 +775,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_2300 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_2300 err:" + JSON.stringify(err));
@@ -816,7 +816,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_2400 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_2400 err:" + JSON.stringify(err));
@@ -857,7 +857,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_2500 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_2500 err:" + JSON.stringify(err));
@@ -900,7 +900,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_2600 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_2600 err:" + JSON.stringify(err));
@@ -943,7 +943,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_2700 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_2700 err:" + JSON.stringify(err));
@@ -986,7 +986,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_2800 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               if (resultData !== undefined) {
                 console.info("====>ActsAccountOptionalParameter_2800 resultData:" + JSON.stringify(resultData));
                 if (resultData.account !== undefined) {
@@ -1034,7 +1034,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_2900 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               if (resultData !== undefined) {
                 console.info("====>ActsAccountOptionalParameter_2900 resultData:" + JSON.stringify(resultData));
                 if (resultData.account !== undefined) {
@@ -1082,7 +1082,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_3000 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               if (resultData !== undefined) {
                 console.info("====>ActsAccountOptionalParameter_3000 resultData:" + JSON.stringify(resultData));
                 if (resultData.account !== undefined) {
@@ -1130,7 +1130,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_3100 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               if (resultData !== undefined) {
                 console.info("====>ActsAccountOptionalParameter_3100 resultData:" + JSON.stringify(resultData));
                 if (resultData.account !== undefined) {
@@ -1180,7 +1180,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_3200 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               if (resultData !== undefined) {
                 console.info("====>ActsAccountOptionalParameter_3200 resultData:" + JSON.stringify(resultData));
                 if (resultData.account !== undefined) {
@@ -1230,7 +1230,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_3300 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               if (resultData !== undefined) {
                 console.info("====>ActsAccountOptionalParameter_3300 resultData:" + JSON.stringify(resultData));
                 if (resultData.account !== undefined) {
@@ -1280,7 +1280,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_3400 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               if (resultData !== undefined) {
                 console.info("====>ActsAccountOptionalParameter_3400 resultData:" + JSON.stringify(resultData));
                 if (resultData.account !== undefined) {
@@ -1330,7 +1330,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_3500 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_3500 err:" + JSON.stringify(err));
@@ -1373,7 +1373,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_3600 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_3600 err:" + JSON.stringify(err));
@@ -1416,7 +1416,7 @@ export default function ActsAppAccountOptionalParameterTest() {
           onResult: async (resultCode, resultData) => {
             try {
               console.info("====>ActsAccountOptionalParameter_3700 resultcode:" + JSON.stringify(resultCode));
-              expect(resultCode).assertEqual(12300002)
+              expect(resultCode).assertEqual(12300113)
               done();
             } catch (err) {
               console.info("====>ActsAccountOptionalParameter_3700 err:" + JSON.stringify(err));

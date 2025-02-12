@@ -31,6 +31,11 @@ struct tabsApi1 {
 
   build() {
     Column() {
+      Button('点击切换')
+        .onClick((event: ClickEvent) => {
+          this.tabsController.changeIndex(1)
+        }).id('tabsApi1_btn1')
+      Text('' + this.text1).key('tabsApi1_text1')
       Tabs({ controller: this.tabsController }) {
         TabContent() {
           Text("Red")
@@ -64,7 +69,7 @@ struct tabsApi1 {
       }
       .backgroundColor(0xf1f3f5)
       .width('100%')
-      .height(500)
+      .height('60%')
       .margin({ top: 5 })
       .customContentTransition((from: number, to: number) => {
         this.text1 = '222'
@@ -162,10 +167,6 @@ struct tabsApi1 {
         console.info("onTabBarClick index: " + index)
       })
 
-      Button('点击切换').onClick((event: ClickEvent) => {
-        this.tabsController.changeIndex(1)
-      }).id('tabsApi1_btn1')
-      Text('' + this.text1).key("tabsApi1_text1")
     }
   }
 }

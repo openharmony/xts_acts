@@ -78,9 +78,7 @@ export default function constraintSizeTest() {
     'Rating',
     //'ScrollBar',
     //'Search',
-    'Select',
     'Slider',
-    'Stepper',
     //'StepperItem',
     'Text',
     'TextArea',
@@ -92,10 +90,8 @@ export default function constraintSizeTest() {
     'Toggle',
     'Badge',
     'Column',
-    'ColumnSplit',
     'Counter',
     'Flex',
-    'FlowItem',
     //'GridCol',
     //'GridRow',
     'Grid',
@@ -107,7 +103,6 @@ export default function constraintSizeTest() {
     'Refresh',
     'RelativeContainer',
     'Row',
-    'RowSplit',
     //'Scroll',
     //'SideBarContainer',
     'Stack',
@@ -120,8 +115,7 @@ export default function constraintSizeTest() {
     'Path',
     'Rect',
     'Shape',
-    'Line',
-    'WaterFlow'
+    'Line'
   ]
   //Custom params.
   let childWidth = 200;

@@ -47,7 +47,6 @@ struct getColor1{
         this.bgc = renderNode.backgroundColor
       })
     }
-    .margin({top:100})
     .width('100%')
     .height('100%')
   }

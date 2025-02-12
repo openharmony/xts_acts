@@ -39,6 +39,7 @@ struct buttonExample {
         .textOverflow({ overflow: TextOverflow.Ellipsis })
         .selection(0,1)
         .ellipsisMode(EllipsisMode.START)
+        .height('5%')
 
 
       Button('OK')
@@ -55,27 +56,30 @@ struct buttonExample {
 
 
         })
+        .height('5%')
 
 
       Search({placeholder: 'Type to Search'})
         .searchButton('SEARCH')
         .width('90%')
-        .height(40)
         .id('searchType777777')
         .backgroundColor('#F5F5F5')
         .placeholderColor(Color.Grey)
         .placeholderFont({size: 14,weight: 400})
         .type(SearchType.PHONE_NUMBER)
+        .height('5%')
+        .margin(0)
 
       Search({placeholder: 'Type 23222'})
         .searchButton('SEARCH')
         .width('90%')
-        .height(40)
         .id('searchEMAIL66666666')
         .backgroundColor('#F5F5F5')
         .placeholderColor(Color.Grey)
         .placeholderFont({size: 14,weight: 400})
         .type(SearchType.EMAIL)
+        .height('5%')
+        .margin(0)
 
 
 
@@ -86,12 +90,12 @@ struct buttonExample {
       })
         .placeholderFont({ size: 16, weight: 400 })
         .width(336)
-        .height(36)
         .fontSize(16)
         .id('TextAreaTypeEMAIL333333333')
         .fontColor('#182431')
         .backgroundColor('#FFFFFF')
         .type(TextAreaType.EMAIL)
+        .height('5%')
 
 
 
@@ -100,40 +104,35 @@ struct buttonExample {
       })
         .placeholderFont({ size: 16, weight: 400 })
         .width(236)
-        .height(36)
         .fontSize(16)
         .fontColor('#182431')
         .backgroundColor('#FFFFFF')
         .id('TextAreaTypeNUMBER44444444')
         .type(TextAreaType.PHONE_NUMBER)
-
-
+        .height('5%')
 
 
 
 
       Text(this.text1)
-        .fontSize(12)
-        .border({ width: 1 })
-        .lineHeight(20)
-        .margin(30)
+        .fontSize(10)
         .copyOption(CopyOptions.InApp)
         .selection(this.start, this.end)
-
+        .height('15%')
+      Row(){
+        Text(''+this.start).fontSize(12).margin(0).key('selectionStart').width('40%')
+        Text(''+this.end).fontSize(12).margin(0).key('selectionEnd').width('40%')
+      }.height('5%')
       Button('Set text selection')
-        .margin({left:20})
         .onClick(() => {
           // 变更文本选中起始点、终点
           this.start = 10
           this.end = 30
         }).id('buttonSelect')
-
-      Text(''+this.start).fontSize(12).margin(10).key('selectionStart')
-      Text(''+this.end).fontSize(12).margin(10).key('selectionEnd')
-
+        .height('5%')
+    }.height('100%')
 
 
   }
-}
 
 }

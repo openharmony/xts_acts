@@ -10,28 +10,54 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import("//foundation/arkui/ace_engine/ace_config.gni")
 
 group("arkui") {
   testonly = true
-  deps = [
-    "ace_c_arkui_test:ActsAceCArkUITest",
-    "ace_c_arkui_test_api13:ActsAceCArkUI13Test",
-    "ace_c_arkui_test_api14:ActsAceCArkUI14Test",
-    "ace_c_arkui_test_api16:ActsAceCArkUI16Test",
-    "ace_ets_component_advanced:componentAdvancedTest",
-    "ace_ets_component_apilack:ActsAceEtsApiLackTest",
-    "ace_ets_component_common_attrss:componentAttrssTest",
-    "ace_ets_component_seven:componentSevenAttrssTest",
-    "ace_ets_module_noui:ActsAceEtsModuleNoUITest",
-    "ace_ets_module_ui:ActsAceEtsModuleUITest",
-    "ace_ets_ux_five:UxFiveTest",
-    "ace_ets_ux_one:UxOneTest",
-    "ace_ets_xcomponent:ActsAceXComponentEtsTest",
-    "ace_js_attribute_api:ActsAceJsApiTest",
-    "ace_napi_test:ActsAceNapiEtsTest",
-    "ace_napi_test_es:ActsAceNapiEtsEsTest",
-    "ace_standard:ActsAceStandardTest",
-    "ace_standard_video:ActsAceStandardVideoTest",
-    "libuv:libuvTest",
-  ]
+  if (ace_engine_feature_wearable) {
+    deps = [
+      "ace_c_arkui_test:ActsAceCArkUITest",
+      "ace_c_arkui_test_api13:ActsAceCArkUI13Test",
+      "ace_c_arkui_test_api14:ActsAceCArkUI14Test",
+      "ace_c_arkui_test_api16:ActsAceCArkUI16Test",
+      "ace_ets_component_advanced:componentAdvancedTest",
+      "ace_ets_component_apilack:ActsAceEtsApiLackTest",
+      "ace_ets_component_common_attrss:componentAttrssTest",
+      "ace_ets_component_seven:componentSevenAttrssTest",
+      "ace_ets_module_noui:ActsAceEtsModuleNoUITest",
+      "ace_ets_module_ui:ActsAceEtsModuleUITest",
+      "ace_ets_ux_five:UxFiveTest",
+      "ace_ets_ux_one:UxOneTest",
+      "ace_ets_xcomponent:ActsAceXComponentEtsTest",
+      "ace_js_attribute_api:ActsAceJsApiTest",
+      "ace_napi_test:ActsAceNapiEtsTest",
+      "ace_napi_test_es:ActsAceNapiEtsEsTest",
+      "ace_standard:ActsAceStandardTest",
+      "ace_standard_video:ActsAceStandardVideoTest",
+      "libuv:libuvTest",
+    ]
+  } else {
+    deps = [
+      "ace_c_arkui_test:ActsAceCArkUITest",
+      "ace_c_arkui_test_api13:ActsAceCArkUI13Test",
+      "ace_c_arkui_test_api14:ActsAceCArkUI14Test",
+      "ace_c_arkui_test_api16:ActsAceCArkUI16Test",
+      "ace_c_arkui_testwearcrop:ActsAceCArkUIWearCropTest",
+      "ace_ets_component_advanced:componentAdvancedTest",
+      "ace_ets_component_apilack:ActsAceEtsApiLackTest",
+      "ace_ets_component_common_attrss:componentAttrssTest",
+      "ace_ets_component_seven:componentSevenAttrssTest",
+      "ace_ets_module_noui:ActsAceEtsModuleNoUITest",
+      "ace_ets_module_ui:ActsAceEtsModuleUITest",
+      "ace_ets_ux_five:UxFiveTest",
+      "ace_ets_ux_one:UxOneTest",
+      "ace_ets_xcomponent:ActsAceXComponentEtsTest",
+      "ace_js_attribute_api:ActsAceJsApiTest",
+      "ace_napi_test:ActsAceNapiEtsTest",
+      "ace_napi_test_es:ActsAceNapiEtsEsTest",
+      "ace_standard:ActsAceStandardTest",
+      "ace_standard_video:ActsAceStandardVideoTest",
+      "libuv:libuvTest",
+    ]
+  }
 }

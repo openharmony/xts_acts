@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) Huawei Technologies Co., Ltd. 2024-2025. All rights reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -25,6 +25,11 @@ export const nullSanitize: (a: number) => number;
 export const pointerOverflow: (a: number) => number;
 export const returnNonnullAttribute: (a: number) => number;
 export const shiftBase: (a: number) => number;
+export const shiftBaseNegative: (a: number) => number;
 export const shiftExponent: (a: number) => number;
+export const shiftExponentNegative: (a: number) => number;
+export const shiftExponentBound: (a: number) => number;
 export const undefinedBool: () => number;
 export const vlaBound: (a: number) => number;
+export const unreachable: (a: number) => number;
+export const noReturn: (a: number) => number;

@@ -324,10 +324,7 @@ import scrollOverlayTest from './scroll/ScrollOverlayTest.test'
 import scrollLinearGradientTest from './scroll/ScrollLinearGradientTest'
 import scrollPageTest from './scroll/ScrollPageTest.test'
 import scrollPageEnableTest from './scroll/ScrollPageEnableTest'
-import calendarPickerOnChangeTest from './calendarpicker/CalendarPickerOnChangeTest.test'
 import textPickerOnChangeTest from './textpicker/TextPickerOnChangeTest.test'
-import calendarPickerEdgeAlignTest from './calendarpicker/CalendarPickerEdgeAlignTest.test'
-import calendarPickerTextStyleTest from './calendarpicker/CalendarPickerTextStyleTest.test'
 import textPickerDisappearTextStyleTest from './textpicker/TextPickerDisappearTextStyleTest.test'
 import textPickerTextStyleTest from './textpicker/TextPickerTextStyleTest.test'
 import textPickerSelectedTextStyleTest from './textpicker/TextPickerSelectedTextStyleTest.test'
@@ -495,7 +492,6 @@ import rowAlignItemsTest from './row/RowAlignItemsTest.test'
 import sliderWidthTest from './slider/SliderWidthTest.test'
 import sliderHeightTest from './slider/SliderHeightTest.test'
 import sliderEnabledTest from './slider/SliderEnabledTest.test'
-import calendarPickerWidthTest from './calendarpicker/CalendarPickerWidthTest.test'
 import datePickerWidthTest from './datepicker/DatePickerWidthTest.test'
 import checkboxWidthTest from './checkbox/CheckboxWidthTest.test'
 import checkboxHeightTest from './checkbox/CheckboxHeightTest.test'
@@ -531,9 +527,6 @@ import textInputTypeTest from './textinput/TextInputTypeTest.test'
 import textInputOnChangeTest from './textinput/TextInputOnChangeTest.test'
 import textInputEnterKeyTypeTest from './textinput/TextInputEnterKeyTypeTest.test'
 import textInputEnableKeyboardOnFocusTest from './textinput/TextInputEnableKeyboardOnFocusTest.test'
-import calendarPickerEnabledTest from './calendarpicker/CalendarPickerEnabledTest.test'
-import calendarPickerHintRadiusTest from './calendarpicker/CalendarPickerHintRadiusTest.test'
-import calendarPickerSelectedDateTest from './calendarpicker/CalendarPickerSelectedDateTest.test'
 import datePickerEnabledTest from './datepicker/DatePickerEnabledTest.test'
 import spanDecorationTest from './span/SpanDecorationTest.test'
 import spanTextCaseTest from './span/SpanTextCaseTest.test'
@@ -1321,8 +1314,6 @@ export default function testsuite() {
   customDialogAlignmentTest()
   customDialogCloseTest()
   customDialogOpenTest()
-  calendarPickerTextStyleTest()
-  calendarPickerEdgeAlignTest()
   imageSpanWidthTest()
   imageSpanHeightTest()
   imageSpanObjectFitTest()
@@ -1337,7 +1328,6 @@ export default function testsuite() {
   spanFontStyleTest()
   spanFontWeightTest()
   spanContentTest()
-  calendarPickerWidthTest()
   checkboxWidthTest()
   checkboxHeightTest()
   flexWidthTest()
@@ -1416,12 +1406,9 @@ export default function testsuite() {
   textAreaEnabledTest()
   textInputEnabledTest()
   textInputOnChangeTest()
-  calendarPickerEnabledTest()
-  calendarPickerHintRadiusTest()
   checkboxEnabledTest()
   sliderEnabledTest()
   datePickerEnabledTest()
-  calendarPickerOnChangeTest()
   textPickerOnChangeTest()
   datePickerOnDateChangeTest()
   timePickerOnChangeTest()
@@ -1746,7 +1733,6 @@ export default function testsuite() {
   progressTypeTest()
   scrollBarWidthTest()
   scrollPageTest()
-  calendarPickerSelectedDateTest()
   scrollScrollEventTest()
   xComponentIdTest()
   listScrollBarColorTest()

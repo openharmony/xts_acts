@@ -104,6 +104,19 @@ async function createFullData(dataLen: number): Promise<cryptoFramework.DataBlob
   }
 }
 
+async function doScryptCallback(kdf: cryptoFramework.Kdf,
+  spec: cryptoFramework.ScryptSpec): Promise<cryptoFramework.DataBlob> {
+  return new Promise((resolve, reject) => {
+    kdf.generateSecret(spec, (err, rawData) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(rawData);
+      }
+    });
+  });
+}
+
 export {
   stringToUint8Array,
   decToHexString,
@@ -112,5 +125,6 @@ export {
   createData,
   createFullData,
   compareNumber,
-  compareString
+  compareString,
+  doScryptCallback
 }

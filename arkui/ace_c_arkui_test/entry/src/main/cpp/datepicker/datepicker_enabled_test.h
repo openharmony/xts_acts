@@ -23,6 +23,8 @@
 namespace ArkUICapiTest {
 
 #define FOCUSABLE_TRUE 1
+#define SIZE_70 70
+#define SIZE_1 1
 
 class DatePickerEnabledTest {
 public:

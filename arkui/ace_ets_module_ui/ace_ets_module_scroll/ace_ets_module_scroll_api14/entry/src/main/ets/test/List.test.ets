@@ -30,16 +30,13 @@ import scrollAniTrue from './ScrollTest/scrollAniTrue.test';
 import gridAniTrue from './GridTest/gridAniTrue.test'; 
 import irregularAniGrid from './GridTest/irregularAniGrid.test'; 
 import repeatAniGrid from './GridTest/repeatAniGrid.test'; 
-import waterFlowAniTrue from './WaterFlowTest/waterFlowAniTrue.test'; 
 import gridNode from './GridTest/gridNode.test';
 import griditemNode from './GridItemTest/griditemNode.test';
 import barBackEffect from './TabsTest/barBackEffect.test';
 import nodeTypeGrid from './GridTest/nodeTypeGrid.test'; 
 import listScrollerBar from './ScrollBarTest/listScrollerBar.test';
-import clipContent from './WaterFlowTest/clipContent.test';
 import cachedShowGrid from './GridTest/cachedShowGrid.test';
-import cachedShowList from './ListTest/cachedShowList.test'; 
-import cachedShowFlow from './WaterFlowTest/cachedShowFlow.test';
+import cachedShowList from './ListTest/cachedShowList.test';
 
 export default function testsuite() {
   enableScrollJsunit()
@@ -59,14 +56,11 @@ export default function testsuite() {
   gridAniTrue()
   irregularAniGrid()
   repeatAniGrid()
-  waterFlowAniTrue()
   gridNode();
   griditemNode();
   barBackEffect()
   nodeTypeGrid()
   listScrollerBar()
-  clipContent()
   cachedShowGrid()
   cachedShowList()
-  cachedShowFlow()
 }

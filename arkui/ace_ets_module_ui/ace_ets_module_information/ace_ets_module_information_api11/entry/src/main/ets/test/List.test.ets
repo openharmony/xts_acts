@@ -40,10 +40,10 @@ import CounterComponentTest from './CounterTest/CounterApiTest/CounterComponentT
 
 
 export default function testsuite() {
+  progressSecTest();
   gaugeJsunit();
   CounterEnableTest();
   progressTest();
-  progressSecTest();
   badgeJsunit()
   counterJsunit()
   datapanelJsunit()

@@ -24,11 +24,26 @@ struct comSizeAbilityTest_13 {
   scroller: Scroller = new Scroller()
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
   @State space: number = 8
+  scroller1: Scroller = new Scroller()
 
   build() {
-    Scroll() {
-      Column({ space: 20 }) {
-        Column() {
+    Column() {
+      Row() {
+        Button('to_1').onClick(()=>{
+          this.scroller1.scrollToIndex(0)
+        }).key('comSizeAbilityTest_13_to_1')
+
+        Button('to_2').onClick(()=>{
+          this.scroller1.scrollToIndex(1)
+        }).key('comSizeAbilityTest_13_to_2')
+
+        Button('to_3').onClick(()=>{
+          this.scroller1.scrollToIndex(2)
+        }).key('comSizeAbilityTest_13_to_3')
+      }
+
+      List({ space: 5, initialIndex: 0, scroller: this.scroller1 }) {
+        ListItem() {
           RichText(this.data)
             .backgroundColor(0XBDDB69)
             .key("RichText_Size")
@@ -52,7 +67,7 @@ struct comSizeAbilityTest_13 {
             .transform(matrix)
         }.key('RichText_Father')
 
-        Column() {
+        ListItem() {
           Scroll(this.scroller) {
             Column() {
               ForEach(this.arr, (item: number) => {
@@ -72,7 +87,7 @@ struct comSizeAbilityTest_13 {
           .scrollBarColor(Color.Gray)
           .scrollBarWidth(10)
           .key("Scroll_Size")
-          .size({ width: 261, height: 140 })
+          .size({ width: '70%', height: '70%' })
           .translate({ x: 1, y: 1, z: 1 })
           .scale({
             x: 1,
@@ -90,9 +105,9 @@ struct comSizeAbilityTest_13 {
             centerY: 1
           })
           .transform(matrix)
-        }.key('Scroll_Father')
+        }.key('Scroll_Father').width('100%').height('40%')
 
-        Column() {
+        ListItem() {
           Search()
             .backgroundColor(0XBDDB69)
             .key("Search_Size")

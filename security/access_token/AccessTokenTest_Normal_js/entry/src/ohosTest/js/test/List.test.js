@@ -14,7 +14,9 @@
  */
 import AccessTokenTest from './AccessToken.test.js'
 import ScreenLockFileManagerJsTest from './ScreenLockFileManager.test.js'
+import FileShareJsTest from './FileShare.test.js'
 export default function testsuite() {
 AccessTokenTest()
 ScreenLockFileManagerJsTest()
+FileShareJsTest()
 }

@@ -360,19 +360,25 @@ export default function AVSessionJsTest() {
          * @tc.level     : Level0
          */
         it("SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0100", 0, async function (done) {
-            try {
-                session.on('castDisplayChange', (display) => {
-                    if (display.state === avSession.CastDisplayState.STATE_ON) {
-                        console.info('castDisplayChange display : ${display.id} ON');
-                    } else if (display.state === avSession.CastDisplayState.STATE_OFF){
-                        console.info('castDisplayChange display : ${display.id} OFF');
-                    }
-                });
-            } catch (err) {
-                expect(err.code).assertEqual(6600101);
-                console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0100 finished");
+            const isExtendedDisplayCast = canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast');
+            if (isExtendedDisplayCast) {
+                try {
+                    session.on('castDisplayChange', (display) => {
+                        if (display.state === avSession.CastDisplayState.STATE_ON) {
+                            console.info('castDisplayChange display : ${display.id} ON');
+                        } else if (display.state === avSession.CastDisplayState.STATE_OFF) {
+                            console.info('castDisplayChange display : ${display.id} OFF');
+                        }
+                    });
+                } catch (err) {
+                    expect(err.code).assertEqual(6600101);
+                    console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0100 finished");
+                }
+                done();
+            } else {
+                console.info(`canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast') false`);
+                done();
             }
-            done();
         })
 	})
 }
