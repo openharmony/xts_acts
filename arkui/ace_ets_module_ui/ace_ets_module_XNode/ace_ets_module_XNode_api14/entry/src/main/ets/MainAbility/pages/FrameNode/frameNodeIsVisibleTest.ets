@@ -33,7 +33,7 @@ struct Index {
       .id('stack')
       .visibility(Visibility.Hidden)
 
-      Button("print")
+      Button('print')
         .id('print_id')
         .onClick(() => {
           this.stackNode = this.getUIContext().getFrameNodeById('stack')
