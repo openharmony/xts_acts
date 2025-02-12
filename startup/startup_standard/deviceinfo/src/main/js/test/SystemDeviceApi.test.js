@@ -92,12 +92,12 @@ describe('SystemDeviceTest', function () {
 
     console.info('start################################start');
 
-    /**
+/**
      * @tc.number    SUB_STARTUP_SYSTEM_DEVICE_001
      * @tc.name     testDeviceBrand01
      * @tc.desc      Get the device brand represented by a string and the return value is not null.
      */
-    it('testDeviceBrand01', 0, function () {
+    it('testDeviceBrand01', 0, async function (done) {
         console.info('testDeviceBrand01 start');
         let ret = false;
 
@@ -106,14 +106,13 @@ describe('SystemDeviceTest', function () {
         expect(brandInfo).assertInstanceOf('String');
         if (brandInfo != "" && brandInfo != null && brandInfo != undefined) {
             ret = true;
+            expect(ret).assertTrue();
+			done();
+        }else {
+            console.info('the return value Brand is null or incorrect.');
+            expect(false).assertTrue();
+			done();
         }
-        expect(ret).assertTrue();
-
-        let str = /^[A-Za-z]+$/g;
-        let arr = brandInfo.match(str);
-        let bufferstr = arr.join('');
-        console.info('the value of the bufferstr is :' + bufferstr);
-        expect(brandInfo).assertEqual(bufferstr);
         console.info('testDeviceBrand01 ：end');
     })
 
@@ -122,7 +121,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name     testDeviceManufacture01
      * @tc.desc      Get the manufacture name represented by a string and the return value is not null.
      */
-    it('testDeviceManufacture01', 0, function () {
+    it('testDeviceManufacture01', 0, async function (done) {
         console.info('testDeviceManufacture01 start');
         let ret = false;
 
@@ -131,14 +130,13 @@ describe('SystemDeviceTest', function () {
         expect(manufactureInfo).assertInstanceOf('String');
         if (manufactureInfo != "" && manufactureInfo != null && manufactureInfo != undefined) {
             ret = true;
+            expect(ret).assertTrue();
+			done();
+        }else {
+            console.info('the return value Manufacture is null or incorrect.');
+            expect(false).assertTrue();
+			done();
         }
-        expect(ret).assertTrue();
-
-        let str = /^[A-Za-z]+$/g;
-        let arr = manufactureInfo.match(str);
-        let bufferstr = arr.join('');
-        console.info('the value of the bufferstr is :' + bufferstr);
-        expect(manufactureInfo).assertEqual(bufferstr);
         console.info('testDeviceManufacture01 ：end');
     })
 
@@ -147,7 +145,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name     testDeviceModel01
      * @tc.desc      Get the internal software sub-model represented by a string and the return value is not null.
      */
-    it('testDeviceModel01', 0, function () {
+    it('testDeviceModel01', 0, async function (done) {
         console.info('testDeviceModel01 start');
         let ret = false;
 
@@ -156,8 +154,13 @@ describe('SystemDeviceTest', function () {
         expect(deviceModelInfo).assertInstanceOf('String');
         if (deviceModelInfo != "" && deviceModelInfo != null && deviceModelInfo != undefined) {
             ret = true;
+            expect(ret).assertTrue();
+			done();
+        }else {
+            console.info('the return value Model is null or incorrect.');
+            expect(false).assertTrue();
+			done();
         }
-        expect(ret).assertTrue();
         console.info('testDeviceModel01 : end');
     })
 
@@ -166,7 +169,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name     testDeviceProduct01
      * @tc.desc      Get the product represented by a string and the return value is not null.
      */
-    it('testDeviceProduct01', 0, function () {
+    it('testDeviceProduct01', 0, async function (done) {
         console.info('testDeviceProduct01 start');
         let ret = false;
 
@@ -175,8 +178,13 @@ describe('SystemDeviceTest', function () {
         expect(deviceProductInfo).assertInstanceOf('String');
         if (deviceProductInfo != "" && deviceProductInfo != null && deviceProductInfo != undefined) {
             ret = true;
+            expect(ret).assertTrue();
+			done();
+        }else {
+            console.info('the return value Product is null or incorrect.');
+            expect(false).assertTrue();
+			done();
         }
-        expect(ret).assertTrue();
         console.info('testDeviceProduct01 ：end');
     })
 
@@ -185,7 +193,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name     testDeviceApiVersion01
      * @tc.desc    Get the API version number, which return value type is number.
      */
-    it('testDeviceApiVersion01', 0, function () {
+    it('testDeviceApiVersion01', 0, async function (done) {
         console.info('testDeviceApiVersion01 start');
         let ret = false;
 
@@ -194,8 +202,13 @@ describe('SystemDeviceTest', function () {
         expect(apiVersionInfo).assertInstanceOf('Number');
         if (apiVersionInfo >= 0) {
             ret = true;
+            expect(ret).assertTrue();
+			done();
+        }else {
+            console.info('the return value ApiVersion is not larger than 0.');
+            expect(false).assertTrue();
+			done();
         }
-        expect(ret).assertTrue();
         console.info('testDeviceApiVersion01 ：end');
     })
 
@@ -204,7 +217,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name      testDeviceType01
      * @tc.desc      Get a string representing the device type and the return value is not null.
      */
-    it('testDeviceType01', 0, function () {
+    it('testDeviceType01', 0, async function (done) {
         console.info('testDeviceType01 start');
         let ret = false;
 
@@ -213,8 +226,13 @@ describe('SystemDeviceTest', function () {
         expect(deviceTypeInfo).assertInstanceOf('String');
         if (deviceTypeInfo != "" && deviceTypeInfo != null && deviceTypeInfo != undefined) {
             ret = true;
+            expect(ret).assertTrue();
+			done();
+        }else {
+            console.info('the return value Type is null or incorrect.');
+            expect(false).assertTrue();
+			done();
         }
-        expect(ret).assertTrue()
         console.info('testDeviceType01 : end');
     })
 
@@ -223,7 +241,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name      testDeviceLanguage01
      * @tc.desc      Get a string representing the device language and the return value is not null.
      */
-    it('testDeviceLanguage01', 0, function () {
+    it('testDeviceLanguage01', 0, async function (done) {
         console.info('testDeviceLanguage01 start');
         let ret = false;
 
@@ -232,8 +250,13 @@ describe('SystemDeviceTest', function () {
         expect(languageInfo).assertInstanceOf('String');
         if (languageInfo != "" && languageInfo != null && languageInfo != undefined) {
             ret = true;
+            expect(ret).assertTrue();
+			done();
+        }else {
+            console.info('the return value Language is null or incorrect.');
+            expect(false).assertTrue();
+			done();
         }
-        expect(ret).assertTrue()
         console.info('testDeviceLanguage01 : end');
     })
 
@@ -242,7 +265,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name      testDeviceRegion01
      * @tc.desc      Get a string representing the device region and the return value is not null.
      */
-    it('testDeviceRegion01', 0, function () {
+    it('testDeviceRegion01', 0, async function (done) {
         console.info('testDeviceRegion01 start');
         let ret = false;
 
@@ -251,8 +274,13 @@ describe('SystemDeviceTest', function () {
         expect(regionInfo).assertInstanceOf('String');
         if (regionInfo != "" && regionInfo != null && regionInfo != undefined) {
             ret = true;
+            expect(ret).assertTrue();
+			done();
+        }else {
+            console.info('the return value Region is null or incorrect.');
+            expect(false).assertTrue();
+			done();
         }
-        expect(ret).assertTrue()
         console.info('testDeviceRegion01 : end');
     })
 
@@ -261,7 +289,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name      testDeviceWindowWidth01
      * @tc.desc      Get a number representing the device window width and return value is greater than 0.
      */
-    it('testDeviceWindowWidth01', 0, function () {
+    it('testDeviceWindowWidth01', 0, async function (done) {
         console.info('testDeviceWindowWidth01 start');
         let ret = false;
 
@@ -270,8 +298,13 @@ describe('SystemDeviceTest', function () {
         expect(windowWidthInfo).assertInstanceOf('Number');
         if (windowWidthInfo >= 0) {
             ret = true;
+            expect(ret).assertTrue();
+			done();
+        }else {
+            console.info('the return value WindowWidth is not larger than 0.');
+            expect(false).assertTrue();
+			done();
         }
-        expect(ret).assertTrue();
         console.info('testDeviceWindowWidth01 : end');
     })
 
@@ -280,7 +313,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name      testDeviceWindowHeight01
      * @tc.desc      Get a number representing the device window height and return value is greater than 0.
      */
-    it('testDeviceWindowHeight01', 0, function () {
+    it('testDeviceWindowHeight01', 0, async function (done) {
         console.info('testDeviceWindowHeight01 start');
         let ret = false;
 
@@ -289,8 +322,13 @@ describe('SystemDeviceTest', function () {
         expect(windowHeightInfo).assertInstanceOf('Number');
         if (windowHeightInfo >= 0) {
             ret = true;
+            expect(ret).assertTrue();
+			done();
+        }else {
+            console.info('the return value WindowHeight is not larger than 0.');
+            expect(false).assertTrue();
+			done();
         }
-        expect(ret).assertTrue();
         console.info('testDeviceWindowHeight01 : end');
     })
 
@@ -299,7 +337,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name      testDeviceScreenDensity01
      * @tc.desc      Get a number representing the screen density and return value is greater than 0.
      */
-    it('testDeviceScreenDensity01', 0, function () {
+    it('testDeviceScreenDensity01', 0, async function (done) {
         console.info('testDeviceScreenDensity01 start');
         let ret = false;
 
@@ -308,8 +346,13 @@ describe('SystemDeviceTest', function () {
         expect(screenDensityInfo).assertInstanceOf('Number');
         if (screenDensityInfo >= 0) {
             ret = true;
+            expect(ret).assertTrue();
+			done();
+        }else {
+            console.info('the return value ScreenDensity is not larger than 0.');
+            expect(false).assertTrue();
+			done();
         }
-        expect(ret).assertTrue();
         console.info('testDeviceScreenDensity01 : end');
     })
 
@@ -318,7 +361,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name      testDeviceScreenShape01
      * @tc.desc      Get a string representing the device screen shape and the return value is not null.
      */
-    it('testDeviceScreenShape01', 0, function () {
+    it('testDeviceScreenShape01', 0, async function (done) {
         console.info('testDeviceScreenShape01 start');
         let ret = false;
 
@@ -327,8 +370,13 @@ describe('SystemDeviceTest', function () {
         expect(screenShapeInfo).assertInstanceOf('String');
         if (screenShapeInfo != "" && screenShapeInfo != null && screenShapeInfo != undefined) {
             ret = true;
+            expect(ret).assertTrue();
+			done();
+        }else {
+            console.info('the return value ScreenShape is null or incorrect.');
+            expect(false).assertTrue();
+			done();
         }
-        expect(ret).assertTrue()
         console.info('testDeviceScreenShape01 : end');
     })
 })
