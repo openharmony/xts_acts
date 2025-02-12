@@ -49,6 +49,8 @@ export default function TextInputLetterSpacing(){
       await Utils.sleep(500);
       await driver.triggerKey(2017);
       await Utils.sleep(500);
+      await driver.triggerKey(2017);
+      await Utils.sleep(500);
       await driver.triggerKey(2024);
       await Utils.sleep(500);
       let strJson2 = getInspectorByKey('text6');
