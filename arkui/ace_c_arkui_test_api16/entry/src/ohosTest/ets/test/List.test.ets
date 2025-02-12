@@ -19,6 +19,7 @@ import textImmutablfFontWeight from "./text/textImmutablfFontWeight.test"
 import listCaseTest from "./list/ListCaseTest.test"
 import listScrollToIndexTest from "./listScrollTo/ListScrollToTest.test"
 import listItemGroupNodeAdapterTest from "./listItemGroup/ListItemGroupTest.test"
+import columnBackDropBlurTest from "./visual/columnBackDropBlurTest.test"
 
 export default function testsuite() {
   postFrameCallbackTest();
@@ -28,4 +29,5 @@ export default function testsuite() {
   listCaseTest();
   listScrollToIndexTest();
   listItemGroupNodeAdapterTest();
+  columnBackDropBlurTest();
 }
