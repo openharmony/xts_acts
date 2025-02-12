@@ -61,7 +61,7 @@ struct PageOne {
     }
     .title('pageOne')
     .onResult((result: ESObject) => {
-      this.info = result as string;
+      this.info = result + '';
     })
   }
 }
@@ -75,7 +75,7 @@ struct PageTwo {
         this.pageInfos.pop('test')
       }).height('10%')
       Button('popToIndex').id('popIndexId').onClick(() => {
-        this.pageInfos.popToIndex(0, 'popToIndex')
+        this.pageInfos.popToIndex(0, 2)
       }).height('10%')
       Button('popToName').id('popNameId').onClick(() => {
         this.pageInfos.popToName('pageOne', 'popToName')
