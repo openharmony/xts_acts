@@ -18,6 +18,7 @@ import windowManager from '@ohos.window';
 import commoneventmanager from '@ohos.commonEventManager';
 import prompt from '@ohos.prompt';
 import inputMethodEngine from '@ohos.inputMethodEngine';
+import { util } from '@kit.ArkTS';
 
 let inputMethodAbility = inputmethodengine.getInputMethodAbility();
 const TAG = 'keyboardController';
@@ -217,6 +218,30 @@ export class KeyboardController {
           console.debug(TAG + '====>Sub_InputMethod_IME_ScreenRotation_0200 event:' + data.event);
           that.Sub_InputMethod_IME_ScreenRotation_0200();
           break;
+        case 230:
+          console.debug(TAG + '====>Sub_InputMethod_IME_Custom_0900 event:' + data.event);
+          that.Sub_InputMethod_IME_Custom_0900();
+          break;
+        case 231:
+          console.debug(TAG + '====>Sub_InputMethod_IME_Custom_0200 event:' + data.event);
+          that.Sub_InputMethod_IME_Custom_0200();
+          break;
+        case 232:
+          console.debug(TAG + '====>Sub_InputMethod_IME_Custom_0800 event:' + data.event);
+          that.Sub_InputMethod_IME_Custom_0800();
+          break;
+        case 233:
+          console.debug(TAG + '====>Sub_InputMethod_IME_Custom_0400 event:' + data.event);
+          that.Sub_InputMethod_IME_Custom_0400();
+          break;
+        case 234:
+          console.debug(TAG + '====>Sub_InputMethod_IME_Custom_0300 event:' + data.event);
+          that.Sub_InputMethod_IME_Custom_0300();
+          break;
+        case 235:
+          console.debug(TAG + '====>Sub_InputMethod_IME_Custom_1100 event:' + data.event);
+          that.Sub_InputMethod_IME_Custom_1100();
+          break;
         case 240:
           console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0100 event:' + data.event);
           that.Sub_Misc_inputMethod_Panel_onSizeChange_0100();
@@ -224,6 +249,18 @@ export class KeyboardController {
         case 241:
           console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0200 event:' + data.event);
           that.Sub_Misc_inputMethod_Panel_onSizeChange_0200();
+          break;
+        case 250:
+          console.debug(TAG + '====>Sub_InputMethod_IME_Dragging_1100 event:' + data.event);
+          that.Sub_InputMethod_IME_Dragging_1100();
+          break;
+        case 251:
+          console.debug(TAG + '====>Sub_InputMethod_IME_Dragging_0800 event:' + data.event);
+          that.Sub_InputMethod_IME_Dragging_0800();
+          break;
+        case 253:
+          console.debug(TAG + '====>Sub_InputMethod_IME_Dragging_0900 event:' + data.event);
+          that.Sub_InputMethod_IME_Dragging_0900();
           break;
 
       }
@@ -237,7 +274,22 @@ export class KeyboardController {
         console.info(TAG + '====>unSubscriberCallback finsh');
       }
     }  
-  }  
+  }
+
+  public newArrayBuffer(str:string): ArrayBuffer {
+    let arrayBuffer = new ArrayBuffer(str.length);
+    const view = new Uint8Array(arrayBuffer);
+    for(let i = 0; i < str.length; i++){
+      view[i] = str.charCodeAt(i);
+    }
+    return arrayBuffer;
+  }
+
+  public GetArrayBufferString(buffer: ArrayBuffer): string {
+    const decoder = util.TextDecoder.create('"utf-8"');
+    const str = decoder.decodeWithStream(new Uint8Array(buffer));
+    return str;
+  }
 
   private initWindow(): void {
     display.getDefaultDisplay().then(dis => {
@@ -1278,9 +1330,9 @@ export class KeyboardController {
         })
         console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0100 display_info.width1: ' + this.display_info.width);
         console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0100 display_info.height1: ' + this.display_info.height);
-        await this.softKeyboardPanel.resize(this.display_info.width * 0.5, this.display_info.height * 0.5);
-        console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0100 display_info.width2: ' + this.display_info.width * 0.5);
-        console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0100 display_info.height2: ' + this.display_info.height * 0.5);
+        await this.softKeyboardPanel.resize(200, 100);
+        console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0100 display_info.width2: ' + this.display_info.width);
+        console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0100 display_info.height2: ' + this.display_info.height);
       } else {
         commonEventPublishData = {
           data: 'FAILED'
@@ -1312,13 +1364,24 @@ export class KeyboardController {
           count += 1;
           console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 off SizeChange count: ' + count);
         })
+        let flage:boolean = true;
         let t1 = setInterval(async () => {
-          await this.softKeyboardPanel.resize(this.display_info.width * 0.45, this.display_info.height * 0.45);
-          await this.softKeyboardPanel.resize(this.display_info.width * 0.55, this.display_info.height * 0.55)
+          if(flage === true){
+            flage = false;
+            console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0200 display_info.width: ' + this.display_info.width);
+            console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0200 display_info.height: ' + this.display_info.height);
+            await this.softKeyboardPanel.resize(200, 120);
+          }else{
+            flage = true;
+            console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0200 display_info.width: ' + this.display_info.width);
+            console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0200 display_info.height: ' + this.display_info.height);
+            await this.softKeyboardPanel.resize(200, 130);
+          }
           timeCount += 1;
           console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 timeCount: ' + timeCount);
           if (timeCount ===2){
             clearInterval(t1)
+            console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 clearInterval success');
           }
         }, 100)
 
@@ -1341,6 +1404,305 @@ export class KeyboardController {
       console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 catch error: ' + JSON.stringify(error));
       commoneventmanager.publish('Sub_Misc_inputMethod_Panel_onSizeChange_0200', commonEventPublishData, this.publishCallback);
     }
+  }
+
+  private Sub_InputMethod_IME_Dragging_1100(): void {
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    console.info(TAG + '====>Sub_InputMethod_IME_Dragging_1100 success');
+    try {
+      if (this.softKeyboardPanel !== null) {
+        try {
+          this.softKeyboardPanel.startMoving();
+          console.info(TAG + '====>Sub_InputMethod_IME_Dragging_1100 startMoving success');
+        } catch (err) {
+          console.info(TAG + '====>Sub_InputMethod_IME_Dragging_1100 startMoving err' + JSON.stringify(err));
+          if(err.code === 12800017){
+            commonEventPublishData = {
+              data: 'SUCCESS'
+            };
+          }
+        }
+      } else {
+        console.info(TAG + '====>Sub_InputMethod_IME_Dragging_1100 this.softKeyboardPanel is null');
+      }
+      commoneventmanager.publish('Sub_InputMethod_IME_Dragging_1100', commonEventPublishData, this.publishCallback);
+    } catch (error) {
+      console.info(TAG + '====>Sub_InputMethod_IME_Dragging_1100 catch error: ' + JSON.stringify(error));
+      commoneventmanager.publish('Sub_InputMethod_IME_Dragging_1100', commonEventPublishData, this.publishCallback);
+    }
+  }
+
+  private async Sub_InputMethod_IME_Dragging_0800(): Promise<void> {
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    console.info(TAG + '====>Sub_InputMethod_IME_Dragging_0800 success');
+    try {
+      if (this.softKeyboardPanel !== null) {
+        try {
+          let num = await this.softKeyboardPanel.getDisplayId();
+          console.info(TAG + '====>Sub_InputMethod_IME_Dragging_0800 typeof num: ' + typeof(num));
+          if(typeof(num) === 'number'){
+            commonEventPublishData = {
+              data: 'SUCCESS'
+            };
+          }
+        } catch (err) {
+          console.info(TAG + '====>Sub_InputMethod_IME_Dragging_0800 getDisplayId err' + JSON.stringify(err));
+        }
+      } else {
+        console.info(TAG + '====>Sub_InputMethod_IME_Dragging_0800 this.softKeyboardPanel is null');
+      }
+      commoneventmanager.publish('Sub_InputMethod_IME_Dragging_0800', commonEventPublishData, this.publishCallback);
+    } catch (error) {
+      console.info(TAG + '====>Sub_InputMethod_IME_Dragging_0800 catch error: ' + JSON.stringify(error));
+      commoneventmanager.publish('Sub_InputMethod_IME_Dragging_0800', commonEventPublishData, this.publishCallback);
+    }
+  }
+
+  private async Sub_InputMethod_IME_Dragging_0900(): Promise<void> {
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    console.info(TAG + '====>Sub_InputMethod_IME_Dragging_0900 success');
+    try {
+      let panelInfo: inputMethodEngine.PanelInfo = {
+        type: inputMethodEngine.PanelType.STATUS_BAR,
+        flag: inputMethodEngine.PanelFlag.FLG_FLOATING
+      }
+      inputMethodAbility.createPanel(this.mContext, panelInfo).then(async(inputPanel: inputMethodEngine.Panel) => {
+        if(inputPanel){
+          await inputPanel.resize(500, 100);
+          await inputPanel.moveTo(0, 500);
+          console.info(TAG + '====>Sub_InputMethod_IME_Dragging_0900 creat panel success!');
+          let displayId = await inputPanel.getDisplayId();
+          console.info(TAG + '====>Sub_InputMethod_IME_Dragging_0900 getDisplayId success!');
+          commonEventPublishData = {
+            data: typeof displayId
+          };
+        }
+        await inputMethodAbility.destroyPanel(inputPanel);
+        commoneventmanager.publish('Sub_InputMethod_IME_Dragging_0900', commonEventPublishData, this.publishCallback);
+      }).catch((err) => {
+        console.info(TAG + '====>Sub_InputMethod_IME_Dragging_0900 creat panel throw err: ' + JSON.stringify(err));
+        commoneventmanager.publish('Sub_InputMethod_IME_Dragging_0900', commonEventPublishData, this.publishCallback);
+      })
+    } catch (error) {
+      console.info(TAG + '====>Sub_InputMethod_IME_Dragging_0900 catch error: ' + JSON.stringify(error));
+      commoneventmanager.publish('Sub_InputMethod_IME_Dragging_0900', commonEventPublishData, this.publishCallback);
+    }
+  }
+
+  private Sub_InputMethod_IME_Custom_0900(): void {
+    console.info(TAG +'====>Sub_InputMethod_IME_Custom_0900 data');
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      let that = this;
+      let msgHandler: inputMethodEngine.MessageHandler = {
+        onTerminated(): void {
+          console.info(TAG +'====>Sub_InputMethod_IME_Custom_0900 onTerminated');
+        },
+        onMessage(msgId: string, msgParam?: ArrayBuffer): void {
+          console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 onMessage msgId: ' + msgId + ', msgParam: ' +
+          that.GetArrayBufferString(msgParam) + ', msgParamObj' + msgParam);
+          console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 sedMessages msgIdSize: ' + msgId.length + ', msgParamSize: ' +
+            that.GetArrayBufferString(msgParam)?.length + ', ArrayBufferSize' +  msgParam?.byteLength);
+          if(msgId === 'Sub_InputMethod_IME_Custom_0900'){
+            console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 start sendMessage');
+            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0900', that.newArrayBuffer('SUCCESS'))
+          }else{
+            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0900', that.newArrayBuffer('FAILED'))
+          }
+          that.InputClient.recvMessage()
+        }
+      }
+      this.InputClient.recvMessage(msgHandler);
+      commonEventPublishData = {
+        data: 'SUCCESS'
+      };
+    } catch (error) {
+      console.info(TAG +'====>Sub_InputMethod_IME_Custom_0900 recvMessage catch err!');
+    }
+    let t = setTimeout(() => {
+      clearTimeout(t);
+      commoneventmanager.publish('Sub_InputMethod_IME_Custom_0900', commonEventPublishData, this.publishCallback);
+    }, 100)
+  }
+
+  private Sub_InputMethod_IME_Custom_0200(): void {
+    console.info(TAG +'====>Sub_InputMethod_IME_Custom_0200 data');
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      let that = this;
+      let msgHandler: inputMethodEngine.MessageHandler = {
+        onTerminated(): void {
+          console.info(TAG +'====>Sub_InputMethod_IME_Custom_0200 onTerminated');
+        },
+        onMessage(msgId: string, msgParam?: ArrayBuffer): void {
+          console.info(TAG + '====>Sub_InputMethod_IME_Custom_0200 onMessage msgId: ' + msgId + ', msgParam: ' +
+          that.GetArrayBufferString(msgParam) + ', msgParamObj' + msgParam);
+          console.info(TAG + '====>Sub_InputMethod_IME_Custom_0200 sedMessages msgIdSize: ' + msgId.length + ', msgParamSize: ' +
+            that.GetArrayBufferString(msgParam)?.length + ', ArrayBufferSize' +  msgParam?.byteLength);
+          if(msgId.length === 256 && msgParam?.byteLength === 131072){
+            console.info(TAG + '====>Sub_InputMethod_IME_Custom_0200 start sendMessage');
+            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0200', that.newArrayBuffer('SUCCESS'))
+          }else{
+            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0200', that.newArrayBuffer('FAILED'))
+          }
+          that.InputClient.recvMessage()
+        }
+      }
+      this.InputClient.recvMessage(msgHandler);
+      commonEventPublishData = {
+        data: 'SUCCESS'
+      };
+    } catch (error) {
+      console.info(TAG +'====>Sub_InputMethod_IME_Custom_0200 recvMessage catch err!');
+    }
+    let t = setTimeout(() => {
+      clearTimeout(t);
+      commoneventmanager.publish('Sub_InputMethod_IME_Custom_0200', commonEventPublishData, this.publishCallback);
+    }, 100)
+  }
+
+  private Sub_InputMethod_IME_Custom_0800(): void {
+    console.info(TAG +'====>Sub_InputMethod_IME_Custom_0800 data');
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      let that = this;
+      let msgHandler: inputMethodEngine.MessageHandler = {
+        onTerminated(): void {
+          console.info(TAG +'====>Sub_InputMethod_IME_Custom_0800 onTerminated');
+        },
+        onMessage(msgId: string, msgParam?: ArrayBuffer): void {
+          console.info(TAG + '====>Sub_InputMethod_IME_Custom_0800 onMessage msgId: ' + msgId + ', msgParam: ' +
+          that.GetArrayBufferString(msgParam) + ', msgParamObj' + msgParam);
+          console.info(TAG + '====>Sub_InputMethod_IME_Custom_0800 sedMessages msgIdSize: ' + msgId.length + ', msgParamSize: ' +
+            that.GetArrayBufferString(msgParam)?.length + ', ArrayBufferSize' +  msgParam?.byteLength);
+          if(msgId.length === 0 && msgParam?.byteLength === 131072){
+            console.info(TAG + '====>Sub_InputMethod_IME_Custom_0800 start sendMessage');
+            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0800', that.newArrayBuffer('SUCCESS'))
+          }else{
+            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0800', that.newArrayBuffer('FAILED'))
+          }
+          that.InputClient.recvMessage()
+        }
+      }
+      this.InputClient.recvMessage(msgHandler);
+      commonEventPublishData = {
+        data: 'SUCCESS'
+      };
+    } catch (error) {
+      console.info(TAG +'====>Sub_InputMethod_IME_Custom_0800 recvMessage catch err!');
+    }
+    let t = setTimeout(() => {
+      clearTimeout(t);
+      commoneventmanager.publish('Sub_InputMethod_IME_Custom_0800', commonEventPublishData, this.publishCallback);
+    }, 100)
+  }
+
+  private Sub_InputMethod_IME_Custom_0400(): void {
+    console.info(TAG +'====>Sub_InputMethod_IME_Custom_0400 data');
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      let that = this;
+      let msgHandler: inputMethodEngine.MessageHandler = {
+        onTerminated(): void {
+          console.info(TAG +'====>Sub_InputMethod_IME_Custom_0400 onTerminated');
+        },
+        onMessage(msgId: string, msgParam?: ArrayBuffer): void {
+          console.info(TAG + '====>Sub_InputMethod_IME_Custom_0400 onMessage msgId: ' + msgId + ', msgParam: ' +
+          that.GetArrayBufferString(msgParam) );
+          that.InputClient.recvMessage()
+        }
+      }
+      this.InputClient.recvMessage(msgHandler);
+      commonEventPublishData = {
+        data: 'SUCCESS'
+      };
+    } catch (error) {
+      console.info(TAG +'====>Sub_InputMethod_IME_Custom_0400 recvMessage catch err!');
+    }
+    let t = setTimeout(() => {
+      clearTimeout(t);
+      commoneventmanager.publish('Sub_InputMethod_IME_Custom_0400', commonEventPublishData, this.publishCallback);
+    }, 100)
+  }
+
+  private Sub_InputMethod_IME_Custom_0300(): void {
+    console.info(TAG +'====>Sub_InputMethod_IME_Custom_0300 data');
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      let that = this;
+      let msgHandler: inputMethodEngine.MessageHandler = {
+        onTerminated(): void {
+          console.info(TAG +'====>Sub_InputMethod_IME_Custom_0300 onTerminated');
+        },
+        onMessage(msgId: string, msgParam?: ArrayBuffer): void {
+          console.info(TAG + '====>Sub_InputMethod_IME_Custom_0300 onMessage msgId: ' + msgId + ', msgParam: ' +
+          that.GetArrayBufferString(msgParam) );
+          that.InputClient.recvMessage()
+        }
+      }
+      this.InputClient.recvMessage(msgHandler);
+      commonEventPublishData = {
+        data: 'SUCCESS'
+      };
+    } catch (error) {
+      console.info(TAG +'====>Sub_InputMethod_IME_Custom_0300 recvMessage catch err!');
+    }
+    let t = setTimeout(() => {
+      clearTimeout(t);
+      commoneventmanager.publish('Sub_InputMethod_IME_Custom_0300', commonEventPublishData, this.publishCallback);
+    }, 100)
+  }
+
+  private Sub_InputMethod_IME_Custom_1100(): void {
+    console.info(TAG +'====>Sub_InputMethod_IME_Custom_1100 data');
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      let that = this;
+      let msgHandler: inputMethodEngine.MessageHandler = {
+        onTerminated(): void {
+          console.info(TAG +'====>Sub_InputMethod_IME_Custom_1100 onTerminated');
+        },
+        onMessage(msgId: string, msgParam?: ArrayBuffer): void {
+          console.info(TAG + '====>Sub_InputMethod_IME_Custom_1100 onMessage msgId: ' + msgId + ', msgParam: ' +
+          that.GetArrayBufferString(msgParam) + ', msgParamObj' + msgParam);
+          if(msgId.length === 256 && msgParam?.byteLength === undefined){
+            console.info(TAG + '====>Sub_InputMethod_IME_Custom_1100 start sendMessage');
+            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_1100', that.newArrayBuffer('SUCCESS'))
+          }else{
+            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_1100', that.newArrayBuffer('FAILED'))
+          }
+          that.InputClient.recvMessage()
+        }
+      }
+      this.InputClient.recvMessage(msgHandler);
+      commonEventPublishData = {
+        data: 'SUCCESS'
+      };
+    } catch (error) {
+      console.info(TAG +'====>Sub_InputMethod_IME_Custom_1100 recvMessage catch err!');
+    }
+    let t = setTimeout(() => {
+      clearTimeout(t);
+      commoneventmanager.publish('Sub_InputMethod_IME_Custom_1100', commonEventPublishData, this.publishCallback);
+    }, 100)
   }
 
 }
