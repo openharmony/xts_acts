@@ -18,11 +18,12 @@ import ConnectionTest from './Connection.test';
 import EmptyTest from './Empty.test';
 import sim from '@ohos.telephony.sim';
 
-export default function testsuite() {if (sim.getMaxSimCount()>1){
-  connectionPublicTest();
-  ConnectionTest();
-}
-else{
-  EmptyTest()
-}
+export default function testsuite() {
+    if (sim.getMaxSimCount()>1){
+        connectionPublicTest();
+        ConnectionTest();
+    }
+    else{
+        EmptyTest()
+    }
 }
