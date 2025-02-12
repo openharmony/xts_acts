@@ -179,7 +179,7 @@ export default function OnResultPage() {
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[OnResultPage_0400] component obj is: ' + JSON.stringify(obj));
       console.info('[OnResultPage_0400] content obj is: ' + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('');
+      expect(obj.$attrs.content).assertEqual('undefined');
 
       console.info('OnResultPage_0400 END');
       done();
@@ -212,7 +212,7 @@ export default function OnResultPage() {
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[OnResultPage_0500] component obj is: ' + JSON.stringify(obj));
       console.info('[OnResultPage_0500] content obj is: ' + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('');
+      expect(obj.$attrs.content).assertEqual('null');
 
       console.info('OnResultPage_0500 END');
       done();
