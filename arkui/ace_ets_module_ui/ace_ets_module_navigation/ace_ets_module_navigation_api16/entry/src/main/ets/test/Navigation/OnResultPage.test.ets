@@ -113,7 +113,7 @@ export default function OnResultPage() {
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[OnResultPage_0200] component obj is: ' + JSON.stringify(obj));
       console.info('[OnResultPage_0200] content obj is: ' + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('popToIndex');
+      expect(obj.$attrs.content).assertEqual('2');
 
       console.info('OnResultPage_0200 END');
       done();
