@@ -14,9 +14,15 @@
  */
 
 import NoHaveInternetTest from './noHaveInternet.test';
+import EmptyTest from './Empty.test';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
+  if (sim.getMaxSimCount()>1){
   NoHaveInternetTest();
+}else{
+  EmptyTest()
+}
 }
 
 

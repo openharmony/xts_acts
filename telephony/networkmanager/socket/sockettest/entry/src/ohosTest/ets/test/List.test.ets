@@ -27,20 +27,26 @@ import TCPSocketConnectionTest from './TCPSocketConnection.test';
 import SocketGetLocalAddressTest from './SocketGetLocalAddress.test';
 import TLSSocketUpgradeTest from './TLSSocketUpgrade.test';
 import TlsSkipRemoteValidationTest from './TlsSkipRemoteValidation.test';
+import EmptyTest from './Empty.test';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  TLSSocketServerTest();
-  UDPSocket();
-  TLSSocket();
-  TLSSocketsTest();
-  TCPSocketTest();
-  TCPSocketConnectionTest();
-  MulticastSocket();
-  TCPSocketServerTest();
-  tlsSocketConnectionTest();
-  TLSSocketConnectionsTest();
-  SocketGetLocalAddressTest();
-  TLSSocketUpgradeTest();
-  TlsSkipRemoteValidationTest();
+  if (sim.getMaxSimCount()>1){
+    TLSSocketServerTest();
+    UDPSocket();
+    TLSSocket();
+    TLSSocketsTest();
+    TCPSocketTest();
+    TCPSocketConnectionTest();
+    MulticastSocket();
+    TCPSocketServerTest();
+    tlsSocketConnectionTest();
+    TLSSocketConnectionsTest();
+    SocketGetLocalAddressTest();
+    TLSSocketUpgradeTest();
+    TlsSkipRemoteValidationTest();
+  }else{
+    EmptyTest()
+  }
 }
 

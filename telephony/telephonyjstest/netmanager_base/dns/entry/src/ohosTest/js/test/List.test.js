@@ -14,8 +14,14 @@
  */
  import Telephony_NETMANAGER_TestDNSTest from './NetworkManagerDNS.test.js';
  import netSyncTest from './NetSync.test.js'
+import EmptyTest from './Empty.test'
+ import sim from '@ohos.telephony.sim'
 
  export default function testsuite() {
-    Telephony_NETMANAGER_TestDNSTest();
-	netSyncTest();
+    if(sim.getMaxSimCount()>1){
+        Telephony_NETMANAGER_TestDNSTest();
+	    netSyncTest();
+    }else{
+        EmptyTest()
+    }
  }

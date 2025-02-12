@@ -17,10 +17,16 @@ import HttpRequestMethodTest from './HttpRequestMethod.test';
 import HttpRequestAndDestroyTest from './HttpRequestAndDestory.test';
 import HttpRequestInStreamTest from './HttpRequestInStream.test';
 import HttpRequestOptionsTest from './HttpRequestOptions.test';
+import EmptyTest from './Empty.test';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
+if (sim.getMaxSimCount()>1){
   HttpRequestMethodTest();
   HttpRequestAndDestroyTest();
   HttpRequestInStreamTest();
   HttpRequestOptionsTest();
+}else{
+    EmptyTest()
+  }
 }
