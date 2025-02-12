@@ -52,13 +52,13 @@ struct ListItemGroupExample {
 
   build() {
     Column() {
-      List({ space: 20 }) {
+      List({ space: 2 }) {
         ForEach(this.timetable, (item: ESObject) => {
           ListItemGroup({ header:this.itemHead(item.title), footer:this.itemFoot(item.projects.length) ,style:ListItemGroupStyle.CARD}) {
             ForEach(item.projects, (project: ESObject) => {
               ListItem() {
                 Text(project)
-                  .width("100%").height(100).fontSize(20)
+                  .width("100%").height('10%').fontSize(20)
                   .textAlign(TextAlign.Center).backgroundColor(0xFFFFFF)
               }
             }, (item: string) => item)

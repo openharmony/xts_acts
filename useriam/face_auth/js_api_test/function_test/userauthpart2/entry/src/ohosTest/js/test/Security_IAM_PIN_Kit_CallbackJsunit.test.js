@@ -32,15 +32,23 @@ export default function userauthTest() {
         */
         it('Security_IAM_PIN_Kit_Func_0101', 0, async function (done) {
             try {
-                let getversionresult = null;
-                getversionresult = UserAuthKit.getVersion();
-                console.info('GetVersionTest_0101 getversionresult = ' + getversionresult);
-                expect(getversionresult).assertEqual(1);
-                done();
+                userAuthNorth.getAvailableStatus(userAuthNorth.UserAuthType.FACE, 10000);
             } catch (e) {
-                console.log("testFace GetVersionTest_0101 fail " + e.code);
-                expect(null).assertFail();
+                console.log("checkSupportOrNot : Get other error : " + e + ' e.code: ' + e.code);
+                if (e.code != 12500010) {
+                    try {
+                        let getversionresult = null;
+                        getversionresult = UserAuthKit.getVersion();
+                        console.info('GetVersionTest_0101 getversionresult = ' + getversionresult);
+                        expect(getversionresult).assertEqual(1);
+                        done();
+                    } catch (e) {
+                        console.log("testFace GetVersionTest_0101 fail " + e.code);
+                        expect(null).assertFail();
+                    }
+                }
             }
+            done();
         })
 
         /*

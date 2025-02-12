@@ -2,7 +2,6 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/List/headerList",
-        "MainAbility/pages/WaterFlow/waterFlowFad",
         "MainAbility/pages/Tabs/tabsOpacity",
         "MainAbility/pages/Tabs/bindTabsScroll",
         "MainAbility/pages/List/listItemGroup",

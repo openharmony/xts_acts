@@ -48,7 +48,7 @@ class MyDataSourceT5 implements IDataSource {
 @Component
 struct SwiperExampleT5 {
   private swiperController: SwiperController = new SwiperController()
-   @State data: MyDataSourceT5 = new MyDataSourceT5([])
+  @State data: MyDataSourceT5 = new MyDataSourceT5([])
 
   aboutToAppear(): void {
     let list: number[] = []
@@ -60,6 +60,33 @@ struct SwiperExampleT5 {
 
   build() {
     Column({ space: 5 }) {
+      Row({ space: 2 }) {
+        Button('showNext')
+          .onClick(() => {
+            this.swiperController.showNext()
+          }).key("showNextTT")
+        Button('showPrevious')
+          .onClick(() => {
+            this.swiperController.showPrevious()
+          }).key("showPreviousTT")
+      }
+
+      Button('changeIndex').id('change_8')
+        .onClick(() => {
+          this.swiperController.changeIndex(7)
+          console.log('change Index 8')
+        })
+
+      Row({ space: 2 }) {
+        Button('add')
+          .onClick(() => {
+            this.data.add();
+          }).key("addTT")
+        Button('delete')
+          .onClick(() => {
+            this.data.delete()
+          }).key("deleteTT")
+      }
       Swiper(this.swiperController) {
         LazyForEach(this.data, (item: string) => {
           Text(item.toString())
@@ -108,34 +135,6 @@ struct SwiperExampleT5 {
         console.info("current offset: " + extraInfo.currentOffset)
       })
 
-      Row({ space: 12 }) {
-        Button('showNext')
-          .onClick(() => {
-            this.swiperController.showNext()
-          }).key("showNextTT")
-        Button('showPrevious')
-          .onClick(() => {
-            this.swiperController.showPrevious()
-          }).key("showPreviousTT")
-
-      }.margin(5)
-	  
-      Button('changeIndex').id('change_8')
-        .onClick(() => {
-          this.swiperController.changeIndex(7)
-          console.log('change Index 8')
-        })
-
-      Row({ space: 12 }) {
-        Button('add')
-          .onClick(() => {
-              this.data.add();
-          }).key("addTT")
-        Button('delete')
-          .onClick(() => {
-            this.data.delete()
-          }).key("deleteTT")
-      }.margin(5)
     }.width('100%')
     .margin({ top: 10 }).backgroundColor(Color.Brown)
   }

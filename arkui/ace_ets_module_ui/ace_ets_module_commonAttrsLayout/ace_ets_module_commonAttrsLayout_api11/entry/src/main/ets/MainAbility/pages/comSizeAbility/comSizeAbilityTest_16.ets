@@ -26,6 +26,7 @@ struct comSizeAbilityTest_16 {
   @State TextAreaSize: number[] = [150, 120]
   @State TextClockSize: number[] = [145, 110]
   @State text: string = ''
+  scroller: Scroller = new Scroller()
 
   @Builder
   TabBuilder(index: number) {
@@ -39,9 +40,23 @@ struct comSizeAbilityTest_16 {
   }
 
   build() {
-    Scroll() {
-      Column({ space: 20 }) {
-        Column() {
+    Column() {
+      Row() {
+        Button('to_1').onClick(()=>{
+          this.scroller.scrollToIndex(0)
+        }).key('comSizeAbilityTest_16_to_1')
+
+        Button('to_2').onClick(()=>{
+          this.scroller.scrollToIndex(1)
+        }).key('comSizeAbilityTest_16_to_2')
+
+        Button('to_3').onClick(()=>{
+          this.scroller.scrollToIndex(2)
+        }).key('comSizeAbilityTest_16_to_3')
+      }
+
+      List({ space: 5, initialIndex: 0, scroller: this.scroller }) {
+        ListItem() {
           Tabs({ barPosition: BarPosition.End, controller: this.controller }) {
             TabContent() {
               Column() {
@@ -83,7 +98,7 @@ struct comSizeAbilityTest_16 {
           .transform(matrix)
         }.width('100%').key('Tab_Father')
 
-        Column() {
+        ListItem() {
           TextArea()
             .backgroundColor(0XBDDB69)
             .key("TextArea_Size")
@@ -107,7 +122,7 @@ struct comSizeAbilityTest_16 {
             .transform(matrix)
         }.key('TextArea_Father')
 
-        Column() {
+        ListItem() {
           TextClock()
             .backgroundColor(0XBDDB69)
             .key("TextClock_Size")

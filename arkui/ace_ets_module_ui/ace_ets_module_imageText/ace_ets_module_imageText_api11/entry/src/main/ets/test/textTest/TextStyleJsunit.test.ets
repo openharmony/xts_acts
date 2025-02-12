@@ -17,6 +17,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function textStyleJsunit() {
   describe('textStyleTest', () => {
@@ -44,17 +46,17 @@ export default function textStyleJsunit() {
       await CommonFunc.sleep(1000);
       console.info("textStyle after each called");
     });
-
+	let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_font_size').id)
 
     it('testTextStyle006', 0, async () => {
       console.info('[testTextStyle006] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('fontSize');
       console.info("[testTextStyle006] component strJson:" + strJson);
-      
       console.info("[testTextStyle006] fontSize: " + JSON.parse(strJson).$attrs.fontSize);
-      expect(JSON.parse(strJson).$attrs.fontSize).assertEqual('16.00fp');
-
+	  console.info("[testTextStyle006] fontSize: " + $r('sys.float.ohos_id_text_font_size'));
+	  expect(JSON.parse(strJson).$attrs.fontSize).assertEqual(px2fp(resourceSize)+'.00fp');
+	  
     });
 
     it('testTextStyle007', 0, async () => {
@@ -79,8 +81,8 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle007] component strJson:" + strJson);
       
       console.info("[testTextStyle007] fontSize: " + JSON.parse(strJson).$attrs.fontSize);
-      expect(JSON.parse(strJson).$attrs.fontSize).assertEqual('16.00fp');
 
+	  expect(JSON.parse(strJson).$attrs.fontSize).assertEqual(px2fp(resourceSize)+'.00fp');
     });
 
     it('testTextStyle008', 0, async () => {
@@ -105,8 +107,8 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle008] component strJson:" + strJson);
       
       console.info("[testTextStyle008] fontSize: " + JSON.parse(strJson).$attrs.fontSize);
-      expect(JSON.parse(strJson).$attrs.fontSize).assertEqual('16.00fp');
 
+	  expect(JSON.parse(strJson).$attrs.fontSize).assertEqual(px2fp(resourceSize)+'.00fp');
     });
 
     it('testTextStyle009', 0, async () => {
@@ -131,8 +133,8 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle009] component strJson:" + strJson);
       
       console.info("[testTextStyle009] fontSize: " + JSON.parse(strJson).$attrs.fontSize);
-      expect(JSON.parse(strJson).$attrs.fontSize).assertEqual('16.00fp');
 
+	  expect(JSON.parse(strJson).$attrs.fontSize).assertEqual(px2fp(resourceSize)+'.00fp');
     });
 
     it('testTextStyle010', 0, async () => {
@@ -157,7 +159,8 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle010] component strJson:" + strJson);
       
       console.info("[testTextStyle010] fontSize: " + JSON.parse(strJson).$attrs.fontSize);
-      expect(JSON.parse(strJson).$attrs.fontSize).assertEqual('16.00fp');
+
+	  expect(JSON.parse(strJson).$attrs.fontSize).assertEqual(px2fp(resourceSize)+'.00fp');
 
     });
 

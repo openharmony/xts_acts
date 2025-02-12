@@ -63,8 +63,8 @@ struct SwiperVerticalTest {
         }.width('100%').height('100%').backgroundColor(0xD2B48C).key('verticalkey06')
       }
       .key('verticalkey')
-      .height(300)
-      .width(300)
+      .height('60%')
+      .width('90%')
       .index(0)
       .autoPlay(false)
       .indicator(true)

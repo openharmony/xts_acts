@@ -21,37 +21,49 @@ struct ImageExample1 {
   @State right: number = 10
   build() {
     Column() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
-        Text('' + this.top ).id('top_test')
-        Text('' +  this.bottom).id('bottom_test')
-        Text('' +  this.left).id('left_test')
-        Text('' +  this.right).id('right_test')
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Auto }) {
+        Text('').height('10%').textAlign(TextAlign.Center)
+        Text('' + this.top).id('top_test').height('5%').textAlign(TextAlign.Center)
+        Text('' + this.bottom).id('bottom_test').height('5%').textAlign(TextAlign.Center)
+        Text('' + this.left).id('left_test').height('5%').textAlign(TextAlign.Center)
+        Text('' + this.right).id('right_test').height('5%').textAlign(TextAlign.Center)
         Row() {
           // 加载png格式图片
           Image($r('app.media.icon'))
-            .width(110).height(110).margin(15).resizable({slice:{top: this.top,bottom: this.bottom, left: this.left, right: this.right}})
+            .width('20%')
+            .height('20%')
+            .resizable({
+              slice: {
+                top: this.top,
+                bottom: this.bottom,
+                left: this.left,
+                right: this.right
+              }
+            })
             .overlay('png', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
         }
 
-        Button('changeTop').onClick(() => {
-          this.top = 30
-        }).id('changeTop')
+        Row() {
+          Button('changeTop').onClick(() => {
+            this.top = 30
+          }).id('changeTop').width('40%')
 
-        Button('changeBottom').onClick(() => {
-          this.bottom = 0
-        }).id('changeBottom')
+          Button('changeBottom').onClick(() => {
+            this.bottom = 0
+          }).id('changeBottom').width('40%')
+        }.height('10%')
 
+        Row() {
+          Button('changeleft').onClick(() => {
+            this.left = 30
+          }).id('changeleft').width('40%')
 
-        Button('changeleft').onClick(() => {
-          this.left = 30
-        }).id('changeleft')
-
-        Button('changeright').onClick(() => {
-          this.right = 0
-        }).id('changeright')
-
+          Button('changeright').onClick(() => {
+            this.right = 0
+          }).id('changeright').width('40%')
+        }.height('10%')
 
       }
-    }.height(320).width(360).padding({ right: 10, top: 10 })
+    }.height('100%').width(360)
   }
 }

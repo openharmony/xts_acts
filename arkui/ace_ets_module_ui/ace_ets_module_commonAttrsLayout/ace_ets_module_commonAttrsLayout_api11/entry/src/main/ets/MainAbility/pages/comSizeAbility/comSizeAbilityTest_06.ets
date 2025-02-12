@@ -36,6 +36,7 @@ struct comSizeAbilityTest_06 {
   ]
   private arr_list: number[] = [0, 1, 2, 3, 4, 5]
   private arr: number[] = [0]
+  scroller: Scroller = new Scroller()
 
   @Builder
   itemHead(text: string) {
@@ -56,9 +57,23 @@ struct comSizeAbilityTest_06 {
   }
 
   build() {
-    Scroll() {
-      Column({ space: 20 }) {
-        Column() {
+    Column() {
+      Row() {
+        Button('to_1').onClick(()=>{
+          this.scroller.scrollToIndex(0)
+        }).key('comSizeAbilityTest_06_to_1')
+
+        Button('to_2').onClick(()=>{
+          this.scroller.scrollToIndex(1)
+        }).key('comSizeAbilityTest_06_to_2')
+
+        Button('to_3').onClick(()=>{
+          this.scroller.scrollToIndex(2)
+        }).key('comSizeAbilityTest_06_to_3')
+      }
+
+      List({ space: 5, initialIndex: 0, scroller: this.scroller }) {
+        ListItem() {
           List({ space: 20 }) {
             ForEach(this.timetable, (item: TimeTable) => {
               ListItemGroup({ header: this.itemHead(item.title), footer: this.itemFoot(item.projects.length) }) {
@@ -98,7 +113,7 @@ struct comSizeAbilityTest_06 {
           }.backgroundColor('red').height(200)
         }
 
-        Column() {
+        ListItem() {
           List({ space: 20, initialIndex: 0 }) {
             ForEach(this.arr, (item: number) => {
               ListItem() {
@@ -127,7 +142,7 @@ struct comSizeAbilityTest_06 {
           }.backgroundColor('blue')
         }
 
-        Column() {
+        ListItem() {
           List({ space: 20, initialIndex: 0 }) {
             ForEach(this.arr_list, (item: number) => {
               ListItem() {

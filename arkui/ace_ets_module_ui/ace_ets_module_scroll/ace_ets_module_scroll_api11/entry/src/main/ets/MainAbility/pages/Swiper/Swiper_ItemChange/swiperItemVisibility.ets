@@ -91,8 +91,8 @@ struct SwiperItemVisibilityTest {
       }
       .index(this.testIndex)
       .key('visiblekey')
-      .height(300)
-      .width(300)
+      .height('60%')
+      .width('90%')
       .indicator(true)
       .loop(true)
       .displayCount(1)

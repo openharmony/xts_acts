@@ -188,6 +188,8 @@ napi_value CommonAttrsHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_c
 
     // create column
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+    auto row = nodeAPI->createNode(ARKUI_NODE_ROW);
+    auto row1 = nodeAPI->createNode(ARKUI_NODE_ROW);
 
     int32_t hitTestBehavior = ArkUI_HitTestMode::ARKUI_HIT_TEST_MODE_DEFAULT;
     string onTouchTestStack = "OnTouchTestStackDefault";
@@ -196,7 +198,7 @@ napi_value CommonAttrsHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_c
     auto stack = CreateSubCommonAttrsNode(nodeAPI, hitTestBehavior, onTouchTestStack.c_str(),
                                           onTouchTestCommonAttrs.c_str(), onTouchTestCommonAttrsBrother.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row, stack);
 
     hitTestBehavior = ArkUI_HitTestMode::ARKUI_HIT_TEST_MODE_BLOCK;
     onTouchTestStack = "OnTouchTestStackBlock";
@@ -205,7 +207,7 @@ napi_value CommonAttrsHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_c
     stack = CreateSubCommonAttrsNode(nodeAPI, hitTestBehavior, onTouchTestStack.c_str(), onTouchTestCommonAttrs.c_str(),
                                      onTouchTestCommonAttrsBrother.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row, stack);
 
     hitTestBehavior = ArkUI_HitTestMode::ARKUI_HIT_TEST_MODE_TRANSPARENT;
     onTouchTestStack = "OnTouchTestStackTransparent";
@@ -214,7 +216,8 @@ napi_value CommonAttrsHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_c
     stack = CreateSubCommonAttrsNode(nodeAPI, hitTestBehavior, onTouchTestStack.c_str(), onTouchTestCommonAttrs.c_str(),
                                      onTouchTestCommonAttrsBrother.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row, stack);
+    nodeAPI->addChild(column, row);
 
     hitTestBehavior = ArkUI_HitTestMode::ARKUI_HIT_TEST_MODE_NONE;
     onTouchTestStack = "OnTouchTestStackNone";
@@ -223,7 +226,7 @@ napi_value CommonAttrsHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_c
     stack = CreateSubCommonAttrsNode(nodeAPI, hitTestBehavior, onTouchTestStack.c_str(), onTouchTestCommonAttrs.c_str(),
                                      onTouchTestCommonAttrsBrother.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row1, stack);
 
     hitTestBehavior = PARAM_NEGATIVE_1;
     onTouchTestStack = "OnTouchTestStackExceptBelow";
@@ -232,7 +235,7 @@ napi_value CommonAttrsHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_c
     stack = CreateSubCommonAttrsNode(nodeAPI, hitTestBehavior, onTouchTestStack.c_str(), onTouchTestCommonAttrs.c_str(),
                                      onTouchTestCommonAttrsBrother.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row1, stack);
 
     hitTestBehavior = PARAM_4;
     onTouchTestStack = "OnTouchTestStackExceptAbove";
@@ -241,7 +244,8 @@ napi_value CommonAttrsHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_c
     stack = CreateSubCommonAttrsNode(nodeAPI, hitTestBehavior, onTouchTestStack.c_str(), onTouchTestCommonAttrs.c_str(),
                                      onTouchTestCommonAttrsBrother.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row1, stack);
+    nodeAPI->addChild(column, row1);
 
     // bind node callBack event receiver
     nodeAPI->registerNodeEventReceiver(&OnEventReceive);

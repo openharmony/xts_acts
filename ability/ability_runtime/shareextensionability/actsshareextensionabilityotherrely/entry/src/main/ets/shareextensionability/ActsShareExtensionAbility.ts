@@ -19,7 +19,9 @@ import systemParameterEnhance from '@ohos.systemParameterEnhance';
 let count = 0;
 const TIME_OUT = 500;
 const TIME_OUT1 = 2000;
-
+function sleep(ms: number) {
+  return new Promise<void>(resolve => setTimeout(resolve, ms));
+}
 export default class ActsShareExtensionAbility extends ShareExtensionAbility {
   storage: LocalStorage;
   message: string;
@@ -76,7 +78,7 @@ export default class ActsShareExtensionAbility extends ShareExtensionAbility {
     globalThis.session = session;
   }
 
-  onDestroy() {
+ async onDestroy() {
     console.log('====>ActsShareExtensionAbility onDestroy called');
     count++;
     let options = {
@@ -86,6 +88,7 @@ export default class ActsShareExtensionAbility extends ShareExtensionAbility {
     };
     commonEventManager.publish('ACTS_TEST_DESTROY', options, function () {
     });
+    await sleep(500);
   }
 
   onSessionDestroy(session) {

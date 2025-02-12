@@ -159,5 +159,72 @@ export default function ScreenLockFileManagerJsTest() {
             expect(value).assertEqual(-1);
             done();
         })
+
+        /*
+         * @tc.number:SUB_Security_EL5_QueryAppKeyState_0100
+         * @tc.name: Test EL5 queryAppKeyState scene
+         * @tc.desc: Query access permissions for sensitive data of applications under lock screen
+         * @tc.level: Level1
+         * @tc.size: Medium
+         * @tc.type: Function
+         */
+        it("SUB_Security_EL5_QueryAppKeyState_0100", 0, async function (done) {
+            try {
+                let keyStatus = screenLockFileManager.queryAppKeyState();
+                console.info('SUB_Security_EL5_QueryAppKeyState_0100 keyStatus is: ' + keyStatus);
+                expect(keyStatus).assertEqual(-2);
+                done();
+            } catch (err) {
+                console.error('SUB_Security_EL5_QueryAppKeyState_0100 err.code is: ' + err.code)
+            }
+        })
+
+        /*
+         * @tc.number:SUB_Security_EL5_KeyStatusConst_0100
+         * @tc.name: Test EL5 KeyStatus Const Attribute
+         * @tc.desc: Test screenLockFileManager KeyStatus const KEY_NOT_EXIST
+         * @tc.level: Level1
+         * @tc.size: Medium
+         * @tc.type: Function
+         */
+        it("SUB_Security_EL5_KeyStatusConst_0100", 0, function (done) {
+            console.info('----------------------SUB_Security_EL5_KeyStatusConst_0100---------------------------');
+            let value = screenLockFileManager.KeyStatus.KEY_NOT_EXIST;
+            console.info('SUB_Security_EL5_KeyStatusConst_0100 value is: ' + value);
+            expect(value).assertEqual(-2);
+            done();
+        })
+
+        /*
+         * @tc.number:SUB_Security_EL5_KeyStatusConst_0200
+         * @tc.name: Test EL5 KeyStatus Const Attribute
+         * @tc.desc: Test screenLockFileManager KeyStatus const KEY_RELEASED
+         * @tc.level: Level1
+         * @tc.size: Medium
+         * @tc.type: Function
+         */
+        it("SUB_Security_EL5_KeyStatusConst_0200", 0, function (done) {
+            console.info('----------------------SUB_Security_EL5_KeyStatusConst_0200---------------------------');
+            let value = screenLockFileManager.KeyStatus.KEY_RELEASED;
+            console.info('SUB_Security_EL5_KeyStatusConst_0200 value is: ' + value);
+            expect(value).assertEqual(-1);
+            done();
+        })
+
+        /*
+         * @tc.number:SUB_Security_EL5_KeyStatusConst_0300
+         * @tc.name: Test EL5 KeyStatus Const Attribute
+         * @tc.desc: Test screenLockFileManager KeyStatus const KEY_EXIST
+         * @tc.level: Level1
+         * @tc.size: Medium
+         * @tc.type: Function
+         */
+        it("SUB_Security_EL5_KeyStatusConst_0300", 0, function (done) {
+            console.info('----------------------SUB_Security_EL5_KeyStatusConst_0300---------------------------');
+            let value = screenLockFileManager.KeyStatus.KEY_EXIST;
+            console.info('SUB_Security_EL5_KeyStatusConst_0300 value is: ' + value);
+            expect(value).assertEqual(0);
+            done();
+        })
     })
 }

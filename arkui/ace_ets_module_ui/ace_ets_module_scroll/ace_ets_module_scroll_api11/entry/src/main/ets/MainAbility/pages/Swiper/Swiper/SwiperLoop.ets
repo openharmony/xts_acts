@@ -58,7 +58,7 @@ struct SwiperLoopTest {
         LazyForEach(this.data, (item: string) => {
           Text(item.toString())
             .width('90%')
-            .height(160)
+            .height('60%')
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
             .fontSize(30)
@@ -78,33 +78,43 @@ struct SwiperLoopTest {
         this.swiperValue = 'change'
       })
       Row() {
-        Button('index:9').onClick((event: ClickEvent) => {
-          this.index = 9
-        }).key('swiperLoopButton1')
+        Button('index:9')
+          .height('5%')
+          .onClick((event: ClickEvent) => {
+            this.index = 9
+          }).key('swiperLoopButton1')
 
-        Button('index:0').onClick((event: ClickEvent) => {
-          this.index = 0
-          this.loop = true
-        }).key('swiperLoopButton2')
-      }.margin(50)
-
-      Row() {
-        Button('index:4').onClick((event: ClickEvent) => {
-          this.loop = true
-          this.index = 4
-        }).key('swiperLoopButton3')
-        Button('autoPlay: true').onClick((event: ClickEvent) => {
-          this.index = 8
-          this.loop = false
-          this.autoPlay = true
-        }).key('swiperLoopButton4')
+        Button('index:0')
+          .height('5%')
+          .onClick((event: ClickEvent) => {
+            this.index = 0
+            this.loop = true
+          }).key('swiperLoopButton2')
       }
 
-      Button('autoPlay: true').onClick((event: ClickEvent) => {
-        this.index = 8
-        this.loop = false
-        this.autoPlay = true
-      }).key('swiperLoopButton4')
+      Row() {
+        Button('index:4')
+          .height('5%')
+          .onClick((event: ClickEvent) => {
+            this.loop = true
+            this.index = 4
+          }).key('swiperLoopButton3')
+        Button('autoPlay: true')
+          .height('5%')
+          .onClick((event: ClickEvent) => {
+            this.index = 8
+            this.loop = false
+            this.autoPlay = true
+          }).key('swiperLoopButton4')
+      }
+
+      Button('autoPlay: true')
+        .height('5%')
+        .onClick((event: ClickEvent) => {
+            this.index = 8
+            this.loop = false
+            this.autoPlay = true
+          }).key('swiperLoopButton4')
 
     }.width('100%')
     .margin({ top: 5 })

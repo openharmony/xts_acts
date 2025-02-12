@@ -281,8 +281,6 @@ export const textInputEnabledTest: (a: string) => void;
 
 export const textInputOnChangeTest: (a: string) => void;
 
-export const calendarPickerEnabledTest: (a: string) => void;
-
 export const checkboxEnabledTest: (a: string) => void;
 
 export const datePickerEnabledTest: (a: string) => void;
@@ -290,8 +288,6 @@ export const datePickerEnabledTest: (a: string) => void;
 export const sliderEnabledTest: (a: string) => void;
 
 export const textEnabledTest: (a: string) => void;
-
-export const calendarPickerOnChangeTest: (a: string) => void;
 
 export const textPickerOnChangeTest: (a: string) => void;
 

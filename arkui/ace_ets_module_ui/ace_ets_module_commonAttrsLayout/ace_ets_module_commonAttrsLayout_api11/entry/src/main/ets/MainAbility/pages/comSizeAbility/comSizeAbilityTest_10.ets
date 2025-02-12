@@ -19,10 +19,25 @@ let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0
 @Entry
 @Component
 struct comSizeAbilityTest_10 {
+  scroller: Scroller = new Scroller()
   build() {
-    Scroll() {
-      Column({ space: 20 }) {
-        Column() {
+    Column() {
+      Row() {
+        Button('to_1').onClick(()=>{
+          this.scroller.scrollToIndex(0)
+        }).key('comSizeAbilityTest_10_to_1')
+
+        Button('to_2').onClick(()=>{
+          this.scroller.scrollToIndex(1)
+        }).key('comSizeAbilityTest_10_to_2')
+
+        Button('to_3').onClick(()=>{
+          this.scroller.scrollToIndex(2)
+        }).key('comSizeAbilityTest_10_to_3')
+      }
+
+      List({ space: 5, initialIndex: 0, scroller: this.scroller }) {
+        ListItem() {
           Path()
             .commands('M0 0 H200 V200 H0 Z')// 单位转化
             .stroke(Color.Green)
@@ -49,7 +64,7 @@ struct comSizeAbilityTest_10 {
             .transform(matrix)
         }.key('Path_Father')
 
-        Column() {
+        ListItem() {
           Polygon()
             .points([[0, 0], [50, 100], [100, 0]])
             .fill(Color.Green)
@@ -75,7 +90,7 @@ struct comSizeAbilityTest_10 {
             .transform(matrix)
         }.key('Polygon_Father')
 
-        Column() {
+        ListItem() {
           Polyline()
             .fillOpacity(0)
             .stroke(Color.Green)

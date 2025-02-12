@@ -162,9 +162,12 @@ struct SliderExample {
 
   build() {
     Column() {
+      Text().height('20%')
       Search({ value: '', placeholder: 'Type to search...' })
         .searchButton('Search')
         .key('searchTestDefault')
+        .height('5%')
+        .margin(0)
 
       Search({ value: '', placeholder: 'Type to search...' })
         .caretStyle({
@@ -188,6 +191,8 @@ struct SliderExample {
         )
         .fontColor($r('sys.color.ohos_id_color_text_primary'))
         .key('searchTestDefaultapp')
+        .height('5%')
+        .margin(0)
 
       Search({ value: '', placeholder: 'Type to search...' })
         .caretStyle({
@@ -211,6 +216,8 @@ struct SliderExample {
         )
         .fontColor($r('sys.color.ohos_id_color_text_primary'))
         .key('searchTestDefaultapp001')
+        .height('5%')
+        .margin(0)
 
       Search({ value: '', placeholder: 'Type to search...' })
         .caretStyle({
@@ -234,11 +241,10 @@ struct SliderExample {
         )
         .fontColor($r('sys.color.ohos_id_color_text_primary'))
         .key('searchTestDefaultapp002')
+        .height('5%')
+        .margin(0)
 
       Search({ value: '', placeholder: 'Type to search...' })
-        .width(300)
-        .height(40)
-        .margin(5)
         .searchIcon({
           size: this.leftSearchIconSizeNumber,
           color: this.leftSearchIconColorNumber,
@@ -263,6 +269,8 @@ struct SliderExample {
         .textFont(this.textFont)
         .fontColor(this.textColorNumber)
         .key('searchTestfontcaretcolor')
+        .height('5%')
+        .margin(0)
 
       Search({ value: '', placeholder: 'Type to search...' })
         .caretStyle({
@@ -285,11 +293,10 @@ struct SliderExample {
         )
         .fontColor($r('sys.color.ohos_id_color_text_primary'))
         .key('searchTestDefaultValue')
+        .height('5%')
+        .margin(0)
 
       Search({ value: '', placeholder: 'Type to search...' })
-        .width(300)
-        .height(40)
-        .margin(5)
         .caretStyle({
           width: this.caretWidthNumber,
           color: this.caretColorNumber
@@ -318,11 +325,10 @@ struct SliderExample {
         .textFont(this.textFont)
         .fontColor(this.textColorNumber)
         .key('searchTestNumber')
+        .height('5%')
+        .margin(0)
 
       Search({ value: '', placeholder: 'Type to search...' })
-        .width(300)
-        .height(40)
-        .margin(5)
         .caretStyle({
           width: this.caretWidthString,
           color: this.caretColorString
@@ -351,11 +357,10 @@ struct SliderExample {
         .textFont(this.textFont)
         .fontColor(this.textColorString)
         .key('searchTestString')
+        .height('5%')
+        .margin(0)
 
       Search({ value: '', placeholder: 'Type to search...' })
-        .width(300)
-        .height(40)
-        .margin(5)
         .caretStyle({
           width: this.caretWidthResource,
           color: this.caretColorResource
@@ -384,11 +389,10 @@ struct SliderExample {
         .textFont(this.textFont)
         .fontColor(this.textColorResource)
         .key('searchTestResource')
+        .height('5%')
+        .margin(0)
 
       Search({ value: '', placeholder: 'Type to search...' })
-        .width(300)
-        .height(40)
-        .margin(5)
         .caretStyle({
           width: this.caretWidthResource,
           color: $r('sys.color.ohos_id_color_connected')
@@ -417,11 +421,10 @@ struct SliderExample {
         .textFont(this.textFont)
         .fontColor($r('sys.color.ohos_id_color_connected'))
         .key('searchTestResource2')
+        .height('5%')
+        .margin(0)
 
       Search({ value: '', placeholder: 'Type to search...' })
-        .width(300)
-        .height(40)
-        .margin(5)
         .caretStyle({
           width: this.caretWidthNumber,
           color: this.caretColorColor
@@ -450,6 +453,8 @@ struct SliderExample {
         .textFont(this.textFont)
         .fontColor(this.textColorColor)
         .key('searchTestColor')
+        .height('5%')
+        .margin(0)
     }
     .width('100%')
     .height('100%')
