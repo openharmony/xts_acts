@@ -15,7 +15,7 @@
 
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils'
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function sideBarShowSideBarJsunit() {
   describe('sideBarShowSideBarTest', () => {
@@ -31,7 +31,7 @@ export default function sideBarShowSideBarJsunit() {
         if (!("sideBar" == pages.name)) {
           console.info("get sideBar state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push sideBar page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,7 +40,7 @@ export default function sideBarShowSideBarJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("sideBarShowSideBar after each called");
     });
 
@@ -51,7 +51,7 @@ export default function sideBarShowSideBarJsunit() {
      */
     it('testsideBarShowSideBar0001', 0, async () => {
       console.info('sideBarShowSideBar testsideBarShowSideBar0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('SideBarContainer');
       console.info("[testsideBarShowSideBar0001] component showSideBar strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -68,7 +68,7 @@ export default function sideBarShowSideBarJsunit() {
      */
     it('testsideBarShowSideBar0002', 0, async () => {
       console.info('sideBarShowSideBar testsideBarShowSideBar0002 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('SideBarContainer');
       console.info("[testsideBarShowSideBar0002] component autoHide strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -85,7 +85,7 @@ export default function sideBarShowSideBarJsunit() {
      */
     it('testsideBarShowSideBar0003', 0, async () => {
       console.info('sideBarShowSideBar testsideBarShowSideBar0003 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('SideBarContainer');
       console.info("[testsideBarShowSideBar0003] component autoHide strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);

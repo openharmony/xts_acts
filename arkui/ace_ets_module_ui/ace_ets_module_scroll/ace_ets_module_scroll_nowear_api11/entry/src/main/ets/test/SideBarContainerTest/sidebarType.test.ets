@@ -20,7 +20,7 @@ export default function sidebarTypeTest() {
     beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/sidebarType',
+        url: 'MainAbility/pages/SideBarContainer/sidebarType',
       }
       try {
         router.clear();

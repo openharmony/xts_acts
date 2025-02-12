@@ -268,29 +268,6 @@ export default function ApiCommponentAddJsunit() {
     
     });
 
-    it('apiCommponentAddJsunit_0900', 0, async (done: Function) => {
-      console.info('apiCommponentAddJsunit_0900 START');
-      ohosrouter.clear();
-      ohosrouter.pushUrl({
-        url: 'MainAbility/pages/Scroll/waterflow_add',
-        params: {
-          data1: 'message',
-          data2: {
-            data3: [123, 456, 789]
-          }
-        }
-      }).then(() => {
-        // success
-      }).catch((err: BusinessError) => {
-        console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-      })
-      let strJson = getInspectorByKey('waterflowAdd');
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[apiCommponentAddJsunit_0900'] component obj is: " + obj.$attrs.enableScrollInteraction);
-      expect(obj.$attrs.enableScrollInteraction ).assertTrue();
-      done();
-    });
-
     it('apiCommponentAddJsunit_1000', 0, async (done: Function) => {
       console.info('apiCommponentAddJsunit_1000 START');
       ohosrouter.clear();

@@ -56,7 +56,6 @@ import Tabs_barMode from './TabsTest/Tabs_ParmsChange/Tabs_barMode.test';
 import Tabs_barPosition from './TabsTest/Tabs_ParmsChange/Tabs_barPosition.test';
 import Tabs_barWidHei from './TabsTest/Tabs_ParmsChange/Tabs_barWidHei.test';
 import Tabs_scrollable from './TabsTest/Tabs_ParmsChange/Tabs_scrollable.test';
-import waterFlow_WaterFlowFrictionTest from './WaterFlowTest/WaterFlow_attribute/WaterFlow_WaterFlowFriction.test';
 import scroll_ScrollFrictionTest from './ScrollTest/Scroll_ScrollFriction.test';
 import swiperIndex from './SwiperTest/Swiper_ParmsChange/swiperIndex.test.ets';
 import swiperVertical from './SwiperTest/Swiper_ParmsChange/swiperVertical.test.ets';
@@ -90,7 +89,6 @@ import ActsGridTest from "./gridTest/GridJC.test";
 import gridScrollbarUpdateTest from "./gridTest/gridScrollbarUpdate.test";
 import List07Test from './ListTest/List07.test';
 import Swiper07Test from './SwiperTest/Swiper07.test';
-import sidebarTypeTest from './sidebarType.test';
 import listUxTest from './ListTest/listux.test.ets'
 import tabsOnContentWillChangeJsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChange.test'
 import tabsOnContentWillChangeIndex3JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex3.test'
@@ -101,8 +99,6 @@ import tabsOnContentWillChangeIndex06JsunitTest from './TabsTest/tabs_api12/tabs
 import tabsOnContentWillChangeIndex07JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex07.test'
 import tabsOnContentWillChangeIndex08JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex08.test'
 import tabsOnContentWillChangeIndex09JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex09.test'
-import tabsOnContentWillChangeIndex10JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex10.test'
-import tabsOnContentWillChangeIndex11JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex11.test'
 import tabsOnContentWillChangeIndex12JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex12.test'
 import tabsOnContentWillChangeIndex13JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex13.test'
 import tabsOnContentWillChangeIndex14JsunitTest from './TabsTest/tabs_api12/tabsOnContentWillChangeIndex14.test'
@@ -111,8 +107,6 @@ import GridTest from './gridTest/GridPage.test'
 import patternLock from './PatternLockTest/patternLock'
 import SwiperMinSize from './SwiperTest/swiperUI/SwiperMinSize.test.ets';
 import SwiperNextPrevMarginAddJsunit from './SwiperTest/swiperUI/SwiperNextPrevMarginAddJsunit.test.ets'
-import ScrollToIndexForWaterFlowJsunit01 from './ScrollTest/ScrollToIndex/ScrollToIndexForWaterFlowJsunit01.test';
-import ScrollToIndexForWaterFlowJsunit02 from './ScrollTest/ScrollToIndex/ScrollToIndexForWaterFlowJsunit02.test';
 import ScrollToIndexForGridJsunit01 from './ScrollTest/ScrollToIndex/ScrollToIndexForGridJsunit01.test';
 import ScrollToIndexForGridJsunit02 from './ScrollTest/ScrollToIndex/ScrollToIndexForGridJsunit02.test';
 import ScrollToIndexForGridJsunit03 from './ScrollTest/ScrollToIndex/ScrollToIndexForGridJsunit03.test';
@@ -134,7 +128,6 @@ import gridItemOnSelectJsunit from './gridItemTest/gridItem.test';
 import listNewJsunit from './ListTest/listTestAPI.test';
 import list_itemOnSelectJsunit from './ListTest/list_item.test';
 import scrollOnScrollBeginJsunit from './ScrollTest/scroll1.test';
-import sideBarShowSideBarJsunit from './SideBarContainerTest/sideBar.test';
 import stackAlignContentJsunit from './StackTest/stack.test';
 import swiperCurveJsunit from './SwiperTest/swiper1.test';
 import tabsBarPositionJsunit from './TabsTest/tabs.test';
@@ -165,7 +158,6 @@ export default function testsuite() {
   gridScrollbarUpdateTest();
   List07Test();
   Swiper07Test();
-  sidebarTypeTest();
   listJsunit();
   swiperJsunit();
   ListDeleteTest();
@@ -221,7 +213,6 @@ export default function testsuite() {
   Tabs_barPosition();
   Tabs_barWidHei();
   Tabs_scrollable();
-  waterFlow_WaterFlowFrictionTest()
   scroll_ScrollFrictionTest()
   swiperIndex()
   swiperVertical()
@@ -244,8 +235,6 @@ export default function testsuite() {
   patternLock()
   SwiperMinSize();
   SwiperNextPrevMarginAddJsunit();
-  ScrollToIndexForWaterFlowJsunit01();
-  ScrollToIndexForWaterFlowJsunit02();
   ScrollToIndexForGridJsunit01();
   ScrollToIndexForGridJsunit02();
   ScrollToIndexForGridJsunit03();
@@ -259,8 +248,6 @@ export default function testsuite() {
   tabsOnContentWillChangeIndex07JsunitTest()
   tabsOnContentWillChangeIndex08JsunitTest()
   tabsOnContentWillChangeIndex09JsunitTest()
-  tabsOnContentWillChangeIndex10JsunitTest()
-  tabsOnContentWillChangeIndex11JsunitTest()
   tabsOnContentWillChangeIndex12JsunitTest()
   tabsOnContentWillChangeIndex13JsunitTest()
   tabsOnContentWillChangeIndex14JsunitTest()
@@ -280,7 +267,6 @@ export default function testsuite() {
   listNewJsunit()
   list_itemOnSelectJsunit()
   scrollOnScrollBeginJsunit()
-  sideBarShowSideBarJsunit()
   stackAlignContentJsunit()
   swiperCurveJsunit()
   tabsBarPositionJsunit()
