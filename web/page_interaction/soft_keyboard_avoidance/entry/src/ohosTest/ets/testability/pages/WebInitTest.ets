@@ -150,7 +150,7 @@ struct WebInitTest {
               case 'emitWebViewAvoidArea05': {
                 try {
                   this.userAgentPC = this.controller.getUserAgent();
-                  if ((this.userAgentPC).includes("PC")) {
+                  if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                     Utils.emitEvent('success', 6205);
                     break;
                   }
