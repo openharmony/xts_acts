@@ -421,23 +421,6 @@ struct noBarrierComponents {
             this.changeValue = value
           })
           .margin(20)
-
-        Select([{ value: 'aaa', icon: "/common/public_icon.svg" },
-          { value: 'bbb', icon: "/common/public_icon.svg" },
-          { value: 'ccc', icon: "/common/public_icon.svg" },
-          { value: 'ddd', icon: "/common/public_icon.svg" }])
-          .selected(2)
-          .value('TTTTT')
-          .font({ size: 16, weight: 500 })
-          .fontColor('#182431')
-          .selectedOptionFont({ size: 16, weight: 400 })
-          .optionFont({ size: 16, weight: 400 })
-          .key("Select")
-          .accessibilityText("我是无障碍组件")
-          .onSelect((index: number) => {
-            console.info('Select:' + index)
-          })
-
         Slider({
           value: this.outSetValueOne,
           min: 0,
@@ -470,10 +453,6 @@ struct noBarrierComponents {
             console.info('Component status:' + isOn)
           })
           .key("Toggle")
-          .accessibilityText("我是无障碍组件")
-
-        Web({ src: $rawfile("index.html"), controller: this.controller1 })
-          .key("Web")
           .accessibilityText("我是无障碍组件")
 
         XComponent({
