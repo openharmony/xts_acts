@@ -11,6 +11,13 @@ import localeTest from './Locale/Locale.test';
 import objectTest from './Object/Object.test';
 import intlTest from './Intl/Intl.test';
 import promiseTest from './Promise/Promise.test';
+import mapTest from './Map/Map.test';
+import regExpTest from './RegExp/RegExp.test';
+import setTest from './Set/Set.test';
+import typedArrayTest from './TypedArray/TypedArray.test';
+import errorTest from './Error/Error.test';
+import weakRefTest from './WeakRef/WeakRef.test';
+import weakSetTest from './WeakSet/WeakSet.test';
 
 export default function testsuite() {
   booleanTest();
@@ -26,4 +33,11 @@ export default function testsuite() {
   objectTest();
   intlTest();
   promiseTest();
+  mapTest();
+  regExpTest();
+  setTest();
+  typedArrayTest();
+  errorTest();
+  weakRefTest();
+  weakSetTest();
 }
