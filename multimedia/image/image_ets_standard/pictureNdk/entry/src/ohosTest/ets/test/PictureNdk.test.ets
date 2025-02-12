@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+
 import { describe, beforeAll, afterEach, it, expect } from '@ohos/hypium';
 import ndkTest from 'libPictureNdk.so';
 import image from "@ohos.multimedia.image";
