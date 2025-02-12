@@ -15,10 +15,16 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import accessibility from '@ohos.accessibility'
+import { Driver } from '@ohos.UiTest';
 const abilityType = 'all';
 const abilityState = 'install';
 export default function AccessibleAbilityList() {
     describe('AccessibleAbilityList', function () {
+        beforeAll(async function (done) {
+            let driver = Driver.create();
+            console.info(`AccessibleAbilityList: beforeAll starts`);
+            done();
+        })
 
         beforeAll(async function (done) {
             console.info(`AccessibleAbilityList: beforeAll starts`);

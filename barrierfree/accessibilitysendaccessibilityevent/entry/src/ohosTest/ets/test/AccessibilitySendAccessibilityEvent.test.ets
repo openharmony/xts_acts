@@ -14,6 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import accessibility from '@ohos.accessibility'
+import { Driver } from '@ohos.UiTest';
 
 const abilityType = 'all';
 const abilityState = 'install';
@@ -23,6 +24,11 @@ const eventType : accessibility.EventType = 'accessibilityFocus';
 
 export default function abilityTest() {
     describe('AccessibilitySendAccessibilityEvent', function () {
+        beforeAll(async function (done) {
+            let driver = Driver.create();
+            console.info(`AccessibilitySendAccessibilityEvent: beforeAll starts`);
+            done();
+        })
 
         beforeEach(async function (done) {
             console.info(`AccessibilitySendAccessibilityEvent: beforeEach starts`);
