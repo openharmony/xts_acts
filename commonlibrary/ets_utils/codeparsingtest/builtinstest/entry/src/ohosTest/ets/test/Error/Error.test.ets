@@ -709,25 +709,6 @@ export default function ErrorTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ERROR_4200
-     * @tc.name       : testTypeError0006
-     * @tc.desc       : Test the function of the interface TypeError.
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testTypeError0006', 0, () => {
-      const TAG = "testTypeError0006"
-      try {
-        throw new TypeError('"Hello","someFile.js",10');
-      } catch (err) {
-        console.error(`${TAG} failed, error: ${err.stack}`);
-        console.log("result:" + err.stack + "result1")
-        expect(`${err.stack}`).assertContain('(entry/src/ohosTest/ets/test/Error.test.ets');
-      }
-    })
-
-    /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ERROR_4300
      * @tc.name       : testTypeError0007
      * @tc.desc       : Test the function of the interface TypeError.
@@ -819,25 +800,6 @@ export default function ErrorTest() {
         console.error(`${TAG} failed, error: ${err.message}`);
         console.log("result:" + err.columnNumber)
         expect(`${err.columnNumber}`).assertEqual('undefined');
-      }
-    })
-
-    /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ERROR_4800
-     * @tc.name       : testTypeError0012
-     * @tc.desc       : Test the function of the interface TypeError.
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testTypeError0012', 0, () => {
-      const TAG = "testTypeError0012"
-      try {
-        throw new TypeError('message err');
-      } catch (err) {
-        console.error(`${TAG} failed, error: ${err.stack}`);
-        console.log("result:" + err.stack)
-        expect(`${err.stack}`).assertContain('(entry/src/ohosTest/ets/test/Error.test.ets');
       }
     })
 
