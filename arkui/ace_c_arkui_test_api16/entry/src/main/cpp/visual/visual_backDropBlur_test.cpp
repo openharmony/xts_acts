@@ -14,6 +14,8 @@
  */
 
 #include "common/common.h"
+#define INT_20 20
+#define INT_40 40
 
 namespace ArkUICapiTest {
 
@@ -24,8 +26,8 @@ static napi_value columnBackDropBlurTest001(napi_env env, napi_callback_info inf
     ArkUI_AttributeItem itemTextBlur001 = {valueTextBlur002, sizeof(valueTextBlur002)/sizeof(ArkUI_NumberValue)};
     auto res1_backdropBlur001 = nodeAPI->setAttribute(column, NODE_BACKDROP_BLUR, &itemTextBlur001); // 设置背景模糊
     ASSERT_EQ(res1_backdropBlur001, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_BACKDROP_BLUR)->value[PARAM_0].f32, 20);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_BACKDROP_BLUR)->value[PARAM_1].f32, 40);
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_BACKDROP_BLUR)->value[PARAM_0].f32, INT_20);
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_BACKDROP_BLUR)->value[PARAM_1].f32, INT_40);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_BACKDROP_BLUR)->value[PARAM_2].f32, 0);
     NAPI_END;
 }
