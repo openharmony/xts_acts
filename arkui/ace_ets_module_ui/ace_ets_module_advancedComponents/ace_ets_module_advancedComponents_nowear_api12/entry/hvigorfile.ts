@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,19 +13,5 @@
  * limitations under the License.
  */
 
-
-import alertDialogTest from './dialog/alertDialogTest.test';
-import confirmDialogTest from './dialog/confirmDialogTest.test';
-import customContentDialogTest from './dialog/customContentDialogTest.test';
-import selectDialogTest from './dialog/selectDialogTest.test';
-import tipsDialogTest from './dialog/tipsDialogTest.test';
-import counterDirectionTest from './counter/counterDirection.test';
-
-export default function testsuite() {
-  counterDirectionTest();
-  alertDialogTest();
-  confirmDialogTest();
-  customContentDialogTest();
-  selectDialogTest();
-  tipsDialogTest();
-}
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { hapTasks } from '@ohos/hvigor-ohos-plugin';

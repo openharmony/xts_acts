@@ -42,19 +42,16 @@ struct TipsDialogTest {
   })
 
   build() {
-    Row() {
-      Stack() {
-        Column() {
-          Button('TipsDialog')
-            .width(96)
-            .height(40)
-            .onClick(() => {
-              this.dialogControllerImage.open()
-            })
-        }.margin({ bottom: 300 })
-      }.align(Alignment.Bottom)
-      .width('100%').height('100%')
+    Column() {
+      Button('TipsDialog')
+        .width(96)
+        .height(40)
+        .onClick(() => {
+          this.dialogControllerImage.open()
+        })
     }
+    .width('100%')
     .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }

@@ -44,20 +44,17 @@ struct ConfirmDialogTest {
   })
 
   build() {
-    Row() {
-      Stack() {
-        Column(){
-          Button('ConfirmDialog')
-            .width(96)
-            .height(40)
-            .onClick(() => {
-              this.dialogControllerCheckBox.open()
-            })
-        }.margin({bottom: 300})
-      }.align(Alignment.Bottom)
-      .width('100%').height('100%')
+    Column() {
+      Button('ConfirmDialog')
+        .width(96)
+        .height(40)
+        .onClick(() => {
+          this.dialogControllerCheckBox.open()
+        })
     }
-    .backgroundImageSize({ width: '100%', height: '100%' })
+    .width('100%')
     .height('100%')
+    .justifyContent(FlexAlign.Center)
+    .backgroundImageSize({ width: '100%', height: '100%' })
   }
 }

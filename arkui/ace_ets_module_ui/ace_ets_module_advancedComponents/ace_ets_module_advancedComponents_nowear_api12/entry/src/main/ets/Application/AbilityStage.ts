@@ -13,19 +13,12 @@
  * limitations under the License.
  */
 
+import AbilityStage from '@ohos.app.ability.AbilityStage';
 
-import alertDialogTest from './dialog/alertDialogTest.test';
-import confirmDialogTest from './dialog/confirmDialogTest.test';
-import customContentDialogTest from './dialog/customContentDialogTest.test';
-import selectDialogTest from './dialog/selectDialogTest.test';
-import tipsDialogTest from './dialog/tipsDialogTest.test';
-import counterDirectionTest from './counter/counterDirection.test';
-
-export default function testsuite() {
-  counterDirectionTest();
-  alertDialogTest();
-  confirmDialogTest();
-  customContentDialogTest();
-  selectDialogTest();
-  tipsDialogTest();
+export default class MyAbilityStage extends AbilityStage {
+  onCreate() {
+    console.log('[Demo] MyAbilityStage onCreate');
+    globalThis.stageOnCreateRun = 1;
+    globalThis.stageContext = this.context;
+  }
 }
