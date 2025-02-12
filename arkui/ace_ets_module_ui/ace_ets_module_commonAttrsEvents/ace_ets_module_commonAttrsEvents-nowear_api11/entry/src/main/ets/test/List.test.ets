@@ -12,18 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import enableJsunit from './enabledTest/EnableJsunit.test';
-import touchAbleJsunit from './touchableTest/TouchAbleJsunit.test';
-import onChildTouchTest from './onChildTouchTest/onChildTouchTest.test';
-import monopolizeTest from './monopolizeEventsTest/monopolizeTest.test';
-import assemblyCallbackTest from './assemblyCallback.test';
-import sourceTypeJsunit from './SourceTypeJsunit.test';
+import setCursorTest from './cursorControlTest/setCursorTest.test';
 
 export default function testsuite() {
-  assemblyCallbackTest();
-  enableJsunit();
-  touchAbleJsunit();
-  onChildTouchTest();
-  monopolizeTest();
-  sourceTypeJsunit();
+  setCursorTest();
 }
