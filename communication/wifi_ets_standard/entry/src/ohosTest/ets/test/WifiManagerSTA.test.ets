@@ -89,6 +89,7 @@ export default function wifiSta() {
          * @tc.name testIsHotspotActive
          * @tc.desc Test isHotspotActive Sync API functionality.
          * @tc.type Function
+         * @tc.size:MediumTest
          * @tc.level Level 0
          */
         it('SUB_Communication_WiFi_XTS_Sta_0035', 0, async (done:Function) =>{
