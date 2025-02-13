@@ -154,7 +154,9 @@ export default function buttonJsunit() {
        let strJson = getInspectorByKey('btok');
        let obj: ESObject = JSON.parse(strJson);
        console.info("[buttonJsunit_0700'] component obj is: " + obj.$attrs.fontSize + obj.$attrs.fontColor + obj.$attrs.fontFamily + obj.$attrs.fontStyle + obj.$attrs.fontWeight);
-       expect(obj.$attrs.fontSize).assertEqual('16.00fp');
+       let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_size_body1').id)
+	     console.info("[TextInputPageJsunit_0200] size: " +px2fp(resourceSize));
+       expect(obj.$attrs.fontSize).assertEqual('' + px2fp(resourceSize) + '.00fp');
        expect(obj.$attrs.fontColor).assertEqual('#FFFFFFFF');
        expect(obj.$attrs.fontFamily).assertEqual('233');
        expect(obj.$attrs.fontStyle).assertEqual('FontStyle.Normal');
