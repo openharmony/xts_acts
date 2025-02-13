@@ -9,6 +9,9 @@
     "MainAbility/pages/toolBarV2/toolBarV2Page",
     "MainAbility/pages/toolBarV2/toolBarV2ItemState",
     "MainAbility/pages/editableTitleBar/editableTitleBarAccessibilityPage",
-    "MainAbility/pages/subHeader/subHeaderAccessibilityPage"
+    "MainAbility/pages/subHeader/subHeaderAccessibilityPage",
+    "MainAbility/pages/composeTitleBar/composeTitleBarAccessibilityPage",
+    "MainAbility/pages/selectTitleBar/selectTitleBarAccessibilityPage",
+    "MainAbility/pages/tabTitleBar/tabTitleBarAccessibilityPage"
   ]
 }
