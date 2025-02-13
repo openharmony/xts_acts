@@ -48,27 +48,6 @@ struct getScrollItemRect1 {
 
   build() {
     Column() {
-      Scroll(this.scroller) {
-        Column() {
-          ForEach(this.arr, (item: number) => {
-            Text(item.toString())
-              .width('100%')
-              .height(100)
-              .backgroundColor('#3366CC')
-              .borderRadius(15)
-              .fontSize(16)
-              .textAlign(TextAlign.Center)
-          })
-        }
-        .width(300)
-        .margin(this.margin1)
-
-      }
-      .scrollable(ScrollDirection.Vertical)
-      .scrollBar(BarState.Auto)
-      .height(500)
-      .padding(this.padding1)
-
       Button('点击获取信息').onClick((event: ClickEvent) => {
         this.x = this.scroller.getItemRect(this.index).x
         this.y = this.scroller.getItemRect(this.index).y
@@ -83,6 +62,27 @@ struct getScrollItemRect1 {
       Button('点击滚动到底部').onClick((event: ClickEvent) => {
         this.scroller.scrollEdge(Edge.End)
       }).id('getScrollItemRect1_button2')
+
+      Scroll(this.scroller) {
+        Column() {
+          ForEach(this.arr, (item: number) => {
+            Text(item.toString())
+              .width('100%')
+              .height(10)
+              .backgroundColor('#3366CC')
+              .borderRadius(15)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+          })
+        }
+        .width(300)
+        .margin(this.margin1)
+
+      }
+      .scrollable(ScrollDirection.Vertical)
+      .scrollBar(BarState.Auto)
+      .padding(this.padding1)
+
     }
   }
 }
