@@ -48,7 +48,6 @@ export default function defaultTest() {
 
   //Component to be tested
   let supportView = [
-    'Select',
     'Stepper',
     'StepperItem',
     'Web',
