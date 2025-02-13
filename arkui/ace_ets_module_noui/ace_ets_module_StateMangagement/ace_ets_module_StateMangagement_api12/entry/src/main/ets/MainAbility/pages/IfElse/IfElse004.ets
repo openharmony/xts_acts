@@ -30,16 +30,21 @@ struct IfElse004 {
   @Local clazz: ClazzIf004 = new ClazzIf004(0);
 
   build() {
-    Column({ space: 20 }) {
-      Column({ space: 10 }) {
+    Column() {
+      Column() {
         Text('使用if/else进行条件判断，内层if/else渲染内容为基本组件，判断条件为@Local状态变量')
-          .fontSize(15)
+          .height('3%')
+          .fontSize(9)
           .fontColor(Color.Gray)
         Text('点击按钮val+1，背景色根据数字大小变化')
-          .fontSize(15)
+          .height('3%')
+          .fontSize(9)
           .fontColor(Color.Gray)
         Button('@Local val + 1')
           .id('btn_1')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
             this.val++;
           })
@@ -47,35 +52,44 @@ struct IfElse004 {
           Text(this.val.toString())
             .id('text_11')
             .backgroundColor('#00aaaa')
-            .fontSize(40)
+            .height('3%')
+            .fontSize(9)
         } else if (this.val < 5) {
           Text(this.val.toString())
             .id('text_12')
             .backgroundColor('#aaaaff')
-            .fontSize(40)
+            .height('3%')
+            .fontSize(9)
         } else if (this.val < 10) {
           Text(this.val.toString())
             .id('text_13')
             .backgroundColor('#ffaaaa')
-            .fontSize(40)
+            .height('3%')
+            .fontSize(9)
         } else {
           Text('out of range!')
             .id('text_14')
-            .fontSize(30)
+            .height('3%')
+            .fontSize(9)
         }
       }
       .width('100%')
       .border({ width: 1 })
 
-      Column({ space: 10 }) {
+      Column() {
         Text('使用if/else进行条件判断，内层if/else渲染内容为基本组件，判断条件为@Observed/@Trace状态变量')
-          .fontSize(15)
+          .height('3%')
+          .fontSize(9)
           .fontColor(Color.Gray)
         Text('点击按钮val+1，背景色根据数字大小变化')
-          .fontSize(15)
+          .height('3%')
+          .fontSize(9)
           .fontColor(Color.Gray)
         Button('@Trace innerVal + 1')
           .id('btn_2')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
             this.clazz.innerVal++;
           })
@@ -83,21 +97,25 @@ struct IfElse004 {
           Text(this.clazz.innerVal.toString())
             .id('text_21')
             .backgroundColor('#00aaaa')
-            .fontSize(40)
+            .height('3%')
+            .fontSize(9)
         } else if (this.clazz.innerVal < 5) {
           Text(this.clazz.innerVal.toString())
             .id('text_22')
             .backgroundColor('#aaaaff')
-            .fontSize(40)
+            .height('3%')
+            .fontSize(9)
         } else if (this.clazz.innerVal < 10) {
           Text(this.clazz.innerVal.toString())
             .id('text_23')
             .backgroundColor('#ffaaaa')
-            .fontSize(40)
+            .height('3%')
+            .fontSize(9)
         } else {
           Text('out of range!')
             .id('text_24')
-            .fontSize(30)
+            .height('3%')
+            .fontSize(9)
         }
       }
       .width('100%')

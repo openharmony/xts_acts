@@ -21,15 +21,17 @@ struct IfElse001 {
   private value: number = 100;
 
   build() {
-    Column({ space: 30 }) {
-      Column({ space: 10 }) {
+    Column() {
+      Column() {
         Text('使用if进行条件判断，渲染内容为基本组件，判断条件为逻辑表达式是否小于20')
-          .fontSize(15)
+          .height('3%')
+          .fontSize(9)
           .fontColor(Color.Gray)
-        Row({ space: 10 }) {
+        Row() {
           if (this.value0 < 20) {
             Text(`value: ${this.value0}, value小于20`)
-              .fontSize(20)
+              .height('3%')
+              .fontSize(9)
               .id('if_else_001_01')
           }
         }
@@ -37,17 +39,20 @@ struct IfElse001 {
       .width('100%')
       .border({ width: 1 })
 
-      Column({ space: 10 }) {
+      Column() {
         Text('使用if/else进行条件判断，渲染内容为基本组件，判断条件为逻辑表达式')
-          .fontSize(15)
+          .height('3%')
+          .fontSize(9)
           .fontColor(Color.Gray)
-        Row({ space: 10 }) {
+        Row() {
           if (this.value < 20) {
             Text(`value: ${this.value}, value小于20`)
-              .fontSize(20)
+              .height('3%')
+              .fontSize(9)
           } else {
             Text(`value: ${this.value}, value大于20`)
-              .fontSize(20)
+              .height('3%')
+              .fontSize(9)
               .id('if_else_001_02')
           }
         }
@@ -55,21 +60,25 @@ struct IfElse001 {
       .width('100%')
       .border({ width: 1 })
 
-      Column({ space: 10 }) {
+      Column() {
         Text('使用if/elseif/else进行条件判断，渲染内容为基本组件，判断条件为逻辑表达式')
-          .fontSize(15)
+          .height('3%')
+          .fontSize(9)
           .fontColor(Color.Gray)
-        Row({ space: 10 }) {
+        Row() {
           if (this.value < 20) {
             Text(`value: ${this.value}, value小于20`)
-              .fontSize(20)
+              .height('3%')
+              .fontSize(9)
           } else if (this.value < 1000) {
             Text(`value: ${this.value}, value大于20，小于1000`)
-              .fontSize(20)
+              .height('3%')
+              .fontSize(9)
               .id('if_else_001_03')
           } else {
             Text(`value: ${this.value}, else分支`)
-              .fontSize(20)
+              .height('3%')
+              .fontSize(9)
           }
         }
       }

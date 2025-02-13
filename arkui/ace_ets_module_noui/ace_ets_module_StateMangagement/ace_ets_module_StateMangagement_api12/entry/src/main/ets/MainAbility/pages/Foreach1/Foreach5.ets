@@ -20,18 +20,18 @@ struct Foreach005 {
   @State simpleList: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   build() {
-    Column({ space: 5 }) {
-      List({ space: 20, initialIndex: 3 }) {
+    Column() {
+      List({ initialIndex: 3 }) {
         ForEach(this.simpleList, (item: number, index: number) => {
           if (index % 2 === 0) {
             ListItem() {
               Text('even numbers' + `${index}${item}`).id('even_numbers' + `${index}`)
-                .fontSize(40)
+                .fontSize(9)
             }
           } else {
             ListItem() {
               Text('odd numbers' + `${index}${item}`).id('odd_numbers' + `${index}`)
-                .fontSize(40)
+                .fontSize(9)
             }
           }
         })

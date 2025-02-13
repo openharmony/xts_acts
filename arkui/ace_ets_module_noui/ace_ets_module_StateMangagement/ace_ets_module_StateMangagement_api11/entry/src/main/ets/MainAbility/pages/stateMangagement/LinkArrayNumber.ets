@@ -19,38 +19,40 @@ struct LinkArrayNumberChild {
 
   build() {
     Column() {
-      ForEach(Array.from(this.value.entries()), (item: [number, number]) => {
-        Text(`${item[1]}`).fontSize(20).id('LinkArrayNumber_value_' + item[0])
-        Divider()
-      })
-      Button('child init array').id('LinkArrayNumber_init')
+
+      Button('child init array').id('LinkArrayNumber_init').height('5%')
         .onClick(() => {
           this.value = [4, 5, 6]
-        }).margin(10)
+        })
 
-      Button('child add new one').id('LinkArrayNumber_add')
+      Button('child add new one').id('LinkArrayNumber_add').height('5%')
         .onClick(() => {
           let lastIndex = this.value.length - 1
           this.value.push(this.value[lastIndex] + 1)
-        }).margin(10)
+        })
 
-      Button('child clear').id('LinkArrayNumber_clear')
+      Button('child clear').id('LinkArrayNumber_clear').height('5%')
         .onClick(() => {
           this.value = []
           if (Array.from(this.value.entries())) {
             this.value.push(0)
           }
-        }).margin(10)
+        })
 
-      Button('child replace').id('LinkArrayNumber_replace')
+      Button('child replace').id('LinkArrayNumber_replace').height('5%')
         .onClick(() => {
           this.value[0] = 0
-        }).margin(10)
+        })
 
-      Button('child delete').id('LinkArrayNumber_delete')
+      Button('child delete').id('LinkArrayNumber_delete').height('5%')
         .onClick(() => {
           this.value.shift()
         })
+
+      ForEach(Array.from(this.value.entries()), (item: [number, number]) => {
+        Text(`${item[1]}`).fontSize(9).id('LinkArrayNumber_value_' + item[0]).height('5%')
+        Divider()
+      })
     }
   }
 }

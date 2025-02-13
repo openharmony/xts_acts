@@ -33,16 +33,19 @@ struct TabContentTest1 {
           this.message++
         })
           .id('changeMessage')
+          .height('5%')
 
         Button('changeIndex').onClick(() => {
           this.controller.changeIndex(1);
         })
           .id('changeIndex')
+          .height('5%')
 
         Button('changeIndex0').onClick(() => {
           this.controller.changeIndex(0);
         })
           .id('changeIndex0')
+          .height('5%')
 
         Tabs({ controller: this.controller }) {
           ForEach(this.data, (item: number) => {
@@ -75,7 +78,7 @@ struct FreezeChild1 {
   build() {
     Column() {
       Text('message' + `${this.message}, index: ${this.index}`)
-        .fontSize(50)
+        .fontSize(9)
         .fontWeight(FontWeight.Bold)
     }
   }

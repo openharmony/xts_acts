@@ -34,42 +34,42 @@ struct ViewC {
   @ObjectLink a:classB
   build() {
     Row() {
-        Row({ space: 5 }) {
+        Row() {
 
-          Column({ space: 5 }) {
-            Text("@ObjectLink颜色子组件undefined-->Pink")
-            Button('button')
+          Column() {
+            Text("@ObjectLink颜色子组件undefined-->Pink").height('5%')
+            Button('button').height('5%')
               .backgroundColor(this.a.color1)
               .onClick(() => {
                 this.a.color1 = Color.Pink
               })
               .key('zioBtn1')
 
-            Text("@ObjectLink子组件颜色null-->Pink")
-            Button('button')
+            Text("@ObjectLink子组件颜色null-->Pink").height('5%')
+            Button('button').height('5%')
               .backgroundColor(this.a.color2)
               .onClick(() => {
                 this.a.color2 = Color.Pink
               })
               .key('zioBtn2')
 
-            Text("@ObjectLink子组件文本undefined-->100")
-            Button('button')
+            Text("@ObjectLink子组件文本undefined-->100").height('5%')
+            Button('button').height('5%')
               .fontSize(this.a.number1)
               .onClick(() => {
                 this.a.number1 = 100
               })
               .key('zioBtn3')
 
-            Text("@ObjectLink子组件文本null-->100")
-            Button('button')
+            Text("@ObjectLink子组件文本null-->100").height('5%')
+            Button('button').height('5%')
               .fontSize(this.a.number2)
               .onClick(() => {
                 this.a.number2 = 100
               })
               .key('zioBtn4')
 
-          }.width('100%').margin({ top: 10 })
+          }.width('100%')
         }
       }
     }
@@ -81,35 +81,35 @@ struct ViewD {
   build() {
     Row() {
       Scroll() {
-        Row({ space: 5 }) {
+        Row() {
 
-          Column({ space: 5 }) {
-            Text("@ObjectLink父组件颜色undefined-->Pink")
-            Button('button')
+          Column() {
+            Text("@ObjectLink父组件颜色undefined-->Pink").height('5%')
+            Button('button').height('5%')
               .backgroundColor(this.b.color1)
               .onClick(() => {
                 this.b.color1 = Color.Pink
               })
               .key('oBtn1')
 
-            Text("@ObjectLink父组件颜色null-->Pink")
-            Button('button')
+            Text("@ObjectLink父组件颜色null-->Pink").height('5%')
+            Button('button').height('5%')
               .backgroundColor(this.b.color2)
               .onClick(() => {
                 this.b.color2 = Color.Pink
               })
               .key('oBtn2')
 
-            Text("@ObjectLink父组件文本undefined-->100")
-            Button('button')
+            Text("@ObjectLink父组件文本undefined-->100").height('5%')
+            Button('button').height('5%')
               .fontSize(this.b.number1)
               .onClick(() => {
                 this.b.number1 = 100
               })
               .key('oBtn3')
 
-            Text("@ObjectLink父组件文本null-->100")
-            Button('button')
+            Text("@ObjectLink父组件文本null-->100").height('5%')
+            Button('button').height('5%')
               .fontSize(this.b.number2)
               .onClick(() => {
                 this.b.number2 = 100
@@ -118,7 +118,7 @@ struct ViewD {
 
             ViewC({a:this.b})
 
-          }.width('100%').margin({ top: 10 })
+          }.width('100%')
         }
       }
     }

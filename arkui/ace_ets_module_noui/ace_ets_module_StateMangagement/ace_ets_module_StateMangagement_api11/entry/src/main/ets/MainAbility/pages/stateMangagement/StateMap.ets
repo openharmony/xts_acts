@@ -21,37 +21,40 @@ struct StateMapSample {
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-          Text(`${item[0]} ${item[1]}`).fontSize(20).id("stateMap_value_" + item[1])
-          Divider()
-        })
-        Button('init map').id("stateMap_init")
+
+        Button('init map').id("stateMap_init").height('5%')
           .onClick(() => {
             this.message = new Map([[0, "a"], [1, "b"], [3, "c"]])
-          }).margin(10)
+          })
 
-        Button('set new one').id("stateMap_set")
+        Button('set new one').id("stateMap_set").height('5%')
           .onClick(() => {
             this.message.set(4, "d")
-          }).margin(10)
+          })
 
-        Button('clear').id("stateMap_clear")
+        Button('clear').id("stateMap_clear").height('5%')
           .onClick(() => {
             this.message.clear()
             if (Array.from(this.message.entries())) {
               this.message.set(0, "K")
             }
-          }).margin(10)
+          })
 
-        Button('replace the first one').id("stateMap_replace")
+        Button('replace the first one').id("stateMap_replace").height('5%')
           .onClick(() => {
             this.message.set(0, "aa")
-          }).margin(10)
+          })
 
-        Button('delete the first one').id("stateMap_delete")
+        Button('delete the first one').id("stateMap_delete").height('5%')
           .onClick(() => {
             this.message.delete(0)
-          }).margin(10)
+          })
+
+        ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
+          Text(`${item[0]} ${item[1]}`).fontSize(9).id("stateMap_value_" + item[1])
+            .height('5%')
+          Divider()
+        })
       }
       .width('100%')
     }

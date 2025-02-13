@@ -92,7 +92,7 @@ struct LazyForEachDataOperationType {
   }
 
   build() {
-    Column({space:10}) {
+    Column() {
       Text('Text:'+ this.message1)
         .id('DataOperationType_0')
       Text('Length:'+ this.length1)
@@ -115,17 +115,17 @@ struct LazyForEachDataOperationType {
         this.data.ExChangeData()
           this.message1=this.data.dataArray[1]
       })
-      List({ space: 3 }) {
+      List() {
         LazyForEach(this.data, (item: string,index:number) => {
           ListItem() {
             Row() {
               Text(item)
                 .id('indexA'+index)
-                .fontSize(50)
+                .fontSize(9)
                 .onAppear(() => {
                   console.info("appear:" + item)
                 })
-            }.margin({ left: 10, right: 10 })
+            }
           }
 
         }, (item: string) => item)

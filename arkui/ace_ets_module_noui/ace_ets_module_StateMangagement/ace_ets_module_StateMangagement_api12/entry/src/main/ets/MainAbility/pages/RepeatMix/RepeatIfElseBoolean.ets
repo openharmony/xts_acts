@@ -28,14 +28,17 @@ struct RepeatIfElseBoolean {
   }
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
+      Button('switch mode')
+        .onClick(() => {
+          this.flag = !this.flag
+        })
       List({ initialIndex: 10 }) {
         Repeat<boolean>(this.simpleList)
           .each((obj: RepeatItem<boolean>) => {
             ListItem() {
               Text('item1 id = ' + obj.item).id('repeat1_IB' + `${obj.index}`)
-                .fontSize(30)
-                .margin({ top: 10 })
+                .fontSize(9)
             }
           })
           .key((item: boolean, index: number) => {
@@ -48,7 +51,7 @@ struct RepeatIfElseBoolean {
               ListItem() {
                 Column() {
                   Text(`item2 id ${ri.index} = ` + ri.item).id('repeat2_IB' + `${ri.index}`)
-                    .fontSize(20)
+                    .fontSize(9)
                     .fontColor(Color.Gray)
                 }
               }
@@ -56,7 +59,7 @@ struct RepeatIfElseBoolean {
               ListItem() {
                 Column() {
                   Text(`item3 id ${ri.index} = ` + ri.item).id('repeat3_IB' + `${ri.index}`)
-                    .fontSize(20)
+                    .fontSize(9)
                     .fontColor(Color.Red)
                 }
               }
@@ -66,12 +69,7 @@ struct RepeatIfElseBoolean {
       .cachedCount(1)
       .border({ width: 1 })
       .width('90%')
-      .height('70%')
-
-      Button('switch mode')
-        .onClick(() => {
-          this.flag = !this.flag
-        })
+      .layoutWeight(1)
     }
     .height('100%')
     .justifyContent(FlexAlign.Center)

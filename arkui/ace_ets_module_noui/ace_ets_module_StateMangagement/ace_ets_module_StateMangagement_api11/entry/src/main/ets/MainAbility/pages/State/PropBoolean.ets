@@ -20,18 +20,18 @@ struct PropBoolean {
   @State BooleanA: boolean = true
 
   build() {
-    Column({space:5}) {
-      Text('@Prop 支持数据类型：Boolean').fontSize(18)
-      Text('父组件State:' +this.BooleanA).margin(10).width("100%").key('Boolean_Prop')
-      Button('父组件State:').margin(10).width("100%")
+    Column() {
+      Text('@Prop 支持数据类型：Boolean').fontSize(9).height('5%')
+      Text('父组件State:' +this.BooleanA).width("100%").key('Boolean_Prop').height('5%')
+      Button('父组件State:').width("100%")
+        .height('5%')
         .key("PropBoolean")
         .onClick(() => {
           this.BooleanA = false
         })
-      Text('父组件: ' + this.BooleanA).fontSize(30)
+      Text('父组件: ' + this.BooleanA).fontSize(9).height('5%')
       ChildPropBoolean({ BooleanB: this.BooleanA })
     }.width('100%')
-    .margin({ top: 50 })
   }
 }
 
@@ -40,17 +40,16 @@ struct ChildPropBoolean {
   @Prop BooleanB: boolean = false;
 
   build() {
-    Column({space:5}) {
-      Text('@Prop 单向的 内部修改不会改变父组件').fontSize(18)
+    Column() {
+      Text('@Prop 单向的 内部修改不会改变父组件').fontSize(9).height('5%')
 
-      Button('子组件Prop: '+this.BooleanB).margin(10).width("100%")
+      Button('子组件Prop: '+this.BooleanB).width("100%").height('5%')
         .key("ChildPropBoolean")
         .onClick(() => {
           this.BooleanB = true
         })
-      Text('子组件: ' + this.BooleanB).fontSize(30)
+      Text('子组件: ' + this.BooleanB).fontSize(9).height('5%')
 
     }.width('100%')
-    .margin({ top: 50 })
   }
 }

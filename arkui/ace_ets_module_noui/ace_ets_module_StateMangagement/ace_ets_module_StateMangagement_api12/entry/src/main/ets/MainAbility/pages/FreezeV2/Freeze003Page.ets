@@ -19,7 +19,7 @@ import router from '@ohos.router';
 struct Freeze003Page {
   build() {
     Column() {
-      Text(`This is the page`).fontSize(50)
+      Text(`This is the page`).fontSize(9)
       Button('Back')
         .onClick(() => {
           router.back();

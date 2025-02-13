@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -18,8 +18,10 @@ struct ChildRequire {
   @Param @Require childRequireMsg: string
 
   build() {
-    Row({ space: 3 }) {
+    Row() {
       Text(this.childRequireMsg).id('tvChildRequireMsg')
+        .height('3%')
+        .fontSize(9)
     }
   }
 }
@@ -32,11 +34,19 @@ struct ChildArrParam {
   @Param chilArr: (number | boolean | ESObject)[] = []
 
   build() {
-    Column({ space: 3 }) {
+    Column() {
       Text(Array.from(this.childSet).toString()).id('tvChildSet')
+        .height('3%')
+        .fontSize(9)
       Text(this.childMap.get('map')).id('tvChildMap')
+        .height('3%')
+        .fontSize(9)
       Text(this.childDate.toTimeString()).id('tvChildDate')
+        .height('3%')
+        .fontSize(9)
       Text(JSON.stringify(this.chilArr)).id('tvChildArr')
+        .height('3%')
+        .fontSize(9)
     }
   }
 }
@@ -46,8 +56,10 @@ struct ChildParentParm {
   @Param nestChildMsg: string = ''
 
   build() {
-    Row({ space: 3 }) {
+    Row() {
       Text(this.nestChildMsg).id('tvNestChild')
+        .height('3%')
+        .fontSize(9)
       ChildRequire({ childRequireMsg: this.nestChildMsg })
     }
   }
@@ -60,6 +72,8 @@ struct ChildUnionParm {
   build() {
     Row() {
       Text(JSON.stringify(this.childUnionType)).id('tvChildUnionType')
+        .height('3%')
+        .fontSize(9)
     }
   }
 }
@@ -71,6 +85,8 @@ struct ChildArrParm {
   build() {
     Row() {
       Text(JSON.stringify(this.childArr)).id('tvChildArr')
+        .height('3%')
+        .fontSize(9)
     }
   }
 }
@@ -82,14 +98,16 @@ export struct ChildParam {
   }
 
   build() {
-    Column({ space: 3 }) {
-      Text(this.childMsg).id('tvChildMsgEvent').onClick(() => {
-        this.changeChildMsg()
-      })
+    Column() {
+      Text(this.childMsg).id('tvChildMsgEvent')
+        .height('3%')
+        .fontSize(9)
+        .onClick(() => {
+          this.changeChildMsg()
+        })
     }
   }
 }
-
 
 @Entry
 @ComponentV2
@@ -99,7 +117,7 @@ export struct ParamTest {
   @Local map: Map<string, string> = new Map()
   @Local date: Date = new Date('2024/07/15')
   @Local unionType: number | null | undefined = null
-  @Local arr: (number | boolean | ESObject)[] = [2, false, {gender: 'boy'}]
+  @Local arr: (number | boolean | ESObject)[] = [2, false, { gender: 'boy' }]
 
   aboutToAppear(): void {
     this.map.set('map', 'Map')
@@ -107,49 +125,66 @@ export struct ParamTest {
 
   build() {
     Scroll() {
-      Column({ space: 5 }) {
-        Column({ space: 3 }) {
+      Column() {
+        Column() {
           Button('ChangeArrParam')
             .id('btnChangeArrParam')
+            .width('10%')
+            .height('3%')
+            .fontSize(9)
             .onClick(() => {
               this.set.clear()
               this.set.add(5)
               this.set.add(5)
               this.map.set('map', 'value0')
               this.date.setTime(this.date.getTime() + 1000)
-              this.arr=[]
-              this.arr.push(0,true,{gender: 'girl'})
+              this.arr = []
+              this.arr.push(0, true, { gender: 'girl' })
             })
-          ChildArrParam({ childSet: this.set, childMap: this.map, childDate: this.date, chilArr: this.arr })
+          ChildArrParam({
+            childSet: this.set,
+            childMap: this.map,
+            childDate: this.date,
+            chilArr: this.arr
+          })
         }
-        Column({ space: 3 }) {
+
+        Column() {
           Text(JSON.stringify(this.arr)).id('tvArr')
-            .onClick(()=>{
-              this.arr = [0,true,{gender: 'girl'}]
+            .height('3%')
+            .fontSize(9)
+            .onClick(() => {
+              this.arr = [0, true, { gender: 'girl' }]
             })
           ChildArrParm({ childArr: this.arr })
         }
 
-        Column({ space: 3 }) {
+        Column() {
           Text(JSON.stringify(this.unionType))
             .id('tvUnionType')
+            .height('3%')
+            .fontSize(9)
             .onClick(() => {
               this.unionType = 100
             })
           ChildUnionParm({ childUnionType: this.unionType })
         }
 
-        Column({ space: 3 }) {
+        Column() {
           Text(this.message)
             .id('tvNestGrandpa')
+            .height('3%')
+            .fontSize(9)
             .onClick(() => {
               this.message = 'tvNestGrandpa'
             })
           ChildParentParm({ nestChildMsg: this.message })
         }
 
-        Column({ space: 3 }) {
+        Column() {
           Text(this.message).id('tvMsgEvent')
+            .height('3%')
+            .fontSize(9)
           ChildParam({
             childMsg: this.message, changeChildMsg: () => {
               this.message = 'ARKUI'
@@ -164,5 +199,3 @@ export struct ParamTest {
     .scrollBar(BarState.Off)
   }
 }
-
-

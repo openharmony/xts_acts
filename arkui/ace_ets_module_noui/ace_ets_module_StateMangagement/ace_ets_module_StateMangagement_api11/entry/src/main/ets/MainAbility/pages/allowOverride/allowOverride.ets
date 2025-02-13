@@ -20,10 +20,11 @@ struct GrandSon {
 
   build() {
     Column() {
-      Text(`reviewVotes(${this.reviewVotes})`).key('allowOverride_Consume')
-        .margin(20)
+      Text(`reviewVotes(${this.reviewVotes})`).key('allowOverride_Consume').height('5%')
+        
       Button(`reviewVotes(${this.reviewVotes}), give +1`)
         .onClick(() => this.reviewVotes += 1)
+        .height('5%')
     }
     .width('50%')
   }
@@ -33,7 +34,7 @@ struct GrandSon {
 struct Child {
   @Provide({allowOverride : "reviewVotes"}) reviewVotes: number = 10;
   build() {
-    Row({ space: 5 }) {
+    Row() {
       GrandSon()
     }
   }
@@ -56,7 +57,8 @@ struct GrandParent {
     Column() {
       Button(`reviewVotes(${this.reviewVotes}), give +1`)
         .onClick(() => this.reviewVotes += 1)
-        .margin(30)
+        .height('5%')
+        
       Parent()
     }
   }

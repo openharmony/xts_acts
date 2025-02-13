@@ -34,7 +34,7 @@ struct arrViewA {
     Row() {
       Text("viewA: "+`${this.data.num}`)
 
-    }.margin({ top: 10 })
+    }
   }
 }
 
@@ -44,42 +44,48 @@ struct arrViewB {
   @State arrA: ClassA[] = [new ClassA(5), new ClassA(6)]
 
   build() {
-    Column({ space: 20 }) {
+    Column() {
       Button("Reset").id("arrViewB_reset")
+        .height('5%')
         .onClick(() => {
           nextID = 0
           this.arrA = [new ClassA(5), new ClassA(6)]
         })
-      Text('hello: ' + JSON.stringify(this.arrA)).fontSize(20).margin(15)
-        .key("view_arrObl")
-      Button(`ViewB: change`).fontSize(15).margin(5).margin(10)
+      Text('hello: ' + JSON.stringify(this.arrA)).fontSize(9)
+        .key("view_arrObl").height('5%')
+      Button(`ViewB: change`).fontSize(9)
+        .height('5%')
         .key("change_ArrObl")
         .onClick(() => {
           // 改变某一个Array值
           this.arrA[0] = new ClassA(8)
         })
 
-      Button(`ViewB: push`).fontSize(15).margin(5).margin(10)
+      Button(`ViewB: push`).fontSize(9)
+        .height('5%')
         .key("add_ArrObl")
         .onClick(() => {
           this.arrA.push(new ClassA(7))
         })
 
-      Button(`ViewB: shift`).fontSize(15).margin(5).margin(10)
+      Button(`ViewB: shift`).fontSize(9)
+        .height('5%')
         .key("delete_Arr1")
         .onClick(() => {
           this.arrA.shift()
         })
 
-      Button(`ViewB: pop`).fontSize(15).margin(5).margin(10)
+      Button(`ViewB: pop`).fontSize(9)
+        .height('5%')
         .key("delete_Arr2")
         .onClick(() => {
           this.arrA.pop()
         })
 
       Button(`ViewB: reset array`)
+        .height('5%')
         .key("reset_ArrObl")
-        .margin({ top: 10 })
+        
         .onClick(() => {
           this.arrA = [new ClassA(5), new ClassA(6)]
         })

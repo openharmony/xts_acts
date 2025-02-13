@@ -23,11 +23,12 @@ struct SubState8 {
 
   build() {
     Column() {
-      Text('@State:'+ this.num1).id("SubState_text").margin(5)
+      Text('@State:'+ this.num1).id("SubState_text")
         .id("SubState1")
         .onClick(() => {
           this.num1 += 1
         })
+        .height('5%')
     }
   }
 }
@@ -38,11 +39,12 @@ struct SubProp8 {
 
   build() {
     Column() {
-      Text('@Prop:'+ this.num1).id("SubProp_text").margin(5)
+      Text('@Prop:'+ this.num1).id("SubProp_text")
         .id("SubProp1")
         .onClick(() => {
           this.num1 += 1
         })
+        .height('5%')
     }
   }
 }
@@ -53,11 +55,12 @@ struct SubProvide8 {
 
   build() {
     Column() {
-      Text('@Provide:'+ this.num1).id("SubProvide_text").margin(5)
+      Text('@Provide:'+ this.num1).id("SubProvide_text")
         .id("SubProvide1")
         .onClick(() => {
           this.num1 += 1
         })
+        .height('5%')
     }
   }
 }
@@ -68,11 +71,12 @@ struct SubLink8 {
 
   build() {
     Column() {
-      Text('@Link:'+ this.num1).id("SubLink_text").margin(5)
+      Text('@Link:'+ this.num1).id("SubLink_text")
         .id("SubLink1")
         .onClick(() => {
           this.num1 += 1
         })
+        .height('5%')
     }
   }
 }
@@ -85,17 +89,17 @@ struct CombinationState8 {
 
   build() {
     Row() {
-      Column({ space: 20 }) {
-        Text('@LocalStorageProp支持初始化@State修饰的数据')
+      Column() {
+        Text('@LocalStorageProp支持初始化@State修饰的数据').height('5%')
         SubState8({num1: this.num})
 
-        Text('@LocalStorageProp支持初始化@Prop修饰的数据')
+        Text('@LocalStorageProp支持初始化@Prop修饰的数据').height('5%')
         SubProp8({num1: this.num})
 
-        Text('@LocalStorageProp支持初始化@Provid修饰的数据')
+        Text('@LocalStorageProp支持初始化@Provid修饰的数据').height('5%')
         SubProvide8({num1: this.num})
 
-        Text('@LocalStorageProp支持初始化@Link修饰的数据')
+        Text('@LocalStorageProp支持初始化@Link修饰的数据').height('5%')
         SubLink8({num1: this.num})
 
       }

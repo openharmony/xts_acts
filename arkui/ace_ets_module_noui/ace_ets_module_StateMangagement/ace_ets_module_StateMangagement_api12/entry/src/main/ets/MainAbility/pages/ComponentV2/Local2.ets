@@ -39,10 +39,9 @@ struct pageLocal {
   build() {
     Column() {
       Text(`num: ${this.num}`).id('num_text')
-        .fontSize(30)
+        .fontSize(9)
         .fontWeight(FontWeight.Bold)
         .fontColor(this.textColor)
-        .margin(20)
         .onClick(() => {
           this.num += 5
         })

@@ -37,10 +37,10 @@ struct ChildPropState33 {
 
   build() {
     Column() {
-      Text(`子组件ChildPropState1: ${this.counterVal.value}`).fontSize(18).margin(2)
-        .key("ChildPropState1").height(30)
-      Text(`子组件ChildPropState2: ${this.counterVal.sum.value}`).fontSize(18).margin(2)
-        .key("ChildPropState2").height(30)
+      Text(`子组件ChildPropState1: ${this.counterVal.value}`).fontSize(9)
+        .key("ChildPropState1").height('3%')
+      Text(`子组件ChildPropState2: ${this.counterVal.sum.value}`).fontSize(9)
+        .key("ChildPropState2").height('3%')
     }.width('100%')
   }
 }
@@ -52,10 +52,10 @@ struct ChildProvide {
 
   build() {
     Column() {
-      Text(`子组件ChildProvide1: ${this.counterVal.value}`).fontSize(18).margin(2)
-        .key("ChildProvide1").height(20)
-      Text(`子组件ChildProvide2: ${this.counterVal.sum.value}`).fontSize(18).margin(2)
-        .key("ChildProvide2").height(20)
+      Text(`子组件ChildProvide1: ${this.counterVal.value}`).fontSize(9)
+        .key("ChildProvide1").height('3%')
+      Text(`子组件ChildProvide2: ${this.counterVal.sum.value}`).fontSize(9)
+        .key("ChildProvide2").height('3%')
     }.width('100%')
   }
 }
@@ -67,10 +67,10 @@ struct ChildLink3 {
 
   build() {
     Column() {
-      Text(`子组件ChildLink1: ${this.counterVal.value}`).fontSize(18).margin(5)
-        .key("ChildLink1").height(20)
-      Text(`子组件ChildLink2: ${this.counterVal.sum.value}`).fontSize(18).margin(5)
-        .key("ChildLink2").height(20)
+      Text(`子组件ChildLink1: ${this.counterVal.value}`).fontSize(9)
+        .key("ChildLink1").height('5%')
+      Text(`子组件ChildLink2: ${this.counterVal.sum.value}`).fontSize(9)
+        .key("ChildLink2").height('5%')
     }.width('100%')
   }
 }
@@ -82,10 +82,10 @@ struct ChildProp {
 
   build() {
     Column() {
-      Text(`子组件ChildProp1: ${this.counterVal.value}`).fontSize(18).margin(5)
-        .key("ChildProp1").height(20)
-      Text(`子组件ChildProp2: ${this.counterVal.sum.value}`).fontSize(18).margin(5)
-        .key("ChildProp2").height(20)
+      Text(`子组件ChildProp1: ${this.counterVal.value}`).fontSize(9)
+        .key("ChildProp1").height('5%')
+      Text(`子组件ChildProp2: ${this.counterVal.sum.value}`).fontSize(9)
+        .key("ChildProp2").height('5%')
     }.width('100%')
   }
 }
@@ -96,14 +96,14 @@ struct PropObjectLink3 {
 
   build() {
     Column() {
-      Text('@ObjectLink支持初始化@State修饰的数据')
-      Text("@State能接收来自@ObjectLink的一层属性值")
-      Text("@State不能接收来自@ObjectLink的二层属性值")
+      Text('@ObjectLink支持初始化@State修饰的数据').height('3%')
+      Text("@State能接收来自@ObjectLink的一层属性值").height('3%')
+      Text("@State不能接收来自@ObjectLink的二层属性值").height('3%')
       ChildPropState33({counterVal: this.class_A})
 
-      Text('@ObjectLink支持初始化@Provide修饰的数据')
-      Text("@Provide能接收来自@ObjectLink的一层属性值")
-      Text("@Provide不能接收来自@ObjectLink的二层属性值")
+      Text('@ObjectLink支持初始化@Provide修饰的数据').height('3%')
+      Text("@Provide能接收来自@ObjectLink的一层属性值").height('3%')
+      Text("@Provide不能接收来自@ObjectLink的二层属性值").height('3%')
       ChildProvide({counterVal: this.class_A})
     }
   }
@@ -115,8 +115,8 @@ struct ObjectLinkLink {
 
   build() {
     Column() {
-      Text("@Link能接收来自@ObjectLink的一层属性值")
-      Text("@Link能接收来自@ObjectLink的二层属性值")
+      Text("@Link能接收来自@ObjectLink的一层属性值").height('3%')
+      Text("@Link能接收来自@ObjectLink的二层属性值").height('3%')
       ChildLink3({counterVal: this.class_A})
     }
   }
@@ -128,8 +128,8 @@ struct PropObjectLinkProp {
 
   build() {
     Column() {
-      Text("@Prop能接收来自@ObjectLink的一层属性值")
-      Text("@Prop能接收来自@ObjectLink的二层属性值")
+      Text("@Prop能接收来自@ObjectLink的一层属性值").height('3%')
+      Text("@Prop能接收来自@ObjectLink的二层属性值").height('3%')
       ChildProp({counterVal: this.class_A})
     }
   }
@@ -141,19 +141,20 @@ struct CombinationState4 {
   @State class_A: ClassA3 = new ClassA3(1, new SubClass4(5))
 
   build() {
-    Column({ space: 10 }) {
-      Button('Click to change ClassA').width("100%").margin(5)
+    Column() {
+      Button('Click to change ClassA').width("100%")
         .key("change_ClassA")
+        .height('3%')
         .onClick(() => {
           this.class_A = new ClassA3(2, new SubClass4(6))
         })
 
       PropObjectLink3({class_A: this.class_A})
 
-      Text('@ObjectLink支持初始化@Link修饰的数据')
+      Text('@ObjectLink支持初始化@Link修饰的数据').height('3%')
       ObjectLinkLink({class_A: this.class_A})
 
-      Text('@ObjectLink支持初始化@Prop修饰的数据')
+      Text('@ObjectLink支持初始化@Prop修饰的数据').height('3%')
       PropObjectLinkProp({class_A: this.class_A})
     }
   }

@@ -31,7 +31,7 @@ struct ChildStateUndefined0010 {
   @LocalStorageLink('localStorageLink0010') private localStorageLink: undefined | null = null
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Text('stateValue:' + this.stateValue)
         .id('tvStateValue')
       Text('propValue:' + this.propValue)
@@ -59,7 +59,7 @@ struct StateUndefined0010 {
   @Provide('stateUndefined0010') provideValue: undefined | null = undefined
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Text('provideValue:' + this.provideValue)
         .id('tvProvideValue')
       ChildStateUndefined0010({stateValue: this.stateValue, propValue: this.stateValue, linkValue: this.stateValue})

@@ -21,7 +21,7 @@ struct ChildProvider0270 {
   }
 
   build() {
-    Column({space: 10}) {
+    Column() {
       Text(`x: ${this.childX}, y: ${this.childY}`)
         .id('tvChildProvider0270')
       Button('DragStart')
@@ -47,7 +47,7 @@ struct Provider0270 {
   }
 
   build() {
-    Column({space: 10}) {
+    Column() {
       Text(`x: ${this.childX}, y: ${this.childY}`)
         .id('tvProvider0270')
       ChildProvider0270()

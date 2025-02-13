@@ -47,8 +47,7 @@ struct TabContentTest {
             }.tabBar(`tab${item}`)
           }, (item: number) => item.toString())
         }
-        .width('45%')
-        .height('45%')
+        .layoutWeight(1)
       }
       .width('100%')
     }
@@ -71,7 +70,7 @@ struct FreezeChild2 {
 
   build() {
     Text('message' + `${this.message}, index: ${this.index}`)
-      .fontSize(50)
+      .fontSize(9)
       .fontWeight(FontWeight.Bold)
   }
 }

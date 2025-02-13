@@ -38,14 +38,17 @@ struct RepeatIfElseObject {
   }
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
+      Button('switch mode')
+        .onClick(() => {
+          this.flag = !this.flag
+        })
       List() {
         Repeat<RepeatObject>(this.simpleList)
           .each((obj: RepeatItem<RepeatObject>) => {
             ListItem() {
               Text('item id = ' + obj.item).id('repeat1_IO' + `${obj.index}`)
-                .fontSize(30)
-                .margin({ top: 10 })
+                .fontSize(9)
             }
           })
           .key((item: RepeatObject, index: number) => {
@@ -58,7 +61,7 @@ struct RepeatIfElseObject {
               ListItem() {
                 Column() {
                   Text(`item id ${ri.index} = ` + ri.item.name).id('repeat2_IO' + `${ri.index}`)
-                    .fontSize(20)
+                    .fontSize(9)
                     .fontColor(Color.Gray)
                 }
               }
@@ -66,7 +69,7 @@ struct RepeatIfElseObject {
               ListItem() {
                 Column() {
                   Text(`item id ${ri.index} = ` + ri.item.name).id('repeat3_IO' + `${ri.index}`)
-                    .fontSize(20)
+                    .fontSize(9)
                     .fontColor(Color.Red)
                 }
               }
@@ -76,12 +79,7 @@ struct RepeatIfElseObject {
       .cachedCount(1)
       .border({ width: 1 })
       .width('90%')
-      .height('70%')
-
-      Button('switch mode')
-        .onClick(() => {
-          this.flag = !this.flag
-        })
+      .layoutWeight(1)
     }
     .height('100%')
     .justifyContent(FlexAlign.Center)

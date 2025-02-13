@@ -51,74 +51,72 @@ export default function bindContentCoverTest() {
     it('bindContentCoverTest_0100', 0, async (done: Function) => {
       console.info('bindContentCoverTest_0100 START');
       let driver = await Driver.create()
-      await CommonFunc.sleep(1000);
-
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('bindContentText');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[bindContentCoverTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('isShow: false');
-
+      await CommonFunc.sleep(1000);
       strJson = getInspectorByKey('bindContentText1');
       obj = JSON.parse(strJson);
       console.info("[bindContentCoverTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('isShow2: false');
-
-      let button = await driver.findComponent(ON.id('bindContentButton1'));
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('btnBindContent1'));
+      await CommonFunc.sleep(1000);
       await button.click();
       await CommonFunc.sleep(1000);
-
       strJson = getInspectorByKey('bindContentText2');
       obj = JSON.parse(strJson);
       console.info("[bindContentCoverTest_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('isShow: true');
-
+      await CommonFunc.sleep(1000);
       strJson = getInspectorByKey('bindContentText3');
       obj = JSON.parse(strJson);
       console.info("[bindContentCoverTest_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('isShow2: false');
-
-      button = await driver.findComponent(ON.id('bindContentButton3'));
+      await CommonFunc.sleep(1000);
+      button = await driver.findComponent(ON.id('btnBindContent3'));
+      await CommonFunc.sleep(1000);
       await button.click();
       await CommonFunc.sleep(1000);
-
       strJson = getInspectorByKey('bindContentText4');
       obj = JSON.parse(strJson);
       console.info("[bindContentCoverTest_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('isShow: true');
-
+      await CommonFunc.sleep(1000);
       strJson = getInspectorByKey('bindContentText5');
       obj = JSON.parse(strJson);
       console.info("[bindContentCoverTest_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('isShow2: true');
-
-      button = await driver.findComponent(ON.id('bindContentButton4'));
+      await CommonFunc.sleep(1000);
+      button = await driver.findComponent(ON.id('btnBindContent4'));
+      await CommonFunc.sleep(1000);
       await button.click();
       await CommonFunc.sleep(1000);
-
       strJson = getInspectorByKey('bindContentText2');
       obj = JSON.parse(strJson);
       console.info("[bindContentCoverTest_0400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('isShow: true');
-
+      await CommonFunc.sleep(1000);
       strJson = getInspectorByKey('bindContentText3');
       obj = JSON.parse(strJson);
       console.info("[bindContentCoverTest_0400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('isShow2: false');
-
-      button = await driver.findComponent(ON.id('bindContentButton2'));
+      await CommonFunc.sleep(1000);
+      button = await driver.findComponent(ON.id('btnBindContent2'));
+      await CommonFunc.sleep(1000);
       await button.click();
       await CommonFunc.sleep(1000);
-
       strJson = getInspectorByKey('bindContentText');
       obj = JSON.parse(strJson);
       console.info("[bindContentCoverTest_0500] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('isShow: false');
-
+      await CommonFunc.sleep(1000);
       strJson = getInspectorByKey('bindContentText1');
       obj = JSON.parse(strJson);
       console.info("[bindContentCoverTest_0500] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('isShow2: false');
-
       console.info('[bindContentCoverTest_0100] END');
       done();
     });

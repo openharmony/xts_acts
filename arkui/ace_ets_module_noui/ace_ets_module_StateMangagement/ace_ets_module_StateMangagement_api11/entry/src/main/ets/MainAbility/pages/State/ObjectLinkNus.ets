@@ -35,12 +35,11 @@ struct ViewBOlk {
   build() {
     Row() {
       // 将ClassB的成员变量a在UI呈现出来
-      Text(`${this.class_B.name}`)
-      Text(`${this.class_B.num}`)
-      Text(`${this.class_B.flag}`)
-      Text(`${this.class_B.color}`)
+      Text(`${this.class_B.name}`).height('5%').width('25%')
+      Text(`${this.class_B.num}`).height('5%').width('25%')
+      Text(`${this.class_B.flag}`).height('5%').width('25%')
+      Text(`${this.class_B.color}`).height('5%').width('25%')
     }
-    .margin({top:100})
   }
 }
 
@@ -51,30 +50,34 @@ struct ViewANus {
   @State class_A: StrClassA = new StrClassA("hello");
 
   build() {
-    Column({space:20}) {
-      Text(`${this.class_A.name}`).key(("str_obl"))
+    Column() {
+      Text(`${this.class_A.name}`).key(("str_obl")).height('5%')
       Button('@ObjectLink 支持 string 类型')
+        .height('5%')
         .key(("strBtn_obl"))
         .onClick(() => {
           this.class_A.name = "harmony";
         })
 
-      Text(`${this.class_A.num}`).key(("num_obl"))
+      Text(`${this.class_A.num}`).key(("num_obl")).height('5%')
       Button('@ObjectLink 支持 number 类型')
+        .height('5%')
         .key(("numBtn_obl"))
         .onClick(() => {
           this.class_A.num = 3;
         })
 
-      Text(`${this.class_A.flag}`).key(("bon_obl"))
+      Text(`${this.class_A.flag}`).key(("bon_obl")).height('5%')
       Button('@ObjectLink 支持 Boolean 类型')
+        .height('5%')
         .key(("bonBtn_obl"))
         .onClick(() => {
           this.class_A.flag = !this.class_A.flag
         })
 
-      Text(`${this.class_A.color}`).key(("cor_obl"))
+      Text(`${this.class_A.color}`).key(("cor_obl")).height('5%')
       Button('@ObjectLink 支持 enum 类型')
+        .height('5%')
         .key(("corBtn_obl"))
         .onClick(() => {
           this.class_A.color = Color.Red

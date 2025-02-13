@@ -29,17 +29,22 @@ struct RepeatForEachString {
   }
 
   build() {
-    Column({ space: 10 }) {
-      List({ initialIndex: 10, space: 10 }) {
+    Column() {
+        Button('change No.5 data').id('changeBtn')
+        .onClick(() => {
+          this.dataList1[5] = '999'
+          this.dataList2[0] = 'newString'
+        })
+      List({ initialIndex: 10 }) {
         Repeat<string>(this.dataList1)
           .each((obj: RepeatItem<string>) => {
             ListItem() {
               Row() {
                 Text(obj.item).id('repeat1_S' + obj.index.toString())
-                  .fontSize(15)
+                  .fontSize(9)
                 ForEach(this.dataList2, (item: string) => {
                   Text(' ' + item).id('foreach1_S' + obj.index.toString())
-                    .fontSize(15)
+                    .fontSize(9)
                     .fontColor(Color.Orange)
                 })
               }
@@ -52,13 +57,7 @@ struct RepeatForEachString {
       .cachedCount(1)
       .border({ width: 1 })
       .width('90%')
-      .height('50%')
-
-      Button('change No.5 data').id('changeBtn')
-        .onClick(() => {
-          this.dataList1[5] = '999'
-          this.dataList2[0] = 'newString'
-        })
+      .layoutWeight(1)  
     }
     .height('100%')
     .justifyContent(FlexAlign.Center)

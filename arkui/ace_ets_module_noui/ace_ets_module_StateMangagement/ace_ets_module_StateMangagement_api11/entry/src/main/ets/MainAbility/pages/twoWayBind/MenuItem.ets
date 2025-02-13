@@ -28,10 +28,11 @@ struct MenuItemTest {
 
   build() {
     Row() {
-      Text(`select: ${this.select}`).fontSize(30).id('menuItemText1')
+      Text(`select: ${this.select}`).fontSize(9).id('menuItemText1').height('5%')
       Column() {
         Text('click to show menu')
-          .fontSize(50)
+          .height('5%')
+          .fontSize(9)
           .fontWeight(FontWeight.Bold)
           .id('menuItemText')
       }

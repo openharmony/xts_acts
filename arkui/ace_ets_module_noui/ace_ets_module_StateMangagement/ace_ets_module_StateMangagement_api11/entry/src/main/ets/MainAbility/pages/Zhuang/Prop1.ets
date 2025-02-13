@@ -20,41 +20,41 @@ struct CountDownComponent {
   @Prop number2: number | undefined | null
 
   build() {
-    Row({ space: 5 }){
-      Column({ space: 5 }) {
-        Text("Prop子组件颜色undefined-->Pink")
-        Button('button')
+    Row(){
+      Column() {
+        Text("Prop子组件颜色undefined-->Pink").height('5%')
+        Button('button').height('5%')
           .backgroundColor(this.color1)
           .onClick(() => {
             this.color1 = Color.Pink
           })
           .key('ziPropBtn1')
 
-        Text("Prop子组件颜色null-->Pink")
-        Button('button')
+        Text("Prop子组件颜色null-->Pink").height('5%')
+        Button('button').height('5%')
           .backgroundColor(this.color2)
           .onClick(() => {
             this.color2 = Color.Pink
           })
           .key('ziPropBtn2')
 
-        Text("Prop子组件文本undefined-->100")
-        Button('button')
+        Text("Prop子组件文本undefined-->100").height('5%')
+        Button('button').height('5%')
           .fontSize(this.number1)
           .onClick(() => {
             this.number1 = 100
           })
           .key('ziPropBtn3')
 
-        Text("Prop子组件文本null-->100")
-        Button('button')
+        Text("Prop子组件文本null-->100").height('5%')
+        Button('button').height('5%')
           .fontSize(this.number2)
           .onClick(() => {
             this.number2 = 100
           })
           .key('ziPropBtn4')
 
-      }.width('100%').margin({ top: 10 })
+      }.width('100%')
     }
 
   }
@@ -72,35 +72,35 @@ struct ParentComponent {
 
     Row() {
       Scroll() {
-        Row({ space: 5 }) {
+        Row() {
 
-          Column({ space: 5 }) {
-            Text("Prop父组件颜色undefined-->Pink")
-            Button('button')
+          Column() {
+            Text("Prop父组件颜色undefined-->Pink").height('5%')
+            Button('button').height('5%')
               .backgroundColor(this.color1)
               .onClick(() => {
                 this.color1 = Color.Pink
               })
               .key('propBtn1')
 
-            Text("Prop父组件颜色null-->Pink")
-            Button('button')
+            Text("Prop父组件颜色null-->Pink").height('5%')
+            Button('button').height('5%')
               .backgroundColor(this.color2)
               .onClick(() => {
                 this.color2 = Color.Pink
               })
               .key('propBtn2')
 
-            Text("Prop父组件文本undefined-->100")
-            Button('button')
+            Text("Prop父组件文本undefined-->100").height('5%')
+            Button('button').height('5%')
               .fontSize(this.number1)
               .onClick(() => {
                 this.number1 = 100
               })
               .key('propBtn3')
 
-            Text("Prop父组件文本null-->100")
-            Button('button')
+            Text("Prop父组件文本null-->100").height('5%')
+            Button('button').height('5%')
               .fontSize(this.number2)
               .onClick(() => {
                 this.number2 = 100
@@ -109,7 +109,7 @@ struct ParentComponent {
 
             CountDownComponent({ color1:this.color1,color2:this.color2,number1:this.number1,number2:this.number2})
 
-          }.width('100%').margin({ top: 10 })
+          }.width('100%')
         }
       }
     }

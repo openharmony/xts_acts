@@ -29,7 +29,7 @@ struct ChainCallStorage1 {
   @LocalStorageLink('PropAX') parentLinkNumber: number = 1
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
       Button('PropAX:' + this.parentLinkNumber)
         .id('persistStorageA_1')
         .onClick(() => {

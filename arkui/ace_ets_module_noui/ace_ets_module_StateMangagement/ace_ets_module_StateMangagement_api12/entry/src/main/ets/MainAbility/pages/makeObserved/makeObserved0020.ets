@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -35,66 +35,138 @@ struct makeObserved0020 {
   build() {
     Column() {
       ForEach(this.arrCollect as object as Array<Info>, (item: Info, index: number) => {
-        Text(`${item.id}`).onClick(() => {
-          item.id++;
-        }).id(`text${index}`)
+        Text(`${item.id}`)
+          .height('3%')
+          .fontSize(9)
+          .onClick(() => {
+            item.id++;
+          }).id(`text${index}`)
       }, (item: Info, index) => item.id.toString() + index.toString())
       Divider()
         .color('blue')
       if (this.arrCollect.length > 0) {
         Text(`${this.arrCollect[this.arrCollect.length - this.arrCollect.length].id}`).id('firstText')
+          .height('3%')
+          .fontSize(9)
         Text(`${this.arrCollect[this.arrCollect.length - 1].id}`).id('LastText')
+          .height('3%')
+          .fontSize(9)
       }
       Divider()
         .color('blue')
       Flex({ wrap: FlexWrap.Wrap, space: { main: LengthMetrics.px(10) } }) {
-        Button('push').onClick(() => {
-          this.arrCollect.push(new Info(30));
-        }).id('push')
-        Button('pop').onClick(() => {
-          this.arrCollect.pop();
-        }).id('pop')
-        Button('shift').onClick(() => {
-          this.arrCollect.shift();
-        }).id('shift')
-        Button('unshift').onClick(() => {
-          this.arrCollect.unshift(new Info(50));
-        }).id('unshift')
-        Button('splice').onClick(() => {
-          this.arrCollect.splice(1);
-        }).id('splice')
-        Button('shrinkTo').onClick(() => {
-          this.arrCollect.unshift(new Info(40));
-          this.arrCollect.shrinkTo(1);
-        }).id('shrinkTo')
-        Button('extendTo').onClick(() => {
-          this.arrCollect.extendTo(6, new Info(20));
-        }).id('extendTo')
+        Button('push')
+          .onClick(() => {
+            this.arrCollect.push(new Info(30));
+          })
+          .id('push')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
+        Button('pop')
+          .onClick(() => {
+            this.arrCollect.pop();
+          })
+          .id('pop')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
+        Button('shift')
+          .onClick(() => {
+            this.arrCollect.shift();
+          })
+          .id('shift')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
+        Button('unshift')
+          .onClick(() => {
+            this.arrCollect.unshift(new Info(50));
+          })
+          .id('unshift')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
+        Button('splice')
+          .onClick(() => {
+            this.arrCollect.splice(1);
+          })
+          .id('splice')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
+        Button('shrinkTo')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
+          .onClick(() => {
+            this.arrCollect.unshift(new Info(40));
+            this.arrCollect.shrinkTo(1);
+          })
+          .id('shrinkTo')
+        Button('extendTo')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
+          .onClick(() => {
+            this.arrCollect.extendTo(6, new Info(20));
+          })
+          .id('extendTo')
         Divider()
           .color('blue')
-        Button('sort').onClick(() => {
-          this.arrCollect.sort((a: Info, b: Info) => a.id - b.id);
-        }).id('sort')
-        Button('fill').onClick(() => {
-          this.arrCollect.fill(new Info(5), 0, 2);
-        }).id('fill')
-        Button('slice').onClick(() => {
-          this.arrCollect = UIUtils.makeObserved(this.arrCollect.slice(0, 4));
-        }).id('slice')
-        Button('map').onClick(() => {
-          this.arrCollect = UIUtils.makeObserved(this.arrCollect.map((value) => {
-            value.id += 15;
-            return value;
-          }))
-        }).id('map')
-        Button('filter').onClick(() => {
-          this.arrCollect = UIUtils.makeObserved(this.arrCollect.filter((value: Info) => value.id % 2 === 0));
-        }).id('filter')
+        Button('sort')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
+          .onClick(() => {
+            this.arrCollect.sort((a: Info, b: Info) => a.id - b.id);
+          })
+          .id('sort')
+        Button('fill')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
+          .onClick(() => {
+            this.arrCollect.fill(new Info(5), 0, 2);
+          })
+          .id('fill')
+        Button('slice')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
+          .onClick(() => {
+            this.arrCollect = UIUtils.makeObserved(this.arrCollect.slice(0, 4));
+          })
+          .id('slice')
+        Button('map')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
+          .onClick(() => {
+            this.arrCollect = UIUtils.makeObserved(this.arrCollect.map((value) => {
+              value.id += 15;
+              return value;
+            }))
+          })
+          .id('map')
+        Button('filter')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
+          .onClick(() => {
+            this.arrCollect = UIUtils.makeObserved(this.arrCollect.filter((value: Info) => value.id % 2 === 0));
+          })
+          .id('filter')
 
-        Button('concat').onClick(() => {
-          let array1 = new collections.Array(new Info(100))
-          this.arrCollect = UIUtils.makeObserved(this.arrCollect.concat(array1));
-        }).id('concat')
+        Button('concat')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
+          .onClick(() => {
+            let array1 = new collections.Array(new Info(100))
+            this.arrCollect = UIUtils.makeObserved(this.arrCollect.concat(array1));
+          })
+          .id('concat')
       }.height('100%')
 
     }

@@ -26,14 +26,14 @@ struct proConTrack {
   @Consume procon :pro_Parent
   build() {
     Column() {
-      Text('@Consume').fontSize(30)
-      Text('memberA='+`${this.procon.memberA}`)
+      Text('@Consume').fontSize(9).height('5%')
+      Text('memberA='+`${this.procon.memberA}`).height('5%')
         .key('Track_consume')
-        .fontSize(30)
-      Text('memberC='+`${this.procon.memberC}`)
+        .fontSize(9)
+      Text('memberC='+`${this.procon.memberC}`).height('5%')
         .key('Track_consume1')
-        .fontSize(30)
-      Button('change')
+        .fontSize(9)
+      Button('change').height('5%')
         .key('change_consume')
         .onClick(()=>{
         this.procon.memberA+=1
@@ -48,21 +48,21 @@ struct proConTrack {
 struct proCon {
   @Provide procon:pro_Parent=new pro_Parent()
   build() {
-    Column({space:5}) {
-      Button("Reset").key("provideTrack_reset")
+    Column() {
+      Button("Reset").key("provideTrack_reset").height('5%')
         .onClick(() => {
           this.procon.memberA=20
           this.procon.memberC=30
         })
       Column() {
-        Text('@Provide').fontSize(30)
-        Text('memberA=' + `${this.procon.memberA}`)
+        Text('@Provide').fontSize(9).height('5%')
+        Text('memberA=' + `${this.procon.memberA}`).height('5%')
           .key('Track_provide')
-          .fontSize(30)
-        Text('memberC=' + `${this.procon.memberC}`)
+          .fontSize(9)
+        Text('memberC=' + `${this.procon.memberC}`).height('5%')
           .key('Track_provide1')
-          .fontSize(30)
-        Button('change')
+          .fontSize(9)
+        Button('change').height('5%')
           .key('change_provide')
           .onClick(() => {
           this.procon.memberA += 1

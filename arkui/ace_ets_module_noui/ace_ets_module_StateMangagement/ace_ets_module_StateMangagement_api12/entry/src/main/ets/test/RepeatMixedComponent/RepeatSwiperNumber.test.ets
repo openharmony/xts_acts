@@ -83,7 +83,7 @@ export default function RepeatSwiperNumber() {
       expect(obj1.$attrs.content).assertEqual('1 index:1:0');
       console.info('[RepeatSwiperNumber_001] END');
 
-      let btn: Component = await driver.findComponent(ON.id('Button1'));
+      let btn: Component = await driver.findComponent(ON.id('Button1_SN'));
       await btn.click();
       await CommonFunc.sleep(1000);
 
@@ -93,7 +93,7 @@ export default function RepeatSwiperNumber() {
       expect(obj2.$attrs.content).assertEqual('1 index:1:0');
       console.info('[RepeatSwiperNumber_001] END');
 
-      let btn1: Component = await driver.findComponent(ON.id('Button2'));
+      let btn1: Component = await driver.findComponent(ON.id('Button2_SN'));
       await btn1.click();
       await btn1.click();
       await btn1.click();

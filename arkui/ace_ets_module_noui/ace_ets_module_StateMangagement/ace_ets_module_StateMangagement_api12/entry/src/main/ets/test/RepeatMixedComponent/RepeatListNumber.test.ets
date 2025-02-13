@@ -84,7 +84,7 @@ export default function RepeatListNumber() {
       console.info('[RepeatListNumber_001] END');
 
 
-      let btn: Component = await driver.findComponent(ON.id('Button1'));
+      let btn: Component = await driver.findComponent(ON.id('Button1_LN'));
       await btn.click();
       await CommonFunc.sleep(1000);
 
@@ -94,7 +94,7 @@ export default function RepeatListNumber() {
       expect(obj2.$attrs.content).assertEqual('non vs 16 index:16:0');
       console.info('[RepeatListNumber_001] END');
 
-      let btn1: Component = await driver.findComponent(ON.id('Button2'));
+      let btn1: Component = await driver.findComponent(ON.id('Button2_LN'));
       await btn1.click();
       await CommonFunc.sleep(1000);
 

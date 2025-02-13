@@ -43,6 +43,7 @@ struct RepeatListNumber {
               Text('non vs ' + ri.item + ' index:' + ri.index.toString() + ':' + this.tmp2.toString())
                 .id('Text1_LN' + ri.index.toString())
                 .fontSize(20)
+                .height('20%')
             }
           })
           .key((service: number, index: number): string => index + service.toString())
@@ -52,12 +53,12 @@ struct RepeatListNumber {
       .border({ width: 1 })
 
       Row() {
-        Button('next1 page').id('Button1')
+        Button('next1 page').id('Button1_LN')
           .onClick(() => {
             this.scroller.scrollToIndex(15);
           })
 
-        Button('next2 page').id('Button2')
+        Button('next2 page').id('Button2_LN')
           .onClick(() => {
             this.scroller1.scrollToIndex(15);
           })
@@ -73,6 +74,7 @@ struct RepeatListNumber {
               Text('has vs ' + ri.item + ' index:' + ri.index.toString() + ':' + this.tmp2.toString())
                 .id('Text2_LN' + ri.index.toString())
                 .fontSize(20)
+                .height('20%')
             }
           })
           .key((service: number, index: number): string => index + service.toString())
@@ -88,6 +90,7 @@ struct RepeatListNumber {
               Text('has vs ' + r.item + ' index:' + r.index.toString() + ':' + (this.tmp2 = 100).toString())
                 .id('Text2_LN' + r.index.toString())
                 .fontSize(20)
+                .height('20%')
             }
           })
           .virtualScroll()

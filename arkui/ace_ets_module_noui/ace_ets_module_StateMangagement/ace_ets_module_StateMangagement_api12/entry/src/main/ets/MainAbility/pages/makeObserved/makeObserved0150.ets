@@ -48,10 +48,10 @@ struct makeObserved0150Page {
 
   build() {
     Column() {
-      Text(`Trace: ${this.info.id}`).fontSize(50).onClick(() => {
+      Text(`Trace: ${this.info.id}`).fontSize(9).onClick(() => {
         this.info.id++;
       }).id('makeObserved150Text1')
-      Text(`makeObserved: ${this.info2.id}`).fontSize(50).onClick(() => {
+      Text(`makeObserved: ${this.info2.id}`).fontSize(9).onClick(() => {
         this.info2.id++;
       }).id('makeObserved150Text2')
     }

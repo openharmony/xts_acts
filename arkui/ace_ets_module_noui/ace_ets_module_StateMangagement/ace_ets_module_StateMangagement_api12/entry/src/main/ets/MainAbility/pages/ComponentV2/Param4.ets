@@ -25,7 +25,7 @@ class Info {
 struct paramObject2 {
   @Local info: Info = new Info('Tom');
   build() {
-    Column({space:10}) {
+    Column() {
       Text(`Parent info.name ${this.info.name}`).id('object_parent')
       Button('Parent change info').id('btn_parent')
         .onClick(() => {

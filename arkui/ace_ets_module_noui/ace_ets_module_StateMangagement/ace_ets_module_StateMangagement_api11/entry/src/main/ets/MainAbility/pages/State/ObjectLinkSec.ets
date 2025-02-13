@@ -36,9 +36,8 @@ struct ViewSec {
   @ObjectLink class_C: SecClassB;
   build() {
     Row() {
-      Text(`${this.class_C.b}`)
+      Text(`${this.class_C.b}`).height('5%')
     }
-    .margin({top:100})
   }
 }
 
@@ -51,14 +50,15 @@ struct ViewASec {
   @Provide("indexCount") class_B: SecClassA = new SecClassA(new SecClassB(5));
 
   build() {
-    Column({space:20}) {
+    Column() {
       Column(){
-        Text('@State不能接收第二层属性值')
+        Text('@State不能接收第二层属性值').height('5%')
         Row(){
           // 点击按钮，第二层变量发生变化
           Button('第二层变量+1')
+            .height('5%')
+            .width('50%')
             .key(("btn_state2"))
-            .margin({top:10,right:20})
             .backgroundColor('#E8A027')
             .onClick(() => {
               // 第二层变量变化，嵌套类ClassB的成员变量b加1
@@ -66,16 +66,19 @@ struct ViewASec {
             })
           // 将第二层变量在UI呈现出来
           Text(`${this.class_A.a.b}`).key(("sec_state"))
+            .height('5%')
+            .width('50%')
         }
-      }.margin(50)
+      }
 
       Column(){
-        Text('@Provide不能接收第二层属性值')
+        Text('@Provide不能接收第二层属性值').height('5%')
         Row(){
           // 点击按钮，第二层变量发生变化
           Button('第二层变量+1')
+            .height('5%')
+            .width('50%')
             .key(("btn_provide2"))
-            .margin({top:10,right:20})
             .backgroundColor('#E8A027')
             .onClick(() => {
               // 第二层变量变化，嵌套类ClassB的成员变量b加1
@@ -83,6 +86,8 @@ struct ViewASec {
             })
           // 将第二层变量在UI呈现出来
           Text(`${this.class_B.a.b}`).key(("sec_provide"))
+            .height('5%')
+            .width('50%')
         }
       }
     }

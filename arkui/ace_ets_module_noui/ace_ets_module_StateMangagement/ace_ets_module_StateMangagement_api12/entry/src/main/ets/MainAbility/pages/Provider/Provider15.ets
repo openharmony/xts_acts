@@ -21,9 +21,12 @@ struct Parent10 {
     Column() {
       Button(this.str)
         .id('Provider15')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
-        this.str = '0';
-      })
+          this.str = '0';
+        })
       Child10()
     }
   }
@@ -36,8 +39,11 @@ struct Child10 {
   build() {
     Button(this.str)
       .id('Provider15-01')
+      .width('10%')
+      .height('3%')
+      .fontSize(9)
       .onClick(() => {
-      this.str = '1';
-    })
+        this.str = '1';
+      })
   }
 }

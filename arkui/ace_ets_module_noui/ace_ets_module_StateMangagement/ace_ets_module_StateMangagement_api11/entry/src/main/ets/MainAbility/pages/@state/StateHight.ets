@@ -17,36 +17,36 @@ import CommonFunc from '../../../MainAbility/common/Common';
 @Entry
 @Component
 struct MyComponent_AZ {
-  @State  hight: ResourceStr | Length = 50;
+  @State  hight: ResourceStr | Length = 10;
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.hight)) + " number is " + JSON.stringify(this.hight))
-        .fontSize(20).margin(10).key('StateHight')
-      Text("设置变量number类型50-->100")
+        .fontSize(9).key('StateHight').height('5%')
+      Text("设置变量number类型10-->100").height('5%')
       Button('change')
         .height(this.hight)
         .onClick(() => {
-          this.hight = 100
+          this.hight = 7
         })
         .key('StateHeight1')
 
-      Text("设置变量string类型50-->'200'")
+      Text("设置变量string类型10-->'200'").height('5%')
       Button('change')
         .height(this.hight)
         .onClick(() => {
-          this.hight = '200'
+          this.hight = '8'
         })
         .key('StateHeight2')
 
-      Text("设置变量Resource类型50-->Resource")
+      Text("设置变量Resource类型10-->Resource").height('5%')
       Button('change')
         .height(this.hight)
         .onClick(() => {
-          this.hight = $r('app.string.number')
+          this.hight = $r('app.string.number_9')
         })
         .key('StateHeight3')
 
-    }.width('100%').margin({top:5})
+    }.width('100%')
   }
 }

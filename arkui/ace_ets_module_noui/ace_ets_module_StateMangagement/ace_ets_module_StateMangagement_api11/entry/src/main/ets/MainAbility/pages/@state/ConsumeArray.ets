@@ -23,34 +23,37 @@ struct Child_CA {
   build() {
     Column() {
 
-      Text("设置变量Array<Number>类型[1]-->[10]")
+      Text("设置变量Array<Number>类型[1]-->[10]").height('5%')
       Button('change')
         .onClick(() => {
           this.Array = [10];
         })
         .key('state1')
+        .height('5%')
 
-      Text("切换变量Array<boolean>类型[1]-->[true]")
+      Text("切换变量Array<boolean>类型[1]-->[true]").height('5%')
       Button('change')
         .onClick(() => {
           this.Array = [true];
         })
         .key('state2')
+        .height('5%')
 
-      Text("切换变量boolean类型[1]-->true")
+      Text("切换变量boolean类型[1]-->true").height('5%')
       Button('change')
         .onClick(() => {
           this.Array = true;
         })
         .key('state3')
+        .height('5%')
 
-      Text("切换变量Array<Resource>类型[1]-->Array<Resource>")
+      Text("切换变量Array<Resource>类型[1]-->Array<Resource>").height('5%')
       Button('change')
         .onClick(() => {
           this.Array = [$r('app.string.number')];
         })
         .key('state4')
-
+        .height('5%')
     }
   }
 }
@@ -64,15 +67,15 @@ struct Ancestors_CA {
   @Provide Array: Array<Number> | Array<boolean> | Boolean | Array<Resource> = [1];
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array)) + " number is " + JSON.stringify(this.Array))
-        .fontSize(20).margin(10).key('ConsumeArray')
+        .fontSize(9).key('ConsumeArray').height('5%')
 
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
-        .fontSize(20).margin(10).key('ConsumeArrayNew')
+        .fontSize(9).key('ConsumeArrayNew').height('5%')
 
       Child_CA()
 
-    }.width('100%').margin({top:5})
+    }.width('100%')
   }
 }

@@ -26,7 +26,7 @@ class Frequence {
 struct changesMonitor {
   frequence: Frequence = new Frequence();
   build() {
-    Column({space:10}) {
+    Column() {
       Text(`count ${this.frequence.count}`).id('nums_count')
       Button('change count to 1000').id('btn_count')
         .onClick(() => {

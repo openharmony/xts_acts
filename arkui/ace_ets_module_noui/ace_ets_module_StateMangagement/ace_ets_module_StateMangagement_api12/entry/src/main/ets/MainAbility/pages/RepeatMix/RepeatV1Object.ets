@@ -37,14 +37,13 @@ struct RepeatVlObject {
   }
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
       List({ initialIndex: 10 }) {
         Repeat<RepeatItemV1>(this.simpleList)
           .each((obj: RepeatItem<RepeatItemV1>) => {
             ListItem() {
               Text('Item id=' + obj.item).id('repeat1' + `${obj.index}`)
-                .fontSize(30)
-                .margin({ top: 10 })
+                .fontSize(9)
             }
           })
           .key((item: RepeatItemV1, index: number) => {
@@ -56,7 +55,7 @@ struct RepeatVlObject {
             ListItem() {
               Column() {
                 Text('Item id =' + ri.item.name).id('repeat2_vo' + `${ri.index}`)
-                  .fontSize(20)
+                  .fontSize(9)
               }
             }
             .border({ width: 1 })

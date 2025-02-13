@@ -19,40 +19,48 @@ struct ConsumeArrayBooleanChild {
 
   build() {
     Column() {
-      ForEach(Array.from(this.message.entries()), (item: [number, boolean]) => {
-        Text(`${item[1]} index: ${item[0]}`).fontSize(20).id('consumeArrayBoolean_value_' + item[0])
-        Divider()
-      })
+
       Button('Consume init array').id('consumeArrayBoolean_init')
+        .height('5%')
         .onClick(() => {
           this.message = [true, false, false, true, false]
-        }).margin(10)
+        })
 
       Button('Consume add new one').id('consumeArrayBoolean_add')
+        .height('5%')
         .onClick(() => {
           let lastIndex = this.message.length - 1
           this.message.push(this.message[lastIndex] == true ? false : true)
-        }).margin(10)
+        })
 
       Button('Consume clear').id('consumeArrayBoolean_clear')
+        .height('5%')
         .onClick(() => {
           this.message = []
           if (Array.from(this.message.entries())) {
             this.message.push(true)
           }
-        }).margin(10)
+        })
 
       Button('Consume replace').id('consumeArrayBoolean_replace')
+        .height('5%')
         .onClick(() => {
           if (this.message.length > 0) {
             this.message[0] = this.message[0] === true ? false : true
           }
-        }).margin(10)
+        })
 
       Button('Consume delete last').id('consumeArrayBoolean_delete')
+        .height('5%')
         .onClick(() => {
           this.message.pop()
         })
+
+      ForEach(Array.from(this.message.entries()), (item: [number, boolean]) => {
+        Text(`${item[1]} index: ${item[0]}`).fontSize(9).id('consumeArrayBoolean_value_' + item[0])
+          .height('5%')
+        Divider()
+      })
     }
   }
 }
@@ -66,9 +74,10 @@ struct ProvideArrayBoolean {
     Row() {
       Column() {
         Button('Provide init array').id('provideArrayBoolean_init')
+          .height('5%')
           .onClick(() => {
             this.message = [false, true, true, false, true]
-          }).margin(10)
+          })
 
         ConsumeArrayBooleanChild()
       }

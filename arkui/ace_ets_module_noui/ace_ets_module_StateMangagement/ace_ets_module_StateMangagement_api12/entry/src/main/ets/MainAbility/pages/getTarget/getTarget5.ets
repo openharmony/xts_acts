@@ -28,7 +28,7 @@ struct ChildA {
   @Prop classB: Phone = new Phone('msg')
 
   build() {
-    Column({space: 10}) {
+    Column() {
       // 调用裸对象接口，默认值Tom，预期值不变
       Text(UIUtils.getTarget(this.classB).msg).id('useGetTarget5_1')
       // 未调用裸对象接口，默认值Tom，预期值Bob
