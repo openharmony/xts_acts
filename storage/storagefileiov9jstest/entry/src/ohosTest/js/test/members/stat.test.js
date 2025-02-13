@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -2423,15 +2423,85 @@ describe('fileIO_fs_stat', function () {
 
     try {
       let stat = fileIO.statSync(fpath);
-      expect(isIntNum(stat.atimeNs)).assertTrue();
+      expect(typeof stat.atimeNs == 'bigint').assertTrue();
 
       let file = fileIO.openSync(fpath);
       let stat2 = fileIO.statSync(file.fd);
-      expect(isIntNum(stat2.atimeNs)).assertTrue();
+      expect(typeof stat2.atimeNs == 'bigint').assertTrue();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_stat_sync_atimeNs_001 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STAT_ASYNC_ATIMENS_0100
+   * @tc.name fileIO_stat_async_atimeNs_001
+   * @tc.desc Test the atimeNs member of class Stat. Promise.
+   * Enter the path or fd parameter to get stat.atimeNs of the file.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_stat_async_atimeNs_001', 0, async function (done) {
+    let fpath = await nextFileName('fileIO_stat_async_atimeNs_001');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let stat = await fileIO.stat(fpath);
+      expect(typeof stat.atimeNs == 'bigint').assertTrue();
+
+      let file = fileIO.openSync(fpath);
+      let stat2 = await fileIO.stat(file.fd);
+      expect(typeof stat2.atimeNs == 'bigint').assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileIO_stat_async_atimeNs_001 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STAT_ASYNC_ATIMENS_0200
+   * @tc.name fileIO_stat_async_atimeNs_002
+   * @tc.desc Test the atimeNs member of class Stat. Callback.
+   * Enter the path or fd parameter to get stat.atimeNs of the file.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_stat_async_atimeNs_002', 0, async function (done) {
+    let fpath = await nextFileName('fileIO_stat_async_atimeNs_002');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.stat(fpath, (err, stat) => {
+        if(err) {
+          console.log('fileIO_stat_async_atimeNs_002 error package1: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(typeof stat.atimeNs == 'bigint').assertTrue();
+      });
+
+      let file = fileIO.openSync(fpath);
+      fileIO.stat(file.fd, (err, stat2) => {
+        if(err) {
+          console.log('fileIO_stat_async_atimeNs_002 error package2: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(typeof stat2.atimeNs == 'bigint').assertTrue();
+        fileIO.closeSync(file);
+        fileIO.unlinkSync(fpath);
+        done();
+      });
+    } catch (e) {
+      console.log('fileIO_stat_async_atimeNs_002 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });
@@ -2452,15 +2522,85 @@ describe('fileIO_fs_stat', function () {
 
     try {
       let stat = fileIO.statSync(fpath);
-      expect(isIntNum(stat.mtimeNs)).assertTrue();
+      expect(typeof stat.mtimeNs == 'bigint').assertTrue();
 
       let file = fileIO.openSync(fpath);
       let stat2 = fileIO.statSync(file.fd);
-      expect(isIntNum(stat2.mtimeNs)).assertTrue();
+      expect(typeof stat2.mtimeNs == 'bigint').assertTrue();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_stat_sync_mtimeNs_001 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STAT_ASYNC_MTIMENS_0100
+   * @tc.name fileIO_stat_async_mtimeNs_001
+   * @tc.desc Test the mtimeNs member of class Stat. Promise.
+   * Enter the path or fd parameter to get stat.mtimeNs of the file.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_stat_async_mtimeNs_001', 0, async function (done) {
+    let fpath = await nextFileName('fileIO_stat_async_mtimeNs_001');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let stat = await fileIO.stat(fpath);
+      expect(typeof stat.mtimeNs == 'bigint').assertTrue();
+
+      let file = fileIO.openSync(fpath);
+      let stat2 = await fileIO.stat(file.fd);
+      expect(typeof stat2.mtimeNs == 'bigint').assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileIO_stat_async_mtimeNs_001 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STAT_ASYNC_MTIMENS_0200
+   * @tc.name fileIO_stat_async_mtimeNs_002
+   * @tc.desc Test the mtimeNs member of class Stat. Callback.
+   * Enter the path or fd parameter to get stat.mtimeNs of the file.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_stat_async_mtimeNs_002', 0, async function (done) {
+    let fpath = await nextFileName('fileIO_stat_async_mtimeNs_002');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.stat(fpath, (err, stat) => {
+        if(err) {
+          console.log('fileIO_stat_async_mtimeNs_002 error package1: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(typeof stat.mtimeNs == 'bigint').assertTrue();
+      });
+
+      let file = fileIO.openSync(fpath);
+      fileIO.stat(file.fd, (err, stat2) => {
+        if(err) {
+          console.log('fileIO_stat_async_mtimeNs_002 error package2: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(typeof stat2.mtimeNs == 'bigint').assertTrue();
+        fileIO.closeSync(file);
+        fileIO.unlinkSync(fpath);
+        done();
+      });
+    } catch (e) {
+      console.log('fileIO_stat_async_mtimeNs_002 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });
@@ -2481,15 +2621,85 @@ describe('fileIO_fs_stat', function () {
 
     try {
       let stat = fileIO.statSync(fpath);
-      expect(isIntNum(stat.ctimeNs)).assertTrue();
+      expect(typeof stat.ctimeNs == 'bigint').assertTrue();
 
       let file = fileIO.openSync(fpath);
       let stat2 = fileIO.statSync(file.fd);
-      expect(isIntNum(stat2.ctimeNs)).assertTrue();
+      expect(typeof stat.ctimeNs == 'bigint').assertTrue();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_stat_sync_ctimeNs_001 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STAT_ASYNC_CTIMENS_0100
+   * @tc.name fileIO_stat_async_ctimeNs_001
+   * @tc.desc Test the ctimeNs member of class Stat. Promise.
+   * Enter the path or fd parameter to get stat.ctimeNs of the file.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_stat_async_ctimeNs_001', 0, async function (done) {
+    let fpath = await nextFileName('fileIO_stat_async_ctimeNs_001');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let stat = await fileIO.stat(fpath);
+      expect(typeof stat.ctimeNs == 'bigint').assertTrue();
+
+      let file = fileIO.openSync(fpath);
+      let stat2 = await fileIO.stat(file.fd);
+      expect(typeof stat2.ctimeNs == 'bigint').assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileIO_stat_async_ctimeNs_001 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STAT_ASYNC_CTIMENS_0200
+   * @tc.name fileIO_stat_async_ctimeNs_002
+   * @tc.desc Test the ctimeNs member of class Stat. Callback.
+   * Enter the path or fd parameter to get stat.ctimeNs of the file.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_stat_async_ctimeNs_002', 0, async function (done) {
+    let fpath = await nextFileName('fileIO_stat_async_ctimeNs_002');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.stat(fpath, (err, stat) => {
+        if(err) {
+          console.log('fileIO_stat_async_ctimeNs_002 error package1: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(typeof stat.ctimeNs == 'bigint').assertTrue();
+      });
+
+      let file = fileIO.openSync(fpath);
+      fileIO.stat(file.fd, (err, stat2) => {
+        if(err) {
+          console.log('fileIO_stat_async_ctimeNs_002 error package2: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(typeof stat2.ctimeNs == 'bigint').assertTrue();
+        fileIO.closeSync(file);
+        fileIO.unlinkSync(fpath);
+        done();
+      });
+    } catch (e) {
+      console.log('fileIO_stat_async_ctimeNs_002 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });
