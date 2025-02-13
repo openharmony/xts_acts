@@ -60,31 +60,31 @@ napi_value TextAreaLetterSpacing::textAreaLetterSpacing001(napi_env env, napi_ca
                     nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_LETTER_SPACING)->value[0].f32);
     ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_LETTER_SPACING)->value[0].f32, 1);
 
-    ArkUI_NumberValue textarealetterspacing2[] = {{.f32 = -1}};
+    ArkUI_NumberValue textarealetterspacing2[] = {{.f32 = -5}};
     ArkUI_AttributeItem textarealetterspacingitem2 = {textarealetterspacing2, 1};
     nodeAPI->setAttribute(textarea, NODE_TEXT_AREA_LETTER_SPACING, &textarealetterspacingitem2);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                     "textAreaLetterSpacing001 NODE_TEXT_AREA_LETTER_SPACING content:%{public}d",
                     nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_LETTER_SPACING)->value[0].f32);
-    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_LETTER_SPACING)->value[0].f32, -1);
+    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_LETTER_SPACING)->value[0].f32, -5);
 
-    ArkUI_NumberValue textareaEnablePreviewTextValue[] = {{.f32 = 1}};
+    ArkUI_NumberValue textareaEnablePreviewTextValue[] = {{.i32 = 1}};
     ArkUI_AttributeItem textareaEnablePreviewTextItem = {textareaEnablePreviewTextValue, 1};
     nodeAPI->setAttribute(textarea, NODE_TEXT_AREA_ENABLE_PREVIEW_TEXT, &textareaEnablePreviewTextItem);
     nodeAPI->registerNodeEvent(textarea, NODE_TEXT_AREA_ON_CHANGE_WITH_PREVIEW_TEXT, 23, nullptr);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                     "textAreaLetterSpacing001 NODE_TEXT_AREA_ENABLE_PREVIEW_TEXT content:%{public}d",
-                    nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_ENABLE_PREVIEW_TEXT)->value[0].f32);
-    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_ENABLE_PREVIEW_TEXT)->value[0].f32, 1);
+                    nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_ENABLE_PREVIEW_TEXT)->value[0].i32);
+    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_ENABLE_PREVIEW_TEXT)->value[0].u32, 1);
 
-    ArkUI_NumberValue textareaEnablePreviewTextValue2[] = {{.f32 = 3}};
+    ArkUI_NumberValue textareaEnablePreviewTextValue2[] = {{.i32 = 3}};
     ArkUI_AttributeItem textareaEnablePreviewTextItem2 = {textareaEnablePreviewTextValue2, 1};
     nodeAPI->setAttribute(textarea, NODE_TEXT_AREA_ENABLE_PREVIEW_TEXT, &textareaEnablePreviewTextItem2);
     nodeAPI->registerNodeEvent(textarea, NODE_TEXT_AREA_ON_CHANGE_WITH_PREVIEW_TEXT, 23, nullptr);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                     "textAreaLetterSpacing001 NODE_TEXT_AREA_ENABLE_PREVIEW_TEXT content:%{public}d",
-                    nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_ENABLE_PREVIEW_TEXT)->value[0].f32);
-    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_ENABLE_PREVIEW_TEXT)->value[0].f32, 1);
+                    nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_ENABLE_PREVIEW_TEXT)->value[0].i32);
+    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_ENABLE_PREVIEW_TEXT)->value[0].u32, 1);
 
     text7 = nodeAPI->createNode(ARKUI_NODE_TEXT);
     ArkUI_AttributeItem textItem7 = {.string = "textArea succ"};
@@ -110,7 +110,7 @@ napi_value TextAreaLetterSpacing::textAreaLetterSpacing001(napi_env env, napi_ca
                     "textAreaLetterSpacing001 onNODE_TEXT_AREA_ON_CHANGE_WITH_PREVIEW_TEXT回调 content:%{public}s, previewText:%{public}s, offset:%{public}d",
                     textChangeEvent ->pStr, textChangeEvent ->pExtendStr, textChangeEvent ->number);
                 if(strcmp(textChangeEvent ->pStr, "a") == 0 && strcmp(textChangeEvent ->pExtendStr, "") == 0 && textChangeEvent ->number == -1){
-                    ArkUI_NumberValue value[] = {{.f32 = 0xffe31111}};
+                    ArkUI_NumberValue value[] = {{.u32 = 0xffe31111}};
                     ArkUI_AttributeItem NODE_FONT_COLORItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
                     nodeAPI->setAttribute(text7, NODE_BACKGROUND_COLOR, &NODE_FONT_COLORItem);
                 }
@@ -164,28 +164,28 @@ napi_value TextAreaLetterSpacing::textInputLetterSpacing002(napi_env env, napi_c
     textinput = nodeAPI->createNode(ARKUI_NODE_TEXT_INPUT);
     ArkUI_AttributeItem textinput1 = {.string = "textinput"};
     nodeAPI->setAttribute(textinput, NODE_ID, &textinput1);
-    ArkUI_NumberValue textinputletterspacing[] = {{.f32 = 0}};
+    ArkUI_NumberValue textinputletterspacing[] = {{.i32 = 0}};
     ArkUI_AttributeItem textinputletterspacingitem = {textinputletterspacing, 1};
     nodeAPI->setAttribute(textinput, NODE_TEXT_INPUT_LETTER_SPACING, &textinputletterspacingitem);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                     "textAreaLetterSpacing001 NODE_TEXT_INPUT_LETTER_SPACING content:%{public}d",
-                    nodeAPI->getAttribute(textinput, NODE_TEXT_INPUT_LETTER_SPACING)->value[0].f32);
-    ASSERT_EQ(nodeAPI->getAttribute(textinput, NODE_TEXT_INPUT_LETTER_SPACING)->value[0].f32, 0);
-    ArkUI_NumberValue EnablePreviewTextValue[] = {{.f32 = -1}};
+                    nodeAPI->getAttribute(textinput, NODE_TEXT_INPUT_LETTER_SPACING)->value[0].i32);
+    ASSERT_EQ(nodeAPI->getAttribute(textinput, NODE_TEXT_INPUT_LETTER_SPACING)->value[0].u32, 0);
+    ArkUI_NumberValue EnablePreviewTextValue[] = {{.i32 = -1}};
     ArkUI_AttributeItem EnablePreviewTextItem = {EnablePreviewTextValue, 1};
     nodeAPI->setAttribute(textinput, NODE_TEXT_INPUT_ENABLE_PREVIEW_TEXT, &EnablePreviewTextItem);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                     "textAreaLetterSpacing001 NODE_TEXT_INPUT_ENABLE_PREVIEW_TEXT content:%{public}d",
-                    nodeAPI->getAttribute(textinput, NODE_TEXT_INPUT_ENABLE_PREVIEW_TEXT)->value[0].f32);
-    ASSERT_EQ(nodeAPI->getAttribute(textinput, NODE_TEXT_INPUT_ENABLE_PREVIEW_TEXT)->value[0].f32, 1);
+                    nodeAPI->getAttribute(textinput, NODE_TEXT_INPUT_ENABLE_PREVIEW_TEXT)->value[0].i32);
+    ASSERT_EQ(nodeAPI->getAttribute(textinput, NODE_TEXT_INPUT_ENABLE_PREVIEW_TEXT)->value[0].u32, 1);
 
-    ArkUI_NumberValue EnablePreviewTextValue2[] = {{.f32 = 0}};
+    ArkUI_NumberValue EnablePreviewTextValue2[] = {{.i32 = 0}};
     ArkUI_AttributeItem EnablePreviewTextItem2 = {EnablePreviewTextValue2, 1};
     nodeAPI->setAttribute(textinput, NODE_TEXT_INPUT_ENABLE_PREVIEW_TEXT, &EnablePreviewTextItem2);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                     "textAreaLetterSpacing001 NODE_TEXT_INPUT_ENABLE_PREVIEW_TEXT content:%{public}d",
-                    nodeAPI->getAttribute(textinput, NODE_TEXT_INPUT_ENABLE_PREVIEW_TEXT)->value[0].f32);
-    ASSERT_EQ(nodeAPI->getAttribute(textinput, NODE_TEXT_INPUT_ENABLE_PREVIEW_TEXT)->value[0].f32, 0);
+                    nodeAPI->getAttribute(textinput, NODE_TEXT_INPUT_ENABLE_PREVIEW_TEXT)->value[0].i32);
+    ASSERT_EQ(nodeAPI->getAttribute(textinput, NODE_TEXT_INPUT_ENABLE_PREVIEW_TEXT)->value[0].u32, 0);
     
     nodeAPI->registerNodeEvent(textinput, NODE_TEXT_INPUT_ON_CHANGE_WITH_PREVIEW_TEXT, 20, nullptr);
     
@@ -205,7 +205,7 @@ napi_value TextAreaLetterSpacing::textInputLetterSpacing002(napi_env env, napi_c
                     "textAreaLetterSpacing001 onNODE_TEXT_INPUT_ON_CHANGE_WITH_PREVIEW_TEXT回调 content:%{public}s, previewText:%{public}s, offset:%{public}d",
                     textChangeEvent ->pStr, textChangeEvent ->pExtendStr, textChangeEvent ->number);
                 if(strcmp(textChangeEvent ->pStr, "a") == 0 && strcmp(textChangeEvent ->pExtendStr, "") == 0 && textChangeEvent ->number == -1){
-                    ArkUI_NumberValue value[] = {{.f32 = 0xffe31111}};
+                    ArkUI_NumberValue value[] = {{.u32 = 0xffe31111}};
                     ArkUI_AttributeItem NODE_FONT_COLORItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
                     nodeAPI->setAttribute(text6, NODE_BACKGROUND_COLOR, &NODE_FONT_COLORItem);
                 }
