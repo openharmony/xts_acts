@@ -23,6 +23,10 @@ import marqueeOptionsTest2 from './TextTest/marqueeOptions2.test';
 import TextInputStopBackPressTest from './TextInputTest/TextInputStopBackPress.test';
 import TextAreaStopBackPressTest from './TextAreaTest/TextAreaStopBackPress.test';
 import SearchStopBackPressTest from './Search/SearchStopBackPress.test';
+import addOrDelText from './TextAreaTest/addOrDelText.test';
+import TextOnChangeOptionsTest from './TextChangeTest/TextOnChangeOptionsTest.test';
+import TextOnWillChangeOptionsTest from './TextChangeTest/TextOnWillChangeOptionsTest.test';
+import bindSelectionMenuTest from './SelectionMenuTest/bindSelectionMenuTest.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -35,4 +39,8 @@ export default function testsuite() {
   TextInputStopBackPressTest();
   TextAreaStopBackPressTest();
   SearchStopBackPressTest();
+  addOrDelText();
+  TextOnChangeOptionsTest();
+  TextOnWillChangeOptionsTest();
+  bindSelectionMenuTest();
 }
