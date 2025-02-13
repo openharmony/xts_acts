@@ -2064,6 +2064,54 @@ static napi_value AddHotkeyMonitor28(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value GetFunctionKeyState(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+
+    int32_t keyCode = 1;
+    int32_t state;
+    Input_Result retResult = OH_Input_GetFunctionKeyState(keyCode, &state);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Input_Api_Ndk_GetFunctionKeyState_0100 retResult:%{public}d, state:%{public}d",
+        retResult, state);
+    napi_create_int32(env, (retResult == INPUT_SUCCESS || retResult == INPUT_KEYBOARD_DEVICE_NOT_EXIST) ? 1 : 0, &result);
+    return result;
+}
+
+static napi_value GetFunctionKeyState2(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+
+    int32_t keyCode = 10000;
+    int32_t state;
+    Input_Result retResult = OH_Input_GetFunctionKeyState(keyCode, &state);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Input_Api_Ndk_GetFunctionKeyState_0200 retResult:%{public}d", retResult);
+    napi_create_int32(env, (retResult == INPUT_PARAMETER_ERROR) ? 1 : 0, &result);
+    return result;
+}
+
+static napi_value GetFunctionKeyState3(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+
+    int32_t keyCode = -1;
+    int32_t state;
+    Input_Result retResult = OH_Input_GetFunctionKeyState(keyCode, &state);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Input_Api_Ndk_GetFunctionKeyState_0300 retResult:%{public}d", retResult);
+    napi_create_int32(env, (retResult == INPUT_PARAMETER_ERROR) ? 1 : 0, &result);
+    return result;
+}
+
+static napi_value GetFunctionKeyState4(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+
+    int32_t keyCode = 1;
+    Input_Result retResult = OH_Input_GetFunctionKeyState(keyCode, nullptr);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Input_Api_Ndk_GetFunctionKeyState_0400 retResult:%{public}d", retResult);
+    napi_create_int32(env, (retResult == INPUT_PARAMETER_ERROR) ? 1 : 0, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -2195,6 +2243,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"AddHotkeyMonitor26", nullptr, AddHotkeyMonitor26, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AddHotkeyMonitor27", nullptr, AddHotkeyMonitor27, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AddHotkeyMonitor28", nullptr, AddHotkeyMonitor28, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetFunctionKeyState", nullptr, GetFunctionKeyState, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetFunctionKeyState2", nullptr, GetFunctionKeyState2, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetFunctionKeyState3", nullptr, GetFunctionKeyState3, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetFunctionKeyState4", nullptr, GetFunctionKeyState4, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
