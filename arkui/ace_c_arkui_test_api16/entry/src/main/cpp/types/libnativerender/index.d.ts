@@ -25,3 +25,7 @@ export const testProgressLinearStyle: (a: string) => void;
 export const listTestCallback: (a: string) => void;
 
 export const listScrollToTestCallback: (a: string) => void;
+
+export const textAreaLetterSpacing001: (a: string) => void;
+
+export const textInputLetterSpacing002: (a: string) => void;
