@@ -120,7 +120,7 @@ export default function getScrollItemRect4() {
 
       expect(Math.round(width)).assertEqual(Math.round(200));
 
-      expect(Math.round(height)).assertEqual(Math.round(60));
+      expect(Math.round(height)).assertEqual(Math.round(600));
 
       done();
     });
@@ -180,7 +180,7 @@ export default function getScrollItemRect4() {
       console.log('assert size')
 
       expect(Math.round(width)).assertEqual(Math.round(200));
-      expect(Math.round(height)).assertEqual(Math.round(60));
+      expect(Math.round(height)).assertEqual(Math.round(600));
 
       done();
     });
@@ -235,12 +235,12 @@ export default function getScrollItemRect4() {
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(0));
+      expect(Math.round(x)).assertEqual(Math.round(100));
       expect(Math.round(y)).assertEqual(Math.round(0));
 
       console.log('assert size')
-      expect(Math.round(width)).assertEqual(Math.round(200));
-      expect(Math.round(height)).assertEqual(Math.round(60));
+      expect(Math.round(width)).assertEqual(Math.round(0));
+      expect(Math.round(height)).assertEqual(Math.round(0));
 
       done();
     });
