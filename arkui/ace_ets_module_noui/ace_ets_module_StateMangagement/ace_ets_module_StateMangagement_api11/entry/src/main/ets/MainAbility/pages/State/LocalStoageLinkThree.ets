@@ -39,13 +39,13 @@ struct MyNavigationTestStack {
   }
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Navigation(this.pageInfo) {
         Column() {
           Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
             .width('80%')
-            .height(40)
-            .margin(20)
+            .height('3%')
+            
             .onClick(() => {
               this.pageInfo.pushPath({ name: 'pageOne' }); //将name指定的NavDestination页面信息入栈
             })
@@ -71,11 +71,11 @@ struct pageOneStack {
         // 显示绑定的LocalStorage中PropA的值'PropA'
         Text(`${this.propA}`).onClick(() => {
           this.propA = 'PropA1'
-        }).id('navText')
+        }).id('navText').height('5%')
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
-          .height(40)
-          .margin(20)
+          .height('3%')
+          
           .onClick(() => {
             this.pageInfo.pushPathByName('pageTwo', null);
           })
@@ -99,11 +99,11 @@ struct pageTwoStack {
       Column() {
         NavigationContentMsgStack()
         // 绑定的LocalStorage中没有PropA,显示本地初始化的值 'Hello World'
-        Text(`${this.propB}`).id('navText2')
+        Text(`${this.propB}`).id('navText2').height('5%')
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
-          .height(40)
-          .margin(20)
+          .height('3%')
+          
           .onClick(() => {
             this.pageInfo.pushPathByName('pageThree', null);
           })
@@ -129,11 +129,11 @@ struct pageThreeStack {
         NavigationContentMsgStack()
 
         // 绑定的LocalStorage中没有PropA,显示本地初始化的值 'pageThreeStack'
-        Text(`${this.propC}`).id('navText3')
+        Text(`${this.propC}`).id('navText3').height('5%')
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
-          .height(40)
-          .margin(20)
+          .height('3%')
+          
           .onClick(() => {
             this.pageInfo.pushPathByName('pageOne', null);
           })
@@ -155,7 +155,8 @@ struct NavigationContentMsgStack {
   build() {
     Column() {
       Text(`${this.propA}`)
-        .fontSize(30)
+        .height('5%')
+        .fontSize(9)
         .fontWeight(FontWeight.Bold)
         .id('navText4')
     }

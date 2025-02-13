@@ -45,9 +45,9 @@ struct LocalStoagePropTwo {
   @LocalStorageProp('Prop11') storProp11: Array<He2> = [He2.Q, He2.W]
   @LocalStorageProp('Prop12') storProp12: Array<object> = [{value:66} as ValuePropTwoType, {value:67} as ValuePropTwoType]
   build() {
-    Column({ space: 15 }) {
+    Column() {
       Text(`Prop1:${JSON.stringify(storage220.get('Prop1'))}, Prop2:${storage220.get('Prop2')}, Prop3:${storage220.get('Prop3')}, Prop4:${storage220.get('Prop4')}, Prop5:${storage220.get('Prop5')}, Prop6:${JSON.stringify(storage220.get('Prop6'))}, Prop7:${JSON.stringify(storage220.get('Prop7'))}, Prop8:${JSON.stringify(storage220.get('Prop8'))}, Prop9:${JSON.stringify(storage220.get('Prop9'))}, Prop10:${JSON.stringify(storage220.get('Prop10'))}, Prop11:${JSON.stringify(storage220.get('Prop11'))}, Prop12:${JSON.stringify(storage220.get('Prop12'))}`)
-      .key('text_getValue4')
+      .key('text_getValue4').height('5%')
     }
   }
 }

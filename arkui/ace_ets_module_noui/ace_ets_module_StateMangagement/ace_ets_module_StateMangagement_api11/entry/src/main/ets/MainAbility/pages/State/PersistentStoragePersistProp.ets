@@ -29,20 +29,27 @@ struct PersistentStoragePersistProp {
 
   build() {
     Row() {
-      Column({space:15}) {
-        Text().fontSize(50)
-        Text('aPropA:'+`${this.aPropA} `+'aPropB:'+`${this.aPropB} `+'aPropC:'+`${this.aPropC} `).fontSize(25)
+      Column() {
+        Text().fontSize(9).height('5%')
+        Text('aPropA:'+`${this.aPropA} `+'aPropB:'+`${this.aPropB} `+'aPropC:'+`${this.aPropC} `)
+          .fontSize(9).height('5%')
         // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
-        Row({space:10}){
-          Button('aPropA:'+`${this.aPropA}`).fontSize(15)
+        Row(){
+          Button('aPropA:'+`${this.aPropA}`).fontSize(9)
+            .height('5%')
+            .width('33%')
             .onClick(() => {
               this.aPropA += 1;
             })
-          Button('aPropB:'+`${this.aPropB}`).fontSize(15)
+          Button('aPropB:'+`${this.aPropB}`).fontSize(9)
+            .height('5%')
+            .width('33%')
             .onClick(() => {
               this.aPropB += 1;
             })
-          Button('aPropC:'+`${this.aPropC}`).fontSize(15)
+          Button('aPropC:'+`${this.aPropC}`).fontSize(9)
+            .height('5%')
+            .width('33%')
             .onClick(() => {
               this.aPropC += 1;
             })
@@ -52,23 +59,23 @@ struct PersistentStoragePersistProp {
           PersistentStorage.persistProp('aPropB', 10);
           let value: number = AppStorage.get('aPropB') as number
           console.info(String(value))
-        }).key('button_PersistProp')
+        }).key('button_PersistProp').height('5%')
 
         Button(`DeleteProp_B`).onClick(()=>{
           PersistentStorage.deleteProp('aPropB');
           let keys: Array<string> = PersistentStorage.Keys()
-        }).key('button_DeleteProp')
+        }).key('button_DeleteProp').height('5%')
 
-        Text(`Keys:`+this.text1).fontSize(15)
-          .key('text_button_Keys')
+        Text(`Keys:`+this.text1).fontSize(9)
+          .key('text_button_Keys').height('5%')
         Button(`Keys`).onClick(()=>{
           let keys: Array<string> = PersistentStorage.Keys()
           this.text1= JSON.stringify(keys)
 
-        }).key('button_Keys')
+        }).key('button_Keys').height('5%')
 
-        Text('keys:'+'aPropA:'+this.num1+','+'highScore:'+this.num2+','+'wightScore:'+this.num3).fontSize(15)
-          .key('button_PersistProp_default_keys')
+        Text('keys:'+'aPropA:'+this.num1+','+'highScore:'+this.num2+','+'wightScore:'+this.num3).fontSize(9)
+          .key('button_PersistProp_default_keys').height('5%')
         Button(`PersistProp_default`).onClick(()=>{
           PersistentStorage.persistProps([{ key: 'highScore', defaultValue: '0' }, { key: 'wightScore', defaultValue: '1' }]);
           let value1: number = AppStorage.get('aPropA') as number
@@ -80,7 +87,7 @@ struct PersistentStoragePersistProp {
           console.info(String(value1))
           console.info(String(value2))
           console.info(String(value3))
-        }).key('button_PersistProp_default')
+        }).key('button_PersistProp_default').height('5%')
       }
     }
   }

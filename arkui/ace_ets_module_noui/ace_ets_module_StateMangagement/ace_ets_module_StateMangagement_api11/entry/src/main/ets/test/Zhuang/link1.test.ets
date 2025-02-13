@@ -103,7 +103,7 @@ export default function link1() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[link1_0300] component obj is: " + JSON.stringify(obj));
       console.info("[link1_0300] title: " + JSON.stringify(obj.$attrs.fontSize));
-      expect(obj.$attrs.fontSize).assertEqual('100.00fp');
+      expect(obj.$attrs.fontSize).assertEqual('10.00fp');
       console.info('[link1_0300] END');
       done();
 
@@ -119,7 +119,7 @@ export default function link1() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[link1_0400] component obj is: " + JSON.stringify(obj));
       console.info("[link1_0400] title: " + JSON.stringify(obj.$attrs.fontSize));
-      expect(obj.$attrs.fontSize).assertEqual('100.00fp');
+      expect(obj.$attrs.fontSize).assertEqual('10.00fp');
       console.info('[link1_0400] END');
       done();
 
@@ -145,7 +145,6 @@ export default function link1() {
     it('link1_0600', 0, async (done: Function) => {
       console.info('link1_0600 START');
       let driver = await UiDriver.create()
-      await driver.swipe(100, 500, 100, 100)
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(BY.key('zilBtn2'));
       await button.click();
@@ -164,7 +163,6 @@ export default function link1() {
     it('link1_0700', 0, async (done: Function) => {
       console.info('link1_0700 START');
       let driver = await UiDriver.create()
-      await driver.swipe(100, 500, 100, 100)
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(BY.key('zilBtn3'));
       await button.click();
@@ -173,7 +171,7 @@ export default function link1() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[link1_0700] component obj is: " + JSON.stringify(obj));
       console.info("[link1_0700] title: " + JSON.stringify(obj.$attrs.fontSize));
-      expect(obj.$attrs.fontSize).assertEqual('100.00fp');
+      expect(obj.$attrs.fontSize).assertEqual('10.00fp');
       console.info('[link1_0700] END');
       done();
 
@@ -182,7 +180,6 @@ export default function link1() {
     it('link1_0800', 0, async (done: Function) => {
       console.info('link1_0800 START');
       let driver = await UiDriver.create()
-      await driver.swipe(100, 500, 100, 100)
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(BY.key('zilBtn4'));
       await button.click();
@@ -191,7 +188,7 @@ export default function link1() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[link1_0800] component obj is: " + JSON.stringify(obj));
       console.info("[link1_0800] title: " + JSON.stringify(obj.$attrs.fontSize));
-      expect(obj.$attrs.fontSize).assertEqual('100.00fp');
+      expect(obj.$attrs.fontSize).assertEqual('10.00fp');
       console.info('[link1_0800] END');
       done();
 

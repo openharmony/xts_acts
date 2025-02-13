@@ -19,12 +19,12 @@ struct  CompB{
   @Consume number1: number | undefined | null
   @Consume number2: number | undefined | null
   build(){
-    Row({ space: 5 }){
-      Column({ space: 20 }) {
+    Row(){
+      Column() {
         Row(){
           Column(){
-            Text("type-->undefined")
-            Button('button')
+            Text("type-->undefined").height('5%')
+            Button('button').height('5%')
               .type(this.type1)
               .onClick(() => {
                 this.type1 = undefined
@@ -32,8 +32,8 @@ struct  CompB{
               .key('coBtn1')
           }
           Column(){
-            Text("type-->null")
-            Button('button')
+            Text("type-->null").height('5%')
+            Button('button').height('5%')
               .type(this.type2)
               .onClick(() => {
                 this.type2 = null
@@ -43,8 +43,8 @@ struct  CompB{
         }
         Row(){
           Column(){
-            Text("文本10-->undefined")
-            Button('button')
+            Text("文本10-->undefined").height('5%')
+            Button('button').height('5%')
               .fontSize(this.number1)
               .onClick(() => {
                 this.number1 = undefined
@@ -52,8 +52,8 @@ struct  CompB{
               .key('coBtn3')
           }
           Column(){
-            Text("文本10-->null")
-            Button('button')
+            Text("文本10-->null").height('5%')
+            Button('button').height('5%')
               .fontSize(this.number2)
               .onClick(() => {
                 this.number2 = null
@@ -62,7 +62,7 @@ struct  CompB{
           }
         }
 
-      }.width('100%').margin({top:10})
+      }.width('100%')
     }
   }
 
@@ -84,12 +84,12 @@ struct provide2 {
   build() {
     Row() {
       Scroll() {
-        Row({ space: 5 }) {
-          Column({ space: 20 }) {
+        Row() {
+          Column() {
             Row(){
               Column(){
-                Text("type-->undefined")
-                Button('button')
+                Text("type-->undefined").height('5%')
+                Button('button').height('5%')
                   .type(this.type1)
                   .onClick(() => {
                     this.type1 = undefined
@@ -97,8 +97,8 @@ struct provide2 {
                   .key('prBtn1')
               }
               Column(){
-                Text("type-->null")
-                Button('button')
+                Text("type-->null").height('5%')
+                Button('button').height('5%')
                   .type(this.type2)
                   .onClick(() => {
                     this.type2 = null
@@ -109,8 +109,8 @@ struct provide2 {
             }
             Row(){
               Column(){
-                Text("文本10-->undefined")
-                Button('button')
+                Text("文本10-->undefined").height('5%')
+                Button('button').height('5%')
                   .fontSize(this.number1)
                   .onClick(() => {
                     this.number1 = undefined
@@ -118,8 +118,8 @@ struct provide2 {
                   .key('prBtn3')
               }
               Column(){
-                Text("文本10-->null")
-                Button('button')
+                Text("文本10-->null").height('5%')
+                Button('button').height('5%')
                   .fontSize(this.number2)
                   .onClick(() => {
                     this.number2 = null
@@ -130,7 +130,7 @@ struct provide2 {
             }
             CompB()
 
-          }.width('100%').margin({top:10})
+          }.width('100%')
         }
       }
     }

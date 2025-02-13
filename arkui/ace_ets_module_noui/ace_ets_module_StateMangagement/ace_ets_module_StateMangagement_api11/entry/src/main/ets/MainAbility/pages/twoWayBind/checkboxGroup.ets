@@ -22,7 +22,7 @@ struct CheckboxgroupExample {
     Scroll() {
       Column() {
         // 全选按钮
-        Text(`checkgroupselectAll: ${this.checkgroupselectAll2}`).id('checkboxGroupText')
+        Text(`checkgroupselectAll: ${this.checkgroupselectAll2}`).id('checkboxGroupText').height('5%')
         Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
           CheckboxGroup({ group: 'checkboxGroup' })
             .selectAll($$this.checkgroupselectAll2)
@@ -30,8 +30,8 @@ struct CheckboxgroupExample {
             .selectedColor('#007DFF')
             .onChange((itemName: CheckboxGroupResult) => {
               console.info('checkbox group content' + JSON.stringify(itemName))
-            })
-          Text('Select All').fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500)
+            }).height('5%')
+          Text('Select All').fontSize(9).lineHeight(20).fontColor('#182431').fontWeight(500).height('5%')
         }
 
         // 选项1
@@ -42,10 +42,10 @@ struct CheckboxgroupExample {
             .shape(CheckBoxShape.ROUNDED_SQUARE)
             .onChange((value: boolean) => {
               console.info('Checkbox1 change is' + value)
-            })
+            }).height('5%')
             .id('checkboxGroup1')
-          Text('Checkbox1').fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500)
-        }.margin({ left: 36 })
+          Text('Checkbox1').fontSize(9).lineHeight(20).fontColor('#182431').fontWeight(500).height('5%')
+        }
 
         // 选项2
         Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
@@ -54,10 +54,10 @@ struct CheckboxgroupExample {
             .shape(CheckBoxShape.ROUNDED_SQUARE)
             .onChange((value: boolean) => {
               console.info('Checkbox2 change is' + value)
-            })
+            }).height('5%')
             .id('checkboxGroup2')
-          Text('Checkbox2').fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500)
-        }.margin({ left: 36 })
+          Text('Checkbox2').fontSize(9).lineHeight(20).fontColor('#182431').fontWeight(500).height('5%')
+        }
 
         // 选项3
         Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
@@ -66,10 +66,10 @@ struct CheckboxgroupExample {
             .shape(CheckBoxShape.ROUNDED_SQUARE)
             .onChange((value: boolean) => {
               console.info('Checkbox3 change is' + value)
-            })
+            }).height('5%')
             .id('checkboxGroup3')
-          Text('Checkbox3').fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500)
-        }.margin({ left: 36 })
+          Text('Checkbox3').fontSize(9).lineHeight(20).fontColor('#182431').fontWeight(500).height('5%')
+        }
       }
     }
   }

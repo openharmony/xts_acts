@@ -21,33 +21,33 @@ struct state2 {
   @State number2: number | undefined | null = 10
 
   build() {
-    Column({ space: 20 }) {
-      Text("State:type-->undefined")
-      Button('button')
+    Column() {
+      Text("State:type-->undefined").height('5%')
+      Button('button').height('5%')
         .type(this.type1)
         .onClick(() => {
           this.type1 = undefined
         })
         .key('stBtn1')
 
-      Text("State:type-->null")
-      Button('button')
+      Text("State:type-->null").height('5%')
+      Button('button').height('5%')
         .type(this.type2)
         .onClick(() => {
           this.type2 = null
         })
         .key('stBtn2')
 
-      Text("State文本10-->undefined")
-      Button('button')
+      Text("State文本10-->undefined").height('5%')
+      Button('button').height('5%')
         .fontSize(this.number1)
         .onClick(() => {
           this.number1 = undefined
         })
         .key('stBtn3')
 
-      Text("State文本10-->null")
-      Button('button')
+      Text("State文本10-->null").height('5%')
+      Button('button').height('5%')
         .fontSize(this.number2)
         .onClick(() => {
           this.number2 = null
@@ -56,6 +56,6 @@ struct state2 {
 
 
 
-    }.width('100%').margin({top:10})
+    }.width('100%')
   }
 }

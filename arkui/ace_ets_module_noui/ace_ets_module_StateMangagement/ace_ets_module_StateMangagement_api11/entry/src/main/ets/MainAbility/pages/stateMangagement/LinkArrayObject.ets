@@ -30,42 +30,44 @@ struct LinkArrayObjectChild {
 
   build() {
     Column() {
-      ForEach(Array.from(this.value.entries()), (item: [number, ArrayLinkObject]) => {
-        Text(`${item[1].id}:${item[1].value} index:${item[0]}`).fontSize(20)
-          .id('LinkArrayObject_value_' + item[0])
-        Divider()
-      })
-      Button('child init array').id('LinkArrayObject_init')
+
+      Button('child init array').id('LinkArrayObject_init').height('5%')
         .onClick(() => {
           this.value = [new ArrayLinkObject(4, 'ArrayLinkObject4'),
             new ArrayLinkObject(5, 'ArrayLinkObject5'),
             new ArrayLinkObject(6, 'ArrayLinkObject6')]
-        }).margin(10)
+        })
 
-      Button('child add new one').id('LinkArrayObject_add')
+      Button('child add new one').id('LinkArrayObject_add').height('5%')
         .onClick(() => {
           let lastIndex = this.value.length - 1
           let newId = this.value[lastIndex].id + 1
           this.value.push(new ArrayLinkObject(newId, `ArrayLinkObject${newId}`))
-        }).margin(10)
+        })
 
-      Button('child clear').id('LinkArrayObject_clear')
+      Button('child clear').id('LinkArrayObject_clear').height('5%')
         .onClick(() => {
           this.value = []
           if (Array.from(this.value.entries())) {
             this.value.push(new ArrayLinkObject(0, `ArrayLinkObject0`))
           }
-        }).margin(10)
+        })
 
-      Button('child replace').id('LinkArrayObject_replace')
+      Button('child replace').id('LinkArrayObject_replace').height('5%')
         .onClick(() => {
           this.value[0] = new ArrayLinkObject(10, `ArrayLinkObject10`)
-        }).margin(10)
+        })
 
-      Button('child delete').id('LinkArrayObject_delete')
+      Button('child delete').id('LinkArrayObject_delete').height('5%')
         .onClick(() => {
           this.value.shift()
         })
+
+      ForEach(Array.from(this.value.entries()), (item: [number, ArrayLinkObject]) => {
+        Text(`${item[1].id}:${item[1].value} index:${item[0]}`).fontSize(9).height('5%')
+          .id('LinkArrayObject_value_' + item[0])
+        Divider()
+      })
     }
   }
 }

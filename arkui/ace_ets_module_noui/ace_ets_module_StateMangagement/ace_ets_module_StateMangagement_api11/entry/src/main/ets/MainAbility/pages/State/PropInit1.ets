@@ -27,14 +27,14 @@ struct ChildPropObject {
 
   build() {
     Column() {
-      Text('@Prop 单向的 内部修改不会改变父组件').fontSize(18)
-      Text('子组件Prop:' + this.subValue).fontSize(18)
+      Text('@Prop 单向的 内部修改不会改变父组件').fontSize(9).height('5%')
+      Text('子组件Prop:' + this.subValue).fontSize(9).height('5%')
         .key("sub_prop1_S")
         .onClick(() => {
           this.subValue = 888
         })
     }.width('100%')
-    .margin({ top: 50 })
+    
   }
 }
 
@@ -45,9 +45,9 @@ struct PropInit1 {
 
   build() {
     Row() {
-      Column({ space: 20 }) {
-        Text('@Prop本地初始化不和父组件同步').fontSize(18).margin(5)
-        Text('Change father: ' + this.title.value).margin(5)
+      Column() {
+        Text('@Prop本地初始化不和父组件同步').fontSize(9).height('5%')
+        Text('Change father: ' + this.title.value).height('5%')
           .id("prop_Object1_A")
           .onClick(() => {
             // 动态修改Class类型赋值

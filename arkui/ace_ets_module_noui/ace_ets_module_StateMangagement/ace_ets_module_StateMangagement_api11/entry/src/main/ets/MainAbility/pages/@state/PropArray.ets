@@ -22,37 +22,41 @@ struct Child_AD {
   build() {
     Column() {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array)) + " number is " + JSON.stringify(this.Array))
-        .fontSize(20).margin(10).key('PropArray')
+        .fontSize(9).key('PropArray').height('5%')
 
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
-        .fontSize(20).margin(10).key('PropArrayNew')
-      Text("设置变量Array<Number>类型[1]-->[10]")
+        .fontSize(9).key('PropArrayNew').height('5%')
+      Text("设置变量Array<Number>类型[1]-->[10]").height('5%')
       Button('change')
         .onClick(() => {
           this.Array = [10];
         })
         .key('state1')
+        .height('5%')
 
-      Text("切换变量Array<boolean>类型[1]-->[true]")
+      Text("切换变量Array<boolean>类型[1]-->[true]").height('5%')
       Button('change')
         .onClick(() => {
           this.Array = [true];
         })
         .key('state2')
+        .height('5%')
 
-      Text("切换变量boolean类型[1]-->true")
+      Text("切换变量boolean类型[1]-->true").height('5%')
       Button('change')
         .onClick(() => {
           this.Array = true;
         })
         .key('state3')
+        .height('5%')
 
-      Text("切换变量Array<Resource>类型[1]-->Array<Resource>")
+      Text("切换变量Array<Resource>类型[1]-->Array<Resource>").height('5%')
       Button('change')
         .onClick(() => {
           this.Array = [$r('app.string.number')];
         })
         .key('state4')
+        .height('5%')
 
     }.width('100%')
   }
@@ -65,10 +69,10 @@ struct Library_AD {
 
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
       Child_AD({Array: this.Array})
 
 
-    }.width('100%').margin({top:5})
+    }.width('100%')
   }
 }

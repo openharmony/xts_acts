@@ -27,13 +27,13 @@ struct StorageProp22 {
   @State kuB?: number = storage22.get('propB')
 
   build(){
-    Column({space: 20}) {
-      Text(`LocalStorage值为${this.ku}`).key('lse1')
+    Column() {
+      Text(`LocalStorage值为${this.ku}`).key('lse1').height('5%')
       // 测试localstorage单向数据绑定
-      Text(`当前值为${this.storProp}`).margin(10)
+      Text(`当前值为${this.storProp}`).height('5%')
         .key('text_sp')
 
-      Button(`button1`).margin(10).width('100%')
+      Button(`button1`).width('100%').height('5%')
         .key('btn_lse1')
         .onClick(() => {
           this.storProp += 1
@@ -41,12 +41,12 @@ struct StorageProp22 {
         })
 
 
-      Text(`LocalStorage值为${this.kuB}`).key('lse2')
+      Text(`LocalStorage值为${this.kuB}`).key('lse2').height('5%')
       // 测试页面存在多个localstorage的时候，组件只可访问被分配的localstorage
-      Text(`当前值为${this.storPropB}`).margin(10)
+      Text(`当前值为${this.storPropB}`).height('5%')
         .key('text_spb')
 
-      Button(`button2`).margin(10).width('100%')
+      Button(`button2`).width('100%').height('5%')
         .key('btn_lse2')
         .onClick(() => {
           this.storPropB += 1

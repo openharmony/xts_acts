@@ -18,32 +18,34 @@ struct PropSetChild {
 
   build() {
     Column() {
-      ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-        Text(`${item[0]}`).fontSize(20).id("propSet_value_" + item[0])
-        Divider()
-      })
-      Button('init set').id("propSet_init")
+
+      Button('init set').id("propSet_init").height('5%')
         .onClick(() => {
           this.message = new Set([1, 2, 3])
-        }).margin(10)
+        })
 
-      Button('set new one').id("propSet_set")
+      Button('set new one').id("propSet_set").height('5%')
         .onClick(() => {
           this.message.add(5)
-        }).margin(10)
+        })
 
-      Button('clear').id("propSet_clear")
+      Button('clear').id("propSet_clear").height('5%')
         .onClick(() => {
           this.message.clear()
           if (Array.from(this.message.entries())) {
             this.message.add(0)
           }
-        }).margin(10)
+        })
 
-      Button('delete the first one').id("propSet_delete")
+      Button('delete the first one').id("propSet_delete").height('5%')
         .onClick(() => {
           this.message.delete(0)
         })
+
+      ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
+        Text(`${item[0]}`).fontSize(9).id("propSet_value_" + item[0]).height('5%')
+        Divider()
+      })
     }
     .width('100%')
   }

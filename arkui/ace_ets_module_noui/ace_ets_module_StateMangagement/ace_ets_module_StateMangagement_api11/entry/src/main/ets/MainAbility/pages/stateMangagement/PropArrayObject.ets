@@ -32,36 +32,39 @@ struct PropArrayObjectChild {
 
   build() {
     Column() {
-      ForEach(Array.from(this.message.entries()), (item: [number, MyPropObject]) => {
-        Text(`Item${item[1].id} ${item[1].value} index: ${item[0]}`).fontSize(20).id('propArrayObject_value_' + item[0])
-        Divider()
-      })
-      Button('init array').id('propArrayObject_init')
+
+      Button('init array').id('propArrayObject_init').height('5%')
         .onClick(() => {
           this.message = [new MyPropObject(4, 'MyPropObject4'),
             new MyPropObject(5, 'MyPropObject5'),
             new MyPropObject(6, 'MyPropObject6')]
-        }).margin(10)
+        })
 
-      Button('add new one').id('propArrayObject_add')
+      Button('add new one').id('propArrayObject_add').height('5%')
         .onClick(() => {
           let lastIndex = this.message.length - 1
           let newId = this.message[lastIndex].id + 1
           this.message.push(new MyPropObject(newId, `MyPropObject${newId}`))
         })
 
-      Button('clear').id('propArrayObject_clear')
+      Button('clear').id('propArrayObject_clear').height('5%')
         .onClick(() => {
           this.message = []
           if (Array.from(this.message.entries())) {
             this.message = [new MyPropObject(0, 'MyPropObject0')]
           }
-        }).margin(10)
+        })
 
-      Button('delete the first one').id('propArrayObject_delete')
+      Button('delete the first one').id('propArrayObject_delete').height('5%')
         .onClick(() => {
           this.message.shift()
         })
+
+      ForEach(Array.from(this.message.entries()), (item: [number, MyPropObject]) => {
+        Text(`Item${item[1].id} ${item[1].value} index: ${item[0]}`).fontSize(9).id('propArrayObject_value_' + item[0])
+          .height('5%')
+        Divider()
+      })
     }
     .width('100%')
   }

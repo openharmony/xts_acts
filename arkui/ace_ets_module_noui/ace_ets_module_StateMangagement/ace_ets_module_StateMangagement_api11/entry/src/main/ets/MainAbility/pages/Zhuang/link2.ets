@@ -19,13 +19,13 @@ struct  CompE{
   @Link number1: number | undefined | null
   @Link number2: number | undefined | null
   build(){
-    Row({ space: 5 }){
-      Column({ space: 20 }) {
+    Row(){
+      Column() {
 
         Row(){
           Column(){
-            Text("type-->undefined")
-            Button('button')
+            Text("type-->undefined").height('5%')
+            Button('button').height('5%')
               .type(this.type1)
               .onClick(() => {
                 this.type1 = undefined
@@ -34,8 +34,8 @@ struct  CompE{
           }
 
           Column(){
-            Text("type-->null")
-            Button('button')
+            Text("type-->null").height('5%')
+            Button('button').height('5%')
               .type(this.type2)
               .onClick(() => {
                 this.type2 = null
@@ -46,8 +46,8 @@ struct  CompE{
 
         Row(){
           Column(){
-            Text("文本10-->undefined")
-            Button('button')
+            Text("文本10-->undefined").height('5%')
+            Button('button').height('5%')
               .fontSize(this.number1)
               .onClick(() => {
                 this.number1 = undefined
@@ -56,8 +56,8 @@ struct  CompE{
           }
 
           Column(){
-            Text("文本10-->null")
-            Button('button')
+            Text("文本10-->null").height('5%')
+            Button('button').height('5%')
               .fontSize(this.number2)
               .onClick(() => {
                 this.number2 = null
@@ -66,7 +66,7 @@ struct  CompE{
           }
         }
 
-      }.width('100%').margin({top:10})
+      }.width('100%')
     }
   }
 
@@ -88,9 +88,9 @@ struct Link1 {
   build() {
     Row() {
       Scroll() {
-        Row({ space: 5 }) {
+        Row() {
 
-          Column({ space: 20 }) {
+          Column() {
 
             Row(){
               Column(){
@@ -140,7 +140,7 @@ struct Link1 {
 
             CompE({ type1:this.type1,type2:this.type2,number1:this.number1,number2:this.number2})
 
-          }.width('100%').margin({top:10})
+          }.width('100%')
         }
       }
     }

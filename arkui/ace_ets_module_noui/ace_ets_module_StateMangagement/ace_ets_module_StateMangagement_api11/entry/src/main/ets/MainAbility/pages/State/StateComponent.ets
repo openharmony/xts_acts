@@ -41,16 +41,16 @@ struct sComponent {
 
   build() {
     Column() {
-      Text(`${this.title.value}`).margin(10)
+      Text(`${this.title.value}`).height('5%')
         .id("text_component" + this.count)
-      Button(`Click to change title`).margin(10)
+      Button(`Click to change title`).height('5%')
         .id("change_component" + this.count)
         .onClick(() => {
           // @State变量的更新将触发上面的Text组件内容更新
           this.title.value = this.title.value === "Hello ArkUI" ? "Hello World" : "Hello ArkUI";
         })
 
-      Button(`Click to increase count=${this.count}`).margin(10)
+      Button(`Click to increase count=${this.count}`).height('5%')
         .id("increase_component" + this.count)
         .onClick(() => {
           // @State变量的更新将触发该Button组件的内容更新

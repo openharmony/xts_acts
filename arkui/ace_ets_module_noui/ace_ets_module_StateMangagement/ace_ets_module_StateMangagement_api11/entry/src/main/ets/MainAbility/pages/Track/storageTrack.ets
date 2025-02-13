@@ -33,20 +33,21 @@ struct storageTrack {
   @StorageProp('PropA') storageProp2:StorageA=new StorageA(0,0)
   @StorageLink('PropA') storageLink2:StorageA=new StorageA(0,0)
   build() {
-    Column({space:10}) {
-      Button("Reset")
+    Column() {
+      Button("Reset").height('5%')
         .key("storageTrack_reset")
         .onClick(() => {
           this.storageProp2=new StorageA(10,20)
           this.storageLink2=new StorageA(10,20)
         })
-        .margin({top:20})
       Button('storageProp:'+`${this.storageProp2.a}`)
+        .height('5%')
         .key('Track_storageProp')
         .onClick(()=>{
           this.storageProp2.a +=1
         })
       Button('storageLink:'+`${this.storageLink2.a}`)
+        .height('5%')
         .key('Track_storageLink')
         .onClick(()=>{
           this.storageLink2.a +=2

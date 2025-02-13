@@ -23,14 +23,14 @@ struct StorageProp26 {
   @State a?: number = storage26.get("PropA");
 
   build() {
-    Column({ space: 15 }) {
-      Text(`childPropA: ${this.storProp1}`).key('childPropA')
-      Button('点击连续改变storage的值').key('son1PropA')
+    Column() {
+      Text(`childPropA: ${this.storProp1}`).key('childPropA').height('5%')
+      Button('点击连续改变storage的值').key('son1PropA').height('5%')
         .onClick(() => {
           this.storProp1 += 1;
         })
-      Text(`fatherPropA: ${this.a}`).key('fatherPropA')
-      Button(`fatherPropA`)
+      Text(`fatherPropA: ${this.a}`).key('fatherPropA').height('5%')
+      Button(`fatherPropA`).height('5%')
         .key("button221")
         .onClick(() => {
           storage26.set('PropA', 34)
