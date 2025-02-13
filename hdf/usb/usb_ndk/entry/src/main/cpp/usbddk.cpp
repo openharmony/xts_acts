@@ -614,11 +614,12 @@ static napi_value UsbSendPipeRequestOne(napi_env env, napi_callback_info info)
     int32_t usbGetConfigDescriptorReturnValue = OH_Usb_GetConfigDescriptor(deviceId, configIndex, &config);
     NAPI_ASSERT(env, usbGetConfigDescriptorReturnValue == PARAM_0, "OH_Usb_GetConfigDescriptor failed");
     auto [result1, interface1, endpoint1, maxPktSize1] = GetEndpointInfo(config);
+    NAPI_ASSERT(env, result1 == true, "GetEndpointInfo failed");
     OH_Usb_FreeConfigDescriptor(config);
     int32_t usbClaimInterfaceValue = OH_Usb_ClaimInterface(deviceId, interfaceIndex, &interfaceHandle);
     NAPI_ASSERT(env, usbClaimInterfaceValue == PARAM_0, "Usb_ClaimInterface failed");
     struct UsbDeviceMemMap *devMemMap = nullptr;
-    size_t bufferLen = PARAM_10;
+    size_t bufferLen = maxPktSize1;
     int32_t usbCreateDeviceMemMapReturnValue = OH_Usb_CreateDeviceMemMap(deviceId, bufferLen, &devMemMap);
     NAPI_ASSERT(env, usbCreateDeviceMemMapReturnValue == PARAM_0, "OH_Usb_CreateDeviceMemMap failed");
     NAPI_ASSERT(env, devMemMap != nullptr, "OH_Usb_CreateDeviceMemMap failed");
@@ -823,10 +824,11 @@ static napi_value UsbSendPipeRequestWithAshmemOne(napi_env env, napi_callback_in
     int32_t usbGetConfigDescriptorReturnValue = OH_Usb_GetConfigDescriptor(deviceId, configIndex, &config);
     NAPI_ASSERT(env, usbGetConfigDescriptorReturnValue == PARAM_0, "OH_Usb_GetConfigDescriptor failed");
     auto [result1, interface1, endpoint1, maxPktSize1] = GetEndpointInfo(config);
+    NAPI_ASSERT(env, result1 == true, "GetEndpointInfo failed");
     OH_Usb_FreeConfigDescriptor(config);
     int32_t usbClaimInterfaceValue = OH_Usb_ClaimInterface(deviceId, interfaceIndex, &interfaceHandle);
     NAPI_ASSERT(env, usbClaimInterfaceValue == PARAM_0, "Usb_ClaimInterface failed");
-    size_t bufferLen = PARAM_10;
+    size_t bufferLen = maxPktSize1;
     const uint8_t name[100] = "TestAshmem";
     DDK_Ashmem *ashmem = nullptr;
     int32_t createAshmemValue = OH_DDK_CreateAshmem(name, bufferLen, &ashmem);
