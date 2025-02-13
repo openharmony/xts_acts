@@ -19,7 +19,7 @@ import { AbilityStage } from '@kit.AbilityKit';
 
 export default class TestAbility extends AbilityStage {
   onCreate(): void {
-    globalThis.abilityStageContext = this.context;
+    AppStorage.setAndProp('abilityStageContext', this.context)
   }
 
   onDestroy() {

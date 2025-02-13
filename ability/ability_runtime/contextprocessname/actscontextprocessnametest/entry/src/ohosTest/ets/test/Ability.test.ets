@@ -13,58 +13,16 @@
  * limitations under the License.
  */
  
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import {
-  Component,
-  Driver,
-  UiWindow,
-  ON,
-  DisplayRotation,
-  ResizeDirection,
-  WindowMode,
-  PointerMatrix,
-  On
-} from '@ohos.UiTest';
-import Utils from '../common/utils';
-import { router } from '@kit.ArkUI';
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { BusinessError, commonEventManager, emitter } from '@kit.BasicServicesKit';
-import { abilityManager, application, common, Want } from '@kit.AbilityKit';
-import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import { TAG } from '@ohos/hypium/src/main/Constant';
+import { describe, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { BusinessError, commonEventManager} from '@kit.BasicServicesKit';
+import {application, common, Want } from '@kit.AbilityKit';
 
 export default function ActsContextProcessNameTest() {
   const PROCESS_NAME = 'com.acts.contextprocessname'
-  const BUNDLE_NAME = 'com.acts.contextprocessname'
   const OTHER_BUNDLE_NAME = 'com.acts.contextprocessnameassist'
-  const TEST_SUITE_NAME = 'ActsContextProcessNameTest'
-  let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
   describe('ActsContextProcessNameTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeEach(async (done: Function) => {
-      console.info('ActsContextProcessNameTest beforeEach start');
-      let options: router.RouterOptions = {
-        url: 'testability/pages/Index',
-      }
-      try {
-        router.clear();
-        let pages = router.getState();
-        console.info('get ActsContextProcessNameTest state pages:' + JSON.stringify(pages));
-        if (!('Index' == pages.name)) {
-          console.info('get ActsContextProcessNameTest pages.name:' + JSON.stringify(pages.name));
-          let result = await router.pushUrl(options);
-          await Utils.sleep(2500);
-          console.info('push Index page result:' + JSON.stringify(result));
-        }
-      } catch (err) {
-        console.error('push Index page error:' + err);
-      }
-      console.info('ActsContextProcessNameTest beforeEach end');
-      done();
-      // Presets an action, which is performed before each unit test case starts.
-      // The number of execution times is the same as the number of test cases defined by **it**.
-      // This API supports only one parameter: preset action function.
-    })
+
     afterEach(() => {
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
@@ -87,15 +45,16 @@ export default function ActsContextProcessNameTest() {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_0100'
       console.log(`[${caseName}]: start`)
       try {
-        let uiAbilityContext = globalThis.uiAbilityContext as common.UIAbilityContext
+        let uiAbilityContext =AppStorage.get('uiAbilityContext') as common.UIAbilityContext;
         expect(uiAbilityContext.processName).assertEqual(PROCESS_NAME)
+        done();
       } catch (err) {
         let e = err as BusinessError;
         console.error(`[${caseName}]: ` + e.code + e.message);
         expect().assertFail();
+        done();
       }
       console.log(`[${caseName}]: end`)
-      done();
     });
 
     /**
@@ -110,16 +69,17 @@ export default function ActsContextProcessNameTest() {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_0200'
       console.log(`[${caseName}] create`)
       try {
-        let uiAbilityContext = globalThis.uiAbilityContext as common.UIAbilityContext;
+        let uiAbilityContext =AppStorage.get('uiAbilityContext') as common.UIAbilityContext;
         let applicationContext = uiAbilityContext.getApplicationContext();
         expect(applicationContext.processName).assertEqual(PROCESS_NAME)
+        done();
       } catch (err) {
         let e = err as BusinessError;
         console.error(`[${caseName}]: ` + e.code + e.message);
         expect().assertFail();
+        done();
       }
       console.log(`[${caseName}]: end`)
-      done();
     });
 
     /**
@@ -135,13 +95,14 @@ export default function ActsContextProcessNameTest() {
       try {
         let applicationContext = application.getApplicationContext();
         expect(applicationContext.processName).assertEqual(PROCESS_NAME)
+        done();
       } catch (err) {
         let e = err as BusinessError;
         console.error(`[${caseName}]: ` + e.code + e.message);
         expect().assertFail();
+        done();
       }
       console.log(`[${caseName}]: end`)
-      done();
     });
 
     /**
@@ -156,15 +117,16 @@ export default function ActsContextProcessNameTest() {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_0400'
       console.log(`[${caseName}] create`)
       try {
-        let abilityStageContext = globalThis.abilityStageContext as common.AbilityStageContext;
+        let abilityStageContext =AppStorage.get('abilityStageContext') as common.AbilityStageContext;
         expect(abilityStageContext.processName).assertEqual(PROCESS_NAME)
+        done();
       } catch (err) {
         let e = err as BusinessError;
         console.error(`[${caseName}]: ` + e.code + e.message);
         expect().assertFail();
+        done();
       }
       console.log(`[${caseName}]: end`)
-      done();
     });
 
     /**
@@ -179,7 +141,7 @@ export default function ActsContextProcessNameTest() {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_1500'
       console.log(`[${caseName}] create`)
       try {
-        let uiAbilityContext = globalThis.uiAbilityContext as common.UIAbilityContext;
+        let uiAbilityContext =AppStorage.get('uiAbilityContext') as common.UIAbilityContext;
         let want: Want = {
           deviceId: '',
           bundleName: OTHER_BUNDLE_NAME,
@@ -195,21 +157,19 @@ export default function ActsContextProcessNameTest() {
             console.log(`[${caseName}] subscribe` + commonEventData.event + '： ' + commonEventData.parameters?.data)
             if (commonEventData.event == 'StartAbilityProcessName') {
               expect(OTHER_BUNDLE_NAME).assertEqual(commonEventData.parameters?.data);
-              commonEventManager.unsubscribe(subscribe, (err, data) => {
-              });
+              commonEventManager.unsubscribe(subscribe);
+              done();
             }
           })
         })
-        await Utils.sleep(1000)
         await uiAbilityContext.startAbility(want)
-        await Utils.sleep(1000)
       } catch (err) {
         let e = err as BusinessError;
         console.error(`[${caseName}]: ` + e.code + e.message);
         expect().assertFail();
+        done();
       }
       console.log(`[${caseName}]: end`)
-      done();
     });
 
     /**
@@ -224,7 +184,7 @@ export default function ActsContextProcessNameTest() {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_3200'
       console.log(`[${caseName}] create`)
       try {
-        let uiAbilityContext = globalThis.uiAbilityContext as common.UIAbilityContext;
+        let uiAbilityContext =AppStorage.get('uiAbilityContext') as common.UIAbilityContext;
         let processName1 = uiAbilityContext.createAreaModeContext(1).processName;
         let processName2 = uiAbilityContext.createAreaModeContext(2).processName;
         let processName3 = uiAbilityContext.createAreaModeContext(3).processName;
@@ -235,13 +195,14 @@ export default function ActsContextProcessNameTest() {
         expect(processName3).assertEqual(PROCESS_NAME)
         expect(processName4).assertEqual(PROCESS_NAME)
         expect(processName5).assertEqual(PROCESS_NAME)
+        done();
       } catch (err) {
         let e = err as BusinessError;
         console.error(`[${caseName}]: ` + e.code + e.message);
         expect().assertFail();
+        done();
       }
       console.log(`[${caseName}]: end`)
-      done();
     });
 
   })
