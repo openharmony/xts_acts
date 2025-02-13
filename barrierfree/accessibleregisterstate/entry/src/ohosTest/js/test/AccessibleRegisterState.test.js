@@ -14,6 +14,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import accessibility from '@ohos.accessibility'
+import { Driver } from '@ohos.UiTest';
 
 const bundleName = 'com.sample.testfora11y';
 const triggerAction = 'accessibilityFocus';
@@ -21,6 +22,11 @@ const eventType = 'accessibilityFocus';
 
 export default function AccessibleRegisterState() {
 describe('AccessibleRegisterState', function () {
+    beforeAll(async function (done) {
+        let driver = Driver.create();
+        console.info(`AccessibleRegisterState: beforeAll starts`);
+        done();
+    })
 
     beforeEach(async function (done) {
         console.info(`AccessibleRegisterState: beforeEach starts`);
