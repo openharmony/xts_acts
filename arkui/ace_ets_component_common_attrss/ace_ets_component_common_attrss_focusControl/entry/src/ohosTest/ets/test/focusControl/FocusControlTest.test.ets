@@ -42,39 +42,34 @@ export default function FocusControlTest() {
     'List',
     'Checkbox',
     'CheckboxGroup',
-    'DatePicker',
-    //    'ImageAnimator',
+    
     'Menu',
     'MenuItem',
-    //    'MenuItemGroup',
+    
     'Radio',
     'Rating',
-    'Select',
+   
     'Slider',
-    'Stepper',
-    'StepperItem',
-    'TextPicker',
-    'TimePicker',
+    
     'Toggle',
-    'Web',
+    
     'AlphabetIndexer',
     'Column',
-    //    'ColumnSplit',
+    
     'Counter',
     'Flex',
-    //    'GridCol',
-    //    'GridRow',
+    
     'GridItem',
     'ListItem',
-    //    'ListItemGroup',
+    
     'Row',
-    //    'RowSplit',
+    
     'Scroll',
-    'SideBarContainer',
+    
     'Stack',
     'Swiper',
     'Tabs',
-  //    'TabContent'
+  
   ]
 
   //Page config, this param is required.
