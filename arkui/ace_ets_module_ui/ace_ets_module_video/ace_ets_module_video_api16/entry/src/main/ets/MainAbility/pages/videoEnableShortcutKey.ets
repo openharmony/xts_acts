@@ -21,11 +21,11 @@ struct videoEnableShortcutKey {
   @State previewUri: Resource = $r('app.media.icon')
   @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
   @State isAutoPlay: boolean = false
-  @State isLoop: boolean = true
+  @State isLoop: boolean = false
   @State showControls: boolean = true
   @State enableShortcutKey: boolean = true
   @State content: string = 'init'
-  @State content2: string = 'init'
+  @State content2: string = '0'
   controller: VideoController = new VideoController()
 
   build() {
@@ -53,8 +53,11 @@ struct videoEnableShortcutKey {
         .onPause(() => {
           this.content = 'onPause'
         })
-        .onUpdate(() => {
-          this.content2 = 'onUpdate'
+        .onUpdate((e?: TimeObject) => {
+          if (e != undefined) {
+            console.info('onUpdate is ' + e.time)
+            this.content2 = e.time.toString()
+          }
         })
 
       Row() {
@@ -73,14 +76,16 @@ struct videoEnableShortcutKey {
         Button('change_1').key('videoEnableShortcutKey_showControls').onClick(() => {
           this.showControls = !this.showControls
           this.content = 'init'
-          this.content2 = 'init'
         })
         Button('change_2').key('videoEnableShortcutKey_enableShortcutKey').onClick(() => {
           this.enableShortcutKey = !this.enableShortcutKey
           this.content = 'init'
-          this.content2 = 'init'
         })
       }
     }
   }
+}
+
+interface TimeObject {
+  time: number;
 }
