@@ -60,36 +60,44 @@ struct DNSHostIP {
           console.info("key==>" + this.str)
           switch (this.str) {
             case "emitZoomAccess": {
-              this.zoomAccessValue = false;
-              this.controller.refresh();
-              setTimeout(() => {
-                this.controller.runJavaScript({
-                  script: "getPageHeight()", callback: (res1) => {
-                    let zoomInCalled = false;
-                    this.controller.runJavaScript({
-                      script: "getPageHeight()", callback: (res) => {
-                        console.info("getPageHeight==>" + res);
-                        if (Number(res) > Number(res1)) {
-                          zoomInCalled = true;
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                this.zoomAccessValue = false;
+                this.controller.refresh();
+                setTimeout(() => {
+                  this.controller.runJavaScript({
+                    script: "getPageHeight()", callback: (res1) => {
+                      let zoomInCalled = false;
+                      this.controller.runJavaScript({
+                        script: "getPageHeight()", callback: (res) => {
+                          console.info("getPageHeight==>" + res);
+                          if (Number(res) > Number(res1)) {
+                            zoomInCalled = true;
+                          }
+                          Utils.emitEvent(zoomInCalled, 428);
                         }
-                        Utils.emitEvent(zoomInCalled, 428);
-                      }
-                    })
-                  }
-                })
-              }, 3000);
-              break;
+                      })
+                    }
+                  })
+                }, 3000);
+                break;
+              } else {
+                Utils.emitEvent(false, 428);
+              }
             }
             case "emitGetHitTestValue": {
-              try {
-                let hitValue = this.controllerone.getHitTestValue();
-                console.log("hitType: " + hitValue.type);
-                console.log("extra: " + hitValue.extra);
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                try {
+                  let hitValue = this.controllerone.getHitTestValue();
+                  console.log("hitType: " + hitValue.type);
+                  console.log("extra: " + hitValue.extra);
+                  Utils.emitEvent("hitValue", 12);
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                }
+                break;
+              } else {
                 Utils.emitEvent("hitValue", 12);
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
-              break;
             }
 
 

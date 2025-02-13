@@ -109,10 +109,14 @@ struct WebInitTest {
             console.info("key==>" + this.str)
             switch (this.str) {
               case "emitGetRequestFocus": {
-                this.controller.loadUrl({ url: "resource://rawfile/second.html" });
-                await Utils.sleep(2000);
-                sendEventByKey('textInput', 10, '');
-                break;
+                if (canIUse('SystemCapability.Applications.Contacts')) {
+                  this.controller.loadUrl({ url: "resource://rawfile/second.html" });
+                  await Utils.sleep(2000);
+                  sendEventByKey('textInput', 10, '');
+                  break;
+                } else {
+                  Utils.emitEvent("requestFocus", 126);
+                }
               }
             }
           })
