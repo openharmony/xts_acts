@@ -33,18 +33,18 @@ struct AttributeModifierDemoAPI03 {
   build() {
     Column({space:10}) {
       Checkbox({name: 'checkbox1',  group: 'checkboxGroup'}).key('AttributeModifierDemoAPI03Checkbox')
-        .height(150)
+        .height('25%')
         .select(this.flag)
         .selectedColor(Color.Pink)
         .shape(CheckBoxShape.ROUNDED_SQUARE)
         .attributeModifier(this.modifier)
 
-      Button('isDark true').margin(20).key('AttributeModifierDemoAPI03isDark')
+      Button('isDark true').key('AttributeModifierDemoAPI03isDark')
         .onClick(() => {
           this.modifier.isDark = true
         })
 
-      Button('选中').width(150).key('AttributeModifierDemoAPI03Selected')
+      Button('选中').key('AttributeModifierDemoAPI03Selected')
         .onClick(() => {
           this.flag = true
         })
