@@ -61,14 +61,8 @@ struct videoEnableShortcutKey {
         })
 
       Row() {
-        Button('start').key('videoEnableShortcutKey_start').onClick(() => {
-          this.controller.start() // 开始播放
-        })
-        Button('pause').key('videoEnableShortcutKey_pause').onClick(() => {
-          this.controller.pause() // 暂停播放
-        })
-        Button('stop').key('videoEnableShortcutKey_stop').onClick(() => {
-          this.controller.stop() // 结束播放
+        Button('reset').key('videoEnableShortcutKey_reset').onClick(() => {
+          this.controller.reset() // 重置
         })
       }
 

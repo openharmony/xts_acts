@@ -79,7 +79,7 @@ export default function videoEnableShortcutKeyTest() {
       expect(obj_video.$attrs.enableShortcutKey).assertEqual('true');
 
       await driver.triggerKey(KeyCode.KEYCODE_SPACE);
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(2000);
 
       let strJson_text = getInspectorByKey('videoEnableShortcutKey_text');
       let obj_text: ESObject = JSON.parse(strJson_text);
@@ -118,7 +118,7 @@ export default function videoEnableShortcutKeyTest() {
       expect(time_3).assertEqual(time_2 - 1);
 
       // reset
-      let button = await driver.findComponent(ON.id('videoEnableShortcutKey_stop'));
+      let button = await driver.findComponent(ON.id('videoEnableShortcutKey_reset'));
       await button.click();
       await CommonFunc.sleep(1000);
 
@@ -129,7 +129,7 @@ export default function videoEnableShortcutKeyTest() {
       await CommonFunc.sleep(1000);
 
       await driver.triggerKey(KeyCode.KEYCODE_SPACE);
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(2000);
 
       strJson_text = getInspectorByKey('videoEnableShortcutKey_text');
       obj_text = JSON.parse(strJson_text);
@@ -168,7 +168,7 @@ export default function videoEnableShortcutKeyTest() {
       expect(time_3).assertEqual(time_2 - 1);
 
       // reset
-      button = await driver.findComponent(ON.id('videoEnableShortcutKey_stop'));
+      button = await driver.findComponent(ON.id('videoEnableShortcutKey_reset'));
       await button.click();
       await CommonFunc.sleep(1000);
 
@@ -216,7 +216,7 @@ export default function videoEnableShortcutKeyTest() {
       expect(Number(obj_text2.$attrs.content)).assertEqual(0);
 
       // reset
-      button = await driver.findComponent(ON.id('videoEnableShortcutKey_stop'));
+      button = await driver.findComponent(ON.id('videoEnableShortcutKey_reset'));
       await button.click();
       await CommonFunc.sleep(1000);
 
