@@ -18,6 +18,7 @@ add_library(nativerender SHARED
     listScrollTo/list_scroll_to_test.cpp
     swiper/swiper_test.cpp
     progress/progress_linear_style_test.cpp
+    textArea/textArea_letter_spacing.cpp
 )
 
 add_library(nativefunc SHARED
