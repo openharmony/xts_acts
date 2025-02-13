@@ -38,10 +38,10 @@ struct MakeObserved0090 {
   private dataClass: ClassMakeObserved0090 = UIUtils.makeObserved(new ClassMakeObserved0090('Tom'))
 
   build() {
-    Column({space: 5}) {
+    Column() {
       Text(this.dataClass.name)
         .id('tvMakeObserved0090')
-        .fontSize(25)
+        .fontSize(9)
       Button('Click Me')
         .id('btnMakeObserved0090')
         .onClick(()=>{

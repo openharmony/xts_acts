@@ -38,48 +38,48 @@ struct Repeat0040 {
     new RepeatClass0040('three')]
 
   build() {
-    Column({space:3}) {
+    Column() {
       Button('Refresh')
         .id('btnRefreshRepeat0040')
-        .fontSize(14)
-        .height(25)
+        .fontSize(9)
+        .height('3%')
         .onClick(()=>{
           this.dataArr = [new RepeatClass0040('one'), new RepeatClass0040('two'), new RepeatClass0040('three')]
         })
       Button('Del Two')
         .id('btnRepeat00401')
-        .fontSize(14)
+        .fontSize(9)
         .onClick(() => {
           this.dataArr.splice(1, 1)
         })
-        .height(25)
+        .height('3%')
       Button('Del Two, Add Me')
         .id('btnRepeat00402')
-        .fontSize(14)
+        .fontSize(9)
         .onClick(() => {
           this.dataArr.splice(1, 1)
           this.dataArr.push(new RepeatClass0040('我'))
         })
-        .height(25)
+        .height('3%')
       Button('Reset index2')
         .id('btnRepeat00403')
-        .fontSize(14)
+        .fontSize(9)
         .onClick(() => {
           this.dataArr[2] = new RepeatClass0040('six')
         })
-        .height(25)
+        .height('3%')
       Button('Add Five')
         .id('btnRepeat00404')
-        .fontSize(14)
+        .fontSize(9)
         .onClick(() => {
           this.dataArr.push(new RepeatClass0040('five'))
         })
-        .height(25)
+        .height('3%')
       List() {
         Repeat(this.dataArr)
           .each((item: RepeatItem<RepeatClass0040>) => {
             Text(item.item.name)
-              .fontSize(14)
+              .fontSize(9)
           })
           .key((item: RepeatClass0040) => item.name)
       }

@@ -26,26 +26,26 @@ struct GrandSon2 {
         .onClick(() => {
           this.message1 += 4
           this.message2 += 4
-        }).fontSize(14)
+        }).fontSize(9)
       Column() {
         Text(`reviewVotes(${this.message1})`)
           .id('tvChild1')
-          .fontSize(14)
+          .fontSize(9)
         Text(`reviewVotes(${this.message2})`)
           .id('tvChild2')
-          .fontSize(14)
+          .fontSize(9)
           .onClick(() => {
             this.message2 += 1
           })
         Text(`reviewVotes(${this.message0})`)
           .id('tvChild3')
-          .fontSize(14)
+          .fontSize(9)
           .onClick(() => {
             this.message0 += 1
           })
         Text(`reviewVotes(${this.message3})`)
           .id('tvChild4')
-          .fontSize(14)
+          .fontSize(9)
           .onClick(() => {
             this.message3 += 1
           })
@@ -60,7 +60,7 @@ struct GrandSon2 {
 struct ChildTest2 {
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       GrandSon2()
     }
   }
@@ -75,14 +75,14 @@ struct Provider18 {
 
   build() {
     Scroll() {
-      Column({ space: 5 }) {
+      Column() {
         Button(`parent (${this.message2}) +1`)
           .id('btnParent')
           .onClick(() => {
             this.message1 += 1
             this.message2 += 1
 
-          }).fontSize(14)
+          }).fontSize(9)
         ChildTest2()
       }.width('100%')
     }.width('100%').height('100%').align(Alignment.Top).scrollBar(BarState.Off)

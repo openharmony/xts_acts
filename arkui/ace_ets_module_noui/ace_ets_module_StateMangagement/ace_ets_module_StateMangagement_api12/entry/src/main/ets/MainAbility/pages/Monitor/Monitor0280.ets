@@ -37,7 +37,7 @@ struct Monitor0280 {
   @Local val: string = 'Hello'
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Button('Click')
         .id('btnMonitor0280')
         .onClick(() => {

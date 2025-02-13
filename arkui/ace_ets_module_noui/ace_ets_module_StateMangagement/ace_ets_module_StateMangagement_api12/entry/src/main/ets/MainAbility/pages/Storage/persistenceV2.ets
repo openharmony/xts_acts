@@ -41,9 +41,12 @@ struct PersistenceV2Page1 {
   @Local prop: PerSample = PersistenceV2.connect(PerSample, () => new PerSample())!;
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Button('Go to page1')
         .id('router_appStorageV2')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           router.pushUrl({
             url: 'MainAbility/pages/Storage/appStorageV2'
@@ -51,6 +54,9 @@ struct PersistenceV2Page1 {
         })
       Button('connect the key PerSample')
         .id('persistenceV2_connect')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           // 在PersistenceV2中创建一个key为PerSample的键值对（如果存在，则返回PersistenceV2中的数据），并且和prop关联
           // 不建议对prop属性换connect的对象
@@ -59,6 +65,9 @@ struct PersistenceV2Page1 {
 
       Button('remove the key PerSample')
         .id('persistenceV2_remove')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           // 从PersistenceV2中删除后，prop将不会再与key为PerSample的值关联
           PersistenceV2.remove(PerSample);
@@ -66,7 +75,10 @@ struct PersistenceV2Page1 {
 
       Button('Clear Create keys')
         .id('btnPersistenceV2ClearKeys')
-        .onClick(()=>{
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
+        .onClick(() => {
           if (PersistenceV2.keys().includes('PerSample')) {
             PersistenceV2.remove('PerSample')
           }
@@ -74,6 +86,9 @@ struct PersistenceV2Page1 {
 
       Button('save the key PerSample')
         .id('persistenceV2_save')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           // 如果处于connect状态，持久化key为PerSample的键值对
           PersistenceV2.save(PerSample);
@@ -81,14 +96,16 @@ struct PersistenceV2Page1 {
 
       Text(`prop.p1: ${this.prop.f.p1}`)
         .id('persistenceV2_p1')
-        .fontSize(20)
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           this.prop.f.p1 += 2;
         })
 
       Text(`prop.p2: ${this.prop.f.p2}a: ${this.a}`)
         .id('persistenceV2_p2')
-        .fontSize(20)
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           //p2不是观察对象，它的变化需要save保存
           this.prop.f.p2++;
@@ -99,7 +116,8 @@ struct PersistenceV2Page1 {
       // 获取当前PersistenceV2里面的所有key
       Text(`keys in PersistenceV2: ${PersistenceV2.keys()}`)
         .id('persistenceV2_keys')
-        .fontSize(20)
+        .height('3%')
+        .fontSize(9)
     }
   }
 }

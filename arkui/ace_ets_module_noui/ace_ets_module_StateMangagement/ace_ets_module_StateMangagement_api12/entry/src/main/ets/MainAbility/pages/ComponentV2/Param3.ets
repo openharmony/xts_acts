@@ -32,7 +32,7 @@ struct paramObject {
   @Local rawObject: RawObject = new RawObject('rawObject');
   @Local observedObject: ObservedObject = new ObservedObject('observedObject');
   build() {
-    Column({space:10}) {
+    Column() {
       Button('change name').id('object_change')
         .onClick(() => {
           this.rawObject.name = 'new rawObject name';

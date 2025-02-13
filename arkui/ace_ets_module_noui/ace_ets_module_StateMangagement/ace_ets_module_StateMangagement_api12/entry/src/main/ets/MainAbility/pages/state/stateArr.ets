@@ -23,7 +23,7 @@ struct StateArr0010 {
   }
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Text('Hello' + JSON.stringify(this.arr)).id('tvStateArr0010Title')
       Button('push')
         .id('btnStateArr0010Set')

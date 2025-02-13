@@ -71,36 +71,36 @@ export default function RepeatSwiperBoolean() {
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
 
-      let strJson = getInspectorByKey('Text11');
+      let strJson = getInspectorByKey('SB_Text11');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[RepeatSwiperBoolean_001] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('false index:1:0');
       console.info('[RepeatSwiperBoolean_001] END');
 
-      let strJson1 = getInspectorByKey('Text21');
+      let strJson1 = getInspectorByKey('SB_Text21');
       let obj1: ESObject = JSON.parse(strJson1);
       console.info("[RepeatSwiperBoolean_001] component obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('false index:1:0');
       console.info('[RepeatSwiperBoolean_001] END');
 
-      let btn: Component = await driver.findComponent(ON.id('Button1'));
+      let btn: Component = await driver.findComponent(ON.id('SB_Button1'));
       await btn.click();
       await CommonFunc.sleep(1000);
 
-      let strJson2 = getInspectorByKey('Text11');
+      let strJson2 = getInspectorByKey('SB_Text11');
       let obj2: ESObject = JSON.parse(strJson2);
       console.info("[RepeatSwiperBoolean_001] component obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.content).assertEqual('false index:1:0');
       console.info('[RepeatSwiperBoolean_001] END');
 
-      let btn1: Component = await driver.findComponent(ON.id('Button2'));
+      let btn1: Component = await driver.findComponent(ON.id('SB_Button2'));
       await btn1.click();
       await btn1.click();
       await btn1.click();
       await btn1.click();
       await CommonFunc.sleep(1000);
 
-      let strJson3 = getInspectorByKey('Text11');
+      let strJson3 = getInspectorByKey('SB_Text11');
       let obj3: ESObject = JSON.parse(strJson3);
       console.info("[RepeatSwiperBoolean_001] component obj3 is: " + JSON.stringify(obj3));
       expect(obj3.$attrs.content).assertEqual('false index:1:99');

@@ -21,33 +21,29 @@ struct Foreach001 {
   @State count: number = 0;
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Text('初始化数据')
         .id('init_for_each')
-        .fontSize(20)
-        .margin(5)
+        .fontSize(9)
         .fontColor(Color.Red)
         .onClick(() => {
           this.simpleList = ['one', 'two', 'three'];
         })
 
       Button('点击修改第2个数组项的值').id('repeat_for_each')
-        .fontSize(18)
-        .margin(5)
+        .fontSize(9)
         .onClick(() => {
           this.simpleList[2] = 'new three';
         })
 
       Button('点击添加值').id('for_each_1')
-        .fontSize(18)
-        .margin(5)
+        .fontSize(9)
         .onClick(() => {
           this.simpleList.push('six');
         })
 
       Button('交换数组项1，2').id('for_each_2')
-        .fontSize(18)
-        .margin(5)
+        .fontSize(9)
         .onClick(() => {
           let temp: string = this.simpleList[2]
           this.simpleList[2] = this.simpleList[1]
@@ -55,16 +51,15 @@ struct Foreach001 {
         })
 
       Button('点击删除第3个数组项的值').id('for_each_3')
-        .fontSize(18)
-        .margin(5)
+        .fontSize(9)
         .onClick(() => {
           this.simpleList.splice(2, 1);
         })
-      List({ space: 20, initialIndex: 3 }) {
+      List({ initialIndex: 3 }) {
         ForEach(this.simpleList, (item: string, index: number) => {
           ListItem() {
             Text(`${index} ${item}`).id('foreach' + index)
-              .fontSize(40)
+              .fontSize(9)
           }
         })
           .onMove((from: number, to: number) => {

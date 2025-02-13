@@ -18,7 +18,7 @@
 struct ParamValue {
   @Local count: number = 5;
   build() {
-    Column({space:10}) {
+    Column() {
       ParamChild({
         param1: this.count
       })

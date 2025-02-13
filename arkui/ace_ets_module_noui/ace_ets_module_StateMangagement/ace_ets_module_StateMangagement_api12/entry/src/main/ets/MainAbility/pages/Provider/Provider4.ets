@@ -17,7 +17,7 @@
   @Provider() val: number = 10
   build() {
     Column() {
-      Text(`parents:${this.val}`).fontSize(30).onClick(() =>{
+      Text(`parents:${this.val}`).fontSize(9).onClick(() =>{
         this.val++
       }).id('parents')
       AComp1()
@@ -31,7 +31,7 @@
 
   build() {
     Column() {
-      Text(`AComp:${this.val}`).fontSize(30).onClick(() =>{
+      Text(`AComp:${this.val}`).fontSize(9).onClick(() =>{
         this.val++
       }).id('AComp')
       A2Comp()
@@ -43,7 +43,7 @@
   @Consumer() val: number = 0
   build() {
     Column() {
-      Text(`${this.val}`).fontSize(30).id('valText')
+      Text(`${this.val}`).fontSize(9).id('valText')
     }.border({width: 2, color: Color.Pink})
   }
 }

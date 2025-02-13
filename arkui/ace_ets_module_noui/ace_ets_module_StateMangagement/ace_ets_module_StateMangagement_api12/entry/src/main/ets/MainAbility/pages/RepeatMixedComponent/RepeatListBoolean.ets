@@ -43,6 +43,7 @@ struct RepeatListBoolean {
               Text('non vs ' + ri.item + ' index:' + ri.index.toString() + ':' + this.tmp2.toString())
                 .id('Text1_LB' + ri.index.toString())
                 .fontSize(20)
+                .height('14%')
             }
           })
           .key((service: boolean, index: number): string => index + service.toString())
@@ -52,12 +53,12 @@ struct RepeatListBoolean {
       .border({ width: 1 })
 
       Row() {
-        Button('next1 page').id('Button1')
+        Button('next1 page').id('Button1_LB')
           .onClick(() => {
             this.scroller.scrollToIndex(15);
           })
 
-        Button('next2 page').id('Button2')
+        Button('next2 page').id('Button2_LB')
           .onClick(() => {
             this.scroller1.scrollToIndex(15);
           })
@@ -73,6 +74,7 @@ struct RepeatListBoolean {
               Text('has vs ' + ri.item + ' index:' + ri.index.toString() + ':' + this.tmp2.toString())
                 .id('Text2_LB' + ri.index.toString())
                 .fontSize(20)
+                .height('14%')
             }
           })
           .key((service: boolean, index: number): string => index + service.toString())
@@ -88,6 +90,7 @@ struct RepeatListBoolean {
               Text('has vs ' + r.item + ' index:' + r.index.toString() + ':' + (this.tmp2 = 100).toString())
                 .id('Text2_LB' + r.index.toString())
                 .fontSize(20)
+                .height('14%')
             }
           })
           .virtualScroll()

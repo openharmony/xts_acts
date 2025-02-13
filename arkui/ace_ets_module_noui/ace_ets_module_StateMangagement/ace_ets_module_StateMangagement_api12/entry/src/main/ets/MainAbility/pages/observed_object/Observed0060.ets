@@ -71,7 +71,7 @@ struct Observed0060 {
   }
 
   build() {
-    Column({space: 3}) {
+    Column() {
       Text(this.classA.id.toString()).id('tvObserved0060ID')
       Text(this.classA.name.toString()).id('tvObserved0060String')
       Text(this.classA.isType.toString()).id('tvObserved0060Boolean')

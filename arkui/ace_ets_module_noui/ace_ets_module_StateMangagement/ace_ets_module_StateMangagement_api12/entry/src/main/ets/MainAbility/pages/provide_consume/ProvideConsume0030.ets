@@ -20,6 +20,9 @@ struct ChildProvideConsume0030 {
   build() {
     Column() {
       Text(this.numberValue.toString()).id('tvProvideConsume0030Child')
+        .height('3%')
+        .fontSize(9)
+
     }
   }
 }
@@ -32,10 +35,15 @@ struct ProvideConsume0030 {
   build() {
     Column() {
       Text(this.numberValue.toString()).id('tvProvideConsume0030Parent')
+        .height('3%')
+        .fontSize(9)
       ChildProvideConsume0030()
       Button('+1')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .id('btnProvideConsume0030Add')
-        .onClick(()=>{
+        .onClick(() => {
           this.numberValue += 1
         })
     }

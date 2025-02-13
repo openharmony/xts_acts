@@ -39,7 +39,7 @@ struct RepeatSwiperBoolean {
         Repeat<boolean>(this.simpleList1)
           .each((ri) => {
             Text(ri.item.toString() + ' index:' + ri.index.toString() + ':' + this.tmp2.toString())
-              .id('Text1' + ri.index.toString())
+              .id('SB_Text1' + ri.index.toString())
               .fontSize(20)
               .height('30%')
               .border({ width: 1 })
@@ -58,12 +58,12 @@ struct RepeatSwiperBoolean {
       .border({ width: 1 })
 
       Row() {
-        Button('next1 page').id('Button1')
+        Button('next1 page').id('SB_Button1')
           .onClick(() => {
             this.swiperController.showNext()
           })
         Button('next2 page')
-          .id('Button2')
+          .id('SB_Button2')
           .onClick(() => {
             this.swiperController1.showNext()
           })
@@ -76,7 +76,7 @@ struct RepeatSwiperBoolean {
         Repeat<boolean>(this.simpleList2)
           .each((ri) => {
             Text(ri.item.toString() + ' index:' + ri.index.toString() + ':' + this.tmp2.toString())
-              .id('Text2' + ri.index.toString())
+              .id('SB_Text2' + ri.index.toString())
               .fontSize(20)
               .height('30%')
               .border({ width: 1 })
@@ -92,7 +92,7 @@ struct RepeatSwiperBoolean {
           })
           .template('number', (r) => {
             Text(r.item.toString() + ' index:' + r.index.toString() + ':' + (this.tmp2 = 99).toString())
-              .id('Text2' + r.index.toString())
+              .id('SB_Text2' + r.index.toString())
               .fontSize(20)
               .height('30%')
               .border({ width: 1 })

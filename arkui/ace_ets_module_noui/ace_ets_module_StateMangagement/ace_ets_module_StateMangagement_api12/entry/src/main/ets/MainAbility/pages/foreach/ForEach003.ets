@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2524 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -30,80 +30,89 @@ struct ForEach003 {
   }
 
   build() {
-    Column({ space: 3 }) {
-      Row({ space: 10 }) {
+    Column() {
+      Row() {
         Button('Add No.x')
           .id('btnForEach0101')
-          .fontSize(14)
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
             this.dataArr.splice(5, 0, 'No.x')
           })
-          .height(25)
 
         Button('Change short Data')
           .id('btnForEach0103')
-          .fontSize(14)
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
             this.dataArr.splice(0, this.dataArr.length)
             for (let index = 0; index < 5; index++) {
               this.dataArr.push('item' + index)
             }
           })
-          .height(25)
       }
 
-      Row({ space: 10 }) {
+      Row() {
         Button('Swipe to index0')
           .id('btnForEach0104')
-          .fontSize(14)
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
             let rect = this.scroller.getItemRect(this.swipeStartIndex) // Get child components size and position
             this.scroller.scrollToIndex(0); // Slide to the specified index
             this.scroller.scrollBy(0, -rect.y); // Slide a specified distance
           })
-          .height(25)
         Button('Swipe to index45')
           .id('btnForEach0105')
-          .fontSize(14)
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
             let rect = this.scroller.getItemRect(this.swipeStartIndex) // Get child components size and position
             this.scroller.scrollToIndex(45); // Slide to the specified index
             this.scroller.scrollBy(0, -rect.y); // Slide a specified distance
           })
-          .height(25)
         Button('Refresh')
           .id('btnForEach0106')
-          .fontSize(14)
-          .height(25)
-          .onClick(()=>{
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
+          .onClick(() => {
             this.dataArr.splice(0, this.dataArr.length)
             for (let index = 0; index < 100; index++) {
               this.dataArr.push('item' + index)
             }
           })
       }
-      Row({ space: 10 }) {
+
+      Row() {
         Button('Add No.50')
           .id('btnForEach0107')
-          .fontSize(14)
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
             this.dataArr.splice(50, 0, 'No.50')
           })
-          .height(25)
         Button('Reset Item10')
           .id('btnForEach0108')
-          .fontSize(14)
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
             this.dataArr[9] = 'No.10'
           })
-          .height(25)
       }
 
-      List({ space: 3, scroller: this.scroller }) {
+      List({ scroller: this.scroller }) {
         ForEach(this.dataArr, (item: string, index: number) => {
           ListItem() {
             Text(item)
-              .fontSize(25)
+              .height('3%')
+              .fontSize(9)
           }
           .onClick(() => {
             if (!this.isSwap) {
@@ -119,7 +128,7 @@ struct ForEach003 {
         }, (item: string) => item)
       }
       .id('listForEach010')
-      .height('90%')
+      .layoutWeight(1)
       .onScrollIndex((start: number, end: number) => {
         this.swipeStartIndex = start
       })

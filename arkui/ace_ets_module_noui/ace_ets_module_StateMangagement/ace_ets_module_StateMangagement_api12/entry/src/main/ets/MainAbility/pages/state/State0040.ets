@@ -19,17 +19,20 @@ struct State0040 {
   @State private title: string = 'Hello'
   @State private count: number = 0
 
-
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Text(this.title)
         .id('tvState00401')
-        .onClick(()=>{
+        .height('3%')
+        .fontSize(9)
+        .onClick(() => {
           this.title = 'HelloWorld'
         })
       Text(this.count.toString())
         .id('tvState00402')
-        .onClick(()=>{
+        .height('3%')
+        .fontSize(9)
+        .onClick(() => {
           this.count += 1
         })
     }

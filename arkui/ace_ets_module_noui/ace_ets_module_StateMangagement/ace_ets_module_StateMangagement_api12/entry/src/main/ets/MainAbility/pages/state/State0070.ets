@@ -19,7 +19,7 @@ struct State0070 {
   @State private strArr: string[] = ['red', 'green', 'yellow']
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Text(JSON.stringify(this.strArr))
         .id('tvState0070')
       Text(this.strArr[1])

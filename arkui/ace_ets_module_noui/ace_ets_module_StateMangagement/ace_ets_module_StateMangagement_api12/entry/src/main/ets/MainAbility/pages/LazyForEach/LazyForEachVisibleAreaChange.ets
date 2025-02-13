@@ -52,7 +52,9 @@ struct ANode {
   build() {
     Column() {
       Text('啊啊啊啊啊啊啊啊')
-    }.height(200)
+        .fontSize(9)
+        .height('7%')
+    }
     .onVisibleAreaChange([0.5], (isVisible: boolean, currentRatio: number) => {
       console.info('Node展示状态:', isVisible, '当前比率:', currentRatio)
       this.visibleAreaChangeCount++
@@ -71,7 +73,7 @@ struct LazyForEachVisibleAreaChangeDemo {
   @StorageLink('visibleAreaChangeCount') visibleAreaChangeCount: number = 0
 
   aboutToAppear(): void {
-    for (let index = 0; index < 30; index++) {
+    for (let index = 0; index < 300; index++) {
       this.dataSource.pushData(`标题${index}`)
     }
   }
@@ -81,18 +83,23 @@ struct LazyForEachVisibleAreaChangeDemo {
       Button('scrollTo (0,800)')
         .id('scroll_to_800')
         .height('10%')
+        .fontSize(9)
         .onClick(() => {
-          this.scroller.scrollTo({ xOffset: 0, yOffset: 800 })
+          this.scroller.scrollToIndex(11)
         })
 
       Button('scrollTo (0,1800)')
         .id('scroll_to_1800')
+        .fontSize(9)
         .height('10%')
         .onClick(() => {
-          this.scroller.scrollTo({ xOffset: 0, yOffset: 1800 })
+          this.scroller.scrollToIndex(100)
         })
 
-      Text(this.visibleAreaChangeCount.toString()).id('text_visible_area_change_count')
+      Text(this.visibleAreaChangeCount.toString())
+        .id('text_visible_area_change_count')
+        .height('3%')
+        .fontSize(9)
 
       List({ scroller: this.scroller }) {
         LazyForEach(this.dataSource, (item: string, idex: number) => {
@@ -102,10 +109,8 @@ struct LazyForEachVisibleAreaChangeDemo {
             } else {
               Row() {
                 Text(item)
-                  .height(100)
-                  .width('100%')
-                  .textAlign(TextAlign.Center)
-                  .padding({ top: 30, bottom: 30 })
+                  .fontSize(9)
+                  .height('4%')
               }
             }
           }

@@ -50,12 +50,17 @@ struct RepeatObservedV2Nest {
 
   build() {
     Column() {
+
+      Button('click to change No.2 data to 100').id('button2')
+        .onClick(() => {
+          this.arr[2].msg.name = '100';
+        })
       List() {
         Repeat(this.arr)
           .each((ri: RepeatItem<OuterClass>) => {
             ListItem() {
               Text(ri.item.msg.name)
-                .fontSize(16)
+                .fontSize(9)
                 .textAlign(TextAlign.Center)
                 .size({ height: 100, width: '100%' })
                 .onClick(() => {
@@ -63,7 +68,6 @@ struct RepeatObservedV2Nest {
                 })
                 .id('repeat1_V2N' + ri.index)
             }
-            .margin(10)
             .borderRadius(10)
             .backgroundColor('#FFF')
           })
@@ -72,13 +76,9 @@ struct RepeatObservedV2Nest {
           })
       }
       .width('100%')
-      .height('50%')
+      .layoutWeight(1)
       .backgroundColor('#DCDCDC')
 
-      Button('click to change No.2 data to 100').id('button2')
-        .onClick(() => {
-          this.arr[2].msg.name = '100';
-        })
     }
   }
 }

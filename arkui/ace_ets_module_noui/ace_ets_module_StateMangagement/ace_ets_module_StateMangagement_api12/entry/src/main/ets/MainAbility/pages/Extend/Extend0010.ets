@@ -27,7 +27,7 @@ struct FancyUse {
   @State label: string = 'Hello World'
 
   build() {
-    Row({ space: 10 }) {
+    Row() {
       Text(`${this.label}`)
         .id('tv_extend0010Id')
         .pictureRendering(100, Color.Blue)
@@ -37,6 +37,6 @@ struct FancyUse {
       Text(`${this.label}`)
         .id('tv_extend0030Id')
         .pictureRendering(300, Color.Orange)
-    }.margin('20%')
+    }
   }
 }

@@ -59,6 +59,6 @@ struct CustomDialogUser {
       Button('parent_change').onClick(() => {
         this.textValue = 'hello world'
       }).key('parent_change')
-    }.width('100%').margin({ top: 5 })
+    }.width('100%')
   }
 }

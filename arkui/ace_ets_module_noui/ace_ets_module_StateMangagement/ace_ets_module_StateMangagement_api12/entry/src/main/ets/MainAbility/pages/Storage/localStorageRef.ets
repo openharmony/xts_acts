@@ -28,20 +28,18 @@ struct localStorageRef {
   build() {
     Column() {
       Text(`${this.content}`)
-        .fontSize(30)
+        .fontSize(9)
         .fontWeight(FontWeight.Bold)
 
       Button(`ref:${storageBK.get("PropBBK")}`)
         .id('local_ref_1')
-        .margin(15)
         .fontWeight(FontWeight.Bold)
-        .fontSize(20)
+        .fontSize(9)
 
       Button(`setAndRef:${this.refA2Value}`)
         .id('local_ref_2')
-        .margin(15)
         .fontWeight(FontWeight.Bold)
-        .fontSize(20)
+        .fontSize(9)
 
     }
     .width('100%')
