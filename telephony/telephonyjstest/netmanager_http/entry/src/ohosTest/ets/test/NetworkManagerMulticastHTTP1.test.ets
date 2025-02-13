@@ -18,7 +18,7 @@ import http from '@ohos.net.http';
 import display from '@ohos.display';
 
 let httpRequest = http.createHttp();
-let url = "http://www.baidu.com";
+let url = "http://httpbin.org/anything";
 
 let httpRequestOptions_http3:http.HttpRequestOptions = {
     method: http.RequestMethod.POST,
