@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -34,9 +34,9 @@ export default function ActsContextProcessNameTest() {
     })
 
     /**
-     * @tc.number uiAbilityContext_processName_0100
-     * @tc.name uiAbilityContext_processName_0100
-     * @tc.desc uiAbilityContext calls the processName property
+     * @tc.number : SUB_Ability_AbilityRuntime_processName_0100
+     * @tc.name : SUB_Ability_AbilityRuntime_processName_0100
+     * @tc.desc : UIAbilityContext calls the processName property
      * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
@@ -58,9 +58,9 @@ export default function ActsContextProcessNameTest() {
     });
 
     /**
-     * @tc.number applicationContext_processName_0100
-     * @tc.name applicationContext_processName_0100
-     * @tc.desc applicationContext obtained by context calls the processName property
+     * @tc.number : SUB_Ability_AbilityRuntime_processName_0200
+     * @tc.name : SUB_Ability_AbilityRuntime_processName_0200
+     * @tc.desc : applicationContext obtained by context calls the processName property
      * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
@@ -83,9 +83,9 @@ export default function ActsContextProcessNameTest() {
     });
 
     /**
-     * @tc.number applicationContext_processName_0200
-     * @tc.name applicationContext obtained by application calls the processName property
-     * @tc.desc
+     * @tc.number : SUB_Ability_AbilityRuntime_processName_0300
+     * @tc.name : SUB_Ability_AbilityRuntime_processName_0300
+     * @tc.desc : applicationContext obtained by application calls the processName property
      * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
@@ -106,9 +106,9 @@ export default function ActsContextProcessNameTest() {
     });
 
     /**
-     * @tc.number SUB_Ability_Ability_Runtime_processName_0400
-     * @tc.name SUB_Ability_Ability_Runtime_processName_0400
-     * @tc.desc abilityStage calls the processName property
+     * @tc.number : SUB_Ability_AbilityRuntime_processName_0400
+     * @tc.name : SUB_Ability_AbilityRuntime_processName_0400
+     * @tc.desc : abilityStage calls the processName property
      * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
@@ -130,9 +130,9 @@ export default function ActsContextProcessNameTest() {
     });
 
     /**
-     * @tc.number SUB_Ability_Ability_Runtime_processName_1500
-     * @tc.name SUB_Ability_Ability_Runtime_processName_1500
-     * @tc.desc startAbility to start another application process , get processName
+     * @tc.number : SUB_Ability_AbilityRuntime_processName_1500
+     * @tc.name : SUB_Ability_AbilityRuntime_processName_1500
+     * @tc.desc : startAbility to start another application process , get processName
      * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
@@ -173,9 +173,9 @@ export default function ActsContextProcessNameTest() {
     });
 
     /**
-     * @tc.number SUB_Ability_Ability_Runtime_processName_3200
-     * @tc.name SUB_Ability_Ability_Runtime_processName_3200
-     * @tc.desc createModeAreaContext obtain processName
+     * @tc.number : SUB_Ability_AbilityRuntime_processName_3200
+     * @tc.name : SUB_Ability_AbilityRuntime_processName_3200
+     * @tc.desc : createModeAreaContext obtain processName
      * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
