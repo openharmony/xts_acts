@@ -34,45 +34,46 @@ struct StateArrayObject {
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, MyObject]) => {
-          Text(`Item${item[1].id}: ${item[1].value} index: ${item[0]}`).fontSize(30)
-            .id('stateArrayObject_value_' + item[0])
-          Divider()
-        })
 
-        Button('init array').id('stateArrayObject_init')
+        Button('init array').id('stateArrayObject_init').height('5%')
           .onClick(() => {
             this.message = [
               new MyObject(4, 'Object 4'),
               new MyObject(5, 'Object 5'),
               new MyObject(6, 'Object 6')
             ]
-          }).margin(10)
+          })
 
-        Button('add new object').id('stateArrayObject_add')
+        Button('add new object').id('stateArrayObject_add').height('5%')
           .onClick(() => {
             let lastIndex = this.message.length - 1
             let newId = this.message[lastIndex].id + 1
             this.message.push(new MyObject(newId, `Object ${newId}`))
-          }).margin(10)
+          })
 
-        Button('clear').id('stateArrayObject_clear')
+        Button('clear').id('stateArrayObject_clear').height('5%')
           .onClick(() => {
             this.message = []
             if (Array.from(this.message.entries())) {
               this.message.push(new MyObject(0, 'Object 0'))
             }
-          }).margin(10)
+          })
 
-        Button('replace the first one').id('stateArrayObject_replace')
+        Button('replace the first one').id('stateArrayObject_replace').height('5%')
           .onClick(() => {
             this.message[0] = new MyObject(6, 'Object 6')
-          }).margin(10)
+          })
 
-        Button('delete the first one').id('stateArrayObject_delete')
+        Button('delete the first one').id('stateArrayObject_delete').height('5%')
           .onClick(() => {
             this.message.shift()
-          }).margin(10)
+          })
+
+        ForEach(Array.from(this.message.entries()), (item: [number, MyObject]) => {
+          Text(`Item${item[1].id}: ${item[1].value} index: ${item[0]}`).fontSize(9)
+            .id('stateArrayObject_value_' + item[0]).height('5%')
+          Divider()
+        })
       }
       .width('100%')
     }

@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -34,21 +34,26 @@ struct ArrayTrack {
     Column() {
       Text(`length:${this.arr.numberArr.length}`)
         .id('ArrayTrack_1A')
-        .fontSize(40)
+        .height('3%')
+        .fontSize(9)
       Divider()
       if (this.arr.numberArr.length >= 3) {
         Text(`${this.arr.numberArr[0]}`)
-          .fontSize(40)
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
             this.arr.numberArr[0]++;
           })
         Text(`${this.arr.numberArr[1]}`)
-          .fontSize(40)
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
             this.arr.numberArr[1]++;
           })
         Text(`${this.arr.numberArr[2]}`)
-          .fontSize(40)
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
             this.arr.numberArr[2]++;
           })
@@ -58,52 +63,80 @@ struct ArrayTrack {
 
       ForEach(this.arr.numberArr, (item: number, index: number) => {
         Text(`${index} ${item}`)
-          .fontSize(40)
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
       })
 
       Button('push')
         .id('ArrayTrack_2A')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           this.arr.numberArr.push(50);
         })
 
       Button('pop')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           this.arr.numberArr.pop();
         })
 
       Button('shift')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           this.arr.numberArr.shift();
         })
 
       Button('splice')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           this.arr.numberArr.splice(1, 0, 60);
         })
 
-
       Button('unshift')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           this.arr.numberArr.unshift(100);
         })
 
       Button('copywithin')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           this.arr.numberArr.copyWithin(0, 1, 2);
         })
 
       Button('fill')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           this.arr.numberArr.fill(0, 2, 4);
         })
 
       Button('reverse')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           this.arr.numberArr.reverse();
         })
 
       Button('sort')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           this.arr.numberArr.sort();
         })

@@ -32,7 +32,6 @@ struct Page12 {
   count: number = 0
   age: number = 20 // only age changed，will not recalculate
 
-
   @Computed
   get fullName() {
     console.info('======comuted----------')
@@ -45,41 +44,70 @@ struct Page12 {
     return this.info.name1 + ' ' + this.info.age1
   }
 
-  @Monitor('fullName') onFullNameMonitor(mon: IMonitor) {
+  @Monitor('fullName')
+  onFullNameMonitor(mon: IMonitor) {
     console.log('fullname changed from ' + mon.value()?.before + ' to ' + mon.value()?.now)
   }
 
   rerenderText(): number {
     console.info(`---- count: ${this.count++}`);
-    return 30;
+    return 9;
   }
 
   build() {
     Column() {
-      Text(this.lastName + ': ' + this.fullName).fontSize(this.rerenderText()).id('computedText')
-      Text(this.fullName + ' 222').id('computedText1')
-      Button('Local').onClick(() => {
-        this.lastName += '0'
-        this.lastName += '1'
-      }).id('computedButton1')
-      Button('未被local和Trace ').onClick(() => {
-        this.age++
-      }).id('computedButton2')
-      Text(this.info.name1).id('computedText2')
-      Text(this.info.age1 + '').id('computedText3')
-      Button('Trace').onClick(() => {
-        this.info.name1 += '1'
-        this.info.age1 += 0
-      }).id('computedButton3')
-      Button('多次改变状态变量，改变1000次，如果相加不变').id('computedButton4').onClick(() => {
-        for (let i = 0; i < 1000; i++) {
-          if (i = 999) {
-            this.lastName = 'world'
-          } else {
-            this.lastName = 'aaa'
+      Text(this.lastName + ': ' + this.fullName)
+        .fontSize(this.rerenderText())
+        .id('computedText')
+        .height('3%')
+      Text(this.fullName + ' 222')
+        .id('computedText1')
+        .height('3%')
+        .fontSize(9)
+      Button('Local')
+        .id('computedButton1')
+        .height('3%')
+        .fontSize(9)
+        .onClick(() => {
+          this.lastName += '0'
+          this.lastName += '1'
+        })
+      Button('未被local和Trace ')
+        .id('computedButton2')
+        .height('3%')
+        .fontSize(9)
+        .onClick(() => {
+          this.age++
+        })
+      Text(this.info.name1)
+        .id('computedText2')
+        .height('3%')
+        .fontSize(9)
+      Text(this.info.age1 + '')
+        .id('computedText3')
+        .height('3%')
+        .fontSize(9)
+      Button('Trace')
+        .id('computedButton3')
+        .height('3%')
+        .fontSize(9)
+        .onClick(() => {
+          this.info.name1 += '1'
+          this.info.age1 += 0
+        })
+      Button('MoreChange')
+        .id('computedButton4')
+        .height('3%')
+        .fontSize(9)
+        .onClick(() => {
+          for (let i = 0; i < 1000; i++) {
+            if (i = 999) {
+              this.lastName = 'world'
+            } else {
+              this.lastName = 'aaa'
+            }
           }
-        }
-      })
+        })
     }
   }
 }

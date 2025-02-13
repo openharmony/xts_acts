@@ -36,17 +36,17 @@ struct StateClassObject {
 
   build() {
     Row() {
-      Column({ space: 20 }) {
-        Text(`${ this.title.value}`).fontSize(20).margin(15)
+      Column() {
+        Text(`${ this.title.value}`).fontSize(9).height('5%')
           .id("text_Object")
-        Button(`Click to change Object1`)
+        Button(`Click to change Object1`).height('5%')
           .id("state_Object1")
           .onClick(() => {
             // 动态修改Class类型赋值
             // @State变量的更新将触发上面的Text组件内容更新
             this.title = new scoModel('Hi', new scoClassA('ArkUI'));
           })
-        Button(`Click to change Object2`)
+        Button(`Click to change Object2`).height('5%')
           .id("state_Object2")
           .onClick(() => {
             // 动态修改Class父组件属性值
@@ -54,9 +54,9 @@ struct StateClassObject {
             this.title.value = "Hello ArkUI"
         })
 
-        Text(`${ this.title.name.value}`).fontSize(20).margin(5)
+        Text(`${ this.title.name.value}`).fontSize(9).height('5%')
           .id("text_Class")
-        Button(`Click to change Class`)
+        Button(`Click to change Class`).height('5%')
           .id("state_Class")
           .onClick(() => {
             // 动态修改Class自组件属性值

@@ -70,7 +70,7 @@ struct pageOneStack1 {
       Column() {
         NavigationContentMsgStack1({ message: this.message, index: this.index })
         Text('cur stack size:' + `${this.navigationInfo.size()}`)
-          .fontSize(30)
+          .fontSize(9)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .onClick(() => {
             this.navigationInfo.pushPathByName('pageTwo', null);
@@ -101,7 +101,7 @@ struct pageTwoStack1 {
       Column() {
         NavigationContentMsgStack1({ message: this.message, index: this.index })
         Text('cur stack size:' + `${this.navigationInfo.size()}`)
-          .fontSize(30)
+          .fontSize(9)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .onClick(() => {
             this.navigationInfo.pushPathByName('pageThree', null);
@@ -132,15 +132,15 @@ struct pageThreeStack1 {
       Column() {
         NavigationContentMsgStack1({ message: this.message, index: this.index })
         Text('cur stack size:' + `${this.navigationInfo.size()}`)
-          .fontSize(30)
+          .fontSize(9)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
-          .height(40)
+          .height('3%')
           .onClick(() => {
             this.navigationInfo.pushPathByName('pageOne', null);
           })
           .id('NextPage3')
         Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
-          .height(40)
+          .height('3%')
           .onClick(() => {
             this.navigationInfo.pop();
           })
@@ -167,10 +167,10 @@ struct NavigationContentMsgStack1 {
   build() {
     Column() {
       Text('msg:' + `${this.message}`)
-        .fontSize(30)
+        .fontSize(9)
         .fontWeight(FontWeight.Bold)
       Text('index:' + `${this.index}`)
-        .fontSize(30)
+        .fontSize(9)
         .fontWeight(FontWeight.Bold)
     }
   }

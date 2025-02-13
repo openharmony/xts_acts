@@ -29,17 +29,22 @@ struct RepeatForEachNumberBool {
   }
 
   build() {
-    Column({ space: 10 }) {
-      List({ initialIndex: 10, space: 10 }) {
+    Column() {
+      Button('change No.5 data').id('changeBtn')
+        .onClick(() => {
+          this.dataList1[5] = 999
+          this.dataList2[5] = this.dataList2[5] ? false : true
+        })
+      List({ initialIndex: 10 }) {
         Repeat<number>(this.dataList1)
           .each((obj: RepeatItem<number>) => {
             ListItem() {
               Row() {
                 Text(obj.item.toString()).id('repeat1_NM' + obj.index.toString())
-                  .fontSize(15)
+                  .fontSize(9)
                 ForEach(this.dataList2, (item: boolean) => {
                   Text('' + item).id('foreach1_NM' + obj.index.toString())
-                    .fontSize(15)
+                    .fontSize(9)
                     .fontColor(Color.Orange)
                 })
               }
@@ -52,13 +57,8 @@ struct RepeatForEachNumberBool {
       .cachedCount(1)
       .border({ width: 1 })
       .width('90%')
-      .height('50%')
+      .layoutWeight(1)
 
-      Button('change No.5 data').id('changeBtn')
-        .onClick(() => {
-          this.dataList1[5] = 999
-          this.dataList2[5] = this.dataList2[5] ? false : true
-        })
     }
     .height('100%')
     .justifyContent(FlexAlign.Center)

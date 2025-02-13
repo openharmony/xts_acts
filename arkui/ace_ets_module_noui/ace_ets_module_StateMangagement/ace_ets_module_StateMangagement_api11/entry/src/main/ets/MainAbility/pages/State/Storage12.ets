@@ -30,22 +30,22 @@ struct Storage12 {
 
 
   build() {
-    Column({ space: 20 }) {
+    Column() {
 
-      Text(this.text).key('Storage12Content')
+      Text(this.text).key('Storage12Content').height('5%')
 
       //Size获取AppStorage中存在键值对的个数
       Button('获取键值对的个数')
         .onClick(() => {
           this.text = AppStorage.Size() + ''
-      }).key('Storage12Button111')
+      }).key('Storage12Button111').height('5%')
 
-      Text(`appKeys: ${Object.keys(LocalStorage12)}`).id("Storage12Text1")
+      Text(`appKeys: ${Object.keys(LocalStorage12)}`).id("Storage12Text1").height('5%')
 
       //IsMutable返回属性键值key对应的属性是否可变，可变返回true （不可变返回false，没有实现，暂时全部返回true）
       Button('IsMutable').onClick(() => {
         this.text = AppStorage.IsMutable('PropA') + ''
-      }).key('Storage12Button2')
+      }).key('Storage12Button2').height('5%')
 
     }
   }

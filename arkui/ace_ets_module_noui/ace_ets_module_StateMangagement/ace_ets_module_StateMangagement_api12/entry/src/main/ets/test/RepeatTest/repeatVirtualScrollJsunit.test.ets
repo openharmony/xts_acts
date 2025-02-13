@@ -90,10 +90,11 @@ export default function repeatVirtualScrollJsunit() {
       console.info('repeatVirtualScrollJsunit_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('init_repeat'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'))
+      let button = await scrollBar.scrollSearch(ON.id('init_repeat'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let button1 = await driver.findComponent(ON.id('scroll_data1'));
+      let button1 = await scrollBar.scrollSearch(ON.id('scroll_data1'));
       await button1.click();
       await CommonFunc.sleep(1000);
 
@@ -105,8 +106,8 @@ export default function repeatVirtualScrollJsunit() {
       console.info('[repeatVirtualScrollJsunit_0200] END');
       done();
     });
-	
-    
+
+
     /* *
     * @tc.number: repeatVirtualScrollJsunit_0300
     * @tc.name  : repeatVirtualScrollJsunit_0300
@@ -119,24 +120,25 @@ export default function repeatVirtualScrollJsunit() {
       console.info('repeatVirtualScrollJsunit_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('init_repeat'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'))
+      let button = await scrollBar.scrollSearch(ON.id('init_repeat'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let button1 = await driver.findComponent(ON.id('repeat_modify'));
+      let button1 = await scrollBar.scrollSearch(ON.id('repeat_modify'));
       await button1.click();
       await CommonFunc.sleep(1000);
-  
+
       let strJson = getInspectorByKey('text7');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[repeatVirtualScrollJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[repeatVirtualScrollJsunit_0300] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("7:333eachMessage666");
       console.info('[repeatVirtualScrollJsunit_0300] END');
-        
+
       done();
     });
 
-      
+
     /* *
     * @tc.number: repeatVirtualScrollJsunit_0400
     * @tc.name  : repeatVirtualScrollJsunit_0400
@@ -149,13 +151,14 @@ export default function repeatVirtualScrollJsunit() {
       console.info('repeatVirtualScrollJsunit_0400 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('init_repeat'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'))
+      let button = await scrollBar.scrollSearch(ON.id('init_repeat'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let button1 = await driver.findComponent(ON.id('repeat_3'));
+      let button1 = await scrollBar.scrollSearch(ON.id('repeat_3'));
       await button1.click();
       await CommonFunc.sleep(1000);
-  
+
       let strJson = getInspectorByKey('text5');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[repeatVirtualScrollJsunit_0400] component obj is: " + JSON.stringify(obj));
@@ -165,7 +168,7 @@ export default function repeatVirtualScrollJsunit() {
       done();
     });
 
-      
+
     /* *
     * @tc.number: repeatVirtualScrollJsunit_0500
     * @tc.name  : repeatVirtualScrollJsunit_0500
@@ -178,13 +181,14 @@ export default function repeatVirtualScrollJsunit() {
       console.info('repeatVirtualScrollJsunit_0500 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('init_repeat'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'))
+      let button = await scrollBar.scrollSearch(ON.id('init_repeat'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let button1 = await driver.findComponent(ON.id('repeat_2'));
+      let button1 = await scrollBar.scrollSearch(ON.id('repeat_2'));
       await button1.click();
       await CommonFunc.sleep(1000);
-  
+
       let strJson = getInspectorByKey('text7');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[repeatVirtualScrollJsunit_0200] component obj is: " + JSON.stringify(obj));

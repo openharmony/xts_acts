@@ -141,14 +141,14 @@ struct RepeatLazyForEachBoolean {
   }
 
   build() {
-    Column({ space: 10 }) {
-      List({ initialIndex: 10, space: 10 }) {
+    Column() {
+      List({ initialIndex: 10 }) {
 
         ListItem() {
           Row() {
             LazyForEach(this.dataSource[this.index], (item: string) => {
               Text('' + item).id('lazyForeach_singleB' + `${this.index}`)
-                .fontSize(15)
+                .fontSize(9)
                 .fontColor(Color.Orange)
             })
           }
@@ -157,7 +157,6 @@ struct RepeatLazyForEachBoolean {
       .cachedCount(1)
       .border({ width: 1 })
       .width('90%')
-      .height('70%')
     }
     .height('100%')
     .justifyContent(FlexAlign.Center)

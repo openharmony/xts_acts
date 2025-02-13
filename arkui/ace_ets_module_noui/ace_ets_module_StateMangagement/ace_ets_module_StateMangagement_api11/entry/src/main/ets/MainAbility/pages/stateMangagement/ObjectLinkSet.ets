@@ -45,7 +45,7 @@ struct ObjectLinkSetNested {
   build() {
     Row() {
       Column() {
-        Button('init set').id("ObtLinkSet_init")
+        Button('init set').id("ObtLinkSet_init").height('5%')
           .onClick(() => {
             this.message.a = new MySet("Set", [1, 2, 3])
           })
@@ -66,32 +66,34 @@ struct ObjectLinkSetNestedChild {
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.mySet.entries()), (item: [number, string]) => {
-          Text(`${item}`)
-            .fontSize(20)
-            .id(`ObtLinkSet_value_${item[0]}`)
-          Divider()
-        })
-        Button('set new one').id("ObtLinkSet_set")
+
+        Button('set new one').id("ObtLinkSet_set").height('5%')
           .onClick(() => {
             this.mySet.add(5)
           })
-          .margin(10)
+          
 
-        Button('clear').id("ObtLinkSet_clear")
+        Button('clear').id("ObtLinkSet_clear").height('5%')
           .onClick(() => {
             this.mySet.clear()
             if (Array.from(this.mySet.entries())) {
               this.mySet.add(0)
             }
           })
-          .margin(10)
+          
 
-        Button('delete the first one')
+        Button('delete the first one').height('5%')
           .id("ObtLinkSet_delete")
           .onClick(() => {
             this.mySet.delete(0)
           })
+
+        ForEach(Array.from(this.mySet.entries()), (item: [number, string]) => {
+          Text(`${item}`).height('5%')
+            .fontSize(9)
+            .id(`ObtLinkSet_value_${item[0]}`)
+          Divider()
+        })
       }
       .width('100%')
     }

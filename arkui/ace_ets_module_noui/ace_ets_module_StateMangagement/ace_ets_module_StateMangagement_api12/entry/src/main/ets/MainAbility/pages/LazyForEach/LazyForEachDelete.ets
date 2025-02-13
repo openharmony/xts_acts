@@ -158,18 +158,19 @@ struct RepeatLazyForEachString {
   }
 
   build() {
-    Column({ space: 10 }) {
-      List({ initialIndex: 10, space: 10 }) {
+    Column() {
+      List({ initialIndex: 10 }) {
         Repeat<string>(this.dataList)
           .each((obj: RepeatItem<string>) => {
             ListItem() {
               Row() {
                 Text(obj.item).id('repeat_delete' + `${obj.index}`)
-                  .fontSize(15)
+                  .height('3%')
+                  .fontSize(9)
                 LazyForEach(this.dataSource[obj.index], (item: string) => {
                   Text('' + item).id('lazyForeach_delete' + `${obj.index}`)
-                    .fontSize(15)
-                    .fontColor(Color.Orange)
+                    .height('3%')
+                    .fontSize(9)
                 })
               }
             }
@@ -181,10 +182,13 @@ struct RepeatLazyForEachString {
 
       .cachedCount(1)
       .border({ width: 1 })
-      .width('90%')
-      .height('70%')
+      .layoutWeight(1)
 
-      Button('Delete Data').id('deleteButton')
+      Button('Delete Data')
+        .id('deleteButton')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           let lastIndex = this.dataSource.length - 1;
           this.dataSource[1].deleteData(0)
@@ -196,12 +200,6 @@ struct RepeatLazyForEachString {
           this.dataSource[this.dataSource.length-1].addData(0, index.toString() + count + type)
         })
     }
-    .height('60%')
     .justifyContent(FlexAlign.Center)
   }
 }
-
-
-
-
-

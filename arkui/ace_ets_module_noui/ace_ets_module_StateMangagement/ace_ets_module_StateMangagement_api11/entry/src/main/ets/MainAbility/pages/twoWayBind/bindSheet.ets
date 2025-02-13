@@ -21,22 +21,22 @@ struct SheetTransitionExample {
   @Builder myBuilder() {
     Column() {
       Button('change height')
-        .margin(10)
-        .fontSize(20)
+        .height('5%')
+        .fontSize(9)
         .onClick(() => {
           this.sheetHeight = 500;
         })
 
       Button('Set Illegal height')
-        .margin(10)
-        .fontSize(20)
+        .height('5%')
+        .fontSize(9)
         .onClick(() => {
           this.sheetHeight = -1;
         })
 
       Button('close modal 1')
-        .margin(10)
-        .fontSize(20)
+        .height('5%')
+        .fontSize(9)
         .onClick(() => {
           this.isShow = false;
         })
@@ -53,8 +53,8 @@ struct SheetTransitionExample {
           this.isShow = true
         })
         .id('bindSheetButton')
-        .fontSize(20)
-        .margin(10)
+        .fontSize(9)
+        .height('5%')
         .bindSheet($$this.isShow, this.myBuilder(), {
           height: this.sheetHeight,
           backgroundColor: Color.Green,
@@ -71,7 +71,7 @@ struct SheetTransitionExample {
             console.log('BindSheet onDisappear.')
           }
         })
-      Text(`isShow: ${this.isShow}`).id('bindSheetText')
+      Text(`isShow: ${this.isShow}`).id('bindSheetText').height('5%')
     }
     .justifyContent(FlexAlign.Center)
     .width('100%')

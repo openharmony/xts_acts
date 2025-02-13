@@ -42,26 +42,29 @@ struct ObjectLinkFar2 {
   build() {
     Column() {
       Button("Reset").id("ObjectLinkFar2_reset")
+        .height('5%')
         .onClick(() => {
           this.classA = new ClassAN(new ClassBN(5))
           this.count = 5
         })
       // 注意：@State无法监听到类嵌套类的属性，@ObjectLink可以监听到类嵌套@Observed修饰的类的属性
-      Text('父组件').fontSize(24).margin({ top: 20 })
+      Text('父组件').fontSize(9).height('5%')
       Text(`ClassBN + 1: ${this.classA.classB.numB}`).key("farClassBN")
-        .fontSize(20)
+        .height('5%')
+        .fontSize(9)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
           this.classA.classB.numB += 1
-        }).margin(10)
+        })
       Text(`ClassBN 赋值3: ${this.classA.classB.numB}`).key("farClassBN3")
-        .fontSize(20)
+        .height('5%')
+        .fontSize(9)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
           this.classA.classB.numB = 3
         })
 
-      Text('子组件').fontSize(24).margin({ top: 20,bottom:10 })
+      Text('子组件').fontSize(9).height('5%')
 
       ObjectLinkSon2({ classB: this.classA.classB })
     }
@@ -77,7 +80,8 @@ struct ObjectLinkSon2 {
   build() {
     Column() {
       Text(`ClassBN的numB值: ${this.classB.numB}`).key("sonClassBN")
-        .fontSize(20)
+        .height('5%')
+        .fontSize(9)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
           this.classB.numB += 1

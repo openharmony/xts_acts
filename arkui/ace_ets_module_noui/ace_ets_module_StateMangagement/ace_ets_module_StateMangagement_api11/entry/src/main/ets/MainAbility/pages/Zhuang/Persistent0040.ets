@@ -43,10 +43,10 @@ struct Persistent0040 {
   boolean | Set<number> | Map<string, number> | Date | string = new ClassPS0040(0)
 
   build() {
-    Column({ space: 15 }) {
-      Text('value:' + this.ps0040)
+    Column() {
+      Text('value:' + this.ps0040).height('5%')
         .id('tvPS0040')
-      Button('Change')
+      Button('Change').height('5%')
         .id('btnChangePS0040')
         .onClick(() => {
           this.ps0040 = new ClassPS0040(10)
@@ -62,7 +62,7 @@ struct Persistent0040 {
           this.ps0040 = new Date('2024/01/02')
           this.ps0040 = 'HelloArkUI'
         })
-      Button('DelPS')
+      Button('DelPS').height('5%')
         .id('btnDelPS0040')
         .onClick(()=>{
           PersistentStorage.deleteProp('PS0040')

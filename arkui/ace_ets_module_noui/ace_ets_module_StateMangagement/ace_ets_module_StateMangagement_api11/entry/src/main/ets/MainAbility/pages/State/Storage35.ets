@@ -27,11 +27,11 @@ struct LocalStorage35 {
   @State link1Date2: number | undefined = 0;
 
   build() {
-    Column({ space: 10 }) {
-      Text('' + link353).id("text35_link")
-      Text('' + link352).id("text35_link2")
-      Text('' + this.link1Date2).id("text35_link1Date2")
-      Button(`click`).margin(10).width('100%')
+    Column() {
+      Text('' + link353).id("text35_link").height('5%')
+      Text('' + link352).id("text35_link2").height('5%')
+      Text('' + this.link1Date2).id("text35_link1Date2").height('5%')
+      Button(`click`).width('100%').height('5%')
         .key("Storage35Btn")
         .onClick(() => {
           this.link1Date2 = this.storLink1

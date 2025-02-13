@@ -23,7 +23,7 @@ struct StateMap0010 {
   }
 
   build() {
-    Column({space: 5}) {
+    Column() {
       Text('Hello'+Array.from(this.map.values()).toString()).id('tvStateMap0010Title')
       Button('Set')
         .id('btnStateMap0010Set')

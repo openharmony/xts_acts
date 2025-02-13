@@ -123,7 +123,6 @@ struct PatternLockPage {
 
       PatternLock(this.patternLockController)
         .key('PatternLock')
-        .sideLength(96*3)
         .circleRadius(6)
         .regularColor($r('sys.color.ohos_id_color_foreground'))
         .selectedColor($r('sys.color.ohos_id_color_foreground'))

@@ -85,7 +85,7 @@ export default function RepeatGridBoolean() {
       console.info('[RepeatGridBoolean_001] END');
       await CommonFunc.sleep(1000);
 
-      let btn: Component = await driver.findComponent(ON.id('Button1'));
+      let btn: Component = await driver.findComponent(ON.id('Button1_GB'));
       await btn.click();
       await CommonFunc.sleep(1000);
 
@@ -96,7 +96,7 @@ export default function RepeatGridBoolean() {
       console.info('[RepeatGridBoolean_001] END');
       await CommonFunc.sleep(1000);
 
-      let btn1: Component = await driver.findComponent(ON.id('Button2'));
+      let btn1: Component = await driver.findComponent(ON.id('Button2_GB'));
       await btn1.click();
       await CommonFunc.sleep(1000);
 

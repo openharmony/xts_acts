@@ -50,8 +50,8 @@ struct LocalTest {
   }
 
   build() {
-    Column({ space: 5 }) {
-      Column({ space: 3 }) {
+    Column() {
+      Column() {
         Text(this.message)
           .id('tvParamMsg')
           .onClick(() => {
@@ -64,7 +64,7 @@ struct LocalTest {
         .onClick(() => {
           this.countJoint = 1
         })
-      Column({ space: 3 }) {
+      Column() {
         Text(this.tvArr[0])
           .id('tvArr')
           .onClick(() => {
@@ -96,7 +96,7 @@ struct LocalTest {
         .onClick(()=> {
           this.classB.name = 'tvTraceName'
         })
-      Column({space: 3}) {
+      Column() {
         Text(this.tvArr.length.toString())
           .id('tvAddItem')
           .onClick(()=>{

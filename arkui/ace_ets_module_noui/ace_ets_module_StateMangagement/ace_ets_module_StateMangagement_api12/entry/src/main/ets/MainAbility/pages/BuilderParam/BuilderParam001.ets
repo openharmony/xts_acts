@@ -21,7 +21,7 @@ class Tmp {
 function overBuilder($$: Tmp) {
   Text($$.label + '123').id('Text1')
     .width(400)
-    .height(50)
+    .height('3%')
     .backgroundColor(Color.Green)
 }
 

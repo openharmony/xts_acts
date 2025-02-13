@@ -119,7 +119,8 @@ struct LForEachTest {
         this.message++
       })
         .key('changeMessage')
-      List({ space: 3 }) {
+        .height('5%')
+      List() {
         LazyForEach(this.data, (item: string) => {
           ListItem() {
             FreezeChild({ message: this.message, index: item })
@@ -151,10 +152,11 @@ struct FreezeChild {
   build() {
     Text('message' + `${this.message}, index: ${this.index}`)
       .width('90%')
-      .height(160)
+      // .height(160)
+      .height('5%')
       .backgroundColor(0xAFEEEE)
       .textAlign(TextAlign.Center)
-      .fontSize(30)
+      .fontSize(9)
       .fontWeight(FontWeight.Bold)
   }
 }

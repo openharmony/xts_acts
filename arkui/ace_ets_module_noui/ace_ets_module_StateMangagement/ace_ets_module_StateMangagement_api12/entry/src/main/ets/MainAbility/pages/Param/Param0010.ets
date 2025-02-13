@@ -41,28 +41,28 @@ struct ChildParam0010 {
   @Param readonly strMap: Map<string, string> = new Map()
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Text(this.dataClass.name)
         .id('tvChildParam002011')
-        .fontSize(25)
+        .fontSize(9)
       Text(this.dataClassAll.name)
         .id('tvChildParam002012')
-        .fontSize(25)
+        .fontSize(9)
       Text(this.dataArr[0])
         .id('tvChildParam00202')
-        .fontSize(25)
+        .fontSize(9)
       Text(this.strArr[0])
         .id('tvChildParam00203')
-        .fontSize(25)
+        .fontSize(9)
       Text(Array.from(this.strSet).toString())
         .id('tvChildParam00204')
-        .fontSize(25)
+        .fontSize(9)
       Text(this.strMap.get('key0'))
         .id('tvChildParam00205')
-        .fontSize(25)
+        .fontSize(9)
       Text(this.num.toString())
         .id('tvChildParam00206')
-        .fontSize(25)
+        .fontSize(9)
     }
   }
 }
@@ -87,7 +87,7 @@ struct Param0010 {
   }
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
       Button('Change')
         .id('btnParam0010')
         .onClick(()=>{

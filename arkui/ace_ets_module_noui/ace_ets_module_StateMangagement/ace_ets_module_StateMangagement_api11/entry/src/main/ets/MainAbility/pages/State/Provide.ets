@@ -31,23 +31,28 @@ struct ProvideB {
 
   build() {
     Column() {
-      Text(`reviewVotes ${this.reviewVotes}`).id("ProvideB1")
-      Text(`descent same nickname dif name dif type ${this.c}`).id("ProvideB2")
-      Text(`descent none nickname same name dif type ${this.sad}`).id("ProvideB3")
-      Text(`descent same nickname dif name same type ${this.d}`).id("ProvideB4")
-      Text(`descent same nickname same name same type ${this.b}`).id("ProvideB5")
-      Text(`descent dif nickname dif same type ${this.i}`).id("ProvideB6")
+      Text(`reviewVotes ${this.reviewVotes}`).id("ProvideB1").height('5%')
+      Text(`descent same nickname dif name dif type ${this.c}`).id("ProvideB2").height('5%')
+      Text(`descent none nickname same name dif type ${this.sad}`).id("ProvideB3").height('5%')
+      Text(`descent same nickname dif name same type ${this.d}`).id("ProvideB4").height('5%')
+      Text(`descent same nickname same name same type ${this.b}`).id("ProvideB5").height('5%')
+      Text(`descent dif nickname dif same type ${this.i}`).id("ProvideB6").height('5%')
 
       Button(`reviewVotes ${this.reviewVotes}, give +1`)
+        .height('5%')
         .onClick(() => this.reviewVotes += 1)
         .id("ProvideBReviewVotes")
 
       Row() {
         Button("change a")
+          .height('5%')
+          .width('50%')
           .onClick(() => {
             this.c = "changed"
           }).id("ProvideBChangeA")
         Button("change d")
+          .height('5%')
+          .width('50%')
           .onClick(() => {
             this.sad = "changed"
           }).id("ProvideBChangeD")
@@ -55,14 +60,20 @@ struct ProvideB {
 
       Row() {
         Button("change c")
+          .height('5%')
+          .width('33%')
           .onClick(() => {
             this.d += 1
           }).id("ProvideBChangeC")
         Button("change b")
+          .height('5%')
+          .width('33%')
           .onClick(() => {
             this.b += 1
           }).id("ProvideBChangeB")
         Button("change f")
+          .height('5%')
+          .width('33%')
           .onClick(() => {
             this.f += 1
             this.i += 2
@@ -70,7 +81,7 @@ struct ProvideB {
       }
     }
     .width('100%')
-    .margin(5)
+    
   }
 }
 
@@ -89,35 +100,42 @@ struct ProvideA {
 
   build() {
     Column() {
-      Button("Reset").id("ProvideA_reset")
+      Button("Reset").id("ProvideA_reset").height('5%')
         .onClick(() => {
           this.reviewVotes = 0
           this.b = 0
           this.sad = 0
           this.i = 0
         })
-      Text(`parent descent same nickname ${this.b}`).id("ProvideA1")
-      Text(`parent none nickname same name dif type ${this.sad}`).id("ProvideA2")
-      Text(`multi son single parent ${this.i}`).id("ProvideA3")
+      Text(`parent descent same nickname ${this.b}`).id("ProvideA1").height('5%')
+      Text(`parent none nickname same name dif type ${this.sad}`).id("ProvideA2").height('5%')
+      Text(`multi son single parent ${this.i}`).id("ProvideA3").height('5%')
       Button(`reviewVotes ${this.reviewVotes}, give +1`)
+        .height('5%')
         .onClick(() => this.reviewVotes += 1)
         .id("ProvideAReviewVotes")
       Row() {
         Button("change a")
+          .height('5%')
+          .width('33%')
           .onClick(() => {
             this.b += 1
           }).id("ProvideAChangeA")
         Button("change b")
+          .height('5%')
+          .width('33%')
           .onClick(() => {
             this.sad += 1
           }).id("ProvideAChangeB")
         Button("change f")
+          .height('5%')
+          .width('33%')
           .onClick(() => {
             this.i += 1
           }).id("ProvideAChangeF")
       }
 
-      ProvideB().margin({ top: 20 })
+      ProvideB()
     }
     .width('100%')
   }

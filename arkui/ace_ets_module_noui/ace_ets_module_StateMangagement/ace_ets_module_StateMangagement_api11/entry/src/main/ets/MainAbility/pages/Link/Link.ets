@@ -32,13 +32,15 @@ struct link {
       Scroll() {
         Column() {
           Text(`${this.content}`)
-            .fontSize(50)
+            .fontSize(9)
             .fontWeight(FontWeight.Bold)
-          PlayButton({ stateEffect: $isPlaying })
+            .height('5%')
+          PlayButton({ stateEffect: $isPlaying }).height('5%')
           Button("Button1 stateEffect false", { type: ButtonType.Normal })
             .backgroundColor(Color.Gray)
             .stateEffect(this.isPlaying)
             .key("Button")
+            .height('5%')
         }
       }
     }
@@ -60,6 +62,7 @@ struct PlayButton {
         .backgroundColor(Color.Pink)
         .stateEffect(this.stateEffect)
         .key("Button1")
+        .height('5%')
     }
   }
 }

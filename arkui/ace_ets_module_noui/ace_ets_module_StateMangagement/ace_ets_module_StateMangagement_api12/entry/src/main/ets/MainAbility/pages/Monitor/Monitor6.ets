@@ -57,7 +57,7 @@ struct Monitor6 {
 
   build() {
     Row() {
-      Column({ space: 10 }) {
+      Column() {
         Button(testSample.res1)
           .id('Monitor6_1')
           .onClick(() => {

@@ -93,7 +93,7 @@ struct MakeObserved0300 {
     new ClassMakeObserved0300()))
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Text(this.info.id.toString())
         .id('tvMakeObserved03001')
       Text(this.auto.id.toString())

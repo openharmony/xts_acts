@@ -40,37 +40,37 @@ struct extendTrack {
   @State ccj:Child2=new Child2()
   @State ppj:Parent2=new Parent2()
   build() {
-    Column({space:10}) {
-      Button("Reset").key("extendTrack_reset")
+    Column() {
+      Button("Reset").key("extendTrack_reset").height('5%')
         .onClick(() => {
           this.cc.c1=20
           this.pp.p1=30
           this.ccj.cj1=20
           this.ppj.pj1=30
         })
-      Text('c1='+`${this.cc.c1}`)
+      Text('c1='+`${this.cc.c1}`).height('5%')
         .key('extendTrack_1')
-        .fontSize(50)
+        .fontSize(9)
         .onClick(()=>{
           this.cc.c1= 80
         })
-      Text('p1='+`${this.pp.p1}`)
+      Text('p1='+`${this.pp.p1}`).height('5%')
         .key('extendTrack_2')
-        .fontSize(50)
+        .fontSize(9)
         .onClick(()=>{
           console.log('this.pp.p1',this.pp.p1)
           this.pp.p1 =80
         })
-      Text('cj1='+`${this.ccj.cj1}`)
+      Text('cj1='+`${this.ccj.cj1}`).height('5%')
         .key('extendTrack_3')
-        .fontSize(50)
+        .fontSize(9)
         .onClick(()=>{
           console.log('this.ccj.cj1',this.ccj.cj1)
           this.ccj.cj1= 80
         })
-      Text('pj1='+`${this.ppj.pj1}`)
+      Text('pj1='+`${this.ppj.pj1}`).height('5%')
         .key('extendTrack_4')
-        .fontSize(50)
+        .fontSize(9)
         .onClick(()=>{
           console.log('this.ppj.pj1',this.ppj.pj1)
           this.ppj.pj1 =80

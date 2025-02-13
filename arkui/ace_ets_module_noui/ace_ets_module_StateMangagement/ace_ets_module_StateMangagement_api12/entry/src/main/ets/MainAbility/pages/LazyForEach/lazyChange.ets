@@ -80,7 +80,7 @@ struct MyLazyChange {
   }
 
   build() {
-    Column({space:10}) {
+    Column() {
       Text('change: '+ this.message)
         .id('change_DataType')
 
@@ -91,16 +91,16 @@ struct MyLazyChange {
           this.message = this.data.dataArray[1]
         })
 
-      List({ space: 3 }) {
+      List() {
         LazyForEach(this.data, (item: string, index: number) => {
           ListItem() {
             Row() {
               Text(item)
-                .fontSize(50)
+                .fontSize(9)
                 .onAppear(() => {
                   console.info("appear:" + item)
                 })
-            }.margin({ left: 10, right: 10 })
+            }
           }
 
         }, (item: string) => item)

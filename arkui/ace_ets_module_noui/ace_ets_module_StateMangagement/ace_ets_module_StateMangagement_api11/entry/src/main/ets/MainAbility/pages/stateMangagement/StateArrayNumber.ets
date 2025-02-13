@@ -22,40 +22,41 @@ struct StateArrayNumber {
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
-          Text(`${item[1]} index: ${item[0]}`).fontSize(30).id('stateArrayNumber_value_' + item[0])
-          Divider()
-        })
 
-        Button('init array_number').id('stateArrayNumber_init')
+        Button('init array_number').id('stateArrayNumber_init').height('5%')
           .onClick(() => {
             this.message = this.message = [5, 6, 7, 8, 9]
-          }).margin(10)
+          })
 
-        Button('push new one').id('stateArrayNumber_push')
+        Button('push new one').id('stateArrayNumber_push').height('5%')
           .onClick(() => {
             let lastIndex = this.message.length - 1
             this.message.push(this.message[lastIndex] + 1)
-          }).margin(10)
+          })
 
-        Button('clear').id('stateArrayNumber_clear')
+        Button('clear').id('stateArrayNumber_clear').height('5%')
           .onClick(() => {
             this.message = []
             if (Array.from(this.message.entries())) {
               this.message.push(0)
             }
-          }).margin(10)
+          })
 
-        Button('replace the first one').id('stateArrayNumber_replace')
+        Button('replace the first one').id('stateArrayNumber_replace').height('5%')
           .onClick(() => {
             this.message[0] = 100
-          }).margin(10)
+          })
 
-        Button('delete the first one').id('stateArrayNumber_delete')
+        Button('delete the first one').id('stateArrayNumber_delete').height('5%')
           .onClick(() => {
             this.message.shift()
-          }).margin(10)
+          })
 
+        ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
+          Text(`${item[1]} index: ${item[0]}`).fontSize(9).id('stateArrayNumber_value_' + item[0])
+            .height('5%')
+          Divider()
+        })
       }
       .width('100%')
     }

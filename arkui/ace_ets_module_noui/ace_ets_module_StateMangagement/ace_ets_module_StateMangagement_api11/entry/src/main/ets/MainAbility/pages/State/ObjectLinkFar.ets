@@ -42,27 +42,30 @@ struct ObjectLinkFarClassAAA {
   build() {
     Column() {
       Button("Reset").id("ObjectLinkFarClassAAA_reset")
+        .height('5%')
         .onClick(() => {
           this.classA = new ClassAAA(new ClassBBB(5))
         })
-      Text('父组件').fontSize(24).margin({ top: 20 })
-      Text('父组件会刷新').fontSize(16).margin({ top: 20 }).fontColor('#FF0000')
+      Text('父组件').fontSize(9).height('5%')
+      Text('父组件会刷新').fontSize(9).fontColor('#FF0000').height('5%')
       Text(`ClassAAA的numA值: ${this.classA.numA}`).key("farClassAAA")
-        .fontSize(20)
+        .height('5%')
+        .fontSize(9)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
           this.classA.numA += 1
         })
 
-      Text('父组件不会刷新').fontSize(16).margin({ top: 20 }).fontColor('#FF0000')
+      Text('父组件不会刷新').fontSize(9).fontColor('#FF0000').height('5%')
       Text(`ClassAAA的classBBB: ${this.classA.classB.numB}`).key("farClassBBB")
-        .fontSize(20)
+        .height('5%')
+        .fontSize(9)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
           this.classA.classB.numB += 1
         })
 
-      Text('子组件').fontSize(24).margin({ top: 20 })
+      Text('子组件').fontSize(9).height('5%')
 
       ObjectLinkSonClassBBB({ classB: this.classA.classB })
     }
@@ -79,7 +82,8 @@ struct ObjectLinkSonClassBBB {
     Column() {
 
       Text(`ClassBBB的numB值: ${this.classB.numB}`).key("sonClassBBB")
-        .fontSize(20)
+        .height('5%')
+        .fontSize(9)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
           // 修改值，只会导致 @ObjectLink 装饰的变量所在的组件被刷新

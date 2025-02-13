@@ -23,7 +23,7 @@ struct Index {
       Repeat(this.simpleList)
         .each((item: RepeatItem<string>) => {
           Text(item.item)
-            .fontSize(14)
+            .fontSize(9)
             .key(item.item)
         })
         .key((item: string) => item)
@@ -31,7 +31,7 @@ struct Index {
       Repeat(this.simpleList)
         .each((item: RepeatItem<string>) => {
           Text(item.item)
-            .fontSize(14)
+            .fontSize(9)
             .key(item.item + item.index)
         })
         .key((item: string, index: number) => {

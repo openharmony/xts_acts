@@ -35,8 +35,8 @@ export struct totalCountRepeat {
   private end: number = 1;
 
   build() {
-    Column({ space: 5 }) {
-      List({ space: 20, initialIndex: 3, scroller: this.scroller }) {
+    Column() {
+      List({ initialIndex: 3, scroller: this.scroller }) {
         Repeat(this.ArrayCount.arr)
           .virtualScroll({ totalCount: this.totalCount })
           .templateId((item, index) => {
@@ -61,7 +61,7 @@ export struct totalCountRepeat {
 
       Button(`insert totalCount ${this.totalCount}`)
         .id('total_count')
-        .height(50)
+        .height('3%')
         .onClick(() => {
           // 插入元素，元素位置为屏幕显示的前一个元素
           this.ArrayCount.arr.splice(2, 0, this.totalCount);
@@ -72,6 +72,5 @@ export struct totalCountRepeat {
         })
     }
     .width('100%')
-    .margin({ top: 5 })
   }
 }

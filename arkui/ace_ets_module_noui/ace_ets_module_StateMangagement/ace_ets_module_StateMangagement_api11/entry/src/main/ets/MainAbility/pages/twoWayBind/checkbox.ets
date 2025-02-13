@@ -20,16 +20,16 @@ struct CheckboxExample {
 
   build() {
     Column() {
-      Text(`checkboxselect1: ${this.checkboxselect1}`).id('twoCheckboxText')
-      Text(`checkboxselect2: ${this.checkboxselect2}`).id('twoCheckboxText1')
-      Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
+      Text(`checkboxselect1: ${this.checkboxselect1}`).id('twoCheckboxText').height('5%')
+      Text(`checkboxselect2: ${this.checkboxselect2}`).id('twoCheckboxText1').height('5%')
+      Checkbox({ name: 'checkbox1', group: 'checkboxGroup' }).height('5%')
         .select(true)
         .selectedColor(0xed6f21)
         .shape(CheckBoxShape.CIRCLE)
         .onChange((value: boolean) => {
           console.info('Checkbox1 change is' + value)
         })
-      Checkbox({ name: 'checkbox2', group: 'checkboxGroup' })
+      Checkbox({ name: 'checkbox2', group: 'checkboxGroup' }).height('5%')
         .select($$this.checkboxselect1)
         .selectedColor(0x39a2db)
         .shape(CheckBoxShape.ROUNDED_SQUARE)
@@ -40,7 +40,7 @@ struct CheckboxExample {
         .onClick(() => {
           console.info('Checkbox2=' + this.checkboxselect1)
         })
-      Checkbox({ name: 'checkbox3', group: 'checkboxGroup' })
+      Checkbox({ name: 'checkbox3', group: 'checkboxGroup' }).height('5%')
         .select($$this.checkboxselect2)
         .selectedColor(0x39a2db)
         .shape(CheckBoxShape.ROUNDED_SQUARE)

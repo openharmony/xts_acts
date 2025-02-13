@@ -26,25 +26,21 @@ struct TrackDate {
     Column() {
       Text(`${this.info.selectedDate.getFullYear()}`)
         .id('TrackDate_1A')
-        .fontSize(40)
+        .fontSize(9)
       Button('set selectedDate to 2023-07-08')
-        .margin(10)
         .onClick(() => {
           this.info.selectedDate = new Date('2023-07-08');
         })
       Button('increase the year by 1')
         .id('TrackDate_2A')
-        .margin(10)
         .onClick(() => {
           this.info.selectedDate.setFullYear(this.info.selectedDate.getFullYear() + 1);
         })
       Button('increase the month by 1')
-        .margin(10)
         .onClick(() => {
           this.info.selectedDate.setMonth(this.info.selectedDate.getMonth() + 1);
         })
       Button('increase the day by 1')
-        .margin(10)
         .onClick(() => {
           this.info.selectedDate.setDate(this.info.selectedDate.getDate() + 1);
         })

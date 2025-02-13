@@ -42,19 +42,19 @@ struct makeObserved0060 {
   build() {
     Column() {
       Text(`id: ${this.message.id}`)
-        .fontSize(50)
+        .fontSize(9)
         .onClick(() => {
           this.message.id++;
         }).id('makeObserved0060textA')
 
       Text(`age: ${this.message.age}`)
-        .fontSize(50)
+        .fontSize(9)
         .onClick(() => {
           this.message.age++;
         }).id('makeObserved0060textB')
 
       Text(`Computed age+id: ${this.ageId}`)
-        .fontSize(50).id('makeObserved0060textC')
+        .fontSize(9).id('makeObserved0060textC')
 
       Button('change Info').onClick(() => {
         this.message = UIUtils.makeObserved(new Info(200));

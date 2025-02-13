@@ -32,37 +32,37 @@ struct ForEach010 {
   }
 
   build() {
-    Column({ space: 3 }) {
+    Column() {
       Button('Del item5')
         .id('btnForEach0101')
-        .fontSize(14)
+        .fontSize(9)
         .onClick(() => {
           this.dataArr.splice(5, 1)
         })
-        .height(25)
+        .height('3%')
       Button('Swipe to index0')
         .id('btnForEach0102')
-        .fontSize(14)
+        .fontSize(9)
         .onClick(() => {
           let rect = this.scroller.getItemRect(this.swipeStartIndex) // Get child components size and position
           this.scroller.scrollToIndex(0); // Slide to the specified index
           this.scroller.scrollBy(0, -rect.y); // Slide a specified distance
         })
-        .height(25)
+        .height('3%')
       Button('Swipe to index45')
         .id('btnForEach0103')
-        .fontSize(14)
+        .fontSize(9)
         .onClick(() => {
           let rect = this.scroller.getItemRect(this.swipeStartIndex) // Get child components size and position
           this.scroller.scrollToIndex(45); // Slide to the specified index
           this.scroller.scrollBy(0, -rect.y); // Slide a specified distance
         })
-        .height(25)
-      List({space: 3, scroller: this.scroller}) {
+        .height('3%')
+      List({scroller: this.scroller}) {
         ForEach(this.dataArr, (item: string, index: number) => {
           ListItem() {
             Text(item)
-              .fontSize(25)
+              .fontSize(9)
           }
           .onClick(() => {
             if (!this.isSwap) {

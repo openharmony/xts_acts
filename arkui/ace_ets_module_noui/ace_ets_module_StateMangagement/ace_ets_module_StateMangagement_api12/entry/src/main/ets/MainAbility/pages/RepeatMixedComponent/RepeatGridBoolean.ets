@@ -42,6 +42,7 @@ struct RepeatGridBoolean {
               Text(ri.item.toString() + ' index:' + ri.index.toString() + ':' + this.tmp2.toString())
                 .id('Text1_GB' + ri.index.toString())
                 .fontSize(20)
+                .height('20%')
             }
             .border({ width: 1 })
           })
@@ -54,11 +55,11 @@ struct RepeatGridBoolean {
       .border({ width: 1 })
 
       Row() {
-        Button('next1 page').id('Button1')
+        Button('next1 page').id('Button1_GB')
           .onClick(() => {
             this.scroller.scrollToIndex(15);
           })
-        Button('next2 page').id('Button2')
+        Button('next2 page').id('Button2_GB')
           .onClick(() => {
             this.scroller1.scrollToIndex(15);
           })
@@ -74,6 +75,7 @@ struct RepeatGridBoolean {
               Text(ri.item.toString() + ' index:' + ri.index.toString() + ':' + this.tmp2.toString())
                 .id('Text2_GB' + ri.index.toString())
                 .fontSize(20)
+                .height('20%')
             }
             .border({ width: 1 })
           })
@@ -90,6 +92,7 @@ struct RepeatGridBoolean {
               Text(r.item.toString() + ' index:' + r.index.toString() + ':' + (this.tmp2 = 100).toString())
                 .id('Text2_GB' + r.index.toString())
                 .fontSize(20)
+                .height('20%')
             }
             .width('100%')
             .border({ width: 1 })

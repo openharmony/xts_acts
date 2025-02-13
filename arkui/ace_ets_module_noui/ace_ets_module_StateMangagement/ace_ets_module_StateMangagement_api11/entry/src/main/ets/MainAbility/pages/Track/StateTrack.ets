@@ -26,13 +26,13 @@ struct propChild {
   @Prop prop:Member2
   build() {
     Column() {
-      Text('@Prop').fontSize(20)
-      Text('memberA='+`${this.prop.memberA}`)
+      Text('@Prop').fontSize(9).height('5%')
+      Text('memberA='+`${this.prop.memberA}`).height('5%')
         .key('Track_prop')
-        .fontSize(20)
-      Text('memberC='+`${this.prop.memberC}`)
+        .fontSize(9)
+      Text('memberC='+`${this.prop.memberC}`).height('5%')
         .key('Track_prop1')
-        .fontSize(20)
+        .fontSize(9)
     }
     .height('10%')
   }
@@ -42,13 +42,13 @@ struct objectLinkChild {
   @ObjectLink objectlink :Member2
   build() {
     Column() {
-      Text('@ObjectLink').fontSize(20)
-      Text('memberA='+`${this.objectlink.memberA}`)
+      Text('@ObjectLink').fontSize(9).height('5%')
+      Text('memberA='+`${this.objectlink.memberA}`).height('5%')
         .key('Track_objectlink')
-        .fontSize(20)
-      Text('memberC='+`${this.objectlink.memberC}`)
+        .fontSize(9)
+      Text('memberC='+`${this.objectlink.memberC}`).height('5%')
         .key('Track_objectlink1')
-        .fontSize(20)
+        .fontSize(9)
     }
     .height('10%')
   }
@@ -58,13 +58,13 @@ struct linkChild {
   @Link link:Member2
   build() {
     Column() {
-      Text('@Link').fontSize(20)
-      Text('memberA='+`${this.link.memberA}`)
+      Text('@Link').fontSize(9).height('5%')
+      Text('memberA='+`${this.link.memberA}`).height('5%')
         .key('Track_link')
-        .fontSize(20)
-      Text('memberC='+`${this.link.memberC}`)
+        .fontSize(9)
+      Text('memberC='+`${this.link.memberC}`).height('5%')
         .key('Track_link1')
-        .fontSize(20)
+        .fontSize(9)
     }
     .height('10%')
   }
@@ -74,20 +74,20 @@ struct linkChild {
 struct stateTrack {
   @State me:Member2=new Member2()
   build() {
-    Column({space:5}) {
-      Button("Reset").key("StateTrack_reset")
+    Column() {
+      Button("Reset").key("StateTrack_reset").height('5%')
         .onClick(() => {
           this.me.memberA=20
           this.me.memberA=30
         })
       Column(){
-        Text('@State').fontSize(20)
-        Text('memberA='+`${this.me.memberA}`)
+        Text('@State').fontSize(9).height('5%')
+        Text('memberA='+`${this.me.memberA}`).height('5%')
           .key('Track_state')
-          .fontSize(20)
-        Text('memberC='+`${this.me.memberC}`)
+          .fontSize(9)
+        Text('memberC='+`${this.me.memberC}`).height('5%')
           .key('Track_state1')
-          .fontSize(20)
+          .fontSize(9)
       }
       .border({width:2,color:Color.Yellow})
       .height('10%')
@@ -103,12 +103,12 @@ struct stateTrack {
         linkChild({link:$me})
       }
       .border({width:2,color:Color.Orange})
-      Button('改变memberA')
+      Button('改变memberA').height('5%')
         .key('change_stateA')
         .onClick(()=>{
         this.me.memberA+=1
       })
-      Button('改变memberC')
+      Button('改变memberC').height('5%')
         .key('change_stateB')
         .onClick(()=>{
         this.me.memberC+=1
