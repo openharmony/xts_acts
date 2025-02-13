@@ -49,7 +49,7 @@ export default function frameNodeIsVisibleTest() {
     /**
      * @tc.number    frameNodeIsVisibleTest_0100
      * @tc.name      frameNodeIsVisibleTest_0100
-     * @tc.desc      frameNode: frameNodeIsVisibleTest_0100
+     * @tc.desc      frameNode: UINode isVisible is false
      * @tc.level:    Level 2
      * @tc.type :
      * @tc.size :
