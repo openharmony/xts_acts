@@ -497,44 +497,44 @@ export default function audioNDK() {
       done()
     })
     /* *
-       * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0200
+       * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0100
        * @tc.name      : GetTimestamp with OH_AudioRenderer_GetAudioTimestampInfo
        * @tc.desc      : test OH_AudioRenderer_GetAudioTimestampInfo
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0100', 0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetAudioTimestampInfo();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0200 audioRenderGetAudioTimestampInfo: ${result}`);
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0100 audioRenderGetAudioTimestampInfoResult: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
     /* *
-       * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0300
+       * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0200
        * @tc.name      : GetTimestamp with OH_AudioRenderer_GetAudioTimestampInfoInterval
        * @tc.desc      : test OH_AudioRenderer_GetAudioTimestampInfoInterval
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0200', 0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetAudioTimestampInfoInterval();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0300 audioRenderGetAudioTimestampInfoInterval: ${result}`);
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0200 audioRenderGetAudioTimestampInfoIntervalResult: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
     /* *
-       * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0400
+       * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0300
        * @tc.name      : GetTimestamp with OH_AudioRenderer_GetAudioSpeedTimestampInfo
        * @tc.desc      : test OH_AudioRenderer_GetAudioSpeedTimestampInfo
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0300', 0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetAudioSpeedTimestampInfo();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0400 audioRenderGetAudioSpeedTimestampInfo: ${result}`);
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0300 audioRenderGetAudioSpeedTimestampInfoResult: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
