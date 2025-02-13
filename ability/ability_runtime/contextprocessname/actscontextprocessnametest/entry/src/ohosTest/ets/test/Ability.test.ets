@@ -41,7 +41,7 @@ export default function ActsContextProcessNameTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('SUB_Ability_Ability_Runtime_processName_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_processName_0100', 0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_0100'
       console.log(`[${caseName}]: start`)
       try {
@@ -65,7 +65,7 @@ export default function ActsContextProcessNameTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('SUB_Ability_Ability_Runtime_processName_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_processName_0200', 0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_0200'
       console.log(`[${caseName}] create`)
       try {
@@ -90,7 +90,7 @@ export default function ActsContextProcessNameTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('SUB_Ability_Ability_Runtime_processName_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_processName_0300', 0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_0300'
       try {
         let applicationContext = application.getApplicationContext();
@@ -113,7 +113,7 @@ export default function ActsContextProcessNameTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('SUB_Ability_Ability_Runtime_processName_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_processName_0400', 0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_0400'
       console.log(`[${caseName}] create`)
       try {
@@ -137,7 +137,7 @@ export default function ActsContextProcessNameTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('SUB_Ability_Ability_Runtime_processName_1500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_processName_1500', 0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_1500'
       console.log(`[${caseName}] create`)
       try {
@@ -180,7 +180,7 @@ export default function ActsContextProcessNameTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('SUB_Ability_Ability_Runtime_processName_3200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_processName_3200', 0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_3200'
       console.log(`[${caseName}] create`)
       try {
