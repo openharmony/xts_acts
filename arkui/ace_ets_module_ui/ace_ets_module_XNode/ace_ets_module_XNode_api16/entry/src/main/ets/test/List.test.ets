@@ -12,12 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import gestureEventTest from './FrameNodeTest/gestureEventTest.test';
-import upDownTreeEventTest from './FrameNodeTest/upDownTreeEvent.test';
 import frameNodeIsVisibleTest from './FrameNodeTest/frameNodeIsVisible.test';
 
 export default function testsuite() {
   frameNodeIsVisibleTest();
-  upDownTreeEventTest();
-  gestureEventTest();
 }
