@@ -32,7 +32,8 @@ const LABEL_SNAPSHOT_SKIP_FOR_ACCOUNT = "snapshotSkip";
 const LABEL_RESET_FACTORY = "resetFactory";
 const LABEL_TETHERING = "tethering";
 const LABEL_NEAR_LINK = "nearLink";
-const LABEL_MTP = "mtp";
+const LABEL_MTP_CLIENT = "mtpClient";
+const LABEL_MTP_SERVER = "mtpServer";
 
 export default function restrictionsTest() {
   describe('restrictions_test', () => {
@@ -539,8 +540,29 @@ function testSetDisallowedPolicy() {
   it("test_set_disallowed_policy_0123", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
-      restrictions.setDisallowedPolicy(SELFWANT, LABEL_MTP, false);
-      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_MTP)).assertFalse();
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_MTP_CLIENT, false);
+      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_MTP_CLIENT)).assertFalse();
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0124
+   * @tc.name      : test_set_disallowed_policy_0124
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0123", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_MTP_SERVER, false);
+      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_MTP_SERVER)).assertFalse();
     } catch (error) {
       expect(false).assertTrue();
     } finally {

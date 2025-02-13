@@ -14,10 +14,16 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import accessibility from '@ohos.accessibility'
+import { Driver } from '@ohos.UiTest';
 
 export default function AccessibleCheckAbility() {
 describe('AccessibleCheckAbility', function () {
     const TIMEOUT = 1000;
+    beforeAll(async function (done) {
+        let driver = Driver.create();
+        console.info(`AccessibleAbilityList: beforeAll starts`);
+        done();
+    })
 
     beforeEach(async function (done) {
         console.info(`AccessibleAbilityList: beforeEach starts`);

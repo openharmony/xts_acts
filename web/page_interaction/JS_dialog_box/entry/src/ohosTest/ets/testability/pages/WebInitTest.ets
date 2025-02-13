@@ -81,34 +81,46 @@ struct WebInitTest {
             console.info("key==>" + this.str)
             switch (this.str) {
               case "emitOnPrompt": {
-                this.controller.loadUrl("resource://rawfile/index.html");
-                setTimeout(() => {
-                  this.controller.runJavaScript('toPrompt()')
-                  .then((result) => {
-                    console.log('result: ' + result);
-                  })
-                }, 3000);
-                break;
+                if (canIUse('SystemCapability.Applications.Contacts')) {
+                  this.controller.loadUrl("resource://rawfile/index.html");
+                  setTimeout(() => {
+                    this.controller.runJavaScript('toPrompt()')
+                      .then((result) => {
+                        console.log('result: ' + result);
+                      })
+                  }, 3000);
+                  break;
+                } else {
+                  Utils.emitEvent("age", 178)
+                }
               }
               case "emitOnAlert": {
-                this.controller.runJavaScript('alertTest()')
-                .then((result) => {
-                  console.log('result: ' + result);
-                })
-                setTimeout(() => {
-                  Utils.emitEvent(this.alert, 63);
-                }, 3000);
-                break;
+                if (canIUse('SystemCapability.Applications.Contacts')) {
+                  this.controller.runJavaScript('alertTest()')
+                    .then((result) => {
+                      console.log('result: ' + result);
+                    })
+                  setTimeout(() => {
+                    Utils.emitEvent(this.alert, 63);
+                  }, 3000);
+                  break;
+                } else {
+                  Utils.emitEvent( "alert test", 63);
+                }
               }
               case "emitOnConfirm": {
-                this.controller.runJavaScript('confirmTest()')
-                .then((result) => {
-                  console.log('result: ' + result);
-                })
-                setTimeout(() => {
-                  Utils.emitEvent(this.confirm, 64);
-                }, 3000);
-                break;
+                if (canIUse('SystemCapability.Applications.Contacts')) {
+                  this.controller.runJavaScript('confirmTest()')
+                    .then((result) => {
+                      console.log('result: ' + result);
+                    })
+                  setTimeout(() => {
+                    Utils.emitEvent(this.confirm, 64);
+                  }, 3000);
+                  break;
+                } else {
+                  Utils.emitEvent("confirm test", 64);
+                }
               }
             }
           })

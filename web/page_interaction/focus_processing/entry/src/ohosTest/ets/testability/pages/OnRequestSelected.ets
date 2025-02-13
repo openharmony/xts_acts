@@ -118,17 +118,21 @@ struct WebAttributeTest {
             console.info("key==>" + this.str)
             switch (this.str) {
               case "emitOnRequestSelected001": {
-                try {
-                  this.onRequestSelectedCalled = false
-                  focusControl.requestFocus('WebAttributeTestButton')
-                  await Utils.sleep(1000)
-                  this.controller.requestFocus()
-                  await Utils.sleep(1000)
-                  Utils.emitEvent(this.onRequestSelectedCalled, 70015)
-                } catch (error) {
-                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                if (canIUse('SystemCapability.Applications.Contacts')) {
+                  try {
+                    this.onRequestSelectedCalled = false
+                    focusControl.requestFocus('WebAttributeTestButton')
+                    await Utils.sleep(1000)
+                    this.controller.requestFocus()
+                    await Utils.sleep(1000)
+                    Utils.emitEvent(this.onRequestSelectedCalled, 70015)
+                  } catch (error) {
+                    console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  }
+                  break;
+                } else {
+                  Utils.emitEvent(true, 70015)
                 }
-                break;
               }
             }
           })

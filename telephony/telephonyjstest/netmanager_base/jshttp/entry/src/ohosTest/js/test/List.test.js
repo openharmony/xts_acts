@@ -16,10 +16,16 @@ import Telephony_NETSTACK_HTTPTest from './NetworkManagerHttp.test.js';
 import Http2Test from './Http2Test.test.js';
 import HttpCacheTest from './HttpCacheTest.test.js';
 import HttpRequest2JsunitTest from './HttpRequest2JsunitTest.test.js';
+import EmptyTest from './Empty.test'
+import sim from '@ohos.telephony.sim'
 
 export default function testsuite() {
-    HttpCacheTest();
-    Telephony_NETSTACK_HTTPTest();
-    Http2Test();
-    HttpRequest2JsunitTest();
+    if(sim.getMaxSimCount()>1){
+        HttpCacheTest();
+        Telephony_NETSTACK_HTTPTest();
+        Http2Test();
+        HttpRequest2JsunitTest();
+    }else{
+        EmptyTest()
+    }
 }

@@ -20,6 +20,9 @@ import minMaxFontSize from './TextTest/minMaxFontSize.test';
 import editMenuOptions from './TextTest/editMenuOptions.test';
 import marqueeOptionsTest1 from './TextTest/marqueeOptions1.test';
 import marqueeOptionsTest2 from './TextTest/marqueeOptions2.test';
+import TextInputStopBackPressTest from './TextInputTest/TextInputStopBackPress.test';
+import TextAreaStopBackPressTest from './TextAreaTest/TextAreaStopBackPress.test';
+import SearchStopBackPressTest from './Search/SearchStopBackPress.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -28,5 +31,8 @@ export default function testsuite() {
   minMaxFontSize();
   editMenuOptions();
   marqueeOptionsTest1();
-  marqueeOptionsTest2();
+  marqueeOptionsTest2(); 
+  TextInputStopBackPressTest();
+  TextAreaStopBackPressTest();
+  SearchStopBackPressTest();
 }

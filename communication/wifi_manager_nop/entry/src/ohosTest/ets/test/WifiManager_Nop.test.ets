@@ -726,6 +726,25 @@ export default function wifiManagerTest() {
       }
     });
 
+    /*
+     * @tc.number:SUB_Communication_WiFi_IsHotspotActive_Nop
+     * @tc.name: testIsHotspotActive
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Communication_WiFi_isHotspotActive_Nop', 0, async (done: Function) => {
+      hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_isHotspotActive_Nop begin');
+      try {
+        wifiManager.isHotspotActive();
+        expect().assertFail();
+      } catch (error) {
+        hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_IsHotspotActive_Nop failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+      }
+      done();
+    });
   });
 }
 

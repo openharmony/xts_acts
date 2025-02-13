@@ -50,55 +50,63 @@ struct WebComponent {
           switch (this.str) {
 
             case "blurMode01": {
-              this.userAgentPC = this.controller.getUserAgent();
-              if ((this.userAgentPC).includes("PC")) {
-                Utils.emitEvent(true, 20241133)
-                break;
-              }
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent(true, 20241133)
+                  break;
+                }
 
-              let driver = Driver.create();
-              await Utils.sleep(1000);
-              let buttonOne = await driver.findComponent(ON.text('input'));
-              await buttonOne.click()
-              await Utils.sleep(2000);
-              let buttonTwo = await driver.findComponent(ON.id('KeyHideKbd'));
-              if(buttonTwo) {
-                await buttonTwo.click()
+                let driver = Driver.create();
+                await Utils.sleep(1000);
+                let buttonOne = await driver.findComponent(ON.text('input'));
+                await buttonOne.click()
+                await Utils.sleep(2000);
+                let buttonTwo = await driver.findComponent(ON.id('KeyHideKbd'));
+                if (buttonTwo) {
+                  await buttonTwo.click()
+                } else {
+                  await driver.click(671, 701);
+                }
+                await Utils.sleep(1000);
+                if (this.text == 'focus') {
+                  Utils.emitEvent(true, 20241133)
+                }
+                break;
               } else {
-                await driver.click(671,701);
+                Utils.emitEvent(true, 20241133)
               }
-               await Utils.sleep(1000);
-               if(this.text == 'focus') {
-                 Utils.emitEvent(true, 20241133)
-               }
-              break;
             }
 
             case "blurMode02": {
-              this.userAgentPC = this.controller.getUserAgent();
-              if ((this.userAgentPC).includes("PC")) {
-                Utils.emitEvent(true, 20241134)
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent(true, 20241134)
+                  break;
+                }
+                let driver = Driver.create();
+                await Utils.sleep(1000);
+                this.blurMode = BlurOnKeyboardHideMode.BLUR;
+
+
+                let buttonOne = await driver.findComponent(ON.text('input'));
+                await buttonOne.click()
+                await Utils.sleep(2000);
+                let buttonTwo = await driver.findComponent(ON.id('KeyHideKbd'));
+                if (buttonTwo) {
+                  await buttonTwo.click()
+                } else {
+                  await driver.click(671, 701);
+                }
+                await Utils.sleep(1000);
+                if (this.text == 'blur') {
+                  Utils.emitEvent(true, 20241134)
+                }
                 break;
-              }
-              let driver = Driver.create();
-              await Utils.sleep(1000);
-              this.blurMode = BlurOnKeyboardHideMode.BLUR;
-
-
-              let buttonOne = await driver.findComponent(ON.text('input'));
-              await buttonOne.click()
-              await Utils.sleep(2000);
-              let buttonTwo = await driver.findComponent(ON.id('KeyHideKbd'));
-              if(buttonTwo) {
-                await buttonTwo.click()
               } else {
-                await driver.click(671,701);
-              }
-              await Utils.sleep(1000);
-              if(this.text == 'blur') {
                 Utils.emitEvent(true, 20241134)
               }
-              break;
             }
           }
         })

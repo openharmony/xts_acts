@@ -543,5 +543,76 @@ export default function api16CertFuncTestTwoUnit() {
       done();
     });
 
+    /**
+     * @tc.number SUB_Security_CertManager_OpenCertificateDialog_0012
+     * @tc.name test openCertificateDetailDialog with abnormal parameters
+     * @tc.desc abnormal test
+     * @tc.size SmallTest
+     * @tc.level Level2
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_OpenCertificateDialog_0012', 0, async (done: Function) => {
+      console.log("SUB_Security_CertManager_OpenCertificateDialog_0012: started ");
+      const context :common.Context = GlobalContext.getContext();
+      let caCert1: Uint8Array = new Uint8Array([
+        0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+      ]);
+      let property: certManagerDialog.CertificateDialogProperty = {
+        showInstallButton: false /* 不显示安装按钮 */
+      };
+      if (deviceInfo.deviceType == '2in1') {
+        try {
+          await certManagerDialog.openCertificateDetailDialog(context, null, property)
+          expect(null).assertFail();
+        } catch (err) {
+          console.log("SUB_Security_CertManager_OpenCertificateDialog_0012: e.code " + err.code);
+          expect(err.code).assertEqual(401);
+        }
+
+        try {
+          await certManagerDialog.openCertificateDetailDialog(context, caCert1, property)
+          expect(null).assertFail();
+        } catch (err) {
+          console.log("SUB_Security_CertManager_OpenCertificateDialog_0012: e.code " + err.code);
+          expect(err.code).assertEqual(certManagerDialog.CertificateDialogErrorCode.ERROR_OPERATION_FAILED);
+        }
+
+        try {
+          await certManagerDialog.openCertificateDetailDialog(context, caCert1, null)
+          expect(null).assertFail();
+        } catch (err) {
+          console.log("SUB_Security_CertManager_OpenCertificateDialog_0012: e.code " + err.code);
+          expect(err.code).assertEqual(401);
+        }
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CertManager_OpenCertificateDialog_0010
+     * @tc.name test openCertificateDetailDialog with abnormal parameters
+     * @tc.desc abnormal test
+     * @tc.size SmallTest
+     * @tc.level Level2
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_OpenCertificateDialog_0010', 0, async (done: Function) => {
+      console.log("SUB_Security_CertManager_OpenCertificateDialog_0010: started ");
+      const context :common.Context = GlobalContext.getContext();
+      let property: certManagerDialog.CertificateDialogProperty = {
+        showInstallButton: false /* 不显示安装按钮 */
+      };
+      if (deviceInfo.deviceType != '2in1') {
+        try {
+          await certManagerDialog.openCertificateDetailDialog(context, caCert, property)
+          expect(null).assertFail();
+        } catch (err) {
+          console.log("SUB_Security_CertManager_OpenCertificateDialog_0010: e.code " + err.code);
+          expect(err.code).assertEqual(certManagerDialog.CertificateDialogErrorCode.ERROR_DEVICE_NOT_SUPPORTED);
+        }
+      }
+      done();
+    });
+
   })
 }

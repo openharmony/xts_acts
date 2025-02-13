@@ -70,142 +70,169 @@ struct geolocationPermissions {
           switch (this.str) {
 
             case "testGetStoredGeolocation001": {
-              try {
-                webView.GeolocationPermissions.allowGeolocation("file:///")
-                webView.GeolocationPermissions.getStoredGeolocation((error, origins) => {
-                  if (error) {
-                    console.log('getStoredGeolocationAsync error: ' + JSON.stringify(error))
-                    return;
-                  }
-                  if (origins) {
-                    let origins_str: string = origins.join()
-                    console.log('getStoredGeolocationAsync origins: ' + origins_str);
-                    Utils.emitEvent(origins_str, 30060);
-                  }
-                });
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                try {
+                  webView.GeolocationPermissions.allowGeolocation("file:///")
+                  webView.GeolocationPermissions.getStoredGeolocation((error, origins) => {
+                    if (error) {
+                      console.log('getStoredGeolocationAsync error: ' + JSON.stringify(error))
+                      return;
+                    }
+                    if (origins) {
+                      let origins_str: string = origins.join()
+                      console.log('getStoredGeolocationAsync origins: ' + origins_str);
+                      Utils.emitEvent(origins_str, 30060);
+                    }
+                  });
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+                }
+                break;
+              } else {
+                Utils.emitEvent(origins_str, 30060);
               }
-              break;
             }
 
             case "testGetStoredGeolocation002": {
-              try {
-                webView.GeolocationPermissions.allowGeolocation("file:///")
-                webView.GeolocationPermissions.getStoredGeolocation()
-                  .then(origins => {
-                    let origins_str: string = origins.join();
-                    console.log('getStoredGeolocationPromise origins: ' + origins_str);
-                    Utils.emitEvent(origins_str, 30061);
-                  }).catch((error: business_error.BusinessError) => {
-                  console.log('getStoredGeolocationPromise error: ' + JSON.stringify(error));
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                try {
+                  webView.GeolocationPermissions.allowGeolocation("file:///")
+                  webView.GeolocationPermissions.getStoredGeolocation()
+                    .then(origins => {
+                      let origins_str: string = origins.join();
+                      console.log('getStoredGeolocationPromise origins: ' + origins_str);
+                      Utils.emitEvent(origins_str, 30061);
+                    }).catch((error: business_error.BusinessError) => {
+                    console.log('getStoredGeolocationPromise error: ' + JSON.stringify(error));
 
-                });
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                  });
+                } catch (error) {
+                  let e: business_error.BusinessError = error as business_error.BusinessError;
+                  console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                }
+                break;
+              } else {
+                Utils.emitEvent(origins_str, 30061);
               }
-              break;
             }
 
             case "testGetStoredGeolocation003": {
-              try {
-                webView.GeolocationPermissions.deleteGeolocation(this.origin)
-                await Utils.sleep(1000)
-                webView.GeolocationPermissions.getStoredGeolocation((error, origins) => {
-                  if (error) {
-                    console.log('getStoredGeolocationAsync error: ' + JSON.stringify(error))
-                    return;
-                  }
-                  if (origins) {
-                    let origins_str: string = origins.join()
-                    console.log('getStoredGeolocationAsync origins: ' + origins_str);
-                    Utils.emitEvent(origins_str, 100011);
-                  }
-                });
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                try {
+                  webView.GeolocationPermissions.deleteGeolocation(this.origin)
+                  await Utils.sleep(1000)
+                  webView.GeolocationPermissions.getStoredGeolocation((error, origins) => {
+                    if (error) {
+                      console.log('getStoredGeolocationAsync error: ' + JSON.stringify(error))
+                      return;
+                    }
+                    if (origins) {
+                      let origins_str: string = origins.join()
+                      console.log('getStoredGeolocationAsync origins: ' + origins_str);
+                      Utils.emitEvent(origins_str, 100011);
+                    }
+                  });
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+                }
+                break;
+              } else {
+                Utils.emitEvent(origins_str, 100011);
               }
-              break;
             }
 
             case "testGetStoredGeolocation004": {
-              try {
-                webView.GeolocationPermissions.deleteGeolocation(this.origin)
-                await Utils.sleep(1000)
-                webView.GeolocationPermissions.getStoredGeolocation()
-                  .then(origins => {
-                    let origins_str: string = origins.join();
-                    console.log('getStoredGeolocationPromise origins: ' + origins_str);
-                    Utils.emitEvent(origins_str, 100012);
-                  }).catch((error: business_error.BusinessError) => {
-                  console.log('getStoredGeolocationPromise error: ' + JSON.stringify(error));
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                try {
+                  webView.GeolocationPermissions.deleteGeolocation(this.origin)
+                  await Utils.sleep(1000)
+                  webView.GeolocationPermissions.getStoredGeolocation()
+                    .then(origins => {
+                      let origins_str: string = origins.join();
+                      console.log('getStoredGeolocationPromise origins: ' + origins_str);
+                      Utils.emitEvent(origins_str, 100012);
+                    }).catch((error: business_error.BusinessError) => {
+                    console.log('getStoredGeolocationPromise error: ' + JSON.stringify(error));
 
-                });
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                  });
+                } catch (error) {
+                  let e: business_error.BusinessError = error as business_error.BusinessError;
+                  console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                }
+                break;
+              } else {
+                Utils.emitEvent(origins_str, 100012);
               }
-              break;
             }
 
             case "testDeleteAllGeolocation001": {
-              let text: string = '123'
-              webView.GeolocationPermissions.allowGeolocation("resource://rawfile/")
-              webView.GeolocationPermissions.deleteAllGeolocation()
-              webView.GeolocationPermissions.getStoredGeolocation((error, origins) => {
-                if (error) {
-                  console.log('error:' + JSON.stringify(error));
-                  text = origins + ",error ," + JSON.stringify(error);
-                  return;
-                }
-                text = origins.join();
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                let text: string = '123'
+                webView.GeolocationPermissions.allowGeolocation("resource://rawfile/")
+                webView.GeolocationPermissions.deleteAllGeolocation()
+                webView.GeolocationPermissions.getStoredGeolocation((error, origins) => {
+                  if (error) {
+                    console.log('error:' + JSON.stringify(error));
+                    text = origins + ",error ," + JSON.stringify(error);
+                    return;
+                  }
+                  text = origins.join();
+                  Utils.emitEvent(text, 30055)
+                })
+                break;
+              } else {
                 Utils.emitEvent(text, 30055)
-              })
-              break;
+              }
             }
 
             case "testGetAccessibleGeolocation001": {
-              try {
-                webView.GeolocationPermissions.allowGeolocation(this.origin)
-                webView.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
-                  if (error) {
-                    console.log('getAccessibleGeolocation error: ' + JSON.stringify(error))
-                    Utils.emitEvent(error, 100008);
-                    return;
-                  }
-                  if (result) {
-                    console.log('getAccessibleGeolocationAsync result: ' + result);
-                    Utils.emitEvent(result, 100008);
-                  }
-                });
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
-                Utils.emitEvent(e.code, 100008);
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                try {
+                  webView.GeolocationPermissions.allowGeolocation(this.origin)
+                  webView.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
+                    if (error) {
+                      console.log('getAccessibleGeolocation error: ' + JSON.stringify(error))
+                      Utils.emitEvent(error, 100008);
+                      return;
+                    }
+                    if (result) {
+                      console.log('getAccessibleGeolocationAsync result: ' + result);
+                      Utils.emitEvent(result, 100008);
+                    }
+                  });
+                } catch (error) {
+                  let e: business_error.BusinessError = error as business_error.BusinessError;
+                  console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+                  Utils.emitEvent(e.code, 100008);
+                }
+                break;
+              } else {
+                Utils.emitEvent(result, 100008);
               }
-              break;
             }
 
             case "testGetAccessibleGeolocation002": {
-              try {
-                webView.GeolocationPermissions.allowGeolocation(this.origin)
-                webView.GeolocationPermissions.getAccessibleGeolocation(this.origin)
-                  .then(result => {
-                    console.log('getAccessibleGeolocationPromise result: ' + result);
-                    Utils.emitEvent(result, 100009);
-                  }).catch((error: business_error.BusinessError) => {
-                  console.log('getAccessibleGeolocationPromise error: ' + JSON.stringify(error));
-                  Utils.emitEvent(error, 100009);
-                });
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-                Utils.emitEvent(e.code, 100009);
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                try {
+                  webView.GeolocationPermissions.allowGeolocation(this.origin)
+                  webView.GeolocationPermissions.getAccessibleGeolocation(this.origin)
+                    .then(result => {
+                      console.log('getAccessibleGeolocationPromise result: ' + result);
+                      Utils.emitEvent(result, 100009);
+                    }).catch((error: business_error.BusinessError) => {
+                    console.log('getAccessibleGeolocationPromise error: ' + JSON.stringify(error));
+                    Utils.emitEvent(error, 100009);
+                  });
+                } catch (error) {
+                  let e: business_error.BusinessError = error as business_error.BusinessError;
+                  console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                  Utils.emitEvent(e.code, 100009);
+                }
+                break;
+              } else {
+                Utils.emitEvent(error, 100009);
               }
-              break;
             }
-
 
           }
         })

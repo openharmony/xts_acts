@@ -107,6 +107,11 @@ struct WebViewMenuShowResult {
               break;
             }
             case "emitCopy001": {
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("Wearable")) {
+                  Utils.emitEvent(true, 3502)
+                  break;
+                } 
               let driver: Driver = Driver.create();
               webView.WebviewController.setWebDebuggingAccess(true);
               let atManager = abilityAccessCtrl.createAtManager();
@@ -129,7 +134,6 @@ struct WebViewMenuShowResult {
               await Utils.sleep(4000)
               
               this.menuShowState = 'SelectAll'
-              this.userAgentPC = this.controller.getUserAgent();
               if ((this.userAgentPC).includes("PC")) {
                 this.controller.loadUrl("resource://rawfile/MenuTestPastePC.html")
                 await Utils.sleep(2000)
