@@ -26,6 +26,7 @@ group("ActsAceEtsModuleCommonEventsTest") {
       "ace_ets_module_commonEvents_api12:ActsAceEtsModuleCommonEventsApi12Test",
       "ace_ets_module_commonEvents_api12None:ActsAceEtsModuleCommonEventsApi12NoneTest",
       "ace_ets_module_commonEvents_api14:ActsAceEtsModuleCommonEventsApi14Test",
+      "ace_ets_module_commonEvents_api15:ActsAceEtsModuleCommonEventsApi15Test",
     ]
   }
 }
