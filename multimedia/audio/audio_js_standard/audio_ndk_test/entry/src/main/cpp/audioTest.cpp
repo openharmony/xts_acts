@@ -584,9 +584,9 @@ static napi_value AudioRenderGetAudioTimestampInfo(napi_env env, napi_callback_i
     OH_AudioStream_Result result = OH_AudioRenderer_GetAudioTimestampInfo(
         audioRenderer, CLOCK_MONOTONIC, &framePosition0, &timestamp0);
     if (result == AUDIOSTREAM_SUCCESS) {
-		napi_create_int32(env, TEST_FAIL, &res);
-		return res;
-	}
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
     OH_AudioRenderer_Start(audioRender);
 	
     int sleepNum = 30000;
@@ -626,14 +626,16 @@ static napi_value AudioRenderGetAudioTimestampInfoInterval(napi_env env, napi_ca
 	
     napi_value res;
     float rate = 0.1;
-    int Counti = 5;
+    int counti = 5;
     int64_t framePositionLastDuration = 0;
     int64_t timestampLastDuration = 0;
     OH_AudioStream_Result result = AUDIOSTREAM_SUCCESS;
 	
-    for (int i = 0; i < Counti; ++i) {
-        int64_t framePosition1, framePosition2 = 0;
-        int64_t timestamp1, timestamp2 = 0;
+    for (int i = 0; i < counti; ++i) {
+        int64_t framePosition1 = 0;
+        int64_t framePosition2 = 0;
+        int64_t timestamp1 = 0;
+        int64_t timestamp2 = 0;
         result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, CLOCK_MONOTONIC, &framePosition1, &timestamp1);
 		
         uDelay(sleepNum);
@@ -642,7 +644,7 @@ static napi_value AudioRenderGetAudioTimestampInfoInterval(napi_env env, napi_ca
         if (framePositionLastDuration == 0) {
             framePositionLastDuration = framePosition2 - framePosition1;
             continue;
-		}
+        }
 		
         int64_t timestampCurDuration = timestamp2 - timestamp1;
         int64_t framePositionCurDuration = (framePosition2 - framePosition1) *
@@ -678,15 +680,15 @@ static napi_value AudioRenderGetAudioSpeedTimestampInfo(napi_env env, napi_callb
     OH_AudioStream_Result result = AUDIOSTREAM_SUCCESS;
 
     int sleepNum = 500000;
-	uDelay(sleepNum);
+    uDelay(sleepNum);
 
-    float MinSpeed = 0.25;
-    float MaxSpeed = 4.00;
-    float DurSpeed = 0.25;
+    float minSpeed = 0.25;
+    float maxSpeed = 4.00;
+    float durSpeed = 0.25;
 
-    for (float CurSpeed = MinSpeed; CurSpeed <= MaxSpeed; CurSpeed += DurSpeed) {
+    for (float curSpeed = minSpeed; curSpeed <= maxSpeed; curSpeed += durSpeed) {
         OH_AudioRenderer_Stop(audioRender);
-        result = OH_AudioRenderer_SetSpeed(audioRender, CurSpeed);
+        result = OH_AudioRenderer_SetSpeed(audioRender, curSpeed);
         result = OH_AudioRenderer_Start(audioRender);
 		
         uDelay(sleepNum);
@@ -713,10 +715,10 @@ static napi_value AudioRenderGetAudioSpeedTimestampInfo(napi_env env, napi_callb
         if (framePositionLastDuration >= framePositionCurDuration) {
             napi_create_int32(env, TEST_FAIL, &res);
             return res;
-		}
+        }
 		
-        if (framePositionLastDuration <= framePositionCurDuration * ((CurSpeed - DurSpeed) / CurSpeed) * (1 - rate) ||
-		    framePositionLastDuration >= framePositionCurDuration * ((CurSpeed - DurSpeed) / CurSpeed) * (1 + rate)) {
+        if (framePositionLastDuration <= framePositionCurDuration * ((curSpeed - durspeed) / curSpeed) * (1 - rate) ||
+		    framePositionLastDuration >= framePositionCurDuration * ((curSpeed - durspeed) / curSpeed) * (1 + rate)) {
             napi_create_int32(env, TEST_FAIL, &res);
             return res;
             }
