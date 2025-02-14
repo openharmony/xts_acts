@@ -88,8 +88,8 @@ struct Tabs_scrollable {
       .onChange((index: number) => {
         this.currentIndex = index
       })
-      .width(330)
-      .height(120)
+      .width('80%')
+      .height('45%')
       .backgroundColor('#F1F3F5')
 
       Tabs({ index: this.currentIndexTwo }) {
@@ -114,8 +114,8 @@ struct Tabs_scrollable {
       .onChange((index: number) => {
         this.currentIndexTwo = index
       })
-      .width(330)
-      .height(120)
+      .width('80%')
+      .height('45%')
       .backgroundColor('#F1F3F5')
     }.width('100%')
   }
