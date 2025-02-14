@@ -13,19 +13,6 @@
  * limitations under the License.
  */
 
-
-import alertDialogTest from './dialog/alertDialogTest.test';
-import confirmDialogTest from './dialog/confirmDialogTest.test';
-import customContentDialogTest from './dialog/customContentDialogTest.test';
-import selectDialogTest from './dialog/selectDialogTest.test';
-import tipsDialogTest from './dialog/tipsDialogTest.test';
-import counterDirectionTest from './counter/counterDirection.test';
-
-export default function testsuite() {
-  counterDirectionTest();
-  alertDialogTest();
-  confirmDialogTest();
-  customContentDialogTest();
-  selectDialogTest();
-  tipsDialogTest();
+export class Constants {
+  static readonly EVENT_ID_CHANGE_DATA = 101
 }
