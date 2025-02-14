@@ -106,7 +106,7 @@ export default function bindSelectionMenuTest() {
         await CommonFunc.sleep(500);
         let point = await Text.getBoundsCenter();
         await CommonFunc.sleep(500);
-        await driver.mouseDrag({x:point.x-vp2px(25), y:point.y},{x:point.x+vp2px(25), y:point.y},600);
+        await driver.mouseDrag({x:Math.round(point.x-vp2px(20)), y:Math.round(point.y)},{x:Math.round(point.x+vp2px(20)), y:Math.round(point.y)},600);
         await CommonFunc.sleep(500);
         await driver.assertComponentExist(ON.text('自定义菜单'));
         console.info("[bindSelectionMenuTest0003] end");
@@ -174,7 +174,7 @@ export default function bindSelectionMenuTest() {
         await CommonFunc.sleep(500);
         let point = await image.getBoundsCenter();
         await CommonFunc.sleep(500);
-        await driver.mouseDrag({x:point.x-vp2px(24), y:point.y},{x:point.x+vp2px(24), y:point.y},600);
+        await driver.mouseDrag({x:Math.round(point.x-vp2px(24)), y:Math.round(point.y)},{x:Math.round(point.x+vp2px(24)), y:Math.round(point.y)},600);
         await CommonFunc.sleep(500);
         await driver.assertComponentExist(ON.text('自定义菜单'));
         console.info("[bindSelectionMenuTest0006] end");
@@ -243,7 +243,7 @@ export default function bindSelectionMenuTest() {
         await CommonFunc.sleep(500);
         let point = await mixed.getBoundsCenter();
         await CommonFunc.sleep(500);
-        await driver.mouseDrag({x:point.x-vp2px(24), y:point.y},{x:point.x+vp2px(50), y:point.y},600);
+        await driver.mouseDrag({x:Math.round(point.x-vp2px(20)), y:Math.round(point.y)},{x:Math.round(point.x+vp2px(50)), y:Math.round(point.y)},600);
         await CommonFunc.sleep(500);
         await driver.assertComponentExist(ON.text('自定义菜单'));
         console.info("[bindSelectionMenuTest0009] end");
