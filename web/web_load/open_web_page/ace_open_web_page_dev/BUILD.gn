@@ -19,5 +19,4 @@ ohos_js_app_suite("ActsWebOpenWebPageDevTest") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsWebOpenWebPageDevTest"
   part_name = "webview"
-  subsystem_name = "web"
 }
