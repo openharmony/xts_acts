@@ -727,8 +727,8 @@ static napi_value AudioRenderGetAudioSpeedTimestampInfo(napi_env env, napi_callb
             return res;
         }
 		
-        if (framePositionLastDuration <= framePositionCurDuration * ((curSpeed - durspeed) / curSpeed) * (1 - rate) ||
-		    framePositionLastDuration >= framePositionCurDuration * ((curSpeed - durspeed) / curSpeed) * (1 + rate)) {
+        if (framePositionLastDuration <= framePositionCurDuration * ((curSpeed - durSpeed) / curSpeed) * (1 - rate) ||
+		    framePositionLastDuration >= framePositionCurDuration * ((curSpeed - durSpeed) / curSpeed) * (1 + rate)) {
             napi_create_int32(env, TEST_FAIL, &res);
             return res;
             }
