@@ -19,7 +19,7 @@ import window from '@ohos.window';
 import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import commonEvent from '@ohos.commonEvent';
-
+import commonEventManager from '@ohos.commonEventManager';
 const event = 'terminateSelf1000'
 
 export default class AssistantAbilityOne extends UIAbility {
@@ -29,6 +29,9 @@ export default class AssistantAbilityOne extends UIAbility {
 
   onDestroy() {
     hilog.info(0x0000, 'testTag AssistantAbilityOne', '%{public}s', 'Ability onDestroy');
+    commonEventManager.publish("AbilityDelegator_Destory", (err, data) => {
+      hilog.info(0x0000, 'testTag AssistantAbilityOne', '%{public}s', 'publish success');
+    })
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
