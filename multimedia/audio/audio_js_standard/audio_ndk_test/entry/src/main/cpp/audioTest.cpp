@@ -446,12 +446,23 @@ static napi_value AudioCaptureGetFrameSizeInCallback(napi_env env, napi_callback
     return res;
 }
 
+static int32_t AudioCapturerOnReadData(
+    OH_AudioCapturer* capturer,
+    void* userData,
+    void* buffer,
+    int32_t bufferLen)
+{
+    return 0;
+}
 
 OH_AudioStreamBuilder *CreateRenderBuilder()
 {
     OH_AudioStreamBuilder *builder;
     OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
     OH_AudioStreamBuilder_Create(&builder, type);
+    OH_AudioRenderer_Callbacks callbacks;
+    callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerCallback(builder, callbacks, NULL);
     return builder;
 }
 
@@ -582,31 +593,31 @@ static napi_value AudioRenderGetAudioTimestampInfo(napi_env env, napi_callback_i
     int64_t framePosition0;
     int64_t timestamp0;
     OH_AudioStream_Result result = OH_AudioRenderer_GetAudioTimestampInfo(
-        audioRenderer, CLOCK_MONOTONIC, &framePosition0, &timestamp0);
+        audioRenderer, &framePosition0, &timestamp0);
     if (result == AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
-    OH_AudioRenderer_Start(audioRender);
+    OH_AudioRenderer_Start(audioRenderer);
 	
     int sleepNum = 30000;
     uDelay(sleepNum);
 	
     int64_t framePosition1;
     int64_t timestamp1;
-    result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, CLOCK_MONOTONIC, &framePosition1, &timestamp1);
+    result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, &framePosition1, &timestamp1);
     if (result != AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
 	
-    OH_AudioRenderer_Stop(audioRender);
-    result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, CLOCK_MONOTONIC, &framePosition0, &timestamp0);
+    OH_AudioRenderer_Stop(audioRenderer);
+    result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, &framePosition0, &timestamp0);
         if (result == AUDIOSTREAM_SUCCESS) {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
-    OH_AudioRenderer_Release(audioRender);
+    OH_AudioRenderer_Release(audioRenderer);
     OH_AudioStreamBuilder_Destroy(builder);
     napi_create_int32(env, TEST_PASS, &res);
     return res;
@@ -619,10 +630,9 @@ static napi_value AudioRenderGetAudioTimestampInfoInterval(napi_env env, napi_ca
     OH_AudioRenderer *audioRenderer;
     OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
 	
-    OH_AudioRenderer_Start(audioRender);
+    OH_AudioRenderer_Start(audioRenderer);
 	
     int sleepNum = 500000;
-    uDelay(sleepNum);
 	
     napi_value res;
     float rate = 0.1;
@@ -636,13 +646,14 @@ static napi_value AudioRenderGetAudioTimestampInfoInterval(napi_env env, napi_ca
         int64_t framePosition2 = 0;
         int64_t timestamp1 = 0;
         int64_t timestamp2 = 0;
-        result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, CLOCK_MONOTONIC, &framePosition1, &timestamp1);
+        result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, &framePosition1, &timestamp1);
 		
         uDelay(sleepNum);
 		
-        result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, CLOCK_MONOTONIC, &framePosition2, &timestamp2);
+        result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, &framePosition2, &timestamp2);
         if (framePositionLastDuration == 0) {
             framePositionLastDuration = framePosition2 - framePosition1;
+            timestampLastDuration = timestamp2 - timestamp1;
             continue;
         }
 		
@@ -659,8 +670,8 @@ static napi_value AudioRenderGetAudioTimestampInfoInterval(napi_env env, napi_ca
         framePositionLastDuration = framePosition2 - framePosition1;
         timestampLastDuration = timestamp2 - timestamp1;
     }
-    OH_AudioRenderer_Stop(audioRender);
-    OH_AudioRenderer_Release(audioRender);
+    OH_AudioRenderer_Stop(audioRenderer);
+    OH_AudioRenderer_Release(audioRenderer);
     OH_AudioStreamBuilder_Destroy(builder);
     napi_create_int32(env, TEST_PASS, &res);
     return res;
@@ -687,9 +698,9 @@ static napi_value AudioRenderGetAudioSpeedTimestampInfo(napi_env env, napi_callb
     float durSpeed = 0.25;
 
     for (float curSpeed = minSpeed; curSpeed <= maxSpeed; curSpeed += durSpeed) {
-        OH_AudioRenderer_Stop(audioRender);
-        result = OH_AudioRenderer_SetSpeed(audioRender, curSpeed);
-        result = OH_AudioRenderer_Start(audioRender);
+        OH_AudioRenderer_Stop(audioRenderer);
+        result = OH_AudioRenderer_SetSpeed(audioRenderer, curSpeed);
+        result = OH_AudioRenderer_Start(audioRenderer);
 		
         uDelay(sleepNum);
 		
@@ -726,8 +737,8 @@ static napi_value AudioRenderGetAudioSpeedTimestampInfo(napi_env env, napi_callb
         framePositionLastDuration = framePosition2 - framePosition1;
         timestampLastDuration = timestamp2 - timestamp1;
     }
-    OH_AudioRenderer_Stop(audioRender);
-    OH_AudioRenderer_Release(audioRender);
+    OH_AudioRenderer_Stop(audioRenderer);
+    OH_AudioRenderer_Release(audioRenderer);
     OH_AudioStreamBuilder_Destroy(builder);
     napi_create_int32(env, TEST_PASS, &res);
     return res;
@@ -1155,14 +1166,6 @@ static napi_value AudioStreamBuilderSetRendererCallback(napi_env env, napi_callb
     return res;
 }
 
-static int32_t AudioCapturerOnReadData(
-    OH_AudioCapturer* capturer,
-    void* userData,
-    void* buffer,
-    int32_t bufferLen)
-{
-    return 0;
-}
 static napi_value AudioStreamBuilderSetCapturerCallback(napi_env env, napi_callback_info info)
 {
     OH_AudioStreamBuilder* builder;
@@ -4933,6 +4936,12 @@ napi_property_descriptor desc1[] = {
     {"audioRenderGetFramesWritten", nullptr, AudioRenderGetFramesWritten,
         nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioRenderGetTimestamp", nullptr, AudioRenderGetTimestamp,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioRenderGetAudioTimestampInfo", nullptr, AudioRenderGetAudioTimestampInfo,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioRenderGetAudioTimestampInfoInterval", nullptr, AudioRenderGetAudioTimestampInfoInterval,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioRenderGetAudioSpeedTimestampInfo", nullptr, AudioRenderGetAudioSpeedTimestampInfoInterval,
         nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioRenderGetFrameSizeInCallback", nullptr, AudioRenderGetFrameSizeInCallback,
         nullptr, nullptr, nullptr, napi_default, nullptr},
