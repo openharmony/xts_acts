@@ -28,37 +28,30 @@ struct CloseContextMenu {
 
     Button("通过ContextMenu.close关闭")
       .id("CloseContextMenuClick")
-      .margin(30)
-      .onClick(()=>{
-      ContextMenu.close()
-    })
+      .onClick(() => {
+        ContextMenu.close()
+      })
   }
 
-
   build() {
-    Column({ space: 50 }) {
-      Column() {
-        Column() {
-          Text('CloseContextMenu')
-            .width(200)
-            .height(100)
-            .textAlign(TextAlign.Center)
-            .margin(100)
-            .fontSize(30)
-            .bindContextMenu(this.isShown, this.MyMenu, {
-              onDisappear: ()=>{
-              }
-            })
+    Column({ space: 10 }) {
+      Text('CloseContextMenu')
+        .textAlign(TextAlign.Center)
+        .bindContextMenu(this.isShown, this.MyMenu, {
+          onDisappear: () => {
+          }
+        })
 
-          Button("click")
-            .margin(30)
-            .id("CloseContextMenu")
-            .onClick(()=>{
-              this.isShown = !this.isShown;
-            })
-          Text(this.isShown.toString()).fontSize(30).id("CloseContextMenuText")
-        }
-      }.width('100%')
+      Button("click")
+        .id("CloseContextMenu")
+        .onClick(() => {
+          this.isShown = !this.isShown;
+        })
+      Text(this.isShown.toString()).id("CloseContextMenuText")
+
     }
+    .justifyContent(FlexAlign.Center)
+    .height('100%')
+    .width('100%')
   }
 }

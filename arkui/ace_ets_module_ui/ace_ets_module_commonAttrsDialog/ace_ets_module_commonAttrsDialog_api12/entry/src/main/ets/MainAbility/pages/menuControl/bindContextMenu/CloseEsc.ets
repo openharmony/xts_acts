@@ -27,31 +27,24 @@ struct CloseEsc {
     }
   }
 
-
   build() {
-    Column({ space: 50 }) {
-      Column() {
-        Column() {
-          Text('CloseEsc')
-            .width(200)
-            .height(100)
-            .textAlign(TextAlign.Center)
-            .margin(100)
-            .fontSize(30)
-            .bindContextMenu(this.isShown, this.MyMenu, {
-              onDisappear: ()=>{
-              }
-            })
+    Column({ space: 10 }) {
+      Text('CloseEsc')
+        .textAlign(TextAlign.Center)
+        .bindContextMenu(this.isShown, this.MyMenu, {
+          onDisappear: () => {
+          }
+        })
 
-          Button("click")
-            .margin(30)
-            .id("CloseEsc")
-            .onClick(()=>{
-              this.isShown = !this.isShown;
-            })
-          Text(this.isShown.toString()).fontSize(30).id("CloseEscText")
-        }
-      }.width('100%')
+      Button("click")
+        .id("CloseEsc")
+        .onClick(() => {
+          this.isShown = !this.isShown;
+        })
+      Text(this.isShown.toString()).id("CloseEscText")
     }
+    .justifyContent(FlexAlign.Center)
+    .height('100%')
+    .width('100%')
   }
 }

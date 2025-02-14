@@ -27,31 +27,25 @@ struct CloseMenu {
     }
   }
 
-
   build() {
-    Column({ space: 50 }) {
-      Column() {
-        Column() {
-          Text('CloseMenu')
-            .width(200)
-            .height(100)
-            .textAlign(TextAlign.Center)
-            .margin(100)
-            .fontSize(30)
-            .bindContextMenu(this.isShown, this.MyMenu, {
-              onDisappear: ()=>{
-              }
-            })
+    Column({ space: 10 }) {
+      Text('CloseMenu')
+        .textAlign(TextAlign.Center)
+        .bindContextMenu(this.isShown, this.MyMenu, {
+          onDisappear: () => {
+          }
+        })
 
-          Button("click")
-            .margin(30)
-            .id("CloseMenu")
-            .onClick(()=>{
-              this.isShown = !this.isShown;
-            })
-          Text(this.isShown.toString()).fontSize(30).id("CloseMenuText")
-        }
-      }.width('100%')
+      Button("click")
+        .id("CloseMenu")
+        .onClick(() => {
+          this.isShown = !this.isShown;
+        })
+      Text(this.isShown.toString()).id("CloseMenuText")
+
     }
+    .justifyContent(FlexAlign.Center)
+    .height('100%')
+    .width('100%')
   }
 }

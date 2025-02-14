@@ -26,36 +26,30 @@ struct CloseFalse {
       MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
     }
 
-    Button("点我关闭Menu").id("CloseFalseClose").onClick(()=>{
+    Button("点我关闭Menu").id("CloseFalseClose").onClick(() => {
       this.isShown = false;
     })
   }
 
-
   build() {
-    Column({ space: 50 }) {
-      Column() {
-        Column() {
-          Text('CloseFalse')
-            .width(200)
-            .height(100)
-            .textAlign(TextAlign.Center)
-            .margin(100)
-            .fontSize(30)
-            .bindContextMenu(this.isShown, this.MyMenu, {
-              onDisappear: ()=>{
-              }
-            })
+    Column({ space: 10 }) {
+      Text('CloseFalse')
+        .textAlign(TextAlign.Center)
+        .bindContextMenu(this.isShown, this.MyMenu, {
+          onDisappear: () => {
+          }
+        })
 
-          Button("click")
-            .margin(30)
-            .id("CloseFalse")
-            .onClick(()=>{
-              this.isShown = !this.isShown;
-            })
-          Text(this.isShown.toString()).fontSize(30).id("CloseFalseText")
-        }
-      }.width('100%')
+      Button("click")
+        .id("CloseFalse")
+        .onClick(() => {
+          this.isShown = !this.isShown;
+        })
+      Text(this.isShown.toString()).id("CloseFalseText")
+
     }
+    .justifyContent(FlexAlign.Center)
+    .height('100%')
+    .width('100%')
   }
 }

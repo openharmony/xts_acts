@@ -27,31 +27,24 @@ struct CloseMask {
     }
   }
 
-
   build() {
-    Column({ space: 50 }) {
-      Column() {
-        Column() {
-          Text('CloseMask')
-            .width(200)
-            .height(100)
-            .textAlign(TextAlign.Center)
-            .margin(100)
-            .fontSize(30)
-            .bindContextMenu(this.isShown, this.MyMenu, {
-              onDisappear: ()=>{
-              }
-            })
+    Column({ space: 10 }) {
+      Text('CloseMask')
+        .textAlign(TextAlign.Center)
+        .bindContextMenu(this.isShown, this.MyMenu, {
+          onDisappear: () => {
+          }
+        })
 
-          Button("click")
-            .margin(30)
-            .id("CloseMask")
-            .onClick(()=>{
-              this.isShown = !this.isShown;
-            })
-          Text(this.isShown.toString()).fontSize(30).id("CloseMaskText")
-        }
-      }.width('100%')
+      Button("click")
+        .id("CloseMask")
+        .onClick(() => {
+          this.isShown = !this.isShown;
+        })
+      Text(this.isShown.toString()).id("CloseMaskText")
     }
+    .justifyContent(FlexAlign.Center)
+    .height('100%')
+    .width('100%')
   }
 }

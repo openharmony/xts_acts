@@ -46,6 +46,9 @@ struct PopupOptionsTrueExample {
             }
           }
         })
-    }.margin(20)
+    }
+    .width('100%') 
+    .height('100%')
+    .margin(20)
   }
 }
