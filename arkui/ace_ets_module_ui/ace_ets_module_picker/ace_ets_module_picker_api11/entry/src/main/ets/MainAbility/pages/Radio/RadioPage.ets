@@ -48,8 +48,8 @@ struct RadioPage {
       Column() {
         Text(this.radioValue).key('t1')
         Radio({ value: this.radioValue, group: 'radioGroup' }).checked(true)
-          .height(30)
-          .width(30)
+          .height('8%')
+          .width('8%')
           .backgroundColor(this.backColor)
           .key('r1')
           .onChange((isChecked: boolean) => {
@@ -59,8 +59,8 @@ struct RadioPage {
       Column() {
         Text('Radio2')
         Radio({ value: 'Radio2', group: this.radioGroup }).checked(false)
-          .height(30)
-          .width(30)
+          .height('8%')
+          .width('8%')
           .key('r2')
           .onChange((isChecked: boolean) => {
             console.log('Radio2 status is ' + isChecked)
@@ -69,8 +69,8 @@ struct RadioPage {
       Column() {
         Text('Radio3')
         Radio({ value: 'Radio3', group: 'radioGroup' }).checked(false)
-          .height(30)
-          .width(30)
+          .height('8%')
+          .width('8%')
           .key('r3')
           .onChange((isChecked: boolean) => {
             this.text = "change succ"
@@ -80,8 +80,8 @@ struct RadioPage {
       Column() {
         Text('Radio4')
         Radio({ value: 'Radio4', group: this.radioGroup }).checked(false)
-          .height(30)
-          .width(30)
+          .height('8%')
+          .width('8%')
           .key('r4')
           .onChange((isChecked: boolean) => {
             console.log('Radio3 status is ' + isChecked)
