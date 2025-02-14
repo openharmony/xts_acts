@@ -53,7 +53,7 @@ struct XSlider16 {
         this.xComponentContext = this.xComponentController.getXComponentContext() as Record<string, () => void>
       })
       .width(100)
-      .height(50)
+      .height('10%')
     }
     .width('100%')
     .height('100%')
