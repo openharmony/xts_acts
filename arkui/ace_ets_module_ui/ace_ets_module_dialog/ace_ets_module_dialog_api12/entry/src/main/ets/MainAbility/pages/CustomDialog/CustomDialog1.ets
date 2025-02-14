@@ -105,7 +105,7 @@ struct CustomDialogUser1 {
   }
   build() {
     Column() {
-      Text(this.text).fontSize(30).margin(30).id("CustomDialog1Text")
+      Text(this.text).id("CustomDialog1Text")
       Button("Reset")
         .id("CustomDialog1Reset")
         .backgroundColor("#ff0000")
@@ -120,6 +120,9 @@ struct CustomDialogUser1 {
             this.dialogController.open()
           }
         }).backgroundColor(0x317aff)
-    }.width('100%').margin({ top: 5 })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
