@@ -13,6 +13,7 @@
  * limitations under the License.
  */
  
+
 @Entry
 @Component
 struct bindSelectionMenuTest {
@@ -25,7 +26,7 @@ struct bindSelectionMenuTest {
     Column() {
       Text(undefined, this.options) {
         Span('HelloWorld')
-      }
+      }.fontSize('15vp')
       .id('text')
       .copyOption(CopyOptions.InApp)
       .bindSelectionMenu(TextSpanType.DEFAULT, this.panel, TextResponseType.DEFAULT, {
@@ -46,12 +47,12 @@ struct bindSelectionMenuTest {
       })
       .onTextSelectionChange((selectionStart: number, selectionEnd: number) => {
       })
-      .height('10%')
+      .height('15%')
       .textAlign(TextAlign.Center)
       Text(undefined, this.options) {
         ImageSpan($r('app.media.icon'))
-          .width('100px')
-          .height('100px')
+          .width('50vp')
+          .height('50vp')
           .objectFit(ImageFit.Fill)
           .verticalAlign(ImageSpanAlignment.CENTER)
       }
@@ -77,15 +78,15 @@ struct bindSelectionMenuTest {
       .onTextSelectionChange((selectionStart: number, selectionEnd: number) => {
         console.info(`文本选中区域变化回调, selectionStart: ${selectionStart}, selectionEnd: ${selectionEnd}`);
       })
-      .height('10%')
+      .height('15%')
       Text(undefined, this.options) {
         Span('HelloWorld')
         ImageSpan($r('app.media.icon'))
-          .width('100px')
-          .height('100px')
+          .width('50vp')
+          .height('50vp')
           .objectFit(ImageFit.Fill)
           .verticalAlign(ImageSpanAlignment.CENTER)
-      }
+      }.fontSize('15vp')
       .id('mixed')
       .copyOption(CopyOptions.InApp)
       .bindSelectionMenu(TextSpanType.DEFAULT, this.panel, TextResponseType.DEFAULT, {
@@ -106,17 +107,16 @@ struct bindSelectionMenuTest {
       })
       .onTextSelectionChange((selectionStart: number, selectionEnd: number) => {
       })
-      .height('10%')
+      .height('15%')
       .textAlign(TextAlign.Center)
     }
     .width('100%')
     .height('100%')
   }
-
   @Builder
   panel() {
     Column() {
-      Text('自定义菜单')
+      Text("自定义菜单")
     }.width(130).height(20).backgroundColor(Color.Red)
   }
 }
