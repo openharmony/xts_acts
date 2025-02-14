@@ -43,6 +43,15 @@ export default function ActsNotificationShowTest() {
         expect(error.code).assertEqual(801)
         done()
       }
+      try {
+        await notification.show()
+        expect(true).assertTrue()
+        done()
+      } catch (error) {
+        console.error(`show fail: ${JSON.stringify(error)}`);
+        expect(error.code).assertEqual(801)
+        done()
+      }
     })
 
     /*

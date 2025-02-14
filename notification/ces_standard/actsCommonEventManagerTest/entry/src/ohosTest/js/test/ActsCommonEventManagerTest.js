@@ -237,24 +237,25 @@ export default function ActsCommonEventManagerTest() {
             } catch (err) {
               console.info(`subscribe_2 failed, code is ${err.code}, message is ${err.message}`)
             }
-
-            try {
-              commonEventManager.unsubscribe(subscriber, (err) => {
-                if (err) {
-                  console.info(`unsubscribe err, code is ${err.code}, message is ${err.message}`)
-                  expect(false).assertTrue()
-                  done()
-                } else {
-                  console.info(`unsubscribe success`)
-                  expect(true).assertTrue()
-                  done()
-                }
-              })
-            } catch (err) {
-              console.info(`unsubscribe failed, code is ${err.code}, message is ${err.message}`)
-              expect(false).assertTrue()
-              done()
-            }
+            setTimeout(() => {
+              try {
+                commonEventManager.unsubscribe(subscriber, (err) => {
+                  if (err) {
+                    console.info(`unsubscribe err, code is ${err.code}, message is ${err.message}`)
+                    expect(false).assertTrue()
+                    done()
+                  } else {
+                    console.info(`unsubscribe success`)
+                    expect(true).assertTrue()
+                    done()
+                  }
+                })
+              } catch (err) {
+                console.info(`unsubscribe failed, code is ${err.code}, message is ${err.message}`)
+                expect(false).assertTrue()
+                done()
+              }
+            },1000)
             expect(true).assertTrue()
             done()
           }
@@ -265,6 +266,48 @@ export default function ActsCommonEventManagerTest() {
         done()
       }
 
+      try {
+        commonEventManager.createSubscriber(subscribeInfo, (err, commonEventSubscriber) => {
+          if (err) {
+            console.info(`Sub_Notification_Ans_Subscriber_Unsubscribe_0200 err, error code: ${err.code}, message: ${err.message}`)
+            expect(false).assertTrue()
+            done()
+          } else {
+            console.info(`Sub_Notification_Ans_Subscriber_Unsubscribe_0200 success ${commonEventSubscriber}`)
+            subscriber = commonEventSubscriber
+            try {
+              commonEventManager.subscribe(subscriber, (err, data) => {
+                if (err) {
+                  console.info(`subscribe_2 err, code is ${err.code}, message is ${err.message}`)
+                  expect(false).assertTrue()
+                  done()
+                } else {
+                  console.info(`subscribe_2 success`)
+                  expect(true).assertTrue()
+                  done()
+                }
+              })
+            } catch (err) {
+              console.info(`subscribe_2 failed, code is ${err.code}, message is ${err.message}`)
+            }
+            setTimeout(() => {
+              try {
+                commonEventManager.unsubscribe(subscriber)
+              } catch (err) {
+                console.info(`unsubscribe failed, code is ${err.code}, message is ${err.message}`)
+                expect(false).assertTrue()
+                done()
+              }
+            },1000)
+            expect(true).assertTrue()
+            done()
+          }
+        })
+      } catch (err) {
+        console.info(`createSubscriber failed, code is ${err.code}, message is ${err.message}`)
+        expect(false).assertTrue()
+        done()
+      }
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Unsubscribe_0200 END`)
 
     })
