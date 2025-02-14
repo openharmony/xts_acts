@@ -14,14 +14,17 @@
  */
 
 import textAreaInputTest from './TextTest/textAreaInputTest.test';
+import RichEditorStopBackPressTest from './RichEditorTest/RichEditorStopBackPress.test';
 import TextInputKeyboardAppearanceTest from './TextInputTest/TextInputKeyboardAppearance.test';
 import TextAreaKeyboardAppearanceTest from './TextAreaTest/TextAreaKeyboardAppearance.test';
 import SearchKeyboardAppearanceTest from './Search/SearchKeyboardAppearance.test';
-
+import RichEditorKeyboardAppearanceTest from './RichEditorTest/RichEditorKeyboardAppearance.test';
 
 export default function testsuite() {
   textAreaInputTest();
+  RichEditorStopBackPressTest();
   TextInputKeyboardAppearanceTest();
   TextAreaKeyboardAppearanceTest();
   SearchKeyboardAppearanceTest();
+  RichEditorKeyboardAppearanceTest();
 }
