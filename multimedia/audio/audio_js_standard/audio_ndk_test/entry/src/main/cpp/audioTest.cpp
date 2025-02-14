@@ -706,7 +706,7 @@ static napi_value AudioRenderGetAudioSpeedTimestampInfo(napi_env env, napi_callb
             framePositionLastDuration = framePosition2 - framePosition1;
             timestampLastDuration = timestamp2 - timestamp1;
             continue;
-		}
+        }
 		
         int64_t timestampCurDuration = timestamp2 - timestamp1;
         int64_t framePositionCurDuration = (framePosition2 - framePosition1) *
