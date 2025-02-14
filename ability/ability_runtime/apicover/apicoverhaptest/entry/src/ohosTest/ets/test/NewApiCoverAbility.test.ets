@@ -20,20 +20,34 @@ import { BusinessError } from '@ohos.base';
 import { Configuration } from '@ohos.app.ability.Configuration';
 import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
+import { Driver } from '@ohos.UiTest';
 
 function sleep(time:number) {
   return new Promise((resolve: (value: string) => void) => {
-  setTimeout(() => {
-    resolve("ok");
-  }, time)
-});
+    setTimeout(() => {
+      resolve("ok");
+    }, time)
+  });
 }
+
+let driver1:Driver;
 export default function NewApiCoverTest() {
   describe('NewApiCoverTestTest', () => {
+    beforeAll(async()=>{
+      try{
+        driver1 = await Driver.create();
+      }catch{
+        console.info("NewApiCoverTestTest beforeAll create driver error" );
+      }
+    })
+
     afterEach(async (done: Function) => {
-      setTimeout(() => {
+      try{
+        await driver1.delayMs(2500);
         done();
-      }, 2500);
+      }catch{
+        console.info("NewApiCoverTestTest afterEach delayMs error" );
+      }
     })
 
     /*

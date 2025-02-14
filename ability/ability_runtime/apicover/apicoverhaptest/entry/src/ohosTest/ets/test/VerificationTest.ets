@@ -21,7 +21,7 @@ import common from '@ohos.app.ability.common';
 import commonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
 import Want from '@ohos.app.ability.Want';
-import { UiDriver, BY} from '@ohos.UiTest';
+import { UiDriver, BY, Driver} from '@ohos.UiTest';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 
 let INVALID_PARAM = 401;
@@ -31,8 +31,16 @@ function sleep(ms: number) {
   return new Promise<number>(resolve => setTimeout(resolve, ms));
 }
 
+let driver1:Driver;
 export default function verificationTest() {
   describe('VerificationTestTest', () => {
+    beforeAll(async()=>{
+      try{
+        driver1 = await Driver.create();
+      }catch{
+        console.info("VerificationTestTest beforeAll create driver error" );
+      }
+    })
     beforeEach(async (done: Function) => {
       TAG = 'beforeEach ==>';
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility({
@@ -48,9 +56,12 @@ export default function verificationTest() {
     })
 
     afterEach(async (done: Function) => {
-      setTimeout(() => {
+      try{
+        await driver1.delayMs(1000);
         done();
-      }, 1000);
+      }catch{
+        console.info("VerificationTestTest afterEach delayMs error" );
+      }
     })
 
     /*
