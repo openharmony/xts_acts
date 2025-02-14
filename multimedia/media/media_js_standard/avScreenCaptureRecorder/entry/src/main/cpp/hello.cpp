@@ -23,14 +23,10 @@
 
 #define FAIL (-1)
 #define SUCCESS 0
-#define WIDTH 1920
-#define HEIGHT 1080
-#define PARAM_720 720
-#define PARAM_1280 1280
 #define PARAM_0 0
 #define PARAM_30 30
-const bool isEncoder = true;
-const bool isDecoder = false;
+const bool Isencoder = true;
+const bool Isdecoder = false;
 
 static napi_value OHAvCapabilityByCategoryH265(napi_env env, napi_callback_info info)
 {
@@ -39,7 +35,7 @@ static napi_value OHAvCapabilityByCategoryH265(napi_env env, napi_callback_info 
     OH_AVCapability *capability = nullptr;
     OH_AVRange qualityRange;
     OH_AVErrCode checkParam;
-    capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, isEncoder, HARDWARE);
+    capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, Isencoder, HARDWARE);
     if (capability != nullptr) {
         backParam = SUCCESS;
     }
