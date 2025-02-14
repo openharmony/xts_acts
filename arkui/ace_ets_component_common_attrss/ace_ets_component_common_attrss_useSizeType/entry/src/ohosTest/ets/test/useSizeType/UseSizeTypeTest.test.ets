@@ -74,10 +74,7 @@ export default function useSizeTypeTest() {
     'Rating',
     'ScrollBar',
     'Search',
-    'Select',
     'Slider',
-    'Stepper',
-    'StepperItem',
     'TabContent',
     'Text',
     'TextArea',
@@ -89,10 +86,8 @@ export default function useSizeTypeTest() {
     'Toggle',
     'Badge',
     'Column',
-    'ColumnSplit',
     'Counter',
     'Flex',
-    'FlowItem',
     'GridCol',
     'GridRow',
     'Grid',
@@ -105,9 +100,7 @@ export default function useSizeTypeTest() {
     'Refresh',
     'RelativeContainer',
     'Row',
-    'RowSplit',
     'Scroll',
-    'SideBarContainer',
     'Stack',
     'Swiper',
     'Tabs',
@@ -118,8 +111,7 @@ export default function useSizeTypeTest() {
     'Path',
     'Rect',
     'Shape',
-    'Line',
-    'WaterFlow'
+    'Line'
   ]
 
 
