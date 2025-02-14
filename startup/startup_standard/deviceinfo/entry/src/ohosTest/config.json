@@ -34,6 +34,16 @@
               ],
               "when": "inuse"
           }
+      },
+      {
+        "name": "ohos.permission.ACCESS_DISK_PHY_INFO",
+        "reason": "need use ohos.permission.ACCESS_DISK_PHY_INFO",
+        "usedScene": {
+            "ability": [
+                "FormAbility"
+            ],
+            "when": "inuse"
+        }
       }
     ],
     "abilities": [
