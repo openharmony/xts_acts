@@ -47,7 +47,7 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        { "OHAvCapabilityByCategoryH265", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr }
+        { "OHAvCapabilityByCategoryH265", nullptr, OHAvCapabilityByCategoryH265, nullptr, nullptr, nullptr, napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
