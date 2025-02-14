@@ -2,10 +2,8 @@
   "src": [
     "MainAbility/pages/index/index",
     "MainAbility/pages/Text/textAreaInputTest",
-    "MainAbility/pages/RichEditor/RichEditorStopBackPress",
     "MainAbility/pages/TextInput/TextInputKeyboardAppearance",
     "MainAbility/pages/TextArea/TextAreaKeyboardAppearance",
-    "MainAbility/pages/Search/SearchKeyboardAppearance",
-    "MainAbility/pages/RichEditor/RichEditorKeyboardAppearance"
+    "MainAbility/pages/Search/SearchKeyboardAppearance"
   ]
 }
