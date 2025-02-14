@@ -74,33 +74,6 @@ struct getListItemGroupRect1 {
 
   build() {
     Column() {
-      List({ space: this.space1, initialIndex: 0, scroller: this.listScroller }) {
-        ListItemGroup({ header: this.itemHead('0'), footer: this.itemFoot(this.arr.length), space: this.space2 }) {
-          ForEach(this.arr, (item: number) => {
-            ListItem() {
-              Text('listItemGroup' + item)
-                .width('100%')
-                .height("100%")
-                .fontSize(16)
-                .borderRadius(10)
-                .textAlign(TextAlign.Center)
-                .backgroundColor('#3366CC')
-            }
-            .width('100%')
-            .height(100)
-            .margin(this.margin1)
-            .key('getListItemGroupRect1_listItemGroup_' + item)
-          })
-        }
-        .padding(this.padding1)
-      }
-      .key('getListItemGroupRect1_list_1')
-      .listDirection(Axis.Vertical) // 排列方向
-      .scrollBar(BarState.Off)
-      .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
-      .width(300)
-      .height('60%')
-
       Button('点击获取信息').onClick((event: ClickEvent) => {
         this.x = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).x
         this.y = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).y
@@ -123,6 +96,34 @@ struct getListItemGroupRect1 {
         this.margin1 = 0
         this.listScroller.scrollEdge(Edge.Start)
       }).id('getListItemGroupRect1_button3')
+
+      List({ space: this.space1, initialIndex: 0, scroller: this.listScroller }) {
+        ListItemGroup({ header: this.itemHead('0'), footer: this.itemFoot(this.arr.length), space: this.space2 }) {
+          ForEach(this.arr, (item: number) => {
+            ListItem() {
+              Text('listItemGroup' + item)
+                .width('100%')
+                .height("100%")
+                .fontSize(16)
+                .borderRadius(10)
+                .textAlign(TextAlign.Center)
+                .backgroundColor('#3366CC')
+            }
+            .width('100%')
+            .height(10)
+            .margin(this.margin1)
+            .key('getListItemGroupRect1_listItemGroup_' + item)
+          })
+        }
+        .padding(this.padding1)
+      }
+      .key('getListItemGroupRect1_list_1')
+      .listDirection(Axis.Vertical) // 排列方向
+      .scrollBar(BarState.Off)
+      .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
+      .width(300)
+      .height('80%')
+
     }
     .width('100%')
     .height('100%')
