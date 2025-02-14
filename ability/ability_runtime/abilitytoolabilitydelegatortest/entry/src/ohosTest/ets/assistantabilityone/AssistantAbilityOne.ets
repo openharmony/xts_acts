@@ -29,7 +29,7 @@ export default class AssistantAbilityOne extends UIAbility {
 
   onDestroy() {
     hilog.info(0x0000, 'testTag AssistantAbilityOne', '%{public}s', 'Ability onDestroy');
-    commonEventManager.publish("AbilityDelegator_Destory", (err, data) => {
+    commonEventManager.publish('AbilityDelegator_Destory', (err, data) => {
       hilog.info(0x0000, 'testTag AssistantAbilityOne', '%{public}s', 'publish success');
     })
   }
