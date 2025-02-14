@@ -446,8 +446,7 @@ static napi_value AudioCaptureGetFrameSizeInCallback(napi_env env, napi_callback
     return res;
 }
 
-static int32_t AudioCapturerOnReadData(
-    OH_AudioCapturer* capturer,
+static int32_t AudioRendererOnWriteData(OH_AudioRenderer* capturer,
     void* userData,
     void* buffer,
     int32_t bufferLen)
@@ -462,7 +461,7 @@ OH_AudioStreamBuilder *CreateRenderBuilder()
     OH_AudioStreamBuilder_Create(&builder, type);
     OH_AudioRenderer_Callbacks callbacks;
     callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
-    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerCallback(builder, callbacks, NULL);
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, NULL);
     return builder;
 }
 
@@ -708,11 +707,11 @@ static napi_value AudioRenderGetAudioSpeedTimestampInfo(napi_env env, napi_callb
         int64_t framePosition2 = 0;
         int64_t timestamp1 = 0;
         int64_t timestamp2 = 0;
-        result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, CLOCK_MONOTONIC, &framePosition1, &timestamp1);
+        result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, &framePosition1, &timestamp1);
 
         uDelay(sleepNum);
 		
-        result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, CLOCK_MONOTONIC, &framePosition2, &timestamp2);
+        result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, &framePosition2, &timestamp2);
         if (framePositionLastDuration == 0) {
             framePositionLastDuration = framePosition2 - framePosition1;
             timestampLastDuration = timestamp2 - timestamp1;
@@ -1131,6 +1130,14 @@ static napi_value AudioStreamBuilderSetRendererInfo(napi_env env, napi_callback_
     return res;
 }
 
+static int32_t AudioCapturerOnReadData(
+    OH_AudioCapturer* capturer,
+    void* userData,
+    void* buffer,
+    int32_t bufferLen)
+{
+    return 0;
+}
 
 static napi_value AudioStreamBuilderSetCapturerInfo(napi_env env, napi_callback_info info)
 {
@@ -1145,13 +1152,6 @@ static napi_value AudioStreamBuilderSetCapturerInfo(napi_env env, napi_callback_
     return res;
 }
 
-static int32_t AudioRendererOnWriteData(OH_AudioRenderer* capturer,
-    void* userData,
-    void* buffer,
-    int32_t bufferLen)
-{
-    return 0;
-}
 static napi_value AudioStreamBuilderSetRendererCallback(napi_env env, napi_callback_info info)
 {
     OH_AudioStreamBuilder* builder;
