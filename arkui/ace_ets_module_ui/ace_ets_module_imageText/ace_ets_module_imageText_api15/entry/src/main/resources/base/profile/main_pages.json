@@ -1,0 +1,9 @@
+{
+  "src": [
+    "MainAbility/pages/index/index",
+    "MainAbility/pages/Text/textAreaInputTest",
+    "MainAbility/pages/TextInput/TextInputKeyboardAppearance",
+    "MainAbility/pages/TextArea/TextAreaKeyboardAppearance",
+    "MainAbility/pages/Search/SearchKeyboardAppearance"
+  ]
+}
