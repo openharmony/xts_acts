@@ -506,7 +506,7 @@ export default function audioNDK() {
    */
     it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0100', 0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetAudioTimestampInfo();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0100 Audio_Render_GetAudio_Time_stamp_Info: ${result}`);
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0100 audioRenderGetAudioTimestampInfo: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
@@ -520,7 +520,7 @@ export default function audioNDK() {
    */
     it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMPINFOINTERVAL_0100', 0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetAudioTimestampInfoInterval();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMPINFOINTERVAL_0100 Audio_Render_GetAudio_Time_stamp_Info_Interval: ${result}`);
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMPINFOINTERVAL_0100 audioRenderGetAudioTimestampInfoInterval: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
@@ -534,7 +534,7 @@ export default function audioNDK() {
    */
     it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSPEEDSTAMPINFO_0100', 0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetAudioSpeedTimestampInfo();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSPEEDSTAMPINFO_0100 Audio_Render_Get_Audio_Speed_Time_stamp_Info: ${result}`);
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSPEEDSTAMPINFO_0100 audioRenderGetAudioSpeedTimestampInfo: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
