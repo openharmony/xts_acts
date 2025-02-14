@@ -23,6 +23,7 @@ group("componentAdvancedTest") {
         "ace_ets_component_advanced_arcalphabetindexer:componentArcAlphabetIndexerTest",
         "ace_ets_component_advanced_arcbutton:componentArcButtonTest",
         "ace_ets_component_advanced_arclist:componentArcListTest",
+        "ace_ets_component_advanced_arcslider:componentArcSliderTest",
         "ace_ets_component_advanced_chip:componentChipTest",
         "ace_ets_component_advanced_list:componentListTest",
       ]
