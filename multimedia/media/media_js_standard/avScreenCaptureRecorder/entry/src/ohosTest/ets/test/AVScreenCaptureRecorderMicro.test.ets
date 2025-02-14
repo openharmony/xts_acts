@@ -17,6 +17,7 @@ import media from '@ohos.multimedia.media'
 import MediaTestBase from './MediaTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
+import myScreenCaptureNdk from 'libentry.so';
 
 let mediaTestBase = new MediaTestBase()
 export default function AVScreenCaptureRecorderMicro() {
@@ -116,6 +117,12 @@ export default function AVScreenCaptureRecorderMicro() {
         * @tc.level     : Level 1
     */
     it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1200', 0, async (done: Function) => {
+      let result: number = myScreenCaptureNdk.OHAvCapabilityByCategoryH265();
+      if (result != 0) {
+        console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1200 start')
 
       let mySteps = new Array(
