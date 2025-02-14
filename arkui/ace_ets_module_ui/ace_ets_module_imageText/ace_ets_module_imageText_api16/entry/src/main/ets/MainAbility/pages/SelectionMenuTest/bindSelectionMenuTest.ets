@@ -116,7 +116,7 @@ struct bindSelectionMenuTest {
   @Builder
   panel() {
     Column() {
-      Text("自定义菜单")
+      Text('自定义菜单')
     }.width(130).height(20).backgroundColor(Color.Red)
   }
 }
