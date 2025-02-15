@@ -10,6 +10,15 @@
     },
     "kits": [
         {
+            "type": "PushKit",
+            "pre-push": [
+                "mount -o rw,remount /"
+            ],
+            "push": [
+                "./resource/inputMethod/input_method_choose_dialog.hap ->/data/local/tmp"
+            ]
+        },
+        {
             "test-file-name": [
                 "ActsInputMethodWindManageTest.hap"
             ],
@@ -31,6 +40,7 @@
                 "sed -i 's/enableFullExperienceFeature\": true/enableFullExperienceFeature\": false/' /system/variant/car/base/etc/inputmethod/inputmethod_framework_config.json",
                 "param set persist.usb.setting.gadget_conn_prompt false",
                 "param set persist.skip_scb_charging 1",
+                "bm install -p /data/local/tmp/input_method_choose_dialog.hap",
                 "reboot",
                 "power-shell wakeup",
                 "param set persist.sys.abilityms.support.ecologicalrulemgrservice false",
