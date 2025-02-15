@@ -20,31 +20,31 @@ struct TextAreaKeyboardAppearance {
     Column({ space: 1 }) {
       Text('TextArea:KeyboardAppearance新增枚举类型').height('8%')
       TextArea({ placeholder: 'NONE_IMMERSIVE' })
-        .id("TextArea_KeyboardAppearance_NONE_IMMERSIVE")
+        .id('TextArea_KeyboardAppearance_NONE_IMMERSIVE')
         .keyboardAppearance(KeyboardAppearance.NONE_IMMERSIVE)
         .height('15%')
 
       TextArea({ placeholder: 'IMMERSIVE' })
-        .id("TextArea_KeyboardAppearance_IMMERSIVE")
+        .id('TextArea_KeyboardAppearance_IMMERSIVE')
         .keyboardAppearance(KeyboardAppearance.IMMERSIVE)
         .height('15%')
 
       TextArea({ placeholder: 'LIGHT_IMMERSIVE' })
-        .id("TextArea_KeyboardAppearance_LIGHT_IMMERSIVE")
+        .id('TextArea_KeyboardAppearance_LIGHT_IMMERSIVE')
         .keyboardAppearance(KeyboardAppearance.LIGHT_IMMERSIVE)
         .height('15%')
 
       TextArea({ placeholder: 'DARK_IMMERSIVE' })
-        .id("TextArea_KeyboardAppearance_DARK_IMMERSIVE")
+        .id('TextArea_KeyboardAppearance_DARK_IMMERSIVE')
         .keyboardAppearance(KeyboardAppearance.DARK_IMMERSIVE)
         .height('15%')
 
       TextArea({ placeholder: 'DEFAULT' })
-        .id("TextArea_KeyboardAppearance_DEFAULT")
+        .id('TextArea_KeyboardAppearance_DEFAULT')
         .height('15%')
 
       TextArea({ placeholder: 'UNDEFINED' })
-        .id("TextArea_KeyboardAppearance_UNDEFINED")
+        .id('TextArea_KeyboardAppearance_UNDEFINED')
         .keyboardAppearance(undefined)
         .height('15%')
     }.width('100%')

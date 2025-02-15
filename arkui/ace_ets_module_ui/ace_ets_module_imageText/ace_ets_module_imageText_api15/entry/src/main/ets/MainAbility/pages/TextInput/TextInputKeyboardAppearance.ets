@@ -20,31 +20,31 @@ struct TextInputKeyboardAppearance {
     Column({ space: 1 }) {
       Text('TextInput:KeyboardAppearance新增枚举类型').height('8%')
       TextInput({ placeholder: 'NONE_IMMERSIVE' })
-        .id("TextInputKeyboardAppearance_NONE_IMMERSIVE")
+        .id('TextInputKeyboardAppearance_NONE_IMMERSIVE')
         .keyboardAppearance(KeyboardAppearance.NONE_IMMERSIVE)
         .height('15%')
 
       TextInput({ placeholder: 'IMMERSIVE' })
-        .id("TextInputKeyboardAppearance_IMMERSIVE")
+        .id('TextInputKeyboardAppearance_IMMERSIVE')
         .keyboardAppearance(KeyboardAppearance.IMMERSIVE)
         .height('15%')
 
       TextInput({ placeholder: 'LIGHT_IMMERSIVE' })
-        .id("TextInputKeyboardAppearance_LIGHT_IMMERSIVE")
+        .id('TextInputKeyboardAppearance_LIGHT_IMMERSIVE')
         .keyboardAppearance(KeyboardAppearance.LIGHT_IMMERSIVE)
         .height('15%')
 
       TextInput({ placeholder: 'DARK_IMMERSIVE' })
-        .id("TextInputKeyboardAppearance_DARK_IMMERSIVE")
+        .id('TextInputKeyboardAppearance_DARK_IMMERSIVE')
         .keyboardAppearance(KeyboardAppearance.DARK_IMMERSIVE)
         .height('15%')
 
       TextInput({ placeholder: 'DEFAULT' })
-        .id("TextInputKeyboardAppearance_DEFAULT")
+        .id('TextInputKeyboardAppearance_DEFAULT')
         .height('15%')
 
       TextInput({ placeholder: 'UNDEFINED' })
-        .id("TextInputKeyboardAppearance_UNDEFINED")
+        .id('TextInputKeyboardAppearance_UNDEFINED')
         .keyboardAppearance(undefined)
         .height('15%')
     }.width('100%')

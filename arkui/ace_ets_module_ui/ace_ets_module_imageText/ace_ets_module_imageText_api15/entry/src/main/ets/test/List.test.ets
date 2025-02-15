@@ -17,6 +17,8 @@ import textAreaInputTest from './TextTest/textAreaInputTest.test';
 import TextInputKeyboardAppearanceTest from './TextInputTest/TextInputKeyboardAppearance.test';
 import TextAreaKeyboardAppearanceTest from './TextAreaTest/TextAreaKeyboardAppearance.test';
 import SearchKeyboardAppearanceTest from './Search/SearchKeyboardAppearance.test';
+import RichEditorKeyboardAppearanceTest from './RichEditorTest/RichEditorKeyboardAppearance.test';
+import RichEditorStopBackPressTest from './RichEditorTest/RichEditorStopBackPress.test';
 
 
 export default function testsuite() {
@@ -24,4 +26,6 @@ export default function testsuite() {
   TextInputKeyboardAppearanceTest();
   TextAreaKeyboardAppearanceTest();
   SearchKeyboardAppearanceTest();
+  RichEditorKeyboardAppearanceTest();
+  RichEditorStopBackPressTest();
 }

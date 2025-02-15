@@ -4,6 +4,8 @@
     "MainAbility/pages/Text/textAreaInputTest",
     "MainAbility/pages/TextInput/TextInputKeyboardAppearance",
     "MainAbility/pages/TextArea/TextAreaKeyboardAppearance",
-    "MainAbility/pages/Search/SearchKeyboardAppearance"
+    "MainAbility/pages/Search/SearchKeyboardAppearance",
+    "MainAbility/pages/RichEditor/RichEditorKeyboardAppearance",
+    "MainAbility/pages/RichEditor/RichEditorStopBackPress"
   ]
 }
