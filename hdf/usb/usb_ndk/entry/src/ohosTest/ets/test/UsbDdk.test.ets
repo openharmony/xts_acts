@@ -16,7 +16,6 @@
 import { beforeAll, describe, it, expect } from "@ohos/hypium"
 import usbDdk from 'libusbddkndk.so'
 import deviceManager from "@ohos.driver.deviceManager";
-import bundle from "@ohos.bundle.bundleManager";
 
 export default function usbDdkTest() {
   let dev: number = -1;
@@ -28,7 +27,6 @@ export default function usbDdkTest() {
     const USB_DDK_FAILED: number = -1;
     const USB_DDK_INVALID_PARAMETER: number = 401;
     const USB_DDK_INVALID_OPERATION: number = 27400002;
-    let targetVersion: number;
 
     beforeAll(async () => {
       try {
@@ -40,13 +38,6 @@ export default function usbDdkTest() {
         }
       } catch (error) {
         console.error(`Failed to query device. Code is ${error.code}, message is ${error.message}`);
-      }
-
-      try {
-        targetVersion = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).targetVersion;
-        console.info(`${TAG} targetVersion is : ${targetVersion}`);
-      } catch (err) {
-        console.info(`${TAG} targetVersion get err : ${err}`);
       }
     })
 
@@ -532,10 +523,6 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSendControlWriteRequestOne(dev);
         console.info("Test USB data Result = " + data);
-        if (targetVersion < 16) {
-          expect(data).assertEqual(USB_DDK_SUCCESS);
-          done()
-        }
         expect(data).assertEqual(USB_DDK_INVALID_PARAMETER);
         done()
       }
