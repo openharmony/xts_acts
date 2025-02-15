@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022-2023 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -44,8 +44,8 @@ export function prepare200MFile(fpath) {
   try {
     let file = fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE)
     fileIO.truncateSync(file.fd)
-    let bf = new ArrayBuffer(1024 * 1024 * 20);
-    for (let i = 0; i < 10; i++) {
+    let bf = new ArrayBuffer(1024 * 1024 * 5);
+    for (let i = 0; i < 4; i++) {
       let offset = bf.byteLength * i;
       let writeLen = fileIO.writeSync(file.fd, bf, { offset: offset, length: bf.byteLength, encoding: 'utf-8' });
     }
