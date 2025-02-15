@@ -166,10 +166,158 @@ export default function relationalStoreAsyncDownloadAssetTest() {
       } catch (err) {
         console.log(TAG + `testRdbAsyncDownloadAsset003 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
         expect(err.code).assertEqual("401");
-
         done()
       }
     })
+
+  /**
+   * @tc.name set distributeded table cloud with promise
+   * @tc.number SUB_DistributedData_RelationalStore_SDK_AsyncDownloadAsset_0400
+   * @tc.desc set distributed table cloud with 'asyncDownloadAsset' is 0
+  */
+   it('testRdbAsyncDownloadAsset004', 0, async function (done) {
+    console.log(TAG + "************* testRdbAsyncDownloadAsset004 start *************");
+    try {
+        let config = {
+            autoSync: false,
+            asyncDownloadAsset: 0
+        }
+        await rdbStore.setDistributedTables(['employee'],
+            relationalStore.DistributedType.DISTRIBUTED_CLOUD, config).then(() => {
+            console.log(TAG + "set employee to be distributed cloud table success");
+            expect().assertFail();
+            console.log(TAG + "************* testRdbAsyncDownloadAsset004 end *************");
+            done();
+        }).catch((err) => {
+            console.log(TAG + `testRdbAsyncDownloadAsset004 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
+            expect().assertFail();
+            done()
+        });
+      } catch (err) {
+        console.log(TAG + `testRdbAsyncDownloadAsset004 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
+        expect(err.code).assertEqual("401");
+        done()
+      }
+    })
+
+  /**
+   * @tc.name set distributeded table cloud with promise
+   * @tc.number SUB_DistributedData_RelationalStore_SDK_AsyncDownloadAsset_0500
+   * @tc.desc set distributed table cloud with 'asyncDownloadAsset' is 1
+  */
+   it('testRdbAsyncDownloadAsset005', 0, async function (done) {
+    console.log(TAG + "************* testRdbAsyncDownloadAsset005 start *************");
+    try {
+        let config = {
+            autoSync: false,
+            asyncDownloadAsset: 1
+        }
+        await rdbStore.setDistributedTables(['employee'],
+            relationalStore.DistributedType.DISTRIBUTED_CLOUD, config).then(() => {
+            console.log(TAG + "set employee to be distributed cloud table success");
+            expect().assertFail();
+            console.log(TAG + "************* testRdbAsyncDownloadAsset005 end *************");
+            done();
+        }).catch((err) => {
+            console.log(TAG + `testRdbAsyncDownloadAsset005 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
+            expect().assertFail();
+            done()
+        });
+      } catch (err) {
+        console.log(TAG + `testRdbAsyncDownloadAsset005 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
+        expect(err.code == 401).assertTrue();
+        done()
+      }
+    })
+
+  /**
+   * @tc.name set distributeded table cloud with promise
+   * @tc.number SUB_DistributedData_RelationalStore_SDK_AsyncDownloadAsset_0600
+   * @tc.desc set distributed table cloud with 'asyncDownloadAsset' is -1
+  */
+   it('testRdbAsyncDownloadAsset006', 0, async function (done) {
+    console.log(TAG + "************* testRdbAsyncDownloadAsset006 start *************");
+    try {
+        let config = {
+            autoSync: false,
+            asyncDownloadAsset: -1
+        }
+        await rdbStore.setDistributedTables(['employee'],
+            relationalStore.DistributedType.DISTRIBUTED_CLOUD, config).then(() => {
+            console.log(TAG + "testRdbAsyncDownloadAsset006 set employee to be distributed cloud table success");
+            expect().assertFail();
+            console.log(TAG + "************* testRdbAsyncDownloadAsset006 end *************");
+            done();
+        }).catch((err) => {
+            console.log(TAG + `testRdbAsyncDownloadAsset006 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
+            expect().assertFail();
+            done()
+        });
+      } catch (err) {
+        console.log(TAG + `testRdbAsyncDownloadAsset006 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
+        expect(err.code == 401).assertTrue();
+        done()
+      }
+    })
+
+
+  /**
+   * @tc.name set distributeded table cloud with promise
+   * @tc.number SUB_DistributedData_RelationalStore_SDK_AsyncDownloadAsset_0700
+   * @tc.desc set distributed table cloud with 'autoSync' is true 'asyncDownloadAsset' is true
+  */
+   it('testRdbAsyncDownloadAsset007', 0, async function (done) {
+    console.log(TAG + "************* testRdbAsyncDownloadAsset007 start *************");
+    try {
+        let config = {
+            autoSync: true,
+            asyncDownloadAsset: true,
+        }
+        await rdbStore.setDistributedTables(['employee'],
+            relationalStore.DistributedType.DISTRIBUTED_CLOUD, config).then(() => {
+            console.log(TAG + "testRdbAsyncDownloadAsset007 set employee to be distributed cloud table success");
+            console.log(TAG + "************* testRdbAsyncDownloadAsset007 end *************");
+            done();
+        }).catch((err) => {
+            console.log(TAG + `testRdbAsyncDownloadAsset007 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
+            expect().assertFail();
+            done()
+        });
+      } catch (err) {
+        console.log(TAG + `testRdbAsyncDownloadAsset007 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
+        expect().assertFail();
+        done()
+      }
+    })
+
+    /**
+     * @tc.name set distributeded table cloud with promise
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_AsyncDownloadAsset_0800
+     * @tc.desc set distributed table cloud with 'autoSync' is true 'asyncDownloadAsset' is false
+    */
+    it('testRdbAsyncDownloadAsset008', 0, async function (done) {
+      console.log(TAG + "************* testRdbAsyncDownloadAsset008 start *************");
+      try {
+          let config = {
+              autoSync: true,
+              asyncDownloadAsset: false,
+          }
+          await rdbStore.setDistributedTables(['employee'],
+              relationalStore.DistributedType.DISTRIBUTED_CLOUD, config).then(() => {
+              console.log(TAG + "testRdbAsyncDownloadAsset008 set employee to be distributed cloud table success");
+              console.log(TAG + "************* testRdbAsyncDownloadAsset008 end *************");
+              done();
+          }).catch((err) => {
+              console.log(TAG + `testRdbAsyncDownloadAsset008 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
+              expect().assertFail();
+              done()
+          });
+        } catch (err) {
+          console.log(TAG + `testRdbAsyncDownloadAsset008 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
+          expect().assertFail();
+          done()
+        }
+      })
 
     console.log(TAG + "*************RELATIONAL_STORE_ASYNCDOWNLOADASSET_TEST Test End*************");
   })}
