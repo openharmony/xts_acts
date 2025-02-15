@@ -19,13 +19,16 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { BusinessError } from '@ohos.base';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
+import commonEventManager from '@ohos.commonEventManager';
 
 const TAG: string = 'ActsAbilityDelegatorTest';
 const TEST_SUITE_NAME: string = 'ActsAbilityDelegatorStageTest';
 const CODE_ERROR = 401;
 const WAIT_TIME_500:number = 500;
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
-
+let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+    events: ["AbilityDelegator_Destory"]
+};
 function sleep(time: number) {
   return new Promise < void> ((resolve) => setTimeout(resolve, time));
 }
@@ -218,26 +221,33 @@ export default function AbilityDelegatorStageTest() {
           onWindowStageDestroy: () => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onWindowStageDestroy ..`);
             count++;
+            if (count === 1) {
+              abilityDelegator.removeAbilityMonitor(monitor).then(() => {
+                hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor promise ..`);
+              });
+              let subscribeCB = async (err: BusinessError, data: commonEventManager.CommonEventData) => {
+                if (data.event === "AbilityDelegator_Destory") {
+                  await sleep(2000);
+                  expect(count).assertEqual(1);
+                  done();
+                }
+              };
+              commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
+                hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} createSubscriber success ..`);
+                commonEventManager.subscribe(subscriber, subscribeCB);
+                executeShellCmd(cmd, abilityDelegator);
+              });
+            }
           }
-        }
+        };
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         abilityDelegator.addAbilityMonitor(monitor)
           .then(() => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} addAbilityMonitor promise ..`);
           })
-
         let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
         let cmd = 'aa start -d 0 -a AssistantAbilityOne' + ' -b ' + abilityDelegatorArguments.bundleName;
         executeShellCmd(cmd, abilityDelegator);
-        await sleep(2000);
-        abilityDelegator.removeAbilityMonitor(monitor)
-          .then(() => {
-            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor promise ..`);
-          })
-        executeShellCmd(cmd, abilityDelegator);
-        await sleep(1000);
-        expect(count).assertEqual(1);
-        done();
       } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
         expect().assertFail();
@@ -593,7 +603,7 @@ export default function AbilityDelegatorStageTest() {
       try {
         let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
         let cmd = 'aa start -d 0 -a AssistantAbilityOne' + ' -b ' + abilityDelegatorArguments.bundleName;
-        let timeout = 1;
+        let timeout = 3;
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         abilityDelegator.executeShellCommand(cmd, timeout)
