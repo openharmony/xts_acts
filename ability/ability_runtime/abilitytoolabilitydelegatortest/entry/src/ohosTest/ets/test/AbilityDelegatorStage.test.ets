@@ -26,7 +26,7 @@ const TEST_SUITE_NAME: string = 'ActsAbilityDelegatorStageTest';
 const CODE_ERROR = 401;
 const WAIT_TIME_500:number = 500;
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
- let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
     events: ["AbilityDelegator_Destory"]
 };
 function sleep(time: number) {
