@@ -121,7 +121,12 @@ export default function abilityTest() {
           flag = true;
         }
         if (data.event === failedEvent) {
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
+            flag = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -223,7 +228,12 @@ export default function abilityTest() {
           flag = true;
         }
         if (data.event === failedEvent) {
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
+            flag = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 

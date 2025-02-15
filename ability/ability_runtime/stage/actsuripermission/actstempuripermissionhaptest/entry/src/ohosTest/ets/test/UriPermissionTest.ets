@@ -42,7 +42,7 @@ export default function UriPermissionTest() {
       done()
     });
 
-    let abilityContext:common.UIAbilityContext = globalThis.abilityContext;
+    let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
     afterEach(async (done: Function) => {
       console.info('UriPermissionTest after each called');
       let wantInfo: Want = {
@@ -53,7 +53,7 @@ export default function UriPermissionTest() {
         console.info('afterEach startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info('afterEach error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       done();
     });
@@ -110,7 +110,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName1_2) {
           console.info(TAG1 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber1_1, UnSubscribeInfoCallback1_1)
+            flag1_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -159,7 +164,7 @@ export default function UriPermissionTest() {
         console.info(TAG1 + 'startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG1 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       while (!flag1_1 || !flag1_2) {
         console.info(TAG1 + 'waiting callback');
@@ -200,7 +205,7 @@ export default function UriPermissionTest() {
         console.info('TAG2 + startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG2 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       await sleep(1000);
       let flag2_1 = false;
@@ -226,7 +231,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName2_2) {
           console.info(TAG2 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber2_1, UnSubscribeInfoCallback2_1)
+            flag2_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -256,7 +266,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName2_4) {
           console.info(TAG2 + 'write file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber2_2, UnSubscribeInfoCallback2_2)
+            flag2_2 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -279,7 +294,7 @@ export default function UriPermissionTest() {
         console.info(TAG2 + ' startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG2 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       while (!flag2_1 || !flag2_2) {
         console.info(TAG2 + 'waiting callback');
@@ -333,7 +348,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName4_2) {
           console.info(TAG4 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber4_1, UnSubscribeInfoCallback4_1)
+            flag4_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -363,7 +383,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName4_4) {
           console.info(TAG4 + 'write file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber4_2, UnSubscribeInfoCallback4_2)
+            flag4_2 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -386,7 +411,7 @@ export default function UriPermissionTest() {
         console.info(TAG4 + ' startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG4 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       await sleep(1000);
 
@@ -437,7 +462,7 @@ export default function UriPermissionTest() {
         console.info(TAG4 + ' startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG4 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       while (!flag4_1 || !flag4_2 || !flag4_3) {
         console.info(TAG4 + 'waiting callback');
@@ -480,7 +505,7 @@ export default function UriPermissionTest() {
         console.info(TAG5 + ' startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG5 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       await sleep(1000);
 
@@ -504,7 +529,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName5_2) {
           console.info(TAG5 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber5_1, UnSubscribeInfoCallback5_1)
+            flag5_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -534,7 +564,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName5_4) {
           console.info(TAG5 + 'write file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber5_2, UnSubscribeInfoCallback5_2)
+            flag5_2 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -553,7 +588,7 @@ export default function UriPermissionTest() {
         console.info(TAG5 + ' startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG5 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       while (!flag5_1 || !flag5_2) {
         console.info(TAG5 + 'waiting callback');
@@ -633,7 +668,7 @@ export default function UriPermissionTest() {
         console.info(TAG6 + ' startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG6 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       await sleep(1000);
 
@@ -657,7 +692,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName6_4) {
           console.info(TAG6 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber6_2, UnSubscribeInfoCallback6_2)
+            flag6_2 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -712,7 +752,7 @@ export default function UriPermissionTest() {
         console.info(TAG6 + ' startAbilityForResult succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG6 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       while (!flag6_1 || !flag6_2 || !flag6_3) {
         console.info(TAG6 + 'waiting callback');
@@ -758,7 +798,7 @@ export default function UriPermissionTest() {
         console.info(TAG7 + ' startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG7 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       await sleep(1000);
       let flag7_1 = false;
@@ -784,7 +824,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName7_2) {
           console.info(TAG7 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber7_1, UnSubscribeInfoCallback7_1)
+            flag7_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -814,7 +859,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName7_4) {
           console.info(TAG7 + 'write file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber7_2, UnSubscribeInfoCallback7_2)
+            flag7_2 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -838,7 +888,7 @@ export default function UriPermissionTest() {
         console.info(TAG7 + ' startAbilityForResult succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG7 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       while (!flag7_1 || !flag7_2) {
         console.info(TAG7 + 'waiting callback');
@@ -897,7 +947,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName8_2) {
           console.info(TAG8 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber8_1, UnSubscribeInfoCallback8_1)
+            flag8_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -927,7 +982,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName8_4) {
           console.info(TAG8 + 'write file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber8_2, UnSubscribeInfoCallback8_2)
+            flag8_2 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -949,7 +1009,7 @@ export default function UriPermissionTest() {
       }
       await abilityContext.startAbilityForResult(want).then((result: ability.AbilityResult) => {
         console.info(TAG8 + ' startAbilityForResult succeed');
-        let uri : string | undefined = result.want!.uri;
+        let uri: string | undefined = result.want!.uri;
         if (uri == null || uri == undefined) {
           console.info(TAG8 + " uri is invalid");
           expect().assertFail();
@@ -958,21 +1018,29 @@ export default function UriPermissionTest() {
         fs.open(uri, fs.OpenMode.READ_ONLY).then((file) => {
           console.info(TAG8 + "file fd: " + file.fd);
           flag8_3 = true;
-        }).catch((err:base.BusinessError) => {
+        }).catch((err: base.BusinessError) => {
           console.info(TAG8 + "open file failed with error message: " + err.message + ", error code: " + err.code);
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            flag8_3 = true;
+          } else {
+            expect().assertFail();
+          }
         });
 
         fs.open(uri, fs.OpenMode.READ_WRITE).then((file) => {
           console.info(TAG8 + "file fd: " + file.fd);
           flag8_4 = true;
-        }).catch((err:base.BusinessError) => {
-          expect().assertFail();
+        }).catch((err: base.BusinessError) => {
           console.info(TAG8 + "open file failed with error message: " + err.message + ", error code: " + err.code);
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            flag8_4 = true;
+          } else {
+            expect().assertFail();
+          }
         });
       }).catch((error: base.BusinessError) => {
         console.info(TAG8 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       while (!flag8_1 || !flag8_2 || !flag8_3 || !flag8_4) {
         console.info(TAG8 + 'waiting callback');
@@ -1040,7 +1108,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName10_2) {
           console.info(TAG10 + 'write file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber10_1, UnSubscribeInfoCallback10_1)
+            flag10_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -1070,7 +1143,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName10_4) {
           console.info(TAG10 + 'write file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber10_2, UnSubscribeInfoCallback10_2)
+            flag10_2 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -1094,7 +1172,7 @@ export default function UriPermissionTest() {
         console.info(TAG10 + ' startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG10 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       while (!flag10_1 || !flag10_2) {
         console.info(TAG10 + 'waiting callback');
@@ -1140,7 +1218,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName11_2) {
           console.info(TAG11 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber11_1, UnSubscribeInfoCallback11_1)
+            flag11_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -1188,7 +1271,7 @@ export default function UriPermissionTest() {
         console.info(TAG11 + ' startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG11 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       while (!flag11_1 || !flag11_2) {
         console.info(TAG11 + 'waiting callback');
@@ -1233,7 +1316,7 @@ export default function UriPermissionTest() {
         console.info(TAG12 + ' startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG12 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       await sleep(1000);
       let flag12_1 = false;
@@ -1280,7 +1363,7 @@ export default function UriPermissionTest() {
         console.info(TAG12 + ' startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG12 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       while (!flag12_1) {
         console.info(TAG12 + 'waiting callback');
@@ -1390,7 +1473,7 @@ export default function UriPermissionTest() {
         console.info(TAG14 + ' startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG14 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       while (!flag14_1 || !flag14_2) {
         console.info(TAG14 + 'waiting callback');
@@ -1448,7 +1531,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName15_2) {
           console.info(TAG15 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber15_1, UnSubscribeInfoCallback15_1)
+            flag15_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -1501,14 +1589,14 @@ export default function UriPermissionTest() {
         console.info(TAG15 + ' startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG15 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       await sleep(1000);
 
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       await abilityDelegator.executeShellCommand("aa force-stop com.acts.authorizeduriapplication").then(data => {
         console.info(TAG15 + "force-stop data is: " + JSON.stringify(data))
-      }).catch((err:base.BusinessError) => {
+      }).catch((err: base.BusinessError) => {
         console.info(TAG15 + "force-stop err is: " + JSON.stringify(err))
       })
       await sleep(3000);
@@ -1555,7 +1643,7 @@ export default function UriPermissionTest() {
         console.info(TAG15 + ' startAbility succeed');
       }).catch((error: base.BusinessError) => {
         console.info(TAG15 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-        JSON.stringify(error.message));
+          JSON.stringify(error.message));
       });
       while (!flag15_1 || !flag15_2 || !flag15_3) {
         console.info(TAG15 + 'waiting callback');
