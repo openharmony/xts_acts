@@ -221,23 +221,23 @@ export default function AbilityDelegatorStageTest() {
           onWindowStageDestroy: () => {
             hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onWindowStageDestroy ..`);
             count++;
-            if(count === 1){
-            abilityDelegator.removeAbilityMonitor(monitor).then(() => {
-            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor promise ..`);
-          })
-          let subscribeCB = async (err:BusinessError,data:commonEventManager.CommonEventData) => {
-            if(data.event === "AbilityDelegator_Destory"){
-              await sleep(2000);
-              expect(count).assertEqual(1);
-              done();
+            if (count === 1) {
+              abilityDelegator.removeAbilityMonitor(monitor).then(() => {
+                hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor promise ..`);
+              });
+              let subscribeCB = async (err: BusinessError, data: commonEventManager.CommonEventData) => {
+                if (data.event === "AbilityDelegator_Destory") {
+                  await sleep(2000);
+                  expect(count).assertEqual(1);
+                  done();
+                }
+              };
+              commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
+                hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} createSubscriber success ..`);
+                commonEventManager.subscribe(subscriber, subscribeCB);
+                executeShellCmd(cmd, abilityDelegator);
+              });
             }
-          };
-          commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async(subscriber) => {
-            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} createSubscriber success ..`);
-            commonEventManager.subscribe(subscriber,subscribeCB);
-            executeShellCmd(cmd, abilityDelegator);
-          });
-         }
           }
         };
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
