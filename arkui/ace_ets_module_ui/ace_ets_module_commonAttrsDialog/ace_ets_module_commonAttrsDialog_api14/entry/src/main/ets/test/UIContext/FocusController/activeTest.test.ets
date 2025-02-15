@@ -54,10 +54,11 @@ export default function activeTest() {
       console.info('activeTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let button = await driver.findComponent(ON.id('active1'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let button = await scrollBar.scrollSearch(ON.id('active1'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let button2 = await driver.findComponent(ON.id('active2'));
+      let button2 = await scrollBar.scrollSearch(ON.id('active2'));
       await button2.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text');
@@ -80,10 +81,11 @@ export default function activeTest() {
       console.info('activeTest_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let button3 = await driver.findComponent(ON.id('init'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let button3 = await scrollBar.scrollSearch(ON.id('init'));
       await button3.click();
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('active1'));
+      let button = await scrollBar.scrollSearch(ON.id('active1'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text');
@@ -106,7 +108,8 @@ export default function activeTest() {
       console.info('activeTest_0030 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let button3 = await driver.findComponent(ON.id('init'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let button3 = await scrollBar.scrollSearch(ON.id('init'));
       await button3.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text');
@@ -130,10 +133,12 @@ export default function activeTest() {
       console.info('activeTest_0040 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let button3 = await driver.findComponent(ON.id('init'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+
+      let button3 = await scrollBar.scrollSearch(ON.id('init'));
       await button3.click();
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('active2'));
+      let button = await scrollBar.scrollSearch(ON.id('active2'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text');
@@ -157,10 +162,11 @@ export default function activeTest() {
       console.info('activeTest_0040 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let button3 = await driver.findComponent(ON.id('init'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let button3 = await scrollBar.scrollSearch(ON.id('init'));
       await button3.click();
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('active3'));
+      let button = await scrollBar.scrollSearch(ON.id('active3'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text');
@@ -184,10 +190,11 @@ export default function activeTest() {
       console.info('activeTest_0040 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let button3 = await driver.findComponent(ON.id('init'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let button3 = await scrollBar.scrollSearch(ON.id('init'));
       await button3.click();
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('active3'));
+      let button = await scrollBar.scrollSearch(ON.id('active3'));
       await button.click();
       await CommonFunc.sleep(1000);
       await button.click();

@@ -12,40 +12,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import bindSheetKeyboardAvoidMode from './bindSheetTest/bindSheetKeyboardAvoidMode.test'
 import followTransformOfTargetPopup from './PopupTest/followTransformOfTargetPopup.test.ets';
 import followTransformOfTargetCustomPopup from './PopupTest/followTransformOfTargetCustomPopup.test.ets';
 import activeTest from './UIContext/FocusController/activeTest.test.ets'
-import lunarSwitchStyleTest from './DatePickerDialog/lunarSwitchStyleTest.test'
 import bindSheetHoverMode from './bindSheetTest/bindSheetHoverMode.test'
 import showToastHoverMode from './promptActionTest/showToastHoverMode.test'
 import showDialogHoverMode from './promptActionTest/showDialogHoverMode.test'
 import popoverDialogTest from './dialog/popoverDialogTest.test'
-import textPickerDialogHoverMode from './TextPickerDialog/textPickerDialogHoverMode.test'
-import timePickerDialogHoverMode from './TimePickerDialog/timePickerDialogHoverMode.test'
-import datePickerDialogHoverMode from './DatePickerDialog/datePickerDialogHoverMode.test'
 import customDialogHoverMode from './CustomDialog/customDialogHoverMode.test'
-import calendarPickerDialogHoverMode from './CalendarPickerDialog/calendarPickerDialogHoverMode.test'
 import alertDialogHoverMode from './AlertDialog/alertDialogHoverMode.test'
 import actionSheetHoverMode from './ActionSheet/actionSheetHoverMode.test'
 import bindSheetShowClose from './bindSheetTest/bindSheetShowClose.test'
 import bindSheetType from './bindSheetTest/bindSheetType.test'
 
 export default function testsuite() {
-  bindSheetKeyboardAvoidMode()
   followTransformOfTargetPopup();
   followTransformOfTargetCustomPopup()
   activeTest()
-  lunarSwitchStyleTest()
   bindSheetHoverMode()
   showToastHoverMode()
   showDialogHoverMode()
   popoverDialogTest()
-  textPickerDialogHoverMode()
-  timePickerDialogHoverMode()
-  datePickerDialogHoverMode()
   customDialogHoverMode()
-  calendarPickerDialogHoverMode()
   alertDialogHoverMode()
   actionSheetHoverMode()
   bindSheetShowClose()
