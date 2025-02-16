@@ -6,6 +6,7 @@
     "MainAbility/pages/TextArea/TextAreaKeyboardAppearance",
     "MainAbility/pages/Search/SearchKeyboardAppearance",
     "MainAbility/pages/RichEditor/RichEditorKeyboardAppearance",
-    "MainAbility/pages/RichEditor/RichEditorStopBackPress"
+    "MainAbility/pages/RichEditor/RichEditorStopBackPress",
+	"MainAbility/pages/RichEditor/SelectionMenuOptions"
   ]
 }

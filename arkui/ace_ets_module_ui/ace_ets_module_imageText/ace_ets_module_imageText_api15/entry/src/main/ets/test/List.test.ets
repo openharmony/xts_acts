@@ -19,6 +19,7 @@ import TextAreaKeyboardAppearanceTest from './TextAreaTest/TextAreaKeyboardAppea
 import SearchKeyboardAppearanceTest from './Search/SearchKeyboardAppearance.test';
 import RichEditorKeyboardAppearanceTest from './RichEditorTest/RichEditorKeyboardAppearance.test';
 import RichEditorStopBackPressTest from './RichEditorTest/RichEditorStopBackPress.test';
+import SelectionMenuOptions from './RichEditorTest/SelectionMenuOptions.test';
 
 
 export default function testsuite() {
@@ -28,4 +29,5 @@ export default function testsuite() {
   SearchKeyboardAppearanceTest();
   RichEditorKeyboardAppearanceTest();
   RichEditorStopBackPressTest();
+  SelectionMenuOptions();
 }
