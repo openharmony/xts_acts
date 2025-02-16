@@ -154,7 +154,7 @@ export default function GridItemJsunit() {
       let left_x = Math.round(grid1.left)
       let bottom_y = Math.round(grid1.bottom / 2)
       let driver = await UiDriver.create()
-      await driver.swipe(left_x, bottom_y, 800, bottom_y);
+      await driver.swipe(Math.round(globalThis.winLeft + left_x + vp2px(100)), bottom_y, Math.round(globalThis.winLeft + left_x + vp2px(120)), bottom_y);
       await CommonFunc.sleep(500);
       let textComponent = await driver.findComponent(BY.key('onSelect'));
       let text = await textComponent.getText();
@@ -164,35 +164,35 @@ export default function GridItemJsunit() {
       done();
     });
 
-    it('GridJsunit_0500', 0, async (done: Function) => {
+    it('GridItemJsunit_0500', 0, async (done: Function) => {
       // Verify the columnsTemplate of Grid component
-      console.info('[GridJsunit_0500] START');
+      console.info('[GridItemJsunit_0500] START');
       let gridItem1 = CommonFunc.getComponentRect('0');
       let right1 = gridItem1.right;
       await CommonFunc.sleep(1000);
       let gridItem3 = CommonFunc.getComponentRect('1');
       let left3 = gridItem3.left;
       expect(Math.abs(Math.ceil(left3 - right1) - Math.ceil(vp2px(4))) <= 1).assertTrue();
-      console.info('[GridJsunit_0500] END');
+      console.info('[GridItemJsunit_0500] END');
       done();
     });
 
-    it('GridJsunit_0600', 0, async (done: Function) => {
+    it('GridItemJsunit_0600', 0, async (done: Function) => {
       // Verify the rowsTemplate of Grid component 
-      console.info('[GridJsunit_0600] START');
+      console.info('[GridItemJsunit_0600] START');
       await CommonFunc.sleep(1000);
       let gridItem1 = CommonFunc.getComponentRect('0');
       let bottom1 = gridItem1.bottom;
       let gridItem3 = CommonFunc.getComponentRect('4');
       let top3 = gridItem3.top;
       expect(Math.abs((top3 - bottom1) - vp2px(5)) <= 1).assertTrue();
-      console.info('[GridJsunit_0600] END');
+      console.info('[GridItemJsunit_0600] END');
       done();
     });
 
-    it('GridJsunit_0700', 0, async (done: Function) => {
+    it('GridItemJsunit_0700', 0, async (done: Function) => {
       // Verify the columnsGap of Grid component 
-      console.info('[GridJsunit_0700] START');
+      console.info('[GridItemJsunit_0700] START');
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       let gridItem1 = CommonFunc.getComponentRect('gridItem1');
@@ -200,13 +200,13 @@ export default function GridItemJsunit() {
       let gridItem2 = CommonFunc.getComponentRect('0');
       let left1 = gridItem2.left;
 	  expect(Math.abs((left1 - right1) - vp2px(4)) <= 1).assertTrue();
-      console.info('[GridJsunit_0700] END');
+      console.info('[GridItemJsunit_0700] END');
       done();
     });
 
-    it('GridJsunit_0800', 0, async (done: Function) => {
+    it('GridItemJsunit_0800', 0, async (done: Function) => {
       // Verify the rowsGap of Grid component 
-      console.info('[GridJsunit_0800] START');
+      console.info('[GridItemJsunit_0800] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({name:'rowStart',value:'1'})
       await CommonFunc.sleep(1000);
       GlobalContext.getContext().getObject<string>('value').message.notify({name:'rowEnd',value:'4'})
@@ -217,7 +217,7 @@ export default function GridItemJsunit() {
       let gridItem2 = CommonFunc.getComponentRect('gridItem3');
       let top1 = gridItem2.top;
       expect(Math.abs((top1 - bottom1) - vp2px(5)) <= 1).assertTrue();
-      console.info('[GridJsunit_0800] END');
+      console.info('[GridItemJsunit_0800] END');
       done();
     });
 

@@ -46,7 +46,7 @@ struct List_aspectRatio_neither {
             .borderRadius(10)
             .textAlign(TextAlign.Center)
             .backgroundColor(Color.White)
-        }
+        }.key('List_aspectRatio_neither_001')
 
         ListItem() {
           Text('2')
@@ -85,7 +85,8 @@ struct List_aspectRatio_neither {
       .key('List_aspectRatio_neither_01')
       .alignListItem(ListItemAlign.Center)
     }
-    .width(300)
+    .width('40%')
     .height('100%')
+    .key('List_aspectRatio_neither_column')
   }
 }

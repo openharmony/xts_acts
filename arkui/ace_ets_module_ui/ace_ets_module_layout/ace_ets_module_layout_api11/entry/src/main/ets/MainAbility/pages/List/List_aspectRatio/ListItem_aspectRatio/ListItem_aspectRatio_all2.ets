@@ -46,8 +46,8 @@ struct ListItem_aspectRatio_all2 {
             .textAlign(TextAlign.Center)
             .backgroundColor(0xAFEEEE)
         }
-        .width(300)
-        .height(50)
+        .width('80%')
+        .height('30%')
         .aspectRatio(this.aspectRatio1)
         .key('ListItem_aspectRatio_all2_01')
 
@@ -82,11 +82,12 @@ struct ListItem_aspectRatio_all2 {
             .backgroundColor(0xAFEEEE)
         }
       }
-      .height(600)
+      .height('90%')
       .aspectRatio(0.5)
       .listDirection(Axis.Vertical)
       .scrollBar(BarState.On)
       .alignListItem(ListItemAlign.Center)
+      .key('ListItem_aspectRatio_all2_list')
     }
     .width('100%')
     .height('100%')
