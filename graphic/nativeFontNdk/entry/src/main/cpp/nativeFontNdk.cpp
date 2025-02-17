@@ -35,9 +35,15 @@
 #include "native_drawing/drawing_text_font_descriptor.h"
 #include "native_drawing/drawing_text_line.h"
 #include "native_drawing/drawing_text_lineTypography.h"
+#include "native_drawing/drawing_register_font.h"
 
 #define SUCCESS 0
 #define FAIL (-1)
+#define ARR_NUM_0 0
+#define ARR_NUM_1 1
+#define ARR_NUM_2 2
+#define ARR_NUM_3 3
+#define ARR_NUM_4 4
 #define ALIGNMENT600 600
 #define ALIGNMENT700 700
 #define ALIGNMENT20 20
@@ -50,6 +56,9 @@
 #define INT_NUM_100 100
 #define INT_NUM_200 200
 #define INT_NUM_5 5
+#define INT_NUM_400 400
+#define INT_NUM_500 500
+#define INT_NUM_142 142
 #define DOUBLE_NUM_2 2.0
 #define DOUBLE_NUM_0 0.0
 #define DOUBLE_NEGATIVE_NUM_1 (-1.0)
@@ -217,6 +226,61 @@ static napi_value OHDrawingMatchFontDescriptors003(napi_env env, napi_callback_i
     return result;
 }
 
+static napi_value OHDrawingMatchFontDescriptors004(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_2, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+
+    OH_Drawing_FontDescriptor *desc = OH_Drawing_CreateFontDescriptor();
+    char *fontFamily = strdup("HarmonyOS Sans");
+    desc->fontFamily = fontFamily;
+    size_t num = 0;
+    OH_Drawing_FontDescriptor *descArr = OH_Drawing_MatchFontDescriptors(desc, &num);
+    if ((descArr != nullptr) && (num >= 1) && (strcmp(descArr[0].fontFamily, fontFamily) == 0)) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    OH_Drawing_DestroyFontDescriptors(descArr, num);
+    free(fontFamily);
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    fontFamily = strdup("HarmonyOS Sans Condensed");
+    desc->fontFamily = fontFamily;
+    descArr = OH_Drawing_MatchFontDescriptors(desc, &num);
+    if ((descArr != nullptr) && (num == 1) && (strcmp(descArr[0].fontFamily, fontFamily) == 0)) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    OH_Drawing_DestroyFontDescriptors(descArr, num);
+    OH_Drawing_DestroyFontDescriptor(desc);
+    napi_set_element(env, result, ARR_NUM_1, result2);
+    return result;
+}
+
+static napi_value OHDrawingMatchFontDescriptors005(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_Drawing_FontDescriptor *desc = OH_Drawing_CreateFontDescriptor();
+    char *fontFamily = strdup("HarmonyOS Sans");
+    desc->fontFamily = fontFamily;
+    desc->weight = INT_NUM_400;
+    size_t num = 0;
+    OH_Drawing_FontDescriptor *descArr = OH_Drawing_MatchFontDescriptors(desc, &num);
+    if ((descArr != nullptr) && (num >= 1) && (strcmp(descArr[0].fontFamily, fontFamily) == 0) &&
+        (descArr[0].weight == INT_NUM_400)) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    OH_Drawing_DestroyFontDescriptors(descArr, num);
+    OH_Drawing_DestroyFontDescriptor(desc);
+    return result;
+}
+
 static napi_value OHDrawingGetFontDescriptorByFullName001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -230,6 +294,133 @@ static napi_value OHDrawingGetFontDescriptorByFullName001(napi_env env, napi_cal
     return result;
 }
 
+static napi_value OHDrawingGetFontDescriptorByFullName002(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    const uint8_t TTF_FULLNAME[] = {
+        0x4F, 0x60,
+        0x59, 0x7D,
+        0x00, 0x6F,
+        0x00, 0x70,
+        0x00, 0x65,
+        0x00, 0x6E,
+        0x00, 0x68,
+        0x00, 0x61,
+        0x00, 0x72,
+        0x00, 0x6D,
+        0x00, 0x6F,
+        0x00, 0x6E,
+        0x00, 0x79
+    };
+    OH_Drawing_String drawingString;
+    drawingString.strData = const_cast<uint8_t*>(TTF_FULLNAME);
+    drawingString.strLen = sizeof(TTF_FULLNAME);
+    OH_Drawing_FontDescriptor *descriptor =
+        OH_Drawing_GetFontDescriptorByFullName(&drawingString, OH_Drawing_SystemFontType::ALL);
+    if (descriptor == nullptr) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
+static napi_value OHDrawingGetFontDescriptorByFullName003(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_4, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    napi_value result4 = nullptr;
+
+    OH_Drawing_SystemFontType fontType = OH_Drawing_SystemFontType::GENERIC;
+    OH_Drawing_Array *fontList = OH_Drawing_GetSystemFontFullNamesByType(fontType);
+    if (fontList != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    size_t size = OH_Drawing_GetDrawingArraySize(fontList);
+    if (size != 0) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+
+    for (size_t i = 0; i < size; i++) {
+        const OH_Drawing_String *fontFullName = OH_Drawing_GetSystemFontFullNameByIndex(fontList, i);
+        if (fontFullName != nullptr) {
+            napi_create_int32(env, SUCCESS, &result3);
+        } else {
+            napi_create_int32(env, FAIL, &result3);
+        }
+        napi_set_element(env, result, ARR_NUM_2, result3);
+
+        OH_Drawing_FontDescriptor *descriptor = OH_Drawing_GetFontDescriptorByFullName(fontFullName, fontType);
+        if (descriptor != nullptr) {
+            napi_create_int32(env, SUCCESS, &result4);
+        } else {
+            napi_create_int32(env, FAIL, &result4);
+        }
+        napi_set_element(env, result, ARR_NUM_3, result4);
+        OH_Drawing_DestroyFontDescriptor(descriptor);
+    }
+    OH_Drawing_DestroySystemFontFullNames(fontList);
+    return result;
+}
+
+static napi_value OHDrawingGetFontDescriptorByFullName004(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_4, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    napi_value result4 = nullptr;
+
+    OH_Drawing_SystemFontType fontType = OH_Drawing_SystemFontType(ALL | STYLISH);
+    OH_Drawing_Array *fontList = OH_Drawing_GetSystemFontFullNamesByType(fontType);
+    if (fontList != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    size_t size = OH_Drawing_GetDrawingArraySize(fontList);
+    if (size != 0) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+
+    for (size_t i = 0; i < size; i++) {
+        const OH_Drawing_String *fontFullName = OH_Drawing_GetSystemFontFullNameByIndex(fontList, i);
+        if (fontFullName != nullptr) {
+            napi_create_int32(env, SUCCESS, &result3);
+        } else {
+            napi_create_int32(env, FAIL, &result3);
+        }
+        napi_set_element(env, result, ARR_NUM_2, result3);
+
+        OH_Drawing_FontDescriptor *descriptor = OH_Drawing_GetFontDescriptorByFullName(fontFullName, fontType);
+        if (descriptor != nullptr) {
+            napi_create_int32(env, SUCCESS, &result4);
+        } else {
+            napi_create_int32(env, FAIL, &result4);
+        }
+        napi_set_element(env, result, ARR_NUM_3, result4);
+        OH_Drawing_DestroyFontDescriptor(descriptor);
+    }
+    OH_Drawing_DestroySystemFontFullNames(fontList);
+    return result;
+}
+
 static napi_value OHDrawingGetSystemFontFullNamesByType001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -240,6 +431,107 @@ static napi_value OHDrawingGetSystemFontFullNamesByType001(napi_env env, napi_ca
     } else {
         napi_create_int32(env, FAIL, &result);
     }
+    return result;
+}
+
+static napi_value OHDrawingGetSystemFontFullNamesByType002(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_4, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    napi_value result4 = nullptr;
+
+    OH_Drawing_SystemFontType fontType = OH_Drawing_SystemFontType::GENERIC;
+    OH_Drawing_Array *fontList = OH_Drawing_GetSystemFontFullNamesByType(fontType);
+    if (fontList != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    const OH_Drawing_String *fullName = OH_Drawing_GetSystemFontFullNameByIndex(fontList, INT_NUM_500);
+    if (fullName == nullptr) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    OH_Drawing_DestroySystemFontFullNames(fontList);
+    napi_set_element(env, result, ARR_NUM_1, result2);
+
+    const OH_Drawing_String *fullName1 = OH_Drawing_GetSystemFontFullNameByIndex(nullptr, 0);
+    if (fullName1 == nullptr) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+
+    const OH_Drawing_String *fullName2 = OH_Drawing_GetSystemFontFullNameByIndex(nullptr, INT_NUM_500);
+    if (fullName2 == nullptr) {
+        napi_create_int32(env, SUCCESS, &result4);
+    } else {
+        napi_create_int32(env, FAIL, &result4);
+    }
+    napi_set_element(env, result, ARR_NUM_3, result4);
+    OH_Drawing_DestroySystemFontFullNames(nullptr);
+    return result;
+}
+
+static napi_value OHDrawingGetSystemFontFullNamesByType003(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_2, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+    const char *fontFamily = "NotoSansCJKjp-Regular-Alphabetic";
+    const char *fontPath = "/system/fonts/NotoSansCJK-Regular.ttc";
+    OH_Drawing_RegisterFont(fc, fontFamily, fontPath);
+
+    OH_Drawing_Array *ttfs = OH_Drawing_GetSystemFontFullNamesByType(CUSTOMIZED);
+    size_t num = OH_Drawing_GetDrawingArraySize(ttfs);
+    if (num == 1) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    for (size_t i = 0; i < num; i++) {
+        const OH_Drawing_String *fullName = OH_Drawing_GetSystemFontFullNameByIndex(ttfs, i);
+        OH_Drawing_FontDescriptor *fd = OH_Drawing_GetFontDescriptorByFullName(fullName, CUSTOMIZED);
+        if (strcmp(fd->fullName, "Noto Sans CJK JP") == 0) {
+            napi_create_int32(env, SUCCESS, &result2);
+        } else {
+            napi_create_int32(env, FAIL, &result2);
+        }
+        napi_set_element(env, result, ARR_NUM_1, result2);
+    }
+    OH_Drawing_ClearFontCaches(fc);
+    OH_Drawing_DestroyFontCollection(fc);
+    return result;
+}
+
+static napi_value OHDrawingGetSystemFontFullNamesByType004(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+    const char *fontFamily = "xxxxxxx";
+    const char *fontPath = "/system/fonts/xxxxxxx.ttf";
+    OH_Drawing_RegisterFont(fc, fontFamily, fontPath);
+
+    OH_Drawing_Array *ttfs = OH_Drawing_GetSystemFontFullNamesByType(CUSTOMIZED);
+    size_t num = OH_Drawing_GetDrawingArraySize(ttfs);
+    if (num == 0) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    OH_Drawing_ClearFontCaches(fc);
+    OH_Drawing_DestroyFontCollection(fc);
     return result;
 }
 
@@ -1035,9 +1327,25 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHDrawingMatchFontDescriptors003", nullptr, OHDrawingMatchFontDescriptors003,
          nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHDrawingMatchFontDescriptors004", nullptr, OHDrawingMatchFontDescriptors004,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHDrawingMatchFontDescriptors005", nullptr, OHDrawingMatchFontDescriptors005,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHDrawingGetFontDescriptorByFullName001", nullptr, OHDrawingGetFontDescriptorByFullName001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHDrawingGetFontDescriptorByFullName002", nullptr, OHDrawingGetFontDescriptorByFullName002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHDrawingGetFontDescriptorByFullName003", nullptr, OHDrawingGetFontDescriptorByFullName003,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHDrawingGetFontDescriptorByFullName004", nullptr, OHDrawingGetFontDescriptorByFullName004,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHDrawingGetSystemFontFullNamesByType001", nullptr, OHDrawingGetSystemFontFullNamesByType001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHDrawingGetSystemFontFullNamesByType002", nullptr, OHDrawingGetSystemFontFullNamesByType002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHDrawingGetSystemFontFullNamesByType003", nullptr, OHDrawingGetSystemFontFullNamesByType003,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHDrawingGetSystemFontFullNamesByType004", nullptr, OHDrawingGetSystemFontFullNamesByType004,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHDrawingGetSystemFontFullNameByIndex001", nullptr, OHDrawingGetSystemFontFullNameByIndex001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
