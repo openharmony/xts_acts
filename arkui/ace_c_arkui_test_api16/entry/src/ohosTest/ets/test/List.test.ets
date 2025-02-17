@@ -22,6 +22,7 @@ import listItemGroupNodeAdapterTest from "./listItemGroup/ListItemGroupTest.test
 import columnBackDropBlurTest from "./visual/columnBackDropBlurTest.test"
 import TextAreaLetterSpacing from "./textArea/TextAreaLetterSpacing.test"
 import TextInputLetterSpacing from "./textInput/TextInputLetterSpacing.test"
+import textPickerTest from "./textpicker/TextPickerColumnWidthsTest.test"
 
 export default function testsuite() {
   postFrameCallbackTest();
@@ -34,4 +35,5 @@ export default function testsuite() {
   columnBackDropBlurTest();
   TextAreaLetterSpacing();
   TextInputLetterSpacing();
+  textPickerTest();
 }
