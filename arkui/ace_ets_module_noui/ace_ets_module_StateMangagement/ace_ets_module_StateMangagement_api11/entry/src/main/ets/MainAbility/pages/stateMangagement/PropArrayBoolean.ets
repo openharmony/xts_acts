@@ -18,33 +18,35 @@ struct PropArrayBooleanChild {
 
   build() {
     Column() {
-      ForEach(Array.from(this.message.entries()), (item: [number, boolean]) => {
-        Text(`${item[1]} index: ${item[0]}`).fontSize(20).id('propArrayBoolean_value_' + item[0])
-        Divider()
-      })
-      Button('init array').id('propArrayBoolean_init')
+
+      Button('init array').id('propArrayBoolean_init').height('5%')
         .onClick(() => {
           this.message = [true, false, true]
-        }).margin(10)
+        })
 
-      Button('add new one').id('propArrayBoolean_add')
+      Button('add new one').id('propArrayBoolean_add').height('5%')
         .onClick(() => {
           let lastIndex = this.message.length - 1
           this.message.push(this.message[lastIndex] == true ? false : true)
-        }).margin(10)
+        })
 
-      Button('clear').id('propArrayBoolean_clear')
+      Button('clear').id('propArrayBoolean_clear').height('5%')
         .onClick(() => {
           this.message = []
           if (Array.from(this.message.entries())) {
             this.message.push(true)
           }
-        }).margin(10)
+        })
 
-      Button('delete the first one').id('propArrayBoolean_delete')
+      Button('delete the first one').id('propArrayBoolean_delete').height('5%')
         .onClick(() => {
           this.message.shift()
         })
+
+      ForEach(Array.from(this.message.entries()), (item: [number, boolean]) => {
+        Text(`${item[1]} index: ${item[0]}`).fontSize(9).id('propArrayBoolean_value_' + item[0]).height('5%')
+        Divider()
+      })
     }
     .width('100%')
   }

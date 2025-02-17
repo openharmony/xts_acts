@@ -41,9 +41,9 @@ struct StorageDeprecated {
   build() {
     Column() {
       if (AppStorage.Has('ADKey')) {
-        Text(this.deprecatedKey.get().toString())
+        Text(this.deprecatedKey.get().toString()).height('5%')
           .id('tvDeprecatedGet')
-        Button('DeleteAppStorageCreate')
+        Button('DeleteAppStorageCreate').height('5%')
           .id('btnDelASKey')
           .onClick(() => {
             this.isDelete = AppStorage.Delete('ADKey1')
@@ -51,25 +51,25 @@ struct StorageDeprecated {
           })
       }
       if (AppStorage.Has('ADKey1')) {
-        Text(this.isDelete.toString())
+        Text(this.isDelete.toString()).height('5%')
           .id('tvDeprecatedDel')
       }
       if (AppStorage.Has('ADKey')) {
-        Text(this.isDelKey.toString())
+        Text(this.isDelKey.toString()).height('5%')
           .id('tvDeprecatedDel1')
       }
       if (this.environmentKey.get() === 'zh') {
-        Text('你好Environment')
+        Text('你好Environment').height('5%')
       } else {
-        Text('HelloEnvironment')
+        Text('HelloEnvironment').height('5%')
       }
-      Text(this.aPerA)
+      Text(this.aPerA).height('5%')
         .id('tvADPersistPropsA')
-      Text(this.aPerAb)
+      Text(this.aPerAb).height('5%')
         .id('tvADPersistPropsAb')
-      Text(this.aPerC)
+      Text(this.aPerC).height('5%')
         .id('tvADPersistentStorageA')
-      Button('DeletePersistentStorageKey')
+      Button('DeletePersistentStorageKey').height('5%')
         .id('btnDelPSKey')
         .onClick(() => {
           PersistentStorage.DeleteProp('ADPersistPropsA')

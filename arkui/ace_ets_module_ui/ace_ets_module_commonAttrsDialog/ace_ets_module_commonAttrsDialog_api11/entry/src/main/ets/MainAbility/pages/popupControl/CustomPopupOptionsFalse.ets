@@ -33,7 +33,7 @@ struct CustomPopupOptionsFalseExample {
   }
 
   build() {
-    Flex({ direction: FlexDirection.Column }) {
+    Column() {
       Button('CustomPopupOptionsFalse')
         .id("CustomPopupOptionsFalse")
         .onClick(() => {
@@ -52,9 +52,9 @@ struct CustomPopupOptionsFalseExample {
             }
           }
         })
-        .position({ x: 80, y: 300 })
     }
+    .justifyContent(FlexAlign.Center)
+    .height('100%')
     .width('100%')
-    .padding({ top: 5 })
   }
 }

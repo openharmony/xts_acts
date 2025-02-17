@@ -47,8 +47,8 @@ struct LifeCycle0120 {
 
 
   build() {
-    Column({ space: 5 }) {
-      Text(this.state).fontSize(25).id('tvLifeCycle0120Page')
+    Column() {
+      Text(this.state).fontSize(9).id('tvLifeCycle0120Page')
       Button('BackSelf')
         .id('btnLifeCycle0120Back')
         .onClick(() => {

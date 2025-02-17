@@ -63,6 +63,10 @@ export default function comSizeAbilityTest_06() {
     it('comSizeAbilityTestJsunit_17', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_17 START')
       await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      let btn = await driver.findComponent(ON.id('comSizeAbilityTest_06_to_1'));
+      await btn.click()
+      await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("ListItemGroup_Size");
       let modePosition1: componentUtils.ComponentInfo = componentUtils.getRectangleById("ListItemGroup_Father");
       let Size = modePosition.size
@@ -74,7 +78,6 @@ export default function comSizeAbilityTest_06() {
       let Transform = modePosition.transform
       let Scale = modePosition.scale
       let Rotate = modePosition.rotate
-      let driver = Driver.create();
       let button = await driver.findComponent(ON.id('ListItemGroup_Size'));
       let rect = await button.getBounds();
       console.info("[comSizeAbilityTestJsunit_17] component rect is: " + JSON.stringify(rect))
@@ -105,6 +108,10 @@ export default function comSizeAbilityTest_06() {
     it('comSizeAbilityTestJsunit_18', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_18 START')
       await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      let btn = await driver.findComponent(ON.id('comSizeAbilityTest_06_to_2'));
+      await btn.click()
+      await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("ListItem_Size");
       let modePosition1: componentUtils.ComponentInfo = componentUtils.getRectangleById("ListItem_Father");
       let Size = modePosition.size
@@ -117,7 +124,6 @@ export default function comSizeAbilityTest_06() {
       let Transform = modePosition.transform
       let Scale = modePosition.scale
       let Rotate = modePosition.rotate
-      let driver = Driver.create();
       let button = await driver.findComponent(ON.id('ListItem_Size'));
       let rect = await button.getBounds();
       console.info("[comSizeAbilityTestJsunit_18] component rect is: " + JSON.stringify(rect))
@@ -149,6 +155,10 @@ export default function comSizeAbilityTest_06() {
     it('comSizeAbilityTestJsunit_19', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_19 START')
       await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      let btn = await driver.findComponent(ON.id('comSizeAbilityTest_06_to_3'));
+      await btn.click()
+      await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("List_Size");
       let modePosition1: componentUtils.ComponentInfo = componentUtils.getRectangleById("List_Father");
       let Size = modePosition.size
@@ -161,7 +171,6 @@ export default function comSizeAbilityTest_06() {
       let Transform = modePosition.transform
       let Scale = modePosition.scale
       let Rotate = modePosition.rotate
-      let driver = Driver.create();
       let button = await driver.findComponent(ON.id('List_Size'));
       let rect = await button.getBounds();
       console.info("[comSizeAbilityTestJsunit_19] component rect is: " + JSON.stringify(rect))

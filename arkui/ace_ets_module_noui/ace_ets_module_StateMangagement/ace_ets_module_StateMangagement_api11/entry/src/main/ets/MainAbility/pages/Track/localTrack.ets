@@ -37,17 +37,20 @@ struct localTrack {
   build() {
     Column() {
       Button("Reset")
+        .height('5%')
         .key("localTrack_reset")
         .onClick(() => {
           this.storageProp2=new StorageB(10,20)
           this.storageLink2=new StorageB(10,20)
         })
       Button('LocalStorageProp:'+`${this.storageProp2.a}`)
+        .height('5%')
         .key('Track_LocalStorageProp')
         .onClick(()=>{
           this.storageProp2.a +=1
         })
       Button('LocalStorageLink:'+`${this.storageLink2.a}`)
+        .height('5%')
         .key('Track_LocalStorageLink')
         .onClick(()=>{
           this.storageLink2.a +=2

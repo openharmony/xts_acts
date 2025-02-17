@@ -70,19 +70,19 @@ struct AppStorageV20010 {
 
       Text(this.sample.age.toString())
         .id('tvPage1Age')
-        .fontSize(30)
+        .fontSize(9)
         .onClick(() => {
           AppStorageV2.connect(AppStorageV2Sample)!.age++
         })
       Text(this.sample.width.toString())
         .id('tvPage1Width')
-        .fontSize(30)
+        .fontSize(9)
         .onClick(() => {
           AppStorageV2.connect(AppStorageV2Sample)!.width++
         })
       Text(`keys: ${Array.from(this.keys.values())}`)
         .id('tvKeys')
-        .fontSize(30)
+        .fontSize(9)
     }
   }
 }

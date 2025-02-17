@@ -26,7 +26,9 @@ const listPush1 = "Stage_SupportFunction_MainAbility_";
 let status1:boolean = undefined;
 let status2:boolean = undefined;
 let lifeList: string[] = [];
-
+function sleep(ms: number) {
+  return new Promise<void>(resolve => setTimeout(resolve, ms));
+}
 export default class MainAbility extends Ability {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.log(TAG1 + 'onCreate : status1 : ' + status1 + ' ,ifeList : ' + JSON.stringify(lifeList));
@@ -62,7 +64,7 @@ export default class MainAbility extends Ability {
     }, 2000);
   }
 
-  onDestroy() {
+  async onDestroy(): Promise<void>{
     console.log(TAG1 + 'onDestroy');
     lifeList.push('onDestroy');
     status2 = this.context.isTerminating();
@@ -76,6 +78,7 @@ export default class MainAbility extends Ability {
     commonEvent.publish(listPush1 + "onDestroy", options, (err) => {
       console.log(TAG1 + listPush1 + "onDestroy");
     });
+    await sleep(500);
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {

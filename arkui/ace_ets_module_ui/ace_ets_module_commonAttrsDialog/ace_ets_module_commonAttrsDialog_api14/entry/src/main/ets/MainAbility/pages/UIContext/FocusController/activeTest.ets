@@ -28,56 +28,43 @@ struct activeTest {
   }
 
   build() {
-    Column({ space: 20 }) {
-      Column({ space: 10 }) {
+    Scroll() {
+      Column({ space: 5 }) {
         Button('Button1')
           .id('button1')
-          .width(200)
-          .height(70)
           .defaultFocus(true)
-
-
         Button('Button2')
-          .width(200)
-          .height(70)
-
         Button('Button3')
-          .width(200)
-          .height(70)
-      }
-
-      Column({ space: 10 }) {
-        Text(this.active +' '+ this.autoInactive).id('text')
-        Button('change active: ' + this.active)
+        Text(this.active + ' ' + this.autoInactive).id('text')
+        Button('change active: ' + this.active).height('8%')
           .id('active1')
           .onClick(() => {
             this.active = !this.active
             this.getUIContext().getFocusController().activate(this.active, this.autoInactive)
           })
-        Button('change autoInactive: ' + this.autoInactive)
+        Button('change autoInactive: ' + this.autoInactive).height('8%')
           .id('active2')
           .onClick(() => {
             this.autoInactive = !this.autoInactive
             this.getUIContext().getFocusController().activate(this.active, this.autoInactive)
           })
 
-        Button('no autoInactive: ' + this.active)
+        Button('no autoInactive: ' + this.active).height('8%')
           .id('active3')
           .onClick(() => {
             this.active = !this.active
             this.getUIContext().getFocusController().activate(this.active)
           })
-        Button('init')
+        Button('init').height('8%')
           .id('init')
           .onClick(() => {
             this.active = false
             this.autoInactive = false
           })
-
       }
+      .justifyContent(FlexAlign.Center)
     }
     .height('100%')
     .width('100%')
-    .justifyContent(FlexAlign.Center)
   }
 }

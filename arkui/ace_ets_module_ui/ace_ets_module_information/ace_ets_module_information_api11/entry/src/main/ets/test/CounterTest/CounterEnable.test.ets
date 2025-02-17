@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
-import router from '@ohos.router'
-import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
+import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
+import router from '@ohos.router';
+import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 import events_emitter from '@ohos.events.emitter';
 import { BusinessError } from '@ohos.base';
 

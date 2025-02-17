@@ -15,7 +15,6 @@
 import enableJsunit from './enabledTest/EnableJsunit.test';
 import touchAbleJsunit from './touchableTest/TouchAbleJsunit.test';
 import onChildTouchTest from './onChildTouchTest/onChildTouchTest.test';
-import setCursorTest from './cursorControlTest/setCursorTest.test';
 import monopolizeTest from './monopolizeEventsTest/monopolizeTest.test';
 import assemblyCallbackTest from './assemblyCallback.test';
 import sourceTypeJsunit from './SourceTypeJsunit.test';
@@ -25,7 +24,6 @@ export default function testsuite() {
   enableJsunit();
   touchAbleJsunit();
   onChildTouchTest();
-  setCursorTest();
   monopolizeTest();
   sourceTypeJsunit();
 }

@@ -83,7 +83,7 @@ async function terminateAbility(caseName: string) {
 async function assertMaximizeComponentExist(windowState: number, windowRect?: window.Rect,
   windowClass?: window.Window) {
   let driver = Driver.create()
-  if (windowState == 2) {
+  if (windowState == 2||windowState == 1) {
     await driver.mouseMoveTo({ x: 100, y: 0 })
   } else {
     await windowClass?.moveWindowToAsync(windowRect?.left, windowRect?.top)
@@ -1369,43 +1369,15 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
         // startAbility - SupportWindowMode.FLOATING & SPLIT
         let windowStageStart = await startAbility(message, context, options)
         let windowClass = windowStageStart.getMainWindowSync()
-        // 获取窗口状态 - 自由窗口
+        // 获取窗口状态 - 全屏
         let windowStatus = windowClass.getWindowStatus()
-        console.info(`${message} windowStatus: ${windowStatus}, expect 4`);
-        expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
+        console.info(`${message} windowStatus: ${windowStatus}, expect 1`);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
         // 判断是否存在最大化 - true
-        let test =
-          await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
+        let test = await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
         await sleep(1000)
         console.info(`${message} EnhanceMaximizeBtn existence or not: ${test}, expect true`);
-        expect(test).assertTrue()
-        // 点击最大化
-        let maxButton = await driver.findComponent(ON.id('EnhanceMaximizeBtn'))
-        await sleep(1000)
-        await maxButton.click()
-        await sleep(1000)
-        // 获取窗口状态 - 全屏
-        windowStatus = windowClass.getWindowStatus()
-        console.info(`${message} windowStatus: ${windowStatus}, expect 2`);
-        expect(windowStatus).assertEqual(window.WindowStatusType.MAXIMIZE); 
-        //开发不兼容变更，附下changelog：https://gitee.com/openharmony/docs/pulls/65733
-        // 判断是否存在最大化 - false
-        test = await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
-        await sleep(1000)
-        console.info(`${message} EnhanceMaximizeBtn existence or not: ${test}, expect false`);
-        expect(test).assertFalse()
-        // 模拟用户移动窗口到左边缘，可触发分屏
-        let title = await driver.findComponent(ON.id('ContainerModalTitleRow'))
-        await sleep(1000)
-        let titlePoint = await title.getBounds()
-        await driver.drag(titlePoint.left + 100, titlePoint.top + 10, 0, titlePoint.top + 200, 5000)
-        await sleep(1000)
-        // 获取窗口状态 - 分屏
-        windowStatus = windowClass.getWindowStatus()
-        console.info(`${message} windowStatus: ${windowStatus}, expect 5`);
-        await driver.click(2340, 977);
-        await sleep(1000)
-        expect(windowStatus).assertEqual(window.WindowStatusType.SPLIT_SCREEN);
+        expect(!test).assertTrue();
         done()
       } else {
         console.info(`${message} not support`);

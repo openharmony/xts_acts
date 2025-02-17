@@ -19,39 +19,46 @@ struct LinkArrayBooleanChild {
 
   build() {
     Column() {
-      ForEach(Array.from(this.value.entries()), (item: [number, boolean]) => {
-        Text(`${item[1]} index:${item[0]}`).fontSize(20).id('LinkArrayBoolean_value_' + `${item[0]}`)
-        Divider()
-      })
-
       Button('child init array').id('LinkArrayBoolean_init')
+        .height('5%')
         .onClick(() => {
           this.value = [false, true, false]
-        }).margin(10)
+        })
 
       Button('child add new one').id('LinkArrayBoolean_add')
+        .height('5%')
         .onClick(() => {
           let lastIndex = this.value.length - 1
           this.value.push(this.value[lastIndex] == true ? false : true)
-        }).margin(10)
+        })
 
       Button('child clear').id('LinkArrayBoolean_clear')
+        .height('5%')
         .onClick(() => {
           this.value = []
           if (Array.from(this.value.entries())) {
             this.value.push(true)
           }
-        }).margin(10)
+        })
 
       Button('child replace').id('LinkArrayBoolean_replace')
+        .height('5%')
         .onClick(() => {
           this.value[0] = this.value[0] == true ? false : true
-        }).margin(10)
+        })
 
       Button('child delete').id('LinkArrayBoolean_delete')
+        .height('5%')
         .onClick(() => {
           this.value.shift()
         })
+
+      ForEach(Array.from(this.value.entries()), (item: [number, boolean]) => {
+        Text(`${item[1]} index:${item[0]}`).fontSize(9).id('LinkArrayBoolean_value_' + `${item[0]}`).height('5%')
+        Divider()
+      })
+
+
     }
   }
 }

@@ -45,6 +45,21 @@ struct getGridItemRect2 {
 
   build() {
     Column({ space: 5 }) {
+      Button('点击获取信息').onClick((event: ClickEvent) => {
+        this.x = this.scroller.getItemRect(this.index).x
+        this.y = this.scroller.getItemRect(this.index).y
+        this.width1 = this.scroller.getItemRect(this.index).width
+        this.height1 = this.scroller.getItemRect(this.index).height
+      }).id('getGridItemRect2_button')
+      Text('' + this.x).key('getGridItemRect2_text1')
+      Text('' + this.y).key('getGridItemRect2_text2')
+      Text('' + this.width1).key('getGridItemRect2_text3')
+      Text('' + this.height1).key('getGridItemRect2_text4')
+
+      Button('点击滚动到底部').onClick((event: ClickEvent) => {
+        this.scroller.scrollTo({ xOffset: 0, yOffset: 500 })
+      }).id('getGridItemRect2_button2')
+
       Grid(this.scroller) {
         ForEach(this.arr, (item: number) => {
           ForEach(this.arr1, (item: number) => {
@@ -68,21 +83,6 @@ struct getGridItemRect2 {
       .width(300)
       .backgroundColor(0xFAEEE0)
       .height('60%')
-
-      Button('点击获取信息').onClick((event: ClickEvent) => {
-        this.x = this.scroller.getItemRect(this.index).x
-        this.y = this.scroller.getItemRect(this.index).y
-        this.width1 = this.scroller.getItemRect(this.index).width
-        this.height1 = this.scroller.getItemRect(this.index).height
-      }).id('getGridItemRect2_button')
-      Text('' + this.x).key('getGridItemRect2_text1')
-      Text('' + this.y).key('getGridItemRect2_text2')
-      Text('' + this.width1).key('getGridItemRect2_text3')
-      Text('' + this.height1).key('getGridItemRect2_text4')
-
-      Button('点击滚动到底部').onClick((event: ClickEvent) => {
-        this.scroller.scrollTo({ xOffset: 0, yOffset: 500 })
-      }).id('getGridItemRect2_button2')
 
 
     }.width('100%').margin({ top: 5 })

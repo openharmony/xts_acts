@@ -30,28 +30,24 @@ struct ConsumeArrayObjectChild {
 
   build() {
     Column() {
-      ForEach(Array.from(this.message.entries()), (item: [number, MyProvideObject]) => {
-        Text(`Item ${item[1].id}: ${item[1].value} index: ${item[0]}`).fontSize(20)
-          .id('provideArrayObject_value_' + item[0])
-        Divider()
-      })
-      Button('Consume init array').id('consumeArrayObject_init')
+
+      Button('Consume init array').id('consumeArrayObject_init').height('5%')
         .onClick(() => {
           this.message = [
             new MyProvideObject(1, 'MyProvideObject1'),
             new MyProvideObject(2, 'MyProvideObject2'),
             new MyProvideObject(3, 'MyProvideObject3')
           ]
-        }).margin(10)
+        })
 
-      Button('Consume add new one').id('consumeArrayObject_add')
+      Button('Consume add new one').id('consumeArrayObject_add').height('5%')
         .onClick(() => {
           let lastIndex = this.message.length - 1
           let newId = this.message[lastIndex].id + 1
           this.message.push(new MyProvideObject(newId, `MyProvideObject${newId}`))
-        }).margin(10)
+        })
 
-      Button('Consume clear').id('consumeArrayObject_clear')
+      Button('Consume clear').id('consumeArrayObject_clear').height('5%')
         .onClick(() => {
           this.message = []
           if (Array.from(this.message.entries())) {
@@ -59,17 +55,23 @@ struct ConsumeArrayObjectChild {
           }
         })
 
-      Button('Consume replace').id('consumeArrayObject_replace')
+      Button('Consume replace').id('consumeArrayObject_replace').height('5%')
         .onClick(() => {
           if (this.message.length > 0) {
             this.message[0] = new MyProvideObject(99, 'MyProvideObject99')
           }
-        }).margin(10)
+        })
 
-      Button('Consume delete last').id('consumeArrayObject_delete')
+      Button('Consume delete last').id('consumeArrayObject_delete').height('5%')
         .onClick(() => {
           this.message.pop()
         })
+
+      ForEach(Array.from(this.message.entries()), (item: [number, MyProvideObject]) => {
+        Text(`Item ${item[1].id}: ${item[1].value} index: ${item[0]}`).fontSize(9)
+          .id('provideArrayObject_value_' + item[0]).height('5%')
+        Divider()
+      })
     }
   }
 }
@@ -85,13 +87,14 @@ struct ConsumeArrayObject {
     Row() {
       Column() {
         Button('Provide init array').id('provideArrayObject_init')
+          .height('5%')
           .onClick(() => {
             this.message = [
               new MyProvideObject(4, 'MyProvideObject4'),
               new MyProvideObject(5, 'MyProvideObject5'),
               new MyProvideObject(6, 'MyProvideObject6')
             ]
-          }).margin(10)
+          })
         ConsumeArrayObjectChild()
       }
       .width('100%')

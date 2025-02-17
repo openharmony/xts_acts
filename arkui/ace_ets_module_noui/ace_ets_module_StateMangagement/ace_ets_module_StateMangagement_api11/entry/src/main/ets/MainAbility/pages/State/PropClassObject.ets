@@ -27,16 +27,15 @@ struct ChildPropObjectS {
 
   build() {
     Column() {
-      Text('@Prop 单向的 内部修改不会改变父组件').fontSize(18)
-      Text('子组件Prop:' + this.subClass.value).fontSize(18)
+      Text('@Prop 单向的 内部修改不会改变父组件').fontSize(9).height('5%')
+      Text('子组件Prop:' + this.subClass.value).fontSize(9).height('5%')
         .key("sub_prop_AA")
-      Button('子组件Prop:').fontSize(18)
+      Button('子组件Prop:').fontSize(9).height('5%')
         .key("sub_prop_A")
         .onClick(() => {
           this.subClass.value = "World"
         })
     }.width('100%')
-    .margin({ top: 50 })
   }
 }
 
@@ -47,11 +46,12 @@ struct PropObject {
 
   build() {
     Row() {
-      Column({ space: 20 }) {
-        Text('@Prop 支持多数据类型Object、Class').fontSize(18).margin(5)
-        Text('Click to change Class or Object: ' + this.title.value).margin(5)
-          .id("prop_Object_AA")
-        Button('Click to change Class or Object: ' ).margin(5)
+      Column() {
+        Text('@Prop 支持多数据类型Object、Class').fontSize(9).height('5%')
+        Text('Click to change Class or Object: ' + this.title.value)
+          .id("prop_Object_AA").height('5%')
+        Button('Click to change Class or Object: ' )
+          .height('5%')
           .id("prop_Object_A")
           .onClick(() => {
             // 动态修改Class类型赋值

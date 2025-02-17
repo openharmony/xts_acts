@@ -381,9 +381,15 @@ export default function windowZindexTest() {
             done();
           });
         }).catch(async (err: BusinessError) => {
-          console.error(msgStr + `Failed to create the subwindow1: ${err.code}, message: ${err.message}`);
-          expect(false).assertTrue();
-          done();
+          if(err.code == 801){
+            console.log(msgStr + `getWindowLimits 当前设备类型不支持系统能力SystemCapability.Window.SessionManager, message: ${err.message}`);
+            done();
+          }else{
+            console.error(msgStr + `Failed to create the subwindow1: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+            done();
+          }
+          
         });
       } catch (exception) {
         console.error('Failed to check whether the window is showing. Cause: ' + JSON.stringify(exception));
@@ -467,14 +473,21 @@ export default function windowZindexTest() {
             done();
           });
         }).catch(async (err: BusinessError) => {
-          console.error(msgStr + `Failed to create the subwindow1: ${err.code}, message: ${err.message}`);
+          
+          if(err.code == 801){
+            console.log(msgStr + `getWindowLimits 当前设备类型不支持系统能力SystemCapability.Window.SessionManager, message: ${err.message}`);
+            done();
+          }else{
+            console.error(msgStr + `Failed to create the subwindow1: ${err.code}, message: ${err.message}`);
           expect(false).assertTrue();
           done();
+          }
         });
       } catch (exception) {
         console.error('Failed to check whether the window is showing. Cause: ' + JSON.stringify(exception));
         expect().assertFail();
         done();
+          
       }
     });
 

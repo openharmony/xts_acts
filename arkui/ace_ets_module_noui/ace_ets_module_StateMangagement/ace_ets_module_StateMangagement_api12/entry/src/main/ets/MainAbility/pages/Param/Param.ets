@@ -21,9 +21,13 @@ struct paramqitaIndex {
     Column() {
       qitaMyComponent({ count: this.count })
       Button('change')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           this.count = undefined;
-        }).id('ParamButton')
+        })
+        .id('ParamButton')
     }
   }
 }
@@ -35,6 +39,8 @@ struct qitaMyComponent {
   build() {
     Column() {
       Text(`count(${this.count})`).id('ParamText')
+        .height('3%')
+        .fontSize(9)
     }
   }
 }

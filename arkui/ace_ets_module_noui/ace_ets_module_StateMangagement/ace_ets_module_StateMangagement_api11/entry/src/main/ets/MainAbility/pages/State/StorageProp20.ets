@@ -24,7 +24,7 @@ struct StorageProp20 {
   @State vae: string = ''
 
   build(){
-    Column({space:15}){
+    Column(){
       CompStorageProp20({storProp1:this.storProp1,storProp2:$storProp1,storProp3:this.storProp1,num:this.storProp1})
 
     }
@@ -39,13 +39,13 @@ struct CompStorageProp20 {
   @Provide num : number = 0
   build() {
     Column(){
-      Text(`State:${this.storProp1}`)
+      Text(`State:${this.storProp1}`).height('5%')
         .key('text_state')
-      Text(`Link:${this.storProp2}`)
+      Text(`Link:${this.storProp2}`).height('5%')
         .key('text_Link')
-      Text(`Prop:${this.storProp3}`)
+      Text(`Prop:${this.storProp3}`).height('5%')
         .key('text_Prop')
-      Text(`Provide:${this.num}`)
+      Text(`Provide:${this.num}`).height('5%')
         .key('text_Provide')
     }
   }

@@ -43,12 +43,13 @@ struct MyNavigationTestStack {
         .onClick(() => {
           this.message++;
         })
+        .height('5%')
       Navigation(this.pageInfo) {
         Column() {
           Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
             .width('80%')
-            .height(40)
-            .margin(20)
+            .height('3%')
+            
             .onClick(() => {
               this.pageInfo.pushPath({ name: 'pageOne' }); //将name指定的NavDestination页面信息入栈
             })
@@ -73,20 +74,20 @@ struct pageOneStack {
       Column() {
         NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
         Text('cur stack size:' + `${this.pageInfo.size()}`)
-          .fontSize(30)
+          .fontSize(9)
           .fontWeight(FontWeight.Bold)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
-          .height(40)
-          .margin(20)
+          .height('3%')
+          
           .onClick(() => {
             this.pageInfo.pushPathByName('pageTwo', null);
           })
           .id('NextPage1')
         Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
-          .height(40)
-          .margin(20)
+          .height('3%')
+          
           .onClick(() => {
             this.pageInfo.pop();
           })
@@ -112,20 +113,20 @@ struct pageTwoStack {
       Column() {
         NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
         Text('cur stack size:' + `${this.pageInfo.size()}`)
-          .fontSize(30)
+          .fontSize(9)
           .fontWeight(FontWeight.Bold)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
-          .height(40)
-          .margin(20)
+          .height('3%')
+          
           .onClick(() => {
             this.pageInfo.pushPathByName('pageThree', null);
           })
           .id('NextPage2')
         Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
-          .height(40)
-          .margin(20)
+          .height('3%')
+          
           .onClick(() => {
             this.pageInfo.pop();
           })
@@ -151,20 +152,20 @@ struct pageThreeStack {
       Column() {
         NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
         Text('cur stack size:' + `${this.pageInfo.size()}`)
-          .fontSize(30)
+          .fontSize(9)
           .fontWeight(FontWeight.Bold)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
-          .height(40)
-          .margin(20)
+          .height('3%')
+          
           .onClick(() => {
             this.pageInfo.pushPathByName('pageOne', null);
           })
           .id('NextPage3')
         Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
-          .height(40)
-          .margin(20)
+          .height('3%')
+          
           .onClick(() => {
             this.pageInfo.pop();
           })
@@ -195,13 +196,13 @@ struct NavigationContentMsgStack {
   build() {
     Column() {
       Text('msg:' + `${this.message}`)
-        .fontSize(30)
+        .fontSize(9)
         .fontWeight(FontWeight.Bold)
       Text('index:' + `${this.index}`)
-        .fontSize(30)
+        .fontSize(9)
         .fontWeight(FontWeight.Bold)
       Text('log number:' + `${this.logNumber}`)
-        .fontSize(30)
+        .fontSize(9)
         .fontWeight(FontWeight.Bold)
     }
   }

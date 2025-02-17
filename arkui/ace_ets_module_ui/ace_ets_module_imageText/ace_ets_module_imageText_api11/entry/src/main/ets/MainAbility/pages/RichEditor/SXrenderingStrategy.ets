@@ -21,7 +21,7 @@ struct SXrenderingStrategy {
   @State text2: string = '';
 
   build() {
-    Column({space:20}) {
+    Column({space:0}) {
       RichEditor(this.options)
         .onReady(() => {
           this.controller.addSymbolSpan($r("sys.symbol.ohos_trash"),
@@ -35,15 +35,15 @@ struct SXrenderingStrategy {
         })
         .borderWidth(1)
         .width('100%')
-        .height(200)
+        .height('50%')
       Button('get').key('SXrenderingStrategyButton')
         .onClick(() => {
           this.controller.getSpans({ start: 0, end: 6 }).forEach((item) => {
             this.text2 = (item as RichEditorTextSpanResult).symbolSpanStyle?.renderingStrategy + ''
           })
-        }).height(100)
-      Text(this.text2).key('SXrenderingStrategyText')
-    }.margin(20)
+        }).height('10%')
+      Text(this.text2).key('SXrenderingStrategyText').height('10%').textAlign(TextAlign.Center)
+    }.margin(20).height('100%')
   }
 
 }

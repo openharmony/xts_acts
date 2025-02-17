@@ -37,7 +37,7 @@ struct ChildProvider0300 {
   @Consumer('enumValue') enumValue: Provider0030Enum = Provider0030Enum.PB
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Text(this.classValue.age.toString()).id('tvChildProvider0300Class')
       Text(this.numberValue.toString()).id('tvChildProvider0300Number')
       Text(this.booleanValue.toString()).id('tvChildProvider0300Boolean')
@@ -71,7 +71,7 @@ struct Provider0300 {
   }
 
   build() {
-    Column({ space: 3 }) {
+    Column() {
       Button('ChangeMsg')
         .id('btnProvider0300ChangeMsg')
         .onClick(() => {

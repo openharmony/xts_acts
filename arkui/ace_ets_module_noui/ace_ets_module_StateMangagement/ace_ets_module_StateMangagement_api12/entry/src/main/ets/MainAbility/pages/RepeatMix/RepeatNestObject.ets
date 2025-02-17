@@ -51,14 +51,14 @@ struct RepeatNestObject {
   }
 
   build() {
-    Column({ space: 15 }) {
+    Column() {
       List() {
         Repeat<OuterObject>(this.outerList)
           .each((obj) => {
             ListItemGroup() {
               ListItem() {
                 Text('outerList Item: ' + obj.item.id).id('repeat1_one_' + obj.index.toString())
-                  .fontSize(30)
+                  .fontSize(9)
               }
 
               if (obj.item.inner) {
@@ -66,7 +66,7 @@ struct RepeatNestObject {
                   ListItem() {
                     Text('innerList Item:' + subObj.item.inner.id.toString())
                       .id('repeat2_two_' + subObj.index.toString())
-                      .fontSize(20)
+                      .fontSize(9)
                   }
                 }).key((item) => {
                   return 'innerList_' + (item.toString());

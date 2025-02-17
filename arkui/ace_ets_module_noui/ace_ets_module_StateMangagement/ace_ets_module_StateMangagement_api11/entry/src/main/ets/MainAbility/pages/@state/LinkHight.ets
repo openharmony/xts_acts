@@ -19,45 +19,45 @@ struct Child_CJ {
   @Link hight: ResourceStr | Length;
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
 
-      Text("设置变量number类型50-->100")
+      Text("设置变量number类型10-->7").height('5%')
       Button('change')
         .height(this.hight)
         .onClick(() => {
-          this.hight = 100
+          this.hight = 7
         })
         .key('LinkHeight1')
 
-      Text("设置变量string类型50-->'200'")
+      Text("设置变量string类型10-->'8'").height('5%')
       Button('change')
         .height(this.hight)
         .onClick(() => {
-          this.hight = '200'
+          this.hight = '8'
         })
         .key('LinkHeight2')
 
-      Text("设置变量Resource类型50-->Resource")
+      Text("设置变量Resource类型10-->Resource").height('5%')
       Button('change')
         .height(this.hight)
         .onClick(() => {
-          this.hight = $r('app.string.number')
+          this.hight = $r('app.string.number_9')
         })
         .key('LinkHeight3')
 
-    }.width('100%').margin({top:5})
+    }.width('100%')
   }
 }
 
 @Entry
 @Component
 struct Index_CJ {
-  @State hight: ResourceStr | Length = 50;
+  @State hight: ResourceStr | Length = 10;
 
   build() {
     Column() {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.hight)) + " number is " + JSON.stringify(this.hight))
-        .fontSize(20).margin(10).key('LinkHight')
+        .fontSize(9).key('LinkHight').height('5%')
       Child_CJ({hight: this.hight})
 
     }

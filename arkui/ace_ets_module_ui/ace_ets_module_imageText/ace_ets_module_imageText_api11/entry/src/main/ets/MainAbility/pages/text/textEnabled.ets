@@ -30,9 +30,8 @@ struct textEnabledDemo {
   @State text7: string = '鼠标事件onMouse-禁用'
 
   build() {
-    Column({ space: 10 }) {
+    Column({ space: 0 }) {
       Text(this.text1).key("texEnd1")
-        .padding(10)
         .border({width: 1})
         .textAlign(TextAlign.Center)
         .width('90%')
@@ -40,9 +39,9 @@ struct textEnabledDemo {
           this.text1 = '点击事件已触发'
         })
         .enabled(false)
+        .height('10%')
 
       Text(this.text2).key("texEnd2")
-        .padding(10)
         .border({width: 1})
         .textAlign(TextAlign.Center)
         .width('90%')
@@ -50,9 +49,9 @@ struct textEnabledDemo {
           this.text2 = '触摸事件已触发'
         })
         .enabled(false)
+        .height('10%')
 
       Text(this.text3).key("texEnd3")
-        .padding(10)
         .border({width: 1})
         .textAlign(TextAlign.Center)
         .width('90%')
@@ -60,9 +59,9 @@ struct textEnabledDemo {
           this.text3 = '按键事件已触发'
         })
         .enabled(false)
+        .height('10%')
 
       Text(this.text4).key("texEnd4")
-        .padding(10)
         .border({width: 1})
         .textAlign(TextAlign.Center)
         .width('90%')
@@ -70,9 +69,9 @@ struct textEnabledDemo {
           this.text4 = '鼠标事件onHover 已触发'
         })
         .enabled(false)
+        .height('10%')
 
       Text(this.text5).key("texEnd5")
-        .padding(10)
         .border({width: 1})
         .textAlign(TextAlign.Center)
         .width('90%')
@@ -80,9 +79,9 @@ struct textEnabledDemo {
           this.text5 = '鼠标事件onMouse 已触发'
         })
         .enabled(false)
+        .height('10%')
 
       Text(this.text6).key("texEnd6")
-        .padding(10)
         .border({width: 1})
         .textAlign(TextAlign.Center)
         .width('90%')
@@ -94,9 +93,9 @@ struct textEnabledDemo {
           this.text6 = '焦点事件onBlur 已触发'
         })
         .enabled(false)
+        .height('10%')
 
       Text(this.text7).key("texEnd7")
-        .padding(10)
         .border({ width: 1 })
         .textAlign(TextAlign.Center)
         .width('90%')
@@ -138,8 +137,9 @@ struct textEnabledDemo {
           this.text7 = '鼠标事件onMouse 已触发'
         })
         .enabled(false)
+        .height('10%')
     }
-    .width('100%')
+    .width('100%').height('100%')
     .margin({ top: 20 })
   }
 }

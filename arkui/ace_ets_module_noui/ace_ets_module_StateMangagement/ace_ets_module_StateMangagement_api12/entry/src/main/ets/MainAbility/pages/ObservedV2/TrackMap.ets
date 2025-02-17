@@ -28,9 +28,9 @@ struct TrackMap {
         ForEach(Array.from(this.info.memberMap.entries()), (item: [number, string]) => {
           Text(`${item[0]}`)
             .id(`TrackMap_${item[0]}A`)
-            .fontSize(30)
+            .fontSize(9)
           Text(`${item[1]}`)
-            .fontSize(30)
+            .fontSize(9)
           Divider()
         })
         Button('init map')

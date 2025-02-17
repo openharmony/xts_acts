@@ -58,7 +58,7 @@ struct LifeCycle0050 {
   }
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Text(this.state).id('tvLifeCycle0050Parent')
       if (this.isShow) {
         SubLifeCycle0050({isShow: this.isShow})

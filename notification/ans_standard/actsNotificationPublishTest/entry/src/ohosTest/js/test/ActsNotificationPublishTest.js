@@ -589,6 +589,16 @@ export default function ActsNotificationPublishTest() {
         expect(true).assertTrue()
         done()
       })
+
+      await notification.cancel(id).then(() => {
+        console.info(`${TAG} cancel Promise success`)
+        expect(false).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} cancel Promise err: ${err.code}`)
+        expect(true).assertTrue()
+        done()
+      })
       console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_2850 END`)
     })
 

@@ -13,8 +13,10 @@
  * limitations under the License.
  */
 @Entry
-@ComponentV2 struct Provider3 {
+@ComponentV2
+struct Provider3 {
   @Provider() val: number = 10
+
   build() {
     Column() {
       AComp()
@@ -23,25 +25,33 @@
   }
 }
 
-@ComponentV2 struct AComp {
+@ComponentV2
+struct AComp {
   @Consumer() val: number = 0
 
   build() {
     Column() {
-      Text(`${this.val}`).fontSize(30).onClick(() =>{
+      Text(`${this.val}`)
+        .height('3%')
+        .fontSize(9)
+        .onClick(() => {
         this.val++
       }).id('text1')
-      A1Comp({val: this.val})
-    }.border({width: 2, color: Color.Green})
+      A1Comp({ val: this.val })
+    }.border({ width: 2, color: Color.Green })
   }
 }
 
-@ComponentV2 struct A1Comp {
+@ComponentV2
+struct A1Comp {
   @Param val: number = 0
 
   build() {
     Column() {
-      Text(`${this.val}`).fontSize(30).id('text2')
-    }.border({width: 2, color: Color.Pink})
+      Text(`${this.val}`)
+        .height('3%')
+        .fontSize(9)
+        .id('text2')
+    }.border({ width: 2, color: Color.Pink })
   }
 }

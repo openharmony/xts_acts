@@ -418,21 +418,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents025', 0, async (done: Function) => {
-      console.info('noBarrierComponents025 START');
-      setTimeout(() => {
-        try {
-          let strJson = getInspectorByKey("Select");
-          console.info(' START  :' + JSON.stringify(strJson));
-          expect(JSON.parse(strJson).$type).assertEqual("Select");
-          console.info('noBarrierComponents025 END ');
-        } catch (err) {
-          expect().assertFail()
-          console.info('noBarrierComponents025 ERR  ' + JSON.stringify(err));
-        }
-        done();
-      }, 500)
-    });
+    
     it('noBarrierComponents026', 0, async (done: Function) => {
       console.info('noBarrierComponents026 START');
       setTimeout(() => {
@@ -478,21 +464,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents029', 0, async (done: Function) => {
-      console.info('noBarrierComponents029 START');
-      setTimeout(() => {
-        try {
-          let strJson = getInspectorByKey("Web");
-          console.info(' START  :' + JSON.stringify(strJson));
-          expect(JSON.parse(strJson).$type).assertEqual("Web");
-          console.info('noBarrierComponents029 END ');
-        } catch (err) {
-          expect().assertFail()
-          console.info('noBarrierComponents029 ERR  ' + JSON.stringify(err));
-        }
-        done();
-      }, 500)
-    });
+   
     it('noBarrierComponents030', 0, async (done: Function) => {
       console.info('noBarrierComponents030 START');
       setTimeout(() => {

@@ -11,12 +11,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import("//foundation/arkui/ace_engine/ace_config.gni")
+
 group("ActsAceEtsModulePlatformTest") {
   testonly = true
-  deps = [
-    "ace_ets_module_platform_api11:ActsAceEtsModulePlatformApi11Test",
-    "ace_ets_module_platform_api12:ActsAceEtsModulePlatformApi12Test",
-    "ace_ets_module_platform_api13:ActsAceEtsModulePlatformApi13Test",
-    "ace_ets_module_platform_api14:ActsAceEtsModulePlatformApi14Test",
-  ]
+  if (ace_engine_feature_wearable) {
+    deps = [
+      "ace_ets_module_platform_api11:ActsAceEtsModulePlatformApi11Test",
+      "ace_ets_module_platform_api12:ActsAceEtsModulePlatformApi12Test",
+      "ace_ets_module_platform_api13:ActsAceEtsModulePlatformApi13Test",
+      "ace_ets_module_platform_api14:ActsAceEtsModulePlatformApi14Test",
+    ]
+  } else {
+    deps = [
+      "ace_ets_module_platform_api11:ActsAceEtsModulePlatformApi11Test",
+      "ace_ets_module_platform_api12:ActsAceEtsModulePlatformApi12Test",
+      "ace_ets_module_platform_api13:ActsAceEtsModulePlatformApi13Test",
+      "ace_ets_module_platform_api14:ActsAceEtsModulePlatformApi14Test",
+      "ace_ets_module_platform_nowear_api12:ActsAceEtsModulePlatformNoWearApi12Test",
+    ]
+  }
 }

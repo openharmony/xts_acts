@@ -18,10 +18,11 @@ struct provideParent33 {
 
   build() {
     Column() {
-      Text(`reviewVotes(${this.reviewVotes})`)
+      Text(`reviewVotes(${this.reviewVotes})`).height('5%')
       Button(`reviewVotes(${this.reviewVotes}), give +1`)
         .onClick(() => this.reviewVotes += 1)
         .id("provideParent3")
+        .height('5%')
     }
     .width('50%')
   }
@@ -31,7 +32,7 @@ struct provideParent33 {
 struct provideParent32 {
   @Provide({allowOverride : "reviewVotes"}) review: number = 10;
   build() {
-    Row({ space: 5 }) {
+    Row() {
       provideParent33()
     }
   }
@@ -54,6 +55,7 @@ struct provideParent3 {
     Column() {
       Button(`reviewVotes(${this.reviewVotes}), give +1`)
         .onClick(() => this.reviewVotes += 1)
+        .height('5%')
       provideParent31()
     }
   }

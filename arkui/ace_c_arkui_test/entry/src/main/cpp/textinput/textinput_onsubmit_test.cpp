@@ -23,7 +23,7 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI)
 {
     auto nodeHandle = nodeAPI->createNode(ARKUI_NODE_TEXT_INPUT);
 
-    ArkUI_NumberValue width_value[] = {{.f32 = SIZE_100}};
+    ArkUI_NumberValue width_value[] = {{.f32 = SIZE_50}};
     ArkUI_AttributeItem width_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(nodeHandle, NODE_WIDTH, &width_item);
     nodeAPI->setAttribute(nodeHandle, NODE_HEIGHT, &width_item);

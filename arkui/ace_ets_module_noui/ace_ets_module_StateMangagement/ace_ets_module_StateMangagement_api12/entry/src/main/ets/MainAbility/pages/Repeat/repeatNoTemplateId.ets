@@ -35,31 +35,31 @@ export struct displayRepeat {
   private end: number = 1;
 
   build() {
-    Column({ space: 5 }) {
-      List({ space: 20, initialIndex: 3, scroller: this.scroller }) {
+    Column() {
+      List({ initialIndex: 3, scroller: this.scroller }) {
         Repeat(this.arrayCount.arr)
           .template('number', (r) => {
             ListItem() {
               Text((r.index! + ':' + r.item + 'ReuseNumber' + this.temporaryValue).toString())
-                .id(`text${r.index}`)
+                .id(`textNo${r.index}`)
             }
           })
           .template('number1', (r) => {
             ListItem() {
               Text((r.index! + ':' + r.item + 'ReuseNumber' + this.temporaryValue).toString())
-                .id(`text${r.index}`)
+                .id(`textNo${r.index}`)
             }
           })
           .template('change', (r) => {
             ListItem() {
               Text((r.index! + ':' + r.item + 'ReuseChange' + (this.temporaryValue = 666)).toString())
-                .id(`text${r.index}`)
+                .id(`textNo${r.index}`)
             }
           }, { cachedCount: 4 })
           .each((r) => {
             ListItem() {
               Text((r.index! + ':' + r.item + 'eachMessage' + this.temporaryValue).toString())
-                .id(`text${r.index}`)
+                .id(`textNo${r.index}`)
             }
           })
           .key((item: number) => (item).toString())
@@ -68,9 +68,8 @@ export struct displayRepeat {
         this.start = start;
         this.end = end;
       })
-      .height('30%')
+      .height('100%')
     }
     .width('100%')
-    .margin({ top: 5 })
   }
 }

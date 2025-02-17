@@ -294,9 +294,16 @@ export default function windowPromiseTest() {
             done();
           }
         }).catch((err: BusinessError) => {
-          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            console.log(msgStr + `getWindowLimits 当前设备类型不支持系统能力SystemCapability.Window.SessionManager, message: ${err.message}`);
+            done();
+          }else{
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
           expect(false).assertTrue();
           done();
+          }
+
+          
         });
       } catch (error) {
         console.log(msgStr + 'Failed to register callback. Cause code:' + JSON.stringify(error.code) + error.message);
@@ -375,9 +382,16 @@ export default function windowPromiseTest() {
             done();
           }
         }).catch((err: BusinessError) => {
-          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
-          expect(false).assertTrue();
-          done();
+          if(err.code == 801){
+            console.log(msgStr + `getWindowLimits 当前设备类型不支持系统能力SystemCapability.Window.SessionManager, message: ${err.message}`);
+            done();
+          }else{
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+            done();
+          }
+
+          
         });
       } catch (error) {
         console.log(msgStr + 'Failed to register callback. Cause code:' + JSON.stringify(error.code) + error.message);

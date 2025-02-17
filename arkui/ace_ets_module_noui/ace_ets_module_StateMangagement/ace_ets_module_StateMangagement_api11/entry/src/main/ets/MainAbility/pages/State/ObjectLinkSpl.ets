@@ -28,29 +28,31 @@ struct ViewAS{
   @State class_A: ClassAB = new ClassAB(5);
 
   build() {
-    Column({space:20}) {
+    Column() {
       Button("Reset").id("ViewAS_reset")
+        .height('5%')
         .onClick(() => {
           this.class_A = new ClassAB(5)
         })
       Text('@State: ' + this.class_A.num).key("num_state")
-        .fontSize(20)
+        .fontSize(9).height('5%')
       Button('State + 1').key("adds_state")
+        .height('5%')
         .backgroundColor('#E8A027')
         .onClick(()=>{
           this.class_A.num++;
         })
 
       Text("ObjectLink: " + this.class_A.num).key("sNum_olk")
-        .fontSize(20)
+        .fontSize(9).height('5%')
       ViewBs({ class_C: this.class_A })
 
       Text("son_Prop: " + this.class_A.num).key("sNum_props")
-        .fontSize(20)
+        .fontSize(9).height('5%')
       son_Props({ numA: this.class_A.num })
 
       Text("son_Link: " + this.class_A.num).key("sNum_links")
-        .fontSize(20)
+        .fontSize(9).height('5%')
       son_Links({ numB: $class_A })
 
     }
@@ -67,12 +69,13 @@ struct ViewBs {
   build() {
     Column(){
       Button('ObjectLink + 1').key(("btn_olk"))
+        .height('5%')
         .backgroundColor('#E8A027')
         .onClick(() => {
           this.class_C.num += 1;
         })
     }
-    .margin({top:10})
+    
   }
 }
 
@@ -82,6 +85,7 @@ struct son_Props{
   build(){
     Column(){
       Button('Prop + 1').key(("btn_prop"))
+        .height('5%')
         .backgroundColor('#E8A027')
         .onClick(() => {
           this.numA += 1;
@@ -96,6 +100,7 @@ struct son_Links{
   build(){
     Column(){
       Button('Link + 1').key(("btn_link"))
+        .height('5%')
         .backgroundColor('#E8A027')
         .onClick(() => {
           this.numB.num += 1;

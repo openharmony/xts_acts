@@ -21,32 +21,34 @@ struct StateSetSample {
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-          Text(`${item[0]}`).fontSize(20).id("stateSet_value_" + item[0])
-          Divider()
-        })
-        Button('init set').id("stateSet_init")
+
+        Button('init set').id("stateSet_init").height('5%')
           .onClick(() => {
             this.message = new Set([1, 2, 3])
-          }).margin(10)
+          })
 
-        Button('set new one').id("stateSet_set")
+        Button('set new one').id("stateSet_set").height('5%')
           .onClick(() => {
             this.message.add(5)
-          }).margin(10)
+          })
 
-        Button('clear').id("stateSet_clear")
+        Button('clear').id("stateSet_clear").height('5%')
           .onClick(() => {
             this.message.clear()
             if (Array.from(this.message.entries())) {
               this.message.add(0)
             }
-          }).margin(10)
+          })
 
-        Button('delete the first one').id("stateSet_delete")
+        Button('delete the first one').id("stateSet_delete").height('5%')
           .onClick(() => {
             this.message.delete(0)
-          }).margin(10)
+          })
+
+        ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
+          Text(`${item[0]}`).fontSize(9).id("stateSet_value_" + item[0]).height('5%')
+          Divider()
+        })
       }
       .width('100%')
     }

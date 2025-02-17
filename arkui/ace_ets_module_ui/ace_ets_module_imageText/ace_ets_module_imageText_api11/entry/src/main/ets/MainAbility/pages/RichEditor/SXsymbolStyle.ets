@@ -21,7 +21,7 @@ struct SXsymbolStyle {
   @State text2: string = '';
 
   build() {
-    Column({space:20}) {
+    Column({space:0}) {
       RichEditor(this.options)
         .onReady(() => {
           this.controller.addSymbolSpan($r("sys.symbol.ohos_trash"),
@@ -34,7 +34,7 @@ struct SXsymbolStyle {
         })
         .borderWidth(1)
         .width('100%')
-        .height(200)
+        .height('50%')
       Button("更新样式:加粗").onClick(() => {
         this.controller.updateSpanStyle({
           start: 0,
@@ -45,16 +45,15 @@ struct SXsymbolStyle {
             fontSize: 16
           }
         })
-      }).key('SXsymbolStylesymbolStyleButton')
+      }).key('SXsymbolStylesymbolStyleButton').height('10%')
       Button('get').key('SXsymbolStyleButton')
         .onClick(() => {
           this.controller.getSpans({ start: 0, end: 6 }).forEach((item) => {
             this.text2  +=  (item as RichEditorTextSpanResult).symbolSpanStyle?.fontSize
           })
-        }).height(100)
-      Text(this.text2).key('SXsymbolStyleText')
-    }.margin(20)
+        }).height('10%')
+      Text(this.text2).key('SXsymbolStyleText').height('10%').textAlign(TextAlign.Center)
+    }.margin(20).height('100%')
   }
 
 }
-

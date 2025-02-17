@@ -77,10 +77,11 @@ export default function showToastHoverMode(){
       console.info('showToastHoverMode_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let btn = await driver.findComponent(ON.id('changeEnableHoverMode'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn = await scrollBar.scrollSearch(ON.id('changeEnableHoverMode'));
       await btn.click()
       await CommonFunc.sleep(1000);
-      let btn1 = await driver.findComponent(ON.id('showToast1'));
+      let btn1 = await scrollBar.scrollSearch(ON.id('showToast1'));
       await btn1.click()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text');
@@ -132,13 +133,14 @@ export default function showToastHoverMode(){
       console.info('showToastHoverMode_0400 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let btn = await driver.findComponent(ON.id('init'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn = await scrollBar.scrollSearch(ON.id('init'));
       await btn.click()
       await CommonFunc.sleep(1000);
-      let btn1 = await driver.findComponent(ON.id('changeEnableHoverMode'));
+      let btn1 = await scrollBar.scrollSearch(ON.id('changeEnableHoverMode'));
       await btn1.click()
       await CommonFunc.sleep(1000);
-      let btn2 = await driver.findComponent(ON.id('showToast'));
+      let btn2 = await scrollBar.scrollSearch(ON.id('showToast'));
       await btn2.click()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text2');
@@ -163,16 +165,19 @@ export default function showToastHoverMode(){
       console.info('showToastHoverMode_0500 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let btn = await driver.findComponent(ON.id('init'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn = await scrollBar.scrollSearch(ON.id('init'));
+
       await btn.click()
       await CommonFunc.sleep(1000);
-      let btn1 = await driver.findComponent(ON.id('changeEnableHoverMode'));
+      let btn1 = await scrollBar.scrollSearch(ON.id('changeEnableHoverMode'));
       await btn1.click()
       await CommonFunc.sleep(1000);
-      let btn2 = await driver.findComponent(ON.id('changeHoverModeArea'));
+      let btn2 = await scrollBar.scrollSearch(ON.id('changeHoverModeArea'));
       await btn2.click()
       await CommonFunc.sleep(1000);
-      let btn3 = await driver.findComponent(ON.id('showToast'));
+
+      let btn3 = await scrollBar.scrollSearch(ON.id('showToast'));
       await btn3.click()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text2');
@@ -196,13 +201,14 @@ export default function showToastHoverMode(){
       console.info('showToastHoverMode_0600 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let btn = await driver.findComponent(ON.id('init'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn = await scrollBar.scrollSearch(ON.id('init'));
       await btn.click()
       await CommonFunc.sleep(1000);
-      let btn2 = await driver.findComponent(ON.id('changeHoverModeArea'));
+      let btn2 = await scrollBar.scrollSearch(ON.id('changeHoverModeArea'));
       await btn2.click()
       await CommonFunc.sleep(1000);
-      let btn3 = await driver.findComponent(ON.id('showToast'));
+      let btn3 = await scrollBar.scrollSearch(ON.id('showToast'));
       await btn3.click()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text2');

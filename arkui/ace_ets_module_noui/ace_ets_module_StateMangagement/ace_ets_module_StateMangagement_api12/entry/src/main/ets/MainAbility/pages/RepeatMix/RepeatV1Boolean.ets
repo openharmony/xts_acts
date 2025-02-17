@@ -26,14 +26,13 @@ struct RepeatVlBoolean {
   }
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
       List({ initialIndex: 10 }) {
         Repeat<boolean>(this.simpleList)
           .each((obj: RepeatItem<boolean>) => {
             ListItem() {
               Text('Item id=' + obj.item).id('repeat1' + `${obj.index}`)
-                .fontSize(30)
-                .margin({ top: 10 })
+                .fontSize(9)
             }
           })
           .key((item: boolean, index: number) => {
@@ -45,7 +44,7 @@ struct RepeatVlBoolean {
             ListItem() {
               Column() {
                 Text('Item id =' + ri.item + `${ri.index}`).id('repeat2_vb' + `${ri.index}`)
-                  .fontSize(20)
+                  .fontSize(9)
               }
             }
             .border({ width: 1 })

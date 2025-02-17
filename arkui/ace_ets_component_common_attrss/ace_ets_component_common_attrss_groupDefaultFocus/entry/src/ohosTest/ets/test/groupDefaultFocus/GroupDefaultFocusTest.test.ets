@@ -36,7 +36,7 @@ export default function GroupDefaultFocusTest() {
   //A list of components that support the position attribute, which is required.
   let supportView = [
     'Button',
-    'TextInput',
+    
     'TextArea',
     'Search',
     'Text',
@@ -44,40 +44,34 @@ export default function GroupDefaultFocusTest() {
     'Grid',
     'List',
     'Checkbox',
-    'CheckboxGroup',
-    'DatePicker',
-    //    'ImageAnimator',
+   'CheckboxGroup',
+    
     'Menu',
     'MenuItem',
-    //    'MenuItemGroup',
+    
     'Radio',
-    'Rating',
-    'Select',
+   'Rating',
+   
     'Slider',
-    'Stepper',
-    'StepperItem',
-    'TextPicker',
-    'TimePicker',
+    
     'Toggle',
-    'Web',
+    
     'AlphabetIndexer',
     'Column',
-    //    'ColumnSplit',
+    
     'Counter',
     'Flex',
-    //    'GridCol',
-    //    'GridRow',
+   
     'GridItem',
     'ListItem',
-    //    'ListItemGroup',
-    'Row',
-    //    'RowSplit',
+    
+    
     'Scroll',
-    'SideBarContainer',
+   
     'Stack',
     'Swiper',
     'Tabs',
-  //    'TabContent'
+  
   ]
   //Page config, this param is required.
   let pageConfig: PageConfig = {

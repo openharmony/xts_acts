@@ -28,7 +28,7 @@ struct TrackSet {
         ForEach(Array.from(this.info.memberSet.entries()), (item: [number, string]) => {
           Text(`${item[0]}`)
             .id(`TrackSet_${item[0]}A`)
-            .fontSize(30)
+            .fontSize(9)
           Divider()
         })
         Button('init set')

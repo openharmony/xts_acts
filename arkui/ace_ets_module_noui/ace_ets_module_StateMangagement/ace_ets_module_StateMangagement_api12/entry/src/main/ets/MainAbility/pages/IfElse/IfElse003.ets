@@ -21,12 +21,12 @@ struct IfElse003 {
   @State two: boolean = false;
 
   build() {
-    Column({ space: 20 }) {
-      Column({ space: 10 }) {
+    Column() {
+      Column() {
         Text('if/else嵌套，不同的分支显示不同的颜色')
-          .fontSize(15)
+          .fontSize(9)
           .fontColor(Color.Gray)
-        Row({ space: 20 }) {
+        Row() {
           Button('改变状态1')
             .id('btn_1')
             .onClick(() => {
@@ -38,37 +38,37 @@ struct IfElse003 {
               this.two = !this.two;
             })
         }
-        Column({ space: 10 }) {
+        Column() {
           if (this.one) {
             Text('状态1为真')
               .id('text_1')
-              .fontSize(25)
+              .fontSize(9)
               .backgroundColor('#aaffaa')
             if (this.two) {
               Text('状态1为真，状态2为真')
                 .id('text_11')
-                .fontSize(20)
+                .fontSize(9)
                 .backgroundColor('#00aaaa')
             } else {
               Text('状态1为真，状态2为假')
                 .id('text_12')
-                .fontSize(20)
+                .fontSize(9)
                 .backgroundColor('#aaaaff')
             }
           } else {
             Text('状态1为假')
               .id('text_2')
-              .fontSize(25)
+              .fontSize(9)
               .backgroundColor('#ffaaaa')
             if (this.two) {
               Text('状态1为假，状态2为真')
                 .id('text_21')
-                .fontSize(20)
+                .fontSize(9)
                 .backgroundColor('#00aaaa')
             } else {
               Text('状态1为假，状态2为假')
                 .id('text_22')
-                .fontSize(20)
+                .fontSize(9)
                 .backgroundColor('#aaaaff')
             }
           }

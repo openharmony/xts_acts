@@ -20,6 +20,22 @@ import minMaxFontSize from './TextTest/minMaxFontSize.test';
 import editMenuOptions from './TextTest/editMenuOptions.test';
 import marqueeOptionsTest1 from './TextTest/marqueeOptions1.test';
 import marqueeOptionsTest2 from './TextTest/marqueeOptions2.test';
+import TextInputStopBackPressTest from './TextInputTest/TextInputStopBackPress.test';
+import TextAreaStopBackPressTest from './TextAreaTest/TextAreaStopBackPress.test';
+import SearchStopBackPressTest from './Search/SearchStopBackPress.test';
+import addOrDelText from './TextAreaTest/addOrDelText.test';
+import TextOnChangeOptionsTest from './TextChangeTest/TextOnChangeOptionsTest.test';
+import TextOnWillChangeOptionsTest from './TextChangeTest/TextOnWillChangeOptionsTest.test';
+import bindSelectionMenuTest from './SelectionMenuTest/bindSelectionMenuTest.test';
+
+import textAreaEllipsisModeTest from './EllipsisModeTest/textAreaEllipsisModeTest.test';
+import textInputEllipsisModeTest from './EllipsisModeTest/textInputEllipsisModeTest.test';
+import searchFontScaleTest from './FontScaleTest/searchFontScaleTest.test';
+import textAreaFontScaleTest from './FontScaleTest/textAreaFontScaleTest.test';
+import textInputFontScaleTest from './FontScaleTest/textInputFontScaleTest.test';
+import searchHalfLeadingTest from './HalfLeadingTest/searchHalfLeadingTest.test';
+import textAreaHalfLeadingTest from './HalfLeadingTest/textAreaHalfLeadingTest.test';
+import textInputHalfLeadingTest from './HalfLeadingTest/textInputHalfLeadingTest.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -28,5 +44,20 @@ export default function testsuite() {
   minMaxFontSize();
   editMenuOptions();
   marqueeOptionsTest1();
-  marqueeOptionsTest2();
+  marqueeOptionsTest2(); 
+  TextInputStopBackPressTest();
+  TextAreaStopBackPressTest();
+  SearchStopBackPressTest();
+  addOrDelText();
+  TextOnChangeOptionsTest();
+  TextOnWillChangeOptionsTest();
+  bindSelectionMenuTest();
+  textAreaEllipsisModeTest();
+  textInputEllipsisModeTest();
+  searchFontScaleTest();
+  textAreaFontScaleTest();
+  textInputFontScaleTest();
+  searchHalfLeadingTest();
+  textAreaHalfLeadingTest();
+  textInputHalfLeadingTest();
 }

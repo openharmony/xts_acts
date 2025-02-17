@@ -52,8 +52,8 @@ struct swiperAttribute_9 {
     .indicator(true)
     .margin(20)
     .padding(20)
-    .width(300)
-    .height(300)
+    .width('90%')
+    .height('60%')
     .backgroundColor(Color.Red)
   }
 }

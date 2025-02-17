@@ -37,7 +37,7 @@ struct Builder0070 {
   }
 
   build() {
-    Column({space: 3}) {
+    Column() {
       funBuilder0070(this.msg)
       this.fun(this.msg)
     }

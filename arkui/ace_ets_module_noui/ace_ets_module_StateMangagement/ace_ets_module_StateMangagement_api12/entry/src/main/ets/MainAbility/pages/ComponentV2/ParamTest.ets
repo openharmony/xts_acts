@@ -31,7 +31,7 @@ struct ChildRequire {
   @Param @Require childRequireMsg: string
 
   build() {
-    Row({ space: 3 }) {
+    Row() {
       Text(this.childRequireMsg).id('tvChildRequireMsg')
     }
   }
@@ -44,7 +44,7 @@ struct ChildOnce {
   @Param @Once childClassA: ClassA = new ClassA(0)
 
   build() {
-    Row({ space: 3 }) {
+    Row() {
       Text(this.childOnceMsg).id('tvChildOnceMsg')
       Text(this.childOnceCount.toString()).id('tvChildCount')
       Text(this.childClassA.count.toString()).id('tvChildClassACount')
@@ -62,14 +62,14 @@ struct ChildParam {
   @Param noOut: string = 'noOut'
 
   build() {
-    Column({ space: 3 }) {
-      Row({ space: 3 }) {
+    Column() {
+      Row() {
         Text(this.childConstants.toString()).id('tvChildSingleCount')
         Text(this.childMsg).id('tvChildMsg')
         Text(this.isChildState.toString()).id('tvIsChildState')
         Text(this.noOut).id('tvChildNoOut')
       }
-      Row({ space: 3 }) {
+      Row() {
         Text(this.childMsg).id('tvNestChild')
         ChildRequire({childRequireMsg: this.childMsg})
       }
@@ -89,8 +89,8 @@ export struct ParamTest {
 
   build() {
     Scroll() {
-      Column({ space: 5 }) {
-        Column({ space: 3 }) {
+      Column() {
+        Column() {
           Button('ChangeOnce')
             .id('btnChangeOnce')
             .onClick(() => {
@@ -99,7 +99,7 @@ export struct ParamTest {
             })
           ChildOnce({ childOnceMsg: this.message, childOnceCount: this.count })
         }
-        Column({ space: 3 }) {
+        Column() {
           Text(this.classA.count.toString())
             .id('tvClassACount')
             .onClick(() => {
@@ -107,7 +107,7 @@ export struct ParamTest {
             })
           ChildOnce({ childClassA: this.classA })
         }
-        Column({ space: 3 }) {
+        Column() {
           Text(this.message)
             .id('tvRequireMsg')
             .onClick(() => {
@@ -115,7 +115,7 @@ export struct ParamTest {
             })
           ChildRequire({ childRequireMsg: this.message })
         }
-        Column({ space: 3 }) {
+        Column() {
           Button('ChangeParam')
             .id('btnChangeParam')
             .onClick(() => {

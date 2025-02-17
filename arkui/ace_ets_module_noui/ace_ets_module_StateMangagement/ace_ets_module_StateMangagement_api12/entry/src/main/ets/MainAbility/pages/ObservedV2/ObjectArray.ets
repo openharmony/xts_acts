@@ -39,26 +39,25 @@ struct ObjectArray{
     Column() {
       Text(`length:${this.info.personList.length}`)
         .id('ObjectArray_1A')
-        .fontSize(40)
+        .fontSize(9)
         Divider()
       if(this.info.personList.length>=2){
         Text(`${this.info.personList[0].age}`)
-          .fontSize(40)
+          .fontSize(9)
           .onClick(()=>{
             this.info.personList[0].age++
           })
         Text(`${this.info.personList[1].age}`)
-          .fontSize(40)
+          .fontSize(9)
           .onClick(()=>{
             this.info.personList[1].age++
           })
         Divider()
         ForEach(this.info.personList,(item:Person4,index:number)=>{
-          Text(`${index} ${item.age}`).fontSize(40)
+          Text(`${index} ${item.age}`).fontSize(9)
         })
       }
     }
     .width('100%')
-    .margin({top:20})
   }
 }

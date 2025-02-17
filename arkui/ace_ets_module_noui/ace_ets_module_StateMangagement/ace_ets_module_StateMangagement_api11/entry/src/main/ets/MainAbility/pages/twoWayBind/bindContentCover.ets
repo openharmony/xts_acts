@@ -21,55 +21,52 @@ struct ModalTransitionExample {
   @Builder myBuilder2() {
     Column() {
       Button('close modal 2')
-        .margin(10)
-        .fontSize(20)
-        .padding(30)
+        .height('5%')
         .onClick(() => {
           this.isShow2 = false;
         })
-        .id('bindContentButton4')
-      Text(`isShow: ${this.isShow}`).fontSize(20).id('bindContentText4')
-      Text(`isShow2: ${this.isShow2}`).fontSize(20).id('bindContentText5')
+        .id('btnBindContent4')
+      Text(`isShow: ${this.isShow}`).id('bindContentText4').height('5%')
+      Text(`isShow2: ${this.isShow2}`).id('bindContentText5').height('5%')
     }
     .width('100%')
     .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 
   @Builder myBuilder() {
     Column() {
       Button('transition modal 2')
-        .margin(10)
-        .fontSize(20)
+        .height('5%')
         .onClick(() => {
           this.isShow2 = true;
         })
-        .id('bindContentButton3')
+        .id('btnBindContent3')
         .bindContentCover($$this.isShow2, this.myBuilder2(), {
-        modalTransition: ModalTransition.NONE,
-        backgroundColor: Color.Orange,
-        onWillAppear: () => {
-          console.log('BindContentCover onWillAppear.')
-        },
-        onAppear: () => {
-          console.log('BindContentCover onAppear.')
-        },
-        onWillDisappear: () => {
-          console.log('BindContentCover onWillDisappear.')
-        },
-        onDisappear: () => {
-          console.log('BindContentCover onDisappear.')
-        }
-      })
+          modalTransition: ModalTransition.NONE,
+          backgroundColor: Color.Orange,
+          onWillAppear: () => {
+            console.log('BindContentCover onWillAppear.')
+          },
+          onAppear: () => {
+            console.log('BindContentCover onAppear.')
+          },
+          onWillDisappear: () => {
+            console.log('BindContentCover onWillDisappear.')
+          },
+          onDisappear: () => {
+            console.log('BindContentCover onDisappear.')
+          }
+        })
 
       Button('close modal 1')
-        .margin(10)
-        .fontSize(20)
+        .height('5%')
         .onClick(() => {
           this.isShow = false;
         })
-        .id('bindContentButton2')
-      Text(`isShow: ${this.isShow}`).fontSize(20).id('bindContentText2')
-      Text(`isShow2: ${this.isShow2}`).fontSize(20).id('bindContentText3')
+        .id('btnBindContent2')
+      Text(`isShow: ${this.isShow}`).id('bindContentText2').height('5%')
+      Text(`isShow2: ${this.isShow2}`).id('bindContentText3').height('5%')
     }
     .width('100%')
     .height('100%')
@@ -82,9 +79,8 @@ struct ModalTransitionExample {
         .onClick(() => {
           this.isShow = true
         })
-        .fontSize(20)
-        .margin(10)
-        .id('bindContentButton1')
+        .id('btnBindContent1')
+        .height('5%')
         .bindContentCover($$this.isShow, this.myBuilder(), {
           modalTransition: ModalTransition.NONE,
           backgroundColor: Color.Pink,
@@ -101,8 +97,8 @@ struct ModalTransitionExample {
             console.log('BindContentCover onDisappear.')
           }
         })
-      Text(`isShow: ${this.isShow}`).fontSize(20).id('bindContentText')
-      Text(`isShow2: ${this.isShow2}`).fontSize(20).id('bindContentText1')
+      Text(`isShow: ${this.isShow}`).id('bindContentText').height('5%')
+      Text(`isShow2: ${this.isShow2}`).id('bindContentText1').height('5%')
     }
     .justifyContent(FlexAlign.Center)
     .backgroundColor('#ff49c8ab')

@@ -18,32 +18,34 @@ struct ConsumeSetChild {
 
   build() {
     Column() {
-      ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-        Text(`${item[0]}`).fontSize(20).id("provideSet_value_" + item[0])
-        Divider()
-      })
-      Button('Consume init set').id("consumeSet_init")
+
+      Button('Consume init set').id("consumeSet_init").height('5%')
         .onClick(() => {
           this.message = new Set([1, 2, 3])
-        }).margin(10)
+        })
 
-      Button('Consume set new one').id("consumeSet_set")
+      Button('Consume set new one').id("consumeSet_set").height('5%')
         .onClick(() => {
           this.message.add(5)
-        }).margin(10)
+        })
 
-      Button('Consume clear').id("consumeSet_clear")
+      Button('Consume clear').id("consumeSet_clear").height('5%')
         .onClick(() => {
           this.message.clear()
           if (Array.from(this.message.entries())) {
             this.message.add(0)
           }
-        }).margin(10)
+        })
 
-      Button('Consume delete').id("consumeSet_delete")
+      Button('Consume delete').id("consumeSet_delete").height('5%')
         .onClick(() => {
           this.message.delete(0)
         })
+
+      ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
+        Text(`${item[0]}`).fontSize(9).id("provideSet_value_" + item[0]).height('5%')
+        Divider()
+      })
     }
     .width('100%')
   }
@@ -58,10 +60,10 @@ struct ProvideSetSample {
   build() {
     Row() {
       Column() {
-        Button('Provide init set').id("provideSet_add")
+        Button('Provide init set').id("provideSet_add").height('5%')
           .onClick(() => {
             this.message = new Set([1, 2, 3, 4])
-          }).margin(10)
+          })
 
         ConsumeSetChild()
       }

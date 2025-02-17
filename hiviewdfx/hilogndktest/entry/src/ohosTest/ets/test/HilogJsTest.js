@@ -31,6 +31,7 @@ describe('HilogJsTest', function () {
     * run after testClass
     */
     afterAll(function () {
+        hilog.setMinLogLevel(hilog.LogLevel.INFO);
         console.info('afterAll called');
     })
 
@@ -753,6 +754,57 @@ describe('HilogJsTest', function () {
         }
 
         console.info('testHilogJsApi47 end');
+    })
+
+    it('SUB_DFX_DFT_DefaultLevel_0100', 0, () => {
+      hilog.setMinLogLevel(hilog.LogLevel.INFO);
+      let res = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.DEBUG);
+      let res1 = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.INFO);
+      expect(res).assertEqual(false);
+      expect(res1).assertEqual(true);
+    })
+
+    it('SUB_DFX_DFT_DefaultLevel_0200', 0, () => {
+      hilog.setMinLogLevel(hilog.LogLevel.WARN);
+      let res = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.INFO);
+      let res1 = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.FATAL);
+      expect(res).assertEqual(false);
+      expect(res1).assertEqual(true);
+    })
+
+    it('SUB_DFX_DFT_DefaultLevel_0300', 0, () => {
+      hilog.setMinLogLevel(hilog.LogLevel.ERROR);
+      let res = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.INFO);
+      let res1 = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.FATAL);
+      expect(res).assertEqual(false);
+      expect(res1).assertEqual(true);
+    })
+
+    it('SUB_DFX_DFT_DefaultLevel_0400', 0, () => {
+      hilog.setMinLogLevel(hilog.LogLevel.FATAL);
+      let res = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.ERROR);
+      let res1 = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.FATAL);
+      expect(res).assertEqual(false);
+      expect(res1).assertEqual(true);
+    })
+
+    it('SUB_DFX_DFT_DefaultLevel_0500', 0, () => {
+      hilog.setMinLogLevel(hilog.LogLevel.FATAL);
+      let res = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.INFO);
+      expect(res).assertEqual(false);
+    })
+
+    it('SUB_DFX_DFT_DefaultLevel_0600', 0, () => {
+      hilog.setMinLogLevel(hilog.LogLevel.ERROR);
+      try{
+        for (let index = 0; index < 1000; index++) {
+          hilog.info(0x3200, "HILOGTEST", "%{public}s", 'hilogJs0100')
+          hilog.error(0x3200, "HILOGTEST", "%{public}s", 'hilogJs0100')
+        }
+      } catch (error){
+        console.log(`testHilogJsApi01 got an error: ${JSON.stringify(error)}`)
+        expect().assertFail()
+      }
     })
   })
 }

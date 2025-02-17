@@ -66,10 +66,7 @@ export default function marginLengthTest() {
     'Rating',
     'ScrollBar',
     'Search',
-    'Select',
     'Slider',
-    'Stepper',
-    'StepperItem',
     'Text',
     'TextArea',
     'TextClock',
@@ -89,7 +86,6 @@ export default function marginLengthTest() {
     'Shape',
     'Badge',
     'Column',
-    'ColumnSplit',
     'Counter',
     //'Flex',
     //'FlowItem',
@@ -105,14 +101,11 @@ export default function marginLengthTest() {
     'Refresh',
     'RelativeContainer',
     'Row',
-    'RowSplit',
     'Scroll',
-    'SideBarContainer',
     'Stack',
     'Swiper',
     'Tabs',
-    'TabContent',
-    'WaterFlow'
+    'TabContent'
   ]
   let pageConfig: PageConfig = {
     testName: 'testMargin',

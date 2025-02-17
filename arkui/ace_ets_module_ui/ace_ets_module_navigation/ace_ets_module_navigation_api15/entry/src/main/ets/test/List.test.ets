@@ -13,7 +13,11 @@
  * limitations under the License.
  */
 import EnableModeChangeAnimation from './Navigation/EnableModeChangeAnimation.test';
+import CustomTransitionPage from './NavDestination/CustomTransitionPage.test';
+import OnResultPage from './Navigation/OnResultPage.test';
 
 export default function testsuite() {
   EnableModeChangeAnimation();
+  CustomTransitionPage();
+  OnResultPage();
 }

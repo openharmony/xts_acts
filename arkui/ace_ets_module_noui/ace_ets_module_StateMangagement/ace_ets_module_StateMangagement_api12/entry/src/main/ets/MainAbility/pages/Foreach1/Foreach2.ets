@@ -23,13 +23,13 @@ struct ForEachKey {
     Column() {
       ForEach(this.simpleList, (item: string) => {
         Text(item)
-          .fontSize(14)
+          .fontSize(9)
           .key(item)
       }, (item: string) => item)
 
       ForEach(this.simpleList, (item: string) => {
         Text(item)
-          .fontSize(14)
+          .fontSize(9)
           .key(item + item)
       }, (item: string, index: number) => {
         return 'same key'; // 定义相同键值

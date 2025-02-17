@@ -95,10 +95,10 @@ struct makeObserved0100 {
           ForEach(this.numbers, (day: string, index2: number) => {
             GridItem() {
               Text(day)
-                .fontSize(16)
+                .fontSize(9)
                 .backgroundColor(0xF9CF93)
                 .width('100%')
-                .height(80)
+                .height('3%')
                 .textAlign(TextAlign.Center)
             }.selectable(false).id(`text${index1}${index2}`)
           }, (day: string) => day)
@@ -111,16 +111,15 @@ struct makeObserved0100 {
       .scrollBar(BarState.Off)
       .width('90%')
       .backgroundColor(0xFAEEE0)
-      .height(300)
+      .layoutWeight(0.5)
 
       Grid(undefined, this.layoutOptions2) {
         ForEach(this.numbers2, (day: string) => {
           GridItem() {
             Text(day)
-              .fontSize(16)
+              .fontSize(9)
               .backgroundColor(0xF9CF93)
-              .width('100%')
-              .height('100%')
+              .height('3%')
               .textAlign(TextAlign.Center)
           }
           .height('100%')
@@ -133,8 +132,8 @@ struct makeObserved0100 {
       .rowsGap(10)
       .width('90%')
       .backgroundColor(0xFAEEEE0)
-      .height(300)
+      .layoutWeight(0.5)
 
-    }.width('100%').margin({ top: 5 })
+    }.width('100%')
   }
 }

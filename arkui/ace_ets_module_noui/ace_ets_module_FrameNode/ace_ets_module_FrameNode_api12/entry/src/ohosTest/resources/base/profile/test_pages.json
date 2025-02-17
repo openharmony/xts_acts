@@ -9,7 +9,6 @@
 		"MainAbility/pages/frameNode/APIsetOnFocus",
 		"MainAbility/pages/frameNode/APIsetOnHover",
 	  "MainAbility/pages/frameNode/nodeList",
-	  "MainAbility/pages/frameNode/nodeListItemGroup",
-	  "MainAbility/pages/frameNode/nodeWaterFlow"
+	  "MainAbility/pages/frameNode/nodeListItemGroup"
     ]
 }

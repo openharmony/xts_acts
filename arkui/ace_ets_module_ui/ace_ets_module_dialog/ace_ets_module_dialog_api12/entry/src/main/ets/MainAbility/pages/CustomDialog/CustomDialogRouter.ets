@@ -51,6 +51,8 @@ struct CustomDialogRouter {
         .onClick(() => {
           this.dialogController?.open()
         }).backgroundColor(0x317aff)
-    }.width('100%').margin({ top: 200 })
+    }.width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }

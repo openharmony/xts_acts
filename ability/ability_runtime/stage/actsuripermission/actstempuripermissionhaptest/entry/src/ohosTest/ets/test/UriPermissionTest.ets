@@ -110,7 +110,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName1_2) {
           console.info(TAG1 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber1_1, UnSubscribeInfoCallback1_1)
+            flag1_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -226,7 +231,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName2_2) {
           console.info(TAG2 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber2_1, UnSubscribeInfoCallback2_1)
+            flag2_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -256,7 +266,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName2_4) {
           console.info(TAG2 + 'write file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber2_2, UnSubscribeInfoCallback2_2)
+            flag2_2 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -333,7 +348,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName4_2) {
           console.info(TAG4 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber4_1, UnSubscribeInfoCallback4_1)
+            flag4_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -363,7 +383,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName4_4) {
           console.info(TAG4 + 'write file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber4_2, UnSubscribeInfoCallback4_2)
+            flag4_2 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -504,7 +529,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName5_2) {
           console.info(TAG5 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber5_1, UnSubscribeInfoCallback5_1)
+            flag5_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -534,7 +564,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName5_4) {
           console.info(TAG5 + 'write file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber5_2, UnSubscribeInfoCallback5_2)
+            flag5_2 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -657,7 +692,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName6_4) {
           console.info(TAG6 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber6_2, UnSubscribeInfoCallback6_2)
+            flag6_2 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -784,7 +824,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName7_2) {
           console.info(TAG7 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber7_1, UnSubscribeInfoCallback7_1)
+            flag7_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -814,7 +859,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName7_4) {
           console.info(TAG7 + 'write file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber7_2, UnSubscribeInfoCallback7_2)
+            flag7_2 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -897,7 +947,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName8_2) {
           console.info(TAG8 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber8_1, UnSubscribeInfoCallback8_1)
+            flag8_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -927,7 +982,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName8_4) {
           console.info(TAG8 + 'write file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber8_2, UnSubscribeInfoCallback8_2)
+            flag8_2 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -960,15 +1020,23 @@ export default function UriPermissionTest() {
           flag8_3 = true;
         }).catch((err:base.BusinessError) => {
           console.info(TAG8 + "open file failed with error message: " + err.message + ", error code: " + err.code);
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            flag8_3 = true;
+          } else {
+            expect().assertFail();
+          }
         });
 
         fs.open(uri, fs.OpenMode.READ_WRITE).then((file) => {
           console.info(TAG8 + "file fd: " + file.fd);
           flag8_4 = true;
         }).catch((err:base.BusinessError) => {
-          expect().assertFail();
           console.info(TAG8 + "open file failed with error message: " + err.message + ", error code: " + err.code);
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            flag8_4 = true;
+          } else {
+            expect().assertFail();
+          }
         });
       }).catch((error: base.BusinessError) => {
         console.info(TAG8 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
@@ -1040,7 +1108,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName10_2) {
           console.info(TAG10 + 'write file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber10_1, UnSubscribeInfoCallback10_1)
+            flag10_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -1070,7 +1143,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName10_4) {
           console.info(TAG10 + 'write file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber10_2, UnSubscribeInfoCallback10_2)
+            flag10_2 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -1140,7 +1218,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName11_2) {
           console.info(TAG11 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber11_1, UnSubscribeInfoCallback11_1)
+            flag11_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 
@@ -1448,7 +1531,12 @@ export default function UriPermissionTest() {
         }
         if (data.event === eventName15_2) {
           console.info(TAG15 + 'read file failed.');
-          expect().assertFail();
+          if (canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization') === false) {
+            commonEvent.unsubscribe(subscriber15_1, UnSubscribeInfoCallback15_1)
+            flag15_1 = true;
+          } else {
+            expect().assertFail();
+          }
         }
       }
 

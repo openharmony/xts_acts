@@ -49,7 +49,7 @@ struct GridRow_onBreakpoint {
             xxl: 30
           }
         },
-        breakpoints: { value: ["50vp", "100vp", "150vp", "200vp", "300vp"],
+        breakpoints: { value: ["30vp", "60vp", "100vp", "150vp", "200vp"],
           reference: BreakpointsReference.ComponentSize },
         direction: GridRowDirection.Row
       }) {

@@ -16,10 +16,6 @@ import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent'
 function PublishCallBackOne() {
     console.debug("====>Publish CallBack ACTS_DoAbilityForeground_0100_Event====>");
-    setTimeout(()=>{
-        globalThis.abilityContextMainAbility2.terminateSelf();
-        console.debug("====>MainAbility2 terminateSelf succese====>")
-    },5000)
 }
 export default class MainAbility2 extends Ability {
     onCreate(want, launchParam) {
@@ -29,6 +25,7 @@ export default class MainAbility2 extends Ability {
 
     onDestroy() {
         console.log("[Demo] MainAbility2 onDestroy")
+        globalThis.abilityContextMainAbility2 = undefined;
     }
 
     onWindowStageCreate(windowStage) {

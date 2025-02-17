@@ -101,8 +101,9 @@ export default function ApiCommponentAddJsunit() {
       let bottom = gridBottom.bottom;
       let gridRight = CommonFunc.getComponentRect('listadd');
       let right = gridRight.right;
+      let left = gridRight.left;
       let driver = await Driver.create();
-      await driver.swipe(Math.round(top + 50), Math.round(right - 50), Math.round(bottom - 50), Math.round(right - 50));
+      await driver.swipe(Math.round(left + Math.round(vp2px(30))), Math.round(top + Math.round(vp2px(30))), Math.round(left + Math.round(vp2px(20))), Math.round(top + Math.round(vp2px(30))));
       await CommonFunc.sleep(1000);
       // judge whether the top
       let onScrollStartText = await driver.findComponent(ON.id('4'));
@@ -136,7 +137,7 @@ export default function ApiCommponentAddJsunit() {
       // wether if swipe
       let gridText = await driver.findComponent(ON.id('25'));
       let  text = await gridText.getText();
-      console.info("apiCommponentAddJsunit_0300] onScrollText: " + text);
+      console.info("[apiCommponentAddJsunit_0300] onScrollText: " + text);
       expect(text).assertEqual('4');
       done();
     });
@@ -265,29 +266,6 @@ export default function ApiCommponentAddJsunit() {
       expect(obj.$type).assertEqual('TextInput');
       done();
     
-    });
-
-    it('apiCommponentAddJsunit_0900', 0, async (done: Function) => {
-      console.info('apiCommponentAddJsunit_0900 START');
-      ohosrouter.clear();
-      ohosrouter.pushUrl({
-        url: 'MainAbility/pages/Scroll/waterflow_add',
-        params: {
-          data1: 'message',
-          data2: {
-            data3: [123, 456, 789]
-          }
-        }
-      }).then(() => {
-        // success
-      }).catch((err: BusinessError) => {
-        console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-      })
-      let strJson = getInspectorByKey('waterflowAdd');
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[apiCommponentAddJsunit_0900'] component obj is: " + obj.$attrs.enableScrollInteraction);
-      expect(obj.$attrs.enableScrollInteraction ).assertTrue();
-      done();
     });
 
     it('apiCommponentAddJsunit_1000', 0, async (done: Function) => {

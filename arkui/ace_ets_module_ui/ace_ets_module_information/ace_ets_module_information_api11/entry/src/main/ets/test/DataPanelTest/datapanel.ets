@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -29,7 +29,7 @@ function spliceColor(sysColor: Resource) {
 
 function dataPanelDefaultStrokeWidth(sysWidth: Resource) {
   let resourceStrokeWidth = getContext().resourceManager.getNumber(sysWidth.id)
-  let newStrokeWidth: string = px2vp(resourceStrokeWidth) + '.00vp'
+  let newStrokeWidth: string = Math.round(px2vp(resourceStrokeWidth)) + '.00vp'
   return newStrokeWidth;
 }
 

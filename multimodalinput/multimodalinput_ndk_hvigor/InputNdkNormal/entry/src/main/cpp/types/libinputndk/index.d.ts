@@ -138,3 +138,7 @@ export const AddHotkeyMonitor25: () => number;
 export const AddHotkeyMonitor26: () => number;
 export const AddHotkeyMonitor27: () => number;
 export const AddHotkeyMonitor28: () => number;
+export const GetFunctionKeyState: () => number;
+export const GetFunctionKeyState2: () => number;
+export const GetFunctionKeyState3: () => number;
+export const GetFunctionKeyState4: () => number;

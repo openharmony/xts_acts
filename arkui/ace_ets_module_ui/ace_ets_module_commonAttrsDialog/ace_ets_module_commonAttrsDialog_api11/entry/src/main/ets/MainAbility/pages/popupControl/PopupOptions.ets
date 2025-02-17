@@ -50,7 +50,9 @@ struct PopupOptionsExample {
             }
           }
         })
-        .position({ x: 100, y: 150 })
-    }.width('100%').padding({ top: 5 })
+    }
+    .height('100%')
+    .width('100%')
+    .padding({ top: 5 })
   }
 }

@@ -51,8 +51,8 @@ struct CustomPopupOptionsExample {
             }
           }
         })
-        .position({ x: 80, y: 300 })
     }
+    .height('100%')
     .width('100%')
     .padding({ top: 5 })
   }

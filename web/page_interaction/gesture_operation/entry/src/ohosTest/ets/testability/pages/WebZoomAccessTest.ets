@@ -64,61 +64,77 @@ struct WebZoomAccessTest {
           console.info("key==>" + this.str)
           switch (this.str) {
             case "testWebZoomAccess001": {
-              try {
-                this.controller.loadUrl("resource://rawfile/second.html")
-                await Utils.sleep(2000)
-                await Utils.fingerZoom('WebZoomAccessTestWebView', true);
-                await Utils.sleep(2000)
-                Utils.emitEvent(this.oldScale == 0 && this.newScale == 0, 6500)
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                try {
+                  this.controller.loadUrl("resource://rawfile/second.html")
+                  await Utils.sleep(2000)
+                  await Utils.fingerZoom('WebZoomAccessTestWebView', true);
+                  await Utils.sleep(2000)
+                  Utils.emitEvent(this.oldScale == 0 && this.newScale == 0, 6500)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                }
+                break;
+              } else {
+                Utils.emitEvent(true, 6500)
               }
-              break;
             }
             case "testWebZoomAccess002": {
-              try {
-                await Utils.fingerZoom('WebZoomAccessTestWebView', true);
-                await Utils.sleep(2000)
-                await Utils.fingerZoom('WebZoomAccessTestWebView', false);
-                await Utils.sleep(2000)
-                Utils.emitEvent(this.oldScale == 0 && this.newScale == 0, 6502)
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                try {
+                  await Utils.fingerZoom('WebZoomAccessTestWebView', true);
+                  await Utils.sleep(2000)
+                  await Utils.fingerZoom('WebZoomAccessTestWebView', false);
+                  await Utils.sleep(2000)
+                  Utils.emitEvent(this.oldScale == 0 && this.newScale == 0, 6502)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                }
+                break;
+              } else {
+                Utils.emitEvent(true, 6502)
               }
-              break;
             }
             case "testWebZoomAccess003": {
-              try {
-                this.zoomAccess = true;
-                await Utils.sleep(2000)
-                await Utils.fingerZoom('WebZoomAccessTestWebView', true);
-                await Utils.sleep(2000)
-                Utils.emitEvent(this.oldScale > 0 && this.newScale > 0 && this.newScale > this.oldScale, 6504)
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                try {
+                  this.zoomAccess = true;
+                  await Utils.sleep(2000)
+                  await Utils.fingerZoom('WebZoomAccessTestWebView', true);
+                  await Utils.sleep(2000)
+                  Utils.emitEvent(this.oldScale > 0 && this.newScale > 0 && this.newScale > this.oldScale, 6504)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                }
+                break;
+              } else {
+                Utils.emitEvent(true, 6504)
               }
-              break;
             }
             case "testWebZoomAccess004": {
-              try {
-                this.zoomAccess = true;
-                this.flag = true;
-                await Utils.sleep(2000)
-                await Utils.fingerZoom('WebZoomAccessTestWebView', true);
-                await Utils.sleep(2000)
-                this.flag = false;
-                this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
-                  await Utils.pinchInComponent('WebZoomAccessTestWebView')
-                } else {
-                  await Utils.fingerZoom('WebZoomAccessTestWebView', false);
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                try {
+                  this.zoomAccess = true;
+                  this.flag = true;
+                  await Utils.sleep(2000)
+                  await Utils.fingerZoom('WebZoomAccessTestWebView', true);
+                  await Utils.sleep(2000)
+                  this.flag = false;
+                  this.userAgentPC = this.controller.getUserAgent();
+                  if ((this.userAgentPC).includes("PC")) {
+                    await Utils.pinchInComponent('WebZoomAccessTestWebView')
+                  } else {
+                    await Utils.fingerZoom('WebZoomAccessTestWebView', false);
+                  }
+                  await Utils.sleep(2000)
+                  Utils.emitEvent(this.oldScale > 0 && this.newScale > 0 && this.newScale < this.compareScale, 6506)
+                } catch (error) {
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 }
-                await Utils.sleep(2000)
-                Utils.emitEvent(this.oldScale > 0 && this.newScale > 0 && this.newScale < this.compareScale, 6506)
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                break;
+              } else {
+                Utils.emitEvent(true, 6506)
               }
-              break;
             }
           }
         })

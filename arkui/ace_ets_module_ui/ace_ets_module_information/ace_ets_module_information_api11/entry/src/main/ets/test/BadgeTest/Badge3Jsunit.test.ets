@@ -12,15 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
-import events_emitter from '@ohos.events.emitter'
+import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
 import { BusinessError } from '@ohos.base';
+import config from '@ohos.accessibility.config';
+import accessibility from '@ohos.accessibility';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.arkui.ace.information/MainAbility';
 
 export default function badge3Jsunit() {
   describe('badge3Jsunit', () => {
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+      }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("badge beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Badge/badge3',

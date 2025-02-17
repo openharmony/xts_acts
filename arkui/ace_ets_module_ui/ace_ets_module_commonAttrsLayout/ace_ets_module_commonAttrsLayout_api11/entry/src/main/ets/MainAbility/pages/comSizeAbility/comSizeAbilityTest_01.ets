@@ -22,11 +22,26 @@ struct comSizeAbilityTest_01 {
   private settings: RenderingContextSettings = new RenderingContextSettings(true)
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
   @State text1: string = ''
+  scroller: Scroller = new Scroller()
 
   build() {
-    Scroll() {
-      Column({ space: 20 }) {
-        Column() {
+    Column() {
+      Row() {
+        Button('to_1').onClick(()=>{
+          this.scroller.scrollToIndex(0)
+        }).key('comSizeAbilityTest_01_to_1')
+
+        Button('to_2').onClick(()=>{
+          this.scroller.scrollToIndex(1)
+        }).key('comSizeAbilityTest_01_to_2')
+
+        Button('to_3').onClick(()=>{
+          this.scroller.scrollToIndex(2)
+        }).key('comSizeAbilityTest_01_to_3')
+      }
+
+      List({ space: 5, initialIndex: 0, scroller: this.scroller }) {
+        ListItem() {
           Badge({
             count: 1,
             position: BadgePosition.Left,
@@ -55,7 +70,7 @@ struct comSizeAbilityTest_01 {
           .transform(matrix)
         }
 
-        Column() {
+        ListItem() {
           Button()
             .key("Button_Size")
             .size({ width: 90, height: 90 })
@@ -78,7 +93,7 @@ struct comSizeAbilityTest_01 {
             .transform(matrix)
         }
 
-        Column() {
+        ListItem() {
           Canvas(this.context)
             .width('100%')
             .height('100%')

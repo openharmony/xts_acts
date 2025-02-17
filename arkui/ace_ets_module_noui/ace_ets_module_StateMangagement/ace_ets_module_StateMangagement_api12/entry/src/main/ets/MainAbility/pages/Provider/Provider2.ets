@@ -14,13 +14,19 @@
  */
 @Entry
 @ComponentV2
-struct Provider2  {
+struct Provider2 {
   @Provider() str: string = 'hello'
+
   build() {
     Column() {
-      Button(this.str).onClick(()=>{
-        this.str = '0'
-      }).id('button1')
+      Button(this.str)
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
+        .onClick(() => {
+          this.str = '0'
+        })
+        .id('button1')
       Child1()
     }
   }
@@ -29,9 +35,15 @@ struct Provider2  {
 @ComponentV2
 struct Child1 {
   @Consumer() str: string = 'world'
+
   build() {
-    Button(this.str).onClick(()=>{
-      this.str = '1'
-    }).id('button2')
+    Button(this.str)
+      .width('10%')
+      .height('3%')
+      .fontSize(9)
+      .onClick(() => {
+        this.str = '1'
+      })
+      .id('button2')
   }
 }

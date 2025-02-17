@@ -21,33 +21,33 @@ struct state1 {
   @State number2: number | undefined | null = null
 
   build() {
-    Column({ space: 20 }) {
-      Text("State颜色undefined-->Pink")
-      Button('button')
+    Column() {
+      Text("State颜色undefined-->Pink").height('5%')
+      Button('button').height('5%')
         .backgroundColor(this.color1)
         .onClick(() => {
           this.color1 = Color.Pink
         })
         .key('sBtn1')
 
-      Text("State颜色null-->Pink")
-      Button('button')
+      Text("State颜色null-->Pink").height('5%')
+      Button('button').height('5%')
         .backgroundColor(this.color2)
         .onClick(() => {
           this.color2 = Color.Pink
         })
         .key('sBtn2')
 
-      Text("State文本undefined-->100")
-      Button('button')
+      Text("State文本undefined-->100").height('5%')
+      Button('button').height('5%')
         .fontSize(this.number1)
         .onClick(() => {
           this.number1 = 100
         })
         .key('sBtn3')
 
-      Text("State文本null-->100")
-      Button('button')
+      Text("State文本null-->100").height('5%')
+      Button('button').height('5%')
         .fontSize(this.number2)
         .onClick(() => {
           this.number2 = 100
@@ -55,6 +55,6 @@ struct state1 {
         .key('sBtn4')
 
 
-    }.width('100%').margin({top:10})
+    }.width('100%')
   }
 }

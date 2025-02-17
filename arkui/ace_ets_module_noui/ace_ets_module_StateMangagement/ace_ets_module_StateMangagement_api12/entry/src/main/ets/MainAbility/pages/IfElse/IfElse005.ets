@@ -26,9 +26,9 @@ struct IfElse005 {
   }
 
   build() {
-    Column({ space: 20 }) {
+    Column() {
       Text('使用if/else进行条件判断，渲染内容为Builder函数，判断条件为状态变量')
-        .fontSize(15)
+        .fontSize(9)
         .fontColor(Color.Gray)
       Button('click to switch flag value.')
         .id('btn')

@@ -63,6 +63,7 @@ struct NavPathStack21{
     .title('navigation')
     .navDestination(this.pageMap)
     .mode(NavigationMode.Split)
+	.navBarWidth('30%')
   }
 }
 

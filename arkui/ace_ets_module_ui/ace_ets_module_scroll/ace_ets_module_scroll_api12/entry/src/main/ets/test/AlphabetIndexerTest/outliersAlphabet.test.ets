@@ -17,6 +17,14 @@ import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { resourceManager } from '@kit.LocalizationKit';
+
+function alphabetDefaultPopupSize(sysWidth: Resource) {
+  let resourcePopupSize = getContext().resourceManager.getNumber(sysWidth.id)
+  let newPopupSize: string = Math.round(px2vp(resourcePopupSize)) + '.00vp'
+  return newPopupSize;
+}
+
 export default function outliersAlphabet() {
   describe('outliersAlphabet', () => {
     beforeEach(async (done: Function) => {
@@ -87,7 +95,7 @@ export default function outliersAlphabet() {
       console.info("[outliersAlphabet_0200] component obj is: " + JSON.stringify(JSON.parse(strJson).$attrs));
       console.info("[outliersAlphabet_0200] popupFont: " + JSON.stringify(JSON.parse(strJson).$attrs.popupFont));
       console.info("[outliersAlphabet_0200] fontSize: " + JSON.stringify(JSON.parse(strJson).$attrs.popupFont.fontSize));
-      expect(JSON.parse(strJson).$attrs.popupFont.fontSize).assertEqual("24.00vp");
+      expect(JSON.parse(strJson).$attrs.popupFont.fontSize).assertEqual(alphabetDefaultPopupSize($r('sys.float.ohos_id_text_size_headline7')));
       console.info('[outliersAlphabet_0200] END');
       done();
     });

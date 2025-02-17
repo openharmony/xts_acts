@@ -20,47 +20,47 @@ struct StateDatePicker2 {
 
   build() {
     Column() {
-      Button("Reset").id("StateDatePicker2_reset")
+      Button("Reset").id("StateDatePicker2_reset").height('5%')
         .onClick(() => {
           this.selectedDate = new Date('2021-08-08')
         })
-      Text(''+ JSON.stringify(this.selectedDate)).id("date2")
-      Button('increase the Time by 1').margin(5)
+      Text(''+ JSON.stringify(this.selectedDate)).id("date2").height('5%')
+      Button('increase the Time by 1').height('5%')
         .id("setTime")
         .onClick(() => {
           this.selectedDate.setTime(this.selectedDate.getTime() + 1)
         })
-      Button('increase the UTCFullYear by 1').margin(5)
+      Button('increase the UTCFullYear by 1').height('5%')
         .id("UTCFullYear")
         .onClick(() => {
           this.selectedDate.setUTCFullYear(this.selectedDate.getUTCFullYear() + 1)
         })
-      Button('increase the UTCMonth by 1').margin(5)
+      Button('increase the UTCMonth by 1').height('5%')
         .id("UTCMonth")
         .onClick(() => {
           this.selectedDate.setUTCMonth(this.selectedDate.getUTCMonth() + 1)
         })
-      Button('increase the UTCDate by 1').margin(5)
+      Button('increase the UTCDate by 1').height('5%')
         .id("UTCDate")
         .onClick(() => {
           this.selectedDate.setUTCDate(this.selectedDate.getUTCDate() + 1)
         })
-      Button('increase the UTCHour by 1').margin(5)
+      Button('increase the UTCHour by 1').height('5%')
         .id("UTCHours")
         .onClick(() => {
           this.selectedDate.setUTCHours(this.selectedDate.getUTCHours() + 1)
         })
-      Button('increase the UTCMinute by 1').margin(5)
+      Button('increase the UTCMinute by 1').height('5%')
         .id("UTCMinutes")
         .onClick(() => {
           this.selectedDate.setUTCMinutes(this.selectedDate.getUTCMinutes() + 1)
         })
-      Button('increase the UTCSecond by 1').margin(5)
+      Button('increase the UTCSecond by 1').height('5%')
         .id("UTCSeconds")
         .onClick(() => {
           this.selectedDate.setUTCSeconds(this.selectedDate.getUTCSeconds() + 1)
         })
-      Button('increase the UTCMillisecond by 1').margin(5)
+      Button('increase the UTCMillisecond by 1').height('5%')
         .id("UTCMilliseconds")
         .onClick(() => {
           this.selectedDate.setUTCMilliseconds(this.selectedDate.getUTCMilliseconds() + 1)
@@ -70,7 +70,7 @@ struct StateDatePicker2 {
         start: new Date('1970-1-1'),
         end: new Date('2100-1-1'),
         selected: this.selectedDate
-      }).key("State_DatePicker2").margin(20)
+      }).key("State_DatePicker2")
     }.width('100%')
   }
 }

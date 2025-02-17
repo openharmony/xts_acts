@@ -24,12 +24,12 @@ struct Foreach004 {
   }
 
   build() {
-    Column({ space: 5 }) {
-      List({ space: 20 }) {
+    Column() {
+      List() {
         ForEach(this.creatList(), (item: number, index: number) => {
           ListItem() {
             Text(`${index} ${item}`).id('foreach' + index)
-              .fontSize(40)
+              .fontSize(9)
           }
         })
       };

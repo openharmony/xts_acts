@@ -28,7 +28,7 @@ struct HelloComponent {
   @Local messageHello: string = 'messageHello'
 
   build() {
-    Column({ space: 3 }) {
+    Column() {
       Text(this.messageHello).id('tvHelloMsg').onClick(() => {
         this.messageHello = 'ARKUI'
       })
@@ -44,7 +44,7 @@ struct ChildComponent {
   @Event noFun: string = 'Event'
 
   build() {
-    Column({ space: 2 }) {
+    Column() {
       Text(this.msg)
         .id('tvChildMsg')
         .onClick(() => {
@@ -64,7 +64,7 @@ struct ComponentV2Test {
   @Local classA: ClassA = new ClassA(10, 'Tom')
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Text(this.message).id('tvMsg').onClick(() => {
         this.message = 'ARKUI'
       })
@@ -73,14 +73,14 @@ struct ComponentV2Test {
       })
       HelloComponent()
 
-      Column({ space: 3 }) {
+      Column() {
         Text(this.message).id('tvParentMsg')
         ChildComponent({ msg: this.message, changeMsg: ()=>{
           this.message = 'changeChildMsg'
         } })
       }
 
-      Column({ space: 3 }) {
+      Column() {
         Text(this.message).id('tvParentNoFun').onClick(()=>{
           this.message = 'tvParentNoFun'
         })
