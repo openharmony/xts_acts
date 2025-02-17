@@ -14,6 +14,14 @@
 	"MainAbility/pages/TextArea/addOrDelText",
     "MainAbility/pages/TextChangeTest/TextOnChangeOptionsTest",
     "MainAbility/pages/TextChangeTest/TextOnWillChangeOptionsTest",
-    "MainAbility/pages/SelectionMenuTest/bindSelectionMenuTest"
+    "MainAbility/pages/SelectionMenuTest/bindSelectionMenuTest",
+    "MainAbility/pages/FontScaleTest/searchFontScaleTest",
+    "MainAbility/pages/FontScaleTest/textAreaFontScaleTest",
+    "MainAbility/pages/FontScaleTest/textInputFontScaleTest",
+    "MainAbility/pages/HalfLeadingTest/searchHalfLeadingTest",
+    "MainAbility/pages/HalfLeadingTest/textAreaHalfLeadingTest",
+    "MainAbility/pages/HalfLeadingTest/textInputHalfLeadingTest",
+    "MainAbility/pages/EllipsisModeTest/textAreaEllipsisModeTest",
+    "MainAbility/pages/EllipsisModeTest/textInputEllipsisModeTest"
   ]
 }
