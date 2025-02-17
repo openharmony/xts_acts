@@ -82,7 +82,7 @@ export default function imageExifGetModifyTest() {
       }else{
         await getFd(fileName);
         imageSourceApi = image.createImageSource(fdNumber);
-        fs.closeSync(fdNumber)
+        fs.closeSync(fdNumber) // getFd open fd，创建ImageSource后，close fd。
       }
       return imageSourceApi
     }
@@ -19681,14 +19681,14 @@ export default function imageExifGetModifyTest() {
           let checkResult = false
           await getFd(reads[i].fileName);
           const imageSourceApi = image.createImageSource(fdNumber);
-          fs.closeSync(fdNumber)
+          fs.closeSync(fdNumber) // getFd open fd，创建ImageSource后，close fd。
           if (imageSourceApi == undefined) {
             console.info(testTag + " create image source failed");
           } else {
             const readValue = await imageSourceApi.getImageProperty(key)
             await getFd(writes[i].fileName)
             const imageSourceApiWrite = image.createImageSource(fdNumber);
-            fs.closeSync(fdNumber)
+            fs.closeSync(fdNumber) // getFd open fd，创建ImageSource后，close fd。
             await imageSourceApiWrite.modifyImageProperty(key, readValue)
             const reReadValue = await imageSourceApi.getImageProperty(key)
             checkResult = reReadValue == readValue
