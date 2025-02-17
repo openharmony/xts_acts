@@ -70,7 +70,6 @@ let module2FormInfo: formInfo.FormInfo = {
     transparencyEnabled: false
 }
 
-const ERR_ADD_INVALID_PARAM = 401;
 let expectResult: formInfo.FormInfo[] = Array();
 expectResult.push(module1FormInfo);
 expectResult.push(module2FormInfo);
@@ -91,19 +90,14 @@ export default function abilityTest() {
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0100', 0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_0100';
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0100 start");
-            formProvider.getFormsInfo((err, value) => {
+            console.info(`${name} start`);
+            formProvider.getFormsInfo(async (err, value) => {
                 console.info(`${name}` + "formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
-                console.info(`${name}` + "formProvider::GetFormsInfoTest value: " + 
-                            JSON.stringify(value));
-                console.info(`${name} value.length:${ value.length }` );
-                for(let i = 0;i<value.length; i++){
-                 console.info(`${name}` + `formProvider::GetFormsInfoTest value:${i}:` + 
-                            JSON.stringify(value[i]));  
-                }
+                console.info(`${name}` + "formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
                 expect(err).assertEqual(null);
                 expect(value.length).assertEqual(2);
                 checkResultArray(name, expectResult, value)
+                await sleep(2000);
                 done();
             });
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0100 end");
@@ -119,7 +113,7 @@ export default function abilityTest() {
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0200', 0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_0200';
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0200 start");
+            console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
                 moduleName : "module1"
             };
@@ -130,7 +124,7 @@ export default function abilityTest() {
                 expect().assertFail();
                 done();
             }
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0200 end");
+            console.info(`${name} end`);
         });
 
         /**
@@ -143,26 +137,19 @@ export default function abilityTest() {
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0300', 0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_0300';
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0300 start");
-            formProvider.getFormsInfo().then((value) => {
-                console.info(`${name}` + "formProvider::GetFormsInfoTest value: " + 
-                            JSON.stringify(value));
-                console.info(`${name} value.length:${ value.length }` );
-
-                for(let i = 0;i<value.length; i++){
-                 console.info(`${name}` + `formProvider::GetFormsInfoTest value:${i}:` + 
-                            JSON.stringify(value[i]));  
-                }
-
+            console.info(`${name} start`);
+            formProvider.getFormsInfo().then( async (value) => {
+                console.info(`${name}` + "formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
                 expect(value.length).assertEqual(2);
                 checkResultArray(name, expectResult, value);
+                await sleep(2000);
                 done();
             }).catch((err: BusinessError) => {
-                console.info('formProvider::GetFormsInfoTest failed' + JSON.stringify(err));
+                console.error(`${name}  formProvider::GetFormsInfoTest failed err:${JSON.stringify(err)}`);
                 expect().assertFail();
                 done();
             })
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0300 end");
+            console.info(`${name} end`);
         });
 
         /**
@@ -175,23 +162,18 @@ export default function abilityTest() {
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0500', 0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_0500';
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0500  start");
+            console.info(`${name} start`);;
             const filter : formInfo.FormInfoFilter = {};
-            formProvider.getFormsInfo(filter, (err, value) =>  {
+            formProvider.getFormsInfo(filter, async (err, value) =>  {
                 console.info(`${name}` + "formProvider::GetFormsInfoTest: " + JSON.stringify(err));
                 console.info(`${name}` + "formProvider::GetFormsInfoTest: " + JSON.stringify(value));
-
-                for(let i = 0;i<value.length; i++){
-                 console.info(`${name}` + `formProvider::GetFormsInfoTest value:${i}:` + 
-                            JSON.stringify(value[i]));  
-                }
-
                 expect(err).assertEqual(null);
                 expect(value.length).assertEqual(2);
                 checkResultArray(name, expectResult, value);
+                await sleep(2000);
                 done();
             });
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0500 end");
+            console.info(`${name} end`);
         });
 
         /**
@@ -204,25 +186,20 @@ export default function abilityTest() {
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0600', 0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_0600';
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0600 start");
+            console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
                 moduleName: ""
             };
-            formProvider.getFormsInfo(filter, (err, value) =>  {
+            formProvider.getFormsInfo(filter, async (err, value) =>  {
                 console.info(`${name}` + "formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
                 console.info(`${name}` + "formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
-
-                for(let i = 0;i<value.length; i++){
-                 console.info(`${name}` + `formProvider::GetFormsInfoTest value:${i}:` + 
-                            JSON.stringify(value[i]));  
-                }
-
                 expect(err).assertEqual(null);
                 expect(value.length).assertEqual(2);
                 checkResultArray(name, expectResult, value);
+                await sleep(2000);
+                console.info(`${name} end`);
                 done();
             });
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0600 end");
         });
 
         /**
@@ -235,25 +212,20 @@ export default function abilityTest() {
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0700', 0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_0700';
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0700 start");
+            console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
                 moduleName: undefined
             };
-            formProvider.getFormsInfo(filter, (err, value) =>  {
+            formProvider.getFormsInfo(filter, async (err, value) =>  {
                 console.info(`${name}` + "formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
                 console.info(`${name}` + "formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
-
-                for(let i = 0;i<value.length; i++){
-                 console.info(`${name}` + `formProvider::GetFormsInfoTest value:${i}:` + 
-                            JSON.stringify(value[i]));  
-                }
-
                 expect(err).assertEqual(null);
                 expect(value.length).assertEqual(2);
                 checkResultArray(name, expectResult, value);
+                await sleep(2000);
+                console.info(`${name} end`);
                 done();
             });
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0700 end");
         });
 
         /**
@@ -266,24 +238,18 @@ export default function abilityTest() {
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0800', 0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_0800';
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0800 start");
+            console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
                 moduleName: "HelloWorld"
             };
             formProvider.getFormsInfo(filter, (err, value) =>  {
                 console.info(`${name}` + "formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
                 console.info(`${name}` + "formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
-
-                for(let i = 0;i<value.length; i++){
-                 console.info(`${name}` + `formProvider::GetFormsInfoTest value:${i}:` + 
-                            JSON.stringify(value[i]));  
-                }
-
                 expect(err).assertEqual(null);
                 expect(value.length).assertEqual(0);
+                console.info(`${name} end`);
                 done();
             });
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0800 end");
         });
 
         /**
@@ -296,25 +262,18 @@ export default function abilityTest() {
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0900', 0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_0900';
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0900 start");
+            console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
                 moduleName: "module1"
             };
             formProvider.getFormsInfo(filter, (err, value) => {
                 console.info(`${name}` + "formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
                 console.info(`${name}` + "formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
-
-                for(let i = 0;i<value.length; i++){
-                 console.info(`${name}` + `formProvider::GetFormsInfoTest value:${i}:` + 
-                            JSON.stringify(value[i]));  
-                }
-
                 expect(err).assertEqual(null);
                 expect(value.length).assertEqual(0);
-            
+                console.info(`${name} end`);
                 done();
             });
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0900 end");
         });
 
         /**
@@ -327,27 +286,19 @@ export default function abilityTest() {
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1000', 0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_1000';
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1000 start");
+            console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
                 moduleName: "entry"
             };
             formProvider.getFormsInfo(filter, async (err, value) =>  {
                 console.info(`${name}` + "formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
                 console.info(`${name}` + "formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
-
-                for(let i = 0;i<value.length; i++){
-                 console.info(`${name}` + `formProvider::GetFormsInfoTest value:${i}:` + 
-                            JSON.stringify(value[i]));  
-                }
-
-                await sleep(2000)
-
                 expect(err).assertEqual(null);
                 expect(value.length).assertEqual(2);
-                checkResultArray(name, expectResult, value)
-                await sleep(2000)
+                checkResultArray(name, expectResult, value);
+                await sleep(2000);
                 done();
-                console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1000 end");
+                console.info(`${name} end`);
             });
             
         });
@@ -362,26 +313,21 @@ export default function abilityTest() {
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1200', 0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_1200';
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1200 start");
+            console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {};
             let formProviderGetFormsInfo = async () => {
                 await formProvider.getFormsInfo(filter).then( async (value) => {
-                console.info(`${name} changdu:${value.length}`)
-                    for(let i = 0;i<value.length; i++){
-                        console.info(`${name}` + `formProvider::GetFormsInfoTest value:${i}:` + 
-                            JSON.stringify(value[i]));  
-                   }
-                   await sleep(2000)
-
+                    console.info(`${name} value:${JSON.stringify(value)}`);
                     expect(value.length).assertEqual(2);
                     checkResultArray(name, expectResult, value);
+                    await sleep(2000);
                     done();
                 }).catch((err: BusinessError) => {
-                    console.info('formProvider::GetFormsInfoTest failed' + JSON.stringify(err));
+                    console.error(`${name}  formProvider::GetFormsInfoTest failed err:${JSON.stringify(err)}`);
                     expect().assertFail();
                     done();
                 })
-                console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1200 end");
+                console.info(`${name} end`);
             }
             formProviderGetFormsInfo();
             
@@ -397,7 +343,7 @@ export default function abilityTest() {
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1300', 0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_1300';
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1300 start");
+            console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
                 moduleName: ""
             };
@@ -405,22 +351,17 @@ export default function abilityTest() {
             let formProviderGetFormsInfo = async () => {
                 try{
                     let value = await formProvider.getFormsInfo(filter);
-                    console.info(`${name} changdu：${value.length}`)
-                    for(let i = 0;i<value.length; i++){
-                        console.info(`${name}` + `formProvider::GetFormsInfoTest value:${i}:` + 
-                            JSON.stringify(value[i]));  
-                    }
-                    await sleep(2000)
-
+                    console.info(`${name} value:${JSON.stringify(value)}`);
                     expect(value.length).assertEqual(2);
                     checkResultArray(name, expectResult, value);
-                 done()
+                    await sleep(2000);
+                    done()
                 } catch(err) {
-                    console.info('formProvider::GetFormsInfoTest failed' + JSON.stringify(err));
+                    console.error(`${name}  formProvider::GetFormsInfoTest failed err:${JSON.stringify(err)}`);
                     expect().assertFail();
                     done();
                 }
-                console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1300 end");
+                console.info(`${name} end`);
             }
 
             formProviderGetFormsInfo();
@@ -437,27 +378,22 @@ export default function abilityTest() {
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1400', 0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_1400';
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1400 start");
+            console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
                 moduleName: undefined
             };
             formProvider.getFormsInfo(filter).then( async (value) => {
-                    console.info(`${name} changdu：${value.length}`)
-                    for(let i = 0;i<value.length; i++){
-                        console.info(`${name}` + `formProvider::GetFormsInfoTest value:${i}:` + 
-                            JSON.stringify(value[i]));  
-                    }
-                    await sleep(2000)
-
+                console.info(`${name} value:${JSON.stringify(value)}`);
                     expect(value.length).assertEqual(2);
                     checkResultArray(name, expectResult, value);
+                    await sleep(2000);
+                    console.info(`${name} end`);
                     done()
             }).catch((err: BusinessError) => {
-                console.info('formProvider::GetFormsInfoTest failed' + JSON.stringify(err));
+                console.error(`${name}  formProvider::GetFormsInfoTest failed err:${JSON.stringify(err)}`);
                 expect().assertFail();
                 done();
             })
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1400 end");
         });
 
         /**
@@ -470,27 +406,21 @@ export default function abilityTest() {
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1500', 0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_1500';
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1500 start");
+            console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
                 moduleName: "HelloWorld"
             };
             let formProviderGetFormsInfo = async () => {
                 await formProvider.getFormsInfo(filter).then( async (value) => {
-                console.info(`${name} changdu：${value.length}`)
-                    for(let i = 0;i<value.length; i++){
-                        console.info(`${name}` + `formProvider::GetFormsInfoTest value:${i}:` + 
-                            JSON.stringify(value[i]));  
-                    }
-                    await sleep(2000)
-
+                    console.info(`${name} value:${JSON.stringify(value)}`);
                     expect(value.length).assertEqual(0);
                     done();
                 }).catch((err: BusinessError) => {
-                    console.info('formProvider::GetFormsInfoTest failed' + JSON.stringify(err));
+                    console.error(`${name}  formProvider::GetFormsInfoTest failed err:${JSON.stringify(err)}`);
                     expect().assertFail();
                     done();
                 })
-                console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1500 end");
+                console.info(`${name} end`);
             }
             formProviderGetFormsInfo();
             
@@ -506,28 +436,20 @@ export default function abilityTest() {
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1600', 0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_1600';
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1600 start");
+            console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
                 moduleName: "module1"
             };
             let formProviderGetFormsInfo = async () => {
                 await formProvider.getFormsInfo(filter).then(async (value) => {
-                console.info(`${name} changdu：${value.length}`)
-                    for(let i = 0;i<value.length; i++) {
-                        console.info(`${name}` + `formProvider::GetFormsInfoTest value:${i}:` + 
-                            JSON.stringify(value[i]));  
-                    }
-                    await sleep(2000)
-
-
                     expect(value.length).assertEqual(0);
                     done();
                 }).catch((err: BusinessError) => {
-                    console.info('formProvider::GetFormsInfoTest failed' + JSON.stringify(err));
+                    console.error(`${name}  formProvider::GetFormsInfoTest failed err:${JSON.stringify(err)}`);
                     expect().assertFail();
                     done();
                 })
-                console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1600 end");
+                console.info(`${name} end`);
             }
             formProviderGetFormsInfo();
             
@@ -543,96 +465,54 @@ export default function abilityTest() {
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1700', 0, async (done: () => void) => {
             let name: string = 'SUB_AA_OpenHarmony_ProviderGetForsInfo_1700';
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1700 start");
+            console.info(`${name} start`);
             const filter : formInfo.FormInfoFilter = {
                 moduleName: "entry"
             };
             formProvider.getFormsInfo(filter).then( async (value) => {
-                console.info(`${name} changdu：${value.length}`)
-                for(let i = 0;i<value.length; i++) {
-                        console.info(`${name}` + `formProvider::GetFormsInfoTest value:${i}:` + 
-                            JSON.stringify(value[i]));  
-                }
-                await sleep(2000)
-
+                console.info(`${name}` + "formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
                 expect(value.length).assertEqual(2);
                 checkResultArray(name, expectResult, value);
+                await sleep(2000);
                 done();
             }).catch((err: BusinessError) => {
-                console.info('formProvider::GetFormsInfoTest failed' + JSON.stringify(err));
+                console.error(`${name}  formProvider::GetFormsInfoTest failed err:${JSON.stringify(err)}`);
                 expect().assertFail();
                 done();
             })
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1700 end");
+            console.info(`${name} end`);
         });
     })
 
     let checkResultArray = (name: string, expectInfos: Array<formInfo.FormInfo>, result:Array<formInfo.FormInfo>) => {
         console.info(`${name}` + "formProvider::GetForsInfoTest checkResultArray start");
         for (let index = 0; index < expectInfos.length; index++) {
-            console.info(`${name}` + "formProvider::GetForsInfoTest checkResul index is " + index);
             checkResult(name, expectInfos[index], result[index])
         }
         console.info(`${name}` + "formProvider::GetForsInfoTest checkResultArray end");
     }
 
     let checkResult = (name: string, expectInfo: formInfo.FormInfo, result: formInfo.FormInfo) => {
-        console.info(`${name}` + "GetFormsInfoTest  checkResult  start");
-
-        console.info(`${name}` + "checkResult  bundleName expect: " + expectInfo.bundleName + '===' + result.bundleName);
+        console.info(`${name}` + "GetFormsInfoTest checkResult start");
+        console.info(`${name} expectInfo: ${JSON.stringify(expectInfo)}`);
+        console.info(`${name} result: ${JSON.stringify(result)}`);
         expect(expectInfo.bundleName).assertEqual(result.bundleName);
-
-        console.info(`${name}` + "checkResult abilityName expect: " + expectInfo.abilityName + '===' + result.abilityName);
         expect(expectInfo.abilityName).assertEqual(result.abilityName);
-
-        console.info(`${name}` + "checkResult name expect: " + expectInfo.name + '===' + result.name);
         expect(expectInfo.name).assertEqual(result.name);
-
-        console.info(`${name}` + "checkResult displayName expect: " + expectInfo.displayName + '===' + result.displayName);
         expect(expectInfo.displayName).assertEqual(result.displayName);
-
-        console.info(`${name}` + "checkResult description expect: " + expectInfo.description + '===' + result.description);
         expect(expectInfo.description).assertEqual(result.description);
-
-        console.info(`${name}` + "checkResult type expect: " + expectInfo.type + '===' + result.type);
         expect(expectInfo.type).assertEqual(result.type);
-
-        console.info(`${name}` + "checkResult jsComponentName expect: " + expectInfo.jsComponentName + '===' + result.jsComponentName);
         expect(expectInfo.jsComponentName).assertEqual(result.jsComponentName);
-
-        console.info(`${name}` + "checkResult colorMode expect: " + expectInfo.colorMode + '===' + result.colorMode);
         expect(expectInfo.colorMode).assertEqual(result.colorMode);
-
-        console.info(`${name}` + "checkResult isDefault expect: " + expectInfo.isDefault + '===' + result.isDefault);
         expect(expectInfo.isDefault).assertEqual(result.isDefault);
-
-        console.info(`${name}` + "checkResult formVisibleNotify expect: " + expectInfo.formVisibleNotify + '===' + result.formVisibleNotify);
         expect(expectInfo.formVisibleNotify).assertEqual(result.formVisibleNotify);
-
-        console.info(`${name}` + "checkResult scheduledUpdateTime expect: " + expectInfo.scheduledUpdateTime + '===' + result.scheduledUpdateTime);
         expect(expectInfo.scheduledUpdateTime).assertEqual(result.scheduledUpdateTime);
-
-        console.info(`${name}` + "checkResult formConfigAbility expect: " + expectInfo.formConfigAbility + '===' + result.formConfigAbility);
         expect(expectInfo.formConfigAbility).assertEqual(result.formConfigAbility);
-
-        console.info(`${name}` + "checkResult updateDuration expect: " + expectInfo.updateDuration + '===' + result.updateDuration);
         expect(expectInfo.updateDuration).assertEqual(result.updateDuration);
-
-        console.info(`${name}` + "checkResult defaultDimension expect: " + expectInfo.defaultDimension + '===' + result.defaultDimension);
         expect(expectInfo.defaultDimension).assertEqual(result.defaultDimension);
-
-        console.info(`${name}` + "checkResult supportDimensions expect: " 
-            + '===' + JSON.stringify(expectInfo.supportDimensions) + JSON.stringify(result.supportDimensions));
         expect(JSON.stringify(expectInfo.supportDimensions)).assertEqual(JSON.stringify(result.supportDimensions));
-
-        console.info(`${name}` + "checkResult customizeData expect: "
-              + '===' + JSON.stringify(expectInfo.customizeData) + JSON.stringify(result.customizeData));
         expect(JSON.stringify(expectInfo.customizeData)).assertEqual(JSON.stringify(result.customizeData));
-
-        console.info(`${name}` + "checkResult supportedShapes expect: "
-             + '===' + JSON.stringify(expectInfo.supportedShapes) + JSON.stringify(result.supportedShapes));
         expect(JSON.stringify(expectInfo.supportedShapes)).assertEqual(JSON.stringify(result.supportedShapes));
-
         console.info(`${name}` + "formProvider::GetFormsInfoTest end");
     }
 }
