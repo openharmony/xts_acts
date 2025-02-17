@@ -15,7 +15,7 @@
 
 {
   "app": {
-    "bundleName": "com.acts.form.formsystemtestservicea.hmservice",
+    "bundleName": "com.acts.form.formsystemtestserviceb.hmservice",
     "vendor": "example",
     "versionCode": 1000000,
     "versionName": "1.0.0",
