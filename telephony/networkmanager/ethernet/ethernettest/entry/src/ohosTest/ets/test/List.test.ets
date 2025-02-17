@@ -12,9 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 */
-
 import ethernettest from './ethernet.test';
+import EmptyTest from './Empty.test'
 
 export default function testsuite() {
-    ethernettest();
+    if (canIUse("SystemCapability.Communication.NetManager.Ethernet")) {
+        ethernettest();
+    }
+    else {
+        EmptyTest();
+    }
 }
