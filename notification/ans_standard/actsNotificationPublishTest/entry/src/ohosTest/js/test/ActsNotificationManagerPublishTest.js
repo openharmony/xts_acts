@@ -748,7 +748,7 @@ export default function ActsNotificationManagerPublishTest() {
     it('testPublishLongtextTitleForNull', 0, async function (done) {
       const TEST_CASE_NAME = 'testPublishLongtextTitleForNull';
       let notificationRequest = {
-        id: 1,
+        id: 111,
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
           longText: {
