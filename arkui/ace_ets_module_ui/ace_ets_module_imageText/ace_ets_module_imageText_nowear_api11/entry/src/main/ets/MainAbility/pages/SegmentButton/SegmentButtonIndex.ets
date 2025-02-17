@@ -80,7 +80,7 @@ struct Index {
 
   build() {
     Row() {
-      Column({ space: 20 }) {
+      Column({ space: 10 }) {
         SegmentButton({ options: this.singleTextCapsuleOptions, selectedIndexes: $selectedIndexes1 })
         SegmentButton({ options: this.singleIconTextCapsuleOptions, selectedIndexes: $selectedIndexes2 })
         SegmentButton({ options: this.multipleTextCapsuleOptions, selectedIndexes: $selectedIndexes3 })
@@ -89,19 +89,19 @@ struct Index {
         SegmentButton({ options: this.singleIconCapsuleOptions, selectedIndexes: $selectedIndexes6 })
         Button('pop item').onClick(() => {
           this.singleTextCapsuleOptions.buttons.pop()
-        })
+        }).height('5%')
         Button('shift item').onClick(() => {
           this.singleTextCapsuleOptions.buttons.shift()
-        })
+        }).height('5%')
         Button('push item').onClick(() => {
           this.singleTextCapsuleOptions.buttons.push({ text: 'push button' })
-        })
+        }).height('5%')
         Button('unshift item').onClick(() => {
           this.multipleTextCapsuleOptions.buttons.unshift({ text: 'unshift button' })
-        })
+        }).height('5%')
         Button('splice item').onClick(() => {
           this.tabOptions.buttons.splice(0, 1, new SegmentButtonItemOptions({ text: 'splice button' }))
-        })
+        }).height('5%')
         .onAppear(() => {
           let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
           let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
@@ -111,6 +111,7 @@ struct Index {
         })
       }
       .width('90%')
+      .height('100%')
     }
     .height('100%')
     .position({ x: 10 })
