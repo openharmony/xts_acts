@@ -497,13 +497,13 @@ export default function TimerTest() {
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_0800
      * @tc.name       : testCanIUse008
-     * @tc.desc       : Test CanIUse with escape sequences.
+     * @tc.desc       : Test CanIUse with bell character.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
     it('testCanIUse008', 0, async (done: Function) => {
-      let flag = canIUse("\a 响铃 \b 退格 \f 换页 \n 换行 \r 回车 \t 水平制表 \v 垂直制表 \\ 反斜杠 \' 单引号 \" 双引号 \? 问号 \0 空字符 \d72 八进制任意数字 \x85 十六进制任意数字");
+      let flag = canIUse('\a 响铃');
       expect(flag).assertEqual(false);
       done();
     });
@@ -511,24 +511,13 @@ export default function TimerTest() {
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_0900
      * @tc.name       : testCanIUse009
-     * @tc.desc       : Test CanIUse with emojis and special format.
+     * @tc.desc       : Test CanIUse with backspace.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
     it('testCanIUse009', 0, async (done: Function) => {
-      let flag = canIUse("👆 \ud83d\udc46\n" +
-        "👿 \ud83d\udc7f\n" +
-        "👀 \ud83d\udc40\n" +
-        "💯 \ud83d\udcaf\n" +
-        "🎅 \ud83c\udf85\n" +
-        "😼 \ud83d\ude3c\n" +
-        "🔧 \ud83d\udd27\n" +
-        "💇 \ud83d\udc87\n" +
-        "🤼‍♂️ \ud83e\udd3c\u200d\u2642\ufe0f\n" +
-        "🛢\ud83d\udee2\n" +
-        "🀄 \ud83c\udc04\n" +
-        "🏴 \ud83c\udff4");
+      let flag = canIUse('\b 退格');
       expect(flag).assertEqual(false);
       done();
     });
@@ -536,13 +525,13 @@ export default function TimerTest() {
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_1000
      * @tc.name       : testCanIUse010
-     * @tc.desc       : Test CanIUse with custom initialization.
+     * @tc.desc       : Test CanIUse with form feed.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
     it('testCanIUse010', 0, async (done: Function) => {
-      let flag = canIUse(init(200));
+      let flag = canIUse('\f 换页');
       expect(flag).assertEqual(false);
       done();
     });
@@ -550,15 +539,379 @@ export default function TimerTest() {
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_1100
      * @tc.name       : testCanIUse011
-     * @tc.desc       : Test CanIUse with object string manipulation.
+     * @tc.desc       : Test CanIUse with newline.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
     it('testCanIUse011', 0, async (done: Function) => {
+      let flag = canIUse('\n 换行');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_1200
+     * @tc.name       : testCanIUse012
+     * @tc.desc       : Test CanIUse with carriage return.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse012', 0, async (done: Function) => {
+      let flag = canIUse('\r 回车');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_1300
+     * @tc.name       : testCanIUse013
+     * @tc.desc       : Test CanIUse with horizontal tab.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse013', 0, async (done: Function) => {
+      let flag = canIUse('\t 水平制表');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_1400
+     * @tc.name       : testCanIUse014
+     * @tc.desc       : Test CanIUse with vertical tab.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse014', 0, async (done: Function) => {
+      let flag = canIUse('\v 垂直制表');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_1500
+     * @tc.name       : testCanIUse015
+     * @tc.desc       : Test CanIUse with backslash.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse015', 0, async (done: Function) => {
+      let flag = canIUse('\\ 反斜杠');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_1600
+     * @tc.name       : testCanIUse016
+     * @tc.desc       : Test CanIUse with single quote.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse016', 0, async (done: Function) => {
+      let flag = canIUse('\' 单引号');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_1700
+     * @tc.name       : testCanIUse017
+     * @tc.desc       : Test CanIUse with double quote.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse017', 0, async (done: Function) => {
+      let flag = canIUse('\" 双引号');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_1800
+     * @tc.name       : testCanIUse018
+     * @tc.desc       : Test CanIUse with question mark.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse018', 0, async (done: Function) => {
+      let flag = canIUse('\? 问号');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_1900
+     * @tc.name       : testCanIUse019
+     * @tc.desc       : Test CanIUse with null character.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse019', 0, async (done: Function) => {
+      let flag = canIUse('\0 空字符');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_2000
+     * @tc.name       : testCanIUse020
+     * @tc.desc       : Test CanIUse with octal number.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse020', 0, async (done: Function) => {
+      let flag = canIUse('\d72 八进制任意数字');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_2100
+     * @tc.name       : testCanIUse021
+     * @tc.desc       : Test CanIUse with hexadecimal number.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse021', 0, async (done: Function) => {
+      let flag = canIUse('\x85 十六进制任意数字');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_2200
+     * @tc.name       : testCanIUse022
+     * @tc.desc       : Test CanIUse with pointing up emoji.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse022', 0, async (done: Function) => {
+      let flag = canIUse('👆 \ud83d\udc46');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_2300
+     * @tc.name       : testCanIUse023
+     * @tc.desc       : Test CanIUse with angry face emoji.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse023', 0, async (done: Function) => {
+      let flag = canIUse('👿 \ud83d\udc7f');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_2400
+     * @tc.name       : testCanIUse024
+     * @tc.desc       : Test CanIUse with eyes emoji.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse024', 0, async (done: Function) => {
+      let flag = canIUse('👀 \ud83d\udc40');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_2500
+     * @tc.name       : testCanIUse025
+     * @tc.desc       : Test CanIUse with 100 points emoji.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse025', 0, async (done: Function) => {
+      let flag = canIUse('💯 \ud83d\udcaf');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_2600
+     * @tc.name       : testCanIUse026
+     * @tc.desc       : Test CanIUse with Santa Claus emoji.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse026', 0, async (done: Function) => {
+      let flag = canIUse('🎅 \ud83c\udf85');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_2700
+     * @tc.name       : testCanIUse027
+     * @tc.desc       : Test CanIUse with cat face with wry smile emoji.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse027', 0, async (done: Function) => {
+      let flag = canIUse('😼 \ud83d\ude3c');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_2800
+     * @tc.name       : testCanIUse028
+     * @tc.desc       : Test CanIUse with wrench emoji.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse028', 0, async (done: Function) => {
+      let flag = canIUse('🔧 \ud83d\udd27');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_2900
+     * @tc.name       : testCanIUse029
+     * @tc.desc       : Test CanIUse with haircut emoji.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse029', 0, async (done: Function) => {
+      let flag = canIUse('💇 \ud83d\udc87');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_3000
+     * @tc.name       : testCanIUse030
+     * @tc.desc       : Test CanIUse with men wrestling emoji.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse030', 0, async (done: Function) => {
+      let flag = canIUse('🤼‍♂️ \ud83e\udd3c\u200d\u2642\ufe0f');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_3100
+     * @tc.name       : testCanIUse031
+     * @tc.desc       : Test CanIUse with oil drum emoji.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse031', 0, async (done: Function) => {
+      let flag = canIUse('🛢 \ud83d\udee2');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_3200
+     * @tc.name       : testCanIUse032
+     * @tc.desc       : Test CanIUse with mahjong tile red dragon emoji.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse032', 0, async (done: Function) => {
+      let flag = canIUse('🀄 \ud83c\udc04');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_3300
+     * @tc.name       : testCanIUse033
+     * @tc.desc       : Test CanIUse with black flag emoji.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse033', 0, async (done: Function) => {
+      let flag = canIUse('🏴 \ud83c\udff4');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_3400
+     * @tc.name       : testCanIUse034
+     * @tc.desc       : Test CanIUse with custom initialization.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse034', 0, async (done: Function) => {
+      let flag = canIUse(init(200));
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_3500
+     * @tc.name       : testCanIUse035
+     * @tc.desc       : Test CanIUse with object string manipulation.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse035', 0, async (done: Function) => {
       let str = "{k1:value1,k2:value2}";
       let result = str.substring(0, str.length - 2)
       let flag = canIUse(result);
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_3600
+     * @tc.name       : testCanIUse036
+     * @tc.desc       : Test CanIUse with \ud83c.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse036', 0, async (done: Function) => {
+      let flag = canIUse('\ud83c');
+      expect(flag).assertEqual(false);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CANIUSE_3700
+     * @tc.name       : testCanIUse037
+     * @tc.desc       : Test CanIUse with \u200d\u2642.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCanIUse037', 0, async (done: Function) => {
+      let flag = canIUse('\u200d\u2642');
       expect(flag).assertEqual(false);
       done();
     });
