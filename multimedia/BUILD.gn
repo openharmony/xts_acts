@@ -11,12 +11,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import("//foundation/multimedia/player_framework/config.gni")
 import("//test/xts/tools/build/suite.gni")
 
 group("multimedia") {
   testonly = true
+  deps = []
+  if (player_framework_support_screen_capture) {
+    deps += [
+      "media/media_js_standard/avScreenCaptureRecorder:av_screen_capture_recorder_js_hap",
+      "media/media_js_standard/screenCapture_ndk_test:ActsNativeAVScreenCaptureTest",
+    ]
+  }
   if (is_standard_system) {
-    deps = [
+    deps += [
       "audio/audio_cpp_standard:ActsOpenslesNdkTest",
       "audio/audio_js_standard/AudioCapturer:audio_capturer_js_hap",
       "audio/audio_js_standard/AudioCapturerChangeInfo:audio_capturerchangeInfo_js_hap",
@@ -104,10 +112,8 @@ group("multimedia") {
       "media/media_js_standard/avPlayer:avplayer_js_hap",
       "media/media_js_standard/avPlayerNdk:ActsAVPlayerNdkTest",
       "media/media_js_standard/avRecorder:av_recorder_js_hap",
-      "media/media_js_standard/avScreenCaptureRecorder:av_screen_capture_recorder_js_hap",
       "media/media_js_standard/avplayeraudiondk:avplayer_audio_ndk_ets_hap",
       "media/media_js_standard/recorderFormat:recorder_format_js_hap",
-      "media/media_js_standard/screenCapture_ndk_test:ActsNativeAVScreenCaptureTest",
       "media/media_js_standard/soundPool:soundpool_js_hap",
       "media/media_js_standard/videoPlayer:video_player_js_hap",
       "media/media_ndk_standard/AVPlayerNDK:OhAVPlayerNDK",
@@ -119,7 +125,7 @@ group("multimedia") {
       "videoProcess/moduletest/video:ActsVpeVideoNativModuleTest",
     ]
   } else {
-    deps = [
+    deps += [
       #"audio/audio_hap_test:MediaAudio_test_hap",
       #"audio/audiotubecore_hap_test:Audiotubecore_test_hap",
       #"camera/camera_hap_test:camera_test_hap",
