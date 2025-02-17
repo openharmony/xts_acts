@@ -58,9 +58,7 @@ export default function layoutWeightFlexTest() {
     'RichText',
     'ScrollBar',
     'Search',
-    'Select',
     'Slider',
-    'Stepper',
     'Text',
     'TextArea',
     'TextClock',
@@ -71,7 +69,6 @@ export default function layoutWeightFlexTest() {
     'Toggle',
     'Badge',
     'Column',
-    'ColumnSplit',
     'Counter',
     //'Flex',
     'GridRow',
@@ -82,9 +79,7 @@ export default function layoutWeightFlexTest() {
     'Refresh',
     'RelativeContainer',
     'Row',
-    'RowSplit',
     'Scroll',
-    'SideBarContainer',
     'Stack',
     'Swiper',
     'Tabs',
@@ -95,8 +90,7 @@ export default function layoutWeightFlexTest() {
     'Path',
     'Rect',
     'Shape',
-    'Line',
-    'WaterFlow'
+    'Line'
   ]
   let childWidth = 100;
   let childHeight = 100;

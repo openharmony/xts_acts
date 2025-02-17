@@ -79,10 +79,7 @@ export default function marginTest() {
     'Rating',
     'ScrollBar',
     'Search',
-    'Select',
     'Slider',
-    'Stepper',
-    'StepperItem',
     'Text',
     'TextArea',
     'TextClock',
@@ -102,7 +99,6 @@ export default function marginTest() {
     'Shape',
     'Badge',
     'Column',
-    'ColumnSplit',
     'Counter',
     //'Flex',
     //'FlowItem',
@@ -118,14 +114,11 @@ export default function marginTest() {
     'Refresh',
     'RelativeContainer',
     'Row',
-    'RowSplit',
     'Scroll',
-    'SideBarContainer',
     'Stack',
     'Swiper',
     'Tabs',
-    'TabContent',
-    'WaterFlow'
+    'TabContent'
   ]
 
   let pageConfig: PageConfig = {
