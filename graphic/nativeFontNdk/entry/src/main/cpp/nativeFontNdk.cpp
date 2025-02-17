@@ -297,7 +297,7 @@ static napi_value OHDrawingGetFontDescriptorByFullName001(napi_env env, napi_cal
 static napi_value OHDrawingGetFontDescriptorByFullName002(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    const uint8_t TTF_FULLNAME[] = {
+    const uint8_t ttfFullname[] = {
         0x4F, 0x60,
         0x59, 0x7D,
         0x00, 0x6F,
@@ -313,8 +313,8 @@ static napi_value OHDrawingGetFontDescriptorByFullName002(napi_env env, napi_cal
         0x00, 0x79
     };
     OH_Drawing_String drawingString;
-    drawingString.strData = const_cast<uint8_t*>(TTF_FULLNAME);
-    drawingString.strLen = sizeof(TTF_FULLNAME);
+    drawingString.strData = const_cast<uint8_t*>(ttfFullname);
+    drawingString.strLen = sizeof(ttfFullname);
     OH_Drawing_FontDescriptor *descriptor =
         OH_Drawing_GetFontDescriptorByFullName(&drawingString, OH_Drawing_SystemFontType::ALL);
     if (descriptor == nullptr) {
