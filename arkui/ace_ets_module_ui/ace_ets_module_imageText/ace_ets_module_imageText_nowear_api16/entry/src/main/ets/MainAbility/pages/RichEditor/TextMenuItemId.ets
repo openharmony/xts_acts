@@ -31,18 +31,8 @@ struct TextMenuItemIdExample {
   onCreateMenu(menuItems: Array<TextMenuItem>) {
     let extensionMenuItems: TextMenuItem[] = [];
     menuItems.forEach(value => {
-      if (value.id.equals(TextMenuItemId.SHARE)) {
-        value.content = 'SHARE'
-        this.flag = true
-        extensionMenuItems.push(value)
-      }
       if (value.id.equals(TextMenuItemId.TRANSLATE)) {
         value.content = 'TRANSLATE'
-        this.flag = true
-        extensionMenuItems.push(value)
-      }
-      if (value.id.equals(TextMenuItemId.SEARCH)) {
-        value.content = 'SHARE'
         this.flag = true
         extensionMenuItems.push(value)
       }
