@@ -1919,7 +1919,7 @@ export default function DeviceInfoTest() {
 				    done();
                 }
             }else{
-                if (diskSN == "" || diskSN == null || diskSN == undefined) {
+                if (diskSN == "") {
                     ret = true;
                     expect(ret).assertTrue();
 				    done();
