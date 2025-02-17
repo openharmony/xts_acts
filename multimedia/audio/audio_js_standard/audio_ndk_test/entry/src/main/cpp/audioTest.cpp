@@ -635,7 +635,7 @@ static napi_value AudioRenderGetAudioTimestampInfoInterval(napi_env env, napi_ca
     uDelay(sleepNum);
 	
     napi_value res;
-    float rate = 0.1;
+    float rate = 0.15;
     int counti = 5;
     int64_t framePositionLastDuration = 0;
     int64_t timestampLastDuration = 0;
@@ -685,7 +685,7 @@ static napi_value AudioRenderGetAudioSpeedTimestampInfo(napi_env env, napi_callb
     OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
 	
     napi_value res;
-    float rate = 0.1;
+    float rate = 0.15;
     int64_t framePositionLastDuration = 0;
     int64_t timestampLastDuration = 0;
     OH_AudioStream_Result result = AUDIOSTREAM_SUCCESS;
