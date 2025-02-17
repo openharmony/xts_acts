@@ -2,6 +2,7 @@
     "src": [
         "MainAbility/pages/index/index",
 		"MainAbility/pages/Navigation/EnableModeChangeAnimation",
-		"MainAbility/pages/NavDestination/CustomTransitionPage"
+		"MainAbility/pages/NavDestination/CustomTransitionPage",
+		"MainAbility/pages/Navigation/OnResultPage"
     ]
 }

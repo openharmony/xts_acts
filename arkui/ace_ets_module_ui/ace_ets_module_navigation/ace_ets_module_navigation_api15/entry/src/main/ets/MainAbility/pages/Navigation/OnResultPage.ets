@@ -21,11 +21,11 @@ struct OnResultPage {
   @Builder
   pageMap(name: string) {
     if (name == 'pageOne') {
-      PageOne()
+      PageOne1()
     } else if (name == 'pageTwo') {
-      PageTwo()
+      PageTwo1()
     } else if (name == 'pageDialog') {
-      PageThree()
+      PageThree1()
     }
   }
 
@@ -46,7 +46,7 @@ struct OnResultPage {
 }
 
 @Component
-struct PageOne {
+struct PageOne1 {
   @Consume('pageInfos') pageInfos: NavPathStack;
   @State info: string = '';
   build() {
@@ -67,7 +67,7 @@ struct PageOne {
 }
 
 @Component
-struct PageTwo {
+struct PageTwo1 {
   @Consume('pageInfos') pageInfos: NavPathStack;
   build() {
     NavDestination() {
@@ -92,7 +92,7 @@ struct PageTwo {
 }
 
 @Component
-struct PageThree {
+struct PageThree1 {
   @Consume('pageInfos') pageInfos: NavPathStack;
   build() {
     NavDestination() {
