@@ -11,13 +11,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import("//foundation/arkui/ace_engine/ace_config.gni")
 group("ActsAceEtsModulePickerTest") {
   testonly = true
-  deps = [
-    "ace_ets_module_picker_api11:ActsAceEtsModulePickerApi11Test",
-    "ace_ets_module_picker_api12:ActsAceEtsModulePickerApi12Test",
-    "ace_ets_module_picker_api13:ActsAceEtsModulePickerApi13Test",
-    "ace_ets_module_picker_api14:ActsAceEtsModulePickerApi14Test",
-    "ace_ets_module_picker_api16:ActsAceEtsModulePickerApi16Test",
-  ]
+  if (ace_engine_feature_wearable) {
+    deps = [
+      "ace_ets_module_picker_api11:ActsAceEtsModulePickerApi11Test",
+      "ace_ets_module_picker_api12:ActsAceEtsModulePickerApi12Test",
+      "ace_ets_module_picker_api13:ActsAceEtsModulePickerApi13Test",
+      "ace_ets_module_picker_api15:ActsAceEtsModulePickerApi15Test",
+      "ace_ets_module_picker_api16:ActsAceEtsModulePickerApi16Test",
+    ]
+  } else {
+    deps = [
+      "ace_ets_module_picker_api11:ActsAceEtsModulePickerApi11Test",
+      "ace_ets_module_picker_api12:ActsAceEtsModulePickerApi12Test",
+      "ace_ets_module_picker_api13:ActsAceEtsModulePickerApi13Test",
+      "ace_ets_module_picker_api14:ActsAceEtsModulePickerApi14Test",
+      "ace_ets_module_picker_api15:ActsAceEtsModulePickerApi15Test",
+      "ace_ets_module_picker_api16:ActsAceEtsModulePickerApi16Test",
+      "ace_ets_module_picker_nowear_api11:ActsAceEtsModulePickerNoWearApi11Test",
+      "ace_ets_module_picker_nowear_api12:ActsAceEtsModulePickerNoWearApi12Test",
+    ]
+  }
 }
