@@ -88,7 +88,7 @@ export default function Grid_ScrollFrameBegin() {
       let driver = Driver.create()
       await driver.swipe(
         Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
-        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.9 + gridRect.top}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
         Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
         Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.1 + gridRect.top}`),
         1000);

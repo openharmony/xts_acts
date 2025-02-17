@@ -21,29 +21,31 @@ struct List_ListInitialIndex4 {
   @State testLanes: number = 1;
 
   build() {
-    Column({ space: 30 }) {
-      List({ space: 20, initialIndex: this.testInitialIndex }) {
-        ForEach(this.arr, (item: string) => {
-          ListItem() {
-            Text('' + item)
-              .width('100%').height('100%').backgroundColor(0xF5DEB3)
-          }
-          .width(100)
-          .height(100)
-          .key('List_ListInitialIndex4_' + item)
-        }, (item: string) => item)
+    Scroll(){
+      Column({ space: 30 }) {
+        List({ space: 20, initialIndex: this.testInitialIndex }) {
+          ForEach(this.arr, (item: string) => {
+            ListItem() {
+              Text('' + item)
+                .width('100%').height('100%').backgroundColor(0xF5DEB3)
+            }
+            .width(100)
+            .height(100)
+            .key('List_ListInitialIndex4_' + item)
+          }, (item: string) => item)
+        }
+        .cachedCount(0)
+        .width('80%')
+        .height(500)
+        .listDirection(Axis.Vertical)
+        .edgeEffect(EdgeEffect.Spring)
+        .scrollBar(BarState.On)
+        .lanes(this.testLanes)
+        .backgroundColor(0xAFEEEE)
+        .key('List_ListInitialIndex4_Container01')
       }
-      .cachedCount(0)
-      .width(300)
-      .height(500)
-      .listDirection(Axis.Vertical)
-      .edgeEffect(EdgeEffect.Spring)
-      .scrollBar(BarState.On)
-      .lanes(this.testLanes)
-      .backgroundColor(0xAFEEEE)
-      .key('List_ListInitialIndex4_Container01')
+      .width('100%')
+      .height('100%')
     }
-    .width('100%')
-    .height('100%')
   }
 }
