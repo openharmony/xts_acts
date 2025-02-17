@@ -27,6 +27,7 @@ import addOrDelText from './TextAreaTest/addOrDelText.test';
 import TextOnChangeOptionsTest from './TextChangeTest/TextOnChangeOptionsTest.test';
 import TextOnWillChangeOptionsTest from './TextChangeTest/TextOnWillChangeOptionsTest.test';
 import bindSelectionMenuTest from './SelectionMenuTest/bindSelectionMenuTest.test';
+import RichEditorTextStyle from './RichEditorTest/RichEditorTextStyle.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -43,4 +44,5 @@ export default function testsuite() {
   TextOnChangeOptionsTest();
   TextOnWillChangeOptionsTest();
   bindSelectionMenuTest();
+  RichEditorTextStyle();
 }

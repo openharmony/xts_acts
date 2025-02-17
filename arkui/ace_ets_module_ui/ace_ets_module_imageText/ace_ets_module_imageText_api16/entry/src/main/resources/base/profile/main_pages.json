@@ -14,6 +14,7 @@
 	"MainAbility/pages/TextArea/addOrDelText",
     "MainAbility/pages/TextChangeTest/TextOnChangeOptionsTest",
     "MainAbility/pages/TextChangeTest/TextOnWillChangeOptionsTest",
-    "MainAbility/pages/SelectionMenuTest/bindSelectionMenuTest"
+    "MainAbility/pages/SelectionMenuTest/bindSelectionMenuTest",
+    "MainAbility/pages/RichEditor/RichEditorTextStyle"
   ]
 }
