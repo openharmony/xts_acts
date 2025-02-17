@@ -20,6 +20,8 @@ import SearchKeyboardAppearanceTest from './Search/SearchKeyboardAppearance.test
 import RichEditorKeyboardAppearanceTest from './RichEditorTest/RichEditorKeyboardAppearance.test';
 import RichEditorStopBackPressTest from './RichEditorTest/RichEditorStopBackPress.test';
 import SelectionMenuOptions from './RichEditorTest/SelectionMenuOptions.test';
+import PixelMapColorFilterTest from './ImageAttachmentTest/PixelMapColorFilter.test';
+import ResourceDefaultTest from './ImageAttachmentTest/ResourceDefault.test';
 
 
 export default function testsuite() {
@@ -30,4 +32,6 @@ export default function testsuite() {
   RichEditorKeyboardAppearanceTest();
   RichEditorStopBackPressTest();
   SelectionMenuOptions();
+  PixelMapColorFilterTest();
+  ResourceDefaultTest();
 }
