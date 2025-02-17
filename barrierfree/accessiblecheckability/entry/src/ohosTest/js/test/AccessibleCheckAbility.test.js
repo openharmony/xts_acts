@@ -14,10 +14,16 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import accessibility from '@ohos.accessibility'
+import { Driver } from '@ohos.UiTest';
 
 export default function AccessibleCheckAbility() {
 describe('AccessibleCheckAbility', function () {
     const TIMEOUT = 1000;
+    beforeAll(async function (done) {
+        let driver = Driver.create();
+        console.info(`AccessibleAbilityList: beforeAll starts`);
+        done();
+    })
 
     beforeEach(async function (done) {
         console.info(`AccessibleAbilityList: beforeEach starts`);
@@ -164,6 +170,24 @@ describe('AccessibleCheckAbility', function () {
         }
     })
 	
+    /*
+      * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0700
+      * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0700
+      * @tc.desc    The result of isScreenReaderOpenSync() should be boolean type.
+      * @tc.size    SmallTest
+      * @tc.type    User
+      */
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0700', 0, async function (done) {
+        console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0700');
+        try {
+            let status = accessibility.isScreenReaderOpenSync();
+            console.info(`AccessibilityApi: SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0700 result: ${status}`);
+            expect(status).assertEqual(false);
+            done();
+        } catch (exception) {
+            console.error('SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0700 failed to isScreenReaderOpenSync because ' + JSON.stringify(exception));
+        }
+    })
 })
 
 }

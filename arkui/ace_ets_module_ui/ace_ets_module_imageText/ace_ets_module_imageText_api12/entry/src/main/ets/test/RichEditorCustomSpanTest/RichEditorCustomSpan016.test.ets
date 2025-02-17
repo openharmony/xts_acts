@@ -55,10 +55,12 @@ export default function RichEditorCustomSpan016() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0026
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0026
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0026 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0026
+     * @tc.name  : Test the RichEditor CustomSpan
+     * @tc.desc  : Test RichEditor Custom Span by selecting Custom Span
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0026', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0026 START');
@@ -82,10 +84,12 @@ export default function RichEditorCustomSpan016() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0029
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0029
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0029 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0029
+     * @tc.name  : Test the RichEditor CustomSpan
+     * @tc.desc  : Testing RichEditor's Custom Span with Copy Paste Not Supported by Custom Span
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0029', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0029 START');

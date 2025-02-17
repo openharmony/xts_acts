@@ -200,8 +200,10 @@ TEST_TRACE_CATEGROY(JSVM_TRACE_COMPILE, RunCycle);
 TEST_TRACE_CATEGROY(JSVM_TRACE_EXECUTE, RunCycle);
 TEST_TRACE_CATEGROY(JSVM_TRACE_RUNTIME, RunFunction);
 TEST_TRACE_CATEGROY(JSVM_TRACE_STACK_TRACE, RunStackTrace);
+#if !defined(JSVM_JITLESS)
 TEST_TRACE_CATEGROY(JSVM_TRACE_WASM, RunWasm);
 TEST_TRACE_CATEGROY(JSVM_TRACE_WASM_DETAILED, RunWasm);
+#endif
 
 TEST(Trace_MultiCategory)
 {
@@ -216,7 +218,9 @@ TEST(Trace_MultiCategory)
         CHECK(status == JSVM_OK);
 
         RunCycle();
+#if !defined(JSVM_JITLESS)
         RunWasm();
+#endif
         RunStackTrace();
         RunFunction();
 

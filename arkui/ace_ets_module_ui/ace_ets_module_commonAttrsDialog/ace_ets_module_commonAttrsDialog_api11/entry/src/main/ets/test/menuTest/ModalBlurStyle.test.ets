@@ -145,7 +145,8 @@ export default function ModalBlurStyle() {
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('blurStyle_4'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let button = await scrollBar.scrollSearch(ON.id('blurStyle_4'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('blurStyle_4');
@@ -168,7 +169,8 @@ export default function ModalBlurStyle() {
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('blurStyle_5'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let button = await scrollBar.scrollSearch(ON.id('blurStyle_5'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('blurStyle_5');

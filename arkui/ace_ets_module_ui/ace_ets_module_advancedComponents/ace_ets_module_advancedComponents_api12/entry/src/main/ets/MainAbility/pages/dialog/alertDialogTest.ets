@@ -39,20 +39,17 @@ struct AlertDialogTest {
   })
 
   build() {
-    Row() {
-      Stack() {
-        Column() {
-          Button('AlertDialog')
-            .width(96)
-            .height(40)
-            .onClick(() => {
-              this.dialogControllerConfirm.open()
-            })
-        }.margin({ bottom: 300 })
-      }.align(Alignment.Bottom)
-      .width('100%').height('100%')
+    Column() {
+      Button('AlertDialog')
+        .width(96)
+        .height(40)
+        .onClick(() => {
+          this.dialogControllerConfirm.open()
+        })
     }
-    .backgroundImageSize({ width: '100%', height: '100%' })
+    .width('100%')
     .height('100%')
+    .justifyContent(FlexAlign.Center)
+    .backgroundImageSize({ width: '100%', height: '100%' })
   }
 }

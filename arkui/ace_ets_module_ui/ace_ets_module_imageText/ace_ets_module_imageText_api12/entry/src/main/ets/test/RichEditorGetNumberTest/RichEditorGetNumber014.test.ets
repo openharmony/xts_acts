@@ -55,10 +55,12 @@ export default function RichEditorGetNumber014() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_GET_NUMBEROF_TEXT_LINES_0014
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_GET_NUMBEROF_TEXT_LINES_0014
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_GET_NUMBEROF_TEXT_LINES_0014 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_GET_NUMBEROF_TEXT_LINES_0014
+     * @tc.name  : Test the RichEditor Text Line
+     * @tc.desc  : By adding symbols, imagespan,builderspan, Add a line break key to test RichEditor Text Line
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_GET_NUMBEROF_TEXT_LINES_0014', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_GET_NUMBEROF_TEXT_LINES_0014 START');

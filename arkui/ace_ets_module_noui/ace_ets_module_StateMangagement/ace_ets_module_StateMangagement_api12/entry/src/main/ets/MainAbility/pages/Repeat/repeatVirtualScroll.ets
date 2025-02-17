@@ -35,105 +35,118 @@ export struct displayRepeat {
   private end: number = 1;
 
   build() {
-    Column({ space: 5 }) {
-      Text('初始化数据')
-        .id('init_repeat')
-        .fontSize(20)
-        .margin(5)
-        .fontColor(Color.Red)
-        .onClick(() => {
-          this.arrayCount.arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+    Scroll() {
+      Column({ space: 5 }) {
+        Text('初始化数据')
+          .id('init_repeat')
+          .margin(5)
+          .width('33%')
+          .height('5%')
+          .fontColor(Color.Red)
+          .onClick(() => {
+            this.arrayCount.arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+          })
+        List({ scroller: this.scroller }) {
+          Repeat(this.arrayCount.arr)
+            .virtualScroll({ totalCount: this.totalCount })
+            .templateId((item, index) => {
+              if (index == 3) {
+                return 'string'
+              } else if (index == 4) {
+                return 'number';
+              } else if (index == 12 || index == 13 || index == 14) {
+                return 'change';
+              } else {
+                return 'each'
+              }
+            })
+            .template('number', (r) => {
+              ListItem() {
+                Text((r.index! + ':' + r.item + 'ReuseNumber' + this.temporaryValue).toString())
+                  .id(`text${r.index}`)
+                  .height('20%')
+              }
+            })
+            .template('string', (r) => {
+              ListItem() {
+                Text((r.index! + ':' + r.item + 'ReuseString' + this.temporaryValue).toString())
+                  .id(`text${r.index}`)
+                  .height('20%')
+              }
+            })
+            .template('change', (r) => {
+              ListItem() {
+                Text((r.index! + ':' + r.item + 'ReuseChange' + (this.temporaryValue = 666)).toString())
+                  .id(`text${r.index}`)
+                  .height('20%')
+              }
+            }, { cachedCount: 4 })
+            .each((r) => {
+              ListItem() {
+                Text((r.index! + ':' + r.item + 'eachMessage' + this.temporaryValue).toString())
+                  .id(`text${r.index}`)
+                  .height('20%')
+              }
+            })
+            .key((item: number) => (item).toString())
+        }
+        .onScrollIndex((start, end) => {
+          this.start = start;
+          this.end = end;
         })
-      List({ space: 20, scroller: this.scroller }) {
-        Repeat(this.arrayCount.arr)
-          .virtualScroll({ totalCount: this.totalCount })
-          .templateId((item, index) => {
-            if (index == 3) {
-              return 'string'
-            } else if (index == 4) {
-              return 'number';
-            } else if (index == 12 || index == 13 || index == 14) {
-              return 'change';
-            } else {
-              return 'each'
-            }
-          })
-          .template('number', (r) => {
-            ListItem() {
-              Text((r.index! + ':' + r.item + 'ReuseNumber' + this.temporaryValue).toString())
-                .id(`text${r.index}`)
-            }
-          })
-          .template('string', (r) => {
-            ListItem() {
-              Text((r.index! + ':' + r.item + 'ReuseString' + this.temporaryValue).toString())
-                .id(`text${r.index}`)
-            }
-          })
-          .template('change', (r) => {
-            ListItem() {
-              Text((r.index! + ':' + r.item + 'ReuseChange' + (this.temporaryValue = 666)).toString())
-                .id(`text${r.index}`)
-            }
-          }, { cachedCount: 4 })
-          .each((r) => {
-            ListItem() {
-              Text((r.index! + ':' + r.item + 'eachMessage' + this.temporaryValue).toString())
-                .id(`text${r.index}`)
-            }
-          })
-          .key((item: number) => (item).toString())
-      }
-      .onScrollIndex((start, end) => {
-        this.start = start;
-        this.end = end;
-      })
-      .height('25%')
+        .height('25%')
 
-      Row() {
-        Button('滚至索引5')
-          .id('scroll_data1')
-          .fontSize(18)
-          .margin(5)
-          .height(50)
-          .onClick(() => {
-            let rect = this.scroller.getItemRect(this.start); // 获取子组件的大小位置
-            this.scroller.scrollToIndex(5); // 滑动到指定index
-            this.scroller.scrollBy(0, -rect.y); // 滑动指定距离
-          })
-        Button('滚至索引7')
-          .id('scroll_data2')
-          .fontSize(18)
-          .margin(5)
-          .height(50)
-          .onClick(() => {
-            let rect = this.scroller.getItemRect(this.start); // 获取子组件的大小位置
-            this.scroller.scrollToIndex(7); // 滑动到指定index
-            this.scroller.scrollBy(0, -rect.y); // 滑动指定距离
-          })
-        Button('修改第7项').id('repeat_modify')
-          .fontSize(18)
-          .margin(5)
-          .onClick(() => {
-            this.arrayCount.arr[7] = 333;
-          })
-      }
+        Row() {
+          Button('滚至索引5')
+            .id('scroll_data1')
+            .margin(5)
+            .width('33%')
+            .height('5%')
+            .onClick(() => {
+              let rect = this.scroller.getItemRect(this.start); // 获取子组件的大小位置
+              this.scroller.scrollToIndex(5); // 滑动到指定index
+              this.scroller.scrollBy(0, -rect.y); // 滑动指定距离
+            })
+          Button('滚至索引7')
+            .id('scroll_data2')
+            .width('33%')
+            .margin(5)
+            .height('5%')
+            .onClick(() => {
+              let rect = this.scroller.getItemRect(this.start); // 获取子组件的大小位置
+              this.scroller.scrollToIndex(7); // 滑动到指定index
+              this.scroller.scrollBy(0, -rect.y); // 滑动指定距离
+            })
+          Button('修改第7项')
+            .id('repeat_modify')
+            .margin(5)
+            .width('33%')
+            .height('5%')
+            .onClick(() => {
+              this.arrayCount.arr[7] = 333;
+            })
+        }
 
-      Row() {
-        Button('交换7，8项').id('repeat_2')
-          .fontSize(18)
-          .margin(5)
-          .onClick(() => {
-            let temp: number = this.arrayCount.arr[8]
-            this.arrayCount.arr[8] = this.arrayCount.arr[7]
-            this.arrayCount.arr[7] = temp
-          })
-        Button('删除第7组值').id('repeat_3')
-          .fontSize(18)
-          .margin(5)
-          .onClick(() => {
-            this.arrayCount.arr.splice(7, 1);
-          })
+        Row() {
+          Button('交换7，8项')
+            .id('repeat_2')
+            .margin(5)
+            .width('50%')
+            .height('5%')
+            .onClick(() => {
+              let temp: number = this.arrayCount.arr[8]
+              this.arrayCount.arr[8] = this.arrayCount.arr[7]
+              this.arrayCount.arr[7] = temp
+            })
+          Button('删除第7组值')
+            .id('repeat_3')
+            .margin(5)
+            .width('50%')
+            .height('5%')
+            .onClick(() => {
+              this.arrayCount.arr.splice(7, 1);
+            })
+        }
       }
     }
     .width('100%')

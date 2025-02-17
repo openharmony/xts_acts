@@ -18,6 +18,7 @@ import CommonFunc from '../../../MainAbility/utils/Common';
 import {
   Driver,
   ON,
+  Component
 } from '@ohos.UiTest';
 
 export default function SwiperMargin_4() {
@@ -64,7 +65,8 @@ export default function SwiperMargin_4() {
       await CommonFunc.sleep(1000);
       const oldPrevMargin:number = oldSwiper.right
 
-      let buttonAdd = await driver.findComponent(ON.id("prevMarginAdd"));
+      let scrollColumn: Component = await driver.findComponent(ON.type('Scroll'));
+      let buttonAdd = await scrollColumn.scrollSearch(ON.id('prevMarginAdd'));
       await CommonFunc.sleep(1000);
 
       await buttonAdd.doubleClick();
@@ -96,7 +98,8 @@ export default function SwiperMargin_4() {
       await CommonFunc.sleep(1000);
       const oldPrevMargin:number = oldSwiper.left
 
-      let buttonAdd = await driver.findComponent(ON.id("prevMarginDec"));
+      let scrollColumn: Component = await driver.findComponent(ON.type('Scroll'));
+      let buttonAdd = await scrollColumn.scrollSearch(ON.id('prevMarginDec'));
       await buttonAdd.doubleClick();
       await CommonFunc.sleep(1000);
 
@@ -126,7 +129,8 @@ export default function SwiperMargin_4() {
       await CommonFunc.sleep(1000);
       const oldNextMarginAdd:number = oldSwiper.right
 
-      let buttonAdd = await driver.findComponent(ON.id("nextMarginAdd"));
+      let scrollColumn: Component = await driver.findComponent(ON.type('Scroll'));
+      let buttonAdd = await scrollColumn.scrollSearch(ON.id('nextMarginAdd'));
       await buttonAdd.doubleClick();
       await CommonFunc.sleep(1000);
 
@@ -156,7 +160,8 @@ export default function SwiperMargin_4() {
       await CommonFunc.sleep(1000);
       const oldPrevMargin:number = oldSwiper.left
 
-      let buttonAdd = await driver.findComponent(ON.id("nextMarginDec"));
+      let scrollColumn: Component = await driver.findComponent(ON.type('Scroll'));
+      let buttonAdd = await scrollColumn.scrollSearch(ON.id('nextMarginDec'));
       await CommonFunc.sleep(1000);
 
       await buttonAdd.doubleClick();
@@ -184,7 +189,8 @@ export default function SwiperMargin_4() {
       const driver = await Driver.create();
       await CommonFunc.sleep(1000);
 
-      const oldSwiper = await driver.findComponent(ON.id('showNext'));
+      let scrollColumn: Component = await driver.findComponent(ON.type('Scroll'));
+      let oldSwiper = await scrollColumn.scrollSearch(ON.id('showNext'));
       await CommonFunc.sleep(1000);
       await oldSwiper.click()
 
@@ -210,7 +216,8 @@ export default function SwiperMargin_4() {
       const driver = await Driver.create();
       await CommonFunc.sleep(1000);
 
-      const oldSwiper = await driver.findComponent(ON.id('showPrevious'));
+      let scrollColumn: Component = await driver.findComponent(ON.type('Scroll'));
+      let oldSwiper = await scrollColumn.scrollSearch(ON.id('showPrevious'));
       await CommonFunc.sleep(1000);
       await oldSwiper.click()
 

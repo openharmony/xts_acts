@@ -55,10 +55,12 @@ export default function RichEditorStringSpan003() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_stringspan_0014
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_stringspan_0014
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_stringspan_0014 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_stringspan_0014
+     * @tc.name  : Test the RichEditor StringSpan
+     * @tc.desc  : Test RichEditor StringSpan with ClearStyles' extension span style for text division
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_stringspan_0014', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_stringspan_0014 START');

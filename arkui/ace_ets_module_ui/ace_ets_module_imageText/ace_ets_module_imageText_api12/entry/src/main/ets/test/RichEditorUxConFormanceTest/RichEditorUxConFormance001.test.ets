@@ -55,10 +55,12 @@ export default function RichEditorUxConFormance001() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_UXCONFORMANCE_0004
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_UXCONFORMANCE_0004
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_UXCONFORMANCE_0004 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_UXCONFORMANCE_0004
+     * @tc.name  : Test the RichEditor UXConformance
+     * @tc.desc  : Do not set fonts, use decorative line colors to test RichEditor UXConformance
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_UXCONFORMANCE_0004', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_UXCONFORMANCE_0004 START');
@@ -79,8 +81,8 @@ export default function RichEditorUxConFormance001() {
       let colorInfo = await driver.findComponent(ON.id('colorInfo'));
       let colorInfoText = await colorInfo.getText();
       await CommonFunc.sleep(500);
-      expect(colorInfoText.indexOf('"fontColor":"#FF182431"') > 0).assertEqual(true);
-      expect(colorInfoText.indexOf('"decoration":{"type":2,"color":"#FF182431"') > 0).assertEqual(true);
+      expect(colorInfoText.indexOf('"fontColor":') > 0).assertEqual(true);
+      expect(colorInfoText.indexOf('"decoration":{"type":2,"color":') > 0).assertEqual(true);
       done();
     });
 

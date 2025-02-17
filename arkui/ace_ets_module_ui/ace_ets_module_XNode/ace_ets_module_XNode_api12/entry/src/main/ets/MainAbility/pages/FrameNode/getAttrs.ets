@@ -234,139 +234,139 @@ struct GetAttrsFrameNode {
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-      Text(this.getData).id("FrameNode_Text")
-      Button("FrameNode_button").id("FrameNode_button")
+      Text(this.getData).id("FrameNode_Text").height('5%')
+      Button("FrameNode_button").id("FrameNode_button").height('5%')
         .size({width: 300, height: 50})
         .padding(10)
         .margin(20)
         .borderWidth(3)
         
-      Button("getPositionToWindow").id("getPositionToWindow")
+      Button("getPositionToWindow").id("getPositionToWindow").height('5%')
         .width(300)
         .onClick(()=>{
           if(this.uiContext && this.node){
             this.getData = "" + JSON.stringify(this.node.getPositionToWindow())
           }
         })
-      Button("getPositionToParent").id("getPositionToParent")
+      Button("getPositionToParent").id("getPositionToParent").height('5%')
         .width(300)
         .onClick(()=>{
           if(this.uiContext && this.node){
             this.getData = "" + JSON.stringify(this.node.getPositionToParent())
           }
         })
-      Button("getMeasuredSize").id("getMeasuredSize")
+      Button("getMeasuredSize").id("getMeasuredSize").height('5%')
         .width(300)
         .onClick(()=>{
           if(this.uiContext && this.node){
             this.getData = "" + JSON.stringify(this.node.getMeasuredSize())
           }
         })
-      Button("getLayoutPosition").id("getLayoutPosition")
+      Button("getLayoutPosition").id("getLayoutPosition").height('5%')
         .width(300)
         .onClick(()=>{
           if(this.uiContext && this.node){
             this.getData = "" + JSON.stringify(this.node.getLayoutPosition())
           }
         })
-      Button("getUserConfigBorderWidth").id("getUserConfigBorderWidth")
+      Button("getUserConfigBorderWidth").id("getUserConfigBorderWidth").height('5%')
         .width(300)
         .onClick(()=>{
           if(this.uiContext && this.node){
             this.getData = "" + JSON.stringify(this.node.getUserConfigBorderWidth())
           }
         })
-      Button("getUserConfigPadding").id("getUserConfigPadding")
+      Button("getUserConfigPadding").id("getUserConfigPadding").height('5%')
         .width(300)
         .onClick(()=>{
           if(this.uiContext && this.node){
             this.getData = "" + JSON.stringify(this.node.getUserConfigPadding())
           }
         })
-      Button("getUserConfigMargin").id("getUserConfigMargin")
+      Button("getUserConfigMargin").id("getUserConfigMargin").height('5%')
         .width(300)
         .onClick(()=>{
           if(this.uiContext && this.node){
             this.getData = "" + JSON.stringify(this.node.getUserConfigMargin())
           }
         })
-      Button("getUserConfigSize").id("getUserConfigSize")
+      Button("getUserConfigSize").id("getUserConfigSize").height('5%')
         .width(300)
         .onClick(()=>{
           if(this.uiContext && this.node){
             this.getData = "" + JSON.stringify(this.node.getUserConfigSize())
           }
         })
-      Button("getUniqueId").id("getUniqueId")
+      Button("getUniqueId").id("getUniqueId").height('5%')
         .width(300)
         .onClick(()=>{
           if(this.uiContext && this.node){
             this.getData = "" + JSON.stringify(this.node.getUniqueId())
           }
         })
-      Button("getCustomProperty").id("getCustomProperty")
+      Button("getCustomProperty").id("getCustomProperty").height('5%')
         .width(300)
         .onClick(()=>{
           if(this.uiContext && this.node){
             this.getData = "" + JSON.stringify(this.node.getCustomProperty("FrameNode_button"))
           }
         })
-      Button("getCommonAttribute").id("getCommonAttribute")
+      Button("getCommonAttribute").id("getCommonAttribute").height('5%')
         .width(300)
         .onClick(()=>{
           if(this.uiContext && this.node){
             this.getData = "" + JSON.stringify(this.node.commonAttribute.padding)
           }
         })
-      Button("getId")
+      Button("getId").height('5%')
         .width(300)
         .onClick(()=>{
           this.myNodeController.getId();
         })
-      Button("getNodeType")
+      Button("getNodeType").height('5%')
         .width(300)
         .onClick(()=>{
           this.myNodeController.getNodeType();
         })
-      Button("getOpacity")
+      Button("getOpacity").height('5%')
         .width(300)
         .onClick(()=>{
           this.myNodeController.getOpacity();
         })
-      Button("isVisible")
+      Button("isVisible").height('5%')
         .width(300)
         .onClick(()=>{
           this.myNodeController.isVisible();
         })
-      Button("isClipToFrame")
+      Button("isClipToFrame").height('5%')
         .width(300)
         .onClick(()=>{
           this.myNodeController.isClipToFrame();
         })
-      Button("isAttached")
+      Button("isAttached").height('5%')
         .width(300)
         .onClick(()=>{
           this.myNodeController.isAttached();
         })
-      Button("getInspectorInfo")
+      Button("getInspectorInfo").height('5%')
         .width(300)
         .onClick(()=>{
           this.myNodeController.getInspectorInfo();
         })
-      Button("throwError")
+      Button("throwError").height('5%')
         .width(300)
         .onClick(()=>{
           this.myNodeController.throwError();
         })
       Column(){
-        Text("This is a NodeContainer.")
+        Text("This is a NodeContainer.").height('10%')
           .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
           .width('100%').fontSize(16)
         NodeContainer(this.myNodeController)
           .borderWidth(1)
           .width(300)
-          .height(100)
-      }
+          .height('50%')
+      }.height('30%')
     }
     .padding({ left: 35, right: 35, top: 35, bottom: 35 })
     .width("100%")

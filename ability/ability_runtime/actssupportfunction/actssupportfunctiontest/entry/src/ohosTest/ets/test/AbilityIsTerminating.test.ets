@@ -26,7 +26,11 @@ export default function AbilityIsTerminatingTest() {
 
     let TAG = "";
     let sleepTimeOne = 1000;
-
+    afterEach(async (done: Function) => {
+      setTimeout(() => {
+        done();
+      }, 1000);
+    })
     /*
      * @tc.number  : SUB_AA_OpenHarmony_IsTerminating_0100
      * @tc.name    : Verify the isTerminating interface

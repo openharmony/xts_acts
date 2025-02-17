@@ -49,11 +49,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Insert、Update、Query.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_0100',0, async () => {
+        it('SUB_DDM_RDB_0100',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_0100' , ' begin');
             let re = testNapi.SUB_DDM_RDB_0100();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -61,11 +62,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Insert with wrong table name or table is NULL.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_0200',0, async () => {
+        it('SUB_DDM_RDB_0200',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_0200' , ' begin');
             let re = testNapi.SUB_DDM_RDB_0200();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -73,11 +75,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_0300',0, async () => {
+        it('SUB_DDM_RDB_0300',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_0300' , ' begin');
             let re = testNapi.SUB_DDM_RDB_0300();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -85,11 +88,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Update with valueBucket is NULL.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_0400',0, async () => {
+        it('SUB_DDM_RDB_0400',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_0400' , ' begin');
             let re = testNapi.SUB_DDM_RDB_0400();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -97,11 +101,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Update with wrong predicates.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_0500',0, async () => {
+        it('SUB_DDM_RDB_0500',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_0500' , ' begin');
             let re = testNapi.SUB_DDM_RDB_0500();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -109,11 +114,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Query with wrong table or table is NULL.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_0600',0, async () => {
+        it('SUB_DDM_RDB_0600',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_0600' , ' begin');
             let re = testNapi.SUB_DDM_RDB_0600();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -121,11 +127,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Query with wrong columnNames.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_0700',0, async () => {
+        it('SUB_DDM_RDB_0700',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_0700' , ' begin');
             let re = testNapi.SUB_DDM_RDB_0700();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -133,11 +140,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_0800',0, async () => {
+        it('SUB_DDM_RDB_0800',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_0800' , ' begin');
             let re = testNapi.SUB_DDM_RDB_0800();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -145,11 +153,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Delete、ExecuteQuery.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_0900',0, async () => {
+        it('SUB_DDM_RDB_0900',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_0900' , ' begin');
             let re = testNapi.SUB_DDM_RDB_0900();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -157,11 +166,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for querysql is NULL.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_1000',0, async () => {
+        it('SUB_DDM_RDB_1000',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_1000' , ' begin');
             let re = testNapi.SUB_DDM_RDB_1000();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -169,11 +179,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Delete with wrong table or table is NULL.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_1100',0, async () => {
+        it('SUB_DDM_RDB_1100',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_1100' , ' begin');
             let re = testNapi.SUB_DDM_RDB_1100();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -181,11 +192,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Delete with wrong predicates.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_1200',0, async () => {
+        it('SUB_DDM_RDB_1200',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_1200' , ' begin');
             let re = testNapi.SUB_DDM_RDB_1200();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -193,11 +205,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Delete multiple.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_1300',0, async () => {
+        it('SUB_DDM_RDB_1300',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_1300' , ' begin');
             let re = testNapi.SUB_DDM_RDB_1300();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -205,11 +218,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Transaction、Commit.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_1400',0, async () => {
+        it('SUB_DDM_RDB_1400',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_1400' , ' begin');
             let re = testNapi.SUB_DDM_RDB_1400();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -217,11 +231,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Transaction、RollBack.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_1500',0, async () => {
+        it('SUB_DDM_RDB_1500',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_1500' , ' begin');
             let re = testNapi.SUB_DDM_RDB_1500();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -229,11 +244,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Transaction、Commit.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_1600',0, async () => {
+        it('SUB_DDM_RDB_1600',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_1600' , ' begin');
             let re = testNapi.SUB_DDM_RDB_1600();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -241,11 +257,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Transaction、Commit.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_1700',0, async () => {
+        it('SUB_DDM_RDB_1700',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_1700' , ' begin');
             let re = testNapi.SUB_DDM_RDB_1700();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -253,11 +270,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for GetVersion、SetVersion.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_1800',0, async () => {
+        it('SUB_DDM_RDB_1800',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_1800' , ' begin');
             let re = testNapi.SUB_DDM_RDB_1800();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -265,11 +283,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Query with wrong columnNames.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_1900',0, async () => {
+        it('SUB_DDM_RDB_1900',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_1900' , ' begin');
             let re = testNapi.SUB_DDM_RDB_1900();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -277,11 +296,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Update with wrong columnNames.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_2000',0, async () => {
+        it('SUB_DDM_RDB_2000',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_2000' , ' begin');
             let re = testNapi.SUB_DDM_RDB_2000();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -289,11 +309,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Delete with wrong columnNames.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_2100',0, async () => {
+        it('SUB_DDM_RDB_2100',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_2100' , ' begin');
             let re = testNapi.SUB_DDM_RDB_2100();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -301,11 +322,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_2200',0, async () => {
+        it('SUB_DDM_RDB_2200',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_2200' , ' begin');
             let re = testNapi.SUB_DDM_RDB_2200();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -313,11 +335,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_2300',0, async () => {
+        it('SUB_DDM_RDB_2300',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_2300' , ' begin');
             let re = testNapi.SUB_DDM_RDB_2300();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -325,11 +348,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_2400',0, async () => {
+        it('SUB_DDM_RDB_2400',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_2400' , ' begin');
             let re = testNapi.SUB_DDM_RDB_2400();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -337,11 +361,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_2500',0, async () => {
+        it('SUB_DDM_RDB_2500',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_2500' , ' begin');
             let re = testNapi.SUB_DDM_RDB_2500();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -349,11 +374,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_2600',0, async () => {
+        it('SUB_DDM_RDB_2600',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_2600' , ' begin');
             let re = testNapi.SUB_DDM_RDB_2600();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -361,11 +387,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_2700',0, async () => {
+        it('SUB_DDM_RDB_2700',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_2700' , ' begin');
             let re = testNapi.SUB_DDM_RDB_2700();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -373,11 +400,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_2800',0, async () => {
+        it('SUB_DDM_RDB_2800',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_2800' , ' begin');
             let re = testNapi.SUB_DDM_RDB_2800();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -385,11 +413,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_2900',0, async () => {
+        it('SUB_DDM_RDB_2900',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_2900' , ' begin');
             let re = testNapi.SUB_DDM_RDB_2900();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -397,11 +426,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_3000',0, async () => {
+        it('SUB_DDM_RDB_3000',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_3000' , ' begin');
             let re = testNapi.SUB_DDM_RDB_3000();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -409,11 +439,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_3100',0, async () => {
+        it('SUB_DDM_RDB_3100',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_3100' , ' begin');
             let re = testNapi.SUB_DDM_RDB_3100();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -421,11 +452,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for dataBaseDir wrong
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_3200',0, async () => {
+        it('SUB_DDM_RDB_3200',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_3200' , ' begin');
             let re = testNapi.SUB_DDM_RDB_3200();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -433,11 +465,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for dataBaseDir wrong.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_3300',0, async () => {
+        it('SUB_DDM_RDB_3300',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_3300' , ' begin');
             let re = testNapi.SUB_DDM_RDB_3300();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -445,11 +478,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_3400',0, async () => {
+        it('SUB_DDM_RDB_3400',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_3400' , ' begin');
             let re = testNapi.SUB_DDM_RDB_3400();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -457,11 +491,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_3500',0, async () => {
+        it('SUB_DDM_RDB_3500',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_3500' , ' begin');
             let re = testNapi.SUB_DDM_RDB_3500();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -469,11 +504,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_3600',0, async () => {
+        it('SUB_DDM_RDB_3600',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_3600' , ' begin');
             let re = testNapi.SUB_DDM_RDB_3600();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -481,11 +517,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_3700',0, async () => {
+        it('SUB_DDM_RDB_3700',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_3700' , ' begin');
             let re = testNapi.SUB_DDM_RDB_3700();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -493,11 +530,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_3800',0, async () => {
+        it('SUB_DDM_RDB_3800',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_3800' , ' begin');
             let re = testNapi.SUB_DDM_RDB_3800();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -505,11 +543,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_3900',0, async () => {
+        it('SUB_DDM_RDB_3900',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_3900' , ' begin');
             let re = testNapi.SUB_DDM_RDB_3900();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -517,11 +556,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_4000',0, async () => {
+        it('SUB_DDM_RDB_4000',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_4000' , ' begin');
             let re = testNapi.SUB_DDM_RDB_4000();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -529,11 +569,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_4100',0, async () => {
+        it('SUB_DDM_RDB_4100',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_4100' , ' begin');
             let re = testNapi.SUB_DDM_RDB_4100();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -541,11 +582,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_4200',0, async () => {
+        it('SUB_DDM_RDB_4200',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_4200' , ' begin');
             let re = testNapi.SUB_DDM_RDB_4200();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -553,11 +595,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_4300',0, async () => {
+        it('SUB_DDM_RDB_4300',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_4300' , ' begin');
             let re = testNapi.SUB_DDM_RDB_4300();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -565,11 +608,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_4400',0, async () => {
+        it('SUB_DDM_RDB_4400',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_4400' , ' begin');
             let re = testNapi.SUB_DDM_RDB_4400();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -577,11 +621,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_4500',0, async () => {
+        it('SUB_DDM_RDB_4500',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_4500' , ' begin');
             let re = testNapi.SUB_DDM_RDB_4500();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -589,11 +634,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_4600',0, async () => {
+        it('SUB_DDM_RDB_4600',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_4600' , ' begin');
             let re = testNapi.SUB_DDM_RDB_4600();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -601,11 +647,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_4700',0, async () => {
+        it('SUB_DDM_RDB_4700',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_4700' , ' begin');
             let re = testNapi.SUB_DDM_RDB_4700();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -613,11 +660,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_4800',0, async () => {
+        it('SUB_DDM_RDB_4800',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_4800' , ' begin');
             let re = testNapi.SUB_DDM_RDB_4800();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -625,11 +673,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_4900',0, async () => {
+        it('SUB_DDM_RDB_4900',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_4900' , ' begin');
             let re = testNapi.SUB_DDM_RDB_4900();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -637,11 +686,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_5000',0, async () => {
+        it('SUB_DDM_RDB_5000',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_5000' , ' begin');
             let re = testNapi.SUB_DDM_RDB_5000();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
 
         /**
@@ -649,11 +699,12 @@ export default function RdbNdkStoreTest() {
          * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
          * @tc.type: FUNC
          */
-        it('SUB_DDM_RDB_5100',0, async () => {
+        it('SUB_DDM_RDB_5100',0, async (done:Function) => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_5100' , ' begin');
             let re = testNapi.SUB_DDM_RDB_5100();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
+            done();
         })
     })
 }

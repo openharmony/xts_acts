@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceJumpInWebCloudServiceControllerSevenTest.hap"
+            "ActsWebJumpInWebCloudServiceControllerSevenTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

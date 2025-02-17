@@ -39,7 +39,7 @@ class testInstallSignedHap(TestCase):
         if 'install bundle successfully' not in installHspResult.strip():
             errorList.append('install hsp failed')
         installHqfResult = self.device1.execute_shell_command("bm quickfix -a -f /data/local/tmp/signed.hqf")
-        if 'apply quickfix succeed' not in installHqfResult.strip() and "errno: 6" not in installHqfResult.strip():
+        if 'apply quickfix succeed' not in installHqfResult.strip():
             errorList.append('install hqf failed')
         if len(errorList) > 0:
             self.log.info('errorList: [' + ', '.join(errorList) + ']')

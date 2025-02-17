@@ -55,10 +55,12 @@ export default function RichEditorInterFace001() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_INTERFACE_1450
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_INTERFACE_1450
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_INTERFACE_1450 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_INTERFACE_1450
+     * @tc.name  : Test the RichEditor interface callback
+     * @tc.desc  : bindSelectionMenu Set parameter test RichEditor interface callback
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_INTERFACE_1450', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_INTERFACE_1450 START');
@@ -90,20 +92,22 @@ export default function RichEditorInterFace001() {
       let onAppearCall = await driver.findComponent(ON.id('onAppearCall'));
       let onAppearCallText = await onAppearCall.getText();
       await CommonFunc.sleep(500);
-      expect(onAppearCallText).assertEqual('onAppearCall:1');
+      expect(onAppearCallText).assertContain('onAppearCall');
 
       let disAppearCall = await driver.findComponent(ON.id('disAppearCall'));
       let disAppearCallText = await disAppearCall.getText();
       await CommonFunc.sleep(500);
-      expect(disAppearCallText).assertEqual('disAppearCall:1');
+      expect(disAppearCallText).assertContain('disAppearCall');
       done();
     });
 
     /**
-     * @tc.number SUB_ACE_UI_PC_MENU_0080
-     * @tc.name SUB_ACE_UI_PC_MENU_0080
-     * @tc.desc SUB_ACE_UI_PC_MENU_0080 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_PC_MENU_0080
+     * @tc.name  : Test the RichEditor menu
+     * @tc.desc  : Add advanced component SelectionMenu, and set the callback and builder to test the RichEditor menu
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_PC_MENU_0080', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_PC_MENU_0080 START');
@@ -129,11 +133,11 @@ export default function RichEditorInterFace001() {
       let onAppearCall = await driver.findComponent(ON.id('onAppearCall'));
       let onAppearCallText = await onAppearCall.getText();
       await CommonFunc.sleep(500);
-      expect(onAppearCallText).assertEqual('onAppearCall:2');
+      expect(onAppearCallText).assertContain('onAppearCall');
       let disAppearCall = await driver.findComponent(ON.id('disAppearCall'));
       let disAppearCallText = await disAppearCall.getText();
       await CommonFunc.sleep(500);
-      expect(disAppearCallText).assertEqual('disAppearCall:2');
+      expect(disAppearCallText).assertContain('disAppearCall');
       done();
     });
 

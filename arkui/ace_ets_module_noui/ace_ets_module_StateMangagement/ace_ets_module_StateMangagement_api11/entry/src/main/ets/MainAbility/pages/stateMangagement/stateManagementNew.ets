@@ -36,7 +36,7 @@ struct StateManagementGetShared {
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
-      Text(`Parent from LocalStorage ${this.simpleVarName}`)
+      Text(`Parent from LocalStorage ${this.simpleVarName}`).height('5%')
         .key("GetSharedText")
         .onClick(() => {
           try {
@@ -56,7 +56,7 @@ struct StateManagementGetShared {
           }
         })
 
-      Text(`Parent from LocalStorage ${this.simpleVarName}`)
+      Text(`Parent from LocalStorage ${this.simpleVarName}`).height('5%')
         .key("setAndLinkText")
         .onClick(() => {
           try {
@@ -78,7 +78,7 @@ struct StateManagementGetShared {
           // console.log("storage1.setAndLink('PropA',48) :" + this.simpleVarName )
         })
 
-      Text(`Parent from LocalStorage ${this.simpleVarName}`)
+      Text(`Parent from LocalStorage ${this.simpleVarName}`).height('5%')
         .key("setOrCreateText")
         .onClick(() => {
           try {
@@ -100,7 +100,7 @@ struct StateManagementGetShared {
           // console.log("storageSimpleProp setOrCreate is :  " + this.simpleVarName)
         })
 
-      Text(`Parent from LocalStorage ${this.simpleVarName}`)
+      Text(`Parent from LocalStorage ${this.simpleVarName}`).height('5%')
         .key("setAndPropText")
         .onClick(() => {
           try {
@@ -132,7 +132,7 @@ struct Child {
   @LocalStorageLink("PropA") storLink: number = 1;
 
   build() {
-    Text(`Parent from LocalStorage ${this.storLink}`)
+    Text(`Parent from LocalStorage ${this.storLink}`).height('5%')
       .onClick(() => this.storLink += 1)
   }
 }

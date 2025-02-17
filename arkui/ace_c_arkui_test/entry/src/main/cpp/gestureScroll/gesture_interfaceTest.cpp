@@ -208,7 +208,7 @@ napi_value GestureInterfaceTest::CreateNativeNode(napi_env env, napi_callback_in
             ArkUI_NumberValue listWidthValue[] = {500};
             ArkUI_AttributeItem listWidthItem = {listWidthValue, 1};
             nodeAPI->setAttribute(list, NODE_WIDTH, &listWidthItem);
-            ArkUI_NumberValue listHeightValue[] = {400};
+            ArkUI_NumberValue listHeightValue[] = {150};
             ArkUI_AttributeItem listHeightItem = {listHeightValue, 1};
             nodeAPI->setAttribute(list, NODE_HEIGHT, &listHeightItem);
             ArkUI_NumberValue borderColorValue[] = {{.u32 = 0xCCCCCCCC}};
@@ -236,7 +236,7 @@ napi_value GestureInterfaceTest::CreateNativeNode(napi_env env, napi_callback_in
             for (int i = 0; i < loopCountNumber; i++) {
                  ArkUI_NumberValue widthValue[] = {200};
                  ArkUI_AttributeItem widthItem = {widthValue, 1};
-                 ArkUI_NumberValue heightValue[] = {100};
+                 ArkUI_NumberValue heightValue[] = {10};
                  ArkUI_AttributeItem heightItem = {heightValue, 1};
                  ArkUI_NumberValue backColorvalue[] = {{.u32 = 0xFF0000FF}};
                  ArkUI_AttributeItem backColoritem = {backColorvalue, 1};
@@ -264,7 +264,7 @@ napi_value GestureInterfaceTest::CreateNativeNode(napi_env env, napi_callback_in
 
             ArkUI_NumberValue itemWidthValue[] = {400};
             ArkUI_AttributeItem itemWidthItem = {itemWidthValue, 1};
-            ArkUI_NumberValue itemHeightValue[] = {400};
+            ArkUI_NumberValue itemHeightValue[] = {150};
             ArkUI_AttributeItem itemHeightItem = {itemHeightValue, 1};
             ArkUI_NumberValue itemBackColorvalue[] = {{.u32 = 0xFF00FFFF}};
             ArkUI_AttributeItem itemBackColoritem = {itemBackColorvalue, 1};
@@ -278,7 +278,7 @@ napi_value GestureInterfaceTest::CreateNativeNode(napi_env env, napi_callback_in
             ArkUI_NumberValue scrollWidthValue[] = {500};
             ArkUI_AttributeItem scrollWidthItem = {scrollWidthValue, 1};
             nodeAPI->setAttribute(scroll, NODE_WIDTH, &scrollWidthItem);
-            ArkUI_NumberValue scrollHeightValue[] = {600};
+            ArkUI_NumberValue scrollHeightValue[] = {200};
             ArkUI_AttributeItem scrollHeightItem = {scrollHeightValue, 1};
             nodeAPI->setAttribute(scroll, NODE_HEIGHT, &scrollHeightItem);
             ArkUI_NumberValue scrollColorvalue[] = {{.u32 = 0xFF2F2F4F}};

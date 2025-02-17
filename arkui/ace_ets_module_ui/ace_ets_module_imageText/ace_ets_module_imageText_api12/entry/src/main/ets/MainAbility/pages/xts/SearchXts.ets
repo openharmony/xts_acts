@@ -33,46 +33,40 @@ struct SearchXts {
           .key('key_search_inputFilter')
           .inputFilter('2')
           .width('95%')
-          .height(50)
+          .height('10%')
           .backgroundColor('#F5F5F5F5')
           .placeholderColor(Color.Grey)
           .placeholderFont({ size: 16, weight: 400 })
-          .textFont({ size: 16, weight: 400 })
+          .textFont({ size: 10, weight: 400 })
           .border({ width: 1 })
-          .margin(20)
-
         Search({
           value: this.changeValue,
           placeholder: 'Type to search...',
           controller: this.controller
         })
-        .key('key_search_selectedBackgroundColor')
-        .selectedBackgroundColor('#F5F5F5F5')
-        .width('95%')
-        .height(50)
-        .backgroundColor('#F5F5F5')
-        .placeholderColor(Color.Grey)
-        .placeholderFont({ size: 16, weight: 400 })
-        .textFont({ size: 16, weight: 400 })
-        .border({ width: 1 })
-        .margin(20)
-
+          .key('key_search_selectedBackgroundColor')
+          .selectedBackgroundColor('#F5F5F5F5')
+          .width('95%')
+          .height('10%')
+          .backgroundColor('#F5F5F5')
+          .placeholderColor(Color.Grey)
+          .placeholderFont({ size: 16, weight: 400 })
+          .textFont({ size: 10, weight: 400 })
+          .border({ width: 1 })
         Search({
           value: this.changeValue,
           placeholder: 'Type to search...',
           controller: this.controller
         })
-         
           .key('key_search_textIndent')
           .textIndent(`${5}vp`)
           .width('95%')
-          .height(50)
+          .height('10%')
           .backgroundColor('#F5F5F5F5')
           .placeholderColor(Color.Grey)
           .placeholderFont({ size: 16, weight: 400 })
-          .textFont({ size: 16, weight: 400 })
+          .textFont({ size: 10, weight: 400 })
           .border({ width: 1 })
-          .margin(20)
         Search({
           value: this.changeValue,
           placeholder: 'Type to search...',
@@ -84,16 +78,16 @@ struct SearchXts {
             this.text1 = 'onEditChange'
           })
           .width('95%')
-          .height(50)
+          .height('10%')
           .backgroundColor('#F5F5F5')
           .placeholderColor(Color.Grey)
           .placeholderFont({ size: 16, weight: 400 })
-          .textFont({ size: 16, weight: 400 })
+          .textFont({ size: 10, weight: 400 })
           .border({ width: 1 })
-          .margin(20)
-        Text('' + this.text1).key('key_search_onEditChange_text1')
+        Text('' + this.text1).key('key_search_onEditChange_text1').fontSize(10).width('100%').textAlign(TextAlign.Center).height('5%')
       }
       .width('100%')
+      .height('100%')
       .padding({ top: 5 })
     }
     .scrollable(ScrollDirection.Vertical) // 滚动方向纵向

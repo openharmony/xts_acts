@@ -223,7 +223,8 @@ export default function RelativeGuideLine() {
       let bt = CommonFunc.getComponentRect('RelButton');
       await CommonFunc.sleep(2000);
       console.info("[RelativeGuideLine_007] RelativeContainerTop is: " + rel.top + 'buttonTop:' + bt.top);
-      expect(Math.abs(Math.round(bt.top - rel.top) - Math.round(vp2px(150))) <= 1).assertTrue();
+      console.info("[RelativeGuideLine_007] RelativeContainerBottom is: " + rel.bottom);
+      expect(Math.floor(Math.abs(bt.top - rel.top - (rel.bottom - rel.top)*0.5)) <= 1).assertTrue();
 
       console.info('[RelativeGuideLine_007] END');
       done();

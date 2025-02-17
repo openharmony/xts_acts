@@ -28,7 +28,7 @@ struct PropObjectLinkFather {
 
   build() {
     Column() {
-      Text('@ObjectLink支持被@ObjectLink修饰的数据初始化')
+      Text('@ObjectLink支持被@ObjectLink修饰的数据初始化').height('5%')
       PropObjectLink6({class_A: this.class_A})
     }
   }
@@ -42,7 +42,7 @@ struct ObjectLinkConsume {
     Column() {
       // @ObjectLink支持被@Consume修饰的数据初始化
       PropObjectLink6({class_A: this.class_C})
-    }.margin(5)
+    }
   }
 }
 
@@ -54,7 +54,7 @@ struct LinkObjectLink {
     Column() {
       // @ObjectLink支持被@Link修饰的数据初始化
       PropObjectLink6({class_A: this.class_A})
-    }.margin(5)
+    }
   }
 }
 
@@ -64,11 +64,12 @@ struct PropObjectLink6 {
 
   build() {
     Column() {
-      Text('PropObjectLink:' + this.class_A.value).width("100%").margin(5)
+      Text('PropObjectLink:' + this.class_A.value).width("100%")
         .key("PropObjectLink" + this.class_A.value)
         .onClick(() => {
           this.class_A.value += 1
         })
+        .height('5%')
     }
   }
 }
@@ -83,20 +84,20 @@ struct CombinationState6 {
 
   build() {
     Row() {
-      Column({ space: 20 }) {
-        Text('@ObjectLink支持被@State修饰的数据初始化')
+      Column() {
+        Text('@ObjectLink支持被@State修饰的数据初始化').height('5%')
         PropObjectLink6({class_A: this.class_A})
 
-        Text('@ObjectLink支持被@Link修饰的数据初始化')
+        Text('@ObjectLink支持被@Link修饰的数据初始化').height('5%')
         LinkObjectLink({class_A: $class_B})
 
-        Text('@ObjectLink支持被@Provide修饰的数据初始化')
+        Text('@ObjectLink支持被@Provide修饰的数据初始化').height('5%')
         PropObjectLink6({class_A: this.class_C})
 
-        Text('@ObjectLink支持被@Consume修饰的数据初始化')
+        Text('@ObjectLink支持被@Consume修饰的数据初始化').height('5%')
         ObjectLinkConsume()
 
-        Text('@ObjectLink支持被@ObjectLink修饰的数据初始化')
+        Text('@ObjectLink支持被@ObjectLink修饰的数据初始化').height('5%')
         PropObjectLinkFather({class_A: this.class_E})
       }
     }

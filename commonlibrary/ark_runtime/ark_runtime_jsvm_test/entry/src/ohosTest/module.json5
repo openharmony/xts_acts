@@ -27,6 +27,16 @@
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:test_pages",
+    "definePermissions": [
+      {
+        "name": "ohos.permission.kernel.ALLOW_EXECUTABLE_FORT_MEMORY"
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.kernel.ALLOW_EXECUTABLE_FORT_MEMORY"
+      }
+    ],
     "abilities": [
       {
         "name": "TestAbility",

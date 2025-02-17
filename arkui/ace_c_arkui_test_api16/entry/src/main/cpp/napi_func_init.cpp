@@ -14,7 +14,8 @@
  */
 #include "common/common.h"
 #include "text/text_immutablf_font_weight.cpp"
-
+#include "listItemGroup/list_item_group_test.h"
+#include "visual/visual_backDropBlur_test.cpp"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -56,6 +57,14 @@ static napi_value Init(napi_env env, napi_value exports)
         {"textImmutablfFontWeight_015", nullptr, textImmutablfFontWeight_015,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"textImmutablfFontWeight_016", nullptr, textImmutablfFontWeight_016,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testListItemGroupNodeAdapter001", nullptr, ListItemGroupTest::TestListItemGroupNodeAdapter001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testListItemGroupNodeAdapter002", nullptr, ListItemGroupTest::TestListItemGroupNodeAdapter002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testListItemGroupNodeAdapter003", nullptr, ListItemGroupTest::TestListItemGroupNodeAdapter003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"columnBackDropBlurTest001", nullptr, columnBackDropBlurTest001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {

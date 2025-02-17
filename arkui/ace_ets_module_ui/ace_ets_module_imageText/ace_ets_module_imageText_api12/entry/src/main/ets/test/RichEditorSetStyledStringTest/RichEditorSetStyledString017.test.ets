@@ -56,10 +56,12 @@ export default function RichEditorSetStyledString017() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0052
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0052
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0052 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0052
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Validate the fontColor attribute of the attribute string to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0052', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0052 START');
@@ -80,10 +82,12 @@ export default function RichEditorSetStyledString017() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0053
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0053
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0053 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0053
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Validate the fontSize attribute of the attribute string to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0053', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0053 START');
@@ -96,10 +100,12 @@ export default function RichEditorSetStyledString017() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0054
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0054
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0054 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0054
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Validate the fontStyle attribute of the attribute string to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0054', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0054 START');
@@ -112,10 +118,12 @@ export default function RichEditorSetStyledString017() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0055
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0055
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0055 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0055
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Validate the fontWeight attribute of the attribute string to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0055', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0055 START');
@@ -128,10 +136,12 @@ export default function RichEditorSetStyledString017() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0056
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0056
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0056 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0056
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Validate the fontFamily attribute of the attribute string to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0056', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0056 START');

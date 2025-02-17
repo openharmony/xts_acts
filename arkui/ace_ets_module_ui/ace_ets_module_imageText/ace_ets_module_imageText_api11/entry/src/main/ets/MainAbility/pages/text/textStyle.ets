@@ -25,51 +25,52 @@ struct TextStyle {
   @State fontFamily: string = 'sans-serif';
 
   build() {
-    Column({ space: 20 }) {
-      Text('default text').fontSize(20)
+    Column() {
+      Text('default text').fontSize(10).height('10%').textAlign(TextAlign.Center)
 
       Text(`text font color ${this.fontColor}`)
         .fontColor('error')
-        .fontSize(20)
-        .key('fontColor')
+        .fontSize(10)
+        .key('fontColor').height('10%').textAlign(TextAlign.Center)
 
       Text(`text font size ${this.fontSize}`)
         .fontSize('error')
-        .key('fontSize')
+        .key('fontSize').height('10%').textAlign(TextAlign.Center)
 
       Text(`text font style ${this.fontStyle}`)
         .fontStyle(this.fontStyle)
-        .fontSize(20)
-        .key('fontStyle')
+        .fontSize(10)
+        .key('fontStyle').height('10%').textAlign(TextAlign.Center)
 
       Text(`text fontWeight ${this.fontWeight}`)
         .fontWeight(this.fontWeight)
-        .fontSize(20)
-        .key('fontWeight')
+        .fontSize(10)
+        .key('fontWeight').height('10%').textAlign(TextAlign.Center)
 
       Text(`text fontFamily ${this.fontFamily}`)
         .fontFamily(this.fontFamily)
-        .fontSize(20)
-        .key('fontFamily')
+        .fontSize(10)
+        .key('fontFamily').height('10%').textAlign(TextAlign.Center)
 
       Text('red 20 Italic bold cursive text')
         .fontColor(Color.Red)
-        .fontSize(20)
+        .fontSize(10)
         .fontStyle(FontStyle.Italic)
         .fontWeight(700)
         .fontFamily('cursive')
         .textAlign(TextAlign.Center)
-        .width('90%')
+        .width('90%').height('10%').textAlign(TextAlign.Center)
 
       Text('Orange 18 Normal source-sans-pro text')
         .fontColor(Color.Orange)
-        .fontSize(20)
+        .fontSize(10)
         .fontStyle(FontStyle.Normal)
         .fontWeight(400)
         .fontFamily('source-sans-pro,cursive,sans-serif')
+        .height('10%').textAlign(TextAlign.Center)
     }
     .width('100%')
-    .margin({ top: 20 })
+    .height('100%')
   }
 
   onPageShow() {

@@ -106,7 +106,7 @@ export default function Pointer_test() {
         pointer.setPointerVisible(false, (err, data) => {
           if (err) {
             console.info(`Pointer_SetPointerVisibleTest_001 failed, err=${JSON.stringify(err)}`);
-            expect(err.code).assertTrue(DEVICE_NOT_SUPPORT);
+            expect(err.code).assertEqual(errCode.DEVICE_NOT_SUPPORT);
             done();
           } else {
             console.info(`Pointer_SetPointerVisibleTest_001 success_1. data=${JSON.stringify(data)}`);
@@ -153,28 +153,32 @@ export default function Pointer_test() {
           await pointer.setPointerVisible(true).then(data => {
             console.info(`Pointer_PointerVisibleTest_002 success_1, data=${JSON.stringify(data)}`);
             expect(true).assertTrue();
-          }).catch((err) => {
-            console.info(`Pointer_PointerVisibleTest_002 failed, err=${JSON.stringify(err)}`);
-            expect(false).assertTrue();
-          });
-        } catch (error) {
-          console.info(`Pointer_PointerVisibleTest_002 error`);
-          expect(false).assertTrue();
-        }
-        try {
-          pointer.isPointerVisible((err, data) => {
-            if (err) {
-              console.info(`Pointer_PointerVisibleTest_002 failed, err=${JSON.stringify(err)}`);
+            try {
+              pointer.isPointerVisible((err, data) => {
+                if (err) {
+                  console.info(`Pointer_PointerVisibleTest_002 failed, err=${JSON.stringify(err)}`);
+                  expect(false).assertTrue();
+                  done();
+                } else {
+                  console.info(`Pointer_PointerVisibleTest_002 success_2, data=${JSON.stringify(data)}`);
+                  expect(data == true).assertTrue();
+                  done();
+                }
+              });
+            } catch (error) {
+              console.info(`Pointer_PointerVisibleTest_002 error`);
               expect(false).assertTrue();
-            } else {
-              console.info(`Pointer_PointerVisibleTest_002 success_2, data=${JSON.stringify(data)}`);
-              expect(data == true).assertTrue();
               done();
             }
+          }).catch((err) => {
+            console.info(`Pointer_PointerVisibleTest_002 failed, err=${JSON.stringify(err)}`);
+            expect(err.code).assertEqual(errCode.DEVICE_NOT_SUPPORT);
+            done();
           });
         } catch (error) {
           console.info(`Pointer_PointerVisibleTest_002 error`);
           expect(false).assertTrue();
+          done();
         }
       } else {
         expect(true).assertTrue();
@@ -182,7 +186,7 @@ export default function Pointer_test() {
         done();
       }
       console.info(`Pointer_PointerVisibleTest_002 exit`);
-    })
+    });
 
     /**
      * @tc.number MultimodalInputPointer_Test_006

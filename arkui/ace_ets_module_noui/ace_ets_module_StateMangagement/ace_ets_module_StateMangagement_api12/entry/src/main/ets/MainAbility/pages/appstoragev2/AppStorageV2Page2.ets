@@ -24,10 +24,10 @@ struct AppStorageV2Page2 {
     Column() {
       Text(AppStorageV2.connect(AppStorageV2Sample)!.age.toString())
         .id('tvPage2Age')
-        .fontSize(30)
+        .fontSize(9)
       Text(AppStorageV2.connect(AppStorageV2Sample)!.width.toString())
         .id('tvPage2Width')
-        .fontSize(30)
+        .fontSize(9)
     }
   }
 }

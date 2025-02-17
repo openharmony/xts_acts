@@ -66,10 +66,7 @@ export default function marginLengthTest() {
     'Rating',
     'ScrollBar',
     'Search',
-    'Select',
     'Slider',
-    'Stepper',
-    'StepperItem',
     'Text',
     'TextArea',
     'TextClock',
@@ -89,7 +86,6 @@ export default function marginLengthTest() {
     'Shape',
     'Badge',
     'Column',
-    'ColumnSplit',
     'Counter',
     //'Flex',
     //'FlowItem',
@@ -105,14 +101,11 @@ export default function marginLengthTest() {
     'Refresh',
     'RelativeContainer',
     'Row',
-    'RowSplit',
     'Scroll',
-    'SideBarContainer',
     'Stack',
     'Swiper',
     'Tabs',
-    'TabContent',
-    'WaterFlow'
+    'TabContent'
   ]
   let pageConfig: PageConfig = {
     testName: 'testMargin',
@@ -130,38 +123,38 @@ export default function marginLengthTest() {
   let testValues: TestValue[] = [{
     describe: 'SetNumber',
     setValue: {
-      margin: 100,
+      margin: 50,
     },
     expectValue: {
-      margin: '100.00vp',
-      top: vp2px(100),
-      right: vp2px(100),
-      bottom: vp2px(100),
-      left: vp2px(100)
+      margin: '50.00vp',
+      top: vp2px(50),
+      right: vp2px(50),
+      bottom: vp2px(50),
+      left: vp2px(50)
     }
   }, {
     describe: 'SetStringPx',
     setValue: {
-      margin: '200px',
+      margin: '100px',
     },
     expectValue: {
-      margin: '200.00px',
-      top: 200,
-      right: 200,
-      bottom: 200,
-      left: 200
+      margin: '100.00px',
+      top: 100,
+      right: 100,
+      bottom: 100,
+      left: 100
     }
   }, {
     describe: 'SetResource',
     setValue: {
-      margin: $r('app.float.100vp'),
+      margin: $r('app.float.50vp'),
     },
     expectValue: {
-      margin: '100.00vp',
-      top: vp2px(100),
-      right: vp2px(100),
-      bottom: vp2px(100),
-      left: vp2px(100)
+      margin: '50.00vp',
+      top: vp2px(50),
+      right: vp2px(50),
+      bottom: vp2px(50),
+      left: vp2px(50)
     }
   }]
 

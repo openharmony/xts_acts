@@ -52,12 +52,23 @@ struct getListItemRect6 {
 
   build() {
     Column() {
+      Button('点击获取信息').onClick((event: ClickEvent) => {
+        this.x = this.listScroller.getItemRect(this.index).x
+        this.y = this.listScroller.getItemRect(this.index).y
+        this.width1 = this.listScroller.getItemRect(this.index).width
+        this.height1 = this.listScroller.getItemRect(this.index).height
+      }).id('getListItemRect6_button')
+      Text('' + this.x).key('getListItemRect6_text1')
+      Text('' + this.y).key('getListItemRect6_text2')
+      Text('' + this.width1).key('getListItemRect6_text3')
+      Text('' + this.height1).key('getListItemRect6_text4')
+
       List({ space: this.space1, initialIndex: 0, scroller: this.listScroller }) {
         ForEach(this.arr, (item: number) => {
           ListItem() {
             Text('' + item)
               .width('100%')
-              .height(100)
+              .height(10)
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .borderRadius(10)
@@ -84,17 +95,6 @@ struct getListItemRect6 {
       .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
       .width(300)
       .height(500)
-
-      Button('点击获取信息').onClick((event: ClickEvent) => {
-        this.x = this.listScroller.getItemRect(this.index).x
-        this.y = this.listScroller.getItemRect(this.index).y
-        this.width1 = this.listScroller.getItemRect(this.index).width
-        this.height1 = this.listScroller.getItemRect(this.index).height
-      }).id('getListItemRect6_button')
-      Text('' + this.x).key('getListItemRect6_text1')
-      Text('' + this.y).key('getListItemRect6_text2')
-      Text('' + this.width1).key('getListItemRect6_text3')
-      Text('' + this.height1).key('getListItemRect6_text4')
 
     }
     .width('100%')

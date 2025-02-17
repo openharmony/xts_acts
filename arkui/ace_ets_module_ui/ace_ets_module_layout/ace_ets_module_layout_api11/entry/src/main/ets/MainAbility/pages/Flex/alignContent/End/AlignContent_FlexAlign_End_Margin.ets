@@ -24,16 +24,16 @@ struct AlignContent_FlexAlign_End_Margin {
         alignContent: FlexAlign.End,
         alignItems: ItemAlign.Start
       }) {
-        Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key('AlignContentFlexEndMargin_flex_1')
-        Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('AlignContentFlexEndMargin_flex_2')
-        Text('3').width(150).height(150).backgroundColor(0xD2B48C).key('AlignContentFlexEndMargin_flex_3')
-        Text('4').width(150).height(200).backgroundColor(0xF5DEB3).key('AlignContentFlexEndMargin_flex_4')
+        Text('1').width('40%').height('20%').backgroundColor(0xF5DEB3).key('AlignContentFlexEndMargin_flex_1')
+        Text('2').width('40%').height('30%').backgroundColor(0xD2B48C).key('AlignContentFlexEndMargin_flex_2')
+        Text('3').width('40%').height('50%').backgroundColor(0xD2B48C).key('AlignContentFlexEndMargin_flex_3')
+        Text('4').width('40%').height('60%').backgroundColor(0xF5DEB3).key('AlignContentFlexEndMargin_flex_4')
 
       }
       .key('AlignContentFlexEndMargin_flex')
-      .size({ width: 400, height: 360 })
+      .size({ width: '90%', height: '90%' })
       .backgroundColor(0xAFEEEE)
-      .margin(15)
+      .margin(5)
 
     }
     .width('100%')

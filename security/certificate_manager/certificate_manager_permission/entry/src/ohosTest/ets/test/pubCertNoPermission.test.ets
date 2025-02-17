@@ -176,15 +176,15 @@ export default function pubCertJsAPINoPermissionTestUnit() {
     });
 
         /**
-     * @tc.number SUB_Security_CertManager_openInstallCertificateDialogCertJsApi_Func_0010
+     * @tc.number SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0010
      * @tc.name no permission to call interface openInstallCertificateDialog
      * @tc.desc use promise type
      * @tc.size SmallTest
      * @tc.level Level1
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_openInstallCertificateDialogCertJsApi_Func_0010', 0, async (done: Function) => {
-      console.log("SUB_Security_CertManager_openInstallCertificateDialogCertJsApi_Func_0010: started ");
+    it('SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0010', 0, async (done: Function) => {
+      console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0010: started ");
       if (deviceInfo.deviceType == '2in1') {
         const context :common.Context = GlobalContext.getContext();
         let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;

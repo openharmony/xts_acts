@@ -22,7 +22,7 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, int enabled)
 {
     auto nodeHandle = nodeAPI->createNode(ARKUI_NODE_TEXT_INPUT);
 
-    if (enabled != SIZE_100) {
+    if (enabled != SIZE_50) {
         ArkUI_NumberValue enabled_value[] = {{.i32 = enabled}};
         ArkUI_AttributeItem enabled_item = {enabled_value, sizeof(enabled_value) / sizeof(ArkUI_NumberValue)};
         nodeAPI->setAttribute(nodeHandle, NODE_ENABLED, &enabled_item);
@@ -40,7 +40,7 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, int enabled)
     nodeAPI->setAttribute(nodeHandle, NODE_WIDTH, &width_item);
 
     // set height
-    ArkUI_NumberValue height_value[] = {{.f32 = TEXTINPUT_HEIGHT_100}};
+    ArkUI_NumberValue height_value[] = {{.f32 = TEXTINPUT_HEIGHT_50}};
     ArkUI_AttributeItem height_item = {height_value, sizeof(height_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(nodeHandle, NODE_HEIGHT, &height_item);
 
@@ -121,7 +121,7 @@ napi_value TextInputEnabledTest::CreateNativeNode(napi_env env, napi_callback_in
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
 
     // set height
-    ArkUI_NumberValue col_height_value[] = {{.f32 = COLUMN_HEIGHT_700}};
+    ArkUI_NumberValue col_height_value[] = {{.f32 = COLUMN_HEIGHT_200}};
     ArkUI_AttributeItem col_height_item = {col_height_value, sizeof(col_height_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(column, NODE_HEIGHT, &col_height_item);
 

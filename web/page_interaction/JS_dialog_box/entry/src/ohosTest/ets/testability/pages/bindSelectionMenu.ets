@@ -88,25 +88,34 @@ struct WebComponent {
 
 
             case "bindSelectionMenuType01": {
-              this.userAgentPC = this.controller.getUserAgent();
-              if ((this.userAgentPC).includes("PC")) {
-                Utils.emitEvent(true, 8301)
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent(true, 8301)
+                  break;
+                }
+                let driver = Driver.create();
+                let button = await driver.findComponent(ON.id('bindSelectionMenuType'));
+                await button.longClick();
+                await Utils.sleep(2000);
+                let buttonOne = await driver.findComponent(ON.text('复制'));
+                await buttonOne.click()
+                await Utils.sleep(1000);
                 break;
+              } else {
+                Utils.emitEvent(true, 8301)
               }
-              let driver = Driver.create();
-              let button = await driver.findComponent(ON.id('bindSelectionMenuType'));
-              await button.longClick();
-              await Utils.sleep(2000);
-              let buttonOne = await driver.findComponent(ON.text('复制'));
-              await buttonOne.click()
-              await Utils.sleep(1000);
-              break;
+
             }
 
             case "bindSelectionMenuType02": {
-              await Utils.sleep(1000);
-              Utils.emitEvent(MenuType.PREVIEW_MENU, 8302)
-              break;
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                await Utils.sleep(1000);
+                Utils.emitEvent(MenuType.PREVIEW_MENU, 8302)
+                break;
+              } else {
+                Utils.emitEvent(MenuType.PREVIEW_MENU, 8302)
+              }
             }
 
 

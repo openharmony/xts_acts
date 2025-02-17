@@ -27,46 +27,51 @@ struct MyComponent_AL {
   @State  count: number | Object | String | Date | Boolean = 0;
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.count)) + " number is " + JSON.stringify(this.count))
-        .fontSize(20).margin(10).key('StateNumber')
+        .fontSize(9).key('StateNumber').height('5%')
 
 
-      Text("变量赋值number类型")
+      Text("变量赋值number类型").height('5%')
       Button('change')
         .onClick(() => {
           this.count = 10;
         })
         .key('state1')
+        .height('5%')
 
-      Text("切换变量赋值Object")
+      Text("切换变量赋值Object").height('5%')
       Button('change')
         .onClick(() => {
           this.count = new Num1(20);
         })
         .key('state2')
+        .height('5%')
 
-      Text("切换变量赋值string")
+      Text("切换变量赋值string").height('5%')
       Button('change')
         .onClick(() => {
           this.count = '30';
         })
         .key('state3')
+        .height('5%')
 
-      Text("切换变量赋值Date")
+      Text("切换变量赋值Date").height('5%')
       Button('change')
         .onClick(() => {
           this.count = new Date('2021-08-08');
         })
         .key('state4')
+        .height('5%')
 
-      Text("切换变量赋值Boolean")
+      Text("切换变量赋值Boolean").height('5%')
       Button('change')
         .onClick(() => {
           this.count = true;
         })
         .key('state5')
+        .height('5%')
 
-    }.width('100%').margin({top:5})
+    }.width('100%')
   }
 }

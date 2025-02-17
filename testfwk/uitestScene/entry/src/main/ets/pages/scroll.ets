@@ -86,10 +86,11 @@ struct PinchTest {
           .position({right: 0})
           .backgroundColor(Color.Gray)
       }
-      .width('100%')
+      .width('80%')
       .height('50%')
     }
     .width('100%')
     .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }

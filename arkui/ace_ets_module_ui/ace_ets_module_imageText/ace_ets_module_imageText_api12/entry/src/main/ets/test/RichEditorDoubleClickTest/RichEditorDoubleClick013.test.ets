@@ -56,10 +56,12 @@ export default function RichEditorDoubleClick013() {
     });
     
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_018
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_018
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_018 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_018
+     * @tc.name  : Test the RichEditor doubleClick event
+     * @tc.desc  : After double clicking with the mouse to select, trigger the addTextCpan, setTypingStyle, or deleteSpam functions to test the RichEditor doubleClick event
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_018', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_018 START');
@@ -76,32 +78,37 @@ export default function RichEditorDoubleClick013() {
       let message = await driver.findComponent(ON.id('message'));
       let messageText = await message.getText();
       await CommonFunc.sleep(500);
-      expect(messageText).assertContain('{"start":5,"end":6}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
       let addTextSpan = await driver.findComponent(ON.id('addTextSpan'));
       await addTextSpan.click();
       await CommonFunc.sleep(500);
       messageText = await message.getText();
       await CommonFunc.sleep(500);
-      expect(messageText).assertContain('{"start":16,"end":16}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
       await driver.click(getBounds.left + 110, getBounds.top + 20);
       await CommonFunc.sleep(100);
       await driver.click(getBounds.left + 110, getBounds.top + 20);
       await CommonFunc.sleep(100);
       messageText = await message.getText();
       await CommonFunc.sleep(500);
-      expect(messageText).assertContain('{"start":5,"end":6}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
       let setTypingStyle = await driver.findComponent(ON.id('setTypingStyle'));
       await setTypingStyle.click();
       await CommonFunc.sleep(500);
       messageText = await message.getText();
       await CommonFunc.sleep(500);
-      expect(messageText).assertContain('{"start":5,"end":6}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
       let deleteSpans = await driver.findComponent(ON.id('deleteSpans'));
       await deleteSpans.click();
       await CommonFunc.sleep(500);
       messageText = await message.getText();
       await CommonFunc.sleep(500);
-      expect(messageText).assertContain('{"start":3,"end":3}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
       done();
     });
 

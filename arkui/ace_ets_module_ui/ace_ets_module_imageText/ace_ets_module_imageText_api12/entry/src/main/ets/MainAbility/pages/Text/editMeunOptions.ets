@@ -24,10 +24,10 @@ struct TextEditMenuOptions {
     menuItems.forEach((value, index) => {
       value.icon = $r('app.media.icon')
       if (value.id.equals(TextMenuItemId.COPY)) {
-        value.content = "Copy_Custom"
+        value.content = 'Copy_Custom'
       }
       if (value.id.equals(TextMenuItemId.SELECT_ALL)) {
-        value.content = "Select All_Custom"
+        value.content = 'Select All_Custom'
       }
     })
     let item1: TextMenuItem = {
@@ -48,75 +48,75 @@ struct TextEditMenuOptions {
   build() {
     Column() {
       Text(this.text)
-        .id("TextEditMenuOptions")
-        .fontSize(20)
+        .id('TextEditMenuOptions')
+        .fontSize(15)
         .copyOption(CopyOptions.LocalDevice)
         .editMenuOptions({
           onCreateMenu: this.onCreateMenu, onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
-            if (menuItem.id.equals(TextMenuItemId.of("custom2"))) {
-              console.log("Intercepted id: custom2 start:" + textRange.start + "; end:" + textRange.end)
+            if (menuItem.id.equals(TextMenuItemId.of('custom2'))) {
+              console.log('Intercepted id: custom2 start:' + textRange.start + '; end:' + textRange.end)
               return true;
             }
             if (menuItem.id.equals(TextMenuItemId.COPY)) {
-              console.log("Intercepted COPY start:" + textRange.start + "; end:" + textRange.end)
+              console.log('Intercepted COPY start:' + textRange.start + '; end:' + textRange.end)
               return true;
             }
             if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
-              console.log("Did not intercept SELECT_ALL start:" + textRange.start + "; end:" + textRange.end)
+              console.log('Did not intercept SELECT_ALL start:' + textRange.start + '; end:' + textRange.end)
               return false;
             }
             return false;
           }
         })
-        .margin({ top: 50 })
+        .height('20%')
 
       TextArea({ text:this.textArea })
-        .id("TextAreaEditMenuOptions")
-        .fontSize(20)
+        .id('TextAreaEditMenuOptions')
+        .fontSize(15)
         .copyOption(CopyOptions.LocalDevice)
         .editMenuOptions({
           onCreateMenu: this.onCreateMenu, onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
-            if (menuItem.id.equals(TextMenuItemId.of("custom2"))) {
-              console.log("Intercepted id: custom2 start:" + textRange.start + "; end:" + textRange.end)
+            if (menuItem.id.equals(TextMenuItemId.of('custom2'))) {
+              console.log('Intercepted id: custom2 start:' + textRange.start + '; end:' + textRange.end)
               return true;
             }
             if (menuItem.id.equals(TextMenuItemId.COPY)) {
-              console.log("Intercepted COPY start:" + textRange.start + "; end:" + textRange.end)
+              console.log('Intercepted COPY start:' + textRange.start + '; end:' + textRange.end)
               return true;
             }
             if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
-              console.log("Did not intercept SELECT_ALL start:" + textRange.start + "; end:" + textRange.end)
+              console.log('Did not intercept SELECT_ALL start:' + textRange.start + '; end:' + textRange.end)
               return false;
             }
             return false;
           }
         })
-        .margin({ top: 50 })
+        .height('20%')
 
       TextInput({ text:this.textInput })
-        .id("TextInputEditMenuOptions")
-        .fontSize(20)
+        .id('TextInputEditMenuOptions')
+        .fontSize(15)
         .copyOption(CopyOptions.LocalDevice)
         .editMenuOptions({
           onCreateMenu: this.onCreateMenu, onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
-            if (menuItem.id.equals(TextMenuItemId.of("custom2"))) {
-              console.log("Intercepted id: custom2 start:" + textRange.start + "; end:" + textRange.end)
+            if (menuItem.id.equals(TextMenuItemId.of('custom2'))) {
+              console.log('Intercepted id: custom2 start:' + textRange.start + '; end:' + textRange.end)
               return true;
             }
             if (menuItem.id.equals(TextMenuItemId.COPY)) {
-              console.log("Intercepted COPY start:" + textRange.start + "; end:" + textRange.end)
+              console.log('Intercepted COPY start:' + textRange.start + '; end:' + textRange.end)
               return true;
             }
             if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
-              console.log("Did not intercept SELECT_ALL start:" + textRange.start + "; end:" + textRange.end)
+              console.log('Did not intercept SELECT_ALL start:' + textRange.start + '; end:' + textRange.end)
               return false;
             }
             return false;
           }
         })
-        .margin({ top: 50 })
+        .height('20%')
     }
-    .width("90%")
-    .margin("5%")
+    .width('90%')
+    .margin('5%')
   }
 }

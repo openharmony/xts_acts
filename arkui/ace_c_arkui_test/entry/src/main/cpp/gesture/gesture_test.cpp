@@ -112,10 +112,10 @@ ArkUI_NodeHandle CreateNativeNode(char* rootId)
     auto nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
     auto nativeNode = nodeAPI->createNode(ARKUI_NODE_COLUMN);
-    ArkUI_NumberValue widthValue[] = { {.f32 = 500} };
+    ArkUI_NumberValue widthValue[] = { {.f32 = 150} };
     ArkUI_AttributeItem widthItem = { .value = widthValue, .size = sizeof(widthValue) / sizeof(ArkUI_NumberValue) };
     nodeAPI->setAttribute(nativeNode, NODE_WIDTH, &widthItem);
-    ArkUI_NumberValue heightValue[] = { {.f32 = 500} };
+    ArkUI_NumberValue heightValue[] = { {.f32 = 150} };
     ArkUI_AttributeItem heightItem = { .value = heightValue, .size = sizeof(widthValue) / sizeof(ArkUI_NumberValue) };
     nodeAPI->setAttribute(nativeNode, NODE_HEIGHT, &heightItem);
     ArkUI_NumberValue value[] = {{.u32 = defalutColor}};
@@ -207,7 +207,7 @@ napi_value GestureTest::CreateSwipeNativeNode(napi_env env, napi_callback_info i
     swipeNode = CreateNativeNode("swipeID");
     auto guestureAPI = reinterpret_cast<ArkUI_NativeGestureAPI_1*>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
-    auto swipeGuesture = guestureAPI->createSwipeGesture(1, GESTURE_DIRECTION_HORIZONTAL, 10);
+    auto swipeGuesture = guestureAPI->createSwipeGesture(1, GESTURE_DIRECTION_ALL, 10);
     guestureAPI->setGestureEventTarget(swipeGuesture,
         GESTURE_EVENT_ACTION_ACCEPT, swipeNode, &OnSwipeActionCallBack);
     guestureAPI->addGestureToNode(swipeNode, swipeGuesture, PARALLEL, NORMAL_GESTURE_MASK);

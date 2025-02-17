@@ -80,10 +80,10 @@ export default function RepeatListBoolean() {
       let strJson1 = getInspectorByKey('Text2_LB2');
       let obj1: ESObject = JSON.parse(strJson1);
       console.info("[RepeatListBoolean_001] component obj1 is: " + JSON.stringify(obj1));
-          expect(obj1.$attrs.content).assertEqual('has vs true index:2:0');
+      expect(obj1.$attrs.content).assertEqual('has vs true index:2:0');
       console.info('[RepeatListBoolean_001] END');
 
-      let btn: Component = await driver.findComponent(ON.id('Button1'));
+      let btn: Component = await driver.findComponent(ON.id('Button1_LB'));
       await btn.click();
       await CommonFunc.sleep(1000);
 
@@ -93,7 +93,7 @@ export default function RepeatListBoolean() {
       expect(obj2.$attrs.content).assertEqual('non vs true index:16:0');
       console.info('[RepeatListBoolean_001] END');
 
-      let btn1: Component = await driver.findComponent(ON.id('Button2'));
+      let btn1: Component = await driver.findComponent(ON.id('Button2_LB'));
       await btn1.click();
       await CommonFunc.sleep(1000);
 

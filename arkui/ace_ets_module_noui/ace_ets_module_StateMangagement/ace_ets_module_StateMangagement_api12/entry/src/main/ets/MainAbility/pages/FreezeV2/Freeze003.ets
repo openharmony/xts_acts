@@ -55,7 +55,7 @@ export struct Child {
   build() {
     Column() {
       Text(`The book name is  ${this.bookTest.name}`).fontSize(this.textUpdate())
-      Button('go to next page').fontSize(30)
+      Button('go to next page').fontSize(9)
         .onClick(() => {
           router.pushUrl({ url: 'MainAbility/pages/FreezeV2/Freeze003Page' });
           setTimeout(() => {

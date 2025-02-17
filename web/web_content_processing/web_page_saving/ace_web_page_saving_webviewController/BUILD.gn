@@ -19,4 +19,5 @@ ohos_js_app_suite("ActsAceWebPageSavingWebViewControllerTest") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAceWebPageSavingWebViewControllerTest"
   part_name = "webview"
+  subsystem_name = "web"
 }

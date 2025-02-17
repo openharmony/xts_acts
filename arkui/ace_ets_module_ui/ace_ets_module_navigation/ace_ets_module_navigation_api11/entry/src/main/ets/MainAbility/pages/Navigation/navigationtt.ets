@@ -82,28 +82,8 @@ struct NavigationExamplett {
   build() {
     Column() {
       Navigation() {
-        Search({ value: '', placeholder: "" }).width('85%').margin(26)
-        List({ space: 5, initialIndex: 0 }) {
-          ForEach(this.arr, (item: number) => {
-            ListItem() {
-              Text('' + item)
-                .width('90%')
-                .height(80)
-                .backgroundColor('#3366CC')
-                .borderRadius(15)
-                .fontSize(16)
-                .textAlign(TextAlign.Center)
-            }.editable(true)
-          }, (item: number) => item.toString())
-        }
-        .listDirection(Axis.Vertical)
-        .key('Navigation')
-        .height(300)
-        .margin({ top: 10, left: 18 })
-        .width('100%')
-
         Button(this.hideBar ? "tool bar" : "hide bar")
-          .backgroundColor(0x2788D9).width(200).height(100).fontSize(20)
+          .backgroundColor(0x2788D9).width('20%').height('10%').fontSize(20)
           .key('NavigationContent1')
           .onClick(() => {
             this.hideBar = !this.hideBar;
@@ -124,7 +104,26 @@ struct NavigationExamplett {
               console.info("navigationContent1 emit action state err: " + JSON.stringify((err as BusinessError).message))
             }
           })
-          .margin({ left: 135, top: 60 })
+          .margin({ left: 135})
+        Search({ value: '', placeholder: "" }).width('85%').margin(26)
+        List({ space: 5, initialIndex: 0 }) {
+          ForEach(this.arr, (item: number) => {
+            ListItem() {
+              Text('' + item)
+                .width('90%')
+                .height(80)
+                .backgroundColor('#3366CC')
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+            }.editable(true)
+          }, (item: number) => item.toString())
+        }
+        .listDirection(Axis.Vertical)
+        .key('Navigation')
+        .height(300)
+        .margin({ top: 10, left: 18 })
+        .width('100%')
       }
       .title(this.NavigationTitle)
       .subTitle('subtitle')

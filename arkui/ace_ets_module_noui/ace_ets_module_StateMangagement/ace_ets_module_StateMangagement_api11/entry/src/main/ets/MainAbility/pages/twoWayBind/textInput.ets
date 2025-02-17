@@ -27,24 +27,24 @@ struct TextInputExample {
         .placeholderFont({ size: 14, weight: 400 })
         .caretColor(Color.Blue)
         .width('95%')
-        .height(40)
-        .margin(20)
-        .fontSize(14)
+        .height('3%')
+        
+        .fontSize(9)
         .fontColor(Color.Black)
         .inputFilter('[a-z]', (e) => {
           console.log(JSON.stringify(e))
         })
         .id('textInput')
 
-      Text(this.text).id('textInputText')
+      Text(this.text).id('textInputText').height('5%')
       Button('Set caretPosition 1')
-        .margin(15)
+        .height('5%')
         .onClick(() => {
           // 将光标移动至第一个字符后
           this.controller.caretPosition(1)
         })
       Button('Get CaretOffset')
-        .margin(15)
+        .height('5%')
         .onClick(() => {
           this.positionInfo = this.controller.getCaretOffset()
         })

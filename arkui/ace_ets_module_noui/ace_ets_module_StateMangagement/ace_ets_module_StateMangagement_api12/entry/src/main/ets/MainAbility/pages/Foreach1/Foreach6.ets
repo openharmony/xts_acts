@@ -21,36 +21,34 @@ struct Foreach006 {
   @State tmp: number = 0;
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Text('初始化数据')
         .id('init_for_each')
-        .fontSize(20)
-        .margin(5)
+        .fontSize(9)
         .fontColor(Color.Red)
         .onClick(() => {
           this.simpleList = [1, 2, 3, 4, 5];
         })
-      List({ space: 20, initialIndex: 3 }) {
+      List({ initialIndex: 3 }) {
         if (this.tmp % 2 === 0) {
           ForEach(this.simpleList, (item: number, index: number) => {
             ListItem() {
               Text('tmp is even number:' + `${index}`).id('foreach' + index)
-                .fontSize(20)
+                .fontSize(9)
             }
           })
         } else {
           ForEach(this.simpleList, (item: number, index: number) => {
             ListItem() {
               Text('tmp is odd number:' + `${index}`).id('foreach' + index)
-                .fontSize(20)
+                .fontSize(9)
             }
           }
           )
         }
       };
       Button('修改IfElse显示').id('for_each_1')
-        .fontSize(18)
-        .margin(5)
+        .fontSize(9)
         .onClick(() => {
           this.tmp = this.tmp + 1
         })

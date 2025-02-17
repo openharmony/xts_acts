@@ -41,6 +41,7 @@ import rdbDecryptTest from './RelationalStoreDecrpy.test';
 import relationalStoreMultiTransTest from './relationalStoreMultiTest.test'
 import RelationalStoreIcu from './RelationalStoreIcu.test';
 import rdbrootDirTest from './RelationalStoreRootDir.test';
+import VectorStoreTest from './VectorStore.test';
 
 export default function testsuite() {
   relationalStoreEncryptTest()
@@ -72,5 +73,6 @@ export default function testsuite() {
   relationalStoreMultiTransTest();
   RelationalStoreIcu();
   rdbrootDirTest();
+  VectorStoreTest();
 }
 

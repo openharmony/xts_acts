@@ -49,8 +49,7 @@ struct RelativeBorder {
           .id("RelativeBorderRow_3")
       }
       .id('RelativeBorder')
-      .width(400).height(400)
-      .margin({left: 50, top: 50})
+      .width('100%').height('80%')
       .backgroundColor(Color.Grey)
       .borderWidth({ top: this.RelativePad })
       .guideLine([

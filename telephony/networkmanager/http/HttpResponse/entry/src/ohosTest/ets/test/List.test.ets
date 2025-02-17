@@ -15,10 +15,14 @@
 
 import HttpResponseCodeTest from './HttpResponseCode.test';
 import HttpResponsePropertiesTest from './HttpResponseProperties.test';
+import EmptyTest from './Empty.test';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-
-  HttpResponseCodeTest();
-  HttpResponsePropertiesTest();
-  
+  if (sim.getMaxSimCount()>1){
+    HttpResponseCodeTest();
+    HttpResponsePropertiesTest();
+  }else{
+    EmptyTest()
+  }
 }

@@ -19,18 +19,18 @@ struct RadioExample {
   build() {
     Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Column() {
-        Text(`Radio1 is checked: ${this.check}`).id('V1BindText')
+        Text(`Radio1 is checked: ${this.check}`).id('V1BindText').height('5%')
         Radio({ value: 'Radio1', group: 'radioGroup' }).checked($$this.check)
           .radioStyle({
             checkedBackgroundColor: Color.Pink
           })
-          .height(50)
+          .height('3%')
           .width(50)
           .onChange((isChecked: boolean) => {
             console.log('Radio1 status is ' + isChecked)
           }).id('radio')
       }
 
-    }.padding({ top: 30 })
+    }
   }
 }

@@ -55,10 +55,12 @@ export default function RichEditorSetStyledString013() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0029
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0029
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0029 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0029
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Verify that the attribute string supports the copyOptions attribute to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0029', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0029 START');

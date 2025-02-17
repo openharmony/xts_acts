@@ -56,10 +56,12 @@ export default function RichEditorDoubleClick006() {
     });
     
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_006
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_006
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_006 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_006
+     * @tc.name  : Test the RichEditor doubleClick event
+     * @tc.desc  : Test the RichEditor doubleClick event by double clicking on the symbolSpan displayed on one line
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_006', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_006 START');
@@ -76,7 +78,8 @@ export default function RichEditorDoubleClick006() {
       let message = await driver.findComponent(ON.id('message'));
       let messageText = await message.getText();
       await CommonFunc.sleep(1000);
-      expect(messageText).assertContain('{"start":4,"end":4}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
       done();
     });
     

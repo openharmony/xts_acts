@@ -15,7 +15,12 @@
 
 
 import NetStatisticsTest from './Statistics.test';
+import EmptyTest from './Empty.test';
+import sim from '@ohos.telephony.sim';
 
-export default function testsuite() {
+export default function testsuite() {if (sim.getMaxSimCount()>1){
   NetStatisticsTest();
+}else{
+  EmptyTest()
+}
 }

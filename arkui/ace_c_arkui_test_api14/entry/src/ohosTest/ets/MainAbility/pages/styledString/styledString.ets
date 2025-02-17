@@ -38,7 +38,7 @@ struct styledStringMenu {
     start: 0,
     length: 5,
     styledKey: StyledStringKey.FONT,
-    styledValue: new TextStyle({ fontColor: Color.Blue,fontSize:LengthMetrics.px(40)})
+    styledValue: new TextStyle({ fontColor: Color.Blue,fontSize:LengthMetrics.vp(40)})
   }])
 
   build() {

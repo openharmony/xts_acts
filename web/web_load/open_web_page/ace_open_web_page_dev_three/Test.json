@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceOpenWebPageDevThreeTest.hap"
+            "ActsWebOpenWebPageDevThreeTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

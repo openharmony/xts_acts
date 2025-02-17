@@ -55,10 +55,12 @@ export default function RichEditorLineMetrics005() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0010
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0010
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0010 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0010
+     * @tc.name  : Test the RichEditor LineMetrics
+     * @tc.desc  : Test RichEditor LineMetrics by using getLineMetrics (0), adding only imageSpan (sire, such as 100px)+text, with all attributes set to default
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0010', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0010 START');

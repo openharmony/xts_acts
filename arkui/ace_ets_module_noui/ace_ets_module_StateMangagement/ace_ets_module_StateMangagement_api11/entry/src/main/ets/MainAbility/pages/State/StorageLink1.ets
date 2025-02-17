@@ -77,8 +77,8 @@ struct StorageLink1 {
 
 
   build() {
-    Column({ space: 5 }) {
-      Button(`num: ${this.num}`).margin(3).width("100%")
+    Column() {
+      Button(`num: ${this.num}`).width("100%").height('5%')
         .key("button_son1")
         .onClick(() => {
           // AppStorage.set('PropA', this.num)
@@ -86,77 +86,77 @@ struct StorageLink1 {
           this.num = AppStorage.get<number>('Prop1');
         })
 
-      Button(`string: ${this.string}`).margin(3).width("100%")
+      Button(`string: ${this.string}`).width("100%").height('5%')
         .key("button_son2")
         .onClick(() => {
           this.son2 = 'sss'
           this.string = AppStorage.get<string>('Prop2');
         })
 
-      Button(`boolean: ${this.boolean}`).margin(3).width("100%")
+      Button(`boolean: ${this.boolean}`).width("100%").height('5%')
         .key("button_son3")
         .onClick(() => {
           this.son3 = true
           this.boolean = AppStorage.get<boolean>('Prop3');
         })
 
-      Button(`enu: ${this.enu}`).margin(3).width("100%")
+      Button(`enu: ${this.enu}`).width("100%").height('5%')
         .key("button_son4")
         .onClick(() => {
           this.son4 = ABC.C
           this.enu = AppStorage.get<ABC>('Prop4');
         })
 
-      Button(`class: ${this.class?.value}`).margin(3).width("100%")
+      Button(`class: ${this.class?.value}`).width("100%").height('5%')
         .key("button_son5")
         .onClick(() => {
           this.son5 = new Model('Title:Hello C')
           this.class = AppStorage.get<Model>('Prop5');
         })
 
-      Button(`obj: ${JSON.stringify(this.obj)}`).margin(3).width("100%")
+      Button(`obj: ${JSON.stringify(this.obj)}`).width("100%").height('5%')
         .key("button_son6")
         .onClick(() => {
           this.son6 = {name:'ls',age:13} as ModelLink1Person
           this.obj = AppStorage.get<Object>('Prop6')
         })
 
-      Button(`strArray: ${this.strArray}`).margin(3).width("100%")
+      Button(`strArray: ${this.strArray}`).width("100%").height('5%')
         .key("button_son7")
         .onClick(() => {
           this.son7 = ['ls','zs']
           this.strArray = AppStorage.get<Array<string>>('Prop7')
         })
 
-      Button(`numArray: ${this.numArray}`).margin(3).width("100%")
+      Button(`numArray: ${this.numArray}`).width("100%").height('5%')
         .key("button_son8")
         .onClick(() => {
           this.son8 = [2,3]
           this.numArray = AppStorage.get<Array<number>>('Prop8')
         })
 
-      Button(`boolArray: ${this.boolArray}`).margin(3).width("100%")
+      Button(`boolArray: ${this.boolArray}`).width("100%").height('5%')
         .key("button_son9")
         .onClick(() => {
           this.son9 = [false,true]
           this.boolArray = AppStorage.get<Array<boolean>>('Prop9')
         })
 
-      Button(`classArray: ${JSON.stringify(this.classArray)}`).margin(3).width("100%")
+      Button(`classArray: ${JSON.stringify(this.classArray)}`).width("100%").height('5%')
         .key("button_son10")
         .onClick(() => {
           this.son10 = [{value:'hello world'} as ModelLink1, {value:'hello C'} as ModelLink1]
           this.classArray = AppStorage.get<Array<Model>>('Prop10')
         })
 
-      Button(`objArray: ${JSON.stringify(this.objArray)}`).margin(3).width("100%")
+      Button(`objArray: ${JSON.stringify(this.objArray)}`).width("100%").height('5%')
         .key("button_son11")
         .onClick(() => {
           this.son11 = [{name:'ls'} as ModelLink1Person, {name:'zs'} as ModelLink1Person]
           this.objArray = AppStorage.get<Array<Object>>('Prop11')
         })
 
-      Button(`menuArray: ${this.menuArray}`).margin(3).width("100%")
+      Button(`menuArray: ${this.menuArray}`).width("100%").height('5%')
         .key("button_son12")
         .onClick(() => {
           this.son12 = [ABC.B,ABC.C]

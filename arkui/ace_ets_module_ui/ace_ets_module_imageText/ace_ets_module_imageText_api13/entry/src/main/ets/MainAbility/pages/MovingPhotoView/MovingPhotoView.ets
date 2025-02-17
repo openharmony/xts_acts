@@ -85,7 +85,7 @@ struct MovingPhotoView1 {
           })
             .id('MovingPhotoView')
             .width(200)
-            .height(200)
+            .height('20%')
             .muted(this.flag)
             .objectFit(this.ImageFit)
             .onStart(() => {
@@ -122,6 +122,7 @@ struct MovingPhotoView1 {
               this.stop = "onStop succ"
             })
         }
+        .height('5%')
 
         Row(){
           Button('StopPlay').id('MovingPhotoView_stopPlay')
@@ -134,6 +135,7 @@ struct MovingPhotoView1 {
               this.flag = true
             })
         }
+        .height('5%')
 
         Row(){
           Button('error').id('MovingPhotoView_errorButton')
@@ -146,6 +148,7 @@ struct MovingPhotoView1 {
               this.autoPlayPeriodEnd = 500
             })
         }
+        .height('5%')
 
         Row(){
           Button('autoPlay').id('MovingPhotoView_autoPlay')
@@ -157,21 +160,38 @@ struct MovingPhotoView1 {
               this.repeatPlayFlag = true
             })
         }
+        .height('5%')
 
-        Text(this.flag + '').id('MovingPhotoView_mute')
-        Text(this.start).id('MovingPhotoView_start')
-        Text(this.stop).id('MovingPhotoView_stop')
-        Text(this.pause).id('MovingPhotoView_pause')
-        Text(this.finish).id('MovingPhotoView_finish')
-        Text(this.error).id('MovingPhotoView_error')
-        Text(this.play).id('MovingPhotoView_play')
-        Text(this.stopPlay).id('MovingPhotoView_stopPlay1')
-        Text(this.complete).id('MovingPhotoView_complete')
-        Text(this.autoPlayPeriodStart + '').id('MovingPhotoView_autoPlayPeriodStart')
-        Text(this.autoPlayPeriodEnd + '').id('MovingPhotoView_autoPlayPeriodEnd')
-        Text(this.autoPlayFlag + '').id('MovingPhotoView_autoPlay1')
-        Text(this.repeatPlayFlag + '').id('MovingPhotoView_repeatPlay')
+        Row(){
+          Text(this.flag + '').id('MovingPhotoView_mute').textAlign(TextAlign.Center).width('30%')
+          Text(this.start).id('MovingPhotoView_start').textAlign(TextAlign.Center).width('30%')
+          Text(this.stop).id('MovingPhotoView_stop').textAlign(TextAlign.Center).width('30%')
+        }.height('5%')
+        Row(){
+          Text(this.pause).id('MovingPhotoView_pause').textAlign(TextAlign.Center).width('30%')
+          Text(this.finish).id('MovingPhotoView_finish').textAlign(TextAlign.Center).width('30%')
+          Text(this.error).id('MovingPhotoView_error').textAlign(TextAlign.Center).width('30%')
+        }.height('5%')
+        Row(){
+          Text(this.pause).id('MovingPhotoView_pause').textAlign(TextAlign.Center).width('30%')
+          Text(this.finish).id('MovingPhotoView_finish').textAlign(TextAlign.Center).width('30%')
+          Text(this.error).id('MovingPhotoView_error').textAlign(TextAlign.Center).width('30%')
+        }.height('5%')
+        Row(){
+          Text(this.play).id('MovingPhotoView_play').textAlign(TextAlign.Center).width('30%')
+          Text(this.stopPlay).id('MovingPhotoView_stopPlay1').textAlign(TextAlign.Center).width('30%')
+          Text(this.complete).id('MovingPhotoView_complete').textAlign(TextAlign.Center).width('30%')
+        }.height('5%')
+        Row(){
+          Text(this.autoPlayPeriodStart + '').id('MovingPhotoView_autoPlayPeriodStart').textAlign(TextAlign.Center).width('30%')
+          Text(this.autoPlayPeriodEnd + '').id('MovingPhotoView_autoPlayPeriodEnd').textAlign(TextAlign.Center).width('30%')
+          Text(this.autoPlayFlag + '').id('MovingPhotoView_autoPlay1').textAlign(TextAlign.Center).width('30%')
+        }.height('5%')
+        Row(){
+          Text(this.repeatPlayFlag + '').id('MovingPhotoView_repeatPlay').textAlign(TextAlign.Center).width('30%')
+        }.height('5%')
       }
+      .height('100%')
     }
   }
 }

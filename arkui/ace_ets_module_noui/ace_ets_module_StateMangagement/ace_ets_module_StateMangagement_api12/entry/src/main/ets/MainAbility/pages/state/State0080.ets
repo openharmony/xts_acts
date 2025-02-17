@@ -35,7 +35,7 @@ struct State0080 {
   @State private classArr: StateClass0080[] = [new StateClass0080('Hello')]
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Text(this.classArr[0].value)
         .id('tvState00801')
         .onClick(()=>{

@@ -16,16 +16,16 @@ import("//test/xts/tools/build/suite.gni")
 ohos_app_assist_suite("Network_interception_nativeWeb_ndk_main_first") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceNetworkInterceptionNativeWebSchemeHandlerOneCPPTest"
+  hap_name = "ActsWebNetworkInterceptionNativeWebSchemeHandlerOneCPPTest"
   part_name = "webview"
   subsystem_name = "web"
 }
 
-ohos_js_app_suite("ActsAceNetworkInterceptionNativeWebSchemeHandlerOneTest") {
+ohos_js_app_suite("ActsWebNetworkInterceptionNativeWebSchemeHandlerOneTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceNetworkInterceptionNativeWebSchemeHandlerOneTest"
+  hap_name = "ActsWebNetworkInterceptionNativeWebSchemeHandlerOneTest"
   part_name = "webview"
   subsystem_name = "web"
   deps = [ ":Network_interception_nativeWeb_ndk_main_first" ]

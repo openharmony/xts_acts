@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceLoadStatusCloudServiceWebControllerFiveTest.hap"
+            "ActsWebLoadStatusCloudServiceWebControllerFiveTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

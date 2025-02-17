@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -20,67 +20,83 @@ struct RepeatParent {
   build() {
     Row() {
       Column() {
-        Text('message: '+ this.simpleList[2]).id('mess_repeat')
-        Text('length: '+ this.simpleList.length).id('length_repeat')
+        Text('message: ' + this.simpleList[2]).id('mess_repeat')
+          .height('3%')
+          .fontSize(9)
+        Text('length: ' + this.simpleList.length).id('length_repeat')
+          .height('3%')
+          .fontSize(9)
 
-        Text('初始化数据').id('init_repeat')
-          .fontSize(20)
-          .margin(5)
+        Text('初始化数据')
+          .id('init_repeat')
+          .height('3%')
+          .fontSize(9)
           .fontColor(Color.Red)
           .onClick(() => {
             this.simpleList = ['one', 'two', 'three'];
           })
-		  
-        Button('点击修改第3个数组项的值').id('repeat_modify')
-          .fontSize(18)
-          .margin(5)
+
+        Button('点击修改第3个数组项的值')
+          .id('repeat_modify')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
             this.simpleList[2] = 'new three';
           })
 
-        Button('点击添加值').id('repeat_1')
-          .fontSize(18)
-          .margin(5)
+        Button('点击添加值')
+          .id('repeat_1')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
             this.simpleList.push('five');
           })
-		  
-        Button('交换数组项1，2').id('repeat_2')
-          .fontSize(18)
-          .margin(5)
+
+        Button('交换数组项1，2')
+          .id('repeat_2')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
             let temp: string = this.simpleList[2]
             this.simpleList[2] = this.simpleList[1]
             this.simpleList[1] = temp
           })
-		  
-        Button('点击删除第3个数组项的值').id('repeat_3')
-          .fontSize(18)
-          .margin(5)
+
+        Button('点击删除第3个数组项的值')
+          .id('repeat_3')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
-            this.simpleList.splice(2,1);
+            this.simpleList.splice(2, 1);
           })
 
-        Button('点击添加数据，并删除值').id('repeat_4')
-          .fontSize(18)
-          .margin(5)
+        Button('点击添加数据，并删除值')
+          .id('repeat_4')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
-            this.simpleList.splice(1,1);
+            this.simpleList.splice(1, 1);
             this.simpleList.push('我');
           })
 
-        Button('点击添加两项数据，并删除第二个值').id('repeat_5')
-          .fontSize(18)
-          .margin(5)
+        Button('点击添加两项数据，并删除第二个值')
+          .id('repeat_5')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
-            this.simpleList.splice(1,1);
-            this.simpleList.push('你','他');
+            this.simpleList.splice(1, 1);
+            this.simpleList.push('你', '他');
           })
 
         Repeat<string>(this.simpleList)
-          .each((obj: RepeatItem<string>)=>{
+          .each((obj: RepeatItem<string>) => {
             ChildItem({ item: obj.item })
-              .margin({top: 20})
           })
           .key((item: string) => item)
       }
@@ -99,6 +115,7 @@ struct ChildItem {
 
   build() {
     Text(this.item)
-      .fontSize(20)
+      .height('3%')
+      .fontSize(9)
   }
 }

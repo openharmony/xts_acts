@@ -45,7 +45,7 @@ struct borderStylesExample {
   @State borderStyleValue: number = 0
 
   build() {
-    Row() {
+    Column() {
       NodeContainer(this.myNodeController)
       Text('borderStyleValue:' + this.borderStyleValue).margin(10).id("borderStylesValue") //2
       Button('click borderStyleValue')

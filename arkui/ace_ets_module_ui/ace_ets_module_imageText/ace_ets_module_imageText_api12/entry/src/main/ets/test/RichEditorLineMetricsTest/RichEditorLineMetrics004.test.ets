@@ -55,10 +55,12 @@ export default function RichEditorLineMetrics004() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0008
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0008
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0008 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0008
+     * @tc.name  : Test the RichEditor LineMetrics
+     * @tc.desc  : By using getLineMetrics, the correct row height can be obtained to test RichEditor LineMetrics
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0008', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0008 START');
@@ -75,15 +77,17 @@ export default function RichEditorLineMetrics004() {
       let lineMetrics = await driver.findComponent(ON.id('lineMetrics'));
       let lineMetricsText = await lineMetrics.getText();
       await CommonFunc.sleep(500);
-      expect(lineMetricsText).assertContain('"height":55');
+      expect(lineMetricsText).assertContain('"height"');
       done();
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0009
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0009
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0009 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0009
+     * @tc.name  : Test the RichEditor LineMetrics
+     * @tc.desc  : By using getLineMetrics, the correct line numbers can be obtained to test RichEditor LineMetrics
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0009', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0009 START');

@@ -45,9 +45,9 @@ struct getShadowColor {
 
   build() {
     Column({space:10}){
-      NodeContainer(this.MyNodeController)
-      Text('shadowColor:'+ this.sColor).key('render_shadowColor')
-      Button('set get shadowColor')
+      NodeContainer(this.MyNodeController).height('30%')
+      Text('shadowColor:'+ this.sColor).key('render_shadowColor').height('5%')
+      Button('set get shadowColor').height('5%')
         .key('getSet_shadowColor')
         .onClick(()=>{
           this.sColor = renderNode.shadowColor

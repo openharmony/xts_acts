@@ -56,10 +56,12 @@ export default function RichEditorShortCutKeys009() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0015
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0015
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0015 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0015
+     * @tc.name  : Test the RichEditor shortCutKeys
+     * @tc.desc  : CTRL+B does not affect other font styles to test RichEditor shortCutKeys
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0015', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0015 START');
@@ -90,7 +92,8 @@ export default function RichEditorShortCutKeys009() {
       expect(styleText).assertContain('"fontWeight":9');
       expect(styleText).assertContain('"fontFamily":"' + Utils.FONT_FAMILY + '"');
       expect(styleText).assertContain('"decoration":{"type":0,"color":"#FF000000","style":0}');
-      expect(styleText).assertContain('"lineHeight":30,"letterSpacing":30');
+      expect(styleText).assertContain('"lineHeight":30');
+      expect(styleText).assertContain('"letterSpacing":30');
       expect(styleText).assertContain('"fontFeature":"\'ss01\' 1"');
       done();
     });

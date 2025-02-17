@@ -150,7 +150,7 @@ export default function PolicyTset() {
     */
     it("testNetworkAccessPolicyPromise0100", 0, async (done: Function) => {
       const caseName: string = 'testNetworkAccessPolicyPromise0100';
-      setNetworkAccessPolicyFn(caseName, done, 1, true, true)
+      setNetworkAccessPolicyFn(caseName, done, 20001, true, true)
     })
 
     /* *
@@ -228,7 +228,7 @@ export default function PolicyTset() {
     */
     it("testNetworkAccessPolicyPromise0700", 0, async (done: Function) => {
       const caseName: string = 'testNetworkAccessPolicyPromise0700';
-      setNetworkAccessPolicyFn(caseName, done, -1, false, true)
+      setNetworkAccessPolicyFn(caseName, done, 20002, false, true)
     })
 
     /* *
@@ -241,7 +241,7 @@ export default function PolicyTset() {
     */
     it("testUidNetworkAccessPolicyPromise0100", 0, async (done: Function) => {
       const caseName: string = 'testUidNetworkAccessPolicyPromise0100';
-      await getNetworkAccessPolicyByUidFn(caseName, done, 1)
+      await getNetworkAccessPolicyByUidFn(caseName, done, 20001)
     })
 
     /* *
@@ -254,7 +254,7 @@ export default function PolicyTset() {
     */
     it("testUidNetworkAccessPolicyPromise0200", 0, async (done: Function) => {
       const caseName: string = 'testUidNetworkAccessPolicyPromise0200';
-      await getNetworkAccessPolicyByUidFn(caseName, done, -1)
+      await getNetworkAccessPolicyByUidFn(caseName, done, 20002)
     })
 
     /* *

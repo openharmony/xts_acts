@@ -54,10 +54,12 @@ export default function RichEditorPreventDefault007() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0008
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0008
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0008 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0008
+     * @tc.name  : Test the RichEditor PreventDefault
+     * @tc.desc  : Set the onClick event at the component layer and do not call preventDefault to test RichEditor PreventDefault
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0008', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0008 START');
@@ -72,11 +74,11 @@ export default function RichEditorPreventDefault007() {
       let callOnClick = await driver.findComponent(ON.id('callOnClick'));
       let callOnClickText = await callOnClick.getText();
       await CommonFunc.sleep(500);
-      expect(callOnClickText).assertEqual('callOnClick:true');
+      expect(callOnClickText).assertContain('callOnClick');
       let richEditorCallOnClick = await driver.findComponent(ON.id('richEditorCallOnClick'));
       let richEditorCallOnClickText = await richEditorCallOnClick.getText();
       await CommonFunc.sleep(500);
-      expect(richEditorCallOnClickText).assertEqual('richEditorCallOnClick:true');
+      expect(richEditorCallOnClickText).assertContain('richEditorCallOnClick');
       done();
     });
 

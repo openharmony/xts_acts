@@ -48,6 +48,7 @@ export default function DeviceStatusUnitTest() {
                 stationary.on("still", 3, 1000000000, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
+                expect().assertFail();
                 done();
             }
             console.log("SUB_MSDP_DeviceStatus_API_Stationary_0100 once start");
@@ -56,6 +57,7 @@ export default function DeviceStatusUnitTest() {
                 stationary.once("still", pub_callback);
             } catch (error) {
                 console.error('error=' + error);
+                expect().assertFail();
                 done();
             }
             console.log("SUB_MSDP_DeviceStatus_API_Stationary_0100 off start");
@@ -63,10 +65,10 @@ export default function DeviceStatusUnitTest() {
                 try {
                     p_done = done;
                     stationary.off("still", 3, pub_callback);
-                    expect(true).assertTrue();
                     p_done();
                 } catch (error) {
                     console.error('error=' + error);
+                    expect().assertFail();
                     done();
                 }
             }, 200);
@@ -88,6 +90,7 @@ export default function DeviceStatusUnitTest() {
                 stationary.on("relativeStill", 2, 1000000000, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
+                expect().assertFail();
                 done();
             }
             console.log("SUB_MSDP_DeviceStatus_API_Stationary_0200 once start");
@@ -96,6 +99,7 @@ export default function DeviceStatusUnitTest() {
                 stationary.once("relativeStill", pub_callback);
             } catch (error) {
                 console.error('error=' + error);
+                expect().assertFail();
                 done();
             }
             console.log("SUB_MSDP_DeviceStatus_API_Stationary_0200 off start");
@@ -103,10 +107,10 @@ export default function DeviceStatusUnitTest() {
                 try {
                     p_done = done;
                     stationary.off("relativeStill", 3, pub_callback);
-                    expect(true).assertTrue();
                     p_done();
                 } catch (error) {
                     console.error('error=' + error);
+                    expect().assertFail();
                     done();
                 }
             }, 200);
@@ -147,10 +151,11 @@ export default function DeviceStatusUnitTest() {
                 try {
                     p_done = done;
                     stationary.off("Type_Unknow", 3, pub_callback);
-                    expect(true).assertTrue();
                     p_done();
                 } catch (error) {
                     console.error('error=' + error);
+                    console.info(`stationary.once fail: ${JSON.stringify(error, ['code', 'message'])}`);
+                    expect(error.code).assertEqual(401);
                     done();
                 }
             }, 200);
@@ -172,6 +177,7 @@ export default function DeviceStatusUnitTest() {
                 stationary.on("relativeStill", 1, 1000000000, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
+                expect().assertFail();
                 done();
             }
             console.log("SUB_MSDP_DeviceStatus_API_Stationary_0400 once start");
@@ -180,6 +186,7 @@ export default function DeviceStatusUnitTest() {
                 stationary.once("relativeStill", pub_callback);
             } catch (error) {
                 console.error('error=' + error);
+                expect().assertFail();
                 done();
             }
             console.log("SUB_MSDP_DeviceStatus_API_Stationary_0400 off start");
@@ -187,10 +194,10 @@ export default function DeviceStatusUnitTest() {
                 try {
                     p_done = done;
                     stationary.off("relativeStill", 1, pub_callback);
-                    expect(true).assertTrue();
                     p_done();
                 } catch (error) {
                     console.error('error=' + error);
+                    expect().assertFail();
                     done();
                 }
             }, 200);
@@ -222,6 +229,7 @@ export default function DeviceStatusUnitTest() {
                 stationary.once("relativeStill", pub_callback);
             } catch (error) {
                 console.error('error=' + error);
+                expect().assertFail();
                 done();
             }
             console.log("SUB_MSDP_DeviceStatus_API_Stationary_0500 off start");
@@ -229,10 +237,10 @@ export default function DeviceStatusUnitTest() {
                 try {
                     p_done = done;
                     stationary.off("relativeStill", 2, pub_callback);
-                    expect(true).assertTrue();
                     p_done();
                 } catch (error) {
                     console.error('error=' + error);
+                    expect().assertFail();
                     done();
                 }
             }, 200);

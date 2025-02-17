@@ -28,6 +28,16 @@ struct GridRows2 {
   build() {
     Scroll() {
       Column({ space: 5 }) {
+        Button('rowsTemplate: -1fr').onClick(() => {
+          this.rowsGap = '-1fr'
+        }).key('GridRows2Bt1')
+
+        Button('rowsTemplate: 0fr').onClick(() => {
+          this.rowsGap = '0fr'
+        }).key('GridRows2Bt2')
+
+        Text(this.text).key('GridRows2Text')
+
         Grid() {
           ForEach(this.numbers, (day: string) => {
             GridItem() {
@@ -39,23 +49,11 @@ struct GridRows2 {
           }, (day: string) => day)
         }
         .key('GridRows2')
-        .height(300)
-        .width(410)
+        .height('60%')
+        .width('100%')
         .rowsGap(10)
         .backgroundColor(0xFAEEE0)
         .rowsTemplate(this.rowsGap)
-
-        Row() {
-          Button('rowsTemplate: -1fr').onClick(() => {
-            this.rowsGap = '-1fr'
-          }).key('GridRows2Bt1')
-
-          Button('rowsTemplate: 0fr').onClick(() => {
-            this.rowsGap = '0fr'
-          }).key('GridRows2Bt2')
-        }
-
-        Text(this.text).key('GridRows2Text')
 
       }
       .width('90%').margin({ top: 5, left: 5, right: 5 })

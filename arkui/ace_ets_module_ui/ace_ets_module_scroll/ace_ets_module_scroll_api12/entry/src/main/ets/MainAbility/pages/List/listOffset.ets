@@ -44,7 +44,7 @@ struct offsetListExample {
         this.num = offsetRemain
         console.info('ScrollResult: ' + offsetRemain)
       })
-      .width('60%')
+      .width('100%')
     }
     .width('100%')
     .height('60%')

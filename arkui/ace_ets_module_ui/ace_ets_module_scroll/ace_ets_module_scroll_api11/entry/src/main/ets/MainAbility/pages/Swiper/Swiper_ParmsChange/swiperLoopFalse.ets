@@ -52,8 +52,8 @@ struct SwiperLoopFalseTest {
         }.width('100%').height('100%').backgroundColor(0xD2B48C).key('loopFalse06')
       }
       .key('loopFalse')
-      .height(300)
-      .width(300)
+      .height('60%')
+      .width('90%')
       .index(5)
       .autoPlay(true)
       .indicator(true)

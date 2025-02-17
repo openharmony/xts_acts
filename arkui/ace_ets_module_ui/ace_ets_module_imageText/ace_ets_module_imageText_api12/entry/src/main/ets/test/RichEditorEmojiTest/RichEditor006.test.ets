@@ -55,10 +55,12 @@ export default function RichEditor006() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0009
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0009
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0009 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0009
+     * @tc.name  : Test the RichEditor doubleClick event
+     * @tc.desc  : Test RichEditor Emojis by using symbols before and after the emoji, and the delete button cannot delete the emoji behind the cursor
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0009', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0009 START');

@@ -58,12 +58,12 @@ struct RepeatSwiperNumber {
       .border({ width: 1 })
 
       Row() {
-        Button('next1 page').id('Button1')
+        Button('next1 page').id('Button1_SN')
           .onClick(() => {
             this.swiperController.showNext()
           })
         Button('next2 page')
-          .id('Button2')
+          .id('Button2_SN')
           .onClick(() => {
             this.swiperController1.showNext()
           })

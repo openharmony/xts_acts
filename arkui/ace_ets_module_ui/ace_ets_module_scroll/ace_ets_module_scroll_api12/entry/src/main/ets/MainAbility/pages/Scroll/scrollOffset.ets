@@ -26,6 +26,20 @@ struct scrollOffsetExample {
     Column() {
       Text(this.message1).id('scroll_mess1')
       Text(this.message2).id('scroll_mess2')
+      Button('scroll 100').id('canOver_scroll')
+        .onClick(() => { // 点击后滑动到指定位置，即下滑100.0vp的距离，滑动过程配置有动画
+          let curve = Curves.interpolatingSpring(10, 1, 228, 30) //创建一个阶梯曲线
+          const yOffset: number = this.scroller.currentOffset().yOffset;
+          this.scroller.scrollTo({
+            xOffset: 0,
+            yOffset: yOffset + 100,
+            animation: {
+              duration: 1000,
+              curve: curve,
+              canOverScroll: true
+            }
+          })
+        })
       Scroll(this.scroller) {
         Column() {
           ForEach(this.arr, (item: number) => {
@@ -50,23 +64,6 @@ struct scrollOffsetExample {
       .onDidScroll(()=>{
         this.message2 ='onDidScroll'
       })
-
-      Button('scroll 100').id('canOver_scroll')
-        .height('5%')
-        .onClick(() => { // 点击后滑动到指定位置，即下滑100.0vp的距离，滑动过程配置有动画
-          let curve = Curves.interpolatingSpring(10, 1, 228, 30) //创建一个阶梯曲线
-          const yOffset: number = this.scroller.currentOffset().yOffset;
-          this.scroller.scrollTo({
-            xOffset: 0,
-            yOffset: yOffset + 100,
-            animation: {
-              duration: 1000,
-              curve: curve,
-              canOverScroll: true
-            }
-          })
-        })
-        .margin({ top: 110, left: 20 })
     }
     .width('100%')
     .height('100%')

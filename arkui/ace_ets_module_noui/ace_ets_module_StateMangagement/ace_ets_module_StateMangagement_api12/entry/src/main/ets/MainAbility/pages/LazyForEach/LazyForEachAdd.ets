@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -161,17 +161,20 @@ struct RepeatLazyForEachString {
   }
 
   build() {
-    Column({ space: 10 }) {
-      List({ initialIndex: 10, space: 10 }) {
+    Column() {
+      List({ initialIndex: 10 }) {
         Repeat<string>(this.dataList)
           .each((obj: RepeatItem<string>) => {
             ListItem() {
               Row() {
                 Text(obj.item).id('repeat_add' + `${obj.index}`)
-                  .fontSize(15)
+                  .width('50%')
+                  .height('3%')
+                  .fontSize(9)
                 LazyForEach(this.dataSource[obj.index], (item: string) => {
                   Text('' + item).id('lazyForeach_add' + `${obj.index}`)
-                    .fontSize(15)
+                    .height('3%')
+                    .fontSize(9)
                     .fontColor(Color.Orange)
                 })
               }
@@ -184,10 +187,13 @@ struct RepeatLazyForEachString {
       }
       .cachedCount(1)
       .border({ width: 1 })
-      .width('90%')
-      .height('70%')
+      .layoutWeight(1)
 
-      Button('Add Data').id('addButton')
+      Button('Add Data')
+        .id('addButton')
+        .width('10%')
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           let lastIndex = this.dataSource.length - 1;
           this.dataSource[1].addData(1, 'Hello');
@@ -200,12 +206,6 @@ struct RepeatLazyForEachString {
           this.dataSource[this.dataSource.length-1].addData(0, index.toString() + count + key + type)
         })
     }
-    .height('60%')
     .justifyContent(FlexAlign.Center)
   }
 }
-
-
-
-
-

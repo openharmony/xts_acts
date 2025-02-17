@@ -55,10 +55,12 @@ export default function RichEditorQueryLayout001() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_QUERYLAYOUTPARAGRAPHSTYLE_0025
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_QUERYLAYOUTPARAGRAPHSTYLE_0025
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_QUERYLAYOUTPARAGRAPHSTYLE_0025 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_QUERYLAYOUTPARAGRAPHSTYLE_0025
+     * @tc.name  : Test the RichEditor query for paragraphStyle and layoutStyle
+     * @tc.desc  : RichEditor content is text, use getspan to query image layoutStyle to test RichEditor query for paragraphStyle and layoutStyle
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 4
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_QUERYLAYOUTPARAGRAPHSTYLE_0025', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_QUERYLAYOUTPARAGRAPHSTYLE_0025 START');

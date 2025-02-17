@@ -125,74 +125,18 @@ struct ListLevel1 {
   }
 
   build() {
-    Column() {
-      List({ space: 20, initialIndex: 0, scroller: this.listScroller }) {
-        ForEach(this.arr1, (item: number) => {
-          ListItem() {
-            Text('item' + item)
-              .width(300)
-              .height(100)
-              .fontSize(16)
-              .textAlign(TextAlign.Center)
-              .borderRadius(10)
-              .backgroundColor(0xFFFFFF)
-          }
-          .swipeAction({
-            start: {
-              builder: () => {
-                this.itemEnd(item)
-              },
-              actionAreaDistance: this.startDeleteAreaDistance,
-              onAction: () => {
-                animateTo({ duration: 1000 }, () => {
-                  let index = this.arr1.indexOf(item)
-                  this.arr1.splice(index, 1)
-                })
-              }
-            },
-            end: {
-              builder: () => {
-                this.itemEnd(item)
-              },
-              actionAreaDistance: this.endDeleteAreaDistance,
-              onAction: () => {
-                animateTo({ duration: 1000 }, () => {
-                  let index = this.arr1.indexOf(item)
-                  this.arr1.splice(index, 1)
-                })
-              }
-            },
-            edgeEffect: SwipeEdgeEffect.None
-          })
-          .id('listitemlevel' + item)
-        }, (item: string) => item)
-      }
-      .id('listlevel1')
-      .padding(this.num)
-      .listDirection(this.listDirection)
-      .height(300)
-      .divider({
-        strokeWidth: this.strokeWidth,
-        color: 0xFFFFFF,
-        startMargin: this.startMargin,
-        endMargin: this.endMargin
-      })
-      .edgeEffect(EdgeEffect.None)
-      .chainAnimation(false)
-      .contentStartOffset(this.contentStartOffset)
-      .contentEndOffset(this.contentEndOffset)
+    Scroll(){
+      Column() {
+        if (this.isShowRect) {
+          Text('itemRectY:' + Math.round(this.itemRect.y)).id('itemRectY')
+          Text('itemRectWidth:' + Math.round(this.itemRect.width)).id('itemRectWidth')
+          Text('itemRectHeight:' + Math.round(this.itemRect.height)).id('itemRectHeight')
+        }
+        if (this.isShowOffset) {
+          Text('xoffset:' + Math.round(this.xoffset)).id('xoffset')
+          Text('yoffset:' + Math.round(this.yoffset)).id('yoffset')
+        }
 
-      if (this.isShowRect) {
-        Text('itemRectY:' + Math.round(this.itemRect.y)).id('itemRectY')
-        Text('itemRectWidth:' + Math.round(this.itemRect.width)).id('itemRectWidth')
-        Text('itemRectHeight:' + Math.round(this.itemRect.height)).id('itemRectHeight')
-      }
-      if (this.isShowOffset) {
-        Text('xoffset:' + Math.round(this.xoffset)).id('xoffset')
-        Text('yoffset:' + Math.round(this.yoffset)).id('yoffset')
-      }
-
-      Row() {
         Button('GetItemRect')
           .onClick(() => {
             this.itemRect = this.listScroller.getItemRect(0)
@@ -206,7 +150,64 @@ struct ListLevel1 {
             this.isShowOffset = true
           })
           .id('currentOffsetButton')
-      }
-    }.width('100%').height('100%')
+        
+        List({ space: 10, initialIndex: 0, scroller: this.listScroller }) {
+          ForEach(this.arr1, (item: number) => {
+            ListItem() {
+              Text('item' + item)
+                .width(200)
+                .height(100)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
+            }
+            .swipeAction({
+              start: {
+                builder: () => {
+                  this.itemEnd(item)
+                },
+                actionAreaDistance: this.startDeleteAreaDistance,
+                onAction: () => {
+                  animateTo({ duration: 1000 }, () => {
+                    let index = this.arr1.indexOf(item)
+                    this.arr1.splice(index, 1)
+                  })
+                }
+              },
+              end: {
+                builder: () => {
+                  this.itemEnd(item)
+                },
+                actionAreaDistance: this.endDeleteAreaDistance,
+                onAction: () => {
+                  animateTo({ duration: 1000 }, () => {
+                    let index = this.arr1.indexOf(item)
+                    this.arr1.splice(index, 1)
+                  })
+                }
+              },
+              edgeEffect: SwipeEdgeEffect.None
+            })
+            .id('listitemlevel' + item)
+          }, (item: string) => item)
+        }
+        .id('listlevel1')
+        .padding(this.num)
+        .listDirection(this.listDirection)
+        .width('90%')
+        .height('80%')
+        .divider({
+          strokeWidth: this.strokeWidth,
+          color: 0xFFFFFF,
+          startMargin: this.startMargin,
+          endMargin: this.endMargin
+        })
+        .edgeEffect(EdgeEffect.None)
+        .chainAnimation(false)
+        .contentStartOffset(this.contentStartOffset)
+        .contentEndOffset(this.contentEndOffset)
+      }.width('100%').height('100%')
+    }
   }
 }

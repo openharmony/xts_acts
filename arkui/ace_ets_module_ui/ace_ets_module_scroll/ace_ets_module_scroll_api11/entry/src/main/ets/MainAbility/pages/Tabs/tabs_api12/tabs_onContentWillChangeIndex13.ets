@@ -69,8 +69,8 @@ struct TabsExampleApi12I13 {
       .onChange((index: number) => {
         this.currentIndex = index
       })
-      .width(360)
-      .height(600)
+      .width('90%')
+      .height('60%')
       .scrollable(true)
       .backgroundColor('#F1F3F5')
       .onContentWillChange((currentIndex, comingIndex) => {
@@ -81,12 +81,12 @@ struct TabsExampleApi12I13 {
         return true
       })
 
-      Button('动态修改index').width('50%').margin({ top: 20 })
+      Button('动态修改index').width('50%')
         .onClick(()=>{
           this.currentIndex = (this.currentIndex + 1) % 4
         }).key("changeIndex13")
 
-      Button('changeIndex').width('50%').margin({ top: 20 })
+      Button('changeIndex').width('50%')
         .onClick(()=>{
           this.currentIndex = (this.currentIndex + 1) % 4
           this.controller.changeIndex(this.currentIndex)

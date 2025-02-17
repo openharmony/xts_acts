@@ -11,11 +11,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsAceEtsComponentCommonflexTestTwo") {
+ohos_js_app_suite("ActsAceEtsComponentCommonflexTwoTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceEtsComponentCommonflexTestTwo"
+  hap_name = "ActsAceEtsComponentCommonflexTwoTest"
   part_name = "ace_engine"
   subsystem_name = "arkui"
 }

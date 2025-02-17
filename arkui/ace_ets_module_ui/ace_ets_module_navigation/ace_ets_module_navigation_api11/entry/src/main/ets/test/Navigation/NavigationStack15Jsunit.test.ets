@@ -61,18 +61,19 @@ export default function NavigationStack15Jsunit() {
     */
     it('NavigationStack15Jsunit_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
-      let driver = await UiDriver.create()
+      let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let CZbutton = await driver.findComponent(BY.key('NavigationStack15ListItemText1'));
+      let CZbutton = await driver.findComponent(ON.id('NavigationStack15ListItemText1'));
       await CZbutton.click();
       await CommonFunc.sleep(2000);
-      let YCbutton = await driver.findComponent(BY.key('NavigationStack15True'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let YCbutton = await scrollBar.scrollSearch(ON.id('NavigationStack15True'));
       await YCbutton.click();
       await CommonFunc.sleep(2000);
-      let buttoncontent = await driver.findComponent(BY.key('NavigationStack15ButtonContent'));
+      let buttoncontent = await scrollBar.scrollSearch(ON.id('NavigationStack15ButtonContent'));
       await buttoncontent.click();
       await CommonFunc.sleep(2000);
-      let changecontent = await driver.findComponent(BY.key('NavigationStack15clear'));
+      let changecontent = await scrollBar.scrollSearch(ON.id('NavigationStack15clear'));
       await changecontent.click();
       await CommonFunc.sleep(2000);
       let textcontent = getInspectorByKey('NavigationStack15TextCont');

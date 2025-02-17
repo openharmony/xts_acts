@@ -39,8 +39,12 @@ export default function uiExtContentSessionTest() {
       let TAG: string = 'testTag';
       hilog.info(0x0000, TAG, '%{public}s', 'beforeEach');
     })
-    afterEach(() => {
-      hilog.info(0x0000, TAG, '%{public}s', 'afterEach');
+    afterEach((done: Function) => {
+      hilog.info(0x0000, TAG, '%{public}s', 'afterEach start');
+      setTimeout(()=>{
+        hilog.info(0x0000, TAG, '%{public}s', 'afterEach done');
+        done();
+      }, 1000)
     })
     afterAll(() => {
       hilog.info(0x0000, TAG, '%{public}s', 'afterAll');
@@ -582,7 +586,7 @@ export default function uiExtContentSessionTest() {
         }
 
       // Create subscriber and subscribe
-      commonEventManager.createSubscriber(subscribeInfo)
+      await commonEventManager.createSubscriber(subscribeInfo)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           hilog.info(0x0000, TAG, '%{public}s', 'createSubscriber success');
           subscriber = commonEventSubscriber;

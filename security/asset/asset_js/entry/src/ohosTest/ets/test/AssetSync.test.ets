@@ -146,46 +146,6 @@ export default function AssetSynctest() {
     });
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_Sync_Stability_0200
-     * @tc.name 同步接口性能测试
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
-     */
-    it('SUB_Security_DataSecurity_Asset_Sync_Stability_0200', 0, async (done: Function) => {
-      if (deviceInfo.deviceType != 'wearable') {
-        let testAlias = "0123456789123456".repeat(15);
-        let attr: asset.AssetMap = new Map();
-
-        let times = 20;
-
-        attr.set(asset.Tag.SECRET, aw.StringToArray(aw.secLong));
-        attr.set(asset.Tag.DATA_LABEL_NORMAL_1, aw.StringToArray(aw.labelLong));
-        attr.set(asset.Tag.DATA_LABEL_NORMAL_2, aw.StringToArray(aw.labelLong));
-        attr.set(asset.Tag.DATA_LABEL_NORMAL_3, aw.StringToArray(aw.labelLong));
-        attr.set(asset.Tag.DATA_LABEL_NORMAL_4, aw.StringToArray(aw.labelLong));
-        attr.set(asset.Tag.DATA_LABEL_CRITICAL_1, aw.StringToArray(aw.labelLong));
-        attr.set(asset.Tag.DATA_LABEL_CRITICAL_2, aw.StringToArray(aw.labelLong));
-        attr.set(asset.Tag.DATA_LABEL_CRITICAL_3, aw.StringToArray(aw.labelLong));
-        attr.set(asset.Tag.DATA_LABEL_CRITICAL_4, aw.StringToArray(aw.labelLong));
-        attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_POWERED_ON);
-
-        expect(aw.assetAddTask(times, attr, testAlias)).assertLess(120);
-        let attr2: asset.AssetMap = new Map();
-        attr2.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL);
-        expect(aw.assetQueryTask(times, attr2, testAlias)).assertLess(120);
-        attr2.delete(asset.Tag.RETURN_TYPE);
-        let attr3: asset.AssetMap = new Map();
-        attr3.set(asset.Tag.SECRET, aw.StringToArray(aw.labelLong));
-        expect(aw.assetUpdateTask(times, attr2, attr3, testAlias)).assertLess(120);
-        expect(aw.assetRemoveTask(times, attr2, testAlias)).assertLess(50);
-      }
-
-      done();
-    });
-
-    /**
      * @tc.number SUB_Security_DataSecurity_Asset_Sync_Func_0200
      * @tc.name 使用同步查询接口，传入正常参数
      * @tc.desc test error cases

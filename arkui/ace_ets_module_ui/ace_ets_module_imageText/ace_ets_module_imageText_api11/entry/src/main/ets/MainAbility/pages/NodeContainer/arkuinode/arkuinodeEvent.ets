@@ -74,9 +74,9 @@ struct MyComponent {
 
   build() {
     Column() {
-      Text(this.text1).key('node1Test')
+      Text(this.text1).key('node1Test').height('5%')
       NodeContainer(this.nodeController)
-        .height(300)
+        .height('30%')
         .key("nodeTest")
         .width(500).onTouch((event) => {
         this.nodeController.onTouchEvent(event)
@@ -85,13 +85,13 @@ struct MyComponent {
 
       Column()
         .width(500)
-        .height(300)
+        .height('10%')
         .backgroundColor(Color.Pink)
         .onTouch((event) => {
           if(event != undefined){
             this.nodeController.postTouchEvent(event);
           }
         }).key("columnTest")
-    }
+    }.height('100%')
   }
 }

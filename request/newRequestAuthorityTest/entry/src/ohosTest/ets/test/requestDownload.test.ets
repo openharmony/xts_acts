@@ -1363,5 +1363,80 @@ export default function requestDownloadJSUnit() {
       }
     });
 
+    /**
+     * @tc.number SUB_Request_Download_setMaxSpeed_0100
+     * @tc.name   SUB_Request_Download_setMaxSpeed_0100
+     * @tc.desc   set task maxSpeed
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_setMaxSpeed_0100', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_setMaxSpeed_0100 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_setMaxSpeed_0100.txt',
+        network: request.agent.Network.ANY,
+      };
+      let task: request.agent.Task | null = null;
+      let speed: number = 16 * 1024;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Download_setMaxSpeed_0100 create task success");
+        await task.setMaxSpeed(speed);
+        console.info("====>SUB_Request_Download_setMaxSpeed_0100 setMaxSpeed success");
+        expect(speed).assertEqual(16384);
+        await request.agent.remove(task.tid);
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_setMaxSpeed_0100 err: " + JSON.stringify(err));
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Download_setMaxSpeed_0200
+     * @tc.name   SUB_Request_Download_setMaxSpeed_0200
+     * @tc.desc   set task maxSpeed
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_setMaxSpeed_0200', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_setMaxSpeed_0200 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_setMaxSpeed_0200.txt',
+        network: request.agent.Network.ANY,
+      };
+      let speed: number = 16 * 1024 -1;
+      let task: request.agent.Task | null = null;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Download_setMaxSpeed_0200 create task success");
+        await task.setMaxSpeed(speed);
+        console.info("====>SUB_Request_Download_setMaxSpeed_0200 setMaxSpeed success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_setMaxSpeed_0200 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        done();
+      }
+    });
+
   });
 }

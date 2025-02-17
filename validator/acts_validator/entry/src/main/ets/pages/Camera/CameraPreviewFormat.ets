@@ -20,6 +20,7 @@ import { CustomContainer } from '../common/CameraPreviewFormatContainer';
 import FirstDialog from '../model/FirstDialog';
 import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
+import { display } from '@kit.ArkUI';
 
 class Obj {
   format: number = 0;
@@ -55,10 +56,49 @@ struct cameraFormat {
   @State nextEnabled: boolean = true;
   @State formatVal: SelectOption[] = [];
   @State selectFn: string = 'Camera 0';
+  @State last_rotation: number = 0;
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
     Logger.info(this.tag, `the resolution: ${this.resolution}`)
+    display.on("change", (data) => {
+      this.setPreviewRotation();
+    })
+  }
+
+  private setPreviewRotation() {
+    let o = display.getDefaultDisplaySync().orientation;
+    let rotation = 0;
+    switch (o) {
+      case 0:
+        rotation = 90;
+        if (this.cameraDeviceIndex == 1) { //前置反向
+          rotation = 270;
+        }
+        break;
+      case 1:
+        rotation = 180;
+        if (this.cameraDeviceIndex == 1) {
+          rotation = 0;
+        }
+        break;
+      case 2:
+        rotation = 270;
+        if (this.cameraDeviceIndex == 1) {
+          rotation = 90;
+        }
+        break;
+      case 3:
+        rotation = 0;
+        if (this.cameraDeviceIndex == 1) {
+          rotation = 180;
+        }
+        break;
+    }
+    if (this.last_rotation != rotation) {
+      this.last_rotation = rotation;
+      CameraService.setPreviewRotation(rotation);
+    }
   }
 
   onPageHide() {
@@ -82,6 +122,8 @@ struct cameraFormat {
       this.resolution = CameraService.resolution
       this.resolutionSelectVal = String(this.resolution[this.clickFrequency].value)
       this.cameraListFn()
+      this.last_rotation = -1
+      this.setPreviewRotation();
     })
   }
 
@@ -102,10 +144,9 @@ struct cameraFormat {
       return
     }
     let newResolution = this.dealWithResolutionFn(this.resolution)
-    Logger.info(this.tag, `nextClickFn new Resolution: ${newResolution}`)
+    Logger.info(this.tag, `nextClickFn new Resolution: ${JSON.stringify(newResolution)}`)
     this.cameraInit(newResolution[this.clickFrequency])
     this.resolutionSelectVal = String(this.resolution[this.clickFrequency].value)
-
   }
 
   // 对分辨率数据处理 获取到需要的格式
@@ -201,8 +242,8 @@ struct cameraFormat {
                   .value(this.resolutionSelectVal)
                   .font({ size: 16, weight: 500 })
                   .fontColor(Color.White)
-                  .selectedOptionBgColor(Color.Black)
-                  .optionBgColor(Color.Black)
+                  .selectedOptionBgColor(Color.White)
+                  .optionBgColor(Color.Yellow)
                   .selectedOptionFont({ size: 16, weight: 400 })
                   .optionFont({ size: 16, weight: 400 })
                   .onSelect((index: number, value) => {
@@ -227,8 +268,8 @@ struct cameraFormat {
                   .value(this.selectFn)
                   .font({ size: 16, weight: 500 })
                   .fontColor(Color.White)
-                  .selectedOptionBgColor(Color.Black)
-                  .optionBgColor(Color.Black)
+                  .selectedOptionBgColor(Color.White)
+                  .optionBgColor(Color.Yellow)
                   .selectedOptionFont({ size: 16, weight: 400 })
                   .optionFont({ size: 16, weight: 400 })
                   .onSelect((index: number) => {

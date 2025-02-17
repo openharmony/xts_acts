@@ -172,22 +172,23 @@ struct NavPathStack22{
     Navigation(this.derivedStack){
       Scroll(){
         Column(){
-          Text(this.text1).id('NavPathStack22_text1')
+          Text(this.text1).id('NavPathStack22_text1').height('5%')
           Button('pushPath pageOne').onClick((event: ClickEvent) => {
             this.derivedStack.pushPath({name:'pageOne'})
-          }).id('NavPathStack22_btn1')
+          }).id('NavPathStack22_btn1').height('5%')
           Button('pushPathByName pageTwo').onClick((event: ClickEvent) => {
             this.derivedStack.pushPathByName1('pageTwo','a')
-          }).id('NavPathStack22_btn2')
+          }).id('NavPathStack22_btn2').height('5%')
           Button('pop').onClick((event: ClickEvent) => {
             this.derivedStack.pop()
-          }).id('NavPathStack22_btn3')
+          }).id('NavPathStack22_btn3').height('5%')
         }
       }.height('100%')
     }
     .title('navigation')
     .navDestination(this.pageMap)
     .mode(NavigationMode.Split)
+    .navBarWidth('30%')
   }
 }
 

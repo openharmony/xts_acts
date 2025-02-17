@@ -30,11 +30,21 @@ import {
 } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter'
+import config from '@ohos.accessibility.config'
+import accessibility from '@ohos.accessibility'
 
+
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function LocalStoageLinkOneJsunit() {
   describe('LocalStoageLinkOneJsunit', () => {
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info('enable success');
+      }).catch((err: object) => {
+        console.error('failed to enable, ${err}')
+      })
       console.info("LocalStoageLinkOneJsunit beforeEach start");
       let options: router.RouterOptions = {
         url: "MainAbility/pages/State/LocalStoageLinkOne",

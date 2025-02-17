@@ -14,7 +14,13 @@
  */
 
 import httpFetchTest from './Fetch.test';
+import EmptyTest from './Empty.test';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  httpFetchTest();
+  if (sim.getMaxSimCount()>1){
+    httpFetchTest();
+  }else{
+    EmptyTest()
+  }
 }

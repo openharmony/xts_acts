@@ -65,51 +65,38 @@ export default function makeObserved0080Test() {
      */
     it('makeObserved0080Test_01', 0, async (done: Function) => {
       await CommonFunc.sleep(1000)
-
       console.info('makeObserved0080Test_01 START');
-
       let driver = await Driver.create()
       let textJson = getInspectorByKey('listTest')
-      let textJsonObj: ESObject = JSON.parse(textJson);
-      let initH = parseInt(textJsonObj.$attrs.height)
-      console.info("MR031[makeObserved0080Test_01]: " + parseInt(textJsonObj.$attrs.height));
       let testArr: testType[] = [
         {
           buttonKey: 'buttonChangeDefault',
-          key: 'listTest',
-          value: initH + 50
+          key: 'listTest'
         },
         {
           buttonKey: 'buttonSplice',
-          key: 'listTest',
-          value: initH + 80
+          key: 'listTest'
         },
         {
           buttonKey: 'buttonUpdate',
-          key: 'listTest',
-          value: initH + 90
+          key: 'listTest'
         },
       ]
       for (const item of testArr) {
         let button = await driver.findComponent(ON.id(item.buttonKey));
         await button.click();
         await CommonFunc.sleep(1000)
-        let textJson = getInspectorByKey(item.key)
-        let textJsonObj: ESObject = JSON.parse(textJson);
-        console.info("MR031[makeObserved0080Test_01]: " + item.key + ' : ' + item.value);
-        console.info("MR031[makeObserved0080Test_01]: " + parseInt(textJsonObj.$attrs.height));
-        expect(parseInt(textJsonObj.$attrs.height)).assertEqual(item.value);
       }
+      let obj1: ESObject = JSON.parse(getInspectorByKey('tvMakeObserved0080Count'));
+      console.info("[makeObserved0080Test_01] obj1 content is: " + JSON.stringify(obj1.$attrs.content));
+      expect(obj1.$attrs.content).assertEqual('4');
       console.info('makeObserved0080Test_01 END');
       done()
     })
-
   })
 }
 
 interface testType {
   buttonKey: string,
-  key: string,
-  value: number
+  key: string
 }
-

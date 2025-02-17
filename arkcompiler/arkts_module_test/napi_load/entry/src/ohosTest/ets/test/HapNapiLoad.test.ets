@@ -209,8 +209,9 @@ export default function HapNapiLoadTest() {
         TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0007';
         console.info(TAG, ' start');
         let har: ESObject = testNapi.loadModuleWithInfo('harTwo', 'com.acts.arttsnapiloadtest/entry_tes');
+        expect(har == undefined).assertTrue;
       } catch (err) {
-        expect(5).assertEqual(5);
+        expect().assertFail();
       }
     })
 
@@ -226,9 +227,10 @@ export default function HapNapiLoadTest() {
       try {
         TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0008';
         console.info(TAG, ' start');
-        let har: ESObject = testNapi.loadModuleWithInfo('hspTwo', 'com.acts.arttsnapiloadtest/entry_tes');
+        let hsp: ESObject = testNapi.loadModuleWithInfo('hspTwo', 'com.acts.arttsnapiloadtest/entry_tes');
+        expect(hsp == undefined).assertTrue;
       } catch (err) {
-        expect(5).assertEqual(5);
+        expect().assertFail();
       }
 
     })

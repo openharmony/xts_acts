@@ -13,20 +13,20 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_app_assist_suite("ActsAceNetworkInterceptionDevFourTestMain") {
+ohos_app_assist_suite("ActsWebNetworkInterceptionDevFourTestMain") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceNetworkInterceptionDevFourTestMain"
+  hap_name = "ActsWebNetworkInterceptionDevFourMainTest"
   part_name = "webview"
   subsystem_name = "web"
 }
 
-ohos_js_app_suite("ActsAceNetworkInterceptionDevFourTest") {
+ohos_js_app_suite("ActsWebNetworkInterceptionDevFourTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceNetworkInterceptionDevFourTest"
+  hap_name = "ActsWebNetworkInterceptionDevFourTest"
   part_name = "webview"
   subsystem_name = "web"
-  deps = [ ":ActsAceNetworkInterceptionDevFourTestMain" ]
+  deps = [ ":ActsWebNetworkInterceptionDevFourTestMain" ]
 }

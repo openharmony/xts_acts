@@ -35,9 +35,10 @@ struct UIComponentScrollSwiperDisplaycount0200 {
       .onChange((index: number) => {
         this.index = index.toString()
       })
+      Button('下一页').onClick(()=>{
+        this.swiperController.showNext()
+      }).id('btnDisplaycount0200')
 
-      .backgroundColor(Color.Yellow)
-      .width(160)
       Text(this.index).fontColor(80).width(200).height(200).key('swiperdisplaycount0200_1')
     }.width('100%')
     .margin({ top: 5 })

@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsLeatherCandyCacheTwoTest.hap"
+            "ActsWebLeatherCandyCacheTwoTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

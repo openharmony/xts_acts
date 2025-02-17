@@ -13,10 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsAceJumpBetweenWebEnhancedTest") {
+ohos_js_app_suite("ActsWebJumpBetweenWebEnhancedTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceJumpBetweenWebEnhancedTest"
+  hap_name = "ActsWebJumpBetweenWebEnhancedTest"
   part_name = "webview"
 }

@@ -18,8 +18,8 @@ struct ToggleExample {
   @State isOn: boolean = true
 
   build() {
-    Column({ space: 10 }) {
-      Text(`isOn: ${this.isOn}`).fontSize(20).width('90%').id('toggleText')
+    Column() {
+      Text(`isOn: ${this.isOn}`).fontSize(9).width('90%').id('toggleText')
       Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
         Toggle({ type: ToggleType.Switch, isOn: $$this.isOn })
           .selectedColor('#007DFF')
@@ -37,7 +37,7 @@ struct ToggleExample {
           })
       }
 
-      Text('type: Checkbox').fontSize(12).fontColor(0xcccccc).width('90%')
+      Text('type: Checkbox').fontSize(9).fontColor(0xcccccc).width('90%').height('5%')
       Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
         Toggle({ type: ToggleType.Checkbox, isOn: false })
           .size({ width: 20, height: 20 })
@@ -54,10 +54,10 @@ struct ToggleExample {
           })
       }
 
-      Text('type: Button').fontSize(12).fontColor(0xcccccc).width('90%')
+      Text('type: Button').fontSize(9).fontColor(0xcccccc).width('90%').height('5%')
       Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
         Toggle({ type: ToggleType.Button, isOn: false }) {
-          Text('status button').fontColor('#182431').fontSize(12)
+          Text('status button').fontColor('#182431').fontSize(9).height('5%')
         }.width(106)
         .selectedColor('rgba(0,125,255,0.20)')
         .onChange((isOn: boolean) => {
@@ -65,13 +65,13 @@ struct ToggleExample {
         })
 
         Toggle({ type: ToggleType.Button, isOn: true }) {
-          Text('status button').fontColor('#182431').fontSize(12)
+          Text('status button').fontColor('#182431').fontSize(9).height('5%')
         }.width(106)
         .selectedColor('rgba(0,125,255,0.20)')
         .onChange((isOn: boolean) => {
           console.info('Component status:' + isOn)
         })
       }
-    }.width('100%').padding(24)
+    }.width('100%')
   }
 }

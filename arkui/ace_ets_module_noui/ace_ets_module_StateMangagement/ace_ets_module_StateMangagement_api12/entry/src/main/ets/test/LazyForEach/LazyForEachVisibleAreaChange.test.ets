@@ -66,10 +66,8 @@ export default function LazyForEachVisibleAreaChange() {
     it('LazyForEachVisibleAreaChange_001', 0, async (done: Function) => {
       console.info('[LazyForEachVisibleAreaChange_001] START');      
       await CommonFunc.sleep(500);
-
       let driver: Driver = Driver.create();
-
-      let scroll_to_800_btn = await driver.findComponent(ON.id('scroll_to_800'));
+      let scroll_to_800_btn = await driver.findComponent(ON.id('scroll_to_800'))
       let scroll_to_1800_btn = await driver.findComponent(ON.id('scroll_to_1800'));
       await scroll_to_800_btn.click();
       await scroll_to_1800_btn.click();
@@ -81,4 +79,3 @@ export default function LazyForEachVisibleAreaChange() {
     });
   })
 }
-  

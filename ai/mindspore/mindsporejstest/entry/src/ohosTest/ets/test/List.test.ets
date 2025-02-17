@@ -12,8 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import EmptyTest from './Empty.test';
 import abilityTest from './Ability.test'
 
 export default function testsuite() {
-  abilityTest()
+  if (canIUse("SystemCapability.AI.MindSporeLite")){
+    abilityTest();
+  }else{
+    EmptyTest()
+  }
 }

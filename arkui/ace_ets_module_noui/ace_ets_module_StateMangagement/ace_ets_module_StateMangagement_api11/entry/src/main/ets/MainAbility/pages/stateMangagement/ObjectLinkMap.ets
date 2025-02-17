@@ -44,7 +44,7 @@ struct ObjectLinkMapNested {
   build() {
     Row() {
       Column() {
-        Button('init map').id("ObtLinkMap_init")
+        Button('init map').id("ObtLinkMap_init").height('5%')
           .onClick(() => {
             this.message.a = new MyMap("myMap", [[0, "a"], [1, "b"], [3, "c"]])
           })
@@ -64,32 +64,34 @@ struct ObjectLinkMapNestedChild {
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.myMap.entries()), (item: [number, string]) => {
-          Text(`${item[0]} ${item[1]}`).fontSize(20).id("ObtLinkMap_value_" + item[1])
-          Divider()
-        })
-        Button('set new one').id("ObtLinkMap_set")
+
+        Button('set new one').id("ObtLinkMap_set").height('5%')
           .onClick(() => {
             this.myMap.set(4, "d")
-          }).margin(10)
+          })
 
-        Button('clear').id("ObtLinkMap_clear")
+        Button('clear').id("ObtLinkMap_clear").height('5%')
           .onClick(() => {
             this.myMap.clear()
             if (Array.from(this.myMap.entries())) {
               this.myMap.set(0, "K")
             }
-          }).margin(10)
+          })
 
-        Button('replace the first one').id("ObtLinkMap_replace")
+        Button('replace the first one').id("ObtLinkMap_replace").height('5%')
           .onClick(() => {
             this.myMap.set(0, "aa")
-          }).margin(10)
+          })
 
-        Button('delete the first one').id("ObtLinkMap_delete")
+        Button('delete the first one').id("ObtLinkMap_delete").height('5%')
           .onClick(() => {
             this.myMap.delete(0)
           })
+
+        ForEach(Array.from(this.myMap.entries()), (item: [number, string]) => {
+          Text(`${item[0]} ${item[1]}`).fontSize(9).id("ObtLinkMap_value_" + item[1]).height('5%')
+          Divider()
+        })
       }
       .width('100%')
     }

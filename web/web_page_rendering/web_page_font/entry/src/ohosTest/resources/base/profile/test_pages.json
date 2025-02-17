@@ -12,6 +12,7 @@
         "MainAbility/pages/WebViewMinLogicalFontSize",
         "MainAbility/pages/WebFontTest",
         "MainAbility/pages/WebViewEnumAndFontLibrary",
-        "MainAbility/pages/WebViewJavaScriptProxyAndOnPageVisible"
+        "MainAbility/pages/WebViewJavaScriptProxyAndOnPageVisible",
+		"MainAbility/pages/enableFollowSystemFontWeight"
     ]
 }

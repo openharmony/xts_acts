@@ -37,27 +37,43 @@ struct CompuutedMonitor {
   }
 
   build() {
-    Column({ space: 20 }) {
-      Row({ space: 20 }) {
+    Column() {
+      Row() {
         Button('-')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
             this.celsius--;
           })
           .id('CompuutedMonitorButton1')
 
-        Text(`Celsius ${this.celsius.toFixed(1)}`).fontSize(35).id('CompuutedMonitorText1')
+        Text(`Celsius ${this.celsius.toFixed(1)}`).id('CompuutedMonitorText1')
+          .height('3%')
+          .fontSize(9)
 
         Button('+')
+          .width('10%')
+          .height('3%')
+          .fontSize(9)
           .onClick(() => {
             this.celsius++;
           })
           .id('CompuutedMonitorButton2')
       }
 
-      Text(`Fahrenheit ${this.fahrenheit.toFixed(2)}`).fontSize(50).id('CompuutedMonitorText2')
-      Text(`Kelvin ${this.kelvin.toFixed(2)}`).fontSize(50).id('CompuutedMonitorText3')
-      Text(this.computedText1.toString()).fontSize(50).id('CompuutedMonitorText4')
-      Text(this.computedText2.toString()).fontSize(50).id('CompuutedMonitorText5')
+      Text(`Fahrenheit ${this.fahrenheit.toFixed(2)}`).id('CompuutedMonitorText2')
+        .height('3%')
+        .fontSize(9)
+      Text(`Kelvin ${this.kelvin.toFixed(2)}`).id('CompuutedMonitorText3')
+        .height('3%')
+        .fontSize(9)
+      Text(this.computedText1.toString()).id('CompuutedMonitorText4')
+        .height('3%')
+        .fontSize(9)
+      Text(this.computedText2.toString()).id('CompuutedMonitorText5')
+        .height('3%')
+        .fontSize(9)
     }
     .width('100%')
   }

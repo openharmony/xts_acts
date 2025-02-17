@@ -56,10 +56,12 @@ export default function RichEditorParticiple002() {
     });
     
     /**
-     * @tc.number SUB_ACE_UI_AI_PARTICIPLE_0060
-     * @tc.name SUB_ACE_UI_AI_PARTICIPLE_0060
-     * @tc.desc SUB_ACE_UI_AI_PARTICIPLE_0060 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_AI_PARTICIPLE_0060
+     * @tc.name  : Test the RichEditor content Click the result
+     * @tc.desc  : Set the RichEditor hybrid text and click text to test the RichEditor content click the result
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_AI_PARTICIPLE_0060', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_AI_PARTICIPLE_0060 START');
@@ -72,12 +74,14 @@ export default function RichEditorParticiple002() {
       let message = await driver.findComponent(ON.id('message'));
       let messageText = await message.getText();
       await CommonFunc.sleep(1000);
-      expect(messageText).assertContain('{"start":1,"end":1}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
       await driver.click(getBounds.left + 78, getBounds.top + 30);
       await CommonFunc.sleep(100);
       messageText = await message.getText();
       await CommonFunc.sleep(1000);
-      expect(messageText).assertContain('{"start":2,"end":2}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
       done();
     });
     

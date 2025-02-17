@@ -11,16 +11,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsJumpBetweenWebTest") {
+group("ActsWebJumpBetweenWebTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "ace_jump_between_web_dev:ActsAceJumpBetweenWebDevTest",
-      "ace_jump_between_web_dev_three:ActsAceJumpBetweenWebDevThreeTest",
-      "ace_jump_between_web_enhanced_one:ActsAceJumpBetweenWebEnhancedTest",
-      "ace_jump_between_web_enhanced_three:ActsAceJumpBetweenWebEnhancedTestThree",
-      "ace_jump_between_web_enhanced_two:ActsAceJumpBetweenWebEnhancedTestTwo",
-      "ace_jump_between_web_webviewController:ActsAceJumpBetweenWebWebViewControllerTest",
+      "ace_jump_between_web_dev:ActsWebJumpBetweenWebDevTest",
+      "ace_jump_between_web_dev_three:ActsWebJumpBetweenWebDevThreeTest",
+      "ace_jump_between_web_enhanced_one:ActsWebJumpBetweenWebEnhancedTest",
+      "ace_jump_between_web_enhanced_three:ActsWebJumpBetweenWebEnhancedThreeTest",
+      "ace_jump_between_web_enhanced_two:ActsWebJumpBetweenWebEnhancedTwoTest",
+      "ace_jump_between_web_webviewController:ActsWebJumpBetweenWebWebViewControllerTest",
     ]
   }
 }

@@ -13,20 +13,20 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_app_assist_suite("ActsInjectJavacriptTwoMainTest") {
+ohos_app_assist_suite("ActsWebInjectJavacriptTwoMainTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsInjectJavacriptTwoMainTest"
+  hap_name = "ActsWebInjectJavacriptTwoMainTest"
   part_name = "webview"
   subsystem_name = "web"
 }
 
-ohos_js_app_suite("ActsInjectJavacriptTwoTest") {
+ohos_js_app_suite("ActsWebInjectJavacriptTwoTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsInjectJavacriptTwoTest"
+  hap_name = "ActsWebInjectJavacriptTwoTest"
   part_name = "webview"
   subsystem_name = "web"
-  deps = [ ":ActsInjectJavacriptTwoMainTest" ]
+  deps = [ ":ActsWebInjectJavacriptTwoMainTest" ]
 }

@@ -27,48 +27,48 @@ struct Storage11 {
 
 
   build() {
-    Column({ space: 20 }) {
+    Column() {
 
-      Text(this.text).key('Storage11Content')
+      Text(this.text).key('Storage11Content').height('5%')
       //link给定的键值key存在，返回对应该键值的属性的双向绑定的数据 47
       Button('Link给定的键值key存在').onClick((event: ClickEvent) => {
         this.text = AppStorage.link('PropA').get() + ''
-      }).key('Storage11Button1')
+      }).key('Storage11Button1').height('5%')
 
       //link给定的键值key不存在，返回undefined
       Button('Link给定的键值key不存在').onClick((event: ClickEvent) => {
         this.text = AppStorage.link('PropCABC') + ''
-      }).key('Storage11Button2')
+      }).key('Storage11Button2').height('5%')
 
       //setAndLink给定的键值key存在，返回对应该键值的属性的双向绑定的数据 47
       Button('SetAndLink key存在').onClick(() => {
         this.text = AppStorage.setAndLink('PropA',5).get() + ''
-      }).key('Storage11Button3')
+      }).key('Storage11Button3').height('5%')
 
       //setAndLink给定的键值key不存在，初始化新的数据 5
       Button('SetAndLink key不存在').onClick(() => {
         this.text = AppStorage.setAndLink('PropD',5).get() + ''
-      }).key('Storage11Button4')
+      }).key('Storage11Button4').height('5%')
 
       //prop给定的键值key存在，返回对应该键值的属性的双向绑定的数据 47
       Button('Prop给定的键值key存在').onClick((event: ClickEvent) => {
         this.text = AppStorage.prop('PropA').get() + ''
-      }).key('Storage11Button5')
+      }).key('Storage11Button5').height('5%')
 
       //prop给定的键值不存在，返回undefined
       Button('Prop给定的键值key不存在').onClick((event: ClickEvent) => {
         this.text = AppStorage.prop('PropF') + ''
-      }).key('Storage11Button6')
+      }).key('Storage11Button6').height('5%')
 
       //setAndProp给定的键值key存在，返回对应该键值的属性的双向绑定的数据 47
       Button('SetAndProp key存在').onClick(() => {
         this.text = AppStorage.SetAndProp('PropA',5).get() + ''
-      }).key('Storage11Button7')
+      }).key('Storage11Button7').height('5%')
 
       //setAndProp给定的键值key不存在，初始化新的数据 5
       Button('setAndProp key不存在').onClick(() => {
         this.text = AppStorage.SetAndProp('PropG',5).get() + ''
-      }).key('Storage11Button8')
+      }).key('Storage11Button8').height('5%')
     }
   }
 }

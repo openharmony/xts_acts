@@ -11,9 +11,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsJumpInWebTest") {
+group("ActsWebJumpInWebTest") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "ace_jump_in_web_cloudservice_controller_seven:ActsAceJumpInWebCloudServiceControllerSevenTest" ]
+    deps = [ "ace_jump_in_web_cloudservice_controller_seven:ActsWebJumpInWebCloudServiceControllerSevenTest" ]
   }
 }

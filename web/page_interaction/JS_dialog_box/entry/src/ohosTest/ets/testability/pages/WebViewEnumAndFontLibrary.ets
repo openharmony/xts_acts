@@ -130,17 +130,21 @@ struct WebViewEnumAndFontLibrary {
           console.info("key==>" + this.str)
           switch (this.str) {
             case "emitFileSelectorModeFileOpenMode": {
-              this.controller.loadUrl("resource://rawfile/indexFile.html")
-              await Utils.sleep(2000);
-              let driver = Driver.create();
-              let button = await driver.findComponent(ON.id('webCenter'));
-              await button.click();
-              await Utils.sleep(2000);
-              Utils.emitEvent(Number(this.FileSelectorMode), 861)
-              this.FileSelectorMode = 0
-              this.controller.loadUrl("resource://rawfile/indexJru.html")
-              await Utils.sleep(2000);
-              break;
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                this.controller.loadUrl("resource://rawfile/indexFile.html")
+                await Utils.sleep(2000);
+                let driver = Driver.create();
+                let button = await driver.findComponent(ON.id('webCenter'));
+                await button.click();
+                await Utils.sleep(2000);
+                Utils.emitEvent(Number(this.FileSelectorMode), 861)
+                this.FileSelectorMode = 0
+                this.controller.loadUrl("resource://rawfile/indexJru.html")
+                await Utils.sleep(2000);
+                break;
+              } else {
+                Utils.emitEvent(0, 861)
+              }
             }
           }
         })

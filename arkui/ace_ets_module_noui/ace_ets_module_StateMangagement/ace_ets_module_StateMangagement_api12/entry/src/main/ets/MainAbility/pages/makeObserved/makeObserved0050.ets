@@ -39,12 +39,14 @@ struct makeObserved0050 {
   build() {
     Column() {
       Text(`${this.message.a}`)
-        .fontSize(50)
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           this.message.a++;
         }).id('makeObserved0050textA')
       Text(`${this.message2.a.id}`)
-        .fontSize(50)
+        .height('3%')
+        .fontSize(9)
         .onClick(() => {
           this.message2.a.id++;
         }).id('makeObserved0050textB')

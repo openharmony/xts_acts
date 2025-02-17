@@ -55,10 +55,12 @@ export default function RichEditorLineMetrics016() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0021
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0021
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0021 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0021
+     * @tc.name  : Test the RichEditor LineMetrics
+     * @tc.desc  : Test RichEditor LineMetrics by using getLineMetrics (0)+getLineMetrics (1), where the first line has content, line breaks, and the second line has content
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0021', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0021 START');

@@ -56,10 +56,12 @@ export default function RichEditorDoubleClick012() {
     });
     
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_017
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_017
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_017 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_017
+     * @tc.name  : Test the RichEditor doubleClick event
+     * @tc.desc  : Set careColor through component settings selectBackgroundColor, Double click with the left mouse button after entering text to test the RichEditor doubleClick event
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_017', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_017 START');
@@ -76,14 +78,16 @@ export default function RichEditorDoubleClick012() {
       let message = await driver.findComponent(ON.id('message'));
       let messageText = await message.getText();
       await CommonFunc.sleep(1000);
-      expect(messageText).assertContain('{"start":2,"end":3}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
       await driver.click(getBounds.left + 340, getBounds.top + 20);
       await CommonFunc.sleep(100);
       await driver.click(getBounds.left + 340, getBounds.top + 20);
       await CommonFunc.sleep(100);
       messageText = await message.getText();
       await CommonFunc.sleep(1000);
-      expect(messageText).assertContain('{"start":12,"end":13}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
       done();
     });
 

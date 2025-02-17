@@ -47,18 +47,18 @@ struct setShadowOffset {
   build() {
     Row() {
       Column() {
-        NodeContainer(this.MyNodeController)
-        Text('getOffset_X:' + this.getX).key('getX')
-        Text('getOffset_Y:' + this.getY).key('getY')
+        NodeContainer(this.MyNodeController).height('30%')
+        Text('getOffset_X:' + this.getX).key('getX').height('5%')
+        Text('getOffset_Y:' + this.getY).key('getY').height('5%')
 
-        Button('get shadowOffset').margin(10)
+        Button('get shadowOffset').margin(10).height('5%')
           .key('get_shadowOffset')
           .onClick(()=>{
             this.getX = renderNode.shadowOffset.x
             this.getY = renderNode.shadowOffset.y
           })
 
-      }.width('100%')
+      }.width('100%').height('100%')
     }.height('100%')
 
   }

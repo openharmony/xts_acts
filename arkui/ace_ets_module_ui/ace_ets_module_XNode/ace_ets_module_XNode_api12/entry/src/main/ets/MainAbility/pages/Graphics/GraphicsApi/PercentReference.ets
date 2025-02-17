@@ -106,21 +106,21 @@ struct Index {
       Column({ space: 12 }) {
         NodeContainer(this.nodeController)
           .width('100%')
-          .height(100)
+          .height('30%')
           .backgroundColor('#FFF0F0F0')
-        Text(this.text1).margin(20).id("percentReference")
-        Button('Invalidate')
+        Text(this.text1).margin(20).id("percentReference").height('5%')
+        Button('Invalidate').height('5%')
           .id("btn")
           .onClick(() => {
             this.nodeController?.rootNode?.addWidth();
             this.nodeController?.rootNode?.invalidate();
             bgColor = Color.Pink
           })
-        Button('UpdateLayout')
+        Button('UpdateLayout').height('5%')
           .onClick(() => {
             this.nodeController?.rootNode?.setNeedsLayout();
           })
-        Button("click to show")
+        Button("click to show").height('5%')
           .id("show")
           .onClick(() => {
             if (bgColor == Color.Pink) {

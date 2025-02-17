@@ -659,5 +659,18 @@ export default function audioDeCoderNdkTest() {
       done();
     });
 
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_AUDIODECODER_OHAudioDecoderOutputFormatChange_0100
+     * @tc.name       : testOHAudioDecoderOutputFormatChange0100
+     * @tc.desc       : test AudioDecoderOutputFormatChange
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAudioDecoderOutputFormatChange0100', 0, async (done: Function) => {
+      expect(audioDecoderAvBuffer.OHAudioDecoderOutputFormatChange()).assertEqual(0);
+      done();
+    });
+
   })
 }

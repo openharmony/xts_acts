@@ -27,7 +27,7 @@ struct RichEditor7 {
   @State IsCallKeepEditableState: boolean = false
   @State start: number = -1
   @State end: number = -1
-  @State content: string = ""
+  @State content: string = ''
   @State selectCaret: number = 0
   @State counter: string = ''
   @State isSetEnterKeyType: boolean = false
@@ -42,9 +42,9 @@ struct RichEditor7 {
       Grid() {
         ForEach(['1', '2', '3', '4', '5', '6', '7', '8', '9', '*', '0', '#'], (item:string) => {
           GridItem() {
-            Button(item + "")
+            Button(item + '')
               .hitTestBehavior(HitTestMode.Block)
-              .width(110).onClick(() => {
+              .width('10%').onClick(() => {
               let CaretOffset = this.controller.getCaretOffset()
               this.controller.addTextSpan(item + '',
                 {
@@ -55,31 +55,30 @@ struct RichEditor7 {
             })
           }
         })
-      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+      }.maxCount(3).columnsGap('1%').rowsGap('1%').padding('1%')
       .borderWidth(1)
 
       Button('x').onClick(() => {
         this.controller.stopEditing()
-      }).margin(50).id("StopEditing")
+      }).id('StopEditing').margin({bottom:10})
     }.backgroundColor(Color.White)
   }
 
   build() {
     Column() {
       Row(){
-        Text('OnEditingChange1:'+this.isEditing1).id("OnEditingChange1")
-      }.margin({top:10}).width("100%")
+        Text('OnEditingChange1:'+this.isEditing1).id('OnEditingChange1').fontSize(10).textAlign(TextAlign.Center)
+      }.width('100%')
       Row(){
-        Text('IsEditing1:'+this.controllerIsEditing1).id("IsEditing1")
-      }.margin({top:10}).width("100%")
-
+        Text('IsEditing1:'+this.controllerIsEditing1).id('IsEditing1').fontSize(10).textAlign(TextAlign.Center)
+      }.width('100%')
       Column(){
-        Text('测试1：').fontWeight(FontWeight.Bold).width('100%')
-        Text('      stopEditing').fontWeight(FontWeight.Bold).width('100%')
+        Text('测试1：').fontWeight(FontWeight.Bold).width('100%').fontSize(10).textAlign(TextAlign.Center)
+        Text('      stopEditing').fontWeight(FontWeight.Bold).width('100%').fontSize(10).textAlign(TextAlign.Center)
 
         RichEditor({ controller: this.controller})
           .width('100%')
-          .height(50)
+          .height('10%')
           .border({ width: 1 })
           .borderWidth(1)
           .borderColor(Color.Red)
@@ -92,21 +91,21 @@ struct RichEditor7 {
           .onEditingChange((isEditing: boolean) => {
             this.isEditing1 = isEditing
             this.controllerIsEditing1 = this.controller.isEditing()
-            console.log("Juan Current Editing Status:" + isEditing)
-            console.log("Juan this.controller.isEditable():" + this.controller.isEditing())
+            console.log('Juan Current Editing Status:' + isEditing)
+            console.log('Juan this.controller.isEditable():' + this.controller.isEditing())
           })
-          .id("RichEditor01")
-      }.margin(10)
+          .id('RichEditor01')
+      }
 
       Column(){
-        Text('测试3：').fontWeight(FontWeight.Bold).width('100%')
-        Text('      调用enterKeyType，onSubmit').fontWeight(FontWeight.Bold).width('100%')
+        Text('测试3：').fontWeight(FontWeight.Bold).width('100%').fontSize(10).textAlign(TextAlign.Center)
+        Text('      调用enterKeyType，onSubmit').fontWeight(FontWeight.Bold).width('100%').fontSize(10).textAlign(TextAlign.Center)
         Row(){
-          Text('OnEditingChange2:'+this.isEditing2).id("OnEditingChange2")
-        }.margin({top:10}).width("100%")
+          Text('OnEditingChange2:'+this.isEditing2).id('OnEditingChange2').fontSize(10).textAlign(TextAlign.Center)
+        }.width('100%')
         Row(){
-          Text('IsEditing2:'+this.controllerIsEditing2).id("IsEditing2")
-        }.margin({top:10}).width("100%")
+          Text('IsEditing2:'+this.controllerIsEditing2).id('IsEditing2').fontSize(10).textAlign(TextAlign.Center)
+        }.width('100%')
 
         Row() {
           Button('回车键类型: ' + this.enterTypeAllStr[this.enterType]).id('EnterType')
@@ -115,33 +114,33 @@ struct RichEditor7 {
               if (this.enterType > (this.enterTypeALl.length - 1)) {
                 this.enterType = 0
               }
-            }).margin(10)
+            }).height('5%')
 
           Button('stopEditing')
             .onClick(() => {
               this.controller2.stopEditing()
-            }).margin(10).key('stopEditing')
+            }).key('stopEditing').height('5%')
         }
 
         Button('isCallKeepEditableState: ' + this.IsCallKeepEditableState)
           .onClick(()=>{
             this.IsCallKeepEditableState = !this.IsCallKeepEditableState
-          }).key('isCallKeepEditableState').margin(10).key('isCallKeepEditableState')
-          .id('IsCallKeepEditableState')
+          }).key('isCallKeepEditableState').key('isCallKeepEditableState')
+          .id('IsCallKeepEditableState').height('5%')
 
         Text('onSubmit参数 enterKey：' + this.enterKey)
-          .width("100%")
+          .width('100%')
+          .fontSize(10)
           .padding(5)
           .textAlign(TextAlign.Center)
           .border({ width: 1 })
           .borderWidth(1)
           .borderColor(Color.Blue)
-          .margin(10)
-          .id("EnterKey")
+          .id('EnterKey')
 
         RichEditor({ controller: this.controller2 })
-          .width("100%")
-          .height(50)
+          .width('100%')
+          .height('10%')
           .border({ width: 1 })
           .borderWidth(1)
           .borderColor(Color.Red)
@@ -153,17 +152,17 @@ struct RichEditor7 {
               event.keepEditableState();
             }
 
-            console.log("trigger richeditor onsubmit: " + enterKey);
+            console.log('trigger richeditor onsubmit: ' + enterKey);
 
           })
           .onEditingChange((isEditing: boolean) => {
             this.isEditing2 = isEditing
             this.controllerIsEditing2 = this.controller2.isEditing()
-            console.log("Juan Current Editing Status:" + isEditing)
-            console.log("Juan this.controller.isEditable():" + this.controller.isEditing())
+            console.log('Juan Current Editing Status:' + isEditing)
+            console.log('Juan this.controller.isEditable():' + this.controller.isEditing())
           })
-          .id("RichEditor02")
+          .id('RichEditor02')
       }.margin(10)
-    }
+    }.height('100%')
   }
 }

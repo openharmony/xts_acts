@@ -15,6 +15,8 @@
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import router from '@ohos.router';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function textSpanFontTest() {
   describe('textSpanFontTest', () => {
@@ -42,6 +44,7 @@ export default function textSpanFontTest() {
       }
       done()
     });
+	let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_font_size').id)
     afterEach(() => {
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
@@ -699,7 +702,8 @@ export default function textSpanFontTest() {
 
           console.info("ArkUX_Stage_Text_Font_FontSize_0600 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
-          expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
+
+		  expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual(px2fp(resourceSize)+'.00fp');
           console.info('ArkUX_Stage_Text_Font_FontSize_0600 END ');
         } catch (err) {
           expect().assertFail()
@@ -721,7 +725,7 @@ export default function textSpanFontTest() {
 
           console.info("ArkUX_Stage_Text_Font_FontSize_0700 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
-          expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
+          expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual(px2fp(resourceSize)+'.00fp');
           console.info('ArkUX_Stage_Text_Font_FontSize_0700 END ');
         } catch (err) {
           expect().assertFail()
@@ -743,7 +747,8 @@ export default function textSpanFontTest() {
 
           console.info("ArkUX_Stage_Text_Font_FontSize_0800 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
-          expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
+
+		  expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual(px2fp(resourceSize)+'.00fp');
           console.info('ArkUX_Stage_Text_Font_FontSize_0800 END ');
         } catch (err) {
           expect().assertFail()
@@ -765,7 +770,8 @@ export default function textSpanFontTest() {
 
           console.info("ArkUX_Stage_Text_Font_FontSize_0900 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
-          expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
+
+		  expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual(px2fp(resourceSize)+'.00fp');
           console.info('ArkUX_Stage_Text_Font_FontSize_0900 END ');
         } catch (err) {
           expect().assertFail()

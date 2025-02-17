@@ -57,10 +57,12 @@ export default function RichEditorThreeStrikes004() {
 
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0011
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0011
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0011 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0011
+     * @tc.name  : Test the RichEditor ThreeStrikes
+     * @tc.desc  : Three mouse clicks to test RichEditor ThreeStripes
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0011', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0011 START');
@@ -85,10 +87,12 @@ export default function RichEditorThreeStrikes004() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0012
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0012
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0012 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0012
+     * @tc.name  : Test the RichEditor ThreeStrikes
+     * @tc.desc  : Four hits to test RichEditor ThreeStripes
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 4
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0012', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_THREESTRIKES_0012 START');

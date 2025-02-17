@@ -55,10 +55,12 @@ export default function RichEditorTextChange003() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0017
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0017
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0017 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0017
+     * @tc.name  : Test the RichEditor TextChange
+     * @tc.desc  : When connecting an external physical keyboard, pulling and retracting the soft keyboard does not affect the editing status to test RichEditor TextChange
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0017', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0017 START');

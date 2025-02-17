@@ -13,5 +13,8 @@
 
 group("ActsAceEtsModuleVideoTest") {
   testonly = true
-  deps = [ "ace_ets_module_video_api12:ActsAceEtsModuleVideoApi12Test" ]
+  deps = [
+    "ace_ets_module_video_api12:ActsAceEtsModuleVideoApi12Test",
+    "ace_ets_module_video_api16:ActsAceEtsModuleVideoApi16Test",
+  ]
 }

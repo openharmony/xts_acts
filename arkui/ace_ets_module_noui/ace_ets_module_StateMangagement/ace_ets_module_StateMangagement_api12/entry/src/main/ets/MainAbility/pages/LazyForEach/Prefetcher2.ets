@@ -122,37 +122,41 @@ struct MyComponent {
   }
 
   build() {
-    Column({ space: 10}){
-      List({ space: 3 }) {
-        LazyForEach(this.data, (item: string) => {
-          ListItem() {
-            Row() {
-              Text(item).fontSize(30)
-                .onAppear(() => {
-                  console.info("appear:" + item)
-                })
-              Image($r('app.media.icon')).width('100vp').height('100vp')
-            }.margin({ left: 10, right: 10 })
-          }
-        }, (item: string) => item)
-      }
-      .width('100%')
-      .height('70%')
-      .borderWidth(1)
-      .cachedCount(5)
-      .onScrollIndex((start: number, end: number) => {
-        this.prefetcher.visibleAreaChanged(start, end)
-      })
+    Column(){
       Text('Prefetcher2')
+        .fontSize(9)
+        .height('3%')
       Text('add' + this.text)
         .id('Prefetcher2_add')
-        .fontSize(25)
+        .fontSize(9)
+        .height('3%')
         .backgroundColor(Color.Pink)
         .onClick(()=>{
           this.data.pushData(`Hello ${this.data.totalCount()}`)
           this.prefetcher.setDataSource(this.data)
           this.text = this.data.totalCount() + ''
         })
+      List() {
+        LazyForEach(this.data, (item: string) => {
+          ListItem() {
+            Row() {
+              Text(item)
+                .fontSize(9)
+                .height('3%')
+                .onAppear(() => {
+                  console.info("appear:" + item)
+                })
+              Image($r('app.media.icon')).width('10%').height('10%')
+            }
+          }
+        }, (item: string) => item)
+      }
+      .width('100%')
+      .borderWidth(1)
+      .cachedCount(5)
+      .onScrollIndex((start: number, end: number) => {
+        this.prefetcher.visibleAreaChanged(start, end)
+      })
     }
   }
 }

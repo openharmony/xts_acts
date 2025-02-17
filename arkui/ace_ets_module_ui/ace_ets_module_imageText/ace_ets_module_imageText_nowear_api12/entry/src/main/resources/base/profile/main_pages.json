@@ -1,0 +1,9 @@
+{
+  "src": [
+  "MainAbility/pages/index/index",
+  "MainAbility/pages/TextArea/textAreaInputTest",
+  "MainAbility/pages/RichEditor/RichEditorApi5",
+  "MainAbility/pages/Search/searchTest",
+  "MainAbility/pages/Text/styledStringChange"
+  ]
+}

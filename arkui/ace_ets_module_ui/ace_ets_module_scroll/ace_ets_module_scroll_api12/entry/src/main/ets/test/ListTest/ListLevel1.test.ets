@@ -306,7 +306,7 @@ export default function listLevel1Test() {
       console.info('listLevel1Test_0800 END');
       done()
     });
-    
+
     /**
      * @tc.number    SUB_ACE_listLevel1Test_0900
      * @tc.desc      test divider endMargin
@@ -483,7 +483,8 @@ export default function listLevel1Test() {
 
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
-      let button: Component = await driver.findComponent(ON.id('GetItemRectButton'));
+      let scrollColumn: Component = await driver.findComponent(ON.type('Scroll'));
+      let button = await scrollColumn.scrollSearch(ON.id('GetItemRectButton'));
       await button.click();
       await CommonFunc.sleep(10000);
       let strJsonRectY: string = getInspectorByKey('itemRectY');
@@ -493,7 +494,7 @@ export default function listLevel1Test() {
       console.info("[listLevel1Test_1300] JSON.parse(strJsonRectWidth) is: " + JSON.stringify(JSON.parse(strJsonRectWidth).$attrs.content));
       console.info("[listLevel1Test_1300] JSON.parse(strJsonRectHeight) is: " + JSON.stringify(JSON.parse(strJsonRectHeight).$attrs.content));
       expect(JSON.parse(strJsonRectY).$attrs.content).assertEqual('itemRectY:5');
-      expect(JSON.parse(strJsonRectWidth).$attrs.content).assertEqual('itemRectWidth:300');
+      expect(JSON.parse(strJsonRectWidth).$attrs.content).assertEqual('itemRectWidth:200');
       expect(JSON.parse(strJsonRectHeight).$attrs.content).assertEqual('itemRectHeight:100');
       console.info('listLevel1Test_1300 END');
       done()
@@ -532,7 +533,8 @@ export default function listLevel1Test() {
       expect(JSON.parse(strJson).$attrs.contentEndOffset).assertEqual("10.000000");
 
       let driver: Driver = Driver.create();
-      let button: Component = await driver.findComponent(ON.id('currentOffsetButton'));
+      let scrollColumn: Component = await driver.findComponent(ON.type('Scroll'));
+      let button = await scrollColumn.scrollSearch(ON.id('currentOffsetButton'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJsonX: string = getInspectorByKey('xoffset');
@@ -591,7 +593,7 @@ export default function listLevel1Test() {
       done()
     });
 
-     /**
+    /**
      * @tc.number    SUB_ACE_listLevel1Test_1600
      * @tc.desc      test ListItem swipeAction
      * @tc.level     Level 1

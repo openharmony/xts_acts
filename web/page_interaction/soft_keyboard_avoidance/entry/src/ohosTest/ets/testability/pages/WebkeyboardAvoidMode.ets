@@ -58,7 +58,7 @@ struct WebkeyboardAvoidMode {
           switch (this.str) {
             case "emitKeyboardAvoidMode0100": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171701)
                   break;
                 }
@@ -80,7 +80,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode0200": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171702)
                   break;
                 }
@@ -102,7 +102,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode0300": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171703)
                   break;
                 }
@@ -124,7 +124,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode0400": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171704)
                   break;
                 }
@@ -146,7 +146,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode0500": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171705)
                   break;
                 }
@@ -168,7 +168,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode0600": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171706)
                   break;
                 }
@@ -190,7 +190,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode0700": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('false', 171707)
                   break;
                 }
@@ -212,7 +212,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode0800": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('false', 171708)
                   break;
                 }
@@ -234,7 +234,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode0900": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('false', 171709)
                   break;
                 }
@@ -256,7 +256,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode1000": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('false', 171710)
                   break;
                 }
@@ -278,7 +278,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode1100": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('false', 171711)
                   break;
                 }
@@ -300,7 +300,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode1200": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('false', 171712)
                   break;
                 }
@@ -322,7 +322,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode1300": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171713)
                   break;
                 }
@@ -344,7 +344,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode1400": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171714)
                   break;
                 }
@@ -366,7 +366,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode1500": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171715)
                   break;
                 }
@@ -388,7 +388,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode1600": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171716)
                   break;
                 }
@@ -410,7 +410,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode1700": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171717)
                   break;
                 }
@@ -432,7 +432,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode1800": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171718)
                   break;
                 }
@@ -454,7 +454,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode1900": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171719)
                   break;
                 }
@@ -476,7 +476,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode2000": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171720)
                   break;
                 }
@@ -498,7 +498,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode2100": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171721)
                   break;
                 }
@@ -520,7 +520,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode2200": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171722)
                   break;
                 }
@@ -542,7 +542,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode2300": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171723)
                   break;
                 }
@@ -564,7 +564,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode2400": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('true', 171724)
                   break;
                 }
@@ -586,7 +586,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode2500": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('false', 171725)
                   break;
                 }
@@ -608,7 +608,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode2600": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('false', 171726)
                   break;
                 }
@@ -630,7 +630,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode2700": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('false', 171727)
                   break;
                 }
@@ -652,7 +652,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode2800": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC")  || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('false', 171728)
                   break;
                 }
@@ -674,7 +674,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode2900": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('false', 171729)
                   break;
                 }
@@ -696,7 +696,7 @@ struct WebkeyboardAvoidMode {
             }
             case "emitKeyboardAvoidMode3000": {
               this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
+                if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                   Utils.emitEvent('false', 171730)
                   break;
                 }

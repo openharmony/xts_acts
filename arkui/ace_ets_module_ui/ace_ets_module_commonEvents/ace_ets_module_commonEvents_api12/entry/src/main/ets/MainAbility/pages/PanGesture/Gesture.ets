@@ -27,9 +27,9 @@ struct PanGestureExample {
       Column() {
         Text('PanGesture offset:\nX: ' + this.offsetX + '\n' + 'Y: ' + this.offsetY)
       }
-      .height(200)
-      .width(300)
-      .padding(20)
+      .height(20)
+      .width('30%')
+      .padding('20%')
       .border({ width: 3 })
       .margin(50)
       .translate({ x: this.offsetX, y: this.offsetY, z: 0 }) // 以组件左上角为坐标原点进行移动

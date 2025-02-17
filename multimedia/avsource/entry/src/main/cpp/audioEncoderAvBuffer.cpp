@@ -242,7 +242,7 @@ static napi_value AudioEncoderStop(napi_env env, napi_callback_info info)
     OH_AudioCodec_Prepare(audioEnc);
     if (OH_AudioCodec_Start(audioEnc) == AV_ERR_OK) {
         checkParam = OH_AudioCodec_Stop(audioEnc);
-        if(checkParam == AV_ERR_OK){
+        if (checkParam == AV_ERR_OK) {
             backParam = SUCCESS;
         }
     }
@@ -269,7 +269,7 @@ static napi_value AudioEncoderFlush(napi_env env, napi_callback_info info)
     OH_AudioCodec_Prepare(audioEnc);
     if (OH_AudioCodec_Start(audioEnc) == AV_ERR_OK) {
         checkParam = OH_AudioCodec_Flush(audioEnc);
-        if(checkParam == AV_ERR_OK){
+        if (checkParam == AV_ERR_OK) {
             backParam = SUCCESS;
             OH_AudioCodec_Stop(audioEnc);
         }
@@ -297,7 +297,7 @@ static napi_value AudioEncoderReset(napi_env env, napi_callback_info info)
     OH_AudioCodec_Prepare(audioEnc);
     if (OH_AudioCodec_Start(audioEnc) == AV_ERR_OK) {
         checkParam = OH_AudioCodec_Reset(audioEnc);
-        if(checkParam == AV_ERR_OK){
+        if (checkParam == AV_ERR_OK) {
             backParam = SUCCESS;
         }
     }
@@ -324,7 +324,7 @@ static napi_value AudioEncoderGetOutputDescription(napi_env env, napi_callback_i
     OH_AudioCodec_Prepare(audioEnc);
     if (OH_AudioCodec_Start(audioEnc) == AV_ERR_OK) {
         checkParam = OH_AudioCodec_GetOutputDescription(audioEnc);
-        if(checkParam != nullptr){
+        if (checkParam != nullptr) {
             backParam = SUCCESS;
             free(checkParam);
         }
@@ -353,9 +353,9 @@ static napi_value AudioEncoderSetParameter(napi_env env, napi_callback_info info
     OH_AudioCodec_Prepare(audioEnc);
     if (OH_AudioCodec_Start(audioEnc) == AV_ERR_OK) {
         format = OH_AudioCodec_GetOutputDescription(audioEnc);
-        if(format != nullptr){
+        if (format != nullptr) {
             checkParam = OH_AudioCodec_SetParameter(audioEnc, format);
-            if(checkParam == AV_ERR_OK){
+            if (checkParam == AV_ERR_OK) {
                 backParam = SUCCESS;
                 free(format);
             }

@@ -364,6 +364,26 @@ Camera_ErrorCode NDKCamera::GetCameraOrientation(void)
     return ret_;
 }
 
+Camera_ErrorCode NDKCamera::GetCameraHostName(void)
+{
+    ret_ = OH_CameraDevice_GetHostDeviceName(&cameras_[cameraDeviceIndex_], &hostName_);
+    if (ret_ != CAMERA_OK) {
+        LOG("ndkXTS OH_CameraDevice_GetCameraHostName failed.");
+        return CAMERA_SERVICE_FATAL_ERROR;
+    }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::GetCameraHostType(void)
+{
+    ret_ = OH_CameraDevice_GetHostDeviceType(&cameras_[cameraDeviceIndex_], &hostType_);
+    if (ret_ != CAMERA_OK) {
+        LOG("ndkXTS OH_CameraDevice_GetCameraHostType failed.");
+        return CAMERA_SERVICE_FATAL_ERROR;
+    }
+    return ret_;
+}
+
 Camera_ErrorCode NDKCamera::GetSupportedOutputCapability(void)
 {
     if (cameraManager_ == nullptr) {

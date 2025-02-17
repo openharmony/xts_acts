@@ -39,12 +39,12 @@ struct setPosition {
   build() {
     Row() {
       Column() {
-        NodeContainer(this.MyNodeController)
-        Text('setPositionXStatus:' + this.getX).margin(10)
+        NodeContainer(this.MyNodeController).height('30%')
+        Text('setPositionXStatus:' + this.getX).margin(10).height('5%')
           .key('x_status')
-        Text('setPositionYStatus:' + this.getY).margin(10)
+        Text('setPositionYStatus:' + this.getY).margin(10).height('5%')
           .key('y_status')
-        Button('click to set')
+        Button('click to set').height('5%')
           .onClick(() => {
             renderNode.position = { x: 100, y: 100 }
             renderNode.invalidate()
@@ -52,7 +52,7 @@ struct setPosition {
             this.getY = renderNode.position.y
           })
           .id('setPosition')
-      }.width('100%')
+      }.width('100%').height('100%')
     }.height('100%')
   }
 }

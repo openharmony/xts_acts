@@ -55,10 +55,12 @@ export default function RichEditorSetStyledString011() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0024
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0024
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0024 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0024
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Verify property string support for onSelectionChange to test RichEditor onCopy
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0024', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0024 START');
@@ -83,10 +85,12 @@ export default function RichEditorSetStyledString011() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0021
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0021
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0021 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0021
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Verify property string support for onSelectionChange to test RichEditor onpaste
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0021', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0021 START');
@@ -101,10 +105,12 @@ export default function RichEditorSetStyledString011() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0023
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0023
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0023 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0023
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Verify property string support for onSelectionChange to test RichEditor onCut
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0023', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0023 START');

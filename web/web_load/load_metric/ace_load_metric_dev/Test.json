@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAceLoadMetricDevTest.hap"
+                "ActsWebLoadMetricDevTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

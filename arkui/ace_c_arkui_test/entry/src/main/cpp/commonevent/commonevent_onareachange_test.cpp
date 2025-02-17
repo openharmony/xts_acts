@@ -29,7 +29,7 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, uint32_t initialColo
 {
     auto nodeHandle = nodeAPI->createNode(ARKUI_NODE_IMAGE_SPAN);
 
-    ArkUI_NumberValue width_value[] = {{.f32 = SIZE_100}};
+    ArkUI_NumberValue width_value[] = {{.f32 = SIZE_40}};
     ArkUI_AttributeItem width_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(nodeHandle, NODE_WIDTH, &width_item);
     nodeAPI->setAttribute(nodeHandle, NODE_HEIGHT, &width_item);
@@ -82,7 +82,7 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
 
     if (eventId == ON_CLICK_EVENT_ID_OFFSET) {
         g_hasOnAreaChangeInit = true;
-        ArkUI_NumberValue offset_value[] = {{.f32 = SIZE_100}, {.f32 = SIZE_100}};
+        ArkUI_NumberValue offset_value[] = {{.f32 = SIZE_100}, {.f32 = SIZE_20}};
         ArkUI_AttributeItem offset_item = {offset_value, sizeof(offset_value) / sizeof(ArkUI_NumberValue)};
         nodeAPI->setAttribute(nodeHandler, NODE_OFFSET, &offset_item);
     }

@@ -55,10 +55,12 @@ export default function RichEditorOnWillChange019() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0013
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0013
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0013 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0013
+     * @tc.name  : Test the RichEditor onWillChange callback
+     * @tc.desc  : When disabling pasting, select a piece of text to copy and paste to test RichEditor on WillChange callback
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0013', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0013 START');

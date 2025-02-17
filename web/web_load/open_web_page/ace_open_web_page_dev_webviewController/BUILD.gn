@@ -13,10 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsAceOpenWebPageDevWebViewControllerTest") {
+ohos_js_app_suite("ActsWebOpenWebPageDevWebViewControllerTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceOpenWebPageDevWebViewControllerTest"
+  hap_name = "ActsWebOpenWebPageDevWebViewControllerTest"
   part_name = "webview"
 }

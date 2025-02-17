@@ -50,16 +50,16 @@ struct SwiperExample {
   }
 
   build() {
-    Column({ space: 5 }) {
-      Text(`index: ${this.index}`).id('swiperText')
+    Column() {
+      Text(`index: ${this.index}`).id('swiperText').height('5%')
       Swiper(this.swiperController) {
         LazyForEach(this.data, (item: string) => {
           Text(item.toString())
             .width('90%')
-            .height(160)
+            .height('5%')
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
-            .fontSize(30)
+            .fontSize(9)
         }, (item: string) => item)
       }
       .cachedCount(2)
@@ -106,17 +106,21 @@ struct SwiperExample {
         console.info('current offset: ' + extraInfo.currentOffset)
       })
 
-      Row({ space: 12 }) {
+      Row() {
         Button('showNext')
+          .height('5%')
+          .width('50%')
           .onClick(() => {
             this.swiperController.showNext()
           }).id('swiperButton')
         Button('showPrevious')
+          .height('5%')
+          .width('50%')
           .onClick(() => {
             this.swiperController.showPrevious()
           }).id('swiperButton1')
-      }.margin(5)
+      }
     }.width('100%')
-    .margin({ top: 5 })
+    
   }
 }

@@ -55,10 +55,12 @@ export default function RichEditorUxConFormance006() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_UXCONFORMANCE_0010
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_UXCONFORMANCE_0010
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_UXCONFORMANCE_0010 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_UXCONFORMANCE_0010
+     * @tc.name  : Test the RichEditor UXConformance
+     * @tc.desc  : Validate paragraph attributes to test RichEditor UXConformance
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_UXCONFORMANCE_0010', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_UXCONFORMANCE_0010 START');

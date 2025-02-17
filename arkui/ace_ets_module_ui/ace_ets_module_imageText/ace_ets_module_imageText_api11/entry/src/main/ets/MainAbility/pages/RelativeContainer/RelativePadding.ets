@@ -49,8 +49,7 @@ struct RelativePadding {
           .id("RelativePaddingRow_3")
       }
       .id('RelativePadding')
-      .width(400).height(400)
-      .margin({left: 50, top: 50})
+      .width('100%').height('80%')
       .backgroundColor(Color.Grey)
       .padding({ top: this.RelativePad })
       .guideLine([

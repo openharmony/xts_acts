@@ -13,10 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsAceLoadMetricEnhancedTestThree") {
+ohos_js_app_suite("ActsWebLoadMetricEnhancedThreeTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceLoadMetricEnhancedTestThree"
+  hap_name = "ActsWebLoadMetricEnhancedThreeTest"
   part_name = "webview"
+  subsystem_name = "web"
 }

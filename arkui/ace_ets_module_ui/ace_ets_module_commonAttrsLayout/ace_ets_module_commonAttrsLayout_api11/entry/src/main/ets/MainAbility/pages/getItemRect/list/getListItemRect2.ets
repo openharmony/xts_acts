@@ -48,6 +48,17 @@ struct getListItemRect2 {
 
   build() {
     Column() {
+      Button('点击获取信息').onClick((event: ClickEvent) => {
+        this.x = this.listScroller.getItemRect(this.index).x
+        this.y = this.listScroller.getItemRect(this.index).y
+        this.width1 = this.listScroller.getItemRect(this.index).width
+        this.height1 = this.listScroller.getItemRect(this.index).height
+      }).id('getListItemRect2_button')
+      Text('' + this.x).key('getListItemRect2_text1')
+      Text('' + this.y).key('getListItemRect2_text2')
+      Text('' + this.width1).key('getListItemRect2_text3')
+      Text('' + this.height1).key('getListItemRect2_text4')
+
       List({ space: 20, initialIndex: 0, scroller: this.listScroller }) {
 
         ListItem() {
@@ -81,17 +92,6 @@ struct getListItemRect2 {
       .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
       .width(300)
       .height(500)
-
-      Button('点击获取信息').onClick((event: ClickEvent) => {
-        this.x = this.listScroller.getItemRect(this.index).x
-        this.y = this.listScroller.getItemRect(this.index).y
-        this.width1 = this.listScroller.getItemRect(this.index).width
-        this.height1 = this.listScroller.getItemRect(this.index).height
-      }).id('getListItemRect2_button')
-      Text('' + this.x).key('getListItemRect2_text1')
-      Text('' + this.y).key('getListItemRect2_text2')
-      Text('' + this.width1).key('getListItemRect2_text3')
-      Text('' + this.height1).key('getListItemRect2_text4')
 
     }
     .width('100%')

@@ -72,7 +72,7 @@ struct tabsCallBack6Example {
         .backgroundColor(0xF1F3F5)
       }
       .width('100%')
-      .height('40%')
+      .height('60%')
     }
     .width('100%')
     .height('100%')

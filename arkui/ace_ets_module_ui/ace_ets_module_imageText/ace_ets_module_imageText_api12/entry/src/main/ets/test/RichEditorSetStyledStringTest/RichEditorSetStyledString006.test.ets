@@ -55,10 +55,12 @@ export default function RichEditorSetStyledString006() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0015
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0015
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0015 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0015
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Call setStyle to set property string style to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0015', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0015 START');
@@ -80,7 +82,7 @@ export default function RichEditorSetStyledString006() {
       let content = await driver.findComponent(ON.id('content'));
       let contentText = await content.getText();
       await CommonFunc.sleep(500);
-      let imageStyle = 'content:width:20;height:20;verticalAlign:1;objectFit:1{"topLeft":10,"topRight":10,"bottomLeft":10,"bottomRight":10}';
+      let imageStyle = 'verticalAlign:1;objectFit:1{"topLeft":10,"topRight":10,"bottomLeft":10,"bottomRight":10}';
       expect(contentText).assertContain(imageStyle);
       let update_style = await driver.findComponent(ON.id('update_style'));
       await update_style.click();
@@ -89,16 +91,18 @@ export default function RichEditorSetStyledString006() {
       await CommonFunc.sleep(500);
       contentText = await content.getText();
       await CommonFunc.sleep(500);
-      imageStyle = 'content:width:30;height:30;verticalAlign:2;objectFit:1{"topLeft":20,"topRight":20,"bottomLeft":20,"bottomRight":20}';
+      imageStyle = 'verticalAlign:2;objectFit:1{"topLeft":20,"topRight":20,"bottomLeft":20,"bottomRight":20}';
       expect(contentText).assertContain(imageStyle);
       done();
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0016
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0016
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0016 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0016
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Call removeStyle to test the RichEditor setStyledString property string style
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0016', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0016 START');

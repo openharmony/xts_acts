@@ -24,6 +24,8 @@ import prompt from '@ohos.prompt';
 import fs from '@ohos.file.fs';
 import screen from '@ohos.screen';
 import DateTimeUtil from '../model/DateTimeUtil';
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const CameraSize = {
   WIDTH: 1280,
@@ -303,6 +305,17 @@ class CameraService {
     }
   }
 
+  setPreviewRotation(previewRotation) {
+    try {
+      Logger.info(this.tag, `setPreviewRotation: ${previewRotation}`);
+      this.previewOutput?.setPreviewRotation(previewRotation, false);
+    } catch (error) {
+      // 失败返回错误码error.code并处理
+      let err = error as BusinessError;
+      console.error(`The previewOutput.setPreviewRotation call failed. error code: ${err.code}`);
+    }
+  }
+
   // 变焦
   setZoomRatioFn(num) {
     try {
@@ -380,11 +393,14 @@ class CameraService {
   }
 
   // 拍照
-  async takePicture(imageRotation?) {
+  async takePicture(deviceDegree) {
+    let imageRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
     try {
+      imageRotation = this.photoOutput.getPhotoRotation(deviceDegree);
+      Logger.info(this.tag, "imageRotation is " + imageRotation);
       Logger.info(this.tag, 'takePicture start')
       let photoSettings = {
-        rotation: imageRotation ? Number(imageRotation) : 0,
+        rotation: Number(imageRotation),
         quality: 1,
         location: {
           latitude: 0,

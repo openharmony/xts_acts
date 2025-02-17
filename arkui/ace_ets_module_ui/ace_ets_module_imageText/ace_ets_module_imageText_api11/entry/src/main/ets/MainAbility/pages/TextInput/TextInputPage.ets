@@ -114,8 +114,7 @@ struct TextInputPage {
         .textAlign(this.textAlign)
         .key('textInput')
         .width(400)
-        .height(40)
-        .margin(2)
+        .height('5%')
         .fontSize(14)
         .fontColor(Color.Black)
         .onChange((value: string) => {
@@ -136,20 +135,19 @@ struct TextInputPage {
         .onPaste((value: string) => {
           this.onPaste = value
         })
-      Text(this.text).fontSize(20).margin(2).key('text')
+      Text(this.text).fontSize(10).key('text').height('5%')
       Button('Set caretPosition 1')
         .key('button')
-        .margin(2)
         .onClick(() => {
           // 将光标移动至第一个字符后
           this.controller.caretPosition(1)
         })
+        .height('5%')
       // 密码输入框
       TextInput({ placeholder: 'input your password...' })
         .key('password')
         .width(400)
-        .height(40)
-        .margin(2)
+        .height('5%')
         .type(InputType.Password)
         .maxLength(9)
         .showPasswordIcon(true)
@@ -157,15 +155,14 @@ struct TextInputPage {
       TextInput({ placeholder: 'inline style' })
         .key('input')
         .width(400)
-        .height(50)
-        .margin(2)
+        .height('5%')
         .borderRadius(0)
         .style(TextInputStyle.Inline)
-      Text('onSubmit:' + this.onSubmit).fontSize(20).margin(1).key('submit')
-      Text('onEditChange:' + this.onEditChange).fontSize(20).margin(1).key('editChange')
-      Text('onCopy:' + this.onCopy).fontSize(20).margin(1).key('copy')
-      Text('onCut:' + this.onCut).fontSize(20).margin(1).key('cut')
-      Text('onPaste:' + this.onPaste).fontSize(20).margin(1).key('paste')
+      Text('onSubmit:' + this.onSubmit).fontSize(10).margin(1).key('submit').height('5%')
+      Text('onEditChange:' + this.onEditChange).fontSize(10).margin(1).key('editChange').height('5%')
+      Text('onCopy:' + this.onCopy).fontSize(10).margin(1).key('copy').height('5%')
+      Text('onCut:' + this.onCut).fontSize(10).margin(1).key('cut').height('5%')
+      Text('onPaste:' + this.onPaste).fontSize(10).margin(1).key('paste').height('5%')
     }.width('100%')
   }
 }

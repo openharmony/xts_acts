@@ -29,26 +29,36 @@ struct AlphabetAlignStyle {
   build() {
     Column() {
       Row() {
-        Button('Auto').id('Auto').onClick(() => {
-          this.currentDirection = Direction.Auto
-        }).backgroundColor(this.currentDirection == Direction.Auto ? Color.Red : Color.Blue)
-        Button('Rtl').id('Rtl').onClick(() => {
-          this.currentDirection = Direction.Rtl
-        }).backgroundColor(this.currentDirection == Direction.Rtl ? Color.Red : Color.Blue)
-        Button('Ltr').id('Ltr').onClick(() => {
-          this.currentDirection = Direction.Ltr
-        }).backgroundColor(this.currentDirection == Direction.Ltr ? Color.Red : Color.Blue)
+        Button('Auto').id('Auto')
+          .height('5%')
+          .onClick(() => {
+            this.currentDirection = Direction.Auto
+          }).backgroundColor(this.currentDirection == Direction.Auto ? Color.Red : Color.Blue)
+        Button('Rtl').id('Rtl')
+          .height('5%')
+          .onClick(() => {
+            this.currentDirection = Direction.Rtl
+          }).backgroundColor(this.currentDirection == Direction.Rtl ? Color.Red : Color.Blue)
+        Button('Ltr').id('Ltr')
+          .height('5%')
+          .onClick(() => {
+            this.currentDirection = Direction.Ltr
+          }).backgroundColor(this.currentDirection == Direction.Ltr ? Color.Red : Color.Blue)
       }.margin({
         top: 8
       })
 
       Row() {
-        Button('START').id('START').onClick(() => {
-          this.indexerAlign = IndexerAlign.START
-        }).backgroundColor(this.indexerAlign == IndexerAlign.START ? Color.Red : Color.Blue)
-        Button('END').id('END').onClick(() => {
-          this.indexerAlign = IndexerAlign.END
-        }).backgroundColor(this.indexerAlign == IndexerAlign.END ? Color.Red : Color.Blue)
+        Button('START').id('START')
+          .height('5%')
+          .onClick(() => {
+            this.indexerAlign = IndexerAlign.START
+          }).backgroundColor(this.indexerAlign == IndexerAlign.START ? Color.Red : Color.Blue)
+        Button('END').id('END')
+          .height('5%')
+          .onClick(() => {
+            this.indexerAlign = IndexerAlign.END
+          }).backgroundColor(this.indexerAlign == IndexerAlign.END ? Color.Red : Color.Blue)
       }
       .margin({
         top: 8,
@@ -116,6 +126,7 @@ struct AlphabetAlignStyle {
             .alignStyle(this.indexerAlign)
             .popupItemBorderRadius(24)
             .itemBorderRadius(14)
+            .popupPosition({ x: '30%', y: '10%' })
             .popupBackgroundBlurStyle(BlurStyle.NONE)
             .popupTitleBackground(0xCCCCCC)
             .popupSelectedColor(0x00FF00)

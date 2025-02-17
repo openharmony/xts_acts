@@ -2,6 +2,13 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/buttonType/buttonTypeApi",
-        "MainAbility/pages/timePicker/enableCascadeTest"
+        "MainAbility/pages/checkbox/checkboxNode",
+        "MainAbility/pages/checkboxGroup/checkboxGroupNode",
+        "MainAbility/pages/radio/radioNode",
+        "MainAbility/pages/rating/ratingNode",
+        "MainAbility/pages/select/selectNode",
+        "MainAbility/pages/slider/sliderNode",
+        "MainAbility/pages/timePicker/enableCascadeTest",
+        "MainAbility/pages/toggle/toggleNode"
     ]
 }

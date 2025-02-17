@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAceJumpBetweenWebDevTest.hap"
+                "ActsWebJumpBetweenWebDevTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

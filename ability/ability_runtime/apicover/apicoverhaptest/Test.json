@@ -19,6 +19,11 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        }
+        },{
+          "type": "ShellKit",
+          "run-command": [
+              "uitest dumpLayout"
+          ]
+      }
     ]
 }

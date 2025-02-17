@@ -83,6 +83,10 @@
     {
       "name": "Divider_endMargin",
       "value": "5px"
+    },
+    {
+      "name": "fontfamily_1",
+      "value": "HarmonyOS Sans"
     }
   ]
 }

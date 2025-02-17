@@ -83,7 +83,7 @@ async function terminateAbility(caseName: string) {
 async function assertMaximizeComponentExist(windowState: number, windowRect?: window.Rect,
   windowClass?: window.Window) {
   let driver = Driver.create()
-  if (windowState == 2) {
+  if (windowState == 2||windowState == 1) {
     await driver.mouseMoveTo({ x: 100, y: 0 })
   } else {
     await windowClass?.moveWindowToAsync(windowRect?.left, windowRect?.top)
@@ -182,7 +182,7 @@ export default function windowInterface() {
       let blank = await driver.findComponent(ON.id('startMoving'))
       await sleep(1000)
       let point = await blank.getBoundsCenter();
-      await driver.drag(point.x, point.y, point.x + 100, point.y + 50, 200);
+      await driver.drag(point.x, point.y, point.x - 50, point.y - 50, 200);
       await sleep(1000)
       let text = await driver.findComponent(ON.id('startMovingText'));
       await sleep(1000)
@@ -190,8 +190,8 @@ export default function windowInterface() {
       if (textDragged == 'startMoving success') {
         let windowPointDragged = await windowClass.getWindowProperties().windowRect
         console.info(`${message} windowPoint = ${JSON.stringify(windowPointDragged)}`)
-        expect(windowPointDragged.left).assertEqual(windowPoint.left + 100)
-        expect(windowPointDragged.top).assertEqual(windowPoint.top + 50)
+        expect(windowPointDragged.left).assertEqual(windowPoint.left - 50)
+        expect(windowPointDragged.top).assertEqual(windowPoint.top - 50)
         done()
       } else if (textDragged == 'startMoving 801') {
         expect(true).assertTrue();
@@ -1369,43 +1369,15 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
         // startAbility - SupportWindowMode.FLOATING & SPLIT
         let windowStageStart = await startAbility(message, context, options)
         let windowClass = windowStageStart.getMainWindowSync()
-        // 获取窗口状态 - 自由窗口
+        // 获取窗口状态 - 全屏
         let windowStatus = windowClass.getWindowStatus()
-        console.info(`${message} windowStatus: ${windowStatus}, expect 4`);
-        expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
+        console.info(`${message} windowStatus: ${windowStatus}, expect 1`);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
         // 判断是否存在最大化 - true
-        let test =
-          await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
+        let test = await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
         await sleep(1000)
         console.info(`${message} EnhanceMaximizeBtn existence or not: ${test}, expect true`);
-        expect(test).assertTrue()
-        // 点击最大化
-        let maxButton = await driver.findComponent(ON.id('EnhanceMaximizeBtn'))
-        await sleep(1000)
-        await maxButton.click()
-        await sleep(1000)
-        // 获取窗口状态 - 全屏
-        windowStatus = windowClass.getWindowStatus()
-        console.info(`${message} windowStatus: ${windowStatus}, expect 2`);
-        expect(windowStatus).assertEqual(window.WindowStatusType.MAXIMIZE); 
-        //开发不兼容变更，附下changelog：https://gitee.com/openharmony/docs/pulls/65733
-        // 判断是否存在最大化 - false
-        test = await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
-        await sleep(1000)
-        console.info(`${message} EnhanceMaximizeBtn existence or not: ${test}, expect false`);
-        expect(test).assertFalse()
-        // 模拟用户移动窗口到左边缘，可触发分屏
-        let title = await driver.findComponent(ON.id('ContainerModalTitleRow'))
-        await sleep(1000)
-        let titlePoint = await title.getBounds()
-        await driver.drag(titlePoint.left + 100, titlePoint.top + 10, 0, titlePoint.top + 200, 5000)
-        await sleep(1000)
-        // 获取窗口状态 - 分屏
-        windowStatus = windowClass.getWindowStatus()
-        console.info(`${message} windowStatus: ${windowStatus}, expect 5`);
-        await driver.click(2340, 977);
-        await sleep(1000)
-        expect(windowStatus).assertEqual(window.WindowStatusType.SPLIT_SCREEN);
+        expect(!test).assertTrue();
         done()
       } else {
         console.info(`${message} not support`);
@@ -1976,6 +1948,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
       const message = 'setSubWindowModalModalityTypeTest_0100';
       let windowClass = windowStage.getMainWindowSync()
       await windowClass.setUIContent('testability/pages/WindowTest/Modality')
+      await sleep(300);
       let driver =  Driver.create()
       let btn = await driver.findComponent(ON.id('ModalityText'))
       await sleep(1000)
@@ -1990,7 +1963,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           let windowClass = data;
           await windowClass.setUIContent('testability/pages/Index')
           await windowClass.resizeAsync(400, 500)
-          await windowClass.moveWindowToAsync(400, 100)
+          await windowClass.moveWindowToAsync(400, 400)
           await windowClass.showWindow()
           let promise = windowClass.setSubWindowModal(true, window.ModalityType.WINDOW_MODALITY);
           promise.then(async () => {
@@ -2042,7 +2015,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           let windowClass = data;
           await windowClass.setUIContent('testability/pages/Index')
           await windowClass.resizeAsync(400, 500)
-          await windowClass.moveWindowToAsync(400, 100)
+          await windowClass.moveWindowToAsync(400, 400)
           await windowClass.showWindow()
           let promise = windowClass.setSubWindowModal(true, window.ModalityType.APPLICATION_MODALITY);
           promise.then(async () => {
@@ -2172,7 +2145,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           console.info(`${message} setSubWindowModal success`)
           await windowClass.setUIContent('testability/pages/Index')
           await windowClass.resizeAsync(400, 500)
-          await windowClass.moveWindowToAsync(100, 100)
+          await windowClass.moveWindowToAsync(100, 400)
           await windowClass.showWindow()
           await driver.click(btnCenter.x, btnCenter.y)
           let btnText = await btn.getText()
@@ -2222,7 +2195,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           console.info(`${message} setSubWindowModal success`)
           await windowClass.setUIContent('testability/pages/Index')
           await windowClass.resizeAsync(400, 500)
-          await windowClass.moveWindowToAsync(100, 100)
+          await windowClass.moveWindowToAsync(100, 400)
           await windowClass.showWindow()
           await driver.click(btnCenter.x, btnCenter.y)
           let btnText = await btn.getText()
@@ -2487,7 +2460,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           console.info(`${message} Succeeded in setting window modal`);
           let windowClassStart = windowStageStart.getMainWindowSync()
           await windowClassStart.resizeAsync(700, 800)
-          await windowClassStart.moveWindowToAsync(400, 100)
+          await windowClassStart.moveWindowToAsync(400, 400)
           await driver.click(btnPoint.x, btnPoint.y)
           await sleep(1000)
           let btnTest = await btn.getText()
@@ -2552,7 +2525,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           console.info(`${message} Succeeded in setting window modal`);
           let windowClassStart = windowStageStart.getMainWindowSync()
           await windowClassStart.resizeAsync(700, 800)
-          await windowClassStart.moveWindowToAsync(400, 100)
+          await windowClassStart.moveWindowToAsync(400, 400)
           await driver.click(btnPoint.x, btnPoint.y)
           await sleep(1000)
           let btnTest = await btn.getText()

@@ -36,16 +36,16 @@ struct setClipToFrame {
   build() {
     Row() {
       Column() {
-        NodeContainer(this.MyNodeController)
-        Text('SetClipStatus:' + this.setClipToFrame).margin(10)
+        NodeContainer(this.MyNodeController).height('30%')
+        Text('SetClipStatus:' + this.setClipToFrame).margin(10).height('5%')
           .key('ClipToFrame_status')
-        Button('Click to set')
+        Button('Click to set').height('5%')
           .onClick(() => {
             renderNode.clipToFrame = true
             this.setClipToFrame = renderNode.clipToFrame
           })
           .id('setClipToFrame')
-      }.width('100%')
+      }.width('100%').height('100%')
     }.height('100%')
   }
 }

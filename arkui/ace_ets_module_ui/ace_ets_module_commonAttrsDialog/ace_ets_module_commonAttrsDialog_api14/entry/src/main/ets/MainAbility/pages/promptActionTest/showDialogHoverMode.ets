@@ -22,13 +22,10 @@ struct showDialogHoverMode {
   @State hoverModeArea: HoverModeAreaType = HoverModeAreaType.TOP_SCREEN
 
   build() {
-    Column({space:10}) {
-      Text('enableHoverMode ' + this.enableHoverMode).id('text')
-      Text('hoverModeArea ' + this.hoverModeArea).id('text1')
-      Text('enableHoverMode ' + this.enableHoverMode+' hoverModeArea ' + this.hoverModeArea).id('text2')
+    Column({ space: 5 }) {
       Button('default hoverModeArea')
+        .height('8%')
         .id('showDialog1')
-        .fontSize(20)
         .onClick(() => {
           try {
             promptAction.showDialog({
@@ -38,10 +35,6 @@ struct showDialogHoverMode {
               buttons: [
                 {
                   text: 'button1',
-                  color: '#000000'
-                },
-                {
-                  text: 'button2',
                   color: '#000000'
                 }
               ]
@@ -59,8 +52,8 @@ struct showDialogHoverMode {
           };
         })
       Button('Show dialog')
+        .height('8%')
         .id('showDialog')
-        .fontSize(20)
         .onClick(() => {
           try {
             promptAction.showDialog({
@@ -71,10 +64,6 @@ struct showDialogHoverMode {
               buttons: [
                 {
                   text: 'button1',
-                  color: '#000000'
-                },
-                {
-                  text: 'button2',
                   color: '#000000'
                 }
               ]
@@ -91,21 +80,28 @@ struct showDialogHoverMode {
             console.error(`showDialog args error code is ${code}, message is ${message}`);
           };
         })
-      Button('init').id('init').onClick(() => {
-        this.enableHoverMode = false
-        this.hoverModeArea = HoverModeAreaType.TOP_SCREEN
-      })
+      Text('enableHoverMode ' + this.enableHoverMode).id('text')
+      Text('hoverModeArea ' + this.hoverModeArea).id('text1')
+      Text('enableHoverMode ' + this.enableHoverMode + ' hoverModeArea ' + this.hoverModeArea).id('text2')
+      Button('init').id('init')
+        .height('8%')
+        .onClick(() => {
+          this.enableHoverMode = false
+          this.hoverModeArea = HoverModeAreaType.TOP_SCREEN
+        })
       Button('change enableHoverMode ' + this.enableHoverMode)
+        .height('8%')
         .id('changeEnableHoverMode')
         .onClick(() => {
           this.enableHoverMode = !this.enableHoverMode
         })
       Button('change hoverModeArea ' + this.hoverModeArea)
+        .height('8%')
         .id('changeHoverModeArea')
         .onClick(() => {
           this.hoverModeArea = HoverModeAreaType.BOTTOM_SCREEN
         })
-
-    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+    }.justifyContent(FlexAlign.Center)
+    .height('100%').width('100%')
   }
 }

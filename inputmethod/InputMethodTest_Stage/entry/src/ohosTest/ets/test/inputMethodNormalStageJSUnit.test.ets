@@ -25,31 +25,26 @@ export default function inputMethodNormalStageJSUnit() {
      * beforeAll: Test case-level clearance conditions, which are executed after each test case is executed.
      */
     beforeAll(async(done: Function) => {
-      if(deviceinfo.deviceType === 'wearable'){
-        let inputMethodSetting = inputMethod.getSetting();
-        console.info('====> getSetting success!')
-        inputMethodSetting.listInputMethod((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
-          let t = setTimeout(async ()=>{
-            console.info('====>Succeeded in listing inputMethod: ' + JSON.stringify(data));
-            const ATTRIBUTE: inputMethod.TextConfig = {
-              inputAttribute: {
-                textInputType: 0, enterKeyType: 0
-              }
+      let inputMethodSetting = inputMethod.getSetting();
+      console.info('====> getSetting success!')
+      inputMethodSetting.listInputMethod((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
+        let t = setTimeout(async ()=>{
+          console.info('====>Succeeded in listing inputMethod: ' + JSON.stringify(data));
+          const ATTRIBUTE: inputMethod.TextConfig = {
+            inputAttribute: {
+              textInputType: 0, enterKeyType: 0
             }
-            try {
-              let data = await inputMethod.getController().attach(false, ATTRIBUTE);
-              console.info(`====> execution success, data: ${JSON.stringify(data)}`);
-            } catch (error) {
-              console.info(`====> catch error, error: [${error.code}, ${error.message}]`);
-            }
-            clearTimeout(t);
-            done();
-          }, 3000)
-        });
-      }else{
-        console.info('====>deviceType is not wearable!')
-        done();
-      }
+          }
+          try {
+            let data = await inputMethod.getController().attach(false, ATTRIBUTE);
+            console.info(`====> execution success, data: ${JSON.stringify(data)}`);
+          } catch (error) {
+            console.info(`====> catch error, error: [${error.code}, ${error.message}]`);
+          }
+          clearTimeout(t);
+          done();
+        }, 3000)
+      });
     })
 
     /*

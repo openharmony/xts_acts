@@ -20,6 +20,13 @@ import minMaxFontSize from './TextTest/minMaxFontSize.test';
 import editMenuOptions from './TextTest/editMenuOptions.test';
 import marqueeOptionsTest1 from './TextTest/marqueeOptions1.test';
 import marqueeOptionsTest2 from './TextTest/marqueeOptions2.test';
+import TextInputStopBackPressTest from './TextInputTest/TextInputStopBackPress.test';
+import TextAreaStopBackPressTest from './TextAreaTest/TextAreaStopBackPress.test';
+import SearchStopBackPressTest from './Search/SearchStopBackPress.test';
+import addOrDelText from './TextAreaTest/addOrDelText.test';
+import TextOnChangeOptionsTest from './TextChangeTest/TextOnChangeOptionsTest.test';
+import TextOnWillChangeOptionsTest from './TextChangeTest/TextOnWillChangeOptionsTest.test';
+import bindSelectionMenuTest from './SelectionMenuTest/bindSelectionMenuTest.test';
 
 import textAreaEllipsisModeTest from './EllipsisModeTest/textAreaEllipsisModeTest.test';
 import textInputEllipsisModeTest from './EllipsisModeTest/textInputEllipsisModeTest.test';
@@ -37,8 +44,14 @@ export default function testsuite() {
   minMaxFontSize();
   editMenuOptions();
   marqueeOptionsTest1();
-  marqueeOptionsTest2();
-  
+  marqueeOptionsTest2(); 
+  TextInputStopBackPressTest();
+  TextAreaStopBackPressTest();
+  SearchStopBackPressTest();
+  addOrDelText();
+  TextOnChangeOptionsTest();
+  TextOnWillChangeOptionsTest();
+  bindSelectionMenuTest();
   textAreaEllipsisModeTest();
   textInputEllipsisModeTest();
   searchFontScaleTest();

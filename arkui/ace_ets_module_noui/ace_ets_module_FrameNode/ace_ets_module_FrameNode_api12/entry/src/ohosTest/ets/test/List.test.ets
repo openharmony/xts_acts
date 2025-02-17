@@ -22,7 +22,6 @@ import APIsetOnFocusTest from './frameNodeTest/APIsetOnFocusTest.test';
 import APIsetOnHoverTest from './frameNodeTest/APIsetOnHoverTest.test';
 import nodeList from './frameNodeTest/nodeList.test';
 import nodeListItemGroup from './frameNodeTest/nodeListItemGroup.test';
-import nodeWaterFlow from './frameNodeTest/nodeWaterFlow.test';
 
 export default function testsuite() {
   APIsetOnclickTest();
@@ -35,5 +34,4 @@ export default function testsuite() {
   APIsetOnHoverTest()
   nodeList()
   nodeListItemGroup()
-  nodeWaterFlow()
 }

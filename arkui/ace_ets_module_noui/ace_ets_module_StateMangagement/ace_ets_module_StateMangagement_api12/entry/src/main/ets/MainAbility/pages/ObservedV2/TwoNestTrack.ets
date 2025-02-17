@@ -49,6 +49,5 @@ struct TwoNestTrack{
       })
     }
     .width('100%')
-    .margin({top:20})
   }
 }

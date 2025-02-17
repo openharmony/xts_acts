@@ -253,6 +253,7 @@ static void WebAssemblyDemo()
     VerifyAddWasmInstance(instance2);
 }
 
+#if !defined(JSVM_JITLESS)
 // test for Wasm Is Wasm Module Object
 TEST(Wasm_IsWasmModuleObject)
 {
@@ -979,5 +980,64 @@ TEST(Wasm_GameEngineLaya)
     auto exports = GetInstanceExports(instance);
     CHECK(jsvm::IsObject(exports));
 }
+#else
+static void GetLastErrorAndClean(JSVM_Env env)
+{
+    JSVM_Value result = nullptr;
+    OH_JSVM_GetAndClearLastException(env, &result);
+}
 
+// test for Wasm Is Wasm Module Object
+TEST(Wasm_IsWasmModuleObject)
+{
+    auto number = jsvm::Run("42");
+    CHECK(!jsvm::IsWasmModuleObject(number));
+    CHECK(!jsvm::IsWasmModuleObject(jsvm::Undefined()));
+    CHECK(!jsvm::IsWasmModuleObject(jsvm::Null()));
+    CHECK(!jsvm::IsWasmModuleObject(jsvm::Str("hello")));
+}
+
+// test for Wasm Compile Wasm
+TEST(Wasm_CompileWasmModule)
+{
+    uint8_t* buffer = new uint8_t[2];
+    buffer[0] = 0x01;
+    buffer[1] = 0x02;
+    JSVM_Value wasmModule = nullptr;
+    JSVM_Status status = OH_JSVM_CompileWasmModule(jsvm_env, buffer, 2, NULL, 0, NULL, &wasmModule);
+    delete[] buffer;
+    CHECK(status == JSVM_JIT_MODE_EXPECTED);
+    GetLastErrorAndClean(jsvm_env);
+}
+
+// test for Wasm Compile Function
+TEST(Wasm_CompileWasmFunction)
+{
+    JSVM_Value wasmModule = nullptr;
+    JSVM_Status status = OH_JSVM_CompileWasmFunction(jsvm_env, wasmModule, 0, JSVM_WASM_OPT_HIGH);
+    CHECK(status == JSVM_JIT_MODE_EXPECTED);
+    GetLastErrorAndClean(jsvm_env);
+}
+
+// test for Wasm Create Cache
+TEST(Wasm_CreateWasmCache)
+{
+    const uint8_t *cacheData = nullptr;
+    size_t cacheSize = 0;
+    JSVM_Value wasmModule = nullptr;
+    JSVM_Status status = OH_JSVM_CreateWasmCache(jsvm_env, wasmModule, &cacheData, &cacheSize);
+    CHECK(status == JSVM_JIT_MODE_EXPECTED);
+    GetLastErrorAndClean(jsvm_env);
+}
+
+// test for Wasm Release Cache
+TEST(Wasm_ReleaseWasmCache)
+{
+    uint8_t* cacheData = new uint8_t[2];
+    cacheData[0] = 0x01;
+    cacheData[1] = 0x02;
+    JSVM_Status status = OH_JSVM_ReleaseCache(jsvm_env, cacheData, JSVM_CACHE_TYPE_WASM);
+    CHECK(status == JSVM_OK);
+}
+#endif  // JSVM_JITLESS
 #endif  // TEST_WASM

@@ -19,38 +19,42 @@ struct MenuApi1 {
   @State text:string = ''
 
   @Builder
-  MyMenu(){
-    Menu() {
-      MenuItem({
-        content: "菜单选项",
-      })
-      MenuItem({
-        content: "菜单选项",
-      })
-      MenuItem({
-        startIcon: $r("app.media.app_icon"),
-        content: "菜单选项",
-      })
-      MenuItem({
-        content: "菜单选项",
-      })
+  MyMenu() {
+      Menu() {
+        MenuItem({
+          content: "菜单选项",
+        }).height('8%')
+        MenuItem({
+          content: "菜单选项",
+        }).height('8%')
+        MenuItem({
+          startIcon: $r("app.media.app_icon"),
+          content: "菜单选项",
+        }).height('8%')
+        MenuItem({
+          content: "菜单选项",
+        }).height('8%')
 
-    }
-    .menuItemDivider(undefined)
-    .id('Menu')
+      }.height('80%')
+      .menuItemDivider(undefined)
+      .id('Menu')
 
-    Button('getInspectorByKey').onClick(() => {
-      this.text =  String(JSON.parse(getInspectorByKey('Menu')).$attrs.menuItemDivider)
-    }).id('MenuApi1_btn2')
-    Text(this.text).id('MenuApi1_text1')
+      Text(this.text).id('MenuApi1_text1')
+      Button('getInspectorByKey').onClick(() => {
+        this.text = String(JSON.parse(getInspectorByKey('Menu')).$attrs.menuItemDivider)
+      }).id('MenuApi1_btn2')
+
   }
 
   build() {
-    Column({space:20}) {
+    Column({ space: 20 }) {
       Button('bindMenu')
         .bindMenu(this.MyMenu)
         .width('100%')
         .id('MenuApi1_btn1')
     }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }

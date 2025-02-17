@@ -21,37 +21,35 @@ import { UIContext } from '@ohos.arkui.UIContext';
 struct InterstitialDialogAction1 {
   @State dialogFlag: string = 'start'
   build() {
-    Row() {
-      Column() {
-        Button(this.dialogFlag).id('interstitialDialogAction_id')
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            let ctx: UIContext | null = this.getUIContext();
-            let interstitialDialogAction: InterstitialDialogAction = new InterstitialDialogAction({
-              uiContext: ctx as UIContext,
-              title: 'Main Title',
-              subtitle: 'Sub Title',
-              titleColor: 'rgb(255, 192, 0)',
-              subtitleColor: Color.Red,
-              backgroundImage: $r('app.media.icon'),
-              foregroundImage: $r('app.media.icon'),
-              iconStyle: IconStyle.DARK,
-              titlePosition: TitlePosition.TOP,
-              bottomOffsetType: BottomOffset.OFFSET_FOR_NONE,
-              onDialogClick: () => { console.log('outer dialog click action') },
-              onDialogClose: () => { console.log('outer close action') }
-            });
-            interstitialDialogAction.openDialog();
-            this.dialogFlag = 'openDialog succ'
-            setTimeout(() => {
-              interstitialDialogAction.closeDialog();
-              this.dialogFlag = 'closeDialog succ'
-            }, 5000)
-          })
-      }
-      .width('100%')
+    Column() {
+      Button(this.dialogFlag).id('interstitialDialogAction_id')
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          let ctx: UIContext | null = this.getUIContext();
+          let interstitialDialogAction: InterstitialDialogAction = new InterstitialDialogAction({
+            uiContext: ctx as UIContext,
+            title: 'Main Title',
+            subtitle: 'Sub Title',
+            titleColor: 'rgb(255, 192, 0)',
+            subtitleColor: Color.Red,
+            backgroundImage: $r('app.media.icon'),
+            foregroundImage: $r('app.media.icon'),
+            iconStyle: IconStyle.DARK,
+            titlePosition: TitlePosition.TOP,
+            bottomOffsetType: BottomOffset.OFFSET_FOR_NONE,
+            onDialogClick: () => { console.log('outer dialog click action') },
+            onDialogClose: () => { console.log('outer close action') }
+          });
+          interstitialDialogAction.openDialog();
+          this.dialogFlag = 'openDialog succ'
+          setTimeout(() => {
+            interstitialDialogAction.closeDialog();
+            this.dialogFlag = 'closeDialog succ'
+          }, 4000)
+        })
     }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
     .height('100%')
     .backgroundColor('rgba(0, 0, 0, 0.1)')
   }

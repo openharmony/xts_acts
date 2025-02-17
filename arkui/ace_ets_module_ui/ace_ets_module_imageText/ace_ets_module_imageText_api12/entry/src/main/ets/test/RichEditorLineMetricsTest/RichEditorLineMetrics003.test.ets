@@ -55,10 +55,12 @@ export default function RichEditorLineMetrics003() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0004
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0004
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0004 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0004
+     * @tc.name  : Test the RichEditor LineMetrics
+     * @tc.desc  : Test RichEditor LineMetrics by passing parameter null\undefined through getLineMetrics
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 4
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0004', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0004 START');
@@ -88,10 +90,12 @@ export default function RichEditorLineMetrics003() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0005
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0005
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0005 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0005
+     * @tc.name  : Test the RichEditor LineMetrics
+     * @tc.desc  : Test RichEditor LineMetrics by passing parameter -1 through getLineMetrics
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 4
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0005', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0005 START');

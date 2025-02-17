@@ -244,7 +244,7 @@ static napi_value AudioEncoderStop(napi_env env, napi_callback_info info)
     OH_AudioEncoder_Prepare(audioEnc);
     if (OH_AudioEncoder_Start(audioEnc) == AV_ERR_OK) {
         checkParam = OH_AudioEncoder_Stop(audioEnc);
-        if(checkParam == AV_ERR_OK){
+        if (checkParam == AV_ERR_OK) {
             backParam = SUCCESS;
         }
     }
@@ -271,7 +271,7 @@ static napi_value AudioEncoderFlush(napi_env env, napi_callback_info info)
     OH_AudioEncoder_Prepare(audioEnc);
     if (OH_AudioEncoder_Start(audioEnc) == AV_ERR_OK) {
         checkParam = OH_AudioEncoder_Flush(audioEnc);
-        if(checkParam == AV_ERR_OK){
+        if (checkParam == AV_ERR_OK) {
             backParam = SUCCESS;
             OH_AudioEncoder_Stop(audioEnc);
         }
@@ -299,7 +299,7 @@ static napi_value AudioEncoderReset(napi_env env, napi_callback_info info)
     OH_AudioEncoder_Prepare(audioEnc);
     if (OH_AudioEncoder_Start(audioEnc) == AV_ERR_OK) {
         checkParam = OH_AudioEncoder_Reset(audioEnc);
-        if(checkParam == AV_ERR_OK){
+        if (checkParam == AV_ERR_OK) {
             backParam = SUCCESS;
         }
     }
@@ -326,7 +326,7 @@ static napi_value AudioEncoderGetOutputDescription(napi_env env, napi_callback_i
     OH_AudioEncoder_Prepare(audioEnc);
     if (OH_AudioEncoder_Start(audioEnc) == AV_ERR_OK) {
         checkParam = OH_AudioEncoder_GetOutputDescription(audioEnc);
-        if(checkParam != nullptr){
+        if (checkParam != nullptr) {
             backParam = SUCCESS;
             free(checkParam);
         }
@@ -354,9 +354,9 @@ static napi_value AudioEncoderSetParameter(napi_env env, napi_callback_info info
     OH_AudioEncoder_Prepare(audioEnc);
     if (OH_AudioEncoder_Start(audioEnc) == AV_ERR_OK) {
         format = OH_AudioEncoder_GetOutputDescription(audioEnc);
-        if(format != nullptr){
+        if (format != nullptr) {
             checkParam = OH_AudioEncoder_SetParameter(audioEnc, format);
-            if(checkParam == AV_ERR_OK){
+            if (checkParam == AV_ERR_OK) {
                 backParam = SUCCESS;
                 free(format);
             }

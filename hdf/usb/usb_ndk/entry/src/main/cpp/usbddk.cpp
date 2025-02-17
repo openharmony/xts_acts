@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -554,6 +554,42 @@ static napi_value UsbSendControlWriteRequestFour(napi_env env, napi_callback_inf
     napi_create_int32(env, returnValue, &result);
     return result;
 }
+
+static napi_value UsbSendControlWriteRequestFive(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int64_t deviceId64;
+    napi_get_value_int64(env, args[PARAM_0], &deviceId64);
+    uint64_t deviceId = static_cast<uint64_t>(deviceId64);
+    int32_t usbInitReturnValue = OH_Usb_Init();
+    NAPI_ASSERT(env, usbInitReturnValue == PARAM_0, "OH_Usb_Init failed");
+
+    struct UsbControlRequestSetup setupR = {PARAM_0};
+    uint8_t dataR[USB_DDK_TEST_BUF_SIZE] = {PARAM_0};
+    uint32_t dataLenR = PARAM_1;
+    setupR.bmRequestType = 0x80;
+    setupR.bRequest = 0x08;
+    setupR.wValue = 0x00;
+    setupR.wIndex = 0x00;
+    setupR.wLength = dataLenR;
+    int32_t returnValueR = OH_Usb_SendControlReadRequest(interfaceHandle, &setupR, UINT32_MAX, dataR, &dataLenR);
+
+    struct UsbControlRequestSetup setupW = {PARAM_0};
+    uint8_t dataW = PARAM_10;
+    uint32_t dataLenW = PARAM_0;
+    setupW.bmRequestType = 0x00;
+    setupW.bRequest = 0x09;
+    setupW.wValue = dataR[0];
+    setupW.wIndex = 0x00;
+    setupW.wLength = dataLenW;
+    int32_t returnValue = OH_Usb_SendControlWriteRequest(interfaceHandle, &setupW, timeout, &dataW, dataLenW);
+    napi_value result = nullptr;
+    napi_create_int32(env, returnValue, &result);
+    return result;
+}
+
 uint64_t JsDeviceIdToNative(uint64_t deviceId)
 {
     uint32_t busNum = (uint32_t)(deviceId >> PARAM_48);
@@ -948,6 +984,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"usbSendControlWriteRequestThree", nullptr, UsbSendControlWriteRequestThree, nullptr, nullptr, nullptr,
             napi_default, nullptr},
         {"usbSendControlWriteRequestFour", nullptr, UsbSendControlWriteRequestFour, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"usbSendControlWriteRequestFive", nullptr, UsbSendControlWriteRequestFive, nullptr, nullptr, nullptr,
             napi_default, nullptr},
         {"usbSendPipeRequestOne", nullptr, UsbSendPipeRequestOne, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"usbSendPipeRequestTwo", nullptr, UsbSendPipeRequestTwo, nullptr, nullptr, nullptr, napi_default, nullptr},

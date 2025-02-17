@@ -55,10 +55,12 @@ export default function RichEditorSetStyledString012() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0022
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0022
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0022 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0022
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Verify property string support for onSelectionChange to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0022', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0022 START');
@@ -85,10 +87,12 @@ export default function RichEditorSetStyledString012() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0025
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0025
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0025 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0025
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Validating attribute strings does not support onSelect to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0025', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0025 START');
@@ -108,10 +112,12 @@ export default function RichEditorSetStyledString012() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0026
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0026
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0026 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0026
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Validating attribute strings does not support aboutToIMEInput to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0026', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0026 START');
@@ -130,10 +136,12 @@ export default function RichEditorSetStyledString012() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0035
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0035
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0035 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0035
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Validating attribute strings does not support onIMEInputComplete to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0035', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0035 START');
@@ -148,10 +156,12 @@ export default function RichEditorSetStyledString012() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0036
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0036
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0036 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0036
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Validating attribute strings does not support aboutToDelete to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0036', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0036 START');
@@ -168,10 +178,12 @@ export default function RichEditorSetStyledString012() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0037
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0037
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0037 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0037
+     * @tc.name  : Test the RichEditor setStyledString
+     * @tc.desc  : Validating attribute strings does not support onDeleteComplete to test RichEditor setStyledString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0037', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_setStyledString_0037 START');

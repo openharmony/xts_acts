@@ -19,40 +19,43 @@ struct ConsumeArrayNumberChild {
 
   build() {
     Column() {
-      ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
-        Text(`${item[1]} index: ${item[0]}`).fontSize(20).id('consumeArrayNumber_value_' + item[0])
-        Divider()
-      })
-      Button('Consume init array').id('consumeArrayNumber_init')
+
+      Button('Consume init array').id('consumeArrayNumber_init').height('5%')
         .onClick(() => {
           this.message = [5, 6, 7, 8, 9]
-        }).margin(10)
+        })
 
-      Button('Consume add new one').id('consumeArrayNumber_add')
+      Button('Consume add new one').id('consumeArrayNumber_add').height('5%')
         .onClick(() => {
           let lastIndex = this.message.length - 1
           this.message.push(this.message[lastIndex] + 1)
-        }).margin(10)
+        })
 
-      Button('Consume clear').id('consumeArrayNumber_clear')
+      Button('Consume clear').id('consumeArrayNumber_clear').height('5%')
         .onClick(() => {
           this.message = []
           if (Array.from(this.message.entries())) {
             this.message.push(0)
           }
-        }).margin(10)
+        })
 
-      Button('Consume replace').id('consumeArrayNumber_replace')
+      Button('Consume replace').id('consumeArrayNumber_replace').height('5%')
         .onClick(() => {
           if (this.message.length > 0) {
             this.message[0] = 99
           }
-        }).margin(10)
+        })
 
-      Button('Consume delete last').id('consumeArrayNumber_delete')
+      Button('Consume delete last').id('consumeArrayNumber_delete').height('5%')
         .onClick(() => {
           this.message.pop()
         })
+
+      ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
+        Text(`${item[1]} index: ${item[0]}`).fontSize(9).id('consumeArrayNumber_value_' + item[0])
+          .height('5%')
+        Divider()
+      })
     }
   }
 }
@@ -65,10 +68,10 @@ struct ProvideArrayNumber {
   build() {
     Row() {
       Column() {
-        Button('Provide init array').id('provideArrayNumber_init')
+        Button('Provide init array').id('provideArrayNumber_init').height('5%')
           .onClick(() => {
             this.message = [1, 2, 3, 4, 5]
-          }).margin(10)
+          })
         ConsumeArrayNumberChild()
       }
       .width('100%')

@@ -32,6 +32,7 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
     "DrawingNativeCanvasTestPart2.cpp",
     "DrawingNativeCanvasTestPart3.cpp",
     "DrawingNativeCanvasTestPart4.cpp",
+    "DrawingNativeCanvasTestPart5.cpp",
     "DrawingNativeColorFilterTest.cpp",
     "DrawingNativeColorSpaceTest.cpp",
     "DrawingNativeColorTest.cpp",

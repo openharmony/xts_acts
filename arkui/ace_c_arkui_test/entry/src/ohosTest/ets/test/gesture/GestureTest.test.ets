@@ -112,7 +112,7 @@ export default function gestureTest() {
       let x = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect));
       let y = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect));
       console.info("testSwipeGesture001  x= " +  x  + ", y = " + y);
-      await driver.swipe(x, y, Math.round(x + vp2px(30)), y);
+      await driver.swipe(x, y, x, Math.round(y + vp2px(30)));
       await Utils.sleep(3000);
       expect(Utils.getComponentInfoByKey('swipeID').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
@@ -205,7 +205,7 @@ export default function gestureTest() {
       let x = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect));
       let y = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect));
       console.info("testInterruptGesture001  x= " +  x  + ", y = " + y);
-      await driver.drag(x, y, Math.round(x + vp2px(30)), y);
+      await driver.drag(x, y, x, Math.round(y + vp2px(30)));
       // change page to interrupt Gesture
       try {
         let options: router.RouterOptions = {

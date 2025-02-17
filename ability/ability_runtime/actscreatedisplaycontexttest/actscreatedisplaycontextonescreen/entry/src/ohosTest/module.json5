@@ -17,8 +17,10 @@
     "name": "entry_test",
     "type": "feature",
     "deviceTypes": [
+      "wearable",
       "default",
-      "tablet"
+      "tablet",
+      "2in1"
     ],
     "abilities": [
       {

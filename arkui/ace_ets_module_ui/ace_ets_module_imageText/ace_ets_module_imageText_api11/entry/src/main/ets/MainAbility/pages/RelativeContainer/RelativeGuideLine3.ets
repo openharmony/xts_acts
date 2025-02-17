@@ -19,7 +19,7 @@ interface linePosition {
 @Entry
 @Component
 struct RelativeGuideLine3 {
-  @State RelWidth: string = '300'
+  @State RelWidth: string = '70%'
   @State guideLineDir1: Axis = Axis.Horizontal
   @State buttonAlign: VerticalAlign = VerticalAlign.Top
   @State buttonPosition: Axis = Axis.Horizontal
@@ -40,8 +40,8 @@ struct RelativeGuideLine3 {
 
       }
       .key('RelativeGuideLine3')
-      .width(300).height(300)
-      .margin({left: 50, top:100})
+      .width('70%').height('60%')
+      .margin({left: 50, top:50})
       .backgroundColor(Color.Grey)
       .guideLine([
         {id:"guideLine1", direction: this.guideLineDir1, position: this.linePosition}
@@ -61,7 +61,7 @@ struct RelativeGuideLine3 {
           this.guideLineDir1 = Axis.Horizontal
         }).key('changeHor')
 
-      }
+      }.height('10%')
     }
     .height('100%')
   }

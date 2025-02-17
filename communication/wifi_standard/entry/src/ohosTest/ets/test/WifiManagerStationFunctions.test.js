@@ -451,6 +451,13 @@ export default function actsWifiManagerFunctionsTest() {
                 let WifiCategoryWifi6Plus = wifiMg.WifiCategory.WIFI6_PLUS;
                 console.info("[wifi_test]WIFI6_PLUS: " + JSON.stringify(WifiCategoryWifi6Plus));
                 expect(WifiCategoryWifi6Plus).assertEqual(3);
+
+                let WifiCategoryWifi7 = wifiMg.WifiCategory.WIFI7;
+                console.info("[wifi_test]WIFI7: " + JSON.stringify(WifiCategoryWifi7));
+                expect(WifiCategoryWifi7).assertEqual(4);
+                let WifiCategoryWifi7Plus = wifiMg.WifiCategory.WIFI7_PLUS;
+                console.info("[wifi_test]WIFI7_PLUS: " + JSON.stringify(WifiCategoryWifi7Plus));
+                expect(WifiCategoryWifi7Plus).assertEqual(5);
             } catch (error) {
                 console.error('[wifi_test]testWifiCategory failed: ' + error);
                 expect(false).assertTrue();

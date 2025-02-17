@@ -89,8 +89,8 @@ struct TabsExampleApi12I15 {
       .onChange((index: number) => {
         this.currentIndex = index
       })
-      .width(360)
-      .height(300)
+      .width('90%')
+      .height('60%')
       .backgroundColor('#F1F3F5')
       .scrollable(true)
       .onContentWillChange((currentIndex, comingIndex) => {
@@ -101,12 +101,12 @@ struct TabsExampleApi12I15 {
         return true
       })
 
-      Button('动态增加数据').width('50%').margin({ top: 20 })
+      Button('动态增加数据').width('50%')
         .onClick(()=>{
             this.attr.push(5)
         }).key("tabsAddI")
 
-      Button('动态减少数据').width('50%').margin({ top: 20 })
+      Button('动态减少数据').width('50%')
         .onClick(()=>{
              this.attr.shift();
         }).key("tabPopI")

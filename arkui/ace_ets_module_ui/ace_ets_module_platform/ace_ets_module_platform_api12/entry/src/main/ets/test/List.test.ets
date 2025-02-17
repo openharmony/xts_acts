@@ -16,7 +16,6 @@
 import getXComponentSurfaceRectJsunit from './XComponentTest/getXComponentSurfaceRect.test';
 import onSurfaceCreatedJsunit from './XComponentTest/onSurfaceCreated.test';
 import stopImageAnalyzerJsunit from './XComponentTest/stopImageAnalyzer.test';
-import counterApi from './Counter/counterApi.test';
 import VideoTest1 from './VideoTest/VideoTest1.test';
 import setXComponentSurfaceRotationJsunit from './XComponentTest/setXComponentSurfaceRotation.test';
 import inputMethodListTest from './InputMethodList/inputMethodListTest.test';
@@ -40,7 +39,6 @@ export default function testsuite() {
   getXComponentSurfaceRectJsunit();
   onSurfaceCreatedJsunit();
   stopImageAnalyzerJsunit();
-  counterApi();
   VideoTest1();
   setXComponentSurfaceRotationJsunit();
   inputMethodListTest();

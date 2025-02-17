@@ -19,7 +19,7 @@ import { Driver } from '@kit.TestKit';
 import nativeRender from 'libnativerender.so'
 
 async function flingComponentV(key: string, isForward: boolean, speed: number = 500, distance: number = 20,
-  offsetX: number = 0) {
+  offsetX: number = 0, distanceEnd: number | null = null) {
   let driver = Driver.create();
   let rect = Utils.getComponentRect(key);
   let centerX = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect) + vp2px(offsetX));
@@ -32,13 +32,13 @@ async function flingComponentV(key: string, isForward: boolean, speed: number = 
     await driver.fling({
       x: centerX, y: Y2
     }, {
-      x: centerX, y: Y1
+      x: centerX, y: (distanceEnd !== null ? Math.round(centerY - vp2px(distanceEnd)) : Y1)
     }, stepLen, speed);
   } else {
     await driver.fling({
       x: centerX, y: Y1
     }, {
-      x: centerX, y: Y2
+      x: centerX, y: (distanceEnd !== null ? Math.round(centerY + vp2px(distanceEnd)) : Y2)
     }, stepLen, speed);
   }
 }
@@ -74,7 +74,7 @@ export default function listEventTest() {
       {
         await flingComponentV('list', true, 20000, 80)
         await Utils.sleep(1000)
-        await flingComponentV('list', true, 20000, 80)
+        await flingComponentV('list', true, 20000, 80, 0, 150)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.listGetOnScrollData()
         let willOffsetData: number[] = dataArray[0];
@@ -87,7 +87,7 @@ export default function listEventTest() {
       {
         await flingComponentV('list', false, 20000, 80)
         await Utils.sleep(1000)
-        await flingComponentV('list', false, 20000, 80)
+        await flingComponentV('list', false, 20000, 80, 0, 150)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.listGetOnScrollData()
         let willOffsetData: number[] = dataArray[0];

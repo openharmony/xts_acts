@@ -49,7 +49,6 @@ import underlineColor from './TextInput/underlineColor.test'
 
 import RichEditorApi1 from './RichEditor/RichEditorApi1.test'
 import RichEditorApi3 from './RichEditor/RichEditorApi3.test'
-import RichEditorApi5 from './RichEditor/RichEditorApi5.test'
 import RichEditorChangeCallback from './RichEditor/RichEditorChangeCallback.test'
 import RichEditorWordBreakJsunitTest from './RichEditorEnhance01/RichEditorWordBreakJsunitTest.test'
 import RichEditorMenuPolicyJsunit from './RichEditorEnhance01/RichEditorMenuPolicyJsunit.test'
@@ -125,8 +124,6 @@ import typeNodeTextDecorationStyleTest from './Text/TextDecorationStyle.test';
 import typeNodeTextSelectableMode1Test from './Text/TextSelectableMode1.test';
 import typeNodeTextSelectableMode2Test from './Text/TextSelectableMode2.test';
 import typeNodeTextSelectableMode3Test from './Text/TextSelectableMode3.test';
-import styledStringChange from './Text/styledStringChange.test'
-import searchTest from './Search/searchTest.test'
 import imageAddApi2 from './ImageTest/imageAddApi2.test'
 import styledStringAddApi from './Text/styledStringAddApi.test'
 import textAreaPreview from './TextArea/textAreaPreview.test'
@@ -508,8 +505,26 @@ import RichEditorDoubleClick018 from './RichEditorDoubleClickTest/RichEditorDoub
 import RichEditorDoubleClick019 from './RichEditorDoubleClickTest/RichEditorDoubleClick019.test'
 
 import RichEditorScroll001 from './RichEditorScrollTest/RichEditorScroll001.test'
+import TextCommonTextComputing1 from './TextTest/MeasureSizeTest/TextCommonTextComputing1.test';
+import TextCommonTextComputing2 from './TextTest/MeasureSizeTest/TextCommonTextComputing2.test';
+import TextCommonTextComputing3 from './TextTest/MeasureSizeTest/TextCommonTextComputing3.test';
+import TextCommonTextComputing4 from './TextTest/MeasureSizeTest/TextCommonTextComputing4.test';
+import TextCommonTextComputing5 from './TextTest/MeasureSizeTest/TextCommonTextComputing5.test';
+import TextCommonTextComputing6 from './TextTest/MeasureSizeTest/TextCommonTextComputing6.test';
+import TextCommonTextComputing7 from './TextTest/MeasureSizeTest/TextCommonTextComputing7.test';
+import TextCommonTextComputing8 from './TextTest/MeasureSizeTest/TextCommonTextComputing8.test';
+import TextCommonTextComputing9 from './TextTest/MeasureSizeTest/TextCommonTextComputing9.test';
 
 export default function testsuite() {
+  TextCommonTextComputing1();
+  TextCommonTextComputing2();
+  TextCommonTextComputing3();
+  TextCommonTextComputing4();
+  TextCommonTextComputing5();
+  TextCommonTextComputing6();
+  TextCommonTextComputing7();
+  TextCommonTextComputing8();
+  TextCommonTextComputing9();
   textAreaInputTest();
   APIContentTypeTest();
   APIUnderlineColorTest();
@@ -549,7 +564,6 @@ export default function testsuite() {
   dstIndexTest();
   RichEditorApi1();
   RichEditorApi3();
-  RichEditorApi5();
   RichEditorChangeCallback();
   RichEditorWordBreakJsunitTest();
   RichEditorMenuPolicyJsunit();
@@ -570,7 +584,6 @@ export default function testsuite() {
   TextAreaApi1();
   TextAreaApi2();
   TextAreaApi3();
-  styledStringChange();
   RelativeContainerApi1()
   TextAddApi1()
   TextArea_lineBreakStrategyTest();
@@ -607,7 +620,6 @@ export default function testsuite() {
   TextAreaTest()
   MarqueeMirroringTest()
   symbolEffect()
-  searchTest()
   imageAddApi2()
   styledStringAddApi()
   RichEditorApi8()

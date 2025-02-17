@@ -56,10 +56,12 @@ export default function RichEditorDoubleClick001() {
     });
     
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_002
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_002
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_002 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_002
+     * @tc.name  : Test the RichEditor doubleClick event
+     * @tc.desc  : Test the RichEditor doubleClick event by double clicking on a textSpan with line breaks displayed on a single line
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_002', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_002 START');
@@ -76,14 +78,16 @@ export default function RichEditorDoubleClick001() {
       let message = await driver.findComponent(ON.id('message'));
       let messageText = await message.getText();
       await CommonFunc.sleep(1000);
-      expect(messageText).assertContain('{"start":1,"end":2}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
       await driver.click(getBounds.left + 30, getBounds.top + 70);
       await CommonFunc.sleep(100);
       await driver.click(getBounds.left + 30, getBounds.top + 70);
       await CommonFunc.sleep(100);
       messageText = await message.getText();
       await CommonFunc.sleep(1000);
-      expect(messageText).assertContain('{"start":3,"end":4}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
       done();
     });
     

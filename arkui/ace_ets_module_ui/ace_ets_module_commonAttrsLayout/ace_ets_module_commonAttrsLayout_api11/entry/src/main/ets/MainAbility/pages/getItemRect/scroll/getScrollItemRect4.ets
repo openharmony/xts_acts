@@ -45,6 +45,17 @@ struct getScrollItemRect4 {
 
   build() {
     Column() {
+      Button('点击获取信息').onClick((event: ClickEvent) => {
+        this.x = this.scroller.getItemRect(this.index).x
+        this.y = this.scroller.getItemRect(this.index).y
+        this.width1 = this.scroller.getItemRect(this.index).width
+        this.height1 = this.scroller.getItemRect(this.index).height
+      }).id('getScrollItemRect4_button')
+      Text('' + this.x).key('getScrollItemRect4_text1')
+      Text('' + this.y).key('getScrollItemRect4_text2')
+      Text('' + this.width1).key('getScrollItemRect4_text3')
+      Text('' + this.height1).key('getScrollItemRect4_text4')
+
       Scroll(this.scroller) {
         Column() {
           ForEach(this.arr, (item: number) => {
@@ -63,19 +74,7 @@ struct getScrollItemRect4 {
       }
       .scrollable(ScrollDirection.Vertical)
       .scrollBar(BarState.Auto)
-      .width(300)
-      .height(500)
-
-      Button('点击获取信息').onClick((event: ClickEvent) => {
-        this.x = this.scroller.getItemRect(this.index).x
-        this.y = this.scroller.getItemRect(this.index).y
-        this.width1 = this.scroller.getItemRect(this.index).width
-        this.height1 = this.scroller.getItemRect(this.index).height
-      }).id('getScrollItemRect4_button')
-      Text('' + this.x).key('getScrollItemRect4_text1')
-      Text('' + this.y).key('getScrollItemRect4_text2')
-      Text('' + this.width1).key('getScrollItemRect4_text3')
-      Text('' + this.height1).key('getScrollItemRect4_text4')
+      .width(200)
 
     }
   }

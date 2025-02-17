@@ -91,7 +91,7 @@ export default function sheetSize1Jsunit() {
       let button: Component = await driver.findComponent(ON.id('bindSheet_SheetSize1'));
       await button.click();
       await CommonFunc.sleep(1000);
-      await driver.click(Math.round(globalThis.winLeft + vp2px(100)), Math.round(globalThis.winTop + vp2px(100)))
+      await driver.click(Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(50)))
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('bindSheet_dismiss1');
       console.info("[sheetSize1Jsunit_0200] component obj is: " + JSON.stringify(JSON.parse(strJson)));

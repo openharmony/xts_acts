@@ -44,32 +44,37 @@ struct nestTrack {
   build() {
       Column() {
         Button("Reset")
+          .height('5%')
           .key("nestTrack_reset")
           .onClick(() => {
             this.ta.a2.a1=20
             this.tb.b2.b1=30
           })
         Text('a1='+`${this.ta.a2.a1}`)
+          .height('5%')
           .key('nestTrack_1')
-          .fontSize(50)
+          .fontSize(9)
           .onClick(()=>{
             this.ta.a2.a1 = 50
           })
         Text('a1='+`${this.ta.a2.a1}`)
+          .height('5%')
           .key('nestTrack_2')
-          .fontSize(50)
+          .fontSize(9)
           .onClick(()=>{
             this.ta.a2 = new A1(50)
           })
         Text('b1='+`${this.tb.b2.b1}`)
+          .height('5%')
           .key('nestTrack_3')
-          .fontSize(50)
+          .fontSize(9)
           .onClick(()=>{
             this.tb.b2.b1 = 50
           })
         Text('b1='+`${this.tb.b2.b1}`)
+          .height('5%')
           .key('nestTrack_4')
-          .fontSize(50)
+          .fontSize(9)
           .onClick(()=>{
             this.tb.b2 = new B1(50)
           })

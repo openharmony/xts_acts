@@ -19,9 +19,9 @@ struct PropString {
   @State stringA: string = "Hello"
 
   build() {
-    Column({space:5}) {
-      Text('@Prop 支持数据类型：string').fontSize(18)
-      Text('Father State: ' + this.stringA).margin(10).width("100%")
+    Column() {
+      Text('@Prop 支持数据类型：string').fontSize(9).height('5%')
+      Text('Father State: ' + this.stringA).width("100%").height('5%')
         .id("PropString_A")
         .onClick(() => {
           this.stringA = "Hi"
@@ -29,7 +29,7 @@ struct PropString {
 
       ChildPropString({ stringB: this.stringA })
     }.width('100%')
-    .margin({ top: 50 })
+    
   }
 }
 
@@ -38,14 +38,14 @@ struct ChildPropString {
   @Prop stringB: string = '';
 
   build() {
-    Column({space:5}) {
-      Text('@Prop 单向的 内部修改不会改变父组件').fontSize(18)
-      Text('Child Prop: ' + this.stringB).margin(10).width("100%")
+    Column() {
+      Text('@Prop 单向的 内部修改不会改变父组件').fontSize(9).height('5%')
+      Text('Child Prop: ' + this.stringB).width("100%").height('5%')
         .id("ChildPropString_A")
         .onClick(() => {
           this.stringB = "World"
         })
     }.width('100%')
-    .margin({ top: 50 })
+    
   }
 }

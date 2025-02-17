@@ -69,7 +69,6 @@ import BuilderNodeApiReuseTest from './FrameNodeTest/BuilderNodeApiReuseTest.tes
 import ComponentContentAPIRecycleTest from './FrameNodeTest/ComponentContentAPIRecycleTest.test';
 import ComponentContentAPIReuseTest from './FrameNodeTest/ComponentContentAPIReuseTest.test';
 import APImarkNodeGroupTest from './FrameNodeTest/APImarkNodeGroupTest.test';
-import APINodeContentTest from './FrameNodeTest/APINodeContentTest.test';
 import APIPanGestureisisBeginTest from './FrameNodeTest/APIPanGestureisisBeginTest.test';
 
 import RenderNodeDemo01Test from './renderNode/RenderNodeDemo/RenderNodeDemo01Test.test';
@@ -105,7 +104,6 @@ export default function testsuite() {
   ComponentContentAPIRecycleTest();
   ComponentContentAPIReuseTest();
   APImarkNodeGroupTest();
-  APINodeContentTest();
   APIPanGestureisisBeginTest();
   borderRadiuses();
   borderStyles();

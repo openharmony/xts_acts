@@ -71,6 +71,7 @@ struct WebComponent {
         })
       }
       Web({ src: '', controller: this.webviewController})
+        .optimizeParserBudget(true)
     }
   }
 }

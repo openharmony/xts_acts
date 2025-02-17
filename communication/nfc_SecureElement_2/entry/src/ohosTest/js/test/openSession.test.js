@@ -51,34 +51,27 @@ export default function openSessionTest() {
                 let seIsConnected = Service.isConnected();
                 console.info("[NFC_test] SEService isConnected The connection status is: " + seIsConnected);
                 if (seIsConnected) {
-                            getReader = Service.getReaders();
-                            console.info("openSessionTest getReader value  is: " + getReader);                                    
-                            let getReader00 = getReader[0];
-                            let getReader01 = getReader[1];
-                            console.info("openSessionTest getReaders results list 0 is" + getReader00);
-                            let getReader000 = getReader00.getName();
-                            let getReader001 = getReader01.getName();
-                            console.info("openSessionTest getReader name is: " + getReader000 + "/" + getReader001);
-                    try {
-                        if (getReader000 == 'eSE'){
-                             readerIsPresent = getReader00.isSecureElementPresent();
-                             console.info("openSessionTest getReader00 readerIsPresent " + readerIsPresent);
-                             Reader = getReader00;                            
-                   }else {
-                             readerIsPresent = getReader01.isSecureElementPresent();
-                             console.info("openSessionTest getReader01 readerIsPresent " + readerIsPresent);
-                             Reader = getReader01;                             
-                   }
-                        
-                    } catch (error) { 
-                             console.info("openSessionTest this is error " + error);                       
-                    }
-                    console.info("[NFC_test] Reader isConnected The connection status is: " + readerIsPresent);
-                    if (readerIsPresent) {
-                        Session = Reader.openSession();
-                        let sessionIsClosed = Session.isClosed();
-                        console.info("[NFC_test] Session isConnected The connection status is: " + sessionIsClosed);
-                    }
+                    getReader = Service.getReaders();
+                    console.info("openSessionTest getReader value  is: " + getReader);                                                             
+                    for (let i = 0; i < getReader.length; i++) {
+                        if (!getReader[i].isSecureElementPresent()) {
+                            console.info("[NFC_test] se not present : " + i);
+                            continue;
+                        }
+                        if (getReader[i].getName() != "eSE") {
+                            console.info("[NFC_test] se reader not ese.");
+                            continue;
+                        }
+                        Reader = getReader[i];
+                        console.info("[NFC_test] createService openSessionTest getReader name is: " + Reader.getName());
+                        let readerIsPresent = Reader.isSecureElementPresent();
+                        console.info("[NFC_test] isSecureElementPresent status is: " + readerIsPresent);
+                        if (readerIsPresent) {
+                            Session = Reader.openSession();
+                            let sessionIsClosed = Session.isClosed();
+                            console.info("[NFC_test] Session isConnected The connection status is: " + sessionIsClosed);
+                        }
+                    }         
                 }
             }).catch((err) =>{
                 console.info("[NFC_test] openSessionTest err.code " + err.code + "err.message " + err.message);

@@ -35,7 +35,7 @@ export default function FocusOnTouchTest() {
   //A list of components that support the position attribute, which is required.
   let supportView = [
     'Button',
-    'TextInput',
+   
     'TextArea',
     'Search',
     'Text',
@@ -44,39 +44,30 @@ export default function FocusOnTouchTest() {
     'List',
     'Checkbox',
     'CheckboxGroup',
-    'DatePicker',
-//    'ImageAnimator',
+   
     'Menu',
-    'MenuItem',
-//    'MenuItemGroup',
+     'MenuItem',
+
     'Radio',
     'Rating',
-    'Select',
+   
     'Slider',
-    'Stepper',
-    'StepperItem',
-    'TextPicker',
-    'TimePicker',
+  
     'Toggle',
-    'Web',
+ 
     'AlphabetIndexer',
     'Column',
-//    'ColumnSplit',
+
     'Counter',
     'Flex',
-//    'GridCol',
-//    'GridRow',
+
     'GridItem',
     'ListItem',
-//    'ListItemGroup',
+
     'Row',
-//    'RowSplit',
-    'Scroll',
-//    'SideBarContainer',
-    'Stack',
-    'Swiper',
-    'Tabs',
-//    'TabContent'
+
+   
+
   ]
 
   //Page config, this param is required.

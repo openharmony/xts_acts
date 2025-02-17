@@ -184,38 +184,39 @@ struct AttachNodeAdapter1 {
   @State detachNodeAdapter: string = 'Init'
   build() {
     Column() {
-      Text('ListNode Adapter');
-      Button(this.onCreateChild).margin(5).id('onCreateChild_id')
+      Text('ListNode Adapter').height('5%');
+      Button(this.onCreateChild).margin(5).id('onCreateChild_id').height('5%')
         .onClick(()=>{
           this.onCreateChild = storage.get('onCreateChild') as string
         })
-      Button(this.onDisposeChild).margin(5).id('onDisposeChild_id')
+      Button(this.onDisposeChild).margin(5).id('onDisposeChild_id').height('5%')
         .onClick(()=>{
           this.onDisposeChild = storage.get('onDisposeChild') as string
         })
-      Button(this.onUpdateChild).margin(5).id('onUpdateChild_id')
+      Button(this.onUpdateChild).margin(5).id('onUpdateChild_id').height('5%')
         .onClick(()=>{
           this.onUpdateChild = storage.get('onUpdateChild') as string
         })
-      Button(this.attachNodeAdapter).margin(5).id('attachNodeAdapter_id')
+      Button(this.attachNodeAdapter).margin(5).id('attachNodeAdapter_id').height('5%')
         .onClick(()=>{
           this.attachNodeAdapter = storage.get('attachNodeAdapter') as string
         })
-      Button(this.detachNodeAdapter).margin(5).id('detachNodeAdapter_id')
+      Button(this.detachNodeAdapter).margin(5).id('detachNodeAdapter_id').height('5%')
         .onClick(()=>{
           this.adapterController.nodeAdapter?.detachData();
           this.detachNodeAdapter = storage.get('detachNodeAdapter') as string
         })
       NodeContainer(this.adapterController)
-        .width(300).height(300)
+        .width(300).height('30%')
         .borderWidth(1).borderColor(Color.Black);
 
-      Button('Reload').margin(10).id('attachNodeAdapterReload')
+      Button('Reload').margin(10).id('attachNodeAdapterReload').height('5%')
         .onClick(() => {
           this.adapterController.nodeAdapter?.reloadData(50);
         })
 
     }.borderWidth(1)
     .width('100%')
+    .height('100%')
   }
 }

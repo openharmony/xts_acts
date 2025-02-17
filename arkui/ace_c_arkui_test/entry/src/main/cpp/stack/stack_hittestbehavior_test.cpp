@@ -162,6 +162,8 @@ napi_value StackHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_callbac
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+    auto row = nodeAPI->createNode(ARKUI_NODE_ROW);
+    auto row1 = nodeAPI->createNode(ARKUI_NODE_ROW);
 
     int32_t hitTestBehavior = PARAM_0;
     string onTouchTestStackParent = "OnTouchTestStackParentDefault";
@@ -169,7 +171,7 @@ napi_value StackHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_callbac
     string onTouchTestStackBrother = "OnTouchTestStackBrotherDefault";
     auto stackParent = CreateSubStackNode(nodeAPI, hitTestBehavior, onTouchTestStackParent.c_str(),
                                           onTouchTestStack.c_str(), onTouchTestStackBrother.c_str());
-    nodeAPI->addChild(column, stackParent);
+    nodeAPI->addChild(row, stackParent);
 
     hitTestBehavior = PARAM_1;
     onTouchTestStackParent = "OnTouchTestStackParentBlock";
@@ -177,7 +179,7 @@ napi_value StackHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_callbac
     onTouchTestStackBrother = "OnTouchTestStackBrotherBlock";
     stackParent = CreateSubStackNode(nodeAPI, hitTestBehavior, onTouchTestStackParent.c_str(), onTouchTestStack.c_str(),
                                      onTouchTestStackBrother.c_str());
-    nodeAPI->addChild(column, stackParent);
+    nodeAPI->addChild(row, stackParent);
 
     hitTestBehavior = PARAM_2;
     onTouchTestStackParent = "OnTouchTestStackParentTransparent";
@@ -185,7 +187,8 @@ napi_value StackHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_callbac
     onTouchTestStackBrother = "OnTouchTestStackBrotherTransparent";
     stackParent = CreateSubStackNode(nodeAPI, hitTestBehavior, onTouchTestStackParent.c_str(), onTouchTestStack.c_str(),
                                      onTouchTestStackBrother.c_str());
-    nodeAPI->addChild(column, stackParent);
+    nodeAPI->addChild(row, stackParent);                                 
+    nodeAPI->addChild(column, row);
 
     hitTestBehavior = PARAM_3;
     onTouchTestStackParent = "OnTouchTestStackParentNone";
@@ -193,7 +196,7 @@ napi_value StackHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_callbac
     onTouchTestStackBrother = "OnTouchTestStackBrotherNone";
     stackParent = CreateSubStackNode(nodeAPI, hitTestBehavior, onTouchTestStackParent.c_str(), onTouchTestStack.c_str(),
                                      onTouchTestStackBrother.c_str());
-    nodeAPI->addChild(column, stackParent);
+    nodeAPI->addChild(row1, stackParent);
 
     hitTestBehavior = -1;
     onTouchTestStackParent = "OnTouchTestStackParentExceptBelow";
@@ -201,7 +204,7 @@ napi_value StackHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_callbac
     onTouchTestStackBrother = "OnTouchTestStackBrotherExceptBelow";
     stackParent = CreateSubStackNode(nodeAPI, hitTestBehavior, onTouchTestStackParent.c_str(), onTouchTestStack.c_str(),
                                      onTouchTestStackBrother.c_str());
-    nodeAPI->addChild(column, stackParent);
+    nodeAPI->addChild(row1, stackParent);
 
     hitTestBehavior = PARAM_4;
     onTouchTestStackParent = "OnTouchTestStackParentExceptAbove";
@@ -209,7 +212,8 @@ napi_value StackHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_callbac
     onTouchTestStackBrother = "OnTouchTestStackBrotherExceptAbove";
     stackParent = CreateSubStackNode(nodeAPI, hitTestBehavior, onTouchTestStackParent.c_str(), onTouchTestStack.c_str(),
                                      onTouchTestStackBrother.c_str());
-    nodeAPI->addChild(column, stackParent);
+    nodeAPI->addChild(row1, stackParent);                                 
+    nodeAPI->addChild(column, row1);
 
     nodeAPI->registerNodeEventReceiver(&OnEventReceive);
 

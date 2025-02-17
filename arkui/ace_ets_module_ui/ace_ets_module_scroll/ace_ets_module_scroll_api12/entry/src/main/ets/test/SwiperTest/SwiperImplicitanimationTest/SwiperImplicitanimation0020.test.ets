@@ -14,7 +14,19 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/utils/Common';
 
 export default function SwiperImplicitanimation0020() {
@@ -45,26 +57,30 @@ export default function SwiperImplicitanimation0020() {
     });
 
     /**
-     * @tc.number SWIPER_IMPLICITANIMATION_0020
-     * @tc.name step
-     * @tc.desc change
-     * @tc.level Level 1
-     * @tc.type
-     * @tc.size
+     * @tc.number SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_IMPLICITANIMATION_0020
+     * @tc.name SWIPER_IMPLICITANIMATION_0020
+     * @tc.desc show index targetIndex,currentOffset、targetOffset
+     * @tc.level Level 3
+     * @tc.type Function
+     * @tc.size MediumTest
      */
     it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_IMPLICITANIMATION_0020', 0, async (done: Function) => {
       console.info("SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_IMPLICITANIMATION_0020 START");
+      await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
-      let swiperArrow = await driver.findComponent(ON.id("implicitanimation_0020"));
-      let point2 = await swiperArrow.getBoundsCenter();
-      await driver.fling({x: point2.x + 200, y: point2.y}, {x: point2.x - 150, y: point2.y}, 5, 1000);
+      let btn1 = await driver.findComponent(ON.id("btn_implicitanimation_0020_1"));
+      await btn1.click();
       await CommonFunc.sleep(500);
-      await driver.fling({x: point2.x + 200, y: point2.y}, {x: point2.x - 150, y: point2.y}, 5, 1000);
+      await btn1.click();
       await CommonFunc.sleep(500);
       let strIndex: string = getInspectorByKey('implicitanimation_0020_1')
       let jsonIndex: ESObject = JSON.parse(strIndex).$attrs.content;
       expect(jsonIndex).assertEqual('1')
-      await driver.drag(point2.x +200,  point2.y,point2.x - 150,point2.y,500)
+      let swiperArrow = await driver.findComponent(ON.id("implicitanimation_0020"));
+      let point2 = await swiperArrow.getBoundsCenter();
+      let x:number = parseInt(vp2px(120).toString());
+      let x1:number = parseInt(vp2px(90).toString());
+      await driver.drag(point2.x + x, point2.y, point2.x - x1, point2.y, 3000)
       await CommonFunc.sleep(1000);
       let strIndex4: string = getInspectorByKey('implicitanimation_0020_1')
       let jsonIndex4: ESObject = JSON.parse(strIndex4).$attrs.content;
@@ -88,7 +104,7 @@ export default function SwiperImplicitanimation0020() {
       await showPrevious.click();
       await CommonFunc.sleep(1000);
 
-      await driver.drag(point2.x -200,  point2.y,point2.x + 150,point2.y,500)
+      await driver.drag(point2.x - x, point2.y, point2.x + x1, point2.y, 3000)
       await CommonFunc.sleep(1000);
       let strIndex0: string = getInspectorByKey('implicitanimation_0020_1')
       let jsonIndex0: ESObject = JSON.parse(strIndex0).$attrs.content;

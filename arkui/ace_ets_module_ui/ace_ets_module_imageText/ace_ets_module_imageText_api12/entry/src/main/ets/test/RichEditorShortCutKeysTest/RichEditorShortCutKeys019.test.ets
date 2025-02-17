@@ -55,10 +55,12 @@ export default function RichEditorShortCutKeys019() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0031
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0031
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0031 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0031
+     * @tc.name  : Test the RichEditor shortCutKeys
+     * @tc.desc  : RichEditor with attribute string mode supports shortcut key capability to test RichEditor shortCutKeys
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0031', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0031 START');
@@ -68,8 +70,7 @@ export default function RichEditorShortCutKeys019() {
       await CommonFunc.sleep(500);
       await driver.longClick(getBounds.x, getBounds.y );
       await CommonFunc.sleep(1000);
-      let selectAll = await driver.findComponent(ON.text('全选'));
-      await selectAll.click();
+      driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_A);
       await CommonFunc.sleep(500);
       driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_C);
       await CommonFunc.sleep(500);
