@@ -20,5 +20,6 @@ import HideBackButtonPage from './NavDestination/HideBackButtonPage.test';
 export default function testsuite() {
   EnableModeChangeAnimation();
   CustomTransitionPage();
+  OnResultPage();
   HideBackButtonPage();
 }
