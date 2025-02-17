@@ -16,9 +16,16 @@ group("thirdparty") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "asan:ActsThirdPartyAsanTest",
       "decimal:decimal",
+      "hwasan:ActsThirdPartyHWAsanTest",
       "musl:ActsThirdPartyMuslTest",
       "musl32:ActsThirdPartyMusl32Test",
+      "tsan/tsanmain:ActsThirdPartyTsanTest",
+      "tsan/tsanmutexcheck1:ActsThirdPartyTsanMutexCheck1Test",
+      "tsan/tsanmutexcheck2:ActsThirdPartyTsanMutexCheck2Test",
+      "tsan/tsanmutexcheck3:ActsThirdPartyTsanMutexCheck3Test",
+      "tsan/tsanmutexcheck4:ActsThirdPartyTsanMutexCheck4Test",
       "ubsan:ActsThirdPartyUBSanTest",
     ]
   }
