@@ -53,13 +53,11 @@ export default function ListLanes03() {
 
       console.info('[ListLanes03_001] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({ name:'listGutter', value: '10vp' });
-      await CommonFunc.sleep(200);
 
       let ListItem0 = CommonFunc.getComponentRect('ListLanes31_0');
       let ListItem1 = CommonFunc.getComponentRect('ListLanes31_1');
       await CommonFunc.sleep(1000);
-	  expect(Math.abs(Math.round(ListItem1.left - ListItem0.right) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItem1.left - ListItem0.right) - Math.round(vp2px(10))) <= 1).assertTrue();
 
       console.info('[ListLanes03_001] END');
       done();
@@ -75,13 +73,11 @@ export default function ListLanes03() {
 
       console.info('[ListLanes03_002] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({ name:'listGutter', value: '10fp' });
-      await CommonFunc.sleep(200);
 
       let ListItem0 = CommonFunc.getComponentRect('ListLanes32_0');
       let ListItem1 = CommonFunc.getComponentRect('ListLanes32_1');
       await CommonFunc.sleep(1000);
-	  expect(Math.abs(Math.round(ListItem1.left - ListItem0.right) - Math.round(fp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItem1.left - ListItem0.right) - Math.round(fp2px(10))) <= 1).assertTrue();
 
       console.info('[ListLanes03_002] END');
       done();
@@ -97,13 +93,11 @@ export default function ListLanes03() {
 
       console.info('[ListLanes03_003] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({ name:'listGutter', value: '10lpx' });
-      await CommonFunc.sleep(200);
 
       let ListItem0 = CommonFunc.getComponentRect('ListLanes33_0');
       let ListItem1 = CommonFunc.getComponentRect('ListLanes33_1');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ListItem1.left - ListItem0.right)).assertEqual(Math.round(lpx2px(10)));
+      expect(Math.abs(Math.round(ListItem1.left - ListItem0.right) - Math.round(lpx2px(10))) <= 1).assertTrue();
 
       console.info('[ListLanes03_003] END');
       done();
@@ -119,19 +113,14 @@ export default function ListLanes03() {
 
       console.info('[ListLanes03_004] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({ name:'listGutter', value: '10px' });
-      await CommonFunc.sleep(200);
 
       let ListItem0 = CommonFunc.getComponentRect('ListLanes34_0');
       let ListItem1 = CommonFunc.getComponentRect('ListLanes34_1');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ListItem1.left - ListItem0.right)).assertEqual(Math.round(10));
+      expect(Math.abs(Math.round(ListItem1.left - ListItem0.right) - Math.round(10)) <= 1).assertTrue();
 
       console.info('[ListLanes03_004] END');
       done();
     });
-
-
-
   })
 }

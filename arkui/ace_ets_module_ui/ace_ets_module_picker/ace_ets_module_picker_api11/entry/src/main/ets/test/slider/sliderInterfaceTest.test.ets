@@ -16,14 +16,18 @@
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils';
-import { Driver,ON } from '@ohos.UiTest';
+import { Driver, ON } from '@ohos.UiTest';
 import inputEventClient from '@ohos.multimodalInput.inputEventClient';
+import config from '@ohos.accessibility.config'
+import accessibility from '@ohos.accessibility';
+
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture']
+const BUNDLE_NAME = 'com.arkui.ace.picker'
 
 export default function SliderInterfaceTest() {
   describe('SliderInterfaceTest', () => {
-
-    const routerPush = async (target:string) => {
-      let options:router.RouterOptions = {
+    const routerPush = async (target: string) => {
+      let options: router.RouterOptions = {
         url: `MainAbility/pages/Slider/SliderInterface/${target}`,
       }
       try {
@@ -32,7 +36,7 @@ export default function SliderInterfaceTest() {
         console.info(`get ${target} state pages:` + JSON.stringify(pages));
         console.info(`get ${target} pages.name:` + JSON.stringify(pages.name));
         if (!(target == pages.name)) {
-          let result = router.push(options);
+          let result = router.replace(options);
           await Utils.sleep(1000);
           console.info(`push ${target} page result:` + JSON.stringify(result));
           let pages = router.getState();
@@ -42,6 +46,13 @@ export default function SliderInterfaceTest() {
         console.error(`push ${target} page error:` + err);
       }
     }
+    beforeEach(async () => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`)
+      }).catch((err: object) => {
+        console.error(`failed to enable,${err}`)
+      })
+    })
 
     afterEach(async () => {
       await Utils.sleep(1000);
@@ -62,7 +73,8 @@ export default function SliderInterfaceTest() {
       let strJson1 = getInspectorByKey('Slider01');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0180] obj1.$attrs.constructor is: " + JSON.stringify(obj1.$attrs.constructor));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0180] obj1.$attrs.constructor is: " +
+      JSON.stringify(obj1.$attrs.constructor));
       expect(obj1.$attrs.constructor.direction).assertEqual('Axis.Vertical');
       expect(obj1.$attrs.constructor.reverse).assertEqual('true');
       done();
@@ -82,7 +94,8 @@ export default function SliderInterfaceTest() {
       let strJson1 = getInspectorByKey('Slider02');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0200] obj1.$attrs.constructor is: " + JSON.stringify(obj1.$attrs.constructor));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0200] obj1.$attrs.constructor is: " +
+      JSON.stringify(obj1.$attrs.constructor));
       expect(obj1.$attrs.constructor.direction).assertEqual('Axis.Vertical');
       done();
     });
@@ -101,7 +114,8 @@ export default function SliderInterfaceTest() {
       let strJson1 = getInspectorByKey('Slider03');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0210] obj1.$attrs.constructor is: " + JSON.stringify(obj1.$attrs.constructor));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0210] obj1.$attrs.constructor is: " +
+      JSON.stringify(obj1.$attrs.constructor));
       expect(obj1.$attrs.constructor.max).assertEqual('100.000000');
       done();
     });
@@ -120,7 +134,8 @@ export default function SliderInterfaceTest() {
       let strJson1 = getInspectorByKey('Slider04');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0250] obj1.$attrs.constructor is: " + JSON.stringify(obj1.$attrs.constructor));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0250] obj1.$attrs.constructor is: " +
+      JSON.stringify(obj1.$attrs.constructor));
       expect(obj1.$attrs.constructor.min).assertEqual('0.000000');
       done();
     });
@@ -139,7 +154,8 @@ export default function SliderInterfaceTest() {
       let strJson1 = getInspectorByKey('Slider05');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0380] obj1.$attrs.constructor is: " + JSON.stringify(obj1.$attrs.constructor));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0380] obj1.$attrs.constructor is: " +
+      JSON.stringify(obj1.$attrs.constructor));
       expect(obj1.$attrs.showTips).assertEqual('false');
       done();
     });
@@ -158,7 +174,8 @@ export default function SliderInterfaceTest() {
       let strJson1 = getInspectorByKey('Slider06');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0390] obj1.$attrs.constructor is: " + JSON.stringify(obj1.$attrs.constructor));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0390] obj1.$attrs.constructor is: " +
+      JSON.stringify(obj1.$attrs.constructor));
       expect(obj1.$attrs.showTips).assertEqual('true');
       done();
     });
@@ -177,7 +194,8 @@ export default function SliderInterfaceTest() {
       let strJson1 = getInspectorByKey('Slider07');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0420] obj1.$attrs.constructor is: " + JSON.stringify(obj1.$attrs.constructor));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0420] obj1.$attrs.constructor is: " +
+      JSON.stringify(obj1.$attrs.constructor));
       expect(obj1.$attrs.showTips).assertEqual('false');
       done();
     });
@@ -196,7 +214,8 @@ export default function SliderInterfaceTest() {
       let strJson1 = getInspectorByKey('Slider08');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0430] obj1.$attrs.constructor is: " + JSON.stringify(obj1.$attrs.constructor));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0430] obj1.$attrs.constructor is: " +
+      JSON.stringify(obj1.$attrs.constructor));
       expect(obj1.$attrs.showTips).assertEqual('true');
       done();
     });
@@ -215,8 +234,10 @@ export default function SliderInterfaceTest() {
       let strJson1 = getInspectorByKey('Slider09');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0440] obj1.$attrs.width is: " + JSON.stringify(obj1.$attrs.width));
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0440] obj1.$attrs.height is: " + JSON.stringify(obj1.$attrs.height));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0440] obj1.$attrs.width is: " +
+      JSON.stringify(obj1.$attrs.width));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0440] obj1.$attrs.height is: " +
+      JSON.stringify(obj1.$attrs.height));
       expect(obj1.$attrs.width).assertEqual('300.00vp');
       done();
     });
@@ -234,13 +255,16 @@ export default function SliderInterfaceTest() {
       let slider = await driver.findComponent(ON.id('Slider10'));
       let rect = await slider.getBounds();
       console.info(`rect is: ` + JSON.stringify(rect))
-      await driver.drag(rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
-      console.info(`drag is: `+rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
+      await driver.drag(rect.left, Math.round((rect.top + rect.bottom) / 2),
+        rect.left + Math.round((rect.right - rect.left) / 4), Math.round((rect.top + rect.bottom) / 2), 600)
+      console.info(`drag is: ` + rect.left, Math.round((rect.top + rect.bottom) / 2),
+        rect.left + Math.round((rect.right - rect.left) / 4), Math.round((rect.top + rect.bottom) / 2), 600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider10');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0450] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0450] obj1.$attrs.constructor.value is: " +
+      JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual("20.000000")
       done();
     });
@@ -260,13 +284,16 @@ export default function SliderInterfaceTest() {
       let slider = await driver.findComponent(ON.id('Slider11'));
       let rect = await slider.getBounds();
       console.info(`rect is: ` + JSON.stringify(rect))
-      await driver.drag(rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
-      console.info(`drag is: `+rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
+      await driver.drag(rect.left, Math.round((rect.top + rect.bottom) / 2),
+        rect.left + Math.round((rect.right - rect.left) / 4), Math.round((rect.top + rect.bottom) / 2), 600)
+      console.info(`drag is: ` + rect.left, Math.round((rect.top + rect.bottom) / 2),
+        rect.left + Math.round((rect.right - rect.left) / 4), Math.round((rect.top + rect.bottom) / 2), 600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider11');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0480] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0480] obj1.$attrs.constructor.value is: " +
+      JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual("20.000000")
       done();
     });
@@ -286,7 +313,8 @@ export default function SliderInterfaceTest() {
       let strJson1 = getInspectorByKey('Slider12');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0640] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0640] obj1.$attrs.constructor.value is: " +
+      JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('0.000000');
       done();
     });
@@ -306,7 +334,8 @@ export default function SliderInterfaceTest() {
       let strJson1 = getInspectorByKey('Slider13');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0650] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0650] obj1.$attrs.constructor.value is: " +
+      JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('100.000000');
       done();
     });
@@ -325,13 +354,16 @@ export default function SliderInterfaceTest() {
       let slider = await driver.findComponent(ON.id('Slider14'));
       let rect = await slider.getBounds();
       console.info(`rect is: ` + JSON.stringify(rect))
-      await driver.drag(rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
-      console.info(`drag is: `+rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
+      await driver.drag(rect.left, Math.round((rect.top + rect.bottom) / 2),
+        rect.left + Math.round((rect.right - rect.left) / 4), Math.round((rect.top + rect.bottom) / 2), 600)
+      console.info(`drag is: ` + rect.left, Math.round((rect.top + rect.bottom) / 2),
+        rect.left + Math.round((rect.right - rect.left) / 4), Math.round((rect.top + rect.bottom) / 2), 600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider14');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0660] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0660] obj1.$attrs.constructor.value is: " +
+      JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('20.000000');
       done();
     });
@@ -350,13 +382,18 @@ export default function SliderInterfaceTest() {
       let slider = await driver.findComponent(ON.id('Slider15'));
       let rect = await slider.getBounds();
       console.info(`rect is: ` + JSON.stringify(rect))
-      await driver.drag(rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/10),Math.round((rect.top+rect.bottom)/2),600)
-      console.info(`drag is: `+rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/10),Math.round((rect.top+rect.bottom)/2),600)
+      await Utils.sleep(1000);
+      await driver.drag(rect.left, Math.round((rect.top + rect.bottom) / 2),
+        rect.left + Math.round((rect.right - rect.left) / 8), Math.round((rect.top + rect.bottom) / 2), 600)
+      console.info(`drag is: [SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0670] ` + rect.left,
+        Math.round((rect.top + rect.bottom) / 2), rect.left + Math.round((rect.right - rect.left) / 8),
+        Math.round((rect.top + rect.bottom) / 2), 600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider15');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0670] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0670] obj1.$attrs.constructor.value is: " +
+      JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('10.000000');
       done();
     });
@@ -376,13 +413,16 @@ export default function SliderInterfaceTest() {
       let slider = await driver.findComponent(ON.id('Slider16'));
       let rect = await slider.getBounds();
       console.info(`rect is: ` + JSON.stringify(rect))
-      await driver.drag(rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+55,Math.round((rect.top+rect.bottom)/2),600)
-      console.info(`drag is: `,rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+55,Math.round((rect.top+rect.bottom)/2),600)
+      await driver.drag(rect.left, Math.round((rect.top + rect.bottom) / 2), rect.left + 55,
+        Math.round((rect.top + rect.bottom) / 2), 600)
+      console.info(`drag is: `, rect.left, Math.round((rect.top + rect.bottom) / 2), rect.left + 55,
+        Math.round((rect.top + rect.bottom) / 2), 600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider16');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0680] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0680] obj1.$attrs.constructor.value is: " +
+      JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('0.000000');
       done();
     });
@@ -401,13 +441,15 @@ export default function SliderInterfaceTest() {
       let slider = await driver.findComponent(ON.id('Slider17'));
       let rect = await slider.getBounds();
       console.info(`rect is: ` + JSON.stringify(rect))
-      await driver.click(rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2))
-      console.info(`click is: `+rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2))
+      await driver.click(rect.left + Math.round((rect.right - rect.left) / 5), Math.round((rect.top + rect.bottom) / 2))
+      console.info(`click is: ` + rect.left + Math.round((rect.right - rect.left) / 5),
+        Math.round((rect.top + rect.bottom) / 2))
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider17');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0690] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0690] obj1.$attrs.constructor.value is: " +
+      JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('20.000000');
       done();
     });
@@ -426,12 +468,13 @@ export default function SliderInterfaceTest() {
       let slider = await driver.findComponent(ON.id('Slider18'));
       let rect = await slider.getBounds();
       console.info(`rect is: ` + JSON.stringify(rect))
-      await driver.click(rect.left,Math.round((rect.top+rect.bottom)/2))
+      await driver.click(rect.left, Math.round((rect.top + rect.bottom) / 2))
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider18');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0700] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0700] obj1.$attrs.constructor.value is: " +
+      JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('0.000000');
       done();
     });
@@ -450,12 +493,13 @@ export default function SliderInterfaceTest() {
       let slider = await driver.findComponent(ON.id('Slider19'));
       let rect = await slider.getBounds();
       console.info(`rect is: ` + JSON.stringify(rect))
-      await driver.click(rect.left,Math.round((rect.top+rect.bottom)/2))
+      await driver.click(rect.left, Math.round((rect.top + rect.bottom) / 2))
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider19');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0710] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0710] obj1.$attrs.constructor.value is: " +
+      JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('0.000000');
       done();
     });
@@ -473,14 +517,18 @@ export default function SliderInterfaceTest() {
       await Utils.sleep(1000);
       let slider = await driver.findComponent(ON.id('Slider20'));
       let rect = await slider.getBounds();
+      await Utils.sleep(1000);
       console.info(`rect is: ` + JSON.stringify(rect))
-      await driver.drag(rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
-      console.info(`drag is: `+rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
+      await driver.drag(rect.left, Math.round((rect.top + rect.bottom) / 2),
+        rect.left + Math.round((rect.right - rect.left) / 4), Math.round((rect.top + rect.bottom) / 2), 600)
+      console.info(`drag is: ` + rect.left, Math.round((rect.top + rect.bottom) / 2),
+        rect.left + Math.round((rect.right - rect.left) / 4), Math.round((rect.top + rect.bottom) / 2), 600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider20');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0720] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0720] obj1.$attrs.constructor.value is: " +
+      JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('20.000000');
       done();
     });
@@ -499,13 +547,16 @@ export default function SliderInterfaceTest() {
       let slider = await driver.findComponent(ON.id('Slider20'));
       let rect = await slider.getBounds();
       console.info(`rect is: ` + JSON.stringify(rect))
-      await driver.click(rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2))
-      console.info(`click is: `+rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2))
+      await Utils.sleep(1000);
+      await driver.click(rect.left + Math.round((rect.right - rect.left) / 4), Math.round((rect.top + rect.bottom) / 2))
+      console.info(`click is: ` + rect.left + Math.round((rect.right - rect.left) / 4),
+        Math.round((rect.top + rect.bottom) / 2))
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider20');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0730] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0730] obj1.$attrs.constructor.value is: " +
+      JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('20.000000');
       done();
     });
@@ -524,13 +575,17 @@ export default function SliderInterfaceTest() {
       let slider = await driver.findComponent(ON.id('Slider21'));
       let rect = await slider.getBounds();
       console.info(`rect is: ` + JSON.stringify(rect))
-      await driver.drag(rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
-      console.info(`drag is: `+rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
+      await Utils.sleep(1000);
+      await driver.drag(rect.left, Math.round((rect.top + rect.bottom) / 2),
+        rect.left + Math.round((rect.right - rect.left) / 4), Math.round((rect.top + rect.bottom) / 2), 600)
+      console.info(`drag is: ` + rect.left, Math.round((rect.top + rect.bottom) / 2),
+        rect.left + Math.round((rect.right - rect.left) / 4), Math.round((rect.top + rect.bottom) / 2), 600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider21');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_1080] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_1080] obj1.$attrs.constructor.value is: " +
+      JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('20.000000');
       done();
     });
@@ -549,8 +604,10 @@ export default function SliderInterfaceTest() {
       let strJson1 = getInspectorByKey('Slider22');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_LAYOUT_0010] obj1.$attrs.width is: " + JSON.stringify(obj1.$attrs.width));
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_LAYOUT_0010] obj1.$attrs.height is: " + JSON.stringify(obj1.$attrs.height));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_LAYOUT_0010] obj1.$attrs.width is: " +
+      JSON.stringify(obj1.$attrs.width));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_LAYOUT_0010] obj1.$attrs.height is: " +
+      JSON.stringify(obj1.$attrs.height));
       expect(obj1.$attrs.width).assertEqual('300.00vp');
       expect(obj1.$attrs.height).assertEqual('300.00vp');
       done();
@@ -570,11 +627,10 @@ export default function SliderInterfaceTest() {
       let strJson1 = getInspectorByKey('Slider23');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_LAYOUT_0020] obj1.$attrs.height is: " + JSON.stringify(obj1.$attrs.height));
+      console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_LAYOUT_0020] obj1.$attrs.height is: " +
+      JSON.stringify(obj1.$attrs.height));
       expect(obj1.$attrs.height).assertEqual('60.00vp');
       done();
     });
   })
 }
-
-

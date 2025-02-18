@@ -97,11 +97,11 @@ struct bindSelectionMenuTest {
           console.info(`自定义选择菜单弹出时回调`);
         },
         onMenuShow: () => {
-          console.log('wgl onMenuShow succ');
+          console.log('onMenuShow succ');
           this.onMenuShow = 'succ';
         },
         onMenuHide: () => {
-          console.log('wgl onMenuHide succ');
+          console.log('onMenuHide succ');
           this.onMenuHide = 'succ';
         }
       })

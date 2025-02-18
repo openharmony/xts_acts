@@ -36,12 +36,23 @@ struct ListItem_Delete_Start_Default {
 
   build() {
     Column() {
+      Text(this.enterEndDeleteAreaString).fontSize(12).key("ListItem_Delete_Start_Default_text_01")
+      Text(this.exitEndDeleteAreaString).fontSize(12).key("ListItem_Delete_Start_Default_text_02")
+      Text('' + this.arr.length).fontSize(12).key("ListItem_Delete_Start_Default_text_03")
+      Button('点击还原')
+        .height('5%')
+        .onClick(() => {
+          this.arr = [0, 1, 2, 3, 4]
+          this.enterEndDeleteAreaString = "not enterEndDeleteArea"
+          this.exitEndDeleteAreaString = "not exitEndDeleteArea"
+        })
+        .id('ListItem_Delete_Start_Default_button1')
       List({ space: 10 }) {
         ForEach(this.arr, (item: number) => {
           ListItem() {
             Text("item" + item)
               .width('100%')
-              .height(100)
+              .height('20%')
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .borderRadius(10)
@@ -67,18 +78,10 @@ struct ListItem_Delete_Start_Default {
             }
           })
         }, (item: string) => item)
-      }
+      }.key('ListItem_Delete_Start_Default_1')
+      .width('90%')
+      .height('80%')
 
-      Text(this.enterEndDeleteAreaString).fontSize(20).key("ListItem_Delete_Start_Default_text_01")
-      Text(this.exitEndDeleteAreaString).fontSize(20).key("ListItem_Delete_Start_Default_text_02")
-      Text('' + this.arr.length).fontSize(20).key("ListItem_Delete_Start_Default_text_03")
-      Button('点击还原')
-        .onClick(() => {
-          this.arr = [0, 1, 2, 3, 4]
-          this.enterEndDeleteAreaString = "not enterEndDeleteArea"
-          this.exitEndDeleteAreaString = "not exitEndDeleteArea"
-        })
-        .id('ListItem_Delete_Start_Default_button1')
     }
     .backgroundColor(0xDCDCDC)
     .width('100%')

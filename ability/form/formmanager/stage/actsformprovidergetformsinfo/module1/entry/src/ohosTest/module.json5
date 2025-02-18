@@ -12,60 +12,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 {
   "module": {
-    "name": "module1",
+    "name": "entry_test",
     "type": "feature",
-    "srcEntry": "./ets/Application/AbilityStage.ts",
-    "description": "$string:module1_desc",
-    "mainElement": "MainAbility",
+    "description": "$string:module_test_desc",
+    "mainElement": "TestAbility",
     "deviceTypes": [
       "default",
-      "tablet",
-      "2in1",
-      "wearable"
+      "tablet"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
-    "pages": "$profile:main_pages",
-    "uiSyntax": "ets",
+    "pages": "$profile:test_pages",
     "abilities": [
       {
-        "name": "MainAbility",
-        "srcEntry": "./ets/MainAbility/MainAbility.ts",
-        "description": "$string:MainAbility_desc",
+        "name": "TestAbility",
+        "srcEntry": "./ets/testability/TestAbility.ets",
+        "description": "$string:TestAbility_desc",
         "icon": "$media:icon",
-        "label": "$string:MainAbility_label",
-        "visible": true,
+        "label": "$string:TestAbility_label",
+        "exported": true,
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:white"
-      }
-    ],
-    "extensionAbilities": [
-      {
-        "name": "FormAbility",
-        "srcEntry": "./ets/FormAbility/FormAbility.ts",
-        "label": "$string:form_FormAbility_label",
-        "description": "$string:form_FormAbility_desc",
-        "type": "form",
-        "metadata": [
+        "startWindowBackground": "$color:start_window_background",
+        "skills": [
           {
-            "name": "ohos.extension.form",
-            "resource": "$profile:form_config"
+            "actions": [
+              "action.system.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ]
           }
         ]
-      }
-    ],
-    "definePermissions": [
-      {
-        "grantMode": "system_grant",
-        "name": "FMS_FormSupply_commonEvent"
-      }
-    ],
-    "requestPermissions": [
-      {
-        "name": "FMS_FormSupply_commonEvent"
       }
     ]
   }

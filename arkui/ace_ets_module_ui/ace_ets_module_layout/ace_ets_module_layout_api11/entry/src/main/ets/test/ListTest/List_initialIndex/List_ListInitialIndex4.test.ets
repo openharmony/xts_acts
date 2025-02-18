@@ -135,6 +135,9 @@ export default function list_ListInitialIndex4Test() {
         Math.round(globalThis.winTop + fourthListItem.bottom), Math.round(globalThis.winLeft + firstListItem.left + (firstListItem.right - firstListItem.left) / 2),
         Math.round(globalThis.winTop + firstListItem.bottom));
       await CommonFunc.sleep(2000);
+
+      let scrollColumn: Component = await driver.findComponent(ON.type('Scroll'));
+      let button = await scrollColumn.scrollSearch(ON.id('List_ListInitialIndex4_6'));
       fifthListItem = CommonFunc.getComponentRect('List_ListInitialIndex4_5');
       sixthListItem = CommonFunc.getComponentRect('List_ListInitialIndex4_6');
       seventhListItem = CommonFunc.getComponentRect('List_ListInitialIndex4_7');

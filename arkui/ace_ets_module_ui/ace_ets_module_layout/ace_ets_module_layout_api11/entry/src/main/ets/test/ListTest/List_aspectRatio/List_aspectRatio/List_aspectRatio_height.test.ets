@@ -76,9 +76,16 @@ export default function List_aspectRatio_height() {
       });
       await CommonFunc.sleep(1000);
       let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_height_01');
+      let column01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_height_column');
+      let item01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_height_001');
+      let width: number = column01.right - column01.left;
+      let height: number = column01.bottom - column01.top;
 
-	  expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(vp2px(350))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(vp2px(350))) <= 1).assertTrue();
+      let itemwidth: number = item01.right - item01.left;
+      let itemheight: number = item01.bottom - item01.top;
+
+      expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(itemwidth)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(height * 0.4)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_List_aspectRatio_height_0100] END');
       done();
@@ -96,9 +103,15 @@ export default function List_aspectRatio_height() {
       });
       await CommonFunc.sleep(1000);
       let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_height_01');
+      let lwidth: number = List01.right - List01.left;
+      let lheight: number = List01.bottom - List01.top;
+      
+      let column01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_height_column');
+      let width: number = column01.right - column01.left;
+      let height: number = column01.bottom - column01.top;
 
-	  expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(vp2px(175))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(vp2px(350))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(lheight * 0.5)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(height * 0.4)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_List_aspectRatio_height_0200] END');
       done();
@@ -116,9 +129,15 @@ export default function List_aspectRatio_height() {
       });
       await CommonFunc.sleep(1000);
       let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_height_01');
+      let lwidth: number = List01.right - List01.left;
+      let lheight: number = List01.bottom - List01.top;
 
-	  expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(vp2px(700))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(vp2px(350))) <= 1).assertTrue();
+      let column01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_height_column');
+      let width: number = column01.right - column01.left;
+      let height: number = column01.bottom - column01.top;
+
+      expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(lheight * 2)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(height * 0.4)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_List_aspectRatio_height_0300] END');
       done();
@@ -136,9 +155,16 @@ export default function List_aspectRatio_height() {
       });
       await CommonFunc.sleep(1000);
       let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_height_01');
+      let column01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_height_column');
+      let item01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_height_001');
+      let width: number = column01.right - column01.left;
+      let height: number = column01.bottom - column01.top;
 
-	  expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(vp2px(350))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(vp2px(350))) <= 1).assertTrue();
+      let itemwidth: number = item01.right - item01.left;
+      let itemheight: number = item01.bottom - item01.top;
+
+      expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(itemwidth)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(height * 0.4)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_List_aspectRatio_height_0400] END');
       done();

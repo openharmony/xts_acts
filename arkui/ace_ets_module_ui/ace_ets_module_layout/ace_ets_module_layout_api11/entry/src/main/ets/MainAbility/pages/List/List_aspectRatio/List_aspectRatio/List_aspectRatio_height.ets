@@ -46,7 +46,7 @@ struct List_aspectRatio_height {
             .borderRadius(10)
             .textAlign(TextAlign.Center)
             .backgroundColor(Color.White)
-        }
+        }.key('List_aspectRatio_height_001')
 
         ListItem() {
           Text('2')
@@ -78,14 +78,15 @@ struct List_aspectRatio_height {
             .backgroundColor(Color.White)
         }
       }
-      .height(350)
+      .height('40%')
       .aspectRatio(this.aspectRatio1)
       .listDirection(Axis.Vertical)
       .scrollBar(BarState.On)
       .backgroundColor(0xAFEEEE)
       .key('List_aspectRatio_height_01')
     }
-    .width(350)
+    .width('40%')
     .height('100%')
+    .key('List_aspectRatio_height_column')
   }
 }

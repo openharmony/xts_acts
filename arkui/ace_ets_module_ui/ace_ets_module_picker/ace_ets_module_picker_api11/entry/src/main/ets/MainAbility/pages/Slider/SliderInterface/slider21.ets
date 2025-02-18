@@ -34,7 +34,7 @@ struct Slider21 {
         .id('Slider21')
         .blockStyle({ type: SliderBlockType.IMAGE, image: $r('app.media.icon') })
         .blockSize({ width: 10, height: 20 })
-        .width(300)
+        .width('80%')
         .showTips(true)
         .onChange((value: number, mode: SliderChangeMode) => {
           this.outSetValueOne = value
@@ -42,8 +42,8 @@ struct Slider21 {
           console.info('value:' + value + 'mode:' + mode.toString())
         })
     }
-    .width(350)
-    .height(200)
-    .position({ y: 60 })
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }

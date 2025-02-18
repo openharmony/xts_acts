@@ -76,9 +76,14 @@ export default function List_aspectRatio_neither() {
       });
       await CommonFunc.sleep(1000);
       let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_neither_01');
+      let width: number = List01.right - List01.left;
+      
+      let item01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_neither_001');
+      let itemwidth: number = item01.right - item01.left;
+      let itemheight: number = item01.bottom - item01.top;
 
-	  expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(vp2px(300))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(vp2px(230))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(width * 0.8) - Math.round(itemwidth)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(itemheight*4 + 3*vp2px(10))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_List_aspectRatio_neither_0100] END');
       done();
@@ -96,9 +101,14 @@ export default function List_aspectRatio_neither() {
       });
       await CommonFunc.sleep(1000);
       let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_neither_01');
+      let width: number = List01.right - List01.left;
 
-	  expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(vp2px(300))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(vp2px(600))) <= 1).assertTrue();
+      let item01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_neither_001');
+      let itemwidth: number = item01.right - item01.left;
+      let itemheight: number = item01.bottom - item01.top;
+
+      expect(Math.abs(Math.round(width * 0.8) - Math.round(itemwidth)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(width * 2)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_List_aspectRatio_neither_0200] END');
       done();
@@ -116,9 +126,14 @@ export default function List_aspectRatio_neither() {
       });
       await CommonFunc.sleep(1000);
       let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_neither_01');
+      let width: number = List01.right - List01.left;
 
-	  expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(vp2px(300))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(vp2px(150))) <= 1).assertTrue();
+      let item01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_neither_001');
+      let itemwidth: number = item01.right - item01.left;
+      let itemheight: number = item01.bottom - item01.top;
+
+      expect(Math.abs(Math.round(width * 0.8) - Math.round(itemwidth)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(width / 2)) <= 1).assertTrue();
 
       console.info('[SUB_ACE_List_aspectRatio_neither_0300] END');
       done();
@@ -136,9 +151,14 @@ export default function List_aspectRatio_neither() {
       });
       await CommonFunc.sleep(1000);
       let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_neither_01');
+      let width: number = List01.right - List01.left;
 
-	  expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(vp2px(300))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(vp2px(230))) <= 1).assertTrue();
+      let item01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_neither_001');
+      let itemwidth: number = item01.right - item01.left;
+      let itemheight: number = item01.bottom - item01.top;
+
+      expect(Math.abs(Math.round(width * 0.8) - Math.round(itemwidth)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(itemheight*4 + 3*vp2px(10))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_List_aspectRatio_neither_0400] END');
       done();

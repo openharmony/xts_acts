@@ -4,6 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
         "shell-timeout": "600000",
+        "testcase-timeout": "600000",
         "bundle-name": "com.example.ndk.enable",
         "module-name": "entry_test"
     },

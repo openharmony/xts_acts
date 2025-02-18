@@ -310,7 +310,9 @@ async function permissionClick() {
   }
   console.info(`button is ${JSON.stringify(button)}`);
   await sleep(100);
-  await button.click();
+  if (button != null && button != undefined) {
+    await button.click();
+  }
   await sleep(1000);
 }
 

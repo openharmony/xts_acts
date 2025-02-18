@@ -41,33 +41,33 @@ struct List_SpaceChange {
         ListItem() {
           Text('1').width('100%').height('100%').backgroundColor(0xF5DEB3);
         }
-        .width(300)
-        .height(100)
+        .width('40%')
+        .height('15%')
         .key('List_SpaceChange01')
 
         ListItem() {
           Text('2').width('100%').height('100%').backgroundColor(0xD2B48C);
         }
-        .width(300)
-        .height(100)
+        .width('40%')
+        .height('15%')
         .key('List_SpaceChange02')
 
         ListItem() {
           Text('3').width('100%').height('100%').backgroundColor(0xF5DEB3);
         }
-        .width(300)
-        .height(100)
+        .width('40%')
+        .height('15%')
         .key('List_SpaceChange03')
 
         ListItem() {
           Text('4').width('100%').height('100%').backgroundColor(0xD2B48C);
         }
-        .width(300)
-        .height(100)
+        .width('40%')
+        .height('15%')
         .key('List_SpaceChange04')
       }
-      .width(350)
-      .height(520)
+      .width('40%')
+      .height('40%')
       .listDirection(Axis.Vertical)
       .edgeEffect(EdgeEffect.Spring)
       .scrollBar(BarState.On)

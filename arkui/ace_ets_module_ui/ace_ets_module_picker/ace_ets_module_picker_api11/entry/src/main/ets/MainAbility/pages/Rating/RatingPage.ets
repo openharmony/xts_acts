@@ -116,7 +116,11 @@ struct RatingPage {
           .fontColor('rgba(24,36,49,0.60)')
           .margin({ top: 16 })
         Text(this.text).fontSize(20).margin(10).key('text')
-      }.width(400).height(150).backgroundColor('#FFFFFF').margin({ top: 68 })
+      }
+      .width('80%')
+      .height('80%')
+      .backgroundColor('#FFFFFF')
+
 
       Row() {
         Image('resources/base/media/image.png')

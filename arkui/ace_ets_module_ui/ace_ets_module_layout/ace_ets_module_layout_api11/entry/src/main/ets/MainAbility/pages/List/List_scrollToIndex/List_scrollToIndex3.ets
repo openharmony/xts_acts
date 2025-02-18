@@ -22,9 +22,75 @@ struct List_scrollToIndex3 {
   private scroller: Scroller = new Scroller();
 
   build() {
-    Column({ space: 20 }) {
-      List({ space: 10, initialIndex: 0, scroller: this.scroller }) {
+    Column({ space: 2 }) {
+      Column({ space: 10 }) {
+        Column() {
+          Text('ScrollAlign.START')
+          Row() {
+            Button('scrollToIndex 0')
+              .height('5%')
+              .id('List_scrollToIndex3_START0')
+              .fontSize(14)
+              .onClick(() => {
+                this.scroller.scrollToIndex(0, false, ScrollAlign.START)
+              })
+          }
+        }
 
+        Column() {
+          Text('ScrollAlign.CENTER')
+          Row() {
+            Button('scrollToIndex 0')
+              .height('5%')
+              .id('List_scrollToIndex3_CENTER0')
+              .fontSize(14)
+              .onClick(() => {
+                this.scroller.scrollToIndex(0, false, ScrollAlign.CENTER)
+              })
+          }
+        }
+
+        Column() {
+          Text('ScrollAlign.END')
+          Row() {
+            Button('scrollToIndex 0')
+              .height('5%')
+              .id('List_scrollToIndex3_END0')
+              .fontSize(14)
+              .onClick(() => {
+                this.scroller.scrollToIndex(0, false, ScrollAlign.END)
+              })
+          }
+        }
+
+        Column() {
+          Text('ScrollAlign.AUTO')
+          Row() {
+            Button('scrollToIndex 0')
+              .height('5%')
+              .id('List_scrollToIndex3_AUTO0')
+              .fontSize(14)
+              .onClick(() => {
+                this.scroller.scrollToIndex(0, false, ScrollAlign.AUTO)
+              })
+          }
+        }
+
+        Button('visibility=' + this.visibe)
+          .id('List_scrollToIndex3_visibility')
+          .height('5%')
+          .onClick(() => {
+            this.visibe = Visibility.Visible
+          })
+
+        Button('scrollBy(0,200)')
+          .id('List_scrollToIndex3_scrollBy')
+          .height('5%')
+          .onClick(() => {
+            this.scroller.scrollBy(0, 200)
+          })
+      }
+      List({ space: 10, initialIndex: 0, scroller: this.scroller }) {
         ListItemGroup() {
           ForEach(this.arr2, (item: number, index?: number) => {
             ListItem() {
@@ -57,68 +123,6 @@ struct List_scrollToIndex3 {
       .backgroundColor(Color.Pink)
       .edgeEffect(EdgeEffect.None)
       .scrollBar(BarState.On)
-
-      Column({ space: 10 }) {
-        Column() {
-          Text('ScrollAlign.START')
-          Row() {
-            Button('scrollToIndex 0')
-              .id('List_scrollToIndex3_START0')
-              .fontSize(14)
-              .onClick(() => {
-                this.scroller.scrollToIndex(0, false, ScrollAlign.START)
-              })
-          }
-        }
-
-        Column() {
-          Text('ScrollAlign.CENTER')
-          Row() {
-            Button('scrollToIndex 0')
-              .id('List_scrollToIndex3_CENTER0')
-              .fontSize(14)
-              .onClick(() => {
-                this.scroller.scrollToIndex(0, false, ScrollAlign.CENTER)
-              })
-          }
-        }
-
-        Column() {
-          Text('ScrollAlign.END')
-          Row() {
-            Button('scrollToIndex 0')
-              .id('List_scrollToIndex3_END0')
-              .fontSize(14)
-              .onClick(() => {
-                this.scroller.scrollToIndex(0, false, ScrollAlign.END)
-              })
-          }
-        }
-
-        Column() {
-          Text('ScrollAlign.AUTO')
-          Row() {
-            Button('scrollToIndex 0')
-              .id('List_scrollToIndex3_AUTO0')
-              .fontSize(14)
-              .onClick(() => {
-                this.scroller.scrollToIndex(0, false, ScrollAlign.AUTO)
-              })
-          }
-        }
-
-        Button('visibility=' + this.visibe)
-          .id('List_scrollToIndex3_visibility')
-          .onClick(() => {
-            this.visibe = Visibility.Visible
-          })
-
-        Button('scrollBy(0,200)')
-          .id('List_scrollToIndex3_scrollBy')
-          .onClick(() => {
-            this.scroller.scrollBy(0, 200)
-          })
-      }
 
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)
 

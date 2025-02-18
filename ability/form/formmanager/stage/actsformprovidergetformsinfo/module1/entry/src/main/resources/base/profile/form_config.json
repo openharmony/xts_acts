@@ -1,10 +1,9 @@
 {
   "forms": [
     {
-      "name": "module1_widget",
-      "displayName": "GetFormsInfo Demo1",
-      "description": "This is a service widget.",
-      "src": "./js/module1_widget/pages/index/index",
+      "name": "Form_Js001",
+      "description": "This is a form 001",
+      "src": "./js/widget/pages/index/index",
       "window": {
         "designWidth": 720,
         "autoDesignWidth": true
@@ -13,17 +12,32 @@
       "isDefault": true,
       "updateEnabled": true,
       "scheduledUpdateTime": "10:30",
+      "formVisibleNotify":true,
+      "updateDuration": 1,
+      "defaultDimension": "1*2",
+      "supportDimensions": [
+        "1*2",
+        "2*2"
+      ]
+    },
+    {
+      "name": "Form_Js002",
+      "description": "This is a form 002",
+      "src": "./js/widget/pages/index/index",
+      "window": {
+        "designWidth": 720,
+        "autoDesignWidth": true
+      },
+      "colorMode": "auto",
+      "isDefault": false,
+      "formVisibleNotify":true,
+      "updateEnabled": true,
       "updateDuration": 1,
       "defaultDimension": "2*2",
       "supportDimensions": [
-        "2*2",
-        "1*1"
-      ],
-      "supportShapes": [
-        "circle"
-      ],
-      "formConfigAbility": "ability://xxxxx",
-      "formVisibleNotify":true
+        "1*2",
+        "2*2"
+      ]
     }
   ]
 }

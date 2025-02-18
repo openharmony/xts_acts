@@ -12,6 +12,8 @@
         "MainAbility/pages/keyEventDispatchTest/onkeyEventDispatch04",
         "MainAbility/pages/keyEventDispatchTest/onkeyEventDispatch06",
         "MainAbility/pages/keyEventDispatchTest/onkeyEventDispatch07",
-        "MainAbility/pages/keyEventDispatchTest/onkeyEventDispatch08"
+        "MainAbility/pages/keyEventDispatchTest/onkeyEventDispatch08",
+        "MainAbility/pages/ComponentSnapshotByUniqueId/getWithUniqueId",
+        "MainAbility/pages/imageMatrix/imageMatrix"
     ]
 }

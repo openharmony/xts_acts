@@ -41,7 +41,7 @@ struct ListItem_aspectRatio_neither2 {
         ListItem() {
           Text('1')
             .width('100%')
-            .height(20)
+            .height('20%')
             .fontSize(16)
             .borderRadius(10)
             .textAlign(TextAlign.Center)
@@ -81,11 +81,12 @@ struct ListItem_aspectRatio_neither2 {
             .backgroundColor(0xAFEEEE)
         }
       }
-      .height(600)
+      .height('90%')
       .aspectRatio(0.5)
       .listDirection(Axis.Vertical)
       .scrollBar(BarState.On)
       .alignListItem(ListItemAlign.Center)
+      .key('ListItem_aspectRatio_neither2_list')
     }
     .width('100%')
     .height('100%')
