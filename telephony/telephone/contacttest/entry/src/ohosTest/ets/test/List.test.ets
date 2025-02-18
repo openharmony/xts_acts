@@ -24,11 +24,15 @@ import ContactTest from './Contact.test';
 import QueryGroupsTest from './QueryGroups.test';
 import EmptyTest from './Empty.test';
 import ContactsTest from './Contacts.test';
+import AddContactViaUITest from './AddContactViaUI.test';
+import SaveToExistingContactViaUITest from './SaveToExistingContactViaUI.test';
 import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
   if (sim.getMaxSimCount()!=0){
     AddContactTest();
+    AddContactViaUITest();
+    SaveToExistingContactViaUITest();
     QueryKeyTest();
     QueryByEmailTest();
     QueryByEmailPhoneNumTest();
