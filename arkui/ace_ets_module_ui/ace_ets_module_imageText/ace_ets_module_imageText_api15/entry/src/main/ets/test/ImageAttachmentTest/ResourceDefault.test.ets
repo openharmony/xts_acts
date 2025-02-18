@@ -115,7 +115,7 @@ export default function ResourceDefaultTest() {
       let strJson = getInspectorByKey('default_size');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ResourceDefaultTest_0030] component obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertContain('width');
+      expect(obj.$attrs.content).assertEqual('undefined');
       console.info('[ResourceDefaultTest_0030] END');
       done();
     });
@@ -140,8 +140,8 @@ export default function ResourceDefaultTest() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('default_verticalAlign');
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[ResourceDefaultTest_0030] component obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertContain('ImageSpanAlignment.BOTTOM');
+      console.info("[ResourceDefaultTest_0040] component obj is: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual('3');
       console.info('[ResourceDefaultTest_0040] END');
       done();
     });
@@ -167,7 +167,7 @@ export default function ResourceDefaultTest() {
       let strJson = getInspectorByKey('default_objectFit');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ResourceDefaultTest_0050] component obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertContain('ImageFit.Cover');
+      expect(obj.$attrs.content).assertContain('2');
       console.info('[ResourceDefaultTest_0050] END');
       done();
     });
@@ -193,7 +193,7 @@ export default function ResourceDefaultTest() {
       let strJson = getInspectorByKey('default_layoutStyle');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ResourceDefaultTest_0060] component obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertContain('margin');
+      expect(obj.$attrs.content).assertEqual('{}');
       console.info('[ResourceDefaultTest_0060] END');
       done();
     });
@@ -219,7 +219,7 @@ export default function ResourceDefaultTest() {
       let strJson = getInspectorByKey('default_colorFilter');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ResourceDefaultTest_0070] component obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('colorFilter');
+      expect(obj.$attrs.content).assertEqual('[1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0]');
       console.info('[ResourceDefaultTest_0070] END');
       done();
     });
@@ -227,7 +227,7 @@ export default function ResourceDefaultTest() {
     /**
      * @tc.number    SUB_ACE_Resource_DefaultTest_0080
      * @tc.name      ResourceDefaultTest_0080
-     * @tc.desc      test ImageAttachment default: syncLoad
+     * @tc.desc      test ImageAttachment size: undefined
      * @tc.level:    Level 2
      * @tc.type :
      * @tc.size :
@@ -236,19 +236,122 @@ export default function ResourceDefaultTest() {
       console.info('[ResourceDefaultTest_0080] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
-      let Button = await driver.findComponent(ON.id('set_default_append_resource'));
+      let Button = await driver.findComponent(ON.id('set_colorFilter_append_str'));
       await Button.click()
       await CommonFunc.sleep(1000);
       let Button1 = await driver.findComponent(ON.id('get_default_styles'));
       await Button1.click()
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('default_syncLoad');
+      let strJson = getInspectorByKey('default_size');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ResourceDefaultTest_0080] component obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('false');
+      expect(obj.$attrs.content).assertEqual('undefined');
       console.info('[ResourceDefaultTest_0080] END');
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_Resource_DefaultTest_0090
+     * @tc.name      ResourceDefaultTest_0090
+     * @tc.desc      test ImageAttachment verticalAlign: undefined
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('ResourceDefaultTest_0090', 0, async (done: Function) => {
+      console.info('[ResourceDefaultTest_0090] START');
+      let driver = Driver.create();
+      await CommonFunc.sleep(500);
+      let Button = await driver.findComponent(ON.id('set_colorFilter_append_str'));
+      await Button.click()
+      await CommonFunc.sleep(1000);
+      let Button1 = await driver.findComponent(ON.id('get_default_styles'));
+      await Button1.click()
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('default_verticalAlign');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ResourceDefaultTest_0090] component obj is: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual('3');
+      console.info('[ResourceDefaultTest_0090] END');
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_Resource_DefaultTest_0100
+     * @tc.name      ResourceDefaultTest_0100
+     * @tc.desc      test ImageAttachment objectFit: undefined
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('ResourceDefaultTest_0100', 0, async (done: Function) => {
+      console.info('[ResourceDefaultTest_0100] START');
+      let driver = Driver.create();
+      await CommonFunc.sleep(500);
+      let Button = await driver.findComponent(ON.id('set_colorFilter_append_str'));
+      await Button.click()
+      await CommonFunc.sleep(1000);
+      let Button1 = await driver.findComponent(ON.id('get_default_styles'));
+      await Button1.click()
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('default_objectFit');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ResourceDefaultTest_0100] component obj is: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertContain('2');
+      console.info('[ResourceDefaultTest_0100] END');
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_Resource_DefaultTest_0110
+     * @tc.name      ResourceDefaultTest_0110
+     * @tc.desc      test ImageAttachment layoutStyle: undefined
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('ResourceDefaultTest_0110', 0, async (done: Function) => {
+      console.info('[ResourceDefaultTest_0110] START');
+      let driver = Driver.create();
+      await CommonFunc.sleep(500);
+      let Button = await driver.findComponent(ON.id('set_colorFilter_append_str'));
+      await Button.click()
+      await CommonFunc.sleep(1000);
+      let Button1 = await driver.findComponent(ON.id('get_default_styles'));
+      await Button1.click()
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('default_layoutStyle');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ResourceDefaultTest_0110] component obj is: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual('{}');
+      console.info('[ResourceDefaultTest_0110] END');
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_Resource_DefaultTest_0120
+     * @tc.name      ResourceDefaultTest_0120
+     * @tc.desc      test ImageAttachment colorFilter: undefined
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('ResourceDefaultTest_0120', 0, async (done: Function) => {
+      console.info('[ResourceDefaultTest_0120] START');
+      let driver = Driver.create();
+      await CommonFunc.sleep(500);
+      let Button = await driver.findComponent(ON.id('set_colorFilter_append_str'));
+      await Button.click()
+      await CommonFunc.sleep(1000);
+      let Button1 = await driver.findComponent(ON.id('get_default_styles'));
+      await Button1.click()
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('default_colorFilter');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ResourceDefaultTest_0120] component obj is: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual('[1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0]');
+      console.info('[ResourceDefaultTest_0120] END');
       done();
     });
   })
 }
-

@@ -45,7 +45,7 @@ export default function PixelMapColorFilterTest() {
     /**
      * @tc.number    SUB_ACE_PixelMap_ColorFilterTest_0010
      * @tc.name      PixelMapColorFilterTest_0010
-     * @tc.desc      set PixelMap ColorFilter: number[]
+     * @tc.desc      set resource ColorFilter: number[]
      * @tc.level:    Level 2
      * @tc.type : 
      * @tc.size :
@@ -54,7 +54,7 @@ export default function PixelMapColorFilterTest() {
       console.info('[PixelMapColorFilterTest_0010] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
-      let Button = await driver.findComponent(ON.id('set_colorFilter_append_pixelmap'));
+      let Button = await driver.findComponent(ON.id('set_colorFilter_append_resource'));
       await Button.click()
       await CommonFunc.sleep(1000);
       let Button1 = await driver.findComponent(ON.id('get_styles'));
@@ -63,7 +63,7 @@ export default function PixelMapColorFilterTest() {
       let strJson = getInspectorByKey('ColorFilter_content');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[PixelMapColorFilterTest_0010] component obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.content).assertContain('0.239');
+      expect(obj.$attrs.content).assertEqual('[1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0]');
       console.info('[PixelMapColorFilterTest_0010] END');
       done();
     });
@@ -71,7 +71,7 @@ export default function PixelMapColorFilterTest() {
     /**
      * @tc.number    SUB_ACE_PixelMap_ColorFilterTest_0020
      * @tc.name      PixelMapColorFilterTest_0020
-     * @tc.desc      set PixelMap ColorFilter: undefined
+     * @tc.desc      set string ColorFilter: number[]
      * @tc.level:    Level 2
      * @tc.type :
      * @tc.size :
@@ -80,10 +80,7 @@ export default function PixelMapColorFilterTest() {
       console.info('[PixelMapColorFilterTest_0020] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
-      let Button0 = await driver.findComponent(ON.id('set_colorFilter_undefined'));
-      await Button0.click()
-      await CommonFunc.sleep(1000);
-      let Button = await driver.findComponent(ON.id('set_colorFilter_append_pixelmap'));
+      let Button = await driver.findComponent(ON.id('set_colorFilter_append_str'));
       await Button.click()
       await CommonFunc.sleep(1000);
       let Button1 = await driver.findComponent(ON.id('get_styles'));
@@ -91,40 +88,10 @@ export default function PixelMapColorFilterTest() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ColorFilter_content');
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[PixelMapColorFilterTest_0010] component obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.content).assertEqual('undefined');
+      console.info("[PixelMapColorFilterTest_0020] component obj is: " + JSON.stringify(obj.$attrs));
+      expect(obj.$attrs.content).assertEqual('[1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0]');
       console.info('[PixelMapColorFilterTest_0020] END');
-      done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_PixelMap_ColorFilterTest_0030
-     * @tc.name      PixelMapColorFilterTest_0030
-     * @tc.desc      set PixelMap ColorFilter: DrawingColorFilter
-     * @tc.level:    Level 2
-     * @tc.type :
-     * @tc.size :
-     */
-    it('PixelMapColorFilterTest_0030', 0, async (done: Function) => {
-      console.info('[PixelMapColorFilterTest_0030] START');
-      let driver = Driver.create();
-      await CommonFunc.sleep(500);
-      let Button0 = await driver.findComponent(ON.id('set_colorFilter_DrawingColorFilter'));
-      await Button0.click()
-      await CommonFunc.sleep(1000);
-      let Button = await driver.findComponent(ON.id('set_colorFilter_append_pixelmap'));
-      await Button.click()
-      await CommonFunc.sleep(1000);
-      let Button1 = await driver.findComponent(ON.id('get_styles'));
-      await Button1.click()
-      await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('ColorFilter_content');
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[PixelMapColorFilterTest_0010] component obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.content).assertEqual('{}');
-      console.info('[PixelMapColorFilterTest_0030] END');
       done();
     });
   })
 }
-

@@ -19,7 +19,7 @@ import { drawing, common2D } from '@kit.ArkGraphics2D';
 @Entry
 @Component
 struct PixelMapColorFilter {
-  private ColorFilterMatrix: number[] = [0.239, 0, 0, 0, 0, 0, 0.616, 0, 0, 0, 0, 0, 0.706, 0, 0, 0, 0, 0, 1, 0];
+  private ColorFilterMatrix: number[] = [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0];
   private color: common2D.Color = { alpha: 125, red: 125, green: 125, blue: 255 };
   @State DrawingColorFilterFirst: ColorFilter | DrawingColorFilter | undefined = new ColorFilter(this.ColorFilterMatrix)
   @State mutableStyledString1: MutableStyledString = new MutableStyledString("Init");
@@ -28,6 +28,8 @@ struct PixelMapColorFilter {
   @State ColorFilter: string = ''
   @State imagePixelMap: image.PixelMap | undefined = undefined
   @State imagePixelMap3: image.PixelMap | undefined = undefined
+  controller: RichEditorStyledStringController = new RichEditorStyledStringController();
+  options: RichEditorStyledStringOptions = { controller: this.controller };
 
   async aboutToAppear() {
     console.info("aboutToAppear initial imagePixelMap")
@@ -47,49 +49,79 @@ struct PixelMapColorFilter {
     return createPixelMap
   }
 
-  controller: TextController = new TextController();
-
   update(){
     this.controller.setStyledString(this.mutableStyledString1)
   }
+
   build() {
     Column({ space: 1 }) {
-      Text(undefined, { controller: this.controller }).width('100%').copyOption(CopyOptions.LocalDevice)
+      RichEditor( this.options ).width('100%')
         .height('10%')
-      Button('append pixelmap').height('5%').id('set_colorFilter_append_pixelmap')
-        .onClick(()=>{
-          if (this.imagePixelMap != undefined) {
+      Row() {
+        Button('append pixelmap1').height('5%').id('set_colorFilter_append_pixelmap1')
+          .onClick(()=>{
+            if (this.imagePixelMap) {
+              this.mutableStyledString1.appendStyledString(new MutableStyledString(new ImageAttachment({
+                value: this.imagePixelMap,
+                size: { width: '100px', height: 50 },
+                layoutStyle: { borderRadius: LengthMetrics.vp(10) },
+                verticalAlign: ImageSpanAlignment.BASELINE,
+                objectFit: ImageFit.Auto,
+                colorFilter: this.DrawingColorFilterFirst,
+              })))
+              this.update()
+            }
+          })
+        Button('append pixelmap2').height('5%').id('set_colorFilter_append_pixelmap2')
+          .onClick(()=>{
+            if (this.imagePixelMap) {
+              this.mutableStyledString1.appendStyledString(new MutableStyledString(new ImageAttachment({
+                value: this.imagePixelMap,
+                size: { width: 50, height: '100px' },
+                layoutStyle: { borderRadius: LengthMetrics.vp(10) },
+                verticalAlign: ImageSpanAlignment.BASELINE,
+                objectFit: ImageFit.Auto,
+                colorFilter: drawing.ColorFilter.createBlendModeColorFilter(this.color, drawing.BlendMode.DST_OVER)
+              })))
+              this.update()
+            }
+          })
+      }
+      Row() {
+        Button('append resource').height('5%').id('set_colorFilter_append_resource')
+          .onClick(()=>{
             this.mutableStyledString1.appendStyledString(new MutableStyledString(new ImageAttachment({
-              value: this.imagePixelMap,
-              size: { width: 50, height: 50 },
+              resourceValue: $r('app.media.icon'),
+              size: { width: '100px', height: 50 },
               layoutStyle: { borderRadius: LengthMetrics.vp(10) },
-              verticalAlign: ImageSpanAlignment.BASELINE,
-              objectFit: ImageFit.Contain,
+              verticalAlign: ImageSpanAlignment.TOP,
+              objectFit: ImageFit.Auto,
               colorFilter: this.DrawingColorFilterFirst,
+              syncLoad: this.syncLoadValue,
             })))
             this.update()
-          }
-        })
-      Row() {
-        Button('undefined').width('50%').height('5%').id('set_colorFilter_undefined')
-          .onClick(() => {
-            this.DrawingColorFilterFirst = undefined
-            this.update()
           })
-        Button('Drawing').width('50%').height('5%').id('set_colorFilter_DrawingColorFilter')
-          .onClick(() => {
-            this.DrawingColorFilterFirst = drawing.ColorFilter.createBlendModeColorFilter(this.color, drawing.BlendMode.SRC_IN)
+        Button('append string').height('5%').id('set_colorFilter_append_str')
+          .onClick(()=>{
+            this.mutableStyledString1.appendStyledString(new MutableStyledString(new ImageAttachment({
+              resourceValue: 'resource/base/media/icon.png',
+              size: { width: 50, height: 50 },
+              layoutStyle: { borderRadius: LengthMetrics.vp(10) },
+              verticalAlign: ImageSpanAlignment.CENTER,
+              objectFit: ImageFit.Fill,
+              colorFilter: this.DrawingColorFilterFirst,
+              syncLoad: !this.syncLoadValue,
+            })))
             this.update()
           })
       }
-      Button('getStyles').width('50%').height('5%').id('get_styles')
+      Button('getStyles').height('5%').id('get_styles')
         .onClick(() => {
           let imageArray = this.mutableStyledString1.getStyles(0,  this.mutableStyledString1.length)
           for (let i = 0; i < imageArray.length; ++i) {
             if (imageArray[i].styledKey === 300) {
               let attachment = imageArray[i].styledValue as ImageAttachment
               console.info('ImageAttachment value  ' + JSON.stringify(attachment.value))
-              this.imagePixelMap3 = attachment.value
               console.info('ImageAttachment size  ' + JSON.stringify(attachment.size))
               console.info('ImageAttachment verticalAlign  ' + JSON.stringify(attachment.verticalAlign))
               console.info('ImageAttachment objectFit  ' + JSON.stringify(attachment.objectFit))
@@ -104,12 +136,8 @@ struct PixelMapColorFilter {
               }
             }
           }
-        }).height(35).padding(8).margin({top:10,right:10})
-      Row() {
-        Text(this.resourceValue).id('resourceValue').height('5%')
-        Text(this.ColorFilter).id('ColorFilter_content').height('5%')
-      }
-      Image(this.imagePixelMap3).height('5%').colorFilter(this.DrawingColorFilterFirst)
+        })
+      Text(this.ColorFilter).id('ColorFilter_content').height('5%')
     }.width('100%')
   }
 }

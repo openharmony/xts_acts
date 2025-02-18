@@ -22,6 +22,8 @@ import RichEditorStopBackPressTest from './RichEditorTest/RichEditorStopBackPres
 import SelectionMenuOptions from './RichEditorTest/SelectionMenuOptions.test';
 import PixelMapColorFilterTest from './ImageAttachmentTest/PixelMapColorFilter.test';
 import ResourceDefaultTest from './ImageAttachmentTest/ResourceDefault.test';
+import VerticalAlignTest from './ImageAttachmentTest/VerticalAlign.test';
+import ObjectFitTest from './ImageAttachmentTest/ObjectFit.test';
 
 
 export default function testsuite() {
@@ -34,4 +36,6 @@ export default function testsuite() {
   SelectionMenuOptions();
   PixelMapColorFilterTest();
   ResourceDefaultTest();
+  VerticalAlignTest();
+  ObjectFitTest();
 }
