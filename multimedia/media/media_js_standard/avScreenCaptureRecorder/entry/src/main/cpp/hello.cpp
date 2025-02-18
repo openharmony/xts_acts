@@ -25,8 +25,6 @@
 #define SUCCESS 0
 #define PARAM_0 0
 #define PARAM_30 30
-const bool Isencoder = true;
-const bool Isdecoder = false;
 
 static napi_value OHAvCapabilityByCategoryH265(napi_env env, napi_callback_info info)
 {
@@ -35,7 +33,7 @@ static napi_value OHAvCapabilityByCategoryH265(napi_env env, napi_callback_info 
     OH_AVCapability *capability = nullptr;
     OH_AVRange qualityRange;
     OH_AVErrCode checkParam;
-    capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, Isencoder, HARDWARE);
+    capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
     if (capability != nullptr) {
         backParam = SUCCESS;
     }
@@ -47,7 +45,8 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        { "OHAvCapabilityByCategoryH265", nullptr, OHAvCapabilityByCategoryH265, nullptr, nullptr, nullptr, napi_default, nullptr }
+        { "OHAvCapabilityByCategoryH265", nullptr, OHAvCapabilityByCategoryH265, nullptr, nullptr, nullptr,
+        napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
