@@ -102,7 +102,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[parentX_parentY_strategy_Test_0200] component obj is: " + JSON.stringify(obj));
       console.info("[parentX_parentY_strategy_Test_0200] contentY is: " + JSON.stringify(obj.$attrs.content));
-      expect(Math.abs(Number(obj.$attrs.content)) >=1).assertTrue();
+      expect(Math.abs(Math.abs(Number(obj.$attrs.content)) - 200) <= 1).assertTrue();
       await CommonFunc.sleep(1000);
       done();
     });
