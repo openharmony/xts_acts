@@ -913,8 +913,8 @@ function testAddFirewallRule() {
     }
     finally {
       networkManager.removeFirewallRule(SELFWANT);
+      await adminManager.disableSuperAdmin(SELFWANT.bundleName);
     }
-    await adminManager.disableSuperAdmin(SELFWANT.bundleName);
     done();
   });
 }
@@ -1019,8 +1019,8 @@ function testRemoveFirewallRule() {
     }
     finally {
       networkManager.removeFirewallRule(SELFWANT);
+      await adminManager.disableSuperAdmin(SELFWANT.bundleName);
     }
-    await adminManager.disableSuperAdmin(SELFWANT.bundleName);
     done();
   });
 }
@@ -1186,8 +1186,8 @@ function testAddDomainFilterRule() {
     }
     finally {
       networkManager.removeDomainFilterRule(SELFWANT);
+      await adminManager.disableSuperAdmin(SELFWANT.bundleName);
     }
-    await adminManager.disableSuperAdmin(SELFWANT.bundleName);
     done();
   })
 }
@@ -1272,8 +1272,8 @@ function testRemoveDomainFilterRule() {
     }
     finally {
       networkManager.removeDomainFilterRule(SELFWANT);
+      await adminManager.disableSuperAdmin(SELFWANT.bundleName);
     }
-    await adminManager.disableSuperAdmin(SELFWANT.bundleName);
     done();
   })
 }
