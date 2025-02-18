@@ -399,6 +399,81 @@ export default function ConnectionTest() {
         console.info(`${caseName}---End`);
       }
     });
+
+
+    /**
+     * @tc.number : SUB_Network_Connection_setPacUrl_0100
+     * @tc.name   : testConnectionsetPacUrl0100
+     * @tc.desc   : Set the system-level proxy auto-config (PAC) script URL to be empty
+     * @tc.level  : Level 3
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     */
+    it('testConnectionsetPacUrl0100', 0, async (done: Function) => {
+      const caseName: string = 'testConnectionsetPacUrl0100';
+      console.info(`${caseName}---Start`);
+      try{
+        let pacUrl = ""
+        connection.setPacUrl(pacUrl);
+        ExpectFail();
+        done();
+      }catch (err){
+        ExpectTrue(err == "Error: Parameter error")
+        console.log(`${caseName} Error in`,err);
+        done()
+      }
+    });
+
+
+    /**
+     * @tc.number : SUB_Network_Connection_getPacUrl_0100
+     * @tc.name   : testConnectiongetPacUrl0100
+     * @tc.desc   :get the system-level proxy auto-config (PAC) script URL
+     * @tc.level  : Level 3
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     */
+    it('testConnectiongetPacUrl0100', 0, async (done: Function) => {
+      const caseName: string = 'testConnectiongetPacUrl0100';
+      console.info(`${caseName}---Start`);
+      try{
+        let pacUrl =  connection.getPacUrl();
+        console.log(`${caseName} pacUrl is `,pacUrl);
+        ExpectTrue(true);
+        done();
+      }catch (err){
+        if (err.includes("System internal error")){
+          console.log(`${caseName}} getPac fail `)
+          ExpectTrue(true);
+        }
+        else {
+          console.log(`${caseName}} Error in`,err)
+          ExpectFail();
+        }
+        done();
+      }
+    });
+    /**
+     * @tc.number : SUB_Network_Connection_setPacUrl_0200
+     * @tc.name   : testConnectionsetPacUrl0200
+     * @tc.desc   : Set network application level HTTP proxy configuration information.
+     * @tc.level  : Level 3
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     */
+    it('testConnectionsetPacUrl0200', 0, async (done: Function) => {
+      const caseName: string = 'testConnectionsetPacUrl0200';
+      console.info(`${caseName}---Start`);
+      try{
+        let pacUrl = "https://www.baidu.com";
+        connection.setPacUrl(pacUrl)
+        ExpectTrue(true);
+        done();
+      }catch (err){
+        console.log(`${caseName} error in `,err)
+        ExpectFail();
+        done()
+      }
+    });
   })
 }
-
