@@ -1,23 +1,23 @@
 {
   "string": [
     {
-      "name": "module2_desc",
-      "value": "description"
+      "name": "entry_MainAbility",
+      "value": "B提供方"
     },
     {
-      "name": "MainAbility_desc",
-      "value": "description"
+      "name": "description_mainability",
+      "value": "eTS_Empty Ability"
     },
     {
-      "name": "MainAbility_label",
-      "value": "label"
+      "name": "description_serviceability",
+      "value": "hap sample empty service"
     },
     {
-      "name": "form_FormAbility_desc",
+      "name": "form_desc",
       "value": "form_description"
     },
     {
-      "name": "form_FormAbility_label",
+      "name": "form_label",
       "value": "form_label"
     }
   ]

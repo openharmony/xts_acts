@@ -17,7 +17,7 @@ group("actsformprovidergetformsinfo") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "entry:ActsFormProviderGetFormsInfoTest",
+      "ProviderGetFormsInfoTest:ActsFormProviderGetFormsInfoTest",
       "module1:ActsFormProviderGetFormsInfoModule1",
       "module2:ActsFormProviderGetFormsInfoModule2",
     ]
