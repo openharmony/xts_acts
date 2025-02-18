@@ -13,13 +13,21 @@
  * limitations under the License.
  */
 
-import keyDispatchTest from "./keydispatchTest/KeyDispatchTest.test"
-import nodeHandleByIdTest from "./node/NodeHandleByIdTest.test"
-import getWindowInfoTest from "./window/GetWindowInfoTest.test"
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
-export default function testsuite() {
+@Entry
+@Component
+struct TestHostWindowInfoDestroy {
+  PAGE_TAG: string = 'TestHostWindowInfoDestroy';
 
-   keyDispatchTest();
-   nodeHandleByIdTest();
-   getWindowInfoTest();
+  build(){
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.testHostWindowInfoDestroy(this.PAGE_TAG);
+      })
+    }
+  }
 }

@@ -16,3 +16,11 @@
 export const KeyEventPatchTest: (a: string) => void;
 
 export const GetKeyEventData: () => object;
+
+export const testNodeHandleById: (a: string) => void;
+
+export const testGetWindowInfo: (a: string) => void;
+
+export const testHostWindowInfoGetName: (a: string) => void;
+
+export const testHostWindowInfoDestroy: (a: string) => void;
