@@ -14,9 +14,10 @@
  */
 
 import keyDispatchTest from "./keydispatchTest/KeyDispatchTest.test"
-
+import columnBackDropBlurTest from "./visual/columnBackDropBlurTest.test"
 
 export default function testsuite() {
 
    keyDispatchTest();
+   columnBackDropBlurTest();
 }
