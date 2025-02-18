@@ -12,6 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { huks } from "@kit.UniversalKeystoreKit";
+import { SetParam } from "../utils/HuksOptionUtil";
+
+export function GetImportPubKeyOptions(): huks.HuksOptions {
+  let huksOption: huks.HuksOptions = {
+    properties: new Array(),
+  };
+  SetParam(huksOption, huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, huks.HuksImportKeyType.HUKS_KEY_TYPE_PUBLIC_KEY);
+  return huksOption;
+}
 
 export function GetRsaImportData(size: number): Uint8Array {
   switch (size) {
