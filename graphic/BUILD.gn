@@ -39,7 +39,6 @@ group("graphic") {
       "graphicText:ActsGraphicTextTest",
       "graphicUiEffect:ActsGraphicUiEffectTest",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
-      "graphicnapitest:ActsGraphicNapiTest",
       "graphicvulkannapitest:ActsGraphicVulkanTest",
       "imageNdk:image_ndk_hap",
       "nativeColorSpaceNdk:ActsNativeColorSpaceTest",
