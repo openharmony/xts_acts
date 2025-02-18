@@ -36,6 +36,7 @@ import textInputFontScaleTest from './FontScaleTest/textInputFontScaleTest.test'
 import searchHalfLeadingTest from './HalfLeadingTest/searchHalfLeadingTest.test';
 import textAreaHalfLeadingTest from './HalfLeadingTest/textAreaHalfLeadingTest.test';
 import textInputHalfLeadingTest from './HalfLeadingTest/textInputHalfLeadingTest.test';
+import RichEditorTextStyle from './RichEditorTest/RichEditorTextStyle.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -60,4 +61,5 @@ export default function testsuite() {
   searchHalfLeadingTest();
   textAreaHalfLeadingTest();
   textInputHalfLeadingTest();
+  RichEditorTextStyle();
 }
