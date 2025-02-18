@@ -35,7 +35,7 @@ export default function TextPickerTextStyleAnimationTest() {
 
     beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/TextPicker/TextStyleAnimation',
+        url: 'MainAbility/pages/textPicker/TextStyleAnimation',
       }
       try {
         router.clear();

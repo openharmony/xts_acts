@@ -37,7 +37,7 @@
     ],
     "abilities": [
       {
-        "name": "com.open.harmony.acetest.EntryAbility",
+        "name": "com.open.harmony.picker.api15.EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ets",
         "description": "$string:description_application",
         "icon": "$media:icon",

@@ -23,8 +23,8 @@ struct TextPickerTextStyleExample {
         .height('8%')
         .key('TextPickerTextStyle_Normal1')
         .onClick(() => {
-          this.minFontSize = 28
-          this.maxFontSize = 18
+          this.minFontSize = 18
+          this.maxFontSize = 28
           this.overflow = TextOverflow.Ellipsis
         })
 

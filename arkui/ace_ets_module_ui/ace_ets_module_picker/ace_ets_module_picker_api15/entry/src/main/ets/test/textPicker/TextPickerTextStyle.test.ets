@@ -23,7 +23,7 @@ export default function TextPickerTextStyleTest() {
 
     beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/TextPicker/TextPickerTextStyle',
+        url: 'MainAbility/pages/textPicker/TextPickerTextStyle',
       }
       try {
         router.clear();
