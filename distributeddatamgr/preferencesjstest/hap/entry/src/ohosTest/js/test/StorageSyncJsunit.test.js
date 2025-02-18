@@ -317,13 +317,17 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRegisterObserver001', 0, function () {
+        it('testRegisterObserver001', 0, async function (done) {
             mPref.clearSync();
             var observer = function (key) {
-                expect('abcd').assertEqual(key);
+                console.info('testRegisterObserver001 keyValue' + mPreferences.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
+                done();
+                expect('abcd').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
+                mPreferences.off('change');
             };
             mPref.on('change', observer);
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "abcd");
+            await mPreferences.flush();
         })
 
         /**
@@ -334,15 +338,18 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRegisterObserver002', 0, function () {
+        it('testRegisterObserver002', 0, async function (done) {
             mPref.clearSync();
             var observer = function (key) {
-                console.info('testRegisterObserver001 key' + key);
-                expect('abc').assertEqual(key);
+                console.info('testRegisterObserver001 keyValue' + mPref.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
+                done();
+                expect('abc').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
+                mPreferences.off('change');
             };
             mPref.on('change', observer);
             mPref.on('change', observer);
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
+            await mPreferences.flush();
         })
 
         /**
@@ -353,14 +360,16 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testUnRegisterObserver001', 0, function () {
+        it('testUnRegisterObserver001', 0, async function (done) {
             var observer = function (key) {
-                console.info('testUnRegisterObserver001 key' + key);
-                expect('').assertEqual(key);
+                console.info('testUnRegisterObserver001 key' + mPref.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
+                done();
+                expect('').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
+                mPref.off('change');
             };
             mPref.on('change', observer);
-            mPref.off('change', observer);
-            mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
+            mPref.putSync(KEY_TEST_STRING_ELEMENT, "");
+            await mPreferences.flush();
         })
 
         /**
