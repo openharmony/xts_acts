@@ -18,10 +18,6 @@ export const testPostFrameCallback: (a: string) => void;
 
 export const swiperAutoPlayTest: (a: string) => void;
 
-export const ProgressLinearStyleTest: (a: string) => void;
-
-export const testProgressLinearStyle: (a: string) => void;
-
 export const listTestCallback: (a: string) => void;
 
 export const listScrollToTestCallback: (a: string) => void;
