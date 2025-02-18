@@ -14,7 +14,13 @@
 */
 
 import ethernettest from './ethernet.test';
+import EmptyTest from './Empty.test'
 
 export default function testsuite() {
-    ethernettest();
+    if (canIUse("SystemCapability.Communication.NetManager.Ethernet")) {
+        ethernettest();
+    }
+    else {
+        EmptyTest();
+    }
 }
