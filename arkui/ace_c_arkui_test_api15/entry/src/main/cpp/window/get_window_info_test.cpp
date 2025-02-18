@@ -198,7 +198,7 @@ static void OnEventReceive1(ArkUI_NodeEvent *event)
             const char *windowName = OH_ArkUI_HostWindowInfo_GetName(info);
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
                 "kkk Get-window-name Node belongs to window:%{public}s", windowName);
-            if (strcmp(windowName, "arkui_capi_xts_api160") == 0) {
+            if (strcmp(windowName, "arkui_capi_xts_api150") == 0) {
                 nodeAPI2->setAttribute(node, NODE_BACKGROUND_COLOR, &background_color_item);
             }
             OH_ArkUI_HostWindowInfo_Destroy(info);
@@ -254,7 +254,7 @@ static void OnEventReceive2(ArkUI_NodeEvent *event)
         int32_t errorCode = OH_ArkUI_NodeUtils_GetWindowInfo(button_visibility, &info);
         if (errorCode == ARKUI_ERROR_CODE_NO_ERROR) {
             const char *windowName = OH_ArkUI_HostWindowInfo_GetName(info);
-            if (strcmp(windowName, "arkui_capi_xts_api160") == 0) {
+            if (strcmp(windowName, "arkui_capi_xts_api150") == 0) {
                 nodeAPI2->setAttribute(node, NODE_BACKGROUND_COLOR, &background_color_item);
             }
             OH_ArkUI_HostWindowInfo_Destroy(info);
@@ -267,7 +267,7 @@ static void OnEventReceive2(ArkUI_NodeEvent *event)
         int32_t errorCode = OH_ArkUI_NodeUtils_GetWindowInfo(button_visibility, &info);
         if (errorCode == ARKUI_ERROR_CODE_NO_ERROR) {
             const char *windowName = OH_ArkUI_HostWindowInfo_GetName(info);
-            if (strcmp(windowName, "arkui_capi_xts_api160") == 0) {
+            if (strcmp(windowName, "arkui_capi_xts_api150") == 0) {
                 nodeAPI2->setAttribute(node, NODE_BACKGROUND_COLOR, &background_color_item);
             }
             OH_ArkUI_HostWindowInfo_Destroy(info);
@@ -282,7 +282,7 @@ static void OnEventReceive2(ArkUI_NodeEvent *event)
             const char *windowName = OH_ArkUI_HostWindowInfo_GetName(info);
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
                 "kkk Get-window-name Node belongs to window:%{public}s", windowName);
-            if (strcmp(windowName, "arkui_capi_xts_api160") == 0) {
+            if (strcmp(windowName, "arkui_capi_xts_api150") == 0) {
                 nodeAPI2->setAttribute(node, NODE_BACKGROUND_COLOR, &background_color_item);
             }
             OH_ArkUI_HostWindowInfo_Destroy(info);
