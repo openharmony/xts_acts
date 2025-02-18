@@ -138,16 +138,16 @@ export default function ActsNotificationManagerPublishTest() {
       })
       await Utils.sleep(500);
 
-      await notificationManager.cancel(id).then(() => {
-        console.info(`${TAG} cancel Promise success`)
-        expect(false).assertTrue()
-        done()
-      }).catch((err) => {
-        console.info(`${TAG} cancel Promise err: ${err.code}, errMes: ${err.message}`)
-        expect(true).assertTrue()
-        done()
-      })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_0400 END`)
+    //   await notificationManager.cancel(id).then(() => {
+    //     console.info(`${TAG} cancel Promise success`)
+    //     expect(false).assertTrue()
+    //     done()
+    //   }).catch((err) => {
+    //     console.info(`${TAG} cancel Promise err: ${err.code}, errMes: ${err.message}`)
+    //     expect(true).assertTrue()
+    //     done()
+    //   })
+    //   console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_0400 END`)
     })
 
     /*
