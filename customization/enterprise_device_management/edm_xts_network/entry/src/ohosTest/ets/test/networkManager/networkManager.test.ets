@@ -909,7 +909,7 @@ function testAddFirewallRule() {
       firewallRules = networkManager.getFirewallRules(SELFWANT);
       expect(firewallRules.length == 1).assertTrue();
     } catch (e) {
-      expect(false).asserTrue();
+      expect(false).assertTrue();
     }
     finally {
       networkManager.removeFirewallRule(SELFWANT);
@@ -1015,7 +1015,7 @@ function testRemoveFirewallRule() {
       firewallRules = networkManager.getFirewallRules(SELFWANT);
       expect(firewallRules.length == 0).assertTrue();
     } catch (e) {
-      expect(false).asserTrue();
+      expect(false).assertTrue();
     }
     finally {
       networkManager.removeFirewallRule(SELFWANT);
@@ -1182,7 +1182,7 @@ function testAddDomainFilterRule() {
       domainFilterRules = networkManager.getDomainFilterRules(SELFWANT);
       expect(domainFilterRules.length == 1).assertTrue();
     } catch (e) {
-      expect(false).asserTrue();
+      expect(false).assertTrue();
     }
     finally {
       networkManager.removeDomainFilterRule(SELFWANT);
@@ -1268,7 +1268,7 @@ function testRemoveDomainFilterRule() {
       domainFilterRules = networkManager.getDomainFilterRules(SELFWANT);
       expect(domainFilterRules.length == 0).assertTrue();
     } catch (e) {
-      expect(false).asserTrue();
+      expect(false).assertTrue();
     }
     finally {
       networkManager.removeDomainFilterRule(SELFWANT);
