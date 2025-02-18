@@ -15,6 +15,9 @@
 
 #include "common/common.h"
 #include "manager/plugin_manager.h"
+#include "checkboxgroup/checkboxgroup_group_test.h"
+#include "checkboxgroup/checkboxgroup_selectall_test.h"
+#include "checkbox/checkbox_group_test.h"
 #include "postFrame/post_frame_callback_test.h"
 #include "swiper/swiper_test.h"
 #include "list/list_test.h"
@@ -35,6 +38,12 @@ static napi_value Init(napi_env env, napi_value exports)
         {"getContext", nullptr, PluginManager::GetContext, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testPostFrameCallback", nullptr, PostFrameCallbackTest::testPostFrameCallback001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"checkboxGroupGroupTest", nullptr, CheckboxGroupGroupTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"checkboxGroupSelectAllTest", nullptr, CheckboxGroupSelectAllTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"checkboxGroupTest", nullptr, CheckboxGroupTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"swiperAutoPlayTest", nullptr, SwiperTest::swiperAutoPlayTest,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"listTestCallback", nullptr, ListTest::ListCaseTest, nullptr, nullptr, nullptr, napi_default, nullptr},
