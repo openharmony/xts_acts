@@ -17,11 +17,22 @@ import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
-
+import config from '@ohos.accessibility.config';
+import accessibility from '@ohos.accessibility';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.arkui.ace.commonEvents.api11/EntryAbility';
 
 export default function SwipeGesture1() {
   describe('SwipeGesture1', () => {
     beforeEach(async (done: Function) => {
+config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+      console.info(`enable success`);
+      }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
+	done();
+});
+    beforeAll(async (done: Function) => {
       console.info("SwipeGesture1 beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/SwipeGesture/SwipeGesture1',
@@ -73,7 +84,9 @@ export default function SwipeGesture1() {
       await CommonFunc.sleep(500);
       let colum = CommonFunc.getComponentRectOnScreen('SwipeGesture1');
       let top = colum.top
-      await driver.swipe(Math.round(globalThis.winLeft + 100), Math.round(top + 100), Math.round(globalThis.winLeft + 500), Math.round(top + 500))
+      let right = colum.right
+      let left = colum.left
+      await driver.swipe(Math.round(left + (right-left)/6), Math.round(top + 100), Math.round(right - (right-left)/6), Math.round(top + 500))
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Swipe2');
       let obj: ESObject = JSON.parse(strJson);

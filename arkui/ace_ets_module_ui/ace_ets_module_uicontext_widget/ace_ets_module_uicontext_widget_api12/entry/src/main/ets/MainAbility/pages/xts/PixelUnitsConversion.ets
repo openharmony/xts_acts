@@ -21,41 +21,46 @@ struct PixelUnitsConversion {
           .fontSize(12)
           .width('90%')
           .key('px2vp_text')
+          .height('5%')
 
         Text('' + this.vp2px)
           .fontColor(0x000000)
           .fontSize(12)
           .width('90%')
           .key('vp2px_text')
+          .height('5%')
 
         Text('' + this.fp2px)
           .fontColor(0x000000)
           .fontSize(12)
           .width('90%')
           .key('fp2px_text')
+          .height('5%')
 
         Text('' + this.px2fp)
           .fontColor(0x000000)
           .fontSize(12)
           .width('90%')
           .key('px2fp_text')
+          .height('5%')
 
         Text('' + this.lpx2px)
           .fontColor(0x000000)
           .fontSize(12)
           .width('90%')
           .key('lpx2px_text')
+          .height('5%')
 
         Text('' + this.px2lpx)
           .fontColor(0x000000)
           .fontSize(12)
           .width('90%')
           .key('px2lpx_text')
+          .height('5%')
 
         Button('px2vp')
           .width('100%')
-          .height(30)
-          .margin(15)
+          .height('5%')
           .id('px2vp_01')
           .onClick(() => {
             this.uiContext.px2vp(220)
@@ -64,8 +69,7 @@ struct PixelUnitsConversion {
           })
         Button('vp2px')
           .width('100%')
-          .height(30)
-          .margin(15)
+          .height('5%')
           .id('vp2px_01')
           .onClick(() => {
             this.uiContext.vp2px(220)
@@ -74,8 +78,7 @@ struct PixelUnitsConversion {
           })
         Button('fp2px')
           .width('100%')
-          .height(30)
-          .margin(15)
+          .height('5%')
           .id('fp2px_01')
           .onClick(() => {
             this.uiContext.fp2px(220)
@@ -84,8 +87,7 @@ struct PixelUnitsConversion {
           })
         Button('px2fp')
           .width('100%')
-          .height(30)
-          .margin(15)
+          .height('5%')
           .id('px2fp_01')
           .onClick(() => {
             this.uiContext.px2fp(220)
@@ -94,8 +96,7 @@ struct PixelUnitsConversion {
           })
         Button('lpx2px')
           .width('100%')
-          .height(30)
-          .margin(15)
+          .height('5%')
           .id('lpx2px_01')
           .onClick(() => {
             this.uiContext.lpx2px(220)
@@ -104,8 +105,7 @@ struct PixelUnitsConversion {
           })
         Button('px2lpx')
           .width('100%')
-          .height(30)
-          .margin(15)
+          .height('5%')
           .id('px2lpx_01')
           .onClick(() => {
             this.uiContext.px2lpx(220)
@@ -113,6 +113,6 @@ struct PixelUnitsConversion {
             this.px2lpx = '220'
           })
       }
-    }.width('100%')
+    }.width('100%').height('100%')
   }
 }

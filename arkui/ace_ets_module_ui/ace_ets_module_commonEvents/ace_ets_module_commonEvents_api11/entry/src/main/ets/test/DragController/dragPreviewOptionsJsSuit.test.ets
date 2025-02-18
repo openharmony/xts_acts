@@ -18,10 +18,21 @@ import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern
 import CommonFunc from '../../MainAbility/common/Common';
 
 import events_emitter from '@ohos.events.emitter'
-
+import config from '@ohos.accessibility.config';
+import accessibility from '@ohos.accessibility';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.arkui.ace.commonEvents.api11/EntryAbility';
 export default function dragPreviewOptionsJsSuit() {
   describe('dragPreviewOptionsJsSuit', () => {
     beforeEach(async (done: Function) => {
+config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+      console.info(`enable success`);
+      }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
+done();
+});
+    beforeAll(async (done: Function) => {
       console.info("dragPreviewJsSuit beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/DragController/dragPreviewOptions',
