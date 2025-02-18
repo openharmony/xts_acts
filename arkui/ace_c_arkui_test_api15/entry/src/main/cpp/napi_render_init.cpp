@@ -33,7 +33,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"KeyEventPatchTest", nullptr, KeyEventDispatchTest::KeyEventPatchTest,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetKeyEventData", nullptr, KeyEventDispatchTest::GetKeyEventData,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
+         nullptr, nullptr, nullptr, napi_default, nullptr}, 
         {"testProgressLinearStyle", nullptr, ProgressLinearStyleTest::ProgressLinearStyleTest001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
     };
