@@ -19,6 +19,7 @@ add_library(nativerender SHARED
     swiper/swiper_test.cpp
     progress/progress_linear_style_test.cpp
     textArea/textArea_letter_spacing.cpp
+    textpicker/textpicker_columnwidths_test.cpp
 )
 
 add_library(nativefunc SHARED
