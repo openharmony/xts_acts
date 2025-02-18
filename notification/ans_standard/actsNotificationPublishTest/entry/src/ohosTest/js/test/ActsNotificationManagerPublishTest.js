@@ -138,7 +138,7 @@ export default function ActsNotificationManagerPublishTest() {
       })
       await Utils.sleep(500);
 
-      let id = 400
+      id = 400
       await notificationManager.cancel(id).then(() => {
         console.info(`${TAG} cancel Promise success`)
         expect(false).assertTrue()
