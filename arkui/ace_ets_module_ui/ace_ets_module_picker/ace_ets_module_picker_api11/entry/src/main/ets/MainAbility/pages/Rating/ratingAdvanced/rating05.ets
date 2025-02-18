@@ -21,14 +21,12 @@ struct rating05 {
   build() {
     Column() {
       Text('current score is ' + this.rating)
-        .fontSize(24)
         .fontColor('rgba(24,36,49,0.60)')
-        .margin({ top: 50 })
         .id('ratingText05')
 
       Rating({ rating:this.rating, indicator: false })
         .height(60)
-        .stars(5)
+        .stars(3)
         .stepSize(2)
         .margin({ top: 24 })
         .onChange((value: number) => {

@@ -37,8 +37,8 @@ struct Slider22 {
           console.info('value:' + value + 'mode:' + mode.toString())
         })
     }
-    .width(350)
-    .height(350)
-    .position({ y: 60 })
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }

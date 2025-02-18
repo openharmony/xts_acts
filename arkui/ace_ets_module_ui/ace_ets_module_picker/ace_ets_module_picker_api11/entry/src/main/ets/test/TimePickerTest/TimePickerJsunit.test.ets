@@ -78,7 +78,7 @@ export default function TimePickerJsunit() {
       console.info("[TimePickerJsunit_0100] hour1: " + JSON.stringify(hour1));
       expect(hour1).assertEqual('hour:8');
       await driver.swipe(Math.round(left + (right - left) / 6), Math.round(top + (bottom - top) / 2),
-        Math.round(left + (right - left) / 6), Math.round(top + (bottom - top) * 0.25));
+        Math.round(left + (right - left) / 6), Math.round(top));
       await CommonFunc.sleep(6000);
       let hour2 = await hour.getText();
       console.info("[TimePickerJsunit_0100] hour2: " + JSON.stringify(hour2));
