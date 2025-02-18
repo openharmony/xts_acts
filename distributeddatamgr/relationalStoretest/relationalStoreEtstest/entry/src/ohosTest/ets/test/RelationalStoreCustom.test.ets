@@ -44,7 +44,7 @@ async function ReturnGetRdbStore(customTypeSupported:boolean) {
             expect().assertFail();
         } catch(err){
             console.info(TAG + "fail getRdbStore, code=" + err.code + err.message);
-            expect(801).assertEqual(err.code);
+            expect("801").assertEqual(err.code);
         }
     }else{
         try {
@@ -67,7 +67,6 @@ export default function RelationalStoreCustom() {
         });
         beforeEach(async () => {
             console.info(TAG + 'beforeEach');
-            await rdbStore.executeSql("DROP TABLE IF EXISTS test");
         });
         afterEach(async () => {
             console.info(TAG + 'afterEach');
