@@ -70,7 +70,7 @@ export default function Grid_ReachStartAndEnd4() {
       let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ReachStartAndEnd_grid')
       await driver.swipe(
         Number.parseInt(`${`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`}`),
-        Number.parseInt(`${`${(gridRect.bottom - gridRect.top) * 0.9 + gridRect.top}`}`),
+        Number.parseInt(`${`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`}`),
         Number.parseInt(`${`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`}`),
         Number.parseInt(`${`${(gridRect.bottom - gridRect.top) * 0.1 + gridRect.top}`}`),
         1000);
@@ -80,7 +80,7 @@ export default function Grid_ReachStartAndEnd4() {
         Number.parseInt(`${`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`}`),
         Number.parseInt(`${`${(gridRect.bottom - gridRect.top) * 0.1 + gridRect.top}`}`),
         Number.parseInt(`${`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`}`),
-        Number.parseInt(`${`${(gridRect.bottom - gridRect.top) * 0.9 + gridRect.top}`}`),
+        Number.parseInt(`${`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`}`),
         1000);
       await CommonFunc.sleep(2000);
 

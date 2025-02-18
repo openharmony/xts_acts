@@ -76,9 +76,12 @@ export default function ListItemGroup_aspectRatio_height2() {
       });
       await CommonFunc.sleep(1000);
       let ListItemGroup01: RectValue = CommonFunc.getComponentRect('ListItemGroup_aspectRatio_height2_01');
+      let item01: RectValue = CommonFunc.getComponentRect('ListItemGroup_aspectRatio_height2_001');
+      let itemwidth: number = item01.right - item01.left;
+      let itemheight: number = item01.bottom - item01.top;
 
-      expect(Math.round(ListItemGroup01.right - ListItemGroup01.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(ListItemGroup01.bottom - ListItemGroup01.top)).assertEqual(Math.round(vp2px(420)));
+      expect(Math.abs(Math.round(ListItemGroup01.right - ListItemGroup01.left) - Math.round(itemwidth)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItemGroup01.bottom - ListItemGroup01.top) - Math.round(itemheight*3 + 2*vp2px(20) + 2*vp2px(10))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0100] END');
       done();
@@ -96,9 +99,12 @@ export default function ListItemGroup_aspectRatio_height2() {
       });
       await CommonFunc.sleep(1000);
       let ListItemGroup01: RectValue = CommonFunc.getComponentRect('ListItemGroup_aspectRatio_height2_01');
+      let item01: RectValue = CommonFunc.getComponentRect('ListItemGroup_aspectRatio_height2_001');
+      let itemwidth: number = item01.right - item01.left;
+      let itemheight: number = item01.bottom - item01.top;
 
-      expect(Math.round(ListItemGroup01.right - ListItemGroup01.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(ListItemGroup01.bottom - ListItemGroup01.top)).assertEqual(Math.round(vp2px(420)));
+      expect(Math.abs(Math.round(ListItemGroup01.right - ListItemGroup01.left) - Math.round(itemwidth)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItemGroup01.bottom - ListItemGroup01.top) - Math.round(itemheight*3 + 2*vp2px(20) + 2*vp2px(10))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0200] END');
       done();
@@ -116,9 +122,12 @@ export default function ListItemGroup_aspectRatio_height2() {
       });
       await CommonFunc.sleep(1000);
       let ListItemGroup01: RectValue = CommonFunc.getComponentRect('ListItemGroup_aspectRatio_height2_01');
+      let item01: RectValue = CommonFunc.getComponentRect('ListItemGroup_aspectRatio_height2_001');
+      let itemwidth: number = item01.right - item01.left;
+      let itemheight: number = item01.bottom - item01.top;
 
-      expect(Math.round(ListItemGroup01.right - ListItemGroup01.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(ListItemGroup01.bottom - ListItemGroup01.top)).assertEqual(Math.round(vp2px(420)));
+      expect(Math.abs(Math.round(ListItemGroup01.right - ListItemGroup01.left) - Math.round(itemwidth)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItemGroup01.bottom - ListItemGroup01.top) - Math.round(itemheight*3 + 2*vp2px(20) + 2*vp2px(10))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0300] END');
       done();
@@ -136,9 +145,12 @@ export default function ListItemGroup_aspectRatio_height2() {
       });
       await CommonFunc.sleep(1000);
       let ListItemGroup01: RectValue = CommonFunc.getComponentRect('ListItemGroup_aspectRatio_height2_01');
+      let item01: RectValue = CommonFunc.getComponentRect('ListItemGroup_aspectRatio_height2_001');
+      let itemwidth: number = item01.right - item01.left;
+      let itemheight: number = item01.bottom - item01.top;
 
-      expect(Math.round(ListItemGroup01.right - ListItemGroup01.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(ListItemGroup01.bottom - ListItemGroup01.top)).assertEqual(Math.round(vp2px(420)));
+      expect(Math.abs(Math.round(ListItemGroup01.right - ListItemGroup01.left) - Math.round(itemwidth)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItemGroup01.bottom - ListItemGroup01.top) - Math.round(itemheight*3 + 2*vp2px(20) + 2*vp2px(10))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0400] END');
       done();

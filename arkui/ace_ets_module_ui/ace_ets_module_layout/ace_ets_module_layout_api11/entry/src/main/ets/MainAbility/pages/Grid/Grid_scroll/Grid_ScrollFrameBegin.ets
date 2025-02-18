@@ -23,6 +23,28 @@ struct Grid_ScrollFrameBegin {
 
   build() {
     Column({ space: 5 }) {
+      Button('scrollFrame_Reset_bt')
+        .id('scrollFrame_Reset_bt')
+        .height('5%')
+        .onClick(() => { // reset the init state
+          this.scroller.scrollEdge(Edge.Top);
+          this.text = ""
+        })
+      Button('scroller scrollTo 20')
+        .id('Grid_ScrollFrameBegin_scrollTo')
+        .height('5%')
+        .onClick(() => {
+          this.scroller.scrollTo({
+            xOffset: 0,
+            yOffset: 20,
+            animation: {
+              duration: 1000,
+              curve: Curve.Linear
+            }
+          })
+        })
+      Text(this.text).id('Grid_ScrollFrameBegin_text')
+
       Stack({ alignContent: Alignment.BottomEnd }) {
         Grid(this.scroller) {
           ForEach(this.Number, (day: string) => {
@@ -32,7 +54,7 @@ struct Grid_ScrollFrameBegin {
                   .fontSize(16)
                   .backgroundColor(0xF9CF93)
                   .width('100%')
-                  .height(80)
+                  .height('25%')
                   .textAlign(TextAlign.Center)
               }
             }, (day: string) => day)
@@ -55,35 +77,13 @@ struct Grid_ScrollFrameBegin {
         ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.On }) {
           Text()
             .width(20)
-            .height(150)
+            .height('60%')
             .borderRadius(10)
             .backgroundColor('#C0C0C0')
         }.width(20).backgroundColor('#ededed')
         .id('Grid_ScrollFrameBegin_scrollBar')
 
       }.height(300)
-
-      Button('scroller scrollTo 20')
-        .id('Grid_ScrollFrameBegin_scrollTo')
-        .onClick(() => {
-          this.scroller.scrollTo({
-            xOffset: 0,
-            yOffset: 20,
-            animation: {
-              duration: 1000,
-              curve: Curve.Linear
-            }
-          })
-        })
-
-      Text(this.text).id('Grid_ScrollFrameBegin_text')
-
-      Button('scrollFrame_Reset_bt')
-        .id('scrollFrame_Reset_bt')
-        .onClick(() => { // reset the init state
-          this.scroller.scrollEdge(Edge.Top);
-          this.text = ""
-        })
 
     }.width('100%').margin({ top: 5 })
   }

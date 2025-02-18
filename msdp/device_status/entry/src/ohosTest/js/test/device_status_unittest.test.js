@@ -15,7 +15,7 @@
 
 import stationary from "@ohos.stationary"
 import { describe, it, expect } from '@ohos/hypium'
-const MSEC_1000 = 1000;
+let reportLatencyNs = 1000000000;
 
 export default function DeviceStatusUnitTest() {
     describe('DeviceStatusUnitTest', function () {
@@ -45,7 +45,7 @@ export default function DeviceStatusUnitTest() {
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
-                stationary.on("still", 3, 1000000000, pub_callback);
+                stationary.on("still", stationary.ActivityEvent.ENTER_EXIT, reportLatencyNs, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
                 expect().assertFail();
@@ -64,7 +64,7 @@ export default function DeviceStatusUnitTest() {
             setTimeout(function () {
                 try {
                     p_done = done;
-                    stationary.off("still", 3, pub_callback);
+                    stationary.off("still", stationary.ActivityEvent.ENTER_EXIT, pub_callback);
                     p_done();
                 } catch (error) {
                     console.error('error=' + error);
@@ -87,7 +87,7 @@ export default function DeviceStatusUnitTest() {
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
-                stationary.on("relativeStill", 2, 1000000000, pub_callback);
+                stationary.on("relativeStill", stationary.ActivityEvent.EXIT, reportLatencyNs, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
                 expect().assertFail();
@@ -106,7 +106,7 @@ export default function DeviceStatusUnitTest() {
             setTimeout(function () {
                 try {
                     p_done = done;
-                    stationary.off("relativeStill", 3, pub_callback);
+                    stationary.off("relativeStill", stationary.ActivityEvent.EXIT, pub_callback);
                     p_done();
                 } catch (error) {
                     console.error('error=' + error);
@@ -129,7 +129,7 @@ export default function DeviceStatusUnitTest() {
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
-                stationary.on("Type_Unknow", 3, 1000000000, pub_callback);
+                stationary.on("Type_Unknow", stationary.ActivityEvent.ENTER_EXIT, reportLatencyNs, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
                 console.info(`stationary.on fail: ${JSON.stringify(error, ['code', 'message'])}`);
@@ -150,7 +150,7 @@ export default function DeviceStatusUnitTest() {
             setTimeout(function () {
                 try {
                     p_done = done;
-                    stationary.off("Type_Unknow", 3, pub_callback);
+                    stationary.off("Type_Unknow", stationary.ActivityEvent.ENTER_EXIT, pub_callback);
                     p_done();
                 } catch (error) {
                     console.error('error=' + error);
@@ -174,7 +174,7 @@ export default function DeviceStatusUnitTest() {
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
-                stationary.on("relativeStill", 1, 1000000000, pub_callback);
+                stationary.on("relativeStill", stationary.ActivityEvent.ENTER, reportLatencyNs, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
                 expect().assertFail();
@@ -193,7 +193,7 @@ export default function DeviceStatusUnitTest() {
             setTimeout(function () {
                 try {
                     p_done = done;
-                    stationary.off("relativeStill", 1, pub_callback);
+                    stationary.off("relativeStill", stationary.ActivityEvent.ENTER, pub_callback);
                     p_done();
                 } catch (error) {
                     console.error('error=' + error);
@@ -216,7 +216,7 @@ export default function DeviceStatusUnitTest() {
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
-                stationary.on("relativeStill", 3, 1, pub_callback);
+                stationary.on("relativeStill", stationary.ActivityEvent.EXIT, 1, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
                 console.info(`stationary.on fail: ${JSON.stringify(error, ['code', 'message'])}`);
@@ -236,7 +236,7 @@ export default function DeviceStatusUnitTest() {
             setTimeout(function () {
                 try {
                     p_done = done;
-                    stationary.off("relativeStill", 2, pub_callback);
+                    stationary.off("relativeStill", stationary.ActivityEvent.EXIT, pub_callback);
                     p_done();
                 } catch (error) {
                     console.error('error=' + error);

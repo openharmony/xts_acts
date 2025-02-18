@@ -34,7 +34,7 @@ struct List_ListInitialIndex1 {
         }, (item: string) => item)
       }
       .cachedCount(0)
-      .width(300)
+      .width('80%')
       .height(500)
       .listDirection(Axis.Vertical)
       .edgeEffect(EdgeEffect.Spring)

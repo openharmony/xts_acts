@@ -69,7 +69,7 @@ export default function Grid_ReachStartAndEnd2() {
         Number.parseInt(`${(scrollBarRect.right - scrollBarRect.left) * 0.5 + scrollBarRect.left}`),
         Number.parseInt(`${(scrollBarRect.bottom - scrollBarRect.top) * 0.1 + scrollBarRect.top}`),
         Number.parseInt(`${(scrollBarRect.right - scrollBarRect.left) * 0.5 + scrollBarRect.left}`),
-        Number.parseInt(`${(scrollBarRect.bottom - scrollBarRect.top) * 0.9 + scrollBarRect.top}`),
+        Number.parseInt(`${(scrollBarRect.bottom - scrollBarRect.top) * 0.5 + scrollBarRect.top}`),
         1000);
       await CommonFunc.sleep(2000);
 
@@ -80,7 +80,7 @@ export default function Grid_ReachStartAndEnd2() {
 
       await driver.swipe(
         Number.parseInt(`${(scrollBarRect.right - scrollBarRect.left) * 0.5 + scrollBarRect.left}`),
-        Number.parseInt(`${(scrollBarRect.bottom - scrollBarRect.top) * 0.9 + scrollBarRect.top}`),
+        Number.parseInt(`${(scrollBarRect.bottom - scrollBarRect.top) * 0.5 + scrollBarRect.top}`),
         Number.parseInt(`${(scrollBarRect.right - scrollBarRect.left) * 0.5 + scrollBarRect.left}`),
         Number.parseInt(`${(scrollBarRect.bottom - scrollBarRect.top) * 0.1 + scrollBarRect.top}`),
         1000);

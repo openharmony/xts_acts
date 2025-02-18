@@ -44,7 +44,7 @@ export default function ListItem_Delete_End_Default() {
         router.clear();
         let pages = router.getState();
         console.info("get ListItem_Delete_End_Default state pages:" + JSON.stringify(pages));
-        if (!("List_SpaceChange" == pages.name)) {
+        if (!("ListItem_Delete_End_Default" == pages.name)) {
           console.info("get ListItem_Delete_End_Default pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
@@ -112,8 +112,16 @@ export default function ListItem_Delete_End_Default() {
       console.log('slide ')
       let driver = Driver.create();
       await CommonFunc.sleep(500);
+      let swipeBar = CommonFunc.getComponentRect('ListItem_Delete_End_Default_1');
+      let top = swipeBar.top;
+      let right = swipeBar.right;
+      let left = swipeBar.left;
+      let bottom = swipeBar.bottom;
+      let height = bottom -top;
+      let width = right - left;
+      console.info("SUB_ACE_ListItem_Delete_End_Default_0200 value is" + left + " --" + right + "--" + top + "--" + bottom);
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(50)), Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(50))
+        Math.round(globalThis.winLeft + right - vp2px(10)), Math.round(globalThis.winTop + top + vp2px(50)), Math.round(globalThis.winLeft + left + vp2px(10)), Math.round(globalThis.winTop  + top + vp2px(50))
       );
       await CommonFunc.sleep(2000);
 
@@ -155,7 +163,7 @@ export default function ListItem_Delete_End_Default() {
 
       console.log('slide ')
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(50)), Math.round(globalThis.winLeft + vp2px(250)), Math.round(globalThis.winTop + vp2px(50))
+        Math.round(globalThis.winLeft + vp2px(80)), Math.round(globalThis.winTop + vp2px(50)), Math.round(globalThis.winLeft + vp2px(30)), Math.round(globalThis.winTop + vp2px(50))
       );
       await CommonFunc.sleep(2000);
 

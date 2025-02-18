@@ -44,7 +44,7 @@ export default function ListItem_Delete_End_String() {
         router.clear();
         let pages = router.getState();
         console.info("get ListItem_Delete_End_String state pages:" + JSON.stringify(pages));
-        if (!("List_SpaceChange" == pages.name)) {
+        if (!("ListItem_Delete_End_String" == pages.name)) {
           console.info("get ListItem_Delete_End_String pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
@@ -78,8 +78,16 @@ export default function ListItem_Delete_End_String() {
 
       let driver = Driver.create();
       await CommonFunc.sleep(500);
+      let swipeBar = CommonFunc.getComponentRect('ListItem_Delete_End_String_1');
+      let top = swipeBar.top;
+      let right = swipeBar.right;
+      let left = swipeBar.left;
+      let bottom = swipeBar.bottom;
+      let height = bottom -top;
+      let width = right - left;
+      console.info("SUB_ACE_ListItem_Delete_End_String_0100 value is" + left + " --" + right + "--" + top + "--" + bottom);
       await driver.swipe(
-        Math.round(vp2px(300)), Math.round(vp2px(50)), Math.round(vp2px(50)), Math.round(vp2px(50))
+        Math.round(globalThis.winLeft + left + vp2px(100)), Math.round(globalThis.winTop + top + vp2px(50)), Math.round(globalThis.winLeft + left + vp2px(50)), Math.round(globalThis.winTop  + top + vp2px(50))
       );
       await CommonFunc.sleep(2000);
 
@@ -121,8 +129,16 @@ export default function ListItem_Delete_End_String() {
       let ListItem_00: RectValue = CommonFunc.getComponentRect('ListItem_Delete_End_String_ListItem_00');
       let ListItem_01: RectValue = CommonFunc.getComponentRect('ListItem_Delete_End_String_ListItem_01');
 
+      let swipeBar = CommonFunc.getComponentRect('ListItem_Delete_End_String_1');
+      let top = swipeBar.top;
+      let right = swipeBar.right;
+      let left = swipeBar.left;
+      let bottom = swipeBar.bottom;
+      let height = bottom -top;
+      let width = right - left;
+      console.info("SUB_ACE_ListItem_Delete_End_String_0200 value is" + left + " --" + right + "--" + top + "--" + bottom);
       await driver.swipe(
-        Math.round(vp2px(300)), Math.round(vp2px(50)), Math.round(vp2px(50)), Math.round(vp2px(50))
+        Math.round(globalThis.winLeft + left + vp2px(100)), Math.round(globalThis.winTop + top + vp2px(50)), Math.round(globalThis.winLeft + left + vp2px(50)), Math.round(globalThis.winTop  + top + vp2px(50))
       );
       await CommonFunc.sleep(2000);
 

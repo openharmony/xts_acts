@@ -113,24 +113,25 @@ struct ListPage {
 
   build() {
     Column() {
-      Text(this.onScrollText).fontSize(10).key('onScrollText')
-      Row(){
-        Text(this.onReachStartText).fontSize(10).margin({right:10}).key('onReachStartText')
-        Text(this.onReachEndText).fontSize(10).key('onReachEndText')
-      }
-      Text(this.onScrollBeginText).fontSize(10).key('onScrollBeginText')
-      Row(){
-        Text(this.onScrollStartText).fontSize(10).margin({right:10}).key('onScrollStartText')
-        Text(this.onScrollStopText).fontSize(10).key('onScrollStopText')
-      }
       Row(){
         Text(this.onItemMoveText).fontSize(10).margin({right:10}).key('onItemMoveText')
         Text(this.onItemDragText).fontSize(10).margin({right:10}).key('onItemDragText')
         Text(this.onItemDropText).fontSize(10).key('onItemDropText')
       }
-
+      Row(){
+        Text(this.onScrollText).fontSize(10).margin({right:10}).key('onScrollText')
+        Text(this.onScrollBeginText).fontSize(10).key('onScrollBeginText')
+      }
+      Row(){
+        Text(this.onReachStartText).fontSize(10).margin({right:10}).key('onReachStartText')
+        Text(this.onReachEndText).fontSize(10).key('onReachEndText')
+      }
+      Row(){
+        Text(this.onScrollStartText).fontSize(10).margin({right:10}).key('onScrollStartText')
+        Text(this.onScrollStopText).fontSize(10).key('onScrollStopText')
+      }
       Button("点击更改alignListItem:" + this.alignListItem)
-        .height('5%')
+        .height('8%')
         .onClick(() => {
           if (this.alignListItem == ListItemAlign.Start) {
             this.alignListItem = ListItemAlign.Center
@@ -149,7 +150,7 @@ struct ListPage {
           }
         }, (item: string) => item)
       }.key('list_default')
-      .height('10%')
+      .height('5%')
 
       List({ space: this.space, initialIndex: this.initialIndex, scroller: this.scroller }) {
         ForEach(this.arr, (item: string) => {

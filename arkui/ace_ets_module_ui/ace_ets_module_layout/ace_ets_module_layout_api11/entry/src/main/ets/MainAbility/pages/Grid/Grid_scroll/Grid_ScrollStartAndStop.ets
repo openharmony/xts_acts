@@ -22,6 +22,39 @@ struct Grid_ScorllStartAndStop {
 
   build() {
     Column({ space: 5 }) {
+      Button('animation')
+        .id('button_grid_scroller_animation')
+        .height('5%')
+        .onClick(() => {
+          this.scroller.scrollTo({
+            xOffset: 0,
+            yOffset: 20,
+            animation: {
+              duration: 1000,
+              curve: Curve.Linear
+            }
+          })
+        })
+      Button('no animation')
+        .id('button_grid_scroller_noanimation')
+        .height('5%')
+        .onClick(() => {
+          this.scroller.scrollTo({
+            xOffset: 0,
+            yOffset: 40,
+          })
+        })
+      Button('scrollStartAndStop_Reset_bt')
+        .id('scrollStartAndStop_Reset_bt')
+        .height('5%')
+        .onClick(() => { // reset the init state
+          this.text1 = ""
+          this.text2 = ""
+          this.scroller.scrollEdge(Edge.Top);
+        })
+      Text(this.text1).id('Grid_ScrollStartandStop_tex1')
+      Text(this.text2).id('Grid_ScrollStartandStop_tex2')
+
       Stack({ alignContent: Alignment.BottomEnd }) {
         Grid(this.scroller) {
           ForEach(this.Number, (day: string) => {
@@ -31,7 +64,7 @@ struct Grid_ScorllStartAndStop {
                   .fontSize(16)
                   .backgroundColor(0xF9CF93)
                   .width('100%')
-                  .height(80)
+                  .height('25%')
                   .textAlign(TextAlign.Center)
               }
             }, (day: string) => day)
@@ -56,48 +89,12 @@ struct Grid_ScorllStartAndStop {
         ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.On }) {
           Text()
             .width(20)
-            .height(150)
+            .height('60%')
             .borderRadius(10)
             .backgroundColor('#C0C0C0')
         }.width(20).backgroundColor('#ededed')
       }.height(300)
       .id('Grid_ScrollStartandStop_scrollBar')
-
-
-      Button('animation')
-        .id('button_grid_scroller_animation')
-        .onClick(() => {
-          this.scroller.scrollTo({
-            xOffset: 0,
-            yOffset: 20,
-            animation: {
-              duration: 1000,
-              curve: Curve.Linear
-            }
-          })
-        })
-
-      Button('no animation')
-        .id('button_grid_scroller_noanimation')
-        .onClick(() => {
-          this.scroller.scrollTo({
-            xOffset: 0,
-            yOffset: 40,
-          })
-        })
-
-      Text(this.text1).id('Grid_ScrollStartandStop_tex1')
-      Text(this.text2).id('Grid_ScrollStartandStop_tex2')
-
-      Button('scrollStartAndStop_Reset_bt')
-        .id('scrollStartAndStop_Reset_bt')
-        .onClick(() => { // reset the init state
-          this.text1 = ""
-          this.text2 = ""
-          this.scroller.scrollEdge(Edge.Top);
-
-        })
-
 
     }.width('100%').margin({ top: 5 })
   }
