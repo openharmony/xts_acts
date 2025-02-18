@@ -1,7 +1,8 @@
 {
   "src": [
     "MainAbility/pages/XTSIndex",
-    "MainAbility/pages/keydispatchtest/KeydispatchTest"
+    "MainAbility/pages/keydispatchtest/KeydispatchTest",
+    "MainAbility/pages/progress/TestProgressLinearStyle"
 
   ]
 }

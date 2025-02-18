@@ -17,7 +17,6 @@ add_library(nativerender SHARED
     list/list_test.cpp
     listScrollTo/list_scroll_to_test.cpp
     swiper/swiper_test.cpp
-    progress/progress_linear_style_test.cpp
     textArea/textArea_letter_spacing.cpp
     textpicker/textpicker_columnwidths_test.cpp
 )

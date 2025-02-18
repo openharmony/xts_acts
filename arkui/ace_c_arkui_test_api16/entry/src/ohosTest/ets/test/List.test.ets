@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ProgressLinearStyleTest from "./progress/progressLinearStyleTest.test"
 import postFrameCallbackTest from "./postFrame/PostFrameCallbackTest.test"
 import swiperTest from "./swiper/SwiperTest.test"
 import textImmutablfFontWeight from "./text/textImmutablfFontWeight.test"
@@ -27,7 +26,6 @@ import textPickerTest from "./textpicker/TextPickerColumnWidthsTest.test"
 export default function testsuite() {
   postFrameCallbackTest();
   swiperTest();
-  ProgressLinearStyleTest();
   textImmutablfFontWeight();
   listCaseTest();
   listScrollToIndexTest();
