@@ -320,14 +320,14 @@ export default function storageSyncTest() {
         it('testRegisterObserver001', 0, async function (done) {
             mPref.clearSync();
             var observer = function (key) {
-                console.info('testRegisterObserver001 keyValue' + mPreferences.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
+                console.info('testRegisterObserver001 keyValue' + mPref.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
                 done();
                 expect('abcd').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
-                mPreferences.off('change');
+                mPref.off('change');
             };
             mPref.on('change', observer);
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "abcd");
-            await mPreferences.flush();
+            await mPref.flush();
         })
 
         /**
@@ -344,12 +344,12 @@ export default function storageSyncTest() {
                 console.info('testRegisterObserver001 keyValue' + mPref.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
                 done();
                 expect('abc').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
-                mPreferences.off('change');
+                mPref.off('change');
             };
             mPref.on('change', observer);
             mPref.on('change', observer);
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
-            await mPreferences.flush();
+            await mPref.flush();
         })
 
         /**
@@ -369,7 +369,7 @@ export default function storageSyncTest() {
             };
             mPref.on('change', observer);
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "");
-            await mPreferences.flush();
+            await mPref.flush();
         })
 
         /**
