@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import getWithUniqueId from './ComponentSnapshotByUniqueId/getWithUniqueId.test';
 import keyEventDispatchTest from './keyEventDispatchTest/keyEventDispatchone.test';
 import keyEventDispatchTest2 from './keyEventDispatchTest/keyEventDispatchtwo.test';
 import keyEventDispatchTest3 from './keyEventDispatchTest/keyEventDispatchthree.test';
@@ -28,6 +29,7 @@ import onkeyEventDispatchTest8 from './keyEventDispatchTest/onkeyEventDispatchei
 import imageMatrix from './imageMatrix/imageMatrix.test';
 
 export default function testsuite() {
+  getWithUniqueId();
   keyEventDispatchTest();
   keyEventDispatchTest2();
   keyEventDispatchTest3();
