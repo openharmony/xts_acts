@@ -1154,6 +1154,7 @@ export default function CameraErrorCodeUsecaseTest() {
      */
      it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME', 0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME_0100--------------");
+      mCameraSession = cameraObj.createSession();
       let ret = cameraObj.getCameraHostName();
       if (ret != 0) {
         console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME_0100 FAILED");
@@ -1171,6 +1172,7 @@ export default function CameraErrorCodeUsecaseTest() {
      */
      it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE', 0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_0100--------------");
+      mCameraSession = cameraObj.createSession();
       let ret = cameraObj.getCameraHostName();
       if (ret != 0) {
         console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_0100 FAILED");
