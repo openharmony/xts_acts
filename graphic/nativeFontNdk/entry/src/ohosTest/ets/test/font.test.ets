@@ -61,6 +61,35 @@ export default function fontTest() {
     });
 
     /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_MatchFontDescriptors_004
+     * @tc.name       : testOHDrawingMatchFontDescriptors004
+     * @tc.desc       : test OH_Drawing_MatchFontDescriptors_004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHDrawingMatchFontDescriptors004', 0, async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingMatchFontDescriptors004();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_MatchFontDescriptors_005
+     * @tc.name       : testOHDrawingMatchFontDescriptors005
+     * @tc.desc       : test OH_Drawing_MatchFontDescriptors_005
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHDrawingMatchFontDescriptors005', 0, async (done: Function) => {
+      let result: number = nativeFontNdk.oHDrawingMatchFontDescriptors005();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_GetFontDescriptorByFullName_001
      * @tc.name       : testOHDrawingGetFontDescriptorByFullName001
      * @tc.desc       : test OH_Drawing_GetFontDescriptorByFullName_001
@@ -75,6 +104,54 @@ export default function fontTest() {
     });
 
     /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_GetFontDescriptorByFullName_002
+     * @tc.name       : testOHDrawingGetFontDescriptorByFullName002
+     * @tc.desc       : test OH_Drawing_GetFontDescriptorByFullName_002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHDrawingGetFontDescriptorByFullName002', 0, async (done: Function) => {
+      let result: number = nativeFontNdk.oHDrawingGetFontDescriptorByFullName002();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_GetFontDescriptorByFullName_003
+     * @tc.name       : testOHDrawingGetFontDescriptorByFullName003
+     * @tc.desc       : test OH_Drawing_GetFontDescriptorByFullName_003
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHDrawingGetFontDescriptorByFullName003', 0, async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingGetFontDescriptorByFullName003();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      expect(result[3]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_GetFontDescriptorByFullName_004
+     * @tc.name       : testOHDrawingGetFontDescriptorByFullName004
+     * @tc.desc       : test OH_Drawing_GetFontDescriptorByFullName_004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHDrawingGetFontDescriptorByFullName004', 0, async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingGetFontDescriptorByFullName004();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      expect(result[3]).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_GetSystemFontFullNamesByType_001
      * @tc.name       : testOHDrawingGetSystemFontFullNamesByType001
      * @tc.desc       : test OH_Drawing_GetSystemFontFullNamesByType_001
@@ -84,6 +161,52 @@ export default function fontTest() {
      */
     it('testOHDrawingGetSystemFontFullNamesByType001', 0, async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetSystemFontFullNamesByType001();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_GetSystemFontFullNamesByType_002
+     * @tc.name       : testOHDrawingGetSystemFontFullNamesByType002
+     * @tc.desc       : test OH_Drawing_GetSystemFontFullNamesByType_002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHDrawingGetSystemFontFullNamesByType002', 0, async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingGetSystemFontFullNamesByType002();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      expect(result[3]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_GetSystemFontFullNamesByType_003
+     * @tc.name       : testOHDrawingGetSystemFontFullNamesByType003
+     * @tc.desc       : test OH_Drawing_GetSystemFontFullNamesByType_003
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHDrawingGetSystemFontFullNamesByType003', 0, async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingGetSystemFontFullNamesByType003();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_GetSystemFontFullNamesByType_004
+     * @tc.name       : testOHDrawingGetSystemFontFullNamesByType004
+     * @tc.desc       : test OH_Drawing_GetSystemFontFullNamesByType_004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHDrawingGetSystemFontFullNamesByType004', 0, async (done: Function) => {
+      let result: number = nativeFontNdk.oHDrawingGetSystemFontFullNamesByType004();
       expect(result).assertEqual(0);
       done();
     });
