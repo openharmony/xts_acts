@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+
 import myScreenCaptureNdk from 'libnativeAVScreenCapturendk.so'
 import hilog from '@ohos.hilog';
 import featureAbility from '@ohos.ability.featureAbility';
