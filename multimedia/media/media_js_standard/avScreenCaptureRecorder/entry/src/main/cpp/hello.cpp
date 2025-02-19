@@ -15,11 +15,26 @@
 
 #include "napi/native_api.h"
 #include <js_native_api_types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <hilog/log.h>
 #include <multimedia/player_framework/native_avcapability.h>
 #include <multimedia/player_framework/native_avcodec_base.h>
 #include <multimedia/player_framework/native_avdemuxer.h>
 #include <multimedia/player_framework/native_avformat.h>
 #include <multimedia/player_framework/native_avsource.h>
+#include <multimedia/player_framework/native_avmuxer.h>
+
+#undef LOG_DOMAIN
+#undef LOG_TAG
+#define LOG_DOMAIN 0x3200
+#define LOG_TAG "avScreenCaptureRecorder"
+
+#define LOGI(...) ((void)OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
+#define LOGD(...) ((void)OH_LOG_Print(LOG_APP, LOG_DEBUG, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
+#define LOGW(...) ((void)OH_LOG_Print(LOG_APP, LOG_WARN, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
+#define LOGE(...) ((void)OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
+
 
 #define FAIL (-1)
 #define SUCCESS 0
@@ -33,11 +48,41 @@ static napi_value OHAvCapabilityByCategoryH265(napi_env env, napi_callback_info 
     OH_AVCapability *capability = nullptr;
     OH_AVRange qualityRange;
     OH_AVErrCode checkParam;
+    LOGI("OH_AVCodec_GetCapabilityByCategory get capability");
     capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
     if (capability != nullptr) {
         backParam = SUCCESS;
+        LOGE("OH_AVCodec_GetCapabilityByCategory get capability SUCCESS");
     }
     napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OHAVMuxerByCategoryH265(napi_env env, napi_callback_info info)
+{
+    int backParam = SUCCESS;
+    int videoTrackId = -1;
+    OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
+    
+    int fileDescribe = open("/data/storage/el2/base/haps/entry_test/files/demo.mp4", 
+    O_CREAT | O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+    OH_AVMuxer *muxer = OH_AVMuxer_Create(fileDescribe, format);
+    OH_AVFormat *formatVideo = OH_AVFormat_CreateVideoFormat(OH_AVCODEC_MIMETYPE_VIDEO_MPEG4,1280,720);
+    
+    LOGI("OH_AVMuxer_AddTrack get format");
+    int ret = OH_AVMuxer_AddTrack(muxer, &videoTrackId, formatVideo);
+    
+    if (backInfo != AV_ERR_OK) {
+        backParam = FAIL;
+        LOGE("OH_AVMuxer_AddTrack get format failed");
+    }
+    close(fileDescribe);
+    napi_value result = nullptr;
+    
+    OH_AVFormat_Destroy(trackFormat);
+    OH_AVMuxer_Destroy(muxer);
+    muxer = nullptr;
+    napi_create_int32(env, returnValue, &result);
     return result;
 }
 
@@ -45,7 +90,9 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        { "OHAvCapabilityByCategoryH265", nullptr, OHAvCapabilityByCategoryH265, nullptr, nullptr, nullptr,
+        { "OHAvCapabilityByCategoryH265", nullptr, OHAvCapabilityByCategoryH265, nullptr, nullptr, nullptr, 
+        napi_default, nullptr },
+        { "OHAVMuxerByCategoryH265", nullptr, OHAVMuxerByCategoryH265, nullptr, nullptr, nullptr, 
         napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
