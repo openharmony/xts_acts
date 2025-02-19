@@ -2,25 +2,26 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 
 import { BusinessError } from '@ohos.base';
 import pasteboard from '@ohos.pasteboard';
 import { abilityAccessCtrl, common, PermissionRequestResult} from '@kit.AbilityKit';
-import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
+import { Driver, ON } from '@kit.TestKit';
 import { fileIo, fileIo as fs, fileUri} from '@kit.CoreFileKit'
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 
 const delegator = abilityDelegatorRegistry.getAbilityDelegator();
 const context = delegator.getAppContext().getApplicationContext();
 const VALUE_TEST_STRING_ELEMENT = 'a'.repeat(1*1024*1024*2);
-const VALUE_TEST_STRING_ELEMENT_251 = 'a'.repeat(178)
-const VALUE_TEST_STRING_ELEMENT_250 = 'a'.repeat(177)
 const VALUE_TEST_STRING_ELEMENT_BIG = 'a'.repeat(1*1024*1024*200)
 let filePath: string = context.filesDir + '/src';
 
 let TAG = "ttt"
-let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard()
+let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let dstDir = context.distributedFilesDir + '/dst';
+fileIo.mkdirSync(dstDir);
 
 let getPermission = async () => {
   console.info('getPermission is start');
-  let context:common.UIAbilityContext | undefined = AppStorage.get('TestAbilityContext') as common.UIAbilityContext
+  let context:common.UIAbilityContext | undefined = AppStorage.get('context') as common.UIAbilityContext
   atManager.requestPermissionsFromUser(context, ['ohos.permission.READ_PASTEBOARD'], (err:BusinessError, data:PermissionRequestResult) => {
     console.info('requestPermissionsFromUser success data is' + JSON.stringify(data));
     console.info('requestPermissionsFromUser failed err is' + JSON.stringify(err));
@@ -94,8 +95,6 @@ export default function PasteboardProgressTest() {
       let systemPasteboard = pasteboard.getSystemPasteboard();
       await systemPasteboard.setData(pasteData);
 
-      let dstDir = context.distributedFilesDir + '/dst';
-      fileIo.mkdirSync(dstDir);
       let dstDir2 = dstDir + '/dst'
       fileIo.mkdirSync(dstDir2)
       let dstUri: string = fileUri.getUriFromPath(dstDir2);
@@ -141,8 +140,6 @@ export default function PasteboardProgressTest() {
       let systemPasteboard = pasteboard.getSystemPasteboard();
       await systemPasteboard.setData(pasteData);
 
-      let dstDir = context.distributedFilesDir + '/dst';
-      fileIo.mkdirSync(dstDir);
       let dstUri: string = fileUri.getUriFromPath(dstDir);
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length)
       let params: pasteboard.GetDataParams = {
@@ -186,8 +183,6 @@ export default function PasteboardProgressTest() {
       let systemPasteboard = pasteboard.getSystemPasteboard();
       await systemPasteboard.setData(pasteData);
 
-      let dstDir = context.distributedFilesDir + '/dst';
-      fileIo.mkdirSync(dstDir);
       let dstUri: string = fileUri.getUriFromPath(dstDir);
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length)
       let params: pasteboard.GetDataParams = {
@@ -227,7 +222,7 @@ export default function PasteboardProgressTest() {
 
       let dstDir = context.distributedFilesDir + '/dst1*2_3-4.5;6测试';
       fileIo.mkdirSync(dstDir);
-      let dstUri: string = fileUri.getUriFromPath(dstDir);
+      let dstUri: string = fileUri.getUriFromPath( dstDir);
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length)
       let params: pasteboard.GetDataParams = {
         destUri: dstUri,
@@ -270,12 +265,13 @@ export default function PasteboardProgressTest() {
       let systemPasteboard = pasteboard.getSystemPasteboard();
       await systemPasteboard.setData(pasteData);
 
-      let dstDir = context.distributedFilesDir + '/dst' + VALUE_TEST_STRING_ELEMENT_251;
-      fileIo.mkdirSync(dstDir);
       let dstUri: string = fileUri.getUriFromPath(dstDir);
-      console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length)
+      console.info(TAG + 'dstUri:' + dstUri + 'length:' + dstUri.length)
+      let dstUri251: string = fileUri.getUriFromPath(dstDir + 'a'.repeat(250 - dstUri.length) + '/');
+      console.info(TAG + 'dstUri:' + dstUri251 + 'length:' + dstUri251.length)
+      fileIo.mkdirSync(dstDir + 'a'.repeat(250 - dstUri.length));
       let params: pasteboard.GetDataParams = {
-        destUri: dstUri,
+        destUri: dstUri251,
         progressIndicator: 1
       };
       try {
@@ -303,18 +299,19 @@ export default function PasteboardProgressTest() {
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
       let file = fs.openSync(fileFullName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       let writeLen = fs.writeSync(file.fd, VALUE_TEST_STRING_ELEMENT);
-      console.info(TAG + 'The size of str is: ' + writeLen)
+      console.info(TAG + 'The size of str is: ' + writeLen);
       fs.closeSync(file);
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, fileUri.getUriFromPath(fileFullName));
       let systemPasteboard = pasteboard.getSystemPasteboard();
       await systemPasteboard.setData(pasteData);
 
-      let dstDir = context.distributedFilesDir + '/dst' + VALUE_TEST_STRING_ELEMENT_250;
-      fileIo.mkdirSync(dstDir);
       let dstUri: string = fileUri.getUriFromPath(dstDir);
-      console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length)
+      console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length);
+      let dstUri250: string = fileUri.getUriFromPath(dstDir + 'a'.repeat(249 - dstUri.length) + '/');
+      console.info(TAG + 'dstUri:' + dstUri250 + 'length:' + dstUri250.length);
+      fileIo.mkdirSync(dstDir + 'a'.repeat(249 - dstUri.length));
       let params: pasteboard.GetDataParams = {
-        destUri: dstUri,
+        destUri: dstUri250,
         progressIndicator: 1
       };
       try {
@@ -355,14 +352,12 @@ export default function PasteboardProgressTest() {
       let systemPasteboard = pasteboard.getSystemPasteboard();
       await systemPasteboard.setData(pasteData);
 
-      let dstDir = context.distributedFilesDir + '/dst';
-      fileIo.mkdirSync(dstDir);
       let dstUri: string = fileUri.getUriFromPath(dstDir);
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length)
       let params: pasteboard.GetDataParams = {
         destUri: dstUri,
         progressIndicator: 1,
-        fileConflictOption: 0,
+        fileConflictOptions: 0,
       };
       try {
         await systemPasteboard.getDataWithProgress(params).then((data) => {
@@ -402,14 +397,12 @@ export default function PasteboardProgressTest() {
       let systemPasteboard = pasteboard.getSystemPasteboard();
       await systemPasteboard.setData(pasteData);
 
-      let dstDir = context.distributedFilesDir + '/dst';
-      fileIo.mkdirSync(dstDir);
       let dstUri: string = fileUri.getUriFromPath(dstDir);
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length)
       let params: pasteboard.GetDataParams = {
         destUri: dstUri,
         progressIndicator: 1,
-        fileConflictOption: 1,
+        fileConflictOptions: 1,
       };
       try {
         await systemPasteboard.getDataWithProgress(params).then((data) => {
@@ -449,14 +442,12 @@ export default function PasteboardProgressTest() {
       let systemPasteboard = pasteboard.getSystemPasteboard();
       await systemPasteboard.setData(pasteData);
 
-      let dstDir = context.distributedFilesDir + '/dst';
-      fileIo.mkdirSync(dstDir);
       let dstUri: string = fileUri.getUriFromPath(dstDir);
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length)
       let params: pasteboard.GetDataParams = {
         destUri: dstUri,
         progressIndicator: 1,
-        fileConflictOption: 3,
+        fileConflictOptions: 3,
       };
       try {
         await systemPasteboard.getDataWithProgress(params).then((data) => {
@@ -490,14 +481,12 @@ export default function PasteboardProgressTest() {
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
       let file = fs.openSync(fileFullName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       let writeLen = fs.writeSync(file.fd, VALUE_TEST_STRING_ELEMENT);
-      console.info(TAG + 'The size of str is: ' + writeLen)
+      console.info(TAG + 'The size of str is: ' + writeLen);
       fs.closeSync(file);
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, fileUri.getUriFromPath(fileFullName));
       let systemPasteboard = pasteboard.getSystemPasteboard();
       await systemPasteboard.setData(pasteData);
 
-      let dstDir = context.distributedFilesDir + '/dst';
-      fileIo.mkdirSync(dstDir);
       let dstUri: string = fileUri.getUriFromPath(dstDir);
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length)
       let params: pasteboard.GetDataParams = {
@@ -536,14 +525,12 @@ export default function PasteboardProgressTest() {
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
       let file = fs.openSync(fileFullName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       let writeLen = fs.writeSync(file.fd, VALUE_TEST_STRING_ELEMENT);
-      console.info(TAG + 'The size of str is: ' + writeLen)
+      console.info(TAG + 'The size of str is: ' + writeLen);
       fs.closeSync(file);
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, fileUri.getUriFromPath(fileFullName));
       let systemPasteboard = pasteboard.getSystemPasteboard();
       await systemPasteboard.setData(pasteData);
 
-      let dstDir = context.distributedFilesDir + '/dst';
-      fileIo.mkdirSync(dstDir);
       let dstUri: string = fileUri.getUriFromPath(dstDir);
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length)
       let params: pasteboard.GetDataParams = {
@@ -588,8 +575,6 @@ export default function PasteboardProgressTest() {
       let systemPasteboard = pasteboard.getSystemPasteboard();
       await systemPasteboard.setData(pasteData);
 
-      let dstDir = context.distributedFilesDir + '/dst';
-      fileIo.mkdirSync(dstDir);
       let dstUri: string = fileUri.getUriFromPath(dstDir);
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length)
       let params: pasteboard.GetDataParams = {
@@ -634,8 +619,6 @@ export default function PasteboardProgressTest() {
       let systemPasteboard = pasteboard.getSystemPasteboard();
       await systemPasteboard.setData(pasteData);
 
-      let dstDir = context.distributedFilesDir + '/dst';
-      fileIo.mkdirSync(dstDir);
       let dstUri: string = fileUri.getUriFromPath(dstDir);
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length)
       let params: pasteboard.GetDataParams = {
@@ -682,8 +665,7 @@ export default function PasteboardProgressTest() {
       let ProgressListener = (progress: pasteboard.ProgressInfo) => {
         console.log('progressListener success, progress:' + progress.progress);
       }
-      let dstDir = context.distributedFilesDir + '/dst';
-      fileIo.mkdirSync(dstDir);
+
       let dstUri: string = fileUri.getUriFromPath(dstDir);
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length)
       let params: pasteboard.GetDataParams = {
@@ -728,8 +710,7 @@ export default function PasteboardProgressTest() {
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, fileUri.getUriFromPath(fileFullName));
       let systemPasteboard = pasteboard.getSystemPasteboard();
       await systemPasteboard.setData(pasteData);
-      let dstDir = context.distributedFilesDir + '/dst';
-      fileIo.mkdirSync(dstDir);
+
       let dstUri: string = fileUri.getUriFromPath(dstDir);
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length)
       let params: pasteboard.GetDataParams = {
@@ -779,8 +760,7 @@ export default function PasteboardProgressTest() {
         console.log('progressListener success, progress:' + progress.progress);
         signal.cancel();
       }
-      let dstDir = context.distributedFilesDir + '/dst';
-      fileIo.mkdirSync(dstDir);
+
       let dstUri: string = fileUri.getUriFromPath(dstDir);
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length)
       let params: pasteboard.GetDataParams = {
@@ -830,8 +810,7 @@ export default function PasteboardProgressTest() {
         console.log('progressListener success, progress:' + progress.progress);
         signal.cancel();
       }
-      let dstDir = context.distributedFilesDir + '/dst';
-      fileIo.mkdirSync(dstDir);
+
       let dstUri: string = fileUri.getUriFromPath(dstDir);
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length)
       let params: pasteboard.GetDataParams = {
@@ -843,7 +822,7 @@ export default function PasteboardProgressTest() {
         await systemPasteboard.getDataWithProgress(params).then((data) => {
           console.info(TAG + 'getDataWithProgress start');
           let pastePath = dstDir + '/test18.txt';
-          expect(fs.accessSync(pastePath)).assertEqual(true);
+          expect(fs.accessSync(pastePath)).assertEqual(false);
           console.info(TAG + 'getDataWithProgress success');
         }).catch((error: BusinessError) => {
           console.info(TAG + 'getDataWithProgress failed,error: ' + JSON.stringify(error));
