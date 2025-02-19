@@ -60,7 +60,7 @@ static napi_value OHAvCapabilityByCategoryH265(napi_env env, napi_callback_info 
 
 static napi_value OHAVMuxerByCategoryH265(napi_env env, napi_callback_info info)
 {
-    int backParam = SUCCESS;
+    int returnValue = SUCCESS;
     int videoTrackId = -1;
     OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
     
@@ -72,14 +72,13 @@ static napi_value OHAVMuxerByCategoryH265(napi_env env, napi_callback_info info)
     LOGI("OH_AVMuxer_AddTrack get format");
     int ret = OH_AVMuxer_AddTrack(muxer, &videoTrackId, formatVideo);
     
-    if (backInfo != AV_ERR_OK) {
-        backParam = FAIL;
+    if (ret != AV_ERR_OK) {
+        returnValue = FAIL;
         LOGE("OH_AVMuxer_AddTrack get format failed");
     }
-    close(fileDescribe);
     napi_value result = nullptr;
     
-    OH_AVFormat_Destroy(trackFormat);
+    OH_AVFormat_Destroy(formatVideo);
     OH_AVMuxer_Destroy(muxer);
     muxer = nullptr;
     napi_create_int32(env, returnValue, &result);
