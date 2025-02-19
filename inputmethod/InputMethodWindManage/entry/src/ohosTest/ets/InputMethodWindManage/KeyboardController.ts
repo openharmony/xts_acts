@@ -262,6 +262,38 @@ export class KeyboardController {
           console.debug(TAG + '====>Sub_InputMethod_IME_Dragging_0900 event:' + data.event);
           that.Sub_InputMethod_IME_Dragging_0900();
           break;
+        case 260:
+          console.debug(TAG + '====>Sub_InputMethod_IME_Attach_0100 event:' + data.event);
+          that.Sub_InputMethod_IME_Attach_0100();
+          break;
+        case 261:
+          console.debug(TAG + '====>Sub_InputMethod_IME_Attach_0200 event:' + data.event);
+          that.Sub_InputMethod_IME_Attach_0200();
+          break;
+        case 262:
+          console.debug(TAG + '====>Sub_InputMethod_IME_Attach_0300 event:' + data.event);
+          that.Sub_InputMethod_IME_Attach_0300();
+          break;
+        case 263:
+          console.debug(TAG + '====>Sub_InputMethod_IME_Attach_0400 event:' + data.event);
+          that.Sub_InputMethod_IME_Attach_0400();
+          break;
+        case 270:
+          console.debug(TAG + '====>Sub_InputMethod_IME_ShowTextInput_0100 event:' + data.event);
+          that.Sub_InputMethod_IME_ShowTextInput_0100();
+          break;
+        case 271:
+          console.debug(TAG + '====>Sub_InputMethod_IME_ShowTextInput_0200 event:' + data.event);
+          that.Sub_InputMethod_IME_ShowTextInput_0200();
+          break;
+        case 272:
+          console.debug(TAG + '====>Sub_InputMethod_IME_ShowTextInput_0300 event:' + data.event);
+          that.Sub_InputMethod_IME_ShowTextInput_0300();
+          break;
+        case 273:
+          console.debug(TAG + '====>Sub_InputMethod_IME_ShowTextInput_0400 event:' + data.event);
+          that.Sub_InputMethod_IME_ShowTextInput_0400();
+          break;
 
       }
     }
@@ -1703,6 +1735,214 @@ export class KeyboardController {
       clearTimeout(t);
       commoneventmanager.publish('Sub_InputMethod_IME_Custom_1100', commonEventPublishData, this.publishCallback);
     }, 100)
+  }
+
+  private async Sub_InputMethod_IME_Attach_0100() {
+    console.info(TAG + '====>receive Sub_InputMethod_IME_Attach_0100 data');
+    let commonEventPublishData = {
+      data: "FAILED"
+    };
+    try{
+      inputMethodAbility.on('inputStart', async (keyboardController, InputClient) => {
+        this.keyboardController = keyboardController;
+        this.InputClient = InputClient;
+
+        console.info(TAG + '====>Sub_InputMethod_IME_Attach_0100 inputMethonAbility inputStart into');
+        commonEventPublishData = {
+          data: "SUCCESS"
+        };
+        commoneventmanager.publish("Sub_InputMethod_IME_Attach_0100", commonEventPublishData, this.publishCallback);
+      })
+      commonEventPublishData = {
+        data: "on_SUCCESS"
+      };
+      commoneventmanager.publish("Sub_InputMethod_IME_Attach_0100", commonEventPublishData, this.publishCallback);
+    } catch (err) {
+      console.info(TAG + '====>Sub_InputMethod_IME_Attach_0100 err: ' + JSON.stringify(err));
+    }
+  }
+
+  private async Sub_InputMethod_IME_Attach_0200() {
+    console.info(TAG + '====>receive Sub_InputMethod_IME_Attach_0200 data');
+    let commonEventPublishData = {
+      data: "FAILED"
+    };
+    try{
+      inputMethodAbility.on('inputStart', async (keyboardController, InputClient) => {
+        this.keyboardController = keyboardController;
+        this.InputClient = InputClient;
+
+        console.info(TAG + '====>Sub_InputMethod_IME_Attach_0200 inputMethonAbility inputStart into');
+        commonEventPublishData = {
+          data: "SUCCESS"
+        };
+        commoneventmanager.publish("Sub_InputMethod_IME_Attach_0200", commonEventPublishData, this.publishCallback);
+      })
+      commonEventPublishData = {
+        data: "on_SUCCESS"
+      };
+      commoneventmanager.publish("Sub_InputMethod_IME_Attach_0200", commonEventPublishData, this.publishCallback);
+    } catch (err) {
+      console.info(TAG + '====>Sub_InputMethod_IME_Attach_0200 err: ' + JSON.stringify(err));
+    }
+  }
+
+  private async Sub_InputMethod_IME_Attach_0300() {
+    console.info(TAG + '====>receive Sub_InputMethod_IME_Attach_0300 data');
+    let commonEventPublishData = {
+      data: "FAILED"
+    };
+    try{
+      inputMethodAbility.on('inputStart', async (keyboardController, InputClient) => {
+        this.keyboardController = keyboardController;
+        this.InputClient = InputClient;
+
+        console.info(TAG + '====>Sub_InputMethod_IME_Attach_0300 inputMethonAbility inputStart into');
+        commonEventPublishData = {
+          data: "SUCCESS"
+        };
+        commoneventmanager.publish("Sub_InputMethod_IME_Attach_0300", commonEventPublishData, this.publishCallback);
+      })
+      commonEventPublishData = {
+        data: "on_SUCCESS"
+      };
+      commoneventmanager.publish("Sub_InputMethod_IME_Attach_0300", commonEventPublishData, this.publishCallback);
+    } catch (err) {
+      console.info(TAG + '====>Sub_InputMethod_IME_Attach_0300 err: ' + JSON.stringify(err));
+    }
+  }
+
+  private async Sub_InputMethod_IME_Attach_0400() {
+    console.info(TAG + '====>receive Sub_InputMethod_IME_Attach_0400 data');
+    let commonEventPublishData = {
+      data: "FAILED"
+    };
+    try{
+      inputMethodAbility.on('inputStart', async (keyboardController, InputClient) => {
+        this.keyboardController = keyboardController;
+        this.InputClient = InputClient;
+
+        console.info(TAG + '====>Sub_InputMethod_IME_Attach_0400 inputMethonAbility inputStart into');
+        commonEventPublishData = {
+          data: "SUCCESS"
+        };
+        commoneventmanager.publish("Sub_InputMethod_IME_Attach_0400", commonEventPublishData, this.publishCallback);
+      })
+      commonEventPublishData = {
+        data: "on_SUCCESS"
+      };
+      commoneventmanager.publish("Sub_InputMethod_IME_Attach_0400", commonEventPublishData, this.publishCallback);
+    } catch (err) {
+      console.info(TAG + '====>Sub_InputMethod_IME_Attach_0400 err: ' + JSON.stringify(err));
+    }
+  }
+
+  private async Sub_InputMethod_IME_ShowTextInput_0100() {
+    console.info(TAG + '====>receive Sub_InputMethod_IME_ShowTextInput_0100 data');
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      if (this.softKeyboardPanel !== null) {
+        this.softKeyboardPanel.on('show', async () => {
+          commonEventPublishData = {
+            data: 'SUCCESS'
+          };
+          this.softKeyboardPanel.off('show');
+          console.info(TAG + '====>receive Sub_InputMethod_IME_ShowTextInput_0100 onShow error: ');
+          console.info(TAG + '====>Sub_InputMethod_IME_ShowTextInput_0100 Succeed onShow: ');
+          commoneventmanager.publish(
+            'Sub_InputMethod_IME_ShowTextInput_0100', commonEventPublishData, this.publishCallback);
+        });
+      }
+      commonEventPublishData = {
+        data: "on_SUCCESS"
+      };
+      commoneventmanager.publish("Sub_InputMethod_IME_ShowTextInput_0100", commonEventPublishData, this.publishCallback);
+    } catch (error) {
+      console.info(TAG + '====>receive Sub_InputMethod_IME_ShowTextInput_0100 catch error: ' + JSON.stringify(error));
+    }
+  }
+
+  private async Sub_InputMethod_IME_ShowTextInput_0200() {
+    console.info(TAG + '====>receive Sub_InputMethod_IME_ShowTextInput_0200 data');
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      if (this.softKeyboardPanel !== null) {
+        this.softKeyboardPanel.on('show', async () => {
+          commonEventPublishData = {
+            data: 'SUCCESS'
+          };
+          this.softKeyboardPanel.off('show');
+          console.info(TAG + '====>receive Sub_InputMethod_IME_ShowTextInput_0200 onShow error: ');
+          console.info(TAG + '====>Sub_InputMethod_IME_ShowTextInput_0200 Succeed onShow: ');
+          commoneventmanager.publish(
+            'Sub_InputMethod_IME_ShowTextInput_0200', commonEventPublishData, this.publishCallback);
+        });
+      }
+      commonEventPublishData = {
+        data: "on_SUCCESS"
+      };
+      commoneventmanager.publish("Sub_InputMethod_IME_ShowTextInput_0200", commonEventPublishData, this.publishCallback);
+    } catch (error) {
+      console.info(TAG + '====>receive Sub_InputMethod_IME_ShowTextInput_0200 catch error: ' + JSON.stringify(error));
+    }
+  }
+
+  private async Sub_InputMethod_IME_ShowTextInput_0300() {
+    console.info(TAG + '====>receive Sub_InputMethod_IME_ShowTextInput_0300 data');
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      if (this.softKeyboardPanel !== null) {
+        this.softKeyboardPanel.on('show', async () => {
+          commonEventPublishData = {
+            data: 'SUCCESS'
+          };
+          this.softKeyboardPanel.off('show');
+          console.info(TAG + '====>receive Sub_InputMethod_IME_ShowTextInput_0300 onShow error: ');
+          console.info(TAG + '====>Sub_InputMethod_IME_ShowTextInput_0300 Succeed onShow: ');
+          commoneventmanager.publish(
+            'Sub_InputMethod_IME_ShowTextInput_0300', commonEventPublishData, this.publishCallback);
+        });
+      }
+      commonEventPublishData = {
+        data: "on_SUCCESS"
+      };
+      commoneventmanager.publish("Sub_InputMethod_IME_ShowTextInput_0300", commonEventPublishData, this.publishCallback);
+    } catch (error) {
+      console.info(TAG + '====>receive Sub_InputMethod_IME_ShowTextInput_0300 catch error: ' + JSON.stringify(error));
+    }
+  }
+
+  private async Sub_InputMethod_IME_ShowTextInput_0400() {
+    console.info(TAG + '====>receive Sub_InputMethod_IME_ShowTextInput_0400 data');
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      if (this.softKeyboardPanel !== null) {
+        this.softKeyboardPanel.on('show', async () => {
+          commonEventPublishData = {
+            data: 'SUCCESS'
+          };
+          this.softKeyboardPanel.off('show');
+          console.info(TAG + '====>receive Sub_InputMethod_IME_ShowTextInput_0400 onShow error: ');
+          console.info(TAG + '====>Sub_InputMethod_IME_ShowTextInput_0400 Succeed onShow: ');
+          commoneventmanager.publish(
+            'Sub_InputMethod_IME_ShowTextInput_0400', commonEventPublishData, this.publishCallback);
+        });
+      }
+      commonEventPublishData = {
+        data: "on_SUCCESS"
+      };
+      commoneventmanager.publish("Sub_InputMethod_IME_ShowTextInput_0400", commonEventPublishData, this.publishCallback);
+    } catch (error) {
+      console.info(TAG + '====>receive Sub_InputMethod_IME_ShowTextInput_0400 catch error: ' + JSON.stringify(error));
+    }
   }
 
 }
