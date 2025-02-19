@@ -30,7 +30,9 @@ group("security") {
       "dlpNDKTest:ActsDlpNDKTest",
       "dlp_permission_service:DlpTest",
       "huks",
-      "security_component:ActsSecComponentTest",
+      "security_component/security_component_locationbutton:ActsSecLocationButtonTest",
+      "security_component/security_component_pastebutton:ActsSecPasteButtonTest",
+      "security_component/security_component_savebutton:ActsSecSaveButtonTest",
       "security_guard",
     ]
   }
