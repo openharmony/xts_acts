@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import myScreenCaptureNdk from 'libnativeAVScreenCapturendk.so'
 import hilog from '@ohos.hilog';
 import featureAbility from '@ohos.ability.featureAbility';
@@ -194,5 +193,38 @@ export default function nativeAVScreenCaptureNdkTest() {
       expect(resultStop).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0300
+     * @tc.name         OH_AVScreenCapture_StartScreenCaptureOrigin_WithInvalidValnNullTrue
+     * @tc.desc         OH_AVScreenCapture_StartScreenCaptureOrigin_WithInvalidValnNullTrue
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0300', 0, async (done: Function) => {
+      console.info(Tag + "normalAVScreenCaptureShowCursorNullVlanTest-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureShowCursorNullVlanTest();
+      console.info(Tag + "normalAVScreenCaptureShowCursorNullVlanTest-------------res:" + result);
+      expect(result).assertEqual(0);
+      done();
+    }); 
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0400
+     * @tc.name         OH_AVScreenCapture_StartScreenCaptureOrigin_WithInvalidValnNullFalse
+     * @tc.desc         OH_AVScreenCapture_StartScreenCaptureOrigin_WithInvalidValnNullTrue
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0400', 0, async (done: Function) => {
+      console.info(Tag + "normalAVScreenCaptureShowCursorSecondNullVlanTest-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureShowCursorSecondNullVlanTest();
+      console.info(Tag + "normalAVScreenCaptureShowCursorSecondNullVlanTest-------------res:" + result);
+      expect(result).assertEqual(0);
+      done();
+    });  
+  
   })
 }
