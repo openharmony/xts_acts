@@ -637,9 +637,9 @@ static napi_value normalAVScreenCaptureShowCursorNullVlanTest(napi_env env, napi
     bool isMicrophone = false;
     screenCaptureNormal = OH_AVScreenCapture_Create();
     OH_AVSCREEN_CAPTURE_ErrCode result = OH_AVScreenCapture_ShowCursor(nullptr, false);
-    int resCapture = FAIL;
+    int resCapture = TEST_FAILED;
     if (result == AV_SCREEN_CAPTURE_ERR_INVALID_VAL ){
-        resCapture = SUCCESS;
+        resCapture = TEST_PASS;
     }
     napi_value res;
     napi_create_int32(env, resCapture, &res);
@@ -652,9 +652,9 @@ static napi_value normalAVScreenCaptureShowCursorSecondNullVlanTest(napi_env env
     bool isMicrophone = false;
     screenCaptureNormal = OH_AVScreenCapture_Create();
     OH_AVSCREEN_CAPTURE_ErrCode result = OH_AVScreenCapture_ShowCursor(nullptr, true);
-    int resCapture = FAIL;
+    int resCapture = TEST_FAILED;
     if (result == AV_SCREEN_CAPTURE_ERR_INVALID_VAL ){
-        resCapture = SUCCESS;
+        resCapture = TEST_PASS;
     }
     napi_value res;
     napi_create_int32(env, resCapture, &res);
