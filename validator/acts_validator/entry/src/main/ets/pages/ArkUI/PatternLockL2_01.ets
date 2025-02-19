@@ -20,14 +20,14 @@ import FirstDialog from '../model/FirstDialog';
 import { BusinessError } from '@ohos.base';
 import { LengthMetrics, PatternLockModifier } from '@kit.ArkUI';
 
-const TAG = '[PatternLock]';
+const TAG = '[PatternLockL2_01]';
 
 @Entry
 @Component
-struct patternLock {
+struct PatternLockL2_01 {
   @State rating: number = 0;
   @State FillColor: string = '#FF000000';
-  @State name: string = 'PatternLock';
+  @State name: string = 'PatternLockL2_01';
   @State StepTips: string = '操作步骤：在两个九宫格中画出自己想设置的密码，点击确认按钮' + '\n' + '预期结果：背景圆环及连线被宫格圆点完全覆盖';
   @State Vue: boolean = false;
   @State passwords: Number[] = [];
