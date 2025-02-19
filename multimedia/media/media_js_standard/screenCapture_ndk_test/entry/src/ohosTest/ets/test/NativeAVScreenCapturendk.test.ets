@@ -196,8 +196,8 @@ export default function nativeAVScreenCaptureNdkTest() {
 
     /**
      * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0300
-     * @tc.name         OH_AVScreenCapture_StartScreenCaptureOrigin_WithInvalidValnNullTrue
-     * @tc.desc         OH_AVScreenCapture_StartScreenCaptureOrigin_WithInvalidValnNullTrue
+     * @tc.name         OH_AVScreenCapture_StartScreenCaptureOrigin-With-InvalidVal-Null-True
+     * @tc.desc         OH_AVScreenCapture_StartScreenCaptureOrigin-With-InvalidVal-Null-True
      * @tc.size         MediumTest
      * @tc.type         Function
      * @tc.level        Level 1
