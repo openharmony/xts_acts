@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 import postFrameCallbackTest from "./postFrame/PostFrameCallbackTest.test"
+import checkboxGroupTest from "./checkbox/CheckboxGroupTest.test"
+import checkboxGroupGroupTest from "./checkboxgroup/CheckboxGroupGroupTest.test"
+import checkboxGroupSelectAllTest from "./checkboxgroup/CheckboxGroupSelectAllTest.test"
 import swiperTest from "./swiper/SwiperTest.test"
 import textImmutablfFontWeight from "./text/textImmutablfFontWeight.test"
 import listCaseTest from "./list/ListCaseTest.test"
@@ -25,6 +28,9 @@ import textPickerTest from "./textpicker/TextPickerColumnWidthsTest.test"
 export default function testsuite() {
   postFrameCallbackTest();
   swiperTest();
+  checkboxGroupTest();
+  checkboxGroupGroupTest();
+  checkboxGroupSelectAllTest();
   textImmutablfFontWeight();
   listCaseTest();
   listScrollToIndexTest();
