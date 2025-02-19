@@ -356,6 +356,14 @@ export class KeyboardDelegate {
           console.info(TAG + '====>SUB_InputMethod_IME_PrivateDateTransferred_1100 event:' + data.event);
           that.SUB_InputMethod_IME_PrivateDateTransferred_1100();
           break;
+          case 410:
+          console.info(TAG + '====>SUB_InputMethod_IME_onoffsecurityModeChanged_0100 event:' + data.event);
+          that.SUB_InputMethod_IME_onoffsecurityModeChanged_0100();
+          break;
+        case 420:
+          console.info(TAG + '====>SUB_InputMethod_IME_onoffsecurityModeChanged_0200 event:' + data.event);
+          that.SUB_InputMethod_IME_onoffsecurityModeChanged_0200();
+          break;
       }
     }
 
@@ -1965,5 +1973,46 @@ export class KeyboardDelegate {
     }
     commoneventmanager.publish("SUB_InputMethod_IME_PrivateDateTransferred_1100", commonEventPublishData,
       this.publishCallback);
+  }
+
+  async SUB_InputMethod_IME_onoffsecurityModeChanged_0100() {
+    console.info(TAG + '====>receive SUB_InputMethod_IME_onoffsecurityModeChanged_0100 data');
+    let commonEventPublishData = {
+      data: "FAILED"
+    };
+    try {
+      inputMethodAbility.on('securityModeChange', (securityMode: inputMethodEngine.SecurityMode) => {
+        console.log(`InputMethodAbility securityModeChange, security is ${securityMode}`);
+        inputMethodAbility.off('privateCommand');
+      })
+      commonEventPublishData = {
+        data: "SUCCESS"
+      };
+      console.info(TAG + '====>SUB_InputMethod_IME_onoffsecurityModeChanged_0100 privateCommand on success');
+    } catch (err) {
+      console.info(TAG + '====>SUB_InputMethod_IME_onoffsecurityModeChanged_0100 on(privateCommand) err: ' + JSON.stringify(err));
+    }
+    commoneventmanager.publish("SUB_InputMethod_IME_onoffsecurityModeChanged_0100", commonEventPublishData, this.publishCallback);
+  }
+
+  async SUB_InputMethod_IME_onoffsecurityModeChanged_0200() {
+    console.info(TAG + '====>receive SUB_InputMethod_IME_onoffsecurityModeChanged_0200 data');
+    let commonEventPublishData = {
+      data: "FAILED"
+    };
+    let securityChangeCallback = (securityMode: inputMethodEngine.SecurityMode) => {
+      console.log(`InputMethodAbility securityModeChange, security is ${securityMode}`);
+    };
+    inputMethodAbility.on('securityModeChange', securityChangeCallback);
+    try {
+      inputMethodAbility.off('securityModeChange', securityChangeCallback);
+      commonEventPublishData = {
+        data: "SUCCESS"
+      };
+      console.info(TAG + '====>SUB_InputMethod_IME_onoffsecurityModeChanged_0200 privateCommand on success');
+    } catch (err) {
+      console.info(TAG + '====>SUB_InputMethod_IME_onoffsecurityModeChanged_0200 on(privateCommand) err: ' + JSON.stringify(err));
+    }
+    commoneventmanager.publish("SUB_InputMethod_IME_onoffsecurityModeChanged_0200", commonEventPublishData, this.publishCallback);
   }
 }
