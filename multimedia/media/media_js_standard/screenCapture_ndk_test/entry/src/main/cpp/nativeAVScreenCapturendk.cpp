@@ -684,7 +684,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"normalAVScreenCaptureShowCursorTestStop", nullptr, normalAVScreenCaptureShowCursorTestStop, nullptr, nullptr,
             nullptr, napi_default, nullptr},
         {"normalAVScreenCaptureShowCursorSecondNullVlanTest", nullptr, normalAVScreenCaptureShowCursorSecondNullVlanTest, nullptr, nullptr,
-            nullptr, napi_default, nullptr},                          
+            nullptr, napi_default, nullptr},
         {"normalAVScreenCaptureShowCursorNullVlanTest", nullptr, normalAVScreenCaptureShowCursorNullVlanTest, nullptr, nullptr,
             nullptr, napi_default, nullptr},
         {"normalAVScreenCaptureShowCursorBeforeTestStop", nullptr, normalAVScreenCaptureShowCursorBeforeTestStop,
