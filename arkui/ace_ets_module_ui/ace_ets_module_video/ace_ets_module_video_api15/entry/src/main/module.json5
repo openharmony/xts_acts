@@ -37,7 +37,7 @@
     ],
     "abilities": [
       {
-        "name": "com.arkui.ace.video.api16.EntryAbility",
+        "name": "com.arkui.ace.video.api15.EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ets",
         "description": "$string:description_application",
         "icon": "$media:icon",
