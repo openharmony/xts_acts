@@ -3338,6 +3338,7 @@ export default function inputMethodWindManageAbility() {
           }
         }
         await inputMethod.getController().attach(true, ATTRIBUTE, 0);
+        done();
       }
 
       let publishCallback = async (err: BusinessError) => {
@@ -3409,6 +3410,7 @@ export default function inputMethodWindManageAbility() {
           }
         }
         await inputMethod.getController().attach(true, ATTRIBUTE, 1);
+        done();
       }
 
       let publishCallback = async (err: BusinessError) => {
@@ -3480,6 +3482,7 @@ export default function inputMethodWindManageAbility() {
           }
         }
         await inputMethod.getController().attach(true, ATTRIBUTE, 2);
+        done();
       }
 
       let publishCallback = async (err: BusinessError) => {
@@ -3551,6 +3554,7 @@ export default function inputMethodWindManageAbility() {
           }
         }
         await inputMethod.getController().attach(true, ATTRIBUTE, 20);
+        done();
       }
 
       let publishCallback = async (err: BusinessError) => {
