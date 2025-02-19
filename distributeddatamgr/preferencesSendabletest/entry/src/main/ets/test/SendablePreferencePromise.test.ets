@@ -489,14 +489,14 @@ export default function sendablePreferencesPromiseTest() {
     it('testSendablePreferencesOn0100', 0, async (done: Function) => {
       await mPreferences.clear();
       let observer = (key: string) => {
-        console.info(TAG + 'testPreferencesRegisterObserver001 key' + key);
-        expect('abcd').assertEqual(key);
+        console.info(TAG + 'testPreferencesRegisterObserver001 keyValue' + mPreferences.getSync(KEY_STRING,"aaa"));
+        done();
+        expect('abcd').assertEqual(mPreferences.getSync(KEY_STRING,"aaa"));
+        mPreferences.off('change')
       };
       mPreferences.on('change', observer);
       mPreferences.putSync(KEY_STRING, 'abcd');
-      mPreferences.flush();
-      mPreferences.off('change', observer)
-      done();
+      await mPreferences.flush();
     })
 
     /**
@@ -509,14 +509,14 @@ export default function sendablePreferencesPromiseTest() {
      */
     it('testSendablePreferencesOn0200', 0, async (done: Function) => {
       let observer = (key: string) => {
-        console.info(TAG + 'testPreferencesRegisterObserver0200 key' + key);
-        expect('abc').assertEqual(key);
+        console.info(TAG + 'testPreferencesRegisterObserver0200 keyValue' + mPreferences.getSync(KEY_STRING,"aaa"));
+        done();
+        expect('abc').assertEqual(mPreferences.getSync(KEY_STRING,"aaa"));
+        mPreferences.off('multiProcessChange');
       }
       mPreferences.on('multiProcessChange', observer);
       mPreferences.putSync(KEY_STRING, 'abc');
       await mPreferences.flush();
-      mPreferences.off('multiProcessChange', observer)
-      done();
     })
 
     /**
@@ -530,20 +530,20 @@ export default function sendablePreferencesPromiseTest() {
     it('testSendablePreferencesOn0300', 0, async (done: Function) => {
       let observer = (data: lang.ISendable) => {
         console.info(TAG + `observer : ${data}`)
+        done();
         expect("name").assertEqual(keys[0])
+        mPreferences.off('dataChange', keys);
       }
       let keys = ['name', 'age'];
       mPreferences.on('dataChange', keys, observer);
       mPreferences.putSync('name', 'xiaohong');
       mPreferences.putSync('weight', 125);
-      mPreferences.flush().then(() => {
+      await mPreferences.flush().then(() => {
         console.info("Succeeded in flushing.");
-        mPreferences.off('dataChange', keys, observer);
       }).catch((err: BusinessError) => {
         console.error(`Failed to flush. code: ${err.code}, message: ${err.message}`);
         expect().assertFail();
       });
-      done()
     })
 
 
