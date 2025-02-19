@@ -249,26 +249,20 @@ export default function ActsOsAccountTest() {
         bundleName: "com.acts.osaccountassistappone",
         abilityName: "com.acts.osaccountassistappone.MainAbility"
       }
-      await globalThis.abilityContext.startAbility(wantInfo)
-      if (deviceType === 'phone') {
-        await driver.delayMs(500);
+      await globalThis.abilityContext.startAbility(wantInfo);
+      try {
+        console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 start findComponent");
         let allowed = await driver.findComponent(ON.text("允许"));
         let allowed1 = await driver.findComponent(ON.text("本次允许"));
         if (allowed != undefined && allowed != null) {
-          try {
-            await allowed.click();
-            console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 click allowed");
-          } catch (err) {
-            console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 click allowed err:" + JSON.stringify(err));
-          }
+          await allowed.click();
+          console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 click allowed");
         } else if (allowed1 != undefined && allowed1 != null) {
-          try {
-            await allowed1.click();
-            console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 click allowed1");
-          } catch (err) {
-            console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 click allowed1 err:" + JSON.stringify(err));
-          }
+          await allowed1.click();
+          console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 click allowed1");
         }
+      } catch (err) {
+        console.info("====>click button err:" + JSON.stringify(err));
       }
     });
 
@@ -309,26 +303,20 @@ export default function ActsOsAccountTest() {
         bundleName: "com.acts.osaccountassistapptwo",
         abilityName: "com.acts.osaccountassistapptwo.MainAbility"
       }
-      await globalThis.abilityContext.startAbility(wantInfo)
-      if (deviceType === 'phone') {
-        await driver.delayMs(500);
+      await globalThis.abilityContext.startAbility(wantInfo);
+      try {
+        console.info("====>ActsOsAccountGetOsAccountDomainInfo_0800 start findComponent");
         let allowed = await driver.findComponent(ON.text("允许"));
         let allowed1 = await driver.findComponent(ON.text("本次允许"));
         if (allowed != undefined && allowed != null) {
-          try {
-            await allowed.click();
-            console.info("====>ActsOsAccountGetOsAccountDomainInfo_0800 click allowed");
-          } catch (err) {
-            console.info("====>ActsOsAccountGetOsAccountDomainInfo_0800 click allowed err:" + JSON.stringify(err));
-          }
+          await allowed.click();
+          console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 click allowed");
         } else if (allowed1 != undefined && allowed1 != null) {
-          try {
-            await allowed1.click();
-            console.info("====>ActsOsAccountGetOsAccountDomainInfo_0800 click allowed1");
-          } catch (err) {
-            console.info("====>ActsOsAccountGetOsAccountDomainInfo_0800 click allowed1 err:" + JSON.stringify(err));
-          }
+          await allowed1.click();
+          console.info("====>ActsOsAccountGetOsAccountDomainInfo_0700 click allowed1");
         }
+      } catch (err) {
+        console.info("====>click button err:" + JSON.stringify(err));
       }
     });
   });

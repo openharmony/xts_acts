@@ -15,7 +15,6 @@
 
 #include "common/common.h"
 #include "manager/plugin_manager.h"
-#include "progress/progress_linear_style_test.h"
 #include "postFrame/post_frame_callback_test.h"
 #include "swiper/swiper_test.h"
 #include "list/list_test.h"
@@ -38,8 +37,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"swiperAutoPlayTest", nullptr, SwiperTest::swiperAutoPlayTest,
          nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testProgressLinearStyle", nullptr, ProgressLinearStyleTest::ProgressLinearStyleTest001,
-            nullptr, nullptr, nullptr, napi_default, nullptr},
         {"listTestCallback", nullptr, ListTest::ListCaseTest, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"listScrollToTestCallback", nullptr, ListScrollToTest::ListScrollToIndexTest, nullptr, nullptr,
          nullptr, napi_default, nullptr},
