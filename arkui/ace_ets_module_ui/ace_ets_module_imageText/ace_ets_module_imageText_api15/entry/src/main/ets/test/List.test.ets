@@ -24,6 +24,7 @@ import PixelMapColorFilterTest from './ImageAttachmentTest/PixelMapColorFilter.t
 import ResourceDefaultTest from './ImageAttachmentTest/ResourceDefault.test';
 import VerticalAlignTest from './ImageAttachmentTest/VerticalAlign.test';
 import ObjectFitTest from './ImageAttachmentTest/ObjectFit.test';
+import ImageSvgFillColorTest from './ImageSvgFillColorTest/ImageSvgFillColor.test';
 
 
 export default function testsuite() {
@@ -38,4 +39,5 @@ export default function testsuite() {
   ResourceDefaultTest();
   VerticalAlignTest();
   ObjectFitTest();
+  ImageSvgFillColorTest();
 }

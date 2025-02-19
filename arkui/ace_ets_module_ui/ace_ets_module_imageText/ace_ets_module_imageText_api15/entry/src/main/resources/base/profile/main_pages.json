@@ -11,6 +11,7 @@
     "MainAbility/pages/ImageAttachment/PixelMapColorFilter",
     "MainAbility/pages/ImageAttachment/ResourceDefault",
     "MainAbility/pages/ImageAttachment/VerticalAlign",
-    "MainAbility/pages/ImageAttachment/ObjectFit"
+    "MainAbility/pages/ImageAttachment/ObjectFit",
+    "MainAbility/pages/ImageSvgFillColor/ImageSvgFillColor"
   ]
 }
