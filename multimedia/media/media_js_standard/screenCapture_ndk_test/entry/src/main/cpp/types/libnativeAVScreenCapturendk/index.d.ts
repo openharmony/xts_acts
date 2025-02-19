@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 export const normalAVScreenCaptureTest: () => number;
 export const normalAVScreenCaptureTestStop: () => number;
 export const normalAVScreenRecordTest: () => number;
@@ -23,4 +22,5 @@ export const originAVScreenCaptureTest: () => number;
 export const normalAVScreenCaptureShowCursorTest: () => number;
 export const normalAVScreenCaptureShowCursorTestStop: () => number;
 export const normalAVScreenCaptureShowCursorBeforeTestStop: () => number;
-
+export const normalAVScreenCaptureShowCursorNullVlanTest: () => number;
+export const normalAVScreenCaptureShowCursorSecondNullVlanTest: () => number;
