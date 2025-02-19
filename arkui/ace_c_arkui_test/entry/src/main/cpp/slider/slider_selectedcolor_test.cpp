@@ -20,7 +20,7 @@ namespace ArkUICapiTest {
 static napi_value TestSliderSelectedColor001(napi_env env, napi_callback_info info)
 {
     NAPI_START(slider, ARKUI_NODE_SLIDER);
-    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_SELECTED_COLOR)->value[PARAM_0].u32, 0xFF007DFF);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_SELECTED_COLOR)->value[PARAM_0].u32, 0xFF0A59F7);
     NAPI_END;
 }
 
