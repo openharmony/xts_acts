@@ -22,7 +22,9 @@
     "srcEntry": "./ets/Application/AbilityStage.ts",
     "deviceTypes": [
       "default",
-      "tablet"
+      "tablet",
+      "2in1",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
