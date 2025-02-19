@@ -27,21 +27,32 @@ struct ListItemExample29 {
   @Builder
   itemEnd() {
     Row() {
-      Button("Delete").margin("4vp")
-      Button("Set").margin("4vp")
-    }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly).width(160)
+      Button("Delete").margin("4vp").fontSize(12).width('5%')
+      Button("Set").margin("4vp").fontSize(12).width('5%')
+    }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly)
   }
 
   @Builder
   itemStart() {
     Row() {
-      Button("Delete").margin("4vp")
-      Button("Set").margin("4vp")
-    }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly).key('lSwipe29Row').width(160)
+      Button("Delete").margin("4vp").fontSize(12).width('5%')
+      Button("Set").margin("4vp").fontSize(12).width('5%')
+    }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly).key('lSwipe29Row')
   }
 
   build() {
     Column() {
+      Text(this.enterEndDeleteAreaString).fontSize(14)
+      Text(this.exitEndDeleteAreaString).fontSize(14)
+      Text(this.swipeActionState).fontSize(14).key('swipe29State')
+      Text(this.swipeOffSet).fontSize(14).key('swipe29Offset')
+      Button("Delete").margin("4vp").key('btreset29')
+        .height('8%')
+        .onClick(() => {
+          this.swipeActionState = "-1";
+          this.swipeOffSet = "-1"
+          this.arr = [0, 1, 2, 3, 4];
+        })
       List({ space: 10 }) {
         ForEach(this.arr, (item: number) => {
           ListItem() {
@@ -113,17 +124,8 @@ struct ListItemExample29 {
           })
           .key('lSwipe29Action' + item)
         }, (item: string) => item)
-      }.height('60%')
-
-      Text(this.enterEndDeleteAreaString).fontSize(20)
-      Text(this.exitEndDeleteAreaString).fontSize(20)
-      Text(this.swipeActionState).fontSize(20).margin({ top: 20 }).key('swipe29State')
-      Text(this.swipeOffSet).fontSize(20).margin({ top: 20 }).key('swipe29Offset')
-      Button("Delete").margin("4vp").key('btreset29').onClick(() => {
-        this.swipeActionState = "-1";
-        this.swipeOffSet = "-1"
-        this.arr = [0, 1, 2, 3, 4];
-      })
+      }.height('90%')
+      .width('90%')
 
     }
     .padding(10)

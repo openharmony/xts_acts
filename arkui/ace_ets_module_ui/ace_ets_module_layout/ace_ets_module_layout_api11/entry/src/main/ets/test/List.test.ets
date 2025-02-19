@@ -398,6 +398,7 @@ import list_ListInitialIndex5Test from './ListTest/List_initialIndex/List_ListIn
 import list_ListInitialIndex6Test from './ListTest/List_initialIndex/List_ListInitialIndex6.test';
 import List_alignListItem from './ListTest/List_Space/ListChange/List_alignListItem.test';
 import List_divider from './ListTest/List_Space/ListChange/List_divider.test';
+import List_lanes_1 from './ListTest/List_Space/ListChange/List_lanes_1.test';
 import List_lanes from './ListTest/List_Space/ListChange/List_lanes.test';
 import List_ListDirection from './ListTest/List_Space/ListChange/List_ListDirection.test';
 import List_ListSize from './ListTest/List_Space/ListChange/List_ListSize.test';
@@ -940,6 +941,7 @@ export default function testsuite() {
   list_SpaceChangeTest();
   List_alignListItem();
   List_divider();
+  List_lanes_1();
   List_lanes();
   List_ListDirection();
   List_ListSize();

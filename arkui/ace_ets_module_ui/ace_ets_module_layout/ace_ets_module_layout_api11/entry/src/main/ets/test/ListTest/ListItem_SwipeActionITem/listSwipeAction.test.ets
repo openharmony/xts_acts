@@ -66,11 +66,19 @@ export default function listSwipeActionJsunit() {
       await CommonFunc.sleep(500);
       // get the rect of listItem
       let strJson = getInspectorByKey('lSwipeAction0');
-
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0010] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
+
+      let ListItem_00: RectValue = CommonFunc.getComponentRect('lSwipeAction0');
+      let right: number = ListItem_00.right;
+      let left: number = ListItem_00.left;
+      let top: number = ListItem_00.top;
+      let bottom: number = ListItem_00.bottom;
+      let width = right - left;
+      let height = bottom -top;
+      console.info("SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0010 value is" + left + " --" + right + "--" + top + "--" + bottom);
       // swipe the listItem
       await driver.swipe(
-        Math.round(vp2px(50)), Math.round(vp2px(108)), Math.round(vp2px(53)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + left + vp2px(50)), Math.round(globalThis.winTop + top + height/2), Math.round(globalThis.winLeft + left + vp2px(53)), Math.round(globalThis.winTop  + top + height/2)
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionState
@@ -94,11 +102,19 @@ export default function listSwipeActionJsunit() {
       await CommonFunc.sleep(500);
       // get the rect of listItem
       let strJson = getInspectorByKey('lSwipeAction0');
-
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0020] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
+
+      let ListItem_00: RectValue = CommonFunc.getComponentRect('lSwipeAction0');
+      let right: number = ListItem_00.right;
+      let left: number = ListItem_00.left;
+      let top: number = ListItem_00.top;
+      let bottom: number = ListItem_00.bottom;
+      let width = right - left;
+      let height = bottom -top;
+      console.info("SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0020 value is" + left + " --" + right + "--" + top + "--" + bottom);
       // swipe the listItem
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(50)), Math.round(vp2px(108) + globalThis.winTop), Math.round(globalThis.winLeft + vp2px(300)), Math.round(vp2px(108) + globalThis.winTop)
+        Math.round(globalThis.winLeft + left + vp2px(20)), Math.round(globalThis.winTop + top + height/2), Math.round(globalThis.winLeft + left + vp2px(120)), Math.round(globalThis.winTop  + top + height/2)
       );
       await CommonFunc.sleep(4000);
       // judge the swipeActionState
@@ -123,11 +139,19 @@ export default function listSwipeActionJsunit() {
       await CommonFunc.sleep(500);
       // get the rect of listItem
       let strJson = getInspectorByKey('lSwipeAction0');
-
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0030] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
+
+      let ListItem_00: RectValue = CommonFunc.getComponentRect('lSwipeAction0');
+      let right: number = ListItem_00.right;
+      let left: number = ListItem_00.left;
+      let top: number = ListItem_00.top;
+      let bottom: number = ListItem_00.bottom;
+      let width = right - left;
+      let height = bottom -top;
+      console.info("SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0030 value is" + left + " --" + right + "--" + top + "--" + bottom);
       // swipe the listItem
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(50)), Math.round(vp2px(108) + globalThis.winTop), Math.round(globalThis.winLeft + vp2px(500)), Math.round(vp2px(108) + globalThis.winTop)
+        Math.round(globalThis.winLeft + left + vp2px(10)), Math.round(globalThis.winTop + top + height/2), Math.round(globalThis.winLeft + left + vp2px(230)), Math.round(globalThis.winTop  + top + height/2)
       );
       await CommonFunc.sleep(4000);
       // judge the swipeActionState
