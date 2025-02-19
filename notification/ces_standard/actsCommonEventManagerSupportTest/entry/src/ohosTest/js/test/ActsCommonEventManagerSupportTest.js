@@ -480,6 +480,20 @@ export default function ActsCommonEventManagerSupportTest() {
       console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2600 END`)
     })
 
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2700
+     * @tc.name      : commonEventManager.Support
+     * @tc.desc      : managed browser policy changed common event
+     */
+    it('SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2700', 0, async  function () {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2700 START`)
+      expect(commonEventManager.Support.COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED)
+        .assertEqual('usual.event.MANAGED_BROWSER_POLICY_CHANGED')
+      expect(commonEventManager.Support.COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED)
+        .assertEqual('usual.event.MANAGED_BROWSER_POLICY_CHANGED')
+      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2700 END`)
+    })
+
     console.info(`${TAG} SUB_NOTIFICATION_CES_SUPPORT_ENUM_TEST END`)
   })
 
@@ -495,16 +509,14 @@ export default function ActsCommonEventManagerSupportTest() {
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2800
+     * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2700
      * @tc.name      : commonEventManager.Support
-     * @tc.desc      : managed browser policy changed common event
+     * @tc.desc      : enter/exit force sleep common event
      */
-    it('SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2800', 0, async  function () {
-      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2800 START`)
-      expect(commonEventManager.Support.COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED)
-        .assertEqual('usual.event.MANAGED_BROWSER_POLICY_CHANGED')
-      expect(commonEventManager.Support.COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED)
-        .assertEqual('usual.event.MANAGED_BROWSER_POLICY_CHANGED')
-      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2800 END`)
+    it('SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2700', 0, async  function () {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2700 START`)
+      expect(commonEventManager.Support.COMMON_EVENT_ENTER_HIBERNATE).assertEqual('usual.event.ENTER_HIBERNATE')
+      expect(commonEventManager.Support.COMMON_EVENT_EXIT_HIBERNATE).assertEqual('usual.event.EXIT_HIBERNATE')
+      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2700 END`)
     })
 }

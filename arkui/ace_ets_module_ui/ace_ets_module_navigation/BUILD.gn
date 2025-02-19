@@ -18,5 +18,6 @@ group("ActsAceEtsModuleNavigationTest") {
     "ace_ets_module_navigation_api12:ActsAceEtsModuleNavigationApi12Test",
     "ace_ets_module_navigation_api13:ActsAceEtsModuleNavigationApi13Test",
     "ace_ets_module_navigation_api14:ActsAceEtsModuleNavigationApi14Test",
+    "ace_ets_module_navigation_api15:ActsAceEtsModuleNavigationApi15Test",
   ]
 }
