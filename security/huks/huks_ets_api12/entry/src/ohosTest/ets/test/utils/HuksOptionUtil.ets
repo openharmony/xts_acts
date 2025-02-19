@@ -48,6 +48,15 @@ export function GetDataBySize(size: number): string {
   return strArr.join("");
 }
 
+export function MergeOption(huksOption: huks.HuksOptions, huksOptionAdd: huks.HuksOptions): huks.HuksOptions {
+  let properties: Array<huks.HuksParam> = huksOptionAdd.properties as Array<huks.HuksParam>;
+  for (let i = 0; i < properties.length; i++) {
+    SetParam(huksOption, properties[i].tag, properties[i].value);
+  }
+  huksOption.inData = huksOptionAdd.inData;
+  return huksOption;
+}
+
 export async function CheckSoftware() {
   let dsaAlias = "useDsaToCheckSoftware";
   let dsaOptions: huks.HuksOptions = {
