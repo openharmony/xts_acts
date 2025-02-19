@@ -5,6 +5,8 @@
     "MainAbility/pages/node/TestNodeHandleById",
     "MainAbility/pages/window/TestGetWindowInfo",
     "MainAbility/pages/window/TestHostWindowInfoGetName",
-    "MainAbility/pages/window/TestHostWindowInfoDestroy"
+    "MainAbility/pages/window/TestHostWindowInfoDestroy",
+    "MainAbility/pages/progress/TestProgressLinearStyle"
+
   ]
 }

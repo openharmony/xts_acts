@@ -1978,10 +1978,10 @@ export default function UiTest() {
             // clear and paste
             let text2 = await driver.findComponent(ON.type('TextInput'))
             await text2.clearText()
-            await driver.delayMs(2000)
-            await exitInputMethod()
             await driver.delayMs(waitUiReadyMs)
             await driver.triggerCombineKeys(2072, 2038)
+            await driver.delayMs(2000)
+            await exitInputMethod()
             await driver.delayMs(4000)
             let text3 = await driver.findComponent(ON.type('TextInput'))
             expect(await text3.getText() == '123').assertTrue()
