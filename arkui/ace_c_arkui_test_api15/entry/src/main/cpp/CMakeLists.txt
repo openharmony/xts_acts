@@ -14,6 +14,8 @@ add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
     keyDisPatchTest/keyEventDispatch_test.cpp
+    node/node_handle_by_id_test.cpp
+    window/get_window_info_test.cpp
     progress/progress_linear_style_test.cpp
 )
 

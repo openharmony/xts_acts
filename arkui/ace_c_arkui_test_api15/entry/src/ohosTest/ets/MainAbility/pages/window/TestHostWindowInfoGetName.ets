@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,17 +13,21 @@
  * limitations under the License.
  */
 
-export const KeyEventPatchTest: (a: string) => void;
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
-export const GetKeyEventData: () => object;
+@Entry
+@Component
+struct TestHostWindowInfoGetName {
+  PAGE_TAG: string = 'TestHostWindowInfoGetName';
 
-export const testNodeHandleById: (a: string) => void;
-
-export const testGetWindowInfo: (a: string) => void;
-
-export const testHostWindowInfoGetName: (a: string) => void;
-
-export const testHostWindowInfoDestroy: (a: string) => void;
-export const ProgressLinearStyleTest: (a: string) => void;
-
-export const testProgressLinearStyle: (a: string) => void;
+  build(){
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.testHostWindowInfoGetName(this.PAGE_TAG);
+      })
+    }
+  }
+}

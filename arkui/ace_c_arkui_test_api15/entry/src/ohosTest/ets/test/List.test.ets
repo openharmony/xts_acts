@@ -14,6 +14,8 @@
  */
 
 import keyDispatchTest from "./keydispatchTest/KeyDispatchTest.test"
+import nodeHandleByIdTest from "./node/NodeHandleByIdTest.test"
+import getWindowInfoTest from "./window/GetWindowInfoTest.test"
 import columnBackDropBlurTest from "./visual/columnBackDropBlurTest.test"
 import ProgressLinearStyleTest from "./progress/progressLinearStyleTest.test"
 
@@ -21,6 +23,8 @@ import ProgressLinearStyleTest from "./progress/progressLinearStyleTest.test"
 export default function testsuite() {
 
    keyDispatchTest();
+   nodeHandleByIdTest();
+   getWindowInfoTest();
    columnBackDropBlurTest();
    ProgressLinearStyleTest();
 }
