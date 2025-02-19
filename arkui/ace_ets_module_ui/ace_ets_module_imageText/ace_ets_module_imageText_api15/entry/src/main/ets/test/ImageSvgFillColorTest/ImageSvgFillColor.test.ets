@@ -23,7 +23,7 @@ export default function ImageSvgFillColorTest() {
     beforeEach(async (done: Function) => {
       console.info("ImageSvgFillColorTest beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Image/ImageSvgFillColor',
+        url: 'MainAbility/pages/ImageSvgFillColor/ImageSvgFillColor',
       }
       try {
         router.clear();
