@@ -25,7 +25,7 @@ export default function listSwipeActionEndJsunit() {
     beforeAll(async (done:Function)=> {
       console.info("listSwipeActionEndTest beforeEach start");
       let options : router.RouterOptions = {
-          url : "MainAbility/pages/List/ListItem_SwipeActionItem/listEndTest"
+        url : "MainAbility/pages/List/ListItem_SwipeActionItem/listEndTest"
       }
       try {
         router.clear();
@@ -50,7 +50,7 @@ export default function listSwipeActionEndJsunit() {
       buttonReset.click();
       await CommonFunc.sleep(2000);
       done();
-     
+
     });
 
     /*
@@ -66,12 +66,19 @@ export default function listSwipeActionEndJsunit() {
       await CommonFunc.sleep(500);
       // get the rect of listItem
       let strJson = getInspectorByKey('lSwipeActionEnd0');
-
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0080] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      let ListItem_00: RectValue = CommonFunc.getComponentRect('lSwipeActionEnd0');
+      let right: number = ListItem_00.right;
+      let left: number = ListItem_00.left;
+      let top: number = ListItem_00.top;
+      let bottom: number = ListItem_00.bottom;
+      let width = right - left;
+      let height = bottom -top;
+      console.info("SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0080 value is" + left + " --" + right + "--" + top + "--" + bottom);
       // swipe the listItem
       //[15.00, 87.00][705.00,237.00]
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(240)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(230)), Math.round(vp2px(108) + globalThis.winTop)
+        Math.round(globalThis.winLeft + left + vp2px(100)), Math.round(globalThis.winTop + top + height/2), Math.round(globalThis.winLeft + left + vp2px(90)), Math.round(globalThis.winTop  + top + height/2)
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionState
@@ -98,9 +105,16 @@ export default function listSwipeActionEndJsunit() {
 
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0090] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
       // swipe the listItem
-
+      let ListItem_00: RectValue = CommonFunc.getComponentRect('lSwipeActionEnd0');
+      let right: number = ListItem_00.right;
+      let left: number = ListItem_00.left;
+      let top: number = ListItem_00.top;
+      let bottom: number = ListItem_00.bottom;
+      let width = right - left;
+      let height = bottom -top;
+      console.info("SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0090 value is" + left + " --" + right + "--" + top + "--" + bottom);
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(240)), Math.round(globalThis.winTop + vp2px(108)), Math.round( globalThis.winLeft + vp2px(100)), Math.round(globalThis.winTop + vp2px(108))
+        Math.round(globalThis.winLeft + left + vp2px(150)), Math.round(globalThis.winTop + top + height/2), Math.round(globalThis.winLeft + left + vp2px(50)), Math.round(globalThis.winTop  + top + height/2)
       );
       await CommonFunc.sleep(4000);
       // judge the swipeActionState
@@ -127,8 +141,16 @@ export default function listSwipeActionEndJsunit() {
 
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0100] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
       // swipe the listItem
+      let ListItem_00: RectValue = CommonFunc.getComponentRect('lSwipeActionEnd0');
+      let right: number = ListItem_00.right;
+      let left: number = ListItem_00.left;
+      let top: number = ListItem_00.top;
+      let bottom: number = ListItem_00.bottom;
+      let width = right - left;
+      let height = bottom -top;
+      console.info("SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0100 value is" + left + " --" + right + "--" + top + "--" + bottom);
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(10)), Math.round(globalThis.winTop + vp2px(108))
+        Math.round(globalThis.winLeft + right - vp2px(20)), Math.round(globalThis.winTop + top + height/2), Math.round(globalThis.winLeft + left + vp2px(2)), Math.round(globalThis.winTop  + top + height/2)
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionState

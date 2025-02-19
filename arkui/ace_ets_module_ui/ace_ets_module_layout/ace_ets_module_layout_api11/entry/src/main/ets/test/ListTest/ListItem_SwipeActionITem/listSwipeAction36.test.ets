@@ -66,9 +66,17 @@ export default function listSwipeAction36Jsunit() {
 
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0360] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
 
+      let ListItem_00: RectValue = CommonFunc.getComponentRect('lSwipe36Action0');
+      let right: number = ListItem_00.right;
+      let left: number = ListItem_00.left;
+      let top: number = ListItem_00.top;
+      let bottom: number = ListItem_00.bottom;
+      let width = right - left;
+      let height = bottom -top;
+      console.info("SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0360 value is" + left + " --" + right + "--" + top + "--" + bottom);
       // swipe the listItem to bottom
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(112))
+        Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop + top + vp2px(10)), Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop  + top + vp2px(20))
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionOffset
@@ -84,7 +92,7 @@ export default function listSwipeAction36Jsunit() {
 
       // swipe to up
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(188))
+        Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop + top + vp2px(100)), Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop  + top + vp2px(90))
       );
       await CommonFunc.sleep(5000);
       let textSwipeOffset2 = getInspectorByKey('swipe36Offset');
@@ -108,21 +116,32 @@ export default function listSwipeAction36Jsunit() {
 
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0380] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
 
+      let ListItem_00: RectValue = CommonFunc.getComponentRect('lSwipe36Action0');
+      let right: number = ListItem_00.right;
+      let left: number = ListItem_00.left;
+      let top: number = ListItem_00.top;
+      let bottom: number = ListItem_00.bottom;
+      let width = right - left;
+      let height = bottom - top;
+      console.info("SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0380 value is" + left + " --" + right + "--" + top + "--" + bottom);
       // swipe the listItem to bottom
 
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200))
+        Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop + top + vp2px(10)), Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop  + top + vp2px(100))
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionOffset
       let textSwipeOffset = getInspectorByKey('swipe36Offset');
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0380 json is ' + JSON.stringify(JSON.parse(textSwipeOffset)
-        .$attrs));
+        .$attrs.content));
+      let Swipe36Action_swipe: RectValue = CommonFunc.getComponentRect('lSwipe36Row');
+      let swipe_height = Swipe36Action_swipe.bottom - Swipe36Action_swipe.top;
+      console.info('36 0380 json' + Math.round(px2vp(swipe_height)));
       // [15.00, 87.00][360.00,387.00]
-      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset).$attrs.content))-50)<=1).assertTrue();
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset).$attrs.content))-Math.round(px2vp(swipe_height)))<=1).assertTrue();
       // reset
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(0))
+        Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop + top + vp2px(50)), Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop  + top + vp2px(10))
       );
       await CommonFunc.sleep(5000);
       let buttonReset2 = await driver.findComponent(ON.id('btreset36'));
@@ -131,13 +150,16 @@ export default function listSwipeAction36Jsunit() {
       await CommonFunc.sleep(3000);
       // swipe to up
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100))
+        Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop + top + vp2px(100)), Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop  + top + vp2px(10))
       );
       await CommonFunc.sleep(4000);
       let textSwipeOffset2 = getInspectorByKey('swipe36Offset');
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0380 json is ' + JSON.stringify(JSON.parse(textSwipeOffset2)
-        .$attrs));
-      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset2).$attrs.content))-(-50))<=1).assertTrue();
+        .$attrs.content));
+      let Swipe36Action_swipe2: RectValue = CommonFunc.getComponentRect('lSwipe36Row2');
+      let swipe_height2 = Swipe36Action_swipe2.bottom - Swipe36Action_swipe2.top;
+      console.info('36 0380 json' + Math.round(px2vp(swipe_height2)));
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset2).$attrs.content))-(-Math.round(px2vp(swipe_height2))))<=1).assertTrue();
       done();
 
     });
@@ -156,9 +178,17 @@ export default function listSwipeAction36Jsunit() {
 
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0390] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
 
+      let ListItem_00: RectValue = CommonFunc.getComponentRect('lSwipe36Action0');
+      let right: number = ListItem_00.right;
+      let left: number = ListItem_00.left;
+      let top: number = ListItem_00.top;
+      let bottom: number = ListItem_00.bottom;
+      let width = right - left;
+      let height = bottom - top;
+      console.info("SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0390 value is" + left + " --" + right + "--" + top + "--" + bottom);
       // swipe to collapse state
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(150))
+        Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop + top + vp2px(10)), Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop  + top + vp2px(50))
       );
       await CommonFunc.sleep(4000);
       // judge the swipeActionOffset
@@ -169,16 +199,17 @@ export default function listSwipeAction36Jsunit() {
 
       // swipe the listItem to bottom
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(450))
+        Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop + top + vp2px(2)), Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop  + bottom - vp2px(2))
       );
       await CommonFunc.sleep(6000);
 
       // judge the swipeActionOffset
       let textSwipeOffset1 = getInspectorByKey('swipe36Offset');
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0390 json is ' + JSON.stringify(JSON.parse(textSwipeOffset1)
-        .$attrs));
+        .$attrs.content));
+      console.info('36 0380 json' + Math.round(px2vp(height)));
       // [15.00, 87.00][360.00,387.00]
-      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset1).$attrs.content))-200)<=1).assertTrue();
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset1).$attrs.content))-Math.round(px2vp(height)))<=1).assertTrue();
       // reset
       let buttonReset2 = await driver.findComponent(ON.id('btreset36'));
       await driver.delayMs(300);
@@ -186,13 +217,14 @@ export default function listSwipeAction36Jsunit() {
       await CommonFunc.sleep(3000);
       // swipe to up
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(220)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(0))
+        Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop + bottom - vp2px(2)), Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop  + top + vp2px(2))
       );
       await CommonFunc.sleep(5000);
       let textSwipeOffset2 = getInspectorByKey('swipe36Offset');
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0390 json is ' + JSON.stringify(JSON.parse(textSwipeOffset2)
-        .$attrs));
-      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset2).$attrs.content))-(-200))<=1).assertTrue();
+        .$attrs.content));
+      console.info('36 0380 json' + Math.round(px2vp(height)));
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset2).$attrs.content))-(-Math.round(px2vp(height))))<=1).assertTrue();
       done();
 
     });

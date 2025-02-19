@@ -244,7 +244,7 @@ struct GridPage {
       })
       .width('90%')
       .backgroundColor(0xFAEEE0)
-      .height('50%')
+      .height('30%')
       .onScroll((scrollOffset: number, scrollState: ScrollState) => {
         this.onScrollText = 'onScroll:succ'
         console.info('onScroll scrollOffset:' + scrollOffset.toString() + ' ScrollState:' + ScrollState.toString())

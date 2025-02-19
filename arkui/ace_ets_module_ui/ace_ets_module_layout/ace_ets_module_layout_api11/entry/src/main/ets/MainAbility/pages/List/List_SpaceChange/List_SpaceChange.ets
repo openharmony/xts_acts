@@ -42,28 +42,28 @@ struct List_SpaceChange {
           Text('1').width('100%').height('100%').backgroundColor(0xF5DEB3);
         }
         .width('40%')
-        .height('15%')
+        .height('18%')
         .key('List_SpaceChange01')
 
         ListItem() {
           Text('2').width('100%').height('100%').backgroundColor(0xD2B48C);
         }
         .width('40%')
-        .height('15%')
+        .height('18%')
         .key('List_SpaceChange02')
 
         ListItem() {
           Text('3').width('100%').height('100%').backgroundColor(0xF5DEB3);
         }
         .width('40%')
-        .height('15%')
+        .height('18%')
         .key('List_SpaceChange03')
 
         ListItem() {
           Text('4').width('100%').height('100%').backgroundColor(0xD2B48C);
         }
         .width('40%')
-        .height('15%')
+        .height('18%')
         .key('List_SpaceChange04')
       }
       .width('40%')
