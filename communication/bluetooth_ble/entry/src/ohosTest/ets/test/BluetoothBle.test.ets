@@ -20,6 +20,7 @@ import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPatter
 
 let PERMISSION_TEXT:string = "允许";
 let OPEN_BT_TEXT:string = "开启";
+let BleScanner:bluetooth.BleScanner;
 
 function sleep(delay : number) : Promise<void> {
     return new Promise(resolve => setTimeout(resolve, delay))
@@ -137,6 +138,17 @@ function sleep(delay : number) : Promise<void> {
         {
             console.info('[bluetooth_js] BLEscan device result12'+JSON.stringify(data));
         }
+    function onReceiveEvents(data : bluetooth.ScanReport)
+        {
+            console.info('[bluetooth_js] bleScanner startScan device result: ' + JSON.stringify(data));
+            console.info('[bluetooth_js] reportType result: ' + JSON.stringify(data[0].reportType));
+            console.info('[bluetooth_js] scanResult result: ' + JSON.stringify(data[0].scanResult));
+            console.info('[bluetooth_js] deviceId result: ' + JSON.stringify(data[0].scanResult[0].deviceId));
+            console.info('[bluetooth_js] rssi result: ' + JSON.stringify(data[0].scanResult[0].rssi));
+            console.info('[bluetooth_js] data result: ' + JSON.stringify(data[0].scanResult[0].data));
+            console.info('[bluetooth_js] deviceName result: ' + JSON.stringify(data[0].scanResult[0].deviceName));
+            console.info('[bluetooth_js] connectable result: ' + JSON.stringify(data[0].scanResult[0].connectable));
+        }
     
 
 export default function bluetoothBleTest() {
@@ -146,6 +158,9 @@ describe('bluetoothBleTest', () => {
         await clickRequestPermission(PERMISSION_TEXT);
         await openPhone();
         console.info('beforeAll called')
+        BleScanner = bluetooth.createBleScanner();
+        console.info('createBleScanner result:' + JSON.stringify(BleScanner));
+        expect(true).assertEqual(BleScanner != null);
         done();
     })
     beforeEach(async (done : Function) =>{
@@ -518,6 +533,155 @@ describe('bluetoothBleTest', () => {
         let PHY_LE_ALL_SUPPORTED = bluetooth.PhyType.PHY_LE_ALL_SUPPORTED;
         console.info("[bluetooth_js]PHY_LE_ALL_SUPPORTED : " + JSON.stringify(PHY_LE_ALL_SUPPORTED));
         expect(true).assertEqual(PHY_LE_ALL_SUPPORTED == 255);
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_1500
+     * @tc.name test constant PhyType
+     * @tc.desc Test constant PhyType api12
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_BLESCAN_1500', 0, async (done : Function) => {
+        let PHY_LE_1M = bluetooth.PhyType.PHY_LE_1M;
+        console.info("[bluetooth_js]PHY_LE_1M : " + JSON.stringify(PHY_LE_1M));
+        expect(true).assertEqual(PHY_LE_1M == 1);
+
+        let PHY_LE_ALL_SUPPORTED = bluetooth.PhyType.PHY_LE_ALL_SUPPORTED;
+        console.info("[bluetooth_js]PHY_LE_ALL_SUPPORTED : " + JSON.stringify(PHY_LE_ALL_SUPPORTED));
+        expect(true).assertEqual(PHY_LE_ALL_SUPPORTED == 255);
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLESCANNER_0100
+     * @tc.name testCreateBleScanner
+     * @tc.desc Test createBleScanner
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BLESCANNER_0100', 0, async (done : Function) => {
+        try {
+            let testBleScanner:bluetooth.BleScanner = bluetooth.createBleScanner();
+            console.info("[bluetooth_js]createBleScanner result: " + JSON.stringify(testBleScanner));
+            expect(true).assertEqual(testBleScanner != null);
+        } catch (err) {
+            console.error("errCode:" + err.code + ",errMessage:" + err.message);
+            expect().assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLESCANNER_0200
+     * @tc.name testStartScan
+     * @tc.desc Test startScan
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BLESCANNER_0200', 0, async (done : Function) => {
+        let arrayBuffer = new ArrayBuffer(8);
+        let scanFilter: bluetooth.ScanFilter = {
+            deviceId: "00:11:22:33:44:55",
+            name: "testStartScan",
+            serviceUuid: "00001888-0000-1000-8000-00805f9b34fb",
+            serviceUuidMask: "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF",
+            serviceSolicitationUuid: "00001888-0000-1000-8000-00805F9B34FB",
+            serviceSolicitationUuidMask: "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF",
+            serviceData: arrayBuffer,
+            serviceDataMask: arrayBuffer,
+            manufactureId: 4567,
+            manufactureData: arrayBuffer,
+            manufactureDataMask: arrayBuffer
+        };
+
+        try {
+            BleScanner.on("BLEDeviceFind", onReceiveEvents);
+            await BleScanner.startScan([scanFilter]).then(() => {
+                console.info('[bluetooth_js] bleScanner startScan success');
+            });
+            await sleep(500);
+            await BleScanner.stopScan().then(() => {
+                console.info('[bluetooth_js] bleScanner stopScan success');
+            });
+        } catch (err) {
+            console.error("errCode:" + err.code + ",errMessage:" + err.message);
+            BleScanner.off("BLEDeviceFind", onReceiveEvents);
+            expect().assertFail();
+        }
+        BleScanner.off("BLEDeviceFind", onReceiveEvents);
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLESCANNER_0300
+     * @tc.name testStopScan
+     * @tc.desc Test stopScan
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BLESCANNER_0300', 0, async (done : Function) => {
+        let scanOptions: bluetooth.ScanOptions = {
+            interval: 500,
+            dutyMode: bluetooth.ScanDuty.SCAN_MODE_LOW_POWER,
+            matchMode: bluetooth.MatchMode.MATCH_MODE_AGGRESSIVE,
+            phyType: bluetooth.PhyType.PHY_LE_ALL_SUPPORTED,
+            reportMode: bluetooth.ScanReportMode.NORMAL
+        };
+
+        try {
+            await BleScanner.startScan([{}], scanOptions).then(() => {
+                console.info('[bluetooth_js] bleScanner startScan success');
+            });
+            await sleep(500);
+            await BleScanner.stopScan().then(() => {
+                console.info('[bluetooth_js] bleScanner stopScan success');
+            });
+        } catch (err) {
+            console.error("errCode:" + err.code + ",errMessage:" + err.message);
+            expect().assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLESCANNER_0400
+     * @tc.name testScanReportType
+     * @tc.desc Test ScanReportType
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BLESCANNER_0400', 0, async (done : Function) => {
+        let ON_FOUND = bluetooth.ScanReportType.ON_FOUND;
+        console.info("[bluetooth_js]ScanReportType ON_FOUND: " + JSON.stringify(ON_FOUND));
+        expect(ON_FOUND).assertEqual(1);
+
+        let ON_LOST = bluetooth.ScanReportType.ON_LOST;
+        console.info("[bluetooth_js]ScanReportType ON_LOST: " + JSON.stringify(ON_LOST));
+        expect(ON_LOST).assertEqual(2);
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLESCANNER_0500
+     * @tc.name testScanReportMode
+     * @tc.desc Test ScanReportMode
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BLESCANNER_0500', 0, async (done : Function) => {
+        let NORMAL = bluetooth.ScanReportMode.NORMAL;
+        console.info("[bluetooth_js]ScanReportMode NORMAL: " + JSON.stringify(NORMAL));
+        expect(NORMAL).assertEqual(1);
+
+        let FENCE_SENSITIVITY_LOW = bluetooth.ScanReportMode.FENCE_SENSITIVITY_LOW;
+        console.info("[bluetooth_js]ScanReportMode FENCE_SENSITIVITY_LOW: " + JSON.stringify(FENCE_SENSITIVITY_LOW));
+        expect(FENCE_SENSITIVITY_LOW).assertEqual(10);
+
+        let FENCE_SENSITIVITY_HIGH = bluetooth.ScanReportMode.FENCE_SENSITIVITY_HIGH;
+        console.info("[bluetooth_js]ScanReportMode FENCE_SENSITIVITY_HIGH: " + JSON.stringify(FENCE_SENSITIVITY_HIGH));
+        expect(FENCE_SENSITIVITY_HIGH).assertEqual(11);
         done();
     })
 })
