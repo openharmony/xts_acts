@@ -437,7 +437,7 @@ export default function ConnectionTest() {
       const caseName: string = 'testConnectiongetPacUrl0100';
       console.info(`${caseName}---Start`);
       try{
-        let pacUrl =  connection.getPacUrl();
+        let pacUrl : string =  connection.getPacUrl();
         console.log(`${caseName} pacUrl is `,pacUrl);
         ExpectTrue(true);
         done();
