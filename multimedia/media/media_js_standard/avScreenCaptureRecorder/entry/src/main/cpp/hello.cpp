@@ -59,7 +59,7 @@ static napi_value OHAvCapabilityByCategoryH265(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value OHAVMuxerByCategoryH265(napi_env env, napi_callback_info info)
+static napi_value OHAVMuxerByAddTrackH265(napi_env env, napi_callback_info info)
 {
     int returnValue = SUCCESS;
     int videoTrackId = -1;
@@ -90,7 +90,7 @@ static napi_value Init(napi_env env, napi_value exports)
     napi_property_descriptor desc[] = {
         { "OHAvCapabilityByCategoryH265", nullptr, OHAvCapabilityByCategoryH265, nullptr, nullptr, nullptr,
             napi_default, nullptr },
-        { "OHAVMuxerByCategoryH265", nullptr, OHAVMuxerByCategoryH265, nullptr, nullptr, nullptr,
+        { "OHAVMuxerByAddTrackH265", nullptr, OHAVMuxerByAddTrackH265, nullptr, nullptr, nullptr,
             napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

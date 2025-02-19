@@ -118,7 +118,7 @@ export default function AVScreenCaptureRecorderMicro() {
     */
     it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1200', 0, async (done: Function) => {
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1200 start')
-      let result: number = myScreenCaptureNdk.OHAVMuxerByCategoryH265();
+      let result: number = myScreenCaptureNdk.OHAVMuxerByAddTrackH265();
       if (result != 0) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();

@@ -161,7 +161,7 @@ export default function AVScreenCaptureRecorderTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200', 0, async (done: Function) => {
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200 start')
-      let result: number = myScreenCaptureNdk.OHAVMuxerByCategoryH265();
+      let result: number = myScreenCaptureNdk.OHAVMuxerByAddTrackH265();
       if (result != 0) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
@@ -209,7 +209,7 @@ export default function AVScreenCaptureRecorderTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0201', 0, async (done: Function) => {
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0201 start')
-      let result: number = myScreenCaptureNdk.OHAVMuxerByCategoryH265();
+      let result: number = myScreenCaptureNdk.OHAVMuxerByAddTrackH265();
       if (result != 0) {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
@@ -266,7 +266,7 @@ export default function AVScreenCaptureRecorderTest() {
         await media.reportAVScreenCaptureUserChoice(-1, "-1")
       } catch (error) {
         console.error(`reportAVScreenCaptureUserChoice error, error message: ${error.message}`);
-        expect().assertFail()
+        expect(true).assertFail();
       }
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200 end')
       done();

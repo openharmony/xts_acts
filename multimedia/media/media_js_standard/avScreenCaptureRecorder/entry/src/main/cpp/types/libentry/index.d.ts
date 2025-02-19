@@ -13,4 +13,4 @@
  * limitations under the License.
  */
 export const OHAvCapabilityByCategoryH265: () => number;
-export const OHAVMuxerByCategoryH265: () => number;
+export const OHAVMuxerByAddTrackH265: () => number;
