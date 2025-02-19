@@ -16,8 +16,16 @@
 export const oHDrawingMatchFontDescriptors001: () => number;
 export const oHDrawingMatchFontDescriptors002: () => number;
 export const oHDrawingMatchFontDescriptors003: () => number;
+export const oHDrawingMatchFontDescriptors004: () => Array<number>;
+export const oHDrawingMatchFontDescriptors005: () => number;
 export const oHDrawingGetFontDescriptorByFullName001: () => number;
+export const oHDrawingGetFontDescriptorByFullName002: () => number;
+export const oHDrawingGetFontDescriptorByFullName003: () => Array<number>;
+export const oHDrawingGetFontDescriptorByFullName004: () => Array<number>;
 export const oHDrawingGetSystemFontFullNamesByType001: () => number;
+export const oHDrawingGetSystemFontFullNamesByType002: () => Array<number>;
+export const oHDrawingGetSystemFontFullNamesByType003: () => Array<number>;
+export const oHDrawingGetSystemFontFullNamesByType004: () => number
 export const oHDrawingGetSystemFontFullNameByIndex001: () => number;
 export const oHDrawingCreateLineTypography001: () => number;
 export const oHDrawingCreateLineTypography002: () => number;

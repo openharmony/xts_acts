@@ -241,5 +241,77 @@ export default function nativeEffectTest() {
       expect(result).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_XTS_OH_PixelmapNative_CreateScaledPixelMap001
+     * @tc.name       : testOHPixelmapNativeCreateScaledPixelMap001
+     * @tc.desc       : test OH_PixelmapNative_CreateScaledPixelMap001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHPixelmapNativeCreateScaledPixelMap001', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHPixelmapNativeCreateScaledPixelMap001();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_XTS_OH_PixelmapNative_CreateScaledPixelMapWithAntiAliasing001
+     * @tc.name       : testOHPixelmapNativeCreateScaledPixelMapWithAntiAliasing001
+     * @tc.desc       : test OH_PixelmapNative_CreateScaledPixelMapWithAntiAliasing001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHPixelmapNativeCreateScaledPixelMapWithAntiAliasing001', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHPixelmapNativeCreateScaledPixelMapWithAntiAliasing001();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_XTS_OH_PixelmapNative_GetByteCount001
+     * @tc.name       : testOHPixelmapNativeGetByteCount001
+     * @tc.desc       : test OH_PixelmapNative_GetByteCount001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHPixelmapNativeGetByteCount001', 0, async (done: Function) => {
+      let result: Array<number> = nativeEffectNdk.oHPixelmapNativeGetByteCount001();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_XTS_OH_PixelmapNative_AccessPixels001
+     * @tc.name       : testOHPixelmapNativeAccessPixels001
+     * @tc.desc       : test OH_PixelmapNative_AccessPixels001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHPixelmapNativeAccessPixels001', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHPixelmapNativeAccessPixels001();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_XTS_OH_PixelmapNative_UnaccessPixels001
+     * @tc.name       : testOHPixelmapNativeUnaccessPixels001
+     * @tc.desc       : test OH_PixelmapNative_UnaccessPixels001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHPixelmapNativeUnaccessPixels001', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHPixelmapNativeUnaccessPixels001();
+      expect(result).assertEqual(0);
+      done();
+    });
   })
 }

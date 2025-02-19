@@ -7,6 +7,10 @@
     "MainAbility/pages/Search/SearchKeyboardAppearance",
     "MainAbility/pages/RichEditor/RichEditorKeyboardAppearance",
     "MainAbility/pages/RichEditor/RichEditorStopBackPress",
-	"MainAbility/pages/RichEditor/SelectionMenuOptions"
+    "MainAbility/pages/RichEditor/SelectionMenuOptions",
+    "MainAbility/pages/ImageAttachment/PixelMapColorFilter",
+    "MainAbility/pages/ImageAttachment/ResourceDefault",
+    "MainAbility/pages/ImageAttachment/VerticalAlign",
+    "MainAbility/pages/ImageAttachment/ObjectFit"
   ]
 }

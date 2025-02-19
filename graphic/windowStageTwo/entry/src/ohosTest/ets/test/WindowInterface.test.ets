@@ -1439,7 +1439,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
         let title = await driver.findComponent(ON.id('ContainerModalTitleRow'))
         await sleep(1000)
         let titlePoint = await title.getBounds()
-        await driver.drag(titlePoint.left + 100, titlePoint.top + 10, 0, titlePoint.top + 200, 5000)
+        await driver.drag(titlePoint.left + 100, titlePoint.top + 10, 0, titlePoint.top + 200, 200)
         await sleep(1000)
         // 获取窗口状态 - 分屏
         windowStatus = windowClass.getWindowStatus()

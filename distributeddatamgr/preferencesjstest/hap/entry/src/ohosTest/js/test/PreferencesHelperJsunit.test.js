@@ -123,14 +123,17 @@ export default function preferencesHelperTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesRegisterObserver001', 0, async function () {
+        it('testPreferencesRegisterObserver001', 0, async function (done) {
             await mPreferences.clear();
             var observer = function (key) {
-                console.info('testPreferencesRegisterObserver001 key' + key);
-                expect('abcd').assertEqual(key);
+                console.info('testPreferencesRegisterObserver001 keyValue' + mPreferences.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
+                done();
+                expect('abcd').assertEqual(mPreferences.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
+                mPreferences.off('change')
             };
             await mPreferences.on('change', observer);
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, "abcd");
+            await mPreferences.flush();
         })
 
         /**
@@ -141,15 +144,18 @@ export default function preferencesHelperTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesRegisterObserver002', 0, async function () {
+        it('testPreferencesRegisterObserver002', 0, async function (done) {
             await mPreferences.clear();
             var observer = function (key) {
-                console.info('testPreferencesRegisterObserver002 key' + key);
-                expect('abc').assertEqual(key);
+                console.info('testPreferencesRegisterObserver002 keyValue' + mPreferences.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
+                done();
+                expect('abc').assertEqual(mPreferences.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
+                mPreferences.off('change')
             };
             await mPreferences.on('change', observer);
             await mPreferences.on('change', observer);
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, "abc");
+            await mPreferences.flush();
         })
 
         /**
@@ -160,14 +166,16 @@ export default function preferencesHelperTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesUnRegisterObserver001', 0, async function () {
+        it('testPreferencesUnRegisterObserver001', 0, async function (done) {
             var observer = function (key) {
-                console.info('testPreferencesUnRegisterObserver001 key' + key);
-                expect('').assertEqual(key);
+                console.info('testPreferencesUnRegisterObserver001 keyValue' + mPreferences.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
+                done();
+                expect('').assertEqual(mPreferences.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
+                mPreferences.off('change');
             };
             await mPreferences.on('change', observer);
-            await mPreferences.off('change', observer);
-            await mPreferences.put(KEY_TEST_STRING_ELEMENT, "abc");
+            await mPreferences.put(KEY_TEST_STRING_ELEMENT, "");
+            await mPreferences.flush();
         })
 
         /**

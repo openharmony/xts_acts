@@ -14,6 +14,12 @@
  */
 export const postFrameCallbackTest: (a: string) => void;
 
+export const checkboxGroupGroupTest: (a:string) => void;
+
+export const checkboxGroupSelectAllTest: (a:string) => void;
+
+export const checkboxGroupTest: (a:string) => void;
+
 export const testPostFrameCallback: (a: string) => void;
 
 export const swiperAutoPlayTest: (a: string) => void;

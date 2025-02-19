@@ -12,4 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const columnBackDropBlurTest001: () => number;
+
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
+
+@Entry
+@Component
+struct CheckboxGroupTest {
+  PAGE_TAG: string = 'checkboxGroupTest';
+
+  build(){
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.checkboxGroupTest(this.PAGE_TAG);
+      })
+    }
+  }
+}
