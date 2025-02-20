@@ -739,8 +739,6 @@ export default function cameraJSUnitOutput() {
       done();
     })
 
-
-    
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_OFF_AVAILABLE_METADATA_OUTPUT_CALLBACK_0100
      * @tc.name      : metadata output callback off metadataObjectsAvailable api
