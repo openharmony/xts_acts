@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 interface Point {
   x: number;
   y: number;
@@ -147,6 +146,14 @@ export const initCamera: (surfaceId: string) => number;
 export const getSupportedCameras: () => cameraInfo;
 
 export const getCameraOrientation: () => number;
+
+export const getCameraHostNameErrorParameter: () => number;
+
+export const getCameraHostTypeErrorParameter: () => number;
+
+export const getCameraHostNameInspection: () => number;
+
+export const getCameraHostTypeInspection: () => number;
 
 export const getCameraHostName: () => number;
 
