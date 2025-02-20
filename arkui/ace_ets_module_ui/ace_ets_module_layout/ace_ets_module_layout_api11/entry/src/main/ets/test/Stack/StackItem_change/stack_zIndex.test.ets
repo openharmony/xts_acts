@@ -20,6 +20,7 @@ import screenshot from '@ohos.screenshot';
 import image from '@ohos.multimedia.image';
 import window from '@ohos.window';
 import { BusinessError } from '@ohos.base';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
 async function imageComparisonAssert(left: number, top: number) {
   let theWinTop = 0;
@@ -64,6 +65,11 @@ async function imageComparisonAssert(left: number, top: number) {
         return isTrue;
       }
       console.log('Succeeded in saving sreenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
+      let colorSpace = pixelMap.getColorSpace();
+      console.log('imageComparisonAssert colorSpace is: ' + colorSpace);
+      let spaceName = colorSpace.getColorSpaceName();
+      console.log('imageComparisonAssert spaceName is: ' + spaceName);
+
       let PixelBytesNumber = pixelMap.getPixelBytesNumber();
       const color = new ArrayBuffer(PixelBytesNumber);
       pixelMap.readPixelsToBuffer(color, (err, res) => {
@@ -74,7 +80,13 @@ async function imageComparisonAssert(left: number, top: number) {
           let bufferArr = new Uint8Array(color);
           console.info('bufferArr',bufferArr)
           for (let i = 0; i < bufferArr.length; i += 40) {
-            if (bufferArr[i] != 255 || bufferArr[i + 1] != 0 || bufferArr[i + 2] != 0) {
+            if (spaceName == colorSpaceManager.ColorSpace.SRGB && (bufferArr[i] != 255 || bufferArr[i + 1] != 0 || bufferArr[i + 2] != 0)) {
+              console.log('imageComparisonAssert SRGB: ' + bufferArr[i]);
+              isTrue = false;
+              break;
+            } else if ((spaceName == colorSpaceManager.ColorSpace.DCI_P3 || spaceName == colorSpaceManager.ColorSpace.DISPLAY_P3) && 
+            (bufferArr[i] != 234 || bufferArr[i + 1] != 51 || bufferArr[i + 2] != 35)) {
+              console.log('imageComparisonAssert DCI_P3 or DISPLAY_P3: ' + bufferArr[i]);
               isTrue = false;
               break;
             }
