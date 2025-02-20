@@ -1358,5 +1358,251 @@ export default function requestDownloadJSUnit() {
       }
     });
 
+    /**
+     * @tc.number SUB_Request_Agent_customizingNotification_0500
+     * @tc.name   SUB_Request_Agent_customizingNotification_0500
+     * @tc.desc   testing text and title of notification
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Agent_customizingNotification_0500', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_customizingNotification_0500 is starting-----------------------");
+      let notification: request.agent.Notification = {
+        text: undefined,
+        title: undefined
+      }
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        mode: request.agent.Mode.FOREGROUND,
+        notification: notification,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_customizingNotification_0500.txt',
+        network: request.agent.Network.ANY,
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_customizingNotification_0500 create foreground task success");
+        expect(task !== null).assertTrue();
+        await request.agent.remove(task.tid);
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_customizingNotification_0500 err: " + JSON.stringify(err));
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Agent_customizingNotification_0600
+     * @tc.name   SUB_Request_Agent_customizingNotification_0600
+     * @tc.desc   testing text and title of notification
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Agent_customizingNotification_0600', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_customizingNotification_0600 is starting-----------------------");
+      let text: string = ''.padEnd(3073, 'text')
+      let notification: request.agent.Notification = {
+        text: text
+      }
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        mode: request.agent.Mode.BACKGROUND,
+        notification: notification,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_customizingNotification_0600.txt',
+        network: request.agent.Network.ANY,
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        console.info("====>SUB_Request_Agent_customizingNotification_0600 text length: " + config.notification?.text?.length);
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_customizingNotification_0600 create task success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_customizingNotification_0600 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Agent_customizingNotification_0700
+     * @tc.name   SUB_Request_Agent_customizingNotification_0700
+     * @tc.desc   testing text and title of notification
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Agent_customizingNotification_0700', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_customizingNotification_0700 is starting-----------------------");
+      let title: string = ''.padEnd(1025, 'text')
+      let notification: request.agent.Notification = {
+        title: title
+      }
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        mode: request.agent.Mode.BACKGROUND,
+        notification: notification,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_customizingNotification_0700.txt',
+        network: request.agent.Network.ANY,
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        console.info("====>SUB_Request_Agent_customizingNotification_0800 title length: " + config.notification?.title?.length);
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_customizingNotification_0700 create task success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_customizingNotification_0700 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Agent_customizingNotification_0800
+     * @tc.name   SUB_Request_Agent_customizingNotification_0800
+     * @tc.desc   testing text and title of notification
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Agent_customizingNotification_0800', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_customizingNotification_0800 is starting-----------------------");
+      let notification: request.agent.Notification = {
+        text: undefined,
+        title: undefined
+      }
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        mode: request.agent.Mode.BACKGROUND,
+        notification: notification,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_customizingNotification_0800.txt',
+        network: request.agent.Network.ANY,
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_customizingNotification_0800 create foreground task success");
+        expect(task !== null).assertTrue();
+        await request.agent.remove(task.tid);
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_customizingNotification_0800 err: " + JSON.stringify(err));
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Agent_customizingNotification_0900
+     * @tc.name   SUB_Request_Agent_customizingNotification_0900
+     * @tc.desc   testing text and title of notification
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Agent_customizingNotification_0900', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_customizingNotification_0900 is starting-----------------------");
+      let text: string = ''.padEnd(3072, 'text')
+      let title: string = ''.padEnd(1024, 'text')
+      let notification: request.agent.Notification = {
+        text: text,
+        title: title
+      }
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        mode: request.agent.Mode.BACKGROUND,
+        notification: notification,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_customizingNotification_0900.txt',
+        network: request.agent.Network.ANY,
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        console.info("====>SUB_Request_Agent_customizingNotification_0900 text length: " + config.notification?.text?.length);
+        console.info("====>SUB_Request_Agent_customizingNotification_0900 title length: " + config.notification?.title?.length);
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_customizingNotification_0900 create foreground task success");
+        expect(task !== null).assertTrue();
+        await request.agent.remove(task.tid);
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_customizingNotification_0900 err: " + JSON.stringify(err));
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Agent_customizingNotification_1000
+     * @tc.name   SUB_Request_Agent_customizingNotification_1000
+     * @tc.desc   testing text and title of notification
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Agent_customizingNotification_1000', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_customizingNotification_1000 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        mode: request.agent.Mode.BACKGROUND,
+        notification: undefined,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_customizingNotification_1000.txt',
+        network: request.agent.Network.ANY,
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_customizingNotification_1000 create foreground task success");
+        expect(task !== null).assertTrue();
+        await request.agent.remove(task.tid);
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_customizingNotification_1000 err: " + JSON.stringify(err));
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        expect().assertFail();
+        done();
+      }
+    });
+
   });
 }
