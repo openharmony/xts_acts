@@ -15,6 +15,11 @@
     "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode006",
     "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode007",
     "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode008",
-    "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode009"
+    "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode009",
+     "MainAbility/pages/focuscontrol/focuscontrol",
+    "MainAbility/pages/focuscontrol/focuscontrol2",
+    "MainAbility/pages/focuscontrol/focuscontrol3x",
+    "MainAbility/pages/focuscontrol/focuscontrol4"
+
   ]
 }

@@ -20,7 +20,9 @@
     "mainElement": "SpecifedProcessAbility",
     "deviceTypes": [
       "default",
-      "tablet"
+      "tablet",
+      "2in1",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

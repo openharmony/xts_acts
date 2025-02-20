@@ -1,8 +1,10 @@
 {
     "devices": {
         "general": [
-             "default",
-             "tablet"
+            "default",
+            "tablet",
+            "2in1",
+            "wearable"
         ],
         "custom": [
             {

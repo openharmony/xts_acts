@@ -20,6 +20,11 @@ const TAG = "[RELATIONAL_STORE_ASYNCDOWNLOADASSET_TEST]";
 const STORE_NAME = "cloud_rdb.db"
 var rdbStore = undefined;
 let context: common.UIAbilityContext;
+const valueBucket = {
+  'name': 'zhangsan',
+  'age': 18,
+}
+let predicates = new relationalStore.RdbPredicates('employee')
 
 export default function relationalStoreAsyncDownloadAssetTest() {
   describe('relationalStoreAsyncDownloadAssetTest', () => {
@@ -70,6 +75,15 @@ export default function relationalStoreAsyncDownloadAssetTest() {
 
     afterEach(async () => {
       console.info(TAG + 'afterEach');
+      predicates.equalTo('name', 'zhangsan');
+      let resultSet = await rdbStore.query(predicates)
+      if(resultSet.rowCount == 1){
+        rdbStore.delete(predicates).then(async (ret) => {
+          console.info(TAG + 'afterEach Delete done: ' + ret)
+        }).catch((err) => {
+            console.info(TAG + 'afterEach Delete fail: ' + err.code)
+        })
+      }
     })
 
     afterAll(async () => {
@@ -95,14 +109,17 @@ export default function relationalStoreAsyncDownloadAssetTest() {
           await rdbStore.setDistributedTables(['employee'],
               relationalStore.DistributedType.DISTRIBUTED_CLOUD, config).then(() => {
               console.log(TAG + "set employee to be distributed cloud table success");
-              expect(true).assertTrue();
-              console.log(TAG + "************* testRdbAsyncDownloadAsset001 end *************");
-              done();
           }).catch((err) => {
               console.log(TAG + `testRdbAsyncDownloadAsset001 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
               expect().assertFail();
               done()
           });
+          await rdbStore.insert('employee', valueBucket);
+          predicates.equalTo('name', 'zhangsan')
+          let resultSet = await rdbStore.query(predicates)
+          expect(1).assertEqual(resultSet.rowCount)
+          console.log(TAG + "************* testRdbAsyncDownloadAsset001 end *************");
+          done();
       } catch (err) {
           console.log(TAG + `testRdbAsyncDownloadAsset001 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
           expect().assertFail();
@@ -125,14 +142,17 @@ export default function relationalStoreAsyncDownloadAssetTest() {
           await rdbStore.setDistributedTables(['employee'],
               relationalStore.DistributedType.DISTRIBUTED_CLOUD, config).then(()=>{
               console.log(TAG + "set employee to be distributed cloud table success");
-              expect(true).assertTrue();
-              console.log(TAG + "************* testRdbAsyncDownloadAsset002 end *************");
-              done();
           }).catch((err)=>{
               console.log(TAG + `testRdbAsyncDownloadAsset002 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
               expect().assertFail();
               done()
           });
+          await rdbStore.insert('employee', valueBucket);
+          predicates.equalTo('name', 'zhangsan')
+          let resultSet = await rdbStore.query(predicates)
+          expect(1).assertEqual(resultSet.rowCount)
+          console.log(TAG + "************* testRdbAsyncDownloadAsset002 end *************");
+          done();
       } catch (err) {
           console.log(TAG + `testRdbAsyncDownloadAsset002 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
           expect().assertFail();
@@ -276,13 +296,17 @@ export default function relationalStoreAsyncDownloadAssetTest() {
         await rdbStore.setDistributedTables(['employee'],
             relationalStore.DistributedType.DISTRIBUTED_CLOUD, config).then(() => {
             console.log(TAG + "testRdbAsyncDownloadAsset007 set employee to be distributed cloud table success");
-            console.log(TAG + "************* testRdbAsyncDownloadAsset007 end *************");
-            done();
         }).catch((err) => {
             console.log(TAG + `testRdbAsyncDownloadAsset007 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
             expect().assertFail();
             done()
         });
+        await rdbStore.insert('employee', valueBucket);
+        predicates.equalTo('name', 'zhangsan')
+        let resultSet = await rdbStore.query(predicates)
+        expect(1).assertEqual(resultSet.rowCount)
+        console.log(TAG + "************* testRdbAsyncDownloadAsset007 end *************");
+        done();
       } catch (err) {
         console.log(TAG + `testRdbAsyncDownloadAsset007 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
         expect().assertFail();
@@ -305,13 +329,17 @@ export default function relationalStoreAsyncDownloadAssetTest() {
           await rdbStore.setDistributedTables(['employee'],
               relationalStore.DistributedType.DISTRIBUTED_CLOUD, config).then(() => {
               console.log(TAG + "testRdbAsyncDownloadAsset008 set employee to be distributed cloud table success");
-              console.log(TAG + "************* testRdbAsyncDownloadAsset008 end *************");
-              done();
           }).catch((err) => {
               console.log(TAG + `testRdbAsyncDownloadAsset008 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
               expect().assertFail();
               done()
           });
+          await rdbStore.insert('employee', valueBucket);
+          predicates.equalTo('name', 'zhangsan')
+          let resultSet = await rdbStore.query(predicates)
+          expect(1).assertEqual(resultSet.rowCount)
+          console.log(TAG + "************* testRdbAsyncDownloadAsset008 end *************");
+          done();
         } catch (err) {
           console.log(TAG + `testRdbAsyncDownloadAsset008 set employee to be distributed table failed, errcode:${JSON.stringify(err)}.`);
           expect().assertFail();

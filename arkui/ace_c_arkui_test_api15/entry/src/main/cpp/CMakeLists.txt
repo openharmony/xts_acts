@@ -18,6 +18,7 @@ add_library(nativerender SHARED
     window/get_window_info_test.cpp
     progress/progress_linear_style_test.cpp
     lazyForEach/lazyforeach_expand_mode_test.cpp
+    focusControl/focus_control.cpp
 )
 
 add_library(nativefunc SHARED

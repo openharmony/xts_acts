@@ -9,6 +9,7 @@
         "MainAbility/pages/select/selectNode",
         "MainAbility/pages/slider/sliderNode",
         "MainAbility/pages/timePicker/enableCascadeTest",
-        "MainAbility/pages/toggle/toggleNode"
+        "MainAbility/pages/toggle/toggleNode",
+        "MainAbility/pages/textPicker/columnWidths"
     ]
 }
