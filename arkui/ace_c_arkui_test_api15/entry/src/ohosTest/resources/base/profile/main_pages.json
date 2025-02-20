@@ -6,7 +6,15 @@
     "MainAbility/pages/window/TestGetWindowInfo",
     "MainAbility/pages/window/TestHostWindowInfoGetName",
     "MainAbility/pages/window/TestHostWindowInfoDestroy",
-    "MainAbility/pages/progress/TestProgressLinearStyle"
-
+    "MainAbility/pages/progress/TestProgressLinearStyle",
+    "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode001",
+    "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode002",
+    "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode003",
+    "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode004",
+    "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode005",
+    "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode006",
+    "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode007",
+    "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode008",
+    "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode009"
   ]
 }

@@ -18,6 +18,7 @@ import nodeHandleByIdTest from "./node/NodeHandleByIdTest.test"
 import getWindowInfoTest from "./window/GetWindowInfoTest.test"
 import columnBackDropBlurTest from "./visual/columnBackDropBlurTest.test"
 import ProgressLinearStyleTest from "./progress/progressLinearStyleTest.test"
+import testLazyForEachExpandMode from "./lazyForEach/testLazyForEachExpandMode.test"
 
 
 export default function testsuite() {
@@ -27,4 +28,5 @@ export default function testsuite() {
    getWindowInfoTest();
    columnBackDropBlurTest();
    ProgressLinearStyleTest();
+   testLazyForEachExpandMode();
 }
