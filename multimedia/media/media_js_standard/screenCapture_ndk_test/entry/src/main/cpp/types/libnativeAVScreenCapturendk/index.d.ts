@@ -22,5 +22,5 @@ export const originAVScreenCaptureTest: () => number;
 export const normalAVScreenCaptureShowCursorTest: () => number;
 export const normalAVScreenCaptureShowCursorTestStop: () => number;
 export const normalAVScreenCaptureShowCursorBeforeTestStop: () => number;
-export const normalAVScreenCaptureShowCursorNullVlanTest: () => number;
-export const normalAVScreenCaptureShowCursorSecondNullVlanTest: () => number;
+export const normalAVScreenCaptureShowCursorWithParaNullFalse: () => number;
+export const normalAVScreenCaptureShowCursorWithParaNullTrue: () => number;
