@@ -15,10 +15,21 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 import cloudData from '@ohos.data.cloudData';
+import deviceInfo from '@ohos.deviceInfo';
+
 
 const TAG = "[CloudData_SetStrategy_Ets_Test]"
 export default function cloudDataSetStrategyEtsTest() {
     describe('cloudDataSetStrategyEtsTest', function () {
+        let currentDeviceIsWatch = false;
+        beforeAll(() => {
+            console.info('window_layout_test beforeAll begin');
+            let deviceTypeInfo = deviceInfo.deviceType
+            currentDeviceIsWatch = deviceTypeInfo === 'wearable' ? true : false;
+            console.info('the value of the deviceType is :' + deviceInfo.deviceType);
+            console.info('window_layout_test beforeAll end');
+          })
+
 
         /**
          * @tc.number SUB_DistributedData_CloudData_SDK_SetCloudStrategyTest_0100
@@ -134,8 +145,12 @@ export default function cloudDataSetStrategyEtsTest() {
                 await cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.WIFI]).then(() => {
                     console.log(TAG + `setCloudStrategyTest005,setCloudStrategy success.`);
                 }).catch(err => {
-                    console.error(TAG + `setCloudStrategyTest005, errcode:${JSON.stringify(err)}.`);
-                    expect().assertFail();
+                    if(currentDeviceIsWatch && err.code == 801){
+                        expect(err.code == 801).assertTrue();
+                    }else{
+                        console.error(TAG + `setCloudStrategyTest005, errcode:${JSON.stringify(err)}.`);
+                        expect().assertFail();
+                    } 
                 });
             } catch (err) {
                 console.error(TAG + `setCloudStrategyTest005, errcode:${JSON.stringify(err)}.`);
@@ -159,8 +174,12 @@ export default function cloudDataSetStrategyEtsTest() {
                 await cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.CELLULAR, cloudData.NetWorkStrategy.WIFI]).then(() => {
                     console.log(TAG + `setCloudStrategyTest006,setCloudStrategy success.`);
                 }).catch(err => {
-                    console.error(TAG + `setCloudStrategyTest006, errcode:${JSON.stringify(err)}.`);
-                    expect().assertFail();
+                    if(currentDeviceIsWatch && err.code == 801){
+                        expect(err.code == 801).assertTrue();
+                    }else{
+                        console.error(TAG + `setCloudStrategyTest006, errcode:${JSON.stringify(err)}.`);
+                        expect().assertFail();
+                    } 
                 });
             } catch (err) {
                 console.error(TAG + `setCloudStrategyTest006, errcode:${JSON.stringify(err)}.`);
@@ -184,8 +203,12 @@ export default function cloudDataSetStrategyEtsTest() {
                 await cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK).then(() => {
                     console.log(TAG + `setCloudStrategyTest007,setCloudStrategy success.`);
                 }).catch(err => {
-                    console.error(TAG + `setCloudStrategyTest007, errcode:${JSON.stringify(err)}.`);
-                    expect().assertFail();
+                    if(currentDeviceIsWatch && err.code == 801){
+                        expect(err.code == 801).assertTrue();
+                    }else{
+                        console.error(TAG + `setCloudStrategyTest007, errcode:${JSON.stringify(err)}.`);
+                        expect().assertFail();
+                    } 
                 });
             } catch (err) {
                 console.error(TAG + `setCloudStrategyTest007, errcode:${JSON.stringify(err)}.`);
@@ -209,8 +232,12 @@ export default function cloudDataSetStrategyEtsTest() {
                 await cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, undefined).then(() => {
                     console.log(TAG + `setCloudStrategyTest008,setCloudStrategy success.`);
                 }).catch(err => {
-                    console.error(TAG + `setCloudStrategyTest008, errcode:${JSON.stringify(err)}.`);
-                    expect().assertFail();
+                    if(currentDeviceIsWatch && err.code == 801){
+                        expect(err.code == 801).assertTrue();
+                    }else{
+                        console.error(TAG + `setCloudStrategyTest008, errcode:${JSON.stringify(err)}.`);
+                        expect().assertFail();
+                    } 
                 });
             } catch (err) {
                 console.error(TAG + `setCloudStrategyTest008, errcode:${JSON.stringify(err)}.`);
@@ -234,8 +261,12 @@ export default function cloudDataSetStrategyEtsTest() {
                 await cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, null).then(() => {
                     console.log(TAG + `setCloudStrategyTest009,setCloudStrategy success.`);
                 }).catch(err => {
-                    console.error(TAG + `setCloudStrategyTest009, errcode:${JSON.stringify(err)}.`);
-                    expect().assertFail();
+                    if(currentDeviceIsWatch && err.code == 801){
+                        expect(err.code == 801).assertTrue();
+                    }else{
+                        console.error(TAG + `setCloudStrategyTest009, errcode:${JSON.stringify(err)}.`);
+                        expect().assertFail();
+                    } 
                 });
             } catch (err) {
                 console.error(TAG + `setCloudStrategyTest009, errcode:${JSON.stringify(err)}.`);
