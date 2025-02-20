@@ -35,6 +35,8 @@
 #define EGL_ONE 0x01
 #define GL_VERSION_15 0x0F
 #define GL_MAJOR_VERSION_MARK 0x0A
+#define EGL_SIZE 0xFFFF
+
 typedef struct _MyEGLWindow {
     EGLDisplay eglDisplay;
     EGLSurface eglLSurface;
@@ -385,16 +387,19 @@ static napi_value EglGetConfigAttrib(napi_env env, napi_callback_info info)
 
 static napi_value EglGetConfigAttribAbnormal(napi_env env, napi_callback_info info)
 {
-    EGLDisplay m_eglDisplay = nullptr;
     EGLConfig m_eglConf[10];
     EGLint numConfigs;
     EGLint config_size = 10;
+    EGLDisplay m_eglDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY);
+    NAPI_ASSERT(env, m_eglDisplay != EGL_NO_DISPLAY, "eglGetDisplay error");
+
+    eglInitialize(m_eglDisplay, nullptr, nullptr);
     eglGetConfigs(m_eglDisplay, m_eglConf, config_size, &numConfigs);
-    EGLBoolean Ret;
-    for (int i = 0; i < numConfigs; ++i) {
-        Ret = eglGetConfigAttrib(m_eglDisplay, m_eglConf[i], EGL_BUFFER_SIZE, &numConfigs);
-    }
-    NAPI_ASSERT(env, Ret == FALSE, "eglGetConfigAttrib error");
+
+    EGLint value;
+    EGLBoolean Ret = eglGetConfigAttrib(m_eglDisplay, m_eglConf[0], EGL_SIZE, &value);
+    NAPI_ASSERT(env, Ret == FALSE, "eglGetConfigAttrib invalid attribute case error");
+
     eglReleaseThread();
     eglTerminate(m_eglDisplay);
     napi_value result = nullptr;
