@@ -128,7 +128,7 @@ struct TestLazyForEachExpandMode009 {
                     Row() {
                       Text(item1).fontSize(20).id(item1)
                         .onAppear(() => {
-                          console.info("appear:" + item1)
+                          console.info('appear:' + item1)
                         })
                     }.margin({ left: 10, right: 10 })
                   }.id('ListAItem_' + item1)
