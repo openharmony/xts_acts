@@ -11,6 +11,7 @@
     "pages/ArkUI/SwipeGestureTest",
     "pages/ArkUI/TapGesture",
     "pages/ArkUI/TouchMoveTest",
+    "pages/ArkUI/bindSheetTest",
     "pages/ArkUI/CanvasLineWidth",
     "pages/ArkUI/CanvasStrokeStyle",
     "pages/ArkUI/CanvasLineCap",
