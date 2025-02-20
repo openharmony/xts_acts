@@ -22,6 +22,7 @@
         "MainAbility/pages/Gesture/isFingerCountLimited/PinchGesture",
         "MainAbility/pages/Gesture/isFingerCountLimited/RotationGesture",
         "MainAbility/pages/Gesture/isFingerCountLimited/SwipeGesture",
-        "MainAbility/pages/Gesture/isFingerCountLimited/TapGesture"
+        "MainAbility/pages/Gesture/isFingerCountLimited/TapGesture",
+        "MainAbility/pages/SnapshotOptions_region/SnapshotOptions_region"
     ]
 }

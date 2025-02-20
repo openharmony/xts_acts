@@ -35,6 +35,7 @@ import pinchGestureTest from './isFingerCountLimited/PinchGesture.test';
 import rotationGestureTest from './isFingerCountLimited/RotationGesture.test';
 import swipeGestureTest from './isFingerCountLimited/SwipeGesture.test';
 import tapGestureTest from './isFingerCountLimited/TapGesture.test';
+import SnapshotOptions_region from './SnapshotOptions_region/SnapshotOptions_region.test';
 
 export default function testsuite() {
   getWithUniqueId();
@@ -59,4 +60,5 @@ export default function testsuite() {
   rotationGestureTest();
   swipeGestureTest();
   tapGestureTest();
+  SnapshotOptions_region();
 }
