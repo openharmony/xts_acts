@@ -2264,6 +2264,110 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         }
       }
     })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4300
+     * @tc.name       : PiPSizeChange_Function_Callback
+     * @tc.desc       : To test the function of PiPSizeChange
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level3
+     */
+    it('PiPSizeChange_Function_Callback', 0, async (done:Function) => {
+      let pipController:pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let config:pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+      };
+      try {
+        pipController = await pipWindow.create(config);
+        console.log('data PiPSizeChange_Function_ Callback begin');
+        pipController.on('pipWindowSizeChange', (size: PiPWindowSize) => {
+          console.info('PiPSizeChange callback 1 size info: ' + JSON.stringify(size));
+        });
+        pipController.on('pipWindowSizeChange', (size: PiPWindowSize) => {
+          console.info('PiPSizeChange callback2 size info: ' + JSON.stringify(size));
+        });
+        expect(true).assertTrue();
+        done();
+      } catch (err) {
+        console.log('data Failed to PiPSizeChange_Function_ Callback' + JSON.stringify(err));
+        if(err.code == 801 || err.code == 401){
+          expect(true).assertTrue();
+          done();
+        } else {
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4400
+     * @tc.name       : stateChange_test
+     * @tc.desc       : To test the function of PiPSizeChange
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level3
+     */
+    it('PiPSizeChange_test', 0, async (done:Function) => {
+      let pipController:pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let config:pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+      };
+      try {
+        pipController = await pipWindow.create(config);
+        console.log('www data PiPSizeChange_test begin');
+        let callback1 = (state, reason) => {
+          console.info('PiPSizeChange cb1 size info: ' + JSON.stringify(size));
+        };
+        let callback2 = (state, reason) => {
+          console.info('PiPSizeChange cb2 siz info: ' + JSON.stringify(size));
+        };
+        let callback3 = (state, reason) => {
+          console.info('PiPSizeChange cb3 siz info: ' + JSON.stringify(size));
+        };
+        pipController.on('pipWindowSizeChange', callback1);
+        pipController.on('pipWindowSizeChange', callback2);
+        pipController.on('pipWindowSizeChange', callback3);
+        try {
+          pipController.off('pipWindowSizeChange', callback1);
+          pipController.off('pipWindowSizeChange');
+          console.log('data Succeeded in PiPSizeChange_test')
+          expect(true).assertTrue();
+          done()
+        } catch (error) {
+          console.log('data Failed1 to PiPSizeChange_test' + JSON.stringify(error))
+          expect().assertFail();
+          done();
+        }
+      } catch (error) {
+        console.log('data Failed2 to PiPSizeChange_test' + JSON.stringify(error))
+        if(error.code == 801 || err.code == 401){
+          expect(true).assertTrue();
+          done();
+        } else{
+          expect().assertFail();
+          done();
+        }
+      }
+    })
   })
 }
 
