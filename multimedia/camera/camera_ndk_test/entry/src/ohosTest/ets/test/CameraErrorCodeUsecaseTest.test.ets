@@ -1230,7 +1230,7 @@ export default function CameraErrorCodeUsecaseTest() {
       if (ret != 0) {
         console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME_INSPECTION_0100");
         console.info(TAG + "ERRORCODE: " + ret);
-        expect(ret == Camera_ErrorCode.CAMERA_INVALID_ARGUMENT).assertTrue();
+        expect(false).assertTrue();
       }
     });
 
@@ -1249,7 +1249,7 @@ export default function CameraErrorCodeUsecaseTest() {
       if (ret != 0) {
         console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_INSPECTION_0100");
         console.info(TAG + "ERRORCODE: " + ret);
-        expect(ret == Camera_ErrorCode.CAMERA_INVALID_ARGUMENT).assertTrue();
+        expect(false).assertTrue();
       }
     });
   })
