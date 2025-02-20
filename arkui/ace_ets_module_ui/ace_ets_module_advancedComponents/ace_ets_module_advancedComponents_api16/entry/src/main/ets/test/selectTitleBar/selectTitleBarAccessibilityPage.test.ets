@@ -17,7 +17,7 @@ import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import Utils from '../Utils';
-import accessibility from '@ohos.accessibility'
+import accessibility from '@ohos.accessibility';
 
 export default function selectTitleBarAccessibilityTest() {
   describe('selectTitleBarAccessibilityPage', () => {
