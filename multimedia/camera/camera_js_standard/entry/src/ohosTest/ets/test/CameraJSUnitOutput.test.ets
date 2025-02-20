@@ -25,6 +25,7 @@ import Want from '@ohos.app.ability.Want';
 
 const TAG = "CameraUnitTest: ";
 
+
 let context = getContext();
 let captureLocation: cameraObj.Location = {
   latitude: 0,
