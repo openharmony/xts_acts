@@ -246,6 +246,7 @@ static napi_value normalAVScreenCaptureDisplayCallbackSuccess(napi_env env, napi
     OH_AVScreenCapture_SetErrorCallback(screenCaptureNormal, OnError, nullptr);
     OH_AVScreenCapture_SetStateCallback(screenCaptureNormal, OnStateChange, nullptr);
     OH_AVScreenCapture_SetDataCallback(screenCaptureNormal, OnBufferAvailable, nullptr);
+    OH_AVScreenCapture_SetDisplayCallback(screenCaptureNormal, OnDisplaySelected, nullptr);
     vector<int> windowidsExclude = { -111 };
     g_contentFilter = OH_AVScreenCapture_CreateContentFilter();
     OH_AVScreenCapture_ContentFilter_AddAudioContent(g_contentFilter, OH_SCREEN_CAPTURE_NOTIFICATION_AUDIO);
