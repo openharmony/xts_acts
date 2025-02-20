@@ -2264,6 +2264,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         }
       }
     })
+    
     /**
      * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4300
      * @tc.name       : PiPSizeChange_Function_Callback
@@ -2289,10 +2290,10 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
       try {
         pipController = await pipWindow.create(config);
         console.log('data PiPSizeChange_Function_ Callback begin');
-        pipController.on('pipWindowSizeChange', (size: PiPWindowSize) => {
+        pipController.on('pipWindowSizeChange', (size: pipWindow.PiPWindowSize) => {
           console.info('PiPSizeChange callback 1 size info: ' + JSON.stringify(size));
         });
-        pipController.on('pipWindowSizeChange', (size: PiPWindowSize) => {
+        pipController.on('pipWindowSizeChange', (size: pipWindow.PiPWindowSize) => {
           console.info('PiPSizeChange callback2 size info: ' + JSON.stringify(size));
         });
         expect(true).assertTrue();
@@ -2311,7 +2312,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
 
     /**
      * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4400
-     * @tc.name       : stateChange_test
+     * @tc.name       : PiPSizeChange_test
      * @tc.desc       : To test the function of PiPSizeChange
      * @tc.size       : MediumTestTest
      * @tc.type       : Function
@@ -2334,13 +2335,13 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
       try {
         pipController = await pipWindow.create(config);
         console.log('www data PiPSizeChange_test begin');
-        let callback1 = (state, reason) => {
+        let callback1 = (size: pipWindow.PiPWindowSize) => {
           console.info('PiPSizeChange cb1 size info: ' + JSON.stringify(size));
         };
-        let callback2 = (state, reason) => {
+        let callback2 = (size: pipWindow.PiPWindowSize) => {
           console.info('PiPSizeChange cb2 siz info: ' + JSON.stringify(size));
         };
-        let callback3 = (state, reason) => {
+        let callback3 = (size: pipWindow.PiPWindowSize) => {
           console.info('PiPSizeChange cb3 siz info: ' + JSON.stringify(size));
         };
         pipController.on('pipWindowSizeChange', callback1);
@@ -2359,7 +2360,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         }
       } catch (error) {
         console.log('data Failed2 to PiPSizeChange_test' + JSON.stringify(error))
-        if(error.code == 801 || err.code == 401){
+        if(error.code == 801 || error.code == 401){
           expect(true).assertTrue();
           done();
         } else{
