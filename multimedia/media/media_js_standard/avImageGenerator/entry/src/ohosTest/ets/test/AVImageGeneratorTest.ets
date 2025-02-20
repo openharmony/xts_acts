@@ -333,11 +333,11 @@ export default function AVImageGeneratorTest() {
                 colorFormat : media.PixelFormat.RGB_888
             }
             media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-                if(generator != null){
+                if (generator != null) {
                     let avImageGenerator = generator;
                     console.info(`createAVImageGenerator success`);
                     expect(avImageGenerator?.fdSrc != null && avImageGenerator.fdSrc != undefined).assertTrue();
-                    if(avImageGenerator.fdSrc?.fd == undefined || avImageGenerator.fdSrc?.fd == null || avImageGenerator.fdSrc?.fd < 0){
+                    if(avImageGenerator.fdSrc?.fd == undefined || avImageGenerator.fdSrc?.fd == null || avImageGenerator.fdSrc?.fd < 0) {
                         expect(false).assertTrue;
                     }
                 } else {
@@ -358,11 +358,11 @@ export default function AVImageGeneratorTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVIMAGEGENERATOR_FDSRC_0100', 0, async (done : Function) => {
             media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-                if(generator != null){
+                if (generator != null) {
                     let avImageGenerator = generator;
                     console.info(`createAVImageGenerator success`);
                     expect(avImageGenerator?.fdSrc != null && avImageGenerator.fdSrc != undefined).assertTrue();
-                    if(avImageGenerator.fdSrc?.fd == undefined || avImageGenerator.fdSrc?.fd == null || avImageGenerator.fdSrc?.fd < 0){
+                    if(avImageGenerator.fdSrc?.fd == undefined || avImageGenerator.fdSrc?.fd == null || avImageGenerator.fdSrc?.fd < 0) {
                         expect(false).assertTrue;
                     }
                 } else {
@@ -383,23 +383,23 @@ export default function AVImageGeneratorTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVIMAGEGENERATOR_RELEASE_0100', 0, async (done : Function) => {
             media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-                if(generator != null){
+                if (generator != null) {
                     let avImageGenerator = generator;
                     console.info(`createAVImageGenerator success`);
                     avImageGenerator.release((error: BusinessError) => {
-                      if (error) {
-                        console.error(`Failed to release, err = ${JSON.stringify(error)}`);
-                        return;
-                    }
-                    console.info(`Succeeded in releasing`);
-                    expect(false).assertTrue;
-                })
+                        if (error) {
+                            console.error(`Failed to release, err = ${JSON.stringify(error)}`);
+                            return;
+                        }
+                        console.info(`Succeeded in releasing`);
+                        expect(false).assertTrue;
+                    });
                 } else {
                     console.error(`createAVImageGenerator fail, error message:${err.message}`);
                     expect().assertFail()
                 };
             });
             done()
-        })      
+        })
     });
 }
