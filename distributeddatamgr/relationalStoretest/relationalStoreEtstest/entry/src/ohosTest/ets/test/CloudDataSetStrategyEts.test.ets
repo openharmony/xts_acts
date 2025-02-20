@@ -383,7 +383,11 @@ export default function cloudDataSetStrategyEtsTest() {
                     expect().assertFail();
                 }).catch(err => {
                     console.error(TAG + `setGlobalCloudStrategyTest005, setGlobalCloudStrategy errcode:${JSON.stringify(err)}.`);
-                    expect(err.code == 201).assertTrue();
+                    if(currentDeviceIsWatch){
+                        expect(err.code == 801).assertTrue();
+                    }else{
+                        expect(err.code == 201).assertTrue();
+                    } 
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest005, errcode:${JSON.stringify(err)}.`);
@@ -408,10 +412,14 @@ export default function cloudDataSetStrategyEtsTest() {
                     expect().assertFail();
                 }).catch(err => {
                     console.error(TAG + `setGlobalCloudStrategyTest006, errcode:${JSON.stringify(err)}.`);
-                    expect(err.code == 201).assertTrue();
+                    if(currentDeviceIsWatch){
+                        expect(err.code == 801).assertTrue();
+                    }else{
+                        console.error(TAG + `setGlobalCloudStrategyTest006, errcode:${JSON.stringify(err)}.`);
+                        expect(err.code == 201).assertTrue();
+                    } 
                 });
             } catch (err) {
-                console.error(TAG + `setGlobalCloudStrategyTest006, errcode:${JSON.stringify(err)}.`);
                 expect().assertFail();
             }
             done()
@@ -433,7 +441,11 @@ export default function cloudDataSetStrategyEtsTest() {
                     expect().assertFail();
                 }).catch(err => {
                     console.error(TAG + `setGlobalCloudStrategyTest007, errcode:${JSON.stringify(err)}.`);
-                    expect(err.code == 201).assertTrue();
+                    if(currentDeviceIsWatch){
+                        expect(err.code == 801).assertTrue();
+                    }else{
+                        expect(err.code == 201).assertTrue();
+                    } 
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest007, errcode:${JSON.stringify(err)}.`);
@@ -458,7 +470,11 @@ export default function cloudDataSetStrategyEtsTest() {
                     expect().assertFail();
                 }).catch(err => {
                     console.error(TAG + `setGlobalCloudStrategyTest008, errcode:${JSON.stringify(err)}.`);
-                    expect(err.code == 201).assertTrue();
+                    if(currentDeviceIsWatch){
+                        expect(err.code == 801).assertTrue();
+                    }else{
+                        expect(err.code == 201).assertTrue();
+                    } 
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest008, errcode:${JSON.stringify(err)}.`);
@@ -483,7 +499,11 @@ export default function cloudDataSetStrategyEtsTest() {
                     expect().assertFail();
                 }).catch(err => {
                     console.error(TAG + `setGlobalCloudStrategyTest009, errcode:${JSON.stringify(err)}.`);
-                    expect(err.code == 201).assertTrue();
+                    if(currentDeviceIsWatch){
+                        expect(err.code == 801).assertTrue();
+                    }else{
+                        expect(err.code == 201).assertTrue();
+                    } 
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest009, errcode:${JSON.stringify(err)}.`);
