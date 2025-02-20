@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import { BusinessError } from '@ohos.base';
 import media from '@ohos.multimedia.media';
 import image from '@ohos.multimedia.image';
@@ -317,5 +316,90 @@ export default function AVImageGeneratorTest() {
             });
             done()
         })
+
+
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVIMAGEGENERATOR_FDSRC_0100
+        * @tc.name      : 008.testAvImageGenerator fetchFrameByTime RGB_888
+        * @tc.desc      : AvImageGenerator fetchFrameByTime test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVIMAGEGENERATOR_FDSRC_0100', 0, async (done : Function) => {
+            let tmpParam: media.PixelMapParams = {
+                width : 300,
+                height : 300,
+                colorFormat : media.PixelFormat.RGB_888
+            }
+            media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
+                if(generator != null){
+                    let avImageGenerator = generator;
+                    console.info(`createAVImageGenerator success`);
+                    expect(avImageGenerator?.fdSrc != null && avImageGenerator.fdSrc != undefined).assertTrue();
+                    if(avImageGenerator.fdSrc?.fd == undefined || avImageGenerator.fdSrc?.fd == null || avImageGenerator.fdSrc?.fd < 0){
+                        expect(false).assertTrue;
+                    }
+                } else {
+                    console.error(`createAVImageGenerator fail, error message:${err.message}`);
+                    expect().assertFail()
+                };
+            });
+            done()
+        })
+
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVIMAGEGENERATOR_FDSRC_0100
+        * @tc.name      : 001.testAvImageGenerator fdSrc 
+        * @tc.desc      : AvImageGenerator fetchFrameByTime test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVIMAGEGENERATOR_FDSRC_0100', 0, async (done : Function) => {
+            media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
+                if(generator != null){
+                    let avImageGenerator = generator;
+                    console.info(`createAVImageGenerator success`);
+                    expect(avImageGenerator?.fdSrc != null && avImageGenerator.fdSrc != undefined).assertTrue();
+                    if(avImageGenerator.fdSrc?.fd == undefined || avImageGenerator.fdSrc?.fd == null || avImageGenerator.fdSrc?.fd < 0){
+                        expect(false).assertTrue;
+                    }
+                } else {
+                    console.error(`createAVImageGenerator fail, error message:${err.message}`);
+                    expect().assertFail()
+                };
+            });
+            done()
+        })
+
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVIMAGEGENERATOR_RELEASE_0100
+        * @tc.name      : 001.testAvImageGenerator RELEASE
+        * @tc.desc      : AvImageGenerator RELEASE test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVIMAGEGENERATOR_RELEASE_0100', 0, async (done : Function) => {
+            media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
+                if(generator != null){
+                    let avImageGenerator = generator;
+                    console.info(`createAVImageGenerator success`);
+                    avImageGenerator.release((error: BusinessError) => {
+                      if (error) {
+                        console.error(`Failed to release, err = ${JSON.stringify(error)}`);
+                        return;
+                    }
+                    console.info(`Succeeded in releasing`);
+                    expect(false).assertTrue;
+                })
+                } else {
+                    console.error(`createAVImageGenerator fail, error message:${err.message}`);
+                    expect().assertFail()
+                    };
+            });
+            done()
+        })      
     });
 }
