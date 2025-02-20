@@ -16,10 +16,18 @@ import ListSwipeTest from './ListTest/ListSwipe.test'
 import ScrollEffectEdge from './ScrollTest/ScrollEffectEdge.test'
 import TabBarComponentContent from './TabsTest/TabBarComponentContent.test'
 import WaterComponentContent from './WaterFlowTest/WaterComponentContent.test'
+import GridBackToTopTest from './GridTest/GridBackToTop.test'
+import ListBackToTopTest from './ListTest/ListBackToTop.test'
+import ScrollBackToTopTest from './ScrollTest/ScrollBackToTop.test'
+import WaterFlowBackToTopTest from './WaterFlowTest/WaterFlowBackToTop.test'
 
 export default function testsuite() {
   ListSwipeTest();
   ScrollEffectEdge();
   TabBarComponentContent();
   WaterComponentContent();
+  GridBackToTopTest();
+  ListBackToTopTest();
+  ScrollBackToTopTest();
+  WaterFlowBackToTopTest();
 }

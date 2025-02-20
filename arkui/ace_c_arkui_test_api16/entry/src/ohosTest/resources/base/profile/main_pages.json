@@ -11,6 +11,7 @@
     "MainAbility/pages/listScrollTo/ListScrollToTest",
     "MainAbility/pages/textArea/TextAreaLetterSpacing",
     "MainAbility/pages/textInput/TextInputLetterSpacing",
-    "MainAbility/pages/textPicker/TextPickerColumnWidthsTest"
+    "MainAbility/pages/textPicker/TextPickerColumnWidthsTest",
+    "MainAbility/pages/scroll/ScrollBackToTopTest"
   ]
 }

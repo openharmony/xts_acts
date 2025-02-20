@@ -24,6 +24,7 @@ import listItemGroupNodeAdapterTest from "./listItemGroup/ListItemGroupTest.test
 import TextAreaLetterSpacing from "./textArea/TextAreaLetterSpacing.test"
 import TextInputLetterSpacing from "./textInput/TextInputLetterSpacing.test"
 import textPickerTest from "./textpicker/TextPickerColumnWidthsTest.test"
+import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
 
 export default function testsuite() {
   postFrameCallbackTest();
@@ -38,4 +39,5 @@ export default function testsuite() {
   TextAreaLetterSpacing();
   TextInputLetterSpacing();
   textPickerTest();
+  scrollBackToTopTest();
 }
