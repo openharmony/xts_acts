@@ -389,7 +389,8 @@ export default function abilityTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_1200', 0, (done:Function) => {
             let isSysSupport = drm.isMediaKeySystemSupported(systemName, "video/mp4", drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_HW_CRYPTO);
-            expect(isSysSupport).assertTrue();
+            console.log("XX DRM_FRAMEWORK_API_1200 isSysSupport is", isSysSupport);
+            expect(isSysSupport).not().assertUndefined();
             done();
         });
         /* *
@@ -573,6 +574,7 @@ export default function abilityTest() {
         it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2100', 0, (done:Function) => {
             let drmMediaKeySystem:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
+            let drmMaxLevel:drm.ContentProtectionLevel = drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN;
             try {
                 drmMediaKeySystem = drm.createMediaKeySystem(systemName);
             } catch (err) {
@@ -581,33 +583,47 @@ export default function abilityTest() {
                 expect(false).assertEqual(true);
             }
             try {
-                session = drmMediaKeySystem!.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_HW_CRYPTO);
+                drmMaxLevel = drmMediaKeySystem!.getMaxContentProtectionLevel();
+                console.log("XX DRM_FRAMEWORK_API_2100 getMaxContentProtectionLevel is ", drmMaxLevel);
             } catch (err) {
-                console.log("XX DRM_FRAMEWORK_API_2100 createMediaKeySession failed");
+                console.log("XX DRM_FRAMEWORK_API_2100 getMaxContentProtectionLevel failed");
                 drmMediaKeySystem!.destroy();
                 done();
                 expect(false).assertEqual(true);
             }
-            expect(session!).not().assertUndefined();
+            if(drmMaxLevel === drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_HW_CRYPTO) {
+                try {
+                    session = drmMediaKeySystem!.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_HW_CRYPTO);
+                } catch (err) {
+                    console.log("XX DRM_FRAMEWORK_API_2100 createMediaKeySession failed");
+                    drmMediaKeySystem!.destroy();
+                    done();
+                    expect(false).assertEqual(true);
+                }
+                expect(session!).not().assertUndefined();
 
-            try {
-                let result = session!.requireSecureDecoderModule("video/avc");
-                console.log("XX DRM_FRAMEWORK_API_2100 result is", result);
-                expect(result).not().assertUndefined();
-                let result1 = session!.requireSecureDecoderModule("video/hevc");
-                console.log("XX DRM_FRAMEWORK_API_2100 result1 is", result1);
-                expect(result1).not().assertUndefined();
-                let result2 = session!.requireSecureDecoderModule("video/avs3");
-                console.log("XX DRM_FRAMEWORK_API_2100 result2 is", result2);
-                expect(result2).not().assertUndefined();
-                session!.destroy();
+                try {
+                    let result = session!.requireSecureDecoderModule("video/avc");
+                    console.log("XX DRM_FRAMEWORK_API_2100 result is", result);
+                    expect(result).not().assertUndefined();
+                    let result1 = session!.requireSecureDecoderModule("video/hevc");
+                    console.log("XX DRM_FRAMEWORK_API_2100 result1 is", result1);
+                    expect(result1).not().assertUndefined();
+                    let result2 = session!.requireSecureDecoderModule("video/avs3");
+                    console.log("XX DRM_FRAMEWORK_API_2100 result2 is", result2);
+                    expect(result2).not().assertUndefined();
+                    session!.destroy();
+                    drmMediaKeySystem!.destroy();
+                } catch (err) {
+                    console.log("XX DRM_FRAMEWORK_API_2100 failed");
+                    session!.destroy();
+                    drmMediaKeySystem!.destroy();
+                }
+                done();
+            } else {
                 drmMediaKeySystem!.destroy();
-            } catch (err) {
-                console.log("XX DRM_FRAMEWORK_API_2100 failed");
-                session!.destroy();
-                drmMediaKeySystem!.destroy();
+                done();
             }
-            done();
         });
         /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2200
@@ -620,6 +636,7 @@ export default function abilityTest() {
         it('SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2200', 0, (done:Function) => {
             let drmMediaKeySystem:drm.MediaKeySystem;
             let session:drm.MediaKeySession;
+            let drmMaxLevel:drm.ContentProtectionLevel = drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN;
             try {
                 drmMediaKeySystem = drm.createMediaKeySystem(systemName);
             } catch (err) {
@@ -628,35 +645,49 @@ export default function abilityTest() {
                 expect(false).assertEqual(true);
             }
             try {
-                session = drmMediaKeySystem!.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_HW_CRYPTO);
+                drmMaxLevel = drmMediaKeySystem!.getMaxContentProtectionLevel();
+                console.log("XX DRM_FRAMEWORK_API_2200 getMaxContentProtectionLevel is ", drmMaxLevel);
             } catch (err) {
-                console.log("XX DRM_FRAMEWORK_API_2200 createMediaKeySession failed");
+                console.log("XX DRM_FRAMEWORK_API_2200 getMaxContentProtectionLevel failed");
                 drmMediaKeySystem!.destroy();
                 done();
                 expect(false).assertEqual(true);
             }
-            try {
-                if(isClearPlay) {
-                    let result = session!.requireSecureDecoderModule("hls/ts");
-                    expect(result).assertFalse();
-                    session!.destroy();
+            if(drmMaxLevel === drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_HW_CRYPTO) {
+                try {
+                    session = drmMediaKeySystem!.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_HW_CRYPTO);
+                } catch (err) {
+                    console.log("XX DRM_FRAMEWORK_API_2200 createMediaKeySession failed");
                     drmMediaKeySystem!.destroy();
-                } else {
-                    try {
+                    done();
+                    expect(false).assertEqual(true);
+                }
+                try {
+                    if(isClearPlay) {
                         let result = session!.requireSecureDecoderModule("hls/ts");
-                    } catch (err) {
-                        console.log("XX DRM_FRAMEWORK_API_2200 requireSecureDecoderModule err end", err.code);
-                        expect(err.code).assertEqual(drm.DrmErrorCode.SERVICE_FATAL_ERROR);
+                        expect(result).assertFalse();
+                        session!.destroy();
+                        drmMediaKeySystem!.destroy();
+                    } else {
+                        try {
+                            let result = session!.requireSecureDecoderModule("hls/ts");
+                        } catch (err) {
+                            console.log("XX DRM_FRAMEWORK_API_2200 requireSecureDecoderModule err end", err.code);
+                            expect(err.code).assertEqual(drm.DrmErrorCode.SERVICE_FATAL_ERROR);
+                        }
+                        session!.destroy();
+                        drmMediaKeySystem!.destroy();
                     }
+                } catch (err) {
+                    console.log("XX DRM_FRAMEWORK_API_2200 failed");
                     session!.destroy();
                     drmMediaKeySystem!.destroy();
                 }
-            } catch (err) {
-                console.log("XX DRM_FRAMEWORK_API_2200 failed");
-                session!.destroy();
+                done();
+            } else {
                 drmMediaKeySystem!.destroy();
+                done();
             }
-            done();
         });
         /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_2500

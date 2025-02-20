@@ -24,6 +24,7 @@ export const Test_MediaKeySystem_SetConfigurationByteArray: (system:string,confi
 export const Test_MediaKeySystem_GetConfigurationByteArray: (system:string,configName: string,value:string,valueLen:string) => number;
 export const Test_MediaKeySystem_GetStatistics: (system:string,statistics: string) => number;
 export const Test_MediaKeySystem_GetMaxContentProtectionLevel: (system:string,levelPtr: string) => number;
+export const GetMaxContentProtectionLevel: (system:string,levelPtr: string) => number;
 export const Test_CreateMediaKeySession: (system:string,level:number,session:string) => number;
 export const Test_MediaKeySystem_GenerateKeySystemRequest: (system:string,request:string,requestLen:string,defaultUrl:string,defaultUrlLen:number) => number;
 export const Test_MediaKeySystem_ProcessKeySystemResponse: (system:string,responseData: string,responseLen:number) => number;
