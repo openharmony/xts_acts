@@ -79,10 +79,10 @@ export default function UsbApiBulkTransferTest() {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbBulkTransfer001', 0, async (done: Function) => {
-        console.info(TAG, 'bulk testUsbBulkTransfer001 enter');
+    it('testUsbSubmitTransfer001', 0, async (done: Function) => {
+        console.info(TAG, 'bulk testUsbSubmitTransfer001 enter');
         if (!isDeviceConnected) {
-			console.info(TAG, 'usb testUsbBulkTransfer001 No device is connected');
+			console.info(TAG, 'usb testUsbSubmitTransfer001 No device is connected');
             expect(isDeviceConnected).assertFalse();
             done()
             return
@@ -101,9 +101,9 @@ export default function UsbApiBulkTransferTest() {
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
             usbMgr.usbSubmitTransfer(transferParams);
-            console.info('bulk testUsbBulkTransfer001 submitted.');
+            console.info('bulk testUsbSubmitTransfer001 submitted.');
             expect(0).assertEqual(0);
-            console.info(TAG, 'bulk testUsbBulkTransfer001 end');
+            console.info(TAG, 'bulk testUsbSubmitTransfer001 end');
         } catch (error) {
             expect(error.message).assertEqual('error');
             console.error('bulk write successfully:', error);
@@ -119,10 +119,10 @@ export default function UsbApiBulkTransferTest() {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbBulkTransfer002', 0, async (done: Function) => {
-        console.info(TAG, 'bulk testUsbBulkTransfer002 enter');
+    it('testUsbSubmitTransfer002', 0, async (done: Function) => {
+        console.info(TAG, 'bulk testUsbSubmitTransfer002 enter');
         if (!isDeviceConnected) {
-			console.info(TAG, 'usb testUsbBulkTransfer002 No device is connected');
+			console.info(TAG, 'usb testUsbSubmitTransfer002 No device is connected');
             expect(isDeviceConnected).assertFalse();
             done()
             return
@@ -141,9 +141,9 @@ export default function UsbApiBulkTransferTest() {
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
             usbMgr.usbSubmitTransfer(transferParams);
-            console.info('bulk testUsbBulkTransfer002 submitted.');
+            console.info('bulk testUsbSubmitTransfer002 submitted.');
             expect(0).assertEqual(0);
-            console.info(TAG, 'bulk testUsbBulkTransfer002 end');
+            console.info(TAG, 'bulk testUsbSubmitTransfer002 end');
         } catch (error) {
             expect(error.message).assertEqual('error');
             console.error('bulk write successfully:', error);
@@ -159,10 +159,10 @@ export default function UsbApiBulkTransferTest() {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbBulkTransfer003', 0, async (done: Function) => {
-        console.info(TAG, 'bulk testUsbBulkTransfer003 enter');
+    it('testUsbSubmitTransfer003', 0, async (done: Function) => {
+        console.info(TAG, 'bulk testUsbSubmitTransfer003 enter');
         if (!isDeviceConnected) {
-			console.info(TAG, 'usb testUsbBulkTransfer003 No device is connected');
+			console.info(TAG, 'usb testUsbSubmitTransfer003 No device is connected');
             expect(isDeviceConnected).assertFalse();
             done()
             return
@@ -181,9 +181,9 @@ export default function UsbApiBulkTransferTest() {
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
             usbMgr.usbSubmitTransfer(transferParams);
-            console.info('bulk testUsbBulkTransfer003 submitted.');
+            console.info('bulk testUsbSubmitTransfer003 submitted.');
         } catch (error) {
-            console.info(TAG, 'bulk testUsbBulkTransfer003 end');
+            console.info(TAG, 'bulk testUsbSubmitTransfer003 end');
             console.error('bulk transfer error endpoint:', error);
             expect(error.code == 14400012).assertTrue();
         }
@@ -198,10 +198,10 @@ export default function UsbApiBulkTransferTest() {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbBulkTransfer004', 0, async (done: Function) => {
-        console.info(TAG, 'bulk testUsbBulkTransfer004 enter');
+    it('testUsbCancelTransfer001', 0, async (done: Function) => {
+        console.info(TAG, 'bulk testUsbCancelTransfer001 enter');
         if (!isDeviceConnected) {
-			console.info(TAG, 'usb testUsbBulkTransfer004 No device is connected');
+			console.info(TAG, 'usb testUsbCancelTransfer001 No device is connected');
             expect(isDeviceConnected).assertFalse();
             done()
             return
@@ -221,11 +221,11 @@ export default function UsbApiBulkTransferTest() {
         usbMgr.usbSubmitTransfer(transferParams);
         try {
             usbMgr.usbCancelTransfer(transferParams);
-            console.info('bulk testUsbBulkTransfer004 submitted.');
+            console.info('bulk testUsbCancelTransfer001 submitted.');
             expect(0).assertEqual(0);
         } catch (error) {
             expect(error.message).assertEqual('error');
-            console.info(TAG, 'bulk testUsbBulkTransfer004 end');
+            console.info(TAG, 'bulk testUsbCancelTransfer001 end');
             console.error('bulk write cancel successfully:', error);
         }
         done()
@@ -239,10 +239,10 @@ export default function UsbApiBulkTransferTest() {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbBulkTransfer005', 0, async (done: Function) => {
-        console.info(TAG, 'bulk testUsbBulkTransfer005 enter');
+    it('testUsbCancelTransfer002', 0, async (done: Function) => {
+        console.info(TAG, 'bulk testUsbCancelTransfer002 enter');
         if (!isDeviceConnected) {
-			console.info(TAG, 'usb testUsbBulkTransfer005 No device is connected');
+			console.info(TAG, 'usb testUsbCancelTransfer002 No device is connected');
             expect(isDeviceConnected).assertFalse();
             done()
             return
@@ -262,11 +262,11 @@ export default function UsbApiBulkTransferTest() {
         usbMgr.usbSubmitTransfer(transferParams);
         try {
             usbMgr.usbCancelTransfer(transferParams);
-            console.info('bulk testUsbBulkTransfer005 submitted.');
+            console.info('bulk testUsbCancelTransfer002 submitted.');
             expect(0).assertEqual(0);
         } catch (error) {
             expect(error.message).assertEqual('error');
-            console.info(TAG, 'bulk testUsbBulkTransfer005 end');
+            console.info(TAG, 'bulk testUsbCancelTransfer002 end');
             console.error('bulk write cancel successfully:', error);
         }
         done()
@@ -274,16 +274,16 @@ export default function UsbApiBulkTransferTest() {
 
     /**
      * @tc.number   : SUB_USB_Host_JS_UsbCancelTransfer_ErrCode_0100
-     * @tc.name     : testUsbCancelTransfer0100
+     * @tc.name     : testUsbCancelTransfer0300
      * @tc.desc     : bulk transfer write cancel failed.
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbBulkTransfer006', 0, async (done: Function) => {
-        console.info(TAG, 'bulk testUsbBulkTransfer006 enter');
+    it('testUsbCancelTransfer003', 0, async (done: Function) => {
+        console.info(TAG, 'bulk testUsbCancelTransfer003 enter');
         if (!isDeviceConnected) {
-			console.info(TAG, 'usb testUsbBulkTransfer006 No device is connected');
+			console.info(TAG, 'usb testUsbCancelTransfer003 No device is connected');
             expect(isDeviceConnected).assertFalse();
             done()
             return
@@ -302,9 +302,9 @@ export default function UsbApiBulkTransferTest() {
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
             usbMgr.usbCancelTransfer(transferParams);
-            console.info('bulk testUsbBulkTransfer006 submitted.');
+            console.info('bulk testUsbCancelTransfer003 submitted.');
         } catch (error) {
-            console.info(TAG, 'bulk testUsbBulkTransfer006 end');
+            console.info(TAG, 'bulk testUsbCancelTransfer003 end');
             console.error('bulk write cancel error:', error);
             expect(error.code).assertEqual(14400011);
         }

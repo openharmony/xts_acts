@@ -73,16 +73,16 @@ export default function UsbApiInterruptTransferTest() {
 
     /**
      * @tc.number   : SUB_USB_Host_JS_usbSubmitTransfer_ErrCode_0100
-     * @tc.name     : testUsbSubmitTransfer0200
+     * @tc.name     : testUsbSubmitTransfer0100
      * @tc.desc     : interrupt transfer error endpoint.
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbInterruptTransfer001', 0, async (done: Function) => {
-        console.info(TAG, 'interrupt testUsbInterruptTransfer001 enter');
+    it('testUsbSubmitTransfer001', 0, async (done: Function) => {
+        console.info(TAG, 'interrupt testUsbSubmitTransfer001 enter');
         if (!isDeviceConnected) {
-			console.info(TAG, 'usb testUsbInterruptTransfer001 No device is connected');
+			console.info(TAG, 'usb testUsbSubmitTransfer001 No device is connected');
             expect(isDeviceConnected).assertFalse();
             done()
             return
@@ -101,9 +101,9 @@ export default function UsbApiInterruptTransferTest() {
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
             usbMgr.usbSubmitTransfer(transferParams);
-            console.info('interrupt testUsbInterruptTransfer001 submitted.');
+            console.info('interrupt testUsbSubmitTransfer001 submitted.');
         } catch (error) {
-            console.info(TAG, 'interrupt testUsbInterruptTransfer001 end');
+            console.info(TAG, 'interrupt testUsbSubmitTransfer001 end');
             console.error('interrupt write successfully:', error);
             expect(error.code).assertEqual(14400012);
         }
@@ -118,10 +118,10 @@ export default function UsbApiInterruptTransferTest() {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbInterruptTransfer002', 0, async (done: Function) => {
-        console.info(TAG, 'interrupt testUsbInterruptTransfer002 enter');
+    it('testUsbSubmitTransfer002', 0, async (done: Function) => {
+        console.info(TAG, 'interrupt testUsbSubmitTransfer002 enter');
         if (!isDeviceConnected) {
-			console.info(TAG, 'usb testUsbInterruptTransfer002 No device is connected');
+			console.info(TAG, 'usb testUsbSubmitTransfer002 No device is connected');
             expect(isDeviceConnected).assertFalse();
             done()
             return
@@ -139,9 +139,9 @@ export default function UsbApiInterruptTransferTest() {
         let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 1, type, 2000, handleUsbTransferCallback);
         try {
             usbMgr.usbSubmitTransfer(transferParams);
-            console.info('interrupt testUsbInterruptTransfer002 submitted.');
+            console.info('interrupt testUsbSubmitTransfer002 submitted.');
         } catch (error) {
-            console.info(TAG, 'interrupt testUsbInterruptTransfer002 end');
+            console.info(TAG, 'interrupt testUsbSubmitTransfer002 end');
             console.error('interrupt write IO error:', error);
             expect(error.code).assertEqual(14400012);
         }
@@ -150,16 +150,16 @@ export default function UsbApiInterruptTransferTest() {
 
     /**
      * @tc.number   : SUB_USB_Host_JS_usbSubmitTransfer_Func_0100
-     * @tc.name     : testUsbSubmitTransfer0100
+     * @tc.name     : testUsbSubmitTransfer0300
      * @tc.desc     : interrupt transfer read successfully. unable to read data timeout.
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbInterruptTransfer003', 0, async (done: Function) => {
-        console.info(TAG, 'interrupt testUsbInterruptTransfer003 enter');
+    it('testUsbSubmitTransfer003', 0, async (done: Function) => {
+        console.info(TAG, 'interrupt testUsbSubmitTransfer003 enter');
         if (!isDeviceConnected) {
-			console.info(TAG, 'usb testUsbInterruptTransfer003 No device is connected');
+			console.info(TAG, 'usb testUsbSubmitTransfer003 No device is connected');
             expect(isDeviceConnected).assertFalse();
             done()
             return
@@ -178,9 +178,9 @@ export default function UsbApiInterruptTransferTest() {
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
             usbMgr.usbSubmitTransfer(transferParams);
-            console.info('interrupt testUsbInterruptTransfer003 submitted.');
+            console.info('interrupt testUsbSubmitTransfer003 submitted.');
             expect(0).assertEqual(0);
-            console.info(TAG, 'interrupt testUsbInterruptTransfer003 end');
+            console.info(TAG, 'interrupt testUsbSubmitTransfer003 end');
         } catch (error) {
             console.error('interrupt write successfully:', error);
         }
@@ -195,10 +195,10 @@ export default function UsbApiInterruptTransferTest() {
      * @tc.type     : Function
      * @tc.level    : Level 3  
      */
-    it('testUsbInterruptTransfer004', 0, async (done: Function) => {
-        console.info(TAG, 'interrupt testUsbInterruptTransfer004 enter');
+    it('testUsbCancelTransfer001', 0, async (done: Function) => {
+        console.info(TAG, 'interrupt testUsbCancelTransfer001 enter');
         if (!isDeviceConnected) {
-			console.info(TAG, 'usb testUsbInterruptTransfer004 No device is connected');
+			console.info(TAG, 'usb testUsbCancelTransfer001 No device is connected');
             expect(isDeviceConnected).assertFalse();
             done()
             return
@@ -218,9 +218,9 @@ export default function UsbApiInterruptTransferTest() {
         usbMgr.usbSubmitTransfer(transferParams);
         try {
             usbMgr.usbCancelTransfer(transferParams);
-            console.info('interrupt testUsbInterruptTransfer004 submitted.');
+            console.info('interrupt testUsbCancelTransfer001 submitted.');
             expect(0).assertEqual(0);
-            console.info(TAG, 'interrupt testUsbInterruptTransfer004 end');
+            console.info(TAG, 'interrupt testUsbCancelTransfer001 end');
         } catch (error) {
             console.error('interrupt write successfully:', error);
         }
