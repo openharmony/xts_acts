@@ -23,6 +23,7 @@ import ratingNode from './rating/ratingNode.test';
 import selectNode from './select/selectNode.test';
 import sliderNode from './slider/sliderNode.test';
 import toggleNode from './toggle/toggleNode.test';
+import columnWidths from './textPicker/columnWidths.test';
 export default function testsuite() {
   buttonType();
   enableCascadeTest();
@@ -33,4 +34,5 @@ export default function testsuite() {
   selectNode();
   sliderNode();
   toggleNode();
+  columnWidths();
 }
