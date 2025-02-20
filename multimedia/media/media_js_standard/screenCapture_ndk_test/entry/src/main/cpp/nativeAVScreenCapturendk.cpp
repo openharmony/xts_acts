@@ -632,7 +632,7 @@ static napi_value normalAVScreenCaptureShowCursorBeforeTestStop(napi_env env, na
     napi_create_int32(env, result, &res);
     return res;
 }
-static napi_value normalAVScreenCaptureShowCursorNullVlanTest(napi_env env, napi_callback_info info)
+static napi_value normalAVScreenCaptureShowCursorWithParaNullFalse(napi_env env, napi_callback_info info)
 {
     bool isMicrophone = false;
     screenCaptureNormal = OH_AVScreenCapture_Create();
@@ -647,7 +647,7 @@ static napi_value normalAVScreenCaptureShowCursorNullVlanTest(napi_env env, napi
 }
 
 
-static napi_value normalAVScreenCaptureShowCursorSecondNullVlanTest(napi_env env, napi_callback_info info)
+static napi_value normalAVScreenCaptureShowCursorWithParaNullTrue(napi_env env, napi_callback_info info)
 {
     bool isMicrophone = false;
     screenCaptureNormal = OH_AVScreenCapture_Create();
@@ -683,10 +683,10 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, napi_default, nullptr},
         {"normalAVScreenCaptureShowCursorTestStop", nullptr, normalAVScreenCaptureShowCursorTestStop, nullptr, nullptr,
             nullptr, napi_default, nullptr},
-        {"normalAVScreenCaptureShowCursorSecondNullVlanTest", nullptr, normalAVScreenCaptureShowCursorSecondNullVlanTest, nullptr, nullptr,
-            nullptr, napi_default, nullptr},
-        {"normalAVScreenCaptureShowCursorNullVlanTest", nullptr, normalAVScreenCaptureShowCursorNullVlanTest, nullptr, nullptr,
-            nullptr, napi_default, nullptr},
+        {"normalAVScreenCaptureShowCursorWithParaNullTrue", nullptr, normalAVScreenCaptureShowCursorWithParaNullTrue,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"normalAVScreenCaptureShowCursorWithParaNullFalse", nullptr, normalAVScreenCaptureShowCursorWithParaNullFalse,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
         {"normalAVScreenCaptureShowCursorBeforeTestStop", nullptr, normalAVScreenCaptureShowCursorBeforeTestStop,
             nullptr, nullptr, nullptr, napi_default, nullptr},
     };
