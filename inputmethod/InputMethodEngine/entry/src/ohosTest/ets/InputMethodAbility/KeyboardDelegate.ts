@@ -1983,8 +1983,8 @@ export class KeyboardDelegate {
     try {
       inputMethodAbility.on('securityModeChange', (securityMode: inputMethodEngine.SecurityMode) => {
         console.log(`InputMethodAbility securityModeChange, security is ${securityMode}`);
-        inputMethodAbility.off('privateCommand');
       })
+      inputMethodAbility.off('securityModeChange');
       commonEventPublishData = {
         data: "SUCCESS"
       };
