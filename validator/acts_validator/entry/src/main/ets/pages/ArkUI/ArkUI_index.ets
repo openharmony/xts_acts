@@ -66,11 +66,16 @@ struct IndexPage {
     { title: 'CanvasShadowColor', uri: 'pages/ArkUI/CanvasShadowColor' },
     { title: 'CanvasShadowOffsetX', uri: 'pages/ArkUI/CanvasShadowOffsetX' },
     { title: 'CanvasShadowOffsetY', uri: 'pages/ArkUI/CanvasShadowOffsetY' },
-	{ title: 'chipTest', uri: 'pages/ArkUI/chipTest' },
+    { title: 'chipTest', uri: 'pages/ArkUI/chipTest' },
     { title: 'chipGroupTest', uri: 'pages/ArkUI/chipGroupTest' },
     { title: 'DatePickerDialog', uri: 'pages/ArkUI/DatePickerDialog' },
     { title: 'Marquee', uri: 'pages/ArkUI/Marquee' },
     { title: 'PatternLock', uri: 'pages/ArkUI/PatternLock' },
+    { title: 'PatternLockL0_01', uri: 'pages/ArkUI/PatternLockL0_01' },
+    { title: 'PatternLockL0_02', uri: 'pages/ArkUI/PatternLockL0_02' },
+    { title: 'PatternLockL0_03', uri: 'pages/ArkUI/PatternLockL0_03' },
+    { title: 'PatternLockL0_04', uri: 'pages/ArkUI/PatternLockL0_04' },
+    { title: 'PatternLockL2_01', uri: 'pages/ArkUI/PatternLockL2_01' },
     { title: 'TextPicker', uri: 'pages/ArkUI/TextPicker' },
     { title: 'TimePicker', uri: 'pages/ArkUI/TimePicker' },
     { title: 'TimePickerDialog', uri: 'pages/ArkUI/TimePickerDialog' },
@@ -85,8 +90,8 @@ struct IndexPage {
     { title: 'TextPickerDialog', uri: 'pages/ArkUI/TextPickerDialog' },
     { title: 'Refresh', uri: 'pages/ArkUI/Refresh' },
     { title: 'onAccessibilityHover', uri: 'pages/ArkUI/AccessBilityHover' },
-    { title: 'AccessibilityProperty', uri: 'pages/ArkUI/AccessibilityProperty' },
     { title: 'NavigationEnableHoverMode', uri: 'pages/ArkUI/NavigationEnableHoverMode' },
+    { title: 'AccessibilityProperty', uri: 'pages/ArkUI/AccessibilityProperty' },
     { title: 'AccessibilityOptions', uri: 'pages/ArkUI/AccessibilityOptions' }
   ]
   @State ColorObject: Object[] = letColor;
