@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import cameraObj from 'libentry.so';
 import image from '@ohos.multimedia.image';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
@@ -1153,7 +1152,7 @@ export default function CameraErrorCodeUsecaseTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-     it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME', 0, async () => {
+     it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME_0100', 0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME_0100--------------");
       mCameraSession = cameraObj.createSession();
       let ret = cameraObj.getCameraHostName();
@@ -1171,14 +1170,86 @@ export default function CameraErrorCodeUsecaseTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-     it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE', 0, async () => {
+     it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_0100', 0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_0100--------------");
       mCameraSession = cameraObj.createSession();
-      let ret = cameraObj.getCameraHostName();
+      let ret = cameraObj.getCameraHostType();
       if (ret != 0) {
         console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_0100 FAILED");
         console.info(TAG + "ERRORCODE: " + ret);
         expect(ret == Camera_ErrorCode.CAMERA_SERVICE_FATAL_ERROR).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME_ERROR_PARAMETER_0100
+     * @tc.name      : test getHostName api with error code CAMERA_INVALID_ARGUMENT
+     * @tc.desc      : test getHostName api with error code CAMERA_INVALID_ARGUMENT
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME_ERROR_PARAMETER_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME_ERROR_PARAMETER_0100--------------");
+      mCameraSession = cameraObj.createSession();
+      let ret = cameraObj.getCameraHostNameErrorParameter();
+      console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME_ERROR_PARAMETER_0100");
+      console.info(TAG + "ERRORCODE: " + ret);
+      expect(ret == Camera_ErrorCode.CAMERA_INVALID_ARGUMENT).assertTrue();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_ERROR_PARAMETER_0100
+     * @tc.name      : test getCameraHostType api with error code CAMERA_INVALID_ARGUMENT
+     * @tc.desc      : test getCameraHostType api with error code CAMERA_INVALID_ARGUMENT
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_ERROR_PARAMETER_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_ERROR_PARAMETER_0100--------------");
+      mCameraSession = cameraObj.createSession();
+      let ret = cameraObj.getCameraHostTypeErrorParameter();
+      console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_ERROR_PARAMETER_0100");
+      console.info(TAG + "ERRORCODE: " + ret);
+      expect(ret == Camera_ErrorCode.CAMERA_INVALID_ARGUMENT).assertTrue();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME_INSPECTION_0100
+     * @tc.name      : test getHostName api Camera check
+     * @tc.desc      : test getHostName api Camera check
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME_INSPECTION_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME_INSPECTION_0100--------------");
+      mCameraSession = cameraObj.createSession();
+      let ret = cameraObj.getCameraHostNameInspection();
+      if (ret != 0) {
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_NAME_INSPECTION_0100");
+        console.info(TAG + "ERRORCODE: " + ret);
+        expect(ret == Camera_ErrorCode.CAMERA_INVALID_ARGUMENT).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_INSPECTION_0100
+     * @tc.name      : test getCameraHostType api Camera check
+     * @tc.desc      : test getCameraHostType api Camera check
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_INSPECTION_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_INSPECTION_0100--------------");
+      mCameraSession = cameraObj.createSession();
+      let ret = cameraObj.getCameraHostTypeInspection();
+      if (ret != 0) {
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_HOST_TYPE_INSPECTION_0100");
+        console.info(TAG + "ERRORCODE: " + ret);
+        expect(ret == Camera_ErrorCode.CAMERA_INVALID_ARGUMENT).assertTrue();
       }
     });
   })
