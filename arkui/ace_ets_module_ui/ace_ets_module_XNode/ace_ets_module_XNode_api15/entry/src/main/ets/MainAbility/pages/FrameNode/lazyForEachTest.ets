@@ -158,13 +158,13 @@ struct lazyForEachTest {
               .height(105)
 
               Column() {
-                Text(this.getChildValue).id('getChildValue')
-                Text(this.getFirstChildIndexWithoutExpandValue).id('getFirstChildIndexWithoutExpandValue')
-                Text(this.getLastChildIndexWithoutExpandValue).id('getLastChildIndexWithoutExpandValue')
+                Text(this.getChildValue).id('getChildValue').height('3%')
+                Text(this.getFirstChildIndexWithoutExpandValue).id('getFirstChildIndexWithoutExpandValue').height('3%')
+                Text(this.getLastChildIndexWithoutExpandValue).id('getLastChildIndexWithoutExpandValue').height('3%')
                 Row() {
                   Button('EXPAND')
                     .id('button_expand')
-                    .width(150).margin(5)
+                    .width('20%').margin(5).height('3%')
                     .onClick(() => {
                       const uiContext = this.getUIContext();
                       if (uiContext) {
@@ -178,7 +178,7 @@ struct lazyForEachTest {
                     })
                   Button('NOT_EXPAND')
                     .id('button_not_expand')
-                    .width(150).margin(5)
+                    .width('20%').margin(5).height('3%')
                     .onClick(() => {
                       const uiContext = this.getUIContext();
                       if (uiContext) {
@@ -195,7 +195,7 @@ struct lazyForEachTest {
                 Row() {
                   Button('LAZY_EXPAND')
                     .id('button_lazy_expand')
-                    .width(150).margin(5)
+                    .width('20%').margin(5).height('3%')
                     .onClick(() => {
                       const uiContext = this.getUIContext();
                       if (uiContext) {
@@ -209,7 +209,7 @@ struct lazyForEachTest {
                     })
                   Button('ExpandMode_null')
                     .id('button_expand_null')
-                    .width(150).margin(5)
+                    .width('20%').margin(5).height('3%')
                     .onClick(() => {
                       const uiContext = this.getUIContext();
                       if (uiContext) {
@@ -226,7 +226,7 @@ struct lazyForEachTest {
                 Row() {
                   Button('ExpandMode_undefined')
                     .id('button_expand_undefined')
-                    .width(150).margin(5)
+                    .width('20%').margin(5).height('3%')
                     .onClick(() => {
                       const uiContext = this.getUIContext();
                       if (uiContext) {
@@ -241,7 +241,7 @@ struct lazyForEachTest {
                     })
                   Button('Expand Out of bounds')
                     .id('button_expand_out')
-                    .width(150).margin(5)
+                    .width('20%').margin(5).height('3%')
                     .onClick(() => {
                       const uiContext = this.getUIContext();
                       if (uiContext) {
@@ -258,7 +258,7 @@ struct lazyForEachTest {
                 Row() {
                   Button('LazyExpand Out of bounds')
                     .id('button_lazy_expand_out')
-                    .width(150).margin(5)
+                    .width('20%').margin(5).height('3%')
                     .onClick(() => {
                       const uiContext = this.getUIContext();
                       if (uiContext) {
@@ -272,7 +272,7 @@ struct lazyForEachTest {
                     })
                   Button('NotExpand Out of bounds')
                     .id('button_not_expand_out')
-                    .width(150).margin(5)
+                    .width('20%').margin(5).height('3%')
                     .onClick(() => {
                       const uiContext = this.getUIContext();
                       if (uiContext) {
