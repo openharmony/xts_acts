@@ -397,7 +397,7 @@ export default function AVImageGeneratorTest() {
                 } else {
                     console.error(`createAVImageGenerator fail, error message:${err.message}`);
                     expect().assertFail()
-                    };
+                };
             });
             done()
         })      
