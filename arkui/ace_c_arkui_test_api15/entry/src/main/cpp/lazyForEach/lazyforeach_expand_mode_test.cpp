@@ -278,7 +278,7 @@ static void OnEventReceive2(ArkUI_NodeEvent *event)
                      "kkk getLastChildIndexWithoutExpand1 :%{public}d ", endIndex);
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "kkk getChild :%{public}s ",
                      getChildValue);
-        if (startIndex == 0 && endIndex == NUMBER_3 && strcmp(getChildValue, "ListAItem_TTT3") == 0) {
+        if (startIndex == 0 && endIndex == NUMBER_10 && strcmp(getChildValue, "ListAItem_TTT3") == 0) {
             nodeAPI->setAttribute(node, NODE_BACKGROUND_COLOR, &background_color_item);
         }
     }
@@ -420,7 +420,7 @@ static void OnEventReceive5(ArkUI_NodeEvent *event)
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
                      "kkk getLastChildIndexWithoutExpand8 :%{public}d ", endIndex);
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "kkk ec :%{public}d ", ec);
-        if (startIndex == 0 && endIndex == NUMBER_3 && ec == ARKUI_ERROR_CODE_NO_ERROR) {
+        if (startIndex == 0 && endIndex == NUMBER_3 && ec == ARKUI_ERROR_CODE_PARAM_INVALID) {
             nodeAPI->setAttribute(node, NODE_BACKGROUND_COLOR, &background_color_item);
         }
     }
