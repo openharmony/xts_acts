@@ -201,7 +201,6 @@ struct webCookieManager {
               Utils.emitEvent(value, 100019)
               break;
             }
-
           }
         })
       }
