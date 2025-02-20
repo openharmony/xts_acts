@@ -52,16 +52,12 @@ export default function paddingTest() {
     'Swiper',
     //    'Tabs',
     'TabContent',
-    'WaterFlow',
-    'ColumnSplit',
     'Flex',
-    'FlowItem',
     'GridCol',
     'GridItem',
     'ListItemGroup',
     'Navigator',
     //    'RelativeContainer',
-    'RowSplit',
   //    'ListItem'
   ]
 
