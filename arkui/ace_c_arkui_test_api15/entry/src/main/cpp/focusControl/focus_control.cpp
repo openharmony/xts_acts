@@ -205,21 +205,12 @@ napi_value FocusControlTest::FocusControlTest_002(napi_env env, napi_callback_in
     nodeAPI->addChild(column, button1xx);
 
 
-    //auto button2 = createChildNode(nodeAPI, true);
-   // ArkUI_AttributeItem textId2 = {.string = "button2"};
-    //nodeAPI->setAttribute(button2, NODE_ID, &textId2);
-    //nodeAPI->addChild(column, button2);
 
     nodeAPI->registerNodeEvent(button1xx, NODE_ON_BLUR, ON_BLUR_EVENT_ID, nullptr);
     nodeAPI->registerNodeEvent(button1xx, NODE_ON_CLICK, ON_CLICK_EVENT_ID, nullptr);
 
     nodeAPI->registerNodeEventReceiver(&OnEventReceive2);
 
-    //auto buttonContext = OH_ArkUI_GetContextByNode(button);
-
-    //OH_ArkUI_FocusRequest(button);
-
-    //OH_ArkUI_FocusClear(buttonContext);
 
     std::string id(xComponentID);
     if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==

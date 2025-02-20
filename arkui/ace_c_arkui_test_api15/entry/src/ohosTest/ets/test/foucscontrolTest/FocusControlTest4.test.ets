@@ -74,12 +74,7 @@ export default function FocusControlTest4(){
       let menu4 = await driver.findComponent(ON.id('menu4'));
       await menu4.click();
       await Utils.sleep(1000); 
-        // 长按
-       // let menu4 = await driver.findComponent(ON.id('menu4'));
-        
-        //await menu4.longClick();
-       // await Utils.sleep(1000)
-
+      
       // tab key
       await driver.triggerKey(2049);
       await Utils.sleep(1000);
