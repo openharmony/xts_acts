@@ -27,3 +27,11 @@ export const testHostWindowInfoDestroy: (a: string) => void;
 export const ProgressLinearStyleTest: (a: string) => void;
 
 export const testProgressLinearStyle: (a: string) => void;
+
+export const FocusControlTest_001: (a: string) => void;
+
+export const FocusControlTest_002: (a: string) => void;
+
+export const FocusControlTest_003: (a: string) => void;
+
+export const FocusControlTest_004: (a: string) => void;
