@@ -203,9 +203,9 @@ export default function nativeAVScreenCaptureNdkTest() {
      * @tc.level        Level 1
      */
     it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0300', 0, async (done: Function) => {
-      console.info(Tag + "normalAVScreenCaptureShowCursorNullVlanTest-------------before click:");
-      let result: number = myScreenCaptureNdk.normalAVScreenCaptureShowCursorNullVlanTest();
-      console.info(Tag + "normalAVScreenCaptureShowCursorNullVlanTest-------------res:" + result);
+      console.info(Tag + "normalAVScreenCaptureShowCursorWithParaNullFalse-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureShowCursorWithParaNullFalse();
+      console.info(Tag + "normalAVScreenCaptureShowCursorWithParaNullFalse-------------res:" + result);
       expect(result).assertEqual(0);
       done();
     }); 
@@ -219,9 +219,9 @@ export default function nativeAVScreenCaptureNdkTest() {
      * @tc.level        Level 1
      */
     it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0400', 0, async (done: Function) => {
-      console.info(Tag + "normalAVScreenCaptureShowCursorSecondNullVlanTest-------------before click:");
-      let result: number = myScreenCaptureNdk.normalAVScreenCaptureShowCursorSecondNullVlanTest();
-      console.info(Tag + "normalAVScreenCaptureShowCursorSecondNullVlanTest-------------res:" + result);
+      console.info(Tag + "normalAVScreenCaptureShowCursorWithParaNullTrue-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureShowCursorWithParaNullTrue();
+      console.info(Tag + "normalAVScreenCaptureShowCursorWithParaNullTrue-------------res:" + result);
       expect(result).assertEqual(0);
       done();
     });  
