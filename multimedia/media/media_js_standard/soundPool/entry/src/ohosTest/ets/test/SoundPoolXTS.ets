@@ -5372,5 +5372,96 @@ export default function soundPoolTest() {
       return;
     })
 
+    /* *
+      * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_MULTI_INSTANCE_0100
+      * @tc.name      : play four sounds, use two instances
+      * @tc.desc      : Function test
+    */
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_MULTI_INSTANCE_0100', 0, async (done: Function) => {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_MULTI_INSTANCE_0100 in`);
+      try {
+        let streamId_: Array<number> = [];
+        let soundId_: Array<number> = [];
+        let loadCount1 = 0;
+        let loadCount2 = 0;
+        let playTime1 = 0;
+        let playTime2 = 0;
+        let sleepTotalTime = 0;
+
+        let soundPool1 = await media.createSoundPool(maxStreams, audioRendererInfo);
+        let soundPool2 = await media.createSoundPool(maxStreams, audioRendererInfo);
+
+        if (soundPool1 == null || soundPool2 == null) {
+          console.error(`${TAG}:createSoundPool soundPool1 or soundPool2 is null`);
+          expectFalse();
+          done();
+          return;
+        }
+        soundPool1.on('error', (error) => {
+          console.error(`${TAG}: soundPool1 onError called! error happened, message is: ${error.message}`);
+          expectFalse();
+        })
+        soundPool1.on('loadComplete', (soundId) => {
+          console.info(`${TAG}: soundPool1 on loadComplete called, soundId: ${soundId}`);
+          loadCount1++;
+        })
+        soundPool1.on('playFinished', () => {
+          console.info(`${TAG}: soundPool1 on playFinished called!`);
+          playTime1++;
+        })
+        soundPool2.on('error', (error) => {
+          console.error(`${TAG}: soundPool2 onError called! error happened, message is: ${error.message}`);
+          expectFalse();
+        })
+        soundPool2.on('loadComplete', (soundId) => {
+          console.info(`${TAG}: soundPool2 on loadComplete called, soundId: ${soundId}`);
+          loadCount2++;
+        })
+        soundPool2.on('playFinished', () => {
+          console.info(`${TAG}: soundPool2 on playFinished called!`);
+          playTime2++;
+        })
+        soundId_[0] = await soundPool1.load(fd1, 0, length1);
+        soundId_[1] = await soundPool1.load(fd2, length2 / 3, length2);
+        soundId_[2] = await soundPool2.load(uri3);
+        soundId_[3] = await soundPool2.load(fd4, length4 / 3, length4);
+        while (loadCount1 != 2 && loadCount2 != 2) {
+          sleepTotalTime++;
+          if (sleepTotalTime > 15) {
+            expectFalse();
+            break;
+          }
+          await sleep(1000);
+        }
+        streamId_[0] = await soundPool1.play(soundId_[0]);
+        streamId_[1] = await soundPool1.play(soundId_[1]);
+        streamId_[2] = await soundPool2.play(soundId_[2]);
+        streamId_[3] = await soundPool2.play(soundId_[3]);
+        await sleep(8000);
+
+        await soundPool1.stop(streamId_[0]);
+        await soundPool1.stop(streamId_[1]);
+        await soundPool2.stop(streamId_[2]);
+        await soundPool2.stop(streamId_[3]);
+
+        await soundPool1.unload(soundId_[0]);
+        await soundPool1.unload(soundId_[1]);
+        await soundPool2.unload(soundId_[2]);
+        await soundPool2.unload(soundId_[3]);
+
+        if (playTime1 == 2 && playTime2 == 2) {
+          console.info(`${TAG}: four stream play success`);
+        } else {
+          console.info(`${TAG}: four stream play fail! playTime1: ${playTime1}, playTime2: ${playTime2}`);
+          expectFalse();
+        }
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expectFalse();
+      }
+      done();
+      return;
+    })
+
   })
 }
