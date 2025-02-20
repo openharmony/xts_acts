@@ -24,3 +24,5 @@ export const normalAVScreenCaptureShowCursorTestStop: () => number;
 export const normalAVScreenCaptureShowCursorBeforeTestStop: () => number;
 export const normalAVScreenCaptureShowCursorWithParaNullFalse: () => number;
 export const normalAVScreenCaptureShowCursorWithParaNullTrue: () => number;
+export const normalAVScreenCaptureSetDisplayCallbackFail: () => number;
+export const normalAVScreenCaptureDisplayCallbackSuccess: () => number;

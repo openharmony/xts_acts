@@ -153,6 +153,42 @@ export default function nativeAVScreenCaptureNdkTest() {
     });
 
     /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetDisplayCallback_0100
+     * @tc.name         OH_AVScreenCapture_StartScreenCapture_SetDisplayCallback_Success
+     * @tc.desc         OH_AVScreenCapture_StartScreenCapture_SetDisplayCallback_Success
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetDisplayCallback_0100', 0, async (done: Function) => {
+      console.info(Tag + "normalAVScreenCaptureDisplayCallbackSuccess-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureDisplayCallbackSuccess();
+      console.info(Tag + "normalAVScreenCaptureDisplayCallbackSuccess-------------result:" + result);
+      expect(result).assertEqual(0);
+      await Utils.btnTextScreenCapture();
+      let resultStop: number = myScreenCaptureNdk.normalAVScreenCaptureTestStop();
+      done();
+    });
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetDisplayCallback_0200
+     * @tc.name         OH_AVScreenCapture_StartScreenCapture_SetDisplayCallback_Fail
+     * @tc.desc         OH_AVScreenCapture_StartScreenCapture_SetDisplayCallback_Fail
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetDisplayCallback_0200', 0, async (done: Function) => {
+      console.info(Tag + "normalAVScreenCaptureSetDisplayCallbackFalse-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureSetDisplayCallbackFail();
+      console.info(Tag + "normalAVScreenCaptureSetDisplayCallbackFail-------------result:" + result);
+      expect(result).assertEqual(8);
+      await Utils.btnTextScreenCapture();
+      let resultStop: number = myScreenCaptureNdk.normalAVScreenCaptureTestStop();
+      done();
+    });
+
+    /**
      * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0100
      * @tc.name         OH_AVScreenCapture_StartScreenCaptureOrigin
      * @tc.desc         OH_AVScreenCapture_StartScreenCaptureOrigin
@@ -225,6 +261,5 @@ export default function nativeAVScreenCaptureNdkTest() {
       expect(result).assertEqual(0);
       done();
     });  
-  
   })
 }
