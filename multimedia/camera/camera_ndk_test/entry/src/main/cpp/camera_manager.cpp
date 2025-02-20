@@ -26,6 +26,7 @@ const Camera_Profile DEFAULT_PREVIEW_PROFILE = { CAMERA_FORMAT_YUV_420_SP, { 640
 const Camera_Profile DEFAULT_PHOTO_PROFILE = { CAMERA_FORMAT_JPEG, { 640, 480 } };
 const Camera_VideoProfile DEFAULT_VIDEO_PROFILE = { CAMERA_FORMAT_YUV_420_SP, { 640, 480 }, {30, 30} };
 
+
 Camera_Size SecureSize = {640, 480};
 Camera_Profile PhotoOutputWithoutSurface = {CAMERA_FORMAT_JPEG, {1920, 1080}};
 Camera_Profile PreviewOutputSample = {CAMERA_FORMAT_YUV_420_SP, {1920, 1080}};

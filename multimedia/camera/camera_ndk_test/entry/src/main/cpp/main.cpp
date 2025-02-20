@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+
 #include "napi/native_api.h"
 #include "camera_manager_ndk.h"
 #include <js_native_api.h>

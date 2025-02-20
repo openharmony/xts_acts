@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+
 #ifndef CAMERA_NATIVE_CAMERA_H
 #define CAMERA_NATIVE_CAMERA_H
 
