@@ -201,18 +201,6 @@ struct webCookieManager {
               Utils.emitEvent(value, 100019)
               break;
             }
-
-            case "testSaveCookieSync001": {
-              try {
-                webView.WebCookieManager.saveCookieSync();
-                Utils.emitEvent('success', 20250218);
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-                Utils.emitEvent('fail', 20250218);
-              }
-              break;
-            }
           }
         })
       }
