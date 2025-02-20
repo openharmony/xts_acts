@@ -266,7 +266,7 @@ export default function AVScreenCaptureRecorderTest() {
         await media.reportAVScreenCaptureUserChoice(-1, "-1")
       } catch (error) {
         console.error(`reportAVScreenCaptureUserChoice error, error message: ${error.message}`);
-        expect(true).assertFail();
+        expect().assertFail()
       }
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200 end')
       done();

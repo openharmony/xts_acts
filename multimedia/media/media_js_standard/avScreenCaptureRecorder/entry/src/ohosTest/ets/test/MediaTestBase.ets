@@ -89,7 +89,7 @@ export default class MediaTestBase {
 
     avScreenCaptureRecorder?.on('error', (err) => {
       console.error('avScreenCaptureRecorder error:' + err.message);
-      expect(true).assertFail();
+      expect().assertFail()
     })
 
   }
@@ -123,11 +123,11 @@ export default class MediaTestBase {
             this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
           } else {
             console.error('createAVScreenCaptureRecorder fail');
-            expect(true).assertFail();
+            expect().assertFail()
           }
         }).catch((error: BusinessError) => {
           console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
-          expect(true).assertFail();
+          expect().assertFail()
         });
 
         break;
@@ -144,7 +144,7 @@ export default class MediaTestBase {
             this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, mySteps, done);
           } else {
             console.error('avScreenCaptureRecorder init failed, error: ' + err.message);
-            expect(true).assertFail();
+            expect().assertFail()
           }
 
         });
@@ -156,7 +156,7 @@ export default class MediaTestBase {
           console.info('avScreenCaptureRecorder start success');
         }).catch((err: BusinessError) => {
           console.error('avScreenCaptureRecorder start failed, error: ' + err.message);
-          expect(true).assertFail();
+          expect().assertFail()
         })
 
         this.driveFnNoSleep(1)
@@ -173,7 +173,7 @@ export default class MediaTestBase {
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
           console.error('avScreenCaptureRecorder skipPrivacyMode failed, error: ' + err.message);
-          expect(false).assertTrue();
+          expect().assertFail()
         })
 
         break;
@@ -184,7 +184,7 @@ export default class MediaTestBase {
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
           console.error('avScreenCaptureRecorder stop failed, error: ' + err.message);
-          expect(true).assertFail();
+          expect().assertFail()
         })
 
         break;
@@ -196,7 +196,7 @@ export default class MediaTestBase {
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
           console.error('avScreenCaptureRecorder release failed, error: ' + err.message);
-          expect(true).assertFail();;
+          expect().assertFail();
         })
 
         this.closeFd(this.outputFdObject.fd);
@@ -209,7 +209,7 @@ export default class MediaTestBase {
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
           console.error('avScreenCaptureRecorder setMicEnabled failed, error: ' + err.message);
-          expect(true).assertFail();
+          expect().assertFail()
         })
         break;
       case this.AV_CREATEAVPLAYER:
@@ -257,7 +257,7 @@ export default class MediaTestBase {
                   console.info('case prepare called' + err);
                   if (err != null) {
                     console.error(`case prepare error, errMessage is ${err.message}`);
-                    expect(true).assertFail();;
+                    expect().assertFail();
                     done();
                   } else if (this.avPlayer) {
                     console.info('case avPlayer.duration: ' + this.avPlayer.duration);
@@ -287,11 +287,11 @@ export default class MediaTestBase {
                   console.info('avPlayer release success');
                 }).catch((err: BusinessError) => {
                   console.info('avPlayer release failed, error: ' + err.message);
-                  expect(true).assertFail();
+                  expect().assertFail()
                 })
               }).catch((err: BusinessError) => {
                 console.info('avPlayer stop failed, error: ' + err.message);
-                expect(true).assertFail();
+                expect().assertFail()
               })
               break;
             case this.AV_RELEASED:
@@ -300,12 +300,12 @@ export default class MediaTestBase {
               done();
               break;
             case this.AV_ERROR:
-              expect(true).assertFail();;
+              expect().assertFail();
               this.avPlayer?.release().then(() => {
                 console.info('avPlayer release success');
               }).catch((err: BusinessError) => {
                 console.info('avPlayer release failed, error: ' + err.message);
-                expect(true).assertFail();
+                expect().assertFail()
               })
               this.avPlayer = null;
               break;
@@ -316,7 +316,7 @@ export default class MediaTestBase {
       }
       if (err != null) {
         console.error(`case createAVPlayer error, errMessage is ${err.message}`);
-        expect(true).assertFail();;
+        expect().assertFail();
         done();
       }
     });
@@ -336,7 +336,7 @@ export default class MediaTestBase {
         done();
       } else {
         console.error(`Failed to get TrackDescription, error:${error}`);
-        expect(true).assertFail();;
+        expect().assertFail();
       }
     });
   }
