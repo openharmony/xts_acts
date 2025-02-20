@@ -2,7 +2,6 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/textPicker/TextPickerTextStyle",
-        "MainAbility/pages/textPicker/TextStyleAnimation",
-        "MainAbility/pages/textPicker/modifierTextStyle"
+        "MainAbility/pages/textPicker/TextStyleAnimation"
     ]
 }

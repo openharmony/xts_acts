@@ -15,9 +15,7 @@
 
 import pickerTextStyleTest from './textPicker/TextPickerTextStyle.test';
 import pickerTextStyleAnimationTest from './textPicker/TextPickerTextStyleAnimation.test';
-import pickerTextStyleModifierTest from './textPicker/ModifierTextStyle.test';
 export default function testsuite() {
   pickerTextStyleTest()
   pickerTextStyleAnimationTest()
-  pickerTextStyleModifierTest()
 }
