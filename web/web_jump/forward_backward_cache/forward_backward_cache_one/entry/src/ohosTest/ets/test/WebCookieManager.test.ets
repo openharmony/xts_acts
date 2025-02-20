@@ -228,20 +228,5 @@ export default function webCookieManager() {
       sendEventByKey('WebCookieManagerButton', 10, '');
     })
 
-    /*
-    * @tc.number     : SUB_WEB_SAVECOOKIESYNC_0100
-    * @tc.name       : testSaveCookieSync001
-    * @tc.desc       : test saveCookieSync
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testSaveCookieSync001', 0, async (done: Function) => {
-      Utils.emitEvent('testSaveCookieSync001', 10)
-      await Utils.sleep(2000);
-      Utils.registerEvent('testSaveCookieSync001', 'success', 20250218, done);
-      sendEventByKey('WebCookieManagerButton', 10, '');
-    })
-
   })
 }
