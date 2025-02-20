@@ -20,6 +20,8 @@ import groupAnimation from './ListTest/groupAnimation.test';
 import animationCallback from './ListTest/animationCallback.test';
 import nodeTypeGrid from './GridTest/nodeTypeGrid.test'; 
 import clipContent from './WaterFlowTest/clipContent.test';
+import gridNode from './GridTest/gridNode.test';
+import griditemNode from './GridItemTest/griditemNode.test';
 
 export default function testsuite() {
   enableScrollJsunit()
@@ -29,4 +31,6 @@ export default function testsuite() {
   animationCallback()
   nodeTypeGrid()
   clipContent()
+  gridNode();
+  griditemNode();
 }
