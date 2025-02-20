@@ -12,15 +12,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-{
-  "license": "",
-  "devDependencies": {
-    "@types/libentry.so": "file:./src/main/cpp/types/libentry"
-    },
-  "author": "",
-  "name": "entry",
-  "description": "Please describe the basic information.",
-  "main": "",
-  "version": "1.0.0",
-  "dependencies": {}
-}
+export const OHAvCapabilityByCategoryH265: () => number;
+export const OHAVMuxerByAddTrackH265: () => number;
