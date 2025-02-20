@@ -69,16 +69,18 @@ export default function NavigationBindToNestedScrollable() {
 
       let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
       await scrollBar.scrollToBottom();
+      await scrollBar.scrollSearch(ON.text('item_15'));
       await CommonFunc.sleep(5000);
 
       await driver.assertComponentExist(ON.type('TitleBar'));
       await driver.assertComponentExist(ON.type('ToolBar'));
 
-      let scrollBar2 = await scrollBar.scrollSearch(ON.type('List'), true, 200);
+      let scrollBar2 = await scrollBar.scrollSearch(ON.type('List'));
       await scrollBar2.scrollToBottom();
+      await scrollBar2.scrollSearch(ON.text('Child_item_10'));
       await CommonFunc.sleep(5000);
 
-	  let component1: Component | null = await driver.findComponent(ON.type('TitleBar'));
+	  let component1: Component | null = await driver.findComponent(ON.type('TitleBar').text('pageOne'));
       expect(component1).assertEqual(null);
 	  let component2: Component | null = await driver.findComponent(ON.type('ToolBar'));
       expect(component2).assertEqual(null);
