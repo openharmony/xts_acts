@@ -15,8 +15,14 @@
 
 import UsbSystemApiNormalJsTest from './UsbSystemApiNormalJsTest.test';
 import UsbNormalAppJsTest from './UsbNormalAppJsTest.test'
+import UsbApiBulkTransferTest from './UsbApiBulkTransferTest.test';
+import UsbApiInterruptTransferTest from './UsbApiInterruptTransferTest.test';
+import UsbApiIsochronousTransferTest from './UsbApiIsochronousTransferTest.test';
 
 export default function testsuite() {
   UsbSystemApiNormalJsTest()
   UsbNormalAppJsTest()
+  UsbApiBulkTransferTest()
+  UsbApiInterruptTransferTest()
+  UsbApiIsochronousTransferTest()
 }
