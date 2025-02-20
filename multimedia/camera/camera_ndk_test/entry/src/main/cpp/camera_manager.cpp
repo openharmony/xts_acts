@@ -364,6 +364,46 @@ Camera_ErrorCode NDKCamera::GetCameraOrientation(void)
     return ret_;
 }
 
+Camera_ErrorCode NDKCamera::GetCameraHostNameErrorParameter(void)
+{
+    ret_ = OH_CameraDevice_GetHostDeviceName(nullptr, nullptr);
+    if (ret_ != CAMERA_OK) {
+        LOG("ndkXTS OH_CameraDevice_GetCameraHostName failed.");
+    }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::GetCameraHostTypeErrorParameter(void)
+{
+    ret_ = OH_CameraDevice_GetHostDeviceType(nullptr, nullptr);
+    if (ret_ != CAMERA_OK) {
+        LOG("ndkXTS OH_CameraDevice_GetCameraHostType failed.");
+    }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::GetCameraHostNameInspection(void)
+{
+    for (int32_t deviceIndex = 0; deviceIndex < size_; deviceIndex++) {
+        ret_ = OH_CameraDevice_GetHostDeviceName(&cameras_[deviceIndex], &hostName_);
+        if (ret_ != CAMERA_OK) {
+            LOG("ndkXTS OH_CameraDevice_GetCameraHostName failed.");
+        }
+    }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::GetCameraHostTypeInspection(void)
+{
+    for (int32_t deviceIndex = 0; deviceIndex < size_; deviceIndex++) {
+        ret_ = OH_CameraDevice_GetHostDeviceType(&cameras_[deviceIndex], &hostType_);
+        if (ret_ != CAMERA_OK) {
+            LOG("ndkXTS OH_CameraDevice_GetCameraHostType failed.");
+        }
+    }
+    return ret_;
+}
+
 Camera_ErrorCode NDKCamera::GetCameraHostName(void)
 {
     ret_ = OH_CameraDevice_GetHostDeviceName(&cameras_[cameraDeviceIndex_], &hostName_);

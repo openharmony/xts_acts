@@ -148,6 +148,10 @@ public:
     Camera_ErrorCode GetSupportedCameras(void);
     Camera_ErrorCode GetCameraOrientation(void);
     Camera_ErrorCode GetCameraHostName(void);
+    Camera_ErrorCode GetCameraHostNameErrorParameter(void);
+    Camera_ErrorCode GetCameraHostTypeErrorParameter(void);
+    Camera_ErrorCode GetCameraHostNameInspection(void);
+    Camera_ErrorCode GetCameraHostTypeInspection(void);
     Camera_ErrorCode GetCameraHostType(void);
     Camera_ErrorCode GetSupportedOutputCapability(void);
     Camera_ErrorCode CreatePreviewOutput(void);
