@@ -286,7 +286,7 @@ static void OnEventReceive2(ArkUI_NodeEvent *event)
         auto errorCode1 = OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand(node_ptr, &startIndex);
         auto errorCode2 = OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand(node_ptr, &endIndex);
         ArkUI_NodeHandle subnode_ptr = nullptr;
-        OH_ArkUI_NodeUtils_GetChildWithExpandMode(node_ptr, 3, &subnode_ptr, ARKUI_EXPAND);
+        OH_ArkUI_NodeUtils_GetChildWithExpandMode(node_ptr, NUMBER_3, &subnode_ptr, ARKUI_EXPAND);
         auto getChildValue = nodeAPI->getAttribute(subnode_ptr, NODE_ID)->string;
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
                      "kkk getFirstChildIndexWithoutExpand2 :%{public}d ", startIndex);
