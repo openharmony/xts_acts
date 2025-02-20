@@ -27,6 +27,14 @@ import onkeyEventDispatchTest6 from './keyEventDispatchTest/onkeyEventDispatchsi
 import onkeyEventDispatchTest7 from './keyEventDispatchTest/onkeyEventDispatchseven.test';
 import onkeyEventDispatchTest8 from './keyEventDispatchTest/onkeyEventDispatcheight.test';
 import imageMatrix from './imageMatrix/imageMatrix.test';
+import GetChangedPointerId from './GetChangedPointerId/GetChangedPointerId.test';
+import componentSnapshot from './componentSnapshot/componentSnapshot.test';
+import longpressGestureTest from './isFingerCountLimited/LongPressGesture.test';
+import panGestureTest from './isFingerCountLimited/PanGesture.test';
+import pinchGestureTest from './isFingerCountLimited/PinchGesture.test';
+import rotationGestureTest from './isFingerCountLimited/RotationGesture.test';
+import swipeGestureTest from './isFingerCountLimited/SwipeGesture.test';
+import tapGestureTest from './isFingerCountLimited/TapGesture.test';
 
 export default function testsuite() {
   getWithUniqueId();
@@ -43,4 +51,12 @@ export default function testsuite() {
   onkeyEventDispatchTest7();
   onkeyEventDispatchTest8();
   imageMatrix();
+  GetChangedPointerId();
+  componentSnapshot();
+  longpressGestureTest();
+  panGestureTest();
+  pinchGestureTest();
+  rotationGestureTest();
+  swipeGestureTest();
+  tapGestureTest();
 }
