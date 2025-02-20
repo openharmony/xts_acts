@@ -21,7 +21,7 @@ import common from '@ohos.app.ability.common';
 import commonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
 import Want from '@ohos.app.ability.Want';
-import { UiDriver, BY} from '@ohos.UiTest';
+import { UiDriver, BY, Driver} from '@ohos.UiTest';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 
 let INVALID_PARAM = 401;
@@ -31,8 +31,16 @@ function sleep(ms: number) {
   return new Promise<number>(resolve => setTimeout(resolve, ms));
 }
 
+let driver1:Driver;
 export default function verificationTest() {
   describe('VerificationTestTest', () => {
+    beforeAll(async()=>{
+      try{
+        driver1 = await Driver.create();
+      }catch{
+        console.info("VerificationTestTest beforeAll create driver error" );
+      }
+    })
     beforeEach(async (done: Function) => {
       TAG = 'beforeEach ==>';
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility({
@@ -48,9 +56,12 @@ export default function verificationTest() {
     })
 
     afterEach(async (done: Function) => {
-      setTimeout(() => {
+      try{
+        await driver1.delayMs(1000);
         done();
-      }, 1000);
+      }catch{
+        console.info("VerificationTestTest afterEach delayMs error" );
+      }
     })
 
     /*
@@ -323,6 +334,10 @@ export default function verificationTest() {
       TAG = 'SUB_AA_OpenHarmony_RequestPermissionsFromUser_0200 ==>';
       console.info(TAG + " start");
       try {
+        console.info(TAG + `come in driveFn`);
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        let driver = await UiDriver.create();
+        console.info(TAG + `driver is ${JSON.stringify(driver)}`);
         let wantNum: Want = {
           bundleName: 'ohos.acts.aafwk.test.fasupplement',
           abilityName: 'ohos.acts.aafwk.test.fasupplement.MainAbility3',
@@ -335,11 +350,7 @@ export default function verificationTest() {
             console.info(TAG + "startAbility err = " + JSON.stringify(err));
             expect().assertFail();
           });
-        console.info(TAG + `come in driveFn`);
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-        let driver = await UiDriver.create();
-        console.info(TAG + `driver is ${JSON.stringify(driver)}`);
-        await sleep(1500);
+        await sleep(2000);
         console.info(TAG + `UiDriver start`);
         let button = await driver.findComponent(BY.text('允许'));
         if(button == null){

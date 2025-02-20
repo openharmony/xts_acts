@@ -61,6 +61,7 @@ struct webViewSdkSchemeHandlerDidFailFly2 {
         this.emitKey = eventData.data.ACTION;
       }
     }
+    Utils.setEmitKey(this.emitKey);
   }
 
   build() {

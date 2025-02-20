@@ -25,7 +25,7 @@ class MyModifier extends TextModifier {
   }
 
   public setGroup1(): void {
-    this.fontSize(50)
+    this.fontSize(9)
     this.fontColor('#FFFFC0CB')
   }
 
@@ -44,7 +44,6 @@ struct MyImagel {
     Column() {
       Text('Test').attributeModifier(this.modifier as MyModifier).id('textTest')
       Button('change')
-        .margin(10)
         .onClick(() => {
           console.log('Modifier', 'onClick')
           this.index++;
@@ -63,13 +62,12 @@ struct MyImagel {
 @Entry
 @ComponentV2
 struct makeObserved0130 {
-  @Local myModifier: TextModifier = UIUtils.makeObserved(new MyModifier().width(100).height(100).margin(10))
+  @Local myModifier: TextModifier = UIUtils.makeObserved(new MyModifier().height('3%'))
 
   build() {
     Column() {
       MyImagel({ modifier: this.myModifier })
       Button('replace whole')
-        .margin(10)
         .onClick(() => {
           this.myModifier = UIUtils.makeObserved(new MyModifier().fontColor('#FFFFA500'))
         }).id('buttonTest')

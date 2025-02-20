@@ -20,7 +20,9 @@
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
+      "car",
       "wearable",
+      "tv",
       "phone",
       "tablet"
     ],

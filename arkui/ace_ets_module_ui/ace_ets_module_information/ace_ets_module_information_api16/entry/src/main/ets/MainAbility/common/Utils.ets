@@ -79,9 +79,7 @@ export default class Utils {
     console.info('down touch started: ' + JSON.stringify(downPoint))
     sendTouchEvent(downPoint);
     console.info('start to move')
-    if (true) {
-      Utils.sleep(500)
-    }
+    Utils.sleep(500)
     for (let i = 1; i <= swipeSteps; i++) {
       let movePoint: TouchObject = {
         id: 1,
@@ -103,9 +101,7 @@ export default class Utils {
       Utils.sleep(5)
     }
     console.info('start to up')
-    if (true) {
-      Utils.sleep(100)
-    }
+    Utils.sleep(100)
     let upPoint: TouchObject = {
       id: 1,
       x: upX,

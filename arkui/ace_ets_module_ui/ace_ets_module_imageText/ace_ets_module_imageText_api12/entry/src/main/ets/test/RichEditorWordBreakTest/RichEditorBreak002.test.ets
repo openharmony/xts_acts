@@ -54,10 +54,12 @@ export default function RichEditorBreak002() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0006
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0006
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0006 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0006
+     * @tc.name  : Test the RichEditor WordBreak
+     * @tc.desc  : Update paragraph style to set wordBreak attribute to -1 to test RichEditor WordBreak
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0006', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0006 START');
@@ -77,10 +79,12 @@ export default function RichEditorBreak002() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0005
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0005
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0005 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0005
+     * @tc.name  : Test the RichEditor WordBreak
+     * @tc.desc  : Update paragraph style to set wordBreak attribute to BREAK_ALL to test RichEditor WordBreak
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0005', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0005 START');

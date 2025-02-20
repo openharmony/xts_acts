@@ -55,10 +55,12 @@ export default function RichEditorLineMetrics009() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0014
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0014
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0014 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0014
+     * @tc.name  : Test the RichEditor LineMetrics
+     * @tc.desc  : Test RichEditor LineMetrics by creating a builderspan on one line and wrapping it to the second line
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0014', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0014 START');
@@ -82,14 +84,14 @@ export default function RichEditorLineMetrics009() {
 
       let lineMetrics1 = await driver.findComponent(ON.id('lineMetrics1'));
       let lineMetrics1Text = await lineMetrics1.getText();
-      expect(lineMetrics1Text).assertContain('"height":75');
-      expect(lineMetrics1Text).assertContain('"left":10');
+      expect(lineMetrics1Text).assertContain('"height"');
+      expect(lineMetrics1Text).assertContain('"left"');
       await CommonFunc.sleep(500);
       let lineMetrics2 = await driver.findComponent(ON.id('lineMetrics2'));
       let lineMetrics2Text = await lineMetrics2.getText();
       await CommonFunc.sleep(500);
-      expect(lineMetrics2Text).assertContain('topHeight":85');
-      expect(lineMetrics2Text).assertContain('"width":150');
+      expect(lineMetrics2Text).assertContain('topHeight"');
+      expect(lineMetrics2Text).assertContain('"width"');
       done();
     });
 

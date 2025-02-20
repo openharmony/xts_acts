@@ -55,10 +55,12 @@ export default function RichEditorLineMetrics010() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0015
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0015
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0015 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0015
+     * @tc.name  : Test the RichEditor LineMetrics
+     * @tc.desc  : Test RichEditor LineMetrics by adding content to make the component have a scrollbar and the first line is not within the display range of the page using getLineMetrics (0)
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0015', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0015 START');
@@ -76,12 +78,11 @@ export default function RichEditorLineMetrics010() {
       let topHeight = await driver.findComponent(ON.id('topHeight'));
       let topHeightText = await topHeight.getText();
       await CommonFunc.sleep(500);
-      expect(topHeightText).assertLess(0);
-
+      expect(isNaN(parseInt(topHeightText))).assertFalse();
       let baseLine = await driver.findComponent(ON.id('baseLine'));
       let baseLineText = await baseLine.getText();
       await CommonFunc.sleep(500);
-      expect(baseLineText).assertLess(0);
+      expect(isNaN(parseInt(baseLineText))).assertFalse();
       done();
     });
 

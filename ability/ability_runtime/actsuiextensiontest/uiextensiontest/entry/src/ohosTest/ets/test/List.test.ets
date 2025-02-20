@@ -14,7 +14,9 @@
  */
 
 import abilityTest from './Ability.test'
+import uiExtContentSessionTest from './UIExtContentSession.test';
 
 export default function testsuite() {
-  abilityTest()
+  uiExtContentSessionTest();
+  abilityTest();
 }

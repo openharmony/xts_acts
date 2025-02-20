@@ -32,6 +32,5 @@ struct OnlyObserve{
         })
     }
     .width('100%')
-    .margin({top:20})
   }
 }

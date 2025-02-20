@@ -77,12 +77,19 @@ export default function ListItem_Delete_End_Resource() {
       console.log('get Initial value')
       let ListItem_00: RectValue = CommonFunc.getComponentRect('ListItem_Delete_End_Resource_ListItem_00');
       let ListItem_01: RectValue = CommonFunc.getComponentRect('ListItem_Delete_End_Resource_ListItem_01');
+      let right: number = ListItem_00.right;
+      let left: number = ListItem_00.left;
+      let top: number = ListItem_00.top;
+      let bottom: number = ListItem_00.bottom;
+      let width = right - left;
+      let height = bottom -top;
+      console.info("SUB_ACE_ListItem_Delete_End_Resource_0100 value is" + left + " --" + right + "--" + top + "--" + bottom);
 
       console.log('slide ')
       let driver = Driver.create();
       await CommonFunc.sleep(500);
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(50)), Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(50))
+        Math.round(globalThis.winLeft + right - vp2px(5)), Math.round(globalThis.winTop + top + height/2), Math.round(globalThis.winLeft + left + vp2px(5)), Math.round(globalThis.winTop  + top + height/2)
       );
       await CommonFunc.sleep(2000);
 
@@ -120,10 +127,17 @@ export default function ListItem_Delete_End_Resource() {
       console.log('get Initial value')
       let ListItem_00: RectValue = CommonFunc.getComponentRect('ListItem_Delete_End_Resource_ListItem_00');
       let ListItem_01: RectValue = CommonFunc.getComponentRect('ListItem_Delete_End_Resource_ListItem_01');
+      let right: number = ListItem_00.right;
+      let left: number = ListItem_00.left;
+      let top: number = ListItem_00.top;
+      let bottom: number = ListItem_00.bottom;
+      let width = right - left;
+      let height = bottom -top;
+      console.info("SUB_ACE_ListItem_Delete_End_Resource_0200 value is" + left + " --" + right + "--" + top + "--" + bottom);
 
       console.log('slide ')
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(50)), Math.round(globalThis.winLeft + vp2px(250)), Math.round(globalThis.winTop + vp2px(50))
+        Math.round(globalThis.winLeft + left + vp2px(100)), Math.round(globalThis.winTop + top + height/2), Math.round(globalThis.winLeft + left + vp2px(30)), Math.round(globalThis.winTop  + top + height/2)
       );
       await CommonFunc.sleep(2000);
 

@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAceWebPageDownloadTestTwo.hap"
+                "ActsAceWebPageDownloadTestTwoTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

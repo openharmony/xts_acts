@@ -12,17 +12,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect,beforeAll } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
-
+import config from '@ohos.accessibility.config';
+import accessibility from '@ohos.accessibility';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.arkui.ace.commonEvents.api11/EntryAbility';
 export default function PanGesture3Jsunit() {
   describe('PanGesture3Jsunit', () => {
     let x_value: number;
     let y_value: number;
-
-    beforeEach(async (done: Function) => {
+  beforeEach(async (done: Function) => {
+config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+      console.info(`enable success`);
+      }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
+	done();
+});
+    beforeAll(async (done: Function) => {
       console.info("PanGesture beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/PanGesture/PanGesture',

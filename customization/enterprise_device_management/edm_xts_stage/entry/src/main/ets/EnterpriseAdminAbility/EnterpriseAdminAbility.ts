@@ -40,6 +40,15 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
     console.log(`EnterpriseAdminExtensionAbility onSystemUpdate: versionName: ${systemUpdateInfo.versionName},
       firstReceivedTime: ${systemUpdateInfo.firstReceivedTime}, packageType: ${systemUpdateInfo.packageType}`);
   }
+  onAccountAdded(accountId: number){
+    console.log(`EnterpriseAdminExtensionAbility onAccountAdded accountId: ${accountId}`);
+  }
+  onAccountSwitched(accountId: number){
+    console.log(`EnterpriseAdminExtensionAbility onAccountSwitched accountId: ${accountId}`);
+  }
+  onAccountRemoved(accountId: number){
+    console.log(`EnterpriseAdminExtensionAbility onAccountRemoved accountId: ${accountId}`);
+  }
   onStart(){
     console.log('EnterpriseAdminExtensionAbility onStart');
   }

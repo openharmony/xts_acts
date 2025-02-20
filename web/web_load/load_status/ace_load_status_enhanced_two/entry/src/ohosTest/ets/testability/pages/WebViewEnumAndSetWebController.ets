@@ -162,19 +162,12 @@ struct WebViewEnumAndSetWebController {
           if (this.cacheError) {
             Utils.emitEvent("cacheError", 1401)
             this.cacheError = false
-            setTimeout(() => {
-              this.controller.loadUrl("resource://rawfile/fullScreenEnter.html")
-            }, 2000)
           }
         })
         .onTouchIconUrlReceived((event) => {
           console.log('onTouchIconUrlReceived:' + event.url)
           console.log('onTouchIconUrlReceived:' + event.precomposed)
           this.precomposedResult = event.precomposed
-          Utils.emitEvent(event.url + '', 1371)
-          setTimeout(() => {
-            this.controller.loadUrl("resource://rawfile/fullScreenEnter.html")
-          }, 2000)
         })
         .onScreenCaptureRequest((event) => {
           console.log("1361 case", JSON.stringify(event))

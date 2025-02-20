@@ -45,9 +45,9 @@ struct LocalStoageLinkTwo {
   @LocalStorageLink('Prop11') storLink11: Array<He> = [He.Q, He.W]
   @LocalStorageLink('Prop12') storLink12: Array<object> = [{value:66} as ValuePropLinkTwoType, {value:67} as ValuePropLinkTwoType]
   build() {
-    Column({ space: 15 }) {
+    Column() {
       Text(`Prop1:${JSON.stringify(storageLinkTwo.get('Prop1'))}, Prop2:${storageLinkTwo.get('Prop2')}, Prop3:${storageLinkTwo.get('Prop3')}, Prop4:${storageLinkTwo.get('Prop4')}, Prop5:${storageLinkTwo.get('Prop5')}, Prop6:${JSON.stringify(storageLinkTwo.get('Prop6'))}, Prop7:${JSON.stringify(storageLinkTwo.get('Prop7'))}, Prop8:${JSON.stringify(storageLinkTwo.get('Prop8'))}, Prop9:${JSON.stringify(storageLinkTwo.get('Prop9'))}, Prop10:${JSON.stringify(storageLinkTwo.get('Prop10'))}, Prop11:${JSON.stringify(storageLinkTwo.get('Prop11'))}, Prop12:${JSON.stringify(storageLinkTwo.get('Prop12'))}`)
-        .key('text_getValue2')
+        .key('text_getValue2').height('5%')
     }
   }
 }

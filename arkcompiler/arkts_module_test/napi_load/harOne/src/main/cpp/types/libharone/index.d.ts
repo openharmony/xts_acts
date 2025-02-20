@@ -15,3 +15,5 @@
 
 export const add: (a: number, b: number) => number;
 export const loadModuleWithInfo: (a: string, b: string) => object;
+export const loadModule: (a: string, b: number, c: number) => number;
+export const loadModuleWithLog: (a: number, b: string, c: string) => boolean;

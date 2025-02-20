@@ -881,11 +881,11 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             let enum3 = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_ECE;
             try {
                 await huks.generateKeyItem(srcKeyAlies, huksOptions);
-                console.error("SUB_Security_HUKS_isPwdSet_0020: fail");
+                console.error("SUB_Security_HUKS_isPwdSet_0010: fail");
                 expect(null).assertFail();
             } catch (err) {
                 expect(err.code).assertEqual(12000016);
-                console.log("SUB_Security_HUKS_isPwdSet_0020: success");
+                console.log("SUB_Security_HUKS_isPwdSet_0010: success");
             }
             done();
         });

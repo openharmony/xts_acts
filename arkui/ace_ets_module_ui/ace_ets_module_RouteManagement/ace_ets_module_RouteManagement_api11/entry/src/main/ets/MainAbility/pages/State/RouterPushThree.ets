@@ -21,7 +21,7 @@ import { Router, UIContext } from '@ohos.arkui.UIContext';
 @Component
 struct RouterPushThree {
   build() {
-    Row() {
+    Scroll() {
       Column() {
         Text("RouterThree")
           .fontSize(20)
@@ -138,7 +138,6 @@ struct RouterPushThree {
             })
           })
       }
-      .height('100%')
     }
   }
 }

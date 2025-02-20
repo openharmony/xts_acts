@@ -55,10 +55,12 @@ export default function RichEditorLineMetrics023() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0028
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0028
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0028 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0028
+     * @tc.name  : Test the RichEditor LineMetrics
+     * @tc.desc  : Test RichEditor LineMetrics by calling getLineMetrics in onCut and onPaste text change callbacks
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0028', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0028 START');
@@ -72,8 +74,7 @@ export default function RichEditorLineMetrics023() {
       await select.click();
       await CommonFunc.sleep(500);
 
-      let cut = await driver.findComponent(ON.text('剪切'));
-      await cut.click();
+      driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_X);
       await CommonFunc.sleep(500);
 
       let set_end = await driver.findComponent(ON.id('set_end'));
@@ -83,8 +84,7 @@ export default function RichEditorLineMetrics023() {
       await driver.longClick(pointCenter.x, pointCenter.y);
       await CommonFunc.sleep(1000);
 
-      let paste = await driver.findComponent(ON.text('粘贴'));
-      await paste.click();
+      driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_V);
       await CommonFunc.sleep(500);
 
       let lineMetricsOnCut = await driver.findComponent(ON.id('lineMetricsOnCut'));

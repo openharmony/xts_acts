@@ -55,10 +55,12 @@ export default function RichEditorTextChange006() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0011
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0011
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0011 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0011
+     * @tc.name  : Test the RichEditor TextChange
+     * @tc.desc  : Rich Text External Interaction (click on the blank space outside the component) _onEditingChange callback query eizEditing status query to test RichEditor TextChange
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 4
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0011', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_TEXTCHANGE_0011 START');

@@ -235,6 +235,8 @@ export default function windowPromiseTest() {
       console.log(msgStr + "begin");
       let driver: Driver = Driver.create();
       let num = 0;
+      let minWidth = 0;
+      let minHeight = 0;
       let subWindowClass: ohosWindow.Window;
       let windowClass = await windowStage.getMainWindow();
       try {
@@ -242,7 +244,10 @@ export default function windowPromiseTest() {
         promise.then(async (data) => {
           subWindowClass = data;
           console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-          await subWindowClass.resize(1000, 500);
+          minWidth = Number(subWindowClass.getWindowLimits().minWidth);
+          minHeight = Number(subWindowClass.getWindowLimits().minHeight);
+          console.log('Window WindowLimits:' + minWidth +' '+ minHeight);
+          await subWindowClass.resize(minWidth+200, minHeight+200);
           await subWindowClass.setUIContent('testability/pages/First/index2');
           await subWindowClass.showWindow();
           try {
@@ -289,9 +294,16 @@ export default function windowPromiseTest() {
             done();
           }
         }).catch((err: BusinessError) => {
-          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            console.log(msgStr + `getWindowLimits 当前设备类型不支持系统能力SystemCapability.Window.SessionManager, message: ${err.message}`);
+            done();
+          }else{
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
           expect(false).assertTrue();
           done();
+          }
+
+          
         });
       } catch (error) {
         console.log(msgStr + 'Failed to register callback. Cause code:' + JSON.stringify(error.code) + error.message);
@@ -309,6 +321,8 @@ export default function windowPromiseTest() {
     it("test_SubWindow_IsModal_false", 0, async (done: Function) => {
       let msgStr = "test_SubWindow_IsModal_false";
       console.log(msgStr + "begin");
+      let minWidth = 0;
+      let minHeight = 0;
       let driver: Driver = Driver.create();
       let num = 0;
       let subWindowClass: ohosWindow.Window;
@@ -318,7 +332,10 @@ export default function windowPromiseTest() {
         promise.then(async (data) => {
           subWindowClass = data;
           console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-          await subWindowClass.resize(1000, 500);
+          minWidth = Number(subWindowClass.getWindowLimits().minWidth);
+          minHeight = Number(subWindowClass.getWindowLimits().minHeight);
+          console.log('Window WindowLimits:' + minWidth +' '+ minHeight);
+          await subWindowClass.resize(minWidth+200, minHeight+200);
           await subWindowClass.setUIContent('testability/pages/First/index2');
           await subWindowClass.showWindow();
           try {
@@ -365,9 +382,16 @@ export default function windowPromiseTest() {
             done();
           }
         }).catch((err: BusinessError) => {
-          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
-          expect(false).assertTrue();
-          done();
+          if(err.code == 801){
+            console.log(msgStr + `getWindowLimits 当前设备类型不支持系统能力SystemCapability.Window.SessionManager, message: ${err.message}`);
+            done();
+          }else{
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+            done();
+          }
+
+          
         });
       } catch (error) {
         console.log(msgStr + 'Failed to register callback. Cause code:' + JSON.stringify(error.code) + error.message);

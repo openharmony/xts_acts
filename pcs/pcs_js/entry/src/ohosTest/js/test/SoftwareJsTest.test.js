@@ -15,6 +15,7 @@
 
 import { describe, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
+import display from '@ohos.display'
 
 async function asyncTest() {
     return 1;
@@ -28,6 +29,7 @@ class TestClass {
 
 export default function softwareJsTest() {
     describe('SoftwareJsTest', function () {
+      
         /*
          * @tc.number: STD-SOFTWARE-0200
          * @tc.name: testJsAsyncAwait0100

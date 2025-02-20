@@ -42,28 +42,28 @@ struct GrandSon {
           this.reviewVotes3 += 4
           this.reviewVotes0 += 4
           this.message0 += 4
-        }).fontSize(14).id('GrandSon')
+        }).fontSize(9).id('GrandSon')
       Text('重名场景排列组合').fontSize(9).fontColor(0xCCCCCC).width('100%')
       Column() {
         Text('只有一个设置alias').fontSize(9).fontColor(0xCCCCCC).width('100%')
-        Text(`别名和变量名重名：reviewVotes(${this.message1})`).fontSize(14).id('Child1_1')// Text显示10
-        Text(`变量名和变量名重名：reviewVotes(${this.message2})`).fontSize(14).id('parent_1') // Text显示40
+        Text(`别名和变量名重名：reviewVotes(${this.message1})`).fontSize(9).id('Child1_1')// Text显示10
+        Text(`变量名和变量名重名：reviewVotes(${this.message2})`).fontSize(9).id('parent_1') // Text显示40
         Divider()
 
         Text('两个都设置alias').fontSize(9).fontColor(0xCCCCCC).width('100%')
-        Text(`别名和变量名都重名：reviewVotes(${this.message3})`).fontSize(14).id('GrandSon_1')// Text显示0
-        Text(`只有alias重名：reviewVotes(${this.reviewVotes})`).fontSize(14).id('Child2_1') // Text显示20
-        Text(`只有变量名重名：reviewVotes(${this.message5})`).fontSize(14).id('GrandSon_2') // Text显示0
-        Text(`别名和变量名重名：reviewVotes(${this.message6})`).fontSize(14).id('Child1_2') // Text显示10
-        Text(`变量名和别名重名：reviewVotes(${this.message8})`).fontSize(14).id('parent_3') // Text显示40
-        Text(`同组件内变量名和别名重名：reviewVotes(${this.reviewVotes3})`).fontSize(14).id('Child1_3') // Text显示10
+        Text(`别名和变量名都重名：reviewVotes(${this.message3})`).fontSize(9).id('GrandSon_1')// Text显示0
+        Text(`只有alias重名：reviewVotes(${this.reviewVotes})`).fontSize(9).id('Child2_1') // Text显示20
+        Text(`只有变量名重名：reviewVotes(${this.message5})`).fontSize(9).id('GrandSon_2') // Text显示0
+        Text(`别名和变量名重名：reviewVotes(${this.message6})`).fontSize(9).id('Child1_2') // Text显示10
+        Text(`变量名和别名重名：reviewVotes(${this.message8})`).fontSize(9).id('parent_3') // Text显示40
+        Text(`同组件内变量名和别名重名：reviewVotes(${this.reviewVotes3})`).fontSize(9).id('Child1_3') // Text显示10
       }.borderWidth(1)
 
       Text('匹配规则').fontSize(9).fontColor(0xCCCCCC).width('100%')
       Column() {
-        Text(`优先别名匹配：reviewVotes(${this.reviewVotes0})`).fontSize(14).id('Child2_2') // Text显示20
-        Text(`别名和变量名匹配：reviewVotes(${this.message0})`).fontSize(14).id('parent_2') // Text显示40
-        Text(`都不匹配：reviewVotes(${this.message9})`).fontSize(14) // Text显示0
+        Text(`优先别名匹配：reviewVotes(${this.reviewVotes0})`).fontSize(9).id('Child2_2') // Text显示20
+        Text(`别名和变量名匹配：reviewVotes(${this.message0})`).fontSize(9).id('parent_2') // Text显示40
+        Text(`都不匹配：reviewVotes(${this.message9})`).fontSize(9) // Text显示0
       }.borderWidth(1)
 
 
@@ -88,8 +88,8 @@ struct ProviderChild {
   @Provider('message9') reviewVotes3: number = 20;
 
   build() {
-    Column({ space: 5 }) {
-      Row({ space: 5 }) {
+    Column() {
+      Row() {
         Button(`ProviderChild (${this.message0}) +2`)
           .onClick(() => {
             this.message0 += 2
@@ -98,14 +98,14 @@ struct ProviderChild {
             this.message7 += 2
             this.message8 += 2
             // this.child1 += 2
-          }).fontSize(14).id('Child1')
+          }).fontSize(9).id('Child1')
         Button(`ProviderChild (${this.message2}) +3`)
           .onClick(() => {
             this.message2 += 3
             this.message4 += 3
             this.reviewVotes3 += 3
             // this.child2 += 3
-          }).fontSize(14).id('Child2')
+          }).fontSize(9).id('Child2')
       }
       GrandSon()
     }
@@ -127,8 +127,8 @@ struct Provider1 {
 
   build() {
     Scroll() {
-      Column({ space: 5 }) {
-        Text('@Provide支持同名的继承').fontSize(9).fontColor(0xCCCCCC).width('100%').margin({ top: 5 })
+      Column() {
+        Text('@Provide支持同名的继承').fontSize(9).fontColor(0xCCCCCC).width('100%')
         Button(`parent (${this.message1}) +1`)
           .onClick(() => {
             this.message1 += 1
@@ -137,7 +137,7 @@ struct Provider1 {
             this.message5 += 1
             this.message6 += 1
             this.message9 += 1
-          }).fontSize(14).id('parent')
+          }).fontSize(9).id('parent')
         ProviderChild()
       }.width('100%')
     }.width('100%').height('100%').align(Alignment.Top).scrollBar(BarState.Off)

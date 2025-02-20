@@ -29,34 +29,29 @@ struct aboutToAppearFalse {
   }
 
   build() {
-    Column({ space: 50 }) {
-      Column() {
-        Column() {
-          Text('aboutToAppearFalse')
-            .width(200)
-            .height(100)
-            .textAlign(TextAlign.Center)
-            .margin(100)
-            .fontSize(30)
-            .bindContextMenu(this.isShown, this.MyMenu, {
-              aboutToAppear: () => {
-                this.arr.push("aboutToAppear");
-              },
-              onAppear: () => {
-                this.arr.push("onAppear");
-                this.isShown = false;
-              }
-            })
-          Button('click')
-            .margin(30)
-            .id("aboutToAppearFalse")
-            .onClick(() => {
-              this.isShown = !this.isShown;
-            })
+    Column({ space: 10 }) {
 
-          Text(this.arr.toString()).fontSize(30).id("aboutToAppearFalseText")
-        }
-      }.width('100%')
+      Text('aboutToAppearFalse')
+        .textAlign(TextAlign.Center)
+        .bindContextMenu(this.isShown, this.MyMenu, {
+          aboutToAppear: () => {
+            this.arr.push("aboutToAppear");
+          },
+          onAppear: () => {
+            this.arr.push("onAppear");
+            this.isShown = false;
+          }
+        })
+      Button('click')
+        .id("aboutToAppearFalse")
+        .onClick(() => {
+          this.isShown = !this.isShown;
+        })
+
+      Text(this.arr.toString()).id("aboutToAppearFalseText")
     }
+    .justifyContent(FlexAlign.Center)
+    .height('100%')
+    .width('100%')
   }
 }

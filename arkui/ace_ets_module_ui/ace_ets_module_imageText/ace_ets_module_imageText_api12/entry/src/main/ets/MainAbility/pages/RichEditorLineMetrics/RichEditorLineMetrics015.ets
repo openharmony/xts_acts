@@ -35,66 +35,34 @@ struct RichEditorLineMetrics015 {
         })
         .margin({ bottom: 20, top: 10 })
       RichEditor({ controller: this.controller })
-        .width(200)
+        .width('50%')
+        .borderWidth(1)
+        .borderColor(Color.Black)
         .onReady(() => {
-          this.controller.addTextSpan('012345670123456',
-            {
-              style:
+          for (let index = 0; index < 8; index++) {
+            this.controller.addTextSpan('0123456701234',
               {
-                fontColor: Color.Orange,
-                fontSize: '25px'
-              }
-            })
-          this.controller.addImageSpan($r('app.media.icon'),
-            {
-              imageStyle:
+                style:
+                {
+                  fontColor: Color.Orange,
+                  fontSize: '25px'
+                }
+              })
+            this.controller.addImageSpan($r('app.media.icon'),
               {
-                size: ['20px', '20px']
-              }
-            })
-          this.controller.addTextSpan('12345',
-            {
-              style:
+                imageStyle:
+                {
+                  size: ['20px', '20px']
+                }
+              })
+            this.controller.addImageSpan($r('app.media.icon'),
               {
-                fontColor: Color.Orange,
-                fontSize: '20px'
-              }
-            })
-          this.controller.addImageSpan($r('app.media.icon'),
-            {
-              imageStyle:
-              {
-                size: ['50px', '50px']
-              }
-            })
-          this.controller.addImageSpan($r('app.media.icon'),
-            {
-              imageStyle:
-              {
-                size: ['50px', '50px']
-              }
-            })
-          this.controller.addImageSpan($r('app.media.icon'),
-            {
-              imageStyle:
-              {
-                size: ['50px', '50px']
-              }
-            })
-          this.controller.addImageSpan($r('app.media.icon'),
-            {
-              imageStyle:
-              {
-                size: ['50px', '50px']
-              }
-            })
-          this.controller.addImageSpan($r('app.media.icon'),
-            {
-              imageStyle:
-              {
-                size: ['50px', '50px']
-              }
-            })
+                imageStyle:
+                {
+                  size: ['20px', '20px']
+                }
+              })
+          }
         })
         .onSelectionChange((value: RichEditorRange) => {
           console.log('RichEditorController value:' + JSON.stringify(value));

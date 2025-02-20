@@ -19,7 +19,7 @@ struct StateSet0010 {
   @State set: Set<string> = new Set(['World'])
 
   build() {
-    Column({space: 5}) {
+    Column() {
       Text('Hello'+Array.from(this.set.values()).toString()).id('tvStateSet0010Title')
       Button('Add')
         .id('btnStateSet0010Set')

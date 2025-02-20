@@ -1,0 +1,27 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/keyEventDispatchTest/keyEventDispatchTest01",
+        "MainAbility/pages/keyEventDispatchTest/keyEventDispatchTest02",
+        "MainAbility/pages/keyEventDispatchTest/keyEventDispatchTest03",
+        "MainAbility/pages/keyEventDispatchTest/keyEventDispatchTest04",
+        "MainAbility/pages/keyEventDispatchTest/keyEventDispatchTest05",
+        "MainAbility/pages/keyEventDispatchTest/keyEventDispatchTest06",
+        "MainAbility/pages/keyEventDispatchTest/onKeyEventDispatch01",
+        "MainAbility/pages/keyEventDispatchTest/onkeyEventDispatch03",
+        "MainAbility/pages/keyEventDispatchTest/onkeyEventDispatch04",
+        "MainAbility/pages/keyEventDispatchTest/onkeyEventDispatch06",
+        "MainAbility/pages/keyEventDispatchTest/onkeyEventDispatch07",
+        "MainAbility/pages/keyEventDispatchTest/onkeyEventDispatch08",
+        "MainAbility/pages/ComponentSnapshotByUniqueId/getWithUniqueId",
+        "MainAbility/pages/imageMatrix/imageMatrix",
+        "MainAbility/pages/GetChangedPointerId/GetChangedPointerId",
+        "MainAbility/pages/componentSnapshot/componentSnapshot",
+        "MainAbility/pages/Gesture/isFingerCountLimited/LongPressGesture",
+        "MainAbility/pages/Gesture/isFingerCountLimited/PanGesture",
+        "MainAbility/pages/Gesture/isFingerCountLimited/PinchGesture",
+        "MainAbility/pages/Gesture/isFingerCountLimited/RotationGesture",
+        "MainAbility/pages/Gesture/isFingerCountLimited/SwipeGesture",
+        "MainAbility/pages/Gesture/isFingerCountLimited/TapGesture"
+    ]
+}

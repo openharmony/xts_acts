@@ -11,17 +11,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("resourceInterception") {
+group("ActsWebResourceInterceptionTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "resource_interception_cloudservice_webController_five:ActsResourceInterceptionCloudServiceWebControllerFiveTest",
-      "resource_interception_cloudservice_webController_four:ActsResourceInterceptionCloudServiceWebControllerFourTest",
-      "resource_interception_cloudservice_webController_one:ActsResourceInterceptionCloudServiceWebControllerOneTest",
-      "resource_interception_cloudservice_webController_seven:ActsResourceInterceptionCloudServiceWebControllerSevenTest",
-      "resource_interception_cloudservice_webController_six:ActsResourceInterceptionCloudServiceWebControllerSixTest",
-      "resource_interception_cloudservice_webController_three:ActsResourceInterceptionCloudServiceWebControllerThreeTest",
-      "resource_interception_cloudservice_webController_two:ActsResourceInterceptionCloudServiceWebControllerTwoTest",
+      "resource_interception_cloudservice_webController_five:ActsWebResourceInterceptionCloudServiceWebControllerFiveTest",
+      "resource_interception_cloudservice_webController_four:ActsWebResourceInterceptionCloudServiceWebControllerFourTest",
+      "resource_interception_cloudservice_webController_one:ActsWebResourceInterceptionCloudServiceWebControllerOneTest",
+      "resource_interception_cloudservice_webController_seven:ActsWebResourceInterceptionCloudServiceWebControllerSevenTest",
+      "resource_interception_cloudservice_webController_six:ActsWebResourceInterceptionCloudServiceWebControllerSixTest",
+      "resource_interception_cloudservice_webController_three:ActsWebResourceInterceptionCloudServiceWebControllerThreeTest",
+      "resource_interception_cloudservice_webController_two:ActsWebResourceInterceptionCloudServiceWebControllerTwoTest",
     ]
   }
 }

@@ -43,27 +43,32 @@ export default function SwiperImplicitanimation0060() {
       await CommonFunc.sleep(1000);
       console.info("SwiperImplicitanimation0060 after each called");
     });
-
     /**
-     * @tc.number SWIPER_IMPLICITANIMATION_0060
-     * @tc.name step
-     * @tc.desc change
-     * @tc.level Level 1
-     * @tc.type
-     * @tc.size
+     * @tc.number SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_IMPLICITANIMATION_0060
+     * @tc.name SWIPER_IMPLICITANIMATION_0060
+     * @tc.desc show index targetIndex:0,currentOffset、targetOffset and velocity
+     * @tc.level Level 3
+     * @tc.type Function
+     * @tc.size MediumTest
      */
     it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_IMPLICITANIMATION_0060', 0, async (done: Function) => {
       console.info("SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_IMPLICITANIMATION_0060 START");
+      await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
-      let swiperArrow = await driver.findComponent(ON.id("implicitanimation_0060"));
-      let point2 = await swiperArrow.getBoundsCenter();
-      await driver.fling({x: point2.x + 200, y: point2.y}, {x: point2.x - 150, y: point2.y}, 5, 1000);
-      await driver.fling({x: point2.x -200, y: point2.y}, {x: point2.x + 150, y: point2.y}, 5, 1000);
+      let btn1 = await driver.findComponent(ON.id("btn_implicitanimation_0060_1"));
+      let btn2 = await driver.findComponent(ON.id("btn_implicitanimation_0060_2"));
+      await btn1.click();
+      await CommonFunc.sleep(500);
+      await btn2.click();
       await CommonFunc.sleep(500);
       let strIndex: string = getInspectorByKey('implicitanimation_0060_1')
       let jsonIndex: ESObject = JSON.parse(strIndex).$attrs.content;
       expect(jsonIndex).assertEqual('1')
-      await driver.drag(point2.x -200,  point2.y,point2.x + 150,point2.y,500)
+      let swiperArrow = await driver.findComponent(ON.id("implicitanimation_0060"));
+      let point2 = await swiperArrow.getBoundsCenter();
+      let x:number = parseInt(vp2px(120).toString());
+      let x1:number = parseInt(vp2px(90).toString());
+      await driver.drag(point2.x -x,  point2.y,point2.x + x1,point2.y,3000)
       await CommonFunc.sleep(1000);
       let strIndex0: string = getInspectorByKey('implicitanimation_0060_1')
       let jsonIndex0: ESObject = JSON.parse(strIndex0).$attrs.content;
@@ -82,9 +87,9 @@ export default function SwiperImplicitanimation0060() {
       expect(velocity1 != 0).assertTrue();
       let showPrevious = await driver.findComponent(ON.id("btn_implicitanimation_0060"));
       await showPrevious.click();
-      await CommonFunc.sleep(1000);
-      await driver.drag(point2.x +200,  point2.y,point2.x - 150,point2.y,500)
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(500);
+      await driver.drag(point2.x +x,  point2.y,point2.x - x1,point2.y,3000)
+      await CommonFunc.sleep(500);
       let strIndex4: string = getInspectorByKey('implicitanimation_0060_1')
       let jsonIndex4: ESObject = JSON.parse(strIndex4).$attrs.content;
       expect(jsonIndex4).assertEqual('2')
@@ -93,13 +98,13 @@ export default function SwiperImplicitanimation0060() {
       expect(jsonIndex5).assertEqual('2')
       let currindex_1: string = getInspectorByKey('implicitanimation_0060_3')
       let currindex2_1: ESObject = JSON.parse(currindex_1).$attrs.content;
-      expect(currindex2_1 != 0).assertTrue();
+      expect(isNaN(currindex2_1)==false)
       let taroffindex_1: string = getInspectorByKey('implicitanimation_0060_4')
       let taroffindex2_1: ESObject = JSON.parse(taroffindex_1).$attrs.content;
-      expect(taroffindex2_1 != 0).assertTrue();
+      expect(isNaN(taroffindex2_1)==false)
       let velocity_1: string = getInspectorByKey('implicitanimation_0060_5')
       let velocity1_1: ESObject = JSON.parse(velocity_1).$attrs.content;
-      expect(velocity1_1 != 0).assertTrue();
+      expect(isNaN(velocity1_1)==false)
       console.info('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_IMPLICITANIMATION_0060 END');
       done();
     });

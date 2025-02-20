@@ -45,7 +45,23 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativePixelMapTest : public testing::Test {};
+class DrawingNativePixelMapTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override
+    {
+        // 设置代码
+        std::cout << "DrawingNativePixelMapTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativePixelMapTest errorCodeReset before each test case." << std::endl;
+    }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativePixelMapTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativePixelMapTest errorCodeReset after each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PIXEL_MAP_0100
@@ -122,6 +138,8 @@ HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeNormal, T
     OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative();
     // 1. Call OH_Drawing_PixelMapGetFromOhPixelMapNative
     OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
+    // add assert
+    EXPECT_NE(drPixelMap, nullptr);
     // 2. Release memory
     OH_Drawing_PixelMapDissolve(drPixelMap);
     OH_PixelmapNative_Release(pixelMap);
@@ -155,6 +173,8 @@ HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeMultipleC
     // 1. Call OH_Drawing_PixelMapGetFromOhPixelMapNative 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
+        // add assert
+        EXPECT_NE(drPixelMap, nullptr);
         OH_Drawing_PixelMapDissolve(drPixelMap);
     }
     OH_PixelmapNative_Release(pixelMap);
@@ -172,8 +192,12 @@ HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeBoundary,
     uint32_t width = 4096;
     uint32_t height = 2160;
     OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative(width, height);
+    // add assert
+    EXPECT_EQ(pixelMap, nullptr);
     // 1. Call OH_Drawing_PixelMapGetFromOhPixelMapNative
     OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
+    // add assert
+    EXPECT_EQ(drPixelMap, nullptr);
     // 2. Release memory
     OH_Drawing_PixelMapDissolve(drPixelMap);
     OH_PixelmapNative_Release(pixelMap);
@@ -190,8 +214,12 @@ HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeBoundary,
  */
 HWTEST_F(DrawingNativePixelMapTest, testPixelMapDissolveNormal, TestSize.Level0) {
     OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative();
+    // add assert
+    EXPECT_NE(pixelMap, nullptr);
     // 1. Call OH_Drawing_PixelMapGetFromOhPixelMapNative
     OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
+    // add assert
+    EXPECT_NE(drPixelMap, nullptr);
     // 2. Call OH_Drawing_PixelMapDissolve
     OH_Drawing_PixelMapDissolve(drPixelMap);
     OH_PixelmapNative_Release(pixelMap);
@@ -208,6 +236,8 @@ HWTEST_F(DrawingNativePixelMapTest, testPixelMapDissolveNormal, TestSize.Level0)
 HWTEST_F(DrawingNativePixelMapTest, testPixelMapDissolveNull, TestSize.Level3) {
     // 1. OH_Drawing_PixelMapDissolve parameter is null
     OH_Drawing_PixelMapDissolve(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
 }
 
 } // namespace Drawing

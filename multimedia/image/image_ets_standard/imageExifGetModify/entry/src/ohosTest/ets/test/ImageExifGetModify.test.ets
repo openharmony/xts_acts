@@ -45,15 +45,6 @@ export default function imageExifGetModifyTest() {
     const modfiyFileSuffixs = ["jpg", "webp", "png", "heic"]
     let testContext: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>('testContext') as common.UIAbilityContext;
 
-    afterEach(async () => {
-      try {
-        fs.closeSync(fdNumber)
-      } catch (error) {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'closeSync fdNumber error');
-      }
-      hilog.info(0x0000, 'testTag', '%{public}s', 'afterEach case');
-    })
-
     const getFd = async (fileName: string) => {
       filePath = AppStorage.get('pathDir') + "/" + fileName;
       const file = fs.openSync(filePath, fs.OpenMode.READ_WRITE)
@@ -91,6 +82,7 @@ export default function imageExifGetModifyTest() {
       }else{
         await getFd(fileName);
         imageSourceApi = image.createImageSource(fdNumber);
+        fs.closeSync(fdNumber) // getFd open fd，创建ImageSource后，close fd。
       }
       return imageSourceApi
     }
@@ -19689,12 +19681,14 @@ export default function imageExifGetModifyTest() {
           let checkResult = false
           await getFd(reads[i].fileName);
           const imageSourceApi = image.createImageSource(fdNumber);
+          fs.closeSync(fdNumber) // getFd open fd，创建ImageSource后，close fd。
           if (imageSourceApi == undefined) {
             console.info(testTag + " create image source failed");
           } else {
             const readValue = await imageSourceApi.getImageProperty(key)
             await getFd(writes[i].fileName)
             const imageSourceApiWrite = image.createImageSource(fdNumber);
+            fs.closeSync(fdNumber) // getFd open fd，创建ImageSource后，close fd。
             await imageSourceApiWrite.modifyImageProperty(key, readValue)
             const reReadValue = await imageSourceApi.getImageProperty(key)
             checkResult = reReadValue == readValue

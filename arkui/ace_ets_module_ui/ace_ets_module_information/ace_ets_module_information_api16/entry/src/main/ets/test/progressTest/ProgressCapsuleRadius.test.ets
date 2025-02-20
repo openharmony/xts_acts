@@ -25,7 +25,7 @@ export default function ProgressCapsuleRadius() {
         router.clear();
         let pages = router.getState();
         console.info("get ProgressCapsuleRadius state pages:" + JSON.stringify(pages));
-        if (!("ProgressCapsuleRadius" == pages.name)) {
+        if (!("ProgressCapsuleRadius" === pages.name)) {
           console.info("get  Context pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl({url:"MainAbility/pages/progress/ProgressCapsuleRadius"})
           await CommonFunc.sleep(2000);

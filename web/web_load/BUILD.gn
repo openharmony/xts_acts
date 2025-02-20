@@ -15,16 +15,17 @@ group("WebLoad") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "custom_dns:customDns",
-      "leather_candy_cache:leatherCandyCache",
-      "load_metric:ActsLoadMetricTest",
-      "load_status:ActsLoadStatusTest",
-      "network_interception:ActsNetworkInterceptionTest",
-      "open_web_page:ActsOpenWebPageTest",
-      "preload_link_rending:preloadLinkRending",
-      "resource_interception:resourceInterception",
-      "web_hosting:webHosting",
-      "website_certificate:websiteCertificate",
+      "custom_dns:ActsWebCustomDnsTest",
+      "leather_candy_cache:ActsWebLeatherCandyCacheTest",
+      "load_metric:ActsWebLoadMetricTest",
+      "load_status:ActsWebLoadStatusTest",
+      "network_interception:ActsWebNetworkInterceptionTest",
+      "network_proxy:ActsWebNetworkProxyTest",
+      "open_web_page:ActsWebOpenWebPageTest",
+      "preload_link_rending:ActsWebPreloadLinkRendingTest",
+      "resource_interception:ActsWebResourceInterceptionTest",
+      "web_hosting:ActsWebHostingTest",
+      "website_certificate:ActsWebsiteCertificateTest",
     ]
   }
 }

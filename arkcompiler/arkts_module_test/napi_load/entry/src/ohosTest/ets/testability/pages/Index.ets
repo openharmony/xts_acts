@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+import hilog from '@ohos.hilog';
+import { add2 } from '../../Test2';
+
 @Entry
 @Component
 struct Index {

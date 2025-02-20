@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceEtsComponentCommonflexTestTwo.hap"
+            "ActsAceEtsComponentCommonflexTwoTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

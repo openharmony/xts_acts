@@ -68,21 +68,32 @@ export default function listSwipeAction41Jsunit() {
 
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0410] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
 
+      let ListItem_00: RectValue = CommonFunc.getComponentRect('lSwipe41Action0');
+      let right: number = ListItem_00.right;
+      let left: number = ListItem_00.left;
+      let top: number = ListItem_00.top;
+      let bottom: number = ListItem_00.bottom;
+      let width = right - left;
+      let height = bottom - top;
+      console.info("SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0410 value is" + left + " --" + right + "--" + top + "--" + bottom);
       // swipe the listItem to bottom
 
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200))
+        Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop + top + vp2px(10)), Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop  + top + vp2px(100))
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionOffset
       let textSwipeOffset = getInspectorByKey('swipe41Offset');
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0410 json is ' + JSON.stringify(JSON.parse(textSwipeOffset)
-        .$attrs));
+        .$attrs.content));
+      let Swipe41Action_swipe: RectValue = CommonFunc.getComponentRect('lSwipe41Row');
+      let swipe_height = Swipe41Action_swipe.bottom - Swipe41Action_swipe.top;
+      console.info('41 0410 json' + Math.round(px2vp(swipe_height)));
       // [15.00, 87.00][360.00,387.00]
-      expect(JSON.parse(textSwipeOffset).$attrs.content).assertEqual('50')
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset).$attrs.content))-Math.round(px2vp(swipe_height)))<=1).assertTrue();
       // reset
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + 0)
+        Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop + top + vp2px(100)), Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop  + top + vp2px(10))
       );
       await CommonFunc.sleep(4000);
       let buttonReset2 = await driver.findComponent(ON.id('btreset41'));
@@ -91,17 +102,20 @@ export default function listSwipeAction41Jsunit() {
       await CommonFunc.sleep(3000);
       // swipe to up
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100))
+        Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop + top + vp2px(100)), Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop  + top + vp2px(10))
       );
       await CommonFunc.sleep(5000);
       let textSwipeOffset2 = getInspectorByKey('swipe41Offset');
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0410 json is ' + JSON.stringify(JSON.parse(textSwipeOffset2)
-        .$attrs));
-      expect(JSON.parse(textSwipeOffset2).$attrs.content).assertEqual('-50');
+        .$attrs.content));
+      let Swipe41Action_swipe2: RectValue = CommonFunc.getComponentRect('lSwipe41Row2');
+      let swipe_height2 = Swipe41Action_swipe2.bottom - Swipe41Action_swipe2.top;
+      console.info('41 0410 json' + Math.round(px2vp(swipe_height2)));
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset2).$attrs.content))-(-Math.round(px2vp(swipe_height2))))<=1).assertTrue();
       //init the state
       // swipe to up
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + 0)
+        Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop + top + vp2px(230)), Math.round(globalThis.winLeft + left + width/2), Math.round(globalThis.winTop  + top + vp2px(2))
       );
       await CommonFunc.sleep(4000);
       done();

@@ -883,7 +883,7 @@ export default function requestDownloadOneJSUnitTest() {
      */
     it("SUB_Misc_REQUEST_Create_Callback_0070", 0, async (done: Function) => {
       let urls = 'x';
-      for (let i = 0; i < 2030; i++){
+      for (let i = 0; i < 8174; i++){
         urls += 'x';
       }
       let config: request.agent.Config = {
@@ -923,7 +923,7 @@ export default function requestDownloadOneJSUnitTest() {
      */
     it("SUB_Misc_REQUEST_Create_Promise_0070", 0, async (done: Function) => {
       let urls = 'x';
-      for (let i = 0; i < 2030; i++){
+      for (let i = 0; i < 8174; i++){
         urls += 'x';
       }
       let config: request.agent.Config = {
@@ -961,7 +961,7 @@ export default function requestDownloadOneJSUnitTest() {
      */
     it("SUB_Misc_REQUEST_Create_Callback_0080", 0, async (done: Function) => {
       let urls = 'x';
-      for (let i = 0; i < 2031; i++){
+      for (let i = 0; i < 8175; i++){
         urls += 'x';
       }
       let config: request.agent.Config = {
@@ -1004,7 +1004,7 @@ export default function requestDownloadOneJSUnitTest() {
      */
     it("SUB_Misc_REQUEST_Create_Promise_0080", 0, async (done: Function) => {
       let urls = 'x';
-      for (let i = 0; i < 2031; i++){
+      for (let i = 0; i < 8175; i++){
         urls += 'x';
       }
       let config: request.agent.Config = {

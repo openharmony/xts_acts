@@ -15,14 +15,18 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from "@ohos/hypium";
 import { buffer, JSON, util } from "@kit.ArkTS";
 
+function sleep(ms: number) {
+  return new Promise<void>((resolve, reject) => setTimeout(resolve, ms));
+}
+
 export default function stringDecoderTest() {
   describe('StringDecoderTest', () => {
     beforeAll(() => {
 
     })
 
-    beforeEach(() => {
-
+    beforeEach(async () => {
+      await sleep(200);
     })
 
     afterAll(() => {

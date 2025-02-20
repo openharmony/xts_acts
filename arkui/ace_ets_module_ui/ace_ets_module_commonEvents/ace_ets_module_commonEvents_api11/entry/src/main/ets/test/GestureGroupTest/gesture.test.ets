@@ -16,10 +16,21 @@
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
-
+import config from '@ohos.accessibility.config';
+import accessibility from '@ohos.accessibility';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.arkui.ace.commonEvents.api11/EntryAbility';
 export default function gestureParallelJsunit() {
   describe('gestureParallelTest', () => {
     beforeEach(async (done: Function) => {
+config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+      console.info(`enable success`);
+      }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
+	done();
+});
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/GestureGroup/gesture',

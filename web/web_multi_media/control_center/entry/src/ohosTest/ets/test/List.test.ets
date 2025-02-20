@@ -14,7 +14,9 @@
  */
 
 import webViewControllerResumeAllTimers from './WebViewControllerResumeAllTimers.test';
+import enableWebAVSession from './enableWebAVSession.test';
 
 export default function testsuite() {
        webViewControllerResumeAllTimers()
+	   enableWebAVSession()
 }

@@ -41,7 +41,7 @@ struct DialogPage {
   }
 
   build() {
-    Column({ space: 40 }) {
+    Column({ space: 8 }) {
       Button(this.buttonName)
         .id('buttonDialogPage')
         .onClick(() => {
@@ -63,7 +63,10 @@ struct DialogPage {
           this.showThreeButtonAUTO()
         }).backgroundColor(0x317aff)
 
-    }.width("100%").margin({ top: 150 })
+    }
+    .width("100%")
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 
   private showThreeButtonHORIZONTAL() {

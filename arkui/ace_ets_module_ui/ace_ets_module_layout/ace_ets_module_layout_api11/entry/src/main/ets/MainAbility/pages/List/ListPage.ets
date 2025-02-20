@@ -113,6 +113,34 @@ struct ListPage {
 
   build() {
     Column() {
+      Row(){
+        Text(this.onItemMoveText).fontSize(10).margin({right:10}).key('onItemMoveText')
+        Text(this.onItemDragText).fontSize(10).margin({right:10}).key('onItemDragText')
+        Text(this.onItemDropText).fontSize(10).key('onItemDropText')
+      }
+      Row(){
+        Text(this.onScrollText).fontSize(10).margin({right:10}).key('onScrollText')
+        Text(this.onScrollBeginText).fontSize(10).key('onScrollBeginText')
+      }
+      Row(){
+        Text(this.onReachStartText).fontSize(10).margin({right:10}).key('onReachStartText')
+        Text(this.onReachEndText).fontSize(10).key('onReachEndText')
+      }
+      Row(){
+        Text(this.onScrollStartText).fontSize(10).margin({right:10}).key('onScrollStartText')
+        Text(this.onScrollStopText).fontSize(10).key('onScrollStopText')
+      }
+      Button("点击更改alignListItem:" + this.alignListItem)
+        .height('8%')
+        .onClick(() => {
+          if (this.alignListItem == ListItemAlign.Start) {
+            this.alignListItem = ListItemAlign.Center
+          } else if (this.alignListItem == ListItemAlign.Center) {
+            this.alignListItem = ListItemAlign.End
+          } else {
+            this.alignListItem = ListItemAlign.Start
+          }
+        })
       List() {
         ForEach(this.arr, (item: string) => {
           ListItem() {
@@ -122,6 +150,7 @@ struct ListPage {
           }
         }, (item: string) => item)
       }.key('list_default')
+      .height('5%')
 
       List({ space: this.space, initialIndex: this.initialIndex, scroller: this.scroller }) {
         ForEach(this.arr, (item: string) => {
@@ -138,7 +167,7 @@ struct ListPage {
           .border({ width: 2, color: Color.Green })
         }, (item: string) => item)
       }
-      .height(300)
+      .height('60%')
       .width("90%")
       .border({ width: 3, color: Color.Red })
       .key("list")
@@ -216,24 +245,6 @@ struct ListPage {
         console.info('onItemDrop: event: ' + event + ', itemIndex: ' + itemIndex + ', insertIndex: ' + insertIndex + ', isSuccess: ' + isSuccess)
       })
 
-      Text(this.onScrollText).fontSize(10).margin(5).key('onScrollText')
-      Text(this.onReachStartText).fontSize(10).margin(5).key('onReachStartText')
-      Text(this.onReachEndText).fontSize(10).margin(5).key('onReachEndText')
-      Text(this.onScrollBeginText).fontSize(10).margin(5).key('onScrollBeginText')
-      Text(this.onScrollStartText).fontSize(10).margin(5).key('onScrollStartText')
-      Text(this.onScrollStopText).fontSize(10).margin(5).key('onScrollStopText')
-      Text(this.onItemMoveText).fontSize(10).margin(5).key('onItemMoveText')
-      Text(this.onItemDragText).fontSize(10).margin(5).key('onItemDragText')
-      Text(this.onItemDropText).fontSize(10).margin(5).key('onItemDropText')
-      Button("点击更改alignListItem:" + this.alignListItem).onClick(() => {
-        if (this.alignListItem == ListItemAlign.Start) {
-          this.alignListItem = ListItemAlign.Center
-        } else if (this.alignListItem == ListItemAlign.Center) {
-          this.alignListItem = ListItemAlign.End
-        } else {
-          this.alignListItem = ListItemAlign.Start
-        }
-      })
     }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
   }
 }

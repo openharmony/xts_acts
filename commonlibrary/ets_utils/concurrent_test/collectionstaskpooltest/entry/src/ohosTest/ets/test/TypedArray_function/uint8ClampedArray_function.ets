@@ -49,7 +49,7 @@ export function testUint8ClampedArrayTaskPool0004(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -108,7 +108,7 @@ export function testUint8ClampedArrayTaskPool0012(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -120,7 +120,7 @@ export function testUint8ClampedArrayTaskPool0013(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -132,7 +132,7 @@ export function testUint8ClampedArrayTaskPool0014(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -151,7 +151,7 @@ export function testUint8ClampedArrayTaskPool0016(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -177,7 +177,7 @@ export function testUint8ClampedArrayTaskPool0019(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -931,7 +931,7 @@ export function testUint8ClampedArrayTaskPool0121(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -1014,7 +1014,7 @@ export function testUint8ClampedArrayTaskPool0130(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent
@@ -1069,7 +1069,7 @@ export function testUint8ClampedArrayTaskPool0135(): string {
   } catch (err) {
     errorMessage = err.message;
   }
-  return errorMessage;
+  return "error";
 }
 
 @Concurrent

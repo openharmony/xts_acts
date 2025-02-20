@@ -30,11 +30,23 @@ import {
   PointerMatrix
 } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
+import config from '@ohos.accessibility.config';
+import accessibility from '@ohos.accessibility';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.arkui.ace.commonAttrsLayout.api11/EntryAbility';
 
 export default function comSizeAbilityTest_01() {
   describe('comSizeAbilityTest_01', () => {
     beforeEach(async (done: Function) => {
       console.info("comSizeAbilityTest_01 beforeEach start")
+
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info('[comSizeAbilityTest_01] enable success');
+      }).catch((err: object) => {
+        console.error(`[comSizeAbilityTest_01] failed to enable, ${err}`)
+      })
+
+      console.info("comSizeAbilityTest_01 beforeEach start 222")
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/comSizeAbility/comSizeAbilityTest_01'
       }
@@ -62,6 +74,10 @@ export default function comSizeAbilityTest_01() {
     it('comSizeAbilityTestJsunit_02', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_02 START')
       await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      let btn = await driver.findComponent(ON.id('comSizeAbilityTest_01_to_1'));
+      await btn.click()
+      await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("Badge_Size");
       let Size = modePosition.size
       let SizeWidth = Size.width
@@ -73,7 +89,6 @@ export default function comSizeAbilityTest_01() {
       let Transform = modePosition.transform
       let Scale = modePosition.scale
       let Rotate = modePosition.rotate
-      let driver = Driver.create();
       let button = await driver.findComponent(ON.id('Badge_Size'));
       let rect = await button.getBounds();
       console.info("[comSizeAbilityTestJsunit_02] component rect is: " + JSON.stringify(rect))
@@ -105,6 +120,10 @@ export default function comSizeAbilityTest_01() {
     it('comSizeAbilityTestJsunit_03', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_03 START')
       await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      let btn = await driver.findComponent(ON.id('comSizeAbilityTest_01_to_2'));
+      await btn.click()
+      await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("Button_Size");
       let Size = modePosition.size
       let SizeWidth = Size.width
@@ -116,7 +135,6 @@ export default function comSizeAbilityTest_01() {
       let Transform = modePosition.transform
       let Scale = modePosition.scale
       let Rotate = modePosition.rotate
-      let driver = Driver.create();
       let button = await driver.findComponent(ON.id('Button_Size'));
       let rect = await button.getBounds();
       console.info("[comSizeAbilityTestJsunit_03] component rect is: " + JSON.stringify(rect))
@@ -148,6 +166,10 @@ export default function comSizeAbilityTest_01() {
     it('comSizeAbilityTestJsunit_04', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_04 START')
       await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      let btn = await driver.findComponent(ON.id('comSizeAbilityTest_01_to_3'));
+      await btn.click()
+      await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("Canvas_Size");
       let modePosition1: componentUtils.ComponentInfo = componentUtils.getRectangleById("Canvas_Father");
       let Size = modePosition.size
@@ -160,7 +182,6 @@ export default function comSizeAbilityTest_01() {
       let Transform = modePosition.transform
       let Scale = modePosition.scale
       let Rotate = modePosition.rotate
-      let driver = Driver.create();
       let button = await driver.findComponent(ON.id('Canvas_Size'));
       let rect = await button.getBounds();
       console.info("[comSizeAbilityTestJsunit_04] component rect is: " + JSON.stringify(rect))

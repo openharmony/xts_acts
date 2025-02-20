@@ -15,6 +15,8 @@
 
 import router from '@ohos.router';
 import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function TextfieldMultiTest() {
   describe('TextfieldMultiTest', () => {
@@ -154,7 +156,9 @@ export default function TextfieldMultiTest() {
           let color: ESObject = icon.color;
           let src: ESObject = icon.src;
           expect(style).assertEqual(2);
-          expect(size).assertEqual("24.00vp");
+		  let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_textfield_icon_size').id)
+		  console.info("[TextInputPageJsunit_0200] size: " +px2vp(resourceSize));
+          expect(size).assertEqual(Math.round(px2vp(resourceSize))+".00vp");
           expect(typeof src).assertEqual("string");
           expect(color).assertEqual("#FF000000");
           console.info('ArkUX_Text_Visual_0140 END ');

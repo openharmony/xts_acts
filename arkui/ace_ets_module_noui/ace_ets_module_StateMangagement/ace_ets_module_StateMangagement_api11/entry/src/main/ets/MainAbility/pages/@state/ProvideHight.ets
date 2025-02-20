@@ -20,7 +20,7 @@ struct Child_AT {
   @Consume hight: ResourceStr | Length;
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
 
 
     }
@@ -32,37 +32,37 @@ struct Child_AT {
 @Component
 struct Ancestors_AT {
   // @Provide装饰的联合类型count由入口组件Ancestors提供其后代组件
-  @Provide hight: ResourceStr | Length = 50;
+  @Provide hight: ResourceStr | Length = 10;
 
   build() {
     Column() {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.hight)) + " number is " + JSON.stringify(this.hight))
-        .fontSize(20).margin(10).key('ProvideHight')
-      Text("设置变量number类型50-->100")
+        .fontSize(9).key('ProvideHight').height('5%')
+      Text("设置变量number类型10-->7").height('5%')
       Button('change')
         .height(this.hight)
         .onClick(() => {
-          this.hight = 100
+          this.hight = 7
         })
         .key('ProvideHeight1')
 
-      Text("设置变量string类型50-->'200'")
+      Text("设置变量string类型10-->'8'").height('5%')
       Button('change')
         .height(this.hight)
         .onClick(() => {
-          this.hight = '200'
+          this.hight = '8'
         })
         .key('ProvideHeight2')
 
-      Text("设置变量Resource类型50-->Resource")
+      Text("设置变量Resource类型10-->Resource").height('5%')
       Button('change')
         .height(this.hight)
         .onClick(() => {
-          this.hight = $r('app.string.number')
+          this.hight = $r('app.string.number_9')
         })
         .key('ProvideHeight3')
 
       Child_AT()
-    }.width('100%').margin({top:5})
+    }.width('100%')
   }
 }

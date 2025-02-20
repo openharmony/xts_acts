@@ -57,24 +57,19 @@ export default function UIComponentScrollSwiperDisplaycount0200() {
     });
 
     /**
-     * @tc.number SWIPER_DISPLAYCOUNT_0200
-     * @tc.name step
-     * @tc.desc loop
-     * @tc.level Level 1
-     * @tc.type
-     * @tc.size
+     * @tc.number SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_DISPLAYCOUNT_0200
+     * @tc.name SWIPER_DISPLAYCOUNT_0200
+     * @tc.desc change page and success
+     * @tc.level Level 3
+     * @tc.type   Function
+     * @tc.size   MediumTest
      */
     it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_DISPLAYCOUNT_0200', 0, async (done: Function) => {
       console.info("SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_DISPLAYCOUNT_0200 START");
       await CommonFunc.sleep(2000)
       let driver = await Driver.create()
-      let swiper = await driver.findComponent(ON.id("swiperdisplaycount0200"));
-      let point = await swiper.getBoundsCenter();
-      await driver.fling({
-        x: point.x + 80, y: point.y
-      }, {
-        x: point.x - 80, y: point.y
-      }, 5, 1000);
+      let swiper = await driver.findComponent(ON.id("btnDisplaycount0200"));
+      await swiper.click();
       await CommonFunc.sleep(1000);
       let strIndex: string = getInspectorByKey('swiperdisplaycount0200_1')
       let jsonIndex: ESObject = JSON.parse(strIndex).$attrs.content;

@@ -38,19 +38,19 @@ class PageConfig {
 
 export default function OffsetTest() {
   //A list of components that support the position attribute, which is required.
-  let supportView = ['Text', 'Button', 'Radio', 'Select', 'Blank', 'Checkbox', 'CheckboxGroup', 'DataPanel',
+  let supportView = ['Text', 'Button', 'Radio', 'Blank', 'Checkbox', 'CheckboxGroup', 'DataPanel',
     'DatePicker', 'Divider', 'Gauge', 'LoadingProgress', 'Marquee', 'Navigation', 'Image', 'ImageAnimator',
     'AlphabetIndexer', 'NavRouter', 'Progress', 'QRCode', 'Rating', 'Search', 'Slider', 'TextArea', 'TextClock',
     'TextInput', 'TextPicker', 'TimePicker', 'Toggle', 'Badge', 'Column', 'Counter', 'Flex', 'Grid', 'GridRow',
-    'List', 'Row', 'Scroll', 'SideBarContainer', 'Stack', 'Tabs', 'WaterFlow', 'Circle', 'Ellipse', 'Line',
+    'List', 'Row', 'Scroll', 'Stack', 'Tabs', 'Circle', 'Ellipse', 'Line',
     'Polyline', 'Polygon', 'Path', 'Rect', 'Shape', 'Panel', /*'Refresh',*/'TabContent', 'ListItem',
-    'RowSplit', 'ColumnSplit', 'RelativeContainer', 'Swiper', 'Navigator', 'TextTimer', /*'GridCol',*/ 'FlowItem',
-    'Stepper', 'StepperItem', 'GridItem', 'ScrollBar', /*'Menu',*/ 'MenuItem', 'MenuItemGroup',
+    'RelativeContainer', 'Swiper', 'Navigator', 'TextTimer', /*'GridCol',*/
+    'GridItem', 'ScrollBar', /*'Menu',*/ 'MenuItem', 'MenuItemGroup',
     'ListItemGroup']
 
   //The size of the parent component, when set as a percentage, serves as the calculation basis.
-  let parentWidth = 300;
-  let parentHeight = 400;
+  let parentWidth = 200;
+  let parentHeight = 200;
   let subassemblyWidth = 100;
   let subassemblyHeight = 100;
 

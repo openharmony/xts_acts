@@ -99,6 +99,72 @@ static napi_value GetCameraOrientation(napi_env env, napi_callback_info info)
     return jsValue;
 }
 
+static napi_value GetCameraHostName(napi_env env, napi_callback_info info)
+{
+    ndkCamera_->GetCameraHostName();
+
+    napi_value jsValue = nullptr;
+
+    napi_create_int32(env, ndkCamera_->GetCameraHostName(), &jsValue);
+
+    return jsValue;
+}
+
+static napi_value GetCameraHostType(napi_env env, napi_callback_info info)
+{
+    ndkCamera_->GetCameraHostType();
+
+    napi_value jsValue = nullptr;
+
+    napi_create_int32(env, ndkCamera_->GetCameraHostType(), &jsValue);
+
+    return jsValue;
+}
+
+static napi_value GetCameraHostNameErrorParameter(napi_env env, napi_callback_info info)
+{
+    ndkCamera_->GetCameraHostNameErrorParameter();
+
+    napi_value jsValue = nullptr;
+
+    napi_create_int32(env, ndkCamera_->GetCameraHostNameErrorParameter(), &jsValue);
+
+    return jsValue;
+}
+
+static napi_value GetCameraHostTypeErrorParameter(napi_env env, napi_callback_info info)
+{
+    ndkCamera_->GetCameraHostTypeErrorParameter();
+
+    napi_value jsValue = nullptr;
+
+    napi_create_int32(env, ndkCamera_->GetCameraHostTypeErrorParameter(), &jsValue);
+
+    return jsValue;
+}
+
+static napi_value GetCameraHostNameInspection(napi_env env, napi_callback_info info)
+{
+    ndkCamera_->GetCameraHostNameInspection();
+
+    napi_value jsValue = nullptr;
+
+    napi_create_int32(env, ndkCamera_->GetCameraHostNameInspection(), &jsValue);
+
+    return jsValue;
+}
+
+static napi_value GetCameraHostTypeInspection(napi_env env, napi_callback_info info)
+{
+    ndkCamera_->GetCameraHostTypeInspection();
+
+    napi_value jsValue = nullptr;
+
+    napi_create_int32(env, ndkCamera_->GetCameraHostTypeInspection(), &jsValue);
+
+    return jsValue;
+}
+
 
 static napi_value CreateCameraInput(napi_env env, napi_callback_info info)
 {
@@ -2495,6 +2561,12 @@ static napi_value Init(napi_env env, napi_value exports)
         { "initCamera", nullptr, InitCamera, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "getSupportedCameras", nullptr, GetSupportedCameras, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "getCameraOrientation", nullptr, GetCameraOrientation, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "getCameraHostNameErrorParameter", nullptr, GetCameraHostNameErrorParameter, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "getCameraHostTypeErrorParameter", nullptr, GetCameraHostTypeErrorParameter, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "getCameraHostTypeInspection", nullptr, GetCameraHostTypeInspection, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "getCameraHostNameInspection", nullptr, GetCameraHostNameInspection, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "getCameraHostName", nullptr, GetCameraHostName, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "getCameraHostType", nullptr, GetCameraHostType, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "createCameraInput", nullptr, CreateCameraInput, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "createCameraInputWithPositionAndType", nullptr, CreateCameraInputWithPositionAndType, nullptr, nullptr,
             nullptr, napi_default, nullptr },

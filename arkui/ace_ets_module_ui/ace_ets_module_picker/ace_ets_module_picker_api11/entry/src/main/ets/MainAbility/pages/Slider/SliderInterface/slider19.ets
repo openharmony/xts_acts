@@ -32,7 +32,7 @@ struct Slider19 {
         max: 100
       })
         .id('Slider19')
-        .width(300)
+        .width('80%')
         .showTips(true)
         .onChange((value: number, mode: SliderChangeMode) => {
           this.outSetValueOne = value
@@ -40,8 +40,8 @@ struct Slider19 {
           console.info('value:' + value + 'mode:' + mode.toString())
         })
     }
-    .width(350)
-    .height(200)
-    .position({ y: 60 })
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }

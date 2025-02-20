@@ -63,6 +63,10 @@ export default function comSizeAbilityTest_10() {
     it('comSizeAbilityTestJsunit_26', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_26 START')
       await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      let btn = await driver.findComponent(ON.id('comSizeAbilityTest_10_to_1'));
+      await btn.click()
+      await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("Path_Size");
       let modePosition1: componentUtils.ComponentInfo = componentUtils.getRectangleById("Path_Father");
       let Size = modePosition.size
@@ -75,7 +79,6 @@ export default function comSizeAbilityTest_10() {
       let Transform = modePosition.transform
       let Scale = modePosition.scale
       let Rotate = modePosition.rotate
-      let driver = Driver.create();
       let button = await driver.findComponent(ON.id('Path_Size'));
       let rect = await button.getBounds();
       console.info("[comSizeAbilityTestJsunit_26] component rect is: " + JSON.stringify(rect))
@@ -107,6 +110,10 @@ export default function comSizeAbilityTest_10() {
     it('comSizeAbilityTestJsunit_27', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_27 START')
       await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      let btn = await driver.findComponent(ON.id('comSizeAbilityTest_10_to_2'));
+      await btn.click()
+      await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("Polygon_Size");
       let modePosition1: componentUtils.ComponentInfo = componentUtils.getRectangleById("Polygon_Father");
       let Size = modePosition.size
@@ -119,7 +126,6 @@ export default function comSizeAbilityTest_10() {
       let Transform = modePosition.transform
       let Scale = modePosition.scale
       let Rotate = modePosition.rotate
-      let driver = Driver.create();
       let button = await driver.findComponent(ON.id('Polygon_Size'));
       let rect = await button.getBounds();
       console.info("[comSizeAbilityTestJsunit_27] component rect is: " + JSON.stringify(rect))
@@ -151,6 +157,10 @@ export default function comSizeAbilityTest_10() {
     it('comSizeAbilityTestJsunit_28', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_28 START')
       await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      let btn = await driver.findComponent(ON.id('comSizeAbilityTest_10_to_3'));
+      await btn.click()
+      await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("Polyline_Size");
       let modePosition1: componentUtils.ComponentInfo = componentUtils.getRectangleById("Polyline_Father");
       let Size = modePosition.size
@@ -163,7 +173,6 @@ export default function comSizeAbilityTest_10() {
       let Transform = modePosition.transform
       let Scale = modePosition.scale
       let Rotate = modePosition.rotate
-      let driver = Driver.create();
       let button = await driver.findComponent(ON.id('Polyline_Size'));
       let rect = await button.getBounds();
       console.info("[comSizeAbilityTestJsunit_28] component rect is: " + JSON.stringify(rect))

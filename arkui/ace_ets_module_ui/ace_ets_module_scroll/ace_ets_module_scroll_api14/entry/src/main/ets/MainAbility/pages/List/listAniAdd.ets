@@ -60,7 +60,7 @@ struct animationListAddExample {
           ListItem() {
             Text('item-' + item)
               .width('100%')
-              .height(50)
+              .height('15%')
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .borderRadius(10)

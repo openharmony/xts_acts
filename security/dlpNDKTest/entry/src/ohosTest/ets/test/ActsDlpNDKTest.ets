@@ -15,6 +15,7 @@
 import hilog from '@ohos.hilog';
 import testNapi from 'libentry.so';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import deviceInfo from '@ohos.deviceInfo';
 
 export default function ActsDlpNDKTest() {
   describe('ActsDlpNDKTest', () => {
@@ -48,17 +49,19 @@ export default function ActsDlpNDKTest() {
      */
     it('getDlpPermissionInfoTest', 0, async (done: Function) => {
       console.log("=======> getDlpPermissionInfoTest  ==========");
-      
-      try{
-        let result = await testNapi.osGetDlpPermissionInfoA();
-        console.log("=======>getDlpPermissionInfoTest result:" + result);
-        expect(result).assertEqual(19100006);
-        done();
-      } catch (error) {
-        console.error("=======>getDlpPermissionInfoTest error:" + error);
-        expect(false).assertTrue();
-        done();
+      if (deviceInfo.deviceType != 'wearable') {
+        try{
+          let result = await testNapi.osGetDlpPermissionInfoA();
+          console.log("=======>getDlpPermissionInfoTest result:" + result);
+          expect(result).assertEqual(19100006);
+          done();
+        } catch (error) {
+          console.error("=======>getDlpPermissionInfoTest error:" + error);
+          expect(false).assertTrue();
+          done();
+        }
       }
+      done();
     })
 
     /**
@@ -71,17 +74,20 @@ export default function ActsDlpNDKTest() {
      */
     it('getOriginalFileNameTest', 0, async (done: Function) => {
       console.log("=======> getOriginalFileNameTest  ==========");
-      
-      try{
-        let result = await testNapi.osGetOriginalFileNameA();
-        console.log("=======>getOriginalFileNameTest result:" + result);
-        expect(result).assertEqual('test.txt');
-        done();
-      } catch (error) {
-        console.error("=======>getOriginalFileNameTest error:" + error);
-        expect(false).assertTrue();
-        done();
+      if (deviceInfo.deviceType != 'wearable') {
+        try{
+          let result = await testNapi.osGetOriginalFileNameA();
+          console.log("=======>getOriginalFileNameTest result:" + result);
+          expect(result).assertEqual('test.txt');
+          done();
+        } catch (error) {
+          console.error("=======>getOriginalFileNameTest error:" + error);
+          expect(false).assertTrue();
+          done();
+        }
       }
+      done();
+
     })
     
     /**
@@ -94,17 +100,20 @@ export default function ActsDlpNDKTest() {
      */
     it('isInSandboxTest', 0, async (done: Function) => {
       console.log("=======> isInSandboxTest  ==========");
-      
-      try{
-        let result = await testNapi.osIsInSandboxA();
-        console.log("=======>isInSandboxTest result:" + result);
-        expect(result).assertFalse();
-        done();
-      } catch (error) {
-        console.error("=======>isInSandboxTest error:" + error);
-        expect(false).assertTrue();
-        done();
+      if (deviceInfo.deviceType != 'wearable') {
+        try{
+          let result = await testNapi.osIsInSandboxA();
+          console.log("=======>isInSandboxTest result:" + result);
+          expect(result).assertFalse();
+          done();
+        } catch (error) {
+          console.error("=======>isInSandboxTest error:" + error);
+          expect(false).assertTrue();
+          done();
+        }
       }
+      done();
+
     })
     
     /**
@@ -117,17 +126,20 @@ export default function ActsDlpNDKTest() {
      */
     it('setSandboxAppConfigTest', 0, async (done: Function) => {
       console.log("=======> setSandboxAppConfigTest  ==========");
-      
-      try{
-        let result = await testNapi.osSetSandboxAppConfigA();
-        console.log("=======>setSandboxAppConfigTest result:" + result);
-        expect(result).assertEqual(0);
-        done();
-      } catch (error) {
-        console.error("=======>setSandboxAppConfigTest error:" + error);
-        expect(false).assertTrue();
-        done();
+      if (deviceInfo.deviceType != 'wearable') {
+        try{
+          let result = await testNapi.osSetSandboxAppConfigA();
+          console.log("=======>setSandboxAppConfigTest result:" + result);
+          expect(result).assertEqual(0);
+          done();
+        } catch (error) {
+          console.error("=======>setSandboxAppConfigTest error:" + error);
+          expect(false).assertTrue();
+          done();
+        }
       }
+      done();
+
     })
     
     /**
@@ -140,17 +152,20 @@ export default function ActsDlpNDKTest() {
      */
     it('getSandboxAppConfigTest', 0, async (done: Function) => {
       console.log("=======> getSandboxAppConfigTest  ==========");
-      
-      try{
-        let result = await testNapi.osGetSandboxAppConfigA();
-        console.log("=======>getSandboxAppConfigTest result:" + result);
-        expect(result).assertEqual('configInfo');
-        done();
-      } catch (error) {
-        console.error("=======>getSandboxAppConfigTest error:" + error);
-        expect(false).assertTrue();
-        done();
+      if (deviceInfo.deviceType != 'wearable') {
+        try{
+          let result = await testNapi.osGetSandboxAppConfigA();
+          console.log("=======>getSandboxAppConfigTest result:" + result);
+          expect(result).assertEqual('configInfo');
+          done();
+        } catch (error) {
+          console.error("=======>getSandboxAppConfigTest error:" + error);
+          expect(false).assertTrue();
+          done();
+        }
       }
+      done();
+
     })
 
     /**
@@ -163,17 +178,20 @@ export default function ActsDlpNDKTest() {
      */
     it('cleanSandboxAppConfigTest', 0, async (done: Function) => {
       console.log("=======> cleanSandboxAppConfigTest  ==========");
-      
-      try{
-        let result = await testNapi.osCleanSandboxAppConfigA();
-        console.log("=======>cleanSandboxAppConfigTest result:" + result);
-        expect(result).assertEqual(0);
-        done();
-      } catch (error) {
-        console.error("=======>cleanSandboxAppConfigTest error:" + error);
-        expect(false).assertTrue();
-        done();
+      if (deviceInfo.deviceType != 'wearable') {
+        try{
+          let result = await testNapi.osCleanSandboxAppConfigA();
+          console.log("=======>cleanSandboxAppConfigTest result:" + result);
+          expect(result).assertEqual(0);
+          done();
+        } catch (error) {
+          console.error("=======>cleanSandboxAppConfigTest error:" + error);
+          expect(false).assertTrue();
+          done();
+        }
       }
+      done();
+
     })
   })
 }

@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAceOpenWebPageDevTest.hap"
+                "ActsWebOpenWebPageDevTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

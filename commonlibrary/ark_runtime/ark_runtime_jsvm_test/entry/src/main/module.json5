@@ -49,6 +49,11 @@
         ]
       }
     ],
+    "definePermissions": [
+      {
+        "name": "ohos.permission.kernel.ALLOW_EXECUTABLE_FORT_MEMORY"
+      }
+    ],
     "requestPermissions": [{
       "name": "ohos.permission.INTERNET",
       "reason": "$string:app_name",
@@ -58,6 +63,10 @@
         ],
         "when": "inuse"
       }
-    }]
+    },
+    {
+      "name": "ohos.permission.kernel.ALLOW_EXECUTABLE_FORT_MEMORY"
+    }
+    ]
   }
 }

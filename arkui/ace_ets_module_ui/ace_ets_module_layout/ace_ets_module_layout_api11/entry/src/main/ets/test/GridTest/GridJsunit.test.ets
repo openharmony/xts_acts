@@ -204,15 +204,15 @@ export default function GridJsunit() {
       let left = grid2.left
       let right = grid2.right
       let driver = await UiDriver.create()
-      await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - 10), Math.round((right - left) / 2), Math.round(top + 10));
-      await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - 10), Math.round((right - left) / 2), Math.round(top + 10));
+      await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - vp2px(10)), Math.round((right - left) / 2), Math.round(top + vp2px(10)));
+      await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - vp2px(10)), Math.round((right - left) / 2), Math.round(top + vp2px(10)));
       let onScrollIndex1 = await driver.findComponent(BY.key('onScrollIndex'));
       let text1 = await onScrollIndex1.getText();
       expect(text1).assertEqual('onScrollIndex:2');
       await CommonFunc.sleep(1000);
 
-      await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - 10), Math.round((right - left) / 2), Math.round(top + 10));
-      await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - 10), Math.round((right - left) / 2), Math.round(top + 10));
+      await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - vp2px(10)), Math.round((right - left) / 2), Math.round(top + vp2px(10)));
+      await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - vp2px(10)), Math.round((right - left) / 2), Math.round(top + vp2px(10)));
       let onScrollIndex2 = await driver.findComponent(BY.key('onScrollIndex'));
       let text2 = await onScrollIndex2.getText();
       expect(text2).assertEqual('onScrollIndex:2');

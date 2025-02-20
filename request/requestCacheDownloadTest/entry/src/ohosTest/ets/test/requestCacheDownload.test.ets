@@ -54,5 +54,201 @@ export default function requestCacheDownloadUnitTest() {
       }
     });
 
+    /**
+     * @tc.number SUB_Request_cacheDownload_0200
+     * @tc.name SUB_Request_cacheDownload_0200
+     * @tc.desc Starts a upload session.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_cacheDownload_0200', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_cacheDownload_0200 is starting-----------------------");
+      class cacheDownloadOptions implements cacheDownload.CacheDownloadOptions {
+        headers?: Record<string, string> | undefined = {'Accept': '*/*'}
+      }
+      let text: string = ''.padEnd(8175, 'cacheDownload')
+      let url: string = 'https://gitee' + text + '.com';
+      try {
+        let downloadOptions = new cacheDownloadOptions();
+        cacheDownload.download(url, downloadOptions);
+        console.info("====>SUB_Request_cacheDownload_0200 download success url length: " + url.length);
+        expect(url.length).assertEqual(8192);
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_cacheDownload_0200 catch err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_cacheDownload_0300
+     * @tc.name SUB_Request_cacheDownload_0300
+     * @tc.desc Starts a upload session.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_cacheDownload_0300', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_cacheDownload_0300 is starting-----------------------");
+      class cacheDownloadOptions implements cacheDownload.CacheDownloadOptions {
+        headers?: Record<string, string> | undefined = {'Accept': '*/*'}
+      }
+      let text: string = ''.padEnd(8176, 'cacheDownload')
+      let url: string = 'https://gitee' + text + '.com';
+      try {
+        console.info("====>SUB_Request_cacheDownload_0300 download success url length: " + url.length);
+        let downloadOptions = new cacheDownloadOptions();
+        cacheDownload.download(url, downloadOptions);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_cacheDownload_0300 catch err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_cacheDownload_0400
+     * @tc.name SUB_Request_cacheDownload_0400
+     * @tc.desc Starts a upload session.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_cacheDownload_0400', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_cacheDownload_0400 is starting-----------------------");
+      let text: string = ''.padEnd(8175, 'cacheDownload')
+      let url: string = 'https://gitee' + text + '.com';
+      try {
+        cacheDownload.cancel(url);
+        console.info("====>SUB_Request_cacheDownload_0400 cancel success url length: " + url.length);
+        expect(url.length).assertEqual(8192);
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_cacheDownload_0400 catch err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_cacheDownload_0500
+     * @tc.name SUB_Request_cacheDownload_0500
+     * @tc.desc Starts a upload session.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_cacheDownload_0500', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_cacheDownload_0500 is starting-----------------------");
+      let text: string = ''.padEnd(8176, 'cacheDownload')
+      let url: string = 'https://gitee' + text + '.com';
+      try {
+        console.info("====>SUB_Request_cacheDownload_0500 cancel success url length: " + url.length);
+        cacheDownload.cancel(url);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_cacheDownload_0500 catch err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_cacheDownload_0600
+     * @tc.name SUB_Request_cacheDownload_0600
+     * @tc.desc Starts a upload session.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_cacheDownload_0600', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_cacheDownload_0600 is starting-----------------------");
+      let num: number = 1 * 1024 * 1024 * 1024
+      try {
+        cacheDownload.setMemoryCacheSize(num);
+        console.info("====>SUB_Request_cacheDownload_0600 setMemoryCacheSize success num: " + num);
+        expect(num).assertEqual(1073741824);
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_cacheDownload_0600 catch err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_cacheDownload_0700
+     * @tc.name SUB_Request_cacheDownload_0700
+     * @tc.desc Starts a upload session.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_cacheDownload_0700', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_cacheDownload_0700 is starting-----------------------");
+      let num: number = 1 * 1024 * 1024 * 1024 + 1
+      try {
+        console.info("====>SUB_Request_cacheDownload_0700 setMemoryCacheSize success num: " + num);
+        cacheDownload.setMemoryCacheSize(num);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_cacheDownload_0700 catch err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_cacheDownload_0800
+     * @tc.name SUB_Request_cacheDownload_0800
+     * @tc.desc Starts a upload session.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_cacheDownload_0800', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_cacheDownload_0800 is starting-----------------------");
+      let num: number = 4 * 1024 * 1024 * 1024
+      try {
+        cacheDownload.setFileCacheSize(num);
+        console.info("====>SUB_Request_cacheDownload_0800 setMemoryCacheSize success num: " + num);
+        expect(num).assertEqual(4294967296);
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_cacheDownload_0800 catch err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_cacheDownload_0100
+     * @tc.name SUB_Request_cacheDownload_0100
+     * @tc.desc Starts a upload session.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_cacheDownload_0900', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_cacheDownload_0700 is starting-----------------------");
+      let num: number = 4 * 1024 * 1024 * 1024 + 1
+      try {
+        console.info("====>SUB_Request_cacheDownload_0700 setMemoryCacheSize success num: " + num);
+        cacheDownload.setFileCacheSize(num);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_cacheDownload_0700 catch err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
   });
 }

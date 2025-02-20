@@ -32,7 +32,7 @@ struct ViewFir {
       // 将ClassB的成员变量b在UI呈现出来
       Text(`${this.classB.b}`)
     }
-    .margin({top:10})
+    
   }
 }
 
@@ -45,41 +45,47 @@ struct ViewAFir {
   @Provide("indexCount") class_B: FirClassA = new FirClassA(5);
 
   build() {
-    Column({space:5}) {
+    Column() {
       Column(){
-        Text('@State接收第一层')
+        Text('@State接收第一层').height('5%')
         Row(){
           // 点击按钮，第一层变量发生变化
           Button('第一层变量+1')
             .key(("btn_state1"))
-            .margin({right:20})
             .backgroundColor('#E8A027')
             .onClick(() => {
               // class_A的成员变量a加1，class_A发生变化
               this.class_A.b += 1;
             })
+            .height('5%')
+            .width('50%')
           // 将第一层变量在UI呈现出来
           Text(`${this.class_A.b}`).key(("fir_state"))
+            .height('5%')
+            .width('50%')
         }
-      }.margin(20)
+      }
 
       Column(){
-        Text('@Provide接收第一层')
+        Text('@Provide接收第一层').height('5%')
         Row(){
           // 点击按钮，第一层变量发生变化
           Button('第一层变量+1')
             .key(("btn_provide1"))
-            .margin({right:20})
             .backgroundColor('#E8A027')
             .onClick(() => {
               // class_B的成员变量a加1，class_B发生变化
               this.class_B.b += 1;
             })
+            .height('5%')
+            .width('50%')
           // 将第一层变量在UI呈现出来
           Text(`${this.class_B.b}`).key(("fir_provide"))
+            .height('5%')
+            .width('50%')
         }
 
-      }.margin(20)
+      }
     }
     .width('100%')
     .justifyContent(FlexAlign.Center)

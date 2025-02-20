@@ -58,7 +58,7 @@ export default function RelativeGuideLine7() {
       let obj: ESObject = JSON.parse(strJson);
       await CommonFunc.sleep(1000);
       console.info("[RelativeGuideLine7_001] obj is: " + JSON.stringify(obj.$attrs.height) + JSON.stringify(obj.$attrs.width));
-      expect(obj.$attrs.width == '200.00vp').assertTrue();
+      expect(obj.$attrs.width == '100.00vp').assertTrue();
 
       console.info('[RelativeGuideLine7_001] END');
       done();
@@ -86,7 +86,7 @@ export default function RelativeGuideLine7() {
       let obj: ESObject = JSON.parse(strJson);
       await CommonFunc.sleep(1000);
       console.info("[RelativeGuideLine7_002] obj is: " + JSON.stringify(obj.$attrs.height) + JSON.stringify(obj.$attrs.width));
-      expect(obj.$attrs.width == '100.00vp').assertTrue();
+      expect(obj.$attrs.width == '80.00vp').assertTrue();
 
       console.info('[RelativeGuideLine7_002] END');
       done();

@@ -35,7 +35,7 @@ struct Builder0120 {
   }
 
   build() {
-    Column({space: 3}) {
+    Column() {
       funBuilder0120(this.tmpClass.msg)
       this.fun(this.tmpClass.msg)
       Button('Change Msg')

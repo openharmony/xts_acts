@@ -1,6 +1,9 @@
 {
     "devices": {
         "general": [
+            "car",
+            "wearable",
+            "tv",
             "default",
             "tablet",
             "phone",

@@ -47,6 +47,12 @@ struct OnlyRowsTemplate1 {
 
   build() {
     Column({ space: 5 }) {
+      Button('����').onClick((event: ClickEvent) => {
+        this.rowStart1 = 1
+        this.rowEnd1 = 2
+        this.rowStart2 = 1
+        this.rowEnd2 = 2
+      }).key('OnlyRowsTemplate1_button')
       Grid() {
         GridItem() {
           Text('1')
@@ -88,12 +94,6 @@ struct OnlyRowsTemplate1 {
       .height(400)
       .key('OnlyRowsTemplate1_Grid_1')
 
-      Button('����').onClick((event: ClickEvent) => {
-        this.rowStart1 = 1
-        this.rowEnd1 = 2
-        this.rowStart2 = 1
-        this.rowEnd2 = 2
-      }).key('OnlyRowsTemplate1_button')
     }.width('100%')
   }
 }

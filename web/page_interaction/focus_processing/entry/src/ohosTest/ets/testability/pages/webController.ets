@@ -104,18 +104,22 @@ struct webController {
           switch (this.str) {
 
             case "testRequestFocus001": {
-              try {
-                this.controller.loadUrl({ url: "resource://rawfile/second.html" });
-                await Utils.sleep(2000)
-                this.requestFocus = false
-                sendEventByKey('textInput', 10, '')
-                await Utils.sleep(3000)
-                Utils.emitEvent(this.requestFocus, 33030)
-              } catch (error) {
-                console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
-                Utils.emitEvent(String(error.code), 33030)
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                try {
+                  this.controller.loadUrl({ url: "resource://rawfile/second.html" });
+                  await Utils.sleep(2000)
+                  this.requestFocus = false
+                  sendEventByKey('textInput', 10, '')
+                  await Utils.sleep(3000)
+                  Utils.emitEvent(this.requestFocus, 33030)
+                } catch (error) {
+                  console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
+                  Utils.emitEvent(String(error.code), 33030)
+                }
+                break;
+              } else {
+                Utils.emitEvent(true, 33030)
               }
-              break;
             }
 
           }

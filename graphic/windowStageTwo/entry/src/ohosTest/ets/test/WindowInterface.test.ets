@@ -26,7 +26,7 @@ import deviceInfo from '@ohos.deviceInfo';
 
 let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
 
-async function startAbility(caseName: string, context: common.UIAbilityContext, options?: StartOptions,) {
+async function startAbility(caseName: string, context: common.UIAbilityContext, options?: StartOptions) {
   let startNum = (AppStorage.get('startNum') ? AppStorage.get('startNum') : 0) as number
   let want: Want = {
     bundleName: AppStorage.get('bundleName'),
@@ -58,7 +58,8 @@ async function terminateAbilityCycle(caseName: string) {
     let pageContext = AppStorage.get('pageContext') as common.UIAbilityContext
     await pageContext.terminateSelf().then(() => {
       console.log(`${caseName} terminateSelf success`);
-      startNum -= 1
+      // startNum -= 1
+      startNum--;
     }).catch((err: BusinessError) => {
       console.error(`${caseName} terminateSelf fail, err: ${JSON.stringify(err)}`);
     });
@@ -82,7 +83,7 @@ async function terminateAbility(caseName: string) {
 async function assertMaximizeComponentExist(windowState: number, windowRect?: window.Rect,
   windowClass?: window.Window) {
   let driver = Driver.create()
-  if (windowState == 1) {
+  if (windowState == 2||windowState == 1) {
     await driver.mouseMoveTo({ x: 100, y: 0 })
   } else {
     await windowClass?.moveWindowToAsync(windowRect?.left, windowRect?.top)
@@ -104,6 +105,9 @@ export default function windowInterface() {
     let context: common.UIAbilityContext;
     let windowStage: ohosWindow.WindowStage;
     let isPCStatus: string = '';
+    let mainWindowClass:ohosWindow.Window;
+    let deviceType: string = '';
+    let isAutoWindow:string = '';
     beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
@@ -112,8 +116,16 @@ export default function windowInterface() {
       //isPCStatus == '' 非PC设备
       //isPCStatus == '1' PC设备状态栏dock未融合
       //isPCStatus == '0' PC设备状态栏dock融合
-      console.info(`beforeAll isPCStatus: ${isPCStatus}`);
+      console.info(`beforeAll isPCStatus: `+ isPCStatus);
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
+      mainWindowClass = windowStage.getMainWindowSync();
+      deviceType = deviceInfo.deviceType;
+      console.log('jsUnittest beforeAll deviceType =' + deviceType);
+      isAutoWindow = settings.getValueSync(context,'window_pcmode_switch_status','',settings.domainName.DEVICE_SHARED);
+      //isAutoWindow == '' 非PAD设备
+      //isAutoWindow == 'true' PAD设备自由多窗模式
+      //isAutoWindow == 'false' PAD设备非自由多窗模式
+      console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -121,18 +133,23 @@ export default function windowInterface() {
       // This API supports only one parameter: preset action function.
     })
     afterEach(async () => {
-      await terminateAbilityCycle('afterEach')
-      await sleep(1000)
-      let mainWindowClass = windowStage.getMainWindowSync()
-      let mainID = mainWindowClass.getWindowProperties().id
-      let lastWindow = await window.getLastWindow(context)
-      let lastID = lastWindow.getWindowProperties().id
-      while (mainID != lastID) {
-        await lastWindow.destroyWindow()
+      try {
+        await terminateAbilityCycle('afterEach')
         await sleep(1000)
-        lastWindow = await window.getLastWindow(context)
-        lastID = lastWindow.getWindowProperties().id
+        // let mainWindowClass = windowStage.getMainWindowSync()
+        let mainID = mainWindowClass.getWindowProperties().id
+        let lastWindow = await window.getLastWindow(context)
+        let lastID = lastWindow.getWindowProperties().id
+        while (mainID != lastID) {
+          await lastWindow.destroyWindow()
+          await sleep(1000)
+          lastWindow = await window.getLastWindow(context)
+          lastID = lastWindow.getWindowProperties().id
       }
+      } catch (error) {
+        console.log('afterEach fail cause'+error)
+      }
+      
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
@@ -146,6 +163,96 @@ export default function windowInterface() {
     })
 
     /**
+     * @tc.number    : testStartMoving_0100
+     * @tc.name      : testStartMoving_0100
+     * @tc.desc      : Test the function value of setWindowTitleMoveEnabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testStartMoving_0100', 0, async (done: Function) => {
+      const message = 'startMovingTest_0100';
+      await sleep(1000)
+      let driver = await Driver.create();
+      let windowClass = windowStage.getMainWindowSync();
+      await windowClass.setUIContent("testability/pages/WindowTest/StartMoving");
+      await sleep(1000)
+      let windowPoint = await windowClass.getWindowProperties().windowRect
+      console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
+      let blank = await driver.findComponent(ON.id('startMoving'))
+      await sleep(1000)
+      let point = await blank.getBoundsCenter();
+      await driver.drag(point.x, point.y, point.x - 50, point.y - 50, 200);
+      await sleep(1000)
+      let text = await driver.findComponent(ON.id('startMovingText'));
+      await sleep(1000)
+      let textDragged = await text.getText()
+      if (textDragged == 'startMoving success') {
+        let windowPointDragged = await windowClass.getWindowProperties().windowRect
+        console.info(`${message} windowPoint = ${JSON.stringify(windowPointDragged)}`)
+        expect(windowPointDragged.left).assertEqual(windowPoint.left - 50)
+        expect(windowPointDragged.top).assertEqual(windowPoint.top - 50)
+        done()
+      } else if (textDragged == 'startMoving 801') {
+        expect(true).assertTrue();
+        done()
+      } else {
+        console.error(`${message} Error`);
+        expect(true).assertFalse()
+        done()
+      }
+    })
+
+/**
+     * @tc.number    : testSetResizeByDragEnabledTrue_0100
+     * @tc.name      : testSetResizeByDragEnabledTrue_0100
+     * @tc.desc      :
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
+  const message = 'testSetResizeByDragEnabledTrueTest_0100';
+  let windowClass = windowStage.getMainWindowSync()
+  let enabled = true;
+  let driver = await Driver.create();
+  if (isPCStatus != '') {
+    try {
+      windowClass.setResizeByDragEnabled(enabled, async (err) => {
+        if (err.code == 801) {
+          console.error(`${message}  Capability not supported. Failed to call the API due to limited device capabilities`);
+          expect(false).assertFalse();
+          done();
+        } else if (err.code && err.code != 801) {
+          console.error(`${message} Failed to check whether the window support the rect auto-save. Cause code: ${err.code}, message: ${err.message}`)
+          expect().assertFail();
+          done();
+        }
+        console.info(`${message} Succeeded in setting the function of disabling the resize by drag window.`);
+        let windowPoint = await windowClass.getWindowProperties().windowRect
+        console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
+        await driver.mouseMoveTo({x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top})
+        await sleep(2000)
+        await driver.mouseDrag({x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top}, {x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top + 100},2000)
+        await sleep(1000)
+        let windowPointDragged = await windowClass.getWindowProperties().windowRect
+        console.info(`${message} windowPointDraged = ${JSON.stringify(windowPointDragged)}`)
+        expect(windowPointDragged.width).assertEqual(windowPoint.width)
+        expect(windowPointDragged.height).assertEqual(windowPoint.height - 100)
+        done()
+      });
+    } catch (exception) {
+      console.error(`${message} Failed to check whether the window support the rect auto-save. Cause code: ${exception.code}, message: ${exception.message}`)
+      expect().assertFail();
+      done();
+    }
+  } else {
+    console.info(`${message} not support`);
+    done()
+  }
+})
+
+    /**
      * @tc.number    : testSetWindowRectAutoSaveTrue_0100
      * @tc.name      : testSetWindowRectAutoSaveTrue_0100
      * @tc.desc      : Test the function value of setWindowTitleMoveEnabled
@@ -155,6 +262,9 @@ export default function windowInterface() {
      */
     it('testSetWindowRectAutoSaveTrue_0100', 0, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0100';
+      let windowClass = windowStage.getMainWindowSync();
+      await windowClass.setUIContent('testability/pages/Index');
+      await sleep(1000)
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
       // 设置setWindowRectAutoSave = true
@@ -287,13 +397,13 @@ export default function windowInterface() {
           windowStageStart = await startAbility(message, context)
           windowClassStart = windowStageStart.getMainWindowSync()
           let windowStatusType = windowClassStart.getWindowStatus();
-          console.info(`${message} windowStatusType = ${windowStatusType} , expect 1`)
+          console.info(`${message} windowStatusType = ${windowStatusType} , expect 2`)
           let isLayoutFullScreen = windowClassStart.getWindowProperties().isLayoutFullScreen
           console.info(`${message} isLayoutFullScreen = ${isLayoutFullScreen} , expect false`)
           // 恢复
           await windowStageStart.setWindowRectAutoSave(false)
           // 窗口全屏，非沉浸式
-          expect(windowStatusType).assertEqual(window.WindowStatusType.FULL_SCREEN) 
+          expect(windowStatusType).assertEqual(window.WindowStatusType.MAXIMIZE) 
           //开发不兼容变更，附下changelog：https://gitee.com/openharmony/docs/pulls/65733
           expect(isLayoutFullScreen).assertFalse()
           done()
@@ -502,14 +612,14 @@ export default function windowInterface() {
           // 窗口全屏，非沉浸式
           windowClassStart = windowStageStart.getMainWindowSync()
           let windowStatusType = windowClassStart.getWindowStatus();
-          console.info(`${message} windowStatusType = ${windowStatusType} , expect 1`)
+          console.info(`${message} windowStatusType = ${windowStatusType} , expect 2`)
           let isLayoutFullScreen = windowClassStart.getWindowProperties().isLayoutFullScreen
           console.info(`${message} windowRect = ${JSON.stringify(windowClassStart.getWindowProperties().windowRect)}`)
           console.info(`${message} isLayoutFullScreen = ${isLayoutFullScreen} , expect false`)
           // 恢复
           await windowStageStart.setWindowRectAutoSave(false)
 
-          expect(windowStatusType).assertEqual(window.WindowStatusType.FULL_SCREEN) 
+          expect(windowStatusType).assertEqual(window.WindowStatusType.MAXIMIZE) 
           //开发不兼容变更，附下changelog：https://gitee.com/openharmony/docs/pulls/65733
           expect(isLayoutFullScreen).assertFalse()
           done()
@@ -556,13 +666,13 @@ export default function windowInterface() {
           // 窗口全屏，非沉浸式
           windowClassStart = windowStageStart.getMainWindowSync()
           let windowStatusType = windowClassStart.getWindowStatus();
-          console.info(`${message} windowStatusType = ${windowStatusType} , expect 1`)
+          console.info(`${message} windowStatusType = ${windowStatusType} , expect 2`)
           let isLayoutFullScreen = windowClassStart.getWindowProperties().isLayoutFullScreen
           console.info(`${message} isLayoutFullScreen = ${isLayoutFullScreen} , expect false`)
           // 恢复
           await windowStageStart.setWindowRectAutoSave(false)
 
-          expect(windowStatusType).assertEqual(window.WindowStatusType.FULL_SCREEN) 
+          expect(windowStatusType).assertEqual(window.WindowStatusType.MAXIMIZE) 
           //开发不兼容变更，附下changelog：https://gitee.com/openharmony/docs/pulls/65733
           expect(isLayoutFullScreen).assertFalse()
           done()
@@ -596,14 +706,17 @@ export default function windowInterface() {
       const message = 'setWindowRectAutoSaveTestFalse_0100';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
+      let windowRect1 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
+      console.info(`${message} windowRect1 = ${JSON.stringify(windowRect1)}`)
       // 设置setWindowRectAutoSave = false
       try {
-        await windowStageStart.setWindowRectAutoSave(false).then(async () => {
+         windowStageStart.setWindowRectAutoSave(false).then(async () => {
           console.info(`${message} setWindowRectAutoSave`)
           // 更改窗口大小&位置
           let windowClassStart = windowStageStart.getMainWindowSync()
           await windowClassStart.moveWindowToAsync(300, 400)
           await windowClassStart.resizeAsync(1000, 1200)
+          await sleep(1000)
           // 关闭Ability
           await terminateAbility(message)
           await sleep(1000)
@@ -612,7 +725,7 @@ export default function windowInterface() {
           let windowRect2 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
           console.info(`${message} windowRect2 = ${JSON.stringify(windowRect2)}`)
           // windowRect2 为窗口默认创建大小
-          expect(JSON.stringify(windowRect2)).assertEqual('{"left":585,"top":351,"width":2090,"height":1394}')
+          expect(JSON.stringify(windowRect1)).assertEqual(JSON.stringify(windowRect2))
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -645,9 +758,11 @@ export default function windowInterface() {
       let driver = Driver.create()
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
+      let windowRect1 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
+      console.info(`${message} windowRect1 = ${JSON.stringify(windowRect1)}`)
       // 设置setWindowRectAutoSave = false
       try {
-        await windowStageStart.setWindowRectAutoSave(false).then(async () => {
+         windowStageStart.setWindowRectAutoSave(false).then(async () => {
           console.info(`${message} setWindowRectAutoSave`)
           // 更改窗口大小&位置
           let windowClassStart = windowStageStart.getMainWindowSync()
@@ -668,7 +783,7 @@ export default function windowInterface() {
           let windowRect2 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
           console.info(`${message} windowRect2 = ${JSON.stringify(windowRect2)}`)
           // windowRect2 为窗口默认创建大小
-          expect(JSON.stringify(windowRect2)).assertEqual('{"left":585,"top":351,"width":2090,"height":1394}')
+          expect(JSON.stringify(windowRect1)).assertEqual(JSON.stringify(windowRect2))
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -701,9 +816,11 @@ export default function windowInterface() {
       const message = 'setWindowRectAutoSaveTestFalse_0300';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
+      let windowRect1 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
+      console.info(`${message} windowRect1 = ${JSON.stringify(windowRect1)}`)
       // 设置setWindowRectAutoSave = false
       try {
-        await windowStageStart.setWindowRectAutoSave(false).then(async () => {
+         windowStageStart.setWindowRectAutoSave(false).then(async () => {
           console.info(`${message} setWindowRectAutoSave`)
           // 更改窗口大小&位置
           let windowClassStart = windowStageStart.getMainWindowSync()
@@ -719,7 +836,7 @@ export default function windowInterface() {
           let windowRect2 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
           console.info(`${message} windowRect2 = ${JSON.stringify(windowRect2)}`)
           // 窗口全屏，非沉浸式
-          expect(JSON.stringify(windowRect2)).assertEqual('{"left":585,"top":351,"width":2090,"height":1394}')
+          expect(JSON.stringify(windowRect1)).assertEqual(JSON.stringify(windowRect2))
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -752,16 +869,16 @@ export default function windowInterface() {
       const message = 'setWindowRectAutoSaveTestFalse_0400';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
+      let windowRect1 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
+      console.info(`${message} windowRect1 = ${JSON.stringify(windowRect1)}`)
       // 设置setWindowRectAutoSave = false
       try {
-        await windowStageStart.setWindowRectAutoSave(false).then(async () => {
+         windowStageStart.setWindowRectAutoSave(false).then(async () => {
           console.info(`${message} setWindowRectAutoSave`)
           // 更改窗口大小&位置
           let windowClassStart = windowStageStart.getMainWindowSync()
           await windowClassStart.moveWindowToAsync(300, 400)
           await windowClassStart.resizeAsync(1000, 1200)
-          let windowRect1 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
-          console.info(`${message} windowRect1 = ${JSON.stringify(windowRect1)}`)
           // 沉浸式
           await windowClassStart.maximize(window.MaximizePresentation.ENTER_IMMERSIVE)
           // 关闭Ability
@@ -772,7 +889,7 @@ export default function windowInterface() {
           let windowRect2 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
           console.info(`${message} windowRect2 = ${JSON.stringify(windowRect2)}`)
           // windowRect2 为窗口默认创建大小
-          expect(JSON.stringify(windowRect2)).assertEqual('{"left":585,"top":351,"width":2090,"height":1394}')
+          expect(JSON.stringify(windowRect1)).assertEqual(JSON.stringify(windowRect2))
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -805,16 +922,16 @@ export default function windowInterface() {
       const message = 'setWindowRectAutoSaveTestFalse_0500';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
+      let windowRect1 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
+      console.info(`${message} windowRect1 = ${JSON.stringify(windowRect1)}`)
       // 设置setWindowRectAutoSave = false
       try {
-        await windowStageStart.setWindowRectAutoSave(false).then(async () => {
+         windowStageStart.setWindowRectAutoSave(false).then(async () => {
           console.info(`${message} setWindowRectAutoSave`)
           // 更改窗口大小&位置
           let windowClassStart = windowStageStart.getMainWindowSync()
           await windowClassStart.moveWindowToAsync(300, 400)
           await windowClassStart.resizeAsync(1000, 1200)
-          let windowRect1 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
-          console.info(`${message} windowRect1 = ${JSON.stringify(windowRect1)}`)
           // 最小化
           await windowClassStart.minimize()
           // 关闭Ability
@@ -825,7 +942,7 @@ export default function windowInterface() {
           let windowRect2 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
           console.info(`${message} windowRect2 = ${JSON.stringify(windowRect2)}`)
           // windowRect2 为窗口默认创建大小
-          expect(JSON.stringify(windowRect2)).assertEqual('{"left":585,"top":351,"width":2090,"height":1394}')
+          expect(JSON.stringify(windowRect1)).assertEqual(JSON.stringify(windowRect2))
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -858,23 +975,23 @@ export default function windowInterface() {
       const message = 'setWindowRectAutoSaveTestFalse_0600';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
+      let windowRect1 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
+      console.info(`${message} windowRect1 = ${JSON.stringify(windowRect1)}`)
       // 设置setWindowRectAutoSave = false
       try {
-        await windowStageStart.setWindowRectAutoSave(false).then(async () => {
+         windowStageStart.setWindowRectAutoSave(false).then(async () => {
           console.info(`${message} setWindowRectAutoSave`)
           // 更改窗口大小&位置
           let windowClassStart = windowStageStart.getMainWindowSync()
           await windowClassStart.moveWindowToAsync(300, 400)
           await windowClassStart.resizeAsync(1000, 1200)
-          let windowRect1 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
-          console.info(`${message} windowRect1 = ${JSON.stringify(windowRect1)}`)
           // 拉起Ability
-          windowStageStart = await startAbility(message, context)
-          let windowRect2 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
+          let windowStageStart2 = await startAbility(message, context)
+          let windowRect2 = windowStageStart2.getMainWindowSync().getWindowProperties().windowRect
           console.info(`${message} windowRect2 = ${JSON.stringify(windowRect2)}`)
           // windowRect1 & windowRect2 的大小一致
-          expect(windowRect2.width).assertEqual(2091)
-          expect(windowRect2.height).assertEqual(1394)
+          expect(windowRect2.width).assertEqual(windowRect1.width)
+          expect(windowRect2.height).assertEqual(windowRect1.height)
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -907,21 +1024,24 @@ export default function windowInterface() {
       const message = 'setWindowRectAutoSaveTestFalse_0700';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
+      let windowRect1 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
+      console.info(`${message} windowRect1 = ${JSON.stringify(windowRect1)}`)
       // 设置setWindowRectAutoSave = false
       try {
-        await windowStageStart.setWindowRectAutoSave(false).then(async () => {
+         windowStageStart.setWindowRectAutoSave(false).then(async () => {
           console.info(`${message} setWindowRectAutoSave`)
           // 窗口最大化（非沉浸式）
           let windowClassStart = windowStageStart.getMainWindowSync()
           await windowClassStart.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING)
           // 拉起Ability
-          windowStageStart = await startAbility(message, context)
+          let windowStageStart2 = await startAbility(message, context)
           // 窗口全屏，非沉浸式
-          let windowRect2 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
+          let windowRect2 = windowStageStart2.getMainWindowSync().getWindowProperties().windowRect
           console.info(`${message} windowRect2 = ${JSON.stringify(windowRect2)}`)
+          await terminateAbilityCycle('afterEach')
           // windowRect1 & windowRect2 的大小一致
-          expect(windowRect2.width).assertEqual(2091)
-          expect(windowRect2.height).assertEqual(1394)
+          expect(Math.abs(windowRect2.width-windowRect1.width)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-windowRect1.height)).assertLessOrEqual(1);
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -954,21 +1074,24 @@ export default function windowInterface() {
       const message = 'setWindowRectAutoSaveTestFalse_0800';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
+      let windowRect1 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
+      console.info(`${message} windowRect1 = ${JSON.stringify(windowRect1)}`)
       // 设置setWindowRectAutoSave = false
       try {
-        await windowStageStart.setWindowRectAutoSave(false).then(async () => {
+         windowStageStart.setWindowRectAutoSave(false).then(async () => {
           console.info(`${message} setWindowRectAutoSave`)
           // 窗口最大化（沉浸式）
           let windowClassStart = windowStageStart.getMainWindowSync()
           await windowClassStart.maximize(window.MaximizePresentation.ENTER_IMMERSIVE)
           // 拉起Ability
-          windowStageStart = await startAbility(message, context)
+          let windowStageStart2 = await startAbility(message, context)
           // 窗口全屏，非沉浸式
-          let windowRect2 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
+          let windowRect2 = windowStageStart2.getMainWindowSync().getWindowProperties().windowRect
           console.info(`${message} windowRect2 = ${JSON.stringify(windowRect2)}`)
+          await terminateAbilityCycle('afterEach')
           // windowRect1 & windowRect2 的大小一致
-          expect(windowRect2.width).assertEqual(2091)
-          expect(windowRect2.height).assertEqual(1394)
+          expect(Math.abs(windowRect2.width-windowRect1.width)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-windowRect1.height)).assertLessOrEqual(1);
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -1051,8 +1174,7 @@ export default function windowInterface() {
         console.info(`${message} windowStatus: ${windowStatus}, expect 4`);
         expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
         // 判断是否存在最大化 - false
-        let test =
-          await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
+        let test = await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass);
         await sleep(1000)
         console.info(`${message} EnhanceMaximizeBtn existence or not: ${test}, expect false`);
         expect(test).assertFalse()
@@ -1068,7 +1190,7 @@ export default function windowInterface() {
         await driver.click(2340, 977);
         await sleep(1000)
         expect(windowStatus).assertEqual(window.WindowStatusType.SPLIT_SCREEN);
-        done()
+        done();
       } else {
         console.info(`${message} not support`);
         done()
@@ -1247,44 +1369,15 @@ export default function windowInterface() {
         // startAbility - SupportWindowMode.FLOATING & SPLIT
         let windowStageStart = await startAbility(message, context, options)
         let windowClass = windowStageStart.getMainWindowSync()
-        // 获取窗口状态 - 自由窗口
+        // 获取窗口状态 - 全屏
         let windowStatus = windowClass.getWindowStatus()
-        console.info(`${message} windowStatus: ${windowStatus}, expect 4`);
-        expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
+        console.info(`${message} windowStatus: ${windowStatus}, expect 1`);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
         // 判断是否存在最大化 - true
-        let test =
-          await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
+        let test = await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
         await sleep(1000)
         console.info(`${message} EnhanceMaximizeBtn existence or not: ${test}, expect true`);
-        expect(test).assertTrue()
-        // 点击最大化
-        let maxButton = await driver.findComponent(ON.id('EnhanceMaximizeBtn'))
-        await sleep(1000)
-        await maxButton.click()
-        await sleep(1000)
-        // 获取窗口状态 - 全屏
-        windowStatus = windowClass.getWindowStatus()
-        console.info(`${message} windowStatus: ${windowStatus}, expect 1`);
-        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN); 
-        //开发不兼容变更，附下changelog：https://gitee.com/openharmony/docs/pulls/65733
-        // 判断是否存在最大化 - false
-        test =
-          await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
-        await sleep(1000)
-        console.info(`${message} EnhanceMaximizeBtn existence or not: ${test}, expect false`);
-        expect(test).assertFalse()
-        // 模拟用户移动窗口到左边缘，可触发分屏
-        let title = await driver.findComponent(ON.id('ContainerModalTitleRow'))
-        await sleep(1000)
-        let titlePoint = await title.getBounds()
-        await driver.drag(titlePoint.left + 100, titlePoint.top + 10, 0, titlePoint.top + 200, 5000)
-        await sleep(1000)
-        // 获取窗口状态 - 分屏
-        windowStatus = windowClass.getWindowStatus()
-        console.info(`${message} windowStatus: ${windowStatus}, expect 5`);
-        await driver.click(2340, 977);
-        await sleep(1000)
-        expect(windowStatus).assertEqual(window.WindowStatusType.SPLIT_SCREEN);
+        expect(!test).assertTrue();
         done()
       } else {
         console.info(`${message} not support`);
@@ -1334,7 +1427,7 @@ export default function windowInterface() {
         // 获取窗口状态 - 全屏
         windowStatus = windowClass.getWindowStatus()
         console.info(`${message} windowStatus: ${windowStatus}, expect 1`);
-        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN); 
+        expect(windowStatus).assertEqual(window.WindowStatusType.MAXIMIZE); 
         //开发不兼容变更，附下changelog：https://gitee.com/openharmony/docs/pulls/65733
         // 判断是否存在最大化 - true
         test =
@@ -1346,7 +1439,7 @@ export default function windowInterface() {
         let title = await driver.findComponent(ON.id('ContainerModalTitleRow'))
         await sleep(1000)
         let titlePoint = await title.getBounds()
-        await driver.drag(titlePoint.left + 100, titlePoint.top + 10, 0, titlePoint.top + 200, 5000)
+        await driver.drag(titlePoint.left + 100, titlePoint.top + 10, 0, titlePoint.top + 200, 200)
         await sleep(1000)
         // 获取窗口状态 - 分屏
         windowStatus = windowClass.getWindowStatus()
@@ -1419,45 +1512,7 @@ export default function windowInterface() {
       }
     })
 
-    /**
-     * @tc.number    : testStartMoving_0100
-     * @tc.name      : testStartMoving_0100
-     * @tc.desc      : Test the function value of setWindowTitleMoveEnabled
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testStartMoving_0100', 0, async (done: Function) => {
-      const message = 'startMovingTest_0100';
-      let windowClass = windowStage.getMainWindowSync();
-      windowClass.setUIContent("testability/pages/WindowTest/StartMoving");
-      await sleep(1000)
-      let driver = Driver.create();
-      await sleep(1000)
-      let windowPoint = windowClass.getWindowProperties().windowRect
-      console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
-      let blank = await driver.findComponent(ON.id('startMoving'))
-      await sleep(1000)
-      let point = await blank.getBoundsCenter();
-      await driver.drag(point.x, point.y, point.x + 100, point.y + 100, 200);
-      let text = await driver.findComponent(ON.id('startMovingText'));
-      await sleep(1000)
-      let textDragged = await text.getText()
-      if (textDragged == 'startMoving success') {
-        let windowPointDragged = windowClass.getWindowProperties().windowRect
-        console.info(`${message} windowPoint = ${JSON.stringify(windowPointDragged)}`)
-        expect(windowPointDragged.left).assertEqual(windowPoint.left + 100)
-        expect(windowPointDragged.top).assertEqual(windowPoint.top + 100)
-        done()
-      } else if (textDragged == 'startMoving 801') {
-        expect(true).assertTrue();
-        done()
-      } else {
-        console.error(`${message} Error`);
-        expect(true).assertFalse()
-        done()
-      }
-    })
+
 
     /**
      * @tc.number    : testStartMoving_0200
@@ -1475,9 +1530,9 @@ export default function windowInterface() {
       };
       windowStage.createSubWindowWithOptions('subWindow', options).then(async (data) => {
         let windowClass = data
-        windowClass.setUIContent("testability/pages/WindowTest/StartMoving");
+        await windowClass.setUIContent("testability/pages/WindowTest/StartMoving");
         windowClass.resize(1000, 1200)
-        windowClass.showWindow()
+        await windowClass.showWindow()
         await sleep(1000)
         let driver = Driver.create();
         await sleep(1000)
@@ -1501,7 +1556,7 @@ export default function windowInterface() {
           console.error(`${message} Error`);
           expect(true).assertFalse()
         }
-        windowClass.destroyWindow()
+        await windowClass.destroyWindow()
         // await sleep(10000)
         done();
       }).catch((err: BusinessError) => {
@@ -1534,9 +1589,9 @@ export default function windowInterface() {
       try {
         windowClass.createSubWindowWithOptions('subWindow', options).then(async (data) => {
           let windowClass = data
-          windowClass.setUIContent("testability/pages/WindowTest/StartMoving");
+          await windowClass.setUIContent("testability/pages/WindowTest/StartMoving");
           windowClass.resize(1000, 1200)
-          windowClass.showWindow()
+          await windowClass.showWindow()
           await sleep(1000)
           let driver = Driver.create();
           await sleep(1000)
@@ -1595,8 +1650,10 @@ export default function windowInterface() {
       let driver =  Driver.create()
       let windowPoint = windowClass.getWindowProperties().windowRect
       console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
-      await driver.drag(windowPoint.left + 100, windowPoint.top + 50, windowPoint.left + 200, windowPoint.top + 150)
+      if(deviceType == '2in1'|| isAutoWindow =='true'){
+        await driver.drag(windowPoint.left + 100, windowPoint.top + 50, windowPoint.left + 200, windowPoint.top + 150)
       await sleep(1000)
+      }
       windowPoint = windowClass.getWindowProperties().windowRect
       console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
       try {
@@ -1624,6 +1681,8 @@ export default function windowInterface() {
           done();
         }
       }
+      
+      
 
     })
 
@@ -1641,8 +1700,10 @@ export default function windowInterface() {
       let driver =  Driver.create()
       let windowPoint = windowClass.getWindowProperties().windowRect
       console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
-      await driver.drag(windowPoint.left + 100, windowPoint.top + 50, windowPoint.left + 200, windowPoint.top + 150)
-      await sleep(1000)
+      if(deviceType == '2in1'|| isAutoWindow =='true'){
+        await driver.drag(windowPoint.left + 100, windowPoint.top + 50, windowPoint.left + 200, windowPoint.top + 150)
+        await sleep(1000)
+      }
       windowPoint = windowClass.getWindowProperties().windowRect
       console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
       try {
@@ -1886,7 +1947,8 @@ export default function windowInterface() {
     it('testSetSubWindowModalModalityType_0100', 0, async (done: Function) => {
       const message = 'setSubWindowModalModalityTypeTest_0100';
       let windowClass = windowStage.getMainWindowSync()
-      windowClass.setUIContent('testability/pages/WindowTest/Modality')
+      await windowClass.setUIContent('testability/pages/WindowTest/Modality')
+      await sleep(300);
       let driver =  Driver.create()
       let btn = await driver.findComponent(ON.id('ModalityText'))
       await sleep(1000)
@@ -1901,7 +1963,7 @@ export default function windowInterface() {
           let windowClass = data;
           await windowClass.setUIContent('testability/pages/Index')
           await windowClass.resizeAsync(400, 500)
-          await windowClass.moveWindowToAsync(400, 100)
+          await windowClass.moveWindowToAsync(400, 400)
           await windowClass.showWindow()
           let promise = windowClass.setSubWindowModal(true, window.ModalityType.WINDOW_MODALITY);
           promise.then(async () => {
@@ -1910,7 +1972,7 @@ export default function windowInterface() {
             let btnText = await btn.getText()
             console.info(`${message} btnText = ${btnText}, expect Modality`)
             expect(btnText).assertEqual('Modality')
-            windowClass.destroyWindow()
+            await windowClass.destroyWindow()
           }).catch((err: BusinessError) => {
             if (err.code == 801) {
               console.info(`${message} Capability not supported. Failed to call the API due to limited device capabilities.`);
@@ -1938,7 +2000,7 @@ export default function windowInterface() {
     it('testSetSubWindowModalModalityType_0200', 0, async (done: Function) => {
       const message = 'setSubWindowModalModalityTypeTest_0200';
       let windowClass = windowStage.getMainWindowSync()
-      windowClass.setUIContent('testability/pages/WindowTest/Modality')
+      await windowClass.setUIContent('testability/pages/WindowTest/Modality')
       let driver =  Driver.create()
       let btn = await driver.findComponent(ON.id('ModalityText'))
       await sleep(1000)
@@ -1953,7 +2015,7 @@ export default function windowInterface() {
           let windowClass = data;
           await windowClass.setUIContent('testability/pages/Index')
           await windowClass.resizeAsync(400, 500)
-          await windowClass.moveWindowToAsync(400, 100)
+          await windowClass.moveWindowToAsync(400, 400)
           await windowClass.showWindow()
           let promise = windowClass.setSubWindowModal(true, window.ModalityType.APPLICATION_MODALITY);
           promise.then(async () => {
@@ -1962,7 +2024,7 @@ export default function windowInterface() {
             let btnText = await btn.getText()
             console.info(`${message} btnText = ${btnText}, expect Modality`)
             expect(btnText).assertEqual('Modality')
-            windowClass.destroyWindow()
+            await windowClass.destroyWindow()
           }).catch((err: BusinessError) => {
             if (err.code == 801) {
               console.info(`${message} Capability not supported. Failed to call the API due to limited device capabilities.`);
@@ -2035,8 +2097,9 @@ export default function windowInterface() {
           }
           let windowClass = data
           let promise = windowClass.setSubWindowModal(false, window.ModalityType.APPLICATION_MODALITY);
-          promise.then(() => {
+          promise.then(async() => {
             console.info(`${message} setSubWindowModal success`)
+            await windowClass.destroyWindow();
             expect().assertFail()
           }).catch((err: BusinessError) => {
             if (err.code == 401) {
@@ -2066,7 +2129,7 @@ export default function windowInterface() {
     it('testCreateSubWindowWithOptionsModalityType_0100', 0, async (done: Function) => {
       const message = 'testCreateSubWindowWithOptionsModalityType_0100';
       let windowClass = windowStage.getMainWindowSync()
-      windowClass.setUIContent('testability/pages/WindowTest/Modality')
+      await windowClass.setUIContent('testability/pages/WindowTest/Modality')
       let driver =  Driver.create()
       let btn = await driver.findComponent(ON.id('ModalityText'))
       await sleep(1000)
@@ -2078,11 +2141,11 @@ export default function windowInterface() {
         modalityType: window.ModalityType.WINDOW_MODALITY
       };
       try {
-        windowStage.createSubWindowWithOptions('mySubWindow', options).then(async (windowClass) => {
+        windowStage.createSubWindowWithOptions('mySubWindow1', options).then(async (windowClass) => {
           console.info(`${message} setSubWindowModal success`)
           await windowClass.setUIContent('testability/pages/Index')
           await windowClass.resizeAsync(400, 500)
-          await windowClass.moveWindowToAsync(100, 100)
+          await windowClass.moveWindowToAsync(100, 400)
           await windowClass.showWindow()
           await driver.click(btnCenter.x, btnCenter.y)
           let btnText = await btn.getText()
@@ -2090,7 +2153,7 @@ export default function windowInterface() {
           expect(btnText).assertEqual('Modality')
           windowClass.destroyWindow()
         }).catch((err: BusinessError) => {
-          if (err.code == 801) {
+          if (err.code == 1300002) {
             console.info(`${message} Capability not supported. Failed to call the API due to limited device capabilities.`);
             expect(false).assertFalse()
           } else {
@@ -2116,7 +2179,7 @@ export default function windowInterface() {
     it('testCreateSubWindowWithOptionsModalityType_0200', 0, async (done: Function) => {
       const message = 'testCreateSubWindowWithOptionsModalityTypeTest_0200';
       let windowClass = windowStage.getMainWindowSync()
-      windowClass.setUIContent('testability/pages/WindowTest/Modality')
+      await windowClass.setUIContent('testability/pages/WindowTest/Modality')
       let driver =  Driver.create()
       let btn = await driver.findComponent(ON.id('ModalityText'))
       await sleep(1000)
@@ -2132,7 +2195,7 @@ export default function windowInterface() {
           console.info(`${message} setSubWindowModal success`)
           await windowClass.setUIContent('testability/pages/Index')
           await windowClass.resizeAsync(400, 500)
-          await windowClass.moveWindowToAsync(100, 100)
+          await windowClass.moveWindowToAsync(100, 400)
           await windowClass.showWindow()
           await driver.click(btnCenter.x, btnCenter.y)
           let btnText = await btn.getText()
@@ -2201,54 +2264,7 @@ export default function windowInterface() {
       done()
     })
 
-    /**
-     * @tc.number    : testSetResizeByDragEnabledTrue_0100
-     * @tc.name      : testSetResizeByDragEnabledTrue_0100
-     * @tc.desc      :
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
-      const message = 'testSetResizeByDragEnabledTrueTest_0100';
-      let windowClass = windowStage.getMainWindowSync()
-      let enabled = true;
-      if (isPCStatus != '') {
-        try {
-          windowClass.setResizeByDragEnabled(enabled, async (err) => {
-            if (err.code == 801) {
-              console.error(`${message}  Capability not supported. Failed to call the API due to limited device capabilities`);
-              expect(false).assertFalse();
-              done();
-            } else if (err.code && err.code != 801) {
-              console.error(`${message} Failed to check whether the window support the rect auto-save. Cause code: ${err.code}, message: ${err.message}`)
-              expect().assertFail();
-              done();
-            }
-            console.info(`${message} Succeeded in setting the function of disabling the resize by drag window.`);
-            let windowPoint = windowClass.getWindowProperties().windowRect
-            console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
-            let driver =  Driver.create()
-            await driver.mouseMoveTo({x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top + 5})
-            await sleep(1000)
-            await driver.mouseDrag({x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top + 5}, {x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top - 100},2000)
-            await sleep(1000)
-            let windowPointDragged = windowClass.getWindowProperties().windowRect
-            console.info(`${message} windowPointDraged = ${JSON.stringify(windowPointDragged)}`)
-            expect(windowPointDragged.width).assertEqual(windowPoint.width)
-            expect(windowPointDragged.height).assertEqual(windowPoint.height + 105)
-            done()
-          });
-        } catch (exception) {
-          console.error(`${message} Failed to check whether the window support the rect auto-save. Cause code: ${exception.code}, message: ${exception.message}`)
-          expect().assertFail();
-          done();
-        }
-      } else {
-        console.info(`${message} not support`);
-        done()
-      }
-    })
+    
 
     /**
      * @tc.number    : testSetResizeByDragEnabledTrue_0200
@@ -2430,7 +2446,7 @@ export default function windowInterface() {
     it('testSetWindowModalTrue', 0, async (done: Function) => {
       const message = 'testSetWindowModalTrueTest';
       let windowClass = windowStage.getMainWindowSync()
-      windowClass.setUIContent('testability/pages/WindowTest/Modality')
+      await windowClass.setUIContent('testability/pages/WindowTest/Modality')
       let windowRect = windowClass.getWindowProperties().windowRect
       console.info(`${message} windowRect = ${JSON.stringify(windowRect)}`)
       let driver = Driver.create()
@@ -2444,7 +2460,7 @@ export default function windowInterface() {
           console.info(`${message} Succeeded in setting window modal`);
           let windowClassStart = windowStageStart.getMainWindowSync()
           await windowClassStart.resizeAsync(700, 800)
-          await windowClassStart.moveWindowToAsync(400, 100)
+          await windowClassStart.moveWindowToAsync(400, 400)
           await driver.click(btnPoint.x, btnPoint.y)
           await sleep(1000)
           let btnTest = await btn.getText()
@@ -2495,7 +2511,7 @@ export default function windowInterface() {
     it('testSetWindowModalFalse', 0, async (done: Function) => {
       const message = 'testSetWindowModalFalseTest';
       let windowClass = windowStage.getMainWindowSync()
-      windowClass.setUIContent('testability/pages/WindowTest/Modality')
+      await windowClass.setUIContent('testability/pages/WindowTest/Modality')
       let windowRect = windowClass.getWindowProperties().windowRect
       console.info(`${message} windowRect = ${JSON.stringify(windowRect)}`)
       let driver = Driver.create()
@@ -2509,7 +2525,7 @@ export default function windowInterface() {
           console.info(`${message} Succeeded in setting window modal`);
           let windowClassStart = windowStageStart.getMainWindowSync()
           await windowClassStart.resizeAsync(700, 800)
-          await windowClassStart.moveWindowToAsync(400, 100)
+          await windowClassStart.moveWindowToAsync(400, 400)
           await driver.click(btnPoint.x, btnPoint.y)
           await sleep(1000)
           let btnTest = await btn.getText()

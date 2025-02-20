@@ -83,10 +83,10 @@ export default function saveComponentTest() {
       expect(obj.$attrs.borderWidth).assertEqual('0.00vp');
       expect(obj.$attrs.borderColor).assertEqual('#FFFFFFFF');
       expect(obj.$attrs.borderRadius).assertEqual('0.00vp');
-      expect(obj.$attrs.padding.left).assertEqual('24.00vp');
-      expect(obj.$attrs.padding.right).assertEqual('24.00vp');
-      expect(obj.$attrs.padding.top).assertEqual('8.00vp');
-      expect(obj.$attrs.padding.bottom).assertEqual('8.00vp');
+      expect(obj.$attrs.padding.left).assertEqual('12.00vp');
+      expect(obj.$attrs.padding.right).assertEqual('12.00vp');
+      expect(obj.$attrs.padding.top).assertEqual('4.00vp');
+      expect(obj.$attrs.padding.bottom).assertEqual('4.00vp');
       expect(obj.$attrs.textIconSpace).assertEqual('4.00vp');
       await Utils.sleep(1000);
       try {
@@ -200,10 +200,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -285,8 +285,8 @@ export default function saveComponentTest() {
             "bgType": ButtonType.Normal,
             "iconSize": 16,
             "direct": 0,
-            "positionX": 150,
-            "positionY": 20,
+            "positionX": 10,
+            "positionY": 10,
             "anchorX": 20,
             "anchorY": 20,
             "offsetX": 0,
@@ -302,10 +302,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -321,8 +321,8 @@ export default function saveComponentTest() {
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keySave');
       let obj : ESObject = JSON.parse(strJsonNew);
-      expect(obj.$attrs.position.x).assertEqual('150.00vp');
-      expect(obj.$attrs.position.y).assertEqual('20.00vp');
+      expect(obj.$attrs.position.x).assertEqual('10.00vp');
+      expect(obj.$attrs.position.y).assertEqual('10.00vp');
       expect(obj.$attrs.markAnchor.x).assertEqual('20.00vp');
       expect(obj.$attrs.markAnchor.y).assertEqual('20.00vp');
       await Utils.sleep(1000);
@@ -393,8 +393,8 @@ export default function saveComponentTest() {
             "positionY": 0,
             "anchorX": 20,
             "anchorY": 20,
-            "offsetX": 100,
-            "offsetY": 100,
+            "offsetX": 10,
+            "offsetY": 10,
             "fontSize": 16,
             "fontStyle": FontStyle.Normal,
             "fontWeight": FontWeight.Medium,
@@ -406,10 +406,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -423,10 +423,10 @@ export default function saveComponentTest() {
         console.info("====>[Test_Security_Button_Save_0400] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJsonNew = getInspectorByKey('keySave1');
+      let strJsonNew = getInspectorByKey('keySave');
       let obj : ESObject = JSON.parse(strJsonNew);
-      expect(obj.$attrs.offset.x).assertEqual('100.00vp');
-      expect(obj.$attrs.offset.y).assertEqual('100.00vp');
+      expect(obj.$attrs.offset.x).assertEqual('10.00vp');
+      expect(obj.$attrs.offset.y).assertEqual('10.00vp');
       expect(obj.$attrs.markAnchor.x).assertEqual('20.00vp');
       expect(obj.$attrs.markAnchor.y).assertEqual('20.00vp');
       await Utils.sleep(1000);
@@ -466,7 +466,7 @@ export default function saveComponentTest() {
         let button = await driver.findComponents(ON.type('SaveButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Save_0400] button is:" + JSON.stringify(button));
-        await button[1].click();
+        await button[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_0400] clickSecComponent err : " + JSON.stringify(err));
@@ -510,10 +510,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -611,10 +611,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -712,10 +712,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -813,10 +813,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -914,10 +914,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1015,10 +1015,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1116,10 +1116,10 @@ export default function saveComponentTest() {
             "borderWid": 5,
             "borderCol": 0xffffffff,
             "borderRad": 5,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1220,10 +1220,10 @@ export default function saveComponentTest() {
             "borderWid": 5,
             "borderCol": 0xffffffff,
             "borderRad": 5,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1324,10 +1324,10 @@ export default function saveComponentTest() {
             "borderWid": 5,
             "borderCol": 0xffffffff,
             "borderRad": 5,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1428,10 +1428,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1446,7 +1446,7 @@ export default function saveComponentTest() {
             console.info('Succeeded in obtaining the window properties.width: ' + properties.windowRect.width);
             let window_width = properties.windowRect.width;
             console.info('====>[Test_Security_Button_Save_1400] properties.windowRect.width is: ' + properties.windowRect.width);
-            let offsetObj:ESObject = {"positionX": `${window_width - 100}px`};
+            let offsetObj:ESObject = {"positionX": `${window_width / 2}px`};
             ObjectUtils.assign(eventData.data,offsetObj);
           });
         } catch (error){
@@ -1543,12 +1543,29 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
+        }
+        try{
+          window.getLastWindow(globalThis.abilityContext, (err, data) => {
+            const errCode = err.code;
+            if(errCode){
+              console.error('Failed to obtain the top window Cause:' + JSON.stringify(err));
+              return;
+            }
+            let properties = data.getWindowProperties();
+            console.info('Succeeded in obtaining the window properties.width: ' + properties.windowRect.width);
+            let window_width = properties.windowRect.width;
+            console.info('====>[Test_Security_Button_Save_1500] properties.windowRect.width is: ' + properties.windowRect.width);
+            let offsetObj:ESObject = {"positionX": `${window_width / 2}px`};
+            ObjectUtils.assign(eventData.data,offsetObj);
+          });
+        } catch (error){
+          console.error('Failed to obtain the window properties.error.code: ' + error.code)
         }
         let innerEvent:events_emitter.InnerEvent = {
           eventId: 1,
@@ -1641,10 +1658,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1657,9 +1674,8 @@ export default function saveComponentTest() {
           let button_iconSize = Math.ceil(Math.sqrt(window_width * window_height * 0.1));
           console.info('====>[Test_Security_Button_Save_1600] button_iconSize is: ' + button_iconSize);
           let offsetObj:ESObject = {
-            "iconSize": `${button_iconSize}px`,
-            "positionY": `${-button_iconSize - 200}px`
-            };
+            "iconSize": `${button_iconSize}px`
+          };
           ObjectUtils.assign(eventData.data,offsetObj);
         });
         await Utils.sleep(1000);
@@ -1754,10 +1770,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1857,10 +1873,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1960,10 +1976,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -2062,10 +2078,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -2163,10 +2179,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -2264,10 +2280,10 @@ export default function saveComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -2325,6 +2341,233 @@ export default function saveComponentTest() {
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Save_2200] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Save_2200
+     * @tc.name Test_Security_Button_Save_2300
+     * @tc.desc Test SecurityComponent attr "enbale, max/minFontsize, max/minFontScale, heightAdaptivePolicy, maxLines,
+     * alignRules(AlignRuleOption), chainMode" and result in Authorization is passed
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('Test_Security_Button_Save_2300', 0, async (done:Function) => {
+      console.info('====>[Test_Security_Button_Save_2300] START====');
+      await Utils.sleep(1000);
+      try {
+        let eventData:events_emitter.EventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": SecurityComponentLayoutDirection.VERTICAL,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Medium,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 0xffffffff,
+            "iconColor": 0xffffffff,
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
+            "middle": 4,
+            "maxFontSize": 20,
+            "minFontSize": 10,
+            "maxFontScale": 1,
+            "minFontScale": 1,
+            "enable": true,
+            "heightAdaptivePolicy": TextHeightAdaptivePolicy.MAX_LINES_FIRST,
+            "maxLines": 6,
+            "alignRule": {
+              left: {anchor: "__container__", align: HorizontalAlign.Start}
+            },
+            "chainDirection": Axis.Vertical,
+            "chainStyle": ChainStyle.SPREAD
+          }
+        }
+        let innerEvent:events_emitter.InnerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_Save_2300] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Save_2300] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keySave');
+      let obj : ESObject = JSON.parse(strJsonNew);
+      expect(obj.$attrs.layoutDirection).assertEqual(SecurityComponentLayoutDirection.VERTICAL);
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData:events_emitter.EventData) => {
+          if(clickData.data !=undefined){
+            console.info("====>[Test_Security_Button_Save_2300] get clickEvent result is: " + JSON.stringify(clickEvent));
+            console.info("====>[Test_Security_Button_Save_2300] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+            if (clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS) {
+              console.info("====>[Test_Security_Button_Save_2300] 设置权限成功");
+              expect(clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS).assertTrue();
+              console.info("====>[Test_Security_Button_Save_2300] END====");
+              done();
+            } else {
+              console.info("====>[Test_Security_Button_Save_2300] 设置权限失败");
+              expect().assertFail()
+              console.info("====>[Test_Security_Button_Save_2300] END====");
+              done();
+            }
+          } else {
+            console.info("====>[Test_Security_Button_Save_2300] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_Save_2300] END====");
+            done();
+          }
+        }
+        let clickEvent:events_emitter.InnerEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Save_2300] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('SaveButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_Save_2300] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Save_2300] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Save_2200
+     * @tc.name Test_Security_Button_Save_2300
+     * @tc.desc Test SecurityComponent attr "alignRules(LocalizedAlignRuleOptions)" and result in Authorization is passed
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('Test_Security_Button_Save_2400', 0, async (done:Function) => {
+      console.info('====>[Test_Security_Button_Save_2300] START====');
+      await Utils.sleep(1000);
+      try {
+        let eventData:events_emitter.EventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": SecurityComponentLayoutDirection.VERTICAL,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Medium,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 0xffffffff,
+            "iconColor": 0xffffffff,
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
+            "middle": 4,
+            "maxFontSize": 20,
+            "minFontSize": 10,
+            "maxFontScale": 1,
+            "minFontScale": 1,
+            "enable": true,
+            "heightAdaptivePolicy": TextHeightAdaptivePolicy.MAX_LINES_FIRST,
+            "maxLines": 6,
+            "alignRule": {
+              start: {anchor: "__container__", align: VerticalAlign.Top}
+            },
+            "chainDirection": Axis.Vertical,
+            "chainStyle": ChainStyle.SPREAD
+          }
+        }
+        let innerEvent:events_emitter.InnerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_Save_2400] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Save_2400] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keySave');
+      let obj : ESObject = JSON.parse(strJsonNew);
+      expect(obj.$attrs.layoutDirection).assertEqual(SecurityComponentLayoutDirection.VERTICAL);
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData:events_emitter.EventData) => {
+          if(clickData.data !=undefined){
+            console.info("====>[Test_Security_Button_Save_2400] get clickEvent result is: " + JSON.stringify(clickEvent));
+            console.info("====>[Test_Security_Button_Save_2400] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+            if (clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS) {
+              console.info("====>[Test_Security_Button_Save_2400] 设置权限成功");
+              expect(clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS).assertTrue();
+              console.info("====>[Test_Security_Button_Save_2400] END====");
+              done();
+            } else {
+              console.info("====>[Test_Security_Button_Save_2400] 设置权限失败");
+              expect().assertFail()
+              console.info("====>[Test_Security_Button_Save_2400] END====");
+              done();
+            }
+          } else {
+            console.info("====>[Test_Security_Button_Save_2400] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_Save_2400] END====");
+            done();
+          }
+        }
+        let clickEvent:events_emitter.InnerEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Save_2400] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('SaveButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_Save_2400] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_Save_2400] clickSecComponent err : " + JSON.stringify(err));
       }
     });
   })

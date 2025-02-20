@@ -60,6 +60,9 @@
       },
       {
         "name": "ohos.permission.ACCESS_CERT_MANAGER_INTERNAL"
+      },
+      {
+        "name": "ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT"
       }
     ]
   }

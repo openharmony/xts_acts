@@ -16,6 +16,7 @@
                 "StartAbilityByUIContentSession.hap",
                 "UIExtensionProvider2.hap",
                 "UIExtensionProvider3.hap",
+                "UIExtensionProvider4.hap",
                 "UIExtensionService.hap"
             ],
             "type": "AppInstallKit",

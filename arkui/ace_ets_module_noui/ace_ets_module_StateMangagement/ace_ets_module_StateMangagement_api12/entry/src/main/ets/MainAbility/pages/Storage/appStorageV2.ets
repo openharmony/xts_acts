@@ -26,7 +26,7 @@ struct AppStorageV2Page1 {
   @Local prop: SampleApp = AppStorageV2.connect(SampleApp, () => new SampleApp())!;
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
       Button('Go to page2')
         .id('router_persistenceV2')
         .onClick(() => {
@@ -58,7 +58,7 @@ struct AppStorageV2Page1 {
 
       Text(`prop.p1: ${this.prop.p1}`)
         .id('appStorageV2_num')
-        .fontSize(20)
+        .fontSize(9)
         .onClick(() => {
           this.prop.p1 += 2;
         })
@@ -66,7 +66,7 @@ struct AppStorageV2Page1 {
       // 获取当前AppStorageV2里面的所有key
       Text(`keys in AppStorage: ${AppStorageV2.keys()}`)
         .id('appStorageV2_keys')
-        .fontSize(20)
+        .fontSize(9)
     }
   }
 }

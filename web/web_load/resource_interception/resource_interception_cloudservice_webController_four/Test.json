@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsResourceInterceptionCloudServiceWebControllerFourTest.hap"
+                "ActsWebResourceInterceptionCloudServiceWebControllerFourTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

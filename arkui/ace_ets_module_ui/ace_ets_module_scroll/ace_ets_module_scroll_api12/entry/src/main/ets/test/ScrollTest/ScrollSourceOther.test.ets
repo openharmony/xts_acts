@@ -170,7 +170,8 @@ export default function ScrollSourceOther() {
       console.info("[ScrollSourceOther_0500] size Y is: " + JSON.stringify(sizeY));
       await CommonFunc.sleep(1000);
 
-      await driver.mouseScroll({x:sizeX * 1/2, y: sizeY * 1/2}, true ,20)
+      await driver.mouseScroll({x:sizeX * 1/2, y: sizeY * 1/2}, false, 20)
+      await driver.mouseScroll({x:sizeX * 1/2, y: sizeY * 1/2}, true, 20)
 
       let strJson = getInspectorByKey('SCROLLER_ANIMATION');
       let obj: ESObject = JSON.parse(strJson);

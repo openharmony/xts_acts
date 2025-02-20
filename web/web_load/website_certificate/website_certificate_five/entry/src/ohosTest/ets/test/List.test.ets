@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import webJsunit from './WebJsunit.test';
+import certChainData from './certChainData.test'
 
 export default function testsuite() {
   webJsunit();
+  certChainData();
 }

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,13 +28,13 @@ struct TextInputTextAreaSearch{
         this.controller1.stopEditing()
         this.controller2.stopEditing()
         this.controller3.stopEditing()
-      }).id("supportAvoidance_stopEditing")
+      }).id('supportAvoidance_stopEditing')
       Grid() {
         ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
           GridItem() {
-            Button(item + "")
+            Button(item + '')
               .width(110)
-              .height(52)
+              .height('5%')
               .onClick(() => {})
           }
         })
@@ -45,33 +45,34 @@ struct TextInputTextAreaSearch{
   build() {
     Column() {
       Column(){
-        Text("test").width("100%")
-      }.height("60%")
-      .width("100%")
+        Text('test').width('100%')
+      }
+      .width('100%')
+      .height('70%')
       TextInput({ controller: this.controller1 })
         // 绑定自定义键盘
-        .customKeyboard(this.CustomKeyboardBuilder(), {supportAvoidance: true}).margin(10).border({ width: 1 })
+        .customKeyboard(this.CustomKeyboardBuilder(), {supportAvoidance: true}).border({ width: 1 })
         .borderWidth(1)
         .borderColor(Color.Red)
-        .width("100%")
-        .height(32)
-        .id("TextInput_supportAvoidance")
+        .width('100%')
+        .height('10%')
+        .id('TextInput_supportAvoidance')
       TextArea({ controller: this.controller2 })
         // 绑定自定义键盘
-        .customKeyboard(this.CustomKeyboardBuilder(), {supportAvoidance: true}).margin(10).border({ width: 1 })
+        .customKeyboard(this.CustomKeyboardBuilder(), {supportAvoidance: true}).border({ width: 1 })
         .borderWidth(1)
         .borderColor(Color.Red)
-        .width("100%")
-        .height(32)
-        .id("TextArea_supportAvoidance")
+        .width('100%')
+        .height('10%')
+        .id('TextArea_supportAvoidance')
       Search({ controller: this.controller3 })
         // 绑定自定义键盘
-        .customKeyboard(this.CustomKeyboardBuilder(), {supportAvoidance: true}).margin(10).border({ width: 1 })
+        .customKeyboard(this.CustomKeyboardBuilder(), {supportAvoidance: true}).border({ width: 1 })
         .borderWidth(1)
         .borderColor(Color.Red)
-        .width("100%")
-        .height(32)
-        .id("Search_supportAvoidance")
+        .width('100%')
+        .height('10%')
+        .id('Search_supportAvoidance')
     }
   }
 }

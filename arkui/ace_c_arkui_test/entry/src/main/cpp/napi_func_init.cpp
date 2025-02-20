@@ -73,8 +73,6 @@
 #include "accessibility/toggle_accessibilitygroup_test.cpp"
 #include "accessibility/toggle_accessibilitylevel_test.cpp"
 #include "accessibility/toggle_accessibilitytext_test.cpp"
-#include "calendarpicker/calendarpicker_edgealign_test.cpp"
-#include "calendarpicker/calendarpicker_textstyle_test.cpp"
 #include "button/button_fontsize_test.cpp"
 #include "button/button_fontcolor_test.cpp"
 #include "button/button_fontweight_test.cpp"
@@ -514,9 +512,6 @@
 #include "textinput/textinput_type_test.cpp"
 #include "textinput/textinput_enterkeytype_test.cpp"
 #include "textinput/textinput_enablekeyboardonfocus_test.cpp"
-#include "calendarpicker/calendarpicker_width_test.cpp"
-#include "calendarpicker/calendarpicker_hintradius_test.cpp"
-#include "calendarpicker/calendarpicker_selecteddate_test.cpp"
 #include "datepicker/datepicker_width_test.cpp"
 #include "checkbox/checkbox_width_test.cpp"
 #include "checkbox/checkbox_height_test.cpp"
@@ -3242,60 +3237,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testScrollPageEnable003", nullptr, TestScrollPageEnable003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollPageEnable004", nullptr, TestScrollPageEnable004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollPageEnable005", nullptr, TestScrollPageEnable005, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testCalendarPickerHintRadius001", nullptr, TestCalendarPickerHintRadius001, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerHintRadius002", nullptr, TestCalendarPickerHintRadius002, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerHintRadius003", nullptr, TestCalendarPickerHintRadius003, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerHintRadius004", nullptr, TestCalendarPickerHintRadius004, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerHintRadius005", nullptr, TestCalendarPickerHintRadius005, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerHintRadius006", nullptr, TestCalendarPickerHintRadius006, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerHintRadius007", nullptr, TestCalendarPickerHintRadius007, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerEdgeAlign001", nullptr, TestCalendarPickerEdgeAlign001, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerEdgeAlign002", nullptr, TestCalendarPickerEdgeAlign002, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerEdgeAlign003", nullptr, TestCalendarPickerEdgeAlign003, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerEdgeAlign004", nullptr, TestCalendarPickerEdgeAlign004, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerTextStyle001", nullptr, TestCalendarPickerTextStyle001, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerTextStyle002", nullptr, TestCalendarPickerTextStyle002, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerTextStyle003", nullptr, TestCalendarPickerTextStyle003, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerTextStyle004", nullptr, TestCalendarPickerTextStyle004, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerTextStyle005", nullptr, TestCalendarPickerTextStyle005, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerTextStyle006", nullptr, TestCalendarPickerTextStyle006, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerTextStyle007", nullptr, TestCalendarPickerTextStyle007, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerTextStyle008", nullptr, TestCalendarPickerTextStyle008, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerTextStyle009", nullptr, TestCalendarPickerTextStyle009, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerTextStyle010", nullptr, TestCalendarPickerTextStyle010, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerTextStyle011", nullptr, TestCalendarPickerTextStyle011, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerTextStyle012", nullptr, TestCalendarPickerTextStyle012, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerTextStyle013", nullptr, TestCalendarPickerTextStyle013, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerTextStyle014", nullptr, TestCalendarPickerTextStyle014, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerTextStyle015", nullptr, TestCalendarPickerTextStyle015, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerTextStyle016", nullptr, TestCalendarPickerTextStyle016, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
         {"testTextPickerDisappearTextStyle001", nullptr, TestTextPickerDisappearTextStyle001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testTextPickerDisappearTextStyle002", nullptr, TestTextPickerDisappearTextStyle002, nullptr, nullptr, nullptr,
@@ -4503,12 +4444,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testXComponentWidth001", nullptr, TestXComponentWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testXComponentWidth002", nullptr, TestXComponentWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testXComponentWidth003", nullptr, TestXComponentWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testCalendarPickerWidth001", nullptr, TestCalendarPickerWidth001, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"testCalendarPickerWidth002", nullptr, TestCalendarPickerWidth002, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"testCalendarPickerWidth003", nullptr, TestCalendarPickerWidth003, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
         {"testDatePickerWidth001", nullptr, TestDatePickerWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testDatePickerWidth002", nullptr, TestDatePickerWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testDatePickerWidth003", nullptr, TestDatePickerWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -5301,8 +5236,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"testTextInputDefaultFocus002", nullptr, TestTextInputDefaultFocus002, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"testCalendarPickerEdgeAlign005", nullptr, TestCalendarPickerEdgeAlign005, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
         {"testTextPickerDefaultPickerItemHeight004", nullptr, TestTextPickerDefaultPickerItemHeight004, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"TestArkUIAddApi001", nullptr, TestArkUIAddApi001, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -7954,16 +7887,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testProgressType007", nullptr, TestProgressType007, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testProgressType008", nullptr, TestProgressType008, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testProgressType009", nullptr, TestProgressType009, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testCalendarPickerSelectedDate001", nullptr, TestCalendarPickerSelectedDate001, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerSelectedDate002", nullptr, TestCalendarPickerSelectedDate002, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerSelectedDate003", nullptr, TestCalendarPickerSelectedDate003, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerSelectedDate004", nullptr, TestCalendarPickerSelectedDate004, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testCalendarPickerSelectedDate005", nullptr, TestCalendarPickerSelectedDate005, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
         {"testScrollBarWidth001", nullptr, TestScrollBarWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollBarWidth002", nullptr, TestScrollBarWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollBarWidth003", nullptr, TestScrollBarWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},

@@ -15,7 +15,7 @@ struct UIContextComponentSnapshot {
 
   build() {
     Column({ space: 5 }) {
-      Text('Component Snapshot').fontColor(0x000000).fontSize(16).width('90%')
+      Text('Component Snapshot').fontColor(0x000000).fontSize(16).width('90%').height('5%')
       Scroll(this.scroller) {
         Column({ space: 5 }) {
           Gauge({ value: 30, min: 0, max: 100 })
@@ -39,7 +39,7 @@ struct UIContextComponentSnapshot {
       .height('35%')
       .edgeEffect(EdgeEffect.Fade)
 
-      Text(`上面是要截取的图下面是所截的图`).fontColor(0x000000).fontSize(16).width('90%').margin(15)
+      Text(`上面是要截取的图下面是所截的图`).fontColor(0x000000).fontSize(16).width('90%').margin(15).height('5%')
       Row() {
         Column({ space: 5 }) {
           Button('新增Callback').onClick(() => { // 这里
@@ -53,7 +53,7 @@ struct UIContextComponentSnapshot {
                 console.info('UIContextComponentSnapshot pixmap_text_1 start')
                 this.pixmap_text_1 = 'snapshot'
               })
-          }).width('90%').margin(10).id('getComponentSnapshot_01')
+          }).width('90%').margin(10).id('getComponentSnapshot_01').height('5%')
 
 
           Button('新增Promise').onClick(() => { // 这里
@@ -68,12 +68,12 @@ struct UIContextComponentSnapshot {
                 console.log('error: ' + err)
                 hilog.error(0x0000, 'testTag', '新增：更换图片getPromise pixmap_text_2 error %{public}s', JSON.stringify(err) ?? '');
               })
-          }).width('90%').margin(10).id('getComponentSnapshot_02')
+          }).width('90%').margin(10).id('getComponentSnapshot_02').height('5%')
           Image(this.pixmap_2).width(200).height(200)
           Text('' + this.pixmap_text_1).fontColor(0x000000)
-            .fontSize(16).width('90%').key('key_getComponentSnapshot_text_01')
+            .fontSize(16).width('90%').key('key_getComponentSnapshot_text_01').height('5%')
           Text('' + this.pixmap_text_2).fontColor(0x000000)
-            .fontSize(16).width('90%').key('key_getComponentSnapshot_text_02')
+            .fontSize(16).width('90%').key('key_getComponentSnapshot_text_02').height('5%')
         }.width('100%')
       }
     }

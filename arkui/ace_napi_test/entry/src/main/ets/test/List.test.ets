@@ -16,10 +16,18 @@ import napiStringTest from './NativeApiStringTest';
 import napiBufferTest from './NativeApiBufferTest';
 import napiSendableTest from './NativeApiSendableTest';
 import napiApiTest from './NapiTest';
+import napiTaskApiTest from './NapiTask.test';
+import napiSendableTaskTest from './NapiSendableTask.test';
+import napiWorkerTest from './NapiWorker.test';
+import napiWorkerGCTest from './NapiWorkerGC.test';
 
 export default function testsuite() {
   napiStringTest();
   napiBufferTest();
   napiSendableTest();
   napiApiTest();
+  napiTaskApiTest();
+  napiSendableTaskTest();
+  napiWorkerTest();
+  napiWorkerGCTest();
 }

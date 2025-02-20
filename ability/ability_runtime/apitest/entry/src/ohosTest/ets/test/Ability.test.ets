@@ -85,6 +85,8 @@ export default function abilityTest() {
             console.log("====>ACTS_DoAbilityForeground_0100 getAbilityState:====>" + JSON.stringify(num));
             expect(num).assertEqual(2);
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
+            console.log("====>ACTS_DoAbilityForeground_0100 MainAbility2 terminateSelf");
+            globalThis.abilityContextMainAbility2.terminateSelf();
           }, START_ABILITY_TIMEOUT_THOUSAND)
         })
       }
@@ -175,6 +177,8 @@ export default function abilityTest() {
             let num:number = globalThis.abilitydelegator.getAbilityState(ability)
             console.log("====>ACTS_DoAbilityForeground_0400 getAbilityState:====>" + JSON.stringify(num));
             expect(num).assertEqual(2);
+            console.log("====>ACTS_DoAbilityForeground_0400 MainAbility2 terminateSelf");
+            globalThis.abilityContextMainAbility2.terminateSelf();
           }, START_ABILITY_TIMEOUT_THOUSAND)
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         })
@@ -272,6 +276,8 @@ export default function abilityTest() {
               let num:number = globalThis.abilitydelegator.getAbilityState(ability)
               console.log("====>ACTS_DoAbilityBackground_0100 getAbilityState:====>" + JSON.stringify(num));
               expect(num).assertEqual(3);
+              console.log("====>ACTS_DoAbilityBackground_0100 MainAbility2 terminateSelf");
+              globalThis.abilityContextMainAbility2.terminateSelf();
             }, START_ABILITY_TIMEOUT_THOUSAND)
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
           })
@@ -337,6 +343,8 @@ export default function abilityTest() {
               let num:number = globalThis.abilitydelegator.getAbilityState(ability2)
               console.log("====>ACTS_DoAbilityBackground_0500 getAbilityState:====>" + JSON.stringify(num));
               expect(num).assertEqual(3);
+              console.log("====>ACTS_DoAbilityBackground_0500 MainAbility2 terminateSelf");
+              globalThis.abilityContextMainAbility2.terminateSelf();
             }, START_ABILITY_TIMEOUT_THOUSAND)
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
           })
@@ -426,6 +434,7 @@ export default function abilityTest() {
                           console.log("====>ACTS_DoAbilityBackground_0700 getAbilityState2:====>" +
                             " " + JSON.stringify(num2));
                           expect(num2).assertEqual(2);
+                          ability2.context.terminateSelf();
                           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
                         }, START_ABILITY_TIMEOUT_THOUSAND)
                       })
@@ -521,6 +530,7 @@ export default function abilityTest() {
                           console.log("====>ACTS_DoAbilityBackground_0800 getAbilityState2:====>" +
                             " " + JSON.stringify(num2));
                           expect(num2).assertEqual(2);
+                          ability2.context.terminateSelf();
                           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
                         }, START_ABILITY_TIMEOUT_THOUSAND)
                       })

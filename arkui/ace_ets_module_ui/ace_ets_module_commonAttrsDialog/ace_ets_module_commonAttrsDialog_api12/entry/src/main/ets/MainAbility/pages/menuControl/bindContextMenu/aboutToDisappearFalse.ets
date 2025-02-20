@@ -26,42 +26,35 @@ struct aboutToDisappearFalse {
       MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
       MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
     }
-    Button("点我关闭Menu").onClick(()=>{
+
+    Button("点我关闭Menu").onClick(() => {
       this.isShown = false;
     })
   }
 
-
   build() {
-    Column({ space: 50 }) {
-      Column() {
-        Column() {
-          Text('aboutToDisappearFalse')
-            .width(200)
-            .height(100)
-            .textAlign(TextAlign.Center)
-            .margin(100)
-            .fontSize(30)
-            .bindContextMenu(this.isShown, this.MyMenu, {
-              aboutToDisappear: ()=>{
-                this.arr.push("aboutToDisappear");
-              },
-              onDisappear: ()=>{
-                this.arr.push("onDisappear");
-                this.isShown = false;
-              }
-            })
-          Button('click')
-            .margin(30)
-            .id("aboutToDisappearFalse")
-            .margin(30)
-            .onClick(()=>{
-              this.isShown = !this.isShown;
-            })
+    Column({ space: 10 }) {
+      Text('aboutToDisappearFalse')
+        .textAlign(TextAlign.Center)
+        .bindContextMenu(this.isShown, this.MyMenu, {
+          aboutToDisappear: () => {
+            this.arr.push("aboutToDisappear");
+          },
+          onDisappear: () => {
+            this.arr.push("onDisappear");
+            this.isShown = false;
+          }
+        })
+      Button('click')
+        .id("aboutToDisappearFalse")
+        .onClick(() => {
+          this.isShown = !this.isShown;
+        })
 
-          Text(this.arr.toString()).fontSize(30).id("aboutToDisappearFalseText")
-        }
-      }.width('100%')
+      Text(this.arr.toString()).id("aboutToDisappearFalseText")
     }
+    .justifyContent(FlexAlign.Center)
+    .height('100%')
+    .width('100%')
   }
 }

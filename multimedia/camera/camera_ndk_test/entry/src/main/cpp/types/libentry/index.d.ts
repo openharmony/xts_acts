@@ -147,6 +147,18 @@ export const getSupportedCameras: () => cameraInfo;
 
 export const getCameraOrientation: () => number;
 
+export const getCameraHostNameErrorParameter: () => number;
+
+export const getCameraHostTypeErrorParameter: () => number;
+
+export const getCameraHostNameInspection: () => number;
+
+export const getCameraHostTypeInspection: () => number;
+
+export const getCameraHostName: () => number;
+
+export const getCameraHostType: () => number;
+
 export const createCameraInput: () => number;
 
 export const createCameraInputWithPositionAndType: (position: number, type: number) => number;

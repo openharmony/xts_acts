@@ -19,6 +19,8 @@
 #include "drawing_error_code.h"
 #include "drawing_gpu_context.h"
 #include "drawing_surface.h"
+#include "drawing_canvas.h"
+#include "drawing_rect.h"
 #include "gtest/gtest.h"
 
 using namespace testing;
@@ -86,6 +88,10 @@ void DrawingNativeSurFaceTest::SetUp()
 
     ret = eglMakeCurrent(eglDisplay_, eglSurface_, eglSurface_, eglContext_);
     EXPECT_EQ(ret, EGL_TRUE);
+    // 初始化errorCode
+    std::cout << "DrawingNativeSurFaceTest Setup code called before each test case." << std::endl;
+    OH_Drawing_ErrorCodeReset();
+    std::cout << "DrawingNativeSurFaceTest errorCodeReset before each test case." << std::endl;
 }
 
 void DrawingNativeSurFaceTest::TearDown()
@@ -102,6 +108,9 @@ void DrawingNativeSurFaceTest::TearDown()
     eglSurface_ = EGL_NO_SURFACE;
     eglContext_ = EGL_NO_CONTEXT;
     eglDisplay_ = EGL_NO_DISPLAY;
+    std::cout << "DrawingNativeSurFaceTest Setup code called after each test case." << std::endl;
+    OH_Drawing_ErrorCodeReset();
+    std::cout << "DrawingNativeSurFaceTest errorCodeReset after each test case." << std::endl;
 }
 
 /*
@@ -120,9 +129,13 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateFromGpuContextNormal, TestSi
     const int32_t height = 500;
     OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     surface_ = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext_, true, imageInfo);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     EXPECT_NE(surface_, nullptr);
     OH_Drawing_SurfaceDestroy(surface_);
     surface_ = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext_, false, imageInfo);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     EXPECT_NE(surface_, nullptr);
     OH_Drawing_SurfaceDestroy(surface_);
 }
@@ -206,6 +219,8 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceDestroyNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeSurFaceTest, testSurfaceDestroyNull, TestSize.Level3) {
     // free
     OH_Drawing_SurfaceDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
 }
 
 /*
@@ -226,9 +241,11 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceGetCanvasNormal, TestSize.Level0) 
     OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     surface_ = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext_, true, imageInfo);
     EXPECT_NE(surface_, nullptr);
-    // 2. OH_Drawing_SurfaceGetCanvas, get the canvas object from the surface object, a pointer to the surface object,
+    //2.OH_Drawing_SurfaceGetCanvas, get the canvas object from the surface object,a pointer to the surface object
     // and call the drawing interface
     canvas_ = OH_Drawing_SurfaceGetCanvas(surface_);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     EXPECT_NE(canvas_, nullptr);
     // 3. Free memory
     OH_Drawing_SurfaceDestroy(surface_);
@@ -276,13 +293,264 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceGetCanvasBoundary, TestSize.Level0
     OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     surface_ = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext_, true, imageInfo);
     EXPECT_NE(surface_, nullptr);
-    // 2. OH_Drawing_SurfaceGetCanvas, get the canvas object from the surface object, a pointer to the surface object,
+    //2. OH_Drawing_SurfaceGetCanvas, get the canvas object from the surface object,a pointer to the surface object
     // and call the drawing interface
     canvas_ = OH_Drawing_SurfaceGetCanvas(surface_);
     EXPECT_NE(canvas_, nullptr);
     // 3. Free memory
     OH_Drawing_SurfaceDestroy(surface_);
 }
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SURFACE_0400
+ * @tc.name: testSurfaceCreateOnScreenNormal
+ * @tc.desc: test for testSurfaceCreateOnScreenNormal.window
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenNormal, TestSize.Level0) {
+    // 1、OH_Drawing_SurfaceCreateOnScreen正常入参调用
+    gpuContext_ = OH_Drawing_GpuContextCreate();
+    EXPECT_NE(gpuContext_, nullptr);
+    const int32_t width = 4096;
+    const int32_t height = 2160;
+    OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    // 1. OH_Drawing_SurfaceCreateOnScreen
+    surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, nullptr);
+    canvas_ = OH_Drawing_SurfaceGetCanvas(surface_);
+    // 2. Free memory
+    OH_Drawing_SurfaceDestroy(surface_);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SURFACE_0401
+ * @tc.name: testSurfaceCreateOnScreenNull
+ * @tc.desc: test for testSurfaceCreateOnScreenNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenNull, TestSize.Level3) {
+    // 1. OH_Drawing_SurfaceCreateOnScreen第一个参数传空
+    const int32_t width = 4096;
+    const int32_t height = 2160;
+    OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    surface_ = OH_Drawing_SurfaceCreateOnScreen(nullptr, imageInfo, nullptr);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 2. Free memory
+    OH_Drawing_SurfaceDestroy(surface_);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SURFACE_0402
+ * @tc.name: testSurfaceCreateOnScreenMultipleCalls
+ * @tc.desc: test for testSurfaceCreateOnScreenMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateOnScreenMultipleCalls, TestSize.Level3) {
+    gpuContext_ = OH_Drawing_GpuContextCreate();
+    EXPECT_NE(gpuContext_, nullptr);
+    const int32_t width = 4096;
+    const int32_t height = 2160;
+    OH_Drawing_ColorFormat formats[] = {
+        COLOR_FORMAT_ALPHA_8,   COLOR_FORMAT_RGB_565,
+        COLOR_FORMAT_ARGB_4444, COLOR_FORMAT_RGBA_8888, COLOR_FORMAT_BGRA_8888,
+    };
+    OH_Drawing_AlphaFormat alphaFormats[] = {
+        ALPHA_FORMAT_OPAQUE,
+        ALPHA_FORMAT_PREMUL,
+        ALPHA_FORMAT_UNPREMUL,
+    };
+
+    std::vector<OH_Drawing_Image_Info> imageInfos;
+    // Loop to create different imageInfo structures
+    for (int i = 0; i < 5; ++i) { // Loop through formats
+        for (int j = 0; j < 3; ++j) { // Loop through alphaFormats
+            OH_Drawing_Image_Info imageInfo = {width, height, formats[i], alphaFormats[j]};
+            imageInfos.push_back(imageInfo);
+        }
+    }
+    
+    for (int index = 0; index < 10; ++index) {
+        surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfos[index], nullptr);
+        EXPECT_EQ(surface_, nullptr);
+        // Free memory
+        OH_Drawing_SurfaceDestroy(surface_);
+    }
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SURFACE_0500
+ * @tc.name: testSurfaceFlushNormal
+ * @tc.desc: test for testSurfaceFlushNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushNormal, TestSize.Level0) {
+    gpuContext_ = OH_Drawing_GpuContextCreate();
+    EXPECT_NE(gpuContext_, nullptr);
+    // 1. OH_Drawing_SurfaceCreateFromGpuContext
+    const int32_t width = 4096;
+    const int32_t height = 2160;
+    OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, nullptr);
+    EXPECT_EQ(surface_, nullptr);
+    // 2. OH_Drawing_SurfaceFlush
+    auto result = OH_Drawing_SurfaceFlush(surface_);
+    EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 3. Free memory
+    OH_Drawing_SurfaceDestroy(surface_);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SURFACE_0501
+ * @tc.name: testSurfaceFlushNull
+ * @tc.desc: test for testSurfaceFlushNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushNull, TestSize.Level3) {
+    OH_Drawing_ErrorCode errorCode = OH_Drawing_SurfaceFlush(nullptr);
+    EXPECT_EQ(errorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SURFACE_0502
+ * @tc.name: testSurfaceFlushAbnormal
+ * @tc.desc: test for testSurfaceFlushAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushAbnormal, TestSize.Level3) {
+    OH_Drawing_GpuContextOptions options{true};
+    // 1. OH_Drawing_GPUContextCreateFromGL
+    gpuContext_ = OH_Drawing_GpuContextCreateFromGL(options);
+    EXPECT_NE(gpuContext_, nullptr);
+    const int32_t width = 4096;
+    const int32_t height = 2160;
+    OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    // 2. OH_Drawing_SurfaceCreateOnScreen
+    surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, nullptr);
+    // 3. OH_Drawing_SurfaceFlush
+    auto result = OH_Drawing_SurfaceFlush(surface_);
+    EXPECT_NE(result, OH_DRAWING_SUCCESS);
+    // 4. Free memory
+    OH_Drawing_SurfaceDestroy(surface_);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SURFACE_0503
+ * @tc.name: testSurfaceFlushMultipleCalls
+ * @tc.desc: test for testSurfaceFlushMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushMultipleCalls, TestSize.Level3) {
+    gpuContext_ = OH_Drawing_GpuContextCreate();
+    EXPECT_NE(gpuContext_, nullptr);
+    const int32_t width = 4096;
+    const int32_t height = 2160;
+    OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, nullptr);
+
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    EXPECT_NE(canvas, nullptr);
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 100, 200, 300);
+    EXPECT_NE(rect, nullptr);
+
+    // 1. OH_Drawing_CanvasDrawRect-OH_Drawing_SurfaceFlush循环调用10次
+    for (int i = 0; i < 10; ++i) {
+        OH_Drawing_CanvasDrawRect(canvas, rect);
+        auto result1 = OH_Drawing_SurfaceFlush(surface_);
+        EXPECT_EQ(result1, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    }
+
+    // 2. OH_Drawing_SurfaceFlush直接循环调用10次
+    for (int i = 0; i < 10; ++i) {
+        auto result2 = OH_Drawing_SurfaceFlush(surface_);
+        EXPECT_EQ(result2, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    }
+    // 3. 创建不同surface（通过创建不同imageinfo）-OH_Drawing_SurfaceFlush循环调用10次
+    OH_Drawing_ColorFormat formats[] = {
+        COLOR_FORMAT_ALPHA_8,   COLOR_FORMAT_RGB_565,
+        COLOR_FORMAT_ARGB_4444, COLOR_FORMAT_RGBA_8888, COLOR_FORMAT_BGRA_8888,
+    };
+    OH_Drawing_AlphaFormat alphaFormats[] = {
+        ALPHA_FORMAT_OPAQUE,
+        ALPHA_FORMAT_PREMUL,
+        ALPHA_FORMAT_UNPREMUL,
+    };
+
+    std::vector<OH_Drawing_Image_Info> imageInfos;
+    // Loop to create different imageInfo structures
+    for (int i = 0; i < 5; ++i) { // Loop through formats
+        for (int j = 0; j < 3; ++j) { // Loop through alphaFormats
+            OH_Drawing_Image_Info imageInfo = {width, height, formats[i], alphaFormats[j]};
+            imageInfos.push_back(imageInfo);
+        }
+    }
+
+    for (int index = 0; index < 10; ++index) {
+        surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfos[index], nullptr);
+        auto result3 = OH_Drawing_SurfaceFlush(surface_);
+        EXPECT_EQ(result3, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    }
+
+    OH_Drawing_SurfaceDestroy(surface_);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SURFACE_0504
+ * @tc.name: testSurfaceFlushTiming
+ * @tc.desc: test for testSurfaceFlushTiming.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeSurFaceTest, testSurfaceFlushTiming, TestSize.Level3) {
+    OH_Drawing_GpuContextOptions options{true};
+    gpuContext_ = OH_Drawing_GpuContextCreateFromGL(options);
+    EXPECT_NE(gpuContext_, nullptr);
+    const int32_t width = 4096;
+    const int32_t height = 2160;
+    OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888,
+        ALPHA_FORMAT_OPAQUE};
+
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    EXPECT_NE(canvas, nullptr);
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 100, 200, 300);
+    EXPECT_NE(rect, nullptr);
+    // 1. OH_Drawing_SurfaceCreateOnScreen-OH_Drawing_CanvasDrawRect-OH_Drawing_SurfaceFlush正常时序
+    surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, nullptr);
+    OH_Drawing_CanvasDrawRect(canvas, rect);
+    OH_Drawing_SurfaceFlush(surface_);
+
+    // 2. OH_Drawing_SurfaceCreateOnScreen-OH_Drawing_SurfaceFlush创建surface之后直接调用flush
+    surface_ = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, nullptr);
+    OH_Drawing_SurfaceFlush(surface_);
+
+    // 3. 创建两个canvas-创建两个surface-各自进行绘制-各自flush
+    OH_Drawing_Canvas *canvas1 = OH_Drawing_CanvasCreate();
+    OH_Drawing_Rect *rect1 = OH_Drawing_RectCreate(10, 100, 200, 300);
+    OH_Drawing_CanvasDrawRect(canvas1, rect1);
+    OH_Drawing_Surface* surface1 = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, nullptr);
+    OH_Drawing_Canvas *canvas2 = OH_Drawing_CanvasCreate();
+    OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(10, 100, 200, 300);
+    OH_Drawing_CanvasDrawRect(canvas2, rect2);
+    OH_Drawing_Surface* surface2 = OH_Drawing_SurfaceCreateOnScreen(gpuContext_, imageInfo, nullptr);
+
+    OH_Drawing_SurfaceDestroy(surface_);
+    OH_Drawing_SurfaceDestroy(surface1);
+    OH_Drawing_SurfaceDestroy(surface2);
+}
+
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS

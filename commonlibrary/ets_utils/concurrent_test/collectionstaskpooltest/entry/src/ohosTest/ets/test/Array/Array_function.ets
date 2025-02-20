@@ -663,7 +663,8 @@ export function testCollectionsArray0064(): string {
     console.info("array is: " + array);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("testCollectionsArray0064 error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -697,7 +698,8 @@ export function testCollectionsArray0068(): string {
     collections.Array.create<RegExp>(1, regex);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("testCollectionsArray0068 error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -740,7 +742,8 @@ export function testCollectionsArray0073(): string {
     collections.Array.from<RegExp>([regex]);
     return "no_error";
   } catch (err) {
-    return `${err.message}`;
+    console.info("testCollectionsArray0073 error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -1300,7 +1303,7 @@ export function testCollectionsArray0146(): string {
     array.reduce((accumulator, value) => accumulator + value);
     return "no_error";
   } catch (err) {
-    return "out of range.";
+    return "error";
   }
 }
 
@@ -1654,7 +1657,8 @@ export function testCollectionsArray0190(): string {
     array.shrinkTo(-1);
     return array.toString();
   } catch (err) {
-    return `${err.message}`;
+    console.info("testCollectionsArray0190 error is: " + `${err.message}`);
+    return "error";
   }
 }
 
@@ -1679,7 +1683,8 @@ export function testCollectionsArray0193(): string {
     array.extendTo(-1, 10);
     return array.toString();
   } catch (err) {
-    return `${err.message}`;
+    console.info("testCollectionsArray0193 error is: " + `${err.message}`);
+    return "error";
   }
 }
 

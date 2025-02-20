@@ -17,6 +17,7 @@ import fs from  '@ohos.file.fs';
 import common from '@ohos.app.ability.common';
 import request from "@ohos.request";
 import Server from '../common/Server'
+import deviceinfo from '@ohos.deviceInfo';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -132,6 +133,37 @@ export default function requestUploadJSUnit() {
         uri: 'internal://cache/test4.txt',
         type: 'txt'
       }]
+
+    let attachments: Array<request.agent.FormItem> = [{
+      name:'uploadTest',
+      value: [
+        {
+          path: 'test.txt',
+          filename: 'test.txt',
+          mimeType: 'application/octet-stream',
+        },
+        {
+          path: 'test1.txt',
+          filename: 'test1.txt',
+          mimeType: 'application/octet-stream',
+        },
+        {
+          path: 'test2.txt',
+          filename: 'test2.txt',
+          mimeType: 'application/octet-stream',
+        },
+        {
+          path: 'test3.txt',
+          filename: 'test3.txt',
+          mimeType: 'application/octet-stream',
+        },
+        {
+          path: 'test4.txt',
+          filename: 'test4.txt',
+          mimeType: 'application/octet-stream',
+        }
+      ]
+    }]
 
     let uploadConfig: request.UploadConfig = {
       url: 'http://127.0.0.1:8080',
@@ -910,49 +942,54 @@ export default function requestUploadJSUnit() {
      * @tc.level     Level 2
      */
     it('SUB_REQUEST_FileUpload_ResponseBody_0200', 0, async (done: Function) => {
-      let config: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
-      let pathDir = (baseContext !== undefined) ? baseContext.cacheDir : '';
-      let filePath = pathDir + '/test10.txt';
-      let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      let test = ''.padEnd(1 * 1024, '888');
-      fs.writeSync(file.fd, test);
-      fs.closeSync(file);
-      console.info('====>beforeAll: file generate test10.txt');
-      config.files =[{
-        filename: 'test10',
-        name: 'test10',
-        uri: 'internal://cache/test10.txt',
-        type: 'txt'
-      }]
-      request.uploadFile(baseContext, config, async (err, uploadTask)=>{
-        console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 uploadFile: ' + uploadTask);
-        console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 uploadConfig: ' + JSON.stringify(uploadConfig));
-        try{
-          let headerCallback = async (header: ESObject) => {
-            try {
-              uploadTask.off('headerReceive', headerCallback);
-              console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 headerCallback: ' + header['body'].length);
-              expect(header['body'].length === 10 * 1024 * 1024).assertTrue();
-              await deleteTask(uploadTask);
-              done();
-            } catch (err) {
-              console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 catch err: ' + JSON.stringify(err));
-              await deleteTask(uploadTask);
-              done();
+      if (deviceinfo.deviceType === 'wearable') {
+        console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 deviceType is: ' + JSON.stringify(deviceinfo.deviceType));
+        done();
+      } else {
+        let config: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
+        let pathDir = (baseContext !== undefined) ? baseContext.cacheDir : '';
+        let filePath = pathDir + '/test10.txt';
+        let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        let test = ''.padEnd(1 * 1024, '888');
+        fs.writeSync(file.fd, test);
+        fs.closeSync(file);
+        console.info('====>beforeAll: file generate test10.txt');
+        config.files =[{
+          filename: 'test10',
+          name: 'test10',
+          uri: 'internal://cache/test10.txt',
+          type: 'txt'
+        }]
+        request.uploadFile(baseContext, config, async (err, uploadTask)=>{
+          console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 uploadFile: ' + uploadTask);
+          console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 uploadConfig: ' + JSON.stringify(uploadConfig));
+          try{
+            let headerCallback = async (header: ESObject) => {
+              try {
+                uploadTask.off('headerReceive', headerCallback);
+                console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 headerCallback: ' + header['body'].length);
+                expect(header['body'].length === 10 * 1024 * 1024).assertTrue();
+                await deleteTask(uploadTask);
+                done();
+              } catch (err) {
+                console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 catch err: ' + JSON.stringify(err));
+                await deleteTask(uploadTask);
+                done();
+              }
             }
+            if (err) {
+              console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 downloadFile fail: ' + JSON.stringify(err));
+              expect().assertFail();
+            }
+            uploadTask.on('headerReceive', headerCallback);
+            console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 on headerReceive success');
+          }catch(err){
+            console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 except err: ' + err);
+            await deleteTask(uploadTask);
+            done();
           }
-          if (err) {
-            console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 downloadFile fail: ' + JSON.stringify(err));
-            expect().assertFail();
-          }
-          uploadTask.on('headerReceive', headerCallback);
-          console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 on headerReceive success');
-        }catch(err){
-          console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 except err: ' + err);
-          await deleteTask(uploadTask);
-          done();
-        }
-      });
+        });
+      }
     });
 
     /**
@@ -1673,6 +1710,168 @@ export default function requestUploadJSUnit() {
           done();
         }
       });
+    });
+
+    /**
+     * @tc.number    SUB_Request_Agent_MultipleFiles_0100
+     * @tc.name      SUB_Request_Agent_MultipleFiles_0100
+     * @tc.desc      the onHeaderReceive interfaces.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('SUB_Request_Agent_MultipleFiles_0100', 0, async (done: Function) => {
+      console.info('-----------------------SUB_Request_Agent_MultipleFiles_0100 is starting-----------------------');
+      let config: request.agent.Config = {
+        action:request.agent.Action.UPLOAD,
+        url: 'http://127.0.0.1:8080',
+        method: "POST",
+        mode: request.agent.Mode.FOREGROUND,
+        network: request.agent.Network.ANY,
+        overwrite: true,
+        multipart: false,
+        data: attachments,
+      }
+      try {
+        let count: number = 0;
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info('====>SUB_Request_Agent_MultipleFiles_0100 create success');
+        let responseCallback = async (info: request.agent.HttpResponse) => {
+          try {
+            count += 1;
+            console.info('====>SUB_Request_Agent_MultipleFiles_0100 count is: ' + count);
+            console.info('====>SUB_Request_Agent_MultipleFiles_0100 info: ' + JSON.stringify(info));
+          }catch (err) {
+            console.info('====>SUB_Request_Agent_MultipleFiles_0100 err: ' + JSON.stringify(err));
+          }
+        }
+        let completeCallback = async (pro: request.agent.Progress) => {
+          try {
+            task.off('response', responseCallback);
+            task.off('completed', completeCallback);
+            console.info('====>SUB_Request_Agent_MultipleFiles_0100 completeCallback count: ' + count);
+            expect(count).assertEqual(5);
+            done();
+          }catch (err) {
+            console.info('====>SUB_Request_Agent_MultipleFiles_0100 err: ' + JSON.stringify(err));
+          }
+        }
+        task.on('response', responseCallback);
+        task.on('completed', completeCallback);
+        await task.start();
+        console.info('====>SUB_Request_Agent_MultipleFiles_0100 task start');
+      }catch (err) {
+        console.info('====>SUB_Request_Agent_MultipleFiles_0100 creat err: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    SUB_Request_Agent_MultipleFiles_0200
+     * @tc.name      SUB_Request_Agent_MultipleFiles_0200
+     * @tc.desc      the onHeaderReceive interfaces.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('SUB_Request_Agent_MultipleFiles_0200', 0, async (done: Function) => {
+      console.info('-----------------------SUB_Request_Agent_MultipleFiles_0200 is starting-----------------------');
+      let config: request.agent.Config = {
+        action:request.agent.Action.UPLOAD,
+        url: 'http://127.0.0.1:8080',
+        method: "POST",
+        mode: request.agent.Mode.FOREGROUND,
+        network: request.agent.Network.ANY,
+        overwrite: true,
+        multipart: true,
+        data: attachments,
+      }
+      try {
+        let count: number = 0;
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info('====>SUB_Request_Agent_MultipleFiles_0200 create success');
+        let responseCallback = async (info: request.agent.HttpResponse) => {
+          try {
+            count += 1;
+            console.info('====>SUB_Request_Agent_MultipleFiles_0200 count is: ' + count);
+            console.info('====>SUB_Request_Agent_MultipleFiles_0200 info: ' + JSON.stringify(info));
+          }catch (err) {
+            console.info('====>SUB_Request_Agent_MultipleFiles_0200 err: ' + JSON.stringify(err));
+          }
+        }
+        let completeCallback = async (pro: request.agent.Progress) => {
+          try {
+            task.off('response', responseCallback);
+            task.off('completed', completeCallback);
+            console.info('====>SUB_Request_Agent_MultipleFiles_0200 completeCallback count: ' + count);
+            expect(count).assertEqual(1);
+            done();
+          }catch (err) {
+            console.info('====>SUB_Request_Agent_MultipleFiles_0200 err: ' + JSON.stringify(err));
+          }
+        }
+        task.on('response', responseCallback);
+        task.on('completed', completeCallback);
+        await task.start();
+        console.info('====>SUB_Request_Agent_MultipleFiles_0200 task start');
+      }catch (err) {
+        console.info('====>SUB_Request_Agent_MultipleFiles_0200 creat err: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    SUB_Request_Agent_MultipleFiles_0300
+     * @tc.name      SUB_Request_Agent_MultipleFiles_0300
+     * @tc.desc      the onHeaderReceive interfaces.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('SUB_Request_Agent_MultipleFiles_0300', 0, async (done: Function) => {
+      console.info('-----------------------SUB_Request_Agent_MultipleFiles_0300 is starting-----------------------');
+      let config: request.agent.Config = {
+        action:request.agent.Action.UPLOAD,
+        url: 'http://127.0.0.1:8080',
+        method: "POST",
+        mode: request.agent.Mode.FOREGROUND,
+        network: request.agent.Network.ANY,
+        overwrite: true,
+        multipart: undefined,
+        data: attachments,
+      }
+      try {
+        let count: number = 0;
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info('====>SUB_Request_Agent_MultipleFiles_0300 create success');
+        let responseCallback = async (info: request.agent.HttpResponse) => {
+          try {
+            count += 1;
+            console.info('====>SUB_Request_Agent_MultipleFiles_0300 count is: ' + count);
+            console.info('====>SUB_Request_Agent_MultipleFiles_0300 info: ' + JSON.stringify(info));
+          }catch (err) {
+            console.info('====>SUB_Request_Agent_MultipleFiles_0300 err: ' + JSON.stringify(err));
+          }
+        }
+        let completeCallback = async (pro: request.agent.Progress) => {
+          try {
+            task.off('response', responseCallback);
+            task.off('completed', completeCallback);
+            console.info('====>SUB_Request_Agent_MultipleFiles_0300 completeCallback count: ' + count);
+            expect(count).assertEqual(5);
+            done();
+          }catch (err) {
+            console.info('====>SUB_Request_Agent_MultipleFiles_0300 err: ' + JSON.stringify(err));
+          }
+        }
+        task.on('response', responseCallback);
+        task.on('completed', completeCallback);
+        await task.start();
+        console.info('====>SUB_Request_Agent_MultipleFiles_0300 task start');
+      }catch (err) {
+        console.info('====>SUB_Request_Agent_MultipleFiles_0300 creat err: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
     });
 
   })

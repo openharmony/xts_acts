@@ -26,24 +26,26 @@ struct router_PageA {
   }
 
   build() {
-    Column({ space: 5 }) {
-      Text(this.amount).id('text_amount').fontSize(20).margin({ top: 50 })
-      Text(this.page + '').id('text_page').fontSize(20).margin({ top: 50 })
-      Button("跳转pageB")
-        .type(ButtonType.Capsule)
-        .margin({ bottom: 50 })
-        .id("RouterA1")
-        .onClick(() => {
-          router.pushUrl({
-            url: "MainAbility/pages/back_router/pageB",
+    Scroll() {
+      Column({ space: 5 }) {
+        Text(this.amount).id('text_amount').fontSize(20).margin({ top: 50 })
+        Text(this.page + '').id('text_page').fontSize(20).margin({ top: 50 })
+        Button("跳转pageB")
+          .type(ButtonType.Capsule)
+          .margin({ bottom: 50 })
+          .id("RouterA1")
+          .onClick(() => {
+            router.pushUrl({
+              url: "MainAbility/pages/back_router/pageB",
+            })
           })
-        })
-      Button("返回上一级")
-        .type(ButtonType.Capsule)
-        .id("RouterA2")
-        .onClick(() => {
-          router.back()
-        })
-    }.width('100%').height('100%')
+        Button("返回上一级")
+          .type(ButtonType.Capsule)
+          .id("RouterA2")
+          .onClick(() => {
+            router.back()
+          })
+      }.width('100%')
+    }
   }
 }

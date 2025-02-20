@@ -43,7 +43,23 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeBitmapTest : public testing::Test {};
+class DrawingNativeBitmapTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override
+    {
+        // 设置代码
+        std::cout << "DrawingNativeBitmapTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeBitmapTest errorCodeReset before each test case." << std::endl;
+    }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeBitmapTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeBitmapTest errorCodeReset after each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0100
@@ -69,7 +85,11 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapDestroyNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapDestroyNull, TestSize.Level3) { OH_Drawing_BitmapDestroy(nullptr); }
+HWTEST_F(DrawingNativeBitmapTest, testBitmapDestroyNull, TestSize.Level3) {
+    OH_Drawing_BitmapDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
+}
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0200
@@ -427,12 +447,19 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildNull, TestSize.Level3) {
     };
 
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat bitmapFormat = {formats[3], alphaFormats[0]};
 
     OH_Drawing_BitmapBuild(bitmap, 0, height, &bitmapFormat);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_BitmapBuild(bitmap, width, 0, &bitmapFormat);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_BitmapBuild(bitmap, width, height, nullptr);
-
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     OH_Drawing_BitmapDestroy(bitmap);
 }
 
@@ -635,8 +662,12 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXNull, TestSize.Level3) {
     // step 6
     OH_Drawing_Image_Info *imageInfo = new OH_Drawing_Image_Info();
     OH_Drawing_BitmapGetImageInfo(nullptr, imageInfo);
-
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     OH_Drawing_BitmapGetImageInfo(cBitmap, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     OH_Drawing_BitmapDestroy(cBitmap);
 }
@@ -699,6 +730,8 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXBoundary, TestSize.Level0) {
     // step 7
     OH_Drawing_Image_Info *imageInfo = new OH_Drawing_Image_Info();
     OH_Drawing_BitmapGetImageInfo(cBitmap, imageInfo);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     EXPECT_EQ(width, imageInfo->width);
     EXPECT_EQ(height, imageInfo->height);
 
@@ -752,6 +785,8 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsNull, TestSize.Level3) {
 
     // step 1
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat bitmapFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_UNPREMUL};
 
     // step 2
@@ -812,6 +847,8 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsMismatch, TestSize.Level3)
     const unsigned int width = 500;
     const unsigned int height = 500;
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
 
     // step 2
     OH_Drawing_BitmapFormat bitmapFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_UNPREMUL};
@@ -866,6 +903,8 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsBoundary, TestSize.Level0)
 
     // step 1
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat bitmapFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_UNPREMUL};
 
     // step 2

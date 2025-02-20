@@ -44,7 +44,23 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeColorTest : public testing::Test {};
+class DrawingNativeColorTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override
+    {
+        // 设置代码
+        std::cout << "DrawingNativeColorTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeColorTest errorCodeReset before each test case." << std::endl;
+    }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeColorTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeColorTest errorCodeReset after each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_0100
@@ -56,9 +72,13 @@ class DrawingNativeColorTest : public testing::Test {};
  */
 HWTEST_F(DrawingNativeColorTest, testColorSetArgbNormal, TestSize.Level0) {
     // 1
-    OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0xFF);
+    uint32_t color = OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0xFF);
+    // add assert
+    EXPECT_NE(color, 0);
     // 2
-    OH_Drawing_ColorSetArgb(0, 0, 0, 0);
+    uint32_t color2 = OH_Drawing_ColorSetArgb(0, 0, 0, 0);
+    // add assert
+    EXPECT_EQ(color2, 0);
     // 3 Compilation error, unable to test
 }
 
@@ -72,13 +92,21 @@ HWTEST_F(DrawingNativeColorTest, testColorSetArgbNormal, TestSize.Level0) {
  */
 HWTEST_F(DrawingNativeColorTest, testColorSetArgbNULL, TestSize.Level3) {
     // 1、Passing empty for the first argument of OH_Drawing_ColorSetArgb
-    OH_Drawing_ColorSetArgb(0, 0xFF, 0xFF, 0xFF);
+    uint32_t color1 = OH_Drawing_ColorSetArgb(0, 0xFF, 0xFF, 0xFF);
+    // add assert
+    EXPECT_NE(color1, 0);
     // 2、Passing empty for the second argument of OH_Drawing_ColorSetArgb
-    OH_Drawing_ColorSetArgb(0xFF, 0, 0xFF, 0xFF);
+    uint32_t color2 = OH_Drawing_ColorSetArgb(0xFF, 0, 0xFF, 0xFF);
+    // add assert
+    EXPECT_NE(color2, 0);
     // 3、Passing empty for the third argument of OH_Drawing_ColorSetArgb
-    OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0, 0xFF);
+    uint32_t color3 = OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0, 0xFF);
+    // add assert
+    EXPECT_NE(color3, 0);
     // 4、Passing empty for the fourth argument of OH_Drawing_ColorSetArgb
-    OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0);
+    uint32_t color4 = OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0);
+    // add assert
+    EXPECT_NE(color4, 0);
 }
 
 /*
@@ -92,7 +120,9 @@ HWTEST_F(DrawingNativeColorTest, testColorSetArgbNULL, TestSize.Level3) {
 HWTEST_F(DrawingNativeColorTest, testColorSetArgbMultipleCalls, TestSize.Level3) {
     // 1. Call OH_Drawing_ColorSetArgb with random numbers between 0 and 255, 10 times
     for (int i = 0; i < 10; i++) {
-        OH_Drawing_ColorSetArgb(rand() % 256, rand() % 256, rand() % 256, rand() % 256);
+        uint32_t color = OH_Drawing_ColorSetArgb(rand() % 256, rand() % 256, rand() % 256, rand() % 256);
+        // add assert
+        EXPECT_NE(color, 0);
     }
 }
 
@@ -106,13 +136,21 @@ HWTEST_F(DrawingNativeColorTest, testColorSetArgbMultipleCalls, TestSize.Level3)
  */
 HWTEST_F(DrawingNativeColorTest, testColorSetArgbAbnormal, TestSize.Level3) {
     // 1. The first argument of OH_Drawing_ColorSetArgb is a negative number
-    OH_Drawing_ColorSetArgb(-0x01, 0xFF, 0xFF, 0xFF);
+    uint32_t color1 = OH_Drawing_ColorSetArgb(-0x01, 0xFF, 0xFF, 0xFF);
+    // add assert
+    EXPECT_NE(color1, 0);
     // 2. The second argument of OH_Drawing_ColorSetArgb is a negative number
-    OH_Drawing_ColorSetArgb(0xFF, -0x01, 0xFF, 0xFF);
+    uint32_t color2 = OH_Drawing_ColorSetArgb(0xFF, -0x01, 0xFF, 0xFF);
+    // add assert
+    EXPECT_NE(color2, 0);
     // 3. The third argument of OH_Drawing_ColorSetArgb is a negative number
-    OH_Drawing_ColorSetArgb(0xFF, 0xFF, -0x01, 0xFF);
+    uint32_t color3 = OH_Drawing_ColorSetArgb(0xFF, 0xFF, -0x01, 0xFF);
+    // add assert
+    EXPECT_NE(color3, 0);
     // 4. The fourth argument of OH_Drawing_ColorSetArgb is a negative number
-    OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, -0x01);
+    uint32_t color4 = OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, -0x01);
+    // add assert
+    EXPECT_NE(color4, 0);
 }
 
 /*
@@ -125,13 +163,21 @@ HWTEST_F(DrawingNativeColorTest, testColorSetArgbAbnormal, TestSize.Level3) {
  */
 HWTEST_F(DrawingNativeColorTest, testColorSetArgbMaximum, TestSize.Level3) {
     // 1
-    OH_Drawing_ColorSetArgb(0xFF + 1, 0x00, 0x00, 0xFF);
+    uint32_t color1 = OH_Drawing_ColorSetArgb(0xFF + 1, 0x00, 0x00, 0xFF);
+    // add assert
+    EXPECT_NE(color1, 0);
     // 2
-    OH_Drawing_ColorSetArgb(0xFF, 0xFF + 1, 0x00, 0xFF);
+    uint32_t color2 = OH_Drawing_ColorSetArgb(0xFF, 0xFF + 1, 0x00, 0xFF);
+    // add assert
+    EXPECT_NE(color2, 0);
     // 3
-    OH_Drawing_ColorSetArgb(0xFF, 0x00, 0xFF + 1, 0xFF);
+    uint32_t color3 = OH_Drawing_ColorSetArgb(0xFF, 0x00, 0xFF + 1, 0xFF);
+    // add assert
+    EXPECT_NE(color3, 0);
     // 4
-    OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0xFF + 1);
+    uint32_t color4 = OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0xFF + 1);
+    // add assert
+    EXPECT_NE(color4, 0);
 }
 
 } // namespace Drawing

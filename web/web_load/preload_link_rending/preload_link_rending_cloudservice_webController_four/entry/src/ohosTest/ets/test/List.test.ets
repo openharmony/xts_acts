@@ -14,7 +14,9 @@
  */
 
 import webViewWarmupServiceWorker from './webViewWarmupServiceWorker.test';
+import optimizeParserBudget from './optimizeParserBudget.test';
 
 export default function testsuite() {
   webViewWarmupServiceWorker()
+  optimizeParserBudget()
 }

@@ -27,19 +27,16 @@ class ArrayGrid {
 @Entry
 @ComponentV2
 struct totalGridRepeat {
-  @Local arrayGrid: ArrayGrid = new ArrayGrid(30);
+  @Local arrayGrid: ArrayGrid = new ArrayGrid(20);
   @Local totalCount: number = this.arrayGrid.arr.length;
   scroller: Scroller = new Scroller();
   @Local onText:string = 'Grid: '
 
   build() {
     Column({ space: 5 }) {
-      Scroll(){
-        Text(''+ this.onText)
-          .id('grid_repeat_true_onText')
-      }
-	  .width('90%')
-	  .height('10%')
+      Text(''+ this.onText)
+        .id('grid_repeat_true_onText')
+        .width('90%')
 
       Button('next page true')
         .id('grid_repeat_animation_true')
@@ -54,12 +51,14 @@ struct totalGridRepeat {
           })
           .template('number', (r) => {
             GridItem() {
-              Text(r.index! + ":" + r.item + "Reuse");
+              Text(r.index! + ":" + r.item + "Reuse")
+                .height('8%')
             }
           })
           .each((r) => {
             GridItem() {
-              Text(r.index! + ":" + r.item + "eachMessage");
+              Text(r.index! + ":" + r.item + "eachMessage")
+                .height('8%')
             }
           })
       }

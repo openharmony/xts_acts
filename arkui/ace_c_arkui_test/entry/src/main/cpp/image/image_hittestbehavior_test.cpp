@@ -182,6 +182,8 @@ napi_value ImageHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_callbac
 
     // create column
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+    auto row = nodeAPI->createNode(ARKUI_NODE_ROW);
+    auto row1 = nodeAPI->createNode(ARKUI_NODE_ROW);
 
     int32_t hitTestBehavior = ArkUI_HitTestMode::ARKUI_HIT_TEST_MODE_DEFAULT;
     string onTouchTestStack = "OnTouchTestStackDefault";
@@ -190,7 +192,7 @@ napi_value ImageHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_callbac
     auto stack = CreateSubImageNode(nodeAPI, hitTestBehavior, onTouchTestStack.c_str(), onTouchTestImage.c_str(),
                                     onTouchTestImageBrother.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row, stack);
 
     hitTestBehavior = ArkUI_HitTestMode::ARKUI_HIT_TEST_MODE_BLOCK;
     onTouchTestStack = "OnTouchTestStackBlock";
@@ -199,7 +201,7 @@ napi_value ImageHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_callbac
     stack = CreateSubImageNode(nodeAPI, hitTestBehavior, onTouchTestStack.c_str(), onTouchTestImage.c_str(),
                                onTouchTestImageBrother.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row, stack);
 
     hitTestBehavior = ArkUI_HitTestMode::ARKUI_HIT_TEST_MODE_TRANSPARENT;
     onTouchTestStack = "OnTouchTestStackTransparent";
@@ -208,7 +210,8 @@ napi_value ImageHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_callbac
     stack = CreateSubImageNode(nodeAPI, hitTestBehavior, onTouchTestStack.c_str(), onTouchTestImage.c_str(),
                                onTouchTestImageBrother.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row, stack);
+    nodeAPI->addChild(column, row);
 
     hitTestBehavior = ArkUI_HitTestMode::ARKUI_HIT_TEST_MODE_NONE;
     onTouchTestStack = "OnTouchTestStackNone";
@@ -217,7 +220,7 @@ napi_value ImageHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_callbac
     stack = CreateSubImageNode(nodeAPI, hitTestBehavior, onTouchTestStack.c_str(), onTouchTestImage.c_str(),
                                onTouchTestImageBrother.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row1, stack);
 
     hitTestBehavior = PARAM_NEGATIVE_1;
     onTouchTestStack = "OnTouchTestStackExceptBelow";
@@ -226,7 +229,7 @@ napi_value ImageHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_callbac
     stack = CreateSubImageNode(nodeAPI, hitTestBehavior, onTouchTestStack.c_str(), onTouchTestImage.c_str(),
                                onTouchTestImageBrother.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
+    nodeAPI->addChild(row1, stack);
 
     hitTestBehavior = PARAM_4;
     onTouchTestStack = "OnTouchTestStackExceptAbove";
@@ -235,8 +238,8 @@ napi_value ImageHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_callbac
     stack = CreateSubImageNode(nodeAPI, hitTestBehavior, onTouchTestStack.c_str(), onTouchTestImage.c_str(),
                                onTouchTestImageBrother.c_str());
     // add stack to column
-    nodeAPI->addChild(column, stack);
-
+    nodeAPI->addChild(row1, stack);
+    nodeAPI->addChild(column, row1);
     // bind node callBack event receiver
     nodeAPI->registerNodeEventReceiver(&OnEventReceive);
 

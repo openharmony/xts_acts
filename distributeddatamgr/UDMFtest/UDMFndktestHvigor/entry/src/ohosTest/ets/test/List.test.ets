@@ -17,11 +17,18 @@ import UdmfNdkTest from './UdmfNdkTest';
 import UdsNdkTest from './UdsNdkTest';
 import UtdNdkTest from './UtdNdkTest';
 import ContentNdkTest from './ContentNdkTest';
+import UdsNdkexTest from './udsndkex.test';
+import EmptyTest from './Empty.test';
 
 export default function testsuite() {
-  pasteboardNdkTest();
-  UdmfNdkTest();
-  UdsNdkTest();
-  UtdNdkTest();
-  ContentNdkTest();
+  if (canIUse("SystemCapability.DistributedDataManager.UDMF.Core")){
+    pasteboardNdkTest();
+    UdmfNdkTest();
+    UdsNdkTest();
+    UtdNdkTest();
+    ContentNdkTest();
+    UdsNdkexTest();
+  } else {
+    EmptyTest()
+  } 
 }

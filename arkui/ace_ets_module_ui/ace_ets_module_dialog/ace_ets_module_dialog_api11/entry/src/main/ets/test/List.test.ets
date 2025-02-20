@@ -24,13 +24,9 @@ import panelClose from './Panel/panelClose'
 import ActionSheet from './actionSheetTest/ActionSheet.test'
 import ActionSheetFalse from './actionSheetTest/ActionSheetFalse.test'
 import ActionSheetTrue from './actionSheetTest/ActionSheetTrue.test'
-import CalendarPickerDialog from './calendarPickerDialogTest/CalendarPickerDialog.test'
 import CustomDialog from './customDialogTest/CustomDialog.test'
 import CustomDialogFalse from './customDialogTest/CustomDialogFalse.test'
 import CustomDialogTrue from './customDialogTest/CustomDialogTrue.test'
-import DatePickerDialog from './datePickerDialogTest/DatePickerDialog.test'
-import TextPickerDialog from './textPickerDialogTest/TextPickerDialog.test'
-import TimePickerDialog from './timePickerDialogTest/TimePickerDialog.test'
 import openCustomDialog from './promptActionTest/openCustomDialog.test'
 import openCustomDialogFalse from './promptActionTest/openCustomDialogFalse.test'
 import openCustomDialogNew from './promptActionTest/openCustomDialogNew.test'
@@ -50,27 +46,18 @@ import stagePromptTest from './promptActionTest/stagePrompt.test'
 import stageActionSheet from './actionSheetTest/stageActionSheet.test'
 import stageAlertDialog from './alertDialogTest/stageAlertDialog.test'
 import customDialogControllerJsunit from './customDialogTest/CustomDialogControllerJsunit.test';
-import calendarJsunit from './calendarPickerDialogTest/CalendarJsunit.test';
 import ohosPromptJsunit from './promptActionTest/OhosPromptJsunit.test';
-import textPickerJsunit from './textPickerDialogTest/TextPickerJsunit.test';
 import alertDialogCenterStartJsunit from './alertDialogTest/alertDialog.test';
 import responseTypeJsunit from './MenuTest/responseType.test.ets';
 import promptShowDialogJsunit from './promptActionTest/prompt.test.ets';
 import ActionsheetDialogAJsunit from './Dialog/ActionsheetDialogJsunit.test.ets';
 import AlertDialogAJsunit from './Dialog/AlertDialogAJsunit.test';
-import CalendarDialogAJsunit from './Dialog/CalendarDialogJsunit.test.ets';
 import CustomDialogAJsunit from './Dialog/CustomDialogJsunit.test.ets';
-import DatePickerDialogAJsunit from './Dialog/DatePickerDialogJsunit.test.ets';
 import PopupAJsunit from './Dialog/PopupJsunit.test.ets';
-import TextPickerDialogAJsunit from './Dialog/TextPickerDialogJsunit.test.ets';
-import TimePickerDialogAJsunit from './Dialog/TimePickerDialogJsunit.test.ets';
 import PromptDialogAJsunit from './Dialog/PromptDialogJsunit.test.ets';
 import AlertDialogJsunit from './alertDialogTest/AlertDialogJsunit.test.ets';
 import CustomDialogJsunit from './customDialogTest/CustomDialogJsunit.test.ets';
-import DatePickerDialogJsunit from './datePickerDialogTest/DatePickerDialogJsunit.test.ets';
 import ShowDialogJsunit from './promptActionTest/ShowDialogJsunit.test.ets';
-import TextPickerDialogJsunit from './textPickerDialogTest/TextPickerDialogJsunit.test.ets';
-import TimePickerDialogJsunit from './timePickerDialogTest/TimePickerDialogJsunit.test.ets';
 import DialogJsunit from './alertDialogTest/DialogJsunit.test.ets';
 import PanelUIJsunit from './Panel/PanelUIJsunit.test.ets';
 import ActionSheetJsunit from './actionSheetTest/ActionSheetJsunit.test.ets';
@@ -105,12 +92,8 @@ export default function testsuite() {
   panelClose()
   ActionSheet();
   ActionSheetFalse();
-  CalendarPickerDialog();
   CustomDialog();
   CustomDialogFalse();
-  DatePickerDialog();
-  TextPickerDialog();
-  TimePickerDialog();
   openCustomDialog();
   openCustomDialogFalse();
   openCustomDialogNew();
@@ -122,27 +105,18 @@ export default function testsuite() {
   AlertDialog1();
   AlertDialogFalse();
   customDialogControllerJsunit()
-  calendarJsunit()
   ohosPromptJsunit()
-  textPickerJsunit()
   alertDialogCenterStartJsunit();
   responseTypeJsunit()
   promptShowDialogJsunit()
   ActionsheetDialogAJsunit();
   AlertDialogAJsunit();
-  CalendarDialogAJsunit();
   CustomDialogAJsunit();
-  DatePickerDialogAJsunit();
   PopupAJsunit();
-  TextPickerDialogAJsunit();
-  TimePickerDialogAJsunit();
   PromptDialogAJsunit();
   AlertDialogJsunit();
   CustomDialogJsunit();
-  DatePickerDialogJsunit();
   ShowDialogJsunit();
-  TextPickerDialogJsunit();
-  TimePickerDialogJsunit();
   DialogJsunit();
   PanelUIJsunit();
   ActionSheetJsunit();

@@ -25,6 +25,40 @@ struct observerTabsExample {
 
   build() {
     Column() {
+      Row(){
+        Button('observer on')
+          .id('observer_tabOn')
+          .height('5%')
+          .onClick(()=>{
+            observer.on('tabContentUpdate', { id: 'tabsId2' }, (info: observer.TabContentInfo) => {
+              this.uniqueId = info.uniqueId
+              this.uniqueId1 = info.tabContentUniqueId
+              this.text1 = info.tabContentId
+              console.info('on tabContentUpdate with id', JSON.stringify(info));
+            })
+          })
+        Button('observer off')
+          .id('observer_tabOff')
+          .height('5%')
+          .onClick(()=>{
+            observer.off('tabContentUpdate', { id: 'tabsId2' }, (info: observer.TabContentInfo) => {
+              console.info('off tabContentUpdate with id', JSON.stringify(info));
+            })
+          })
+      }
+
+      Text('uniqueId: ' + this.uniqueId).id('tabs_uniqueId')
+
+      Text('tabContentUniqueId: ' + this.uniqueId1).id('tabs_tabUniqueId')
+
+      Text('tabContentId: ' + this.text1).id('tabs_tabContentId')
+
+      Button('index=1')
+        .id('change_index')
+        .height('5%')
+        .onClick(()=>{
+          this.currentIndex = 1
+        })
       Tabs({ index: this.currentIndex, controller: this.controller }) {
         TabContent() {
           Column().width('100%').height('100%').backgroundColor('#00CB87')
@@ -39,8 +73,8 @@ struct observerTabsExample {
         }.tabBar('yellow').id('tabContent03')
       }
       .id('tabsId2')
-      .width(360)
-      .height(296)
+      .width('90%')
+      .height('60%')
       .backgroundColor('#F1F3F5')
       .onContentWillChange((currentIndex, comingIndex) => {
         if (comingIndex == 2) {
@@ -51,38 +85,6 @@ struct observerTabsExample {
       .onChange((index: number) => {
         console.info('onChange index: '+ index)
         this.currentIndex = index
-      })
-
-      Row(){
-        Button('observer on')
-          .id('observer_tabOn')
-          .onClick(()=>{
-            observer.on('tabContentUpdate', { id: 'tabsId2' }, (info: observer.TabContentInfo) => {
-              this.uniqueId = info.uniqueId
-              this.uniqueId1 = info.tabContentUniqueId
-              this.text1 = info.tabContentId
-              console.info('on tabContentUpdate with id', JSON.stringify(info));
-            })
-          })
-          Button('observer off')
-            .id('observer_tabOff')
-            .onClick(()=>{
-              observer.off('tabContentUpdate', { id: 'tabsId2' }, (info: observer.TabContentInfo) => {
-                console.info('off tabContentUpdate with id', JSON.stringify(info));
-              })
-          })
-      }
-
-      Text('uniqueId: ' + this.uniqueId).id('tabs_uniqueId')
-
-      Text('tabContentUniqueId: ' + this.uniqueId1).id('tabs_tabUniqueId')
-
-      Text('tabContentId: ' + this.text1).id('tabs_tabContentId')
-
-      Button('index=1')
-      .id('change_index')
-      .onClick(()=>{
-        this.currentIndex = 1
       })
     }.width('100%')
     .height('100%')

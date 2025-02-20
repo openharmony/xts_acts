@@ -30,8 +30,50 @@ import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
 
 let filesDir: string | undefined;
 let testContext: common.UIAbilityContext;
+const TAG = "sendableImageAbilityTest: ";
 
 
+export function isSupportedCameras() : boolean {
+  const cameraAvailable = canIUse('SystemCapability.Multimedia.Camera.Core');
+  let context = testContext;
+
+  let isSupportedCameras = true;
+  let isSupportedCameraManager = false;
+  let mCameraManager: camera.CameraManager;
+  let mCameraDevicesArray: Array<camera.CameraDevice>;
+
+  let isEmpty = (data: ESObject) => {
+    if (data == null || data == undefined) {
+      return true;
+    }
+    return false;
+  }
+
+  console.info(TAG + 'Enter getCameraManagerInstance');
+  try {
+    mCameraManager = camera.getCameraManager(context);
+    if (isEmpty(mCameraManager)) {
+      console.info(TAG + "getCameraManager FAILED");
+      isSupportedCameraManager = false;
+      return isSupportedCameraManager;
+    }
+    console.info(TAG + 'Exit getCameraManagerInstance');
+    mCameraDevicesArray = mCameraManager.getSupportedCameras();
+    if (isEmpty(mCameraDevicesArray)) {
+      isSupportedCameras = false;
+    }
+  } catch (err) {
+    console.error(TAG + "getCameraManager FAILED. errorMessage:",err);
+    isSupportedCameraManager = false;
+    return isSupportedCameraManager;
+  }
+  if (cameraAvailable && isSupportedCameras) {
+    isSupportedCameraManager = true;
+  } else {
+    isSupportedCameraManager = false;
+  }
+  return isSupportedCameraManager;
+}
 let sleep = async (delay: number): Promise<void> => {
   return new Promise((resolve, _) => {
     setTimeout(async () => {
@@ -116,7 +158,7 @@ export default function sendableImageSource() {
     let filePath: string;
     let fdNumber: number;
     let receiverApi: sendableImage.ImageReceiver
-    let cameraM = camera.getCameraManager(testContext)
+    let cameraM : camera.CameraManager;
 
     let isEmpty = (temp: ESObject) => {
       if (temp == null || temp == undefined) {
@@ -129,6 +171,7 @@ export default function sendableImageSource() {
     beforeAll(async () => {
       filesDir = AppStorage.get('pathDir')
       testContext = AppStorage.get<common.UIAbilityContext>('testContext') as common.UIAbilityContext
+      cameraM = camera.getCameraManager(testContext)
       await ability()
       let driver = Driver.create()
       await sleep(500)
@@ -224,6 +267,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_URI_0100', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_URI_0100"
       let fileName = 'test.jpg'
       try {
@@ -248,6 +296,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_URI_0200', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_URI_0200"
       let fileName = 'test.png'
       try {
@@ -273,6 +326,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_URI_0300', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_URI_0300"
       let fileName = ''
       try {
@@ -296,6 +354,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0100', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0100"
       let fileName = 'test.gif'
       try {
@@ -319,6 +382,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0200', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "testCreateImageSourceFd0200"
       let fileName = 'test.jpg'
       try {
@@ -342,6 +410,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0300', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0300"
       let fileName = ''
       try {
@@ -367,6 +440,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0400', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_FD_0400"
       try {
         let imageSourceApi = await sendableImage.createImageSource(-1)
@@ -390,6 +468,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_BUFFER_0100', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_BUFFER_0100"
       let fileName = 'test.bmp'
       try {
@@ -413,6 +496,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_BUFFER_0200', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_BUFFER_0200"
       let fileName = 'test.jpg'
       try {
@@ -438,6 +526,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_BUFFER_0300', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_SOURCE_BUFFER_0300"
       try {
         const buf: ArrayBuffer = new ArrayBuffer(0)
@@ -463,6 +556,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0100', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0100"
       let fileName = 'test.webp'
       let imageSourceApi = await getImageSource(fileName, "uri")
@@ -489,6 +587,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0200', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0200"
       let fileName = 'test.dng'
       let imageSourceApi = await getImageSource(fileName, "uri")
@@ -534,6 +637,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0300', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0300"
       let fileName = 'SVG.svg'
       let imageSourceApi = await getImageSource(fileName, "uri")
@@ -562,6 +670,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0400', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_0400"
       let fileName = 'test.ico'
       let imageSourceApi = await getImageSource(fileName, "uri")
@@ -601,6 +714,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_IMAGE_SOURCE_RELEASE_0100', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_RELEASE_0100"
       let fileName = 'test.jpg'
       let imageSourceApi = await getImageSource(fileName, "uri")
@@ -627,6 +745,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_IMAGE_SOURCE_RELEASE_0200', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_RELEASE_0200"
       let fileName = 'test.jpg'
       let imageSourceApi = await getImageSource(fileName, 'uri')
@@ -654,6 +777,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0100', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0100"
       let receiver = await getImageReceiver(1)
       console.info(`0x0000 ${tag} success ${receiver}`)
@@ -671,6 +799,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0200', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0200"
       try {
         let receiver = await getImageReceiver(2)
@@ -696,6 +829,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0300', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0300"
       try {
         let receiver = await getImageReceiver(3)
@@ -720,6 +858,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0400', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_0400"
       try {
         let receiver = await getImageReceiver(4)
@@ -744,6 +887,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_ON_0100', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_CREATE_IMAGE_RECEIVER_ON_0100"
       let receiver = await getImageReceiver(1)
       console.info(`0x0000 ${tag} success ${receiver}`)
@@ -767,6 +915,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_GET_RECEIVING_SURFACES_0100', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_GET_RECEIVING_SURFACES_0100"
       let receiver = await getImageReceiver(1)
       receiver.getReceivingSurfaceId().then((id: string) => {
@@ -793,6 +946,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_RECEIVER_READ_NEXT_IMAGE_0100', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_RECEIVER_READ_NEXT_IMAGE_0100"
       let receiver = await getImageReceiver(1)
       await createPreview(cameraM, receiver)
@@ -827,6 +985,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_IMG_GET_COMPONENT_0100', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_IMG_GET_COMPONENT_0100"
       let receiver = await getImageReceiver(1)
       await createPreview(cameraM, receiver)
@@ -874,6 +1037,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_IMG_GET_COMPONENT_0200', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_IMG_GET_COMPONENT_0200"
       let receiver = await getImageReceiver(1)
       await createPreview(cameraM, receiver)
@@ -908,6 +1076,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_IMG_GET_COMPONENT_0300', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_IMG_GET_COMPONENT_0300"
       let receiver = await getImageReceiver(1)
       await createPreview(cameraM, receiver)
@@ -948,6 +1121,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_IMG_GET_COMPONENT_0400', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_IMG_GET_COMPONENT_0400"
       let receiver = await getImageReceiver(1)
       await createPreview(cameraM, receiver)
@@ -984,6 +1162,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_IMG_RELEASE_0100', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_IMG_RELEASE_0100"
       let receiver = await getImageReceiver(1)
       await createPreview(cameraM, receiver)
@@ -1017,6 +1200,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_IMG_RELEASE_0200', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_IMG_RELEASE_0200"
       let receiver = await getImageReceiver(1)
       await createPreview(cameraM, receiver)
@@ -1064,6 +1252,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_IMG_RELEASE_0300', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_IMG_RELEASE_0300"
       let receiver = await getImageReceiver(1)
       await createPreview(cameraM, receiver)
@@ -1112,6 +1305,11 @@ export default function sendableImageSource() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_RECEIVER_READ_LATEST_IMAGE_0100', 0, async (done: Function) => {
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       const tag: string = "SUB_MULTIMEDIA_RECEIVER_READ_LATEST_IMAGE_0100"
       let receiver = await getImageReceiver(1)
       console.info(`0x0000 ${tag} success receiver`)

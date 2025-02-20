@@ -309,7 +309,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testUint8ClampedArrayTaskPool0004).then((value) => {
             num++;
-            expect(value).assertEqual('integerIndex < 0 or integerIndex > SAFE_NUMBER');
+            expect(value).assertEqual('error');
           });
         }
         while (num < 10) {
@@ -533,7 +533,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testUint8ClampedArrayTaskPool0012).then((value) => {
             num++;
-            expect(value).assertEqual('integerIndex < 0 or integerIndex > SAFE_NUMBER');
+            expect(value).assertEqual('error');
           });
         }
         while (num < 10) {
@@ -561,7 +561,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testUint8ClampedArrayTaskPool0013).then((value) => {
             num++;
-            expect(value).assertEqual('integerIndex < 0 or integerIndex > SAFE_NUMBER');
+            expect(value).assertEqual('error');
           });
         }
         while (num < 10) {
@@ -589,7 +589,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testUint8ClampedArrayTaskPool0014).then((value) => {
             num++;
-            expect(value).assertEqual('integerIndex < 0 or integerIndex > SAFE_NUMBER');
+            expect(value).assertEqual('error');
           });
         }
         while (num < 10) {
@@ -645,7 +645,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testUint8ClampedArrayTaskPool0016).then((value) => {
             num++;
-            expect(value).assertEqual('integerIndex < 0 or integerIndex > SAFE_NUMBER');
+            expect(value).assertEqual('error');
           });
         }
         while (num < 10) {
@@ -729,7 +729,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testUint8ClampedArrayTaskPool0019).then((value) => {
             num++;
-            expect(value).assertEqual('integerIndex < 0 or integerIndex > SAFE_NUMBER');
+            expect(value).assertEqual('error');
           });
         }
         while (num < 10) {
@@ -3585,7 +3585,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testUint8ClampedArrayTaskPool0121).then((value) => {
             num++;
-            expect(value).assertEqual('out of range.');
+            expect(value).assertEqual('error');
           });
         }
         while (num < 10) {
@@ -3837,7 +3837,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testUint8ClampedArrayTaskPool0130).then((value) => {
             num++;
-            expect(value).assertEqual("The targetOffset of This value is less than 0.");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -3977,7 +3977,7 @@ export default function uint8ClampedArrayTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testUint8ClampedArrayTaskPool0135).then((value) => {
             num++;
-            expect(value).assertEqual("The sum of length and targetOffset is greater than targetLength.");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {

@@ -1,13 +1,34 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import testNapi from 'libentry.so';
+import deviceinfo from '@ohos.deviceInfo';
+import { BusinessError } from '@ohos.base';
+import inputMethod from '@ohos.inputMethod';
 
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeAll(() => {
-      // Presets an action, which is performed only once before all test cases of the test suite start.
-      // This API supports only one parameter: preset action function.
+    beforeAll(async(done: Function) => {
+      let inputMethodSetting = inputMethod.getSetting();
+      console.info('====> getSetting success!')
+      inputMethodSetting.listInputMethod((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
+        let t = setTimeout(async ()=>{
+          console.info('====>Succeeded in listing inputMethod: ' + JSON.stringify(data));
+          const ATTRIBUTE: inputMethod.TextConfig = {
+            inputAttribute: {
+              textInputType: 0, enterKeyType: 0
+            }
+          }
+          try {
+            let data = await inputMethod.getController().attach(false, ATTRIBUTE);
+            console.info(`====> execution success, data: ${JSON.stringify(data)}`);
+          } catch (error) {
+            console.info(`====> catch error, error: [${error.code}, ${error.message}]`);
+          }
+          clearTimeout(t);
+          done();
+        }, 3000)
+      });
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.

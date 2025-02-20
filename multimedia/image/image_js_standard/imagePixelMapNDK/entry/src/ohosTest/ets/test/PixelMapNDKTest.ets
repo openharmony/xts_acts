@@ -175,15 +175,15 @@ export default function PixelMapNDKTest() {
         });
         it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_DNG_0100', 0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_DNG_0100",
-                "test.dng", 3);
+                "test_PixelMapNDKJs.dng", 3);
         });
         it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_DNG_0200', 0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_DNG_0200",
-                "test.dng", 8);
+                "test_PixelMapNDKJs.dng", 8);
         });
         it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_DNG_0300', 0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_DNG_0300",
-                "test.dng", 9);
+                "test_PixelMapNDKJs.dng", 9);
         });
     })
 }

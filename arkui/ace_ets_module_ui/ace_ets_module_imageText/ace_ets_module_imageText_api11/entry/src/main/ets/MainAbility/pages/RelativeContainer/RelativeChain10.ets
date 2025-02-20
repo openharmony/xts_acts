@@ -17,7 +17,7 @@
 struct RelativeChain10 {
   @State RelativeChain: ChainStyle = ChainStyle.SPREAD
   @State RelativeWidth: number = 50
-  @State RelativeHeight: number = 100
+  @State RelativeHeight: string = '50%'
 
   build() {
     Column() {
@@ -53,8 +53,7 @@ struct RelativeChain10 {
           .id("RelativeChainRow10_3")
       }
       .id('RelativeChain10')
-      .width(100).height(200)
-      .margin({left: 50, top: 50})
+      .width(100).height('40%')
       .backgroundColor(Color.Grey)
 
       RelativeContainer() {
@@ -87,12 +86,10 @@ struct RelativeChain10 {
           .id("RelativeChainRow102_3")
       }
       .id('RelativeChain102')
-      .width(100).height(200)
-      .margin({left: 50, top: 50})
+      .width(100).height('40%')
       .backgroundColor(Color.Grey)
 
       Button('SPREAD_INSIDE')
-        .margin(50)
         .key('RelativeChain10Bt_1')
         .onClick(() => {
           this.RelativeChain = ChainStyle.SPREAD_INSIDE

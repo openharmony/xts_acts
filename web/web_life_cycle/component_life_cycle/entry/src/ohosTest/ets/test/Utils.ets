@@ -198,7 +198,7 @@ export default class Utils {
     });
   }
 
-  static emitEvent(actualValue: boolean | string | number | object, eventId: number) {
+  static async emitEvent(actualValue: boolean | string | number | object, eventId: number) {
     try {
       let backData: events_emitter.EventData = {
         data: {
@@ -211,6 +211,9 @@ export default class Utils {
       }
       console.info("webFlag start to emit action state");
       events_emitter.emit(backEvent, backData);
+      console.info("Utils sleep start");
+      await Utils.sleep(2000)
+      console.info("Utils sleep over");
     } catch (err) {
       console.info("webFlag emit action state err: " + JSON.stringify(err));
     }

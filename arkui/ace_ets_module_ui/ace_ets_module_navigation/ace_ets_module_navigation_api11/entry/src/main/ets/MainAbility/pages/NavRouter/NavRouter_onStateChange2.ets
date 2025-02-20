@@ -19,6 +19,7 @@ struct NavRouter_onStateChange2 {
 
   build() {
     Column(){
+      Text('' + this.isActiveWLAN).key('NavRouter_onStateChange2_text1')
       Navigation() {
         NavRouter() {
           Row() {
@@ -44,14 +45,12 @@ struct NavRouter_onStateChange2 {
           this.isActiveWLAN = isActivated
         })
       }
-      .height('50%')
+      .height('100%')
       .width('100%')
       .title('NavRouter')
       .backgroundColor("#F2F3F5")
       .titleMode(NavigationTitleMode.Free)
       .mode(NavigationMode.Stack)
-
-      Text('' + this.isActiveWLAN).key('NavRouter_onStateChange2_text1')
     }
     .width('100%')
     .height('100%')

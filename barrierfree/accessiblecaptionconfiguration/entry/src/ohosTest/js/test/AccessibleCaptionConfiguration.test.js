@@ -14,9 +14,15 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import accessibility from '@ohos.accessibility'
+import { Driver } from '@ohos.UiTest';
 
 export default function AccessibleCaptionConfiguration() {
 describe('AccessibleCaptionConfiguration', function () {
+  beforeAll(async function (done) {
+    let driver = Driver.create();
+    console.info(`AccessibleCaptionConfiguration: beforeAll starts`);
+    done();
+  })
 
   beforeEach(async function (done) {
     console.info(`AccessibleCaptionConfiguration: beforeEach starts`);

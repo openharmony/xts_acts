@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct ProvideConsume0360 {
-  @Provide num: ResourceStr | Length = 100
+  @Provide num: ResourceStr | Length = 5
 
   build() {
     Column() {
@@ -24,7 +24,7 @@ struct ProvideConsume0360 {
         .id('btnProvideConsume0360Change')
         .height(this.num)
         .onClick(()=>{
-          this.num = 200
+          this.num = 8
         })
     }
   }

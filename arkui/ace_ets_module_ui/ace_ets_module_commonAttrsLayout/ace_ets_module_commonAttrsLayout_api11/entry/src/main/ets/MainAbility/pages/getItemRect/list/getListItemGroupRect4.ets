@@ -69,6 +69,23 @@ struct getListItemGroupRect4 {
 
   build() {
     Column() {
+      Button('点击获取信息').onClick((event: ClickEvent) => {
+        this.x = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).x
+        this.y = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).y
+        this.width1 = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).width
+        this.height1 = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).height
+      }).id('getListItemGroupRect4_button')
+      Text('' + this.x).key('getListItemGroupRect4_text1')
+      Text('' + this.y).key('getListItemGroupRect4_text2')
+      Text('' + this.width1).key('getListItemGroupRect4_text3')
+      Text('' + this.height1).key('getListItemGroupRect4_text4')
+      Button('Hidden').onClick(() => {
+        this.visibility1 = Visibility.Hidden
+      }).id('getListItemGroupRect4_button2')
+      Button('None').onClick(() => {
+        this.visibility1 = Visibility.None
+      }).id('getListItemGroupRect4_button3')
+
       List({ space: this.space1, initialIndex: 0, scroller: this.listScroller }) {
         ListItemGroup({ header: this.itemHead('0'), footer: this.itemFoot(this.arr.length), space: this.space2 }) {
           ListItem() {
@@ -108,23 +125,6 @@ struct getListItemGroupRect4 {
       .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
       .width(300)
       .height('60%')
-
-      Button('点击获取信息').onClick((event: ClickEvent) => {
-        this.x = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).x
-        this.y = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).y
-        this.width1 = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).width
-        this.height1 = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).height
-      }).id('getListItemGroupRect4_button')
-      Text('' + this.x).key('getListItemGroupRect4_text1')
-      Text('' + this.y).key('getListItemGroupRect4_text2')
-      Text('' + this.width1).key('getListItemGroupRect4_text3')
-      Text('' + this.height1).key('getListItemGroupRect4_text4')
-      Button('Hidden').onClick(() => {
-        this.visibility1 = Visibility.Hidden
-      }).id('getListItemGroupRect4_button2')
-      Button('None').onClick(() => {
-        this.visibility1 = Visibility.None
-      }).id('getListItemGroupRect4_button3')
 
     }
     .width('100%')

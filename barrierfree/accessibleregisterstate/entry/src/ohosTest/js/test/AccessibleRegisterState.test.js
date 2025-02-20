@@ -14,6 +14,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import accessibility from '@ohos.accessibility'
+import { Driver } from '@ohos.UiTest';
 
 const bundleName = 'com.sample.testfora11y';
 const triggerAction = 'accessibilityFocus';
@@ -21,6 +22,11 @@ const eventType = 'accessibilityFocus';
 
 export default function AccessibleRegisterState() {
 describe('AccessibleRegisterState', function () {
+    beforeAll(async function (done) {
+        let driver = Driver.create();
+        console.info(`AccessibleRegisterState: beforeAll starts`);
+        done();
+    })
 
     beforeEach(async function (done) {
         console.info(`AccessibleRegisterState: beforeEach starts`);
@@ -62,6 +68,23 @@ describe('AccessibleRegisterState', function () {
       }
       accessibility.on('touchGuideStateChange', callbackdata);
       accessibility.off('touchGuideStateChange', callbackdata);
+      expect(true).assertTrue();
+      done();
+    })
+    
+    /*
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0300
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0300
+    * @tc.desc    on(screenReaderStateChange)
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0300', 0, async function (done) {
+      console.info('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0300');
+      let callbackdata = (data) => {
+      }
+      accessibility.on('screenReaderStateChange', callbackdata);
+      accessibility.off('screenReaderStateChange', callbackdata);
       expect(true).assertTrue();
       done();
     })

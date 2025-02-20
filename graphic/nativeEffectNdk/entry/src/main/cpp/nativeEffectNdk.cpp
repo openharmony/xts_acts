@@ -18,11 +18,23 @@
 #include "native_effect/effect_filter.h"
 #include "native_effect/effect_types.h"
 #include <multimedia/image_framework/image/pixelmap_native.h>
+#include <multimedia/image_framework/image/image_packer_native.h>
+#include <multimedia/image_framework/image/image_source_native.h>
+#include "multimedia/image_framework/image_pixel_map_mdk.h"
 #include "hilog/log.h"
 
 #define SUCCESS 0
 #define FAIL (-1)
 #define DOUBLE_NUM_05 0.5
+#define DOUBLE_NUM_15 1.5
+#define ARR_NUM_0 0
+#define ARR_NUM_1 1
+#define ARR_NUM_2 2
+#define ARR_NUM_3 3
+
+namespace {
+    constexpr int8_t ARGB_8888_BYTES = 4;
+}
 
 static void CreatePixelMap(OH_PixelmapNative*** pixelmap)
 {
@@ -377,6 +389,125 @@ static napi_value OHFilterBlurWithTileMode001(napi_env env, napi_callback_info i
     return result;
 }
 
+static napi_value OHPixelmapNativeCreateScaledPixelMap001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_PixelmapNative *srcPixelmap = nullptr;
+    OH_Pixelmap_ImageInfo *srcImageInfoBefore = nullptr;
+    OH_PixelmapImageInfo_Create(&srcImageInfoBefore);
+    OH_PixelmapNative_GetImageInfo(srcPixelmap, srcImageInfoBefore);
+
+    OH_PixelmapNative *dstPixelmap = nullptr;
+    float scaleX = DOUBLE_NUM_15;
+    float scaleY = DOUBLE_NUM_15;
+    Image_ErrorCode ret = OH_PixelmapNative_CreateScaledPixelMap(srcPixelmap, &dstPixelmap, scaleX, scaleY);
+    if (ret == IMAGE_BAD_PARAMETER) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
+static napi_value OHPixelmapNativeCreateScaledPixelMapWithAntiAliasing001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_PixelmapNative *srcPixelmap = nullptr;
+    OH_Pixelmap_ImageInfo *srcImageInfoBefore = nullptr;
+    OH_PixelmapImageInfo_Create(&srcImageInfoBefore);
+    OH_PixelmapNative_GetImageInfo(srcPixelmap, srcImageInfoBefore);
+
+    OH_PixelmapNative *dstPixelmap = nullptr;
+    float scaleX = DOUBLE_NUM_05;
+    float scaleY = DOUBLE_NUM_05;
+    Image_ErrorCode ret = OH_PixelmapNative_CreateScaledPixelMapWithAntiAliasing(srcPixelmap, &dstPixelmap,
+        scaleX, scaleY, OH_PixelmapNative_AntiAliasingLevel::OH_PixelmapNative_AntiAliasing_HIGH);
+    if (ret == IMAGE_BAD_PARAMETER) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
+static napi_value OHPixelmapNativeGetByteCount001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_3, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+
+    OH_Pixelmap_InitializationOptions *options = nullptr;
+    OH_PixelmapInitializationOptions_Create(&options);
+    OH_PixelmapInitializationOptions_SetWidth(options, 1);
+    OH_PixelmapInitializationOptions_SetHeight(options, 1);
+    OH_PixelmapNative *pixelmap = nullptr;
+    Image_ErrorCode ret = OH_PixelmapNative_CreateEmptyPixelmap(options, &pixelmap);
+    if (ret == IMAGE_SUCCESS) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    uint32_t byteCount = 0;
+    ret = OH_PixelmapNative_GetByteCount(pixelmap, &byteCount);
+    if (ret == IMAGE_SUCCESS) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+
+    uint32_t allocByteCount = 0;
+    ret = OH_PixelmapNative_GetAllocationByteCount(pixelmap, &allocByteCount);
+    if ((ret == IMAGE_SUCCESS) && (byteCount == ARGB_8888_BYTES) && (allocByteCount >= byteCount)) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+    return result;
+}
+
+static napi_value OHPixelmapNativeAccessPixels001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_Pixelmap_InitializationOptions *options = nullptr;
+    OH_PixelmapInitializationOptions_Create(&options);
+    OH_PixelmapInitializationOptions_SetWidth(options, 1);
+    OH_PixelmapInitializationOptions_SetHeight(options, 1);
+    OH_PixelmapNative *srcPixelmap = nullptr;
+    OH_PixelmapNative_CreateEmptyPixelmap(options, &srcPixelmap);
+    void *dstPixelmap = nullptr;
+    Image_ErrorCode ret = OH_PixelmapNative_AccessPixels(srcPixelmap, &dstPixelmap);
+    if (ret == IMAGE_SUCCESS) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
+static napi_value OHPixelmapNativeUnaccessPixels001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_Pixelmap_InitializationOptions *options = nullptr;
+    OH_PixelmapInitializationOptions_Create(&options);
+    OH_PixelmapInitializationOptions_SetWidth(options, 1);
+    OH_PixelmapInitializationOptions_SetHeight(options, 1);
+    OH_PixelmapNative *srcPixelmap = nullptr;
+    OH_PixelmapNative_CreateEmptyPixelmap(options, &srcPixelmap);
+    Image_ErrorCode ret = OH_PixelmapNative_UnaccessPixels(srcPixelmap);
+    if (ret == IMAGE_SUCCESS) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -413,6 +544,17 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"oHFilterBlurWithTileMode001", nullptr, OHFilterBlurWithTileMode001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"oHPixelmapNativeCreateScaledPixelMap001", nullptr, OHPixelmapNativeCreateScaledPixelMap001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHPixelmapNativeCreateScaledPixelMapWithAntiAliasing001", nullptr,
+         OHPixelmapNativeCreateScaledPixelMapWithAntiAliasing001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHPixelmapNativeGetByteCount001", nullptr, OHPixelmapNativeGetByteCount001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHPixelmapNativeAccessPixels001", nullptr, OHPixelmapNativeAccessPixels001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHPixelmapNativeUnaccessPixels001", nullptr, OHPixelmapNativeUnaccessPixels001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

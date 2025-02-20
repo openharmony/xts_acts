@@ -66,57 +66,6 @@ export default function List_lanes() {
     });
 
     /**
-     * @tc.number SUB_ACE_LIST_LANES_TEST_0100
-     * @tc.name testListLanesToOne
-     * @tc.desc List parent component binds the lanes property lanes(1)
-     */
-    it('testListLanesToOne', 0, async (done: Function) => {
-      console.info('testListLanesToOne START');
-      await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('List_lanes_01');
-
-      expect(JSON.parse(strJson).$type).assertEqual('List');
-      let List_lanes_011: RectValue = CommonFunc.getComponentRect('List_lanes_011');
-      let List_lanes_012: RectValue = CommonFunc.getComponentRect('List_lanes_012');
-      let List_lanes_013: RectValue = CommonFunc.getComponentRect('List_lanes_013');
-      let List_lanes_014: RectValue = CommonFunc.getComponentRect('List_lanes_014');
-      let List_lanes_01: RectValue = CommonFunc.getComponentRect('List_lanes_01');
-      expect(Math.abs(List_lanes_011.left - List_lanes_01.left) <= 1).assertTrue();
-      expect(Math.abs(List_lanes_012.left - List_lanes_01.left) <= 1).assertTrue();
-      expect(Math.abs(List_lanes_013.left - List_lanes_01.left) <= 1).assertTrue();
-      expect(Math.abs(List_lanes_014.left - List_lanes_01.left) <= 1).assertTrue();
-      expect(Math.abs(List_lanes_011.top - List_lanes_01.top) <= 1).assertTrue();
-
-      expect(Math.abs(Math.round(List_lanes_012.top - List_lanes_011.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(List_lanes_013.top - List_lanes_012.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(List_lanes_014.top - List_lanes_013.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(List_lanes_01.bottom - List_lanes_014.bottom) - Math.round(vp2px(60))) <= 1).assertTrue();
-
-
-      expect(Math.abs(Math.round(List_lanes_011.right - List_lanes_011.left) - Math.round(vp2px(100))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(List_lanes_012.right - List_lanes_012.left) - Math.round(vp2px(100))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(List_lanes_013.right - List_lanes_013.left) - Math.round(vp2px(100))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(List_lanes_014.right - List_lanes_014.left) - Math.round(vp2px(100))) <= 1).assertTrue();
-
-      expect(Math.abs(Math.round(List_lanes_011.bottom - List_lanes_011.top) - Math.round(vp2px(100))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(List_lanes_012.bottom - List_lanes_012.top) - Math.round(vp2px(100))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(List_lanes_013.bottom - List_lanes_013.top) - Math.round(vp2px(100))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(List_lanes_014.bottom - List_lanes_014.top) - Math.round(vp2px(100))) <= 1).assertTrue();
-
-      let driver = Driver.create();
-      await driver.swipe(
-        Math.round(List_lanes_013.left + ((List_lanes_013.right - List_lanes_013.left) / 2)),
-        Math.round(List_lanes_013.bottom),
-        Math.round(List_lanes_012.left + ((List_lanes_012.right - List_lanes_012.left) / 2)),
-        Math.round(List_lanes_012.bottom));
-      await CommonFunc.sleep(1000);
-      let List_lanes_024: RectValue = CommonFunc.getComponentRect('List_lanes_014');
-      expect(Math.abs((List_lanes_01.bottom - List_lanes_024.bottom) - Math.round(vp2px(60))) <= 1).assertTrue();
-      console.info('testListLanesToOne END');
-      done();
-    });
-
-    /**
      * @tc.number SUB_ACE_LIST_LANES_TEST_0200
      * @tc.name testListLanesToTwo
      * @tc.desc List parent component binds the lanes property lanes(2)

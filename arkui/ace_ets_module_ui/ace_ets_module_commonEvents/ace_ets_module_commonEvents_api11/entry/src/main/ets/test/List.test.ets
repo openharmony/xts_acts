@@ -83,27 +83,7 @@ import commonJsunit from './CommonJsunit.test.ets';
 import motionPathJsunit from './MotionPathJsunit.test.ets';
 
 export default function testsuite() {
-  dragAdaptationTest()
-  touchJsunit();
-  appearJsunit();
-  areaChangeJsunit();
-  ShortcutKeyTest();
-  aboutToAppearTest();
-  parentX_parentY_strategy_Test();
-  onGestureTest()
-  touchPoint()
-  previewOptions()
-  createDragAction()
-  setForegroundColor()
-  DragActionJsunit()
-  dragPreviewJsSuit()
-  dragPreviewOptionsJsSuit()
-  GestureTagJsSuit()
-  freezeInactive()
-  GesturePanGesture();
-  OnClick1();
-  OnClick2();
-  OnClick3();
+  dragAdaptationTest();
   SwipeGesture1();
   SwipeGesture2();
   SwipeGesture3();
@@ -148,4 +128,24 @@ export default function testsuite() {
   parallelGestureJsunit();
   commonJsunit();
   motionPathJsunit();
+  touchJsunit();
+  appearJsunit();
+  areaChangeJsunit();
+  ShortcutKeyTest();
+  aboutToAppearTest();
+  parentX_parentY_strategy_Test();
+  onGestureTest()
+  touchPoint()
+  previewOptions()
+  // createDragAction()
+  // setForegroundColor()
+  DragActionJsunit()
+  dragPreviewJsSuit()
+  dragPreviewOptionsJsSuit()
+  GestureTagJsSuit()
+  freezeInactive()
+  GesturePanGesture();
+  OnClick1();
+  OnClick2();
+  OnClick3();
 }

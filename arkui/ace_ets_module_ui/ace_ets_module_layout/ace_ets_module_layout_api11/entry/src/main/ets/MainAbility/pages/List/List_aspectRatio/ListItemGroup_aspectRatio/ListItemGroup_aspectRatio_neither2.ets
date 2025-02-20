@@ -26,8 +26,7 @@ struct ListItemGroup_aspectRatio_neither2 {
       .fontSize(20)
       .backgroundColor(0xAABBCC)
       .width(300)
-      .height(50)
-      .padding(10)
+      .height(20)
   }
 
   @Builder
@@ -36,8 +35,7 @@ struct ListItemGroup_aspectRatio_neither2 {
       .fontSize(16)
       .backgroundColor(0xAABBCC)
       .width(300)
-      .height(50)
-      .padding(5)
+      .height(20)
   }
 
   messageManager: MessageManager<number> = new MessageManager();
@@ -68,7 +66,8 @@ struct ListItemGroup_aspectRatio_neither2 {
               .borderRadius(10)
               .textAlign(TextAlign.Center)
               .backgroundColor(0xAFEEEE)
-          }.width('100%').height(100)
+          }.width('100%').height('20%')
+          .key('ListItemGroup_aspectRatio_neither2_001')
 
           ListItem() {
             Text('2')
@@ -78,7 +77,7 @@ struct ListItemGroup_aspectRatio_neither2 {
               .borderRadius(10)
               .textAlign(TextAlign.Center)
               .backgroundColor(0xAFEEEE)
-          }.width('100%').height(100)
+          }.width('100%').height('20%')
 
           ListItem() {
             Text('3')
@@ -88,15 +87,15 @@ struct ListItemGroup_aspectRatio_neither2 {
               .borderRadius(10)
               .textAlign(TextAlign.Center)
               .backgroundColor(0xAFEEEE)
-          }.width('100%').height(100)
+          }.width('100%').height('20%')
         }
         .aspectRatio(this.aspectRatio1)
         .borderRadius(20)
         .key('ListItemGroup_aspectRatio_neither2_01')
 
       }
-      .width(300)
-      .height(600)
+      .width('30%')
+      .height('90%')
       .aspectRatio(0.5)
       .listDirection(Axis.Vertical)
       .scrollBar(BarState.On)

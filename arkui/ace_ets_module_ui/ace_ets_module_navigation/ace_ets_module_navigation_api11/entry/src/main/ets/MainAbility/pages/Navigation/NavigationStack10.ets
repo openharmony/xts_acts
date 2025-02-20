@@ -93,7 +93,8 @@ struct NavigationStack10 {
     .justifyContent(FlexAlign.Center)
   }
   build() {
-    Column(){
+    Scroll() {
+    Column() {
       Navigation(this.pageInfos) {
         Column() {
           Button('pushPath', { stateEffect: true, type: ButtonType.Capsule }).id('NavigationStack10pushPathbut')
@@ -143,7 +144,7 @@ struct NavigationStack10 {
         })
     }
     .border({width:1})
-    .height('100%')
     .width('100%')
+    }
   }
 }

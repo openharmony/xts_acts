@@ -55,7 +55,8 @@ export default function APIUIContextGetSync() {
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
-      let btn1 = await driver.findComponent(ON.id('APIUIContextGetSync_button'));
+      let scrollBar = await driver.findComponent(ON.type('Scroll'));
+      let btn1 = await scrollBar.scrollSearch(ON.id('APIUIContextGetSync_button'));
       await btn1.click()
       await CommonFunc.sleep(3000);
       console.info('[APIUIContextGetSync_0100] btn1 click');

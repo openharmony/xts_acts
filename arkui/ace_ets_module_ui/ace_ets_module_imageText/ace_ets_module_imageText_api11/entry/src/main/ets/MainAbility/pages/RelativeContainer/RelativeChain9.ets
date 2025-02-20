@@ -16,8 +16,8 @@
 @Component
 struct RelativeChain9 {
   @State RelativeChain: ChainStyle = ChainStyle.SPREAD
-  @State RelativeWidth: string = '100'
-  @State RelativeHeight: string = '100'
+  @State RelativeWidth: string = '25%'
+  @State RelativeHeight: string = '25%'
 
   build() {
     Column() {
@@ -52,8 +52,7 @@ struct RelativeChain9 {
           .id("RelativeChainRow9_3")
       }
       .id('RelativeChain9')
-      .width('auto').height(200)
-      .margin({left: 5, top: 50})
+      .width('auto').height('45%')
       .backgroundColor(Color.Grey)
 
       Column() {
@@ -87,10 +86,9 @@ struct RelativeChain9 {
             .id("RelativeChainRow92_3")
         }
         .id('RelativeChain92')
-        .width(400).height('auto')
-        .margin({left: 50, top: 50})
-        .backgroundColor(Color.Grey)
-      }.height(500)
+        .width('90%').height('auto')
+        .backgroundColor(Color.Pink)
+      }.height('45%')
     }
     .height('100%')
   }

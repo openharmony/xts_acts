@@ -28,3 +28,5 @@ export const oHAVMuxerStopAbnormal: () => number;
 export const oHAVMuxerWriteSampleAbnormal: () => number;
 export const oHAVMuxerAddTrackAbnormal: () => number;
 export const oHAVMuxerDestroyAbnormal: () => number;
+export const oHAVMuxerSetFormat: () => number;
+export const oHAVMuxerSetFormatAbnormal: () => number;

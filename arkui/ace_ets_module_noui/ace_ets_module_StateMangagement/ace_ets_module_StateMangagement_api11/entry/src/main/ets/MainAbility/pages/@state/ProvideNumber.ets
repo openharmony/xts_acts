@@ -31,7 +31,7 @@ struct Child_AR {
   @Consume count: number | Object | String | Date | Boolean;
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
     }
   }
 }
@@ -46,43 +46,48 @@ struct Ancestors_AR {
   build() {
     Column() {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.count)) + " number is " + JSON.stringify(this.count))
-        .fontSize(20).margin(10).key('ProvideNumber')
-      Text("变量赋值number类型")
+        .fontSize(9).key('ProvideNumber').height('5%')
+      Text("变量赋值number类型").height('5%')
       Button('change')
         .onClick(() => {
           this.count = 10;
         })
         .key('state1')
+        .height('5%')
 
-      Text("切换变量赋值Object")
+      Text("切换变量赋值Object").height('5%')
       Button('change')
         .onClick(() => {
           this.count = new Num2(20);
         })
         .key('state2')
+        .height('5%')
 
-      Text("切换变量赋值string")
+      Text("切换变量赋值string").height('5%')
       Button('change')
         .onClick(() => {
           this.count = { number: '30' } as Num2info;
         })
         .key('state3')
+        .height('5%')
 
-      Text("切换变量赋值Date")
+      Text("切换变量赋值Date").height('5%')
       Button('change')
         .onClick(() => {
           this.count = new Date('2021-08-08');
         })
         .key('state4')
+        .height('5%')
 
-      Text("切换变量赋值boolean")
+      Text("切换变量赋值boolean").height('5%')
       Button('change')
         .onClick(() => {
           this.count = true;
         })
         .key('state5')
+        .height('5%')
 
       Child_AR()
-    }.width('100%').margin({top:5})
+    }.width('100%')
   }
 }

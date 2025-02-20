@@ -39,21 +39,16 @@ struct dialogApi {
   })
 
   build() {
-    Row() {
-      Stack() {
-        Column(){
-          Button("dialogApi")
-            .width(96)
-            .height(40)
-            .key('dialogApiBt')
-            .onClick(() => {
-              this.dialogControllerImage.open()
-            })
-        }.margin({bottom: 300})
-      }.align(Alignment.Bottom)
-      .width('100%').height('100%')
+    Column() {
+      Button("dialogApi")
+        .width(96)
+        .height(40)
+        .key('dialogApiBt')
+        .onClick(() => {
+          this.dialogControllerImage.open()
+        })
     }
-    .backgroundImageSize({ width: '100%', height: '100%' })
-    .height('100%')
+    .justifyContent(FlexAlign.Center)
+    .width('100%').height('100%')
   }
 }

@@ -260,7 +260,8 @@ export default function CameraInputTest() {
       let functionTag = "SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100";
 
       if (!getIsCameraPositionWithTypeSupported(camera.CameraPosition.CAMERA_POSITION_FRONT, camera.CameraType.CAMERA_TYPE_WIDE_ANGLE)) {
-        expect(true).assertTrue();
+        let ret = cameraObj.createCameraInputWithPositionAndType(camera.CameraPosition.CAMERA_POSITION_FRONT, camera.CameraType.CAMERA_TYPE_WIDE_ANGLE);
+        expect(ret).assertTrue(camera.CameraErrorCode.SERVICE_FATAL_ERROR);
         return;
       }
       let ret = cameraObj.createCameraInputWithPositionAndType(camera.CameraPosition.CAMERA_POSITION_FRONT, camera.CameraType.CAMERA_TYPE_WIDE_ANGLE);

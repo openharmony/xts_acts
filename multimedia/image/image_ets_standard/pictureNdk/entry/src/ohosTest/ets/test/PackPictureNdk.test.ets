@@ -18,6 +18,7 @@ import ndkTest from 'libPictureNdk.so';
 import image from "@ohos.multimedia.image";
 import fs from '@ohos.file.fs';
 import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 import display from '@ohos.display';
 import hdrCapability from '@ohos.graphics.hdrCapability';
@@ -176,9 +177,19 @@ export default function packPictureNdkTest() {
   describe('packPictureNdkTest', () => {
     let isSupportHdr: boolean = false;
     let isSupportHeicEncode: boolean = false;
-    beforeAll(() => {
-      isSupportHdr = !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
-        display.getDefaultDisplaySync().hdrFormats.length != 0;
+    beforeAll(async () => {
+      isSupportHdr = await fs.access('/system/lib64/ndk/libvideo_processing_capi_impl.so').then((res: boolean) => {
+        if (res) {
+          console.info("file exists");
+          return true;
+        } else {
+          console.info("file not exists");
+          return false;
+        }
+      }).catch((err: BusinessError) => {
+        console.error("access failed with error message: " + err.message + ", error code: " + err.code);
+        return false;
+      });
       isSupportHeicEncode = image.createImagePacker().supportedFormats.includes("image/heic");
       let propertyKeys: Array<string> = Object.values(image.PropertyKey).filter(item =>
         item != "JPEGInterchangeFormat" && item != "JPEGInterchangeFormatLength");
@@ -1764,7 +1775,7 @@ export default function packPictureNdkTest() {
         await testNativePackPictureFunc(mlg, done, testAllAuxiliaryPicturesExcludeFragmentJpg, "PictureFromPixelMap",
           packOpt, "PackToDataFromPicture", [LINEAR_MAP]);
       }
-    })    
+    })
 
     /*
      * @tc.number    : SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0200
@@ -1790,7 +1801,7 @@ export default function packPictureNdkTest() {
         await testNativePackPictureFunc(mlg, done, testAllAuxiliaryPicturesExcludeFragmentJpg, "PictureFromPixelMap",
           packOpt, "PackToDataFromPicture", [LINEAR_MAP]);
       }
-    })    
+    })
 
     /*
      * @tc.number    : SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0300
@@ -1816,7 +1827,7 @@ export default function packPictureNdkTest() {
         await testNativePackPictureFunc(mlg, done, testAllAuxiliaryPicturesExcludeFragmentJpg, "PictureFromPixelMap",
           packOpt, "PackToFileFromPicture", [LINEAR_MAP]);
       }
-    })    
+    })
 
     /*
      * @tc.number    : SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0400
@@ -1842,7 +1853,7 @@ export default function packPictureNdkTest() {
         await testNativePackPictureFunc(mlg, done, testAllAuxiliaryPicturesExcludeFragmentJpg, "PictureFromPixelMap",
           packOpt, "PackToFileFromPicture", [LINEAR_MAP]);
       }
-    })    
+    })
 
     /*
      * @tc.number    : SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0500
@@ -1868,7 +1879,7 @@ export default function packPictureNdkTest() {
         await testNativePackPictureFunc(mlg, done, testAllAuxiliaryPicturesExcludeFragmentJpg, "PictureFromImageSource",
           packOpt, "PackToDataFromPicture", [LINEAR_MAP]);
       }
-    })    
+    })
 
     /*
      * @tc.number    : SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0600
@@ -1894,7 +1905,7 @@ export default function packPictureNdkTest() {
         await testNativePackPictureFunc(mlg, done, testAllAuxiliaryPicturesExcludeFragmentJpg, "PictureFromImageSource",
           packOpt, "PackToDataFromPicture", [LINEAR_MAP]);
       }
-    })    
+    })
 
     /*
      * @tc.number    : SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0700
@@ -1920,7 +1931,7 @@ export default function packPictureNdkTest() {
         await testNativePackPictureFunc(mlg, done, testAllAuxiliaryPicturesExcludeFragmentJpg, "PictureFromImageSource",
           packOpt, "PackToFileFromPicture", [LINEAR_MAP]);
       }
-    })    
+    })
 
     /*
      * @tc.number    : SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0800
@@ -1946,7 +1957,7 @@ export default function packPictureNdkTest() {
         await testNativePackPictureFunc(mlg, done, testAllAuxiliaryPicturesExcludeFragmentJpg, "PictureFromImageSource",
           packOpt, "PackToFileFromPicture", [LINEAR_MAP]);
       }
-    })    
+    })
 
     /*
      * @tc.number    : SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_JPEG_0900
@@ -3784,7 +3795,7 @@ export default function packPictureNdkTest() {
         await testNativePackPictureFunc(mlg, done, testFileWithFiveAuxiliaryPictureHeic, "PictureFromPixelMap",
           packOpt, "PackToDataFromPicture", [LINEAR_MAP]);
       }
-    })    
+    })
 
     /*
      * @tc.number    : SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0200
@@ -3814,7 +3825,7 @@ export default function packPictureNdkTest() {
         await testNativePackPictureFunc(mlg, done, testFileWithFiveAuxiliaryPictureHeic, "PictureFromPixelMap",
           packOpt, "PackToDataFromPicture", [LINEAR_MAP]);
       }
-    })    
+    })
 
     /*
      * @tc.number    : SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0300

@@ -26,7 +26,7 @@ struct ListItemGroup_aspectRatio_height2 {
       .fontSize(20)
       .backgroundColor(0xAABBCC)
       .width(300)
-      .height(50)
+      .height(20)
       .padding(10)
   }
 
@@ -36,7 +36,7 @@ struct ListItemGroup_aspectRatio_height2 {
       .fontSize(16)
       .backgroundColor(0xAABBCC)
       .width(300)
-      .height(50)
+      .height(20)
       .padding(5)
   }
 
@@ -68,7 +68,8 @@ struct ListItemGroup_aspectRatio_height2 {
               .borderRadius(10)
               .textAlign(TextAlign.Center)
               .backgroundColor(0xAFEEEE)
-          }.width('100%').height(100)
+          }.width('100%').height('30%')
+          .key('ListItemGroup_aspectRatio_height2_001')
 
           ListItem() {
             Text('2')
@@ -78,7 +79,7 @@ struct ListItemGroup_aspectRatio_height2 {
               .borderRadius(10)
               .textAlign(TextAlign.Center)
               .backgroundColor(0xAFEEEE)
-          }.width('100%').height(100)
+          }.width('100%').height('30%')
 
           ListItem() {
             Text('3')
@@ -88,15 +89,15 @@ struct ListItemGroup_aspectRatio_height2 {
               .borderRadius(10)
               .textAlign(TextAlign.Center)
               .backgroundColor(0xAFEEEE)
-          }.width('100%').height(100)
+          }.width('100%').height('30%')
         }
-        .height(420)
+        .height('60%')
         .aspectRatio(this.aspectRatio1)
         .borderRadius(20)
         .key('ListItemGroup_aspectRatio_height2_01')
 
       }
-      .width(300)
+      .width('30%')
       .height('100%')
       .aspectRatio(0.5)
       .listDirection(Axis.Vertical)

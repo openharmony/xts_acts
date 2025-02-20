@@ -706,8 +706,7 @@ export default function BitVectorTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testBitVectorHas0005).then((value) => {
             num++;
-            expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -735,8 +734,7 @@ export default function BitVectorTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testBitVectorHas0006).then((value) => {
             num++;
-            expect(value)
-              .assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -764,8 +762,7 @@ export default function BitVectorTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testBitVectorHas0007).then((value) => {
             num++;
-            expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -793,8 +790,7 @@ export default function BitVectorTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testBitVectorHas0008).then((value) => {
             num++;
-            expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -934,8 +930,7 @@ export default function BitVectorTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testBitVectorSetBitsByRange0005).then((value) => {
             num++;
-            expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -963,8 +958,7 @@ export default function BitVectorTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testBitVectorSetBitsByRange0006).then((value) => {
             num++;
-            expect(value)
-              .assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -992,8 +986,7 @@ export default function BitVectorTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testBitVectorSetBitsByRange0007).then((value) => {
             num++;
-            expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -1021,8 +1014,7 @@ export default function BitVectorTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testBitVectorSetBitsByRange0008).then((value) => {
             num++;
-            expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -1274,8 +1266,7 @@ export default function BitVectorTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testBitVectorGetBitsByRange0003).then((value) => {
             num++;
-            expect(value)
-              .assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -1303,8 +1294,7 @@ export default function BitVectorTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testBitVectorGetBitsByRange0004).then((value) => {
             num++;
-            expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -1332,8 +1322,7 @@ export default function BitVectorTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testBitVectorGetBitsByRange0005).then((value) => {
             num++;
-            expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -1361,8 +1350,7 @@ export default function BitVectorTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testBitVectorGetBitsByRange0006).then((value) => {
             num++;
-            expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -1390,8 +1378,7 @@ export default function BitVectorTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testBitVectorResize0001).then((value) => {
             num++;
-            expect(value)
-              .assertEqual("The value of \"length\" is out of range. It must be >= 0. Received value is: -1");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -1531,8 +1518,7 @@ export default function BitVectorTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testBitVectorGetBitCountByRange0003).then((value) => {
             num++;
-            expect(value)
-              .assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {
@@ -1561,7 +1547,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorGetBitCountByRange0004).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
+              .assertEqual("error");
           });
         }
         while (num < 10) {
@@ -1590,7 +1576,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorGetBitCountByRange0005).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
+              .assertEqual("error");
           });
         }
         while (num < 10) {
@@ -1619,7 +1605,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorGetBitCountByRange0006).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
+              .assertEqual("error");
           });
         }
         while (num < 10) {
@@ -1760,7 +1746,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorGetIndexOf0005).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
+              .assertEqual("error");
           });
         }
         while (num < 10) {
@@ -1789,7 +1775,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorGetIndexOf0006).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
+              .assertEqual("error");
           });
         }
         while (num < 10) {
@@ -1818,7 +1804,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorGetIndexOf0007).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
+              .assertEqual("error");
           });
         }
         while (num < 10) {
@@ -1847,7 +1833,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorGetIndexOf0008).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
+              .assertEqual("error");
           });
         }
         while (num < 10) {
@@ -1988,7 +1974,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorGetLastIndexOf0005).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
+              .assertEqual("error");
           });
         }
         while (num < 10) {
@@ -2017,7 +2003,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorGetLastIndexOf0006).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
+              .assertEqual("error");
           });
         }
         while (num < 10) {
@@ -2046,7 +2032,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorGetLastIndexOf0007).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
+              .assertEqual("error");
           });
         }
         while (num < 10) {
@@ -2075,7 +2061,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorGetLastIndexOf0008).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
+              .assertEqual("error");
           });
         }
         while (num < 10) {
@@ -2132,7 +2118,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorFlipBitByIndex0002).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"index\" is out of range. It must be >= 0 && <= 2. Received value is: 5");
+              .assertEqual("error");
           });
         }
         while (num < 10) {
@@ -2161,7 +2147,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorFlipBitByIndex0003).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"index\" is out of range. It must be >= 0 && <= 2. Received value is: -1");
+              .assertEqual("error");
           });
         }
         while (num < 10) {
@@ -2246,7 +2232,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorFlipBitsByRange0003).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"toIndex\" is out of range. It must be >= 0 && <= 10. Received value is: 11");
+              .assertEqual("error");
           });
         }
         while (num < 10) {
@@ -2275,7 +2261,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorFlipBitsByRange0004).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 9. Received value is: -1");
+              .assertEqual("error");
           });
         }
         while (num < 10) {
@@ -2304,7 +2290,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorFlipBitsByRange0005).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 3. Received value is: 5");
+              .assertEqual("error");
           });
         }
         while (num < 10) {
@@ -2333,7 +2319,7 @@ export default function BitVectorTaskPoolTest() {
           taskpool.execute(testBitVectorFlipBitsByRange0006).then((value) => {
             num++;
             expect(value)
-              .assertEqual("The value of \"fromIndex\" is out of range. It must be >= 0 && <= 4. Received value is: 5");
+              .assertEqual("error");
           });
         }
         while (num < 10) {

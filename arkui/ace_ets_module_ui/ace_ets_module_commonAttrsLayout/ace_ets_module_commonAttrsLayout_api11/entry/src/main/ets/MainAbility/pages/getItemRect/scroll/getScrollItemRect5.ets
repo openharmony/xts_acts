@@ -48,6 +48,21 @@ struct getScrollItemRect5 {
 
   build() {
     Column() {
+      Button('点击获取信息').onClick((event: ClickEvent) => {
+        this.x = this.scroller.getItemRect(this.index).x
+        this.y = this.scroller.getItemRect(this.index).y
+        this.width1 = this.scroller.getItemRect(this.index).width
+        this.height1 = this.scroller.getItemRect(this.index).height
+      }).id('getScrollItemRect5_button')
+      Text('' + this.x).key('getScrollItemRect5_text1')
+      Text('' + this.y).key('getScrollItemRect5_text2')
+      Text('' + this.width1).key('getScrollItemRect5_text3')
+      Text('' + this.height1).key('getScrollItemRect5_text4')
+
+      Button('点击滚动到底部').onClick((event: ClickEvent) => {
+        this.scroller.scrollEdge(Edge.End)
+      }).id('getScrollItemRect5_button2')
+
       Scroll(this.scroller) {
         Column() {
           ForEach(this.arr, (item: number) => {
@@ -69,20 +84,6 @@ struct getScrollItemRect5 {
       .height(500)
       .padding(this.padding1)
 
-      Button('点击获取信息').onClick((event: ClickEvent) => {
-        this.x = this.scroller.getItemRect(this.index).x
-        this.y = this.scroller.getItemRect(this.index).y
-        this.width1 = this.scroller.getItemRect(this.index).width
-        this.height1 = this.scroller.getItemRect(this.index).height
-      }).id('getScrollItemRect5_button')
-      Text('' + this.x).key('getScrollItemRect5_text1')
-      Text('' + this.y).key('getScrollItemRect5_text2')
-      Text('' + this.width1).key('getScrollItemRect5_text3')
-      Text('' + this.height1).key('getScrollItemRect5_text4')
-
-      Button('点击滚动到底部').onClick((event: ClickEvent) => {
-        this.scroller.scrollEdge(Edge.End)
-      }).id('getScrollItemRect5_button2')
     }
   }
 }

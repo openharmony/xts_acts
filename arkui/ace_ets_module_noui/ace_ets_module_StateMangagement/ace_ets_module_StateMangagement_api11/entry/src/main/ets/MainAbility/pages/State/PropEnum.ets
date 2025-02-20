@@ -21,21 +21,23 @@ struct PropEnum {
   @State enumA: KFC = KFC.A11
 
   build() {
-    Column({space:5}) {
+    Column() {
       Button("Reset").id("PropEnum_reset")
+        .height('5%')
         .onClick(() => {
           this.enumA = KFC.A11
         })
-      Text('@Prop 支持数据类型：enum').fontSize(18)
-      Text('Father State: ' + this.enumA).margin(10).width("100%")
+      Text('@Prop 支持数据类型：enum').fontSize(9).height('5%')
+      Text('Father State: ' + this.enumA).width("100%")
+        .height('5%')
         .key("PropEnum").backgroundColor(this.enumA)
         .onClick(() => {
           this.enumA = KFC.B11
         })
-      Text('父组件: ' + this.enumA).fontSize(30)
+      Text('父组件: ' + this.enumA).fontSize(9).height('5%')
       ChildPropEnum({ enumB: this.enumA })
     }.width('100%')
-    .margin({ top: 50 })
+    
   }
 }
 
@@ -44,15 +46,15 @@ struct ChildPropEnum {
   @Prop enumB: KFC = KFC.A11;
 
   build() {
-    Column({space:5}) {
-      Text('@Prop 单向的 内部修改不会改变父组件').fontSize(18)
+    Column() {
+      Text('@Prop 单向的 内部修改不会改变父组件').fontSize(9).height('5%')
 
-      Text('Child Prop: ' + this.enumB).margin(10).width("100%")
+      Text('Child Prop: ' + this.enumB).width("100%").height('5%')
         .key("ChildPropEnum").backgroundColor(this.enumB)
         .onClick(() => {
           this.enumB = KFC.C11
         })
     }.width('100%')
-    .margin({ top: 50 })
+    
   }
 }

@@ -55,10 +55,12 @@ export default function RichEditorOnWillChange014() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0007
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0007
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0007 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0007
+     * @tc.name  : Test the RichEditor onWillChange callback
+     * @tc.desc  : Revoke deleted text content and then restore to test RichEditor on WillChange callback
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0007', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0007 START');

@@ -71,6 +71,7 @@ struct outliersAlphabetIndexer {
 
         AlphabetIndexer({ arrayValue: this.value, selected: -1 })
           .key('alphabetIndexer_outliers')
+          .autoCollapse(false) // 关闭自适应折叠模式
           .selectedColor('#FFF0FF0') // 选中项文本颜色
           .selectedBackgroundColor('#FF0F000') // 选中项背景颜色
           .usingPopup(true) // 是否显示弹出框

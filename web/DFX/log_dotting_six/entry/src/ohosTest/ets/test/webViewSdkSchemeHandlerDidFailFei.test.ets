@@ -80,7 +80,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative0', 0, async (done: Function) => {
         emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative0"
-        Utils.emitEvent(emitKey, 10);
+        await Utils.emitEvent(emitKey, 10);
         Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative0", 'success', 11000, done);
         sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -95,7 +95,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative1', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative1"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative1", 'success', 11001, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -110,7 +110,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative2', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative2"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative2", 'success', 11002, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -125,7 +125,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative3', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative3"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative3", 'success', 11003, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -140,7 +140,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative4', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative4"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative4", 'success', 11004, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -155,7 +155,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative5', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative5"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative5", 'success', 11005, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -170,7 +170,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative6', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative6"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative6", 'success', 11006, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -185,7 +185,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative7', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative7"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative7", 'success', 11007, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -200,7 +200,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative8', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative8"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative8", 'success', 11008, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -215,7 +215,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative9', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative9"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative9", 'success', 11009, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -230,7 +230,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative10', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative10"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative10", 'success', 11010, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -245,7 +245,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative11', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative11"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative11", 'success', 11011, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -260,7 +260,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative12', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative12"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative12", 'success', 11012, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -275,7 +275,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative13', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative13"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative13", 'success', 11013, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -290,7 +290,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative14', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative14"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative14", 'success', 11014, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -305,7 +305,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative15', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative15"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative15", 'success', 11015, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -320,7 +320,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative16', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative16"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative16", 'success', 11016, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -335,7 +335,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative17', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative17"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative17", 'success', 11017, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -350,7 +350,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative18', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative18"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative18", 'success', 11018, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -365,7 +365,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative19', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative19"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative19", 'success', 11019, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -380,7 +380,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative20', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative20"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative20", 'success', 11020, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -395,7 +395,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative21', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative21"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative21", 'success', 11021, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -410,7 +410,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative22', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative22"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative22", 'success', 11022, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -425,7 +425,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative23', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative23"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative23", 'success', 11023, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -440,7 +440,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative25', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative25"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative25", 'success', 11025, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -455,7 +455,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative26', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative26"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative26", 'success', 11026, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -470,7 +470,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative27', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative27"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative27", 'success', 11027, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -485,7 +485,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative29', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative29"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative29", 'success', 11029, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -500,7 +500,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative30', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative30"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative30", 'success', 11030, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -515,7 +515,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative31', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative31"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative31", 'success', 11031, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -530,7 +530,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative32', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative32"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative32", 'success', 11032, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -545,7 +545,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative100', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative100"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative100", 'success', 11100, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -560,7 +560,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative101', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative101"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative101", 'success', 11101, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -575,7 +575,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative102', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative102"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative102", 'success', 11102, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -590,7 +590,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative103', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative103"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative103", 'success', 11103, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -605,7 +605,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative104', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative104"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative104", 'success', 11104, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -620,7 +620,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative105', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative105"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative105", 'success', 11105, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -635,7 +635,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative106', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative106"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative106", 'success', 11106, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -649,7 +649,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative107', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative107"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative107", 'success', 11107, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -663,7 +663,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative108', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative108"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative108", 'success', 11108, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -678,7 +678,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative109', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative109"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative109", 'success', 11109, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -692,7 +692,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative110', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative110"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative110", 'success', 11110, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -707,7 +707,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative111', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative111"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative111", 'success', 11111, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -722,7 +722,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative112', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative112"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative112", 'success', 11112, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -737,7 +737,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative113', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative113"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative113", 'success', 11113, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -752,7 +752,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative114', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative114"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative114", 'success', 11114, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -767,7 +767,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative115', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative115"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative115", 'success', 11115, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -782,7 +782,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative117', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative117"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative117", 'success', 11117, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
@@ -797,7 +797,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative118', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative118"
-      Utils.emitEvent(emitKey, 10);
+      await Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative118", 'success', 11118, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })

@@ -40,6 +40,15 @@ struct TabsStateExample {
 
   build() {
     Column() {
+      Text(this.text)
+        .id('tabs_state')
+
+      Button('getText')
+        .id('observer_getState')
+        .fontSize(14)
+        .onClick(()=>{
+          this.text = AppStorage.get('Observer_HIDE') as string + AppStorage.get('Observer_SHOW') as string + ''
+        })
       Tabs() {
         TabContent() {
           Column().width('100%').height('100%').backgroundColor('#00CB87')
@@ -54,8 +63,8 @@ struct TabsStateExample {
         }.tabBar('yellow').id('tabContentId3')
 
       }
-      .width(360)
-      .height(296)
+      .width('90%')
+      .height('60%')
       .backgroundColor('#F1F3F5')
       .id('tabsId')
       .onContentWillChange((currentIndex, comingIndex) => {
@@ -65,15 +74,6 @@ struct TabsStateExample {
         return true
       })
 
-      Text(this.text)
-        .id('tabs_state')
-
-      Button('getText')
-        .id('observer_getState')
-        .fontSize(14)
-        .onClick(()=>{
-          this.text = AppStorage.get('Observer_HIDE') as string + AppStorage.get('Observer_SHOW') as string + ''
-        })
     }.width('100%')
   }
 }

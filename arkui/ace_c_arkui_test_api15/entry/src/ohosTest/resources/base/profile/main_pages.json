@@ -1,0 +1,16 @@
+{
+  "src": [
+    "MainAbility/pages/XTSIndex",
+    "MainAbility/pages/keydispatchtest/KeydispatchTest",
+    "MainAbility/pages/node/TestNodeHandleById",
+    "MainAbility/pages/window/TestGetWindowInfo",
+    "MainAbility/pages/window/TestHostWindowInfoGetName",
+    "MainAbility/pages/window/TestHostWindowInfoDestroy",
+    "MainAbility/pages/progress/TestProgressLinearStyle",
+     "MainAbility/pages/focuscontrol/focuscontrol",
+    "MainAbility/pages/focuscontrol/focuscontrol2",
+    "MainAbility/pages/focuscontrol/focuscontrol3x",
+    "MainAbility/pages/focuscontrol/focuscontrol4"
+
+  ]
+}

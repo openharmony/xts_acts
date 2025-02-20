@@ -23,6 +23,18 @@ struct scrollXOffsetExample {
   build() {
     Column() {
       Text(this.message1).id('scroll_mess')
+      Button('scroll x:10').id('scroll_x')
+        .onClick(() => { // 点击后滑动到指定位置，即下滑100.0vp的距离，滑动过程配置有动画
+          const xOffset: number = this.scroller.currentOffset().xOffset;
+          this.scroller.scrollTo({
+            xOffset: xOffset + 10,
+            yOffset: 0,
+            animation: {
+              duration: 1000,
+              canOverScroll: true
+            }
+          })
+        })
       Scroll(this.scroller) {
         Row() {
           ForEach(this.arr, (item: number) => {
@@ -46,21 +58,6 @@ struct scrollXOffsetExample {
       .onDidScroll(() => {
         this.message1 = 'x:' + Math.round(this.scroller.currentOffset().xOffset)
       })
-
-      Button('scroll x:10').id('scroll_x')
-        .height('5%')
-        .onClick(() => { // 点击后滑动到指定位置，即下滑100.0vp的距离，滑动过程配置有动画
-          const xOffset: number = this.scroller.currentOffset().xOffset;
-          this.scroller.scrollTo({
-            xOffset: xOffset + 10,
-            yOffset: 0,
-            animation: {
-              duration: 1000,
-              canOverScroll: true
-            }
-          })
-        })
-        .margin({ top: 110, left: 20 })
     }
     .width('100%')
     .height('100%')

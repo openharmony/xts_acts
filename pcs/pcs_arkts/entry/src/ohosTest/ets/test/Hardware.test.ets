@@ -57,7 +57,7 @@ export default function hardwareTest() {
 
       isWlanSupported = canIUse("SystemCapability.Communication.WiFi.Core")
       isBluetoothSupported = canIUse("SystemCapability.Communication.Bluetooth.Core")
-      isCameraSupported = canIUse("SystemCapability.Communication.Bluetooth.Core")
+      isCameraSupported = canIUse("SystemCapability.Multimedia.Camera.Core")
       isMicrophoneSupported = canIUse("SystemCapability.Multimedia.Audio.Capturer")
       isAoutSupported = canIUse("SystemCapability.Multimedia.Audio.Renderer")
       isUsbSupported = canIUse("SystemCapability.USB.USBManager")

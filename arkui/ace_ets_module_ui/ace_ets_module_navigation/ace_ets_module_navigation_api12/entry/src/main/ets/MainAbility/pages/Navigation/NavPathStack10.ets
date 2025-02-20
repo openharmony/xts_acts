@@ -85,46 +85,47 @@ struct NavPathStack10{
       Column(){
         Button('pushPath pageOne').onClick((event: ClickEvent) => {
           this.derivedStack.pushPath({name:'pageOne',param:new param('ok')})
-        }).id('NavPathStack10_btn1')
+        }).id('NavPathStack10_btn1').height('5%')
 
         Button('pushPathByName pageTwo').onClick((event: ClickEvent) => {
           this.derivedStack.pushPathByName1('pageTwo',new param('ok'))
-        }).id('NavPathStack10_btn2')
+        }).id('NavPathStack10_btn2').height('5%')
 
         Text(this.text1).id('NavPathStack10_text1')
         Button('getAllPathName').onClick((event: ClickEvent) => {
           this.text1 = '' + JSON.stringify(this.derivedStack.getAllPathName())
-        }).id('NavPathStack10_btn3')
+        }).id('NavPathStack10_btn3').height('5%')
 
         Button('clear').onClick((event: ClickEvent) => {
           this.derivedStack.clear()
-        }).id('NavPathStack10_btn4')
+        }).id('NavPathStack10_btn4').height('5%')
 
-        Text(this.text2).id('NavPathStack10_text2')
+        Text(this.text2).id('NavPathStack10_text2').height('5%')
         Button('size').onClick((event: ClickEvent) => {
           this.text2 = '' + this.derivedStack.size()
-        }).id('NavPathStack10_btn5')
+        }).id('NavPathStack10_btn5').height('5%')
 
-        Text(this.text3).id('NavPathStack10_text3')
+        Text(this.text3).id('NavPathStack10_text3').height('5%')
         Button('getParamByName pageOne').onClick((event: ClickEvent) => {
           this.text3 = JSON.stringify(this.derivedStack.getParamByName('pageOne'))
-        }).id('NavPathStack10_btn6')
+        }).id('NavPathStack10_btn6').height('5%')
 
-        Text(this.text4).id('NavPathStack10_text4')
+        Text(this.text4).id('NavPathStack10_text4').height('5%')
         Button('getParamByIndex 0').onClick((event: ClickEvent) => {
           this.text4 = JSON.stringify(this.derivedStack.getParamByIndex(0))
-        }).id('NavPathStack10_btn7')
+        }).id('NavPathStack10_btn7').height('5%')
 
         Text(this.text5).id('NavPathStack10_text5')
         Button('getIndexByName pageOne').onClick((event: ClickEvent) => {
           this.text5 = JSON.stringify(this.derivedStack.getIndexByName('pageOne'))
-        }).id('NavPathStack10_btn8')
+        }).id('NavPathStack10_btn8').height('5%')
 
       }
     }
     .title('navigation')
     .navDestination(this.pageMap)
     .mode(NavigationMode.Split)
+    .navBarWidth('30%')
   }
 }
 

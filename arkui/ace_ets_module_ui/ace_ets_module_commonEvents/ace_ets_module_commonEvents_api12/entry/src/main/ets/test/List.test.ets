@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import APIPreDragStatusTest from './DragController/APIPreDragStatusTest.test';
 import addGestureApplyGesture from './addGestureApplyGesture.test';
 import ShortcutKeyTABTest from './keyboardShortcutTest/ShortcutKeyTABTest.test';
@@ -21,7 +22,7 @@ import ShortcutKeyDPADLEFTTest from './keyboardShortcutTest/ShortcutKeyDPADLEFTT
 import ShortcutKeyDPADRIGHTTest from './keyboardShortcutTest/ShortcutKeyDPADRIGHTTest.test';
 import TapGestureHandlerTest from './GestureHandler/TapGesture.test';
 import PanGestureHandlerTest from './GestureHandler/PanGesture.test';
-import SwiperGestureHandlerTest from './GestureHandler/SwiperGesture.test';
+
 import PinchGestureHandlerTest from './GestureHandler/PinchGesture.test';
 import RotationGestureHandlerTest from './GestureHandler/RotationGesture.test';
 import LongPressGestureHandlerTest from './GestureHandler/LongPressGesture.test';
@@ -40,10 +41,9 @@ import TapGestureBasicDoubleClickMouseTest from './TapGesture/TapGestureBasicDou
 import LongPressGestureLongClickMouseTest from './LongPressGesture/LongPressGestureLongClickMouseTest.test';
 import PanGestureExample01Test from './PanGesture/PanGestureExample01Test.test';
 import PanGestureExample02Test from './PanGesture/PanGestureExample02Test.test';
-import SwipeGestureExample01Test from './SwipeGesture/SwipeGestureExample01Test.test';
-import SwipeGestureExample02Test from './SwipeGesture/SwipeGestureExample02Test.test';
+
 import PanGestureExample03Test from './PanGesture/PanGestureExample03Test.test';
-import SwipeGestureExample03Test from './SwipeGesture/SwipeGestureExample03Test.test';
+
 import RotationGestureBasic01Test from './RotationGesture/RotationGestureBasic01Test.test';
 import RotationGestureBasic02Test from './RotationGesture/RotationGestureBasic02Test.test';
 import PinchGestureBasic01Test from './PinchGesture/PinchGestureBasic01Test.test';
@@ -59,25 +59,21 @@ import onAttachTest from './onAttachTest/onAttach.test';
 import GestureRecognizerState from './GestureRecognizer/GestureRecognizerState.test';
 import APIshouldBuiltInRecognizerParallelWith from './APIshouldBuiltInRecognizerParallelWith.test';
 import typeNodeGestureTest from './PanGesture/Gesture.test';
-import UIContextDragControllerTest from './DragController/UIContextDragController.test';
-import tapGestureAddInterfaceTest from './tapGestureAddInterface/tapGestureAddInterfaceTest.test';
-
 
 import btnMonoLongPress from './customGestureTest/btnMonoLongPress.test'
 import btnMonoTouch from './customGestureTest/btnMonoTouch.test'
-import columnMonopolize from './customGestureTest/columnMonopolize.test'
-import columnMonopolizeFalse from './customGestureTest/columnMonopolizeFalse.test'
-import listMonopolize from './customGestureTest/listMonopolize.test'
+
 import gestureDefine1 from './customGestureTest/gestureClick.test'
 import gestureDefine2 from './customGestureTest/buttonDragStart.test'
 import gestureDefine3 from './customGestureTest/dragIsSystem.test'
 import gestureDefine4 from './customGestureTest/clickIsSystem.test'
-import gestureDefine6 from './customGestureTest/gestureParallel.test'
+
 import gestureDefine10 from './GestureRecognizer/GestureRecognizerIsValid.test'
 
+
 export default function testsuite() {
-  APIshouldBuiltInRecognizerParallelWith();
   APIPreDragStatusTest();
+  APIshouldBuiltInRecognizerParallelWith();
   addGestureApplyGesture();
   ShortcutKeyTABTest();
   ShortcutKeyDPADUPTest();
@@ -86,7 +82,6 @@ export default function testsuite() {
   ShortcutKeyDPADRIGHTTest();
   TapGestureHandlerTest();
   PanGestureHandlerTest();
-  SwiperGestureHandlerTest();
   PinchGestureHandlerTest();
   RotationGestureHandlerTest();
   LongPressGestureHandlerTest();
@@ -105,10 +100,7 @@ export default function testsuite() {
   LongPressGestureLongClickMouseTest();
   PanGestureExample01Test();
   PanGestureExample02Test();
-  SwipeGestureExample01Test();
   PanGestureExample03Test();
-  SwipeGestureExample03Test();
-  SwipeGestureExample02Test();
   RotationGestureBasic01Test();
   RotationGestureBasic02Test();
   PinchGestureBasic01Test();
@@ -122,22 +114,15 @@ export default function testsuite() {
   RotationGestureUpdateTest();
   onAttachTest();
   GestureRecognizerState();
-  typeNodeGestureTest();
-  UIContextDragControllerTest();
-  tapGestureAddInterfaceTest();
-
-
+  typeNodeGestureTest(); 
   btnMonoLongPress();
   btnMonoTouch();
-  columnMonopolize();
-  columnMonopolizeFalse();
-  listMonopolize();
   gestureDefine1();
   gestureDefine2();
   gestureDefine3();
   gestureDefine4();
-  gestureDefine6();
   gestureDefine10();
+  
   
 
 }

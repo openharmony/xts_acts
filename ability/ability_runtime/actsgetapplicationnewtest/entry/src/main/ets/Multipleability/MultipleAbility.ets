@@ -30,9 +30,9 @@ export function getContextEntry(): common.UIAbilityContext {
 
 export default class MultipleAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.info('====> testTag  MultipleAbility start');
+    console.info('testTag', 'MultipleAbility start');
     try {
-      hilog.info(0x0000, 'testTag', 'Ability onCreate');
+      hilog.info(0x0000, 'testTag', 'MultipleAbility onCreate');
       let context1 = application.getApplicationContext();
       hilog.info(0x0000, 'testTag', 'context1: %{public}s', JSON.stringify(context1));
       let context2 = getContextEntry().getApplicationContext();

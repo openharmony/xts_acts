@@ -73,7 +73,6 @@ export default function ActsAccountAuthToken() {
                                                 console.info("====>ActsAccountAuthToken_9100 removeAccount err:" + JSON.stringify(err));
                                                 expect(err).assertEqual(null);
                                                 console.info("====>ActsAccountAuthToken_9100 end====");
-                                                done();
                                                 appAccountManager.getAuthToken("account_tokenTest_name",OWNERSELF,"authType",(err,data)=>{
                                                     console.info("====>ActsAccountAuthToken_9100 getAuthToken err:" + JSON.stringify(err));
                                                     console.info("====>ActsAccountAuthToken_9100 getAuthToken data:" + data);

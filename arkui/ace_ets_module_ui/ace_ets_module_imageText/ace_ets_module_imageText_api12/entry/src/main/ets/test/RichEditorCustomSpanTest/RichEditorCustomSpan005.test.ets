@@ -55,10 +55,12 @@ export default function RichEditorCustomSpan005() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0007
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0007
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0007 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0007
+     * @tc.name  : Test the RichEditor CustomSpan
+     * @tc.desc  : Test RichEditor CustomSpan through getString
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0007', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0007 START');
@@ -79,10 +81,12 @@ export default function RichEditorCustomSpan005() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0008
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0008
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0008 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0008
+     * @tc.name  : Test the RichEditor CustomSpan
+     * @tc.desc  : Through length (), obtain CustomSpan length test the RichEditor CustomSpan
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0008', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0008 START');

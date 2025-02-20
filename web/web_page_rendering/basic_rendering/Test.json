@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsBasicRenderingTest.hap"
+            "ActsWebBasicRenderingTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

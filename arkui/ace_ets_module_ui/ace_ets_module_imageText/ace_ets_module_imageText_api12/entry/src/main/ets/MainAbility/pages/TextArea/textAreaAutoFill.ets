@@ -25,29 +25,25 @@ struct textAreaAutoFill {
     Column() {
       Row() {
         Text('street')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
-
         TextArea({ placeholder: '请填写收货人街道地址', text: this.areaTxt })
           .contentType(ContentType.FULL_STREET_ADDRESS)
           .key('textArea3')
           .id('textArea3')
           .width('60%')
-          .borderWidth({ top: 0, bottom: 0, left: 0, right: 0 })
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
+      }.height('5%')
 
       Row() {
         Text('house')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -56,19 +52,17 @@ struct textAreaAutoFill {
           .key('textArea4')
           .id('textArea4')
           .width('60%')
-          .borderWidth({ top: 0, bottom: 0, left: 0, right: 0 })
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
+      }.height('5%')
 
       Row() {
         Text('district')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -77,20 +71,17 @@ struct textAreaAutoFill {
           .key('textArea5')
           .id('textArea5')
           .width('60%')
-          .borderWidth({ top: 0, bottom: 0, left: 0, right: 0 })
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
+      }.height('5%')
 
       Row() {
         Text('city')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -99,20 +90,17 @@ struct textAreaAutoFill {
           .key('textArea6')
           .id('textArea6')
           .width('60%')
-          .borderWidth({ top: 0, bottom: 0, left: 0, right: 0 })
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
+      }.height('5%')
 
       Row() {
         Text('province')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -121,20 +109,17 @@ struct textAreaAutoFill {
           .key('textArea7')
           .id('textArea7')
           .width('60%')
-          .borderWidth({ top: 0, bottom: 0, left: 0, right: 0 })
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
+      }.height('5%')
 
       Row() {
         Text('country')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -143,20 +128,17 @@ struct textAreaAutoFill {
           .key('textArea8')
           .id('textArea8')
           .width('60%')
-          .borderWidth({ top: 0, bottom: 0, left: 0, right: 0 })
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
+      }.height('5%')
 
       Row() {
         Text('full name')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -165,20 +147,17 @@ struct textAreaAutoFill {
           .key('textArea9')
           .id('textArea9')
           .width('60%')
-          .borderWidth({ top: 0, bottom: 0, left: 0, right: 0 })
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
+      }.height('5%')
 
       Row() {
         Text('lastname')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -191,16 +170,14 @@ struct textAreaAutoFill {
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
+      }.height('5%')
 
       Row() {
         Text('firstname')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -213,16 +190,14 @@ struct textAreaAutoFill {
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
+      }.height('5%')
 
       Row() {
         Text('phone')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -235,16 +210,14 @@ struct textAreaAutoFill {
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
+      }.height('5%')
 
       Row() {
         Text('country id')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -257,16 +230,14 @@ struct textAreaAutoFill {
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
+      }.height('5%')
 
       Row() {
         Text('full phone')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -279,16 +250,14 @@ struct textAreaAutoFill {
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
+      }.height('5%')
 
       Row() {
         Text('email')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -301,16 +270,14 @@ struct textAreaAutoFill {
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
+      }.height('5%')
 
       Row() {
         Text('card')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -323,16 +290,14 @@ struct textAreaAutoFill {
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
+      }.height('5%')
 
       Row() {
         Text('id')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -345,16 +310,14 @@ struct textAreaAutoFill {
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
+      }.height('5%')
 
       Row() {
         Text('nick name')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -367,16 +330,14 @@ struct textAreaAutoFill {
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
+      }.height('5%')
 
       Row() {
         Text('detail info')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -389,16 +350,14 @@ struct textAreaAutoFill {
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
+      }.height('5%')
 
       Row() {
         Text('address')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -411,16 +370,14 @@ struct textAreaAutoFill {
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
+      }.height('5%')
 
       Row() {
         Text('undefined')
-          .margin(10)
-          .fontSize(18)
+          .fontSize(10)
           .width('22%')
           .margin({ left: 50 })
 
@@ -433,11 +390,10 @@ struct textAreaAutoFill {
           .fontWeight(FontWeight.Bold)
           .placeholderColor('#fff5eeee')
           .backgroundColor('#ffffffff')
-          .fontSize(16)
+          .fontSize(10)
           .borderStyle(BorderStyle.Solid)
           .enableAutoFill(true)
-      }
-      .margin({ top: '1px' })
-    }
+      }.height('5%')
+    }.height('100%')
   }
 }

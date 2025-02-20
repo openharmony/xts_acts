@@ -96,7 +96,7 @@ export default function SearchThemeTest() {
       const iconOption: IconOptions = (attrsSearch?.searchIcon as IconOptions)
       const iconColor: string = iconOption?.color?.toString().toUpperCase().replace('[', '').replace(',]', '')
         ?? EMPTY_ATTR;
-      const checkIconColor: string = colorValues?.get(`iconSecondary`)?.toString().toUpperCase() ?? EMPTY_CHECK;
+      const checkIconColor: string = colorValues?.get(`fontSecondary`)?.toString().toUpperCase() ?? EMPTY_CHECK;
       expect(iconColor).assertEqual(checkIconColor);
       console.info(`${SUITE} ${CASE} END`);
     });
@@ -127,7 +127,7 @@ export default function SearchThemeTest() {
       const iconOption: IconOptions = (attrsSearch?.searchIcon as IconOptions)
       const iconColor: string = iconOption?.color?.toString().toUpperCase().replace('[', '').replace(',]', '')
         ?? EMPTY_ATTR;
-      const checkIconColor: string = localTheme?.colors?.iconSecondary?.toString().toUpperCase() ?? EMPTY_CHECK;
+      const checkIconColor: string = localTheme?.colors?.fontSecondary?.toString().toUpperCase() ?? EMPTY_CHECK;
       expect(iconColor).assertEqual(checkIconColor);
       changeTheme = true;
       console.info(`${SUITE} ${CASE} END`);
@@ -161,7 +161,7 @@ export default function SearchThemeTest() {
       const iconOption: IconOptions = (attrsSearch?.searchIcon as IconOptions)
       const iconColor: string = iconOption?.color?.toString().toUpperCase().replace('[', '').replace(',]', '')
         ?? EMPTY_ATTR;
-      const checkIconColor: string = localTheme?.colors?.iconSecondary?.toString().toUpperCase() ?? EMPTY_CHECK;
+      const checkIconColor: string = localTheme?.colors?.fontSecondary?.toString().toUpperCase() ?? EMPTY_CHECK;
       expect(iconColor).assertEqual(checkIconColor);
       changeTheme = true;
       console.info(`${SUITE} ${CASE} END`);

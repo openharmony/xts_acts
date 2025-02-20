@@ -53,7 +53,7 @@ struct State0090 {
   @State private valueState: string = 'Hello'
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Text(this.classModel.value)
         .id('tvState0090')
       Button('Change classModel value')

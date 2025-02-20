@@ -11,12 +11,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import("//foundation/arkui/ace_engine/ace_config.gni")
+
 group("ActsAceEtsModuleNavigationTest") {
   testonly = true
-  deps = [
-    "ace_ets_module_navigation_api11:ActsAceEtsModuleNavigationApi11Test",
-    "ace_ets_module_navigation_api12:ActsAceEtsModuleNavigationApi12Test",
-    "ace_ets_module_navigation_api13:ActsAceEtsModuleNavigationApi13Test",
-    "ace_ets_module_navigation_api14:ActsAceEtsModuleNavigationApi14Test",
-  ]
+  if (ace_engine_feature_wearable) {
+    deps = [
+      "ace_ets_module_navigation_api11:ActsAceEtsModuleNavigationApi11Test",
+      "ace_ets_module_navigation_api12:ActsAceEtsModuleNavigationApi12Test",
+      "ace_ets_module_navigation_api13:ActsAceEtsModuleNavigationApi13Test",
+      "ace_ets_module_navigation_api14:ActsAceEtsModuleNavigationApi14Test",
+      "ace_ets_module_navigation_api15:ActsAceEtsModuleNavigationApi15Test",
+      "ace_ets_module_navigation_api16:ActsAceEtsModuleNavigationApi16Test",
+    ]
+  } else {
+    deps = [
+      "ace_ets_module_navigation_api11:ActsAceEtsModuleNavigationApi11Test",
+      "ace_ets_module_navigation_api12:ActsAceEtsModuleNavigationApi12Test",
+      "ace_ets_module_navigation_api13:ActsAceEtsModuleNavigationApi13Test",
+      "ace_ets_module_navigation_api14:ActsAceEtsModuleNavigationApi14Test",
+      "ace_ets_module_navigation_api15:ActsAceEtsModuleNavigationApi15Test",
+      "ace_ets_module_navigation_api16:ActsAceEtsModuleNavigationApi16Test",
+      "ace_ets_module_navigation_nowear_api11:ActsAceEtsModuleNavigationNoWearApi11Test",
+      "ace_ets_module_navigation_nowear_api12:ActsAceEtsModuleNavigationNoWearApi12Test",
+    ]
+  }
 }

@@ -52,8 +52,8 @@ struct SwiperAttribute_2 {
       .displayCount(1)
       .indicator(true)
       .margin(20)
-      .width(300)
-      .height(300)
+      .width('90%')
+      .height('60%')
     }.id('swiperAttributeParentColumn_2')
   }
 }

@@ -55,10 +55,12 @@ export default function RichEditorShortCutKeys001() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_SHORTKCUTKEYS_0250
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_SHORTKCUTKEYS_0250
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_SHORTKCUTKEYS_0250 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_SHORTKCUTKEYS_0250
+     * @tc.name  : Test the RichEditor shortCutKeys
+     * @tc.desc  : Mouse cutting text+shortcut key pasting to test RichEditor shortCutKeys
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_SHORTKCUTKEYS_0250', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_SHORTKCUTKEYS_0250 START');
@@ -73,9 +75,8 @@ export default function RichEditorShortCutKeys001() {
       await select?.click()
       await CommonFunc.sleep(1000);
 
-      let copy = await driver.findComponent(ON.text('剪切'))
-      await copy?.click()
-      await CommonFunc.sleep(1000);
+      driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_X);
+      await CommonFunc.sleep(500);
 
       let rich = await driver.findComponent(ON.id('RichEditorShortCutKeys001'));
       let pointCenter = await rich.getBoundsCenter();

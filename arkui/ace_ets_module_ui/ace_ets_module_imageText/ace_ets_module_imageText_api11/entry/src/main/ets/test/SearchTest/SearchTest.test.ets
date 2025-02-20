@@ -17,6 +17,8 @@ import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
 import router from '@ohos.router';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let emitKey = "emitUserAgent";
 
@@ -3748,7 +3750,9 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchButton_1000]: " + JSON.stringify(obj.$attrs.searchButton));
       console.info("[ArkUI_Stage_Search_SearchButton_1000]: " + JSON.stringify(obj.$attrs.searchButtonOption.fontSize));
-      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual("16.00fp");
+      let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_size_body1').id)
+	    console.info("[TextInputPageJsunit_0200] size: " +px2fp(resourceSize));
+      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual('' + px2fp(resourceSize) + '.00fp');
       console.info("[ArkUI_Stage_Search_SearchButton_1000] end");
       done();
     });
@@ -3786,7 +3790,9 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchButton_1100]: " + JSON.stringify(obj.$attrs.searchButton));
       console.info("[ArkUI_Stage_Search_SearchButton_1100]: " + JSON.stringify(obj.$attrs.searchButtonOption.fontSize));
-      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual("16.00fp");
+      let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_size_body1').id)
+	    console.info("[TextInputPageJsunit_0200] size: " +px2fp(resourceSize));
+      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual('' + px2fp(resourceSize) + '.00fp');
       console.info("[ArkUI_Stage_Search_SearchButton_1100] end");
       done();
     });
@@ -3824,7 +3830,9 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchButton_1200]: " + JSON.stringify(obj.$attrs.searchButton));
       console.info("[ArkUI_Stage_Search_SearchButton_1200]: " + JSON.stringify(obj.$attrs.searchButtonOption.fontSize));
-      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual("16.00fp");
+      let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_size_body1').id)
+	    console.info("[TextInputPageJsunit_0200] size: " +px2fp(resourceSize));
+      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual('' + px2fp(resourceSize) + '.00fp');
       console.info("[ArkUI_Stage_Search_SearchButton_1200] end");
       done();
     });

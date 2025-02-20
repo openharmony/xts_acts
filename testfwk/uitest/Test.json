@@ -12,19 +12,22 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "param set persist.ace.testmode.enabled 1",
                 "param set persist.sys.suspend_manager_enabled 0",
+                "param set persist.usb.setting.gadget_conn_prompt false",
                 "reboot",
+                "param set persist.skip_scb_charging 1",
                 "wait 5",
                 "power-shell wakeup",
                 "uinput -T -m 300 2700 280 200",
                 "wait 5",
                 "uinput -T -m 300 2700 280 200",
                 "uinput -K -d 2054 -u 2054",
-                "power-shell setmode 602"
+                "power-shell setmode 602",
+                "uitest dumpLayout"
             ],
             "teardown-command": [
                 "param set persist.sys.suspend_manager_enabled 1",
+                "param set persist.usb.settings.gadget_conn_prompt true",
                 "reboot"
             ]
         },

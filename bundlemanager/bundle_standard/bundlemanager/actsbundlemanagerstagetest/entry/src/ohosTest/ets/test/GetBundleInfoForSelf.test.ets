@@ -48,6 +48,7 @@ export default function getBundleInfoForSelf() {
         expect(data.targetVersion).assertEqual(16);
         expect(data.installTime).assertLarger(0);
         expect(data.updateTime).assertLarger(0);
+        expect(data.firstInstallTime).assertLarger(0);
         expect(data.appInfo).assertEqual(null);
         expect(data.hapModulesInfo.length).assertEqual(0);
         expect(data.reqPermissionDetails.length).assertEqual(0);
@@ -77,6 +78,7 @@ export default function getBundleInfoForSelf() {
         expect(data.targetVersion).assertEqual(16);
         expect(data.installTime).assertLarger(0);
         expect(data.updateTime).assertLarger(0);
+        expect(data.firstInstallTime).assertLarger(0);
         expect(data.appInfo).assertEqual(null);
         expect(data.hapModulesInfo.length).assertEqual(0);
         expect(data.reqPermissionDetails.length).assertEqual(0);
@@ -1156,6 +1158,7 @@ export default function getBundleInfoForSelf() {
       expect(data.targetVersion).assertEqual(16);
       expect(data.installTime).assertLarger(0);
       expect(data.updateTime).assertLarger(0);
+      expect(data.firstInstallTime).assertLarger(0);
       expect(data.appInfo).assertEqual(null);
       expect(data.hapModulesInfo.length).assertEqual(0);
       expect(data.reqPermissionDetails.length).assertEqual(0);
@@ -1664,6 +1667,7 @@ export default function getBundleInfoForSelf() {
       expect(data.targetVersion).assertEqual(16);
       expect(data.installTime).assertLarger(0);
       expect(data.updateTime).assertLarger(0);
+      expect(data.firstInstallTime).assertLarger(0);
       expect(data.appIndex).assertEqual(0);
       console.info("checkCommonBundleInfo end");
     }

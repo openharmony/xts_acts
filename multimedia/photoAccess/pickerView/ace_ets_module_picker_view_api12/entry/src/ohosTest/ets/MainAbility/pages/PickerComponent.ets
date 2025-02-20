@@ -15,7 +15,9 @@ import {
   PhotoBrowserUIElement,
   ItemsDeletedCallback,
   ExceedMaxSelectedCallback,
-  CurrentAlbumDeletedCallback
+  CurrentAlbumDeletedCallback,
+  videoPlayStateChangedCallback,
+  VideoPlayerState
 } from '@ohos.file.PhotoPickerComponent';
 import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo } from '@ohos.file.AlbumPickerComponent';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
@@ -47,12 +49,15 @@ struct PickerComponent {
   private eventId: number = 0;
   // 控制缩略图是否显示
   @State private isBrowserShow: boolean = false;
+  @State vedioCallBackState: VideoPlayerState = 0;
 
   private selectedItemsDeletedCallback: ItemsDeletedCallback =
     (baseItemInfos: Array<BaseItemInfo>) => this.onSelectedItemsDeleted(baseItemInfos);
   private exceedMaxSeletedCallback: ExceedMaxSelectedCallback =
     (exceedMaxCountType: MaxCountType) => this.onExceedMaxSelected(exceedMaxCountType);
   private currentAlbumDeletedCallback: CurrentAlbumDeletedCallback = () => this.onCurrentAlbumDeleted();
+  private videoPlayStateChangedCallback: videoPlayStateChangedCallback =
+    (state: VideoPlayerState) => this.onVideoPlayStateChanged(state);
 
   sendEvent(message: Object, eventId: number) {
     let eventData: events_emitter.EventData = {
@@ -119,6 +124,11 @@ struct PickerComponent {
   private onCurrentAlbumDeleted(): void {
     console.info('onCurrentAlbumDeleted');
     // 当前相册被删除时的回调
+  }
+
+  private onVideoPlayStateChanged(state: VideoPlayerState): void {
+    console.info('onVideoPlayStateChanged', state)
+    this.vedioCallBackState = state;
   }
 
   private onAlbumClick(albumInfo: AlbumInfo): boolean {
@@ -271,6 +281,7 @@ struct PickerComponent {
         onSelectedItemsDeleted: this.selectedItemsDeletedCallback,
         onExceedMaxSelected: this.exceedMaxSeletedCallback,
         onCurrentAlbumDeleted: this.currentAlbumDeletedCallback,
+        onVideoPlayStateChanged: this.videoPlayStateChangedCallback,
         pickerController: this.pickerController,
       })
         .height('70%')

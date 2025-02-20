@@ -11,17 +11,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("forwardBackwardCache") {
+group("ActsWebForwardBackwardCacheTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "forward_backward_cache_five:ActsForwardBackwardCacheFiveTest",
-      "forward_backward_cache_four:ActsForwardBackwardCacheFourTest",
-      "forward_backward_cache_one:ActsForwardBackwardCacheOneTest",
-      "forward_backward_cache_seven:ActsForwardBackwardCacheSevenTest",
-      "forward_backward_cache_six:ActsForwardBackwardCacheSixTest",
-      "forward_backward_cache_three:ActsForwardBackwardCacheThreeTest",
-      "forward_backward_cache_two:ActsForwardBackwardCacheTwoTest",
+      "forward_backward_cache_five:ActsWebForwardBackwardCacheFiveTest",
+      "forward_backward_cache_four:ActsWebForwardBackwardCacheFourTest",
+      "forward_backward_cache_one:ActsWebForwardBackwardCacheOneTest",
+      "forward_backward_cache_seven:ActsWebForwardBackwardCacheSevenTest",
+      "forward_backward_cache_six:ActsWebForwardBackwardCacheSixTest",
+      "forward_backward_cache_three:ActsWebForwardBackwardCacheThreeTest",
+      "forward_backward_cache_two:ActsWebForwardBackwardCacheTwoTest",
     ]
   }
 }

@@ -67,7 +67,7 @@ export default function HoverJsunit11() {
       let buttonCl = await driver.findComponent(ON.id('columnB11'));
       await CommonFunc.sleep(500);
       let point = await buttonCl.getBoundsCenter();
-      await driver.mouseMoveTo({x:point.x , y:point.y})
+      await driver.mouseMoveTo({x: Math.round(point.x + vp2px(100)), y: Math.round(point.y  + vp2px(100))})
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('hover11');
       let obj: ESObject = JSON.parse(strJson);

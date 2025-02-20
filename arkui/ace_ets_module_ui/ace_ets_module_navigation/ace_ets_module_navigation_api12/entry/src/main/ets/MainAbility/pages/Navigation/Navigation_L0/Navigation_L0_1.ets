@@ -37,16 +37,17 @@ struct Navigation_L0_1 {
     Navigation(this.pageInfos) {
       Button('pushPath pageOne').onClick((event: ClickEvent) => {
         this.pageInfos.pushPath({name:'pageOne'})
-      }).id('Navigation_L0_1_btn1')
-      Text(this.willShow).id('Navigation_L0_1_text1')
-      Text(this.didShow).id('Navigation_L0_1_text2')
-      Text(this.modeChange).id('Navigation_L0_3_text1')
+      }).id('Navigation_L0_1_btn1').height('5%')
+      Text(this.willShow).id('Navigation_L0_1_text1').height('5%')
+      Text(this.didShow).id('Navigation_L0_1_text2').height('5%')
+      Text(this.modeChange).id('Navigation_L0_3_text1').height('5%')
     }
     .navDestination(this.PageMap)
     .height('100%')
     .width('100%')
     .title('navigation')
     .mode(NavigationMode.Split)
+    .navBarWidth('30%')
   }
 }
 

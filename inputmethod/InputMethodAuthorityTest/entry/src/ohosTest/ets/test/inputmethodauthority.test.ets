@@ -16,10 +16,25 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import inputMethod from '@ohos.inputMethod';
 import subtype from '@ohos.InputMethodSubtype';
 import { BusinessError } from '@ohos.base';
+import deviceinfo from '@ohos.deviceInfo';
 
 export default function inputMethodAuthorityJSUnit() {
   describe('inputMethodAuthorityJSUnit', () => {
     console.info("====>************* inputMethodAuthorityJSUnit settings Test start*************");
+    /**
+     * beforeAll: Test case-level clearance conditions, which are executed after each test case is executed.
+     */
+    beforeAll(async(done: Function) => {
+      let inputMethodSetting = inputMethod.getSetting();
+      console.info('====> getSetting success!')
+      inputMethodSetting.listInputMethod((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
+        let t = setTimeout(async ()=>{
+          console.info('====>Succeeded in listing inputMethod: ' + JSON.stringify(data));
+          clearTimeout(t);
+          done();
+        }, 3000)
+      });
+    })
 
     /*
      * @tc.number  inputmethod_test_switchInputMethod_001

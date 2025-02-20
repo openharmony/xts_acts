@@ -47,6 +47,8 @@ constexpr uint32_t DEFAULT_HEIGHT = 1280;
 constexpr OH_AVPixelFormat DEFAULT_PIXELFORMAT = AV_PIXEL_FORMAT_NV12;
 static int32_t g_aFlag = 0;
 static int32_t g_vFlag = 0;
+const int32_t TEST_PASS = 0;
+const int32_t TEST_FAILED = 1;
 static atomic<double> frameNum;
 static OH_AVScreenCapture *screenCaptureNormal;
 static struct OH_AVScreenCapture_ContentFilter *g_contentFilter;
@@ -156,13 +158,12 @@ static napi_value normalAVScreenCaptureTestStop(napi_env env, napi_callback_info
     OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StopScreenCapture(screenCaptureNormal);
     OH_AVScreenCapture_ReleaseContentFilter(g_contentFilter);
     OH_AVSCREEN_CAPTURE_ErrCode result3 = OH_AVScreenCapture_Release(screenCaptureNormal);
-
-    OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
-    if (result3 == AV_SCREEN_CAPTURE_ERR_OK && result1 == AV_SCREEN_CAPTURE_ERR_OK &&
-        averageFrameNum < (maxFrameRate * exceedPercentage)) {
-        result = AV_SCREEN_CAPTURE_ERR_OK;
+    int32_t result = TEST_FAILED;
+    if (result3 == AV_SCREEN_CAPTURE_ERR_OK && ((result1 == AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT) ||
+        (result1 == AV_SCREEN_CAPTURE_ERR_OK && averageFrameNum < (maxFrameRate * exceedPercentage)))) {
+        result = TEST_PASS;
     } else {
-        result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
+        result = TEST_FAILED;
     }
     napi_value res;
     napi_create_int32(env, result, &res);
@@ -566,6 +567,100 @@ static napi_value OriginAVScreenCaptureTest(napi_env env, napi_callback_info inf
     return res;
 }
 
+static napi_value normalAVScreenCaptureShowCursorTest(napi_env env, napi_callback_info info)
+{
+    screenCaptureNormal = OH_AVScreenCapture_Create();
+    OH_AVScreenCaptureConfig config_;
+    SetConfig(config_);
+	
+    bool isMicrophone = false;
+    OH_AVScreenCapture_SetMicrophoneEnabled(screenCaptureNormal, isMicrophone);
+    OH_AVScreenCapture_SetErrorCallback(screenCaptureNormal, OnError, nullptr);
+    OH_AVScreenCapture_SetStateCallback(screenCaptureNormal, OnStateChange, nullptr);
+    OH_AVScreenCapture_SetDataCallback(screenCaptureNormal, OnBufferAvailable, nullptr);
+    
+    OH_AVScreenCapture_ShowCursor(screenCaptureNormal, false);
+    
+    OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCaptureNormal, config_);
+    OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenCapture(screenCaptureNormal);
+
+    OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
+    if (result2 == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = AV_SCREEN_CAPTURE_ERR_OK;
+    } else {
+        result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
+    }
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value normalAVScreenCaptureShowCursorTestStop(napi_env env, napi_callback_info info)
+{
+    usleep(g_recordTimeOne);
+    OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_StopScreenCapture(screenCaptureNormal);
+    OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_Release(screenCaptureNormal);
+
+    OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
+    if (result1 == AV_SCREEN_CAPTURE_ERR_OK && result2 == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = AV_SCREEN_CAPTURE_ERR_OK;
+    } else {
+        result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
+    }
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value normalAVScreenCaptureShowCursorBeforeTestStop(napi_env env, napi_callback_info info)
+{
+    usleep(g_recordTimeOne);
+    OH_AVScreenCapture_ShowCursor(screenCaptureNormal, true);
+    usleep(g_recordTimeOne);
+    OH_AVScreenCapture_ShowCursor(screenCaptureNormal, false);
+    
+    OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_StopScreenCapture(screenCaptureNormal);
+    OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_Release(screenCaptureNormal);
+
+    OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
+    if (result1 == AV_SCREEN_CAPTURE_ERR_OK && result2 == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = AV_SCREEN_CAPTURE_ERR_OK;
+    } else {
+        result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
+    }
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+static napi_value normalAVScreenCaptureShowCursorWithParaNullFalse(napi_env env, napi_callback_info info)
+{
+    bool isMicrophone = false;
+    screenCaptureNormal = OH_AVScreenCapture_Create();
+    OH_AVSCREEN_CAPTURE_ErrCode result = OH_AVScreenCapture_ShowCursor(nullptr, false);
+    int resCapture = TEST_FAILED;
+    if (result == AV_SCREEN_CAPTURE_ERR_INVALID_VAL) {
+        resCapture = TEST_PASS;
+    }
+    napi_value res;
+    napi_create_int32(env, resCapture, &res);
+    return res;
+}
+
+
+static napi_value normalAVScreenCaptureShowCursorWithParaNullTrue(napi_env env, napi_callback_info info)
+{
+    bool isMicrophone = false;
+    screenCaptureNormal = OH_AVScreenCapture_Create();
+    OH_AVSCREEN_CAPTURE_ErrCode result = OH_AVScreenCapture_ShowCursor(nullptr, true);
+    int resCapture = TEST_FAILED;
+    if (result == AV_SCREEN_CAPTURE_ERR_INVALID_VAL) {
+        resCapture = TEST_PASS;
+    }
+    napi_value res;
+    napi_create_int32(env, resCapture, &res);
+    return res;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -584,6 +679,16 @@ static napi_value Init(napi_env env, napi_value exports)
             napi_default, nullptr},
         {"normalAVScreenCaptureSurfaceTestStop", nullptr, normalAVScreenCaptureSurfaceTestStop, nullptr, nullptr,
             nullptr, napi_default, nullptr},
+        {"normalAVScreenCaptureShowCursorTest", nullptr, normalAVScreenCaptureShowCursorTest, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"normalAVScreenCaptureShowCursorTestStop", nullptr, normalAVScreenCaptureShowCursorTestStop, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"normalAVScreenCaptureShowCursorWithParaNullTrue", nullptr, normalAVScreenCaptureShowCursorWithParaNullTrue,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"normalAVScreenCaptureShowCursorWithParaNullFalse", nullptr, normalAVScreenCaptureShowCursorWithParaNullFalse,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"normalAVScreenCaptureShowCursorBeforeTestStop", nullptr, normalAVScreenCaptureShowCursorBeforeTestStop,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

@@ -165,30 +165,30 @@ struct getPositionExample {
       NodeContainer(this.myNodeController)
         .backgroundColor(Color.Orange)
         .width("100%")
-        .height(100)
+        .height('30%')
 
-      Button("getPositionToScreen")
+      Button("getPositionToScreen").height('5%')
         .id("getPositionToScreen")
         .width(300)
         .onClick(()=>{
           this.myNodeController.getPositionToScreen();
           this.getPositionToScreen = this.myNodeController.frameNode?.getPositionToScreen().x.toString().split('.')[0];
         })
-      Button("getPositionToParentWithTransform")
+      Button("getPositionToParentWithTransform").height('5%')
         .id("getPositionToParentWithTransform")
         .width(300)
         .onClick(()=>{
           this.myNodeController.getPositionToParentWithTransform();
           this.getPositionToParentWithTransform = this.myNodeController.frameNode?.getPositionToParentWithTransform().x.toString()
         })
-      Button("getPositionToWindowWithTransform")
+      Button("getPositionToWindowWithTransform").height('5%')
         .id("getPositionToWindowWithTransform")
         .width(300)
         .onClick(()=>{
           this.myNodeController.getPositionToWindowWithTransform();
           this.getPositionToWindowWithTransform = this.myNodeController.frameNode?.getPositionToWindowWithTransform().x.toString()
         })
-      Button("getPositionToScreenWithTransform")
+      Button("getPositionToScreenWithTransform").height('5%')
         .id("getPositionToScreenWithTransform")
         .width(300)
         .onClick(()=>{
@@ -196,7 +196,7 @@ struct getPositionExample {
           this.getPositionToScreenWithTransform = this.myNodeController.frameNode?.getPositionToScreenWithTransform().x.toString().split('.')[0];
         })
 
-      Button('getWindowLeftVP').key('getWindowLeftVP')
+      Button('getWindowLeftVP').key('getWindowLeftVP').height('5%')
         .id('getWindowLeftVP')
         .width(300)
         .onClick(()=>{
@@ -209,31 +209,32 @@ struct getPositionExample {
         })
 
 
-      Text(this.getPositionToScreen)
+      Text(this.getPositionToScreen).height('5%')
         .id("getPositionToScreenValue")
         .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
         .width('100%').fontSize(16)
 
-      Text(this.getPositionToParentWithTransform)
+      Text(this.getPositionToParentWithTransform).height('5%')
         .id("getPositionToParentWithTransformValue")
         .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
         .width('100%').fontSize(16)
 
-      Text(this.getPositionToWindowWithTransform)
+      Text(this.getPositionToWindowWithTransform).height('5%')
         .id("getPositionToWindowWithTransformValue")
         .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
         .width('100%').fontSize(16)
 
-      Text(this.getPositionToScreenWithTransform)
+      Text(this.getPositionToScreenWithTransform).height('5%')
         .id("getPositionToScreenWithTransformValue")
         .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
         .width('100%').fontSize(16)
 
-      Text(this.windowLeftVP)
+      Text(this.windowLeftVP).height('5%')
         .id("getWindowLeftVPValue")
         .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
         .width('100%').fontSize(16)
     }
+    .height('100%')
 
   }
 }

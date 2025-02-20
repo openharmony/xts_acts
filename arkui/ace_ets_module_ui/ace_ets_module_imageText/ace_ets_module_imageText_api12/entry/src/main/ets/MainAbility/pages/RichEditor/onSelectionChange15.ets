@@ -25,12 +25,12 @@ struct onSelectionChange15 {
     Column() {
       RichEditor(this.options)
         .onReady(() => {
-          this.controller.addTextSpan("0123456789",
+          this.controller.addTextSpan('0123456789',
             {
               style:
               {
                 fontColor: Color.Orange,
-                fontSize: 50
+                fontSize: 20
               }
             })
         })
@@ -42,10 +42,10 @@ struct onSelectionChange15 {
         .id('onSelectionChange15_RichEditor')
         .width('100%')
         .height('20%')
-      Text('' + this.text1).key("onSelectionChange15_text1")
-      Text('' + this.text2).key("onSelectionChange15_text2")
-      Text('' + this.text3).key("onSelectionChange15_text3")
-      Button("删除选择内容").onClick(() => {
+      Text('' + this.text1).key('onSelectionChange15_text1')
+      Text('' + this.text2).key('onSelectionChange15_text2')
+      Text('' + this.text3).key('onSelectionChange15_text3')
+      Button('删除选择内容').onClick(() => {
         this.controller.deleteSpans({
           start: 3,
           end: 5
@@ -54,7 +54,7 @@ struct onSelectionChange15 {
     }
     .borderWidth(1)
     .borderColor(Color.Red)
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }

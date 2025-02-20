@@ -145,17 +145,17 @@ struct RepeatLazyForEachBoolean {
   }
 
   build() {
-    Column({ space: 10 }) {
-      List({ initialIndex: 10, space: 10 }) {
+    Column() {
+      List({ initialIndex: 10 }) {
         Repeat<string>(this.dataList)
           .each((obj: RepeatItem<string>) => {
             ListItem() {
               Row() {
                 Text(obj.item).id('repeat1_LB' + `${obj.index}`)
-                  .fontSize(15)
+                  .fontSize(9)
                 LazyForEach(this.dataSource[obj.index], (item: string) => {
                   Text('' + item).id('lazyForeach1_LB' + `${obj.index}`)
-                    .fontSize(15)
+                    .fontSize(9)
                     .fontColor(Color.Orange)
                 })
               }
@@ -169,7 +169,6 @@ struct RepeatLazyForEachBoolean {
       .cachedCount(1)
       .border({ width: 1 })
       .width('90%')
-      .height('70%')
     }
     .height('100%')
     .justifyContent(FlexAlign.Center)

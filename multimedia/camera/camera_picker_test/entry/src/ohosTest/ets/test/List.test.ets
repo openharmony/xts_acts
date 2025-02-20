@@ -12,15 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import cameraPicker from './CameraPicker.test'
-import cameraPickerPc from './CameraPickerPc.test'
-import call from  '@ohos.telephony.call'
-let voice = call.hasVoiceCapability()
+import {cameraPicker,executePicker} from './CameraPicker.test'
+let isExecutePicker = executePicker();
 
 export default async function testsuite() {
-    if (voice){
+    if (isExecutePicker) {
         cameraPicker()
-    }else{
-        cameraPickerPc()
     }
 }

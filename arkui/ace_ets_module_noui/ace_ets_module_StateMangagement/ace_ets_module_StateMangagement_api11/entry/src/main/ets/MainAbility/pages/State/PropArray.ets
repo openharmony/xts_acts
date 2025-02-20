@@ -38,9 +38,10 @@ struct propArray {
 
   build() {
     Column() {
-      Text('title：' + JSON.stringify(this.title)).fontSize(20).margin(15)
-      .key("initial_Array")
-      Button('父组件Prop: change array').fontSize(15).margin(5).margin(10)
+      Text('title：' + JSON.stringify(this.title)).fontSize(9)
+      .key("initial_Array").height('5%')
+      Button('父组件Prop: change array').fontSize(9)
+        .height('5%')
         .key("parent_Array")
         .onClick(() => {
           // 改变某一个Array值
@@ -50,7 +51,6 @@ struct propArray {
       ChildArrProp({ subTitle: this.title })
 
     }.width('100%')
-    .margin({ top: 50 })
   }
 }
 
@@ -60,14 +60,14 @@ struct ChildArrProp {
 
   build() {
     Column() {
-      Text('@Prop 单向的 内部修改不会改变父组件').fontSize(18)
+      Text('@Prop 单向的 内部修改不会改变父组件').fontSize(9).height('5%')
 
-      Button('子组件Prop:' + JSON.stringify(this.subTitle)).fontSize(18)
+      Button('子组件Prop:' + JSON.stringify(this.subTitle)).fontSize(9)
+        .height('5%')
         .key("sub_prop")
         .onClick(() => {
         this.subTitle[0] = new ModelArr(7)
       })
     }.width('100%')
-    .margin({ top: 50 })
   }
 }

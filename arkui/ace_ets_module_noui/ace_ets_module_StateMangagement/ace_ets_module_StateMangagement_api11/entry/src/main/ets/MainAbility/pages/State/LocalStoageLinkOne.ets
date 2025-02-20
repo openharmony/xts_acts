@@ -27,32 +27,32 @@ struct LocalStoageLinkOne {
   
   @State vae?: number = storage224.get('PropB')
   build(){
-    Column({space:15}){
+    Column(){
       Button(`Has ${this.text1}`).onClick(()=>{
         this.text1 = `Has1:${storage224.has('PropA')},Has2:${storage224.has('PropP')}`
-      }).key('button_has')
+      }).key('button_has').height('5%')
       
       Button(`Set ${this.text2}`).onClick(()=>{
         this.text2 = `Set1:${storage224.set('PropA',2)},Set2:${storage224.set('PropP',2)}`
-      }).key('button_set')
+      }).key('button_set').height('5%')
       
       Button(`setOrCreate ${this.text3}`).onClick(()=>{
         this.text3 = `setOrCreate1:${storage224.setOrCreate('PropA',50)},setOrCreate2:${storage224.setOrCreate('PropP',50)}`
-      }).key('button_setOrCreate')
+      }).key('button_setOrCreate').height('5%')
       
       
       Text(`localstorage:${this.vae},storLink2:${this.storLink2}`)
-      .key('text_getValue1')
+      .key('text_getValue1').height('5%')
       
       Button(`点击动态更改本地初始值`).onClick(()=>{
         this.storLink2 += 10
         this.vae = storage224.get('PropB')
-      }).key('button_changeInitialValue')
+      }).key('button_changeInitialValue').height('5%')
       
       Button(`点击更改localstorage值`).onClick(()=>{
         storage224.set('PropB', 666)
         this.vae = storage224.get('PropB')
-      }).key('button_changeLocalStorageValue')
+      }).key('button_changeLocalStorageValue').height('5%')
       
       
       

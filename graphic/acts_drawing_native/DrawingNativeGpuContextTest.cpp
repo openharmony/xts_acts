@@ -126,6 +126,8 @@ HWTEST_F(DrawingNativeGpuContextTest, testGpuContextCreateFromGLDestroyNormal, T
  */
 HWTEST_F(DrawingNativeGpuContextTest, testGpuContextDestroyNULL, TestSize.Level3) {
     OH_Drawing_GpuContextDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
 }
 
 /*
@@ -144,6 +146,21 @@ HWTEST_F(DrawingNativeGpuContextTest, testGpuContextCreateFromGLDestroyMultipleC
         EXPECT_NE(gpuContext_, nullptr);
         OH_Drawing_GpuContextDestroy(gpuContext_);
     }
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_GPU_CONTEXT_0200
+ * @tc.name: testGpuContextCreateNormal
+ * @tc.desc: Test for creating GPU context with normal parameters.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeGpuContextTest, testGpuContextCreateNormal, TestSize.Level0) {
+
+    gpuContext_ = OH_Drawing_GpuContextCreate();
+    EXPECT_NE(gpuContext_, nullptr);
+    OH_Drawing_GpuContextDestroy(gpuContext_);
 }
 
 } // namespace Drawing

@@ -21,7 +21,8 @@ struct ChildLink2 {
 
   build() {
     Column() {
-      Text(`ChildLink: ${this.counterVal}`).fontSize(18).margin(5)
+      Text(`ChildLink: ${this.counterVal}`).fontSize(9)
+        .height('5%')
         .key("ChildLink" + this.counterVal)
         .onClick(() => {
           this.counterVal += 2
@@ -37,12 +38,13 @@ struct PropLink2 {
   build() {
     Column() {
       Text(`PropLink:${this.numberl}`).width("100%")
+        .height('5%')
         .key("PropLink" + this.numberl)
         .onClick(() => {
           this.numberl += 1
         })
       ChildLink2({counterVal: this.numberl})
-    }.margin(5)
+    }
   }
 }
 
@@ -55,14 +57,14 @@ struct CombinationState2 {
 
   build() {
     Row() {
-      Column({ space: 20 }) {
-        Text('@Link可使用父组件中被@State装饰的变量初始化')
+      Column() {
+        Text('@Link可使用父组件中被@State装饰的变量初始化').height('5%')
         PropLink2({numberl: this.fatherState})
 
-        Text('@Link可使用父组件中被@StorageLink装饰的变量初始化')
+        Text('@Link可使用父组件中被@StorageLink装饰的变量初始化').height('5%')
         PropLink2({numberl: this.son1})
 
-        Text('@Link可使用父组件中被@Link装饰的变量初始化')
+        Text('@Link可使用父组件中被@Link装饰的变量初始化').height('5%')
         PropLink2({numberl: $fathState})
       }
     }

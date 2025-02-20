@@ -44,16 +44,16 @@ struct styledStringMenu {
   build() {
     Column() {
       Column() {
-        Text('测试CAPI，测试前下面框中先粘贴一次')
-        Text('' + this.textString).id('textString')
+        Text('测试CAPI，测试前下面框中先粘贴一次').height('5%')
+        Text('' + this.textString).id('textString').height('5%')
         RichEditor(this.options)
           .borderWidth(1)
           .borderColor(Color.Red)
           .width('100%')
-          .height(100)
+          .height('20%')
           .id('richEditor2')
         Button('点击测试CAPI')
-          .id('but2')
+          .id('but2').height('5%')
           .onClick(() =>{
             let sysBoard = pasteboard.getSystemPasteboard()
 
@@ -117,14 +117,14 @@ struct styledStringMenu {
             let pasteData = pasteboard.createData(records)
 
             sysBoard.setData(pasteData)
-          })
-        Text('==============================')
-        Text('测试JS ToHtml')
+          }).height('5%')
+        Text('==============================').height('5%')
+        Text('测试JS ToHtml').height('5%')
         RichEditor(this.options)
           .borderWidth(1)
           .borderColor(Color.Red)
           .width('100%')
-          .height(100)
+          .height('20%')
           .id('richEditor')
         Column() {
           Row() {
@@ -135,12 +135,12 @@ struct styledStringMenu {
               })
               .id('but1')
           }
-        }
-        RichEditor(this.styledStringOption)
-        Text(this.html)
+        }.height('5%')
+        RichEditor(this.styledStringOption).height('5%')
+        Text(this.html).height('5%')
 
 
-      }.width('100%').backgroundColor(Color.White)
+      }.width('100%').backgroundColor(Color.White).height('100%')
     }.height('100%')
   }
 }

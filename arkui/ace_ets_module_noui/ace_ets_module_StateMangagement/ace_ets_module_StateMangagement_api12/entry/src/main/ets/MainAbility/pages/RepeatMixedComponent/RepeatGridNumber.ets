@@ -42,6 +42,7 @@ struct RepeatGridNumber {
               Text(ri.item.toString() + ' index:' + ri.index.toString() + ':' + this.tmp2.toString())
                 .id('Text1_GN' + ri.index.toString())
                 .fontSize(20)
+                .height('17%')
             }
             .border({ width: 1 })
           })
@@ -54,11 +55,11 @@ struct RepeatGridNumber {
       .border({ width: 1 })
 
       Row() {
-        Button('next1 page').id('Button1')
+        Button('next1 page').id('Button1_GN')
           .onClick(() => {
             this.scroller.scrollToIndex(28);
           })
-        Button('next2 page').id('Button2')
+        Button('next2 page').id('Button2_GN')
           .onClick(() => {
             this.scroller1.scrollToIndex(28);
           })
@@ -74,6 +75,7 @@ struct RepeatGridNumber {
               Text(ri.item.toString() + ' index:' + ri.index.toString() + ':' + this.tmp2.toString())
                 .id('Text2_GN' + ri.index.toString())
                 .fontSize(20)
+                .height('17%')
             }
             .border({ width: 1 })
           })
@@ -90,6 +92,7 @@ struct RepeatGridNumber {
               Text(r.item.toString() + ' index:' + r.index.toString() + ':' + (this.tmp2 = 100).toString())
                 .id('Text2_GN' + r.index.toString())
                 .fontSize(20)
+                .height('17%')
             }
             .width('100%')
             .border({ width: 1 })

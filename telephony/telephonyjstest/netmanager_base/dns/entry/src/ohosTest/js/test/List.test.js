@@ -13,11 +13,15 @@
  * limitations under the License.
  */
  import Telephony_NETMANAGER_TestDNSTest from './NetworkManagerDNS.test.js';
- import Telephony_NETMANAGER_MDNSTest from './NetworkManagerMdns.test';
- import netSyncTest from './NetSync.test'
+ import netSyncTest from './NetSync.test.js'
+import EmptyTest from './Empty.test'
+ import sim from '@ohos.telephony.sim'
 
  export default function testsuite() {
-    Telephony_NETMANAGER_TestDNSTest();
-    Telephony_NETMANAGER_MDNSTest();
-	netSyncTest();
+    if(sim.getMaxSimCount()>1){
+        Telephony_NETMANAGER_TestDNSTest();
+	    netSyncTest();
+    }else{
+        EmptyTest()
+    }
  }

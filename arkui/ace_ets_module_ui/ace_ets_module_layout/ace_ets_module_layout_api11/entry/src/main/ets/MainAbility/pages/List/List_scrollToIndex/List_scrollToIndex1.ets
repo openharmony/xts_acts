@@ -21,6 +21,13 @@ struct List_scrollToIndex1 {
 
   build() {
     Column() {
+      Button('scrollToIndex 5')
+        .id('List_scrollToIndex1_to5')
+        .fontSize(14)
+        .margin(5)
+        .onClick(() => {
+          this.scroller.scrollToIndex(5)
+        })
       List({ space: 10, initialIndex: 0, scroller: this.scroller }) {
         ForEach(this.arr, (item: number, index?: number) => {
           ListItem() {
@@ -39,14 +46,6 @@ struct List_scrollToIndex1 {
       .backgroundColor(Color.Pink)
       .edgeEffect(EdgeEffect.None)
       .scrollBar(BarState.On)
-
-      Button('scrollToIndex 5')
-        .id('List_scrollToIndex1_to5')
-        .fontSize(14)
-        .margin(5)
-        .onClick(() => {
-          this.scroller.scrollToIndex(5)
-        })
 
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)
 

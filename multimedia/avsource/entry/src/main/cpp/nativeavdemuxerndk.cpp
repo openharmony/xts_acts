@@ -33,33 +33,41 @@
 #define TWOVAL 2
 #define ONEONEVAL 11
 #define PARAM_1 1
-#define TWOTWOVAL 23
+#define TWOTWOVAL (1024 * 1280 * 1.5)
 #define SUCCESS 0
 #define FAIL (-1)
 #define DENSITY 240
 #define ONEHUNVAL 100
 #define PARAM_0666 0666
 #define PARAM_0 0
-#define PATH "/data/storage/el2/base/files/demo.mp4"
-#define FILESIZE 1046987
+#define PATH "/data/storage/el2/base/haps/entry_test/files/demo.mp4"
+#include "hilog/log.h"
 
-static int64_t GetFileSize(const char *fileName)
+#define AUDIO_LOG_TAG "AVCODEC_TAGLOG"
+#define AUDIO_LOG_DOMAIN 0x3200
+
+#define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_INFO, AUDIO_LOG_DOMAIN, AUDIO_LOG_TAG, fmt, ##__VA_ARGS__)
+
+
+size_t GetFileSize(const char *fileName)
 {
-    int64_t fileSize = ZEROVAL;
-    if (fileName != nullptr) {
-        struct stat fileStatus;
-        fileSize = static_cast<size_t>(fileStatus.st_size);
+    if (fileName == nullptr) {
+        return 0;
     }
-    return fileSize;
+    struct stat statbuf;
+    stat(fileName, &statbuf);
+    size_t filesize = statbuf.st_size;
+    return filesize;
 }
 
 static OH_AVSource *GetSource()
 {
-    char fileName[] = {"/data/storage/el2/base/files/demo.mp4"};
-    int fd = open(fileName, O_RDWR, PARAM_0666);
+    char fileName[] = {"/data/storage/el2/base/haps/entry_test/files/demo.mp4"};
+    int fd = open(fileName, O_RDONLY, PARAM_0666);
+    LOG("GetSource fd is %{public}d", fd);
     OH_AVSource *source;
     int64_t offset = ZEROVAL;
-    source = OH_AVSource_CreateWithFD(fd, offset, FILESIZE);
+    source = OH_AVSource_CreateWithFD(fd, offset, GetFileSize(fileName));
     close(fd);
     return source;
 }
@@ -125,11 +133,12 @@ static napi_value OHAVDemuxerSeekToTime(napi_env env, napi_callback_info info)
     OH_AVDemuxer *demuxer = nullptr;
     uint32_t audioTrackIndex = ZEROVAL;
     uint32_t videoTrackIndex = ZEROVAL;
-    char fileName[] = {"/data/storage/el2/base/files/demo.mp4"};
-    int fd = open(fileName, O_RDWR, PARAM_0666);
+    char fileName[] = {"/data/storage/el2/base/haps/entry_test/files/demo.mp4"};
+    int fd = open(fileName, O_RDONLY, PARAM_0666);
+    LOG("OHAVDemuxerSeekToTime fd is %{public}d", fd);
     OH_AVSource *source;
     int64_t offset = ZEROVAL;
-    source = OH_AVSource_CreateWithFD(fd, offset, FILESIZE);
+    source = OH_AVSource_CreateWithFD(fd, offset, GetFileSize(fileName));
     close(fd);
     demuxer = OH_AVDemuxer_CreateWithSource(source);
     OH_AVDemuxer_SelectTrackByID(demuxer, audioTrackIndex);
@@ -155,11 +164,12 @@ static napi_value OHAVDemuxerSelectTrackByID(napi_env env, napi_callback_info in
     OH_AVDemuxer *demuxer = nullptr;
     uint32_t audioTrackIndex = ZEROVAL;
     uint32_t videoTrackIndex = ZEROVAL;
-    char fileName[] = {"/data/storage/el2/base/files/demo.mp4"};
-    int fd = open(fileName, O_RDWR, PARAM_0666);
+    char fileName[] = {"/data/storage/el2/base/haps/entry_test/files/demo.mp4"};
+    int fd = open(fileName, O_RDONLY, PARAM_0666);
+    LOG("OHAVDemuxerSelectTrackByID fd is %{public}d", fd);
     OH_AVSource *source;
     int64_t offset = ZEROVAL;
-    source = OH_AVSource_CreateWithFD(fd, offset, FILESIZE);
+    source = OH_AVSource_CreateWithFD(fd, offset, GetFileSize(fileName));
     close(fd);
     demuxer = OH_AVDemuxer_CreateWithSource(source);
     int returnValue = FAIL;

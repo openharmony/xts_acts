@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceLoadInterceptionCloudServiceControllerGroupSixTest.hap"
+            "ActsWebLoadInterceptionCloudServiceControllerGroupSixTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

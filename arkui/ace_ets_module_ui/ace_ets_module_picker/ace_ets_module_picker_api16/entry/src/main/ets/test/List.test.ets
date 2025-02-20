@@ -15,6 +15,24 @@
 
 
 import buttonType from './buttonType/buttonTypeApi.test';
+import checkboxNode from './checkbox/checkboxNode.test';
+import checkboxGroupNode from './checkboxGroup/checkboxGroupNode.test';
+import enableCascadeTest from './timePicker/enableCascadeTest.test';
+import radioNode from './radio/radioNode.test';
+import ratingNode from './rating/ratingNode.test';
+import selectNode from './select/selectNode.test';
+import sliderNode from './slider/sliderNode.test';
+import toggleNode from './toggle/toggleNode.test';
+import columnWidths from './textPicker/columnWidths.test';
 export default function testsuite() {
   buttonType();
+  enableCascadeTest();
+  checkboxNode();
+  checkboxGroupNode();
+  radioNode();
+  ratingNode();
+  selectNode();
+  sliderNode();
+  toggleNode();
+  columnWidths();
 }

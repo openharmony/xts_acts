@@ -119,7 +119,7 @@ export struct V2ToV1ComponentCorrect_TestV1child1 {
   }
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
       Text(`v1 stringValue1: ${this.stringValue1}`).key('string_param1')
       Text(`v1 enumValue1: ${this.enumValue1}`).key('enum_value1')
       Text(`v1 localValue1: ${this.localValue1.name}`).key('local_value1')

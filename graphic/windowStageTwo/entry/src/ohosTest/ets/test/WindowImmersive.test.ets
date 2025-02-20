@@ -502,7 +502,7 @@ export default function windowImmersiveTest() {
     it('testOnSystemAvoidAreaChange', 0, async (done: Function) => {
       let caseName = 'TestOnSystemAvoidAreaChange';
       try {
-        if(isPCStatus == ''|| isPCStatus == '1'){
+        if(deviceType != 'wearable' && (isPCStatus == ''|| isPCStatus == '1')){
           let windowClass = windowStage.getMainWindowSync();
           windowClass.on('systemAvoidAreaChange', (data) => {
           console.info(`${caseName} Succeeded in enabling the listener for system avoid area changes. Data: ${JSON.stringify(data)}`);
@@ -539,7 +539,7 @@ export default function windowImmersiveTest() {
     it('testOnRepeatSystemAvoidAreaChange', 0, async (done: Function) => {
       let caseName = 'TestOnRepeatSystemAvoidAreaChange';
       try {
-        if(isPCStatus == ''|| isPCStatus == '1'){
+        if(deviceType != 'wearable' && (isPCStatus == ''|| isPCStatus == '1')){
           let windowClass = windowStage.getMainWindowSync();
           const callback1 = () => {
             console.info(`${caseName} callback1 Succeeded in enabling the listener for system avoid area changes.`);
@@ -626,7 +626,7 @@ export default function windowImmersiveTest() {
     it('testOnAvoidAreaChange', 0, async (done: Function) => {
       let caseName = 'TestOnAvoidAreaChange';
       try {
-        if(isPCStatus == ''|| isPCStatus == '1'){
+        if(deviceType != 'wearable' && (isPCStatus == ''|| isPCStatus == '1')){
           let windowClass = windowStage.getMainWindowSync();
           windowClass.on('avoidAreaChange', (data) => {
           console.info(`${caseName} Succeeded in enabling the listener for avoid area changes. Data: ${JSON.stringify(data)}`);
@@ -1668,7 +1668,7 @@ export default function windowImmersiveTest() {
         console.log(msgStr +' :' + JSON.stringify(data));
             height = data.bottomRect.height;
       };
-      if(isPCStatus == ''|| isPCStatus == '1'){
+      if(deviceType != 'wearable' &&(isPCStatus == ''|| isPCStatus == '1')){
         windowStage.getMainWindow((err, data) => {
               if (err.code != 0) {
                   console.log(msgStr + ' getTopWindow callback fail ' + JSON.stringify(err.code));

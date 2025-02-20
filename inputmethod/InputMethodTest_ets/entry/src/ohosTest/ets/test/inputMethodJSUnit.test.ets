@@ -12,13 +12,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, beforeAll } from '@ohos/hypium';
 import inputMethod from '@ohos.inputMethod';
 import { BusinessError } from '@ohos.base';
+import deviceinfo from '@ohos.deviceInfo';
 
 export default function inputMethodJSUnit() {
   describe('appInfoTest_input_2', () => {
     console.info("====>************* settings Test start*************");
+    /**
+     * beforeAll: Test case-level clearance conditions, which are executed after each test case is executed.
+     */
+    beforeAll(async(done: Function) => {
+      let inputMethodSetting = inputMethod.getSetting();
+      console.info('====> getSetting success!')
+      inputMethodSetting.listInputMethod((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
+        let t = setTimeout(async ()=>{
+          console.info('====>Succeeded in listing inputMethod: ' + JSON.stringify(data));
+          const ATTRIBUTE: inputMethod.TextConfig = {
+            inputAttribute: {
+              textInputType: 0, enterKeyType: 0
+            }
+          }
+          try {
+            let data = await inputMethod.getController().attach(false, ATTRIBUTE);
+            console.info(`====> execution success, data: ${JSON.stringify(data)}`);
+          } catch (error) {
+            console.info(`====> catch error, error: [${error.code}, ${error.message}]`);
+          }
+          clearTimeout(t);
+          done();
+        }, 3000)
+      });
+    })
 
     /**
      * @tc.number inputmethoh_test_001

@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the 'License");
+ * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -55,8 +55,8 @@ struct ImageOrientation {
     Column() {
       Image(this.resource)
         .autoResize(this.autoResize)
-        .height(200)
-        .width(200)
+        .height('50%')
+        .width('50%')
         .border({ width: 1, color: Color.Red })
         .objectFit(this.fitsArr[this.fitsIdx])
         .orientation(this.orientationArr[this.orientationIdx])
@@ -68,23 +68,22 @@ struct ImageOrientation {
 
       Button(`改变rotate角度 ${this.rotateDegree}`).onClick(() => {
         this.rotateDegree += 30
-      })
+      }).height('5%')
 
       Button(`切换autoResize ${this.autoResize}`).onClick(() => {
         this.autoResize = !this.autoResize
-      })
+      }).height('5%')
 
       Button(`点击切换不同的orientation`).onClick(() => {
         this.orientationIdx = (this.orientationIdx + 1) % this.orientationArr.length
-      }).id('changeOrientation')
+      }).id('changeOrientation').height('5%')
 
       Button(`点击切换ImageFit`).onClick(() => {
         this.fitsIdx = (this.fitsIdx + 1) % this.fitsArr.length
-      })
+      }).height('5%')
 
     }
     .width('100%')
     .height('100%')
   }
 }
-

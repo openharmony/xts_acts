@@ -70,71 +70,73 @@ struct expectedFrameRateExample {
   @State text: string = ''
 
   build() {
-    Column() {
+    Scroll() {
       Column() {
-        Column()
-          .width(this.wid)
-          .height(this.hei)
-          .backgroundColor(Color.Red)
-          .id('img')
-      }
-      .width('100%')
-      .height(300)
-
-      Column() {
-        Text(this.minText)
-          .id('min')
-        Text(this.maxText)
-          .id('max')
-        Row() {
-          Button('create')
-            .id('create')
-            .fontSize(30)
-            .fontColor(Color.Black)
-            .onClick(() => {
-              this.create()
-            })
+        Column() {
+          Column()
+            .width(this.wid)
+            .height(this.hei)
+            .backgroundColor(Color.Red)
+            .id('img')
         }
-        .padding(10)
+        .width('100%')
+        .height(100)
 
-        Row() {
-          Button('play')
-            .id('play')
-            .fontSize(30)
-            .fontColor(Color.Black)
-            .onClick(() => {
-              this.flag = false
-              if (this.backAnimator) {
-                this.backAnimator.play()
-              }
-            })
-        }
-        .padding(10)
+        Column() {
+          Text(this.minText)
+            .id('min')
+          Text(this.maxText)
+            .id('max')
+          Row() {
+            Button('create')
+              .id('create')
+              .fontSize(30)
+              .fontColor(Color.Black)
+              .onClick(() => {
+                this.create()
+              })
+          }
+          .padding(10)
 
-        Row() {
-          Button('pause')
-            .fontSize(30)
-            .fontColor(Color.Black)
-            .onClick(() => {
-              if (this.backAnimator) {
-                this.backAnimator.pause()
-              }
-            })
-        }
-        .padding(10)
+          Row() {
+            Button('play')
+              .id('play')
+              .fontSize(30)
+              .fontColor(Color.Black)
+              .onClick(() => {
+                this.flag = false
+                if (this.backAnimator) {
+                  this.backAnimator.play()
+                }
+              })
+          }
+          .padding(10)
 
-        Row() {
-          Button('finish')
-            .fontSize(30)
-            .fontColor(Color.Black)
-            .onClick(() => {
-              this.flag = true
-              if (this.backAnimator) {
-                this.backAnimator.finish()
-              }
-            })
+          Row() {
+            Button('pause')
+              .fontSize(30)
+              .fontColor(Color.Black)
+              .onClick(() => {
+                if (this.backAnimator) {
+                  this.backAnimator.pause()
+                }
+              })
+          }
+          .padding(10)
+
+          Row() {
+            Button('finish')
+              .fontSize(30)
+              .fontColor(Color.Black)
+              .onClick(() => {
+                this.flag = true
+                if (this.backAnimator) {
+                  this.backAnimator.finish()
+                }
+              })
+          }
+          .padding(10)
         }
-        .padding(10)
       }
     }
   }

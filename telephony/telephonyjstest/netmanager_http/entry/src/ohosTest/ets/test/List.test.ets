@@ -25,8 +25,11 @@ import NetworkManagerMulticastHTTP1Test from './NetworkManagerMulticastHTTP1.tes
 import NetworkManagerMulticastHTTP2Test from './NetworkManagerMulticastHTTP2.test';
 import NetworkManagerHTTP_Multicast1Test from './NetworkManagerHTTP_Multicast1.test';
 import NetworkManagerHTTP_Multicast2Test from './NetworkManagerHTTP_Multicast2.test';
+import EmptyTest from './Empty.test';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
+    if (sim.getMaxSimCount()>1){
   httpJsunit();
   responseCodeJsunit();
   requestMethodJsunit();
@@ -39,4 +42,7 @@ export default function testsuite() {
   NetworkManagerMulticastHTTP2Test();
   NetworkManagerHTTP_Multicast1Test();
   NetworkManagerHTTP_Multicast2Test();
+}else{
+  EmptyTest()
+}
 }

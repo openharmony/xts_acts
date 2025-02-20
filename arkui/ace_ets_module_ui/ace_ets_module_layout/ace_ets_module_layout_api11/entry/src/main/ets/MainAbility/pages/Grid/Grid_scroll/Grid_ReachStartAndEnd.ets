@@ -23,6 +23,39 @@ struct Grid_ReachStartAndEnd {
 
   build() {
     Column({ space: 5 }) {
+      Button('change grid padding')
+        .id('Grid_ReachStartAndEnd_changePadding')
+        .height('5%')
+        .onClick(() => {
+          this.pad = 30
+        })
+      
+      Row(){
+        Button('to top')
+          .id('Grid_ReachStartAndEnd_toTop')
+          .height('5%')
+          .onClick(() => { // 点击后滑到顶部
+            this.scroller.scrollEdge(Edge.Top)
+          })
+
+        Button('to bottom')
+          .id('Grid_ReachStartAndEnd_toBottom')
+          .height('5%')
+          .onClick(() => { // 点击后滑到底部
+            this.scroller.scrollEdge(Edge.Bottom)
+          })
+      }
+
+      Button('grid_Reset_bt')
+        .id('grid_Reset_bt')
+        .height('5%')
+        .onClick(() => { // reset the init state
+          this.index = 0;
+          this.text2 = ""
+        })
+      Text(`onReachStart${this.index}`).fontSize(14).id('Grid_ReachStartAndEnd_tex1')
+      Text(this.text2).fontSize(14).id('Grid_ReachStartAndEnd_tex2')
+
       Stack({ alignContent: Alignment.BottomEnd }) {
         Grid(this.scroller) {
           ForEach(this.Number, (day: string) => {
@@ -32,7 +65,7 @@ struct Grid_ReachStartAndEnd {
                   .fontSize(16)
                   .backgroundColor(0xF9CF93)
                   .width('100%')
-                  .height(80)
+                  .height('25%')
                   .textAlign(TextAlign.Center)
               }
             }, (day: string) => day)
@@ -58,45 +91,13 @@ struct Grid_ReachStartAndEnd {
         ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.On }) {
           Text()
             .width(20)
-            .height(150)
+            .height('60%')
             .borderRadius(10)
             .backgroundColor('#C0C0C0')
         }.width(20).backgroundColor('#ededed')
         .id('Grid_ReachStartAndEnd_scrollBar')
 
       }.height(300)
-
-
-      Button('to top')
-        .id('Grid_ReachStartAndEnd_toTop')
-        .onClick(() => { // 点击后滑到顶部
-          this.scroller.scrollEdge(Edge.Top)
-        })
-
-      Button('to bottom')
-        .id('Grid_ReachStartAndEnd_toBottom')
-        .onClick(() => { // 点击后滑到底部
-          this.scroller.scrollEdge(Edge.Bottom)
-        })
-
-      Button('change grid padding')
-        .id('Grid_ReachStartAndEnd_changePadding')
-        .onClick(() => {
-          this.pad = 30
-        })
-
-      Text(`onReachStart${this.index}`).id('Grid_ReachStartAndEnd_tex1')
-      Text(this.text2).id('Grid_ReachStartAndEnd_tex2')
-
-
-      Button('grid_Reset_bt')
-        .id('grid_Reset_bt')
-        .onClick(() => { // reset the init state
-          this.index = 0;
-          this.text2 = ""
-
-
-        })
 
     }.width('100%').margin({ top: 5 })
   }

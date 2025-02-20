@@ -31,8 +31,6 @@ import ToggleContentModifier from './ToggleTest/ToggleContentModifier.test'
 import ToggleSwitchStyle from './ToggleTest/ToggleSwitchStyle.test'
 import ToggleContentIsOn from './ToggleTest/ToggleIsOn.test';
 import ToggleContentEnabled from './ToggleTest/ToggleEnabled.test';
-import selectApi1 from './select/selectApi1.test'
-import triggerSelect from './select/triggerSelect.test'
 import slideRange from './SliderTest/slideRange.test'
 
 import SliderAttrs2 from './SliderTest/SliderAttrs2.test'
@@ -61,8 +59,6 @@ export default function testsuite() {
     TimePickerAddApi()
     ToggleContentIsOn();
     ToggleContentEnabled();
-    selectApi1();
-    triggerSelect()
     slideRange()
     SliderAttrs2();
     enableHapticFeedbackTest();

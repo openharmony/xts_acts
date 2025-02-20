@@ -16,7 +16,7 @@
 #include "../manager/plugin_manager.h"
 #include "textarea_onblur_test.h"
 
-#define PARAM_LENGTH 200
+#define PARAM_LENGTH 100
 
 namespace ArkUICapiTest {
 static ArkUI_NodeHandle textArea;

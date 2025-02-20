@@ -39,10 +39,10 @@ struct locationButton_2 {
   @State borderWid: number = 0
   @State borderCol: number = 0xffffffff
   @State borderRad: number = 0
-  @State left: number = 24
-  @State right: number = 24
-  @State top: number = 8
-  @State bottom: number = 8
+  @State left: number = 12
+  @State right: number = 12
+  @State top: number = 4
+  @State bottom: number = 4
   @State middle: number = 4
   @State clipSet: boolean = false
   @State columnWidth: string = '100%'
@@ -178,102 +178,59 @@ struct locationButton_2 {
   build() {
     Row() {
       Column() {
-        LocationButton({
-          icon: LocationIconStyle.FULL_FILLED,
-          text: LocationDescription.CURRENT_LOCATION,
-          buttonType: this.bgType
-        })
-          .onClick((event: ClickEvent, result: LocationButtonOnClickResult) => {
-            try {
-              let clickData:events_emitter.EventData = {
-                data: {
-                  "clickResult": result,
+        Row() {
+          LocationButton({
+            icon: LocationIconStyle.FULL_FILLED,
+            text: LocationDescription.CURRENT_LOCATION,
+            buttonType: this.bgType
+          })
+            .onClick((event: ClickEvent, result: LocationButtonOnClickResult) => {
+              try {
+                let clickData:events_emitter.EventData = {
+                  data: {
+                    "clickResult": result,
+                  }
                 }
-              }
-              let clickEvent:events_emitter.InnerEvent = {
-                eventId: 2,
-                priority: events_emitter.EventPriority.LOW
-              }
-              console.debug("====>page_locationButton_2 onclick result:" + JSON.stringify(result))
-              events_emitter.emit(clickEvent, clickData)
-            } catch (err) {
-              console.debug("====>page_locationButton_2 emit action state err: " + JSON.stringify(err.message))
-            }
-          })
-          .iconSize(this.iconSize)
-          .layoutDirection(this.direct)
-          .position({ x: this.positionX, y: this.positionY })
-          .markAnchor({ x: this.anchorX, y: this.anchorY })
-          .offset({ x: this.offsetX, y: this.offsetY })
-          .fontSize(this.fontSize)
-          .fontStyle(this.fontStyle)
-          .fontWeight(this.fontWeight)
-          .fontFamily(this.fontFamily)
-          .fontColor(this.fontColor)
-          .iconColor(this.iconColor)
-          .backgroundColor(this.bgColor)
-          .borderStyle(this.borderSty)
-          .borderWidth(this.borderWid)
-          .borderColor(this.borderCol)
-          .borderRadius(this.borderRad)
-          .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
-          .textIconSpace(this.middle)
-          .key("keyLocation12")
-          .width(this.widthT)
-          .height(this.heightT)
-          .size({ width: this.widthT, height: this.heightT })
-          .constraintSize({
-            minWidth: this.minWidth,
-            maxWidth: this.maxWidth,
-            minHeight: this.minHeight,
-            maxHeight: this.maxHeight
-          })
-        Button() {
-          Text('--------------------')
-            .fontSize(25)
-            .fontWeight(FontWeight.Bold)
-        }.type(ButtonType.Capsule)
-        .margin({
-          top: 200,
-          bottom:60
-        }).backgroundColor('#00000000')
-        LocationButton({ icon: LocationIconStyle.FULL_FILLED, text: LocationDescription.CURRENT_LOCATION, buttonType: this.bgType })
-          .onClick((event: ClickEvent, result: LocationButtonOnClickResult) => {
-            try {
-              let clickData:events_emitter.EventData = {
-                data: {
-                  "clickResult": result
+                let clickEvent:events_emitter.InnerEvent = {
+                  eventId: 2,
+                  priority: events_emitter.EventPriority.LOW
                 }
+                console.debug("====>page_locationButton_2 onclick result:" + JSON.stringify(result))
+                events_emitter.emit(clickEvent, clickData)
+              } catch (err) {
+                console.debug("====>page_locationButton_2 emit action state err: " + JSON.stringify(err.message))
               }
-              let clickEvent:events_emitter.InnerEvent = {
-                eventId: 2,
-                priority: events_emitter.EventPriority.LOW
-              }
-              console.debug("====>page_locationButton_2 onclick result:" + JSON.stringify(result))
-              events_emitter.emit(clickEvent, clickData)
-            } catch (err) {
-              console.debug("====>page_locationButton_2 emit action state err: " + JSON.stringify(err.message))
-            }
-          })
-          .iconSize(this.iconSize)
-          .layoutDirection(this.direct)
-          .markAnchor({ x: this.anchorX, y: this.anchorY })
-          .offset({ x: this.offsetX, y: this.offsetY })
-          .fontSize(this.fontSize)
-          .fontStyle(this.fontStyle)
-          .fontWeight(this.fontWeight)
-          .fontFamily(this.fontFamily)
-          .fontColor(this.fontColor)
-          .iconColor(this.iconColor)
-          .backgroundColor(this.bgColor)
-          .borderStyle(this.borderSty)
-          .borderWidth(this.borderWid)
-          .borderColor(this.borderCol)
-          .borderRadius(this.borderRad)
-          .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
-          .textIconSpace(this.middle)
-          .key("keyLocation1")
-      }.width(this.columnWidth).height(this.columnHeight).clip(this.clipSet)
+            })
+            .iconSize(this.iconSize)
+            .layoutDirection(this.direct)
+            .position({ x: this.positionX, y: this.positionY })
+            .markAnchor({ x: this.anchorX, y: this.anchorY })
+            .offset({ x: this.offsetX, y: this.offsetY })
+            .fontSize(this.fontSize)
+            .fontStyle(this.fontStyle)
+            .fontWeight(this.fontWeight)
+            .fontFamily(this.fontFamily)
+            .fontColor(this.fontColor)
+            .iconColor(this.iconColor)
+            .backgroundColor(this.bgColor)
+            .borderStyle(this.borderSty)
+            .borderWidth(this.borderWid)
+            .borderColor(this.borderCol)
+            .borderRadius(this.borderRad)
+            .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
+            .textIconSpace(this.middle)
+            .key("keyLocation12")
+            .width(this.widthT)
+            .height(this.heightT)
+            .size({ width: this.widthT, height: this.heightT })
+            .constraintSize({
+              minWidth: this.minWidth,
+              maxWidth: this.maxWidth,
+              minHeight: this.minHeight,
+              maxHeight: this.maxHeight
+            })
+        }.width(100)
+      }.width('100%').alignItems(HorizontalAlign.Center)
     }.height('100%')
   }
 }

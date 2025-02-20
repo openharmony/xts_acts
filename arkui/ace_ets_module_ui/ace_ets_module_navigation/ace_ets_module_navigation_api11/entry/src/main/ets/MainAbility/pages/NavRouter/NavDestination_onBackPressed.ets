@@ -40,7 +40,7 @@ struct NavDestination_onBackPressed {
           .id('NavDestination_onBackPressed_btn1')
         Text(this.message).key('NavDestination_onBackPressed_text1')
       }
-    }.title('NavIndex').navDestination(this.PageMap).height('50%')
+    }.title('NavIndex').navDestination(this.PageMap)
 
   }
 }

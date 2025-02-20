@@ -36,11 +36,23 @@ struct ChildLocalStorageLink0310 {
   build() {
     Column() {
       Text(Array.from(this.set).toString()).id('tv0310ChildSet')
+        .fontSize(9)
+        .height('3%')
       Text(this.map.get('key')).id('tv0310ChildMap')
+        .fontSize(9)
+        .height('3%')
       Text(this.date.toString()).id('tv0310ChildDate')
+        .fontSize(9)
+        .height('3%')
       Text('Hello' + this.und).id('tv0310ChildUnd')
+        .fontSize(9)
+        .height('3%')
       Text('Hello' + this.nul).id('tv0310ChildNull')
+        .fontSize(9)
+        .height('3%')
       Text('Arr' + JSON.stringify(this.arr)).id('tv0310ChildArr')
+        .fontSize(9)
+        .height('3%')
     }
   }
 }
@@ -59,14 +71,28 @@ struct LocalStorageLink0310 {
   build() {
     Column() {
       Text(Array.from(this.set).toString()).id('tv0310ParentSet')
+        .fontSize(9)
+        .height('3%')
       Text(this.map.get('key')).id('tv0310ParentMap')
+        .fontSize(9)
+        .height('3%')
       Text(this.date.toString()).id('tv0310ParentDate')
+        .fontSize(9)
+        .height('3%')
       Text('Hello' + this.und).id('tv0310ParentUnd')
+        .fontSize(9)
+        .height('3%')
       Text('Hello' + this.nul).id('tv0310ParentNull')
+        .fontSize(9)
+        .height('3%')
       Text('Arr' + JSON.stringify(this.arr)).id('tv0310ParentArr')
+        .fontSize(9)
+        .height('3%')
       ChildLocalStorageLink0310()
       Button('Change')
         .id('btnLocalStorageLink0310')
+        .fontSize(9)
+        .height('3%')
         .onClick(() => {
           this.set.add(1)
           this.map.set('key', 'newValue')

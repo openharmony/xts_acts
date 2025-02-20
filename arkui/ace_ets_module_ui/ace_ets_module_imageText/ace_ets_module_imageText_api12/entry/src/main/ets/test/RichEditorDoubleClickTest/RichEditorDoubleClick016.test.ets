@@ -45,7 +45,7 @@ export default function RichEditorDoubleClick016() {
         if (!("RichEditorDoubleClick016" == pages.name)) {
           console.info("get RichEditorDoubleClick016 state pages.name: " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await CommonFunc.sleep(2000);
+          await CommonFunc.sleep(1500);
           console.info("push RichEditorDoubleClick016 success: " + JSON.stringify(result));
         }
       } catch (err) {
@@ -56,43 +56,49 @@ export default function RichEditorDoubleClick016() {
     });
     
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_025
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_025
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_025 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_025
+     * @tc.name  : Test the RichEditor doubleClick event
+     * @tc.desc  : Test the RichEditor doubleClick event by switching to portrait mode and double clicking with the mouse to select it
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_025', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_025 START');
       let driver = Driver.create();
       let rich = await driver.findComponent(ON.id('RichEditorDoubleClick016'));
-      let getBounds = await rich.getBounds();
       await CommonFunc.sleep(500);
-      await driver.click(getBounds.left + 50, getBounds.top + 20);
+      let pointCenter = await rich.getBoundsCenter();
       await CommonFunc.sleep(500);
-      await driver.click(getBounds.left + 110, getBounds.top + 20);
+      await driver.click(pointCenter.x, pointCenter.y);
       await CommonFunc.sleep(100);
-      await driver.click(getBounds.left + 110, getBounds.top + 20);
-      await CommonFunc.sleep(100);
+      await driver.click(pointCenter.x, pointCenter.y);
+      await CommonFunc.sleep(500);
       let message = await driver.findComponent(ON.id('message'));
       let messageText = await message.getText();
       await CommonFunc.sleep(500);
-      expect(messageText).assertContain('{"start":6,"end":7}');
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
+      // 点击复制避免changeOrientation被遮挡
+      let copy = await driver.findComponent(ON.text('复制'));
+      await copy?.click();
+      await CommonFunc.sleep(500);
       let changeOrientation = await driver.findComponent(ON.id('changeOrientation'));
       await changeOrientation.click();
       await CommonFunc.sleep(1500);
-      getBounds = await rich.getBounds();
-      await CommonFunc.sleep(500);
-      await driver.click(getBounds.left + 180, getBounds.top + 20);
-      await CommonFunc.sleep(500);
-      await driver.click(getBounds.left + 110, getBounds.top + 20);
+      await driver.click(pointCenter.x, pointCenter.y);
       await CommonFunc.sleep(100);
-      await driver.click(getBounds.left + 110, getBounds.top + 20);
-      await CommonFunc.sleep(100);
+      await driver.click(pointCenter.x, pointCenter.y);
+      await CommonFunc.sleep(500);
       messageText = await message.getText();
       await CommonFunc.sleep(500);
-      expect(messageText).assertContain('{"start":6,"end":7}');
-      let changeOrientationFalse = await driver.findComponent(ON.id('changeOrientationFalse'));
-      await changeOrientationFalse.click();
+      expect(messageText).assertContain('"start"');
+      expect(messageText).assertContain('"end"');
+      // 点击复制避免changeOrientation被遮挡
+      let copy1 = await driver.findComponent(ON.text('复制'));
+      await copy1?.click();
+      await CommonFunc.sleep(500);
+      await changeOrientation.click();
       await CommonFunc.sleep(1500);
       done();
     });

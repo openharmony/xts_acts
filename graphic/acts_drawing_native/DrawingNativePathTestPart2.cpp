@@ -35,7 +35,23 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-
+class DrawingNativePathPart2Test : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override
+    {
+        // 设置代码
+        std::cout << "DrawingNativePathPart2Test Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativePathPart2Test errorCodeReset before each test case." << std::endl;
+    }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativePathPart2Test Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativePathPart2Test errorCodeReset after each test case." << std::endl;
+    }
+};
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_1900
  * @tc.name: testPathAddArcNormal
@@ -44,17 +60,23 @@ namespace Drawing {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathAddArcNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddArcNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a rectangle object using OH_Drawing_RectCreate.
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 3. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 4. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
     OH_Drawing_PathLineTo(path, 100, 100);
     // 5. Add an arc to the path using OH_Drawing_PathAddArc, which serves as the starting point of the new contour.
     OH_Drawing_PathAddArc(path, rect, 0.0, 0.0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 6. Free the memory.
     OH_Drawing_PathDestroy(path);
     OH_Drawing_RectDestroy(rect);
@@ -68,15 +90,20 @@ HWTEST_F(DrawingNativePathTest, testPathAddArcNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddArcNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddArcNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a rectangle object using OH_Drawing_RectCreate.
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 3. Call OH_Drawing_PathAddArc with a nullptr as the first parameter, expecting OH_DRAWING_ERROR_INVALID_PARAMETER
     // error code.
     OH_Drawing_PathAddArc(nullptr, rect, 0.0, 0.0);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddArc with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddArc(path, nullptr, 0.0, 0.0);
@@ -98,11 +125,15 @@ HWTEST_F(DrawingNativePathTest, testPathAddArcNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddArcAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddArcAbnormal, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a rectangle object using OH_Drawing_RectCreate.
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 3. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 4. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -125,11 +156,15 @@ HWTEST_F(DrawingNativePathTest, testPathAddArcAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddArcMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddArcMaximal, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a rectangle object using OH_Drawing_RectCreate.
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 3. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 4. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -153,11 +188,15 @@ HWTEST_F(DrawingNativePathTest, testPathAddArcMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathAddPathNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddPathNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *src = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(src, nullptr);
     // 3. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(src, 0, 0);
     // 4. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo (create the source
@@ -165,6 +204,8 @@ HWTEST_F(DrawingNativePathTest, testPathAddPathNormal, TestSize.Level0) {
     OH_Drawing_PathLineTo(src, 100, 100);
     // 5. Add the transformed source path to the current path using OH_Drawing_PathAddPath.
     OH_Drawing_PathAddPath(path, src, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 6. Free the memory.
     OH_Drawing_PathDestroy(path);
     OH_Drawing_PathDestroy(src);
@@ -178,17 +219,22 @@ HWTEST_F(DrawingNativePathTest, testPathAddPathNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddPathNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddPathNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *src = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(src, nullptr);
     // 3. Call OH_Drawing_PathAddPath with a nullptr as the first parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
     OH_Drawing_MatrixSetMatrix(matrix, 5, 4, 0, 0, -1, 0, 0, 0, 1);
     OH_Drawing_PathAddPath(nullptr, src, matrix);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddPath with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddPath(path, nullptr, matrix);
@@ -209,11 +255,15 @@ HWTEST_F(DrawingNativePathTest, testPathAddPathNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathAddPathWithMatrixAndModeNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddPathWithMatrixAndModeNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *src = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(src, nullptr);
     // 3. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(src, 0, 0);
     // 4. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo (create the source
@@ -223,9 +273,14 @@ HWTEST_F(DrawingNativePathTest, testPathAddPathWithMatrixAndModeNormal, TestSize
     // parameter enumerates calling this interface.
     OH_Drawing_PathAddMode modes[] = {PATH_ADD_MODE_APPEND, PATH_ADD_MODE_EXTEND};
     for (int i = 0; i < 2; i++) {
+        OH_Drawing_ErrorCodeReset();
         OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+        // add assert
+        EXPECT_NE(matrix, nullptr);
         OH_Drawing_MatrixSetMatrix(matrix, 5, 4, 0, 0, -1, 0, 0, 0, 1);
         OH_Drawing_PathAddPathWithMatrixAndMode(path, src, matrix, modes[i]);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
         OH_Drawing_MatrixDestroy(matrix);
     }
     // 6. Free the memory.
@@ -242,17 +297,24 @@ HWTEST_F(DrawingNativePathTest, testPathAddPathWithMatrixAndModeNormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddPathWithMatrixAndModeNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddPathWithMatrixAndModeNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *src = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(src, nullptr);
     // 3. Call OH_Drawing_PathAddPathWithMatrixAndMode with a nullptr as the first parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_MatrixSetMatrix(matrix, 5, 4, 0, 0, -1, 0, 0, 0, 1);
     OH_Drawing_PathAddPathWithMatrixAndMode(nullptr, src, matrix, PATH_ADD_MODE_APPEND);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddPathWithMatrixAndMode with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddPathWithMatrixAndMode(path, nullptr, matrix, PATH_ADD_MODE_APPEND);
@@ -274,11 +336,15 @@ HWTEST_F(DrawingNativePathTest, testPathAddPathWithMatrixAndModeNull, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathAddPathWithModeNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddPathWithModeNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *src = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(src, nullptr);
     // 3. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(src, 0, 0);
     // 4. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo (create the source
@@ -288,7 +354,10 @@ HWTEST_F(DrawingNativePathTest, testPathAddPathWithModeNormal, TestSize.Level0) 
     // calling this interface.
     OH_Drawing_PathAddMode modes[] = {PATH_ADD_MODE_APPEND, PATH_ADD_MODE_EXTEND};
     for (int i = 0; i < 2; i++) {
+        OH_Drawing_ErrorCodeReset();
         OH_Drawing_PathAddPathWithMode(path, src, modes[i]);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     }
     // 6. Free the memory.
     OH_Drawing_PathDestroy(path);
@@ -302,15 +371,20 @@ HWTEST_F(DrawingNativePathTest, testPathAddPathWithModeNormal, TestSize.Level0) 
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddPathWithModeNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddPathWithModeNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *src = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(src, nullptr);
     // 3. Call OH_Drawing_PathAddPathWithMode with a nullptr as the first parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddPathWithMode(nullptr, src, PATH_ADD_MODE_APPEND);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddPathWithMode with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddPathWithMode(path, nullptr, PATH_ADD_MODE_APPEND);
@@ -328,11 +402,15 @@ HWTEST_F(DrawingNativePathTest, testPathAddPathWithModeNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathAddPathWithOffsetAndModeNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddPathWithOffsetAndModeNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *src = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(src, nullptr);
     // 3. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(src, 0, 0);
     // 4. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo (create the source
@@ -342,7 +420,10 @@ HWTEST_F(DrawingNativePathTest, testPathAddPathWithOffsetAndModeNormal, TestSize
     // parameter enumerates calling this interface.
     OH_Drawing_PathAddMode modes[] = {PATH_ADD_MODE_APPEND, PATH_ADD_MODE_EXTEND};
     for (int i = 0; i < 2; i++) {
+        OH_Drawing_ErrorCodeReset();
         OH_Drawing_PathAddPathWithOffsetAndMode(path, src, 10.0, 10.0, modes[i]);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     }
     // 6. Free the memory.
     OH_Drawing_PathDestroy(path);
@@ -358,15 +439,20 @@ HWTEST_F(DrawingNativePathTest, testPathAddPathWithOffsetAndModeNormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddPathWithOffsetAndModeNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddPathWithOffsetAndModeNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *src = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(src, nullptr);
     // 3. Call OH_Drawing_PathAddPathWithOffsetAndMode with a nullptr as the first parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddPathWithOffsetAndMode(nullptr, src, 10.0, 10.0, PATH_ADD_MODE_APPEND);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddPathWithOffsetAndMode with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddPathWithOffsetAndMode(path, nullptr, 10.0, 10.0, PATH_ADD_MODE_APPEND);
@@ -390,11 +476,15 @@ HWTEST_F(DrawingNativePathTest, testPathAddPathWithOffsetAndModeNull, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddPathWithOffsetAndModeAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddPathWithOffsetAndModeAbnormal, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *src = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(src, nullptr);
     // 3. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(src, 0, 0);
     // 4. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo (create the source
@@ -419,11 +509,15 @@ HWTEST_F(DrawingNativePathTest, testPathAddPathWithOffsetAndModeAbnormal, TestSi
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddPathWithOffsetAndModeMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddPathWithOffsetAndModeMaximal, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *src = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(src, nullptr);
     // 3. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(src, 0, 0);
     // 4. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo (create the source
@@ -445,11 +539,15 @@ HWTEST_F(DrawingNativePathTest, testPathAddPathWithOffsetAndModeMaximal, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathAddOvalNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddOvalNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a rectangle object using OH_Drawing_RectCreate.
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 3. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 4. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -458,7 +556,10 @@ HWTEST_F(DrawingNativePathTest, testPathAddOvalNormal, TestSize.Level0) {
     // enumerates calling this interface.
     OH_Drawing_PathDirection directions[] = {PATH_DIRECTION_CW, PATH_DIRECTION_CCW};
     for (int i = 0; i < 2; i++) {
+        OH_Drawing_ErrorCodeReset();
         OH_Drawing_PathAddOval(path, rect, directions[i]);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     }
     // 6. Free the memory.
     OH_Drawing_PathDestroy(path);
@@ -473,15 +574,20 @@ HWTEST_F(DrawingNativePathTest, testPathAddOvalNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddOvalNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddOvalNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a rectangle object using OH_Drawing_RectCreate.
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 3. Call OH_Drawing_PathAddOval with a nullptr as the first parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddOval(nullptr, rect, PATH_DIRECTION_CW);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddOval with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddOval(path, nullptr, PATH_DIRECTION_CW);
@@ -499,9 +605,11 @@ HWTEST_F(DrawingNativePathTest, testPathAddOvalNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathAddPolygonNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddPolygonNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -515,6 +623,8 @@ HWTEST_F(DrawingNativePathTest, testPathAddPolygonNormal, TestSize.Level0) {
     OH_Drawing_Point2D point4 = {0, 100};
     OH_Drawing_Point2D points[4] = {point1, point2, point3, point4};
     OH_Drawing_PathAddPolygon(path, points, 4, true);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 6. Free the memory.
     OH_Drawing_PathDestroy(path);
 }
@@ -527,9 +637,11 @@ HWTEST_F(DrawingNativePathTest, testPathAddPolygonNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathAddPolygonNormal2, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddPolygonNormal2, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -543,6 +655,8 @@ HWTEST_F(DrawingNativePathTest, testPathAddPolygonNormal2, TestSize.Level0) {
     OH_Drawing_Point2D point4 = {0, 100};
     OH_Drawing_Point2D points[4] = {point1, point2, point3, point4};
     OH_Drawing_PathAddPolygon(path, points, 4, false);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 6. Free the memory.
     OH_Drawing_PathDestroy(path);
 }
@@ -555,9 +669,11 @@ HWTEST_F(DrawingNativePathTest, testPathAddPolygonNormal2, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddPolygonNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddPolygonNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     OH_Drawing_Point2D point1 = {0, 0};
     OH_Drawing_Point2D point2 = {100, 0};
     OH_Drawing_Point2D point3 = {100, 100};
@@ -567,10 +683,12 @@ HWTEST_F(DrawingNativePathTest, testPathAddPolygonNull, TestSize.Level3) {
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddPolygon(nullptr, points, 4, true);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Call OH_Drawing_PathAddPolygon with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddPolygon(path, nullptr, 4, true);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathAddPolygon with the third parameter as 0, expecting OH_DRAWING_ERROR_INVALID_PARAMETER
     // error code.
     OH_Drawing_PathAddPolygon(path, points, 0, true);
@@ -587,9 +705,11 @@ HWTEST_F(DrawingNativePathTest, testPathAddPolygonNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddPolygonAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddPolygonAbnormal, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -602,11 +722,17 @@ HWTEST_F(DrawingNativePathTest, testPathAddPolygonAbnormal, TestSize.Level3) {
     OH_Drawing_Point2D point4 = {0, 100};
     OH_Drawing_Point2D points[4] = {point1, point2, point3, point4};
     OH_Drawing_PathAddPolygon(path, points, 4, true);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Add a polygon to the path with the second parameter's y-coordinate as an integer or character type, which will
     // succeed.
     OH_Drawing_PathAddPolygon(path, points, 4, true);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 6. Add a polygon to the path with the third parameter as a float or character type, which will succeed.
     OH_Drawing_PathAddPolygon(path, points, 4.0f, true);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 7. Free the memory.
     OH_Drawing_PathDestroy(path);
 }
@@ -619,9 +745,11 @@ HWTEST_F(DrawingNativePathTest, testPathAddPolygonAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddPolygonMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddPolygonMaximal, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -633,6 +761,8 @@ HWTEST_F(DrawingNativePathTest, testPathAddPolygonMaximal, TestSize.Level3) {
     OH_Drawing_Point2D point4 = {FLT_MAX + 1, 100};
     OH_Drawing_Point2D points[4] = {point1, point2, point3, point4};
     OH_Drawing_PathAddPolygon(path, points, 4, true);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Add a polygon to the path with the second parameter's y-coordinate set to FLT_MAX + 1, no crash occurs.
     OH_Drawing_Point2D point5 = {0, FLT_MAX + 1};
     OH_Drawing_Point2D point6 = {100, FLT_MAX + 1};
@@ -640,6 +770,8 @@ HWTEST_F(DrawingNativePathTest, testPathAddPolygonMaximal, TestSize.Level3) {
     OH_Drawing_Point2D point8 = {0, FLT_MAX + 1};
     OH_Drawing_Point2D points2[4] = {point5, point6, point7, point8};
     OH_Drawing_PathAddPolygon(path, points2, 4, true);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 6. Free the memory.
     OH_Drawing_PathDestroy(path);
 }
@@ -652,16 +784,22 @@ HWTEST_F(DrawingNativePathTest, testPathAddPolygonMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathAddCircleNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddCircleNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
     OH_Drawing_PathLineTo(path, 100, 100);
     // 4. Add a circle to the path with the specified direction.
     OH_Drawing_PathAddCircle(path, 50, 50, 10, OH_Drawing_PathDirection::PATH_DIRECTION_CCW);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_PathAddCircle(path, 50, 50, 10, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Free the memory.
     OH_Drawing_PathDestroy(path);
 }
@@ -674,9 +812,11 @@ HWTEST_F(DrawingNativePathTest, testPathAddCircleNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddCircleNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddCircleNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Call OH_Drawing_PathAddCircle with a nullptr as the first parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathAddCircle(nullptr, 50, 50, 10, OH_Drawing_PathDirection::PATH_DIRECTION_CCW);
@@ -701,19 +841,27 @@ HWTEST_F(DrawingNativePathTest, testPathAddCircleNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddCircleAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddCircleAbnormal, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
     OH_Drawing_PathLineTo(path, 100, 100);
     // 4. Add a circle to the path with the second parameter as an integer, which will succeed.
     OH_Drawing_PathAddCircle(path, 50, 50.0f, 10.0f, OH_Drawing_PathDirection::PATH_DIRECTION_CCW);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Add a circle to the path with the third parameter as an integer, which will succeed.
     OH_Drawing_PathAddCircle(path, 50.0f, 50, 10.0f, OH_Drawing_PathDirection::PATH_DIRECTION_CCW);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 6. Add a circle to the path with the fourth parameter as an integer, which will succeed.
     OH_Drawing_PathAddCircle(path, 50.0f, 50.0f, 10, OH_Drawing_PathDirection::PATH_DIRECTION_CCW);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 7. Free the memory.
     OH_Drawing_PathDestroy(path);
 }
@@ -726,9 +874,11 @@ HWTEST_F(DrawingNativePathTest, testPathAddCircleAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddCircleMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathAddCircleMaximal, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -751,16 +901,22 @@ HWTEST_F(DrawingNativePathTest, testPathAddCircleMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathBuildFromSvgStringNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathBuildFromSvgStringNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
     OH_Drawing_PathLineTo(path, 100, 100);
     // 4. Parse the path represented by the SVG string using OH_Drawing_PathBuildFromSvgString.
     const char *svgString = "M 0 0 L 100 100";
-    OH_Drawing_PathBuildFromSvgString(path, svgString);
+    bool svgResult = OH_Drawing_PathBuildFromSvgString(path, svgString);
+    // add assert
+    EXPECT_EQ(svgResult, true);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Free the memory.
     OH_Drawing_PathDestroy(path);
 }
@@ -773,13 +929,16 @@ HWTEST_F(DrawingNativePathTest, testPathBuildFromSvgStringNormal, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathBuildFromSvgStringNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathBuildFromSvgStringNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Call OH_Drawing_PathBuildFromSvgString with a nullptr as the first parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathBuildFromSvgString(nullptr, "M 0 0 L 100 100");
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. Call OH_Drawing_PathBuildFromSvgString with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathBuildFromSvgString(path, nullptr);
@@ -796,9 +955,11 @@ HWTEST_F(DrawingNativePathTest, testPathBuildFromSvgStringNull, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathContainsNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathContainsNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -811,6 +972,8 @@ HWTEST_F(DrawingNativePathTest, testPathContainsNormal, TestSize.Level0) {
     OH_Drawing_PathClose(path);
     // 7. Check if the specified coordinates are contained in the path using OH_Drawing_PathContains.
     EXPECT_EQ(OH_Drawing_PathContains(path, 50, 50), true);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 8. Free the memory.
     OH_Drawing_PathDestroy(path);
 }
@@ -823,12 +986,16 @@ HWTEST_F(DrawingNativePathTest, testPathContainsNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathContainsNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathContainsNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Call OH_Drawing_PathContains with a nullptr as the first parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathContains(nullptr, 50, 50);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. Call OH_Drawing_PathContains with the second parameter as 0.00, the call fails without crashing.
     OH_Drawing_PathContains(path, 0.0, 50);
     // 4. Call OH_Drawing_PathContains with the third parameter as 0.00, the call fails without crashing.
@@ -845,9 +1012,11 @@ HWTEST_F(DrawingNativePathTest, testPathContainsNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathContainsAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathContainsAbnormal, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -874,9 +1043,11 @@ HWTEST_F(DrawingNativePathTest, testPathContainsAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathContainsMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathContainsMaximal, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -905,11 +1076,15 @@ HWTEST_F(DrawingNativePathTest, testPathContainsMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathTransformNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathTransformNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a matrix object using OH_Drawing_MatrixCreate.
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 0, 0, -1, 0, 0, 0, 1);
     // 3. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
@@ -917,6 +1092,8 @@ HWTEST_F(DrawingNativePathTest, testPathTransformNormal, TestSize.Level0) {
     OH_Drawing_PathLineTo(path, 100, 100);
     // 5. Transform the path using OH_Drawing_PathTransform.
     OH_Drawing_PathTransform(path, matrix);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 6. Free the memory.
     OH_Drawing_PathDestroy(path);
     OH_Drawing_MatrixDestroy(matrix);
@@ -930,16 +1107,21 @@ HWTEST_F(DrawingNativePathTest, testPathTransformNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathTransformNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathTransformNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a matrix object using OH_Drawing_MatrixCreate.
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 0, 0, -1, 0, 0, 0, 1);
     // 3. Call OH_Drawing_PathTransform with a nullptr as the first parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathTransform(nullptr, matrix);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathTransform with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathTransform(path, nullptr);
@@ -957,11 +1139,15 @@ HWTEST_F(DrawingNativePathTest, testPathTransformNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathTransformWithPerspectiveClipNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathTransformWithPerspectiveClipNormal, TestSize.Level0) {
     // 1. Create a path object src using OH_Drawing_PathCreate.
     OH_Drawing_Path *src = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(src, nullptr);
     // 2. Create a matrix object using OH_Drawing_MatrixCreate.
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 0, 0, -1, 0, 0, 0, 1);
     // 3. Create a path object dst using OH_Drawing_PathCreate.
     OH_Drawing_Path *dst = OH_Drawing_PathCreate();
@@ -971,6 +1157,8 @@ HWTEST_F(DrawingNativePathTest, testPathTransformWithPerspectiveClipNormal, Test
     OH_Drawing_PathLineTo(src, 100, 100);
     // 6. Transform the path using OH_Drawing_PathTransformWithPerspectiveClip, with the fourth parameter set to true.
     OH_Drawing_PathTransformWithPerspectiveClip(src, matrix, dst, true);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 7. Free the memory.
     OH_Drawing_PathDestroy(src);
     OH_Drawing_PathDestroy(dst);
@@ -985,19 +1173,27 @@ HWTEST_F(DrawingNativePathTest, testPathTransformWithPerspectiveClipNormal, Test
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathTransformWithPerspectiveClipNormal2, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathTransformWithPerspectiveClipNormal2, TestSize.Level0) {
     // 1. Create a path object src using OH_Drawing_PathCreate.
     OH_Drawing_Path *src = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(src, nullptr);
     // 2. Create a matrix object using OH_Drawing_MatrixCreate.
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 3. Create a path object dst using OH_Drawing_PathCreate.
     OH_Drawing_Path *dst = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(dst, nullptr);
     // 4. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(src, 0, 0);
     // 5. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
     OH_Drawing_PathLineTo(src, 100, 100);
     // 6. Transform the path using OH_Drawing_PathTransformWithPerspectiveClip, with the fourth parameter set to false.
     OH_Drawing_PathTransformWithPerspectiveClip(src, matrix, dst, false);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 7. Free the memory.
     OH_Drawing_PathDestroy(src);
     OH_Drawing_PathDestroy(dst);
@@ -1012,17 +1208,24 @@ HWTEST_F(DrawingNativePathTest, testPathTransformWithPerspectiveClipNormal2, Tes
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathTransformWithPerspectiveClipNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathTransformWithPerspectiveClipNull, TestSize.Level3) {
     // 1. Create a path object src using OH_Drawing_PathCreate.
     OH_Drawing_Path *src = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(src, nullptr);
     // 2. Create a matrix object using OH_Drawing_MatrixCreate.
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 3. Create a path object dst using OH_Drawing_PathCreate.
     OH_Drawing_Path *dst = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(dst, nullptr);
     // 4. Call OH_Drawing_PathTransformWithPerspectiveClip with a nullptr as the first parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathTransformWithPerspectiveClip(nullptr, matrix, dst, true);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 5. Call OH_Drawing_PathTransformWithPerspectiveClip with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathTransformWithPerspectiveClip(src, nullptr, dst, true);
@@ -1043,9 +1246,11 @@ HWTEST_F(DrawingNativePathTest, testPathTransformWithPerspectiveClipNull, TestSi
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathSetFillTypeNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathSetFillTypeNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -1059,9 +1264,17 @@ HWTEST_F(DrawingNativePathTest, testPathSetFillTypeNormal, TestSize.Level0) {
     // 7. Set the fill type of the path using OH_Drawing_PathSetFillType, with the second parameter iterating through
     // the enumeration.
     OH_Drawing_PathSetFillType(path, OH_Drawing_PathFillType::PATH_FILL_TYPE_WINDING);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_PathSetFillType(path, OH_Drawing_PathFillType::PATH_FILL_TYPE_EVEN_ODD);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_PathSetFillType(path, OH_Drawing_PathFillType::PATH_FILL_TYPE_INVERSE_WINDING);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_PathSetFillType(path, OH_Drawing_PathFillType::PATH_FILL_TYPE_INVERSE_EVEN_ODD);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 8. Free the memory.
     OH_Drawing_PathDestroy(path);
 }
@@ -1074,9 +1287,11 @@ HWTEST_F(DrawingNativePathTest, testPathSetFillTypeNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathSetFillTypeNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathSetFillTypeNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Call OH_Drawing_PathSetFillType with a nullptr as the first parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathSetFillType(nullptr, OH_Drawing_PathFillType::PATH_FILL_TYPE_WINDING);
@@ -1097,9 +1312,11 @@ HWTEST_F(DrawingNativePathTest, testPathSetFillTypeNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathSetFillTypeMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathSetFillTypeMultipleCalls, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -1127,9 +1344,11 @@ HWTEST_F(DrawingNativePathTest, testPathSetFillTypeMultipleCalls, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathGetLengthNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathGetLengthNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -1149,9 +1368,11 @@ HWTEST_F(DrawingNativePathTest, testPathGetLengthNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathGetLengthNormal2, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathGetLengthNormal2, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -1172,9 +1393,11 @@ HWTEST_F(DrawingNativePathTest, testPathGetLengthNormal2, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathGetLengthNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathGetLengthNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Call OH_Drawing_PathGetLength with a nullptr as the first parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathGetLength(nullptr, true);
@@ -1191,17 +1414,23 @@ HWTEST_F(DrawingNativePathTest, testPathGetLengthNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathGetBoundsNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathGetBoundsNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a rectangle object using OH_Drawing_RectCreate.
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 3. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 4. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
     OH_Drawing_PathLineTo(path, 100, 100);
     // 5. Get the minimum bounding box that contains the path by calling OH_Drawing_PathGetBounds.
     OH_Drawing_PathGetBounds(path, rect);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 6. Free the memory.
     OH_Drawing_PathDestroy(path);
     OH_Drawing_RectDestroy(rect);
@@ -1215,15 +1444,20 @@ HWTEST_F(DrawingNativePathTest, testPathGetBoundsNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathGetBoundsNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathGetBoundsNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a rectangle object using OH_Drawing_RectCreate.
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 3. Call OH_Drawing_PathGetBounds with a nullptr as the first parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathGetBounds(nullptr, rect);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. Call OH_Drawing_PathGetBounds with a nullptr as the second parameter, expecting
     // OH_DRAWING_ERROR_INVALID_PARAMETER error code.
     OH_Drawing_PathGetBounds(path, nullptr);
@@ -1241,9 +1475,11 @@ HWTEST_F(DrawingNativePathTest, testPathGetBoundsNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathCloseNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathCloseNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -1252,6 +1488,8 @@ HWTEST_F(DrawingNativePathTest, testPathCloseNormal, TestSize.Level0) {
     OH_Drawing_PathLineTo(path, 100, 0);
     // 5. Close the path by adding a line segment from the last point of the path to the starting point.
     OH_Drawing_PathClose(path);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 6. Free the memory.
     OH_Drawing_PathDestroy(path);
 }
@@ -1264,9 +1502,11 @@ HWTEST_F(DrawingNativePathTest, testPathCloseNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathCloseNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathCloseNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Call OH_Drawing_PathClose with nullptr as the parameter, expecting OH_DRAWING_ERROR_INVALID_PARAMETER error
     // code.
     OH_Drawing_PathClose(nullptr);
@@ -1283,20 +1523,31 @@ HWTEST_F(DrawingNativePathTest, testPathCloseNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathOffsetNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathOffsetNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *dst = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(dst, nullptr);
     // 3. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
     OH_Drawing_PathLineTo(path, 100, 100);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Offset all points in the path by a certain distance along the x and y axes, and store the result in the
     // destination path object using OH_Drawing_PathOffset.
     OH_Drawing_PathOffset(path, dst, 10, 10);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 6. Free the memory.
     OH_Drawing_PathDestroy(path);
+    OH_Drawing_PathDestroy(dst);
 }
 
 /*
@@ -1307,11 +1558,15 @@ HWTEST_F(DrawingNativePathTest, testPathOffsetNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathOffsetNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathOffsetNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *dst = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(dst, nullptr);
     // 3. Call OH_Drawing_PathOffset with a nullptr as the first parameter, expecting OH_DRAWING_ERROR_INVALID_PARAMETER
     // error code.
     OH_Drawing_PathOffset(nullptr, dst, 10, 10);
@@ -1335,11 +1590,15 @@ HWTEST_F(DrawingNativePathTest, testPathOffsetNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathOffsetAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathOffsetAbnormal, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *dst = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(dst, nullptr);
     // 3. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 4. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -1361,11 +1620,15 @@ HWTEST_F(DrawingNativePathTest, testPathOffsetAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathOffsetMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathOffsetMaximal, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *dst = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(dst, nullptr);
     // 3. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 4. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
@@ -1387,15 +1650,23 @@ HWTEST_F(DrawingNativePathTest, testPathOffsetMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathResetNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathPart2Test, testPathResetNormal, TestSize.Level0) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
     OH_Drawing_PathLineTo(path, 100, 100);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Reset the custom path data using OH_Drawing_PathReset.
     OH_Drawing_PathReset(path);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Free the memory.
     OH_Drawing_PathDestroy(path);
 }
@@ -1408,9 +1679,11 @@ HWTEST_F(DrawingNativePathTest, testPathResetNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathResetNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathResetNull, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Call OH_Drawing_PathReset with nullptr as the parameter, expecting OH_DRAWING_ERROR_INVALID_PARAMETER error
     // code.
     OH_Drawing_PathReset(nullptr);
@@ -1427,9 +1700,11 @@ HWTEST_F(DrawingNativePathTest, testPathResetNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathResetMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativePathPart2Test, testPathResetMultipleCalls, TestSize.Level3) {
     // 1. Create a path object using OH_Drawing_PathCreate.
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
     OH_Drawing_PathMoveTo(path, 0, 0);
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.

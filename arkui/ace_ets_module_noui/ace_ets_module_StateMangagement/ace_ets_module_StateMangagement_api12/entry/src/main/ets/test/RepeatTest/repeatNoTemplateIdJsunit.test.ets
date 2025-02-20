@@ -58,19 +58,19 @@ export default function repeatNoTemplateIdJsunit() {
       console.info('RepeatEachJsunit_0100 START');
       await CommonFunc.sleep(1000);
 
-      let strJson = getInspectorByKey('text3');
+      let strJson = getInspectorByKey('textNo3');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[repeatNoTemplateIdJsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual("3:3eachMessage123");
       console.info('[repeatNoTemplateIdJsunit_0100] END');
 
-      let strJson1 = getInspectorByKey('text4');
+      let strJson1 = getInspectorByKey('textNo4');
       let obj1: ESObject = JSON.parse(strJson1);
       console.info("[repeatNoTemplateIdJsunit_0100] component obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual("4:4eachMessage123");
       console.info('[repeatNoTemplateIdJsunit_0100] END');
 
-      let strJson2 = getInspectorByKey('text5');
+      let strJson2 = getInspectorByKey('textNo5');
       let obj2: ESObject = JSON.parse(strJson2);
       console.info("[repeatNoTemplateIdJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.content).assertEqual("5:5eachMessage123");

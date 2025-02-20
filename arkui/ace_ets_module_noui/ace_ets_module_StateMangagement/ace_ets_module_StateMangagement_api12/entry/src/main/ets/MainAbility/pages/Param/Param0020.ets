@@ -39,22 +39,22 @@ struct ChildParam0020 {
   @Param obj: Object = false
 
   build() {
-    Column({space: 5}) {
+    Column() {
       Text(this.dataClass.name)
         .id('tvChildParam00201')
-        .fontSize(25)
+        .fontSize(9)
       Text(this.num.toString())
         .id('tvChildParam00202')
-        .fontSize(25)
+        .fontSize(9)
       Text(this.str)
         .id('tvChildParam00203')
-        .fontSize(25)
+        .fontSize(9)
       Text(JSON.stringify(this.boo))
         .id('tvChildParam00204')
-        .fontSize(25)
+        .fontSize(9)
       Text(this.obj.toString())
         .id('tvChildParam00205')
-        .fontSize(25)
+        .fontSize(9)
     }
   }
 }

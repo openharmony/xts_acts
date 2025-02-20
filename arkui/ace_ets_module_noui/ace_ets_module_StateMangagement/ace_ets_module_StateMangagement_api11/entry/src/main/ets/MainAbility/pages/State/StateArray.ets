@@ -36,43 +36,50 @@ struct StateArray {
   @State ClassA: sArrClassA = new sArrClassA("Hello", new sArrModel(6))
 
   build() {
-    Column({ space: 20 }) {
-      Button("Reset").id("StateArray_reset")
+    Column() {
+      Button("Reset").id("StateArray_reset").height('5%')
         .onClick(() => {
           this.title = [new sArrModel(11), new sArrModel(1)]
           this.ClassA = new sArrClassA("Hello", new sArrModel(6))
         })
-      Text('title：' + JSON.stringify(this.title)).fontSize(20).margin(15)
+      Text('title：' + JSON.stringify(this.title)).fontSize(9)
+        .height('5%')
         .key("text_Array")
-      Button('Click to change value to the array').fontSize(15).margin(5).margin(10)
+      Button('Click to change value to the array').fontSize(9)
+        .height('5%')
         .key("change_Array")
         .onClick(() => {
           // 改变某一个Array值
           this.title[0] = new sArrModel(8)
         })
 
-      Button('Click to delete value to the array').fontSize(15).margin(5).margin(10)
+      Button('Click to delete value to the array').fontSize(9)
+        .height('5%')
         .key("delete_Array")
         .onClick(() => {
           this.title.pop()
         })
 
-      Button('Click to add value to the array').fontSize(15).margin(5).margin(10)
+      Button('Click to add value to the array').fontSize(9)
+        .height('5%')
         .key("add_Array")
         .onClick(() => {
           this.title.push(new sArrModel(12))
         })
 
-      Text('ClassA：' + JSON.stringify(this.ClassA)).fontSize(20).margin(5)
+      Text('ClassA：' + JSON.stringify(this.ClassA)).fontSize(9)
+        .height('5%')
         .key("text_ClassA")
-      Button('Click to change Parent Component Property Values').fontSize(10).margin(5).margin(10)
+      Button('Click to change Parent Component Property Values').fontSize(9)
+        .height('5%')
         .key("change_Parent")
         .onClick(() => {
           // 动态修改父组件属性值
           this.ClassA.value = "World"
         })
 
-      Button('Click to change self Component Property Values').fontSize(10).margin(5).margin(10)
+      Button('Click to change self Component Property Values').fontSize(9)
+        .height('5%')
         .key("change_Self")
         .onClick(() => {
           // 动态修改自组件属性值

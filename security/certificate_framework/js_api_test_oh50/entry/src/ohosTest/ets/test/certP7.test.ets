@@ -868,7 +868,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
         generator.addSigner(x509Cert, keyInfo, signer);
       } catch (error) {
         console.error(`CertP7ExtCms_Func_1601 catch error: ${JSON.stringify(error)}`);
-        expect(error.code).assertEqual(19030008);
+        expect(error.code).assertEqual(cert.CertResult.ERR_MAYBE_WRONG_PASSWORD);
       }
       done();
     });
@@ -1677,7 +1677,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
         expect(null).assertFail();
       } catch (error) {
         console.error(`CertP7ExtCms_Func_3500 catch error: ${JSON.stringify(error)}`);
-        expect(error.code).assertEqual(19030008);
+        expect(error.code).assertEqual(cert.CertResult.ERR_MAYBE_WRONG_PASSWORD);
       }
       done();
     });

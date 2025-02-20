@@ -23,13 +23,13 @@
 #include <multimedia/player_framework/native_avformat.h>
 #include <multimedia/player_framework/native_avbuffer.h>
 #include <pthread.h>
+#include <thread>
 #include <queue>
 #include <fstream>
 #include <iostream>
 
 #define FAIL (-1)
 #define SUCCESS 0
-
 constexpr uint32_t DEFAULT_SAMPLERATE = 44100;
 constexpr uint32_t DEFAULT_BITRATE = 32000;
 constexpr uint32_t DEFAULT_CHANNEL_COUNT = 2;
@@ -1082,6 +1082,162 @@ static napi_value OHAudioDecoderViVid(napi_env env, napi_callback_info info)
     return result;
 }
 
+static uint32_t g_outputFormatChangedTimes = 0;
+static int32_t g_outputSampleRate = 0;
+static int32_t g_outputChannels = 0;
+static OH_AVCodec *g_audioDec = nullptr;
+static std::atomic<bool> g_isRunning(false);
+static std::ifstream g_inputFile;
+
+static void TestOnError(OH_AVCodec *codec, int32_t errorCode, void *userData)
+{
+    (void)codec;
+    (void)errorCode;
+    (void)userData;
+}
+static void TestOnStreamChanged(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
+{
+    (void)codec;
+    (void)userData;
+    g_outputFormatChangedTimes++;
+    OH_AVFormat_GetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, &g_outputChannels);
+    OH_AVFormat_GetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, &g_outputSampleRate);
+}
+static void TestOnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+{
+    (void)codec;
+    ADecSignal *signal = static_cast<ADecSignal *>(userData);
+    unique_lock<mutex> lock(signal->inMutex_);
+    signal->inQueue_.push(index);
+    signal->inBufferQueue_.push(buffer);
+    signal->inCond_.notify_all();
+}
+static void TestOnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+{
+    (void)buffer;
+    (void)userData;
+    OH_AudioCodec_FreeOutputBuffer(codec, index);
+}
+
+static bool ReadBuffer(OH_AVBuffer *buffer, uint32_t index)
+{
+    OH_AVCodecBufferAttr info;
+    uint64_t needSize;
+    bool readResult = false;
+    do {
+        g_inputFile.read(reinterpret_cast<char *>(&needSize), sizeof(needSize));
+        if (g_inputFile.eof() || g_inputFile.gcount() == 0 || needSize == 0) {
+            break;
+        }
+        if (g_inputFile.gcount() != sizeof(needSize)) {
+            break;
+        }
+        info.size = (int32_t)needSize;
+        g_inputFile.read(reinterpret_cast<char *>(&info.pts), sizeof(info.pts));
+        if (g_inputFile.gcount() != sizeof(info.pts)) {
+            break;
+        }
+        info.flags = AVCODEC_BUFFER_FLAGS_NONE;
+        OH_AVBuffer_SetBufferAttr(buffer, &info);
+        g_inputFile.read((char *)OH_AVBuffer_GetAddr(buffer), info.size);
+        if (g_inputFile.gcount() != info.size) {
+            break;
+        }
+        readResult = true;
+    } while (0);
+
+    if (!readResult) {
+        info.size = 1;
+        info.flags = AVCODEC_BUFFER_FLAGS_EOS;
+        OH_AVBuffer_SetBufferAttr(buffer, &info);
+    }
+    return readResult;
+}
+
+void InputFunc()
+{
+    g_inputFile.open("/data/storage/el2/base/haps/entry_test/files/aac_2c_44100hz_199k_lc.dat", std::ios::binary);
+    if (!g_inputFile.is_open()) {
+        return;
+    }
+    int32_t i = 0;
+    while (g_isRunning.load()) {
+        unique_lock<mutex> lock(signal_->inMutex_);
+        signal_->inCond_.wait(lock, []() { return (signal_->inQueue_.size() > 0 || !g_isRunning.load()); });
+
+        if (!g_isRunning.load()) {
+            break;
+        }
+
+        uint32_t index = signal_->inQueue_.front();
+        auto buffer = signal_->inBufferQueue_.front();
+        if (buffer == nullptr) {
+            break;
+        }
+        if (ReadBuffer(buffer, index) == false) {
+            OH_AudioCodec_PushInputBuffer(g_audioDec, index);
+            signal_->inBufferQueue_.pop();
+            signal_->inQueue_.pop();
+            break;
+        }
+        int32_t ret = OH_AudioCodec_PushInputBuffer(g_audioDec, index);
+        signal_->inQueue_.pop();
+        signal_->inBufferQueue_.pop();
+        if (ret != 0) {
+            break;
+        }
+    }
+    g_inputFile.close();
+    g_isRunning.store(false);
+    signal_->startCond_.notify_all();
+}
+
+static napi_value OHAudioDecoderOutputFormatChange(napi_env env, napi_callback_info info)
+{
+    int backParam = FAIL;
+    napi_value result = nullptr;
+    uint32_t index = 0;
+    OH_AVErrCode checkParam;
+    OH_AVFormat *format = nullptr;
+    signal_ = new ADecSignal();
+    format = OH_AVFormat_Create();
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLERATE);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_BITRATE, DEFAULT_BITRATE);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_S16LE);
+    // not match actual channels
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, 1);
+    g_audioDec = OH_AudioCodec_CreateByMime(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
+    OH_AVCodecCallback callback = {&TestOnError, &TestOnStreamChanged, &TestOnNeedInputBuffer, &TestOnNewOutputBuffer};
+
+    OH_AudioCodec_RegisterCallback(g_audioDec, callback, signal_);
+    OH_AudioCodec_Configure(g_audioDec, format);
+    g_isRunning.store(true);
+    std::thread inputLoop(InputFunc);
+
+    OH_AudioCodec_Start(g_audioDec);
+    {
+        unique_lock<mutex> lock(signal_->startMutex_);
+        signal_->startCond_.wait(lock, []() { return (!(g_isRunning.load())); });
+    }
+
+    OH_AudioCodec_Stop(g_audioDec);
+    OH_AudioCodec_Destroy(g_audioDec);
+    OH_AVFormat_Destroy(format);
+    if (inputLoop.joinable()) {
+        inputLoop.join();
+    }
+    if (g_outputSampleRate == DEFAULT_SAMPLERATE && g_outputChannels == DEFAULT_CHANNEL_COUNT &&
+        g_outputFormatChangedTimes == 1) {
+        backParam = SUCCESS;
+    }
+    g_outputFormatChangedTimes = 0;
+    delete signal_;
+    signal_ = nullptr;
+
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -1172,6 +1328,8 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"OHAudioDecoderViVid", nullptr, OHAudioDecoderViVid, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        {"OHAudioDecoderOutputFormatChange", nullptr, OHAudioDecoderOutputFormatChange, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

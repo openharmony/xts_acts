@@ -209,8 +209,9 @@ export default function HapNapiLoadTest() {
         TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0007';
         console.info(TAG, ' start');
         let har: ESObject = testNapi.loadModuleWithInfo('harTwo', 'com.acts.arttsnapiloadtest/entry_tes');
+        expect(har == undefined).assertTrue;
       } catch (err) {
-        expect(5).assertEqual(5);
+        expect().assertFail();
       }
     })
 
@@ -226,9 +227,10 @@ export default function HapNapiLoadTest() {
       try {
         TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0008';
         console.info(TAG, ' start');
-        let har: ESObject = testNapi.loadModuleWithInfo('hspTwo', 'com.acts.arttsnapiloadtest/entry_tes');
+        let hsp: ESObject = testNapi.loadModuleWithInfo('hspTwo', 'com.acts.arttsnapiloadtest/entry_tes');
+        expect(hsp == undefined).assertTrue;
       } catch (err) {
-        expect(5).assertEqual(5);
+        expect().assertFail();
       }
 
     })
@@ -320,6 +322,166 @@ export default function HapNapiLoadTest() {
      */
     it('ARK_ETSRuntime_HAP_NAPI_LOAD_0015', 0, async () => {
       await testReNapiTaskPool()
+    })
+
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0016
+     * @tc.name: test har loading from hap
+     * @tc.desc: Test loading the HAR package into the HAP package
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0016', 0, () => {
+      TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0016';
+      console.info(TAG, ' start');
+      let har: ESObject = testNapi.loadModule('harTwo');
+      console.info(TAG, 'har: ', JSON.stringify(har))
+      let argc1 = 2;
+      let argc2 = 3;
+      let result: number = har.add(argc1, argc2);
+      console.info(TAG, 'result: ', result);
+      expect(result).assertEqual(5);
+    })
+
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0017
+     * @tc.name: test har file loading from hap
+     * @tc.desc: Test loading files from the Har package into the HAP package
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0017', 0, () => {
+      TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0017';
+      console.info(TAG, ' start');
+      let harFile: ESObject = testNapi.loadModule('harTwo/Index');
+      console.info(TAG, 'harFile: ', JSON.stringify(harFile))
+      let argc1 = 2;
+      let argc2 = 3;
+      let result: number = harFile.add(argc1, argc2);
+      console.info(TAG, 'result: ', result);
+      expect(result).assertEqual(5);
+    })
+    
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0018
+     * @tc.name: test hsp loading from hap
+     * @tc.desc: Test loading the HSP package in the HAP package
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0018', 0, () => {
+      TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0018';
+      console.info(TAG, ' start');
+      let hsp: ESObject = testNapi.loadModule('hspTwo');
+      console.info(TAG, 'hsp: ', JSON.stringify(hsp))
+      let argc1 = 2;
+      let argc2 = 3;
+      let result: number = hsp.add(argc1, argc2);
+      console.info(TAG, 'result: ', result);
+      expect(result).assertEqual(5);
+    })
+
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0019
+     * @tc.name: test hsp file loading from hap
+     * @tc.desc: Test loading files from the HSP package in the HAP package
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0019', 0, () => {
+      TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0019';
+      console.info(TAG, ' start');
+      let hspFile: ESObject = testNapi.loadModule('hspTwo/Test');
+      console.info(TAG, 'hspFile: ', JSON.stringify(hspFile))
+      let argc1 = 2;
+      let argc2 = 3;
+      let result: number = hspFile.add(argc1, argc2);
+      console.info(TAG, 'result: ', result);
+      expect(result).assertEqual(5);
+    })
+    
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0020
+     * @tc.name: test loading system modules
+     * @tc.desc: Test loading system modules in HAP package
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0020', 0, () => {
+      TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0020';
+      console.info(TAG, ' start');
+      let myLog: ESObject = testNapi.loadModule('@ohos.hilog');
+      try {
+        myLog.info(0x0000, 'SystemModule', TAG + ' hilog print success');
+        expect(5).assertEqual(5);
+      } catch (err) {
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0021
+     * @tc.name: test loading system modules
+     * @tc.desc: Test loading ets file with all path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0021', 0, () => {
+      TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0021';
+      console.info(TAG, ' start');
+      let har: ESObject = testNapi.loadModule('harTwo/src/main/ets/Test');
+      console.info(TAG, 'har: ', JSON.stringify(har))
+      let argc1 = 2;
+      let argc2 = 3;
+      let result: number = har.add2(argc1, argc2);
+      console.info(TAG, 'result: ', result);
+      expect(result).assertEqual(5);
+    })
+
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0022
+     * @tc.name: test loading system modules
+     * @tc.desc: Test loading ets file with all path
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0022', 0, () => {
+      TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0022';
+      console.info(TAG, ' start');
+      let har: ESObject = testNapi.loadModule('hspTwo/src/main/ets/Test');
+      console.info(TAG, 'har: ', JSON.stringify(har))
+      let argc1 = 2;
+      let argc2 = 3;
+      let result: number = har.add2(argc1, argc2);
+      console.info(TAG, 'result: ', result);
+      expect(result).assertEqual(5);
+    })
+
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0023
+     * @tc.name: test loading system modules
+     * @tc.desc: Test loading ets file with relative paths
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0023', 0, () => {
+      TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0023';
+      console.info(TAG, ' start');
+      let entry: ESObject = testNapi.loadModule('ets/Test2');
+      console.info(TAG, 'entry: ', JSON.stringify(entry))
+      let argc1 = 2;
+      let argc2 = 3;
+      let result: number = entry.add2(argc1, argc2);
+      console.info(TAG, 'result: ', result);
+      expect(result).assertEqual(5);
     })
   })
 }

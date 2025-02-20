@@ -22,7 +22,8 @@
       "default",
       "phone",
       "2in1",
-      "wearable"
+      "wearable",
+      "car"
     ],
     "distro": {
       "deliveryWithInstall": true,

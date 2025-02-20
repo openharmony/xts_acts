@@ -20,6 +20,11 @@ import { CustomContainer } from '../common/CameraPhotoContainer';
 import FirstDialog from '../model/FirstDialog';
 import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Decimal } from '@kit.ArkTS';
+import window from '@ohos.window';
+import display from '@ohos.display'
 
 class Obj {
   format: number = 0;
@@ -70,10 +75,49 @@ struct cameraOrientation {
   @State screensObj: Array<para> = [];
   @State XWidth: string = '1%';
   @State XHeight: string = '1%';
+  @State last_rotation: number = 0;
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
     CameraService.setTakePictureCallback(this.handleTakePicture.bind(this))
+    display.on("change", (data) => {
+      this.setPreviewRotation();
+    })
+  }
+
+  private setPreviewRotation() {
+    let o = display.getDefaultDisplaySync().orientation;
+    let rotation = 0;
+    switch (o) {
+      case 0:
+        rotation = 90;
+        if (this.cameraDeviceIndex == 1) { //前置反向
+          rotation = 270;
+        }
+        break;
+      case 1:
+        rotation = 180;
+        if (this.cameraDeviceIndex == 1) {
+          rotation = 0;
+        }
+        break;
+      case 2:
+        rotation = 270;
+        if (this.cameraDeviceIndex == 1) {
+          rotation = 90;
+        }
+        break;
+      case 3:
+        rotation = 0;
+        if (this.cameraDeviceIndex == 1) {
+          rotation = 180;
+        }
+        break;
+    }
+    if (this.last_rotation != rotation) {
+      this.last_rotation = rotation;
+      CameraService.setPreviewRotation(rotation);
+    }
   }
 
   cameraListFn() {
@@ -85,6 +129,8 @@ struct cameraOrientation {
 
     this.testingFrequency = this.resolution.length
     Logger.info(this.tag, `testingFrequency ${this.testingFrequency}`)
+    this.last_rotation = -1
+    this.setPreviewRotation();
   }
 
   handleTakePicture = (assetUri: string) => {
@@ -126,6 +172,8 @@ struct cameraOrientation {
       Logger.info(this.tag, ` this.screensObj success view` + JSON.stringify(this.screensObj))
       this.cameraListFn()
       this.setXComponent()
+      this.last_rotation = -1
+      this.setPreviewRotation();
     })
   }
 
@@ -208,7 +256,7 @@ struct cameraOrientation {
             Column() {
               XComponent({
                 id: 'componentId',
-                type: 'surface',
+                type: XComponentType.SURFACE,
                 controller: this.mXComponentController
               })
                 .onLoad(async () => {
@@ -243,8 +291,8 @@ struct cameraOrientation {
                 .value(this.resolutionSelectVal)
                 .font({ size: 16, weight: 500 })
                 .fontColor(Color.White)
-                .selectedOptionBgColor(Color.Black)
-                .optionBgColor(Color.Black)
+                .selectedOptionBgColor(Color.White)
+                .optionBgColor(Color.Yellow)
                 .selectedOptionFont({ size: 16, weight: 400 })
                 .optionFont({ size: 16, weight: 400 })
                 .onSelect((index: number, value) => {
@@ -269,8 +317,8 @@ struct cameraOrientation {
                 .value(this.cameraDeviceIndex ? 'Camera 1' : 'Camera 0')
                 .font({ size: 16, weight: 500 })
                 .fontColor(Color.White)
-                .selectedOptionBgColor(Color.Black)
-                .optionBgColor(Color.Black)
+                .selectedOptionBgColor(Color.White)
+                .optionBgColor(Color.Yellow)
                 .selectedOptionFont({ size: 16, weight: 400 })
                 .optionFont({ size: 16, weight: 400 })
                 .onSelect((index: number) => {
@@ -297,7 +345,27 @@ struct cameraOrientation {
               .onClick(async () => {
                 this.isEnabled = false
                 this.isNextEnabled = false
-                CameraService.takePicture()
+
+                let deviceDegree: number = -1;
+                window.getLastWindow(getContext(this), (err, win) => {
+                  let cutOutInfo = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM_GESTURE)
+                  console.log(JSON.stringify(cutOutInfo))
+                  if (window.Orientation.AUTO_ROTATION) {
+                    let rotation: number = display.getDefaultDisplaySync().orientation // 获取当前屏幕的枚举值
+                    Logger.info('orientation', rotation);
+                    if (rotation == 0) {
+                      deviceDegree = 0;
+                    } else if (rotation == 1) {
+                      deviceDegree = 90
+                    } else if (rotation == 2) {
+                      deviceDegree = 180
+                    } else {
+                      deviceDegree = 270
+                    }
+                  }
+                  Logger.info('CameraService getDeviceDegree is ' + deviceDegree);
+                  CameraService.takePicture(deviceDegree)
+                })
               })
             Button('下一个')
               .enabled(!this.isNextEnabled)
@@ -336,7 +404,8 @@ struct cameraOrientation {
                   this.cameraInit(newResolution[this.clickFrequency])
                   this.resolutionSelectVal = String(this.resolution[this.clickFrequency].value)
                 }
-
+                // this.last_rotation = -1
+                // this.setPreviewRotation();
               })
           }
           .width('100%')

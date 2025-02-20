@@ -27,155 +27,160 @@ struct ListOffSet01 {
   @State t: number = 0;
 
   build() {
-    Stack({ alignContent: Alignment.TopStart }) {
-      Column() {
-        List({ scroller: this.scroller }) {
-          ForEach(this.arr, (item: number) => {
-            ListItem() {
-              Text('item' + item)
-                .width('100%')
-                .height(100)
-                .fontSize(16)
-                .textAlign(TextAlign.Center)
-                .borderRadius(40)
-                .backgroundColor(0xFFFFFF)
-            }
-            .onAreaChange((oldValue: Area, newValue: Area) => {
-              if (item == 0) {
-                this.startText = JSON.stringify(newValue.position.y)
-              } else if (item == 1) {
-                this.endText = JSON.stringify(newValue.position.y)
-              }
-              this.objtext = JSON.stringify(newValue)
+    Column(){
+      Column(){
+        Row(){
+          Button('back top')
+            .id('ListoffSet01_Top')
+            .height('6%')
+            .onClick(() => { // 点击后回到顶部
+              this.scroller.scrollEdge(Edge.Top)
             })
-          }, (item: string) => item)
+            .backgroundColor(Color.Orange)
+
+          Button('back bottom')
+            .id('ListoffSet01_Bottom')
+            .height('6%')
+            .onClick(() => { // 点击后回到顶部
+              this.scroller.scrollEdge(Edge.Bottom)
+            })
+            .backgroundColor(Color.Orange)
         }
-        .height(200)
-        .listDirection(Axis.Vertical) // 排列方向
-        .scrollBar(BarState.On)
-        .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
-        .backgroundColor(Color.Green)
-        .contentStartOffset(this.startSize)
-        .contentEndOffset(this.endSize)
-        .padding(this.paddingSize)
+        Row(){
+          Button('start0').id('ListoffSet01_Start0')
+            .width('20%')
+            .height('6%')
+            .onClick(() => {
+              this.startSize = 0
+            })
+          Button('start-2').id('ListoffSet01_Start_Negative2')
+            .width('20%')
+            .height('6%')
+            .onClick(() => {
+              this.startSize = -2
+            })
+          Button('start5').id('ListoffSet01_Start5')
+            .width('20%')
+            .height('6%')
+            .onClick(() => {
+              this.startSize = 5
+            })
+          Button('start10').id('ListoffSet01_Start10')
+            .width('20%')
+            .height('6%')
+            .onClick(() => {
+              this.startSize = 10
+            })
+        }
+        Row(){
+          Button('end0').id('ListoffSet01_End0')
+            .width('20%')
+            .height('6%')
+            .onClick(() => {
+              this.endSize = 0
+            })
+          Button('end-2').id('ListoffSet01_End_Negative2')
+            .width('20%')
+            .height('6%')
+            .onClick(() => {
+              this.endSize = -2
+            })
+          Button('end5').id('ListoffSet01_End5')
+            .width('20%')
+            .height('6%')
+            .onClick(() => {
+              this.endSize = 5
+            })
+          Button('end10').id('ListoffSet01_End10')
+            .width('20%')
+            .height('6%')
+            .onClick(() => {
+              this.endSize = 10
+            })
+        }
+        Row(){
+          Button('padding:0').id('ListoffSet01_Padding0')
+            .height('6%')
+            .onClick(() => {
+              this.paddingSize = 0
+            })
+
+          Button('padding:5').id('ListoffSet01_Padding5')
+            .height('6%')
+            .onClick(() => {
+              this.paddingSize = 5
+            })
+        }
+        Button('get')
+          .key('ListoffSet01_Get')
+          .height('6%')
+          .onClick(() => {
+            this.t = this.scroller.currentOffset().yOffset
+          })
+          .backgroundColor(Color.Orange)
+
+        Row(){
+          Text(`${Math.round(Math.abs(Number(this.startText)))}`)
+            .key('ListoffSet01_Text01')
+            .fontWeight(700)
+            .fontSize(24)
+            .fontColor(Color.Red)
+
+          Text(`${Math.round(Math.abs(Number(this.endText)))}`)
+            .key('ListoffSet01_Textend')
+            .margin({ left: 30, right: 30 })
+            .fontWeight(700)
+            .fontSize(24)
+            .fontColor(Color.Blue)
+
+          Text(`${this.t}`).key('ListoffSet01_Text02')
+            .fontSize(24).fontColor(Color.Red)
+        }
+
+        Scroll(){
+          Text(this.objtext).fontWeight(700).border({ width: 1 })
+        }
+        .width('100%')
+        .height('20%')
       }
-      .width('90%')
-      .height(200)
-      .margin(10)
 
-      Button('start0').id('ListoffSet01_Start0')
-        .height('6%')
-        .onClick(() => {
-          this.startSize = 0
-        })
-        .margin({ top: 240, left: 0 })
-      Button('start-2').id('ListoffSet01_Start_Negative2')
-        .height('6%')
-        .onClick(() => {
-          this.startSize = -2
-        })
-        .margin({ top: 240, left: 90 })
-      Button('start5').id('ListoffSet01_Start5')
-        .height('6%')
-        .onClick(() => {
-          this.startSize = 5
-        })
-        .margin({ top: 240, left: 180 })
-      Button('start10').id('ListoffSet01_Start10')
-        .height('6%')
-        .onClick(() => {
-          this.startSize = 10
-        })
-        .margin({ top: 240, left: 260 })
+      Stack({ alignContent: Alignment.TopStart }) {
+        Column() {
+          List({ scroller: this.scroller }) {
+            ForEach(this.arr, (item: number) => {
+              ListItem() {
+                Text('item' + item)
+                  .width('100%')
+                  .height(100)
+                  .fontSize(16)
+                  .textAlign(TextAlign.Center)
+                  .borderRadius(40)
+                  .backgroundColor(0xFFFFFF)
+              }
+              .onAreaChange((oldValue: Area, newValue: Area) => {
+                if (item == 0) {
+                  this.startText = JSON.stringify(newValue.position.y)
+                } else if (item == 1) {
+                  this.endText = JSON.stringify(newValue.position.y)
+                }
+                this.objtext = JSON.stringify(newValue)
+              })
+            }, (item: string) => item)
+          }
+          .height(200)
+          .listDirection(Axis.Vertical) // 排列方向
+          .scrollBar(BarState.On)
+          .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
+          .backgroundColor(Color.Green)
+          .contentStartOffset(this.startSize)
+          .contentEndOffset(this.endSize)
+          .padding(this.paddingSize)
+        }
+        .width('90%')
+        .height(200)
+        .margin(10)
 
-      Button('end0').id('ListoffSet01_End0')
-        .height('6%')
-        .onClick(() => {
-          this.endSize = 0
-        })
-        .margin({ top: 300, left: 0 })
-      Button('end-2').id('ListoffSet01_End_Negative2')
-        .height('6%')
-        .onClick(() => {
-          this.endSize = -2
-        })
-        .margin({ top: 300, left: 90 })
-      Button('end5').id('ListoffSet01_End5')
-        .height('6%')
-        .onClick(() => {
-          this.endSize = 5
-        })
-        .margin({ top: 300, left: 180 })
-
-      Button('end10').id('ListoffSet01_End10')
-        .height('6%')
-        .onClick(() => {
-          this.endSize = 10
-        })
-        .margin({ top: 300, left: 260 })
-
-      Button('padding:0').id('ListoffSet01_Padding0')
-        .height('6%')
-        .onClick(() => {
-          this.paddingSize = 0
-        })
-        .margin({ top: 360, left: 0 })
-
-      Button('padding:5').id('ListoffSet01_Padding5')
-        .height('6%')
-        .onClick(() => {
-          this.paddingSize = 5
-        })
-        .margin({ top: 360, left: 140 })
-
-      Button('back top')
-        .id('ListoffSet01_Top')
-        .height('6%')
-        .onClick(() => { // 点击后回到顶部
-          this.scroller.scrollEdge(Edge.Top)
-        })
-        .backgroundColor(Color.Orange)
-        .margin({ top: 420, left: 20 })
-
-      Button('back bottom')
-        .id('ListoffSet01_Bottom')
-        .height('6%')
-        .onClick(() => { // 点击后回到顶部
-          this.scroller.scrollEdge(Edge.Bottom)
-        })
-        .backgroundColor(Color.Orange)
-        .margin({ top: 420, left: 160 })
-
-      Button('get')
-        .key('ListoffSet01_Get')
-        .height('6%')
-        .onClick(() => {
-          this.t = this.scroller.currentOffset().yOffset
-        })
-        .backgroundColor(Color.Orange)
-        .margin({ top: 480, left: 160 })
-
-
-      Text(`${Math.round(Math.abs(Number(this.startText)))}`)
-        .key('ListoffSet01_Text01')
-        .margin({ top: 550, left: 100 })
-        .fontWeight(700)
-        .fontSize(24)
-        .fontColor(Color.Red)
-
-      Text(`${Math.round(Math.abs(Number(this.endText)))}`)
-        .key('ListoffSet01_Textend')
-        .margin({ top: 550, left: 160 })
-        .fontWeight(700)
-        .fontSize(24)
-        .fontColor(Color.Blue)
-
-      Text(this.objtext).margin({ top: 600, left: 20 }).fontWeight(700).border({ width: 1 })
-
-
-      Text(`${this.t}`).margin({ top: 700, left: 160 }).key('ListoffSet01_Text02')
-        .fontSize(24).fontColor(Color.Red)
-
-    }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+      }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+    }
   }
 }

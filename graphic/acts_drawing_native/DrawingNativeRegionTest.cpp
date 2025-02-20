@@ -27,7 +27,23 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeRegionTest : public testing::Test {};
+class DrawingNativeRegionTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override
+    {
+        // 设置代码
+        std::cout << "DrawingNativeRegionTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeRegionTest errorCodeReset before each test case." << std::endl;
+    }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeRegionTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeRegionTest errorCodeReset after each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_REGION_0100
@@ -92,6 +108,8 @@ HWTEST_F(DrawingNativeRegionTest, testRegionDestroyNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRegionTest, testRegionDestroyNull, TestSize.Level1) {
     // 1. OH_Drawing_RegionDestroy takes nullptr as input
     OH_Drawing_RegionDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
 }
 
 /*
@@ -111,9 +129,13 @@ HWTEST_F(DrawingNativeRegionTest, testRegionContainsInRange, TestSize.Level0) {
     // 2. OH_Drawing_RegionContains takes regionObject as input, x: a value within the range, y: a value within the
     // range, the call is successful and the return value is true
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RegionSetRect(regionObject, rect);
     bool ret = OH_Drawing_RegionContains(regionObject, 100, 100);
     EXPECT_TRUE(ret);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
 
     OH_Drawing_RegionDestroy(regionObject);
     OH_Drawing_RectDestroy(rect);
@@ -132,12 +154,16 @@ HWTEST_F(DrawingNativeRegionTest, testRegionContainsXvalueNotInRange, TestSize.L
     OH_Drawing_Region *regionObject = OH_Drawing_RegionCreate();
     EXPECT_NE(regionObject, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RegionSetRect(regionObject, rect);
 
     // 2. OH_Drawing_RegionContains takes regionObject as input, x: a value not within the range, y: a value within the
     // range
     bool ret = OH_Drawing_RegionContains(regionObject, 300, 100);
     EXPECT_FALSE(ret);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
 
     OH_Drawing_RegionDestroy(regionObject);
     OH_Drawing_RectDestroy(rect);
@@ -156,12 +182,16 @@ HWTEST_F(DrawingNativeRegionTest, testRegionContainsYvalueNotInRange, TestSize.L
     OH_Drawing_Region *regionObject = OH_Drawing_RegionCreate();
     EXPECT_NE(regionObject, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RegionSetRect(regionObject, rect);
 
     // 2. OH_Drawing_RegionContains takes regionObject as input, x: a value within the range, y: a value not within the
     // range
     bool ret = OH_Drawing_RegionContains(regionObject, 100, 300);
     EXPECT_FALSE(ret);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
 
     OH_Drawing_RegionDestroy(regionObject);
     OH_Drawing_RectDestroy(rect);
@@ -180,12 +210,16 @@ HWTEST_F(DrawingNativeRegionTest, testRegionContainsAllNotInRange, TestSize.Leve
     OH_Drawing_Region *regionObject = OH_Drawing_RegionCreate();
     EXPECT_NE(regionObject, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RegionSetRect(regionObject, rect);
 
     // 2. OH_Drawing_RegionContains takes regionObject as input, x: a value not within the range, y: a value not within
     // the range
     bool ret = OH_Drawing_RegionContains(regionObject, 300, 300);
     EXPECT_FALSE(ret);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
 
     OH_Drawing_RegionDestroy(regionObject);
     OH_Drawing_RectDestroy(rect);
@@ -218,6 +252,8 @@ HWTEST_F(DrawingNativeRegionTest, testRegionOpNormal, TestSize.Level0) {
     OH_Drawing_Region *regionObject = OH_Drawing_RegionCreate();
     EXPECT_NE(regionObject, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RegionSetRect(regionObject, rect);
     // 2. OH_Drawing_RegionCreate returns a pointer value dst
     OH_Drawing_Region *dst = OH_Drawing_RegionCreate();
@@ -229,7 +265,10 @@ HWTEST_F(DrawingNativeRegionTest, testRegionOpNormal, TestSize.Level0) {
         REGION_OP_MODE_XOR,        REGION_OP_MODE_REVERSE_DIFFERENCE, REGION_OP_MODE_REPLACE,
     };
     for (OH_Drawing_RegionOpMode mode : modes) {
+        OH_Drawing_ErrorCodeReset();
         OH_Drawing_RegionOp(regionObject, dst, mode);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     }
 
     OH_Drawing_RegionDestroy(regionObject);
@@ -250,6 +289,8 @@ HWTEST_F(DrawingNativeRegionTest, testRegionOpRegionNull, TestSize.Level1) {
     OH_Drawing_Region *dst = OH_Drawing_RegionCreate();
     EXPECT_NE(dst, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RegionSetRect(dst, rect);
     // 2. OH_Drawing_RegionOp takes nullptr as input for region, dst as input, and op: REGION_OP_MODE_DIFFERENCE,
     // returns OH_DRAWING_ERROR_INVALID_PARAMETER
@@ -273,6 +314,8 @@ HWTEST_F(DrawingNativeRegionTest, testRegionOpRegionDstNull, TestSize.Level1) {
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
     EXPECT_NE(region, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RegionSetRect(region, rect);
     // 2. OH_Drawing_RegionOp takes region as input, dst: nullptr, op: REGION_OP_MODE_DIFFERENCE
     OH_Drawing_RegionOp(region, nullptr, REGION_OP_MODE_DIFFERENCE);
@@ -294,6 +337,8 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetRectResultTrue, TestSize.Level0) 
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
     EXPECT_NE(region, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 1. OH_Drawing_RegionSetRect takes correct region and rect object pointers as input
     bool ret = OH_Drawing_RegionSetRect(region, rect);
     EXPECT_TRUE(ret);
@@ -314,6 +359,8 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetRectRegionNull, TestSize.Level1) 
     // 1. OH_Drawing_RegionSetRect takes a correct rect object pointer as input, region is nullptr, returns
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RegionSetRect(nullptr, rect);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
     OH_Drawing_RectDestroy(rect);
@@ -329,6 +376,8 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetRectRegionNull, TestSize.Level1) 
  */
 HWTEST_F(DrawingNativeRegionTest, testRegionSetRectRectNull, TestSize.Level1) {
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
+    // add assert
+    EXPECT_NE(region, nullptr);
     // 1. OH_Drawing_RegionSetRect takes a correct region object pointer as input, rect is nullptr
     OH_Drawing_RegionSetRect(region, nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -347,6 +396,8 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetRectResultFalse, TestSize.Level1)
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
     EXPECT_NE(region, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 0.0f, 0.0f);
+    // add assert
+    EXPECT_NE(rect, nullptr);
 
     // 1. OH_Drawing_RegionSetRect takes correct region and rect object pointers as input
     bool ret = OH_Drawing_RegionSetRect(region, rect);
@@ -366,14 +417,24 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetRectResultFalse, TestSize.Level1)
  */
 HWTEST_F(DrawingNativeRegionTest, testRegionSetPathResultTrue, TestSize.Level0) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
+    // add assert
+    EXPECT_NE(region, nullptr);
     OH_Drawing_Region *clip = OH_Drawing_RegionCreate();
+    // add assert
+    EXPECT_NE(clip, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(150.0f, 180.0f, 200.0f, 200.0f);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RegionSetRect(clip, rect);
     OH_Drawing_PathAddRect(path, 100.0f, 100.0f, 256.0f, 256.0f, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
 
     // 1. OH_Drawing_RegionSetPath takes correct region, path, and clip object pointers as input
     EXPECT_TRUE(OH_Drawing_RegionSetPath(region, path, clip));
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
 
     OH_Drawing_PathDestroy(path);
     OH_Drawing_RegionDestroy(region);
@@ -391,9 +452,17 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetPathResultTrue, TestSize.Level0) 
  */
 HWTEST_F(DrawingNativeRegionTest, testRegionSetPathRegionNull, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
+    // add assert
+    EXPECT_NE(region, nullptr);
     OH_Drawing_Region *clip = OH_Drawing_RegionCreate();
+    // add assert
+    EXPECT_NE(clip, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(150.0f, 180.0f, 200.0f, 200.0f);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RegionSetRect(clip, rect);
 
     // 1. OH_Drawing_RegionSetPath takes correct path and clip object pointers as input, region is nullptr
@@ -416,9 +485,17 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetPathRegionNull, TestSize.Level1) 
  */
 HWTEST_F(DrawingNativeRegionTest, testRegionSetPathPathNull, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
+    // add assert
+    EXPECT_NE(region, nullptr);
     OH_Drawing_Region *clip = OH_Drawing_RegionCreate();
+    // add assert
+    EXPECT_NE(clip, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(150.0f, 180.0f, 200.0f, 200.0f);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RegionSetRect(clip, rect);
 
     // 1. OH_Drawing_RegionSetPath takes correct region and clip object pointers as input, path is nullptr
@@ -441,9 +518,17 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetPathPathNull, TestSize.Level1) {
  */
 HWTEST_F(DrawingNativeRegionTest, testRegionSetPathClipNull, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
+    // add assert
+    EXPECT_NE(region, nullptr);
     OH_Drawing_Region *clip = OH_Drawing_RegionCreate();
+    // add assert
+    EXPECT_NE(clip, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(150.0f, 180.0f, 200.0f, 200.0f);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RegionSetRect(clip, rect);
 
     // 1. OH_Drawing_RegionSetPath takes correct region, path object pointers as input, and clip is nullptr
@@ -466,14 +551,24 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetPathClipNull, TestSize.Level1) {
  */
 HWTEST_F(DrawingNativeRegionTest, testRegionSetPathResultFalse, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // add assert
+    EXPECT_NE(path, nullptr);
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
+    // add assert
+    EXPECT_NE(region, nullptr);
     OH_Drawing_Region *clip = OH_Drawing_RegionCreate();
+    // add assert
+    EXPECT_NE(clip, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 0.0f, 0.0f);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RegionSetRect(clip, rect);
 
     // 1. OH_Drawing_RegionSetPath takes correct region, path, and clip object pointers as input
     bool ret = OH_Drawing_RegionSetPath(region, path, clip);
     EXPECT_FALSE(ret);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
 
     OH_Drawing_PathDestroy(path);
     OH_Drawing_RegionDestroy(region);

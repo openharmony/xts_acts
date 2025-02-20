@@ -52,8 +52,10 @@ struct XSlider17 {
         this.xComponentContext = this.xComponentController.getXComponentContext() as Record<string, () => void>
       })
       .width(100)
-      .height(200)
+      .height('10%')
     }
-    .position({ x: 40, y: 60 })
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }

@@ -15,6 +15,7 @@
 
 import { describe, it, expect, Level } from '@ohos/hypium'
 import userAuth from '@ohos.userIAM.userAuth'
+import { checkSupportOrNot } from './utils/commonFunc';
 
 const authParamDefault = {
   challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
@@ -296,54 +297,58 @@ export default function signNormalNotAccessBiometricExecute() {
     */
     it('SUB_Security_IAM_authWidget_API_0140', Level.LEVEL2, async function (done) {
       console.info("SUB_Security_IAM_authWidget_API_0140 start");
-      let reuseMode1 = [-1, 0, 5];
-      let reuseMode2 = [1, 2, 3, 4];
-      const widgetParam = {
-        title: '请输入密码',
-      };
-      for (let idx0 = 0; idx0 <reuseMode1.length; idx0++){
-        let reuseUnlockResult = {
-          reuseMode: reuseMode1[idx0],
-          reuseDuration: 120000,
-        }
-        const authParam = {
-          challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
-          authType: [userAuth.UserAuthType.PIN],
-          authTrustLevel: userAuth.AuthTrustLevel.ATL1,
-          reuseUnlockResult: reuseUnlockResult,
+      let checkFace = await checkSupportOrNot(userAuth.UserAuthType.FACE);
+      if (checkFace == 0) {
+        let reuseMode1 = [-1, 0, 5];
+        let reuseMode2 = [1, 2, 3, 4];
+        const widgetParam = {
+          title: '请输入密码',
         };
+        for (let idx0 = 0; idx0 <reuseMode1.length; idx0++){
+          let reuseUnlockResult = {
+            reuseMode: reuseMode1[idx0],
+            reuseDuration: 120000,
+          }
+          const authParam = {
+            challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
+            authType: [userAuth.UserAuthType.PIN],
+            authTrustLevel: userAuth.AuthTrustLevel.ATL1,
+            reuseUnlockResult: reuseUnlockResult,
+          };
+    
+          try {
+            let userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+            userAuthInstance.on('result', {
+              onResult (result) {
+                console.log('userAuthInstance callback result = ' + JSON.stringify(result));
+              }
+            });
+            expect(null).assertFail();
+          } catch (error) {
+            console.log('SUB_Security_IAM_authWidget_API_0140 catch error: ' + JSON.stringify(error));
+            console.log('SUB_Security_IAM_authWidget_API_0140 error.code: ' + error.code);
+            expect(error.code).assertEqual(401);
+          }
+        }
   
-        try {
-          let userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-          userAuthInstance.on('result', {
-            onResult (result) {
-              console.log('userAuthInstance callback result = ' + JSON.stringify(result));
-            }
-          });
-          expect(null).assertFail();
-        } catch (error) {
-          console.log('SUB_Security_IAM_authWidget_API_0140 catch error: ' + JSON.stringify(error));
-          console.log('SUB_Security_IAM_authWidget_API_0140 error.code: ' + error.code);
-          expect(error.code).assertEqual(401);
+        for (let idx0 = 0; idx0 <reuseMode2.length; idx0++){
+          let reuseUnlockResult1 = {
+            reuseMode: reuseMode2[idx0],
+            reuseDuration: 120000,
+          }
+          const authParam1 = {
+            challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
+            authType: [userAuth.UserAuthType.PIN],
+            authTrustLevel: userAuth.AuthTrustLevel.ATL1,
+            reuseUnlockResult: reuseUnlockResult1,
+          };
+    
+          await userAuthPromise(authParam1, widgetParam, 
+            'SUB_Security_IAM_authWidget_API_0140 step' + stepIndex, 12500010);
+          stepIndex++;
         }
       }
-
-      for (let idx0 = 0; idx0 <reuseMode2.length; idx0++){
-        let reuseUnlockResult1 = {
-          reuseMode: reuseMode2[idx0],
-          reuseDuration: 120000,
-        }
-        const authParam1 = {
-          challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
-          authType: [userAuth.UserAuthType.PIN],
-          authTrustLevel: userAuth.AuthTrustLevel.ATL1,
-          reuseUnlockResult: reuseUnlockResult1,
-        };
-  
-        await userAuthPromise(authParam1, widgetParam, 
-          'SUB_Security_IAM_authWidget_API_0140 step' + stepIndex, 12500010);
-        stepIndex++;
-      }
+      
       done();
     });
 

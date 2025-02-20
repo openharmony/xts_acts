@@ -20,47 +20,47 @@ struct StateDatePicker1 {
 
   build() {
     Column() {
-      Button("Reset").id("StateDatePicker1_reset")
+      Button("Reset").id("StateDatePicker1_reset").height('5%')
         .onClick(() => {
           this.selectedDate = new Date('2021-08-08')
         })
-      Text(''+ JSON.stringify(this.selectedDate)).id("date1")
-      Button('selectedDate to 2023-09-09').margin(5)
+      Text(''+ JSON.stringify(this.selectedDate)).id("date1").height('5%')
+      Button('selectedDate to 2023-09-09').height('5%')
         .id("change_date")
         .onClick(() => {
           this.selectedDate = new Date('2023-09-09')
         })
-      Button('increase the year by 1').margin(5)
+      Button('increase the year by 1').height('5%')
         .id("setFullYear")
         .onClick(() => {
           this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1)
         })
-      Button('increase the month by 1').margin(5)
+      Button('increase the month by 1').height('5%')
         .id("setMonth")
         .onClick(() => {
           this.selectedDate.setMonth(this.selectedDate.getMonth() + 1)
         })
-      Button('increase the day by 1').margin(5)
+      Button('increase the day by 1').height('5%')
         .id("setDate")
         .onClick(() => {
           this.selectedDate.setDate(this.selectedDate.getDate() + 1)
         })
-      Button('increase the hours by 1').margin(5)
+      Button('increase the hours by 1').height('5%')
         .id("setHours")
         .onClick(() => {
           this.selectedDate.setHours(this.selectedDate.getHours() + 1)
         })
-      Button('increase the minute by 1').margin(5)
+      Button('increase the minute by 1').height('5%')
         .id("setMinutes")
         .onClick(() => {
           this.selectedDate.setMinutes(this.selectedDate.getMinutes() + 1)
         })
-      Button('increase the Second by 1').margin(5)
+      Button('increase the Second by 1').height('5%')
         .id("setSeconds")
         .onClick(() => {
           this.selectedDate.setSeconds(this.selectedDate.getSeconds() + 1)
         })
-      Button('increase the Millisecond by 1').margin(5)
+      Button('increase the Millisecond by 1').height('5%')
         .id("setMilliseconds")
         .onClick(() => {
           this.selectedDate.setMilliseconds(this.selectedDate.getMilliseconds() + 1)
@@ -70,7 +70,7 @@ struct StateDatePicker1 {
         start: new Date('1970-1-1'),
         end: new Date('2100-1-1'),
         selected: this.selectedDate
-      }).key("State_DatePicker1").margin(20)
+      }).key("State_DatePicker1")
     }.width('100%')
   }
 }

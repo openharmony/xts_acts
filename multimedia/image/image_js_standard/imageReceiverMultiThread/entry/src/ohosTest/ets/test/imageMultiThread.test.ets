@@ -20,6 +20,50 @@ import { abilityDelegatorRegistry, BY, UiDriver } from '@kit.TestKit';
 import { abilityAccessCtrl, common, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
 import { camera } from '@kit.CameraKit';
 
+const TAG = "multiThreadTest: ";
+
+
+export function isSupportedCameras() : boolean {
+  const cameraAvailable = canIUse('SystemCapability.Multimedia.Camera.Core');
+  let context: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>('testContext') as common.UIAbilityContext
+
+  let isSupportedCameras = true;
+  let isSupportedCameraManager = false;
+  let mCameraManager: camera.CameraManager;
+  let mCameraDevicesArray: Array<camera.CameraDevice>;
+
+  let isEmpty = (data: ESObject) => {
+    if (data == null || data == undefined) {
+      return true;
+    }
+    return false;
+  }
+
+  console.info(TAG + 'Enter getCameraManagerInstance');
+  try {
+    mCameraManager = camera.getCameraManager(context);
+    if (isEmpty(mCameraManager)) {
+      console.info(TAG + "getCameraManager FAILED");
+      isSupportedCameraManager = false;
+      return isSupportedCameraManager;
+    }
+    console.info(TAG + 'Exit getCameraManagerInstance');
+    mCameraDevicesArray = mCameraManager.getSupportedCameras();
+    if (isEmpty(mCameraDevicesArray)) {
+      isSupportedCameras = false;
+    }
+  } catch (err) {
+    console.error(TAG + "getCameraManager FAILED. errorMessage:",err);
+    isSupportedCameraManager = false;
+    return isSupportedCameraManager;
+  }
+  if (cameraAvailable && isSupportedCameras) {
+    isSupportedCameraManager = true;
+  } else {
+    isSupportedCameraManager = false;
+  }
+  return isSupportedCameraManager;
+}
 async function createDualChannelPreview(cameraManager: camera.CameraManager, imageReceiverSurfaceIdArray: Array<string>): Promise<void> {
   try {
     // 获取支持的相机设备对象
@@ -266,7 +310,9 @@ async function permissionClick() {
   }
   console.info(`button is ${JSON.stringify(button)}`);
   await sleep(100);
-  await button.click();
+  if (button != null && button != undefined) {
+    await button.click();
+  }
   await sleep(1000);
 }
 
@@ -277,6 +323,7 @@ export default function multiThreadTest() {
     });
     beforeAll(async () => {
       console.info('total case before');
+      await sleep(1000);
       await getPermission();
       await permissionClick();
     })
@@ -312,6 +359,12 @@ export default function multiThreadTest() {
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0200', 0, async (done: Function) => {
+      let isSupportedCamerasResult = isSupportedCameras(); 
+      if(!isSupportedCamerasResult){
+        console.info('Failed to obtain the default camera or device object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+      }
       let testContext: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>('testContext') as common.UIAbilityContext
       let cameraManager = camera.getCameraManager(testContext);
       await doTestForReceiver(done, cameraManager, "SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0200", "entry_test/ets/workers/receiver.ets");

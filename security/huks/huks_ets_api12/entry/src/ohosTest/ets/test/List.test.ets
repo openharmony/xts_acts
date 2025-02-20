@@ -14,22 +14,24 @@
  */
 import SecurityHuksAccessControlAsUserTest from './SecurityHuksAccessControlAsUser.test';
 import SecurityHuksCipherSM4Test from './SecurityHuksCipherSM4.test';
-import SecurityHUKSKeyGenerateListAliasesTest from './SecurityHuksKeyGenerateListAliases.test';
+import SecurityHuksKeyGenerateListAliasesTest from './SecurityHuksKeyGenerateListAliases.test';
 import SecurityHuksCmacTest from './SecurityHuksCmac.test';
 import SecurityHuksSignVerifyRSATest from './SecurityHuksSignVerifyRSA.test';
 import SecurityHuksCipherRSATest from './SecurityHuksCipherRSA.test';
 import SecurityHuksCipherDESTest from './SecurityHuksCipherDES.test';
 import SecurityHuksCipher3DESTest from './SecurityHuksCipher3DES.test';
 import SecurityHuksImportTest from './SecurityHuksImport.test';
+import SecurityHuksKeyAttestationTest from './SecurityHuksKeyAttestation.test';
 
 export default function testsuite() {
   SecurityHuksAccessControlAsUserTest();
   SecurityHuksCipherSM4Test();
-  SecurityHUKSKeyGenerateListAliasesTest();
+  SecurityHuksKeyGenerateListAliasesTest();
   SecurityHuksCmacTest();
   SecurityHuksSignVerifyRSATest();
   SecurityHuksCipherRSATest();
   SecurityHuksCipherDESTest();
   SecurityHuksCipher3DESTest();
   SecurityHuksImportTest();
+  SecurityHuksKeyAttestationTest();
 }

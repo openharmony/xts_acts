@@ -10,6 +10,9 @@
     "testability/pages/WebNestedScrollOptionsScrollForwardTest",
     "testability/pages/WebNestedScrollOptionsScrollBackwardHorizontalTest",
     "testability/pages/WebNestedScrollOptionsScrollForwardHorizontalTest",
-    "testability/pages/ScrollPage"
+    "testability/pages/ScrollPage",
+	"testability/pages/NestedScrollMode",
+	"testability/pages/scrollEvent",
+    "testability/pages/scrollBar"
   ]
 }

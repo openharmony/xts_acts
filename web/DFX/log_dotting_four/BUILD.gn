@@ -21,11 +21,11 @@ ohos_app_assist_suite("ActsLogDottingCppFourTest") {
   subsystem_name = "web"
 }
 
-ohos_js_app_suite("ActsLogDottingFourTest") {
+ohos_js_app_suite("ActsWebLogDottingFourTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsLogDottingFourTest"
+  hap_name = "ActsWebLogDottingFourTest"
   part_name = "webview"
   subsystem_name = "web"
   deps = [ ":ActsLogDottingCppFourTest" ]

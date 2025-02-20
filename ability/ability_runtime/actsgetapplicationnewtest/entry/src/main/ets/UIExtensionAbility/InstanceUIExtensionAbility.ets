@@ -38,7 +38,7 @@ export default class InstanceUIExtAbility extends UIExtensionAbility {
         console.log('AppStorage error: ', JSON.stringify(err));
     }
     try {
-      hilog.info(0x0000, 'testTag', 'Ability onCreate');
+      hilog.info(0x0000, 'testTag', 'InstanceUIExtAbility onCreate');
       let context1 = application.getApplicationContext();
       hilog.info(0x0000, 'testTag', 'context1: %{public}s', JSON.stringify(context1));
       let context2 = getContextEntry().getApplicationContext();

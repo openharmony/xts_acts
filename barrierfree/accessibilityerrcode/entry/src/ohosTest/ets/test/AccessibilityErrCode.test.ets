@@ -18,6 +18,7 @@ import GesturePath from '@ohos.accessibility.GesturePath';
 import GesturePoint from '@ohos.accessibility.GesturePoint';
 import AccessibilityExtensionAbility  from '@ohos.application.AccessibilityExtensionAbility';
 import {ElementAttributeKeys} from '@ohos.application.AccessibilityExtensionAbility';
+import { Driver } from '@ohos.UiTest';
 
 const bundleName = 'com.sample.testfora11y';
 const triggerAction = 'accessibilityFocus';
@@ -27,6 +28,12 @@ export default function abilityTest() {
   describe('AccessibilityErrCode', function () {
     let axContext = null;
     let object = null;
+    beforeAll(async function (done) {
+      let driver = Driver.create();
+      console.info(`AccessibilityErrCode: beforeAll starts`);
+      done();
+    })
+    
     beforeEach(async function (done) {
       console.info(`AccessibilityErrCode: beforeEach starts`);
       done();
@@ -739,24 +746,26 @@ export default function abilityTest() {
           return;
         }
         for (let accessibilityAbilityInfo of data) {
-          expect(accessibilityAbilityInfo.capabilities.length >= 0).assertTrue();
-          expect(accessibilityAbilityInfo.abilityTypes.length >= 0).assertTrue();
-          expect(accessibilityAbilityInfo.eventTypes.length >= 0).assertTrue();
-          expect(accessibilityAbilityInfo.targetBundleNames.length >= 0).assertTrue();
-          expect(accessibilityAbilityInfo.bundleName != null).assertTrue();
-          expect(accessibilityAbilityInfo.description != null).assertTrue();
-          expect(accessibilityAbilityInfo.id != null).assertTrue();
-          expect(accessibilityAbilityInfo.name != null).assertTrue();
-          expect(accessibilityAbilityInfo.needHide != null).assertTrue();
-          expect(accessibilityAbilityInfo.label != null).assertTrue();
-          for (let capability of accessibilityAbilityInfo.capabilities) {
-            let cap = capability.toString();
-            expect(cap == 'retrieve' ||
-            cap == 'touchGuide' ||
-            cap == 'keyEventObserver' ||
-            cap == 'zoom' ||
-            cap == 'gesture')
-              .assertTrue();
+          if (accessibilityAbilityInfo.bundleName != 'ohos.uitest') {
+            expect(accessibilityAbilityInfo.capabilities.length >= 0).assertTrue();
+            expect(accessibilityAbilityInfo.abilityTypes.length >= 0).assertTrue();
+            expect(accessibilityAbilityInfo.eventTypes.length >= 0).assertTrue();
+            expect(accessibilityAbilityInfo.targetBundleNames.length >= 0).assertTrue();
+            expect(accessibilityAbilityInfo.bundleName != null).assertTrue();
+            expect(accessibilityAbilityInfo.description != null).assertTrue();
+            expect(accessibilityAbilityInfo.id != null).assertTrue();
+            expect(accessibilityAbilityInfo.name != null).assertTrue();
+            expect(accessibilityAbilityInfo.needHide != null).assertTrue();
+            expect(accessibilityAbilityInfo.label != null).assertTrue();
+            for (let capability of accessibilityAbilityInfo.capabilities) {
+              let cap = capability.toString();
+              expect(cap == 'retrieve' ||
+              cap == 'touchGuide' ||
+              cap == 'keyEventObserver' ||
+              cap == 'zoom' ||
+              cap == 'gesture')
+                .assertTrue();
+            }
           }
         }
         console.info('get accessibility extension list success');
@@ -1017,6 +1026,10 @@ export default function abilityTest() {
               expect(ElementAttributeValue.indexOf("offset") != -1).assertTrue();
               expect(ElementAttributeValue.indexOf("hotArea") != -1).assertTrue();
               expect(ElementAttributeValue.indexOf("accessibilityText") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("customComponentType") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("accessibilityNextFocusId") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("accessibilityPreviousFocusId") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("extraInfo") != -1).assertTrue();
             });
             rootElement.actionNames((err, data) => {
               console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));

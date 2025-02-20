@@ -66,7 +66,7 @@ struct ListItemGroupAnimationPage {
               ListItem() {
                 Text(project)
                   .width('100%')
-                  .height(100)
+                  .height('20%')
                   .fontSize(20)
                   .textAlign(TextAlign.Center)
                   .backgroundColor(0xFFFFFF)

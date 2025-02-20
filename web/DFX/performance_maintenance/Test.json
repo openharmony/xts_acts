@@ -10,7 +10,7 @@
   },
   "kits": [{
     "test-file-name": [
-      "ActsPerformanceMaintenanceTest.hap"
+      "ActsWebPerformanceMaintenanceTest.hap"
     ],
     "type": "AppInstallKit",
     "cleanup-apps": true

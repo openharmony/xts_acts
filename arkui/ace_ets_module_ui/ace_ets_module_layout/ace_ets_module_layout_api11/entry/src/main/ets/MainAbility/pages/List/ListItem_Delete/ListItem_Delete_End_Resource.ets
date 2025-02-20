@@ -40,6 +40,17 @@ struct ListItem_Delete_End_Resource {
 
   build() {
     Column() {
+      Text(this.enterEndDeleteAreaString).fontSize(12).key("ListItem_Delete_End_Resource_text_01")
+      Text(this.exitEndDeleteAreaString).fontSize(12).key("ListItem_Delete_End_Resource_text_02")
+      Text('' + this.arr.length).fontSize(12).key("ListItem_Delete_End_Resource_text_03")
+      Button('点击还原')
+        .height('8%')
+        .onClick(() => {
+          this.arr = [0, 1, 2, 3, 4]
+          this.enterEndDeleteAreaString = "not enterEndDeleteArea"
+          this.exitEndDeleteAreaString = "not exitEndDeleteArea"
+        })
+        .id('ListItem_Delete_End_Resource_button1')
       List({ space: 10 }) {
         ForEach(this.arr, (item: number) => {
           ListItem() {
@@ -73,17 +84,9 @@ struct ListItem_Delete_End_Resource {
           })
         }, (item: string) => item)
       }.key("ListItem_Delete_End_Resource_List_1")
+      .width('90%')
+      .height('80%')
 
-      Text(this.enterEndDeleteAreaString).fontSize(20).key("ListItem_Delete_End_Resource_text_01")
-      Text(this.exitEndDeleteAreaString).fontSize(20).key("ListItem_Delete_End_Resource_text_02")
-      Text('' + this.arr.length).fontSize(20).key("ListItem_Delete_End_Resource_text_03")
-      Button('点击还原')
-        .onClick(() => {
-          this.arr = [0, 1, 2, 3, 4]
-          this.enterEndDeleteAreaString = "not enterEndDeleteArea"
-          this.exitEndDeleteAreaString = "not exitEndDeleteArea"
-        })
-        .id('ListItem_Delete_End_Resource_button1')
     }
     .backgroundColor(0xDCDCDC)
     .width('100%')

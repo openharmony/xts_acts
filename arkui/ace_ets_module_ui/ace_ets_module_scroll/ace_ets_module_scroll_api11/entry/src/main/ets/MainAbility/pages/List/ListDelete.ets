@@ -52,7 +52,7 @@ struct ListDelete {
   build() {
     Column() {
       Text(this.tSting).key('MyList5ListItemOnDeleteH')
-      List({ space: 20, initialIndex: 0 }) {
+      List({ space: 2, initialIndex: 0 }) {
         ForEach(this.arr, (item: number, index) => {
           ListItem() {
             Text('' + item)
@@ -69,9 +69,10 @@ struct ListDelete {
       .margin({ top: 5 })
       .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 })
       .width('90%')
+      .height('15%')
       .key('MyList1')
 
-      List({ space: 20, initialIndex: 0 }) {
+      List({ space: 2, initialIndex: 0 }) {
         ForEach(this.arr, (item: number, index) => {
           ListItem() {
             Text('' + item)
@@ -89,9 +90,10 @@ struct ListDelete {
       .margin({ top: 5 })
       .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 })
       .width('90%')
+      .height('15%')
       .key('MyList2')
 
-      List({ space: 20, initialIndex: 0 }) {
+      List({ space: 2, initialIndex: 0 }) {
         ForEach(this.arr, (item: number, index) => {
           ListItem() {
             Text('' + item)
@@ -108,9 +110,10 @@ struct ListDelete {
       .margin({ top: 5 })
       .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 })
       .width('90%')
+      .height('15%')
       .key('MyList3')
 
-      List({ space: 20, initialIndex: 0 }) {
+      List({ space: 2, initialIndex: 0 }) {
         ForEach(this.arr, (item: number, index) => {
           ListItem() {
             Text('' + item)
@@ -127,9 +130,10 @@ struct ListDelete {
       .margin({ top: 5 })
       .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 })
       .width('90%')
+      .height('15%')
       .key('MyList4')
 
-      List({ space: 20, initialIndex: 0 }) {
+      List({ space: 2, initialIndex: 0 }) {
         ForEach(this.arr2, (item: number, index) => {
           ListItem() {
             Text('' + item)
@@ -158,7 +162,7 @@ struct ListDelete {
           .key('MyList5_ListItem' + index)
         }, (item: string) => item + "")
       }
-      .height("60%")
+      .height('15%')
       .margin({ top: 5 })
       .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 })
       .width('90%')

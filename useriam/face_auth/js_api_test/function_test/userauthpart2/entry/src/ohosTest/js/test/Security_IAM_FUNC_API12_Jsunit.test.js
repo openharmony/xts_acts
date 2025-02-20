@@ -15,6 +15,7 @@
 
 import { describe, it, expect } from '@ohos/hypium'
 import userAuthNorth from '@ohos.userIAM.userAuth'
+import { checkSupportOrNot } from './utils/commonFunc';
 
 export default function userauthTest_API12() {
     describe('userauthTest_API12', function () {
@@ -32,12 +33,15 @@ export default function userauthTest_API12() {
             let authType = [userAuthNorth.UserAuthType.FACE, userAuthNorth.UserAuthType.FINGERPRINT, userAuthNorth.UserAuthType.PIN]
             let authTypeOne = [-1, 0, 3, 5]
             for (let idx0 = 0; idx0 < authType.length; idx0++) {
-                try {
-                    console.info('SUB_Security_IAM_Func_API12_0100 authtype:' + authType[idx0])
-                    userAuthNorth.getEnrolledState(authType[idx0]);
-                } catch (e) {
-                    console.log("SUB_Security_IAM_Func_API12_0100 fail " + 'authType:' + authType[idx0] + 'e.code:' + e.code);
-                    expect(e.code).assertEqual(userAuthNorth.UserAuthResultCode.NOT_ENROLLED);
+                let checkSupport = await checkSupportOrNot(authType[idx0]);
+                if (checkSupport == 0) {
+                    try {
+                        console.info('SUB_Security_IAM_Func_API12_0100 authtype:' + authType[idx0])
+                        userAuthNorth.getEnrolledState(authType[idx0]);
+                    } catch (e) {
+                        console.log("SUB_Security_IAM_Func_API12_0100 fail " + 'authType:' + authType[idx0] + 'e.code:' + e.code);
+                        expect(e.code).assertEqual(userAuthNorth.UserAuthResultCode.NOT_ENROLLED);
+                    }
                 }
             }
             for (let idx0 = 0; idx0 < authTypeOne.length; idx0++) {

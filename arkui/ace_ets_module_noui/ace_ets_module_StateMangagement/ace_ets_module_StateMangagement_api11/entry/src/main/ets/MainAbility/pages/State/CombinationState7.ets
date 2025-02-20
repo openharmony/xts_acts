@@ -23,7 +23,7 @@ struct SubState7 {
 
   build() {
     Column() {
-      Text('@State:'+ this.num1).id("SubState_text1").margin(5)
+      Text('@State:'+ this.num1).id("SubState_text1").height('5%')
     }
   }
 }
@@ -34,7 +34,7 @@ struct SubState72 {
 
   build() {
     Column() {
-      Text('@State:'+ this.num1).id("SubState_text2").margin(5)
+      Text('@State:'+ this.num1).id("SubState_text2").height('5%')
     }
   }
 }
@@ -45,7 +45,7 @@ struct SubLink7 {
 
   build() {
     Column() {
-      Text('@Link:'+ this.num1).id("SubLink_text1").margin(5)
+      Text('@Link:'+ this.num1).id("SubLink_text1").height('5%')
     }
   }
 }
@@ -56,7 +56,7 @@ struct SubLink72 {
 
   build() {
     Column() {
-      Text('@Link:'+ this.num1).id("SubLink_text2").margin(5)
+      Text('@Link:'+ this.num1).id("SubLink_text2").height('5%')
     }
   }
 }
@@ -67,7 +67,7 @@ struct SubProp7 {
 
   build() {
     Column() {
-      Text('@Prop:'+ this.num1).id("SubProp_text1").margin(5)
+      Text('@Prop:'+ this.num1).id("SubProp_text1").height('5%')
     }
   }
 }
@@ -78,7 +78,7 @@ struct SubProp72 {
 
   build() {
     Column() {
-      Text('@Prop:'+ this.num1).id("SubProp_text2").margin(5)
+      Text('@Prop:'+ this.num1).id("SubProp_text2").height('5%')
     }
   }
 }
@@ -89,7 +89,7 @@ struct SubProvide7 {
 
   build() {
     Column() {
-      Text('@Provide:'+ this.num1).id("SubProvide_text1").margin(5)
+      Text('@Provide:'+ this.num1).id("SubProvide_text1").height('5%')
     }
   }
 }
@@ -100,7 +100,7 @@ struct SubProvide72 {
 
   build() {
     Column() {
-      Text('@Provide:'+ this.num1).id("SubProvide_text2").margin(5)
+      Text('@Provide:'+ this.num1).id("SubProvide_text2").height('5%')
     }
   }
 }
@@ -114,21 +114,21 @@ struct CombinationState7_2 {
 
   build() {
     Row() {
-      Column({ space: 20 }) {
-        Text('@StorageLink和@StorageProp支持初始化如下装饰器修饰的数据')
-        Text('支持初始化@State修饰的数据')
+      Column() {
+        Text('@StorageLink和@StorageProp支持初始化如下装饰器修饰的数据').height('5%')
+        Text('支持初始化@State修饰的数据').height('5%')
         SubState7({num1: this.num})
         SubState72({num1: this.numB})
 
-        Text('支持初始化@Link修饰的数据')
+        Text('支持初始化@Link修饰的数据').height('5%')
         SubLink7({num1: this.num})
         SubLink72({num1: this.numB})
 
-        Text('支持初始化@Prop修饰的数据')
+        Text('支持初始化@Prop修饰的数据').height('5%')
         SubProp7({num1: this.num})
         SubProp72({num1: this.numB})
 
-        Text('支持初始化@Provide修饰的数据')
+        Text('支持初始化@Provide修饰的数据').height('5%')
         SubProvide7({num1: this.num})
         SubProvide72({num1: this.numB})
 

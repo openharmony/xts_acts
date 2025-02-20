@@ -32,12 +32,13 @@ struct getLineMetricsText {
           .width('90%')
           .padding(10)
         Text(this.textStr, { controller: this.controller })
-          .fontSize(25)
+          // .fontSize(25)
           .borderWidth(1)
           .onAreaChange(() => {
             let layoutManager: LayoutManager = this.controller.getLayoutManager()
             this.lineCount = 'LineCount: ' + layoutManager.getLineCount()
           })
+          .height('5%')
 
         Text('GlyphPositionAtCoordinate').fontSize(9).fontColor(0xCCCCCC).width('90%').padding(10)
         Button('getGlyphPositionAtCoordinate').id('position_get')
@@ -45,10 +46,10 @@ struct getLineMetricsText {
             let layoutManager: LayoutManager = this.controller.getLayoutManager()
             let position: PositionWithAffinity = layoutManager.getGlyphPositionAtCoordinate(150, 50)
             this.glyphPositionAtCoordinate =
-            'position: ' + position.position + ' affinity: ' +
-            position.affinity
+              'position: ' + position.position + ' affinity: ' +
+              position.affinity
           })
-          .margin({ bottom: 20, top: 10 })
+          .height('5%')
 
         Text('LineMetrics').fontSize(9).fontColor(0xCCCCCC).width('90%').padding(10)
         Button('getLineMetrics').id('lineMetrics_get')
@@ -61,11 +62,10 @@ struct getLineMetricsText {
             runMetrics.forEach((value, key) => {
               this.lineMetrics += 'runMetrics key is ' + key + ' ' + JSON.stringify(value) + '\n\n'
             });
-          })
-          .margin({ bottom: 20, top: 10 })
+          }).height('5%')
         Text(this.startIndex).id('lineMetrics_mess')
       }
-      .margin({ top: 100, left: 8, right: 8 })
+      .height('100%')
     }
   }
 }

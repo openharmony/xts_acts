@@ -176,19 +176,19 @@ struct NavPathStack24{
     Navigation(this.derivedStack){
       Scroll(){
         Column(){
-          Text(this.text1).id('NavPathStack24_text1')
+          Text(this.text1).id('NavPathStack24_text1').height('5%')
           Button('pushPath pageOne').onClick((event: ClickEvent) => {
             this.derivedStack.pushPath({name:'pageOne'})
-          }).id('NavPathStack24_btn1')
+          }).id('NavPathStack24_btn1').height('5%')
           Button('pushPathByName pageTwo').onClick((event: ClickEvent) => {
             this.derivedStack.pushPathByName1('pageTwo',new param('ok'))
-          }).id('NavPathStack24_btn2')
+          }).id('NavPathStack24_btn2').height('5%')
           Button('moveToTop pageOne').onClick((event: ClickEvent) => {
             this.derivedStack.moveToTop('pageOne')
-          }).id('NavPathStack24_btn3')
+          }).id('NavPathStack24_btn3').height('5%')
           Button('replacePath pageTwo').onClick((event: ClickEvent) => {
             this.derivedStack.replacePath({name:'pageTwo',param:new param('ok')})
-          }).id('NavPathStack24_btn4')
+          }).id('NavPathStack24_btn4').height('5%')
 
         }
       }.height('100%')
@@ -197,6 +197,7 @@ struct NavPathStack24{
     .title('navigation')
     .navDestination(this.pageMap)
     .mode(NavigationMode.Split)
+    .navBarWidth('30%')
   }
 }
 

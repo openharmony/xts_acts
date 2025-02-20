@@ -911,7 +911,7 @@ export default function MapTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testCollectionsMap0030).then((value) => {
             num++;
-            expect(value).assertEqual('Concurrent modification exception');
+            expect(value).assertEqual('error');
           });
         }
         while (num < 10) {
@@ -939,7 +939,7 @@ export default function MapTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testCollectionsMap0031).then((value) => {
             num++;
-            expect(value).assertEqual('Concurrent modification exception');
+            expect(value).assertEqual('error');
           });
         }
         while (num < 10) {

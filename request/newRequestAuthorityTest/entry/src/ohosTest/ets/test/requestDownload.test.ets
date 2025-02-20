@@ -1072,5 +1072,617 @@ export default function requestDownloadJSUnit() {
       }
     });
 
+    /**
+     * @tc.number SUB_Request_Download_TaskGrouping_1000
+     * @tc.name   SUB_Request_Download_TaskGrouping_1000
+     * @tc.desc   request group task
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_TaskGrouping_1000', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_TaskGrouping_1000 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_TaskGrouping_1000.txt',
+        network: request.agent.Network.ANY,
+      };
+
+      try {
+        let notification: request.agent.Notification = {
+          text:'',
+          title:''
+        }
+        let groupConfig: request.agent.GroupConfig = {
+          gauge: true,
+          notification: notification
+        }
+        let task = await request.agent.create(baseContext, config);
+        let gid: string = await request.agent.createGroup(groupConfig)
+        console.info("====>SUB_Request_Download_TaskGrouping_1000 createGroup success");
+        await request.agent.attachGroup(gid, [task.tid]);
+        console.info("====>SUB_Request_Download_TaskGrouping_1000 attachGroup success tid: " + task.tid);
+        await request.agent.deleteGroup(gid);
+        console.info("====>SUB_Request_Download_TaskGrouping_1000 deleteGroup success");
+        expect(gid !== '').assertTrue();
+        expect(typeof gid === 'string').assertTrue();
+        await request.agent.remove(task.tid);
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_TaskGrouping_1000 err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Download_TaskGrouping_1100
+     * @tc.name   SUB_Request_Download_TaskGrouping_1100
+     * @tc.desc   request group task
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_TaskGrouping_1100', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_TaskGrouping_1100 is starting-----------------------");
+      try {
+        await request.agent.deleteGroup('');
+        console.info("====>SUB_Request_Download_TaskGrouping_1100 deleteGroup success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_TaskGrouping_1100 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Download_TaskGrouping_1200
+     * @tc.name   SUB_Request_Download_TaskGrouping_1200
+     * @tc.desc   request group task
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_TaskGrouping_1200', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_TaskGrouping_1200 is starting-----------------------");
+      try {
+        await request.agent.attachGroup('123', []);
+        console.info("====>SUB_Request_Download_TaskGrouping_1200 deleteGroup success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_TaskGrouping_1200 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(21900008);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Download_TaskGrouping_1300
+     * @tc.name   SUB_Request_Download_TaskGrouping_1300
+     * @tc.desc   request group task
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_TaskGrouping_1300', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_TaskGrouping_1300 is starting-----------------------");
+      try {
+        let notification: request.agent.Notification = {
+          text:'',
+          title:''
+        }
+        let groupConfig: request.agent.GroupConfig = {
+          gauge: true,
+          notification: notification
+        }
+        let gid: string = await request.agent.createGroup(groupConfig)
+        console.info("====>SUB_Request_Download_TaskGrouping_1300 createGroup success");
+        await request.agent.attachGroup(gid, []);
+        console.info("====>SUB_Request_Download_TaskGrouping_1300 attachGroup success tid");
+        expect(gid !== '').assertTrue();
+        expect(typeof gid === 'string').assertTrue();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_TaskGrouping_1300 err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Download_TaskGrouping_1400
+     * @tc.name   SUB_Request_Download_TaskGrouping_1400
+     * @tc.desc   request group task
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_TaskGrouping_1400', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_TaskGrouping_1400 is starting-----------------------");
+      try {
+        let text: string = ''.padEnd(1025, 'title')
+        let notification: request.agent.Notification = {
+          title: text
+        }
+        let groupConfig: request.agent.GroupConfig = {
+          notification: notification
+        }
+        let gid: string = await request.agent.createGroup(groupConfig)
+        console.info("====>SUB_Request_Download_TaskGrouping_1400 createGroup success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_TaskGrouping_1400 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Download_TaskGrouping_1500
+     * @tc.name   SUB_Request_Download_TaskGrouping_1500
+     * @tc.desc   request group task
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_TaskGrouping_1500', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_TaskGrouping_1500 is starting-----------------------");
+      try {
+        let text: string = ''.padEnd(1024, 'title')
+        let notification: request.agent.Notification = {
+          title: text
+        }
+        let groupConfig: request.agent.GroupConfig = {
+          notification: notification
+        }
+        let gid: string = await request.agent.createGroup(groupConfig)
+        console.info("====>SUB_Request_Download_TaskGrouping_1500 createGroup success");
+        expect(gid !== '').assertTrue();
+        expect(typeof gid === 'string').assertTrue();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_TaskGrouping_1500 err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Download_TaskGrouping_1600
+     * @tc.name   SUB_Request_Download_TaskGrouping_1600
+     * @tc.desc   request group task
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_TaskGrouping_1600', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_TaskGrouping_1600 is starting-----------------------");
+      try {
+        let text: string = ''.padEnd(3073, 'text')
+        let notification: request.agent.Notification = {
+          text: text
+        }
+        let groupConfig: request.agent.GroupConfig = {
+          notification: notification
+        }
+        await request.agent.createGroup(groupConfig)
+        console.info("====>SUB_Request_Download_TaskGrouping_1600 createGroup success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_TaskGrouping_1600 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Download_TaskGrouping_1700
+     * @tc.name   SUB_Request_Download_TaskGrouping_1700
+     * @tc.desc   request group task
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_TaskGrouping_1700', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_TaskGrouping_1700 is starting-----------------------");
+      try {
+        let text: string = ''.padEnd(3072, 'text')
+        let notification: request.agent.Notification = {
+          text: text
+        }
+        let groupConfig: request.agent.GroupConfig = {
+          notification: notification
+        }
+        let gid: string = await request.agent.createGroup(groupConfig)
+        console.info("====>SUB_Request_Download_TaskGrouping_1700 createGroup success");
+        expect(gid !== '').assertTrue();
+        expect(typeof gid === 'string').assertTrue();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_TaskGrouping_1700 err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Download_TaskGrouping_0700
+     * @tc.name   SUB_Request_Download_TaskGrouping_0700
+     * @tc.desc   request group task
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_TaskGrouping_0700', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_TaskGrouping_0700 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_TaskGrouping_0700.txt',
+        network: request.agent.Network.ANY,
+      };
+      let notification: request.agent.Notification = {
+        text:'',
+        title:''
+      }
+      let groupConfig: request.agent.GroupConfig = {
+        gauge: true,
+        notification: notification
+      }
+
+      let task: request.agent.Task | null = null;
+
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Download_TaskGrouping_0700 create task success");
+        let gid: string = await request.agent.createGroup(groupConfig)
+        console.info("====>SUB_Request_Download_TaskGrouping_0700 createGroup success");
+        await task.start();
+        console.info("====>SUB_Request_Download_TaskGrouping_0700 task start success");
+        await request.agent.attachGroup(gid, [task.tid]);
+        console.info("====>SUB_Request_Download_TaskGrouping_0700 attachGroup success tid: " + task.tid);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_TaskGrouping_0700 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(21900007);
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Download_setMaxSpeed_0100
+     * @tc.name   SUB_Request_Download_setMaxSpeed_0100
+     * @tc.desc   set task maxSpeed
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_setMaxSpeed_0100', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_setMaxSpeed_0100 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_setMaxSpeed_0100.txt',
+        network: request.agent.Network.ANY,
+      };
+      let task: request.agent.Task | null = null;
+      let speed: number = 16 * 1024;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Download_setMaxSpeed_0100 create task success");
+        await task.setMaxSpeed(speed);
+        console.info("====>SUB_Request_Download_setMaxSpeed_0100 setMaxSpeed success");
+        expect(speed).assertEqual(16384);
+        await request.agent.remove(task.tid);
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_setMaxSpeed_0100 err: " + JSON.stringify(err));
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Download_setMaxSpeed_0200
+     * @tc.name   SUB_Request_Download_setMaxSpeed_0200
+     * @tc.desc   set task maxSpeed
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_setMaxSpeed_0200', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_setMaxSpeed_0200 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_setMaxSpeed_0200.txt',
+        network: request.agent.Network.ANY,
+      };
+      let speed: number = 16 * 1024 -1;
+      let task: request.agent.Task | null = null;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Download_setMaxSpeed_0200 create task success");
+        await task.setMaxSpeed(speed);
+        console.info("====>SUB_Request_Download_setMaxSpeed_0200 setMaxSpeed success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_setMaxSpeed_0200 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Agent_customizingNotification_0500
+     * @tc.name   SUB_Request_Agent_customizingNotification_0500
+     * @tc.desc   testing text and title of notification
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Agent_customizingNotification_0500', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_customizingNotification_0500 is starting-----------------------");
+      let notification: request.agent.Notification = {
+        text: undefined,
+        title: undefined
+      }
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        mode: request.agent.Mode.FOREGROUND,
+        notification: notification,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_customizingNotification_0500.txt',
+        network: request.agent.Network.ANY,
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_customizingNotification_0500 create foreground task success");
+        expect(task !== null).assertTrue();
+        await request.agent.remove(task.tid);
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_customizingNotification_0500 err: " + JSON.stringify(err));
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Agent_customizingNotification_0600
+     * @tc.name   SUB_Request_Agent_customizingNotification_0600
+     * @tc.desc   testing text and title of notification
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Agent_customizingNotification_0600', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_customizingNotification_0600 is starting-----------------------");
+      let text: string = ''.padEnd(3073, 'text')
+      let notification: request.agent.Notification = {
+        text: text
+      }
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        mode: request.agent.Mode.BACKGROUND,
+        notification: notification,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_customizingNotification_0600.txt',
+        network: request.agent.Network.ANY,
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        console.info("====>SUB_Request_Agent_customizingNotification_0600 text length: " + config.notification?.text?.length);
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_customizingNotification_0600 create task success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_customizingNotification_0600 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Agent_customizingNotification_0700
+     * @tc.name   SUB_Request_Agent_customizingNotification_0700
+     * @tc.desc   testing text and title of notification
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Agent_customizingNotification_0700', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_customizingNotification_0700 is starting-----------------------");
+      let title: string = ''.padEnd(1025, 'text')
+      let notification: request.agent.Notification = {
+        title: title
+      }
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        mode: request.agent.Mode.BACKGROUND,
+        notification: notification,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_customizingNotification_0700.txt',
+        network: request.agent.Network.ANY,
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        console.info("====>SUB_Request_Agent_customizingNotification_0800 title length: " + config.notification?.title?.length);
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_customizingNotification_0700 create task success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_customizingNotification_0700 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Agent_customizingNotification_0800
+     * @tc.name   SUB_Request_Agent_customizingNotification_0800
+     * @tc.desc   testing text and title of notification
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Agent_customizingNotification_0800', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_customizingNotification_0800 is starting-----------------------");
+      let notification: request.agent.Notification = {
+        text: undefined,
+        title: undefined
+      }
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        mode: request.agent.Mode.BACKGROUND,
+        notification: notification,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_customizingNotification_0800.txt',
+        network: request.agent.Network.ANY,
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_customizingNotification_0800 create foreground task success");
+        expect(task !== null).assertTrue();
+        await request.agent.remove(task.tid);
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_customizingNotification_0800 err: " + JSON.stringify(err));
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Agent_customizingNotification_0900
+     * @tc.name   SUB_Request_Agent_customizingNotification_0900
+     * @tc.desc   testing text and title of notification
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Agent_customizingNotification_0900', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_customizingNotification_0900 is starting-----------------------");
+      let text: string = ''.padEnd(3072, 'text')
+      let title: string = ''.padEnd(1024, 'text')
+      let notification: request.agent.Notification = {
+        text: text,
+        title: title
+      }
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        mode: request.agent.Mode.BACKGROUND,
+        notification: notification,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_customizingNotification_0900.txt',
+        network: request.agent.Network.ANY,
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        console.info("====>SUB_Request_Agent_customizingNotification_0900 text length: " + config.notification?.text?.length);
+        console.info("====>SUB_Request_Agent_customizingNotification_0900 title length: " + config.notification?.title?.length);
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_customizingNotification_0900 create foreground task success");
+        expect(task !== null).assertTrue();
+        await request.agent.remove(task.tid);
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_customizingNotification_0900 err: " + JSON.stringify(err));
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Agent_customizingNotification_1000
+     * @tc.name   SUB_Request_Agent_customizingNotification_1000
+     * @tc.desc   testing text and title of notification
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Agent_customizingNotification_1000', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_customizingNotification_1000 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        mode: request.agent.Mode.BACKGROUND,
+        notification: undefined,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_customizingNotification_1000.txt',
+        network: request.agent.Network.ANY,
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Agent_customizingNotification_1000 create foreground task success");
+        expect(task !== null).assertTrue();
+        await request.agent.remove(task.tid);
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_customizingNotification_1000 err: " + JSON.stringify(err));
+        if (task !== null){
+          await request.agent.remove(task.tid);
+        }
+        expect().assertFail();
+        done();
+      }
+    });
+
   });
 }

@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsVideoHostingThreeTest.hap"
+            "ActsWebVideoHostingThreeTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

@@ -29,27 +29,30 @@ struct ForEach0330 {
   }
 
   build() {
-    Column({ space: 5 }) {
-      Column({ space: 5 }) {
+    Column() {
+      Column() {
         Row() {
           Button('DelOne0')
             .id('btnDelOne0')
-            .fontSize(14)
-            .height(25)
+            .width('10%')
+            .height('3%')
+            .fontSize(9)
             .onClick(() => {
               this.oneSource.splice(0, 1)
             })
           Button('DelTwo49')
             .id('btnDelTwo49')
-            .fontSize(14)
-            .height(25)
+            .width('10%')
+            .height('3%')
+            .fontSize(9)
             .onClick(() => {
               this.twoSource.splice(49, 1)
             })
           Button('DelOne9')
             .id('btnDelOne9')
-            .fontSize(14)
-            .height(25)
+            .width('10%')
+            .height('3%')
+            .fontSize(9)
             .onClick(() => {
               this.oneSource.splice(9, 1)
             })
@@ -58,22 +61,25 @@ struct ForEach0330 {
         Row() {
           Button('InsertOne0')
             .id('btnInsertOne0')
-            .fontSize(14)
-            .height(25)
+            .width('10%')
+            .height('3%')
+            .fontSize(9)
             .onClick(() => {
               this.oneSource.splice(0, 0, 'HelloOne0')
             })
           Button('InsertTwo49')
             .id('btnInsertTwo49')
-            .fontSize(14)
-            .height(25)
+            .width('10%')
+            .height('3%')
+            .fontSize(9)
             .onClick(() => {
               this.twoSource.splice(49, 0, 'HelloTwo49')
             })
           Button('InsertOne9')
             .id('btnInsertOne9')
-            .fontSize(14)
-            .height(25)
+            .width('10%')
+            .height('3%')
+            .fontSize(9)
             .onClick(() => {
               this.oneSource.splice(9, 0, 'HelloOne9')
             })
@@ -82,22 +88,25 @@ struct ForEach0330 {
         Row() {
           Button('MakeOne0')
             .id('btnMakeOne0')
-            .fontSize(14)
-            .height(25)
+            .width('10%')
+            .height('3%')
+            .fontSize(9)
             .onClick(() => {
               this.oneSource[0] = 'HelloWorldOne0'
             })
           Button('MakeTwo49')
             .id('btnMakeTwo49')
-            .fontSize(14)
-            .height(25)
+            .width('10%')
+            .height('3%')
+            .fontSize(9)
             .onClick(() => {
               this.twoSource[49] = 'HelloWorldTwo49'
             })
           Button('MakeOne9')
             .id('btnMakeOne9')
-            .fontSize(14)
-            .height(25)
+            .width('10%')
+            .height('3%')
+            .fontSize(9)
             .onClick(() => {
               this.oneSource[9] = 'HelloWorldOne9'
             })
@@ -106,8 +115,9 @@ struct ForEach0330 {
         Row() {
           Button('Swipe to Top')
             .id('btnSwipeTop')
-            .fontSize(14)
-            .height(25)
+            .width('10%')
+            .height('3%')
+            .fontSize(9)
             .onClick(() => {
               let rect = this.scroller.getItemRect(this.swipeStartIndex) // Get child components size and position
               this.scroller.scrollToIndex(0); // Slide to the specified index
@@ -116,8 +126,9 @@ struct ForEach0330 {
 
           Button('Swipe to Bottom')
             .id('btnSwipeBottom')
-            .fontSize(14)
-            .height(25)
+            .width('10%')
+            .height('3%')
+            .fontSize(9)
             .onClick(() => {
               let rect = this.scroller.getItemRect(this.swipeStartIndex) // Get child components size and position
               this.scroller.scrollToIndex(this.oneSource.length - 1 + this.twoSource.length -
@@ -127,31 +138,43 @@ struct ForEach0330 {
         }
       }
 
-      List({ space: 3, scroller: this.scroller }) {
+      List({ scroller: this.scroller }) {
         ListItem() {
           Text('Header1')
+            .height('3%')
+            .fontSize(9)
         }
 
         ListItem() {
           Text('Header2')
+            .height('3%')
+            .fontSize(9)
         }
 
         ForEach(this.oneSource, (item: string) => {
           ListItem() {
             Text(item)
+              .height('3%')
+              .fontSize(9)
           }
         }, (item: string) => item)
         ForEach(this.twoSource, (item: string) => {
           ListItem() {
             Text(item)
+              .height('3%')
+              .fontSize(9)
           }
         }, (item: string) => item)
         ListItem() {
           Text('Footer1')
+            .height('3%')
+            .fontSize(9)
         }
 
         ListItem() {
           Text('Footer2')
+            .height('3%')
+            .fontSize(9)
         }
       }
       .layoutWeight(1)

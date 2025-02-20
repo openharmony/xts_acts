@@ -716,6 +716,16 @@ export default function smsTextPublic() {
             destinationHost: telphoneErr,
             serviceCenter: telphone,
             destinationPort: 1000,
+            sendCallback: (err)=>{
+              if (err) {
+                console.info(`${caseName}: sendCallback error->${JSON.stringify(err)}`);
+              }
+            },
+            deliveryCallback: (err)=>{
+              if (err) {
+                console.info(`${caseName}: deliveryCallback error->${JSON.stringify(err)}`);
+              }
+            }
           };
           sms.sendShortMessage(sendOptions, (err: BusinessError) => {
             if (err) {
@@ -762,6 +772,16 @@ export default function smsTextPublic() {
             destinationHost: telphoneErr,
             serviceCenter: telphone,
             destinationPort: 1000,
+            sendCallback: (err)=>{
+              if (err) {
+                console.info(`${caseName}: sendCallback error->${JSON.stringify(err)}`);
+              }
+            },
+            deliveryCallback: (err)=>{
+              if (err) {
+                console.info(`${caseName}: deliveryCallback error->${JSON.stringify(err)}`);
+              }
+            }
           };
           sms.sendShortMessage(sendOptions).then(() => {
             console.info(`${caseName} success`);
@@ -805,6 +825,16 @@ export default function smsTextPublic() {
             content: [1, 2, 3],
             destinationHost: telphoneErr,
             destinationPort: 1000,
+            sendCallback: (err)=>{
+              if (err) {
+                console.info(`${caseName}: sendCallback error->${JSON.stringify(err)}`);
+              }
+            },
+            deliveryCallback: (err)=>{
+              if (err) {
+                console.info(`${caseName}: deliveryCallback error->${JSON.stringify(err)}`);
+              }
+            }
           };
           sms.sendShortMessage(sendOptions, (err: BusinessError) => {
             if (err) {
@@ -850,6 +880,16 @@ export default function smsTextPublic() {
             content: [1, 2, 3],
             destinationHost: telphoneErr,
             destinationPort: 1000,
+            sendCallback: (err)=>{
+              if (err) {
+                console.info(`${caseName}: sendCallback error->${JSON.stringify(err)}`);
+              }
+            },
+            deliveryCallback: (err)=>{
+              if (err) {
+                console.info(`${caseName}: deliveryCallback error->${JSON.stringify(err)}`);
+              }
+            }
           };
           sms.sendShortMessage(sendOptions).then(() => {
             console.info(`${caseName} success`);

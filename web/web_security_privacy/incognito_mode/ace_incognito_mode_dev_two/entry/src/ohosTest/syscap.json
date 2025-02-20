@@ -1,6 +1,8 @@
 {
     "devices": {
         "general": [
+            "car",
+            "tv",
             "default",
             "tablet",
             "2in1",

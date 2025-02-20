@@ -35,7 +35,7 @@ struct groupAnimationHeightExample {
               ListItem() {
                 Text('Group:' + groupIndex + ', Item:' + item)
                   .width('100%')
-                  .height(itemIndex % 2 == 0 ? 0 : 100)
+                  .height(itemIndex % 2 == 0 ? 0 : '20%')
                   .fontSize(20)
                   .textAlign(TextAlign.Center)
                   .backgroundColor(0xFFFFFF)

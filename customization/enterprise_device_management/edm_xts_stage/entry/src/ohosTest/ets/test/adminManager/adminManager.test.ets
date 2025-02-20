@@ -13,8 +13,10 @@
  * limitations under the License.
  */
 import { describe, expect, it } from '@ohos/hypium';
+import Want from '@ohos.app.ability.Want'
 import { ENTINFO1, SELFWANT, SELFHAPNAME, SUBSCRIBE_EVENTS, SUBSCRIBE_INVALID_EVENTS,
-  BUNDLENAME1 } from '../commom.ets';
+  BUNDLENAME1, INVALID_WANT, PARAMETERS_LOWER_BOUND, INVALID_PARAMETERS, INVALID_PARAMETERS_LOWER_THAN_UPPER_BOUND
+} from '../commom.ets';
 
 import adminManager from '@ohos.enterprise.adminManager';
 
@@ -404,6 +406,340 @@ export default function adminManagerTest() {
         expect(error.code == 401).assertTrue();
       } finally {
         await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_STARTADMINPROVISION_001
+     * @tc.name      : test_startAdminProvision_001
+     * @tc.desc      : test startAdminProvision method with invalid admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_startAdminProvision_001", 0, async (done: Function) => {
+      try {
+        adminManager.startAdminProvision(INVALID_WANT, adminManager.AdminType.ADMIN_TYPE_BYOD, AppStorage.get("test"), PARAMETERS_LOWER_BOUND);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_STARTADMINPROVISION_002
+     * @tc.name      : test_startAdminProvision_002
+     * @tc.desc      : test startAdminProvision method with invalid adminType
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_startAdminProvision_002", 0, async (done: Function) => {
+      try {
+        adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_NORMAL, AppStorage.get("test"), PARAMETERS_LOWER_BOUND);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_STARTADMINPROVISION_003
+     * @tc.name      : test_startAdminProvision_003
+     * @tc.desc      : test startAdminProvision method with invalid context
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_startAdminProvision_003", 0, async (done: Function) => {
+      try {
+        adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_BYOD, null, PARAMETERS_LOWER_BOUND);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_STARTADMINPROVISION_004
+     * @tc.name      : test_startAdminProvision_004
+     * @tc.desc      : test startAdminProvision method with invalid parameter
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_startAdminProvision_004", 0, async (done: Function) => {
+      try {
+        adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_BYOD, AppStorage.get("test"), INVALID_PARAMETERS);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_STARTADMINPROVISION_005
+     * @tc.name      : test_startAdminProvision_005
+     * @tc.desc      : test startAdminProvision method with invalid parameter
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_startAdminProvision_005", 0, async (done: Function) => {
+      try {
+        adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_BYOD,
+            AppStorage.get("test"), INVALID_PARAMETERS_LOWER_THAN_UPPER_BOUND);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_STARTADMINPROVISION_006
+     * @tc.name      : test_startAdminProvision_006
+     * @tc.desc      : test startAdminProvision method with invalid parameter
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_startAdminProvision_006", 0, async (done: Function) => {
+      let invalidActivateId: string = '';
+      for (let i = 0; i < 257; i++) {
+        invalidActivateId = invalidActivateId.concat('1');
+      }
+      let invalidParameterOverUpperBound: Record<string, string> = {
+        "activateId" : invalidActivateId
+      }
+      try {
+        adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_BYOD,
+            AppStorage.get("test"), invalidParameterOverUpperBound);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_STARTADMINPROVISION_007
+     * @tc.name      : test_startAdminProvision_007
+     * @tc.desc      : test startAdminProvision method with invalid parameter
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_startAdminProvision_007", 0, async (done: Function) => {
+      let invalidCustomizedInfo: string = '';
+      for (let i = 0; i < 10241; i++) {
+        invalidCustomizedInfo = invalidCustomizedInfo.concat('1');
+      }
+      let invalidParameterOverUpperBound: Record<string, string> = {
+        "activateId" : "12345678901234567890123456789012",
+        "customizedInfo" : invalidCustomizedInfo
+      }
+      try {
+        adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_BYOD,
+            AppStorage.get("test"), invalidParameterOverUpperBound);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })    
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_STARTADMINPROVISION_008
+     * @tc.name      : test_startAdminProvision_008
+     * @tc.desc      : test startAdminProvision method with invalid parameter
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_startAdminProvision_008", 0, async (done: Function) => {
+      const otherWant: Want = {
+        bundleName: "com.example.extensionzerotest",
+        abilityName: "com.example.extensionzerotest.EnterpriseAdminAbility"
+      };
+      try {
+        adminManager.startAdminProvision(otherWant, adminManager.AdminType.ADMIN_TYPE_BYOD,
+            AppStorage.get("test"), PARAMETERS_LOWER_BOUND);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_STARTADMINPROVISION_009
+     * @tc.name      : test_startAdminProvision_009
+     * @tc.desc      : test startAdminProvision method with invalid parameter
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_startAdminProvision_009", 0, async (done: Function) => {
+      let parameter: Record<string, string> = {
+        "activateId" : "12345678901234567890123456789012",
+        "activateId2" : "12345678901234567890123456789012",
+        "activateId3" : "12345678901234567890123456789012",
+        "activateId4" : "12345678901234567890123456789012",
+        "activateId5" : "12345678901234567890123456789012",
+        "activateId6" : "12345678901234567890123456789012",
+        "activateId7" : "12345678901234567890123456789012",
+        "activateId8" : "12345678901234567890123456789012",
+        "activateId9" : "12345678901234567890123456789012",
+        "activateId10" : "12345678901234567890123456789012",
+        "activateId11" : "12345678901234567890123456789012"
+      }
+      try {
+        adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_BYOD,
+            AppStorage.get("test"), parameter);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_STARTADMINPROVISION_010
+     * @tc.name      : test_startAdminProvision_010
+     * @tc.desc      : test startAdminProvision method
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_startAdminProvision_010", 0, async (done: Function) => {
+      const otherWant: Want = {
+        bundleName: "com.example.extensionzerotest",
+        abilityName: "com.example.extensionzerotest.MainAbility"
+      };
+      try {
+        adminManager.startAdminProvision(otherWant, adminManager.AdminType.ADMIN_TYPE_BYOD,
+            AppStorage.get("test"), PARAMETERS_LOWER_BOUND);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_STARTADMINPROVISION_011
+     * @tc.name      : test_startAdminProvision_011
+     * @tc.desc      : test startAdminProvision method
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_startAdminProvision_011", 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_BYOD,
+            AppStorage.get("test"), PARAMETERS_LOWER_BOUND);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GETADMINS_001
+     * @tc.name      : test_getAdmins_001
+     * @tc.desc      : test getadmins method
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_getAdmins_001", 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+      try {
+        let res: Array<Want> = await adminManager.getAdmins();
+        expect(res.length == 1).assertTrue();
+        expect(res[0].bundleName == SELFWANT.bundleName);
+        expect(res[0].abilityName == SELFWANT.abilityName);
+        expect(res[0].parameters?.adminType == 0);
+      } catch (error) {
+        expect(false).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GETADMINS_002
+     * @tc.name      : test_getAdmins_002
+     * @tc.desc      : test getadmins method
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_getAdmins_002", 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        let res: Array<Want> = await adminManager.getAdmins();
+        expect(res.length == 1).assertTrue();
+        expect(res[0].bundleName == SELFWANT.bundleName);
+        expect(res[0].abilityName == SELFWANT.abilityName);
+        expect(res[0].parameters?.adminType == 1);
+      } catch (error) {
+        expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GETADMINS_003
+     * @tc.name      : test_getAdmins_003
+     * @tc.desc      : test getadmins method
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_getAdmins_003", 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_BYOD);
+      try {
+        let res: Array<Want> = await adminManager.getAdmins();
+        expect(res.length == 1).assertTrue();
+        expect(res[0].bundleName == SELFWANT.bundleName);
+        expect(res[0].abilityName == SELFWANT.abilityName);
+        expect(res[0].parameters?.adminType == 2);
+      } catch (error) {
+        expect(false).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GETADMINS_004
+     * @tc.name      : test_getAdmins_004
+     * @tc.desc      : test getadmins method
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_getAdmins_004", 0, async (done: Function) => {
+      try {
+        let res: Array<Want> = await adminManager.getAdmins();
+        expect(res.length == 0).assertTrue();
+      } catch (error) {
+        expect(false).assertTrue();
       }
       done();
     })

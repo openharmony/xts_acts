@@ -19,37 +19,39 @@ struct LinkMapChild {
 
   build() {
     Column() {
-      ForEach(Array.from(this.value.entries()), (item: [number, string]) => {
-        Text(`${item[0]} ${item[1]}`).fontSize(20).id("LinkMap_value_" + item[1])
-        Divider()
-      })
-      Button('child init map').id("LinkMap_init")
+
+      Button('child init map').id("LinkMap_init").height('5%')
         .onClick(() => {
           this.value = new Map([[0, "a"], [1, "b"], [3, "c"]])
-        }).margin(10)
+        })
 
-      Button('child set new one').id("LinkMap_set")
+      Button('child set new one').id("LinkMap_set").height('5%')
         .onClick(() => {
           this.value.set(4, "d")
-        }).margin(10)
+        })
 
-      Button('child clear').id("LinkMap_clear")
+      Button('child clear').id("LinkMap_clear").height('5%')
         .onClick(() => {
           this.value.clear()
           if (Array.from(this.value.entries())) {
             this.value.set(0, "K")
           }
-        }).margin(10)
+        })
 
-      Button('child replace').id("LinkMap_replace")
+      Button('child replace').id("LinkMap_replace").height('5%')
         .onClick(() => {
           this.value.set(0, "aa")
-        }).margin(10)
+        })
 
-      Button('child delete').id("LinkMap_delete")
+      Button('child delete').id("LinkMap_delete").height('5%')
         .onClick(() => {
           this.value.delete(0)
         })
+
+      ForEach(Array.from(this.value.entries()), (item: [number, string]) => {
+        Text(`${item[0]} ${item[1]}`).fontSize(9).id("LinkMap_value_" + item[1]).height('5%')
+        Divider()
+      })
     }
   }
 }

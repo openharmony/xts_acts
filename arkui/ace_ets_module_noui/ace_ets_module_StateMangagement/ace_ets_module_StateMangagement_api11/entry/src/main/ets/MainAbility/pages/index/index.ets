@@ -33,16 +33,15 @@ struct Index {
   build() {
     Flex({ direction:FlexDirection.Column, alignItems:ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('Hello World')
-        .fontSize(50)
+        .fontSize(9)
         .fontWeight(FontWeight.Bold)
+        .height('5%')
       Button() {
         Text('next page')
-          .fontSize(25)
+          .fontSize(9)
           .fontWeight(FontWeight.Bold)
       }.type(ButtonType.Capsule)
-      .margin({
-        top: 20
-      })
+      .height('5%')
       .backgroundColor('#0D9FFB')
       .onClick(() => {
 

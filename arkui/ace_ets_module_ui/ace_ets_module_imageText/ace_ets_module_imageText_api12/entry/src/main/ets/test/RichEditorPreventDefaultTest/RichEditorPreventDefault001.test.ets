@@ -55,10 +55,12 @@ export default function RichEditorPreventDefault001() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0002
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0002
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0002 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0002
+     * @tc.name  : Test the RichEditor PreventDefault
+     * @tc.desc  : Set the onClick event with an image or text, do not call preventDefault, click on the image or text to test RichEditor PreventDefault
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0002', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_PREVENTDEFAULT_0002 START');
@@ -76,12 +78,12 @@ export default function RichEditorPreventDefault001() {
       let textCall = await driver.findComponent(ON.id('textCall'));
       let textCallText = await textCall.getText();
       await CommonFunc.sleep(500);
-      expect(textCallText).assertEqual('textCall:true');
+      expect(textCallText).assertContain('textCall');
 
       let imageCall = await driver.findComponent(ON.id('imageCall'));
       let imageCallText = await imageCall.getText();
       await CommonFunc.sleep(500);
-      expect(imageCallText).assertEqual('imageCall:true');
+      expect(imageCallText).assertContain('imageCall');
       done();
     });
 

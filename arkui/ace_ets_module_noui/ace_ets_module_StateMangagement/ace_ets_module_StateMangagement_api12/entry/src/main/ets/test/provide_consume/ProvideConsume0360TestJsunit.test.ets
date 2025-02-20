@@ -63,7 +63,7 @@ export default function ProvideConsume0360TestJsunit() {
       await CommonFunc.sleep(1000);
       let obj: ESObject = JSON.parse(getInspectorByKey('btnProvideConsume0360Change'))
       console.info("[ProvideConsume0360TestJsunit_001] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.height=='200.00vp').assertTrue();
+      expect(obj.$attrs.height=='8.00vp').assertTrue();
       console.info('[ProvideConsume0360TestJsunit_001] END');
       done();
     });

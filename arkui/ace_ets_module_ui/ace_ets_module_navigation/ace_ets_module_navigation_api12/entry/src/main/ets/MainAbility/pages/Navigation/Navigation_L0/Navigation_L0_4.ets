@@ -40,7 +40,7 @@ struct Navigation_L0_4 {
         }, (item: number) => item.toString())
       }
       .id('Navigation_L0_4_list')
-      .height(400)
+      .height('100%')
       .width('100%')
       .margin({ top: 12, left: '10%' })
 

@@ -21,6 +21,7 @@ group("actsuiextensiontest") {
       "uiextensionprovider:UIExtensionProvider",
       "uiextensionprovider2:UIExtensionProvider2",
       "uiextensionprovider3:UIExtensionProvider3",
+      "uiextensionprovider4:UIExtensionProvider4",
       "uiextensionservice:UIExtensionService",
       "uiextensiontest:UIExtensionTest",
     ]

@@ -71,7 +71,7 @@ export default function PropHight() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[PropHight_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropHight_0100] title: " + JSON.stringify(obj.$attrs.height));
-      expect(obj.$attrs.height).assertEqual('100.00vp');
+      expect(obj.$attrs.height).assertEqual('7.00vp');
       console.info('[PropHight_0100] END');
       done();
     });
@@ -92,7 +92,7 @@ export default function PropHight() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[PropHight_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropHight_0100] title: " + JSON.stringify(obj.$attrs.height));
-      expect(obj.$attrs.height).assertEqual('200.00vp');
+      expect(obj.$attrs.height).assertEqual('8.00vp');
       console.info('[PropHight_0100] END');
       done();
     });
@@ -113,7 +113,7 @@ export default function PropHight() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[PropHight_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropHight_0100] title: " + JSON.stringify(obj.$attrs.height));
-      expect(obj.$attrs.height).assertEqual('200.00vp');
+      expect(obj.$attrs.height).assertEqual('9.00vp');
       console.info('[PropHight_0100] END');
       done();
     });

@@ -90,7 +90,8 @@ export default function MultiNavigationTest() {
       let driver = Driver.create();
       await CommonFunc.sleep(200);
 
-      let btn1 = await driver.findComponent(ON.id('switchFullScreenId'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn1 = await scrollBar.scrollSearch(ON.id('switchFullScreenId'));
       await btn1.click()
       console.info('[MultiNavigation_0200] btn1 click');
       await CommonFunc.sleep(500);
@@ -118,8 +119,8 @@ export default function MultiNavigationTest() {
 
       let driver = Driver.create();
       await CommonFunc.sleep(200);
-
-      let btn1 = await driver.findComponent(ON.id('pageDetail1Id'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn1 = await scrollBar.scrollSearch(ON.id('pageDetail1Id'));
       await btn1.click()
       console.info('[MultiNavigation_0300] btn1 click');
       await CommonFunc.sleep(200);
@@ -129,7 +130,7 @@ export default function MultiNavigationTest() {
       console.info('[MultiNavigation_0300] btn2 click');
       await CommonFunc.sleep(200);
 
-      let btn3 = await driver.findComponent(ON.id('detailPopId'));
+      let btn3 = await scrollBar.scrollSearch(ON.id('detailPopId'));
       await btn2.click()
       console.info('[MultiNavigation_0300] btn3 click');
       await CommonFunc.sleep(200);

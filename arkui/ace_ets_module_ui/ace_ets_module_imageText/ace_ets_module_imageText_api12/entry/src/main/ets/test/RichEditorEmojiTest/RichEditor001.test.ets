@@ -55,10 +55,12 @@ export default function RichEditor001() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0021
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0021
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0021 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0021
+     * @tc.name  : Test the RichEditor doubleClick event
+     * @tc.desc  : Using the del key, it is not possible to delete a single emoji in front of the cursor to test the RichEditor emoji
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0021', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0021 START');
@@ -87,10 +89,12 @@ export default function RichEditor001() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0016
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0016
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0016 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0016
+     * @tc.name  : Test the RichEditor doubleClick event
+     * @tc.desc  : Using the del key, you can delete a single emoji after the cursor to test the RichEditor emoji
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0016', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0016 START');

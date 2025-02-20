@@ -3497,6 +3497,194 @@ void RunMSLiteModel(OH_AI_ModelHandle model, string model_name, bool is_transpos
     free(out_tensor_array.handle_list);
 }
 
+void CopyFreeSetAllocator(OH_AI_ModelHandle model, OH_AI_TensorHandleArray *in_tensor_array,
+    OH_AI_TensorHandleArray *out_tensor_array)
+{
+    const size_t maxDims = 10;
+    int64_t shape[maxDims];
+    size_t shapeNum;
+    OH_AI_TensorHandleArray inputs_handle = OH_AI_ModelGetInputs(model);
+    in_tensor_array->handle_num = inputs_handle.handle_num;
+    in_tensor_array->handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) *
+        in_tensor_array->handle_num);
+    for (size_t i = 0; i < inputs_handle.handle_num; i++) {
+        auto ori_tensor = inputs_handle.handle_list[i];
+        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shapeNum);
+        for (size_t j = 0; j < shapeNum; j++) {
+        shape[j] = shape_ptr[j];
+        }
+        void *in_allocator = OH_AI_TensorGetAllocator(ori_tensor);
+        OH_AI_TensorHandle in_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor),
+            OH_AI_TensorGetDataType(ori_tensor), shape, shapeNum, nullptr, 0);
+        OH_AI_TensorSetAllocator(in_tensor, in_allocator);
+        in_tensor_array->handle_list[i] = in_tensor;
+    }
+    printf("==========OH_AI_TensorSetAllocator out_tensor==========\n");
+    OH_AI_TensorHandleArray outputs_handle = OH_AI_ModelGetOutputs(model);
+    out_tensor_array->handle_num = outputs_handle.handle_num;
+    out_tensor_array->handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) *
+        out_tensor_array->handle_num);
+    for (size_t i = 0; i < outputs_handle.handle_num; i++) {
+        auto ori_tensor = outputs_handle.handle_list[i];
+        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shapeNum);
+        for (size_t j = 0; j < shapeNum; j++) {
+        shape[j] = shape_ptr[j];
+        }
+        void *in_allocator = OH_AI_TensorGetAllocator(ori_tensor);
+        OH_AI_TensorHandle out_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor),
+            OH_AI_TensorGetDataType(ori_tensor), shape, shapeNum, nullptr, 0);
+        OH_AI_TensorSetAllocator(out_tensor, in_allocator);
+        out_tensor_array->handle_list[i] = out_tensor;
+    }
+}
+
+// 正常场景：CPU免拷贝场景，并循环推理
+HWTEST(MSLiteTest, SUB_AI_MindSpore_CPU_copy_free_0002, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    AddContextDeviceCPU(context);
+    printf("==========Build model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+
+    OH_AI_TensorHandleArray in_tensor_array;
+    OH_AI_TensorHandleArray out_tensor_array;
+    printf("==========OH_AI_TensorSetAllocator in_tensor==========\n");
+    CopyFreeSetAllocator(model, &in_tensor_array, &out_tensor_array);
+    printf("==========FillInputsData==========\n");
+    FillInputsData(in_tensor_array, "ml_face_isface", true);
+    for (size_t i = 0; i < 50; ++i) {
+        printf("==========OH_AI_ModelPredict==========\n");
+        auto predict_ret = OH_AI_ModelPredict(model, in_tensor_array, &out_tensor_array, NULL, NULL);
+        ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+        CompareResult(out_tensor_array, "ml_face_isface");
+    }
+    printf("==========OH_AI_TensorDestroy==========\n");
+    for (size_t i = 0; i < in_tensor_array.handle_num; i++) {
+        auto ori_tensor = in_tensor_array.handle_list[i];
+        OH_AI_TensorDestroy(&ori_tensor);
+    }
+    free(in_tensor_array.handle_list);
+    for (size_t i = 0; i < out_tensor_array.handle_num; i++) {
+        auto ori_tensor = out_tensor_array.handle_list[i];
+        OH_AI_TensorDestroy(&ori_tensor);
+    }
+    free(out_tensor_array.handle_list);
+    printf("==========ContextDestroy and ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+void CopyFreeNoSetAllocator(OH_AI_ModelHandle model, OH_AI_TensorHandleArray *in_tensor_array,
+    OH_AI_TensorHandleArray *out_tensor_array)
+{
+    const size_t maxDims = 10;
+    int64_t shape[maxDims];
+    size_t shapeNum;
+    OH_AI_TensorHandleArray inputs_handle = OH_AI_ModelGetInputs(model);
+    in_tensor_array->handle_num = inputs_handle.handle_num;
+    in_tensor_array->handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) *
+                                                                in_tensor_array->handle_num);
+    for (size_t i = 0; i < inputs_handle.handle_num; i++) {
+        auto ori_tensor = inputs_handle.handle_list[i];
+        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shapeNum);
+        for (size_t j = 0; j < shapeNum; j++) {
+        shape[j] = shape_ptr[j];
+        }
+        OH_AI_TensorHandle in_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor),
+            OH_AI_TensorGetDataType(ori_tensor), shape, shapeNum, nullptr, 0);
+        in_tensor_array->handle_list[i] = in_tensor;
+    }
+    printf("==========OH_AI_TensorSetAllocator out_tensor==========\n");
+    OH_AI_TensorHandleArray outputs_handle = OH_AI_ModelGetOutputs(model);
+    out_tensor_array->handle_num = outputs_handle.handle_num;
+    out_tensor_array->handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) *
+                                                                out_tensor_array->handle_num);
+    for (size_t i = 0; i < outputs_handle.handle_num; i++) {
+        auto ori_tensor = outputs_handle.handle_list[i];
+        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shapeNum);
+        for (size_t j = 0; j < shapeNum; j++) {
+        shape[j] = shape_ptr[j];
+        }
+        OH_AI_TensorHandle out_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor),
+            OH_AI_TensorGetDataType(ori_tensor), shape, shapeNum, nullptr, 0);
+        out_tensor_array->handle_list[i] = out_tensor;
+    }
+}
+
+// 正常场景：CPU免拷贝场景，不调用OH_AI_TensorSetAllocator
+HWTEST(MSLiteTest, SUB_AI_MindSpore_CPU_copy_free_0003, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    AddContextDeviceCPU(context);
+    printf("==========Build model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    OH_AI_TensorHandleArray in_tensor_array;
+    OH_AI_TensorHandleArray out_tensor_array;
+    printf("==========OH_AI_TensorSetAllocator in_tensor==========\n");
+    CopyFreeNoSetAllocator(model, &in_tensor_array, &out_tensor_array);
+    printf("==========FillInputsData==========\n");
+    FillInputsData(in_tensor_array, "ml_face_isface", true);
+    printf("==========OH_AI_ModelPredict==========\n");
+    auto predict_ret = OH_AI_ModelPredict(model, in_tensor_array, &out_tensor_array, NULL, NULL);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(out_tensor_array, "ml_face_isface");
+    printf("==========OH_AI_TensorDestroy==========\n");
+    for (size_t i = 0; i < in_tensor_array.handle_num; i++) {
+        auto ori_tensor = in_tensor_array.handle_list[i];
+        OH_AI_TensorDestroy(&ori_tensor);
+    }
+    free(in_tensor_array.handle_list);
+    for (size_t i = 0; i < out_tensor_array.handle_num; i++) {
+        auto ori_tensor = out_tensor_array.handle_list[i];
+        OH_AI_TensorDestroy(&ori_tensor);
+    }
+    free(out_tensor_array.handle_list);
+    printf("==========ContextDestroy and ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常场景：CPU免拷贝场景，不调用OH_AI_TensorSetAllocator，并循环推理
+HWTEST(MSLiteTest, SUB_AI_MindSpore_CPU_copy_free_0004, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    AddContextDeviceCPU(context);
+    printf("==========Build model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    OH_AI_TensorHandleArray in_tensor_array;
+    OH_AI_TensorHandleArray out_tensor_array;
+    printf("==========OH_AI_TensorSetAllocator in_tensor==========\n");
+    CopyFreeNoSetAllocator(model, &in_tensor_array, &out_tensor_array);
+    printf("==========FillInputsData==========\n");
+    FillInputsData(in_tensor_array, "ml_face_isface", true);
+    for (size_t i = 0; i < 50; ++i) {
+        printf("==========OH_AI_ModelPredict==========\n");
+        auto predict_ret = OH_AI_ModelPredict(model, in_tensor_array, &out_tensor_array, NULL, NULL);
+        ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+        CompareResult(out_tensor_array, "ml_face_isface");
+    }
+    printf("==========OH_AI_TensorDestroy==========\n");
+    for (size_t i = 0; i < in_tensor_array.handle_num; i++) {
+        auto ori_tensor = in_tensor_array.handle_list[i];
+        OH_AI_TensorDestroy(&ori_tensor);
+    }
+    free(in_tensor_array.handle_list);
+    for (size_t i = 0; i < out_tensor_array.handle_num; i++) {
+        auto ori_tensor = out_tensor_array.handle_list[i];
+        OH_AI_TensorDestroy(&ori_tensor);
+    }
+    free(out_tensor_array.handle_list);
+    printf("==========ContextDestroy and ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
 // 正常场景：通过OH_AI_TensorCreate创建输入输出tensor，实现数据免拷贝
 HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0002, Function | MediumTest | Level1) {
     if (!IsNPU()) {
@@ -3532,19 +3720,19 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0003, Function | MediumTest |
     printf("==========GetInputs==========\n");
     const size_t MAX_DIMS = 10;
     int64_t shape[MAX_DIMS];
-    size_t shape_num;
+    size_t shapeNum;
     OH_AI_TensorHandleArray in_tensor_array;
     OH_AI_TensorHandleArray inputs_handle = OH_AI_ModelGetInputs(model);
     in_tensor_array.handle_num = inputs_handle.handle_num;
     in_tensor_array.handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) * in_tensor_array.handle_num);
     for (size_t i = 0; i < inputs_handle.handle_num; i++) {
         auto ori_tensor = inputs_handle.handle_list[i];
-        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shape_num);
-        for (size_t j = 0; j < shape_num; j++) {
+        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shapeNum);
+        for (size_t j = 0; j < shapeNum; j++) {
         shape[j] = shape_ptr[j];
         }
         OH_AI_TensorHandle in_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor),
-                                        OH_AI_TensorGetDataType(ori_tensor), shape, shape_num, nullptr, 0);
+                                        OH_AI_TensorGetDataType(ori_tensor), shape, shapeNum, nullptr, 0);
         OH_AI_Status ret = OH_AI_TensorSetAllocator(in_tensor, nullptr);
         ASSERT_NE(ret, OH_AI_STATUS_SUCCESS);
         in_tensor_array.handle_list[i] = in_tensor;
@@ -3612,7 +3800,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0005, Function | MediumTest |
     ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
     const size_t MAX_DIMS = 10;
     int64_t shape[MAX_DIMS];
-    size_t shape_num;
+    size_t shapeNum;
     OH_AI_TensorHandleArray in_tensor_array;
     OH_AI_TensorHandleArray out_tensor_array;
     printf("==========OH_AI_TensorSetAllocator in_tensor==========\n");
@@ -3621,13 +3809,13 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0005, Function | MediumTest |
     in_tensor_array.handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) * in_tensor_array.handle_num);
     for (size_t i = 0; i < inputs_handle.handle_num; i++) {
         auto ori_tensor = inputs_handle.handle_list[i];
-        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shape_num);
-        for (size_t j = 0; j < shape_num; j++) {
+        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shapeNum);
+        for (size_t j = 0; j < shapeNum; j++) {
         shape[j] = shape_ptr[j];
         }
         void *in_allocator = OH_AI_TensorGetAllocator(ori_tensor);
-        OH_AI_TensorHandle in_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor), OH_AI_TensorGetDataType(ori_tensor),
-                                        shape, shape_num, nullptr, 0);  
+        OH_AI_TensorHandle in_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor),
+            OH_AI_TensorGetDataType(ori_tensor), shape, shapeNum, nullptr, 0);
         OH_AI_TensorSetAllocator(in_tensor, in_allocator);
         in_tensor_array.handle_list[i] = in_tensor;
     }
@@ -3639,13 +3827,13 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0005, Function | MediumTest |
     out_tensor_array.handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) * out_tensor_array.handle_num);
     for (size_t i = 0; i < outputs_handle.handle_num; i++) {
         auto ori_tensor = outputs_handle.handle_list[i];
-        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shape_num);
-        for (size_t j = 0; j < shape_num; j++) {
+        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shapeNum);
+        for (size_t j = 0; j < shapeNum; j++) {
         shape[j] = shape_ptr[j];
         }
         void *in_allocator = OH_AI_TensorGetAllocator(ori_tensor);
         OH_AI_TensorHandle out_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor), OH_AI_TensorGetDataType(ori_tensor),
-                                        shape, shape_num, nullptr, 0);
+                                        shape, shapeNum, nullptr, 0);
         OH_AI_TensorSetAllocator(out_tensor, in_allocator);
         out_tensor_array.handle_list[i] = out_tensor;
     }
@@ -3653,6 +3841,89 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0005, Function | MediumTest |
         printf("==========OH_AI_ModelPredict==========\n");
         auto ret = OH_AI_ModelPredict(model, in_tensor_array, &out_tensor_array, NULL, NULL);
         ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+        CompareResult(out_tensor_array, "ml_face_isface");
+    }
+    printf("==========OH_AI_TensorDestroy==========\n");
+    for (size_t i = 0; i < in_tensor_array.handle_num; i++) {
+        auto ori_tensor = in_tensor_array.handle_list[i];
+        OH_AI_TensorDestroy(&ori_tensor);
+    }
+    free(in_tensor_array.handle_list);
+    for (size_t i = 0; i < out_tensor_array.handle_num; i++) {
+        auto ori_tensor = out_tensor_array.handle_list[i];
+        OH_AI_TensorDestroy(&ori_tensor);
+    }
+    free(out_tensor_array.handle_list);
+    printf("==========ContextDestroy and ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常场景：npu免拷贝场景，不调用OH_AI_TensorSetAllocator
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0006, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    AddContextDeviceNNRT(context);
+    printf("==========Build model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    OH_AI_TensorHandleArray in_tensor_array;
+    OH_AI_TensorHandleArray out_tensor_array;
+    printf("==========OH_AI_TensorSetAllocator in_tensor==========\n");
+    CopyFreeNoSetAllocator(model, &in_tensor_array, &out_tensor_array);
+    printf("==========FillInputsData==========\n");
+    FillInputsData(in_tensor_array, "ml_face_isface", true);
+    printf("==========OH_AI_ModelPredict==========\n");
+    auto predict_ret = OH_AI_ModelPredict(model, in_tensor_array, &out_tensor_array, NULL, NULL);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(out_tensor_array, "ml_face_isface");
+    printf("==========OH_AI_TensorDestroy==========\n");
+    for (size_t i = 0; i < in_tensor_array.handle_num; i++) {
+        auto ori_tensor = in_tensor_array.handle_list[i];
+        OH_AI_TensorDestroy(&ori_tensor);
+    }
+    free(in_tensor_array.handle_list);
+    for (size_t i = 0; i < out_tensor_array.handle_num; i++) {
+        auto ori_tensor = out_tensor_array.handle_list[i];
+        OH_AI_TensorDestroy(&ori_tensor);
+    }
+    free(out_tensor_array.handle_list);
+    printf("==========ContextDestroy and ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常场景：npu免拷贝场景，不调用OH_AI_TensorSetAllocator，并循环推理
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0007, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    AddContextDeviceNNRT(context);
+    printf("==========Build model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+
+    OH_AI_TensorHandleArray in_tensor_array;
+    OH_AI_TensorHandleArray out_tensor_array;
+    printf("==========OH_AI_TensorSetAllocator in_tensor==========\n");
+    CopyFreeNoSetAllocator(model, &in_tensor_array, &out_tensor_array);
+    printf("==========FillInputsData==========\n");
+    FillInputsData(in_tensor_array, "ml_face_isface", true);
+    for (size_t i = 0; i < 50; ++i) {
+        printf("==========OH_AI_ModelPredict==========\n");
+        auto predict_ret = OH_AI_ModelPredict(model, in_tensor_array, &out_tensor_array, NULL, NULL);
+        ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
         CompareResult(out_tensor_array, "ml_face_isface");
     }
     printf("==========OH_AI_TensorDestroy==========\n");
@@ -4079,6 +4350,220 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0013, Function | MediumTes
     OH_AI_ModelDestroy(&model);
 }
 
+// 正常场景：HIAI流程，设置 NPU 和外围输入/输出(I/O)设备的带宽模式BandMode模式为HIAI_BANDMODE_UNSET
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0014, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    NNRTDeviceDesc *desc_1 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        if (strcmp(name, "HIAI_F") == 0) {
+            desc_1 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+
+    auto id_1 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_1);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_1);
+    const char *band_mode = "HIAI_BANDMODE_HIGH";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
+    size_t q_size;
+    char *quant_config = ReadFile("/data/test/test_model_param", &q_size);
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantConfigData", quant_config, q_size);
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/test_model.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "test_model", false);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "test_model", 0.01, 0.01, true);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常场景：HIAI流程，离线模型配置量化参数QuantBuffer
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0015, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    NNRTDeviceDesc *desc_1 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        if (strcmp(name, "HIAI_F") == 0) {
+            desc_1 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+
+    auto id_1 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_1);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_1);
+    const char *band_mode = "HIAI_BANDMODE_HIGH";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
+    size_t q_size;
+    char *quant_config = ReadFile("/data/test/test_model_param", &q_size);
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantBuffer", quant_config, q_size);
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/test_model.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "test_model", false);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "test_model", 0.01, 0.01, true);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常场景：HIAI流程，设置量化配置QuantBuffer为空指针时等于不量化
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0016, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    NNRTDeviceDesc *desc_1 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        if (strcmp(name, "HIAI_F") == 0) {
+            desc_1 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+
+    auto id_1 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_1);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_1);
+    const char *band_mode = "HIAI_BANDMODE_HIGH";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantBuffer", nullptr, 0);
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/test_model.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "test_model", false);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "test_model", 0.01, 0.01, true);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 异常场景：HIAI流程，设置量化配置QuantBuffer为错误配置文件
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0017, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    NNRTDeviceDesc *desc_1 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        if (strcmp(name, "HIAI_F") == 0) {
+            desc_1 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+
+    auto id_1 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_1);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_1);
+    const char *band_mode = "HIAI_BANDMODE_HIGH";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
+    size_t q_size;
+    char *quant_config = ReadFile("/data/test/test_model.om.ms", &q_size);
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantBuffer", quant_config, q_size);
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/test_model.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_LITE_ERROR);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 异常场景：HIAI流程，设置量化QuantBufferq_size为异常值
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0018, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    NNRTDeviceDesc *desc_1 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        if (strcmp(name, "HIAI_F") == 0) {
+            desc_1 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+
+    auto id_1 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_1);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_1);
+    const char *band_mode = "HIAI_BANDMODE_HIGH";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
+    size_t q_size;
+    char *quant_config = ReadFile("/data/test/test_model_param", &q_size);
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantBuffer", quant_config, 0);
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/test_model.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_LITE_ERROR);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
 
 void PrintMem(const std::string &position) {
     std::string procFile = "/proc/" + std::to_string(getpid()) + "/status";
@@ -4440,3 +4925,2438 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextDestroy_0002, Function | MediumTest |
     OH_AI_ContextDestroy(&context);
 }
 
+// OH_AI_TensorCreate接口，name为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0001, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t createShapeNum = 4;
+    int64_t createShape[createShapeNum] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate(nullptr, OH_AI_DATATYPE_NUMBERTYPE_FLOAT32,
+        createShape, createShapeNum, nullptr, 0);
+    ASSERT_EQ(tensor, nullptr);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorCreate接口，type为异常类型
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0002, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t createShapeNum = 4;
+    int64_t createShape[createShapeNum] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DataTypeInvalid,
+        createShape, createShapeNum, nullptr, 0);
+    ASSERT_EQ(tensor, nullptr);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorCreate接口，tensor维度数组长度为32，shapeNum为3
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0004, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t createShapeNum = 32;
+    int64_t createShape[createShapeNum] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, createShape, 3,
+        nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// 正常调用接口创建Tensor，并传入input进行推理
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0005, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelGetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+        create_shape_num, nullptr, 0);
+    OH_AI_TensorHandleArray in_tensor_array;
+    in_tensor_array.handle_num = 1;
+    in_tensor_array.handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) * 1);
+    in_tensor_array.handle_list[0] = tensor;
+    FillInputsData(in_tensor_array, "ml_face_isface", true);
+    printf("==========OH_AI_ModelPredict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, in_tensor_array, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========CompareModelOutputs==========\n");
+    CompareResult(outputs, "ml_face_isface");
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常调用接口创建Tensor，用不同的OH_AI_DataType，并传入input进行推理
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0006, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/aiy_vision_classifier_plants_V1_3.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelGetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    constexpr size_t create_shape_num = 4;
+    int64_t createShape[create_shape_num] = {1, 224, 224, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_UINT8, createShape,
+        create_shape_num, nullptr, 0);
+    OH_AI_TensorHandleArray in_tensor_array;
+    in_tensor_array.handle_num = 1;
+    in_tensor_array.handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) * 1);
+    in_tensor_array.handle_list[0] = tensor;
+    FillInputsData(in_tensor_array, "aiy_vision_classifier_plants_V1_3", false);
+    printf("==========OH_AI_ModelPredict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, in_tensor_array, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========CompareModelOutputs==========\n");
+    for (size_t i = 0; i < outputs.handle_num; ++i) {
+        OH_AI_TensorHandle tensor = outputs.handle_list[i];
+        int64_t element_num = OH_AI_TensorGetElementNum(tensor);
+        printf("Tensor name: %s, elements num: %" PRId64 ".\n", OH_AI_TensorGetName(tensor), element_num);
+        uint8_t *output_data = reinterpret_cast<uint8_t *>(OH_AI_TensorGetMutableData(tensor));
+        printf("output data is:");
+        for (int j = 0; j < element_num && j <= 20; ++j) {
+            printf("%d ", output_data[j]);
+        }
+        printf("\n");
+        printf("==========compFp32WithTData==========\n");
+        string expectedDataFile = "/data/test/aiy_vision_classifier_plants_V1_3" + std::to_string(i) + ".output";
+        bool result = compUint8WithTData(output_data, expectedDataFile, 0.01, 0.01, false);
+        ASSERT_EQ(result, true);
+    }
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_TensorCreate接口，OH_AI_DataType类型、shape数组长度，遍历设置
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0007, Function | MediumTest | Level1) {
+constexpr size_t datatypeNum = 12;
+OH_AI_DataType datatype[datatypeNum] = {
+    OH_AI_DATATYPE_NUMBERTYPE_BOOL,
+    OH_AI_DATATYPE_NUMBERTYPE_INT8,
+    OH_AI_DATATYPE_NUMBERTYPE_INT16,
+    OH_AI_DATATYPE_NUMBERTYPE_INT32,
+    OH_AI_DATATYPE_NUMBERTYPE_INT64,
+    OH_AI_DATATYPE_NUMBERTYPE_UINT8,
+    OH_AI_DATATYPE_NUMBERTYPE_UINT16,
+    OH_AI_DATATYPE_NUMBERTYPE_UINT32,
+    OH_AI_DATATYPE_NUMBERTYPE_UINT64,
+    OH_AI_DATATYPE_NUMBERTYPE_FLOAT16,
+    OH_AI_DATATYPE_NUMBERTYPE_FLOAT32,
+    OH_AI_DATATYPE_NUMBERTYPE_FLOAT64
+};
+constexpr size_t createShapeNum = 4;
+int64_t createShape[createShapeNum] = {1, 48, 48, 3};
+for (size_t i = 0; i < datatypeNum; ++i) {
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", datatype[i], createShape, createShapeNum, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorDestroy(&tensor);
+}
+}
+
+void CreateAndSetTensor(OH_AI_ModelHandle model, OH_AI_ContextHandle context,
+    OH_AI_TensorHandleArray *in_tensor_array, bool isFirst)
+{
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_TensorHandle tensor;
+    if (isFirst) {
+        OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+            OH_AI_MODELTYPE_MINDIR, context);
+        ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+        printf("==========OH_AI_ModelGetInputs==========\n");
+        OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+        ASSERT_NE(inputs.handle_list, nullptr);
+        OH_AI_TensorSetFormat(inputs.handle_list[0], OH_AI_FORMAT_NHWC);
+        constexpr size_t createShapeNum = 4;
+        int64_t createShape[createShapeNum] = {1, 48, 48, 3};
+        tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32,
+            createShape, createShapeNum, nullptr, 0);
+    } else {
+        OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/aiy_vision_classifier_plants_V1_3.ms",
+            OH_AI_MODELTYPE_MINDIR, context);
+        ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+        printf("==========OH_AI_ModelGetInputs==========\n");
+        OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+        ASSERT_NE(inputs.handle_list, nullptr);
+        constexpr size_t createShapeNum = 4;
+        int64_t createShape[createShapeNum] = {1, 224, 224, 3};
+        tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_UINT8, createShape,
+            createShapeNum, nullptr, 0);
+    }
+    
+    in_tensor_array->handle_num = 1;
+    in_tensor_array->handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) * 1);
+    in_tensor_array->handle_list[0] = tensor;
+}
+
+// 正常调用接口创建多个Tensor，并传入input进行推理
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0008, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_TensorHandleArray in_tensor_array;
+    CreateAndSetTensor(model, context, &in_tensor_array, true);
+    FillInputsData(in_tensor_array, "ml_face_isface", true);
+    printf("==========OH_AI_ModelPredict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, in_tensor_array, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========CompareModelOutputs==========\n");
+    CompareResult(outputs, "ml_face_isface");
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context2 = OH_AI_ContextCreate();
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    OH_AI_TensorHandleArray in_tensor_array2;
+    CreateAndSetTensor(model2, context2, &in_tensor_array2, false);
+    FillInputsData(in_tensor_array2, "aiy_vision_classifier_plants_V1_3", false);
+    printf("==========OH_AI_ModelPredict==========\n");
+    OH_AI_TensorHandleArray outputs2;
+    OH_AI_Status predict_ret2 = OH_AI_ModelPredict(model2, in_tensor_array2, &outputs2, nullptr, nullptr);
+    ASSERT_EQ(predict_ret2, OH_AI_STATUS_SUCCESS);
+    printf("==========CompareModelOutputs==========\n");
+    for (size_t i = 0; i < outputs2.handle_num; ++i) {
+        OH_AI_TensorHandle tensor = outputs2.handle_list[i];
+        int64_t element_num = OH_AI_TensorGetElementNum(tensor);
+        printf("Tensor name: %s, elements num: %" PRId64 ".\n", OH_AI_TensorGetName(tensor), element_num);
+        uint8_t *output_data = reinterpret_cast<uint8_t *>(OH_AI_TensorGetMutableData(tensor));
+        printf("output data is:");
+        for (int j = 0; j < element_num && j <= 20; ++j) {
+            printf("%d ", output_data[j]);
+        }
+        printf("\n");
+        printf("==========compFp32WithTData==========\n");
+        string expectedDataFile = "/data/test/aiy_vision_classifier_plants_V1_3" + std::to_string(i) + ".output";
+        bool result = compUint8WithTData(output_data, expectedDataFile, 0.01, 0.01, false);
+        ASSERT_EQ(result, true);
+    }
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context2);
+    OH_AI_ModelDestroy(&model2);
+}
+
+// OH_AI_TensorDestroy接口，传入的tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0009, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    OH_AI_TensorDestroy(nullptr);
+}
+
+// OH_AI_TensorDestroy接口，多次释放已创建的tensor
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0010, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+        create_shape_num, nullptr, 0);
+    OH_AI_TensorDestroy(&tensor);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorClone接口，tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0011, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    OH_AI_TensorHandle clone = OH_AI_TensorClone(nullptr);
+    ASSERT_EQ(clone, nullptr);
+}
+
+// OH_AI_TensorClone 接口（深拷贝tensor），拷贝完释放原始tensor
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0012, Function | MediumTest | Level1) {
+    printf("==========ReadFile==========\n");
+    size_t size1;
+    size_t *ptr_size1 = &size1;
+    const char *imagePath = "/data/test/ml_face_isface.input";
+    char *imageBuf = ReadFile(imagePath, ptr_size1);
+    ASSERT_NE(imageBuf, nullptr);
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+                                           create_shape_num, imageBuf, size1);
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorHandle clone = OH_AI_TensorClone(tensor);
+    ASSERT_NE(clone, nullptr);
+    ASSERT_EQ(strcmp(OH_AI_TensorGetName(clone), "data_duplicate"), 0);
+    delete[] imageBuf;
+    OH_AI_TensorDestroy(&tensor);
+    OH_AI_TensorDestroy(&clone);
+}
+
+// OH_AI_TensorClone，克隆出多个tensor
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0013, Function | MediumTest | Level1) {
+    printf("==========ReadFile==========\n");
+    size_t size1;
+    size_t *ptr_size1 = &size1;
+    const char *imagePath = "/data/test/ml_face_isface.input";
+    char *imageBuf = ReadFile(imagePath, ptr_size1);
+    ASSERT_NE(imageBuf, nullptr);
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+                                           create_shape_num, imageBuf, size1);
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorHandle clone = OH_AI_TensorClone(tensor);
+    ASSERT_NE(clone, nullptr);
+    ASSERT_EQ(strcmp(OH_AI_TensorGetName(clone), "data_duplicate"), 0);
+    OH_AI_TensorHandle clone2 = OH_AI_TensorClone(tensor);
+    ASSERT_NE(clone2, nullptr);
+    ASSERT_EQ(strcmp(OH_AI_TensorGetName(clone2), "data_duplicate"), 0);
+    delete[] imageBuf;
+    OH_AI_TensorDestroy(&tensor);
+    OH_AI_TensorDestroy(&clone);
+    OH_AI_TensorDestroy(&clone2);
+}
+
+// 正常设置name
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0014, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+        create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorSetName(tensor, "new_data");
+    const char *tensorName = OH_AI_TensorGetName(tensor);
+    ASSERT_EQ(strcmp(tensorName, "new_data"), 0);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// 多次设置name
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0015, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+        create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorSetName(tensor, "new_data");
+    const char *tensorName = OH_AI_TensorGetName(tensor);
+    ASSERT_EQ(strcmp(tensorName, "new_data"), 0);
+    OH_AI_TensorSetName(tensor, "new_data2");
+    const char *tensorName2 = OH_AI_TensorGetName(tensor);
+    ASSERT_EQ(strcmp(tensorName2, "new_data2"), 0);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorSetName接口，tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0016, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    OH_AI_TensorSetName(nullptr, "data");
+}
+
+// OH_AI_TensorSetName接口，name为空字符、含有非法字符
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0017, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+        create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorSetName(tensor, "");
+    printf("Tensor name: %s. \n", OH_AI_TensorGetName(tensor));
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorGetName接口，tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0018, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    const char *tensorName = OH_AI_TensorGetName(nullptr);
+    ASSERT_EQ(tensorName, nullptr);
+}
+
+// OH_AI_TensorSetDataType接口，tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0019, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    OH_AI_TensorSetDataType(nullptr, OH_AI_DATATYPE_NUMBERTYPE_FLOAT32);
+}
+
+// OH_AI_TensorSetDataType接口，OH_AI_DataType设置无效值、非法值
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0020, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+        create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorSetDataType(tensor, OH_AI_DataTypeInvalid);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// 正常设置datatype
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0021, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+        create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorSetDataType(tensor, OH_AI_DATATYPE_NUMBERTYPE_FLOAT16);
+    ASSERT_EQ(OH_AI_TensorGetDataType(tensor), OH_AI_DATATYPE_NUMBERTYPE_FLOAT16);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// 多次设置datatype
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0022, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+        create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorSetDataType(tensor, OH_AI_DATATYPE_NUMBERTYPE_FLOAT16);
+    ASSERT_EQ(OH_AI_TensorGetDataType(tensor), OH_AI_DATATYPE_NUMBERTYPE_FLOAT16);
+    OH_AI_TensorSetDataType(tensor, OH_AI_DATATYPE_NUMBERTYPE_UINT8);
+    ASSERT_EQ(OH_AI_TensorGetDataType(tensor), OH_AI_DATATYPE_NUMBERTYPE_UINT8);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorGetDataType接口，tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0023, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    OH_AI_TensorGetDataType(nullptr);
+}
+
+// OH_AI_TensorSetShape接口，tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0024, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorSetShape(nullptr, create_shape, create_shape_num);
+}
+
+// OH_AI_TensorSetShape接口，shape数组长度为33
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0025, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+        create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorSetShape(tensor, create_shape, 33);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// 正常设置shape
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0026, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+        create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    constexpr size_t new_shape_num = 4;
+    int64_t new_shape[new_shape_num] = {1, 32, 32, 1};
+    OH_AI_TensorSetShape(tensor, new_shape, new_shape_num);
+    size_t new_ret_shape_num;
+    const int64_t *new_ret_shape = OH_AI_TensorGetShape(tensor, &new_ret_shape_num);
+    ASSERT_EQ(new_ret_shape_num, new_shape_num);
+    for (size_t i = 0; i < new_ret_shape_num; i++) {
+        ASSERT_EQ(new_ret_shape[i], new_shape[i]);
+    }
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// 多次设置shape
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0027, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+        create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    constexpr size_t new_shape_num = 4;
+    int64_t new_shape[new_shape_num] = {1, 32, 32, 1};
+    OH_AI_TensorSetShape(tensor, new_shape, new_shape_num);
+    size_t new_ret_shape_num;
+    const int64_t *new_ret_shape = OH_AI_TensorGetShape(tensor, &new_ret_shape_num);
+    ASSERT_EQ(new_ret_shape_num, new_shape_num);
+    for (size_t i = 0; i < new_ret_shape_num; i++) {
+        ASSERT_EQ(new_ret_shape[i], new_shape[i]);
+    }
+    constexpr size_t newShapeNum2 = 4;
+    int64_t newShape2[newShapeNum2] = {1, 16, 16, 1};
+    OH_AI_TensorSetShape(tensor, newShape2, newShapeNum2);
+    size_t newRetShapeNum2;
+    const int64_t *newRetShape2 = OH_AI_TensorGetShape(tensor, &newRetShapeNum2);
+    ASSERT_EQ(newRetShapeNum2, newShapeNum2);
+    for (size_t i = 0; i < newRetShapeNum2; i++) {
+        ASSERT_EQ(newRetShape2[i], newShape2[i]);
+    }
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorGetShape接口，tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0028, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    size_t shape_num;
+    OH_AI_TensorGetShape(nullptr, &shape_num);
+}
+
+// OH_AI_TensorSetFormat接口，tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0029, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    OH_AI_TensorSetFormat(nullptr, OH_AI_FORMAT_NCHW);
+}
+
+// 正常设置format
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0030, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+        create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorSetFormat(tensor, OH_AI_FORMAT_NCHW);
+    ASSERT_EQ(OH_AI_TensorGetFormat(tensor), OH_AI_FORMAT_NCHW);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// 多次设置format
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0031, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+        create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorSetFormat(tensor, OH_AI_FORMAT_NCHW);
+    ASSERT_EQ(OH_AI_TensorGetFormat(tensor), OH_AI_FORMAT_NCHW);
+    OH_AI_TensorSetFormat(tensor, OH_AI_FORMAT_NHWC);
+    ASSERT_EQ(OH_AI_TensorGetFormat(tensor), OH_AI_FORMAT_NHWC);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// 循环设置所有的format类型
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0032, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+        create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    constexpr size_t formatNum = 18;
+    OH_AI_Format format[formatNum] = {
+        OH_AI_FORMAT_NCHW,
+        OH_AI_FORMAT_NHWC,
+        OH_AI_FORMAT_NHWC4,
+        OH_AI_FORMAT_HWKC,
+        OH_AI_FORMAT_HWCK,
+        OH_AI_FORMAT_KCHW,
+        OH_AI_FORMAT_CKHW,
+        OH_AI_FORMAT_KHWC,
+        OH_AI_FORMAT_CHWK,
+        OH_AI_FORMAT_HW,
+        OH_AI_FORMAT_HW4,
+        OH_AI_FORMAT_NC,
+        OH_AI_FORMAT_NC4,
+        OH_AI_FORMAT_NC4HW4,
+        OH_AI_FORMAT_NCDHW,
+        OH_AI_FORMAT_NWC,
+        OH_AI_FORMAT_NCW
+    };
+    for (size_t i = 0; i < formatNum; ++i) {
+        OH_AI_TensorSetFormat(tensor, format[i]);
+        ASSERT_EQ(OH_AI_TensorGetFormat(tensor), format[i]);
+    }
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorGetFormat接口，tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0033, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    OH_AI_TensorGetFormat(nullptr);
+}
+
+// OH_AI_TensorSetData接口，tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0034, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t data_len = 6;
+    float data[data_len] = {1, 2, 3, 4, 5, 6};
+    OH_AI_TensorSetData(nullptr, data);
+}
+
+// OH_AI_TensorSetData接口，data为空指针nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0035, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 1;
+    int64_t createShape[create_shape_num] = {6};
+    constexpr size_t data_len = 6;
+    float data[data_len] = {1, 2, 3, 4, 5, 6};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, createShape,
+        create_shape_num, data, 6*4);
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorSetData(tensor, nullptr);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorSetData接口，正常设置data
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0036, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 1;
+    int64_t createShape[create_shape_num] = {6};
+    constexpr size_t data_len = 6;
+    float data[data_len] = {1, 2, 3, 4, 5, 6};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, createShape,
+        create_shape_num, data, 6*4);
+    ASSERT_NE(tensor, nullptr);
+    float data2[data_len] = {12, 22, 32, 42, 52, 62};
+    OH_AI_TensorSetData(tensor, data2);
+    const float *ret_data = static_cast<const float *>(OH_AI_TensorGetData(tensor));
+    ASSERT_NE(ret_data, nullptr);
+    printf("return data is:");
+    for (size_t i = 0; i < data_len; i++) {
+        ASSERT_EQ(ret_data[i], data2[i]);
+        printf("%f ", ret_data[i]);
+    }
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorSetData接口，多次设置data
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0037, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 1;
+    int64_t createShape[create_shape_num] = {6};
+    constexpr size_t data_len = 6;
+    float data[data_len] = {1, 2, 3, 4, 5, 6};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, createShape,
+        create_shape_num, data, 6*4);
+    ASSERT_NE(tensor, nullptr);
+    float data2[data_len] = {12, 22, 32, 42, 52, 62};
+    float data3[data_len] = {13, 23, 33, 43, 53, 63};
+    OH_AI_TensorSetData(tensor, data2);
+    OH_AI_TensorSetData(tensor, data3);
+    const float *ret_data = static_cast<const float *>(OH_AI_TensorGetData(tensor));
+    ASSERT_NE(ret_data, nullptr);
+    printf("return data is:");
+    for (size_t i = 0; i < data_len; i++) {
+        ASSERT_EQ(ret_data[i], data3[i]);
+        printf("%f ", ret_data[i]);
+    }
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorGetData接口。tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0038, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    OH_AI_TensorGetData(nullptr);
+}
+
+// OH_AI_TensorGetMutableData接口，tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0039, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    OH_AI_TensorGetMutableData(nullptr);
+}
+
+// OH_AI_TensorGetElementNum接口，tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0040, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    int64_t element = OH_AI_TensorGetElementNum(nullptr);
+    std::cout << element << std::endl;
+}
+
+// OH_AI_TensorGetDataSize接口，tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0041, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    size_t datasize = OH_AI_TensorGetDataSize(nullptr);
+    std::cout << datasize << std::endl;
+}
+
+// OH_AI_TensorGetDataSize接口，未填入数据
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0042, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 4;
+    int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
+                            create_shape_num, nullptr, 0);
+    ASSERT_NE(tensor, nullptr);
+    size_t datasize = OH_AI_TensorGetDataSize(tensor);
+    std::cout << datasize << std::endl;
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorSetUserData接口，tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0043, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t data_len = 6;
+    float data[data_len] = {1, 2, 3, 4, 5, 6};
+    OH_AI_TensorSetUserData(nullptr, data, 6 * 4);
+}
+
+// OH_AI_TensorSetUserData接口，data为空指针nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0044, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 1;
+    int64_t createShape[create_shape_num] = {6};
+    constexpr size_t data_len = 6;
+    float data[data_len] = {1, 2, 3, 4, 5, 6};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, createShape,
+        create_shape_num, data, 6*4);
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorSetUserData(tensor, nullptr, 0);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorSetUserData接口，正常设置data
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0045, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 1;
+    int64_t createShape[create_shape_num] = {6};
+    constexpr size_t data_len = 6;
+    float data[data_len] = {1, 2, 3, 4, 5, 6};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, createShape,
+        create_shape_num, data, 6*4);
+    ASSERT_NE(tensor, nullptr);
+    float data2[data_len] = {12, 22, 32, 42, 52, 62};
+    OH_AI_TensorSetUserData(tensor, data2, 6*4);
+    const float *ret_data = static_cast<const float *>(OH_AI_TensorGetData(tensor));
+    ASSERT_NE(ret_data, nullptr);
+    printf("return data is:");
+    for (size_t i = 0; i < data_len; i++) {
+        ASSERT_EQ(ret_data[i], data2[i]);
+        printf("%f ", ret_data[i]);
+    }
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorSetUserData接口，多次设置data
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0046, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 1;
+    int64_t createShape[create_shape_num] = {6};
+    constexpr size_t data_len = 6;
+    float data[data_len] = {1, 2, 3, 4, 5, 6};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, createShape,
+        create_shape_num, data, 6*4);
+    ASSERT_NE(tensor, nullptr);
+    float data2[data_len] = {12, 22, 32, 42, 52, 62};
+    float data3[data_len] = {13, 23, 33, 43, 53, 63};
+    OH_AI_TensorSetUserData(tensor, data2, 6*4);
+    OH_AI_TensorSetUserData(tensor, data3, 6*4);
+    const float *ret_data = static_cast<const float *>(OH_AI_TensorGetData(tensor));
+    ASSERT_NE(ret_data, nullptr);
+    printf("return data is:");
+    for (size_t i = 0; i < data_len; i++) {
+        ASSERT_EQ(ret_data[i], data3[i]);
+        printf("%f ", ret_data[i]);
+    }
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorSetAllocator接口，tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0047, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 1;
+    int64_t createShape[create_shape_num] = {6};
+    constexpr size_t data_len = 6;
+    float data[data_len] = {1, 2, 3, 4, 5, 6};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, createShape,
+        create_shape_num, data, 6*4);
+    ASSERT_NE(tensor, nullptr);
+    void *inAllocator = OH_AI_TensorGetAllocator(tensor);
+    OH_AI_TensorSetAllocator(nullptr, inAllocator);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorSetAllocator接口，正常设置allocator
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0048, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 1;
+    int64_t createShape[create_shape_num] = {6};
+    constexpr size_t data_len = 6;
+    float data[data_len] = {1, 2, 3, 4, 5, 6};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, createShape,
+        create_shape_num, data, 6*4);
+    ASSERT_NE(tensor, nullptr);
+    void *inAllocator = OH_AI_TensorGetAllocator(tensor);
+    OH_AI_TensorSetAllocator(tensor, inAllocator);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorSetAllocator接口，多次设置allocator
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0049, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t create_shape_num = 1;
+    int64_t createShape[create_shape_num] = {6};
+    constexpr size_t data_len = 6;
+    float data[data_len] = {1, 2, 3, 4, 5, 6};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, createShape,
+        create_shape_num, data, 6*4);
+    ASSERT_NE(tensor, nullptr);
+    void *inAllocator = OH_AI_TensorGetAllocator(tensor);
+    OH_AI_TensorSetAllocator(tensor, inAllocator);
+    OH_AI_TensorSetAllocator(tensor, inAllocator);
+    OH_AI_TensorDestroy(&tensor);
+}
+
+// OH_AI_TensorSetAllocator接口，tensor为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0050, Function | MediumTest | Level1) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    OH_AI_TensorGetAllocator(nullptr);
+}
+
+// 创建多个context
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0001, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelGetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    printf("==========OH_AI_ModelPredict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========CompareModelOutputs==========\n");
+    CompareResult(outputs, "ml_face_isface");
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ContextHandle context2 = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info2 = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context2, cpu_device_info2);
+    OH_AI_ContextHandle context3 = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info3 = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context3, cpu_device_info3);
+    OH_AI_ContextHandle context4 = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info4 = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context4, cpu_device_info4);
+    OH_AI_ContextHandle context5 = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info5 = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context5, cpu_device_info5);
+    OH_AI_ContextDestroy(&context2);
+    OH_AI_ContextDestroy(&context2);
+    OH_AI_ContextDestroy(&context3);
+    OH_AI_ContextDestroy(&context3);
+    OH_AI_ContextDestroy(&context4);
+    OH_AI_ContextDestroy(&context4);
+    OH_AI_ContextDestroy(&context5);
+    OH_AI_ContextDestroy(&context5);
+}
+
+// OH_AI_ContextDestroy接口context对象为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0002, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextDestroy(nullptr);
+}
+
+// OH_AI_ContextSetThreadNum接口，context设置为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0003, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextSetThreadNum(nullptr, 2);
+}
+
+// OH_AI_ContextSetThreadNum接口，threadNum设置为-100
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0004, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_ContextSetThreadNum(context, -100);
+    int32_t threadNum = OH_AI_ContextGetThreadNum(context);
+    std::cout << threadNum << std::endl;
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_LITE_NULLPTR);
+    OH_AI_ContextDestroy(&context);
+}
+
+// OH_AI_ContextSetThreadNum接口，重复设置线程数，均可设置成功
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0005, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_ContextSetThreadNum(context, 2);
+    int32_t threadNum = OH_AI_ContextGetThreadNum(context);
+    ASSERT_EQ(threadNum, 2);
+    OH_AI_ContextSetThreadNum(context, 10);
+    threadNum = OH_AI_ContextGetThreadNum(context);
+    ASSERT_EQ(threadNum, 10);
+    OH_AI_ContextDestroy(&context);
+}
+
+// OH_AI_ContextSetThreadNum接口，设置的context已被销毁，然后传入ThreadNum接口
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0006, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ContextSetThreadNum(context, 2);
+}
+
+// OH_AI_ContextGetThreadNum接口，context设置为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0007, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    int32_t threadNum = OH_AI_ContextGetThreadNum(nullptr);
+    std::cout << threadNum << std::endl;
+}
+
+// OH_AI_ContextSetThreadAffinityMode接口，context设置为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0008, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextSetThreadAffinityMode(nullptr, 1);
+}
+
+// OH_AI_ContextSetThreadAffinityMode接口，mode设置为3
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0009, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_ContextSetThreadAffinityMode(context, -100);
+    int threadAffinityMode = OH_AI_ContextGetThreadAffinityMode(context);
+    std::cout << threadAffinityMode << std::endl;
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    threadAffinityMode = OH_AI_ContextGetThreadAffinityMode(context);
+    std::cout << threadAffinityMode << std::endl;
+    printf("==========OH_AI_ModelGetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    printf("==========OH_AI_ModelPredict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========CompareModelOutputs==========\n");
+    CompareResult(outputs, "ml_face_isface");
+    OH_AI_ContextDestroy(&context);
+}
+
+// OH_AI_ContextSetThreadAffinityMode接口，重复设置各种绑核模式，均可设置成功
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0010, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_ContextSetThreadAffinityMode(context, 2);
+    int threadAffinityMode = OH_AI_ContextGetThreadAffinityMode(context);
+    ASSERT_EQ(threadAffinityMode, 2);
+    OH_AI_ContextSetThreadAffinityMode(context, 1);
+    threadAffinityMode = OH_AI_ContextGetThreadAffinityMode(context);
+    ASSERT_EQ(threadAffinityMode, 1);
+    OH_AI_ContextDestroy(&context);
+}
+
+// OH_AI_ContextGetThreadAffinityMode 接口，context设置为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0011, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    int threadAffinityMode = OH_AI_ContextGetThreadAffinityMode(nullptr);
+    std::cout << threadAffinityMode << std::endl;
+}
+
+// OH_AI_ContextSetThreadAffinityCoreList接口，context设置为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0012, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    constexpr size_t core_num = 4;
+    int32_t coreList[core_num] = {0, 1, 2, 3};
+    OH_AI_ContextSetThreadAffinityCoreList(nullptr, coreList, core_num);
+}
+
+// OH_AI_ContextSetThreadAffinityCoreList接口，core_num非法（0）、与coreList个数不一致（大于、小于）
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0013, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    constexpr size_t core_num = 4;
+    int32_t coreList[core_num] = {0, 1, 2, 3};
+    OH_AI_ContextSetThreadAffinityCoreList(context, coreList, 0);
+    OH_AI_ContextDestroy(&context);
+}
+
+// OH_AI_ContextSetThreadAffinityCoreList接口，coreList设置中存在非法编号（负数、极大值）
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0014, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    constexpr size_t core_num = 4;
+    int32_t coreList[core_num] = {0, 1, 2, -3};
+    OH_AI_ContextSetThreadAffinityCoreList(context, coreList, 4);
+    size_t ret_core_num;
+    int32_t *retCoreList = nullptr;
+    retCoreList = const_cast<int32_t *>(OH_AI_ContextGetThreadAffinityCoreList(context, &ret_core_num));
+    ASSERT_EQ(ret_core_num, core_num);
+    for (size_t i = 0; i < ret_core_num; i++) {
+        printf("==========retCoreList:%d\n", retCoreList[i]);
+        ASSERT_EQ(retCoreList[i], coreList[i]);
+    }
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_LITE_NULLPTR);
+    OH_AI_ContextDestroy(&context);
+}
+
+// OH_AI_ContextSetThreadAffinityCoreList接口，每次设置不同的core_list，均可设置成功
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0015, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    constexpr size_t core_num = 4;
+    int32_t core_list[core_num] = {0, 1, 2, 3};
+    OH_AI_ContextSetThreadAffinityCoreList(context, core_list, 4);
+    constexpr size_t coreNum2 = 4;
+    int32_t coreList2[coreNum2] = {4, 5, 6, 7};
+    OH_AI_ContextSetThreadAffinityCoreList(context, coreList2, 4);
+    size_t ret_core_num;
+    int32_t *retCoreList = nullptr;
+    retCoreList = const_cast<int32_t *>(OH_AI_ContextGetThreadAffinityCoreList(context, &ret_core_num));
+    ASSERT_EQ(ret_core_num, coreNum2);
+    for (size_t i = 0; i < ret_core_num; i++) {
+        printf("==========retCoreList:%d\n", retCoreList[i]);
+        ASSERT_EQ(retCoreList[i], coreList2[i]);
+    }
+    free(retCoreList);
+    OH_AI_ContextDestroy(&context);
+}
+
+// OH_AI_ContextGetThreadAffinityCoreList接口，context为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0016, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    size_t ret_core_num;
+    const int32_t *retCoreList = OH_AI_ContextGetThreadAffinityCoreList(nullptr, &ret_core_num);
+    std::cout << retCoreList << std::endl;
+}
+
+// OH_AI_ContextGetThreadAffinityCoreList接口，core_num为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0017, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    const int32_t *retCoreList = OH_AI_ContextGetThreadAffinityCoreList(context, nullptr);
+    std::cout << retCoreList << std::endl;
+    OH_AI_ContextDestroy(&context);
+}
+
+// OH_AI_DeviceInfoCreate接口，传入无效值、非法值
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0018, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_INVALID);
+    ASSERT_EQ(cpu_device_info, nullptr);
+}
+
+// OH_AI_DeviceInfoSetProvide接口，device_info传入nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0019, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoSetProviderDevice(nullptr, "aaa");
+}
+
+// OH_AI_DeviceInfoGetProvider，device设置为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0021, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoGetProvider(nullptr);
+}
+
+// OH_AI_DeviceInfoGetProvider接口，未设置provider，直接获取默认值
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0022, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    ASSERT_NE(cpu_device_info, nullptr);
+    char *proInfo = const_cast<char *>(OH_AI_DeviceInfoGetProvider(cpu_device_info));
+    std::cout << proInfo << std::endl;
+}
+
+// OH_AI_DeviceInfoSetProviderDevice接口， device_info设置为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0023, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoSetProviderDevice(nullptr, "aaa");
+}
+
+// OH_AI_DeviceInfoGetProviderDevice接口， device设置为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0025, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoGetProviderDevice(nullptr);
+}
+
+// OH_AI_DeviceInfoGetProviderDevice接口，未设置device，直接获取默认值
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0026, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    ASSERT_NE(cpu_device_info, nullptr);
+    char *proInfo = const_cast<char *>(OH_AI_DeviceInfoGetProviderDevice(cpu_device_info));
+    std::cout << proInfo << std::endl;
+}
+
+// OH_AI_ContextAddDeviceInfo接口，context传入nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0027, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(nullptr, cpu_device_info);
+}
+
+// OH_AI_ContextAddDeviceInfo接口，正常添加多次同一个设备信息
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0028, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+}
+
+// OH_AI_ContextAddDeviceInfo接口，正常添加多次不同设备信息
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0029, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_DeviceInfoHandle npu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    OH_AI_ContextAddDeviceInfo(context, npu_device_info);
+}
+
+// OH_AI_DeviceInfoCreate接口，OH_AI_DEVICETYPE_INVALID
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0030, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_INVALID);
+    ASSERT_EQ(cpu_device_info, nullptr);
+}
+
+// OH_AI_CreateNNRTDeviceInfoByName
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0032, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    const char *npuName = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetNameFromNNRTDeviceDesc " << name << std::endl;
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id << std::endl;
+        const std::string npuNamePrefix = "NPU_";
+        if (strncmp(npuNamePrefix.c_str(), name, npuNamePrefix.size()) == 0) {
+            npuName = name;
+        }
+    }
+    auto nnrt_device_info = OH_AI_CreateNNRTDeviceInfoByName(npuName);
+    ASSERT_NE(nnrt_device_info, nullptr);
+    OH_AI_DestroyAllNNRTDeviceDescs(&descs);
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    ModelPredict(model, context, "ml_face_isface", {}, false, true, false);
+}
+
+// OH_AI_CreateNNRTDeviceInfoByName，创建多次
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0033, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    const char *npuName = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetNameFromNNRTDeviceDesc " << name << std::endl;
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id << std::endl;
+        const std::string npuNamePrefix = "NPU_";
+        if (strncmp(npuNamePrefix.c_str(), name, npuNamePrefix.size()) == 0) {
+            npuName = name;
+        }
+    }
+    auto nnrt_device_info = OH_AI_CreateNNRTDeviceInfoByName(npuName);
+    ASSERT_NE(nnrt_device_info, nullptr);
+    nnrt_device_info = OH_AI_CreateNNRTDeviceInfoByName(npuName);
+    ASSERT_NE(nnrt_device_info, nullptr);
+    OH_AI_DestroyAllNNRTDeviceDescs(&descs);
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    ModelPredict(model, context, "ml_face_isface", {}, false, true, false);
+}
+
+// OH_AI_CreateNNRTDeviceInfoByName，name不存在
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0034, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    auto nnrt_device_info = OH_AI_CreateNNRTDeviceInfoByName("aaa");
+    ASSERT_EQ(nnrt_device_info, nullptr);
+}
+
+// OH_AI_CreateNNRTDeviceInfoByType
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0036, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    OH_AI_NNRTDeviceType npu_type;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetNameFromNNRTDeviceDesc " << name << std::endl;
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id << std::endl;
+        auto type = OH_AI_GetTypeFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetTypeFromNNRTDeviceDesc " << type << std::endl;
+        const std::string npuNamePrefix = "NPU_";
+        if (strncmp(npuNamePrefix.c_str(), name, npuNamePrefix.size()) == 0) {
+            npu_type = type;
+        }
+    }
+    auto nnrt_device_info = OH_AI_CreateNNRTDeviceInfoByType(npu_type);
+    ASSERT_NE(nnrt_device_info, nullptr);
+    OH_AI_DestroyAllNNRTDeviceDescs(&descs);
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    ModelPredict(model, context, "ml_face_isface", {}, false, true, false);
+}
+
+// OH_AI_CreateNNRTDeviceInfoByType，多次调用
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0037, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    OH_AI_NNRTDeviceType npu_type;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetNameFromNNRTDeviceDesc " << name << std::endl;
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id << std::endl;
+        auto type = OH_AI_GetTypeFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetTypeFromNNRTDeviceDesc " << type << std::endl;
+        const std::string npuNamePrefix = "NPU_";
+        if (strncmp(npuNamePrefix.c_str(), name, npuNamePrefix.size()) == 0) {
+            npu_type = type;
+        }
+    }
+    auto nnrt_device_info = OH_AI_CreateNNRTDeviceInfoByType(npu_type);
+    ASSERT_NE(nnrt_device_info, nullptr);
+    nnrt_device_info = OH_AI_CreateNNRTDeviceInfoByType(npu_type);
+    ASSERT_NE(nnrt_device_info, nullptr);
+    OH_AI_DestroyAllNNRTDeviceDescs(&descs);
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    ModelPredict(model, context, "ml_face_isface", {}, false, true, false);
+}
+
+// OH_AI_CreateNNRTDeviceInfoByType，OH_AI_NNRTDeviceType不正确
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0038, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    auto nnrt_device_info = OH_AI_CreateNNRTDeviceInfoByType(OH_AI_NNRTDEVICE_OTHERS);
+    ASSERT_EQ(nnrt_device_info, nullptr);
+}
+
+// OH_AI_GetAllNNRTDeviceDescs，num为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0039, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_GetAllNNRTDeviceDescs(nullptr);
+}
+
+// OH_AI_GetElementOfNNRTDeviceDescs，descs为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0040, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_GetElementOfNNRTDeviceDescs(nullptr, 0);
+}
+
+// OH_AI_GetNameFromNNRTDeviceDesc，desc为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0041, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_GetNameFromNNRTDeviceDesc(nullptr);
+}
+
+// OH_AI_GetTypeFromNNRTDeviceDesc，desc为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0042, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_GetTypeFromNNRTDeviceDesc(nullptr);
+}
+
+// OH_AI_GetDeviceIdFromNNRTDeviceDesc，desc为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0043, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_GetDeviceIdFromNNRTDeviceDesc(nullptr);
+}
+
+// OH_AI_DeviceInfoSetDeviceId，多次调用
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0044, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    NNRTDeviceDesc *desc_0 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetNameFromNNRTDeviceDesc " << name << std::endl;
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id << std::endl;
+        const std::string npuNamePrefix = "NPU_";
+        if (strncmp(npuNamePrefix.c_str(), name, npuNamePrefix.size()) == 0) {
+            desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id_0 << std::endl;
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    ModelPredict(model, context, "ml_face_isface", {}, false, true, false);
+}
+
+// OH_AI_DeviceInfoSetDeviceId，id不正确
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0045, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, 12345);
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_LITE_ERROR);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_DeviceInfoSetDeviceId，device_info不正确
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0046, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    NNRTDeviceDesc *desc_0 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetNameFromNNRTDeviceDesc " << name << std::endl;
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id << std::endl;
+        const std::string npuNamePrefix = "NPU_";
+        if (strncmp(npuNamePrefix.c_str(), name, npuNamePrefix.size()) == 0) {
+            desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id_0 << std::endl;
+    OH_AI_DeviceInfoSetDeviceId(cpu_device_info, id_0);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_DeviceInfoSetDeviceId，device为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0047, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    NNRTDeviceDesc *desc_0 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetNameFromNNRTDeviceDesc " << name << std::endl;
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id << std::endl;
+        const std::string npuNamePrefix = "NPU_";
+        if (strncmp(npuNamePrefix.c_str(), name, npuNamePrefix.size()) == 0) {
+            desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id_0 << std::endl;
+    OH_AI_DeviceInfoSetDeviceId(nullptr, id_0);
+}
+
+// OH_AI_DeviceInfoSetDeviceId，device_info不正确
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0048, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    auto id = OH_AI_DeviceInfoGetDeviceType(cpu_device_info);
+    std::cout << "OH_AI_DeviceInfoGetDeviceType " << id << std::endl;
+}
+
+// OH_AI_DeviceInfoSetDeviceId，device为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0049, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    auto id = OH_AI_DeviceInfoGetDeviceType(nullptr);
+    std::cout << "OH_AI_DeviceInfoGetDeviceType " << id << std::endl;
+}
+
+// OH_AI_DeviceInfoSetPerformanceMode
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0050, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    ASSERT_NE(descs, nullptr);
+    NNRTDeviceDesc *desc_0 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetNameFromNNRTDeviceDesc " << name << std::endl;
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id << std::endl;
+        const std::string npuNamePrefix = "NPU_";
+        if (strncmp(npuNamePrefix.c_str(), name, npuNamePrefix.size()) == 0) {
+            desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id_0 << std::endl;
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    OH_AI_DestroyAllNNRTDeviceDescs(&descs);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPerformanceMode(nnrt_device_info), OH_AI_PERFORMANCE_NONE);
+    OH_AI_DeviceInfoSetPerformanceMode(nnrt_device_info, OH_AI_PERFORMANCE_MEDIUM);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPerformanceMode(nnrt_device_info), OH_AI_PERFORMANCE_MEDIUM);
+    OH_AI_DeviceInfoSetPriority(nnrt_device_info, OH_AI_PRIORITY_MEDIUM);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPriority(nnrt_device_info), OH_AI_PRIORITY_MEDIUM);
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_DeviceInfoSetPerformanceMode，覆盖枚举值
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0051, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    ASSERT_NE(descs, nullptr);
+    NNRTDeviceDesc *desc_0 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetNameFromNNRTDeviceDesc " << name << std::endl;
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id << std::endl;
+        const std::string npuNamePrefix = "NPU_";
+        if (strncmp(npuNamePrefix.c_str(), name, npuNamePrefix.size()) == 0) {
+            desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id_0 << std::endl;
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    OH_AI_DestroyAllNNRTDeviceDescs(&descs);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPerformanceMode(nnrt_device_info), OH_AI_PERFORMANCE_NONE);
+    OH_AI_DeviceInfoSetPerformanceMode(nnrt_device_info, OH_AI_PERFORMANCE_LOW);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPerformanceMode(nnrt_device_info), OH_AI_PERFORMANCE_LOW);
+    OH_AI_DeviceInfoSetPerformanceMode(nnrt_device_info, OH_AI_PERFORMANCE_MEDIUM);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPerformanceMode(nnrt_device_info), OH_AI_PERFORMANCE_MEDIUM);
+    OH_AI_DeviceInfoSetPerformanceMode(nnrt_device_info, OH_AI_PERFORMANCE_HIGH);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPerformanceMode(nnrt_device_info), OH_AI_PERFORMANCE_HIGH);
+    OH_AI_DeviceInfoSetPerformanceMode(nnrt_device_info, OH_AI_PERFORMANCE_EXTREME);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPerformanceMode(nnrt_device_info), OH_AI_PERFORMANCE_EXTREME);
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_DeviceInfoSetPerformanceMode，device不正确
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0052, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_DeviceInfoSetPerformanceMode(cpu_device_info, OH_AI_PERFORMANCE_MEDIUM);
+}
+
+// OH_AI_DeviceInfoSetPerformanceMode，device为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0053, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoSetPerformanceMode(nullptr, OH_AI_PERFORMANCE_MEDIUM);
+}
+
+// OH_AI_DeviceInfoGetPerformanceMode，device不正确
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0054, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_DeviceInfoGetPerformanceMode(cpu_device_info);
+}
+
+// OH_AI_DeviceInfoGetPerformanceMode，device为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0055, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoGetPerformanceMode(nullptr);
+}
+
+// OH_AI_DeviceInfoSetPriority
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0056, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    ASSERT_NE(descs, nullptr);
+    NNRTDeviceDesc *desc_0 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetNameFromNNRTDeviceDesc " << name << std::endl;
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id << std::endl;
+        const std::string npuNamePrefix = "NPU_";
+        if (strncmp(npuNamePrefix.c_str(), name, npuNamePrefix.size()) == 0) {
+            desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id_0 << std::endl;
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    OH_AI_DestroyAllNNRTDeviceDescs(&descs);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPriority(nnrt_device_info), OH_AI_PRIORITY_NONE);
+    OH_AI_DeviceInfoSetPriority(nnrt_device_info, OH_AI_PRIORITY_MEDIUM);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPriority(nnrt_device_info), OH_AI_PRIORITY_MEDIUM);
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_DeviceInfoSetPriority，覆盖枚举值
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0057, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    ASSERT_NE(descs, nullptr);
+    NNRTDeviceDesc *desc_0 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetNameFromNNRTDeviceDesc " << name << std::endl;
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id << std::endl;
+        const std::string npuNamePrefix = "NPU_";
+        if (strncmp(npuNamePrefix.c_str(), name, npuNamePrefix.size()) == 0) {
+            desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id_0 << std::endl;
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    OH_AI_DestroyAllNNRTDeviceDescs(&descs);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPriority(nnrt_device_info), OH_AI_PRIORITY_NONE);
+    OH_AI_DeviceInfoSetPriority(nnrt_device_info, OH_AI_PRIORITY_LOW);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPriority(nnrt_device_info), OH_AI_PRIORITY_LOW);
+    OH_AI_DeviceInfoSetPriority(nnrt_device_info, OH_AI_PRIORITY_MEDIUM);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPriority(nnrt_device_info), OH_AI_PRIORITY_MEDIUM);
+    OH_AI_DeviceInfoSetPriority(nnrt_device_info, OH_AI_PRIORITY_HIGH);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPriority(nnrt_device_info), OH_AI_PRIORITY_HIGH);
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_DeviceInfoSetPriority，device不正确
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0058, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_DeviceInfoSetPriority(cpu_device_info, OH_AI_PRIORITY_MEDIUM);
+}
+
+// OH_AI_DeviceInfoSetPriority，device为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0059, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoSetPriority(nullptr, OH_AI_PRIORITY_MEDIUM);
+}
+
+// OH_AI_DeviceInfoGetPriority，device不正确
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0060, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_DeviceInfoGetPriority(cpu_device_info);
+}
+
+// OH_AI_DeviceInfoGetPriority，device为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0061, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoGetPriority(nullptr);
+}
+
+// OH_AI_DeviceInfoAddExtension，device不正确
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0062, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    const char *model_name = "cache_model";
+    OH_AI_Status extension_ret = OH_AI_DeviceInfoAddExtension(cpu_device_info, "ModelName",
+        model_name, strlen(model_name));
+    ASSERT_EQ(extension_ret, OH_AI_STATUS_LITE_ERROR);
+}
+
+// OH_AI_DeviceInfoAddExtension，device为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0063, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    const char *model_name = "cache_model";
+    OH_AI_Status extension_ret = OH_AI_DeviceInfoAddExtension(nullptr, "ModelName", model_name, strlen(model_name));
+    ASSERT_EQ(extension_ret, OH_AI_STATUS_LITE_NULLPTR);
+}
+
+// OH_AI_DeviceInfoAddExtension，name不在白名单内
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0064, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    ASSERT_NE(descs, nullptr);
+    NNRTDeviceDesc *desc_0 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetNameFromNNRTDeviceDesc " << name << std::endl;
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id << std::endl;
+        const std::string npuNamePrefix = "NPU_";
+        if (strncmp(npuNamePrefix.c_str(), name, npuNamePrefix.size()) == 0) {
+            desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id_0 << std::endl;
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    OH_AI_DestroyAllNNRTDeviceDescs(&descs);
+    const char *model_name = "cache_model";
+    OH_AI_Status extension_ret = OH_AI_DeviceInfoAddExtension(nnrt_device_info, "aaa", model_name, strlen(model_name));
+    ASSERT_EQ(extension_ret, OH_AI_STATUS_LITE_ERROR);
+}
+
+// OH_AI_DeviceInfoAddExtension，name为空
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0065, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    ASSERT_NE(descs, nullptr);
+    NNRTDeviceDesc *desc_0 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetNameFromNNRTDeviceDesc " << name << std::endl;
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id << std::endl;
+        const std::string npuNamePrefix = "NPU_";
+        if (strncmp(npuNamePrefix.c_str(), name, npuNamePrefix.size()) == 0) {
+            desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id_0 << std::endl;
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    OH_AI_DestroyAllNNRTDeviceDescs(&descs);
+    const char *model_name = "cache_model";
+    OH_AI_Status extension_ret = OH_AI_DeviceInfoAddExtension(nnrt_device_info, nullptr,
+        model_name, strlen(model_name));
+    ASSERT_EQ(extension_ret, OH_AI_STATUS_LITE_NULLPTR);
+}
+
+// OH_AI_DeviceInfoAddExtension，value为空
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0066, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    ASSERT_NE(descs, nullptr);
+    NNRTDeviceDesc *desc_0 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetNameFromNNRTDeviceDesc " << name << std::endl;
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id << std::endl;
+        const std::string npuNamePrefix = "NPU_";
+        if (strncmp(npuNamePrefix.c_str(), name, npuNamePrefix.size()) == 0) {
+            desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id_0 << std::endl;
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    OH_AI_DestroyAllNNRTDeviceDescs(&descs);
+    const char *model_name = "cache_model";
+    OH_AI_Status extension_ret = OH_AI_DeviceInfoAddExtension(nnrt_device_info, "ModelName",
+        nullptr, strlen(model_name));
+    ASSERT_EQ(extension_ret, OH_AI_STATUS_LITE_NULLPTR);
+}
+
+// 正常调用接口，创建model对象
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0001, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常调用接口，创建多个model对象
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0002, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    OH_AI_ContextHandle context2 = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info2 = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context2, cpu_device_info2);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    OH_AI_Status build_ret2 = OH_AI_ModelBuildFromFile(model2, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context2);
+    ASSERT_EQ(build_ret2, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ContextDestroy(&context2);
+    OH_AI_ModelDestroy(&model);
+    OH_AI_ModelDestroy(&model2);
+}
+
+// 正常调用接口，循环创建model对象
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0003, Function | MediumTest | Level1) {
+    for (size_t i = 0; i < 10; i++) {
+        printf("==========OH_AI_ContextCreate==========\n");
+        OH_AI_ContextHandle context = OH_AI_ContextCreate();
+        OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+        OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+        printf("==========OH_AI_ModelBuildFromFile==========\n");
+        OH_AI_ModelHandle model = OH_AI_ModelCreate();
+        OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+            OH_AI_MODELTYPE_MINDIR, context);
+        ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+        printf("==========OH_AI_ModelDestroy==========\n");
+        OH_AI_ContextDestroy(&context);
+        OH_AI_ModelDestroy(&model);
+    }
+}
+
+void ThreadModelBuild(OH_AI_ModelHandle model, OH_AI_ContextHandle context)
+{
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+}
+// 正常调用接口，多线程创建model对象
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0004, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    std::thread t1(ThreadModelBuild, model, context);
+    std::thread t2(ThreadModelBuild, model, context);
+    t1.join();
+    t2.join();
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常调用接口，多次释放model对象
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0005, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelBuild接口，正常调用
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0006, Function | MediumTest | Level1) {
+    printf("==========ReadFile==========\n");
+    size_t size;
+    const char *modelPath = "/data/test/ml_face_isface.ms";
+    char *modelBuf = ReadFile(modelPath, &size);
+    ASSERT_NE(modelBuf, nullptr);
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuild(model, modelBuf, size, OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    delete[] modelBuf;
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelBuild接口，model多次build
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0007, Function | MediumTest | Level1) {
+    printf("==========ReadFile==========\n");
+    size_t size;
+    const char *modelPath = "/data/test/ml_face_isface.ms";
+    char *modelBuf = ReadFile(modelPath, &size);
+    ASSERT_NE(modelBuf, nullptr);
+    size_t size2;
+    const char *modelPath2 = "/data/test/aiy_vision_classifier_plants_V1_3.ms";
+    char *modelBuf2 = ReadFile(modelPath2, &size2);
+    ASSERT_NE(modelBuf2, nullptr);
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    OH_AI_ContextHandle context2 = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info2 = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context2, cpu_device_info2);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuild(model, modelBuf, size, OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    OH_AI_Status build_ret2 = OH_AI_ModelBuild(model, modelBuf2, size2, OH_AI_MODELTYPE_MINDIR, context2);
+    ASSERT_EQ(build_ret2, OH_AI_STATUS_LITE_MODEL_REBUILD);
+    delete[] modelBuf;
+    delete[] modelBuf2;
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ContextDestroy(&context2);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelBuild接口model对象为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0008, Function | MediumTest | Level1) {
+    printf("==========ReadFile==========\n");
+    size_t size;
+    const char *modelPath = "/data/test/ml_face_isface.ms";
+    char *modelBuf = ReadFile(modelPath, &size);
+    ASSERT_NE(modelBuf, nullptr);
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_Status build_ret = OH_AI_ModelBuild(nullptr, modelBuf, size, OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_LITE_NULLPTR);
+    delete[] modelBuf;
+    OH_AI_ContextDestroy(&context);
+}
+
+// OH_AI_ModelBuild接口model data对象为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0009, Function | MediumTest | Level1) {
+    printf("==========ReadFile==========\n");
+    size_t size;
+    const char *modelPath = "/data/test/ml_face_isface.ms";
+    char *modelBuf = ReadFile(modelPath, &size);
+    ASSERT_NE(modelBuf, nullptr);
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    OH_AI_Status build_ret = OH_AI_ModelBuild(model, nullptr, 0, OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_LITE_NULLPTR);
+    delete[] modelBuf;
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelBuild接口model type非法，传入OH_AI_MODELTYPE_INVALID
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0010, Function | MediumTest | Level1) {
+    printf("==========ReadFile==========\n");
+    size_t size;
+    const char *modelPath = "/data/test/ml_face_isface.ms";
+    char *modelBuf = ReadFile(modelPath, &size);
+    ASSERT_NE(modelBuf, nullptr);
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    OH_AI_Status build_ret = OH_AI_ModelBuild(model, modelBuf, size, OH_AI_MODELTYPE_INVALID, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_LITE_PARAM_INVALID);
+    delete[] modelBuf;
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelBuild接口context对象为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0011, Function | MediumTest | Level1) {
+    printf("==========ReadFile==========\n");
+    size_t size;
+    const char *modelPath = "/data/test/ml_face_isface.ms";
+    char *modelBuf = ReadFile(modelPath, &size);
+    ASSERT_NE(modelBuf, nullptr);
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    OH_AI_Status build_ret = OH_AI_ModelBuild(model, modelBuf, size, OH_AI_MODELTYPE_MINDIR, nullptr);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_LITE_NULLPTR);
+    delete[] modelBuf;
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelBuild接口data_size小于实际model_data
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0012, Function | MediumTest | Level1) {
+    printf("==========ReadFile==========\n");
+    size_t size;
+    const char *modelPath = "/data/test/ml_face_isface.ms";
+    char *modelBuf = ReadFile(modelPath, &size);
+    ASSERT_NE(modelBuf, nullptr);
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    OH_AI_Status build_ret = OH_AI_ModelBuild(model, modelBuf, 1, OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_LITE_ERROR);
+    delete[] modelBuf;
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelBuildFromFile接口model为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0013, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(nullptr, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_LITE_NULLPTR);
+    OH_AI_ContextDestroy(&context);
+}
+
+// OH_AI_ModelBuildFromFile接口modelPath有误
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0014, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_LITE_ERROR);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelBuildFromFile接口model type非法，传入OH_AI_MODELTYPE_INVALID
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0015, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_INVALID, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_LITE_PARAM_INVALID);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelBuildFromFile接口context对象为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0016, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, nullptr);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_LITE_NULLPTR);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+
+// OH_AI_ModelBuildFromFile接口，正常调用
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0017, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelBuildFromFile接口，model多次build
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0018, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    OH_AI_ContextHandle context2 = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info2 = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context2, cpu_device_info2);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model,
+        "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    OH_AI_Status build_ret2 = OH_AI_ModelBuildFromFile(model,
+        "/data/test/aiy_vision_classifier_plants_V1_3.ms", OH_AI_MODELTYPE_MINDIR, context2);
+    ASSERT_EQ(build_ret2, OH_AI_STATUS_LITE_MODEL_REBUILD);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ContextDestroy(&context2);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelPredict接口model为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0019, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========FillModelInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(nullptr, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_LITE_NULLPTR);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelPredict接口input为空
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0020, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========FillModelInputs==========\n");
+    OH_AI_TensorHandleArray inputs;
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_LITE_ERROR);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelPredict接口，callback功能
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0022, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========FillModelInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    printf("==========Model Predict Callback==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_KernelCallBack before_call_back = PrintBeforeCallback;
+    OH_AI_KernelCallBack after_call_back = PrintAfterCallback;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, before_call_back, after_call_back);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    printf("=========CompareResult===========\n");
+    CompareResult(outputs, "ml_face_isface");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelResize接口resize动态模型，shape_infos为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0027, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelGetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    OH_AI_ShapeInfo shape_infos[] = {{4, {1, 3, 48, 48}}};
+    OH_AI_Status resize_ret = OH_AI_ModelResize(model, inputs, shape_infos, inputs.handle_num);
+    ASSERT_EQ(resize_ret, OH_AI_STATUS_LITE_ERROR);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelResize接口resize静态模型
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0028, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelGetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    OH_AI_ShapeInfo shape_infos[] = {{4, {1, 112, 112, 3}}};
+    OH_AI_Status resize_ret = OH_AI_ModelResize(model, inputs, shape_infos, inputs.handle_num);
+    ASSERT_EQ(resize_ret, OH_AI_STATUS_LITE_ERROR);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常调用ModelGetInputs
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0029, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========Model Build==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========FillModelInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========CompareModelOutputs==========\n");
+    CompareResult(outputs, "ml_face_isface");
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 多次调用ModelGetInputs
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0030, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========Model Build==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========FillModelInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    OH_AI_TensorHandleArray inputs2 = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs2.handle_list, nullptr);
+    FillInputsData(inputs2, "ml_face_isface", true);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs2, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========CompareModelOutputs==========\n");
+    CompareResult(outputs, "ml_face_isface");
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelGetInputs,model为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0031, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ModelGetInputs(nullptr);
+}
+
+// 正常调用OH_AI_ModelGetOutputs
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0032, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========Model Build==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========FillModelInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs = OH_AI_ModelGetOutputs(model);
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========CompareModelOutputs==========\n");
+    CompareResult(outputs, "ml_face_isface");
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 多次调用OH_AI_ModelGetOutputs
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0033, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========Model Build==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========FillModelInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs = OH_AI_ModelGetOutputs(model);
+    ASSERT_NE(outputs.handle_list, nullptr);
+    OH_AI_TensorHandleArray outputs2 = OH_AI_ModelGetOutputs(model);
+    ASSERT_NE(outputs2.handle_list, nullptr);
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs2, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========CompareModelOutputs==========\n");
+    CompareResult(outputs2, "ml_face_isface");
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelGetOutputs，model为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0034, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ModelGetOutputs(nullptr);
+}
+
+// OH_AI_ModelGetInputByTensorName
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0035, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========Model Build==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelGetInputByTensorName==========\n");
+    OH_AI_TensorHandle tensor = OH_AI_ModelGetInputByTensorName(model, "data");
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorHandleArray in_tensor_array;
+    in_tensor_array.handle_num = 1;
+    in_tensor_array.handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) * 1);
+    in_tensor_array.handle_list[0] = tensor;
+    FillInputsData(in_tensor_array, "ml_face_isface", true);
+    printf("==========OH_AI_ModelPredict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, in_tensor_array, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========CompareModelOutputs==========\n");
+    CompareResult(outputs, "ml_face_isface");
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelGetInputByTensorName，model为空
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0036, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ModelGetInputByTensorName(nullptr, "data");
+}
+
+// OH_AI_ModelGetInputByTensorName，名字不存在
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0037, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========Model Build==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ModelGetInputByTensorName==========\n");
+    OH_AI_TensorHandle tensor = OH_AI_ModelGetInputByTensorName(model, "aaa");
+    ASSERT_EQ(tensor, nullptr);
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelGetOutputByTensorName
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0038, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========Model Build==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========FillModelInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandle tensor = OH_AI_ModelGetOutputByTensorName(model, "prob");
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorHandleArray outputs;
+    outputs.handle_num = 1;
+    outputs.handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) * 1);
+    outputs.handle_list[0] = tensor;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========CompareModelOutputs==========\n");
+    CompareResult(outputs, "ml_face_isface");
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelGetOutputByTensorName，model为空
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0039, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ModelGetOutputByTensorName(nullptr, "prob");
+}
+
+// OH_AI_ModelGetOutputByTensorName，名字不存在
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0040, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========Model Build==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========FillModelInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandle tensor = OH_AI_ModelGetOutputByTensorName(model, "aaa");
+    ASSERT_EQ(tensor, nullptr);
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+
+// OH_AI_ModelCreate同时创建3个model
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0042, Function | MediumTest | Level1) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    OH_AI_ContextHandle context2 = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info2 = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context2, cpu_device_info2);
+    OH_AI_ContextHandle context3 = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info3 = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context3, cpu_device_info3);
+    printf("==========Model Build==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    ModelPredict(model, context, "ml_face_isface", {}, false, true, false);
+    printf("==========Model Build2==========\n");
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    ASSERT_NE(model2, nullptr);
+    ModelPredict(model2, context2, "ml_face_isface_quant", {}, false, false, false);
+    printf("==========Model Build3==========\n");
+    OH_AI_ModelHandle model3 = OH_AI_ModelCreate();
+    ASSERT_NE(model3, nullptr);
+    OH_AI_ShapeInfo shape_infos = {4, {1, 32, 512, 1}};
+    ModelPredict(model3, context3, "ml_ocr_cn", shape_infos, false, false, false);
+}

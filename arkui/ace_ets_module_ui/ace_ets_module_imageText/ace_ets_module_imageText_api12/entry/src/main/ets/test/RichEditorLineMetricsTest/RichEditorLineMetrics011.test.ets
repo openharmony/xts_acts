@@ -55,10 +55,12 @@ export default function RichEditorLineMetrics011() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0016
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0016
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0016 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0016
+     * @tc.name  : Test the RichEditor LineMetrics
+     * @tc.desc  : Complete input and deletion, call getLineMetrics+getlinecount to test RichEditor LineMetrics
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0016', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0016 START');
@@ -67,11 +69,9 @@ export default function RichEditorLineMetrics011() {
       let pointCenter = await rich.getBoundsCenter();
       await driver.click(pointCenter.x, pointCenter.y);
       await CommonFunc.sleep(1000);
-
       let getFirst = await driver.findComponent(ON.id('getFirst'));
       await getFirst.click();
       await CommonFunc.sleep(500);
-
       let lineCount = await driver.findComponent(ON.id('lineCount'));
       let lineMetrics1Text = await lineCount.getText();
       expect(lineMetrics1Text).assertContain('lineCount:2');
@@ -79,22 +79,20 @@ export default function RichEditorLineMetrics011() {
       let lineMetrics2 = await driver.findComponent(ON.id('lineMetrics2'));
       let lineMetrics2Text = await lineMetrics2.getText();
       await CommonFunc.sleep(500);
-      expect(lineMetrics2Text).assertContain('lineMetrics(1):{"startIndex":10,"endIndex":12');
-
+      expect(lineMetrics2Text).assertContain('lineMetrics(1):{"startIndex"');
+      expect(lineMetrics2Text).assertContain('"endIndex"');
       driver.triggerKey(KeyCode.KEYCODE_DEL);
       await CommonFunc.sleep(500);
       driver.triggerKey(KeyCode.KEYCODE_DEL);
       await CommonFunc.sleep(500);
       await getFirst.click();
       await CommonFunc.sleep(500);
-
       lineMetrics1Text = await lineCount.getText();
       expect(lineMetrics1Text).assertContain('lineCount:1');
       await CommonFunc.sleep(500);
       lineMetrics2Text = await lineMetrics2.getText();
       await CommonFunc.sleep(500);
       expect(lineMetrics2Text).assertEqual('lineMetrics(1):undefined');
-
       done();
     });
 

@@ -19,17 +19,17 @@ struct PropNumber {
   @State numA: number = 10
 
   build() {
-    Column({space:5}) {
-      Text('@Prop 支持数据类型：number').fontSize(18)
-      Text('Father State:'+ this.numA).margin(10).width("100%")
+    Column() {
+      Text('@Prop 支持数据类型：number').fontSize(9).height('5%')
+      Text('Father State:'+ this.numA).width("100%").height('5%')
         .key("PropNumber_A")
         .onClick(() => {
           this.numA += 1
         })
-      Text('父组件: ' + this.numA).fontSize(30)
+      Text('父组件: ' + this.numA).fontSize(9).height('5%')
       ChildPropNumber({ numB: this.numA })
     }.width('100%')
-    .margin({ top: 50 })
+    
   }
 }
 
@@ -38,16 +38,16 @@ struct ChildPropNumber {
   @Prop numB: number = 0;
 
   build() {
-    Column({space:5}) {
-      Text('@Prop 单向的 内部修改不会改变父组件').fontSize(18)
-      Text('Child Prop:' + this.numB).margin(10).width("100%")
+    Column() {
+      Text('@Prop 单向的 内部修改不会改变父组件').fontSize(9).height('5%')
+      Text('Child Prop:' + this.numB).width("100%").height('5%')
         .key("ChildPropNumber_A")
         .onClick(() => {
           this.numB += 1
         })
-      Text('子组件: ' + this.numB).fontSize(30)
+      Text('子组件: ' + this.numB).fontSize(9).height('5%')
 
     }.width('100%')
-    .margin({ top: 50 })
+    
   }
 }

@@ -25,13 +25,13 @@ struct VideoReset3 {
   @State enabledValue:boolean = true
 
   build() {
-    Column({space:5}) {
+    Column({space:2}) {
       Video({
         src: this.videoSrc,
         controller: this.controller
       })
-        .width('300vp')
-        .height('200vp')
+        .width('80%')
+        .height('40%')
         .enabled(this.enabledValue)
         .onPrepared(()=>{
           console.log('testTag:' + 'onPrepared')
@@ -45,8 +45,10 @@ struct VideoReset3 {
           console.log('testTag:' + 'onUpdate' + event.time)
         })
 
-      Text(this.text1).id('VideoReset3_text1')
-      Text(this.text2).id('VideoReset3_text2')
+      Row({space:2}) {
+        Text(this.text1).id('VideoReset3_text1')
+        Text(this.text2).id('VideoReset3_text2')
+      }
 
       Row({space:2}) {
         Button('start').onClick(() => {

@@ -64,57 +64,72 @@ struct Button3Example {
   build() {
     Column() {
       Column() {
-        Button('Ok', { type: this.buttonTypeValue, stateEffect: true })
-          .borderRadius(8).backgroundColor(0x317aff).width(90).key('button')
-        Button('ok').type(this.buttonTypeValue).key('button1')
-          .backgroundColor(0x317aff).width(90)
-        Button('ok')
-          .type(this.buttonTypeValue)
-          .key('button2')
-          .fontSize(this.fontSizeValue)
-          .backgroundColor(0x317aff)
-          .width(90)
-          .fontColor(this.fontColorValue)
-          .onClick(() => {
-            try {
-              let backData: events_emitter.EventData = {
-                data: {
-                  "fontColorValue": this.fontColorValue,
+        Row() {
+          Button('Ok', { type: this.buttonTypeValue, stateEffect: true })
+            .borderRadius(8)
+            .backgroundColor(0x317aff)
+            .width('20%')
+            .key('button')
+            .height('10%')
+          Button('ok')
+            .type(this.buttonTypeValue)
+            .key('button1')
+            .backgroundColor(0x317aff)
+            .width('20%')
+            .height('10%')
+        }
+        Row(){
+          Button('ok')
+            .type(this.buttonTypeValue)
+            .key('button2')
+            .fontSize(this.fontSizeValue)
+            .backgroundColor(0x317aff)
+            .width('20%')
+            .fontColor(this.fontColorValue)
+            .onClick(() => {
+              try {
+                let backData: events_emitter.EventData = {
+                  data: {
+                    "fontColorValue": this.fontColorValue,
+                  }
                 }
-              }
-              let backEvent: events_emitter.InnerEvent = {
-                eventId: 71,
-                priority: events_emitter.EventPriority.LOW
-              }
-              console.info("button2 start to emit action state")
-              events_emitter.emit(backEvent, backData)
-            } catch (err) {
-              console.info("button2 emit action state err: " + JSON.stringify((err as Error)?.message))
-            }
-          })
-        Button('ok!')
-          .type(this.buttonTypeValue)
-          .key('button3')
-          .fontColor(this.fontColorValue)
-          .backgroundColor(0x317aff)
-          .width(90)
-          .onClick(() => {
-            try {
-              let backData: events_emitter.EventData = {
-                data: {
-                  "fontColorValue": this.fontColorValue,
+                let backEvent: events_emitter.InnerEvent = {
+                  eventId: 71,
+                  priority: events_emitter.EventPriority.LOW
                 }
+                console.info("button2 start to emit action state")
+                events_emitter.emit(backEvent, backData)
+              } catch (err) {
+                console.info("button2 emit action state err: " + JSON.stringify((err as Error)?.message))
               }
-              let backEvent: events_emitter.InnerEvent = {
-                eventId: 72,
-                priority: events_emitter.EventPriority.LOW
+            })
+            .height('10%')
+          Button('ok!')
+            .type(this.buttonTypeValue)
+            .key('button3')
+            .fontColor(this.fontColorValue)
+            .backgroundColor(0x317aff)
+            .width('20%')
+            .onClick(() => {
+              try {
+                let backData: events_emitter.EventData = {
+                  data: {
+                    "fontColorValue": this.fontColorValue,
+                  }
+                }
+                let backEvent: events_emitter.InnerEvent = {
+                  eventId: 72,
+                  priority: events_emitter.EventPriority.LOW
+                }
+                console.info("button3 start to emit action state")
+                events_emitter.emit(backEvent, backData)
+              } catch (err) {
+                console.info("button3 emit action state err: " + JSON.stringify((err as Error)?.message))
               }
-              console.info("button3 start to emit action state")
-              events_emitter.emit(backEvent, backData)
-            } catch (err) {
-              console.info("button3 emit action state err: " + JSON.stringify((err as Error)?.message))
-            }
-          })
+            })
+            .height('10%')
+        }
+
         Button('button4')
           .key('button4')
           .backgroundColor(0x317aff)
@@ -137,13 +152,12 @@ struct Button3Example {
               console.info("button4 emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
+          .height('10%')
 
         Button('Click')
           .backgroundColor(0x2788D9)
           .width(200)
-          .height(100)
           .fontSize(20)
-          .position({ x: 50, y: 400 })
           .onClick((event: ClickEvent) => {
             console.info(this.text = 'Click Point:' + '\n  screenX:' + event.screenX + '\n  screenY:' + event.screenY
             + '\n  x :' + event.x + '\n  y:' + event.y + '\ntarget:' + '\n  component globalPosition：（'
@@ -168,7 +182,8 @@ struct Button3Example {
             }
           })
           .key('buttonClick')
-      }.height(1000).padding({ left: 35, right: 35, top: 35 })
+          .height(100)
+      }.height('100%').padding({ left: 35, right: 35, top: 35 })
     }.height('100%')
   }
 }

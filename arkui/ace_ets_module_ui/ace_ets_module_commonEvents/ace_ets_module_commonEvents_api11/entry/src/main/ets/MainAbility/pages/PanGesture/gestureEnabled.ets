@@ -27,10 +27,10 @@ struct gestureEnabled1 {
           this.value = 'Gesture enabled false'
         })
       // 触发反馈
-      Text(this.value).margin(30).key('gestureText')
+      Text(this.value).key('gestureText')
       List({space:20, initialIndex:0}){
         ListItem(){
-          Text('TapGesture enabled_true').fontSize(25).key('gestureOnce')
+          Text('TapGesture enabled_true').fontSize(15).key('gestureOnce')
             .gesture(
               TapGesture()
                 .onAction((event: GestureEvent) => {
@@ -40,7 +40,7 @@ struct gestureEnabled1 {
         }
 
         ListItem(){
-          Text('TapGesture once').fontSize(25).key('gesture1')
+          Text('TapGesture once').fontSize(15).key('gesture1')
             .gesture(
               TapGesture()
                 .onAction((event: GestureEvent) => {
@@ -50,7 +50,7 @@ struct gestureEnabled1 {
         }
 
         ListItem(){
-          Text('TapGesture twice').fontSize(25).key('gesture2')
+          Text('TapGesture twice').fontSize(15).key('gesture2')
             .gesture(
               TapGesture({ count: 2 })
                 .onAction((event: GestureEvent) => {
@@ -60,7 +60,7 @@ struct gestureEnabled1 {
         }
 
         ListItem(){
-          Text('LongPress').fontSize(25).key('gesture3')
+          Text('LongPress').fontSize(15).key('gesture3')
             // 长按文本触发该手势事件
             .gesture(
               LongPressGesture({ repeat: true })
@@ -80,7 +80,7 @@ struct gestureEnabled1 {
         }
 
         ListItem(){
-          Text('PanGesture').fontSize(25).id('gesture4')
+          Text('PanGesture').fontSize(15).id('gesture4')
             // 拖动文本触发该手势事件
             .gesture(
               PanGesture(this.panOption)
@@ -104,7 +104,6 @@ struct gestureEnabled1 {
     }
     .height('90%')
     .width('100%')
-    .margin(10)
   }
 }
 

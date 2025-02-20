@@ -25,27 +25,36 @@ struct ListItemExample2 {
   @Builder
   itemEnd() {
     Row() {
-      Button("Delete").margin("4vp")
-      Button("Set").margin("4vp")
+      Button("Delete").margin("4vp").fontSize(12).width('5%')
+      Button("Set").margin("4vp").fontSize(12).width('5%')
     }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly)
   }
 
   @Builder
   itemStart() {
     Row() {
-      Button("StartDelete").margin("4vp")
-      Button("StartSet").margin("4vp")
+      Button("StartDelete").margin("4vp").fontSize(12).width('5%')
+      Button("StartSet").margin("4vp").fontSize(12).width('5%')
     }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly)
   }
 
   build() {
     Column() {
+      Text(this.enterEndDeleteAreaString).fontSize(14)
+      Text(this.exitEndDeleteAreaString).fontSize(14)
+      Text(this.swipeActionState).fontSize(14).key('swipeState')
+      Button("Delete").key('btreset')
+        .height('8%')
+        .onClick(() => {
+          this.swipeActionState = "-1";
+          this.arr = [0, 1, 2, 3, 4];
+        })
       List({ space: 10 }) {
         ForEach(this.arr, (item: number) => {
           ListItem() {
             Text("item" + item)
               .width('100%')
-              .height(100)
+              .height('30%')
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .borderRadius(10)
@@ -84,14 +93,8 @@ struct ListItemExample2 {
           .key('lSwipeAction' + item)
         }, (item: string) => item)
       }
-
-      Text(this.enterEndDeleteAreaString).fontSize(20)
-      Text(this.exitEndDeleteAreaString).fontSize(20)
-      Text(this.swipeActionState).fontSize(20).margin({ top: 20 }).key('swipeState')
-      Button("Delete").margin("4vp").key('btreset').onClick(() => {
-        this.swipeActionState = "-1";
-        this.arr = [0, 1, 2, 3, 4];
-      })
+      .height('90%')
+      .width('90%')
 
     }
     .padding(10)

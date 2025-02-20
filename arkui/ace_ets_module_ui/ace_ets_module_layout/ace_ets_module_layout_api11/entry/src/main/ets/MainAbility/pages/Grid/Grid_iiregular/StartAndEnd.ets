@@ -23,6 +23,8 @@ struct StartAndEnd {
 
   build() {
     Column({ space: 5 }) {
+      Text(`onReachStart${this.index}`).id('StartAndEnd_start')
+      Text(this.text2).id('StartAndEnd_end')
       Stack({ alignContent: Alignment.BottomEnd }) {
         Grid(this.scroller) {
           ForEach(this.Number, (day: string) => {
@@ -32,7 +34,7 @@ struct StartAndEnd {
                   .fontSize(16)
                   .backgroundColor(0xF9CF93)
                   .width('100%')
-                  .height(80)
+                  .height('20%')
                   .textAlign(TextAlign.Center)
               }
             }, (day: string) => day)
@@ -46,7 +48,7 @@ struct StartAndEnd {
         .rowsGap(10)
         .width('80%')
         .backgroundColor(0xFAEEE0)
-        .height(300)
+        .height('100%')
         .scrollBar(BarState.Off)
         .onReachStart(() => {
           this.index++
@@ -64,11 +66,7 @@ struct StartAndEnd {
         }.width(20).backgroundColor('#ededed')
         .id('StartAndEnd_scrollBar')
 
-      }.height(300)
-
-
-      Text(`onReachStart${this.index}`).id('StartAndEnd_start')
-      Text(this.text2).id('StartAndEnd_end')
+      }.height('80%')
 
     }.width('100%').margin({ top: 5 })
   }

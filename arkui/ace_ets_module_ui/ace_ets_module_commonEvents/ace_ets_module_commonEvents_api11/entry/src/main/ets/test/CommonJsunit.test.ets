@@ -12,10 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, it, expect,beforeEach } from "@ohos/hypium"
 import display from '@ohos.display';
 import CommonFunc from '../MainAbility/common/Common';
 import { BusinessError } from '@ohos.base';
+import config from '@ohos.accessibility.config';
+import accessibility from '@ohos.accessibility';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.arkui.ace.commonEvents.api11/EntryAbility';
 
 function asNum(v: string | number) {
   return v as number;
@@ -25,6 +29,14 @@ function asNum(v: string | number) {
 export default function commonJsunit() {
   describe('commonTest', () => {
 
+beforeEach(async (done: Function) => {
+config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+      console.info(`enable success`);
+      }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
+done();
+});
     let dpiValue: number;
 
     beforeAll(async (done: Function) => {

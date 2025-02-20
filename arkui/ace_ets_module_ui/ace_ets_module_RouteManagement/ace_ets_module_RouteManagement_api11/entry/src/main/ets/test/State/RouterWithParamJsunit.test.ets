@@ -153,7 +153,8 @@ export default function RouterWithParamJsunit() {
     it('RouterWithParamJsunit_005', 0, async  (done:Function) =>{
       console.info('[RouterWithParamJsunit_005] START');
       let driver = Driver.create();
-      let btn = await driver.findComponent(ON.id('turn_RouterPushUrlOne_string_numArray'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn = await scrollBar.scrollSearch(ON.id('turn_RouterPushUrlOne_string_numArray'));
       await driver.delayMs(waitUiReadyMs);
       await btn.click();
       await driver.delayMs(waitUiReadyMs);
@@ -177,7 +178,8 @@ export default function RouterWithParamJsunit() {
       console.info('[RouterWithParamJsunit_006] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
-      let btn = await driver.findComponent(ON.id('turn_RouterPushUrlOne_string_number_push'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn = await scrollBar.scrollSearch(ON.id('turn_RouterPushUrlOne_string_number_push'));
       await driver.delayMs(waitUiReadyMs);
       await btn.click();
       await driver.delayMs(waitUiReadyMs);
@@ -201,7 +203,8 @@ export default function RouterWithParamJsunit() {
       console.info('[RouterWithParamJsunit_007] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
-      let btn = await driver.findComponent(ON.id('turn_RouterPushUrlOne_null_push'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let btn = await scrollBar.scrollSearch(ON.id('turn_RouterPushUrlOne_null_push'));
       await driver.delayMs(waitUiReadyMs);
       await btn.click();
       await driver.delayMs(waitUiReadyMs);

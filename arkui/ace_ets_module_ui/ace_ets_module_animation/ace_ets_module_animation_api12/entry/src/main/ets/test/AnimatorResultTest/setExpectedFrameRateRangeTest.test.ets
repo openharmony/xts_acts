@@ -71,10 +71,11 @@ export default function setExpectedFrameRateRangeTest() {
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
-      let create = await driver.findComponent(ON.id('create'));
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let create = await scrollBar.scrollSearch(ON.id('create'));
       await create.click();
       await CommonFunc.sleep(1000);
-      let play = await driver.findComponent(ON.id('play'));
+      let play = await scrollBar.scrollSearch(ON.id('play'));
       await play.click();
       await CommonFunc.sleep(3500);
       let min = getInspectorByKey('min');

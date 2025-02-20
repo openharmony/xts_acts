@@ -21,19 +21,23 @@ struct animationScrollTrueExample {
 
   build() {
     Column({ space: 5 }) {
-      Scroll(){
-        Text(this.onText)
-          .id('scroll_true_onText')
-      }
-	  .width('90%')
-	  .height('10%')
+      Text(this.onText)
+        .id('scroll_true_onText')
+        .width('90%')
+      
+      //scrollPage:向下带动画翻页
+      Button('animation: true')
+        .id('scroll_animation_true')
+        .onClick(() => {
+          this.scroller.scrollPage({ next: true, animation: true })
+        })
 
       Scroll(this.scroller) {
         Column() {
           ForEach(this.arr, (item: number) => {
             Text(item.toString())
               .width('100%')
-              .height(50)
+              .height('15%')
               .backgroundColor(0xFFFFFF)
               .borderRadius(15)
               .fontSize(16)
@@ -77,13 +81,6 @@ struct animationScrollTrueExample {
         this.onText += 'onScrollStop'
         console.info('onReachEnd !')
       })
-
-      //scrollPage:向下带动画翻页
-      Button('animation: true')
-        .id('scroll_animation_true')
-        .onClick(() => {
-          this.scroller.scrollPage({ next: true, animation: true })
-        })
 
     }
     .width('100%')

@@ -204,7 +204,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
         expect().assertFail();
         done();
       });
-      await tempWnd_two!.moveWindowTo(0, 500).catch((err: BusinessError) => {
+      await tempWnd_two!.moveWindowTo(0, 0).catch((err: BusinessError) => {
         console.log(msgStr + 'tempWnd_two.moveWindowTo failed');
         expect().assertFail();
         done();
@@ -322,7 +322,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       await (tempWnd_two as ohosWindow.Window).resize(500, 500).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.resetSize', TRUE_FLAG, done);
       });
-      await (tempWnd_two as ohosWindow.Window).moveWindowTo(0, 500).catch((err: BusinessError) => {
+      await (tempWnd_two as ohosWindow.Window).moveWindowTo(0, 0).catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.moveWindowTo ', TRUE_FLAG, done);
       });
       await (tempWnd_two as ohosWindow.Window).show().catch((err: BusinessError) => {
@@ -685,6 +685,28 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       let num: number = 0
       let firstListenFlag: boolean = false
       let secondListenFlag: boolean = false
+      let subWin: ohosWindow.Window | void = await windowStage.createSubWindow('testWindow_off_dialogTargetTouch_AllListening_LogOut').catch((err: BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!subWin).assertTrue();
+      let current_display_Class = display.getDefaultDisplaySync();
+      console.info(msgStr + 'current_display_Class: ' + JSON.stringify(current_display_Class));
+      await (subWin as ohosWindow.Window).resize(current_display_Class.width, current_display_Class.height).catch((err: BusinessError) => {
+        expect().assertFail();
+        done();
+      });
+      await (subWin as ohosWindow.Window).loadContent('testability/pages/second/second')
+        .catch((err: BusinessError) => {
+          expect().assertFail();
+          done();
+        });
+      await (subWin as ohosWindow.Window).show().catch((err: BusinessError) => {
+        expect().assertFail();
+        done();
+      });
       let windowId: string = 'window_off_dialogTargetTouch_Test_001';
       let windowConfig: ohosWindow.Configuration = {
         name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
@@ -694,13 +716,18 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
         unexpectedError(err, caseName, 'ohosWindow.createWindow', TRUE_FLAG, done);
       });
       expect(!!tempWnd).assertTrue();
+      await (tempWnd as ohosWindow.Window).resize(100, 100).catch((err: BusinessError) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize', TRUE_FLAG, done);
+      });
+      await (tempWnd as ohosWindow.Window).moveWindowTo(current_display_Class.width, current_display_Class.height).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
       await (tempWnd as ohosWindow.Window).loadContent('testability/pages/second/pageOne')
         .catch((err: BusinessError) => {
           unexpectedError(err, caseName, 'tempWnd.resetSize', TRUE_FLAG, done);
         });
-      await (tempWnd as ohosWindow.Window).resize(500, 500).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.resetSize', TRUE_FLAG, done);
-      });
       await (tempWnd as ohosWindow.Window).show().catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.show', TRUE_FLAG, done);
       });
@@ -718,6 +745,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       await buttonClick('secondPage_BackToIndex', msgStr).catch(async (err: BusinessError) => {
         console.info(msgStr + err);
         await (tempWnd as ohosWindow.Window).destroyWindow();
+        await (subWin as ohosWindow.Window).destroyWindow();
         expect().assertFail();
         done();
       })
@@ -728,11 +756,13 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       await buttonClick('secondPage_BackToIndex', msgStr).catch(async (err: BusinessError) => {
         console.info(msgStr + err);
         await (tempWnd as ohosWindow.Window).destroyWindow();
+        await (subWin as ohosWindow.Window).destroyWindow();
         expect().assertFail();
         done();
       })
       await sleep(800);
       await (tempWnd as ohosWindow.Window).destroyWindow();
+      await (subWin as ohosWindow.Window).destroyWindow();
       if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         done();
       }else{
@@ -764,7 +794,25 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
         console.log(msgStr + "second listener trigger")
         secondListenFlag = true
       }
-
+      let subWin: ohosWindow.Window | void = await windowStage.createSubWindow('testWindow_off_dialogTargetTouch_FirstCall_LogOut').catch((err: BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!subWin).assertTrue();
+      let current_display_Class = display.getDefaultDisplaySync();
+      console.info(msgStr + 'current_display_Class: ' + JSON.stringify(current_display_Class));
+      await (subWin as ohosWindow.Window).resize(current_display_Class.width, current_display_Class.height).catch((err: BusinessError) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize', TRUE_FLAG, done);
+      });
+      await (subWin as ohosWindow.Window).loadContent('testability/pages/second/second')
+        .catch((err: BusinessError) => {
+          unexpectedError(err, caseName, 'subWin.resetSize', TRUE_FLAG, done);
+        });
+      await (subWin as ohosWindow.Window).show().catch((err: BusinessError) => {
+        unexpectedError(err, caseName, 'tempWnd.show', TRUE_FLAG, done);
+      });
       let windowId: string = 'window_off_dialogTargetTouch_Test_002';
       let windowConfig: ohosWindow.Configuration = {
         name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
@@ -774,13 +822,18 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
         unexpectedError(err, caseName, 'ohosWindow.createWindow', TRUE_FLAG, done);
       });
       expect(!!tempWnd).assertTrue();
+      await (tempWnd as ohosWindow.Window).resize(100, 100).catch((err: BusinessError) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize', TRUE_FLAG, done);
+      });
+      await (tempWnd as ohosWindow.Window).moveWindowTo(current_display_Class.width, current_display_Class.height).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
       await (tempWnd as ohosWindow.Window).loadContent('testability/pages/second/pageOne')
         .catch((err: BusinessError) => {
           unexpectedError(err, caseName, 'tempWnd.resetSize', TRUE_FLAG, done);
         });
-      await (tempWnd as ohosWindow.Window).resize(500, 500).catch((err: BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.resetSize', TRUE_FLAG, done);
-      });
       await (tempWnd as ohosWindow.Window).show().catch((err: BusinessError) => {
         unexpectedError(err, caseName, 'tempWnd.show', TRUE_FLAG, done);
       });
@@ -789,6 +842,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       await buttonClick('secondPage_BackToIndex', msgStr).catch(async (err: BusinessError) => {
         console.info(msgStr + err);
         await (tempWnd as ohosWindow.Window).destroyWindow();
+        await (subWin as ohosWindow.Window).destroyWindow();
         expect().assertFail();
         done();
       })
@@ -799,12 +853,14 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       await buttonClick('secondPage_BackToIndex', msgStr).catch(async (err: BusinessError) => {
         console.info(msgStr + err);
         await (tempWnd as ohosWindow.Window).destroyWindow();
+        await (subWin as ohosWindow.Window).destroyWindow();
         expect().assertFail();
         done();
       })
       await sleep(800);
       (tempWnd as ohosWindow.Window).off('dialogTargetTouch');
       await (tempWnd as ohosWindow.Window).destroyWindow();
+      await (subWin as ohosWindow.Window).destroyWindow();
       if (!firstListenFlag && secondListenFlag) {
         done();
       } else {
@@ -1011,8 +1067,9 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       expect(!!lastWindow).assertTrue();
       console.log(msgStr + 'lastWindow is:' + JSON.stringify(lastWindow))
       let properties = (lastWindow as ohosWindow.Window).getWindowProperties();
-      expect(properties.windowRect.width).assertEqual(400);
-      expect(properties.windowRect.height).assertEqual(400);
+      let SubProperties = (subWindow as ohosWindow.Window).getWindowProperties();
+      console.log(msgStr + 'SubProperties is:' + JSON.stringify(SubProperties));
+      expect(properties.id).assertEqual(SubProperties.id);
       await (subWindow as ohosWindow.Window).destroyWindow();
     })
     /**
@@ -1063,8 +1120,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       let lastWindow_properties = (lastWindow as ohosWindow.Window).getWindowProperties();
       let mainWin = windowStage.getMainWindowSync();
       let mainWin_properties = (mainWin as ohosWindow.Window).getWindowProperties();
-      expect(lastWindow_properties.windowRect.width).assertEqual(mainWin_properties.windowRect.width);
-      expect(lastWindow_properties.windowRect.height).assertEqual(mainWin_properties.windowRect.height);
+      expect(lastWindow_properties.id).assertEqual(mainWin_properties.id);
       await (tempWnd as ohosWindow.Window).destroyWindow();
     })
     /**

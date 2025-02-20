@@ -47,12 +47,20 @@ function test_asinh_007 (n: string, pr: number, rm: Rounding, expected: string) 
     expect(expected).assertEqual(Decimal.asinh(n).valueOf());
     expect(expected).assertEqual(new Decimal(n).asinh().valueOf());
 }
+async function Delay(delay: number): Promise<void> {
+  return new Promise((resolve:Function)=>{
+    setTimeout(()=>{
+        resolve('Hello World!');
+    },delay);
+  });
+}
 export default function DecimalTest024() {
   describe("DecimalTest024", () => {
     beforeAll(() => {
         console.info("beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.");
     });
-    beforeEach(() => {
+    beforeEach(async() => {
+        await Delay(1000);
         console.info("beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.");
     });
     afterEach(() => {

@@ -109,8 +109,7 @@ struct TextAreaExampleBC1 {
         .placeholderColor(this.placeholderColor)
         .width(336)
         .key('textArea1')
-        .height(56)
-        .margin(10)
+        .height('10%')
         .fontSize(this.fontSize)
         .fontColor(this.textColor)
         .textAlign(this.textAlign)
@@ -140,18 +139,31 @@ struct TextAreaExampleBC1 {
             this.message5 = 'Nodoing'
           }
         })
-      Text(this.message1).key('change')
-      Text(this.message2).key('copy')
-      Text(this.message3).key('cut')
-      Text(this.message4).key('paste')
-      Text(this.message5).key('isEdit')
+      Row(){
+        Text(this.message1).key('change').width('45%')
+        Text(this.message2).key('copy').width('45%')
+      }.height('10%')
+      Row(){
+        Text(this.message3).key('cut').width('45%')
+        Text(this.message4).key('paste').width('45%')
+      }.height('10%')
+      Text(this.message5).key('isEdit').height('10%')
+      Row(){
       Button(`button1`)
         .backgroundColor('#007DFF')
         .key(`button1`)
-        .margin(10)
+        .height('10%')
         .onClick(() => {
           this.controller1.caretPosition(2)
         })
+      Button(`button2`)
+	.backgroundColor('#007DFF')
+	.key(`button2`)
+	.height('10%')
+	.onClick(() => {
+	this.controller2.caretPosition(0)
+	})
+      }
       TextArea({
         text: this.text2,
         placeholder: '请输入',
@@ -160,21 +172,14 @@ struct TextAreaExampleBC1 {
         .key('textArea2')
         .placeholderFont({ size: 16, weight: 400 })
         .width(336)
-        .height(56)
-        .margin(10)
+        .height('10%')
         .fontSize(16)
         .fontColor('#182431')
         .backgroundColor('#FFFFFF')
         .onChange((value: string) => {
           this.text2 = value
         })
-      Button(`button2`)
-        .backgroundColor('#007DFF')
-        .key(`button2`)
-        .margin(5)
-        .onClick(() => {
-          this.controller2.caretPosition(0)
-        })
+      
 
     }.width('100%').height('100%').backgroundColor('#F1F3F5')
   }

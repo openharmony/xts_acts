@@ -45,11 +45,11 @@ struct BasketViewer {
     Column() {
       ForEach(this.shopBasket,
         (item: PurchaseItem) => {
-          Text(`Price: ${item.price.toFixed(2)} €`).id('priceText')
+          Text(`Price: ${item.price.toFixed(2)} €`).id('priceText').height('5%')
         },
         (item: PurchaseItem) => item.id.toString()
       )
-      Text(`Total: ${this.totalPurchase.toFixed(2)} €`).id('totalText')
+      Text(`Total: ${this.totalPurchase.toFixed(2)} €`).id('totalText').height('5%')
     }
   }
 }
@@ -61,7 +61,7 @@ struct WATCHBasketModifier {
 
   build() {
     Column() {
-      Button('Add to basket')
+      Button('Add to basket').height('5%')
         .onClick(() => {
           this.shopBasket.push(new PurchaseItem(17))
         }).id('watchButton')

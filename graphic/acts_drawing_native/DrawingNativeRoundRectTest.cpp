@@ -29,7 +29,23 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeRoundRectTest : public testing::Test {};
+class DrawingNativeRoundRectTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override
+    {
+        // 设置代码
+        std::cout << "DrawingNativeRoundRectTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeRoundRectTest errorCodeReset before each test case." << std::endl;
+    }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeRoundRectTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeRoundRectTest errorCodeReset after each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_ROUND_RECT_0100
@@ -42,7 +58,13 @@ class DrawingNativeRoundRectTest : public testing::Test {};
 HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateNormal, TestSize.Level0) {
     // 1. OH_Drawing_RoundRectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    // add assert
+    EXPECT_NE(roundRect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 2. Free memory
     OH_Drawing_RoundRectDestroy(roundRect);
     OH_Drawing_RectDestroy(rect);
@@ -60,12 +82,18 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateNull, TestSize.Level3) {
     // 1. OH_Drawing_RoundRectCreate with nullptr as the first parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(nullptr, 20, 20);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 2. OH_Drawing_RoundRectCreate with 0 as the second parameter
     OH_Drawing_RoundRect *roundRect2 = OH_Drawing_RoundRectCreate(rect, 0, 20);
+    // add assert
+    EXPECT_NE(roundRect2, nullptr);
     // 3. OH_Drawing_RoundRectCreate with 0 as the third parameter
     OH_Drawing_RoundRect *roundRect3 = OH_Drawing_RoundRectCreate(rect, 20, 0);
+    // add assert
+    EXPECT_NE(roundRect3, nullptr);
     // 4. Free memory
     OH_Drawing_RoundRectDestroy(roundRect);
     OH_Drawing_RoundRectDestroy(roundRect2);
@@ -83,10 +111,20 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateNull, TestSize.Level3) {
  */
 HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateAbnormal, TestSize.Level3) {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 1. OH_Drawing_RoundRectCreate with a negative value for the second parameter xRad
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, -20, 20);
+    // add assert
+    EXPECT_NE(roundRect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 2. OH_Drawing_RoundRectCreate with a negative value for the third parameter yRad
     OH_Drawing_RoundRect *roundRect2 = OH_Drawing_RoundRectCreate(rect, 20, -20);
+    // add assert
+    EXPECT_NE(roundRect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 3. Free memory
     OH_Drawing_RoundRectDestroy(roundRect);
     OH_Drawing_RoundRectDestroy(roundRect2);
@@ -103,10 +141,20 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateAbnormal, TestSize.Level
  */
 HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateMaximum, TestSize.Level3) {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 1. OH_Drawing_RoundRectCreate with the second parameter xRad as the maximum value
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, FLT_MAX, 20);
+    // add assert
+    EXPECT_NE(roundRect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 2. OH_Drawing_RoundRectCreate with the third parameter yRad as the maximum value
     OH_Drawing_RoundRect *roundRect2 = OH_Drawing_RoundRectCreate(rect, 20, FLT_MAX);
+    // add assert
+    EXPECT_NE(roundRect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 3. Free memory
     OH_Drawing_RoundRectDestroy(roundRect);
     OH_Drawing_RoundRectDestroy(roundRect2);
@@ -127,6 +175,8 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateMultipleCalls, TestSize.
     for (int i = 0; i < 10; i++) {
         OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
         EXPECT_NE(roundRect, nullptr);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
         OH_Drawing_RoundRectDestroy(roundRect);
     }
 }
@@ -142,7 +192,11 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateMultipleCalls, TestSize.
 HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerNormal, TestSize.Level0) {
     // 1. OH_Drawing_RoundRectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    // add assert
+    EXPECT_NE(roundRect, nullptr);
     // 2. Enumerate OH_Drawing_RoundRectSetCorner and OH_Drawing_RoundRectGetCorner with OH_Drawing_CornerPos values
     OH_Drawing_CornerPos posArray[] = {
         CORNER_POS_TOP_LEFT,
@@ -184,11 +238,16 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerNormal, TestSize.L
 HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerNull, TestSize.Level3) {
     // 1. OH_Drawing_RoundRectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    // add assert
+    EXPECT_NE(roundRect, nullptr);
     // 2. OH_Drawing_RoundRectSetCorner with nullptr as the first parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_RoundRectSetCorner(nullptr, CORNER_POS_TOP_LEFT, {10.0f, 10.0f});
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 3. OH_Drawing_RoundRectSetCorner with 0 as the third parameter
     OH_Drawing_RoundRectSetCorner(roundRect, CORNER_POS_TOP_LEFT, {0, 0});
     // 4. OH_Drawing_RoundRectGetCorner with nullptr as the first parameter, check the error code using
@@ -211,7 +270,11 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerNull, TestSize.Lev
 HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_RoundRectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    // add assert
+    EXPECT_NE(roundRect, nullptr);
     // 2. OH_Drawing_RoundRectSetCorner with negative value for x-axis in OH_Drawing_Corner_Radii, followed by
     // OH_Drawing_RoundRectGetCorner
     OH_Drawing_RoundRectSetCorner(roundRect, CORNER_POS_TOP_LEFT, {-10.0f, 10.0f});
@@ -240,7 +303,11 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerAbnormal, TestSize
 HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerMaximum, TestSize.Level3) {
     // 1. OH_Drawing_RoundRectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    // add assert
+    EXPECT_NE(roundRect, nullptr);
     // 2. Call OH_Drawing_RoundRectSetCorner with the maximum value for the x-axis in OH_Drawing_Corner_Radii, followed
     // by OH_Drawing_RoundRectGetCorner
     OH_Drawing_RoundRectSetCorner(roundRect, CORNER_POS_TOP_LEFT, {FLT_MAX, 10.0f});
@@ -269,7 +336,11 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerMaximum, TestSize.
 HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_RoundRectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    // add assert
+    EXPECT_NE(roundRect, nullptr);
     // 2. OH_Drawing_RoundRectSetCorner (pass random values for x-axis and y-axis radii, and a random enum value for
     // OH_Drawing_CornerPos), followed by calling OH_Drawing_RoundRectGetCorner
     std::random_device rd;
@@ -301,7 +372,13 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerMultipleCalls, Tes
 HWTEST_F(DrawingNativeRoundRectTest, testRoundRectGetCornerWhenNoSet, TestSize.Level2) {
     // 1. OH_Drawing_RoundRectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    // add assert
+    EXPECT_NE(roundRect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 2. Call OH_Drawing_RoundRectGetCorner directly
     OH_Drawing_Corner_Radii radii = OH_Drawing_RoundRectGetCorner(roundRect, CORNER_POS_TOP_LEFT);
     EXPECT_EQ(IsScalarAlmostEqual(radii.x, 20), true);
@@ -322,7 +399,15 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectGetCornerWhenNoSet, TestSize.L
 HWTEST_F(DrawingNativeRoundRectTest, testRoundRectDestroyNormal, TestSize.Level0) {
     // 1. OH_Drawing_RoundRectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    // add assert
+    EXPECT_NE(roundRect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 2. OH_Drawing_RoundRectDestroy
     OH_Drawing_RoundRectDestroy(roundRect);
     OH_Drawing_RectDestroy(rect);
@@ -339,6 +424,8 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectDestroyNormal, TestSize.Level0
 HWTEST_F(DrawingNativeRoundRectTest, testRoundRectDestroyNull, TestSize.Level3) {
     // 1. OH_Drawing_RoundRectDestroy with nullptr as the parameter
     OH_Drawing_RoundRectDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
 }
 
 /*
@@ -352,14 +439,34 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectDestroyNull, TestSize.Level3) 
 HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetNormal, TestSize.Level0) {
     //1. OH_Drawing_RoundRectCreate with the second parameter as integar values
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    // add assert
+    EXPECT_NE(roundRect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     //2. OH_Drawing_RoundRectCreate with the second parameter as floating-point values
     OH_Drawing_RoundRect *roundRect1 = OH_Drawing_RoundRectCreate(rect, 20.f, 20);
+    // add assert
+    EXPECT_NE(roundRect1, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     //3. OH_Drawing_RoundRectCreate with the first parameter as integar values
     OH_Drawing_RoundRect *roundRect2 = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    // add assert
+    EXPECT_NE(roundRect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     //4. OH_Drawing_RoundRectCreate with the first parameter as floating-point values
     OH_Drawing_Rect *rect1 = OH_Drawing_RectCreate(0.f, 0.f, 100.f, 100.f);
+    // add assert
+    EXPECT_NE(rect1, nullptr);
     OH_Drawing_RoundRect *roundRect3 = OH_Drawing_RoundRectCreate(rect1, 20, 20);
+    // add assert
+    EXPECT_NE(roundRect3, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_RoundRectDestroy(roundRect);
     OH_Drawing_RoundRectDestroy(roundRect1);
     OH_Drawing_RoundRectDestroy(roundRect2);
@@ -378,7 +485,11 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetNull, TestSize.Level3) {
     // 1. Call OH_Drawing_RoundRectOffset with nullptr as the first parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    // add assert
+    EXPECT_NE(roundRect, nullptr);
     EXPECT_EQ(OH_Drawing_RoundRectOffset(nullptr, 1.0f, 1.0f), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 2. Call OH_Drawing_RoundRectOffset with 0 as the second parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
@@ -402,11 +513,17 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetMultipleCalls, TestSize.Level3) {
     //1. Call OH_Drawing_RoundRectCreate with random values
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<float> dis(0, 100);
     for (int i = 0; i < 10; i++) {
         OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, dis(gen), dis(gen));
+        // add assert
+        EXPECT_NE(roundRect, nullptr);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
         OH_Drawing_RoundRectDestroy(roundRect);
     }
     //2. free memory

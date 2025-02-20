@@ -123,7 +123,7 @@ struct WebViewMenuInputFieldType {
             case "onInterceptKeyboardAttach0100": {
               this.ResultKey = 1
               this.userAgentPC = this.controller.getUserAgent();
-              if ((this.userAgentPC).includes("PC")) {
+              if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                 Utils.emitEvent(true, 2893)
                 break;
               } else {
@@ -144,7 +144,7 @@ struct WebViewMenuInputFieldType {
             case "onInterceptKeyboardAttach0200": {
               this.ResultKey = 2
               this.userAgentPC = this.controller.getUserAgent();
-              if ((this.userAgentPC).includes("PC")) {
+              if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                 Utils.emitEvent(true, 2894)
                 break;
               } else {
@@ -164,7 +164,7 @@ struct WebViewMenuInputFieldType {
             case "onInterceptKeyboardAttach0300": {
               this.ResultKey = 3
               this.userAgentPC = this.controller.getUserAgent();
-              if ((this.userAgentPC).includes("PC")) {
+              if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                 Utils.emitEvent('6', 2895)
                 break;
               } else {
@@ -184,7 +184,7 @@ struct WebViewMenuInputFieldType {
             case "onInterceptKeyboardAttach0400": {
               this.ResultKey = 4
               this.userAgentPC = this.controller.getUserAgent();
-              if ((this.userAgentPC).includes("PC")) {
+              if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                 Utils.emitEvent('2', 2896)
                 break;
               } else {
@@ -204,7 +204,7 @@ struct WebViewMenuInputFieldType {
             case "onInterceptKeyboardAttach0500": {
               this.ResultKey = 5
               this.userAgentPC = this.controller.getUserAgent();
-              if ((this.userAgentPC).includes("PC")) {
+              if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                 Utils.emitEvent('5', 2897)
                 break;
               } else {
@@ -225,7 +225,7 @@ struct WebViewMenuInputFieldType {
             case "onInterceptKeyboardAttach0600": {
               this.ResultKey = 6
               this.userAgentPC = this.controller.getUserAgent();
-              if ((this.userAgentPC).includes("PC")) {
+              if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                 Utils.emitEvent('7', 2898)
                 break;
               } else {
@@ -245,7 +245,7 @@ struct WebViewMenuInputFieldType {
             case "onInterceptKeyboardAttach0700": {
               this.ResultKey = 7
               this.userAgentPC = this.controller.getUserAgent();
-              if ((this.userAgentPC).includes("PC")) {
+              if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                 Utils.emitEvent('3', 2899)
                 break;
               } else {
@@ -265,7 +265,7 @@ struct WebViewMenuInputFieldType {
             case "onInterceptKeyboardAttach0800": {
               this.ResultKey = 8
               this.userAgentPC = this.controller.getUserAgent();
-              if ((this.userAgentPC).includes("PC")) {
+              if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                 Utils.emitEvent('4', 2880)
                 break;
               } else {
@@ -285,7 +285,7 @@ struct WebViewMenuInputFieldType {
             case "onInterceptKeyboardAttach0900": {
               this.ResultKey = 9
               this.userAgentPC = this.controller.getUserAgent();
-              if ((this.userAgentPC).includes("PC")) {
+              if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                 Utils.emitEvent('0', 2881)
                 break;
               } else {
@@ -305,7 +305,7 @@ struct WebViewMenuInputFieldType {
             case "onInterceptKeyboardAttach1000": {
               this.ResultKey = 10
               this.userAgentPC = this.controller.getUserAgent();
-              if ((this.userAgentPC).includes("PC")) {
+              if ((this.userAgentPC).includes("PC") || (this.userAgentPC).includes("Wearable")) {
                 Utils.emitEvent(1, 2882)
                 break;
               } else {

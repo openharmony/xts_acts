@@ -17,7 +17,7 @@ import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/utils/Common';
 
-export default function SwiperInterface0202() {
+export default function SwiperInterface02() {
   describe('SwiperInterface02', () => {
     beforeEach(async (done: Function) => {
       console.info("SwiperInterface02 beforeEach start");
@@ -45,58 +45,55 @@ export default function SwiperInterface0202() {
     });
 
     /**
-     * @tc.number SWIPER_INTERFACE_1300
-     * @tc.name step
-     * @tc.desc interval
-     * @tc.level Level 1
-     * @tc.type
-     * @tc.size
+     * @tc.number SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1300
+     * @tc.name SWIPER_INTERFACE_1300
+     * @tc.desc show Curves.springCurve
+     * @tc.level Level 3
+     * @tc.type Function
+     * @tc.size MediumTest
      */
     it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1300', 0, async (done: Function) => {
       console.info("SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1300 START");
       await CommonFunc.sleep(6000);
       let strJson: string = getInspectorByKey('SWIPER_INTERFACE_1300');
       let marq: ESObject =JSON.parse(strJson).$attrs.curve;
-      expect(marq).assertEqual("Curves.Ease");
+      expect(marq).assertEqual("spring(100.000000,1.000000,228.000000,30.000000)");
       await CommonFunc.sleep(1000);
       console.info('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1300 END');
       done();
     });
-
-
     /**
-     * @tc.number SWIPER_INTERFACE_1310
-     * @tc.name step
-     * @tc.desc interval
-     * @tc.level Level 1
-     * @tc.type
-     * @tc.size
+     * @tc.number SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1310
+     * @tc.name SWIPER_INTERFACE_1310
+     * @tc.desc show responsive-spring-motion
+     * @tc.level Level 3
+     * @tc.type Function
+     * @tc.size MediumTest
      */
     it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1310', 0, async (done: Function) => {
       console.info("SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1310 START");
       await CommonFunc.sleep(6000);
       let strJson: string = getInspectorByKey('SWIPER_INTERFACE_1310');
       let marq: ESObject =JSON.parse(strJson).$attrs.curve;
-      expect(marq).assertEqual("Curves.Ease");
+      expect(marq).assertEqual("responsive-spring-motion(0.500000,0.600000,0.000000)");
       await CommonFunc.sleep(1000);
       console.info('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1310 END');
       done();
     });
-
     /**
-     * @tc.number SWIPER_INTERFACE_1320
-     * @tc.name step
-     * @tc.desc interval
-     * @tc.level Level 1
-     * @tc.type
-     * @tc.size
+     * @tc.number SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1320
+     * @tc.name SWIPER_INTERFACE_1320
+     * @tc.desc show steps
+     * @tc.level Level 3
+     * @tc.type Function
+     * @tc.size MediumTest
      */
     it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1320', 0, async (done: Function) => {
       console.info("SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1320 START");
       await CommonFunc.sleep(6000);
       let strJson: string = getInspectorByKey('SWIPER_INTERFACE_1320');
       let marq: ESObject =JSON.parse(strJson).$attrs.curve;
-      expect(marq).assertEqual("Curves.Ease");
+      expect(marq).assertEqual("steps(9,end)");
       await CommonFunc.sleep(1000);
       console.info('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_INTERFACE_1320 END');
       done();

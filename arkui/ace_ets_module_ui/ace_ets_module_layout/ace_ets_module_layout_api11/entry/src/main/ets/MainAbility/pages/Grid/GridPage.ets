@@ -114,6 +114,42 @@ struct GridPage {
 
   build() {
     Column({ space: 5 }) {
+      Row(){
+        Text(this.onItemDragStart).fontSize(10).margin({right:10}).key('onItemDragStart')
+        Text(this.onItemDragEnter).fontSize(10).key('onItemDragEnter')
+      }
+      Row(){
+        Text(this.onItemDragMove).fontSize(10).margin({right:5}).key('onItemDragMove')
+        Text(this.onItemDragLeave).fontSize(10).margin({right:5}).key('onItemDragLeave')
+        Text(this.onItemDrop).fontSize(10).key('onItemDrop')
+      }
+      Row(){
+        Text('onScrollIndex:' + this.onScrollIndex).fontSize(10).margin({right:10}).key('onScrollIndex')
+        Text(this.onScrollFrameBeginText).fontSize(10).key('onScrollFrameBeginText')
+      }
+      Row()
+      {
+        Text(this.onScrollText).fontSize(10).margin({right:10}).key('onScrollText')
+        Text(this.onReachStartText).fontSize(10).key('onReachStartText')
+      }
+      Row()
+      {
+        Text(this.onReachEndText).fontSize(10).margin({right:10}).key('onReachEndText')
+        Text(this.onScrollStartText).fontSize(10).key('onScrollStartText')
+      }
+      Row()
+      {
+        Text(this.onScrollIndexText).fontSize(10).margin({right:10}).key('onScrollIndexText')
+        Text(this.onScrollStopText).fontSize(10).key('onScrollStopText')
+      }
+      Button(this.buttonName)
+        .key('button')
+        .height('8%')
+        .onClick(() => { // 点击后滑到下一页
+          this.buttonName = 'clicked'
+          this.scroller.scrollPage({ next: true })
+        })
+      
       Text('default').fontColor(0xCCCCCC).fontSize(9).width('90%')
       Grid() {
         GridItem() {
@@ -122,7 +158,7 @@ struct GridPage {
         }.width('90%')
       }.columnsTemplate('1fr')
       .rowsTemplate('1fr')
-      .height(50)
+      .height('5%')
       .key('grid_default')
 
       Grid() {
@@ -208,65 +244,36 @@ struct GridPage {
       })
       .width('90%')
       .backgroundColor(0xFAEEE0)
-      .height(200)
+      .height('30%')
       .onScroll((scrollOffset: number, scrollState: ScrollState) => {
-          this.onScrollText = 'onScroll:succ'
-          console.info('onScroll scrollOffset:' + scrollOffset.toString() + ' ScrollState:' + ScrollState.toString())
-        })
+        this.onScrollText = 'onScroll:succ'
+        console.info('onScroll scrollOffset:' + scrollOffset.toString() + ' ScrollState:' + ScrollState.toString())
+      })
       .onScrollIndex((first: number,last: number) => {
-          this.onScrollIndexText = "onScrollIndex:succ"
-          console.info("onScrollIndex first:" + first.toString() + " last:" + last.toString())
-        })
+        this.onScrollIndexText = "onScrollIndex:succ"
+        console.info("onScrollIndex first:" + first.toString() + " last:" + last.toString())
+      })
       .onReachStart(() => {
-          this.onReachStartText = 'onReachStart:succ'
-          console.info('onReachStart !')
-        })
+        this.onReachStartText = 'onReachStart:succ'
+        console.info('onReachStart !')
+      })
       .onReachEnd(() => {
-          this.onReachEndText = 'onReachEnd:succ'
-          console.info('onReachEnd !')
-        })
+        this.onReachEndText = 'onReachEnd:succ'
+        console.info('onReachEnd !')
+      })
       .onScrollStart(() => {
-          this.onScrollStartText = 'onScrollStart:succ'
-          console.info('onScrollStart !')
-        })
+        this.onScrollStartText = 'onScrollStart:succ'
+        console.info('onScrollStart !')
+      })
       .onScrollStop(() => {
-          this.onScrollStopText = 'onScrollStop:succ'
-          console.info('onScrollStop !')
-        })
+        this.onScrollStopText = 'onScrollStop:succ'
+        console.info('onScrollStop !')
+      })
       .onScrollFrameBegin((offset: number, state: ScrollState) => {
-          this.onScrollFrameBeginText = 'onScrollFrameBegin:succ'
-          console.info('onScrollFrameBegin offset:' + offset +' state:' + state)
-          return { offsetRemain: offset }
-        })
-
-      Button(this.buttonName)
-        .key('button')
-        .onClick(() => { // 点击后滑到下一页
-          this.buttonName = 'clicked'
-          this.scroller.scrollPage({ next: true })
-        })
-      Text('onScrollIndex:' + this.onScrollIndex).key('onScrollIndex')
-      Text(this.onItemDragStart).key('onItemDragStart')
-      Text(this.onItemDragEnter).key('onItemDragEnter')
-      Text(this.onItemDragMove).key('onItemDragMove')
-      Text(this.onItemDragLeave).key('onItemDragLeave')
-      Text(this.onItemDrop).key('onItemDrop')
-      Row()
-      {
-        Text(this.onScrollText).margin({right:10}).key('onScrollText')
-        Text(this.onReachStartText).key('onReachStartText')
-      }
-      Row()
-      {
-        Text(this.onReachEndText).margin({right:10}).key('onReachEndText')
-        Text(this.onScrollStartText).key('onScrollStartText')
-      }
-      Row()
-      {
-        Text(this.onScrollIndexText).margin({right:10}).key('onScrollIndexText')
-        Text(this.onScrollStopText).key('onScrollStopText')
-      }
-      Text(this.onScrollFrameBeginText).key('onScrollFrameBeginText')
+        this.onScrollFrameBeginText = 'onScrollFrameBegin:succ'
+        console.info('onScrollFrameBegin offset:' + offset +' state:' + state)
+        return { offsetRemain: offset }
+      })
     }.width('100%').margin({ top: 5 })
   }
 }

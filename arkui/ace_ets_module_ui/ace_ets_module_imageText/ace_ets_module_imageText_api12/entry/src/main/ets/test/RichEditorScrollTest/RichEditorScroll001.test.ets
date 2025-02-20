@@ -55,10 +55,12 @@ export default function RichEditorScroll001() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_RICHEDITOR_SCROLL_0010
-     * @tc.name SUB_ACE_UI_RICHEDITOR_SCROLL_0010
-     * @tc.desc SUB_ACE_UI_RICHEDITOR_SCROLL_0010 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_RICHEDITOR_SCROLL_0010
+     * @tc.name  : Test the RichEditor Scroll
+     * @tc.desc  : Set up multiple lines of text and slide the page up and down to test RichEditor Scroll
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
      */
     it('SUB_ACE_UI_RICHEDITOR_SCROLL_0010', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_RICHEDITOR_SCROLL_0010 START');

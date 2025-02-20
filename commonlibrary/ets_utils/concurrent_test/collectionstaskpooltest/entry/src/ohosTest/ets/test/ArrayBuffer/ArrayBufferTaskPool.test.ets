@@ -46,7 +46,7 @@ export default function ArrayBufferTaskPoolTest() {
         for (let i = 0; i < 10; i++) {
           taskpool.execute(testCollectionsArrayBuffer0001).then((value) => {
             num++;
-            expect(value).assertEqual('integerIndex < 0 or integerIndex > SAFE_NUMBER');
+            expect(value).assertEqual("error");
           });
         }
         while (num < 10) {

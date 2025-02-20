@@ -136,6 +136,18 @@ export default function ActsNotificationManagerPublishTest() {
         expect(true).assertTrue()
         done()
       })
+      await Utils.sleep(500);
+
+      id = 400
+      await notificationManager.cancel(id).then(() => {
+        console.info(`${TAG} cancel Promise success`)
+        expect(false).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} cancel Promise err: ${err.code}, errMes: ${err.message}`)
+        expect(true).assertTrue()
+        done()
+      })
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_CANCEL_TEST_0400 END`)
     })
 
@@ -737,7 +749,7 @@ export default function ActsNotificationManagerPublishTest() {
     it('testPublishLongtextTitleForNull', 0, async function (done) {
       const TEST_CASE_NAME = 'testPublishLongtextTitleForNull';
       let notificationRequest = {
-        id: 1,
+        id: 111,
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
           longText: {

@@ -15,10 +15,10 @@ group("videoHosting") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "video_hosting_four:ActsVideoHostingFourTest",
-      "video_hosting_one:ActsVideoHostingOneTest",
-      "video_hosting_three:ActsVideoHostingThreeTest",
-      "video_hosting_two:ActsVideoHostingTwoTest",
+      "video_hosting_four:ActsWebVideoHostingFourTest",
+      "video_hosting_one:ActsWebVideoHostingOneTest",
+      "video_hosting_three:ActsWebVideoHostingThreeTest",
+      "video_hosting_two:ActsWebVideoHostingTwoTest",
     ]
   }
 }

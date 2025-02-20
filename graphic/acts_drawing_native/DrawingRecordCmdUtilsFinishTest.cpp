@@ -45,7 +45,23 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingRecordCmdUtilsFinishRecordingTest : public testing::Test {};
+class DrawingRecordCmdUtilsFinishRecordingTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override
+    {
+        // 设置代码
+        std::cout << "DrawingRecordCmdUtilsFinishRecordingTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingRecordCmdUtilsFinishRecordingTest errorCodeReset before each test case." << std::endl;
+    }
+    void TearDown() override
+    {
+        std::cout << "DrawingRecordCmdUtilsFinishRecordingTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingRecordCmdUtilsFinishRecordingTest errorCodeReset after each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECORDER_0300
@@ -58,6 +74,8 @@ class DrawingRecordCmdUtilsFinishRecordingTest : public testing::Test {};
 HWTEST_F(DrawingRecordCmdUtilsFinishRecordingTest, testRecordCmdUtilsFinishRecordingNormal, TestSize.Level0) {
     // 1. None of the OH_Drawing_RecordCmdUtilsFinishRecording parameters are empty
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_Canvas** canvass = &canvas;
     OH_Drawing_RecordCmd *recordCmd;
     OH_Drawing_RecordCmd **recordCmds = &recordCmd;
@@ -79,6 +97,8 @@ HWTEST_F(DrawingRecordCmdUtilsFinishRecordingTest, testRecordCmdUtilsFinishRecor
 HWTEST_F(DrawingRecordCmdUtilsFinishRecordingTest, testRecordCmdUtilsFinishRecordingNull, TestSize.Level3) {
     // 1. OH-Drawing-RecordCmdUtelsFinishRecording, RecordCmd or RecordCmdUtils parameter is empty
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_Canvas** canvass = &canvas;
     OH_Drawing_RecordCmd* recordCmd = nullptr;
     OH_Drawing_RecordCmd** recordCmds = &recordCmd;

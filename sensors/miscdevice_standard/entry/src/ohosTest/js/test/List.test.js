@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,10 +17,12 @@ import VibratorJsTest_misc_2 from './Vibrator_new_common.test.js'
 import VibratorJsTest_misc_3 from './Vibrator_newSupplement_common.test.js'
 import VibratorJsTest_misc_6 from './Vibrator_newSupportTest.test.js'
 import VibratorJsTest_misc_7 from './Vibrator_options.test.js'
+import VibratorJsTest_misc_8 from './Vibrator_newEffect.test.js'
 export default function testsuite() {
     VibratorJsTest_misc_1()
     VibratorJsTest_misc_2()
 	VibratorJsTest_misc_3()
 	VibratorJsTest_misc_6()
 	VibratorJsTest_misc_7()
+	VibratorJsTest_misc_8()
 }

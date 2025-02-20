@@ -119,28 +119,26 @@ struct listVisibleContent {
 
   build() {
     Column(){
-      Column({space:5}){
-        Button('scrollTo')
-          .id('scrollTo_y')
-          .onClick(() => {
-            this.scroller.scrollTo({ xOffset: 0, yOffset: vp2px(200) })
-          })
-        Button('deleteItem')
-          .id('deleteItem_index')
-          .onClick(() => {
-            if (this.firstViewIndex == 0) {
-              promptAction.showToast({
-                message: '容器上方没有位置删除数据',
-                duration: 3000
-              })
-              return
-            }
-            this.dataBean.deleteData(this.firstViewIndex - 1)
-			this.leg = this.dataBean.totalCount()
-          })
-        Text('length: ' + this.leg)
-          .id('list_num')
-      }.height('20%')
+      Button('scrollTo')
+        .id('scrollTo_y')
+        .onClick(() => {
+          this.scroller.scrollTo({ xOffset: 0, yOffset: vp2px(200) })
+        })
+      Button('deleteItem')
+        .id('deleteItem_index')
+        .onClick(() => {
+          if (this.firstViewIndex == 0) {
+            promptAction.showToast({
+              message: '容器上方没有位置删除数据',
+              duration: 3000
+            })
+            return
+          }
+          this.dataBean.deleteData(this.firstViewIndex - 1)
+          this.leg = this.dataBean.totalCount()
+        })
+      Text('length: ' + this.leg)
+        .id('list_num')
 
       List({ scroller: this.scroller }) {
         LazyForEach(this.dataBean, (item: string, itemIndex: number) => {

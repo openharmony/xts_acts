@@ -10,7 +10,7 @@
     },
     "kits": [{
             "test-file-name": [
-                "ActsPreloadLinkRendingCloudServiceWebControllerOneTest.hap"
+                "ActsWebPreloadLinkRendingCloudServiceWebControllerOneTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

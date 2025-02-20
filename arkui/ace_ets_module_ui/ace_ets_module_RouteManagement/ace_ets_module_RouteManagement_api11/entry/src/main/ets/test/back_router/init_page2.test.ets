@@ -79,7 +79,9 @@ export default function aboutToAppearRouterTest2() {
       let strJson = getInspectorByKey('text_page');
       expect(JSON.parse(strJson1).$attrs.content).assertEqual("3");
       expect(JSON.parse(strJson).$attrs.content).assertEqual("3");
-      let button2 = await driver.findComponent(ON.id('RouterA1'));
+
+      let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+      let button2 = await scrollBar.scrollSearch(ON.id('RouterA1'));
       await button2.click();
       await CommonFunc.sleep(1000);
       //B页面
@@ -89,14 +91,17 @@ export default function aboutToAppearRouterTest2() {
       expect(JSON.parse(strJson3).$attrs.content).assertEqual("4");
       //清空所有页
       await CommonFunc.sleep(1000);
-      let button4 = await driver.findComponent(ON.id('clear'))
+
+      let scrollBar2: Component = await driver.findComponent(ON.type('Scroll'));
+      let button4 = await scrollBar2.scrollSearch(ON.id('clear'))
       await button4.click();
       await CommonFunc.sleep(3000);
       expect(JSON.parse(getInspectorByKey('index')).$attrs.content).assertEqual("1");
       expect(JSON.parse(getInspectorByKey('length')).$attrs.content).assertEqual("1");
       await CommonFunc.sleep(1000);
       //返回上一页
-      let button5 = await driver.findComponent(ON.id('ReturnBack'))
+      let scrollBar3: Component = await driver.findComponent(ON.type('Scroll'));
+      let button5 = await scrollBar3.scrollSearch(ON.id('ReturnBack'))
       await button5.click();
       await CommonFunc.sleep(1000);
       expect(JSON.parse(getInspectorByKey('index')).$attrs.content).assertEqual("1");

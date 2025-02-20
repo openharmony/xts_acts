@@ -20,13 +20,13 @@ struct CountDownComponent1{
   @Prop number2: number | undefined | null
 
   build() {
-    Row({ space: 5 }){
-      Column({ space: 20 }) {
+    Row(){
+      Column() {
 
         Row(){
           Column(){
-            Text("type-->undefined")
-            Button('button')
+            Text("type-->undefined").height('5%')
+            Button('button').height('5%')
               .type(this.type1)
               .onClick(() => {
                 this.type1 = undefined
@@ -35,8 +35,8 @@ struct CountDownComponent1{
           }
 
           Column(){
-            Text("type-->null")
-            Button('button')
+            Text("type-->null").height('5%')
+            Button('button').height('5%')
               .type(this.type2)
               .onClick(() => {
                 this.type2 = null
@@ -48,8 +48,8 @@ struct CountDownComponent1{
 
         Row(){
           Column(){
-            Text("文本10-->undefined")
-            Button('button')
+            Text("文本10-->undefined").height('5%')
+            Button('button').height('5%')
               .fontSize(this.number1)
               .onClick(() => {
                 this.number1 = undefined
@@ -57,8 +57,8 @@ struct CountDownComponent1{
               .key('ziProp2Btn3')
           }
           Column(){
-            Text("文本10-->null")
-            Button('button')
+            Text("文本10-->null").height('5%')
+            Button('button').height('5%')
               .fontSize(this.number2)
               .onClick(() => {
                 this.number2 = null
@@ -66,7 +66,7 @@ struct CountDownComponent1{
               .key('ziProp2Btn4')
           }
         }
-      }.width('100%').margin({ top: 10 })
+      }.width('100%')
     }
 
   }
@@ -84,12 +84,12 @@ struct ParentComponent1 {
 
     Row() {
       Scroll() {
-        Row({ space: 5 }) {
-          Column({ space: 20 }) {
+        Row() {
+          Column() {
             Row(){
               Column(){
-                Text("Prop-->undefined")
-                Button('button')
+                Text("Prop-->undefined").height('5%')
+                Button('button').height('5%')
                   .type(this.type1)
                   .onClick(() => {
                     this.type1 = undefined
@@ -97,8 +97,8 @@ struct ParentComponent1 {
                   .key('prop2Btn1')
               }
               Column(){
-                Text("Prop-->null")
-                Button('button')
+                Text("Prop-->null").height('5%')
+                Button('button').height('5%')
                   .type(this.type2)
                   .onClick(() => {
                     this.type2 = null
@@ -109,8 +109,8 @@ struct ParentComponent1 {
             }
             Row(){
               Column(){
-                Text("文本10-->undefined")
-                Button('button')
+                Text("文本10-->undefined").height('5%')
+                Button('button').height('5%')
                   .fontSize(this.number1)
                   .onClick(() => {
                     this.number1 = undefined
@@ -119,8 +119,8 @@ struct ParentComponent1 {
 
               }
               Column(){
-                Text("文本10-->null")
-                Button('button')
+                Text("文本10-->null").height('5%')
+                Button('button').height('5%')
                   .fontSize(this.number2)
                   .onClick(() => {
                     this.number2 = null
@@ -136,7 +136,7 @@ struct ParentComponent1 {
             })
 
 
-          }.width('100%').margin({ top: 10 })
+          }.width('100%')
         }
       }
 

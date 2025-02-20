@@ -18,37 +18,39 @@ struct PropMapChild {
 
   build() {
     Column() {
-      ForEach(Array.from(this.value.entries()), (item: [number, string]) => {
-        Text(`${item[0]} ${item[1]}`).fontSize(20).id("propMap_value_" + item[1])
-        Divider()
-      })
-      Button('child init map').id("propMap_init")
+
+      Button('child init map').id("propMap_init").height('5%')
         .onClick(() => {
           this.value = new Map([[0, "a"], [1, "b"], [3, "c"]])
-        }).margin(10)
+        })
 
-      Button('child set new one').id("propMap_set")
+      Button('child set new one').id("propMap_set").height('5%')
         .onClick(() => {
           this.value.set(4, "d")
-        }).margin(10)
+        })
 
-      Button('child clear').id("propMap_clear")
+      Button('child clear').id("propMap_clear").height('5%')
         .onClick(() => {
           this.value.clear()
           if (Array.from(this.value.entries())) {
             this.value.set(0, "K")
           }
-        }).margin(10)
+        })
 
-      Button('child replace').id("propMap_replace")
+      Button('child replace').id("propMap_replace").height('5%')
         .onClick(() => {
           this.value.set(0, "aa")
-        }).margin(10)
+        })
 
-      Button('child delete').id("propMap_delete")
+      Button('child delete').id("propMap_delete").height('5%')
         .onClick(() => {
           this.value.delete(0)
         })
+
+      ForEach(Array.from(this.value.entries()), (item: [number, string]) => {
+        Text(`${item[0]} ${item[1]}`).fontSize(9).id("propMap_value_" + item[1]).height('5%')
+        Divider()
+      })
     }
   }
 }

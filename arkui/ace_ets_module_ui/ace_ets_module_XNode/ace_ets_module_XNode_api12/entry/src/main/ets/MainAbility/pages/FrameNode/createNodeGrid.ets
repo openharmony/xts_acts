@@ -72,12 +72,13 @@ struct createNodeGridTest {
       Column(){
         Row() {
           NodeContainer(this.myNodeController);
-        }
-        Text(this.type).margin(30).id("createNodeGridText")
+        }.height('30%')
+        Text(this.type).margin(30).id("createNodeGridText").height('10%')
         Button("getInspectorInfo").id("createNodeGridType").onClick(() => {
           this.type = this.myNodeController?.getNodeType()
-        })
+        }).height('10%')
       }
+      .height('100%')
     }
 
   }

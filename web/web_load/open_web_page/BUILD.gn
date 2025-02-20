@@ -11,18 +11,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsOpenWebPageTest") {
+group("ActsWebOpenWebPageTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "ace_open_web_page_dev:ActsAceOpenWebPageDevTest",
-      "ace_open_web_page_dev_four:ActsAceOpenWebPageDevFourTest",
-      "ace_open_web_page_dev_three:ActsAceOpenWebPageDevThreeTest",
-      "ace_open_web_page_dev_two:ActsAceOpenWebPageDevTwoTest",
-      "ace_open_web_page_dev_webviewController:ActsAceOpenWebPageDevWebViewControllerTest",
-      "ace_open_web_page_enhanced_one:ActsAceOpenWebPageEnhancedTest",
-      "ace_open_web_page_enhanced_three:ActsAceOpenWebPageEnhancedTestThree",
-      "ace_open_web_page_enhanced_two:ActsAceOpenWebPageEnhancedTestTwo",
+      "ace_open_web_page_dev:ActsWebOpenWebPageDevTest",
+      "ace_open_web_page_dev_four:ActsWebOpenWebPageDevFourTest",
+      "ace_open_web_page_dev_three:ActsWebOpenWebPageDevThreeTest",
+      "ace_open_web_page_dev_two:ActsWebOpenWebPageDevTwoTest",
+      "ace_open_web_page_dev_webviewController:ActsWebOpenWebPageDevWebViewControllerTest",
+      "ace_open_web_page_enhanced_one:ActsWebOpenWebPageEnhancedTest",
+      "ace_open_web_page_enhanced_three:ActsWebOpenWebPageEnhancedThreeTest",
+      "ace_open_web_page_enhanced_two:ActsWebOpenWebPageEnhancedTwoTest",
     ]
   }
 }

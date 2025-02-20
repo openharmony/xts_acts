@@ -46,13 +46,12 @@ struct MyImagel {
 @Entry
 @ComponentV2
 struct makeObserved0120 {
-  @Local myModifier: CommonModifier = UIUtils.makeObserved(new MyModifier().width(100).height(100).margin(10))
+  @Local myModifier: CommonModifier = UIUtils.makeObserved(new MyModifier().height('3%'))
   index: number = 0;
 
   build() {
     Column() {
       Button('change')
-        .margin(10)
         .onClick(() => {
           console.log('Modifier', 'onClick')
           this.index++;

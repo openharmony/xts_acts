@@ -19,6 +19,9 @@
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
+      "car",
+      "wearable",
+      "tv",
       "default",
       "tablet",
       "2in1"

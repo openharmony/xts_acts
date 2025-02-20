@@ -5317,8 +5317,9 @@ export default function TaskPoolTest() {
         terminate = true;
         str = 'cancel success';
       });
-      let cancelTask = new taskpool.Task(cancelById, task3.taskId);
-      taskpool.execute(cancelTask);
+      setTimeout(() => {
+        taskpool.cancel(task3.taskId);
+      }, 1000);
       while (!terminate) {
         await promiseCase();
       }

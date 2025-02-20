@@ -62,8 +62,14 @@ export default function marqueeOptionsTest1() {
       let marqueeOptions = getInspectorByKey('MarqueeOptions');
       console.info('marqueeOptions-----' + JSON.parse(marqueeOptions).$attrs.marqueeOptions);
       await CommonFunc.sleep(2000);
-      expect(JSON.parse(marqueeOptions).$attrs.marqueeOptions)
-        .assertEqual('{"start":true,"step":"9.00","loop":"-1","direction":"MarqueeDirection.DEFAULT","delay":"0","fadeout":false,"startPolicy":"MarqueeStartPolicy.DEFAULT"}');
+      let marq: ESObject = JSON.parse(JSON.parse(marqueeOptions).$attrs.marqueeOptions);
+      expect(marq.start).assertTrue();
+      expect(Math.abs(marq.step - vp2px(6)) <= 1).assertTrue();
+      expect(marq.loop == -1).assertTrue();
+      expect(marq.delay == 0).assertTrue();
+      expect(marq.fadeout).assertFalse();
+      expect(marq.startPolicy).assertEqual('MarqueeStartPolicy.DEFAULT');
+      expect(marq.direction).assertEqual('MarqueeDirection.DEFAULT');
       console.info('[marqueeOptionsTest1_001] END');
       done();
     });

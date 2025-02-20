@@ -21,21 +21,21 @@ struct List_ListInitialIndex5 {
   @State testLanes: number = 2;
 
   build() {
-    Column({ space: 30 }) {
-      List({ space: 20, initialIndex: this.testInitialIndex }) {
+    Column({ space: 10 }) {
+      List({ space: '10%', initialIndex: this.testInitialIndex }) {
         ForEach(this.arr, (item: string) => {
           ListItem() {
             Text('' + item)
               .width('100%').height('100%').backgroundColor(0xF5DEB3)
           }
-          .width(100)
-          .height(100)
+          .width('60%')
+          .height('12%')
           .key('List_ListInitialIndex5_' + item)
         }, (item: string) => item)
       }
       .cachedCount(0)
-      .width(300)
-      .height(500)
+      .width('90%')
+      .height('60%')
       .listDirection(Axis.Vertical)
       .edgeEffect(EdgeEffect.Spring)
       .scrollBar(BarState.On)

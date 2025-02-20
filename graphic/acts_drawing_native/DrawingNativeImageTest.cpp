@@ -26,7 +26,23 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeImageTest : public testing::Test {};
+class DrawingNativeImageTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override
+    {
+        // 设置代码
+        std::cout << "DrawingNativeImageTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeImageTest errorCodeReset before each test case." << std::endl;
+    }
+    void TearDown() override
+    {
+        std::cout << "DrawingNativeImageTest Setup code called after each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeImageTest errorCodeReset after each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_IMAGE_0100
@@ -39,6 +55,8 @@ class DrawingNativeImageTest : public testing::Test {};
 HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyNormal, TestSize.Level0) {
     // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+    // add assert
+    EXPECT_NE(image, nullptr);
     // 2. OH_Drawing_ImageDestroy
     OH_Drawing_ImageDestroy(image);
 }
@@ -54,6 +72,8 @@ HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyNormal, TestSize.Level0) 
 HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyNULL, TestSize.Level3) {
     // 1. OH_Drawing_ImageDestroy with a NULL parameter
     OH_Drawing_ImageDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
 }
 
 /*
@@ -68,12 +88,16 @@ HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyMultipleCalls, TestSize.L
     // 1. Call OH_Drawing_ImageCreate and OH_Drawing_ImageDestroy 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+        // add assert
+        EXPECT_NE(image, nullptr);
         OH_Drawing_ImageDestroy(image);
     }
     // 2. Call OH_Drawing_ImageCreate 10 times continuously
     OH_Drawing_Image *images[10];
     for (int i = 0; i < 10; i++) {
         images[i] = OH_Drawing_ImageCreate();
+        // add assert
+        EXPECT_NE(images[i], nullptr);
     }
     // 3. Call OH_Drawing_ImageDestroy 10 times continuously
     for (int i = 0; i < 10; i++) {
@@ -92,13 +116,19 @@ HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyMultipleCalls, TestSize.L
 HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapNormal, TestSize.Level0) {
     // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+    // add assert
+    EXPECT_NE(image, nullptr);
     // 2. OH_Drawing_BitmapCreate
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
     // 3. OH_Drawing_ImageBuildFromBitmap successfully constructs the image content
     OH_Drawing_ImageBuildFromBitmap(image, bitmap);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     EXPECT_NE(bitmap, nullptr);
     // 4. OH_Drawing_ImageBuildFromBitmap fails to construct the image content
     OH_Drawing_ImageBuildFromBitmap(image, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 5. Free memory
     OH_Drawing_ImageDestroy(image);
     OH_Drawing_BitmapDestroy(bitmap);
@@ -115,11 +145,16 @@ HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapNormal, TestSize.Level0
 HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapNULL, TestSize.Level3) {
     // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+    // add assert
+    EXPECT_NE(image, nullptr);
     // 2. OH_Drawing_BitmapCreate
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     // 3. OH_Drawing_ImageBuildFromBitmap with a null parameter, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_ImageBuildFromBitmap(nullptr, bitmap);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 4. OH_Drawing_ImageBuildFromBitmap with a null parameter, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_ImageBuildFromBitmap(image, nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -139,7 +174,11 @@ HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapNULL, TestSize.Level3) 
 HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapMultipleCalls, TestSize.Level3) {
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+        // add assert
+        EXPECT_NE(image, nullptr);
         OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        // add assert
+        EXPECT_NE(bitmap, nullptr);
         OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
         uint32_t width = 200 + i * 10;
         uint32_t height = 200 + i * 10;
@@ -161,7 +200,11 @@ HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapMultipleCalls, TestSize
 HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapMultipleCallsBoundary, TestSize.Level3) {
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+        // add assert
+        EXPECT_NE(image, nullptr);
         OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        // add assert
+        EXPECT_NE(bitmap, nullptr);
         OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
         uint32_t width = 4096;
         uint32_t height = 2160;
@@ -183,7 +226,11 @@ HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapMultipleCallsBoundary, 
 HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightNormal, TestSize.Level0) {
     // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+    // add assert
+    EXPECT_NE(image, nullptr);
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 200;
     constexpr uint32_t height = 200;
@@ -210,7 +257,11 @@ HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightNormal, TestSize.Level0)
  */
 HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightNULL, TestSize.Level3) {
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+    // add assert
+    EXPECT_NE(image, nullptr);
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     uint32_t width = 200;
     uint32_t height = 200;
@@ -219,6 +270,7 @@ HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightNULL, TestSize.Level3) {
     // 1. OH_Drawing_ImageGetWidth with a null parameter, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_ImageGetWidth(nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCodeReset();
     // 2. OH_Drawing_ImageGetHeight with a null parameter, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_ImageGetHeight(nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -235,7 +287,11 @@ HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightNULL, TestSize.Level3) {
 HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightMultipleCalls, TestSize.Level3) {
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+        // add assert
+        EXPECT_NE(image, nullptr);
         OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        // add assert
+        EXPECT_NE(bitmap, nullptr);
         OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
         uint32_t width = 200 + i * 10;
         uint32_t height = 200 + i * 10;
@@ -261,7 +317,11 @@ HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightMultipleCalls, TestSize.
 HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightMultipleCallsBoundary, TestSize.Level3) {
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+        // add assert
+        EXPECT_NE(image, nullptr);
         OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        // add assert
+        EXPECT_NE(bitmap, nullptr);
         OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
         uint32_t width = 4096;
         uint32_t height = 2160;
@@ -299,14 +359,21 @@ HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoNormal, TestSize.Level0) {
     };
     for (OH_Drawing_ColorFormat cf : cfs) {
         for (OH_Drawing_AlphaFormat af : afs) {
+            OH_Drawing_ErrorCodeReset();
             OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+            // add assert
+            EXPECT_NE(image, nullptr);
             OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+            // add assert
+            EXPECT_NE(bitmap, nullptr);
             OH_Drawing_BitmapFormat cFormat{cf, af};
             uint32_t width = 400;
             uint32_t height = 400;
             OH_Drawing_Image_Info imageInfo;
             OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
             OH_Drawing_ImageGetImageInfo(image, &imageInfo);
+            // add assert
+            EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
             OH_Drawing_ImageDestroy(image);
             OH_Drawing_BitmapDestroy(bitmap);
         }
@@ -324,7 +391,11 @@ HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoNULL, TestSize.Level3) {
     // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+    // add assert
+    EXPECT_NE(image, nullptr);
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     // 2. OH_Drawing_Image_Info
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     uint32_t width = 400;
@@ -361,7 +432,11 @@ HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoMultipleCalls, TestSize.Le
     };
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+        // add assert
+        EXPECT_NE(image, nullptr);
         OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        // add assert
+        EXPECT_NE(bitmap, nullptr);
         srand(static_cast<unsigned int>(time(0)));
         OH_Drawing_BitmapFormat cFormat{cf[rand() % 5 + 1], af[rand() % 3 + 1]};
         uint32_t width = rand() % 100 + 1;
@@ -385,7 +460,11 @@ HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoMultipleCalls, TestSize.Le
 HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+    // add assert
+    EXPECT_NE(image, nullptr);
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     // 2. OH_Drawing_ImageGetImageInfo creates OH_Drawing_Image_Info with width=-400 and height=-400
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     uint32_t width = -400;
@@ -409,7 +488,11 @@ HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoAbnormal, TestSize.Level3)
 HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoMaximum, TestSize.Level3) {
     // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+    // add assert
+    EXPECT_NE(image, nullptr);
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     // 2. OH_Drawing_ImageGetImageInfo creates OH_Drawing_Image_Info with width=maximum value and height=maximum value
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     uint32_t width = UINT32_MAX;
@@ -433,7 +516,11 @@ HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoMaximum, TestSize.Level3) 
 HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoBoundary, TestSize.Level3) {
     // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+    // add assert
+    EXPECT_NE(image, nullptr);
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     // 2. OH_Drawing_ImageGetImageInfo creates OH_Drawing_Image_Info with width=maximum value and height=maximum value
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     uint32_t width = 4096;

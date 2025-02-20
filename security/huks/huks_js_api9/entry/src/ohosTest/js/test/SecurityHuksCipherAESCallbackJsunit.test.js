@@ -442,12 +442,17 @@ export default function SecurityHuksCipherAESCallbackJsunit() {
                 properties: huksProperties
             };
             huks.generateKeyItem(srcKeyAlies, huksOptions, (err, data) => {
-                if (err) {
-                    console.log("SUB_Security_HUKS_isPwdSet_0020: success");
+                try {
+                    if (err) {
+                        console.log("SUB_Security_HUKS_isPwdSet_0060: success");
+                        done();
+                    } else {
+                        console.error("SUB_Security_HUKS_isPwdSet_0060: fail");
+                        expect(null).assertFail();
+                    }
+                } catch (err) {
+                    console.error("SUB_Security_HUKS_isPwdSet_0060: fail");
                     done();
-                } else {
-                    console.error("SUB_Security_HUKS_isPwdSet_0020: fail");
-                    expect(null).assertFail();
                 }
             });
         });

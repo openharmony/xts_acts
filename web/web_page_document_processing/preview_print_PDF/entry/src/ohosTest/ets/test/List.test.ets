@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import webInitTest from './WebInitTest.test'
+import createPdf from './createPdfJsunit.test'
 
 export default function testsuite() {
   webInitTest()
+  createPdf()
 }

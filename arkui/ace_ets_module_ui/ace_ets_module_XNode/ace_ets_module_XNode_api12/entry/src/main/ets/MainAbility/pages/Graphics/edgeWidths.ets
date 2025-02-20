@@ -44,7 +44,7 @@ struct edgeWidthsExample {
   @State edgeWidthsValue: number = 0
 
   build() {
-    Row() {
+    Column() {
       NodeContainer(this.myNodeController)
       Text('edgeWidthsValue:' + this.edgeWidthsValue).margin(10).id("edgeWidthsValue") //5
       Button('click edgeWidthsValue')

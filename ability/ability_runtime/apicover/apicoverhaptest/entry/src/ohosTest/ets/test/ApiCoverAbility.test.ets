@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, afterEach, it, expect } from '@ohos/hypium';
+import { describe, afterEach, it, expect, beforeAll } from '@ohos/hypium';
 import formHost from '@ohos.application.formHost';
 import abilityConstant from '@ohos.app.ability.AbilityConstant';
 import appManagerNew from '@ohos.app.ability.appManager';
@@ -33,6 +33,8 @@ import { BusinessError } from '@ohos.base';
 import commonEventManager from '@ohos.commonEventManager';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import { AbilityLifecycleCallback } from '@kit.AbilityKit';
+import { Driver } from '@ohos.UiTest';
+
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let EXTENSION_INFO_ERR = 16000001;
 let INNER_ERROR = 16000050;
@@ -51,12 +53,23 @@ function func1(a: string, b: string) {
   array.push(b);
 }
 
+let driver1:Driver;
 export default function ApiCoverTest() {
   describe('ApiCoverTestTest', () => {
+    beforeAll(async()=>{
+      try{
+        driver1 = await Driver.create();
+      }catch{
+        console.info("ApiCoverTestTest beforeAll create driver error" );
+      }
+    })
     afterEach(async (done: Function) => {
-      setTimeout(() => {
+      try{
+        await driver1.delayMs(2500);
         done();
-      }, 2500);
+      }catch{
+        console.info("ApiCoverTestTest afterEach delayMs error" );
+      }
     })
     /*
      * @tc.number  SUB_AA_ABILITY_Extension_API_001
@@ -131,7 +144,12 @@ export default function ApiCoverTest() {
         })
         .catch((error: BusinessError) => {
           console.error(`Ability: startServiceExtensionAbilityWithAccount failed: ${JSON.stringify(error)}`);
-          expect(CROSS_USER_DENY).assertEqual(error.code);
+          if(canIUse("SystemCapability.Security.DataLossPrevention")){
+            console.log(`Ability: startServiceExtensionAbilityWithAccount with DLP: ${JSON.stringify(error)}`);
+            expect(CROSS_USER_DENY).assertEqual(error.code);
+          }else{
+            expect(16000006).assertEqual(error.code);
+          }
         })
       done();
     })
@@ -157,7 +175,12 @@ export default function ApiCoverTest() {
         })
         .catch((error: BusinessError) => {
           console.error(`Ability: stopServiceExtensionAbilityWithAccount failed: ${JSON.stringify(error)}`);
-          expect(CROSS_USER_DENY).assertEqual(error.code);
+          if(canIUse("SystemCapability.Security.DataLossPrevention")){
+            console.log(`Ability: startServiceExtensionAbilityWithAccount with DLP: ${JSON.stringify(error)}`);
+            expect(CROSS_USER_DENY).assertEqual(error.code);
+          }else{
+            expect(16000006).assertEqual(error.code);
+          }
         })
       done();
     })
@@ -232,7 +255,12 @@ export default function ApiCoverTest() {
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.startServiceExtensionAbilityWithAccount(want, 999, (err, data) => {
         if (err.code) {
           console.error(`Ability: startServiceExtensionAbilityWithAccount failed: ${JSON.stringify(err)}`);
-          expect(CROSS_USER_DENY).assertEqual(err.code);
+          if(canIUse("SystemCapability.Security.DataLossPrevention")){
+            console.log(`Ability: startServiceExtensionAbilityWithAccount with DLP: ${JSON.stringify(err)}`);
+            expect(CROSS_USER_DENY).assertEqual(err.code);
+          }else{
+            expect(16000006).assertEqual(err.code);
+          }
         } else {
           console.log(`Ability: startServiceExtensionAbilityWithAccount success: ${JSON.stringify(data)}`);
           expect("case execute failed").assertEqual(data);
@@ -258,7 +286,12 @@ export default function ApiCoverTest() {
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.stopServiceExtensionAbilityWithAccount(want, 999, (err, data) => {
         if (err.code) {
           console.error(`Ability: stopServiceExtensionAbilityWithAccount failed: ${JSON.stringify(err)}`);
-          expect(CROSS_USER_DENY).assertEqual(err.code);
+          if(canIUse("SystemCapability.Security.DataLossPrevention")){
+            console.log(`Ability: startServiceExtensionAbilityWithAccount with DLP: ${JSON.stringify(err)}`);
+            expect(CROSS_USER_DENY).assertEqual(err.code);
+          }else{
+            expect(16000006).assertEqual(err.code);
+          }
         } else {
           console.log(`Ability: stopServiceExtensionAbilityWithAccount success: ${JSON.stringify(data)}`);
           expect("case execute failed").assertEqual(data);

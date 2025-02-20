@@ -151,5 +151,80 @@ export default function nativeAVScreenCaptureNdkTest() {
       expect(result).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0100
+     * @tc.name         OH_AVScreenCapture_StartScreenCaptureOrigin
+     * @tc.desc         OH_AVScreenCapture_StartScreenCaptureOrigin
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0100', 0, async (done: Function) => {
+      console.info(Tag + "normalAVScreenCaptureShowCursorTest-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureShowCursorTest();
+      console.info(Tag + "normalAVScreenCaptureShowCursorTest-------------res:" + result);
+      expect(result).assertEqual(0);
+
+      await Utils.btnTextScreenCapture();
+      let resultStop: number = myScreenCaptureNdk.normalAVScreenCaptureShowCursorTestStop();
+      console.info(Tag + "normalAVScreenCaptureShowCursorTestStop-------------resultStop:" + resultStop);
+      expect(resultStop).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0200
+     * @tc.name         OH_AVScreenCapture_StartScreenCaptureOrigin
+     * @tc.desc         OH_AVScreenCapture_StartScreenCaptureOrigin
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0200', 0, async (done: Function) => {
+      console.info(Tag + "normalAVScreenCaptureShowCursorTest-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureShowCursorTest();
+      console.info(Tag + "normalAVScreenCaptureShowCursorTest-------------res:" + result);
+      expect(result).assertEqual(0);
+
+      await Utils.btnTextScreenCapture();
+      let resultStop: number = myScreenCaptureNdk.normalAVScreenCaptureShowCursorBeforeTestStop();
+      console.info(Tag + "normalAVScreenCaptureShowCursorBeforeTestStop-------------resultStop:" + resultStop);
+      expect(resultStop).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0300
+     * @tc.name         OH_AVScreenCapture_StartScreenCaptureOrigin-With-InvalidVal-Null-False
+     * @tc.desc         OH_AVScreenCapture_StartScreenCaptureOrigin-With-InvalidVal-Null-False
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0300', 0, async (done: Function) => {
+      console.info(Tag + "normalAVScreenCaptureShowCursorWithParaNullFalse-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureShowCursorWithParaNullFalse();
+      console.info(Tag + "normalAVScreenCaptureShowCursorWithParaNullFalse-------------res:" + result);
+      expect(result).assertEqual(0);
+      done();
+    }); 
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0400
+     * @tc.name         OH_AVScreenCapture_StartScreenCaptureOrigin-With-InvalidVal-Null-True
+     * @tc.desc         OH_AVScreenCapture_StartScreenCaptureOrigin-With-InvalidVal-Null-True
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0400', 0, async (done: Function) => {
+      console.info(Tag + "normalAVScreenCaptureShowCursorWithParaNullTrue-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureShowCursorWithParaNullTrue();
+      console.info(Tag + "normalAVScreenCaptureShowCursorWithParaNullTrue-------------res:" + result);
+      expect(result).assertEqual(0);
+      done();
+    });  
+  
   })
 }

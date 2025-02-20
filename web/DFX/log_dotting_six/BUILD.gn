@@ -13,10 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsLogDottingSixTest") {
+ohos_js_app_suite("ActsWebLogDottingSixTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsLogDottingSixTest"
+  hap_name = "ActsWebLogDottingSixTest"
   part_name = "webview"
+  subsystem_name = "web"
 }

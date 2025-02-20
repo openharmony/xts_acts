@@ -69,14 +69,14 @@ export class TestDlpFileInfo {
 const TAG = "DLP_XTS ";
 let user1: dlpPermission.AuthUser = {
   authAccount: "123@ohos.com",
-  authAccountType: dlpPermission.AccountType.CLOUD_ACCOUNT,
-  dlpFileAccess: dlpPermission.DLPFileAccess.READ_ONLY,
+  authAccountType: 1,
+  dlpFileAccess: 1,
   permExpiryTime: 8888520175,
 };
 let user2: dlpPermission.AuthUser = {
   authAccount: "456@ohos.com",
-  authAccountType: dlpPermission.AccountType.CLOUD_ACCOUNT,
-  dlpFileAccess: dlpPermission.DLPFileAccess.FULL_CONTROL,
+  authAccountType: 1,
+  dlpFileAccess: 3,
   permExpiryTime: 8888520175,
 };
 
@@ -173,7 +173,7 @@ async function genTestOptionalDlpProperty(): Promise<dlpPermission.DLPProperty> 
   let property: dlpPermission.DLPProperty = {
     ownerAccount: accountInfo.distributedInfo.name,
     ownerAccountID: accountInfo.distributedInfo.id,
-    ownerAccountType: dlpPermission.AccountType.CLOUD_ACCOUNT,
+    ownerAccountType: 1,
     contactAccount: accountInfo.distributedInfo.name,
     offlineAccess: true,
   };
@@ -186,7 +186,7 @@ async function genTestDlpProperty(): Promise<dlpPermission.DLPProperty> {
   let property: dlpPermission.DLPProperty = {
     ownerAccount: accountInfo.distributedInfo.name,
     ownerAccountID: accountInfo.distributedInfo.id,
-    ownerAccountType: dlpPermission.AccountType.CLOUD_ACCOUNT,
+    ownerAccountType: 1,
     authUserList: userList,
     contactAccount: accountInfo.distributedInfo.name,
     offlineAccess: true,

@@ -531,7 +531,7 @@ napi_value TestScrollBar004(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(waterFlow, NODE_SCROLL_BAR_DISPLAY_MODE, &scrollBarItem);
     auto ret1 = nodeAPI->getAttribute(waterFlow, NODE_SCROLL_BAR_DISPLAY_MODE)->value[PARAM_0].i32;
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_EQ(ret1, ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO);
+    ASSERT_EQ(ret1, ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF);
     NAPI_END;
 }
 
@@ -646,14 +646,18 @@ napi_value TestScrollBarColor003(napi_env env, napi_callback_info info)
     ArkUI_NativeNodeAPI_1* nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
     auto waterFlow = nodeAPI->createNode(ARKUI_NODE_WATER_FLOW);
-    ArkUI_NumberValue scrollBarColorValue[] = { { .u32 = COLOR_YELLOW } };
+    auto waterFlow1 = nodeAPI->createNode(ARKUI_NODE_WATER_FLOW);
+    ArkUI_NumberValue scrollBarColorValue[] = { {.u32 = COLOR_RED} };
     ArkUI_AttributeItem scrollBarColorItem = { scrollBarColorValue,
         sizeof(scrollBarColorValue) / sizeof(ArkUI_NumberValue) };
     nodeAPI->setAttribute(waterFlow, NODE_SCROLL_BAR_COLOR, &scrollBarColorItem);
+    ArkUI_AttributeItem scrollBarColorItem1 = { nullptr, 0 };
+    nodeAPI->setAttribute(waterFlow1, NODE_SCROLL_BAR_COLOR, &scrollBarColorItem1);
     auto ret = nodeAPI->resetAttribute(waterFlow, NODE_SCROLL_BAR_COLOR);
     auto ret1 = nodeAPI->getAttribute(waterFlow, NODE_SCROLL_BAR_COLOR)->value[PARAM_0].u32;
+    auto ret2 = nodeAPI->getAttribute(waterFlow1, NODE_SCROLL_BAR_COLOR)->value[PARAM_0].u32;
     ASSERT_EQ(ret, ARKUI_ERROR_CODE_NO_ERROR);
-    ASSERT_EQ(ret1, COLOR_BLACK);
+    ASSERT_EQ(ret1, ret2);
     NAPI_END;
 }
 
@@ -851,7 +855,7 @@ napi_value TestEdgeEffect004(napi_env env, napi_callback_info info)
     auto ret2 = nodeAPI->getAttribute(waterFlow, NODE_SCROLL_EDGE_EFFECT)->value[PARAM_1].i32;
     ASSERT_EQ(ret, INVALID_PARAM);
     ASSERT_EQ(ret1, ARKUI_EDGE_EFFECT_NONE);
-    ASSERT_EQ(ret2, PARAM_1);
+    ASSERT_EQ(ret2, PARAM_0);
     NAPI_END;
 }
 
@@ -860,7 +864,7 @@ napi_value TestEdgeEffect005(napi_env env, napi_callback_info info)
     ArkUI_NativeNodeAPI_1* nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
     auto waterFlow = nodeAPI->createNode(ARKUI_NODE_WATER_FLOW);
-    ArkUI_NumberValue edgeEffectValue[] = { { .i32 = ARKUI_EDGE_EFFECT_SPRING }, { .i32 = PARAM_0 } };
+    ArkUI_NumberValue edgeEffectValue[] = { { .i32 = ARKUI_EDGE_EFFECT_SPRING }, { .i32 = PARAM_1 } };
     ArkUI_AttributeItem edgeEffectItem = { edgeEffectValue, sizeof(edgeEffectValue) / sizeof(ArkUI_NumberValue) };
     nodeAPI->setAttribute(waterFlow, NODE_SCROLL_EDGE_EFFECT, &edgeEffectItem);
     auto ret = nodeAPI->resetAttribute(waterFlow, NODE_SCROLL_EDGE_EFFECT);
@@ -868,7 +872,7 @@ napi_value TestEdgeEffect005(napi_env env, napi_callback_info info)
     auto ret2 = nodeAPI->getAttribute(waterFlow, NODE_SCROLL_EDGE_EFFECT)->value[PARAM_1].i32;
     ASSERT_EQ(ret, ARKUI_ERROR_CODE_NO_ERROR);
     ASSERT_EQ(ret1, ARKUI_EDGE_EFFECT_NONE);
-    ASSERT_EQ(ret2, PARAM_1);
+    ASSERT_EQ(ret2, PARAM_0);
     NAPI_END;
 }
 

@@ -57,54 +57,66 @@ struct sonData_Link{
   
   
   build(){
-    Column({space:10}){
+    Column(){
       Text('string: ' + this.message).key("link_str")
-      .fontSize(30)
+        .fontSize(9)
+        .height('5%')
       Button('Click to change str')
-      .key(("strBtn_link"))
-      .onClick(() => {
-        this.message = "harmony";
-      })
+        .height('5%')
+        .key(("strBtn_link"))
+        .onClick(() => {
+          this.message = "harmony";
+        })
       
       Text('number: ' + this.numB.toString()).key(("link_num"))
-      .fontSize(30)
+        .height('5%')
+        .fontSize(9)
       Button('Click to change num')
-      .key(("numBtn_link"))
-      .onClick(()=>{
-        this.numB++;
-      })
+        .height('5%')
+        .key(("numBtn_link"))
+        .onClick(()=>{
+          this.numB++;
+        })
       
       Text('boolean: ' + this.boolean.toString()).key(("link_bon"))
-      .fontSize(30)
+        .height('5%')
+        .fontSize(9)
       Button('Click to change bool')
-      .key(("bonBtn_link"))
-      .onClick(() => {
-        this.boolean = false;
-      })
+        .height('5%')
+        .key(("bonBtn_link"))
+        .onClick(() => {
+          this.boolean = false;
+        })
       
       Text('enum: ' + this.enu.toString()).key(("link_enum"))
-      .fontSize(30)
+        .height('5%')
+        .fontSize(9)
       Button('Click to change enum')
-      .key(("enumBtn_link"))
+        .height('5%')
+        .key(("enumBtn_link"))
       .onClick(()=>{
         this.enu = KFCLD.B
       })
       
       Text('class: ' + this.class.value).key(("link_cla"))
-      .fontSize(30)
+        .height('5%')
+        .fontSize(9)
       Button('Click to change class')
-      .key(("claBtn_link"))
-      .onClick(()=>{
-        this.class.value = 'Hi ArkUI'
-      })
+        .height('5%')
+        .key(("claBtn_link"))
+        .onClick(()=>{
+          this.class.value = 'Hi ArkUI'
+        })
       
       Text('array: ' + this.strArray).key(("link_strArr"))
-      .fontSize(30)
+        .height('5%')
+        .fontSize(9)
       Button('Click to change strArray')
-      .key(("sArrBtn_link"))
-      .onClick(()=>{
-        this.strArray = ['A','B','C']
-      })
+        .height('5%')
+        .key(("sArrBtn_link"))
+        .onClick(()=>{
+          this.strArray = ['A','B','C']
+        })
     }
   }
 }

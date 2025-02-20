@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAceIncognitoModeWebViewControllerTest.hap"
+                "ActsWebIncognitoModeWebViewControllerTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

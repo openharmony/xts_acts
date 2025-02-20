@@ -41,40 +41,35 @@ export default function FocusableDefaultTest() {
     'Grid',
     'List',
     'Checkbox',
-    'CheckboxGroup',
-    'DatePicker',
+   
+     'DatePicker',
     'ImageAnimator',
     'Menu',
-    'MenuItem',
-    //    'MenuItemGroup',
+     'MenuItem',
+    
     'Radio',
     'Rating',
-    'Select',
+   
     'Slider',
-    'Stepper',
-    'StepperItem',
-    'TextPicker',
-    'TimePicker',
+    
     'Toggle',
-    'Web',
+   
     'AlphabetIndexer',
     'Column',
-    //    'ColumnSplit',
-    //    'Counter',
+   
     'Flex',
-    //    'GridCol',
-    //    'GridRow',
+   
     'GridItem',
     'ListItem',
-    //    'ListItemGroup',
+   
     'Row',
-    //    'RowSplit',
+   
     'Scroll',
-    'SideBarContainer',
+   
     'Stack',
     'Swiper',
     'Tabs',
-  //    'TabContent'
+  
   ]
 
   //Page config, this param is required.

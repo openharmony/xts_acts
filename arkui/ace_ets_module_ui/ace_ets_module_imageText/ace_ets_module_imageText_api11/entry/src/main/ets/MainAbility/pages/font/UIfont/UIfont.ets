@@ -25,7 +25,7 @@ struct UIfont {
   build() {
     Column() {
 
-      Text(this.text).margin(70).id('UIfont_Text')
+        Text(this.text).height('10').id('UIfont_Text').textAlign(TextAlign.Center)
 
       Button("fontDir")
         .width('60%')
@@ -82,9 +82,6 @@ struct UIfont {
         })
 
 
-
-
-
-    }
+      }.height('100%')
   }
 }

@@ -21,27 +21,28 @@ struct Child_CH {
 
   build() {
     Column() {
-      Text("设置变量number类型50-->100")
+      Text("设置变量number类型10-->7").height('3%')
       Button('change')
         .height(this.hight)
         .onClick(() => {
-          this.hight = 100
+          this.hight = 7
         })
         .key('ConsumeHeight1')
 
-      Text("设置变量string类型50-->'200'")
+
+      Text("设置变量string类型10-->'8'").height('3%')
       Button('change')
         .height(this.hight)
         .onClick(() => {
-          this.hight = '200'
+          this.hight = '8'
         })
         .key('ConsumeHeight2')
 
-      Text("设置变量Resource类型50-->Resource")
+      Text("设置变量Resource类型10-->Resource").height('3%')
       Button('change')
         .height(this.hight)
         .onClick(() => {
-          this.hight = $r('app.string.number')
+          this.hight = $r('app.string.number_9')
           console.info("hk____" + this.hight)
         })
         .key('ConsumeHeight3')
@@ -55,16 +56,16 @@ struct Child_CH {
 @Component
 struct Ancestors_CH {
   // @Provide装饰的联合类型count由入口组件Ancestors提供其后代组件
-  @Provide hight: ResourceStr | Length = 50;
+  @Provide hight: ResourceStr | Length = 10;
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.hight)) + " number is " + JSON.stringify(this.hight))
-        .fontSize(20).margin(10).key('ConsumeHight')
+        .fontSize(9).key('ConsumeHight').height('3%')
 
       Child_CH()
 
 
-    }.width('100%').margin({top:5})
+    }.width('100%')
   }
 }

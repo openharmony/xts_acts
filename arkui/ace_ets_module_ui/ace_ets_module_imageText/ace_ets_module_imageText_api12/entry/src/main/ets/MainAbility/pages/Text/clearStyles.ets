@@ -26,9 +26,9 @@ struct styled_string_demo1 {
   fontStyleAttr1: TextStyle = new TextStyle({ fontColor: Color.Blue });
   fontStyleAttr2: StyledStringValue = new TextStyle({ fontColor: Color.Orange });
   // 创建可读写属性字符串的对象mutableStyledString1
-  mutableStyledString1: MutableStyledString = new MutableStyledString("运动45分钟");
+  mutableStyledString1: MutableStyledString = new MutableStyledString('运动45分钟');
   // 创建构造入参有字符串和样式的对象mutableStyledString2
-  mutableStyledString2: MutableStyledString = new MutableStyledString("test hello world", [{
+  mutableStyledString2: MutableStyledString = new MutableStyledString('test hello world', [{
     start: 0,
     length: 5,
     styledKey: StyledStringKey.FONT,
@@ -67,7 +67,7 @@ struct styled_string_demo1 {
   }
   ]);
   // 创建只读属性字符串对象styledString2
-  styledString2: StyledString = new StyledString("运动45分钟");
+  styledString2: StyledString = new StyledString('运动45分钟');
   spanStyle1: SpanStyle = {
     start: 0,
     length: 5,
@@ -107,14 +107,14 @@ struct styled_string_demo1 {
               let result = this.mutableStyledString1.equals(this.styledString2);
               if (result) {
                 this.string1 = this.mutableStyledString1.getString();
-                console.info("mutableStyledString1 content:", this.mutableStyledString1.getString());
-                console.info("mutableStyledString1 length:", this.mutableStyledString1.length);
+                console.info('mutableStyledString1 content:', this.mutableStyledString1.getString());
+                console.info('mutableStyledString1 length:', this.mutableStyledString1.length);
               }
-            })
+            }).height('5%')
 
           // 属性字符串与Span冲突时忽略Span,以及样式与Text组件属性未冲突部分生效Text设置的属性
           Text(undefined, { controller: this.controller2 }) {
-            Span("span and styledString test")
+            Span('span and styledString test')
               .fontColor(Color.Yellow)
               .decoration({ type: TextDecorationType.LineThrough })
             ImageSpan($r('app.media.icon'))
@@ -122,7 +122,7 @@ struct styled_string_demo1 {
           .key('styledString2')
           .fontColor(this.fontColor1)
           .letterSpacing(10)
-          .fontSize(32)
+          .fontSize(10)
           .fontWeight(600)
           .fontStyle(FontStyle.Italic)
           .lineHeight(30)
@@ -140,10 +140,10 @@ struct styled_string_demo1 {
               .fontColor(this.color1)
               .decoration({ type: TextDecorationType.LineThrough })
             ImageSpan($r('app.media.icon'))
-              .width(50).height(50)
+              .width(50).height('10%')
           }
           .letterSpacing(10)
-          .fontSize(32)
+          .fontSize(10)
           .fontWeight(600)
           .fontStyle(FontStyle.Italic)
           .lineHeight(30)
@@ -157,7 +157,7 @@ struct styled_string_demo1 {
               let styles = this.mutableStyledString2.getStyles(0,this.mutableStyledString2.length)
               this.length = styles.length
             }).id('clearFirstLength')
-            .margin({top: 30})
+            .height('5%')
 
           Button('clearStyles掉6,5').id('clearEndLength')
             .onClick(() => {
@@ -165,7 +165,7 @@ struct styled_string_demo1 {
               let styles = this.mutableStyledString2.getStyles(0,this.mutableStyledString2.length)
               this.length = styles.length
             })
-            .margin({top: 30})
+            .height('5%')
         }.width('100%')
 
       }

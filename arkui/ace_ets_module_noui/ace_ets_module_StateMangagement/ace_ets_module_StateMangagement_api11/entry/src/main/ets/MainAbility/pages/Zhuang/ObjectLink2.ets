@@ -35,13 +35,13 @@ struct ViewA {
   @ObjectLink a:classA
   build() {
     Row() {
-      Row({ space: 5 }) {
+      Row() {
 
-        Column({ space: 20 }) {
+        Column() {
           Row(){
             Column(){
-              Text("type-->undefined")
-              Button('button')
+              Text("type-->undefined").height('5%')
+              Button('button').height('5%')
                 .type(this.a.type1)
                 .onClick(() => {
                   this.a.type1 = undefined
@@ -49,8 +49,8 @@ struct ViewA {
                 .key('ziobBtn1')
             }
             Column(){
-              Text("type-->null")
-              Button('button')
+              Text("type-->null").height('5%')
+              Button('button').height('5%')
                 .type(this.a.type2)
                 .onClick(() => {
                   this.a.type2 = null
@@ -63,8 +63,8 @@ struct ViewA {
 
           Row(){
             Column(){
-              Text("文本10-->undefined")
-              Button('button')
+              Text("文本10-->undefined").height('5%')
+              Button('button').height('5%')
                 .fontSize(this.a.number1)
                 .onClick(() => {
                   this.a.number1 = undefined
@@ -73,8 +73,8 @@ struct ViewA {
             }
 
             Column(){
-              Text("文本10-->null")
-              Button('button')
+              Text("文本10-->null").height('5%')
+              Button('button').height('5%')
                 .fontSize(this.a.number2)
                 .onClick(() => {
                   this.a.number2 = null
@@ -85,7 +85,7 @@ struct ViewA {
           }
 
 
-        }.width('100%').margin({ top: 10 })
+        }.width('100%')
       }
     }
   }
@@ -97,13 +97,13 @@ struct ViewB {
   build() {
     Row() {
       Scroll() {
-        Row({ space: 5 }) {
+        Row() {
 
-          Column({ space: 20 }) {
+          Column() {
             Row(){
               Column(){
-                Text("父type-->undefined")
-                Button('button')
+                Text("父type-->undefined").height('5%')
+                Button('button').height('5%')
                   .type(this.b.type1)
                   .onClick(() => {
                     this.b.type1 = undefined
@@ -111,8 +111,8 @@ struct ViewB {
                   .key('obBtn1')
               }
               Column(){
-                Text("父type-->null")
-                Button('button')
+                Text("父type-->null").height('5%')
+                Button('button').height('5%')
                   .type(this.b.type2)
                   .onClick(() => {
                     this.b.type2 = null
@@ -124,8 +124,8 @@ struct ViewB {
 
             Row(){
               Column(){
-                Text("父文本10-->undefined")
-                Button('button')
+                Text("父文本10-->undefined").height('5%')
+                Button('button').height('5%')
                   .fontSize(this.b.number1)
                   .onClick(() => {
                     this.b.number1 = undefined
@@ -134,8 +134,8 @@ struct ViewB {
               }
 
               Column(){
-                Text("父文本10-->null")
-                Button('button')
+                Text("父文本10-->null").height('5%')
+                Button('button').height('5%')
                   .fontSize(this.b.number2)
                   .onClick(() => {
                     this.b.number2 = null
@@ -146,7 +146,7 @@ struct ViewB {
 
             ViewA({a:this.b})
 
-          }.width('100%').margin({ top: 10 })
+          }.width('100%')
         }
       }
     }

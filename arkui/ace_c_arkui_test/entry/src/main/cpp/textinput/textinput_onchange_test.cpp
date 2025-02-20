@@ -45,7 +45,7 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, int32_t enabled, con
     nodeAPI->setAttribute(nodeHandle, NODE_WIDTH, &width_item);
 
     // set height
-    ArkUI_NumberValue height_value[] = {{.f32 = SIZE_100}};
+    ArkUI_NumberValue height_value[] = {{.f32 = SIZE_50}};
     ArkUI_AttributeItem height_item = {height_value, sizeof(height_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(nodeHandle, NODE_HEIGHT, &height_item);
 

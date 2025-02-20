@@ -18,6 +18,7 @@ import ndkTest from 'libPictureNdk.so';
 import image from "@ohos.multimedia.image";
 import fs from '@ohos.file.fs';
 import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 import display from '@ohos.display';
 import hdrCapability from '@ohos.graphics.hdrCapability';
@@ -455,9 +456,19 @@ async function sleep(delay: number): Promise<void> {
 export default function pictureNdkTest() {
   describe('pictureNdkTest', () => {
     let isSupportHdr: boolean = false;
-    beforeAll(() => {
-      isSupportHdr = !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
-        display.getDefaultDisplaySync().hdrFormats.length != 0;
+    beforeAll(async () => {
+      isSupportHdr = await fs.access('/system/lib64/ndk/libvideo_processing_capi_impl.so').then((res: boolean) => {
+        if (res) {
+          console.info("file exists");
+          return true;
+        } else {
+          console.info("file not exists");
+          return false;
+        }
+      }).catch((err: BusinessError) => {
+        console.error("access failed with error message: " + err.message + ", error code: " + err.code);
+        return false;
+      });
     })
 
     afterEach(() => {

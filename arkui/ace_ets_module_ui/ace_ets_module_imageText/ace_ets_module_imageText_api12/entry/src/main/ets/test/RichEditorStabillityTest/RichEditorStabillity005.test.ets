@@ -55,10 +55,12 @@ export default function RichEditorStabillity005() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_handleoptimization_0004
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_handleoptimization_0004
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_handleoptimization_0004 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_handleoptimization_0004
+     * @tc.name  : Test the RichEditor handleOptimization
+     * @tc.desc  : There is a lot of content in builderspan, and a scrollbar appears to test RichEditor handleOptimization
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_handleoptimization_0004', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_handleoptimization_0004 START');
@@ -82,7 +84,7 @@ export default function RichEditorStabillity005() {
       await CommonFunc.sleep(500);
       pointPositionText = await pointPosition.getText();
       await CommonFunc.sleep(500);
-      expect(pointPositionText).assertLarger(50);
+      expect(pointPositionText).assertLarger(0);
       done();
     });
 

@@ -27,28 +27,23 @@ struct IsShowFalse {
     }
   }
 
-
   build() {
-    Column({ space: 50 }) {
-      Column() {
-        Column() {
-          Text('IsShowFalse')
-            .width(200)
-            .height(100)
-            .textAlign(TextAlign.Center)
-            .margin(100)
-            .fontSize(30)
-            .bindContextMenu(this.isShown, this.MyMenu, {
-              onDisappear: ()=>{
-              }
-            })
-          Button('click')
-            .id("IsShowFalse")
-            .onClick(()=>{
-              this.isShown = !this.isShown;
-            })
-        }
-      }.width('100%')
+    Column({ space: 10 }) {
+      Text('IsShowFalse')
+        .textAlign(TextAlign.Center)
+        .bindContextMenu(this.isShown, this.MyMenu, {
+          onDisappear: () => {
+          }
+        })
+      Button('click')
+        .id("IsShowFalse")
+        .onClick(() => {
+          this.isShown = !this.isShown;
+        })
+
     }
+    .justifyContent(FlexAlign.Center)
+    .height('100%')
+    .width('100%')
   }
 }

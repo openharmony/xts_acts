@@ -16,6 +16,8 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function searchTest() {
   describe('searchTest',  ()=> {
@@ -44,8 +46,7 @@ export default function searchTest() {
       await Utils.sleep(1000);
       console.info("search after each called");
     })
-
-    /**
+	let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_size_body1').id)    /**
      * @tc.number testSearchSelectionMenuHidden01
      * @tc.name   Test the Search property of the SelectionMenuHidden component
      * @tc.desc   set the SelectionMenuHidden property value is boolean
@@ -187,8 +188,8 @@ export default function searchTest() {
       console.info('[' + tagName + '] component obj is: ' + strJson);
       let obj:ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Search');
-      expect(obj.$attrs.placeholderFont).assertEqual("{\"style\":\"FontStyle.Normal\",\"size\":\"16.00fp\",\"weight\":\"400\",\"fontFamily\":\"sans-serif\"}");
 
+	  expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"'+px2fp(resourceSize)+'.00fp","weight":"400","fontFamily":"sans-serif"}');
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -388,7 +389,8 @@ export default function searchTest() {
       console.info('[' + tagName + '] component obj is: ' + strJson);
       let obj:ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Search');
-      expect(obj.$attrs.textFont).assertEqual("{\"fontSize\":\"16.00fp\",\"fontStyle\":\"FontStyle.Normal\",\"fontWeight\":\"400\",\"fontFamily\":\"HarmonyOS Sans\"}");
+
+	  expect(obj.$attrs.textFont).assertEqual('{"fontSize":"'+px2fp(resourceSize)+'.00fp","fontStyle":"FontStyle.Normal","fontWeight":"400","fontFamily":"HarmonyOS Sans"}');
 
       try {
         let eventData: events_emitter.EventData = {

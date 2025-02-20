@@ -26,13 +26,13 @@ struct Second {
     Row() {
       Column() {
         Text(this.jsCrash)
-          .fontSize(50)
+          .fontSize('2%')
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             throw Error();
           });
         Text(this.startThird)
-          .fontSize(50)
+          .fontSize('2%')
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             let want: Want = {

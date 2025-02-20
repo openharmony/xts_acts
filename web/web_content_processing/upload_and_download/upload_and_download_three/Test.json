@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsUploadAndDownloadThreeTest.hap"
+            "ActsWebUploadAndDownloadThreeTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

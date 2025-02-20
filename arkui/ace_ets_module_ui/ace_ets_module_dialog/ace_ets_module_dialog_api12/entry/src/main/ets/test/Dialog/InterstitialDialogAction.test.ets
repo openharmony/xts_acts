@@ -31,7 +31,7 @@ export default function interstitialDialogActionTest() {
         console.info("get interstitialDialogActionTest state pages: " + JSON.stringify(pages));
         if (!("InterstitialDialogAction" == pages.name)) {
           console.info("get interstitialDialogActionTest state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.replace(options);
           await CommonFunc.sleep(2000);
           console.info("push interstitialDialogActionTest success: " + JSON.stringify(result));
         }
@@ -63,6 +63,7 @@ export default function interstitialDialogActionTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       await driver.assertComponentExist(ON.text('Main Title'));
+      await CommonFunc.sleep(5000);
       console.info('[interstitialDialogActionTest_0010] END');
       done();
     });
