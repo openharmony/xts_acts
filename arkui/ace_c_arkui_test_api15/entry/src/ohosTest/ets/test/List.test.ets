@@ -18,6 +18,10 @@ import nodeHandleByIdTest from "./node/NodeHandleByIdTest.test"
 import getWindowInfoTest from "./window/GetWindowInfoTest.test"
 import columnBackDropBlurTest from "./visual/columnBackDropBlurTest.test"
 import ProgressLinearStyleTest from "./progress/progressLinearStyleTest.test"
+import FocusControlTest from "./foucscontrolTest/FocusControlTest.test"
+import FocusControlTest2 from "./foucscontrolTest/FocusControlTest2.test"
+import FocusControlTest3 from "./foucscontrolTest/FocusControlTest3.test"
+import FocusControlTest4 from "./foucscontrolTest/FocusControlTest4.test"
 
 
 export default function testsuite() {
@@ -27,4 +31,8 @@ export default function testsuite() {
    getWindowInfoTest();
    columnBackDropBlurTest();
    ProgressLinearStyleTest();
+   FocusControlTest();
+   FocusControlTest2();
+   FocusControlTest3();
+   FocusControlTest4();
 }
