@@ -15,6 +15,9 @@
 
 #include "common/common.h"
 #include "manager/plugin_manager.h"
+#include "checkboxgroup/checkboxgroup_group_test.h"
+#include "checkboxgroup/checkboxgroup_selectall_test.h"
+#include "checkbox/checkbox_group_test.h"
 #include "keyDisPatchTest/keyEventDispatch_test.h"
 #include "node/node_handle_by_id_test.h"
 #include "window/get_window_info_test.h"
@@ -40,6 +43,12 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr}, 
         {"testNodeHandleById", nullptr, NodeHandleByIdTest::testNodeHandleById001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"checkboxGroupGroupTest", nullptr, CheckboxGroupGroupTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"checkboxGroupSelectAllTest", nullptr, CheckboxGroupSelectAllTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"checkboxGroupTest", nullptr, CheckboxGroupTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"testGetWindowInfo", nullptr, GetWindowInfoTest::testGetWindowInfo001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testHostWindowInfoGetName", nullptr, GetWindowInfoTest::testHostWindowInfoGetName002,

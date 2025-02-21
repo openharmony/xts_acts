@@ -17,6 +17,12 @@ export const KeyEventPatchTest: (a: string) => void;
 
 export const GetKeyEventData: () => object;
 
+export const checkboxGroupGroupTest: (a:string) => void;
+
+export const checkboxGroupSelectAllTest: (a:string) => void;
+
+export const checkboxGroupTest: (a:string) => void;
+
 export const testNodeHandleById: (a: string) => void;
 
 export const testGetWindowInfo: (a: string) => void;
