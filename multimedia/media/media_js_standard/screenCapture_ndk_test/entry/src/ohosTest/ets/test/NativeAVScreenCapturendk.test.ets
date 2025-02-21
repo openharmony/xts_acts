@@ -182,7 +182,7 @@ export default function nativeAVScreenCaptureNdkTest() {
       console.info(Tag + "normalAVScreenCaptureSetDisplayCallbackFalse-------------before click:");
       let result: number = myScreenCaptureNdk.normalAVScreenCaptureSetDisplayCallbackFail();
       console.info(Tag + "normalAVScreenCaptureSetDisplayCallbackFail-------------result:" + result);
-      expect(result).assertEqual(8);
+      expect(result).assertEqual(0);
       await Utils.btnTextScreenCapture();
       let resultStop: number = myScreenCaptureNdk.normalAVScreenCaptureTestStop();
       done();
