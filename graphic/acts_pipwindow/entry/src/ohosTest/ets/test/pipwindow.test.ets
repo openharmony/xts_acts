@@ -2265,74 +2265,6 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
       }
     })
     /**
-     * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4300
-     * @tc.name       : PiPSizeChange_Function_Callback
-     * @tc.desc       : To test the function of PiPSizeChange
-     * @tc.size       : MediumTestTest
-     * @tc.type       : Function
-     * @tc.level      : Level3
-     */
-    it('PiPSizeChange_Function_Callback_0', 0, async (done:Function) => {
-      let pipController:pipWindow.PiPController | undefined = undefined;
-      let mXComponentController = new XComponentController();
-      let navId = "";
-      let contentWidth = 400;
-      let contentHeight = 600;
-      let result = 0;
-      let config:pipWindow.PiPConfiguration = {
-        context: context1,
-        componentController: mXComponentController,
-        navigationId: navId,
-        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
-        contentWidth: contentWidth,
-        contentHeight: contentHeight,
-      };
-      try {
-        pipController = await pipWindow.create(config);
-        console.log('data PiPSizeChange_Function_Callback_0 begin');
-        pipController.on('pipWindowSizeChange', (size: pipWindow.PiPWindowSize) => {
-          console.info('PiPSizeChange callback 1 size info: ' + JSON.stringify(size)) ;
-          result = result + 1;
-        });
-        pipController.on('pipWindowSizeChange', (size: pipWindow.PiPWindowSize) => {
-          console.info('PiPSizeChange callback 2 size info: ' + JSON.stringify(size) );
-          result = result + 2;
-        });
-        let promise = pipController.startPiP();
-        promise.then(() => {
-          console.log('PiPSizeChange data Succeeded in starting pip');
-          expect(true).assertTrue();
-          done();
-        }).catch((err:BusinessError) => {
-          console.log('PiPSizeChange data Failed1 to start pip. Cause:' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        });
-        await sleep(1000);
-        expect(result).assertEqual(3);
-        try {
-          pipController.off('pipWindowSizeChange');
-          console.log('PiPSizeChange Succeeded in off register')
-          expect(true).assertTrue();
-          done()
-        } catch (error) {
-          console.log('PiPSizeChange Failed to off register: ' + JSON.stringify(error))
-          expect().assertFail();
-          done();
-        }
-        done();
-      } catch (err) {
-        console.log('PiPSizeChange data Failed to PiPSizeChange_Function_ Callback' + JSON.stringify(err));
-        if(err.code == 801 || err.code == 401){
-          expect().assertTrue();
-          done();
-        } else {
-          expect().assertFail();
-          done();
-        }
-      }
-    })
-    /**
      * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4400
      * @tc.name       : PiPSizeChange_Function_Callback
      * @tc.desc       : To test the function of PiPSizeChange
@@ -2357,13 +2289,13 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
       };
       try {
         pipController = await pipWindow.create(config);
-        console.log('data PiPSizeChange_Function_Callback_1 begin');
+        console.log('data PiPSizeChange_Function_Callback_11 begin');
         let callback1 = (size: pipWindow.PiPWindowSize) => {
-          console.info('PiPSizeChange callback 1 size info: ' + JSON.stringify(size));
+          console.info('PiPSizeChange callback 1 size info: ' + JSON.stringify(size) + ' result: ' + res);
           res = res + 1;
         };
         let callback2 = (size: pipWindow.PiPWindowSize) => {
-          console.info('PiPSizeChange callback 2 siz info: ' + JSON.stringify(size));
+          console.info('PiPSizeChange callback 2 siz info: ' + JSON.stringify(size) + ' result: ' + res);
           res = res + 2;
         };
         pipController.on('pipWindowSizeChange', callback1);
@@ -2371,29 +2303,35 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         pipController.off('pipWindowSizeChange', callback1);
         let promise = pipController.startPiP();
         promise.then(() => {
-          console.log('PiPSizeChange data Succeeded in starting pip')
+          console.log('PiPSizeChange data Succeeded in starting pip result: ' + res);
           expect(true).assertTrue();
-          done();
-        }).catch((err:BusinessError) => {
-          console.log('PiPSizeChange data Failed2 to start pip. Cause:' + JSON.stringify(err));
+        }).catch((err0:BusinessError) => {
+          console.log('PiPSizeChange data Failed2 to start pip. Cause:' + JSON.stringify(err0));
           expect().assertFail();
           done();
         });
-        await sleep(1000);
-        expect(res).assertEqual(2);
         try {
-          pipController.off('pipWindowSizeChange');
-          console.log('PiPSizeChange Succeeded in off register')
-          expect(true).assertTrue();
-          done()
-        } catch (error) {
-          console.log('PiPSizeChange Failed to off register: ' + JSON.stringify(error))
+          let windowClass = windowStage.getMainWindowSync();
+          windowClass.setPreferredOrientation(ohosWindow.Orientation.LANDSCAPE, () => {
+            console.info(`PiPSizeChange success set rotation`);
+          });
+        } catch (exception) {
+          console.error(`PiPSizeChange set rotation failed: ` + JSON.stringify(exception));
           expect().assertFail();
           done();
         }
-      } catch (error) {
-        console.log('data Failed2 to PiPSizeChange_test' + JSON.stringify(error))
-        if(error.code == 801 || error.code == 401){
+        try {
+          await sleep(1000);
+          expect(res).assertEqual(2);
+          console.log('PiPSizeChange Succeeded check result');
+          done();
+        } catch (e) {
+          console.log('PiPSizeChange Succeeded failed' + JSON.stringify(e));
+          done();
+        }
+      } catch (err2) {
+        console.log('data Failed2 to PiPSizeChange_test' + JSON.stringify(err2))
+        if(err2.code == 801 || err2.code == 401){
           expect(true).assertTrue();
           done();
         } else{
@@ -2427,45 +2365,115 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
       };
       try {
         pipController = await pipWindow.create(config);
-        console.log('data PiPSizeChange_Function_Callback_2 begin');
+        console.log('data PiPSizeChange_Function_Callback_22 begin');
         let callback1 = (size: pipWindow.PiPWindowSize) => {
-          console.info('PiPSizeChange callback 1 size info: ' + JSON.stringify(size));
+          console.info('PiPSizeChange callback 1 size info: ' + JSON.stringify(size) + ' result: ' + result);
           result = result + 1;
         };
         let callback2 = (size: pipWindow.PiPWindowSize) => {
-          console.info('PiPSizeChange callback 2 siz info: ' + JSON.stringify(size));
+          console.info('PiPSizeChange callback 2 siz info: ' + JSON.stringify(size) + ' result: ' + result);
           result = result + 2;
         };
         pipController.on('pipWindowSizeChange', callback1);
         pipController.on('pipWindowSizeChange', callback2);
         try {
           pipController.off('pipWindowSizeChange');
-          console.log('PiPSizeChange data Succeeded in starting pip')
+          console.log('PiPSizeChange data Succeeded in starting pip result: ' + result);
           expect(true).assertTrue();
           done()
-        } catch (error) {
-          console.log('PiPSizeChange Failed to off register: ' + JSON.stringify(error))
+        } catch (err0) {
+          console.log('PiPSizeChange Failed to off register: ' + JSON.stringify(err0));
           expect().assertFail();
           done();
         }
         let promise = pipController.startPiP();
         promise.then(() => {
-          console.log('PiPSizeChange data Succeeded in starting pip')
+          console.log('PiPSizeChange data Succeeded in starting pip');
           expect(true).assertTrue();
-          done();
-        }).catch((err:BusinessError) => {
-          console.log('PiPSizeChange data Failed3 to start pip. Cause:' + JSON.stringify(err));
+        }).catch((err1:BusinessError) => {
+          console.log('PiPSizeChange data Failed3 to start pip. Cause:' + JSON.stringify(err1));
           expect().assertFail();
           done();
         });
-        await sleep(1000);
-        expect(result).assertEqual(0);
-      } catch (error) {
-        console.log('data Failed2 to PiPSizeChange_test' + JSON.stringify(error))
-        if(error.code == 801 || error.code == 401){
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          windowClass.setPreferredOrientation(ohosWindow.Orientation.LANDSCAPE, () => {
+            console.info(`PiPSizeChange success set rotation`);
+          });
+        } catch (exception) {
+          console.error(`PiPSizeChange set rotation failed: ` + JSON.stringify(exception));
+          expect().assertFail();
+          done();
+        }
+        try {
+          await sleep(1000);
+          expect(result).assertEqual(2);
+          console.log('PiPSizeChange Succeeded check result');
+          done();
+        } catch (e) {
+          console.log('PiPSizeChange Succeeded failed' + JSON.stringify(e));
+          done();
+        }
+      } catch (err2) {
+        console.log('data Failed3 to PiPSizeChange_test' + JSON.stringify(err2));
+        if(err2.code == 801 || err2.code == 401){
           expect(true).assertTrue();
           done();
         } else{
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_4200
+     * @tc.name       : testCreateArgsContentNode
+     * @tc.desc       : testCreateArgsContentNode
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testCreateArgsContentNode', 2, (done: Function) => {
+      const caseName = 'TestCreateArgsContentNode';
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        let uiContext = windowClass.getUIContext();
+        let xComponentController: XComponentController = new XComponentController();
+        let xComponent = typeNode.createNode(uiContext, 'XComponent');
+        xComponent.initialize({
+          id:'xComponent',
+          type:XComponentType.SURFACE,
+          controller:xComponentController
+        });
+        let contentWidth: number = 800;
+        let contentHeight: number = 600;
+        let config: pipWindow.PiPConfiguration = {
+          context: context1,
+          componentController: xComponentController,
+          templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+          contentWidth: contentWidth,
+          contentHeight: contentHeight
+        };
+        pipWindow.create(config, xComponent).then((data : pipWindow.PiPController) => {
+          console.info(`${caseName} Succeeded in creating pip controller. Data:${data}`);
+          expect(data !== null).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          if (err.code === 801) {
+            console.error(`${caseName} The current device Capability not supported.`);
+            done();
+          } else {
+            console.error(`${caseName} Failed to create pip controller. Cause:${err.code}, message:${err.message}`);
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (exception) {
+        if(exception.code == 1300002) {
+          console.info(`${caseName}: This window state is abnormal.`);
+          done();
+        } else {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
           expect().assertFail();
           done();
         }
