@@ -91,12 +91,9 @@ export default function VideoReset14() {
       console.info("[VideoReset14_0100] JSON.parse(strJson2) is: " + JSON.stringify(JSON.parse(strJson2)));
       expect(JSON.parse(strJson2).$attrs.content).assertEqual('onStart2');
 
-      let textInput = await driver.findComponent(ON.id('VideoReset14_textInput'));
-      await textInput.click()
-      console.info("[VideoReset14_0100] textInput");
-      await CommonFunc.sleep(1000);
-
-      await driver.triggerKey(2009);
+      let btn3 = await driver.findComponent(ON.id('VideoReset14_setCurrentTime'));
+      await btn3.click()
+      console.info("[VideoReset14_0100] setCurrentTime");
       await CommonFunc.sleep(3000);
 
       let strJson3 = getInspectorByKey('VideoReset14_text2');
