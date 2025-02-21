@@ -65,6 +65,17 @@ struct webCookieManager {
               }
               break;
             }
+            case 'testRemoveAllCache001': {
+              try {
+                webView.WebviewController.removeAllCache(true);
+                Utils.emitEvent('success', 202502211);
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                Utils.emitEvent('fail', 202502211);
+              }
+              break;
+            }
           }
         })
       }
