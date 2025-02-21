@@ -17,7 +17,7 @@ import { beforeAll, afterAll, beforeEach, describe, it, expect } from "@ohos/hyp
 import usbMgr from '@ohos.usbManager';
 import { UiDriver, BY } from '@ohos.UiTest';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
-
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 const TAG: string = "[UsbApiBulkTransferTest]";
 
 export interface gPipe {
@@ -144,7 +144,7 @@ export default function UsbApiBulkTransferTest() {
         if (!isDeviceConnected) {
 			console.info(TAG, 'usb testUsbSubmitTransfer001 No device is connected');
             expect(isDeviceConnected).assertFalse();
-            done()
+            done();
             return
         }
         let devicesList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
@@ -159,18 +159,21 @@ export default function UsbApiBulkTransferTest() {
         let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 1, type, 2000);
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
-            transferParams.callback=(err, callBackData)=>{
-                console.info(TAG, 'bulk testUsbSubmitTransfer001 callBackData =' +JSON.stringify(callBackData));
-                expect(callBackData.status).assertNull();
-                expect(callBackData.status).assertInstanceOf(typeof usbMgr.UsbTransferStatus.TRANSFER_TIMED_OUT);
+            transferParams.callback = (err: BusinessError, data) => {
+                console.info(TAG, 'bulk testUsbSubmitTransfer001 data =' + JSON.stringify(data));
+                expect(data.status >= 0).assertTrue();
+                expect(data.status).assertInstanceOf(typeof usbMgr.UsbTransferStatus.TRANSFER_TIMED_OUT);
+                usbMgr.closePipe(devices);
+                done();
             }
             await usbMgr.usbSubmitTransfer(transferParams);
             console.info(TAG, 'bulk testUsbSubmitTransfer001 end');
         } catch (error) {
             expect(error.message).assertEqual('error');
             console.error('bulk write successfully:', error);
+            done();
         }
-        done()
+        done();
     });
 
     /**
@@ -186,7 +189,7 @@ export default function UsbApiBulkTransferTest() {
         if (!isDeviceConnected) {
 			console.info(TAG, 'usb testUsbSubmitTransfer002 No device is connected');
             expect(isDeviceConnected).assertFalse();
-            done()
+            done();
             return
         }
         let devicesList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
@@ -201,10 +204,12 @@ export default function UsbApiBulkTransferTest() {
         let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 129, type, 2000);
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
-            transferParams.callback=(err, callBackData)=>{
-                console.info(TAG, 'bulk testUsbSubmitTransfer002 callBackData =' +JSON.stringify(callBackData));
-                expect(callBackData.status).assertNull();
-                expect(callBackData.status).assertInstanceOf(typeof usbMgr.UsbTransferStatus.TRANSFER_TIMED_OUT);
+            transferParams.callback=(err, data)=>{
+                console.info(TAG, 'bulk testUsbSubmitTransfer002 callBackData =' +JSON.stringify(data));
+                expect(data.status >= 0).assertTrue();
+                expect(data.status).assertInstanceOf(typeof usbMgr.UsbTransferStatus.TRANSFER_TIMED_OUT);
+                usbMgr.closePipe(devices);
+                done();
             }
             await usbMgr.usbSubmitTransfer(transferParams);
             console.info(TAG, 'bulk testUsbSubmitTransfer002 end');
@@ -212,7 +217,7 @@ export default function UsbApiBulkTransferTest() {
             expect(error.message).assertEqual('error');
             console.error('bulk write successfully:', error);
         }
-        done()
+        done();
     });
 
     /**
@@ -228,7 +233,7 @@ export default function UsbApiBulkTransferTest() {
         if (!isDeviceConnected) {
 			console.info(TAG, 'usb testUsbSubmitTransfer003 No device is connected');
             expect(isDeviceConnected).assertFalse();
-            done()
+            done();
             return
         }
         let devicesList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
@@ -249,8 +254,9 @@ export default function UsbApiBulkTransferTest() {
             console.info(TAG, 'bulk testUsbSubmitTransfer003 end');
             console.error('bulk transfer error endpoint:', error);
             expect(error.code == 14400012).assertTrue();
+            usbMgr.closePipe(devices);
+            done();
         }
-        done()
     });
 
     /**
@@ -289,7 +295,8 @@ export default function UsbApiBulkTransferTest() {
             console.info(TAG, 'bulk testUsbCancelTransfer001 end');
             console.error('bulk write cancel successfully:', error);
         }
-        done()
+        usbMgr.closePipe(devices);
+        done();
     });
 
     /**
@@ -328,7 +335,8 @@ export default function UsbApiBulkTransferTest() {
             console.info(TAG, 'bulk testUsbCancelTransfer002 end');
             console.error('bulk write cancel successfully:', error);
         }
-        done()
+        usbMgr.closePipe(devices);
+        done();
     });
 
     /**
@@ -364,9 +372,10 @@ export default function UsbApiBulkTransferTest() {
         } catch (error) {
             console.info(TAG, 'bulk testUsbCancelTransfer003 end');
             console.error('bulk write cancel error:', error);
+            usbMgr.closePipe(devices);
             expect(error.code).assertEqual(14400011);
+            done();
         }
-        done()
     });
 
   })

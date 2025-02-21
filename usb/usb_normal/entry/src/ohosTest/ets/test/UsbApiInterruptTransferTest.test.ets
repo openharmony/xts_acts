@@ -231,10 +231,10 @@ export default function UsbApiInterruptTransferTest() {
         let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 129, type, 2000);
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
-            transferParams.callback=(err, callBackData)=>{
-                console.info(TAG, 'interrupt testUsbSubmitTransfer003 callBackData =' +JSON.stringify(callBackData));
-                expect(callBackData.status).assertNull();
-                expect(callBackData.status).assertInstanceOf(typeof usbMgr.UsbTransferStatus.TRANSFER_TIMED_OUT);
+            transferParams.callback=(err, data)=>{
+                console.info(TAG, 'interrupt testUsbSubmitTransfer003 data =' +JSON.stringify(data));
+                expect(data.status >= 0).assertTrue();
+                expect(data.status).assertInstanceOf(typeof usbMgr.UsbTransferStatus.TRANSFER_TIMED_OUT);
             }
             await usbMgr.usbSubmitTransfer(transferParams);
             console.info(TAG, 'interrupt testUsbSubmitTransfer003 end');
