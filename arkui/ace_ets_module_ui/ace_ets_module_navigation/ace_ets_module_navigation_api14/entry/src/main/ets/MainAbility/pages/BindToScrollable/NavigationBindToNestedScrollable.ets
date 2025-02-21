@@ -90,5 +90,6 @@ export struct PageOne {
       {value: 'e', symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_folder_badge_plus'))},
     ])
     .id('navId')
+    .margin({top: '5%'})
   }
 }
