@@ -2570,9 +2570,9 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      let mode = this.softKeyboardPanel.getImmersiveMode()
+      let mode = this.immersive;
       console.info(TAG + '====>Sub_InputMethod_IME_Immersive_1200 ImmersiveMode :' + JSON.stringify(mode));
-      if(mode == 3){
+      if(mode == 2){
         commonEventPublishData = {
           data: "SUCCESS"
         }
