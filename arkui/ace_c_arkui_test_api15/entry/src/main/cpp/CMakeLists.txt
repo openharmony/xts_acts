@@ -14,6 +14,7 @@ add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
     progress/progress_linear_style_test.cpp
+    textArea/textArea_letter_spacing.cpp
 )
 
 add_library(nativefunc SHARED

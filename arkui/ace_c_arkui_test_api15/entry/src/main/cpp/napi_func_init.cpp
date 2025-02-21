@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 #include "common/common.h"
+#include "text/text_immutablf_font_weight.cpp"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -24,6 +25,38 @@ static napi_value Init(napi_env env, napi_value exports)
     }
 
     napi_property_descriptor desc[] = {
+        {"textImmutablfFontWeight_001", nullptr, textImmutablfFontWeight_001,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textImmutablfFontWeight_002", nullptr, textImmutablfFontWeight_002,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textImmutablfFontWeight_003", nullptr, textImmutablfFontWeight_003,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textImmutablfFontWeight_004", nullptr, textImmutablfFontWeight_004,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textImmutablfFontWeight_005", nullptr, textImmutablfFontWeight_005,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textImmutablfFontWeight_006", nullptr, textImmutablfFontWeight_006,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textImmutablfFontWeight_007", nullptr, textImmutablfFontWeight_007,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textImmutablfFontWeight_008", nullptr, textImmutablfFontWeight_008,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textImmutablfFontWeight_009", nullptr, textImmutablfFontWeight_009,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textImmutablfFontWeight_010", nullptr, textImmutablfFontWeight_010,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textImmutablfFontWeight_011", nullptr, textImmutablfFontWeight_011,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textImmutablfFontWeight_012", nullptr, textImmutablfFontWeight_012,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textImmutablfFontWeight_013", nullptr, textImmutablfFontWeight_013,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textImmutablfFontWeight_014", nullptr, textImmutablfFontWeight_014,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textImmutablfFontWeight_015", nullptr, textImmutablfFontWeight_015,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textImmutablfFontWeight_016", nullptr, textImmutablfFontWeight_016,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

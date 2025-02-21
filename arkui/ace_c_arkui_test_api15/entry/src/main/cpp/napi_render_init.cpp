@@ -16,6 +16,7 @@
 #include "common/common.h"
 #include "manager/plugin_manager.h"
 #include "progress/progress_linear_style_test.h"
+#include "textArea/textArea_letter_spacing.h"
 
 
 namespace ArkUICapiTest {
@@ -30,6 +31,10 @@ static napi_value Init(napi_env env, napi_value exports)
 
     napi_property_descriptor desc[] = {
         {"testProgressLinearStyle", nullptr, ProgressLinearStyleTest::ProgressLinearStyleTest001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textAreaLetterSpacing001", nullptr, TextAreaLetterSpacing::textAreaLetterSpacing001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textInputLetterSpacing002", nullptr, TextAreaLetterSpacing::textInputLetterSpacing002,
          nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,16 +13,21 @@
  * limitations under the License.
  */
 
-import ProgressLinearStyleTest from "./progress/progressLinearStyleTest.test"
-import textImmutablfFontWeight from "./text/textImmutablfFontWeight.test"
-import TextAreaLetterSpacing from "./textArea/TextAreaLetterSpacing.test"
-import TextInputLetterSpacing from "./textInput/TextInputLetterSpacing.test"
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
+@Entry
+@Component
+struct TextInputLetterSpacing {
+  PAGE_TAG: string = 'TextInputLetterSpacing';
 
-export default function testsuite() {
-
-   ProgressLinearStyleTest();
-   textImmutablfFontWeight();
-   TextAreaLetterSpacing();
-   TextInputLetterSpacing();
+  build(){
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.textInputLetterSpacing002(this.PAGE_TAG);
+      })
+    }
+  }
 }
