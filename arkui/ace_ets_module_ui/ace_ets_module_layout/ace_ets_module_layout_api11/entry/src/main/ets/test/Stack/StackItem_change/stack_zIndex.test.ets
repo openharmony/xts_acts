@@ -79,17 +79,25 @@ async function imageComparisonAssert(left: number, top: number) {
         } else {
           let bufferArr = new Uint8Array(color);
           console.info('bufferArr',bufferArr)
-          for (let i = 0; i < bufferArr.length; i += 40) {
-            if (spaceName == colorSpaceManager.ColorSpace.SRGB && (bufferArr[i] != 255 || bufferArr[i + 1] != 0 || bufferArr[i + 2] != 0)) {
-              console.log('imageComparisonAssert SRGB: ' + bufferArr[i]);
-              isTrue = false;
-              break;
-            } else if ((spaceName == colorSpaceManager.ColorSpace.DCI_P3 || spaceName == colorSpaceManager.ColorSpace.DISPLAY_P3) && 
-            (bufferArr[i] != 234 || bufferArr[i + 1] != 51 || bufferArr[i + 2] != 35)) {
-              console.log('imageComparisonAssert DCI_P3 or DISPLAY_P3: ' + bufferArr[i]);
-              isTrue = false;
-              break;
+          if (spaceName == colorSpaceManager.ColorSpace.SRGB) {
+            console.log('imageComparisonAssert spaceName is SRGB');
+            for (let i = 0; i < bufferArr.length; i += 40) {
+              if (bufferArr[i] != 255 || bufferArr[i + 1] != 0 || bufferArr[i + 2] != 0) {
+                isTrue = false;
+                break;
+              }
             }
+          } else if (spaceName == colorSpaceManager.ColorSpace.DCI_P3 || spaceName == colorSpaceManager.ColorSpace.DISPLAY_P3) {
+            console.log('imageComparisonAssert spaceName is DCI_P3 or DISPLAY_P3');
+            for (let i = 0; i < bufferArr.length; i += 40) {
+              if (bufferArr[i] != 234 || bufferArr[i + 1] != 51 || bufferArr[i + 2] != 35) {
+                isTrue = false;
+                break;
+              }
+            }
+          } else {
+            console.log('imageComparisonAssert unknow spaceName');
+            isTrue = false;
           }
         }
       })
