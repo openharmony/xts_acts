@@ -78,7 +78,7 @@ export default function VideoReset14() {
       let strJson1 = getInspectorByKey('VideoReset14_text2');
 
       await CommonFunc.sleep(1000);
-      console.info("[VideoReset14_0100] JSON.parse(strJson1) is: " + JSON.stringify(JSON.parse(strJson1)));
+      console.info("[VideoReset14_0100] JSON.parse(strJson1).$attrs.content is: " + JSON.stringify(JSON.parse(strJson1).$attrs.content));
       expect(JSON.parse(strJson1).$attrs.content).assertEqual('0');
 
       await btn1.click()
@@ -88,7 +88,7 @@ export default function VideoReset14() {
       let strJson2 = getInspectorByKey('VideoReset14_text1');
 
       await CommonFunc.sleep(1000);
-      console.info("[VideoReset14_0100] JSON.parse(strJson2) is: " + JSON.stringify(JSON.parse(strJson2)));
+      console.info("[VideoReset14_0100] JSON.parse(strJson2).$attrs.content is: " + JSON.stringify(JSON.parse(strJson2).$attrs.content));
       expect(JSON.parse(strJson2).$attrs.content).assertEqual('onStart2');
 
       let btn3 = await driver.findComponent(ON.id('VideoReset14_setCurrentTime'));
@@ -99,7 +99,7 @@ export default function VideoReset14() {
       let strJson3 = getInspectorByKey('VideoReset14_text2');
 
       await CommonFunc.sleep(1000);
-      console.info("[VideoReset1_0100] JSON.parse(strJson3) is: " + JSON.stringify(JSON.parse(strJson3)));
+      console.info("[VideoReset1_0100] JSON.parse(strJson3).$attrs.content is: " + JSON.stringify(JSON.parse(strJson3).$attrs.content));
       expect(Number(JSON.parse(strJson3).$attrs.content) >= 9).assertTrue();
 
       await btn2.click()
@@ -108,7 +108,7 @@ export default function VideoReset14() {
 
       let strJson4 = getInspectorByKey('VideoReset14_text2');
       await CommonFunc.sleep(1000);
-      console.info("[VideoReset14_0100] obj4 is: " + JSON.stringify(JSON.parse(strJson4)));
+      console.info("[VideoReset14_0100] JSON.parse(strJson4).$attrs.content is: " + JSON.stringify(JSON.parse(strJson4).$attrs.content));
       expect(JSON.parse(strJson4).$attrs.content).assertEqual('0');
 
       console.info('[VideoReset14_0100] END');
