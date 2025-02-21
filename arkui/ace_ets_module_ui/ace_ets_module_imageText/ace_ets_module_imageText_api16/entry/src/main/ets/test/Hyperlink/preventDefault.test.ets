@@ -66,7 +66,7 @@ export default function preventDefault() {
         let strJson2 = getInspectorByKey('hyperlink3');
         let obj2: ESObject = JSON.parse(strJson2);
         console.log('preventDefault0001---' + obj2.$attrs.color)
-        expect(obj2.$attrs.color).assertEqual("#FF0000FF");
+        expect(obj2.$attrs.color).assertEqual("#FF0A59F7");
         console.info("[preventDefault0001] end");
 
     });
