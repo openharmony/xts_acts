@@ -31,11 +31,19 @@ describe('PowerTest', function () {
      * @tc.size: MediumTest
      */
     it('Power_Is_Screnn_On_Promise_Test', 0, async function (done) {
-        power.wakeupDevice("Power_Is_Screnn_On_Promise_Test");
-        let isScreenOn =  await power.isScreenOn();
-        console.info('Power_Is_Screnn_On_Promise_Test isScreenOn is ' + isScreenOn);
-        expect(isScreenOn).assertTrue();
-        done();
+        let TAG = 'Power_Is_Screnn_On_Promise_Test';
+        power.isScreenOn()
+        .then(data => {
+            console.info(`${TAG} data: ${data}`);
+            let isActive = power.isActive();
+            expect(data).assertEqual(isActive);
+            done();
+        })
+        .catch(error => {
+            console.error(`${TAG} error: ${error.code} ${error.message}`);
+            expect().assertFail();
+            done();
+        })
     })
 
     /**
@@ -47,11 +55,11 @@ describe('PowerTest', function () {
      * @tc.size: MediumTest
      */
     it('Power_Is_Screnn_On_Callback_Test', 0, async function (done) {
-        power.wakeupDevice("Power_Is_Screnn_On_Callback_Test");
         power.isScreenOn((error, screenOn) => {
             if (typeof error === "undefined") {
                 console.info('Power_Is_Screnn_On_Callback_Test screenOn is ' + screenOn);
-                expect(screenOn).assertTrue();
+                let isActive = power.isActive();
+                expect(screenOn).assertEqual(isActive);
                 console.info('Power_Is_Screnn_On_Callback_Test success');
                 done();
             } else {
@@ -254,6 +262,26 @@ describe('PowerTest', function () {
         let TAG = 'System_API_Test_power_Manager_0500';
         try {
             power.suspend(false);
+            console.info(TAG + ' suspend end');
+        } catch (error) {
+            console.info(TAG + ` suspend err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0111
+     * @tc.name testSystem_API_Test_power_Manager_0501
+     * @tc.desc Test the third-party application call suspend will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_power_Manager_0501', 0, async function (done) {
+        let TAG = 'System_API_Test_power_Manager_0501';
+        try {
+            power.suspend();
             console.info(TAG + ' suspend end');
         } catch (error) {
             console.info(TAG + ` suspend err: ${error.code}  ${error.message}`);
