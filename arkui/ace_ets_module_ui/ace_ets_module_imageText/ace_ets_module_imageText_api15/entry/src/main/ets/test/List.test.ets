@@ -22,6 +22,7 @@ import TextInputStopBackPressTest from './TextInputTest/TextInputStopBackPress.t
 import TextAreaStopBackPressTest from './TextAreaTest/TextAreaStopBackPress.test';
 import SearchStopBackPressTest from './Search/SearchStopBackPress.test';
 import ImageSvgFillColorTest from './ImageSvgFillColorTest/ImageSvgFillColor.test';
+import imageMatrix from './imageMatrix/imageMatrix.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -33,4 +34,5 @@ export default function testsuite() {
   TextAreaStopBackPressTest();
   SearchStopBackPressTest();
   ImageSvgFillColorTest();
+  imageMatrix();
 }
