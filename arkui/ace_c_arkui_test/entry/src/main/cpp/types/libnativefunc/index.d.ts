@@ -75,10 +75,6 @@ export const testButtonType004: () => number;
 
 export const testButtonType005: () => number;
 
-export const testButtonType006: () => number;
-
-export const testButtonType007: () => number;
-
 export const textTextStyleGraphic001: () => number;
 
 export const testCheckboxMark001: () => number;
