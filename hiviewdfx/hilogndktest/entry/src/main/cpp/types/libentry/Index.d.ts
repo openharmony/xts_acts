@@ -17,3 +17,6 @@ export const ohIsLoggableTest: () => boolean;
 export const ohPrintTest: () => boolean;
 export const add: (a: number, b: number) => number;
 export const getMsg: () => number;
+export const ohPrintMsgTest: () => number;
+export const ohPrintMsgByLenTest: () => number;
+export const ohVPrintTest: () => number;

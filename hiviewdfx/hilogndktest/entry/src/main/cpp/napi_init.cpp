@@ -39,6 +39,16 @@ void callback(const LogType type, const LogLevel level, const unsigned int domai
     g_test = 6;  //test number : 6
 }
 
+static int OhPrintVTest(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *fmt, ...)
+{
+    int ret;
+    va_list ap;
+    va_start(ap, fmt);
+    ret = OH_LOG_VPrint(type, level, domain, tag, fmt, ap);
+    va_end(ap);
+    return ret;
+}
+
 static napi_value Add(napi_env env, napi_callback_info info)
 {
     OH_LOG_SetCallback(callback);
@@ -89,7 +99,41 @@ static napi_value OhPrintTest(napi_env env, napi_callback_info info)
     napi_value res = nullptr;
     LogType type = LOG_APP;
     LogLevel level = LOG_ERROR;
+    OH_LOG_SetMinLogLevel(LOG_INFO);
     int retLen = OH_LOG_Print(type, level, 0x3200, "testTag", "string for hilog test");
+    bool ret = (retLen > 0) ? true : false;
+    napi_get_boolean(env, ret, &res);
+    return res;
+}
+
+static napi_value OhPrintMsgTest(napi_env env, napi_callback_info info)
+{
+    napi_value res = nullptr;
+    LogType type = LOG_APP;
+    LogLevel level = LOG_ERROR;
+    int retLen = OH_LOG_PrintMsg(type, level, 0x3200, "testTag", "string for hilog PrintMsg test");
+    bool ret = (retLen > 0) ? true : false;
+    napi_get_boolean(env, ret, &res);
+    return res;
+}
+
+static napi_value OhPrintMsgByLenTest(napi_env env, napi_callback_info info)
+{
+    napi_value res = nullptr;
+    LogType type = LOG_APP;
+    LogLevel level = LOG_ERROR;
+    int retLen = OH_LOG_PrintMsgByLen(type, level, 0x3200, "testTag", 7, "string for hilog PrintMsgByLen test", 30);
+    bool ret = (retLen > 0) ? true : false;
+    napi_get_boolean(env, ret, &res);
+    return res;
+}
+
+static napi_value OhVPrintTest(napi_env env, napi_callback_info info)
+{
+    napi_value res = nullptr;
+    LogType type = LOG_APP;
+    LogLevel level = LOG_ERROR;
+    int retLen = OhPrintVTest(type, level, 0x3200, "testTag", "%{ public }s", "OH_LOG_VPrint11111");	
     bool ret = (retLen > 0) ? true : false;
     napi_get_boolean(env, ret, &res);
     return res;
@@ -106,6 +150,12 @@ static napi_value Init(napi_env env, napi_value exports)
         { "add", nullptr, Add,
             nullptr, nullptr, nullptr, napi_default, nullptr },
         { "getMsg", nullptr, GetMsg,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "ohPrintMsgTest", nullptr, OhPrintMsgTest,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "ohPrintMsgByLenTest", nullptr, OhPrintMsgByLenTest,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "ohVPrintTest", nullptr, OhVPrintTest,
             nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
