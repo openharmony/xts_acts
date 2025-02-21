@@ -18,6 +18,7 @@
 #include "scroll_size_test.h"
 #include <arkui/native_node.h>
 #include <string>
+#include <math.h>
 #define PARAM_HEIGHT_SIZE 1000.000000
 
 namespace ArkUICapiTest {
@@ -75,7 +76,7 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
                                     "hzx1115 width:%{public}s height:%{public}s currentOffset:%{public}f", std::to_string(width).c_str(),
                                     std::to_string(height).c_str(), 66.6);
             
-            if (height == PARAM_HEIGHT_SIZE){
+            if (round(height) == PARAM_HEIGHT_SIZE){
                 OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ScrollSizeTest", "OnEventReceive callBack111");
                 auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
                 ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};

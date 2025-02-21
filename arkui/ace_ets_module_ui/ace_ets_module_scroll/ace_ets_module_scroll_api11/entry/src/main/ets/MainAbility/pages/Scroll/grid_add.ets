@@ -20,6 +20,10 @@ struct GridExampleAdd {
 
   build() {
     Column({ space: 5 }) {
+      Button('next page')
+        .onClick(() => { // 点击后滑到下一页
+          this.scroller.scrollPage({ next: true })
+        }).key('nexpageAdd')
       Grid() {
         ForEach(this.Number, (day: string) => {
           ForEach(this.Number, (day: string) => {
@@ -80,10 +84,6 @@ struct GridExampleAdd {
       .width('90%')
       .backgroundColor(0xFAEEE0)
       .height('30%')
-      Button('next page')
-        .onClick(() => { // 点击后滑到下一页
-          this.scroller.scrollPage({ next: true })
-        }).key('nexpageAdd')
     }.width('100%').margin({ top: 5 })
   }
 }
