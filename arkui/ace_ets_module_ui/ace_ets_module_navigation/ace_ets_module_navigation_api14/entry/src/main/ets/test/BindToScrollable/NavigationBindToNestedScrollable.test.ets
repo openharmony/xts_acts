@@ -64,6 +64,9 @@ export default function NavigationBindToNestedScrollable() {
       console.info('[NavigationBindToNestedScrollable_0100] click push pageOne');
       await CommonFunc.sleep(1000);
 
+      await driver.assertComponentExist(ON.type('TitleBar'));
+      await driver.assertComponentExist(ON.type('ToolBar'));
+
       let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
       await scrollBar.scrollToBottom();
       await CommonFunc.sleep(5000);
