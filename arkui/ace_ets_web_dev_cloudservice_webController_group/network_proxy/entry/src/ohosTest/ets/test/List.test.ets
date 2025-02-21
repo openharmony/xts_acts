@@ -12,10 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import webviewNetworkProxy from './webviewNetworkProxy.test'
 import WebCookieManager from './WebCookieManager.test'
 
 export default function testsuite() {
-  webviewNetworkProxy()
   WebCookieManager()
 }
