@@ -63,5 +63,20 @@ export default function webCookieManager() {
       sendEventByKey('WebCookieManagerButton', 10, '');
     })
 
+    /*
+    * @tc.number     : SUB_WEB_REMOVEALLCACHE_0100
+    * @tc.name       : testRemoveAllCache001
+    * @tc.desc       : test removeAllCache
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testRemoveAllCache001', 0, async (done: Function) => {
+      Utils.emitEvent('testRemoveAllCache001', 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent('testRemoveAllCache001', 'success', 202502211, done);
+      sendEventByKey('WebCookieManagerButton', 10, '');
+    })
+
   })
 }
