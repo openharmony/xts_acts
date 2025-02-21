@@ -258,16 +258,12 @@ static napi_value normalAVScreenCaptureDisplayCallbackSuccess(napi_env env, napi
     OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCaptureNormal, config_);
     OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenCapture(screenCaptureNormal);
 
-    OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
+    int32_t result = TEST_FAILED;
     if (result2 == AV_SCREEN_CAPTURE_ERR_OK) {
-        result = AV_SCREEN_CAPTURE_ERR_OK;
-    } else {
-        result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
+        result = TEST_PASS;
     }
-    if (result == AV_SCREEN_CAPTURE_ERR_OK) {
+    if (result == TEST_PASS) {
         result = g_displaySelectedId >= 0 ? TEST_PASS : TEST_FAILED;
-    } else {
-        result = TEST_FAILED;
     }
     napi_value res;
     napi_create_int32(env, result, &res);
@@ -306,13 +302,12 @@ static napi_value normalAVScreenCaptureSetDisplayCallbackFail(napi_env env, napi
     } else {
         result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
     }
+    int32_t result3 = TEST_FAILED;
     if (result == AV_SCREEN_CAPTURE_ERR_INVALID_STATE) {
         result = TEST_PASS;
-    } else {
-        result = TEST_FAILED;
     }
     napi_value res;
-    napi_create_int32(env, result, &res);
+    napi_create_int32(env, result3, &res);
     return res;
 }
 
