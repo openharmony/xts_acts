@@ -13,11 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsPasteBoardJSApiWihtPermissionTest") {
+ohos_js_app_suite("ActsPasteBoardJSApiWithPermissionTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsPasteBoardJSApiWihtPermissionTest"
+  hap_name = "ActsPasteBoardJSApiWithPermissionTest"
 
   # 部件名称，真实数据，需要子系统对应
   part_name = "preferences"

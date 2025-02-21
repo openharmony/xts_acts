@@ -54,7 +54,7 @@
 	{
 		"name":"ohos.permission.READ_PASTEBOARD",
 		"usedScene":{
-			"abilities"[
+			"abilities":[
 				"FormAbility"
 			],
 			"when":"inuse"
