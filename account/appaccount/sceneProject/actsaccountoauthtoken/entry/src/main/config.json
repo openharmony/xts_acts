@@ -3,30 +3,26 @@
     "bundleName": "com.example.actsaccountOauthtoken",
     "vendor": "example",
     "version": {
-      "code": 1,
+      "code": 1000000,
       "name": "1.0"
-    },
-    "apiVersion": {
-      "compatible": 4,
-      "target": 5,
-      "releaseType": "Beta1"
     }
   },
   "deviceConfig": {},
   "module": {
     "package": "com.example.actsaccountOauthtoken",
-    "name": ".MyApplication",
+    "name": ".entry",
+    "mainAbility": ".MainAbility",
     "deviceType": [
       "tablet",
       "default",
-      "phone",
       "2in1",
       "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",
-      "moduleType": "entry"
+      "moduleType": "entry",
+      "installationFree": false
     },
     "abilities": [
       {
@@ -37,13 +33,15 @@
             ],
             "actions": [
               "action.system.home",
-              "ohos.account.appAccount.action.oauth"
+              "ohos.appAccount.action.auth"
             ]
           }
         ],
-        "name": "com.example.actsaccountoauthtoken.MainAbility",
+        "srcPath": "ServiceAbility",
+        "name": ".ServiceAbility",
+        "srcLanguage": "js",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
+        "description": "$string:serviceability_description",
         "label": "$string:app_name",
         "type": "service",
         "visible": true,
@@ -55,7 +53,7 @@
         "pages": [
           "pages/index/index"
         ],
-        "name": "default",
+        "name": ".ServiceAbility",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false
