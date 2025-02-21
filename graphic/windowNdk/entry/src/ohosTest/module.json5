@@ -48,6 +48,11 @@
           }
         ]
       }
+    ],
+    "requestPermissions": [
+      {
+        "name": 'ohos.permission.PRIVACY_WINDOW'
+      }
     ]
   }
 }
