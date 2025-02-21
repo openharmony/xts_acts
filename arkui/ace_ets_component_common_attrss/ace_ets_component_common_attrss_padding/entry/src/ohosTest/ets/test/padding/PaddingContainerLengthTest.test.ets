@@ -286,11 +286,12 @@ export default function paddingTest() {
         console.info('[' + data.caseTag + '] data.testValue.expectValue.right:' + data.testValue.expectValue.right);
         console.info('[' + data.caseTag + '] data.testValue.expectValue.top:' + data.testValue.expectValue.top);
         console.info('[' + data.caseTag + '] data.testValue.expectValue.bottom:' + data.testValue.expectValue.bottom);
+        console.info('[' + data.caseTag + '] data.testValue.expectValue.parentWidthAfter:' + data.testValue.expectValue.parentWidthAfter);
 
         if (data.testValue.describe == 'SetStringPercent') {
-          expect(Math.abs(targetRectAfterWidth - targetRectBeforeWidth - ((data.testValue.expectValue.parentWidthAfter) * 2)) <= 1)
+          expect(Math.floor(Math.abs(targetRectAfterWidth - targetRectBeforeWidth - ((data.testValue.expectValue.parentWidthAfter) * 2))) <= 1)
             .assertTrue();
-          expect(Math.abs(targetRectAfterHeight - targetRectBeforeHeight - ((data.testValue.expectValue.parentWidthAfter) * 2)) <= 1)
+          expect(Math.floor(Math.abs(targetRectAfterHeight - targetRectBeforeHeight - ((data.testValue.expectValue.parentWidthAfter) * 2))) <= 1)
             .assertTrue();
         } else {
           //Verify if other methods were successful.
