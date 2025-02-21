@@ -8,6 +8,7 @@
     "MainAbility/pages/RichEditor/RichEditorKeyboardAppearance",
     "MainAbility/pages/TextInput/TextInputStopBackPress",
     "MainAbility/pages/TextArea/TextAreaStopBackPress",
-    "MainAbility/pages/Search/SearchStopBackPress"
+    "MainAbility/pages/Search/SearchStopBackPress",
+    "MainAbility/pages/ImageSvgFillColor/ImageSvgFillColor"
   ]
 }
