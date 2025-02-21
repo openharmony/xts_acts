@@ -19,6 +19,7 @@
 #include "node/node_handle_by_id_test.h"
 #include "window/get_window_info_test.h"
 #include "progress/progress_linear_style_test.h"
+#include "lazyForEach/lazyforeach_expand_mode_test.h"
 #include "focusControl/focus_Control.h"
 
 
@@ -46,6 +47,24 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testHostWindowInfoDestroy", nullptr, GetWindowInfoTest::testHostWindowInfoDestroy003,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testProgressLinearStyle", nullptr, ProgressLinearStyleTest::ProgressLinearStyleTest001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode001", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode002", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode003", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode003,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode004", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode004,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode005", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode005,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode006", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode006,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode007", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode007,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode008", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode008,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode009", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode009,
          nullptr, nullptr, nullptr, napi_default, nullptr},
 		{"FocusControlTest_001", nullptr, FocusControlTest::FocusControlTest_001,
          nullptr, nullptr, nullptr, napi_default, nullptr},

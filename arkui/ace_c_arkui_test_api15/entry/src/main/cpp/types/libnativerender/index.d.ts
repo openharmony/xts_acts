@@ -28,6 +28,24 @@ export const ProgressLinearStyleTest: (a: string) => void;
 
 export const testProgressLinearStyle: (a: string) => void;
 
+export const testLazyForEachExpandMode001: (a: string) => void;
+
+export const testLazyForEachExpandMode002: (a: string) => void;
+
+export const testLazyForEachExpandMode003: (a: string) => void;
+
+export const testLazyForEachExpandMode004: (a: string) => void;
+
+export const testLazyForEachExpandMode005: (a: string) => void;
+
+export const testLazyForEachExpandMode006: (a: string) => void;
+
+export const testLazyForEachExpandMode007: (a: string) => void;
+
+export const testLazyForEachExpandMode008: (a: string) => void;
+
+export const testLazyForEachExpandMode009: (a: string) => void;
+
 export const FocusControlTest_001: (a: string) => void;
 
 export const FocusControlTest_002: (a: string) => void;
