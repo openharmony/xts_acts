@@ -16,6 +16,7 @@ group("arkui") {
   testonly = true
   if (ace_engine_feature_wearable) {
     deps = [
+      "ace_c_accessibility_api_16:ActsAceCapiInspector16Test",
       "ace_c_arkui_test:ActsAceCArkUITest",
       "ace_c_arkui_test_api13:ActsAceCArkUI13Test",
       "ace_c_arkui_test_api14:ActsAceCArkUI14Test",
@@ -38,6 +39,7 @@ group("arkui") {
     ]
   } else {
     deps = [
+      "ace_c_accessibility_api_16:ActsAceCapiInspector16Test",
       "ace_c_arkui_test:ActsAceCArkUITest",
       "ace_c_arkui_test_api13:ActsAceCArkUI13Test",
       "ace_c_arkui_test_api14:ActsAceCArkUI14Test",
