@@ -5144,6 +5144,7 @@ export default function inputMethodWindManageAbility() {
       }
 
       let publishCallback = async (err: BusinessError) => {
+        runCmd();
         console.info("====>Sub_InputMethod_IME_Immersive_1200 publishCallback start");
         if (err) {
           console.info("====>Sub_InputMethod_IME_Immersive_1200 publishCallback failed:" + JSON.stringify(err));
