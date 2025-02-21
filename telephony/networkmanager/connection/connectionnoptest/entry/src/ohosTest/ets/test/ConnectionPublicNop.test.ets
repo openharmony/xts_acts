@@ -340,6 +340,36 @@ export default function ConnectionPublicNopTest() {
       }
       console.info('--------testNetworkMgrConnectionReportNetConnectedNop0700----after----');
     })
+    
+    /**
+     * @tc.number : SUB_Network_Connection_setPacUrlNop_0100
+     * @tc.name   : testConnectionSetPacUrlNop_0100
+     * @tc.desc   :  set  PacUrl failed errorCode: 201
+     * @tc.level  : Level 3
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     */
+
+    it('testConnectionSetPacUrlNop_0100', 0, (done:Function) => {
+      const caseName: string = 'testConnectionSetPacUrlNop_0100';
+      console.info(`${caseName}---Start`);
+      try{
+        console.log(`${caseName} test start `)
+        connection.setPacUrl("/a/b/c");
+        console.log(`${caseName} setPacUrl success`);
+        ExpectFail();
+        done();
+      }catch (err){
+        ExpectTrue(err.code == 201)
+        console.log(`${caseName} test end`);
+        console.log(`${caseName} catch err is `,JSON.stringify(err));
+        done();
+      }
+    })
+
+
+
+
   })
 }
 
