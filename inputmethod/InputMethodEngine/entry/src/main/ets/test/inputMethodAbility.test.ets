@@ -549,6 +549,15 @@ export default function inputMethodAbility() {
       let paste = inputMethodEngine.ExtendAction.PASTE;
       console.info("====>Sub_Misc_inputMethodEngine_ExtendAction_0100 paste:" + paste);
       expect(paste).assertEqual(5);
+      let disabled = inputMethod.EnabledState.DISABLED;
+      console.info("====>Sub_Misc_inputMethodEngine_ExtendAction_0100 DISABLED:" + disabled);
+      expect(disabled).assertEqual(0);
+      let basic_mode = inputMethod.EnabledState.BASIC_MODE;
+      console.info("====>Sub_Misc_inputMethodEngine_ExtendAction_0100 BASIC_MODE:" + basic_mode);
+      expect(basic_mode).assertEqual(1);
+      let full_experience_mode = inputMethod.EnabledState.FULL_EXPERIENCE_MODE;
+      console.info("====>Sub_Misc_inputMethodEngine_ExtendAction_0100 FULL_EXPERIENCE_MODE:" + full_experience_mode);
+      expect(full_experience_mode).assertEqual(2);
       done();
     });
 
