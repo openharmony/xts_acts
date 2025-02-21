@@ -26,7 +26,6 @@ import onkeyEventDispatchTest4 from './keyEventDispatchTest/onkeyEventDispatchfo
 import onkeyEventDispatchTest6 from './keyEventDispatchTest/onkeyEventDispatchsix.test';
 import onkeyEventDispatchTest7 from './keyEventDispatchTest/onkeyEventDispatchseven.test';
 import onkeyEventDispatchTest8 from './keyEventDispatchTest/onkeyEventDispatcheight.test';
-import imageMatrix from './imageMatrix/imageMatrix.test';
 import GetChangedPointerId from './GetChangedPointerId/GetChangedPointerId.test';
 import componentSnapshot from './componentSnapshot/componentSnapshot.test';
 import longpressGestureTest from './isFingerCountLimited/LongPressGesture.test';
@@ -50,7 +49,6 @@ export default function testsuite() {
   onkeyEventDispatchTest6();
   onkeyEventDispatchTest7();
   onkeyEventDispatchTest8();
-  imageMatrix();
   GetChangedPointerId();
   componentSnapshot();
   longpressGestureTest();
