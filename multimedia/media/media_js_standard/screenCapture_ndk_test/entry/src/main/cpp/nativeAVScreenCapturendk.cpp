@@ -304,7 +304,7 @@ static napi_value normalAVScreenCaptureSetDisplayCallbackFail(napi_env env, napi
     }
     int32_t result3 = TEST_FAILED;
     if (result == AV_SCREEN_CAPTURE_ERR_INVALID_STATE) {
-        result = TEST_PASS;
+        result3 = TEST_PASS;
     }
     napi_value res;
     napi_create_int32(env, result3, &res);
