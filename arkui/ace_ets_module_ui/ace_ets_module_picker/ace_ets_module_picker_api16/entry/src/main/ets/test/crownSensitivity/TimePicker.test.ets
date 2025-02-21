@@ -28,7 +28,7 @@ export default function TimePicker() {
         beforeEach(async (done: Function) => {
             console.info("search_caret beforeEach start");
             let options: optionsObj = {
-                uri: 'MainAbility/pages/Picker/TimePicker',
+                uri: 'MainAbility/pages/crownSensitivity/TimePicker',
             }
             try {
                 router.clear();
@@ -162,5 +162,47 @@ export default function TimePicker() {
           console.info('[ArkUX_Stage_TimePicker_ComponentTest_0500] END');
           done();
         });
+
+      /**
+       * @tc.number: ArkUX_Stage_TimePicker_ComponentTest_0600
+       * @tc.name  : testArcAlphabetIndexerComponent.
+       * @tc.desc  : verifyBaseFunction.
+       * @tc.size  : MediumTest
+       * @tc.type  : Function
+       * @tc.level : Level 0
+       */
+      it('ArkUX_Stage_TimePicker_ComponentTest_0600', 0, async (done: Function) => {
+        // Verify the functions of the ArcAlphabetIndexer component
+        console.info('[ArkUX_Stage_TimePicker_ComponentTest_0500] START');
+        let strJson = getInspectorByKey('timepicker06');
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
+        console.info("[ArkUX_Stage_TimePicker_ComponentTest_0600] attr: " + JSON.stringify(obj.$attrs));
+        console.info("[ArkUX_Stage_TimePicker_ComponentTest_0600] digitalCrownSensitivity: " + JSON.stringify(obj.$attrs.digitalCrownSensitivity));
+        console.info("[ArkUX_Stage_TimePicker_ComponentTest_0600] defaultFocus: " + JSON.stringify(obj.$attrs.defaultFocus));
+        expect(obj.$attrs.digitalCrownSensitivity).assertEqual('1');
+        console.info('[ArkUX_Stage_TimePicker_ComponentTest_0600] END');
+        done();
+      });
+
+      /**
+       * @tc.number: ArkUX_Stage_TimePicker_ComponentTest_0700
+       * @tc.name  : testArcAlphabetIndexerComponent.
+       * @tc.desc  : verifyBaseFunction.
+       * @tc.size  : MediumTest
+       * @tc.type  : Function
+       * @tc.level : Level 0
+       */
+      it('ArkUX_Stage_TimePicker_ComponentTest_0700', 0, async (done: Function) => {
+        // Verify the functions of the ArcAlphabetIndexer component
+        console.info('[ArkUX_Stage_TimePicker_ComponentTest_0700] START');
+        let strJson = getInspectorByKey('timepicker07');
+        let obj: Record<string, ESObject> = JSON.parse(strJson);
+        console.info("[ArkUX_Stage_TimePicker_ComponentTest_0700] attr: " + JSON.stringify(obj.$attrs));
+        console.info("[ArkUX_Stage_TimePicker_ComponentTest_0700] digitalCrownSensitivity: " + JSON.stringify(obj.$attrs.digitalCrownSensitivity));
+        console.info("[ArkUX_Stage_TimePicker_ComponentTest_0700] defaultFocus: " + JSON.stringify(obj.$attrs.defaultFocus));
+        expect(obj.$attrs.digitalCrownSensitivity).assertEqual('1');
+        console.info('[ArkUX_Stage_TimePicker_ComponentTest_0700] END');
+        done();
+      });
     })
 }

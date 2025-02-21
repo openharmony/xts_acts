@@ -53,6 +53,14 @@ struct TextPickerExample {
       TextPicker({ range: this.multi })
         .key('textpicker05')
         .digitalCrownSensitivity(-1)
+
+      TextPicker({ range: this.multi })
+        .key('textpicker06')
+        .digitalCrownSensitivity(null)
+
+      TextPicker({ range: this.multi })
+        .key('textpicker07')
+        .digitalCrownSensitivity(undefined)
     }
   }
 }

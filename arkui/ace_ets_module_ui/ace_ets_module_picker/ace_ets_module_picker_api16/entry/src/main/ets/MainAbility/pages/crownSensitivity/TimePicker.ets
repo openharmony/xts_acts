@@ -63,6 +63,21 @@ struct TimePickerExample {
         .key('timepicker05')
         .defaultFocus(false)
         .digitalCrownSensitivity(-1)
+
+      TimePicker({})
+        .key('timepicker05')
+        .defaultFocus(false)
+        .digitalCrownSensitivity(-1)
+
+      TimePicker({})
+        .key('timepicker06')
+        .defaultFocus(false)
+        .digitalCrownSensitivity(null)
+
+      TimePicker({})
+        .key('timepicker07')
+        .defaultFocus(false)
+        .digitalCrownSensitivity(undefined)
     }
   }
 }
