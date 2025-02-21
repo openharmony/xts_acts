@@ -340,6 +340,6 @@ export default function ConnectionPublicNopTest() {
       }
       console.info('--------testNetworkMgrConnectionReportNetConnectedNop0700----after----');
     })
-      })
+    })
 }
 
