@@ -16,6 +16,10 @@ group("distributeddatamgr") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "PasteboardJSWithPermissionTest:ActsPasteBoardJSApiWithPermissionTest",
+      "PasteboardNoPermissionstest:PasteboardNoPermissionstest",
+      "Pasteboardjsapitest:ActsPasteBoardETSApiTest",
+      "Pasteboardnapitest:ActsPasteboardNapiEtsTest",
       "UDMFtest:UDMFtest",
       "crossplatform/preferencesetstest:ActsCrossplatformPreferencesTest",
       "crossplatform/relationalstoreetstest:ActsCrossplatformRelationalStoreTest",
@@ -39,13 +43,4 @@ group("distributeddatamgr") {
       "searchtest/hap:searchfunctest_hap",
     ]
   }
-}
-
-group("pasteboard") {
-  testonly = true
-  deps = [
-    "PasteboardNoPermissionstest:PasteboardNoPermissionstest",
-    "Pasteboardjsapitest:ActsPasteBoardETSApiTest",
-    "Pasteboardnapitest:ActsPasteboardNapiEtsTest",
-  ]
 }
