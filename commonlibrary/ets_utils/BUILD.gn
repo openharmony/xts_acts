@@ -24,6 +24,7 @@ group("ets_utils") {
       "codeparsingtest:codeparsingtest",
       "concurrency_base:concurrency_base_js_hap",
       "concurrent_test:concurrent_test",
+      "conditionvariable_test:ActsConditionVariableTest",
       "containerLine_lib_standard:containerLine_js_test",
       "containerRelation_lib_standard:containerRelation_js_test",
       "convertxml_lib_standard:convertxml_js_test",
