@@ -250,13 +250,13 @@ static napi_value WantNdk_0400(napi_env env, napi_callback_info info)
     AbilityBase_Want* want = OH_AbilityBase_CreateWant(element);
     if (want == nullptr) {
         napi_value result;
-        napi_create_int32(env, 401, &result);
+        napi_create_int32(env, code, &result);
         return result;
     }
     AbilityBase_Element ourelement2;
     AbilityBase_ErrorCode errCode = OH_AbilityBase_GetWantElement(want, &ourelement2);
     std::string result  = "OH_AbilityBase_GetWantElement bundleName:" + std::string(ourelement2.bundleName) + " " +
-    "OH_AbilityBase_GetWantElement moduleName:" + std::string(ourelement2.moduleName) + " " + 
+    "OH_AbilityBase_GetWantElement moduleName:" + std::string(ourelement2.moduleName) + " " +
     "OH_AbilityBase_GetWantElement abilityName:" + std::string(ourelement2.abilityName);
     OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_WantNdk_0400 native errCode=%{public}d", errCode);
     napi_value sum;
@@ -367,7 +367,7 @@ static napi_value WantNdk_1100(napi_env env, napi_callback_info info)
     element.bundleName = const_cast<char *>("com.example.startselfuiabilityrely");
     element.moduleName = const_cast<char *>("entry");
     AbilityBase_Want* want = OH_AbilityBase_CreateWant(element);
-    char outvalue[30]= { 0 };
+    char outvalue[30] = { 0 };
     AbilityBase_ErrorCode errCode = OH_AbilityBase_SetWantCharParam(want, "key", "value");
     errCode = OH_AbilityBase_GetWantCharParam(want, "key100", outvalue, sizeof(outvalue));
     std::string result  = "OH_AbilityBase_GetWantCharParam:" + std::string(outvalue);
