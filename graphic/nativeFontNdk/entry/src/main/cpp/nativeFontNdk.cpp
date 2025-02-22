@@ -424,7 +424,7 @@ static napi_value Init(napi_env env, napi_value exports)
     napi_property_descriptor desc[] = {
         {"oHDrawingGetFontDescriptorByFullName001", nullptr, OHDrawingGetFontDescriptorByFullName001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
-		{"oHDrawingGetFontDescriptorByFullName002", nullptr, OHDrawingGetFontDescriptorByFullName002,
+        {"oHDrawingGetFontDescriptorByFullName002", nullptr, OHDrawingGetFontDescriptorByFullName002,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHDrawingGetFontDescriptorByFullName003", nullptr, OHDrawingGetFontDescriptorByFullName003,
          nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -432,7 +432,7 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHDrawingGetSystemFontFullNamesByType001", nullptr, OHDrawingGetSystemFontFullNamesByType001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
-		{"oHDrawingGetSystemFontFullNamesByType002", nullptr, OHDrawingGetSystemFontFullNamesByType002,
+        {"oHDrawingGetSystemFontFullNamesByType002", nullptr, OHDrawingGetSystemFontFullNamesByType002,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHDrawingGetSystemFontFullNameByIndex001", nullptr, OHDrawingGetSystemFontFullNameByIndex001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
