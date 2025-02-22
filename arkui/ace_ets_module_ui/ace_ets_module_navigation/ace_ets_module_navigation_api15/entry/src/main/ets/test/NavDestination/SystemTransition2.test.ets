@@ -67,11 +67,11 @@ export default function SystemTransition() {
       await CommonFunc.sleep(200);
 
 
-      let strJson: string = getInspectorByKey('pageOneId');
+      let strJson: string = getInspectorByKey('text1Id');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[SystemTransition_0100] component obj is: ' + JSON.stringify(obj));
-      console.info('[SystemTransition_0100] systemTransition obj is: ' + JSON.stringify(obj.$attrs.systemTransition));
-      expect(obj.$attrs.enableModeChangeAnimation).assertEqual(4);
+      console.info('[SystemTransition_0100] systemTransition obj is: ' + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual('one');
 
       console.info('SystemTransition_0100 END');
       done();
@@ -101,11 +101,11 @@ export default function SystemTransition() {
       await CommonFunc.sleep(200);
 
 
-      let strJson: string = getInspectorByKey('pageTwoId');
+      let strJson: string = getInspectorByKey('text2Id');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[SystemTransition_0200] component obj is: ' + JSON.stringify(obj));
-      console.info('[SystemTransition_0200] systemTransition obj is: ' + JSON.stringify(obj.$attrs.systemTransition));
-      expect(obj.$attrs.enableModeChangeAnimation).assertEqual(5);;
+      console.info('[SystemTransition_0200] systemTransition obj is: ' + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual('two');;
 
       console.info('SystemTransition_0200 END');
       done();
@@ -135,11 +135,11 @@ export default function SystemTransition() {
       await CommonFunc.sleep(200);
 
 
-      let strJson: string = getInspectorByKey('btnThreeId');
+      let strJson: string = getInspectorByKey('text3Id');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[SystemTransition_0300] component obj is: ' + JSON.stringify(obj));
-      console.info('[SystemTransition_0300] systemTransition obj is: ' + JSON.stringify(obj.$attrs.systemTransition));
-      expect(obj.$attrs.enableModeChangeAnimation).assertEqual(6);
+      console.info('[SystemTransition_0300] systemTransition obj is: ' + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual('three');
 
       console.info('SystemTransition_0300 END');
       done();
@@ -169,11 +169,11 @@ export default function SystemTransition() {
       await CommonFunc.sleep(200);
 
 
-      let strJson: string = getInspectorByKey('pageFourId');
+      let strJson: string = getInspectorByKey('text4Id');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[SystemTransition_0400] component obj is: ' + JSON.stringify(obj));
-      console.info('[SystemTransition_0400] systemTransition obj is: ' + JSON.stringify(obj.$attrs.systemTransition));
-      expect(obj.$attrs.enableModeChangeAnimation).assertEqual(7);
+      console.info('[SystemTransition_0400] systemTransition obj is: ' + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual('four');
 
       console.info('SystemTransition_0400 END');
       done();
