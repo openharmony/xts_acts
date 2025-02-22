@@ -20,7 +20,7 @@
       {
         "name": "default",
         "signingConfig": "default",
-        "compileSdkVersion": 16,
+        "compileSdkVersion": 15,
         "compatibleSdkVersion": 12,
       }
     ]
