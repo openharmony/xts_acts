@@ -13,3 +13,6 @@
  * limitations under the License.
  */
 export const columnBackDropBlurTest001: () => number;
+export const testListItemGroupNodeAdapter001: () => number;
+export const testListItemGroupNodeAdapter002: () => number;
+export const testListItemGroupNodeAdapter003: () => number;

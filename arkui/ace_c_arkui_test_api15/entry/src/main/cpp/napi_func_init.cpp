@@ -14,6 +14,7 @@
  */
 #include "common/common.h"
 #include "visual/visual_backDropBlur_test.cpp"
+#include "listItemGroup/list_item_group_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -27,6 +28,12 @@ static napi_value Init(napi_env env, napi_value exports)
     napi_property_descriptor desc[] = {
         {"columnBackDropBlurTest001", nullptr, columnBackDropBlurTest001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testListItemGroupNodeAdapter001", nullptr, ListItemGroupTest::TestListItemGroupNodeAdapter001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testListItemGroupNodeAdapter002", nullptr, ListItemGroupTest::TestListItemGroupNodeAdapter002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testListItemGroupNodeAdapter003", nullptr, ListItemGroupTest::TestListItemGroupNodeAdapter003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

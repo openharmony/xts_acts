@@ -15,9 +15,6 @@
 import postFrameCallbackTest from "./postFrame/PostFrameCallbackTest.test"
 import swiperTest from "./swiper/SwiperTest.test"
 import textImmutablfFontWeight from "./text/textImmutablfFontWeight.test"
-import listCaseTest from "./list/ListCaseTest.test"
-import listScrollToIndexTest from "./listScrollTo/ListScrollToTest.test"
-import listItemGroupNodeAdapterTest from "./listItemGroup/ListItemGroupTest.test"
 import TextAreaLetterSpacing from "./textArea/TextAreaLetterSpacing.test"
 import TextInputLetterSpacing from "./textInput/TextInputLetterSpacing.test"
 import textPickerTest from "./textpicker/TextPickerColumnWidthsTest.test"
@@ -28,9 +25,6 @@ export default function testsuite() {
   postFrameCallbackTest();
   swiperTest();
   textImmutablfFontWeight();
-  listCaseTest();
-  listScrollToIndexTest();
-  listItemGroupNodeAdapterTest();
   TextAreaLetterSpacing();
   TextInputLetterSpacing();
   textPickerTest();
