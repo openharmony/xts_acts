@@ -28,13 +28,13 @@ export default class EntryAbility extends UIAbility {
         let buf = new ArrayBuffer(4096);
         let array =new Uint8Array(buf);
         let readLen = fs.readSync(want?.fds?.fd, buf);
-        let textDecoder = util.TextDecoder.create("utf-8", { ignoreBOM: true});
+        let textDecoder = util.TextDecoder.create('utf-8', { ignoreBOM: true});
         fileContent = textDecoder.decodeWithStream(array, { stream: false})
         hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility ' + JSON.stringify(fileContent));
         commonEventManager.publish('OH_AbilityRuntime_StartSelfUIAbility_Result',{
           parameters:{
             'wantFd':want?.fds,
-            'fileContent':fileContent.replace(/\+/g,"")
+            'fileContent':fileContent.replace(/\+/g,'')
           }
         },()=>{
           hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility commonEventManager.publish success');
