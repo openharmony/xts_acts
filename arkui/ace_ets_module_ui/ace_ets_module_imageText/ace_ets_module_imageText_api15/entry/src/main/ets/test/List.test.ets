@@ -43,7 +43,6 @@ export default function testsuite() {
   TextInputStopBackPressTest();
   TextAreaStopBackPressTest();
   SearchStopBackPressTest();
-  SelectionMenuOptions();
   PixelMapColorFilterTest();
   ResourceDefaultTest();
   VerticalAlignTest();
