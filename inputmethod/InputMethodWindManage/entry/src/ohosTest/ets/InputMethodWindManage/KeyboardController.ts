@@ -1836,6 +1836,7 @@ export class KeyboardController {
     };
     try{
       inputMethodAbility.on('inputStart', async (keyboardController, InputClient) => {
+        inputMethodAbility.off('inputStart');
         this.keyboardController = keyboardController;
         this.InputClient = InputClient;
 
@@ -1861,6 +1862,7 @@ export class KeyboardController {
     };
     try{
       inputMethodAbility.on('inputStart', async (keyboardController, InputClient) => {
+        inputMethodAbility.off('inputStart');
         this.keyboardController = keyboardController;
         this.InputClient = InputClient;
 
@@ -1886,6 +1888,7 @@ export class KeyboardController {
     };
     try{
       inputMethodAbility.on('inputStart', async (keyboardController, InputClient) => {
+        inputMethodAbility.off('inputStart');
         this.keyboardController = keyboardController;
         this.InputClient = InputClient;
 
@@ -1911,6 +1914,7 @@ export class KeyboardController {
     };
     try{
       inputMethodAbility.on('inputStart', async (keyboardController, InputClient) => {
+        inputMethodAbility.off('inputStart');
         this.keyboardController = keyboardController;
         this.InputClient = InputClient;
 
@@ -2570,18 +2574,22 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      let mode = this.immersive;
-      console.info(TAG + '====>Sub_InputMethod_IME_Immersive_1200 ImmersiveMode :' + JSON.stringify(mode));
-      if(mode == 2){
-        commonEventPublishData = {
-          data: "SUCCESS"
+      let t = setTimeout(() => {
+        clearTimeout(t);
+        let mode = this.immersive
+        console.info(TAG + '====>Sub_InputMethod_IME_Immersive_1200 ImmersiveMode :' + JSON.stringify(mode));
+        if(mode == 2){
+          commonEventPublishData = {
+            data: "SUCCESS"
+          }
         }
-      }
-      console.info(TAG + '====>Sub_InputMethod_IME_Immersive_1200 success ');
+        console.info(TAG + '====>Sub_InputMethod_IME_Immersive_1200 success ');
+        commoneventmanager.publish('Sub_InputMethod_IME_Immersive_1200', commonEventPublishData, this.publishCallback);
+      }, 500)
     } catch (err) {
       console.info(TAG + '====>Sub_InputMethod_IME_Immersive_1200 cathch err: ' + JSON.stringify(err));
+      commoneventmanager.publish("Sub_InputMethod_IME_Immersive_1200", commonEventPublishData, this.publishCallback);
     }
-    commoneventmanager.publish("Sub_InputMethod_IME_Immersive_1200", commonEventPublishData, this.publishCallback);
   }
 
   private async Sub_InputMethod_IME_Immersive_0500() {
