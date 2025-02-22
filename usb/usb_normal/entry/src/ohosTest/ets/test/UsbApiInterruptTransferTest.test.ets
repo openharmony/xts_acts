@@ -16,7 +16,7 @@
 import { beforeAll, afterAll, beforeEach, describe, it, expect } from "@ohos/hypium"
 import usbMgr from '@ohos.usbManager';
 import { UiDriver, BY } from '@ohos.UiTest';
-import CheckEmptyUtils from './CheckEmptyUtils.js';
+// import CheckEmptyUtils from './CheckEmptyUtils.js';
 export interface gPipe {
   busNum: number;
   devAddress: number;
@@ -49,10 +49,10 @@ async function driveFn() {
         let driver = await UiDriver.create();
         console.info(TAG, ` come in driveFn`);
         console.info(TAG, `driver is ${JSON.stringify(driver)}`);
-        CheckEmptyUtils.sleep(1000);
+        // CheckEmptyUtils.sleep(1000);
         let button = await driver.findComponent(BY.text('允许'));
         console.info(TAG, `button is ${JSON.stringify(button)}`);
-        CheckEmptyUtils.sleep(1000);
+        // CheckEmptyUtils.sleep(1000);
         await button.click();
     } catch (err) {
         console.info(TAG, 'err is ' + err);
@@ -103,9 +103,9 @@ export default function UsbApiInterruptTransferTest() {
             if (!hasRight) {
                 console.info(TAG, `beforeAll: usb requestRight start`);
                 await getPermission(gDeviceList);
-                CheckEmptyUtils.sleep(1000);
+                // CheckEmptyUtils.sleep(1000);
                 await driveFn();
-                CheckEmptyUtils.sleep(1000);
+                // CheckEmptyUtils.sleep(1000);
             }
         }
         done();
