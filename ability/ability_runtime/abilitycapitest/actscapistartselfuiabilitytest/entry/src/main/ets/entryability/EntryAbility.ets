@@ -33,8 +33,8 @@ export default class EntryAbility extends UIAbility {
         hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility ' + JSON.stringify(fileContent));
         commonEventManager.publish("OH_AbilityRuntime_StartSelfUIAbility_Result",{
           parameters:{
-            "wantFd":want?.fds,
-            "fileContent":fileContent.replace(/\+/g,"")
+            'wantFd':want?.fds,
+            'fileContent':fileContent.replace(/\+/g,"")
           }
         },()=>{
           hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility commonEventManager.publish success');
@@ -46,8 +46,8 @@ export default class EntryAbility extends UIAbility {
         fileContent = JSON.stringify(err)
         commonEventManager.publish("OH_AbilityRuntime_StartSelfUIAbility_Result",{
           parameters:{
-            "wantFd":want?.fds,
-            "fileContent":fileContent
+            'wantFd':want?.fds,
+            'fileContent':fileContent
           }
         },()=>{
           hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility commonEventManager.publish success');

@@ -14,7 +14,7 @@ export default class MyAbilityStage extends AbilityStage {
     return 'MyAbilityStage';
   }
   onNewProcessRequest(want: Want): string {
-    return "AbilityStageProcess"
+    return 'AbilityStageProcess'
   }
   onPrepareTermination(): AbilityConstant.PrepareTermination{
     hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityStage onPrepareTermination');

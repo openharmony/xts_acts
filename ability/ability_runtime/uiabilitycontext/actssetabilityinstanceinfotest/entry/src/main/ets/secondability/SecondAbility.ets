@@ -15,7 +15,8 @@ for (let i = 0; i < bufferArr.length; i += 4) {
   bufferArr[i + 2] = 122;
   bufferArr[i + 3] = 255;
 }
-let opts: image.InitializationOptions = {editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: {height: 512, width: 512}};
+let opts: image.InitializationOptions = {editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888,
+  size: {height: 512, width: 512}};
 let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
 
 export default class EntryAbility extends UIAbility {

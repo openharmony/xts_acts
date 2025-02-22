@@ -669,40 +669,5 @@ export default function ndkTest() {
         done();
       }
     })
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_WantNdk_2700
-     * @tc.name   : The input parameter want is empty of OH_AbilityRuntime_StartSelfUIAbility
-     * @tc.desc   : Expect: call failed
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 3
-     */
-    it('SUB_Ability_AbilityRuntime_WantNdk_2700', 0, (done: Function) => {
-      const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_2700';
-      if(isEnabled == "true"){
-        let subscriber = commonEventManager.createSubscriberSync({
-          events: ['OH_AbilityRuntime_StartSelfUIAbility_Result']
-        });
-        commonEventManager.subscribe(subscriber, (err, data) => {
-          hilog.info(0x0000, TAG, '%{public}s',  ` ${TEST_SUITE_NAME} ========= subscribe ` + JSON.stringify(data));
-          commonEventManager.unsubscribe(subscriber,()=>{
-            hilog.info(0x0000, TAG, '%{public}s',  ` ${TEST_SUITE_NAME} ========= unsubscribe callback`);
-            // expect().assertEqual()
-            done();
-          });
-        });
-        hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
-        let result = testNapi.wantNdk_2700();
-        hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + JSON.stringify(result));
-      }else if(isEnabled == "false"){
-        hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
-        done();
-      }else{
-        hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
-        expect().assertFail();
-        done();
-      }
-    })
   })
 }

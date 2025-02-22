@@ -38,7 +38,6 @@ export const wantNdk_2200: () => number;
 export const wantNdk_2300: () => number;
 export const wantNdk_2400: () => number;
 export const wantNdk_2500: () => number;
-export const wantNdk_2700: () => number;
 export const ndkStartAbility_0100: () => number;
 export const ndkStartAbility_0200: () => number;
 export const ndkStartAbility_0300: () => number;
