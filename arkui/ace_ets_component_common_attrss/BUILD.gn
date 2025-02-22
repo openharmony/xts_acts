@@ -19,6 +19,7 @@ group("componentAttrssTest") {
     if (ace_engine_feature_wearable) {
       deps = [
         "ace_ets_component_common_attrss_alignRules:ActsAceEtsComponentCommonAttrsAlignRulesTest",
+        "ace_ets_component_common_attrss_alignRules02:ActsAceEtsComponentCommonAttrsAlignRules02Test",
         "ace_ets_component_common_attrss_aspectRatio:ActsAceEtsComponentCommonAttrsAspectRadioTest",
         "ace_ets_component_common_attrss_constraintSize:ActsAceEtsComponentCommonAttrsConstraintSizeTest",
         "ace_ets_component_common_attrss_default:ActsAceEtsComponentCommonAttrsDefaultTest",
@@ -54,6 +55,8 @@ group("componentAttrssTest") {
         "ace_ets_component_common_attrss_padding:ActsAceEtsComponentCommonAttrsPaddingTest",
         "ace_ets_component_common_attrss_position:ActsAceEtsComponentCommonAttrsPositionTest",
         "ace_ets_component_common_attrss_responseRegion:ActsAceEtsComponentCommonAttrsResponseRegionTest",
+        "ace_ets_component_common_attrss_responseRegion02:ActsAceEtsComponentCommonAttrsResponseRegion02Test",
+        "ace_ets_component_common_attrss_responseRegion03:ActsAceEtsComponentCommonAttrsResponseRegion03Test",
         "ace_ets_component_common_attrss_size:ActsAceEtsComponentCommonAttrsSizeTest",
         "ace_ets_component_common_attrss_stateStyles:ActsAceEtsComponentCommonAttrsStateStylesTest",
         "ace_ets_component_common_attrss_tabIndex:ActsAceEtsComponentCommonAttrsTabIndexTest",
@@ -66,6 +69,7 @@ group("componentAttrssTest") {
     } else {
       deps = [
         "ace_ets_component_common_attrss_alignRules:ActsAceEtsComponentCommonAttrsAlignRulesTest",
+        "ace_ets_component_common_attrss_alignRules02:ActsAceEtsComponentCommonAttrsAlignRules02Test",
         "ace_ets_component_common_attrss_alignRules_nowear:ActsAceEtsComponentCommonAttrsAlignRulesNowearTest",
         "ace_ets_component_common_attrss_aspectRatio:ActsAceEtsComponentCommonAttrsAspectRadioTest",
         "ace_ets_component_common_attrss_aspectRatio_nowear:ActsAceEtsComponentCommonAttrsAspectRadioNowearTest",
@@ -124,6 +128,9 @@ group("componentAttrssTest") {
         "ace_ets_component_common_attrss_position:ActsAceEtsComponentCommonAttrsPositionTest",
         "ace_ets_component_common_attrss_position_nowear:ActsAceEtsComponentCommonAttrsPositionNowearTest",
         "ace_ets_component_common_attrss_responseRegion:ActsAceEtsComponentCommonAttrsResponseRegionTest",
+        "ace_ets_component_common_attrss_responseRegion02:ActsAceEtsComponentCommonAttrsResponseRegion02Test",
+        "ace_ets_component_common_attrss_responseRegion03:ActsAceEtsComponentCommonAttrsResponseRegion03Test",
+        "ace_ets_component_common_attrss_responseRegion_nowear:ActsAceEtsComponentCommonAttrsResponseRegionNowearTest",
         "ace_ets_component_common_attrss_size:ActsAceEtsComponentCommonAttrsSizeTest",
         "ace_ets_component_common_attrss_size_nowear:ActsAceEtsComponentCommonAttrsSizeNowearTest",
         "ace_ets_component_common_attrss_stateStyles:ActsAceEtsComponentCommonAttrsStateStylesTest",
