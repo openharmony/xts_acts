@@ -12,15 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import screen from '@ohos.screen';
-import { BusinessError } from '@ohos.base';
-
 export class RectValue {
   left: number = 0;
   top: number = 0;
   right: number = 0;
   bottom: number = 0;
 }
+
 export default class CommonFunc {
   static rect_left: number;
   static rect_top: number;
@@ -52,7 +50,7 @@ export default class CommonFunc {
   }
 
   static getComponentRectOnScreen(key: string) {
-    let strJson: string = getInspectorByKey(key);
+    let strJson = getInspectorByKey(key);
     let obj: Record<string, Object> = JSON.parse(strJson);
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
     let rectInfo: Array<string> = JSON.parse('[' + obj.$rect + ']');
@@ -64,30 +62,6 @@ export default class CommonFunc {
     CommonFunc.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1] + globalThis.winTop;
     return CommonFunc.rect_value = {
       "left": CommonFunc.rect_left, "top": CommonFunc.rect_top, "right": CommonFunc.rect_right, "bottom": CommonFunc.rect_bottom
-    }
-  }
-
-  static setScreenOrientation(orientation: number) {
-    // 1 -- 2 |
-    let screenClass: screen.Screen | null = null;
-    screen.getAllScreens().then(data => {
-      screenClass = data[0];
-      console.log('Succeeded in getting all screens. Data:' + JSON.stringify(data));
-
-    }).catch((err: BusinessError) => {
-      console.log('Failed to get all screens. Cause: ' + JSON.stringify(err));
-    });
-    try {
-      screenClass!.setOrientation(orientation, (err: BusinessError) => {
-        const errCode: number = err.code;
-        if (errCode) {
-          console.error('Failed to set the vertical orientation. Code: ' + JSON.stringify(err));
-          return;
-        }
-        console.info('Succeeded in setting the vertical orientation.');
-      });
-    } catch (exception) {
-      console.error('Failed to set the vertical orientation. Code: ' + JSON.stringify(exception));
     }
   }
 }

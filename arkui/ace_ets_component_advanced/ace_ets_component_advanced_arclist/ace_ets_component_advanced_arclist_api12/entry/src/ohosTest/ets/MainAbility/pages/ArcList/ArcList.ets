@@ -15,6 +15,19 @@
 import { UIContext } from '@ohos.arkui.UIContext';
 import { ComponentContent, LengthMetrics, ColorMetrics} from '@ohos.arkui.node';
 import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute } from '@ohos.arkui.ArcList';
+ import { BusinessError } from '@ohos.base';
+ function getResourceColor(red: number, green: number, blue: number, alpha?: number):ColorMetrics {
+   let sourceColor:ColorMetrics;
+   try {
+     sourceColor = ColorMetrics.rgba(red, green, blue, alpha)
+   } catch (error) {
+     console.log('getBlendColor failed, code = ' + (error as BusinessError).code + ', message = ' + (error as BusinessError).message);
+     sourceColor = ColorMetrics.rgba(255, 0, 0, 0.5);
+   }
+   return sourceColor;
+ }
+
+
 @Builder
 function buildText() {
   Stack() {
@@ -33,6 +46,7 @@ struct ArcListPage {
   @State listItemText01: string = 'OpenharmonyTest1'
   @State listItemText02: string = 'OpenharmonyTest2'
   @State listItemText03: string = 'OpenharmonyTest3'
+  @State listItemText04: string = 'OpenharmonyTest4'
   @State onScrollIndexText: string = 'onScrollIndex'
   @State onReachStartText: string = 'onReachStart'
   @State onReachEndText: string = 'onReachEnd'
@@ -41,7 +55,6 @@ struct ArcListPage {
   @State onDidScrollText: string = 'onDidScroll'
   @State onWillScrollText: string = 'onWillScroll'
   scroller: Scroller = new Scroller()
-
   onPageShow() {
     console.info('ListPage onPageShow')
   }
@@ -51,17 +64,67 @@ struct ArcListPage {
     Column() {
       ArcList() {
           ArcListItem() {
+            Text(this.listItemText04)
+              .width('30%')
+              .height('30%')
+              .fontSize(10)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+      }
+      .height('30%')
+      .width('90%')
+      .key('arclist03')
+      .onScrollIndex((scrollOffset: number, scrollState: ScrollState) => {
+        this.onScrollIndexText = 'onScrollIndex:succ'
+        console.info('scrollState:' + scrollState + ', scrollOffset:' + scrollOffset)
+      })
+      .onReachStart(() => {
+        this.onReachStartText = 'onReachStart:succ'
+        console.info('onReachStart')
+      })
+      .onReachEnd(() => {
+        this.onReachEndText = 'onReachEnd:succ'
+        console.info('onReachEnd')
+      })
+      .onScrollStart(() => {
+        this.onScrollStartText = 'onScrollStart:succ'
+        console.info('onScrollStart succ')
+      })
+      .onScrollStop(() => {
+        this.onScrollStopText = 'onScrollStop:succ'
+        console.info('onScrollStop  succ')
+      })
+       .onWillScroll(() => {
+         this.onWillScrollText='onWillScroll'
+        console.info('onWillScroll succ')
+       })
+       .onDidScroll(()=>{
+         this.onDidScrollText='onDidScroll'
+        console.info('onDidScroll succ')
+       })
+      Text(this.onScrollIndexText).fontSize(10).margin(5).key('onScrollIndexText')
+      Text(this.onReachStartText).fontSize(10).margin(5).key('onReachStartText')
+      Text(this.onReachEndText).fontSize(10).margin(5).key('onReachEndText')
+      Text(this.onScrollStartText).fontSize(10).margin(5).key('onScrollStartText')
+      Text(this.onScrollStopText).fontSize(10).margin(5).key('onScrollStopText')
+      Text(this.onWillScrollText).fontSize(10).margin(5).key('onWillScrollText')
+      Text(this.onDidScrollText).fontSize(10).margin(5).key('onDidScrollText')
+      ArcList() {
+          ArcListItem() {
             Text(this.listItemText01)
               .width('30%')
-              .height(100)
-              .fontSize(16)
+              .height('30%')
+              .fontSize(10)
               .textAlign(TextAlign.Center)
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
               .key('defaultarklistitem01')
           }
       }
-      .height(300)
+	  .opacity(0.4)
+      .height('30%')
       .width('90%')
       .border({ width: 3, color: Color.Blue })
       .key('arclistdefault')
@@ -70,8 +133,8 @@ struct ArcListPage {
           ArcListItem() {
             Text(this.listItemText02)
               .width('30%')
-              .height(100)
-              .fontSize(16)
+              .height('30%')
+              .fontSize(10)
               .textAlign(TextAlign.Center)
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
@@ -83,8 +146,8 @@ struct ArcListPage {
           ArcListItem() {
             Text(this.listItemText03)
               .width('30%')
-              .height(100)
-              .fontSize(16)
+              .height('30%')
+              .fontSize(10)
               .textAlign(TextAlign.Center)
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
@@ -104,17 +167,18 @@ struct ArcListPage {
       .flingSpeedLimit(5)
       .chainAnimation(true)
       .fadingEdge(true)
-      .height(300)
+      .height('30%')
       .width('90%')
       .border({ width: 3, color: Color.Red })
       .key('arclist01')
       .digitalCrownSensitivity(1)
+
       ArcList() {
           ArcListItem() {
             Text(this.listItemText01)
               .width('30%')
-              .height(100)
-              .fontSize(16)
+              .height('30%')
+              .fontSize(10)
               .textAlign(TextAlign.Center)
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
@@ -131,11 +195,12 @@ struct ArcListPage {
       .flingSpeedLimit(-5)
       .chainAnimation(false)
       .fadingEdge(false)
-      .height(300)
+      .height('30%')
       .width('90%')
       .border({ width: 3, color: Color.Red })
       .key('arclist02')
       .digitalCrownSensitivity(2)
+	  
     }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
   }
 }
