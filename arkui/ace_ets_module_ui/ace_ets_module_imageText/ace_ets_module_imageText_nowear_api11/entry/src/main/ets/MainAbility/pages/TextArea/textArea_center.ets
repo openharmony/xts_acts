@@ -18,7 +18,7 @@ import { MessageManager, Callback } from '../../common/MessageManager';
 @Component
 struct textArea_center {
   private arr:number[] = [0,1,2,3,4,5]
-  @State height1:string = '60%'
+  @State height1:string = '58%'
   @State fontSize1:number = 17
   @State fontWeight1:number = 400
   controller: TextAreaController = new TextAreaController()
@@ -38,7 +38,7 @@ struct textArea_center {
       Scroll(this.scroll){
         Column(){
           Button('点击关闭键盘').width('90%')
-            .height('33%')
+            .height('40%')
             .borderRadius(15)
             .fontSize(16)
             .margin(0)
@@ -74,7 +74,7 @@ struct textArea_center {
               .borderRadius(15)
               .fontSize(16)
               .textAlign(TextAlign.Center)
-              .margin({top:10})
+              .margin({top:1})
               .key('textArea_center_text_1' + item)
           })
 
