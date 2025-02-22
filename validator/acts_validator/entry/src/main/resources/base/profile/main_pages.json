@@ -29,6 +29,7 @@
     "pages/ArkUI/chipTest",
     "pages/ArkUI/chipGroupTest",
     "pages/ArkUI/DatePickerDialog",
+    "pages/ArkUI/dialogModeTest",
     "pages/ArkUI/Marquee",
     "pages/ArkUI/PatternLockL0_01",
     "pages/ArkUI/PatternLockL0_02",

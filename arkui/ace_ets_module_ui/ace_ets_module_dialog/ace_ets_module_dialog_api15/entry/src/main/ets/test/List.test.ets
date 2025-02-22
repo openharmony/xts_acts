@@ -21,6 +21,7 @@ import showActionSheetMode from './actionSheet/showActionSheetMode.test'
 import showAlertDialogMode from './dialog/showAlertDialogMode.test'
 import showDialogMode from './dialog/showDialogMode.test'
 import openCustomDialogMode from './prompt/openCustomDialogMode.test'
+import showActionMenuMode from './prompt/showActionMenuMode.test'
 import presentCustomDialogMode from './UIContextTest/presentCustomDialogMode.test'
 import bindSheetRadius from './bindSheet/bindSheetRadius.test'
 import buttonTypeTest from './buttonType/buttonTypeTest.test';
@@ -34,6 +35,7 @@ export default function testsuite() {
   showDialogMode()
   uiOpenCustomDialogMode()
   openCustomDialogMode()
+  showActionMenuMode()
   openCustomDialogWithCtrMode()
   presentCustomDialogMode()
   bindSheetRadius()
