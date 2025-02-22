@@ -14,14 +14,17 @@
 */
 
 import ethernettest from './ethernet.test';
-import EmptyTest from './Empty.test'
+import EmptyTest from './Empty.test';
+import netfirewallTest from './netFirewall.test';
 
 
 export default function testsuite() {
     if (canIUse("SystemCapability.Communication.NetManager.Ethernet")) {
         ethernettest();
     }
-    else {
-        EmptyTest();
+    if (canIUse("SystemCapability.Communication.NetManager.NetFirewall")) {
+        netfirewallTest();
     }
+    EmptyTest();
+    
 }
