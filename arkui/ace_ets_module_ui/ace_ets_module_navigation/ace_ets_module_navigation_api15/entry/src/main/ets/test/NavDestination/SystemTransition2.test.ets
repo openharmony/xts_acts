@@ -73,6 +73,10 @@ export default function SystemTransition() {
       console.info('[SystemTransition_0100] systemTransition obj is: ' + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('one');
 
+      let popBtn = await driver.findComponent(ON.id('pop1Id'));
+      await popBtn.click()
+      console.info('[SystemTransition_0100] popBtn click');
+
       console.info('SystemTransition_0100 END');
       done();
     });
@@ -90,11 +94,6 @@ export default function SystemTransition() {
       let driver = Driver.create();
       await CommonFunc.sleep(500);
 
-      let btn1 = await driver.findComponent(ON.id('popId'));
-      await btn1.click()
-      console.info('[SystemTransition_0200] btn1 click');
-      await CommonFunc.sleep(500);
-
       let btn2 = await driver.findComponent(ON.id('btnTwoId'));
       await btn2.click()
       console.info('[SystemTransition_0200] btn2 click');
@@ -105,7 +104,11 @@ export default function SystemTransition() {
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[SystemTransition_0200] component obj is: ' + JSON.stringify(obj));
       console.info('[SystemTransition_0200] systemTransition obj is: ' + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('two');;
+      expect(obj.$attrs.content).assertEqual('two');
+
+      let popBtn = await driver.findComponent(ON.id('pop2Id'));
+      await popBtn.click()
+      console.info('[SystemTransition_0200] popBtn click');
 
       console.info('SystemTransition_0200 END');
       done();
@@ -124,22 +127,21 @@ export default function SystemTransition() {
       let driver = Driver.create();
       await CommonFunc.sleep(500);
 
-      let btn1 = await driver.findComponent(ON.id('popId'));
-      await btn1.click()
-      console.info('[SystemTransition_0300] btn1 click');
-      await CommonFunc.sleep(500);
-
       let btn2 = await driver.findComponent(ON.id('btnThreeId'));
       await btn2.click()
-      console.info('[SystemTransition_0200] btn2 click');
+      console.info('[SystemTransition_0300] btn2 click');
       await CommonFunc.sleep(200);
-
 
       let strJson: string = getInspectorByKey('text3Id');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[SystemTransition_0300] component obj is: ' + JSON.stringify(obj));
       console.info('[SystemTransition_0300] systemTransition obj is: ' + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('three');
+
+      let popBtn = await driver.findComponent(ON.id('pop3Id'));
+      await popBtn.click()
+      console.info('[SystemTransition_0300] popBtn click');
+      await CommonFunc.sleep(200);
 
       console.info('SystemTransition_0300 END');
       done();
@@ -158,14 +160,9 @@ export default function SystemTransition() {
       let driver = Driver.create();
       await CommonFunc.sleep(500);
 
-      let btn1 = await driver.findComponent(ON.id('popId'));
-      await btn1.click()
-      console.info('[SystemTransition_0400] btn1 click');
-      await CommonFunc.sleep(500);
-
       let btn2 = await driver.findComponent(ON.id('btnFourId'));
       await btn2.click()
-      console.info('[SystemTransition_0200] btn2 click');
+      console.info('[SystemTransition_0400] btn2 click');
       await CommonFunc.sleep(200);
 
 
@@ -178,7 +175,5 @@ export default function SystemTransition() {
       console.info('SystemTransition_0400 END');
       done();
     });
-
-
   })
 }
