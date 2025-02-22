@@ -38,16 +38,16 @@ struct SystemTransition2 {
       Column({space: '5vp'}) {
         Button('push pageOne').id('btnOneId').onClick(() => {
           this.pageInfos.pushPath({name: 'pageOne'})
-        })
+        }).height('10%')
         Button('push pageTwo').id('btnTwoId').onClick(() => {
           this.pageInfos.pushPath({name: 'pageTwo'})
-        })
+        }).height('10%')
         Button('push pageThree').id('btnThreeId').onClick(() => {
           this.pageInfos.pushPath({name: 'pageThree'})
-        })
+        }).height('10%')
         Button('push pageFour').id('btnFourId').onClick(() => {
           this.pageInfos.pushPath({name: 'pageFour'})
-        })
+        }).height('10%')
       }
       .width('100%')
       .height('100%')
@@ -63,10 +63,10 @@ struct PageOne {
 
   build() {
     NavDestination() {
-      Text('one').id('text1Id')
-      Button('pop').id('popId').onClick(() => {
+      Text('one').id('text1Id').height('10%')
+      Button('pop').id('pop1Id').onClick(() => {
         this.pageInfos.pop()
-      })
+      }).height('10%')
     }
     .title('pageOne')
     .systemTransition(NavigationSystemTransitionType.FADE)
@@ -80,10 +80,10 @@ struct PageTwo {
 
   build() {
     NavDestination() {
-      Text('two').id('text2Id')
-      Button('pop').id('popId').onClick(() => {
+      Text('two').id('text2Id').height('10%')
+      Button('pop').id('pop2Id').onClick(() => {
         this.pageInfos.pop()
-      })
+      }).height('10%')
     }
     .title('pageTwo')
     .systemTransition(NavigationSystemTransitionType.EXPLODE)
@@ -98,10 +98,10 @@ struct PageThree {
 
   build() {
     NavDestination() {
-      Text('three').id('text3Id')
-      Button('pop').id('popId').onClick(() => {
+      Text('three').id('text3Id').height('10%')
+      Button('pop').id('pop3Id').onClick(() => {
         this.pageInfos.pop()
-      })
+      }).height('10%')
     }
     .title('pageThree')
     .systemTransition(NavigationSystemTransitionType.SLIDE_RIGHT)
@@ -116,7 +116,7 @@ struct PageFour {
 
   build() {
     NavDestination() {
-      Text('four').id('text4Id')
+      Text('four').id('text4Id').height('10%')
     }
     .title('pageFour')
     .systemTransition(NavigationSystemTransitionType.SLIDE_BOTTOM)
