@@ -31,3 +31,5 @@ export const textImmutablfFontWeight_016: () => number;
 export const testListItemGroupNodeAdapter001: () => number;
 export const testListItemGroupNodeAdapter002: () => number;
 export const testListItemGroupNodeAdapter003: () => number;
+export const testButtonType006: () => number;
+export const testButtonType007: () => number;

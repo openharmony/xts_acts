@@ -793,8 +793,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testButtonType003", nullptr, TestButtonType003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testButtonType004", nullptr, TestButtonType004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testButtonType005", nullptr, TestButtonType005, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testButtonType006", nullptr, TestButtonType006, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testButtonType007", nullptr, TestButtonType007, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCheckboxMark001", nullptr, TestCheckboxMark001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCheckboxMark002", nullptr, TestCheckboxMark002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCheckboxMark003", nullptr, TestCheckboxMark003, nullptr, nullptr, nullptr, napi_default, nullptr},
