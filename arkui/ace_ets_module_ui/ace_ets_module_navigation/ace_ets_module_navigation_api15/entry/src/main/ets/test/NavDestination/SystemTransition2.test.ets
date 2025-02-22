@@ -93,7 +93,7 @@ export default function SystemTransition() {
       let btn1 = await driver.findComponent(ON.id('popId'));
       await btn1.click()
       console.info('[SystemTransition_0100] btn1 click');
-      await CommonFunc.sleep(200);
+      await CommonFunc.sleep(500);
 
       let btn2 = await driver.findComponent(ON.id('btnTwoId'));
       await btn2.click()
@@ -127,7 +127,7 @@ export default function SystemTransition() {
       let btn1 = await driver.findComponent(ON.id('popId'));
       await btn1.click()
       console.info('[SystemTransition_0100] btn1 click');
-      await CommonFunc.sleep(200);
+      await CommonFunc.sleep(500);
 
       let btn2 = await driver.findComponent(ON.id('btnThreeId'));
       await btn2.click()
@@ -161,7 +161,7 @@ export default function SystemTransition() {
       let btn1 = await driver.findComponent(ON.id('popId'));
       await btn1.click()
       console.info('[SystemTransition_0100] btn1 click');
-      await CommonFunc.sleep(200);
+      await CommonFunc.sleep(500);
 
       let btn2 = await driver.findComponent(ON.id('btnFourId'));
       await btn2.click()
