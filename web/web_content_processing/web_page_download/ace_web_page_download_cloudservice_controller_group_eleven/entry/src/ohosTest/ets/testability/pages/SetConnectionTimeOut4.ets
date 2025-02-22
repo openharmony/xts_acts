@@ -65,7 +65,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.controller.startDownload('https:' +
-              '//releases.ubuntu.com/24.04/ubuntu-24.04.1-desktop-amd64.iso');
+              '//repo.huaweicloud.com/openharmony/os/4.1-Release/hispark_pegasus.tar.gz');
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
