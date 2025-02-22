@@ -82,6 +82,10 @@ async function clickResultButton(driver: Driver) {
   console.info("testPicker create");
   let btn = await driver.findComponent(ON.id('resultButton'));
   console.info("testPicker findComponent resultButton succsess");
+  if (btn === null) {
+    console.info('no button');
+    return;
+  }
   await btn.click();
   console.info("testPicker btn click finish");
 }
@@ -92,7 +96,7 @@ async function clickAlbumButton(driver: Driver) {
   await btn.click();
   console.info('testPicker btn click finish');
   await CommonFunc.sleep(1000);
-  let albumItem = await driver.findComponent((ON.type('ListItem')));
+  let albumItem = await driver.findComponent((ON.id('AlbumListItem')));
   if (albumItem === null) {
     console.info('no ListItem');
     return;
