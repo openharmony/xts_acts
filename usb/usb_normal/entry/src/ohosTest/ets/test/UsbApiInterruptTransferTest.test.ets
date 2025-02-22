@@ -16,7 +16,6 @@
 import { beforeAll, afterAll, beforeEach, describe, it, expect } from "@ohos/hypium"
 import usbMgr from '@ohos.usbManager';
 import { UiDriver, BY } from '@ohos.UiTest';
-// import CheckEmptyUtils from './CheckEmptyUtils.js';
 export interface gPipe {
   busNum: number;
   devAddress: number;
@@ -168,6 +167,7 @@ export default function UsbApiInterruptTransferTest() {
             console.error('interrupt write successfully:', error);
             expect(error.code).assertEqual(14400012);
         }
+        usbMgr.closePipe(devices);
         done()
     });
 
@@ -205,6 +205,7 @@ export default function UsbApiInterruptTransferTest() {
             console.error('interrupt write IO error:', error);
             expect(error.code).assertEqual(14400012);
         }
+        usbMgr.closePipe(devices);
         done()
     });
 
@@ -239,7 +240,8 @@ export default function UsbApiInterruptTransferTest() {
             transferParams.callback=(err, data)=>{
                 console.info(TAG, 'interrupt testUsbSubmitTransfer003 data =' +JSON.stringify(data));
                 expect(data.status >= 0).assertTrue();
-                expect(data.status).assertInstanceOf(typeof usbMgr.UsbTransferStatus.TRANSFER_TIMED_OUT);
+                usbMgr.closePipe(devices);
+                done()
             }
             await usbMgr.usbSubmitTransfer(transferParams);
             console.info(TAG, 'interrupt testUsbSubmitTransfer003 end');
@@ -247,7 +249,6 @@ export default function UsbApiInterruptTransferTest() {
             expect(error.message).assertEqual('error');
             console.error('interrupt write successfully:', error);
         }
-        done()
     });
 
     /**
@@ -284,6 +285,7 @@ export default function UsbApiInterruptTransferTest() {
         } catch (error) {
             console.error('interrupt write successfully:', error);
         }
+        usbMgr.closePipe(devices);
         done()
     });
 

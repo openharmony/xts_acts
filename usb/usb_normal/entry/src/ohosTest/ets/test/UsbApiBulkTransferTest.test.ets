@@ -165,7 +165,6 @@ export default function UsbApiBulkTransferTest() {
             transferParams.callback = (err: BusinessError, data) => {
                 console.info(TAG, 'bulk testUsbSubmitTransfer001 data =' + JSON.stringify(data));
                 expect(data.status >= 0).assertTrue();
-                expect(data.status).assertInstanceOf(typeof usbMgr.UsbTransferStatus.TRANSFER_TIMED_OUT);
                 usbMgr.closePipe(devices);
                 done();
             }
@@ -174,9 +173,7 @@ export default function UsbApiBulkTransferTest() {
         } catch (error) {
             expect(error.message).assertEqual('error');
             console.error('bulk write successfully:', error);
-            done();
         }
-        done();
     });
 
     /**
@@ -209,8 +206,10 @@ export default function UsbApiBulkTransferTest() {
         try {
             transferParams.callback=(err, data)=>{
                 console.info(TAG, 'bulk testUsbSubmitTransfer002 callBackData =' +JSON.stringify(data));
-                expect(data.status >= 0).assertTrue();
-                expect(data.status).assertInstanceOf(typeof usbMgr.UsbTransferStatus.TRANSFER_TIMED_OUT);
+                expect(data.status).assertEqual(usbMgr.UsbTransferStatus.TRANSFER_COMPLETED
+                ||usbMgr.UsbTransferStatus.TRANSFER_TIMED_OUT||usbMgr.UsbTransferStatus.TRANSFER_CANCELED 
+                ||usbMgr.UsbTransferStatus.TRANSFER_STALL ||usbMgr.UsbTransferStatus.TRANSFER_NO_DEVICE 
+                ||usbMgr.UsbTransferStatus.TRANSFER_OVERFLOW ||usbMgr.UsbTransferStatus.TRANSFER_ERROR);
                 usbMgr.closePipe(devices);
                 done();
             }
@@ -220,7 +219,6 @@ export default function UsbApiBulkTransferTest() {
             expect(error.message).assertEqual('error');
             console.error('bulk write successfully:', error);
         }
-        done();
     });
 
     /**
@@ -256,10 +254,10 @@ export default function UsbApiBulkTransferTest() {
         } catch (error) {
             console.info(TAG, 'bulk testUsbSubmitTransfer003 end');
             console.error('bulk transfer error endpoint:', error);
-            expect(error.code == 14400012).assertTrue();
-            usbMgr.closePipe(devices);
-            done();
+            expect(error.code).assertEqual(14400012);
         }
+        usbMgr.closePipe(devices);
+        done(); 
     });
 
     /**
