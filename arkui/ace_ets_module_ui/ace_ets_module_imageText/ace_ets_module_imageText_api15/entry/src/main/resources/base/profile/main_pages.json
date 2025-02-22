@@ -9,6 +9,7 @@
     "MainAbility/pages/TextInput/TextInputStopBackPress",
     "MainAbility/pages/TextArea/TextAreaStopBackPress",
     "MainAbility/pages/Search/SearchStopBackPress",
-    "MainAbility/pages/ImageSvgFillColor/ImageSvgFillColor"
+    "MainAbility/pages/ImageSvgFillColor/ImageSvgFillColor",
+    "MainAbility/pages/imageMatrix/imageMatrix"
   ]
 }
