@@ -3936,6 +3936,7 @@ export default function inputMethodWindManageAbility() {
       }
 
       let publishCallback = async (err: BusinessError) => {
+        runCmd();
         console.info("====>Sub_InputMethod_IME_FullScreenAbnormal_0100 publishCallback start");
         if (err) {
           console.info("====>Sub_InputMethod_IME_FullScreenAbnormal_0100 publishCallback failed:" + JSON.stringify(err));
