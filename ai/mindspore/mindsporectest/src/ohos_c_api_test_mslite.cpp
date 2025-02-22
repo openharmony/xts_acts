@@ -26,6 +26,7 @@
 #include "include/c_api/data_type_c.h"
 #include "include/c_api/tensor_c.h"
 #include "include/c_api/format_c.h"
+#include "syspara/parameter.h"
 
 using namespace testing::ext;
 
@@ -88,6 +89,35 @@ bool IsNPU() {
     }
     return true;
 }
+
+
+OH_AI_Status OH_AI_Test_GetDeviceID(char *nnrtDevice, size_t len)
+{
+    const std::string nullHardwareName = "default";
+    const std::string hardwareName = "const.ai.nnrt_deivce";
+    constexpr size_t hardwareNameMaxLength = 128;
+
+    if (nnrtDevice == nullptr || len == 0) {
+        std::cout << "nnrtDevice is nullptr or len is 0." << std::endl;
+        return OH_AI_STATUS_LITE_ERROR;
+    }
+
+    char cName[hardwareNameMaxLength] = {0};
+    int ret = GetParameter(hardwareName.c_str(), nullHardwareName.c_str(), cName, hardwareNameMaxLength);
+    // 如果成功获取返回值为硬件名称的字节数
+    if (ret <= 0) {
+        std::cout << "GetNNRtDeviceName failed, failed to get parameter." << std::endl;
+        return OH_AI_STATUS_LITE_ERROR;
+    }
+
+    auto secureRet = strcpy_s(nnrtDevice, len, cName);
+    if (secureRet != EOK) {
+        std::cout << "GetNNRtDeviceName failed, failed to get name." << std::endl;
+        return OH_AI_STATUS_LITE_ERROR;
+    }
+    return OH_AI_STATUS_SUCCESS;
+}
+
 
 // add nnrt device info
 void AddContextDeviceNNRT(OH_AI_ContextHandle context) {
@@ -3454,7 +3484,7 @@ void RunMSLiteModel(OH_AI_ModelHandle model, string model_name, bool is_transpos
         auto ori_tensor = inputs_handle.handle_list[i];
         auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shape_num);
         for (size_t j = 0; j < shape_num; j++) {
-        shape[j] = shape_ptr[j];
+            shape[j] = shape_ptr[j];
         }
         void *in_allocator = OH_AI_TensorGetAllocator(ori_tensor);
         OH_AI_TensorHandle in_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor), OH_AI_TensorGetDataType(ori_tensor),
@@ -3472,7 +3502,7 @@ void RunMSLiteModel(OH_AI_ModelHandle model, string model_name, bool is_transpos
         auto ori_tensor = outputs_handle.handle_list[i];
         auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shape_num);
         for (size_t j = 0; j < shape_num; j++) {
-        shape[j] = shape_ptr[j];
+            shape[j] = shape_ptr[j];
         }
         void *in_allocator = OH_AI_TensorGetAllocator(ori_tensor);
         OH_AI_TensorHandle out_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor), OH_AI_TensorGetDataType(ori_tensor),
@@ -3511,7 +3541,7 @@ void CopyFreeSetAllocator(OH_AI_ModelHandle model, OH_AI_TensorHandleArray *in_t
         auto ori_tensor = inputs_handle.handle_list[i];
         auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shapeNum);
         for (size_t j = 0; j < shapeNum; j++) {
-        shape[j] = shape_ptr[j];
+            shape[j] = shape_ptr[j];
         }
         void *in_allocator = OH_AI_TensorGetAllocator(ori_tensor);
         OH_AI_TensorHandle in_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor),
@@ -3528,7 +3558,7 @@ void CopyFreeSetAllocator(OH_AI_ModelHandle model, OH_AI_TensorHandleArray *in_t
         auto ori_tensor = outputs_handle.handle_list[i];
         auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shapeNum);
         for (size_t j = 0; j < shapeNum; j++) {
-        shape[j] = shape_ptr[j];
+            shape[j] = shape_ptr[j];
         }
         void *in_allocator = OH_AI_TensorGetAllocator(ori_tensor);
         OH_AI_TensorHandle out_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor),
@@ -3590,7 +3620,7 @@ void CopyFreeNoSetAllocator(OH_AI_ModelHandle model, OH_AI_TensorHandleArray *in
         auto ori_tensor = inputs_handle.handle_list[i];
         auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shapeNum);
         for (size_t j = 0; j < shapeNum; j++) {
-        shape[j] = shape_ptr[j];
+            shape[j] = shape_ptr[j];
         }
         OH_AI_TensorHandle in_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor),
             OH_AI_TensorGetDataType(ori_tensor), shape, shapeNum, nullptr, 0);
@@ -3605,7 +3635,7 @@ void CopyFreeNoSetAllocator(OH_AI_ModelHandle model, OH_AI_TensorHandleArray *in
         auto ori_tensor = outputs_handle.handle_list[i];
         auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shapeNum);
         for (size_t j = 0; j < shapeNum; j++) {
-        shape[j] = shape_ptr[j];
+            shape[j] = shape_ptr[j];
         }
         OH_AI_TensorHandle out_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor),
             OH_AI_TensorGetDataType(ori_tensor), shape, shapeNum, nullptr, 0);
@@ -3729,7 +3759,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0003, Function | MediumTest |
         auto ori_tensor = inputs_handle.handle_list[i];
         auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shapeNum);
         for (size_t j = 0; j < shapeNum; j++) {
-        shape[j] = shape_ptr[j];
+            shape[j] = shape_ptr[j];
         }
         OH_AI_TensorHandle in_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor),
                                         OH_AI_TensorGetDataType(ori_tensor), shape, shapeNum, nullptr, 0);
@@ -3811,7 +3841,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0005, Function | MediumTest |
         auto ori_tensor = inputs_handle.handle_list[i];
         auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shapeNum);
         for (size_t j = 0; j < shapeNum; j++) {
-        shape[j] = shape_ptr[j];
+            shape[j] = shape_ptr[j];
         }
         void *in_allocator = OH_AI_TensorGetAllocator(ori_tensor);
         OH_AI_TensorHandle in_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor),
@@ -3829,7 +3859,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0005, Function | MediumTest |
         auto ori_tensor = outputs_handle.handle_list[i];
         auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shapeNum);
         for (size_t j = 0; j < shapeNum; j++) {
-        shape[j] = shape_ptr[j];
+            shape[j] = shape_ptr[j];
         }
         void *in_allocator = OH_AI_TensorGetAllocator(ori_tensor);
         OH_AI_TensorHandle out_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor), OH_AI_TensorGetDataType(ori_tensor),
@@ -3988,6 +4018,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0004, Function | MediumTes
         printf("NNRt is not NPU, skip this test");
         return;
     }
+    char nnrtDevice[128];
+    OH_AI_Status deviceRet = OH_AI_Test_GetDeviceID(nnrtDevice, sizeof(nnrtDevice));
+    printf("nnrtDevice name: %s. \n", nnrtDevice);
+    ASSERT_EQ(deviceRet, OH_AI_STATUS_SUCCESS);
+    if (strcmp(nnrtDevice, "K5010") == 0) {
+        printf("nnrtDevice is K5010, skip this test");
+        return;
+    }
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     AddContextDeviceHIAI(context);
@@ -4006,6 +4044,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0004, Function | MediumTes
 HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0005, Function | MediumTest | Level1) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    char nnrtDevice[128];
+    OH_AI_Status deviceRet = OH_AI_Test_GetDeviceID(nnrtDevice, sizeof(nnrtDevice));
+    printf("nnrtDevice name: %s. \n", nnrtDevice);
+    ASSERT_EQ(deviceRet, OH_AI_STATUS_SUCCESS);
+    if (strcmp(nnrtDevice, "K5010") == 0) {
+        printf("nnrtDevice is K5010, skip this test");
         return;
     }
     printf("==========Init Context==========\n");
@@ -4030,6 +4076,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0006, Function | MediumTes
         printf("NNRt is not NPU, skip this test");
         return;
     }
+    char nnrtDevice[128];
+    OH_AI_Status deviceRet = OH_AI_Test_GetDeviceID(nnrtDevice, sizeof(nnrtDevice));
+    printf("nnrtDevice name: %s. \n", nnrtDevice);
+    ASSERT_EQ(deviceRet, OH_AI_STATUS_SUCCESS);
+    if (strcmp(nnrtDevice, "K5010") == 0) {
+        printf("nnrtDevice is K5010, skip this test");
+        return;
+    }
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     AddContextDeviceHIAI(context);
@@ -4045,6 +4099,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0006, Function | MediumTes
 HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0007, Function | MediumTest | Level1) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    char nnrtDevice[128];
+    OH_AI_Status deviceRet = OH_AI_Test_GetDeviceID(nnrtDevice, sizeof(nnrtDevice));
+    printf("nnrtDevice name: %s. \n", nnrtDevice);
+    ASSERT_EQ(deviceRet, OH_AI_STATUS_SUCCESS);
+    if (strcmp(nnrtDevice, "K5010") == 0) {
+        printf("nnrtDevice is K5010, skip this test");
         return;
     }
     printf("==========Init Context==========\n");
@@ -4094,6 +4156,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0008, Function | MediumTes
         printf("NNRt is not NPU, skip this test");
         return;
     }
+    char nnrtDevice[128];
+    OH_AI_Status deviceRet = OH_AI_Test_GetDeviceID(nnrtDevice, sizeof(nnrtDevice));
+    printf("nnrtDevice name: %s. \n", nnrtDevice);
+    ASSERT_EQ(deviceRet, OH_AI_STATUS_SUCCESS);
+    if (strcmp(nnrtDevice, "K5010") == 0) {
+        printf("nnrtDevice is K5010, skip this test");
+        return;
+    }
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
@@ -4139,6 +4209,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0009, Function | MediumTes
         printf("NNRt is not NPU, skip this test");
         return;
     }
+    char nnrtDevice[128];
+    OH_AI_Status deviceRet = OH_AI_Test_GetDeviceID(nnrtDevice, sizeof(nnrtDevice));
+    printf("nnrtDevice name: %s. \n", nnrtDevice);
+    ASSERT_EQ(deviceRet, OH_AI_STATUS_SUCCESS);
+    if (strcmp(nnrtDevice, "K5010") == 0) {
+        printf("nnrtDevice is K5010, skip this test");
+        return;
+    }
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
@@ -4177,6 +4255,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0010, Function | MediumTes
         printf("NNRt is not NPU, skip this test");
         return;
     }
+    char nnrtDevice[128];
+    OH_AI_Status deviceRet = OH_AI_Test_GetDeviceID(nnrtDevice, sizeof(nnrtDevice));
+    printf("nnrtDevice name: %s. \n", nnrtDevice);
+    ASSERT_EQ(deviceRet, OH_AI_STATUS_SUCCESS);
+    if (strcmp(nnrtDevice, "K5010") == 0) {
+        printf("nnrtDevice is K5010, skip this test");
+        return;
+    }
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
@@ -4213,6 +4299,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0010, Function | MediumTes
 HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0011, Function | MediumTest | Level1) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    char nnrtDevice[128];
+    OH_AI_Status deviceRet = OH_AI_Test_GetDeviceID(nnrtDevice, sizeof(nnrtDevice));
+    printf("nnrtDevice name: %s. \n", nnrtDevice);
+    ASSERT_EQ(deviceRet, OH_AI_STATUS_SUCCESS);
+    if (strcmp(nnrtDevice, "K5010") == 0) {
+        printf("nnrtDevice is K5010, skip this test");
         return;
     }
     printf("==========Init Context==========\n");
@@ -4262,6 +4356,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0012, Function | MediumTes
         printf("NNRt is not NPU, skip this test");
         return;
     }
+    char nnrtDevice[128];
+    OH_AI_Status deviceRet = OH_AI_Test_GetDeviceID(nnrtDevice, sizeof(nnrtDevice));
+    printf("nnrtDevice name: %s. \n", nnrtDevice);
+    ASSERT_EQ(deviceRet, OH_AI_STATUS_SUCCESS);
+    if (strcmp(nnrtDevice, "K5010") == 0) {
+        printf("nnrtDevice is K5010, skip this test");
+        return;
+    }
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
@@ -4309,6 +4411,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0013, Function | MediumTes
         printf("NNRt is not NPU, skip this test");
         return;
     }
+    char nnrtDevice[128];
+    OH_AI_Status deviceRet = OH_AI_Test_GetDeviceID(nnrtDevice, sizeof(nnrtDevice));
+    printf("nnrtDevice name: %s. \n", nnrtDevice);
+    ASSERT_EQ(deviceRet, OH_AI_STATUS_SUCCESS);
+    if (strcmp(nnrtDevice, "K5010") == 0) {
+        printf("nnrtDevice is K5010, skip this test");
+        return;
+    }
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
@@ -4350,10 +4460,18 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0013, Function | MediumTes
     OH_AI_ModelDestroy(&model);
 }
 
-// 正常场景：HIAI流程，设置 NPU 和外围输入/输出(I/O)设备的带宽模式BandMode模式为HIAI_BANDMODE_UNSET
+// 正常场景：HIAI流程，设置 NPU 和外围输入/输出(I/O)设备的带宽模式BandMode模式为HIAI_BANDMODE_HIGH
 HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0014, Function | MediumTest | Level1) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    char nnrtDevice[128];
+    OH_AI_Status deviceRet = OH_AI_Test_GetDeviceID(nnrtDevice, sizeof(nnrtDevice));
+    printf("nnrtDevice name: %s. \n", nnrtDevice);
+    ASSERT_EQ(deviceRet, OH_AI_STATUS_SUCCESS);
+    if (strcmp(nnrtDevice, "K5010") == 0) {
+        printf("nnrtDevice is K5010, skip this test");
         return;
     }
     printf("==========Init Context==========\n");
@@ -4403,6 +4521,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0015, Function | MediumTes
         printf("NNRt is not NPU, skip this test");
         return;
     }
+    char nnrtDevice[128];
+    OH_AI_Status deviceRet = OH_AI_Test_GetDeviceID(nnrtDevice, sizeof(nnrtDevice));
+    printf("nnrtDevice name: %s. \n", nnrtDevice);
+    ASSERT_EQ(deviceRet, OH_AI_STATUS_SUCCESS);
+    if (strcmp(nnrtDevice, "K5010") == 0) {
+        printf("nnrtDevice is K5010, skip this test");
+        return;
+    }
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
@@ -4450,6 +4576,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0016, Function | MediumTes
         printf("NNRt is not NPU, skip this test");
         return;
     }
+    char nnrtDevice[128];
+    OH_AI_Status deviceRet = OH_AI_Test_GetDeviceID(nnrtDevice, sizeof(nnrtDevice));
+    printf("nnrtDevice name: %s. \n", nnrtDevice);
+    ASSERT_EQ(deviceRet, OH_AI_STATUS_SUCCESS);
+    if (strcmp(nnrtDevice, "K5010") == 0) {
+        printf("nnrtDevice is K5010, skip this test");
+        return;
+    }
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
@@ -4495,6 +4629,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0017, Function | MediumTes
         printf("NNRt is not NPU, skip this test");
         return;
     }
+    char nnrtDevice[128];
+    OH_AI_Status deviceRet = OH_AI_Test_GetDeviceID(nnrtDevice, sizeof(nnrtDevice));
+    printf("nnrtDevice name: %s. \n", nnrtDevice);
+    ASSERT_EQ(deviceRet, OH_AI_STATUS_SUCCESS);
+    if (strcmp(nnrtDevice, "K5010") == 0) {
+        printf("nnrtDevice is K5010, skip this test");
+        return;
+    }
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
@@ -4531,6 +4673,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0017, Function | MediumTes
 HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0018, Function | MediumTest | Level1) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    char nnrtDevice[128];
+    OH_AI_Status deviceRet = OH_AI_Test_GetDeviceID(nnrtDevice, sizeof(nnrtDevice));
+    printf("nnrtDevice name: %s. \n", nnrtDevice);
+    ASSERT_EQ(deviceRet, OH_AI_STATUS_SUCCESS);
+    if (strcmp(nnrtDevice, "K5010") == 0) {
+        printf("nnrtDevice is K5010, skip this test");
         return;
     }
     printf("==========Init Context==========\n");
@@ -4804,6 +4954,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0005, Function | MediumTest | Lev
 HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0006, Function | MediumTest | Level1) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    char nnrtDevice[128];
+    OH_AI_Status device_ret = OH_AI_Test_GetDeviceID(nnrtDevice, sizeof(nnrtDevice));
+    printf("nnrtDevice name: %s. \n", nnrtDevice);
+    ASSERT_EQ(device_ret, OH_AI_STATUS_SUCCESS);
+    if (strcmp(nnrtDevice, "K5010") == 0) {
+        printf("nnrtDevice is K5010, skip this test");
         return;
     }
     printf("==========OH_AI_ContextCreate==========\n");
@@ -6689,29 +6847,6 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0003, Function | MediumTest | Le
         OH_AI_ContextDestroy(&context);
         OH_AI_ModelDestroy(&model);
     }
-}
-
-void ThreadModelBuild(OH_AI_ModelHandle model, OH_AI_ContextHandle context)
-{
-    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
-        OH_AI_MODELTYPE_MINDIR, context);
-    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
-}
-// 正常调用接口，多线程创建model对象
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0004, Function | MediumTest | Level1) {
-    printf("==========OH_AI_ContextCreate==========\n");
-    OH_AI_ContextHandle context = OH_AI_ContextCreate();
-    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
-    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
-    printf("==========OH_AI_ModelBuildFromFile==========\n");
-    OH_AI_ModelHandle model = OH_AI_ModelCreate();
-    std::thread t1(ThreadModelBuild, model, context);
-    std::thread t2(ThreadModelBuild, model, context);
-    t1.join();
-    t2.join();
-    printf("==========OH_AI_ModelDestroy==========\n");
-    OH_AI_ContextDestroy(&context);
-    OH_AI_ModelDestroy(&model);
 }
 
 // 正常调用接口，多次释放model对象
