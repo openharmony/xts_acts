@@ -23,7 +23,7 @@ export default function SystemTransition() {
     beforeEach(async (done: Function) => {
       console.info('SystemTransition beforeEach start');
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Navigation/SystemTransition2',
+        url: 'MainAbility/pages/NavDestination/SystemTransition2',
       }
       try {
         router.clear();
