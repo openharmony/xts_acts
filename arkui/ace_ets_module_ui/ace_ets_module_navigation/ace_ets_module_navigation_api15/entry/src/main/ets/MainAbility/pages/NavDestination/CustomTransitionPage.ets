@@ -60,6 +60,7 @@ struct CustomTransitionPage {
       .title('Title')
       .titleMode(NavigationTitleMode.Mini)
       .navDestination(this.pageMap)
+      .mode(NavigationMode.Stack)
     }
   }
 }
