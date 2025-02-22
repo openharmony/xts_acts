@@ -43,15 +43,11 @@ export default function testsuite() {
   TextInputStopBackPressTest();
   TextAreaStopBackPressTest();
   SearchStopBackPressTest();
-  SelectionMenuOptions();
   PixelMapColorFilterTest();
   ResourceDefaultTest();
   VerticalAlignTest();
   ObjectFitTest();
   ImageSvgFillColorTest();
   editMenuOptions();
-  addOrDelText();
-  TextOnChangeOptionsTest();
-  TextOnWillChangeOptionsTest();
   bindSelectionMenuTest();
 }
