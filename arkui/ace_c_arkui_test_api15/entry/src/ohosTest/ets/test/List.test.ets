@@ -16,6 +16,9 @@
 import keyDispatchTest from "./keydispatchTest/KeyDispatchTest.test"
 import nodeHandleByIdTest from "./node/NodeHandleByIdTest.test"
 import getWindowInfoTest from "./window/GetWindowInfoTest.test"
+import checkboxGroupTest from "./checkbox/CheckboxGroupTest.test"
+import checkboxGroupGroupTest from "./checkboxgroup/CheckboxGroupGroupTest.test"
+import checkboxGroupSelectAllTest from "./checkboxgroup/CheckboxGroupSelectAllTest.test"
 import columnBackDropBlurTest from "./visual/columnBackDropBlurTest.test"
 import ProgressLinearStyleTest from "./progress/progressLinearStyleTest.test"
 import testLazyForEachExpandMode from "./lazyForEach/testLazyForEachExpandMode.test"
@@ -30,6 +33,9 @@ export default function testsuite() {
    keyDispatchTest();
    nodeHandleByIdTest();
    getWindowInfoTest();
+   checkboxGroupTest();
+   checkboxGroupGroupTest();
+   checkboxGroupSelectAllTest();
    columnBackDropBlurTest();
    ProgressLinearStyleTest();
    testLazyForEachExpandMode();

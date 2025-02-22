@@ -2,6 +2,9 @@
   "src": [
     "MainAbility/pages/XTSIndex",
     "MainAbility/pages/keydispatchtest/KeydispatchTest",
+    "MainAbility/pages/checkboxgroup/CheckboxGroupGroupTest",
+    "MainAbility/pages/checkboxgroup/CheckboxGroupSelectAllTest",
+    "MainAbility/pages/checkbox/CheckboxGroupTest",
     "MainAbility/pages/node/TestNodeHandleById",
     "MainAbility/pages/window/TestGetWindowInfo",
     "MainAbility/pages/window/TestHostWindowInfoGetName",

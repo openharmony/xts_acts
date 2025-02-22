@@ -13,6 +13,9 @@ include_directories(
 add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
+    checkboxgroup/checkboxgroup_group_test.cpp
+    checkboxgroup/checkboxgroup_selectall_test.cpp
+    checkbox/checkbox_group_test.cpp
     keyDisPatchTest/keyEventDispatch_test.cpp
     node/node_handle_by_id_test.cpp
     window/get_window_info_test.cpp
