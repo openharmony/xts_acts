@@ -84,7 +84,7 @@ export default function SystemTransition() {
     /**
      * @tc.number    SystemTransition_0200
      * @tc.name      SystemTransition_0200
-     * @tc.desc      Test systemTransition and NavigationSystemTransitionType.FADE
+     * @tc.desc      Test systemTransition and NavigationSystemTransitionType.EXPLODE
      * @tc.level     Level 2
      */
     it('SystemTransition_0200', 0, async (done: Function) => {
@@ -117,7 +117,7 @@ export default function SystemTransition() {
     /**
      * @tc.number    SystemTransition_0300
      * @tc.name      SystemTransition_0300
-     * @tc.desc      Test systemTransition and NavigationSystemTransitionType.FADE
+     * @tc.desc      Test systemTransition and NavigationSystemTransitionType.SLIDE_RIGHT
      * @tc.level     Level 2
      */
     it('SystemTransition_0300', 0, async (done: Function) => {
@@ -150,7 +150,7 @@ export default function SystemTransition() {
     /**
      * @tc.number    SystemTransition_0400
      * @tc.name      SystemTransition_0400
-     * @tc.desc      Test systemTransition and NavigationSystemTransitionType.FADE
+     * @tc.desc      Test systemTransition and NavigationSystemTransitionType.SLIDE_BOTTOM
      * @tc.level     Level 2
      */
     it('SystemTransition_0400', 0, async (done: Function) => {
