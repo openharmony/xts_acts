@@ -13,12 +13,6 @@
  * limitations under the License.
  */
 
-
-import paddingContainerLengthTest from './padding/PaddingContainerLengthTest.test';
-import paddingBaseLengthTest from './padding/PaddingBaseLengthTest.test';
-
-export default function testsuite() {
-  paddingContainerLengthTest();
-  paddingBaseLengthTest();
-
+export class Constants {
+  static readonly EVENT_ID_CHANGE_DATA = 101
 }

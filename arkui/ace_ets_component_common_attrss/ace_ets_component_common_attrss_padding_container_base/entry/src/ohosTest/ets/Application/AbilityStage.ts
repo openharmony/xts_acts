@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
+import AbilityStage from '@ohos.app.ability.AbilityStage';
 
-import paddingContainerLengthTest from './padding/PaddingContainerLengthTest.test';
-import paddingBaseLengthTest from './padding/PaddingBaseLengthTest.test';
-
-export default function testsuite() {
-  paddingContainerLengthTest();
-  paddingBaseLengthTest();
-
+export default class MyAbilityStage extends AbilityStage {
+  onCreate() {
+    console.log('[Demo] MyAbilityStage onCreate');
+    globalThis.stageOnCreateRun = 1;
+    globalThis.stageContext = this.context;
+  }
 }
