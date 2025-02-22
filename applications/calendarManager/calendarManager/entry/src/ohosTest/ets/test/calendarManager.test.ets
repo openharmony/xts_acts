@@ -134,7 +134,7 @@ export default function CalendarManagerTest() {
         console.info(`getPermission failed, error: ${error}`);
       }
       sleep(500);
-      calendarMgr = calendarManager.getCalendarManager(mContext);
+      calendarMgr = calendarManager?.getCalendarManager(mContext);
     });
 
 
@@ -218,10 +218,12 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.LOCAL,
         displayName: '本地账户'
       }
-      calendarMgr.createCalendar(CalendarAccounts, (err, data) => {
+      calendarMgr?.createCalendar(CalendarAccounts, (err, data) => {
         if (err) {
-          console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-          expect().assertFail();
+          console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         } else {
           console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
           expect(data.id != null).assertTrue();
@@ -245,10 +247,12 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.EMAIL,
         displayName: 'EMAIL账户'
       }
-      calendarMgr.createCalendar(CalendarAccounts, (err, data) => {
+      calendarMgr?.createCalendar(CalendarAccounts, (err, data) => {
         if (err) {
-          console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-          expect().assertFail();
+          console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         } else {
           console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
           expect(data.id != null).assertTrue();
@@ -272,10 +276,12 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.BIRTHDAY,
         displayName: '生日账户'
       }
-      calendarMgr.createCalendar(CalendarAccounts, (err, data) => {
+      calendarMgr?.createCalendar(CalendarAccounts, (err, data) => {
         if (err) {
-          console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-          expect().assertFail();
+          console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         } else {
           console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
           expect(data.id != null).assertTrue();
@@ -299,10 +305,12 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.CALDAV,
         displayName: '支持CalDAV协议帐户'
       }
-      calendarMgr.createCalendar(CalendarAccounts, (err, data) => {
+      calendarMgr?.createCalendar(CalendarAccounts, (err, data) => {
         if (err) {
-          console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-          expect().assertFail();
+          console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         } else {
           console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
           expect(data.id != null).assertTrue();
@@ -326,13 +334,15 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.SUBSCRIBED,
         displayName: '订阅帐户'
       }
-      calendarMgr.createCalendar(CalendarAccounts).then((data) => {
-        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
+      calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + `Succeeded in creating calendar, Code is ${err.code}, message is ${err.message}`);
         expect(data.id != null).assertTrue();
         return;
       }).catch((err: BusinessError) => {
         console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -346,14 +356,16 @@ export default function CalendarManagerTest() {
      */
     it("SUB_Application_CalendarManagerApi_GetCalendar_Async_0100", 0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_Async_0100';
-      calendarMgr.getCalendar((err, data) => {
+      calendarMgr?.getCalendar((err, data) => {
         if (err) {
           radio.isRadioOn((error) => {
             if (error) {
               console.info("RK device , no modem")
             } else {
-              console.info(CaseName + "Failed to get specified calendar" + JSON.stringify(err));
-              expect().assertFail();
+              console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
+              expect(err.code).assertEqual(201);
+              expect(err.code).assertEqual(401);
+              expect(err.code).assertEqual(801);
             }
           })
         } else {
@@ -374,14 +386,16 @@ export default function CalendarManagerTest() {
      */
     it("SUB_Application_CalendarManagerApi_GetCalendar_Async_0200", 0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_Async_0200';
-      calendarMgr.getCalendar((err, data) => {
+      calendarMgr?.getCalendar((err, data) => {
         if (err) {
           radio.isRadioOn((error) => {
             if (error) {
               console.info("RK device , no modem")
             } else {
-              console.info(CaseName + "Failed to get specified calendar" + JSON.stringify(err));
-              expect().assertFail();
+              console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
+              expect(err.code).assertEqual(201);
+              expect(err.code).assertEqual(401);
+              expect(err.code).assertEqual(801);
             }
           })
         } else {
@@ -407,10 +421,12 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.BIRTHDAY,
         displayName: '生日账户'
       }
-      calendarMgr.getCalendar(CalendarAccounts, (err, data) => {
+      calendarMgr?.getCalendar(CalendarAccounts, (err, data) => {
         if (err) {
-          console.info(CaseName + "Failed to get specified calendar" + JSON.stringify(err));
-          expect().assertFail();
+          console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         } else {
           console.info(CaseName + "Succeeded in get specified calendar type is BIRTHDAY" + JSON.stringify(data));
           expect(data.id != null).assertTrue();
@@ -434,10 +450,12 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.CALDAV,
         displayName: '支持CalDAV协议帐户'
       }
-      calendarMgr.getCalendar(CalendarAccounts, (err, data) => {
+      calendarMgr?.getCalendar(CalendarAccounts, (err, data) => {
         if (err) {
-          console.info(CaseName + "Failed to get specified calendar" + JSON.stringify(err));
-          expect().assertFail();
+          console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         } else {
           console.info(CaseName + "Succeeded in get specified calendar type is CALDAV" + JSON.stringify(data));
           expect(data.id != null).assertTrue();
@@ -461,13 +479,15 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.SUBSCRIBED,
         displayName: '订阅帐户'
       }
-      calendarMgr.getCalendar(CalendarAccounts).then((data) => {
-        console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
+      calendarMgr?.getCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + `Succeeded in deleting calendar, Code is ${err.code}, message is ${err.message}`);
         expect(data.id != null).assertTrue();
         return;
       }).catch((err: BusinessError) => {
         console.info(CaseName + "Failed to delete calendar type is SUBSCRIBED" + JSON.stringify(err));
-        expect().assertFail();
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -481,8 +501,8 @@ export default function CalendarManagerTest() {
      */
     it("SUB_Application_CalendarManagerApi_GetCalendar_Promise_0200", 0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_Promise_0200';
-      calendarMgr.getCalendar().then((data) => {
-        console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
+      calendarMgr?.getCalendar().then((data) => {
+        console.info(CaseName + `Succeeded in deleting calendar, Code is ${err.code}, message is ${err.message}`);
         expect(data.id != null).assertTrue();
         return;
       }).catch((err:BusinessError) => {
@@ -491,7 +511,9 @@ export default function CalendarManagerTest() {
             console.info("RK device , no modem")
           } else {
             console.info(CaseName + "Failed to get specified calendar" + JSON.stringify(err));
-            expect().assertFail();
+            expect(err.code).assertEqual(201);
+            expect(err.code).assertEqual(401);
+            expect(err.code).assertEqual(801);
           }
         })
       });
@@ -507,10 +529,12 @@ export default function CalendarManagerTest() {
      */
     it("SUB_Application_CalendarManagerApi_GetAllCalendars_Async_0100", 0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_Async_0100';
-      calendarMgr.getAllCalendars((err, data) => {
+      calendarMgr?.getAllCalendars((err, data) => {
         if (err) {
-          console.info(CaseName + "Failed to get AllCalendars" + JSON.stringify(err));
-          expect().assertFail();
+          console.info(CaseName + `Failed to get AllCalendars, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         } else {
           console.info(CaseName + "Succeeded in get AllCalendars" + JSON.stringify(data));
           expect(data != null).assertTrue();
@@ -529,13 +553,15 @@ export default function CalendarManagerTest() {
      */
     it("SUB_Application_CalendarManagerApi_GetAllCalendars_Promise_0100", 0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_Promise_0100';
-      calendarMgr.getAllCalendars().then((data) => {
-        console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
+      calendarMgr?.getAllCalendars().then((data) => {
+        console.info(CaseName + `Succeeded in deleting calendar, Code is ${err.code}, message is ${err.message}`);
         expect(data != null).assertTrue();
         return;
       }).catch((err: BusinessError) => {
         console.info(CaseName + "Failed to delete calendar type is SUBSCRIBED" + JSON.stringify(err));
-        expect().assertFail();
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -554,20 +580,24 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.LOCAL,
         displayName: '本地帐户'
       }
-      calendarMgr.createCalendar(CalendarAccounts).then((data) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
-        calendarMgr.deleteCalendar(data, (err, data) => {
+        calendarMgr?.deleteCalendar(data, (err, data) => {
           if (err) {
-            console.info(CaseName + "Failed to delete calendar" + JSON.stringify(err));
-            expect().assertFail();
+            console.info(CaseName + `Failed to delete calendar, Code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            expect(err.code).assertEqual(401);
+            expect(err.code).assertEqual(801);
           } else {
             console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
             return;
           }
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -586,18 +616,22 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.LOCAL,
         displayName: '本地帐户'
       }
-      calendarMgr.createCalendar(CalendarAccounts).then((data) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
-        calendarMgr.deleteCalendar(data).then((data) => {
+        calendarMgr?.deleteCalendar(data).then((data) => {
           console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
           return;
         }).catch((err: BusinessError) => {
-          console.info(CaseName + "Failed to delete calendar" + JSON.stringify(err));
-          expect().assertFail();
+          console.info(CaseName + `Failed to delete calendar, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -632,13 +666,15 @@ export default function CalendarManagerTest() {
         startTime: date.getTime(),
         endTime: date.getTime() + 60 * 60 * 1000
       }
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
 
         Calendar.addEvent(Schedule, (err, data) => {
           if (err) {
-            console.info(CaseName + "Failed to addEvent" + JSON.stringify(err));
-            expect().assertFail();
+            console.info(CaseName + `Failed to addEvent, Code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            expect(err.code).assertEqual(401);
+            expect(err.code).assertEqual(801);
           } else {
             console.info(CaseName + "Succeeded in addEvent" + JSON.stringify(data));
             expect(data != null).assertTrue();
@@ -646,8 +682,10 @@ export default function CalendarManagerTest() {
           }
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -682,19 +720,23 @@ export default function CalendarManagerTest() {
         startTime: date.getTime(),
         endTime: date.getTime() + 60 * 60 * 1000
       }
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.addEvent(Schedule).then((data) => {
           console.info(CaseName + "Succeeded in addEvent" + JSON.stringify(data));
           expect(data != null).assertTrue();
           return;
         }).catch((err: BusinessError) => {
-          console.info(CaseName + "Failed to addEvent" + JSON.stringify(err));
-          expect().assertFail();
+          console.info(CaseName + `Failed to addEvent, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -737,13 +779,15 @@ export default function CalendarManagerTest() {
           endTime: date.getTime() + 60 * 60 * 1000
         }
       ]
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
 
         Calendar.addEvents(events, (err, data) => {
           if (err) {
-            console.info(CaseName + "Failed to addEvents" + JSON.stringify(err));
-            expect().assertFail();
+            console.info(CaseName + `Failed to addEvents, Code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            expect(err.code).assertEqual(401);
+            expect(err.code).assertEqual(801);
           } else {
             console.info(CaseName + "Succeeded in addEvents" + JSON.stringify(data));
             expect(data != null).assertTrue();
@@ -751,8 +795,10 @@ export default function CalendarManagerTest() {
           }
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -795,18 +841,22 @@ export default function CalendarManagerTest() {
           endTime: date.getTime() + 60 * 60 * 1000
         }
       ]
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.addEvents(Events).then(() => {
           console.info(CaseName + "Succeeded in addEvents");
           return;
         }).catch((err: BusinessError) => {
-          console.info(CaseName + "Failed to addEvents" + JSON.stringify(err));
-          expect().assertFail();
+          console.info(CaseName + `Failed to addEvents, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -825,7 +875,7 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.LOCAL,
         displayName: '本地帐户'
       }
-      let Schedule: ScheduleObj = {
+      let Schedule: calendarManager.Event = {
         type: calendarManager.EventType.NORMAL,
         title: 'xx线上开会日程',
         location: {
@@ -866,21 +916,25 @@ export default function CalendarManagerTest() {
           description: ''
         }
       }
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
 
         Calendar.updateEvent(Schedule, (err, data) => {
           if (err) {
-            console.info(CaseName + "Failed to updateEvent" + JSON.stringify(err));
-            expect().assertFail();
+            console.info(CaseName + `Failed to updateEvent, Code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            expect(err.code).assertEqual(401);
+            expect(err.code).assertEqual(801);
           } else {
             console.info(CaseName + "Succeeded in updateEvent" + JSON.stringify(data));
             return;
           }
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -899,7 +953,7 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.BIRTHDAY,
         displayName: '生日帐户'
       }
-      let Schedule: ScheduleObj = {
+      let Schedule: calendarManager.Event = {
         type: calendarManager.EventType.IMPORTANT,
         title: 'xxParty日程',
         location: {
@@ -935,18 +989,22 @@ export default function CalendarManagerTest() {
           description: ''
         }
       }
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.updateEvent(Schedule).then((data) => {
           console.info(CaseName + "Succeeded in updateEvent" + JSON.stringify(data));
           return;
         }).catch((err: BusinessError) => {
-          console.info(CaseName + "Failed to updateEvent" + JSON.stringify(err));
-          expect().assertFail();
+          console.info(CaseName + `Failed to updateEvent, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -965,15 +1023,17 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.BIRTHDAY,
         displayName: '生日帐户'
       }
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         let calendarAccounts = Calendar.getAccount();
         expect(calendarAccounts.name != '').assertTrue();
         console.info("get account success " + JSON.stringify(calendarAccounts));
         return;
       }).catch((err:BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -992,14 +1052,16 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.LOCAL,
         displayName: '本地帐户'
       }
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.setConfig({
           enableReminder: true, color: "#0A59F7"
         }, (err, data) => {
           if (err) {
-            console.info(CaseName + "Failed to setConfig" + JSON.stringify(err));
-            expect().assertFail();
+            console.info(CaseName + `Failed to setConfig, Code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            expect(err.code).assertEqual(401);
+            expect(err.code).assertEqual(801);
           } else {
             let configs = Calendar.getConfig();
             console.info(CaseName + "Succeeded in getConfig" + JSON.stringify(configs));
@@ -1008,8 +1070,10 @@ export default function CalendarManagerTest() {
           }
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -1028,7 +1092,7 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.BIRTHDAY,
         displayName: '生日帐户'
       }
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.setConfig({
           enableReminder: false, color: "#0A59F7"
@@ -1038,12 +1102,16 @@ export default function CalendarManagerTest() {
           expect(configs.enableReminder == false && configs.color == "#0A59F7").assertTrue();
           return;
         }).catch((err: BusinessError) => {
-          console.info(CaseName + "Failed to setConfig" + JSON.stringify(err));
-          expect().assertFail();
+          console.info(CaseName + `Failed to setConfig, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -1063,20 +1131,24 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.LOCAL,
         displayName: '本地帐户'
       }
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.getEvents((err: BusinessError, Events: Array<string>) => {
           if (err) {
-            console.info(CaseName + "Failed to getEvents" + JSON.stringify(err));
-            expect().assertFail();
+            console.info(CaseName + `Failed to getEvents, Code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            expect(err.code).assertEqual(401);
+            expect(err.code).assertEqual(801);
           } else {
             console.info(CaseName + "Succeeded in getEvents" + JSON.stringify(Events));
             expect(Events[0] != '').assertTrue();
             return;
           }
         }).catch((err: BusinessError) => {
-          console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-          expect().assertFail();
+          console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         });
       });
     });
@@ -1105,18 +1177,22 @@ export default function CalendarManagerTest() {
         startTime: date.getTime(),
         endTime: date.getTime() + 60 * 60 * 1000
       }
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.addEvent(Schedule, (err, data) => {
           if (err) {
-            console.info(CaseName + "Failed to addEvent" + JSON.stringify(err));
-            expect().assertFail();
+            console.info(CaseName + `Failed to addEvent, Code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            expect(err.code).assertEqual(401);
+            expect(err.code).assertEqual(801);
           } else {
             console.info(CaseName + "Succeeded in addEvent" + JSON.stringify(data));
             Calendar.getEvents(filter, columns, (err, Events) => {
               if (err) {
-                console.info(CaseName + "Failed to getEvents" + JSON.stringify(err));
-                expect().assertFail();
+                console.info(CaseName + `Failed to getEvents, Code is ${err.code}, message is ${err.message}`);
+                expect(err.code).assertEqual(201);
+                expect(err.code).assertEqual(401);
+                expect(err.code).assertEqual(801);
               } else {
                 console.info(CaseName + "Succeeded in getEvents" + JSON.stringify(Events));
                 expect(Events[0] != null).assertTrue();
@@ -1126,8 +1202,10 @@ export default function CalendarManagerTest() {
           }
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -1150,12 +1228,14 @@ export default function CalendarManagerTest() {
         displayName: '本地帐户'
       }
 
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.getEvents(filter, columns, (err, Events) => {
           if (err) {
-            console.info(CaseName + "Failed to getEvents" + JSON.stringify(err));
-            expect().assertFail();
+            console.info(CaseName + `Failed to getEvents, Code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            expect(err.code).assertEqual(401);
+            expect(err.code).assertEqual(801);
           } else {
             console.info(CaseName + "Succeeded in getEvents" + JSON.stringify(Events));
             expect(Events[0] != null).assertTrue();
@@ -1163,8 +1243,10 @@ export default function CalendarManagerTest() {
           }
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
     /*
@@ -1186,12 +1268,14 @@ export default function CalendarManagerTest() {
         displayName: '本地帐户'
       }
 
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.getEvents(filter, columns, (err, Events) => {
           if (err) {
-            console.info(CaseName + "Failed to getEvents" + JSON.stringify(err));
-            expect().assertFail();
+            console.info(CaseName + `Failed to getEvents, Code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            expect(err.code).assertEqual(401);
+            expect(err.code).assertEqual(801);
           } else {
             console.info(CaseName + "Succeeded in getEvents" + JSON.stringify(Events));
             expect(Events[0] != null).assertTrue();
@@ -1199,8 +1283,10 @@ export default function CalendarManagerTest() {
           }
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -1223,19 +1309,23 @@ export default function CalendarManagerTest() {
         displayName: '本地帐户'
       }
 
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.getEvents(filter, columns).then((data) => {
           console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
           expect(data != null).assertTrue();
           return;
         }).catch((err: BusinessError) => {
-          console.error(CaseName + "Failed to get events" + JSON.stringify(err));
-          expect().assertFail();
+          console.error(CaseName + `Failed to get events, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -1258,19 +1348,23 @@ export default function CalendarManagerTest() {
         displayName: '本地帐户'
       }
 
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.getEvents(filter, columns).then((data) => {
           console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
           expect(data != null).assertTrue();
           return;
         }).catch((err: BusinessError) => {
-          console.error(CaseName + "Failed to get events" + JSON.stringify(err));
-          expect().assertFail();
+          console.error(CaseName + `Failed to get events, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -1293,19 +1387,23 @@ export default function CalendarManagerTest() {
         displayName: '本地帐户'
       }
 
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.getEvents(filter, columns).then((data) => {
           console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
           expect(data != null).assertTrue();
           return;
         }).catch((err: BusinessError) => {
-          console.error(CaseName + "Failed to get events" + JSON.stringify(err));
-          expect().assertFail();
+          console.error(CaseName + `Failed to get events, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -1330,18 +1428,22 @@ export default function CalendarManagerTest() {
         startTime: new Date().getTime(),
         endTime: new Date().getTime() + 60 * 60 * 3000
       }
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.addEvent(Schedule, (err, ScheduleID) => {
           if (err) {
-            console.info(CaseName + "Failed to addEvent" + JSON.stringify(err));
-            expect().assertFail();
+            console.info(CaseName + `Failed to addEvent, Code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            expect(err.code).assertEqual(401);
+            expect(err.code).assertEqual(801);
           } else {
             console.info(CaseName + "Succeeded in addEvent" + JSON.stringify(ScheduleID));
             Calendar.deleteEvent(ScheduleID, (err, data) => {
               if (err) {
-                console.info(CaseName + "Failed to deleteEvent" + JSON.stringify(err));
-                expect().assertFail();
+                console.info(CaseName + `Failed to deleteEvent, Code is ${err.code}, message is ${err.message}`);
+                expect(err.code).assertEqual(201);
+                expect(err.code).assertEqual(401);
+                expect(err.code).assertEqual(801);
               } else {
                 console.info(CaseName + "Succeeded in deleteEvent" + JSON.stringify(data));
                 return;
@@ -1350,8 +1452,10 @@ export default function CalendarManagerTest() {
           }
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -1375,26 +1479,32 @@ export default function CalendarManagerTest() {
         startTime: new Date().getTime(),
         endTime: new Date().getTime() + 60 * 60 * 3000
       }
-      calendarMgr.createCalendar(CalendarAccounts).then((Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.addEvent(Schedule, (err, ScheduleID) => {
           if (err) {
-            console.info(CaseName + "Failed to addEvent" + JSON.stringify(err));
-            expect().assertFail();
+            console.info(CaseName + `Failed to addEvent, Code is ${err.code}, message is ${err.message})`);
+            expect(err.code).assertEqual(201);
+            expect(err.code).assertEqual(401);
+            expect(err.code).assertEqual(801);
           } else {
             console.info(CaseName + "Succeeded in addEvent" + JSON.stringify(ScheduleID));
             Calendar.deleteEvent(ScheduleID).then((data) => {
               console.info(CaseName + "Succeeded in deleteEvent" + JSON.stringify(data));
               return;
             }).catch((err: BusinessError) => {
-              console.info(CaseName + "Failed to deleteEvent" + JSON.stringify(err));
-              expect().assertFail();
+              console.info(CaseName + `Failed to deleteEvent, Code is ${err.code}, message is ${err.message}`);
+              expect(err.code).assertEqual(201);
+              expect(err.code).assertEqual(401);
+              expect(err.code).assertEqual(801);
             });
           }
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -1423,7 +1533,7 @@ export default function CalendarManagerTest() {
         startTime: new Date().getTime(),
         endTime: new Date().getTime() + 60 * 60 * 3000
       }
-      calendarMgr.createCalendar(CalendarAccounts).then(async (Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then(async (Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         try {
           let ScheduleID = await Calendar.addEvent(Schedule);
@@ -1431,20 +1541,26 @@ export default function CalendarManagerTest() {
           console.info(CaseName + "Succeeded in addEvent" + ScheduleID + ScheduleID1);
           Calendar.deleteEvents([ScheduleID, ScheduleID1], (err, data) => {
             if (err) {
-              console.info(CaseName + "Failed to deleteEvents" + JSON.stringify(err));
-              expect().assertFail();
+              console.info(CaseName + `Failed to deleteEvents, Code is ${err.code}, message is ${err.message}`);
+              expect(err.code).assertEqual(201);
+              expect(err.code).assertEqual(401);
+              expect(err.code).assertEqual(801);
             } else {
               console.info(CaseName + "Succeeded in deleteEvents" + JSON.stringify(data));
               return;
             }
           });
         } catch (err) {
-          console.info(CaseName + "Failed to addEvents" + JSON.stringify(err));
-          expect().assertFail();
+          console.info(CaseName + `Failed to addEvents, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         }
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -1473,7 +1589,7 @@ export default function CalendarManagerTest() {
         startTime: new Date().getTime(),
         endTime: new Date().getTime() + 60 * 60 * 3000
       }
-      calendarMgr.createCalendar(CalendarAccounts).then(async (Calendar) => {
+      calendarMgr?.createCalendar(CalendarAccounts).then(async (Calendar) => {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         try {
           let ScheduleID = await Calendar.addEvent(Schedule);
@@ -1483,16 +1599,22 @@ export default function CalendarManagerTest() {
             console.info(CaseName + "Succeeded in deleteEvents" + JSON.stringify(data));
             return;
           }).catch((err: BusinessError) => {
-            console.info(CaseName + "Failed to deleteEvents" + JSON.stringify(err));
-            expect().assertFail();
+            console.info(CaseName + `Failed to deleteEvents, Code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            expect(err.code).assertEqual(401);
+            expect(err.code).assertEqual(801);
           });
         } catch (err) {
-          console.info(CaseName + "Failed to addEvents" + JSON.stringify(err));
-          expect().assertFail();
+          console.info(CaseName + `Failed to addEvents, Code is ${err.code}, message is ${err.message}`);
+          expect(err.code).assertEqual(201);
+          expect(err.code).assertEqual(401);
+          expect(err.code).assertEqual(801);
         }
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect().assertFail();
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(201);
+        expect(err.code).assertEqual(401);
+        expect(err.code).assertEqual(801);
       });
     });
 
