@@ -2264,6 +2264,225 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         }
       }
     })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4300
+     * @tc.name       : PiPSizeChange_Function_Callback
+     * @tc.desc       : To test the function of PiPSizeChange
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level3
+     */
+    it('PiPSizeChange_Function_Callback_0', 0, async (done:Function) => {
+      let pipController:pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let res1 = false;
+      let res2 = false;
+      let config:pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+      };
+      try {
+        pipController = await pipWindow.create(config);
+        console.log('data PiPSizeChange_Function_Callback_0 begin');
+        pipController.on('pipWindowSizeChange', (size: pipWindow.PiPWindowSize) => {
+          console.info('PiPSizeChange callback 1 size info: ' + JSON.stringify(size) + ' result: ' + res1);
+          res1 = true;
+        });
+        pipController.on('pipWindowSizeChange', (size: pipWindow.PiPWindowSize) => {
+          console.info('PiPSizeChange callback 2 size info: ' + JSON.stringify(size) + ' result: ' + res2);
+          res2 = true;
+        });
+        let promise = pipController.startPiP();
+        promise.then(() => {
+          console.log('PiPSizeChange data Succeeded in starting pip');
+          expect(true).assertTrue();
+        }).catch((err0: BusinessError) => {
+          console.log('PiPSizeChange data Failed1 to start pip. Cause:' + JSON.stringify(err0));
+          expect().assertFail();
+          done();
+        });
+        let width = 410;
+        let height = 910;
+        pipController.updateContentSize(width, height);
+        try {
+          await sleep(1000);
+          expect(res1).assertEqual(true);
+          expect(res2).assertEqual(true);
+          console.log('PiPSizeChange Succeeded check result');
+          done();
+        } catch (e) {
+          console.log('PiPSizeChange failed' + JSON.stringify(e));
+          done();
+        }
+      } catch (err2) {
+        console.log('data Failed0 to PiPSizeChange_test' + JSON.stringify(err2))
+        if(err2.code == 801 || err2.code == 401){
+          expect().assertTrue();
+          done();
+        } else {
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4400
+     * @tc.name       : PiPSizeChange_Function_Callback
+     * @tc.desc       : To test the function of PiPSizeChange
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level3
+     */
+    it('PiPSizeChange_Function_Callback_1', 0, async (done:Function) => {
+      let pipController:pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let res1 = false;
+      let res2 = false;
+      let config:pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+      };
+      try {
+        pipController = await pipWindow.create(config);
+        console.log('data PiPSizeChange_Function_Callback_1 begin');
+        let callback1 = (size: pipWindow.PiPWindowSize) => {
+          console.info('PiPSizeChange callback 1 size info: ' + JSON.stringify(size) + ' result: ' + res1);
+          res1 = true;
+        };
+        let callback2 = (size: pipWindow.PiPWindowSize) => {
+          console.info('PiPSizeChange callback 2 siz info: ' + JSON.stringify(size) + ' result: ' + res2);
+          res2 = true;
+        };
+        pipController.on('pipWindowSizeChange', callback1);
+        pipController.on('pipWindowSizeChange', callback2);
+        pipController.off('pipWindowSizeChange', callback1);
+        let promise = pipController.startPiP();
+        promise.then(() => {
+          console.log('PiPSizeChange data Succeeded in starting pip');
+          expect(true).assertTrue();
+        }).catch((err0:BusinessError) => {
+          console.log('PiPSizeChange data Failed2 to start pip. Cause:' + JSON.stringify(err0));
+          expect().assertFail();
+          done();
+        });
+        let width = 420;
+        let height = 920;
+        pipController.updateContentSize(width, height);
+        try {
+          await sleep(1000);
+          expect(res1).assertEqual(false);
+          expect(res2).assertEqual(true);
+          console.log('PiPSizeChange Succeeded check result');
+          done();
+        } catch (e) {
+          console.log('PiPSizeChange Succeeded failed' + JSON.stringify(e));
+          done();
+        }
+      } catch (err2) {
+        console.log('data Failed2 to PiPSizeChange_test' + JSON.stringify(err2))
+        if(err2.code == 801 || err2.code == 401){
+          expect(true).assertTrue();
+          done();
+        } else{
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4500
+     * @tc.name       : PiPSizeChange_Function_Callback
+     * @tc.desc       : To test the function of PiPSizeChange
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level3
+     */
+    it('PiPSizeChange_Function_Callback_2', 0, async (done:Function) => {
+      let pipController:pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let res1 = false;
+      let res2 = false;
+      let config:pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+      };
+      try {
+        pipController = await pipWindow.create(config);
+        console.log('data PiPSizeChange_Function_Callback_2 begin');
+        let callback1 = (size: pipWindow.PiPWindowSize) => {
+          console.info('PiPSizeChange callback 1 size info: ' + JSON.stringify(size) + ' result: ' + res1);
+          res1 = true;
+        };
+        let callback2 = (size: pipWindow.PiPWindowSize) => {
+          console.info('PiPSizeChange callback 2 siz info: ' + JSON.stringify(size) + ' result: ' + res2);
+          res2 = true;
+        };
+        pipController.on('pipWindowSizeChange', callback1);
+        pipController.on('pipWindowSizeChange', callback2);
+        try {
+          pipController.off('pipWindowSizeChange');
+          console.log('PiPSizeChange data Succeeded in starting pip');
+          expect(true).assertTrue();
+          done()
+        } catch (err0) {
+          console.log('PiPSizeChange Failed to off register: ' + JSON.stringify(err0));
+          expect().assertFail();
+          done();
+        }
+        let promise = pipController.startPiP();
+        promise.then(() => {
+          console.log('PiPSizeChange data Succeeded in starting pip');
+          expect(true).assertTrue();
+        }).catch((err1:BusinessError) => {
+          console.log('PiPSizeChange data Failed3 to start pip. Cause:' + JSON.stringify(err1));
+          expect().assertFail();
+          done();
+        });
+        let width = 430;
+        let height = 930;
+        pipController.updateContentSize(width, height);
+        try {
+          await sleep(1000);
+          expect(res1).assertEqual(false);
+          expect(res2).assertEqual(false);
+          console.log('PiPSizeChange Succeeded check result');
+          done();
+        } catch (e) {
+          console.log('PiPSizeChange Succeeded failed' + JSON.stringify(e));
+          done();
+        }
+      } catch (err2) {
+        console.log('data Failed3 to PiPSizeChange_test' + JSON.stringify(err2));
+        if(err2.code == 801 || err2.code == 401){
+          expect(true).assertTrue();
+          done();
+        } else{
+          expect().assertFail();
+          done();
+        }
+      }
+    })
   })
 }
 
