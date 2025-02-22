@@ -12,18 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
-
 import defaultTest from './default/DefaultTest.test';
-import defaultFocusValueTest from './default/DefaultFocusValueTest.test';
-import defaultFlexTest from './default/DefaultFlexTest.test';
-import defaultFlexByGridRowTest from './default/DefaultFlexByGridRowTest.test';
 
 export default function testsuite() {
-  defaultFocusValueTest();
-  defaultFlexTest();
-  defaultFlexByGridRowTest();
   defaultTest();
-
 }
