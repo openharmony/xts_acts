@@ -51,6 +51,7 @@ struct IndexPage {
     { title: 'LongPressGesture', uri: 'pages/ArkUI/LongPressGesture' },
     { title: 'TapGesture', uri: 'pages/ArkUI/TapGesture' },
     { title: 'PanGesture', uri: 'pages/ArkUI/PanGesture' },
+    { title: 'bindSheetTest', uri: 'pages/ArkUI/bindSheetTest' },
     { title: 'CanvasFillStyle', uri: 'pages/ArkUI/CanvasFillStyle' },
     { title: 'CanvasLineWidth', uri: 'pages/ArkUI/CanvasLineWidth' },
     { title: 'CanvasStrokeStyle', uri: 'pages/ArkUI/CanvasStrokeStyle' },
