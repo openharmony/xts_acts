@@ -47,7 +47,6 @@
 #define NUMBER_500 500
 #define NUMBER_1000 1000
 #define NUMBER_100000 100000
-#define ERR_40001000 40001000
 
 using GetPlatformDisplayExt = PFNEGLGETPLATFORMDISPLAYEXTPROC;
 constexpr const char *EGL_EXT_PLATFORM_WAYLAND = "EGL_EXT_platform_wayland";
