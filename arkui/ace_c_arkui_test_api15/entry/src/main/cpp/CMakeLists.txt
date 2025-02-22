@@ -22,10 +22,13 @@ add_library(nativerender SHARED
     progress/progress_linear_style_test.cpp
     lazyForEach/lazyforeach_expand_mode_test.cpp
     focusControl/focus_control.cpp
+    list/list_test.cpp
+    listScrollTo/list_scroll_to_test.cpp
 )
 
 add_library(nativefunc SHARED
     napi_func_init.cpp
+    listItemGroup/list_item_group_test.cpp
 )
 
 find_library(

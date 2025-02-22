@@ -14,7 +14,6 @@
  */
 #include "common/common.h"
 #include "text/text_immutablf_font_weight.cpp"
-#include "listItemGroup/list_item_group_test.h"
 #include "button/button_type_test.cpp"
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -58,12 +57,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"textImmutablfFontWeight_016", nullptr, textImmutablfFontWeight_016,
          nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testListItemGroupNodeAdapter001", nullptr, ListItemGroupTest::TestListItemGroupNodeAdapter001, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"testListItemGroupNodeAdapter002", nullptr, ListItemGroupTest::TestListItemGroupNodeAdapter002, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"testListItemGroupNodeAdapter003", nullptr, ListItemGroupTest::TestListItemGroupNodeAdapter003, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
         {"testButtonType006", nullptr, TestButtonType006, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testButtonType007", nullptr, TestButtonType007, nullptr, nullptr, nullptr, napi_default, nullptr},
  
