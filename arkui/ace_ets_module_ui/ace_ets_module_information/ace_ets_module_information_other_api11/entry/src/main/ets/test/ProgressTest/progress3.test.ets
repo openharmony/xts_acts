@@ -19,7 +19,7 @@ import CommonFunc from '../../MainAbility/common/Common';
 import config from '@ohos.accessibility.config';
 import accessibility from '@ohos.accessibility';
 const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
-const BUNDLE_NAME = 'com.arkui.ace.information/MainAbility';
+const BUNDLE_NAME = 'com.arkui.ace.information.other/MainAbility';
 
 export default function progressScaleCountJsunit() {
   describe('progressScaleCountTest', () => {
