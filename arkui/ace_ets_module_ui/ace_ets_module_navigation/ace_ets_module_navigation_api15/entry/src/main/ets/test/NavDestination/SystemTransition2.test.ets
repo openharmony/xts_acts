@@ -85,14 +85,14 @@ export default function SystemTransition() {
      */
     it('SystemTransition_0200', 0, async (done: Function) => {
       console.info('SystemTransition_0200 START');
-      await CommonFunc.sleep(200);
+      await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
       await CommonFunc.sleep(500);
 
       let btn1 = await driver.findComponent(ON.id('popId'));
       await btn1.click()
-      console.info('[SystemTransition_0100] btn1 click');
+      console.info('[SystemTransition_0200] btn1 click');
       await CommonFunc.sleep(500);
 
       let btn2 = await driver.findComponent(ON.id('btnTwoId'));
@@ -119,14 +119,14 @@ export default function SystemTransition() {
      */
     it('SystemTransition_0300', 0, async (done: Function) => {
       console.info('SystemTransition_0300 START');
-      await CommonFunc.sleep(200);
+      await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
       await CommonFunc.sleep(500);
 
       let btn1 = await driver.findComponent(ON.id('popId'));
       await btn1.click()
-      console.info('[SystemTransition_0100] btn1 click');
+      console.info('[SystemTransition_0300] btn1 click');
       await CommonFunc.sleep(500);
 
       let btn2 = await driver.findComponent(ON.id('btnThreeId'));
@@ -153,14 +153,14 @@ export default function SystemTransition() {
      */
     it('SystemTransition_0400', 0, async (done: Function) => {
       console.info('SystemTransition_0400 START');
-      await CommonFunc.sleep(200);
+      await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
       await CommonFunc.sleep(500);
 
       let btn1 = await driver.findComponent(ON.id('popId'));
       await btn1.click()
-      console.info('[SystemTransition_0100] btn1 click');
+      console.info('[SystemTransition_0400] btn1 click');
       await CommonFunc.sleep(500);
 
       let btn2 = await driver.findComponent(ON.id('btnFourId'));
