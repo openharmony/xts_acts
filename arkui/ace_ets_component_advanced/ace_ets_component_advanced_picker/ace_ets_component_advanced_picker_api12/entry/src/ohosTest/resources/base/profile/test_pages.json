@@ -1,8 +1,0 @@
-{
-    "src": [
-        "MainAbility/pages/index/index",
-        "MainAbility/pages/Picker/Picker",
-        "MainAbility/pages/Picker/TimePicker",
-        "MainAbility/pages/Picker/TextPicker"
-    ]
-}

@@ -67,6 +67,20 @@ struct DatePickerExample {
       })
         .key('picker05')
         .digitalCrownSensitivity(-1)
+
+      DatePicker({
+        start: new Date('2100-1-1'),
+        end: new Date('2200-1-1'),
+      })
+        .key('picker06')
+        .digitalCrownSensitivity(null)
+
+      DatePicker({
+        start: new Date('2100-1-1'),
+        end: new Date('2200-1-1'),
+      })
+        .key('picker07')
+        .digitalCrownSensitivity(undefined)
     }
   }
 }

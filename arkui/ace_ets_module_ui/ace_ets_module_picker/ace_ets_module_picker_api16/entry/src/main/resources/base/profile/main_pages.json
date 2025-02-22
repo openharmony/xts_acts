@@ -10,6 +10,9 @@
         "MainAbility/pages/slider/sliderNode",
         "MainAbility/pages/timePicker/enableCascadeTest",
         "MainAbility/pages/toggle/toggleNode",
-        "MainAbility/pages/textPicker/columnWidths"
+        "MainAbility/pages/textPicker/columnWidths",
+        "MainAbility/pages/crownSensitivity/Picker",
+        "MainAbility/pages/crownSensitivity/TextPicker",
+        "MainAbility/pages/crownSensitivity/TimePicker"
     ]
 }
