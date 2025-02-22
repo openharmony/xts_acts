@@ -234,6 +234,97 @@ export default function documentPickerPromise(abilityContext: Context) {
       option1.authMode = false;
       await selectWithOption(testNum, done, option1);
     });
+	
+	/**
+     * @tc.number : SUB_STORAGE_DOCUMENTPICKER_SELECT_PROMISE_1400
+     * @tc.name   : test_Documentpicker_Select_Promise_014
+     * @tc.desc   : select with option multiAuthMode
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it("test_Documentpicker_Select_Promise_014", 1, async (done: Function) => {
+      let testNum = "test_Documentpicker_Select_Promise_014";
+      let option = new picker.DocumentSelectOptions();
+      option.multiAuthMode = true;
+      option.multiUriArray = [];
+      await selectWithOption(testNum, done, option);
+    });
+
+    /**
+     * @tc.number : SUB_STORAGE_DOCUMENTPICKER_SELECT_PROMISE_1500
+     * @tc.name   : test_Documentpicker_Select_Promise_015
+     * @tc.desc   : select with option MergeTypeMode.DEFAULT
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it("test_Documentpicker_Select_Promise_015", 1, async (done: Function) => {
+      let testNum = "test_Documentpicker_Select_Promise_015";
+      let option = new picker.DocumentSelectOptions();
+      option.mergeMode = picker.MergeTypeMode.DEFAULT;
+      await selectWithOption(testNum, done, option);
+    });
+
+    /**
+     * @tc.number : SUB_STORAGE_DOCUMENTPICKER_SELECT_PROMISE_1600
+     * @tc.name   : test_Documentpicker_Select_Promise_016
+     * @tc.desc   : select with option MergeTypeMode.AUDIO
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it("test_Documentpicker_Select_Promise_016", 1, async (done: Function) => {
+      let testNum = "test_Documentpicker_Select_Promise_016";
+      let option = new picker.DocumentSelectOptions();
+      option.mergeMode = picker.MergeTypeMode.AUDIO;
+      await selectWithOption(testNum, done, option);
+    });
+
+    /**
+     * @tc.number : SUB_STORAGE_DOCUMENTPICKER_SELECT_PROMISE_1700
+     * @tc.name   : test_Documentpicker_Select_Promise_017
+     * @tc.desc   : select with option MergeTypeMode.VIDEO
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it("test_Documentpicker_Select_Promise_017", 1, async (done: Function) => {
+      let testNum = "test_Documentpicker_Select_Promise_017";
+      let option = new picker.DocumentSelectOptions();
+      option.mergeMode = picker.MergeTypeMode.VIDEO;
+      await selectWithOption(testNum, done, option);
+    });
+
+    /**
+     * @tc.number : SUB_STORAGE_DOCUMENTPICKER_SELECT_PROMISE_1800
+     * @tc.name   : test_Documentpicker_Select_Promise_018
+     * @tc.desc   : select with option MergeTypeMode.DOCUMENT
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it("test_Documentpicker_Select_Promise_018", 1, async (done: Function) => {
+      let testNum = "test_Documentpicker_Select_Promise_018";
+      let option = new picker.DocumentSelectOptions();
+      option.mergeMode = picker.MergeTypeMode.DOCUMENT;
+      await selectWithOption(testNum, done, option);
+    });
+
+    /**
+     * @tc.number : SUB_STORAGE_DOCUMENTPICKER_SELECT_PROMISE_1900
+     * @tc.name   : test_Documentpicker_Select_Promise_019
+     * @tc.desc   : select with option MergeTypeMode.PICTURE
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it("test_Documentpicker_Select_Promise_019", 1, async (done: Function) => {
+      let testNum = "test_Documentpicker_Select_Promise_019";
+      let option = new picker.DocumentSelectOptions();
+      option.mergeMode = picker.MergeTypeMode.PICTURE;
+      await selectWithOption(testNum, done, option);
+    });
 
     /**
      * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SAVE_PROMISE_0000
