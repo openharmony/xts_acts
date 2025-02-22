@@ -19,6 +19,7 @@
     "MainAbility/pages/TextChangeTest/TextOnChangeOptionsTest",
     "MainAbility/pages/TextChangeTest/TextOnWillChangeOptionsTest",
     "MainAbility/pages/SelectionMenuTest/bindSelectionMenuTest",
-    "MainAbility/pages/ImageSvgFillColor/ImageSvgFillColor"
+    "MainAbility/pages/ImageSvgFillColor/ImageSvgFillColor",
+    "MainAbility/pages/imageMatrix/imageMatrix"
   ]
 }

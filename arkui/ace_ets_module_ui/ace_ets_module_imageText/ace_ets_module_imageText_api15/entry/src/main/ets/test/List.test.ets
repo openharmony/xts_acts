@@ -32,6 +32,7 @@ import TextOnChangeOptionsTest from './TextChangeTest/TextOnChangeOptionsTest.te
 import TextOnWillChangeOptionsTest from './TextChangeTest/TextOnWillChangeOptionsTest.test';
 import bindSelectionMenuTest from './SelectionMenuTest/bindSelectionMenuTest.test';
 import ImageSvgFillColorTest from './ImageSvgFillColorTest/ImageSvgFillColor.test';
+import imageMatrix from './imageMatrix/imageMatrix.test';
 
 
 export default function testsuite() {
@@ -53,4 +54,5 @@ export default function testsuite() {
   TextOnWillChangeOptionsTest();
   bindSelectionMenuTest();
   ImageSvgFillColorTest();
+  imageMatrix();
 }
