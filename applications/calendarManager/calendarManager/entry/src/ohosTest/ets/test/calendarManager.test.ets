@@ -24,59 +24,6 @@ import { mContext } from '../testability/TestAbility'
 
 let calendarMgr: calendarManager.CalendarManager;
 
-interface eventsObj {
-  type: calendarManager.EventType,
-  startTime: number,
-  endTime: number
-}
-
-interface locationObj {
-  location: string,
-  longitude?: number,
-  latitude?: number,
-}
-
-interface attendeeObj {
-  name: string,
-  email: string,
-  role?: calendarManager.AttendeeRole,
-}
-
-interface recurrenceRuleObj {
-  recurrenceFrequency: calendarManager.RecurrenceFrequency,
-  expire?: number,
-  count?: number,
-  interval?: number,
-  excludedDates?: number[],
-  daysOfWeek?: number[],
-  daysOfMonth?: number[],
-  daysOfYear?: number[],
-  weeksOfMonth?: number[],
-  weeksOfYear?: number[],
-  monthsOfYear?: number[]
-}
-
-interface serviceObj {
-  type: calendarManager.ServiceType,
-  uri: string,
-  description: string
-}
-
-interface ScheduleObj {
-  type: calendarManager.EventType,
-  title: string,
-  location: locationObj,
-  startTime: number,
-  endTime: number,
-  isAllDay: boolean,
-  attendee: Array<attendeeObj>,
-  timeZone: string,
-  reminderTime: Array<number>,
-  recurrenceRule: recurrenceRuleObj,
-  description: string,
-  service: serviceObj
-}
-
 function sleep(numberMillis: number) {
   let now = new Date();
   let exitTime = now.getTime() + numberMillis;
@@ -829,7 +776,7 @@ export default function CalendarManagerTest() {
       }
 
       const date = new Date();
-      let Events: Array<eventsObj> = [
+      let Events: Array<calendarManager.Event> = [
         {
           type: calendarManager.EventType.NORMAL,
           startTime: date.getTime(),
