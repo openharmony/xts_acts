@@ -16,11 +16,23 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import config from '@ohos.accessibility.config';
+import accessibility from '@ohos.accessibility';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.arkui.ace.layout/EntryAbility';
 
 export default function GridRows2() {
   describe('GridRows2', () => {
     beforeEach(async (done: Function) => {
       console.info("GridRows2 beforeEach start");
+
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info('[GridRows2] enable success');
+      }).catch((err: object) => {
+        console.error(`[GridRows2] failed to enable, ${err}`)
+      })
+
+      console.info("GridRows2 beforeEach start 222")
       try {
         router.clear();
         let pages = router.getState();
