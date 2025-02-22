@@ -20,7 +20,7 @@ struct VideoReset14 {
   @State text1:string = 'text1'
   @State index:number = 0
   @State text2:string = 'text2'
-  @State timeValue:number = 1
+  @State timeValue:number = 9
 
 
   @State enabledValue:boolean = true
@@ -64,14 +64,11 @@ struct VideoReset14 {
           .id('VideoReset14_reset')
       }
 
-      TextInput({placeholder:'time'})
-        .id('VideoReset14_textInput')
-        .width('300vp')
-        .onChange((value)=>{
-          this.timeValue = Number(value)
-          console.log('testTag:time'+ Number(value));
-          this.controller.setCurrentTime(this.timeValue,SeekMode.Accurate)
-        })
+      Button('setCurrentTime').onClick(() => {
+        console.log('testTag: setCurrentTime is ' + this.timeValue.toString());
+        this.controller.setCurrentTime(this.timeValue, SeekMode.Accurate)
+      })
+        .id('VideoReset14_setCurrentTime')
 
     }.width('100%')
   }
