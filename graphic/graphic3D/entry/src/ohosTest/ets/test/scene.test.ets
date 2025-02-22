@@ -170,5 +170,53 @@ export default function sceneTest() {
         done();
       }
     })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0080
+     * @tc.name      : testSceneRenderFrame
+     * @tc.desc      : Used to see if the scene is single-frame
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testSceneRenderFrame', 0, (done:Function)=> {
+      let msg = "============================testSceneRenderFrame";
+      console.info(msg + ' begin ');
+      try {
+        scene?.renderFrame({ alwaysRender: true });
+        expect(scene?.renderFrame()).assertTrue();
+        console.info(msg + " Succeed in scene?.renderFrame() ");
+        scene?.renderFrame({ alwaysRender: false });
+        expect(scene?.renderFrame()).assertFalse();
+        console.info(msg + " Succeed in scene?.renderFrame() ");
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in scene?.renderFrame() " + JSON.stringify(err));
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0090
+     * @tc.name      : testSceneRenderParameters
+     * @tc.desc      : Used to set if the scene is single-frame
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testRenderParameters', 0, (done:Function)=> {
+      let msg = "============================testRenderParameters";
+      console.info(msg + ' begin ');
+      try {
+        let RenderParameters: scene3d.RenderParameters = { alwaysRender: true};
+        expect(RenderParameters.alwaysRender).assertTrue();
+        console.info(msg + " Succeed in RenderParameters.alwaysRender is true ");
+        RenderParameters = { alwaysRender: false}
+        expect(RenderParameters.alwaysRender).assertFalse();
+        console.info(msg + " Succeed in RenderParameters.alwaysRender is false ");
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in scene3d.RenderParameters " + JSON.stringify(err));
+        done();
+      }
+    })
   })
 }
