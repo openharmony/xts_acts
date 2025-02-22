@@ -104,6 +104,7 @@ struct IndexPage {
     { title: 'Taphand', uri: 'pages/ArkUI/Taphand' },
     { title: 'AccessibilityThirdFramework00', uri: 'pages/ArkUI/AccessibilityThirdFramework00' },
     { title: 'AccessibilityThirdFramework01', uri: 'pages/ArkUI/AccessibilityThirdFramework01' },
+    { title: 'CapiHandDetect', uri: 'pages/ArkUI/GetBarRect' },
     { title: 'CapiHandDetect', uri: 'pages/ArkUI/CapiHandDetect' }
   ]
   @State ColorObject: Object[] = letColor;
