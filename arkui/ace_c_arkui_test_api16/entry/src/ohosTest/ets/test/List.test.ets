@@ -20,6 +20,7 @@ import TextInputLetterSpacing from "./textInput/TextInputLetterSpacing.test"
 import textPickerTest from "./textpicker/TextPickerColumnWidthsTest.test"
 import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
 import buttonTypeTest from './button/ButtonTypeTest.test'
+import DragTest from "./drag/DragCaseTest.test"
 
 export default function testsuite() {
   postFrameCallbackTest();
@@ -30,4 +31,5 @@ export default function testsuite() {
   textPickerTest();
   scrollBackToTopTest();
   buttonTypeTest();
+  DragTest();
 }

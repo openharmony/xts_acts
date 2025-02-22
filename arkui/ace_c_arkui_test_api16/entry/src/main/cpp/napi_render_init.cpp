@@ -20,6 +20,7 @@
 #include "textArea/textArea_letter_spacing.h"
 #include "textpicker/textpicker_columnwidths_test.h"
 #include "scroll/scroll_backtotop_test.h"
+#include "drag/drag_test.h"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -43,6 +44,14 @@ static napi_value Init(napi_env env, napi_value exports)
         {"textPickerColumnWidths", nullptr, TextPickerTest::TextPickerColumnWidths,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"scrollBackToTopTest", nullptr, ScrollBackToTopTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"TestDragStartDataLoading001", nullptr, DragTest::TestDragStartDataLoading001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"TestDragDisableDropDataPrefetch002", nullptr, DragTest::TestDragDisableDropDataPrefetch002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"TestDragCancelDataLoading003", nullptr, DragTest::TestDragCancelDataLoading003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"GetResult", nullptr, DragTest::GetResult, nullptr, nullptr,
          nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
