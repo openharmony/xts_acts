@@ -156,17 +156,11 @@ namespace {
             container->OnHoverEvent(component, isHover);
         }
     }
-} // namespace
-
-
+}
     std::unordered_map<std::string, Container *> Container::instance_;
-
-//    int32_t Container::hasDraw_ = 0;
-//    int32_t Container::hasChangeColor_ = 0;
 
     Container::Container(const std::string &id) {
         this->id_ = id;
-//        this->eglCore_ = new EGLCore();
     }
 
     Container *Container::GetInstance(const std::string &id) {
@@ -206,7 +200,6 @@ namespace {
         uint64_t height;
         OH_NativeXComponent_GetXComponentSize(component, window, &width, &height);
         if (container != nullptr) {
-            // container->eglCore_->UpdateSize(width, height);
         }
     }
 

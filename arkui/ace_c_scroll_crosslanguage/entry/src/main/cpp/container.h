@@ -20,7 +20,6 @@
 #include <unordered_map>
 
 #include <ace/xcomponent/native_interface_xcomponent.h>
-//#include <ace/xcomponent/native_interface.h>
 #include <napi/native_api.h>
 
 const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
@@ -33,8 +32,6 @@ public:
     ~Container() = default;
     static Container *GetInstance(const std::string &id);
     static void Release(const std::string &id);
-    //static napi_value NapiDrawPattern(napi_env env, napi_callback_info info);
-    //static napi_value TestGetXComponentStatus(napi_env env, napi_callback_info info);
     void Export(napi_env env, napi_value exports);
     void OnSurfaceChanged(OH_NativeXComponent *component, void *window);
     void OnTouchEvent(OH_NativeXComponent *component, void *window);

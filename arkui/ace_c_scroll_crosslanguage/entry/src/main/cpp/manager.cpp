@@ -575,7 +575,6 @@ void Manager::Export(napi_env env, napi_value exports) {
         auto container = manager->GetContainer(id);
         if (container != nullptr) {
             container->RegisterCallback(nativeXComponent);
-            //            container->Export(env, exports);
         }
     }
 }
