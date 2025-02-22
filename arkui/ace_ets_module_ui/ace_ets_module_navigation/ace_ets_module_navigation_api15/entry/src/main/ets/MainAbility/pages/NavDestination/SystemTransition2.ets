@@ -63,6 +63,7 @@ struct PageOne {
 
   build() {
     NavDestination() {
+      Text('one').id('text1Id')
       Button('pop').id('popId').onClick(() => {
         this.pageInfos.pop()
       })
@@ -79,6 +80,7 @@ struct PageTwo {
 
   build() {
     NavDestination() {
+      Text('two').id('text2Id')
       Button('pop').id('popId').onClick(() => {
         this.pageInfos.pop()
       })
@@ -96,6 +98,7 @@ struct PageThree {
 
   build() {
     NavDestination() {
+      Text('three').id('text3Id')
       Button('pop').id('popId').onClick(() => {
         this.pageInfos.pop()
       })
@@ -113,7 +116,7 @@ struct PageFour {
 
   build() {
     NavDestination() {
-      Text('This is page four')
+      Text('four').id('text4Id')
     }
     .title('pageFour')
     .systemTransition(NavigationSystemTransitionType.SLIDE_BOTTOM)
