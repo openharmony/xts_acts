@@ -1354,6 +1354,133 @@ export default function windowNdk() {
         done();
     })
 
+    /**
+         * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_5500
+         * @tc.name      : test_registerMouseFilter_1300002
+         * @tc.desc      : test_registerMouseFilter_1300002
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it('test_registerMouseFilter_1300002', 0, async (done:Function) => {
+      let caseName = "test_registerMouseFilter_1300002";
+      let result = windowNdkTest.registerMouseFilter(-1);
+        console.log(caseName + '  result:'+ JSON.stringify(result));
+        expect(result).assertEqual(1000);
+        done();
+    })
+
+    /**
+         * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_5600
+         * @tc.name      : test_registerMouseFilter_MouseRightButton
+         * @tc.desc      : test_registerMouseFilter_MouseRightButton
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it('test_registerMouseFilter_MouseRightButton', 0, async (done:Function) => {
+      let caseName = "test_registerMouseFilter_MouseRightButton";
+      let result = windowNdkTest.registerMouseFilter(windowId);
+        console.log(caseName + '  result:'+ JSON.stringify(result));
+        expect(result).assertEqual(0);
+        done();
+    })
+
+    /**
+         * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_5600
+         * @tc.name      : test_unRegisterMouseFilter_1300002
+         * @tc.desc      : test_unRegisterMouseFilter_1300002
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it('test_unRegisterMouseFilter_1300002', 0, async (done:Function) => {
+      let caseName = "test_unRegisterMouseFilter_1300002";
+      let result = windowNdkTest.clearMouseFilter(-1);
+        console.log(caseName + '  result:'+ JSON.stringify(result));
+        //1000
+        expect(result).assertEqual(1000);
+        done();
+    })
+
+    /**
+         * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_5700
+         * @tc.name      : test_UnRegisterMouseFilter_MouseRightButton
+         * @tc.desc      : test_UnRegisterMouseFilter_MouseRightButton
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it('test_UnRegisterMouseFilter_MouseRightButton', 0, async (done:Function) => {
+      let caseName = "test_UnRegisterMouseFilter_MouseRightButton";
+      let result = windowNdkTest.clearMouseFilter(windowId);
+        console.log(caseName + '  result:'+ JSON.stringify(result));
+        expect(result).assertEqual(0);
+        done();
+    })
+/**
+         * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_5800
+         * @tc.name      : test_registerTouchFilter_1300002
+         * @tc.desc      : test_registerTouchFilter_1300002
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it('test_registerTouchFilter_1300002', 0, async (done:Function) => {
+      let caseName = "test_registerTouchFilter_1300002";
+      let result = windowNdkTest.registerTouchFilter(-1);
+        console.log(caseName + '  result:'+ JSON.stringify(result));
+        expect(result).assertEqual(1000);
+        done();
+    })
+
+    /**
+         * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_5900
+         * @tc.name      : test_registerTouchFilter_TouchMove
+         * @tc.desc      : test_registerTouchFilter_TouchMove
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it('test_registerTouchFilter_TouchMove', 0, async (done:Function) => {
+      let caseName = "test_registerTouchFilter_TouchMove";
+      let result = windowNdkTest.registerTouchFilter(windowId);
+        console.log(caseName + '  result:'+ JSON.stringify(result));
+        expect(result).assertEqual(0);
+        done();
+    })
+
+    /**
+         * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_6000
+         * @tc.name      : test_unRegisterTouchFilter_1300002
+         * @tc.desc      : test_unRegisterTouchFilter_1300002
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it('test_unRegisterTouchFilter_1300002', 0, async (done:Function) => {
+      let caseName = "test_unRegisterTouchFilter_1300002";
+      let result = windowNdkTest.clearTouchFilter(-1);
+        console.log(caseName + '  result:'+ JSON.stringify(result));
+        expect(result).assertEqual(1000);
+        done();
+    })
+
+    /**
+         * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_6100
+         * @tc.name      : test_unRegisterTouchFilter_TouchMove
+         * @tc.desc      : test_unRegisterTouchFilter_TouchMove
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it('test_unRegisterTouchFilter_TouchMove', 0, async (done:Function) => {
+      let caseName = "test_unRegisterTouchFilter_TouchMove";
+      let result = windowNdkTest.clearTouchFilter(windowId);
+        console.log(caseName + '  result:'+ JSON.stringify(result));
+        expect(result).assertEqual(0);
+        done();
+    })
     
 
   })
