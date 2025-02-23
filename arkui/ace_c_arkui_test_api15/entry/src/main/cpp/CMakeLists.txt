@@ -24,6 +24,7 @@ add_library(nativerender SHARED
     focusControl/focus_control.cpp
     list/list_test.cpp
     listScrollTo/list_scroll_to_test.cpp
+    gesturetouchcancel/gesture_cancel.cpp
 )
 
 add_library(nativefunc SHARED

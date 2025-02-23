@@ -29,6 +29,7 @@ import FocusControlTest4 from "./foucscontrolTest/FocusControlTest4.test"
 import listCaseTest from "./list/ListCaseTest.test"
 import listScrollToIndexTest from "./listScrollTo/ListScrollToTest.test"
 import listItemGroupNodeAdapterTest from "./listItemGroup/ListItemGroupTest.test"
+import gesturecancelTest from "./gesturecancelTest/gesturecancelTest.test"
 
 
 export default function testsuite() {
@@ -49,4 +50,5 @@ export default function testsuite() {
    listCaseTest();
    listScrollToIndexTest();
    listItemGroupNodeAdapterTest();
+   gesturecancelTest();
 }

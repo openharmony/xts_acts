@@ -63,3 +63,7 @@ export const FocusControlTest_004: (a: string) => void;
 export const listTestCallback: (a: string) => void;
 
 export const listScrollToTestCallback: (a: string) => void;
+
+export const gesturecancelTest: (a: string) => void;
+
+export const GetTouchEventData: () => object;
