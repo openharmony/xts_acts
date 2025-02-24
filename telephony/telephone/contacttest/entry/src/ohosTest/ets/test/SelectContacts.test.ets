@@ -679,3 +679,4 @@ export default function SelectContactsTest() {
       console.info(`${caseName} test end `);
     })
   })
+}
