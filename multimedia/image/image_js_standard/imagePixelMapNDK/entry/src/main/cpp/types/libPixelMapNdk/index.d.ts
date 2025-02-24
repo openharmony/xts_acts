@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,16 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-{
-  "license": "",
-  "devDependencies": {
-    "@types/libentry.so": "file:./src/main/cpp/types/libentry",
-    "@types/libPixelMapNdk.so": "file:./src/main/cpp/types/libPixelMapNdk"
-  },
-  "author": "",
-  "name": "entry",
-  "description": "Please describe the basic information.",
-  "main": "",
-  "version": "1.0.0",
-  "dependencies": {}
-}
+interface imageInfo {
+    width: number;
+    height: number;
+    stride: number;
+};
+import image from "@ohos.multimedia.image";
+export const CreatePixelMapUsingAllocator: (path: string, alloType: image.AllocatorType,
+    size?: image.Size, pixelMapFormat?: image.PixelMapFormat, desiredDynamicRange?: image.DecodingDynamicRange) =>  number;
+export const GetPixelmapInfo: () => imageInfo;
+export const CreatePixelMapUsingAllocatorError: (path: string, alloType: image.AllocatorType) => number;
