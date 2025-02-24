@@ -23,6 +23,7 @@ import { Permissions } from '@ohos.abilityAccessCtrl';
 import { mContext } from '../testability/TestAbility'
 
 let calendarMgr: calendarManager.CalendarManager;
+let calendarMgrErr: calendarManager.CalendarManager;
 
 function sleep(numberMillis: number) {
   let now = new Date();
