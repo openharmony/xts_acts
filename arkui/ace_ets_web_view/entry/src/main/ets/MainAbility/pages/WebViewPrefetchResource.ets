@@ -258,6 +258,7 @@ struct WebViewPrefetchResource {
         .domStorageAccess(this.domStorageAccess)
         .onlineImageAccess(this.onlineImageAccess)
         .databaseAccess(this.databaseAccess)
+        .optimizeParserBudget(true)
 
     }
   }
