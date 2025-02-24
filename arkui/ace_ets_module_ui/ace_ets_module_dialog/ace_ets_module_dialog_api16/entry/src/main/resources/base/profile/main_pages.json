@@ -4,6 +4,7 @@
     "MainAbility/pages/Popup/Maxwidth",
     "MainAbility/pages/promptAction/openPopup",
     "MainAbility/pages/promptAction/updatePopup",
-    "MainAbility/pages/promptAction/closePopup"
+    "MainAbility/pages/promptAction/closePopup",
+    "MainAbility/pages/timePickerDialog/timePickerDialogEnableHapticFeedback"
   ]
 }
