@@ -168,9 +168,7 @@ export default function CalendarManagerTest() {
       calendarMgr?.createCalendar(CalendarAccounts, (err, data) => {
         if (err) {
           console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         } else {
           console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
           expect(data.id != null).assertTrue();
@@ -197,9 +195,7 @@ export default function CalendarManagerTest() {
       calendarMgr?.createCalendar(CalendarAccounts, (err, data) => {
         if (err) {
           console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         } else {
           console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
           expect(data.id != null).assertTrue();
@@ -226,9 +222,7 @@ export default function CalendarManagerTest() {
       calendarMgr?.createCalendar(CalendarAccounts, (err, data) => {
         if (err) {
           console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         } else {
           console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
           expect(data.id != null).assertTrue();
@@ -255,9 +249,7 @@ export default function CalendarManagerTest() {
       calendarMgr?.createCalendar(CalendarAccounts, (err, data) => {
         if (err) {
           console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         } else {
           console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
           expect(data.id != null).assertTrue();
@@ -287,9 +279,7 @@ export default function CalendarManagerTest() {
         return;
       }).catch((err: BusinessError) => {
         console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -309,10 +299,9 @@ export default function CalendarManagerTest() {
             if (error) {
               console.info("RK device , no modem")
             } else {
-              console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
-              expect(err.code).assertEqual(201);
-              expect(err.code).assertEqual(401);
-              expect(err.code).assertEqual(801);
+              console.info(CaseName +
+                `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
+              expect().assertFail();
             }
           })
         } else {
@@ -339,10 +328,9 @@ export default function CalendarManagerTest() {
             if (error) {
               console.info("RK device , no modem")
             } else {
-              console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
-              expect(err.code).assertEqual(201);
-              expect(err.code).assertEqual(401);
-              expect(err.code).assertEqual(801);
+              console.info(CaseName +
+                `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
+              expect().assertFail();
             }
           })
         } else {
@@ -371,9 +359,7 @@ export default function CalendarManagerTest() {
       calendarMgr?.getCalendar(CalendarAccounts, (err, data) => {
         if (err) {
           console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         } else {
           console.info(CaseName + "Succeeded in get specified calendar type is BIRTHDAY" + JSON.stringify(data));
           expect(data.id != null).assertTrue();
@@ -400,9 +386,7 @@ export default function CalendarManagerTest() {
       calendarMgr?.getCalendar(CalendarAccounts, (err, data) => {
         if (err) {
           console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         } else {
           console.info(CaseName + "Succeeded in get specified calendar type is CALDAV" + JSON.stringify(data));
           expect(data.id != null).assertTrue();
@@ -432,9 +416,7 @@ export default function CalendarManagerTest() {
         return;
       }).catch((err: BusinessError) => {
         console.info(CaseName + "Failed to delete calendar type is SUBSCRIBED" + JSON.stringify(err));
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -452,15 +434,13 @@ export default function CalendarManagerTest() {
         console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
         expect(data.id != null).assertTrue();
         return;
-      }).catch((err:BusinessError) => {
+      }).catch((err: BusinessError) => {
         radio.isRadioOn((error) => {
           if (error) {
             console.info("RK device , no modem")
           } else {
             console.info(CaseName + "Failed to get specified calendar" + JSON.stringify(err));
-            expect(err.code).assertEqual(201);
-            expect(err.code).assertEqual(401);
-            expect(err.code).assertEqual(801);
+            expect().assertFail();
           }
         })
       });
@@ -479,9 +459,7 @@ export default function CalendarManagerTest() {
       calendarMgr?.getAllCalendars((err, data) => {
         if (err) {
           console.info(CaseName + `Failed to get AllCalendars, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         } else {
           console.info(CaseName + "Succeeded in get AllCalendars" + JSON.stringify(data));
           expect(data != null).assertTrue();
@@ -506,9 +484,7 @@ export default function CalendarManagerTest() {
         return;
       }).catch((err: BusinessError) => {
         console.info(CaseName + "Failed to delete calendar type is SUBSCRIBED" + JSON.stringify(err));
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -532,9 +508,7 @@ export default function CalendarManagerTest() {
         calendarMgr?.deleteCalendar(data, (err, data) => {
           if (err) {
             console.info(CaseName + `Failed to delete calendar, Code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(201);
-            expect(err.code).assertEqual(401);
-            expect(err.code).assertEqual(801);
+            expect().assertFail();
           } else {
             console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
             return;
@@ -542,9 +516,7 @@ export default function CalendarManagerTest() {
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -570,15 +542,11 @@ export default function CalendarManagerTest() {
           return;
         }).catch((err: BusinessError) => {
           console.info(CaseName + `Failed to delete calendar, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -619,9 +587,7 @@ export default function CalendarManagerTest() {
         Calendar.addEvent(Schedule, (err, data) => {
           if (err) {
             console.info(CaseName + `Failed to addEvent, Code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(201);
-            expect(err.code).assertEqual(401);
-            expect(err.code).assertEqual(801);
+            expect().assertFail();
           } else {
             console.info(CaseName + "Succeeded in addEvent" + JSON.stringify(data));
             expect(data != null).assertTrue();
@@ -630,9 +596,7 @@ export default function CalendarManagerTest() {
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -675,15 +639,11 @@ export default function CalendarManagerTest() {
           return;
         }).catch((err: BusinessError) => {
           console.info(CaseName + `Failed to addEvent, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -732,9 +692,7 @@ export default function CalendarManagerTest() {
         Calendar.addEvents(events, (err, data) => {
           if (err) {
             console.info(CaseName + `Failed to addEvents, Code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(201);
-            expect(err.code).assertEqual(401);
-            expect(err.code).assertEqual(801);
+            expect().assertFail();
           } else {
             console.info(CaseName + "Succeeded in addEvents" + JSON.stringify(data));
             expect(data != null).assertTrue();
@@ -743,9 +701,7 @@ export default function CalendarManagerTest() {
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -795,15 +751,11 @@ export default function CalendarManagerTest() {
           return;
         }).catch((err: BusinessError) => {
           console.info(CaseName + `Failed to addEvents, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -869,9 +821,7 @@ export default function CalendarManagerTest() {
         Calendar.updateEvent(Schedule, (err, data) => {
           if (err) {
             console.info(CaseName + `Failed to updateEvent, Code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(201);
-            expect(err.code).assertEqual(401);
-            expect(err.code).assertEqual(801);
+            expect().assertFail();
           } else {
             console.info(CaseName + "Succeeded in updateEvent" + JSON.stringify(data));
             return;
@@ -879,9 +829,7 @@ export default function CalendarManagerTest() {
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -943,15 +891,11 @@ export default function CalendarManagerTest() {
           return;
         }).catch((err: BusinessError) => {
           console.info(CaseName + `Failed to updateEvent, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -976,11 +920,9 @@ export default function CalendarManagerTest() {
         expect(calendarAccounts.name != '').assertTrue();
         console.info("get account success " + JSON.stringify(calendarAccounts));
         return;
-      }).catch((err:BusinessError) => {
+      }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -1006,9 +948,7 @@ export default function CalendarManagerTest() {
         }, (err, data) => {
           if (err) {
             console.info(CaseName + `Failed to setConfig, Code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(201);
-            expect(err.code).assertEqual(401);
-            expect(err.code).assertEqual(801);
+            expect().assertFail();
           } else {
             let configs = Calendar.getConfig();
             console.info(CaseName + "Succeeded in getConfig" + JSON.stringify(configs));
@@ -1018,9 +958,7 @@ export default function CalendarManagerTest() {
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -1050,15 +988,11 @@ export default function CalendarManagerTest() {
           return;
         }).catch((err: BusinessError) => {
           console.info(CaseName + `Failed to setConfig, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -1083,9 +1017,7 @@ export default function CalendarManagerTest() {
         Calendar.getEvents((err: BusinessError, Events: Array<string>) => {
           if (err) {
             console.info(CaseName + `Failed to getEvents, Code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(201);
-            expect(err.code).assertEqual(401);
-            expect(err.code).assertEqual(801);
+            expect().assertFail();
           } else {
             console.info(CaseName + "Succeeded in getEvents" + JSON.stringify(Events));
             expect(Events[0] != '').assertTrue();
@@ -1093,9 +1025,7 @@ export default function CalendarManagerTest() {
           }
         }).catch((err: BusinessError) => {
           console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         });
       });
     });
@@ -1129,17 +1059,13 @@ export default function CalendarManagerTest() {
         Calendar.addEvent(Schedule, (err, data) => {
           if (err) {
             console.info(CaseName + `Failed to addEvent, Code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(201);
-            expect(err.code).assertEqual(401);
-            expect(err.code).assertEqual(801);
+            expect().assertFail();
           } else {
             console.info(CaseName + "Succeeded in addEvent" + JSON.stringify(data));
             Calendar.getEvents(filter, columns, (err, Events) => {
               if (err) {
                 console.info(CaseName + `Failed to getEvents, Code is ${err.code}, message is ${err.message}`);
-                expect(err.code).assertEqual(201);
-                expect(err.code).assertEqual(401);
-                expect(err.code).assertEqual(801);
+                expect().assertFail();
               } else {
                 console.info(CaseName + "Succeeded in getEvents" + JSON.stringify(Events));
                 expect(Events[0] != null).assertTrue();
@@ -1150,9 +1076,7 @@ export default function CalendarManagerTest() {
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -1180,9 +1104,7 @@ export default function CalendarManagerTest() {
         Calendar.getEvents(filter, columns, (err, Events) => {
           if (err) {
             console.info(CaseName + `Failed to getEvents, Code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(201);
-            expect(err.code).assertEqual(401);
-            expect(err.code).assertEqual(801);
+            expect().assertFail();
           } else {
             console.info(CaseName + "Succeeded in getEvents" + JSON.stringify(Events));
             expect(Events[0] != null).assertTrue();
@@ -1191,9 +1113,7 @@ export default function CalendarManagerTest() {
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
     /*
@@ -1220,9 +1140,7 @@ export default function CalendarManagerTest() {
         Calendar.getEvents(filter, columns, (err, Events) => {
           if (err) {
             console.info(CaseName + `Failed to getEvents, Code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(201);
-            expect(err.code).assertEqual(401);
-            expect(err.code).assertEqual(801);
+            expect().assertFail();
           } else {
             console.info(CaseName + "Succeeded in getEvents" + JSON.stringify(Events));
             expect(Events[0] != null).assertTrue();
@@ -1231,9 +1149,7 @@ export default function CalendarManagerTest() {
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -1264,15 +1180,11 @@ export default function CalendarManagerTest() {
           return;
         }).catch((err: BusinessError) => {
           console.error(CaseName + `Failed to get events, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -1303,15 +1215,11 @@ export default function CalendarManagerTest() {
           return;
         }).catch((err: BusinessError) => {
           console.error(CaseName + `Failed to get events, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -1342,15 +1250,11 @@ export default function CalendarManagerTest() {
           return;
         }).catch((err: BusinessError) => {
           console.error(CaseName + `Failed to get events, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -1380,17 +1284,13 @@ export default function CalendarManagerTest() {
         Calendar.addEvent(Schedule, (err, ScheduleID) => {
           if (err) {
             console.info(CaseName + `Failed to addEvent, Code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(201);
-            expect(err.code).assertEqual(401);
-            expect(err.code).assertEqual(801);
+            expect().assertFail();
           } else {
             console.info(CaseName + "Succeeded in addEvent" + JSON.stringify(ScheduleID));
             Calendar.deleteEvent(ScheduleID, (err, data) => {
               if (err) {
                 console.info(CaseName + `Failed to deleteEvent, Code is ${err.code}, message is ${err.message}`);
-                expect(err.code).assertEqual(201);
-                expect(err.code).assertEqual(401);
-                expect(err.code).assertEqual(801);
+                expect().assertFail();
               } else {
                 console.info(CaseName + "Succeeded in deleteEvent" + JSON.stringify(data));
                 return;
@@ -1400,9 +1300,7 @@ export default function CalendarManagerTest() {
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -1431,9 +1329,7 @@ export default function CalendarManagerTest() {
         Calendar.addEvent(Schedule, (err, ScheduleID) => {
           if (err) {
             console.info(CaseName + `Failed to addEvent, Code is ${err.code}, message is ${err.message})`);
-            expect(err.code).assertEqual(201);
-            expect(err.code).assertEqual(401);
-            expect(err.code).assertEqual(801);
+            expect().assertFail();
           } else {
             console.info(CaseName + "Succeeded in addEvent" + JSON.stringify(ScheduleID));
             Calendar.deleteEvent(ScheduleID).then((data) => {
@@ -1441,17 +1337,13 @@ export default function CalendarManagerTest() {
               return;
             }).catch((err: BusinessError) => {
               console.info(CaseName + `Failed to deleteEvent, Code is ${err.code}, message is ${err.message}`);
-              expect(err.code).assertEqual(201);
-              expect(err.code).assertEqual(401);
-              expect(err.code).assertEqual(801);
+              expect().assertFail();
             });
           }
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -1489,9 +1381,7 @@ export default function CalendarManagerTest() {
           Calendar.deleteEvents([ScheduleID, ScheduleID1], (err, data) => {
             if (err) {
               console.info(CaseName + `Failed to deleteEvents, Code is ${err.code}, message is ${err.message}`);
-              expect(err.code).assertEqual(201);
-              expect(err.code).assertEqual(401);
-              expect(err.code).assertEqual(801);
+              expect().assertFail();
             } else {
               console.info(CaseName + "Succeeded in deleteEvents" + JSON.stringify(data));
               return;
@@ -1499,15 +1389,11 @@ export default function CalendarManagerTest() {
           });
         } catch (err) {
           console.info(CaseName + `Failed to addEvents, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         }
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
@@ -1547,21 +1433,15 @@ export default function CalendarManagerTest() {
             return;
           }).catch((err: BusinessError) => {
             console.info(CaseName + `Failed to deleteEvents, Code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(201);
-            expect(err.code).assertEqual(401);
-            expect(err.code).assertEqual(801);
+            expect().assertFail();
           });
         } catch (err) {
           console.info(CaseName + `Failed to addEvents, Code is ${err.code}, message is ${err.message}`);
-          expect(err.code).assertEqual(201);
-          expect(err.code).assertEqual(401);
-          expect(err.code).assertEqual(801);
+          expect().assertFail();
         }
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(201);
-        expect(err.code).assertEqual(401);
-        expect(err.code).assertEqual(801);
+        expect().assertFail();
       });
     });
 
