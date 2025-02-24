@@ -48,6 +48,5 @@ group("distributeddatamgr") {
 
 group("pasteboard") {
   testonly = true
-  deps = [
-  ]
+  deps = []
 }
