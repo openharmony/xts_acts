@@ -1,4 +1,4 @@
-# Copyright (C) 2023 Huawei Device Co., Ltd.
+# Copyright (C) 2025 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -16,10 +16,7 @@ group("distributeddatamgr") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "PasteboardJSWithPermissionTest:ActsPasteBoardJSApiWithPermissionTest",
-      "PasteboardNoPermissionstest:PasteboardNoPermissionstest",
-      "Pasteboardjsapitest:ActsPasteBoardETSApiTest",
-      "Pasteboardnapitest:ActsPasteboardNapiEtsTest",
+      "IntelligenceApiTest:ActsIntelligenceTest",
       "UDMFtest:UDMFtest",
       "crossplatform/preferencesetstest:ActsCrossplatformPreferencesTest",
       "crossplatform/relationalstoreetstest:ActsCrossplatformRelationalStoreTest",
@@ -47,5 +44,9 @@ group("distributeddatamgr") {
 
 group("pasteboard") {
   testonly = true
-  deps = []
+  deps = [
+    "PasteboardNoPermissionstest:PasteboardNoPermissionstest",
+    "Pasteboardjsapitest:ActsPasteBoardETSApiTest",
+    "Pasteboardnapitest:ActsPasteboardNapiEtsTest",
+  ]
 }
