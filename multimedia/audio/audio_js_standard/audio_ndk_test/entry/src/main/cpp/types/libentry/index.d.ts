@@ -44,7 +44,6 @@ export const audioRenderGetFramesWritten: () => number;
 export const audioRenderGetTimestamp: () => number;
 export const audioRenderGetAudioTimestampInfo: () => number;
 export const audioRenderGetAudioTimestampInfoInterval: () => number;
-export const audioRenderGetAudioSpeedTimestampInfo: () => number;
 export const audioRenderGetFrameSizeInCallback: () => number;
 export const audioRenderGenerate: () => number;
 export const audioRenderGenerateErr: () => number;
