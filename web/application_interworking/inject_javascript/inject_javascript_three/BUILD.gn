@@ -11,13 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsWebInjectJavascriptTest") {
+import("//test/xts/tools/build/suite.gni")
+
+ohos_js_app_suite("ActsWebInjectJavacriptThreeTest") {
+  test_hap = true
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "inject_javascript_one:ActsWebInjectJavascriptOneTest",
-      "inject_javascript_three:ActsWebInjectJavacriptThreeTest",
-      "inject_javascript_two:ActsWebInjectJavacriptTwoTest",
-    ]
-  }
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsWebInjectJavacriptThreeTest"
+  part_name = "webview"
+  subsystem_name = "web"
 }
