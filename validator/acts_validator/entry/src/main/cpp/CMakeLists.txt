@@ -24,6 +24,11 @@ add_library(nativerender_ SHARED
     napi_init_.cpp
 )
 
+add_library(nativeNode SHARED
+    capihand/container.cpp
+    capihand/manager.cpp
+    init.cpp )
+
 find_library(
     # Sets the name of the path variable.
     hilog-lib
@@ -53,8 +58,16 @@ find_library(
     native_window
 )
 
+find_library(
+    libnative_drawing
+
+    native_drawing
+)
+
 
 target_link_libraries(nativerender PUBLIC
     ${hilog-lib} ${libace-lib} ${libnapi-lib}  ${libnative_window})
 target_link_libraries(nativerender_ PUBLIC
     ${hilog-lib} ${libace-lib} ${libnapi-lib}  ${libnative_window})
+target_link_libraries(nativeNode PUBLIC
+    ${hilog-lib} ${libace-lib} ${libnapi-lib}  ${libnative_drawing})

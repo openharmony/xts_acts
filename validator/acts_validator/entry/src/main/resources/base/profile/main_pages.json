@@ -54,6 +54,8 @@
     "pages/ArkUI/NavigationEnableHoverMode",
     "pages/ArkUI/AccessibilityThirdFramework00",
     "pages/ArkUI/AccessibilityThirdFramework01",
+    "pages/ArkUI/CapiHandDetect",
+    "pages/ArkUI/GetBarRect",
     "pages/Camera/Camera_index",
     "pages/Camera/CameraPreviewFormat",
     "pages/Camera/CameraPhotoFormat",
