@@ -359,7 +359,7 @@ export default function actsStartAppCloneAppTest() {
       try {
         hilog.info(0x0000, TAG, '%{public}s',
           `${TEST_SUITE_NAME}#${TEST_CASE_NAME} startAbility want== ${JSON.stringify(want)} `);
-        testAbilityContext.startAbility(want, (err: BusinessError) => {
+        await testAbilityContext.startAbility(want, (err: BusinessError) => {
           if (err.code) {
             hilog.info(0x0000, TAG, '%{public}s',
               `${TEST_SUITE_NAME}#${TEST_CASE_NAME} startAbility error code is ${err.code}, message is ${err.message} `);
@@ -369,7 +369,7 @@ export default function actsStartAppCloneAppTest() {
           }
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} startAbility succeed`);
         });
-        await sleep(1000);
+        await sleep(1500);
         try {
           let allowedButton = await driver.findComponent(ON.text('允许', MatchPattern.CONTAINS));
           hilog.info(0x0000, TAG, '%{public}s',
