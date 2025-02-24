@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import featureAbility from '@ohos.ability.featureAbility'
-import {Component, Driver, ON } from '@ohos.UiTest';
+import { Component, Driver, ON } from '@ohos.UiTest';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import common from '@ohos.app.ability.common';
@@ -21,6 +21,7 @@ import { BusinessError } from '@ohos.base';
 
 const delegator = abilityDelegatorRegistry.getAbilityDelegator();
 const driver = Driver.create();
+
 export default class Utils {
   static sleep(time: number) {
     return new Promise<string>((resolve, reject) => {
@@ -34,12 +35,12 @@ export default class Utils {
 
   static async keepClick() {
     console.info('IN keepClick...')
-    let index =1;
+    let index = 1;
     while (index < 10) {
       Utils.sleep(800);
       delegator.executeShellCommand(` uinput -T -c 900 1600 `).then(result => {
         console.info(`UiTestCase, touch abilityFinished: ${result}`)
-      }).catch((err : BusinessError) => {
+      }).catch((err: BusinessError) => {
         console.error(`UiTestCase, touch abilityFailed: ${err}`)
       })
       console.info(`Loop ${index} keepClick...`)
@@ -47,7 +48,7 @@ export default class Utils {
     }
     console.info('OUT keepClick end...')
   }
-  
+
   static async confirmScreenCapture() {
     console.info('IN confirmScreenCapture...')
     let btn = await driver.waitForComponent(ON.text("确定"), 10000);
@@ -65,7 +66,14 @@ export default class Utils {
   }
 
   static async btnTextScreenCapture() {
-    let button = await driver.waitForComponent(ON.text("允许"),1000)
-    await button.click();
+    let backPass: number = 0;
+    let backFailed: number = 0;
+    let button = await driver.waitForComponent(ON.text("允许"), 1000)
+    if (button == null) {
+      return backFailed;
+    } else {
+      await button.click();
+      return backPass;
+    }
   }
 }
