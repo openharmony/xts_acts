@@ -10,7 +10,7 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 const delegator = AbilityDelegatorRegistry.getAbilityDelegator();
 const context = delegator.getAppContext().getApplicationContext();
 const VALUE_TEST_STRING_ELEMENT = 'a'.repeat(1*1024*1024*2);
-const VALUE_TEST_STRING_ELEMENT_BIG = 'a'.repeat(1*1024*1024*200);
+const VALUE_TEST_STRING_ELEMENT_BIG = 'a'.repeat(1*1024*1024*50);
 let filePath: string = context.filesDir + '/src';
 
 let TAG = "ttt"
@@ -18,9 +18,10 @@ let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboa
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let dstDir = context.distributedFilesDir + '/dst';
 
+
 let getPermission = async () => {
   console.info('getPermission is start');
-  let context:common.UIAbilityContext | undefined = AppStorage.get('context') as common.UIAbilityContext;
+  let context:common.UIAbilityContext | undefined = AppStorage.get('TestAbilityContext') as common.UIAbilityContext;
   atManager.requestPermissionsFromUser(context, ['ohos.permission.READ_PASTEBOARD'], (err:BusinessError, data:PermissionRequestResult) => {
     console.info('requestPermissionsFromUser success data is' + JSON.stringify(data));
     console.info('requestPermissionsFromUser failed err is' + JSON.stringify(err));
@@ -33,7 +34,7 @@ let sleep = (ms:number) => {
 
 let drivenFn = async () => {
   try {
-    let driver: Driver = await Driver.create();
+    let driver: Driver = Driver.create();
     console.info('come in driveFn');
     console.info('driver is ${JSON.stringify(driver)}');
     await sleep(1000);
@@ -57,8 +58,9 @@ let drivenFn = async () => {
 }
 
 export default function PasteboardProgressTest() {
-  describe('PasteboardProgressTest', async () => {
+  describe('PasteboardProgressTest', () => {
     beforeAll(async (done:Function) => {
+      console.info(TAG + "63")
       await getPermission();
       await sleep(1000);
       await drivenFn();
