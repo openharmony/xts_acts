@@ -87,6 +87,20 @@ struct getWaterFlowItemRect1 {
 
   build() {
     Column({ space: 2 }) {
+      Button('点击获取信息').onClick((event: ClickEvent) => {
+        this.x = this.scroller.getItemRect(this.index).x
+        this.y = this.scroller.getItemRect(this.index).y
+        this.width1 = this.scroller.getItemRect(this.index).width
+        this.height1 = this.scroller.getItemRect(this.index).height
+      }).id('getWaterFlowItemRect1_button')
+      Text('' + this.x).key('getWaterFlowItemRect1_text1')
+      Text('' + this.y).key('getWaterFlowItemRect1_text2')
+      Text('' + this.width1).key('getWaterFlowItemRect1_text3')
+      Text('' + this.height1).key('getWaterFlowItemRect1_text4')
+      Button('点击滚动到底部').onClick((event: ClickEvent) => {
+        this.scroller.scrollEdge(Edge.End)
+      }).id('getWaterFlowItemRect1_button2')
+
       WaterFlow({ scroller: this.scroller }) {
         FlowItem() {
           Column() {
@@ -215,20 +229,6 @@ struct getWaterFlowItemRect1 {
       .width('100%')
       .height('50%')
       .padding(this.padding1)
-
-      Button('点击获取信息').onClick((event: ClickEvent) => {
-        this.x = this.scroller.getItemRect(this.index).x
-        this.y = this.scroller.getItemRect(this.index).y
-        this.width1 = this.scroller.getItemRect(this.index).width
-        this.height1 = this.scroller.getItemRect(this.index).height
-      }).id('getWaterFlowItemRect1_button')
-      Text('' + this.x).key('getWaterFlowItemRect1_text1')
-      Text('' + this.y).key('getWaterFlowItemRect1_text2')
-      Text('' + this.width1).key('getWaterFlowItemRect1_text3')
-      Text('' + this.height1).key('getWaterFlowItemRect1_text4')
-      Button('点击滚动到底部').onClick((event: ClickEvent) => {
-        this.scroller.scrollEdge(Edge.End)
-      }).id('getWaterFlowItemRect1_button2')
     }
   }
 }

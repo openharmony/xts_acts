@@ -74,8 +74,8 @@ struct List_lanes_1 {
         .editable(true)
         .backgroundColor(0xFFFFFF)
       }
-      .height('60%')
-      .width('70%')
+      .height('80%')
+      .width('80%')
       .key('List_lanes_1_01')
       .backgroundColor(0xAFEEEE)
       .lanes(this.addLanes)
