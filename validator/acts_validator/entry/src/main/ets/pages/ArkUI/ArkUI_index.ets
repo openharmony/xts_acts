@@ -70,6 +70,7 @@ struct IndexPage {
     { title: 'chipTest', uri: 'pages/ArkUI/chipTest' },
     { title: 'chipGroupTest', uri: 'pages/ArkUI/chipGroupTest' },
     { title: 'DatePickerDialog', uri: 'pages/ArkUI/DatePickerDialog' },
+    { title: 'dialogModeTest', uri: 'pages/ArkUI/dialogModeTest' },
     { title: 'Marquee', uri: 'pages/ArkUI/Marquee' },
     { title: 'PatternLock', uri: 'pages/ArkUI/PatternLock' },
     { title: 'PatternLockL0_01', uri: 'pages/ArkUI/PatternLockL0_01' },
