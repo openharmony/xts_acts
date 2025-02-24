@@ -23,6 +23,7 @@ group("ActsWebOpenWebPageTest") {
       "ace_open_web_page_enhanced_one:ActsWebOpenWebPageEnhancedTest",
       "ace_open_web_page_enhanced_three:ActsWebOpenWebPageEnhancedThreeTest",
       "ace_open_web_page_enhanced_two:ActsWebOpenWebPageEnhancedTwoTest",
+      "ace_open_web_page_napis_enhance_one:ActsWebOpenWebPageNapisEnhanceOneTest",
     ]
   }
 }
