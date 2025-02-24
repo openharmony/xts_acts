@@ -1382,8 +1382,18 @@ export default function windowNdk() {
       let caseName = "test_registerMouseFilter_MouseRightButton";
       let result = windowNdkTest.registerMouseFilter(windowId);
         console.log(caseName + '  result:'+ JSON.stringify(result));
-        expect(result).assertEqual(0);
-        done();
+        if(result==2000){
+          console.info(`${Tag}: 此设备不支持SystemCapability.Window.SessionManager能力`);
+          expect(true).assertTrue();
+          done();
+        }else
+          if (result==0){
+          expect(true).assertTrue();
+          done();
+        }else{
+          expect(false).assertTrue();
+          done();
+        }
     })
 
     /**
@@ -1415,8 +1425,18 @@ export default function windowNdk() {
       let caseName = "test_UnRegisterMouseFilter_MouseRightButton";
       let result = windowNdkTest.clearMouseFilter(windowId);
         console.log(caseName + '  result:'+ JSON.stringify(result));
-        expect(result).assertEqual(0);
-        done();
+        if(result==2000){
+          console.info(`${Tag}: 此设备不支持SystemCapability.Window.SessionManager能力`);
+          expect(true).assertTrue();
+          done();
+        }else
+          if (result==0){
+          expect(true).assertTrue();
+          done();
+        }else{
+          expect(false).assertTrue();
+          done();
+        }
     })
 /**
          * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_5800
@@ -1446,8 +1466,18 @@ export default function windowNdk() {
       let caseName = "test_registerTouchFilter_TouchMove";
       let result = windowNdkTest.registerTouchFilter(windowId);
         console.log(caseName + '  result:'+ JSON.stringify(result));
-        expect(result).assertEqual(0);
-        done();
+        if(result==2000){
+          console.info(`${Tag}: 此设备不支持SystemCapability.Window.SessionManager能力`);
+          expect(true).assertTrue();
+          done();
+        }else
+          if (result==0){
+          expect(true).assertTrue();
+          done();
+        }else{
+          expect(false).assertTrue();
+          done();
+        }
     })
 
     /**
@@ -1478,8 +1508,18 @@ export default function windowNdk() {
       let caseName = "test_unRegisterTouchFilter_TouchMove";
       let result = windowNdkTest.clearTouchFilter(windowId);
         console.log(caseName + '  result:'+ JSON.stringify(result));
-        expect(result).assertEqual(0);
-        done();
+        if(result==2000){
+          console.info(`${Tag}: 此设备不支持SystemCapability.Window.SessionManager能力`);
+          expect(true).assertTrue();
+          done();
+        }else
+          if (result==0){
+          expect(true).assertTrue();
+          done();
+        }else{
+          expect(false).assertTrue();
+          done();
+        }
     })
     
 
