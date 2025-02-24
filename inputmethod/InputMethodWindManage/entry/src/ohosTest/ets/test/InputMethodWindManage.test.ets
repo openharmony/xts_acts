@@ -3337,7 +3337,7 @@ export default function inputMethodWindManageAbility() {
             textInputType: 0, enterKeyType: 0
           }
         }
-        await inputMethod.getController().attach(true, ATTRIBUTE, 0);
+        await inputMethod.getController().attach(true, ATTRIBUTE, inputMethod.RequestKeyboardReason.NONE);
         done();
       }
 
@@ -3409,7 +3409,7 @@ export default function inputMethodWindManageAbility() {
             textInputType: 0, enterKeyType: 0
           }
         }
-        await inputMethod.getController().attach(true, ATTRIBUTE, 1);
+        await inputMethod.getController().attach(true, ATTRIBUTE, inputMethod.RequestKeyboardReason.MOUSE);
         done();
       }
 
@@ -3481,7 +3481,7 @@ export default function inputMethodWindManageAbility() {
             textInputType: 0, enterKeyType: 0
           }
         }
-        await inputMethod.getController().attach(true, ATTRIBUTE, 2);
+        await inputMethod.getController().attach(true, ATTRIBUTE, inputMethod.RequestKeyboardReason.TOUCH);
         done();
       }
 
@@ -3553,7 +3553,7 @@ export default function inputMethodWindManageAbility() {
             textInputType: 0, enterKeyType: 0
           }
         }
-        await inputMethod.getController().attach(true, ATTRIBUTE, 20);
+        await inputMethod.getController().attach(true, ATTRIBUTE, inputMethod.RequestKeyboardReason.OTHER);
         done();
       }
 
