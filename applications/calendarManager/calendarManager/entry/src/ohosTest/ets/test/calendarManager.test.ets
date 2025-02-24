@@ -1193,6 +1193,99 @@ export default function CalendarManagerTest() {
     });
 
     /*
+     * @tc.number  SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseNoPermission_0100
+     * @tc.name    Deletes the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseNoPermission_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseNoPermission_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
+        calendarMgrErr?.deleteCalendar(data).then((data) => {
+          console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
+          return;
+        }).catch((err: BusinessError) => {
+          console.info(CaseName + `Failed to delete calendar, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          expect(err.code).assertEqual(201);
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+     * @tc.number  SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseParametersErr_0100
+     * @tc.name    Deletes the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseParametersErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseParametersErr_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
+        calendarMgr?.deleteCalendar(data).then((data) => {
+          console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
+          return;
+        }).catch((err: BusinessError) => {
+          console.info(CaseName + `Failed to delete calendar, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          expect(err.code).assertEqual(401);
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+     * @tc.number  SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseDeviceErr_0100
+     * @tc.name    Deletes the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseDeviceErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseDeviceErr_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
+        calendarMgr?.deleteCalendar(data).then((data) => {
+          console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
+          return;
+        }).catch((err: BusinessError) => {
+          console.info(CaseName + `Failed to delete calendar, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          expect(err.code).assertEqual(801);
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
      * @tc.number  SUB_Application_CalendarManagerApi_AddEvent_Async_0100
      * @tc.name    Create an agenda.
      * @tc.desc    Function test
