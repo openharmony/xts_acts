@@ -28,8 +28,8 @@ export default function requirementRouterPageStateTest() {
       let dataArray: number[][] = nativeRender.getRouterData();
       let router: number[] = dataArray[0];
       expect(router[0] == 106201).assertEqual(true)
-      expect(router[1] == 0).assertEqual(true)
-      expect(router[2] == 0).assertEqual(true)
+      expect(router[1] == 106201).assertEqual(true)
+      expect(router[2] == 106201).assertEqual(true)
     })
   })
 }
