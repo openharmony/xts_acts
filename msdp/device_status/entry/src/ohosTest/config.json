@@ -60,6 +60,10 @@
       {
         "name": "ohos.permission.DISTRIBUTED_DATASYNC",
         "reason": "ceshi"
+      },
+      {
+        "name": "ohos.permission.ACTIVITY_MOTION",
+        "reason": "ceshi"
       }
     ],
     "defPermissions": [
