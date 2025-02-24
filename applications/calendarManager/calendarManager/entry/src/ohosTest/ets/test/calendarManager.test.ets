@@ -152,62 +152,6 @@ export default function CalendarManagerTest() {
     });
 
     /*
-     * @tc.number  SUB_Application_CalendarManagerApi_GetCalendar_Async_0100
-     * @tc.name    Gets the specified Calendar object.
-     * @tc.desc    Function test
-     * @tc.size    SmallTest
-     * @tc.type    User
-     * @tc.level   Level 2
-     */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_Async_0100", 0, () => {
-      let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_Async_0100';
-      calendarMgr?.getCalendar((err, data) => {
-        if (err) {
-          radio.isRadioOn((error) => {
-            if (error) {
-              console.info("RK device , no modem")
-            } else {
-              console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
-              expect().assertFail();
-            }
-          })
-        } else {
-          console.info(CaseName + "Succeeded in get specified calendar type is LOCAl" + JSON.stringify(data));
-          expect(data.id != null).assertTrue();
-          return;
-        }
-      });
-    });
-
-    /*
-     * @tc.number  SUB_Application_CalendarManagerApi_GetCalendar_Async_0100
-     * @tc.name    Gets the specified Calendar object.
-     * @tc.desc    Function test
-     * @tc.size    SmallTest
-     * @tc.type    User
-     * @tc.level   Level 2
-     */
-    it("SUB_Application_CalendarManagerApi_GetCalendar_Async_0100", 0, () => {
-      let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_Async_0100';
-      calendarMgr?.getCalendar((err, data) => {
-        if (err) {
-          radio.isRadioOn((error) => {
-            if (error) {
-              console.info("RK device , no modem")
-            } else {
-              console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
-              expect().assertFail();
-            }
-          })
-        } else {
-          console.info(CaseName + "Succeeded in get specified calendar type is LOCAl" + JSON.stringify(data));
-          expect(data.id != null).assertTrue();
-          return;
-        }
-      });
-    });
-
-    /*
    * @tc.number  SUB_Application_CalendarManagerApi_CreateCalendar_AsyncNoPermission_0100
    * @tc.name    Create a Calendar object based on the calendar account information type entry as LOCAL.
    * @tc.desc    Function test
