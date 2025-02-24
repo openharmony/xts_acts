@@ -133,7 +133,7 @@ static napi_value OhVPrintTest(napi_env env, napi_callback_info info)
     napi_value res = nullptr;
     LogType type = LOG_APP;
     LogLevel level = LOG_ERROR;
-    int retLen = OhPrintVTest(type, level, 0x3200, "testTag", "%{ public }s", "OH_LOG_VPrint11111");	
+    int retLen = OhPrintVTest(type, level, 0x3200, "testTag", "%{public}s", "OH_LOG_VPrint11111");	
     bool ret = (retLen > 0) ? true : false;
     napi_get_boolean(env, ret, &res);
     return res;
