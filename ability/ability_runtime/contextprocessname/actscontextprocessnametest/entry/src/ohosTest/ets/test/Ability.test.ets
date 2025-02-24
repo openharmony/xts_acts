@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 import { describe, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { BusinessError, commonEventManager} from '@kit.BasicServicesKit';
-import {application, common, Want } from '@kit.AbilityKit';
+import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+import { application, common, Want } from '@kit.AbilityKit';
 
 export default function ActsContextProcessNameTest() {
   const PROCESS_NAME = 'com.acts.contextprocessname'
@@ -38,14 +38,14 @@ export default function ActsContextProcessNameTest() {
      * @tc.name : SUB_Ability_AbilityRuntime_processName_0100
      * @tc.desc : UIAbilityContext calls the processName property
      * @tc.level: Level 2
-     * @tc.type :
-     * @tc.size :
+     * @tc.type : Function
+     * @tc.size : MediumTest
      */
     it('SUB_Ability_AbilityRuntime_processName_0100', 0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_0100'
       console.log(`[${caseName}]: start`)
       try {
-        let uiAbilityContext =AppStorage.get('uiAbilityContext') as common.UIAbilityContext;
+        let uiAbilityContext = AppStorage.get('uiAbilityContext') as common.UIAbilityContext;
         expect(uiAbilityContext.processName).assertEqual(PROCESS_NAME)
         done();
       } catch (err) {
@@ -62,14 +62,14 @@ export default function ActsContextProcessNameTest() {
      * @tc.name : SUB_Ability_AbilityRuntime_processName_0200
      * @tc.desc : applicationContext obtained by context calls the processName property
      * @tc.level: Level 2
-     * @tc.type :
-     * @tc.size :
+     * @tc.type : Function
+     * @tc.size : MediumTest
      */
     it('SUB_Ability_AbilityRuntime_processName_0200', 0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_0200'
       console.log(`[${caseName}] create`)
       try {
-        let uiAbilityContext =AppStorage.get('uiAbilityContext') as common.UIAbilityContext;
+        let uiAbilityContext = AppStorage.get('uiAbilityContext') as common.UIAbilityContext;
         let applicationContext = uiAbilityContext.getApplicationContext();
         expect(applicationContext.processName).assertEqual(PROCESS_NAME)
         done();
@@ -87,8 +87,8 @@ export default function ActsContextProcessNameTest() {
      * @tc.name : SUB_Ability_AbilityRuntime_processName_0300
      * @tc.desc : applicationContext obtained by application calls the processName property
      * @tc.level: Level 2
-     * @tc.type :
-     * @tc.size :
+     * @tc.type : Function
+     * @tc.size : MediumTest
      */
     it('SUB_Ability_AbilityRuntime_processName_0300', 0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_0300'
@@ -110,14 +110,14 @@ export default function ActsContextProcessNameTest() {
      * @tc.name : SUB_Ability_AbilityRuntime_processName_0400
      * @tc.desc : abilityStage calls the processName property
      * @tc.level: Level 2
-     * @tc.type :
-     * @tc.size :
+     * @tc.type : Function
+     * @tc.size : MediumTest
      */
     it('SUB_Ability_AbilityRuntime_processName_0400', 0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_0400'
       console.log(`[${caseName}] create`)
       try {
-        let abilityStageContext =AppStorage.get('abilityStageContext') as common.AbilityStageContext;
+        let abilityStageContext = AppStorage.get('abilityStageContext') as common.AbilityStageContext;
         expect(abilityStageContext.processName).assertEqual(PROCESS_NAME)
         done();
       } catch (err) {
@@ -133,15 +133,15 @@ export default function ActsContextProcessNameTest() {
      * @tc.number : SUB_Ability_AbilityRuntime_processName_1500
      * @tc.name : SUB_Ability_AbilityRuntime_processName_1500
      * @tc.desc : startAbility to start another application process , get processName
-     * @tc.level: Level 2
-     * @tc.type :
-     * @tc.size :
+     * @tc.level: Level 3
+     * @tc.type : Function
+     * @tc.size : MediumTest
      */
     it('SUB_Ability_AbilityRuntime_processName_1500', 0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_1500'
       console.log(`[${caseName}] create`)
       try {
-        let uiAbilityContext =AppStorage.get('uiAbilityContext') as common.UIAbilityContext;
+        let uiAbilityContext = AppStorage.get('uiAbilityContext') as common.UIAbilityContext;
         let want: Want = {
           deviceId: '',
           bundleName: OTHER_BUNDLE_NAME,
@@ -176,15 +176,15 @@ export default function ActsContextProcessNameTest() {
      * @tc.number : SUB_Ability_AbilityRuntime_processName_3200
      * @tc.name : SUB_Ability_AbilityRuntime_processName_3200
      * @tc.desc : createModeAreaContext obtain processName
-     * @tc.level: Level 2
-     * @tc.type :
-     * @tc.size :
+     * @tc.level: Level 3
+     * @tc.type : Function
+     * @tc.size : MediumTest
      */
     it('SUB_Ability_AbilityRuntime_processName_3200', 0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_3200'
       console.log(`[${caseName}] create`)
       try {
-        let uiAbilityContext =AppStorage.get('uiAbilityContext') as common.UIAbilityContext;
+        let uiAbilityContext = AppStorage.get('uiAbilityContext') as common.UIAbilityContext;
         let processName1 = uiAbilityContext.createAreaModeContext(1).processName;
         let processName2 = uiAbilityContext.createAreaModeContext(2).processName;
         let processName3 = uiAbilityContext.createAreaModeContext(3).processName;
