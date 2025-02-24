@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import DeviceStatusUnitTest from './device_status_unittest.test'
+import DeviceStatusMotionTest from './device_status_motion.test'
 
 export default function testsuite() {
     DeviceStatusUnitTest()
+    DeviceStatusMotionTest()
 }
