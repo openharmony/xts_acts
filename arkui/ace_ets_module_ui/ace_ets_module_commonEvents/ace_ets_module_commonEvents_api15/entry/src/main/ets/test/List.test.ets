@@ -35,6 +35,7 @@ import rotationGestureTest from './isFingerCountLimited/RotationGesture.test';
 import swipeGestureTest from './isFingerCountLimited/SwipeGesture.test';
 import tapGestureTest from './isFingerCountLimited/TapGesture.test';
 import SnapshotOptions_region from './SnapshotOptions_region/SnapshotOptions_region.test';
+import setKeyProcessingModeTest from './setKeyProcessingModeTest/setKeyProcessingModeTest.test';
 
 export default function testsuite() {
   getWithUniqueId();
@@ -59,4 +60,5 @@ export default function testsuite() {
   swipeGestureTest();
   tapGestureTest();
   SnapshotOptions_region();
+  setKeyProcessingModeTest();
 }
