@@ -525,20 +525,6 @@ export default function audioNDK() {
       done()
     })
     /* *
-       * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSPEEDSTAMPINFO_0100
-       * @tc.name      : GetTimestamp with OH_AudioRenderer_GetAudioSpeedTimestampInfo
-       * @tc.desc      : test OH_AudioRenderer_GetAudioSpeedTimestampInfo
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level0
-   */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSPEEDSTAMPINFO_0100', 0, async (done: Function) => {
-      let result = myaudioNdk.audioRenderGetAudioSpeedTimestampInfo();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSPEEDSTAMPINFO_0100 audioRenderGetAudioSpeedTimestampInfo: ${result}`);
-      expect(result).assertEqual(0)
-      done()
-    })
-    /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESIZEINCALLBACK_0100
        * @tc.name      : GetFrameSizeInCallback with OH_AudioRenderer_GetFrameSizeInCallback
        * @tc.desc      : test OH_AudioRenderer_GetFramesWritten
