@@ -243,7 +243,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("test_Documentpicker_Select_Promise_014", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_014";
       let option = new picker.DocumentSelectOptions();
       option.multiAuthMode = true;
@@ -259,7 +259,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("test_Documentpicker_Select_Promise_015", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_015";
       let option = new picker.DocumentSelectOptions();
       option.mergeMode = picker.MergeTypeMode.DEFAULT;
@@ -274,7 +274,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("test_Documentpicker_Select_Promise_016", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_016";
       let option = new picker.DocumentSelectOptions();
       option.mergeMode = picker.MergeTypeMode.AUDIO;
@@ -289,7 +289,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("test_Documentpicker_Select_Promise_017", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_017";
       let option = new picker.DocumentSelectOptions();
       option.mergeMode = picker.MergeTypeMode.VIDEO;
@@ -304,7 +304,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("test_Documentpicker_Select_Promise_018", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_018";
       let option = new picker.DocumentSelectOptions();
       option.mergeMode = picker.MergeTypeMode.DOCUMENT;
@@ -319,7 +319,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("test_Documentpicker_Select_Promise_019", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_019";
       let option = new picker.DocumentSelectOptions();
       option.mergeMode = picker.MergeTypeMode.PICTURE;
