@@ -40,7 +40,7 @@ export default function fontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingGetFontDescriptorByFullName002', 0, async (done: Function) => {
+    it('testOHDrawingGetFontDescriptorByFullName002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetFontDescriptorByFullName002();
       expect(result).assertEqual(0);
       done();
@@ -54,7 +54,7 @@ export default function fontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingGetFontDescriptorByFullName003', 0, async (done: Function) => {
+    it('testOHDrawingGetFontDescriptorByFullName003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Array<number> = nativeFontNdk.oHDrawingGetFontDescriptorByFullName003();
       expect(result[0]).assertEqual(0);
       expect(result[1]).assertEqual(0);
@@ -71,7 +71,7 @@ export default function fontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingGetFontDescriptorByFullName004', 0, async (done: Function) => {
+    it('testOHDrawingGetFontDescriptorByFullName004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Array<number> = nativeFontNdk.oHDrawingGetFontDescriptorByFullName004();
       expect(result[0]).assertEqual(0);
       expect(result[1]).assertEqual(0);
@@ -102,7 +102,7 @@ export default function fontTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDrawingGetSystemFontFullNamesByType002', 0, async (done: Function) => {
+    it('testOHDrawingGetSystemFontFullNamesByType002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Array<number> = nativeFontNdk.oHDrawingGetSystemFontFullNamesByType002();
       expect(result[0]).assertEqual(0);
       expect(result[1]).assertEqual(0);
