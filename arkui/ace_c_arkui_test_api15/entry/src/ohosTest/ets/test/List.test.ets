@@ -21,6 +21,9 @@ import FocusControlTest3 from "./foucscontrolTest/FocusControlTest3.test"
 import FocusControlTest4 from "./foucscontrolTest/FocusControlTest4.test"
 
 
+import columnBackDropBlurTest from "./visual/columnBackDropBlurTest.test"
+
+
 export default function testsuite() {
 
    ProgressLinearStyleTest();
@@ -29,4 +32,5 @@ export default function testsuite() {
    FocusControlTest2();
    FocusControlTest3();
    FocusControlTest4();
+   columnBackDropBlurTest();
 }
