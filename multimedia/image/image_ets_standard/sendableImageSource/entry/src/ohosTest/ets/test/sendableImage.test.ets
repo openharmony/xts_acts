@@ -1337,8 +1337,8 @@ export default function sendableImageSource() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0200', 0, async (done: Function) => {
-      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0200"
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0100"
       const readBuffer: ArrayBuffer = new ArrayBuffer(3301488);
       let fileName = 'test.webp'
       let imageSourceApi = await getImageSource(fileName, "uri")
@@ -1354,15 +1354,15 @@ export default function sendableImageSource() {
     })
 
     /**
-     * @tc.number    : testImageSourcereadPixelsToBuffer0100
+     * @tc.number    : testImageSourcereadPixelsToBuffer0200
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0200
      * @tc.desc      : 1.
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0100', 0, async (done: Function) => {
-      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0100"
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0200', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0200"
       const readBuffer: ArrayBuffer = new ArrayBuffer(96);
       let fileName = 'test.webp'
       let imageSourceApi = await getImageSource(fileName, "uri")
@@ -1374,15 +1374,201 @@ export default function sendableImageSource() {
             console.info('Succeeded in reading image pixel data.');
           }).catch((error: BusinessError) => {
             console.error(`Failed to read image pixel data. errer is ${error}`);
-            expect(error).assertEqual(62980115)
-            done()
+            expect(error).assertEqual(62980115);
+            done();
           })
         }
       }).catch((error: BusinessError) => {
         console.error(`0x0000 ${tag} failed ${error}`);
-        expect().assertFail()
+        expect().assertFail();
         done()
       })
+    })
+
+    /**
+     * @tc.number    : testImageSourcereadPixels0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_0100
+     * @tc.desc      : 1.
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_0100"
+      const area: image.PositionArea = {
+        pixels: new ArrayBuffer(8),
+        offset: 0,
+        stride: 8,
+        region: {size: {height: 1, width: 2},
+        x: 0,
+        y: 0}
+      }
+      let fileName = 'test.webp'
+      let imageSourceApi = await getImageSource(fileName, "uri")
+      imageSourceApi.createPixelMap().then((pixelMap: sendableImage.PixelMap) => {
+        console.info(`0x0000 ${tag} success pixelMap`);
+        expect(pixelMap.isEditable).assertInstanceOf('Boolean');
+        pixelMap.readPixels(area).then(() => {
+          console.info('Succeeded in reading the image data in the area.');
+          expect(true).assertTrue();
+          done();
+        }).catch((error: BusinessError) => {
+          console.error(`Failed to read the image data in the area. error is ${error}`);
+          expect().assertFail();
+          done();
+        })
+      })
+    })
+
+  /**
+     * @tc.number    : testImageSourcereadPixelsSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_SYNC_0100
+     * @tc.desc      : 1.
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_SYNC_0100"
+      const area: image.PositionArea = {
+        pixels: new ArrayBuffer(8),
+        offset: 0,
+        stride: 8,
+        region: {size: {height: 1, width: 2},
+        x: 0,
+        y: 0}
+      }
+      let fileName = 'test.webp'
+      let imageSourceApi = await getImageSource(fileName, "uri")
+      imageSourceApi.createPixelMap().then((pixelMap: sendableImage.PixelMap) => {
+        console.info(`0x0000 ${tag} success pixelMap`);
+        expect(pixelMap.isEditable).assertInstanceOf('Boolean');
+        try {
+          pixelMap.readPixelsSync(area);
+          console.info('Succeeded in reading the image data in the area.');
+          expect(true).assertTrue();
+          done();
+        } catch (error) {
+          console.error(`Failed to read the image data in the area. error is ${error}`);
+          expect().assertFail();
+          done();
+          }
+      })
+    })
+
+    /**
+     * @tc.number    : testImageSourceWritePixels0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_PIXELS_0100
+     * @tc.desc      : 1.
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_PIXELS_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_PIXELS_0100"
+      const area: image.PositionArea = {
+        pixels: new ArrayBuffer(8),
+        offset: 0,
+        stride: 8,
+        region: {size: {height: 1, width: 2},
+          x: 0,
+          y: 0}
+      };
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4,width: 6}
+      };
+      let bufferArr: Uint8Array = new Uint8Array(area.pixels);
+      for (let i = 0; i < bufferArr.length; i++) {
+        bufferArr[i] = i + 1;
+      }
+      let pixelMap = await sendableImage.createPixelMap(color, opts);
+      try {
+        pixelMap.writePixels(area);
+        console.info('0x0000 ${tag} Succeeded to write pixelmap into the specified area.');
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`0x0000 ${tag} Failed to write pixelmap into the specified area. error is ${error}`);
+        expect().assertFail();
+        done();
+      }
+  })
+
+  /**
+     * @tc.number    : testImageSourceWritePixelsSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_PIXELS_SYNC_0100
+     * @tc.desc      : 1.
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_PIXELS_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_PIXELS_SYNC_0100"
+      const area: image.PositionArea = {
+        pixels: new ArrayBuffer(8),
+        offset: 0,
+        stride: 8,
+        region: {size: {height: 1, width: 2},
+          x: 0,
+          y: 0}
+      };
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4,width: 6}
+      };
+      let bufferArr: Uint8Array = new Uint8Array(area.pixels);
+      for (let i = 0; i < bufferArr.length; i++) {
+        bufferArr[i] = i + 1;
+      }
+      let pixelMap = await sendableImage.createPixelMap(color, opts);
+      try {
+        pixelMap.writePixelsSync(area);
+        console.info('0x0000 ${tag} Succeeded to write pixelmap into the specified area.');
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`0x0000 ${tag} Failed to write pixelmap into the specified area. error is ${error}`);
+        expect().assertFail();
+        done();
+      }
+  })
+
+  /**
+     * @tc.number    : testImageSourceWriteBufferToPixelsSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_BUFFER_TO_PIXELS_SYNC_0100
+     * @tc.desc      : 1.
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_BUFFER_TO_PIXELS_SYNC_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_WRITE_BUFFER_TO_PIXELS_SYNC_0100"
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let bufferArr: Uint8Array = new Uint8Array(color);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4,width: 6}
+      };
+      for (let i = 0; i < bufferArr.length; i++) {
+        bufferArr[i] = i + 1;
+      }
+      let pixelMap = await sendableImage.createPixelMap(color, opts);
+      try {
+        pixelMap.writeBufferToPixelsSync(color);
+        console.info('0x0000 ${tag} Succeeded in writing data from a buffer to a PixelMap.');
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`0x0000 ${tag} Failed to write data from a buffer to a PixelMap. error is ${error}`);
+        expect().assertFail();
+        done();
+        }
     })
   })
 }
