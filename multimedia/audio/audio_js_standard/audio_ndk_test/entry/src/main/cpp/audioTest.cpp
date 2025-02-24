@@ -446,22 +446,11 @@ static napi_value AudioCaptureGetFrameSizeInCallback(napi_env env, napi_callback
     return res;
 }
 
-static int32_t AudioRendererOnWriteData(OH_AudioRenderer* capturer,
-    void* userData,
-    void* buffer,
-    int32_t bufferLen)
-{
-    return 0;
-}
-
 OH_AudioStreamBuilder *CreateRenderBuilder()
 {
     OH_AudioStreamBuilder *builder;
     OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
     OH_AudioStreamBuilder_Create(&builder, type);
-    OH_AudioRenderer_Callbacks callbacks;
-    callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
-    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, NULL);
     return builder;
 }
 
@@ -578,102 +567,6 @@ static napi_value AudioRenderGetTimestamp(napi_env env, napi_callback_info info)
     OH_AudioStreamBuilder_Destroy(builder);
     napi_value res;
     napi_create_int32(env, result, &res);
-    return res;
-}
-
-static napi_value AudioRenderGetAudioTimestampInfo(napi_env env, napi_callback_info info)
-{
-    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
-	
-    OH_AudioRenderer *audioRenderer;
-    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
-	
-    napi_value res;
-    int64_t framePosition0;
-    int64_t timestamp0;
-    OH_AudioStream_Result result = OH_AudioRenderer_GetAudioTimestampInfo(
-        audioRenderer, &framePosition0, &timestamp0);
-    if (result == AUDIOSTREAM_SUCCESS) {
-        napi_create_int32(env, TEST_FAIL, &res);
-        return res;
-    }
-    OH_AudioRenderer_Start(audioRenderer);
-	
-    int sleepNum = 30000;
-    uDelay(sleepNum);
-	
-    int64_t framePosition1;
-    int64_t timestamp1;
-    result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, &framePosition1, &timestamp1);
-    if (result != AUDIOSTREAM_SUCCESS) {
-        napi_create_int32(env, TEST_FAIL, &res);
-        return res;
-    }
-	
-    OH_AudioRenderer_Stop(audioRenderer);
-    result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, &framePosition0, &timestamp0);
-        if (result == AUDIOSTREAM_SUCCESS) {
-        napi_create_int32(env, TEST_FAIL, &res);
-        return res;
-    }
-    OH_AudioRenderer_Release(audioRenderer);
-    OH_AudioStreamBuilder_Destroy(builder);
-    napi_create_int32(env, TEST_PASS, &res);
-    return res;
-}
-
-static napi_value AudioRenderGetAudioTimestampInfoInterval(napi_env env, napi_callback_info info)
-{
-    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
-	
-    OH_AudioRenderer *audioRenderer;
-    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
-	
-    OH_AudioRenderer_Start(audioRenderer);
-	
-    int sleepNum = 500000;
-    uDelay(sleepNum);
-	
-    napi_value res;
-    float rate = 0.15;
-    int counti = 5;
-    int64_t framePositionLastDuration = 0;
-    int64_t timestampLastDuration = 0;
-    OH_AudioStream_Result result = AUDIOSTREAM_SUCCESS;
-	
-    for (int i = 0; i < counti; ++i) {
-        int64_t framePosition1 = 0;
-        int64_t framePosition2 = 0;
-        int64_t timestamp1 = 0;
-        int64_t timestamp2 = 0;
-        result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, &framePosition1, &timestamp1);
-		
-        uDelay(sleepNum);
-		
-        result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, &framePosition2, &timestamp2);
-        if (framePositionLastDuration == 0) {
-            framePositionLastDuration = framePosition2 - framePosition1;
-            timestampLastDuration = timestamp2 - timestamp1;
-            continue;
-        }
-		
-        int64_t timestampCurDuration = timestamp2 - timestamp1;
-        int64_t framePositionCurDuration = (framePosition2 - framePosition1) *
-        ((timestampLastDuration * 1.0) / (timestampCurDuration));
-		
-        if (framePositionLastDuration <= framePositionCurDuration * (1 - rate) ||
-		    framePositionLastDuration >= framePositionCurDuration * (1 + rate)) {
-            napi_create_int32(env, TEST_FAIL, &res);
-            return res;
-            }
-		
-        framePositionLastDuration = framePosition2 - framePosition1;
-        timestampLastDuration = timestamp2 - timestamp1;
-    }
-    OH_AudioRenderer_Stop(audioRenderer);
-    OH_AudioRenderer_Release(audioRenderer);
-    OH_AudioStreamBuilder_Destroy(builder);
-    napi_create_int32(env, TEST_PASS, &res);
     return res;
 }
 
@@ -1076,6 +969,14 @@ static napi_value AudioStreamBuilderSetCapturerInfo(napi_env env, napi_callback_
     napi_value res;
     napi_create_int32(env, result, &res);
     return res;
+}
+
+static int32_t AudioRendererOnWriteData(OH_AudioRenderer* capturer,
+    void* userData,
+    void* buffer,
+    int32_t bufferLen)
+{
+    return 0;
 }
 
 static napi_value AudioStreamBuilderSetRendererCallback(napi_env env, napi_callback_info info)
@@ -4822,6 +4723,113 @@ static napi_value Add(napi_env env, napi_callback_info info)
     napi_create_double(env, value0 + value1, &sum);
 
     return sum;
+}
+
+OH_AudioStreamBuilder *CreateRenderBuilderAddCallBack()
+{
+    OH_AudioStreamBuilder *builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+    OH_AudioRenderer_Callbacks callbacks;
+    callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, NULL);
+    return builder;
+}
+
+static napi_value AudioRenderGetAudioTimestampInfo(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder *builder = CreateRenderBuilderAddCallBack();
+	
+    OH_AudioRenderer *audioRenderer;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+	
+    napi_value res;
+    int64_t framePosition0;
+    int64_t timestamp0;
+    OH_AudioStream_Result result = OH_AudioRenderer_GetAudioTimestampInfo(
+        audioRenderer, &framePosition0, &timestamp0);
+    if (result == AUDIOSTREAM_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+    OH_AudioRenderer_Start(audioRenderer);
+	
+    int sleepNum = 30000;
+    uDelay(sleepNum);
+	
+    int64_t framePosition1;
+    int64_t timestamp1;
+    result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, &framePosition1, &timestamp1);
+    if (result != AUDIOSTREAM_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+	
+    OH_AudioRenderer_Stop(audioRenderer);
+    result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, &framePosition0, &timestamp0);
+        if (result == AUDIOSTREAM_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+    OH_AudioRenderer_Release(audioRenderer);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioRenderGetAudioTimestampInfoInterval(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder *builder = CreateRenderBuilderAddCallBack();
+	
+    OH_AudioRenderer *audioRenderer;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+	
+    OH_AudioRenderer_Start(audioRenderer);
+	
+    int sleepNum = 500000;
+    uDelay(sleepNum);
+	
+    napi_value res;
+    float rate = 0.15;
+    int counti = 5;
+    int64_t framePositionLastDuration = 0;
+    int64_t timestampLastDuration = 0;
+    OH_AudioStream_Result result = AUDIOSTREAM_SUCCESS;
+	
+    for (int i = 0; i < counti; ++i) {
+        int64_t framePosition1 = 0;
+        int64_t framePosition2 = 0;
+        int64_t timestamp1 = 0;
+        int64_t timestamp2 = 0;
+        result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, &framePosition1, &timestamp1);
+		
+        uDelay(sleepNum);
+		
+        result = OH_AudioRenderer_GetAudioTimestampInfo(audioRenderer, &framePosition2, &timestamp2);
+        if (framePositionLastDuration == 0) {
+            framePositionLastDuration = framePosition2 - framePosition1;
+            timestampLastDuration = timestamp2 - timestamp1;
+            continue;
+        }
+		
+        int64_t timestampCurDuration = timestamp2 - timestamp1;
+        int64_t framePositionCurDuration = (framePosition2 - framePosition1) *
+        ((timestampLastDuration * 1.0) / (timestampCurDuration));
+		
+        if (framePositionLastDuration <= framePositionCurDuration * (1 - rate) ||
+		    framePositionLastDuration >= framePositionCurDuration * (1 + rate)) {
+            napi_create_int32(env, TEST_FAIL, &res);
+            return res;
+            }
+		
+        framePositionLastDuration = framePosition2 - framePosition1;
+        timestampLastDuration = timestamp2 - timestamp1;
+    }
+    OH_AudioRenderer_Stop(audioRenderer);
+    OH_AudioRenderer_Release(audioRenderer);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
 }
 
 EXTERN_C_START
