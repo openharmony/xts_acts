@@ -979,7 +979,6 @@ static int32_t AudioRendererOnWriteData(OH_AudioRenderer* capturer,
 {
     return 0;
 }
-
 static napi_value AudioStreamBuilderSetRendererCallback(napi_env env, napi_callback_info info)
 {
     OH_AudioStreamBuilder* builder;
@@ -1002,7 +1001,6 @@ static int32_t AudioCapturerOnReadData(
 {
     return 0;
 }
-
 static napi_value AudioStreamBuilderSetCapturerCallback(napi_env env, napi_callback_info info)
 {
     OH_AudioStreamBuilder* builder;
