@@ -66,14 +66,12 @@ export default class Utils {
   }
 
   static async btnTextScreenCapture() {
-    let backPass: number = 0;
-    let backFailed: number = 0;
     let button = await driver.waitForComponent(ON.text("允许"), 1000)
     if (button == null) {
-      return backFailed;
+      return 1;
     } else {
       await button.click();
-      return backPass;
+      return 0;
     }
   }
 }
