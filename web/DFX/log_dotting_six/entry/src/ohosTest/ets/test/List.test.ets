@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import webViewSdkSchemeHandlerDidFailFei from './webViewSdkSchemeHandlerDidFailFei.test'
 import webViewSdkSchemeHandlerDidFailFly2 from './webViewSdkSchemeHandlerDidFailFly2.test'
+import webViewSdkSchemeHandlerDidFailFei from './webViewSdkSchemeHandlerDidFailFei.test'
 import webViewSdkSchemeHandlerDidFail3_3 from './webViewSdkSchemeHandlerDidFail3_3.test'
 
 export default function testsuite() {
+  webViewSdkSchemeHandlerDidFailFly2()
   webViewSdkSchemeHandlerDidFail3_3()
   webViewSdkSchemeHandlerDidFailFei()
-  webViewSdkSchemeHandlerDidFailFly2()
 }
