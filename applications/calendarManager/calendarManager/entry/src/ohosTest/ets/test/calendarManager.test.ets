@@ -360,7 +360,7 @@ export default function CalendarManagerTest() {
         displayName: '订阅帐户'
       }
       calendarMgrErr?.createCalendar(CalendarAccounts).then((data) => {
-        console.info(CaseName + `Succeeded in creating calendar, Code is ${err.code}, message is ${err.message}`);
+        console.info(CaseName + `Succeeded in creating calendar, data: ${JSON.stringify(data)}`);
         expect(data.id != null).assertTrue();
         return;
       }).catch((err: BusinessError) => {
@@ -386,7 +386,7 @@ export default function CalendarManagerTest() {
         displayName: '订阅帐户'
       }
       calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
-        console.info(CaseName + `Succeeded in creating calendar, Code is ${err.code}, message is ${err.message}`);
+        console.info(CaseName + `Succeeded in creating calendar, data: ${JSON.stringify(data)}`);
         expect(data.id != null).assertTrue();
         return;
       }).catch((err: BusinessError) => {
@@ -412,7 +412,7 @@ export default function CalendarManagerTest() {
         displayName: '订阅帐户'
       }
       calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
-        console.info(CaseName + `Succeeded in creating calendar, Code is ${err.code}, message is ${err.message}`);
+        console.info(CaseName + `Succeeded in creating calendar, data: ${JSON.stringify(data)}`);
         expect(data.id != null).assertTrue();
         return;
       }).catch((err: BusinessError) => {
@@ -746,7 +746,7 @@ export default function CalendarManagerTest() {
         displayName: '订阅帐户'
       }
       calendarMgrErr?.getCalendar(CalendarAccounts).then((data) => {
-        console.info(CaseName + `Succeeded in deleting calendar, Code is ${err.code}, message is ${err.message}`);
+        console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
         expect(data.id != null).assertTrue();
         return;
       }).catch((err: BusinessError) => {
@@ -771,7 +771,7 @@ export default function CalendarManagerTest() {
         displayName: '订阅帐户'
       }
       calendarMgr?.getCalendar(CalendarAccounts).then((data) => {
-        console.info(CaseName + `Succeeded in deleting calendar, Code is ${err.code}, message is ${err.message}`);
+        console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
         expect(data.id != null).assertTrue();
         return;
       }).catch((err: BusinessError) => {
@@ -797,7 +797,7 @@ export default function CalendarManagerTest() {
         displayName: '订阅帐户'
       }
       calendarMgr?.getCalendar(CalendarAccounts).then((data) => {
-        console.info(CaseName + `Succeeded in deleting calendar, Code is ${err.code}, message is ${err.message}`);
+        console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
         expect(data.id != null).assertTrue();
         return;
       }).catch((err: BusinessError) => {
@@ -960,7 +960,7 @@ export default function CalendarManagerTest() {
     it("SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseNoPermission_0100", 0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseNoPermission_0100';
       calendarMgrErr?.getAllCalendars().then((data) => {
-        console.info(CaseName + `Succeeded in deleting calendar, Code is ${err.code}, message is ${err.message}`);
+        console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
         expect(data != null).assertTrue();
         return;
       }).catch((err: BusinessError) => {
@@ -981,7 +981,7 @@ export default function CalendarManagerTest() {
     it("SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseParametersErr_0100", 0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseParametersErr_0100';
       calendarMgr?.getAllCalendars().then((data) => {
-        console.info(CaseName + `Succeeded in deleting calendar, Code is ${err.code}, message is ${err.message}`);
+        console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
         expect(data != null).assertTrue();
         return;
       }).catch((err: BusinessError) => {
@@ -1002,7 +1002,7 @@ export default function CalendarManagerTest() {
     it("SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseDeviceErr_0100", 0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseDeviceErr_0100';
       calendarMgr?.getAllCalendars().then((data) => {
-        console.info(CaseName + `Succeeded in deleting calendar, Code is ${err.code}, message is ${err.message}`);
+        console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
         expect(data != null).assertTrue();
         return;
       }).catch((err: BusinessError) => {
