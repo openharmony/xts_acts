@@ -70,11 +70,11 @@ static napi_value loadData(napi_env env, napi_callback_info info)
     char *historyUrlValue = new (std::nothrow) char[historyUrlSize + 1];
     napi_get_value_string_utf8(env, args[ARGS_INDEX_FIVE], historyUrlValue, historyUrlSize + 1, &historyUrlSize);
 
-    // 调用ndk接口
-    ArkWeb_ErrorCode result1 = OH_NativeArkWeb_LoadData(webNameValue, dataValue, mimeTypeValue,encodingValue,
-        baseUrlValue,historyUrlValue);
+    // 调用原生接口
+    ArkWeb_ErrorCode result1 = OH_NativeArkWeb_LoadData(webNameValue, dataValue, mimeTypeValue, encodingValue,
+    baseUrlValue, historyUrlValue);
     int errorCodeAsInt = static_cast<int>(result1);
-    napi_create_double(env,errorCodeAsInt,&result);
+    napi_create_double(env,errorCodeAsInt, &result);
     return result;
 }
 
