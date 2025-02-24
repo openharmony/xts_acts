@@ -24,6 +24,7 @@ import windowZindexTest from './WindowZindex.test';
 import extensionWindowPropertiesTest from './ExtensionWindowProperties.test';
 import windowFocusTest from './WindowFocus.test';
 export default function testsuite() {
+  windowFocusTest();
   windowInterface();
   windowTitleBarTest();
   windowZindexTest();
@@ -33,6 +34,5 @@ export default function testsuite() {
   windowMaximizeTest();
   windowImmersiveTest();
   windowPropertiesTest();
-  windowFocusTest();
   extensionWindowPropertiesTest();
 }
