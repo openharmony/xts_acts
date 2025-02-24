@@ -58,7 +58,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
       expect(obj.$type).assertEqual('TextPicker');
       console.info("[testtextPickerDefaultPickerItemHeight0001] width value :" + JSON.parse(strJson).$attrs.width);
       let number: string = JSON.parse(strJson).$attrs.width.slice(0,-2);
-      let numberValue = parseFloat(number) - 112;
+      let numberValue = Number((parseFloat(number) - 112.00).toFixed(2));
       console.info("[testtextPickerDefaultPickerItemHeight0001] width value numberValue:" + numberValue);
       expect(Math.abs(numberValue) <= 0.01).assertTrue();
     });
