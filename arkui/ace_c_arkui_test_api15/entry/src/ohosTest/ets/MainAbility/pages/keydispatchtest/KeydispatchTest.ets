@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,18 +13,21 @@
  * limitations under the License.
  */
 
-export const ProgressLinearStyleTest: (a: string) => void;
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
-export const testProgressLinearStyle: (a: string) => void;
+@Entry
+@Component
+struct KeyDispatchTest {
+  PAGE_TAG: string = 'keyDispatchTest';
 
-export const KeyEventPatchTest: (a: string) => void;
-
-export const GetKeyEventData: () => object;
-
-export const FocusControlTest_001: (a: string) => void;
-
-export const FocusControlTest_002: (a: string) => void;
-
-export const FocusControlTest_003: (a: string) => void;
-
-export const FocusControlTest_004: (a: string) => void;
+  build() {
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.KeyEventPatchTest(this.PAGE_TAG);
+      })
+    }
+  }
+}

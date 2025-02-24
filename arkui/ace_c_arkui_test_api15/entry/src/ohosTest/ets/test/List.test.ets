@@ -13,10 +13,20 @@
  * limitations under the License.
  */
 
+import keyDispatchTest from "./keydispatchTest/KeyDispatchTest.test"
 import ProgressLinearStyleTest from "./progress/progressLinearStyleTest.test"
+import FocusControlTest from "./foucscontrolTest/FocusControlTest.test"
+import FocusControlTest2 from "./foucscontrolTest/FocusControlTest2.test"
+import FocusControlTest3 from "./foucscontrolTest/FocusControlTest3.test"
+import FocusControlTest4 from "./foucscontrolTest/FocusControlTest4.test"
 
 
 export default function testsuite() {
 
    ProgressLinearStyleTest();
+   keyDispatchTest();
+   FocusControlTest();
+   FocusControlTest2();
+   FocusControlTest3();
+   FocusControlTest4();
 }
