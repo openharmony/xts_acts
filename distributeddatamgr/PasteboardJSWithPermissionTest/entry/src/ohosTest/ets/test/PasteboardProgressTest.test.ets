@@ -18,10 +18,9 @@ let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboa
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let dstDir = context.distributedFilesDir + '/dst';
 
-
 let getPermission = async () => {
   console.info('getPermission is start');
-  let context:common.UIAbilityContext | undefined = AppStorage.get('TestAbilityContext') as common.UIAbilityContext;
+  let context:common.UIAbilityContext | undefined = AppStorage.get('context') as common.UIAbilityContext;
   atManager.requestPermissionsFromUser(context, ['ohos.permission.READ_PASTEBOARD'], (err:BusinessError, data:PermissionRequestResult) => {
     console.info('requestPermissionsFromUser success data is' + JSON.stringify(data));
     console.info('requestPermissionsFromUser failed err is' + JSON.stringify(err));
@@ -60,13 +59,12 @@ let drivenFn = async () => {
 export default function PasteboardProgressTest() {
   describe('PasteboardProgressTest', () => {
     beforeAll(async (done:Function) => {
-      console.info(TAG + "63")
       await getPermission();
       await sleep(1000);
       await drivenFn();
       await sleep(1000);
       fs.mkdirSync(dstDir);
-      fs.mkdirSync(context.filesDir + '/src');
+      fs.mkdirSync(filePath);
       done();
     })
     beforeEach(() => {
@@ -86,7 +84,7 @@ export default function PasteboardProgressTest() {
      * @tc.level     : Level 2
      */
     it('SUB_Pasteboard_Local_SDK_ProgressTest_0100', 0, async () => {
-      console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0100 start ************')
+      console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0200 start ************')
       let fileFullName = filePath + '/test1.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
       let file = fs.openSync(fileFullName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
@@ -97,9 +95,7 @@ export default function PasteboardProgressTest() {
       let systemPasteboard = pasteboard.getSystemPasteboard();
       await systemPasteboard.setData(pasteData);
 
-      let dstDir2 = dstDir + '/dst'
-      fs.mkdirSync(dstDir2)
-      let dstUri: string = fileUri.getUriFromPath(dstDir2);
+      let dstUri: string = fileUri.getUriFromPath(dstDir);
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length);
       let params: pasteboard.GetDataParams = {
         destUri: dstUri,
@@ -108,7 +104,7 @@ export default function PasteboardProgressTest() {
       try {
         await systemPasteboard.getDataWithProgress(params).then((data) => {
           console.info(TAG + 'getDataWithProgress start');
-          let pastePath = dstDir2 + '/test1.txt';
+          let pastePath = dstDir + '/test1.txt';
           expect(fs.accessSync(pastePath)).assertEqual(true);
           console.info(TAG + 'getDataWithProgress success');
         }).catch((error: BusinessError) => {
@@ -118,7 +114,7 @@ export default function PasteboardProgressTest() {
       } catch (err) {
         console.info(TAG + 'getDataWithProgress fail,err：' + err.code + ',message: ' + err.message);
       }
-      console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0100 end ************')
+      console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0200 end ************')
     })
 
     /**
@@ -141,7 +137,9 @@ export default function PasteboardProgressTest() {
       let systemPasteboard = pasteboard.getSystemPasteboard();
       await systemPasteboard.setData(pasteData);
 
-      let dstUri: string = fileUri.getUriFromPath(dstDir);
+      let dstDir2 = dstDir + '/dst'
+      fs.mkdirSync(dstDir2)
+      let dstUri: string = fileUri.getUriFromPath(dstDir2);
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length);
       let params: pasteboard.GetDataParams = {
         destUri: dstUri,
@@ -150,7 +148,7 @@ export default function PasteboardProgressTest() {
       try {
         await systemPasteboard.getDataWithProgress(params).then((data) => {
           console.info(TAG + 'getDataWithProgress start');
-          let pastePath = dstDir + '/test2.txt';
+          let pastePath = dstDir2 + '/test2.txt';
           expect(fs.accessSync(pastePath)).assertEqual(true);
           console.info(TAG + 'getDataWithProgress success');
         }).catch((error: BusinessError) => {
