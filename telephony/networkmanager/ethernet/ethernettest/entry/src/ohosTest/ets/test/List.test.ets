@@ -13,7 +13,7 @@
  * limitations under the License.
 */
 import ethernettest from './ethernet.test';
-import EmptyTest from './Empty.test'；
+import EmptyTest from './Empty.test';
 import netfirewallTest from './netFirewall.test';
 
 export default function testsuite() {
