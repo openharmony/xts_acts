@@ -25,6 +25,7 @@ add_library(nativerender SHARED
     component/waterflow_component.cpp
     component/button_component.cpp
     component/text_component.cpp
+    drag/drag_test.cpp
 )
 
 add_library(nativefunc SHARED
@@ -64,6 +65,6 @@ find_library(
 )
 
 target_link_libraries(nativerender PUBLIC
-    libnative_drawing.so libace_napi.z.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
+    libnative_drawing.so libace_napi.z.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libudmf.so)
 target_link_libraries(nativefunc PUBLIC
 libnative_drawing.so libpixelmap.so libace_napi.z.so libudmf.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
