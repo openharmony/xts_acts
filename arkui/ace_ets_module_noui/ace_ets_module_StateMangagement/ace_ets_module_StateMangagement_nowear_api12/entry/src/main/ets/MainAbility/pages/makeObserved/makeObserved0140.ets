@@ -41,8 +41,8 @@ struct makeObserved0140 {
 
   build() {
     Column() {
-      Text(`${this.arr.length}`)
-      Button('push option').onClick(() => {
+      Text(`${this.arr.length}`).height('5%')
+      Button('push option').height('5%').onClick(() => {
         this.arr.push(100)
         this.arr.push(101)
         this.arr.push(102)
@@ -50,11 +50,11 @@ struct makeObserved0140 {
         let section: SectionOptions = { itemsCount: 4, crossCount: 2 }
         this.sections.push(section)
       }).id('buttonPush')
-      Button('splice option').onClick(() => {
+      Button('splice option').height('5%').onClick(() => {
         let section: SectionOptions = { itemsCount: 12, crossCount: 3 }
         this.sections.splice(0, this.arr.length, [section])
       }).id('buttonSplice')
-      Button('update option').onClick(() => {
+      Button('update option').height('5%').onClick(() => {
         let section: SectionOptions = { itemsCount: 12, crossCount: 4 }
         this.sections.update(0, section)
       }).id('buttonUpdate')
@@ -64,8 +64,7 @@ struct makeObserved0140 {
             Text(`${item}`)
               .border({ width: 1 })
               .backgroundColor(this.colors[index % 6])
-              .height('3%')
-              .width(50)
+              .height('5%')
               .id(`flowItem${index}`)
           }
         })

@@ -42,6 +42,7 @@ struct RepeatWaterFlowNumber {
               Text(ri.item.toString() + ' index:' + ri.index.toString() + ':' + this.tmp2.toString())
                 .id('Text1_WN' + ri.index.toString())
                 .fontSize(20)
+                .height('20%')
             }
             .width('100%')
             .border({ width: 1 })
@@ -77,6 +78,7 @@ struct RepeatWaterFlowNumber {
               Text(ri.item.toString() + ' index:' + ri.index.toString() + ':' + this.tmp2.toString())
                 .id('Text2_WN' + ri.index.toString())
                 .fontSize(20)
+                .height('20%')
             }
             .width('100%')
             .border({ width: 1 })
@@ -94,6 +96,7 @@ struct RepeatWaterFlowNumber {
               Text(r.item.toString() + ' index:' + r.index.toString() + ':' + (this.tmp2 = 100).toString())
                 .id('Text2_WN' + r.index.toString())
                 .fontSize(20)
+                .height('20%')
             }
             .width('100%')
             .border({ width: 1 })
