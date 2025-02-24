@@ -113,6 +113,7 @@ export default function PasteboardProgressTest() {
         })
       } catch (err) {
         console.info(TAG + 'getDataWithProgress fail,err：' + err.code + ',message: ' + err.message);
+		expect().assertFail();
       }
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0200 end ************')
     })
@@ -157,6 +158,7 @@ export default function PasteboardProgressTest() {
         })
       } catch (err) {
         console.info(TAG + 'getDataWithProgress fail,err：' + err.code + ',message: ' + err.message);
+		expect().assertFail();
       }
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0200 end ************')
     })
@@ -237,6 +239,7 @@ export default function PasteboardProgressTest() {
         })
       } catch (err) {
         console.info(TAG + 'getDataWithProgress fail,err：' + err.code + ',message: ' + err.message);
+		expect().assertFail();
       }
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0500 end ************')
     })

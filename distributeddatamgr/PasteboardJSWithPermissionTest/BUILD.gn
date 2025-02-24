@@ -20,7 +20,7 @@ ohos_js_app_suite("ActsPasteBoardJSApiWithPermissionTest") {
   hap_name = "ActsPasteBoardJSApiWithPermissionTest"
 
   # 部件名称，真实数据，需要子系统对应
-  part_name = "preferences"
+  part_name = "pasteboard"
 
   # 子系统名称，真实数据，需要部件对应
   subsystem_name = "distributeddatamgr"
