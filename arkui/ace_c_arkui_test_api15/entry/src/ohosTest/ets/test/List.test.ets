@@ -14,9 +14,10 @@
  */
 
 import ProgressLinearStyleTest from "./progress/progressLinearStyleTest.test"
-
+import columnBackDropBlurTest from "./visual/columnBackDropBlurTest.test"
 
 export default function testsuite() {
 
    ProgressLinearStyleTest();
+   columnBackDropBlurTest();
 }
