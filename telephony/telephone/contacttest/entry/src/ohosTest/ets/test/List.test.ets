@@ -26,11 +26,13 @@ import EmptyTest from './Empty.test';
 import ContactsTest from './Contacts.test';
 import AddContactViaUITest from './AddContactViaUI.test';
 import SaveToExistingContactViaUITest from './SaveToExistingContactViaUI.test';
+import SelectContactsTest from './SelectContacts.test';
 import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
   if (sim.getMaxSimCount()!=0){
     AddContactTest();
+    SelectContactsTest();
     AddContactViaUITest();
     SaveToExistingContactViaUITest();
     QueryKeyTest();
