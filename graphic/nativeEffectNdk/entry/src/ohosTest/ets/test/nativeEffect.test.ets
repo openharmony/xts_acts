@@ -250,7 +250,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPixelmapNativeAccessPixels001', 0, async (done: Function) => {
+    it('testOHPixelmapNativeAccessPixels001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHPixelmapNativeAccessPixels001();
       expect(result).assertEqual(0);
       done();
@@ -264,7 +264,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPixelmapNativeUnaccessPixels001', 0, async (done: Function) => {
+    it('testOHPixelmapNativeUnaccessPixels001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHPixelmapNativeUnaccessPixels001();
       expect(result).assertEqual(0);
       done();
