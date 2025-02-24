@@ -26,7 +26,7 @@ struct WebRunJavaScriptOnDocumentStartTest {
   @State scripts: Array<ScriptItem> = [
     { script: "if (typeof(Storage) !== 'undefined') {" +
       "   localStorage.setItem('color', 'Red');" +
-      "}", scriptRules: ['*'] }
+      '}', scriptRules: ['*'] }
   ];
 
   onPageShow() {
