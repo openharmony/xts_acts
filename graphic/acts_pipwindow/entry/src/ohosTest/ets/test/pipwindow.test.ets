@@ -2526,7 +2526,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
             let promise3 : Promise<pipWindow.PiPWindowInfo> = pipController.getPiPWindowInfo();
             promise3.then((data) => {
               pipWindowInfo = data;
-              console.info(caseName+' Success in get pip window info. Info: ' + JSON.stringify(data));
+              console.info(caseName+' Success in get pip window info. Info windowId: ' + JSON.stringify(pipWindowInfo.windowId) +' windowSize: '+JSON.stringify(pipWindowInfo.size));
               expect(true).assertTrue();
               done();
             }).catch((err: BusinessError) => {
