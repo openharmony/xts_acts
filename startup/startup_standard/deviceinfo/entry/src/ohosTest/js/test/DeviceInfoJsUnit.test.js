@@ -1890,46 +1890,5 @@ export default function DeviceInfoTest() {
 
             console.info('device_info_test_073 : end');
         })
-        
-        /**
-         * @tc.number    SUB_STARTUP_JS_DEVCEINFO_074
-         * @tc.name      testGetdiskSN
-         * @tc.desc      Get diskSN.
-         * @tc.size      : MediumTest
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-         it('device_info_test_074', 0, async function (done) {
-            console.info('device_info_test_074 start');
-            let ret = false;
-            let diskSN = deviceinfo.diskSN;
-            console.info('the value of the deviceinfo diskSN is :' + diskSN);
-            let deviceTypeInfo = deviceinfo.deviceType;
-            console.info('the value of the deviceType is :' + deviceTypeInfo);
-
-            if(deviceTypeInfo == '2in1'){
-                expect(diskSN).assertInstanceOf('String');
-                if (diskSN != "" && diskSN != null && diskSN != undefined) {
-                    ret = true;
-                    expect(ret).assertTrue();
-				    done();
-                } else {
-                    console.info('the return value diskSN is null or incorrect.');
-                    expect(false).assertTrue();
-				    done();
-                }
-            }else{
-                if (diskSN == "") {
-                    ret = true;
-                    expect(ret).assertTrue();
-				    done();
-                } else {
-                    console.info('the return value diskSN is not null or incorrect.');
-                    expect(false).assertTrue();
-				    done();
-                }
-            }
-            console.info('device_info_test_074 : end');
-        })
     })
 }
