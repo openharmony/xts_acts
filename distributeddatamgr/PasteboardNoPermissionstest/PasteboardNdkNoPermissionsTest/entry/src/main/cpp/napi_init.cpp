@@ -128,6 +128,38 @@ static napi_value OH_Pasteboard_GetMimeTypes0300(napi_env env, napi_callback_inf
     return result;
 }
 
+static napi_value OH_Pasteboard_GetDataWithNoProgress001(napi_env env, napi_callback_info info)
+{
+    const char *uri =  "file://com.acts.Pastboard.ndkWithPermissionstest/data/storage/el2/base/files/dstFile.txt";
+    OH_UdmfRecord* record = OH_UdmfRecord_Create();
+    OH_UdmfData* unifiedData = OH_UdmfData_Create();
+    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+    OH_UdsFileUri* fileUri = OH_UdsFileUri_Create();
+    OH_UdsFileUri_SetFileUri(fileUri, uri);
+    OH_UdmfRecord_AddFileUri(record, fileUri);
+    OH_UdmfData_AddRecord(unifiedData, record);
+    int ret = OH_Pasteboard_SetData(pasteboard, unifiedData);
+    NAPI_ASSERT(env, ret == ERR_OK, "OH_Pasteboard_SetData is fail.");
+
+    const char *uri1 = "file://com.acts.Pastboard.ndkWithPermissionstest/data/storage/el2/base/files/haps/";
+    Pasteboard_GetDataParams* params = OH_Pasteboard_GetDataParams_Create();
+    OH_Pasteboard_GetDataParams_SetDestUri(params, uri1, strlen(uri1));
+    OH_Pasteboard_GetDataParams_SetFileConflictOptions(params, PASTEBOARD_SKIP);
+    OH_Pasteboard_GetDataParams_SetProgressIndicator(params, PASTEBOARD_DEFAULT);
+    int status = -1;
+    
+    OH_UdmfData* getData = OH_Pasteboard_GetDataWithProgress(pasteboard, params, &status);
+    NAPI_ASSERT(env, status == ERR_PERMISSION_ERROR, "OH_Pasteboard_GetDataWithProgress is fail.");
+    NAPI_ASSERT(env, getData == nullptr, "OH_Pasteboard_GetDataWithProgress is fail.");
+
+    int recode = 0;
+    napi_value result;
+    napi_create_int32(env, recode, &result);
+    OH_Pasteboard_Destroy(pasteboard);
+    return result;
+}
+
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -137,6 +169,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"OH_Pasteboard_GetMimeTypes0200", nullptr, OH_Pasteboard_GetMimeTypes0200,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Pasteboard_GetMimeTypes0300", nullptr, OH_Pasteboard_GetMimeTypes0300,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_Pasteboard_GetDataWithNoProgress001", nullptr, OH_Pasteboard_GetDataWithNoProgress001,
          nullptr, nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
