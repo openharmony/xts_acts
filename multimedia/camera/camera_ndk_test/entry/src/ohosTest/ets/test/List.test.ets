@@ -32,6 +32,7 @@ import PhotoTest from './PhotoTest.test';
 import CameraSessionCameraRotationTest from './CameraSessionCameraRotationTest.test';
 import CameraSessionAutoDeviceSwitchTest from './CameraSessionAutoDeviceSwitchTest.test';
 import CameraSessionQualityPrioritizationTest from './CameraSessionQualityPrioritizationTest.test'
+import VideoMirrorTest from './VideoMirror.test'
 
 let voice = call.hasVoiceCapability()
 
@@ -54,6 +55,7 @@ export default function testsuite() {
     cameraJSUnitOutput();
     CameraSessionCameraRotationTest();
     CameraSessionAutoDeviceSwitchTest();
+    VideoMirrorTest();
   }else{
     CameraFunctionTest();
     CameraInputTest();
