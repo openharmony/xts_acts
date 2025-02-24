@@ -36,7 +36,7 @@ import {
 	 * @tc.level Level 0
 	 * @tc.require
 	 */
-	it('fileIO_test_atomicFile_000', 0, async function () {
+	it('fileIO_test_atomicFile_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
 	  try {
 		let file1 = new fileIO.AtomicFile("");
 		let ws1 = file1.startWrite();
@@ -55,7 +55,7 @@ import {
 	 * @tc.level Level 0
 	 * @tc.require
 	 */
-	it('fileIO_test_atomicFile_001', 0, async function () {
+	it('fileIO_test_atomicFile_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
 	  let fpath = await nextFileName('test1');
 	  expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
   
@@ -81,7 +81,7 @@ import {
 	 * @tc.level Level 0
 	 * @tc.require
 	 */
-	it('fileIO_test_atomicFile_002', 0, async function () {
+	it('fileIO_test_atomicFile_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
 	  let filesDir = await featureAbility.getContext().getCacheDir();
 	  let fpath = filesDir + '/test2.txt';
   
@@ -112,7 +112,7 @@ import {
 	 * @tc.level Level 0
 	 * @tc.require
 	 */
-	it('fileIO_test_atomicFile_003', 0, async function () {
+	it('fileIO_test_atomicFile_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
 	  let filesDir = await featureAbility.getContext().getCacheDir();
 	  let fpath = filesDir + '/test3/test3.txt';
   
@@ -134,7 +134,7 @@ import {
 	 * @tc.level Level 0
 	 * @tc.require
 	 */
-	it('fileIO_test_atomicFile_004', 0, async function () {
+	it('fileIO_test_atomicFile_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
 	  let fpath = await nextFileName('test4');
 	  expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
   
@@ -161,7 +161,7 @@ import {
 	 * @tc.level Level 0
 	 * @tc.require
 	 */
-	it('fileIO_test_atomicFile_005', 0, async function () {
+	it('fileIO_test_atomicFile_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
 	  let fpath = await nextFileName('test5');
 	  expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
   
@@ -191,7 +191,7 @@ import {
 	 * @tc.level Level 0
 	 * @tc.require
 	 */
-	it('fileIO_test_atomicFile_006', 0, async function () {
+	it('fileIO_test_atomicFile_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
 	  console.log('fileIO_test_atomicFile_006 begin');
 	  let fpath = await nextFileName('test6');
 	  expect(prepareFile(fpath, "fileIO_test_atomicFile_006")).assertTrue();
@@ -223,7 +223,7 @@ import {
 	 * @tc.level Level 0
 	 * @tc.require
 	 */
-	it('fileIO_test_atomicFile_007', 0, async function () {
+	it('fileIO_test_atomicFile_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
 	  let fpath = await nextFileName('test7');
 	  expect(prepareFile(fpath, "fileIO_test_atomicFile_007")).assertTrue();
   
@@ -262,7 +262,7 @@ import {
 	 * @tc.level Level 0
 	 * @tc.require
 	 */
-	it('fileIO_test_atomicFile_008', 0, async function () {
+	it('fileIO_test_atomicFile_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
 	  let fpath = await nextFileName('test8');
 	  expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -292,7 +292,7 @@ import {
 	 * @tc.level Level 0
 	 * @tc.require
 	 */
-	it('fileIO_test_atomicFile_009', 0, async function () {
+	it('fileIO_test_atomicFile_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
 	  let filesDir = await featureAbility.getContext().getCacheDir();
 	  let fpath = filesDir + '/test9.txt';
 
@@ -314,7 +314,7 @@ import {
 	 * @tc.level Level 0
 	 * @tc.require
 	 */
-	it('fileIO_test_atomicFile_010', 0, async function () {
+	it('fileIO_test_atomicFile_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
 		let filesDir = await featureAbility.getContext().getCacheDir();
 		let fpath = filesDir + '/test10.txt';
 
