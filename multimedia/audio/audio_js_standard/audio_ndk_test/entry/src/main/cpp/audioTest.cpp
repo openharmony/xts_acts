@@ -446,6 +446,7 @@ static napi_value AudioCaptureGetFrameSizeInCallback(napi_env env, napi_callback
     return res;
 }
 
+
 OH_AudioStreamBuilder *CreateRenderBuilder()
 {
     OH_AudioStreamBuilder *builder;
