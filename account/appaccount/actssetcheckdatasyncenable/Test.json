@@ -5,7 +5,8 @@
         "test-timeout": "60000",
         "shell-timeout": "60000",
         "bundle-name": "com.example.actssetcheckdatasyncenable",
-        "package-name": "com.example.actssetcheckdatasyncenable"
+        "package-name": "com.example.actssetcheckdatasyncenable",
+        "testcase-timeout": 70000
     },
     "kits": [
         {

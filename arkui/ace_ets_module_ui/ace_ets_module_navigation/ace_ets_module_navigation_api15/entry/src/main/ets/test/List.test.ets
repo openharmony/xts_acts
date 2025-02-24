@@ -13,7 +13,15 @@
  * limitations under the License.
  */
 import EnableModeChangeAnimation from './Navigation/EnableModeChangeAnimation.test';
+import CustomTransitionPage from './NavDestination/CustomTransitionPage.test';
+import OnResultPage from './Navigation/OnResultPage.test';
+import HideBackButtonPage from './NavDestination/HideBackButtonPage.test';
+import SystemTransition2 from './NavDestination/SystemTransition2.test';
 
 export default function testsuite() {
   EnableModeChangeAnimation();
+  CustomTransitionPage();
+  OnResultPage();
+  HideBackButtonPage();
+  SystemTransition2();
 }

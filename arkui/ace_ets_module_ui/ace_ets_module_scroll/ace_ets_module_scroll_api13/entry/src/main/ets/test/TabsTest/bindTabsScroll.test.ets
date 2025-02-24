@@ -71,6 +71,7 @@ export default function bindTabsScroll() {
       let width = right - left;
       await CommonFunc.sleep(1000);
       await driver.swipe(Math.round(left + width/2),Math.round(top + height*0.8),Math.round(left + width/2),Math.round(top + height*0.2));
+      await driver.swipe(Math.round(left + width/2),Math.round(top + height*0.2),Math.round(left + width/2),Math.round(top + height*0.8));
       await CommonFunc.sleep(6000);
       let text02: Component = await driver.findComponent(ON.text("nested_scroller"))
       let textContent02:string = await text02.getText();
