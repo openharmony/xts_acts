@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
 import { photoKeys, fetchOption, getFileAsset, sleep, getPermission, driveFn } from '../common'
@@ -92,6 +91,42 @@ export default function addRemoveAssetsChangeRequestTest() {
       } catch (error) {
         console.error(`${testNum} failed; error: ${error}`);
         expect(false).assertTrue();
+        done();
+      }
+    })
+
+     /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_ADD_REMOVE_ASSETS_CHANGE_REQUEST_0200
+     * @tc.name      : add_remove_assets_change_request_002
+     * @tc.desc      : add and remove assets into album
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('add_remove_assets_change_request_002', 2, async (done: Function) => {
+      let testNum:ESObject = 'add_remove_assets_change_request_002';
+      try {
+        let album:ESObject = await helper.createAlbum(testNum);
+        let albumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+        const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'addRemoveAssetsChangeReq02.jpg');
+        const asset = await getFileAsset(testContext, testNum, fetchOps);
+        albumChangeRequest.addAssets([asset]);
+        await helper.applyChanges(albumChangeRequest);
+
+        let fetchResult:ESObject = await album.getAssets(fetchOps);
+        let newAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+        expect(fetchResult.getCount()).assertEqual(1);
+        fetchResult.close();
+
+        albumChangeRequest.removeAssets(null);
+        await helper.applyChanges(albumChangeRequest);
+        fetchResult = await album.getAssets(fetchOps);
+        expect(fetchResult.getCount()).assertEqual(0);
+        fetchResult.close();
+        done();
+      } catch (error) {
+        console.log(`${testNum} success; error: ${error}`);
+        expect(error.code).assertEqual(`401`);
         done();
       }
     })
