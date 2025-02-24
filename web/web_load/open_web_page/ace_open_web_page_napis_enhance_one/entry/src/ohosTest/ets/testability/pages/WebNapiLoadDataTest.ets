@@ -45,7 +45,7 @@ struct WebNapiLoadDataTest {
   }
 
   aboutToAppear() {
-    console.info("aboutToAppear start run testcase")
+    console.info('aboutToAppear start run testcase')
     web_webview.WebviewController.setWebDebuggingAccess(true);
 
   }
@@ -71,7 +71,7 @@ struct WebNapiLoadDataTest {
                         Source:<pre>source</pre>
                         <div dir="auto">
                             <br />
-                            <img style="max-width:592px;height:auto" src="harmonyos_202502241633.jpg" alt="图片" width="592" height="1052" />
+                            <img style="max-width:592px;height:auto" src="harmonyos_image.jpg" alt="图片" width="592" height="1052" />
                             <div>
                                 <br /><br /><br /><br /><br />
                                 <div>发自我的平板</div>
@@ -93,7 +93,8 @@ struct WebNapiLoadDataTest {
             }
           })
       }
-      Web({ src: 'https://www.baidu.com', controller: this.controller })
+      Web({ src: 'https' +
+      '://www.baidu.com', controller: this.controller })
         .domStorageAccess(true)
         .databaseAccess(true)
         .imageAccess(true)

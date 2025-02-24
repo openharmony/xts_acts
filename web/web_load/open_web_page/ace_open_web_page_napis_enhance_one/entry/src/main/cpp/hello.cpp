@@ -18,53 +18,63 @@
 #include <string>
 #include "web/native_interface_arkweb.h"
 
-static napi_value loadData(napi_env env, napi_callback_info info) {
+#define ARGS_INDEX_ZERO 0
+#define ARGS_INDEX_ONE 1
+#define ARGS_INDEX_TWO 2
+#define ARGS_INDEX_THREE 3
+#define ARGS_INDEX_FOUR 4
+#define ARGS_INDEX_FIVE 5
+#define ARGS_INDEX_SIX 6
+
+static napi_value loadData(napi_env env, napi_callback_info info)
+{
     size_t argc = 6;
-    napi_value args[6] = {nullptr};
+    napi_value args[ARGS_INDEX_SIX] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-	napi_value result;
+    napi_value result;
 
     // 获取第一个参数 webName
     size_t webNameSize = 0;
-    napi_get_value_string_utf8(env, args[0], nullptr, 0, &webNameSize);
+    napi_get_value_string_utf8(env, args[ARGS_INDEX_ZERO], nullptr, 0, &webNameSize);
     char *webNameValue = new (std::nothrow) char[webNameSize + 1];
-    napi_get_value_string_utf8(env, args[0], webNameValue, webNameSize + 1, &webNameSize);
+    napi_get_value_string_utf8(env, args[ARGS_INDEX_ZERO], webNameValue, webNameSize + 1, &webNameSize);
 
     // 获取第二个参数 data
     size_t dataSize = 0;
-    napi_get_value_string_utf8(env, args[1], nullptr, 0, &dataSize);
+    napi_get_value_string_utf8(env, args[ARGS_INDEX_ONE], nullptr, 0, &dataSize);
     char *dataValue = new (std::nothrow) char[dataSize + 1];
-    napi_get_value_string_utf8(env, args[1], dataValue, dataSize + 1, &dataSize);
+    napi_get_value_string_utf8(env, args[ARGS_INDEX_ONE], dataValue, dataSize + 1, &dataSize);
 
 	// 获取第三个参数 mimeType
     size_t mimeTypeSize = 0;
-    napi_get_value_string_utf8(env, args[2], nullptr, 0, &mimeTypeSize);
+    napi_get_value_string_utf8(env, args[ARGS_INDEX_TWO], nullptr, 0, &mimeTypeSize);
     char *mimeTypeValue = new (std::nothrow) char[mimeTypeSize + 1];
-    napi_get_value_string_utf8(env, args[2], mimeTypeValue, mimeTypeSize + 1, &mimeTypeSize);
+    napi_get_value_string_utf8(env, args[ARGS_INDEX_TWO], mimeTypeValue, mimeTypeSize + 1, &mimeTypeSize);
 
 	// 获取第四个参数 encoding
     size_t encodingSize = 0;
-    napi_get_value_string_utf8(env, args[3], nullptr, 0, &encodingSize);
+    napi_get_value_string_utf8(env, args[ARGS_INDEX_THREE], nullptr, 0, &encodingSize);
     char *encodingValue = new (std::nothrow) char[encodingSize + 1];
-    napi_get_value_string_utf8(env, args[3], encodingValue, encodingSize + 1, &encodingSize);
+    napi_get_value_string_utf8(env, args[ARGS_INDEX_THREE], encodingValue, encodingSize + 1, &encodingSize);
 
 	// 获取第五个参数 baseUrl
     size_t baseUrlSize = 0;
-    napi_get_value_string_utf8(env, args[4], nullptr, 0, &baseUrlSize);
+    napi_get_value_string_utf8(env, args[ARGS_INDEX_FOUR], nullptr, 0, &baseUrlSize);
     char *baseUrlValue = new (std::nothrow) char[baseUrlSize + 1];
-    napi_get_value_string_utf8(env, args[4], baseUrlValue, baseUrlSize + 1, &baseUrlSize);
+    napi_get_value_string_utf8(env, args[ARGS_INDEX_FOUR], baseUrlValue, baseUrlSize + 1, &baseUrlSize);
 
 	// 获取第六个参数 historyUrl
     size_t historyUrlSize = 0;
-    napi_get_value_string_utf8(env, args[5], nullptr, 0, &historyUrlSize);
+    napi_get_value_string_utf8(env, args[ARGS_INDEX_FIVE], nullptr, 0, &historyUrlSize);
     char *historyUrlValue = new (std::nothrow) char[historyUrlSize + 1];
-    napi_get_value_string_utf8(env, args[5], historyUrlValue, historyUrlSize + 1, &historyUrlSize);
+    napi_get_value_string_utf8(env, args[ARGS_INDEX_FIVE], historyUrlValue, historyUrlSize + 1, &historyUrlSize);
 
     // 调用ndk接口
-    ArkWeb_ErrorCode result1 = OH_NativeArkWeb_LoadData(webNameValue, dataValue, mimeTypeValue,encodingValue,baseUrlValue,historyUrlValue);
+    ArkWeb_ErrorCode result1 = OH_NativeArkWeb_LoadData(webNameValue, dataValue, mimeTypeValue,encodingValue,
+        baseUrlValue,historyUrlValue);
     int errorCodeAsInt = static_cast<int>(result1);
-	napi_create_double(env,errorCodeAsInt,&result);
+    napi_create_double(env,errorCodeAsInt,&result);
     return result;
 }
 
@@ -72,7 +82,8 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-       {"loadData", nullptr, loadData, nullptr, nullptr, nullptr, napi_default, nullptr}
+    {"loadData", nullptr, loadData, nullptr, nullptr, nullptr,
+        napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
