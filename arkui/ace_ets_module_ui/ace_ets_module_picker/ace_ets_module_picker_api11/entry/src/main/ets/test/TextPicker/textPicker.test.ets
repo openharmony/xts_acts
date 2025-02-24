@@ -56,11 +56,11 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
       console.info("[testtextPickerDefaultPickerItemHeight0001] component width strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextPicker');
-      let numberValue: number = obj.$attrs.width.slice(0,-2);
-      let numberValueRes = Math.abs(parseFloat(numberValue) - 112.00);
-      console.info("[testtextPickerDefaultPickerItemHeight0001] width numberValueRes :" + numberValueRes);
-      expect(numberValueRes <= 0.01).assertTrue();
       console.info("[testtextPickerDefaultPickerItemHeight0001] width value :" + JSON.parse(strJson).$attrs.width);
+      let number: string = JSON.parse(strJson).$attrs.width.slice(0,-2);
+      let numberValue = parseFloat(number) - 112;
+      console.info("[testtextPickerDefaultPickerItemHeight0001] width value numberValue:" + numberValue);
+      expect(Math.abs(numberValue) <= 0.01).assertTrue();
     });
 
     /*
