@@ -119,7 +119,7 @@ group("VKGLCTSTest") {
   ]
 }
 
-ohos_sh_assist_suite("cpvkgl") {
+action("cpvkgl") {
   testonly = true
   script = "cpvkgl.sh"
   outputs = [ "${target_out_dir}/cpvkgl.log" ]
@@ -129,5 +129,4 @@ ohos_sh_assist_suite("cpvkgl") {
     ":VKGLCTSTest",
     "//third_party/vk-gl-cts/framework/platform:glcts",
   ]
-  part_name = "graphic_2d"
 }
