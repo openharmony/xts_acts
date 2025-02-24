@@ -108,12 +108,12 @@ export default function rdbrootDirTest() {
         rootDir: "invalidPath"
       }
       try {
-        data_relationalStore.getRdbStore(context,STORE_CONFIG1 , (err: BusinessError, rdbStore: data_relationalStore.RdbStore) => {
+        data_relationalStore.getRdbStore(context,STORE_CONFIG1 , async(err, rdbStore) => {
           expect().assertFail();
           done()
         })
       } catch (err) {
-        data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
+        await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
         console.log(TAG +"delete rdbstore success");
         expect(err.code).assertEqual("14800010");
         console.log(TAG +"failed, error code: "+err.code, "err message:"+ err.message);
@@ -179,7 +179,7 @@ export default function rdbrootDirTest() {
         customDir: "relationalstore/rdb"
       }
       try {
-        data_relationalStore.getRdbStore(context,STORE_CONFIG1 , (err: BusinessError, rdbStore: data_relationalStore.RdbStore) => {
+        data_relationalStore.getRdbStore(context,STORE_CONFIG1 , async(err, rdbStore) => {
           expect().assertFail();
         })
         done()
@@ -262,7 +262,7 @@ export default function rdbrootDirTest() {
         rootDir: "/data/storage/el2/database",
         customDir: "relationalstore/rdb"
       }
-      data_relationalStore.getRdbStore(context, STORE_CONFIG1, (err, rdbStore1) => {
+      data_relationalStore.getRdbStore(context, STORE_CONFIG1, async(err, rdbStore1) => {
         if (err) {
           console.log("catch err: failed, err: code=" + err.code + " message=" + err.message);
           expect().assertFail();
@@ -272,7 +272,7 @@ export default function rdbrootDirTest() {
           const resultSet = rdbStore1.querySync(predicates);
           expect(resultSet.rowCount).assertEqual(3);
           console.log(TAG + "resultSet.rowCount=" + resultSet.rowCount)
-          data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
+          await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
           console.log(TAG + "delete rdbstore success");
           done();
         }
@@ -419,7 +419,7 @@ export default function rdbrootDirTest() {
         rootDir: "/data/storage/el2/database",
         customDir: "relationalstore/rdb"
       }
-      data_relationalStore.deleteRdbStore(context, STORE_CONFIG1, (err) => {
+      data_relationalStore.deleteRdbStore(context, STORE_CONFIG1, async(err) => {
         if (err) {
           console.log(TAG+ "catch err: failed, err: code=" + err.code + " message=" + err.message)
           expect().assertFail();
@@ -491,11 +491,11 @@ export default function rdbrootDirTest() {
         customDir: "rdb"
       }
       try {
-        data_relationalStore.deleteRdbStore(context, STORE_CONFIG1, (err) => {
+        data_relationalStore.deleteRdbStore(context, STORE_CONFIG1, async(err) => {
           expect().assertFail();
         })
       } catch (err) {
-        data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
+        await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
         console.log(TAG +"delete rdbstore success");
         expect(err.code).assertEqual("14800010");
         console.log(TAG + "catch err: failed, err: code=" + err.code + " message=" + err.message);
@@ -559,12 +559,12 @@ export default function rdbrootDirTest() {
         rootDir: "/data/storage/el2/database/rdb",
       }
       try {
-        data_relationalStore.deleteRdbStore(context, STORE_CONFIG1, (err) => {
+        data_relationalStore.deleteRdbStore(context, STORE_CONFIG1, async(err) => {
           expect().assertFail();
           done()
         })
       } catch (err) {
-        data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
+        await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
         console.log(TAG +"delete rdbstore success");
         expect(err.code).assertEqual("14800010");
         console.log("catch err: failed, err: code=" + err.code + " message=" + err.message);
