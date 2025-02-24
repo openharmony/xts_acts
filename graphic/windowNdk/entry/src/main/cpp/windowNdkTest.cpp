@@ -26,6 +26,10 @@
 #include "multimedia/image_framework/image/pixelmap_native.h"
 #include "multimedia/image_framework/image/image_packer_native.h"
 #include "native_drawing/drawing_pixel_map.h"
+#include <cstdint>
+#include <memory>
+#include <unistd.h>
+#include <future>
 #define Check_Napi_Create_Object_Return_If_Null(env,objValue)\
     do{                                                      \
         napi_create_object((env),&(objValue));               \
@@ -470,6 +474,102 @@ static napi_value GetWindowPorperties(napi_env env, napi_callback_info info) {
     }
 }
 
+//设置鼠标过滤函数
+static bool filterMouseEvent(Input_MouseEvent* mouseEvent){
+    int32_t action = OH_Input_GetMouseEventAction(mouseEvent);
+    int32_t displayX = OH_Input_GetMouseEventDisplayX(mouseEvent);
+    int32_t displayY = OH_Input_GetMouseEventDisplayY(mouseEvent);
+    int32_t mouseButton = OH_Input_GetMouseEventButton(mouseEvent);
+    int32_t actionTime = OH_Input_GetMouseEventActionTime(mouseEvent);
+    static bool flag = false;
+    OH_LOG_INFO(LogType::LOG_APP,"testTag filterMouseEvent in action=%{public}d displayX=%{public}d "
+    "displayY=%{public}d mouseButton=%{public}d actionTime=%{public}ld ",action,displayX,displayY,mouseButton,actionTime);
+    //过滤鼠标右键按下
+    if(mouseButton == Input_MouseEventButton::MOUSE_BUTTON_RIGHT){
+        flag = true;
+
+    }else{
+        flag = false;
+    }
+    return flag;
+}
+
+static napi_value registerMouseFilter(napi_env env, napi_callback_info info){
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc,  args,nullptr,nullptr);
+
+    int32_t windowId;
+    napi_get_value_int32(env, args[0], &windowId);
+
+    auto res = OH_NativeWindowManager_RegisterMouseEventFilter(windowId,filterMouseEvent);
+    napi_value resultValue;
+    napi_create_int32(env,res,&resultValue);
+    return resultValue;
+}
+
+static napi_value clearMouseFilter(napi_env env, napi_callback_info info){
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc,  args,nullptr,nullptr);
+
+    int32_t windowId;
+    napi_get_value_int32(env, args[0], &windowId);
+
+    auto res = OH_NativeWindowManager_UnregisterMouseEventFilter(windowId);
+    napi_value resultValue;
+    napi_create_int32(env,res,&resultValue);
+    return resultValue;
+}
+
+//设置触摸过滤函数
+static bool filterTouchEvent(Input_TouchEvent* touchEvent){
+    int32_t action = OH_Input_GetTouchEventAction(touchEvent);
+    int32_t displayX = OH_Input_GetTouchEventDisplayX(touchEvent);
+    int32_t displayY = OH_Input_GetTouchEventDisplayY(touchEvent);
+    int32_t id = OH_Input_GetTouchEventFingerId(touchEvent);
+    int32_t actionTime = OH_Input_GetTouchEventActionTime(touchEvent);
+    static bool flag = false;
+    OH_LOG_INFO(LogType::LOG_APP,"testTag filterTouchEvent in action=%{public}d displayX=%{public}d "
+    "displayY=%{public}d mouseButton=%{public}d actionTime=%{public}ld ",action,displayX,displayY,id,actionTime);
+    //过滤触摸移动事件
+    if(action == Input_TouchEventAction::TOUCH_ACTION_MOVE){
+        flag = true;
+
+    }else{
+        flag = false;
+    }
+    return flag;
+}
+
+static napi_value registerTouchFilter(napi_env env, napi_callback_info info){
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc,  args,nullptr,nullptr);
+
+    int32_t windowId;
+    napi_get_value_int32(env, args[0], &windowId);
+
+    auto res = OH_NativeWindowManager_RegisterTouchEventFilter(windowId,filterTouchEvent);
+    napi_value resultValue;
+    napi_create_int32(env,res,&resultValue);
+    return resultValue;
+}
+
+static napi_value clearTouchFilter(napi_env env, napi_callback_info info){
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc,  args,nullptr,nullptr);
+
+    int32_t windowId;
+    napi_get_value_int32(env, args[0], &windowId);
+
+    auto res = OH_NativeWindowManager_UnregisterTouchEventFilter(windowId);
+    napi_value resultValue;
+    napi_create_int32(env,res,&resultValue);
+    return resultValue;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -489,7 +589,11 @@ static napi_value Init(napi_env env, napi_value exports)
         {"snapshot", nullptr, Snapshot, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"setWindowFocusable", nullptr, SetWindowFocusable, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"setWindowTouchable", nullptr, SetWindowTouchable, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"getWindowPorperties", nullptr, GetWindowPorperties, nullptr, nullptr, nullptr, napi_default, nullptr}
+        {"getWindowPorperties", nullptr, GetWindowPorperties, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"registerMouseFilter", nullptr, registerMouseFilter, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"clearMouseFilter", nullptr, clearMouseFilter, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"registerTouchFilter", nullptr, registerTouchFilter, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"clearTouchFilter", nullptr, clearTouchFilter, nullptr, nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

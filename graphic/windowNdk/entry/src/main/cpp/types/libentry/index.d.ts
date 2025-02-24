@@ -55,3 +55,7 @@ export const snapshot: (windowId: number) => multimedia_image.PixelMap;
 export const setWindowFocusable: (windowId: number, isFocusable: boolean) => number;
 export const setWindowTouchable: (windowId: number, isTouchable: boolean) => number;
 export const getWindowPorperties: (windowId: number) => window.WindowProperties;
+export const registerMouseFilter: (windowId: number) => number;
+export const clearMouseFilter: (windowId: number) => number;
+export const registerTouchFilter: (windowId: number) => number;
+export const clearTouchFilter: (windowId: number) => number;

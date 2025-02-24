@@ -672,7 +672,200 @@ export default function windowZindexTest() {
         done();
       }
     });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SHIFT_APP_WINDOW_POINTER_EVENT_0100
+     * @tc.name      : test_shiftAppWindowPointerEvent_null
+     * @tc.desc      : test_shiftAppWindowPointerEvent_null
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_shiftAppWindowPointerEvent_null', 0, async (done: Function) => {
+      let caseName: string = 'test_shiftAppWindowPointerEvent_null';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try{
+        let promise = window.shiftAppWindowPointerEvent(null,null);
+        promise.then(() => {
+          console.info(caseName+ ' Succeeded in shifting app window pointer event');
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to shift app window pointer event. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else{
+            expect().assertFail();
+            done();
+          }
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        if(err.code == 401){
+          done();
+        }else{
+          expect().assertFail();
+          done();
+        }
+      }
+    });
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SHIFT_APP_WINDOW_POINTER_EVENT_0200
+     * @tc.name      : test_shiftAppWindowPointerEvent_undifined
+     * @tc.desc      : test_shiftAppWindowPointerEvent_undifined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_shiftAppWindowPointerEvent_undifined', 0, async (done: Function) => {
+      let caseName: string = 'test_shiftAppWindowPointerEvent_undifined';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try{
+        let promise = window.shiftAppWindowPointerEvent(undefined,undefined);
+        promise.then(() => {
+          console.info(caseName+ ' Succeeded in shifting app window pointer event');
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to shift app window pointer event. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else{
+            expect().assertFail();
+            done();
+          }
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        if(err.code == 401){
+          done();
+        }else{
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SHIFT_APP_WINDOW_POINTER_EVENT_0300
+     * @tc.name      : test_shiftAppWindowPointerEvent_window_destroyed
+     * @tc.desc      : test_shiftAppWindowPointerEvent_window_destroyed
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_shiftAppWindowPointerEvent_window_destroyed', 0, async (done: Function) => {
+      let caseName: string = 'test_shiftAppWindowPointerEvent_window_destroyed';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWindow = windowStage.getMainWindowSync();
+      try{
+        let promise1 = windowStage.createSubWindow('test_shiftAppWindowPointerEvent_window_destroyed');
+        promise1.then(async (data) => {
+          let subWindowClass = data;
+          console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          let subWindowId = subWindowClass.getWindowProperties().id;
+          let mainWindowId = mainWindow.getWindowProperties().id;
+          console.info(caseName+ ' subWindowId: ' + JSON.stringify(subWindowId) +','+' mainWindowId: ' + JSON.stringify(mainWindowId) );
+          await subWindowClass.destroyWindow();
+          let promise2 = window.shiftAppWindowPointerEvent(mainWindowId,subWindowId);
+          promise2.then(() => {
+            console.info(caseName+ ' Succeeded in shifting app window pointer event');
+            expect().assertFail();
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(`${caseName} :Failed to shift app window pointer event. Cause code: ${err.code}, message: ${err.message}`);
+            if(err.code == 801){
+              done();
+            }else if(err.code == 1300002){
+              expect(true).assertTrue();
+              done();
+            } else{
+              expect().assertFail();
+              done();
+            }
+          });
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        if(err.code == 401){
+          done();
+        }else{
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SHIFT_APP_WINDOW_POINTER_EVENT_0400
+     * @tc.name      : test_shiftAppWindowPointerEvent_Dialog_window
+     * @tc.desc      : test_shiftAppWindowPointerEvent_Dialog_window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_shiftAppWindowPointerEvent_Dialog_window', 0, async (done: Function) => {
+      let caseName: string = 'test_shiftAppWindowPointerEvent_Dialog_window';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWindow = windowStage.getMainWindowSync();
+      try{
+        let config: window.Configuration = {
+          name: "test",
+          windowType: window.WindowType.TYPE_DIALOG,
+          ctx: context,
+          decorEnabled:true,
+          title:'dialog Window'
+        };
+        let promise1 = window.createWindow(config);
+        promise1.then(async (data) => {
+          let dialogWindowClass = data;
+          console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await dialogWindowClass.setUIContent('testability/pages/First/index2');
+          await dialogWindowClass.showWindow();
+          await sleep(1000)
+          let dialogWindowId = dialogWindowClass.getWindowProperties().id;
+          let mainWindowId = mainWindow.getWindowProperties().id;
+          console.info(caseName+ ' dialogWindowId: ' + JSON.stringify(dialogWindowId) +','+' mainWIndowId: ' + JSON.stringify(mainWindowId) );
+          let promise2 = window.shiftAppWindowPointerEvent(mainWindowId,dialogWindowId);
+          promise2.then(() => {
+            console.info(caseName+ ' Succeeded in shifting app window pointer event');
+            expect().assertFail();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(`${caseName} :Failed to shift app window pointer event. Cause code: ${err.code}, message: ${err.message}`);
+            await dialogWindowClass.destroyWindow();
+            if(err.code == 801){
+              done();
+            }else if(err.code == 1300004){
+              expect(true).assertTrue();
+              done();
+            } else{
+              expect().assertFail();
+              done();
+            }
+          });
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to create the dialogwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        if(err.code == 401){
+          done();
+        }else{
+          expect().assertFail();
+          done();
+        }
+      }
+    });
 
 
 
