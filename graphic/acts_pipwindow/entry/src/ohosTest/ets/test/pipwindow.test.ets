@@ -2483,6 +2483,79 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         }
       }
     })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_GET_PIP_WINDOW_INFO_0100
+     * @tc.name       : testgetPiPWindowInfo
+     * @tc.desc       : testgetPiPWindowInfo
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testgetPiPWindowInfo', 2, (done: Function) => {
+      const caseName = 'testgetPiPWindowInfo';
+      let pipWindowInfo: pipWindow.PiPWindowInfo | undefined = undefined;
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        let pipController: pipWindow.PiPController;
+        let xComponentController: XComponentController = new XComponentController();
+        let uiContext = windowClass.getUIContext(); // 可传入UIContext或在布局中通过this.getUIContext()为context赋有效值
+        let xComponent = typeNode.createNode(uiContext, 'XComponent');
+        xComponent.initialize({
+          id:'xcomponent',
+          type:XComponentType.SURFACE,
+          controller:xComponentController
+        });
+        let contentWidth: number = 800; // 假设当前内容宽度800px。
+        let contentHeight: number = 600; // 假设当前内容高度600px。
+        let config: pipWindow.PiPConfiguration = {
+          context: context1,
+          componentController: xComponentController,
+          templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+          contentWidth: contentWidth,
+          contentHeight: contentHeight
+        };
+
+        let promise1 : Promise<pipWindow.PiPController> = pipWindow.create(config, xComponent);
+        promise1.then((data : pipWindow.PiPController) => {
+          pipController = data;
+          console.info(`${caseName} Succeeded in creating pip controller. Data:${data}`);
+          let promise2 : Promise<void> = pipController.startPiP();
+          promise2.then(() => {
+            console.info(`${caseName} Succeeded in starting pip.`);
+            let promise3 : Promise<pipWindow.PiPWindowInfo> = pipController.getPiPWindowInfo();
+            promise3.then((data) => {
+              pipWindowInfo = data;
+              console.info(caseName+' Success in get pip window info. Info windowId: ' + JSON.stringify(pipWindowInfo.windowId) +' windowSize: '+JSON.stringify(pipWindowInfo.size));
+              expect(true).assertTrue();
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(`${caseName} Failed to get pip window info. Cause code: ${err.code}, message: ${err.message}`);
+              expect(false).assertTrue();
+              done();
+            });
+          }).catch((err: BusinessError) => {
+            console.error(`${caseName} Failed to start pip. Cause:${err.code}, message:${err.message}`);
+            expect(false).assertTrue();
+            done();
+          });
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} Failed to create pip controller. Cause:${err.code}, message:${err.message}`);
+          if(err.code == 801){
+            done();
+          }else{
+            expect(false).assertTrue();
+            done();
+          }
+        });
+
+        
+      } catch (exception) {
+        console.error(`${caseName} Failed to get pip window info. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
   })
 }
 
