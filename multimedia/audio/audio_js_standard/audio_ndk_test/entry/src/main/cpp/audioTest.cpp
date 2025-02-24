@@ -4876,8 +4876,6 @@ napi_property_descriptor desc1[] = {
         nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioRenderGetAudioTimestampInfoInterval", nullptr, AudioRenderGetAudioTimestampInfoInterval,
         nullptr, nullptr, nullptr, napi_default, nullptr},
-    {"audioRenderGetAudioSpeedTimestampInfo", nullptr, AudioRenderGetAudioSpeedTimestampInfo,
-        nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioRenderGetFrameSizeInCallback", nullptr, AudioRenderGetFrameSizeInCallback,
         nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioRenderGenerate", nullptr, AudioRenderGenerate, nullptr, nullptr, nullptr, napi_default, nullptr},
