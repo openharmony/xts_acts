@@ -33,6 +33,6 @@ export default function testsuite() {
   windowMaximizeTest();
   windowImmersiveTest();
   windowPropertiesTest();
-  extensionWindowPropertiesTest();
   windowFocusTest();
+  extensionWindowPropertiesTest();
 }
