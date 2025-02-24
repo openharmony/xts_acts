@@ -24,12 +24,14 @@ export struct MyComponent {
   }
 
   @Styles
-  pressedStyle(){
+  pressedStyle()
+  {
     .backgroundColor(0x238E23)
   }
 
   @Styles
-  normalStyles() {
+  normalStyles()
+  {
     .backgroundColor(0x0000ff)
   }
 
@@ -46,13 +48,15 @@ export struct MyComponent {
 }
 
 @Extend(Text)
-function paramTextStyle() {
+function paramTextStyle()
+{
   .fontSize(9)
   .width('100%')
 }
 
 @Extend(Text)
-function componentTextStyle() {
+function componentTextStyle()
+{
   .fontSize(15)
   .backgroundColor(Color.Orange)
   .margin(3)
@@ -61,7 +65,8 @@ function componentTextStyle() {
 }
 
 @Extend(Column)
-function columnStyle() {
+function columnStyle()
+{
   .borderWidth(1.0)
   .padding(10)
   .width('100%')
