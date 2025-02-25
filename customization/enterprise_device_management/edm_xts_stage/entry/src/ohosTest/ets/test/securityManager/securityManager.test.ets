@@ -1211,6 +1211,66 @@ function testGetClipboardPolicy() {
     }
     done();
   });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_CLIPBOARD_POLICY_JS_0400
+   * @tc.name      : test_get_clipboard_policy_0400
+   * @tc.desc      : test securityManager getAppClipboardPolicy without activated admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_clipboard_policy_0400", 0, async (done: Function) => {
+    try {
+      securityManager.getAppClipboardPolicy(SELFWANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_JS_0500
+   * @tc.name      : test_get_clipboard_policy_0500
+   * @tc.desc      : test securityManager getAppClipboardPolicy without permission
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_clipboard_policy_0500", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      securityManager.getAppClipboardPolicy(SELFWANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+  
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_JS_0600
+   * @tc.name      : test_get_clipboard_policy_0600
+   * @tc.desc      : test securityManager getAppClipboardPolicy with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_clipboard_policy_0600", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.getAppClipboardPolicy(null);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
 }
 
 function testSetWatermarkImage() {

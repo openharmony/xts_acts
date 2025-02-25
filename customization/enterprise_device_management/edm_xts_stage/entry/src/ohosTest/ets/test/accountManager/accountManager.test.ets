@@ -449,6 +449,56 @@ export default function accountManagerTest() {
     })
 
     /**
+     * @tc.number isOsAccountAdditionDisallowed_test_005
+     * @tc.name test isOsAccountAdditionDisallowed method
+     * @tc.desc isOsAccountAdditionDisallowed with super admin and without accountId
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
+    it("isOsAccountAdditionDisallowed_test_005", 0, async (done: Function) => {
+      console.info(' --- isOsAccountAdditionDisallowed_test_005  -------- START --------');
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        accountManager.isOsAccountAdditionDisallowed(null);
+        console.info(' --- isOsAccountAdditionDisallowed_test_005 error is expected, but it done.');
+        expect(false).assertTrue();
+      } catch (error) {
+        console.info(' --- isOsAccountAdditionDisallowed_test_005 error 401 is expected, actually catch: ' + error.code);
+        expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+      console.info(' --- isOsAccountAdditionDisallowed_test_005  -------- END --------');
+    })
+
+    /**
+     * @tc.number isOsAccountAdditionDisallowed_test_006
+     * @tc.name test isOsAccountAdditionDisallowed method
+     * @tc.desc isOsAccountAdditionDisallowed with super admin and with accountId
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
+    it("isOsAccountAdditionDisallowed_test_006", 0, async (done: Function) => {
+      console.info(' --- isOsAccountAdditionDisallowed_test_006  -------- START --------');
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        accountManager.isOsAccountAdditionDisallowed(null, DEFAULT_USER_ID);
+        console.info(' --- isOsAccountAdditionDisallowed_test_006 error is expected, but it done.');
+        expect(false).assertTrue();
+      } catch (error) {
+        console.info(' --- isOsAccountAdditionDisallowed_test_006 error 401 is expected, actually catch: ' + error.code);
+        expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+      console.info(' --- isOsAccountAdditionDisallowed_test_006  -------- END --------');
+    })
+
+    /**
      * @tc.number addOsAccountAsync_test_001
      * @tc.name test addOsAccountAsync method
      * @tc.desc addOsAccountAsync with inactive admin

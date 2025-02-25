@@ -283,6 +283,26 @@ export default function bluetoothManagerTest() {
     })
 
     /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_GET_ALLOWED_BLUETOOTH_DEVICES_0500
+     * @tc.name test_get_allowed_bluetooth_devices_0500
+     * @tc.desc test getAllowedBluetoothDevices method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_get_allowed_bluetooth_devices_0500', 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        bluetoothManager.getAllowedBluetoothDevices(null);
+      } catch(error) {
+        expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
      * @tc.number SUB_CUSTOMIZATION_EDM_REMOVE_ALLOWED_BLUETOOTH_DEVICES_0100
      * @tc.name test_remove_allowed_bluetooth_devices_0100
      * @tc.desc test removeAllowedBluetoothDevices method with normal admin

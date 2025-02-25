@@ -474,6 +474,27 @@ function testGetOtaUpdatePolicy() {
     }
     done();
   });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_OTA_UPDATE_POLICY_JS_0003
+   * @tc.name      : test_get_ota_update_policy_0003
+   * @tc.desc      : test systemManager setOtaUpdatePolicy with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_ota_update_policy_0003", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      systemManager.getOtaUpdatePolicy(null);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
 }
 
 function testNotifyUpdatePackages() {
@@ -565,6 +586,34 @@ function testNotifyUpdatePackages() {
     });
     done();
   });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_NOTIFY_UPDATE_PACKAGES_JS_0004
+   * @tc.name      : test_notify_update_packages_0004
+   * @tc.desc      : test systemManager notifyUpdatePackages super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_notify_update_packages_0004", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    let updatePaskageInfo: Array<systemManager.Package> = [{
+      "type": systemManager.PackageType.FIRMWARE,
+      "path": "path"
+    }]
+    let updatePackageInfo: systemManager.UpdatePackageInfo = {
+      "version" : UPDATE_VERSION,
+      "packages" : updatePaskageInfo,
+    };
+    await systemManager.notifyUpdatePackages(null, null).then(()=>{
+      expect(false).assertTrue();
+    }).catch ((error: BusinessError)=> {
+      expect(error.code == 401).assertTrue();
+    }).finally(async () => {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    });
+    done();
+  });
 }
 
 function testGetUpdateResult() {
@@ -625,6 +674,26 @@ function testGetUpdateResult() {
         errorCode: ${data.errorInfo.code}, errorMsg: ${data.errorInfo.message}`)
     }).catch((error: BusinessError) => {
       expect(error.code == 801).assertTrue();
+    }).finally(async () => {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    });
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_UPDATE_RESULT_JS_0004
+   * @tc.name      : test_get_update_result_0004
+   * @tc.desc      : test systemManager getOtaUpdatePolicy with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_update_result_0004", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    await systemManager.getUpdateResult(null, null).then((data: systemManager.UpdateResult) => {
+      expect(false).assertTrue();
+    }).catch((error: BusinessError) => {
+      expect(error.code == 401).assertTrue();
     }).finally(async () => {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     });
