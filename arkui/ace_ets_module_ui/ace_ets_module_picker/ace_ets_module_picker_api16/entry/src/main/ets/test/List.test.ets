@@ -24,6 +24,10 @@ import selectNode from './select/selectNode.test';
 import sliderNode from './slider/sliderNode.test';
 import toggleNode from './toggle/toggleNode.test';
 import columnWidths from './textPicker/columnWidths.test';
+import PickerCrownSensitivity from './crownSensitivity/Picker.test';
+import TimePickerCrownSensitivity from './crownSensitivity/TimePicker.test';
+import TextPickerCrownSensitivity from './crownSensitivity/TextPicker.test';
+
 export default function testsuite() {
   buttonType();
   enableCascadeTest();
@@ -35,4 +39,7 @@ export default function testsuite() {
   sliderNode();
   toggleNode();
   columnWidths();
+  PickerCrownSensitivity();
+  TimePickerCrownSensitivity();
+  TextPickerCrownSensitivity();
 }
