@@ -58,7 +58,7 @@ struct GridExampleAdd {
                 .fontSize(16)
                 .backgroundColor(0xF9CF93)
                 .width('100%')
-                .height(80)
+                .height('20%')
                 .key(''+(index+1)*(index+1))
                 .textAlign(TextAlign.Center)
             }
