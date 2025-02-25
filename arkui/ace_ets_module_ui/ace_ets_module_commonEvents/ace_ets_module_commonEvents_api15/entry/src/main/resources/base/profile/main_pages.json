@@ -32,6 +32,7 @@
         "MainAbility/pages/EventItem/PanGesture",
         "MainAbility/pages/EventItem/PinchGesture",
         "MainAbility/pages/EventItem/RotationGesture",
-        "MainAbility/pages/startDataLoading/dataLoading"
+        "MainAbility/pages/startDataLoading/dataLoading",
+        "MainAbility/pages/DragPreviewOptions/DragPreviewOptions"
     ]
 }

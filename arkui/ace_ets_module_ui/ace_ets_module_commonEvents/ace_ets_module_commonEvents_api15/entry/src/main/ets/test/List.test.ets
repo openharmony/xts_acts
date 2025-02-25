@@ -45,6 +45,7 @@ import panGestureEventTest from './EventItem/PanGesture.test';
 import pinchGestureEventTest from './EventItem/PinchGesture.test';
 import rotationGestureEventTest from './EventItem/RotationGesture.test';
 import dataLoadingTest from './startDataLoading/dataLoadingTest.test';
+import DragPreviewOptions from './DragPreviewOptions/DragPreviewOptions.test';
 
 export default function testsuite() {
   getWithUniqueId();
@@ -79,4 +80,5 @@ export default function testsuite() {
   pinchGestureEventTest();
   rotationGestureEventTest();
   dataLoadingTest();
+  DragPreviewOptions();
 }
