@@ -38,7 +38,7 @@ class CameraService {
   private cameraManager: camera.CameraManager = undefined;
   cameras: Array<camera.CameraDevice> = undefined;
   private cameraInput: camera.CameraInput = undefined;
-  private previewOutput: camera.PreviewOutput = undefined;
+  previewOutput: camera.PreviewOutput = undefined;
   private photoOutput: camera.PhotoOutput = undefined;
   private cameraOutputCapability: camera.CameraOutputCapability = undefined;
   captureSession: camera.CaptureSession = undefined;
