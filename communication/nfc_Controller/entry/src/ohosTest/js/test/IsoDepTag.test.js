@@ -320,6 +320,45 @@ export default function nfcIsoDepTagTest() {
             expect(tag.NDEF_FORMATABLE).assertEqual(7);
         })
 
+        /**
+         * @tc.number SUB_Communication_NFC_nfccardEmulationnfc_js_0900
+         * @tc.name Test cardEmulationnfc
+         * @tc.desc Whether to support a certain type of card HceService on/off
+         * @tc.size since 9
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfccardEmulationnfc_js_0900', 0, function ()  {
+            let hceService = new cardEmulation.HceService();
+            console.info('[NFC_test]09 hceService state is' + hceService )
+            const apduCallback = (err, data) => {
+                if (err){
+                  console.error('[NFC_test]09 apduCallback err is' + err );
+                }else{
+                    console.log('[NFC_test]09 got apdu data ' + data );
+                }
+            };
+            let hceElementName = {
+                bundleName: "com.example.myapplication",
+                abilityName: "EntryAbility",
+                moduleName: "EntrymoduleName"
+            }
+            let aidList = ["A0000000031010", "A0000000031011"]
+            try {
+                hceService.start(hceElementName, aidList);
+                console.info('[NFC_test]09 hceServicestart success ')
+                hceService.on("hceCmd", apduCallback)
+                console.info('[NFC_test]09 hceServiceon success ')
+                hceService.off("hceCmd", apduCallback)
+                console.info('[NFC_test]09 hceServicesoff success ')
+                hceService.stop(hceElementName)
+                console.info('[NFC_test]09 hceServicestop success ')
+            } catch (error) {
+                console.info('[NFC_test]09 hceService on/off error' + error + "/" + error.code)
+                expect().assertFail();
+            }
+        })
+
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
