@@ -13,6 +13,7 @@
         "MainAbility/pages/textPicker/columnWidths",
         "MainAbility/pages/crownSensitivity/Picker",
         "MainAbility/pages/crownSensitivity/TextPicker",
-        "MainAbility/pages/crownSensitivity/TimePicker"
+        "MainAbility/pages/crownSensitivity/TimePicker",
+	    "MainAbility/pages/calendarPicker/disableDateRangeAndMarkToday"
     ]
 }
