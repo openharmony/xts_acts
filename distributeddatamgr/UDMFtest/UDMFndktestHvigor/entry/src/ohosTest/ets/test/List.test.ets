@@ -19,6 +19,7 @@ import UtdNdkTest from './UtdNdkTest';
 import ContentNdkTest from './ContentNdkTest';
 import UdsNdkexTest from './udsndkex.test';
 import EmptyTest from './Empty.test';
+import UdmfNdkexTest from './udmfndkex.test';
 
 export default function testsuite() {
   if (canIUse("SystemCapability.DistributedDataManager.UDMF.Core")){
@@ -28,6 +29,7 @@ export default function testsuite() {
     UtdNdkTest();
     ContentNdkTest();
     UdsNdkexTest();
+    UdmfNdkexTest();
   } else {
     EmptyTest()
   } 

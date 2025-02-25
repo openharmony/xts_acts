@@ -17,21 +17,11 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import unifiedDataChannel from '@ohos.data.unifiedDataChannel';
 import uniformDataStruct from '@ohos.data.uniformDataStruct';
 import { BusinessError } from '@ohos.base';
+import { image } from '@kit.ImageKit';
 
+let TAG = "[ttt]"
 export default function UDMFApiDataStructTest() {
   describe('UDMFApiDataStructTest', () => {
-    beforeEach(async () => {
-      let options: unifiedDataChannel.Options = {
-        intention: unifiedDataChannel.Intention.DATA_HUB
-      };
-      await unifiedDataChannel.deleteData(options);
-    })
-    afterEach(async () => {
-      let options: unifiedDataChannel.Options = {
-        intention: unifiedDataChannel.Intention.DATA_HUB
-      };
-      await unifiedDataChannel.deleteData(options);
-    })
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest0100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0100
@@ -40,8 +30,12 @@ export default function UDMFApiDataStructTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0100', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0100', 0, async() => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0100 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      await unifiedDataChannel.deleteData(options);
       let plainTextDetails: Record<string, string> = {
         'attr1': 'value1',
         'attr2': 'value2',
@@ -52,11 +46,38 @@ export default function UDMFApiDataStructTest() {
         abstract: 'this is abstract',
         details: plainTextDetails,
       }
-      let obj = plainText;
-      expect(obj.uniformDataType).assertEqual(plainText.uniformDataType)
-      expect(obj.textContent).assertEqual(plainText.textContent)
-      expect(obj.abstract).assertEqual(plainText.abstract)
-      expect(obj.details).assertEqual(plainText.details)
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord('general.plain-text', plainText);
+      unifiedData.addRecord(contentFormRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(plainText.uniformDataType);
+                expect(record["textContent"]).assertEqual(plainText.textContent);
+                expect(record["abstract"]).assertEqual(plainText.abstract);
+                expect(JSON.stringify(record["details"])).assertEqual(JSON.stringify(plainText.details));
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
       console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0100 end");
     });
 
@@ -68,8 +89,11 @@ export default function UDMFApiDataStructTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0200', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0200', 0,async () => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0200 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
       let hyperlinkDetails: Record<string, string> = {
         'attr1': 'value1',
         'attr2': 'value2',
@@ -80,11 +104,38 @@ export default function UDMFApiDataStructTest() {
         description: 'This is the description of this hyperlink',
         details: hyperlinkDetails,
       }
-      let obj = hyperlink;
-      expect(obj.uniformDataType).assertEqual(hyperlink.uniformDataType)
-      expect(obj.url).assertEqual(hyperlink.url)
-      expect(obj.description).assertEqual(hyperlink.description)
-      expect(obj.details).assertEqual(hyperlink.details)
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord('general.hyperlink', hyperlink);
+      unifiedData.addRecord(contentFormRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let obj = unifiedDataRecord.getValue() as object;
+              if (obj != undefined) {
+                expect(obj["uniformDataType"]).assertEqual(hyperlink.uniformDataType);
+                expect(obj["url"]).assertEqual(hyperlink.url);
+                expect(obj["description"]).assertEqual(hyperlink.description);
+                expect(JSON.stringify(obj["details"])).assertEqual(JSON.stringify(hyperlink.details));
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });      
       console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0200 end");
     });
 
@@ -96,8 +147,11 @@ export default function UDMFApiDataStructTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0300', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0300', 0, async() => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0300 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
       let htmlObjDetails: Record<string, string> = {
         'attr1': 'value1',
         'attr2': 'value2',
@@ -108,11 +162,38 @@ export default function UDMFApiDataStructTest() {
         plainContent: 'this is plainContent',
         details: htmlObjDetails,
       }
-      let obj = htmlObj;
-      expect(obj.uniformDataType).assertEqual(htmlObj.uniformDataType)
-      expect(obj.htmlContent).assertEqual(htmlObj.htmlContent)
-      expect(obj.plainContent).assertEqual(htmlObj.plainContent)
-      expect(obj.details).assertEqual(htmlObj.details)
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord('general.html', htmlObj);
+      unifiedData.addRecord(contentFormRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let obj = unifiedDataRecord.getValue() as object;
+              if (obj != undefined) {
+                expect(obj["uniformDataType"]).assertEqual(htmlObj.uniformDataType);
+                expect(obj["htmlContent"]).assertEqual(htmlObj.htmlContent);
+                expect(obj["plainContent"]).assertEqual(htmlObj.plainContent);
+                expect(JSON.stringify(obj["details"])).assertEqual(JSON.stringify(htmlObj.details));
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
       console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0300 end");
     });
 
@@ -124,8 +205,11 @@ export default function UDMFApiDataStructTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0400', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0400', 0, async() => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0400 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
       let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
       let appItemDetails: Record<string, number | string | Uint8Array> = {
         'appItemKey1': 123,
@@ -142,15 +226,42 @@ export default function UDMFApiDataStructTest() {
         abilityName: 'MyAbilityName',
         details: appItemDetails,
       }
-      let obj = appItem;
-      expect(obj.uniformDataType).assertEqual(appItem.uniformDataType)
-      expect(obj.appId).assertEqual(appItem.appId)
-      expect(obj.appName).assertEqual(appItem.appName)
-      expect(obj.appIconId).assertEqual(appItem.appIconId)
-      expect(obj.appIconId).assertEqual(appItem.appIconId)
-      expect(obj.bundleName).assertEqual(appItem.bundleName)
-      expect(obj.abilityName).assertEqual(appItem.abilityName)
-      expect(obj.details).assertEqual(appItem.details)
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord('openharmony.app-item', appItem);
+      unifiedData.addRecord(contentFormRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let obj = unifiedDataRecord.getValue() as object;
+              if (obj != undefined) {
+                expect(obj["uniformDataType"]).assertEqual(appItem.uniformDataType);
+                expect(obj["appId"]).assertEqual(appItem.appId);
+                expect(obj["appName"]).assertEqual(appItem.appName);
+                expect(obj["appIconId"]).assertEqual(appItem.appIconId);
+                expect(obj["appIconId"]).assertEqual(appItem.appIconId);
+                expect(obj["bundleName"]).assertEqual(appItem.bundleName);
+                expect(obj["abilityName"]).assertEqual(appItem.abilityName);
+                expect(JSON.stringify(obj["details"])).assertEqual(JSON.stringify(appItem.details));
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
       console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_0400 end");
     });
 
@@ -175,7 +286,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -193,6 +308,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
@@ -221,7 +337,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -240,6 +360,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
@@ -269,7 +390,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -289,6 +414,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
@@ -319,7 +445,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -340,6 +470,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
@@ -371,7 +502,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           for (let i = 0; i < size; i++) {
             let records = ret[i].getRecords();
@@ -393,6 +528,7 @@ export default function UDMFApiDataStructTest() {
           console.info(` [beforeEach] Failed to Data. code is ${err.code},message is ${err.message} `);
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         console.info(` [beforeEach] Failed to Data. code is ${err.code},message is ${err.message} `);
         expect().assertFail();
@@ -426,7 +562,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -449,6 +589,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       })
@@ -475,7 +616,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -498,6 +643,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
@@ -524,7 +670,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -542,6 +692,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
@@ -570,7 +721,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -593,6 +748,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
@@ -622,7 +778,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -641,8 +801,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
-        unifiedDataChannel.deleteData(options).then((err) => {
-        });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
@@ -673,7 +832,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -693,6 +856,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
@@ -723,7 +887,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data)=>{
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -743,6 +911,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
@@ -774,7 +943,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data)=>{
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -795,6 +968,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
@@ -826,7 +1000,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data) =>{
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -847,6 +1025,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
@@ -878,7 +1057,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data) =>{
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -900,6 +1083,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
@@ -931,7 +1115,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data) =>{
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -953,6 +1141,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
@@ -986,7 +1175,11 @@ export default function UDMFApiDataStructTest() {
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data) =>{
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -1009,6 +1202,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
@@ -1024,10 +1218,12 @@ export default function UDMFApiDataStructTest() {
      */
     it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2200', 0, async () => {
       console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2200 start');
+
       let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
       let options: unifiedDataChannel.Options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
       };
+      await unifiedDataChannel.deleteData(options);
       let contentForm: uniformDataStruct.ContentForm = {
         uniformDataType: "general.content-form",
         title: "string",
@@ -1040,8 +1236,12 @@ export default function UDMFApiDataStructTest() {
       let unifiedData = new unifiedDataChannel.UnifiedData();
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
-      await unifiedDataChannel.insertData(options, unifiedData).then(async () =>{
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) =>{
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -1064,6 +1264,7 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
@@ -1090,8 +1291,12 @@ export default function UDMFApiDataStructTest() {
       let unifiedData = new unifiedDataChannel.UnifiedData();
       let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.content-form", contentForm);
       unifiedData.addRecord(contentFormRecord);
-      await unifiedDataChannel.insertData(options, unifiedData).then(async () =>{
-        await unifiedDataChannel.queryData(options).then(async (ret) => {
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) =>{
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
           let size = ret.length;
           console.info(`data.size = ${size}`);
           for (let i = 0; i < size; i++) {
@@ -1109,10 +1314,1098 @@ export default function UDMFApiDataStructTest() {
         }).catch((err: BusinessError) => {
           expect().assertFail();
         });
+        await unifiedDataChannel.deleteData(options1);
       }).catch((err: BusinessError) => {
         expect().assertFail();
       });
       console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2300 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest2400
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2400
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2400', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2400 start');
+    let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let formData: uniformDataStruct.Form  = {
+        uniformDataType: 'openharmony.form',
+        formId: 123,
+        formName: 'undefined',
+        bundleName: 'bundleName',
+        abilityName: 'abilityName',
+        module: 'module',
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let formRecord = new unifiedDataChannel.UnifiedRecord("openharmony.form", formData);
+      unifiedData.addRecord(formRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(formData.uniformDataType);
+                expect(record["formId"]).assertEqual(formData.formId);
+                expect(record["formName"]).assertEqual(formData.formName);
+                expect(record["bundleName"]).assertEqual(formData.bundleName);
+                expect(record["abilityName"]).assertEqual(formData.abilityName);
+                expect(record["module"]).assertEqual(formData.module);
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2400 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest2500
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2500
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2500', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2500 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+      let formDetails: Record<string, number | string |Uint8Array> = {
+        'attr1': 'value1',
+        'attr2': u8Array,
+        'attr3': 123,
+      }
+      let formData: uniformDataStruct.Form  = {
+        uniformDataType: 'openharmony.form',
+        formId: 123,
+        formName: 'formName',
+        bundleName: 'bundleName',
+        abilityName: 'abilityName',
+        module: 'module',
+        details: formDetails
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let formRecord = new unifiedDataChannel.UnifiedRecord("openharmony.form", formData);
+      unifiedData.addRecord(formRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(formData.uniformDataType);
+                expect(record["formId"]).assertEqual(formData.formId);
+                expect(record["formName"]).assertEqual(formData.formName);
+                expect(record["bundleName"]).assertEqual(formData.bundleName);
+                expect(record["abilityName"]).assertEqual(formData.abilityName);
+                expect(record["module"]).assertEqual(formData.module);
+                expect(JSON.stringify(record["details"])).assertEqual(JSON.stringify(formData.details));
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2500 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest2600
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2600
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2600', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2600 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+      let formDetails: Record<string, number | string |Uint8Array> = {
+        'attr1': 'value1',
+        'attr2': u8Array,
+        'attr3': 123,
+      }
+      let formData: uniformDataStruct.Form  = {
+        uniformDataType: 'openharmony.form',
+        formId: 123,
+        formName: '',
+        bundleName: 'bundleName',
+        abilityName: 'abilityName',
+        module: 'module',
+        details: formDetails
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let formRecord = new unifiedDataChannel.UnifiedRecord("openharmony.form", formData);
+      unifiedData.addRecord(formRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(formData.uniformDataType);
+                expect(record["formId"]).assertEqual(formData.formId);
+                expect(record["formName"]).assertEqual(formData.formName);
+                expect(record["bundleName"]).assertEqual(formData.bundleName);
+                expect(record["abilityName"]).assertEqual(formData.abilityName);
+                expect(record["module"]).assertEqual(formData.module);
+                expect(JSON.stringify(record["details"])).assertEqual(JSON.stringify(formData.details));
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2600 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest2700
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2700
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2700', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2700 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+      let formDetails: Record<string, number | string |Uint8Array> = {
+        'attr1': 'value1',
+        'attr2': u8Array,
+        'attr3': 123,
+      }
+      let formData: uniformDataStruct.Form  = {
+        uniformDataType: 'openharmony.form',
+        formId: 123,
+        formName: 'formName',
+        bundleName: '',
+        abilityName: 'abilityName',
+        module: 'module',
+        details: formDetails
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let formRecord = new unifiedDataChannel.UnifiedRecord("openharmony.form", formData);
+      unifiedData.addRecord(formRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(formData.uniformDataType);
+                expect(record["formId"]).assertEqual(formData.formId);
+                expect(record["formName"]).assertEqual(formData.formName);
+                expect(record["bundleName"]).assertEqual(formData.bundleName);
+                expect(record["abilityName"]).assertEqual(formData.abilityName);
+                expect(record["module"]).assertEqual(formData.module);
+                expect(JSON.stringify(record["details"])).assertEqual(JSON.stringify(formData.details));
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2700 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest2800
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2800
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2800', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2800 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+      let formDetails: Record<string, number | string |Uint8Array> = {
+        'attr1': 'value1',
+        'attr2': u8Array,
+        'attr3': 123,
+      }
+      let formData: uniformDataStruct.Form  = {
+        uniformDataType: 'openharmony.form',
+        formId: 123,
+        formName: 'undefined',
+        bundleName: 'bundleName',
+        abilityName: '',
+        module: 'module',
+        details: formDetails
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let formRecord = new unifiedDataChannel.UnifiedRecord("openharmony.form", formData);
+      unifiedData.addRecord(formRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(formData.uniformDataType);
+                expect(record["formId"]).assertEqual(formData.formId);
+                expect(record["formName"]).assertEqual(formData.formName);
+                expect(record["bundleName"]).assertEqual(formData.bundleName);
+                expect(record["abilityName"]).assertEqual(formData.abilityName);
+                expect(record["module"]).assertEqual(formData.module);
+                expect(JSON.stringify(record["details"])).assertEqual(JSON.stringify(formData.details));
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2800 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest2900
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2900
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2900', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2900 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+      let formDetails: Record<string, number | string |Uint8Array> = {
+        'attr1': 'value1',
+        'attr2': u8Array,
+        'attr3': 123,
+      }
+      let formData: uniformDataStruct.Form  = {
+        uniformDataType: 'openharmony.form',
+        formId: 123,
+        formName: 'undefined',
+        bundleName: 'bundleName',
+        abilityName: 'abilityName',
+        module: '',
+        details: formDetails
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let formRecord = new unifiedDataChannel.UnifiedRecord("openharmony.form", formData);
+      unifiedData.addRecord(formRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(formData.uniformDataType);
+                expect(record["formId"]).assertEqual(formData.formId);
+                expect(record["formName"]).assertEqual(formData.formName);
+                expect(record["bundleName"]).assertEqual(formData.bundleName);
+                expect(record["abilityName"]).assertEqual(formData.abilityName);
+                expect(record["module"]).assertEqual(formData.module);
+                expect(JSON.stringify(record["details"])).assertEqual(JSON.stringify(formData.details));
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_2900 end");
+    });
+
+     /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest3000
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3000
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3000', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3000 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+      let formDetails: Record<string, number | string |Uint8Array> = {
+        'attr1': 'value1',
+        'attr2': u8Array,
+        'attr3': 123,
+      }
+      let formData: uniformDataStruct.Form  = {
+        uniformDataType: 'openharmony.form',
+        formId: 123,
+        formName: '@#$%',
+        bundleName: 'bundleName',
+        abilityName: 'abilityName',
+        module: 'module',
+        details: formDetails
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let formRecord = new unifiedDataChannel.UnifiedRecord("openharmony.form", formData);
+      unifiedData.addRecord(formRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(formData.uniformDataType);
+                expect(record["formId"]).assertEqual(formData.formId);
+                expect(record["formName"]).assertEqual(formData.formName);
+                expect(record["bundleName"]).assertEqual(formData.bundleName);
+                expect(record["abilityName"]).assertEqual(formData.abilityName);
+                expect(record["module"]).assertEqual(formData.module);
+                expect(JSON.stringify(record["details"])).assertEqual(JSON.stringify(formData.details));
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3000 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest3100
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3100
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3100', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3100 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+      let formDetails: Record<string, number | string |Uint8Array> = {
+        'attr1': 'value1',
+        'attr2': u8Array,
+        'attr3': 123,
+      }
+      let formData: uniformDataStruct.Form  = {
+        uniformDataType: 'openharmony.form',
+        formId: 123,
+        formName: 'formName',
+        bundleName: '@#$%^',
+        abilityName: 'abilityName',
+        module: 'module',
+        details: formDetails
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let formRecord = new unifiedDataChannel.UnifiedRecord("openharmony.form", formData);
+      unifiedData.addRecord(formRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(formData.uniformDataType);
+                expect(record["formId"]).assertEqual(formData.formId);
+                expect(record["formName"]).assertEqual(formData.formName);
+                expect(record["bundleName"]).assertEqual(formData.bundleName);
+                expect(record["abilityName"]).assertEqual(formData.abilityName);
+                expect(record["module"]).assertEqual(formData.module);
+                expect(JSON.stringify(record["details"])).assertEqual(JSON.stringify(formData.details));
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3100 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest3200
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3200
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3200', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3200 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+      let formDetails: Record<string, number | string |Uint8Array> = {
+        'attr1': 'value1',
+        'attr2': u8Array,
+        'attr3': 123,
+      }
+      let formData: uniformDataStruct.Form  = {
+        uniformDataType: 'openharmony.form',
+        formId: 123,
+        formName: 'undefined',
+        bundleName: 'bundleName',
+        abilityName: '@#$%^',
+        module: 'module',
+        details: formDetails
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let formRecord = new unifiedDataChannel.UnifiedRecord("openharmony.form", formData);
+      unifiedData.addRecord(formRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(formData.uniformDataType);
+                expect(record["formId"]).assertEqual(formData.formId);
+                expect(record["formName"]).assertEqual(formData.formName);
+                expect(record["bundleName"]).assertEqual(formData.bundleName);
+                expect(record["abilityName"]).assertEqual(formData.abilityName);
+                expect(record["module"]).assertEqual(formData.module);
+                expect(JSON.stringify(record["details"])).assertEqual(JSON.stringify(formData.details));
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3200 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest3300
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3300
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3300', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3300 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+      let formDetails: Record<string, number | string |Uint8Array> = {
+        'attr1': 'value1',
+        'attr2': u8Array,
+        'attr3': 123,
+      }
+      let formData: uniformDataStruct.Form  = {
+        uniformDataType: 'openharmony.form',
+        formId: 123,
+        formName: 'undefined',
+        bundleName: 'bundleName',
+        abilityName: 'abilityName',
+        module: '@#$%^&',
+        details: formDetails
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let formRecord = new unifiedDataChannel.UnifiedRecord("openharmony.form", formData);
+      unifiedData.addRecord(formRecord);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(formData.uniformDataType);
+                expect(record["formId"]).assertEqual(formData.formId);
+                expect(record["formName"]).assertEqual(formData.formName);
+                expect(record["bundleName"]).assertEqual(formData.bundleName);
+                expect(record["abilityName"]).assertEqual(formData.abilityName);
+                expect(record["module"]).assertEqual(formData.module);
+                expect(JSON.stringify(record["details"])).assertEqual(JSON.stringify(formData.details));
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3300 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest3400
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3400
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3400', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3400 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let fileUri : uniformDataStruct.FileUri  = {
+        uniformDataType: "general.file-uri",
+        oriUri: "oriUri",
+        fileType: "fileType",
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.file-uri", fileUri);
+      unifiedData.addRecord(contentFormRecord)
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) =>{
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(fileUri.uniformDataType);
+                expect(record["oriUri"]).assertEqual(fileUri.oriUri);
+                expect(record["fileType"]).assertEqual(fileUri.fileType);
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3400 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest3500
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3500
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3500', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3500 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let fileUri : uniformDataStruct.FileUri  = {
+        uniformDataType: "general.file-uri",
+        oriUri: "",
+        fileType: "fileType",
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.file-uri", fileUri);
+      unifiedData.addRecord(contentFormRecord)
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) =>{
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(fileUri.uniformDataType);
+                expect(record["oriUri"]).assertEqual(fileUri.oriUri);
+                expect(record["fileType"]).assertEqual(fileUri.fileType);
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3500 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest3600
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3600
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3600', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3600 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let fileUri : uniformDataStruct.FileUri  = {
+        uniformDataType: "general.file-uri",
+        oriUri: "@#$%^",
+        fileType: "fileType",
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.file-uri", fileUri);
+      unifiedData.addRecord(contentFormRecord)
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) =>{
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(fileUri.uniformDataType);
+                expect(record["oriUri"]).assertEqual(fileUri.oriUri);
+                expect(record["fileType"]).assertEqual(fileUri.fileType);
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3600 end");
+    });
+
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest3700
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3700
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3700', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3700 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let fileUri : uniformDataStruct.FileUri  = {
+        uniformDataType: "general.file-uri",
+        oriUri: "oriUri",
+        fileType: "",
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.file-uri", fileUri);
+      unifiedData.addRecord(contentFormRecord)
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) =>{
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(fileUri.uniformDataType);
+                expect(record["oriUri"]).assertEqual(fileUri.oriUri);
+                expect(record["fileType"]).assertEqual(fileUri.fileType);
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3700 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest3800
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3800
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3800', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3800 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let fileUri : uniformDataStruct.FileUri  = {
+        uniformDataType: "general.file-uri",
+        oriUri: "oriUri",
+        fileType: "@#$%^&",
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.file-uri", fileUri);
+      unifiedData.addRecord(contentFormRecord)
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) =>{
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(fileUri.uniformDataType);
+                expect(record["oriUri"]).assertEqual(fileUri.oriUri);
+                expect(record["fileType"]).assertEqual(fileUri.fileType);
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3800 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest3900
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3900
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3900', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3900 start');
+      let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let fileUriDetails: Record<string, number | string |Uint8Array> = {
+        'attr1': 'value1',
+        'attr2': u8Array,
+        'attr3': 123,
+      }
+      let fileUri : uniformDataStruct.FileUri  = {
+        uniformDataType: "general.file-uri",
+        oriUri: "oriUri",
+        fileType: "fileType",
+        details: fileUriDetails,
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord("general.file-uri", fileUri);
+      unifiedData.addRecord(contentFormRecord)
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) =>{
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as object;
+              if (record != undefined) {
+                expect(record["uniformDataType"]).assertEqual(fileUri.uniformDataType);
+                expect(record["oriUri"]).assertEqual(fileUri.oriUri);
+                expect(record["fileType"]).assertEqual(fileUri.fileType);
+                expect(JSON.stringify(record["details"])).assertEqual(JSON.stringify(fileUri.details));
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3900 end");
+    });
+    
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest3900
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3900
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_4000', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_4000 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+      let arrayBuffer = new ArrayBuffer(4*200*200);
+      let opt : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 }, alphaType: 3 };
+      let pixelMapDetails : Record<string, number | string | Uint8Array> = {
+        'pixelMapKey1': 123,
+        'pixelMapKey2': 'pixelMapValue',
+        'pixelMapKey3': u8Array,
+      }
+      let pixelMap : uniformDataStruct.PixelMap = {
+        uniformDataType : 'openharmony.pixel-map',
+        pixelMap : image.createPixelMapSync(arrayBuffer, opt),
+        details : pixelMapDetails
+      }
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord("openharmony.pixel-map", pixelMap);
+      unifiedData.addRecord(contentFormRecord)
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) =>{
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as uniformDataStruct.PixelMap;
+              if (record != undefined) {
+                let imageInfo:image.ImageInfo = await record.pixelMap.getImageInfo();
+                expect(record["uniformDataType"]).assertEqual(pixelMap.uniformDataType);
+                expect(imageInfo.size.height).assertEqual(opt.size.height);
+                expect(imageInfo.size.width).assertEqual(opt.size.width);
+                expect(JSON.stringify(record["details"])).assertEqual(JSON.stringify(pixelMap.details));
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_4000 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUDMFApiDataStructTest3900
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_3900
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_4100', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_4100 start');
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let arrayBuffer = new ArrayBuffer(4*200*200);
+      let opt : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 }, alphaType: 3 };
+      let pixelMap : uniformDataStruct.PixelMap = {
+        uniformDataType : 'openharmony.pixel-map',
+        pixelMap : image.createPixelMapSync(arrayBuffer, opt),
+      }
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let contentFormRecord = new unifiedDataChannel.UnifiedRecord("openharmony.pixel-map", pixelMap);
+      unifiedData.addRecord(contentFormRecord)
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) =>{
+        let options1:unifiedDataChannel.Options ={
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key:data
+        }
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            let records = ret[i].getRecords();
+            let size = records.length;
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              let record = unifiedDataRecord.getValue() as uniformDataStruct.PixelMap;
+              if (record != undefined) {
+                let imageInfo:image.ImageInfo = await record.pixelMap.getImageInfo();
+                expect(record["uniformDataType"]).assertEqual(pixelMap.uniformDataType);
+                expect(imageInfo.size.height).assertEqual(opt.size.height);
+                expect(imageInfo.size.width).assertEqual(opt.size.width);
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFApiDataStructTest_4100 end");
     });
   })
 }
