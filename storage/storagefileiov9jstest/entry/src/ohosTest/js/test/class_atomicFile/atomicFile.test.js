@@ -20,6 +20,7 @@ import {
   import util from '@ohos.util';
   import featureAbility from '@ohos.ability.featureAbility';
   import buffer from '@ohos.buffer';
+  import { TestType, Size, Level } from '@ohos/hypium';
   
   const WAIT_ONE_SECOND = 1000;
   
