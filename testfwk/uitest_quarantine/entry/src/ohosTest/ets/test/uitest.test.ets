@@ -73,17 +73,6 @@ export default function UiTest() {
             console.log(TestTag, 'testScrollSearchHorizontal start');
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
             await driver.delayMs(waitUiReadyMs);
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
             let button = await driver.findComponent(ON.text('scroll'))
             await driver.delayMs(waitUiReadyMs);
             await button.click();
@@ -133,17 +122,6 @@ export default function UiTest() {
         it('testMouseDrag', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             await driver.delayMs(waitUiReadyMs)
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
             let button = await driver.findComponent(ON.id('jump'))
             let center = await button.getBoundsCenter();
             await driver.mouseLongClick(center, MouseButton.MOUSE_BUTTON_LEFT)
@@ -180,17 +158,6 @@ export default function UiTest() {
         it('testFling', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             await driver.delayMs(waitUiReadyMs)
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
             let window = await driver.findWindow({bundleName: 'com.uitestScene.acts'})
             try {
                 await window.maximize()
@@ -212,8 +179,8 @@ export default function UiTest() {
             expect (text2).assertNull()
             await driver.fling(UiDirection.UP, 39000)
             await driver.delayMs(2000)
-            let button2 = await driver.findComponents(ON.text('next page'))
-            expect (button2 != null).assertTrue()
+            let button2 = await driver.findComponents(ON.text('bottom'))
+            expect (button2 == null).assertTrue()
         })
     })
 
@@ -236,18 +203,6 @@ export default function UiTest() {
          */
         it('testTriggerCombineKeys', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            await driver.delayMs(2000)
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
             await driver.delayMs(2000)
             let text = await driver.findComponent(ON.type('TextInput'))
             if (text == null) {
@@ -287,17 +242,6 @@ export default function UiTest() {
         it('testDisplayRotation', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             await driver.delayMs(waitUiReadyMs)
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
             await driver.setDisplayRotation(DisplayRotation.ROTATION_0)
             await driver.delayMs(waitUiReadyMs)
             let rotation = await driver.getDisplayRotation()
@@ -350,17 +294,6 @@ export default function UiTest() {
         it('testSetDisplayRotationEnabled', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             await driver.delayMs(waitUiReadyMs)
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
             await driver.setDisplayRotationEnabled(true)
             await driver.delayMs(waitUiReadyMs)
             await driver.setDisplayRotation(DisplayRotation.ROTATION_0)
@@ -383,17 +316,6 @@ export default function UiTest() {
         it('testPressHome', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             await driver.delayMs(waitUiReadyMs)
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
             await driver.pressHome()
             await driver.delayMs(1000)
             let button = await driver.findComponent(ON.text('next page'))
@@ -409,17 +331,6 @@ export default function UiTest() {
         it('testDrag', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             await driver.delayMs(waitUiReadyMs)
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
             let button = await driver.findComponent(ON.id('jump'))
             await button.longClick()
             await driver.delayMs(waitUiReadyMs)
@@ -442,17 +353,6 @@ export default function UiTest() {
         it('testDragTo', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             await driver.delayMs(waitUiReadyMs)
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
             let button = await driver.findComponent(ON.id('jump'))
             await button.longClick()
             await driver.delayMs(waitUiReadyMs)
