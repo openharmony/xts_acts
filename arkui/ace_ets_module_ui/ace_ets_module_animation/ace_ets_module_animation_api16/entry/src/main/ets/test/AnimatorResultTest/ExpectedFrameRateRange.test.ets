@@ -74,7 +74,7 @@ export default function ExpectedFrameRateRange() {
       let play = await driver.findComponent(ON.id('circleId'));
       await play.click();
       console.log('[ExpectedFrameRateRange_001] play btn clicked')
-      await CommonFunc.sleep(3500);
+      await CommonFunc.sleep(6000);
       let min = getInspectorByKey('min');
       let max = getInspectorByKey('max');
       let expected = getInspectorByKey('expected');
