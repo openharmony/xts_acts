@@ -100,53 +100,57 @@ struct WebOnPermissionRequest {
                 break;
               }
               case 'emitPermissionRequestGrant001': {
-                if ( Utils.isPC(this.controller) ) {
-                  Utils.emitEvent('"grant"', 70322)
-                  break;
-                }
+                if (canIUse('SystemCapability.Applications.Contacts')) {
+                  if (Utils.isPC(this.controller)) {
+                    Utils.emitEvent('"grant"', 70322)
+                    break;
+                  }
 
-                if (deviceProductModel === 'emulator'){
-                  Utils.emitEvent('"grant"', 70322)
-                  break;
-                }
-                try {
-                  this.deny = false;
-                  this.controller.runJavaScript('getMedia()', (error) => {
-                    if (error) {
-                      console.info('getMedia() return error: ' + error)
-                    }
-                  })
-                  await Utils.sleep(2000)
-                  PermissionsUtils.reqPermissionCamera(getContext(this) as common.UIAbilityContext,
-                    (success: boolean) => {
-                      if (success) {
-                        console.info('onPermissionRequest ====> grant')
-                        if (this.permissionRequest) {
-                          this.permissionRequest.grant(this.permissionRequest.getAccessibleResource())
-                        } else {
-                          console.info('permissionRequest is null')
-                        }
+                  if (deviceProductModel === 'emulator') {
+                    Utils.emitEvent('"grant"', 70322)
+                    break;
+                  }
+                  try {
+                    this.deny = false;
+                    this.controller.runJavaScript('getMedia()', (error) => {
+                      if (error) {
+                        console.info('getMedia() return error: ' + error)
                       }
                     })
-                  await Utils.sleep(3000);
-                  let driver = Driver.create();
-                  let component = await driver.findComponent(ON.text('允许'));
-                  await component.click();
-                  await Utils.sleep(3000);
-                  this.controller.runJavaScript('getResult()', (error, result) => {
-                    if (error) {
-                      console.info('getResult() return error: ' + error)
-                    }
-                    if (result) {
-                      console.info('getResult() return result: ' + result)
-                      Utils.emitEvent(result, 70322)
-                    }
-                  })
+                    await Utils.sleep(2000)
+                    PermissionsUtils.reqPermissionCamera(getContext(this) as common.UIAbilityContext,
+                      (success: boolean) => {
+                        if (success) {
+                          console.info('onPermissionRequest ====> grant')
+                          if (this.permissionRequest) {
+                            this.permissionRequest.grant(this.permissionRequest.getAccessibleResource())
+                          } else {
+                            console.info('permissionRequest is null')
+                          }
+                        }
+                      })
+                    await Utils.sleep(3000);
+                    let driver = Driver.create();
+                    let component = await driver.findComponent(ON.text('允许'));
+                    await component.click();
+                    await Utils.sleep(3000);
+                    this.controller.runJavaScript('getResult()', (error, result) => {
+                      if (error) {
+                        console.info('getResult() return error: ' + error)
+                      }
+                      if (result) {
+                        console.info('getResult() return result: ' + result)
+                        Utils.emitEvent(result, 70322)
+                      }
+                    })
 
-                } catch (error) {
-                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  } catch (error) {
+                    console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  }
+                  break;
+                } else {
+                  Utils.emitEvent('"grant"', 70322)
                 }
-                break;
               }
             }
           })

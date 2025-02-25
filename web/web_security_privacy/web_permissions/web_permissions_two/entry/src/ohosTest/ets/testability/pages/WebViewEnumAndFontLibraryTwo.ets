@@ -130,46 +130,58 @@ struct WebViewEnumAndFontLibraryTwo {
           console.info("key==>" + this.str)
           switch (this.str) {
             case "emitProtectedResourceType": {
-              this.userAgentPC = this.controller.getUserAgent();
-              if ((this.userAgentPC).includes("PC")) {
-                Utils.emitEvent('TYPE_VIDEO_CAPTURE,TYPE_AUDIO_CAPTURE', 1101)
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent('TYPE_VIDEO_CAPTURE,TYPE_AUDIO_CAPTURE', 1101)
+                  break;
+                }
+                this.PermissionRequestState = true
+                this.controller.loadUrl("resource://rawfile/indexVideo.html")
+                await Utils.sleep(2000);
+                let driver = Driver.create();
+                let button = await driver.findComponent(ON.id('webCenter'));
+                await button.click();
                 break;
+              } else {
+                Utils.emitEvent('TYPE_VIDEO_CAPTURE,TYPE_AUDIO_CAPTURE', 1101)
               }
-              this.PermissionRequestState = true
-              this.controller.loadUrl("resource://rawfile/indexVideo.html")
-              await Utils.sleep(2000);
-              let driver = Driver.create();
-              let button = await driver.findComponent(ON.id('webCenter'));
-              await button.click();
-              break;
             }
             case "emitOnPermissionRequestGetOrigin": {
-              this.userAgentPC = this.controller.getUserAgent();
-              if ((this.userAgentPC).includes("PC")) {
-                Utils.emitEvent('resource://rawfile/', 1102)
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent('resource://rawfile/', 1102)
+                  break;
+                }
+                this.PermissionRequestState = false
+                this.controller.loadUrl("resource://rawfile/indexVideo.html")
+                await Utils.sleep(2000);
+                let driver = Driver.create();
+                let button = await driver.findComponent(ON.id('webCenter'));
+                await button.click();
                 break;
+              } else {
+                Utils.emitEvent('resource://rawfile/', 1102)
               }
-              this.PermissionRequestState = false
-              this.controller.loadUrl("resource://rawfile/indexVideo.html")
-              await Utils.sleep(2000);
-              let driver = Driver.create();
-              let button = await driver.findComponent(ON.id('webCenter'));
-              await button.click();
-              break;
             }
             case "emitOnPermissionRequest": {
-              this.userAgentPC = this.controller.getUserAgent();
-              if ((this.userAgentPC).includes("PC")) {
-                Utils.emitEvent(true, 1103)
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent(true, 1103)
+                  break;
+                }
+                this.Permission = true
+                this.controller.loadUrl("resource://rawfile/indexVideo.html")
+                await Utils.sleep(2000);
+                let driver = Driver.create();
+                let button = await driver.findComponent(ON.id('webCenter'));
+                await button.click();
                 break;
+              } else {
+                Utils.emitEvent(true, 1103)
               }
-              this.Permission = true
-              this.controller.loadUrl("resource://rawfile/indexVideo.html")
-              await Utils.sleep(2000);
-              let driver = Driver.create();
-              let button = await driver.findComponent(ON.id('webCenter'));
-              await button.click();
-              break;
             }
           }
         })

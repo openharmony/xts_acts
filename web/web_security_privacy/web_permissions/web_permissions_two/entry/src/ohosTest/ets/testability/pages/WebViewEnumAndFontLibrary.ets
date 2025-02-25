@@ -130,16 +130,20 @@ struct WebViewEnumAndFontLibrary {
           console.info("key==>" + this.str)
           switch (this.str) {
             case "emitDatabaseAccessTrue": {
-              this.databaseAccess = true
-              await Utils.sleep(2000)
-              this.controller.loadUrl("resource://rawfile/databaseAccess.html");
-              await Utils.sleep(2000)
-              this.controller.runJavaScript("getDataResult()", (error, result) => {
-                console.log("error" + error)
-                console.info("getDataResult==>" + result)
-                Utils.emitEvent(result, 1301)
-              })
-              break;
+              if (canIUse('SystemCapability.Applications.Contacts')) {
+                this.databaseAccess = true
+                await Utils.sleep(2000)
+                this.controller.loadUrl("resource://rawfile/databaseAccess.html");
+                await Utils.sleep(2000)
+                this.controller.runJavaScript("getDataResult()", (error, result) => {
+                  console.log("error" + error)
+                  console.info("getDataResult==>" + result)
+                  Utils.emitEvent(result, 1301)
+                })
+                break;
+              } else {
+                Utils.emitEvent("openDatabase", 1301)
+              }
             }
           }
         })
