@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,10 +13,21 @@
  * limitations under the License.
  */
 
-export const ProgressLinearStyleTest: (a: string) => void;
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
-export const testProgressLinearStyle: (a: string) => void;
+@Entry
+@Component
+struct TextAreaLetterSpacing {
+  PAGE_TAG: string = 'TextAreaLetterSpacing';
 
-export const textAreaLetterSpacing001: (a: string) => void;
-
-export const textInputLetterSpacing002: (a: string) => void;
+  build(){
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.textAreaLetterSpacing001(this.PAGE_TAG);
+      })
+    }
+  }
+}

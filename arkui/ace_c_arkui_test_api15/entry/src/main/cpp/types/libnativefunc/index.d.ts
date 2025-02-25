@@ -13,4 +13,20 @@
  * limitations under the License.
  */
 
+export const textImmutablfFontWeight_001: () => number;
+export const textImmutablfFontWeight_002: () => number;
+export const textImmutablfFontWeight_003: () => number;
+export const textImmutablfFontWeight_004: () => number;
+export const textImmutablfFontWeight_005: () => number;
+export const textImmutablfFontWeight_006: () => number;
+export const textImmutablfFontWeight_007: () => number;
+export const textImmutablfFontWeight_008: () => number;
+export const textImmutablfFontWeight_009: () => number;
+export const textImmutablfFontWeight_010: () => number;
+export const textImmutablfFontWeight_011: () => number;
+export const textImmutablfFontWeight_012: () => number;
+export const textImmutablfFontWeight_013: () => number;
+export const textImmutablfFontWeight_014: () => number;
+export const textImmutablfFontWeight_015: () => number;
+export const textImmutablfFontWeight_016: () => number;
 export const columnBackDropBlurTest001: () => number;

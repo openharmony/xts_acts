@@ -1,7 +1,9 @@
 {
   "src": [
     "MainAbility/pages/XTSIndex",
-    "MainAbility/pages/progress/TestProgressLinearStyle"
+    "MainAbility/pages/progress/TestProgressLinearStyle",
+    "MainAbility/pages/textArea/TextAreaLetterSpacing",
+    "MainAbility/pages/textInput/TextInputLetterSpacing"
 
   ]
 }
