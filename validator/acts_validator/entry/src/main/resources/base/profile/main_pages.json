@@ -57,6 +57,8 @@
     "pages/ArkUI/AccessibilityThirdFramework01",
     "pages/ArkUI/CapiHandDetect",
     "pages/ArkUI/GetBarRect",
+    "pages/ArkUI/GameCtrollerCallBackData",
+    "pages/ArkUI/GameCtronllerCTest",
     "pages/Camera/Camera_index",
     "pages/Camera/CameraPreviewFormat",
     "pages/Camera/CameraPhotoFormat",

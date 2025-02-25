@@ -106,7 +106,9 @@ struct IndexPage {
     { title: 'AccessibilityThirdFramework00', uri: 'pages/ArkUI/AccessibilityThirdFramework00' },
     { title: 'AccessibilityThirdFramework01', uri: 'pages/ArkUI/AccessibilityThirdFramework01' },
     { title: 'CapiHandDetect', uri: 'pages/ArkUI/GetBarRect' },
-    { title: 'CapiHandDetect', uri: 'pages/ArkUI/CapiHandDetect' }
+    { title: 'CapiHandDetect', uri: 'pages/ArkUI/CapiHandDetect' },
+    { title: 'GameCtrollerCallBackData', uri: 'pages/ArkUI/GameCtrollerCallBackData' },
+    { title: 'GameCtronllerCTest', uri: 'pages/ArkUI/GameCtronllerCTest' }
   ]
   @State ColorObject: Object[] = letColor;
   @State ColorTrue: number[] = [];
