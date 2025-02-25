@@ -149,7 +149,7 @@ struct WebOnPermissionRequest {
                   }
                   break;
                 } else {
-                  Utils.emitEvent("grant", 70322)
+                  Utils.emitEvent('"grant"', 70322)
                 }
               }
             }
