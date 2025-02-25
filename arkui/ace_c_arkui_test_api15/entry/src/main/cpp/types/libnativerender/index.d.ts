@@ -17,6 +17,9 @@ export const ProgressLinearStyleTest: (a: string) => void;
 
 export const testProgressLinearStyle: (a: string) => void;
 
+export const textAreaLetterSpacing001: (a: string) => void;
+
+export const textInputLetterSpacing002: (a: string) => void;
 
 export const KeyEventPatchTest: (a: string) => void;
 
@@ -29,8 +32,3 @@ export const FocusControlTest_002: (a: string) => void;
 export const FocusControlTest_003: (a: string) => void;
 
 export const FocusControlTest_004: (a: string) => void;
-
-export const textAreaLetterSpacing001: (a: string) => void;
-
-export const textInputLetterSpacing002: (a: string) => void;
-
