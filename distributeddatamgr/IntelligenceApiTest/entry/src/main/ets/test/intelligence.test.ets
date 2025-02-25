@@ -321,7 +321,7 @@ export default function intelligenceTest() {
                console.info(TAG + "getEmbedding result:" + loadData);
                let dataSize:number = loadData.length;
                let ret = dataSize > 0;
-               expect(ret).assertEqual(true);
+               expect().assertFail();
                done();
             })
             .catch((err:BusinessError) => {
@@ -344,14 +344,6 @@ export default function intelligenceTest() {
           })
       }
     })
-
-
-
-
-
-
-
-
 
 
     /**
@@ -544,7 +536,7 @@ export default function intelligenceTest() {
             data.getEmbedding('111.jpg')
             .then((loadData) => {
               console.info(TAG + "getEmbedding result 1200 :" + loadData);
-              expect(loadData).assertNotNull();
+              expect().assertFail();
               done();
             })
             .catch((err:BusinessError) => {
