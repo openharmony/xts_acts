@@ -13,8 +13,10 @@
  * limitations under the License.
  */
 
-import dataAbilityPredicatesTest from './DataAbilityPredicatesJsunit.test'
+import dataAbilityPredicatesTest from './DataAbilityPredicatesJsunit.test';
+import dataSharePredicatesTest from './DataSharePredicatesTest.test';
 
 export default function testsuite() {
-  dataAbilityPredicatesTest()
+  dataAbilityPredicatesTest();
+  dataSharePredicatesTest();
 }
