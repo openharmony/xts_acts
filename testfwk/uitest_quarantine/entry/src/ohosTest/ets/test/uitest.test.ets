@@ -212,7 +212,7 @@ export default function UiTest() {
             expect (text2).assertNull()
             await driver.fling(UiDirection.UP, 39000)
             await driver.delayMs(2000)
-            let button2 = await driver.findComponents(ON.text('bottom'))
+            let button2 = await driver.findComponents(ON.text('next page'))
             expect (button2 != null).assertTrue()
         })
     })

@@ -33,7 +33,7 @@
         },
         {
             "test-file-name": [
-                "ActsUiTestQuar.hap",
+                "ActsUiTestQuarTest.hap",
                 "ActsUiTestScene.hap"
             ],
             "type": "AppInstallKit",
