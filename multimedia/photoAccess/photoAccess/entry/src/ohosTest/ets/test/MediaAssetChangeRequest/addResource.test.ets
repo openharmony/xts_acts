@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-
-
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
 import { driveFn, fetchOption, getPermission, photoKeys, sleep } from '../common'
@@ -89,5 +87,38 @@ export default function addResourceChangeRequestTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_ADD_RESOURCE_CHANGE_REQUEST_0200
+     * @tc.name      : add_resource_change_request_002
+     * @tc.desc      : add resource by extension ''
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('add_resource_change_request_002', 0, async (done: Function) => {
+      let testNum = 'add_resource_change_request_002';
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoAccessHelper.PhotoType.IMAGE);
+        let fetchResult = await helper.getAssets(fetchOps);
+        let count = fetchResult.getCount();
+
+        let photoType = photoAccessHelper.PhotoType.IMAGE;
+        let extension = '';
+        let assetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(testContext, photoType, extension);
+        assetChangeRequest.addResource(photoAccessHelper.ResourceType.IMAGE_RESOURCE, new ArrayBuffer(1024));
+        await helper.applyChanges(assetChangeRequest);
+
+        fetchResult = await helper.getAssets(fetchOps);
+        console.info(`${testNum} succeed to add resource by ArrayBuffer`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error}, ${error.code}`);
+        expect(error.code).assertEqual('401')
+        done();
+      }
+    })
+  
   })
 }
