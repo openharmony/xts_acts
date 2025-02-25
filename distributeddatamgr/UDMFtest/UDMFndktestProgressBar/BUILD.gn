@@ -17,8 +17,8 @@ ohos_app_assist_suite("ActsUDMFndktestProgress") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsUDMFndktestProgress"
-  part_name = "ace_engine"
-  subsystem_name = "arkui"
+  part_name = "udmf"
+  subsystem_name = "distributeddatamgr"
 }
 
 ohos_js_app_suite("ActsUDMFndktestProgressBarTest") {
@@ -26,7 +26,7 @@ ohos_js_app_suite("ActsUDMFndktestProgressBarTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsUDMFndktestProgressBarTest"
-  part_name = "ace_engine"
-  subsystem_name = "arkui"
+  part_name = "udmf"
+  subsystem_name = "distributeddatamgr"
   deps = [ ":ActsUDMFndktestProgress" ]
 }

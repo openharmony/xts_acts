@@ -12,16 +12,15 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
-
 group("UDMFtest") {
   testonly = true
   if (is_standard_system) {
     deps = [
       "UDMFndktestHvigor:ActsUDMFNdkTest",
+      "UDMFndktestProgressBar:ActsUDMFndktestProgressBarTest",
       "UDMFtest:UDMF_ets_test",
       "UDMFwithOutPermissiontest:UDMF_drag_ets_test",
       "UDMFwithPermissiontest:UDMF_drag_test",
-	  "UDMFndktestProgressBar:ActsUDMFndktestProgressBarTest",
     ]
   }
 }
