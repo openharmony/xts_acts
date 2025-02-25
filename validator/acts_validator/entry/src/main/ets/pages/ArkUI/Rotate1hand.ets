@@ -48,7 +48,7 @@ struct rotate1hand {
           .onActionEnd((event) => {
             console.log("end hand" + event.fingerList[0].hand)
           })
-          
+        )
 
     }
     .width('100%')
