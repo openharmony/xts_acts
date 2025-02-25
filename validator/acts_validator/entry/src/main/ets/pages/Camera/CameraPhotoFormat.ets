@@ -86,7 +86,7 @@ struct cameraOrientation {
   }
 
   private setPreviewRotation() {
-    let o = display.getDefaultDisplaySync().orientation;
+    let o = display.getDefaultDisplaySync().rotation;
     let rotation = 0;
     switch (o) {
       case 0:
@@ -351,7 +351,7 @@ struct cameraOrientation {
                   let cutOutInfo = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM_GESTURE)
                   console.log(JSON.stringify(cutOutInfo))
                   if (window.Orientation.AUTO_ROTATION) {
-                    let rotation: number = display.getDefaultDisplaySync().orientation // 获取当前屏幕的枚举值
+                    let rotation: number = display.getDefaultDisplaySync().rotation // 获取当前屏幕的枚举值
                     Logger.info('orientation', rotation);
                     if (rotation == 0) {
                       deviceDegree = 0;

@@ -67,7 +67,7 @@ struct cameraFormat {
   }
 
   private setPreviewRotation() {
-    let o = display.getDefaultDisplaySync().orientation;
+    let o = display.getDefaultDisplaySync().rotation;
     let rotation = 0;
     switch (o) {
       case 0:
