@@ -775,6 +775,10 @@ export default function settingUiJsunit() {
           done();
           return;
         })
+        let setTTS1: string = settings.TTS.DEFAULT_TTS_PITCH + ''
+        let setTTS2: string = settings.TTS.DEFAULT_TTS_RATE + ''
+        let setTTS3: string = settings.TTS.DEFAULT_TTS_SYNTH + ''
+        let setTTS4: string = settings.TTS.ENABLED_TTS_PLUGINS + ''
       }catch(err){
         console.info('settings test canShowFloating promise err'+String(err));
         expect(true).assertTrue();
