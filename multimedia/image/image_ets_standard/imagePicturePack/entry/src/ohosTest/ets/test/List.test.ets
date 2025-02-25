@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import imagePicture from './imagePicture.test';
+import imagePicturePack from './imagePicturePack.test';
 
 export default function testsuite() {
-  imagePicture();
+  imagePicturePack();
 }
