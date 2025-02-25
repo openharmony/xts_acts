@@ -2947,5 +2947,501 @@ export default function MultimodalInputNdkSysTest() {
       }
       console.info(`${caseName} end to test OH_Input_RemoveInputEventInterceptor`);
     });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_NdkSys_SetKeyEventWindowId_0100
+     * @tc.name: SUB_MMI_Input_Api_NdkSys_SetKeyEventWindowId_0100
+     * @tc.desc: OH_Input_SetKeyEventWindowId and OH_Input_SetKeyEventDisplayId Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_NdkSys_SetKeyEventWindowId_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_NdkSys_SetKeyEventWindowId_0100';
+      console.info(`${caseName} start to test OH_Input_SetKeyEventWindowId and OH_Input_SetKeyEventDisplayId`);
+      try {
+        let data = input.SetKeyEventWindowId();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_SetKeyEventWindowId and OH_Input_SetKeyEventDisplayId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_NdkSys_SetKeyEventWindowId_0200
+     * @tc.name: SUB_MMI_Input_Api_NdkSys_SetKeyEventWindowId_0200
+     * @tc.desc: OH_Input_SetKeyEventWindowId and OH_Input_SetKeyEventDisplayId Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_NdkSys_SetKeyEventWindowId_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_NdkSys_SetKeyEventWindowId_0200';
+      console.info(`${caseName} start to test OH_Input_SetKeyEventWindowId and OH_Input_SetKeyEventDisplayId`);
+      try {
+        let data = input.SetKeyEventWindowId2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_SetKeyEventWindowId and OH_Input_SetKeyEventDisplayId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_NdkSys_SetKeyEventWindowId_0300
+     * @tc.name: SUB_MMI_Input_Api_NdkSys_SetKeyEventWindowId_0300
+     * @tc.desc: OH_Input_SetKeyEventWindowId and OH_Input_SetKeyEventDisplayId Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_NdkSys_SetKeyEventWindowId_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_NdkSys_SetKeyEventWindowId_0300';
+      console.info(`${caseName} start to test OH_Input_SetKeyEventWindowId and OH_Input_SetKeyEventDisplayId`);
+      try {
+        let data = input.SetKeyEventWindowId3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_SetKeyEventWindowId and OH_Input_SetKeyEventDisplayId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_NdkSys_GetKeyEventWindowId_0100
+     * @tc.name: SUB_MMI_Input_Api_NdkSys_GetKeyEventWindowId_0100
+     * @tc.desc: OH_Input_GetKeyEventWindowId and OH_Input_GetKeyEventDisplayId Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_NdkSys_GetKeyEventWindowId_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_NdkSys_GetKeyEventWindowId_0100';
+      console.info(`${caseName} start to test OH_Input_GetKeyEventWindowId and OH_Input_GetKeyEventDisplayId`);
+      try {
+        let data = input.GetKeyEventWindowId();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetKeyEventWindowId and OH_Input_GetKeyEventDisplayId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_NdkSys_SetMouseEventWindowId_0100
+     * @tc.name: SUB_MMI_Input_Api_NdkSys_SetMouseEventWindowId_0100
+     * @tc.desc: OH_Input_SetMouseEventWindowId and OH_Input_SetMouseEventDisplayId Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_NdkSys_SetMouseEventWindowId_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_NdkSys_SetMouseEventWindowId_0100';
+      console.info(`${caseName} start to test OH_Input_SetMouseEventWindowId and OH_Input_SetMouseEventDisplayId`);
+      try {
+        let data = input.SetMouseEventWindowId();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_SetMouseEventWindowId and OH_Input_SetMouseEventDisplayId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_NdkSys_SetMouseEventWindowId_0200
+     * @tc.name: SUB_MMI_Input_Api_NdkSys_SetMouseEventWindowId_0200
+     * @tc.desc: OH_Input_SetMouseEventWindowId and OH_Input_SetMouseEventDisplayId Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_NdkSys_SetMouseEventWindowId_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_NdkSys_SetMouseEventWindowId_0200';
+      console.info(`${caseName} start to test OH_Input_SetMouseEventWindowId and OH_Input_SetMouseEventDisplayId`);
+      try {
+        let data = input.SetMouseEventWindowId2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_SetMouseEventWindowId and OH_Input_SetMouseEventDisplayId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_NdkSys_SetMouseEventWindowId_0300
+     * @tc.name: SUB_MMI_Input_Api_NdkSys_SetMouseEventWindowId_0300
+     * @tc.desc: OH_Input_SetMouseEventWindowId and OH_Input_SetMouseEventDisplayId Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_NdkSys_SetMouseEventWindowId_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_NdkSys_SetMouseEventWindowId_0300';
+      console.info(`${caseName} start to test OH_Input_SetMouseEventWindowId and OH_Input_SetMouseEventDisplayId`);
+      try {
+        let data = input.SetMouseEventWindowId3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_SetMouseEventWindowId and OH_Input_SetMouseEventDisplayId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_NdkSys_GetMouseEventWindowId_0100
+     * @tc.name: SUB_MMI_Input_Api_NdkSys_GetMouseEventWindowId_0100
+     * @tc.desc: OH_Input_GetMouseEventWindowId and OH_Input_GetMouseEventDisplayId Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_NdkSys_GetMouseEventWindowId_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_NdkSys_GetMouseEventWindowId_0100';
+      console.info(`${caseName} start to test OH_Input_GetMouseEventWindowId and OH_Input_GetMouseEventDisplayId`);
+      try {
+        let data = input.GetMouseEventWindowId();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetMouseEventWindowId and OH_Input_GetMouseEventDisplayId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_NdkSys_SetTouchEventWindowId_0100
+     * @tc.name: SUB_MMI_Input_Api_NdkSys_SetTouchEventWindowId_0100
+     * @tc.desc: OH_Input_SetTouchEventWindowId and OH_Input_SetTouchEventDisplayId Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_NdkSys_SetTouchEventWindowId_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_NdkSys_SetTouchEventWindowId_0100';
+      console.info(`${caseName} start to test OH_Input_SetTouchEventWindowId and OH_Input_SetTouchEventDisplayId`);
+      try {
+        let data = input.SetTouchEventWindowId();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_SetTouchEventWindowId and OH_Input_SetTouchEventDisplayId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_NdkSys_SetTouchEventWindowId_0200
+     * @tc.name: SUB_MMI_Input_Api_NdkSys_SetTouchEventWindowId_0200
+     * @tc.desc: OH_Input_SetTouchEventWindowId and OH_Input_SetTouchEventDisplayId Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_NdkSys_SetTouchEventWindowId_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_NdkSys_SetTouchEventWindowId_0200';
+      console.info(`${caseName} start to test OH_Input_SetTouchEventWindowId and OH_Input_SetTouchEventDisplayId`);
+      try {
+        let data = input.SetTouchEventWindowId2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_SetTouchEventWindowId and OH_Input_SetTouchEventDisplayId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_NdkSys_SetTouchEventWindowId_0300
+     * @tc.name: SUB_MMI_Input_Api_NdkSys_SetTouchEventWindowId_0300
+     * @tc.desc: OH_Input_SetTouchEventWindowId and OH_Input_SetTouchEventDisplayId Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_NdkSys_SetTouchEventWindowId_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_NdkSys_SetTouchEventWindowId_0300';
+      console.info(`${caseName} start to test OH_Input_SetTouchEventWindowId and OH_Input_SetTouchEventDisplayId`);
+      try {
+        let data = input.SetTouchEventWindowId3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_SetTouchEventWindowId and OH_Input_SetTouchEventDisplayId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_NdkSys_GetTouchEventWindowId_0100
+     * @tc.name: SUB_MMI_Input_Api_NdkSys_GetTouchEventWindowId_0100
+     * @tc.desc: OH_Input_GetTouchEventWindowId and OH_Input_GetTouchEventDisplayId Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_NdkSys_GetTouchEventWindowId_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_NdkSys_GetTouchEventWindowId_0100';
+      console.info(`${caseName} start to test OH_Input_GetTouchEventWindowId and OH_Input_GetTouchEventDisplayId`);
+      try {
+        let data = input.GetTouchEventWindowId();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetTouchEventWindowId and OH_Input_GetTouchEventDisplayId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_NdkSys_SetAxisEventWindowId_0100
+     * @tc.name: SUB_MMI_Input_Api_NdkSys_SetAxisEventWindowId_0100
+     * @tc.desc: OH_Input_SetAxisEventWindowId and OH_Input_SetAxisEventDisplayId Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventWindowId_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventWindowId_0100';
+      console.info(`${caseName} start to test OH_Input_SetAxisEventWindowId and OH_Input_SetAxisEventDisplayId`);
+      try {
+        let data = input.SetAxisEventWindowId();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_SetAxisEventWindowId and OH_Input_SetAxisEventDisplayId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_NdkSys_SetAxisEventWindowId_0200
+     * @tc.name: SUB_MMI_Input_Api_NdkSys_SetAxisEventWindowId_0200
+     * @tc.desc: OH_Input_SetAxisEventWindowId and OH_Input_SetAxisEventDisplayId Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventWindowId_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventWindowId_0200';
+      console.info(`${caseName} start to test OH_Input_SetAxisEventWindowId and OH_Input_SetAxisEventDisplayId`);
+      try {
+        let data = input.SetAxisEventWindowId2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_SetAxisEventWindowId and OH_Input_SetAxisEventDisplayId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_NdkSys_SetAxisEventWindowId_0300
+     * @tc.name: SUB_MMI_Input_Api_NdkSys_SetAxisEventWindowId_0300
+     * @tc.desc: OH_Input_SetAxisEventWindowId and OH_Input_SetAxisEventDisplayId Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventWindowId_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventWindowId_0300';
+      console.info(`${caseName} start to test OH_Input_SetAxisEventWindowId and OH_Input_SetAxisEventDisplayId`);
+      try {
+        let data = input.SetAxisEventWindowId3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_SetAxisEventWindowId and OH_Input_SetAxisEventDisplayId`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_NdkSys_GetAxisEventWindowId_0100
+     * @tc.name: SUB_MMI_Input_Api_NdkSys_GetAxisEventWindowId_0100
+     * @tc.desc: OH_Input_GetAxisEventWindowId and OH_Input_GetAxisEventDisplayId Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventWindowId_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventWindowId_0100';
+      console.info(`${caseName} start to test OH_Input_GetAxisEventWindowId and OH_Input_GetAxisEventDisplayId`);
+      try {
+        let data = input.GetAxisEventWindowId();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetAxisEventWindowId and OH_Input_GetAxisEventDisplayId`);
+    });
   });
 }
