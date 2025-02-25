@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,36 +12,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import cameraObj from 'libentry.so';
+import deviceInfo from '@ohos.deviceInfo';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import cameraObj from 'libentry.so'
-import image from '@ohos.multimedia.image';
-import { Camera_PreconfigType, Camera_PreconfigRatio, Camera_MediaType, Camera_SceneMode,
-  Parameter_Setting } from './Constants';
-//import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
-import bundleManager from '@ohos.bundle.bundleManager';
-import account from '@ohos.account.osAccount';
-import MediaUtils from './MediaUtils';
+import { GlobalThis } from './Constants';
+import fs from '@ohos.file.fs';
+import featureAbility from '@ohos.ability.featureAbility'
 import media from '@ohos.multimedia.media';
-import { ability } from '@kit.AbilityKit';
-import { abilityAccessCtrl, Context, PermissionRequestResult, common, Permissions } from '@kit.AbilityKit';
+import MediaUtils from './MediaUtils';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Driver, ON, MatchPattern } from '@ohos.UiTest';
+import { Camera_MediaType } from './Constants';
+import { abilityAccessCtrl, Context, PermissionRequestResult, common, Permissions } from '@kit.AbilityKit';
+import { Driver, ON, MatchPattern } from '@ohos.UiTest'
 
-const TAG = "CAMERA_LOGTAG_JS ";
-const CAMERA_OK = 0;
-const CAMERA_INVALID_ARGUMENT = 7400101;
-const ALL_CALLBACK_IS_NULL = 1;
-const ONLY_ON_ERROR = 2;
-const ONLY_ON_FOCUS_STATE_CHANGE = 3;
-const INVALID_SURFACE_ID = 4;
-let receiver: image.ImageReceiver;
-let mPhotoSurface: string;
+const TAG = "CameraXts VideoMirrorTest: ";
 
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let context: Context = getContext(this) as common.UIAbilityContext;
+let mVideoSurfaceId: string;
 
 let mediaUtil = MediaUtils.getInstance();
-let videoSurfaceId: string;
 let videoRecorder: media.AVRecorder;
 let videoConfig: media.AVRecorderConfig = {
   audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
@@ -60,6 +49,29 @@ let videoConfig: media.AVRecorderConfig = {
   },
   url : 'fd://',
   rotation : 0,
+}
+
+function getCameraManagerInstance() {
+  console.info(TAG + 'Enter getCameraManagerInstance');
+  console.info(TAG + 'mSurfaceId : ' + GlobalThis.getInstance().getValue());
+  let ret = cameraObj.initCamera(GlobalThis.getInstance().getValue());
+  if (ret != 0) {
+    console.info(TAG + "getCameraManager FAILED");
+    expect().assertFail();
+  }
+  console.info(TAG + 'Exit getCameraManagerInstance');
+  return true;
+}
+
+function getCameraSupportDevicesArray() {
+  console.info(TAG + 'Enter getCameraSupportDevicesArray');
+  let cameraInfo = cameraObj.getSupportedCameras();
+  if (cameraInfo.cameraId == null) {
+    console.info(TAG + "getSupportedCameras FAILED");
+    expect().assertFail();
+  }
+  console.info(TAG + 'Exit getCameraSupportDevicesArray');
+  return true;
 }
 
 async function getVideoSurfaceId() {
@@ -83,219 +95,73 @@ async function getVideoSurfaceId() {
   } catch (err) {
     console.error(TAG + 'prepare failed with err: ' + err);
   }
-  videoSurfaceId = await videoRecorder.getInputSurface();
-  console.info(TAG + 'getVideoSurfaceID videoSurfaceId : ' + JSON.stringify(videoSurfaceId));
+  mVideoSurfaceId = await videoRecorder.getInputSurface();
+  console.info(TAG + 'getVideoSurfaceID videoSurfaceId : ' + JSON.stringify(mVideoSurfaceId));
 }
 
-function setSceneMode(index_sceneMode: number) {
-  let ret = cameraObj.oHCameraManagerSetSceneMode(index_sceneMode);
-  if (ret != 0) {
-    console.error(TAG + "setSceneMode FAILED");
+function createOutput() {
+  console.info(TAG + 'Enter createOutput');
+
+  cameraObj.getSupportedOutputCapability();
+  if (cameraObj.createVideoOutput(mVideoSurfaceId)) {
+    console.info(TAG + "createVideoOutput FAILED");
     expect().assertFail();
   }
-  if (index_sceneMode == Camera_SceneMode.NORMAL_PHOTO) {
-    console.info(TAG + "set sceneMode: NORMAL_PHOTO");
-  } else if (index_sceneMode == Camera_SceneMode.NORMAL_VIDEO) {
-    console.info(TAG + "set sceneMode: NORMAL_VIDEO");
-  } else if (index_sceneMode == Camera_SceneMode.SECURE_PHOTO) {
-    console.info(TAG + "set sceneMode: SECURE_PHOTO");
-  }
-}
+  console.info(TAG + 'Exit createVideoOutput');
 
-async function getPhotoReceiverSurface() {
-  console.info(TAG + 'createImageReceiver start.');
-  receiver = image.createImageReceiver({ width: 640, height: 480 }, 4, 8);
-  if (receiver !== undefined) {
-    console.error(TAG + 'createImageReceiver successfully');
-    mPhotoSurface = await receiver.getReceivingSurfaceId();
-    console.info(TAG + 'Photo received id: ' + JSON.stringify(mPhotoSurface));
-  } else {
-    console.error(TAG + 'createImageReceiver failed');
-  }
-}
-
-function getCameraManagerInstance() {
-  console.info(TAG + 'mSurfaceId : ' + mPhotoSurface);
-  let ret = cameraObj.initCamera(mPhotoSurface);
-  console.info(TAG + 'initCamera : ' + ret);
-  if (ret != 0) {
-    console.error(TAG + "getCameraManager FAILED");
+  if (cameraObj.createPreviewOutput()) {
+    console.info(TAG + "createPreviewOutput FAILED");
     expect().assertFail();
   }
-}
-
-function createCaptureSession() {
-  console.info(TAG + "createCaptureSession start.");
-  let ret = cameraObj.createSession();
-  if (ret != 0) {
-    console.error(TAG + "createCaptureSession FAILED");
-    expect().assertFail();
-  }
-}
-
-function createCameraInput() {
-  console.info(TAG + "createCameraInput start.");
-  let ret = cameraObj.createCameraInput();
-  if (ret != 0) {
-    console.error(TAG + "createCameraInput FAILED");
-    expect().assertFail();
-  }
-  cameraObj.cameraInputOpen();
-}
-
-function getSupportedSceneModes(index: number) {
-  let supportedSceneModes = cameraObj.oHCameraManagerGetSupportedSceneModes(index);
-  if (supportedSceneModes.errorCode != 0) {
-    console.error(TAG + "getSupportedSceneModes FAILED");
-    expect().assertFail();
-  }
-  if (supportedSceneModes.isNormalPhoto) {
-    console.info(TAG + "NORMAL_PHOTO is supported.");
-  }
-  if (supportedSceneModes.isNormalVideo) {
-    console.info(TAG + "NORMAL_VIDEO is supported.");
-  }
-  if (supportedSceneModes.isSecurePhoto) {
-    console.info(TAG + "SECURE_PHOTO is supported.");
-  }
-  cameraObj.oHCameraManagerDeleteSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
-  return supportedSceneModes;
-}
-
-function getSupportedCamerasInstance() {
-  let cameraInfo = cameraObj.getSupportedCameras();
-  if (isEmpty(cameraInfo)) {
-    console.error(TAG + "getSupportedCamerasInstance FAILED");
-    expect().assertFail();
-  }
-}
-
-function getSupportedCameraOutputCapability() {
-  let cameraOutputCapability = cameraObj.getSupportedOutputCapability();
-  console.info(TAG + 'cameraOutputCapability[0] = ' + cameraOutputCapability.previewProfilesSize);
-  console.info(TAG + 'cameraOutputCapability[1] = ' + cameraOutputCapability.photoProfilesSize);
-  console.info(TAG + 'cameraOutputCapability[2] = ' + cameraOutputCapability.videoProfilesSize);
-  console.info(TAG + 'cameraOutputCapability[3] = ' + cameraOutputCapability.metadataProfilesSize);
+  console.info('Exit createOutputs');
   return true;
 }
 
-function setSessionMode() {
-  let ret = cameraObj.oHCaptureSessionSetSessionMode(Parameter_Setting.ALL_PARAMETER_OK);
-  if (ret != 0) {
-    console.error(TAG + "setSessionMode FAILED");
+async function stopCameraSession() {
+  console.info(TAG + "Enter stopCameraSession");
+  if (await cameraObj.sessionStop()) {
+    console.info(TAG + "sessionStop FAILED");
     expect().assertFail();
   }
+  if (await cameraObj.cameraInputClose()) {
+    console.info(TAG + "cameraInputClose FAILED");
+    expect().assertFail();
+  }
+  //await removeOutput();
+  await releaseOutput();
+  if (await cameraObj.sessionRelease()) {
+    console.info(TAG + "cameraInputClose FAILED");
+    expect().assertFail();
+  }
+  console.info(TAG + "Exit stopCameraSession");
 }
 
-function createPreviewOutput() {
-  let ret = cameraObj.createPreviewOutput();
-  if (ret != 0) {
-    console.error(TAG + "createPreviewOutput FAILED");
+async function removeOutput() {
+  console.info(TAG + "Enter removeOutput");
+  if (cameraObj.sessionRemovePreviewOutput()) {
+    console.info(TAG + "sessionRemovePreviewOutput FAILED");
     expect().assertFail();
   }
+  if (cameraObj.sessionRemoveVideoOutput()) {
+    console.info(TAG + "sessionRemoveVideoOutput FAILED");
+    expect().assertFail();
+  }
+  console.info(TAG + "Exit removeOutput");
 }
 
-function sessionFlow() {
-  let begin = cameraObj.sessionBegin();
-  if (begin != 0) {
-    console.error(TAG + "beginConfig FAILED");
+async function releaseOutput() {
+  console.info(TAG + 'Enter releaseOutput');
+  if (cameraObj.previewOutputRelease()) {
+    console.info(TAG + "previewOutputRelease FAILED");
     expect().assertFail();
   }
-
-  let canAddInput = cameraObj.oHCaptureSessionCanAddInput(Parameter_Setting.ALL_PARAMETER_OK);
-  if (canAddInput.errorCode != 0) {
-    console.error(TAG + "CanAddInput FAILED");
+  if (cameraObj.videoOutputRelease()) {
+    console.info(TAG + "videoOutputRelease FAILED");
     expect().assertFail();
   }
-  console.info(TAG + "canAddInput: " + canAddInput.isAddInput);
-
-  if (canAddInput.isAddInput) {
-    let addInput = cameraObj.sessionAddInput();
-    if (addInput != 0) {
-      console.error(TAG + "addInput FAILED");
-      expect().assertFail();
-    }
-  } else {
-    expect().assertFail();
-  }
-
-  let canAddPreviewOutput = cameraObj.oHCaptureSessionCanAddPreviewOutput(Parameter_Setting.ALL_PARAMETER_OK);
-  if (canAddPreviewOutput.errorCode != 0) {
-    console.error(TAG + "CanAddPreviewOutput FAILED");
-    expect().assertFail();
-  }
-  console.info(TAG + "canAddPreviewOutput: " + canAddPreviewOutput.isAddPreviewOutput);
-
-  if (canAddPreviewOutput.isAddPreviewOutput) {
-    let addPreviewOutput = cameraObj.sessionAddPreviewOutput();
-    if (addPreviewOutput != 0) {
-      console.error(TAG + "addPreviewOutput FAILED");
-      expect().assertFail();
-    }
-  } else {
-    expect().assertFail();
-  }
+  console.info(TAG + 'Exit releaseOutput');
 }
 
-function createPhotoOutput() {
-  let mPhotoOutput = cameraObj.createPhotoOutput(mPhotoSurface);
-  if (mPhotoOutput != 0) {
-    console.error(TAG + "mPhotoOutput FAILED");
-    expect().assertFail();
-  }
-}
-
-function createVideoOutput() {
-  let ret = cameraObj.createVideoOutput(videoSurfaceId);
-  if (ret != 0) {
-    console.error(TAG + "createVideoOutput FAILED");
-    expect().assertFail();
-  }
-}
-
-function sessionBeginConfig() {
-  let ret = cameraObj.sessionBegin();
-  if (ret != 0) {
-    console.error(TAG + "sessionBeginConfig FAILED:" + ret);
-    expect().assertFail();
-  }
-}
-
-function addInput() {
-  let canAddInput = cameraObj.oHCaptureSessionCanAddInput(Parameter_Setting.ALL_PARAMETER_OK);
-  if (canAddInput.errorCode != 0) {
-    console.info(TAG + "canAddInput FAILED" + canAddInput.errorCode);
-    expect().assertFail();
-  }
-  console.info(TAG + "canAddInput: " + canAddInput.isAddInput);
-  if (canAddInput.isAddInput) {
-    let ret = cameraObj.sessionAddInput();
-    if (ret != 0) {
-      console.error(TAG + "addInput FAILED" + ret);
-      expect().assertFail();
-    }
-  } else {
-    expect().assertFail();
-  }
-}
-
-function addPreviewOutput() {
-  let canAddPreviewOutput = cameraObj.oHCaptureSessionCanAddPreviewOutput(Parameter_Setting.ALL_PARAMETER_OK);
-  if (canAddPreviewOutput.errorCode != 0) {
-    console.error(TAG + "canAddPreviewOutput FAILED" + canAddPreviewOutput.errorCode);
-    expect().assertFail();
-  }
-  console.info(TAG + "canAddPreviewOutput: " + canAddPreviewOutput.isAddPreviewOutput);
-  if (canAddPreviewOutput.isAddPreviewOutput) {
-    let ret = cameraObj.sessionAddPreviewOutput();
-    if (ret != 0) {
-      console.error(TAG + "addPreviewOutput FAILED" + ret);
-      expect().assertFail();
-    }
-  } else {
-    expect().assertFail();
-  }
-}
 
 let getPermissions1 = () => {
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
@@ -320,177 +186,39 @@ let getPermissions2 = () => {
   })
 }
 
-function sleep1(ms: number) {
-  return new Promise<number>(resolve => setTimeout(resolve, ms));
+let getPermissions3 = () => {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let permissions: Array<Permissions> = ['ohos.permission.READ_MEDIA'];
+  atManager.requestPermissionsFromUser(getContext(), permissions).then((data: PermissionRequestResult) => {
+    console.info('data:' + JSON.stringify(data))
+    console.info('data permissions:' + data.permissions)
+  }).catch((err: BusinessError) => {
+    console.info('data:' + JSON.stringify(err))
+  })
+}
+
+let getPermissions4 = () => {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let permissions: Array<Permissions> = ['ohos.permission.WRITE_MEDIA'];
+  atManager.requestPermissionsFromUser(getContext(), permissions).then((data: PermissionRequestResult) => {
+    console.info('data:' + JSON.stringify(data))
+    console.info('data permissions:' + data.permissions)
+  }).catch((err: BusinessError) => {
+    console.info('data:' + JSON.stringify(err))
+  })
 }
 
 let driveFn = async () => {
   let dr = Driver.create();
-  await sleep1(500);
+  await sleep(500);
   let power = await dr?.waitForComponent(ON.text('允许', MatchPattern.EQUALS), 500);
-  await sleep1(500);
+  await sleep(500);
   await power?.click();
-  await sleep1(500);
+  await sleep(500);
 }
 
-function isEmpty(data: cameraObj.cameraInfo | number) {
-  if (data == null || data == undefined) {
-    return true;
-  }
-  return false;
-}
-
-function getPreviewOutputActiveProfile() {
-  getCameraManagerInstance();
-  createCaptureSession();
-  getSupportedCamerasInstance();
-  getSupportedCameraOutputCapability();
-  getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
-  setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
-  setSessionMode();
-  createPreviewOutput();
-  createCameraInput();
-  sessionBeginConfig();
-  addInput();
-  addPreviewOutput();
-  let ret = cameraObj.oHPreviewOutputGetActiveProfile(Parameter_Setting.ALL_PARAMETER_OK);
-  if (ret != 0) {
-    console.error(TAG + "getPreviewOutputActiveProfile FAILED");
-    expect().assertFail();
-  }
-}
-
-function getPhotoOutputActiveProfile() {
-  getCameraManagerInstance();
-  createCaptureSession();
-  getSupportedCamerasInstance();
-  getSupportedCameraOutputCapability();
-  createPreviewOutput();
-  createCameraInput();
-  sessionFlow();
-  createPhotoOutput();
-  addPhotoOutput();
-  let ret = cameraObj.oHPhotoOutputGetActiveProfile(Parameter_Setting.ALL_PARAMETER_OK);
-  if (ret != 0) {
-    console.error(TAG + "getPhotoOutputActiveProfile FAILED");
-    expect().assertFail();
-  }
-}
-
-function getVideoOutputGetActiveProfile() {
-  getCameraManagerInstance();
-  createCaptureSession();
-  getSupportedCamerasInstance();
-  getSupportedCameraOutputCapability();
-  getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
-  setSceneMode(Camera_SceneMode.NORMAL_VIDEO);
-  setSessionMode();
-  createPreviewOutput();
-  createCameraInput();
-  sessionFlow();
-  createPhotoOutput();
-  addPhotoOutput();
-  createVideoOutput();
-  addVideoOutput();
-  let ret = cameraObj.oHVideoOutputGetActiveProfile(Parameter_Setting.ALL_PARAMETER_OK);
-  if (ret != 0) {
-    console.error(TAG + "oHVideoOutputGetActiveProfile FAILED");
-    expect().assertFail();
-  }
-}
-
-function captureSessionPreconfig() {
-  getCameraManagerInstance();
-  getSupportedCamerasInstance();
-  createCaptureSession();
-  getSupportedCameraOutputCapability();
-  let canPreconfig = cameraObj.oHCaptureSessionCanPreconfig(Camera_PreconfigType.PRECONFIG_720P,
-    Parameter_Setting.ALL_PARAMETER_OK);
-  console.info(TAG+"canPreconfig: " + canPreconfig.canPreconfig);
-  if (!canPreconfig.canPreconfig) {
-    expect(canPreconfig.canPreconfig).assertEqual(false);
-  } else {
-    let preconfig = cameraObj.oHCaptureSessionPreconfig(Camera_PreconfigType.PRECONFIG_720P,
-      Parameter_Setting.ALL_PARAMETER_OK);
-    console.info(TAG+"captureSessionPreconfig:"+preconfig)
-    expect(preconfig).assertEqual(CAMERA_OK);
-  }
-  return canPreconfig.canPreconfig;
-}
-
-function createPhotoOutputUsedInPreconfig(canPreconfig: boolean) {
-  if (!canPreconfig) {
-    createPhotoOutput();
-  } else {
-    let photoOutput = cameraObj.oHCameraManagerCreatePhotoOutputUsedInPreconfig(mPhotoSurface,
-      Parameter_Setting.ALL_PARAMETER_OK);
-    if (photoOutput != 0) {
-      console.error(TAG + "createPhotoOutputUsedInPreconfig FAILED");
-      expect().assertFail();
-    }
-  }
-}
-
-function createPreviewOutputUsedInPreconfig(canPreconfig: boolean) {
-  if (!canPreconfig) {
-    createPreviewOutput();
-  } else {
-    let previewOutput =
-      cameraObj.oHCameraManagerCreatePreviewOutputUsedInPreconfig(Parameter_Setting.ALL_PARAMETER_OK);
-    if (previewOutput != 0) {
-      console.error(TAG + "createPreviewOutputUsedInPreconfig FAILED");
-      expect().assertFail();
-    }
-  }
-}
-
-function createVideoOutputUsedInPreconfig(canPreconfig: boolean) {
-  if (!canPreconfig) {
-    createVideoOutput();
-  } else {
-    let videoOutput = cameraObj.oHCameraManagerCreateVideoOutputUsedInPreconfig(videoSurfaceId,
-      Parameter_Setting.ALL_PARAMETER_OK);
-    if (videoOutput != 0) {
-      console.error(TAG + "createVideoOutputUsedInPreconfig FAILED");
-      expect().assertFail();
-    }
-  }
-}
-
-function addPhotoOutput() {
-  let canAddPhotoOutput = cameraObj.oHCaptureSessionCanAddPhotoOutput(Parameter_Setting.ALL_PARAMETER_OK);
-  if (canAddPhotoOutput.errorCode != 0) {
-    console.error(TAG + "canAddPhotoOutput FAILED" + canAddPhotoOutput.errorCode);
-    expect().assertFail();
-  }
-  console.info(TAG + "canAddPhotoOutput: " + canAddPhotoOutput.isAddPhotoOutput);
-  if (!canAddPhotoOutput.isAddPhotoOutput) {
-    console.error(TAG + "addPhotoOutput FAILED");
-  } else {
-    let addPhotoOutput = cameraObj.sessionAddPhotoOutput();
-    if (addPhotoOutput != 0) {
-      console.error(TAG + "addPhotoOutput FAILED" + addPhotoOutput);
-      expect().assertFail();
-    }
-  }
-}
-
-function addVideoOutput() {
-  let canAddVideoOutput = cameraObj.oHCaptureSessionCanAddVideoOutput(Parameter_Setting.ALL_PARAMETER_OK);
-  if (canAddVideoOutput.errorCode != 0) {
-    console.error(TAG + "canAddVideoOutput FAILED" + canAddVideoOutput.errorCode);
-    expect().assertFail();
-  }
-  console.info(TAG + "canAddVideoOutput: " + canAddVideoOutput.isAddVideoOutput);
-  if (!canAddVideoOutput.isAddVideoOutput) {
-    console.error(TAG + "addVideoOutput FAILED");
-  } else {
-    let addVideoOutput = cameraObj.sessionAddVideoOutput();
-    if (addVideoOutput != 0) {
-      console.error(TAG + "addVideoOutput FAILED" + addVideoOutput);
-      expect().assertFail();
-    }
-  }
+function sleep(ms: number) {
+  return new Promise<number>(resolve => setTimeout(resolve, ms));
 }
 
 function isVideoMirrorSupported() {
@@ -505,102 +233,126 @@ function enableVideoMirror() {
   }
 }
 
-function releaseCamera() {
-  let ret = cameraObj.releaseCamera();
+function createCaptureSession() {
+  console.info(TAG + "createCaptureSession start.");
+  let ret = cameraObj.createSession();
   if (ret != 0) {
-    console.error(TAG + "releaseCamera FAILED");
+    console.error(TAG + "createCaptureSession FAILED");
     expect().assertFail();
   }
 }
 
-function sleep(ms: number): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, ms));
+function beginConfig() {
+  console.info(TAG + "Entering beginConfig start");
+  cameraObj.sessionBegin();
+  console.info(TAG + "Entering beginConfig end");
+  return true;
+}
+
+async function createCameraInput() {
+  console.info(TAG + "createCameraInput start.");
+  let ret = cameraObj.createCameraInput();
+  if (ret != 0) {
+    console.error(TAG + "createCameraInput FAILED");
+    expect().assertFail();
+  }
+  console.info(TAG + "cameraInputOpen start.");
+  cameraObj.cameraInputOpen();
+  console.info(TAG + "cameraInputOpen end.");
+}
+
+async function startCameraSession() {
+  console.info(TAG + "Enter startCameraSession");
+
+  if (cameraObj.sessionAddInput()) {
+    console.info(TAG + "addInput FAILED");
+    expect().assertFail();
+  }
+
+  if (cameraObj.sessionAddPreviewOutput()) {
+    console.info(TAG + "addPreviewOutput FAILED");
+    expect().assertFail();
+  }
+
+  if (cameraObj.sessionAddVideoOutput()) {
+    console.info(TAG + "addVideoOutput FAILED");
+    expect().assertFail();
+  }
+
+  if (cameraObj.sessionCommitConfig()) {
+    console.info(TAG + "CommitConfig FAILED");
+    expect().assertFail();
+  }
+
+  if (cameraObj.sessionStart()) {
+    console.info(TAG + "sessionStart FAILED");
+    expect().assertFail();
+  }
+  console.info(TAG + "Exit startCameraSession");
+
+  return true;
 }
 
 export default function VideoMirrorTest() {
   describe('VideoMirrorTest', () => {
-    // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeAll(async (done: Function) => {
-      await sleep(3000);
+    console.info(TAG + '----------VideoMirrorTest--------------');
+    beforeAll(async () => {
+      await sleep(10000);
       await getPermissions1();
       await driveFn();
       await getPermissions2();
       await driveFn();
-      await getPhotoReceiverSurface();
-      await getVideoSurfaceId();
       await sleep(10000);
-      done();
-    })
-    beforeEach(() => {
-      // Presets an action, which is performed before each unit test case starts.
-      // The number of execution times is the same as the number of test cases defined by **it**.
-      // This API supports only one parameter: preset action function.
-    })
-    afterEach(async (done: Function) => {
-      releaseCamera();
-      await sleep(300);
-      done();
-      // Presets a clear action, which is performed after each unit test case ends.
-      // The number of execution times is the same as the number of test cases defined by **it**.
-      // This API supports only one parameter: clear action function.
-    })
-    afterAll(() => {
-      // Presets a clear action, which is performed after all test cases of the test suite end.
-      // This API supports only one parameter: clear action function.
-    })
-
-    /**
-     * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHVideoOutputEnableMirror0100
-     * @tc.name       : testOHVideoOutputEnableMirror0100
-     * @tc.size       : MediumTest
-     * @tc.desc       : Test OH_VideoOutput_ENABLEMIRROR
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testOHVideoOutputEnableMirror0100', 0, () => {
+      console.info(TAG + 'Device type = ' + deviceInfo.deviceType);
+      console.info(TAG + 'beforeAll case');
+    });
+    beforeEach(async () => {
       getCameraManagerInstance();
+      getCameraSupportDevicesArray();
       createCaptureSession();
-      getSupportedCamerasInstance();
-      getSupportedCameraOutputCapability();
-      getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
-      setSceneMode(Camera_SceneMode.NORMAL_VIDEO);
-      setSessionMode();
-      createPreviewOutput();
-      createCameraInput();
-      sessionFlow();
-      createPhotoOutput();
-      addPhotoOutput();
-      createVideoOutput();
-      addVideoOutput();
+      beginConfig();
+      await createCameraInput();
+      await getVideoSurfaceId();
+      await createOutput();
+      await startCameraSession();
+      console.info('beforeEach case');
+    });
+    afterEach(async () => {
+      console.info('afterEach case');
+    });
+    afterAll(() => {
+      console.info('afterAll case');
+    });
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_OHVideoOutputEnableMirror001
+     * @tc.name      : Check videoOutput Mirror enable
+     * @tc.desc      : Check videoOutput Mirror enable
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testOHVideoOutputEnableMirror001', 2, async () => {
+      console.info(TAG + "--------------testOHVideoOutputEnableMirror001--------------");
       if (isVideoMirrorSupported()) {
         enableVideoMirror();
       }
-    })
+      await stopCameraSession();
+      console.info(TAG + "testOHVideoOutputEnableMirror001 success");
+    });
     /**
-     * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHVideoOutputIsMirrorSupported0100
-     * @tc.name       : testOHVideoOutputIsMirrorSupported0100
-     * @tc.size       : MediumTest
-     * @tc.desc       : Test OH_VideoOutput_VideoOutputIsMirrorSupported
-     * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_OHVideoOutputIsMirrorSupported001
+     * @tc.name      : Check whether videoOutput mirror is supported
+     * @tc.desc      : Check whether videoOutput mirror is supported
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it('testOHVideoOutputIsMirrorSupported0100', 0, () => {
-      getCameraManagerInstance();
-      createCaptureSession();
-      getSupportedCamerasInstance();
-      getSupportedCameraOutputCapability();
-      getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
-      setSceneMode(Camera_SceneMode.NORMAL_VIDEO);
-      setSessionMode();
-      createPreviewOutput();
-      createCameraInput();
-      sessionFlow();
-      createPhotoOutput();
-      addPhotoOutput();
-      createVideoOutput();
-      addVideoOutput();
+    it('testOHVideoOutputIsMirrorSupported001', 2, async () => {
+      console.info(TAG + "--------------testOHVideoOutputIsMirrorSupported001--------------");
       let isSupported = isVideoMirrorSupported();
-      console.info(TAG + "testOHVideoOutputIsMirrorSupported0100 isMirrorSupported:" + isSupported);
-    })
+      console.info(TAG + "testOHVideoOutputIsMirrorSupported001 isMirrorSupported:" + isSupported);
+      await stopCameraSession();
+      console.info(TAG + "testOHVideoOutputIsMirrorSupported001 success");
+    });
   })
 }
