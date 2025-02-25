@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Copyright (c) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -12,14 +12,21 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
-group("UDMFtest") {
+
+ohos_app_assist_suite("ActsUDMFndktestProgress") {
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "UDMFndktestHvigor:ActsUDMFNdkTest",
-      "UDMFtest:UDMF_ets_test",
-      "UDMFwithOutPermissiontest:UDMF_drag_ets_test",
-      "UDMFwithPermissiontest:UDMF_drag_test",
-    ]
-  }
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsUDMFndktestProgress"
+  part_name = "udmf"
+  subsystem_name = "distributeddatamgr"
+}
+
+ohos_js_app_suite("ActsUDMFndktestProgressBarTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsUDMFndktestProgressBarTest"
+  part_name = "udmf"
+  subsystem_name = "distributeddatamgr"
+  deps = [ ":ActsUDMFndktestProgress" ]
 }
