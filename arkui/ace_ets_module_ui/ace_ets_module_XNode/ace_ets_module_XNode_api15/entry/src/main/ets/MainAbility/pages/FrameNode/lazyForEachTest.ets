@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { ExpandMode } from "@kit.ArkUI";
+import { ExpandMode } from '@kit.ArkUI';
 
 class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
@@ -145,7 +145,7 @@ struct lazyForEachTest {
                     Row() {
                       Text(item1).fontSize(20).id(item1)
                         .onAppear(() => {
-                          console.info("appear:" + item1)
+                          console.info('appear:' + item1)
                         })
                     }.margin({ left: 10, right: 10 })
                   }.id('LazyForEachListItem_' + item1)
