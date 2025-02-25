@@ -67,38 +67,16 @@ struct cameraFormat {
   }
 
   private setPreviewRotation() {
-    let o = display.getDefaultDisplaySync().rotation;
-    let rotation = 0;
-    switch (o) {
-      case 0:
-        rotation = 90;
-        if (this.cameraDeviceIndex == 1) { //前置反向
-          rotation = 270;
-        }
-        break;
-      case 1:
-        rotation = 180;
-        if (this.cameraDeviceIndex == 1) {
-          rotation = 0;
-        }
-        break;
-      case 2:
-        rotation = 270;
-        if (this.cameraDeviceIndex == 1) {
-          rotation = 90;
-        }
-        break;
-      case 3:
-        rotation = 0;
-        if (this.cameraDeviceIndex == 1) {
-          rotation = 180;
-        }
-        break;
-    }
-    if (this.last_rotation != rotation) {
-      this.last_rotation = rotation;
-      CameraService.setPreviewRotation(rotation);
-    }
+    let initDisplayRotation = display.getDefaultDisplaySync().rotation;
+    let initPreviewRotation = CameraService.previewOutput.getPreviewRotation(initDisplayRotation * camera.ImageRotation.ROTATION_90);
+    CameraService.previewOutput.setPreviewRotation(initPreviewRotation, false);
+    display.off('change');
+    display.on('change', () => {
+      initDisplayRotation = display.getDefaultDisplaySync().rotation;
+      let imageRotation = initDisplayRotation * camera.ImageRotation.ROTATION_90;
+      let previewRotation = CameraService.previewOutput.getPreviewRotation(imageRotation);
+      CameraService.previewOutput.setPreviewRotation(previewRotation, false);
+    });
   }
 
   onPageHide() {
