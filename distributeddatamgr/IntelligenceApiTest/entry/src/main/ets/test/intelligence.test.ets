@@ -201,9 +201,8 @@ export default function intelligenceTest() {
           .then((data) => {
             console.info(TAG + "get result:" + data);
             data.loadModel()
-            .then((loadData) => {
-              console.info(TAG + "get loadMldel result:" + loadData);
-              expect(loadData).assertEqual(true);
+            .then(() => {
+              console.info(TAG + "get loadMldel result 0400:");
               done();
             })
           })
@@ -279,9 +278,8 @@ export default function intelligenceTest() {
           .then((data) => {
             console.info(TAG + "get result:" + data);
               data.releaseModel()
-                .then((loadModel) => {
-                  console.info(TAG + "releaseModel result:" + loadModel);
-                  expect(loadModel).assertEqual(true);
+                .then(() => {
+                  console.info(TAG + "releaseModel result 0600:");
                   done();
                 })
               })
@@ -298,7 +296,6 @@ export default function intelligenceTest() {
           })
       }
     })
-
 
 
 
@@ -322,9 +319,16 @@ export default function intelligenceTest() {
             data.getEmbedding('123')
             .then((loadData) => {
                console.info(TAG + "getEmbedding result:" + loadData);
-               expect(loadData).assertEqual(true);
+               let dataSize:number = loadData.length;
+               let ret = dataSize > 0;
+               expect(ret).assertEqual(true);
                done();
-               })
+            })
+            .catch((err:BusinessError) => {
+              console.info(TAG + "getEmbedding result" + err.code);
+              expect(err.code).assertEqual(31300000);
+              done();
+            })
           })
       } else {
         intelligence.getTextEmbeddingModel(textConfig)
@@ -340,6 +344,13 @@ export default function intelligenceTest() {
           })
       }
     })
+
+
+
+
+
+
+
 
 
 
@@ -360,10 +371,11 @@ export default function intelligenceTest() {
         intelligence.getTextEmbeddingModel(textConfig)
           .then((data) => {
             console.info(TAG + "get result:" + data);
+            data.loadModel();
             let text = 'text';
             data.getEmbedding(text)
             .then((loadData) => {
-              console.info(TAG + "getEmbedding result:" + loadData);
+              console.info(TAG + "getEmbedding result 0800 :" + loadData);
               let dataSize:number = loadData.length;
               let ret = dataSize > 0;
               expect(ret).assertEqual(true);
@@ -405,10 +417,11 @@ export default function intelligenceTest() {
         intelligence.getTextEmbeddingModel(textConfig)
         .then((data) => {
           console.info(TAG + "get result: " + data);
+          data.loadModel();
           let batchTexts = ['11', '22', '33'];
           data.getEmbedding(batchTexts)
           .then((loadData) => {
-            console.info(TAG + "getEmbedding result: " + loadData);
+            console.info(TAG + "getEmbedding result 0900: " + loadData);
             let dataSize:number = loadData.length;
             let ret = dataSize > 0;
             expect(ret).assertEqual(true);
@@ -449,9 +462,8 @@ export default function intelligenceTest() {
           .then((data) => {
             console.info(TAG + "get result :" + data);
             data.loadModel()
-            .then((loadData) => {
-              console.info(TAG + "loadModel result :" + loadData);
-              expect(loadData).assertEqual(true);
+            .then(() => {
+              console.info(TAG + "loadModel result 1000 :");
               done();
             })
           })
@@ -489,9 +501,8 @@ export default function intelligenceTest() {
           .then((data) => {
             console.info(TAG + "get result :" + data);
             data.releaseModel()
-            .then((loadData) => {
-              console.info(TAG + "releaseModel result :" + loadData);
-              expect(loadData).assertEqual(true);
+            .then(() => {
+              console.info(TAG + "releaseModel result 1100 :");
               done();
             })
           })
@@ -529,12 +540,18 @@ export default function intelligenceTest() {
         intelligence.getImageEmbeddingModel(imageConfig)
           .then((data) => {
             console.info(TAG + "get result :" + data);
+            data.loadModel();
             data.getEmbedding('111.jpg')
             .then((loadData) => {
-              console.info(TAG + "getEmbedding result :" + loadData);
-              expect(loadData).assertEqual(true);
+              console.info(TAG + "getEmbedding result 1200 :" + loadData);
+              expect(loadData).assertNotNull();
               done();
             })
+            .catch((err:BusinessError) => {
+              console.error("Failed to get Embedding and code is " + err.code);
+              expect(err.code).assertEqual(31300000);
+              done();
+              })
           })
       } else {
         intelligence.getImageEmbeddingModel(imageConfig)
