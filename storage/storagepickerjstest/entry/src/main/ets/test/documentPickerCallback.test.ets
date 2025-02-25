@@ -16,6 +16,7 @@
 import { afterEach, describe, expect, it } from 'deccjsunit/index';
 import { sleep, startAbility, stopAbility } from './Common';
 import picker from '@ohos.file.picker';
+import { TestType, Size, Level } from '@ohos/hypium';
 
 export default function documentPickerCallback(abilityContext: Context) {
   describe("documentPickerCallback", () => {
