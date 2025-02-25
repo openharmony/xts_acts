@@ -2564,5 +2564,141 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
         }
       }
     })
+    /**
+     * @tc.number    : test_setSupportedWindowModes_0100
+     * @tc.name      : test_setSupportedWindowModes_0100
+     * @tc.desc      : Test the function value of setWindowTitleMoveEnabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+  it('test_setSupportedWindowModes_0100', 0, async (done: Function) => {
+     const message = 'test_setSupportedWindowModes_0100';
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        await windowClass.setUIContent('testability/pages/Index');
+        await sleep(1000);
+          let windowStageStart = await startAbility(message, context);
+          let promise = windowStageStart.setSupportedWindowModes([
+            bundleManager.SupportWindowMode.FULL_SCREEN,
+            bundleManager.SupportWindowMode.SPLIT, 
+            bundleManager.SupportWindowMode.FLOATING
+            ]);
+          promise.then(async () => {
+            console.info(message+' Succeed in setting window support modes');
+            await terminateAbilityCycle('afterEach')
+            expect(true).assertTrue();
+            done();
+          }).catch((err:BusinessError) =>{
+              console.error(`${message} Failed to set window support modes. Cause code: ${err.code}, messege:${err.message}`);
+            if (err.code == 801) {
+              console.error(`The device not support setSupportedWindowModes`);
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          })
+      } catch (err) {
+        console.error(`${message} Failed to set window support modes 2. Cause code: ${err.code}, messege:${err.message}`);
+        expect().assertFail();
+        done();
+      };
+    });
+/**
+     * @tc.number    : test_createSubWindowWithOptions_windowRect_0100
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_0100
+     * @tc.desc      : Test the function value of createSubWindowWithOptions
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_createSubWindowWithOptions_windowRect_0100', 0, async (done: Function) => {
+      let message = 'test_createSubWindowWithOptions_windowRect_0100';
+      try {
+        let mainWindow = windowStage.getMainWindowSync();
+        let windowLimits = mainWindow.getWindowLimits();
+        let options: window.SubWindowOptions = {
+          title: 'title',
+          decorEnabled: false,
+          windowRect: {
+            left: -100,
+            top: -100,
+            width: Number(windowLimits.minWidth),
+            height: Number(windowLimits.minHeight)
+          }
+        };
+        let promise = windowStage.createSubWindowWithOptions('test_createSubWindowWithOptions_windowRect_0100', options);
+        promise.then(async (data) => {
+          let subWindowClass = data;
+          await subWindowClass.loadContentByName('../testability/pages/newPage');
+          await subWindowClass.showWindow();
+          console.info(message+' succeed in create the subwindow');
+          await subWindowClass.destroyWindow();
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to create the subwindow, promise cause code ${err.code}, message ${err.message} `)
+          if (err.code == 801) {
+            console.error(`The device not support createSubWindowWithOptions`);
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+          
+        });
+      } catch (err) {
+        console.error(`Failed to create the subwindow, Cause code ${err.code}, message ${err.message} `);
+        if (err.code == 801) {
+          console.error(`The device not support getWindowLimits`);
+          done();
+        } else {
+          expect().assertFail();
+          done();
+        }
+      };
+    });
+/**
+     * @tc.number    : test_on_windowWillClose_0100
+     * @tc.name      : test_on_windowWillClose_0100
+     * @tc.desc      : Test the function value of windowWillClose
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_on_windowWillClose_0100', 0, async (done: Function) => {
+      let message = 'test_on_windowWillClose_0100';
+      let windowClass = windowStage.getMainWindowSync();
+      let result: boolean = false;
+      const callback = () => {
+        return new Promise<boolean>((resolve, reject) => {
+          result = true;
+          resolve(result);
+        });
+      }
+      try {
+        windowClass.on('windowWillClose', callback);
+        let driver: Driver = Driver.create()
+        let button = await driver.findComponent(ON.id('EnhanceCloseBtn'))
+        await button.click();
+        await sleep(1000);
+        windowClass.off('windowWillClose');
+        windowClass.recover();
+        expect(result).assertEqual(true);
+        done();
+      } catch (err) {
+        console.error(`Failed to register callback, Cause code ${err.code}, message ${err.message} `);
+        if (err.code == 801) {
+          console.error(`The device not support on(windowWillClose)`);
+          done();
+        } else {
+          expect().assertFail();
+          done();
+        };
+        
+        };
+    });
+
   })
 }
