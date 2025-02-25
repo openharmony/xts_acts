@@ -35,7 +35,7 @@ export default class MyAbilityStage extends AbilityStage {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityStage onPrepareTermination');
     return AbilityConstant.PrepareTermination.TERMINATE_IMMEDIATELY
   }
-  async onPrepareTerminationSync(): Promise<AbilityConstant.PrepareTermination>{
+  async onPrepareTerminationAsync(): Promise<AbilityConstant.PrepareTermination>{
     hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityStage onPrepareTerminationSync');
     return AbilityConstant.PrepareTermination.CANCEL
   }
