@@ -62,7 +62,7 @@ struct ExpectedFrameRateRange {
                 this.minText = this.minNumber + '';
                 this.expectedText = this.expectedNumber + '';
                 this.maxText = this.maxNumber + '';
-                console.info("custom animate done")
+                console.info('custom animate done')
               },
             }, [
             {
