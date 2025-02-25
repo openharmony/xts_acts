@@ -24,7 +24,7 @@ group("testfwk") {
   else{
     deps = [
       "uitest:ActsUiTest",
-      "uitest_quarantine:ActsUiTestQuar",
+      "uitest_quarantine:ActsUiTestQuarTest",
       "uitestScene:ActsUiTestScene",
     ]
   }
