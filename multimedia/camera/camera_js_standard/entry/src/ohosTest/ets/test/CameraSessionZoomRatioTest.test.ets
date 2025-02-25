@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
@@ -24,6 +23,7 @@ import { Driver, MatchPattern, ON } from '@ohos.UiTest';
 import { surfaceIds } from '../testability/pages/Index';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
+import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
 
 const TAG = "CameraSessionZoomRatioTest: ";
 
@@ -253,11 +253,11 @@ export default function cameraSessionZoomRatioTest() {
   let createCameraSessionInstance = () => {
     console.info('Enter createCameraSessionInstance');
 
-     try {
-       mCameraSession = mCameraManager.createSession(cameraObj.SceneMode.NORMAL_PHOTO);
-     } catch {
-       console.info('createCaptureSession FAILED');
-     }
+    try {
+      mCameraSession = mCameraManager.createSession(cameraObj.SceneMode.NORMAL_PHOTO);
+    } catch {
+      console.info('createCaptureSession FAILED');
+    }
 
     if (isEmpty(mCameraSession)) {
       console.info(TAG + "createCaptureSession FAILED");
@@ -947,6 +947,203 @@ export default function cameraSessionZoomRatioTest() {
         done();
       }
     })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SUPPORTED_COLOR_SPACES_0100
+     * @tc.name      : Check camera session get supported color sapaces 
+     * @tc.desc      : Check camera session get supported color sapaces
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_SUPPORTED_COLOR_SPACES_0100', 2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_SUPPORTED_COLOR_SPACES_0100--------------");
 
+        if (mCameraNum == 0) {
+            console.info(TAG +
+            "Entering SUB_MULTIMEDIA_CAMERA_SUPPORTED_COLOR_SPACES_0100 FAILED with NoCamera");
+            expect().assertFail();
+            done();
+        } else {
+            for (let i = 0; i < mCameraNum; i++) {
+                console.info(TAG +
+                    "Entering SUB_MULTIMEDIA_CAMERA_SUPPORTED_COLOR_SPACES_0100 start for camera[" + i + "]");
+                  if (!isEmpty(mZoomRatioRangeArray[i])) {
+                    await startCameraSession(i);
+                    let colorSpaces: Array<colorSpaceManager.ColorSpace> = [];
+                    try {
+                        colorSpaces = mCameraSession.getSupportedColorSpaces();  
+                        console.info(TAG + "Entering get Supported Color Spaces ype: " + colorSpaces);
+                        expect(isEmpty(colorSpaces)).assertTrue();
+                    } catch (error) {
+                        
+                        expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+                        console.error("The getSupportedColorSpaces call failed. error code: "+error.code);
+                    }
+                    await stopCameraSession();
+                  }
+            }
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SUPPORTED_COLOR_SPACES_0100 ends here");
+            done();
+        }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_COLOR_MANAGEMENT_COLOR_SPACE_0100
+     * @tc.name      : Check camera session set color  sapace 
+     * @tc.desc      : Check camera session set color  sapace 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_COLOR_MANAGEMENT_COLOR_SPACE_0100', 2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_COLOR_MANAGEMENT_COLOR_SPACE_0100--------------");
+
+        if (mCameraNum == 0) {
+            console.info(TAG +
+            "Entering SUB_MULTIMEDIA_CAMERA_COLOR_MANAGEMENT_COLOR_SPACE_0100 FAILED with NoCamera");
+            expect().assertFail();
+            done();
+        } else {
+            for (let i = 0; i < mCameraNum; i++) {
+                console.info(TAG +
+                    "Entering SUB_MULTIMEDIA_CAMERA_COLOR_MANAGEMENT_COLOR_SPACE_0100 start for camera[" + i + "]");
+                  if (!isEmpty(mZoomRatioRangeArray[i])) {
+                    await startCameraSession(i);
+                    let colorSpaces: Array<colorSpaceManager.ColorSpace> = [];
+                    try {
+                        colorSpaces = mCameraSession.getSupportedColorSpaces();  
+                        console.info(TAG + "Entering get Supported Color Spaces ype: " + colorSpaces);
+                        mCameraSession.setColorSpace(colorSpaces[0]);
+                    } catch (error) {
+                        expect(error.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
+                        expect(error.code == cameraObj.CameraErrorCode.OPERATION_NOT_ALLOWED).assertTrue();
+                        expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+                        expect(error.code == cameraObj.CameraErrorCode.SERVICE_FATAL_ERROR).assertTrue();
+                        console.error("The setSupportedColorSpace call failed. error code: "+error.code);
+                    }
+                    await stopCameraSession();
+                  }
+            }
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_COLOR_MANAGEMENT_COLOR_SPACE_0100 ends here");
+            done();
+        }
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_COLOR_MANAGEMENT_COLOR_SPACE_0200
+     * @tc.name      : Check camera session get color  sapace 
+     * @tc.desc      : Check camera session get color  sapace 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_COLOR_MANAGEMENT_COLOR_SPACE_0200', 2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_COLOR_MANAGEMENT_COLOR_SPACE_0200--------------");
+
+        if (mCameraNum == 0) {
+            console.info(TAG +
+            "Entering SUB_MULTIMEDIA_CAMERA_COLOR_MANAGEMENT_COLOR_SPACE_0200 FAILED with NoCamera");
+            expect().assertFail();
+            done();
+        } else {
+            for (let i = 0; i < mCameraNum; i++) {
+                console.info(TAG +
+                    "Entering SUB_MULTIMEDIA_CAMERA_COLOR_MANAGEMENT_COLOR_SPACE_0200 start for camera[" + i + "]");
+                  if (!isEmpty(mZoomRatioRangeArray[i])) {
+                    await startCameraSession(i);
+                    let colorSpace: colorSpaceManager.ColorSpace | undefined = undefined;
+                    try {
+                        colorSpace = mCameraSession.getActiveColorSpace();
+                        expect(!isEmpty(colorSpace)).assertTrue();
+                        console.info(TAG + "Entering get Active Color Space type: " + colorSpace);
+                    } catch (error) {
+                        expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+                        console.error("The getSupportedColorSpace call failed. error code: "+error.code);
+                    }
+                    await stopCameraSession();
+                  }
+            }
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_COLOR_MANAGEMENT_COLOR_SPACE_0200 ends here");
+            done();
+        }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_AUTO_DEVICE_SWITCH_SUPPORTED_0100
+     * @tc.name      : Check camera session Auto Device  Switch Supported 
+     * @tc.desc      : Check camera session Auto Device  Switch Supported  
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_AUTO_DEVICE_SWITCH_SUPPORTED_0100', 2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_AUTO_DEVICE_SWITCH_SUPPORTED_0100--------------");
+
+        if (mCameraNum == 0) {
+            console.info(TAG +
+            "Entering SUB_MULTIMEDIA_CAMERA_AUTO_DEVICE_SWITCH_SUPPORTED_0100 FAILED with NoCamera");
+            expect().assertFail();
+            done();
+        } else {
+            for (let i = 0; i < mCameraNum; i++) {
+                console.info(TAG +
+                    "Entering SUB_MULTIMEDIA_CAMERA_AUTO_DEVICE_SWITCH_SUPPORTED_0100 start for camera[" + i + "]");
+                  if (!isEmpty(mZoomRatioRangeArray[i])) {
+                    await startCameraSession(i);
+                    let isSupported = false;
+                    try {
+                        isSupported = mCameraSession.isAutoDeviceSwitchSupported();
+                        console.info(TAG + "Entering Auto Device  Switch Supported Bool: " + isSupported);
+                    } catch (error) {
+                        expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+                        console.error("The isAutoDeviceSwitchSupported call failed. error code: "+error.code);
+                    }
+                    await stopCameraSession();
+                  }
+            }
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_AUTO_DEVICE_SWITCH_SUPPORTED_0100 ends here");
+            done();
+        }
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENABLE_AUTO_DEVICE_SWITCH_0100
+     * @tc.name      : Check camera session Enable Auto Device  Switch Supported 
+     * @tc.desc      : Check camera session Enable Auto Device  Switch Supported  
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_ENABLE_AUTO_DEVICE_SWITCH_0100', 2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_ENABLE_AUTO_DEVICE_SWITCH_0100--------------");
+
+        if (mCameraNum == 0) {
+            console.info(TAG +
+            "Entering SUB_MULTIMEDIA_CAMERA_ENABLE_AUTO_DEVICE_SWITCH_0100 FAILED with NoCamera");
+            expect().assertFail();
+            done();
+        } else {
+            for (let i = 0; i < mCameraNum; i++) {
+                console.info(TAG +
+                    "Entering SUB_MULTIMEDIA_CAMERA_ENABLE_AUTO_DEVICE_SWITCH_0100 start for camera[" + i + "]");
+                  if (!isEmpty(mZoomRatioRangeArray[i])) {
+                    await startCameraSession(i);
+                    let isEnable = true;
+                    let isSupported = false;
+                    try {
+                        mCameraSession.enableAutoDeviceSwitch(isEnable);
+                        isSupported = mCameraSession.isAutoDeviceSwitchSupported();
+                        console.info(TAG + "Entering Auto Device  Switch Supported Bool: " + isSupported);
+                    } catch (error) {
+                        expect(error.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
+                        expect(error.code == cameraObj.CameraErrorCode.OPERATION_NOT_ALLOWED).assertTrue();
+                        expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+                        console.error("The enableAutoDeviceSwitch call failed. error code: "+error.code);
+                    }
+                    await stopCameraSession();
+                  }
+            }
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENABLE_AUTO_DEVICE_SWITCH_0100 ends here");
+            done();
+        }
+    })
   })
 }
