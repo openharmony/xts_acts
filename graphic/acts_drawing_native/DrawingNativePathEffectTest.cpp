@@ -424,11 +424,11 @@ HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectNormal, TestSize.L
     OH_Drawing_PathLineTo(path2, 100.0f, 50.0f);
     // 6. OH_Drawing_CreatePathDashEffect 参数正常入参并且遍历第四个枚举参数
     OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreatePathDashEffect(path2, 50.0f, 50.0f,
-        PATH_EFFECT_TRANSLATE);
+        DRAWING_PATH_DASH_STYLE_TRANSLATE);
         EXPECT_NE(pathEffect, nullptr);
-    pathEffect = OH_Drawing_CreatePathDashEffect(path2, 50.0f, 50.0f, PATH_EFFECT_ROTATE);
+    pathEffect = OH_Drawing_CreatePathDashEffect(path2, 50.0f, 50.0f, DRAWING_PATH_DASH_STYLE_ROTATE);
     EXPECT_NE(pathEffect, nullptr);
-    pathEffect = OH_Drawing_CreatePathDashEffect(path2, 50.0f, 50.0f, PATH_EFFECT_MORPH);
+    pathEffect = OH_Drawing_CreatePathDashEffect(path2, 50.0f, 50.0f, DRAWING_PATH_DASH_STYLE_MORPH);
     EXPECT_NE(pathEffect, nullptr);
     // 7. 释放内存
     OH_Drawing_PathDestroy(path);
@@ -458,13 +458,13 @@ HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectNull, TestSize.Lev
     OH_Drawing_PathLineTo(path2, 100.0f, 50.0f);
     // 6. OH_Drawing_CreatePathDashEffect第一个参数传nullptr
     OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreatePathDashEffect(nullptr, 50.0f, 50.0f,
-        PATH_EFFECT_TRANSLATE);
+        DRAWING_PATH_DASH_STYLE_TRANSLATE);
         EXPECT_EQ(pathEffect, nullptr);
     // 7. OH_Drawing_CreatePathDashEffect第二个参数传0
-    pathEffect = OH_Drawing_CreatePathDashEffect(path2, 0, 50.0f, PATH_EFFECT_TRANSLATE);
+    pathEffect = OH_Drawing_CreatePathDashEffect(path2, 0, 50.0f, DRAWING_PATH_DASH_STYLE_TRANSLATE);
     EXPECT_EQ(pathEffect, nullptr);
     // 8. OH_Drawing_CreatePathDashEffect第三个参数传0
-    pathEffect = OH_Drawing_CreatePathDashEffect(path2, 50.0f, 0, PATH_EFFECT_TRANSLATE);
+    pathEffect = OH_Drawing_CreatePathDashEffect(path2, 50.0f, 0, DRAWING_PATH_DASH_STYLE_TRANSLATE);
     EXPECT_NE(pathEffect, nullptr);
     // 9. 释放内存
     OH_Drawing_PathDestroy(path);
@@ -494,16 +494,16 @@ HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectAbnormal, TestSize
     OH_Drawing_PathLineTo(path2, 100.0f, 50.0f);
     // 6. OH_Drawing_CreatePathDashEffect第二个参数传0xFFFFFFFF
     OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreatePathDashEffect(path2, 0xFFFFFFFF,
-        50.0f, PATH_EFFECT_TRANSLATE);
+        50.0f, DRAWING_PATH_DASH_STYLE_TRANSLATE);
         EXPECT_NE(pathEffect, nullptr);
     // 7. OH_Drawing_CreatePathDashEffect第二个参数传0.0001
-    pathEffect = OH_Drawing_CreatePathDashEffect(path2, 0.0001, 50.0f, PATH_EFFECT_TRANSLATE);
+    pathEffect = OH_Drawing_CreatePathDashEffect(path2, 0.0001, 50.0f, DRAWING_PATH_DASH_STYLE_TRANSLATE);
     EXPECT_NE(pathEffect, nullptr);
     // 8. OH_Drawing_CreatePathDashEffect第二个参数传-0.1
-    pathEffect = OH_Drawing_CreatePathDashEffect(path2, -0.1, 50.0f, PATH_EFFECT_TRANSLATE);
+    pathEffect = OH_Drawing_CreatePathDashEffect(path2, -0.1, 50.0f, DRAWING_PATH_DASH_STYLE_TRANSLATE);
     EXPECT_EQ(pathEffect, nullptr);
     // 9. OH_Drawing_CreatePathDashEffect第二个参数传-1
-    pathEffect = OH_Drawing_CreatePathDashEffect(path2, -1, 50.0f, PATH_EFFECT_TRANSLATE);
+    pathEffect = OH_Drawing_CreatePathDashEffect(path2, -1, 50.0f, DRAWING_PATH_DASH_STYLE_TRANSLATE);
     EXPECT_EQ(pathEffect, nullptr);
     // 10. 释放内存
     OH_Drawing_PathDestroy(path);
