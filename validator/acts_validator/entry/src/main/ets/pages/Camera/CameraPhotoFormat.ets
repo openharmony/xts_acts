@@ -87,7 +87,8 @@ struct cameraOrientation {
 
   private setPreviewRotation() {
     let initDisplayRotation = display.getDefaultDisplaySync().rotation;
-    let initPreviewRotation = CameraService.previewOutput.getPreviewRotation(initDisplayRotation * camera.ImageRotation.ROTATION_90);
+    let initPreviewRotation =
+      CameraService.previewOutput.getPreviewRotation(initDisplayRotation * camera.ImageRotation.ROTATION_90);
     CameraService.previewOutput.setPreviewRotation(initPreviewRotation, false);
     display.off('change');
     display.on('change', () => {
