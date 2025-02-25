@@ -21,6 +21,13 @@ function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
 }
 
+function seStateOnCb(data){
+    console.info("[NFC_test] omapi.on ServiceState: ", data);
+}
+function seStateOffCb(data){
+    console.info("[NFC_test] omapi.off ServiceState: ", data);
+}
+
 async function getSEService() {
                console.info("SecureElementDemo createService start getSEService");
                 await secureElement.createService().then( (data) => {
@@ -229,6 +236,136 @@ export default function newSEServicetest() {
             done();
         })
 
+        /**
+         * @tc.number SUB_Communication_NFC_secureElement_js_1400
+         * @tc.name Test omapi.on and omapi.off
+         * @tc.desc Close a single omapi.on and omapi.off
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_secureElement_js_1400', 0, function (){
+            try{
+                let getOmapiOnData = secureElement.on('stateChanged', seStateOnCb);
+                console.info("[NFC_test]14 getOmapiOnData is " + getOmapiOnData);
+            }catch(error){
+                console.info("[NFC_test]14 omapi on error catch Code: " + error.code + "/" +error);
+                expect().assertFail();
+            }
+
+            try{
+                sleep(900);
+                let getOmapiOffData = secureElement.off('stateChanged', seStateOffCb);
+                console.info("[NFC_test]14 getOmapiOffData is " + getOmapiOffData);
+            }catch(error){
+                console.info("[NFC_test]14 omapi off error catch Code: " + error.code + "/" +error);
+                expect().assertFail();
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_secureElement_js_1500
+         * @tc.name Test omapi.on and omapi.off
+         * @tc.desc Close a single omapi.on and omapi.off
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_secureElement_js_1500', 0, function (){
+            try{
+                let getOmapiOnData = secureElement.on(null, seStateOnCb);
+                console.info("[NFC_test]15 stateChanged=null omapi on getOmapiOnData is " + getOmapiOnData);
+                expect().assertFail();
+            }catch(error){
+                console.info("[NFC_test]15 omapi stateChanged=null omapi on catch Code: " + error.code + "/" +error);
+                expect(401).assertEqual(error.code)
+            }
+
+            try{
+                let getOmapiOnData = secureElement.on('error', seStateOnCb);
+                console.info("[NFC_test]15 stateChanged=error omapi on getOmapiOnData is " + getOmapiOnData);
+                expect().assertFail();
+            }catch(error){
+                console.info("[NFC_test]15 omapi stateChanged=error omapi on catch Code: " + error.code + "/" +error);
+                expect(401).assertEqual(error.code)
+            }
+
+            try{
+                let getOmapiOnData = secureElement.on('stateChanged', null);
+                console.info("[NFC_test]15 seStateOnCb=null omapi on getOmapiOnData is " + getOmapiOnData);
+                expect().assertFail();
+            }catch(error){
+                console.info("[NFC_test]15 omapi seStateOnCb=null omapi on catch Code: " + error.code + "/" +error);
+                expect(401).assertEqual(error.code)
+            }
+
+            try{
+                let getOmapiOnData = secureElement.on('stateChanged', 'seStateOnCbError');
+                console.info("[NFC_test]15 seStateOnCb=seStateOnCbError omapi on getOmapiOnData is " + getOmapiOnData);
+                expect().assertFail();
+            }catch(error){
+                console.info("[NFC_test]15 omapi seStateOnCb=seStateOnCbError omapi on catch Code: " + error.code + "/" +error);
+                expect(401).assertEqual(error.code)
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_secureElement_js_1600
+         * @tc.name Test omapi.on and omapi.off
+         * @tc.desc Close a single omapi.on and omapi.off
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_secureElement_js_1600', 0, function (){
+            try{
+                let getOmapiOnData = secureElement.on('stateChanged', seStateOnCb);
+                console.info("[NFC_test]16 getOmapiOnData is " + getOmapiOnData);
+            }catch(error){
+                console.info("[NFC_test]16 omapi on error catch Code: " + error.code + "/" +error);
+                expect().assertFail();
+            }
+
+            try{
+                sleep(900);
+                let getOmapiOffData = secureElement.off(null, seStateOffCb);
+                console.info("[NFC_test]16 stateChanged=null omapi off getOmapiOffData is " + getOmapiOffData);
+                expect().assertFail();
+            }catch(error){
+                console.info("[NFC_test]16 stateChanged=null omapi off error catch Code: " + error.code + "/" +error);
+                expect(401).assertEqual(error.code)
+            }
+
+            try{
+                let getOmapiOffData = secureElement.off('error', seStateOffCb);
+                console.info("[NFC_test]16 stateChanged=error omapi off getOmapiOffData is " + getOmapiOffData);
+                expect().assertFail();
+            }catch(error){
+                console.info("[NFC_test]16 stateChanged=error omapi off error catch Code: " + error.code + "/" +error);
+                expect(401).assertEqual(error.code)
+            }
+
+            try{
+                let getOmapiOffData = secureElement.off('stateChanged', null);
+                console.info("[NFC_test]16 seStateOffCb=null omapi off getOmapiOffData is " + getOmapiOffData);             
+            }catch(error){
+                console.info("[NFC_test]16 seStateOffCb=null omapi off error catch Code: " + error.code + "/" +error);
+                expect().assertFail();
+            }
+
+            try{
+                let getOmapiOffData = secureElement.off('stateChanged', 'seStateOffCbError');
+                console.info("[NFC_test]16 seStateOffCb=seStateOffCbError omapi off getOmapiOffData is " + getOmapiOffData);             
+            }catch(error){
+                console.info("[NFC_test]16 seStateOffCb=seStateOffCbError omapi off error catch Code: " + error.code + "/" +error);
+                expect().assertFail();
+            }
+
+            try{
+                let getOmapiOffData = secureElement.off('stateChanged', seStateOffCb);
+                console.info("[NFC_test]16 getOmapiOffData is " + getOmapiOffData);
+            }catch(error){
+                console.info("[NFC_test]16 omapi off error catch Code: " + error.code + "/" +error);
+                expect().assertFail();
+            }
+        })
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
