@@ -31,6 +31,7 @@
         "MainAbility/pages/EventItem/LongPressGesture",
         "MainAbility/pages/EventItem/PanGesture",
         "MainAbility/pages/EventItem/PinchGesture",
-        "MainAbility/pages/EventItem/RotationGesture"
+        "MainAbility/pages/EventItem/RotationGesture",
+        "MainAbility/pages/DragPreviewOptions/DragPreviewOptions"
     ]
 }
