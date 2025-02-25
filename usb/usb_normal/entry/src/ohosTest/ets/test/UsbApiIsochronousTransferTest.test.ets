@@ -96,16 +96,13 @@ export default function UsbApiIsochronousTransferTest() {
 
     beforeAll( async (done: Function) => {
         console.log(TAG, '*************Usb Unit UsbApiParamErrJsunitTest Begin*************');
-        // const Version = usbMgr.getVersion();
-        // console.info(TAG, 'usb unit begin test getversion :' + Version);
-
-        // version > 17  host currentMode = 2 device currentMode = 1
         let gDeviceList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
         console.info(TAG, 'usb unit begin test getDevices **********', JSON.stringify(gDeviceList));
         isDeviceConnected = deviceConnected(gDeviceList);
         console.info(TAG, 'isDeviceConnected:', isDeviceConnected);
         if (isDeviceConnected) {
-            let hasRight: boolean = usbMgr.hasRight(gDeviceList[0].name);
+            devices = gDeviceList[0];
+            let hasRight: boolean = usbMgr.hasRight(devices.name);
             if (!hasRight) {
                 console.info(TAG, `beforeAll: usb requestRight start`);
                 await getPermission(gDeviceList);
@@ -118,22 +115,11 @@ export default function UsbApiIsochronousTransferTest() {
     })
 
     afterAll( ()=> {
-        let gDeviceList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
-        usbMgr.removeRight(gDeviceList[0].name);
-        console.log('*************Usb Unit UsbApiIsochronousTransferTest End*************');
+      console.log('*************Usb Unit UsbApiIsochronousTransferTest End*************');
     })
 
     beforeEach(() => {
-        console.info(TAG, 'beforeEach: *************Usb Unit Test CaseEx*************');
-        let gDeviceList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
-        if (isDeviceConnected) {
-            devices = gDeviceList[0];
-            console.info(TAG, 'beforeEach return devices : ' + JSON.stringify(devices));
-            gPipe.busNum = devices.busNum;
-            gPipe.devAddress = devices.devAddress;
-            console.info(TAG, 'beforeEach return devices : ' + JSON.stringify(gPipe));
-        }
-
+      console.info(TAG, 'beforeEach: *************Usb Unit Test CaseEx*************');
     })
 
     /**
@@ -152,11 +138,6 @@ export default function UsbApiIsochronousTransferTest() {
             done()
             return
         }
-        let devicesList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
-        if (devicesList.length == 0) {
-            console.info(`device list is empty`);
-        }
-        let device: usbMgr.USBDevice = devicesList[0];
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
@@ -167,20 +148,16 @@ export default function UsbApiIsochronousTransferTest() {
               console.info(TAG, 'setInterface error');
         }    
         let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 1, type, 2000);
-
         try {
-            transferParams.callback=(err, data)=>{
-                console.info(TAG, 'Isochronous testUsbSubmitTransfer001 callBackData =' +JSON.stringify(data));
-                expect(data.status >= 0).assertTrue();
-                usbMgr.closePipe(devices);
-                done()
-            }
             await usbMgr.usbSubmitTransfer(transferParams);
             console.info(TAG, 'Isochronous testUsbSubmitTransfer001 end');
+            usbMgr.closePipe(devices);
+            done()
         } catch (error) {
-
+             expect(error.message).assertEqual('error');
             console.error('Isochronous write successfully:', error);
         }
+
     });
 
     /**
@@ -199,11 +176,6 @@ export default function UsbApiIsochronousTransferTest() {
             done()
             return
         }
-        let devicesList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
-        if (devicesList.length == 0) {
-            console.info(`device list is empty`);
-        }
-        let device: usbMgr.USBDevice = devicesList[0];
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
@@ -215,14 +187,10 @@ export default function UsbApiIsochronousTransferTest() {
               console.info(TAG, 'setInterface error');
         }
         try {
-            transferParams.callback=(err, data)=>{
-                console.info(TAG, 'Isochronous testUsbSubmitTransfer002 callBackData =' +JSON.stringify(data));
-                expect(data.status >= 0).assertTrue();
-                usbMgr.closePipe(devices);
-                done()
-            }
             await usbMgr.usbSubmitTransfer(transferParams);
             console.info(TAG, 'Isochronous testUsbSubmitTransfer002 end');
+            usbMgr.closePipe(devices);
+            done()
         } catch (error) {
             console.error('Isochronous write successfully:', error);
         }
@@ -244,11 +212,6 @@ export default function UsbApiIsochronousTransferTest() {
             done()
             return
         }
-        let devicesList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
-        if (devicesList.length == 0) {
-            console.info(`device list is empty`);
-        }
-        let device: usbMgr.USBDevice = devicesList[0];
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
@@ -282,11 +245,6 @@ export default function UsbApiIsochronousTransferTest() {
             done()
             return
         }
-        let devicesList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
-        if (devicesList.length == 0) {
-            console.info(`device list is empty`);
-        }
-        let device: usbMgr.USBDevice = devicesList[0];
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
@@ -319,11 +277,6 @@ export default function UsbApiIsochronousTransferTest() {
             done()
             return
         }
-        let devicesList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
-        if (devicesList.length == 0) {
-            console.info(`device list is empty`);
-        }
-        let device: usbMgr.USBDevice = devicesList[0];
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;

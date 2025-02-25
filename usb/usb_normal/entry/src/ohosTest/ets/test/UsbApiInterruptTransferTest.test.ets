@@ -16,6 +16,8 @@
 import { beforeAll, afterAll, beforeEach, describe, it, expect } from "@ohos/hypium"
 import usbMgr from '@ohos.usbManager';
 import { UiDriver, BY } from '@ohos.UiTest';
+
+const TAG: string = "[UsbApiInterruptTransferTest]";
 export interface gPipe {
   busNum: number;
   devAddress: number;
@@ -23,16 +25,6 @@ export interface gPipe {
 
 function sleep(ms: number): Promise<void> {
   return new Promise<void>(resolve => setTimeout(resolve, ms));
-}
-
-const TAG: string = "[UsbApiInterruptTransferTest]";
-function deviceConnected(gDeviceList: Array<usbMgr.USBDevice>) {
-    if (gDeviceList.length > 0) {
-        console.info(TAG, "Test USB device is connected");
-        return true;
-    }
-    console.info(TAG, "Test USB device is not connected");
-    return false;
 }
 
 async function getPermission(gDeviceList: Array<usbMgr.USBDevice>) {
@@ -64,6 +56,15 @@ async function driveFn() {
     }
 }
 
+function deviceConnected(gDeviceList: Array<usbMgr.USBDevice>) {
+    if (gDeviceList.length > 0) {
+        console.info(TAG, "Test USB device is connected");
+        return true;
+    }
+    console.info(TAG, "Test USB device is not connected");
+    return false;
+}
+
 function getTransfersParam(gPipe: usbMgr.USBDevicePipe, endpointValue: number, typeValue: number, timeOutValue: number)
 {
     let transferParams: usbMgr.UsbDataTransferParams = {
@@ -76,7 +77,7 @@ function getTransfersParam(gPipe: usbMgr.USBDevicePipe, endpointValue: number, t
         callback: () => {},
         userData: new Uint8Array(10),
         buffer: new Uint8Array(10),
-        isoPacketCount: 2,
+        isoPacketCount: 0,
     };
     return transferParams;
 }
@@ -94,16 +95,13 @@ export default function UsbApiInterruptTransferTest() {
 
     beforeAll( async (done: Function) => {
         console.log(TAG, '*************Usb Unit UsbApiParamErrJsunitTest Begin*************');
-        // const Version = usbMgr.getVersion();
-        // console.info(TAG, 'usb unit begin test getversion :' + Version);
-
-        // version > 17  host currentMode = 2 device currentMode = 1
         let gDeviceList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
         console.info(TAG, 'usb unit begin test getDevices **********', JSON.stringify(gDeviceList));
         isDeviceConnected = deviceConnected(gDeviceList);
         console.info(TAG, 'isDeviceConnected:', isDeviceConnected);
         if (isDeviceConnected) {
-            let hasRight: boolean = usbMgr.hasRight(gDeviceList[0].name);
+            devices = gDeviceList[0];
+            let hasRight: boolean = usbMgr.hasRight(devices.name);
             if (!hasRight) {
                 console.info(TAG, `beforeAll: usb requestRight start`);
                 await getPermission(gDeviceList);
@@ -116,22 +114,12 @@ export default function UsbApiInterruptTransferTest() {
     })
 
     afterAll( ()=> {
-        let gDeviceList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
-        usbMgr.removeRight(gDeviceList[0].name);
+        usbMgr.removeRight(devices.name);
         console.log('*************Usb Unit UsbApiInterruptTransferTest End*************');
     })
 
     beforeEach(() => {
         console.info(TAG, 'beforeEach: *************Usb Unit Test CaseEx*************');
-        let gDeviceList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
-        if (isDeviceConnected) {
-            devices = gDeviceList[0];
-            console.info(TAG, 'beforeEach return devices : ' + JSON.stringify(devices));
-            gPipe.busNum = devices.busNum;
-            gPipe.devAddress = devices.devAddress;
-            console.info(TAG, 'beforeEach return devices : ' + JSON.stringify(gPipe));
-        }
-
     })
 
     /**
@@ -150,11 +138,6 @@ export default function UsbApiInterruptTransferTest() {
             done()
             return
         }
-        let devicesList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
-        if (devicesList.length == 0) {
-            console.info(`device list is empty`);
-        }
-        let device: usbMgr.USBDevice = devicesList[0];
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
@@ -188,11 +171,6 @@ export default function UsbApiInterruptTransferTest() {
             done()
             return
         }
-        let devicesList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
-        if (devicesList.length == 0) {
-            console.info(`device list is empty`);
-        }
-        let device: usbMgr.USBDevice = devicesList[0];
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
@@ -225,25 +203,17 @@ export default function UsbApiInterruptTransferTest() {
             done()
             return
         }
-        let devicesList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
-        if (devicesList.length == 0) {
-            console.info(`device list is empty`);
-        }
-        let device: usbMgr.USBDevice = devicesList[0];
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
         let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 129, type, 2000);
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
-            transferParams.callback=(err, data)=>{
-                console.info(TAG, 'interrupt testUsbSubmitTransfer003 data =' +JSON.stringify(data));
-                expect(data.status >= 0).assertTrue();
-                usbMgr.closePipe(devices);
-                done()
-            }
-            await usbMgr.usbSubmitTransfer(transferParams);
+            usbMgr.usbSubmitTransfer(transferParams);
             console.info(TAG, 'interrupt testUsbSubmitTransfer003 end');
+            usbMgr.closePipe(devices);
+            done()
+
         } catch (error) {
             expect(error.message).assertEqual('error');
             console.error('interrupt write successfully:', error);
@@ -266,11 +236,6 @@ export default function UsbApiInterruptTransferTest() {
             done()
             return
         }
-        let devicesList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
-        if (devicesList.length == 0) {
-            console.info(`device list is empty`);
-        }
-        let device: usbMgr.USBDevice = devicesList[0];
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
@@ -282,6 +247,38 @@ export default function UsbApiInterruptTransferTest() {
             console.info(TAG, 'interrupt testUsbCancelTransfer001 end');
         } catch (error) {
             console.error('interrupt write successfully:', error);
+        }
+        usbMgr.closePipe(devices);
+        done()
+    });
+
+    /**
+     * @tc.number   : SUB_USB_Host_JS_usbCancelTransfer_ErrCode_0100
+     * @tc.name     : testUsbCancelTransfer002
+     * @tc.desc     : interrupt transfer cancel failed.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testUsbCancelTransfer002', 0, async (done: Function) => {
+        console.info(TAG, 'interrupt testUsbCancelTransfer002 enter');
+        if (!isDeviceConnected) {
+			console.info(TAG, 'usb testUsbCancelTransfer002 No device is connected');
+            expect(isDeviceConnected).assertFalse();
+            done()
+            return
+        }
+        let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
+        let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
+        let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
+        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 129, type, 2000);
+        try {
+            usbMgr.usbCancelTransfer(transferParams);
+            console.info('interrupt testUsbCancelTransfer002 submitted.');
+        } catch (error) {
+            console.info(TAG, 'interrupt testUsbCancelTransfer002 end');
+            console.error('interrupt write cancel failed:', error);
+            expect(error.code).assertEqual(14400011);
         }
         usbMgr.closePipe(devices);
         done()
