@@ -68,7 +68,7 @@ async function getComponent(driver: Driver, onType: On) {
         await getComponent(driver, onType);
     } else {
         console.log(`get component: ${JSON.stringify(item)}`);
-        await item.click;
+        await item.click();
     }
 }
 

@@ -68,7 +68,7 @@ async function getComponent(driver: Driver, onType: On) {
         await getComponent(driver, onType);
     } else {
         console.log(`get component: ${JSON.stringify(item)}`);
-        await item.click;
+        await item.click();
     }
 }
 
@@ -207,7 +207,6 @@ export default function SaveToExistingContactViaUITest() {
             } else {
                 console.log(`${caseName} addContact: success>${JSON.stringify(err)}`);
                 ExpectTrue(data > 0);
-                done();
                 let promise = contact.saveToExistingContactViaUI(context, {
                     phoneNumbers: [{
                         phoneNumber: "13555558888"
@@ -266,7 +265,6 @@ export default function SaveToExistingContactViaUITest() {
             } else {
                 console.log(`${caseName} addContact: success>${JSON.stringify(err)}`);
                 ExpectTrue(data > 0);
-                done();
                 let promise = contact.saveToExistingContactViaUI(context, {
                     phoneNumbers: [{
                         phoneNumber: "13555558888"
