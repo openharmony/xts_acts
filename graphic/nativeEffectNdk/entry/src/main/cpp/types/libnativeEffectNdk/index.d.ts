@@ -29,3 +29,5 @@ export const oHFilterGetEffectPixelMap: () => number;
 export const oHFilterRelease: () => number;
 export const oHFilterRelease001: () => number;
 export const oHFilterBlurWithTileMode001: () => number;
+export const oHPixelmapNativeAccessPixels001: () => number;
+export const oHPixelmapNativeUnaccessPixels001: () => number;

@@ -1,0 +1,14 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/ComponentSnapshotByUniqueId/getWithUniqueId",
+        "MainAbility/pages/GetChangedPointerId/GetChangedPointerId",
+        "MainAbility/pages/componentSnapshot/componentSnapshot",
+        "MainAbility/pages/Gesture/isFingerCountLimited/LongPressGesture",
+        "MainAbility/pages/Gesture/isFingerCountLimited/PanGesture",
+        "MainAbility/pages/Gesture/isFingerCountLimited/PinchGesture",
+        "MainAbility/pages/Gesture/isFingerCountLimited/RotationGesture",
+        "MainAbility/pages/Gesture/isFingerCountLimited/SwipeGesture",
+        "MainAbility/pages/Gesture/isFingerCountLimited/TapGesture"
+    ]
+}

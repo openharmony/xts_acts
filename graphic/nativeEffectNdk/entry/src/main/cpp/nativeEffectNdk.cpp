@@ -18,11 +18,23 @@
 #include "native_effect/effect_filter.h"
 #include "native_effect/effect_types.h"
 #include <multimedia/image_framework/image/pixelmap_native.h>
+#include <multimedia/image_framework/image/image_packer_native.h>
+#include <multimedia/image_framework/image/image_source_native.h>
+#include "multimedia/image_framework/image_pixel_map_mdk.h"
 #include "hilog/log.h"
 
 #define SUCCESS 0
 #define FAIL (-1)
 #define DOUBLE_NUM_05 0.5
+#define DOUBLE_NUM_15 1.5
+#define ARR_NUM_0 0
+#define ARR_NUM_1 1
+#define ARR_NUM_2 2
+#define ARR_NUM_3 3
+
+namespace {
+    constexpr int8_t ARGB_8888_BYTES = 4;
+}
 
 static void CreatePixelMap(OH_PixelmapNative*** pixelmap)
 {
@@ -377,6 +389,43 @@ static napi_value OHFilterBlurWithTileMode001(napi_env env, napi_callback_info i
     return result;
 }
 
+static napi_value OHPixelmapNativeAccessPixels001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_Pixelmap_InitializationOptions *options = nullptr;
+    OH_PixelmapInitializationOptions_Create(&options);
+    OH_PixelmapInitializationOptions_SetWidth(options, 1);
+    OH_PixelmapInitializationOptions_SetHeight(options, 1);
+    OH_PixelmapNative *srcPixelmap = nullptr;
+    OH_PixelmapNative_CreateEmptyPixelmap(options, &srcPixelmap);
+    void *dstPixelmap = nullptr;
+    Image_ErrorCode ret = OH_PixelmapNative_AccessPixels(srcPixelmap, &dstPixelmap);
+    if (ret == IMAGE_SUCCESS) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
+static napi_value OHPixelmapNativeUnaccessPixels001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_Pixelmap_InitializationOptions *options = nullptr;
+    OH_PixelmapInitializationOptions_Create(&options);
+    OH_PixelmapInitializationOptions_SetWidth(options, 1);
+    OH_PixelmapInitializationOptions_SetHeight(options, 1);
+    OH_PixelmapNative *srcPixelmap = nullptr;
+    OH_PixelmapNative_CreateEmptyPixelmap(options, &srcPixelmap);
+    Image_ErrorCode ret = OH_PixelmapNative_UnaccessPixels(srcPixelmap);
+    if (ret == IMAGE_SUCCESS) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -413,6 +462,10 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"oHFilterBlurWithTileMode001", nullptr, OHFilterBlurWithTileMode001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"oHPixelmapNativeAccessPixels001", nullptr, OHPixelmapNativeAccessPixels001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHPixelmapNativeUnaccessPixels001", nullptr, OHPixelmapNativeUnaccessPixels001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

@@ -15,7 +15,8 @@
 {
   "license": "",
   "devDependencies": {
-    "@types/libentry.so": "file:./src/main/cpp/types/libentry"
+    "@types/libentry.so": "file:./src/main/cpp/types/libentry",
+    "@types/libPixelMapNdk.so": "file:./src/main/cpp/types/libPixelMapNdk"
   },
   "author": "",
   "name": "entry",

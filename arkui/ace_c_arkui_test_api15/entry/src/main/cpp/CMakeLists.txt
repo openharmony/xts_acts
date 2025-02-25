@@ -13,7 +13,9 @@ include_directories(
 add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
+    keyDisPatchTest/keyEventDispatch_test.cpp
     progress/progress_linear_style_test.cpp
+	focusControl/focus_control.cpp
     textArea/textArea_letter_spacing.cpp
 )
 

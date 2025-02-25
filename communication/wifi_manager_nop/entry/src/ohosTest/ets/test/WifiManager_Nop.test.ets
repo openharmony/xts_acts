@@ -726,6 +726,176 @@ export default function wifiManagerTest() {
       }
     });
 
+    /*
+     * @tc.number:SUB_Communication_WiFi_IsHotspotActive_Nop
+     * @tc.name: testIsHotspotActive
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Communication_WiFi_isHotspotActive_Nop', 0, async (done: Function) => {
+      hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_isHotspotActive_Nop begin');
+      try {
+        wifiManager.isHotspotActive();
+        expect().assertFail();
+      } catch (error) {
+        hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_IsHotspotActive_Nop failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+      }
+      done();
+    });
+
+    /*
+     * @tc.number:SUB_Communication_WiFi_Disconnect_Nop
+     * @tc.name: testDisconnect
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Communication_WiFi_Disconnect_Nop', 0, async (done: Function) => {
+      hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Disconnect_Nop begin');
+      try {
+        wifiManager.disconnect();
+        expect().assertFail();
+      } catch (error) {
+        hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_Disconnect_Nop failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+      }
+      done();
+    });
+
+    /*
+     * @tc.number:SUB_Communication_WiFi_EnableWifi_Nop
+     * @tc.name: testEnableWifi
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Communication_WiFi_EnableWifi_Nop', 0, async (done: Function) => {
+      hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_EnableWifi_Nop begin');
+      try {
+        wifiManager.enableWifi();
+        expect().assertFail();
+      } catch (error) {
+        hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_EnableWifi_Nop failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+      }
+      done();
+    });
+
+    /*
+     * @tc.number:SUB_Communication_WiFi_RemoveDevice_Nop
+     * @tc.name: testRemoveDevice
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Communication_WiFi_RemoveDevice_Nop', 0, async (done: Function) => {
+      hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_RemoveDevice_Nop begin');
+      try {
+        wifiManager.removeDevice(0);
+        expect().assertFail();
+      } catch (error) {
+        hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_RemoveDevice_Nop failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+      }
+      done();
+    });
+
+    /*
+     * @tc.number:SUB_Communication_WiFi_ConnectToNetwork_Nop
+     * @tc.name: testConnectToNetwork
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Communication_WiFi_ConnectToNetwork_Nop', 0, async (done: Function) => {
+      hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_ConnectToNetwork_Nop begin');
+      try {
+        wifiManager.connectToNetwork(0);
+        expect().assertFail();
+      } catch (error) {
+        hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_ConnectToNetwork_Nop failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+      }
+      done();
+    });
+
+    /*
+     * @tc.number:SUB_Communication_WiFi_GetDeviceConfigs_Nop
+     * @tc.name: testGetDeviceConfigs
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Communication_WiFi_GetDeviceConfigs_Nop', 0, async (done: Function) => {
+      hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetDeviceConfigs_Nop begin');
+      try {
+        wifiManager.getDeviceConfigs();
+        expect().assertFail();
+      } catch (error) {
+        hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetDeviceConfigs_Nop failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+      }
+      done();
+    });
+
+    /*
+     * @tc.number:SUB_Communication_WiFi_AddDeviceConfig_Nop
+     * @tc.name: testAddDeviceConfig
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Communication_WiFi_AddDeviceConfig_Nop', 0, async (done: Function) => {
+      hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_AddDeviceConfig_Nop begin');
+      let wifiDeviceConfig: wifiManager.WifiDeviceConfig = {
+        "ssid": "public201Test",
+        "bssid": "00:11:22:33:44:55",
+        "bssidType": wifiManager.DeviceAddressType.RANDOM_DEVICE_ADDRESS,
+        "preSharedKey": "",
+        "isHiddenSsid": false,
+        "securityType": wifiManager.WifiSecurityType.WIFI_SEC_TYPE_OPEN
+      };
+      try {
+        await wifiManager.addDeviceConfig(wifiDeviceConfig).then(netWorkId => {
+          console.info("[wifi_test]add OPEN DeviceConfig promise result : " + JSON.stringify(netWorkId));
+        });
+        expect().assertFail();
+      } catch (error) {
+        hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_AddDeviceConfig_Nop failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+      }
+      done();
+    });
+
+    /*
+     * @tc.number:SUB_Communication_WiFi_GetDeviceMacAddress_Nop
+     * @tc.name: testGetDeviceMacAddress
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Communication_WiFi_GetDeviceMacAddress_Nop', 0, async (done: Function) => {
+      hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetDeviceMacAddress_Nop begin');
+      try {
+        wifiManager.getDeviceMacAddress();
+        expect().assertFail();
+      } catch (error) {
+        hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetDeviceMacAddress_Nop failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+      }
+      done();
+    });
+
   });
 }
 
