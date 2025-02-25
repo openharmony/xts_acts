@@ -890,51 +890,7 @@ export default function UiTest() {
             console.log(TestTag, 'testScrollSearchVertical end');
         })
 
-        /*
-        * @tc.number: UiTest_API16_018
-        * @tc.name: testScrollSearchHorizontal
-        * @tc.desc: scroll horizontally on this UiComponent to find matched UiComponent.
-        */
-        it('testScrollSearchHorizontal', 0, async () => {
-            console.log(TestTag, 'testScrollSearchHorizontal start');
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
-            await driver.delayMs(waitUiReadyMs);
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
-            let button = await driver.findComponent(ON.text('scroll'))
-            await driver.delayMs(waitUiReadyMs);
-            await button.click();
-            await driver.delayMs(waitUiReadyMs);
-            let scrollBar = await driver.findComponent(ON.id('horizontalScroll'));
-            await driver.delayMs(waitUiReadyMs);
-            let text1 = await scrollBar.scrollSearch(ON.text('8'), false);
-            await driver.delayMs(waitUiReadyMs);
-            expect(text1 == null).assertTrue();
-            await driver.delayMs(waitUiReadyMs);
-            let text2 = await scrollBar.scrollSearch(ON.text('11'), false, 200);
-            await driver.delayMs(waitUiReadyMs);
-            expect(text2 == null).assertTrue();
-            await driver.delayMs(waitUiReadyMs);
-            let text3 = await scrollBar.scrollSearch(ON.text('2'), false, 200);
-            await driver.delayMs(waitUiReadyMs);
-            expect(await text3.getText()).assertEqual('2');
-            await driver.delayMs(waitUiReadyMs);
-            let text4 = await scrollBar.scrollSearch(ON.text('8'), false, 200);
-            await driver.delayMs(waitUiReadyMs);
-            expect(await text4.getText()).assertEqual('8');
-            await driver.delayMs(waitUiReadyMs);
-            console.log(TestTag, 'testScrollSearchHorizontal end');
-            await stopApplication('com.uitestScene.acts');
-        })
+        
 
         /*
         * @tc.number: UiTest_API16_019
@@ -1129,38 +1085,7 @@ export default function UiTest() {
             expect(text == 'longClick').assertTrue()
         })
 
-        /*
-        * @tc.number: uiTest_11003
-        * @tc.name: testMouseDrag
-        * @tc.desc: drag on the screen between the specified points by mouse.
-        */
-        it('testMouseDrag', 0, async () => {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            await driver.delayMs(waitUiReadyMs)
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
-            let button = await driver.findComponent(ON.id('jump'))
-            let center = await button.getBoundsCenter();
-            await driver.mouseLongClick(center, MouseButton.MOUSE_BUTTON_LEFT)
-            await driver.delayMs(waitUiReadyMs)
-            let text1 = await driver.findComponent(ON.text('two'))
-            let text2 = await driver.findComponent(ON.text('three'))
-            let point1 = await text1.getBoundsCenter()
-            let point2 = await text2.getBoundsCenter()
-            await driver.mouseDrag(point1, point2, 600)
-            await driver.delayMs(2000)
-            let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')))
-            expect(text == null).assertTrue()
-        })
+        
 
         /*
          * @tc.number: uiTest_11004
@@ -1318,49 +1243,7 @@ export default function UiTest() {
             expect(bounds1.right >= bounds2.right).assertTrue()
         })
 
-        /*
-         * @tc.number: uiTest_10002
-         * @tc.name: testFling
-         * @tc.desc: inject fling on the device display.
-         */
-        it('testFling', 0, async () => {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            await driver.delayMs(waitUiReadyMs)
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
-            let window = await driver.findWindow({bundleName: 'com.uitestScene.acts'})
-            try {
-                await window.maximize()
-                await driver.delayMs(500)
-            } catch (error) {
-                console.info('It is already a Fullscreen window')
-            }
-            await driver.fling(UiDirection.DOWN, 39000)
-            await driver.delayMs(waitUiReadyMs)
-            let button = await driver.findComponents(ON.text('next page'))
-            expect (button).assertNull()
-            await driver.fling(UiDirection.LEFT, 39000)
-            await driver.delayMs(waitUiReadyMs)
-            let text = await driver.findComponents(ON.text('1'))
-            expect (text).assertNull()
-            await driver.fling(UiDirection.RIGHT, 39000)
-            await driver.delayMs(waitUiReadyMs)
-            let text2 = await driver.findComponents(ON.text('1'))
-            expect (text2).assertNull()
-            await driver.fling(UiDirection.UP, 39000)
-            await driver.delayMs(2000)
-            let button2 = await driver.findComponents(ON.text('next page'))
-            expect (button2 != null).assertTrue()
-        })
+        
 
         /*
          * @tc.number: uiTest_10003
@@ -1938,55 +1821,7 @@ export default function UiTest() {
             await stopApplication('com.uitestScene.acts')
         })
 
-        /*
-         * @tc.number: uiTest_9023
-         * @tc.name: testTriggerCombineKeys
-         * @tc.desc: press two or three key combinations
-         */
-        it('testTriggerCombineKeys', 0, async () => {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            await driver.delayMs(2000)
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
-            await driver.delayMs(2000)
-            let text = await driver.findComponent(ON.type('TextInput'))
-            if (text == null) {
-                let scorll = await driver.findComponent(ON.type('Scroll'))
-                text = await scorll.scrollSearch(ON.type('TextInput'))
-            }
-            let center = await text.getBoundsCenter()
-            // set pasteBoard data
-            await text.inputText('123')
-            await driver.delayMs(2000)
-            await exitInputMethod()
-            await driver.delayMs(2000)
-            await driver.click(center.x, center.y)
-            await driver.delayMs(waitUiReadyMs)
-            await driver.triggerCombineKeys(2072, 2017)
-            await driver.delayMs(waitUiReadyMs)
-            await driver.triggerCombineKeys(2072, 2019)
-            await driver.delayMs(waitUiReadyMs)
-            // clear and paste
-            let text2 = await driver.findComponent(ON.type('TextInput'))
-            await text2.clearText()
-            await driver.delayMs(waitUiReadyMs)
-            await driver.triggerCombineKeys(2072, 2038)
-            await driver.delayMs(2000)
-            await exitInputMethod()
-            await driver.delayMs(4000)
-            let text3 = await driver.findComponent(ON.type('TextInput'))
-            expect(await text3.getText() == '123').assertTrue()
-            await stopApplication('com.uitestScene.acts')
-        })
+        
 
         /*
          * @tc.number: uiTest_9024
@@ -2557,101 +2392,9 @@ export default function UiTest() {
             await stopApplication('com.uitestScene.acts')
         })
 
-        /*
-         * @tc.number: uiTest_9049
-         * @tc.name: testDisplayRotation
-         * @tc.desc: get the rotation of the device display and set it.
-         */
-        it('testDisplayRotation', 0, async () => {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            await driver.delayMs(waitUiReadyMs)
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
-            await driver.setDisplayRotation(DisplayRotation.ROTATION_0)
-            await driver.delayMs(waitUiReadyMs)
-            let rotation = await driver.getDisplayRotation()
-            if (rotation == DisplayRotation.ROTATION_90) {
-                console.info('The device is displayed in horizontal on default')
-                await driver.setDisplayRotation(DisplayRotation.ROTATION_90)
-                await driver.delayMs(waitUiReadyMs)
-                let rotation1 = await driver.getDisplayRotation()
-                expect(rotation1 == DisplayRotation.ROTATION_0)
+        
 
-                await driver.setDisplayRotation(DisplayRotation.ROTATION_180)
-                await driver.delayMs(waitUiReadyMs)
-                let rotation2 = await driver.getDisplayRotation()
-                expect(rotation2 == DisplayRotation.ROTATION_270)
-
-                await driver.setDisplayRotation(DisplayRotation.ROTATION_270)
-                await driver.delayMs(waitUiReadyMs)
-                let rotation3 = await driver.getDisplayRotation()
-                expect(rotation3 == DisplayRotation.ROTATION_180)
-
-                await driver.setDisplayRotation(DisplayRotation.ROTATION_90)
-            } else if (rotation == DisplayRotation.ROTATION_0) {
-                console.info('The device is displayed in vertical on default')
-                await driver.setDisplayRotation(DisplayRotation.ROTATION_90)
-                await driver.delayMs(waitUiReadyMs)
-                let rotation1 = await driver.getDisplayRotation()
-                expect(rotation1 == DisplayRotation.ROTATION_90)
-
-                await driver.setDisplayRotation(DisplayRotation.ROTATION_180)
-                await driver.delayMs(waitUiReadyMs)
-                let rotation2 = await driver.getDisplayRotation()
-                expect(rotation2 == DisplayRotation.ROTATION_180)
-
-                await driver.setDisplayRotation(DisplayRotation.ROTATION_270)
-                await driver.delayMs(waitUiReadyMs)
-                let rotation3 = await driver.getDisplayRotation()
-                expect(rotation3 == DisplayRotation.ROTATION_270)
-
-                await driver.setDisplayRotation(DisplayRotation.ROTATION_0)
-                await driver.delayMs(waitUiReadyMs)
-            }
-            await stopApplication('com.uitestScene.acts')
-        })
-
-        /*
-         * @tc.number: uiTest_9050
-         * @tc.name: testSetDisplayRotationEnabled
-         * @tc.desc: enable/disable the rotation of device display.
-         */
-        it('testSetDisplayRotationEnabled', 0, async () => {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            await driver.delayMs(waitUiReadyMs)
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
-            await driver.setDisplayRotationEnabled(true)
-            await driver.delayMs(waitUiReadyMs)
-            await driver.setDisplayRotation(DisplayRotation.ROTATION_0)
-            await driver.delayMs(waitUiReadyMs)
-            let rotation = await driver.getDisplayRotation()
-            if (rotation == DisplayRotation.ROTATION_90) {
-                console.info('The device is displayed in horizontal on default')
-                await driver.setDisplayRotation(DisplayRotation.ROTATION_90)
-            } else {
-                console.info('The device is displayed in vertical on default')
-            }
-            await stopApplication('com.uitestScene.acts')
-        })
+        
 
         /*
          * @tc.number: uiTest_9051
@@ -2665,31 +2408,7 @@ export default function UiTest() {
             await stopApplication('com.uitestScene.acts')
         })
 
-        /*
-         * @tc.number: uiTest_9052
-         * @tc.name: testPressHome
-         * @tc.desc: press the home key.
-         */
-        it('testPressHome', 0, async () => {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            await driver.delayMs(waitUiReadyMs)
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
-            await driver.pressHome()
-            await driver.delayMs(1000)
-            let button = await driver.findComponent(ON.text('next page'))
-            expect(button == null).assertTrue()
-            await stopApplication('com.uitestScene.acts')
-        })
+        
 
         /*
          * @tc.number: uiTest_9053
@@ -2704,69 +2423,9 @@ export default function UiTest() {
             await stopApplication('com.uitestScene.acts')
         })
 
-        /*
-         * @tc.number: uiTest_9054
-         * @tc.name: testDrag
-         * @tc.desc: drag on the screen between the specified points.
-         */
-        it('testDrag', 0, async () => {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            await driver.delayMs(waitUiReadyMs)
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
-            let button = await driver.findComponent(ON.id('jump'))
-            await button.longClick()
-            await driver.delayMs(waitUiReadyMs)
-            let text1 = await driver.findComponent(ON.text('one'))
-            let text2 = await driver.findComponent(ON.text('two'))
-            let point1 = await text1.getBoundsCenter()
-            let point2 = await text2.getBoundsCenter()
-            await driver.drag(point1.x, point1.y, point2.x, point2.y)
-            await driver.delayMs(waitUiReadyMs)
-            let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')))
-            expect(text == null).assertTrue()
-            await stopApplication('com.uitestScene.acts')
-        })
+        
 
-        /*
-         * @tc.number: uiTest_9055
-         * @tc.name: testDragTos
-         * @tc.desc: drag this UiComponent to the bounds rect of target UiComponent.
-         */
-        it('testDragTo', 0, async () => {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            await driver.delayMs(waitUiReadyMs)
-            await driver.triggerKey(18)
-            await driver.delayMs(waitUiReadyMs);
-            let defaultDisplay = display.getDefaultDisplaySync()
-            if (defaultDisplay.state == display.DisplayState.STATE_ON) {
-                return
-            } else {
-                await driver.wakeUpDisplay()
-                await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(300, 600, 300, 100)
-                await driver.delayMs(waitUiReadyMs)
-            }
-            let button = await driver.findComponent(ON.id('jump'))
-            await button.longClick()
-            await driver.delayMs(waitUiReadyMs)
-            let text1 = await driver.findComponent(ON.text('one'))
-            let text2 = await driver.findComponent(ON.text('two'))
-            await text1.dragTo(text2)
-            await driver.delayMs(waitUiReadyMs)
-            let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')))
-            expect(text == null).assertTrue()
-            await stopApplication('com.uitestScene.acts')
-        })
+        
 
         /*
          * @tc.number: uiTest_9056
