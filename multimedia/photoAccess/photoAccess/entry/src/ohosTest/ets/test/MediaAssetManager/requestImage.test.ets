@@ -239,7 +239,7 @@ export default function requestImageTest() {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_IMAGE_0600
      * @tc.name      : request_image_006
-     * @tc.desc      : request image with balanceMode and editedMode
+     * @tc.desc      : request image error code 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -250,7 +250,6 @@ export default function requestImageTest() {
         let photoAsset = null;
         class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<image.ImageSource> {
           onDataPrepared(data: image.ImageSource) {
-            done();
           }
         }
         let requestOptions : photoAccessHelper.RequestOptions = {
@@ -259,6 +258,7 @@ export default function requestImageTest() {
         }
         const handler = new MediaHandler;
         photoAccessHelper.MediaAssetManager.requestImage(testContext, photoAsset, requestOptions, handler)
+        expect(false).assertTrue();
       } catch (error) {
         console.log(`${testNum} success; error.code: ${error.code}`); 
         expect(error.code).assertEqual(`401`);
@@ -311,7 +311,7 @@ export default function requestImageTest() {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_QUICK_REQUEST_IMAGE_0002
      * @tc.name      : quick_request_image_002
-     * @tc.desc      : quick request image with HIGH_QUALITY_MODE
+     * @tc.desc      : quick request image error code 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -336,6 +336,7 @@ export default function requestImageTest() {
         const handler = new MediaHandler();
         let requestId: string = await photoAccessHelper.MediaAssetManager.quickRequestImage(null, photoAsset, requestOptions, handler);
         console.log(`${testNum} :: quick request failed, requestId = ${requestId}`);
+        expect(false).assertTrue();
         done();
       } catch (error) {
         console.log(`${testNum} success; error.code: ${error.code}`); 
