@@ -64,6 +64,7 @@ export struct PageOne {
                   }, (item1: string) => item1)
                 }
                 .height('30%')
+				.margin({right: '60%'})
               } else {
                 Text('item_' + item).fontSize(16).backgroundColor(Color.Yellow).width('90%').height(100)
               }
@@ -88,5 +89,7 @@ export struct PageOne {
       {value: 'd', symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_folder_badge_plus'))},
       {value: 'e', symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_folder_badge_plus'))},
     ])
+    .id('navId')
+    .margin({top: '5%'})
   }
 }
