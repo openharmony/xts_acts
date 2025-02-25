@@ -349,6 +349,7 @@ export default function nfcIsoDepTagTest() {
                 console.info('[NFC_test]09 hceServicestart success ')
                 hceService.on("hceCmd", apduCallback)
                 console.info('[NFC_test]09 hceServiceon success ')
+                sleep(900)
                 hceService.off("hceCmd", apduCallback)
                 console.info('[NFC_test]09 hceServicesoff success ')
                 hceService.stop(hceElementName)
