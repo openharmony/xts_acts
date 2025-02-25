@@ -93,7 +93,7 @@ export default function UsbApiInterruptTransferTest() {
     }
 
     beforeAll( async (done: Function) => {
-      console.log(TAG, '*************Usb Unit UsbApiParamErrJsunitTest Begin*************');
+        console.log(TAG, '*************Usb Unit UsbApiParamErrJsunitTest Begin*************');
         // const Version = usbMgr.getVersion();
         // console.info(TAG, 'usb unit begin test getversion :' + Version);
 
@@ -116,11 +116,13 @@ export default function UsbApiInterruptTransferTest() {
     })
 
     afterAll( ()=> {
-      console.log('*************Usb Unit UsbApiInterruptTransferTest End*************');
+        let gDeviceList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
+        usbMgr.removeRight(gDeviceList[0].name);
+        console.log('*************Usb Unit UsbApiInterruptTransferTest End*************');
     })
 
     beforeEach(() => {
-      console.info(TAG, 'beforeEach: *************Usb Unit Test CaseEx*************');
+        console.info(TAG, 'beforeEach: *************Usb Unit Test CaseEx*************');
         let gDeviceList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
         if (isDeviceConnected) {
             devices = gDeviceList[0];
@@ -153,7 +155,6 @@ export default function UsbApiInterruptTransferTest() {
             console.info(`device list is empty`);
         }
         let device: usbMgr.USBDevice = devicesList[0];
-        usbMgr.requestRight(device.name);
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
@@ -192,7 +193,6 @@ export default function UsbApiInterruptTransferTest() {
             console.info(`device list is empty`);
         }
         let device: usbMgr.USBDevice = devicesList[0];
-        usbMgr.requestRight(device.name);
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
@@ -230,7 +230,6 @@ export default function UsbApiInterruptTransferTest() {
             console.info(`device list is empty`);
         }
         let device: usbMgr.USBDevice = devicesList[0];
-        usbMgr.requestRight(device.name);
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
@@ -272,7 +271,6 @@ export default function UsbApiInterruptTransferTest() {
             console.info(`device list is empty`);
         }
         let device: usbMgr.USBDevice = devicesList[0];
-        usbMgr.requestRight(device.name);
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
