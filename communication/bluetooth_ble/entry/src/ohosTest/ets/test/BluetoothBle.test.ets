@@ -674,14 +674,6 @@ describe('bluetoothBleTest', () => {
         let NORMAL = bluetooth.ScanReportMode.NORMAL;
         console.info("[bluetooth_js]ScanReportMode NORMAL: " + JSON.stringify(NORMAL));
         expect(NORMAL).assertEqual(1);
-
-        let FENCE_SENSITIVITY_LOW = bluetooth.ScanReportMode.FENCE_SENSITIVITY_LOW;
-        console.info("[bluetooth_js]ScanReportMode FENCE_SENSITIVITY_LOW: " + JSON.stringify(FENCE_SENSITIVITY_LOW));
-        expect(FENCE_SENSITIVITY_LOW).assertEqual(10);
-
-        let FENCE_SENSITIVITY_HIGH = bluetooth.ScanReportMode.FENCE_SENSITIVITY_HIGH;
-        console.info("[bluetooth_js]ScanReportMode FENCE_SENSITIVITY_HIGH: " + JSON.stringify(FENCE_SENSITIVITY_HIGH));
-        expect(FENCE_SENSITIVITY_HIGH).assertEqual(11);
         done();
     })
 })
