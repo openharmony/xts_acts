@@ -1766,7 +1766,7 @@ export default function CalendarManagerTest() {
     it("SUB_2Application_CalendarManagerApi_CreateCalendar_Async_0100", 0, () => {
       let CaseName = 'SUB_2Application_CalendarManagerApi_CreateCalendar_Async_0100';
       let CalendarAccounts: calendarManager.CalendarAccount = {
-        name: 'HUAWEI日历',
+        name: '日历',
         type: calendarManager.CalendarType.LOCAL,
         displayName: '本地账户'
       }
