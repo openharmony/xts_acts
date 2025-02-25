@@ -16,6 +16,7 @@ add_library(nativerender SHARED
     keyDisPatchTest/keyEventDispatch_test.cpp
     progress/progress_linear_style_test.cpp
 	focusControl/focus_control.cpp
+    textArea/textArea_letter_spacing.cpp
 )
 
 add_library(nativefunc SHARED

@@ -6,7 +6,8 @@
         "MainAbility/pages/focuscontrol/focuscontrol",
         "MainAbility/pages/focuscontrol/focuscontrol2",
         "MainAbility/pages/focuscontrol/focuscontrol3x",
-        "MainAbility/pages/focuscontrol/focuscontrol4"
-
+        "MainAbility/pages/focuscontrol/focuscontrol4",
+        "MainAbility/pages/textArea/TextAreaLetterSpacing",
+        "MainAbility/pages/textInput/TextInputLetterSpacing"
   ]
 }

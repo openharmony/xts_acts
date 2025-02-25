@@ -17,7 +17,11 @@
 #include "manager/plugin_manager.h"
 #include "keyDisPatchTest/keyEventDispatch_test.h"
 #include "progress/progress_linear_style_test.h"
+
 #include "focusControl/focus_Control.h"
+
+#include "textArea/textArea_letter_spacing.h"
+
 
 
 namespace ArkUICapiTest {
@@ -44,6 +48,11 @@ static napi_value Init(napi_env env, napi_value exports)
         {"FocusControlTest_003", nullptr, FocusControlTest::FocusControlTest_003,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"FocusControlTest_004", nullptr, FocusControlTest::FocusControlTest_004,
+
+        {"textAreaLetterSpacing001", nullptr, TextAreaLetterSpacing::textAreaLetterSpacing001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"textInputLetterSpacing002", nullptr, TextAreaLetterSpacing::textInputLetterSpacing002,
+
          nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
