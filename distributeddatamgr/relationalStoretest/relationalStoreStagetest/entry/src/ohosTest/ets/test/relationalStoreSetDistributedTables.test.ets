@@ -37,12 +37,6 @@ export default function relationalStoreSetDistributedTablesTest() {
       try {
         rdbStore = await relationalStore.getRdbStore(context, config);
         console.log(TAG + "create rdb store success")
-        let sqlStatement = "CREATE TABLE IF NOT EXISTS employee (" +
-          "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-          "name TEXT NOT NULL," +
-          "age INTEGER)"
-        await rdbStore.executeSql(sqlStatement, null)
-        console.log(TAG + "create table employee success")
       } catch (err) {
         console.log(TAG + "create rdb store failed" + `, error code is ${err.code}, message is ${err.message}`)
       }
@@ -50,16 +44,26 @@ export default function relationalStoreSetDistributedTablesTest() {
 
     beforeEach(async () => {
       console.info(TAG + 'beforeEach');
+      let sqlStatement = "CREATE TABLE IF NOT EXISTS employee (" +
+          "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+          "name TEXT NOT NULL," +
+          "age INTEGER)"
+        await rdbStore.executeSql(sqlStatement, null)
+        console.log(TAG + "create table employee success")
     })
 
     afterEach(async () => {
       console.info(TAG + 'afterEach');
+      const DROP_TABLE_EMPLOYEE = "DROP TABLE IF EXISTS employee";
+      await rdbStore.executeSql(DROP_TABLE_EMPLOYEE, null);
+      console.log(TAG + "drop table employee success")
     })
 
     afterAll(async () => {
       console.info(TAG + 'afterAll');
       rdbStore = null
       await relationalStore.deleteRdbStore(context, STORE_NAME);
+      console.log(TAG + "delete rdb store success")
     })
 
     console.log(TAG + "*************Unit Test Begin*************");
