@@ -43,9 +43,7 @@ struct Groupgesturrehand {
               .onActionEnd((event)=>{
                 console.log("long end hand"+event.fingerList[0].hand)
               })
-              .onActionCancel((event:GestureEvent)=>{
-                console.log("long cancel hand"+event.fingerList[0].hand)
-              })
+              
               .onAction((event)=>{
                 console.log("long action hand"+event.fingerList[0].hand)
               }),
@@ -59,9 +57,7 @@ struct Groupgesturrehand {
               .onActionEnd((event) => {
                 console.log("pan end hand" + event.fingerList[0].hand)
               })
-              .onActionCancel((event:GestureEvent) => {
-                console.log("pan cancel hand" + event.fingerList[0].hand)
-              })
+              
           )
             .onCancel(() => {
               this.Vue = true;
@@ -78,9 +74,7 @@ struct Groupgesturrehand {
               .onActionEnd((event)=>{
                 console.log("long end hand"+event.fingerList[0].hand)
               })
-              .onActionCancel((event:GestureEvent)=>{
-                console.log("long cancel hand"+event.fingerList[0].hand)
-              })
+              
               .onAction((event)=>{
                 console.log("long action hand"+event.fingerList[0].hand)
               }),
@@ -94,9 +88,7 @@ struct Groupgesturrehand {
               .onActionEnd((event) => {
                 console.log("pan end hand" + event.fingerList[0].hand)
               })
-              .onActionCancel((event:GestureEvent) => {
-                console.log("pan cancel hand" + event.fingerList[0].hand)
-              })
+             
           )
             .onCancel(() => {
               this.Vue = true;
@@ -113,9 +105,6 @@ struct Groupgesturrehand {
               .onActionEnd((event)=>{
                 console.log("long end hand"+event.fingerList[0].hand)
               })
-              .onActionCancel((event:GestureEvent)=>{
-                console.log("long cancel hand"+event.fingerList[0].hand)
-              })
               .onAction((event)=>{
                 console.log("long action hand"+event.fingerList[0].hand)
               }),
@@ -129,9 +118,7 @@ struct Groupgesturrehand {
               .onActionEnd((event) => {
                 console.log("pan end hand" + event.fingerList[0].hand)
               })
-              .onActionCancel((event:GestureEvent) => {
-                console.log("pan cancel hand" + event.fingerList[0].hand)
-              })
+              
           )
             .onCancel(() => {
               this.Vue = true;
