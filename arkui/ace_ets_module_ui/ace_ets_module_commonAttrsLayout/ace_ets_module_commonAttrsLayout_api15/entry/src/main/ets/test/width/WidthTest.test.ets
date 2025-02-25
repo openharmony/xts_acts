@@ -55,7 +55,7 @@ export default function WidthTest() {
       done();
     });
     /* *
-    * @tc.number: WidthTest_0100
+    * @tc.number: SUB_ACE_UI_COMPONENT_COLUMN_MATCHPARENT_0030
     * @tc.name  : WidthTest_0100
     * @tc.desc  : To test that the width supports LayoutPolicy.MATCH_PARENT. 
     * @tc.level : Level 2
