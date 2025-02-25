@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,22 +14,24 @@
  * limitations under the License.
  */
 
-export const ProgressLinearStyleTest: (a: string) => void;
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
-export const testProgressLinearStyle: (a: string) => void;
+@Entry
+@Component
+struct FocuscontrolTest2 {
+  PAGE_TAG: string = 'FocuscontrolTest2';
 
-export const textAreaLetterSpacing001: (a: string) => void;
-
-export const textInputLetterSpacing002: (a: string) => void;
-
-export const KeyEventPatchTest: (a: string) => void;
-
-export const GetKeyEventData: () => object;
-
-export const FocusControlTest_001: (a: string) => void;
-
-export const FocusControlTest_002: (a: string) => void;
-
-export const FocusControlTest_003: (a: string) => void;
-
-export const FocusControlTest_004: (a: string) => void;
+  build() {
+    Column() {
+      Button('test2').onClick(()=>{
+          focusControl.requestFocus("FocuscontrolTest2")
+      }).key("transferKey2")
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.FocusControlTest_002(this.PAGE_TAG);
+      })
+    }
+  }
+}  

@@ -15,8 +15,13 @@
 
 #include "common/common.h"
 #include "manager/plugin_manager.h"
+#include "keyDisPatchTest/keyEventDispatch_test.h"
 #include "progress/progress_linear_style_test.h"
+
+#include "focusControl/focus_Control.h"
+
 #include "textArea/textArea_letter_spacing.h"
+
 
 
 namespace ArkUICapiTest {
@@ -30,8 +35,21 @@ static napi_value Init(napi_env env, napi_value exports)
     }
 
     napi_property_descriptor desc[] = {
+		{"KeyEventPatchTest", nullptr, KeyEventDispatchTest::KeyEventPatchTest,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    	{"GetKeyEventData", nullptr, KeyEventDispatchTest::GetKeyEventData,
+         nullptr, nullptr, nullptr, napi_default, nullptr}, 
         {"testProgressLinearStyle", nullptr, ProgressLinearStyleTest::ProgressLinearStyleTest001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
+		{"FocusControlTest_001", nullptr, FocusControlTest::FocusControlTest_001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"FocusControlTest_002", nullptr, FocusControlTest::FocusControlTest_002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"FocusControlTest_003", nullptr, FocusControlTest::FocusControlTest_003,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"FocusControlTest_004", nullptr, FocusControlTest::FocusControlTest_004,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+
         {"textAreaLetterSpacing001", nullptr, TextAreaLetterSpacing::textAreaLetterSpacing001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"textInputLetterSpacing002", nullptr, TextAreaLetterSpacing::textInputLetterSpacing002,
