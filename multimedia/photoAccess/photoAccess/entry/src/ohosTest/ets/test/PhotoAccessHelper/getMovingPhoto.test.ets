@@ -136,7 +136,7 @@ export default function getMovingPhotoTest() {
       }
     }
 
-    const requestMovingPhotoErrorContent = async (done: Function, testNum: string, case_num: number, cacelFlag: boolean) => {
+    const requestMovingPhotoErrorContent = async (done: Function, testNum: string, cacelFlag: boolean) => {
       try {
         let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
         predicates.equalTo(photoAccessHelper.PhotoKeys.PHOTO_SUBTYPE, photoAccessHelper.PhotoSubtype.MOVING_PHOTO);
@@ -166,29 +166,10 @@ export default function getMovingPhotoTest() {
         }
         let requestOptions = null;
         let handler: photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> | undefined = undefined;
-        switch (case_num) {
-          case 0:
-            handler = new MovingPhotoHandler();
-            console.log(`${testNum}::handler::MovingPhotoHandler`);
-            break;
-          case 1:
-            handler = new PhotoHandler();
-            console.log(`${testNum}::handler::PhotoHandler`);
-            break;
-          case 2:
-            handler = new VideoHandler();
-            console.log(`${testNum}::handler::VideoHandler`);
-            break;
-          case 3:
-            handler = new ArrayBufferHandler();
-            console.log(`${testNum}::handler::ArrayBufferHandler`);
-            break;
-          default:
-            console.error(`${testNum}::requestMovingPhotoErrorContent::illegal case_num: ${case_num}`);
-            expect(false).assertTrue();
-            done();
-        }
+        handler = new MovingPhotoHandler();
+        console.log(`${testNum}::handler::MovingPhotoHandler`);
         let requestId: string = await photoAccessHelper.MediaAssetManager.requestMovingPhoto(null, asset, requestOptions, handler);
+        expect(false).assertTrue();
       } catch (err) {
         console.log(`${testNum}::failed to request moving photo, error code is ${err.code}, message is ${err.message}`);
         expect(err.code).assertEqual(`401`);
@@ -346,7 +327,7 @@ export default function getMovingPhotoTest() {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_CONTENT_0006
      * @tc.name      : request_moving_photo_content_0006
-     * @tc.desc      : request moving photo all content to sandbox
+     * @tc.desc      : request moving photo error code 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -356,9 +337,7 @@ export default function getMovingPhotoTest() {
       const expectFlag = true;
       const testNum = 'request_moving_photo_content_0006';
       const fileList: Array<string> = ["ImageFile.jpg", "VideoFile.mp4"];
-      await requestMovingPhotoErrorContent(done, testNum, 0, cacelFlag);
-      await sleep(3000);
-      await checkFileExist(done, testNum, sandboxPath, fileList, expectFlag);
+      await requestMovingPhotoErrorContent(done, testNum, cacelFlag);
     });
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_LOAD_MOVING_PHOTO_001
