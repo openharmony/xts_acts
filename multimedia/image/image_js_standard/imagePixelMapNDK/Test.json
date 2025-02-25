@@ -36,12 +36,30 @@
                 "./resource/image/test.ico ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
                 "./resource/image/test.svg ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
                 "./resource/image/test.bmp ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
-                "./resource/image/test_PixelMapNDKJs.dng ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files"
+                "./resource/image/test_PixelMapNDKJs.dng ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test_dng.dng ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test.png ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/0801_sdr2.heic ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/SIZE_0_0.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/CUVAHdrMulti.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test_DMA.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test_DMA_33_77.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test_DMA_55_77.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test_DMA_128_256.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test_DMA_512_512.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test_DMA_2999_3742.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test_DMA_1801_4041.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test_DMA_3071_4095.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test_DMA_3072_4096.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files"
             ]
         },
         {
             "type": "ShellKit",
-            "run-command": []
+            "run-command": [
+                "chmod -R 777 /data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/*",
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }
