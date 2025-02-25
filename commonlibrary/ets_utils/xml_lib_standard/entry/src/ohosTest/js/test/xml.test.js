@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 import xml from '@ohos.xml'
 import util from '@ohos.util'
 export default function XmlSerializerXmlPullParserTest() {
@@ -2752,7 +2752,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testParse011', 0, function () {
+    it('testParseXml011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -2784,7 +2784,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testParse012', 0, function () {
+    it('testParseXml012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -2816,7 +2816,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testParse013', 0, function () {
+    it('testParseXml013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="hi&amp;gh" logged="&lt;true">' +
@@ -2845,5 +2845,250 @@ describe('XmlSerializerXmlPullParserTest', function () {
         let strAttr = 'importance, hi&gh logged, <true';
         expect(result.trim()).assertEqual(str);
         expect(resAttr.trim()).assertEqual(strAttr);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_11400
+     * @tc.name: testSetAttributes006
+     * @tc.desc: Writes the text.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testSetAttributes006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        const myMAX = 1024;
+        let arrayBuffer = new ArrayBuffer(myMAX);
+        let serializer = new xml.XmlSerializer(arrayBuffer);
+        serializer.startElement('note');
+        serializer.setAttributes('importance', 'Hello>World');
+        serializer.setText('high');
+        serializer.endElement();
+        let uint8 = new Uint8Array(arrayBuffer);
+        let xmlStr = '<note importance="Hello&gt;World">high</note>';
+        let result = '';
+        for (let i = 0; i < xmlStr.length; ++i) {
+            result = result + String.fromCodePoint(uint8[i]);
+        }
+        expect(result).assertEqual(xmlStr);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_11500
+     * @tc.name: testSetAttributes007
+     * @tc.desc: Writes the text.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testSetAttributes007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        const myMAX = 1024;
+        let arrayBuffer = new ArrayBuffer(myMAX);
+        let serializer = new xml.XmlSerializer(arrayBuffer);
+        serializer.startElement('note');
+        serializer.setAttributes('importance', 'Hello<World');
+        serializer.setText('high');
+        serializer.endElement();
+        let uint8 = new Uint8Array(arrayBuffer);
+        let xmlStr = '<note importance="Hello&lt;World">high</note>';
+        let result = '';
+        for (let i = 0; i < xmlStr.length; ++i) {
+            result = result + String.fromCodePoint(uint8[i]);
+        }
+        expect(result).assertEqual(xmlStr);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_11600
+     * @tc.name: testSetAttributes008
+     * @tc.desc: Writes the text.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testSetAttributes008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        const myMAX = 1024;
+        let arrayBuffer = new ArrayBuffer(myMAX);
+        let serializer = new xml.XmlSerializer(arrayBuffer);
+        serializer.startElement('note');
+        serializer.setAttributes('importance', 'Hello&World');
+        serializer.setText('high');
+        serializer.endElement();
+        let uint8 = new Uint8Array(arrayBuffer);
+        let xmlStr = '<note importance="Hello&amp;World">high</note>';
+        let result = '';
+        for (let i = 0; i < xmlStr.length; ++i) {
+            result = result + String.fromCodePoint(uint8[i]);
+        }
+        expect(result).assertEqual(xmlStr);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_11700
+     * @tc.name: testSetAttributes009
+     * @tc.desc: Writes the text.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testSetAttributes009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        const myMAX = 1024;
+        let arrayBuffer = new ArrayBuffer(myMAX);
+        let serializer = new xml.XmlSerializer(arrayBuffer);
+        serializer.startElement('note');
+        serializer.setAttributes('importance', 'Hello\'World');
+        serializer.setText('high');
+        serializer.endElement();
+        let uint8 = new Uint8Array(arrayBuffer);
+        let xmlStr = '<note importance="Hello&apos;World">high</note>';
+        let result = '';
+        for (let i = 0; i < xmlStr.length; ++i) {
+            result = result + String.fromCodePoint(uint8[i]);
+        }
+        expect(result).assertEqual(xmlStr);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_11800
+     * @tc.name: testSetAttributes010
+     * @tc.desc: Writes the text.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testSetAttributes010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        const myMAX = 1024;
+        let arrayBuffer = new ArrayBuffer(myMAX);
+        let serializer = new xml.XmlSerializer(arrayBuffer);
+        serializer.startElement('note');
+        serializer.setAttributes('importance', 'Hello"World');
+        serializer.setText('high');
+        serializer.endElement();
+        let uint8 = new Uint8Array(arrayBuffer);
+        let xmlStr = '<note importance="Hello&quot;World">high</note>';
+        let result = '';
+        for (let i = 0; i < xmlStr.length; ++i) {
+            result = result + String.fromCodePoint(uint8[i]);
+        }
+        expect(result).assertEqual(xmlStr);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_11900
+     * @tc.name: testSetCDATA006
+     * @tc.desc: Writes the CDATA.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testSetCDATA006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        const myMAX = 2048;
+        let arrayBuffer = new ArrayBuffer(myMAX);
+        let serializer = new xml.XmlSerializer(arrayBuffer);
+        serializer.startElement("note");
+        serializer.setCDATA(']]>')
+        serializer.endElement();
+        let xmlStr = '<note>\r\n  <![CDATA[]]]]><![CDATA[>]]>\r\n</note>';
+        let uint8 = new Uint8Array(arrayBuffer);
+        let result = "";
+        for (let i = 0; i < xmlStr.length; ++i) {
+            result += String.fromCodePoint(uint8[i]);
+        }
+        expect(result).assertEqual(xmlStr);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_12000
+     * @tc.name: testSetCDATA007
+     * @tc.desc: Writes the CDATA.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testSetCDATA007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        const myMAX = 2048;
+        let arrayBuffer = new ArrayBuffer(myMAX);
+        let serializer = new xml.XmlSerializer(arrayBuffer);
+        serializer.startElement("note");
+        serializer.setCDATA('<![CDATA[]]>')
+        serializer.endElement();
+        let xmlStr = '<note>\r\n  <![CDATA[<![CDATA[]]]]><![CDATA[>]]>\r\n</note>';
+        let uint8 = new Uint8Array(arrayBuffer);
+        let result = "";
+        for (let i = 0; i < xmlStr.length; ++i) {
+            result += String.fromCodePoint(uint8[i]);
+        }
+        expect(result).assertEqual(xmlStr);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_12100
+     * @tc.name: testSetCDATA008
+     * @tc.desc: Writes the CDATA.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testSetCDATA008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        const myMAX = 2048;
+        let arrayBuffer = new ArrayBuffer(myMAX);
+        let serializer = new xml.XmlSerializer(arrayBuffer);
+        serializer.startElement("note");
+        serializer.setCDATA('fun() {if (a < b) return;}')
+        serializer.endElement();
+        let xmlStr = '<note>\r\n  <![CDATA[fun() {if (a < b) return;}]]>\r\n</note>';
+        let uint8 = new Uint8Array(arrayBuffer);
+        let result = "";
+        for (let i = 0; i < xmlStr.length; ++i) {
+            result += String.fromCodePoint(uint8[i]);
+        }
+        expect(result).assertEqual(xmlStr);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_12200
+     * @tc.name: testSetCDATA009
+     * @tc.desc: Writes the CDATA.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testSetCDATA009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        const myMAX = 2048;
+        let arrayBuffer = new ArrayBuffer(myMAX);
+        let serializer = new xml.XmlSerializer(arrayBuffer);
+        serializer.startElement("note");
+        serializer.setCDATA('fun() {if (a && b) return;}')
+        serializer.endElement();
+        let xmlStr = '<note>\r\n  <![CDATA[fun() {if (a && b) return;}]]>\r\n</note>';
+        let uint8 = new Uint8Array(arrayBuffer);
+        let result = "";
+        for (let i = 0; i < xmlStr.length; ++i) {
+            result += String.fromCodePoint(uint8[i]);
+        }
+        expect(result).assertEqual(xmlStr);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_12300
+     * @tc.name: testSetCDATA0010
+     * @tc.desc: Writes the CDATA.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testSetCDATA0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        const myMAX = 2048;
+        let arrayBuffer = new ArrayBuffer(myMAX);
+        let serializer = new xml.XmlSerializer(arrayBuffer);
+        serializer.startElement("note");
+        serializer.setCDATA('fun() {if (a == \'xml\') return;}')
+        serializer.endElement();
+        let xmlStr = '<note>\r\n  <![CDATA[fun() {if (a == \'xml\') return;}]]>\r\n</note>';
+        let uint8 = new Uint8Array(arrayBuffer);
+        let result = "";
+        for (let i = 0; i < xmlStr.length; ++i) {
+            result += String.fromCodePoint(uint8[i]);
+        }
+        expect(result).assertEqual(xmlStr);
     })
 })}

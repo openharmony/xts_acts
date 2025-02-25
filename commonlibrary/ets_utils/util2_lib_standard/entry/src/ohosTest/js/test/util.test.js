@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 import util from '@ohos.util'
 
 class Temperature {
@@ -9382,16 +9382,16 @@ describe('DecodeEncodeTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0001
-     * @tc.name: testwrite001
-     * @tc.desc:  Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_00100 
+     * @tc.name: testWrite001
+     * @tc.desc: Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
      * comitted from the returned string and stored in an internal buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
 
-     it("testwrite001", 0, function () {
+     it("testWrite001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let decoder = new util.StringDecoder('utf-8');
       let input =  new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
       const decoded = decoder.write(input);
@@ -9399,30 +9399,30 @@ describe('DecodeEncodeTest', function () {
     });
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0002
-     * @tc.name: testwrite002
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_00200
+     * @tc.name: testWrite002
      * @tc.desc: Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
      * comitted from the returned string and stored in an internal buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it("testwrite002", 0, function () {
+    it("testWrite002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let decoder = new util.StringDecoder('utf-8');
       const decoded = decoder.write("abc");
       expect(decoded).assertEqual('abc');
     });
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_00013
-     * @tc.name: testwrite003
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_00300
+     * @tc.name: testWrite003
      * @tc.desc:  Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
      * comitted from the returned string and stored in an internal buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it("testwrite003", 0, function () {
+    it("testWrite003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let decoder = new util.StringDecoder('big5');
       let input = new Uint8Array([167,65,166,110]);
       const decoded = decoder.write(input);
@@ -9430,15 +9430,15 @@ describe('DecodeEncodeTest', function () {
     });
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0012
-     * @tc.name: testwrite004
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_00400
+     * @tc.name: testWrite004
      * @tc.desc:  Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
      * comitted from the returned string and stored in an internal buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it("testwrite004", 0, function () {
+    it("testWrite004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let decoder = new util.StringDecoder('iso-8859-2');
       let input = new Uint8Array([0X61,0X62,0X63]);
       const decoded = decoder.write(input);
@@ -9446,15 +9446,15 @@ describe('DecodeEncodeTest', function () {
     });
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0010
-     * @tc.name: testwrite005
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_00500
+     * @tc.name: testWrite005
      * @tc.desc:  Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
      * comitted from the returned string and stored in an internal buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it("testwrite005", 0, function () {
+    it("testWrite005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let decoder = new util.StringDecoder('koi8-r');
       let input = new Uint8Array([97,98,99]);
       const decoded = decoder.write(input);
@@ -9462,15 +9462,15 @@ describe('DecodeEncodeTest', function () {
     });
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0011
-     * @tc.name: testwrite006
-     * @tc.desc:  Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_00600
+     * @tc.name: testWrite006
+     * @tc.desc: Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the Uint8Array are
      * comitted from the returned string and stored in an internal buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it("testwrite006", 0, function () {
+    it("testWrite006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let decoder = new util.StringDecoder('windows-1250');
       let input = new Uint8Array([0X61,0X62,0X63]);
       const decoded = decoder.write(input);
@@ -9478,14 +9478,14 @@ describe('DecodeEncodeTest', function () {
     });
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0003
-     * @tc.name: testend001
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_00700
+     * @tc.name: testEnd001
      * @tc.desc: Returns any remaining input stored in the internal buffer as a string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it("testend001", 0, function () {
+    it("testEnd001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let decoder = new util.StringDecoder('macintosh');
       let input =  new Uint8Array([0X61]);
       const decoded = decoder.end(input);
@@ -9493,28 +9493,28 @@ describe('DecodeEncodeTest', function () {
     });
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0004
-     * @tc.name: testend002
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_00800
+     * @tc.name: testEnd002
      * @tc.desc: Returns any remaining input stored in the internal buffer as a string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it("testend002", 0, function () {
+    it("testEnd002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let decoder = new util.StringDecoder('utf-8');
       const decoded = decoder.end("abc");
       expect(decoded).assertEqual('abc');
     });
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0005
-     * @tc.name: testend003
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_00900
+     * @tc.name: testEnd003
      * @tc.desc: Returns any remaining input stored in the internal buffer as a string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it("testend003", 0, function () {
+    it("testEnd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let decoder = new util.StringDecoder('utf-8');
       let input =  new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
       const decoded = decoder.end(input);
@@ -9522,14 +9522,14 @@ describe('DecodeEncodeTest', function () {
     });
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_01006
-     * @tc.name: testend004
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_01000
+     * @tc.name: testEnd004
      * @tc.desc: Returns any remaining input stored in the internal buffer as a string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it("testend004", 0, function () {
+    it("testEnd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let decoder = new util.StringDecoder('utf-8');
       let input =  new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
       const decoded = decoder.write(input.slice(0, 5));
@@ -9537,5 +9537,776 @@ describe('DecodeEncodeTest', function () {
       expect(decoded).assertEqual('你');
       expect(decodeend).assertEqual('好');
     });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_01100
+     * @tc.name: testWrite007
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let stringDecoder = new util.StringDecoder('utf-8');
+        let uint8 = new Uint8Array([228,189,160,0,229,165,189]);
+        let resStr = stringDecoder.write(uint8);
+        expect(resStr).assertEqual('你\u0000好');
+        expect(resStr.length).assertEqual(3);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_01200
+     * @tc.name: testWrite008
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let stringDecoder = new util.StringDecoder('utf-8');
+        let uint8 = new Uint8Array([0,228,189,160,229]);
+        let retStr = stringDecoder.write(uint8);
+        expect(retStr).assertEqual('\u0000你');
+        let uint8arr = new Uint8Array([165,189]);
+        let resStr = stringDecoder.end(uint8arr);
+        expect(resStr).assertEqual('好');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_01300
+     * @tc.name: testWrite009
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('gb18030');
+        let result = textEncoder.encodeInto('abc熠熠');
+        let stringDecoder = new util.StringDecoder('gb18030');
+        let res = stringDecoder.write(result);
+        expect(res).assertEqual('abc熠熠');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_01400
+     * @tc.name: testWrite010
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('big5');
+        let result = textEncoder.encodeInto('abc熠熠');
+        let stringDecoder = new util.StringDecoder('big5');
+        let res = stringDecoder.write(result);
+        expect(res).assertEqual('abc熠熠');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_01500
+     * @tc.name: testWrite011
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('shift_jis');
+        let result = textEncoder.encodeInto('こんにちは');
+        let stringDecoder = new util.StringDecoder('shift_jis');
+        let res = stringDecoder.write(result);
+        expect(res).assertEqual('こんにちは');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_01600
+     * @tc.name: testWrite012
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('iso-2022-jp');
+        let result = textEncoder.encodeInto('こんにちは');
+        let stringDecoder = new util.StringDecoder('iso-2022-jp');
+        let res = stringDecoder.write(result);
+        expect(res).assertEqual('こんにちは');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_01700
+     * @tc.name: testWrite013
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('ibm866');
+        let result = textEncoder.encodeInto('Здравствуйте');
+        let stringDecoder = new util.StringDecoder('ibm866');
+        let res = stringDecoder.write(result);
+        expect(res).assertEqual('Здравствуйте');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_01800
+     * @tc.name: testWrite014
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('GBK');
+        let result = textEncoder.encodeInto('abc熠熠');
+        let stringDecoder = new util.StringDecoder('GBK');
+        let data= stringDecoder.write(result);
+        expect(data).assertEqual('abc熠熠');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_01900
+     * @tc.name: testWrite015
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('GB2312');
+        let result = textEncoder.encodeInto('abc熠熠');
+        let stringDecoder = new util.StringDecoder('GBK');
+        let data= stringDecoder.write(result);
+        expect(data).assertEqual('abc熠熠');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_02000
+     * @tc.name: testWrite016
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('iso-8859-2');
+        let result = textEncoder.encodeInto('Szia');
+        let stringDecoder = new util.StringDecoder('iso-8859-2');
+        let data= stringDecoder.write(result);
+        expect(data).assertEqual('Szia');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_02100
+     * @tc.name: testWrite017
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('iso-8859-4');
+        let result = textEncoder.encodeInto('Tavaliselt tere päeval');
+        let stringDecoder = new util.StringDecoder('iso-8859-4');
+        let data= stringDecoder.write(result);
+        expect(data).assertEqual('Tavaliselt tere päeval');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_02200
+     * @tc.name: testWrite018
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('iso-8859-5');
+        let result = textEncoder.encodeInto('Здравствуйте');
+        let stringDecoder = new util.StringDecoder('iso-8859-5');
+        let data= stringDecoder.write(result);
+        expect(data).assertEqual('Здравствуйте');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_02300
+     * @tc.name: testWrite019
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('iso-8859-6');
+        let result = textEncoder.encodeInto('مرحبا');
+        let stringDecoder = new util.StringDecoder('iso-8859-6');
+        let data= stringDecoder.write(result);
+        expect(data).assertEqual('مرحبا');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_02400
+     * @tc.name: testWrite020
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('iso-8859-7');
+        let result = textEncoder.encodeInto('Γεια σου');
+        let stringDecoder = new util.StringDecoder('iso-8859-7');
+        let data= stringDecoder.write(result);
+        expect(data).assertEqual('Γεια σου');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_02500
+     * @tc.name: testWrite021
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('iso-8859-8');
+        let result = textEncoder.encodeInto('שלום');
+        let stringDecoder = new util.StringDecoder('iso-8859-8');
+        let data= stringDecoder.write(result);
+        expect(data).assertEqual('שלום');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_02600
+     * @tc.name: testWrite022
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('macintosh');
+        let result = textEncoder.encodeInto('é£');
+        let stringDecoder = new util.StringDecoder('macintosh');
+        let data= stringDecoder.write(result);
+        expect(data).assertEqual('é£');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_02700
+     * @tc.name: testWrite023
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('iso-8859-8-i');
+        let result = textEncoder.encodeInto('שלום');
+        let stringDecoder = new util.StringDecoder('iso-8859-8-i');
+        let data= stringDecoder.write(result);
+        expect(data).assertEqual('שלום');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_02800
+     * @tc.name: stringDecoder0024
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('iso-8859-10');
+        let result = textEncoder.encodeInto('Hei');
+        let stringDecoder = new util.StringDecoder('iso-8859-10');
+        let data= stringDecoder.write(result);
+        expect(data).assertEqual('Hei');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_02900
+     * @tc.name: testWrite025
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('iso-8859-13');
+        let result = textEncoder.encodeInto('Sveiki');
+        let stringDecoder = new util.StringDecoder('iso-8859-13');
+        let data= stringDecoder.write(result);
+        expect(data).assertEqual('Sveiki');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_03000
+     * @tc.name: testWrite026
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('iso-8859-14');
+        let result = textEncoder.encodeInto('Diolch');
+        let stringDecoder = new util.StringDecoder('iso-8859-14');
+        let data= stringDecoder.write(result);
+        expect(data).assertEqual('Diolch');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_03100
+     * @tc.name: testWrite027
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('iso-8859-15');
+        let result = textEncoder.encodeInto('Hola');
+        let stringDecoder = new util.StringDecoder('iso-8859-15');
+        let data= stringDecoder.write(result);
+        expect(data).assertEqual('Hola');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_03200
+     * @tc.name: testWrite028
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('koi8-r');
+        let result = textEncoder.encodeInto('Привет, мир!');
+        let stringDecoder = new util.StringDecoder('koi8-r');
+        let data= stringDecoder.write(result);
+        expect(data).assertEqual('Привет, мир!');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_03300
+     * @tc.name: testWrite029
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('koi8-u');
+        let result = textEncoder.encodeInto('Привіт, світ');
+        let stringDecoder = new util.StringDecoder('koi8-u');
+        let data = stringDecoder.write(result);
+        expect(data).assertEqual('Привіт, світ');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_03400
+     * @tc.name: testWrite030
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder();
+        let buffer = new ArrayBuffer(4);
+        let dest = new Uint8Array(buffer);
+        textEncoder.encodeIntoUint8Array('😃', dest);
+        let stringDecoder = new util.StringDecoder();
+        let result = stringDecoder.write(dest);
+        expect(result).assertEqual('😃');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_03500
+     * @tc.name: testWrite031
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Functio
+     * @tc.level: Level 1
+     */
+    it('testWrite031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder();
+        let buffer = new ArrayBuffer(10);
+        let dest = new Uint8Array(buffer);
+        textEncoder.encodeIntoUint8Array('aé中😃', dest);
+        let stringDecoder = new util.StringDecoder();
+        let result = stringDecoder.write(dest);
+        expect(result).assertEqual('aé中😃');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_03600
+     * @tc.name: testWrite032
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder();
+        let buffer = new ArrayBuffer(4);
+        let dest = new Uint8Array(buffer);
+        textEncoder.encodeIntoUint8Array('😃🤞', dest);
+        let stringDecoder = new util.StringDecoder();
+        let result = stringDecoder.write(dest);
+        expect(result).assertEqual('😃');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_03700
+     * @tc.name: testWrite033
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder();
+        let buffer = new ArrayBuffer(8);
+        let dest = new Uint8Array(buffer);
+        textEncoder.encodeIntoUint8Array('😃🤞', dest);
+        let stringDecoder = new util.StringDecoder();
+        let result = stringDecoder.write(dest);
+        expect(result).assertEqual('😃🤞');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_03800
+     * @tc.name: testWrite034
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder();
+        let buffer = new ArrayBuffer(10);
+        let dest = new Uint8Array(buffer);
+        textEncoder.encodeIntoUint8Array('a😃🤞b', dest);
+        let stringDecoder = new util.StringDecoder();
+        let result = stringDecoder.write(dest);
+        expect(result).assertEqual('a😃🤞b');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_03900
+     * @tc.name: testWrite035
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('windows-874');
+        let result = textEncoder.encodeInto('สวัสดี');
+        let stringDecoder = new util.StringDecoder('windows-874');
+        let data = stringDecoder.write(result);
+        expect(data).assertEqual('สวัสดี');
+    })
+
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_04000
+     * @tc.name: testWrite036
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('windows-1251');
+        let result = textEncoder.encodeInto('Привет, мир');
+        let stringDecoder = new util.StringDecoder('windows-1251');
+        let data = stringDecoder.write(result);
+        expect(data).assertEqual('Привет, мир');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_04100
+     * @tc.name: testWrite037
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('windows-1252');
+        let result = textEncoder.encodeInto('Hi, World');
+        let stringDecoder = new util.StringDecoder('windows-1252');
+        let data = stringDecoder.write(result);
+        expect(data).assertEqual('Hi, World');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_04200
+     * @tc.name: testWrite038
+     * @tc.desc: Returns a decoded string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testWrite038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('windows-1253');
+        let result = textEncoder.encodeInto('Γεια σας, κόσμο');
+        let stringDecoder = new util.StringDecoder('windows-1253');
+        let data = stringDecoder.write(result);
+        expect(data).assertEqual('Γεια σας, κόσμο');
+    })
+
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_04300
+    * @tc.name: testWrite039
+    * @tc.desc: Returns a decoded string.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('testWrite039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+       let textEncoder = new util.TextEncoder('windows-1254');
+       let result = textEncoder.encodeInto('Merhaba, dünya');
+       let stringDecoder = new util.StringDecoder('windows-1254');
+       let data = stringDecoder.write(result);
+       expect(data).assertEqual('Merhaba, dünya');
+    })
+
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_04400
+    * @tc.name: testWrite040
+    * @tc.desc: Returns a decoded string.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('testWrite040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('windows-1255');
+        let result = textEncoder.encodeInto('שלום, עולם');
+        let stringDecoder = new util.StringDecoder('windows-1255');
+        let data = stringDecoder.write(result);
+        expect(data).assertEqual('שלום, עולם');
+    })
+
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_04500
+    * @tc.name: testWrite041
+    * @tc.desc: Returns a decoded string.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('testWrite041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('windows-1256');
+        let result = textEncoder.encodeInto('مرحبا, العالم');
+        let stringDecoder = new util.StringDecoder('windows-1256');
+        let data = stringDecoder.write(result);
+        expect(data).assertEqual('مرحبا, العالم');
+    })
+
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_04600
+    * @tc.name: testWrite042
+    * @tc.desc: Returns a decoded string.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('testWrite042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('windows-1257');
+        let result = textEncoder.encodeInto('Tere, maailma');
+        let stringDecoder = new util.StringDecoder('windows-1257');
+        let data = stringDecoder.write(result);
+        expect(data).assertEqual('Tere, maailma');
+    })
+
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_04700
+    * @tc.name: testWrite043
+    * @tc.desc: Returns a decoded string.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('testWrite043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('windows-1258');
+        let result = textEncoder.encodeInto('Chào');
+        let stringDecoder = new util.StringDecoder('windows-1258');
+        let data = stringDecoder.write(result);
+        expect(data).assertEqual('Chào');
+    })
+
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_04800
+    * @tc.name: testWrite044
+    * @tc.desc: Returns a decoded string.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('testWrite044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('euc-jp');
+        let result = textEncoder.encodeInto('こんにちは');
+        let stringDecoder = new util.StringDecoder('euc-jp');
+        let data = stringDecoder.write(result);
+        expect(data).assertEqual('こんにちは');
+    })
+
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_04900
+    * @tc.name: testWrite045
+    * @tc.desc: Returns a decoded string.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('testWrite045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('euc-kr');
+        let result = textEncoder.encodeInto('안녕, 세상');
+        let stringDecoder = new util.StringDecoder('euc-kr');
+        let data = stringDecoder.write(result);
+        expect(data).assertEqual('안녕, 세상');
+    })
+
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_05000
+    * @tc.name: testWrite046
+    * @tc.desc: Returns a decoded string.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('testWrite046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('euc-kr');
+        let result = textEncoder.encodeInto('안녕, 세상');
+        let stringDecoder = new util.StringDecoder('euc-kr');
+        let data = stringDecoder.write(result);
+        expect(data).assertEqual('안녕, 세상');
+    })
+
+   /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_05100
+    * @tc.name: testWrite047
+    * @tc.desc: Returns a decoded string.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('testWrite047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textEncoder = new util.TextEncoder('x-mac-cyrillic');
+        let result = textEncoder.encodeInto('Привет, мир!');
+        let stringDecoder = new util.StringDecoder('x-mac-cyrillic');
+        let data = stringDecoder.write(result);
+        expect(data).assertEqual('Привет, мир!');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_05200
+     * @tc.name: decodeTostring0029
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        try {
+            let textDecoder = util.TextDecoder.create('UTF-8', {fatal: true});
+            let uint8arr = new Uint8Array([0xC0]);
+            textDecoder.decodeToString(uint8arr);
+            expect().assertFail();
+        } catch (e) {
+            expect(e.message).assertEqual('Parameter error. Please check if the decode data matches the encoding format.');
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_05300
+     * @tc.name: decodeTostring0030
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textDecoder = util.TextDecoder.create('UTF-8', {fatal: false});
+        let uint8 = new Uint8Array([0xC0]);
+        let result = textDecoder.decodeToString(uint8);
+        expect(result.length).assertEqual(1);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_05400
+     * @tc.name: decodeTostring0031
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        try {
+            let textDecoder = util.TextDecoder.create('utf-16le', {fatal: true});
+            let uint8 = new Uint8Array([0x00]);
+            textDecoder.decodeToString(uint8);
+            expect().assertFail();
+        } catch (e) {
+            expect(e.message).assertEqual('Parameter error. Please check if the decode data matches the encoding format.');
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_05500
+     * @tc.name: decodeTostring0032
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textDecoder = util.TextDecoder.create('utf-16le', {fatal: false});
+        let uint8arr = new Uint8Array([0x00]);
+        let result = textDecoder.decodeToString(uint8arr);
+        expect(result.length).assertEqual(1);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_05600
+     * @tc.name: decodeTostring0033
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        try {
+            let textDecoder = util.TextDecoder.create('utf-16be', {fatal: true});
+            let uint8 = new Uint8Array([0x00]);
+            textDecoder.decodeToString(uint8);
+            expect().assertFail();
+        } catch (e) {
+            expect(e.message).assertEqual('Parameter error. Please check if the decode data matches the encoding format.');
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_05700
+     * @tc.name: decodeTostring0034
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('decodeTostring0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let textDecoder = util.TextDecoder.create('utf-16be', {fatal: false});
+        let uint8 = new Uint8Array([0x00]);
+        let result = textDecoder.decodeToString(uint8);
+        expect(result.length).assertEqual(1);
+    })
 })
 }
