@@ -1077,7 +1077,6 @@ export default function cameraSessionZoomRatioTest() {
      */
     it('SUB_MULTIMEDIA_CAMERA_AUTO_DEVICE_SWITCH_SUPPORTED_0100', 2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_AUTO_DEVICE_SWITCH_SUPPORTED_0100--------------");
-
         if (mCameraNum == 0) {
             console.info(TAG +
             "Entering SUB_MULTIMEDIA_CAMERA_AUTO_DEVICE_SWITCH_SUPPORTED_0100 FAILED with NoCamera");
