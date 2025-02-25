@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
 import { photoKeys, fetchOption, getFileAsset, sleep, getPermission, driveFn } from '../common'
@@ -95,5 +94,29 @@ export default function addRemoveAssetsChangeRequestTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_ADD_REMOVE_ASSETS_CHANGE_REQUEST_0200
+     * @tc.name      : add_remove_assets_change_request_002
+     * @tc.desc      : add and remove assets error code 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+        it('add_remove_assets_change_request_002', 2, async (done: Function) => {
+          let testNum:string = 'add_remove_assets_change_request_002';
+          try {
+            let album:ESObject = await helper.createAlbum(testNum);
+            let albumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+            await helper.applyChanges(albumChangeRequest);
+            albumChangeRequest.removeAssets(null);
+            expect(false).assertTrue();
+            done();
+          } catch (error) {
+            console.log(`${testNum} success; error: ${error}`);
+            expect(error.code).assertEqual(`401`);
+            done();
+          }
+        })
   })
 }

@@ -14,7 +14,6 @@
  */
 
 
-
 import { describe, it, expect, beforeAll } from "@ohos/hypium";
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { BusinessError } from '@ohos.base';
@@ -133,6 +132,47 @@ export default function getMovingPhotoTest() {
       } catch (err) {
         console.error(`${testNum}::failed to request moving photo, error code is ${err.code}, message is ${err.message}`);
         expect(false).assertTrue();
+        done();
+      }
+    }
+
+    const requestMovingPhotoErrorContent = async (done: Function, testNum: string, cacelFlag: boolean) => {
+      try {
+        let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+        predicates.equalTo(photoAccessHelper.PhotoKeys.PHOTO_SUBTYPE, photoAccessHelper.PhotoSubtype.MOVING_PHOTO);
+        let fetchOptions: photoAccessHelper.FetchOptions = {
+          fetchColumns: [],
+          predicates: predicates
+        };
+        let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | undefined = undefined;
+        let flag = 2;
+        while (flag > 0) {
+          assetResult = await phAccessHelper.getAssets(fetchOptions);
+          if (assetResult.getCount() <= 0) {
+            await createMovingPhoto(done, testNum);
+            flag--;
+            continue;
+          }
+          break;
+        }
+        if (flag <= 0 || assetResult == undefined) {
+          console.error(`${testNum}::create moving photo failed !`);
+          expect(false).assertTrue();
+          done();
+        }
+        let asset: photoAccessHelper.PhotoAsset | undefined = undefined;
+        if (assetResult != undefined) {
+          asset = await assetResult.getFirstObject();
+        }
+        let requestOptions = null;
+        let handler: photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> | undefined = undefined;
+        handler = new MovingPhotoHandler();
+        console.log(`${testNum}::handler::MovingPhotoHandler`);
+        let requestId: string = await photoAccessHelper.MediaAssetManager.requestMovingPhoto(null, asset, requestOptions, handler);
+        expect(false).assertTrue();
+      } catch (err) {
+        console.log(`${testNum}::failed to request moving photo, error code is ${err.code}, message is ${err.message}`);
+        expect(err.code).assertEqual(`401`);
         done();
       }
     }
@@ -283,6 +323,21 @@ export default function getMovingPhotoTest() {
       await requestMovingPhotoContent(done, testNum, 0, cacelFlag);
       await sleep(3000);
       await checkFileExist(done, testNum, sandboxPath, fileList, expectFlag);
+    });
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_CONTENT_0006
+     * @tc.name      : request_moving_photo_content_0006
+     * @tc.desc      : request moving photo error code 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('request_moving_photo_content_0006', 2, async (done: Function) => {
+      const cacelFlag = false;
+      const expectFlag = true;
+      const testNum = 'request_moving_photo_content_0006';
+      const fileList: Array<string> = ["ImageFile.jpg", "VideoFile.mp4"];
+      await requestMovingPhotoErrorContent(done, testNum, cacelFlag);
     });
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_LOAD_MOVING_PHOTO_001

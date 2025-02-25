@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import image from '@ohos.multimedia.image';
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
