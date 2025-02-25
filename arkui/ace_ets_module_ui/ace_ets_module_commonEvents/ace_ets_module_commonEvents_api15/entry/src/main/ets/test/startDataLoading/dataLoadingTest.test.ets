@@ -25,6 +25,7 @@ export default function cancelDataLoadingTest() {
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/startDataLoading/dataLoading',
       }
+      
       try {
         router.clear();
         let pages = router.getState();
