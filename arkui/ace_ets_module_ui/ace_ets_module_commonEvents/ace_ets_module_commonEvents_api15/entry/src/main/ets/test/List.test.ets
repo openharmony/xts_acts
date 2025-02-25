@@ -36,6 +36,14 @@ import swipeGestureTest from './isFingerCountLimited/SwipeGesture.test';
 import tapGestureTest from './isFingerCountLimited/TapGesture.test';
 import SnapshotOptions_region from './SnapshotOptions_region/SnapshotOptions_region.test';
 import setKeyProcessingModeTest from './setKeyProcessingModeTest/setKeyProcessingModeTest.test';
+import mouseEventTest from './EventItem/Mouse.test';
+import touchEventTest from './EventItem/Touch.test';
+import tapGestureEventTest from './EventItem/TapGesture.test';
+import swipeGestureEventTest from './EventItem/SwipeGesture.test';
+import longPressEventTest from './EventItem/LongPressGesture.test';
+import panGestureEventTest from './EventItem/PanGesture.test';
+import pinchGestureEventTest from './EventItem/PinchGesture.test';
+import rotationGestureEventTest from './EventItem/RotationGesture.test';
 
 export default function testsuite() {
   getWithUniqueId();
@@ -61,4 +69,12 @@ export default function testsuite() {
   tapGestureTest();
   SnapshotOptions_region();
   setKeyProcessingModeTest();
+  mouseEventTest();
+  touchEventTest();
+  tapGestureEventTest();
+  swipeGestureEventTest();
+  longPressEventTest();
+  panGestureEventTest();
+  pinchGestureEventTest();
+  rotationGestureEventTest();
 }
