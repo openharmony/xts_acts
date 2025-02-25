@@ -30,3 +30,6 @@ export const textImmutablfFontWeight_014: () => number;
 export const textImmutablfFontWeight_015: () => number;
 export const textImmutablfFontWeight_016: () => number;
 export const columnBackDropBlurTest001: () => number;
+export const testListItemGroupNodeAdapter001: () => number;
+export const testListItemGroupNodeAdapter002: () => number;
+export const testListItemGroupNodeAdapter003: () => number;
