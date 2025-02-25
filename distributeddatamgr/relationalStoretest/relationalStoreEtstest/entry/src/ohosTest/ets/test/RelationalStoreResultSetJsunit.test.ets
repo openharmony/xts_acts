@@ -2099,7 +2099,7 @@ describe('relationalStoreResultSetTest', function () {
      */
     it('testRdbStoreResultSetGetValuetest0100', 0, async (done: Function) => {
         console.info(TAG + "************* testRdbStoreResultSetGetValuetest0100 start *************");
-        rdbStore?.executeSql(CREATE_TABLE_TEST1, null);
+        await rdbStore?.executeSql(CREATE_TABLE_TEST1, null);
         let u8 = new Uint8Array()
         const valueBucket: data_Rdb.ValuesBucket = {
             "name": "zhangsan",
