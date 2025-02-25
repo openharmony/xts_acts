@@ -51,7 +51,7 @@ struct Panhand {
             }
             console.log("end hand" + event.fingerList[0]?.hand)
           })
-          
+        )
 
 
     }
