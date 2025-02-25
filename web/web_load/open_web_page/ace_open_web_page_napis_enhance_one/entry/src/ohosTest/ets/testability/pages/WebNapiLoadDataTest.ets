@@ -71,10 +71,10 @@ struct WebNapiLoadDataTest {
                         Source:<pre>source</pre>
                         <div dir="auto">
                             <br />
-                            <img style="max-width:592px;height:auto" src="harmonyos_image.jpg" alt="HarmonyOS 图片" width="592" height="1052" />
+                            <img style="max-width:592px;height:auto" src="image.jpg" alt="图片" width="592" height="1052" />
                             <div>
                                 <br /><br /><br /><br /><br />
-                                <div>HarmonyOS 图片</div>
+                                <div>图片</div>
                             </div>
                         </div>
                     </body>

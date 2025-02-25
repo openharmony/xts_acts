@@ -74,7 +74,7 @@ static napi_value loadData(napi_env env, napi_callback_info info)
     ArkWeb_ErrorCode result1 = OH_NativeArkWeb_LoadData(webNameValue, dataValue, mimeTypeValue, encodingValue,
     baseUrlValue, historyUrlValue);
     int errorCodeAsInt = static_cast<int>(result1);
-    napi_create_double(env,errorCodeAsInt, &result);
+    napi_create_double(env, errorCodeAsInt, &result);
     return result;
 }
 
