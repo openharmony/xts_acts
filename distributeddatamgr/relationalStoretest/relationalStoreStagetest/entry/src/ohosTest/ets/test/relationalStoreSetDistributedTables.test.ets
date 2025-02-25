@@ -54,8 +54,8 @@ export default function relationalStoreSetDistributedTablesTest() {
 
     afterEach(async () => {
       console.info(TAG + 'afterEach');
-      const DROP_TABLE_EMPLOYEE = "DROP TABLE IF EXISTS employee";
-      await rdbStore.executeSql(DROP_TABLE_EMPLOYEE, null);
+      let sqlStatement1 = "DROP TABLE IF EXISTS employee";
+      await rdbStore.executeSql(sqlStatement1, null);
       console.log(TAG + "drop table employee success")
     })
 
