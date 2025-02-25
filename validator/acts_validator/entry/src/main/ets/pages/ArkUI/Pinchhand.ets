@@ -49,9 +49,7 @@ struct Pinchhand {
           .onActionEnd((event) => {
             console.log("end hand" + event.fingerList[0].hand)
           })
-          .onActionCancel((event:GestureEvent) => {
-            console.log("cancel hand" + event.fingerList[0].hand)
-          }))
+          
 
 
     }
