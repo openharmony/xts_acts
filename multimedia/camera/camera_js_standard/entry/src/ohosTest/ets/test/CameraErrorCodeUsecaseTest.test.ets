@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
@@ -24,6 +23,7 @@ import { Driver, MatchPattern, ON } from '@ohos.UiTest';
 import { surfaceIds } from '../testability/pages/Index';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
+
 
 // 创建视频录制的参数
 let videoProfile: media.AVRecorderProfile = {
