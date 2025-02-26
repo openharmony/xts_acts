@@ -17,6 +17,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import unifiedDataChannel from '@ohos.data.unifiedDataChannel';
 import uniformTypeDescriptor from '@ohos.data.uniformTypeDescriptor';
 
+let resProgressInfo:unifiedDataChannel.ProgressInfo;
+
 export default function UDMFApiTest() {
   describe('UDMFApiTest', () => {
     console.info('start UDMFApiTest');
@@ -509,6 +511,1498 @@ export default function UDMFApiTest() {
       expect(record12.getType()).assertEqual(uniformTypeDescriptor.UniformDataType.OPENHARMONY_APP_ITEM);
       expect(record13.getType()).assertEqual(uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP);
       console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1500 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1600
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1600', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1600 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.FINISHED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };   
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1600 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1700
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1700', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1700 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.PROCESSING
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status); 
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1700 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1800
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1800', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1800 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.CANCELED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1800 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1900
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1900', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1900 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.INNER_ERROR
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_1900 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2000
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2000', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2000 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.INVALID_PARAMETERS
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2000 end");
+      done();
+    })
+   
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2100
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2100', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2100 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.DATA_NOT_FOUND
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2100 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2200
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2200', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2200 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.SYNC_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2200 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2300
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2300', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2300 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.COPY_FILE_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2300 end");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2400
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2400', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2400 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.FINISHED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+        dataProgressListener: progressListener
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2400 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2500
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2500', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2500 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.PROCESSING
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+        dataProgressListener: progressListener
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions); 
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status); 
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2500 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2600
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2600', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2600 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.CANCELED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+        dataProgressListener: progressListener
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2600 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2700
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2700', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2700 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.INNER_ERROR
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+        dataProgressListener: progressListener
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2700 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2800
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2800', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2800 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.INVALID_PARAMETERS
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+        dataProgressListener: progressListener
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator)
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2800 end");
+      done();
+    })
+   
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2900
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2900', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2900 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.DATA_NOT_FOUND
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+        dataProgressListener: progressListener
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_2900 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3000
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3000', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3000 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.SYNC_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+        dataProgressListener: progressListener
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3000 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3100
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3100', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3100 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.COPY_FILE_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+        dataProgressListener: progressListener
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3100 end");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3200
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3200', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3200 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.FINISHED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+        dataProgressListener: progressListener,
+        destUri: "/data/files"
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null); 
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3200 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3300
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3300', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3300 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.PROCESSING
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+        dataProgressListener: progressListener,
+        destUri: "/data/files"
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null); 
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3300 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3400
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3400', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3400 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.CANCELED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+        dataProgressListener: progressListener,
+        destUri: "/data/files"
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3400 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3500
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3500', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3500 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.INNER_ERROR
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+        dataProgressListener: progressListener,
+        destUri: "/data/files"
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3500 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3600
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3600', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3600 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.INVALID_PARAMETERS
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+        dataProgressListener: progressListener,
+        destUri: "/data/files"
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3600 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3700
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3700', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3700 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.DATA_NOT_FOUND
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+        dataProgressListener: progressListener,
+        destUri: "/data/files"
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3700 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3800
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3800', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3800 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.SYNC_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+        dataProgressListener: progressListener,
+        destUri: "/data/files"
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3800 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3900
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3900', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3900 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.COPY_FILE_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+        dataProgressListener: progressListener,
+        destUri: "/data/files"
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_3900 end");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4000
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4000', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4000 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.FINISHED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files"
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null); 
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4000 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4100
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4100', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4100 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.PROCESSING
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files"
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null); 
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4100 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4200
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4200', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4200 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.CANCELED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files"
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4200 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4300
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4300', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4300 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.INNER_ERROR
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files"
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4300 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4400
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4400', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4400 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.INVALID_PARAMETERS
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files"
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4400 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4500
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4500', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4500 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.DATA_NOT_FOUND
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files"
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4500 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4600
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4600', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4600 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.SYNC_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files"
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4600 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4700
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4700', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4700 start');
+      const progressInfo: unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.COPY_FILE_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams: unifiedDataChannel.GetDataParams = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files"
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4700 end");
+      done();
+    })
+
+     /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4800
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4800', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4800 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.FINISHED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.SKIP
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4800 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4900
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4900', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4900 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.PROCESSING
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.SKIP
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_4900 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5000
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5000', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5000 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.CANCELED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.SKIP
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5000 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5100
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5100', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5100 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.INNER_ERROR
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.SKIP
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5100 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5200
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5200', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5200 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.INVALID_PARAMETERS
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.SKIP
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5200 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5300
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5300', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5300 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.DATA_NOT_FOUND
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.SKIP
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5300 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5400
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5400', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5400 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.SYNC_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.SKIP
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5400 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5500
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5500', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5500 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.COPY_FILE_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.SKIP
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5500 end");
+      done();
+    })
+
+
+     /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5600
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5600', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5600 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.FINISHED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5600 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5700
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5700', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5700 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.PROCESSING
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5700 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5800
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5800', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5800 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.CANCELED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5800 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5900
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5900', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5900 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.INNER_ERROR
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_5900 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6000
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6000', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6000 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.INVALID_PARAMETERS
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6000 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6100
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6100', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6100 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.DATA_NOT_FOUND
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6100 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6200
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6200', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6200 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.SYNC_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6200 end");
+      done();
+    })
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6300
+     * @tc.name      : CreateData type is text
+     * @tc.desc      : Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6300', 0, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6300 start');
+      const progressInfo:unifiedDataChannel.ProgressInfo = {
+        progress: 10,
+        status: unifiedDataChannel.ListenerStatus.COPY_FILE_FAILED
+      }
+      let progressListener = (progressInfo: unifiedDataChannel.ProgressInfo, data:unifiedDataChannel.UnifiedData | null) => {
+        resProgressInfo = progressInfo;
+      };
+      const getDataParams:unifiedDataChannel.GetDataParams  = {
+        progressIndicator: unifiedDataChannel.ProgressIndicator.NONE,
+        dataProgressListener: progressListener,
+        destUri: "/data/files",
+        fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE
+      }
+      let obj = getDataParams;
+      progressListener(progressInfo, null);
+      expect(obj.progressIndicator).assertEqual(getDataParams.progressIndicator);
+      expect(obj.destUri).assertEqual(getDataParams.destUri);
+      expect(obj.fileConflictOptions).assertEqual(getDataParams.fileConflictOptions);
+      expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
+      expect(resProgressInfo.status).assertEqual(progressInfo.status);
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_6300 end");
       done();
     })
   })
