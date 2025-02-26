@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import camera from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
@@ -21,6 +20,7 @@ import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import Want from '@ohos.app.ability.Want';
 import { surfaceIds } from '../testability/pages/Index';
 import { Driver, MatchPattern, ON } from '@ohos.UiTest';
+import { BusinessError } from '@ohos.base';
 
 const TAG = "CameraPreconfigTest: ";
 
@@ -310,7 +310,6 @@ export default function cameraPreconfigTest() {
     afterEach(async () => {
       console.info('afterEach case');
       await sleep(100);
-      await releaseCameraSessionInstance();
     })
 
     afterAll(async () => {
@@ -432,6 +431,52 @@ export default function cameraPreconfigTest() {
       expect(result).assertTrue();
 
       console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_PRECONFIG_0100 PASSED");
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_CANPRECONFIG_ERROR_CODE_0100
+     * @tc.name      : test Photo session canpreconfig api with error code 7400101
+     * @tc.desc      : test Photo session canpreconfig api with error code 7400101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_CANPRECONFIG_ERROR_CODE_0100', 2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_CANPRECONFIG_ERROR_CODE_0100--------------");
+      try {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_CANPRECONFIG_ERROR_CODE_0100 SUCCESS");
+        let canPreconfig = mCameraSession.canPreconfig(null);
+        done();
+      } catch (error) {
+        let err = error as BusinessError;
+        console.info(TAG + "SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_CANPRECONFIG_ERROR_CODE_0100 ERRORCODE: " + err.code);
+        expect(err.code).assertEqual('7400101');
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_PRECONFIG_ERROR_CODE_0100
+     * @tc.name      : test Photo session preconfig api with error code 7400101
+     * @tc.desc      : test Photo session preconfig api with error code 7400101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_PRECONFIG_ERROR_CODE_0100', 2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_PRECONFIG_ERROR_CODE_0100--------------");
+      try {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_PRECONFIG_ERROR_CODE_0100 SUCCESS");
+        mCameraSession.preconfig(null);
+        done();
+      } catch (error) {
+        let err = error as BusinessError;
+        console.info(TAG + "SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_PRECONFIG_ERROR_CODE_0100 ERRORCODE: " + err.code);
+        expect(err.code).assertEqual('7400101');
+        done();
+      }
       done();
     })
   })
