@@ -23,6 +23,7 @@ import pinchGestureTest from './isFingerCountLimited/PinchGesture.test';
 import rotationGestureTest from './isFingerCountLimited/RotationGesture.test';
 import swipeGestureTest from './isFingerCountLimited/SwipeGesture.test';
 import tapGestureTest from './isFingerCountLimited/TapGesture.test';
+import setKeyProcessingModeTest from './setKeyProcessingModeTest/setKeyProcessingModeTest.test';
 
 export default function testsuite() {
   getWithUniqueId();
@@ -34,4 +35,5 @@ export default function testsuite() {
   rotationGestureTest();
   swipeGestureTest();
   tapGestureTest();
+  setKeyProcessingModeTest();
 }
