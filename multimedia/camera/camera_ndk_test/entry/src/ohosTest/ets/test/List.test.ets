@@ -42,6 +42,7 @@ export default function testsuite() {
   SessionTest();
   SecureCameraTest();
   CameraManagerTest();
+  VideoMirrorTest();
 
   if (voice){
     CameraSessionExposureTest();
@@ -55,7 +56,6 @@ export default function testsuite() {
     cameraJSUnitOutput();
     CameraSessionCameraRotationTest();
     CameraSessionAutoDeviceSwitchTest();
-    VideoMirrorTest();
   }else{
     CameraFunctionTest();
     CameraInputTest();
