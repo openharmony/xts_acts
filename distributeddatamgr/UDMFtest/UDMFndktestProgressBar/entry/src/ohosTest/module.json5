@@ -21,9 +21,11 @@
     "description": "$string:module_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
-      "wearable",
+      "default",
       "tablet",
-      "default"
+      "phone",
+      "2in1",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
