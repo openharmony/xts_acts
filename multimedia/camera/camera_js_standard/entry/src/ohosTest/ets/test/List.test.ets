@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import cameraJSUnitOutput from './CameraJSUnitOutput.test.ets'
 import cameraSessionFlashTest from './CameraSessionFlashTest.test.ets'
 import cameraSessionExposureTest from './CameraSessionExposureTest.test.ets'
@@ -21,7 +20,6 @@ import cameraSessionFocusTest from './CameraSessionFocusTest.test.ets'
 import cameraSessionZoomRatioTest from './CameraSessionZoomRatioTest.test.ets'
 import cameraSessionVideoStabilizationTest from './CameraSessionVideoStabilizationTest.test.ets'
 import cameraSessionBaseTest from './CameraSessionBaseTest.test.ets'
-import cameraSessionMultiSessionTest from './CameraSessionMultiSessionTest.test.ets'
 import cameraInputTest from './CameraInputTest.test.ets'
 import CameraErrorCodeUsecaseTest from './CameraErrorCodeUsecaseTest.test.ets'
 import cameraManagerTest from './CameraManagerTest.test.ets'
@@ -35,11 +33,14 @@ import CameraVideoCodecTypeTest from './CameraVideoCodecTypeTest.test.ets'
 import cameraSessionAutoDeviceSwitchTest from './CameraSessionAutoDeviceSwitchTest.test.ets'
 import CameraMirrorTest from './CameraMirrorTest.test.ets'
 import CameraVideoQualityPrioritizationTest from './CameraVideoQualityPrioritizationTest.test.ets'
+import CameraNoPermissionErrorCodeTest from './CameraNoPermissionErrorCodeTest.test.ets'
 
 let TAG = 'CameraModuleTest: '
 
 export default function cameraKit() {
   console.info(TAG + 'Entering cameraKit')
+  //无权限优先执行
+  CameraNoPermissionErrorCodeTest()
   CameraVideoQualityPrioritizationTest()
   cameraTorchTest()
   cameraInputTest()
@@ -47,11 +48,10 @@ export default function cameraKit() {
   cameraJSUnitOutput()
   cameraSessionFlashTest()
   cameraSessionExposureTest()
-  cameraSessionFocusTest()
   cameraSessionZoomRatioTest()
+  cameraSessionFocusTest()
   cameraSessionVideoStabilizationTest()
   cameraSessionBaseTest()
-  cameraSessionMultiSessionTest();
   CameraErrorCodeUsecaseTest()
   cameraManagerTest()
   cameraPreconfigTest()
