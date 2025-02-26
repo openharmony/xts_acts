@@ -41,9 +41,6 @@ struct Longhand {
           .onActionEnd((event)=>{
             console.log("end hand"+event.fingerList[0].hand)
           })
-          .onActionCancel((event:GestureEvent)=>{
-            console.log("cancel hand"+event.fingerList[0].hand)
-          })
           .onAction((event)=>{
             this.Vue = true;
             console.log("ation hand"+event.fingerList[0].hand)
@@ -54,10 +51,6 @@ struct Longhand {
         .gesture(LongPressGesture()
           .onActionEnd((event)=>{
             console.log("end hand"+event.fingerList[0].hand)
-          })
-          .onActionCancel((event:GestureEvent)=>{
-           
-            console.log("cancel hand"+event.fingerList[0].hand)
           })
           .onAction((event)=>{
              this.Vue = true;
