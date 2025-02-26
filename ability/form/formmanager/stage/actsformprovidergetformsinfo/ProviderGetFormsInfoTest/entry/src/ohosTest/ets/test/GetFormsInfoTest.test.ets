@@ -17,6 +17,27 @@ import formProvider from '@ohos.app.form.formProvider';
 import formInfo from '@ohos.app.form.formInfo';
 import formError from '@ohos.application.formError';
 import { BusinessError } from '@ohos.base';
+import Want from '@ohos.app.ability.Want';
+
+let module1Want: Want = {
+    deviceId: "",
+    bundleName: "com.ohos.st.formsystemhost",
+    abilityName: "com.ohos.st.formsystemhost.MainAbility",
+    parameters: {
+        "formId": "0",
+        "name": "Form_Js001",
+        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+        "ability": "",
+        "moduleName": "entry",
+        "temporary": false,
+        "isCreate": true
+    }
+  }
+
+  let module1FormStateInfo: formInfo.FormStateInfo = {
+  formState: formInfo.FormState.DEFAULT,
+  want: module1Want
+}
 
 let module1FormInfo: formInfo.FormInfo = {
     bundleName: "com.example.getformsinfotest",
@@ -480,6 +501,25 @@ export default function abilityTest() {
                 expect().assertFail();
                 done();
             })
+            console.info(`${name} end`);
+        });
+		
+		/**
+         * @tc.number    : SUB_AA_OpenHarmony_FormStateInfo_0100
+         * @tc.name      : SUB_AA_OpenHarmony_FormStateInfo_0100
+         * @tc.desc      : formInfo.FormStateInfo covered test.
+         * @tc.level     : Level 3
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         */
+        it('SUB_AA_OpenHarmony_FormStateInfo_0100', 0, async (done: () => void) => {
+            let name: string = 'SUB_AA_OpenHarmony_FormStateInfo_0100';
+            console.info(`${name} start`);
+            let stateInfo: formInfo.FormStateInfo = module1FormStateInfo;
+            expect(0).assertEqual(stateInfo.formState);
+            expect("com.ohos.st.formsystemhost").assertEqual(stateInfo.want.bundleName);
+            expect().not().assertFail();
+            done();
             console.info(`${name} end`);
         });
     })
