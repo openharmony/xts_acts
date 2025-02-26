@@ -110,7 +110,7 @@ export default function webStorage() {
     it('testWebStorageOriginUsage001', 0, async (done: Function) => {
       Utils.emitEvent("testWebStorageOriginUsage001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebStorageOriginUsage001", 24576, 20343, done);
+      Utils.registerEvent("testWebStorageOriginUsage001", true, 20343, done);
       sendEventByKey('WebStorageButton', 10, '');
     })
 
@@ -140,7 +140,7 @@ export default function webStorage() {
     it('testWebStorageOriginGetOrigins001', 0, async (done: Function) => {
       Utils.emitEvent("testWebStorageOriginGetOrigins001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebStorageOriginGetOrigins001", "resource://rawfile/_true_24576", 100037, done);
+      Utils.registerEvent("testWebStorageOriginGetOrigins001", true, 100037, done);
       sendEventByKey('WebStorageButton', 10, '');
     })
 

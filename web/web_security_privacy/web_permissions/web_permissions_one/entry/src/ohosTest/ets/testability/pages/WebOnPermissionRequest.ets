@@ -184,10 +184,10 @@ struct WebOnPermissionRequest {
   }
 }
 
-interface OnPermissionRequestEventType { 
+interface OnPermissionRequestEventType {
   request: PermissionRequest;
 }
 
-interface OnConsoleEventType { 
+interface OnConsoleEventType {
   message: ConsoleMessage;
 }

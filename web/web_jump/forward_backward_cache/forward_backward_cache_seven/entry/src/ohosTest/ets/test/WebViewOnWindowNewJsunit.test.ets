@@ -49,19 +49,19 @@ export default function webViewOnWindowNewJsunit() {
     afterEach(async  (done: Function) =>{
       console.info("ActsAceWebViewOnWindowNewJsunitTest afterEach start:"+emitKey);
       try {
-            let backData: events_emitter.EventData = {
-                data: {
-                    "ACTION": emitKey
-                }
-            }
-            let backEvent: events_emitter.InnerEvent = {
-                eventId:10,
-                priority:events_emitter.EventPriority.LOW
-            }
-            console.info("start send emitKey");
-            events_emitter.emit(backEvent, backData);
+        let backData: events_emitter.EventData = {
+          data: {
+            "ACTION": emitKey
+          }
+        }
+        let backEvent: events_emitter.InnerEvent = {
+          eventId:10,
+          priority:events_emitter.EventPriority.LOW
+        }
+        console.info("start send emitKey");
+        events_emitter.emit(backEvent, backData);
       } catch (err) {
-            console.info("emit emitKey  err: " + JSON.stringify(err));
+        console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       console.info("ActsAceWebViewOnWindowNewJsunitTest afterEach end");
@@ -73,7 +73,7 @@ export default function webViewOnWindowNewJsunit() {
     *tc.name testGetOriginsPromiseLoadLocalHtml01
     *tc.desc test api GetOrigins promise mode by load loacal html
     */
-     it('testGetOriginsPromiseLoadLocalHtml01', 0, async (done: Function)=>{
+    it('testGetOriginsPromiseLoadLocalHtml01', 0, async (done: Function)=>{
       emitKey = 'emitGetOriginsPromiseLoadLocalHtml01';
       Utils.registerLargerEvent("testGetOriginsPromiseLoadLocalHtml01", 7166, done);
       sendEventByKey('onWindowNew', 10, '');
