@@ -19,6 +19,9 @@ add_library(nativerender SHARED
     textArea/textArea_letter_spacing.cpp
     list/list_test.cpp
     listScrollTo/list_scroll_to_test.cpp
+    node/node_handle_by_id_test.cpp
+    window/get_window_info_test.cpp
+    lazyForEach/lazyforeach_expand_mode_test.cpp
 )
 
 add_library(nativefunc SHARED
