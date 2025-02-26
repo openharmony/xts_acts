@@ -527,6 +527,8 @@ describe('rdbStoreDeleteTest', function () {
             }
             else{
                 console.log(TAG + "executesql failed ")
+                expect(null).assertFail();
+                done()
             }
             })
             console.info(TAG + "************* dataRdbTest005 end *************");
