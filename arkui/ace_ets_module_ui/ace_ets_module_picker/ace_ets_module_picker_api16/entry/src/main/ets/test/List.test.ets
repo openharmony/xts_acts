@@ -28,6 +28,7 @@ import disableDateRangeAndMarkTodayTest from './calendarPicker/disableDateRangeA
 import PickerCrownSensitivity from './crownSensitivity/Picker.test';
 import TimePickerCrownSensitivity from './crownSensitivity/TimePicker.test';
 import TextPickerCrownSensitivity from './crownSensitivity/TextPicker.test';
+import calendarPickerStartEndTest from './calendarPicker/startEndTest.test';
 
 export default function testsuite() {
   buttonType();
@@ -44,4 +45,5 @@ export default function testsuite() {
   PickerCrownSensitivity();
   TimePickerCrownSensitivity();
   TextPickerCrownSensitivity();
+  calendarPickerStartEndTest();
 }
