@@ -222,7 +222,14 @@ function sleep(ms: number) {
 }
 
 function isVideoMirrorSupported() {
-  return cameraObj.isVideoMirrorSupported();
+  let isSupport: boolean = false;
+  try {
+    isSupport = cameraObj.isVideoMirrorSupported();
+  } catch (error) {
+    console.error(TAG + "enableMirror FAILED");
+    expect().assertFail();
+  }
+  return isSupport;
 }
 
 function enableVideoMirror() {
@@ -336,7 +343,11 @@ export default function VideoMirrorTest() {
       if (isVideoMirrorSupported()) {
         enableVideoMirror();
       }
-      await stopCameraSession();
+      try {
+        await stopCameraSession();
+      } catch (error) {
+        console.error(TAG + "stopCameraSession FAILED");
+      }
       console.info(TAG + "testOHVideoOutputEnableMirror001 success");
     });
     /**
@@ -351,7 +362,11 @@ export default function VideoMirrorTest() {
       console.info(TAG + "--------------testOHVideoOutputIsMirrorSupported001--------------");
       let isSupported = isVideoMirrorSupported();
       console.info(TAG + "testOHVideoOutputIsMirrorSupported001 isMirrorSupported:" + isSupported);
-      await stopCameraSession();
+      try {
+        await stopCameraSession();
+      } catch (error) {
+        console.error(TAG + "stopCameraSession FAILED");
+      }
       console.info(TAG + "testOHVideoOutputIsMirrorSupported001 success");
     });
   })
