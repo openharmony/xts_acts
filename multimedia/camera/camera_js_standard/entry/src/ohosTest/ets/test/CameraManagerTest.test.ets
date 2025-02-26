@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import fs from '@ohos.file.fs';
@@ -979,7 +978,6 @@ export default function cameraManagerTest() {
       done();
     })
 
-
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ON_CAMERASTATUS_0100
      * @tc.name      : camera manager on cameraStatus api
@@ -1020,6 +1018,7 @@ export default function cameraManagerTest() {
           console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_ON_CAMERASTATUS_0100 err: " + JSON.stringify(err));
           done()
         }
+        mCameraManager.off('cameraStatus')
       }
     })
 
@@ -1051,6 +1050,61 @@ export default function cameraManagerTest() {
         })
         mCameraManager.off('foldStatusChange');
       }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_HOST_DEVICE_TYPE_0100
+     * @tc.name      : test Host Device Type enum UNKNOWN_TYPE
+     * @tc.desc      : test Host Device Type enum UNKNOWN_TYPE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_CAMERA_HOST_DEVICE_TYPE_0100', 2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_HOST_DEVICE_TYPE_0100--------------");
+      let camerasArray = mCameraDevicesArray;
+      for (let i = 0; i < camerasArray.length; i++) {
+        if (!isEmpty(camerasArray[i])) {
+          let cameraOutputCap = getSupportedOutputCapability(camerasArray[i]);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_HOST_DEVICE_TYPE_0100 hostDeviceType == " + camerasArray[i].hostDeviceType)
+          if (isEmpty(cameraOutputCap)) {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_HOST_DEVICE_TYPE_0100 cameraOutputCap == null || undefined")
+            expect().assertFail();
+          }
+        } else {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_HOST_DEVICE_TYPE_0100 camerasArray == null || undefined")
+          expect().assertFail();
+        }
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ORIENTATION_0100
+     * @tc.name      : test camera Orientation api
+     * @tc.desc      : test camera Orientation api
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_CAMERA_ORIENTATION_0100', 2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_ORIENTATION_0100--------------");
+      let camerasArray = mCameraDevicesArray;
+      for (let i = 0; i < camerasArray.length; i++) {
+        if (!isEmpty(camerasArray[i])) {
+          let cameraOrientation = camerasArray[i].cameraOrientation
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ORIENTATION_0100 cameraOrientation == " + cameraOrientation)
+          if (isEmpty(cameraOrientation)) {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ORIENTATION_0100 cameraOutputCap == null || undefined")
+            expect().assertFail();
+          }
+        } else {
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ORIENTATION_0100 camerasArray == null || undefined")
+          expect().assertFail();
+        }
+      }
+      expect(true).assertTrue();
       done();
     })
   })
