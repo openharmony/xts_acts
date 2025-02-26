@@ -44,6 +44,7 @@ import longPressEventTest from './EventItem/LongPressGesture.test';
 import panGestureEventTest from './EventItem/PanGesture.test';
 import pinchGestureEventTest from './EventItem/PinchGesture.test';
 import rotationGestureEventTest from './EventItem/RotationGesture.test';
+import dataLoadingTest from './startDataLoading/dataLoadingTest.test';
 import DragPreviewOptions from './DragPreviewOptions/DragPreviewOptions.test';
 
 export default function testsuite() {
@@ -78,5 +79,6 @@ export default function testsuite() {
   panGestureEventTest();
   pinchGestureEventTest();
   rotationGestureEventTest();
+  dataLoadingTest();
   DragPreviewOptions();
 }
