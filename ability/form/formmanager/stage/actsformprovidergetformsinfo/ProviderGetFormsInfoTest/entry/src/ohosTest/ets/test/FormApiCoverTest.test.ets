@@ -13,15 +13,77 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import FormInfo from '@ohos.application.formInfo';
-import formInfoNew from '@ohos.app.form.formInfo';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import formInfo  from '@ohos.application.formInfo';
 import formError from '@ohos.application.formError';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
+import Want from '@ohos.app.ability.Want';
+import formBindingData from '@ohos.app.form.formBindingData';
 
 const INTERVAL_TIME = 2500;
 
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+
+let module1Want: Want = {
+  deviceId: "",
+  bundleName: "com.ohos.st.formsystemhost",
+  abilityName: "com.ohos.st.formsystemhost.MainAbility",
+  parameters: {
+      "formId": "0",
+      "name": "Form_Js001",
+      "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+      "ability": "",
+      "moduleName": "entry",
+      "temporary": false,
+      "isCreate": true
+  }
+}
+
+let module2FormStateInfo: formInfo.FormStateInfo = {
+  formState: formInfo.FormState.DEFAULT,
+  want: module1Want
+}
+
+let module1FormInfo: formInfo.FormInfo = {
+  bundleName: "com.example.getformsinfotest",
+  moduleName: "entry",
+  abilityName: "EntryFormAbility",
+  name: "widget",
+  description: "This is a service widget.",
+  type:2,
+  jsComponentName: "",
+  colorMode: -1,
+  isDefault: false,
+  updateEnabled: true,
+  formVisibleNotify: false,
+  relatedBundleName:"com.example.getformsinfotest",
+  scheduledUpdateTime: "10:30",
+  formConfigAbility: "",
+  updateDuration: 0,
+  defaultDimension:2,
+  supportDimensions:[1,2,3,4],
+  customizeData: {}
+}
+
+let module1ProxyData: formBindingData.ProxyData = {
+  key: "123456789",
+  subscriberId: "123456789"
+}
+
+let module2ProxyData: formBindingData.ProxyData = {
+  key: "abcdefg",
+  subscriberId: "abcdefg"
+}
+
+let proxyDatas: formBindingData.ProxyData[] = Array();
+proxyDatas.push(module1ProxyData);
+proxyDatas.push(module2ProxyData);
+
+
+let module1Data: formBindingData.FormBindingData = {
+  data: "com.example.getformsinfotest",
+  proxies: proxyDatas
+}
 
 export default function FormApiCoverTest() {
   describe('FormApiCoverTestTest', () => {
@@ -64,6 +126,103 @@ export default function FormApiCoverTest() {
       expect(14).assertEqual(formError.FormError.ERR_PROVIDER_DEL_FAIL);
       expect(30).assertEqual(formError.FormError.ERR_SYSTEM_RESPONSES_FAILED);
       done();
-    })
+    });
+
+    /**
+     * @tc.number    : SUB_AA_Form_Cover_FormInfo_0100
+     * @tc.name      : SUB_AA_Form_Cover_FormInfo_0100
+     * @tc.desc      : formInfo.FormStateInfo Coverage test.
+     * @tc.level     : Level 3
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     */
+    it('SUB_AA_Form_Cover_FormInfo_0100', 0, async (done: () => void) => {
+      let name: string = 'SUB_AA_Form_Cover_FormInfo_0100';
+      console.info(`${name} start`);
+      let stateInfo: formInfo.FormStateInfo = module2FormStateInfo;
+      expect(0).assertEqual(stateInfo.formState);
+      expect("com.ohos.st.formsystemhost.MainAbility").assertEqual(stateInfo.want.abilityName);
+      
+      expect().not().assertFail();
+      done();
+      console.info(`${name} end`);
+    });
+
+    /**
+     * @tc.number    : SUB_AA_Form_Cover_FormInfo_0200
+     * @tc.name      : SUB_AA_Form_Cover_FormInfo_0200
+     * @tc.desc      : formInfo.FormInfo Coverage test.
+     * @tc.level     : Level 3
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     */
+    it('SUB_AA_Form_Cover_FormInfo_0200', 0, async (done: () => void) => {
+      let name: string = 'SUB_AA_Form_Cover_FormInfo_0200';
+      console.info(`${name} start`);
+      let info: formInfo.FormInfo = module1FormInfo;
+      checkFormInfo(info);
+      expect().not().assertFail();
+      done();
+      console.info(`${name} end`);
+    });
+
+    /**
+     * @tc.number    : SUB_AA_Form_Cover_FormInfo_0300
+     * @tc.name      : SUB_AA_Form_Cover_FormInfo_0300
+     * @tc.desc      : cover EnumValue IDENTITY_KEY.
+     * @tc.level     : Level 3
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     */
+    it('SUB_AA_Form_Cover_FormInfo_0300', 0, async (done: () => void) => {
+      console.info("SUB_AA_Form_Cover_FormInfo_0300 start");
+      expect("ohos.extra.param.key.form_identity").assertEqual(formInfo.FormParam.IDENTITY_KEY);
+      done();
+      console.info("SUB_AA_Form_Cover_FormInfo_0300 end");
+    });
+
+    /**
+     * @tc.number    : SUB_AA_Form_Cover_FormBindingData_0100
+     * @tc.name      : SUB_AA_Form_Cover_FormBindingData_0100
+     * @tc.desc      : FormBindingData Coverage test.
+     * @tc.level     : Level 3
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     */
+    it('SUB_AA_Form_Cover_FormBindingData_0100', 0, async (done: () => void) => {
+      console.info("SUB_AA_Form_Cover_FormBindingData_0100 start");
+      let bindingData: formBindingData.FormBindingData = module1Data;
+      expect("com.example.getformsinfotest").assertEqual(bindingData.data);
+      if (bindingData.proxies?.length === 2) {
+        expect("123456789").assertEqual(bindingData.proxies[0].key);
+        expect("123456789").assertEqual(bindingData.proxies[0].subscriberId);
+      }
+      expect().not().assertFail();
+      done();
+      console.info("SUB_AA_Form_Cover_FormBindingData_0100 end");
+    });
+
+    let checkFormInfo = (result: formInfo.FormInfo) => {
+      console.info("checkFormInfo start");
+      expect("com.example.getformsinfotest").assertEqual(result.bundleName);
+      expect("entry").assertEqual(result.moduleName);
+      expect("EntryFormAbility").assertEqual(result.abilityName);
+      expect("widget").assertEqual(result.name);
+      expect("This is a service widget.").assertEqual(result.description);
+      expect("com.example.getformsinfotest").assertEqual(result.relatedBundleName);
+      expect(2).assertEqual(result.type);
+      expect("").assertEqual(result.jsComponentName);
+      expect(-1).assertEqual(result.colorMode);
+      expect(false).assertEqual(result.isDefault);
+      expect(true).assertEqual(result.updateEnabled);
+      expect(false).assertEqual(result.formVisibleNotify);
+      expect("10:30").assertEqual(result.scheduledUpdateTime);
+      expect("").assertEqual(result.formConfigAbility);
+      expect(0).assertEqual(result.updateDuration);
+      expect(2).assertEqual(result.defaultDimension);
+      expect(JSON.stringify([1,2,3,4])).assertEqual(JSON.stringify(result.supportDimensions));
+      expect(JSON.stringify({})).assertEqual(JSON.stringify(result.customizeData));
+      console.info("checkFormInfo end");
+    };
   })
 }
