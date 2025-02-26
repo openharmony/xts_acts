@@ -17,6 +17,7 @@ group("UDMFtest") {
   if (is_standard_system) {
     deps = [
       "UDMFndktestHvigor:ActsUDMFNdkTest",
+      "UDMFndktestProgressBar:ActsUDMFndktestProgressBarTest",
       "UDMFtest:UDMF_ets_test",
       "UDMFwithOutPermissiontest:UDMF_drag_ets_test",
       "UDMFwithPermissiontest:UDMF_drag_test",
