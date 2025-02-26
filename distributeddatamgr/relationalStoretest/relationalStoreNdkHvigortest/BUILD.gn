@@ -13,10 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_app_assist_suite("ActsRelationalStoreNdkMainTestHvigor") {
+ohos_app_assist_suite("ActsRelationalStoreNdkMainHvigorTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsRelationalStoreNdkMainTestHvigor"
+  hap_name = "ActsRelationalStoreNdkMainHvigorTest"
 
   # 部件名称，真实数据，需要子系统对应
   part_name = "relational_store"
@@ -24,16 +24,16 @@ ohos_app_assist_suite("ActsRelationalStoreNdkMainTestHvigor") {
   # 子系统名称，真实数据，需要部件对应
   subsystem_name = "distributeddatamgr"
 }
-ohos_js_app_suite("ActsRelationalStoreNdkTestHvigor") {
+ohos_js_app_suite("ActsRelationalStoreNdkHvigorTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsRelationalStoreNdkTestHvigor"
+  hap_name = "ActsRelationalStoreNdkHvigorTest"
 
   # 部件名称，真实数据，需要子系统对应
   part_name = "relational_store"
 
   # 子系统名称，真实数据，需要部件对应
   subsystem_name = "distributeddatamgr"
-  deps = [ ":ActsRelationalStoreNdkMainTestHvigor" ]
+  deps = [ ":ActsRelationalStoreNdkMainHvigorTest" ]
 }
