@@ -14,7 +14,6 @@
  */
 
 
-
 import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
@@ -1554,6 +1553,7 @@ export default function cameraSessionFocusTest() {
           await sleep(1000);
           done();
         })
+        mCameraSession.off('focusStateChange')
       }
       await sleep(1000);
       done();
@@ -1587,6 +1587,7 @@ export default function cameraSessionFocusTest() {
           await sleep(1000);
           done();
         })
+        mCameraSession.off('error')
       }
       await sleep(1000);
       done();
