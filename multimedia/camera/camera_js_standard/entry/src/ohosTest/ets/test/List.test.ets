@@ -52,6 +52,7 @@ export default function cameraKit() {
   cameraSessionFocusTest()
   cameraSessionVideoStabilizationTest()
   cameraSessionBaseTest()
+  cameraSessionMultiSessionTest();
   CameraErrorCodeUsecaseTest()
   cameraManagerTest()
   cameraPreconfigTest()
