@@ -25,6 +25,7 @@ import certFrameworkCertNameJsAPIFunctionTestUnit from './certName.test';
 import certFrameworkParseP12CertTestUnit from './parseP12Cert.test';
 import certFrameworkCertPkcs7ExtCMSFunctionTestUnit from './certP7.test';
 import certFrameworkCertCsrTestUnit from './certCsr.test';
+import certFrameworkResultCodeTestUnit from './certResultCode.test';
 
 
 export default function testsuite() {
@@ -40,4 +41,5 @@ export default function testsuite() {
   certFrameworkParseP12CertTestUnit();
   certFrameworkCertPkcs7ExtCMSFunctionTestUnit();
   certFrameworkCertCsrTestUnit();
+  certFrameworkResultCodeTestUnit();
 }
