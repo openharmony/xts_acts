@@ -16,5 +16,6 @@ group("ActsAceEtsModuleCommonAttrsLayoutTest") {
   deps = [
     "ace_ets_module_commonAttrsLayout_api11:ActsAceEtsModuleCommonAttrsLayoutApi11Test",
     "ace_ets_module_commonAttrsLayout_api12:ActsAceEtsModuleCommonAttrsLayoutApi12Test",
+    "ace_ets_module_commonAttrsLayout_api15:ActsAceEtsModuleCommonAttrsLayoutApi15Test",
   ]
 }
