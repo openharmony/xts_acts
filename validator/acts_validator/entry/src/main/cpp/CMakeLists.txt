@@ -29,6 +29,13 @@ add_library(nativeNode SHARED
     capihand/manager.cpp
     init.cpp )
 
+add_library(nativegamecrontroller SHARED
+    GameCtroller/container.cpp
+    GameCtroller/manager.cpp
+    native_gameinit.cpp )
+
+
+
 find_library(
     # Sets the name of the path variable.
     hilog-lib
@@ -71,3 +78,5 @@ target_link_libraries(nativerender_ PUBLIC
     ${hilog-lib} ${libace-lib} ${libnapi-lib}  ${libnative_window})
 target_link_libraries(nativeNode PUBLIC
     ${hilog-lib} ${libace-lib} ${libnapi-lib}  ${libnative_drawing})
+target_link_libraries(nativegamecrontroller PUBLIC
+    ${hilog-lib} ${libace-lib} ${libnapi-lib}  ${libnative_drawing})    
