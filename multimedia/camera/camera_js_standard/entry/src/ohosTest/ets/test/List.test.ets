@@ -48,10 +48,11 @@ export default function cameraKit() {
   cameraJSUnitOutput()
   cameraSessionFlashTest()
   cameraSessionExposureTest()
-  cameraSessionZoomRatioTest()
   cameraSessionFocusTest()
+  cameraSessionZoomRatioTest()
   cameraSessionVideoStabilizationTest()
   cameraSessionBaseTest()
+  cameraSessionMultiSessionTest();
   CameraErrorCodeUsecaseTest()
   cameraManagerTest()
   cameraPreconfigTest()
