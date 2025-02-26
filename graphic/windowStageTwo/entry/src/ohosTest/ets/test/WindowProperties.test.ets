@@ -96,9 +96,9 @@ export default function windowPropertiesTest() {
         let msgStr: string = 'jsUnittest ' + caseName + ' ';
         console.log(msgStr + 'begin');
         let windowClass = await windowStage.getMainWindow();
-        let densityInfo1: window.WindowDensityInfo = windowClass.getWindowDensityInfo();
-        console.info(msgStr +`getWindowDensityInfo densityInfo1: `, JSON.stringify(densityInfo1));
         try {
+            let densityInfo1: window.WindowDensityInfo = windowClass.getWindowDensityInfo();
+            console.info(msgStr +`getWindowDensityInfo densityInfo1: `, JSON.stringify(densityInfo1));
             windowStage.setCustomDensity(-1);
             console.info(msgStr + `setCustomDensity -1 success`);
             let densityInfo2: window.WindowDensityInfo = windowClass.getWindowDensityInfo();
@@ -267,12 +267,12 @@ export default function windowPropertiesTest() {
         console.log(msgStr +'windowTest context1: ' + JSON.stringify(context1));
         let windowStage1 = AppStorage.get('windowStage1') as ohosWindow.WindowStage;
         let windowClass1 = await windowStage1.getMainWindow();
-        let densityInfo1: window.WindowDensityInfo = windowClass1.getWindowDensityInfo();
-        console.info(msgStr +`getWindowDensityInfo densityInfo1: `, JSON.stringify(densityInfo1));
-        expect(densityInfo1.systemDensity).assertLarger(0);
-        expect(densityInfo1.defaultDensity).assertLarger(0);
-        expect(densityInfo1.systemDensity).assertEqual(densityInfo1.customDensity);
         try {
+            let densityInfo1: window.WindowDensityInfo = windowClass1.getWindowDensityInfo();
+            console.info(msgStr +`getWindowDensityInfo densityInfo1: `, JSON.stringify(densityInfo1));
+            expect(densityInfo1.systemDensity).assertLarger(0);
+            expect(densityInfo1.defaultDensity).assertLarger(0);
+            expect(densityInfo1.systemDensity).assertEqual(densityInfo1.customDensity);
             windowStage1.setCustomDensity(4.0);
             console.info(msgStr + `setCustomDensity 4.0 success`);
             let densityInfo2: window.WindowDensityInfo = windowClass1.getWindowDensityInfo();
@@ -446,7 +446,7 @@ export default function windowPropertiesTest() {
             done();
             return;
         }
-        let context1 = AppStorage.get('context1') as common.UIAbilityContext;
+        let context1:common.UIAbilityContext | undefined;
         let context2 = AppStorage.get('context2') as common.UIAbilityContext;
         console.log(msgStr +'windowTest context1: ' + JSON.stringify(context1));
         console.log(msgStr +'windowTest context2: ' + JSON.stringify(context2));
@@ -485,7 +485,7 @@ export default function windowPropertiesTest() {
         } catch (exception) {
             console.error(msgStr +
             `Failed to getWindowDensityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
-            await context1.terminateSelf();
+            await context1?.terminateSelf();
             await sleep(500);
             await context2.terminateSelf();
             await sleep(500);
