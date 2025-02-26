@@ -19,24 +19,24 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 export default function tapGestureEventTest() {
-  describe('TapGesture1', () => {
+  describe('tapGestureEvent', () => {
     beforeEach(async (done: Function) => {
-      console.info('TapGesture1 beforeEach start');
+      console.info('tapGestureEvent beforeEach start');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/EventItem/TapGesture',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info('get TapGesture1 state pages: ' + JSON.stringify(pages));
+        console.info('get tapGestureEvent state pages: ' + JSON.stringify(pages));
         if (!('TapGesture' == pages.name)) {
-          console.info('get TapGesture1 state pages.name: ' + JSON.stringify(pages.name));
+          console.info('get tapGestureEvent state pages.name: ' + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info('push TapGesture1 success: ' + JSON.stringify(result));
+          console.info('push tapGestureEvent success: ' + JSON.stringify(result));
         }
       } catch (err) {
-        console.error('push TapGesture1 page error: ' + err);
+        console.error('push tapGestureEvent page error: ' + err);
         expect().assertFail();
       }
       done();

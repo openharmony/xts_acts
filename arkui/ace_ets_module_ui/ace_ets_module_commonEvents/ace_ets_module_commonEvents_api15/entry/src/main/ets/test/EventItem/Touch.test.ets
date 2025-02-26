@@ -19,24 +19,24 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 export default function touchEventTest() {
-  describe('Touch', () => {
+  describe('touchEvent', () => {
     beforeEach(async (done: Function) => {
-      console.info("Touch beforeEach start");
+      console.info("touchEvent beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/EventItem/Touch',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info('get Touch state pages: ' + JSON.stringify(pages));
+        console.info('get touchEvent state pages: ' + JSON.stringify(pages));
         if (!('Touch' == pages.name)) {
-          console.info('get Touch state pages.name: ' + JSON.stringify(pages.name));
+          console.info('get touchEvent state pages.name: ' + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info('push Touch success: ' + JSON.stringify(result));
+          console.info('push touchEvent success: ' + JSON.stringify(result));
         }
       } catch (err) {
-        console.error('push Touch page error: ' + err);
+        console.error('push touchEvent page error: ' + err);
         expect().assertFail();
       }
       done();
@@ -48,7 +48,7 @@ export default function touchEventTest() {
     * @tc.desc  : To test the new item of MouseEvent.
     * @tc.level : Level 1
     */
-    it('Touch_0200', 0, async (done: Function) => {
+    it('Touch_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('Touch_0100 START');
       let driver = await Driver.create()

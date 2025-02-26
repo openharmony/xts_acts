@@ -19,24 +19,24 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 export default function swipeGestureEventTest() {
-  describe('SwipeGesture1', () => {
+  describe('swipeGestureEvent', () => {
     beforeEach(async (done: Function) => {
-      console.info('SwipeGesture1 beforeEach start');
+      console.info('swipeGestureEvent beforeEach start');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/EventItem/SwipeGesture',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info('get SwipeGesture1 state pages: ' + JSON.stringify(pages));
+        console.info('get swipeGestureEvent state pages: ' + JSON.stringify(pages));
         if (!('SwipeGesture' == pages.name)) {
-          console.info('get SwipeGesture1 state pages.name: ' + JSON.stringify(pages.name));
+          console.info('get swipeGestureEvent state pages.name: ' + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info('push SwipeGesture1 success: ' + JSON.stringify(result));
+          console.info('push swipeGestureEvent success: ' + JSON.stringify(result));
         }
       } catch (err) {
-        console.error('push SwipeGesture1 page error: ' + err);
+        console.error('push swipeGestureEvent page error: ' + err);
         expect().assertFail();
       }
       done();

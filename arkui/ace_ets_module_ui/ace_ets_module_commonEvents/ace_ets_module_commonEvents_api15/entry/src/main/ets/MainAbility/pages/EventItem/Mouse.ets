@@ -17,18 +17,17 @@
 struct MouseEventExample {
   @State text: string = ''
   build() {
-    Column({ space: 20 }) {
-      Column(){
-        Text(this.text).id('value')
-        Button('onMouse')
-          .width('100%')
-          .height(200)
-          .onMouse((event: MouseEvent):void => {
-            if(event.button == MouseButton.Left && event.action == MouseAction.Press){
-              this.text = '' + event.targetDisplayId + ',' + event.rawDeltaX + ',' + event.rawDeltaY + ',' + event.pressedButtons
-            }
-          })
-      }
-    }.padding({ top: 30 }).width('100%')
+    Column() {
+      Text(this.text).id('value')
+      Text('onMouse')
+        .width('100%')
+        .height('100%')
+        .backgroundColor(Color.Pink)
+        .onMouse((event: MouseEvent) => {
+          if(event.button == MouseButton.Left && event.action == MouseAction.Press){
+            this.text = '' + event.targetDisplayId + ',' + event.rawDeltaX + ',' + event.rawDeltaY + ',' + event.pressedButtons
+          }
+        })
+      }.width('100%')
   }
 }
