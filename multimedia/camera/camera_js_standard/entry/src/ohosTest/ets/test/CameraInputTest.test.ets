@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+
 import cameraObj from '@ohos.multimedia.camera';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';

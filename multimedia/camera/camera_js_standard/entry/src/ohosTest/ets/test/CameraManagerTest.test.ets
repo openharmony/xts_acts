@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+
 import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import fs from '@ohos.file.fs';
