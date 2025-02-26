@@ -41,11 +41,11 @@ group("arkui") {
   } else {
     deps = [
       "ace_c_accessibility_api_16:ActsAceCapiInspector16Test",
+      "ace_c_arkui_nowear_test_api15:ActsAceCArkUINoWear15Test",
       "ace_c_arkui_test:ActsAceCArkUITest",
       "ace_c_arkui_test_api13:ActsAceCArkUI13Test",
       "ace_c_arkui_test_api14:ActsAceCArkUI14Test",
       "ace_c_arkui_test_api15:ActsAceCArkUI15Test",
-      "ace_c_arkui_nowear_test_api15:ActsAceCArkUINoWear15Test",
       "ace_c_arkui_test_api16:ActsAceCArkUI16Test",
       "ace_c_arkui_testwearcrop:ActsAceCArkUIWearCropTest",
       "ace_c_scroll_crosslanguage:ActsAceCapiScrollCrossTest",
