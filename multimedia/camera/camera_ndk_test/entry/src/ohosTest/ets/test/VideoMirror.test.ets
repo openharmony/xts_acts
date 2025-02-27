@@ -222,14 +222,18 @@ function sleep(ms: number) {
 }
 
 function isVideoMirrorSupported() {
-  let isSupport: boolean = false;
+  let isSupport: boolean | null = null;
   try {
     isSupport = cameraObj.isVideoMirrorSupported();
+    if (isSupport === null) {
+      console.error(TAG + "isSupport null");
+      expect().assertFail();
+    }
   } catch (error) {
     console.error(TAG + "enableMirror FAILED");
     expect().assertFail();
   }
-  return isSupport;
+  return (isSupport !== null) && isSupport;
 }
 
 function enableVideoMirror() {
