@@ -15,14 +15,14 @@
 
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils'
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function textPickerDefaultPickerItemHeightJsunit() {
   describe('textPickerDefaultPickerItemHeightTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
       let options: router.RouterOptions  = {
-        url: 'MainAbility/pages/textPicker',
+        url: 'MainAbility/pages/TextPicker/textPicker',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
         if (!("textPicker" == pages.name)) {
           console.info("get textPicker state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push textPicker page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,7 +40,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("textPickerDefaultPickerItemHeight after each called");
     });
 
@@ -51,7 +51,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      */
     it('testtextPickerDefaultPickerItemHeight0001', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0001] component width strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -70,7 +70,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      */
     it('testtextPickerDefaultPickerItemHeight0002', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0002 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0002] component height strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -88,7 +88,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      */
     it('testtextPickerDefaultPickerItemHeight0003', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0003 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0003] component fontSize strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -107,7 +107,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      */
     it('testtextPickerDefaultPickerItemHeight0004', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0004 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0004] component opacity strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -124,7 +124,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      */
     it('testtextPickerDefaultPickerItemHeight0005', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0005 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0005] component align strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -141,7 +141,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      */
     it('testtextPickerDefaultPickerItemHeight0006', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0006 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0006] component fontColor strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -160,7 +160,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      */
     it('testtextPickerDefaultPickerItemHeight0007', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0007 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0007] component lineHeight strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -179,7 +179,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      */
     it('testtextPickerDefaultPickerItemHeight0009', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight009 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0009] component padding strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -196,7 +196,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      */
     it('testtextPickerDefaultPickerItemHeight0010', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0010 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0010] component textAlign strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -215,7 +215,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      */
     it('testtextPickerDefaultPickerItemHeight0011', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0011 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0011] component defaultPickerItemHeight strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);

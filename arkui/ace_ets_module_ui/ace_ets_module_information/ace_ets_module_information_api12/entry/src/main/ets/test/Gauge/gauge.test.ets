@@ -15,14 +15,14 @@
 
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils'
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function gaugeColorsJsunit() {
   describe('gaugeColorsTest', () => {
     beforeAll(async () => {
       console.info("gaugeColors beforeAll start");
       let options: router.RouterOptions  = {
-        url: 'MainAbility/pages/gauge',
+        url: 'MainAbility/pages/Gauge/gauge',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function gaugeColorsJsunit() {
         if (!("gauge" == pages.name)) {
           console.info("get gauge state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push gauge page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,7 +40,7 @@ export default function gaugeColorsJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("gaugeColors after each called");
     });
 
@@ -51,7 +51,7 @@ export default function gaugeColorsJsunit() {
      */
     it('testgaugeColors0001', 0, async () => {
       console.info('gaugeColors testgaugeColors0001 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
       console.info("[testgaugeColors0001] component width strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -68,7 +68,7 @@ export default function gaugeColorsJsunit() {
      */
     it('testgaugeColors0002', 0, async () => {
       console.info('gaugeColors testgaugeColors0002 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
       console.info("[testgaugeColors0002] component height strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -85,7 +85,7 @@ export default function gaugeColorsJsunit() {
      */
     it('testgaugeColors0003', 0, async () => {
       console.info('gaugeColors testgaugeColors0003 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
       console.info("[testgaugeColors0003] component startAngle strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -102,7 +102,7 @@ export default function gaugeColorsJsunit() {
      */
     it('testgaugeColors0004', 0, async () => {
       console.info('gaugeColors testgaugeColors0004 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
       console.info("[testgaugeColors0004] component endAngle strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -119,7 +119,7 @@ export default function gaugeColorsJsunit() {
      */
     it('testgaugeColors0005', 0, async () => {
       console.info('gaugeColors testgaugeColors0005 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
       console.info("[testgaugeColors0005] component strokeWidth strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -136,7 +136,7 @@ export default function gaugeColorsJsunit() {
      */
     it('testgaugeColors0006', 0, async () => {
       console.info('gaugeColors testgaugeColors0006 START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
       console.info("[testgaugeColors0006] component colors strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
