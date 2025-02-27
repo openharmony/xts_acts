@@ -13,36 +13,39 @@
  * limitations under the License.
  */
 
-import formBindingData from '@ohos.application.formBindingData';
-import formProvider from '@ohos.application.formProvider';
+import formProvider from '@ohos.app.form.formProvider';
 import { describe, expect, it } from '@ohos/hypium'
 import { DATA_TYPE_LIST, getFuzzData } from './getParam.ets';
 
-export const updateFormFuzzTest = (describeName:string, filterParameter:number) => {
+export const setFormNextRefreshTimeFuzzTestNewApi = (describeName:string, filterParameter:number) => {
+  const ERR_COMMON_CODE = 1;
+  const ERR_COMMON = `internal error`;
   const ERR_ADD_INVALID_PARAM_CODE = 7;
   const ERR_ADD_INVALID_PARAM = `invalid input parameter during form operation`;
+  const ERR_NOT_EXIST_ID_CODE = 9;
+  const ERR_NOT_EXIST_ID = `the ID of the form to be operated does not exist`;
 
   describe(`${describeName}`, () => {
-    const callbackName = `FMS_fuzzTest_updateform`;
-    const promiseName = `FMS_fuzzTest_updateform`;
+    const callbackName = `FMS_fuzzTest_setnexttime`;
+    const promiseName = `FMS_fuzzTest_setnexttime`;
     const length:number = DATA_TYPE_LIST.length;
 
     for (let i = 0; i < length; ++i) {
       const tcNumber = `0${(i + 1) * 100}`;
       /**
        * @tc.name fuzzTest
-       * @tc.number FMS_fuzzTest_updateform_0100 ~ FMS_fuzzTest_updateform_0800
-       * @tc.desc Check whether the updateForm interface can pass the fuzzy test (by AsyncCallback)
+       * @tc.number FMS_fuzzTest_setnexttime_0100 ~ FMS_fuzzTest_setnexttime_0800
+       * @tc.desc Check whether the setFormNextRefreshTime interface can pass the fuzzy test (by AsyncCallback)
        */
       it(`${callbackName}_${tcNumber}`, filterParameter, async (done:Function) => {
         const dataType:string = DATA_TYPE_LIST[i];
         const formId:string = getFuzzData(dataType) as string;
-        let bindingData:formBindingData.FormBindingData | null = formBindingData.createFormBindingData('');
+        const nextTime = 5;
         console.log(`${callbackName} ${tcNumber} formId typeof: ${typeof formId}`);
-        console.log(`${callbackName} ${tcNumber} bindingData typeof: ${typeof bindingData}`);
+        console.log(`${callbackName} ${tcNumber} nextTime typeof: ${typeof nextTime}`);
         try {
-          formProvider.updateForm(formId, bindingData, (error, data) => {
-            console.log(`${callbackName} ${tcNumber} updateForm data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
+          formProvider.setFormNextRefreshTime(formId, nextTime, (error, data) => {
+            console.log(`${callbackName} ${tcNumber} setFormNextRefreshTime data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
             expect(data).assertUndefined();
             expect(error.code).assertEqual(ERR_ADD_INVALID_PARAM_CODE);
             expect(error.message).assertEqual(ERR_ADD_INVALID_PARAM);
@@ -61,18 +64,18 @@ export const updateFormFuzzTest = (describeName:string, filterParameter:number) 
       tcNumber = tcNumber < 1000 ? `0${tcNumber}` : tcNumber;
       /**
        * @tc.name fuzzTest
-       * @tc.number FMS_fuzzTest_updateform_0900 ~ FMS_fuzzTest_updateform_1600
-       * @tc.desc Check whether the updateForm interface can pass the fuzzy test (by Promise)
+       * @tc.number FMS_fuzzTest_setnexttime_0900 ~ FMS_fuzzTest_setnexttime_1600
+       * @tc.desc Check whether the setFormNextRefreshTime interface can pass the fuzzy test (by Promise)
        */
       it(`${promiseName}_${tcNumber}`, filterParameter, async (done:Function) => {
         const dataType:string = DATA_TYPE_LIST[i];
         const formId:string = getFuzzData(dataType) as string;
-        let formBindingData:formBindingData.FormBindingData | null = null;
+        const nextTime = 5;
         console.log(`${promiseName} ${tcNumber} formId typeof: ${typeof formId}`);
-        console.log(`${promiseName} ${tcNumber} formBindingData typeof: ${typeof formBindingData}`);
+        console.log(`${promiseName} ${tcNumber} nextTime typeof: ${typeof nextTime}`);
         try {
-          const data = await formProvider.updateForm(formId, formBindingData);
-          console.log(`${promiseName} ${tcNumber} updateForm data: ${JSON.stringify(data)}`);
+          const data = await formProvider.setFormNextRefreshTime(formId, nextTime);
+          console.log(`${promiseName} ${tcNumber} setFormNextRefreshTime data: ${JSON.stringify(data)}`);
           console.log(`${promiseName} ${tcNumber} should not reach here`);
           expect().assertFail();
         } catch (error) {
@@ -87,22 +90,33 @@ export const updateFormFuzzTest = (describeName:string, filterParameter:number) 
     for (let i = 0; i < length; ++i) {
       const tcNumber: number = (i + 1 + length * 2) * 100;
       /**
-       * @tc.name fuzzTest
-       * @tc.number FMS_fuzzTest_updateform_1700 ~ FMS_fuzzTest_updateform_2400
-       * @tc.desc Check whether the updateForm interface can pass the fuzzy test (by AsyncCallback)
-       */
+      * @tc.name fuzzTest
+      * @tc.number FMS_fuzzTest_setnexttime_1700 ~ FMS_fuzzTest_setnexttime_2400
+      * @tc.desc Check whether the setFormNextRefreshTime interface can pass the fuzzy test (by AsyncCallback)
+      */
       it(`${callbackName}_${tcNumber}`, filterParameter, async (done:Function) => {
         const dataType:string = DATA_TYPE_LIST[i];
         const formId:string = `${tcNumber}`;
-        const formBindingData:formBindingData.FormBindingData = getFuzzData(dataType) as formBindingData.FormBindingData;
+        const nextTime:number = getFuzzData(dataType) as number;
         console.log(`${callbackName} ${tcNumber} formId typeof: ${typeof formId}`);
-        console.log(`${callbackName} ${tcNumber} formBindingData typeof: ${typeof formBindingData}`);
+        console.log(`${callbackName} ${tcNumber} nextTime typeof: ${typeof nextTime}`);
         try {
-          formProvider.updateForm(formId, formBindingData, (error, data) => {
-            console.log(`${callbackName} ${tcNumber} updateForm data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
+          formProvider.setFormNextRefreshTime(formId, nextTime, (error, data) => {
+            console.log(`${callbackName} ${tcNumber} setFormNextRefreshTime data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
             expect(data).assertUndefined();
-            expect(error.code).assertEqual(ERR_ADD_INVALID_PARAM_CODE);
-            expect(error.message).assertEqual(ERR_ADD_INVALID_PARAM);
+            if (`number` === typeof nextTime) {
+              if (ERR_NOT_EXIST_ID_CODE === error.code) {
+                expect(error.message).assertEqual(ERR_NOT_EXIST_ID);
+              } else if (ERR_ADD_INVALID_PARAM_CODE === error.code) {
+                expect(error.message).assertEqual(ERR_ADD_INVALID_PARAM);
+              } else {
+                console.log(`${callbackName} ${tcNumber} should not reach here`);
+                expect().assertFail();
+              }
+            } else {
+              expect(error.code).assertEqual(ERR_COMMON_CODE);
+              expect(error.message).assertEqual(ERR_COMMON);
+            }
             done();
           });
         } catch (error) {
@@ -117,24 +131,35 @@ export const updateFormFuzzTest = (describeName:string, filterParameter:number) 
       const tcNumber: number = (i + 1 + length * 3) * 100;
       /**
        * @tc.name fuzzTest
-       * @tc.number FMS_fuzzTest_updateform_2500 ~ FMS_fuzzTest_updateform_3200
-       * @tc.desc Check whether the updateForm interface can pass the fuzzy test (by Promise)
+       * @tc.number FMS_fuzzTest_setnexttime_2500 ~ FMS_fuzzTest_setnexttime_3200
+       * @tc.desc Check whether the setFormNextRefreshTime interface can pass the fuzzy test (by Promise)
        */
       it(`${promiseName}_${tcNumber}`, filterParameter, async (done:Function) => {
         const dataType:string = DATA_TYPE_LIST[i];
         const formId:string = `${tcNumber}`;
-        const formBindingData:formBindingData.FormBindingData = getFuzzData(dataType) as formBindingData.FormBindingData;
+        const nextTime:number = getFuzzData(dataType) as number;
         console.log(`${promiseName} ${tcNumber} formId typeof: ${typeof formId}`);
-        console.log(`${promiseName} ${tcNumber} formBindingData typeof: ${typeof formBindingData}`);
+        console.log(`${promiseName} ${tcNumber} nextTime typeof: ${typeof nextTime}`);
         try {
-          const data = await formProvider.updateForm(formId, formBindingData);
-          console.log(`${promiseName} ${tcNumber} updateForm data: ${JSON.stringify(data)}`);
+          const data = await formProvider.setFormNextRefreshTime(formId, nextTime);
+          console.log(`${promiseName} ${tcNumber} setFormNextRefreshTime data: ${JSON.stringify(data)}`);
           console.log(`${promiseName} ${tcNumber} should not reach here`);
           expect().assertFail();
         } catch (error) {
           console.log(`${promiseName} ${tcNumber} exception caught: ${JSON.stringify(error)}`);
-          expect(error.code).assertEqual(ERR_ADD_INVALID_PARAM_CODE);
-          expect(error.message).assertEqual(ERR_ADD_INVALID_PARAM);
+          if (`number` === typeof nextTime) {
+            if (ERR_NOT_EXIST_ID_CODE === error.code) {
+              expect(error.message).assertEqual(ERR_NOT_EXIST_ID);
+            } else if (ERR_ADD_INVALID_PARAM_CODE === error.code) {
+              expect(error.message).assertEqual(ERR_ADD_INVALID_PARAM);
+            } else {
+              console.log(`${promiseName} ${tcNumber} should not reach here`);
+              expect().assertFail();
+            }
+          } else {
+            expect(error.code).assertEqual(ERR_COMMON_CODE);
+            expect(error.message).assertEqual(ERR_COMMON);
+          }
           done();
         }
       });

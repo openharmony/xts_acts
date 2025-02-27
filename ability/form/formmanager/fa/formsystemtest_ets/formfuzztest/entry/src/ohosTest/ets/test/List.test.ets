@@ -19,6 +19,7 @@ import { notifyInvisibleFormsFuzzTest } from './NotifyInvisibleFormsFuzz.test.et
 import { notifyVisibleFormsFuzzTest } from './NotifyVisibleFormsFuzz.test.ets';
 import { requestFormFuzzTest } from './RequestFormFuzz.test.ets';
 import { setFormNextRefreshTimeFuzzTest } from './SetFormNextRefreshTimeFuzz.test.ets';
+import { setFormNextRefreshTimeFuzzTestNewApi } from './SetFormNextRefreshTimeFuzzNewApi.test.ets';
 import { updateFormFuzzTest } from './UpdateFormFuzz.test.ets';
 
 export default function testsuite() {
@@ -42,6 +43,7 @@ export default function testsuite() {
 
   // FMS_fuzzTest_setnexttime
   setFormNextRefreshTimeFuzzTest(`SetFormNextRefreshTimeFuzzTest`, 0);
+  setFormNextRefreshTimeFuzzTestNewApi(`SetFormNextRefreshTimeFuzzTestNewApi`, 0);
 
 
   // FMS_fuzzTest_disable
