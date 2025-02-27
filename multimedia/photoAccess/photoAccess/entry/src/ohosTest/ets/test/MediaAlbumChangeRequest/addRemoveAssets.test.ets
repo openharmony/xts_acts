@@ -103,20 +103,21 @@ export default function addRemoveAssetsChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-        it('add_remove_assets_change_request_002', 2, async (done: Function) => {
-          let testNum:string = 'add_remove_assets_change_request_002';
-          try {
-            let album:ESObject = await helper.createAlbum(testNum);
-            let albumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
-            await helper.applyChanges(albumChangeRequest);
-            albumChangeRequest.removeAssets(null);
-            expect(false).assertTrue();
-            done();
-          } catch (error) {
-            console.log(`${testNum} success; error: ${error}`);
-            expect(error.code).assertEqual(`401`);
-            done();
-          }
-        })
+    it('add_remove_assets_change_request_002', 2, async (done: Function) => {
+      let testNum:string = 'add_remove_assets_change_request_002';
+      try {
+        let album:ESObject = await helper.createAlbum(testNum);
+        let albumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+        await helper.applyChanges(albumChangeRequest);
+        const asset:ESObject = null;
+        albumChangeRequest.removeAssets([asset]);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.log(`${testNum} success; error: ${error}`);
+        expect(error.code).assertEqual(`401`);
+        done();
+      }
+    })
   })
 }
