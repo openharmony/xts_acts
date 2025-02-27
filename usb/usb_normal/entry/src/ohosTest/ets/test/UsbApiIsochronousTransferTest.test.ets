@@ -227,9 +227,10 @@ export default function UsbApiIsochronousTransferTest() {
             console.info(TAG, 'Isochronous testUsbSubmitTransfer003 end');
             console.error('isochronous error endpoint:', error);
             expect(error.code).assertEqual(401);
+            usbMgr.closePipe(devices);
+            done()
         }
-        usbMgr.closePipe(devices);
-        done()
+        
     });
 
     /**
@@ -259,9 +260,10 @@ export default function UsbApiIsochronousTransferTest() {
             console.info(TAG, 'Isochronous testUsbSubmitTransfer004 end');
             console.error('isochronous IO error:', error);
             expect(error.code).assertEqual(14400012);
+            usbMgr.closePipe(devices);
+            done()
         }
-        usbMgr.closePipe(devices);
-        done()
+
     });
 
     /**
@@ -280,7 +282,6 @@ export default function UsbApiIsochronousTransferTest() {
             done()
             return
         }
-        // let gPipe: usbMgr.USBDevicePipe;
         let gPipe: usbMgr.USBDevicePipe = {
             'busNum': 0,
             'devAddress': 0
@@ -324,9 +325,9 @@ export default function UsbApiIsochronousTransferTest() {
             console.info(TAG, 'Isochronous testUsbCancelTransfer001 end');
             console.error('isochronous cancel failed:', error);
             expect(error.code).assertEqual(14400011);
+            usbMgr.closePipe(devices);
+            done()
         }
-        usbMgr.closePipe(devices);
-        done()
     });
 
     /**

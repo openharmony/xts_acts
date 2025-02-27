@@ -144,9 +144,9 @@ export default function UsbApiInterruptTransferTest() {
             console.info(TAG, 'interrupt testUsbSubmitTransfer001 end');
             console.error('interrupt error:', error);
             expect(error.code).assertEqual(14400012);
+            usbMgr.closePipe(devices);
+            done()
         }
-        usbMgr.closePipe(devices);
-        done()
     });
 
     /**
@@ -176,9 +176,9 @@ export default function UsbApiInterruptTransferTest() {
             console.info(TAG, 'interrupt testUsbSubmitTransfer002 end');
             console.error('interrupt IO error:', error);
             expect(error.code).assertEqual(14400012);
+            usbMgr.closePipe(devices);
+            done()
         }
-        usbMgr.closePipe(devices);
-        done()
     });
 
     /**
@@ -244,11 +244,11 @@ export default function UsbApiInterruptTransferTest() {
         try {
             usbMgr.usbCancelTransfer(transferParams);
             console.info(TAG, 'interrupt testUsbCancelTransfer001 end');
+            usbMgr.closePipe(devices);
+            done()
         } catch (error) {
             console.error('interrupt error:', error);
         }
-        usbMgr.closePipe(devices);
-        done()
     });
 
     /**
@@ -277,11 +277,10 @@ export default function UsbApiInterruptTransferTest() {
             console.info(TAG, 'interrupt testUsbCancelTransfer002 end');
             console.error('interrupt cancel failed:', error);
             expect(error.code).assertEqual(14400011);
+            usbMgr.closePipe(devices);
+            done()
         }
-        usbMgr.closePipe(devices);
-        done()
     });
 
   })
-
 }

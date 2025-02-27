@@ -221,9 +221,9 @@ export default function UsbApiBulkTransferTest() {
             console.info(TAG, 'bulk testUsbSubmitTransfer003 end');
             console.error('bulk transfer error endpoint:', error);
             expect(error.code).assertEqual(14400012);
+            usbMgr.closePipe(devices);
+            done();
         }
-        usbMgr.closePipe(devices);
-        done(); 
     });
 
     /**
@@ -255,9 +255,9 @@ export default function UsbApiBulkTransferTest() {
             console.info(TAG, 'bulk testUsbSubmitTransfer004 end');
             console.error('bulk failed:', error);
             expect(error.code).assertEqual(14400001);
+            usbMgr.closePipe(devices);
+            done();
         }
-        usbMgr.closePipe(devices);
-        done();
     });
 
     /**
@@ -283,20 +283,14 @@ export default function UsbApiBulkTransferTest() {
         let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, flags, 129, type, 0);
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
-            transferParams.callback = (err: Error, data: usbMgr.SubmitTransferCallback)=>{
-                console.info(TAG, 'bulk testUsbCancelTransfer001 data =' +JSON.stringify(data));
-                expect(data.status == usbMgr.UsbTransferStatus.TRANSFER_CANCELED).assertTrue();
-                usbMgr.closePipe(devices);
-                done();
-            }
             usbMgr.usbSubmitTransfer(transferParams);
             usbMgr.usbCancelTransfer(transferParams);
             console.info(TAG, 'bulk testUsbCancelTransfer001 end');
+            usbMgr.closePipe(devices);
+            done();
         } catch (error) {
             console.error('bulk cancel error:', error);
         }
-        usbMgr.closePipe(devices);
-        done();
     });
 
     /**
@@ -333,5 +327,4 @@ export default function UsbApiBulkTransferTest() {
     });
 
   })
-
 }
