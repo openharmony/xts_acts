@@ -66,6 +66,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in onStarted()  " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -87,6 +88,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in anim.pause() " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -154,6 +156,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in anim.stop() " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -185,6 +188,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in onFinished() " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -207,6 +211,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in anim.duration " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -230,6 +235,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in anim.enabled = false " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -260,6 +266,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in env.indirectDiffuseFactor " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -282,6 +289,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in env.indirectSpecularFactor " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -304,6 +312,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in env.environmentMapFactor " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -346,6 +355,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in Environment environmentImage set " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -374,6 +384,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in Environment radianceImage set " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -459,6 +470,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in Mesh " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -522,6 +534,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in SceneResource " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -542,6 +555,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in material?.materialType  " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
