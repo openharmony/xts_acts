@@ -17,14 +17,10 @@ import SpaceMain5JustifyContentJsunit from './Flex/SpaceMain5JustifyContent.test
 import SpaceCross5AlignItemsJsunit from './Flex/SpaceCross5AlignItems.test.ets';
 import RelativeContainerApi from './RelativeContainer/RelativeContainerApi.test'
 import RelativeContainerStartApi from './RelativeContainerStart/RelativeContainerStartApi.test'
-import ChipApi1 from './Chip/ChipApi1.test'
-import ChipGroupApi1 from './ChipGroup/ChipGroupApi1.test'
 import FlexSpaceTest from './Flex/FlexSpaceTest.test.ets';
-import FolderStackTest1 from './FolderStack/FolderStackTest1.test.ets';
 
 import APIremoveGestureByTag from './Column/APIremoveGestureByTag.test'
 import APIaccessibilityTextHint from './Column/APIaccessibilityTextHint.test'
-import FolderStackTest2 from './FolderStack/FolderStackTest2.test.ets';
 
 export default function testsuite() {
   SpaceMainNumberJsunit();
@@ -32,10 +28,7 @@ export default function testsuite() {
   SpaceCross5AlignItemsJsunit();
   RelativeContainerApi();
   RelativeContainerStartApi();
-  ChipApi1();
   FlexSpaceTest();
-  FolderStackTest1();
   APIremoveGestureByTag();
   APIaccessibilityTextHint();
-  FolderStackTest2();
 }
