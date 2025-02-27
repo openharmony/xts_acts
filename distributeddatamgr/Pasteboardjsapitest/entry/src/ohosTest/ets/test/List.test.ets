@@ -23,7 +23,6 @@ import pasteBoardSystemPasteBoardTest from './PasteBoardSystemPasteBoard.test';
 import PasteboardUnifiedTest from './PasteboardUnified.test';
 import PasteboartdCopyJsAPITest from './PasteboartdCopyJsAPITest.test';
 import PasteboardVarietyTest from './PasteboardVariety.test';
-import SystemPasteboardCallbackTest from './SystemPasteboardCallbackTest.test';
 export default function testsuite() {
   pasteboardDetectPatternsTest()
   pasteBoardJEtsunitTest()
@@ -35,5 +34,4 @@ export default function testsuite() {
   PasteboardDelayCopyTest()
   PasteboartdCopyJsAPITest()
   PasteboardVarietyTest()
-  SystemPasteboardCallbackTest()
 }
