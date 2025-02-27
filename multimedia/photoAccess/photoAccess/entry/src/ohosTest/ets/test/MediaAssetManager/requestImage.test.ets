@@ -250,6 +250,9 @@ export default function requestImageTest() {
         let photoAsset = null;
         class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<image.ImageSource> {
           onDataPrepared(data: image.ImageSource) {
+            console.info(`${testNum} succeed`);
+            expect(false).assertTrue();
+            done();
           }
         }
         let requestOptions : photoAccessHelper.RequestOptions = {
