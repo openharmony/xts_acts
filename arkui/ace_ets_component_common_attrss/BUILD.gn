@@ -110,6 +110,7 @@ group("componentAttrssTest") {
         "ace_ets_component_common_attrss_focusableNowear:ActsAceEtsComponentCommonfocusableNowearTest",
         "ace_ets_component_common_attrss_gridOffset:ActsAceEtsComponentCommonAttrsGridOffsetTest",
         "ace_ets_component_common_attrss_gridSpan:ActsAceEtsComponentCommonAttrsGridSpanTest",
+        "ace_ets_component_common_attrss_gridSpan_nowear:ActsAceEtsComponentCommonAttrsGridSpanNowearTest",
         "ace_ets_component_common_attrss_groupDefaultFocus:ActsAceEtsComponentCommonAttrsGroupDefaultFocusTest",
         "ace_ets_component_common_attrss_groupDefaultFocusNowear:ActsAceEtsComponentCommonAttrsGroupDefaultFocusNowearTest",
         "ace_ets_component_common_attrss_height:ActsAceEtsComponentCommonAttrsHeightTest",
