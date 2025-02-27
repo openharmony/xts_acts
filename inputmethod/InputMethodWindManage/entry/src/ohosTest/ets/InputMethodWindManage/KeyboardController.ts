@@ -1598,8 +1598,14 @@ export class KeyboardController {
       }
       inputMethodAbility.createPanel(this.mContext, panelInfo).then(async(inputPanel: inputMethodEngine.Panel) => {
         if(inputPanel){
-          await inputPanel.resize(500, 100);
-          await inputPanel.moveTo(0, 500);
+          let wid  = Math.floor(this.display_info.width * 0.4);
+          let hei = Math.floor(this.display_info.height * 0.5);
+          console.info(TAG + `====>Sub_InputMethod_IME_Dragging_0900 wid: ${wid},hei: ${hei}`);
+          await inputPanel.resize(wid, hei);
+          let wid_  = Math.floor(this.display_info.width * 0.3);
+          let hei_ = Math.floor(this.display_info.height * 0.4);
+          console.info(TAG + `====>Sub_InputMethod_IME_Dragging_0900 wid_: ${wid_},hei_: ${hei_}`);
+          await inputPanel.moveTo(wid_, hei_);
           console.info(TAG + '====>Sub_InputMethod_IME_Dragging_0900 creat panel success!');
           let displayId = await inputPanel.getDisplayId();
           console.info(TAG + '====>Sub_InputMethod_IME_Dragging_0900 getDisplayId success!');
