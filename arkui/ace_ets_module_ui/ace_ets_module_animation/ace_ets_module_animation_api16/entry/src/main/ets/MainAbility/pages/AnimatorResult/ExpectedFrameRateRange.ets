@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 import { UIContext } from '@kit.ArkUI';
+import events_emitter from '@ohos.events.emitter';
+
 @Entry
 @Component
 struct ExpectedFrameRateRange {
@@ -25,18 +27,8 @@ struct ExpectedFrameRateRange {
     this.uiContext = this.getUIContext?.();
   }
 
-  @State minText: string = '';
-  @State maxText: string = '';
-  @State expectedText: string = '';
-
   build() {
     Column() {
-      Text(this.minText)
-        .id('min').height('5%')
-      Text(this.maxText)
-        .id('max').height('5%')
-      Text(this.expectedText)
-        .id('expected').height('5%')
       Circle()
         .id('circleId')
         .width(100)
@@ -59,10 +51,23 @@ struct ExpectedFrameRateRange {
                 min:this.minNumber,
               },
               onFinish:()=>{
-                this.minText = this.minNumber + '';
-                this.expectedText = this.expectedNumber + '';
-                this.maxText = this.maxNumber + '';
-                console.info('custom animate done')
+                try {
+                  let backData: events_emitter.EventData = {
+                    data: {
+                      "min": this.minNumber,
+                      "expected": this.expectedNumber,
+                      "max": this.maxNumber,
+                    }
+                  }
+                  let backEvent: events_emitter.InnerEvent = {
+                    eventId: 51,
+                    priority: events_emitter.EventPriority.LOW
+                  }
+                  console.info("onFinish start to emit action state")
+                  events_emitter.emit(backEvent, backData)
+                } catch (err) {
+                  console.info("onFinish emit action state err: " + JSON.stringify((err as Error)?.message))
+                }
               },
             }, [
             {
