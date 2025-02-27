@@ -707,7 +707,7 @@ export default function certFrameworkCertChainExtJsAPIFunctionTestUnit() {
       };
       try {
         let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
-        let mode: cert.EncodingType = 0;
+        let mode: cert.EncodingType = cert.EncodingType.ENCODING_UTF8;
         let subjectNameBlob = x509Cert.getSubjectName(mode);
         let encoder = util.TextDecoder.create('utf8', {ignoreBOM: false});
         const subjectName = encoder.decodeWithStream(subjectNameBlob.data)
@@ -739,7 +739,7 @@ export default function certFrameworkCertChainExtJsAPIFunctionTestUnit() {
       };
       try {
         let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
-        let mode: cert.EncodingType = 0;
+        let mode: cert.EncodingType = cert.EncodingType.ENCODING_UTF8;
         let subjectNameBlob = x509Cert.getSubjectName(mode);
         let encoder = util.TextDecoder.create('utf8', {ignoreBOM: false});
         const subjectName = encoder.decodeWithStream(subjectNameBlob.data)
@@ -771,7 +771,7 @@ export default function certFrameworkCertChainExtJsAPIFunctionTestUnit() {
           encodingFormat: cert.EncodingFormat.FORMAT_PEM
         };
         let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
-        let mode: cert.EncodingType = 0;
+        let mode: cert.EncodingType = cert.EncodingType.ENCODING_UTF8;
         try {
           x509Cert.getSubjectName();
           expect(null).assertFail()
@@ -807,7 +807,7 @@ export default function certFrameworkCertChainExtJsAPIFunctionTestUnit() {
       };
       try {
         let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
-        let mode: cert.EncodingType = 0;
+        let mode: cert.EncodingType = cert.EncodingType.ENCODING_UTF8;
         let subjectNameBlob = x509Cert.getSubjectName(mode);
         let encoder = util.TextDecoder.create('utf8', {ignoreBOM: false});
         const subjectName = encoder.decodeWithStream(subjectNameBlob.data)
