@@ -62,4 +62,7 @@ ohos_moduletest_suite("ActsAvAudioEncoderCapiNdkTest") {
   deps = [ "//foundation/multimedia/av_codec/interfaces/kits/c:capi_packages" ]
 
   external_deps = [ "media_foundation:native_media_core" ]
+
+  part_name = "av_codec"
+  subsystem_name = "multimedia"
 }
