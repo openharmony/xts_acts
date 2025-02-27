@@ -72,7 +72,7 @@ struct getGridItemRect2 {
                 .textAlign(TextAlign.Center)
             }
             .width('100%')
-            .height(100)
+            .height('20%')
             .border({ width: 1 })
           }, (item: string) => item)
         }, (item: string) => item)

@@ -12,18 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ListSwipeTest from './ListTest/ListSwipe.test'
-import ScrollEffectEdge from './ScrollTest/ScrollEffectEdge.test'
-import TabBarComponentContent from './TabsTest/TabBarComponentContent.test'
-import GridBackToTopTest from './GridTest/GridBackToTop.test'
-import ListBackToTopTest from './ListTest/ListBackToTop.test'
-import ScrollBackToTopTest from './ScrollTest/ScrollBackToTop.test'
 
-export default function testsuite() {
-  ListSwipeTest();
-  ScrollEffectEdge();
-  TabBarComponentContent();
-  GridBackToTopTest();
-  ListBackToTopTest();
-  ScrollBackToTopTest();
+{
+  "license": "",
+  "devDependencies": {
+    "@ohos/hypium": "1.0.6"
+  },
+  "author": "",
+  "name": "com.arkui.ace.scroll.nowear.api16",
+  "description": "XTS",
+  "main": "",
+  "version": "1.0.0",
+  "dependencies": {}
 }
