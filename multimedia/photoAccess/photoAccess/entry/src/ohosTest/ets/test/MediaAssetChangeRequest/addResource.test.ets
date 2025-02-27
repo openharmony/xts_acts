@@ -88,6 +88,7 @@ export default function addResourceChangeRequestTest() {
       }
     })
 
+    
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_ADD_RESOURCE_CHANGE_REQUEST_0200
      * @tc.name      : add_resource_change_request_002
@@ -99,17 +100,11 @@ export default function addResourceChangeRequestTest() {
     it('add_resource_change_request_002', 0, async (done: Function) => {
       let testNum = 'add_resource_change_request_002';
       try {
-        let fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoAccessHelper.PhotoType.IMAGE);
-        let fetchResult = await helper.getAssets(fetchOps);
-        let count = fetchResult.getCount();
-
-        let photoType = photoAccessHelper.PhotoType.IMAGE;
-        let extension = '';
+        let photoType = photoAccessHelper.PhotoType.VIDEO;
+        let extension = 'mp4';
         let assetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(testContext, photoType, extension);
+        console.info(`assetChangeRequest is declared successfully`);
         assetChangeRequest.addResource(photoAccessHelper.ResourceType.IMAGE_RESOURCE, new ArrayBuffer(1024));
-        await helper.applyChanges(assetChangeRequest);
-
-        fetchResult = await helper.getAssets(fetchOps);
         console.info(`${testNum} succeed to add resource by ArrayBuffer`);
         expect(false).assertTrue();
         done();
