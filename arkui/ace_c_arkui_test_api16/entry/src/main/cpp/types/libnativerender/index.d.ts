@@ -33,3 +33,4 @@ export const TestDragDisableDropDataPrefetch002: (a: string) => void;
 export const TestDragCancelDataLoading003: (a: string) => void;
 
 export const GetResult: () => number[];
+export const calendarPickerTest: (a: string) => void;

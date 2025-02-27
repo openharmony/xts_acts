@@ -17,10 +17,12 @@ import openPopup from './promptActionTest/openPopup.test'
 import updatePopup from './promptActionTest/updatePopup.test'
 import closePopup from './promptActionTest/closePopup.test'
 import timePickerDialogEnableHapticFeedback from './timePickerDialog/timePickerDialogEnableHapticFeedback.test'
+import disableDateRangeAndMarkTodayTest from './calendarPickerDialog/disableDateRangeAndMarkToday.test'
 export default function testsuite() {
     maxWidth();
     openPopup();
     updatePopup();
     closePopup();
     timePickerDialogEnableHapticFeedback();
+    disableDateRangeAndMarkTodayTest();
 }
