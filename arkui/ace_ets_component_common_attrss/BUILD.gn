@@ -152,6 +152,7 @@ group("componentAttrssTest") {
         "ace_ets_component_common_attrss_width:ActsAceEtsComponentCommonAttrsWidthTest",
         "ace_ets_component_common_attrss_width_nowear:ActsAceEtsComponentCommonAttrsWidthNowearTest",
         "ace_ets_component_common_attrss_zIndex:ActsAceEtsComponentCommonAttrsZIndexTest",
+        "ace_ets_component_common_attrss_zIndex_nowear:ActsAceEtsComponentCommonAttrsZIndexNowearTest",
       ]
     }
   }
