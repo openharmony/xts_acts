@@ -2276,8 +2276,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.level      : Level3
      */
     it('PiPSizeChange_Function_Callback_0', 0, async (done:Function) => {
-      if (deviceType !== 'phone') {
-        console.log('PiPSizeChange_Function_Callback_0 device type not phone');
+      if (deviceType === '2in1') {
+        console.log('PiPSizeChange_Function_Callback_0 device type 2in1');
         done();
         return;
       }
@@ -2349,8 +2349,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.level      : Level3
      */
     it('PiPSizeChange_Function_Callback_1', 0, async (done:Function) => {
-      if (deviceType !== 'phone') {
-        console.log('PiPSizeChange_Function_Callback_1 device type not phone');
+      if (deviceType === '2in1') {
+        console.log('PiPSizeChange_Function_Callback_1 device type 2in1');
         done();
         return;
       }
@@ -2425,8 +2425,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.level      : Level3
      */
     it('PiPSizeChange_Function_Callback_2', 0, async (done:Function) => {
-      if (deviceType !== 'phone') {
-        console.log('PiPSizeChange_Function_Callback_2 device type not phone');
+      if (deviceType === '2in1') {
+        console.log('PiPSizeChange_Function_Callback_2 device type 2in1');
         done();
         return;
       }
