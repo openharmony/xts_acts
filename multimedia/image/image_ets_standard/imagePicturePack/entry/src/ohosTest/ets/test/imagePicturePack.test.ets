@@ -24,7 +24,6 @@ import resourceManager from '@ohos.resourceManager';
 import hdrCapability from '@ohos.graphics.hdrCapability';
 import display from '@ohos.display';
 
-
 let sleep = async (delay: number): Promise<void> => {
   return new Promise((resolve, _) => {
     setTimeout(async () => {
