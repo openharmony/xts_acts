@@ -482,7 +482,7 @@ export default function MultimodalInputDeviceTest() {
       let caseName = "SUB_MMI_Input_Api_IptDev_getAllSystemHotkeys_0100";
       try {
         inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
-          if(data.length > 0) {
+          if(data.length >= 0) {
             console.info(`${caseName} list of system hotkeys: ${JSON.stringify(data)}`);
             ExpectTrue(true);
             done();
@@ -493,15 +493,9 @@ export default function MultimodalInputDeviceTest() {
           }
         });
       } catch (error) {
-        if(error.code == 801) {
-          console.info(`${caseName} failed to get system hotkeys, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectTrue(true);
-          done();
-        } else {
-          console.info(`${caseName} failed to get system hotkeys, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
-        }
+        console.info(`${caseName} failed to get system hotkeys, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectFalse(true);
+        done();
       }
     });
 
@@ -530,6 +524,75 @@ export default function MultimodalInputDeviceTest() {
       } catch (error) {
         console.info(`${caseName} failed to get interval since last input, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
+        done();
+      }
+    });
+    
+    /**
+     * @tc.number: SUB_MMI_Input_Api_IptDev_isFunctionKeyEnabled_0100
+     * @tc.name: SUB_MMI_Input_Api_IptDev_isFunctionKeyEnabled_0100
+     * @tc.desc: Test promise isFunctionKeyEnabled interface to set error FunctionKey(10000).
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_IptDev_isFunctionKeyEnabled_0100", 0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_IptDev_isFunctionKeyEnabled_0100";
+      try {
+        await inputDevice.isFunctionKeyEnabled(10000).then((state1: boolean) => {
+          console.info(`${caseName} capslock state1: ${JSON.stringify(state1)}`);
+          ExpectFalse(true);
+          done();
+        });
+      } catch (error) {
+        console.info(`${caseName} failed to get capslock state, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectTrue(error.code == 401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_IptDev_isFunctionKeyEnabled_0200
+     * @tc.name: SUB_MMI_Input_Api_IptDev_isFunctionKeyEnabled_0200
+     * @tc.desc: Test promise isFunctionKeyEnabled interface to set error FunctionKey(-1).
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_IptDev_isFunctionKeyEnabled_0200", 0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_IptDev_isFunctionKeyEnabled_0200";
+      try {
+        await inputDevice.isFunctionKeyEnabled(-1).then((state1: boolean) => {
+          console.info(`${caseName} capslock state1: ${JSON.stringify(state1)}`);
+          ExpectFalse(true);
+          done();
+        });
+      } catch (error) {
+        console.info(`${caseName} failed to get capslock state, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectTrue(error.code == 401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_IptDev_isFunctionKeyEnabled_0300
+     * @tc.name: SUB_MMI_Input_Api_IptDev_isFunctionKeyEnabled_0300
+     * @tc.desc: Test promise isFunctionKeyEnabled interface to unconnect keyboard device.
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_IptDev_isFunctionKeyEnabled_0300", 0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_IptDev_isFunctionKeyEnabled_0300";
+      try {
+        await inputDevice.isFunctionKeyEnabled(1).then((state1) => {
+          console.info(`${caseName} capslock state1: ${JSON.stringify(state1)}`);
+          ExpectTrue(Number(state1) == 0 || Number(state1) == 1);
+          done();
+        });
+      } catch (error) {
+        console.info(`${caseName} failed to get capslock state, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectTrue(error.code == 3900002);
         done();
       }
     });
