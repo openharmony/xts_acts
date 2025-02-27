@@ -1032,27 +1032,24 @@ export default function abilityTest() {
               expect(ElementAttributeValue.indexOf("accessibilityNextFocusId") != -1).assertTrue();
               expect(ElementAttributeValue.indexOf("accessibilityPreviousFocusId") != -1).assertTrue();
               expect(ElementAttributeValue.indexOf("extraInfo") != -1).assertTrue();
+              expect(ElementAttributeValue.indexOf("accessibilityScrollable") != -1).assertTrue();
             });
             rootElement.actionNames((err, data) => {
               console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));
             });
-            rootElement.attributeValue('bundleName', (err, data:string) => {
-              if (err && err.code) {
-                console.error('failed to get attribute value, Code is ${err.code}, message is ${err.message}');
-                return;
-              }
-              console.info('Succeeded in get attribute value, ${JSON.stringify(data)}')
-            });
-            let actionName = 'action';
-            let parameters = {
-              'setText': 'test text'
-            }
             rootElement.performAction('action', (err, data) => {
               console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));
             });
             rootElement.getCursorPosition((err, data) => {
               console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));
             });
+            rootElement.attributeValue('bundleName', (err, data: string) => {
+              if (err && err.code) {
+              console.error(`failed to get attribute value, Code is ${err.code}, message is ${err.message}`);
+              return;
+              }
+              console.info(`Succeeded in get attribute value, ${JSON.stringify(data)}`);
+            }); 
             let actionName = 'action';
             let parameters = {
               'setText': 'test text'
