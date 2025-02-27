@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import WaterFlowEffectEdge from './ScrollTest/WaterFlowEffectEdge.test'
+import WaterFlowEffectEdge from './WaterFlowTest/WaterFlowEffectEdge.test'
 import WaterComponentContent from './WaterFlowTest/WaterComponentContent.test'
 import WaterFlowBackToTopTest from './WaterFlowTest/WaterFlowBackToTop.test'
 
