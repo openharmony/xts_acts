@@ -46,6 +46,7 @@ async function getCameraManagerInstance() {
   return true;
 }
 
+
 function getCameraSupportDevicesArray() {
   console.info(TAG + 'Enter getCameraSupportDevicesArray');
   camera = cameraObj.getSupportedCameras();
