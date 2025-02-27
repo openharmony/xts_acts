@@ -35,24 +35,24 @@ import {
 export default function ExpectedFrameRateRange() {
   describe('ExpectedFrameRateRange', () => {
     beforeEach(async (done: Function) => {
-      console.info("ExpectedFrameRateRange beforeEach start");
+      console.info('ExpectedFrameRateRange beforeEach start');
       let options: router.RouterOptions = {
-        url: "MainAbility/pages/AnimatorResult/ExpectedFrameRateRange",
+        url: 'MainAbility/pages/AnimatorResult/ExpectedFrameRateRange',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get ExpectedFrameRateRange state pages:" + JSON.stringify(pages));
-        if (!("ExpectedFrameRateRange" == pages.name)) {
-          console.info("get ExpectedFrameRateRange pages.name:" + JSON.stringify(pages.name));
+        console.info('get ExpectedFrameRateRange state pages:' + JSON.stringify(pages));
+        if (!('ExpectedFrameRateRange' == pages.name)) {
+          console.info('get ExpectedFrameRateRange pages.name:' + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
-          console.info("push ExpectedFrameRateRange page result:" + JSON.stringify(result));
+          console.info('push ExpectedFrameRateRange page result:' + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push ExpectedFrameRateRange page error:" + err);
+        console.error('push ExpectedFrameRateRange page error:' + err);
       }
-      console.info("ExpectedFrameRateRange beforeEach end");
+      console.info('ExpectedFrameRateRange beforeEach end');
       done();
     });
     afterEach(async () => {
@@ -75,13 +75,13 @@ export default function ExpectedFrameRateRange() {
         priority: events_emitter.EventPriority.LOW
       }
       let callback = (indexEvent: events_emitter.EventData) => {
-          console.info("ExpectedFrameRateRange_001 get state result is: " + JSON.stringify(indexEvent))
+          console.info('ExpectedFrameRateRange_001 get state result is: ' + JSON.stringify(indexEvent))
         try {
           expect(indexEvent.data?.min).assertEqual(60);
           expect(indexEvent.data?.max).assertEqual(120);
           expect(indexEvent.data?.expected).assertEqual(90);
         } catch (err) {
-          console.info("ExpectedFrameRateRange_001 get state result is err: " + JSON.stringify(err));
+          console.info('ExpectedFrameRateRange_001 get state result is err: ' + JSON.stringify(err));
         }
         console.info('[ExpectedFrameRateRange_001] END');
         done();
@@ -89,7 +89,7 @@ export default function ExpectedFrameRateRange() {
       try {
         events_emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("ExpectedFrameRateRange_001 on events_emitter err : " + JSON.stringify(err));
+        console.info('ExpectedFrameRateRange_001 on events_emitter err : ' + JSON.stringify(err));
       }
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
