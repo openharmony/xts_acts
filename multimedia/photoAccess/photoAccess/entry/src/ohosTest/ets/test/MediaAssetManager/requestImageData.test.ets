@@ -258,6 +258,8 @@ export default function requestImageDataTest() {
         }
         const handler = new MediaHandler;
         photoAccessHelper.MediaAssetManager.requestImageData(null, photoAsset, requestOptions, handler)
+        expect(false).assertTrue();
+        done();
       } catch (error) {
         console.log(`${testNum} success; error.code: ${error.code}`); 
         expect(error.code).assertEqual(`401`);
