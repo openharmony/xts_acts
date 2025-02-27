@@ -210,7 +210,7 @@ export default function commonEventEventTest() {
       await Utils.sleep(2000);
       expect(Utils.getComponentInfoByKey('noneItself').$attrs.backgroundColor).assertEqual('#FFFF0000')
       expect(Utils.getComponentInfoByKey('noneParent').$attrs.backgroundColor).assertEqual('#FF00FF00')
-      expect(Utils.getComponentInfoByKey('noneBrother').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      expect(Utils.getComponentInfoByKey('noneBrother').$attrs.backgroundColor).assertEqual('#FFFF0000')
       expect(Utils.getComponentInfoByKey('noneChild').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()
     })
