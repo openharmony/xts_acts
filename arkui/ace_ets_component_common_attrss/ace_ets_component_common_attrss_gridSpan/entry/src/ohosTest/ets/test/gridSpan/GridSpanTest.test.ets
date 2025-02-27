@@ -58,10 +58,7 @@ export default function gridSpanTest() {
     'Rating',
     'ScrollBar',
     'Search',
-    'Select',
     'Slider',
-    'Stepper',
-    'StepperItem',
     'TabContent',
     'Text',
     'TextArea',
@@ -73,10 +70,8 @@ export default function gridSpanTest() {
     'Toggle',
     'Badge',
     'Column',
-    'ColumnSplit',
     'Counter',
     'Flex',
-    'FlowItem',
     'GridCol',
     'GridRow',
     'Grid',
@@ -89,9 +84,7 @@ export default function gridSpanTest() {
     'Refresh',
     'RelativeContainer',
     'Row',
-    'RowSplit',
     'Scroll',
-    'SideBarContainer',
     'Stack',
     'Swiper',
     'Tabs',
@@ -102,8 +95,7 @@ export default function gridSpanTest() {
     'Path',
     'Rect',
     'Shape',
-    'Line',
-    'WaterFlow'
+    'Line'
   ]
 
   //Custom params.
