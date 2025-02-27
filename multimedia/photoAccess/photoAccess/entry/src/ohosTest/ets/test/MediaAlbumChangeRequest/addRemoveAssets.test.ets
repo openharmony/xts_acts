@@ -108,9 +108,9 @@ export default function addRemoveAssetsChangeRequestTest() {
       try {
         let album:ESObject = await helper.createAlbum(testNum);
         let albumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
-        await helper.applyChanges(albumChangeRequest);
         const asset:ESObject = null;
         albumChangeRequest.removeAssets([asset]);
+        await helper.applyChanges(albumChangeRequest);
         expect(false).assertTrue();
         done();
       } catch (error) {
