@@ -393,15 +393,6 @@ export default function getMovingPhotoTest() {
       }
     }
 
-    class ErrorMovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
-      async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
-        console.log("ErrorMovingPhotoHandler::movingPhoto onDataPrepared");
-        let photoUri = await movingPhoto.getUri();
-        console.log(`photoUri =====> ${photoUri}`);
-        console.log("moving photo contents retrieved successfully");
-      }
-    }
-
     // export moving photo:: only photo
     class PhotoHandler implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
       async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
