@@ -16,6 +16,6 @@ ohos_js_app_suite("ActsAnimatorTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAnimatorTest"
-  part_name = "window_manager"
-  subsystem_name = "window"
+  subsystem_name = "graphic"
+  part_name = "graphic_2d"
 }
