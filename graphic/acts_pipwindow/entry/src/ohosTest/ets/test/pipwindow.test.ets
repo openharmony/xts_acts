@@ -2350,7 +2350,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      */
     it('PiPSizeChange_Function_Callback_1', 0, async (done:Function) => {
       if (deviceType !== 'phone') {
-        console.log('PiPSizeChange_Function_Callback_0 device type not phone');
+        console.log('PiPSizeChange_Function_Callback_1 device type not phone');
         done();
         return;
       }
@@ -2426,7 +2426,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      */
     it('PiPSizeChange_Function_Callback_2', 0, async (done:Function) => {
       if (deviceType !== 'phone') {
-        console.log('PiPSizeChange_Function_Callback_0 device type not phone');
+        console.log('PiPSizeChange_Function_Callback_2 device type not phone');
         done();
         return;
       }
