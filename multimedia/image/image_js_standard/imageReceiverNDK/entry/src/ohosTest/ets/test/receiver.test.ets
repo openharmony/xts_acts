@@ -24,6 +24,7 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { PermissionRequestResult, Permissions } from '@kit.AbilityKit';
+import { isSupportedCameras } from './common'
 
 const TAG = "ImageReceiverTest: ";
 const delegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -74,6 +75,7 @@ let sleep = (ms?: number | undefined): Promise<void> => {
 export default function ImageReceiverTest() {
 
     describe('ImageReceiverTest', () => {
+        let isSupportedCamerasResult = isSupportedCameras();
         const WIDTH = 1280;
         const HEIGHT = 960;
         const CAPACITY = 8;
@@ -86,12 +88,6 @@ export default function ImageReceiverTest() {
             latitude: 0,
             longitude: 0,
             altitude: 0,
-        };
-        let captureSetting: cameraObj.PhotoCaptureSetting = {
-            quality: cameraObj.QualityLevel.QUALITY_LEVEL_LOW,
-            rotation: cameraObj.ImageRotation.ROTATION_0,
-            location: captureLocation,
-            mirror: false
         };
         let mCameraManager: cameraObj.CameraManager;
         let cameraOutputCap: cameraObj.CameraOutputCapability;
@@ -118,6 +114,9 @@ export default function ImageReceiverTest() {
 
         beforeAll(async () => {
             console.info('beforeAll case');
+            if (!isSupportedCamerasResult) {
+              return;
+            }
             await getPermission();
             await permissionClick();
             testContext = AppStorage.get<common.UIAbilityContext>('testContext') as common.UIAbilityContext;
@@ -298,6 +297,12 @@ export default function ImageReceiverTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_RELEASE_0100', 0, async (done: Function) => {
+            if (!isSupportedCamerasResult) {
+              console.info('Failed to obtain the default camera or device object.Not support usb camera');
+              expect(true).assertTrue();
+              done();
+              return;
+            }
             let mlg: ESObject = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_RELEASE_0100");
             try {
                 let options: number = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
@@ -332,6 +337,12 @@ export default function ImageReceiverTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_RELEASE_0200', 0, async (done: Function) => {
+            if (!isSupportedCamerasResult) {
+              console.info('Failed to obtain the default camera or device object.Not support usb camera');
+              expect(true).assertTrue();
+              done();
+              return;
+            }
             let mlg: ESObject = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_RELEASE_0200");
             try {
                 let options: number = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
@@ -368,12 +379,24 @@ export default function ImageReceiverTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0100', 0, async (done: Function) => {
+            if (!isSupportedCamerasResult) {
+              console.info('Failed to obtain the default camera or device object.Not support usb camera');
+              expect(true).assertTrue();
+              done();
+              return;
+            }
             if (!isSupportCameraVideoProfiles) {
                 console.info('Failed to obtain the default videoProfiles object. Not support usb camera');
                 expect(true).assertTrue();
                 done();
             }
             else {
+                let captureSetting: cameraObj.PhotoCaptureSetting = {
+                    quality: cameraObj.QualityLevel.QUALITY_LEVEL_LOW,
+                    rotation: cameraObj.ImageRotation.ROTATION_0,
+                    location: captureLocation,
+                    mirror: false
+                };
                 let mlg: ESObject = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0100");
                 getCameraManagerInstance();
                 getCameraSupportDevicesArray();
@@ -447,6 +470,12 @@ export default function ImageReceiverTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0200', 0, async (done: Function) => {
+            if (!isSupportedCamerasResult) {
+              console.info('Failed to obtain the default camera or device object.Not support usb camera');
+              expect(true).assertTrue();
+              done();
+              return;
+            }
             let mlg: ESObject = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0200");
             try {
                 let options: number = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
@@ -479,6 +508,12 @@ export default function ImageReceiverTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0300', 0, async (done: Function) => {
+            if (!isSupportedCamerasResult) {
+              console.info('Failed to obtain the default camera or device object.Not support usb camera');
+              expect(true).assertTrue();
+              done();
+              return;
+            }
             let mlg: ESObject = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0300");
             try {
                 let options: number = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
@@ -510,6 +545,12 @@ export default function ImageReceiverTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0400', 0, async (done: Function) => {
+            if (!isSupportedCamerasResult) {
+              console.info('Failed to obtain the default camera or device object.Not support usb camera');
+              expect(true).assertTrue();
+              done();
+              return;
+            }
             if (!isSupportCameraVideoProfiles) {
                 console.info('Failed to obtain the default videoProfiles object. Not support usb camera');
                 expect(true).assertTrue();
@@ -558,6 +599,12 @@ export default function ImageReceiverTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0500', 0, async (done: Function) => {
+            if (!isSupportedCamerasResult) {
+              console.info('Failed to obtain the default camera or device object.Not support usb camera');
+              expect(true).assertTrue();
+              done();
+              return;
+            }
             if (!isSupportCameraVideoProfiles) {
                 console.info('Failed to obtain the default videoProfiles object. Not support usb camera');
                 expect(true).assertTrue();
