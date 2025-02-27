@@ -45,7 +45,6 @@
           "MainAbility/pages/search",
           "MainAbility/pages/select",
           "MainAbility/pages/shape",
-          "MainAbility/pages/sideBar",
           "MainAbility/pages/stack",
           "MainAbility/pages/stateManagement",
           "MainAbility/pages/swiper",
