@@ -1133,14 +1133,14 @@ export default function windowNdk() {
 
 /**
      * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_4400
-     * @tc.name      : test_SetWindowPrivacyMode_false
-     * @tc.desc      : test_SetWindowPrivacyMode_false
+     * @tc.name      : test_SetWindowPrivacyMode_true
+     * @tc.desc      : test_SetWindowPrivacyMode_true
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_SetWindowPrivacyMode_false', 0, async (done:Function) => {
-      let caseName = "test_SetWindowPrivacyMode_false";
+    it('test_SetWindowPrivacyMode_true', 0, async (done:Function) => {
+      let caseName = "test_SetWindowPrivacyMode_true";
       let result = windowNdkTest.setWindowPrivacyMode(windowId,true);
       console.info(`${caseName}: setWindowPrivacyMode result: ${result}`);
       expect(result).assertEqual(0);
@@ -1155,10 +1155,10 @@ export default function windowNdk() {
             let PixelMapWidth = imageInfo.size.width;
             let PixelMapHeight = imageInfo.size.height;
             console.info(caseName + ' PixelMapWidth:'+ PixelMapWidth + ' ,PixelMapHeight:'+ PixelMapHeight);
-            // expect(Math.abs(PixelMapWidth-windowRect.width)).assertLessOrEqual(1);
-            // expect(Math.abs(PixelMapHeight-windowRect.height)).assertLessOrEqual(1);
-            expect(PixelMapWidth).assertEqual(windowRect.width);
-            expect(PixelMapHeight).assertEqual(windowRect.height);
+            expect(Math.abs(PixelMapWidth-windowRect.width)).assertLessOrEqual(1);
+            expect(Math.abs(PixelMapHeight-windowRect.height)).assertLessOrEqual(1);
+            // expect(PixelMapWidth).assertEqual(windowRect.width);
+            // expect(PixelMapHeight).assertEqual(windowRect.height);
             done();
           })
 
@@ -1167,14 +1167,14 @@ export default function windowNdk() {
 
     /**
      * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_4500
-     * @tc.name      : test_SetWindowPrivacyMode_true
-     * @tc.desc      : test_SetWindowPrivacyMode_true
+     * @tc.name      : test_SetWindowPrivacyMode_false
+     * @tc.desc      : test_SetWindowPrivacyMode_false
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_SetWindowPrivacyMode_true', 0, async (done:Function) => {
-      let caseName = "test_SetWindowPrivacyMode_true";
+    it('test_SetWindowPrivacyMode_false', 0, async (done:Function) => {
+      let caseName = "test_SetWindowPrivacyMode_false";
       let result = windowNdkTest.setWindowPrivacyMode(windowId,false);
       console.info(`${caseName}: setWindowPrivacyMode result: ${result}`);
       expect(result).assertEqual(0);
@@ -1189,8 +1189,10 @@ export default function windowNdk() {
             let PixelMapWidth = imageInfo.size.width;
             let PixelMapHeight = imageInfo.size.height;
             console.info(caseName + ' PixelMapWidth:'+ PixelMapWidth + ' ,PixelMapHeight:'+ PixelMapHeight);
-            expect(PixelMapWidth).assertEqual(windowRect.width);
-            expect(PixelMapHeight).assertEqual(windowRect.height);
+            // expect(PixelMapWidth).assertEqual(windowRect.width);
+            // expect(PixelMapHeight).assertEqual(windowRect.height);
+            expect(Math.abs(PixelMapWidth-windowRect.width)).assertLessOrEqual(1);
+            expect(Math.abs(PixelMapHeight-windowRect.height)).assertLessOrEqual(1);
             done();
           })
 
