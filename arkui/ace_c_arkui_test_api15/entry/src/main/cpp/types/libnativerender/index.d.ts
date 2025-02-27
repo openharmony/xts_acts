@@ -12,9 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const KeyEventPatchTest: (a: string) => void;
 
-export const GetKeyEventData: () => object;
 export const ProgressLinearStyleTest: (a: string) => void;
 
 export const testProgressLinearStyle: (a: string) => void;
