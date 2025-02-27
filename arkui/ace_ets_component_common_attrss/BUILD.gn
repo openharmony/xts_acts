@@ -124,6 +124,7 @@ group("componentAttrssTest") {
         "ace_ets_component_common_attrss_marginLength_nowear:ActsAceEtsComponentCommonAttrsMarginLengthNowearTest",
         "ace_ets_component_common_attrss_margin_nowear:ActsAceEtsComponentCommonAttrsMarginNowearTest",
         "ace_ets_component_common_attrss_markAnchor:ActsAceEtsComponentCommonAttrsMarkAnchorTest",
+        "ace_ets_component_common_attrss_markAnchor_nowear:ActsAceEtsComponentCommonAttrsMarkAnchorNowearTest",
         "ace_ets_component_common_attrss_offset:ActsAceEtsComponentCommonAttrsOffsetTest",
         "ace_ets_component_common_attrss_offset_nowear:ActsAceEtsComponentCommonAttrsOffsetNowearTest",
         "ace_ets_component_common_attrss_onAppear:ActsAceEtsComponentCommonAttrsOnAppearTest",

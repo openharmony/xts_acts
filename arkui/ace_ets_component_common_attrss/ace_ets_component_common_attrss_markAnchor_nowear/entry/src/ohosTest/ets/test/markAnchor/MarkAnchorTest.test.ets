@@ -36,15 +36,7 @@ class TestValue {
 
 export default function MarkAnchorTest() {
   //A list of components that support the position attribute, which is required.
-  let supportView = ['Text', 'Button', 'Radio', 'Blank', 'Checkbox', 'CheckboxGroup', 'DataPanel',
-    'DatePicker', 'Divider', 'Gauge', 'LoadingProgress', 'Marquee', 'Navigation', 'Image', 'ImageAnimator',
-    'AlphabetIndexer', 'NavRouter', 'Progress', 'QRCode', 'Rating', 'Search', 'Slider', 'TextArea', 'TextClock',
-    'TextInput', 'TextPicker', 'TimePicker', 'Toggle', 'Badge', 'Column', 'Counter', 'Flex', 'Grid', 'GridRow',
-    'List', 'Row', 'Scroll', 'Stack', 'Tabs', 'Circle', 'Ellipse', 'Line',
-    'Polyline', 'Polygon', 'Path', 'Rect', 'Shape', 'Panel', 'Refresh', 'TabContent', 'ListItem',
-    'RelativeContainer', 'Swiper', 'Navigator', 'TextTimer', 'GridCol',
-    'GridItem', 'ScrollBar', 'Menu', 'MenuItem', 'MenuItemGroup',
-    'ListItemGroup']
+  let supportView = ['Select', 'SideBarContainer', 'WaterFlow', 'RowSplit', 'ColumnSplit', 'FlowItem', 'Stepper', 'StepperItem']
 
 
   //The size of the parent component, when set as a percentage, serves as the calculation basis.
