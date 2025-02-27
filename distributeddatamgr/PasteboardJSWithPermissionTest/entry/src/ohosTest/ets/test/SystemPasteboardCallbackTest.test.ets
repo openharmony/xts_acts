@@ -115,6 +115,7 @@ export default function SystemPasteboardCallbackTest() {
       let prop: pasteboard.PasteDataProperty = pasteData.getProperty();
       pasteData.setProperty(prop);
       console.info(TAG + 'PasteDataProperty mimetypes is: ' + prop.mimeTypes);
+      expect(prop.mimeTypes.toString()).assertEqual('text/plain')
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_PasteboardMimeTypes_0100 end ************')
     })
   })
