@@ -1995,6 +1995,76 @@ export default function CalendarManagerTest() {
     });
 
     /*
+    * @tc.number  SUB_Application_CalendarManagerApi_GetEvents_Promise_0400
+    * @tc.name    Example Query all events in Calendar By FilterByTitle.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
+    it("SUB_Application_CalendarManagerApi_GetEvents_Promise_0400", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetEvents_Promise_0400';
+      const filter = calendarManager.EventFilter.filterByTitle('开会日程');
+
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
+        Calendar.getEvents(filter).then((data) => {
+          console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
+          let data1: calendarManager.Event[];
+          data1 = data;
+          expect(data != null).assertTrue();
+          expect(data1[0].id != 0).assertTrue();
+          return;
+        }).catch((err: BusinessError) => {
+          console.error(CaseName + `Failed to get events, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+    * @tc.number  SUB_Application_CalendarManagerApi_GetEvents_Promise_0500
+    * @tc.name    Example Query all events in Calendar By FilterByTitle.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
+    it("SUB_Application_CalendarManagerApi_GetEvents_Promise_0500", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetEvents_Promise_0500';
+
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
+        Calendar.getEvents().then((data) => {
+          console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
+          expect(data != null).assertTrue();
+          return;
+        }).catch((err: BusinessError) => {
+          console.error(CaseName + `Failed to get events, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
      * @tc.number  SUB_Application_CalendarManagerApi_DeleteEvent_Async_0100
      * @tc.name    Delete an agenda.
      * @tc.desc    Function test
