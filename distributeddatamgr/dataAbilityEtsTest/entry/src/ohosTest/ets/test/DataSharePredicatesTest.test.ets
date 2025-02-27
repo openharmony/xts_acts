@@ -212,7 +212,7 @@ describe('dataSharePredicatesTest', () => {
             "blobType": u8,
         }
         let predicates = new data_dataSharePredicates.DataSharePredicates();
-        predicates.equalTo("NAME", "Rose").limit(10, 3);
+        predicates.equalTo("name", "zhangSan").limit(10, 3);
         try{
             await rdbStore!.update("test",valueBucket,predicates).then((ret:Number)=>{
                 expect(1).assertEqual(ret);
