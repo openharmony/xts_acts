@@ -16,5 +16,7 @@ group("ActsAceEtsModuleDialogTest") {
   deps = [
     "ace_ets_module_dialog_api11:ActsAceEtsModuleDialogApi11Test",
     "ace_ets_module_dialog_api12:ActsAceEtsModuleDialogApi12Test",
+    "ace_ets_module_dialog_api15:ActsAceEtsModuleDialogApi15Test",
+    "ace_ets_module_dialog_nowear_api15:ActsAceEtsModuleDialogNoWearApi15Test",
   ]
 }

@@ -23,6 +23,7 @@
         "MainAbility/pages/Gesture/isFingerCountLimited/SwipeGesture",
         "MainAbility/pages/Gesture/isFingerCountLimited/TapGesture",
 		"MainAbility/pages/setKeyProcessingModeTest/setKeyProcessingModeTest",
-         "MainAbility/pages/startDataLoading/dataLoading"
+         "MainAbility/pages/startDataLoading/dataLoading",
+        "MainAbility/pages/SnapshotOptions_region/SnapshotOptions_region"
     ]
 }
