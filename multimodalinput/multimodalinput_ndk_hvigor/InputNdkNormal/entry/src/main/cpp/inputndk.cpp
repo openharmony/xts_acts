@@ -1004,7 +1004,7 @@ static napi_value GetKeyboardType4(napi_env env, napi_callback_info info)
     int32_t deviceIds[inSize] = { 0 };
     Input_Result retResult = OH_Input_GetDeviceIds(deviceIds, inSize, &outSize);
 
-    int32_t deviceId = outSize - 1;
+    int32_t deviceId = deviceIds[outSize - 1];
     int32_t KeyboardType = -1;
     retResult = OH_Input_GetKeyboardType(deviceId, &KeyboardType);
     napi_create_int32(env, (retResult == INPUT_SUCCESS && KeyboardType >= 0) ? 1 : 0, &result);
@@ -1020,7 +1020,7 @@ static napi_value GetDevice(napi_env env, napi_callback_info info)
     int32_t deviceIds[inSize] = { 0 };
     Input_Result retResult = OH_Input_GetDeviceIds(deviceIds, inSize, &outSize);
 
-    int32_t deviceId = outSize - 1;
+    int32_t deviceId = deviceIds[outSize - 1];
     Input_DeviceInfo *deviceInfo = OH_Input_CreateDeviceInfo();
     retResult = OH_Input_GetDevice(deviceId, &deviceInfo);
     napi_create_int32(env, retResult == INPUT_SUCCESS ? 1 : 0, &result);
@@ -1203,13 +1203,13 @@ static napi_value GetDeviceId(napi_env env, napi_callback_info info)
     int32_t outSize = 0;
     int32_t deviceIds[inSize] = { 0 };
     Input_Result retResult = OH_Input_GetDeviceIds(deviceIds, inSize, &outSize);
-    int32_t deviceId = outSize - 1;
+    int32_t deviceId = deviceIds[outSize - 1];
     Input_DeviceInfo *deviceInfo = OH_Input_CreateDeviceInfo();
     retResult = OH_Input_GetDevice(deviceId, &deviceInfo);
 
-    int32_t id = -1;
+    int32_t id = -10000;
     retResult = OH_Input_GetDeviceId(deviceInfo, &id);
-    napi_create_int32(env, (retResult == INPUT_SUCCESS && (id == outSize - 1)) ? 1 : 0, &result);
+    napi_create_int32(env, (retResult == INPUT_SUCCESS && (id  >= -1)) ? 1 : 0, &result);
     OH_Input_DestroyDeviceInfo(&deviceInfo);
     return result;
 }
@@ -1257,7 +1257,7 @@ static napi_value GetCapabilities(napi_env env, napi_callback_info info)
     int32_t outSize = 0;
     int32_t deviceIds[inSize] = { 0 };
     Input_Result retResult = OH_Input_GetDeviceIds(deviceIds, inSize, &outSize);
-    int32_t deviceId = outSize - 1;
+    int32_t deviceId = deviceIds[outSize - 1];
     Input_DeviceInfo *deviceInfo = OH_Input_CreateDeviceInfo();
     retResult = OH_Input_GetDevice(deviceId, &deviceInfo);
 
@@ -1322,13 +1322,13 @@ static napi_value GetDeviceVersion(napi_env env, napi_callback_info info)
     int32_t outSize = 0;
     int32_t deviceIds[inSize] = { 0 };
     Input_Result retResult = OH_Input_GetDeviceIds(deviceIds, inSize, &outSize);
-    int32_t deviceId = outSize - 1;
+    int32_t deviceId = deviceIds[outSize - 1];
     Input_DeviceInfo *deviceInfo = OH_Input_CreateDeviceInfo();
     retResult = OH_Input_GetDevice(deviceId, &deviceInfo);
 
-    int32_t version = -1;
+    int32_t version = -10000;
     retResult = OH_Input_GetDeviceVersion(deviceInfo, &version);
-    napi_create_int32(env, (retResult == INPUT_SUCCESS && version >= 0) ? 1 : 0, &result);
+    napi_create_int32(env, (retResult == INPUT_SUCCESS && version >= -1) ? 1 : 0, &result);
     OH_Input_DestroyDeviceInfo(&deviceInfo);
     return result;
 }
@@ -1386,13 +1386,13 @@ static napi_value GetDeviceProduct(napi_env env, napi_callback_info info)
     int32_t outSize = 0;
     int32_t deviceIds[inSize] = { 0 };
     Input_Result retResult = OH_Input_GetDeviceIds(deviceIds, inSize, &outSize);
-    int32_t deviceId = outSize - 1;
+    int32_t deviceId = deviceIds[outSize - 1];
     Input_DeviceInfo *deviceInfo = OH_Input_CreateDeviceInfo();
     retResult = OH_Input_GetDevice(deviceId, &deviceInfo);
 
-    int32_t product = -1;
+    int32_t product = -10000;
     retResult = OH_Input_GetDeviceProduct(deviceInfo, &product);
-    napi_create_int32(env, (retResult == INPUT_SUCCESS && product >= 0) ? 1 : 0, &result);
+    napi_create_int32(env, (retResult == INPUT_SUCCESS && product >= -1) ? 1 : 0, &result);
     OH_Input_DestroyDeviceInfo(&deviceInfo);
     return result;
 }
@@ -1451,13 +1451,13 @@ static napi_value GetDeviceVendor(napi_env env, napi_callback_info info)
     int32_t outSize = 0;
     int32_t deviceIds[inSize] = { 0 };
     Input_Result retResult = OH_Input_GetDeviceIds(deviceIds, inSize, &outSize);
-    int32_t deviceId = outSize - 1;
+    int32_t deviceId = deviceIds[outSize - 1];
     Input_DeviceInfo *deviceInfo = OH_Input_CreateDeviceInfo();
     retResult = OH_Input_GetDevice(deviceId, &deviceInfo);
 
-    int32_t vendor = -1;
+    int32_t vendor = -10000;
     retResult = OH_Input_GetDeviceVendor(deviceInfo, &vendor);
-    napi_create_int32(env, (retResult == INPUT_SUCCESS && vendor >= 0) ? 1 : 0, &result);
+    napi_create_int32(env, (retResult == INPUT_SUCCESS && vendor >= -1) ? 1 : 0, &result);
     OH_Input_DestroyDeviceInfo(&deviceInfo);
     return result;
 }
