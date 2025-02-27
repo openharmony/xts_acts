@@ -829,6 +829,8 @@ export default function abilityTest() {
           expect(event.eventType != null).assertTrue();
           expect(event.target != null).assertTrue();
           expect(event.timeStamp != null).assertTrue();
+          expect(event.elementId != null).assertTrue();
+          expect(event.textAnnouncedForAccessibility != null).assertTrue();
         }
 
         onKeyEvent(keyEvent) {
@@ -1034,6 +1036,17 @@ export default function abilityTest() {
             rootElement.actionNames((err, data) => {
               console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));
             });
+            rootElement.attributeValue('bundleName', (err, data:string) => {
+              if (err && err.code) {
+                console.error('failed to get attribute value, Code is ${err.code}, message is ${err.message}');
+                return;
+              }
+              console.info('Succeeded in get attribute value, ${JSON.stringify(data)}')
+            });
+            let actionName = 'action';
+            let parameters = {
+              'setText': 'test text'
+            }
             rootElement.performAction('action', (err, data) => {
               console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401 err' + JSON.stringify(err) + ' data:' + JSON.stringify(data));
             });
