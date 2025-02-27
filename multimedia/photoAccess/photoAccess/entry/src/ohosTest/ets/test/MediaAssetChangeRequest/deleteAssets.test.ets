@@ -118,21 +118,21 @@ export default function deleteAssetsChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('delete_assets_uri_change_request_002', 2, async (done: Function) => {
-      const testNum = 'delete_assets_uri_change_request_002';
-      try {
-        const uriList: Array<string> = new Array();
-        console.info(`${testNum} uriList: ${JSON.stringify(uriList)}`)
-        await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(testContext, uriList);
-        console.info(`${testNum} succeed to delete assets by uri`)
-        expect(false).assertTrue();
-        done();
-      } catch (error) {
-        console.error(`${testNum} failed with error: ${error}, ${error.code}`);
-        expect(error.code).assertEqual('401')
-        done();
-      }
-    });
+        it('delete_assets_uri_change_request_002', 2, async (done: Function) => {
+          const testNum = 'delete_assets_uri_change_request_002';
+          try {
+            const uriList: Array<string> = new Array();
+            console.info(`${testNum} uriList: ${JSON.stringify(uriList)}`)
+            await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(testContext, uriList);
+            console.info(`${testNum} succeed to delete assets by uri`)
+            expect(false).assertTrue();
+            done();
+          } catch (error) {
+            console.error(`${testNum} failed with error: ${error}, ${error.code}`);
+            expect(error.code).assertEqual('401')
+            done();
+          }
+        });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_DELETE_ASSETS_OBJ_CHANGE_REQUEST_0000
@@ -177,11 +177,11 @@ export default function deleteAssetsChangeRequestTest() {
         done();
       }
     });
-
+    
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_DELETE_ASSETS_OBJ_CHANGE_REQUEST_0200
      * @tc.name      : delete_assets_obj_change_request_002
-     * @tc.desc      : delete undefined
+     * @tc.desc      : delete empty
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
