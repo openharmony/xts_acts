@@ -57,7 +57,7 @@ export default function ExpectedFrameRateRange() {
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("ExpectedFrameRateRange after each called");
+      console.info('ExpectedFrameRateRange after each called');
     });
 
     /**
