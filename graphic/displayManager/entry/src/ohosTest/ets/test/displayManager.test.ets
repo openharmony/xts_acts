@@ -926,5 +926,27 @@ export default function displayTest() {
         done();
       }
     })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_FOLDSTATUS_0100
+     * @tc.name      : test_FoldStatus_enum
+     * @tc.desc      : test_FoldStatus_enum
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_FoldStatus_enum', 0, async (done: Function) => {
+      let caseName: string = 'test_FoldStatus_enum';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      expect(display.FoldStatus.FOLD_STATUS_EXPANDED_WITH_SECOND_EXPANDED).assertEqual(11);
+      expect(display.FoldStatus.FOLD_STATUS_EXPANDED_WITH_SECOND_HALF_FOLDED).assertEqual(21);
+      expect(display.FoldStatus. FOLD_STATUS_FOLDED_WITH_SECOND_EXPANDED).assertEqual(12);
+      expect(display.FoldStatus.FOLD_STATUS_FOLDED_WITH_SECOND_HALF_FOLDED).assertEqual(22);
+      expect(display.FoldStatus. FOLD_STATUS_HALF_FOLDED_WITH_SECOND_EXPANDED).assertEqual(13);
+      expect(display.FoldStatus.FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED).assertEqual(23);
+      done();
+
+    });
+
   })
 }

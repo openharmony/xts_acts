@@ -3583,6 +3583,201 @@ export default function windowPropertiesTest() {
             }
             done();
         })
+
+         /**
+     * @tc.number    : SUB_BASIC_WMS_GET_ALL_WINDOW_LAYOUT_INFO_0100
+     * @tc.name      : test_getAllWindowLayoutInfo_401
+     * @tc.desc      : test_getAllWindowLayoutInfo_401
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_getAllWindowLayoutInfo_401', 0, async (done: Function) => {
+      let caseName: string = 'test_getAllWindowLayoutInfo_401';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try {
+        let promise = window.getAllWindowLayoutInfo(null)
+        promise.then((data) => {
+          console.info(`${caseName} :Succeeded in obtaining all window layout info. Data: ` + JSON.stringify(data));
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to obtain all window layout info. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        });
+      } catch (err) {
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        if(err.code == 401){
+          done();
+        }else {
+          expect().assertFail();
+          done();
+        }
+      }
+
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_GET_ALL_WINDOW_LAYOUT_INFO_0200
+     * @tc.name      : test_getAllWindowLayoutInfo_mainWindow
+     * @tc.desc      : test_getAllWindowLayoutInfo_mainWindow
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_getAllWindowLayoutInfo_mainWindow', 0, async (done: Function) => {
+      let caseName: string = 'test_getAllWindowLayoutInfo_mainWindow';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try {
+        let mainWindow = windowStage.getMainWindowSync();
+        let displayId = mainWindow.getWindowProperties().displayId;
+        let promise = window.getAllWindowLayoutInfo(displayId)
+        promise.then((data) => {
+          console.info(`${caseName} :Succeeded in obtaining all window layout info. Data: ` + JSON.stringify(data));
+          expect(data.length).assertLargerOrEqual(1);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to obtain all window layout info. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
+
+      }
+
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_START_MOVING_0100
+     * @tc.name      : test_startMoving_mainWindow
+     * @tc.desc      : test_startMoving_mainWindow
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_startMoving_mainWindow', 0, async (done: Function) => {
+      let caseName: string = 'test_startMoving_mainWindow';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try {
+        let mainWindow = windowStage.getMainWindowSync();
+        let promise = mainWindow.startMoving(100, 50)
+        promise.then(() => {
+          console.info(`${caseName} :Succeeded startMoving ` );
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to startMoving. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
+
+      }
+
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_STOP_MOVING_0100
+     * @tc.name      : test_stopMoving_mainWindow
+     * @tc.desc      : test_stopMoving_mainWindow
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_stopMoving_mainWindow', 0, async (done: Function) => {
+      let caseName: string = 'test_stopMoving_mainWindow';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try {
+        let mainWindow = windowStage.getMainWindowSync();
+        let promise = mainWindow.stopMoving()
+        promise.then(() => {
+          console.info(`${caseName} :Succeeded stopMoving ` );
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to stopMoving. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
+
+      }
+
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SET_WINDOW_LIMITS_0100
+     * @tc.name      : test_SetWindowLimits_40vp
+     * @tc.desc      : test_SetWindowLimits_40vp
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+    it('test_SetWindowLimits_40vp', 0, async(done: Function) => {
+      let msg = ' test_SetWindowLimits_40vp ';
+      console.info(msg + ' begin ');
+      try {
+        let windowClass: window.Window = windowStage.getMainWindowSync()
+        let windowLimits: window.WindowLimits = {
+          maxWidth: 1000,
+          maxHeight: 1000,
+          minWidth: vp2px(40),
+          minHeight: vp2px(40)
+        };
+        let promise: Promise<window.WindowLimits> = windowClass.setWindowLimits(windowLimits, true);
+        promise.then(async (data: window.WindowLimits) => {
+          console.info(msg + ' Succeeded in changing the window limits. Cause: ' + JSON.stringify(data));
+          let windowLimits = await windowClass.getWindowLimits();
+          console.info(msg + ' Succeeded in get the window limits. Cause: ' + JSON.stringify(windowLimits));
+          expect(windowLimits.maxWidth).assertEqual(data.maxWidth);
+          expect(windowLimits.maxHeight).assertEqual(data.maxHeight);
+          if(windowLimits.minWidth != undefined && data.minWidth != undefined && windowLimits.minHeight != undefined && data.minHeight != undefined){
+            expect(Math.abs(windowLimits.minWidth-data.minWidth)).assertLessOrEqual(1);
+            expect(Math.abs(windowLimits.minHeight-data.minHeight)).assertLessOrEqual(1);
+            done();
+          }
+        }).catch((err: BusinessError) => {
+            console.error(msg + ' failed in windowClass.setWindowLimits ' + JSON.stringify(err));
+            expect().assertFail()
+            done();
+        });
+      } catch (error) {
+        console.error(msg + ' failed in windowClass.setWindowLimits 2  ' + JSON.stringify(error));
+        if(error.code == 801){
+            console.info(msg+' The current device type is not supported')
+            done();
+          }else{
+            expect().assertFail()
+            done();
+          }
+      }
+    })
     })
 }
 
