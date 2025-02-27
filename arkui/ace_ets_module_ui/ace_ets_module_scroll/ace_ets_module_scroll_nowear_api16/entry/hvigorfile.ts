@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,18 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ListSwipeTest from './ListTest/ListSwipe.test'
-import ScrollEffectEdge from './ScrollTest/ScrollEffectEdge.test'
-import TabBarComponentContent from './TabsTest/TabBarComponentContent.test
-import GridBackToTopTest from './GridTest/GridBackToTop.test'
-import ListBackToTopTest from './ListTest/ListBackToTop.test'
-import ScrollBackToTopTest from './ScrollTest/ScrollBackToTop.test'
 
-export default function testsuite() {
-  ListSwipeTest();
-  ScrollEffectEdge();
-  TabBarComponentContent();
-  GridBackToTopTest();
-  ListBackToTopTest();
-  ScrollBackToTopTest();
-}
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { hapTasks } from '@ohos/hvigor-ohos-plugin';

@@ -111,24 +111,6 @@ export default function ScrollEffectEdge() {
       expect(value).assertEqual('EffectEdge.All')
       done()
     });
-
-    /*
-     * @tc.number :ArkUI_Scroll_EffectEdge_0500
-     * @tc.name   :test effect edge callback
-     * @tc.desc   :test whether edgeEffectiveness Options are effective
-     */
-    it('ArkUI_Scroll_EffectEdge_0500', 0, async (done: Function) => {
-      let json1 = getInspectorByKey('waterFlow4')
-      await sleep(1000)
-      let obj: ESObject = JSON.parse(json1);
-      let value: string = obj.$attrs?.edgeEffectOptions?.effectEdge;
-      console.log('ArkUI_Scroll_EffectEdge_0500 json1 ' + json1)
-      console.log('ArkUI_Scroll_EffectEdge_0500 value ' + value)
-
-      await sleep(1000)
-      expect(value).assertEqual('EffectEdge.Start')
-      done()
-    });
   })
 }
 

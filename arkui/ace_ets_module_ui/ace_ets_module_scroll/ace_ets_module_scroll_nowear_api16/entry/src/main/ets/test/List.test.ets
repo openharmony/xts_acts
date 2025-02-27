@@ -12,18 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ListSwipeTest from './ListTest/ListSwipe.test'
-import ScrollEffectEdge from './ScrollTest/ScrollEffectEdge.test'
-import TabBarComponentContent from './TabsTest/TabBarComponentContent.test
-import GridBackToTopTest from './GridTest/GridBackToTop.test'
-import ListBackToTopTest from './ListTest/ListBackToTop.test'
-import ScrollBackToTopTest from './ScrollTest/ScrollBackToTop.test'
+import WaterFlowEffectEdge from './ScrollTest/WaterFlowEffectEdge.test'
+import WaterComponentContent from './WaterFlowTest/WaterComponentContent.test'
+import WaterFlowBackToTopTest from './WaterFlowTest/WaterFlowBackToTop.test'
 
 export default function testsuite() {
-  ListSwipeTest();
-  ScrollEffectEdge();
-  TabBarComponentContent();
-  GridBackToTopTest();
-  ListBackToTopTest();
-  ScrollBackToTopTest();
+  WaterFlowEffectEdge()
+  WaterComponentContent();
+  WaterFlowBackToTopTest();
 }
