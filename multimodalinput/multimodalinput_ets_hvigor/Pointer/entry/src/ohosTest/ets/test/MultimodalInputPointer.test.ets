@@ -18,6 +18,7 @@ import pointer from '@ohos.multimodalInput.pointer';
 import { BusinessError }  from '@ohos.base';
 import window from '@ohos.window';
 import image from '@ohos.multimedia.image';
+import { TestType, Size, Level } from '@ohos/hypium';
 
 export default function MultimodalInputPointerTest() {
   describe("MultimodalInputPointerTest", ()=> {
