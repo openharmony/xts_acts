@@ -41,6 +41,7 @@ export default function signNormalNotAccessBiometricExecute() {
                 console.info('onResult.token is ' + onResult.token);
                 console.info('onResult.authType is ' + onResult.authType);
                 console.info('onResult.result is ' + onResult.result);
+                console.info('onResult.enrolledState is ' + onResult.enrolledState);
                 expect(onResult.result).assertEqual(args[3]);
               } catch (e) {
                 console.info('error is ' + e);
