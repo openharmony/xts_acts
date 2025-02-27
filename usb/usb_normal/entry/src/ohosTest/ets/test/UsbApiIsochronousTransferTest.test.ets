@@ -145,7 +145,7 @@ export default function UsbApiIsochronousTransferTest() {
         let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 0, 1, type, 2000);
         try {
             transferParams.callback = (err: Error, data: usbMgr.SubmitTransferCallback) => {
-                console.info(TAG, 'bulk testUsbSubmitTransfer001 data =' + JSON.stringify(data));
+                console.info(TAG, 'Isochronous testUsbSubmitTransfer001 data =' + JSON.stringify(data));
                 expect(data.isoPacketDescs[1].status == usbMgr.UsbTransferStatus.TRANSFER_COMPLETED).assertTrue();
                 usbMgr.closePipe(devices);
                 done();
@@ -293,9 +293,9 @@ export default function UsbApiIsochronousTransferTest() {
             console.info(TAG, 'iso testUsbSubmitTransfer005 end');
             console.error('iso cancel error:', error);
             expect(error.code).assertEqual(14400001);
+            usbMgr.closePipe(devices);
+            done()
         }
-        usbMgr.closePipe(devices);
-        done()
     });
 
     /**
@@ -332,13 +332,13 @@ export default function UsbApiIsochronousTransferTest() {
     /**
      * @tc.number   : SUB_USB_Host_JS_UsbCancelTransfer_ErrCode_0200
      * @tc.name     : testUsbCancelTransfer002
-     * @tc.desc     : iso transfer No permission.
+     * @tc.desc     : isochronous transfer No permission.
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
     it('testUsbCancelTransfer002', 0, async (done: Function) => {
-        console.info(TAG, 'iso testUsbCancelTransfer002 enter');
+        console.info(TAG, 'isochronous testUsbCancelTransfer002 enter');
         if (!isDeviceConnected) {
 			console.info(TAG, 'usb testUsbCancelTransfer002 No device is connected');
             expect(isDeviceConnected).assertFalse();
@@ -354,12 +354,12 @@ export default function UsbApiIsochronousTransferTest() {
         try {
             usbMgr.usbCancelTransfer(transferParams);
         } catch (error) {
-            console.info(TAG, 'iso testUsbCancelTransfer002 end');
-            console.error('iso cancel error:', error);
+            console.info(TAG, 'isochronous testUsbCancelTransfer002 end');
+            console.error('isochronous cancel error:', error);
             expect(error.code).assertEqual(14400001);
+            usbMgr.closePipe(devices);
+            done()
         }
-        usbMgr.closePipe(devices);
-        done()
     });
 
   })
