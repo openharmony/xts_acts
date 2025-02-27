@@ -445,7 +445,7 @@ static napi_value UsbSendControlReadRequestOne(napi_env env, napi_callback_info 
     uint64_t deviceId = JsDeviceIdToNative(static_cast<uint64_t>(deviceId64));
     int32_t usbInitReturnValue = OH_Usb_Init();
     NAPI_ASSERT(env, usbInitReturnValue == PARAM_0, "OH_Usb_Init failed");
-     std::tuple<bool, uint8_t, uint8_t, uint16_t> source;
+    std::tuple<bool, uint8_t, uint8_t, uint16_t> source;
     bool result1 = ParseConfiguration(deviceId, source);
     NAPI_ASSERT(env, result1 == true, "ParseConfiguration failed");
     uint8_t interface = std::get<1>(source);
