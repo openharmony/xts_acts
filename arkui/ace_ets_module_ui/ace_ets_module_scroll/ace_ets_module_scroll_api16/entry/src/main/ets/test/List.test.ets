@@ -14,7 +14,7 @@
  */
 import ListSwipeTest from './ListTest/ListSwipe.test'
 import ScrollEffectEdge from './ScrollTest/ScrollEffectEdge.test'
-import TabBarComponentContent from './TabsTest/TabBarComponentContent.test
+import TabBarComponentContent from './TabsTest/TabBarComponentContent.test'
 import GridBackToTopTest from './GridTest/GridBackToTop.test'
 import ListBackToTopTest from './ListTest/ListBackToTop.test'
 import ScrollBackToTopTest from './ScrollTest/ScrollBackToTop.test'
