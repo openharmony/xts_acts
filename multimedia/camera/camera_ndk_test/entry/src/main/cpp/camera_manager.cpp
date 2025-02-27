@@ -740,6 +740,30 @@ Camera_ErrorCode NDKCamera::VideoOutputRelease(void)
     return ret;
 }
 
+Camera_ErrorCode NDKCamera::IsVideoMirrorSupported(void)
+{
+    LOG("ndkXTS IsVideoMirrorSupported begin.");
+    Camera_ErrorCode ret = OH_VideoOutput_IsMirrorSupported(videoOutput_, &IsVideoMirror_);
+    if (ret == CAMERA_OK) {
+        LOG("ndkXTS OH_VideoOutput_IsMirrorSupported success.");
+    } else {
+        LOG("ndkXTS OH_VideoOutput_IsMirrorSupported failed. %d ", ret);
+    }
+    return ret;
+}
+
+Camera_ErrorCode NDKCamera::EnableVideoMirror(bool isEnable)
+{
+    LOG("ndkXTS EnableVideoMirror begin.");
+    Camera_ErrorCode ret = OH_VideoOutput_EnableMirror(videoOutput_, isEnable);
+    if (ret == CAMERA_OK) {
+        LOG("ndkXTS OH_VideoOutput_EnableVideoMirror success.");
+    } else {
+        LOG("ndkXTS OH_VideoOutput_EnableVideoMirror failed. %d ", ret);
+    }
+    return ret;
+}
+
 Camera_ErrorCode NDKCamera::MetadataOutputStart(void)
 {
     LOG("ndkXTS MetadataOutputStart begin.");

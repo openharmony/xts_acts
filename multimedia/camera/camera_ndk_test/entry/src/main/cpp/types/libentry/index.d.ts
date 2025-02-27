@@ -203,6 +203,10 @@ export const videoOutputStop: () => number;
 
 export const videoOutputRelease: () => number;
 
+export const isVideoMirrorSupported: () => boolean;
+
+export const enableVideoMirror: (enable: boolean) => number;
+
 export const metadataOutputStart: () => number;
 
 export const metadataOutputStop: () => number;
