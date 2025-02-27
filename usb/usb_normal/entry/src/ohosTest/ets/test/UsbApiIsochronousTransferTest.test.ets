@@ -156,6 +156,7 @@ export default function UsbApiIsochronousTransferTest() {
              expect(error.message).assertEqual('error');
             console.error('Isochronous error:', error);
         }
+
     });
 
     /**
@@ -229,6 +230,7 @@ export default function UsbApiIsochronousTransferTest() {
             usbMgr.closePipe(devices);
             done()
         }
+        
     });
 
     /**
@@ -258,6 +260,40 @@ export default function UsbApiIsochronousTransferTest() {
             console.info(TAG, 'Isochronous testUsbSubmitTransfer004 end');
             console.error('isochronous IO error:', error);
             expect(error.code).assertEqual(14400012);
+            usbMgr.closePipe(devices);
+            done()
+        }
+
+    });
+
+    /**
+     * @tc.number   : SUB_USB_Host_JS_usbSubmitTransfer_ErrCode_0300
+     * @tc.name     : testUsbSubmitTransfer005
+     * @tc.desc     : iso transfer No permission.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testUsbSubmitTransfer005', 0, async (done: Function) => {
+        console.info(TAG, 'iso testUsbSubmitTransfer005 enter');
+        if (!isDeviceConnected) {
+			console.info(TAG, 'usb testUsbSubmitTransfer005 No device is connected');
+            expect(isDeviceConnected).assertFalse();
+            done()
+            return
+        }
+        let gPipe: usbMgr.USBDevicePipe = {
+            'busNum': 0,
+            'devAddress': 0
+        }
+
+        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 0, 0 , 0, 0);
+        try {
+            usbMgr.usbSubmitTransfer(transferParams);
+        } catch (error) {
+            console.info(TAG, 'iso testUsbSubmitTransfer005 end');
+            console.error('iso cancel error:', error);
+            expect(error.code).assertEqual(14400001);
             usbMgr.closePipe(devices);
             done()
         }
@@ -293,6 +329,40 @@ export default function UsbApiIsochronousTransferTest() {
             done()
         }
     });
+
+    /**
+     * @tc.number   : SUB_USB_Host_JS_UsbCancelTransfer_ErrCode_0200
+     * @tc.name     : testUsbCancelTransfer002
+     * @tc.desc     : isochronous transfer No permission.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testUsbCancelTransfer002', 0, async (done: Function) => {
+        console.info(TAG, 'isochronous testUsbCancelTransfer002 enter');
+        if (!isDeviceConnected) {
+			console.info(TAG, 'usb testUsbCancelTransfer002 No device is connected');
+            expect(isDeviceConnected).assertFalse();
+            done()
+            return
+        }
+        let gPipe: usbMgr.USBDevicePipe = {
+            'busNum': 0,
+            'devAddress': 0
+        }
+
+        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 0, 0 , 0, 0);
+        try {
+            usbMgr.usbCancelTransfer(transferParams);
+        } catch (error) {
+            console.info(TAG, 'isochronous testUsbCancelTransfer002 end');
+            console.error('isochronous cancel error:', error);
+            expect(error.code).assertEqual(14400001);
+            usbMgr.closePipe(devices);
+            done()
+        }
+    });
+
   })
 
 }

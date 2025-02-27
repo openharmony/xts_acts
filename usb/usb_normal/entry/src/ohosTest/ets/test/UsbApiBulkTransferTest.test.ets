@@ -227,6 +227,40 @@ export default function UsbApiBulkTransferTest() {
     });
 
     /**
+     * @tc.number   : SUB_USB_Host_JS_usbSubmitTransfer_Func_0300
+     * @tc.name     : testUsbSubmitTransfer004
+     * @tc.desc     : bulk transfer claimInterface no call. connectDevice no call.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testUsbSubmitTransfer004', 0, async (done: Function) => {
+        console.info(TAG, 'bulk testUsbSubmitTransfer004 enter');
+        if (!isDeviceConnected) {
+			console.info(TAG, 'usb testUsbSubmitTransfer004 No device is connected');
+            expect(isDeviceConnected).assertFalse();
+            done();
+            return
+        }
+        let gPipe: usbMgr.USBDevicePipe = {
+            'busNum': 0,
+            'devAddress': 0
+        }
+        let flags: number = usbMgr.UsbTransferFlags.USB_TRANSFER_ADD_ZERO_PACKET;
+        let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_BULK;
+        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, flags, 129, type, 2000);
+        try {
+            await usbMgr.usbSubmitTransfer(transferParams);
+        } catch (error) {
+            console.info(TAG, 'bulk testUsbSubmitTransfer004 end');
+            console.error('bulk failed:', error);
+            expect(error.code).assertEqual(14400001);
+            usbMgr.closePipe(devices);
+            done();
+        }
+    });
+
+    /**
      * @tc.number   : SUB_USB_Host_JS_UsbCancelTransfer_Func_0100
      * @tc.name     : testUsbCancelTransfer001
      * @tc.desc     : bulk transfer cancel successfully. 
