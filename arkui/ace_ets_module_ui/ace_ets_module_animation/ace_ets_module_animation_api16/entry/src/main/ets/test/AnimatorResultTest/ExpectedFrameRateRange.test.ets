@@ -15,6 +15,8 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
+import events_emitter from '@ohos.events.emitter'
+
 import {
   UiComponent,
   UiDriver,
@@ -68,24 +70,33 @@ export default function ExpectedFrameRateRange() {
      */
     it('ExpectedFrameRateRange', 0, async (done: Function) => {
       console.info('[ExpectedFrameRateRange_001] START');
+      let indexEvent: events_emitter.InnerEvent = {
+        eventId: 51,
+        priority: events_emitter.EventPriority.LOW
+      }
+      let callback = (indexEvent: events_emitter.EventData) => {
+          console.info("ExpectedFrameRateRange_001 get state result is: " + JSON.stringify(indexEvent))
+        try {
+          expect(indexEvent.data?.min).assertEqual(60);
+          expect(indexEvent.data?.max).assertEqual(120);
+          expect(indexEvent.data?.expected).assertEqual(90);
+        } catch (err) {
+          console.info("ExpectedFrameRateRange_001 get state result is err: " + JSON.stringify(err));
+        }
+        console.info('[ExpectedFrameRateRange_001] END');
+        done();
+      }
+      try {
+        events_emitter.on(indexEvent, callback);
+      } catch (err) {
+        console.info("ExpectedFrameRateRange_001 on events_emitter err : " + JSON.stringify(err));
+      }
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
       let play = await driver.findComponent(ON.id('circleId'));
       await play.click();
       console.log('[ExpectedFrameRateRange_001] play btn clicked')
-      await CommonFunc.sleep(16000);
-      let min = getInspectorByKey('min');
-      let max = getInspectorByKey('max');
-      let expected = getInspectorByKey('expected');
-      console.info('min: ' + JSON.parse(min).$attrs.content);
-      console.info('max: ' + JSON.parse(max).$attrs.content);
-      console.info('expected: ' + JSON.parse(expected).$attrs.content);
-      expect(JSON.parse(min).$attrs.content).assertEqual('60');
-      expect(JSON.parse(max).$attrs.content).assertEqual('120');
-      expect(JSON.parse(expected).$attrs.content).assertEqual('90');
-      console.info('[ExpectedFrameRateRange_001] END');
-      done();
     });
   })
 }
