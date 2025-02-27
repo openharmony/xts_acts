@@ -19,24 +19,24 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 export default function longPressEventTest() {
-  describe('LongPressGesture1', () => {
+  describe('longPressEvent', () => {
     beforeEach(async (done: Function) => {
-      console.info('LongPressGesture1 beforeEach start');
+      console.info('longPressEvent beforeEach start');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/EventItem/LongPressGesture',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info('get LongPressGesture1 state pages: ' + JSON.stringify(pages));
+        console.info('get longPressEvent state pages: ' + JSON.stringify(pages));
         if (!('LongPressGesture' == pages.name)) {
-          console.info('get LongPressGesture1 state pages.name: ' + JSON.stringify(pages.name));
+          console.info('get longPressEvent state pages.name: ' + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info('push LongPressGesture1 success: ' + JSON.stringify(result));
+          console.info('push longPressEvent success: ' + JSON.stringify(result));
         }
       } catch (err) {
-        console.error('push LongPressGesture1 page error: ' + err);
+        console.error('push longPressEvent page error: ' + err);
         expect().assertFail();
       }
       done();

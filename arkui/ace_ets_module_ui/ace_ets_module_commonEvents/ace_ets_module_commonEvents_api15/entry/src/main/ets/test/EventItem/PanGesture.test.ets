@@ -19,24 +19,24 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 export default function panGestureEventTest() {
-  describe('PanGesture1', () => {
+  describe('panGestureEvent', () => {
     beforeEach(async (done: Function) => {
-      console.info('PanGesture1 beforeEach start');
+      console.info('panGestureEvent beforeEach start');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/EventItem/PanGesture',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info('get PanGesture1 state pages: ' + JSON.stringify(pages));
+        console.info('get panGestureEvent state pages: ' + JSON.stringify(pages));
         if (!('PanGesture' == pages.name)) {
-          console.info('get PanGesture1 state pages.name: ' + JSON.stringify(pages.name));
+          console.info('get panGestureEvent state pages.name: ' + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info('push PanGesture1 success: ' + JSON.stringify(result));
+          console.info('push panGestureEvent success: ' + JSON.stringify(result));
         }
       } catch (err) {
-        console.error('push PanGesture1 page error: ' + err);
+        console.error('push panGestureEvent page error: ' + err);
         expect().assertFail();
       }
       done();
@@ -44,12 +44,12 @@ export default function panGestureEventTest() {
     
     /* *
     * @tc.number
-    * @tc.name  : PanGesture1_0200
+    * @tc.name  : PanGesture1_0100
     * @tc.desc  : To test the new item of GestureEvent.
     * @tc.level : Level 2
     */
-    it('PanGesture1_0200', 0, async (done: Function) => {
-      console.info('PanGesture1_0200 START');
+    it('PanGesture1_0100', 0, async (done: Function) => {
+      console.info('PanGesture1_0100 START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
       let colum = CommonFunc.getComponentRectOnScreen('PanGesture1');
@@ -57,12 +57,12 @@ export default function panGestureEventTest() {
       let left = colum.left
       await driver.swipe(Math.round(globalThis.winLeft + 100), Math.round(top + 100), Math.round(globalThis.winLeft + 500), Math.round(top + 500), 600)
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('value');
+      let strJson = getInspectorByKey('PanGesture1');
       let obj: ESObject = JSON.parse(strJson);
-      console.info('[PanGesture1_0200] component obj is: ' + JSON.stringify(obj));
-      console.info('[PanGesture1_0200] title: ' + JSON.stringify(obj.$attrs.content));
+      console.info('[PanGesture1_0100] component obj is: ' + JSON.stringify(obj));
+      console.info('[PanGesture1_0100] title: ' + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('0');
-      console.info('[PanGesture1_0200] END');
+      console.info('[PanGesture1_0100] END');
       done();
     });
 

@@ -18,21 +18,19 @@ struct PanGestureEvent {
   @State value: string = ''
   build() {
     Column() {
-      Column() {
-        Text(this.value).key('value')
-      }
-      .key('PanGesture1')
-      .height(200)
-      .width(300)
-      .padding(20)
-      .border({ width: 3 })
-      .margin(50)
-      .gesture(
-        PanGesture()
-          .onActionStart((event: GestureEvent) => {
-            this.value = '' + event.targetDisplayId
-          })
-      )
-    }
+      Text(this.value)
+        .gesture(
+          PanGesture()
+            .onActionStart((event: GestureEvent) => {
+              this.value = '' + event.targetDisplayId
+            })
+        )
+        .id('PanGesture1')
+        .height('40%')
+        .width('90%')
+        .padding(20)
+        .border({ width: 3 })
+        .margin(10)
+    }.width('100%')
   }
 }

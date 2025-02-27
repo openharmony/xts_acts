@@ -18,20 +18,19 @@ struct RotationGestureEvent {
   @State value: string = ''
   build() {
     Column() {
-      Column() {
-        Text(this.value).key('value')
-      }
-      .key('RotationGesture1')
-      .height(150)
-      .width(200)
-      .padding(20)
-      .border({ width: 3 })
-      .gesture(
-        RotationGesture()
-          .onActionStart((event: GestureEvent) => {
-            this.value = '' + event.targetDisplayId
-          })
-      )
+      Text(this.value)
+        .gesture(
+          RotationGesture()
+            .onActionStart((event: GestureEvent) => {
+              this.value = '' + event.targetDisplayId
+            })
+        )
+        .id('RotationGesture1')
+        .height('40%')
+        .width('90%')
+        .padding(20)
+        .border({ width: 3 })
+        .margin(10)
     }.width('100%')
   }
 }

@@ -18,21 +18,19 @@ struct PinchGestureEvent1 {
   @State value: string = ''
   build() {
     Column() {
-      Column() {
-        Text(this.value).key('value')
-      }
-      .key('PinchGesture1')
-      .height(200)
-      .width(300)
-      .padding(20)
-      .border({ width: 3 })
-      .margin({ top: 100 })
-      .gesture(
-        PinchGesture()
-          .onActionStart((event: GestureEvent) => {
-            this.value = '' + event.targetDisplayId
-          })
-      )
+      Text(this.value)
+        .gesture(
+          PinchGesture()
+            .onActionStart((event: GestureEvent) => {
+              this.value = '' + event.targetDisplayId
+            })
+        )
+        .id('PinchGesture1')
+        .height('40%')
+        .width('90%')
+        .padding(20)
+        .border({ width: 3 })
+        .margin(10)
     }.width('100%')
   }
 }

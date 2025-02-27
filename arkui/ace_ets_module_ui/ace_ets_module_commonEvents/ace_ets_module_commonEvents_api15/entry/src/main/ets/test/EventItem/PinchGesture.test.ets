@@ -18,24 +18,24 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function pinchGestureEventTest() {
-  describe('PinchGesture1', () => {
+  describe('pinchGestureEvent', () => {
     beforeEach(async (done: Function) => {
-      console.info('PinchGesture1 beforeEach start');
+      console.info('pinchGestureEvent beforeEach start');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/EventItem/PinchGesture',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info('get PinchGesture1 state pages: ' + JSON.stringify(pages));
+        console.info('get pinchGestureEvent state pages: ' + JSON.stringify(pages));
         if (!('PinchGesture' == pages.name)) {
-          console.info('get PinchGesture1 state pages.name: ' + JSON.stringify(pages.name));
+          console.info('get pinchGestureEvent state pages.name: ' + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info('push PinchGesture1 success: ' + JSON.stringify(result));
+          console.info('push pinchGestureEvent success: ' + JSON.stringify(result));
         }
       } catch (err) {
-        console.error('push PinchGesture1 page error: ' + err);
+        console.error('push pinchGestureEvent page error: ' + err);
         expect().assertFail();
       }
       done();
@@ -70,7 +70,7 @@ export default function pinchGestureEventTest() {
       pointers.setPoint(1,1,{x: Math.round(areaObj1.right - areaWidth1 * 0.3),y: Math.round(areaObj1.top + areaHeight1 * 0.5) });
       await driver.injectMultiPointerAction(pointers);
       await CommonFunc.sleep(4000);
-      let strJson = getInspectorByKey('value');
+      let strJson = getInspectorByKey('PinchGesture1');
       let obj: ESObject = JSON.parse(strJson);
       console.info('[PinchGesture1_0100] component obj is: ' + JSON.stringify(obj));
       console.info('[PinchGesture1_0100] title: ' + JSON.stringify(obj.$attrs.content));

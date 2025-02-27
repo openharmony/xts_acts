@@ -20,24 +20,24 @@ import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 
 export default function mouseEventTest() {
-  describe('mouseEventTest', () => {
+  describe('mouseEvent', () => {
     beforeEach(async (done: Function) => {
-      console.info('mouseEventTest beforeEach start');
+      console.info('mouseEvent beforeEach start');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/EventItem/Mouse',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info('get mouseEventTest state pages: ' + JSON.stringify(pages));
+        console.info('get mouseEvent state pages: ' + JSON.stringify(pages));
         if (!('Mouse' == pages.name)) {
-          console.info('get mouseEventTest state pages.name: ' + JSON.stringify(pages.name));
+          console.info('get mouseEvent state pages.name: ' + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info('push mouseEventTest success: ' + JSON.stringify(result));
+          console.info('push mouseEvent success: ' + JSON.stringify(result));
         }
       } catch (err) {
-        console.error('push mouseEventTest page error: ' + err);
+        console.error('push mouseEvent page error: ' + err);
         expect().assertFail();
       }
       done();
@@ -52,7 +52,7 @@ export default function mouseEventTest() {
       await CommonFunc.sleep(1000);
       console.info('Mouse1_0100 START');
       let driver = await Driver.create();
-      await driver.mouseClick({x:200, y:150}, MouseButton.MOUSE_BUTTON_LEFT);
+      await driver.mouseClick({x:500, y:500}, MouseButton.MOUSE_BUTTON_LEFT);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('value');
       let obj: ESObject = JSON.parse(strJson);

@@ -18,24 +18,24 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function rotationGestureEventTest() {
-  describe('RotationGesture1', () => {
+  describe('rotationGestureEvent', () => {
     beforeEach(async (done: Function) => {
-      console.info('RotationGesture1 beforeEach start');
+      console.info('rotationGestureEvent beforeEach start');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/EventItem/RotationGesture',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info('get RotationGesture1 state pages: ' + JSON.stringify(pages));
+        console.info('get rotationGestureEvent state pages: ' + JSON.stringify(pages));
         if (!('RotationGesture' == pages.name)) {
-          console.info('get RotationGesture1 state pages.name: ' + JSON.stringify(pages.name));
+          console.info('get rotationGestureEvent state pages.name: ' + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info('push RotationGesture1 success: ' + JSON.stringify(result));
+          console.info('push rotationGestureEvent success: ' + JSON.stringify(result));
         }
       } catch (err) {
-        console.error('push RotationGesture1 page error: ' + err);
+        console.error('push rotationGestureEvent page error: ' + err);
         expect().assertFail();
       }
       done();
@@ -70,7 +70,7 @@ export default function rotationGestureEventTest() {
       pointers.setPoint(1,1,{x: Math.round(areaObj1.left),y: Math.round(areaObj1.bottom) });
       await driver.injectMultiPointerAction(pointers);
       await CommonFunc.sleep(4000);
-      let strJson = getInspectorByKey('value');
+      let strJson = getInspectorByKey('RotationGesture1');
       let obj: ESObject = JSON.parse(strJson);
       console.info('[RotationGesture1_0100] component obj is: ' + JSON.stringify(obj));
       console.info('[RotationGesture1_0100] title: ' + JSON.stringify(obj.$attrs.content));
