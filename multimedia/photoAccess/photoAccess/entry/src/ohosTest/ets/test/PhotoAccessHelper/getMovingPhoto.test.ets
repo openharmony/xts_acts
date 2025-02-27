@@ -178,19 +178,6 @@ export default function getMovingPhotoTest() {
       }
     }
 
-    const getUriErrorContent = async (done: Function, testNum: string, cacelFlag: boolean) => {
-      try {
-        let handler: photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> | undefined = undefined;
-        handler = new ErrorMovingPhotoHandler();
-        console.log(`${testNum}::handler::ErrorMovingPhotoHandler`);
-        expect(false).assertTrue();
-      } catch (err) {
-        console.log(`${testNum}::failed to request moving photo, error code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(`401`);
-        done();
-      }
-    }
-
     const checkFileExist = async (done: Function, testNum: string, filePathDir: string, fileList: Array<string>,
       expectFlag: boolean) => {
       try {
