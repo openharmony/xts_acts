@@ -12,7 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+export const KeyEventPatchTest: (a: string) => void;
 
+export const GetKeyEventData: () => object;
 export const ProgressLinearStyleTest: (a: string) => void;
 
 export const testProgressLinearStyle: (a: string) => void;
@@ -36,3 +38,7 @@ export const FocusControlTest_004: (a: string) => void;
 export const listTestCallback: (a: string) => void;
 
 export const listScrollToTestCallback: (a: string) => void;
+
+export const gesturecancelTest: (a: string) => void;
+
+export const GetTouchEventData: () => object;

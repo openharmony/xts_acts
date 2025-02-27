@@ -28,6 +28,7 @@ import TextAreaLetterSpacing from "./textArea/TextAreaLetterSpacing.test"
 import TextInputLetterSpacing from "./textInput/TextInputLetterSpacing.test"
 
 import columnBackDropBlurTest from "./visual/columnBackDropBlurTest.test"
+import gesturecancelTest from "./gesturecancelTest/gesturecancelTest.test"
 
 
 export default function testsuite() {
@@ -44,4 +45,5 @@ export default function testsuite() {
    TextAreaLetterSpacing();
    TextInputLetterSpacing();
    columnBackDropBlurTest();
+   gesturecancelTest();
 }
