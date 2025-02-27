@@ -20,13 +20,16 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import fs from '@ohos.file.fs';
 import common from '@ohos.app.ability.common';
 import base from '@ohos.base';
+import { Driver, ON, MatchPattern } from '@ohos.UiTest';
 
+let driver = Driver.create();
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 let abilityContext: common.UIAbilityContext;
 
 let ACTS_GetGroupFunction: commonEvent.CommonEventSubscribeInfo = {
   events: ['ACTS_GETGROUP1_EVENT', 'ACTS_GETGROUP2_EVENT', 'ACTS_INPUTMETHOD_GETGROUP_EVENT']
 };
+const DELY_TIME = 5000;
 
 export default function ActsGetgroupdirTest() {
   describe('ActsGetgroupdirTest', () => {
@@ -171,6 +174,14 @@ export default function ActsGetgroupdirTest() {
           console.debug('====>AMS_getGroupDir_007 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
+        let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+        console.log("AMS_getGroupDir_007" + ' is need to click ' + JSON.stringify(allowed));
+        if(allowed){
+          let buttons = await driver.findComponents(ON.text('本次允许'));
+          if(buttons && buttons.length > 0){
+            await buttons[buttons.length - 1].click();
+          }
+        }
       })
 
       let subscribeCallBack = (err:base.BusinessError, data:commonEvent.CommonEventData) => {
@@ -214,6 +225,14 @@ export default function ActsGetgroupdirTest() {
           console.debug('====>AMS_getGroupDir_008 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
+        let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+        console.log('AMS_getGroupDir_008' + ' is need to click ' + JSON.stringify(allowed));
+        if(allowed){
+          let buttons = await driver.findComponents(ON.text('本次允许'));
+          if(buttons && buttons.length > 0){
+            await buttons[buttons.length - 1].click();
+          }
+        }
       })
 
       let subscribeCallBack = (err:base.BusinessError, data:commonEvent.CommonEventData) => {
