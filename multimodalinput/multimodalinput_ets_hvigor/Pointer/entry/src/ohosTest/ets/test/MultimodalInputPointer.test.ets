@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import pointer from '@ohos.multimodalInput.pointer';
 import { BusinessError }  from '@ohos.base';
 import window from '@ohos.window';
