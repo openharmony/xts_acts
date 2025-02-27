@@ -100,5 +100,30 @@ export default function ProgressLinearStyleTest(){
       expect(obj.$attrs.linearStyle.enableScanEffect).assertEqual('false');
       done();
     });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_PROGRESS_LINRAT_STYLE_0100
+     * @tc.name       : testProgressLinearStyle004
+     * @tc.desc       : testing progress linear style
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testProgressLinearStyle004', 0, async (done: Function) => {
+      let PAGE_TAG = 'TestProgressLinearStyle';
+      await Utils.pushPage(`progress/${PAGE_TAG}`);
+      await Utils.sleep(1000)
+      let driver = await Driver.create()
+      await Utils.sleep(1000)
+      let strJson = getInspectorByKey('progress2');
+      await driver.delayMs(1000);
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[testProgressLinearStyle004] component width strJson:" + JSON.stringify(strJson));
+      expect(obj.$attrs.linearStyle.strokeWidth).assertEqual('9.00vp');
+      expect(obj.$attrs.linearStyle.strokeRadius).assertEqual('4.50vp');
+      expect(obj.$attrs.enableSmoothEffect).assertEqual('true');
+      expect(obj.$attrs.linearStyle.enableScanEffect).assertEqual('false');
+      done();
+    });
   })
 }
