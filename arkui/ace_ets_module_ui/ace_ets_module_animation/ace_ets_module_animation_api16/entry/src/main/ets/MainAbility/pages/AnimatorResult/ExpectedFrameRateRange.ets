@@ -38,7 +38,7 @@ struct ExpectedFrameRateRange {
         .scale({ x: this.myScale, y: this.myScale })
         .onClick(() => {
           if (!this.uiContext) {
-            console.info("no uiContext, keyframe failed");
+            console.info('no uiContext, keyframe failed');
             return;
           }
           this.myScale = 1;
@@ -54,19 +54,19 @@ struct ExpectedFrameRateRange {
                 try {
                   let backData: events_emitter.EventData = {
                     data: {
-                      "min": this.minNumber,
-                      "expected": this.expectedNumber,
-                      "max": this.maxNumber,
+                      'min': this.minNumber,
+                      'expected': this.expectedNumber,
+                      'max': this.maxNumber,
                     }
                   }
                   let backEvent: events_emitter.InnerEvent = {
                     eventId: 51,
                     priority: events_emitter.EventPriority.LOW
                   }
-                  console.info("onFinish start to emit action state")
+                  console.info('onFinish start to emit action state')
                   events_emitter.emit(backEvent, backData)
                 } catch (err) {
-                  console.info("onFinish emit action state err: " + JSON.stringify((err as Error)?.message))
+                  console.info('onFinish emit action state err: ' + JSON.stringify((err as Error)?.message))
                 }
               },
             }, [
