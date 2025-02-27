@@ -19,12 +19,12 @@ import { UiDriver, BY } from '@ohos.UiTest';
 
 const TAG: string = "[UsbApiBulkTransferTest]";
 export interface gPipe {
-  busNum: number;
-  devAddress: number;
+    busNum: number;
+    devAddress: number;
 }
 
 function sleep(ms: number): Promise<void> {
-  return new Promise<void>(resolve => setTimeout(resolve, ms));
+    return new Promise<void>(resolve => setTimeout(resolve, ms));
 }
 
 async function getPermission(gDeviceList: Array<usbMgr.USBDevice>) {
@@ -65,11 +65,11 @@ function deviceConnected(gDeviceList: Array<usbMgr.USBDevice>) {
     return false;
 }
 
-function getTransfersParam(gPipe: usbMgr.USBDevicePipe, endpointValue: number, typeValue: number, timeOutValue: number)
+function getTransfersParam(gPipe: usbMgr.USBDevicePipe, flagsValue:number, endpointValue: number, typeValue: number, timeOutValue: number)
 {
     let transferParams: usbMgr.UsbDataTransferParams = {
         devPipe: gPipe,
-        flags: usbMgr.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
+        flags: flagsValue,
         endpoint: endpointValue,
         type: typeValue,
         timeout: timeOutValue,
@@ -85,13 +85,8 @@ function getTransfersParam(gPipe: usbMgr.USBDevicePipe, endpointValue: number, t
 export default function UsbApiBulkTransferTest() {
   
     describe('UsbApiBulkTransferTest', () => {
-    let portCurrentMode = 0;
     let isDeviceConnected:boolean = false;
     let devices: usbMgr.USBDevice;
-    let gPipe:gPipe = {
-       'busNum': 0,
-       'devAddress': 0
-    }
 
     beforeAll( async (done: Function) => {
         console.log(TAG, '*************Usb Unit UsbApiParamErrJsunitTest Begin*************');
@@ -140,17 +135,23 @@ export default function UsbApiBulkTransferTest() {
         }
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
+        let flags: number = usbMgr.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK;
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_BULK;
-        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 1, type, 2000);
+        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, flags, 1, type, 2000);
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
+            transferParams.callback = (err: Error, callBackData: usbMgr.SubmitTransferCallback) => {
+                console.info('callBackData = ' + JSON.stringify(callBackData));
+                console.info('testUsbSubmitTransfer001 transfer success, result = ' + transferParams.buffer.toString());
+                expect(callBackData.status == usbMgr.UsbTransferStatus.TRANSFER_COMPLETED).assertTrue();
+                usbMgr.closePipe(devices);
+                done()
+            }
             await usbMgr.usbSubmitTransfer(transferParams);
             console.info(TAG, 'bulk testUsbSubmitTransfer001 end');
-            usbMgr.closePipe(devices);
-            done();
         } catch (error) {
             expect(error.message).assertEqual('error');
-            console.error('bulk write successfully:', error);
+            console.error('bulk write error:', error);
         }
     });
 
@@ -172,17 +173,23 @@ export default function UsbApiBulkTransferTest() {
         }
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
+        let flags: number = usbMgr.UsbTransferFlags.USB_TRANSFER_FREE_BUFFER;
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_BULK;
-        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 129, type, 2000);
+        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, flags, 129, type, 2000);
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
+            transferParams.callback = (err: Error, callBackData: usbMgr.SubmitTransferCallback) => {
+                console.info('callBackData = ' + JSON.stringify(callBackData));
+                console.info('testUsbSubmitTransfer002 transfer success, result = ' + transferParams.buffer.toString());
+                expect(callBackData.status == usbMgr.UsbTransferStatus.TRANSFER_TIMED_OUT).assertTrue();
+                usbMgr.closePipe(devices);
+                done()
+            }
             await usbMgr.usbSubmitTransfer(transferParams);
             console.info(TAG, 'bulk testUsbSubmitTransfer002 end');
-            usbMgr.closePipe(devices);
-            done();
         } catch (error) {
             expect(error.message).assertEqual('error');
-            console.error('bulk write successfully:', error);
+            console.error('bulk error:', error);
         }
     });
 
@@ -204,12 +211,12 @@ export default function UsbApiBulkTransferTest() {
         }
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
+        let flags: number = usbMgr.UsbTransferFlags.USB_TRANSFER_FREE_TRANSFER;
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_BULK;
-        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, -1, type, 2000);
+        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, flags, -1, type, 2000);
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
             usbMgr.usbSubmitTransfer(transferParams);
-            console.info('bulk testUsbSubmitTransfer003 submitted.');
         } catch (error) {
             console.info(TAG, 'bulk testUsbSubmitTransfer003 end');
             console.error('bulk transfer error endpoint:', error);
@@ -220,9 +227,43 @@ export default function UsbApiBulkTransferTest() {
     });
 
     /**
+     * @tc.number   : SUB_USB_Host_JS_usbSubmitTransfer_Func_0300
+     * @tc.name     : testUsbSubmitTransfer004
+     * @tc.desc     : bulk transfer claimInterface no call. connectDevice no call.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testUsbSubmitTransfer004', 0, async (done: Function) => {
+        console.info(TAG, 'bulk testUsbSubmitTransfer004 enter');
+        if (!isDeviceConnected) {
+			console.info(TAG, 'usb testUsbSubmitTransfer004 No device is connected');
+            expect(isDeviceConnected).assertFalse();
+            done();
+            return
+        }
+        let gPipe: usbMgr.USBDevicePipe = {
+            'busNum': 0,
+            'devAddress': 0
+        }
+        let flags: number = usbMgr.UsbTransferFlags.USB_TRANSFER_ADD_ZERO_PACKET;
+        let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_BULK;
+        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, flags, 129, type, 2000);
+        try {
+            await usbMgr.usbSubmitTransfer(transferParams);
+        } catch (error) {
+            console.info(TAG, 'bulk testUsbSubmitTransfer004 end');
+            console.error('bulk failed:', error);
+            expect(error.code).assertEqual(14400001);
+        }
+        usbMgr.closePipe(devices);
+        done();
+    });
+
+    /**
      * @tc.number   : SUB_USB_Host_JS_UsbCancelTransfer_Func_0100
      * @tc.name     : testUsbCancelTransfer001
-     * @tc.desc     : bulk transfer write cancel successfully.
+     * @tc.desc     : bulk transfer cancel successfully. 
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
@@ -237,24 +278,31 @@ export default function UsbApiBulkTransferTest() {
         }
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
+        let flags: number = usbMgr.UsbTransferFlags.USB_TRANSFER_ADD_ZERO_PACKET;
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_BULK;
-        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 1, type, 0);
+        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, flags, 129, type, 0);
         usbMgr.claimInterface(gPipe, tmpInterface, true);
-        usbMgr.usbSubmitTransfer(transferParams);
         try {
+            transferParams.callback = (err: Error, data: usbMgr.SubmitTransferCallback)=>{
+                console.info(TAG, 'bulk testUsbCancelTransfer001 data =' +JSON.stringify(data));
+                expect(data.status == usbMgr.UsbTransferStatus.TRANSFER_CANCELED).assertTrue();
+                usbMgr.closePipe(devices);
+                done();
+            }
+            usbMgr.usbSubmitTransfer(transferParams);
             usbMgr.usbCancelTransfer(transferParams);
             console.info(TAG, 'bulk testUsbCancelTransfer001 end');
         } catch (error) {
-            console.error('bulk write cancel successfully:', error);
+            console.error('bulk cancel error:', error);
         }
         usbMgr.closePipe(devices);
         done();
     });
 
     /**
-     * @tc.number   : SUB_USB_Host_JS_UsbCancelTransfer_Func_0200
+     * @tc.number   : SUB_USB_Host_JS_UsbCancelTransfer_ErrCode_0100
      * @tc.name     : testUsbCancelTransfer002
-     * @tc.desc     : bulk transfer read cancel successfully. 
+     * @tc.desc     : bulk transfer cancel failed.
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
@@ -269,47 +317,15 @@ export default function UsbApiBulkTransferTest() {
         }
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
         let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
+        let flags: number = usbMgr.UsbTransferFlags.USB_TRANSFER_ADD_ZERO_PACKET;
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_BULK;
-        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 129, type, 0);
+        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, flags, 1, type, 500);
         usbMgr.claimInterface(gPipe, tmpInterface, true);
-        usbMgr.usbSubmitTransfer(transferParams);
         try {
             usbMgr.usbCancelTransfer(transferParams);
+        } catch (error) {
             console.info(TAG, 'bulk testUsbCancelTransfer002 end');
-        } catch (error) {
-            console.error('bulk write cancel successfully:', error);
-        }
-        usbMgr.closePipe(devices);
-        done();
-    });
-
-    /**
-     * @tc.number   : SUB_USB_Host_JS_UsbCancelTransfer_ErrCode_0100
-     * @tc.name     : testUsbCancelTransfer003
-     * @tc.desc     : bulk transfer write cancel failed.
-     * @tc.size     : MediumTest
-     * @tc.type     : Function
-     * @tc.level    : Level 3
-     */
-    it('testUsbCancelTransfer003', 0, async (done: Function) => {
-        console.info(TAG, 'bulk testUsbCancelTransfer003 enter');
-        if (!isDeviceConnected) {
-			console.info(TAG, 'usb testUsbCancelTransfer003 No device is connected');
-            expect(isDeviceConnected).assertFalse();
-            done()
-            return
-        }
-        let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
-        let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
-        let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_BULK;
-        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 1, type, 500);
-        usbMgr.claimInterface(gPipe, tmpInterface, true);
-        try {
-            usbMgr.usbCancelTransfer(transferParams);
-            console.info('bulk testUsbCancelTransfer003 submitted.');
-        } catch (error) {
-            console.info(TAG, 'bulk testUsbCancelTransfer003 end');
-            console.error('bulk write cancel error:', error);
+            console.error('bulk cancel error:', error);
             usbMgr.closePipe(devices);
             expect(error.code).assertEqual(14400011);
             done();
