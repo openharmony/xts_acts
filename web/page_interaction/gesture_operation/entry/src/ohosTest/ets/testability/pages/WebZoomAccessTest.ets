@@ -64,7 +64,7 @@ struct WebZoomAccessTest {
           console.info("key==>" + this.str)
           switch (this.str) {
             case "testWebZoomAccess001": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   this.controller.loadUrl("resource://rawfile/second.html")
                   await Utils.sleep(2000)
@@ -80,7 +80,7 @@ struct WebZoomAccessTest {
               }
             }
             case "testWebZoomAccess002": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   await Utils.fingerZoom('WebZoomAccessTestWebView', true);
                   await Utils.sleep(2000)
@@ -96,7 +96,7 @@ struct WebZoomAccessTest {
               }
             }
             case "testWebZoomAccess003": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   this.zoomAccess = true;
                   await Utils.sleep(2000)
@@ -112,7 +112,7 @@ struct WebZoomAccessTest {
               }
             }
             case "testWebZoomAccess004": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   this.zoomAccess = true;
                   this.flag = true;

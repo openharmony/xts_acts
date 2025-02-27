@@ -60,7 +60,7 @@ struct DNSHostIP {
           console.info("key==>" + this.str)
           switch (this.str) {
             case "emitZoomAccess": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 this.zoomAccessValue = false;
                 this.controller.refresh();
                 setTimeout(() => {
@@ -85,7 +85,7 @@ struct DNSHostIP {
               }
             }
             case "emitGetHitTestValue": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   let hitValue = this.controllerone.getHitTestValue();
                   console.log("hitType: " + hitValue.type);

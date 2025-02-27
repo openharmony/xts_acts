@@ -118,7 +118,7 @@ struct WebAttributeTest {
             console.info("key==>" + this.str)
             switch (this.str) {
               case "emitOnRequestSelected001": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
+                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   try {
                     this.onRequestSelectedCalled = false
                     focusControl.requestFocus('WebAttributeTestButton')

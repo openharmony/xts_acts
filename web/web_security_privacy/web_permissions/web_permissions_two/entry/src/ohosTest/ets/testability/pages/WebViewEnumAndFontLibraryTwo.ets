@@ -130,7 +130,7 @@ struct WebViewEnumAndFontLibraryTwo {
           console.info("key==>" + this.str)
           switch (this.str) {
             case "emitProtectedResourceType": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent('TYPE_VIDEO_CAPTURE,TYPE_AUDIO_CAPTURE', 1101)
@@ -148,7 +148,7 @@ struct WebViewEnumAndFontLibraryTwo {
               }
             }
             case "emitOnPermissionRequestGetOrigin": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent('resource://rawfile/', 1102)
@@ -166,7 +166,7 @@ struct WebViewEnumAndFontLibraryTwo {
               }
             }
             case "emitOnPermissionRequest": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent(true, 1103)
