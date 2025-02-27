@@ -324,7 +324,7 @@ napi_value GestureInterfaceCancelTest::CreateNativeNode(napi_env env, napi_callb
             nodeAPI->setAttribute(list, NODE_LIST_INITIAL_INDEX, &initialIndexItem);
             
             nodeAPI->registerNodeEvent(list, NODE_TOUCH_EVENT, listTouchId, nullptr);
-            nodeAPI->registerNodeEvent(list, NODE_ON_CLICK_EVENT, listTouchId, nullptr);
+            nodeAPI->registerNodeEvent(list, NODE_ON_CLICK, listTouchId, nullptr);
             nodeAPI->registerNodeEvent(scroll, NODE_TOUCH_EVENT, ScrollTouchId, nullptr); 
             
             nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event){
