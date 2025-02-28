@@ -17,7 +17,6 @@
   "buildOption": {
     "sourceOption": {
       "workers": [
-        './src/main/ets/workers/WorkerTaskGroup.ets',
         './src/ohosTest/ets/testability/pages/workers/WorkerTaskGroup.ets',
         './src/ohosTest/ets/testability/pages/workers/WorkerTaskGroup1.ets',
         './src/ohosTest/ets/testability/pages/workers/WorkerTaskGroup2.ets',

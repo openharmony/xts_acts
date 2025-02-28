@@ -13,15 +13,15 @@
 * limitations under the License.
 */
 
-import { ArkTSUtils } from "@kit.ArkTS";
+import { ArkTSUtils } from '@kit.ArkTS';
 
 @Sendable
 export class BaseClass {
   private str: string = 'sendable: BaseClass';
   static num: number = 10;
-  str1: string = 'sendable: this is BaseClass\'s string';
-  num1: number = 5;
-  isDone1: boolean = false;
+  public str1: string = 'sendable: this is BaseClass\'s string';
+  private num1: number = 5;
+  public isDone1: boolean = false;
 
   private fibonacciRecursive(n: number): number {
     if (n <= 1) {
@@ -57,7 +57,7 @@ export class BaseClass {
 
 @Sendable
 export class DeriveClass extends BaseClass {
-  name: string = 'sendable: this is DeriveClass';
+  private name: string = 'sendable: this is DeriveClass';
 
   printName() {
     console.info(this.name);
@@ -70,8 +70,8 @@ export class DeriveClass extends BaseClass {
 
 @Sendable
 export class AsyncLockTest {
-  count_: number = 0;
-  lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+  private count_: number = 0;
+  private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
 
   async getCount(): Promise<number> {
     return this.lock_.lockAsync(() => {
@@ -80,7 +80,7 @@ export class AsyncLockTest {
   }
 
   async setCount(count: number) {
-    let s: Array<string> = []
+    let s: string[] = []
     s[0].split('')[1].toString()
     await this.lock_.lockAsync(() => {
       this.count_ = count;
@@ -90,8 +90,8 @@ export class AsyncLockTest {
 
 @Sendable
 export class AsyncLockTestThen {
-  count_: number = 0;
-  lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+  private count_: number = 0;
+  private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
 
   async getCount(): Promise<number> {
     return this.lock_.lockAsync(() => {
@@ -112,8 +112,8 @@ export class AsyncLockTestThen {
 
 @Sendable
 export class AsyncLockTestCatch {
-  count_: number = 0;
-  lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+  private count_: number = 0;
+  private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
 
   async getCount(): Promise<number> {
     return this.lock_.lockAsync(() => {
@@ -138,8 +138,8 @@ export class AsyncLockTestCatch {
 
 @Sendable
 export class AsyncLockTestFinally {
-  count_: number = 0;
-  lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+  private count_: number = 0;
+  private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
 
   async getCount(): Promise<number> {
     return this.lock_.lockAsync(() => {
@@ -162,8 +162,8 @@ export class AsyncLockTestFinally {
 
 @Sendable
 export class AsyncLockTest1 {
-  count_: number = 0;
-  lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+  private count_: number = 0;
+  private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
 
   async getCount(): Promise<number> {
     return this.lock_.lockAsync(() => {
@@ -173,6 +173,23 @@ export class AsyncLockTest1 {
 
   async setCount(count: number) {
     await this.lock_.lockAsync(() => {
+      this.count_ = count;
+    })
+  }
+}
+
+@Sendable
+export class AsyncLock {
+  public count_: number = 1;
+  async getCount(): Promise<number> {
+    let lock: ArkTSUtils.locks.AsyncLock = ArkTSUtils.locks.AsyncLock.request('lock_1');
+    return lock.lockAsync(() => {
+      return this.count_;
+    })
+  }
+  async setCount(count: number) {
+    let lock: ArkTSUtils.locks.AsyncLock = ArkTSUtils.locks.AsyncLock.request('lock_1');
+    await lock.lockAsync(() => {
       this.count_ = count;
     })
   }
