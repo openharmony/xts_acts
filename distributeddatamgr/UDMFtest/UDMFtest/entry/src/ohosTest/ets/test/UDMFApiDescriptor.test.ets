@@ -7604,7 +7604,7 @@ export default function UDMFApiDescriptorTest() {
     it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1260', 0, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1260 start');
       expect(UTD.UniformDataType.CONTENT_FORM).assertEqual("general.content-form");
-      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.CONTENT_FORM );
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.CONTENT_FORM);
       console.log("typeId:" + typeObj.typeId);
       expect(typeObj.typeId).assertEqual("general.content-form");
     });
