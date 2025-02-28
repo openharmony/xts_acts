@@ -414,5 +414,45 @@ export default function UDMFSupportClipboardApiTest() {
       expect(data5["foo"]).assertEqual("bar");
       expect(data5["baz"]).assertEqual(42);
     });
+  
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_1000
+     * @tc.name      : testaddRecord
+     * @tc.desc      : addRecord  test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_1000', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_1000 start');
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      try {
+        unifiedData.addRecord(null);
+        expect().assertFail();
+      } catch (err) {
+        expect(err.code).assertEqual('401');
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_1000 end");
+    });
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_1100
+     * @tc.name      : testhasType
+     * @tc.desc      : hasType test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_1100', 0, async () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_1100 start');
+      let text = new unifiedDataChannel.Text();
+      let unifiedData = new unifiedDataChannel.UnifiedData(text);
+      try {
+        unifiedData.hasType(null);
+        expect().assertFail();
+      } catch (err) {
+        expect(err.code).assertEqual('401');
+      }
+      console.log("SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_1100 end");
+    });
   })
 }
