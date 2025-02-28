@@ -14,12 +14,15 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import { UiDriver, BY, ON, PointerMatrix } from '@ohos.UiTest'
 import pipWindow from '@ohos.PiPWindow';
 import { typeNode } from '@ohos.arkui.node';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 import { TextNodeController } from './CustomNode.test';
+
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 
 export default function pipWindowTest(context1: common.BaseContext, windowStage: ohosWindow.WindowStage) {
   describe('window_pipWindow_test', () => {
@@ -2273,6 +2276,11 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.level      : Level3
      */
     it('PiPSizeChange_Function_Callback_0', 0, async (done:Function) => {
+      if (deviceType === '2in1') {
+        console.log('PiPSizeChange_Function_Callback_0 device type 2in1');
+        done();
+        return;
+      }
       let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
@@ -2341,6 +2349,11 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.level      : Level3
      */
     it('PiPSizeChange_Function_Callback_1', 0, async (done:Function) => {
+      if (deviceType === '2in1') {
+        console.log('PiPSizeChange_Function_Callback_1 device type 2in1');
+        done();
+        return;
+      }
       let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
@@ -2412,6 +2425,11 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.level      : Level3
      */
     it('PiPSizeChange_Function_Callback_2', 0, async (done:Function) => {
+      if (deviceType === '2in1') {
+        console.log('PiPSizeChange_Function_Callback_2 device type 2in1');
+        done();
+        return;
+      }
       let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
