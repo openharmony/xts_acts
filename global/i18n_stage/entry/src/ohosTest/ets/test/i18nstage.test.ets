@@ -16,6 +16,8 @@
 import Ability from '@ohos.app.ability.UIAbility'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 import I18n from '@ohos.i18n'
+import Intl from '@ohos.intl'
+import { deviceInfo } from '@Kit.BasicServicesKit'
 
 export default function i18nStageTest() {
   describe("i18nStageTest", () => {
