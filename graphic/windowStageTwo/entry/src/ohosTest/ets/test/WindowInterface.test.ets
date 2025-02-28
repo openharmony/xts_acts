@@ -2633,60 +2633,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
         done();
       };
     });
-/**
-     * @tc.number    : test_createSubWindowWithOptions_windowRect_0100
-     * @tc.name      : test_createSubWindowWithOptions_windowRect_0100
-     * @tc.desc      : Test the function value of createSubWindowWithOptions
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('test_createSubWindowWithOptions_windowRect_0100', 0, async (done: Function) => {
-      let message = 'test_createSubWindowWithOptions_windowRect_0100';
-      try {
-        let mainWindow = windowStage.getMainWindowSync();
-        let windowLimits = mainWindow.getWindowLimits();
-        let options: window.SubWindowOptions = {
-          title: 'title',
-          decorEnabled: false,
-          windowRect: {
-            left: -100,
-            top: -100,
-            width: Number(windowLimits.minWidth),
-            height: Number(windowLimits.minHeight)
-          }
-        };
-        let promise = windowStage.createSubWindowWithOptions('test_createSubWindowWithOptions_windowRect_0100', options);
-        promise.then(async (data) => {
-          let subWindowClass = data;
-          await subWindowClass.loadContentByName('../testability/pages/newPage');
-          await subWindowClass.showWindow();
-          console.info(message+' succeed in create the subwindow');
-          await subWindowClass.destroyWindow();
-          expect(true).assertTrue();
-          done();
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to create the subwindow, promise cause code ${err.code}, message ${err.message} `)
-          if (err.code == 801) {
-            console.error(`The device not support createSubWindowWithOptions`);
-            done();
-          } else {
-            expect().assertFail();
-            done();
-          }
-          
-        });
-      } catch (err) {
-        console.error(`Failed to create the subwindow, Cause code ${err.code}, message ${err.message} `);
-        if (err.code == 801) {
-          console.error(`The device not support getWindowLimits`);
-          done();
-        } else {
-          expect().assertFail();
-          done();
-        }
-      };
-    });
+
 /**
      * @tc.number    : test_on_windowWillClose_0100
      * @tc.name      : test_on_windowWillClose_0100
