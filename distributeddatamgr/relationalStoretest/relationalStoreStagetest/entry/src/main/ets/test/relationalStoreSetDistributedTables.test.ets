@@ -15,7 +15,9 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import relationalStore from '@ohos.data.relationalStore';
-import common from '@ohos.app.ability.common';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+const delegator = AbilityDelegatorRegistry.getAbilityDelegator();
+const context = delegator.getAppContext().getApplicationContext();
 const TAG = "[RELATIONAL_STORE_TEST]";
 const STORE_NAME = "cloud_rdb.db"
 var rdbStore = undefined;
@@ -29,7 +31,6 @@ export default function relationalStoreSetDistributedTablesTest() {
   describe('relationalStoreSetDistributedTablesTest', () => {
     beforeAll(async () => {
       console.info(TAG + 'beforeAll')
-      context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
       const config = {
         "name": STORE_NAME,
         securityLevel: relationalStore.SecurityLevel.S1,
