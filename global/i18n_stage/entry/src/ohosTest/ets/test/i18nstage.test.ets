@@ -14,7 +14,7 @@
  */
 
 import Ability from '@ohos.app.ability.UIAbility'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 import I18n from '@ohos.i18n'
 
 export default function i18nStageTest() {
@@ -592,6 +592,398 @@ export default function i18nStageTest() {
       let appPreferredLanguage: string = I18n.System.getAppPreferredLanguage();
       console.log('SUB_GLOBAL_I18N_AppPreferredLanguage_0400:' + appPreferredLanguage);
       expect(appPreferredLanguage == 'zh-CN').assertTrue();
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0010
+     * @tc.name     : dateTimeFormatAdapt_test_0010
+     * @tc.desc     : check the dateStyle is adapt to auto
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('dateTimeFormatAdapt_test_0010', Level.LEVEL1, () => {
+      let data = new Date(2020, 11, 20, 14, 23, 16);
+      let dateFmt = new Intl.DateTimeFormat("zh-CN", {
+        dateStyle: 'auto'
+      });
+      console.log('dateTimeFormatAdapt_test_0010:' + dateFmt.format(date));
+      let devType = deviceInfo.deviceType;
+      if (devType == '2in1' || devType == 'tablet') {
+        expect(dateFmt.format(date)).assertEqual('2020年12月20日');
+      } else {
+        expect(dateFmt.format(date)).assertEqual('2020/12/20');
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0020
+     * @tc.name     : dateTimeFormatAdapt_test_0020
+     * @tc.desc     : check the timeStyle is adapt to auto
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('dateTimeFormatAdapt_test_0020', Level.LEVEL1, () => {
+      let data = new Date(2020, 11, 20, 14, 23, 16);
+      let dateFmt = new Intl.DateTimeFormat("zh-CN", {
+        timeStyle: 'auto'
+      });
+      console.log('dateTimeFormatAdapt_test_0020:' + dateFmt.format(date));
+      let devType = deviceInfo.deviceType;
+      if (devType == '2in1' || devType == 'tablet') {
+        expect(dateFmt.format(date)).assertEqual('下午2:23:16');
+      } else {
+        expect(dateFmt.format(date)).assertEqual('下午2:23');
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0030
+     * @tc.name     : dateTimeFormatAdapt_test_0030
+     * @tc.desc     : check the weekday is adapt to auto
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('dateTimeFormatAdapt_test_0030', Level.LEVEL1, () => {
+      let data = new Date(2020, 11, 20, 14, 23, 16);
+      let dateFmt = new Intl.DateTimeFormat("zh-CN", {
+        weekday: 'auto'
+      });
+      console.log('dateTimeFormatAdapt_test_0030:' + dateFmt.format(date));
+      let devType = deviceInfo.deviceType;
+      if (devType == '2in1' || devType == 'tablet') {
+        expect(dateFmt.format(date)).assertEqual('星期日');
+      } else {
+        expect(dateFmt.format(date)).assertEqual('周日');
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0040
+     * @tc.name     : dateTimeFormatAdapt_test_0040
+     * @tc.desc     : check the month is adapt to auto
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('dateTimeFormatAdapt_test_0040', Level.LEVEL1, () => {
+      let data = new Date(2020, 11, 20, 14, 23, 16);
+      let dateFmt = new Intl.DateTimeFormat("en-gb", {
+        month: 'auto'
+      });
+      console.log('dateTimeFormatAdapt_test_0040:' + dateFmt.format(date));
+      let devType = deviceInfo.deviceType;
+      if (devType == '2in1' || devType == 'tablet') {
+        expect(dateFmt.format(date)).assertEqual('December');
+      } else {
+        expect(dateFmt.format(date)).assertEqual('Dec');
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0050
+     * @tc.name     : dateTimeFormatAdapt_test_0050
+     * @tc.desc     : check the timeZoneName is adapt to auto
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('dateTimeFormatAdapt_test_0050', Level.LEVEL1, () => {
+      let data = new Date(2020, 11, 20, 14, 23, 16);
+      let dateFmt = new Intl.DateTimeFormat("zh-CN", {
+        timeZoneName: 'auto'
+      });
+      console.log('dateTimeFormatAdapt_test_0050:' + dateFmt.format(date));
+      let devType = deviceInfo.deviceType;
+      if (devType == '2in1' || devType == 'tablet') {
+        expect(dateFmt.format(date)).assertEqual('2020/12/20 中国标准时间');
+      } else {
+        expect(dateFmt.format(date)).assertEqual('2020/12/20 GMT+8');
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0060
+     * @tc.name     : dateTimeFormatAdapt_test_0060
+     * @tc.desc     : check the dayPeriod is adapt to auto
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('dateTimeFormatAdapt_test_0060', Level.LEVEL1, () => {
+      let data = new Date(2020, 11, 20, 14, 23, 16);
+      let dateFmt = new Intl.DateTimeFormat("zh-CN", {
+        dayPeriod: 'auto'
+      });
+      console.log('dateTimeFormatAdapt_test_0060:' + dateFmt.format(date));
+      expect(dateFmt.format(date)).assertEqual('2020/12/20');
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0070
+     * @tc.name     : dateTimeFormatAdapt_test_0070
+     * @tc.desc     : check the option is null
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('dateTimeFormatAdapt_test_0070', Level.LEVEL1, () => {
+      let data = new Date(2020, 11, 20, 14, 23, 16);
+      let dateFmt = new Intl.DateTimeFormat("zh-CN");
+      console.log('dateTimeFormatAdapt_test_0070:' + dateFmt.format(date));
+      let devType = deviceInfo.deviceType;
+      if (devType == '2in1' || devType == 'tablet') {
+        expect(dateFmt.format(date)).assertEqual('2020年12月20日');
+      } else {
+        expect(dateFmt.format(date)).assertEqual('2020/12/20');
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0080
+     * @tc.name     : numberFormatAdapt_test_0080
+     * @tc.desc     : format the datetime with currencyDisplay symbol
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('numberFormatAdapt_test_0080', Level.LEVEL1, () => {
+      let data = 123456.789;
+      let numFmt = new Intl.NumberFormat("en-GB", {
+        currencyDisplay: 'symbol'
+      });
+      console.log('numberFormatAdapt_test_0080:' + numFmt.format(data));
+      expect(numFmt.format(data)).assertEqual('123,456.789');
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0090
+     * @tc.name     : numberFormatAdapt_test_0090
+     * @tc.desc     : format the datetime with currencyDisplay short
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('numberFormatAdapt_test_0090', Level.LEVEL1, () => {
+      let data = 123456.789;
+      let numFmt = new Intl.NumberFormat("en-GB", {
+        currencyDisplay: 'narrowSymbol'
+      });
+      console.log('numberFormatAdapt_test_0090:' + numFmt.format(data));
+      expect(numFmt.format(data)).assertEqual('123,456.789');
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0150
+     * @tc.name     : numberFormatAdapt_test_0150
+     * @tc.desc     : format the datetime with unitDisplay long
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('numberFormatAdapt_test_0150', Level.LEVEL1, () => {
+      console.log('numberFormatAdapt_test_0150:' + 'start');
+      let numFmt = new Intl.NumberFormat("en-GB", {
+        style: 'unit', unit: 'meter', unitDisplay: 'long'
+      });
+      console.log('numberFormatAdapt_test_0150' + numFmt.format(123456.789));
+      expect(numFmt.format(123456.789)).assertEqual('123,456.789 metres');
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0160
+     * @tc.name     : numberFormatAdapt_test_0160
+     * @tc.desc     : format the datetime with unitDisplay long
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('numberFormatAdapt_test_0160', Level.LEVEL1, () => {
+      console.log('numberFormatAdapt_test_0160:' + 'start');
+      let numFmt = new Intl.NumberFormat("en-GB", {
+        style: 'unit', unit: 'meter', unitDisplay: 'short'
+      });
+      console.log('numberFormatAdapt_test_0090' + numFmt.format(123456.789));
+      expect(numFmt.format(123456.789)).assertEqual('123,456.789 metres');
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0100
+     * @tc.name     : relativeTimeFormatAdapt_test_0100
+     * @tc.desc     : format timeStyle is long
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('relativeTimeFormatAdapt_test_0100', Level.LEVEL1, () => {
+      console.log('relativeTimeFormatAdapt_test_0100:' + 'start');
+      let relativeTimeFmt = new Intl.RelativeTimeFormat("en", {
+        style: 'long'
+      });
+      let value = relativeTimeFmt.format(100, 'second');
+      console.log('relativeTimeFormatAdapt_test_0100' + value);
+      expect(value).assertEqual('in 100 seconds');
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_Localization_foramtAdapt_0110
+     * @tc.name     : relativeTimeFormatAdapt_test_0110
+     * @tc.desc     : format the timeStyle is null
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('relativeTimeFormatAdapt_test_0110', Level.LEVEL1, () => {
+      console.log('relativeTimeFormatAdapt_test_0110:' + 'start');
+      let relativeTimeFmt = new Intl.RelativeTimeFormat("en");
+      let value = relativeTimeFmt.format(100, 'second');
+      console.log('relativeTimeFormatAdapt_test_0110' + value);
+      let devTyp = deviceInfo.deviceType;
+      console.log('relativeTimeFormatAdapt_test_0110 device' + devType);
+      if (devType == '2inl' || devType == 'tablet' || devType == 'phone' || devType == 'default') {
+        expect(value).assertEqual('in 100 seconds');
+      } else {
+        expect(value).assertEqual('in 100 sec.');
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_getThreeLetterLanguage_0030
+     * @tc.name     : testGetThreeLetterLanguage_0030
+     * @tc.desc     : param value not valid
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testGetThreeLetterLanguage_0030', Level.LEVEL3, () => {
+      try {
+        let language: string = I18n.I18NUtil.getThreeLetterLanguage('bbb')
+      } catch (e) {
+        console.log('testGetThreeLetterLanguage_0030' + e.code + e.message);
+        expect(e.code).assertEqual('890001');
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_getThreeLetterLanguage_0100
+     * @tc.name     : testGetThreeLetterLanguage_0100
+     * @tc.desc     : param value is en
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('testGetThreeLetterLanguage_0100', Level.LEVEL2, () => {
+      let language: string = I18n.I18NUtil.getThreeLetterLanguage('en')
+      console.info('testGetThreeLetterLanguage_0100', language);
+      expect('eng').assertEqual('language');
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_getThreeLetterRegion_0030
+     * @tc.name     : testGetThreeLetterRegion_0030
+     * @tc.desc     : param value not valid
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testGetThreeLetterRegion_0030', Level.LEVEL3, () => {
+      try {
+        let language: string = I18n.I18NUtil.getThreeLetterRegion('aa')
+      } catch (e) {
+        console.log('testGetThreeLetterRegion_0030' + e.code + e.message);
+        expect(e.code).assertEqual('890001');
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_getThreeLetterRegion_0100
+     * @tc.name     : testGetThreeLetterRegion_0100
+     * @tc.desc     : transfer GB and return GBR
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('testGetThreeLetterLanguage_0100', Level.LEVEL2, () => {
+      let language: string = I18n.I18NUtil.getThreeLetterRegion('GB')
+      console.info('testGetThreeLetterRegion_0100', language);
+      expect('GBR').assertEqual('language');
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_numberFormatTyping_0100
+     * @tc.name     : SUB_GLOBAL_numberFormatTyping_0100
+     * @tc.desc     : transfer GB and return GBR
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('SUB_GLOBAL_numberFormatTyping_0100', Level.LEVEL2, () => {
+      let option: I18n.PhoneNumberFormatOptions = {
+        type: "TYPING"
+      };
+      let phoneNumberFormat: I18n.PhoneNumberFormat = new I18n.PhoneNumberFormat("CN", option);
+      let number = "13801048465";
+      let arr: Array<String> = ['1', '13', '138', '138 0', '138 01', '138 010', '138 0104', '1380 1048', '138 0104 84',
+        '138 0104 846', '138 0104 8465']
+      let formatted = "";
+      let k = 0;
+      for (let i of number) {
+        formatted = formatted + i;
+        let result = phoneNumberFormat.format(formatted);
+        console.info('SUB_GLOBAL_numberFormatTyping_0300_arr', arr[k])
+        expect(result).assertEqual(arr[k])
+        k += 1
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_numberFormatTyping_0200
+     * @tc.name     : SUB_GLOBAL_numberFormatTyping_0200
+     * @tc.desc     : adapter in delete
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('SUB_GLOBAL_numberFormatTyping_0200', Level.LEVEL2, () => {
+      let option: I18n.PhoneNumberFormatOptions = {
+        type: "TYPING"
+      };
+      let phoneNumberFormat: I18n.PhoneNumberFormat = new I18n.PhoneNumberFormat("CN", option);
+      let number = "13801048465";
+      let result = phoneNumberFormat.format(number3substring(0, number.length - 1));
+      console.info('SUB_GLOBAL_numberFormatTyping_0300_arr', arr[k])
+      expect(result).assertEqual('138 0104 846')
+    })
+
+
+    /**
+     * @tc.number   : SUB_GLOBAL_numberFormatTyping_0300
+     * @tc.name     : SUB_GLOBAL_numberFormatTyping_0300
+     * @tc.desc     : ont CN phone number
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('SUB_GLOBAL_numberFormatTyping_0300', Level.LEVEL1, () => {
+      let option: I18n.PhoneNumberFormatOptions = {
+        type: "TYPING"
+      };
+      let phoneNumberFormat: I18n.PhoneNumberFormat = new I18n.PhoneNumberFormat("CN", option);
+      let number = "0088696018456";
+      let arr: Array<String> = ['0', '00', '138', '00 8', '00 88', '00 886', '00 886 9', '00 886 96', '00 886 960',
+        '00 886 960 1', '00 886 960 18', '00 886 960 186', '00 886 960 186 4', '00 886 960 186 45',
+        '00 886 960 186 456']
+      let formatted = "";
+      let k = 0
+      for (let i of number) {
+        formatted = formatted + i;
+        let result = phoneNumberFormat.format(formatted);
+        console.info('SUB_GLOBAL_numberFormatTyping_0300_arr', arr[k])
+        expect(result).assertEqual(arr[k])
+        k += 1
+      }
     })
 
     console.log('*************end i18nStageTest*************');
