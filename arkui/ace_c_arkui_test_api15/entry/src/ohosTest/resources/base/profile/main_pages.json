@@ -10,6 +10,7 @@
     "MainAbility/pages/focuscontrol/focuscontrol3x",
     "MainAbility/pages/focuscontrol/focuscontrol4",
     "MainAbility/pages/list/ListCaseTest",
-    "MainAbility/pages/listScrollTo/ListScrollToTest"
+    "MainAbility/pages/listScrollTo/ListScrollToTest",
+     "MainAbility/pages/gestureCancel/gestureCancel"
   ]
 }

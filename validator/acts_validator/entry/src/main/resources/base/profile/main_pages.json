@@ -52,6 +52,8 @@
     "pages/ArkUI/Refresh",
     "pages/ArkUI/AccessBilityHover",
     "pages/ArkUI/NavigationEnableHoverMode",
+    "pages/ArkUI/GameCtrollerCallBackData",
+    "pages/ArkUI/GameCtronllerCTest",
     "pages/Camera/Camera_index",
     "pages/Camera/CameraPreviewFormat",
     "pages/Camera/CameraPhotoFormat",

@@ -19,6 +19,7 @@ add_library(nativerender SHARED
     textArea/textArea_letter_spacing.cpp
     list/list_test.cpp
     listScrollTo/list_scroll_to_test.cpp
+    gesturetouchcancel/gesture_cancel.cpp
 )
 
 add_library(nativefunc SHARED
