@@ -19,6 +19,7 @@ group("arkui") {
     "ace_c_arkui_test_api14:ActsAceCArkUI14Test",
     "ace_c_arkui_test_api15:ActsAceCArkUI15Test",
     "ace_c_arkui_test_api151:ActsAceCArkUI151Test",
+    "ace_c_arkui_test_api16:ActsAceCArkUI16Test",
 
     #"ace_ets_arkts_api:ActsAceEtsArkTSApiTest",
     #"ace_ets_component:ActsAceEtsComponentTest",
