@@ -84,7 +84,7 @@ export default function PasteboardProgressTest() {
      * @tc.level     : Level 2
      */
     it('SUB_Pasteboard_Local_SDK_ProgressTest_0100', 0, async () => {
-      console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0200 start ************')
+      console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0100 start ************')
       let fileFullName = filePath + '/test1.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
       let file = fs.openSync(fileFullName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
@@ -115,7 +115,7 @@ export default function PasteboardProgressTest() {
         console.info(TAG + 'getDataWithProgress fail,err：' + err.code + ',message: ' + err.message);
         expect().assertFail();
       }
-      console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0200 end ************')
+      console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0100 end ************')
     })
 
     /**
@@ -334,7 +334,7 @@ export default function PasteboardProgressTest() {
     /**
      * @tc.number SUB_Pasteboard_Local_SDK_ProgressTest_0800
      * @tc.name fileConflictOption_OVERWRITE
-     * @tc.desc Test pasteBoard progress fileConflictOption OVERWRITE
+     * @tc.desc Test pasteBoard progress fileConflictOptions OVERWRITE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -378,7 +378,7 @@ export default function PasteboardProgressTest() {
     /**
      * @tc.number SUB_Pasteboard_Local_SDK_ProgressTest_0900
      * @tc.name fileConflictOption_SKIP
-     * @tc.desc Test pasteBoard progress fileConflictOption SKIP
+     * @tc.desc Test pasteBoard progress fileConflictOptions SKIP
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -422,7 +422,7 @@ export default function PasteboardProgressTest() {
     /**
      * @tc.number SUB_Pasteboard_Local_SDK_ProgressTest_1000
      * @tc.name fileConflictOption_Invalid_Value
-     * @tc.desc Test pasteBoard progress fileConflictOption invalid value
+     * @tc.desc Test pasteBoard progress fileConflictOptions invalid value
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
