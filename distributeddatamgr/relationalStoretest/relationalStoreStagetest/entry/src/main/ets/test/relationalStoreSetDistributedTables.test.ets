@@ -21,7 +21,6 @@ const context = delegator.getAppContext().getApplicationContext();
 const TAG = "[RELATIONAL_STORE_TEST]";
 const STORE_NAME = "cloud_rdb.db"
 var rdbStore = undefined;
-let context: common.UIAbilityContext;
 const valueBucket = {
   'name': 'zhangsan',
   'age': 18,
