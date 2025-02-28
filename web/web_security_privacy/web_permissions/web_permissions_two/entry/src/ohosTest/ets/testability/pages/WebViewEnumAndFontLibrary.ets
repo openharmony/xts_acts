@@ -130,7 +130,7 @@ struct WebViewEnumAndFontLibrary {
           console.info("key==>" + this.str)
           switch (this.str) {
             case "emitDatabaseAccessTrue": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 this.databaseAccess = true
                 await Utils.sleep(2000)
                 this.controller.loadUrl("resource://rawfile/databaseAccess.html");

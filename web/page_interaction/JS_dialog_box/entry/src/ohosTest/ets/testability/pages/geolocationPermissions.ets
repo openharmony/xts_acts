@@ -70,7 +70,7 @@ struct geolocationPermissions {
           switch (this.str) {
 
             case "testGetStoredGeolocation001": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   webView.GeolocationPermissions.allowGeolocation("file:///")
                   webView.GeolocationPermissions.getStoredGeolocation((error, origins) => {
@@ -94,7 +94,7 @@ struct geolocationPermissions {
             }
 
             case "testGetStoredGeolocation002": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   webView.GeolocationPermissions.allowGeolocation("file:///")
                   webView.GeolocationPermissions.getStoredGeolocation()
@@ -117,7 +117,7 @@ struct geolocationPermissions {
             }
 
             case "testGetStoredGeolocation003": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   webView.GeolocationPermissions.deleteGeolocation(this.origin)
                   await Utils.sleep(1000)
@@ -142,7 +142,7 @@ struct geolocationPermissions {
             }
 
             case "testGetStoredGeolocation004": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   webView.GeolocationPermissions.deleteGeolocation(this.origin)
                   await Utils.sleep(1000)
@@ -166,7 +166,7 @@ struct geolocationPermissions {
             }
 
             case "testDeleteAllGeolocation001": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 let text: string = '123'
                 webView.GeolocationPermissions.allowGeolocation("resource://rawfile/")
                 webView.GeolocationPermissions.deleteAllGeolocation()
@@ -186,7 +186,7 @@ struct geolocationPermissions {
             }
 
             case "testGetAccessibleGeolocation001": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   webView.GeolocationPermissions.allowGeolocation(this.origin)
                   webView.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
@@ -212,7 +212,7 @@ struct geolocationPermissions {
             }
 
             case "testGetAccessibleGeolocation002": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   webView.GeolocationPermissions.allowGeolocation(this.origin)
                   webView.GeolocationPermissions.getAccessibleGeolocation(this.origin)

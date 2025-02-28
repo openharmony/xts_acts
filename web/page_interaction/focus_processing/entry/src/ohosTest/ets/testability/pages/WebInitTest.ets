@@ -109,7 +109,7 @@ struct WebInitTest {
             console.info("key==>" + this.str)
             switch (this.str) {
               case "emitGetRequestFocus": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
+                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   this.controller.loadUrl({ url: "resource://rawfile/second.html" });
                   await Utils.sleep(2000);
                   sendEventByKey('textInput', 10, '');

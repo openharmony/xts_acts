@@ -81,7 +81,7 @@ struct WebInitTest {
             console.info("key==>" + this.str)
             switch (this.str) {
               case "emitOnPrompt": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
+                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   this.controller.loadUrl("resource://rawfile/index.html");
                   setTimeout(() => {
                     this.controller.runJavaScript('toPrompt()')
@@ -95,7 +95,7 @@ struct WebInitTest {
                 }
               }
               case "emitOnAlert": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
+                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   this.controller.runJavaScript('alertTest()')
                     .then((result) => {
                       console.log('result: ' + result);
@@ -109,7 +109,7 @@ struct WebInitTest {
                 }
               }
               case "emitOnConfirm": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
+                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   this.controller.runJavaScript('confirmTest()')
                     .then((result) => {
                       console.log('result: ' + result);

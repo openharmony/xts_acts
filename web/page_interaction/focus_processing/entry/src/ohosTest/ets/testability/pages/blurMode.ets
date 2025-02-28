@@ -50,7 +50,7 @@ struct WebComponent {
           switch (this.str) {
 
             case "blurMode01": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent(true, 20241133)
@@ -79,7 +79,7 @@ struct WebComponent {
             }
 
             case "blurMode02": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent(true, 20241134)

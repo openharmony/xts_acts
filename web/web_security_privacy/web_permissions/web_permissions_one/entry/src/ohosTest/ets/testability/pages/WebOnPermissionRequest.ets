@@ -100,7 +100,7 @@ struct WebOnPermissionRequest {
                 break;
               }
               case 'emitPermissionRequestGrant001': {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
+                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   if (Utils.isPC(this.controller)) {
                     Utils.emitEvent('"grant"', 70322)
                     break;

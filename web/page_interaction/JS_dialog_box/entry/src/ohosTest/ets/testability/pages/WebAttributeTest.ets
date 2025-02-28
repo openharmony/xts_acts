@@ -118,7 +118,7 @@ struct WebAttributeTest {
             console.info("key==>" + this.str)
             switch (this.str) {
               case "emitOnAlert001": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
+                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   try {
                     this.controller.loadUrl("resource://rawfile/alert.html");
                     await Utils.sleep(2000)
@@ -134,7 +134,7 @@ struct WebAttributeTest {
                 }
               }
               case "emitOnConfirm001": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
+                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   try {
                     this.controller.loadUrl("resource://rawfile/confirm.html");
                     await Utils.sleep(2000)
@@ -150,7 +150,7 @@ struct WebAttributeTest {
                 }
               }
               case "emitOnPrompt001": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
+                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   try {
                     this.controller.loadUrl("resource://rawfile/prompt.html");
                     await Utils.sleep(2000)
@@ -167,7 +167,7 @@ struct WebAttributeTest {
 
               }
               case "emitJsResultHandleCancel001": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
+                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   try {
                     this.handleCancel = true
                     this.controller.loadUrl("resource://rawfile/confirm.html");
@@ -190,7 +190,7 @@ struct WebAttributeTest {
                 }
               }
               case "emitJsResultHandleConfirm001": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
+                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   try {
                     this.handleCancel = false
                     this.controller.loadUrl("resource://rawfile/confirm.html");
@@ -213,7 +213,7 @@ struct WebAttributeTest {
                 }
               }
               case "emitJsResultHandlePromptConfirm001": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
+                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   try {
                     this.controller.loadUrl("resource://rawfile/prompt.html");
                     await Utils.sleep(2000)
