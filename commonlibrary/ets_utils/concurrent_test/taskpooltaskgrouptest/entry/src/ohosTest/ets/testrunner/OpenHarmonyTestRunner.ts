@@ -16,14 +16,14 @@ import hilog from '@ohos.hilog';
 import TestRunner from '@ohos.application.testRunner';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
-let abilityDelegator = undefined
-let abilityDelegatorArguments = undefined
+let abilityDelegator = undefined;
+let abilityDelegatorArguments = undefined;
 
-async function onAbilityCreateCallback(): void {
+async function onAbilityCreateCallback(): Promise<void> {
     hilog.info(0x0000, 'testTag', '%{public}s', 'onAbilityCreateCallback');
 }
 
-async function addAbilityMonitorCallback(err: any): void {
+async function addAbilityMonitorCallback(err: any): Promise<void> {
     hilog.info(0x0000, 'testTag', 'addAbilityMonitorCallback : %{public}s', JSON.stringify(err) ?? '');
 }
 
@@ -35,20 +35,20 @@ export default class OpenHarmonyTestRunner implements TestRunner {
         hilog.info(0x0000, 'testTag', '%{public}s', 'OpenHarmonyTestRunner OnPrepare ');
     }
 
-    async onRun(): void {
+    async onRun(): Promise<void> {
         hilog.info(0x0000, 'testTag', '%{public}s', 'OpenHarmonyTestRunner onRun run');
-        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        var testAbilityName = abilityDelegatorArguments.bundleName + '.TestAbility'
+        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
+        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        let testAbilityName = abilityDelegatorArguments.bundleName + '.TestAbility';
         let lMonitor = {
             abilityName: testAbilityName,
             onAbilityCreate: onAbilityCreateCallback,
         };
-        abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
-        let cmd = 'aa start -d 0 -a TestAbility' + ' -b ' + abilityDelegatorArguments.bundleName
-        let debug = abilityDelegatorArguments.parameters['-D']
+        abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback);
+        let cmd = 'aa start -d 0 -a TestAbility' + ' -b ' + abilityDelegatorArguments.bundleName;
+        let debug = abilityDelegatorArguments.parameters['-D'];
         if (debug === 'true') {
-            cmd += ' -D'
+            cmd += ' -D';
         }
         hilog.info(0x0000, 'testTag', 'cmd : %{public}s', cmd);
         abilityDelegator.executeShellCommand(cmd,
