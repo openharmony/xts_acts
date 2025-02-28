@@ -10,6 +10,10 @@ include_directories(
     ${NATIVERENDER_ROOT_PATH}/include
 )
 
+add_library(nativeNode SHARED
+    capihand/container.cpp
+    capihand/manager.cpp
+    init.cpp )
 
 add_library(nativegamecrontroller SHARED
     GameCtroller/container.cpp
