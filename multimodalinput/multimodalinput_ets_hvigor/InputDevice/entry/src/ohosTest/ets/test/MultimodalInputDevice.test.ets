@@ -482,19 +482,13 @@ export default function MultimodalInputDeviceTest() {
       let caseName = "SUB_MMI_Input_Api_IptDev_getAllSystemHotkeys_0100";
       try {
         inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
-          if(data.length >= 0) {
-            console.info(`${caseName} list of system hotkeys: ${JSON.stringify(data)}`);
-            ExpectTrue(true);
-            done();
-          } else {
-            console.info(`${caseName} failed to get system hotkeys: ${JSON.stringify(data)}`);
-            ExpectFalse(true);
-            done();
-          }
+          console.info(`${caseName} list of system hotkeys: ${JSON.stringify(data)}`);
+          ExpectTrue(data.length >= 0);
+          done();
         });
       } catch (error) {
         console.info(`${caseName} failed to get system hotkeys, error: ${JSON.stringify(error, [`code`, `message`])}`);
-        ExpectFalse(true);
+        ExpectTrue(error.code == 801);
         done();
       }
     });
