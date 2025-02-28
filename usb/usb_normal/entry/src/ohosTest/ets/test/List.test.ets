@@ -15,8 +15,10 @@
 
 import UsbSystemApiNormalJsTest from './UsbSystemApiNormalJsTest.test';
 import UsbNormalAppJsTest from './UsbNormalAppJsTest.test'
+import SerialTest from './SerialTest.test'
 
 export default function testsuite() {
   UsbSystemApiNormalJsTest()
   UsbNormalAppJsTest()
+  SerialTest()
 }
