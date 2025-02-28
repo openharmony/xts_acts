@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -84,10 +84,10 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_SelectedDigitFont_0100")
+            .key('ArkUX_Stage_Swiper_SelectedDigitFont_0100')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
-              .selectedDigitFont({ size: 34, weight: "800" }))
+              .selectedDigitFont({ size: 34, weight: '800' }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -109,10 +109,10 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_SelectedDigitFont_0200")
+            .key('ArkUX_Stage_Swiper_SelectedDigitFont_0200')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
-              .selectedDigitFont({ size: "20px", weight: 200 }))
+              .selectedDigitFont({ size: '20px', weight: 200 }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -134,10 +134,10 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_SelectedDigitFont_0300")
+            .key('ArkUX_Stage_Swiper_SelectedDigitFont_0300')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
-              .selectedDigitFont({ size: "48%", weight: 900 }))
+              .selectedDigitFont({ size: '48%', weight: 900 }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -159,10 +159,10 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_SelectedDigitFont_0400")
+            .key('ArkUX_Stage_Swiper_SelectedDigitFont_0400')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
-              .selectedDigitFont({ size: "", weight: FontWeight.Bolder }))
+              .selectedDigitFont({ size: '', weight: FontWeight.Bolder }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -184,7 +184,7 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_SelectedDigitFont_0500")
+            .key('ArkUX_Stage_Swiper_SelectedDigitFont_0500')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
               .selectedDigitFont({ size: -2, weight: 1000 }))
@@ -209,10 +209,10 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_SelectedDigitFont_0600")
+            .key('ArkUX_Stage_Swiper_SelectedDigitFont_0600')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
-              .selectedDigitFont({ size: "abc", weight: null }))
+              .selectedDigitFont({ size: 'abc', weight: null }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -234,10 +234,10 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_SelectedDigitFont_0700")
+            .key('ArkUX_Stage_Swiper_SelectedDigitFont_0700')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
-              .selectedDigitFont({ size: "1000%", weight: "" }))
+              .selectedDigitFont({ size: '1000%', weight: '' }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -259,10 +259,10 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_SelectedDigitFont_0800")
+            .key('ArkUX_Stage_Swiper_SelectedDigitFont_0800')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
-              .selectedDigitFont({ size: "100vp", weight: "adf@$5" }))
+              .selectedDigitFont({ size: '100vp', weight: 'adf@$5' }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -284,12 +284,12 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_SelectedDigitFont_0900")
+            .key('ArkUX_Stage_Swiper_SelectedDigitFont_0900')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
               .selectedDigitFont({ size: 10, weight: 200 }))
             .indicator(Indicator.digit()
-              .selectedDigitFont({ size: "40lpx", weight: 500 }))
+              .selectedDigitFont({ size: '40lpx', weight: 500 }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -311,12 +311,12 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_SelectedDigitFont_1000")
+            .key('ArkUX_Stage_Swiper_SelectedDigitFont_1000')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
               .selectedDigitFont({ size: 10, weight: 500 }))
             .indicator(Indicator.digit()
-              .selectedDigitFont({ size: "abc", weight: null }))
+              .selectedDigitFont({ size: 'abc', weight: null }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -338,7 +338,7 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_SelectedDigitFont_1100")
+            .key('ArkUX_Stage_Swiper_SelectedDigitFont_1100')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
               .selectedDigitFont({ size: 10, weight: 600 }))
@@ -365,10 +365,10 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_DigitFont_0100")
+            .key('ArkUX_Stage_Swiper_DigitFont_0100')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
-              .digitFont({ size: 34, weight: "800" }))
+              .digitFont({ size: 34, weight: '800' }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -390,10 +390,10 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_DigitFont_0200")
+            .key('ArkUX_Stage_Swiper_DigitFont_0200')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
-              .digitFont({ size: "20px", weight: 200 }))
+              .digitFont({ size: '20px', weight: 200 }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -415,10 +415,10 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_DigitFont_0300")
+            .key('ArkUX_Stage_Swiper_DigitFont_0300')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
-              .digitFont({ size: "48%", weight: 900 }))
+              .digitFont({ size: '48%', weight: 900 }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -440,10 +440,10 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_DigitFont_0400")
+            .key('ArkUX_Stage_Swiper_DigitFont_0400')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
-              .digitFont({ size: "", weight: FontWeight.Bolder }))
+              .digitFont({ size: '', weight: FontWeight.Bolder }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -465,7 +465,7 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_DigitFont_0500")
+            .key('ArkUX_Stage_Swiper_DigitFont_0500')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
               .digitFont({ size: -2, weight: 1000 }))
@@ -490,10 +490,10 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_DigitFont_0600")
+            .key('ArkUX_Stage_Swiper_DigitFont_0600')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
-              .digitFont({ size: "abc", weight: null }))
+              .digitFont({ size: 'abc', weight: null }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -515,10 +515,10 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_DigitFont_0700")
+            .key('ArkUX_Stage_Swiper_DigitFont_0700')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
-              .digitFont({ size: "1000%", weight: "" }))
+              .digitFont({ size: '1000%', weight: '' }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -540,10 +540,10 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_DigitFont_0800")
+            .key('ArkUX_Stage_Swiper_DigitFont_0800')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
-              .digitFont({ size: "100vp", weight: "adf@$5" }))
+              .digitFont({ size: '100vp', weight: 'adf@$5' }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -565,12 +565,12 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_DigitFont_0900")
+            .key('ArkUX_Stage_Swiper_DigitFont_0900')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
               .digitFont({ size: 10, weight: 200 }))
             .indicator(Indicator.digit()
-              .digitFont({ size: "40lpx", weight: 500 }))
+              .digitFont({ size: '40lpx', weight: 500 }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -592,12 +592,12 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_DigitFont_1000")
+            .key('ArkUX_Stage_Swiper_DigitFont_1000')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
               .digitFont({ size: 10, weight: 500 }))
             .indicator(Indicator.digit()
-              .digitFont({ size: "abc", weight: null }))
+              .digitFont({ size: 'abc', weight: null }))
             .onChange((index: number) => {
               console.info(index.toString())
             })
@@ -619,7 +619,7 @@ struct SwiperTest_1 {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
-            .key("ArkUX_Stage_Swiper_DigitFont_1100")
+            .key('ArkUX_Stage_Swiper_DigitFont_1100')
             .curve(Curve.Linear)
             .indicator(Indicator.digit()
               .digitFont({ size: 10, weight: 600 }))
@@ -641,7 +641,7 @@ struct SwiperTest_1 {
                   .fontSize(30)
               }, (item: string) => item)
             }
-            .key("ArkUX_Stage_Swiper_Indicator_0100")
+            .key('ArkUX_Stage_Swiper_Indicator_0100')
             .indicator(Indicator.digit().top(1))
           }
 
@@ -656,7 +656,7 @@ struct SwiperTest_1 {
                   .fontSize(30)
               }, (item: string) => item)
             }
-            .key("ArkUX_Stage_Swiper_Indicator_0200")
+            .key('ArkUX_Stage_Swiper_Indicator_0200')
             .indicator(Indicator.digit().bottom(1))
           }
 
@@ -671,7 +671,7 @@ struct SwiperTest_1 {
                   .fontSize(30)
               }, (item: string) => item)
             }
-            .key("ArkUX_Stage_Swiper_Indicator_0300")
+            .key('ArkUX_Stage_Swiper_Indicator_0300')
             .indicator(Indicator.digit().left(1))
           }
 
@@ -686,7 +686,7 @@ struct SwiperTest_1 {
                   .fontSize(30)
               }, (item: string) => item)
             }
-            .key("ArkUX_Stage_Swiper_Indicator_0400")
+            .key('ArkUX_Stage_Swiper_Indicator_0400')
             .indicator(Indicator.digit().right(1))
           }
         }
