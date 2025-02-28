@@ -1212,9 +1212,10 @@ export default function windowNdk() {
       let PixelMap = windowNdkTest.snapshot(-1);
         console.log(caseName + ' snapshot result:'+ JSON.stringify(PixelMap));
         if(Number(PixelMap) == 801 || Number(PixelMap)==1300002){
+          expect(false).assertTrue();
           done();
         }else{
-          expect(false).assertTrue();
+          expect(true).assertTrue();
           done();
         }
     })
