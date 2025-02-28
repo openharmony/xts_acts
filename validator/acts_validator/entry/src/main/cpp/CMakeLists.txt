@@ -59,5 +59,7 @@ find_library(
 
 
 
+target_link_libraries(nativeNode PUBLIC
+    ${hilog-lib} ${libace-lib} ${libnapi-lib}  ${libnative_drawing})
 target_link_libraries(nativegamecrontroller PUBLIC
     ${hilog-lib} ${libace-lib} ${libnapi-lib}  ${libnative_drawing})    
