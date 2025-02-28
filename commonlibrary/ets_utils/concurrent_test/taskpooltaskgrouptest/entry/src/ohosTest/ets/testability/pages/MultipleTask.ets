@@ -12,12 +12,12 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { ArkTools, Contexts, Drivers, sleep, test2, testUI, testUI1 } from "./Utils"
-import fs from "@ohos.file.fs"
-import { taskpool, worker } from "@kit.ArkTS"
-import { Driver } from "@kit.TestKit"
-import { asyncLockWork, printArgs1, setTimeOutWork } from "./TaskMethodTest"
-import { MeasureText } from "@kit.ArkUI"
+import { ArkTools, Contexts, Drivers, sleep, test2, testUI, testUI1 } from './Utils'
+import fs from '@ohos.file.fs'
+import { taskpool, worker } from '@kit.ArkTS'
+import { Driver } from '@kit.TestKit'
+import { asyncLockWork, printArgs1, setTimeOutWork } from './TaskMethodTest'
+import { MeasureText } from '@kit.ArkUI'
 
 
 @Concurrent
@@ -79,20 +79,20 @@ export async function multipleTask5() {
 @Concurrent
 export async function multipleUITask1() {
   await testUI()
-  MeasureText.measureText({ "textContent": "asyncTask" })
+  MeasureText.measureText({ 'textContent': 'asyncTask' })
 }
 
 @Concurrent
 export async function multipleUITask2() {
   await testUI1()
-  MeasureText.measureText({ "textContent": "asyncTask" })
+  MeasureText.measureText({ 'textContent': 'asyncTask' })
 }
 
 @Concurrent
 export async function multipleUITask3() {
   for (let i = 0; i < 100; i++) {
     await testUI()
-    MeasureText.measureText({ "textContent": "asyncTask" })
+    MeasureText.measureText({ 'textContent': 'asyncTask' })
   }
 
 }
@@ -101,7 +101,7 @@ export async function multipleUITask3() {
 export async function multipleUITask4() {
   for (let i = 0; i < 100; i++) {
     await testUI1()
-    MeasureText.measureText({ "textContent": "asyncTask" })
+    MeasureText.measureText({ 'textContent': 'asyncTask' })
   }
 }
 

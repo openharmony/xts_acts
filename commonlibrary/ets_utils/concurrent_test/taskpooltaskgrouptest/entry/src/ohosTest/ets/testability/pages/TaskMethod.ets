@@ -34,7 +34,7 @@ import { MessageEvents, taskpool } from '@kit.ArkTS';
 @Concurrent
 export function printArgs1(args: number): number {
   console.info('printArgs: ' + args);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return args;
 }
@@ -47,7 +47,7 @@ export function printArgs1(args: number): number {
 @Concurrent
 export function printArgs2(args: number): number {
   console.info('printArgs: ' + args);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return args;
 }

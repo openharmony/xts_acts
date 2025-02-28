@@ -37,7 +37,7 @@ export function printStr2(str: string): string {
 @Concurrent
 export function printStr3(str: string): string {
   console.info('printStr: ' + str);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return str;
 }
@@ -50,7 +50,7 @@ export function printStr3(str: string): string {
 @Concurrent
 export function printStr4(str: string): string {
   console.info('printStr: ' + str);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return str;
 }
@@ -77,7 +77,7 @@ export function printArgs2(args: number): number {
  */
 @Concurrent
 export function printArgs3(args: number): number {
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return args;
 }
@@ -89,7 +89,7 @@ export function printArgs3(args: number): number {
  */
 @Concurrent
 export function printArgs4(args: number): number {
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return args;
 }
@@ -114,7 +114,7 @@ export function printBoolean2(bol: boolean): boolean {
 @Concurrent
 export function printBoolean3(bol: boolean): boolean {
   console.info('printArgs: ' + bol);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return bol;
 }
@@ -127,7 +127,7 @@ export function printBoolean3(bol: boolean): boolean {
 @Concurrent
 export function printBoolean4(bol: boolean): boolean {
   console.info('printArgs: ' + bol);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return bol;
 }
@@ -153,7 +153,7 @@ export function printBigint2(big: bigint): bigint {
 @Concurrent
 export function printBigint3(big: bigint): bigint {
   console.info('printArgs: ' + big);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return big;
 }
@@ -166,7 +166,7 @@ export function printBigint3(big: bigint): bigint {
 @Concurrent
 export function printBigint4(big: bigint): bigint {
   console.info('printArgs: ' + big);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return big;
 }
@@ -192,7 +192,7 @@ export function printUndefined2(und: undefined): undefined {
 @Concurrent
 export function printUndefined3(und: undefined): undefined {
   console.info('printArgs: ' + und);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return und;
 }
@@ -205,7 +205,7 @@ export function printUndefined3(und: undefined): undefined {
 @Concurrent
 export function printUndefined4(und: undefined): undefined {
   console.info('printArgs: ' + und);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return und;
 }
@@ -231,7 +231,7 @@ export function printNull2(nul: null): null {
 @Concurrent
 export function printNull3(nul: null): null {
   console.info('printArgs: ' + nul);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return nul;
 }
@@ -244,7 +244,7 @@ export function printNull3(nul: null): null {
 @Concurrent
 export function printNull4(nul: null): null {
   console.info('printArgs: ' + nul);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return nul;
 }
@@ -270,7 +270,7 @@ export function printArray2(arr: Array<number>): Array<number> {
 @Concurrent
 export function printArray3(arr: Array<number>): Array<number> {
   console.info('printArgs: ' + arr);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return arr;
 }
@@ -283,7 +283,7 @@ export function printArray3(arr: Array<number>): Array<number> {
 @Concurrent
 export function printArray4(arr: Array<number>): Array<number> {
   console.info('printArgs: ' + arr);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return arr;
 }
@@ -309,7 +309,7 @@ export function printMap2(map: Map<string, number>): Map<string, number> {
 @Concurrent
 export function printMap3(map: Map<string, number>): Map<string, number> {
   console.info('printArgs: ' + map);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return map;
 }
@@ -322,7 +322,7 @@ export function printMap3(map: Map<string, number>): Map<string, number> {
 @Concurrent
 export function printMap4(map: Map<string, number>): Map<string, number> {
   console.info('printArgs: ' + map);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return map;
 }
@@ -348,7 +348,7 @@ export function printSet2(set: Set<number>): Set<number> {
 @Concurrent
 export function printSet3(set: Set<number>): Set<number> {
   console.info('printArgs: ' + set);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return set;
 }
@@ -361,7 +361,7 @@ export function printSet3(set: Set<number>): Set<number> {
 @Concurrent
 export function printSet4(set: Set<number>): Set<number> {
   console.info('printArgs: ' + set);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return set;
 }
@@ -387,7 +387,7 @@ export function printInt8Array2(int8: Int8Array): Int8Array {
 @Concurrent
 export function printInt8Array3(int8: Int8Array): Int8Array {
   console.info('printArgs: ' + int8);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return int8;
 }
@@ -400,7 +400,7 @@ export function printInt8Array3(int8: Int8Array): Int8Array {
 @Concurrent
 export function printInt8Array4(int8: Int8Array): Int8Array {
   console.info('printArgs: ' + int8);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return int8;
 }
@@ -425,7 +425,7 @@ export function printUint8Array2(uint8: Uint8Array): Uint8Array {
 @Concurrent
 export function printUint8Array3(uint8: Uint8Array): Uint8Array {
   console.info('printArgs: ' + uint8);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return uint8;
 }
@@ -438,7 +438,7 @@ export function printUint8Array3(uint8: Uint8Array): Uint8Array {
 @Concurrent
 export function printUint8Array4(uint8: Uint8Array): Uint8Array {
   console.info('printArgs: ' + uint8);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return uint8;
 }
@@ -464,7 +464,7 @@ export function printInt16Array2(int16: Int16Array): Int16Array {
 @Concurrent
 export function printInt16Array3(int16: Int16Array): Int16Array {
   console.info('printArgs: ' + int16);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return int16;
 }
@@ -477,7 +477,7 @@ export function printInt16Array3(int16: Int16Array): Int16Array {
 @Concurrent
 export function printInt16Array4(int16: Int16Array): Int16Array {
   console.info('printArgs: ' + int16);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return int16;
 }
@@ -503,7 +503,7 @@ export function printUint16Array2(uint16: Uint16Array): Uint16Array {
 @Concurrent
 export function printUint16Array3(uint16: Uint16Array): Uint16Array {
   console.info('printArgs: ' + uint16);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return uint16;
 }
@@ -516,7 +516,7 @@ export function printUint16Array3(uint16: Uint16Array): Uint16Array {
 @Concurrent
 export function printUint16Array4(uint16: Uint16Array): Uint16Array {
   console.info('printArgs: ' + uint16);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return uint16;
 }
@@ -542,7 +542,7 @@ export function printInt32Array2(int32: Int32Array): Int32Array {
 @Concurrent
 export function printInt32Array3(int32: Int32Array): Int32Array {
   console.info('printArgs: ' + int32);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return int32;
 }
@@ -555,7 +555,7 @@ export function printInt32Array3(int32: Int32Array): Int32Array {
 @Concurrent
 export function printInt32Array4(int32: Int32Array): Int32Array {
   console.info('printArgs: ' + int32);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return int32;
 }
@@ -581,7 +581,7 @@ export function printUint32Array2(uint32: Uint32Array): Uint32Array {
 @Concurrent
 export function printUint32Array3(uint32: Uint32Array): Uint32Array {
   console.info('printArgs: ' + uint32);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return uint32;
 }
@@ -594,7 +594,7 @@ export function printUint32Array3(uint32: Uint32Array): Uint32Array {
 @Concurrent
 export function printUint32Array4(uint32: Uint32Array): Uint32Array {
   console.info('printArgs: ' + uint32);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return uint32;
 }
@@ -620,7 +620,7 @@ export function printUint8ClampedArray2(uint8Clamped: Uint8ClampedArray): Uint8C
 @Concurrent
 export function printUint8ClampedArray3(uint8Clamped: Uint8ClampedArray): Uint8ClampedArray {
   console.info('printArgs: ' + uint8Clamped);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return uint8Clamped;
 }
@@ -633,7 +633,7 @@ export function printUint8ClampedArray3(uint8Clamped: Uint8ClampedArray): Uint8C
 @Concurrent
 export function printUint8ClampedArray4(uint8Clamped: Uint8ClampedArray): Uint8ClampedArray {
   console.info('printArgs: ' + uint8Clamped);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return uint8Clamped;
 }
@@ -658,7 +658,7 @@ export function printFloat32Array2(float32: Float32Array): Float32Array {
 @Concurrent
 export function printFloat32Array3(float32: Float32Array): Float32Array {
   console.info('printArgs: ' + float32);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return float32;
 }
@@ -671,7 +671,7 @@ export function printFloat32Array3(float32: Float32Array): Float32Array {
 @Concurrent
 export function printFloat32Array4(float32: Float32Array): Float32Array {
   console.info('printArgs: ' + float32);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return float32;
 }
@@ -696,7 +696,7 @@ export function printArrayBuffer2(arrBuf: ArrayBuffer): ArrayBuffer {
 @Concurrent
 export function printArrayBuffer3(arrBuf: ArrayBuffer): ArrayBuffer {
   console.info('printArgs: ' + arrBuf);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return arrBuf;
 }
@@ -709,7 +709,7 @@ export function printArrayBuffer3(arrBuf: ArrayBuffer): ArrayBuffer {
 @Concurrent
 export function printArrayBuffer4(arrBuf: ArrayBuffer): ArrayBuffer {
   console.info('printArgs: ' + arrBuf);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return arrBuf;
 }
@@ -734,7 +734,7 @@ export function printSharedArrayBuffer2(shared: SharedArrayBuffer): SharedArrayB
 @Concurrent
 export function printSharedArrayBuffer3(shared: SharedArrayBuffer): SharedArrayBuffer {
   console.info('printArgs: ' + shared);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return shared;
 }
@@ -747,7 +747,7 @@ export function printSharedArrayBuffer3(shared: SharedArrayBuffer): SharedArrayB
 @Concurrent
 export function printSharedArrayBuffer4(shared: SharedArrayBuffer): SharedArrayBuffer {
   console.info('printArgs: ' + shared);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return shared;
 }
@@ -773,7 +773,7 @@ export function printConcatArray2(concat: ConcatArray<number>): ConcatArray<numb
 @Concurrent
 export function printConcatArray3(concat: ConcatArray<number>): ConcatArray<number> {
   console.info('printArgs: ' + concat);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return concat;
 }
@@ -786,7 +786,7 @@ export function printConcatArray3(concat: ConcatArray<number>): ConcatArray<numb
 @Concurrent
 export function printConcatArray4(concat: ConcatArray<number>): ConcatArray<number> {
   console.info('printArgs: ' + concat);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return concat;
 }
@@ -811,7 +811,7 @@ export function printBitVector2(bitVector: collections.BitVector): collections.B
 @Concurrent
 export function printBitVector3(bitVector: collections.BitVector): collections.BitVector {
   console.info('printArgs: ' + bitVector);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return bitVector;
 }
@@ -824,7 +824,7 @@ export function printBitVector3(bitVector: collections.BitVector): collections.B
 @Concurrent
 export function printBitVector4(bitVector: collections.BitVector): collections.BitVector {
   console.info('printArgs: ' + bitVector);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return bitVector;
 }
@@ -853,7 +853,7 @@ export function printUnion2(un: Union): Union {
 @Concurrent
 export function printUnion3(un: Union): Union {
   console.info('printArgs: ' + un);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return un;
 }
@@ -866,7 +866,7 @@ export function printUnion3(un: Union): Union {
 @Concurrent
 export function printUnion4(un: Union): Union {
   console.info('printArgs: ' + un);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return un;
 }
@@ -893,7 +893,7 @@ export function printEnum2(en: MyEnum): MyEnum {
 @Concurrent
 export function printEnum3(en: MyEnum): MyEnum {
   console.info('printArgs: ' + en);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return en;
 }
@@ -906,7 +906,7 @@ export function printEnum3(en: MyEnum): MyEnum {
 @Concurrent
 export function printEnum4(en: MyEnum): MyEnum {
   console.info('printArgs: ' + en);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return en;
 }
@@ -933,7 +933,7 @@ export function printASON2(ason: ArkTSUtils.ASON.ISendable): ArkTSUtils.ASON.ISe
 @Concurrent
 export function printASON3(ason: ArkTSUtils.ASON.ISendable): ArkTSUtils.ASON.ISendable {
   console.info('printArgs: ' + ason);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return ason;
 }
@@ -946,7 +946,7 @@ export function printASON3(ason: ArkTSUtils.ASON.ISendable): ArkTSUtils.ASON.ISe
 @Concurrent
 export function printASON4(asn: ArkTSUtils.ASON.ISendable): ArkTSUtils.ASON.ISendable {
   console.info('printArgs: ' + asn);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return asn;
 }
@@ -972,7 +972,7 @@ export function printAsyncLock2(asn: AsyncLock): AsyncLock {
 @Concurrent
 export function printAsyncLock3(asn: AsyncLock): AsyncLock {
   console.info('printArgs: ' + asn);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return asn;
 }
@@ -985,7 +985,7 @@ export function printAsyncLock3(asn: AsyncLock): AsyncLock {
 @Concurrent
 export function printAsyncLock4(asn: AsyncLock): AsyncLock {
   console.info('printArgs: ' + asn);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return asn;
 }
@@ -1043,7 +1043,7 @@ export function printISendable2(arg: lang.ISendable): lang.ISendable {
 @Concurrent
 export function printISendable3(arg: lang.ISendable): lang.ISendable {
   console.info('printArgs: ' + arg);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return arg;
 }
@@ -1056,7 +1056,7 @@ export function printISendable3(arg: lang.ISendable): lang.ISendable {
 @Concurrent
 export function printISendable4(arg: lang.ISendable): lang.ISendable {
   console.info('printArgs: ' + arg);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return arg;
 }

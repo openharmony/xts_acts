@@ -130,7 +130,7 @@ export default function taskPoolErrorSuccess2Test() {
       let callBack  = (e: MessageEvents): void => {
         console.info('======e.message', e.data)
         try {
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           count2++

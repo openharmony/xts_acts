@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { ArkTSUtils, worker } from "@kit.ArkTS";
+import { ArkTSUtils, worker } from '@kit.ArkTS';
 
 export class AsyncLock {
   isLocked: boolean;
@@ -26,18 +26,18 @@ export class AsyncLock {
     if (Math.random() < 1) { // 抛出异常
       throw new Error('Simulated error in task execution.');
     }
-    console.log("Lock acquired.");
+    console.log('Lock acquired.');
   }
 
   async acquire1() {
     // 模拟获取锁的过程，等待直到锁可用
-    console.log("Lock acquired.");
+    console.log('Lock acquired.');
   }
 
   release() {
     // 释放锁
     this.isLocked = false;
-    console.log("Lock released.");
+    console.log('Lock released.');
   }
 }
 
@@ -67,8 +67,8 @@ export async function asyncOperation(): Promise<void> {
 
 @Sendable
 export class AsyncLockTest {
-  count_: number = 0;
-  lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+  private count_: number = 0;
+  private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
 
   async getCount(): Promise<number> {
     return this.lock_.lockAsync(() => {
@@ -88,8 +88,8 @@ export class AsyncLockTest {
 
 @Sendable
 export class AsyncLockTestThen {
-  count_: number = 0;
-  lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+  private count_: number = 0;
+  private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
 
   async getCount(): Promise<number> {
     return this.lock_.lockAsync(() => {
@@ -102,7 +102,7 @@ export class AsyncLockTestThen {
     await this.lock_.lockAsync(() => {
       this.count_ = count;
     }).then(() => {
-      let s: Array<string> = []
+      let s: string[] = []
       s[0].split('')[1].toString()
     })
   }
@@ -110,8 +110,8 @@ export class AsyncLockTestThen {
 
 @Sendable
 export class AsyncLockTestCatch {
-  count_: number = 0;
-  lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+  private count_: number = 0;
+  private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
 
   async getCount(): Promise<number> {
     return this.lock_.lockAsync(() => {
@@ -124,10 +124,10 @@ export class AsyncLockTestCatch {
     await this.lock_.lockAsync(() => {
       this.count_ = count;
     }).then(() => {
-      let s: Array<string> = []
+      let s: string[] = []
       s[0].split('')[1].toString()
     }).catch(() => {
-      let s: Array<string> = []
+      let s: string[] = []
       s[0].split('')[1].toString()
     })
 
@@ -136,8 +136,8 @@ export class AsyncLockTestCatch {
 
 @Sendable
 export class AsyncLockTestFinally {
-  count_: number = 0;
-  lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+  private count_: number = 0;
+  private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
 
   async getCount(): Promise<number> {
     return this.lock_.lockAsync(() => {
@@ -150,7 +150,7 @@ export class AsyncLockTestFinally {
     await this.lock_.lockAsync(() => {
       this.count_ = count;
     }).finally(() => {
-      let s: Array<string> = []
+      let s: string[] = []
       s[0].split('')[1].toString()
     })
 
@@ -159,8 +159,8 @@ export class AsyncLockTestFinally {
 
 @Sendable
 export class AsyncLockTest1 {
-  count_: number = 0;
-  lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+  private count_: number = 0;
+  private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
 
   async getCount(): Promise<number> {
     return this.lock_.lockAsync(() => {
@@ -176,7 +176,7 @@ export class AsyncLockTest1 {
 }
 
 export class WorkThread {
-  static workerStageModel = new worker.ThreadWorker('../../workers/Worker.ets');
+  public static workerStageModel = new worker.ThreadWorker('../../workers/Worker.ets');
 }
 
 @Concurrent

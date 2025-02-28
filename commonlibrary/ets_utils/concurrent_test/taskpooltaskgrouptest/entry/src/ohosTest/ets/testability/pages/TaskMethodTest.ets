@@ -40,7 +40,7 @@ export function printArgs2(args: number): number {
 @Concurrent
 export function printArgs3(args: number): number {
   console.info('printArgs: ' + args);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return args;
 }
@@ -53,7 +53,7 @@ export function printArgs3(args: number): number {
 @Concurrent
 export function printArgs4(args: number): number {
   console.info('printArgs: ' + args);
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
   return args;
 }
@@ -74,7 +74,7 @@ export function printArgs5(arg: number): number {
   }
 
   if (taskpool.Task.isCanceled()) {
-    console.info("==== task has been canceled after 2s sleep.");
+    console.info('==== task has been canceled after 2s sleep.');
     return arg + 1;
   }
 
@@ -97,7 +97,7 @@ export function printArgs6(arg: number): number {
   }
 
   if (taskpool.Task.isCanceled()) {
-    console.info("==== task has been canceled after 2s sleep.");
+    console.info('==== task has been canceled after 2s sleep.');
     return arg + 1;
   }
 
@@ -137,7 +137,7 @@ export function printArgs8(args: number): number {
 export async function printArgs9(args: number) {
   console.info('printArgs: ' + args);
   setTimeout(() => {
-    let s: Array<string> = []
+    let s: string[] = []
     s[0].split('')[1].toString()
   }, 100)
   return args;
@@ -177,7 +177,7 @@ export async function printArgs12(args: number) {
   console.info('printArgs: ' + args);
   let task: taskpool.Task = new taskpool.Task(test1);
   await taskpool.execute(task).then(() => {
-    let s: Array<string> = []
+    let s: string[] = []
     s[0].split('')[1].toString()
   })
   return args;
@@ -193,10 +193,10 @@ export async function printArgs13(args: number) {
   console.info('printArgs: ' + args);
   let task: taskpool.Task = new taskpool.Task(test1);
   await taskpool.execute(task).then(() => {
-    let s: Array<string> = []
+    let s: string[] = []
     s[0].split('')[1].toString()
   }).catch(() => {
-    let s: Array<string> = []
+    let s: string[] = []
     s[0].split('')[1].toString()
   })
   return args;
@@ -212,7 +212,7 @@ export async function printArgs14(args: number) {
   console.info('printArgs: ' + args);
   let task: taskpool.Task = new taskpool.Task(test1);
   await taskpool.execute(task).finally(() => {
-    let s: Array<string> = []
+    let s: string[] = []
     s[0].split('')[1].toString()
   })
   return args;
@@ -251,7 +251,7 @@ export async function asyncLock(a: AsyncLockTest) {
 @Concurrent
 export async function asyncLock1(a: AsyncLockTest1) {
   await a.setCount(10).then(() => {
-    let s: Array<string> = []
+    let s: string[] = []
     s[0].split('')[1].toString()
   })
 }
@@ -259,10 +259,10 @@ export async function asyncLock1(a: AsyncLockTest1) {
 @Concurrent
 export async function asyncLock2(a: AsyncLockTest1) {
   await a.setCount(10).then(() => {
-    let s: Array<string> = []
+    let s: string[] = []
     s[0].split('')[1].toString()
   }).catch(() => {
-    let s: Array<string> = []
+    let s: string[] = []
     s[0].split('')[1].toString()
   })
 }
@@ -272,7 +272,7 @@ export async function asyncLock3(a: AsyncLockTest1) {
   await a.setCount(10).then(() => {
 
   }).finally(() => {
-    let s: Array<string> = []
+    let s: string[] = []
     s[0].split('')[1].toString()
   })
 }
@@ -474,7 +474,7 @@ export function printArgs1014(args: number): number {
 @Concurrent
 export async function printArgs1015(): Promise<Object> {
   let ret = await Promise.all<Object>([
-    new Promise<Object>(resolve => setTimeout(resolve, 1000, "resolved"))
+    new Promise<Object>(resolve => setTimeout(resolve, 1000, 'resolved'))
   ]);
   console.info('await result1', ret.toString())
   return ret;
@@ -484,7 +484,7 @@ export async function printArgs1015(): Promise<Object> {
 @Concurrent
 export async function printArgs1016(): Promise<Object> {
   let ret = await Promise.all<Object>([
-    new Promise<Object>(resolve => setTimeout(resolve, 1000, "resolved"))
+    new Promise<Object>(resolve => setTimeout(resolve, 1000, 'resolved'))
   ]);
   console.info('await result2', ret.toString())
   return ret;

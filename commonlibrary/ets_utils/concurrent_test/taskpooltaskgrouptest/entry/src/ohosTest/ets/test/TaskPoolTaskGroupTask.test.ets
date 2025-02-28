@@ -181,7 +181,7 @@ export default function taskPoolTaskGroup() {
       task1.onEnqueued(() => {
         try {
           console.info('taskpool: onEnqueued')
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           console.info(`${tag} execute error:${e.message}`)
@@ -192,7 +192,7 @@ export default function taskPoolTaskGroup() {
       task2.onEnqueued(() => {
         try {
           console.info('taskpool: onEnqueued')
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           console.info(`${tag} execute error:${e.message}`)
@@ -237,7 +237,7 @@ export default function taskPoolTaskGroup() {
       task1.onStartExecution(() => {
         try {
           console.info('taskpool: onStartExecution')
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           console.info(`${tag} execute error:${e.message}`)
@@ -248,7 +248,7 @@ export default function taskPoolTaskGroup() {
       task2.onStartExecution(() => {
         try {
           console.info('taskpool: onStartExecution')
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           console.info(`${tag} execute error:${e.message}`)
@@ -290,7 +290,7 @@ export default function taskPoolTaskGroup() {
       task1.onExecutionFailed((e: Error) => {
         try {
           console.info('taskpool: onExecutionFailed error is ' + e);
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           console.info(`${tag} execute error:${e.message}`)
@@ -301,7 +301,7 @@ export default function taskPoolTaskGroup() {
       task2.onExecutionFailed((e: Error) => {
         try {
           console.info('taskpool: onExecutionFailed error is ' + e);
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           console.info(`${tag} execute error:${e.message}`)
@@ -354,7 +354,7 @@ export default function taskPoolTaskGroup() {
       task1.onExecutionSucceeded(() => {
         try {
           console.info('taskpool: onExecutionSucceeded')
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           console.info(`${tag} execute error:${e.message}`)
@@ -365,7 +365,7 @@ export default function taskPoolTaskGroup() {
       task2.onExecutionSucceeded(() => {
         try {
           console.info('taskpool: onExecutionSucceeded')
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           console.info(`${tag} execute error:${e.message}`)
@@ -411,7 +411,7 @@ export default function taskPoolTaskGroup() {
       task1.onReceiveData((data: number) => {
         try {
           console.info('taskpool: data is: ' + data);
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           console.info(`${tag} execute error:${e.message}`)
@@ -422,7 +422,7 @@ export default function taskPoolTaskGroup() {
       task2.onReceiveData((data: number) => {
         try {
           console.info('taskpool: data is: ' + data);
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           console.info(`${tag} execute error:${e.message}`)
@@ -470,7 +470,7 @@ export default function taskPoolTaskGroup() {
           taskpool.execute(taskGroup).then(() => {
             try {
               console.info('dependency: second task1 success');
-              let s: Array<string> = []
+              let s: string[] = []
               s[0].split('')[1].toString()
             } catch (e) {
               console.info(`${tag} execute error:${e.message}`)
@@ -515,7 +515,7 @@ export default function taskPoolTaskGroup() {
           }).catch((err: string) => {
             try {
               console.error('taskpool test occur error: ' + err);
-              let s: Array<string> = []
+              let s: string[] = []
               s[0].split('')[1].toString()
             } catch (e) {
               console.info(`${tag} execute error:${e.message}`)
@@ -561,7 +561,7 @@ export default function taskPoolTaskGroup() {
             console.error('taskpool test occur error: ' + err);
           }).finally(() => {
             try {
-              let s: Array<string> = []
+              let s: string[] = []
               s[0].split('')[1].toString()
             } catch (e) {
               console.info(`${tag} execute error:${e.message}`)
@@ -1147,7 +1147,7 @@ export default function taskPoolTaskGroup() {
       taskGroup1.addTask(task2);
       let callBack = (e: ErrorEvent): void => {
         try {
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           Count1++
@@ -1188,7 +1188,7 @@ export default function taskPoolTaskGroup() {
       taskGroup1.addTask(task2);
       let callBack = (e: MessageEvents): void => {
         try {
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           Count1++

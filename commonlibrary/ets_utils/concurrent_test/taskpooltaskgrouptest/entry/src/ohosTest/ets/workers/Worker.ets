@@ -28,7 +28,7 @@ workerPort.onmessage = (event: MessageEvents) => {
   if (event.data === '1') {
     workerPort.postMessage(event.data)
   } else if (event.data === '2') {
-    let s: Array<string> = []
+    let s: string[] = []
     s[0].split('')[1].toString()
     workerPort.postMessage(event.data)
   }

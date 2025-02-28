@@ -169,7 +169,7 @@ export default function taskPoolErrorSuccessTest() {
       task2.onStartExecution(() => {
         console.info("====onStartExecution2 success")
         try {
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           Count2.count += 1
@@ -223,7 +223,7 @@ export default function taskPoolErrorSuccessTest() {
       task2.onExecutionSucceeded(() => {
         console.info("====onExecutionSucceeded2: execute task success")
         try {
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           count2 += 1
@@ -273,7 +273,7 @@ export default function taskPoolErrorSuccessTest() {
       });
       task2.onReceiveData((num: number) => {
         try {
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           count2 += 1
@@ -314,7 +314,7 @@ export default function taskPoolErrorSuccessTest() {
       for (let i = 0; i < 10; i++) {
         taskpool.execute(taskGroup).then((num: object[]) => {
           count += Number(num[0])
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         }).catch(() => {
           count2 ++
@@ -353,10 +353,10 @@ export default function taskPoolErrorSuccessTest() {
       for (let i = 0; i < 10; i++) {
         taskpool.execute(taskGroup).then((num: object[]) => {
           count += Number(num[0])
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         }).catch(() => {
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         }).catch(() => {
           count2 ++
@@ -395,7 +395,7 @@ export default function taskPoolErrorSuccessTest() {
         taskpool.execute(taskGroup).then(() => {
           count += 1
         }).finally(() => {
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         }).catch(() => {
           count2 ++
@@ -474,7 +474,7 @@ export default function taskPoolErrorSuccessTest() {
       });
       task2.onEnqueued(() => {
         try {
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           count2++
@@ -523,7 +523,7 @@ export default function taskPoolErrorSuccessTest() {
       });
       task2.onExecutionFailed((e:Error)=>{
         try {
-          let s: Array<string> = []
+          let s: string[] = []
           s[0].split('')[1].toString()
         } catch (e) {
           count2++

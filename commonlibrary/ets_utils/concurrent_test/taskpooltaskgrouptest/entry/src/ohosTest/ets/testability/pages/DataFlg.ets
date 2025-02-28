@@ -12,35 +12,35 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { ArkTSUtils, worker } from "@kit.ArkTS";
+import { ArkTSUtils, worker } from '@kit.ArkTS';
 
 export class Count1 {
-  static count: number = 0
+  public static count: number = 0
 }
 
 export class Count2 {
-  static count: number = 0
+  public static count: number = 0
 }
 
 export class Count3 {
-  static count: number = 0
+  public static count: number = 0
 }
 
 export class Count4 {
-  static count: number = 0
+  public static count: number = 0
 }
 
 export class Worker1 {
-  static worker1: worker.ThreadWorker = new worker.ThreadWorker('../../workers/Worker.ets');
+  public static worker1: worker.ThreadWorker = new worker.ThreadWorker('../../workers/Worker.ets');
 }
 
 export class Worker2 {
-  static worker2: worker.ThreadWorker = new worker.ThreadWorker('../../workers/Worker.ets');
+  public static worker2: worker.ThreadWorker = new worker.ThreadWorker('../../workers/Worker.ets');
 }
 
 @Sendable
 export class AsyncLock {
-  count_: number = 0;
+  private count_: number = 0;
 
   async getCount(): Promise<number> {
     let lock: ArkTSUtils.locks.AsyncLock = ArkTSUtils.locks.AsyncLock.request('lock_1');

@@ -104,7 +104,7 @@ export class AsyncLockTestThen {
     await this.lock_.lockAsync(() => {
       this.count_ = count;
     }).then(() => {
-      let s: Array<string> = []
+      let s: string[] = []
       s[0].split('')[1].toString()
     })
   }
@@ -126,10 +126,10 @@ export class AsyncLockTestCatch {
     await this.lock_.lockAsync(() => {
       this.count_ = count;
     }).then(() => {
-      let s: Array<string> = []
+      let s: string[] = []
       s[0].split('')[1].toString()
     }).catch(() => {
-      let s: Array<string> = []
+      let s: string[] = []
       s[0].split('')[1].toString()
     })
 
@@ -152,7 +152,7 @@ export class AsyncLockTestFinally {
     await this.lock_.lockAsync(() => {
       this.count_ = count;
     }).finally(() => {
-      let s: Array<string> = []
+      let s: string[] = []
       s[0].split('')[1].toString()
     })
 
