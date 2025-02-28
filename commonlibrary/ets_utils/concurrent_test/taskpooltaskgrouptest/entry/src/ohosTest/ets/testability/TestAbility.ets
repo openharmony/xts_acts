@@ -20,7 +20,7 @@ import { Hypium } from '@ohos/hypium';
 import testsuite from '../test/List.test';
 
 export default class TestAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onCreate');
         hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
         hilog.info(0x0000, 'testTag', '%{public}s', 'launchParam:'+ JSON.stringify(launchParam) ?? '');
@@ -32,11 +32,11 @@ export default class TestAbility extends UIAbility {
         Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
     }
 
-    onDestroy() {
+    onDestroy(): void {
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onDestroy');
     }
 
-    onWindowStageCreate(windowStage: window.WindowStage) {
+    onWindowStageCreate(windowStage: window.WindowStage): void {
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onWindowStageCreate');
         windowStage.loadContent('TestAbility/pages/Index', (err, data) => {
             if (err.code) {
@@ -48,15 +48,15 @@ export default class TestAbility extends UIAbility {
         });
     }
 
-    onWindowStageDestroy() {
+    onWindowStageDestroy(): void {
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onWindowStageDestroy');
     }
 
-    onForeground() {
+    onForeground(): void {
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onForeground');
     }
 
-    onBackground() {
+    onBackground(): void {
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onBackground');
     }
 }

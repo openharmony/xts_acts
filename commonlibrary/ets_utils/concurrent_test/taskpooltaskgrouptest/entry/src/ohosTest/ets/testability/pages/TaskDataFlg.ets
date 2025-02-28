@@ -14,51 +14,51 @@
 */
 
 export class Count1 {
-  static count: number = 0
+  public static count: number = 0
 }
 
 export class Count2 {
-  static count: number = 0
+  public static count: number = 0
 }
 
 export class Count3 {
-  static count: number = 0
+  public static count: number = 0
 }
 
 export class Count4 {
-  static count: number = 0
+  public static count: number = 0
 }
 
 export class CountStr1 {
-  static count: string = ''
+  public static count: string = ''
 }
 
 export class CountStr2 {
-  static count: string = ''
+  public static count: string = ''
 }
 
 export class CountBol1 {
-  static count: boolean = false
+  public static count: boolean = false
 }
 
 export class CountBol2 {
-  static count: boolean = true
+  public static count: boolean = true
 }
 
 export class CountBigint1 {
-  static count: bigint = 0n
+  public static count: bigint = 0n
 }
 
 export class CountBigint2 {
-  static count: bigint = 0n
+  public static count: bigint = 0n
 }
 
 export class CountUndefined1 {
-  static count: undefined
+  public static count: undefined
 }
 
 export class CountUndefined2 {
-  static count: undefined
+  public static count: undefined
 }
 
 export enum MyEnum {

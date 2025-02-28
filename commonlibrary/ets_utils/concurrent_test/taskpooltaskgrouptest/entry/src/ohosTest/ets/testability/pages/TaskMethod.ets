@@ -238,7 +238,8 @@ export async function printArgsLock8() {
     // 无论是否发生异常，确保锁被释放
     lock.release();
     if (Math.random() < 1) { // 抛出异常
-      throw new Error('Simulated error in task execution.');
+      let s: string[] = []
+      s[0].split('')[1].toString()
     }
     console.log('Lock has been released.');
   }
