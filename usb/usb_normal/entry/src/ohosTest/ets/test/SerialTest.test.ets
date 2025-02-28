@@ -28,7 +28,7 @@ export default function SerialTest() {
           console.info(TAG, 'openPortId: ', openPortId);
           let hasRight: boolean = serial.hasSerialRight(openPortId);
           if (!hasRight) {
-            console.info(TAG, `beforeEach: requestSerialRight start`);
+            console.info(TAG, 'beforeEach: requestSerialRight start');
             serial.requestSerialRight(openPortId)
               .then((hasRight: boolean) => {
                 console.info(TAG, 'getPermission isAgree: ', hasRight);
@@ -157,7 +157,7 @@ export default function SerialTest() {
       serial.open(openPortId);
       serial.cancelSerialRight(openPortId);
       await sleep(500);
-      console.info(TAG, `beforeEach: requestSerialRight start`);
+      console.info(TAG, 'beforeEach: requestSerialRight start');
       serial.requestSerialRight(openPortId)
         .then((hasRight: boolean) => {
           console.info(TAG, 'getPermission isAgree: ', hasRight);
@@ -188,7 +188,7 @@ export default function SerialTest() {
         serial.open(openPortId);
         serial.cancelSerialRight(openPortId);
         await sleep(500);
-        console.info(TAG, `beforeEach: requestSerialRight start`);
+        console.info(TAG, 'beforeEach: requestSerialRight start');
         let invalidPort: number = -1;
         serial.requestSerialRight(invalidPort)
           .then((hasRight: boolean) => {
@@ -897,7 +897,7 @@ async function getPermission(openPortId: number) {
       console.info(TAG, 'openPortId: ', openPortId);
       let hasRight: boolean = serial.hasSerialRight(openPortId);
       if (!hasRight) {
-        console.info(TAG, `beforeEach: requestSerialRight start`);
+        console.info(TAG, 'beforeEach: requestSerialRight start');
         serial.requestSerialRight(openPortId)
           .then((hasRight: boolean) => {
             console.info(TAG, 'getPermission isAgree: ', hasRight);
