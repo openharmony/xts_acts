@@ -95,6 +95,16 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
     const TRUE_FLAG: boolean = true;
     let isPCStatus:string = settings.getValueSync(context,'isStatusBarExist','',settings.domainName.USER_PROPERTY);
     console.info(`beforeAll isPCStatus: ${isPCStatus}`);
+    let avoidArea1: ohosWindow.AvoidArea;
+    
+    beforeAll(async () => {
+      let windowClass = windowStage.getMainWindowSync();
+        await windowClass.setWindowLayoutFullScreen(false);
+        await windowClass.setWindowSystemBarEnable(['status']);
+        let type:ohosWindow.AvoidAreaType = ohosWindow.AvoidAreaType.TYPE_SYSTEM;
+        avoidArea1 = windowClass.getWindowAvoidArea(type);
+        console.info(` Succeeded in getWindowAvoidArea1. Data: ${JSON.stringify(avoidArea1)}`);
+    })
     
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2360
@@ -524,7 +534,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       let secondListenFlag: boolean = false
       let tempWnd: ohosWindow.Window | void
 
-      if(isPCStatus == ''|| isPCStatus == '1'){
+      if((avoidArea1.topRect.width != 0 && avoidArea1.topRect.height != 0) && (isPCStatus == ''|| isPCStatus == '1')){
         tempWnd = await windowStage.getMainWindow().catch((err: BusinessError) => {
           unexpectedError(err, caseName, 'windowStage.getMainWindow', TRUE_FLAG, done);
         });
@@ -608,7 +618,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
       let firstListenFlag: boolean = false
       let secondListenFlag: boolean = false
 
-      if(isPCStatus == ''|| isPCStatus == '1'){
+      if((avoidArea1.topRect.width != 0 && avoidArea1.topRect.height != 0) && (isPCStatus == ''|| isPCStatus == '1')){
         let firstCall = () => {
           console.log(msgStr + "first listener trigger")
           firstListenFlag = true

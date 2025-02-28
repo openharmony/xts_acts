@@ -62,7 +62,16 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
     let commonNUMBERColorArr: Array<string> =
       ['#00FF0000', '#0000FF00', '#000000FF', '#00FFFFFF', '#00000000', '#00F900E6', '#00666666', '#00FFF700'];
     let commonKEYColorArr: Array<string> = ['red', 'green', 'blue', 'white', 'black', 'pink', 'grey', 'yellow'];
-
+    let avoidArea1: ohosWindow.AvoidArea;
+    
+    beforeAll(async () => {
+      let windowClass = windowStage.getMainWindowSync();
+        await windowClass.setWindowLayoutFullScreen(false);
+        await windowClass.setWindowSystemBarEnable(['status']);
+        let type:ohosWindow.AvoidAreaType = ohosWindow.AvoidAreaType.TYPE_SYSTEM;
+        avoidArea1 = windowClass.getWindowAvoidArea(type);
+        console.info(` Succeeded in getWindowAvoidArea1. Data: ${JSON.stringify(avoidArea1)}`);
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0760
      * @tc.name      : testListener_Sys_AvoidAreaChange_Promise
@@ -78,7 +87,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let listenerOnFlag: boolean = false;
       console.log(msgStr + 'begin');
       let tempWnd: ohosWindow.Window | void;
-      if(isPCStatus == ''|| isPCStatus == '1'){
+      if((avoidArea1.topRect.width != 0 && avoidArea1.topRect.height != 0) && (isPCStatus == ''|| isPCStatus == '1')){
         tempWnd = await windowStage.getMainWindow().catch((err: BusinessError) => {
           unexpectedError(TRUE_FLAG, err, caseName, 'windowStage.getMainWindow', done);
         });
@@ -196,7 +205,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       console.log(msgStr + 'begin 1');
       let tempWnd: ohosWindow.Window | void;
 
-      if(isPCStatus == ''|| isPCStatus == '1'){
+      if((avoidArea1.topRect.width != 0 && avoidArea1.topRect.height != 0) && (isPCStatus == ''|| isPCStatus == '1')){
         tempWnd = await windowStage.getMainWindow().catch((err: BusinessError) => {
           unexpectedError(TRUE_FLAG, err, caseName, 'windowStage.getMainWindow', done);
         });

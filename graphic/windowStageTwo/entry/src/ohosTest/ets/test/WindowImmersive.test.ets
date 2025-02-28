@@ -27,8 +27,9 @@ export default function windowImmersiveTest() {
     let isPCStatus:string = '';
     let deviceType: string = '';
     let isAutoWindow:string = '';
+    let avoidArea1: window.AvoidArea;
     
-    beforeAll(() => {
+    beforeAll(async () => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       isPCStatus = settings.getValueSync(context,'isStatusBarExist','',settings.domainName.USER_PROPERTY)
@@ -45,6 +46,13 @@ export default function windowImmersiveTest() {
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
       deviceType = deviceInfo.deviceType;
       console.log('jsUnittest beforeAll deviceType =' + deviceType);
+
+      let windowClass = windowStage.getMainWindowSync();
+        await windowClass.setWindowLayoutFullScreen(false);
+        await windowClass.setWindowSystemBarEnable(['status']);
+        let type = window.AvoidAreaType.TYPE_SYSTEM;
+        avoidArea1 = windowClass.getWindowAvoidArea(type);
+        console.info(` Succeeded in getWindowAvoidArea1. Data: ${JSON.stringify(avoidArea1)}`);
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -502,7 +510,7 @@ export default function windowImmersiveTest() {
     it('testOnSystemAvoidAreaChange', 0, async (done: Function) => {
       let caseName = 'TestOnSystemAvoidAreaChange';
       try {
-        if(deviceType != 'wearable' && (isPCStatus == ''|| isPCStatus == '1')){
+        if((avoidArea1.topRect.width != 0 && avoidArea1.topRect.height != 0) && (isPCStatus == ''|| isPCStatus == '1')){
           let windowClass = windowStage.getMainWindowSync();
           windowClass.on('systemAvoidAreaChange', (data) => {
           console.info(`${caseName} Succeeded in enabling the listener for system avoid area changes. Data: ${JSON.stringify(data)}`);
@@ -539,7 +547,7 @@ export default function windowImmersiveTest() {
     it('testOnRepeatSystemAvoidAreaChange', 0, async (done: Function) => {
       let caseName = 'TestOnRepeatSystemAvoidAreaChange';
       try {
-        if(deviceType != 'wearable' && (isPCStatus == ''|| isPCStatus == '1')){
+        if((avoidArea1.topRect.width != 0 && avoidArea1.topRect.height != 0) && (isPCStatus == ''|| isPCStatus == '1')){
           let windowClass = windowStage.getMainWindowSync();
           const callback1 = () => {
             console.info(`${caseName} callback1 Succeeded in enabling the listener for system avoid area changes.`);
@@ -626,7 +634,7 @@ export default function windowImmersiveTest() {
     it('testOnAvoidAreaChange', 0, async (done: Function) => {
       let caseName = 'TestOnAvoidAreaChange';
       try {
-        if(deviceType != 'wearable' && (isPCStatus == ''|| isPCStatus == '1')){
+        if((avoidArea1.topRect.width != 0 && avoidArea1.topRect.height != 0) && (isPCStatus == ''|| isPCStatus == '1')){
           let windowClass = windowStage.getMainWindowSync();
           windowClass.on('avoidAreaChange', (data) => {
           console.info(`${caseName} Succeeded in enabling the listener for avoid area changes. Data: ${JSON.stringify(data)}`);
@@ -1668,7 +1676,7 @@ export default function windowImmersiveTest() {
         console.log(msgStr +' :' + JSON.stringify(data));
             height = data.bottomRect.height;
       };
-      if(deviceType != 'wearable' &&(isPCStatus == ''|| isPCStatus == '1')){
+        if((avoidArea1.topRect.width != 0 && avoidArea1.topRect.height != 0)  && (isPCStatus == ''|| isPCStatus == '1')){
         windowStage.getMainWindow((err, data) => {
               if (err.code != 0) {
                   console.log(msgStr + ' getTopWindow callback fail ' + JSON.stringify(err.code));
