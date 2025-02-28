@@ -29,9 +29,9 @@ import localizedButtonPaddingTest from './SegmentButtonTest/localizedButtonPaddi
 import localizedTextPadding from './SegmentButtonTest/localizedTextPadding';
 
 export default function testsuite() {
-    GaugeColors();
+    gaugeColorsJsunit();
     ProgressMask();
-    ProgressStyle();
+    progressScaleCountJsunit();
     BounceSymbolEffect_APITest();
     ReplaceSymbolEffect_APITest();
     ACTION_FIRST_APITest();
