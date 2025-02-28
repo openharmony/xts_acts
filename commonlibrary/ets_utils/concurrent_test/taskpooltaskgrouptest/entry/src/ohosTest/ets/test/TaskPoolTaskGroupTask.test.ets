@@ -724,7 +724,7 @@ export default function taskPoolTaskGroup() {
             console.info('taskpool: execute task success')
           }).catch((err: BusinessError) => {
             console.error('taskpool test occur error: ' + err);
-            expect(err.message).assertEqual('Simulated error in task execution.')
+            expect(err.message).assertEqual('Cannot read property split of undefined')
             Count1++
             Count2++
           })

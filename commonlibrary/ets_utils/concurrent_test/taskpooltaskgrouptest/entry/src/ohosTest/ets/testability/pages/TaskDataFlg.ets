@@ -70,7 +70,7 @@ export enum MyEnum {
 
 @Sendable
 export class MyClass {
-  id: number;
+  public id: number;
 
   constructor(id: number,) {
     this.id = id;

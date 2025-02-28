@@ -15,7 +15,7 @@
 import { ArkTSUtils, worker } from '@kit.ArkTS';
 
 export class AsyncLock {
-  isLocked: boolean;
+  private isLocked: boolean;
 
   constructor() {
     this.isLocked = false;

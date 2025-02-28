@@ -23,7 +23,7 @@ export class WorkThread {
 
 @Concurrent
 export function test() {
-  let s: Array<string> = []
+  let s: string[] = []
   s[0].split('')[1].toString()
 }
 
