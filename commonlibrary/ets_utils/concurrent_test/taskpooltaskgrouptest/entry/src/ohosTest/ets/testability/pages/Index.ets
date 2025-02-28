@@ -18,6 +18,12 @@ import hilog from '@ohos.hilog';
 @Component
 struct Index {
 
+  onPageShow(): void {
+    Contexts.contexts = getContext(this)
+    Contexts.path = Contexts.contexts.cacheDir
+    console.info('=====onPageShow', Contexts.path)
+  }
+
   @State message: string = 'Hello World'
 
   build() {
