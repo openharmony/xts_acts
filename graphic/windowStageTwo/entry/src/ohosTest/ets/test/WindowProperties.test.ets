@@ -3763,20 +3763,19 @@ export default function windowPropertiesTest() {
             done();
           }
         }).catch((err: BusinessError) => {
-          if(err.code == 801){
-            console.info(msg+' The current device type is not supported')
-            done();
-          }else{
             console.error(msg + ' failed in windowClass.setWindowLimits ' + JSON.stringify(err));
             expect().assertFail()
             done();
-          }
         });
       } catch (error) {
         console.error(msg + ' failed in windowClass.setWindowLimits 2  ' + JSON.stringify(error));
-        expect().assertFail()
-        done();
-
+        if(error.code == 801){
+            console.info(msg+' The current device type is not supported')
+            done();
+          }else{
+            expect().assertFail()
+            done();
+          }
       }
     })
     })

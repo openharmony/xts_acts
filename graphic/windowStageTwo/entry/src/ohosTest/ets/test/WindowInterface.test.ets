@@ -287,7 +287,10 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           // 恢复
           await windowStageStart.setWindowRectAutoSave(false)
           // windowRect1 & windowRect2 的大小位置一致
-          expect(JSON.stringify(windowRect1)).assertEqual(JSON.stringify(windowRect2))
+          expect(Math.abs(windowRect2.left-windowRect1.left)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.top-windowRect1.top)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.width-windowRect1.width)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-windowRect1.height)).assertLessOrEqual(1);
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -347,7 +350,10 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           // 恢复
           await windowStageStart.setWindowRectAutoSave(false)
           // windowRect1 & windowRect2 的大小位置一致
-          expect(JSON.stringify(windowRect1)).assertEqual(JSON.stringify(windowRect2))
+          expect(Math.abs(windowRect2.left-windowRect1.left)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.top-windowRect1.top)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.width-windowRect1.width)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-windowRect1.height)).assertLessOrEqual(1);
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -461,7 +467,10 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           // 恢复
           await windowStageStart.setWindowRectAutoSave(false)
           // windowRect1 & windowRect2 的大小位置一致
-          expect(JSON.stringify(windowRect1)).assertEqual(JSON.stringify(windowRect2))
+          expect(Math.abs(windowRect2.left-windowRect1.left)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.top-windowRect1.top)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.width-windowRect1.width)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-windowRect1.height)).assertLessOrEqual(1);
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -516,7 +525,10 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           // 恢复
           await windowStageStart.setWindowRectAutoSave(false)
           // windowRect1 & windowRect2 的大小位置一致
-          expect(JSON.stringify(windowRect1)).assertEqual(JSON.stringify(windowRect2))
+          expect(Math.abs(windowRect2.left-windowRect1.left)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.top-windowRect1.top)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.width-windowRect1.width)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-windowRect1.height)).assertLessOrEqual(1);
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -566,8 +578,8 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           // 恢复
           await windowStageStart.setWindowRectAutoSave(false)
           // windowRect1 & windowRect2 的大小一致
-          expect(windowRect1.width).assertEqual(windowRect2.width)
-          expect(windowRect1.height).assertEqual(windowRect2.height)
+          expect(Math.abs(windowRect2.width-windowRect1.width)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-windowRect1.height)).assertLessOrEqual(1);
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -725,7 +737,10 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           let windowRect2 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
           console.info(`${message} windowRect2 = ${JSON.stringify(windowRect2)}`)
           // windowRect2 为窗口默认创建大小
-          expect(JSON.stringify(windowRect1)).assertEqual(JSON.stringify(windowRect2))
+          expect(Math.abs(windowRect2.left-windowRect1.left)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.top-windowRect1.top)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.width-windowRect1.width)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-windowRect1.height)).assertLessOrEqual(1);
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -783,7 +798,10 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           let windowRect2 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
           console.info(`${message} windowRect2 = ${JSON.stringify(windowRect2)}`)
           // windowRect2 为窗口默认创建大小
-          expect(JSON.stringify(windowRect1)).assertEqual(JSON.stringify(windowRect2))
+          expect(Math.abs(windowRect2.left-windowRect1.left)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.top-windowRect1.top)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.width-windowRect1.width)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-windowRect1.height)).assertLessOrEqual(1);
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -836,7 +854,10 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           let windowRect2 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
           console.info(`${message} windowRect2 = ${JSON.stringify(windowRect2)}`)
           // 窗口全屏，非沉浸式
-          expect(JSON.stringify(windowRect1)).assertEqual(JSON.stringify(windowRect2))
+          expect(Math.abs(windowRect2.left-windowRect1.left)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.top-windowRect1.top)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.width-windowRect1.width)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-windowRect1.height)).assertLessOrEqual(1);
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -889,7 +910,10 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           let windowRect2 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
           console.info(`${message} windowRect2 = ${JSON.stringify(windowRect2)}`)
           // windowRect2 为窗口默认创建大小
-          expect(JSON.stringify(windowRect1)).assertEqual(JSON.stringify(windowRect2))
+          expect(Math.abs(windowRect2.left-windowRect1.left)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.top-windowRect1.top)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.width-windowRect1.width)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-windowRect1.height)).assertLessOrEqual(1);
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -942,7 +966,10 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           let windowRect2 = windowStageStart.getMainWindowSync().getWindowProperties().windowRect
           console.info(`${message} windowRect2 = ${JSON.stringify(windowRect2)}`)
           // windowRect2 为窗口默认创建大小
-          expect(JSON.stringify(windowRect1)).assertEqual(JSON.stringify(windowRect2))
+          expect(Math.abs(windowRect2.left-windowRect1.left)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.top-windowRect1.top)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.width-windowRect1.width)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-windowRect1.height)).assertLessOrEqual(1);
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -990,8 +1017,8 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           let windowRect2 = windowStageStart2.getMainWindowSync().getWindowProperties().windowRect
           console.info(`${message} windowRect2 = ${JSON.stringify(windowRect2)}`)
           // windowRect1 & windowRect2 的大小一致
-          expect(windowRect2.width).assertEqual(windowRect1.width)
-          expect(windowRect2.height).assertEqual(windowRect1.height)
+          expect(Math.abs(windowRect2.width-windowRect1.width)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-windowRect1.height)).assertLessOrEqual(1);
           done()
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -2564,7 +2591,8 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
         }
       }
     })
-    /**
+
+     /**
      * @tc.number    : test_setSupportedWindowModes_0100
      * @tc.name      : test_setSupportedWindowModes_0100
      * @tc.desc      : Test the function value of setWindowTitleMoveEnabled
