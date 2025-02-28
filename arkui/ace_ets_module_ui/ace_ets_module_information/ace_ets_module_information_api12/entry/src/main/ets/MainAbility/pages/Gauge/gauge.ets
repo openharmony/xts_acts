@@ -13,34 +13,45 @@
  * limitations under the License.
  */
 
-import Log from '../common/Log';
+import Log from '../../common/Log';
 
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-struct TextPickerDefaultPickerItemHeight {
-  private select: number = 1
-  private fruits: string[] = ['1.apple', '2.orange', '3.peach', '4.grape']
-
+struct GaugeColors {
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear TextPickerDefaultPickerItemHeight start`)
+    Log.showInfo(TAG, `aboutToAppear GaugeColors start`)
   }
 
   aboutToDisappear() {
-    Log.showInfo(TAG, `aboutToDisAppear TextPickerDefaultPickerItemHeight end`)
+    Log.showInfo(TAG, `aboutToDisAppear GaugeColors end`)
   }
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
-      TextPicker({ range: this.fruits, selected: this.select })
-        .onChange((value: string | string[], index: number | number[]) => {
-          console.info('Picker item changed, value: ' + value + ', index: ' + index)
-        })
-        .defaultPickerItemHeight('80px')
-        .key("defaultPickerItemHeightText")
-
+      Text("gauge-Colors")
+        .width(100)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("colorsText")
+      Gauge({ value: 50, min: 0, max: 100 })
+        .startAngle(210)
+        .endAngle(150)
+        .colors([[0x317AF7, 1], [0x5BA854, 1], [0xE08C3A, 1], [0x9C554B, 1], [0xD94838, 1]])
+        .strokeWidth(20)
+        .width(200)
+        .height(200)
+        .key("Gauge")
     }.width("100%").height("100%")
   }
 }
