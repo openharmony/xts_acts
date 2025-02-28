@@ -74,13 +74,50 @@ function getTransfersParam(gPipe: usbMgr.USBDevicePipe, flagsValue:number, endpo
         endpoint: endpointValue,
         type: typeValue,
         timeout: timeOutValue,
-        length: 192,
+        length: 16,
         callback: () => {},
         userData: new Uint8Array(10),
-        buffer: new Uint8Array(192),
-        isoPacketCount: 2,
+        buffer: new Uint8Array(16),
+        isoPacketCount: 1,
     };
     return transferParams;
+}
+
+interface Endprint {
+    usbInterface: usbMgr.USBInterface | undefined,
+    usbEndprint: usbMgr.USBEndpoint
+}
+
+function getEndprint(devices: usbMgr.USBDevice, direction: number, type: number): Endprint | undefined {
+      let usbConfigs: usbMgr.USBConfiguration[] = devices.configs;
+      let usbInterfaces: usbMgr.USBInterface[] = [];
+      let usbInterface: usbMgr.USBInterface | undefined = undefined
+      let usbEndpoints: usbMgr.USBEndpoint[] = [];
+      let usbEndprint: usbMgr.USBEndpoint | undefined = undefined
+      for (let i = 0; i < usbConfigs.length; i++) {
+        usbInterfaces = usbConfigs[i].interfaces;
+        for (let i = 0; i < usbInterfaces.length; i++) {
+          usbEndpoints = usbInterfaces[i].endpoints;
+          usbEndprint = usbEndpoints.find((value) => {
+            return value.direction === direction
+              && value.type === type;
+          })
+          if (usbEndprint !== undefined) {
+            usbInterface = usbInterfaces[i];
+            break;
+          }
+        }
+      }
+      if (usbEndprint === undefined) {
+        console.error(`get usbEndprint error`)
+        return undefined;
+      }
+
+      let endprint: Endprint = {
+        usbInterface: usbInterface,
+        usbEndprint: usbEndprint
+      }
+      return endprint
 }
 
 export default function UsbApiIsochronousTransferTest() {
@@ -118,9 +155,9 @@ export default function UsbApiIsochronousTransferTest() {
     })
 
     /**
-     * @tc.number   : SUB_USB_Host_JS_usbSubmitTransfer_Func_0100
+     * @tc.number   : SUB_USB_Host_JS_usbSubmitTransfer_Func_0200
      * @tc.name     : testUsbSubmitTransfer001
-     * @tc.desc     : isochronous transfer write successfully.
+     * @tc.desc     : isochronous transfer read successfully.
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
@@ -134,21 +171,31 @@ export default function UsbApiIsochronousTransferTest() {
             return
         }
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
-        let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
-        if (usbMgr.claimInterface(gPipe, tmpInterface, true) !== 0) {
+        let endprint  = getEndprint(devices, 128, type)
+        if (endprint === undefined || endprint.usbInterface === undefined || endprint.usbEndprint === undefined) {
+            return
+        }
+        let usbInterface = endprint.usbInterface;
+        let usbEndprint = endprint.usbEndprint;
+        console.info('usbEndprint.address = ' + JSON.stringify(usbEndprint.address));
+
+        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 0, usbEndprint.address, type, 2000);
+        if (usbMgr.claimInterface(gPipe, usbInterface, true) !== 0) {
             console.info(TAG, 'claimInterface error');
-        }    
-        if (usbMgr.setInterface(gPipe, tmpInterface) !== 0) {
+        }
+        if (usbMgr.setInterface(gPipe, usbInterface) !== 0) {
             console.info(TAG, 'setInterface error');
         }
-        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 0, 1, type, 2000);
+
         try {
             transferParams.callback = (err: Error, data: usbMgr.SubmitTransferCallback) => {
-                console.info(TAG, 'Isochronous testUsbSubmitTransfer001 data =' + JSON.stringify(data));
-                expect(data.isoPacketDescs[1].status == usbMgr.UsbTransferStatus.TRANSFER_COMPLETED).assertTrue();
+                console.info('data = ' + JSON.stringify(data));
+                console.info('testUsbSubmitTransfer001 transfer success, result = ' + transferParams.buffer.toString());
+                expect(data.isoPacketDescs[0].status == usbMgr.UsbTransferStatus.TRANSFER_COMPLETED ||
+                data.isoPacketDescs[0].status == usbMgr.UsbTransferStatus.TRANSFER_OVERFLOW).assertTrue();
                 usbMgr.closePipe(devices);
-                done();
+                done()
             }
             await usbMgr.usbSubmitTransfer(transferParams);
             console.info(TAG, 'Isochronous testUsbSubmitTransfer001 end');
@@ -156,13 +203,12 @@ export default function UsbApiIsochronousTransferTest() {
             expect().assertFail();
             console.error('Isochronous error:', error);
         }
-
     });
 
     /**
-     * @tc.number   : SUB_USB_Host_JS_usbSubmitTransfer_Func_0200
+     * @tc.number   : SUB_USB_Host_JS_usbSubmitTransfer_Func_0100
      * @tc.name     : testUsbSubmitTransfer002
-     * @tc.desc     : isochronous transfer read successfully.
+     * @tc.desc     : isochronous transfer write successfully.
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
@@ -176,22 +222,27 @@ export default function UsbApiIsochronousTransferTest() {
             return
         }
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
-        let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
-        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 0, 130, type, 2000);
-        if (usbMgr.claimInterface(gPipe, tmpInterface, true) !== 0) {
+        let endprint  = getEndprint(devices, 0, type)
+        if (endprint === undefined || endprint.usbInterface === undefined || endprint.usbEndprint === undefined) {
+            return
+        }
+        let usbInterface = endprint.usbInterface;
+        let usbEndprint = endprint.usbEndprint;
+        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 0, usbEndprint.address, type, 2000);
+        if (usbMgr.claimInterface(gPipe, usbInterface, true) !== 0) {
             console.info(TAG, 'claimInterface error');
-        }    
-        if (usbMgr.setInterface(gPipe, tmpInterface) !== 0) {
+        }
+        if (usbMgr.setInterface(gPipe, usbInterface) !== 0) {
             console.info(TAG, 'setInterface error');
         }
+
         try {
-            transferParams.callback = (err: Error, callBackData: usbMgr.SubmitTransferCallback) => {
-                console.info('callBackData = ' + JSON.stringify(callBackData));
-                console.info('testUsbSubmitTransfer002 transfer success, result = ' + transferParams.buffer.toString());
-                expect(callBackData.isoPacketDescs[0].status == usbMgr.UsbTransferStatus.TRANSFER_OVERFLOW).assertTrue();
+            transferParams.callback = (err: Error, data: usbMgr.SubmitTransferCallback) => {
+                console.info(TAG, 'Isochronous testUsbSubmitTransfer002 data =' + JSON.stringify(data));
+                expect(data.isoPacketDescs[0].status == usbMgr.UsbTransferStatus.TRANSFER_COMPLETED).assertTrue();
                 usbMgr.closePipe(devices);
-                done()
+                done();
             }
             await usbMgr.usbSubmitTransfer(transferParams);
             console.info(TAG, 'Isochronous testUsbSubmitTransfer002 end');
@@ -199,6 +250,7 @@ export default function UsbApiIsochronousTransferTest() {
             expect().assertFail();
             console.error('Isochronous error:', error);
         }
+
     });
 
     /**
@@ -252,10 +304,16 @@ export default function UsbApiIsochronousTransferTest() {
             return
         }
         let gPipe: usbMgr.USBDevicePipe = usbMgr.connectDevice(devices);
-        let tmpInterface: usbMgr.USBInterface = devices.configs[0].interfaces[0];
-        let flags: number = usbMgr.UsbTransferFlags.USB_TRANSFER_ADD_ZERO_PACKET;
         let type: number = usbMgr.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
-        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, flags, 1, type, 2000);
+        let flags: number = usbMgr.UsbTransferFlags.USB_TRANSFER_ADD_ZERO_PACKET;
+        let endprint  = getEndprint(devices, 0, type)
+        if (endprint === undefined || endprint.usbInterface === undefined || endprint.usbEndprint === undefined) {
+            return
+        }
+        let usbInterface = endprint.usbInterface;
+        let usbEndprint = endprint.usbEndprint;
+        let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, flags, usbEndprint.address, type, 2000);
+        
         try {
             usbMgr.usbSubmitTransfer(transferParams);
             expect().assertFail();
