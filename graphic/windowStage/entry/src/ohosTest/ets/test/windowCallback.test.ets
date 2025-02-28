@@ -66,7 +66,16 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
     let commonRGBColorArr: Array<string> = ['rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(255,255,255)', 'rgb(0,0,0)', 'rgb(249,0,230)', 'rgb(102,102,102)', 'rgb(255,247,0)'];
     let commonNUMBERColorArr: Array<string> = ['#00FF0000', '#0000FF00', '#000000FF', '#00FFFFFF', '#00000000', '#00F900E6', '#00666666', '#00FFF700'];
     let commonKEYColorArr: Array<string> = ['red', 'green', 'blue', 'white', 'black', 'pink', 'grey', 'yellow'];
-
+    let avoidArea1: ohosWindow.AvoidArea;
+    
+    beforeAll(async () => {
+      let windowClass = windowStage.getMainWindowSync();
+        await windowClass.setWindowLayoutFullScreen(false);
+        await windowClass.setWindowSystemBarEnable(['status']);
+        let type:ohosWindow.AvoidAreaType = ohosWindow.AvoidAreaType.TYPE_SYSTEM;
+        avoidArea1 = windowClass.getWindowAvoidArea(type);
+        console.info(` Succeeded in getWindowAvoidArea1. Data: ${JSON.stringify(avoidArea1)}`);
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1300
      * @tc.name      : testSetSystemBarEnable_ShowStatusBar_HideNavBar_Callback
@@ -820,7 +829,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       let listenerOnFlag = false;
       console.log(msgStr + 'begin');
       let tempWnd: ohosWindow.Window | void;
-      if(isPCStatus == ''|| isPCStatus == '1'){
+      if((avoidArea1.topRect.width != 0 && avoidArea1.topRect.height != 0) && (isPCStatus == ''|| isPCStatus == '1')){
           tempWnd = await windowStage.getMainWindow().catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to obtain the main window. Cause: ' + JSON.stringify(err));
         expect().assertFail()
