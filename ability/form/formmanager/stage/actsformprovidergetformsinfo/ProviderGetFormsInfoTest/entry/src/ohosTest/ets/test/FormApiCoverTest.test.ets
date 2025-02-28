@@ -19,6 +19,7 @@ import formError from '@ohos.application.formError';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import Want from '@ohos.app.ability.Want';
 import formBindingData from '@ohos.app.form.formBindingData';
+import formProvider from '@ohos.app.form.formProvider';
 
 const INTERVAL_TIME = 2500;
 
@@ -92,6 +93,54 @@ export default function FormApiCoverTest() {
         done();
       }, INTERVAL_TIME);
     })
+
+    /*
+     * @tc.number  SetFormNextRefreshTime_Cover_0100
+     * @tc.name    SetFormNextRefreshTime_Cover_0100
+     * @tc.desc    Function setFormNextRefreshTime covered test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level   3
+     */
+    it(`SetFormNextRefreshTime_Cover_0100`, 0, async (done:Function) => {
+      let name: string = 'SetFormNextRefreshTime_Cover_0100';
+      console.info(`${name} start`);
+      try {
+        const data = await formProvider.setFormNextRefreshTime("", 123);
+        console.log(`${name} setFormNextRefreshTime, data: ${JSON.stringify(data)}`);
+        console.log(`${name} should not reach here`);
+        expect().assertFail();
+      } catch (error) {
+        console.log(`${name} exception caught: ${JSON.stringify(error)}`);
+        expect(error.code).assertEqual(401);
+        done();
+      }
+      console.info(`${name} end`);
+    });
+
+    /*
+     * @tc.number  SetFormNextRefreshTime_Cover_0200
+     * @tc.name    SetFormNextRefreshTime_Cover_0200
+     * @tc.desc    Function setFormNextRefreshTime covered test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level   3
+     */
+    it(`SetFormNextRefreshTime_Cover_0200`, 0, async (done:Function) => {
+      let name: string = 'SetFormNextRefreshTime_Cover_0100';
+      console.info(`${name} start`);
+      try {
+        formProvider.setFormNextRefreshTime("", 123, (error, data) => {
+          console.log(`${name} setFormNextRefreshTime, error: ${JSON.stringify(error)} data: ${JSON.stringify(data)}`);
+          expect(error.code).assertEqual(401);
+          done();
+        });
+      } catch (error) {
+        console.log(`${name} exception caught: ${JSON.stringify(error)}`);
+        expect().assertFail();
+      }
+      console.info(`${name} end`);
+    });
 
     /*
      * @tc.number  SUB_AA_Form_provider_TestFormErr_0100
