@@ -217,6 +217,7 @@ export default function UsbApiBulkTransferTest() {
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
             usbMgr.usbSubmitTransfer(transferParams);
+            expect().assertFail();
         } catch (error) {
             console.info(TAG, 'bulk testUsbSubmitTransfer003 end');
             console.error('bulk transfer error endpoint:', error);
@@ -251,6 +252,7 @@ export default function UsbApiBulkTransferTest() {
         let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, flags, 129, type, 2000);
         try {
             await usbMgr.usbSubmitTransfer(transferParams);
+            expect().assertFail();
         } catch (error) {
             console.info(TAG, 'bulk testUsbSubmitTransfer004 end');
             console.error('bulk failed:', error);
@@ -318,6 +320,7 @@ export default function UsbApiBulkTransferTest() {
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
             usbMgr.usbCancelTransfer(transferParams);
+            expect().assertFail();
         } catch (error) {
             console.info(TAG, 'bulk testUsbCancelTransfer002 end');
             console.error('bulk cancel error:', error);

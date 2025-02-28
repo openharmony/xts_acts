@@ -140,6 +140,7 @@ export default function UsbApiInterruptTransferTest() {
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
             usbMgr.usbSubmitTransfer(transferParams);
+            expect().assertFail();
         } catch (error) {
             console.info(TAG, 'interrupt testUsbSubmitTransfer001 end');
             console.error('interrupt error:', error);
@@ -172,6 +173,7 @@ export default function UsbApiInterruptTransferTest() {
         let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, flags, 1, type, 2000);
         try {
             usbMgr.usbSubmitTransfer(transferParams);
+            expect().assertFail();
         } catch (error) {
             console.info(TAG, 'interrupt testUsbSubmitTransfer002 end');
             console.error('interrupt IO error:', error);
@@ -274,6 +276,7 @@ export default function UsbApiInterruptTransferTest() {
         let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 2, 129, type, 2000);
         try {
             usbMgr.usbCancelTransfer(transferParams);
+            expect().assertFail();
         } catch (error) {
             console.info(TAG, 'interrupt testUsbCancelTransfer002 end');
             console.error('interrupt cancel failed:', error);

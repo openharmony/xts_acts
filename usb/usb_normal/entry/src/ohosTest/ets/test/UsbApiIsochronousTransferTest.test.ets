@@ -224,6 +224,7 @@ export default function UsbApiIsochronousTransferTest() {
         usbMgr.claimInterface(gPipe, tmpInterface, true);
         try {
             usbMgr.usbSubmitTransfer(transferParams);
+            expect().assertFail();
         } catch (error) {
             console.info(TAG, 'Isochronous testUsbSubmitTransfer003 end');
             console.error('isochronous error endpoint:', error);
@@ -257,6 +258,7 @@ export default function UsbApiIsochronousTransferTest() {
         let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, flags, 1, type, 2000);
         try {
             usbMgr.usbSubmitTransfer(transferParams);
+            expect().assertFail();
         } catch (error) {
             console.info(TAG, 'Isochronous testUsbSubmitTransfer004 end');
             console.error('isochronous IO error:', error);
@@ -291,6 +293,7 @@ export default function UsbApiIsochronousTransferTest() {
         let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 0, 0 , 0, 0);
         try {
             usbMgr.usbSubmitTransfer(transferParams);
+            expect().assertFail();
         } catch (error) {
             console.info(TAG, 'iso testUsbSubmitTransfer005 end');
             console.error('iso cancel error:', error);
@@ -322,6 +325,7 @@ export default function UsbApiIsochronousTransferTest() {
         let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, flags, 1, type, 0);
         try {
             usbMgr.usbCancelTransfer(transferParams);
+            expect().assertFail();
         } catch (error) {
             console.info(TAG, 'Isochronous testUsbCancelTransfer001 end');
             console.error('isochronous cancel failed:', error);
@@ -355,6 +359,7 @@ export default function UsbApiIsochronousTransferTest() {
         let transferParams: usbMgr.UsbDataTransferParams = getTransfersParam(gPipe, 0, 0 , 0, 0);
         try {
             usbMgr.usbCancelTransfer(transferParams);
+            expect().assertFail();
         } catch (error) {
             console.info(TAG, 'isochronous testUsbCancelTransfer002 end');
             console.error('isochronous cancel error:', error);
