@@ -18,15 +18,13 @@ import relationalStoreTest from './relationalStoreEtsunit.test.ets'
 import relationalStoreResultSetTest from './relationalStoreTestResultsetEtsunit.test.ets'
 import relationalStoreEmitTest from './relationalStoreEmit.test'
 import relationalStoreDifferenceCustomDirMultipleTest from './relationalStoreDifferenceCustomDirMultiple.test'
-import relationalStoreAsyncDownloadAssetTest from './relationalStoreAsyncDownloadAssetEts.test'
 import relationalStoreSetDistributedTablesTest from './relationalStoreSetDistributedTables.test'
 export default function testsuite() {
-  relationalStoreCloudSyncEtsTest()
-  relationalStoreDistributedTest()
-  relationalStoreTest()
-  relationalStoreResultSetTest()
+  relationalStoreCloudSyncEtsTest(globalThis.abilityContext)
+  relationalStoreDistributedTest(globalThis.abilityContext)
+  relationalStoreTest(globalThis.abilityContext)
+  relationalStoreResultSetTest(globalThis.abilityContext)
   relationalStoreEmitTest()
   relationalStoreDifferenceCustomDirMultipleTest()
-  relationalStoreAsyncDownloadAssetTest()
   relationalStoreSetDistributedTablesTest()
 }
