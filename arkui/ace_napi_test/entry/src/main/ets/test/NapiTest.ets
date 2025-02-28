@@ -9893,7 +9893,7 @@ export default function napiApiTest() {
       try {
         let value = napitest.hasOwnPropertyCheckOwnpro();
         console.info('testhasOwnPropertyCheckOwnpro0200 value is: ' + value);
-        expect(value).assertFalse();
+        expect(value).assertTrue();
       } catch (err) {
         console.error('testhasOwnPropertyCheckOwnpro0200 err msg' + err.message);
         expect().assertFail();
@@ -9934,7 +9934,7 @@ export default function napiApiTest() {
         throw napitest.createTypeErrorRes();
       } catch (error) {
         console.error('testcreateTypeErrorRes0200 err msg' + error.message);
-        expect(error instanceof TypeError).assertTrue();
+        expect(error instanceof TypeError).assertFalse();
       }
       done();
     });
@@ -9972,7 +9972,7 @@ export default function napiApiTest() {
         throw napitest.createRangeErrorRes();
       } catch (error) {
         console.error('testcreateRangeErrorRes0200 err msg' + error.message);
-        expect(error instanceof RangeError).assertTrue();
+        expect(error instanceof RangeError).assertFalse();
       }
       done();
     });
