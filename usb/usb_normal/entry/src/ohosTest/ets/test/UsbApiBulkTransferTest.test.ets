@@ -150,7 +150,7 @@ export default function UsbApiBulkTransferTest() {
             await usbMgr.usbSubmitTransfer(transferParams);
             console.info(TAG, 'bulk testUsbSubmitTransfer001 end');
         } catch (error) {
-            expect(error.message).assertEqual('error');
+            expect().assertFail();
             console.error('bulk write error:', error);
         }
     });
@@ -188,7 +188,7 @@ export default function UsbApiBulkTransferTest() {
             await usbMgr.usbSubmitTransfer(transferParams);
             console.info(TAG, 'bulk testUsbSubmitTransfer002 end');
         } catch (error) {
-            expect(error.message).assertEqual('error');
+            expect().assertFail();
             console.error('bulk error:', error);
         }
     });
@@ -289,6 +289,7 @@ export default function UsbApiBulkTransferTest() {
             usbMgr.closePipe(devices);
             done();
         } catch (error) {
+            expect().assertFail();
             console.error('bulk cancel error:', error);
         }
     });

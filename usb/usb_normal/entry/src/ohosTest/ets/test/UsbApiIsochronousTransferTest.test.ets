@@ -153,7 +153,7 @@ export default function UsbApiIsochronousTransferTest() {
             await usbMgr.usbSubmitTransfer(transferParams);
             console.info(TAG, 'Isochronous testUsbSubmitTransfer001 end');
         } catch (error) {
-             expect(error.message).assertEqual('error');
+            expect().assertFail();
             console.error('Isochronous error:', error);
         }
 
@@ -196,6 +196,7 @@ export default function UsbApiIsochronousTransferTest() {
             await usbMgr.usbSubmitTransfer(transferParams);
             console.info(TAG, 'Isochronous testUsbSubmitTransfer002 end');
         } catch (error) {
+            expect().assertFail();
             console.error('Isochronous error:', error);
         }
     });

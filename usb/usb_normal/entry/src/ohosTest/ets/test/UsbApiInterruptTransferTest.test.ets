@@ -214,7 +214,7 @@ export default function UsbApiInterruptTransferTest() {
             await usbMgr.usbSubmitTransfer(transferParams);
             console.info(TAG, 'interrupt testUsbSubmitTransfer003 end');
         } catch (error) {
-            expect(error.message).assertEqual('error');
+            expect().assertFail();
             console.error('interrupt error:', error);
         }
     });
@@ -247,6 +247,7 @@ export default function UsbApiInterruptTransferTest() {
             usbMgr.closePipe(devices);
             done()
         } catch (error) {
+            expect().assertFail();
             console.error('interrupt error:', error);
         }
     });
