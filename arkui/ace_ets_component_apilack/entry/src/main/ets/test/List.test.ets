@@ -47,7 +47,6 @@ import rectNeJsunit from './rect.test.ets';
 import scrollOnScrollBeginJsunit from './scroll.test.ets';
 import searchOnCutJsunit from './search.test.ets'
 import selectOnSelectJsunit from './select.test.ets';
-import sideBarShowSideBarJsunit from './sideBar.test.ets';
 import stackAlignContentJsunit from './stack.test.ets';
 import stateManagementGetSharedJsunit from './stateManagement.test.ets';
 import swiperCurveJsunit from './swiper.test.ets';
@@ -92,7 +91,6 @@ export default function testsuite() {
   scrollOnScrollBeginJsunit()
   searchOnCutJsunit()
   selectOnSelectJsunit()
-  sideBarShowSideBarJsunit()
   stackAlignContentJsunit()
   stateManagementGetSharedJsunit()
   swiperCurveJsunit()

@@ -14,7 +14,9 @@
  */
 
 import StepperTest1 from './Stepper/StepperTest1.test'
+import sideBarShowSideBarJsunit from './sideBar.test.ets'
 
 export default function testsuite() {
   StepperTest1()
+  sideBarShowSideBarJsunit()
 }
