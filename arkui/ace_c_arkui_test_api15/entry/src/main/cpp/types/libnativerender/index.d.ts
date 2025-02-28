@@ -62,3 +62,6 @@ export const testLazyForEachExpandMode007: (a: string) => void;
 export const testLazyForEachExpandMode008: (a: string) => void;
 
 export const testLazyForEachExpandMode009: (a: string) => void;
+export const gesturecancelTest: (a: string) => void;
+
+export const GetTouchEventData: () => object;

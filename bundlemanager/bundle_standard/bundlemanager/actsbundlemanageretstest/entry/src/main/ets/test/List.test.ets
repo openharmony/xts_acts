@@ -16,6 +16,7 @@ import getLaunchWantForBundle from './GetLaunchWantForBundle.test.ets';
 import getabilityInfo from './GetabilityInfo.test.ets';
 import getApplicationInfoJsunit from './getApplicationInfoJsunit.test.ets';
 import getAllAppInfoJsunit from './getAllApplicationInfoJsunit.test.ets';
+import getAppCloneIdentity from "./getAppCloneIdentity.test.ets";
 import getAbilityLabelJsUnit from "./GetAbilityLabelJsUnit.test.ets";
 import isAbilityEnableETSUnit from "./IsAbilityEnabledETSUnit.ets";
 import isApplicationEnabledETSUnit from "./IsApplicationEnabledETSUnit.ets";
@@ -40,4 +41,5 @@ export default function testsuite() {
   isApplicationEnabledETSUnit();
   getBundleArchiveInfo();
   getLaunchWant();
+  getAppCloneIdentity();
 }

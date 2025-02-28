@@ -22,6 +22,7 @@ add_library(nativerender SHARED
     node/node_handle_by_id_test.cpp
     window/get_window_info_test.cpp
     lazyForEach/lazyforeach_expand_mode_test.cpp
+    gesturetouchcancel/gesture_cancel.cpp
 )
 
 add_library(nativefunc SHARED

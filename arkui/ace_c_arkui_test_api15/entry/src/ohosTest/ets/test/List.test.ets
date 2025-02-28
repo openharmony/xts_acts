@@ -31,6 +31,7 @@ import columnBackDropBlurTest from "./visual/columnBackDropBlurTest.test"
 import nodeHandleByIdTest from "./node/NodeHandleByIdTest.test"
 import getWindowInfoTest from "./window/GetWindowInfoTest.test"
 import testLazyForEachExpandMode from "./lazyForEach/testLazyForEachExpandMode.test"
+import gesturecancelTest from "./gesturecancelTest/gesturecancelTest.test"
 
 
 export default function testsuite() {
@@ -50,4 +51,5 @@ export default function testsuite() {
    nodeHandleByIdTest();
    getWindowInfoTest();
    testLazyForEachExpandMode();
+   gesturecancelTest();
 }
