@@ -2225,8 +2225,8 @@ export class KeyboardController {
     };
     try{
       let enhancedPanelRect: inputMethodEngine.EnhancedPanelRect = {
-        landscapeRect: { left: 0, top: 500, width: 400, height: 300},
-        portraitRect: { left: 0, top: 1500, width: 300, height: 2100},
+        landscapeRect: { left: 0, top: 500, width: 400, height: this.display_info.width},
+        portraitRect: { left: 0, top: 1500, width: 300, height: this.display_info.height},
         landscapeAvoidY: 20,
         landscapeInputRegion:[{ left: 0, top: 500, width: this.display_info.height, height: 600},{ left: 0, top: 247, width: this.display_info.height, height: 150}],
         portraitAvoidY: 20,
