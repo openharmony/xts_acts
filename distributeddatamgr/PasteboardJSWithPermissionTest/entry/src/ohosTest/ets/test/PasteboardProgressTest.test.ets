@@ -113,7 +113,7 @@ export default function PasteboardProgressTest() {
         })
       } catch (err) {
         console.info(TAG + 'getDataWithProgress fail,err：' + err.code + ',message: ' + err.message);
-		expect().assertFail();
+        expect().assertFail();
       }
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0200 end ************')
     })
@@ -144,7 +144,8 @@ export default function PasteboardProgressTest() {
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length);
       let params: pasteboard.GetDataParams = {
         destUri: dstUri,
-        progressIndicator: 1
+        progressIndicator: 1,
+        fileConflictOptions: 0
       };
       try {
         await systemPasteboard.getDataWithProgress(params).then((data) => {
@@ -158,7 +159,7 @@ export default function PasteboardProgressTest() {
         })
       } catch (err) {
         console.info(TAG + 'getDataWithProgress fail,err：' + err.code + ',message: ' + err.message);
-		expect().assertFail();
+        expect().assertFail();
       }
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0200 end ************')
     })
@@ -225,7 +226,8 @@ export default function PasteboardProgressTest() {
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length);
       let params: pasteboard.GetDataParams = {
         destUri: dstUri,
-        progressIndicator: 1
+        progressIndicator: 1,
+        fileConflictOptions: 1
       };
       try {
         await systemPasteboard.getDataWithProgress(params).then((data) => {
@@ -239,7 +241,7 @@ export default function PasteboardProgressTest() {
         })
       } catch (err) {
         console.info(TAG + 'getDataWithProgress fail,err：' + err.code + ',message: ' + err.message);
-		expect().assertFail();
+        expect().assertFail();
       }
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0500 end ************')
     })
@@ -353,8 +355,8 @@ export default function PasteboardProgressTest() {
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length);
       let params: pasteboard.GetDataParams = {
         destUri: dstUri,
-        progressIndicator: 1,
-        fileConflictOptions: 0,
+        progressIndicator: 0,
+        fileConflictOptions: pasteboard.FileConflictOptions.OVERWRITE,
       };
       try {
         await systemPasteboard.getDataWithProgress(params).then((data) => {
@@ -397,8 +399,8 @@ export default function PasteboardProgressTest() {
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length);
       let params: pasteboard.GetDataParams = {
         destUri: dstUri,
-        progressIndicator: 1,
-        fileConflictOptions: 1,
+        progressIndicator: 0,
+        fileConflictOptions: pasteboard.FileConflictOptions.SKIP,
       };
       try {
         await systemPasteboard.getDataWithProgress(params).then((data) => {
@@ -441,7 +443,7 @@ export default function PasteboardProgressTest() {
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length);
       let params: pasteboard.GetDataParams = {
         destUri: dstUri,
-        progressIndicator: 1,
+        progressIndicator: 0,
         fileConflictOptions: 3,
       };
       try {
@@ -528,7 +530,7 @@ export default function PasteboardProgressTest() {
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length);
       let params: pasteboard.GetDataParams = {
         destUri: dstUri,
-        progressIndicator: 0,
+        progressIndicator: pasteboard.ProgressIndicator.NONE,
       };
       try {
         await systemPasteboard.getDataWithProgress(params).then((data) => {
@@ -571,7 +573,7 @@ export default function PasteboardProgressTest() {
       console.info(TAG + 'dstUri: ' + dstUri + ' length: ' + dstUri.length);
       let params: pasteboard.GetDataParams = {
         destUri: dstUri,
-        progressIndicator: 0,
+        progressIndicator: pasteboard.ProgressIndicator.DEFAULT,
       };
       try {
         await systemPasteboard.getDataWithProgress(params).then((data) => {
