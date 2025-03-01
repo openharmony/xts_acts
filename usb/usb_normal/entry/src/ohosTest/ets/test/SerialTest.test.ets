@@ -42,6 +42,8 @@ export default function SerialTest() {
             await button.click();
             await sleep(500);
           }
+        } else {
+          done();
         }
       } catch (error) {
         console.info(TAG, 'beforeAll error: ', JSON.stringify(error));
