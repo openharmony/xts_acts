@@ -15,7 +15,7 @@
 
 import stationary from "@ohos.stationary"
 import { describe, it, expect } from '@ohos/hypium'
-const MSEC_1000 = 1000;
+let reportLatencyNs = 1000000000;
 
 export default function DeviceStatusUnitTest() {
     describe('DeviceStatusUnitTest', function () {
@@ -33,190 +33,214 @@ export default function DeviceStatusUnitTest() {
         }
 
         /**
-         * @tc.number DeviceStatus_001
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
+         * @tc.number    : SUB_MSDP_DeviceStatus_API_Stationary_0100
+         * @tc.name      : SUB_MSDP_DeviceStatus_API_Stationary_0100
+         * @tc.desc      : Stationary callback interface test
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
          */
-        it('msdp_test_devices_status_001', 0, function (done) {
-            console.log("msdp_test_devices_status_001 on start");
+        it('SUB_MSDP_DeviceStatus_API_Stationary_0100', 0, function (done) {
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0100 on start");
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
-                stationary.on("still", 3, 1, pub_callback);
+                stationary.on("still", stationary.ActivityEvent.ENTER_EXIT, reportLatencyNs, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
+                expect().assertFail();
                 done();
             }
-            console.log("msdp_test_devices_status_001 once start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0100 once start");
             try {
                 p_done = done;
                 stationary.once("still", pub_callback);
             } catch (error) {
                 console.error('error=' + error);
+                expect().assertFail();
                 done();
             }
-            console.log("msdp_test_devices_status_001 off start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0100 off start");
             setTimeout(function () {
                 try {
                     p_done = done;
-                    stationary.off("still", 3, pub_callback);
-                    expect(true).assertTrue();
+                    stationary.off("still", stationary.ActivityEvent.ENTER_EXIT, pub_callback);
                     p_done();
                 } catch (error) {
                     console.error('error=' + error);
+                    expect().assertFail();
                     done();
                 }
             }, 200);
         })
 
         /**
-         * @tc.number DeviceStatus_002
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
+         * @tc.number    : SUB_MSDP_DeviceStatus_API_Stationary_0200
+         * @tc.name      : SUB_MSDP_DeviceStatus_API_Stationary_0200
+         * @tc.desc      : Stationary callback interface test
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
          */
-        it('msdp_test_devices_status_002', 0, function (done) {
-            console.log("msdp_test_devices_status_002 on start");
+        it('SUB_MSDP_DeviceStatus_API_Stationary_0200', 0, function (done) {
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0200 on start");
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
-                stationary.on("relativeStill", 3, 1, pub_callback);
+                stationary.on("relativeStill", stationary.ActivityEvent.EXIT, reportLatencyNs, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
+                expect().assertFail();
                 done();
             }
-            console.log("msdp_test_devices_status_002 once start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0200 once start");
             try {
                 p_done = done;
                 stationary.once("relativeStill", pub_callback);
             } catch (error) {
                 console.error('error=' + error);
+                expect().assertFail();
                 done();
             }
-            console.log("msdp_test_devices_status_002 off start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0200 off start");
             setTimeout(function () {
                 try {
                     p_done = done;
-                    stationary.off("relativeStill", 3, pub_callback);
-                    expect(true).assertTrue();
+                    stationary.off("relativeStill", stationary.ActivityEvent.EXIT, pub_callback);
                     p_done();
                 } catch (error) {
                     console.error('error=' + error);
+                    expect().assertFail();
                     done();
                 }
             }, 200);
         })
 
         /**
-         * @tc.number DeviceStatus_003
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
+         * @tc.number    : SUB_MSDP_DeviceStatus_API_Stationary_0300
+         * @tc.name      : SUB_MSDP_DeviceStatus_API_Stationary_0300
+         * @tc.desc      : Stationary callback interface test
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
          */
-        it('msdp_test_devices_status_003', 0, function (done) {
-            console.log("msdp_test_devices_status_003 on start");
+        it('SUB_MSDP_DeviceStatus_API_Stationary_0300', 0, function (done) {
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0300 on start");
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
-                stationary.on("Type_Unknow", 3, 1, pub_callback);
+                stationary.on("Type_Unknow", stationary.ActivityEvent.ENTER_EXIT, reportLatencyNs, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
+                console.info(`stationary.on fail: ${JSON.stringify(error, ['code', 'message'])}`);
+                expect(error.code).assertEqual(401);
                 done();
             }
-            console.log("msdp_test_devices_status_003 once start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0300 once start");
             try {
                 p_done = done;
                 stationary.once("Type_Unknow", pub_callback);
             } catch (error) {
                 console.error('error=' + error);
+                console.info(`stationary.once fail: ${JSON.stringify(error, ['code', 'message'])}`);
+                expect(error.code).assertEqual(401);
                 done();
             }
-            console.log("msdp_test_devices_status_003 off start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0300 off start");
             setTimeout(function () {
                 try {
                     p_done = done;
-                    stationary.off("Type_Unknow", 3, pub_callback);
-                    expect(true).assertTrue();
+                    stationary.off("Type_Unknow", stationary.ActivityEvent.ENTER_EXIT, pub_callback);
                     p_done();
                 } catch (error) {
                     console.error('error=' + error);
+                    console.info(`stationary.once fail: ${JSON.stringify(error, ['code', 'message'])}`);
+                    expect(error.code).assertEqual(401);
                     done();
                 }
             }, 200);
         })
 
         /**
-         * @tc.number DeviceStatus_004
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
+         * @tc.number    : SUB_MSDP_DeviceStatus_API_Stationary_0400
+         * @tc.name      : SUB_MSDP_DeviceStatus_API_Stationary_0400
+         * @tc.desc      : Stationary callback interface test
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
          */
-        it('msdp_test_devices_status_004', 0, function (done) {
-            console.log("msdp_test_devices_status_004 on start");
+        it('SUB_MSDP_DeviceStatus_API_Stationary_0400', 0, function (done) {
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0400 on start");
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
-                stationary.on("relativeStill", 3, 1, pub_callback);
+                stationary.on("relativeStill", stationary.ActivityEvent.ENTER, reportLatencyNs, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
+                expect().assertFail();
                 done();
             }
-            console.log("msdp_test_devices_status_004 once start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0400 once start");
             try {
                 p_done = done;
                 stationary.once("relativeStill", pub_callback);
             } catch (error) {
                 console.error('error=' + error);
+                expect().assertFail();
                 done();
             }
-            console.log("msdp_test_devices_status_004 off start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0400 off start");
             setTimeout(function () {
                 try {
                     p_done = done;
-                    stationary.off("relativeStill", 1, pub_callback);
-                    expect(true).assertTrue();
+                    stationary.off("relativeStill", stationary.ActivityEvent.ENTER, pub_callback);
                     p_done();
                 } catch (error) {
                     console.error('error=' + error);
+                    expect().assertFail();
                     done();
                 }
             }, 200);
         })
 
         /**
-         * @tc.number DeviceStatus_005
-         * @tc.name
-         * @tc.callback:AsyncCallback<HighStillResponse>
-         * parameter unknown
+         * @tc.number    : SUB_MSDP_DeviceStatus_API_Stationary_0500
+         * @tc.name      : SUB_MSDP_DeviceStatus_API_Stationary_0500
+         * @tc.desc      : Stationary callback interface test
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
          */
-        it('msdp_test_devices_status_005', 0, function (done) {
-            console.log("msdp_test_devices_status_005 on start");
+        it('SUB_MSDP_DeviceStatus_API_Stationary_0500', 0, function (done) {
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0500 on start");
             console.log(JSON.stringify(stationary));
             try {
                 p_done = done;
-                stationary.on("relativeStill", 3, 1, pub_callback);
+                stationary.on("relativeStill", stationary.ActivityEvent.EXIT, 1, pub_callback);
             } catch (error) {
                 console.error('error Log' + error);
+                console.info(`stationary.on fail: ${JSON.stringify(error, ['code', 'message'])}`);
+                expect(error.code).assertEqual(401);
                 done();
             }
-            console.log("msdp_test_devices_status_005 once start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0500 once start");
             try {
                 p_done = done;
                 stationary.once("relativeStill", pub_callback);
             } catch (error) {
                 console.error('error=' + error);
+                expect().assertFail();
                 done();
             }
-            console.log("msdp_test_devices_status_005 off start");
+            console.log("SUB_MSDP_DeviceStatus_API_Stationary_0500 off start");
             setTimeout(function () {
                 try {
                     p_done = done;
-                    stationary.off("relativeStill", 2, pub_callback);
-                    expect(true).assertTrue();
+                    stationary.off("relativeStill", stationary.ActivityEvent.EXIT, pub_callback);
                     p_done();
                 } catch (error) {
                     console.error('error=' + error);
+                    expect().assertFail();
                     done();
                 }
             }, 200);
