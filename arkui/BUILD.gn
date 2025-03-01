@@ -14,8 +14,8 @@
 group("arkui") {
   testonly = true
   deps = [
-    "ace_c_arkui_nowear_test_api15:ActsAceCArkUINoWear15Test",
     "ace_c_accessibility_api_16:ActsAceCapiInspector16Test",
+    "ace_c_arkui_nowear_test_api15:ActsAceCArkUINoWear15Test",
     "ace_c_arkui_test:ActsAceCArkUITest",
     "ace_c_arkui_test_api13:ActsAceCArkUI13Test",
     "ace_c_arkui_test_api14:ActsAceCArkUI14Test",
