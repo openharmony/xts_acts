@@ -22,7 +22,7 @@ import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
 import buttonTypeTest from './button/ButtonTypeTest.test'
 import DragTest from "./drag/DragCaseTest.test"
 import calendarPickerTest from "./calendarPicker/CalendarPickerMarkTodayTest.test"
-import textInputWordBreakTest from "./textinput/TextInputWordBreakTest.test"
+import textInputWordBreakTest from "./textInput/TextInputWordBreakTest.test"
 
 export default function testsuite() {
   postFrameCallbackTest();
