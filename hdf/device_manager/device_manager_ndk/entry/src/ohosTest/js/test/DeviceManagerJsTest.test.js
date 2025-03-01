@@ -210,7 +210,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testBindDevicesCallBack001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it('testBindDevicesCallBack001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info(TAG, '----------------------testBindDevicesCallBack001---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
