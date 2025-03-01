@@ -87,6 +87,7 @@ public:
     NDKCamera(char *str);
 
     bool IsMirror_;
+    bool IsVideoMirror_;
     bool HasFlash_;
     bool IsFlashMode_;
     bool IsExposureMode_;
