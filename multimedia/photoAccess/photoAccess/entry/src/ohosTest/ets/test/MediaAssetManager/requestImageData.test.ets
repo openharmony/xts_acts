@@ -234,5 +234,37 @@ export default function requestImageDataTest() {
         done();
       }
     });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_IMAGE_DATA_0500
+     * @tc.name      : request_image_data_005
+     * @tc.desc      : request image data with balanceMode and editedMode
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_image_data_005', 0, async (done: Function) => {
+      let testNum = 'request_image_data_005';
+      try {
+        let photoAsset = null;
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayBuffer> {
+          onDataPrepared(data  : ArrayBuffer) {
+            done();
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+          deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
+          sourceMode: photoAccessHelper.SourceMode.EDITED_MODE,
+        }
+        const handler = new MediaHandler;
+        photoAccessHelper.MediaAssetManager.requestImageData(null, photoAsset, requestOptions, handler)
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.log(`${testNum} success; error.code: ${error.code}`); 
+        expect(error.code).assertEqual(`401`);
+        done();
+      }
+    });
   });
 }
