@@ -15,7 +15,7 @@
 
 import deviceManager from '@ohos.driver.deviceManager'
 import usbManager from '@ohos.usbManager'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function DeviceManagerJsTest(){
 describe("DeviceManagerJsTest", function () {
