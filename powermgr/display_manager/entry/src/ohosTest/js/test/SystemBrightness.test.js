@@ -369,6 +369,27 @@ export default function SystemBrightnessTest() {
     });
 
     /**
+     * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0131
+     * @tc.name testSystemBrightnessTest_1310
+     * @tc.desc Set brightness success
+     * @tc.level: Level 3
+     * @tc.type: Function
+     * @tc.size: MediumTest
+     */
+    it('SystemBrightnessTest_1310', 0, async (done) => {
+      let TAG = 'SystemBrightnessTest_1310';
+      try {
+        brightness.setValue();
+        console.info(`${TAG} setValue!`);
+        done();
+      } catch (error) {
+        console.error(`${TAG} error: ${error.code} ${error.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
      * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0140
      * @tc.name testSystemBrightnessTest_1400
      * @tc.desc Get brightness success
@@ -507,6 +528,27 @@ export default function SystemBrightnessTest() {
           console.info(`${TAG} getValue complete`);
         }
       });
+    });
+
+    /**
+     * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0191
+     * @tc.name testSystemBrightnessTest_1910
+     * @tc.desc Get brightness success
+     * @tc.level: Level 3
+     * @tc.type: Function
+     * @tc.size: MediumTest
+     */
+    it('SystemBrightnessTest_1910', 0, async (done) => {
+      let TAG = 'SystemBrightnessTest_1910';
+      try {
+        brightness.getMode();
+        console.info(`${TAG} getMode!`);
+        done();
+      } catch (error) {
+        console.error(`${TAG} error: ${error.code} ${error.message}`);
+        expect().assertFail();
+        done();
+      }
     });
 
     /**
@@ -656,6 +698,27 @@ export default function SystemBrightnessTest() {
     });
 
     /**
+     * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0241
+     * @tc.name testSystemBrightnessTest_2410
+     * @tc.desc Get brightness success
+     * @tc.level: Level 3
+     * @tc.type: Function
+     * @tc.size: MediumTest
+     */
+    it('SystemBrightnessTest_2410', 0, async (done) => {
+      let TAG = 'SystemBrightnessTest_2410';
+      try {
+        brightness.setMode();
+        console.info(`${TAG} setMode!`);
+        done();
+      } catch (error) {
+        console.error(`${TAG} error: ${error.code} ${error.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
      * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0250
      * @tc.name testSystemBrightnessTest_2500
      * @tc.desc Get brightness success
@@ -731,6 +794,27 @@ export default function SystemBrightnessTest() {
           done();
         }
       });
+    });
+
+    /**
+     * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0271
+     * @tc.name testSystemBrightnessTest_2710
+     * @tc.desc Get brightness success
+     * @tc.level: Level 3
+     * @tc.type: Function
+     * @tc.size: MediumTest
+     */
+    it('SystemBrightnessTest_2710', 0, async (done) => {
+      let TAG = 'SystemBrightnessTest_2710';
+      try {
+        brightness.setKeepScreenOn();
+        console.info(`${TAG} setKeepScreenOn!`);
+        done();
+      } catch (error) {
+        console.error(`${TAG} error: ${error.code} ${error.message}`);
+        expect().assertFail();
+        done();
+      }
     });
   })
 }
