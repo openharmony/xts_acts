@@ -84,7 +84,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testQueryDevices001', 0, function () {
+    it('testQueryDevices001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info(TAG, '----------------------testQueryDevices001---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -113,7 +113,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testQueryDevices002', 0, function () {
+    it('testQueryDevices002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, '----------------------testQueryDevices002---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -138,7 +138,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testQueryDevices003', 0, function () {
+    it('testQueryDevices003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, '----------------------testQueryDevices003---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -162,7 +162,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testQueryDevices004', 0, function () {
+    it('testQueryDevices004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, '----------------------testQueryDevices004---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -186,7 +186,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testQueryDevices005', 0, function () {
+    it('testQueryDevices005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, '----------------------testQueryDevices005---------------------------');
         if (isDeviceConnected) {
             expect(isDeviceConnected).assertTrue();
@@ -210,7 +210,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testBindDevicesCallBack001', 0, async function (done) {
+    it('testBindDevicesCallBack001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG, '----------------------testBindDevicesCallBack001---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -242,7 +242,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testBindDevicesCallBack002', 0, async function (done) {
+    it('testBindDevicesCallBack002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info(TAG, '----------------------testBindDevicesCallBack002---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -274,7 +274,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testBindDeviceDriverCallBack001', 0, async function (done) {
+    it('testBindDeviceDriverCallBack001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG, '----------------------testBindDeviceDriverCallBack001---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -306,7 +306,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testBindDeviceDriverCallBack002', 0, async function (done) {
+    it('testBindDeviceDriverCallBack002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info(TAG, '----------------------testBindDeviceDriverCallBack002---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -338,7 +338,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testBindDevicesPromise001', 0, async function (done) {
+    it('testBindDevicesPromise001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG, '----------------------testBindDevicesPromise001---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -365,7 +365,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testBindDevicesPromise002', 0, async function (done) {
+    it('testBindDevicesPromise002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info(TAG, '----------------------testBindDevicesPromise002---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -392,7 +392,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testBindDevicesPromise003', 0, async function (done) {
+    it('testBindDevicesPromise003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info(TAG, '----------------------testBindDevicesPromise003---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -419,7 +419,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testBindDevicesPromise004', 0, async function (done) {
+    it('testBindDevicesPromise004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info(TAG, '----------------------testBindDevicesPromise004---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -453,7 +453,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testBindDevicesPromise005', 0, async function (done) {
+    it('testBindDevicesPromise005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info(TAG, '----------------------testBindDevicesPromise005---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -487,7 +487,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-     it('testBindDeviceDriverPromise001', 0, async function (done) {
+     it('testBindDeviceDriverPromise001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG, '----------------------testBindDeviceDriverPromise001---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -526,7 +526,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testBindDeviceDriverPromise002', 0, async function (done) {
+    it('testBindDeviceDriverPromise002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info(TAG, '----------------------testBindDeviceDriverPromise002---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -560,7 +560,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testBindDeviceDriverPromise003', 0, async function (done) {
+    it('testBindDeviceDriverPromise003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info(TAG, '----------------------testBindDeviceDriverPromise003---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -594,7 +594,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-     it('testUnbindDevicesCallBack001', 0, async function (done) {
+     it('testUnbindDevicesCallBack001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG, '----------------------testUnbindDevicesCallBack001---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -622,7 +622,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testUnbindDevicesCallBack002', 0, async function (done) {
+    it('testUnbindDevicesCallBack002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info(TAG, '----------------------testUnbindDevicesCallBack002---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -650,7 +650,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-     it('testUnbindDevicesPromise001', 0, async function (done) {
+     it('testUnbindDevicesPromise001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG, '----------------------testUnbindDevicesPromise001---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -677,7 +677,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-     it('testUnbindDevicesPromise002', 0, async function (done) {
+     it('testUnbindDevicesPromise002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info(TAG, '----------------------testUnbindDevicesPromise002---------------------------');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
