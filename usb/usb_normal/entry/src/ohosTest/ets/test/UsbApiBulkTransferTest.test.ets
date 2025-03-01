@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, afterAll, beforeEach, describe, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import usbMgr from '@ohos.usbManager';
 import { UiDriver, BY } from '@ohos.UiTest';
 
@@ -125,7 +125,7 @@ export default function UsbApiBulkTransferTest() {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbSubmitTransfer001', 0, async (done: Function) => {
+    it('testUsbSubmitTransfer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         console.info(TAG, 'bulk testUsbSubmitTransfer001 enter');
         if (!isDeviceConnected) {
 			console.info(TAG, 'usb testUsbSubmitTransfer001 No device is connected');
@@ -163,7 +163,7 @@ export default function UsbApiBulkTransferTest() {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbSubmitTransfer002', 0, async (done: Function) => {
+    it('testUsbSubmitTransfer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         console.info(TAG, 'bulk testUsbSubmitTransfer002 enter');
         if (!isDeviceConnected) {
 			console.info(TAG, 'usb testUsbSubmitTransfer002 No device is connected');
@@ -201,7 +201,7 @@ export default function UsbApiBulkTransferTest() {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbSubmitTransfer003', 0, async (done: Function) => {
+    it('testUsbSubmitTransfer003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
         console.info(TAG, 'bulk testUsbSubmitTransfer003 enter');
         if (!isDeviceConnected) {
 			console.info(TAG, 'usb testUsbSubmitTransfer003 No device is connected');
@@ -235,7 +235,7 @@ export default function UsbApiBulkTransferTest() {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbSubmitTransfer004', 0, async (done: Function) => {
+    it('testUsbSubmitTransfer004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
         console.info(TAG, 'bulk testUsbSubmitTransfer004 enter');
         if (!isDeviceConnected) {
 			console.info(TAG, 'usb testUsbSubmitTransfer004 No device is connected');
@@ -270,7 +270,7 @@ export default function UsbApiBulkTransferTest() {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbCancelTransfer001', 0, async (done: Function) => {
+    it('testUsbCancelTransfer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         console.info(TAG, 'bulk testUsbCancelTransfer001 enter');
         if (!isDeviceConnected) {
 			console.info(TAG, 'usb testUsbCancelTransfer001 No device is connected');
@@ -304,7 +304,7 @@ export default function UsbApiBulkTransferTest() {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testUsbCancelTransfer002', 0, async (done: Function) => {
+    it('testUsbCancelTransfer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
         console.info(TAG, 'bulk testUsbCancelTransfer002 enter');
         if (!isDeviceConnected) {
 			console.info(TAG, 'usb testUsbCancelTransfer002 No device is connected');
