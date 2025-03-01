@@ -24,6 +24,7 @@ import {
 } from '../common'
 import common from '@ohos.app.ability.common'
 
+
 export default function getAssetsTest () {
 
   describe('getAssetsTest', () => {

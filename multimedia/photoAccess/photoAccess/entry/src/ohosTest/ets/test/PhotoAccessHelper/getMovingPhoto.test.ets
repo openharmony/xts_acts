@@ -25,6 +25,7 @@ import {
 } from '../common';
 import common from '@ohos.app.ability.common';
 
+
 export default function getMovingPhotoTest() {
   describe("getMovingPhotoTest", () => {
     beforeAll(async () => {
