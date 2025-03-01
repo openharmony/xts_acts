@@ -6141,6 +6141,20 @@ export const testTextDecoration015: () => number;
 
 export const testTextDecoration016: () => number;
 
+export const testTextWordBreak001: () => number;
+
+export const testTextWordBreak002: () => number;
+
+export const testTextWordBreak003: () => number;
+
+export const testTextWordBreak004: () => number;
+
+export const testTextWordBreak005: () => number;
+
+export const testTextWordBreak006: () => number;
+
+export const testTextWordBreak007: () => number;
+
 export const testTextLineSpacing001: () => number;
 
 export const testTextLineSpacing002: () => number;
