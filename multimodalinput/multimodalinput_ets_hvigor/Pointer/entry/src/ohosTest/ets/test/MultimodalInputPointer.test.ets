@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import pointer from '@ohos.multimodalInput.pointer';
 import { BusinessError }  from '@ohos.base';
 import window from '@ohos.window';
@@ -468,7 +468,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0200", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0200";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -502,7 +502,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0300", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0300";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -535,7 +535,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0400", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0400";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -568,7 +568,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0500", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0500";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -601,7 +601,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0600", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0600";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -634,7 +634,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0700", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0700";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -667,7 +667,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0800", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0800";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -700,7 +700,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0900", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0900";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -733,7 +733,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1000", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_1000";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -766,7 +766,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_1100";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -798,7 +798,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1200", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_1200";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -834,7 +834,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1300", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_1300";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -867,7 +867,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1400", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_1400";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -900,7 +900,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1500", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_1500";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -933,7 +933,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1600", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_1600";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -966,7 +966,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1700", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_1700";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -999,7 +999,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1800", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_1800";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
@@ -1032,7 +1032,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1900", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_1900";
       getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
         const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
