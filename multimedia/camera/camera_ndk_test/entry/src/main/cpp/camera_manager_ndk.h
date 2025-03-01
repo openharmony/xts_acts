@@ -175,6 +175,8 @@ public:
     Camera_ErrorCode IsMirrorSupported(void);
     Camera_ErrorCode VideoOutputStop(void);
     Camera_ErrorCode VideoOutputRelease(void);
+    Camera_ErrorCode IsVideoMirrorSupported(void);
+    Camera_ErrorCode EnableVideoMirror(bool isEnable);    
     Camera_ErrorCode MetadataOutputStart(void);
     Camera_ErrorCode MetadataOutputStop(void);
     Camera_ErrorCode MetadataOutputRelease(void);
