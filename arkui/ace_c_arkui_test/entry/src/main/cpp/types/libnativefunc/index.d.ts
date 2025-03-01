@@ -6141,20 +6141,6 @@ export const testTextDecoration015: () => number;
 
 export const testTextDecoration016: () => number;
 
-export const testTextWordBreak001: () => number;
-
-export const testTextWordBreak002: () => number;
-
-export const testTextWordBreak003: () => number;
-
-export const testTextWordBreak004: () => number;
-
-export const testTextWordBreak005: () => number;
-
-export const testTextWordBreak006: () => number;
-
-export const testTextWordBreak007: () => number;
-
 export const testTextLineSpacing001: () => number;
 
 export const testTextLineSpacing002: () => number;
@@ -7052,12 +7038,6 @@ export const testTextInputUnderlineColor002 : () =>number;
 export const testTextInputFontFeature001 : () =>number;
 export const testTextInputFontFeature002 : () =>number;
 export const testTextInputFontFeature003 : () =>number;
-export const testTextInputWordBreak001 : () =>number;
-export const testTextInputWordBreak002 : () =>number;
-export const testTextInputWordBreak003 : () =>number;
-export const testTextInputWordBreak004 : () =>number;
-export const testTextInputWordBreak005 : () =>number;
-export const testTextInputWordBreak006 : () =>number;
 export const testTextInputStyle001 : () => number;
 export const testTextInputStyle002 : () => number;
 export const testTextInputStyle003 : () => number;

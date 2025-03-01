@@ -659,7 +659,6 @@
 #include "textinput/textinput_textselection_test.cpp"
 #include "textinput/textinput_underlinecolor_test.cpp"
 #include "textinput/textinput_fontfeature_test.cpp"
-#include "textinput/textinput_wordbreak_test.cpp"
 #include "textinput/textinput_style_test.cpp"
 #include "textinput/textinput_enableautofill_test.cpp"
 #include "textinput/textinput_contenttype_test.cpp"
@@ -6489,18 +6488,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testTextInputFontFeature002", nullptr, TestTextInputFontFeature002, nullptr, nullptr, nullptr,
          napi_default, nullptr },
         {"testTextInputFontFeature003", nullptr, TestTextInputFontFeature003, nullptr, nullptr, nullptr,
-         napi_default, nullptr },
-        {"testTextInputWordBreak001", nullptr, TestTextInputWordBreak001, nullptr, nullptr, nullptr,
-         napi_default, nullptr },
-        {"testTextInputWordBreak002", nullptr, TestTextInputWordBreak002, nullptr, nullptr, nullptr,
-         napi_default, nullptr },
-        {"testTextInputWordBreak003", nullptr, TestTextInputWordBreak003, nullptr, nullptr, nullptr,
-         napi_default, nullptr },
-        {"testTextInputWordBreak004", nullptr, TestTextInputWordBreak004, nullptr, nullptr, nullptr,
-         napi_default, nullptr },
-        {"testTextInputWordBreak005", nullptr, TestTextInputWordBreak005, nullptr, nullptr, nullptr,
-         napi_default, nullptr },
-        {"testTextInputWordBreak006", nullptr, TestTextInputWordBreak005, nullptr, nullptr, nullptr,
          napi_default, nullptr },
         {"testTextInputStyle001", nullptr, TestTextInputStyle001, nullptr, nullptr, nullptr, napi_default, nullptr },
         {"testTextInputStyle002", nullptr, TestTextInputStyle002, nullptr, nullptr, nullptr, napi_default, nullptr },

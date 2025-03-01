@@ -22,6 +22,7 @@ import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
 import buttonTypeTest from './button/ButtonTypeTest.test'
 import DragTest from "./drag/DragCaseTest.test"
 import calendarPickerTest from "./calendarPicker/CalendarPickerMarkTodayTest.test"
+import textInputWordBreakTest from "./textinput/TextInputWordBreakTest.test"
 
 export default function testsuite() {
   postFrameCallbackTest();
@@ -34,4 +35,5 @@ export default function testsuite() {
   buttonTypeTest();
   DragTest();
   calendarPickerTest();
+  textInputWordBreakTest();
 }
