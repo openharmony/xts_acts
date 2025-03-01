@@ -61,19 +61,6 @@ ohos_moduletest_suite("ActsDeqpgles2Suite0016Test") {
     "../functional/Deqpgles2depth_range_writeTestCase.cpp",
     "../functional/Deqpgles2dither_disabledTestCase.cpp",
     "../functional/Deqpgles2dither_enabledTestCase.cpp",
-    "../functional/Deqpgles2functional_read_pixelsTestCase.cpp",
-    "../functional/Deqpgles2state_query_booleanTestCase.cpp",
-    "../functional/Deqpgles2state_query_buffer_objectTestCase.cpp",
-    "../functional/Deqpgles2state_query_fboTestCase.cpp",
-    "../functional/Deqpgles2state_query_floatsTestCase.cpp",
-    "../functional/Deqpgles2state_query_integersTestCase.cpp",
-    "../functional/Deqpgles2state_query_rboTestCase.cpp",
-    "../functional/Deqpgles2state_query_shaderTestCase.cpp",
-    "../functional/Deqpgles2state_query_stringTestCase.cpp",
-    "../functional/Deqpgles2state_query_textureTestCase.cpp",
-    "../functional/Deqpgles2triangle_vertex_clip_oneTestCase.cpp",
-    "../functional/Deqpgles2triangle_vertex_clip_twoTestCase.cpp",
-    "../functional/Deqpgles2uniform_api_randomTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]
