@@ -17,7 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function chipDirectionTest() {
@@ -34,7 +34,7 @@ export default function chipDirectionTest() {
         if (!('ChipDirection' == pages.name)) {
           console.info("get chipDirectionTest pages.name: " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push chipDirectionTest page result successful");
         }
       }
@@ -42,13 +42,13 @@ export default function chipDirectionTest() {
         console.error("push chipDirectionTest page error: " + err);
         expect().assertFail();
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info('chipDirectionTest beforeEach end');
       done();
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info('chipDirectionTest after each called');
     });
 
