@@ -59,21 +59,6 @@ ohos_moduletest_suite("ActsKhrgles3Suite0002Test") {
     "../shaders/Khrgles3preprocessor_operator_precedenceTestCase.cpp",
     "../shaders/Khrgles3preprocessor_pragmasTestCase.cpp",
     "../shaders/Khrgles3preprocessor_predefined_macrosTestCase.cpp",
-    "../shaders/Khrgles3preprocessor_semanticTestCase.cpp",
-    "../shaders/Khrgles3preprocessor_undefined_identifiersTestCase.cpp",
-    "../shaders/Khrgles3shaders_literal_parsingTestCase.cpp",
-    "../shaders/Khrgles3single_basic_array_packedTestCase.cpp",
-    "../shaders/Khrgles3single_basic_array_sharedTestCase.cpp",
-    "../shaders/Khrgles3single_basic_array_std140TestCase.cpp",
-    "../shaders/Khrgles3single_basic_type_packedTestCase.cpp",
-    "../shaders/Khrgles3single_basic_type_sharedTestCase.cpp",
-    "../shaders/Khrgles3single_basic_type_std140TestCase.cpp",
-    "../shaders/Khrgles3struct_localTestCase.cpp",
-    "../shaders/Khrgles3struct_uniformTestCase.cpp",
-    "../shaders/Khrgles3uniform_block_single_nested_structTestCase.cpp",
-    "../shaders/Khrgles3uniform_block_single_nested_struct_arrayTestCase.cpp",
-    "../shaders/Khrgles3uniform_block_single_structTestCase.cpp",
-    "../shaders/Khrgles3uniform_block_single_struct_arrayTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

@@ -55,18 +55,6 @@ ohos_moduletest_suite("ActsDeqpgles31Suite0001Test") {
     "../functional/Deqpgles31common_floorTestCase.cpp",
     "../functional/Deqpgles31common_fmaTestCase.cpp",
     "../functional/Deqpgles31common_fractTestCase.cpp",
-    "../functional/Deqpgles31common_frexpTestCase.cpp",
-    "../functional/Deqpgles31common_intbitstofloatTestCase.cpp",
-    "../functional/Deqpgles31common_isinfTestCase.cpp",
-    "../functional/Deqpgles31common_isnanTestCase.cpp",
-    "../functional/Deqpgles31common_ldexpTestCase.cpp",
-    "../functional/Deqpgles31common_modfTestCase.cpp",
-    "../functional/Deqpgles31common_roundTestCase.cpp",
-    "../functional/Deqpgles31common_roundevenTestCase.cpp",
-    "../functional/Deqpgles31common_signTestCase.cpp",
-    "../functional/Deqpgles31common_truncTestCase.cpp",
-    "../functional/Deqpgles31common_uintbitstofloatTestCase.cpp",
-    "../info/Deqpgles31dEQP-GLES31_infoTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

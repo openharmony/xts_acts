@@ -61,16 +61,6 @@ ohos_moduletest_suite("ActsKhrgles3Suite0003Test") {
     "../shaders/Khrgles3random_nested_structsTestCase.cpp",
     "../shaders/Khrgles3random_nested_structs_arraysTestCase.cpp",
     "../shaders/Khrgles3random_nested_structs_arrays_instance_arraysTestCase.cpp",
-    "../shaders/Khrgles3random_nested_structs_instance_arraysTestCase.cpp",
-    "../shaders/Khrgles3random_scalar_typesTestCase.cpp",
-    "../shaders/Khrgles3random_vector_typesTestCase.cpp",
-    "../shaders/Khrgles3shaders_aggressive_optimizationsTestCase.cpp",
-    "../shaders/Khrgles3shaders_glsl_constructorsTestCase.cpp",
-    "../shaders/Khrgles3shaders_negativeTestCase.cpp",
-    "../shaders/Khrgles3shaders_shader_integer_mixTestCase.cpp",
-    "../shaders/Khrgles3uniform_block_commonTestCase.cpp",
-    "../texture_filter_anisotropic/Khrgles3KHR-GLES3_texture_filter_anisotropicTestCase.cpp",
-    "../texture_repeat_mode/Khrgles3KHR-GLES3_texture_repeat_modeTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

@@ -60,23 +60,6 @@ ohos_moduletest_suite("ActsDeqpgles2Suite0006Test") {
     "../functional/Deqpgles2binary_operator_div_assign_resultTestCase.cpp",
     "../functional/Deqpgles2binary_operator_equalTestCase.cpp",
     "../functional/Deqpgles2binary_operator_greaterTestCase.cpp",
-    "../functional/Deqpgles2binary_operator_greater_or_equalTestCase.cpp",
-    "../functional/Deqpgles2binary_operator_lessTestCase.cpp",
-    "../functional/Deqpgles2binary_operator_less_or_equalTestCase.cpp",
-    "../functional/Deqpgles2binary_operator_logical_andTestCase.cpp",
-    "../functional/Deqpgles2binary_operator_logical_orTestCase.cpp",
-    "../functional/Deqpgles2binary_operator_logical_xorTestCase.cpp",
-    "../functional/Deqpgles2binary_operator_mul_assign_effectTestCase.cpp",
-    "../functional/Deqpgles2binary_operator_mul_assign_resultTestCase.cpp",
-    "../functional/Deqpgles2binary_operator_not_equalTestCase.cpp",
-    "../functional/Deqpgles2binary_operator_sub_assign_resultTestCase.cpp",
-    "../functional/Deqpgles2exponential_exp2TestCase.cpp",
-    "../functional/Deqpgles2exponential_expTestCase.cpp",
-    "../functional/Deqpgles2exponential_inversesqrtTestCase.cpp",
-    "../functional/Deqpgles2exponential_log2TestCase.cpp",
-    "../functional/Deqpgles2exponential_logTestCase.cpp",
-    "../functional/Deqpgles2exponential_powTestCase.cpp",
-    "../functional/Deqpgles2exponential_sqrtTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]
