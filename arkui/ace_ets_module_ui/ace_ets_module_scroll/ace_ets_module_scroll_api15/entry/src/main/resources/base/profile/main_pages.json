@@ -8,6 +8,10 @@
         "MainAbility/pages/Tabs/tabsMode",
         "MainAbility/pages/Swiper/swiperPageMode",
         "MainAbility/pages/Tabs/tabsPageMode",
-        "MainAbility/pages/Scroll/getAttributeScroll"
+        "MainAbility/pages/Scroll/getAttributeScroll",
+        "MainAbility/pages/WaterFlow/WaterFlowBackToTop",
+        "MainAbility/pages/List/ListBackToTop",
+        "MainAbility/pages/Grid/GridBackToTop",
+        "MainAbility/pages/Scroll/ScrollBackToTop"
     ]
 }

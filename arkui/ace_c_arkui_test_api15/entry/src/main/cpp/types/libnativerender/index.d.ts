@@ -67,3 +67,5 @@ export const listScrollToTestCallback: (a: string) => void;
 export const gesturecancelTest: (a: string) => void;
 
 export const GetTouchEventData: () => object;
+
+export const scrollBackToTopTest: (a: string) => void;

@@ -30,6 +30,7 @@ import listCaseTest from "./list/ListCaseTest.test"
 import listScrollToIndexTest from "./listScrollTo/ListScrollToTest.test"
 import listItemGroupNodeAdapterTest from "./listItemGroup/ListItemGroupTest.test"
 import gesturecancelTest from "./gesturecancelTest/gesturecancelTest.test"
+import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
 
 
 export default function testsuite() {
@@ -51,4 +52,5 @@ export default function testsuite() {
    listScrollToIndexTest();
    listItemGroupNodeAdapterTest();
    gesturecancelTest();
+   scrollBackToTopTest();
 }
