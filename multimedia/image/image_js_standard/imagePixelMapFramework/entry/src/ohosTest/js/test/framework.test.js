@@ -23,7 +23,7 @@ import hdrCapability from '@ohos.graphics.hdrCapability';
 import display from '@ohos.display';
 
 export default function imagePixelMapFramework() {
-    describe('imagePixelMapFramework', async function () {
+    describe('imagePixelMapFramework', function () {
         let globalpixelmap;
         let globalImagesource;
         let globalreceiver;
@@ -1151,6 +1151,46 @@ export default function imagePixelMapFramework() {
                 done();
             }
         })
+
+         /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_CALLBACK_0200
+         * @tc.name      : setAlpha -callback
+         * @tc.desc      : 
+         * @tc.size      : MEDIUM 
+         * @tc.type      : Functional
+         * @tc.level     : Level 2
+         */
+         it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_CALLBACK_0200', 0, async function (done) {
+            let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SETALPHA_CALLBACK_0200');
+            try {
+                var pixelMap = await genPixelMap();
+                logger.log("pixelMap " + (pixelMap != undefined));
+                if (pixelMap != undefined) {
+                    globalpixelmap = pixelMap;
+                    pixelMap.opacity(0.5, async (err) => {
+                        var pixelSize = pixelMap.getPixelBytesNumber();
+                        logger.log(`new pixel size ${pixelSize}`);
+                        var readBuffer = new ArrayBuffer(pixelSize);
+                        await pixelMap.readPixelsToBuffer(readBuffer);
+                        var bufferArr2 = new Uint8Array(readBuffer);
+                        var setAlpha8 = new Uint8Array(pixelSize);
+
+                        for (var i = 0; i < bufferArr2.length; i++) {
+                            if (bufferArr2[i] != setAlpha8[i]) {
+                                logger.log(`Mismatch at index ${i}: bufferArr2[${i}] = ${bufferArr2[i]}, setAlpha8[${i}] = ${setAlpha8[i]}`);
+                            }
+                        }
+                        done();
+                    });
+                } else {
+                    logger.log("pixelMap is undefined");
+                    done();
+                }
+            } catch (error) {
+                logger.log("Error: " + error);
+                done();
+            }
+        });
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_SOURCEOPTIONS_GETDENSITY_FITDENSITY_0100

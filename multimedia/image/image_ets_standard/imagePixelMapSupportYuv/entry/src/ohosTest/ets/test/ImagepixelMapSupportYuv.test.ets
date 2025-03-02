@@ -18,8 +18,6 @@ let sleep = async (delay: number): Promise<void> => {
   });
 };
 
-
-
 export default function imagepixelMapSupportYuv() {
   describe('pixelMapSupportYuvAbilityTest',  ()=> {
 
@@ -1083,6 +1081,71 @@ export default function imagepixelMapSupportYuv() {
         done();
       }
     })
+
+     /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0600
+     * @tc.name      : writePixels
+     * @tc.desc      : 1.createImageSource
+     *                 2.createPixelMap
+     *                 3.PixelMap.writePixels
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 3
+     */
+
+    it('SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0600', 0, async (done: Function) => {
+      const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0600";
+      try {
+        let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg", "fd", true);
+        let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+        let targetColorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+        await new Promise<void> ((resolve, reject) => {
+          pixelMap_NV12.applyColorSpace(targetColorSpace, (err) => {
+            if (err) {
+              console.error(testTag + ' Failed to apply color space: ' + JSON.stringify(err));
+              reject(err);
+            } else {
+              console.log(testTag + ' Succeed in applying color space');
+              resolve();
+            }
+          });
+        });
+        const checkResult = await testPixelMapEditable(pixelMap_NV12);
+        expect(checkResult).assertTrue();
+        done();
+      } catch (error) {
+        hilog.info(0x0000, testTag, `${testTag} Test exception: ` + error);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+       * @tc.number    : SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0700
+       * @tc.name      : writePixels
+       * @tc.desc      : 1.createImageSource
+       *                 2.createPixelMap
+       *                 3.PixelMap.writePixels
+       * @tc.size      : MediumTest
+       * @tc.type      : Functional
+       * @tc.level     : Level 3
+       */
+    it('SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0700', 0, async (done: Function) => {
+      const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0700";
+      try {
+        let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg", "fd", true);
+        let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+        let targetColorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+        await pixelMap_NV12.applyColorSpace(targetColorSpace);
+        const checkResult = await testPixelMapEditable(pixelMap_NV12);
+        expect(checkResult).assertTrue();
+        done();
+      } catch (error) {
+        hilog.info(0x0000, testTag, `${testTag} 测试异常: ` + error);
+        expect().assertFail();
+        done();
+      }
+    });
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NV12_GETIMAGEINFO_0100
@@ -3372,4 +3435,3 @@ export default function imagepixelMapSupportYuv() {
     })
   })
 }
-

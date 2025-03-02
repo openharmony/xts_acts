@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+
 import image from "@ohos.multimedia.image";
 import fileio from "@ohos.fileio";
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
@@ -3761,6 +3762,36 @@ export default function imageModifyProperty() {
         props,
         checkKey
       );
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0600
+     * @tc.name      : test modify image properties using the value obtained from getImageProperties
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0600", 0, async (done: Function) => {
+	  let checkKey = [
+		IMAGE_WIDTH,
+		IMAGE_LENGTH
+	  ];
+	  let imageSource = image.createImageSource(modifyBuf.buffer);
+      try {
+	    let props = await imageSource.getImageProperties(checkKey);
+        await imageSource.release();
+        await testModifyImageProperties(
+          done,
+          "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0600",
+          "test_exif.jpg",
+          props,
+          checkKey
+        );
+	  } catch (error) {
+		console.log("Error getting image properties: " + error);
+		done(new Error("Error getting image properties: " + error));
+	  }
     });
 
     /**

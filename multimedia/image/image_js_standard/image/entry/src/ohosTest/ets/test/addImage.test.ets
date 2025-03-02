@@ -646,6 +646,60 @@ export default function addImage() {
                 done();
             }
         });
+
+
+        /**
+            * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_SYNC_0500
+            * @tc.name      : createAlphaPixelmap-sync
+            * @tc.desc      : 
+            * @tc.size      : MEDIUM
+            * @tc.type      : Functional
+            * @tc.level     : Level 0
+            */
+
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_SYNC_0500', 0, async (done: Function) => {
+            try {
+                let imageData: ESObject = testGif.buffer;
+                if (!testGif || !testGif.buffer) {
+                    console.error('testGif 或 testGif.buffer 未正确初始化');
+                    done(new Error('testGif 或 testGif.buffer 未正确初始化'));
+                    return;
+                }
+                let imageSource = image.createImageSource(imageData);
+                if (imageSource != undefined) {
+                    let pixelMap = imageSource.createPixelMapSync();
+                    if (pixelMap != undefined) {
+                        let alphaPixelMap = pixelMap.createAlphaPixelmapSync();
+                        if (alphaPixelMap != undefined) {
+                            let imageInfo = alphaPixelMap.getImageInfoSync();
+                            if (imageInfo != undefined) {
+                                expect(imageInfo.pixelFormat == 6).assertTrue();
+                                console.info('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_SYNC_0500 success ');
+                                done();
+                            } else {
+                                console.info('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_SYNC_0500: alphaPixelMap.getImageInfoSync() 返回 undefined');
+                                done(new Error('alphaPixelMap.getImageInfoSync() 返回 undefined'));
+                            }
+                        } else {
+                            console.info('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_SYNC_0500: pixelMap.createAlphaPixelmapSync() 返回 undefined');
+                            done(new Error('pixelMap.createAlphaPixelmapSync() 返回 undefined'));
+                        }
+                    } else {
+                        console.info('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_SYNC_0500: imageSource.createPixelMapSync() 返回 undefined');
+                        done(new Error('imageSource.createPixelMapSync() 返回 undefined'));
+                    }
+                } else {
+                    console.info('SUB_MULTIMEDIA_IMAGE_PIXELMAPFRAMEWORK_CREATEALPHAPIXELMAP_SYNC_0500: image.createImageSource() 返回 undefined');
+                    done(new Error('image.createImageSource() 返回 undefined'));
+                }
+            } catch (error) {
+                console.error('Error: ' + error);
+                done(error);
+            }
+        });
+
+
+
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_TRANSLATE_PIXELMAP_SYNC_0100
          * @tc.name      : Pixelmap Translate -sync
