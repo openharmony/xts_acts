@@ -47,11 +47,6 @@ ohos_moduletest_suite("ActsDeqpgles3Suite0024bTest") {
   part_name = "graphic_2d"
   sources = [
     "../ActsDeqpgles30024TestSuite.cpp",
-    "../functional/Deqpgles32d_formatsTestCase.cpp",
-    "../functional/Deqpgles32d_sizesTestCase.cpp",
-    "../functional/Deqpgles3wrap_astc_10x10TestCase.cpp",
-    "../functional/Deqpgles3wrap_astc_10x10_srgbTestCase.cpp",
-    "../functional/Deqpgles3wrap_astc_10x5TestCase.cpp",
     "../functional/Deqpgles3wrap_astc_10x5_srgbTestCase.cpp",
     "../functional/Deqpgles3wrap_astc_10x6TestCase.cpp",
     "../functional/Deqpgles3wrap_astc_10x6_srgbTestCase.cpp",

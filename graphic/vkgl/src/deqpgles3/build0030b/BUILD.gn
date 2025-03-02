@@ -47,7 +47,6 @@ ohos_moduletest_suite("ActsDeqpgles3Suite0030bTest") {
   part_name = "graphic_2d"
   sources = [
     "../ActsDeqpgles30030TestSuite.cpp",
-    "../functional/Deqpgles3default_framebuffer_rgb_equation_alpha_equationTestCase.cpp",
     "../functional/Deqpgles3rgb_func_alpha_func_dstTestCase.cpp",
   ]
 

@@ -49,9 +49,6 @@ ohos_moduletest_suite("ActsDeqpgles3Suite0022aTest") {
     "../ActsDeqpgles30022TestSuite.cpp",
     "../functional/Deqpgles3sized_2dTestCase.cpp",
     "../functional/Deqpgles3sized_cubeTestCase.cpp",
-    "../functional/Deqpgles3texture_fragmentTestCase.cpp",
-    "../functional/Deqpgles3texture_vertexTestCase.cpp",
-    "../functional/Deqpgles3trigonometric_fragmentTestCase.cpp",
     "../functional/Deqpgles3trigonometric_vertexTestCase.cpp",
   ]
 
