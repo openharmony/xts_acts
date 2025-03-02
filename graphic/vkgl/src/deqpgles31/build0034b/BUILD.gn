@@ -39,6 +39,7 @@ ohos_static_library("libdeqpgles31func0034b") {
     "zlib:libz",
   ]
   configs = [ ":deqp_platform_ohos_config" ]
+  testonly = true
 }
 
 ohos_moduletest_suite("ActsDeqpgles31Suite0034bTest") {
