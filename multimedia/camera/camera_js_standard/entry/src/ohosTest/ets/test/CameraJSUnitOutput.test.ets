@@ -1572,39 +1572,6 @@ export default function cameraJSUnitOutput() {
       }
     })
 
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100
-     * @tc.name      : photo output callback on captureStart
-     * @tc.desc      : photo output callback on captureStart
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100', 1, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100--------------");
-      if (isEmpty(photoOutput)) {
-        console.info(TAG + "Entering PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START previewOutput == null || undefined")
-        expect().assertFail();
-      } else {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 to operate");
-        let count = 0;
-        photoOutput.on('captureStart', async (err, data) => {
-          if (!err) {
-            expect(true).assertTrue();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 success");
-          } else {
-            expect().assertFail();
-            console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 FAILED: " +
-            err.message);
-          }
-        })
-        photoOutput.capture();
-      }
-      await sleep(1000);
-      done();
-    })
-
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_READY_0100
      * @tc.name      : photo output callback off captureReady
@@ -1640,7 +1607,119 @@ export default function cameraJSUnitOutput() {
       done();
     })
 
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100
+     * @tc.name      : photo output callback on captureStart
+     * @tc.desc      : photo output callback on captureStart
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100', 1, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100--------------");
+      if (isEmpty(photoOutput)) {
+        console.info(TAG + "Entering PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START previewOutput == null || undefined")
+        expect().assertFail();
+      } else {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 to operate");
+        let count = 0;
+        photoOutput.on('captureStart', async (err, data) => {
+          if (!err) {
+            expect(true).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 success");
+          } else {
+            expect().assertFail();
+            console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 FAILED: " +
+            err.message);
+          }
+        })
+        photoOutput.capture();
+      }
+      await sleep(1000);
+      done();
+    })
 
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100
+     * @tc.name      : photo output callback on frameShutter
+     * @tc.desc      : photo output callback on frameShutter
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100', 1, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100--------------");
+      if (isEmpty(photoOutput)) {
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100 previewOutput == null || undefined")
+        expect().assertFail();
+      } else {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100 to operate");
+        let count = 0;
+        photoOutput.on('frameShutter', async (err, data) => {
+          if (!err) {
+            count++;
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100 success");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100, captureId = " +
+            data.captureId);
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100, timestamp = " +
+            data.timestamp);
+          } else {
+            expect().assertFail();
+            console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100 FAILED: " +
+            err.message);
+          }
+          await sleep(1000);
+          done();
+        })
+        await sleep(1000);
+        done();
+        photoOutput.capture();
+
+      }
+      await sleep(1000);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100
+     * @tc.name      : photo output callback on captureEnd
+     * @tc.desc      : photo output callback on captureEnd
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100', 1, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100--------------");
+      if (isEmpty(photoOutput)) {
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100 previewOutput == null || undefined")
+        expect().assertFail();
+      } else {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100 to operate");
+        let count = 0;
+        photoOutput.on('captureEnd', async (err, data) => {
+          if (!err) {
+            count++;
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100 success");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100, captureId = " +
+            data.captureId);
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100, frameCount = " +
+            data.frameCount);
+          } else {
+            expect().assertFail();
+            console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100 FAILED: " +
+            err.message);
+          }
+        })
+        await sleep(1000);
+        done();
+        photoOutput.capture();
+
+      }
+      await sleep(1000);
+      done();
+    })
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ESTIMATED_CAPTURE_DURATION_0100
@@ -1674,6 +1753,42 @@ export default function cameraJSUnitOutput() {
       done();
     })
 
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100
+     * @tc.name      : videoOutput start promise api
+     * @tc.desc      : videoOutput start promise api
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100', 1, async (done: Function) => {
+      try {
+        console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100--------------");
+        await getVideoSurface();
+        sleep(1000);
+        let cameraOutputCap =
+          getSupportedOutputCapabilityInPromise(cameraDevicesArray[0], cameraObj.SceneMode.NORMAL_VIDEO);
+        expect(isEmpty(cameraOutputCap)).assertFalse();
+        let videoProfilesArray = cameraOutputCap?.videoProfiles[0];
+        expect(isEmpty(videoProfilesArray)).assertFalse();
+        if (videoProfilesArray && videoSurfaceId) {
+          videoOutput = cameraManager.createVideoOutput(videoProfilesArray, videoSurfaceId);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100 start")
+          videoOutput.start();
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100 end")
+        } else {
+          console.info(TAG +
+            `Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100 createVideoOutput parse err + ${JSON.stringify(videoProfilesArray)} + ${videoSurfaceId}`)
+        }
+        videoOutput.release();
+        await sleep(1000);
+        done();
+      } catch (err) {
+        console.info(TAG +
+          `Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100 error`)
+      }
+      done();
+    })
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_ESTIMATED_CAPTURE_DURATION_0100
@@ -2048,47 +2163,7 @@ export default function cameraJSUnitOutput() {
       done();
     })
 
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100
-     * @tc.name      : photo output callback on frameShutter
-     * @tc.desc      : photo output callback on frameShutter
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100', 1, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100--------------");
-      if (isEmpty(photoOutput)) {
-        console.info(TAG +
-          "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100 previewOutput == null || undefined")
-        expect().assertFail();
-      } else {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100 to operate");
-        let count = 0;
-        photoOutput.on('frameShutter', async (err, data) => {
-          if (!err) {
-            count++;
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100 success");
-            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100, captureId = " +
-            data.captureId);
-            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100, timestamp = " +
-            data.timestamp);
-          } else {
-            expect().assertFail();
-            console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100 FAILED: " +
-            err.message);
-          }
-          await sleep(1000);
-          done();
-        })
-        await sleep(1000);
-        done();
-        photoOutput.capture();
 
-      }
-      await sleep(1000);
-      done();
-    })
 
 
     /**
@@ -2204,50 +2279,6 @@ export default function cameraJSUnitOutput() {
       await sleep(1000);
       done();
     })
-
-
-
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100
-     * @tc.name      : photo output callback on captureEnd
-     * @tc.desc      : photo output callback on captureEnd
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100', 1, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100--------------");
-      if (isEmpty(photoOutput)) {
-        console.info(TAG +
-          "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100 previewOutput == null || undefined")
-        expect().assertFail();
-      } else {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100 to operate");
-        let count = 0;
-        photoOutput.on('captureEnd', async (err, data) => {
-          if (!err) {
-            count++;
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100 success");
-            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100, captureId = " +
-            data.captureId);
-            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100, frameCount = " +
-            data.frameCount);
-          } else {
-            expect().assertFail();
-            console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100 FAILED: " +
-            err.message);
-          }
-        })
-        await sleep(1000);
-        done();
-        photoOutput.capture();
-
-      }
-      await sleep(1000);
-      done();
-    })
-
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_END_0100
@@ -2496,44 +2527,6 @@ export default function cameraJSUnitOutput() {
       await sleep(1000);
       done();
     })
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100
-     * @tc.name      : videoOutput start promise api
-     * @tc.desc      : videoOutput start promise api
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100', 1, async (done: Function) => {
-      try {
-        console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100--------------");
-        await getVideoSurface();
-        sleep(1000);
-        let cameraOutputCap =
-          getSupportedOutputCapabilityInPromise(cameraDevicesArray[0], cameraObj.SceneMode.NORMAL_VIDEO);
-        expect(isEmpty(cameraOutputCap)).assertFalse();
-        let videoProfilesArray = cameraOutputCap?.videoProfiles[0];
-        expect(isEmpty(videoProfilesArray)).assertFalse();
-        if (videoProfilesArray && videoSurfaceId) {
-          videoOutput = cameraManager.createVideoOutput(videoProfilesArray, videoSurfaceId);
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100 start")
-          videoOutput.start();
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100 end")
-        } else {
-          console.info(TAG +
-            `Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100 createVideoOutput parse err + ${JSON.stringify(videoProfilesArray)} + ${videoSurfaceId}`)
-        }
-        videoOutput.release();
-        await sleep(1000);
-        done();
-      } catch (err) {
-        console.info(TAG +
-          `Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100 error`)
-      }
-      done();
-    })
-
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100
