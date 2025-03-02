@@ -1606,6 +1606,147 @@ export default function cameraJSUnitOutput() {
     })
 
     /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_READY_0100
+     * @tc.name      : photo output callback off captureReady
+     * @tc.desc      : photo output callback off captureReady
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_READY_0100', 1, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_READY_0100--------------");
+      // 创建相机
+      getCameraDevices()
+      
+      //创建输出流
+      createOutput(0, cameraObj.SceneMode.NORMAL_PHOTO)
+
+      // 打开监听
+      photoOutput.on('captureReady', async (err) => {
+        console.info(`photo output start listen on captureReady failed: ${err.code}`);
+      })
+
+      // 关闭监听
+      await sleep(1000);
+      photoOutput.off('captureReady', async (err) => {
+        console.info(`photo output stop listen on captureReady failed: ${err.code}`);
+        expect(true).assertFalse()
+        await sleep(1000);
+        done();
+      })
+      console.info(`photo output stop listen on captureReady success`);
+      expect(true).assertTrue()
+      await sleep(1000);
+      done();
+    })
+
+
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ESTIMATED_CAPTURE_DURATION_0100
+     * @tc.name      : photo output callback on estimatedCaptureDuration
+     * @tc.desc      : photo output callback on estimatedCaptureDuration
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ESTIMATED_CAPTURE_DURATION_0100', 1, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ESTIMATED_CAPTURE_DURATION_0100--------------");
+      // 创建相机
+      getCameraDevices()
+      
+      //创建输出流
+      createOutput(0, cameraObj.SceneMode.NORMAL_PHOTO)
+
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ESTIMATED_CAPTURE_DURATION_0100 to operate");
+
+      // 打开监听
+      photoOutput.on('estimatedCaptureDuration', async (err) => {
+        console.info(`photo output start listen on estimatedCaptureDuration failed: ${err.code}`);
+        expect(true).assertFalse()
+        await sleep(1000);
+        done();
+      })
+      console.info(`photo output start listen on estimatedCaptureDuration success`);
+      expect(true).assertTrue()
+
+      await sleep(1000);
+      done();
+    })
+
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_ESTIMATED_CAPTURE_DURATION_0100
+     * @tc.name      : photo output callback off estimatedCaptureDuration
+     * @tc.desc      : photo output callback off estimatedCaptureDuration
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_ESTIMATED_CAPTURE_DURATION_0100', 1, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_ESTIMATED_CAPTURE_DURATION_0100--------------");
+      // 创建相机
+      getCameraDevices()
+      
+      //创建输出流
+      createOutput(0, cameraObj.SceneMode.NORMAL_PHOTO)
+
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_ESTIMATED_CAPTURE_DURATION_0100 to operate");
+
+      // 打开监听
+      photoOutput.on('estimatedCaptureDuration', async (err) => {
+        console.info(`photo output start listen on estimatedCaptureDuration failed: ${err.code}`);
+      })
+
+      // 关闭监听
+      await sleep(1000);
+      photoOutput.off('estimatedCaptureDuration', async (err) => {
+        console.info(`photo output stop listen on estimatedCaptureDuration failed: ${err.code}`);
+        expect(true).assertFalse()
+        await sleep(1000);
+        done();
+      })
+      console.info(`photo output stop listen on estimatedCaptureDuration success`);
+      expect(true).assertTrue()
+      await sleep(1000);
+      done();
+    })
+
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100
+     * @tc.name      : photo output callback on error
+     * @tc.desc      : photo output callback on error
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100', 1, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100--------------");
+      if (isEmpty(photoOutput)) {
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100 previewOutput == null || undefined")
+        expect().assertFail();
+      } else {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100 to operate");
+        photoOutput.on('error', async (err) => {
+          if (!err) {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100 success");
+            expect(true).assertTrue();
+          } else {
+            console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100 FAILED: " +
+            err.message);
+            expect().assertFail();
+          }
+          await sleep(1000);
+          done();
+        })
+      }
+      await sleep(1000);
+      done();
+    })
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_PHOTO_AVAILABLE_0100
      * @tc.name      : photo output callback on photoAvailable
      * @tc.desc      : photo output callback on photoAvailable
@@ -2216,149 +2357,6 @@ export default function cameraJSUnitOutput() {
       console.info(`photo output start listen on captureReady success`);
       expect(true).assertTrue()
 
-      await sleep(1000);
-      done();
-    })
-
-
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_READY_0100
-     * @tc.name      : photo output callback off captureReady
-     * @tc.desc      : photo output callback off captureReady
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_READY_0100', 1, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_READY_0100--------------");
-      // 创建相机
-      getCameraDevices()
-      
-      //创建输出流
-      createOutput(0, cameraObj.SceneMode.NORMAL_PHOTO)
-
-      // 打开监听
-      photoOutput.on('captureReady', async (err) => {
-        console.info(`photo output start listen on captureReady failed: ${err.code}`);
-      })
-
-      // 关闭监听
-      await sleep(1000);
-      photoOutput.off('captureReady', async (err) => {
-        console.info(`photo output stop listen on captureReady failed: ${err.code}`);
-        expect(true).assertFalse()
-        await sleep(1000);
-        done();
-      })
-      console.info(`photo output stop listen on captureReady success`);
-      expect(true).assertTrue()
-      await sleep(1000);
-      done();
-    })
-
-
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ESTIMATED_CAPTURE_DURATION_0100
-     * @tc.name      : photo output callback on estimatedCaptureDuration
-     * @tc.desc      : photo output callback on estimatedCaptureDuration
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ESTIMATED_CAPTURE_DURATION_0100', 1, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ESTIMATED_CAPTURE_DURATION_0100--------------");
-      // 创建相机
-      getCameraDevices()
-      
-      //创建输出流
-      createOutput(0, cameraObj.SceneMode.NORMAL_PHOTO)
-
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ESTIMATED_CAPTURE_DURATION_0100 to operate");
-
-      // 打开监听
-      photoOutput.on('estimatedCaptureDuration', async (err) => {
-        console.info(`photo output start listen on estimatedCaptureDuration failed: ${err.code}`);
-        expect(true).assertFalse()
-        await sleep(1000);
-        done();
-      })
-      console.info(`photo output start listen on estimatedCaptureDuration success`);
-      expect(true).assertTrue()
-
-      await sleep(1000);
-      done();
-    })
-
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_ESTIMATED_CAPTURE_DURATION_0100
-     * @tc.name      : photo output callback off estimatedCaptureDuration
-     * @tc.desc      : photo output callback off estimatedCaptureDuration
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_ESTIMATED_CAPTURE_DURATION_0100', 1, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_ESTIMATED_CAPTURE_DURATION_0100--------------");
-      // 创建相机
-      getCameraDevices()
-      
-      //创建输出流
-      createOutput(0, cameraObj.SceneMode.NORMAL_PHOTO)
-
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_ESTIMATED_CAPTURE_DURATION_0100 to operate");
-
-      // 打开监听
-      photoOutput.on('estimatedCaptureDuration', async (err) => {
-        console.info(`photo output start listen on estimatedCaptureDuration failed: ${err.code}`);
-      })
-
-      // 关闭监听
-      await sleep(1000);
-      photoOutput.off('estimatedCaptureDuration', async (err) => {
-        console.info(`photo output stop listen on estimatedCaptureDuration failed: ${err.code}`);
-        expect(true).assertFalse()
-        await sleep(1000);
-        done();
-      })
-      console.info(`photo output stop listen on estimatedCaptureDuration success`);
-      expect(true).assertTrue()
-      await sleep(1000);
-      done();
-    })
-
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100
-     * @tc.name      : photo output callback on error
-     * @tc.desc      : photo output callback on error
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100', 1, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100--------------");
-      if (isEmpty(photoOutput)) {
-        console.info(TAG +
-          "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100 previewOutput == null || undefined")
-        expect().assertFail();
-      } else {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100 to operate");
-        photoOutput.on('error', async (err) => {
-          if (!err) {
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100 success");
-            expect(true).assertTrue();
-          } else {
-            console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100 FAILED: " +
-            err.message);
-            expect().assertFail();
-          }
-          await sleep(1000);
-          done();
-        })
-      }
       await sleep(1000);
       done();
     })
