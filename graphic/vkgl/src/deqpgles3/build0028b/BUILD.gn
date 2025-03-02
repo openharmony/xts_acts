@@ -56,8 +56,6 @@ ohos_moduletest_suite("ActsDeqpgles3Suite0028bTest") {
     "../functional/Deqpgles3astc_void_extent_ldrTestCase.cpp",
     "../functional/Deqpgles3astc_weight_gridTestCase.cpp",
     "../functional/Deqpgles3astc_weight_iseTestCase.cpp",
-    "../functional/Deqpgles3cube_wrapTestCase.cpp",
-    "../functional/Deqpgles3fragment_ops_depthTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

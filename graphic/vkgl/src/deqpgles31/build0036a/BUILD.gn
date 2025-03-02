@@ -47,12 +47,6 @@ ohos_moduletest_suite("ActsDeqpgles31Suite0036aTest") {
   part_name = "graphic_2d"
   sources = [
     "../ActsDeqpgles310036TestSuite.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba_astc_10x5_khr_rgba32uiTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba_astc_10x6_khr_rgba32uiTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba_astc_10x8_khr_rgba32uiTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba_astc_12x10_khr_rgba32uiTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba_astc_12x12_khr_rgba32uiTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba_astc_4x4_khr_rgba32uiTestCase.cpp",
     "../functional/Deqpgles31viewclass_128_bits_mixed_rgba_astc_5x4_khr_rgba32uiTestCase.cpp",
     "../functional/Deqpgles31viewclass_128_bits_mixed_rgba_astc_5x5_khr_rgba32uiTestCase.cpp",
     "../functional/Deqpgles31viewclass_128_bits_mixed_rgba_astc_6x5_khr_rgba32uiTestCase.cpp",

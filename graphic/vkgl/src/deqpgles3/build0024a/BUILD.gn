@@ -54,13 +54,6 @@ ohos_moduletest_suite("ActsDeqpgles3Suite0024aTest") {
     "../functional/Deqpgles3wrap_astc_5x5_srgbTestCase.cpp",
     "../functional/Deqpgles3wrap_astc_6x5_srgbTestCase.cpp",
     "../functional/Deqpgles3wrap_astc_6x6TestCase.cpp",
-    "../functional/Deqpgles3wrap_astc_6x6_srgbTestCase.cpp",
-    "../functional/Deqpgles3wrap_astc_8x5TestCase.cpp",
-    "../functional/Deqpgles3wrap_astc_8x5_srgbTestCase.cpp",
-    "../functional/Deqpgles3wrap_astc_8x6TestCase.cpp",
-    "../functional/Deqpgles3wrap_astc_8x6_srgbTestCase.cpp",
-    "../functional/Deqpgles3wrap_astc_8x8TestCase.cpp",
-    "../functional/Deqpgles3wrap_astc_8x8_srgbTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

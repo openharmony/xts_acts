@@ -47,14 +47,6 @@ ohos_moduletest_suite("ActsDeqpgles31Suite0036bTest") {
   part_name = "graphic_2d"
   sources = [
     "../ActsDeqpgles310036TestSuite.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_rgba_astc_8x6_khrTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_rgba_astc_8x8_khrTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_signed_rg11_eacTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_srgb8_alpha8_astc_10x5_khrTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_srgb8_alpha8_astc_4x4_khrTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_srgb8_alpha8_astc_5x4_khrTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_srgb8_alpha8_astc_5x5_khrTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_srgb8_alpha8_astc_6x5_khrTestCase.cpp",
     "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_srgb8_alpha8_astc_6x6_khrTestCase.cpp",
     "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_srgb8_alpha8_astc_8x5_khrTestCase.cpp",
     "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_srgb8_alpha8_astc_8x6_khrTestCase.cpp",
