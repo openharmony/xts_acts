@@ -1885,42 +1885,6 @@ export default function cameraJSUnitOutput() {
 
 
 
-
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100
-     * @tc.name      : photo output callback on captureStart
-     * @tc.desc      : photo output callback on captureStart
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100', 1, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100--------------");
-      if (isEmpty(photoOutput)) {
-        console.info(TAG + "Entering PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START previewOutput == null || undefined")
-        expect().assertFail();
-      } else {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 to operate");
-        let count = 0;
-        photoOutput.on('captureStart', async (err, data) => {
-          if (!err) {
-            expect(true).assertTrue();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 success");
-          } else {
-            expect().assertFail();
-            console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 FAILED: " +
-            err.message);
-          }
-        })
-        photoOutput.capture();
-      }
-      await sleep(1000);
-      done();
-    })
-
-
-
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_START_0100
      * @tc.name      : photo output callback off captureStart
@@ -1965,7 +1929,7 @@ export default function cameraJSUnitOutput() {
 
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_WITH_INFO_0100
      * @tc.name      : photo output callback on captureStart
      * @tc.desc      : photo output callback on captureStart
      * @tc.size      : MEDIUM
@@ -2001,7 +1965,7 @@ export default function cameraJSUnitOutput() {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_WITH_INFO_0100
      * @tc.name      : photo output callback on captureStart
      * @tc.desc      : photo output callback on captureStart
      * @tc.size      : MEDIUM
