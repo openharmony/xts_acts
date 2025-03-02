@@ -1828,6 +1828,43 @@ export default function cameraJSUnitOutput() {
     })
 
     /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100
+     * @tc.name      : videoOutput stop promise api
+     * @tc.desc      : videoOutput stop promise api
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100', 1, async (done: Function) => {
+      try {
+        console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100--------------");
+        await getVideoSurface();
+        sleep(1000);
+        let cameraOutputCap =
+          getSupportedOutputCapabilityInPromise(cameraDevicesArray[0], cameraObj.SceneMode.NORMAL_VIDEO);
+        expect(isEmpty(cameraOutputCap)).assertFalse();
+        let videoProfilesArray = cameraOutputCap?.videoProfiles[0];
+        expect(isEmpty(videoProfilesArray)).assertFalse();
+        if (videoProfilesArray && videoSurfaceId) {
+          videoOutput = cameraManager.createVideoOutput(videoProfilesArray, videoSurfaceId);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100 start")
+          videoOutput.stop();
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100 end")
+        } else {
+          console.info(TAG +
+            `Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100 createVideoOutput parse err + ${JSON.stringify(videoProfilesArray)} + ${videoSurfaceId}`)
+        }
+        videoOutput.release();
+        await sleep(1000);
+        done();
+      } catch (err) {
+        console.info(TAG +
+          `Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100 error`);
+        done();
+      }
+    })
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ESTIMATED_CAPTURE_DURATION_0100
      * @tc.name      : photo output callback on estimatedCaptureDuration
      * @tc.desc      : photo output callback on estimatedCaptureDuration
@@ -1882,43 +1919,6 @@ export default function cameraJSUnitOutput() {
       }
       await sleep(1000);
       done();
-    })
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100
-     * @tc.name      : videoOutput stop promise api
-     * @tc.desc      : videoOutput stop promise api
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100', 1, async (done: Function) => {
-      try {
-        console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100--------------");
-        await getVideoSurface();
-        sleep(1000);
-        let cameraOutputCap =
-          getSupportedOutputCapabilityInPromise(cameraDevicesArray[0], cameraObj.SceneMode.NORMAL_VIDEO);
-        expect(isEmpty(cameraOutputCap)).assertFalse();
-        let videoProfilesArray = cameraOutputCap?.videoProfiles[0];
-        expect(isEmpty(videoProfilesArray)).assertFalse();
-        if (videoProfilesArray && videoSurfaceId) {
-          videoOutput = cameraManager.createVideoOutput(videoProfilesArray, videoSurfaceId);
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100 start")
-          videoOutput.stop();
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100 end")
-        } else {
-          console.info(TAG +
-            `Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100 createVideoOutput parse err + ${JSON.stringify(videoProfilesArray)} + ${videoSurfaceId}`)
-        }
-        videoOutput.release();
-        await sleep(1000);
-        done();
-      } catch (err) {
-        console.info(TAG +
-          `Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100 error`);
-        done();
-      }
     })
 
     /**
