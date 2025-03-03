@@ -25,6 +25,7 @@ import subHeaderAccessibilityTest from './subHeader/subHeaderAccessibilityPage.t
 import composeTitleBarAccessibilityTest from './composeTitleBar/composeTitleBarAccessibilityPage.test';
 import selectTitleBarAccessibilityTest from './selectTitleBar/selectTitleBarAccessibilityPage.test';
 import tabTitleBarAccessibilityTest from './tabTitleBar/tabTitleBarAccessibilityPage.test';
+import toolBarV2AccessibilityTest from './toolBarV2/ToolBarV2AccessibilityPage.test';
 
 export default function testsuite() {
   composeListItemPageTest();
@@ -39,4 +40,5 @@ export default function testsuite() {
   composeTitleBarAccessibilityTest();
   selectTitleBarAccessibilityTest();
   tabTitleBarAccessibilityTest();
+  toolBarV2AccessibilityTest();
 }
