@@ -17,7 +17,7 @@ import Ability from '@ohos.app.ability.UIAbility'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 import I18n from '@ohos.i18n'
 import Intl from '@ohos.intl'
-import { deviceInfo } from '@Kit.BasicServicesKit'
+import deviceInfo from '@ohos.deviceInfo'
 
 export default function i18nStageTest() {
   describe("i18nStageTest", () => {
@@ -609,12 +609,12 @@ export default function i18nStageTest() {
       let dateFmt = new Intl.DateTimeFormat("zh-CN", {
         dateStyle: 'auto'
       });
-      console.log('dateTimeFormatAdapt_test_0010:' + dateFmt.format(date));
+      console.log('dateTimeFormatAdapt_test_0010:' + dateFmt.format(data));
       let devType = deviceInfo.deviceType;
       if (devType == '2in1' || devType == 'tablet') {
-        expect(dateFmt.format(date)).assertEqual('2020年12月20日');
+        expect(dateFmt.format(data)).assertEqual('2020年12月20日');
       } else {
-        expect(dateFmt.format(date)).assertEqual('2020/12/20');
+        expect(dateFmt.format(data)).assertEqual('2020/12/20');
       }
     })
 
@@ -631,12 +631,12 @@ export default function i18nStageTest() {
       let dateFmt = new Intl.DateTimeFormat("zh-CN", {
         timeStyle: 'auto'
       });
-      console.log('dateTimeFormatAdapt_test_0020:' + dateFmt.format(date));
+      console.log('dateTimeFormatAdapt_test_0020:' + dateFmt.format(data));
       let devType = deviceInfo.deviceType;
       if (devType == '2in1' || devType == 'tablet') {
-        expect(dateFmt.format(date)).assertEqual('下午2:23:16');
+        expect(dateFmt.format(data)).assertEqual('下午2:23:16');
       } else {
-        expect(dateFmt.format(date)).assertEqual('下午2:23');
+        expect(dateFmt.format(data)).assertEqual('下午2:23');
       }
     })
 
@@ -653,12 +653,12 @@ export default function i18nStageTest() {
       let dateFmt = new Intl.DateTimeFormat("zh-CN", {
         weekday: 'auto'
       });
-      console.log('dateTimeFormatAdapt_test_0030:' + dateFmt.format(date));
+      console.log('dateTimeFormatAdapt_test_0030:' + dateFmt.format(data));
       let devType = deviceInfo.deviceType;
       if (devType == '2in1' || devType == 'tablet') {
-        expect(dateFmt.format(date)).assertEqual('星期日');
+        expect(dateFmt.format(data)).assertEqual('星期日');
       } else {
-        expect(dateFmt.format(date)).assertEqual('周日');
+        expect(dateFmt.format(data)).assertEqual('周日');
       }
     })
 
@@ -675,12 +675,12 @@ export default function i18nStageTest() {
       let dateFmt = new Intl.DateTimeFormat("en-gb", {
         month: 'auto'
       });
-      console.log('dateTimeFormatAdapt_test_0040:' + dateFmt.format(date));
+      console.log('dateTimeFormatAdapt_test_0040:' + dateFmt.format(data));
       let devType = deviceInfo.deviceType;
       if (devType == '2in1' || devType == 'tablet') {
-        expect(dateFmt.format(date)).assertEqual('December');
+        expect(dateFmt.format(data)).assertEqual('December');
       } else {
-        expect(dateFmt.format(date)).assertEqual('Dec');
+        expect(dateFmt.format(data)).assertEqual('Dec');
       }
     })
 
@@ -697,12 +697,12 @@ export default function i18nStageTest() {
       let dateFmt = new Intl.DateTimeFormat("zh-CN", {
         timeZoneName: 'auto'
       });
-      console.log('dateTimeFormatAdapt_test_0050:' + dateFmt.format(date));
+      console.log('dateTimeFormatAdapt_test_0050:' + dateFmt.format(data));
       let devType = deviceInfo.deviceType;
       if (devType == '2in1' || devType == 'tablet') {
-        expect(dateFmt.format(date)).assertEqual('2020/12/20 中国标准时间');
+        expect(dateFmt.format(data)).assertEqual('2020/12/20 中国标准时间');
       } else {
-        expect(dateFmt.format(date)).assertEqual('2020/12/20 GMT+8');
+        expect(dateFmt.format(data)).assertEqual('2020/12/20 GMT+8');
       }
     })
 
@@ -719,8 +719,8 @@ export default function i18nStageTest() {
       let dateFmt = new Intl.DateTimeFormat("zh-CN", {
         dayPeriod: 'auto'
       });
-      console.log('dateTimeFormatAdapt_test_0060:' + dateFmt.format(date));
-      expect(dateFmt.format(date)).assertEqual('2020/12/20');
+      console.log('dateTimeFormatAdapt_test_0060:' + dateFmt.format(data));
+      expect(dateFmt.format(data)).assertEqual('2020/12/20');
     })
 
     /**
@@ -734,12 +734,12 @@ export default function i18nStageTest() {
     it('dateTimeFormatAdapt_test_0070', Level.LEVEL1, () => {
       let data = new Date(2020, 11, 20, 14, 23, 16);
       let dateFmt = new Intl.DateTimeFormat("zh-CN");
-      console.log('dateTimeFormatAdapt_test_0070:' + dateFmt.format(date));
+      console.log('dateTimeFormatAdapt_test_0070:' + dateFmt.format(data));
       let devType = deviceInfo.deviceType;
       if (devType == '2in1' || devType == 'tablet') {
-        expect(dateFmt.format(date)).assertEqual('2020年12月20日');
+        expect(dateFmt.format(data)).assertEqual('2020年12月20日');
       } else {
-        expect(dateFmt.format(date)).assertEqual('2020/12/20');
+        expect(dateFmt.format(data)).assertEqual('2020/12/20');
       }
     })
 
@@ -843,8 +843,8 @@ export default function i18nStageTest() {
       let value = relativeTimeFmt.format(100, 'second');
       console.log('relativeTimeFormatAdapt_test_0110' + value);
       let devTyp = deviceInfo.deviceType;
-      console.log('relativeTimeFormatAdapt_test_0110 device' + devType);
-      if (devType == '2inl' || devType == 'tablet' || devType == 'phone' || devType == 'default') {
+      console.log('relativeTimeFormatAdapt_test_0110 device' + devTyp);
+      if (devTyp == '2inl' || devTyp == 'tablet' || devTyp == 'phone' || devTyp == 'default') {
         expect(value).assertEqual('in 100 seconds');
       } else {
         expect(value).assertEqual('in 100 sec.');
@@ -879,7 +879,7 @@ export default function i18nStageTest() {
     it('testGetThreeLetterLanguage_0100', Level.LEVEL2, () => {
       let language: string = I18n.I18NUtil.getThreeLetterLanguage('en')
       console.info('testGetThreeLetterLanguage_0100', language);
-      expect('eng').assertEqual('language');
+      expect('eng').assertEqual(language);
     })
 
     /**
@@ -907,7 +907,7 @@ export default function i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('testGetThreeLetterLanguage_0100', Level.LEVEL2, () => {
+    it('testGetThreeLetterRegion_0100', Level.LEVEL2, () => {
       let language: string = I18n.I18NUtil.getThreeLetterRegion('GB')
       console.info('testGetThreeLetterRegion_0100', language);
       expect('GBR').assertEqual('language');
@@ -954,8 +954,7 @@ export default function i18nStageTest() {
       };
       let phoneNumberFormat: I18n.PhoneNumberFormat = new I18n.PhoneNumberFormat("CN", option);
       let number = "13801048465";
-      let result = phoneNumberFormat.format(number3substring(0, number.length - 1));
-      console.info('SUB_GLOBAL_numberFormatTyping_0300_arr', arr[k])
+      let result = phoneNumberFormat.format(number.substring(0, number.length - 1));
       expect(result).assertEqual('138 0104 846')
     })
 
