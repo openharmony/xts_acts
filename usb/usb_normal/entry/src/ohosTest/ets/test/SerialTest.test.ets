@@ -26,7 +26,7 @@ async function getPermission(gPortList: Readonly<serial.SerialPort>[]) {
   try {
     serial.requestSerialRight(gPortList[0].portId).then(hasRight => {
       console.info(TAG, `usb requestRight success, hasRight: ${hasRight}`);
-    })
+    });
   } catch (err) {
     console.info(TAG, `usb getPermission to requestRight hasRight fail: `, err);
     return;
@@ -317,7 +317,7 @@ export default function SerialTest() {
           console.info(TAG, ' testAddSerialRight001 begin'+ JSON.stringify(tokenId));
           serial.addSerialRight(tokenId, openPortId);
           expect().assertFail();
-        })
+        });
       } catch (error) {
         console.info(TAG, 'testAddSerialRight001 catch err code: ', error.code, ', message: ', error.message);
         expect(error.code).assertEqual(SERIAL_SYSAPI_PERMISSION_DENIED);
@@ -395,7 +395,7 @@ export default function SerialTest() {
           dataBits: serial.DataBits.DATABIT_8,
           parity: serial.Parity.PARITY_NONE,
           stopBits: serial.StopBits.STOPBIT_1
-        }
+        };
         let invalidInput: number = -1;
         serial.setAttribute(invalidInput, attribute);
         expect().assertFail();
@@ -546,7 +546,7 @@ export default function SerialTest() {
      */
     it('testWrite001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info(TAG, 'testWrite001 start');
-      let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+      let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
       serial.open(openPortId);
       serial.write(openPortId, writeBuffer, 500)
         .then((length: number) => {
@@ -571,7 +571,7 @@ export default function SerialTest() {
     it('testWrite002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try{
         console.info(TAG, 'testWrite002 start');
-        let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+        let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
         let invalidInput: number = -1;
         serial.write(invalidInput, writeBuffer, 500)
           .then((length: number) => {
@@ -595,7 +595,7 @@ export default function SerialTest() {
     it('testWrite003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try{
         console.info(TAG, 'testWrite003 start');
-        let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+        let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
         await serial.write(openPortId, writeBuffer, 500);
         expect().assertFail();
       } catch (error) {
@@ -616,7 +616,7 @@ export default function SerialTest() {
     it('testWriteSync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         console.info(TAG, 'testWriteSync001 start');
-        let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+        let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
         serial.open(openPortId);
         let length: number = serial.writeSync(openPortId, writeSyncBuffer, 500);
         expect(length >= 0).assertTrue();
@@ -639,7 +639,7 @@ export default function SerialTest() {
     it('testWriteSync002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         console.info(TAG, 'testWriteSync002 start');
-        let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+        let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
         serial.writeSync(openPortId, writeSyncBuffer, 500);
         expect().assertFail();
       } catch (error) {
@@ -661,7 +661,7 @@ export default function SerialTest() {
       try {
         console.info(TAG, 'testWriteSync003 start');
         let invalidInput: number = -1;
-        let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+        let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
         serial.writeSync(invalidInput, writeSyncBuffer, 500);
         expect().assertFail();
       } catch (error) {
@@ -694,7 +694,7 @@ export default function SerialTest() {
         .catch((error: Error) => {
           console.error(TAG, 'testRead001 catch err name: ', error.name, ', message: ', error.message);
           expect().assertFail();
-        })
+        });
     })
 
     /**
@@ -759,7 +759,7 @@ export default function SerialTest() {
         serial.read(invalid, readBuffer, 1000)
           .then((length: number) => {
             expect().assertFail();
-          })
+          });
       } catch (error) {
         console.error(TAG, 'testRead004 catch err code: ', error.code, ', message: ', error.message);
         expect(error.code).assertEqual(SYSPARAM_INVALID_INPUT);
@@ -827,7 +827,7 @@ export default function SerialTest() {
         console.info(TAG, 'testReadSync003 start');
         let invalid: number = -1;
         let readSyncBuffer: Uint8Array = new Uint8Array(8192);
-        let length: number = serial.readSync(invalid, readSyncBuffer, 500)
+        let length: number = serial.readSync(invalid, readSyncBuffer, 500);
         expect().assertFail();
       } catch (error) {
         console.error(TAG, 'testReadSync003 catch err code: ', error.code, ', message: ', error.message);
