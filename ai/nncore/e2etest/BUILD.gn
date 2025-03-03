@@ -15,9 +15,7 @@ import("//test/xts/tools/build/suite.gni")
 module_output_path = "acts/nnrt"
 
 config("nncore_config") {
-  include_dirs = [
-    "../common",
-  ]
+  include_dirs = [ "../common" ]
   cflags = [ "-Wno-error" ]
   cflags_cc = [ "-fexceptions" ]
 }
