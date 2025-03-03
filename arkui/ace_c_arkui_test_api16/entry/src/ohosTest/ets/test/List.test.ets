@@ -23,6 +23,7 @@ import buttonTypeTest from './button/ButtonTypeTest.test'
 import DragTest from "./drag/DragCaseTest.test"
 import calendarPickerDateTest from "./calendarPicker/CalendarPickerDate.test"
 import calendarPickerTest from "./calendarPicker/CalendarPickerMarkTodayTest.test"
+import ExpectedFrameRateRangeCallback from "./ExpectedFrameRateRange/ExpectedFrameRateRangeCallback.test"
 
 export default function testsuite() {
   postFrameCallbackTest();
@@ -36,4 +37,5 @@ export default function testsuite() {
   DragTest();
   calendarPickerDateTest();
   calendarPickerTest();
+  ExpectedFrameRateRangeCallback();
 }
