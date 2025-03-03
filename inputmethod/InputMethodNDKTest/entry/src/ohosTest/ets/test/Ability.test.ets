@@ -123,5 +123,82 @@ export default function abilityTest() {
       done();
     })
 
+    it('SUB_IMF_NDK_InputMethodController_Attach_MOUSE', 0, (done: Function) => {
+      let result = testNapi.SUB_IMF_NDK_InputMethodController_Attach_MOUSE();
+      console.info(`====>SUB_IMF_NDK_InputMethodController_Attach_MOUSE result: ${result}`)
+      expect(expResult).assertEqual(result)
+      done();
+    })
+
+    it('SUB_IMF_NDK_InputMethodController_Attach_TOUCH', 0, (done: Function) => {
+      let result = testNapi.SUB_IMF_NDK_InputMethodController_Attach_TOUCH();
+      console.info(`====>SUB_IMF_NDK_InputMethodController_Attach_TOUCH result: ${result}`)
+      expect(expResult).assertEqual(result)
+      done();
+    })
+
+    it('SUB_IMF_NDK_InputMethodController_Attach_NONE', 0, (done: Function) => {
+      let result = testNapi.SUB_IMF_NDK_InputMethodController_Attach_NONE();
+      console.info(`====>SUB_IMF_NDK_InputMethodController_Attach_NONE result: ${result}`)
+      expect(expResult).assertEqual(result)
+      done();
+    })
+
+    it('SUB_IMF_NDK_InputMethodProxy_ShowTextInput_NONE', 0, (done: Function) => {
+      let result = testNapi.SUB_IMF_NDK_InputMethodProxy_ShowTextInput_NONE();
+      console.info(`====>SUB_IMF_NDK_InputMethodProxy_ShowTextInput_NONE result: ${result}`)
+      expect(expResult).assertEqual(result)
+      done();
+    })
+
+    it('SUB_IMF_NDK_InputMethodProxy_ShowTextInput_MOUSE', 0, (done: Function) => {
+      let result = testNapi.SUB_IMF_NDK_InputMethodProxy_ShowTextInput_MOUSE();
+      console.info(`====>SUB_IMF_NDK_InputMethodProxy_ShowTextInput_MOUSE result: ${result}`)
+      expect(expResult).assertEqual(result)
+      done();
+    })
+
+    it('SUB_IMF_NDK_InputMethodProxy_ShowTextInput_TOUCH', 0, (done: Function) => {
+      let result = testNapi.SUB_IMF_NDK_InputMethodProxy_ShowTextInput_TOUCH();
+      console.info(`====>SUB_IMF_NDK_InputMethodProxy_ShowTextInput_TOUCH result: ${result}`)
+      expect(expResult).assertEqual(result)
+      done();
+    })
+
+    it('SUB_IMF_NDK_InputMethodProxy_ShowTextInput_OTHER', 0, (done: Function) => {
+      let result = testNapi.SUB_IMF_NDK_InputMethodProxy_ShowTextInput_OTHER();
+      console.info(`====>SUB_IMF_NDK_InputMethodProxy_ShowTextInput_OTHER result: ${result}`)
+      expect(expResult).assertEqual(result)
+      done();
+    })
+
+    it('SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_NONE', 0, (done: Function) => {
+      let result = testNapi.SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_NONE();
+      console.info(`====>SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_NONE result: ${result}`)
+      expect(expResult).assertEqual(result)
+      done();
+    })
+
+    it('SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_MOUSE', 0, (done: Function) => {
+      let result = testNapi.SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_MOUSE();
+      console.info(`====>SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_MOUSE result: ${result}`)
+      expect(expResult).assertEqual(result)
+      done();
+    })
+
+    it('SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_TOUCH', 0, (done: Function) => {
+      let result = testNapi.SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_TOUCH();
+      console.info(`====>SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_TOUCH result: ${result}`)
+      expect(expResult).assertEqual(result)
+      done();
+    })
+
+    it('SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_OTHER', 0, (done: Function) => {
+      let result = testNapi.SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_OTHER();
+      console.info(`====>SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_OTHER result: ${result}`)
+      expect(expResult).assertEqual(result)
+      done();
+    })
+
   })
 }
