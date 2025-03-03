@@ -23,7 +23,8 @@
                 "uinput -T -m 300 2600 280 200",
                 "wait 5",
                 "uinput -T -m 300 2600 280 200",
-                "power-shell setmode 602"
+                "power-shell setmode 602",
+                "uitest dumpLayout"
             ]
         }
     ]
