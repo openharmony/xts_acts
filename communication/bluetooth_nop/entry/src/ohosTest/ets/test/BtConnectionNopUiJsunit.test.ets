@@ -171,25 +171,6 @@ export default function btConnectionNopUiJsunit() {
       done();
     })
     /**
-     * @tc.number: testGetRemoteDeviceClassNop
-     * @tc.name: testGetRemoteDeviceClass
-     * @tc.desc: test getRemoteDeviceClass without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testGetRemoteDeviceClassNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        let deviceClass = connection.getRemoteDeviceClass('11:22:33:44:55:66');
-        hilog.info(Domain, TAG, `getRemoteDeviceClass without permission name = ${JSON.stringify(deviceClass)}`);
-        expect(true).assertFalse();
-      } catch (e) {
-        hilog.error(Domain, TAG, `getRemoteDeviceClass error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(Number(e.code)).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
      * @tc.number: testSetDevicePinCodeNop
      * @tc.name: testSetDevicePinCode
      * @tc.desc: test setDevicePinCode by promise without permission

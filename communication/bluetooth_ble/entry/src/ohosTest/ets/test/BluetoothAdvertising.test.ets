@@ -268,9 +268,9 @@ export default function bluetoothAdvertisingTest() {
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0300', 0, async (done : Function) =>  {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
       let advertisingParams: bluetooth.AdvertisingParams = {
         advertisingSettings: setting,
         advertisingData: advData,
