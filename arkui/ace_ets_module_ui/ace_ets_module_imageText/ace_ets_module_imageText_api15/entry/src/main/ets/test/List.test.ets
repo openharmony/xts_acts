@@ -49,6 +49,9 @@ export default function testsuite() {
   VerticalAlignTest();
   ObjectFitTest();
   editMenuOptions();
+  addOrDelText();
+  TextOnChangeOptionsTest();
+  TextOnWillChangeOptionsTest();
   bindSelectionMenuTest();
   ImageSvgFillColorTest();
   imageMatrix();
