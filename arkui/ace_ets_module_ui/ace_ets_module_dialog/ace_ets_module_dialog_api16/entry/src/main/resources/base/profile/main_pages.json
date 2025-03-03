@@ -6,6 +6,7 @@
     "MainAbility/pages/promptAction/updatePopup",
     "MainAbility/pages/promptAction/closePopup",
     "MainAbility/pages/timePickerDialog/timePickerDialogEnableHapticFeedback",
-    "MainAbility/pages/calendarPickerDialog/disableDateRangeAndMarkToday"
+    "MainAbility/pages/calendarPickerDialog/disableDateRangeAndMarkToday",
+    "MainAbility/pages/calendarPickerDialog/startEndTest"
   ]
 }
