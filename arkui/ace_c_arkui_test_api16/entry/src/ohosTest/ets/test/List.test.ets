@@ -21,6 +21,7 @@ import textPickerTest from "./textpicker/TextPickerColumnWidthsTest.test"
 import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
 import buttonTypeTest from './button/ButtonTypeTest.test'
 import DragTest from "./drag/DragCaseTest.test"
+import calendarPickerDateTest from "./calendarPicker/CalendarPickerDate.test"
 import calendarPickerTest from "./calendarPicker/CalendarPickerMarkTodayTest.test"
 
 export default function testsuite() {
@@ -33,5 +34,6 @@ export default function testsuite() {
   scrollBackToTopTest();
   buttonTypeTest();
   DragTest();
+  calendarPickerDateTest();
   calendarPickerTest();
 }
