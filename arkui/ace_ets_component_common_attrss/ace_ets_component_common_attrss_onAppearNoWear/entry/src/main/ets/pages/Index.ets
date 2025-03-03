@@ -12,34 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World'
 
-{
-  "app": {
-    "signingConfigs": [
-    ],
-    "products": [
-      {
-        "name": "default",
-        "signingConfig": "default",
-        "compileSdkVersion": 16,
-        "compatibleSdkVersion": 12,
-        "targetSdkVersion": 12,
-        "runtimeOS": "OpenHarmony",
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
       }
-    ]
-  },
-  "modules": [
-    {
-      "name": "entry",
-      "srcPath": "./entry",
-      "targets": [
-        {
-          "name": "default",
-          "applyToProducts": [
-            "default"
-          ]
-        }
-      ]
+      .width('100%')
     }
-  ]
+    .height('100%')
+  }
 }

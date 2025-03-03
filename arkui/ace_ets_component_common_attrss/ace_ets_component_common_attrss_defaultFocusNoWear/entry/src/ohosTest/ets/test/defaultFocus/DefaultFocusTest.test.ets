@@ -34,43 +34,11 @@ class TestValue {
 export default function DefaultFocusTest() {
   //A list of components that support the position attribute, which is required.
   let supportView = [
-    'Button',
-    'TextInput',
-    'TextArea',
-    'Search',
-    'Text',
-    'Image',
-    'Grid',
-    'List',
-    'Checkbox',
-    'CheckboxGroup',
-    'DatePicker',
-//    'ImageAnimator',
-    'Menu',
-    'MenuItem',
-//    'MenuItemGroup',
-    'Radio',
-    'Rating',
-    'TextPicker',
-    'TimePicker',
-    'Toggle',
-    'AlphabetIndexer',
-    'Column',
-//    'ColumnSplit',
-    'Counter',
-    'Flex',
-//    'GridCol',
-//    'GridRow',
-    'GridItem',
-    'ListItem',
-//    'ListItemGroup',
-    'Row',
-//    'RowSplit',
-    'Scroll',
-    'Stack',
-    'Swiper',
-    'Tabs',
-//    'TabContent'
+    'Select',
+    'Stepper',
+    'StepperItem',
+    'Web',
+    'SideBarContainer'
   ]
   //Page config, this param is required.
   let pageConfig: PageConfig = {

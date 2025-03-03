@@ -14,32 +14,14 @@
  */
 
 {
-  "app": {
-    "signingConfigs": [
-    ],
-    "products": [
-      {
-        "name": "default",
-        "signingConfig": "default",
-        "compileSdkVersion": 16,
-        "compatibleSdkVersion": 12,
-        "targetSdkVersion": 12,
-        "runtimeOS": "OpenHarmony",
-      }
-    ]
-  },
-  "modules": [
+  "apiType": 'stageMode',
+  "targets": [
     {
-      "name": "entry",
-      "srcPath": "./entry",
-      "targets": [
-        {
-          "name": "default",
-          "applyToProducts": [
-            "default"
-          ]
-        }
-      ]
+      "name": "default",
+      "runtimeOS": "OpenHarmony"
+    },
+    {
+      "name": "ohosTest",
     }
   ]
 }
