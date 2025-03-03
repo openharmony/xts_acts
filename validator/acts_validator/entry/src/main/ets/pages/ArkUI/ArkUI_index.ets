@@ -108,7 +108,7 @@ struct IndexPage {
     { title: 'CapiHandDetect', uri: 'pages/ArkUI/GetBarRect' },
     { title: 'CapiHandDetect', uri: 'pages/ArkUI/CapiHandDetect' },
     { title: 'GameCtrollerCallBackData', uri: 'pages/ArkUI/GameCtrollerCallBackData' },
-    { title: 'GameCtronllerCTest', uri: 'pages/ArkUI/GameCtronllerCTest' }
+    { title: 'GameCtronllerCTest', uri: 'pages/ArkUI/GameCtronllerCTest' },
     { title: 'HoverMove', uri: 'pages/ArkUI/HoverMove' }
   ]
   @State ColorObject: Object[] = letColor;
