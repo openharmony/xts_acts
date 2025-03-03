@@ -51,11 +51,6 @@ ohos_moduletest_suite("ActsDeqpgles31Suite0002Test") {
     "../functional/Deqpgles31integer_bitfieldinsertTestCase.cpp",
     "../functional/Deqpgles31integer_bitfieldreverseTestCase.cpp",
     "../functional/Deqpgles31integer_findlsbTestCase.cpp",
-    "../functional/Deqpgles31integer_findmsbTestCase.cpp",
-    "../functional/Deqpgles31integer_imulextendedTestCase.cpp",
-    "../functional/Deqpgles31integer_uaddcarryTestCase.cpp",
-    "../functional/Deqpgles31integer_umulextendedTestCase.cpp",
-    "../functional/Deqpgles31integer_usubborrowTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

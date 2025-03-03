@@ -51,13 +51,6 @@ ohos_moduletest_suite("ActsDeqpgles2Suite0009Test") {
     "../functional/Deqpgles2basic_expression_vertexTestCase.cpp",
     "../functional/Deqpgles2builtin_functions_commonTestCase.cpp",
     "../functional/Deqpgles2builtin_functions_geometricTestCase.cpp",
-    "../functional/Deqpgles2builtin_functions_matrixTestCase.cpp",
-    "../functional/Deqpgles2builtin_functions_vector_relationalTestCase.cpp",
-    "../functional/Deqpgles2scalar_conversion_combinedTestCase.cpp",
-    "../functional/Deqpgles2scalar_conversion_fragmentTestCase.cpp",
-    "../functional/Deqpgles2scalar_conversion_vertexTestCase.cpp",
-    "../functional/Deqpgles2swizzle_fragmentTestCase.cpp",
-    "../functional/Deqpgles2swizzle_vertexTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

@@ -55,7 +55,7 @@ export struct PageOne {
         Scroll(this.scroller) {
           Column({space: 10}) {
             ForEach(this.arr, (item: number) => {
-              if (item == 3) {
+              if (item == 0) {
                 List({space: 10, scroller: this.scroller1}) {
                   ForEach(this.arr1, (item1: number) => {
                     ListItem() {
@@ -63,8 +63,8 @@ export struct PageOne {
                     }
                   }, (item1: string) => item1)
                 }
-                .height('30%')
-				.margin({right: '60%'})
+                .height('70%')
+                .margin({right: '60%'})
               } else {
                 Text('item_' + item).fontSize(16).backgroundColor(Color.Yellow).width('90%').height(100)
               }

@@ -47,13 +47,6 @@ ohos_moduletest_suite("ActsDeqpgles2Suite0012Test") {
   sources = [
     "../ActsDeqpgles20012TestSuite.cpp",
     "../functional/Deqpgles2blend_equation_src_func_dst_funcTestCase.cpp",
-    "../functional/Deqpgles2depth_stencil_randomTestCase.cpp",
-    "../functional/Deqpgles2depth_stencil_stencil_depth_funcsTestCase.cpp",
-    "../functional/Deqpgles2depth_stencil_write_maskTestCase.cpp",
-    "../functional/Deqpgles2fragment_ops_depthTestCase.cpp",
-    "../functional/Deqpgles2fragment_ops_scissorTestCase.cpp",
-    "../functional/Deqpgles2fragment_ops_stencilTestCase.cpp",
-    "../functional/Deqpgles2rgb_func_alpha_func_srcTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

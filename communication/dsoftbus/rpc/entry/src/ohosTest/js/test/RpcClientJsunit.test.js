@@ -78,7 +78,7 @@ export default function ActsRpcClientJsTest() {
         const CODE_WRITE_SHORT_MULTI = 24;
         const CODE_WRITE_BYTE_MULTI = 25;
         const CODE_WRITE_INT_MULTI = 26;
-        const CODE_TRANSACTION = 27;
+        const CODE_WRITE_REMOTEOBJECTARRAY_3 = 27;
         const CODE_IPCSKELETON = 28;
         const CODE_FILESDIR = 29;
         const CODE_WRITE_REMOTEOBJECTARRAY_1 = 30;
@@ -107,6 +107,7 @@ export default function ActsRpcClientJsTest() {
         class TestRemoteObject extends rpc.RemoteObject {
             constructor(descriptor) {
                 super(descriptor);
+                this.modifyLocalInterface(this, descriptor);
             }
             asObject() {
                 return this;
@@ -483,6 +484,14 @@ export default function ActsRpcClientJsTest() {
                                 let result4 = reply.writeInt(tmp4);
                                 let result5 = reply.writeInt(tmp5);
                                 return true;
+                            }
+                        case 27:
+                            {
+                              console.info("case 27 starts");
+                              let listeners = data.readRemoteObjectArray();
+                              reply.writeRemoteObjectArray(listeners);
+                              console.info("onRemoteMessageRequest success");
+                              return true;
                             }
                         case 28:
                             {
@@ -5471,7 +5480,7 @@ export default function ActsRpcClientJsTest() {
             console.info("---------------------start SUB_DSoftbus_IPC_API_MessageSequence_1420---------------------------");
             try {
                 var data = rpc.MessageSequence.create();
-                let sequenceable = new MySequenceableCode(1, "aaa");
+                let sequenceable = new MySequenceable(1, "aaa");
                 data.writeParcelable(sequenceable);
                 data.setCapacity(0);
                 data.setSize(0);
@@ -6103,8 +6112,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeArrayBuffer(buffer, 12);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1590 error is:" + error);
-                let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 401).assertTrue();
                 expect(error.message != null).assertTrue();
             } finally {
                data.reclaim();
@@ -6134,8 +6142,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeArrayBuffer(buffer, -2);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1600 error is:" + error);
-                let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 401).assertTrue();
                 expect(error.message != null).assertTrue();
             } finally {
                data.reclaim();
@@ -6166,8 +6173,7 @@ export default function ActsRpcClientJsTest() {
                 data.readArrayBuffer(13);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1610 error is:" + error);
-                let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 401).assertTrue();
                 expect(error.message != null).assertTrue();
             } finally {
                data.reclaim();
@@ -6198,8 +6204,7 @@ export default function ActsRpcClientJsTest() {
                 data.readArrayBuffer(-5);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1620 error is:" + error);
-                let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 401).assertTrue();
                 expect(error.message != null).assertTrue();
             } finally {
                data.reclaim();
@@ -6230,8 +6235,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeArrayBuffer(buffer, rpc.TypeCode.INT16_ARRAY);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1630 error is:" + error);
-                let errCode = `${rpc.ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR}`
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900009).assertTrue();
                 expect(error.message != null).assertTrue();
             } finally {
                 done();
@@ -6268,8 +6272,7 @@ export default function ActsRpcClientJsTest() {
                 data.readArrayBuffer(rpc.TypeCode.INT16_ARRAY);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_1640 error is:" + error);
-                let errCode = `${rpc.ErrorCode.READ_DATA_FROM_MESSAGE_SEQUENCE_ERROR}`
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900010).assertTrue();
                 expect(error.message != null).assertTrue();
             } finally {
                 done();
@@ -6322,6 +6325,45 @@ export default function ActsRpcClientJsTest() {
                 done();
              }
             console.info("---------------------end SUB_DSoftbus_IPC_API_MessageSequence_1650---------------------------");
+        });
+
+        /*
+         * @tc.number  : SUB_DSoftbus_IPC_API_MessageSequence_1660
+         * @tc.name    : test Call the writeRemoteObjectArray interface, write the array to the MessageSequence instance,
+         *               and call readRemoteObjectArray (datain: string []) to read the data
+         * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+         * @tc.level   : 0
+         * @tc.type    : Compatibility
+         * @tc.size    : MediumTest
+         */
+        it("SUB_DSoftbus_IPC_API_MessageSequence_1660", 0, async function (done) {
+            console.info("---------------------start SUB_DSoftbus_IPC_API_MessageSequence_1660---------------------------");
+            try {
+                var data = rpc.MessageSequence.create();
+                var reply = rpc.MessageSequence.create();
+                var option = rpc.MessageOption();
+                let listeners = [new TestRemoteObject("rpcListener"), 
+                    new TestRemoteObject("rpcListener2"), new TestRemoteObject("rpcListener3")];
+                data.writeRemoteObjectArray(listeners);
+                expect(gIRemoteObject != undefined).assertTrue();
+                await gIRemoteObject.sendMessageRequest(CODE_WRITE_REMOTEOBJECTARRAY_3, data, reply, option).then((result) => {
+                    expect(result.errCode).assertEqual(0);
+                    let rlisteners = new Array(3);
+                    result.reply.readRemoteObjectArray(rlisteners);
+                    for(let index = 0; index < rlisteners.length; index++){
+                        expect(rlisteners[index] != null).assertTrue();
+                        console.info(" readRemoteObjectArray is success");
+                    }
+                });
+            } catch (error) {
+                console.info("SUB_DSoftbus_IPC_API_MessageSequence_1660 error is:" + error);
+                expect(error == null).assertTrue();
+            } finally {
+                data.reclaim();
+                reply.reclaim();
+                done();
+             }
+            console.info("---------------------end SUB_DSoftbus_IPC_API_MessageSequence_1660---------------------------");
         });
 
         /*
@@ -11586,8 +11628,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeInterfaceToken(token);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
-                let errCode = `${rpc.ErrorCode.PARCEL_MEMORY_ALLOC_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900011).assertTrue();
                 expect(error.message != null).assertTrue();
             } finally {
                 data.reclaim();
@@ -11689,7 +11730,7 @@ export default function ActsRpcClientJsTest() {
             console.info("---------------------start SUB_DSoftbus_IPC_API_MessageParcel_1640---------------------------");
             try {
                 var data = rpc.MessageSequence.create();
-                let sequenceable = new MySequenceableCode(1, "aaa");
+                let sequenceable = new MySequenceable(1, "aaa");
                 data.writeParcelable(sequenceable);
                 data.setCapacity(0);
                 data.setSize(0);
@@ -13478,8 +13519,7 @@ export default function ActsRpcClientJsTest() {
                 console.info("SUB_DSoftbus_IPC_API_Ashmem_0470: run writeAshmemis is ");
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_Ashmem error is:" + error);
-                let errCode = `${rpc.ErrorCode.WRITE_TO_ASHMEM_ERROR}`;
-                expect(error.code != errCode).assertTrue();
+                expect(error.code != 1900003).assertTrue();
                 expect(error != null).assertTrue();
             } finally {
                 data.reclaim();
@@ -13508,8 +13548,7 @@ export default function ActsRpcClientJsTest() {
                 ashmem.closeAshmem();
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_Ashmem error is:" + error);
-                let errCode = `${rpc.ErrorCode.READ_FROM_ASHMEM_ERROR}`;
-                expect(error.code != errCode).assertEqual(null);
+                expect(error.code != 1900004).assertEqual(null);
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_Ashmem_0480---------------------------");
         })
@@ -15188,8 +15227,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeRawDataBuffer(buffer, 0);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_RawDataBuffer_0300 error is:" + error);
-                let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 401).assertTrue();
             } finally {
                 data.reclaim();
             }
@@ -15217,8 +15255,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeRawDataBuffer(buffer, errSize);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_RawDataBuffer_0400 error is:" + error);
-                let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 401).assertTrue();
             } finally {
                 data.reclaim();
             }
@@ -15245,8 +15282,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeRawDataBuffer(buffer, size);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_RawDataBuffer_0500 error is:" + error);
-                let errCode = `${rpc.ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900009).assertTrue();
             } finally {
                 data.reclaim();
             }
@@ -15340,8 +15376,7 @@ export default function ActsRpcClientJsTest() {
                 let readBuffer = data.readRawDataBuffer(TEST_LEN_128M + 1);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_RawDataBuffer_0800 error is:" + error);
-                let errCode = `${rpc.ErrorCode.READ_DATA_FROM_MESSAGE_SEQUENCE_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900010).assertTrue();
             } finally {
                 data.reclaim();
             }
@@ -15431,8 +15466,7 @@ export default function ActsRpcClientJsTest() {
                 expect(readInt32Arr.length == 0).assertTrue();
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_RawDataBuffer_1100 error is:" + error);
-                let errCode = `${rpc.ErrorCode.READ_DATA_FROM_MESSAGE_SEQUENCE_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900010).assertTrue();
             } finally {
                 data.reclaim();
             }
@@ -15527,8 +15561,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeAshmem(ashmem);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_0300 error is:" + error);
-                let errCode = `${rpc.ErrorCode.WRITE_TO_ASHMEM_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900003).assertTrue();
             } finally {
                 ashmem.unmapAshmem();
                 ashmem.closeAshmem();
@@ -15561,8 +15594,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeAshmem(ashmem);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_0400 error is:" + error);
-                let errCode = `${rpc.ErrorCode.WRITE_TO_ASHMEM_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900003).assertTrue();
             } finally {
                 ashmem.unmapAshmem();
                 ashmem.closeAshmem();
@@ -15594,8 +15626,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeAshmem(ashmem);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_0500 error is:" + error);
-                let errCode = `${rpc.ErrorCode.WRITE_TO_ASHMEM_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900003).assertTrue();
             } finally {
                 ashmem.unmapAshmem();
                 ashmem.closeAshmem();
@@ -15627,8 +15658,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeAshmem(ashmem);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_0600 error is:" + error);
-                let errCode = `${rpc.ErrorCode.WRITE_TO_ASHMEM_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900003).assertTrue();
             } finally {
                 ashmem.unmapAshmem();
                 ashmem.closeAshmem();
@@ -15660,8 +15690,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeAshmem(ashmem);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_0700 error is:" + error);
-                let errCode = `${rpc.ErrorCode.WRITE_TO_ASHMEM_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900003).assertTrue();
             } finally {
                 ashmem.unmapAshmem();
                 ashmem.closeAshmem();
@@ -15693,8 +15722,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeAshmem(ashmem);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_0800 error is:" + error);
-                let errCode = `${rpc.ErrorCode.WRITE_TO_ASHMEM_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900003).assertTrue();
             } finally {
                 ashmem.unmapAshmem();
                 ashmem.closeAshmem();
@@ -15803,8 +15831,7 @@ export default function ActsRpcClientJsTest() {
                 let readBuffuer = ashmem.readDataFromAshmem(0, 0);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_1100 error is:" + error);
-                let errCode = `${rpc.ErrorCode.READ_FROM_ASHMEM_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900004).assertTrue();
             } finally {
                 ashmem.unmapAshmem();
                 ashmem.closeAshmem();
@@ -15837,8 +15864,7 @@ export default function ActsRpcClientJsTest() {
                 let readBuffuer = ashmem.readDataFromAshmem(-1, 0);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_1200 error is:" + error);
-                let errCode = `${rpc.ErrorCode.READ_FROM_ASHMEM_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900004).assertTrue();
             } finally {
                 ashmem.unmapAshmem();
                 ashmem.closeAshmem();
@@ -15871,8 +15897,7 @@ export default function ActsRpcClientJsTest() {
                 let readBuffuer = ashmem.readDataFromAshmem(size, -1);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_1300 error is:" + error);
-                let errCode = `${rpc.ErrorCode.READ_FROM_ASHMEM_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900004).assertTrue();
             } finally {
                 ashmem.unmapAshmem();
                 ashmem.closeAshmem();
@@ -15905,8 +15930,7 @@ export default function ActsRpcClientJsTest() {
                 let readBuffuer = ashmem.readDataFromAshmem(size, TEST_LEN_32 + 1);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_1400 error is:" + error);
-                let errCode = `${rpc.ErrorCode.READ_FROM_ASHMEM_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900004).assertTrue();
             } finally {
                 ashmem.unmapAshmem();
                 ashmem.closeAshmem();
@@ -15939,8 +15963,7 @@ export default function ActsRpcClientJsTest() {
                 let readBuffuer = ashmem.readDataFromAshmem(TEST_LEN_32 + 1, 0)
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_1500 error is:" + error);
-                let errCode = `${rpc.ErrorCode.READ_FROM_ASHMEM_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900004).assertTrue();
             } finally {
                 ashmem.unmapAshmem();
                 ashmem.closeAshmem();
@@ -15973,8 +15996,7 @@ export default function ActsRpcClientJsTest() {
                 let readBuffuer = ashmem.readDataFromAshmem(TEST_LEN_32 + 1, 1);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_NewAshmen_1600 error is:" + error);
-                let errCode = `${rpc.ErrorCode.READ_FROM_ASHMEM_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900004).assertTrue();
             } finally {
                 ashmem.unmapAshmem();
                 ashmem.closeAshmem();

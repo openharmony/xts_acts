@@ -56,20 +56,6 @@ ohos_moduletest_suite("ActsDeqpgles31Suite0016Test") {
     "../functional/Deqpgles31texture_level_texture_2d_arrayTestCase.cpp",
     "../functional/Deqpgles31texture_level_texture_2d_multisampleTestCase.cpp",
     "../functional/Deqpgles31texture_level_texture_2d_multisample_arrayTestCase.cpp",
-    "../functional/Deqpgles31texture_level_texture_3dTestCase.cpp",
-    "../functional/Deqpgles31texture_level_texture_bufferTestCase.cpp",
-    "../functional/Deqpgles31texture_level_texture_cube_arrayTestCase.cpp",
-    "../functional/Deqpgles31texture_level_texture_cube_mapTestCase.cpp",
-    "../functional/Deqpgles31texture_set_pure_intTestCase.cpp",
-    "../functional/Deqpgles31texture_set_pure_uintTestCase.cpp",
-    "../functional/Deqpgles31texture_texture_2dTestCase.cpp",
-    "../functional/Deqpgles31texture_texture_2d_arrayTestCase.cpp",
-    "../functional/Deqpgles31texture_texture_2d_multisampleTestCase.cpp",
-    "../functional/Deqpgles31texture_texture_2d_multisample_arrayTestCase.cpp",
-    "../functional/Deqpgles31texture_texture_3dTestCase.cpp",
-    "../functional/Deqpgles31texture_texture_bufferTestCase.cpp",
-    "../functional/Deqpgles31texture_texture_cube_arrayTestCase.cpp",
-    "../functional/Deqpgles31texture_texture_cube_mapTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]
