@@ -29,7 +29,7 @@ export default function ThermalTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Get_Thermal_Level_JSTest0010', 0, async function (done) {
+    it('Get_Thermal_Level_JSTest0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       console.info("enter");
       await new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -49,7 +49,7 @@ export default function ThermalTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('SubscribeAndUnsubscribe_Thermal_Level_JSTest0020', 0, async function (done) {
+    it('SubscribeAndUnsubscribe_Thermal_Level_JSTest0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       thermal.subscribeThermalLevel((level) => {
         console.info("level is: " + level);
         expect(level >= 0 && level <= 7).assertTrue();
@@ -73,7 +73,7 @@ export default function ThermalTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Get_Thermal_Level_Cool_JSTest0030', 0, function () {
+    it('Get_Thermal_Level_Cool_JSTest0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let thermalLevel = thermal.ThermalLevel.COOL;
       console.info('ThermalLevel.COOL = ' + thermalLevel);
       expect(thermalLevel === 0).assertTrue();
@@ -87,7 +87,7 @@ export default function ThermalTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Get_Thermal_Level_Normal_JSTest0040', 0, function () {
+    it('Get_Thermal_Level_Normal_JSTest0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let thermalLevel = thermal.ThermalLevel.NORMAL;
       console.info('ThermalLevel.NORMAL = ' + thermalLevel);
       expect(thermalLevel === 1).assertTrue();
@@ -101,7 +101,7 @@ export default function ThermalTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Get_Thermal_Level_Warm_JSTest0050', 0, function () {
+    it('Get_Thermal_Level_Warm_JSTest0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
       let thermalLevel = thermal.ThermalLevel.WARM;
       console.info('ThermalLevel.WARM = ' + thermalLevel);
       expect(thermalLevel === 2).assertTrue();
@@ -115,7 +115,7 @@ export default function ThermalTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Get_Thermal_Level_Hot_JSTest0060', 0, function () {
+    it('Get_Thermal_Level_Hot_JSTest0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
       let thermalLevel = thermal.ThermalLevel.HOT;
       console.info('ThermalLevel.HOT = ' + thermalLevel);
       expect(thermalLevel === 3).assertTrue();
@@ -129,7 +129,7 @@ export default function ThermalTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Get_Thermal_Level_OverHeated_JSTest0070', 0, function () {
+    it('Get_Thermal_Level_OverHeated_JSTest0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
       let thermalLevel = thermal.ThermalLevel.OVERHEATED;
       console.info('ThermalLevel.OVERHEATED = ' + thermalLevel);
       expect(thermalLevel === 4).assertTrue();
@@ -143,7 +143,7 @@ export default function ThermalTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Get_Thermal_Level_Warning_JSTest0080', 0, function () {
+    it('Get_Thermal_Level_Warning_JSTest0080', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
       let thermalLevel = thermal.ThermalLevel.WARNING;
       console.info('ThermalLevel.WARNING = ' + thermalLevel);
       expect(thermalLevel === 5).assertTrue();
@@ -157,7 +157,7 @@ export default function ThermalTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Get_Thermal_Level_Emergency_JSTest0090', 0, function () {
+    it('Get_Thermal_Level_Emergency_JSTest0090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
       let thermalLevel = thermal.ThermalLevel.EMERGENCY;
       console.info('ThermalLevel.EMERGENCY = ' + thermalLevel);
       expect(thermalLevel === 6).assertTrue();
@@ -171,7 +171,7 @@ export default function ThermalTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Get_Thermal_Level_Escape_JSTest0100', 0, function () {
+    it('Get_Thermal_Level_Escape_JSTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
       let thermalLevel = thermal.ThermalLevel.ESCAPE;
       console.info('ThermalLevel.ESCAPE = ' + thermalLevel);
       expect(thermalLevel === 7).assertTrue();
@@ -185,7 +185,7 @@ export default function ThermalTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Get_Level_JSTest0110', 0, async function (done) {
+    it('Get_Level_JSTest0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let level = thermal.getLevel();
       console.info("Get_Level_JSTest0110 level is: " + level);
       expect(level >= thermal.ThermalLevel.COOL && level <= thermal.ThermalLevel.ESCAPE).assertTrue();
@@ -200,7 +200,7 @@ export default function ThermalTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Register_Thermal_Level_Callback_JSTest0120', 0, async function (done) {
+    it('Register_Thermal_Level_Callback_JSTest0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         thermal.registerThermalLevelCallback((value) => {
           console.info("Register_Thermal_Level_Callback_JSTest0120 level is: " + value);
@@ -223,7 +223,7 @@ export default function ThermalTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Register_Thermal_Level_Callback_JSTest0130', 0, async function (done) {
+    it('Register_Thermal_Level_Callback_JSTest0130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         thermal.registerThermalLevelCallback('')
         done();
@@ -243,7 +243,7 @@ export default function ThermalTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('UnRegister_Thermal_Level_Callback_JSTest0140', 0, async function (done) {
+    it('UnRegister_Thermal_Level_Callback_JSTest0140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         thermal.unregisterThermalLevelCallback('')
         done();
@@ -263,7 +263,7 @@ export default function ThermalTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('UnRegister_Thermal_Level_Callback_JSTest0150', 0, async function (done) {
+    it('UnRegister_Thermal_Level_Callback_JSTest0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         thermal.unregisterThermalLevelCallback()
         done();
@@ -282,7 +282,7 @@ export default function ThermalTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('UnRegister_Thermal_Level_Callback_JSTest0160', 0, async function (done) {
+    it('UnRegister_Thermal_Level_Callback_JSTest0160', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         thermal.unregisterThermalLevelCallback(() => {
           expect(true).assertTrue();
@@ -303,7 +303,7 @@ export default function ThermalTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('Unsubscribe_Thermal_Level_Callback_JSTest0170', 0, async function (done) {
+    it('Unsubscribe_Thermal_Level_Callback_JSTest0170', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let TAG = 'Unsubscribe_Thermal_Level_Callback_JSTest0170';
       try {
         thermal.unsubscribeThermalLevel();

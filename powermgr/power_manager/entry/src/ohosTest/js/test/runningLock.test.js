@@ -26,7 +26,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Running_Lock_Lock_JSTest0010', 0, async function (done) {
+    it('Running_Lock_Lock_JSTest0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       await runningLock.createRunningLock("Running_Lock_Lock_JSTest0010", runningLock.RunningLockType.BACKGROUND)
         .then(runninglock => {
           expect(runninglock !== null).assertTrue();
@@ -54,7 +54,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Running_Lock_used_JSTest0020', 0, async function (done) {
+    it('Running_Lock_used_JSTest0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       await runningLock.createRunningLock("Running_Lock_used_JSTest0020", runningLock.RunningLockType.BACKGROUND)
         .then(runninglock => {
           expect(runninglock !== null).assertTrue();
@@ -79,7 +79,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Running_Lock_Unlock_JSTest0030', 0, async function (done) {
+    it('Running_Lock_Unlock_JSTest0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       await runningLock.createRunningLock("Running_Lock_Unlock_JSTest0030",
         runningLock.RunningLockType.BACKGROUND)
         .then(runninglock => {
@@ -113,7 +113,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Running_Lock_Hold_IsHolding_UnHold_JSTest0040', 0, async function (done) {
+    it('Running_Lock_Hold_IsHolding_UnHold_JSTest0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         let isExec = false;
         await runningLock.create("Running_Lock_Hold_IsHolding_UnHold_JSTest0040",
@@ -159,7 +159,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Running_Lock_IsHolding_UnHold_JSTest0050', 0, async function (done) {
+    it('Running_Lock_IsHolding_UnHold_JSTest0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         let isExec = false;
         await runningLock.create("Running_Lock_IsHolding_UnHold_JSTest0050",
@@ -201,7 +201,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Running_Lock_Hold_IsHolding_UnHold_JSTest0060', 0, async function (done) {
+    it('Running_Lock_Hold_IsHolding_UnHold_JSTest0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         let isExec = false;
         await runningLock.create("Running_Lock_Hold_IsHolding_UnHold_JSTest0060",
@@ -247,7 +247,7 @@ export default function RunningLockTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('Running_Lock_Hold_IsHolding_UnHold_JSTest0061', 0, async function (done) {
+    it('Running_Lock_Hold_IsHolding_UnHold_JSTest0061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let TAG = 'Running_Lock_Hold_IsHolding_UnHold_JSTest0061';
       try {
         runningLock.create(TAG, runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL)
@@ -286,7 +286,7 @@ export default function RunningLockTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('Running_Lock_Hold_IsHolding_UnHold_JSTest0062', 0, async function (done) {
+    it('Running_Lock_Hold_IsHolding_UnHold_JSTest0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let TAG = 'Running_Lock_Hold_IsHolding_UnHold_JSTest0062';
       try {
         runningLock.create(TAG, runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL)
@@ -327,7 +327,7 @@ export default function RunningLockTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('Running_Lock_Hold_IsHolding_UnHold_JSTest0063', 0, async function (done) {
+    it('Running_Lock_Hold_IsHolding_UnHold_JSTest0063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let TAG = 'Running_Lock_Hold_IsHolding_UnHold_JSTest0063';
       try {
         runningLock.create(TAG, runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL)
@@ -366,7 +366,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Enum_RunningLock_Type_Background_JSTest0070', 0, function () {
+    it('Enum_RunningLock_Type_Background_JSTest0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
       let runningLockType = runningLock.RunningLockType.BACKGROUND;
       console.info('runningLockType = ' + runningLockType);
       expect(runningLockType == 1).assertTrue();
@@ -381,7 +381,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Enum_RunningLock_Type_Proximityscreencontrol_JSTest0080', 0, function () {
+    it('Enum_RunningLock_Type_Proximityscreencontrol_JSTest0080', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
       let runningLockType = runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL;
       console.info('runningLockType = ' + runningLockType);
       expect(runningLockType == 2).assertTrue();
@@ -396,7 +396,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Is_Runninglock_Type_Supported_Promise_JSTest0090', 0, async function (done) {
+    it('Is_Runninglock_Type_Supported_Promise_JSTest0090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       await runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL)
         .then(supported => {
           console.info('Is_Runninglock_Type_Supported_Promise_JSTest0090 PROXIMITY_SCREEN_CONTROL supported is ' +
@@ -420,7 +420,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Is_Runninglock_Type_Supported_Promise_JSTest0100', 0, async function (done) {
+    it('Is_Runninglock_Type_Supported_Promise_JSTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       await runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
         .then(supported => {
           console.info('Is_Runninglock_Type_Supported_Promise_JSTest0100 BACKGROUND supported is ' +
@@ -444,7 +444,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Is_Runninglock_Type_Supported_Callback_JSTest0110', 0, async function (done) {
+    it('Is_Runninglock_Type_Supported_Callback_JSTest0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (error, supported) => {
         if (typeof error === "undefined") {
           console.info('Is_Runninglock_Type_Supported_Callback_JSTest0110 supported is ' + supported);
@@ -466,7 +466,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Is_Runninglock_Type_Supported_Callback_JSTest0120', 0, async function (done) {
+    it('Is_Runninglock_Type_Supported_Callback_JSTest0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       runningLock.isRunningLockTypeSupported(3, (error, supported) => {
         if (typeof error === "undefined") {
           console.info('Is_Runninglock_Type_Supported_Callback_JSTest0120 supported is ' + supported);
@@ -488,7 +488,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Is_Supported_JSTest0130', 0, async function (done) {
+    it('Is_Supported_JSTest0130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         let background = runningLock.isSupported(runningLock.RunningLockType.BACKGROUND)
         expect(background).assertTrue();
@@ -508,7 +508,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Is_Supported_JSTest0140', 0, async function (done) {
+    it('Is_Supported_JSTest0140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         let proximityScreenControl =
           runningLock.isSupported(runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL)
@@ -529,7 +529,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Is_Supported_JSTest0150', 0, async function (done) {
+    it('Is_Supported_JSTest0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         let other = runningLock.isSupported(0)
         expect(other).assertFalse();
@@ -549,7 +549,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Is_Supported_JSTest0160', 0, async function (done) {
+    it('Is_Supported_JSTest0160', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         let other = runningLock.isSupported(3)
         expect(other).assertFalse();
@@ -569,7 +569,7 @@ export default function RunningLockTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('Is_Supported_JSTest0161', 0, async function (done) {
+    it('Is_Supported_JSTest0161', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let TAG = 'Is_Supported_JSTest0161';
       try {
         let isSupported = runningLock.isSupported('PROXIMITY_SCREEN_CONTROL');
@@ -591,7 +591,7 @@ export default function RunningLockTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('Is_Supported_JSTest0162', 0, async function (done) {
+    it('Is_Supported_JSTest0162', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let TAG = 'Is_Supported_JSTest0162';
       try {
         let isSupported = runningLock.isSupported(false);
@@ -613,7 +613,7 @@ export default function RunningLockTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('Is_Supported_JSTest0163', 0, async function (done) {
+    it('Is_Supported_JSTest0163', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let TAG = 'Is_Supported_JSTest0163';
       try {
         let isSupported = runningLock.isSupported({
@@ -637,7 +637,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Create_Running_Lock_Promise_JSTest0170', 0, async function (done) {
+    it('Create_Running_Lock_Promise_JSTest0170', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       await runningLock.createRunningLock("Create_Running_Lock_Promise_JSTest0170",
         runningLock.RunningLockType.BACKGROUND)
         .then(runninglock => {
@@ -660,7 +660,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Create_Running_Lock_CallBack_JSTest0180', 0, async function (done) {
+    it('Create_Running_Lock_CallBack_JSTest0180', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       runningLock.createRunningLock("Create_Running_Lock_CallBack_JSTest0180",
         runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL,
         (error, runninglock) => {
@@ -691,7 +691,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Create_Running_Lock_Promise_JSTest0190', 0, async function (done) {
+    it('Create_Running_Lock_Promise_JSTest0190', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         let isExec = false;
         await runningLock.create("Create_Running_Lock_Promise_JSTest0190",
@@ -730,7 +730,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Create_Running_Lock_Promise_JSTest0200', 0, async function (done) {
+    it('Create_Running_Lock_Promise_JSTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         let isExec = false;
         await runningLock.create("Create_Running_Lock_Promise_JSTest0200",
@@ -768,9 +768,9 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Create_Running_Lock_Promise_Invalid_JSTest0210', 0, async function (done) {
+    it('Create_Running_Lock_Promise_Invalid_JSTest0210', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
-        runningLock.create(0, runningLock.RunningLockType.BACKGROUND)
+        runningLock.create(TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, runningLock.RunningLockType.BACKGROUND)
           .then((runninglock) => {
             expect().assertFail();
             done();
@@ -791,7 +791,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Create_Running_Lock_Promise_Invalid_JSTest0220', 0, async function (done) {
+    it('Create_Running_Lock_Promise_Invalid_JSTest0220', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         runningLock.create("Create_Running_Lock_Promise_Invalid_JSTest0220", 0)
           .then((runninglock) => {
@@ -821,7 +821,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Create_Running_Lock_Promise_Invalid_JSTest0230', 0, async function (done) {
+    it('Create_Running_Lock_Promise_Invalid_JSTest0230', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         runningLock.create("Create_Running_Lock_Promise_Invalid_JSTest0230", 5)
           .then((runninglock) => {
@@ -851,7 +851,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Create_Running_Lock_Callback_JSTest0240', 0, async function (done) {
+    it('Create_Running_Lock_Callback_JSTest0240', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         runningLock.create("Create_Running_Lock_Callback_JSTest0240", runningLock.RunningLockType.BACKGROUND,
           (error, runninglock) => {
@@ -875,7 +875,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Create_Running_Lock_Callback_JSTest0250', 0, async function (done) {
+    it('Create_Running_Lock_Callback_JSTest0250', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         runningLock.create("Create_Running_Lock_Callback_JSTest0250",
           runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL,
@@ -900,7 +900,7 @@ export default function RunningLockTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Create_Running_Lock_Callback_Invalid_JSTest0260', 0, async function (done) {
+    it('Create_Running_Lock_Callback_Invalid_JSTest0260', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       try {
         runningLock.create("Create_Running_Lock_Callback_Invalid_JSTest0260", "invalid",
           (error, runninglock) => {
@@ -926,7 +926,7 @@ export default function RunningLockTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('Create_Running_Lock_Callback_Invalid_JSTest0270', 0, async function (done) {
+    it('Create_Running_Lock_Callback_Invalid_JSTest0270', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let TAG = 'Create_Running_Lock_Callback_Invalid_JSTest0270';
       try {
         runningLock.create(TAG, -1, (error, lock) => {
@@ -952,7 +952,7 @@ export default function RunningLockTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('Create_Running_Lock_Callback_Invalid_JSTest0280', 0, async function (done) {
+    it('Create_Running_Lock_Callback_Invalid_JSTest0280', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let TAG = 'Create_Running_Lock_Callback_Invalid_JSTest0280';
       try {
         runningLock.create(TAG, 3, (error, lock) => {

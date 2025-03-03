@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import brightness from '@system.brightness';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 export default function SystemBrightnessTest() {
   describe('SystemBrightnessTest', () => {
@@ -376,7 +376,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1310', 0, async (done) => {
+    it('SystemBrightnessTest_1310', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_1310';
       try {
         brightness.setValue();
@@ -538,7 +538,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1910', 0, async (done) => {
+    it('SystemBrightnessTest_1910', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_1910';
       try {
         brightness.getMode();
@@ -705,7 +705,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2410', 0, async (done) => {
+    it('SystemBrightnessTest_2410', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_2410';
       try {
         brightness.setMode();
@@ -804,7 +804,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2710', 0, async (done) => {
+    it('SystemBrightnessTest_2710', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_2710';
       try {
         brightness.setKeepScreenOn();
