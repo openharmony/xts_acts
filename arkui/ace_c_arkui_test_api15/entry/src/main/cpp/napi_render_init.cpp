@@ -22,6 +22,9 @@
 #include "list/list_test.h"
 #include "listScrollTo/list_scroll_to_test.h"
 #include "textArea/textArea_letter_spacing.h"
+#include "node/node_handle_by_id_test.h"
+#include "window/get_window_info_test.h"
+#include "lazyForEach/lazyforeach_expand_mode_test.h"
 #include "gesturetouchcancel/gesture_cancel.h"
 
 
@@ -56,6 +59,32 @@ static napi_value Init(napi_env env, napi_value exports)
         {"textAreaLetterSpacing001", nullptr, TextAreaLetterSpacing::textAreaLetterSpacing001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"textInputLetterSpacing002", nullptr, TextAreaLetterSpacing::textInputLetterSpacing002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeHandleById", nullptr, NodeHandleByIdTest::testNodeHandleById001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGetWindowInfo", nullptr, GetWindowInfoTest::testGetWindowInfo001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testHostWindowInfoGetName", nullptr, GetWindowInfoTest::testHostWindowInfoGetName002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testHostWindowInfoDestroy", nullptr, GetWindowInfoTest::testHostWindowInfoDestroy003,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode001", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode002", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode003", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode003,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode004", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode004,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode005", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode005,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode006", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode006,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode007", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode007,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode008", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode008,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachExpandMode009", nullptr, LazyForEachExpandModeTest::testLazyForEachExpandMode009,
          nullptr, nullptr, nullptr, napi_default, nullptr},
 		 {"gesturecancelTest", nullptr, GestureInterfaceCancelTest::CreateNativeNode,
          nullptr, nullptr, nullptr, napi_default, nullptr},
