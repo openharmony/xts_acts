@@ -17,6 +17,8 @@ import { describe, afterEach, it, expect, beforeAll } from '@ohos/hypium';
 import abilityConstant from '@ohos.app.ability.AbilityConstant';
 import wantConstant from "@ohos.app.ability.wantConstant";
 import { Driver } from '@ohos.UiTest';
+import errorCode from '@ohos.ability.errorCode';
+import wantAgent from '@ohos.app.ability.wantAgent';
 
 function sleep(time: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, time));
