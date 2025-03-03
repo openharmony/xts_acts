@@ -19,6 +19,7 @@ add_library(nativerender SHARED
     textpicker/textpicker_columnwidths_test.cpp
     scroll/scroll_backtotop_test.cpp
     component/component.cpp
+    component/calendarPicker_component.cpp  
     component/grid_component.cpp
     component/list_component.cpp
     component/scroll_component.cpp
@@ -27,6 +28,7 @@ add_library(nativerender SHARED
     component/text_component.cpp
     drag/drag_test.cpp
     calendarPicker/calendar_picker_test.cpp
+    calendarPicker/calendarPicker_date_test.cpp
 )
 
 add_library(nativefunc SHARED
