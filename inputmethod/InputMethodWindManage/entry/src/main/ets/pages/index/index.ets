@@ -42,6 +42,7 @@ struct Index {
           .fontWeight(FontWeight.Bold)
           .defaultFocus(true)
         TextArea({ text: this.inputValue })
+          .keyboardAppearance(KeyboardAppearance.LIGHT_IMMERSIVE)
           .height('80%')
           .onChange((value: string) => {
             this.inputValue = value;
