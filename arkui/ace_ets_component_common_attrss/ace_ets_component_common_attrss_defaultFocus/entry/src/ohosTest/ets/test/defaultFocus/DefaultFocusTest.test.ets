@@ -51,6 +51,7 @@ export default function DefaultFocusTest() {
 //    'MenuItemGroup',
     'Radio',
     'Rating',
+    'Slider',
     'TextPicker',
     'TimePicker',
     'Toggle',
