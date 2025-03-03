@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import nativeFontNdk from 'libnativeFontNdk.so';
 
 export default function fontTest() {
@@ -33,6 +33,54 @@ export default function fontTest() {
     });
 
     /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_GetFontDescriptorByFullName_002
+     * @tc.name       : testOHDrawingGetFontDescriptorByFullName002
+     * @tc.desc       : test OH_Drawing_GetFontDescriptorByFullName_002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHDrawingGetFontDescriptorByFullName002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = nativeFontNdk.oHDrawingGetFontDescriptorByFullName002();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_GetFontDescriptorByFullName_003
+     * @tc.name       : testOHDrawingGetFontDescriptorByFullName003
+     * @tc.desc       : test OH_Drawing_GetFontDescriptorByFullName_003
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHDrawingGetFontDescriptorByFullName003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingGetFontDescriptorByFullName003();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      expect(result[3]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_GetFontDescriptorByFullName_004
+     * @tc.name       : testOHDrawingGetFontDescriptorByFullName004
+     * @tc.desc       : test OH_Drawing_GetFontDescriptorByFullName_004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHDrawingGetFontDescriptorByFullName004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingGetFontDescriptorByFullName004();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      expect(result[3]).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_GetSystemFontFullNamesByType_001
      * @tc.name       : testOHDrawingGetSystemFontFullNamesByType001
      * @tc.desc       : test OH_Drawing_GetSystemFontFullNamesByType_001
@@ -43,6 +91,23 @@ export default function fontTest() {
     it('testOHDrawingGetSystemFontFullNamesByType001', 0, async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingGetSystemFontFullNamesByType001();
       expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_GetSystemFontFullNamesByType_002
+     * @tc.name       : testOHDrawingGetSystemFontFullNamesByType002
+     * @tc.desc       : test OH_Drawing_GetSystemFontFullNamesByType_002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHDrawingGetSystemFontFullNamesByType002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingGetSystemFontFullNamesByType002();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      expect(result[3]).assertEqual(0);
       done();
     });
 

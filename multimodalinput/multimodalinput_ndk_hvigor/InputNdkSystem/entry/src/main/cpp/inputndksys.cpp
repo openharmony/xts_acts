@@ -15,6 +15,16 @@
 #include "napi/native_api.h"
 #include "multimodalinput/oh_input_manager.h"
 #include "multimodalinput/oh_key_code.h"
+#include "hilog/log.h"
+#include <bits/alltypes.h>
+#include <thread>
+#include <iostream>
+
+#undef LOG_TAG
+#define LOG_TAG "MMI"
+
+const int GLOBAL_RESMGR = 0xFF00;
+const char *TAG = "[SensorCapiSample]";
 
 constexpr float DISPLAY_X { 100.0 };
 constexpr float DISPLAY_Y { 200.0 };
@@ -27,6 +37,8 @@ static void KeyEventCallback(const struct Input_KeyEvent* keyEvent)
 {
     OH_Input_GetKeyEventAction(keyEvent);
     OH_Input_GetKeyEventKeyCode(keyEvent);
+    OH_Input_GetKeyEventWindowId(keyEvent);
+    OH_Input_GetKeyEventDisplayId(keyEvent);
 }
 
 static void MouseEventCallback(const struct Input_MouseEvent* mouseEvent)
@@ -34,12 +46,16 @@ static void MouseEventCallback(const struct Input_MouseEvent* mouseEvent)
     OH_Input_GetMouseEventAction(mouseEvent);
     OH_Input_GetMouseEventDisplayX(mouseEvent);
     OH_Input_GetMouseEventDisplayY(mouseEvent);
+    OH_Input_GetMouseEventWindowId(mouseEvent);
+    OH_Input_GetMouseEventDisplayId(mouseEvent);
 }
 
 static void TouchEventCallback(const struct Input_TouchEvent* touchEvent)
 {
     OH_Input_GetTouchEventAction(touchEvent);
     OH_Input_GetTouchEventFingerId(touchEvent);
+    OH_Input_GetTouchEventWindowId(touchEvent);
+    OH_Input_GetTouchEventDisplayId(touchEvent);
 }
 
 static void AxisEventCallbackAll(const struct Input_AxisEvent* axisEvent)
@@ -1033,6 +1049,250 @@ static napi_value RemoveInputEventInterceptor3(napi_env env, napi_callback_info 
     return result;
 }
 
+static napi_value SetKeyEventWindowId(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Input_KeyEvent* keyEvent = OH_Input_CreateKeyEvent();
+    OH_Input_SetKeyEventWindowId(keyEvent, 0);
+    int32_t windowId = OH_Input_GetKeyEventWindowId(keyEvent);
+    OH_Input_SetKeyEventDisplayId(keyEvent, 0);
+    int32_t displayId = OH_Input_GetKeyEventDisplayId(keyEvent);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_SetKeyEventWindowId_0100 windowId:%{public}d, displayId:%{public}d",
+        windowId, displayId);
+    napi_create_int32(env, (windowId==0 && displayId==0) ? 1 : 0, &result);
+    OH_Input_DestroyKeyEvent(&keyEvent);
+    return result;
+}
+
+static napi_value SetKeyEventWindowId2(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Input_KeyEvent* keyEvent = OH_Input_CreateKeyEvent();
+    OH_Input_SetKeyEventWindowId(keyEvent, -1);
+    int32_t windowId = OH_Input_GetKeyEventWindowId(keyEvent);
+    OH_Input_SetKeyEventDisplayId(keyEvent, -1);
+    int32_t displayId = OH_Input_GetKeyEventDisplayId(keyEvent);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_SetKeyEventWindowId_0200 windowId:%{public}d, displayId:%{public}d",
+        windowId, displayId);
+    napi_create_int32(env, (windowId==-1 && displayId==-1) ? 1 : 0, &result);
+    OH_Input_DestroyKeyEvent(&keyEvent);
+    return result;
+}
+
+static napi_value SetKeyEventWindowId3(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Input_KeyEvent* keyEvent = OH_Input_CreateKeyEvent();
+    OH_Input_SetKeyEventWindowId(keyEvent, 10000);
+    int32_t windowId = OH_Input_GetKeyEventWindowId(keyEvent);
+    OH_Input_SetKeyEventDisplayId(keyEvent, 10000);
+    int32_t displayId = OH_Input_GetKeyEventDisplayId(keyEvent);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_SetKeyEventWindowId_0300 windowId:%{public}d, displayId:%{public}d",
+        windowId, displayId);
+    napi_create_int32(env, (windowId==10000 && displayId==10000) ? 1 : 0, &result);
+    OH_Input_DestroyKeyEvent(&keyEvent);
+    return result;
+}
+
+static napi_value GetKeyEventWindowId(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_Input_SetKeyEventWindowId(nullptr, 0);
+    int32_t windowId = OH_Input_GetKeyEventWindowId(nullptr);
+    OH_Input_SetKeyEventDisplayId(nullptr, 0);
+    int32_t displayId = OH_Input_GetKeyEventDisplayId(nullptr);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_GetKeyEventWindowId_0100 windowId:%{public}d, displayId:%{public}d",
+        windowId, displayId);
+    napi_create_int32(env, (windowId==-1 && displayId==-1) ? 1 : 0, &result);
+    return result;
+}
+
+static napi_value SetMouseEventWindowId(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Input_MouseEvent* mouseEvent = OH_Input_CreateMouseEvent();
+    OH_Input_SetMouseEventWindowId(mouseEvent, 0);
+    int32_t windowId = OH_Input_GetMouseEventWindowId(mouseEvent);
+    OH_Input_SetMouseEventDisplayId(mouseEvent, 0);
+    int32_t displayId = OH_Input_GetMouseEventDisplayId(mouseEvent);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_SetMouseEventWindowId_0100 windowId:%{public}d, displayId:%{public}d",
+        windowId, displayId);
+    napi_create_int32(env, (windowId==0 && displayId==0) ? 1 : 0, &result);
+    OH_Input_DestroyMouseEvent(&mouseEvent);
+    return result;
+}
+
+static napi_value SetMouseEventWindowId2(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Input_MouseEvent* mouseEvent = OH_Input_CreateMouseEvent();
+    OH_Input_SetMouseEventWindowId(mouseEvent, -1);
+    int32_t windowId = OH_Input_GetMouseEventWindowId(mouseEvent);
+    OH_Input_SetMouseEventDisplayId(mouseEvent, -1);
+    int32_t displayId = OH_Input_GetMouseEventDisplayId(mouseEvent);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_SetMouseEventWindowId_0200 windowId:%{public}d, displayId:%{public}d",
+        windowId, displayId);
+    napi_create_int32(env, (windowId==-1 && displayId==-1) ? 1 : 0, &result);
+    OH_Input_DestroyMouseEvent(&mouseEvent);
+    return result;
+}
+
+static napi_value SetMouseEventWindowId3(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Input_MouseEvent* mouseEvent = OH_Input_CreateMouseEvent();
+    OH_Input_SetMouseEventWindowId(mouseEvent, 10000);
+    int32_t windowId = OH_Input_GetMouseEventWindowId(mouseEvent);
+    OH_Input_SetMouseEventDisplayId(mouseEvent, 10000);
+    int32_t displayId = OH_Input_GetMouseEventDisplayId(mouseEvent);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_SetMouseEventWindowId_0300 windowId:%{public}d, displayId:%{public}d",
+        windowId, displayId);
+    napi_create_int32(env, (windowId==10000 && displayId==10000) ? 1 : 0, &result);
+    OH_Input_DestroyMouseEvent(&mouseEvent);
+    return result;
+}
+
+static napi_value GetMouseEventWindowId(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_Input_SetMouseEventWindowId(nullptr, 0);
+    int32_t windowId = OH_Input_GetMouseEventWindowId(nullptr);
+    OH_Input_SetMouseEventDisplayId(nullptr, 0);
+    int32_t displayId = OH_Input_GetMouseEventDisplayId(nullptr);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_GetMouseEventWindowId_0100 windowId:%{public}d, displayId:%{public}d",
+        windowId, displayId);
+    napi_create_int32(env, (windowId==-1 && displayId==-1) ? 1 : 0, &result);
+    return result;
+}
+
+static napi_value SetTouchEventWindowId(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Input_TouchEvent* touchEvent = OH_Input_CreateTouchEvent();
+    OH_Input_SetTouchEventWindowId(touchEvent, 0);
+    int32_t windowId = OH_Input_GetTouchEventWindowId(touchEvent);
+    OH_Input_SetTouchEventDisplayId(touchEvent, 0);
+    int32_t displayId = OH_Input_GetTouchEventDisplayId(touchEvent);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_SetTouchEventWindowId_0100 windowId:%{public}d, displayId:%{public}d",
+        windowId, displayId);
+    napi_create_int32(env, (windowId==0 && displayId==0) ? 1 : 0, &result);
+    OH_Input_DestroyTouchEvent(&touchEvent);
+    return result;
+}
+
+static napi_value SetTouchEventWindowId2(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Input_TouchEvent* touchEvent = OH_Input_CreateTouchEvent();
+    OH_Input_SetTouchEventWindowId(touchEvent, -1);
+    int32_t windowId = OH_Input_GetTouchEventWindowId(touchEvent);
+    OH_Input_SetTouchEventDisplayId(touchEvent, -1);
+    int32_t displayId = OH_Input_GetTouchEventDisplayId(touchEvent);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_SetTouchEventWindowId_0200 windowId:%{public}d, displayId:%{public}d",
+        windowId, displayId);
+    napi_create_int32(env, (windowId==-1 && displayId==-1) ? 1 : 0, &result);
+    OH_Input_DestroyTouchEvent(&touchEvent);
+    return result;
+}
+
+static napi_value SetTouchEventWindowId3(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Input_TouchEvent* touchEvent = OH_Input_CreateTouchEvent();
+    OH_Input_SetTouchEventWindowId(touchEvent, 10000);
+    int32_t windowId = OH_Input_GetTouchEventWindowId(touchEvent);
+    OH_Input_SetTouchEventDisplayId(touchEvent, 10000);
+    int32_t displayId = OH_Input_GetTouchEventDisplayId(touchEvent);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_SetTouchEventWindowId_0300 windowId:%{public}d, displayId:%{public}d",
+        windowId, displayId);
+    napi_create_int32(env, (windowId==10000 && displayId==10000) ? 1 : 0, &result);
+    OH_Input_DestroyTouchEvent(&touchEvent);
+    return result;
+}
+
+static napi_value GetTouchEventWindowId(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_Input_SetTouchEventWindowId(nullptr, 0);
+    int32_t windowId = OH_Input_GetTouchEventWindowId(nullptr);
+    OH_Input_SetTouchEventDisplayId(nullptr, 0);
+    int32_t displayId = OH_Input_GetTouchEventDisplayId(nullptr);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_GetTouchEventWindowId_0100 windowId:%{public}d, displayId:%{public}d",
+        windowId, displayId);
+    napi_create_int32(env, (windowId==-1 && displayId==-1) ? 1 : 0, &result);
+    return result;
+}
+
+static napi_value SetAxisEventWindowId(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t windowId;
+    int32_t displayId;
+    Input_AxisEvent* axisEvent = OH_Input_CreateAxisEvent();
+    Input_Result ret = OH_Input_SetAxisEventWindowId(axisEvent, 0);
+    Input_Result ret2 = OH_Input_GetAxisEventWindowId(axisEvent, &windowId);
+    Input_Result ret3 =  OH_Input_SetAxisEventDisplayId(axisEvent, 0);
+    Input_Result ret4 =  OH_Input_GetAxisEventDisplayId(axisEvent, &displayId);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_SetAxisEventWindowId_0100 windowId:%{public}d, displayId:%{public}d",
+        windowId, displayId);
+    napi_create_int32(env, (ret == INPUT_SUCCESS && ret2 == INPUT_SUCCESS && ret3 == INPUT_SUCCESS
+        && ret4 == INPUT_SUCCESS &&windowId==0 && displayId==0) ? 1 : 0, &result);
+    OH_Input_DestroyAxisEvent(&axisEvent);
+    return result;
+}
+
+static napi_value SetAxisEventWindowId2(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t windowId;
+    int32_t displayId;
+    Input_AxisEvent* axisEvent = OH_Input_CreateAxisEvent();
+    Input_Result ret = OH_Input_SetAxisEventWindowId(axisEvent, -1);
+    Input_Result ret2 = OH_Input_GetAxisEventWindowId(axisEvent, &windowId);
+    Input_Result ret3 =  OH_Input_SetAxisEventDisplayId(axisEvent, -1);
+    Input_Result ret4 =  OH_Input_GetAxisEventDisplayId(axisEvent, &displayId);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_SetAxisEventWindowId_0200 windowId:%{public}d, displayId:%{public}d",
+        windowId, displayId);
+    napi_create_int32(env, (ret == INPUT_SUCCESS && ret2 == INPUT_SUCCESS && ret3 == INPUT_SUCCESS
+        && ret4 == INPUT_SUCCESS &&windowId==-1 && displayId==-1) ? 1 : 0, &result);
+    OH_Input_DestroyAxisEvent(&axisEvent);
+    return result;
+}
+
+static napi_value SetAxisEventWindowId3(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t windowId = 0;
+    int32_t displayId = 0;
+    Input_AxisEvent* axisEvent = OH_Input_CreateAxisEvent();
+    Input_Result ret = OH_Input_SetAxisEventWindowId(axisEvent, 10000);
+    Input_Result ret2 = OH_Input_GetAxisEventWindowId(axisEvent, &windowId);
+    Input_Result ret3 =  OH_Input_SetAxisEventDisplayId(axisEvent, 10000);
+    Input_Result ret4 =  OH_Input_GetAxisEventDisplayId(axisEvent, &displayId);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_SetAxisEventWindowId_0300 windowId:%{public}d, displayId:%{public}d",
+        windowId, displayId);
+    napi_create_int32(env, (ret == INPUT_SUCCESS && ret2 == INPUT_SUCCESS && ret3 == INPUT_SUCCESS
+        && ret4 == INPUT_SUCCESS &&windowId==10000 && displayId==10000) ? 1 : 0, &result);
+    OH_Input_DestroyAxisEvent(&axisEvent);
+    return result;
+}
+
+static napi_value GetAxisEventWindowId(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t windowId;
+    int32_t displayId;
+    Input_Result ret = OH_Input_SetAxisEventWindowId(nullptr, 0);
+    Input_Result ret2 = OH_Input_GetAxisEventWindowId(nullptr, &windowId);
+    Input_Result ret3 =  OH_Input_SetAxisEventDisplayId(nullptr, 0);
+    Input_Result ret4 =  OH_Input_GetAxisEventDisplayId(nullptr, &displayId);
+    OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_GetAxisEventWindowId_0100 windowId:%{public}d, displayId:%{public}d",
+        windowId, displayId);
+    napi_create_int32(env, (ret == INPUT_PARAMETER_ERROR && ret2 == INPUT_PARAMETER_ERROR
+        && ret3 == INPUT_PARAMETER_ERROR && ret4 == INPUT_PARAMETER_ERROR) ? 1 : 0, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -1131,6 +1391,22 @@ static napi_value Init(napi_env env, napi_value exports)
         {"RemoveInputEventInterceptor2", nullptr, RemoveInputEventInterceptor2, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AddInputEventInterceptor4", nullptr, AddInputEventInterceptor4, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"RemoveInputEventInterceptor3", nullptr, RemoveInputEventInterceptor3, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SetKeyEventWindowId", nullptr, SetKeyEventWindowId, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SetKeyEventWindowId2", nullptr, SetKeyEventWindowId2, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SetKeyEventWindowId3", nullptr, SetKeyEventWindowId3, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetKeyEventWindowId", nullptr, GetKeyEventWindowId, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SetMouseEventWindowId", nullptr, SetMouseEventWindowId, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SetMouseEventWindowId2", nullptr, SetMouseEventWindowId2, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SetMouseEventWindowId3", nullptr, SetMouseEventWindowId3, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetMouseEventWindowId", nullptr, GetMouseEventWindowId, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SetTouchEventWindowId", nullptr, SetTouchEventWindowId, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SetTouchEventWindowId2", nullptr, SetTouchEventWindowId2, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SetTouchEventWindowId3", nullptr, SetTouchEventWindowId3, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetTouchEventWindowId", nullptr, GetTouchEventWindowId, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SetAxisEventWindowId", nullptr, SetAxisEventWindowId, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SetAxisEventWindowId2", nullptr, SetAxisEventWindowId2, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SetAxisEventWindowId3", nullptr, SetAxisEventWindowId3, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetAxisEventWindowId", nullptr, GetAxisEventWindowId, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

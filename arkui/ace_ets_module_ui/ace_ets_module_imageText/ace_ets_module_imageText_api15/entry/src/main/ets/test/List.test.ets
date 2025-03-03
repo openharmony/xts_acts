@@ -26,12 +26,13 @@ import PixelMapColorFilterTest from './ImageAttachmentTest/PixelMapColorFilter.t
 import ResourceDefaultTest from './ImageAttachmentTest/ResourceDefault.test';
 import VerticalAlignTest from './ImageAttachmentTest/VerticalAlign.test';
 import ObjectFitTest from './ImageAttachmentTest/ObjectFit.test';
-import ImageSvgFillColorTest from './ImageSvgFillColorTest/ImageSvgFillColor.test';
 import editMenuOptions from './TextTest/editMenuOptions.test';
 import addOrDelText from './TextAreaTest/addOrDelText.test';
 import TextOnChangeOptionsTest from './TextChangeTest/TextOnChangeOptionsTest.test';
 import TextOnWillChangeOptionsTest from './TextChangeTest/TextOnWillChangeOptionsTest.test';
 import bindSelectionMenuTest from './SelectionMenuTest/bindSelectionMenuTest.test';
+import ImageSvgFillColorTest from './ImageSvgFillColorTest/ImageSvgFillColor.test';
+import imageMatrix from './imageMatrix/imageMatrix.test';
 
 
 export default function testsuite() {
@@ -47,7 +48,8 @@ export default function testsuite() {
   ResourceDefaultTest();
   VerticalAlignTest();
   ObjectFitTest();
-  ImageSvgFillColorTest();
   editMenuOptions();
   bindSelectionMenuTest();
+  ImageSvgFillColorTest();
+  imageMatrix();
 }

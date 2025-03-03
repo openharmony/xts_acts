@@ -59,8 +59,9 @@ export default function audioNDK() {
       console.info('beforeEach case');
     })
 
-    afterEach(() => {
+    afterEach(async () => {
       console.info('afterEach case');
+      await sleep(200);
     })
 
     afterAll(() => {
@@ -492,6 +493,34 @@ export default function audioNDK() {
     it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0100', 0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetTimestamp();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0100 audioRenderGetTimestamp: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+    /* *
+       * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0100
+       * @tc.name      : GetTimestamp with OH_AudioRenderer_GetAudioTimestampInfo
+       * @tc.desc      : test OH_AudioRenderer_GetAudioTimestampInfo
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+   */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0100', 0, async (done: Function) => {
+      let result = myaudioNdk.audioRenderGetAudioTimestampInfo();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0100 audioRenderGetAudioTimestampInfo: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+    /* *
+       * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMPINFOINTERVAL_0100
+       * @tc.name      : GetTimestamp with OH_AudioRenderer_GetAudioTimestampInfoInterval
+       * @tc.desc      : test OH_AudioRenderer_GetAudioTimestampInfoInterval
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+   */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMPINFOINTERVAL_0100', 0, async (done: Function) => {
+      let result = myaudioNdk.audioRenderGetAudioTimestampInfoInterval();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMPINFOINTERVAL_0100 audioRenderGetAudioTimestampInfoInterval: ${result}`);
       expect(result).assertEqual(0)
       done()
     })

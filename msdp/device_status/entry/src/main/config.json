@@ -61,6 +61,12 @@
       }
     ],
     "mainAbility": ".MainAbility",
-    "srcPath": ""
+    "srcPath": "",
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.ACTIVITY_MOTION",
+        "reason": "ceshi"
+      }
+    ]
   }
 }

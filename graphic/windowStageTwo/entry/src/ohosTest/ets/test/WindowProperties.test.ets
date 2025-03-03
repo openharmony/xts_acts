@@ -52,6 +52,575 @@ export default function windowPropertiesTest() {
             // Presets a clear action, which is performed after all test cases of the test suite end.
             // This API supports only one parameter: clear action function.
         })
+        /** 
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GET_DENSITYINFO_JS_API_0100
+        * @tc.name      : testGetWindowDensityInfo
+        * @tc.desc      : getWindowDensityInfo
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+        */
+        it('testGetWindowDensityInfo', 0, async (done: Function) => {
+        let caseName: string = 'test_testGetWindowDensityInfo';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        let windowClass = await windowStage.getMainWindow();
+        try {
+            let densityInfo: window.WindowDensityInfo = windowClass.getWindowDensityInfo();
+            console.info(msgStr +`getWindowDensityInfo densityInfo: `, JSON.stringify(densityInfo));
+            expect(densityInfo.systemDensity).assertEqual(densityInfo.customDensity);
+            done();
+        } catch (exception) {
+            console.error(msgStr +
+            `Failed to getWindowDensityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
+            if (exception.code == 801) {
+            console.info(msgStr + `Current device not support API:getWindowDensityInfo`);
+            done();
+            } else {
+            expect(false).assertTrue();
+            done();
+            }
+        }
+        });
+
+        /**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GET_DENSITYINFO_JS_API_0200
+        * @tc.name      : testGetWindowDensityInfo
+        * @tc.desc      : getWindowDensityInfo, DPI-1 getWindowDensityInfo
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+        */
+        it('testSetCustomDensityParamCheck', 0, async (done: Function) => {
+        let caseName: string = 'test_testSetCustomDensityParamCheck';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        let windowClass = await windowStage.getMainWindow();
+        try {
+            let densityInfo1: window.WindowDensityInfo = windowClass.getWindowDensityInfo();
+            console.info(msgStr +`getWindowDensityInfo densityInfo1: `, JSON.stringify(densityInfo1));
+            windowStage.setCustomDensity(-1);
+            console.info(msgStr + `setCustomDensity -1 success`);
+            let densityInfo2: window.WindowDensityInfo = windowClass.getWindowDensityInfo();
+            console.info(msgStr +`getWindowDensityInfo densityInfo2: `, JSON.stringify(densityInfo2));
+            expect(densityInfo2.systemDensity).assertEqual(densityInfo2.customDensity)
+            expect(densityInfo1.customDensity).assertEqual(densityInfo2.customDensity)
+            done();
+        } catch (exception) {
+            console.error(msgStr +
+            `Failed to getWindowDensityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
+            if (exception.code == 801) {
+            console.info(msgStr + `Current device not support API:setCustomDensity`);
+            done();
+            } else {
+            expect(false).assertTrue();
+            done();
+            }
+        }
+        });
+
+        /**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GET_DENSITYINFO_JS_API_0300
+        * @tc.name      : testGetWindowDensityInfo
+        * @tc.desc      : 有效左边界校验
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+        */
+        it('testSetCustomDensityParamCheck1', 0, async (done: Function) => {
+        let caseName: string = 'test_testSetCustomDensityParamCheck1';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        try {
+            windowStage.setCustomDensity(0.5);
+            console.info(msgStr + `setCustomDensity 0.5 success`);
+            done();
+        } catch (exception) {
+            console.error(msgStr +
+            `Failed to getWindowDensityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
+            if (exception.code == 801) {
+            console.info(msgStr + `Current device not support API:setCustomDensity`);
+            done();
+            } else {
+            expect(false).assertTrue();
+            done();
+            }
+        }
+        });
+
+        /**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GET_DENSITYINFO_JS_API_0300
+        * @tc.name      : testGetWindowDensityInfo
+        * @tc.desc      : effective right boundary
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+        */
+        it('testSetCustomDensityParamCheck2', 0, async (done: Function) => {
+        let caseName: string = 'test_testSetCustomDensityParamCheck2';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        try {
+            windowStage.setCustomDensity(4.0);
+            console.info(msgStr + `setCustomDensity 4.0 success`);
+            done();
+        } catch (exception) {
+            console.error(msgStr +
+            `Failed to getWindowDensityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
+            if (exception.code == 801) {
+            console.info(msgStr + `Current device not support API:setCustomDensity`);
+            done();
+            } else {
+            expect(false).assertTrue();
+            done();
+            }
+        }
+        });
+
+        /**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GET_DENSITYINFO_JS_API_0400
+        * @tc.name      : testGetWindowDensityInfo
+        * @tc.desc      : testGetWindowDensityInfo with aruguments null
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+        */
+        it('testSetCustomDensityParamCheck5', 0, async (done: Function) => {
+        let caseName: string = 'test_testSetCustomDensityParamCheck5';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        try {
+            windowStage.setCustomDensity(null);
+            console.info(msgStr + `setCustomDensity null`);
+            expect().assertFail();
+            done();
+        } catch (exception) {
+            console.error(msgStr +
+            `Failed to getWindowDensityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
+            if (exception.code == 801) {
+            console.info(msgStr + `Current device not support API:setCustomDensity`);
+            done();
+            } else {
+            expect(exception.code).assertEqual(401);
+            done();
+            }
+        }
+        });
+
+        /**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GET_DENSITYINFO_JS_API_0500
+        * @tc.name      : testGetWindowDensityInfo
+        * @tc.desc      : testGetWindowDensityInfo with arguments undefined
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+        */
+        it('testSetCustomDensityParamCheck6', 0, async (done: Function) => {
+        let caseName: string = 'test_testSetCustomDensityParamCheck6';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        try {
+            windowStage.setCustomDensity(undefined);
+            console.info(msgStr + `setCustomDensity undefined`);
+            expect().assertFail();
+            done();
+        } catch (exception) {
+            console.error(msgStr +
+            `Failed to getWindowDensityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
+            if (exception.code == 801) {
+            console.info(msgStr + `Current device not support API:setCustomDensity`);
+            done();
+            } else {
+            expect(exception.code).assertEqual(401);
+            done();
+            }
+        }
+        });
+
+        /**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GET_DENSITYINFO_JS_API_0600
+        * @tc.name      : testGetWindowDensityInfo
+        * @tc.desc      : new ability set dpi
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+        */
+        it('testSetCustomDensity', 0, async (done: Function) => {
+        let caseName: string = 'test_SetCustomDensity';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        let want: Want = {
+            bundleName: AppStorage.get('bundleName'),
+            abilityName: 'TestAbilityDensity1'
+        };
+        try {
+            await context.startAbility(want);
+            console.info(msgStr +`Succeeded in starting ability.`);
+            await sleep(500);
+        } catch (err) {
+            console.info(msgStr +`Failed in starting ability. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+            return;
+        }
+        let context1 = AppStorage.get('context1') as common.UIAbilityContext;
+        console.log(msgStr +'windowTest context1: ' + JSON.stringify(context1));
+        let windowStage1 = AppStorage.get('windowStage1') as ohosWindow.WindowStage;
+        let windowClass1 = await windowStage1.getMainWindow();
+        try {
+            let densityInfo1: window.WindowDensityInfo = windowClass1.getWindowDensityInfo();
+            console.info(msgStr +`getWindowDensityInfo densityInfo1: `, JSON.stringify(densityInfo1));
+            expect(densityInfo1.systemDensity).assertLarger(0);
+            expect(densityInfo1.defaultDensity).assertLarger(0);
+            expect(densityInfo1.systemDensity).assertEqual(densityInfo1.customDensity);
+            windowStage1.setCustomDensity(4.0);
+            console.info(msgStr + `setCustomDensity 4.0 success`);
+            let densityInfo2: window.WindowDensityInfo = windowClass1.getWindowDensityInfo();
+            console.info(msgStr +`getWindowDensityInfo densityInfo2: `, JSON.stringify(densityInfo2));
+            expect(densityInfo2.customDensity).assertEqual(4);
+            expect(densityInfo1.customDensity != densityInfo2.customDensity).assertTrue();
+            await context1.terminateSelf();
+            await sleep(500);
+            done();
+        } catch (exception) {
+            console.error(msgStr +
+            `Failed to getWindowDensityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
+            await context1.terminateSelf();
+            await sleep(500);
+            if (exception.code == 801) {
+            console.info(msgStr + `Current device not support API:setCustomDensity`);
+            done();
+            } else {
+            expect(false).assertTrue();
+            done();
+            }
+        }
+        });
+
+        /**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GET_DENSITYINFO_JS_API_0700
+        * @tc.name      : testGetWindowDensityInfo
+        * @tc.desc      : new abilty setDefaultDensityEnabled true
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+        */
+        it('testSetCustomDensity1', 0, async (done: Function) => {
+        let caseName: string = 'test_SetCustomDensity1';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        let want: Want = {
+            bundleName: AppStorage.get('bundleName'),
+            abilityName: 'TestAbilityDensity2'
+        };
+        try {
+            await context.startAbility(want);
+            console.info(msgStr +`Succeeded in starting ability.`);
+            await sleep(500);
+        } catch (err) {
+            console.info(msgStr +`Failed in starting ability. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+            return;
+        }
+        let context2 = AppStorage.get('context2') as common.UIAbilityContext;
+        console.log(msgStr +'windowTest context2: ' + JSON.stringify(context2));
+        let windowStage2 = AppStorage.get('windowStage2') as ohosWindow.WindowStage;
+        let windowClass2 = await windowStage2.getMainWindow();
+        try {
+            windowStage2.setCustomDensity(3.0);
+            console.info(msgStr + `setCustomDensity 3.0 success`);
+            let densityInfo1: window.WindowDensityInfo = windowClass2.getWindowDensityInfo();
+            console.info(msgStr +`getWindowDensityInfo densityInfo1: `, JSON.stringify(densityInfo1));
+            expect(densityInfo1.customDensity).assertEqual(3);
+            windowStage2.setDefaultDensityEnabled(true);
+            console.info(msgStr +`setDefaultDensityEnabled true Success`);
+            let densityInfo2: window.WindowDensityInfo = windowClass2.getWindowDensityInfo();
+            console.info(msgStr +`getWindowDensityInfo densityInfo2: `, JSON.stringify(densityInfo2));
+            expect(densityInfo2.customDensity).assertEqual(densityInfo2.defaultDensity);
+            expect(densityInfo2.customDensity != 3).assertTrue();
+            await context2.terminateSelf();
+            await sleep(500);
+            done();
+        } catch (exception) {
+            console.error(msgStr +
+            `Failed to getWindowDensityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
+            await context2.terminateSelf();
+            await sleep(500);
+            if (exception.code == 801) {
+            console.info(msgStr + `Current device not support API:setCustomDensity`);
+            done();
+            } else {
+            expect(false).assertTrue();
+            done();
+            }
+        }
+        });
+
+        /**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GET_DENSITYINFO_JS_API_0800
+        * @tc.name      : testGetWindowDensityInfo
+        * @tc.desc      : new abilty setDefaultDensityEnabled false
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level1
+        */
+        it('testSetCustomDensity2', 0, async (done: Function) => {
+        let caseName: string = 'test_SetCustomDensity2';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        let want: Want = {
+            bundleName: AppStorage.get('bundleName'),
+            abilityName: 'TestAbilityDensity1'
+        };
+        try {
+            await context.startAbility(want);
+            console.info(msgStr +`Succeeded in starting ability.`);
+            await sleep(500);
+        } catch (err) {
+            console.info(msgStr +`Failed in starting ability. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+            return;
+        }
+        let context1 = AppStorage.get('context1') as common.UIAbilityContext;
+        console.log(msgStr +'windowTest context1: ' + JSON.stringify(context1));
+        let windowStage1 = AppStorage.get('windowStage1') as ohosWindow.WindowStage;
+        let windowClass1 = await windowStage1.getMainWindow();
+        try {
+            windowStage1.setCustomDensity(2.0);
+            console.info(msgStr + `setCustomDensity 2.0 success`);
+            let densityInfo1: window.WindowDensityInfo = windowClass1.getWindowDensityInfo();
+            console.info(msgStr +`getWindowDensityInfo densityInfo1: `, JSON.stringify(densityInfo1));
+            expect(densityInfo1.customDensity).assertEqual(2);
+            windowStage1.setDefaultDensityEnabled(false);
+            console.info(msgStr +`setDefaultDensityEnabled false Success`);
+            let densityInfo2: window.WindowDensityInfo = windowClass1.getWindowDensityInfo();
+            console.info(msgStr +`getWindowDensityInfo densityInfo2: `, JSON.stringify(densityInfo2));
+            expect(densityInfo2.customDensity).assertEqual(2);
+            await context1.terminateSelf();
+            await sleep(500);
+            done();
+        } catch (exception) {
+            console.error(msgStr +
+            `Failed to getWindowDensityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
+            await context1.terminateSelf();
+            await sleep(500);
+            if (exception.code == 801) {
+            console.info(msgStr + `Current device not support API:setCustomDensity`);
+            done();
+            } else {
+            expect(false).assertTrue();
+            done();
+            }
+        }
+        });
+
+        /**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GET_DENSITYINFO_JS_API_0900
+        * @tc.name      : testGetWindowDensityInfo
+        * @tc.desc      : multi ability,set ability with diffrent dpi
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level2
+        */
+        it('testSetCustomDensity3', 0, async (done: Function) => {
+        let caseName: string = 'test_SetCustomDensity3';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        let want1: Want = {
+            bundleName: AppStorage.get('bundleName'),
+            abilityName: 'TestAbilityDensity1'
+        };
+        let want2: Want = {
+            bundleName: AppStorage.get('bundleName'),
+            abilityName: 'TestAbilityDensity2'
+        };
+        try {
+            await context.startAbility(want2);
+            console.info(msgStr +`Succeeded in starting ability.`);
+            await sleep(500);
+        } catch (err) {
+            console.info(msgStr +`Failed in starting ability. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+            return;
+        }
+        let context1:common.UIAbilityContext | undefined;
+        let context2 = AppStorage.get('context2') as common.UIAbilityContext;
+        console.log(msgStr +'windowTest context1: ' + JSON.stringify(context1));
+        console.log(msgStr +'windowTest context2: ' + JSON.stringify(context2));
+        let windowStage2 = AppStorage.get('windowStage2') as ohosWindow.WindowStage;
+        let windowClass2 = await windowStage2.getMainWindow();
+        try {
+            windowStage2.setCustomDensity(3.5);
+            console.info(msgStr + `setCustomDensity 3.5 success`);
+            let densityInfo1: window.WindowDensityInfo = windowClass2.getWindowDensityInfo();
+            console.info(msgStr +`getWindowDensityInfo densityInfo1: `, JSON.stringify(densityInfo1));
+            await context2.terminateSelf();
+            await sleep(500);
+            try {
+            await context.startAbility(want1);
+            console.info(msgStr +`Succeeded in starting ability.`);
+            await sleep(500);
+            } catch (err) {
+            console.info(msgStr +`Failed in starting ability. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+            return;
+            }
+            context1 = AppStorage.get('context1') as common.UIAbilityContext;
+            console.log(msgStr +'windowTest context1: ' + JSON.stringify(context1));
+            let windowStage1 = AppStorage.get('windowStage1') as ohosWindow.WindowStage;
+            let windowClass1 = await windowStage1.getMainWindow();
+            windowStage1.setCustomDensity(2.5);
+            console.info(msgStr + `setCustomDensity 2.5 success`);
+            let densityInfo2: window.WindowDensityInfo = windowClass1.getWindowDensityInfo();
+            console.info(msgStr +`getWindowDensityInfo densityInfo2: `, JSON.stringify(densityInfo2));
+            expect(densityInfo1.customDensity).assertEqual(3.5);
+            expect(densityInfo2.customDensity).assertEqual(2.5);
+            await context1.terminateSelf();
+            await sleep(500);
+            done();
+        } catch (exception) {
+            console.error(msgStr +
+            `Failed to getWindowDensityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
+            await context1?.terminateSelf();
+            await sleep(500);
+            await context2.terminateSelf();
+            await sleep(500);
+            if (exception.code == 801) {
+            console.info(msgStr + `Current device not support API:setCustomDensity`);
+            done();
+            } else {
+            expect(false).assertTrue();
+            done();
+            }
+        }
+        });
+
+        /**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GET_DENSITYINFO_JS_API_1000
+        * @tc.name      : testGetWindowDensityInfo
+        * @tc.desc      : on systemDensityChange
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level2
+        */
+        it('testOnSetCustomDensity', 0, async (done: Function) => {
+        let caseName: string = 'test_testOnSetCustomDensity';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        let windowClass = await windowStage.getMainWindow();
+        let want: Want = {
+            bundleName: AppStorage.get('bundleName'),
+            abilityName: 'TestAbilityDensity1'
+        };
+        let g_flag: number = 0
+        let callback1: Callback<number> = async (data) => {
+            console.info(msgStr +`on_systemDensityChange callback1 data: ${data}`);
+            g_flag += 1
+            expect(data).assertEqual(2);
+        }
+        let callback2: Callback<number> = async (data) => {
+            console.info(msgStr +`on_systemDensityChange callback2 data: ${data}`);
+            g_flag += 1
+            expect(data).assertEqual(2);
+        }
+        try {
+            windowClass.on("systemDensityChange", callback1);
+            windowClass.on("systemDensityChange", callback2);
+            console.info(msgStr +`Succeeded on systemDensityChange twice.`);
+        } catch (exception) {
+            console.error(msgStr +
+            `Failed to on systemDensityChange. Cause code: ${exception.code}, message: ${exception.message}`);
+            if (exception.code == 801) {
+            console.info(msgStr + `Current device not support API:on_systemDensityChange`);
+            done();
+            return;
+            } else {
+            expect(false).assertTrue();
+            done();
+            return;
+            }
+        }
+        try {
+            await context.startAbility(want);
+            console.info(msgStr +`Succeeded in starting ability.`);
+            await sleep(500);
+        } catch (err) {
+            console.info(msgStr +`Failed in starting ability. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+            return;
+        }
+        let context1 = AppStorage.get('context1') as common.UIAbilityContext;
+        console.log(msgStr +'windowTest context1: ' + JSON.stringify(context1));
+        let windowStage1 = AppStorage.get('windowStage1') as ohosWindow.WindowStage;
+        try {
+            windowStage1.setCustomDensity(2);
+            console.info(msgStr + `setCustomDensity 2 success`);
+            await sleep(1000);
+            windowClass.off("systemDensityChange");
+            console.info(msgStr + `off all systemDensityChange success`);
+            await context1.terminateSelf();
+            await sleep(500);
+            expect(g_flag).assertEqual(0);
+            done();
+        } catch (exception) {
+            console.error(msgStr +
+            `Failed to getWindowDensityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
+            await context1.terminateSelf();
+            await sleep(500);
+            if (exception.code == 801) {
+            console.info(msgStr + `Current device not support API:setCustomDensity`);
+            done();
+            } else {
+            expect(false).assertTrue();
+            done();
+            }
+        }
+        });
+
+        /**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GET_DENSITYINFO_JS_API_1100
+        * @tc.name      : testGetWindowDensityInfo
+        * @tc.desc      : off systemDensityChange event
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level2
+        */
+        it('testOnSetCustomDensity1', 0, async (done: Function) => {
+        let caseName: string = 'test_testOnSetCustomDensity1';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        let windowClass = await windowStage.getMainWindow();
+        let callback1: Callback<number> = async (data) => {
+            console.info(msgStr +`on_systemDensityChange callback1 data: ${data}`);
+        }
+        let callback2: Callback<number> = async (data) => {
+            console.info(msgStr +`on_systemDensityChange callback2 data: ${data}`);
+        }
+        try {
+            windowClass.on("systemDensityChange", callback1);
+            windowClass.on("systemDensityChange", callback2);
+            console.info(msgStr +`Succeeded on systemDensityChange twice.`);
+            windowClass.off("systemDensityChange");
+            console.info(msgStr +`Succeeded off all systemDensityChange.`);
+        } catch (exception) {
+            console.error(msgStr +
+            `Failed to on systemDensityChange. Cause code: ${exception.code}, message: ${exception.message}`);
+            if (exception.code == 801) {
+            console.info(msgStr + `Current device not support API:on_systemDensityChange`);
+            done();
+            return;
+            } else {
+            expect(false).assertTrue();
+            done();
+            }
+        }
+        done();
+        });
         /**
          * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_8000
          * @tc.name      : testSetGestureBackEnabledTrue
@@ -3014,6 +3583,201 @@ export default function windowPropertiesTest() {
             }
             done();
         })
+
+         /**
+     * @tc.number    : SUB_BASIC_WMS_GET_ALL_WINDOW_LAYOUT_INFO_0100
+     * @tc.name      : test_getAllWindowLayoutInfo_401
+     * @tc.desc      : test_getAllWindowLayoutInfo_401
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_getAllWindowLayoutInfo_401', 0, async (done: Function) => {
+      let caseName: string = 'test_getAllWindowLayoutInfo_401';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try {
+        let promise = window.getAllWindowLayoutInfo(null)
+        promise.then((data) => {
+          console.info(`${caseName} :Succeeded in obtaining all window layout info. Data: ` + JSON.stringify(data));
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to obtain all window layout info. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        });
+      } catch (err) {
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        if(err.code == 401){
+          done();
+        }else {
+          expect().assertFail();
+          done();
+        }
+      }
+
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_GET_ALL_WINDOW_LAYOUT_INFO_0200
+     * @tc.name      : test_getAllWindowLayoutInfo_mainWindow
+     * @tc.desc      : test_getAllWindowLayoutInfo_mainWindow
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_getAllWindowLayoutInfo_mainWindow', 0, async (done: Function) => {
+      let caseName: string = 'test_getAllWindowLayoutInfo_mainWindow';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try {
+        let mainWindow = windowStage.getMainWindowSync();
+        let displayId = mainWindow.getWindowProperties().displayId;
+        let promise = window.getAllWindowLayoutInfo(displayId)
+        promise.then((data) => {
+          console.info(`${caseName} :Succeeded in obtaining all window layout info. Data: ` + JSON.stringify(data));
+          expect(data.length).assertLargerOrEqual(1);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to obtain all window layout info. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
+
+      }
+
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_START_MOVING_0100
+     * @tc.name      : test_startMoving_mainWindow
+     * @tc.desc      : test_startMoving_mainWindow
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_startMoving_mainWindow', 0, async (done: Function) => {
+      let caseName: string = 'test_startMoving_mainWindow';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try {
+        let mainWindow = windowStage.getMainWindowSync();
+        let promise = mainWindow.startMoving(100, 50)
+        promise.then(() => {
+          console.info(`${caseName} :Succeeded startMoving ` );
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to startMoving. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
+
+      }
+
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_STOP_MOVING_0100
+     * @tc.name      : test_stopMoving_mainWindow
+     * @tc.desc      : test_stopMoving_mainWindow
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_stopMoving_mainWindow', 0, async (done: Function) => {
+      let caseName: string = 'test_stopMoving_mainWindow';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try {
+        let mainWindow = windowStage.getMainWindowSync();
+        let promise = mainWindow.stopMoving()
+        promise.then(() => {
+          console.info(`${caseName} :Succeeded stopMoving ` );
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to stopMoving. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
+
+      }
+
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SET_WINDOW_LIMITS_0100
+     * @tc.name      : test_SetWindowLimits_40vp
+     * @tc.desc      : test_SetWindowLimits_40vp
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level4
+     */
+    it('test_SetWindowLimits_40vp', 0, async(done: Function) => {
+      let msg = ' test_SetWindowLimits_40vp ';
+      console.info(msg + ' begin ');
+      try {
+        let windowClass: window.Window = windowStage.getMainWindowSync()
+        let windowLimits: window.WindowLimits = {
+          maxWidth: 1000,
+          maxHeight: 1000,
+          minWidth: vp2px(40),
+          minHeight: vp2px(40)
+        };
+        let promise: Promise<window.WindowLimits> = windowClass.setWindowLimits(windowLimits, true);
+        promise.then(async (data: window.WindowLimits) => {
+          console.info(msg + ' Succeeded in changing the window limits. Cause: ' + JSON.stringify(data));
+          let windowLimits = await windowClass.getWindowLimits();
+          console.info(msg + ' Succeeded in get the window limits. Cause: ' + JSON.stringify(windowLimits));
+          expect(windowLimits.maxWidth).assertEqual(data.maxWidth);
+          expect(windowLimits.maxHeight).assertEqual(data.maxHeight);
+          if(windowLimits.minWidth != undefined && data.minWidth != undefined && windowLimits.minHeight != undefined && data.minHeight != undefined){
+            expect(Math.abs(windowLimits.minWidth-data.minWidth)).assertLessOrEqual(1);
+            expect(Math.abs(windowLimits.minHeight-data.minHeight)).assertLessOrEqual(1);
+            done();
+          }
+        }).catch((err: BusinessError) => {
+            console.error(msg + ' failed in windowClass.setWindowLimits ' + JSON.stringify(err));
+            expect().assertFail()
+            done();
+        });
+      } catch (error) {
+        console.error(msg + ' failed in windowClass.setWindowLimits 2  ' + JSON.stringify(error));
+        if(error.code == 801){
+            console.info(msg+' The current device type is not supported')
+            done();
+          }else{
+            expect().assertFail()
+            done();
+          }
+      }
+    })
     })
 }
 

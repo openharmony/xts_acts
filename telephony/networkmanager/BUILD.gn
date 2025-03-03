@@ -20,6 +20,7 @@ group("networkmanager") {
     "http:http",
     "mdns:mdns",
     "ndk:ndk",
+    "netfirewall:netfirewall",
     "network:network",
     "networksecurity:networksecurity",
     "noNet:noNet",

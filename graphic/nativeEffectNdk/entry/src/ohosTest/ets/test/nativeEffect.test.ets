@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import nativeEffectNdk from 'libnativeEffectNdk.so';
 
 export default function nativeEffectTest() {
@@ -238,6 +238,34 @@ export default function nativeEffectTest() {
      */
     it('testOHFilterBlurWithTileMode001', 0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterBlurWithTileMode001();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_XTS_OH_PixelmapNative_AccessPixels001
+     * @tc.name       : testOHPixelmapNativeAccessPixels001
+     * @tc.desc       : test OH_PixelmapNative_AccessPixels001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHPixelmapNativeAccessPixels001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHPixelmapNativeAccessPixels001();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_XTS_OH_PixelmapNative_UnaccessPixels001
+     * @tc.name       : testOHPixelmapNativeUnaccessPixels001
+     * @tc.desc       : test OH_PixelmapNative_UnaccessPixels001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHPixelmapNativeUnaccessPixels001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHPixelmapNativeUnaccessPixels001();
       expect(result).assertEqual(0);
       done();
     });

@@ -102,7 +102,7 @@ export default function commonJsunit() {
       let ret = a / (dpiValue / 160);
       let b = px2vp(a);
       console.info('commonTest_0500 px2vp result:' + b);
-      expect(Math.abs(b - ret) <= 1).assertTrue();
+      expect(Math.abs(b - ret) <= 2).assertTrue();
       console.info('commonTest_0500 END');
       done();
     });

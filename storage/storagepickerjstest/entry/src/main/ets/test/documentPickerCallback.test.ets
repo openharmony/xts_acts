@@ -16,6 +16,7 @@
 import { afterEach, describe, expect, it } from 'deccjsunit/index';
 import { sleep, startAbility, stopAbility } from './Common';
 import picker from '@ohos.file.picker';
+import { TestType, Size, Level } from '@ohos/hypium';
 
 export default function documentPickerCallback(abilityContext: Context) {
   describe("documentPickerCallback", () => {
@@ -225,6 +226,97 @@ export default function documentPickerCallback(abilityContext: Context) {
       option1.defaultFilePathUri = "file://docs/storage/Users/currentUser/test/test1";
       option1.authMode = false;
       await selectWithOption(testNum, done, option1);
+    });
+	
+	/**
+     * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SELECT_CALLBACK_1400
+     * @tc.name   : test_Documentpicker_Select_Callback_014
+     * @tc.desc   : select with option multiAuthMode
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level   : Level 1
+     */
+    it("test_Documentpicker_Select_Callback_014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let testNum = "test_Documentpicker_Select_Callback_014";
+      let option = new picker.DocumentSelectOptions();
+      option.multiAuthMode = true;
+      option.multiUriArray = [];
+      await selectWithOption(testNum, done, option);
+    });
+
+      /**
+     * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SELECT_CALLBACK_1500
+     * @tc.name   : test_Documentpicker_Select_Callback_015
+     * @tc.desc   : select with option MergeTypeMode.DEFAULT
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level   : Level 1
+     */
+    it("test_Documentpicker_Select_Callback_015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let testNum = "test_Documentpicker_Select_Callback_015";
+      let option = new picker.DocumentSelectOptions();
+      option.mergeMode = picker.MergeTypeMode.DEFAULT;
+      await selectWithOption(testNum, done, option);
+    });
+
+    /**
+     * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SELECT_CALLBACK_1600
+     * @tc.name   : test_Documentpicker_Select_Callback_016
+     * @tc.desc   : select with option MergeTypeMode.AUDIO
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level   : Level 1
+     */
+    it("test_Documentpicker_Select_Callback_016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let testNum = "test_Documentpicker_Select_Callback_016";
+      let option = new picker.DocumentSelectOptions();
+      option.mergeMode = picker.MergeTypeMode.AUDIO;
+      await selectWithOption(testNum, done, option);
+    });
+
+    /**
+     * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SELECT_CALLBACK_1700
+     * @tc.name   : test_Documentpicker_Select_Callback_017
+     * @tc.desc   : select with option MergeTypeMode.VIDEO
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level   : Level 1
+     */
+    it("test_Documentpicker_Select_Callback_017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let testNum = "test_Documentpicker_Select_Callback_017";
+      let option = new picker.DocumentSelectOptions();
+      option.mergeMode = picker.MergeTypeMode.VIDEO;
+      await selectWithOption(testNum, done, option);
+    });
+
+     /**
+     * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SELECT_CALLBACK_1800
+     * @tc.name   : test_Documentpicker_Select_Callback_018
+     * @tc.desc   : select with option MergeTypeMode.DOCUMENT
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level   : Level 1
+     */
+    it("test_Documentpicker_Select_Callback_018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let testNum = "test_Documentpicker_Select_Callback_018";
+      let option = new picker.DocumentSelectOptions();
+      option.mergeMode = picker.MergeTypeMode.DOCUMENT;
+      await selectWithOption(testNum, done, option);
+    });
+
+    /**
+     * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SELECT_CALLBACK_1900
+     * @tc.name   : test_Documentpicker_Select_Callback_019
+     * @tc.desc   : select with option MergeTypeMode.PICTURE
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level   : Level 1
+     */
+    it("test_Documentpicker_Select_Callback_019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let testNum = "test_Documentpicker_Select_Callback_019";
+      let option = new picker.DocumentSelectOptions();
+      option.mergeMode = picker.MergeTypeMode.PICTURE;
+      await selectWithOption(testNum, done, option);
     });
 
     /**

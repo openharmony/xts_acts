@@ -147,6 +147,10 @@ export const getSupportedCameras: () => cameraInfo;
 
 export const getCameraOrientation: () => number;
 
+export const getCameraHostName: () => number;
+
+export const getCameraHostType: () => number;
+
 export const createCameraInput: () => number;
 
 export const createCameraInputWithPositionAndType: (position: number, type: number) => number;
@@ -190,6 +194,10 @@ export const videoOutputStart: () => number;
 export const videoOutputStop: () => number;
 
 export const videoOutputRelease: () => number;
+
+export const isVideoMirrorSupported: () => boolean;
+
+export const enableVideoMirror: (enable: boolean) => number;
 
 export const metadataOutputStart: () => number;
 

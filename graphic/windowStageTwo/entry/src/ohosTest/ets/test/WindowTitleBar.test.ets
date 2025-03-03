@@ -1298,5 +1298,355 @@ export default function windowTitleBarTest() {
       }
     });
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SET_WINDOW_TITLE_0100
+     * @tc.name      : test_setWindowTitle_null
+     * @tc.desc      : test_setWindowTitle_null
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_setWindowTitle_null', 0, async (done: Function) => {
+      let caseName: string = 'test_setWindowTitle_null';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWindow = windowStage.getMainWindowSync();
+      try{
+        mainWindow.setWindowTitle(null).then(() => {
+          console.info(`${caseName} :Succeeded in setting the window title.`);
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to set the window title. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        if(err.code == 401){
+          expect(true).assertTrue();
+          done();
+        }else {
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SET_WINDOW_TITLE_0200
+     * @tc.name      : test_setWindowTitle_no_title
+     * @tc.desc      : test_setWindowTitle_no_title
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_setWindowTitle_no_title', 0, async (done: Function) => {
+      let caseName: string = 'test_setWindowTitle_no_title';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWindow = windowStage.getMainWindowSync();
+      try{
+        let options : window.SubWindowOptions = {
+          title: 'test_setWindowTitle_no_title',
+          decorEnabled: false,
+          isModal: false
+        };
+        windowStage.createSubWindowWithOptions('test_setWindowTitle_no_title', options).then(async (data) => {
+          console.info(`${caseName} :Succeeded in creating the subwindow. Data:  `+ JSON.stringify(data));
+          await data.setUIContent('testability/pages/First/index2');
+          await data.showWindow();
+          data.setWindowTitle('subWindowTitle').then(() => {
+            console.info(`${caseName} :Succeeded in setting the window title.`);
+            expect().assertFail();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(`${caseName} :Failed to set the window title. Cause code: ${err.code}, message: ${err.message}`);
+            await data.destroyWindow();
+            if(err.code == 801){
+              done();
+            }else {
+              expect(err.code).assertEqual(1300002);
+              done();
+            }
+          });
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 1300002){
+            done();
+          }else {
+            expect().assertFail();
+            done();
+          }
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SET_WINDOW_TITLE_0300
+     * @tc.name      : test_setWindowTitle_window_destroy
+     * @tc.desc      : test_setWindowTitle_window_destroy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_setWindowTitle_window_destroy', 0, async (done: Function) => {
+      let caseName: string = 'test_setWindowTitle_window_destroy';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWindow = windowStage.getMainWindowSync();
+      try{
+        let promise1 = windowStage.createSubWindow('test_setWindowTitle_window_destroy');
+        promise1.then(async (data) => {
+          let subWindowClass = data;
+          console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await data.setUIContent('testability/pages/First/index2');
+          await data.showWindow();
+          await data.destroyWindow();
+          data.setWindowTitle('subWindowTitle').then(() => {
+            console.info(`${caseName} :Succeeded in setting the window title.`);
+            expect().assertFail();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(`${caseName} :Failed to set the window title. Cause code: ${err.code}, message: ${err.message}`);
+            if(err.code == 801){
+              done();
+            }else {
+              expect(err.code).assertEqual(1300002);
+              done();
+            }
+          });
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SET_WINDOW_TITLE_0400
+     * @tc.name      : test_setWindowTitle_mainWindow
+     * @tc.desc      : test_setWindowTitle_mainWindow
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_setWindowTitle_mainWindow', 0, async (done: Function) => {
+      let caseName: string = 'test_setWindowTitle_mainWindow';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWindow = windowStage.getMainWindowSync();
+      try{
+        mainWindow.setWindowTitle('test_setWindowTitle_mainWindow').then(() => {
+          console.info(`${caseName} :Succeeded in setting the window title.`);
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to set the window title. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else {
+            expect().assertFail();
+            done();
+          }
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SET_WINDOW_TITLE_0500
+     * @tc.name      : test_setWindowTitle_subWindow_title
+     * @tc.desc      : test_setWindowTitle_subWindow_title
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_setWindowTitle_subWindow_title', 0, async (done: Function) => {
+      let caseName: string = 'test_setWindowTitle_subWindow_title';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try{
+        let options : window.SubWindowOptions = {
+          title: 'test_setWindowTitle_subWindow_title',
+          decorEnabled: true,
+          isModal: false
+        };
+        windowStage.createSubWindowWithOptions('test_setWindowTitle_subWindow_title', options).then(async (data) => {
+          console.info(`${caseName} :Succeeded in creating the subwindow. Data:  `+ JSON.stringify(data));
+          await data.setUIContent('testability/pages/First/index2');
+          await data.showWindow();
+          data.setWindowTitle('test_setWindowTitle_subWindow_title1').then(async () => {
+            console.info(`${caseName} :Succeeded in setting the window title1.`);
+            await data.minimize();
+            data.setWindowTitle('test_setWindowTitle_subWindow_title2');
+            await data.showWindow();
+            await data.destroyWindow();
+            expect(true).assertTrue();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(`${caseName} :Failed to set the window title. Cause code: ${err.code}, message: ${err.message}`);
+            await data.destroyWindow();
+            if(err.code == 801){
+              done();
+            }else {
+              expect().assertFail();
+              done();
+            }
+          });
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 1300002){
+            done();
+          }else {
+            expect().assertFail();
+            done();
+          }
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SET_WINDOW_TITLE_0600
+     * @tc.name      : test_setWindowTitle_dialogWindow_title
+     * @tc.desc      : test_setWindowTitle_dialogWindow_title
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_setWindowTitle_dialogWindow_title', 0, async (done: Function) => {
+      let caseName: string = 'test_setWindowTitle_dialogWindow_title';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try{
+        let config: window.Configuration = {
+          name: "test",
+          windowType: window.WindowType.TYPE_DIALOG,
+          ctx: context,
+          decorEnabled:true,
+          title:'dialog Window'
+        };
+        let promise1 = window.createWindow(config);
+        promise1.then(async (data) => {
+          console.info(`${caseName} :Succeeded in creating the dialogwindow. Data:  `+ JSON.stringify(data));
+          await data.setUIContent('testability/pages/First/index2');
+          await data.showWindow();
+          data.setWindowTitle('test_setWindowTitle_dialogWindow_title').then(async () => {
+            console.info(`${caseName} :Succeeded in setting the window title.`);
+            await data.destroyWindow();
+            expect(true).assertTrue();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(`${caseName} :Failed to set the window title. Cause code: ${err.code}, message: ${err.message}`);
+            await data.destroyWindow();
+            if(err.code == 801){
+              done();
+            }else {
+              expect().assertFail();
+              done();
+            }
+          });
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SET_WINDOW_TITLE_0700
+     * @tc.name      : test_setWindowTitle_mainWindow_hide_titlebar
+     * @tc.desc      : test_setWindowTitle_mainWindow_hide_titlebar
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_setWindowTitle_mainWindow_hide_titlebar', 0, async (done: Function) => {
+      let caseName: string = 'test_setWindowTitle_mainWindow_hide_titlebar';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWindow = windowStage.getMainWindowSync();
+      try{
+        mainWindow.setWindowDecorVisible(false);
+        mainWindow.setWindowTitle('test_setWindowTitle_mainWindow').then(() => {
+          console.info(`${caseName} :Succeeded in setting the window title.`);
+          mainWindow.setWindowDecorVisible(true);
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to set the window title. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else {
+            expect().assertFail();
+            done();
+          }
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        if(err.code == 801){
+          done();
+        }else {
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SET_WINDOW_TITLE_0800
+     * @tc.name      : test_setWindowTitle_mainWindow_Too_long_parameter
+     * @tc.desc      : test_setWindowTitle_mainWindow_Too_long_parameter
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_setWindowTitle_mainWindow_Too_long_parameter', 0, async (done: Function) => {
+      let caseName: string = 'test_setWindowTitle_mainWindow_Too_long_parameter';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWindow = windowStage.getMainWindowSync();
+      try{
+        mainWindow.setWindowTitle('test_setWindowTitle_mainWindow_Too_long_parameter test_setWindowTitle_mainWindow_Too_long_parameter test_setWindowTitle_mainWindow_Too_long_parameter').then(() => {
+          console.info(`${caseName} :Succeeded in setting the window title.`);
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to set the window title. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else {
+            expect().assertFail();
+            done();
+          }
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        if(err.code == 801){
+          done();
+        }else {
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+
   })
 }

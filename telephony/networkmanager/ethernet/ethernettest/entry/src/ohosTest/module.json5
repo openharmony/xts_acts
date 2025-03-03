@@ -31,7 +31,8 @@
     "requestPermissions": [
       {
         "name": "ohos.permission.GET_ETHERNET_LOCAL_MAC"
-      }
+      },
+      {"name": "ohos.permission.GET_NET_FIREWALL"}
     ],
     "abilities": [
       {

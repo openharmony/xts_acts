@@ -14,11 +14,12 @@
     "MainAbility/pages/ImageAttachment/ResourceDefault",
     "MainAbility/pages/ImageAttachment/VerticalAlign",
     "MainAbility/pages/ImageAttachment/ObjectFit",
-    "MainAbility/pages/ImageSvgFillColor/ImageSvgFillColor",
     "MainAbility/pages/Text/editMenuOptions",
     "MainAbility/pages/TextArea/addOrDelText",
     "MainAbility/pages/TextChangeTest/TextOnChangeOptionsTest",
     "MainAbility/pages/TextChangeTest/TextOnWillChangeOptionsTest",
-    "MainAbility/pages/SelectionMenuTest/bindSelectionMenuTest"
+    "MainAbility/pages/SelectionMenuTest/bindSelectionMenuTest",
+    "MainAbility/pages/ImageSvgFillColor/ImageSvgFillColor",
+    "MainAbility/pages/imageMatrix/imageMatrix"
   ]
 }
