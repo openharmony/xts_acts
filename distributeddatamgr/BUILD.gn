@@ -16,7 +16,9 @@ group("distributeddatamgr") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "IntelligenceApiTest:ActsIntelligenceTest",
       "PasteboardJSWithPermissionTest:ActsPasteBoardJSApiWithPermissionTest",
+      "PasteboardNdkWithPermissionsTest:ActsPasteboardNapiWithPermissionTest",
       "PasteboardNoPermissionstest:PasteboardNoPermissionstest",
       "Pasteboardjsapitest:ActsPasteBoardETSApiTest",
       "Pasteboardnapitest:ActsPasteboardNapiEtsTest",

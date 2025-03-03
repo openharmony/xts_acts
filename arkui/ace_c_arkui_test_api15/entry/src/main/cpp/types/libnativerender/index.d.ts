@@ -36,3 +36,32 @@ export const FocusControlTest_004: (a: string) => void;
 export const listTestCallback: (a: string) => void;
 
 export const listScrollToTestCallback: (a: string) => void;
+
+export const testNodeHandleById: (a: string) => void;
+
+export const testGetWindowInfo: (a: string) => void;
+
+export const testHostWindowInfoGetName: (a: string) => void;
+
+export const testHostWindowInfoDestroy: (a: string) => void;
+
+export const testLazyForEachExpandMode001: (a: string) => void;
+
+export const testLazyForEachExpandMode002: (a: string) => void;
+
+export const testLazyForEachExpandMode003: (a: string) => void;
+
+export const testLazyForEachExpandMode004: (a: string) => void;
+
+export const testLazyForEachExpandMode005: (a: string) => void;
+
+export const testLazyForEachExpandMode006: (a: string) => void;
+
+export const testLazyForEachExpandMode007: (a: string) => void;
+
+export const testLazyForEachExpandMode008: (a: string) => void;
+
+export const testLazyForEachExpandMode009: (a: string) => void;
+export const gesturecancelTest: (a: string) => void;
+
+export const GetTouchEventData: () => object;

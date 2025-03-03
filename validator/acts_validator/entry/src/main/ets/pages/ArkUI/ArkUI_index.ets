@@ -69,6 +69,7 @@ struct IndexPage {
     { title: 'chipTest', uri: 'pages/ArkUI/chipTest' },
     { title: 'chipGroupTest', uri: 'pages/ArkUI/chipGroupTest' },
     { title: 'DatePickerDialog', uri: 'pages/ArkUI/DatePickerDialog' },
+    { title: 'dialogModeTest', uri: 'pages/ArkUI/dialogModeTest' },
     { title: 'Marquee', uri: 'pages/ArkUI/Marquee' },
     { title: 'PatternLock', uri: 'pages/ArkUI/PatternLock' },
     { title: 'PatternLockL0_01', uri: 'pages/ArkUI/PatternLockL0_01' },
@@ -92,7 +93,18 @@ struct IndexPage {
     { title: 'onAccessibilityHover', uri: 'pages/ArkUI/AccessBilityHover' },
     { title: 'NavigationEnableHoverMode', uri: 'pages/ArkUI/NavigationEnableHoverMode' },
     { title: 'AccessibilityProperty', uri: 'pages/ArkUI/AccessibilityProperty' },
-    { title: 'AccessibilityOptions', uri: 'pages/ArkUI/AccessibilityOptions' }
+    { title: 'AccessibilityOptions', uri: 'pages/ArkUI/AccessibilityOptions' },
+	{ title: 'Clickhand', uri: 'pages/ArkUI/Clickhand' },
+    { title: 'Groupgesturrehand', uri: 'pages/ArkUI/Groupgesturrehand' },
+    { title: 'Longhand', uri: 'pages/ArkUI/Longhand' },
+    { title: 'Panhand', uri: 'pages/ArkUI/Panhand' },
+    { title: 'Pinchhand', uri: 'pages/ArkUI/Pinchhand' },
+    { title: 'Rotate1hand', uri: 'pages/ArkUI/Rotate1hand' },
+    { title: 'Swipehand', uri: 'pages/ArkUI/Swipehand' },
+    { title: 'Taphand', uri: 'pages/ArkUI/Taphand' },
+    
+    { title: 'GameCtrollerCallBackData', uri: 'pages/ArkUI/GameCtrollerCallBackData' },
+    { title: 'GameCtronllerCTest', uri: 'pages/ArkUI/GameCtronllerCTest' }
   ]
   @State ColorObject: Object[] = letColor;
   @State ColorTrue: number[] = [];
