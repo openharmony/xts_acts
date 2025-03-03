@@ -14,7 +14,7 @@
  */
 
 import runningLock from '@ohos.runningLock'
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 export default function RunningLockTest() {
   describe('RunningLockTest', function () {

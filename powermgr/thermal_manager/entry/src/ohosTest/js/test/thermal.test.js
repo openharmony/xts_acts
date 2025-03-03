@@ -14,7 +14,7 @@
  */
 
 import thermal from "@ohos.thermal"
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 const MSEC_1000 = 1000;
 
