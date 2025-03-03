@@ -33,7 +33,7 @@ export default function abilityTest() {
   describe('AVCastPickerHelperTest', () => {
     let TAG: string = "[AVCastPickerHelperTest]";
 
-    beforeAll((  ) => {
+    beforeAll(() => {
       context = AppStorage.get<common.UIAbilityContext>('testContext') as common.UIAbilityContext;
       console.info(`${TAG}: beforeAll in`);
     })
