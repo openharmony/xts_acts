@@ -102,9 +102,9 @@ struct IndexPage {
     { title: 'Rotate1hand', uri: 'pages/ArkUI/Rotate1hand' },
     { title: 'Swipehand', uri: 'pages/ArkUI/Swipehand' },
     { title: 'Taphand', uri: 'pages/ArkUI/Taphand' },
-    
     { title: 'GameCtrollerCallBackData', uri: 'pages/ArkUI/GameCtrollerCallBackData' },
     { title: 'GameCtronllerCTest', uri: 'pages/ArkUI/GameCtronllerCTest' }
+    { title: 'HoverMove', uri: 'pages/ArkUI/HoverMove' }
   ]
   @State ColorObject: Object[] = letColor;
   @State ColorTrue: number[] = [];
