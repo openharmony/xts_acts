@@ -14,3 +14,5 @@
  */
 
 export const add: (a: number, b: number) => number;
+export const createNativeNode: (a: string) => void;
+export const createNativeNodeFalse: (id: string) => void;
