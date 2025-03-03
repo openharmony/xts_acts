@@ -46,6 +46,11 @@ interface renderInfoChild {
   rendererFlags: number
 }
 
+class Options {
+  offset?: number;
+  length?: number;
+}
+
 export default function audioCapturer() {
 
   describe('audioCapturer', () => {

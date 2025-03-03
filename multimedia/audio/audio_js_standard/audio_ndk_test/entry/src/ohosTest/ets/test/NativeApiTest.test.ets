@@ -2696,7 +2696,6 @@ export default function audioNDK() {
       done()
     })
 
-
     /**
      * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0100
      * @tc.name      : test OH_Audio format f32 normal
