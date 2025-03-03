@@ -70,34 +70,39 @@ struct WebOnPermissionRequest {
             console.info('key==>' + this.str)
             switch (this.str) {
               case 'emitPermissionRequestDeny001': {
-                if ( Utils.isPC(this.controller) ) {
-                  Utils.emitEvent('"deny"', 70320)
-                  break;
-                }
-                try {
-                  this.deny = true;
-                  this.controller.runJavaScript('getMedia()', (error) => {
-                    if (error) {
-                      console.info('getMedia() return error: ' + error)
-                    }
-                  })
-                  await Utils.sleep(2000)
-                  this.controller.runJavaScript('getResult()', (error, result) => {
-                    if (error) {
-                      console.info('getResult() return error: ' + error)
-                    }
-                    if (result) {
-                      console.info('getResult() return result: ' + result)
-                      if (result === '"deny"' || result === '""') {
-                        Utils.emitEvent('"deny"', 70320)
+                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
+                  if ( Utils.isPC(this.controller) ) {
+                    Utils.emitEvent('"deny"', 70320)
+                    break;
+                  }
+                  try {
+                    this.deny = true;
+                    this.controller.runJavaScript('getMedia()', (error) => {
+                      if (error) {
+                        console.info('getMedia() return error: ' + error)
                       }
-                    }
-                  })
+                    })
+                    await Utils.sleep(2000)
+                    this.controller.runJavaScript('getResult()', (error, result) => {
+                      if (error) {
+                        console.info('getResult() return error: ' + error)
+                      }
+                      if (result) {
+                        console.info('getResult() return result: ' + result)
+                        if (result === '"deny"' || result === '""') {
+                          Utils.emitEvent('"deny"', 70320)
+                        }
+                      }
+                    })
+
 
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 }
                 break;
+                } else {
+                  Utils.emitEvent('"deny"', 70320)
+                }
               }
               case 'emitPermissionRequestGrant001': {
                 if (canIUse('SystemCapability.Multimedia.Camera.Core')) {

@@ -104,7 +104,6 @@ struct webController {
           switch (this.str) {
 
             case "testRequestFocus001": {
-              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   this.controller.loadUrl({ url: "resource://rawfile/second.html" });
                   await Utils.sleep(2000)
@@ -117,9 +116,6 @@ struct webController {
                   Utils.emitEvent(String(error.code), 33030)
                 }
                 break;
-              } else {
-                Utils.emitEvent(true, 33030)
-              }
             }
 
           }

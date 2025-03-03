@@ -50,7 +50,6 @@ struct WebComponent {
           switch (this.str) {
 
             case "blurMode01": {
-              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent(true, 20241133)
@@ -73,13 +72,9 @@ struct WebComponent {
                   Utils.emitEvent(true, 20241133)
                 }
                 break;
-              } else {
-                Utils.emitEvent(true, 20241133)
-              }
             }
 
             case "blurMode02": {
-              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent(true, 20241134)
@@ -104,9 +99,6 @@ struct WebComponent {
                   Utils.emitEvent(true, 20241134)
                 }
                 break;
-              } else {
-                Utils.emitEvent(true, 20241134)
-              }
             }
           }
         })
