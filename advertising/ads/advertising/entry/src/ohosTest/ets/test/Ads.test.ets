@@ -22,6 +22,7 @@ import advertising from '@ohos.advertising';
 const TAG: string = 'AdTestTag';
 const Domain: number = 0x0000;
 const context = getContext(this) as common.Context;
+const uiContext = getContext(this) as common.UIAbilityContext;
 
 const adRequest: advertising.AdRequestParams = {
   adId: 'testx9dtjwj8hp',
@@ -29,6 +30,7 @@ const adRequest: advertising.AdRequestParams = {
   adCount: 2,
   adWidth: 100,
   adHeight: 100,
+  adSearchKeyword: 'key'
 };
 
 const multiAdRequest: advertising.AdRequestParams[] = [{
@@ -93,7 +95,7 @@ export default function adsTest() {
      * @tc.level: Level0
      */
     it("testLoadAdByCallback", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      let adLoaderListener: AdLoaderFunc1 = {
+      let adLoaderListener: advertising.AdLoadListener = {
         onAdLoadFailure: (errorCode: number, errorMsg: string) => {
           hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.', errorCode, errorMsg);
           expect(errorCode).assertLarger(0);
@@ -121,7 +123,7 @@ export default function adsTest() {
     it("testShowAd", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, () => {
       try {
         hilog.info(Domain, TAG, 'enter testShowAd');
-        advertising.showAd(advertisement, adDisplayOptions);
+        advertising.showAd(advertisement, adDisplayOptions, uiContext);
       } catch (e) {
         hilog.error(Domain, TAG, 'show ad error, error code is %{public}d, error message is %{public}s.', e.code, e.message);
         expect(e.code).assertLarger(0);
@@ -137,7 +139,7 @@ export default function adsTest() {
      * @tc.level: Level0
      */
     it("testLoadMultiAdByCallback", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      let adLoaderListener: AdLoaderFunc2 = {
+      let adLoaderListener: advertising.MultiSlotsAdLoadListener = {
         onAdLoadFailure: (errorCode: number, errorMsg: string) => {
           hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.', errorCode, errorMsg);
           expect(errorCode).assertLarger(0);
@@ -171,6 +173,7 @@ export default function adsTest() {
       }
       let adInteractionListener: advertising.AdInteractionListener = {
         onStatusChanged: (status: string, ad: advertising.Advertisement, data: string) => {
+          hilog.debug(Domain, TAG, `get the status is ${status}, ad is : ${ad}, data is : ${data}`);
         }
       };
       commonEventManager.createSubscriber(subscribeInfo, (err, data) => {
@@ -184,6 +187,7 @@ export default function adsTest() {
             commonEventManager.subscribe(subscriber, (err, data) => {
               if (err) {
                 hilog.error(Domain, TAG, `subscribe failed, code is ${err.code}`);
+                done();
               } else {
                 hilog.info(Domain, TAG, `SubscribeCallBack data=${JSON.stringify(data)}`);
                 done();
@@ -197,6 +201,151 @@ export default function adsTest() {
       router.pushUrl({
         url: 'MainAbility/pages/index/p1'
       });
+      adInteractionListener.onStatusChanged('1', null, 'dataInfo');
+      done();
+    })
+
+    /**
+     * @tc.number: SUB_CLOUD_ADS_LOAD_AD_0500
+     * @tc.name: testLoadAd_401
+     * @tc.desc: Load ad by err code 401.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testLoadAd_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      let adLoaderListener: advertising.AdLoadListener = {
+        onAdLoadFailure: (errorCode: number, errorMsg: string) => {
+          hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.', errorCode, errorMsg);
+          expect(errorCode).assertLarger(0);
+          expect(errorMsg).assertInstanceOf('String')
+          done();
+        },
+        onAdLoadSuccess: (ads: Array<advertising.Advertisement>) => {
+          hilog.info(Domain, TAG, 'request ad success');
+          expect(ads[0] != null).assertEqual(false);
+          done();
+        }
+      };
+      let load = new advertising.AdLoader(context);
+      try {
+        load.loadAd(null, adOption, adLoaderListener);
+        done();
+      } catch (e) {
+        expect(e.code).assertEqual(401);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_CLOUD_ADS_LOAD_AD_0600
+     * @tc.name: testLoadAdMulti_401
+     * @tc.desc: Load multi ad by err code 401.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testLoadAdMulti_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      let adLoaderListener: advertising.MultiSlotsAdLoadListener = {
+        onAdLoadFailure: (errorCode: number, errorMsg: string) => {
+          hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.', errorCode, errorMsg);
+          expect(errorCode).assertLarger(0);
+          expect(errorMsg).assertInstanceOf('String')
+          done();
+        },
+        onAdLoadSuccess: (ads: Map<string, Array<advertising.Advertisement>>) => {
+          hilog.info(Domain, TAG, 'request ad success');
+          let returnAds: Array<advertising.Advertisement> = [];
+          ads.forEach((adsArray) => returnAds.push(...adsArray));
+          expect(returnAds[0] != null).assertEqual(false);
+          done();
+        }
+      };
+      let load = new advertising.AdLoader(context);
+      try {
+        load.loadAdWithMultiSlots(null, adOption, adLoaderListener);
+        done();
+      } catch (e) {
+        expect(e.code).assertEqual(401);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_CLOUD_AD_SHOW_AD_0700
+     * @tc.name: testShowAd_401
+     * @tc.desc: testShowAd_401.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testShowAd_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, (done: Function) => {
+      try {
+        hilog.info(Domain, TAG, 'enter testShowAd');
+        advertising.showAd(null, adDisplayOptions, uiContext);
+        done()
+      } catch (e) {
+        hilog.error(Domain, TAG, 'show ad error, error code is %{public}d, error message is %{public}s.', e.code, e.message);
+        expect(e.code).assertLarger(0);
+        expect(e.code == 401).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_CLOUD_ADS_LOAD_AD_0800
+     * @tc.name: testLoadAdByCallback01
+     * @tc.desc: Load ad by callback is not null.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testLoadAdByCallback01", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      let adLoaderListener: advertising.AdLoadListener = {
+        onAdLoadFailure: (errorCode: number, errorMsg: string) => {
+          hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.', errorCode, errorMsg);
+          expect(errorCode).assertLarger(0);
+          expect(errorMsg).assertInstanceOf('String')
+          done();
+        },
+        onAdLoadSuccess: (ads: Array<advertising.Advertisement>) => {
+          hilog.info(Domain, TAG, 'request ad success');
+          expect(ads[0] != null).assertEqual(false);
+          done();
+        }
+      };
+      adLoaderListener.onAdLoadFailure(423, 'errorMsg');
+      let ads: Array<advertising.Advertisement> = new Array();
+      adLoaderListener.onAdLoadSuccess(ads);
+    })
+
+    /**
+     * @tc.number: SUB_CLOUD_ADS_LOAD_MULTI_AD_0900
+     * @tc.name: testLoadMultiAdByCallback01
+     * @tc.desc: Load multi ad by callback is not null.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testLoadMultiAdByCallback01", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      let adLoaderListener: advertising.MultiSlotsAdLoadListener = {
+        onAdLoadFailure: (errorCode: number, errorMsg: string) => {
+          hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.', errorCode, errorMsg);
+          expect(errorCode).assertLarger(0);
+          expect(errorMsg).assertInstanceOf('String')
+          done();
+        },
+        onAdLoadSuccess: (ads: Map<string, Array<advertising.Advertisement>>) => {
+          hilog.info(Domain, TAG, 'request ad success');
+          let returnAds: Array<advertising.Advertisement> = [];
+          ads.forEach((adsArray) => returnAds.push(...adsArray));
+          expect(returnAds[0] != null).assertEqual(false);
+          done();
+        }
+      };
+      adLoaderListener.onAdLoadFailure(423, 'errorMsg');
+      let ads: Map<string, Array<advertising.Advertisement>> = new Map();
+      adLoaderListener.onAdLoadSuccess(ads);
     })
   })
 }
