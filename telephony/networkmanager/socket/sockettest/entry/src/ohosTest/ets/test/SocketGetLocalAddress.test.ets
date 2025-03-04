@@ -380,7 +380,6 @@ export default function SocketGetLocalSocketTest() {
     it('testNetworkMgrSocketGetLocalAddressTest0500', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketGetLocalAddressTest0500';
       console.info(`${caseName} test start`);
-      await sleep(500);
       try {
         let listenAddr: socket.NetAddress = {
           address: '127.0.0.1',
