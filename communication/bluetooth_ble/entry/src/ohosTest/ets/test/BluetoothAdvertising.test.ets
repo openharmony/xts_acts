@@ -16,7 +16,7 @@
 import bluetooth from '@ohos.bluetooth.ble';
 import btAccess from '@ohos.bluetooth.access';
 import { BusinessError } from '@ohos.base';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 let PERMISSION_TEXT:string = "允许";
@@ -268,9 +268,9 @@ export default function bluetoothAdvertisingTest() {
      * @tc.desc Test bluetoothBle api11
      * @tc.type Function
      * @tc.size MediumTest
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0300', 0, async (done : Function) =>  {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
       let advertisingParams: bluetooth.AdvertisingParams = {
         advertisingSettings: setting,
         advertisingData: advData,
