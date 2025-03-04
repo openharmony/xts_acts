@@ -77,7 +77,7 @@ export default function AddContactViaUITest() {
   describe('AddContactViaUITest', () => {
 
     let contactDataNull: contact.Contact = {
-    }；
+    };
     let contactData: contact.Contact = {
       id: 0,
       key: "0",
