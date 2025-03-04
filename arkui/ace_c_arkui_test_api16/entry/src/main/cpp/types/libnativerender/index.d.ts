@@ -22,6 +22,8 @@ export const textAreaLetterSpacing001: (a: string) => void;
 
 export const testCalendarPickerDate: (a: string) => void;
 
+export const testDatePickerMode: (a: string) => void;
+
 export const textInputLetterSpacing002: (a: string) => void;
 
 export const textPickerColumnWidths: (a: string) => void;
