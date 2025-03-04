@@ -16,7 +16,7 @@
 #include "common/common.h"
 #include "manager/plugin_manager.h"
 #include "setKeyProcessingMode/key_processing_mode.h"
-
+#include "keyDisPatchTest/keyEventDispatch_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -29,6 +29,10 @@ static napi_value Init(napi_env env, napi_value exports)
     }
 
     napi_property_descriptor desc[] = {
+        {"KeyEventPatchTest", nullptr, KeyEventDispatchTest::KeyEventPatchTest,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetKeyEventData", nullptr, KeyEventDispatchTest::GetKeyEventData,
+         nullptr, nullptr, nullptr, napi_default, nullptr}, 
         {"KeyProcessingMode001", nullptr, KeyProcessingMode::KeyProcessingMode001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"KeyProcessingMode002", nullptr, KeyProcessingMode::KeyProcessingMode002,

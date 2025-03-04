@@ -1,7 +1,6 @@
 {
   "src": [
     "MainAbility/pages/XTSIndex",
-    "MainAbility/pages/keydispatchtest/KeydispatchTest",
     "MainAbility/pages/checkboxgroup/CheckboxGroupGroupTest",
     "MainAbility/pages/checkboxgroup/CheckboxGroupSelectAllTest",
     "MainAbility/pages/checkbox/CheckboxGroupTest",

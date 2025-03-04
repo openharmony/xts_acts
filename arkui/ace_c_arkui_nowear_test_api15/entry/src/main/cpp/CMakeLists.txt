@@ -14,6 +14,7 @@ add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
     setKeyProcessingMode/key_processing_mode.cpp
+    keyDisPatchTest/keyEventDispatch_test.cpp
 )
 
 add_library(nativefunc SHARED

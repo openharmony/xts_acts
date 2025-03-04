@@ -16,3 +16,7 @@
 export const KeyProcessingMode001: (a: string) => void;
 
 export const KeyProcessingMode002: (a: string) => void;
+
+export const KeyEventPatchTest: (a: string) => void;
+
+export const GetKeyEventData: () => object;
