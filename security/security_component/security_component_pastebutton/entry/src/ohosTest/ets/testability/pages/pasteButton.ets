@@ -46,6 +46,7 @@ struct pasteButton {
   @State clipSet: boolean = false
   @State columnWidth: string = '100%'
   @State columnHeight: string = '100%'
+  @State pbAlign: Alignment = Alignment.Center
   private stateChangeCallBack = (eventData:events_emitter.EventData) => {
     if (eventData != null && eventData.data != undefined) {
       console.debug("====>page_pasteButton page state change called:" + JSON.stringify(eventData));
@@ -133,6 +134,9 @@ struct pasteButton {
       if (eventData.data.columnHeight != null) {
         this.columnHeight = eventData.data.columnHeight;
       }
+      if (eventData.data.columnHeight != null) {
+        this.pbAlign = eventData.data.align;
+      }
     }
   }
 
@@ -190,7 +194,8 @@ struct pasteButton {
             .borderRadius(this.borderRad)
             .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
             .textIconSpace(this.middle)
-            .key("keyPaste")
+            .align(this.pbAlign)
+            .id("keyPaste")
         }.width(100)
       }.width('100%').alignItems(HorizontalAlign.Center)
     }.height('100%')
