@@ -25,6 +25,9 @@
 #include <bits/alltypes.h>
 #include <cstdint>
 
+#define INT_00 00
+#define INT_295 295
+
 ArkUI_NativeNodeAPI_1 *nodeAPI_ec = nullptr;
 
 namespace ArkUICapiTest {
@@ -56,14 +59,14 @@ napi_value ExpectedFrameRateRangeCallbackTest::testExpectedFrameRateRangeCallbac
 
     ArkUI_AttributeItem NODE_BUTTON_LABEL_Item00 = {.string = "max:120,expected:90,min:60"};
     nodeAPI_ec->setAttribute(button001, NODE_BUTTON_LABEL, &NODE_BUTTON_LABEL_Item00);
-    nodeAPI_ec->registerNodeEvent(button001, NODE_ON_CLICK, 00, nullptr);
+    nodeAPI_ec->registerNodeEvent(button001, NODE_ON_CLICK, INT_00, nullptr);
     ArkUI_AttributeItem textId1 = {.string = "onClick1"};
     nodeAPI_ec->setAttribute(button001, NODE_ID, &textId1);
 
     auto button002 = nodeAPI_ec->createNode(ARKUI_NODE_BUTTON);
     ArkUI_AttributeItem NODE_BUTTON_LABEL_Item095 = {.string = "max:120,expected:60,min:90"};
     nodeAPI_ec->setAttribute(button002, NODE_BUTTON_LABEL, &NODE_BUTTON_LABEL_Item095);
-    nodeAPI_ec->registerNodeEvent(button002, NODE_ON_CLICK, 295, nullptr);
+    nodeAPI_ec->registerNodeEvent(button002, NODE_ON_CLICK, INT_295, nullptr);
     ArkUI_AttributeItem textId2 = {.string = "onClick2"};
     nodeAPI_ec->setAttribute(button002, NODE_ID, &textId2);
 
@@ -150,23 +153,20 @@ napi_value ExpectedFrameRateRangeCallbackTest::testExpectedFrameRateRangeCallbac
             if (expected == 90 && OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRate(option)->min == 60
                 && OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRate(option)->max == 120
                 && OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRate(option)->expected == 90) {
-              ArkUI_AttributeItem NODE_TEXT_NORMAL = {.string = "正常值"};      
-              nodeAPI_ec->setAttribute(textSelf, NODE_TEXT_CONTENT, &NODE_TEXT_NORMAL);
-
+                ArkUI_AttributeItem NODE_TEXT_NORMAL = {.string = "正常值"};      
+                nodeAPI_ec->setAttribute(textSelf, NODE_TEXT_CONTENT, &NODE_TEXT_NORMAL);
             } else if (expected == 60 && OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRate(option)->min == 90
                 && OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRate(option)->max == 120
-                && OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRate(option)->expected == 60 ) {
-              ArkUI_AttributeItem NODE_TEXT_NORMAL2 = {.string = "异常值"};      
-              nodeAPI_ec->setAttribute(textSelf, NODE_TEXT_CONTENT, &NODE_TEXT_NORMAL2);
-
+                && OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRate(option)->expected == 60) {
+                ArkUI_AttributeItem NODE_TEXT_NORMAL2 = {.string = "异常值"};      
+                nodeAPI_ec->setAttribute(textSelf, NODE_TEXT_CONTENT, &NODE_TEXT_NORMAL2);
             }
-
             isback = !isback;
-        } else if (OH_ArkUI_NodeEvent_GetTargetId(event) == 00) {
+        } else if (OH_ArkUI_NodeEvent_GetTargetId(event) == INT_00) {
             max = 120;
             expected = 90;
             min = 60;
-        } else if (OH_ArkUI_NodeEvent_GetTargetId(event) == 295) {
+        } else if (OH_ArkUI_NodeEvent_GetTargetId(event) == INT_295) {
             max = 120;
             expected = 60;
             min = 90;
