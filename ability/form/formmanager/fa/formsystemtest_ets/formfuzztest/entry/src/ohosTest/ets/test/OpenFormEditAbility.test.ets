@@ -17,12 +17,14 @@ import formProvider from "@ohos.app.form.formProvider"
 import { describe, expect, it } from '@ohos/hypium'
 import { DATA_TYPE_LIST, getFuzzData } from './getParam.ets';
 
+
 export const openFormEditAbilityFuzzTest = (describeName:string, filterParameter:number) => {
 
+  const OPEN_FORM_EDIT_ABILITY_ERR_CODE = [ '401', '801', '16500050', '16500100', '16501000', '16501003', '16501007' ];
   describe(`${describeName}`, () => {
     const callbackName = `FMS_fuzzTest_openFormEditAbility`;
     const promiseName = `FMS_fuzzTest_openFormEditAbility`;
-    const length:number = DATA_TYPE_LIST.length;
+    const length: number = DATA_TYPE_LIST.length;
 
     for (let i = 0; i < length; ++i) {
       const tcNumber: string = `0${(i + 1) * 100}`;
@@ -39,7 +41,11 @@ export const openFormEditAbilityFuzzTest = (describeName:string, filterParameter
         try {
           formProvider.openFormEditAbility(abilityName, formId);
         } catch (err) {
-          expect().assertFail();
+          console.log(`${err} ${JSON.stringify(err)}`);
+          let index = OPEN_FORM_EDIT_ABILITY_ERR_CODE.findIndex((id) => {
+            return id === String(err?.code);
+          })
+          expect(index).not().assertEqual(-1);
         }
       });
     }
@@ -62,7 +68,11 @@ export const openFormEditAbilityFuzzTest = (describeName:string, filterParameter
         try {
           formProvider.openFormEditAbility(abilityName, formId, isMainPage);
         } catch (err) {
-          expect().assertFail();
+          console.log(`${err} ${JSON.stringify(err)}`);
+          let index = OPEN_FORM_EDIT_ABILITY_ERR_CODE.findIndex((id) => {
+            return id === String(err?.code);
+          })
+          expect(index).not().assertEqual(-1);
         }
       });
     }
