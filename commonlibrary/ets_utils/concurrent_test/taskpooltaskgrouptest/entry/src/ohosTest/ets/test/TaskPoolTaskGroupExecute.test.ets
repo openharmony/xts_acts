@@ -29,12 +29,11 @@ import {
   testFunc,
   testTransfer
 } from '../testability/pages/TaskMethodTest';
-import { Driver } from '@kit.TestKit';
 import { Count1, Count2, Count3, Count4 } from '../testability/pages/DataFlg';
 import { BaseClass } from '../testability/pages/SendableTest';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { sleep } from '../testability/pages/Utils';
 
-let driver: Driver = Driver.create();
 
 export default function taskPoolTaskGroupExecuteTest() {
   describe('TaskPoolTaskGroupExecuteTest', () => {
@@ -48,7 +47,8 @@ export default function taskPoolTaskGroupExecuteTest() {
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
     })
-    afterEach(() => {
+    afterEach(async () => {
+      await sleep(2000)
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
@@ -86,7 +86,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
 
       while (Count1.count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
@@ -130,7 +130,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
 
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(0).assertEqual(Count3.count)
       expect(0).assertEqual(Count4.count)
@@ -169,7 +169,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
 
       while (Count1.count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
@@ -212,7 +212,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
 
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(0).assertEqual(Count1.count)
       expect(0).assertEqual(Count2.count)
@@ -250,7 +250,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
 
       while (Count1.count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1.count)
       expect('TaskName1').assertEqual(task1.name)
@@ -290,12 +290,12 @@ export default function taskPoolTaskGroupExecuteTest() {
           console.info('======e', JSON.stringify(e))
         })
 
-        await driver.delayMs(1000)
+        await sleep(1000)
         taskpool.cancel(task2)
         taskpool.cancel(task1)
       }
       while (count1 < 1) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(1).assertEqual(count1)
       Done()
@@ -329,7 +329,7 @@ export default function taskPoolTaskGroupExecuteTest() {
     //     let id = taskInfo.taskId
     //     // taskpool.cancel(id)
     //   }
-    //   await driver.delayMs(1000)
+    //   await sleep(1000)
     //   expect(taskpool.Task.isCanceled()).assertTrue()
     //   Count1.count = 0
     //   Count2.count = 0
@@ -387,7 +387,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
 
       while (view.byteLength > 0) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       console.info("testTransfer view2 byteLength: " + view.byteLength);
       console.info("testTransfer view3 byteLength: " + view1.byteLength);
@@ -439,7 +439,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
 
       while (ret1 != 55) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(55).assertEqual(ret1)
       expect(55).assertEqual(ret2)
@@ -485,7 +485,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
 
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(count)
       expect(10).assertEqual(count2)
@@ -543,7 +543,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
 
       while (Count1.count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(10).assertEqual(Count1.count)
@@ -590,7 +590,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
 
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(count)
@@ -649,7 +649,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
 
       while (Count1.count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(count)
@@ -694,7 +694,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
 
       while ((count + count2) < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       console.info('=====', count)
       expect(10).assertEqual(count + count2)
@@ -746,7 +746,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
 
       while ((count + count2) < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(count + count2)
       Done()
@@ -785,7 +785,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
 
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(10).assertEqual(count)
@@ -838,7 +838,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
 
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(10).assertEqual(count)
@@ -878,7 +878,7 @@ export default function taskPoolTaskGroupExecuteTest() {
       }
 
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(10).assertEqual(count)
@@ -907,7 +907,7 @@ export default function taskPoolTaskGroupExecuteTest() {
         taskpool.execute(taskGroup)
       }
       while (!task.isDone()) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(task.isDone()).assertTrue()
       Done()

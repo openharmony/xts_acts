@@ -51,15 +51,13 @@ import {
   multipleUITask3,
   multipleUITask4
 } from '../testability/pages/MultipleTask';
-import { Drivers } from '../testability/pages/Utils';
 import { MeasureText } from '@kit.ArkUI';
+import { sleep } from '../testability/pages/Utils';
 
 declare class ArkTools {
   static forceFullGC(): void;
 }
 
-let driver: Driver = Driver.create();
-Drivers.drivers = driver
 
 export default function taskPoolTaskMultipleUITest() {
   describe('TaskPoolTaskMultipleUITest', () => {
@@ -73,7 +71,8 @@ export default function taskPoolTaskMultipleUITest() {
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
     })
-    afterEach(() => {
+    afterEach(async () => {
+      await sleep(2000)
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
@@ -96,7 +95,7 @@ export default function taskPoolTaskMultipleUITest() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       const caseName = 'taskPoolTaskMultipleUITest0100'
       console.info(`${caseName} test start`)
-      await driver.delayMs(5000)
+      await sleep(5000)
       let task1: taskpool.Task = new taskpool.Task(multipleUITask1);
       let task2: taskpool.Task = new taskpool.Task(multipleUITask2);
 
@@ -117,7 +116,7 @@ export default function taskPoolTaskMultipleUITest() {
       }
 
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(10).assertEqual(count)
@@ -158,7 +157,7 @@ export default function taskPoolTaskMultipleUITest() {
       }
 
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(10).assertEqual(count)

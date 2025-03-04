@@ -14,7 +14,6 @@
 */
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import { webview } from '@kit.ArkWeb';
-import { Driver } from '@kit.TestKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ErrorEvent, MessageEvents, taskpool, worker } from '@kit.ArkTS';
@@ -51,8 +50,8 @@ import {
   printArgsWorker1
 } from '../testability/pages/TaskMethod';
 import { AsyncLockTest, AsyncLockTest1, WorkThread } from '../testability/pages/lock';
+import { sleep } from '../testability/pages/Utils';
 
-let driver: Driver = Driver.create();
 let Count1: number = 0;
 let Count2: number = 0;
 let tag: string = 'taskPoolTaskGroup'
@@ -74,7 +73,7 @@ export default function taskPoolTaskGroup() {
       // This API supports only one parameter: preset action function.
     })
     afterEach(async () => {
-      await driver.delayMs(500)
+      await sleep(2000)
       Count1 = 0
       Count2 = 0
       // Presets a clear action, which is performed after each unit test case ends.
@@ -82,7 +81,7 @@ export default function taskPoolTaskGroup() {
       // This API supports only one parameter: clear action function.
     })
     afterAll(async () => {
-      await driver.delayMs(500)
+      await sleep(500)
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
@@ -114,7 +113,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -152,7 +151,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -209,7 +208,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -265,7 +264,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -326,7 +325,7 @@ export default function taskPoolTaskGroup() {
 
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -383,7 +382,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -440,7 +439,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -483,7 +482,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -528,7 +527,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -575,7 +574,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -595,7 +594,7 @@ export default function taskPoolTaskGroup() {
      */
     it('taskPoolTaskGroupTask1100', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
-      await driver.delayMs(5000)
+      await sleep(5000)
       let task1: taskpool.Task = new taskpool.Task(printArgsLock1);
       let task2: taskpool.Task = new taskpool.Task(printArgsLock1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -616,7 +615,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -655,7 +654,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -694,7 +693,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -733,7 +732,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -772,7 +771,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -811,7 +810,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -850,7 +849,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -889,7 +888,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -928,7 +927,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -967,7 +966,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -1005,7 +1004,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -1043,7 +1042,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -1081,7 +1080,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -1121,7 +1120,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -1162,7 +1161,7 @@ export default function taskPoolTaskGroup() {
         })
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -1203,7 +1202,7 @@ export default function taskPoolTaskGroup() {
         })
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -1240,7 +1239,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -1277,7 +1276,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -1314,7 +1313,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
@@ -1351,7 +1350,7 @@ export default function taskPoolTaskGroup() {
         }
       }
       while (Count1 < 10 || Count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)

@@ -15,7 +15,6 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { taskpool } from '@kit.ArkTS';
-import { Driver } from '@kit.TestKit';
 import { Count1, Count2, Count3, Count4, Worker1, Worker2 } from '../testability/pages/DataFlg';
 import {
   printArgs1,
@@ -39,16 +38,14 @@ import { printArgs1003, printArgs1004 } from '../testability/pages/SecondTaskMet
 import { BaseClass } from '../testability/pages/SendableTest';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
-
-
-let driver: Driver = Driver.create();
+import { sleep } from '../testability/pages/Utils';
 
 
 export default function taskPoolTaskGroupActTest() {
   describe('TaskPoolTaskGroupActTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(async () => {
-      await driver.delayMs(1000)
+      await sleep(1000)
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })
@@ -57,7 +54,8 @@ export default function taskPoolTaskGroupActTest() {
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
     })
-    afterEach(() => {
+    afterEach(async () => {
+      await sleep(2000)
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
@@ -94,7 +92,7 @@ export default function taskPoolTaskGroupActTest() {
       }
 
       while (Count1.count < 10 || Count2.count < 10) {
-        await driver.delayMs(1000)
+        await sleep(1000)
       }
       expect(10).assertEqual(Count1.count)
       expect(20).assertEqual(Count2.count)
@@ -114,7 +112,7 @@ export default function taskPoolTaskGroupActTest() {
     it('taskPoolTaskGroupActTest1002', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
-      await driver.delayMs(1000)
+      await sleep(1000)
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       Count1.count = 0
       Count2.count = 0
@@ -133,7 +131,7 @@ export default function taskPoolTaskGroupActTest() {
       }
 
       while (Count1.count < 10 || Count2.count < 10) {
-        await driver.delayMs(1000)
+        await sleep(1000)
       }
       expect(10).assertEqual(Count1.count)
       expect(20).assertEqual(Count2.count)
@@ -169,7 +167,7 @@ export default function taskPoolTaskGroupActTest() {
       }
 
       while (Count1.count < 10 || Count2.count < 10) {
-        await driver.delayMs(1000)
+        await sleep(1000)
       }
       expect(10).assertEqual(Count1.count)
       expect(20).assertEqual(Count2.count)
@@ -205,7 +203,7 @@ export default function taskPoolTaskGroupActTest() {
       }
 
       while (Count1.count < 10 || Count2.count < 10) {
-        await driver.delayMs(1000)
+        await sleep(1000)
       }
       expect(10).assertEqual(Count1.count)
       expect(20).assertEqual(Count2.count)
@@ -241,7 +239,7 @@ export default function taskPoolTaskGroupActTest() {
     //   }
     //
     //   while (Count1.count < 10 || Count2.count < 10) {
-    //     await driver.delayMs(1000)
+    //     await sleep(1000)
     //   }
     //   expect(10).assertEqual(Count1.count)
     //   expect(20).assertEqual(Count2.count)
@@ -277,7 +275,7 @@ export default function taskPoolTaskGroupActTest() {
       }
 
       while (Count1.count < 10 || Count2.count < 10) {
-        await driver.delayMs(1000)
+        await sleep(1000)
       }
       expect(10).assertEqual(Count1.count)
       expect(20).assertEqual(Count2.count)
@@ -313,7 +311,7 @@ export default function taskPoolTaskGroupActTest() {
       }
 
       while (Count1.count < 10 || Count2.count < 10) {
-        await driver.delayMs(1000)
+        await sleep(1000)
       }
       expect(10).assertEqual(Count1.count)
       expect(20).assertEqual(Count2.count)
@@ -349,7 +347,7 @@ export default function taskPoolTaskGroupActTest() {
       }
 
       while (Count1.count < 10 || Count2.count < 10) {
-        await driver.delayMs(500)
+        await sleep(500)
       }
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)

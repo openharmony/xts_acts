@@ -47,14 +47,12 @@ import {
   multipleTask4,
   multipleTask5
 } from '../testability/pages/MultipleTask';
-import { Drivers } from '../testability/pages/Utils';
+import { sleep } from '../testability/pages/Utils';
+
 
 declare class ArkTools {
   static forceFullGC(): void;
 }
-
-let driver: Driver = Driver.create();
-Drivers.drivers = driver
 
 export default function taskPoolTaskMultipleTest() {
   describe('TaskPoolTaskMultipleTest', () => {
@@ -68,7 +66,8 @@ export default function taskPoolTaskMultipleTest() {
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
     })
-    afterEach(() => {
+    afterEach(async () => {
+      await sleep(2000)
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
@@ -91,7 +90,7 @@ export default function taskPoolTaskMultipleTest() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       const caseName = 'taskPoolTaskMultipleTest0100'
       console.info(`${caseName} test start`)
-      await driver.delayMs(5000)
+      await sleep(5000)
       let task1: taskpool.Task = new taskpool.Task(multipleTask1);
       let task2: taskpool.Task = new taskpool.Task(multipleTask1);
       let task3: taskpool.Task = new taskpool.Task(multipleTask1);
@@ -131,7 +130,7 @@ export default function taskPoolTaskMultipleTest() {
 
 
       while (count < 1) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(1).assertEqual(count)
@@ -190,7 +189,7 @@ export default function taskPoolTaskMultipleTest() {
       })
 
       while (count < 1) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(1).assertEqual(count)
@@ -209,7 +208,7 @@ export default function taskPoolTaskMultipleTest() {
     it('taskPoolTaskMultipleTest0300', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
-      await driver.delayMs(5000)
+      await sleep(5000)
       const caseName = 'taskPoolTaskMultipleTest0300'
       console.info(`${caseName} test start`)
       let task1: taskpool.Task = new taskpool.Task(multipleTask3);
@@ -251,7 +250,7 @@ export default function taskPoolTaskMultipleTest() {
 
 
       while (count < 1) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(1).assertEqual(count)
@@ -310,7 +309,7 @@ export default function taskPoolTaskMultipleTest() {
 
 
       while (count < 1) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(1).assertEqual(count)
@@ -370,7 +369,7 @@ export default function taskPoolTaskMultipleTest() {
 
 
       while (count < 1) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(1).assertEqual(count)

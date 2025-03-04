@@ -144,11 +144,10 @@ import {
   MyEnum,
   SendableTestClass
 } from '../testability/pages/TaskDataFlg';
-import { Driver } from '@kit.TestKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { AsyncLock } from '../testability/pages/SendableTest';
+import { sleep } from '../testability/pages/Utils';
 
-let driver: Driver = Driver.create();
 
 export default function TaskGroupAbilityTest2() {
   describe('TaskGroupAbilityTest2', () => {
@@ -158,12 +157,13 @@ export default function TaskGroupAbilityTest2() {
       // This API supports only one parameter: preset action function.
     })
     beforeEach(async () => {
-      await driver.delayMs(1000)
+      await sleep(1000)
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
     })
-    afterEach(() => {
+    afterEach(async () => {
+      await sleep(2000)
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
@@ -193,7 +193,7 @@ export default function TaskGroupAbilityTest2() {
       Count1.count = 0;
       Count2.count = 0;
       for (let i = 0; i < 10; i++) {
-        await driver.delayMs(100)
+        await sleep(100)
         taskpool.execute(taskGroup).then(() => {
           Count1.count++;
           Count2.count++;
@@ -201,7 +201,7 @@ export default function TaskGroupAbilityTest2() {
         })
       }
 
-      await driver.delayMs(1000)
+      await sleep(1000)
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
@@ -247,9 +247,9 @@ export default function TaskGroupAbilityTest2() {
         }
       }
       await Promise.all(promises);
-      await driver.delayMs(1000);
+      await sleep(1000);
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(0).assertEqual(Count3.count);
       expect(0).assertEqual(Count4.count);
@@ -280,7 +280,7 @@ export default function TaskGroupAbilityTest2() {
       Count1.count = 0;
       Count2.count = 0;
       for (let i = 0; i < 10; i++) {
-        await driver.delayMs(100)
+        await sleep(100)
         taskpool.execute(taskGroup).then(() => {
           Count1.count++;
           Count2.count++;
@@ -288,7 +288,7 @@ export default function TaskGroupAbilityTest2() {
         })
       }
 
-      await driver.delayMs(1000)
+      await sleep(1000)
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
@@ -334,9 +334,9 @@ export default function TaskGroupAbilityTest2() {
         }
       }
       await Promise.all(promises);
-      await driver.delayMs(1000);
+      await sleep(1000);
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(0).assertEqual(Count3.count);
       expect(0).assertEqual(Count4.count);
@@ -366,7 +366,7 @@ export default function TaskGroupAbilityTest2() {
       Count1.count = 0;
       Count2.count = 0;
       for (let i = 0; i < 10; i++) {
-        await driver.delayMs(100)
+        await sleep(100)
         taskpool.execute(taskGroup).then((result) => {
           console.info("+++++" + result)
           Count1.count++;
@@ -375,7 +375,7 @@ export default function TaskGroupAbilityTest2() {
         })
       }
 
-      await driver.delayMs(1000)
+      await sleep(1000)
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
@@ -421,9 +421,9 @@ export default function TaskGroupAbilityTest2() {
         }
       }
       await Promise.all(promises);
-      await driver.delayMs(1000);
+      await sleep(1000);
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(0).assertEqual(Count3.count);
       expect(0).assertEqual(Count4.count);
@@ -454,7 +454,7 @@ export default function TaskGroupAbilityTest2() {
       Count1.count = 0;
       Count2.count = 0;
       for (let i = 0; i < 10; i++) {
-        await driver.delayMs(100)
+        await sleep(100)
         taskpool.execute(taskGroup).then((result) => {
           console.info("+++++" + result)
           Count1.count++;
@@ -463,7 +463,7 @@ export default function TaskGroupAbilityTest2() {
         })
       }
 
-      await driver.delayMs(1000)
+      await sleep(1000)
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
@@ -509,9 +509,9 @@ export default function TaskGroupAbilityTest2() {
         }
       }
       await Promise.all(promises);
-      await driver.delayMs(1000);
+      await sleep(1000);
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(0).assertEqual(Count3.count);
       expect(0).assertEqual(Count4.count);
@@ -542,7 +542,7 @@ export default function TaskGroupAbilityTest2() {
       Count1.count = 0;
       Count2.count = 0;
       for (let i = 0; i < 10; i++) {
-        await driver.delayMs(100)
+        await sleep(100)
         taskpool.execute(taskGroup).then((result) => {
           console.info("+++++" + result)
           Count1.count++;
@@ -551,7 +551,7 @@ export default function TaskGroupAbilityTest2() {
         })
       }
 
-      await driver.delayMs(1000)
+      await sleep(1000)
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
@@ -597,9 +597,9 @@ export default function TaskGroupAbilityTest2() {
         }
       }
       await Promise.all(promises);
-      await driver.delayMs(1000);
+      await sleep(1000);
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(0).assertEqual(Count3.count);
       expect(0).assertEqual(Count4.count);
@@ -630,7 +630,7 @@ export default function TaskGroupAbilityTest2() {
       Count1.count = 0;
       Count2.count = 0;
       for (let i = 0; i < 10; i++) {
-        await driver.delayMs(100)
+        await sleep(100)
         taskpool.execute(taskGroup).then((result) => {
           console.info("+++++" + result)
           Count1.count++;
@@ -639,7 +639,7 @@ export default function TaskGroupAbilityTest2() {
         })
       }
 
-      await driver.delayMs(1000)
+      await sleep(1000)
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
@@ -685,9 +685,9 @@ export default function TaskGroupAbilityTest2() {
         }
       }
       await Promise.all(promises);
-      await driver.delayMs(1000);
+      await sleep(1000);
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(0).assertEqual(Count3.count);
       expect(0).assertEqual(Count4.count);
@@ -710,7 +710,7 @@ export default function TaskGroupAbilityTest2() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
-      await driver.delayMs(5000)
+      await sleep(5000)
       type Union = string | number | Array<number>;
       let union1: Union[] = ['hello1', 7, [1, 2, 3]];
       let union2: Union[] = ['hello2', 8, [4, 5, 6]];
@@ -720,7 +720,7 @@ export default function TaskGroupAbilityTest2() {
       Count1.count = 0;
       Count2.count = 0;
       for (let i = 0; i < 10; i++) {
-        await driver.delayMs(100)
+        await sleep(100)
         taskpool.execute(taskGroup).then((result) => {
           console.info("+++++" + result)
           Count1.count++;
@@ -730,7 +730,7 @@ export default function TaskGroupAbilityTest2() {
       }
 
       while (Count1.count < 10 || Count2.count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
@@ -778,9 +778,9 @@ export default function TaskGroupAbilityTest2() {
         }
       }
       await Promise.all(promises);
-      await driver.delayMs(1000);
+      await sleep(1000);
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(0).assertEqual(Count3.count);
       expect(0).assertEqual(Count4.count);
@@ -809,7 +809,7 @@ export default function TaskGroupAbilityTest2() {
       Count1.count = 0;
       Count2.count = 0;
       for (let i = 0; i < 10; i++) {
-        await driver.delayMs(100)
+        await sleep(100)
         taskpool.execute(taskGroup).then((result) => {
           console.info("+++++" + result)
           Count1.count++;
@@ -818,7 +818,7 @@ export default function TaskGroupAbilityTest2() {
         })
       }
 
-      await driver.delayMs(1000)
+      await sleep(1000)
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
@@ -864,9 +864,9 @@ export default function TaskGroupAbilityTest2() {
         }
       }
       await Promise.all(promises);
-      await driver.delayMs(1000);
+      await sleep(1000);
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(0).assertEqual(Count3.count);
       expect(0).assertEqual(Count4.count);
@@ -897,7 +897,7 @@ export default function TaskGroupAbilityTest2() {
       Count1.count = 0;
       Count2.count = 0;
       for (let i = 0; i < 10; i++) {
-        await driver.delayMs(100)
+        await sleep(100)
         taskpool.execute(taskGroup).then((result) => {
           console.info("+++++" + result)
           Count1.count++;
@@ -906,7 +906,7 @@ export default function TaskGroupAbilityTest2() {
         })
       }
 
-      await driver.delayMs(1000)
+      await sleep(1000)
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
@@ -953,9 +953,9 @@ export default function TaskGroupAbilityTest2() {
         }
       }
       await Promise.all(promises);
-      await driver.delayMs(1000);
+      await sleep(1000);
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(0).assertEqual(Count3.count);
       expect(0).assertEqual(Count4.count);
@@ -988,7 +988,7 @@ export default function TaskGroupAbilityTest2() {
       Count1.count = 0;
       Count2.count = 0;
       for (let i = 0; i < 10; i++) {
-        await driver.delayMs(100)
+        await sleep(100)
         taskpool.execute(taskGroup).then((result) => {
           console.info("+++++" + result)
           Count1.count++;
@@ -997,7 +997,7 @@ export default function TaskGroupAbilityTest2() {
         })
       }
 
-      await driver.delayMs(1000)
+      await sleep(1000)
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
@@ -1046,9 +1046,9 @@ export default function TaskGroupAbilityTest2() {
         }
       }
       await Promise.all(promises);
-      await driver.delayMs(1000);
+      await sleep(1000);
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(0).assertEqual(Count3.count);
       expect(0).assertEqual(Count4.count);
@@ -1087,7 +1087,7 @@ export default function TaskGroupAbilityTest2() {
         Count1.count++
         Count2.count++
       }
-      await driver.delayMs(1000)
+      await sleep(1000)
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
@@ -1127,7 +1127,7 @@ export default function TaskGroupAbilityTest2() {
           console.error(`第 ${i + 1} 次执行任务组时出错:`, error);
         }
       }
-      await driver.delayMs(1000)
+      await sleep(1000)
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
@@ -1156,7 +1156,7 @@ export default function TaskGroupAbilityTest2() {
       Count1.count = 0;
       Count2.count = 0;
       for (let i = 0; i < 10; i++) {
-        await driver.delayMs(100)
+        await sleep(100)
         taskpool.execute(taskGroup).then((result) => {
           console.info("+++++" + result)
           Count1.count++;
@@ -1165,7 +1165,7 @@ export default function TaskGroupAbilityTest2() {
         })
       }
 
-      await driver.delayMs(1000)
+      await sleep(1000)
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
@@ -1211,9 +1211,9 @@ export default function TaskGroupAbilityTest2() {
         }
       }
       await Promise.all(promises);
-      await driver.delayMs(1000);
+      await sleep(1000);
       while (count < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
       expect(0).assertEqual(Count3.count);
       expect(0).assertEqual(Count4.count);
@@ -1241,7 +1241,7 @@ export default function TaskGroupAbilityTest2() {
       Count1.count = 0;
       Count2.count = 0;
       for (let i = 0; i < 10; i++) {
-        await driver.delayMs(100)
+        await sleep(100)
         try {
           const results = await taskpool.execute(taskGroup) as object[];
           results.forEach((result) => {
@@ -1255,7 +1255,7 @@ export default function TaskGroupAbilityTest2() {
         }
       }
 
-      await driver.delayMs(1000)
+      await sleep(1000)
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
@@ -1281,7 +1281,7 @@ export default function TaskGroupAbilityTest2() {
       Count1.count = 0;
       Count2.count = 0;
       for (let i = 0; i < 10; i++) {
-        await driver.delayMs(100)
+        await sleep(100)
         taskpool.execute(taskGroup).then((result) => {
           console.info("+++++" + result)
           Count1.count++;
@@ -1289,7 +1289,7 @@ export default function TaskGroupAbilityTest2() {
           console.info('======', Count1.count, Count2.count)
         })
       }
-      await driver.delayMs(1000)
+      await sleep(1000)
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;

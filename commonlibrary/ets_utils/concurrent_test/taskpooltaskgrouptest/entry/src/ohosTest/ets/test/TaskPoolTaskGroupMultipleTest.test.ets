@@ -51,15 +51,12 @@ import {
   multipleUITask3,
   multipleUITask4
 } from '../testability/pages/MultipleTask';
-import { Drivers } from '../testability/pages/Utils';
+import { Drivers, sleep } from '../testability/pages/Utils';
 import { MeasureText } from '@kit.ArkUI';
 
 declare class ArkTools {
   static forceFullGC(): void;
 }
-
-let driver: Driver = Driver.create();
-Drivers.drivers = driver
 
 export default function taskPoolTaskGroupMultipleTest() {
   describe('TaskPoolTaskGroupMultipleTest', () => {
@@ -73,7 +70,8 @@ export default function taskPoolTaskGroupMultipleTest() {
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
     })
-    afterEach(() => {
+    afterEach(async () => {
+      await sleep(2000)
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
@@ -107,7 +105,7 @@ export default function taskPoolTaskGroupMultipleTest() {
       let count: number = 0
 
       for (let j = 0; j < 10; j++) {
-        await driver.delayMs(10)
+        await sleep(10)
         for (let i = 0; i < 100; i++) {
           taskpool.execute(taskGroup).then(() => {
             console.info('=======', count)
@@ -123,7 +121,7 @@ export default function taskPoolTaskGroupMultipleTest() {
       }
 
       while (count < 1000) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(1000).assertEqual(count)
@@ -168,7 +166,7 @@ export default function taskPoolTaskGroupMultipleTest() {
       }
 
       while (count < 4) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(4).assertEqual(count)

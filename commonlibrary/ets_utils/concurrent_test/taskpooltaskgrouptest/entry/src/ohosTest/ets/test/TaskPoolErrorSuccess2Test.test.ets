@@ -37,12 +37,9 @@ import {
   testFunc,
   testTransfer
 } from '../testability/pages/TaskMethodTest';
-import { Driver } from '@kit.TestKit';
 
-import { WorkThread } from '../testability/pages/Utils';
+import { sleep, WorkThread } from '../testability/pages/Utils';
 import { BusinessError } from '@kit.BasicServicesKit';
-
-let driver: Driver = Driver.create();
 
 export default function taskPoolErrorSuccess2Test() {
   describe('TaskPoolErrorSuccess2Test', () => {
@@ -56,7 +53,8 @@ export default function taskPoolErrorSuccess2Test() {
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
     })
-    afterEach(() => {
+    afterEach(async () => {
+      await sleep(2000)
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
@@ -100,7 +98,7 @@ export default function taskPoolErrorSuccess2Test() {
       }
 
       while (count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(10).assertEqual(count)
@@ -147,7 +145,7 @@ export default function taskPoolErrorSuccess2Test() {
       }
 
       while (count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(10).assertEqual(count)
@@ -187,7 +185,7 @@ export default function taskPoolErrorSuccess2Test() {
       }
 
       while (count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(0).assertEqual(count)
@@ -227,7 +225,7 @@ export default function taskPoolErrorSuccess2Test() {
       }
 
       while (count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(0).assertEqual(count)
@@ -267,7 +265,7 @@ export default function taskPoolErrorSuccess2Test() {
       }
 
       while (count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(0).assertEqual(count)
@@ -307,7 +305,7 @@ export default function taskPoolErrorSuccess2Test() {
       }
 
       while (count2 < 10) {
-        await driver.delayMs(100)
+        await sleep(100)
       }
 
       expect(0).assertEqual(count)
