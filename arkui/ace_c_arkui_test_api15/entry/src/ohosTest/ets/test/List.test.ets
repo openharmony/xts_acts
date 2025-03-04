@@ -31,6 +31,8 @@ import listScrollToIndexTest from "./listScrollTo/ListScrollToTest.test"
 import listItemGroupNodeAdapterTest from "./listItemGroup/ListItemGroupTest.test"
 import gesturecancelTest from "./gesturecancelTest/gesturecancelTest.test"
 import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
+import gestureRecognizerTest from './gestureRecognizer/GestureRecognizerTest.test'
+import EventInfoTest from "./eventInfo/EventInfoTest.test"
 
 
 export default function testsuite() {
@@ -53,4 +55,6 @@ export default function testsuite() {
    listItemGroupNodeAdapterTest();
    gesturecancelTest();
    scrollBackToTopTest();
+   gestureRecognizerTest();
+   EventInfoTest();
 }
