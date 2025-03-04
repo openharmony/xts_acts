@@ -13,9 +13,7 @@
  * limitations under the License.
  */
 
-export const KeyEventPatchTest: (a: string) => void;
 
-export const GetKeyEventData: () => object;
 
 export const checkboxGroupGroupTest: (a:string) => void;
 

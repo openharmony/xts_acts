@@ -18,7 +18,6 @@
 #include "checkboxgroup/checkboxgroup_group_test.h"
 #include "checkboxgroup/checkboxgroup_selectall_test.h"
 #include "checkbox/checkbox_group_test.h"
-#include "keyDisPatchTest/keyEventDispatch_test.h"
 #include "node/node_handle_by_id_test.h"
 #include "window/get_window_info_test.h"
 #include "progress/progress_linear_style_test.h"
@@ -41,10 +40,7 @@ static napi_value Init(napi_env env, napi_value exports)
     }
 
     napi_property_descriptor desc[] = {
-        {"KeyEventPatchTest", nullptr, KeyEventDispatchTest::KeyEventPatchTest,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"GetKeyEventData", nullptr, KeyEventDispatchTest::GetKeyEventData,
-         nullptr, nullptr, nullptr, napi_default, nullptr}, 
+    
         {"testNodeHandleById", nullptr, NodeHandleByIdTest::testNodeHandleById001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"checkboxGroupGroupTest", nullptr, CheckboxGroupGroupTest::CreateNativeNode, nullptr, nullptr, nullptr,

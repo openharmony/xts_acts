@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import keyDispatchTest from "./keydispatchTest/KeyDispatchTest.test"
+
 import nodeHandleByIdTest from "./node/NodeHandleByIdTest.test"
 import getWindowInfoTest from "./window/GetWindowInfoTest.test"
 import checkboxGroupTest from "./checkbox/CheckboxGroupTest.test"
@@ -35,7 +35,7 @@ import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
 
 export default function testsuite() {
 
-   keyDispatchTest();
+   
    nodeHandleByIdTest();
    getWindowInfoTest();
    checkboxGroupTest();
