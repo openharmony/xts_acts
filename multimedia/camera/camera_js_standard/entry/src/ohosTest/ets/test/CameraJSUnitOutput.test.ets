@@ -139,12 +139,11 @@ let createInput = async (index: number) => {
 let createOutput = (index: number, mode: number) => {
   let cameraOutputCap = cameraManager.getSupportedOutputCapability(cameraDevicesArray[index], mode);
   previewOutput = cameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[0], surfaceIds);
+  photoOutput = cameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[0]);
+  console.log(TAG + `Receiver is ok + ${JSON.stringify(photoOutput)}`)
   if (mode == cameraObj.SceneMode.NORMAL_VIDEO) {
     videoProfilesArray = cameraOutputCap.videoProfiles;
     console.log(`videoProfilesArray:  + ${JSON.stringify(videoProfilesArray)}`)
-  } else {
-    photoOutput = cameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[0]);
-    console.log(TAG + `Receiver is ok + ${JSON.stringify(photoOutput)}`)
   }
 }
 
