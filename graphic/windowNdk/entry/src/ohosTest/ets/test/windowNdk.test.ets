@@ -832,6 +832,7 @@ export default function windowNdk() {
       let caseName = "test_getAvoidAreaByType_statusBar_hide";
       let result1 = windowNdkTest.setWindowStatusBarEnabled(windowId,false,true);
       console.info(`${caseName}: result1: ${result1}`);
+      await sleep(500);
       if(deviceType == '2in1'){
         expect(result1).assertEqual(801);
         done();
@@ -882,11 +883,13 @@ export default function windowNdk() {
     it('test_getAvoidAreaByType_setPreferredOrientation', 0, async (done:Function) => {
       let caseName = "test_getAvoidAreaByType_setPreferredOrientation";
       await WindowClass.setPreferredOrientation(window.Orientation.LANDSCAPE);
+      await sleep(2000);
       let AvoidArea_system = windowNdkTest.getAvoidAreaByType(windowId,0);
       console.info(`${caseName}: AvoidArea_system result: ${JSON.stringify(AvoidArea_system)}`);
       expect(AvoidArea_system.topRect.width).assertLargerOrEqual(0);
       expect(AvoidArea_system.topRect.height).assertLargerOrEqual(0);
       await WindowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+      await sleep(2000);
       done();
     })
 
@@ -1524,7 +1527,6 @@ export default function windowNdk() {
           done();
         }
     })
-    
 
   })
 }
