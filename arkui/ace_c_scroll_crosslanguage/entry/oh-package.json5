@@ -15,7 +15,7 @@
 {
   "license": "",
   "devDependencies": {
-    "@types/libentry.so": "file:./src/main/cpp/types/libentry",
+    "@types/libnativeNode.so": "file:./src/main/cpp/types/libnativeNode"
   },
   "author": "",
   "name": "entry",

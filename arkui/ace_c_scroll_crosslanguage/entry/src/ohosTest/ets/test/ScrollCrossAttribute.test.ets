@@ -347,32 +347,8 @@ export default function ScrollCrossAttributeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('ScrollCrossAttributeTest013', 0, async (done: Function) => {
-      await Utils.pushPage(`${PAGE_TAG}_TS_False`, done);
-      console.info("[ScrollCrossAttributeTest013] start succ");
-      await Utils.sleep(500);
-      let driver = await Driver.create();
-      await Utils.sleep(500);
-      let clickCAPINode_cross = await driver.findComponent(ON.id("capiNode"))
-      await Utils.sleep(500);
-      await clickCAPINode_cross.click()
-      await Utils.sleep(500);
-      let scrollJson = getInspectorByKey('typeNode');
-      let obj: ESObject = JSON.parse(scrollJson);
-      console.info("[ScrollCrossAttributeTest013] component obj is: " + JSON.stringify(obj));
-      await Utils.sleep(500);
-      expect(obj.$attrs.edgeEffect).assertEqual(EdgeEffect.None)
-    });
-    /*
-     * @tc.number     : SUB_ACE_UI_COMPONENT_SCROLL_TS&C_0110
-     * @tc.name       : ScrollCrossAttributeTest001
-     * @tc.desc       : TS侧关闭跨语言，C侧设置属性给TS侧scroll测试
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
     it('ScrollCrossAttributeTest014', 0, async (done: Function) => {
-      await Utils.pushPage(`${PAGE_TAG}_TS_True`, done);
+      await Utils.pushPage(`${PAGE_TAG}_TS_False`, done);
       console.info("[ScrollCrossAttributeTest014] start succ");
       await Utils.sleep(500);
       let driver = await Driver.create();
@@ -384,6 +360,30 @@ export default function ScrollCrossAttributeTest() {
       let scrollJson = getInspectorByKey('typeNode');
       let obj: ESObject = JSON.parse(scrollJson);
       console.info("[ScrollCrossAttributeTest014] component obj is: " + JSON.stringify(obj));
+      await Utils.sleep(500);
+      expect(obj.$attrs.edgeEffect).assertEqual(EdgeEffect.None)
+    });
+    /*
+     * @tc.number     : SUB_ACE_UI_COMPONENT_SCROLL_TS&C_0110
+     * @tc.name       : ScrollCrossAttributeTest001
+     * @tc.desc       : TS侧关闭跨语言，C侧设置属性给TS侧scroll测试
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('ScrollCrossAttributeTest015', 0, async (done: Function) => {
+      await Utils.pushPage(`${PAGE_TAG}_TS_True`, done);
+      console.info("[ScrollCrossAttributeTest015] start succ");
+      await Utils.sleep(500);
+      let driver = await Driver.create();
+      await Utils.sleep(500);
+      let clickCAPINode_cross = await driver.findComponent(ON.id("capiNode"))
+      await Utils.sleep(500);
+      await clickCAPINode_cross.click()
+      await Utils.sleep(500);
+      let scrollJson = getInspectorByKey('typeNode');
+      let obj: ESObject = JSON.parse(scrollJson);
+      console.info("[ScrollCrossAttributeTest015] component obj is: " + JSON.stringify(obj));
       await Utils.sleep(500);
       expect(obj.$attrs.edgeEffect).assertEqual(EdgeEffect.Spring)
     });

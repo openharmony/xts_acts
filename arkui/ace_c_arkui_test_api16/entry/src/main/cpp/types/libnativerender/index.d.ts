@@ -38,3 +38,5 @@ export const TestDragCancelDataLoading003: (a: string) => void;
 
 export const GetResult: () => number[];
 export const calendarPickerTest: (a: string) => void;
+
+export const testExpectedFrameRateRangeCallback: (a: string) => void;
