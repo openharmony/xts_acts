@@ -23,6 +23,14 @@ add_library(nativerender SHARED
     window/get_window_info_test.cpp
     lazyForEach/lazyforeach_expand_mode_test.cpp
     gesturetouchcancel/gesture_cancel.cpp
+    scroll/scroll_backtotop_test.cpp
+    component/component.cpp
+    component/grid_component.cpp
+    component/list_component.cpp
+    component/scroll_component.cpp
+    component/waterflow_component.cpp
+    component/button_component.cpp
+    component/text_component.cpp
 )
 
 add_library(nativefunc SHARED

@@ -21,6 +21,10 @@ import tabsModeTest from './TabsTest/tabsModeTest.test'
 import swiperPageMode from './SwiperTest/swiperPageMode.test'; 
 import tabsPageMode from './TabsTest/tabsPageMode.test'; 
 import getAttributeScroll from './ScrollTest/getAttributeScroll.test';
+import GridBackToTopTest from './GridTest/GridBackToTop.test'
+import ListBackToTopTest from './ListTest/ListBackToTop.test'
+import ScrollBackToTopTest from './ScrollTest/ScrollBackToTop.test'
+import WaterFlowBackToTopTest from './WaterFlowTest/WaterFlowBackToTop.test'
 
 export default function testsuite() {
   interceptSwiperTest()
@@ -31,4 +35,8 @@ export default function testsuite() {
   swiperPageMode()
   tabsPageMode()
   getAttributeScroll()
+  GridBackToTopTest();
+  ListBackToTopTest();
+  ScrollBackToTopTest();
+  WaterFlowBackToTopTest();
 }
