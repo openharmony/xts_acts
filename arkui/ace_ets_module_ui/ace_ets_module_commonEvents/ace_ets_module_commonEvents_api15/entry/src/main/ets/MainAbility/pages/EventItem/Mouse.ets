@@ -22,6 +22,7 @@ struct MouseEventExample {
       Text('onMouse')
         .width('100%')
         .height('100%')
+        .id('mouse')
         .backgroundColor(Color.Pink)
         .onMouse((event: MouseEvent) => {
           if(event.button == MouseButton.Left && event.action == MouseAction.Press){
