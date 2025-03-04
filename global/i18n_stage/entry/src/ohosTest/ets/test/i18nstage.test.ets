@@ -973,7 +973,7 @@ export default function i18nStageTest() {
       };
       let phoneNumberFormat: I18n.PhoneNumberFormat = new I18n.PhoneNumberFormat("CN", option);
       let number = "00886960186456";
-      let arr: Array<String> = ['0', '00', '00 8', '00 88', '00 886', '00 886 9', '00 886 96', '00 886 960',
+      let arr: Array<String> = ['0', '00', '00 8', '00 88', '00 886 ', '00 886 9', '00 886 96', '00 886 960',
         '00 886 960 1', '00 886 960 18', '00 886 960 186', '00 886 960 186 4', '00 886 960 186 45',
         '00 886 960 186 456']
       let formatted = "";
