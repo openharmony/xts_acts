@@ -103,6 +103,8 @@ struct IndexPage {
     { title: 'Swipehand', uri: 'pages/ArkUI/Swipehand' },
     { title: 'Taphand', uri: 'pages/ArkUI/Taphand' },
 
+    { title: 'CapiHandDetect', uri: 'pages/ArkUI/GetBarRect' },
+    { title: 'CapiHandDetect', uri: 'pages/ArkUI/CapiHandDetect' },
     { title: 'GameCtrollerCallBackData', uri: 'pages/ArkUI/GameCtrollerCallBackData' },
     { title: 'GameCtronllerCTest', uri: 'pages/ArkUI/GameCtronllerCTest' },
     { title: 'HoverMove', uri: 'pages/ArkUI/HoverMove' }

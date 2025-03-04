@@ -52,6 +52,9 @@
     "pages/ArkUI/Refresh",
     "pages/ArkUI/AccessBilityHover",
     "pages/ArkUI/NavigationEnableHoverMode",
+
+    "pages/ArkUI/CapiHandDetect",
+    "pages/ArkUI/GetBarRect",
     "pages/ArkUI/GameCtrollerCallBackData",
     "pages/ArkUI/GameCtronllerCTest",
     "pages/Camera/Camera_index",

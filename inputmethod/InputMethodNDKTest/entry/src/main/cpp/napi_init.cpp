@@ -140,9 +140,14 @@ void TextEditorProxy_Create()
 }
 
 void AttachOptions_Create(bool showKeyboard)
-{ 
+{
     g_options = OH_AttachOptions_Create(showKeyboard);
-    }
+}
+void AttachOptions_CreateWithRequestKeyboardReason(bool showKeyboard,
+                                                   InputMethod_RequestKeyboardReason requestKeyboardReason)
+{
+    g_options = OH_AttachOptions_CreateWithRequestKeyboardReason(showKeyboard, requestKeyboardReason);
+}
 
 static napi_value SUB_IMF_NDK_AttachOptions_Create_0100(napi_env env, napi_callback_info info)
 {
@@ -163,12 +168,154 @@ static napi_value SUB_IMF_NDK_AttachOptions_Create_0100(napi_env env, napi_callb
     return result;
 }
 
+static napi_value SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_NONE(napi_env env, napi_callback_info info)
+{
+    g_options = OH_AttachOptions_CreateWithRequestKeyboardReason(
+        true,
+        InputMethod_RequestKeyboardReason::IME_REQUEST_REASON_NONE);
+    bool showKeyboard = false;
+    int requestKeyboardReason = 0;
+    InputMethod_ErrorCode returnValue = OH_AttachOptions_IsShowKeyboard(g_options, &showKeyboard);
+    InputMethod_ErrorCode returnValueReason =
+        OH_AttachOptions_GetRequestKeyboardReason(g_options, &requestKeyboardReason);
+    OH_AttachOptions_Destroy(g_options);
+    if (returnValueReason == InputMethod_ErrorCode::IME_ERR_OK) {
+        napi_value result = nullptr;
+        NAPI_CALL(env, napi_create_string_utf8(env, "OK", NAPI_AUTO_LENGTH, &result));
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_AttachOptions_GetRequestKeyboardReason successful.");
+        return result;
+    }
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValueReason, &result));
+    OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_AttachOptions_GetRequestKeyboardReason fail.");
+    return result;
+}
+
+static napi_value SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_MOUSE(napi_env env, napi_callback_info info)
+{
+    g_options = OH_AttachOptions_CreateWithRequestKeyboardReason(
+        true,
+        InputMethod_RequestKeyboardReason::IME_REQUEST_REASON_MOUSE);
+    bool showKeyboard = false;
+    int requestKeyboardReason = 0;
+    InputMethod_ErrorCode returnValue = OH_AttachOptions_IsShowKeyboard(g_options, &showKeyboard);
+    InputMethod_ErrorCode returnValueReason =
+        OH_AttachOptions_GetRequestKeyboardReason(g_options, &requestKeyboardReason);
+    OH_AttachOptions_Destroy(g_options);
+    if (returnValueReason == InputMethod_ErrorCode::IME_ERR_OK) {
+        napi_value result = nullptr;
+        NAPI_CALL(env, napi_create_string_utf8(env, "OK", NAPI_AUTO_LENGTH, &result));
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_AttachOptions_GetRequestKeyboardReason successful.");
+        return result;
+    }
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValueReason, &result));
+    OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_AttachOptions_GetRequestKeyboardReason fail.");
+    return result;
+}
+
+static napi_value SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_TOUCH(napi_env env, napi_callback_info info)
+{
+    g_options = OH_AttachOptions_CreateWithRequestKeyboardReason(
+        true,
+        InputMethod_RequestKeyboardReason::IME_REQUEST_REASON_TOUCH);
+    bool showKeyboard = false;
+    int requestKeyboardReason = 0;
+    InputMethod_ErrorCode returnValue = OH_AttachOptions_IsShowKeyboard(g_options, &showKeyboard);
+    InputMethod_ErrorCode returnValueReason =
+        OH_AttachOptions_GetRequestKeyboardReason(g_options, &requestKeyboardReason);
+    OH_AttachOptions_Destroy(g_options);
+    if (returnValueReason == InputMethod_ErrorCode::IME_ERR_OK) {
+        napi_value result = nullptr;
+        NAPI_CALL(env, napi_create_string_utf8(env, "OK", NAPI_AUTO_LENGTH, &result));
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_AttachOptions_GetRequestKeyboardReason successful.");
+        return result;
+    }
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValueReason, &result));
+    OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_AttachOptions_GetRequestKeyboardReason fail.");
+    return result;
+}
+
+static napi_value SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_OTHER(napi_env env, napi_callback_info info)
+{
+    g_options = OH_AttachOptions_CreateWithRequestKeyboardReason(
+        true,
+        InputMethod_RequestKeyboardReason::IME_REQUEST_REASON_OTHER);
+    bool showKeyboard = false;
+    int requestKeyboardReason = 0;
+    InputMethod_ErrorCode returnValue = OH_AttachOptions_IsShowKeyboard(g_options, &showKeyboard);
+    InputMethod_ErrorCode returnValueReason =
+        OH_AttachOptions_GetRequestKeyboardReason(g_options, &requestKeyboardReason);
+    OH_AttachOptions_Destroy(g_options);
+    if (returnValueReason == InputMethod_ErrorCode::IME_ERR_OK) {
+        napi_value result = nullptr;
+        NAPI_CALL(env, napi_create_string_utf8(env, "OK", NAPI_AUTO_LENGTH, &result));
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_AttachOptions_GetRequestKeyboardReason successful.");
+        return result;
+    }
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValueReason, &result));
+    OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_AttachOptions_GetRequestKeyboardReason fail.");
+    return result;
+}
+
 static napi_value SUB_IMF_NDK_InputMethodController_Attach_0100(napi_env env, napi_callback_info info)
 {
     TextEditorProxy_Create();
     AttachOptions_Create(false);
     InputMethod_ErrorCode returnValue = OH_InputMethodController_Attach(g_txtEditProxy, g_options, &g_inputMethodProxy);
+    if (returnValue == InputMethod_ErrorCode::IME_ERR_OK) {
+        napi_value result = nullptr;
+        NAPI_CALL(env, napi_create_string_utf8(env, "OK", NAPI_AUTO_LENGTH, &result));
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_InputMethodController_Attach successful.");
+        return result;
+    }
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_InputMethodController_Attach fail.");
+    return result;
+}
 
+static napi_value SUB_IMF_NDK_InputMethodController_Attach_MOUSE(napi_env env, napi_callback_info info)
+{
+    TextEditorProxy_Create();
+    OH_AttachOptions_CreateWithRequestKeyboardReason(true, InputMethod_RequestKeyboardReason::IME_REQUEST_REASON_MOUSE);
+    InputMethod_ErrorCode returnValue = OH_InputMethodController_Attach(g_txtEditProxy, g_options, &g_inputMethodProxy);
+    if (returnValue == InputMethod_ErrorCode::IME_ERR_OK) {
+        napi_value result = nullptr;
+        NAPI_CALL(env, napi_create_string_utf8(env, "OK", NAPI_AUTO_LENGTH, &result));
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_InputMethodController_Attach successful.");
+        return result;
+    }
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_InputMethodController_Attach fail.");
+    return result;
+}
+
+static napi_value SUB_IMF_NDK_InputMethodController_Attach_TOUCH(napi_env env, napi_callback_info info)
+{
+    TextEditorProxy_Create();
+    OH_AttachOptions_CreateWithRequestKeyboardReason(true, InputMethod_RequestKeyboardReason::IME_REQUEST_REASON_TOUCH);
+    InputMethod_ErrorCode returnValue = OH_InputMethodController_Attach(g_txtEditProxy, g_options, &g_inputMethodProxy);
+    if (returnValue == InputMethod_ErrorCode::IME_ERR_OK) {
+        napi_value result = nullptr;
+        NAPI_CALL(env, napi_create_string_utf8(env, "OK", NAPI_AUTO_LENGTH, &result));
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_InputMethodController_Attach successful.");
+        return result;
+    }
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_InputMethodController_Attach fail.");
+    return result;
+}
+
+static napi_value SUB_IMF_NDK_InputMethodController_Attach_NONE(napi_env env, napi_callback_info info)
+{
+    TextEditorProxy_Create();
+    OH_AttachOptions_CreateWithRequestKeyboardReason(true, InputMethod_RequestKeyboardReason::IME_REQUEST_REASON_OTHER);
+    InputMethod_ErrorCode returnValue = OH_InputMethodController_Attach(g_txtEditProxy, g_options, &g_inputMethodProxy);
     if (returnValue == InputMethod_ErrorCode::IME_ERR_OK) {
         napi_value result = nullptr;
         NAPI_CALL(env, napi_create_string_utf8(env, "OK", NAPI_AUTO_LENGTH, &result));
@@ -216,6 +363,70 @@ static napi_value SUB_IMF_NDK_InputMethodProxy_ShowKeyboard_0100(napi_env env, n
     napi_value result = nullptr;
     NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
     OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_InputMethodProxy_ShowKeyboard fail.");
+    return result;
+}
+
+static napi_value SUB_IMF_NDK_InputMethodProxy_ShowTextInput_NONE(napi_env env, napi_callback_info info)
+{
+    OH_AttachOptions_CreateWithRequestKeyboardReason(true, InputMethod_RequestKeyboardReason::IME_REQUEST_REASON_NONE);
+    InputMethod_ErrorCode returnValue = OH_InputMethodProxy_ShowTextInput(g_inputMethodProxy, g_options);
+    if (returnValue == InputMethod_ErrorCode::IME_ERR_OK) {
+        napi_value result = nullptr;
+        NAPI_CALL(env, napi_create_string_utf8(env, "OK", NAPI_AUTO_LENGTH, &result));
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_InputMethodProxy_ShowTextInput successful.");
+        return result;
+    }
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_InputMethodProxy_ShowTextInput fail.");
+    return result;
+}
+
+static napi_value SUB_IMF_NDK_InputMethodProxy_ShowTextInput_MOUSE(napi_env env, napi_callback_info info)
+{
+    OH_AttachOptions_CreateWithRequestKeyboardReason(true, InputMethod_RequestKeyboardReason::IME_REQUEST_REASON_MOUSE);
+    InputMethod_ErrorCode returnValue = OH_InputMethodProxy_ShowTextInput(g_inputMethodProxy, g_options);
+    if (returnValue == InputMethod_ErrorCode::IME_ERR_OK) {
+        napi_value result = nullptr;
+        NAPI_CALL(env, napi_create_string_utf8(env, "OK", NAPI_AUTO_LENGTH, &result));
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_InputMethodProxy_ShowTextInput successful.");
+        return result;
+    }
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_InputMethodProxy_ShowTextInput fail.");
+    return result;
+}
+
+static napi_value SUB_IMF_NDK_InputMethodProxy_ShowTextInput_TOUCH(napi_env env, napi_callback_info info)
+{
+    OH_AttachOptions_CreateWithRequestKeyboardReason(true, InputMethod_RequestKeyboardReason::IME_REQUEST_REASON_TOUCH);
+    InputMethod_ErrorCode returnValue = OH_InputMethodProxy_ShowTextInput(g_inputMethodProxy, g_options);
+    if (returnValue == InputMethod_ErrorCode::IME_ERR_OK) {
+        napi_value result = nullptr;
+        NAPI_CALL(env, napi_create_string_utf8(env, "OK", NAPI_AUTO_LENGTH, &result));
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_InputMethodProxy_ShowTextInput successful.");
+        return result;
+    }
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_InputMethodProxy_ShowTextInput fail.");
+    return result;
+}
+
+static napi_value SUB_IMF_NDK_InputMethodProxy_ShowTextInput_OTHER(napi_env env, napi_callback_info info)
+{
+    OH_AttachOptions_CreateWithRequestKeyboardReason(true, InputMethod_RequestKeyboardReason::IME_REQUEST_REASON_OTHER);
+    InputMethod_ErrorCode returnValue = OH_InputMethodProxy_ShowTextInput(g_inputMethodProxy, g_options);
+    if (returnValue == InputMethod_ErrorCode::IME_ERR_OK) {
+        napi_value result = nullptr;
+        NAPI_CALL(env, napi_create_string_utf8(env, "OK", NAPI_AUTO_LENGTH, &result));
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_InputMethodProxy_ShowTextInput successful.");
+        return result;
+    }
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_InputMethodProxy_ShowTextInput fail.");
     return result;
 }
 
@@ -844,7 +1055,33 @@ static napi_value Init(napi_env env, napi_value exports)
         {"SUB_IMF_NDK_TextEditorProxy_Get_0100", nullptr, SUB_IMF_NDK_TextEditorProxy_Get_0100, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"SUB_IMF_NDK_CursorInfo_Create_0100", nullptr, SUB_IMF_NDK_CursorInfo_Create_0100, nullptr, nullptr, nullptr,
-         napi_default, nullptr}};
+         napi_default, nullptr},
+        {"SUB_IMF_NDK_InputMethodController_Attach_MOUSE", nullptr,
+         SUB_IMF_NDK_InputMethodController_Attach_MOUSE, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_IMF_NDK_InputMethodController_Attach_TOUCH", nullptr,
+         SUB_IMF_NDK_InputMethodController_Attach_TOUCH, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_IMF_NDK_InputMethodController_Attach_NONE", nullptr,
+         SUB_IMF_NDK_InputMethodController_Attach_NONE, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_NONE", nullptr,
+         SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_NONE, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_MOUSE", nullptr,
+         SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_MOUSE, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_TOUCH", nullptr,
+         SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_TOUCH, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_OTHER", nullptr,
+         SUB_IMF_NDK_AttachOptions_CreateWithRequestKeyboardReason_OTHER, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"SUB_IMF_NDK_InputMethodProxy_ShowTextInput_NONE", nullptr,
+         SUB_IMF_NDK_InputMethodProxy_ShowTextInput_NONE, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_IMF_NDK_InputMethodProxy_ShowTextInput_MOUSE", nullptr,
+         SUB_IMF_NDK_InputMethodProxy_ShowTextInput_MOUSE, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_IMF_NDK_InputMethodProxy_ShowTextInput_TOUCH", nullptr,
+         SUB_IMF_NDK_InputMethodProxy_ShowTextInput_TOUCH, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_IMF_NDK_InputMethodProxy_ShowTextInput_OTHER", nullptr,
+         SUB_IMF_NDK_InputMethodProxy_ShowTextInput_OTHER, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }

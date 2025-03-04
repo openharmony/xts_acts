@@ -69,6 +69,9 @@ namespace ArkUICapiTest {
 #define PARAM_NEGATIVE_100 (-100)
 #define PARAM_64 64
 #define DEFAULT_MARGIN 10
+#define SIZE_2 2
+#define SIZE_3 3
+#define SIZE_5 5
 #define SIZE_10 10
 #define SIZE_20 20
 #define SIZE_30 30
@@ -76,9 +79,12 @@ namespace ArkUICapiTest {
 #define SIZE_50 50
 #define SIZE_56 56
 #define SIZE_60 60
+#define SIZE_70 70
 #define SIZE_80 80
 #define SIZE_90 90
 #define SIZE_100 100
+#define SIZE_110 110
+#define SIZE_120 120
 #define SIZE_180 180
 #define SIZE_150 150
 #define SIZE_200 200
@@ -97,6 +103,7 @@ namespace ArkUICapiTest {
 #define COLOR_GREEN 0xFF00FF00
 #define COLOR_BLUE 0xFF0000FF
 #define COLOR_YELLOW 0xFFFFFF00
+#define COLOR_PINK 0xFFFFC0CB
 #define COLOR_PURPLE 0xFFFF11FF
 #define COLOR_GRAY 0xFFDDDDDD
 #define COLOR_CYAN 0xFF00FFFF
@@ -115,6 +122,21 @@ namespace ArkUICapiTest {
 #define ON_MEASURE_EVENT_ID 6011
 #define ON_LAYOUT_EVENT_ID 6012
 #define ON_DRAW_EVENT_ID 6013
+#define ON_CUSTOM_EVENT_1_ID 9001
+#define ON_CUSTOM_EVENT_2_ID 9002
+#define ON_CUSTOM_EVENT_3_ID 9003
+#define ON_CUSTOM_EVENT_4_ID 9004
+#define ON_CUSTOM_EVENT_5_ID 9005
+#define ON_CUSTOM_EVENT_6_ID 9006
+#define ON_CUSTOM_EVENT_11_ID 9011
+#define ON_CUSTOM_EVENT_12_ID 9012
+#define ON_CUSTOM_EVENT_13_ID 9013
+#define ON_CUSTOM_EVENT_14_ID 9014
+#define ON_CUSTOM_EVENT_15_ID 9015
+#define ON_CUSTOM_EVENT_16_ID 9016
+#define PARAM_NEGATIVE_1 (-1)
+#define PARAM_NEGATIVE_100 (-100)
+#define PARAM_NEGATIVE_5 (-5)
 
 /**
  * Log print domain.

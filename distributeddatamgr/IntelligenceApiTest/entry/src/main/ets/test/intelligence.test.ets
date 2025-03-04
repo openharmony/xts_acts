@@ -28,13 +28,13 @@ import deviceInfo from '@ohos.deviceInfo';
 const TAG =["Intelligence_Test"];
 
 let textConfig:intelligence.ModelConfig  = {
-  version:1,
+  version:intelligence.ModelVersion.BASIC_MODEL,
   isNpuAvailable:false,
   cachePath:"test"
 }
 
 let imageConfig:intelligence.ModelConfig = {
-  version:1,
+  version:intelligence.ModelVersion.BASIC_MODEL,
   isNpuAvailable:false,
   cachePath:"image"
 }
