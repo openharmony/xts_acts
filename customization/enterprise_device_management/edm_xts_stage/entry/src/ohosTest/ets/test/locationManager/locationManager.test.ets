@@ -88,6 +88,27 @@ function testSetLocationPolicy() {
     }
     done();
   });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_LOCATION_POLICY_JS_0004
+   * @tc.name      : test_set_location_policy_0004
+   * @tc.desc      : test locationManager setLocationPolicy with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_location_policy_0004", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      locationManager.setLocationPolicy(null, locationManager.LocationPolicy.DISALLOW_LOCATION_SERVICE);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
 }
 
 function testGetLocationPolicy() {

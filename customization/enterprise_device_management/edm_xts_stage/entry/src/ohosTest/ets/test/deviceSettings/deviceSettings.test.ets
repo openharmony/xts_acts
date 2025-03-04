@@ -128,6 +128,27 @@ export default function deviceSettingsTest() {
     });
 
     /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_DEVICE_SETTINGS_GET_VALUE_JS_0600
+     * @tc.name      : test_device_settings_get_value_0600
+     * @tc.desc      : test deviceSettings getValue with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_device_settings_get_value_0600", 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        deviceSettings.getValue(null, ITEM_SCREEN_OFF);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    });
+
+    /**
      * @tc.number    : SUB_CUSTOMIZATION_EDM_DEVICE_SETTINGS_SET_VALUE_JS_0100
      * @tc.name      : test_device_settings_set_value_0100
      * @tc.desc      : test deviceSettings setValue without admin
