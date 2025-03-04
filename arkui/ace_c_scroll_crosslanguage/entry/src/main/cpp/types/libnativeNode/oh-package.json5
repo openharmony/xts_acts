@@ -14,7 +14,7 @@
  */
 
 {
-  "name": "libentry.so",
+  "name": "libnativeNode.so",
   "types": "./index.d.ts",
   "version": "",
   "description": "Please describe the basic information."
