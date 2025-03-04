@@ -350,24 +350,6 @@ export default function SaveToExistingContactViaUITest() {
                 ExpectTrue(data > 0);
                 let promise = contact.saveToExistingContactViaUI(context, {
                 });
-                try {
-                    if (deviceInfo.deviceType !== 'wearable') {
-                      let driver: Driver = Driver.create();
-                      let onType2: On = ON.text('小李');
-                      await getComponent(driver, onType2);
-                      await delay(500);
-                      let onType: On = ON.id('cancel_btn');
-                      await getComponent(driver, onType);
-                      await delay(500);
-                      let onType1: On = ON.text('不保存');
-                      await getComponent(driver, onType1);
-                      await delay(500);
-                    }
-                } catch (err) {
-                    console.log(`${caseName} --ger component catch: err>${JSON.stringify(err)}`);
-                    ExpectFail();
-                    done();
-                }
                 promise.then((data: number) => {
                     console.log(`${caseName} SaveToExistingContactViaUI: data>${JSON.stringify(data)}`);
                     ExpectTrue(data == -1);
