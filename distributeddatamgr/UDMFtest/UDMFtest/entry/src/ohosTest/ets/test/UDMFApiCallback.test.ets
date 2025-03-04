@@ -440,12 +440,14 @@ export default function UDMFApiCallback() {
     it('SUB_DistributedData_UDMF_SDK_UnifiedDataCallbackJsAPITest_1100', 0, (done: Function) => {
       let options = {
         intention: unifiedDataChannel.Intention.DATA_HUB
-      };
+      }; 
       let plainText = new unifiedDataChannel.PlainText();
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
       try {
-        unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
+        unifiedDataChannel.queryData(options, (err, ret) => {
+          let dataSize = ret.length;
+          unifiedDataChannel.insertData(options, unifiedData, (e, data) => {
           if (e !== undefined) {
             console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
             return;
@@ -455,7 +457,7 @@ export default function UDMFApiCallback() {
             if (err === undefined) {
               let size = ret.length;
               console.info(TAG, ` data.size = ${size}`);
-              for (let i = 0; i < size; i++) {
+              for (let i = dataSize; i < size-dataSize; i++) {
                 let records = ret[i].getRecords();
                 let size = records.length;
                 for (let j = 0; j < size; j++) {
@@ -465,7 +467,7 @@ export default function UDMFApiCallback() {
                   }
                 }
               }
-              expect(size).assertEqual(1);
+              expect(size-dataSize).assertEqual(1);
               done();
             } else {
               console.info(`Failed to queryData. code is ${err.code},message is ${err.message} `);
@@ -473,6 +475,7 @@ export default function UDMFApiCallback() {
               done();
             }
           });
+        });
         });
       } catch (error) {
         console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
@@ -669,39 +672,43 @@ export default function UDMFApiCallback() {
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
       try {
-        unifiedDataChannel.insertData(options1, unifiedData, (e, data) => {
-          if (e !== undefined) {
-            console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
-            return;
-          }
-          console.info(TAG + `insertData0500 success; data = ${data}, options = ${options1}`);
-          let options2 = {
-            intention: unifiedDataChannel.Intention.DATA_HUB,
-            key: undefined
-          };
-          unifiedDataChannel.queryData(options2, (err, ret) => {
-            if (err === undefined) {
-              let size = ret.length;
-              console.info(TAG, ` data.size = ${size}`);
-              for (let i = 0; i < size; i++) {
-                let records = ret[i].getRecords();
-                let size = records.length;
-                for (let j = 0; j < size; j++) {
-                  if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                    let text = <unifiedDataChannel.PlainText> (records[j]);
-                    console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
+        unifiedDataChannel.queryData(options1, (errInfo, ret) => {
+          let dataSize = ret.length;
+          unifiedDataChannel.insertData(options1, unifiedData, (e, data) => {
+            if (e !== undefined) {
+              console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
+              return;
+            }
+            console.info(TAG + `insertData0500 success; data = ${data}, options = ${options1}`);
+            let options2 = {
+              intention: unifiedDataChannel.Intention.DATA_HUB,
+              key: undefined
+            };
+            unifiedDataChannel.queryData(options2, (err, ret) => {
+              if (err === undefined) {
+                let size = ret.length;
+                console.info(TAG, ` data.size = ${size}`);
+                for (let i = dataSize; i < size - dataSize; i++) {
+                  let records = ret[i].getRecords();
+                  let size = records.length;
+                  for (let j = 0; j < size; j++) {
+                    if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
+                      let text = <unifiedDataChannel.PlainText> (records[j]);
+                      console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
+                    }
                   }
                 }
+                expect(size - dataSize).assertEqual(1);
+                done();
+              } else {
+                console.info(`Failed to queryData. code is ${err.code},message is ${err.message} `);
+                expect(err.code).assertEqual('401');
+                done();
               }
-              expect(size).assertEqual(1);
-              done();
-            } else {
-              console.info(`Failed to queryData. code is ${err.code},message is ${err.message} `);
-              expect(err.code).assertEqual('401');
-              done();
-            }
+            });
           });
         });
+
       } catch (error) {
         console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
         expect(error !== null).assertFail();
@@ -978,46 +985,46 @@ export default function UDMFApiCallback() {
       plainText.textContent = "hello world!";
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
       try {
-        unifiedDataChannel.insertData(options1, unifiedData, (e, data) => {
-          if (e !== undefined) {
-            console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
-            return;
-          }
-          console.info(TAG + `insertData0100 success; data = ${data}, options = ${options1}`);
-          unifiedDataChannel.queryData(options1, (errInfo, ret) => {
-            if (errInfo !== undefined) {
-              console.info(`Failed to queryData. code is ${errInfo.code},message is ${errInfo.message} `);
+          unifiedDataChannel.insertData(options1, unifiedData, (e, data) => {
+            if (e !== undefined) {
+              console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
               return;
             }
-            console.info(TAG, ` queryData size = ${ret.length}`);
-            let options2 = {
-              intention: unifiedDataChannel.Intention.DATA_HUB,
-              key: undefined
-            };
-            unifiedDataChannel.deleteData(options2, (err, row) => {
-              if (err == undefined) {
-                let size = row.length;
-                console.info(TAG, ` deleteData size = ${size}`);
-                for (let i = 0; i < size; i++) {
-                  let records = row[i].getRecords();
-                  let size = records.length;
-                  for (let j = 0; j < size; j++) {
-                    if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                      let text = <unifiedDataChannel.PlainText> (records[j]);
-                      console.info(TAG, ` deleteData.result = ${i + 1}.${text.textContent}`);
+            console.info(TAG + `insertData0100 success; data = ${data}, options = ${options1}`);
+            unifiedDataChannel.queryData(options1, (errInfo, ret) => {
+              if (errInfo !== undefined) {
+                console.info(`Failed to queryData. code is ${errInfo.code},message is ${errInfo.message} `);
+                return;
+              }
+              console.info(TAG, ` queryData size = ${ret.length}`);
+              let options2 = {
+                intention: unifiedDataChannel.Intention.DATA_HUB,
+                key: undefined
+              };
+              unifiedDataChannel.deleteData(options2, (err, row) => {
+                if (err == undefined) {
+                  let size = row.length;
+                  console.info(TAG, ` deleteData size = ${size}`);
+                  for (let i = 0; i < size; i++) {
+                    let records = row[i].getRecords();
+                    let size = records.length;
+                    for (let j = 0; j < size; j++) {
+                      if (records[j].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
+                        let text = <unifiedDataChannel.PlainText> (records[j]);
+                        console.info(TAG, ` deleteData.result = ${i + 1}.${text.textContent}`);
+                      }
                     }
                   }
+                  expect(size).assertEqual(1);
+                  done();
+                } else {
+                  console.info(`Failed to deleteData. code is ${err.code},message is ${err.message} `);
+                  expect(err !== null).assertFail();
+                  done();
                 }
-                expect(size).assertEqual(1);
-                done();
-              } else {
-                console.info(`Failed to deleteData. code is ${err.code},message is ${err.message} `);
-                expect(err !== null).assertFail();
-                done();
-              }
+              });
             });
           });
-        });
       } catch (error) {
         console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
         expect(error !== null).assertFail();
