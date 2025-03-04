@@ -51,7 +51,7 @@ import {
   multipleUITask3,
   multipleUITask4
 } from '../testability/pages/MultipleTask';
-import { Drivers, testUI, testUI1 } from '../testability/pages/Utils';
+import { Drivers } from '../testability/pages/Utils';
 import { MeasureText } from '@kit.ArkUI';
 
 declare class ArkTools {
@@ -96,6 +96,7 @@ export default function taskPoolTaskMultipleUITest() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       const caseName = 'taskPoolTaskMultipleUITest0100'
       console.info(`${caseName} test start`)
+      await driver.delayMs(5000)
       let task1: taskpool.Task = new taskpool.Task(multipleUITask1);
       let task2: taskpool.Task = new taskpool.Task(multipleUITask2);
 

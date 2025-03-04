@@ -39,18 +39,6 @@ export function printArgs1(args: number): number {
   return args;
 }
 
-/**
- * error
- * @param args
- * @returns
- */
-@Concurrent
-export function printArgs2(args: number): number {
-  console.info('printArgs: ' + args);
-  let s: string[] = []
-  s[0].split('')[1].toString()
-  return args;
-}
 
 @Concurrent
 export function printArgs3(args: number): number {
@@ -58,11 +46,6 @@ export function printArgs3(args: number): number {
   return args;
 }
 
-@Concurrent
-export function printArgs4(args: number): number {
-  console.info('printArgs: ' + args);
-  return args;
-}
 
 @Concurrent
 export function printArgs5(args: number): number {
@@ -71,12 +54,7 @@ export function printArgs5(args: number): number {
   return args;
 }
 
-@Concurrent
-export function printArgs6(args: number): number {
-  console.info('printArgs: ' + args);
-  taskpool.Task.sendData(args);
-  return args;
-}
+
 
 @Concurrent
 export async function printArgsLock1() {
@@ -93,25 +71,6 @@ export async function printArgsLock1() {
   }
 }
 
-@Concurrent
-export async function printArgsLock2() {
-  try {
-    // 获取锁
-    await lock.acquire();
-    console.log('Lock is held.');
-    console.log('Executing task...');
-
-    if (Math.random() < 1) { // 抛出异常
-      throw new Error('Simulated error in task execution.');
-    }
-
-    console.log('Task completed successfully.');
-  } finally {
-    // 无论是否发生异常，确保锁被释放
-    lock.release();
-    console.log('Lock has been released.');
-  }
-}
 
 @Concurrent
 export async function printArgsLock3() {
@@ -133,25 +92,7 @@ export async function printArgsLock3() {
   }
 }
 
-@Concurrent
-export async function printArgsLock4() {
-  try {
-    // 获取锁
-    await lock.acquire1().then(() => {
-      console.log('Lock is held.');
-      console.log('Executing task...');
-      if (Math.random() < 1) { // 抛出异常
-        throw new Error('Simulated error in task execution.');
-      }
-      console.log('Task completed successfully.');
-    })
-    console.log('Task completed successfully.');
-  } finally {
-    // 无论是否发生异常，确保锁被释放
-    lock.release();
-    console.log('Lock has been released.');
-  }
-}
+
 
 @Concurrent
 export async function printArgsLock5() {
@@ -177,54 +118,9 @@ export async function printArgsLock5() {
   }
 }
 
-@Concurrent
-export async function printArgsLock6() {
-  try {
-    // 获取锁
-    await lock.acquire1().then(() => {
-      console.log('Lock is held.');
-      console.log('Executing task...');
-      if (Math.random() < 1) { // 抛出异常
-        throw new Error('Simulated error in task execution.');
-      }
-      console.log('Task completed successfully.');
-    }).catch((error: BusinessError) => {
-      console.error('Error during task execution:', error.message);
-      if (Math.random() < 1) { // 抛出异常
-        throw new Error('Simulated error in task execution.');
-      }
-    })
-  } finally {
-    // 无论是否发生异常，确保锁被释放
-    lock.release();
-    console.log('Lock has been released.');
-  }
-}
 
 @Concurrent
 export async function printArgsLock7() {
-  try {
-    // 获取锁
-    await lock.acquire1().then(() => {
-      console.log('Lock is held.');
-      console.log('Executing task...');
-      console.log('Task completed successfully.');
-    }).catch((error: BusinessError) => {
-      console.error('Error during task execution:', error.message);
-    })
-  } finally {
-    // 无论是否发生异常，确保锁被释放
-    lock.release();
-    if (Math.random() < 1) { // 抛出异常
-      let s: string[] = []
-      s[0].split('')[1].toString()
-    }
-    console.log('Lock has been released.');
-  }
-}
-
-@Concurrent
-export async function printArgsLock8() {
   try {
     // 获取锁
     await lock.acquire1().then(() => {
@@ -263,23 +159,6 @@ export async function printArgsPromise1() {
 
 }
 
-@Concurrent
-export async function printArgsPromise2() {
-  console.log('Executing task...');
-  // 模拟一个包含异步操作的任务
-  await new Promise<void>((resolve, reject) => {
-    setTimeout(() => {
-      if (Math.random() < 1) { // 抛出异常
-        reject(new Error('Simulated error in task execution.'));
-      } else {
-        resolve();
-      }
-    }, 100); // 模拟耗时操作
-  });
-
-  console.log('Task completed successfully.');
-
-}
 
 @Concurrent
 export async function printArgsPromise3() {
@@ -293,17 +172,6 @@ export async function printArgsPromise3() {
     })
 }
 
-@Concurrent
-export async function printArgsPromise4() {
-  await asyncTask()
-    .then(() => {
-      // 在.then回调中模拟抛出异常
-      if (Math.random() < 1) {
-        throw new Error('Simulated error in then callback.');
-      }
-      console.log('Task completed successfully');
-    })
-}
 
 @Concurrent
 export async function printArgsPromise5() {
@@ -322,22 +190,6 @@ export async function printArgsPromise5() {
     });
 }
 
-@Concurrent
-export async function printArgsPromise6() {
-  await asyncTask()
-    .then(() => {
-      if (Math.random() < 1) {
-        throw new Error('Simulated error in then callback.');
-      }
-      console.log('Task completed successfully');
-    })
-    .catch((error: BusinessError) => {
-      console.error('caught error in then callback:', error.message);
-      if (Math.random() < 1) {
-        throw new Error('Simulated error in then callback.');
-      }
-    });
-}
 
 @Concurrent
 export async function printArgsPromise7() {
@@ -355,21 +207,6 @@ export async function printArgsPromise7() {
     })
 }
 
-@Concurrent
-export async function printArgsPromise8() {
-  await asyncTask()
-    .then(() => {
-      console.log('Task completed successfully');
-    })
-    .catch((error: BusinessError) => {
-      console.error('caught error in then callback:', error.message);
-    })
-    .finally(() => {
-      if (Math.random() < 1) {
-        throw new Error('Simulated error in finally callback.');
-      }
-    })
-}
 
 @Concurrent
 export async function printArgsSettimeout1() {
@@ -386,20 +223,6 @@ export async function printArgsSettimeout1() {
   });
 }
 
-@Concurrent
-export async function printArgsSettimeout2() {
-  await new  Promise<void>((resolve, reject) => {
-    setTimeout(() => {
-      if (Math.random() < 1) {
-        console.error('Simulated error in setTimeout callback.');
-        reject(new Error('Simulated error in setTimeout callback.'));
-      } else {
-        console.log('Task completed successfully');
-        resolve();
-      }
-    }, 100);
-  });
-}
 
 @Concurrent
 export async function printArgsSettimeout3(): Promise<void> {
@@ -412,16 +235,6 @@ export async function printArgsSettimeout3(): Promise<void> {
   }
 }
 
-@Concurrent
-export async function printArgsSettimeout4(): Promise<void> {
-  try {
-    await asyncOperation();
-    console.log('Task completed successfully');
-  } catch (error) {
-    console.error('caught error in task execution:', error.message);
-    throw new Error('Simulated error in async operation.');
-  }
-}
 
 @Concurrent
 export async function printArgsWait(a: AsyncLockTest) {

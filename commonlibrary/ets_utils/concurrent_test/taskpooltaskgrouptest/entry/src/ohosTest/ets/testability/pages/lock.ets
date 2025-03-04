@@ -23,10 +23,9 @@ export class AsyncLock {
 
   async acquire() {
     // 模拟获取锁的过程，等待直到锁可用
-    if (Math.random() < 1) { // 抛出异常
-      throw new Error('Simulated error in task execution.');
-    }
-    console.log('Lock acquired.');
+
+    throw new Error('Simulated error in task execution.');
+
   }
 
   async acquire1() {

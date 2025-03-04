@@ -317,6 +317,7 @@ export function printArgs1001(args: number): number {
   }
 
   Worker1.worker1.postMessage('1');
+
   return args;
 }
 
@@ -336,6 +337,7 @@ export function printArgs1002(args: number): number {
   }
 
   Worker2.worker2.postMessage('1');
+
   return args;
 }
 

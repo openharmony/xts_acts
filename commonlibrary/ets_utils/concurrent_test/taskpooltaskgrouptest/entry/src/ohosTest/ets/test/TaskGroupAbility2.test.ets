@@ -151,13 +151,14 @@ import { AsyncLock } from '../testability/pages/SendableTest';
 let driver: Driver = Driver.create();
 
 export default function TaskGroupAbilityTest2() {
-  describe('ActsAbilityTest2', () => {
+  describe('TaskGroupAbilityTest2', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })
-    beforeEach(() => {
+    beforeEach(async () => {
+      await driver.delayMs(1000)
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
@@ -709,7 +710,7 @@ export default function TaskGroupAbilityTest2() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
-
+      await driver.delayMs(5000)
       type Union = string | number | Array<number>;
       let union1: Union[] = ['hello1', 7, [1, 2, 3]];
       let union2: Union[] = ['hello2', 8, [4, 5, 6]];
@@ -728,7 +729,9 @@ export default function TaskGroupAbilityTest2() {
         })
       }
 
-      await driver.delayMs(1000)
+      while (Count1.count < 10 || Count2.count < 10) {
+        await driver.delayMs(100)
+      }
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;

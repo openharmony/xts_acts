@@ -91,6 +91,7 @@ export default function taskPoolTaskMultipleTest() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       const caseName = 'taskPoolTaskMultipleTest0100'
       console.info(`${caseName} test start`)
+      await driver.delayMs(5000)
       let task1: taskpool.Task = new taskpool.Task(multipleTask1);
       let task2: taskpool.Task = new taskpool.Task(multipleTask1);
       let task3: taskpool.Task = new taskpool.Task(multipleTask1);
@@ -208,6 +209,7 @@ export default function taskPoolTaskMultipleTest() {
     it('taskPoolTaskMultipleTest0300', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      await driver.delayMs(5000)
       const caseName = 'taskPoolTaskMultipleTest0300'
       console.info(`${caseName} test start`)
       let task1: taskpool.Task = new taskpool.Task(multipleTask3);
@@ -243,7 +245,7 @@ export default function taskPoolTaskMultipleTest() {
         console.info('=======', count)
         count++
       }).catch((e: BusinessError) => {
-        console.info('=======error', JSON.stringify(e))
+        console.info('=======error', JSON.stringify(e.message))
         expect(true).assertFalse()
       })
 

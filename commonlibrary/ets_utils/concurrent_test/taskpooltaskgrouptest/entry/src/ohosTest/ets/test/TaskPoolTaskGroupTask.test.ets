@@ -20,31 +20,26 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { ErrorEvent, MessageEvents, taskpool, worker } from '@kit.ArkTS';
 import {
   printArgs1,
-  printArgs2,
   printArgs3,
-  printArgs4,
   printArgs5,
-  printArgs6,
   printArgsLock1,
-  printArgsLock2,
   printArgsLock3,
-  printArgsLock4,
   printArgsLock5,
-  printArgsLock6,
+
   printArgsLock7,
-  printArgsLock8,
+
   printArgsPromise1,
-  printArgsPromise2,
+
   printArgsPromise3,
-  printArgsPromise4,
+
   printArgsPromise5,
-  printArgsPromise6,
+
   printArgsPromise7,
-  printArgsPromise8,
+
   printArgsSettimeout1,
-  printArgsSettimeout2,
+
   printArgsSettimeout3,
-  printArgsSettimeout4,
+
   printArgsTaskpool,
   printArgsTaskpool1,
   printArgsTaskpool2,
@@ -72,12 +67,16 @@ export default function taskPoolTaskGroup() {
       // This API supports only one parameter: preset action function.
     })
     beforeEach(() => {
+      Count1 = 0
+      Count2 = 0
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
     })
     afterEach(async () => {
       await driver.delayMs(500)
+      Count1 = 0
+      Count2 = 0
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
@@ -101,7 +100,7 @@ export default function taskPoolTaskGroup() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(printArgs1, 1);
-      taskGroup.addTask(printArgs2, 2);
+      taskGroup.addTask(printArgs1, 2);
       for (let i = 0; i < 10; i++) {
         try {
           taskpool.execute(taskGroup).catch((err: BusinessError) => {
@@ -136,7 +135,7 @@ export default function taskPoolTaskGroup() {
       // Defines a test case. This ApI supports three parameters: test case name, filter parameter, and test case function.hilog.info(0x0000,'testTag''%{public}s','it begin');
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.GenericsTask<[number], number>(printArgs1, 1);
-      let task2: taskpool.Task = new taskpool.GenericsTask<[number], number>(printArgs2, 1);
+      let task2: taskpool.Task = new taskpool.GenericsTask<[number], number>(printArgs1, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(task1);
       taskGroup.addTask(task2);
@@ -173,7 +172,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask0300', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgs1, 1);
-      let task2: taskpool.Task = new taskpool.Task(printArgs2, 1);
+      let task2: taskpool.Task = new taskpool.Task(printArgs1, 1);
       ;
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(task1);
@@ -230,7 +229,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask0400', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgs3, 1);
-      let task2: taskpool.Task = new taskpool.Task(printArgs4, 1);
+      let task2: taskpool.Task = new taskpool.Task(printArgs3, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(task1);
       taskGroup.addTask(task2);
@@ -286,7 +285,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask0500', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgs1, 1);
-      let task2: taskpool.Task = new taskpool.Task(printArgs2, 2);
+      let task2: taskpool.Task = new taskpool.Task(printArgs1, 2);
       task1.onExecutionFailed((e: Error) => {
         try {
           console.info('taskpool: onExecutionFailed error is ' + e);
@@ -347,7 +346,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask0600', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgs3, 1);
-      let task2: taskpool.Task = new taskpool.Task(printArgs4, 1);
+      let task2: taskpool.Task = new taskpool.Task(printArgs3, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(task1);
       taskGroup.addTask(task2);
@@ -404,7 +403,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask0700', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgs5, 1);
-      let task2: taskpool.Task = new taskpool.Task(printArgs6, 2);
+      let task2: taskpool.Task = new taskpool.Task(printArgs5, 2);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(task1);
       taskGroup.addTask(task2);
@@ -461,7 +460,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask0800', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgs3, 1);
-      let task2: taskpool.Task = new taskpool.Task(printArgs4, 2);
+      let task2: taskpool.Task = new taskpool.Task(printArgs3, 2);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(task1);
       taskGroup.addTask(task2);
@@ -504,7 +503,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask0900', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgs1, 1);
-      let task2: taskpool.Task = new taskpool.Task(printArgs2, 2);
+      let task2: taskpool.Task = new taskpool.Task(printArgs1, 2);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(task1);
       taskGroup.addTask(task2);
@@ -549,7 +548,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask1000', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgs1, 1);
-      let task2: taskpool.Task = new taskpool.Task(printArgs2, 2);
+      let task2: taskpool.Task = new taskpool.Task(printArgs1, 2);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(task1);
       taskGroup.addTask(task2);
@@ -596,8 +595,9 @@ export default function taskPoolTaskGroup() {
      */
     it('taskPoolTaskGroupTask1100', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      await driver.delayMs(5000)
       let task1: taskpool.Task = new taskpool.Task(printArgsLock1);
-      let task2: taskpool.Task = new taskpool.Task(printArgsLock2);
+      let task2: taskpool.Task = new taskpool.Task(printArgsLock1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(task1);
       taskGroup.addTask(task2);
@@ -636,7 +636,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask1200', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgsLock3);
-      let task2: taskpool.Task = new taskpool.Task(printArgsLock4);
+      let task2: taskpool.Task = new taskpool.Task(printArgsLock3);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(task1);
       taskGroup.addTask(task2);
@@ -675,7 +675,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask1300', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgsLock5);
-      let task2: taskpool.Task = new taskpool.Task(printArgsLock6);
+      let task2: taskpool.Task = new taskpool.Task(printArgsLock5);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(task1);
       taskGroup.addTask(task2);
@@ -714,7 +714,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask1400', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgsLock7);
-      let task2: taskpool.Task = new taskpool.Task(printArgsLock8);
+      let task2: taskpool.Task = new taskpool.Task(printArgsLock7);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(task1);
       taskGroup.addTask(task2);
@@ -753,7 +753,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask1500', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgsPromise1);
-      let task2: taskpool.Task = new taskpool.Task(printArgsPromise2);
+      let task2: taskpool.Task = new taskpool.Task(printArgsPromise1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(task1);
       taskGroup.addTask(task2);
@@ -792,7 +792,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask1600', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgsPromise3);
-      let task2: taskpool.Task = new taskpool.Task(printArgsPromise4);
+      let task2: taskpool.Task = new taskpool.Task(printArgsPromise3);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(task1);
       taskGroup.addTask(task2);
@@ -831,7 +831,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask1700', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgsPromise5);
-      let task2: taskpool.Task = new taskpool.Task(printArgsPromise6);
+      let task2: taskpool.Task = new taskpool.Task(printArgsPromise5);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(task1);
       taskGroup.addTask(task2);
@@ -870,7 +870,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask1800', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgsPromise7);
-      let task2: taskpool.Task = new taskpool.Task(printArgsPromise8);
+      let task2: taskpool.Task = new taskpool.Task(printArgsPromise7);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(task1);
       taskGroup.addTask(task2);
@@ -909,7 +909,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask1900', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgsSettimeout1);
-      let task2: taskpool.Task = new taskpool.Task(printArgsSettimeout2);
+      let task2: taskpool.Task = new taskpool.Task(printArgsSettimeout1);
       let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup1.addTask(task1);
       taskGroup1.addTask(task2);
@@ -948,7 +948,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask2000', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgsSettimeout3);
-      let task2: taskpool.Task = new taskpool.Task(printArgsSettimeout4);
+      let task2: taskpool.Task = new taskpool.Task(printArgsSettimeout3);
       let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup1.addTask(task1);
       taskGroup1.addTask(task2);
@@ -1141,7 +1141,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask2500', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgs3, 1);
-      let task2: taskpool.Task = new taskpool.Task(printArgs4, 1);
+      let task2: taskpool.Task = new taskpool.Task(printArgs3, 1);
       let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup1.addTask(task1);
       taskGroup1.addTask(task2);
@@ -1182,7 +1182,7 @@ export default function taskPoolTaskGroup() {
     it('taskPoolTaskGroupTask2600', 0, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let task1: taskpool.Task = new taskpool.Task(printArgs3, 1);
-      let task2: taskpool.Task = new taskpool.Task(printArgs4, 1);
+      let task2: taskpool.Task = new taskpool.Task(printArgs3, 1);
       let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup1.addTask(task1);
       taskGroup1.addTask(task2);

@@ -47,7 +47,8 @@ let driver: Driver = Driver.create();
 export default function taskPoolTaskGroupActTest() {
   describe('TaskPoolTaskGroupActTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeAll(() => {
+    beforeAll(async () => {
+      await driver.delayMs(1000)
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })

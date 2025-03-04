@@ -51,7 +51,7 @@ import {
   multipleUITask3,
   multipleUITask4
 } from '../testability/pages/MultipleTask';
-import { Drivers, testUI, testUI1 } from '../testability/pages/Utils';
+import { Drivers } from '../testability/pages/Utils';
 import { MeasureText } from '@kit.ArkUI';
 
 declare class ArkTools {
@@ -99,29 +99,34 @@ export default function taskPoolTaskGroupMultipleTest() {
       let task1: taskpool.Task = new taskpool.Task(printArgs1);
 
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
-      taskGroup.addTask(task1);
-
+      for (let i = 0; i < 10; i++) {
+        let task1: taskpool.Task = new taskpool.Task(printArgs1);
+        taskGroup.addTask(task1);
+      }
 
       let count: number = 0
 
-      for (let i = 0; i < 100; i++) {
-        if (i == 30 || i == 50 || i == 80) {
-          ArkTools.forceFullGC()
+      for (let j = 0; j < 10; j++) {
+        await driver.delayMs(10)
+        for (let i = 0; i < 100; i++) {
+          taskpool.execute(taskGroup).then(() => {
+            console.info('=======', count)
+            count++
+          }).catch((e: BusinessError) => {
+            console.info('=======error', JSON.stringify(e.message))
+            expect(true).assertFalse()
+          })
         }
-        taskpool.execute(taskGroup).then(() => {
-          console.info('=======', count)
-          count++
-        }).catch((e: BusinessError) => {
-          console.info('=======error', JSON.stringify(e.message))
-          expect(true).assertFalse()
-        })
+        setTimeout(()=>{
+          ArkTools.forceFullGC()
+        },10)
       }
 
-      while (count < 100) {
+      while (count < 1000) {
         await driver.delayMs(100)
       }
 
-      expect(100).assertEqual(count)
+      expect(1000).assertEqual(count)
       console.info(`${caseName} test end`)
       Done()
     })
