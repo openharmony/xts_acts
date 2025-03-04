@@ -808,7 +808,7 @@ export default function i18nStageTest() {
         style: 'unit', unit: 'meter', unitDisplay: 'short'
       });
       console.log('numberFormatAdapt_test_0090' + numFmt.format(123456.789));
-      expect(numFmt.format(123456.789)).assertEqual('123,456.789 metres');
+      expect(numFmt.format(123456.789)).assertEqual('123,456.789 m');
     })
 
     /**
@@ -910,7 +910,7 @@ export default function i18nStageTest() {
     it('testGetThreeLetterRegion_0100', Level.LEVEL2, () => {
       let language: string = I18n.I18NUtil.getThreeLetterRegion('GB')
       console.info('testGetThreeLetterRegion_0100', language);
-      expect('GBR').assertEqual('language');
+      expect('GBR').assertEqual(language);
     })
 
     /**
@@ -934,7 +934,7 @@ export default function i18nStageTest() {
       for (let i of number) {
         formatted = formatted + i;
         let result = phoneNumberFormat.format(formatted);
-        console.info('SUB_GLOBAL_numberFormatTyping_0300_arr', arr[k])
+        console.info('SUB_GLOBAL_numberFormatTyping_0100_arr', arr[k])
         expect(result).assertEqual(arr[k])
         k += 1
       }
@@ -962,7 +962,7 @@ export default function i18nStageTest() {
     /**
      * @tc.number   : SUB_GLOBAL_numberFormatTyping_0300
      * @tc.name     : SUB_GLOBAL_numberFormatTyping_0300
-     * @tc.desc     : ont CN phone number
+     * @tc.desc     : not CN phone number
      * @tc.size     : MEDIUM
      * @tc.type     : Function
      * @tc.level    : Level 1
@@ -972,8 +972,8 @@ export default function i18nStageTest() {
         type: "TYPING"
       };
       let phoneNumberFormat: I18n.PhoneNumberFormat = new I18n.PhoneNumberFormat("CN", option);
-      let number = "0088696018456";
-      let arr: Array<String> = ['0', '00', '138', '00 8', '00 88', '00 886', '00 886 9', '00 886 96', '00 886 960',
+      let number = "00886960186456";
+      let arr: Array<String> = ['0', '00', '00 8', '00 88', '00 886', '00 886 9', '00 886 96', '00 886 960',
         '00 886 960 1', '00 886 960 18', '00 886 960 186', '00 886 960 186 4', '00 886 960 186 45',
         '00 886 960 186 456']
       let formatted = "";
