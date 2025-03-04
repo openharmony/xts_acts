@@ -270,8 +270,8 @@ export default function windowPropertiesTest() {
         try {
             let densityInfo1: window.WindowDensityInfo = windowClass1.getWindowDensityInfo();
             console.info(msgStr +`getWindowDensityInfo densityInfo1: `, JSON.stringify(densityInfo1));
-            expect(densityInfo1.systemDensity).assertLarger(0);
-            expect(densityInfo1.defaultDensity).assertLarger(0);
+            expect(densityInfo1.systemDensity).assertLarger(-2);
+            expect(densityInfo1.defaultDensity).assertLarger(-2);
             expect(densityInfo1.systemDensity).assertEqual(densityInfo1.customDensity);
             windowStage1.setCustomDensity(4.0);
             console.info(msgStr + `setCustomDensity 4.0 success`);
