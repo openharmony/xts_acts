@@ -20,6 +20,7 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundleManager from '@ohos.bundle.bundleManager';
 import account from '@ohos.account.osAccount';
 import { Component, Driver, On, ON } from '@ohos.UiTest';
+import { deviceInfo } from '@kit.BasicServicesKit';
 
 const ExpectTrue = (n: boolean) => {
   try {
@@ -75,6 +76,8 @@ async function getComponent(driver: Driver, onType: On) {
 export default function AddContactViaUITest() {
   describe('AddContactViaUITest', () => {
 
+    let contactDataNull: contact.Contact = {
+    }；
     let contactData: contact.Contact = {
       id: 0,
       key: "0",
@@ -200,18 +203,27 @@ export default function AddContactViaUITest() {
       try {
         let context: Context = AppStorage.get('context') as Context;
         let promise = contact.addContactViaUI(context, contactData);
-        let driver: Driver = Driver.create();
-        let onType: On = ON.id('save_click_btn');
-        await getComponent(driver, onType);
-        await delay(500);
+        if (deviceInfo.deviceType !== 'wearable') {
+          let driver: Driver = Driver.create();
+          let onType: On = ON.id('save_click_btn');
+          await getComponent(driver, onType);
+          await delay(500);
+        }
         promise.then((data: number) => {
             console.log(`${caseName} addContactViaUI: data>${JSON.stringify(data)}`);
             ExpectTrue(data > 0);
             done();
         }).catch((err: BusinessError) => {
-            console.log(`${caseName} addContactViaUI: err>${JSON.stringify(err)}`);
-            ExpectFail();
-            done();
+            if (err.code === 801) {
+                console.log(`${caseName} The current device type does not 
+                support: errcode>${JSON.stringify(err.code)}, message: >${JSON.stringify(err.message)}`);
+                expect(err.code).assertEqual(801);
+                done();
+            } else {
+              console.log(`${caseName} addContactViaUI: err>${JSON.stringify(err)}`);
+              ExpectFail();
+              done();
+            }
         });
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
@@ -221,7 +233,7 @@ export default function AddContactViaUITest() {
       console.info(`${caseName} test end `);
     })
 
-        /**
+    /**
      * @tc.number     : SUB_Telephony_Contact_AddContactViaUI_0200
      * @tc.name       : testTelephonyContactAddContactViaUI0200
      * @tc.desc       : Call the contact AddContactViaUI interface, and use the Promise method as an asynchronous method for the AddContactViaUI contact 15
@@ -236,20 +248,73 @@ export default function AddContactViaUITest() {
       try {
         let context: Context = AppStorage.get('context') as Context;
         let promise = contact.addContactViaUI(context, contactData);
-        let driver: Driver = Driver.create();
-        let onType: On = ON.id('cancel_btn');
-        await getComponent(driver, onType);
-        await delay(500);
-        let onType1: On = ON.text('不保存');
-        await getComponent(driver, onType1);
+        if (deviceInfo.deviceType !== 'wearable') {
+          let driver: Driver = Driver.create();
+          let onType: On = ON.id('cancel_btn');
+          await getComponent(driver, onType);
+          await delay(500);
+          let onType1: On = ON.text('不保存');
+          await getComponent(driver, onType1);
+        }
         promise.then((data: number) => {
             console.log(`${caseName} addContactViaUI: data>${JSON.stringify(data)}`);
             ExpectTrue(data == -1);
             done();
         }).catch((err: BusinessError) => {
-            console.log(`${caseName} addContactViaUI: err>${JSON.stringify(err)}`);
-            ExpectFail();
+            if (err.code === 801) {
+              console.log(`${caseName} The current device type does not 
+              support: errcode>${JSON.stringify(err.code)}, message: >${JSON.stringify(err.message)}`);
+              expect(err.code).assertEqual(801);
+              done();
+            } else {
+              console.log(`${caseName} addContactViaUI: err>${JSON.stringify(err)}`);
+              ExpectFail();
+              done();
+            }
+        })
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_AddContactViaUI_0300
+     * @tc.name       : testTelephonyContactAddContactViaUI0300
+     * @tc.desc       : Call the contact AddContactViaUI interface, and use the Promise method as an asynchronous method for the AddContactViaUI contact 15
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactAddContactViaUI0300', 0, async (done: Function) => {
+      await delay(1500);
+      const caseName: string = "testTelephonyContactAddContactViaUI0300";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        let promise = contact.addContactViaUI(context, contactDataNull);
+        promise.then((data: number) => {
+            console.log(`${caseName} addContactViaUI: data>${JSON.stringify(data)}`);
+            ExpectTrue(data != 0);
             done();
+        }).catch((err: BusinessError) => {
+            if (err.code === 801) {
+              console.log(`${caseName} The current device type does not 
+              support: errcode>${JSON.stringify(err.code)}, message: >${JSON.stringify(err.message)}`);
+              expect(err.code).assertEqual(801);
+              done();
+            } else if (err.code === 401) {
+              console.log(`${caseName} The parameter error:
+              errcode>${JSON.stringify(err.code)}, message: >${JSON.stringify(err.message)}`);
+              expect(err.code).assertEqual(401);
+              done();
+            } else {
+              console.log(`${caseName} addContactViaUI: err>${JSON.stringify(err)}`);
+              ExpectFail();
+              done();
+            }
         })
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
