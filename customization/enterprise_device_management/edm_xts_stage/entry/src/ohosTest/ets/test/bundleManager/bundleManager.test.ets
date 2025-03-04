@@ -23,7 +23,8 @@ import {
   DEFAULT_USER_ID,
   INVALID_USER_ID,
   HAP_FILE_PATH,
-  EDM_INSTALL_PARAM
+  EDM_INSTALL_PARAM,
+  HAP_FILE_PATH_ERROR
 } from '../commom.ets';
 
 import adminManager from '@ohos.enterprise.adminManager';
@@ -1640,6 +1641,48 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_INSTALL_008
+     * @tc.name      : test_install_008
+     * @tc.desc      : test install method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_install_008", 0, async (done: Function) => {
+      try {
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+        await bundleManager.install(SELFWANT, HAP_FILE_PATH_ERROR, EDM_INSTALL_PARAM);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9201002).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_INSTALL_009
+     * @tc.name      : test_install_009
+     * @tc.desc      : test install method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_install_009", 0, async (done: Function) => {
+      try {
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+        await bundleManager.install(SELFWANT, HAP_FILE_PATH_ERROR);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9201002).assertTrue();
       } finally {
         await adminManager.disableSuperAdmin(SELFHAPNAME);
       }

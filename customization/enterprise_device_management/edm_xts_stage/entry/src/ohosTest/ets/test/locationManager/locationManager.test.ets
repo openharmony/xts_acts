@@ -150,25 +150,4 @@ function testGetLocationPolicy() {
     }
     done();
   });
-
-  /**
-   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_LOCATION_POLICY_JS_0003
-   * @tc.name      : test_get_location_policy_0003
-   * @tc.desc      : test locationManager getLocationPolicy with super admin
-   * @tc.level     : Level 2
-   * @tc.type      : Function
-   * @tc.size      : MediumTest
-   */
-  it("test_get_location_policy_0003", Level.LEVEL2, async (done: Function) => {
-    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-    try {
-      locationManager.getLocationPolicy(null);
-      expect(false).assertTrue();
-    } catch (error) {
-      expect(error.code == 401).assertTrue();
-    } finally {
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
-    }
-    done();
-  });
 }

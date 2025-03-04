@@ -18,6 +18,7 @@ import { ENTINFO1, SELFWANT, SELFHAPNAME, TEST_APP_ID_1, TEST_POLICY_NAME, TEST_
 
 import bluetoothManager from '@ohos.enterprise.bluetoothManager';
 import adminManager from '@ohos.enterprise.adminManager';
+import restrictions from '@ohos.enterprise.restrictions';
 
 export default function bluetoothManagerTest() {
 
@@ -101,6 +102,7 @@ export default function bluetoothManagerTest() {
       }
       done();
     })
+    
     /**
      * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_ALLOWED_BLUETOOTH_DEVICES_0100
      * @tc.name      : test_add_allowed_bluetooth_devices_0100
@@ -201,6 +203,30 @@ export default function bluetoothManagerTest() {
         expect(false).assertTrue();
       } catch(error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_ALLOWED_BLUETOOTH_DEVICES_0600
+     * @tc.name      : test_add_allowed_bluetooth_devices_0600
+     * @tc.desc      : test addallowedbluetoothdevices method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_add_allowed_bluetooth_devices_0600', 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        let deviceIds: Array<string>  = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
+        const LABEL_BLUETOOTH = "bluetooth";
+        restrictions.setDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH, true);
+        bluetoothManager.addAllowedBluetoothDevices(SELFWANT, deviceIds);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 9200010).assertTrue();
       } finally {
         await adminManager.disableSuperAdmin(SELFHAPNAME);
       }

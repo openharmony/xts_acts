@@ -880,6 +880,24 @@ function testGetUserCertificates() {
     }
     done();
   });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_USER_CERTIFICATES_SYNC_JS_0104
+   * @tc.name      : test_get_user_certificates_sync_0104
+   * @tc.desc      : test securityManager getUserCertificatesSync without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_security_status_0104", 0, async (done: Function) => {
+    try {
+      securityManager.getUserCertificates(SELFWANT, INT_VALID_ACCOUNTID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
 }
 
 function testUninstallUserCertificate() {

@@ -1276,7 +1276,6 @@ function testRemoveDomainFilterRule() {
     done();
   });
 
-
   /**
    * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DOMAIN_FILTER_RULE_JS_0102
    * @tc.name      : test_remove_domain_filter_rule_0102
@@ -1336,7 +1335,6 @@ function testRemoveDomainFilterRule() {
     }
     done();
   });
-
 
   /**
    * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DOMAIN_FILTER_RULE_JS_0105
