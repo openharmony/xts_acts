@@ -19,6 +19,7 @@ import * as scene3d from '@ohos.graphics.scene'
 export default function sceneTest() {
   describe('sceneTest', ()=> {
     let scene: Scene | null = null;
+    let rf: scene3d.SceneResourceFactory;
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0010
      * @tc.name      : testSceneLoad
@@ -32,11 +33,13 @@ export default function sceneTest() {
       console.info(msg + ' begin ');
       try {
         scene = await Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
+        rf = scene.getResourceFactory();
         expect(scene != undefined).assertTrue();
         done();
       } catch (err) {
         console.info(msg + 'Failed in Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf")) ' +
         JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -59,6 +62,7 @@ export default function sceneTest() {
       } catch (err) {
         console.info(msg + " Failed in scene.getNodeByPath('rootNode_/Scene/node_damagedHelmet_-6514') " +
         JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -80,6 +84,7 @@ export default function sceneTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in scene.getResourceFactory() " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -103,6 +108,7 @@ export default function sceneTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in scene.destroy() " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -123,6 +129,7 @@ export default function sceneTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in SceneResourceParameters " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -143,6 +150,7 @@ export default function sceneTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in SceneNodeParameters " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -167,6 +175,54 @@ export default function sceneTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in testSceneType " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0080
+     * @tc.name      : testSceneRenderFrame
+     * @tc.desc      : Used to see if the scene is single-frame
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testSceneRenderFrame', 0, (done:Function)=> {
+      let msg = "============================testSceneRenderFrame";
+      console.info(msg + ' begin ');
+      try {
+        scene?.renderFrame({ alwaysRender: true });
+        expect(scene?.renderFrame()).assertTrue();
+        console.info(msg + " Succeed in scene?.renderFrame() ");
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in scene?.renderFrame() " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0090
+     * @tc.name      : testSceneRenderParameters
+     * @tc.desc      : Used to set if the scene is single-frame
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testRenderParameters', 0, (done:Function)=> {
+      let msg = "============================testRenderParameters";
+      console.info(msg + ' begin ');
+      try {
+        let RenderParameters: scene3d.RenderParameters = { alwaysRender: true};
+        expect(RenderParameters.alwaysRender).assertTrue();
+        console.info(msg + " Succeed in RenderParameters.alwaysRender is true ");
+        RenderParameters = { alwaysRender: false}
+        expect(RenderParameters.alwaysRender).assertFalse();
+        console.info(msg + " Succeed in RenderParameters.alwaysRender is false ");
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in scene3d.RenderParameters " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
