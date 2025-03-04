@@ -844,7 +844,7 @@ export default function i18nStageTest() {
       console.log('relativeTimeFormatAdapt_test_0110' + value);
       let devTyp = deviceInfo.deviceType;
       console.log('relativeTimeFormatAdapt_test_0110 device' + devTyp);
-      if (devTyp == '2inl' || devTyp == 'tablet' || devTyp == 'phone' || devTyp == 'default') {
+      if (devTyp == '2in1' || devTyp == 'tablet' || devTyp == 'phone' || devTyp == 'default') {
         expect(value).assertEqual('in 100 seconds');
       } else {
         expect(value).assertEqual('in 100 sec.');
