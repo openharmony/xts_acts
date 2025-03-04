@@ -83,7 +83,7 @@ export default function textThemeTest() {
       const attrsText = (JSON.parse(textJSON)?.$attrs as TextAttribute);
       const fontColor: string = attrsText?.fontColor?.toString().toUpperCase() ?? EMPTY_ATTR;
       const checkFontColor: string = colorValues?.get("fontPrimary")?.toString().toUpperCase() ?? EMPTY_CHECK;
-      expect(fontColor).assertEqual('#FF000000');
+      expect(fontColor).assertEqual(checkFontColor);
       console.info(`${SUITE} ${CASE} END`);
     });
 
@@ -103,7 +103,7 @@ export default function textThemeTest() {
       const fontColor: string = attrsText?.fontColor?.toString().toUpperCase() ?? EMPTY_ATTR;
       const checkFontColor: string = localTheme?.colors?.fontPrimary?.toString().toUpperCase()
         ?? EMPTY_CHECK;
-      expect(fontColor).assertEqual('#FF000000');
+      expect(fontColor).assertEqual(checkFontColor);
       changeTheme = true;
       console.info(`${SUITE} ${CASE} END`);
     })
@@ -126,7 +126,7 @@ export default function textThemeTest() {
       const fontColor: string = attrsText?.fontColor?.toString().toUpperCase() ?? EMPTY_ATTR;
       const checkFontColor: string = localTheme?.colors?.fontPrimary?.toString().toUpperCase()
         ?? EMPTY_CHECK;
-      expect(fontColor).assertEqual('#FF000000');
+      expect(fontColor).assertEqual(checkFontColor);
       changeTheme = true;
       console.info(`${SUITE} ${CASE} END`);
     });
