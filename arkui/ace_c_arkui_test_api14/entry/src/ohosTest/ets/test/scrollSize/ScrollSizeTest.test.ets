@@ -44,7 +44,7 @@ export default function ScrollSizeTest(){
       let x = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect));
       let y = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect));
       console.info("testGetScrollSizeTest001  x= " +  x  + ", y = " + y);
-      await driver.swipe(x, Math.round(y + vp2px(100)), x, y);
+      await driver.swipe(x, Math.round(y + vp2px(40)), x, Math.round(y - vp2px(40)));
       await Utils.sleep(2000);
       console.info("testGetScrollSizeTest001  swipe");
       expect(Utils.getComponentInfoByKey('scrollSizeCalled').$attrs.backgroundColor).assertEqual('#FF00FF00')

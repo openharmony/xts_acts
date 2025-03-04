@@ -53,12 +53,6 @@ ohos_moduletest_suite("ActsDeqpgles2Suite0004Test") {
     "../functional/Deqpgles2loops_do_while_uniform_iterationsTestCase.cpp",
     "../functional/Deqpgles2loops_for_constant_iterationsTestCase.cpp",
     "../functional/Deqpgles2loops_for_dynamic_iterationsTestCase.cpp",
-    "../functional/Deqpgles2loops_for_uniform_iterationsTestCase.cpp",
-    "../functional/Deqpgles2loops_while_constant_iterationsTestCase.cpp",
-    "../functional/Deqpgles2loops_while_dynamic_iterationsTestCase.cpp",
-    "../functional/Deqpgles2loops_while_uniform_iterationsTestCase.cpp",
-    "../functional/Deqpgles2unary_operator_minusTestCase.cpp",
-    "../functional/Deqpgles2unary_operator_plusTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import PasteboardGetMimeTypesTest from './PasteboardGetMimeTypesTest.test';
+import PasteboardProgressPermissionTest from './PasteboardProgressPermissionTest.test';
 
 export default function testsuite() {
   PasteboardGetMimeTypesTest();
+  PasteboardProgressPermissionTest();
 }

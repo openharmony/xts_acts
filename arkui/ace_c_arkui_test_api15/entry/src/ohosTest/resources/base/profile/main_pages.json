@@ -25,7 +25,7 @@
     "MainAbility/pages/focuscontrol/focuscontrol4",
     "MainAbility/pages/list/ListCaseTest",
     "MainAbility/pages/listScrollTo/ListScrollToTest",
-     "MainAbility/pages/gestureCancel/gestureCancel"
-
+    "MainAbility/pages/gestureCancel/gestureCancel",
+    "MainAbility/pages/scroll/ScrollBackToTopTest"
   ]
 }

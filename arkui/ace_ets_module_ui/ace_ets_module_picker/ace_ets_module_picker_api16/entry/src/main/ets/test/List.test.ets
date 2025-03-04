@@ -24,10 +24,12 @@ import selectNode from './select/selectNode.test';
 import sliderNode from './slider/sliderNode.test';
 import toggleNode from './toggle/toggleNode.test';
 import columnWidths from './textPicker/columnWidths.test';
+import datePickerMode from './datePicker/DatePickerMode.test';
 import disableDateRangeAndMarkTodayTest from './calendarPicker/disableDateRangeAndMarkToday.test'
 import PickerCrownSensitivity from './crownSensitivity/Picker.test';
 import TimePickerCrownSensitivity from './crownSensitivity/TimePicker.test';
 import TextPickerCrownSensitivity from './crownSensitivity/TextPicker.test';
+import calendarPickerStartEndTest from './calendarPicker/startEndTest.test';
 
 export default function testsuite() {
   buttonType();
@@ -40,8 +42,10 @@ export default function testsuite() {
   sliderNode();
   toggleNode();
   columnWidths();
+  datePickerMode();
   disableDateRangeAndMarkTodayTest();
   PickerCrownSensitivity();
   TimePickerCrownSensitivity();
   TextPickerCrownSensitivity();
+  calendarPickerStartEndTest();
 }

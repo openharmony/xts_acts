@@ -81,7 +81,6 @@ struct WebInitTest {
             console.info("key==>" + this.str)
             switch (this.str) {
               case "emitOnPrompt": {
-                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   this.controller.loadUrl("resource://rawfile/index.html");
                   setTimeout(() => {
                     this.controller.runJavaScript('toPrompt()')
@@ -90,12 +89,8 @@ struct WebInitTest {
                       })
                   }, 3000);
                   break;
-                } else {
-                  Utils.emitEvent("age", 178)
-                }
               }
               case "emitOnAlert": {
-                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   this.controller.runJavaScript('alertTest()')
                     .then((result) => {
                       console.log('result: ' + result);
@@ -104,12 +99,8 @@ struct WebInitTest {
                     Utils.emitEvent(this.alert, 63);
                   }, 3000);
                   break;
-                } else {
-                  Utils.emitEvent( "alert test", 63);
-                }
               }
               case "emitOnConfirm": {
-                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   this.controller.runJavaScript('confirmTest()')
                     .then((result) => {
                       console.log('result: ' + result);
@@ -118,9 +109,6 @@ struct WebInitTest {
                     Utils.emitEvent(this.confirm, 64);
                   }, 3000);
                   break;
-                } else {
-                  Utils.emitEvent("confirm test", 64);
-                }
               }
             }
           })

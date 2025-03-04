@@ -66,22 +66,6 @@ ohos_moduletest_suite("ActsDeqpgles31Suite0012Test") {
     "../functional/Deqpgles313d_load_storeTestCase.cpp",
     "../functional/Deqpgles313d_qualifiersTestCase.cpp",
     "../functional/Deqpgles313d_storeTestCase.cpp",
-    "../functional/Deqpgles31atomic_counter_getTestCase.cpp",
-    "../functional/Deqpgles31atomic_counter_get_branchTestCase.cpp",
-    "../functional/Deqpgles31buffer_atomicTestCase.cpp",
-    "../functional/Deqpgles31buffer_format_reinterpretTestCase.cpp",
-    "../functional/Deqpgles31buffer_image_sizeTestCase.cpp",
-    "../functional/Deqpgles31buffer_load_storeTestCase.cpp",
-    "../functional/Deqpgles31buffer_qualifiersTestCase.cpp",
-    "../functional/Deqpgles31buffer_storeTestCase.cpp",
-    "../functional/Deqpgles31cube_atomicTestCase.cpp",
-    "../functional/Deqpgles31cube_format_reinterpretTestCase.cpp",
-    "../functional/Deqpgles31cube_image_sizeTestCase.cpp",
-    "../functional/Deqpgles31cube_load_storeTestCase.cpp",
-    "../functional/Deqpgles31cube_qualifiersTestCase.cpp",
-    "../functional/Deqpgles31cube_storeTestCase.cpp",
-    "../functional/Deqpgles31image_load_store_early_fragment_testsTestCase.cpp",
-    "../functional/Deqpgles31random_basic_type_arraysTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

@@ -130,7 +130,6 @@ struct WebViewEnumAndFontLibrary {
           console.info("key==>" + this.str)
           switch (this.str) {
             case "emitDatabaseAccessTrue": {
-              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 this.databaseAccess = true
                 await Utils.sleep(2000)
                 this.controller.loadUrl("resource://rawfile/databaseAccess.html");
@@ -141,9 +140,6 @@ struct WebViewEnumAndFontLibrary {
                   Utils.emitEvent(result, 1301)
                 })
                 break;
-              } else {
-                Utils.emitEvent("openDatabase", 1301)
-              }
             }
           }
         })

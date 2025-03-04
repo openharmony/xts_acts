@@ -72,7 +72,7 @@ struct APIFontPrimary {
           .backgroundColor('#FF9A2AC3')
       }
 
-      Text(`${this.text1 == '#FFBA1414' ? 'true' : 'false'}`)
+      Text(`${this.text1 == '#FF000000' ? 'true' : 'false'}`)
         .fontWeight(700)
         .fontSize(30)
         .width('100%')

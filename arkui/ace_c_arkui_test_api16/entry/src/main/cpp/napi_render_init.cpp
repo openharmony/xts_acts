@@ -20,8 +20,10 @@
 #include "textArea/textArea_letter_spacing.h"
 #include "textpicker/textpicker_columnwidths_test.h"
 #include "scroll/scroll_backtotop_test.h"
+#include "datepicker/datepicker_test.h"
 #include "drag/drag_test.h"
 #include "calendarPicker/calendar_picker_test.h"
+#include "calendarPicker/calendarPicker_date_test.h"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -39,6 +41,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"swiperAutoPlayTest", nullptr, SwiperTest::swiperAutoPlayTest,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"textAreaLetterSpacing001", nullptr, TextAreaLetterSpacing::textAreaLetterSpacing001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCalendarPickerDate", nullptr, CalendarPickerStartEndTest::CalendarPickerDateTest,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testDatePickerMode", nullptr, DatePickerTest::DatePickerModeTest,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"textInputLetterSpacing002", nullptr, TextAreaLetterSpacing::textInputLetterSpacing002,
          nullptr, nullptr, nullptr, napi_default, nullptr},

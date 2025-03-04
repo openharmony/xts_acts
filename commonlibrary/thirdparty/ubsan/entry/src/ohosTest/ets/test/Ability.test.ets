@@ -23,13 +23,13 @@ export default function abilityTest() {
     beforeAll(async () => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
-      await Utils.sleep(1000)
+      await Utils.sleep(100)
     })
     beforeEach(async () => {
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
-      await Utils.sleep(1000)
+      await Utils.sleep(100)
     })
 
     /**
@@ -211,6 +211,32 @@ export default function abilityTest() {
      */
     it('testShiftBase', 0, async () => {
       let result: number = ubsan.shiftBase(32);
+      expect(result).assertEqual(1);
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_UBSAN_SHIFT_BASE_INT_MAX
+     * @tc.name       : testShiftBaseIntMax
+     * @tc.desc       : test ShiftBaseIntMax
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testShiftBaseIntMax', 0, async () => {
+      let result: number = ubsan.shiftBaseIntMax(2147483647);
+      expect(result).assertEqual(1);
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_UBSAN_SHIFT_BASE_INT_MIN
+     * @tc.name       : testShiftBaseIntMin
+     * @tc.desc       : test ShiftBaseIntMin
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testShiftBaseIntMin', 0, async () => {
+      let result: number = ubsan.shiftBaseIntMin(-2147483648);
       expect(result).assertEqual(1);
     });
 
