@@ -13,9 +13,6 @@
  * limitations under the License.
  */
 
-{
-  "name": "libentry.so",
-  "types": "./index.d.ts",
-  "version": "",
-  "description": "Please describe the basic information."
-}
+export const add: (a: number, b: number) => number;
+export const createNativeNode: (a: string) => void;
+export const createNativeNodeFalse: (id: string) => void;
