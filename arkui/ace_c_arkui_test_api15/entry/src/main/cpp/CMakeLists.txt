@@ -31,6 +31,8 @@ add_library(nativerender SHARED
     component/waterflow_component.cpp
     component/button_component.cpp
     component/text_component.cpp
+    gestureRecognizer/gestureRecognizer.cpp
+    eventInfo/eventInfo.cpp
 )
 
 add_library(nativefunc SHARED

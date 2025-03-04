@@ -33,6 +33,8 @@ import getWindowInfoTest from "./window/GetWindowInfoTest.test"
 import testLazyForEachExpandMode from "./lazyForEach/testLazyForEachExpandMode.test"
 import gesturecancelTest from "./gesturecancelTest/gesturecancelTest.test"
 import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
+import gestureRecognizerTest from './gestureRecognizer/GestureRecognizerTest.test'
+import EventInfoTest from "./eventInfo/EventInfoTest.test"
 
 
 export default function testsuite() {
@@ -54,4 +56,6 @@ export default function testsuite() {
    testLazyForEachExpandMode();
    gesturecancelTest();
    scrollBackToTopTest();
+   gestureRecognizerTest();
+   EventInfoTest();
 }
