@@ -69,6 +69,7 @@ export const GetTouchEventData: () => object;
 export const snapShotTest001: (a: string) => void;
 
 export const TestsnapShotetResult: () => string[];
+
 export const scrollBackToTopTest: (a: string) => void;
 
 export const TestGestureRecognizerFinger001: (a: string) => void;
