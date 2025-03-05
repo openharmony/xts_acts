@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect, beforeEach } from '@ohos/hypium'
+import { describe, beforeAll, afterEach, it, expect, beforeEach, Level } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import contact from '@ohos.contact';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -196,7 +196,7 @@ export default function SaveToExistingContactViaUITest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSaveToExistingContactViaUI0100', 0, async (done: Function) => {
+    it('testTelephonyContactSaveToExistingContactViaUI0100', Level.LEVEL0, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSaveToExistingContactViaUI0100";
       console.info(`${caseName} test start `);
@@ -263,7 +263,7 @@ export default function SaveToExistingContactViaUITest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSaveToExistingContactViaUI0200', 0, async (done: Function) => {
+    it('testTelephonyContactSaveToExistingContactViaUI0200', Level.LEVEL0, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSaveToExistingContactViaUI0200";
       console.info(`${caseName} test start `);
@@ -334,7 +334,7 @@ export default function SaveToExistingContactViaUITest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSaveToExistingContactViaUI0300', 0, async (done: Function) => {
+    it('testTelephonyContactSaveToExistingContactViaUI0300', Level.LEVEL0, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSaveToExistingContactViaUI0300";
       console.info(`${caseName} test start `);
