@@ -15,6 +15,9 @@
 
 import keyDispatchTest from "./keydispatchTest/KeyDispatchTest.test"
 import ProgressLinearStyleTest from "./progress/progressLinearStyleTest.test"
+import checkboxGroupTest from "./checkbox/CheckboxGroupTest.test"
+import checkboxGroupGroupTest from "./checkboxgroup/CheckboxGroupGroupTest.test"
+import checkboxGroupSelectAllTest from "./checkboxgroup/CheckboxGroupSelectAllTest.test"
 
 import FocusControlTest from "./foucscontrolTest/FocusControlTest.test"
 import FocusControlTest2 from "./foucscontrolTest/FocusControlTest2.test"
@@ -44,6 +47,9 @@ export default function testsuite() {
    FocusControlTest2();
    FocusControlTest3();
    FocusControlTest4();
+   checkboxGroupTest();
+   checkboxGroupGroupTest();
+   checkboxGroupSelectAllTest();
    listCaseTest();
    listScrollToIndexTest();
    listItemGroupNodeAdapterTest();

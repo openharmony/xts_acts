@@ -19,6 +19,9 @@
 #include "progress/progress_linear_style_test.h"
 
 #include "focusControl/focus_Control.h"
+#include "checkboxgroup/checkboxgroup_group_test.h"
+#include "checkboxgroup/checkboxgroup_selectall_test.h"
+#include "checkbox/checkbox_group_test.h"
 #include "list/list_test.h"
 #include "listScrollTo/list_scroll_to_test.h"
 #include "textArea/textArea_letter_spacing.h"
@@ -59,6 +62,12 @@ static napi_value Init(napi_env env, napi_value exports)
         {"listTestCallback", nullptr, ListTest::ListCaseTest, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"listScrollToTestCallback", nullptr, ListScrollToTest::ListScrollToIndexTest, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"checkboxGroupGroupTest", nullptr, CheckboxGroupGroupTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"checkboxGroupSelectAllTest", nullptr, CheckboxGroupSelectAllTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"checkboxGroupTest", nullptr, CheckboxGroupTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"textAreaLetterSpacing001", nullptr, TextAreaLetterSpacing::textAreaLetterSpacing001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"textInputLetterSpacing002", nullptr, TextAreaLetterSpacing::textInputLetterSpacing002,
