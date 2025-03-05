@@ -24,9 +24,9 @@ function sleep(ms: number) {
 class ServiceExtStub extends SubServiceExtStub{
 
   sub(num1: number, num2: number, callback: subCallback): void{
-      let res = num1 - num2
-      callback(0,res)
-      Logger.info(`sub result: ${res}`)
+      let res = num1 - num2;
+      callback(0,res);
+      Logger.info(`sub result: ${res}`);
   }
 }
 let subServiceDestroyEvent = 'subServiceDestroyEvent';
