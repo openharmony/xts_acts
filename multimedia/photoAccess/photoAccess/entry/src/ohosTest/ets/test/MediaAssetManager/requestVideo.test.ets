@@ -18,6 +18,7 @@ import { describe, it, expect, beforeAll } from '@ohos/hypium'
 import media from '@ohos.multimedia.media';
 import common from '@ohos.app.ability.common';
 import fs from "@ohos.file.fs"
+import { BusinessError } from '@kit.BasicServicesKit';
 import {
   photoKeys,
   fetchOption,
@@ -35,11 +36,24 @@ export default function requestVideoTest() {
     let testContext: common.UIAbilityContext = AppStorage.get('testContext') as common.UIAbilityContext;
     let helper = photoAccessHelper.getPhotoAccessHelper(testContext);
     let hdrVideoUri = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/entry_test/photos/test_hdr_1.mp4";
+    let isSupportHdr = false;
 
     beforeAll(async () => {
       console.info('beforeAll case');
       await getPermission();
       await driveFn();
+      isSupportHdr = await fs.access('/system/lib64/ndk/libvideo_processing_capi_impl.so').then((res) => {
+        if (res) {
+          console.info("file exists");
+          return true;
+        } else {
+          console.info("file not exists");
+          return false;
+        }
+      }).catch((err: BusinessError) => {
+        console.error("access failed with error message: " + err.message + ", error code: " + err.code);
+        return false;
+      });
       await sleep(1000);
       await createVideoBySandBoxUri('createHdr001', testContext, hdrVideoUri);
     });
@@ -102,30 +116,36 @@ export default function requestVideoTest() {
     }
 
     const requestVideoRequestOptionsHdr = async (testNum: string, done: Function, requestOptions: photoAccessHelper.RequestOptions) => {
-      try {
-        let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
-        let fetchResult = await helper.getAssets(fetchOps);
-        let photoAsset = await fetchResult.getFirstObject();
-        let destUri: string = createSandboxFileUri(testContext, 'mp4');
-
-        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
-          async onDataPrepared(data: boolean) {
-            console.info(`${testNum} succeed`);
-            expect(data).assertTrue();
-            done();
-          }
-        }
-
-        const handler = new MediaHandler();
-        await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
-        await sleep(3000);
-        let uri: string = await createVideoBySandBoxUri(testNum, testContext, destUri);
-        let flag = await isHdr(testNum, uri);
-        expect(flag).assertEqual(0);
-      } catch (error) {
-        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        expect(false).assertTrue();
+      if (!isSupportHdr) {
+        console.log('device is not support hdr');
+        expect(true).assertTrue();
         done();
+      } else {
+        try {
+          let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
+          let fetchResult = await helper.getAssets(fetchOps);
+          let photoAsset = await fetchResult.getFirstObject();
+          let destUri: string = createSandboxFileUri(testContext, 'mp4');
+
+          class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+            async onDataPrepared(data: boolean) {
+              console.info(`${testNum} succeed`);
+              expect(data).assertTrue();
+              done();
+            }
+          }
+
+          const handler = new MediaHandler();
+          await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
+          await sleep(3000);
+          let uri: string = await createVideoBySandBoxUri(testNum, testContext, destUri);
+          let flag = await isHdr(testNum, uri);
+          expect(flag).assertEqual(0);
+        } catch (error) {
+          console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+          expect(false).assertTrue();
+          done();
+        }
       }
     }
 
@@ -154,28 +174,34 @@ export default function requestVideoTest() {
     }
 
     const requestVideoRequestOptionsErrorHdr = async (testNum: string, done: Function, requestOptions: photoAccessHelper.RequestOptions) => {
-      try {
-        let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
-        let fetchResult = await helper.getAssets(fetchOps);
-        let photoAsset = await fetchResult.getFirstObject();
-        let destUri: string = createSandboxFileUri(testContext, 'mp4');
-
-        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
-          onDataPrepared(data: boolean) {
-            console.info(`${testNum} failed`);
-            expect(data).assertTrue();
-            done();
-          }
-        }
-        const handler = new MediaHandler();
-        await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
-        let uri: string = await createVideoBySandBoxUri(testNum, testContext, destUri);
-        let flag = await isHdr(testNum, uri);
-        expect(flag).assertEqual(0);
-      } catch (error) {
-        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        expect(error.code).assertEqual('401');
+      if (!isSupportHdr) {
+        console.log('device is not support hdr');
+        expect(true).assertTrue();
         done();
+      } else {
+        try {
+          let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
+          let fetchResult = await helper.getAssets(fetchOps);
+          let photoAsset = await fetchResult.getFirstObject();
+          let destUri: string = createSandboxFileUri(testContext, 'mp4');
+
+          class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+            onDataPrepared(data: boolean) {
+              console.info(`${testNum} failed`);
+              expect(data).assertTrue();
+              done();
+            }
+          }
+          const handler = new MediaHandler();
+          await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
+          let uri: string = await createVideoBySandBoxUri(testNum, testContext, destUri);
+          let flag = await isHdr(testNum, uri);
+          expect(flag).assertEqual(0);
+        } catch (error) {
+          console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+          expect(error.code).assertEqual('401');
+          done();
+        }
       }
     }
 
@@ -205,31 +231,37 @@ export default function requestVideoTest() {
     }
 
     const requestVideoPhotoAssetErrorCompatible = async  (testNum: string, done: Function, photoAsset: photoAccessHelper.PhotoAsset) => {
-      try {
-        let destUri: string = createSandboxFileUri(testContext, 'mp4');
-
-        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
-          onDataPrepared(data: boolean) {
-            console.info(`${testNum} failed`);
-            expect(false).assertTrue();
-            done();
-          }
-        }
-
-        let requestOptions: photoAccessHelper.RequestOptions = {
-          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
-          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
-          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
-        };
-        const handler = new MediaHandler();
-        await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
-        let uri: string = await createVideoBySandBoxUri(testNum, testContext, destUri);
-        let flag = await isHdr(testNum, uri);
-        expect(flag).assertEqual(0);
-      } catch (error) {
-        console.error(`${testNum} failed; error: ${error.code} ${error.message}`);
-        expect(error.code).assertEqual('401');
+      if (!isSupportHdr) {
+        console.log('device is not support hdr');
+        expect(true).assertTrue();
         done();
+      } else {
+        try {
+          let destUri: string = createSandboxFileUri(testContext, 'mp4');
+
+          class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+            onDataPrepared(data: boolean) {
+              console.info(`${testNum} failed`);
+              expect(false).assertTrue();
+              done();
+            }
+          }
+
+          let requestOptions: photoAccessHelper.RequestOptions = {
+            deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+            sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+            compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+          };
+          const handler = new MediaHandler();
+          await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
+          let uri: string = await createVideoBySandBoxUri(testNum, testContext, destUri);
+          let flag = await isHdr(testNum, uri);
+          expect(flag).assertEqual(0);
+        } catch (error) {
+          console.error(`${testNum} failed; error: ${error.code} ${error.message}`);
+          expect(error.code).assertEqual('401');
+          done();
+        }
       }
     }
 
@@ -291,65 +323,77 @@ export default function requestVideoTest() {
     }
 
     const requestVideoDestUriErrorCompatible = async (testNum: string, done: Function, destUri: string, errCode: string) => {
-      try {
-        let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
-        let fetchResult = await helper.getAssets(fetchOps);
-        let photoAsset = await fetchResult.getFirstObject();
-
-        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
-          onDataPrepared(data: boolean) {
-            console.info(`${testNum} failed`);
-            expect(false).assertTrue();
-            done();
-          }
-        }
-
-        let requestOptions: photoAccessHelper.RequestOptions = {
-          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
-          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
-          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
-        };
-        const handler = new MediaHandler();
-        await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
-        let uri: string = await createVideoBySandBoxUri(testNum, testContext, destUri);
-        let flag = await isHdr(testNum, uri);
-        expect(flag).assertEqual(0);
-      } catch (error) {
-        console.error(`${testNum} failed; error: ${error.code} ${error.message}`);
-        expect(error.code).assertEqual(errCode);
+      if (!isSupportHdr) {
+        console.log('device is not support hdr');
+        expect(true).assertTrue();
         done();
+      } else {
+        try {
+          let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
+          let fetchResult = await helper.getAssets(fetchOps);
+          let photoAsset = await fetchResult.getFirstObject();
+
+          class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+            onDataPrepared(data: boolean) {
+              console.info(`${testNum} failed`);
+              expect(false).assertTrue();
+              done();
+            }
+          }
+
+          let requestOptions: photoAccessHelper.RequestOptions = {
+            deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+            sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+            compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+          };
+          const handler = new MediaHandler();
+          await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
+          let uri: string = await createVideoBySandBoxUri(testNum, testContext, destUri);
+          let flag = await isHdr(testNum, uri);
+          expect(flag).assertEqual(0);
+        } catch (error) {
+          console.error(`${testNum} failed; error: ${error.code} ${error.message}`);
+          expect(error.code).assertEqual(errCode);
+          done();
+        }
       }
     }
 
     const requestVideoDestUriErrorCompatibleOnprogress = async (testNum: string, done: Function, destUri: string, errCode: string) => {
-      try {
-        let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
-        let fetchResult = await helper.getAssets(fetchOps);
-        let photoAsset = await fetchResult.getFirstObject();
-
-        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
-          onDataPrepared(data: boolean) {
-            console.info(`${testNum} failed`);
-            expect(false).assertTrue();
-            done();
-          }
-        }
-
-        let requestOptions: photoAccessHelper.RequestOptions = {
-          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
-          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
-          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
-          mediaAssetProgressHandler: TestHandler,
-        };
-        const handler = new MediaHandler();
-        await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
-        let uri: string = await createVideoBySandBoxUri(testNum, testContext, destUri);
-        let flag = await isHdr(testNum, uri);
-        expect(flag).assertEqual(0);
-      } catch (error) {
-        console.error(`${testNum} failed; error: ${error.code} ${error.message}`);
-        expect(error.code).assertEqual(errCode);
+      if (!isSupportHdr) {
+        console.log('device is not support hdr');
+        expect(true).assertTrue();
         done();
+      } else {
+        try {
+          let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
+          let fetchResult = await helper.getAssets(fetchOps);
+          let photoAsset = await fetchResult.getFirstObject();
+
+          class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+            onDataPrepared(data: boolean) {
+              console.info(`${testNum} failed`);
+              expect(false).assertTrue();
+              done();
+            }
+          }
+
+          let requestOptions: photoAccessHelper.RequestOptions = {
+            deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+            sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+            compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+            mediaAssetProgressHandler: TestHandler,
+          };
+          const handler = new MediaHandler();
+          await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
+          let uri: string = await createVideoBySandBoxUri(testNum, testContext, destUri);
+          let flag = await isHdr(testNum, uri);
+          expect(flag).assertEqual(0);
+        } catch (error) {
+          console.error(`${testNum} failed; error: ${error.code} ${error.message}`);
+          expect(error.code).assertEqual(errCode);
+          done();
+        }
       }
     }
 
@@ -1137,32 +1181,38 @@ export default function requestVideoTest() {
      * @tc.level     : Level 0
      */
     it('request_video_delivery_fast_source_original_compatible_moving_photo', 0, async (done: Function) => {
-      let testNum = 'request_video_delivery_fast_source_original_compatible_moving_photo';
-      let requestOptions: photoAccessHelper.RequestOptions = {
-        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
-        sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
-        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
-      };
-      try {
-        let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "hdr_moving_photo.jpeg");
-        let fetchResult = await helper.getAssets(fetchOps);
-        let photoAsset = await fetchResult.getFirstObject();
-        let destUri: string = createSandboxFileUri(testContext, 'mp4');
-
-        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
-          onDataPrepared(data: boolean) {
-            console.info(`${testNum} failed`);
-            expect(data).assertTrue();
-            done();
-          }
-        }
-
-        const handler = new MediaHandler();
-        await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
-      } catch (error) {
-        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        expect(error.code).assertEqual('401');
+      if (!isSupportHdr) {
+        console.log('device is not support hdr');
+        expect(true).assertTrue();
         done();
+      } else {
+        let testNum = 'request_video_delivery_fast_source_original_compatible_moving_photo';
+        let requestOptions: photoAccessHelper.RequestOptions = {
+          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+        };
+        try {
+          let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "hdr_moving_photo.jpeg");
+          let fetchResult = await helper.getAssets(fetchOps);
+          let photoAsset = await fetchResult.getFirstObject();
+          let destUri: string = createSandboxFileUri(testContext, 'mp4');
+
+          class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+            onDataPrepared(data: boolean) {
+              console.info(`${testNum} failed`);
+              expect(data).assertTrue();
+              done();
+            }
+          }
+
+          const handler = new MediaHandler();
+          await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
+        } catch (error) {
+          console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+          expect(error.code).assertEqual('401');
+          done();
+        }
       }
     });
     /**
@@ -1176,34 +1226,40 @@ export default function requestVideoTest() {
      * @tc.level     : Level 0
      */
     it('request_video_delivery_fast_source_original_compatible_onprogress_moving_photo', 0, async (done: Function) => {
-      let testNum = 'request_video_delivery_fast_source_original_compatible_onprogress_moving_photo';
-      let requestOptions: photoAccessHelper.RequestOptions = {
-        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
-        sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
-        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
-        mediaAssetProgressHandler: TestHandler,
-      };
-      try {
-        let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "hdr_moving_photo.jpeg");
-        let fetchResult = await helper.getAssets(fetchOps);
-        let photoAsset = await fetchResult.getFirstObject();
-        let destUri: string = createSandboxFileUri(testContext, 'mp4');
-
-        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
-          onDataPrepared(data: boolean) {
-            console.info(`${testNum} failed`);
-            expect(data).assertTrue();
-            done();
-          }
-        }
-
-        const handler = new MediaHandler();
-        await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset,
-          requestOptions, destUri, handler);
-      } catch (error) {
-        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        expect(error.code).assertEqual('401');
+      if (!isSupportHdr) {
+        console.log('device is not support hdr');
+        expect(true).assertTrue();
         done();
+      } else {
+        let testNum = 'request_video_delivery_fast_source_original_compatible_onprogress_moving_photo';
+        let requestOptions: photoAccessHelper.RequestOptions = {
+          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+          mediaAssetProgressHandler: TestHandler,
+        };
+        try {
+          let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "hdr_moving_photo.jpeg");
+          let fetchResult = await helper.getAssets(fetchOps);
+          let photoAsset = await fetchResult.getFirstObject();
+          let destUri: string = createSandboxFileUri(testContext, 'mp4');
+
+          class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+            onDataPrepared(data: boolean) {
+              console.info(`${testNum} failed`);
+              expect(data).assertTrue();
+              done();
+            }
+          }
+
+          const handler = new MediaHandler();
+          await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset,
+            requestOptions, destUri, handler);
+        } catch (error) {
+          console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+          expect(error.code).assertEqual('401');
+          done();
+        }
       }
     });
     /**
@@ -1655,33 +1711,39 @@ export default function requestVideoTest() {
      * @tc.level     : Level 0
      */
     it('request_video_photoAsset_imageAsset_compatible', 0, async (done: Function) => {
-      let testNum = 'request_video_photoAsset_imageAsset_compatible';
-      try {
-        let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
-        let fetchResult = await helper.getAssets(fetchOps);
-        let photoAsset = await fetchResult.getFirstObject();
-        let destUri: string = createSandboxFileUri(testContext, 'mp4');
-
-        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
-          onDataPrepared(data: boolean) {
-            console.info(`${testNum} succeed`);
-            expect(false).assertTrue();
-            done();
-          }
-        }
-
-        let requestOptions: photoAccessHelper.RequestOptions = {
-          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
-          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
-          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
-        };
-        const handler = new MediaHandler();
-        await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
-        await isHdr(testNum, destUri);
-      } catch (error) {
-        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        expect(error.code).assertEqual('401');
+      if (!isSupportHdr) {
+        console.log('device is not support hdr');
+        expect(true).assertTrue();
         done();
+      } else {
+        let testNum = 'request_video_photoAsset_imageAsset_compatible';
+        try {
+          let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
+          let fetchResult = await helper.getAssets(fetchOps);
+          let photoAsset = await fetchResult.getFirstObject();
+          let destUri: string = createSandboxFileUri(testContext, 'mp4');
+
+          class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+            onDataPrepared(data: boolean) {
+              console.info(`${testNum} succeed`);
+              expect(false).assertTrue();
+              done();
+            }
+          }
+
+          let requestOptions: photoAccessHelper.RequestOptions = {
+            deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+            sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+            compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+          };
+          const handler = new MediaHandler();
+          await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
+          await isHdr(testNum, destUri);
+        } catch (error) {
+          console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+          expect(error.code).assertEqual('401');
+          done();
+        }
       }
     });
     /**
@@ -1695,34 +1757,40 @@ export default function requestVideoTest() {
      * @tc.level     : Level 0
      */
     it('request_video_photoAsset_imageAsset_compatible_onprogress', 0, async (done: Function) => {
-      let testNum = 'request_video_photoAsset_imageAsset_compatible_onprogress';
-      try {
-        let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
-        let fetchResult = await helper.getAssets(fetchOps);
-        let photoAsset = await fetchResult.getFirstObject();
-        let destUri: string = createSandboxFileUri(testContext, 'mp4');
-
-        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
-          onDataPrepared(data: boolean) {
-            console.info(`${testNum} succeed`);
-            expect(false).assertTrue();
-            done();
-          }
-        }
-
-        let requestOptions: photoAccessHelper.RequestOptions = {
-          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
-          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
-          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
-          mediaAssetProgressHandler: TestHandler,
-        };
-        const handler = new MediaHandler();
-        await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
-        await isHdr(testNum, destUri);
-      } catch (error) {
-        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        expect(error.code).assertEqual('401');
+      if (!isSupportHdr) {
+        console.log('device is not support hdr');
+        expect(true).assertTrue();
         done();
+      } else {
+        let testNum = 'request_video_photoAsset_imageAsset_compatible_onprogress';
+        try {
+          let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
+          let fetchResult = await helper.getAssets(fetchOps);
+          let photoAsset = await fetchResult.getFirstObject();
+          let destUri: string = createSandboxFileUri(testContext, 'mp4');
+
+          class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+            onDataPrepared(data: boolean) {
+              console.info(`${testNum} succeed`);
+              expect(false).assertTrue();
+              done();
+            }
+          }
+
+          let requestOptions: photoAccessHelper.RequestOptions = {
+            deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+            sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+            compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+            mediaAssetProgressHandler: TestHandler,
+          };
+          const handler = new MediaHandler();
+          await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
+          await isHdr(testNum, destUri);
+        } catch (error) {
+          console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+          expect(error.code).assertEqual('401');
+          done();
+        }
       }
     });
     /**
@@ -1736,33 +1804,39 @@ export default function requestVideoTest() {
      * @tc.level     : Level 0
      */
     it('request_video_fileUri_image_compatible', 0, async (done: Function) => {
-      let testNum = 'request_video_fileUri_image_compatible';
-      try {
-        let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
-        let fetchResult = await helper.getAssets(fetchOps);
-        let photoAsset = await fetchResult.getFirstObject();
-        let destUri: string = createSandboxFileUri(testContext, 'jpg');
-
-        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
-          onDataPrepared(data: boolean) {
-            console.info(`${testNum} succeed`);
-            expect(false).assertTrue();
-            done();
-          }
-        }
-
-        let requestOptions: photoAccessHelper.RequestOptions = {
-          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
-          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
-          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
-        };
-        const handler = new MediaHandler();
-        await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
-        await isHdr(testNum, destUri);
-      } catch (error) {
-        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        expect(error.code).assertEqual('401');
+      if (!isSupportHdr) {
+        console.log('device is not support hdr');
+        expect(true).assertTrue();
         done();
+      } else {
+        let testNum = 'request_video_fileUri_image_compatible';
+        try {
+          let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
+          let fetchResult = await helper.getAssets(fetchOps);
+          let photoAsset = await fetchResult.getFirstObject();
+          let destUri: string = createSandboxFileUri(testContext, 'jpg');
+
+          class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+            onDataPrepared(data: boolean) {
+              console.info(`${testNum} succeed`);
+              expect(false).assertTrue();
+              done();
+            }
+          }
+
+          let requestOptions: photoAccessHelper.RequestOptions = {
+            deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+            sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+            compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+          };
+          const handler = new MediaHandler();
+          await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
+          await isHdr(testNum, destUri);
+        } catch (error) {
+          console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+          expect(error.code).assertEqual('401');
+          done();
+        }
       }
     });
     /**
@@ -1776,34 +1850,40 @@ export default function requestVideoTest() {
      * @tc.level     : Level 0
      */
     it('request_video_fileUri_image_compatible_onprogress', 0, async (done: Function) => {
-      let testNum = 'request_video_fileUri_image_compatible_onprogress';
-      try {
-        let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
-        let fetchResult = await helper.getAssets(fetchOps);
-        let photoAsset = await fetchResult.getFirstObject();
-        let destUri: string = createSandboxFileUri(testContext, 'jpg');
-
-        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
-          onDataPrepared(data: boolean) {
-            console.info(`${testNum} succeed`);
-            expect(false).assertTrue();
-            done();
-          }
-        }
-
-        let requestOptions: photoAccessHelper.RequestOptions = {
-          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
-          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
-          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
-          mediaAssetProgressHandler: TestHandler,
-        };
-        const handler = new MediaHandler();
-        await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
-        await isHdr(testNum, destUri);
-      } catch (error) {
-        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        expect(error.code).assertEqual('401');
+      if (!isSupportHdr) {
+        console.log('device is not support hdr');
+        expect(true).assertTrue();
         done();
+      } else {
+        let testNum = 'request_video_fileUri_image_compatible_onprogress';
+        try {
+          let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
+          let fetchResult = await helper.getAssets(fetchOps);
+          let photoAsset = await fetchResult.getFirstObject();
+          let destUri: string = createSandboxFileUri(testContext, 'jpg');
+
+          class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+            onDataPrepared(data: boolean) {
+              console.info(`${testNum} succeed`);
+              expect(false).assertTrue();
+              done();
+            }
+          }
+
+          let requestOptions: photoAccessHelper.RequestOptions = {
+            deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+            sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+            compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+            mediaAssetProgressHandler: TestHandler,
+          };
+          const handler = new MediaHandler();
+          await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
+          await isHdr(testNum, destUri);
+        } catch (error) {
+          console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+          expect(error.code).assertEqual('401');
+          done();
+        }
       }
     });
     /**
@@ -1817,33 +1897,39 @@ export default function requestVideoTest() {
      * @tc.level     : Level 0
      */
     it('request_video_fileUri_imageUri_photoAsset_imageAsset_compatible', 0, async (done: Function) => {
-      let testNum = 'request_video_fileUri_imageUri_photoAsset_imageAsset_compatible';
-      try {
-        let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
-        let fetchResult = await helper.getAssets(fetchOps);
-        let photoAsset = await fetchResult.getFirstObject();
-        let destUri: string = createSandboxFileUri(testContext, 'jpg');
-
-        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
-          onDataPrepared(data: boolean) {
-            console.info(`${testNum} succeed`);
-            expect(false).assertTrue();
-            done();
-          }
-        }
-
-        let requestOptions: photoAccessHelper.RequestOptions = {
-          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
-          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
-          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
-        };
-        const handler = new MediaHandler();
-        await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
-        await isHdr(testNum, destUri);
-      } catch (error) {
-        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        expect(error.code).assertEqual('401');
+      if (!isSupportHdr) {
+        console.log('device is not support hdr');
+        expect(true).assertTrue();
         done();
+      } else {
+        let testNum = 'request_video_fileUri_imageUri_photoAsset_imageAsset_compatible';
+        try {
+          let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
+          let fetchResult = await helper.getAssets(fetchOps);
+          let photoAsset = await fetchResult.getFirstObject();
+          let destUri: string = createSandboxFileUri(testContext, 'jpg');
+
+          class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+            onDataPrepared(data: boolean) {
+              console.info(`${testNum} succeed`);
+              expect(false).assertTrue();
+              done();
+            }
+          }
+
+          let requestOptions: photoAccessHelper.RequestOptions = {
+            deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+            sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+            compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+          };
+          const handler = new MediaHandler();
+          await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
+          await isHdr(testNum, destUri);
+        } catch (error) {
+          console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+          expect(error.code).assertEqual('401');
+          done();
+        }
       }
     });
     /**
@@ -1857,34 +1943,40 @@ export default function requestVideoTest() {
      * @tc.level     : Level 0
      */
     it('request_video_fileUri_imageUri_photoAsset_imageAsset_compatible_onprogress', 0, async (done: Function) => {
-      let testNum = 'request_video_fileUri_imageUri_photoAsset_imageAsset_compatible_onprogress';
-      try {
-        let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
-        let fetchResult = await helper.getAssets(fetchOps);
-        let photoAsset = await fetchResult.getFirstObject();
-        let destUri: string = createSandboxFileUri(testContext, 'jpg');
-
-        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
-          onDataPrepared(data: boolean) {
-            console.info(`${testNum} succeed`);
-            expect(false).assertTrue();
-            done();
-          }
-        }
-
-        let requestOptions: photoAccessHelper.RequestOptions = {
-          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
-          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
-          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
-          mediaAssetProgressHandler: TestHandler,
-        };
-        const handler = new MediaHandler();
-        await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
-        await isHdr(testNum, destUri);
-      } catch (error) {
-        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        expect(error.code).assertEqual('401');
+      if (!isSupportHdr) {
+        console.log('device is not support hdr');
+        expect(true).assertTrue();
         done();
+      } else {
+        let testNum = 'request_video_fileUri_imageUri_photoAsset_imageAsset_compatible_onprogress';
+        try {
+          let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
+          let fetchResult = await helper.getAssets(fetchOps);
+          let photoAsset = await fetchResult.getFirstObject();
+          let destUri: string = createSandboxFileUri(testContext, 'jpg');
+
+          class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+            onDataPrepared(data: boolean) {
+              console.info(`${testNum} succeed`);
+              expect(false).assertTrue();
+              done();
+            }
+          }
+
+          let requestOptions: photoAccessHelper.RequestOptions = {
+            deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+            sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+            compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+            mediaAssetProgressHandler: TestHandler,
+          };
+          const handler = new MediaHandler();
+          await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
+          await isHdr(testNum, destUri);
+        } catch (error) {
+          console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+          expect(error.code).assertEqual('401');
+          done();
+        }
       }
     });
     /**
@@ -2014,50 +2106,56 @@ export default function requestVideoTest() {
      * @tc.level     : Level 0
      */
     it('request_hdr_video_fileUri_imageUri_photoAsset_compatible', 0, async (done: Function) => {
-      let testNum = 'request_hdr_video_compatible';
-      try {
-        let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "test_hdr_1.mp4");
-        let fetchResult = await helper.getAssets(fetchOps);
-        let photoAsset = await fetchResult.getFirstObject();
-        let destUri: string = createSandboxFileUri(testContext, 'mp4');
-        let count: number = 0;
-        let opsList: Array<photoAccessHelper.RequestOptions> = [];
-
-        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
-          onDataPrepared(data: boolean) {
-            console.info(`${testNum} succeed`);
-            count++;
-          }
-        }
-
-        let requestOptions1: photoAccessHelper.RequestOptions = {
-          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
-          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
-          compatibleMode: photoAccessHelper.CompatibleMode.ORIGINAL_FORMAT_MODE,
-        };
-
-        let requestOptions2: photoAccessHelper.RequestOptions = {
-          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
-          sourceMode: photoAccessHelper.SourceMode.EDITED_MODE,
-          compatibleMode: photoAccessHelper.CompatibleMode.ORIGINAL_FORMAT_MODE,
-        };
-        opsList.push(requestOptions1, requestOptions2);
-
-        const handler = new MediaHandler();
-        
-        for (let i = 0; i < opsList.length; i++) {
-          await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, opsList[i], destUri, handler);
-          await sleep(3000);
-          let uri = await createVideoBySandBoxUri(testNum, testContext, destUri);
-          let flag = await isHdr(testNum, uri);
-          expect(flag).assertEqual(1);
-        }
-        expect(count).assertEqual(2);
-        done();
-      } catch (error) {
-        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+      if (!isSupportHdr) {
+        console.log('device is not support hdr');
         expect(true).assertTrue();
         done();
+      } else {
+        let testNum = 'request_hdr_video_compatible';
+        try {
+          let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "test_hdr_1.mp4");
+          let fetchResult = await helper.getAssets(fetchOps);
+          let photoAsset = await fetchResult.getFirstObject();
+          let destUri: string = createSandboxFileUri(testContext, 'mp4');
+          let count: number = 0;
+          let opsList: Array<photoAccessHelper.RequestOptions> = [];
+
+          class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+            onDataPrepared(data: boolean) {
+              console.info(`${testNum} succeed`);
+              count++;
+            }
+          }
+
+          let requestOptions1: photoAccessHelper.RequestOptions = {
+            deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+            sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+            compatibleMode: photoAccessHelper.CompatibleMode.ORIGINAL_FORMAT_MODE,
+          };
+
+          let requestOptions2: photoAccessHelper.RequestOptions = {
+            deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+            sourceMode: photoAccessHelper.SourceMode.EDITED_MODE,
+            compatibleMode: photoAccessHelper.CompatibleMode.ORIGINAL_FORMAT_MODE,
+          };
+          opsList.push(requestOptions1, requestOptions2);
+
+          const handler = new MediaHandler();
+          
+          for (let i = 0; i < opsList.length; i++) {
+            await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, opsList[i], destUri, handler);
+            await sleep(3000);
+            let uri = await createVideoBySandBoxUri(testNum, testContext, destUri);
+            let flag = await isHdr(testNum, uri);
+            expect(flag).assertEqual(1);
+          }
+          expect(count).assertEqual(2);
+          done();
+        } catch (error) {
+          console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+          expect(true).assertTrue();
+          done();
+        }
       }
     });
 
