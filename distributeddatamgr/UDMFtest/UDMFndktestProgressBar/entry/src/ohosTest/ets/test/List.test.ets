@@ -12,17 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import postFrameCallbackTest from "./postFrame/PostFrameCallbackTest.test"
-import swiperTest from "./swiper/SwiperTest.test"
-import textImmutablfFontWeight from "./text/textImmutablfFontWeight.test"
-import TextAreaLetterSpacing from "./textArea/TextAreaLetterSpacing.test"
-import TextInputLetterSpacing from "./textInput/TextInputLetterSpacing.test"
-import textPickerTest from "./textpicker/TextPickerColumnWidthsTest.test"
-import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
-import buttonTypeTest from './button/ButtonTypeTest.test'
 import DragTest from "./drag/DragCaseTest.test"
+import EmptyTest from './Empty.test'
 
 export default function testsuite() {
-
-  DragTest();
+  if (canIUse("SystemCapability.DistributedDataManager.UDMF.Core")){
+    DragTest();
+  } else {
+    EmptyTest()
+  } 
 }

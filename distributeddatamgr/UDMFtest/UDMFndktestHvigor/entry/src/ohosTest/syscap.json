@@ -3,7 +3,9 @@
         "general": [
             "default",
             "tablet",
-            "2in1"
+            "phone",
+            "2in1",
+            "wearable"
         ],
         "custom": [
             {
