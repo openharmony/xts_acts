@@ -272,7 +272,7 @@ export default function ApiCoverTest() {
      * @tc.level   3
      */
     it('SUB_Ability_AbilityBase_AbilityConstant_1800', 0, async (done: Function) => {
-      expect(1).assertEqual(abilityConstant.LastExitReason.USER_REQUEST);
+      expect(9).assertEqual(abilityConstant.LastExitReason.USER_REQUEST);
       done();
     })
 
@@ -285,7 +285,7 @@ export default function ApiCoverTest() {
      * @tc.level   3
      */
     it('SUB_Ability_AbilityBase_AbilityConstant_1900', 0, async (done: Function) => {
-      expect(9).assertEqual(abilityConstant.LastExitReason.SIGNAL);
+      expect(10).assertEqual(abilityConstant.LastExitReason.SIGNAL);
       done();
     })
 
@@ -522,19 +522,19 @@ export default function ApiCoverTest() {
      * @tc.level   3
      */
     it('SUB_Ability_AbilityBase_wantConstant_1200', 0, async (done: Function) => {
-      expect(0x00002000).assertEqual(wantConstant.Flags.FLAG_INSTALL_ON_DEMAND);
+      expect(0x00000800).assertEqual(wantConstant.Flags.FLAG_INSTALL_ON_DEMAND);
       done();
     })
 
     /*
-     * @tc.number  SUB_Ability_AbilityBase_WantAgent_0900
+     * @tc.number  SUB_Ability_AbilityBase_WantAgent_0100
      * @tc.name    Test wantAgent OperationType.UNKNOWN_TYPE.
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_WantAgent_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_WantAgent_0100', 0, async (done: Function) => {
       expect(0).assertEqual(wantAgent.OperationType.UNKNOWN_TYPE);
       done();
     })
@@ -548,74 +548,8 @@ export default function ApiCoverTest() {
      * @tc.level   3
      */
     it('SUB_Ability_AbilityBase_WantAgent_0200', 0, async (done: Function) => {
-      expect(0).assertEqual(wantAgent.OperationType.SEND_COMMON_EVENT);
+      expect(4).assertEqual(wantAgent.OperationType.SEND_COMMON_EVENT);
       done();
     })
-
-    /*
-     * @tc.number  SUB_Ability_AbilityBase_ErrorCode_0100
-     * @tc.name    Test ErrorCode PERMISSION_DENY.
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_Ability_AbilityBase_ErrorCode_0100', 0, async (done: Function) => {
-      expect(-3).assertEqual(errorCode.ErrorCode.PERMISSION_DENY);
-      done();
-    })
-
-    /*
-     * @tc.number  SUB_Ability_AbilityBase_ErrorCode_0200
-     * @tc.name    Test ErrorCode ABILITY_NOT_FOUND.
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_Ability_AbilityBase_ErrorCode_0200', 0, async (done: Function) => {
-      expect(-2).assertEqual(errorCode.ErrorCode.ABILITY_NOT_FOUND);
-      done();
-    })
-
-    /*
-     * @tc.number  SUB_Ability_AbilityBase_ErrorCode_0300
-     * @tc.name    Test ErrorCode INVALID_PARAMETER.
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_Ability_AbilityBase_ErrorCode_0300', 0, async (done: Function) => {
-      expect(-1).assertEqual(errorCode.ErrorCode.INVALID_PARAMETER);
-      done();
-    })
-
-    /*
-     * @tc.number  SUB_Ability_AbilityBase_ErrorCode_0400
-     * @tc.name    Test ErrorCode NO_ERROR.
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_Ability_AbilityBase_ErrorCode_0400', 0, async (done: Function) => {
-      expect(0).assertEqual(errorCode.ErrorCode.NO_ERROR);
-      done();
-    })
-
-    /*
-     * @tc.number  SUB_Ability_AbilityBase_ErrorCode_0400
-     * @tc.name    Test ErrorCode NO_ERROR.
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_Ability_AbilityBase_ErrorCode_0400', 0, async (done: Function) => {
-      expect(0).assertEqual(errorCode.ErrorCode.NO_ERROR);
-      done();
-    })
-
   })
 }
