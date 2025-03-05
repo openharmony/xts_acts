@@ -21,7 +21,8 @@ import pan from '@ohos.bluetooth.pan';
 import map from '@ohos.bluetooth.map';
 import pbap from '@ohos.bluetooth.pbap';
 import bluetooth from '@ohos.bluetooth.baseProfile';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import opp from '@ohos.bluetooth.opp';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
     function sleep(delay : number) : Promise<void> {
@@ -535,6 +536,26 @@ describe('btBaseProfileTest', () => {
             expect(connectFailInternal).assertEqual(5);
         } catch (err) {
             console.info("DisconnectCause errCode:" + err.code + ",errMessage:" + err.message);
+            expect().assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_OPP_CREATEOPPSERVERPROFILE_0100
+     * @tc.name testCreateOppServerProfile
+     * @tc.desc Test CreateOppServerProfile api16
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 2
+     */
+     it('SUB_COMMUNICATION_BLUETOOTH_OPP_CREATEOPPSERVERPROFILE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+        try {
+            let osp: opp.OppServerProfile = opp.createOppServerProfile();
+            console.info('createOppServerProfile success, result: ' + osp);
+            expect(true).assertEqual(osp != null);
+        } catch (err) {
+            console.info("createOppServerProfile errCode:" + err.code + ",errMessage:" + err.message);
             expect().assertFail();
         }
         done();
