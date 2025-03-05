@@ -53,7 +53,6 @@ export default class SubServiceExtAbilityEvent extends ServiceExtension {
     commonEventManager.publish(subServiceDestroyEvent, (err) => {
       Logger.info(`SubServiceExtAbilityEvent___onDestroy subServiceDestroyEvent publish success`)
     });
-    await sleep(1000);
     let start1 = (new Date()).getTime();
     while((new Date()).getTime() - start1 < 1000){} 
     Logger.info(`SubServiceExtAbilityEvent___onDestroy`)
