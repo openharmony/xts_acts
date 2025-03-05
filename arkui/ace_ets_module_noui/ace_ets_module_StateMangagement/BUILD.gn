@@ -19,15 +19,19 @@ group("ActsAceEtsModuleStateMangagementTest") {
     deps = [
       "ace_ets_module_StateMangagement01_api11:ActsAceEtsModuleStateMangagement01Api11Test",
       "ace_ets_module_StateMangagement02_api11:ActsAceEtsModuleStateMangagement02Api11Test",
-      "ace_ets_module_StateMangagement_api12:ActsAceEtsModuleStateMangagementApi12Test",
-      "ace_ets_module_StateMangagement_api16:ActsAceEtsModuleStateMangagementApi16Test",
+      "ace_ets_module_StateMangagement01_api12:ActsAceEtsModuleStateMangagement01Api12Test",
+      "ace_ets_module_StateMangagement02_api12:ActsAceEtsModuleStateMangagement02Api12Test",
+      #"ace_ets_module_StateMangagement_api16:ActsAceEtsModuleStateMangagementApi16Test",
+      "ace_ets_module_StateMangagement_wear_api11:ActsAceEtsModuleStateMangagementWearApi11Test",
     ]
   } else {
     deps = [
       "ace_ets_module_StateMangagement01_api11:ActsAceEtsModuleStateMangagement01Api11Test",
       "ace_ets_module_StateMangagement02_api11:ActsAceEtsModuleStateMangagement02Api11Test",
-      "ace_ets_module_StateMangagement_api12:ActsAceEtsModuleStateMangagementApi12Test",
-      "ace_ets_module_StateMangagement_api16:ActsAceEtsModuleStateMangagementApi16Test",
+      "ace_ets_module_StateMangagement01_api12:ActsAceEtsModuleStateMangagement01Api12Test",
+      "ace_ets_module_StateMangagement02_api12:ActsAceEtsModuleStateMangagement02Api12Test",
+      #"ace_ets_module_StateMangagement_api16:ActsAceEtsModuleStateMangagementApi16Test",
+      "ace_ets_module_StateMangagement_nowear_api11:ActsAceEtsModuleStateMangagementNoWearApi11Test",
       "ace_ets_module_StateMangagement_nowear_api12:ActsAceEtsModuleStateMangagementNoWearApi12Test",
     ]
   }
