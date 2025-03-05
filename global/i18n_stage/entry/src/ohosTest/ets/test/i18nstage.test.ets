@@ -883,7 +883,7 @@ export default function i18nStageTest() {
     })
 
     /**
-     * @tc.number   : SUB_GLOBAL_getThreeLetterRegion_0030
+     * @tc.number   : SUB_GLOBAL_getThreeLetterRegion_0300
      * @tc.name     : testGetThreeLetterRegion_0030
      * @tc.desc     : param value not valid
      * @tc.size     : MEDIUM
@@ -916,7 +916,7 @@ export default function i18nStageTest() {
     /**
      * @tc.number   : SUB_GLOBAL_numberFormatTyping_0100
      * @tc.name     : SUB_GLOBAL_numberFormatTyping_0100
-     * @tc.desc     : transfer GB and return GBR
+     * @tc.desc     : adapter in adding
      * @tc.size     : MEDIUM
      * @tc.type     : Function
      * @tc.level    : Level 2
