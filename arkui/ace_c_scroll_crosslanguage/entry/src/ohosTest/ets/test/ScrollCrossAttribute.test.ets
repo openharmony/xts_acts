@@ -387,5 +387,30 @@ export default function ScrollCrossAttributeTest() {
       await Utils.sleep(500);
       expect(obj.$attrs.edgeEffect).assertEqual(EdgeEffect.Spring)
     });
+
+    /*
+     * @tc.number     : SUB_ACE_UI_COMPONENT_SCROLL_TS&C_0070
+     * @tc.name       : ScrollCrossAttributeTest001
+     * @tc.desc       : C侧创建Scroll并设置滚动条宽度为20，开启跨语言，OH_ArkUI_NodeUtils_GetCrossLanguageOption测试
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('ScrollCrossAttributeTest016', 0, async (done: Function) => {
+      await Utils.pushPage(`${PAGE_TAG}`, done);
+      console.info("[ScrollCrossAttributeTest016] start succ");
+      await Utils.sleep(500);
+      let driver = await Driver.create();
+      await Utils.sleep(500);
+      let clickCAPINode_cross = await driver.findComponent(ON.id("clickCAPINode_width_cross"))
+      await Utils.sleep(500);
+      await clickCAPINode_cross.click()
+      await Utils.sleep(500);
+      let scrollJson = getInspectorByKey('capiNode');
+      let obj: ESObject = JSON.parse(scrollJson);
+      console.info("[ScrollCrossAttributeTest016] component obj is: " + JSON.stringify(obj));
+      await Utils.sleep(500);
+      expect(obj.$attrs.scrollBarWidth).assertEqual(100)
+    });
   })
 }
