@@ -24,6 +24,15 @@
         "MainAbility/pages/Gesture/isFingerCountLimited/TapGesture",
 		"MainAbility/pages/setKeyProcessingModeTest/setKeyProcessingModeTest",
          "MainAbility/pages/startDataLoading/dataLoading",
-        "MainAbility/pages/SnapshotOptions_region/SnapshotOptions_region"
+        "MainAbility/pages/SnapshotOptions_region/SnapshotOptions_region",
+        "MainAbility/pages/EventItem/Mouse",
+        "MainAbility/pages/EventItem/Touch",
+        "MainAbility/pages/EventItem/TapGesture",
+        "MainAbility/pages/EventItem/SwipeGesture",
+        "MainAbility/pages/EventItem/LongPressGesture",
+        "MainAbility/pages/EventItem/PanGesture",
+        "MainAbility/pages/EventItem/PinchGesture",
+        "MainAbility/pages/EventItem/RotationGesture",
+        "MainAbility/pages/DragPreviewOptions/DragPreviewOptions"
     ]
 }

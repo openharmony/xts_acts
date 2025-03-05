@@ -791,6 +791,42 @@ export default function MultimodalInputPointerTest() {
     });
 
     /**
+     * @tc.number: SUB_MMI_Input_Api_Pointer_setCustomCursor_1200
+     * @tc.name: SUB_MMI_Input_Api_Pointer_setCustomCursor_1200
+     * @tc.desc: Test promise setCustomCursor interface to set the custom cursor style with error windowId(10000).
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_1200";
+      getContext().resourceManager.getMediaContent($r("app.media.257x257")).then((svgFileData) => {
+        const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
+        let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
+        let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width:256, height:256 }};
+        svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+          window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
+            try{
+              pointer.setCustomCursor(10000, {pixelMap: pixelMap, focusX: 0, focusY: 0}, {followSystem: false}).then(() => {
+                console.info(`${caseName} setCustomCursor success`);
+                ExpectFalse(true);
+                done();
+              }).catch((error: BusinessError) => {
+                console.info(`${caseName} setCustomCursor failed, error=${JSON.stringify(error)}`);
+                ExpectTrue(error.code == 26500001);
+                done();
+              });
+            }catch (error){
+              console.info(`${caseName} setCustomCursor failed, error: ${JSON.stringify(error,[`code`,`message`])}`);
+              ExpectFalse(true);
+              done();
+            }
+          });
+        });
+      });
+    });
+
+    /**
      * @tc.number: SUB_MMI_Input_Api_Pointer_setCustomCursor_1300
      * @tc.name: SUB_MMI_Input_Api_Pointer_setCustomCursor_1300
      * @tc.desc: Test promise setCustomCursor interface to set the custom cursor style.
