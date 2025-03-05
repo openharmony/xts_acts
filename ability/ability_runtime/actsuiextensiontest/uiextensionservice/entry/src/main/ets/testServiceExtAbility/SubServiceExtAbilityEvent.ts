@@ -32,29 +32,29 @@ class ServiceExtStub extends SubServiceExtStub{
 let subServiceDestroyEvent = 'subServiceDestroyEvent';
 export default class SubServiceExtAbilityEvent extends ServiceExtension {
   onCreate(want) {
-    Logger.info(`tss onCreate, want: ${want.abilityName}`)
+    Logger.info(`tss onCreate, want: ${want.abilityName}`);
   }
 
   onRequest(want, startId) {
-    Logger.info(`tss onRequest, want: ${want.abilityName}`)
+    Logger.info(`tss onRequest, want: ${want.abilityName}`);
   }
 
   onConnect(want) {
-    Logger.info(`SubServiceExtAbilityEvent___onConnect , want: ${want.abilityName}`)
-    return new ServiceExtStub("sub service stub")
+    Logger.info(`SubServiceExtAbilityEvent___onConnect , want: ${want.abilityName}`);
+    return new ServiceExtStub("sub service stub");
   }
 
   onDisconnect(want) {
     commonEventManager.publish(subServiceDestroyEvent, (err) => { });
-    Logger.info(`SubServiceExtAbilityEvent___onDisconnect, want: ${want.abilityName}`)
+    Logger.info(`SubServiceExtAbilityEvent___onDisconnect, want: ${want.abilityName}`);
   }
 
   onDestroy() {
     commonEventManager.publish(subServiceDestroyEvent, (err) => {
-      Logger.info(`SubServiceExtAbilityEvent___onDestroy subServiceDestroyEvent publish success`)
+      Logger.info(`SubServiceExtAbilityEvent___onDestroy subServiceDestroyEvent publish success`);
     });
     let start1 = (new Date()).getTime();
-    while((new Date()).getTime() - start1 < 1000){} 
-    Logger.info(`SubServiceExtAbilityEvent___onDestroy`)
+    while((new Date()).getTime() - start1 < 1000){};
+    Logger.info(`SubServiceExtAbilityEvent___onDestroy`);
   }
 }
