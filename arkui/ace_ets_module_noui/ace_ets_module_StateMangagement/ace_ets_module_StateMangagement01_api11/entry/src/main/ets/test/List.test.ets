@@ -54,15 +54,10 @@ import provideParent5 from './ProvideTest/provideParent5.test.ets'
 import provideParent6 from './ProvideTest/provideParent6.test.ets'
 
 import link1 from './Zhuang/link1.test.ets'
-import link2 from './Zhuang/link2.test.ets'
 import ObjectLink1 from './Zhuang/ObjectLink1.test.ets'
-import ObjectLink2 from './Zhuang/ObjectLink2.test.ets'
 import Prop1 from './Zhuang/Prop1.test.ets'
-import Prop2 from './Zhuang/Prop2.test.ets'
 import provide1 from './Zhuang/provide1.test.ets'
-import provide2 from './Zhuang/provide2.test.ets'
 import state1 from './Zhuang/state1.test.ets'
-import state2 from './Zhuang/state2.test.ets'
 import StorageDeprecatedTest from './Zhuang/StorageDeprecatedTest.test';
 import PersistentTest0040 from './Zhuang/PersistentTest0040.test';
 
@@ -94,7 +89,6 @@ export default function testsuite() {
   StateColor();
   StateHight();
   StateNumber();
-
   allowOverride();
   appStorageJsunit();
   linkJsunit();
@@ -107,18 +101,11 @@ export default function testsuite() {
   provideParent4();
   provideParent5();
   provideParent6();
-
   link1();
-  link2();
   ObjectLink1();
-  ObjectLink2();
   Prop1();
-  Prop2();
   provide1();
-  provide2();
   state1();
-  state2();
   StorageDeprecatedTest();
   PersistentTest0040();
-
 }

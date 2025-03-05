@@ -37,7 +37,7 @@
     ],
     "abilities": [
       {
-        "name": "com.arkui.ace.StateMangagement01.EntryAbility",
+        "name": "com.arkui.ace.StateMangagement01.api11.EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ets",
         "description": "$string:phone_entry_main",
         "icon": "$media:icon",
