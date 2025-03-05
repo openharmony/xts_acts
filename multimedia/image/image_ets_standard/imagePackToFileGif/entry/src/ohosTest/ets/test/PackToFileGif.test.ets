@@ -211,7 +211,7 @@ export default function imagePackToFileGif() {
                 expect(false).assertTrue();
                 done();
             }
-            await globalPacker.packToFile(pixelMapList, writeFd, packingOptions).then(async () => {
+            await globalPacker.packToFileFromPixelmapSequence(pixelMapList, writeFd, packingOptions).then(async () => {
                 try {
                     fileio.closeSync(writeFd)
                     console.log(`${testNum} testPackToFileForSequence success`);
@@ -254,13 +254,13 @@ export default function imagePackToFileGif() {
                 expect(false).assertTrue();
                 done();
             }
-            await globalPacker.packToFile(pixelMapList, writeFd, packingOptions).then(async () => {
-                console.log(`${testNum} packToFile success`);
+            await globalPacker.packToFileFromPixelmapSequence(pixelMapList, writeFd, packingOptions).then(async () => {
+                console.log(`${testNum} packToFileFromPixelmapSequence success`);
                 expect(false).assertTrue();
                 done();
             }).catch((error: BusinessError) => {
-                console.log(`${testNum} packToFile error: ` + JSON.stringify(error));
-                console.log(`${testNum} packToFile error.code: ` + error.code);
+                console.log(`${testNum} packToFileFromPixelmapSequence error: ` + JSON.stringify(error));
+                console.log(`${testNum} packToFileFromPixelmapSequence error.code: ` + error.code);
                 expect(error.code == ERROR_CODE1).assertTrue();
                 done();
             });
