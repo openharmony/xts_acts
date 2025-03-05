@@ -788,7 +788,6 @@ import textInputTextTest from "./textinput/TextInputTextTest.test"
 import textInputTextSelectionTest from "./textinput/TextInputTextSelectionTest.test"
 import textInputUnderlineColorTest from "./textinput/TextInputUnderlineColorTest.test"
 import textInputFontFeatureTest from "./textinput/TextInputFontFeatureTest.test"
-import textInputWordBreakTest from "./textinput/TextInputWordBreakTest.test"
 import textInputStyleTest from "./textinput/TextInputStyleTest.test"
 import textInputEnableAutoFillTest from "./textinput/TextInputEnableAutoFillTest.test"
 import textInputContentTypeTest from "./textinput/TextInputContentTypeTest.test"
@@ -1570,7 +1569,6 @@ export default function testsuite() {
   textInputTextSelectionTest()
   textInputUnderlineColorTest()
   textInputFontFeatureTest()
-  textInputWordBreakTest()
   textInputStyleTest()
   textInputEnableAutoFillTest()
   textInputContentTypeTest()

@@ -69,13 +69,13 @@ static napi_value TestTextInputWordBreak004(napi_env env, napi_callback_info inf
 static napi_value TestTextInputWordBreak005(napi_env env, napi_callback_info info)
 {
     NAPI_START(textInput, ARKUI_NODE_TEXT_INPUT);
-    ArkUI_NumberValue value[] = { { .i32 = 3 } };
+    ArkUI_NumberValue value[] = { { .i32 = ARKUI_WORD_BREAK_HYPHENATION } };
     ArkUI_AttributeItem value_item = { value, sizeof(value) / sizeof(ArkUI_NumberValue) };
     value_item.string = DEFAULT_TEXT;
     auto ret = nodeAPI->setAttribute(textInput, NODE_TEXT_INPUT_WORD_BREAK, &value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(
-        nodeAPI->getAttribute(textInput, NODE_TEXT_INPUT_WORD_BREAK)->value[PARAM_0].i32, ARKUI_WORD_BREAK_BREAK_WORD);
+        nodeAPI->getAttribute(textInput, NODE_TEXT_INPUT_WORD_BREAK)->value[PARAM_0].i32, ARKUI_WORD_BREAK_HYPHENATION);
     NAPI_END;
 }
 static napi_value TestTextInputWordBreak006(napi_env env, napi_callback_info info)
