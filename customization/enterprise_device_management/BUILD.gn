@@ -19,6 +19,7 @@ group("edm_test_grop") {
     deps = [
       "TestExtensionAbility_001:ExtensionZeroTest",
       "edm_xts_network:ActsEdmNetworkTest",
+      "edm_xts_no_permission:ActsEdmNoPermissionTest",
       "edm_xts_stage:ActsEdmTest",
     ]
   }

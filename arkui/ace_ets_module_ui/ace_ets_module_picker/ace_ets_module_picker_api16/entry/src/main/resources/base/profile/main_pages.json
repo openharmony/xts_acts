@@ -4,6 +4,7 @@
         "MainAbility/pages/buttonType/buttonTypeApi",
         "MainAbility/pages/checkbox/checkboxNode",
         "MainAbility/pages/checkboxGroup/checkboxGroupNode",
+        "MainAbility/pages/datePicker/DatePickerMode",
         "MainAbility/pages/radio/radioNode",
         "MainAbility/pages/rating/ratingNode",
         "MainAbility/pages/select/selectNode",
@@ -14,6 +15,7 @@
         "MainAbility/pages/crownSensitivity/Picker",
         "MainAbility/pages/crownSensitivity/TextPicker",
         "MainAbility/pages/crownSensitivity/TimePicker",
-	    "MainAbility/pages/calendarPicker/disableDateRangeAndMarkToday"
+	    "MainAbility/pages/calendarPicker/disableDateRangeAndMarkToday",
+        "MainAbility/pages/calendarPicker/startEndTest"
     ]
 }

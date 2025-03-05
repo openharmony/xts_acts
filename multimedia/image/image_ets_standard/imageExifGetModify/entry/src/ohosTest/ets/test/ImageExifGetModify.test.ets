@@ -105,6 +105,10 @@ export default function imageExifGetModifyTest() {
         let imageSourceApiGet = await getImageSource(fileName, type)
         const data = await imageSourceApiGet.getImageProperty(key)
         checkResult = data === compareData
+        imageSourceApi.release();
+        if (imageSourceApiGet != undefined) {
+          imageSourceApiGet.release();
+        }
       }
       return checkResult
     }
@@ -129,6 +133,7 @@ export default function imageExifGetModifyTest() {
             `testGetPromise error %{public}s %{public}s fileName: %{public}s result: %{public}s value: %{public}s`,
             testTag, key, fileName, result, compareData);
         }
+        imageSourceApi.release();
       }
       return checkResult
     }
@@ -147,6 +152,7 @@ export default function imageExifGetModifyTest() {
             `testGetIncludePromise error %{public}s %{public}s fileName: %{public}s result: %{public}s value: %{public}s`,
             testTag, key, fileName, result, compareData);
         }
+        imageSourceApi.release();
       }
       return checkResult
     }
@@ -182,6 +188,7 @@ export default function imageExifGetModifyTest() {
                 key, err.code, type);
             }
           })
+          imageSourceApi.release();
       }
       return checkResult
     }
@@ -227,8 +234,12 @@ export default function imageExifGetModifyTest() {
                   `testModifyPromiseError testGetPromise error %{public}s %{public}s fileName: %{public}s `,
                   testTag, key, fileName);
               }
+              if (imageSourceApiGet != undefined) {
+                imageSourceApiGet.release();
+              }
             }
           })
+        imageSourceApi.release();
       }
       return checkResult
     }
@@ -253,6 +264,7 @@ export default function imageExifGetModifyTest() {
             `testGetPromise error %{public}s  fileName: %{public}s result: %{public}s value: %{public}s`,
             testTag, fileName, JSON.stringify(data), compareData);
         }
+        imageSourceApi.release();
       }
       return checkResult
     }
@@ -285,6 +297,7 @@ export default function imageExifGetModifyTest() {
               checkResult = checkResult && erroCodeResult
             }
           });
+        imageSourceApi.release();
       }
       return checkResult
     }
@@ -304,7 +317,6 @@ export default function imageExifGetModifyTest() {
       if (imageSourceApi == undefined) {
         console.info(testTag + " create image source failed");
       } else {
-        const imageSourceApi = await getImageSource(fileName, type)
         await imageSourceApi.modifyImageProperties(records)
         let imageSourceApiGet = await getImageSource(fileName, type)
         const data = await imageSourceApiGet.getImageProperties(keys)
@@ -313,6 +325,10 @@ export default function imageExifGetModifyTest() {
           hilog.info(0x0000, testTag,
             `testGetPromise error %{public}s %{public}s fileName: %{public}s result: %{public}s`,
             testTag, fileName, json.stringify(data))
+        }
+        imageSourceApi.release();
+        if (imageSourceApiGet != undefined) {
+          imageSourceApiGet.release();
         }
       }
       return checkResult
@@ -331,7 +347,6 @@ export default function imageExifGetModifyTest() {
       if (imageSourceApi == undefined) {
         console.info(testTag + " create image source failed");
       } else {
-        const imageSourceApi = await getImageSource(fileName, type)
         await imageSourceApi.modifyImageProperties(records)
           .then(async () => {
             hilog.info(0x0000, testTag, `modifyImageProperty success  %{public}s %{public}s %{public}s %{public}s`,
@@ -348,6 +363,7 @@ export default function imageExifGetModifyTest() {
               checkResult = checkResult && erroCodeResult
             }
           });
+        imageSourceApi.release();
       }
       return checkResult
     }
@@ -368,6 +384,9 @@ export default function imageExifGetModifyTest() {
         let imageSourceApiGet = await getImageSource(fileName, type)
         const data = await imageSourceApiGet.getImageProperties(keys)
         checkResult = json.stringify(data) == compareData
+        if (imageSourceApiGet != undefined) {
+          imageSourceApiGet.release();
+        }
       }
       return checkResult
     }
@@ -6594,6 +6613,9 @@ export default function imageExifGetModifyTest() {
             hilog.info(0x0000, testTag, `${testTag} modifyImageProperty  BitsPerSample error ${JSON.stringify(error)}`);
             checkResult = await testGetPromise(testTag, key, values[i].value, values[i].fileName, 'rawfile');
           })
+          if (imageSourceApi != undefined) {
+            imageSourceApi.release();
+          }
           result = result && checkResult
         }
         expect(result).assertTrue()
@@ -19571,8 +19593,14 @@ export default function imageExifGetModifyTest() {
                           `getImageProperty promise error %{public}s %{public}s %{public}s`, key, error.code,testType);
                         checkResult = expectedGetErrorCode == error.code
                       })
+                    if (imageSourceApiGet != undefined) {
+                      imageSourceApiGet.release();
+                    }
                   }
                 })
+              if (imageSourceApi != undefined) {
+                imageSourceApi.release();
+              }
             }
             result = result && checkResult
           }

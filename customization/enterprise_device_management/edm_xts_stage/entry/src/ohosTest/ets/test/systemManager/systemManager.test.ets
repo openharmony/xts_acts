@@ -438,8 +438,8 @@ function testSetOtaUpdatePolicy() {
 function testGetOtaUpdatePolicy() {
   /**
    * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_OTA_UPDATE_POLICY_JS_0001
-   * @tc.name      : test_set_ota_update_policy_0001
-   * @tc.desc      : test systemManager setOtaUpdatePolicy without admin
+   * @tc.name      : test_get_ota_update_policy_0001
+   * @tc.desc      : test systemManager getOtaUpdatePolicy without admin
    * @tc.level     : Level 2
    * @tc.type      : Function
    * @tc.size      : MediumTest
@@ -457,7 +457,7 @@ function testGetOtaUpdatePolicy() {
   /**
    * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_OTA_UPDATE_POLICY_JS_0002
    * @tc.name      : test_get_ota_update_policy_0002
-   * @tc.desc      : test systemManager setOtaUpdatePolicy with normal admin
+   * @tc.desc      : test systemManager getOtaUpdatePolicy with normal admin
    * @tc.level     : Level 2
    * @tc.type      : Function
    * @tc.size      : MediumTest
@@ -471,6 +471,27 @@ function testGetOtaUpdatePolicy() {
       expect(error.code == 9200002).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_OTA_UPDATE_POLICY_JS_0003
+   * @tc.name      : test_get_ota_update_policy_0003
+   * @tc.desc      : test systemManager getOtaUpdatePolicy with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_ota_update_policy_0003", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      systemManager.getOtaUpdatePolicy(null);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
   });

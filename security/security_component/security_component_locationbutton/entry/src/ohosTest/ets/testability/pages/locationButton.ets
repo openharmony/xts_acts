@@ -46,6 +46,7 @@ struct locationButton {
   @State clipSet: boolean = false
   @State columnWidth: string = '100%'
   @State columnHeight: string = '100%'
+  @State lbAlign: Alignment = Alignment.Center
   private stateChangeCallBack = (eventData:events_emitter.EventData) => {
     if (eventData != null && eventData.data != undefined) {
       console.debug("====>page_locationButton page state change called:" + JSON.stringify(eventData));
@@ -133,6 +134,9 @@ struct locationButton {
       if (eventData.data.columnHeight != null) {
         this.columnHeight = eventData.data.columnHeight;
       }
+      if (eventData.data.columnHeight != null) {
+        this.lbAlign = eventData.data.align;
+      }
     }
   }
 
@@ -190,7 +194,8 @@ struct locationButton {
             .borderRadius(this.borderRad)
             .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
             .textIconSpace(this.middle)
-            .key("keyLocation")
+            .align(this.lbAlign)
+            .id("keyLocation")
         }.width(100)
       }.width('100%').alignItems(HorizontalAlign.Center)
     }.height('100%')

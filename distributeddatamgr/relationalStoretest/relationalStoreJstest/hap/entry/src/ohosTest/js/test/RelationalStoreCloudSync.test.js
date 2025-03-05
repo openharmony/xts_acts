@@ -542,20 +542,26 @@ export default function relationalStoreCloudSyncTest() {
          */
         it('testRdbStoreCloudSync0009', 0, async function (done) {
             console.log(TAG + "************* 1111  testRdbStoreCloudSync0009 start *************");
-            try {
-                rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, Progess , function (err) {
-                    console.log(TAG + `cloud sync success:`);
-                    expect(err == undefined).assertTrue();
-                });
-                await sleep(500);
-                expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
-                expect( syncProgressDetail["code"] != 0 ).assertTrue();
-                done();
-            } catch (err) {
-                console.log(TAG + `cloud sync fail, err code is ${err.code}, message is ${err.message}.`);
-                expect(null).assertFail();
+            if (canIUse("SystemCapability.DistributedDataManager.CloudSync.Client")) {
+                try {
+                    rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, Progess , function (err) {
+                        console.log(TAG + `cloud sync success:`);
+                        expect(err == undefined).assertTrue();
+                    });
+                    await sleep(500);
+                    expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
+                    expect( syncProgressDetail["code"] != 0 ).assertTrue();
+                    done();
+                } catch (err) {
+                    console.log(TAG + `cloud sync fail, err code is ${err.code}, message is ${err.message}.`);
+                    expect(null).assertFail();
+                    done();
+                }
+            } else {
+                console.info(TAG + "cloud is not support");
                 done();
             }
+            
             console.log(TAG + "************* testRdbStoreCloudSync0009 end *************");
         })
 
@@ -566,19 +572,25 @@ export default function relationalStoreCloudSyncTest() {
          */
         it('testRdbStoreCloudSync0010', 0, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0010 start *************");
-            try {
-                await rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, Progess).then(() => {
-                    console.log(TAG + `cloud sync success:`);
-                });
-                await sleep(500);
-                expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
-                expect( syncProgressDetail["code"] != 0 ).assertTrue();
-                done();
-            } catch (err) {
-                console.log(TAG + `cloud sync fail, err code is ${err.code}, message is ${err.message}.`);
-                expect(null).assertFail();
+            if (canIUse("SystemCapability.DistributedDataManager.CloudSync.Client")) {
+                try {
+                    await rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, Progess).then(() => {
+                        console.log(TAG + `cloud sync success:`);
+                    });
+                    await sleep(500);
+                    expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
+                    expect( syncProgressDetail["code"] != 0 ).assertTrue();
+                    done();
+                } catch (err) {
+                    console.log(TAG + `cloud sync fail, err code is ${err.code}, message is ${err.message}.`);
+                    expect(null).assertFail();
+                    done();
+                }
+            } else {
+                console.info(TAG + "cloud is not support");
                 done();
             }
+            
             console.log(TAG + "************* testRdbStoreCloudSync0010 end *************");
         })
 
@@ -589,21 +601,27 @@ export default function relationalStoreCloudSyncTest() {
          */
         it('testRdbStoreCloudSync0011', 0, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0011 start *************");
-            try {
-                let tableArray = ["cloud_text"];
-                rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, tableArray, Progess , function (err) {
-                    console.log(TAG + `cloud sync success:` + err);
-                    expect(err == undefined).assertTrue();
-                });
-                await sleep(500);
-                expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
-                expect( syncProgressDetail["code"] != 0 ).assertTrue();
-                done();
-            } catch (err) {
-                console.log(TAG + `cloud sync fail, err code is ${err.code}, message is ${err.message}.`);
-                expect(null).assertFail();
+            if (canIUse("SystemCapability.DistributedDataManager.CloudSync.Client")) {
+                try {
+                    let tableArray = ["cloud_text"];
+                    rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, tableArray, Progess , function (err) {
+                        console.log(TAG + `cloud sync success:` + err);
+                        expect(err == undefined).assertTrue();
+                    });
+                    await sleep(500);
+                    expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
+                    expect( syncProgressDetail["code"] != 0 ).assertTrue();
+                    done();
+                } catch (err) {
+                    console.log(TAG + `cloud sync fail, err code is ${err.code}, message is ${err.message}.`);
+                    expect(null).assertFail();
+                    done();
+                }
+            } else {
+                console.info(TAG + "cloud is not support");
                 done();
             }
+            
             console.log(TAG + "************* testRdbStoreCloudSync0011 end *************");
         })
 
@@ -614,21 +632,27 @@ export default function relationalStoreCloudSyncTest() {
          */
         it('testRdbStoreCloudSync0012', 0, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0012 start *************");
-            try {
-                let tableArray = ["cloud_text"];
-                await rdbStore.cloudSync(
-                    relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, tableArray, Progess).then(() => {
-                    console.log(TAG + `cloud sync success:`);
-                });
-                await sleep(500);
-                expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
-                expect( syncProgressDetail["code"] != 0 ).assertTrue();
-                done();
-            } catch (err) {
-                console.log(TAG + `cloud sync fail, err code is ${err.code}, message is ${err.message}.`);
-                expect(null).assertFail();
+            if (canIUse("SystemCapability.DistributedDataManager.CloudSync.Client")) {
+                try {
+                    let tableArray = ["cloud_text"];
+                    await rdbStore.cloudSync(
+                        relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, tableArray, Progess).then(() => {
+                        console.log(TAG + `cloud sync success:`);
+                    });
+                    await sleep(500);
+                    expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
+                    expect( syncProgressDetail["code"] != 0 ).assertTrue();
+                    done();
+                } catch (err) {
+                    console.log(TAG + `cloud sync fail, err code is ${err.code}, message is ${err.message}.`);
+                    expect(null).assertFail();
+                    done();
+                }
+            } else {
+                console.info(TAG + "cloud is not support");
                 done();
             }
+            
             console.log(TAG + "************* testRdbStoreCloudSync0012 end *************");
         })
 
@@ -639,21 +663,27 @@ export default function relationalStoreCloudSyncTest() {
          */
         it('testRdbStoreCloudSync0013', 0, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0013 start *************");
-            try {
-                let tableArray = ["cloud_text"];
-                await rdbStore.cloudSync(
-                    relationalStore.SyncMode.SYNC_MODE_NATIVE_FIRST, tableArray, Progess).then(() => {
-                    console.log(TAG + `cloud sync success`);
-                });
-                await sleep(500);
-                expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
-                expect( syncProgressDetail["code"] != 0 ).assertTrue();
-                done();
-            } catch (err) {
-                console.log(TAG + `cloud sync fail, err code is ${err.code}, message is ${err.message}.`);
-                expect(null).assertFail();
+            if (canIUse("SystemCapability.DistributedDataManager.CloudSync.Client")) {
+                try {
+                    let tableArray = ["cloud_text"];
+                    await rdbStore.cloudSync(
+                        relationalStore.SyncMode.SYNC_MODE_NATIVE_FIRST, tableArray, Progess).then(() => {
+                        console.log(TAG + `cloud sync success`);
+                    });
+                    await sleep(500);
+                    expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
+                    expect( syncProgressDetail["code"] != 0 ).assertTrue();
+                    done();
+                } catch (err) {
+                    console.log(TAG + `cloud sync fail, err code is ${err.code}, message is ${err.message}.`);
+                    expect(null).assertFail();
+                    done();
+                }
+            } else {
+                console.info(TAG + "cloud is not support");
                 done();
             }
+            
             console.log(TAG + "************* testRdbStoreCloudSync0013 end *************");
         })
 
@@ -664,21 +694,27 @@ export default function relationalStoreCloudSyncTest() {
          */
         it('testRdbStoreCloudSync0014', 0, async function (done) {
             console.log(TAG + "************* testRdbStoreCloudSync0014 start *************");
-            try {
-                let tableArray = ["cloud_text"];
-                await rdbStore.cloudSync(
-                    relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, tableArray, Progess).then(() => {
-                    console.log(TAG + `cloud sync success:`);
-                });
-                await sleep(500);
-                expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
-                expect( syncProgressDetail["code"] != 0 ).assertTrue();
-                done();
-            } catch (err) {
-                console.log(TAG + `cloud sync fail, err code is ${err.code}, message is ${err.message}.`);
-                expect(null).assertFail();
+            if (canIUse("SystemCapability.DistributedDataManager.CloudSync.Client")) {
+                try {
+                    let tableArray = ["cloud_text"];
+                    await rdbStore.cloudSync(
+                        relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, tableArray, Progess).then(() => {
+                        console.log(TAG + `cloud sync success:`);
+                    });
+                    await sleep(500);
+                    expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
+                    expect( syncProgressDetail["code"] != 0 ).assertTrue();
+                    done();
+                } catch (err) {
+                    console.log(TAG + `cloud sync fail, err code is ${err.code}, message is ${err.message}.`);
+                    expect(null).assertFail();
+                    done();
+                }
+            } else {
+                console.info(TAG + "cloud is not support");
                 done();
             }
+            
             console.log(TAG + "************* testRdbStoreCloudSync0014 end *************");
         })
 

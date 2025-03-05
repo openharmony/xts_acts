@@ -823,6 +823,29 @@ function testSetDisallowedForAccountPolicy() {
     }
     done();
   });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_FOR_ACCOUNT_JS_0800
+   * @tc.name      : test_set_disallowed_policy_for_account_0800
+   * @tc.desc      : test restrictions setDisallowedPolicyForAccount with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_for_account_0800", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_FINGER_PRINT, true);
+      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_FINGER_PRINT, true, DEFAULT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200010).assertTrue();
+    } finally {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_FINGER_PRINT, false);
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
 }
 
 function testGetDisallowedForAccountPolicy() {

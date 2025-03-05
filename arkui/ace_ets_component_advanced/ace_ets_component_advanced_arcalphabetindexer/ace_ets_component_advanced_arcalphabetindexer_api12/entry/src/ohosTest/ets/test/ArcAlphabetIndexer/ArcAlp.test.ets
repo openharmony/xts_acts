@@ -16,11 +16,17 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from
 import router from '@system.router';
 import CommonFunc from '../../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter';
-
+import { resourceManager } from '@kit.LocalizationKit';
 const expectedFamily = 'HarmonyOS Sans';
 
 interface optionsObj {
   uri: string
+}
+
+function dataPanelDefaultStrokeWidth(sysWidth: Resource) {
+  let resourceStrokeWidth = getContext().resourceManager.getNumber(sysWidth.id)
+  let newStrokeWidth: string = px2vp(resourceStrokeWidth) + '.00vp'
+  return newStrokeWidth;
 }
 
 export default function ArcAlphabetIndexer() {
@@ -278,7 +284,7 @@ export default function ArcAlphabetIndexer() {
       expect(obj.$attrs.font.style).assertEqual('FontStyle.Italic');
       expect(obj.$attrs.font.weight).assertEqual('FontWeight.Normal');
       expect(obj.$attrs.font.family).assertEqual(expectedFamily);
-      expect(obj.$attrs.popupFont.size).assertEqual('24.00vp');
+      expect(obj.$attrs.popupFont.size).assertEqual(dataPanelDefaultStrokeWidth($r('sys.float.ohos_id_text_size_headline7')));
       expect(obj.$attrs.popupFont.style).assertEqual('FontStyle.Italic');
       expect(obj.$attrs.popupFont.weight).assertEqual('FontWeight.Normal');
       expect(obj.$attrs.popupFont.family).assertEqual(expectedFamily);
@@ -287,8 +293,7 @@ export default function ArcAlphabetIndexer() {
       console.info('[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0300] END');
       done();
     });
-	
-	
+
     /**
      * @tc.number: ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0400
      * @tc.name  : testArcAlphabetIndexerComponent.

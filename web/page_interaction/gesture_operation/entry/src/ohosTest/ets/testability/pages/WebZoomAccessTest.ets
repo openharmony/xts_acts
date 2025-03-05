@@ -64,7 +64,6 @@ struct WebZoomAccessTest {
           console.info("key==>" + this.str)
           switch (this.str) {
             case "testWebZoomAccess001": {
-              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   this.controller.loadUrl("resource://rawfile/second.html")
                   await Utils.sleep(2000)
@@ -75,12 +74,8 @@ struct WebZoomAccessTest {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 }
                 break;
-              } else {
-                Utils.emitEvent(true, 6500)
-              }
             }
             case "testWebZoomAccess002": {
-              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   await Utils.fingerZoom('WebZoomAccessTestWebView', true);
                   await Utils.sleep(2000)
@@ -91,12 +86,8 @@ struct WebZoomAccessTest {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 }
                 break;
-              } else {
-                Utils.emitEvent(true, 6502)
-              }
             }
             case "testWebZoomAccess003": {
-              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   this.zoomAccess = true;
                   await Utils.sleep(2000)
@@ -107,12 +98,8 @@ struct WebZoomAccessTest {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 }
                 break;
-              } else {
-                Utils.emitEvent(true, 6504)
-              }
             }
             case "testWebZoomAccess004": {
-              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   this.zoomAccess = true;
                   this.flag = true;
@@ -132,9 +119,6 @@ struct WebZoomAccessTest {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 }
                 break;
-              } else {
-                Utils.emitEvent(true, 6506)
-              }
             }
           }
         })

@@ -65,7 +65,7 @@ export default function SnapshotOptions_region() {
       let height: number = parseFloat(obj.$attrs.height.toString());
       let width: number = parseFloat(obj.$attrs.width.toString());
       let expectValue: number = width / height;
-      expect(expectValue).assertEqual(2);
+      expect(expectValue).assertEqual(1);
       console.info('[SnapshotOptions_region_0100] END');
       done();
     });
@@ -94,7 +94,7 @@ export default function SnapshotOptions_region() {
        let height: number = parseFloat(obj.$attrs.height.toString());
        let width: number = parseFloat(obj.$attrs.width.toString());
        let expectValue: number = width / height;
-       expect(expectValue).assertEqual(2);
+       expect(expectValue).assertEqual(1);
 
        console.info('[SnapshotOptions_region_0200] END');
        done();

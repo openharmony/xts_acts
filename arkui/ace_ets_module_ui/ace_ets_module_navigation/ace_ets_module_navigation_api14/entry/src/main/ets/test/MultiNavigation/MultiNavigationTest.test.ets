@@ -130,7 +130,7 @@ export default function MultiNavigationTest() {
       console.info('[MultiNavigation_0300] btn2 click');
       await CommonFunc.sleep(200);
 
-      let btn3 = await scrollBar.scrollSearch(ON.id('detailPopId'));
+      let btn3 = await driver.findComponent(ON.id('detailPopId'));
       await btn2.click()
       console.info('[MultiNavigation_0300] btn3 click');
       await CommonFunc.sleep(200);

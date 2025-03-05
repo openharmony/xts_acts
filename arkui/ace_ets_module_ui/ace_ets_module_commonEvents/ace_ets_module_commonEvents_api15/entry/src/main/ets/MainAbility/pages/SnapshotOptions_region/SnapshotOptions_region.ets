@@ -81,7 +81,7 @@ struct SnapshotExample {
               region: {
                 left: 100,
                 right: 200,
-                top: 150,
+                top: 100,
                 bottom: 200
               }
             })
@@ -120,7 +120,7 @@ struct SnapshotExample {
               region: {
                 start: 100,
                 end: 200,
-                top: 150,
+                top: 100,
                 bottom: 200
               }
             })

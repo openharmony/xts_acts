@@ -62,7 +62,8 @@ struct P1 {
                 console.log(TAG + 'ACTS_AdComponent_OnListener publish');
               });
             }, sleepTimeOne);
-          }}})
+          }}, adRenderer: ()=>{}, rollPlayState: 1
+      })
         .width('100%')
         .height('100%')
 

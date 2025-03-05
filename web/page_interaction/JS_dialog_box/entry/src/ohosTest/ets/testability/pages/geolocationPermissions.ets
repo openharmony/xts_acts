@@ -70,7 +70,6 @@ struct geolocationPermissions {
           switch (this.str) {
 
             case "testGetStoredGeolocation001": {
-              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   webView.GeolocationPermissions.allowGeolocation("file:///")
                   webView.GeolocationPermissions.getStoredGeolocation((error, origins) => {
@@ -88,13 +87,9 @@ struct geolocationPermissions {
                   console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
                 }
                 break;
-              } else {
-                Utils.emitEvent(origins_str, 30060);
-              }
             }
 
             case "testGetStoredGeolocation002": {
-              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   webView.GeolocationPermissions.allowGeolocation("file:///")
                   webView.GeolocationPermissions.getStoredGeolocation()
@@ -111,13 +106,9 @@ struct geolocationPermissions {
                   console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
                 }
                 break;
-              } else {
-                Utils.emitEvent(origins_str, 30061);
-              }
             }
 
             case "testGetStoredGeolocation003": {
-              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   webView.GeolocationPermissions.deleteGeolocation(this.origin)
                   await Utils.sleep(1000)
@@ -136,13 +127,9 @@ struct geolocationPermissions {
                   console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
                 }
                 break;
-              } else {
-                Utils.emitEvent(origins_str, 100011);
-              }
             }
 
             case "testGetStoredGeolocation004": {
-              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   webView.GeolocationPermissions.deleteGeolocation(this.origin)
                   await Utils.sleep(1000)
@@ -160,13 +147,9 @@ struct geolocationPermissions {
                   console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
                 }
                 break;
-              } else {
-                Utils.emitEvent(origins_str, 100012);
-              }
             }
 
             case "testDeleteAllGeolocation001": {
-              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 let text: string = '123'
                 webView.GeolocationPermissions.allowGeolocation("resource://rawfile/")
                 webView.GeolocationPermissions.deleteAllGeolocation()
@@ -180,13 +163,9 @@ struct geolocationPermissions {
                   Utils.emitEvent(text, 30055)
                 })
                 break;
-              } else {
-                Utils.emitEvent(text, 30055)
-              }
             }
 
             case "testGetAccessibleGeolocation001": {
-              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   webView.GeolocationPermissions.allowGeolocation(this.origin)
                   webView.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
@@ -206,13 +185,9 @@ struct geolocationPermissions {
                   Utils.emitEvent(e.code, 100008);
                 }
                 break;
-              } else {
-                Utils.emitEvent(result, 100008);
-              }
             }
 
             case "testGetAccessibleGeolocation002": {
-              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 try {
                   webView.GeolocationPermissions.allowGeolocation(this.origin)
                   webView.GeolocationPermissions.getAccessibleGeolocation(this.origin)
@@ -229,9 +204,6 @@ struct geolocationPermissions {
                   Utils.emitEvent(e.code, 100009);
                 }
                 break;
-              } else {
-                Utils.emitEvent(error, 100009);
-              }
             }
 
           }

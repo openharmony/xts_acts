@@ -21,7 +21,11 @@ import textPickerTest from "./textpicker/TextPickerColumnWidthsTest.test"
 import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
 import buttonTypeTest from './button/ButtonTypeTest.test'
 import DragTest from "./drag/DragCaseTest.test"
+import calendarPickerDateTest from "./calendarPicker/CalendarPickerDate.test"
 import calendarPickerTest from "./calendarPicker/CalendarPickerMarkTodayTest.test"
+import textInputWordBreakTest from "./textInput/TextInputWordBreakTest.test"
+import ExpectedFrameRateRangeCallback from "./ExpectedFrameRateRange/ExpectedFrameRateRangeCallback.test"
+import datePickerTest from "./datepicker/DatePickerMode.test"
 
 export default function testsuite() {
   postFrameCallbackTest();
@@ -33,5 +37,9 @@ export default function testsuite() {
   scrollBackToTopTest();
   buttonTypeTest();
   DragTest();
+  calendarPickerDateTest();
   calendarPickerTest();
+  textInputWordBreakTest();
+  ExpectedFrameRateRangeCallback();
+  datePickerTest();
 }

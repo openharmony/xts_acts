@@ -19,6 +19,7 @@ import common from '@ohos.app.ability.common';
 import router from '@ohos.router'
 import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import advertising from '@ohos.advertising';
+import webview from '@ohos.web.webview';
 
 const TAG: string = 'AdTestTag';
 const Domain: number = 0x0000;
@@ -145,6 +146,83 @@ export default function adsTest1() {
         url: 'MainAbility/pages/index/webRegister'
       })
       done();
+    })
+
+    /**
+     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0800
+     * @tc.name: tesRegisterWebAdInterface_401
+     * @tc.desc: tesRegisterWebAdInterface_401.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("tesRegisterWebAdInterface_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        advertising.registerWebAdInterface(null, context);
+        done();
+      } catch (e) {
+        expect(e.code).assertEqual(401);
+        done()
+      }
+    })
+
+
+    /**
+     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0900
+     * @tc.name: testGetAdRequestBody_401
+     * @tc.desc: testGetAdRequestBody_401.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testGetAdRequestBody_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        await advertising.getAdRequestBody(null, adOption).then((data: string) => {
+          hilog.info(Domain, TAG, `testGetAdRequestBody result = ${JSON.stringify(JSON.parse(data))}`);
+          expect(data != null).assertEqual(true);
+          done();
+        })
+      } catch (error) {
+        hilog.error(Domain, TAG, `testGetAdRequestBody failed, ERROR= ${error}`);
+        expect(error != null).assertEqual(true);
+        expect(Number(error.code)).assertEqual(401);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_1000
+     * @tc.name: testParseAdResponse_401
+     * @tc.desc: testParseAdResponse_401.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testParseAdResponse_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      let adLoaderListener: AdLoaderFunc = {
+        onAdLoadFailure: (errorCode: number, errorMsg: string) => {
+          hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.',
+            errorCode, errorMsg);
+          expect(errorCode).assertLarger(0);
+          expect(errorMsg).assertInstanceOf('String')
+          done();
+        },
+        onAdLoadSuccess: (ads: Map<string, Array<advertising.Advertisement>>) => {
+          hilog.info(Domain, TAG, 'request ad success');
+          let returnAds: Array<advertising.Advertisement> = [];
+          ads.forEach((adsArray) => returnAds.push(...adsArray));
+          expect(returnAds[0] != null).assertEqual(true);
+          done();
+        }
+      };
+      try {
+        advertising.parseAdResponse(null, adLoaderListener, context);
+      } catch (e) {
+        hilog.error(Domain, TAG, `testParseAdResponse failed, ERROR= ${e}`);
+        expect(e != null).assertEqual(true);
+        expect(e.code).assertEqual(401);
+        done();
+      }
     })
   })
 }
