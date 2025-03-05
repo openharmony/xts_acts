@@ -46,7 +46,7 @@ export default function abilityTest() {
             session = null;
         }).catch((err: BusinessError) => {
             console.info(`TestLog: session destroy error: code: ${err.code}, message: ${err.message}`);
-            except().assertFail();
+            expect().assertFail();
         })
     }
 
@@ -145,7 +145,7 @@ export default function abilityTest() {
       await session.destroy()
       await sleep(500)
       let aVCastController: avSession.AVCastController;
-      await session.getAVCastController().then((avcontroller: avSession.AVCastController) => {
+      await session.getAVCastController((err: BusinessError, avcontroller: avSession.AVCastController) => {
         if (err) {
           console.info(`getAVCastController11 BusinessError: code: ${err.code}, message: ${err.message}`);
           expect(err.code).assertEqual(6600102);
