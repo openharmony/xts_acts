@@ -12,10 +12,7 @@
     "package": "ohos.acts.aafwk.test.fasupplement",
     "name": ".entry",
     "mainAbility": ".EntryAbility",
-    "deviceType": [
-      "default",
-      "tablet"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

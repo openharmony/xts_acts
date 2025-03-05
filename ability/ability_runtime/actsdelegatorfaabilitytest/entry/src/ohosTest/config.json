@@ -16,11 +16,7 @@
     "package": "com.ohos.abilitytoolabilitydelegatorfatest_test",
     "name": ".entry_test",
     "mainAbility": ".TestAbility",
-    "deviceType": [
-      "phone",
-      "tablet",
-      "wearable"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry_test",

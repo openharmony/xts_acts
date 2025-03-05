@@ -13,12 +13,7 @@
     "name": ".entry",
     "mainAbility": ".MainAbility",
     "srcPath": "",
-    "deviceType": [
-      "tablet",
-      "default",
-      "2in1",
-      "wearable"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

@@ -20,11 +20,7 @@
     "srcEntry": "./ets/Application/AbilityStage.ts",
     "description": "$string:module_desc",
     "mainElement": "MainAbility",
-    "deviceTypes": [
-      "wearable",
-      "tablet",
-      "default"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",

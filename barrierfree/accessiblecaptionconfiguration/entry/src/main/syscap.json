@@ -1,15 +1,12 @@
 {
     "devices": {
-        "general": [
-            "wearable",
-            "tablet",
-            "default",
-            "phone"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.BarrierFree.Accessibility.Core",
+                    "SystemCapability.BarrierFree.Accessibility.Hearing",
+                    "SystemCapability.BarrierFree.Accessibility.Vision"
                 ]
             }
         ]

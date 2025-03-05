@@ -20,15 +20,7 @@
     "srcEntry": "./ets/Application/AbilityStage.ts",
     "description": "$string:phone_entry_dsc",
     "mainElement": "MainAbility",
-    "deviceTypes": [
-      "tablet",
-      "default",
-      "phone",
-      "2in1",
-      "car",
-      "wearable",
-      "tv"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:test_pages",

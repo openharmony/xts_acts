@@ -41,12 +41,7 @@
         "srcLanguage": "js"
       }
     ],
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
+    "deviceType": [],
     "mainAbility": "com.example.bmsaccesstoken3.MainAbility",
     "distro": {
       "moduleType": "entry",

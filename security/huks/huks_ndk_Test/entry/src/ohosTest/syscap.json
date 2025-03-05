@@ -1,15 +1,12 @@
 {
     "devices": {
-        "general": [
-            "tablet",
-            "default",
-            "2in1",
-            "wearable"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Security.Huks.Extension",
+                    "SystemCapability.Security.Huks.Core",
+                    "SystemCapability.Security.Cipher"
                 ]
             }
         ]

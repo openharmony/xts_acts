@@ -18,12 +18,7 @@
     "name": "hspTwo",
     "type": "shared",
     "description": "$string:shared_desc",
-    "deviceTypes": [
-      "wearable",
-      "phone",
-      "tablet",
-      "2in1"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "pages": "$profile:main_pages"
   }

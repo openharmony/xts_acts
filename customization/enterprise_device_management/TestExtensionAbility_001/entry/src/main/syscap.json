@@ -1,13 +1,10 @@
 {
     "devices": {
-        "general": [
-            "tablet",
-            "default"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Customization.EnterpriseDeviceManager"
                 ]
             }
         ]

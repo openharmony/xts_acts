@@ -15,13 +15,7 @@
     "module": {
         "package": "com.hidebug.test",
         "name": ".entry",
-        "deviceType": [
-            "tablet",
-            "default",
-            "phone",
-            "2in1",
-            "wearable"
-        ],
+        "deviceType": [],
         "distro": {
             "deliveryWithInstall": true,
             "moduleName": "entry",

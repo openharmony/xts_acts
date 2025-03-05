@@ -19,12 +19,7 @@
     "type": "feature",
     "description": "$string:entry_test_desc",
     "mainElement": "MainAbility",
-    "deviceTypes": [
-      "wearable",
-      "default",
-      "tablet",
-      "2in1"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:test_pages",

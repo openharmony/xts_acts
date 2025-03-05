@@ -19,12 +19,7 @@
     "type": "entry",
     "description": "$string:module_desc",
     "mainElement": "SpecifedProcessAbility",
-    "deviceTypes": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",

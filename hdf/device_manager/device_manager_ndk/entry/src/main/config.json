@@ -12,11 +12,7 @@
     "package": "ohos.acts.device_manager.device_manager.function",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-      "tablet",
-      "default",
-      "2in1"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

@@ -1,14 +1,11 @@
 {
     "devices": {
-        "general": [
-            "wearable",
-            "default",
-            "tablet"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Telephony.CoreService",
+                    "SystemCapability.Telephony.CoreService.Esim"
                 ]
             }
         ]

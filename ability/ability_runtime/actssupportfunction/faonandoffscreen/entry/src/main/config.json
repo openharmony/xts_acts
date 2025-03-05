@@ -16,13 +16,7 @@
     "package": "ohos.acts.aafwk.test.faonandoffscreen",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-      "wearable",
-      "default",
-      "tablet",
-      "2in1",
-      "phone"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

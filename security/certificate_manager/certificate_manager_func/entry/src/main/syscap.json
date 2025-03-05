@@ -1,16 +1,11 @@
 {
     "devices": {
-        "general": [
-            "wearable",
-            "phone",
-            "tablet",
-            "2in1",
-            "default"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Security.CertificateManagerDialog",
+                    "SystemCapability.Security.CertificateManager"
                 ]
             }
         ]
