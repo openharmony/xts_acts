@@ -10,6 +10,10 @@ include_directories(
     ${NATIVERENDER_ROOT_PATH}/include
 )
 
+add_library(nativeNode SHARED
+    capihand/container.cpp
+    capihand/manager.cpp
+    init.cpp )
 
 add_library(nativegamecrontroller SHARED
     GameCtroller/container.cpp
@@ -55,5 +59,7 @@ find_library(
 
 
 
+target_link_libraries(nativeNode PUBLIC
+    ${hilog-lib} ${libace-lib} ${libnapi-lib}  ${libnative_drawing})
 target_link_libraries(nativegamecrontroller PUBLIC
     ${hilog-lib} ${libace-lib} ${libnapi-lib}  ${libnative_drawing})    

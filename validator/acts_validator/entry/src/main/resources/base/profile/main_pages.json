@@ -52,6 +52,9 @@
     "pages/ArkUI/Refresh",
     "pages/ArkUI/AccessBilityHover",
     "pages/ArkUI/NavigationEnableHoverMode",
+
+    "pages/ArkUI/CapiHandDetect",
+    "pages/ArkUI/GetBarRect",
     "pages/ArkUI/GameCtrollerCallBackData",
     "pages/ArkUI/GameCtronllerCTest",
     "pages/Camera/Camera_index",
@@ -128,7 +131,8 @@
     "pages/ArkUI/Pinchhand",
     "pages/ArkUI/Rotate1hand",
     "pages/ArkUI/Swipehand",
-    "pages/ArkUI/Taphand"
+    "pages/ArkUI/Taphand",
+    "pages/ArkUI/HoverMove"
   ]
 }
 

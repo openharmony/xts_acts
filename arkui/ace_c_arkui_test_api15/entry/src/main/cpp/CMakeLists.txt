@@ -25,6 +25,16 @@ add_library(nativerender SHARED
     gesturetouchcancel/gesture_cancel.cpp
     snapShot/snap_shot.cpp
     snapShot/container.cpp
+    scroll/scroll_backtotop_test.cpp
+    component/component.cpp
+    component/grid_component.cpp
+    component/list_component.cpp
+    component/scroll_component.cpp
+    component/waterflow_component.cpp
+    component/button_component.cpp
+    component/text_component.cpp
+    gestureRecognizer/gestureRecognizer.cpp
+    eventInfo/eventInfo.cpp
 )
 
 add_library(nativefunc SHARED

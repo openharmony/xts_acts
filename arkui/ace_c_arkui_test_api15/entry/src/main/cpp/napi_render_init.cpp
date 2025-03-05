@@ -28,6 +28,9 @@
 #include "gesturetouchcancel/gesture_cancel.h"
 #include "snapShot/snap_shot.h"
 #include "snapShot/container.h"
+#include "scroll/scroll_backtotop_test.h"
+#include "gestureRecognizer/gestureRecognizer.h"
+#include "eventInfo/eventInfo.h"
 
 
 namespace ArkUICapiTest {
@@ -96,6 +99,17 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"TestsnapShotetResult", nullptr, Manager::GetResult, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollBackToTopTest", nullptr, ScrollBackToTopTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"TestGestureRecognizerFinger001", nullptr, GestureRecognizerTest::TestGestureRecognizerFinger001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestGestureRecognizerGetResult", nullptr, GestureRecognizerTest::GetResult, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"TestEventInfoGetPressedTime001", nullptr, EventInfoTest::TestEventInfoGetPressedTime001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"TestEventInfoGetResult", nullptr, EventInfoTest::GetResult, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

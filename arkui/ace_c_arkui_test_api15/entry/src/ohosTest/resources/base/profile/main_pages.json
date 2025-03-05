@@ -25,6 +25,9 @@
     "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode008",
     "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode009",
     "MainAbility/pages/gestureCancel/gestureCancel",
-    "MainAbility/pages/snapShot/snapShotTest"
+    "MainAbility/pages/snapShot/snapShotTest",
+    "MainAbility/pages/scroll/ScrollBackToTopTest",
+    "MainAbility/pages/gestureRecognizer/GestureRecognizerTest",
+    "MainAbility/pages/eventInfo/EventInfoCaseTest1"
   ]
 }
