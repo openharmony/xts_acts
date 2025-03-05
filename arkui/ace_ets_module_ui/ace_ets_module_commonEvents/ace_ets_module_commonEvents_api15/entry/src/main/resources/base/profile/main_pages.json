@@ -33,6 +33,7 @@
         "MainAbility/pages/EventItem/PinchGesture",
         "MainAbility/pages/EventItem/RotationGesture",
         "MainAbility/pages/startDataLoading/dataLoading",
-        "MainAbility/pages/DragPreviewOptions/DragPreviewOptions"
+        "MainAbility/pages/DragPreviewOptions/DragPreviewOptions",
+        "MainAbility/pages/EventTarget_id/EventTarget_id"
     ]
 }
