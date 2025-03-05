@@ -14,12 +14,7 @@
 		"package":"com.example.accessiblecaptionconfiguration",
 		"name":".entry",
 		"mainAbility":".MainAbility",
-		"deviceType":[
-      "wearable",
-			"tablet",
-			"default",
-			"phone"
-		],
+		"deviceType": [],
 		"distro":{
 			"deliveryWithInstall":true,
 			"installationFree":false,

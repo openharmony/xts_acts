@@ -1,15 +1,12 @@
 {
     "devices": {
-        "general": [
-            "wearable",
-            "tablet",
-            "2in1",
-            "default"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.FileManagement.StorageService.SpatialStatistics",
+                    "SystemCapability.FileManagement.StorageService.Volume",
+                    "SystemCapability.FileManagement.StorageService.Encryption"
                 ]
             }
         ]

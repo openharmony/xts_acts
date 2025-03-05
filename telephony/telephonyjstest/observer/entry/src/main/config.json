@@ -12,10 +12,7 @@
     "package": "com.ohos.observer",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-      "default",
-      "tablet"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

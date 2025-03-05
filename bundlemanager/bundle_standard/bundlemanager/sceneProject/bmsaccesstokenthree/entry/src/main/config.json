@@ -13,12 +13,7 @@
   "module": {
     "package": "com.example.bmsaccesstoken2",
     "name": ".MyApplication2",
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "installationFree": false,

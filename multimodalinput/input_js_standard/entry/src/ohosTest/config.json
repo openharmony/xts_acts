@@ -12,11 +12,7 @@
     "package": "ohos.acts.multimodalinput.input",
     "name": ".entry_test",
     "mainAbility": ".TestAbility",
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry_test",

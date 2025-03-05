@@ -1,15 +1,15 @@
 {
     "devices": {
-        "general": [
-            "wearable",
-            "default",
-            "tablet",
-            "2in1"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Communication.NetManager.Ethernet",
+                    "SystemCapability.Communication.NetManager.NetSharing",
+                    "SystemCapability.Communication.NetManager.MDNS",
+                    "SystemCapability.Communication.NetManager.Vpn",
+                    "SystemCapability.Communication.NetManager.NetFirewall",
+                    "SystemCapability.Communication.NetManager.WearableDistributedNet"
                 ]
             }
         ]

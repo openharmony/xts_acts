@@ -1,13 +1,10 @@
 {
     "devices": {
-        "general": [
-            "default",
-            "tablet"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Test.UiTest"
                 ]
             }
         ]

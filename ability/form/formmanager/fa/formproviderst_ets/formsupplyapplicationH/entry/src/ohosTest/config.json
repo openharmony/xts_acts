@@ -12,10 +12,7 @@
     "package": "com.form.formsystemtestserviceh.hmservice",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-      "default",
-      "tablet"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

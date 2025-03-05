@@ -12,12 +12,7 @@
     "package": "com.ohos.st.formupdatetest",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

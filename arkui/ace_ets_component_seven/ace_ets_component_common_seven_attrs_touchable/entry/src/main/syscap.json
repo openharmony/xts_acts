@@ -1,15 +1,12 @@
 {
     "devices": {
-        "general": [
-            "tablet",
-            "default",
-            "phone",
-            "wearable"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.ArkUI.ArkUI.Full",
+                    "SystemCapability.ArkUI.ArkUI.Lite",
+                    "SystemCapability.ArkUI.ArkUI.Circle"
                 ]
             }
         ]

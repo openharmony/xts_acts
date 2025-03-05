@@ -12,13 +12,7 @@
     "package": "com.example.newwanthapapi7",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-      "wearable",
-      "default",
-      "tablet",
-      "2in1",
-      "phone"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

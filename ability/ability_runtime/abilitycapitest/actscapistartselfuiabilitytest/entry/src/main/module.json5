@@ -20,10 +20,7 @@
     "description": "$string:module_desc",
     "srcEntry": "./ets/Application/AbilityStage.ets",
     "mainElement": "EntryAbility",
-    "deviceTypes": [
-      "default",
-      "tablet"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",

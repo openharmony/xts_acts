@@ -12,12 +12,7 @@
     "package": "com.example.actscontext",
     "name": ".entry_test",
     "mainAbility": ".TestAbility",
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry_test",

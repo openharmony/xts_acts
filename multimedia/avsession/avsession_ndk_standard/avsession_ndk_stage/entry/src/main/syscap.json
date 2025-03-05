@@ -1,13 +1,13 @@
 {
     "devices": {
-        "general": [
-            "default",
-            "tablet"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Multimedia.AVSession.AVCast",
+                    "SystemCapability.Multimedia.AVSession.Core",
+                    "SystemCapability.Multimedia.AVSession.ExtendedDisplayCast",
+                    "SystemCapability.Multimedia.AVSession.Manager"
                 ]
             }
         ]

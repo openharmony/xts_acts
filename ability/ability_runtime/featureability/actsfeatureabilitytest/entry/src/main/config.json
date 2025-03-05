@@ -12,12 +12,7 @@
     "bundleName": "com.example.actsfeatureabilitytest_entry",
     "name": ".entry",
     "mainAbility": "com.example.actsfeatureabilitytest.MainAbility",
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
+    "deviceType": [],
     "description": "descriptionTest",
     "distro": {
       "deliveryWithInstall": true,

@@ -1,15 +1,17 @@
 {
     "devices": {
-        "general": [
-            "tablet",
-            "default",
-            "phone",
-            "2in1"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Ability.AbilityRuntime.Core",
+                    "SystemCapability.Ability.AbilityRuntime.FAModel",
+                    "SystemCapability.Ability.AbilityRuntime.AbilityCore",
+                    "SystemCapability.Ability.AbilityRuntime.Mission",
+                    "SystemCapability.Ability.AbilityRuntime.QuickFix",
+                    "SystemCapability.Ability.AbilityTools.AbilityAssistant",
+                    "SystemCapability.Ability.AppStartup",
+                    "SystemCapability.Ability.AppExtension.PhotoEditorExtension"
                 ]
             }
         ]

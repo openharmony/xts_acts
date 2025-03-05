@@ -1,14 +1,10 @@
 {
     "devices": {
-        "general": [
-            "tablet",
-            "default",
-            "2in1"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.MiscServices.Pasteboard"
                 ]
             }
         ]
