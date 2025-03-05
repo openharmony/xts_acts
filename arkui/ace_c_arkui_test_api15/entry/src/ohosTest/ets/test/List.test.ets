@@ -32,6 +32,7 @@ import nodeHandleByIdTest from "./node/NodeHandleByIdTest.test"
 import getWindowInfoTest from "./window/GetWindowInfoTest.test"
 import testLazyForEachExpandMode from "./lazyForEach/testLazyForEachExpandMode.test"
 import gesturecancelTest from "./gesturecancelTest/gesturecancelTest.test"
+import snapShotTest from './snapShot/snapShotTest.test'
 
 
 export default function testsuite() {
@@ -52,4 +53,5 @@ export default function testsuite() {
    getWindowInfoTest();
    testLazyForEachExpandMode();
    gesturecancelTest();
+   snapShotTest();
 }

@@ -26,6 +26,8 @@
 #include "window/get_window_info_test.h"
 #include "lazyForEach/lazyforeach_expand_mode_test.h"
 #include "gesturetouchcancel/gesture_cancel.h"
+#include "snapShot/snap_shot.h"
+#include "snapShot/container.h"
 
 
 namespace ArkUICapiTest {
@@ -90,6 +92,10 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetTouchEventData", nullptr, GestureInterfaceCancelTest::GetTouchEventData,
          nullptr, nullptr, nullptr, napi_default, nullptr},  
+        {"snapShotTest001", nullptr, Manager::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"TestsnapShotetResult", nullptr, Manager::GetResult, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
