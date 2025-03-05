@@ -4845,8 +4845,9 @@ static napi_value AudioRenderGetAudioTimestampInfoInterval(napi_env env, napi_ca
     return res;
 }
 
-static napi_value getTargetStreamInfo(napi_env env, napi_callback_info info)
+static napi_status getTargetStreamInfo(napi_env env, napi_callback_info info)
 {
+    napi_status res = napi_status::napi_invalid_arg;
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -4856,38 +4857,43 @@ static napi_value getTargetStreamInfo(napi_env env, napi_callback_info info)
     napi_value n_streamSampleFormatNum;
     napi_value n_streamChannelCountNum;
     napi_value n_streamLatencyModeNum;
-
-    napi_get_named_property(env, args[0], "streamRendererUsageNum", &n_streamRendererUsageNum);
-    napi_get_named_property(env, args[0], "streamSourceTypeNum", &n_streamSourceTypeNum);
-    napi_get_named_property(env, args[0], "streamSamplingRateNum", &n_streamSamplingRateNum);
-    napi_get_named_property(env, args[0], "streamSampleFormatNum", &n_streamSampleFormatNum);
-    napi_get_named_property(env, args[0], "streamChannelCountNum", &n_streamChannelCountNum);
-    napi_get_named_property(env, args[0], "streamLatencyModeNum", &n_streamLatencyModeNum);
-
+    if (napi_get_named_property(env, args[0], "streamRendererUsageNum", &n_streamRendererUsageNum) != napi_ok) {
+        return res;
+    }
+    if (napi_get_named_property(env, args[0], "streamSourceTypeNum", &n_streamSourceTypeNum) != napi_ok) {
+        return res;
+    }
+    if (napi_get_named_property(env, args[0], "streamSamplingRateNum", &n_streamSamplingRateNum) != napi_ok) {
+        return res;
+    }
+    if (napi_get_named_property(env, args[0], "streamSampleFormatNum", &n_streamSampleFormatNum) != napi_ok) {
+        return res;
+    }
+    if (napi_get_named_property(env, args[0], "streamChannelCountNum", &n_streamChannelCountNum) != napi_ok) {
+        return res;
+    }
+    if (napi_get_named_property(env, args[0], "streamLatencyModeNum", &n_streamLatencyModeNum) != napi_ok) {
+        return res;
+    }
     int32_t capturerStreamUsage;
     napi_get_value_int32(env, n_streamSourceTypeNum, &capturerStreamUsage);
     g_ohCapturerStreamUsage = (OH_AudioStream_SourceType)capturerStreamUsage;
-    
     int32_t rendererStreamUsage;
     napi_get_value_int32(env, n_streamRendererUsageNum, &rendererStreamUsage);
     g_ohRendererStreamUsage = (OH_AudioStream_Usage)rendererStreamUsage;
-
     int32_t format;
     napi_get_value_int32(env, n_streamSampleFormatNum, &format);
     g_ohFormat = (OH_AudioStream_SampleFormat)format;
-
     int32_t samplingRate;
     napi_get_value_int32(env, n_streamSamplingRateNum, &samplingRate);
     g_ohSamplingRate = samplingRate;
-
     int32_t channelCount;
     napi_get_value_int32(env, n_streamChannelCountNum, &channelCount);
     g_ohChannelCount = channelCount;
-
     int32_t latencyMode;
     napi_get_value_int32(env, n_streamLatencyModeNum, &latencyMode);
     g_ohLatencyMode = (OH_AudioStream_LatencyMode)latencyMode;
-    return nullptr;
+    return napi_status::napi_ok;
 }
 
 static int32_t AudioCapturerOnReadDataPcm(OH_AudioCapturer *capturer, void *userData, void *buffer, int32_t bufferLen)
@@ -4902,15 +4908,19 @@ static int32_t AudioCapturerOnReadDataPcm(OH_AudioCapturer *capturer, void *user
 static napi_value AudioCapturerInit(napi_env env, napi_callback_info info)
 {
     napi_value result;
-    getTargetStreamInfo(env, info);
+    napi_status res = getTargetStreamInfo(env, info);
+    if (res != napi_status::napi_ok) {
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
 
     if (g_audioCapturer) {
         OH_AudioCapturer_Release(g_audioCapturer);
         OH_AudioStreamBuilder_Destroy(g_capturerBuilder);
-        
         g_audioCapturer = nullptr;
         g_capturerBuilder = nullptr;
     }
+
     if (g_pcmFile) {
         fclose(g_pcmFile);
         g_pcmFile = nullptr;
@@ -4964,7 +4974,11 @@ static napi_value AudioCapturerStart(napi_env env, napi_callback_info info)
         res = AUDIOSTREAM_ERROR_INVALID_PARAM;
     } else {
         res = OH_AudioCapturer_Start(g_audioCapturer);
-        LOG("AudioCapturerStart succ");
+        if (res != AUDIOSTREAM_SUCCESS) {
+            LOG("AudioCapturerStart fail");
+        } else {
+            LOG("AudioCapturerStart succ");
+        }
     }
 
     napi_create_int32(env, res, &result);
@@ -4981,7 +4995,11 @@ static napi_value AudioCapturerStop(napi_env env, napi_callback_info info)
         res = AUDIOSTREAM_ERROR_INVALID_PARAM;
     } else {
         res = OH_AudioCapturer_Stop(g_audioCapturer);
-        LOG("AudioCapturerStop succ");
+        if (res != AUDIOSTREAM_SUCCESS) {
+            LOG("AudioCapturerStop fail");
+        } else {
+            LOG("AudioCapturerStop succ");
+        }
     }
 
     napi_create_int32(env, res, &result);
@@ -5020,7 +5038,11 @@ static int32_t AudioRendererOnWriteDataPcm(OH_AudioRenderer *renderer, void *use
 static napi_value AudioRendererInit(napi_env env, napi_callback_info info)
 {
     napi_value result;
-    getTargetStreamInfo(env, info);
+    napi_status res = getTargetStreamInfo(env, info);
+    if (res != napi_status::napi_ok) {
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
 
     if (g_audioRenderer) {
         OH_AudioRenderer_Release(g_audioRenderer);
@@ -5078,7 +5100,11 @@ static napi_value AudioRendererStart(napi_env env, napi_callback_info info)
         res = AUDIOSTREAM_ERROR_INVALID_PARAM;
     } else {
         res = OH_AudioRenderer_Start(g_audioRenderer);
-        LOG("AudioRendererStart succ");
+        if (res != AUDIOSTREAM_SUCCESS) {
+            LOG("AudioRendererStart fail");
+        } else {
+            LOG("AudioRendererStart succ");
+        }
     }
 
     napi_create_int32(env, res, &result);
@@ -5095,7 +5121,11 @@ static napi_value AudioRendererStop(napi_env env, napi_callback_info info)
         res = AUDIOSTREAM_ERROR_INVALID_PARAM;
     } else {
         res = OH_AudioRenderer_Stop(g_audioRenderer);
-        LOG("AudioRendererStop succ");
+        if (res != AUDIOSTREAM_SUCCESS) {
+            LOG("AudioRendererStop fail");
+        } else {
+            LOG("AudioRendererStop succ");
+        }
     }
 
     napi_create_int32(env, res, &result);
