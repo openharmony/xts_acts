@@ -131,7 +131,8 @@
     "pages/ArkUI/Pinchhand",
     "pages/ArkUI/Rotate1hand",
     "pages/ArkUI/Swipehand",
-    "pages/ArkUI/Taphand"
+    "pages/ArkUI/Taphand",
+    "pages/ArkUI/HoverMove"
   ]
 }
 
