@@ -22,6 +22,7 @@ import taskPoolTaskGroup from './TaskPoolTaskGroupTask.test';
 import taskPoolTaskGroupActTest from './TaskPoolTaskGroupActTest.test';
 import TaskGroupAbilityTest from './TaskGroupAbility.test';
 import TaskGroupAbilityTest2 from './TaskGroupAbility2.test';
+import TaskGroupAbilityTest3 from './TaskGroupAbility3.test';
 
 export default function testsuite() {
   taskPoolTaskMultipleTest();
@@ -34,4 +35,5 @@ export default function testsuite() {
   taskPoolTaskGroupActTest();
   TaskGroupAbilityTest();
   TaskGroupAbilityTest2();
+  TaskGroupAbilityTest3();
 }
