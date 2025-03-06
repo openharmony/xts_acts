@@ -76,7 +76,7 @@ export default function showAssetsCreationDialogTest() {
     };
 
     const showAssetCreationDialog = async (done: Function, testNum: string, fileUriList: Array<string>,
-                                           photoCreationConfigs: Array<photoAccessHelper.PhotoCreationConfig>, allowFlag: boolean) => {
+      photoCreationConfigs: Array<photoAccessHelper.PhotoCreationConfig>, allowFlag: boolean) => {
       try {
         let desFileUris: Array<string> = [];
         let buttonText = allowFlag ? '允许' : '禁止';
