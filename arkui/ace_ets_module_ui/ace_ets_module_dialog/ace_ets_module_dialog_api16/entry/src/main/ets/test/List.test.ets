@@ -20,6 +20,9 @@ import timePickerDialogEnableHapticFeedback from './timePickerDialog/timePickerD
 import datePickerDialogMode from './datePickerDialogTest/DatePickerDialogMode.test';
 import disableDateRangeAndMarkTodayTest from './calendarPickerDialog/disableDateRangeAndMarkToday.test'
 import calendarPickerStartEndTest from './calendarPickerDialog/startEndTest.test';
+import menuitemOnChangeModifierTest from './MenuTest/menuitemOnChangeModifierTest.test'
+import menuFontsizeModifierTest from './MenuTest/menuFontsizeModifierTest.test'
+import menuBindMenuModifierTest from './MenuTest/menuBindMenuModifierTest.test'
 export default function testsuite() {
     maxWidth();
     openPopup();
@@ -29,4 +32,7 @@ export default function testsuite() {
     datePickerDialogMode();
     disableDateRangeAndMarkTodayTest();
     calendarPickerStartEndTest();
+    menuitemOnChangeModifierTest();
+    menuFontsizeModifierTest();
+    menuBindMenuModifierTest();
 }
