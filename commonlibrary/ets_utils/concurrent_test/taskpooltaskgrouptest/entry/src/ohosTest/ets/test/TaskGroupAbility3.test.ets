@@ -202,7 +202,9 @@ export default function TaskGroupAbilityTest3() {
         })
       }
 
-      await sleep(1000)
+      while (Count1.count < 10 || Count2.count < 10) {
+        await sleep(100)
+      }
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
@@ -292,7 +294,9 @@ export default function TaskGroupAbilityTest3() {
         }
       }
 
-      await sleep(1000)
+      while (Count1.count < 10 || Count2.count < 10) {
+        await sleep(100)
+      }
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
@@ -326,7 +330,9 @@ export default function TaskGroupAbilityTest3() {
           console.info('======', Count1.count, Count2.count)
         })
       }
-      await sleep(1000)
+      while (Count1.count < 10 || Count2.count < 10) {
+        await sleep(100)
+      }
       expect(10).assertEqual(Count1.count)
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
