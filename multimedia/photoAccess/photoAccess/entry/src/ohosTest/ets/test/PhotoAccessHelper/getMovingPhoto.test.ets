@@ -25,7 +25,6 @@ import {
 } from '../common';
 import common from '@ohos.app.ability.common';
 
-
 export default function getMovingPhotoTest() {
   describe("getMovingPhotoTest", () => {
     beforeAll(async () => {
@@ -115,6 +114,26 @@ export default function getMovingPhotoTest() {
             handler = new ArrayBufferHandler();
             console.log(`${testNum}::handler::ArrayBufferHandler`);
             break;
+          case 4:
+            handler = new ErrorHandlerMissingImageUri();
+            console.log(`${testNum}::handler::ErrorHandlerMissingImageUri`);
+            break;
+          case 5:
+            handler = new ErrorHandlerMissingVideoUri();
+            console.log(`${testNum}::handler::ErrorHandlerMissingVideoUri`);
+            break;
+          case 6:
+            handler = new ErrorPhotoHandlerWrongImageuri();
+            console.log(`${testNum}::handler::ErrorPhotoHandlerWrongImageuri`);
+            break;
+          case 7:
+              handler = new ErrorPhotoHandlerMissingImageuri();
+              console.log(`${testNum}::handler::ErrorPhotoHandlerMissingImageuri`);
+              break; 
+          case 8:
+            handler = new ErrorArrayBufferHandlerMissingType();
+            console.log(`${testNum}::handler::ErrorArrayBufferHandlerMissingType`);
+            break; 
           default:
             console.error(`${testNum}::requestMovingPhotoContent::illegal case_num: ${case_num}`);
             expect(false).assertTrue();
@@ -342,21 +361,6 @@ export default function getMovingPhotoTest() {
       await requestMovingPhotoErrorContent(done, testNum, cacelFlag);
     });
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_CONTENT_0007
-     * @tc.name      : request_moving_photo_content_0007
-     * @tc.desc      : request moving photo error code 401
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('request_moving_photo_content_0007', 2, async (done: Function) => {
-      const cacelFlag = false;
-      const expectFlag = true;
-      const testNum = 'request_moving_photo_content_0007';
-      const fileList: Array<string> = ["ImageFile.jpg", "VideoFile.mp4"];
-      await requestMovingPhotoErrorContent(done, testNum, cacelFlag);
-    });
-    /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_LOAD_MOVING_PHOTO_001
      * @tc.name      : load_moving_photo_from_sandbox_001
      * @tc.desc      : load moving photo from sandbox
@@ -375,6 +379,81 @@ export default function getMovingPhotoTest() {
       await sleep(3000);
       await checkFileExist(done, testNum, sandboxPath, fileList, true);
       checkMovingPhotoLoadByResource(done, testNum, imageFileUri, videoFileUri);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_CONTENT_ERROR_0001
+     * @tc.name      : request_moving_photo_content_error_0001
+     * @tc.desc      : Test requestContent with missing imageFileUri
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_moving_photo_content_error_0001', 0, async (done: Function) => {
+      const testNum = 'request_moving_photo_content_error_0001';
+      await requestMovingPhotoContent(done, testNum, 4, false);
+      await sleep(1000);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_CONTENT_ERROR_0002
+     * @tc.name      : request_moving_photo_content_error_0002
+     * @tc.desc      : Test requestContent with missing videoFileUri
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_moving_photo_content_error_0002', 0, async (done: Function) => {
+      const testNum = 'request_moving_photo_content_error_0002';
+      await requestMovingPhotoContent(done, testNum, 5, false);
+      await sleep(1000);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_CONTENT_ERROR_0003
+     * @tc.name      : request_moving_photo_content_error_0003
+     * @tc.desc      : Test requestContent with missing imageUri
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_moving_photo_content_error_0003', 0, async (done: Function) => {
+      const testNum = 'request_moving_photo_content_error_0003';
+      await requestMovingPhotoContent(done, testNum, 6, false);
+      await sleep(1000);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_CONTENT_ERROR_0004
+     * @tc.name      : request_moving_photo_content_error_0004
+     * @tc.desc      : Test requestContent with imageUri as undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_moving_photo_content_error_0004', 0, async (done: Function) => {
+      const testNum = 'request_moving_photo_content_error_0004';
+      await requestMovingPhotoContent(done, testNum, 7, false);
+      await sleep(1000);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_CONTENT_ERROR_0005
+     * @tc.name      : request_moving_photo_content_error_0005
+     * @tc.desc      : Test requestContent with missing type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_moving_photo_content_error_0005', 0, async (done: Function) => {
+      const testNum = 'request_moving_photo_content_error_0005';
+      await requestMovingPhotoContent(done, testNum, 8, false);
+      await sleep(1000);
+      done();
     });
 
     // export moving photo:: video and photo
@@ -422,6 +501,81 @@ export default function getMovingPhotoTest() {
         if (buffer == undefined || buffer.byteLength <= 0) {
           console.error(`ArrayBufferHandler :: failed to request content ArrayBuffer !`);
           expect(false).assertTrue();
+        }
+      }
+    }
+    // export moving photo:: missing imageuri
+    class ErrorHandlerMissingImageUri implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
+      async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
+        console.log("ErrorHandlerMissingImageUri::movingPhoto onDataPrepared");
+        let imageFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/entry_testxxxxxxxxx/photos/" + imageFileName;
+        let videoFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/entry_test/photos/" + videoFileName;
+        try {
+          await movingPhoto.requestContent(imageFileUri, videoFileUri);
+          console.error("ErrorHandlerMissingImageUri: requestContent should have thrown an error");
+          expect(false).assertTrue();
+        } catch (error) {
+          console.error(`ErrorHandlerMissingImageUri get moving photo uri fail !`);
+          expect(error.code).assertEqual('14000011');
+        }
+      }
+    }
+    // export moving photo:: missing imageuri
+    class ErrorHandlerMissingVideoUri implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
+      async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
+        console.log("ErrorHandlerMissingVideoUri::movingPhoto onDataPrepared");
+        let imageFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/entry_test/photos/" + imageFileName;
+        let videoFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/entry_test/photos/" + videoFileName;
+        try {
+          await movingPhoto.requestContent(imageFileUri, undefined);
+          console.error("ErrorHandlerMissingVideoUri: requestContent should have thrown an error");
+          expect(false).assertTrue();
+        } catch (error) {
+          console.error(`ErrorHandlerMissingImageUri get moving photo uri fail !`);
+          expect(error.code).assertEqual('401');
+        }
+      }
+    }
+    // export moving photo:: only photo and missing imageuri
+    class ErrorPhotoHandlerWrongImageuri implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
+      async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
+        console.log("ErrorPhotoHandlerWrongImageuri::movingPhoto onDataPrepared");
+        let imageFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/entry_testxxxx/photosxxxxxx/test_picture.jpg";
+        try {
+          await movingPhoto.requestContent(photoAccessHelper.ResourceType.IMAGE_RESOURCE, imageFileUri);
+          console.log("moving photo image content retrieved successfully");
+          expect(false).assertTrue();
+        } catch (error) {
+          console.error(`ErrorPhotoHandlerWrongImageuri get moving photo uri fail !`);
+          expect(error.code).assertEqual('14000011');
+        }
+      }
+    }
+    // export moving photo:: only photo and imageuri as undefined
+    class ErrorPhotoHandlerMissingImageuri implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
+      async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
+        console.log("ErrorPhotoHandlerMissingImageuri::movingPhoto onDataPrepared");
+        let imageFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/entry_test/photos/test_picture.jpg";
+        try {
+          await movingPhoto.requestContent(photoAccessHelper.ResourceType.IMAGE_RESOURCE, undefined);
+          console.log("moving photo image content retrieved successfully");
+          expect(false).assertTrue();
+        } catch (error) {
+          console.error(`ErrorPhotoHandlerMissingImageuri get moving photo uri fail !`);
+          expect(error.code).assertEqual('401');
+        }
+      }
+    }
+    // export moving photo:: ArrayBuffer missing type
+    class ErrorArrayBufferHandlerMissingType implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
+      async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
+        console.log("ErrorArrayBufferHandlerMissingType::movingPhoto onDataPrepared");
+        try {
+          let buffer: ArrayBuffer = await movingPhoto.requestContent(undefined);
+          expect(false).assertTrue();
+        } catch (error) {
+          console.error(`ErrorArrayBufferHandlerMissingType get moving photo uri fail !`);
+          expect(error.code).assertEqual('14000011');
         }
       }
     }
