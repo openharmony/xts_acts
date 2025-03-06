@@ -413,11 +413,11 @@ export default function StackTest() {
       const TAG = "testStack0016";
       try {
         let stack: Stack<number> = new Stack();
-        stack.push(1)
-        stack.push(2)
-        stack.push(3)
-        stack.push(3)
-        let result = stack.length
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(3);
+        let result = stack.length;
         expect(result).assertEqual(4);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
@@ -437,9 +437,9 @@ export default function StackTest() {
       const TAG = "testStackForEach0015";
       try {
         let stack: Stack<number> = new Stack();
-        stack.push(1)
-        stack.push(2)
-        stack.push(3)
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
         stack.forEach(() => {
           expect(stack.length).assertEqual(3);
         })
@@ -461,7 +461,7 @@ export default function StackTest() {
       const TAG = "testStackForEach0016";
       try {
         let stack: Stack<number> = new Stack();
-        stack.push(1)
+        stack.push(1);
         stack.forEach((value) => {
           expect(stack.locate(value)).assertEqual(0);
         })
@@ -483,7 +483,7 @@ export default function StackTest() {
       const TAG = "testStackForEach0017";
       try {
         let stack: Stack<number> = new Stack();
-        stack.push(1)
+        stack.push(1);
         stack.forEach((value, index, stack: Stack<number>) => {
           expect(stack.locate(value)).assertEqual(0);
         })
@@ -505,10 +505,10 @@ export default function StackTest() {
       const TAG = "testStackForEach0018";
       try {
         let stack: Stack<number> = new Stack();
-        stack.push(1)
+        stack.push(1);
         stack.forEach((value, index, stack: Stack<number>) => {
           expect(stack.locate(value)).assertEqual(0);
-        }, stack)
+        }, stack);
         expect(stack.locate(1)).assertEqual(0);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);

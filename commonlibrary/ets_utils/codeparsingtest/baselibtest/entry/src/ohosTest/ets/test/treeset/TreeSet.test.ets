@@ -2035,11 +2035,9 @@ export default function TreeSetTest() {
         treeSet.add('CCC');
         treeSet.add('DDD');
         treeSet.forEach((value, index, treeSet: TreeSet<string>): void => {
-          expect(treeSet.has(value)).assertTrue()
+          expect(treeSet.has(value)).assertTrue();
         }, treeSet);
-        treeSet.clear()
-        let length = treeSet.length;
-        expect(length).assertEqual(0)
+        expect(treeSet.getFirstValue()).assertEqual('AAA');
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();

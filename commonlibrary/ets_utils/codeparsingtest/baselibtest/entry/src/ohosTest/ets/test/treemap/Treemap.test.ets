@@ -2229,9 +2229,9 @@ export default function TreemapTest() {
         treeMap.set('DDD', 666);
         treeMap.forEach((value ?: number, key ?: string): void => {
         });
-        treeMap.clear()
-        let length = treeMap.length
-        expect(length).assertEqual(0)
+        treeMap.clear();
+        let length = treeMap.length;
+        expect(length).assertEqual(0);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.code}`);
         expect().assertFail();
@@ -2398,9 +2398,9 @@ export default function TreemapTest() {
         treeMap.set('CCC', 789);
         treeMap.set('DDD', 666);
         treeMap.entries();
-        treeMap.clear()
-        let length = treeMap.length
-        expect(length).assertEqual(0)
+        treeMap.clear();
+        let length = treeMap.length;
+        expect(length).assertEqual(0);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.code}`);
         expect().assertFail();
@@ -2425,9 +2425,9 @@ export default function TreemapTest() {
         treeMap.set('DDD', 666);
         treeMap.forEach((): void => {
         });
-        treeMap.clear()
-        let length = treeMap.length
-        expect(length).assertEqual(0)
+        treeMap.clear();
+        let length = treeMap.length;
+        expect(length).assertEqual(0);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.code}`);
         expect().assertFail();
@@ -2448,11 +2448,11 @@ export default function TreemapTest() {
         let treeMap: TreeMap<string, number> = new TreeMap();
         treeMap.set('AAA', 123);
         treeMap.forEach((value): void => {
-          expect(treeMap.hasValue(value)).assertTrue()
+          expect(treeMap.hasValue(value)).assertTrue();
         });
-        treeMap.clear()
-        let length = treeMap.length
-        expect(length).assertEqual(0)
+        treeMap.clear();
+        let length = treeMap.length;
+        expect(length).assertEqual(0);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.code}`);
         expect().assertFail();
@@ -2473,11 +2473,11 @@ export default function TreemapTest() {
         let treeMap: TreeMap<string, number> = new TreeMap();
         treeMap.set('AAA', 123);
         treeMap.forEach((value, index, treeMap: TreeMap<string, number>): void => {
-          expect(treeMap.hasValue(value)).assertTrue()
+          expect(treeMap.hasValue(value)).assertTrue();
         });
-        treeMap.clear()
-        let length = treeMap.length
-        expect(length).assertEqual(0)
+        treeMap.clear();
+        let length = treeMap.length;
+        expect(length).assertEqual(0);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.code}`);
         expect().assertFail();
@@ -2498,11 +2498,9 @@ export default function TreemapTest() {
         let treeMap: TreeMap<string, number> = new TreeMap();
         treeMap.set('AAA', 123);
         treeMap.forEach((value, index, treeMap: TreeMap<string, number>): void => {
-          expect(treeMap.hasValue(value)).assertTrue()
+          expect(treeMap.hasValue(value)).assertTrue();
         }, treeMap);
-        treeMap.clear()
-        let length = treeMap.length
-        expect(length).assertEqual(0)
+        expect(treeMap.get('AAA')).assertEqual(123);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.code}`);
         expect().assertFail();

@@ -442,14 +442,11 @@ export default function QueueTest() {
       const TAG = "testQueueForeach0016";
       try {
         let queue: Queue<number | string | object> = new Queue();
-        let a: C1 = {
-          name: "Dylon", age: "13"
-        };
-        queue.add(a)
+        queue.add(1)
         queue.forEach((value, index, queue: Queue<number | string | object>): void => {
           expect(queue.getFirst()).assertEqual(value);
         }, queue);
-        expect(queue.length).assertEqual(1);
+        expect(queue.getFirst()).assertEqual(1);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();

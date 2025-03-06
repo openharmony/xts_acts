@@ -1595,7 +1595,7 @@ export default function LightWeightSetTest() {
           lightWeightSet.add(i);
         }
         lightWeightSet.forEach((value) => {
-          expect(lightWeightSet.has(value)).assertTrue()
+          expect(lightWeightSet.has(value)).assertTrue();
         });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
@@ -1619,7 +1619,7 @@ export default function LightWeightSetTest() {
           lightWeightSet.add(i);
         }
         lightWeightSet.forEach((value, index: number) => {
-          expect(lightWeightSet.getIndexOf(value)).assertEqual(index)
+          expect(lightWeightSet.getIndexOf(value)).assertEqual(index);
         });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
@@ -1643,7 +1643,7 @@ export default function LightWeightSetTest() {
           lightWeightSet.add(i);
         }
         lightWeightSet.forEach((value, index: number, lightWeightSet: LightWeightSet<number>) => {
-          expect(lightWeightSet.getIndexOf(value)).assertEqual(index)
+          expect(lightWeightSet.getIndexOf(value)).assertEqual(index);
         });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
@@ -1668,7 +1668,7 @@ export default function LightWeightSetTest() {
           lightWeightSet.add(i);
         }
         lightWeightSet.forEach((value, index: number, lightWeightSet: LightWeightSet<number>) => {
-          expect(lightWeightSet.getIndexOf(value)).assertEqual(index)
+          expect(lightWeightSet.getIndexOf(value)).assertEqual(index);
         }, str);
         expect(str).assertEqual("0")
       } catch (err) {

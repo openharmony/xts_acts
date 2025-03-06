@@ -906,7 +906,7 @@ export default function HasSetTest() {
           expect(hashSet.length).assertEqual(0);
         }, hashSetNew)
         expect(hashSetNew.length).assertEqual(1);
-        expect(hashSetNew.has(1)).assertTrue()
+        expect(hashSetNew.has(1)).assertTrue();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
