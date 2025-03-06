@@ -609,6 +609,7 @@ function testSetDisallowedPolicy() {
     } catch (error) {
       expect(false).assertTrue();
     } finally {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_MAINTENANCE_MODE, false);
       await adminManager.disableAdmin(SELFWANT);
     }
     done();
