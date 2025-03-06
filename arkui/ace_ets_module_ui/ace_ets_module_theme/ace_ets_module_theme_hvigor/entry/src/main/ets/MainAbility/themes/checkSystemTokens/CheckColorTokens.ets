@@ -64,7 +64,5 @@ export class ColorsValues {
   public readonly interactiveActive: string = 'sys.color.interactive_active';
   public readonly interactiveSelect: string = 'sys.color.interactive_select';
   public readonly interactiveClick: string = 'sys.color.interactive_click';
-  public readonly progressTrackColor: string = 'sys.color.progress_track_color';
-  public readonly progressTrackSelectedColor: string = 'sys.color.progress_track_selected_color';
 }
 export const checkColorTokens = new ColorsValues();

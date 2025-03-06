@@ -29,7 +29,6 @@ import forEachTest from './components/ForEach.test';
 import ifThemeTest from './components/If.test';
 import lazyForEachTest from './components/LazyForEach.test';
 import loadingProgressThemeTest from './components/LoadingProgress.test';
-import progressThemeTest from './components/Progress.test';
 import menuThemeTest from './components/Menu.test';
 import menuItemThemeTest from './components/MenuItem.test';
 import patternLockThemeTest from './components/PatternLock.test';
@@ -64,7 +63,6 @@ export default function testsuite() {
   ifThemeTest();
   lazyForEachTest();
   loadingProgressThemeTest();
-  progressThemeTest();
   menuThemeTest();
   menuItemThemeTest();
   patternLockThemeTest();
