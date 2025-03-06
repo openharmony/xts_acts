@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
 import {
@@ -233,6 +232,52 @@ export default function registerChangeTest () {
       } catch (error) {
         console.log(`${testNum}: tryError: ${error}`);
         expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REGISTERCHANGE_CALLBACK_1400
+     * @tc.name      : registerChange_callback_014
+     * @tc.desc      : listening album removeAssets, type NOTIFY_ALBUM_REMOVE_ASSET,error code 13900020 or 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+        it('registerChange_callback_014', 2, async (done: Function) => {
+          const testNum = 'registerChange_callback_012';
+          try {
+            let albumUri:ESObject = undefined;
+            helper.registerChange(albumUri, false, async (changeData) => {
+              done();
+            });
+            expect(false).assertTrue();
+            done();
+          } catch (error) {
+            console.log(`${testNum}: tryError: ${error}`);
+            expect(error.code === '13900020' || error.code === '401').assertTrue();
+            done();
+          }
+        });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_UNREGISTERCHANGE_0100
+     * @tc.name      : unregisterChange_001
+     * @tc.desc      : unRegisterChange error code 13900020 or 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('unregisterChange_001', 2, async (done: Function) => {
+      const testNum = 'unregisterChange_001';
+      try {
+        let albumUri:ESObject = undefined;
+        helper.unRegisterChange(albumUri);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.log(`${testNum}: tryError code: ${error.code}`);
+        expect(error.code === '13900020' || error.code === '401').assertTrue();
         done();
       }
     });
