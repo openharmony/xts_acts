@@ -144,7 +144,7 @@ export default function SerialTest() {
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_hasSerialRight_ErrCode_0100
      * @tc.name     : testHasSerialRight002
-     * @tc.desc     : invalidPort hasSerialRight failed.
+     * @tc.desc     : invalidInput hasSerialRight failed.
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
@@ -156,8 +156,8 @@ export default function SerialTest() {
           done();
           return;
         }
-        let invalidPort: number = -1;
-        let hasRight: boolean = serial.hasSerialRight(invalidPort);
+        let invalidInput: number = -1;
+        let hasRight: boolean = serial.hasSerialRight(invalidInput);
         console.info(TAG, 'testHasSerialRight002 hasRight: ', hasRight);
         expect().assertFail();
       } catch (error) {
@@ -167,6 +167,31 @@ export default function SerialTest() {
       }
     })
 
+    /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_hasSerialRight_ErrCode_0200
+     * @tc.name     : testHasSerialRight003
+     * @tc.desc     : invalidPort hasSerialRight failed.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testHasSerialRight003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      try {
+        console.info(TAG, 'testHasSerialRight003 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let invalidPort: number = 100;
+        let hasRight: boolean = serial.hasSerialRight(invalidPort);
+        console.info(TAG, 'testHasSerialRight003 hasRight: ', hasRight);
+        expect().assertFail();
+      } catch (error) {
+        expect(error.code).assertEqual(31400003);
+        console.error(TAG, 'testHasSerialRight003 catch err code: ', error.code, ', message: ', error.message);
+        done();
+      }
+    })
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_requestSerialRight_Func_0100
      * @tc.name     : testRequestSerialRight001
@@ -204,9 +229,9 @@ export default function SerialTest() {
     })
 
     /**
-     * @tc.number   : SUB_USB_HostMgr_Serial_JS_requestSerialRight_ErrCode_0200
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_requestSerialRight_ErrCode_0100
      * @tc.name     : testRequestSerialRight002
-     * @tc.desc     : invalidPort requestSerialRight failed.
+     * @tc.desc     : invalidInput requestSerialRight failed.
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
@@ -218,8 +243,8 @@ export default function SerialTest() {
           done();
           return;
         }
-        let invalidPort: number = -1;
-        let futureRes: Promise<boolean> = serial.requestSerialRight(invalidPort);
+        let invalidInput: number = -1;
+        let futureRes: Promise<boolean> = serial.requestSerialRight(invalidInput);
         await driveFn();
         try {
           let hasRight: boolean = await futureRes;
@@ -232,6 +257,31 @@ export default function SerialTest() {
       } catch (error) {
         expect(error.code).assertEqual(401);
         console.error(TAG, 'testRequestSerialRight002 catch err code: ', error.code, ', message: ', error.message);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_requestSerialRight_ErrCode_0200
+     * @tc.name     : testRequestSerialRight002
+     * @tc.desc     : invalidPort requestSerialRight failed.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testRequestSerialRight003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      try {
+        console.info(TAG, 'testRequestSerialRight003 start, openPortId: ', openPortId);
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+	let invalidPort: number = 100;
+        await serial.requestSerialRight(invalidPort);
+        expect().assertFail();
+      } catch (error) {
+        expect(error).assertEqual(31400003);
+        console.error(TAG, 'testRequestSerialRight003 catch err code: ', error);
         done();
       }
     })
