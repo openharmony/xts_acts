@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
 import {
@@ -161,6 +160,54 @@ export default function albumGetAllObjectTest () {
         done();
       }
     });
+
+        /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ALBUM_GET_ALL_OBJECTS_0300
+     * @tc.name      : album_getAllObjects_callback_003
+     * @tc.desc      : get all system album object,albumSubtype=albumSubtype.IMAGE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+        it('album_getAllObjects_callback_003', 0, async (done: Function) => {
+          const testNum = 'album_getAllObjects_callback_003';
+          try {
+            const subTypes : Array<photoAccessHelper.AlbumSubtype> = [
+              albumSubtype.IMAGE,
+              albumSubtype.FAVORITE,
+            ];
+            let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album>;
+            let passCount = 0;
+            for (let i = 0; i < subTypes.length; i++) {
+              fetchResult = await helper.getAlbums(albumType.SYSTEM, subTypes[i]);
+              expect(fetchResult.getCount()).assertEqual(1);
+              fetchResult.getAllObjects((err, allObj) => {
+                try {
+                  if (err !== undefined) {
+                    console.info(`${testNum} getAllObjects failed; err: ${err}`);
+                    expect(false).assertTrue();
+                  } else {
+                    expect(allObj.length).assertEqual(1);
+                    passCount++;
+                  }
+                } catch (error) {
+                  console.info(`${testNum} getAllObjects failed; error: ${error}`);
+                }
+                if (i + 1 === subTypes.length) {
+                  expect(passCount).assertEqual(subTypes.length);
+                  fetchResult.close();
+                  done();
+                }
+              })
+              await sleep(50);
+              done();
+            }
+          } catch (error) {
+            console.info(`${testNum} failed; error: ${error}`);
+            expect(false).assertTrue();
+            done();
+          }
+        });
 
     //promise
     /**
