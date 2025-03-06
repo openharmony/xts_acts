@@ -371,7 +371,7 @@ export default function taskPoolTaskMultipleTest() {
       while (count < 1) {
         await sleep(100)
       }
-
+      await sleep(1000)
       expect(1).assertEqual(count)
       console.info(`${caseName} test end`)
       Done()

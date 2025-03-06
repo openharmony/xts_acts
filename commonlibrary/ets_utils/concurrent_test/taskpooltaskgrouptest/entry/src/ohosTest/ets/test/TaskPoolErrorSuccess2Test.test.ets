@@ -99,7 +99,7 @@ export default function taskPoolErrorSuccess2Test() {
       while (count2 < 10) {
         await sleep(100)
       }
-
+      await sleep(100)
       expect(10).assertEqual(count)
       expect(10).assertEqual(count2)
       Done()
@@ -145,7 +145,7 @@ export default function taskPoolErrorSuccess2Test() {
       while (count2 < 10) {
         await sleep(100)
       }
-
+      await sleep(100)
       expect(10).assertEqual(count)
       expect(10).assertEqual(count2)
       Done()

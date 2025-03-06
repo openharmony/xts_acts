@@ -94,6 +94,7 @@ export default function taskPoolTaskGroupActTest() {
       while (Count1.count < 10 || Count2.count < 10) {
         await sleep(1000)
       }
+      await sleep(500)
       expect(10).assertEqual(Count1.count)
       expect(20).assertEqual(Count2.count)
       Count1.count = 0
@@ -133,6 +134,7 @@ export default function taskPoolTaskGroupActTest() {
       while (Count1.count < 10 || Count2.count < 10) {
         await sleep(1000)
       }
+      await sleep(1000)
       expect(10).assertEqual(Count1.count)
       expect(20).assertEqual(Count2.count)
       Count1.count = 0

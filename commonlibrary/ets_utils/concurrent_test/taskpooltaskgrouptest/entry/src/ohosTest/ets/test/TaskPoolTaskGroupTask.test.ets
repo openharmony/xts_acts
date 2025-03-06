@@ -1163,6 +1163,7 @@ export default function taskPoolTaskGroup() {
       while (Count1 < 10 || Count2 < 10) {
         await sleep(100)
       }
+      await sleep(100)
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
       Count1 = 0
@@ -1205,6 +1206,7 @@ export default function taskPoolTaskGroup() {
       while (Count1 < 10 || Count2 < 10) {
         await sleep(100)
       }
+      await sleep(100)
       expect(10).assertEqual(Count1)
       expect(10).assertEqual(Count2)
       Count1 = 0
