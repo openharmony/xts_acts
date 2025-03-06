@@ -75,6 +75,17 @@ Image_ErrorCode ReleaseImageSource(OH_ImageSourceNative *&source)
     return IMAGE_SUCCESS;
 }
 
+Image_ErrorCode ReleasePixelMap(OH_PixelmapNative *&pixelmap)
+{
+    if (pixelmap != nullptr) {
+        g_thisImageSource->errorCode = OH_PixelmapNative_Release(pixelmap);
+        pixelmap = nullptr;
+        return g_thisImageSource->errorCode;
+    }
+    H_LOGI("%{public}s ReleasePixelMap source is null !", TAG);
+    return IMAGE_SUCCESS;
+}
+
 Image_ErrorCode SetDecodingOptionsFromJsArgs(napi_env env, napi_value* args)
 {
     Image_Size desiredSize;
@@ -181,6 +192,7 @@ static napi_value CreatePixelMapUsingAllocator(napi_env env, napi_callback_info 
     napi_get_value_string_utf8(env, args[NUM_0], filePath, MAX_PATH_SIZE, &filePathSize);
     napi_get_value_uint32(env, args[NUM_1], &alloType);
     ReleaseImageSource(g_thisImageSource->source);
+    ReleasePixelMap(g_thisImageSource->pixelmap);
 
     IMAGE_ALLOCATOR_TYPE allocatorType = static_cast<IMAGE_ALLOCATOR_TYPE>(alloType);
     g_thisImageSource->errorCode = OH_ImageSourceNative_CreateFromUri(filePath, filePathSize,
