@@ -53,7 +53,7 @@ struct PinchTest {
           Row() {
             ForEach(this.arr, (item: number) => {
               Text(item.toString())
-                .width('40%')
+                .width('20%')
                 .height('90%')
                 .backgroundColor(0xDCDCDC)
                 .fontSize(80)
@@ -73,7 +73,7 @@ struct PinchTest {
         Text('Offset Start')
           .fontSize(10)
           .fontWeight(FontWeight.Bold)
-          .width('150px')
+          .width('20%')
           .height('100%')
           .position({left: 0})
           .backgroundColor(Color.Gray)
@@ -81,7 +81,7 @@ struct PinchTest {
         Text('Offset End')
           .fontSize(10)
           .fontWeight(FontWeight.Bold)
-          .width('150px')
+          .width('20%')
           .height('100%')
           .position({right: 0})
           .backgroundColor(Color.Gray)

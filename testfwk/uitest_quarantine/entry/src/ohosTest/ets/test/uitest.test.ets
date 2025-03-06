@@ -77,21 +77,25 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs);
             await button.click();
             await driver.delayMs(waitUiReadyMs);
+            let cover = await driver.findComponent(ON.text('Offset Start'))
+            let coverRect = await cover.getBounds()
+            let coverWidth = coverRect.right - coverRect.left;
+            console.log(TestTag, `coverWidth = ${coverWidth}`);
             let scrollBar = await driver.findComponent(ON.id('horizontalScroll'));
             await driver.delayMs(waitUiReadyMs);
-            let text1 = await scrollBar.scrollSearch(ON.text('8'), false);
+            let text1 = await scrollBar.scrollSearch(ON.text('8'), false, Math.floor(coverWidth * 0.5));
             await driver.delayMs(waitUiReadyMs);
             expect(text1 == null).assertTrue();
             await driver.delayMs(waitUiReadyMs);
-            let text2 = await scrollBar.scrollSearch(ON.text('11'), false, 200);
+            let text2 = await scrollBar.scrollSearch(ON.text('11'), false, Math.floor(coverWidth * 1.2));
             await driver.delayMs(waitUiReadyMs);
             expect(text2 == null).assertTrue();
             await driver.delayMs(waitUiReadyMs);
-            let text3 = await scrollBar.scrollSearch(ON.text('2'), false, 200);
+            let text3 = await scrollBar.scrollSearch(ON.text('2'), false, Math.floor(coverWidth * 1.2));
             await driver.delayMs(waitUiReadyMs);
             expect(await text3.getText()).assertEqual('2');
             await driver.delayMs(waitUiReadyMs);
-            let text4 = await scrollBar.scrollSearch(ON.text('8'), false, 200);
+            let text4 = await scrollBar.scrollSearch(ON.text('8'), false, Math.floor(coverWidth * 1.2));
             await driver.delayMs(waitUiReadyMs);
             expect(await text4.getText()).assertEqual('8');
             await driver.delayMs(waitUiReadyMs);
