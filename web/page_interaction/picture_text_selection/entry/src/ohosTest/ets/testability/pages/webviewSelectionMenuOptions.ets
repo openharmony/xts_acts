@@ -82,8 +82,13 @@ struct webviewSelectionMenuOptions {
                 await buttonOne.longClick()
                 await Utils.sleep(4000);
                 let buttontwo = await driver.findComponent(ON.text('Apple'));
+                if(!buttontwo) {
+                  let buttonThree = await driver.findComponent(ON.type('SymbolGlyph'));
+                  console.log('hhaaaaa' + buttonThree)
+                  await buttonThree.click();
+                }
                 await buttontwo.click();
-                await Utils.sleep(1000);
+                await Utils.sleep(4000);
                 
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
