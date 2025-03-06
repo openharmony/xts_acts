@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import { LinkedList } from '@kit.ArkTS';
 
 class Temp {
@@ -49,7 +49,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListAdd0001', 0, () => {
+    it('testLinkedListAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListAdd0001';
       try {
         let linkList: LinkedList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -81,7 +81,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListAdd0002', 0, () => {
+    it('testLinkedListAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListAdd0002';
       try {
         let linkList: LinkedList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -105,7 +105,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListAddFirst0001', 0, () => {
+    it('testLinkedListAddFirst0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListAddFirst0001';
       try {
         let linkList: LinkedList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -137,7 +137,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListAddFirst0002', 0, () => {
+    it('testLinkedListAddFirst0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListAddFirst0002';
       try {
         let linkList: LinkedList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -161,7 +161,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListInsert0001', 0, () => {
+    it('testLinkedListInsert0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListInsert0001';
       try {
         let linkList: LinkedList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -189,7 +189,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListInsert0002', 0, () => {
+    it('testLinkedListInsert0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListInsert0002';
       try {
         let linkList: LinkedList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -217,7 +217,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListHas0001', 0, () => {
+    it('testLinkedListHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListHas0001';
       try {
         let linkList: LinkedList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -258,7 +258,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListGet0001', 0, () => {
+    it('testLinkedListGet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListGet0001';
       try {
         let linkList: LinkedList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -293,7 +293,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListGetIndexOf0001', 0, () => {
+    it('testLinkedListGetIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListGetIndexOf0001';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -319,7 +319,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListGetIndexOf0002', 0, () => {
+    it('testLinkedListGetIndexOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListGetIndexOf0002';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -348,7 +348,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListGetIndexOf0003', 0, () => {
+    it('testLinkedListGetIndexOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListGetIndexOf0003';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -374,7 +374,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListGetIndexOf0004', 0, () => {
+    it('testLinkedListGetIndexOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListGetIndexOf0004';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -400,7 +400,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListGetLastIndexOf0001', 0, () => {
+    it('testLinkedListGetLastIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListGetLastIndexOf0001';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -426,7 +426,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListGetLastIndexOf0002', 0, () => {
+    it('testLinkedListGetLastIndexOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListGetLastIndexOf0002';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -455,7 +455,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListGetLastIndexOf0003', 0, () => {
+    it('testLinkedListGetLastIndexOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListGetLastIndexOf0003';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -481,7 +481,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListGetLastIndexOf0004', 0, () => {
+    it('testLinkedListGetLastIndexOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListGetLastIndexOf0004';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -507,7 +507,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListGetLastIndexOf0005', 0, () => {
+    it('testLinkedListGetLastIndexOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListGetLastIndexOf0005';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -533,7 +533,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListRemoveLastFound0001', 0, () => {
+    it('testLinkedListRemoveLastFound0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListRemoveLastFound0001';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -561,7 +561,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListClone0001', 0, () => {
+    it('testLinkedListClone0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListClone0001';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -586,7 +586,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListClone0002', 0, () => {
+    it('testLinkedListClone0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListClone0002';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -613,7 +613,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListClone0003', 0, () => {
+    it('testLinkedListClone0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListClone0003';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -640,7 +640,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListClone0004', 0, () => {
+    it('testLinkedListClone0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListClone0004';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -667,7 +667,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListClone0005', 0, () => {
+    it('testLinkedListClone0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListClone0005';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -692,7 +692,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListClear0006', 0, () => {
+    it('testLinkedListClear0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListClear0006';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -718,7 +718,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListClear0007', 0, () => {
+    it('testLinkedListClear0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListClear0007';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -744,7 +744,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListSet0001', 0, () => {
+    it('testLinkedListSet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListSet0001';
       try {
 
@@ -779,7 +779,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListSet0002', 0, () => {
+    it('testLinkedListSet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListSet0002';
       try {
         let linkList: LinkedList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -813,7 +813,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListSet0003', 0, () => {
+    it('testLinkedListSet0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListSet0003';
       try {
         let linkList: LinkedList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -846,7 +846,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListSet0004', 0, () => {
+    it('testLinkedListSet0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListSet0004';
       try {
         class Temp1 {
@@ -891,7 +891,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListSet0005', 0, () => {
+    it('testLinkedListSet0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListSet0005';
       try {
         class Temp {
@@ -932,7 +932,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListSet0006', 0, () => {
+    it('testLinkedListSet0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListSet0006';
       try {
         class Temp1 {
@@ -973,7 +973,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListSymbolIterator0001', 0, () => {
+    it('testLinkedListSymbolIterator0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListSymbolIterator0001';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -999,7 +999,7 @@ export default function LinkedListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLinkedListSymbolIterator0002', 0, () => {
+    it('testLinkedListSymbolIterator0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLinkedListSymbolIterator0002';
       try {
         let linkList: LinkedList<number> = new LinkedList();
@@ -1015,6 +1015,113 @@ export default function LinkedListTest() {
           }
           tmp = iter.next();
         }
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_LINKED_LIST_FOREACH_0100
+     * @tc.name      : testLinkedListForEach0001
+     * @tc.desc      : Testing LinkedList forEach
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testLinkedListForEach0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testLinkedListForEach0001';
+      try {
+        let linkedList: LinkedList<number> = new LinkedList();
+        linkedList.add(2);
+        linkedList.add(4);
+        linkedList.add(5);
+        linkedList.add(4);
+        linkedList.forEach((value: number, index?: number) => {
+          console.log("value:" + value, "index:" + index);
+          expect(linkedList.get(index).toString()).assertEqual(value.toString())
+        });
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_LINKED_LIST_FOREACH_0200
+     * @tc.name      : testLinkedListForEach0002
+     * @tc.desc      : Testing LinkedList forEach
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testLinkedListForEach0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testLinkedListForEach0002';
+      try {
+        let linkedList: LinkedList<number> = new LinkedList();
+        let linkedListNew: LinkedList<number> = new LinkedList();
+        linkedList.add(2);
+        linkedList.add(4);
+        linkedList.add(5);
+        linkedList.add(4);
+        linkedListNew.add(0)
+        linkedList.forEach((value: number, index?: number) => {
+          console.log("value:" + value, "index:" + index);
+          expect(linkedList.get(index).toString()).assertEqual(value.toString())
+        }, linkedListNew);
+        expect(linkedListNew.convertToArray().toString()).assertEqual("0");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_LINKED_LIST_FOREACH_0300
+     * @tc.name      : testLinkedListForEach0003
+     * @tc.desc      : Testing LinkedList forEach
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testLinkedListForEach0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testLinkedListForEach0003';
+      try {
+        let linkedList: LinkedList<number> = new LinkedList();
+        linkedList.add(2);
+        linkedList.add(4);
+        linkedList.add(5);
+        linkedList.add(4);
+        let index = 0
+        linkedList.forEach((value: number) => {
+          expect(linkedList.get(index).toString()).assertEqual(value.toString())
+          index ++
+        });
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_LINKED_LIST_FOREACH_0400
+     * @tc.name      : testLinkedListForEach0004
+     * @tc.desc      : Testing LinkedList forEach
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testLinkedListForEach0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testLinkedListForEach0004';
+      try {
+        let linkedList: LinkedList<number> = new LinkedList();
+        linkedList.add(2);
+        linkedList.add(4);
+        linkedList.add(5);
+        linkedList.add(4);
+        linkedList.forEach((value: number, index: number, linkedList: LinkedList<number>) => {
+          expect(linkedList.get(index).toString()).assertEqual(value.toString())
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();

@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import { LightWeightMap } from '@kit.ArkTS';
 
 export default function LightWeightMapTest() {
@@ -45,7 +45,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapConstructor0001', 0, () => {
+    it('testLightWeightMapConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapConstructor0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -64,7 +64,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapIsEmpty0001', 0, () => {
+    it('testLightWeightMapIsEmpty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapIsEmpty0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -83,7 +83,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapIsEmpty0002', 0, () => {
+    it('testLightWeightMapIsEmpty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapIsEmpty0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -103,7 +103,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapIsEmpty0003', 0, () => {
+    it('testLightWeightMapIsEmpty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapIsEmpty0003';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -124,7 +124,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapIsEmpty0004', 0, () => {
+    it('testLightWeightMapIsEmpty0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapIsEmpty0004';
       let data: Array<number> = Array(10000).map((_: undefined, index) => index);
       try {
@@ -146,7 +146,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapIsEmpty0005', 0, () => {
+    it('testLightWeightMapIsEmpty0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapIsEmpty0005';
       let data: Array<number> = Array(10000).map((_: undefined, index) => index);
       try {
@@ -168,7 +168,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapHasAll0001', 0, () => {
+    it('testLightWeightMapHasAll0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapHasAll0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -191,7 +191,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapHasAll0002', 0, () => {
+    it('testLightWeightMapHasAll0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapHasAll0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -213,7 +213,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapHasAll0003', 0, () => {
+    it('testLightWeightMapHasAll0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapHasAll0003';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -235,7 +235,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapHasKey0001', 0, () => {
+    it('testLightWeightMapHasKey0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapHasKey0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -255,7 +255,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapHasKey0002', 0, () => {
+    it('testLightWeightMapHasKey0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapHasKey0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -275,7 +275,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapHasKey0003', 0, () => {
+    it('testLightWeightMapHasKey0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapHasKey0003';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -295,7 +295,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapHasKey0004', 0, () => {
+    it('testLightWeightMapHasKey0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapHasKey0004';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -316,7 +316,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapHasValue0001', 0, () => {
+    it('testLightWeightMapHasValue0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapHasValue0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -336,7 +336,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapHasValue0002', 0, () => {
+    it('testLightWeightMapHasValue0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapHasValue0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -356,7 +356,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapHasValue0003', 0, () => {
+    it('testLightWeightMapHasValue0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapHasValue0003';
       try {
         let lightWeightMap: LightWeightMap<string, string> = new LightWeightMap();
@@ -376,7 +376,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapHasValue0004', 0, () => {
+    it('testLightWeightMapHasValue0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapHasValue0004';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -397,7 +397,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapHasValue0005', 0, () => {
+    it('testLightWeightMapHasValue0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapHasValue0005';
 
       interface ComplexValue {
@@ -429,7 +429,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapHasValue0006', 0, () => {
+    it('testLightWeightMapHasValue0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapHasValue0006';
       const value: string = Array(10000).map((_: undefined, index) => `${index}`).join('');
       try {
@@ -450,7 +450,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapIncreaseCapacityTo0001', 0, () => {
+    it('testLightWeightMapIncreaseCapacityTo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapIncreaseCapacityTo0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -470,7 +470,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapIncreaseCapacityTo0002', 0, () => {
+    it('testLightWeightMapIncreaseCapacityTo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapIncreaseCapacityTo0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -490,7 +490,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapIncreaseCapacityTo0003', 0, () => {
+    it('testLightWeightMapIncreaseCapacityTo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapIncreaseCapacityTo0003';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -510,7 +510,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapIncreaseCapacityTo0004', 0, () => {
+    it('testLightWeightMapIncreaseCapacityTo0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapIncreaseCapacityTo0004';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -530,7 +530,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapIncreaseCapacityTo0005', 0, () => {
+    it('testLightWeightMapIncreaseCapacityTo0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapIncreaseCapacityTo0005';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -551,7 +551,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGet0001', 0, () => {
+    it('testLightWeightMapGet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGet0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -572,7 +572,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGet0002', 0, () => {
+    it('testLightWeightMapGet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGet0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -592,7 +592,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGet0003', 0, () => {
+    it('testLightWeightMapGet0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGet0003';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -612,7 +612,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGet0004', 0, () => {
+    it('testLightWeightMapGet0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGet0004';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -633,7 +633,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGet0005', 0, () => {
+    it('testLightWeightMapGet0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGet0005';
 
       interface ComplexValue {
@@ -665,7 +665,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGet0006', 0, () => {
+    it('testLightWeightMapGet0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGet0006';
       const value: string = Array(10000).map((_: undefined, index) => `${index}`).join('');
       try {
@@ -686,7 +686,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGet0007', 0, () => {
+    it('testLightWeightMapGet0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGet0007';
 
       interface ComplexKey {
@@ -718,7 +718,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGet0008', 0, () => {
+    it('testLightWeightMapGet0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGet0008';
       const key: string = Array(10000).map((_: undefined, index) => `${index}`).join('');
       try {
@@ -739,7 +739,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGet0009', 0, () => {
+    it('testLightWeightMapGet0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGet0009';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -759,7 +759,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGet0010', 0, () => {
+    it('testLightWeightMapGet0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGet0010';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -780,7 +780,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGet0011', 0, () => {
+    it('testLightWeightMapGet0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGet0011';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -800,7 +800,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGetIndexOfKey0001', 0, () => {
+    it('testLightWeightMapGetIndexOfKey0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGetIndexOfKey0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -827,7 +827,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGetIndexOfKey0002', 0, () => {
+    it('testLightWeightMapGetIndexOfKey0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGetIndexOfKey0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -847,7 +847,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGetIndexOfKey0003', 0, () => {
+    it('testLightWeightMapGetIndexOfKey0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGetIndexOfKey0003';
 
       interface ComplexKey {
@@ -879,7 +879,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGetIndexOfKey0004', 0, () => {
+    it('testLightWeightMapGetIndexOfKey0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGetIndexOfKey0004';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -901,7 +901,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGetIndexOfKey0005', 0, () => {
+    it('testLightWeightMapGetIndexOfKey0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGetIndexOfKey0005';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -922,7 +922,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGetIndexOfValue0001', 0, () => {
+    it('testLightWeightMapGetIndexOfValue0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGetIndexOfValue0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -949,7 +949,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGetIndexOfValue0002', 0, () => {
+    it('testLightWeightMapGetIndexOfValue0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGetIndexOfValue0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -970,7 +970,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGetIndexOfValue0003', 0, () => {
+    it('testLightWeightMapGetIndexOfValue0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGetIndexOfValue0003';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -990,7 +990,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGetIndexOfValue0004', 0, () => {
+    it('testLightWeightMapGetIndexOfValue0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGetIndexOfValue0004';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1011,7 +1011,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGetKeyAt0001', 0, () => {
+    it('testLightWeightMapGetKeyAt0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGetKeyAt0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1034,7 +1034,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGetKeyAt0002', 0, () => {
+    it('testLightWeightMapGetKeyAt0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGetKeyAt0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1056,7 +1056,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGetKeyAt0003', 0, () => {
+    it('testLightWeightMapGetKeyAt0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGetKeyAt0003';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1078,7 +1078,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSetAll0001', 0, () => {
+    it('testLightWeightMapSetAll0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSetAll0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1101,7 +1101,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSetAll0002', 0, () => {
+    it('testLightWeightMapSetAll0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSetAll0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1122,7 +1122,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSetAll0003', 0, () => {
+    it('testLightWeightMapSetAll0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSetAll0003';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1144,7 +1144,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSet0001', 0, () => {
+    it('testLightWeightMapSet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSet0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1164,7 +1164,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSet0002', 0, () => {
+    it('testLightWeightMapSet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSet0002';
       const key: string = Array(10000).map((_: undefined, index) => `${index}`).join('');
       try {
@@ -1185,7 +1185,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSet0003', 0, () => {
+    it('testLightWeightMapSet0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSet0003';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1207,7 +1207,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSet0004', 0, () => {
+    it('testLightWeightMapSet0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSet0004';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1227,7 +1227,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapRemove0001', 0, () => {
+    it('testLightWeightMapRemove0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapRemove0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1249,7 +1249,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapRemove0002', 0, () => {
+    it('testLightWeightMapRemove0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapRemove0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1271,7 +1271,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapRemove0003', 0, () => {
+    it('testLightWeightMapRemove0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapRemove0003';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1291,7 +1291,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapRemove0004', 0, () => {
+    it('testLightWeightMapRemove0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapRemove0004';
       const key: string = Array(10000).map((_: undefined, index) => `${index}`).join('');
       try {
@@ -1313,7 +1313,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapRemove0005', 0, () => {
+    it('testLightWeightMapRemove0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapRemove0005';
       try {
         let lightWeightMap: LightWeightMap<number, string> = new LightWeightMap();
@@ -1334,7 +1334,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapRemoveAt0001', 0, () => {
+    it('testLightWeightMapRemoveAt0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapRemoveAt0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1358,7 +1358,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapRemoveAt0002', 0, () => {
+    it('testLightWeightMapRemoveAt0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapRemoveAt0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1379,7 +1379,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapRemoveAt0003', 0, () => {
+    it('testLightWeightMapRemoveAt0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapRemoveAt0003';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1400,7 +1400,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSetValueAt0001', 0, () => {
+    it('testLightWeightMapSetValueAt0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSetValueAt0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1424,7 +1424,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSetValueAt0002', 0, () => {
+    it('testLightWeightMapSetValueAt0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSetValueAt0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1445,7 +1445,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSetValueAt0003', 0, () => {
+    it('testLightWeightMapSetValueAt0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSetValueAt0003';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1466,7 +1466,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSetValueAt0004', 0, () => {
+    it('testLightWeightMapSetValueAt0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSetValueAt0004';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1488,7 +1488,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSetValueAt0005', 0, () => {
+    it('testLightWeightMapSetValueAt0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSetValueAt0005';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1509,7 +1509,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSetValueAt0006', 0, () => {
+    it('testLightWeightMapSetValueAt0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSetValueAt0006';
       const value: string = Array(10000).map((_: undefined, index) => `${index}`).join('');
       try {
@@ -1531,7 +1531,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGetValueAt0001', 0, () => {
+    it('testLightWeightMapGetValueAt0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGetValueAt0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1554,7 +1554,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGetValueAt0002', 0, () => {
+    it('testLightWeightMapGetValueAt0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGetValueAt0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1577,7 +1577,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapGetValueAt0003', 0, () => {
+    it('testLightWeightMapGetValueAt0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapGetValueAt0003';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1599,7 +1599,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapClear0001', 0, () => {
+    it('testLightWeightMapClear0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapClear0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1621,7 +1621,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapClear0002', 0, () => {
+    it('testLightWeightMapClear0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapClear0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1644,7 +1644,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapClear0003', 0, () => {
+    it('testLightWeightMapClear0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapClear0003';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1664,7 +1664,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapKeys0001', 0, () => {
+    it('testLightWeightMapKeys0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapKeys0001';
       let arr: Array<string> = [];
       try {
@@ -1693,7 +1693,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapKeys0002', 0, () => {
+    it('testLightWeightMapKeys0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapKeys0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1714,7 +1714,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapKeys0003', 0, () => {
+    it('testLightWeightMapKeys0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapKeys0003';
       const key: string = Array(10000).map((_: undefined, index) => `${index}`).join('');
       try {
@@ -1738,7 +1738,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapValues0001', 0, () => {
+    it('testLightWeightMapValues0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapValues0001';
       let arr: Array<number> = [];
       try {
@@ -1767,7 +1767,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapValues0002', 0, () => {
+    it('testLightWeightMapValues0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapValues0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1788,7 +1788,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapValues0003', 0, () => {
+    it('testLightWeightMapValues0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapValues0003';
       const value: string = Array(10000).map((_: undefined, index) => `${index}`).join('');
       try {
@@ -1812,7 +1812,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapForeach0001', 0, () => {
+    it('testLightWeightMapForeach0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapForeach0001';
       try {
         let lightWeightMap: LightWeightMap<number, number> = new LightWeightMap();
@@ -1840,7 +1840,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapForeach0002', 0, () => {
+    it('testLightWeightMapForeach0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapForeach0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1870,7 +1870,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapForeach0003', 0, () => {
+    it('testLightWeightMapForeach0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapForeach0003';
       const VALUE = 100;
       try {
@@ -1896,7 +1896,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapForeach0004', 0, () => {
+    it('testLightWeightMapForeach0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapForeach0004';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1910,6 +1910,64 @@ export default function LightWeightMapTest() {
     });
 
     /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_LIGHTWEIGHTMAP_FOREACH_0500
+     * @tc.name      : testLightWeightMapForeach0005
+     * @tc.desc      : Testing LightWeightMap use forEach to check ArgThis
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testLightWeightMapForeach0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testLightWeightMapForeach0005';
+      const VALUE = 100;
+      try {
+        let lightWeightMap: LightWeightMap<number, number> = new LightWeightMap();
+        for (let i = 0; i < 10; i++) {
+          lightWeightMap.set(i, VALUE);
+        }
+        expect(lightWeightMap.length).assertEqual(10);
+        lightWeightMap.forEach((value: number, index, lightWeightMap: LightWeightMap<number, number>) => {
+          expect(value).assertEqual(VALUE);
+          expect(lightWeightMap.length).assertEqual(10);
+        });
+
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_LIGHTWEIGHTMAP_FOREACH_0600
+     * @tc.name      : testLightWeightMapForeach0006
+     * @tc.desc      : Testing LightWeightMap use forEach to check ArgThis
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testLightWeightMapForeach0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testLightWeightMapForeach0006';
+      const VALUE = 100;
+      try {
+        let lightWeightMap: LightWeightMap<number, number> = new LightWeightMap();
+        let str = 0
+        for (let i = 0; i < 10; i++) {
+          lightWeightMap.set(i, VALUE);
+        }
+        expect(lightWeightMap.length).assertEqual(10);
+        lightWeightMap.forEach((value: number, index, lightWeightMap: LightWeightMap<number, number>) => {
+          expect(value).assertEqual(VALUE);
+          expect(lightWeightMap.length).assertEqual(10);
+        }, str);
+        expect(str).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+
+    /**
      * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_LIGHTWEIGHTMAP_ENTRIES_0100
      * @tc.name      : testLightWeightMapEntries0001
      * @tc.desc      : Testing LightWeightMap use entries and remove function
@@ -1917,7 +1975,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapEntries0001', 0, () => {
+    it('testLightWeightMapEntries0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapEntries0001';
       try {
         let lightWeightMap: LightWeightMap<number, string> = new LightWeightMap();
@@ -1951,7 +2009,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapEntries0002', 0, () => {
+    it('testLightWeightMapEntries0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapEntries0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -1984,7 +2042,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapEntries0003', 0, () => {
+    it('testLightWeightMapEntries0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapEntries0003';
       const VALUE = 100;
       try {
@@ -2014,7 +2072,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapEntries0004', 0, () => {
+    it('testLightWeightMapEntries0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapEntries0004';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -2035,7 +2093,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapToString0001', 0, () => {
+    it('testLightWeightMapToString0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapToString0001';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -2056,7 +2114,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapToString0002', 0, () => {
+    it('testLightWeightMapToString0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapToString0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -2075,7 +2133,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapToString0003', 0, () => {
+    it('testLightWeightMapToString0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapToString0003';
       const VALUE = 'VALUE';
       try {
@@ -2098,7 +2156,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSymbolIterator0001', 0, () => {
+    it('testLightWeightMapSymbolIterator0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSymbolIterator0001';
       try {
         let lightWeightMap: LightWeightMap<number, string> = new LightWeightMap();
@@ -2132,7 +2190,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSymbolIterator0002', 0, () => {
+    it('testLightWeightMapSymbolIterator0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSymbolIterator0002';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
@@ -2165,7 +2223,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSymbolIterator0003', 0, () => {
+    it('testLightWeightMapSymbolIterator0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSymbolIterator0003';
       const VALUE = 'VALUE';
       try {
@@ -2194,7 +2252,7 @@ export default function LightWeightMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testLightWeightMapSymbolIterator0004', 0, () => {
+    it('testLightWeightMapSymbolIterator0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testLightWeightMapSymbolIterator0004';
       try {
         let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();

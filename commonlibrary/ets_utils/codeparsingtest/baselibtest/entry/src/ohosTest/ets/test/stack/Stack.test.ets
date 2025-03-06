@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import { Stack } from '@kit.ArkTS';
 
 export default function StackTest() {
@@ -50,7 +50,7 @@ export default function StackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackPush0001', 0, () => {
+    it('testStackPush0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStackPush0001";
       try {
         let stack: Stack<number> = new Stack();
@@ -70,7 +70,7 @@ export default function StackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackPush0002', 0, () => {
+    it('testStackPush0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStack0002";
       try {
         let stack: Stack<string> = new Stack();
@@ -90,7 +90,7 @@ export default function StackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackPush0003', 0, () => {
+    it('testStackPush0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStackPush0003";
       try {
         let stack: Stack<object> = new Stack();
@@ -113,7 +113,7 @@ export default function StackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackPush0004', 0, () => {
+    it('testStackPush0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStackPush0004";
       try {
         let stack: Stack<number | string | object> = new Stack();
@@ -142,7 +142,7 @@ export default function StackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackpop0005', 0, () => {
+    it('testStackpop0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStackpop0005";
       try {
         let stack: Stack<number | string | object> = new Stack();
@@ -163,7 +163,7 @@ export default function StackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackpop0006', 0, () => {
+    it('testStackpop0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStackpop0006";
       try {
         let stack: Stack<number | string | object> = new Stack();
@@ -192,7 +192,7 @@ export default function StackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackpop0007', 0, () => {
+    it('testStackpop0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStackpop0007";
       try {
         let stack: Stack<number | string | object> = new Stack();
@@ -212,7 +212,7 @@ export default function StackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackpop0008', 0, () => {
+    it('testStackpop0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStackpop0008";
       try {
         let stack: Stack<number | string | object> = new Stack();
@@ -232,7 +232,7 @@ export default function StackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackPeek0009', 0, () => {
+    it('testStackPeek0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStackPeek0009";
       try {
         let stack: Stack<number | string | object> = new Stack();
@@ -261,7 +261,7 @@ export default function StackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackPeek0010', 0, () => {
+    it('testStackPeek0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStackPeek0010";
       try {
         let stack: Stack<number | string | object> = new Stack();
@@ -281,7 +281,7 @@ export default function StackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackLocate0011', 0, () => {
+    it('testStackLocate0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStackLocate0011";
       try {
         let stack: Stack<number | string | object> = new Stack();
@@ -310,7 +310,7 @@ export default function StackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackLocate0012', 0, () => {
+    it('testStackLocate0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStackLocate0012";
       try {
         let stack: Stack<number> = new Stack();
@@ -333,7 +333,7 @@ export default function StackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackLocate0013', 0, () => {
+    it('testStackLocate0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStackLocate0013";
       try {
         let stack: Stack<number> = new Stack();
@@ -357,7 +357,7 @@ export default function StackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackForEach0014', 0, () => {
+    it('testStackForEach0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStackForEach0014";
       try {
         let stack: Stack<number> = new Stack();
@@ -385,7 +385,7 @@ export default function StackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackIsEmpty0015', 0, () => {
+    it('testStackIsEmpty0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStackIsEmpty0015";
       try {
         let stack: Stack<number> = new Stack();
@@ -409,7 +409,7 @@ export default function StackTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackLength0016', 0, () => {
+    it('testStackLength0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStack0016";
       try {
         let stack: Stack<number> = new Stack();
@@ -419,6 +419,97 @@ export default function StackTest() {
         stack.push(3)
         let result = stack.length
         expect(result).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STACK_FOREACH_1500
+     * @tc.name       : testStackForEach0015
+     * @tc.desc       : Testing Stack forEach by array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testStackForEach0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testStackForEach0015";
+      try {
+        let stack: Stack<number> = new Stack();
+        stack.push(1)
+        stack.push(2)
+        stack.push(3)
+        stack.forEach(() => {
+          expect(stack.length).assertEqual(3);
+        })
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STACK_FOREACH_1600
+     * @tc.name       : testStackForEach0016
+     * @tc.desc       : Testing Stack forEach by array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testStackForEach0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testStackForEach0016";
+      try {
+        let stack: Stack<number> = new Stack();
+        stack.push(1)
+        stack.forEach((value) => {
+          expect(stack.locate(value)).assertEqual(0);
+        })
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STACK_FOREACH_1700
+     * @tc.name       : testStackForEach0017
+     * @tc.desc       : Testing Stack forEach by array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testStackForEach0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testStackForEach0017";
+      try {
+        let stack: Stack<number> = new Stack();
+        stack.push(1)
+        stack.forEach((value, index, stack: Stack<number>) => {
+          expect(stack.locate(value)).assertEqual(0);
+        })
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STACK_FOREACH_1800
+     * @tc.name       : testStackForEach0018
+     * @tc.desc       : Testing Stack forEach by array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testStackForEach0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testStackForEach0018";
+      try {
+        let stack: Stack<number> = new Stack();
+        stack.push(1)
+        stack.forEach((value, index, stack: Stack<number>) => {
+          expect(stack.locate(value)).assertEqual(0);
+        }, stack)
+        expect(stack.locate(1)).assertEqual(0);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
