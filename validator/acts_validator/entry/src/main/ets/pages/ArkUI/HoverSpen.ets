@@ -14,20 +14,22 @@ limitations under the License.
 import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
 import FirstDialog from '../model/FirstDialog';
-const TAG = '[Clickhand]';
+const TAG = '[HoverSpen]';
 @Entry
 @Component
-struct ClickHandExample {
+struct HoverSpenExample {
 @State text: string = ''
 @State axisValue: string = ''
-@State name: string = 'Clickhand';
+@State name: string = 'HoverSpen';
 @State Vue: boolean = false;
 @State intervalNum: number = 0;
-@State handText: string = '';
-@State StepTips: string = '使用左手和右手对设备上蓝色按钮分别进行点击\n' + '操作步骤:\n' + '1.左手对界面的蓝色按钮进行点击\n' +
-'2.右手对界面的蓝色按钮进行点击\n' +
-'预期结果：\n' + '1.页面显示返回值为1（若显示为0或2，为多模识别异常，用例也通过，若无返回值显示则用例失败）\n' +
-'2.页面显示返回值为2（若显示为0或1，为多模识别异常，用例也通过，若无返回值显示则用例失败）\n'
+@State hoverMoveText: string = '';
+@State StepTips: string = '平板设备使用手写笔测试时\n' + '操作步骤:\n' + '1,手写笔悬浮在蓝色按钮上并且移动\n' +
+'预期结果：\n' + '1.页面上出现x轴,y轴坐标(手写笔位置相对于当前组件左上角的x轴坐标，y轴坐标)\n' +
+'2.页面上出现windowXY(手写笔位置相对于应用窗口左上角的x轴坐标,y轴坐标)\n' +
+'3.页面上出现displayXY(手写笔位置相对于屏幕左上角的x轴坐标,y轴坐标)\n'+
+'4.随着手写笔的移动,坐标在不断的变化\n' +
+'5.不支持手写笔的设备直接按照失败处理走豁免\n'
 
 aboutToAppear(): void {
 
@@ -46,7 +48,7 @@ clearInterval(this.intervalNum)
 onPageShow() {
 
 this.intervalNum = setInterval(() => {
-     if(this.handText.length > 0) {
+     if(this.hoverMoveText.length > 0) {
         this.Vue = true
      }
 }, 500)
@@ -145,16 +147,18 @@ params: { result: 'None' }
 
 
   Column() {
-
-    Button("onClick")
-      .width(180).height(80).margin(15)
-      .onClick((event)=>{
-        console.log("button hand:"+event.hand);
-        this.handText = event.hand + ""
+    Row() {
+      Text(`适用手写笔的设备进行该测试`).fontColor(Color.Green).fontSize('18fp').margin({top:15})
+    }
+    Button('onHoverMove')
+      .width(180).height(80)
+      .onHoverMove((event: HoverEvent) => {
+        this.hoverMoveText = 'onHoverMove:\nXY = (' + event.x + ', ' + event.y + ')' +
+          '\nwindowXY = (' + event.windowX + ', ' + event.windowY + ')' +
+          '\ndisplayXY = (' + event.displayX + ', ' + event.displayY + ')';
       })
 
-
-    Text(this.handText)
+    Text(this.hoverMoveText)
 
   }.height('80%')
   .width('100%')
