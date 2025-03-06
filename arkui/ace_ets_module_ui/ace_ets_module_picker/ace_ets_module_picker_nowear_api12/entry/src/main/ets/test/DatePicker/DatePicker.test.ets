@@ -15,14 +15,14 @@
 
 import router from '@ohos.router'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils'
+import Utils from '../Utils/Utils';
 
 export default function datePickerJsunit() {
   describe('ActsAceDatePickerTest', () => {
     beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/datePicker',
+        url: 'MainAbility/pages/DatePicker/datePicker',
       }
       let result: ESObject;
       try {
