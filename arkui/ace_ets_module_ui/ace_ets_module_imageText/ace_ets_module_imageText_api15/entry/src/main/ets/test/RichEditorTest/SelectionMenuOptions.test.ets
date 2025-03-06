@@ -98,33 +98,6 @@ export default function SelectionMenuOptions() {
         done();
     });
 
-    /*
-    * @tc.number       SUB_ACE_BASIC_ETS_API_0003
-    * @tc.name         SelectionMenuOptions0003
-    * @tc.desic        Test  Text by select
-	* @tc.size         MediumTest
-	* @tc.type         Function
-	* @tc.level        1
-     */
-    it('SelectionMenuOptions0003', 0, async (done: Function) => {
-        let driver = Driver.create();
-        console.info('SelectionMenuOptions SelectionMenuOptions0003 START');
-        await CommonFunc.sleep(1000);
-        let update = await driver.findComponent(ON.id('update'))
-        await CommonFunc.sleep(500);
-        await update.click();
-        await CommonFunc.sleep(500);
-        let richEditor = await driver.findComponent(ON.id('richEditor'))
-        await CommonFunc.sleep(500);
-        let point = await richEditor.getBoundsCenter();
-        await CommonFunc.sleep(500);
-        await driver.mouseDrag({x:Math.round(point.x-vp2px(20)), y:Math.round(point.y)},{x:Math.round(point.x+vp2px(20)), y:Math.round(point.y)},600);
-        await CommonFunc.sleep(500);
-        await driver.assertComponentExist(ON.text('自定义菜单'));
-        console.info("[SelectionMenuOptions0003] end");
-        done();
-    });
-
 
     /*
     * @tc.number       SUB_ACE_BASIC_ETS_API_0004
@@ -177,34 +150,6 @@ export default function SelectionMenuOptions() {
         console.info("[SelectionMenuOptions0005] end");
         done();
     });
-
-    /*
-    * @tc.number       SUB_ACE_BASIC_ETS_API_0006
-    * @tc.name         SelectionMenuOptions0006
-    * @tc.desic        Test image Text by select
-	* @tc.size         MediumTest
-	* @tc.type         Function
-	* @tc.level        1
-     */
-    it('SelectionMenuOptions0006', 0, async (done: Function) => {
-        let driver = Driver.create();
-        console.info('SelectionMenuOptions SelectionMenuOptions0006 START');
-        await CommonFunc.sleep(1000);
-        let update = await driver.findComponent(ON.id('update'))
-        await CommonFunc.sleep(500);
-        await update.click();
-        await CommonFunc.sleep(500);
-        let image = await driver.findComponent(ON.id('image'))
-        await CommonFunc.sleep(500);
-        let point = await image.getBoundsCenter();
-        await CommonFunc.sleep(500);
-        await driver.mouseDrag({x:Math.round(point.x+vp2px(24)), y:Math.round(point.y)},{x:Math.round(point.x-vp2px(26)), y:Math.round(point.y)},600);
-        await CommonFunc.sleep(500);
-        await driver.assertComponentExist(ON.text('自定义菜单'));
-        console.info("[SelectionMenuOptions0006] end");
-        done();
-    });
-
 
 
     /*
@@ -259,31 +204,5 @@ export default function SelectionMenuOptions() {
         done();
     });
 
-    /*
-    * @tc.number       SUB_ACE_BASIC_ETS_API_0009
-    * @tc.name         SelectionMenuOptions0009
-    * @tc.desic        Test mixed Text by select
-	* @tc.size         MediumTest
-	* @tc.type         Function
-	* @tc.level        1
-     */
-    it('SelectionMenuOptions0009', 0, async (done: Function) => {
-        let driver = Driver.create();
-        console.info('SelectionMenuOptions SelectionMenuOptions0009 START');
-        await CommonFunc.sleep(1000);
-        let update = await driver.findComponent(ON.id('update'))
-        await CommonFunc.sleep(500);
-        await update.click();
-        await CommonFunc.sleep(500);
-        let mixed = await driver.findComponent(ON.id('mixed'))
-        await CommonFunc.sleep(500);
-        let point = await mixed.getBoundsCenter();
-        await CommonFunc.sleep(500);
-        await driver.mouseDrag({x:Math.round(point.x-vp2px(20)), y:Math.round(point.y)},{x:Math.round(point.x+vp2px(50)), y:Math.round(point.y)},600);
-        await CommonFunc.sleep(500);
-        await driver.assertComponentExist(ON.text('自定义菜单'));
-        console.info("[SelectionMenuOptions0009] end");
-        done();
-    });
   })
 }

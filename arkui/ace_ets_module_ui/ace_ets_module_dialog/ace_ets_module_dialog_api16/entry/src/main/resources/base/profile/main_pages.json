@@ -4,6 +4,13 @@
     "MainAbility/pages/Popup/Maxwidth",
     "MainAbility/pages/promptAction/openPopup",
     "MainAbility/pages/promptAction/updatePopup",
-    "MainAbility/pages/promptAction/closePopup"
+    "MainAbility/pages/promptAction/closePopup",
+    "MainAbility/pages/timePickerDialog/timePickerDialogEnableHapticFeedback",
+    "MainAbility/pages/calendarPickerDialog/disableDateRangeAndMarkToday",
+    "MainAbility/pages/calendarPickerDialog/startEndTest",
+    "MainAbility/pages/datePickerDialog/DatePickerDialogMode",
+    "MainAbility/pages/Menu/menuFontsizeModifier",
+    "MainAbility/pages/Menu/menuitemOnChangeModifier",
+    "MainAbility/pages/Menu/menuBindMenuModifier"
   ]
 }

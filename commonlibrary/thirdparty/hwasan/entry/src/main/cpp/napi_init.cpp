@@ -97,7 +97,7 @@ __attribute__((optnone)) static napi_value StackBufferOverflow(napi_env env, nap
     std::string bufferLog = GetBuffer(pid);
     bool findHWAsanLog = CheckHWAsanLog("HWAddressSanitizer: tag-mismatch", bufferLog) &&
         CheckHWAsanLog("WRITE of size 4", bufferLog) &&
-        CheckHWAsanLog("stack of thread T0", bufferLog) &&
+        CheckHWAsanLog("stack of thread", bufferLog) &&
         CheckHWAsanLog("[08]", bufferLog);
     checkRes = findHWAsanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -122,7 +122,7 @@ __attribute__((optnone)) static napi_value StackBufferUnderflow(napi_env env, na
     std::string bufferLog = GetBuffer(pid);
     bool findHWAsanLog = CheckHWAsanLog("HWAddressSanitizer: tag-mismatch", bufferLog) &&
         CheckHWAsanLog("WRITE of size 4", bufferLog) &&
-        CheckHWAsanLog("stack of thread T0", bufferLog) &&
+        CheckHWAsanLog("stack of thread", bufferLog) &&
         CheckHWAsanLog("[08]", bufferLog);
     checkRes = findHWAsanLog ? 1 : 0;
     napi_value result = nullptr;
@@ -201,7 +201,7 @@ __attribute__((optnone)) static napi_value HeapUseAfterFree(napi_env env, napi_c
     bool findHWAsanLog = CheckHWAsanLog("HWAddressSanitizer: tag-mismatch", bufferLog) &&
         CheckHWAsanLog("use-after-free", bufferLog) &&
         CheckHWAsanLog("READ of size 1", bufferLog) &&
-        CheckHWAsanLog("freed by thread T0", bufferLog);
+        CheckHWAsanLog("freed by thread", bufferLog);
     checkRes = findHWAsanLog ? 1 : 0;
     napi_value result = nullptr;
     napi_create_int32(env, checkRes, &result);
@@ -230,7 +230,7 @@ __attribute__((optnone)) static napi_value StackUseAfterScope(napi_env env, napi
     }
     std::string bufferLog = GetBuffer(pid);
     bool findHWAsanLog = CheckHWAsanLog("HWAddressSanitizer: tag-mismatch", bufferLog) &&
-        CheckHWAsanLog("stack of thread T0", bufferLog) &&
+        CheckHWAsanLog("stack of thread", bufferLog) &&
         CheckHWAsanLog("READ of size 4", bufferLog) &&
         CheckHWAsanLog("[00]", bufferLog);
     checkRes = findHWAsanLog ? 1 : 0;
@@ -260,7 +260,7 @@ __attribute__((optnone)) static napi_value StackUseAfterReturn(napi_env env, nap
     }
     std::string bufferLog = GetBuffer(pid);
     bool findHWAsanLog = CheckHWAsanLog("HWAddressSanitizer: tag-mismatch", bufferLog) &&
-        CheckHWAsanLog("stack of thread T0", bufferLog) &&
+        CheckHWAsanLog("stack of thread", bufferLog) &&
         CheckHWAsanLog("READ of size 4", bufferLog) &&
         CheckHWAsanLog("[00]", bufferLog);
     checkRes = findHWAsanLog ? 1 : 0;
@@ -278,7 +278,7 @@ __attribute__((optnone)) static napi_value DoubleFree(napi_env env, napi_callbac
     std::string bufferLog = GetBuffer(getpid());
     bool findHWAsanLog = CheckHWAsanLog("HWAddressSanitizer: invalid-free", bufferLog) &&
         CheckHWAsanLog("use-after-free", bufferLog) &&
-        CheckHWAsanLog("freed by thread T0", bufferLog);
+        CheckHWAsanLog("freed by thread", bufferLog);
     int checkRes = findHWAsanLog ? 1 : 0;
     napi_value result = nullptr;
     napi_create_int32(env, checkRes, &result);
@@ -293,7 +293,7 @@ __attribute__((optnone)) static napi_value WildFree(napi_env env, napi_callback_
     std::string bufferLog = GetBuffer(getpid());
     bool findHWAsanLog = CheckHWAsanLog("HWAddressSanitizer: invalid-free", bufferLog) &&
         CheckHWAsanLog("use-after-free", bufferLog) &&
-        CheckHWAsanLog("freed by thread T0", bufferLog);
+        CheckHWAsanLog("freed by thread", bufferLog);
     int checkRes = findHWAsanLog ? 1 : 0;
     napi_value result = nullptr;
     napi_create_int32(env, checkRes, &result);

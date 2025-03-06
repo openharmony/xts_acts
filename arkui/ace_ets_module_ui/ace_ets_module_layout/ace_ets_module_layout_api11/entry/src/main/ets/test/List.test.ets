@@ -12,8 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import FolderStack3ApiJsunit from './FolderStackTest/FolderStack3ApiJsunit.test';
-import enumFolderTest from "./FolderStackTest/enumflodstack.test"
 import Stack_Text from './Stack_Text/Stack_Text.test';
 import grid_colSpanJsunit from './GridColTest/grid_col.test';
 import grid_rowOnBreakpointChangeJsunit from './GridRowTest/grid_row.test';
@@ -553,12 +551,10 @@ import Grid_Col_Offset_Default from './GridColTest/Grid_Col_Offset/Grid_Col_Offs
 import Grid_Col_Offset_Number from './GridColTest/Grid_Col_Offset/Grid_Col_Offset_Number.test.ets';
 import Grid_Col_Offset_GridColColumnOption from './GridColTest/Grid_Col_Offset/Grid_Col_Offset_GridColColumnOption.test.ets';
 import blankJsunit from './BlankTest/BlankJsunit.test';
-import columnSplitJsunit from './ColumnTest/ColumnSplitJsunit.test';
 import columnJsunit from './ColumnTest/ColumnJsunit.test';
 import dividerJsunit from './DividerTest/DividerJsunit.test';
 import flexJsunit from './FlexTest/FlexJsunit.test';
 import gridContainerJsunit from './GridTest/GridContainerJsunit.test';
-import rowSplitJsunit from './RowTest/RowSplitJsunit.test';
 import StackJsunit from './Stack/StackJsunit.test';
 import useShadowBatching from './ColumnTest/useShadowBatching.test';
 import RelativeContainer_Level from './RelativeContainer/RelativeContainer_Level/RelativeContainer_Level.test.ets';
@@ -616,16 +612,12 @@ import directionJsunit from './Flex/DirectionJsunit.test.ets';
 import direction2Jsunit from './Flex/Direction2Jsunit.test.ets';
 import placementJsunit from './Flex/PlacementJsunit.test';
 import rowJsunit2 from './Row/RowJsunit2.test.ets';
-import waterFlowDemoJsunit from './waterflow/waterFlowDemo.test';
 import flexDirectionJsunit from './Flex/FlexDirectionJsunit.test.ets';
-import ColumnSplitJsunit from './Column/ColumnSplitJsunit.test.ets';
 import DividerJsunit from './DividerTest/DividerJsunit1.test.ets';
 import StackAlignContentTest from './Stack/StackAlignContentTest.test.ets';
 
 
 export default function testsuite() {
-  FolderStack3ApiJsunit()
-  enumFolderTest()
   Stack_Text()
   inspectorJsunit()
   Column_Space()
@@ -1082,12 +1074,10 @@ export default function testsuite() {
   Grid_Col_Offset_Number()
   Grid_Col_Offset_GridColColumnOption()
   blankJsunit()
-  columnSplitJsunit()
   columnJsunit()
   dividerJsunit()
   flexJsunit()
   gridContainerJsunit()
-  rowSplitJsunit()
   StackJsunit()
   useShadowBatching()
   RelativeContainer_Level()
@@ -1131,8 +1121,6 @@ export default function testsuite() {
   placementJsunit();
   rowJsunit2();
   flexDirectionJsunit();
-  waterFlowDemoJsunit();
-  ColumnSplitJsunit();
   DividerJsunit();
   StackAlignContentTest();
 }

@@ -18,17 +18,27 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Driver, ON } from '@kit.TestKit';
+import deviceInfo from '@ohos.deviceInfo';
+import settings from '@ohos.settings';
 
 export default function windowZindexTest() {
   describe('windowZindexTest', async () => {
     let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
     let context: common.UIAbilityContext;
     let windowStage: window.WindowStage;
-    // Defines a test suite. Two parameters are supported: test suite name and test suite function.
+    let deviceType: string = '';
+    let isAutoWindow: string = '';
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context));
       windowStage = AppStorage.get('windowStage') as window.WindowStage;
+      deviceType = deviceInfo.deviceType;
+      console.log('jsUnittest beforeAll deviceType =' + deviceType);
+      //isAutoWindow == '' 非PAD设备
+      //isAutoWindow == 'true' PAD设备自由多窗模式
+      //isAutoWindow == 'false' PAD设备非自由多窗模式
+      isAutoWindow = settings.getValueSync(context, 'window_pcmode_switch_status', '',settings.domainName.DEVICE_SHARED);
+      console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
     });
     beforeEach(() => {
     });
@@ -672,7 +682,406 @@ export default function windowZindexTest() {
         done();
       }
     });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SHIFT_APP_WINDOW_POINTER_EVENT_0100
+     * @tc.name      : test_shiftAppWindowPointerEvent_null
+     * @tc.desc      : test_shiftAppWindowPointerEvent_null
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_shiftAppWindowPointerEvent_null', 0, async (done: Function) => {
+      let caseName: string = 'test_shiftAppWindowPointerEvent_null';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try{
+        let promise = window.shiftAppWindowPointerEvent(null,null);
+        promise.then(() => {
+          console.info(caseName+ ' Succeeded in shifting app window pointer event');
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to shift app window pointer event. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else{
+            expect().assertFail();
+            done();
+          }
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        if(err.code == 401){
+          done();
+        }else{
+          expect().assertFail();
+          done();
+        }
+      }
+    });
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SHIFT_APP_WINDOW_POINTER_EVENT_0200
+     * @tc.name      : test_shiftAppWindowPointerEvent_undifined
+     * @tc.desc      : test_shiftAppWindowPointerEvent_undifined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_shiftAppWindowPointerEvent_undifined', 0, async (done: Function) => {
+      let caseName: string = 'test_shiftAppWindowPointerEvent_undifined';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try{
+        let promise = window.shiftAppWindowPointerEvent(undefined,undefined);
+        promise.then(() => {
+          console.info(caseName+ ' Succeeded in shifting app window pointer event');
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to shift app window pointer event. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else{
+            expect().assertFail();
+            done();
+          }
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        if(err.code == 401){
+          done();
+        }else{
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SHIFT_APP_WINDOW_POINTER_EVENT_0300
+     * @tc.name      : test_shiftAppWindowPointerEvent_window_destroyed
+     * @tc.desc      : test_shiftAppWindowPointerEvent_window_destroyed
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_shiftAppWindowPointerEvent_window_destroyed', 0, async (done: Function) => {
+      let caseName: string = 'test_shiftAppWindowPointerEvent_window_destroyed';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWindow = windowStage.getMainWindowSync();
+      try{
+        let promise1 = windowStage.createSubWindow('test_shiftAppWindowPointerEvent_window_destroyed');
+        promise1.then(async (data) => {
+          let subWindowClass = data;
+          console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          let subWindowId = subWindowClass.getWindowProperties().id;
+          let mainWindowId = mainWindow.getWindowProperties().id;
+          console.info(caseName+ ' subWindowId: ' + JSON.stringify(subWindowId) +','+' mainWindowId: ' + JSON.stringify(mainWindowId) );
+          await subWindowClass.destroyWindow();
+          let promise2 = window.shiftAppWindowPointerEvent(mainWindowId,subWindowId);
+          promise2.then(() => {
+            console.info(caseName+ ' Succeeded in shifting app window pointer event');
+            expect().assertFail();
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(`${caseName} :Failed to shift app window pointer event. Cause code: ${err.code}, message: ${err.message}`);
+            if(err.code == 801){
+              done();
+            }else if(err.code == 1300002){
+              expect(true).assertTrue();
+              done();
+            } else{
+              expect().assertFail();
+              done();
+            }
+          });
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        if(err.code == 401){
+          done();
+        }else{
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SHIFT_APP_WINDOW_POINTER_EVENT_0400
+     * @tc.name      : test_shiftAppWindowPointerEvent_Dialog_window
+     * @tc.desc      : test_shiftAppWindowPointerEvent_Dialog_window
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_shiftAppWindowPointerEvent_Dialog_window', 0, async (done: Function) => {
+      let caseName: string = 'test_shiftAppWindowPointerEvent_Dialog_window';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWindow = windowStage.getMainWindowSync();
+      try{
+        let config: window.Configuration = {
+          name: "test",
+          windowType: window.WindowType.TYPE_DIALOG,
+          ctx: context,
+          decorEnabled:true,
+          title:'dialog Window'
+        };
+        let promise1 = window.createWindow(config);
+        promise1.then(async (data) => {
+          let dialogWindowClass = data;
+          console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await dialogWindowClass.setUIContent('testability/pages/First/index2');
+          await dialogWindowClass.showWindow();
+          await sleep(1000)
+          let dialogWindowId = dialogWindowClass.getWindowProperties().id;
+          let mainWindowId = mainWindow.getWindowProperties().id;
+          console.info(caseName+ ' dialogWindowId: ' + JSON.stringify(dialogWindowId) +','+' mainWIndowId: ' + JSON.stringify(mainWindowId) );
+          let promise2 = window.shiftAppWindowPointerEvent(mainWindowId,dialogWindowId);
+          promise2.then(() => {
+            console.info(caseName+ ' Succeeded in shifting app window pointer event');
+            expect().assertFail();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(`${caseName} :Failed to shift app window pointer event. Cause code: ${err.code}, message: ${err.message}`);
+            await dialogWindowClass.destroyWindow();
+            if(err.code == 801){
+              done();
+            }else if(err.code == 1300004){
+              expect(true).assertTrue();
+              done();
+            } else{
+              expect().assertFail();
+              done();
+            }
+          });
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to create the dialogwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        if(err.code == 401){
+          done();
+        }else{
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SHIFT_APP_WINDOW_POINTER_EVENT_0500
+     * @tc.name      : test_shiftAppWindowPointerEvent_Subwindow_1300004
+     * @tc.desc      : test_shiftAppWindowPointerEvent_Subwindow_1300004
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_shiftAppWindowPointerEvent_Subwindow_1300004', 0, async (done: Function) => {
+      let caseName: string = 'test_shiftAppWindowPointerEvent_Subwindow_1300004';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWindow = windowStage.getMainWindowSync();
+      try{
+        let options : window.SubWindowOptions = {
+          title: 'test_shiftAppWindowPointerEvent_Subwindow_1300004',
+          decorEnabled: true,
+          isModal: false
+        };
+        let promise1 = windowStage.createSubWindowWithOptions('test_shiftAppWindowPointerEvent_Subwindow_1300004', options);
+        promise1.then(async (data) => {
+          let subWindowClass = data;
+          console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await subWindowClass.setUIContent('testability/pages/shiftAppWindow/subWindow');
+          await subWindowClass.showWindow();
+          let subWindowId = subWindowClass.getWindowProperties().id;
+          let mainWindowId = mainWindow.getWindowProperties().id;
+          console.info(caseName+ ' subWindowId: ' + JSON.stringify(subWindowId) +','+' mainWIndowId: ' + JSON.stringify(mainWindowId) );
+          let promise2 = window.shiftAppWindowPointerEvent(mainWindowId,subWindowId);
+          promise2.then(async () => {
+            console.info(caseName+ ' Succeeded in shifting app window pointer event');
+            await subWindowClass.destroyWindow();
+            expect(true).assertTrue();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(`${caseName} :Failed to shift app window pointer event. Cause code: ${err.code}, message: ${err.message}`);
+            await subWindowClass.destroyWindow();
+            if(err.code == 801 || 1300004){
+              done();
+            }else{
+              expect().assertFail();
+              done();
+            }
+          });
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 1300002){
+            done();
+          }else {
+            expect().assertFail();
+            done();
+          }
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SHIFT_APP_WINDOW_POINTER_EVENT_0600
+     * @tc.name      : test_shiftAppWindowPointerEvent_subWindow_to_mainwindow
+     * @tc.desc      : test_shiftAppWindowPointerEvent_subWindow_to_mainwindow
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_shiftAppWindowPointerEvent_subWindow_to_mainwindow', 0, async (done: Function) => {
+      let caseName: string = 'test_shiftAppWindowPointerEvent_subWindow_to_mainwindow';
+      console.log(caseName + 'begin');
+      if(deviceType == '2in1' || (deviceType == 'tablet' && isAutoWindow == 'true')){
+        let mainWindow = windowStage.getMainWindowSync();
+      let driver = Driver.create();
+      try{
+        let options : window.SubWindowOptions = {
+          title: 'test_shiftAppWindowPointerEvent_subWindow_to_mainwindow',
+          decorEnabled: true,
+          isModal: false
+        };
+        let promise1 = windowStage.createSubWindowWithOptions('test_shiftAppWindowPointerEvent_subWindow_to_mainwindow', options);
+        promise1.then(async (data) => {
+          let subWindowClass = data;
+          console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          AppStorage.setOrCreate('subWindowClass',subWindowClass);
+          await subWindowClass.setUIContent('testability/pages/shiftAppWindow/subWindow');
+          await mainWindow.setUIContent('testability/pages/shiftAppWindow/mainWindow');
+          await sleep(300);
+          let windowLimits = subWindowClass.getWindowLimits();
+          console.log(caseName+' '+JSON.stringify(windowLimits));
+          if(windowLimits.minWidth!=undefined && windowLimits.minHeight !=undefined){
+            await subWindowClass.resize(windowLimits.minWidth+200,windowLimits.minHeight+200);
+            await subWindowClass.showWindow();
+            let button = await driver.findComponent(ON.id('subWindow'));
+            await sleep(100);
+            let point = await button.getBoundsCenter();
+            console.log(caseName+' point:'+JSON.stringify(point));
+            await driver.mouseMoveTo({x:point.x, y:point.y});
+            await sleep(500);
+            await driver.mouseDrag({x:point.x, y:point.y},{x:point.x+50, y:point.y+50},200);
+            console.log(caseName+' mouseDrag success');
+            await sleep(2000);
+            let isFoucus = mainWindow.isFocused();
+            console.log(caseName+' mainWindow isFocused: '+ isFoucus);
+            await mainWindow.setUIContent('testability/pages/Index');
+            await subWindowClass.destroyWindow();
+            expect(isFoucus).assertTrue();
+            done();
+          }else{
+            await subWindowClass.destroyWindow();
+            expect(false).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 1300002 || err.code == 801){
+            done();
+          }else {
+            expect().assertFail();
+            done();
+          }
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+      }else{
+        done();
+      }
+      
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SHIFT_APP_WINDOW_POINTER_EVENT_0700
+     * @tc.name      : test_shiftAppWindowPointerEvent_mainwindow_to_subWindow
+     * @tc.desc      : test_shiftAppWindowPointerEvent_mainwindow_to_subWindow
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_shiftAppWindowPointerEvent_mainwindow_to_subWindow', 0, async (done: Function) => {
+      let caseName: string = 'test_shiftAppWindowPointerEvent_mainwindow_to_subWindow';
+      console.log(caseName + 'begin');
+      if(deviceType == '2in1' || (deviceType == 'tablet' && isAutoWindow == 'true')){
+        let mainWindow = windowStage.getMainWindowSync();
+      let driver = Driver.create();
+      try{
+        let options : window.SubWindowOptions = {
+          title: 'test_shiftAppWindowPointerEvent_mainwindow_to_subWindow',
+          decorEnabled: true,
+          isModal: false
+        };
+        let promise1 = windowStage.createSubWindowWithOptions('test_shiftAppWindowPointerEvent_mainwindow_to_subWindow', options);
+        promise1.then(async (data) => {
+          let subWindowClass = data;
+          console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          AppStorage.setOrCreate('subWindowClass',subWindowClass);
+          await subWindowClass.setUIContent('testability/pages/shiftAppWindow/subWindow');
+          await mainWindow.setUIContent('testability/pages/shiftAppWindow/mainWindow');
+          await sleep(300);
+          let windowLimits = subWindowClass.getWindowLimits();
+          console.log(caseName+' '+JSON.stringify(windowLimits));
+          if(windowLimits.minWidth!=undefined && windowLimits.minHeight !=undefined){
+            await subWindowClass.resize(windowLimits.minWidth+200,windowLimits.minHeight+200);
+            await subWindowClass.showWindow();
+            await mainWindow.showWindow();
+            let button = await driver.findComponent(ON.id('mainWindow'));
+            await sleep(300);
+            let point = await button.getBoundsCenter();
+            console.log(caseName+' point:'+JSON.stringify(point));
+            await driver.mouseMoveTo({x:point.x, y:point.y});
+            await sleep(500);
+            await driver.mouseDrag({x:point.x, y:point.y},{x:point.x+50, y:point.y+50},200);
+            console.log(caseName+' mouseDrag success');
+            await sleep(2000);
+            let isFoucus = subWindowClass.isFocused();
+            console.log(caseName+' subWindowClass isFocused: '+ isFoucus);
+            await subWindowClass.destroyWindow();
+            await mainWindow.setUIContent('testability/pages/Index');
+            expect(isFoucus).assertTrue();
+            done();
+          }else{
+            await subWindowClass.destroyWindow();
+            expect(false).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 1300002 || err.code == 801){
+            done();
+          }else {
+            expect().assertFail();
+            done();
+          }
+        });
+      }catch(err){
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+      }else{
+        done();
+      }
+      
+    });
 
 
 

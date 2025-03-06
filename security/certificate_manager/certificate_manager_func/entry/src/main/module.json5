@@ -19,13 +19,7 @@
     "type": "entry",
     "description": "$string:module_test_desc",
     "mainElement": "EntryAbility",
-    "deviceTypes": [
-      "wearable",
-      "phone",
-      "tablet",
-      "2in1",
-      "default"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:test_pages",

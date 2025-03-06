@@ -14,23 +14,29 @@
  */
 export const postFrameCallbackTest: (a: string) => void;
 
-export const checkboxGroupGroupTest: (a:string) => void;
-
-export const checkboxGroupSelectAllTest: (a:string) => void;
-
-export const checkboxGroupTest: (a:string) => void;
-
 export const testPostFrameCallback: (a: string) => void;
 
 export const swiperAutoPlayTest: (a: string) => void;
 
-export const listTestCallback: (a: string) => void;
-
-export const listScrollToTestCallback: (a: string) => void;
-
 export const textAreaLetterSpacing001: (a: string) => void;
+
+export const testCalendarPickerDate: (a: string) => void;
+
+export const testDatePickerMode: (a: string) => void;
 
 export const textInputLetterSpacing002: (a: string) => void;
 
 export const textPickerColumnWidths: (a: string) => void;
+
 export const scrollBackToTopTest: (a: string) => void;
+
+export const TestDragStartDataLoading001: (a: string) => void;
+
+export const TestDragDisableDropDataPrefetch002: (a: string) => void;
+
+export const TestDragCancelDataLoading003: (a: string) => void;
+
+export const GetResult: () => number[];
+export const calendarPickerTest: (a: string) => void;
+
+export const testExpectedFrameRateRangeCallback: (a: string) => void;

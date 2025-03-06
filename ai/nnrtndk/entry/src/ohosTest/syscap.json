@@ -1,14 +1,10 @@
 {
     "devices": {
-        "general": [
-            "default",
-            "2in1",
-            "tablet"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.AI.NeuralNetworkRuntime"
                 ]
             }
         ]

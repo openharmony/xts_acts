@@ -118,7 +118,6 @@ struct WebAttributeTest {
             console.info("key==>" + this.str)
             switch (this.str) {
               case "emitOnRequestSelected001": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
                   try {
                     this.onRequestSelectedCalled = false
                     focusControl.requestFocus('WebAttributeTestButton')
@@ -130,9 +129,6 @@ struct WebAttributeTest {
                     console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                   }
                   break;
-                } else {
-                  Utils.emitEvent(true, 70015)
-                }
               }
             }
           })

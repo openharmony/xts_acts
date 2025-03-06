@@ -88,7 +88,6 @@ struct WebComponent {
 
 
             case "bindSelectionMenuType01": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent(true, 8301)
@@ -102,20 +101,13 @@ struct WebComponent {
                 await buttonOne.click()
                 await Utils.sleep(1000);
                 break;
-              } else {
-                Utils.emitEvent(true, 8301)
-              }
 
             }
 
             case "bindSelectionMenuType02": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
                 await Utils.sleep(1000);
                 Utils.emitEvent(MenuType.PREVIEW_MENU, 8302)
                 break;
-              } else {
-                Utils.emitEvent(MenuType.PREVIEW_MENU, 8302)
-              }
             }
 
 

@@ -4,36 +4,57 @@
     <meta charset="UTF-8">
     <script type="text/javascript">
 
-         var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
-         var msg;
+        document.addEventListener("DOMContentLoaded", function() {
+            var request = indexedDB.open("mydb", 1);
 
-         db.transaction(function (tx) {
-            tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
-            tx.executeSql('INSERT INTO LOGS (id, log) VALUES (1, "W3Cschool教程")');
-            tx.executeSql('INSERT INTO LOGS (id, log) VALUES (2, "www.w3cschool.cn")');
-            msg = '<p>数据表已创建，且插入了两条数据。</p>';
-            document.querySelector('#status').innerHTML =  msg;
-         });
+            request.onupgradeneeded = function(event) {
+                var db = event.target.result;
+                if (!db.objectStoreNames.contains("logs")) {
+                    var objectStore = db.createObjectStore("logs", { keyPath: "id" });
+                    // 添加一些初始数据
+                    var data = [
+                        {id: 1, log: "W3Cschool教程"},
+                        {id: 2, log: "www.w3cschool.cn"}
+                    ];
+                    data.forEach(function(item) {
+                        var request = objectStore.add(item);
+                        request.onerror = function(event) {
+                            console.error("Unable to add data: ", event.target.error);
+                        };
+                    });
+                }
+            };
 
-         db.transaction(function (tx) {
-            tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
-               var len = results.rows.length, i;
-               msg = "<p>查询记录条数: " + len + "</p>";
-               document.querySelector('#status').innerHTML +=  msg;
+            request.onsuccess = function(event) {
+                var db = event.target.result;
+                var transaction = db.transaction(["logs"], "readonly");
+                var objectStore = transaction.objectStore("logs");
 
-               for (i = 0; i < len; i++){
-                  msg = "<p><b>" + results.rows.item(i).log + "</b></p>";
-                  document.querySelector('#status').innerHTML +=  msg;
-               }
-            }, null);
-         });
+                var request = objectStore.getAll();
+                request.onsuccess = function(event) {
+                    var logs = event.target.result;
+                    var msg = "<p>查询记录条数: " + logs.length + "</p>";
+                    document.querySelector('#status').innerHTML = msg;
 
-      </script>
+                    logs.forEach(function(log) {
+                        msg = "<p><b>" + log.log + "</b></p>";
+                        document.querySelector('#status').innerHTML += msg;
+                    });
+                };
 
+                request.onerror = function(event) {
+                    console.error("Unable to retrieve data: ", event.target.error);
+                };
+            };
+
+            request.onerror = function(event) {
+                console.error("Database error: ", event.target.error);
+            };
+        });
+
+    </script>
 </head>
-
 <body>
-<div id="status" name="status">状态信息</div>
+<div id="status">状态信息</div>
 </body>
-
 </html>

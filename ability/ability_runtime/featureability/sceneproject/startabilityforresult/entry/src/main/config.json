@@ -12,10 +12,7 @@
     "package": "com.example.startabilityforresult",
     "name": ".MyApplication",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-      "default",
-      "tablet"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

@@ -17,8 +17,8 @@ ohos_app_assist_suite("image_ndk_main") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsGraphicImageNdkMainTest"
-  subsystem_name = "multimedia"
-  part_name = "image_framework"
+  subsystem_name = "graphic"
+  part_name = "graphic_2d"
 }
 
 ohos_js_app_suite("image_ndk_hap") {

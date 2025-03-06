@@ -17,6 +17,7 @@ import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import Utils from '../Utils';
+import accessibility from '@ohos.accessibility';
 
 export default function composeTitleBarAccessibilityTest() {
   describe('composeTitleBarAccessibilityPage', () => {
@@ -64,6 +65,9 @@ export default function composeTitleBarAccessibilityTest() {
       // 查看composeTitleBarAccessibilityPage是否存在以下入口。
       let itemText = await driver.findComponent(ON.text('标题'));
       expect(itemText !== null).assertTrue();
+      let status = accessibility.isOpenAccessibilitySync();
+      console.info(`AccessibilityApi: SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0100 result: ${status}`);
+      expect(typeof (status)).assertEqual('boolean');
       console.info('[composeTitleBarAccessibilityPage_0100] END');
       done();
     });

@@ -60,7 +60,6 @@ struct DNSHostIP {
           console.info("key==>" + this.str)
           switch (this.str) {
             case "emitZoomAccess": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
                 this.zoomAccessValue = false;
                 this.controller.refresh();
                 setTimeout(() => {
@@ -80,12 +79,8 @@ struct DNSHostIP {
                   })
                 }, 3000);
                 break;
-              } else {
-                Utils.emitEvent(false, 428);
-              }
             }
             case "emitGetHitTestValue": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
                 try {
                   let hitValue = this.controllerone.getHitTestValue();
                   console.log("hitType: " + hitValue.type);
@@ -95,9 +90,6 @@ struct DNSHostIP {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 }
                 break;
-              } else {
-                Utils.emitEvent("hitValue", 12);
-              }
             }
 
 

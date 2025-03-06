@@ -33,6 +33,7 @@ import CameraSessionCameraRotationTest from './CameraSessionCameraRotationTest.t
 import CameraVideoCodecTypeTest from './CameraVideoCodecTypeTest.test.ets'
 import cameraSessionAutoDeviceSwitchTest from './CameraSessionAutoDeviceSwitchTest.test.ets'
 import CameraMirrorTest from './CameraMirrorTest.test.ets'
+import CameraVideoMirrorTest from './CameraVideoMirrorTest.test.ets'
 import CameraVideoQualityPrioritizationTest from './CameraVideoQualityPrioritizationTest.test.ets'
 
 let TAG = 'CameraModuleTest: '
@@ -60,4 +61,5 @@ export default function cameraKit() {
   CameraVideoCodecTypeTest()
   cameraSessionAutoDeviceSwitchTest()
   CameraMirrorTest()
+  CameraVideoMirrorTest()
 }

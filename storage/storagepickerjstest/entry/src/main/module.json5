@@ -19,12 +19,7 @@
         "type": "entry",
         "description": "$string:phone_entry_dsc",
         "mainElement": "EntryAbility",
-        "deviceTypes": [
-            "tablet",
-            "default",
-            "phone",
-            "2in1"
-        ],
+        "deviceTypes": [],
         "deliveryWithInstall": true,
         "installationFree": false,
         "pages": "$profile:main_pages",

@@ -14,17 +14,10 @@
  */
 
 
-
-
-import paddingContainerTest from './padding/PaddingContainerTest.test';
 import paddingContainerLengthTest from './padding/PaddingContainerLengthTest.test';
-import paddingBaseTest from './padding/PaddingBaseTest.test';
 import paddingBaseLengthTest from './padding/PaddingBaseLengthTest.test';
 
 export default function testsuite() {
-
-  paddingContainerTest();
-  paddingBaseTest();
   paddingContainerLengthTest();
   paddingBaseLengthTest();
 

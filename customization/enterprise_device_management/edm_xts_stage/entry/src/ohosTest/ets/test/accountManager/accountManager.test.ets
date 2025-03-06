@@ -111,7 +111,7 @@ export default function accountManagerTest() {
     })
 
     /**
-     * @tc.number disallowOsAccountAddition_test_003
+     * @tc.number disallowOsAccountAddition_test_004
      * @tc.name test disallowOsAccountAddition method
      * @tc.desc disallowOsAccountAddition with normal admin and with accountId
      * @tc.level Level 2

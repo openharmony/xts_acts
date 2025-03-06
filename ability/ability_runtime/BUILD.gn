@@ -18,6 +18,7 @@ group("ability_runtime") {
   if (is_standard_system) {
     deps = [
       "aacommand:aacommand",
+      "abilitycapitest:abilitycapitest",
       "abilitygetstartparameterstest:abilitygetstartparameterstest",
       "abilitymanager:actsabilitymanagertest",
       "abilitymontior:ActsAbilityMonitorTest",
@@ -87,6 +88,7 @@ group("ability_runtime") {
       "capiabilityruntime:ActsCapiAbilityRuntimeTest",
       "capichildprocess:ActsCapiChildProcessTest",
       "context:context",
+      "contextprocessname:contextprocessname",
       "fa:fa",
       "faapicover:faapicover",
       "featureability:featureability",
@@ -97,6 +99,7 @@ group("ability_runtime") {
       "stage:stage",
       "startup:startup",
       "stopserviceextension:stopserviceextension",
+      "uiabilitycontext:uiabilitycontext",
       "want:want",
       "wantagent:wantagent",
       "workercontextcover:workercontextcover",

@@ -32,12 +32,7 @@
         }
       }
     ],
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
+    "deviceType": [],
     "mainAbility": "com.example.l2jsdemo.MainAbility",
     "distro": {
       "moduleType": "entry",

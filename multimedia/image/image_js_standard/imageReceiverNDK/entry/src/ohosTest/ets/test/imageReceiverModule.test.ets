@@ -16,6 +16,7 @@
 import cameraObj from 'libentry.so';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import cameraObject from '@ohos.multimedia.camera';
+import { isSupportedCameras } from './common'
 
 const TAG = "ImageReceiverModuleTest: ";
 
@@ -119,8 +120,12 @@ let sleep = (ms?: number | undefined): Promise<void> => {
 
 export default function ImageReceiverModuleTest() {
   describe('ImageReceiverModuleTest', () => {
+    let isSupportedCamerasResult = isSupportedCameras();
     beforeAll(async () => {
       console.info('beforeAll case');
+      if (!isSupportedCamerasResult) {
+        return;
+      }
       mCameraManager = cameraObject.getCameraManager(context);
       if (!mCameraManager) {
         console.error("camera.getCameraManager error");
@@ -160,6 +165,12 @@ export default function ImageReceiverModuleTest() {
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_SINGLE_PHOTO_0100', 0, async (done: Function) => {
+      if (!isSupportedCamerasResult) {
+        console.info('Failed to obtain the default camera or device object.Not support usb camera');
+        expect(true).assertTrue();
+        done();
+        return;
+      }
       if (!isSupportCameraVideoProfiles) {
         console.info('Failed to obtain the default videoProfiles object. Not support usb camera');
         expect(true).assertTrue();

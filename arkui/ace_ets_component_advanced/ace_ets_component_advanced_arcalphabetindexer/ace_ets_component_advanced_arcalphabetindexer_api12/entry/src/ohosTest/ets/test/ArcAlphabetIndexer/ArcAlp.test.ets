@@ -15,11 +15,18 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import router from '@system.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-
+import events_emitter from '@ohos.events.emitter';
+import { resourceManager } from '@kit.LocalizationKit';
 const expectedFamily = 'HarmonyOS Sans';
 
 interface optionsObj {
   uri: string
+}
+
+function dataPanelDefaultStrokeWidth(sysWidth: Resource) {
+  let resourceStrokeWidth = getContext().resourceManager.getNumber(sysWidth.id)
+  let newStrokeWidth: string = px2vp(resourceStrokeWidth) + '.00vp'
+  return newStrokeWidth;
 }
 
 export default function ArcAlphabetIndexer() {
@@ -277,13 +284,154 @@ export default function ArcAlphabetIndexer() {
       expect(obj.$attrs.font.style).assertEqual('FontStyle.Italic');
       expect(obj.$attrs.font.weight).assertEqual('FontWeight.Normal');
       expect(obj.$attrs.font.family).assertEqual(expectedFamily);
-      expect(obj.$attrs.popupFont.size).assertEqual('24.00vp');
+      expect(obj.$attrs.popupFont.size).assertEqual(dataPanelDefaultStrokeWidth($r('sys.float.ohos_id_text_size_headline7')));
       expect(obj.$attrs.popupFont.style).assertEqual('FontStyle.Italic');
       expect(obj.$attrs.popupFont.weight).assertEqual('FontWeight.Normal');
       expect(obj.$attrs.popupFont.family).assertEqual(expectedFamily);
       expect(obj.$attrs.itemSize).assertEqual('16.00vp');
       expect(obj.$attrs.selected).assertEqual('0');
       console.info('[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0300] END');
+      done();
+    });
+
+    /**
+     * @tc.number: ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0400
+     * @tc.name  : testArcAlphabetIndexerComponent.
+     * @tc.desc  : verifyBaseFunction.
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : Level 0
+     */
+    it('ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0400', 0, async () => {
+      console.info('ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0400 START');
+      try {
+        let callback = (indexEvent: events_emitter.EventData) => {
+          console.info("ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0400 get state result is: " + JSON.stringify(indexEvent));
+          expect(indexEvent.data?.STATUS).assertEqual(true);
+        }
+        let indexEvent: events_emitter.InnerEvent = {
+          eventId: 60201,
+          priority: events_emitter.EventPriority.LOW
+        }
+        sendEventByKey('alphabetIndexer', 10, "")
+        events_emitter.on(indexEvent, callback);
+      } catch (err) {
+        console.info("ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0400 on events_emitter err : " + JSON.stringify(err));
+      }
+      console.info('testalphabetIndexerOnSelect0012 END');
+    });
+    /**
+     * @tc.number: ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500
+     * @tc.name  : testArcAlphabetIndexerComponent.
+     * @tc.desc  : verifyBaseFunction.
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : Level 0
+     */
+    it('ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500', 0, async (done: Function) => {
+      // Verify the functions of the ArcAlphabetIndexer component
+      console.info('[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] START');
+      let backData: events_emitter.EventData = {
+        data:{
+          "color":'#FFFAFF',
+          "selectedColor":Color.Yellow,
+          "popupColor":'#00FF8F',
+          "selectedBackgroundColor": Color.Pink,
+          "usePopup":false,
+          "selectedFontSize":'20.00fp',
+          "selectedFontStyle": FontStyle.Normal,
+          "selectedFontWeight": 300,
+          "family":"openharmony",
+          "fontSize":'25.00fp',
+          "fontStyle":FontStyle.Normal,
+          "fontWeight": 400,
+          "popupFontSize":'40.00fp',
+          "popupFontStyle" : FontStyle.Normal,
+          "popupFontWeight" : 500,
+          "itemSize" :30,
+          "selected": 0,
+          "autoCollapse": true,
+          "popupBackground": Color.Black,
+          "popupBackgroundBlurStyle" : BlurStyle.BACKGROUND_REGULAR
+        }
+      }
+      let backEvent: events_emitter.InnerEvent = {
+        eventId: 10,
+        priority: events_emitter.EventPriority.LOW
+      }
+      console.info("onSelect start to emit action state")
+      events_emitter.emit(backEvent, backData)
+      await CommonFunc.sleep(2000);
+      let strJson = getInspectorByKey('arcAlphabetIndex05');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] attr: " + JSON.stringify(obj.$attrs));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] color: " + JSON.stringify(obj.$attrs.color));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] selectedColor: " +
+      JSON.stringify(obj.$attrs.selectedColor));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] popupColor: " +
+      JSON.stringify(obj.$attrs.popupColor));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] selectedBackgroundColor: " +
+      JSON.stringify(obj.$attrs.selectedBackgroundColor));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] popupBackground: " +
+      JSON.stringify(obj.$attrs.popupBackground));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] usePopup: " +
+      JSON.stringify(obj.$attrs.usePopup));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] selectedFont.size " +
+      JSON.stringify(obj.$attrs.selectedFont.size));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] selectedFont.style " +
+      JSON.stringify(obj.$attrs.selectedFont.style));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] selectedFont.weight " +
+      JSON.stringify(obj.$attrs.selectedFont.weight));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] selectedFont.family " +
+      JSON.stringify(obj.$attrs.selectedFont.family));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] font.size: " +
+      JSON.stringify(obj.$attrs.font.size));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] font.style: " +
+      JSON.stringify(obj.$attrs.font.style));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] font.weight: " +
+      JSON.stringify(obj.$attrs.font.weight));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] font.family: " +
+      JSON.stringify(obj.$attrs.font.family));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] popupFont.size: " +
+      JSON.stringify(obj.$attrs.font.size));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] popupFont.style: " +
+      JSON.stringify(obj.$attrs.font.style));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] popupFont.weight: " +
+      JSON.stringify(obj.$attrs.font.weight));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] popupFont.family: " +
+      JSON.stringify(obj.$attrs.font.family));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] itemSize: " +
+      JSON.stringify(obj.$attrs.itemSize));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] selected: " +
+      JSON.stringify(obj.$attrs.selected));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] autoCollapse: " +
+      JSON.stringify(obj.$attrs.autoCollapse));
+      console.info("[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] popupBackgroundBlurStyle: " +
+      JSON.stringify(obj.$attrs.popupBackgroundBlurStyle));
+
+      expect(obj.$attrs.color).assertEqual('#FFFFFAFF');
+      expect(obj.$attrs.selectedColor).assertEqual('#FFFFFF00');
+      expect(obj.$attrs.popupColor).assertEqual('#FF00FF8F');
+      expect(obj.$attrs.selectedBackgroundColor).assertEqual('#FFFFC0CB');
+      expect(obj.$attrs.popupBackground).assertEqual('#FF000000');
+      expect(obj.$attrs.usePopup).assertEqual('false');
+      expect(obj.$attrs.selectedFont.size).assertEqual('20.00fp');
+      expect(obj.$attrs.selectedFont.style).assertEqual('FontStyle.Normal');
+      expect(obj.$attrs.selectedFont.weight).assertEqual('300');
+      expect(obj.$attrs.selectedFont.family).assertEqual("openharmony");
+      expect(obj.$attrs.font.size).assertEqual('25.00fp');
+      expect(obj.$attrs.font.style).assertEqual('FontStyle.Normal');
+      expect(obj.$attrs.font.weight).assertEqual('400');
+      expect(obj.$attrs.font.family).assertEqual("openharmony");
+      expect(obj.$attrs.popupFont.size).assertEqual('40.00fp');
+      expect(obj.$attrs.popupFont.style).assertEqual('FontStyle.Normal');
+      expect(obj.$attrs.popupFont.weight).assertEqual('500');
+      expect(obj.$attrs.popupFont.family).assertEqual("openharmony");
+      expect(obj.$attrs.itemSize).assertEqual('30.00vp');
+      expect(obj.$attrs.selected).assertEqual('0');
+      expect(obj.$attrs.autoCollapse).assertEqual('true');
+      expect(obj.$attrs.popupBackgroundBlurStyle).assertEqual('BlurStyle.BACKGROUND_REGULAR');
+      console.info('[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] END');
       done();
     });
   })

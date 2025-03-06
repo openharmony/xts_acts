@@ -13,31 +13,33 @@
  * limitations under the License.
  */
 import postFrameCallbackTest from "./postFrame/PostFrameCallbackTest.test"
-import checkboxGroupTest from "./checkbox/CheckboxGroupTest.test"
-import checkboxGroupGroupTest from "./checkboxgroup/CheckboxGroupGroupTest.test"
-import checkboxGroupSelectAllTest from "./checkboxgroup/CheckboxGroupSelectAllTest.test"
 import swiperTest from "./swiper/SwiperTest.test"
 import textImmutablfFontWeight from "./text/textImmutablfFontWeight.test"
-import listCaseTest from "./list/ListCaseTest.test"
-import listScrollToIndexTest from "./listScrollTo/ListScrollToTest.test"
-import listItemGroupNodeAdapterTest from "./listItemGroup/ListItemGroupTest.test"
 import TextAreaLetterSpacing from "./textArea/TextAreaLetterSpacing.test"
 import TextInputLetterSpacing from "./textInput/TextInputLetterSpacing.test"
 import textPickerTest from "./textpicker/TextPickerColumnWidthsTest.test"
 import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
+import buttonTypeTest from './button/ButtonTypeTest.test'
+import DragTest from "./drag/DragCaseTest.test"
+import calendarPickerDateTest from "./calendarPicker/CalendarPickerDate.test"
+import calendarPickerTest from "./calendarPicker/CalendarPickerMarkTodayTest.test"
+import textInputWordBreakTest from "./textInput/TextInputWordBreakTest.test"
+import ExpectedFrameRateRangeCallback from "./ExpectedFrameRateRange/ExpectedFrameRateRangeCallback.test"
+import datePickerTest from "./datepicker/DatePickerMode.test"
 
 export default function testsuite() {
   postFrameCallbackTest();
   swiperTest();
-  checkboxGroupTest();
-  checkboxGroupGroupTest();
-  checkboxGroupSelectAllTest();
   textImmutablfFontWeight();
-  listCaseTest();
-  listScrollToIndexTest();
-  listItemGroupNodeAdapterTest();
   TextAreaLetterSpacing();
   TextInputLetterSpacing();
   textPickerTest();
   scrollBackToTopTest();
+  buttonTypeTest();
+  DragTest();
+  calendarPickerDateTest();
+  calendarPickerTest();
+  textInputWordBreakTest();
+  ExpectedFrameRateRangeCallback();
+  datePickerTest();
 }

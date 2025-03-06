@@ -75,6 +75,7 @@ import swiperItemPadMar from './SwiperTest/Swiper_ItemChange/swiperItemPadMar.te
 import swiperItemVisibility from './SwiperTest/Swiper_ItemChange/swiperItemVisibility.test.ets';
 import edgeEffectJsunit from './ListTest/EdgeEffectJsunit.test'
 import swiperTest from './SwiperTest/swiper.test';
+import swiperTest_1 from './SwiperTest/swiper_1.test';
 import swiperSecTest from './SwiperTest/swipersec.test';
 import scrollbarJsunit from './ScrollBar/ScrollerBarJsunit.test';
 import alphabetIndexerJsunit from './AlphabetIndexerTest/AlphabetIndexerJsunit.test';
@@ -195,6 +196,7 @@ export default function testsuite() {
   ScrollTest2()
   edgeEffectJsunit()
   swiperTest();
+  swiperTest_1();
   swiperSecTest();
   scrollbarJsunit();
   alphabetIndexerJsunit();

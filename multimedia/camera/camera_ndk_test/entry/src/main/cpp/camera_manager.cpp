@@ -356,6 +356,9 @@ Camera_ErrorCode NDKCamera::GetSupportedCameras(void)
 
 Camera_ErrorCode NDKCamera::GetCameraOrientation(void)
 {
+    if (size_ <= 0) {
+        return CAMERA_OK;
+    }
     ret_ = OH_CameraDevice_GetCameraOrientation(&cameras_[cameraDeviceIndex_], &orientation_);
     if (ret_ != CAMERA_OK) {
         LOG("ndkXTS OH_CameraDevice_GetCameraOrientation failed.");
@@ -406,20 +409,27 @@ Camera_ErrorCode NDKCamera::GetCameraHostTypeInspection(void)
 
 Camera_ErrorCode NDKCamera::GetCameraHostName(void)
 {
+    if (size_ <= 0) {
+        return CAMERA_OK;
+    }
     ret_ = OH_CameraDevice_GetHostDeviceName(&cameras_[cameraDeviceIndex_], &hostName_);
     if (ret_ != CAMERA_OK) {
         LOG("ndkXTS OH_CameraDevice_GetCameraHostName failed.");
-        return CAMERA_SERVICE_FATAL_ERROR;
     }
     return ret_;
 }
 
 Camera_ErrorCode NDKCamera::GetCameraHostType(void)
 {
+    if (size_ <= 0) {
+        return CAMERA_OK;
+    }
+    LOG("HostDeviceType value: %{public}d", HOST_DEVICE_TYPE_UNKNOWN_TYPE);
+    LOG("HostDeviceType value: %{public}d", HOST_DEVICE_TYPE_PHONE);
+    LOG("HostDeviceType value: %{public}d", HOST_DEVICE_TYPE_TABLET);
     ret_ = OH_CameraDevice_GetHostDeviceType(&cameras_[cameraDeviceIndex_], &hostType_);
     if (ret_ != CAMERA_OK) {
         LOG("ndkXTS OH_CameraDevice_GetCameraHostType failed.");
-        return CAMERA_SERVICE_FATAL_ERROR;
     }
     return ret_;
 }
@@ -726,6 +736,30 @@ Camera_ErrorCode NDKCamera::VideoOutputRelease(void)
         LOG("ndkXTS OH_VideoOutput_Release success.");
     } else {
         LOG("ndkXTS OH_VideoOutput_Release failed. %d ", ret);
+    }
+    return ret;
+}
+
+Camera_ErrorCode NDKCamera::IsVideoMirrorSupported(void)
+{
+    LOG("ndkXTS IsVideoMirrorSupported begin.");
+    Camera_ErrorCode ret = OH_VideoOutput_IsMirrorSupported(videoOutput_, &IsVideoMirror_);
+    if (ret == CAMERA_OK) {
+        LOG("ndkXTS OH_VideoOutput_IsMirrorSupported success.");
+    } else {
+        LOG("ndkXTS OH_VideoOutput_IsMirrorSupported failed. %d ", ret);
+    }
+    return ret;
+}
+
+Camera_ErrorCode NDKCamera::EnableVideoMirror(bool isEnable)
+{
+    LOG("ndkXTS EnableVideoMirror begin.");
+    Camera_ErrorCode ret = OH_VideoOutput_EnableMirror(videoOutput_, isEnable);
+    if (ret == CAMERA_OK) {
+        LOG("ndkXTS OH_VideoOutput_EnableVideoMirror success.");
+    } else {
+        LOG("ndkXTS OH_VideoOutput_EnableVideoMirror failed. %d ", ret);
     }
     return ret;
 }

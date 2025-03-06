@@ -12,11 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import dragAdaptationTest from './DragController/dragAdaptationTest.test';
 import createDragAction from './DragController/createDragAction.test';
 import setForegroundColor from './DragController/setForegroundColor.test';
 
 export default function testsuite() {
+  dragAdaptationTest()
   createDragAction()
   setForegroundColor()
 }

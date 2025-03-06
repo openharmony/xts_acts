@@ -18,10 +18,7 @@
     "name": "hsp",
     "type": "shared",
     "description": "$string:shared_desc",
-    "deviceTypes": [
-      "default",
-      "tablet"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "pages": "$profile:main_pages"
   }

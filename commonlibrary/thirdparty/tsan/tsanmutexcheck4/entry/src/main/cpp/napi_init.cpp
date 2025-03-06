@@ -41,29 +41,8 @@
 extern "C" {
 #endif
 
-void AnnotateThreadName(const char *f, int l, const char *name);
-
-void AnnotateRWLockCreate(const char *f, int l, void *m);
-void AnnotateRWLockCreateStatic(const char *f, int l, void *m);
-void AnnotateRWLockDestroy(const char *f, int l, void *m);
 void AnnotateRWLockAcquired(const char *f, int l, void *m, long isw);
 void AnnotateRWLockReleased(const char *f, int l, void *m, long isw);
-
-void AnnotateIgnoreReadsBegin(const char *f, int l);
-void AnnotateIgnoreReadsEnd(const char *f, int l);
-void AnnotateIgnoreWritesBegin(const char *f, int l);
-void AnnotateIgnoreWritesEnd(const char *f, int l);
-
-void AnnotateIgnoreSyncBegin(const char *f, int l);
-void AnnotateIgnoreSyncEnd(const char *f, int l);
-
-void AnnotateHappensBefore(const char *f, int l, void *addr);
-void AnnotateHappensAfter(const char *f, int l, void *addr);
-
-void AnnotateBenignRaceSized(const char *f, int l, const volatile void *mem,
-                             unsigned int size, const char *desc);
-void WTFAnnotateBenignRaceSized(const char *f, int l, const volatile void *mem,
-                                unsigned int size, const char *desc);
 
 #ifdef __cplusplus
 }

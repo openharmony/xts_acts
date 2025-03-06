@@ -20,6 +20,7 @@ import wantAgentCover from './WantAgentCover.test';
 import contextEnvironmentTest from './ContextEnvironmentTest.test';
 import common from '@ohos.app.ability.common';
 import UIContextWindowStageTest from './UIContextWindowStage.test';
+import Enumeration from './Enumeration.test';
 
 export default function List() {
   apiCoverAbility();
@@ -28,4 +29,5 @@ export default function List() {
   wantAgentCover();
   contextEnvironmentTest(AppStorage.get<common.ApplicationContext>("applicationContext")!);
   UIContextWindowStageTest();
+  Enumeration();
 }

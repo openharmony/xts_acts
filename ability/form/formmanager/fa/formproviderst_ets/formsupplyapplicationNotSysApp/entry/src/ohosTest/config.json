@@ -12,10 +12,7 @@
     "package": "com.ohos.st.formsystemhost",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-      "default",
-      "tablet"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

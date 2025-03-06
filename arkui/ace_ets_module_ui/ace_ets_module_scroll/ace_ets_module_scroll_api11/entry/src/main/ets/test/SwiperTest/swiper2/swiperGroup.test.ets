@@ -65,7 +65,7 @@ export default function swiperGroupTest() {
 
       // swipe the component of swiper to right by  group
       let driver = await Driver.create();
-      await driver.swipe(Math.round(globalThis.winLeft + Math.round(btRight) - Math.round(vp2px(100))), Math.round(globalThis.winTop + Math.round(btBottom/2)), Math.round(globalThis.winLeft + Math.round(btLeft) +  Math.round(vp2px(10))), Math.round(globalThis.winTop + Math.round(btBottom/2)));
+      await driver.swipe(Math.round(globalThis.winLeft + Math.round(btRight) - Math.round(vp2px(20))), Math.round(globalThis.winTop + Math.round(btBottom/2)), Math.round(globalThis.winLeft + Math.round(btLeft) +  Math.round(vp2px(10))), Math.round(globalThis.winTop + Math.round(btBottom/2)));
       await CommonFunc.sleep(4800);
       // get the component of text_6
       let text3:Component = await driver.findComponent(ON.text('6'));

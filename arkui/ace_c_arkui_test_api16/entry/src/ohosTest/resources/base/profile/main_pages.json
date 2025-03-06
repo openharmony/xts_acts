@@ -2,16 +2,18 @@
   "src": [
     "MainAbility/pages/XTSIndex",
     "MainAbility/pages/testgesture",
-    "MainAbility/pages/checkboxgroup/CheckboxGroupGroupTest",
-    "MainAbility/pages/checkboxgroup/CheckboxGroupSelectAllTest",
-    "MainAbility/pages/checkbox/CheckboxGroupTest",
     "MainAbility/pages/postFrame/TestPostFrameCallback",
     "MainAbility/pages/swiper/SwiperAutoPlayTest",
-    "MainAbility/pages/list/ListCaseTest",
-    "MainAbility/pages/listScrollTo/ListScrollToTest",
     "MainAbility/pages/textArea/TextAreaLetterSpacing",
     "MainAbility/pages/textInput/TextInputLetterSpacing",
     "MainAbility/pages/textPicker/TextPickerColumnWidthsTest",
-    "MainAbility/pages/scroll/ScrollBackToTopTest"
+    "MainAbility/pages/scroll/ScrollBackToTopTest",
+    "MainAbility/pages/datePicker/TestDatePickerMode",
+    "MainAbility/pages/drag/DragCaseTest1",
+    "MainAbility/pages/drag/DragCaseTest2",
+    "MainAbility/pages/drag/DragCaseTest3",
+    "MainAbility/pages/calendarPicker/CalendarPickerMarkTodayTest",
+    "MainAbility/pages/calendarPicker/TestCalendarPickerDate",
+    "MainAbility/pages/ExpectedFrameRateRange/ExpectedFrameRateRangeCallback"
   ]
 }

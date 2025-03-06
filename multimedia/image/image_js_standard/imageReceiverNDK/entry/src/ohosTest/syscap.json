@@ -1,14 +1,14 @@
 {
     "devices": {
-        "general": [
-            "wearable",
-            "default",
-            "tablet"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Multimedia.Image.Core",
+                    "SystemCapability.Multimedia.Image.ImageSource",
+                    "SystemCapability.Multimedia.Image.ImagePacker",
+                    "SystemCapability.Multimedia.Image.ImageReceiver",
+                    "SystemCapability.Multimedia.Image.ImageCreator"
                 ]
             }
         ]

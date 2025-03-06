@@ -19,7 +19,7 @@
 #include <arkui/native_node.h>
 #include <string>
 #include <cmath>
-#define PARAM_HEIGHT_SIZE 1000.000000
+#define PARAM_HEIGHT_SIZE 300.000000
 
 namespace ArkUICapiTest {
 
@@ -30,17 +30,17 @@ static OH_NativeXComponent *component;
 static ArkUI_NodeHandle CreateChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI)
 {
     list = nodeAPI->createNode(ARKUI_NODE_LIST);
-    ArkUI_NumberValue value[] = {{.f32 = 400.f}};
+    ArkUI_NumberValue value[] = {{.f32 = 200.f}};
     ArkUI_AttributeItem item = {value, 1};
     nodeAPI->setAttribute(list, NODE_HEIGHT, &item);
-    value[0] = {.f32=300.f};
+    value[0] = {.f32=200.f};
     nodeAPI->setAttribute(list, NODE_WIDTH, &item);
     
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 6; i++) {
         auto text = nodeAPI->createNode(ARKUI_NODE_TEXT);
-        value[0] = {.f32 = 200.f};
-        nodeAPI->setAttribute(text, NODE_WIDTH, &item);
         value[0] = {.f32 = 100.f};
+        nodeAPI->setAttribute(text, NODE_WIDTH, &item);
+        value[0] = {.f32 = 50.f};
         nodeAPI->setAttribute(text, NODE_HEIGHT, &item);
         value[0] = {.u32 = 0x33123456};
         nodeAPI->setAttribute(text, NODE_BACKGROUND_COLOR, &item);

@@ -130,7 +130,7 @@ struct WebViewEnumAndFontLibrary {
           console.info("key==>" + this.str)
           switch (this.str) {
             case "emitFileSelectorModeFileOpenMode": {
-              if (canIUse('SystemCapability.Applications.Contacts')) {
+              if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                 this.controller.loadUrl("resource://rawfile/indexFile.html")
                 await Utils.sleep(2000);
                 let driver = Driver.create();

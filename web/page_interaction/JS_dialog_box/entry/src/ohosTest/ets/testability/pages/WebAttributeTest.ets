@@ -118,7 +118,6 @@ struct WebAttributeTest {
             console.info("key==>" + this.str)
             switch (this.str) {
               case "emitOnAlert001": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
                   try {
                     this.controller.loadUrl("resource://rawfile/alert.html");
                     await Utils.sleep(2000)
@@ -129,12 +128,8 @@ struct WebAttributeTest {
                     console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                   }
                   break;
-                } else {
-                  Utils.emitEvent("alert test", 70017)
-                }
               }
               case "emitOnConfirm001": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
                   try {
                     this.controller.loadUrl("resource://rawfile/confirm.html");
                     await Utils.sleep(2000)
@@ -145,12 +140,8 @@ struct WebAttributeTest {
                     console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                   }
                   break;
-                } else {
-                  Utils.emitEvent("confirm test", 70018)
-                }
               }
               case "emitOnPrompt001": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
                   try {
                     this.controller.loadUrl("resource://rawfile/prompt.html");
                     await Utils.sleep(2000)
@@ -161,13 +152,9 @@ struct WebAttributeTest {
                     console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                   }
                   break;
-                }  else {
-                  Utils.emitEvent("prompt test", 70019)
-                }
 
               }
               case "emitJsResultHandleCancel001": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
                   try {
                     this.handleCancel = true
                     this.controller.loadUrl("resource://rawfile/confirm.html");
@@ -185,12 +172,8 @@ struct WebAttributeTest {
                     console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                   }
                   break;
-                } else {
-                  Utils.emitEvent("false", 70021)
-                }
               }
               case "emitJsResultHandleConfirm001": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
                   try {
                     this.handleCancel = false
                     this.controller.loadUrl("resource://rawfile/confirm.html");
@@ -208,12 +191,8 @@ struct WebAttributeTest {
                     console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                   }
                   break;
-                } else {
-                  Utils.emitEvent("true", 70023)
-                }
               }
               case "emitJsResultHandlePromptConfirm001": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
                   try {
                     this.controller.loadUrl("resource://rawfile/prompt.html");
                     await Utils.sleep(2000)
@@ -230,9 +209,6 @@ struct WebAttributeTest {
                     console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                   }
                   break;
-                } else {
-                  Utils.emitEvent( "\"handlePromptConfirm\"", 70025)
-                }
               }
             }
           })

@@ -1,16 +1,12 @@
 {
     "devices": {
-        "general": [
-            "tablet",
-            "default",
-            "phone",
-            "2in1",
-            "wearable"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.MiscServices.Download",
+                    "SystemCapability.MiscServices.Upload",
+                    "SystemCapability.Request.FileTransferAgent"
                 ]
             }
         ]

@@ -68,18 +68,44 @@ export default function NavigationBindToNestedScrollable() {
       await driver.assertComponentExist(ON.type('ToolBar'));
 
       let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
-      await scrollBar.scrollToBottom();
-      await CommonFunc.sleep(5000);
+      let scrollBarRect = await scrollBar.getBounds();
+      let top = scrollBarRect.top;
+      let right = scrollBarRect.right;
+      let bottom = scrollBarRect.bottom;
+      
+      await driver.swipe(Math.round(right - vp2px(11)), Math.round(top + vp2px(12)), Math.round(right - vp2px(11)), Math.round(bottom));
+      await driver.delayMs(500)
 
       await driver.assertComponentExist(ON.type('TitleBar'));
       await driver.assertComponentExist(ON.type('ToolBar'));
 
-      let scrollBar2 = await scrollBar.scrollSearch(ON.type('List'));
-      await scrollBar2.scrollToBottom();
-      await CommonFunc.sleep(5000);
+      await driver.swipe(Math.round(right - vp2px(11)), Math.round(bottom - vp2px(12)), Math.round(right - vp2px(11)), Math.round(top));
+      await driver.delayMs(500)
+      let list: Component = await driver.findComponent(ON.type('List'));
+      
+      let listRect = await list.getBounds();
+      let listTop = listRect.top;
+      let listRight = listRect.right;
+      let listBottom = listRect.bottom;
 
-      await driver.assertComponentExist(ON.type('TitleBar'));
-      await driver.assertComponentExist(ON.type('ToolBar'));
+      await driver.swipe(Math.round(listRight - vp2px(11)), Math.round(listTop + vp2px(12)), Math.round(listRight - vp2px(11)), Math.round(listBottom));
+      await driver.delayMs(500)
+
+      let component1: Component = await driver.findComponent(ON.type('TitleBar').text('pageOne'));
+      let point = await component1.getBoundsCenter();
+      let x = point.x;
+      let y = point.y;
+      console.info('NavigationBindToNestedScrollable_0100 x', x);
+      console.info('NavigationBindToNestedScrollable_0100 x', y);
+
+      let nav: Component = await driver.findComponent(ON.id('navId'));
+      let rect = await nav.getBounds();
+      let windowTop = rect.top;
+      console.info('NavigationBindToNestedScrollable_0100 windowTop', windowTop);
+      expect(y < windowTop).assertTrue();
+     
+      let component2: Component  = await driver.findComponent(ON.type('ToolBar'));
+      expect(component2).assertEqual(null);
 
       console.info('NavigationBindToNestedScrollable_0100 END');
       done();

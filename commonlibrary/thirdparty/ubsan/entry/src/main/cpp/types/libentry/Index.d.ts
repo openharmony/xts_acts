@@ -33,3 +33,5 @@ export const undefinedBool: () => number;
 export const vlaBound: (a: number) => number;
 export const unreachable: (a: number) => number;
 export const noReturn: (a: number) => number;
+export const shiftBaseIntMax: (a: number) => number;
+export const shiftBaseIntMin: (a: number) => number;

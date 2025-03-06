@@ -37,7 +37,9 @@ export default function userauthTest_API12() {
                 if (checkSupport == 0) {
                     try {
                         console.info('SUB_Security_IAM_Func_API12_0100 authtype:' + authType[idx0])
-                        userAuthNorth.getEnrolledState(authType[idx0]);
+                        let EnrolledState = userAuthNorth.getEnrolledState(authType[idx0]);
+                        console.info('SUB_Security_IAM_Func_API12_0100 EnrolledState.credentialDigest:' + EnrolledState.credentialDigest)
+                        console.info('SUB_Security_IAM_Func_API12_0100 EnrolledState.credentialCount:' + EnrolledState.credentialCount)
                     } catch (e) {
                         console.log("SUB_Security_IAM_Func_API12_0100 fail " + 'authType:' + authType[idx0] + 'e.code:' + e.code);
                         expect(e.code).assertEqual(userAuthNorth.UserAuthResultCode.NOT_ENROLLED);

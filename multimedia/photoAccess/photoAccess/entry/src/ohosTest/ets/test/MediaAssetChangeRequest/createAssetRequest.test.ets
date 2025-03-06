@@ -165,7 +165,34 @@ export default function createAssetRequestTest() {
         expect(false).assertTrue();
         done();
       }
-    })
+    }) 
+
+    /**
+    * @tc.number    : SUB_PHOTOACCESS_HELPER_CREATE_ASSET_REQUEST_0400
+    * @tc.name      : create_asset_request_004
+    * @tc.desc      : create image with extension as ''
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+      it('create_asset_request_004', 2, async (done: Function) => {
+        let testNum = 'create_asset_request_004';
+        try {
+          let photoType =  photoAccessHelper.PhotoType.IMAGE;
+          let extension = '';
+          let options: photoAccessHelper.CreateOptions = {
+            title: 'testImage'
+          }
+          let assetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(testContext, photoType, extension, options);
+          console.info(`${testNum} succeed to create image with options`);
+          expect(false).assertTrue()
+          done();
+        } catch (error) {
+          console.error(`${testNum} failed; error: ${error}, ${error.code}`);
+          expect(error.code).assertEqual('401')
+          done();
+        }
+      })    
 
   })
 }

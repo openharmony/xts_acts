@@ -229,7 +229,7 @@ ohos_moduletest_suite("ActsLibuvTest") {
   cflags = [ "-Wno-error" ]
 }
 
-ohos_sh_assist_suite("cpLibuv") {
+action("cpLibuv") {
   testonly = true
   script = "cplibuv.sh"
   outputs = [ "${target_out_dir}/cplibuv.log" ]
@@ -239,7 +239,6 @@ ohos_sh_assist_suite("cpLibuv") {
     ":ActsLibuvTest",
     ":libuvruntest",
   ]
-  part_name = "libuv"
 }
 
 group("libuvTest") {

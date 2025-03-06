@@ -13,13 +13,14 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect, beforeEach } from '@ohos/hypium'
+import { describe, beforeAll, afterEach, it, expect, beforeEach, Level } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import contact from '@ohos.contact';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundleManager from '@ohos.bundle.bundleManager';
 import account from '@ohos.account.osAccount';
 import { Component, Driver, On, ON } from '@ohos.UiTest';
+import { deviceInfo } from '@kit.BasicServicesKit';
 
 const ExpectTrue = (n: boolean) => {
   try {
@@ -68,13 +69,15 @@ async function getComponent(driver: Driver, onType: On) {
         await getComponent(driver, onType);
     } else {
         console.log(`get component: ${JSON.stringify(item)}`);
-        await item.click;
+        await item.click();
     }
 }
 
 export default function SaveToExistingContactViaUITest() {
   describe('SaveToExistingContactViaUITest', () => {
 
+    let contactDataNull: contact.Contact = {
+    };
     let contactData: contact.Contact = {
       id: 0,
       key: "0",
@@ -193,7 +196,7 @@ export default function SaveToExistingContactViaUITest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSaveToExistingContactViaUI0100', 0, async (done: Function) => {
+    it('testTelephonyContactSaveToExistingContactViaUI0100', Level.LEVEL0, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSaveToExistingContactViaUI0100";
       console.info(`${caseName} test start `);
@@ -207,19 +210,20 @@ export default function SaveToExistingContactViaUITest() {
             } else {
                 console.log(`${caseName} addContact: success>${JSON.stringify(err)}`);
                 ExpectTrue(data > 0);
-                done();
                 let promise = contact.saveToExistingContactViaUI(context, {
                     phoneNumbers: [{
                         phoneNumber: "13555558888"
                     }],
                 });
                 try {
-                    let driver: Driver = Driver.create();
-                    let onType2: On = ON.text('小李');
-                    await getComponent(driver, onType2);
-                    await delay(500);
-                    let onType: On = ON.id('save_click_btn');
-                    await getComponent(driver, onType);
+                    if (deviceInfo.deviceType !== 'wearable') {
+                      let driver: Driver = Driver.create();
+                      let onType2: On = ON.text('小李');
+                      await getComponent(driver, onType2);
+                      await delay(500);
+                      let onType: On = ON.id('save_click_btn');
+                      await getComponent(driver, onType);
+                    }
                 } catch (err) {
                     console.log(`${caseName} --ger component catch: err>${JSON.stringify(err)}`);
                     ExpectFail();
@@ -230,9 +234,16 @@ export default function SaveToExistingContactViaUITest() {
                     ExpectTrue(data > 0);
                     done();
                 }).catch((err: BusinessError) => {
-                    console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
-                    ExpectFail();
-                    done();
+                    if (err.code === 801) {
+                      console.log(`${caseName} The current device type does not 
+                      support: errcode>${JSON.stringify(err.code)}, message: >${JSON.stringify(err.message)}`);
+                      expect(err.code).assertEqual(801);
+                      done();
+                    } else {
+                      console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
+                      ExpectFail();
+                      done();
+                    }
                 });
             }
         });
@@ -244,7 +255,7 @@ export default function SaveToExistingContactViaUITest() {
       console.info(`${caseName} test end `);
     })
 
-        /**
+    /**
      * @tc.number     : SUB_Telephony_Contact_SaveToExistingContactViaUI_0200
      * @tc.name       : testTelephonyContactSaveToExistingContactViaUI0200
      * @tc.desc       : Call the contact SaveToExistingContactViaUI interface, and use the Promise method as an asynchronous method for the SaveToExistingContactViaUI contact 15
@@ -252,7 +263,7 @@ export default function SaveToExistingContactViaUITest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSaveToExistingContactViaUI0200', 0, async (done: Function) => {
+    it('testTelephonyContactSaveToExistingContactViaUI0200', Level.LEVEL0, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSaveToExistingContactViaUI0200";
       console.info(`${caseName} test start `);
@@ -266,23 +277,24 @@ export default function SaveToExistingContactViaUITest() {
             } else {
                 console.log(`${caseName} addContact: success>${JSON.stringify(err)}`);
                 ExpectTrue(data > 0);
-                done();
                 let promise = contact.saveToExistingContactViaUI(context, {
                     phoneNumbers: [{
                         phoneNumber: "13555558888"
                     }],
                 });
                 try {
-                    let driver: Driver = Driver.create();
-                    let onType2: On = ON.text('小李');
-                    await getComponent(driver, onType2);
-                    await delay(500);
-                    let onType: On = ON.id('cancel_btn');
-                    await getComponent(driver, onType);
-                    await delay(500);
-                    let onType1: On = ON.text('不保存');
-                    await getComponent(driver, onType1);
-                    await delay(500);
+                    if (deviceInfo.deviceType !== 'wearable') {
+                      let driver: Driver = Driver.create();
+                      let onType2: On = ON.text('小李');
+                      await getComponent(driver, onType2);
+                      await delay(500);
+                      let onType: On = ON.id('cancel_btn');
+                      await getComponent(driver, onType);
+                      await delay(500);
+                      let onType1: On = ON.text('不保存');
+                      await getComponent(driver, onType1);
+                      await delay(500);
+                    }
                 } catch (err) {
                     console.log(`${caseName} --ger component catch: err>${JSON.stringify(err)}`);
                     ExpectFail();
@@ -293,9 +305,71 @@ export default function SaveToExistingContactViaUITest() {
                     ExpectTrue(data == -1);
                     done();
                 }).catch((err: BusinessError) => {
-                    console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
-                    ExpectFail();
+                    if (err.code === 801) {
+                      console.log(`${caseName} The current device type does not 
+                      support: errcode>${JSON.stringify(err.code)}, message: >${JSON.stringify(err.message)}`);
+                      expect(err.code).assertEqual(801);
+                      done();
+                    } else {
+                      console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
+                      ExpectFail();
+                      done();
+                    }
+                });
+            }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_SaveToExistingContactViaUI_0300
+     * @tc.name       : testTelephonyContactSaveToExistingContactViaUI0300
+     * @tc.desc       : Call the contact SaveToExistingContactViaUI interface, and use the Promise method as an asynchronous method for the SaveToExistingContactViaUI contact 15
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactSaveToExistingContactViaUI0300', Level.LEVEL0, async (done: Function) => {
+      await delay(1500);
+      const caseName: string = "testTelephonyContactSaveToExistingContactViaUI0300";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, async (err: BusinessError, data: number) => {
+            if(err) {
+                console.log(`${caseName} addContact: err>${JSON.stringify(err)}`);
+                ExpectFail();
+                done();
+            } else {
+                console.log(`${caseName} addContact: success>${JSON.stringify(err)}`);
+                ExpectTrue(data > 0);
+                let promise = contact.saveToExistingContactViaUI(context, {
+                });
+                promise.then((data: number) => {
+                    console.log(`${caseName} SaveToExistingContactViaUI: data>${JSON.stringify(data)}`);
+                    ExpectTrue(data == -1);
                     done();
+                }).catch((err: BusinessError) => {
+                    if (err.code === 801) {
+                      console.log(`${caseName} The current device type does not 
+                      support: errcode>${JSON.stringify(err.code)}, message: >${JSON.stringify(err.message)}`);
+                      expect(err.code).assertEqual(801);
+                      done();
+                    } else if (err.code === 401) {
+                      console.log(`${caseName} The parameter error:
+                      errcode>${JSON.stringify(err.code)}, message: >${JSON.stringify(err.message)}`);
+                      expect(err.code).assertEqual(401);
+                      done();
+                    } else {
+                      console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
+                      ExpectFail();
+                      done();
+                    }
                 });
             }
         });

@@ -75,10 +75,6 @@ export const testButtonType004: () => number;
 
 export const testButtonType005: () => number;
 
-export const testButtonType006: () => number;
-
-export const testButtonType007: () => number;
-
 export const textTextStyleGraphic001: () => number;
 
 export const testCheckboxMark001: () => number;
@@ -7056,12 +7052,6 @@ export const testTextInputUnderlineColor002 : () =>number;
 export const testTextInputFontFeature001 : () =>number;
 export const testTextInputFontFeature002 : () =>number;
 export const testTextInputFontFeature003 : () =>number;
-export const testTextInputWordBreak001 : () =>number;
-export const testTextInputWordBreak002 : () =>number;
-export const testTextInputWordBreak003 : () =>number;
-export const testTextInputWordBreak004 : () =>number;
-export const testTextInputWordBreak005 : () =>number;
-export const testTextInputWordBreak006 : () =>number;
 export const testTextInputStyle001 : () => number;
 export const testTextInputStyle002 : () => number;
 export const testTextInputStyle003 : () => number;

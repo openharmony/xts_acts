@@ -16,7 +16,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import dataRdb from '@ohos.data.rdb';
 import dataAbility from '@ohos.data.dataAbility';
 import common from "@ohos.app.ability.common";
-import DataShareResultSet from '@ohos.data.DataShareResultSet';
 
 
 const TAG = '[RDB_JSKITS _TEST]'
@@ -36,18 +35,6 @@ const STORE_CONFIG: dataRdb.StoreConfig = {
 let rdbStore: dataRdb.RdbStore | null = null;
 let DOUBLE_MAX = 9223372036854775807;
 let context: common.UIAbilityContext;
-
-
-    function resultSize(resultSet: DataShareResultSet) {
-        if (!resultSet.goToFirstRow()) {
-            return 0;
-        }
-        let count = 1;
-        while (resultSet.goToNextRow()) {
-            count++;
-        }
-        return count;
-    }
 
     async function buildAllDataType1() {
         console.info(TAG + "buildAllDataType1 start");

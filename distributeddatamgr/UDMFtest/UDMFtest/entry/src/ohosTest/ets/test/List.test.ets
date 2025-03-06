@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import UDMFApiCallback from './UDMFApiCallback.test'
 import UDMFApiPromise from './UDMFApiPromise.test'
 import UDMFApiTest from './UDMF.test'
@@ -23,6 +22,7 @@ import UtdfileNameTest from './UtdfileNameExtentionsTest'
 import UDMFApiDataStructTest from './UDMFApiDataStruct.test'
 import UDMFSupportClipboardApiTest from './UDMFSupportClipboardApi.test'
 import EmptyTest from './Empty.test';
+import UDMFEntryTest from './UDMFEntry.test';
 
 export default function testsuite() {
   if (canIUse("SystemCapability.DistributedDataManager.UDMF.Core")){
@@ -35,6 +35,7 @@ export default function testsuite() {
     UtdfileNameTest()
     UDMFApiDataStructTest()
     UDMFSupportClipboardApiTest()
+    UDMFEntryTest()
   } else {
     EmptyTest()
   } 

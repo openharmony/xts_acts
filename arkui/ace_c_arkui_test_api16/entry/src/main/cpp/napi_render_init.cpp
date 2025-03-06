@@ -15,16 +15,17 @@
 
 #include "common/common.h"
 #include "manager/plugin_manager.h"
-#include "checkboxgroup/checkboxgroup_group_test.h"
-#include "checkboxgroup/checkboxgroup_selectall_test.h"
-#include "checkbox/checkbox_group_test.h"
 #include "postFrame/post_frame_callback_test.h"
 #include "swiper/swiper_test.h"
-#include "list/list_test.h"
-#include "listScrollTo/list_scroll_to_test.h"
 #include "textArea/textArea_letter_spacing.h"
 #include "textpicker/textpicker_columnwidths_test.h"
 #include "scroll/scroll_backtotop_test.h"
+#include "datepicker/datepicker_test.h"
+#include "drag/drag_test.h"
+#include "calendarPicker/calendar_picker_test.h"
+#include "calendarPicker/calendarPicker_date_test.h"
+#include "ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.h"
+
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -39,18 +40,13 @@ static napi_value Init(napi_env env, napi_value exports)
         {"getContext", nullptr, PluginManager::GetContext, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testPostFrameCallback", nullptr, PostFrameCallbackTest::testPostFrameCallback001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"checkboxGroupGroupTest", nullptr, CheckboxGroupGroupTest::CreateNativeNode, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"checkboxGroupSelectAllTest", nullptr, CheckboxGroupSelectAllTest::CreateNativeNode, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"checkboxGroupTest", nullptr, CheckboxGroupTest::CreateNativeNode, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
         {"swiperAutoPlayTest", nullptr, SwiperTest::swiperAutoPlayTest,
          nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"listTestCallback", nullptr, ListTest::ListCaseTest, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"listScrollToTestCallback", nullptr, ListScrollToTest::ListScrollToIndexTest, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
         {"textAreaLetterSpacing001", nullptr, TextAreaLetterSpacing::textAreaLetterSpacing001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCalendarPickerDate", nullptr, CalendarPickerStartEndTest::CalendarPickerDateTest,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testDatePickerMode", nullptr, DatePickerTest::DatePickerModeTest,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"textInputLetterSpacing002", nullptr, TextAreaLetterSpacing::textInputLetterSpacing002,
          nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -58,6 +54,18 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"scrollBackToTopTest", nullptr, ScrollBackToTopTest::CreateNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"TestDragStartDataLoading001", nullptr, DragTest::TestDragStartDataLoading001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"TestDragDisableDropDataPrefetch002", nullptr, DragTest::TestDragDisableDropDataPrefetch002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"TestDragCancelDataLoading003", nullptr, DragTest::TestDragCancelDataLoading003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"GetResult", nullptr, DragTest::GetResult, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"calendarPickerTest", nullptr, CalendarPickerTest::CalendarPickerMarkTodayTest,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testExpectedFrameRateRangeCallback", nullptr, ExpectedFrameRateRangeCallbackTest::testExpectedFrameRateRangeCallback001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

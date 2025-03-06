@@ -317,6 +317,12 @@ export default function cameraManagerTest() {
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 hostDeviceType" + i + "Type: " +
               hostDeviceType);
           }
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 hostDeviceType1" + "Type: " +
+            cameraObj.HostDeviceType.UNKNOWN_TYPE);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 hostDeviceType2" + "Type: " +
+            cameraObj.HostDeviceType.PHONE);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 hostDeviceType3" + "Type: " +
+            cameraObj.HostDeviceType.TABLET);
           expect(true).assertTrue();
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 PASSED");
         } else {

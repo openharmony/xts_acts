@@ -220,6 +220,9 @@ export default function userauthTest() {
                             console.log(`testFace faceDemo auth  result is ${result}, challenge is ${args[0]}, authtype is ${args[1]}, trustlevel is ${args[2]} `);
                             onresult.authresult = result;
                             console.log("testFace faceDemo auth extraInfo = " + JSON.stringify(extraInfo));
+                            console.log("testFace faceDemo auth extraInfo.token = " + extraInfo.token);
+                            console.log("testFace faceDemo auth extraInfo.remainTimes = " + extraInfo.remainTimes);
+                            console.log("testFace faceDemo auth extraInfo.freezingTime = " + extraInfo.freezingTime);
                             onresult.authextr = extraInfo;
                             console.info('testFace publicauth auth onResult = ' + JSON.stringify(onresult));
                             try{

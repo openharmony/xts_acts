@@ -12,11 +12,7 @@
     "package": "com.example.appliFeature",
     "name": ".appliFeature",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-      "wearable",
-      "phone",
-      "tablet"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "appliFeature",

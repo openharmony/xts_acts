@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,8 +15,14 @@
 
 import UsbSystemApiNormalJsTest from './UsbSystemApiNormalJsTest.test';
 import UsbNormalAppJsTest from './UsbNormalAppJsTest.test'
+import UsbApiBulkTransferTest from './UsbApiBulkTransferTest.test';
+import UsbApiInterruptTransferTest from './UsbApiInterruptTransferTest.test';
+import UsbApiIsochronousTransferTest from './UsbApiIsochronousTransferTest.test';
 
 export default function testsuite() {
   UsbSystemApiNormalJsTest()
   UsbNormalAppJsTest()
+  UsbApiBulkTransferTest()
+  UsbApiInterruptTransferTest()
+  UsbApiIsochronousTransferTest()
 }

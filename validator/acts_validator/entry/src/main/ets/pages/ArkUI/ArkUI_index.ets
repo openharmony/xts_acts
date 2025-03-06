@@ -51,6 +51,7 @@ struct IndexPage {
     { title: 'LongPressGesture', uri: 'pages/ArkUI/LongPressGesture' },
     { title: 'TapGesture', uri: 'pages/ArkUI/TapGesture' },
     { title: 'PanGesture', uri: 'pages/ArkUI/PanGesture' },
+    { title: 'bindSheetTest', uri: 'pages/ArkUI/bindSheetTest' },
     { title: 'CanvasFillStyle', uri: 'pages/ArkUI/CanvasFillStyle' },
     { title: 'CanvasLineWidth', uri: 'pages/ArkUI/CanvasLineWidth' },
     { title: 'CanvasStrokeStyle', uri: 'pages/ArkUI/CanvasStrokeStyle' },
@@ -69,6 +70,7 @@ struct IndexPage {
     { title: 'chipTest', uri: 'pages/ArkUI/chipTest' },
     { title: 'chipGroupTest', uri: 'pages/ArkUI/chipGroupTest' },
     { title: 'DatePickerDialog', uri: 'pages/ArkUI/DatePickerDialog' },
+    { title: 'dialogModeTest', uri: 'pages/ArkUI/dialogModeTest' },
     { title: 'Marquee', uri: 'pages/ArkUI/Marquee' },
     { title: 'PatternLock', uri: 'pages/ArkUI/PatternLock' },
     { title: 'PatternLockL0_01', uri: 'pages/ArkUI/PatternLockL0_01' },
@@ -101,6 +103,13 @@ struct IndexPage {
     { title: 'Rotate1hand', uri: 'pages/ArkUI/Rotate1hand' },
     { title: 'Swipehand', uri: 'pages/ArkUI/Swipehand' },
     { title: 'Taphand', uri: 'pages/ArkUI/Taphand' },
+    { title: 'AccessibilityThirdFramework00', uri: 'pages/ArkUI/AccessibilityThirdFramework00' },
+    { title: 'AccessibilityThirdFramework01', uri: 'pages/ArkUI/AccessibilityThirdFramework01' },
+    { title: 'CapiHandDetect', uri: 'pages/ArkUI/GetBarRect' },
+    { title: 'CapiHandDetect', uri: 'pages/ArkUI/CapiHandDetect' },
+    { title: 'GameCtrollerCallBackData', uri: 'pages/ArkUI/GameCtrollerCallBackData' },
+    { title: 'GameCtronllerCTest', uri: 'pages/ArkUI/GameCtronllerCTest' },
+    { title: 'HoverMove', uri: 'pages/ArkUI/HoverMove' }
   ]
   @State ColorObject: Object[] = letColor;
   @State ColorTrue: number[] = [];

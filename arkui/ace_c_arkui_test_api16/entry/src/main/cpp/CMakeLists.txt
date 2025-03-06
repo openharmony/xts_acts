@@ -12,29 +12,30 @@ include_directories(
 
 add_library(nativerender SHARED
     manager/plugin_manager.cpp
-    checkboxgroup/checkboxgroup_group_test.cpp
-    checkboxgroup/checkboxgroup_selectall_test.cpp
-    checkbox/checkbox_group_test.cpp
     napi_render_init.cpp
     postFrame/post_frame_callback_test.cpp
-    list/list_test.cpp
-    listScrollTo/list_scroll_to_test.cpp
     swiper/swiper_test.cpp
     textArea/textArea_letter_spacing.cpp
     textpicker/textpicker_columnwidths_test.cpp
     scroll/scroll_backtotop_test.cpp
     component/component.cpp
+    component/calendarPicker_component.cpp  
+    component/datepicker_component.cpp
     component/grid_component.cpp
     component/list_component.cpp
     component/scroll_component.cpp
     component/waterflow_component.cpp
     component/button_component.cpp
     component/text_component.cpp
+    datepicker/datepicker_test.cpp
+    drag/drag_test.cpp
+    calendarPicker/calendar_picker_test.cpp
+    calendarPicker/calendarPicker_date_test.cpp
+    ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.cpp
 )
 
 add_library(nativefunc SHARED
     napi_func_init.cpp
-    listItemGroup/list_item_group_test.cpp
 )
 
 find_library(
@@ -70,6 +71,6 @@ find_library(
 )
 
 target_link_libraries(nativerender PUBLIC
-    libnative_drawing.so libace_napi.z.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
+    libnative_drawing.so libace_napi.z.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libudmf.so)
 target_link_libraries(nativefunc PUBLIC
 libnative_drawing.so libpixelmap.so libace_napi.z.so libudmf.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})

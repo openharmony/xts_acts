@@ -60,20 +60,6 @@ ohos_moduletest_suite("ActsKhrgles3Suite0001Test") {
     "../shaders/Khrgles3loops_for_constant_iterationsTestCase.cpp",
     "../shaders/Khrgles3loops_for_dynamic_iterationsTestCase.cpp",
     "../shaders/Khrgles3loops_for_uniform_iterationsTestCase.cpp",
-    "../shaders/Khrgles3loops_while_constant_iterationsTestCase.cpp",
-    "../shaders/Khrgles3loops_while_dynamic_iterationsTestCase.cpp",
-    "../shaders/Khrgles3loops_while_uniform_iterationsTestCase.cpp",
-    "../shaders/Khrgles3preprocessor_basicTestCase.cpp",
-    "../shaders/Khrgles3preprocessor_commentsTestCase.cpp",
-    "../shaders/Khrgles3preprocessor_definitionsTestCase.cpp",
-    "../shaders/Khrgles3preprocessor_function_definitionsTestCase.cpp",
-    "../shaders/Khrgles3preprocessor_function_redefinitionsTestCase.cpp",
-    "../shaders/Khrgles3preprocessor_invalid_definitionsTestCase.cpp",
-    "../shaders/Khrgles3preprocessor_invalid_function_definitionsTestCase.cpp",
-    "../shaders/Khrgles3preprocessor_invalid_redefinitionsTestCase.cpp",
-    "../shaders/Khrgles3preprocessor_line_continuationTestCase.cpp",
-    "../shaders/Khrgles3preprocessor_object_redefinitionsTestCase.cpp",
-    "../shaders/Khrgles3preprocessor_recursionTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

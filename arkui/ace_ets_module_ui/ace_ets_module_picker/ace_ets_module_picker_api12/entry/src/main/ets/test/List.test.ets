@@ -18,35 +18,36 @@ import contentModifier from './CheckboxTest/contentModifier.test';
 import triggerChange from './CheckboxTest/triggerChange.test';
 import CheckBoxShape from './CheckboxGroupTest/CheckBoxShape.test';
 import dateTimeOptions from './TimePickerTest/dateTimeOptions.test';
-import indicatorBuilderTest from './CheckboxTest/indicatorBuilderTest.test'
-import ButtonApi1 from './Button/ButtonApi1.test'
-import ButtonApi2 from './Button/ButtonApi2.test'
+import indicatorBuilderTest from './CheckboxTest/indicatorBuilderTest.test';
+import ButtonApi1 from './Button/ButtonApi1.test';
+import ButtonApi2 from './Button/ButtonApi2.test';
 
-import RadioContentModifier from './RadioTest/RadioContentModifier.test'
-import RadioIndicatorType from './RadioTest/RadioIndicatorType.test'
-import RatingContentModifier from './RatingTest/RatingContentModifier.test'
-import SliderAttrs from './SliderTest/SliderAttrs.test'
-import SliderContentModifier from './SliderTest/SliderContentModifier.test'
-import ToggleContentModifier from './ToggleTest/ToggleContentModifier.test'
-import ToggleSwitchStyle from './ToggleTest/ToggleSwitchStyle.test'
+import RadioContentModifier from './RadioTest/RadioContentModifier.test';
+import RadioIndicatorType from './RadioTest/RadioIndicatorType.test';
+import RatingContentModifier from './RatingTest/RatingContentModifier.test';
+import SliderAttrs from './SliderTest/SliderAttrs.test';
+import SliderContentModifier from './SliderTest/SliderContentModifier.test';
+import ToggleContentModifier from './ToggleTest/ToggleContentModifier.test';
+import ToggleSwitchStyle from './ToggleTest/ToggleSwitchStyle.test';
 import ToggleContentIsOn from './ToggleTest/ToggleIsOn.test';
 import ToggleContentEnabled from './ToggleTest/ToggleEnabled.test';
-import slideRange from './SliderTest/slideRange.test'
+import slideRange from './SliderTest/slideRange.test';
 
-import SliderAttrs2 from './SliderTest/SliderAttrs2.test'
+import SliderAttrs2 from './SliderTest/SliderAttrs2.test';
 import TimePickerAddApi from './TimePickerTest/TimePickerAddApi.test';
-import enableHapticFeedbackTest from './TimePickerTest/enableHapticFeedbackTest.test'
-import RatingAdvancedTest from './RatingTest/RatingAdvanced.test'
-import XComponentSliderTest from './SliderTest/XcomponentSlider.test'
+import enableHapticFeedbackTest from './TimePickerTest/enableHapticFeedbackTest.test';
+import RatingAdvancedTest from './RatingTest/RatingAdvanced.test';
+import XComponentSliderTest from './SliderTest/XcomponentSlider.test';
+import textPickerDefaultPickerItemHeightJsunit from './TextPickerTest/textPicker.test';
 
 export default function testsuite() {
-    gradientHeight()
-    dividerJsunit()
-    contentModifier()
-    triggerChange()
-    CheckBoxShape()
-    dateTimeOptions()
-    indicatorBuilderTest()
+    gradientHeight();
+    dividerJsunit();
+    contentModifier();
+    triggerChange();
+    CheckBoxShape();
+    dateTimeOptions();
+    indicatorBuilderTest();
     ButtonApi1();
     ButtonApi2();
     RadioContentModifier();
@@ -56,12 +57,13 @@ export default function testsuite() {
     SliderContentModifier();
     ToggleContentModifier();
     ToggleSwitchStyle();
-    TimePickerAddApi()
+    TimePickerAddApi();
     ToggleContentIsOn();
     ToggleContentEnabled();
-    slideRange()
+    slideRange();
     SliderAttrs2();
     enableHapticFeedbackTest();
-    RatingAdvancedTest()
-    XComponentSliderTest()
+    RatingAdvancedTest();
+    XComponentSliderTest();
+    textPickerDefaultPickerItemHeightJsunit()
 }

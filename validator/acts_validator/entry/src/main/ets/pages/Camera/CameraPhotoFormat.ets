@@ -86,38 +86,17 @@ struct cameraOrientation {
   }
 
   private setPreviewRotation() {
-    let o = display.getDefaultDisplaySync().orientation;
-    let rotation = 0;
-    switch (o) {
-      case 0:
-        rotation = 90;
-        if (this.cameraDeviceIndex == 1) { //前置反向
-          rotation = 270;
-        }
-        break;
-      case 1:
-        rotation = 180;
-        if (this.cameraDeviceIndex == 1) {
-          rotation = 0;
-        }
-        break;
-      case 2:
-        rotation = 270;
-        if (this.cameraDeviceIndex == 1) {
-          rotation = 90;
-        }
-        break;
-      case 3:
-        rotation = 0;
-        if (this.cameraDeviceIndex == 1) {
-          rotation = 180;
-        }
-        break;
-    }
-    if (this.last_rotation != rotation) {
-      this.last_rotation = rotation;
-      CameraService.setPreviewRotation(rotation);
-    }
+    let initDisplayRotation = display.getDefaultDisplaySync().rotation;
+    let initPreviewRotation =
+      CameraService.previewOutput.getPreviewRotation(initDisplayRotation * camera.ImageRotation.ROTATION_90);
+    CameraService.previewOutput.setPreviewRotation(initPreviewRotation, false);
+    display.off('change');
+    display.on('change', () => {
+      initDisplayRotation = display.getDefaultDisplaySync().rotation;
+      let imageRotation = initDisplayRotation * camera.ImageRotation.ROTATION_90;
+      let previewRotation = CameraService.previewOutput.getPreviewRotation(imageRotation);
+      CameraService.previewOutput.setPreviewRotation(previewRotation, false);
+    });
   }
 
   cameraListFn() {
@@ -351,8 +330,8 @@ struct cameraOrientation {
                   let cutOutInfo = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM_GESTURE)
                   console.log(JSON.stringify(cutOutInfo))
                   if (window.Orientation.AUTO_ROTATION) {
-                    let rotation: number = display.getDefaultDisplaySync().orientation // 获取当前屏幕的枚举值
-                    Logger.info('orientation', rotation);
+                    let rotation: number = display.getDefaultDisplaySync().rotation // 获取当前屏幕的枚举值
+                    Logger.info('rotation', rotation);
                     if (rotation == 0) {
                       deviceDegree = 0;
                     } else if (rotation == 1) {

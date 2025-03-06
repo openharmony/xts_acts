@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import keyDispatchTest from "./keydispatchTest/KeyDispatchTest.test"
+
 import nodeHandleByIdTest from "./node/NodeHandleByIdTest.test"
 import getWindowInfoTest from "./window/GetWindowInfoTest.test"
+import checkboxGroupTest from "./checkbox/CheckboxGroupTest.test"
+import checkboxGroupGroupTest from "./checkboxgroup/CheckboxGroupGroupTest.test"
+import checkboxGroupSelectAllTest from "./checkboxgroup/CheckboxGroupSelectAllTest.test"
 import columnBackDropBlurTest from "./visual/columnBackDropBlurTest.test"
 import ProgressLinearStyleTest from "./progress/progressLinearStyleTest.test"
 import testLazyForEachExpandMode from "./lazyForEach/testLazyForEachExpandMode.test"
@@ -23,13 +26,21 @@ import FocusControlTest from "./foucscontrolTest/FocusControlTest.test"
 import FocusControlTest2 from "./foucscontrolTest/FocusControlTest2.test"
 import FocusControlTest3 from "./foucscontrolTest/FocusControlTest3.test"
 import FocusControlTest4 from "./foucscontrolTest/FocusControlTest4.test"
+import listCaseTest from "./list/ListCaseTest.test"
+import listScrollToIndexTest from "./listScrollTo/ListScrollToTest.test"
+import listItemGroupNodeAdapterTest from "./listItemGroup/ListItemGroupTest.test"
+import gesturecancelTest from "./gesturecancelTest/gesturecancelTest.test"
+import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
 
 
 export default function testsuite() {
 
-   keyDispatchTest();
+   
    nodeHandleByIdTest();
    getWindowInfoTest();
+   checkboxGroupTest();
+   checkboxGroupGroupTest();
+   checkboxGroupSelectAllTest();
    columnBackDropBlurTest();
    ProgressLinearStyleTest();
    testLazyForEachExpandMode();
@@ -37,4 +48,9 @@ export default function testsuite() {
    FocusControlTest2();
    FocusControlTest3();
    FocusControlTest4();
+   listCaseTest();
+   listScrollToIndexTest();
+   listItemGroupNodeAdapterTest();
+   gesturecancelTest();
+   scrollBackToTopTest();
 }

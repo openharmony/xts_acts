@@ -20,6 +20,7 @@ import { Driver, ON, MatchPattern } from '@ohos.UiTest'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { BusinessError, emitter } from '@kit.BasicServicesKit';
 import { abilityAccessCtrl, common, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
+import fs from '@ohos.file.fs'
 
 let testContext: common.UIAbilityContext;
 
@@ -43,6 +44,11 @@ interface renderInfoChild {
   content: number,
   usage: number,
   rendererFlags: number
+}
+
+class Options {
+  offset?: number;
+  length?: number;
 }
 
 export default function audioCapturer() {
@@ -671,6 +677,156 @@ export default function audioCapturer() {
         }
         done();
       }
+
+    let recCapturerPromise4 = async (AudioCapturerOptions: ESObject, fileName: string, done: Function) => {
+      let audioCap: audio.AudioCapturer;
+      try {
+        audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
+        console.info(`${Tag} recCapturerPromise4 Created : Success`);
+      } catch (err) {
+        console.info(`${Tag} recCapturerPromise4 Created : ERROR :  ${JSON.stringify(err.message)}`);
+        let S16LE = audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE;
+        let S24LE = audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE;
+        let S32LE = audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE;
+        let F32LE = audio.AudioSampleFormat.SAMPLE_FORMAT_F32LE;
+        let sampleFormat: ESObject = AudioCapturerOptions.streamInfo.sampleFormat;
+        if ((sampleFormat === S16LE || sampleFormat == S24LE || sampleFormat == S32LE || sampleFormat == F32LE)
+          && err.code === 202) {
+          console.info(`${Tag} recCapturerPromise4 err.code === 202`);
+          done();
+          return;
+        }
+        expect(false).assertTrue();
+        done();
+        return;
+      }
+
+      try {
+        let capturerDirPath = testContext.filesDir + '/' + fileName;
+        console.info(`${Tag} case5 capturerDirPath is  ${JSON.stringify(capturerDirPath)}`);
+        let capturerFile = fs.openSync(capturerDirPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+
+        let fd = capturerFile.fd;
+        console.log(`${Tag} fd-re: ${JSON.stringify(fd)}`);
+        if (fd !== null) {
+          console.info(`${Tag} AudioFrameworkRecLog: file fd created`);
+          expect(true).assertTrue();
+        } else {
+          console.info(`${Tag} AudioFrameworkRecLog: Capturer start : ERROR `);
+          expect(false).assertTrue();
+        }
+
+        let bufferSize: number = 0;
+        let readDataCallback = (buffer: ArrayBuffer) => {
+          let options: Options = {
+            offset: bufferSize,
+            length: buffer.byteLength
+          }
+          fs.writeSync(fd, buffer, options);
+          bufferSize += buffer.byteLength;
+        };
+        audioCap.on('readData', readDataCallback);
+
+        if (audioCap === undefined) {
+          console.info(`${Tag} recCapturerPromise4: audioCap is undefined`);
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+
+        await audioCap.start();
+        console.log(`${Tag} start ok`);
+
+        await sleep(2000);
+        console.log(`${Tag} sleep end`);
+
+        await audioCap.stop();
+        console.log(`${Tag} stop ok`);
+        fs.close(capturerFile);
+      } catch (err) {
+        console.log(`${Tag} recCapturerPromise4 stop err: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
+        return;
+      }
+
+      try {
+        await audioCap.release();
+        console.log(`${Tag} recCapturerPromise4 release ok`);
+      } catch (err) {
+        console.log(`${Tag} recCapturerPromise4 release err: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
+        return;
+      }
+      done();
+      return;
+    }
+
+    let resRendererPromise5 = async (AudioRendererOptions: ESObject, fileName: string) => {
+      let audioRen: ESObject;
+      await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
+        audioRen = data;
+        console.info(`${Tag}: resRendererPromise5 Created : Success`);
+      }).catch((err: BusinessError) => {
+        console.info(`${Tag}: resRendererPromise5 Created : ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        return;
+      });
+
+      let rendererDirPath = testContext.filesDir + '/' + fileName;
+      console.info(`${Tag} resRendererPromise5 rendererDirPath: `+ rendererDirPath);
+      let musicFile = fs.openSync(rendererDirPath, fs.OpenMode.READ_ONLY);
+
+      let bufferSize: number = 0;
+      let writeDataCallback = (buffer: ArrayBuffer) => {
+        let options: Options = {
+          offset: bufferSize,
+          length: buffer.byteLength
+        };
+
+        try {
+          fs.readSync(musicFile.fd, buffer, options);
+          bufferSize += buffer.byteLength;
+          // 系统会判定buffer有效，正常播放。
+          return audio.AudioDataCallbackResult.VALID;
+        } catch (error) {
+          console.error('resRendererPromise5 Error reading file:', error);
+          // 系统会判定buffer无效，不播放。
+          return audio.AudioDataCallbackResult.INVALID;
+        }
+      };
+      await audioRen.on('writeData', writeDataCallback);
+      console.info(`${Tag}:  resRendererPromise5 on function : SUCCESS`);
+
+      await audioRen.start().then(() => {
+        console.info(`${Tag}:  resRendererPromise5 start :SUCCESS`);
+      }).catch((err: BusinessError) => {
+        console.info(`${Tag}: resRendererPromise5 start :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        return;
+      });
+
+      await sleep(2000);
+
+      await audioRen.stop().then(() => {
+        console.info(`${Tag}: resRendererPromise5 stop : SUCCESS`);
+      }).catch((err: BusinessError) => {
+        console.info(`${Tag}: resRendererPromise5 stop : ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        return;
+      });
+
+      fs.closeSync(musicFile);
+
+      await audioRen.release().then(() => {
+        console.info(`${Tag}: resRendererPromise5 release : SUCCESS`);
+      }).catch((err: BusinessError) => {
+        console.info(`${Tag}: resRendererPromise5 release : ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        return;
+      });
+    }
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_OVERFLOW_0200
@@ -4035,6 +4191,262 @@ export default function audioCapturer() {
       await getFd("capture_js-44100-2C-16B_voice_message.pcm");
       await recPromise(AudioCapturerOptions, AudioRendererOptions, done);
       expect(true).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0100
+     * @tc.name      : CAPTURER_RENDERER_FORMAT_F32LE_Test_0100
+     * @tc.desc      : CAPTURER_RENDERER_FORMAT_F32LE_Test_0100
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0100', 2, async (done: Function) => {
+      let audioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_F32LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+      }
+      let audioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let audioPlaybackCaptureConfig: audio.AudioPlaybackCaptureConfig = {
+        filterOptions: {
+          usages: [audio.StreamUsage.STREAM_USAGE_MEDIA]
+        }
+      }
+
+      let audioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: audioStreamInfo,
+        capturerInfo: audioCapturerInfo,
+        playbackCaptureConfig: audioPlaybackCaptureConfig
+      }
+
+      let audioRendererInfo: audio.AudioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+        rendererFlags: 0
+      }
+
+      let AudioPrivacyType: ESObject = {
+        privacyType: audio.AudioPrivacyType.PRIVACY_TYPE_PUBLIC
+      }
+
+      let AudioRendererOptions: audio.AudioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo,
+        privacyType: AudioPrivacyType
+      }
+
+      let caseTag: string = "SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0100";
+      try {
+        let fileName = "capture_js-48000-F32LE.pcm";
+        await recCapturerPromise4(audioCapturerOptions, fileName, done);
+        console.log(`${caseTag} audio recording success`);
+        
+        await sleep(200);
+
+        await resRendererPromise5(AudioRendererOptions, fileName);
+        console.log(`${caseTag} audio playback success`);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.log(`${caseTag} fail: ${JSON.stringify(err)}, ${err.code}`);
+        expect(false).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0200
+     * @tc.name      : CAPTURER_RENDERER_FORMAT_F32LE_Test_0200
+     * @tc.desc      : CAPTURER_RENDERER_FORMAT_F32LE_Test_0200
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0200', 2, async (done: Function) => {
+      let audioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_F32LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+      }
+      let audioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let audioPlaybackCaptureConfig: audio.AudioPlaybackCaptureConfig = {
+        filterOptions: {
+          usages: [audio.StreamUsage.STREAM_USAGE_MEDIA]
+        }
+      }
+
+      let audioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: audioStreamInfo,
+        capturerInfo: audioCapturerInfo,
+        playbackCaptureConfig: audioPlaybackCaptureConfig
+      }
+
+      let audioRendererInfo: audio.AudioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+        rendererFlags: 0
+      }
+
+      let AudioPrivacyType: ESObject = {
+        privacyType: audio.AudioPrivacyType.PRIVACY_TYPE_PUBLIC
+      }
+
+      let AudioRendererOptions: audio.AudioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo,
+        privacyType: AudioPrivacyType
+      }
+
+      let caseTag: string = "SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0200";
+      try {
+        let fileName = "capture_js-48000-F32LE.pcm";
+        await recCapturerPromise4(audioCapturerOptions, fileName, done);
+        console.log(`${caseTag} audio recording success`);
+        
+        await sleep(200);
+
+        await resRendererPromise5(AudioRendererOptions, fileName);
+        console.log(`${caseTag} audio playback success`);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.log(`${caseTag} fail: ${JSON.stringify(err)}, ${err.code}`);
+        expect(false).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0300
+     * @tc.name      : CAPTURER_RENDERER_FORMAT_F32LE_Test_0300
+     * @tc.desc      : CAPTURER_RENDERER_FORMAT_F32LE_Test_0300
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0300', 2, async (done: Function) => {
+      let audioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_F32LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+      }
+      let audioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let audioPlaybackCaptureConfig: audio.AudioPlaybackCaptureConfig = {
+        filterOptions: {
+          usages: [audio.StreamUsage.STREAM_USAGE_MEDIA]
+        }
+      }
+
+      let audioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: audioStreamInfo,
+        capturerInfo: audioCapturerInfo,
+        playbackCaptureConfig: audioPlaybackCaptureConfig
+      }
+
+      let audioRendererInfo: audio.AudioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+        rendererFlags: 0
+      }
+
+      let AudioPrivacyType: ESObject = {
+        privacyType: audio.AudioPrivacyType.PRIVACY_TYPE_PUBLIC
+      }
+
+      let AudioRendererOptions: audio.AudioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo,
+        privacyType: AudioPrivacyType
+      }
+
+      let caseTag: string = "SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0300";
+      try {
+        let fileName = "capture_js-48000-F32LE.pcm";
+        await recCapturerPromise4(audioCapturerOptions, fileName, done);
+        console.log(`${caseTag} audio recording success`);
+        
+        await sleep(200);
+
+        await resRendererPromise5(AudioRendererOptions, fileName);
+        console.log(`${caseTag} audio playback success`);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.log(`${caseTag} fail: ${JSON.stringify(err)}, ${err.code}`);
+        expect(false).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0400
+     * @tc.name      : CAPTURER_RENDERER_FORMAT_F32LE_Test_0400
+     * @tc.desc      : CAPTURER_RENDERER_FORMAT_F32LE_Test_0400
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0400', 2, async (done: Function) => {
+      let audioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_192000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_F32LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+      }
+      let audioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION,
+        capturerFlags: 0
+      }
+      let audioPlaybackCaptureConfig: audio.AudioPlaybackCaptureConfig = {
+        filterOptions: {
+          usages: [audio.StreamUsage.STREAM_USAGE_MEDIA]
+        }
+      }
+
+      let audioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: audioStreamInfo,
+        capturerInfo: audioCapturerInfo,
+        playbackCaptureConfig: audioPlaybackCaptureConfig
+      }
+
+      let audioRendererInfo: audio.AudioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+        rendererFlags: 0
+      }
+
+      let AudioPrivacyType: ESObject = {
+        privacyType: audio.AudioPrivacyType.PRIVACY_TYPE_PUBLIC
+      }
+
+      let AudioRendererOptions: audio.AudioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo,
+        privacyType: AudioPrivacyType
+      }
+
+      let caseTag: string = "SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0400";
+      try {
+        let fileName = "capture_js-48000-F32LE.pcm";
+        await recCapturerPromise4(audioCapturerOptions, fileName, done);
+        console.log(`${caseTag} audio recording success`);
+        
+        await sleep(200);
+
+        await resRendererPromise5(AudioRendererOptions, fileName);
+        console.log(`${caseTag} audio playback success`);
+        expect(true).assertTrue();
+      } catch (err) {
+        console.log(`${caseTag} fail: ${JSON.stringify(err)}, ${err.code}`);
+        expect(false).assertTrue();
+      }
       done();
     })
   })

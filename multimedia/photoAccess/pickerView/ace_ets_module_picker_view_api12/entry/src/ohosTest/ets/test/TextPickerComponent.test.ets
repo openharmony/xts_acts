@@ -82,6 +82,10 @@ async function clickResultButton(driver: Driver) {
   console.info("testPicker create");
   let btn = await driver.findComponent(ON.id('resultButton'));
   console.info("testPicker findComponent resultButton succsess");
+  if (btn === null) {
+    console.info('no button');
+    return;
+  }
   await btn.click();
   console.info("testPicker btn click finish");
 }
@@ -92,7 +96,7 @@ async function clickAlbumButton(driver: Driver) {
   await btn.click();
   console.info('testPicker btn click finish');
   await CommonFunc.sleep(1000);
-  let albumItem = await driver.findComponent((ON.type('ListItem')));
+  let albumItem = await driver.findComponent((ON.id('AlbumListItem')));
   if (albumItem === null) {
     console.info('no ListItem');
     return;
@@ -146,6 +150,7 @@ async function testCompleteButton(driver: Driver, options: router.RouterOptions,
 
 export default function TextPicker() {
   describe('testPicker', () => {
+    const isExecutePicker = canIUse('SystemCapability.FileManagement.PhotoAccessHelper.Core');
     let driver: Driver;
     beforeEach(async (done: Function) => {
       console.info("testPicker beforeEach start");
@@ -160,7 +165,7 @@ export default function TextPicker() {
     });
 
 
-    /* *
+    /**
      * @tc.number    : testPicker01
      * @tc.name      : testPicker01
      * @tc.desc      : Testing route to PhotoPickerComponent
@@ -169,6 +174,10 @@ export default function TextPicker() {
      * @tc.level     : Level0
      */
     it('testPicker01', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       pickerOptions.checkBoxColor = '#000000';
@@ -198,11 +207,11 @@ export default function TextPicker() {
       await clickResultButton(driver);
       router.back();
       events_emitter.off(event.eventId);
-      console.info("testPicer01 finish");
+      console.info("testPicker01 finish");
       done();
     });
 
-    /* *
+    /**
      * @tc.number    : testPicker02
      * @tc.name      : testPicker02
      * @tc.desc      : Testing Change PhotoPickerComponent BackgroundColor
@@ -211,6 +220,10 @@ export default function TextPicker() {
      * @tc.level     : Level1
      */
     it('testPicker02', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       pickerOptions.backgroundColor = '#000000';
@@ -235,16 +248,16 @@ export default function TextPicker() {
       }
       await routeToUrl(options);
       let strJson: string = getInspectorByKey('PhotoPickerComponent');
-      console.info("testPicker01 JSON.parse(strJson) is" + strJson);
+      console.info("testPicker02 JSON.parse(strJson) is" + strJson);
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       await clickResultButton(driver);
       router.back();
-      console.info("testPicer02 finish");
+      console.info("testPicker02 finish");
       events_emitter.off(event.eventId);
       done();
     });
 
-    /* *
+    /**
      * @tc.number    : testPicker03
      * @tc.name      : testPicker03
      * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's isRepeatSelectSupported property
@@ -253,6 +266,10 @@ export default function TextPicker() {
      * @tc.level     : Level1
      */
     it('testPicker03', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       pickerOptions.isRepeatSelectSupported = true;
@@ -281,20 +298,24 @@ export default function TextPicker() {
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       await clickResultButton(driver);
       router.back();
-      console.info("testPicer03 finish");
+      console.info("testPicker03 finish");
       events_emitter.off(event.eventId);
       done();
     });
 
-    /* *
-   * @tc.number    : testPicker04
-   * @tc.name      : testPicker04
-   * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's checkboxTextColor property
-   * @tc.size      : MediumTest
-   * @tc.type      : Function
-   * @tc.level     : Level1
-   */
+    /**
+     * @tc.number    : testPicker04
+     * @tc.name      : testPicker04
+     * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's checkboxTextColor property
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
     it('testPicker04', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       pickerOptions.checkboxTextColor = '#000000';
@@ -323,12 +344,12 @@ export default function TextPicker() {
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       await clickResultButton(driver);
       router.back();
-      console.info("testPicer04 finish");
+      console.info("testPicker04 finish");
       events_emitter.off(event.eventId);
       done();
     });
 
-    /* *
+    /**
      * @tc.number    : testPicker05
      * @tc.name      : testPicker05
      * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's photoBrowserBackgroundColorMode property
@@ -337,6 +358,10 @@ export default function TextPicker() {
      * @tc.level     : Level1
      */
     it('testPicker05', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       pickerOptions.photoBrowserBackgroundColorMode = PickerColorMode.LIGHT;
@@ -365,12 +390,12 @@ export default function TextPicker() {
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       await clickResultButton(driver);
       router.back();
-      console.info("testPicer05 finish");
+      console.info("testPicker05 finish");
       events_emitter.off(event.eventId);
       done();
     });
 
-    /* *
+    /**
      * @tc.number    : testPicker06
      * @tc.name      : testPicker06
      * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's photoBrowserBackgroundColorMode property
@@ -379,6 +404,10 @@ export default function TextPicker() {
      * @tc.level     : Level1
      */
     it('testPicker06', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       pickerOptions.photoBrowserBackgroundColorMode = PickerColorMode.DARK;
@@ -407,12 +436,12 @@ export default function TextPicker() {
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       await clickResultButton(driver);
       router.back();
-      console.info("testPicer06 finish");
+      console.info("testPicker06 finish");
       events_emitter.off(event.eventId);
       done();
     });
 
-    /* *
+    /**
      * @tc.number    : testPicker07
      * @tc.name      : testPicker07
      * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's maxSelectedReminderMode property
@@ -421,6 +450,10 @@ export default function TextPicker() {
      * @tc.level     : Level2
      */
     it('testPicker07', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       pickerOptions.maxSelectedReminderMode = ReminderMode.NONE;
@@ -449,20 +482,24 @@ export default function TextPicker() {
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       await clickResultButton(driver);
       router.back();
-      console.info("testPicer07 finish");
+      console.info("testPicker07 finish");
       events_emitter.off(event.eventId);
       done();
     });
 
-    /* *
-    * @tc.number    : testPicker08
-    * @tc.name      : testPicker08
-    * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's maxSelectedReminderMode property
-    * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level2
-    */
+    /**
+     * @tc.number    : testPicker08
+     * @tc.name      : testPicker08
+     * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's maxSelectedReminderMode property
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
     it('testPicker08', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       pickerOptions.maxSelectedReminderMode = ReminderMode.MASK;
@@ -491,20 +528,24 @@ export default function TextPicker() {
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       await clickResultButton(driver);
       router.back();
-      console.info("testPicer08 finish");
+      console.info("testPicker08 finish");
       events_emitter.off(event.eventId);
       done();
     });
 
-    /* *
-    * @tc.number    : testPicker09
-    * @tc.name      : testPicker09
-    * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's selectMode property
-    * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level2
-    */
+    /**
+     * @tc.number    : testPicker09
+     * @tc.name      : testPicker09
+     * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's selectMode property
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
     it('testPicker09', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       pickerOptions.selectMode = SelectMode.SINGLE_SELECT;
@@ -533,20 +574,24 @@ export default function TextPicker() {
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       await clickResultButton(driver);
       router.back();
-      console.info("testPicer09 finish");
+      console.info("testPicker09 finish");
       events_emitter.off(event.eventId);
       done();
     });
 
-    /* *
-    * @tc.number    : testPicker10
-    * @tc.name      : testPicker10
-    * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's maxPhotoSelectNumber property
-    * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level1
-    */
+    /**
+     * @tc.number    : testPicker10
+     * @tc.name      : testPicker10
+     * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's maxPhotoSelectNumber property
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
     it('testPicker10', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       pickerOptions.maxPhotoSelectNumber = 8;
@@ -575,20 +620,24 @@ export default function TextPicker() {
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       await clickResultButton(driver);
       router.back();
-      console.info("testPicer10 finish");
+      console.info("testPicker10 finish");
       events_emitter.off(event.eventId);
       done();
     });
 
-    /* *
-    * @tc.number    : testPicker11
-    * @tc.name      : testPicker11
-    * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's maxVideoSelectNumber property
-    * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level1
-    */
+    /**
+     * @tc.number    : testPicker11
+     * @tc.name      : testPicker11
+     * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's maxVideoSelectNumber property
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
     it('testPicker11', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       pickerOptions.maxVideoSelectNumber = 8;
@@ -617,20 +666,24 @@ export default function TextPicker() {
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       await clickResultButton(driver);
       router.back();
-      console.info("testPicer11 finish");
+      console.info("testPicker11 finish");
       events_emitter.off(event.eventId);
       done();
     });
 
-    /* *
-    * @tc.number    : testPicker12
-    * @tc.name      : testPicker12
-    * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's maxSelectNumber property
-    * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level1
-    */
+    /**
+     * @tc.number    : testPicker12
+     * @tc.name      : testPicker12
+     * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's maxSelectNumber property
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
     it('testPicker12', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       pickerOptions.maxSelectNumber = 8;
@@ -659,20 +712,24 @@ export default function TextPicker() {
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       await clickResultButton(driver);
       router.back();
-      console.info("testPicer12 finish");
+      console.info("testPicker12 finish");
       events_emitter.off(event.eventId);
       done();
     });
 
-    /* *
-    * @tc.number    : testPicker13
-    * @tc.name      : testPicker13
-    * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's orientation property
-    * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level2
-    */
+    /**
+     * @tc.number    : testPicker13
+     * @tc.name      : testPicker13
+     * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's orientation property
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
     it('testPicker13', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       pickerOptions.orientation = PickerOrientation.VERTICAL;
@@ -701,20 +758,24 @@ export default function TextPicker() {
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       await clickResultButton(driver);
       router.back();
-      console.info("testPicer13 finish");
+      console.info("testPicker13 finish");
       events_emitter.off(event.eventId);
       done();
     });
 
-    /* *
-    * @tc.number    : testPicker14
-    * @tc.name      : testPicker14
-    * @tc.desc      : Testing ItemInfo's all properties
-    * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level0
-    */
+    /**
+     * @tc.number    : testPicker14
+     * @tc.name      : testPicker14
+     * @tc.desc      : Testing ItemInfo's all properties
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
     it('testPicker14', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.SELECT_ITEM_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       let callback = (event: events_emitter.EventData) => {
@@ -756,20 +817,24 @@ export default function TextPicker() {
         console.info("testPicker14 btn click finish");
       }
       router.back();
-      console.info("testPicer14 finish");
+      console.info("testPicker14 finish");
       events_emitter.off(event.eventId);
       done();
     });
 
-    /* *
-    * @tc.number    : testPicker15
-    * @tc.name      : testPicker15
-    * @tc.desc      : Testing MaxSelected
-    * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level1
-    */
+    /**
+     * @tc.number    : testPicker15
+     * @tc.name      : testPicker15
+     * @tc.desc      : Testing MaxSelected
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
     it('testPicker15', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.SELECT_ITEM_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       let selectCount: number = 0;
@@ -805,12 +870,12 @@ export default function TextPicker() {
           await checkBoxs[index].click();
         }
         await CommonFunc.sleep(1000);
-		expect(selectCount).assertLessOrEqual(1);
+		    expect(selectCount).assertLessOrEqual(1);
         console.info("testPicker15 btn click finish");
       }
 
       router.back();
-      console.info("testPicer15 finish");
+      console.info("testPicker15 finish");
       events_emitter.off(event.eventId);
       done();
     });
@@ -824,6 +889,10 @@ export default function TextPicker() {
      * @tc.level     : Level1
      */
     it('testPicker16', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.ALBUM_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       let albumOptions: AlbumPickerOptions = new AlbumPickerOptions();
@@ -853,11 +922,11 @@ export default function TextPicker() {
       await clickAlbumButton(driver);
 
       let strJson: string = getInspectorByKey('PhotoPickerComponent');
-      console.info("testPicker13 JSON.parse(strJson) is" + strJson);
+      console.info("testPicker16 JSON.parse(strJson) is" + strJson);
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
 
       router.back();
-      console.info("testPicer15 finish");
+      console.info("testPicker16 finish");
       events_emitter.off(event.eventId);
       done();
     });
@@ -871,6 +940,10 @@ export default function TextPicker() {
      * @tc.level     : Level1
      */
     it('testPicker17', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       let callback = (event: events_emitter.EventData) => {
@@ -899,7 +972,7 @@ export default function TextPicker() {
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
 
       router.back();
-      console.info("testPicer17 finish");
+      console.info("testPicker17 finish");
       events_emitter.off(event.eventId);
       done();
     });
@@ -913,6 +986,10 @@ export default function TextPicker() {
      * @tc.level     : Level1
      */
     it('testPicker18', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.SELECT_CLICKTYPE;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       let clicked: boolean = false;
@@ -944,7 +1021,7 @@ export default function TextPicker() {
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
 
       router.back();
-      console.info("testPicer18 finish");
+      console.info("testPicker18 finish");
       events_emitter.off(event.eventId);
       done();
     });
@@ -959,6 +1036,10 @@ export default function TextPicker() {
      * @tc.level     : Level1
      */
     it('testPicker19', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.RECENT_PHOTO_INFO;
       let recentPhotoOptions: RecentPhotoOptions = new RecentPhotoOptions();
       recentPhotoOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
@@ -991,14 +1072,14 @@ export default function TextPicker() {
       await routeToUrl(options);
       console.info('testPicker19 create');
       let component: Component = await driver.findComponent(ON.id('recentPhoto'));
-	  if (component === null) {
+	    if (component === null) {
         console.info('testPicker19 no recentPhoto');
       } else {
-	    await component.click();
+	      await component.click();
         await CommonFunc.sleep(2000);
-	  }
+	    }
       router.back();
-      console.info("testPicer19 finish");
+      console.info("testPicker19 finish");
       events_emitter.off(event.eventId);
       done();
     });
@@ -1012,6 +1093,10 @@ export default function TextPicker() {
      * @tc.level     : Level1
      */
     it('testPicker20', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.RECENT_PHOTO_INFO;
       let recentPhotoOptions: RecentPhotoOptions = new RecentPhotoOptions();
       recentPhotoOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
@@ -1044,14 +1129,14 @@ export default function TextPicker() {
       await routeToUrl(options);
       console.info('testPicker20 create');
       let component: Component = await driver.findComponent(ON.id('recentPhoto'));
-	  if (component === null) {
+	    if (component === null) {
         console.info('testPicker20 no recentPhoto');
       } else {
-	    await component.click();
+	      await component.click();
         await CommonFunc.sleep(2000);
-	  }
+	    }
       router.back();
-      console.info("testPicer20 finish");
+      console.info("testPicker20 finish");
       events_emitter.off(event.eventId);
       done();
     });
@@ -1065,6 +1150,10 @@ export default function TextPicker() {
      * @tc.level     : Level1
      */
     it('testPicker21', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.RECENT_PHOTO_INFO;
       let recentPhotoOptions: RecentPhotoOptions = new RecentPhotoOptions();
       recentPhotoOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
@@ -1097,27 +1186,31 @@ export default function TextPicker() {
       await routeToUrl(options);
       console.info('testPicker21 create');
       let component: Component = await driver.findComponent(ON.id('recentPhoto'));
-	  if (component === null) {
+	    if (component === null) {
         console.info('testPicker21 no recentPhoto');
       } else {
-	    await component.click();
+	      await component.click();
         await CommonFunc.sleep(2000);
-	  }
+	    }
       router.back();
-      console.info("testPicer21 finish");
+      console.info("testPicker21 finish");
       events_emitter.off(event.eventId);
       done();
     });
 
-    /* *
-       * @tc.number    : testPicker22
-       * @tc.name      : testPicker22
-       * @tc.desc      : Testing PhotoPickerComponent set browser back button and checkbox
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level0
-       */
+    /**
+     * @tc.number    : testPicker22
+     * @tc.name      : testPicker22
+     * @tc.desc      : Testing PhotoPickerComponent set browser back button and checkbox
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
     it('testPicker22', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       // 支持滑动多选
@@ -1136,19 +1229,23 @@ export default function TextPicker() {
       console.info("testPicker22 JSON.parse(strJson) is" + strJson);
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       router.back();
-      console.info("testPicer22 finish");
+      console.info("testPicker22 finish");
       done();
     });
 
-        /* *
-       * @tc.number    : testPicker23
-       * @tc.name      : testPicker23
-       * @tc.desc      : Testing requestPhotoUrisReadPermission
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level0
-       */
+    /**
+     * @tc.number    : testPicker23
+     * @tc.name      : testPicker23
+     * @tc.desc      : Testing requestPhotoUrisReadPermission
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
     it('testPicker23', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let uris = ['file://media/photo/test.jpg'];
       let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(getContext());
       try {
@@ -1165,19 +1262,23 @@ export default function TextPicker() {
         console.error("testPicer23 error: " + JSON.stringify(error));
         expect(false).assertTrue();
       }
-      console.info("testPicer23 finish");
+      console.info("testPicker23 finish");
       done();
     });
 
-    /* *
-       * @tc.number    : testPicker24
-       * @tc.name      : testPicker24
-       * @tc.desc      : Testing CompleteButtonText
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level0
-       */
+    /**
+     * @tc.number    : testPicker24
+     * @tc.name      : testPicker24
+     * @tc.desc      : Testing CompleteButtonText
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
     it('testPicker24', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/BindSheetPicker',
       }
@@ -1186,19 +1287,23 @@ export default function TextPicker() {
         await testCompleteButton(driver, options, index);
       }
 
-      console.info("testPicer24 finish");
+      console.info("testPicker24 finish");
       done();
     });
 
-    /* *
-       * @tc.number    : testPicker25
-       * @tc.name      : testPicker25
-       * @tc.desc      : Testing createAssetWithShortTermPermission
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level0
-       */
+    /**
+     * @tc.number    : testPicker25
+     * @tc.name      : testPicker25
+     * @tc.desc      : Testing createAssetWithShortTermPermission
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
     it('testPicker25', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(getContext());
       try {
         let photoCreationConfig: photoAccessHelper.PhotoCreationConfig = {
@@ -1220,19 +1325,23 @@ export default function TextPicker() {
         console.error("testPicker25 error: " + JSON.stringify(error));
         expect(false).assertTrue();
       }
-      console.info("testPicer25 finish");
+      console.info("testPicker25 finish");
       done();
     });
 
-    /* *
-       * @tc.number    : testPicker26
-       * @tc.name      : testPicker26
-       * @tc.desc      : Testing PhotoPickerComponent grid margin and browser margin
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level0
-       */
+    /**
+     * @tc.number    : testPicker26
+     * @tc.name      : testPicker26
+     * @tc.desc      : Testing PhotoPickerComponent grid margin and browser margin
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
     it('testPicker26', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       // 支持传入宫格和大图Margin
@@ -1247,22 +1356,26 @@ export default function TextPicker() {
       }
       await routeToUrl(options);
       let strJson: string = getInspectorByKey('PhotoPickerComponent');
-      console.info("testPicker24 JSON.parse(strJson) is" + strJson);
+      console.info("testPicker26 JSON.parse(strJson) is" + strJson);
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       router.back();
-      console.info("testPicker24 finish");
+      console.info("testPicker26 finish");
       done();
     });
 
-    /* * 
-       * @tc.number    : testPicker27
-       * @tc.name      : testPicker27
-       * @tc.desc      : Testing video play state changed callback
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level0
-       */
-      it('testPicker27', 0, async (done: Function) => {
+    /** 
+     * @tc.number    : testPicker27
+     * @tc.name      : testPicker27
+     * @tc.desc      : Testing video play state changed callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('testPicker27', 0, async (done: Function) => {
+        if (!isExecutePicker) {
+        done();
+        return;
+      }
       let code: number = EventType.VIDEO_PLAY_STATE;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       let callback = (event: events_emitter.EventData) => {
@@ -1310,6 +1423,10 @@ export default function TextPicker() {
      * @tc.level     : Level0
      */
     it('testPicker28', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let context = getContext();
       let originalUris = [' '];
       let photoCreationConfig: photoAccessHelper.PhotoCreationConfig = {
@@ -1324,7 +1441,6 @@ export default function TextPicker() {
         photoAccessHelper.getPhotoAccessHelper(context).showAssetsCreationDialog([boxPath],
           [photoCreationConfig]).then((result) => {
           originalUris = result;
-          expect(true).assertTrue();
         });
         pickerController.replacePhotoPickerPreview(originalUris[0], boxPath, (a) => {
           if (!a) {
@@ -1349,6 +1465,60 @@ export default function TextPicker() {
       }
       await CommonFunc.sleep(1000);
       console.log("testPicker28 btn click finish");
+      done();
+    });
+
+    /**
+     * @tc.number    : testPicker29
+     * @tc.name      : testPicker29
+     * @tc.desc      : Testing PhotoPickerComponent replacePhotoPickerPreview and saveTrustedPhotoAssets
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('testPicker29', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
+      let context = getContext();
+      let originalUris = [' '];
+      let photoCreationConfig: photoAccessHelper.PhotoCreationConfig = {
+        title: 'test',
+        fileNameExtension: 'jpg',
+        photoType: photoAccessHelper.PhotoType.IMAGE,
+        subtype: photoAccessHelper.PhotoSubtype.DEFAULT,
+      };
+      try {
+        let pickerController: PickerController = new PickerController();
+        let boxPath = fileUri.getUriFromPath(context.filesDir + "/test.jpg").toString();
+        photoAccessHelper.getPhotoAccessHelper(context).showAssetsCreationDialog([boxPath],
+          [photoCreationConfig]).then((result) => {
+          originalUris = result;
+        });
+        pickerController.replacePhotoPickerPreview(originalUris[0], boxPath, (a) => {
+          if (!a) {
+            console.log("testPicker29 replacePhotoPickerPreview fail");
+            expect(false).assertTrue();
+          } else {
+            console.log("testPicker29 replacePhotoPickerPreview success");
+            pickerController.saveTrustedPhotoAssets([boxPath], (err, arr) => {
+              if (!err) {
+                console.log("testPicker29 saveTrustedPhotoAssets fail");
+                expect(false).assertTrue();
+              } else {
+                console.log("testPicker29 saveTrustedPhotoAssets success, save uris:" + arr);
+                expect(true).assertTrue();
+              }
+            }, undefined, SaveMode.OVERWRITE);
+          }
+        });
+      } catch (error) {
+        console.log("testPicker29 error:" + JSON.stringify(error));
+        expect(false).assertTrue();
+      }
+      await CommonFunc.sleep(1000);
+      console.log("testPicker29 btn click finish");
       done();
     });
   })

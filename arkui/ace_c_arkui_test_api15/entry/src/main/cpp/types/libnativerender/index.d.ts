@@ -13,9 +13,13 @@
  * limitations under the License.
  */
 
-export const KeyEventPatchTest: (a: string) => void;
 
-export const GetKeyEventData: () => object;
+
+export const checkboxGroupGroupTest: (a:string) => void;
+
+export const checkboxGroupSelectAllTest: (a:string) => void;
+
+export const checkboxGroupTest: (a:string) => void;
 
 export const testNodeHandleById: (a: string) => void;
 
@@ -53,3 +57,13 @@ export const FocusControlTest_002: (a: string) => void;
 export const FocusControlTest_003: (a: string) => void;
 
 export const FocusControlTest_004: (a: string) => void;
+
+export const listTestCallback: (a: string) => void;
+
+export const listScrollToTestCallback: (a: string) => void;
+
+export const gesturecancelTest: (a: string) => void;
+
+export const GetTouchEventData: () => object;
+
+export const scrollBackToTopTest: (a: string) => void;

@@ -50,7 +50,9 @@ export class Colors {
     ['interactiveFocus', 'sys.color.interactive_focus'],
     ['interactiveActive', 'sys.color.interactive_active'],
     ['interactiveSelect', 'sys.color.interactive_select'],
-    ['interactiveClick', 'sys.color.interactive_click']
+    ['interactiveClick', 'sys.color.interactive_click'],
+    ['progressTrackColor', 'sys.color.progress_track_color'],
+    ['progressTrackSelectedColor', 'sys.color.progress_track_selected_color']
   ]);
 }
 export interface DataClass {

@@ -4,6 +4,7 @@
 		"MainAbility/pages/Navigation/EnableModeChangeAnimation",
 		"MainAbility/pages/NavDestination/CustomTransitionPage",
 		"MainAbility/pages/Navigation/OnResultPage",
-		"MainAbility/pages/NavDestination/HideBackButtonPage"
+		"MainAbility/pages/NavDestination/HideBackButtonPage",
+		"MainAbility/pages/NavDestination/SystemTransition2"
     ]
 }

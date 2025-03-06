@@ -14,12 +14,7 @@
 		"package":"com.example.accessibleregisterstate_test",
 		"name":".entry_test",
 		"mainAbility":".TestAbility",
-		"deviceType":[
-      "wearable",
-			"tablet",
-			"default",
-			"phone"
-		],
+		"deviceType": [],
 		"reqPermissions":[
 			{
 				"name":"ohos.permission.DISTRIBUTED_DATASYNC",

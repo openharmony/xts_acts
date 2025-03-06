@@ -418,7 +418,7 @@ export default function ConnectionTest() {
         ExpectFail();
         done();
       }catch (err){
-        ExpectTrue(err == "Error: Parameter error")
+        ExpectTrue(err.code == 401)
         console.log(`${caseName} Error in`,err);
         done()
       }
@@ -437,22 +437,24 @@ export default function ConnectionTest() {
       const caseName: string = 'testConnectiongetPacUrl0100';
       console.info(`${caseName}---Start`);
       try{
-        let pacUrl =  connection.getPacUrl();
+        let pacUrl :string=  connection.getPacUrl();
         console.log(`${caseName} pacUrl is `,pacUrl);
         ExpectTrue(true);
         done();
       }catch (err){
-        if (err.includes("System internal error")){
-          console.log(`${caseName}} getPac fail `)
-          ExpectTrue(true);
+        if (err){
+          console.log(`${caseName}} getPac fail `,JSON.stringify(err));
+          ExpectTrue(err.code == 2100003);
         }
         else {
-          console.log(`${caseName}} Error in`,err)
+          console.log(`${caseName}} Error in`,JSON.stringify(err));
           ExpectFail();
         }
         done();
       }
     });
+
+    
     /**
      * @tc.number : SUB_Network_Connection_setPacUrl_0200
      * @tc.name   : testConnectionsetPacUrl0200

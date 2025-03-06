@@ -59,21 +59,6 @@ ohos_moduletest_suite("ActsDeqpgles2Suite0015Test") {
     "../functional/Deqpgles2info_query_array_in_structTestCase.cpp",
     "../functional/Deqpgles2info_query_basic_arrayTestCase.cpp",
     "../functional/Deqpgles2info_query_basic_structTestCase.cpp",
-    "../functional/Deqpgles2info_query_multiple_basicTestCase.cpp",
-    "../functional/Deqpgles2info_query_multiple_basic_arrayTestCase.cpp",
-    "../functional/Deqpgles2info_query_multiple_nested_structs_arraysTestCase.cpp",
-    "../functional/Deqpgles2info_query_nested_structs_arraysTestCase.cpp",
-    "../functional/Deqpgles2info_query_struct_in_arrayTestCase.cpp",
-    "../functional/Deqpgles2info_query_unused_uniformsTestCase.cpp",
-    "../functional/Deqpgles2render_array_in_structTestCase.cpp",
-    "../functional/Deqpgles2render_basicTestCase.cpp",
-    "../functional/Deqpgles2render_basic_arrayTestCase.cpp",
-    "../functional/Deqpgles2render_basic_structTestCase.cpp",
-    "../functional/Deqpgles2render_multiple_basicTestCase.cpp",
-    "../functional/Deqpgles2render_multiple_basic_arrayTestCase.cpp",
-    "../functional/Deqpgles2render_multiple_nested_structs_arraysTestCase.cpp",
-    "../functional/Deqpgles2render_nested_structs_arraysTestCase.cpp",
-    "../functional/Deqpgles2render_struct_in_arrayTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

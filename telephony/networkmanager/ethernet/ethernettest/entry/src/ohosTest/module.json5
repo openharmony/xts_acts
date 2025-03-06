@@ -20,18 +20,15 @@
     "type": "feature",
     "description": "$string:module_test_desc",
     "mainElement": "TestAbility",
-    "deviceTypes": [
-      "default",
-      "tablet",
-      "2in1"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:test_pages",
     "requestPermissions": [
       {
         "name": "ohos.permission.GET_ETHERNET_LOCAL_MAC"
-      }
+      },
+      {"name": "ohos.permission.GET_NET_FIREWALL"}
     ],
     "abilities": [
       {

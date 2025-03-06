@@ -666,9 +666,10 @@ export default function inputMethodStageJSUnit() {
       try {
         let inputMethodConfig = inputMethod.getSystemInputMethodConfigAbility();
         console.info("====>SUB_InputMethod_IMF_Panel_0600: " + JSON.stringify(inputMethodConfig));
-        // expect(inputMethodConfig.hasOwnProperty('bundleName')).assertTrue();
-        // expect(inputMethodConfig.hasOwnProperty('moduleName')).assertTrue();
-        // expect(inputMethodConfig.hasOwnProperty('abilityName')).assertTrue();
+        let bundleName = inputMethodConfig.bundleName;
+        let abilityName = inputMethodConfig.abilityName;
+        expect(typeof (bundleName) === 'string').assertTrue();
+        expect(typeof (abilityName) === 'string').assertTrue();
         console.info("====>SUB_InputMethod_IMF_Panel_0600 end");
         done();
       } catch (err) {

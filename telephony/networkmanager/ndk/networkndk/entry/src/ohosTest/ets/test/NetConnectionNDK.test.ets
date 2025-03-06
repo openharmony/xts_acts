@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 import ncAPI from 'libtestNetConnectNdk.so'
 
 const CASE_INDEX_1 = 1;
@@ -1088,6 +1088,38 @@ export default function NetConnectionNDKTest() {
     it('testOHNetConnUnregisterDnsResolver_0300', 0, async (done: Function) => {
       let re: number = ncAPI.OHNetConnUnregisterDnsResolver(CASE_INDEX_3);
       expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_testOHNetConSetPacUrl_0100
+     * @tc.name   ：testOHNetConSetPacUrl_0100
+     * @tc.desc   ：SetPacUr
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     *
+     */
+    it('testOHNetConSetPacUrl_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      const pac: string = "a/b/test";
+      console.info(`testOHNetConSetPacUrl_0100 start`);
+      let re: number = ncAPI.OHNetConnSetPacUrl(pac);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_testOHNetConGetPacUrl_0100
+     * @tc.name   ：testOHNetConGetPacUrl_0100
+     * @tc.desc   ：GetPacUrl
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConGetPacUrl_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      console.info(`testOHNetConGetPacUrl_0100test start`);
+      let re: string = ncAPI.OHNetConnGetPacUrl(CASE_INDEX_5);
+      console.info(`testOHNetConGetPacUrl_0100test ${re}`);
       done();
     });
   });

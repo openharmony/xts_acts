@@ -96,7 +96,7 @@ struct WaterFlowDemo {
             ViewHolder({ item: item, disappearCount: this.disAppearCount })
           }
           .width('100%')
-          .height(200)
+          .height('25%')
           .backgroundColor(this.colors[item%5])
         }, (item: number) => item.toString())
       }

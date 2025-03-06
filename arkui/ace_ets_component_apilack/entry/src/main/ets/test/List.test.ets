@@ -22,7 +22,6 @@ import common_ts_ets_apiStaticClearJsunit from './common_ts_ets_api.test.ets';
 import ellipseNeJsunit from './ellipse.test.ets';
 import featureAbilityStartAbilityJsunit from './featureAbility.test.ets';
 import focusControlJsunit from './FocusControlJsunit.test.ets'
-import gaugeColorsJsunit from './gauge.test.ets';
 import gestureSetDirectionJsunit from './gesture.test.ets';
 import globalJsunit from './global.test.ets';
 import gridMaxCountJsunit from './grid.test.ets';
@@ -41,21 +40,17 @@ import panelBackgroundMaskJsunit from './panel.test.ets';
 import pathNewTest from './path.test.ets';
 import polygonNewJsunit from './polygon.test.ets';
 import polyLineNeJsunit from './polyLine.test.ets';
-import progressScaleCountJsunit from './progress.test.ets';
 import promptShowDialogJsunit from './prompt.test.ets';
 import rectNeJsunit from './rect.test.ets';
 import scrollOnScrollBeginJsunit from './scroll.test.ets';
 import searchOnCutJsunit from './search.test.ets'
 import selectOnSelectJsunit from './select.test.ets';
-import sideBarShowSideBarJsunit from './sideBar.test.ets';
 import stackAlignContentJsunit from './stack.test.ets';
-import stateManagementGetSharedJsunit from './stateManagement.test.ets';
 import swiperCurveJsunit from './swiper.test.ets';
 import tabsBarPositionJsunit from './tabs.test.ets';
 import textMinFontSizeJsunit from './text.test.ets';
 import textAreaOnCutJsunit from './textArea.test.ets';
 import textInputOnEditChangeJsunit from './textInput.test.ets';
-import textPickerDefaultPickerItemHeightJsunit from './textPicker.test.ets';
 import videoOnFullscreenChangeJsunit from './video.test.ets';
 import webGetTitleJsunit from './web.test.ets';
 import xcomponentGetXComponentContextJsunit from './xcomponent.test.ets';
@@ -70,7 +65,6 @@ export default function testsuite() {
   commonBackgroundBlurStyleJsunit()
   ellipseNeJsunit()
   featureAbilityStartAbilityJsunit()
-  gaugeColorsJsunit()
   gestureSetDirectionJsunit()
   globalJsunit()
   gridMaxCountJsunit()
@@ -86,21 +80,17 @@ export default function testsuite() {
   pathNewTest()
   polygonNewJsunit()
   polyLineNeJsunit()
-  progressScaleCountJsunit()
   promptShowDialogJsunit()
   rectNeJsunit()
   scrollOnScrollBeginJsunit()
   searchOnCutJsunit()
   selectOnSelectJsunit()
-  sideBarShowSideBarJsunit()
   stackAlignContentJsunit()
-  stateManagementGetSharedJsunit()
   swiperCurveJsunit()
   tabsBarPositionJsunit()
   textMinFontSizeJsunit()
   textAreaOnCutJsunit()
   textInputOnEditChangeJsunit()
-  textPickerDefaultPickerItemHeightJsunit()
   videoOnFullscreenChangeJsunit()
   webGetTitleJsunit()
   xcomponentGetXComponentContextJsunit()

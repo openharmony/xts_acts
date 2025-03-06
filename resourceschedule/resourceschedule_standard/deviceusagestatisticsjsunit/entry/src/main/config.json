@@ -12,11 +12,7 @@
     "package": "ohos.acts.resourceschedule.deviceusagestatisticsjsunit.js.function",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

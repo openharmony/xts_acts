@@ -18,14 +18,7 @@
     "type": "feature",
     "description": "$string:module_test_desc",
     "mainElement": "TestAbility",
-    "deviceTypes": [
-      "car",
-      "wearable",
-      "tv",
-      "default",
-      "tablet",
-      "2in1"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:test_pages",

@@ -164,7 +164,7 @@ export function testBitVectorHas0001(): boolean {
   for (let i = 0; i < 5; i++) {
     bitVectorList.push(1);
   }
-  return bitVectorList.has(0, 0, 10);
+  return bitVectorList.has(0, 0, 9);
 }
 
 @Concurrent
@@ -200,7 +200,7 @@ export function testBitVectorHas0004(): boolean {
   for (let i = 0; i < 5; i++) {
     bitVectorList.push(1);
   }
-  return bitVectorList.has(1, 0, 10) === true;
+  return bitVectorList.has(1, 0, 9) === true;
 }
 
 @Concurrent
@@ -267,7 +267,7 @@ export function testBitVectorHas0008(): string {
     bitVectorList.push(1);
   }
   try {
-    bitVectorList.has(1, 5, 5);
+    bitVectorList.has(1, 6, 5);
     return "no_error";
   } catch (err) {
     console.info("error is: " + `${err.message}`);
@@ -282,7 +282,7 @@ export function testBitVectorSetBitsByRange0001(): boolean {
     bitVectorList.push(0);
   }
   bitVectorList.setBitsByRange(1, 5, 10);
-  return bitVectorList.has(0, 0, 10);
+  return bitVectorList.has(0, 0, 9);
 }
 
 @Concurrent
@@ -312,7 +312,7 @@ export function testBitVectorSetBitsByRange0004(): boolean {
     bitVectorList.push(0);
   }
   bitVectorList.setBitsByRange(1, 5, 10);
-  return bitVectorList.has(1, 0, 10);
+  return bitVectorList.has(1, 0, 9);
 }
 
 @Concurrent
@@ -371,7 +371,7 @@ export function testBitVectorSetBitsByRange0008(): string {
   }
   bitVectorList.setBitsByRange(1, 5, 10);
   try {
-    bitVectorList.has(1, 5, 5);
+    bitVectorList.has(1, 6, 5);
     return "no_error";
   } catch (err) {
     console.info("error is: " + `${err.message}`);

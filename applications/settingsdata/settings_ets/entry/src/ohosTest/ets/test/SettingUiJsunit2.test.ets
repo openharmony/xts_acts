@@ -775,6 +775,10 @@ export default function settingUiJsunit() {
           done();
           return;
         })
+        let setTTS1: string = settings.TTS.DEFAULT_TTS_PITCH + ''
+        let setTTS2: string = settings.TTS.DEFAULT_TTS_RATE + ''
+        let setTTS3: string = settings.TTS.DEFAULT_TTS_SYNTH + ''
+        let setTTS4: string = settings.TTS.ENABLED_TTS_PLUGINS + ''
       }catch(err){
         console.info('settings test canShowFloating promise err'+String(err));
         expect(true).assertTrue();
@@ -783,6 +787,44 @@ export default function settingUiJsunit() {
       }
     });
 
+    it('settings_get_value_117', 0, (done:Function) =>  {
+      let name = 'settings.screen.brightness117';//关键字
+      let value = 'brightness117';//值
+      let domainName = 'secure';
+      try{
+        settings.setValue(globalThis.abilityContext, name, value, domainName)
+          .then((data)=>{
+            console.info("[settings_get_value_117] value is:" + data);
+          })
+          .catch((err: BusinessError)=>{
+            console.info("[settings_get_value_117] error is:" + String(err));
+            expect(err.code).assertEqual(201);
+            done();
+            return;
+          })
+      }catch (err) {
+        console.error("[settings_set_value_117] error = " + err);
+        expect(err == "Error: assertion (valueType == napi_object) failed: Wrong argument[0] type. Object expected.")
+          .assertTrue();
+      }
+      done();
+    });
 
+    it('settings_get_value_118', 0, (done:Function) => {
+      let name = 'settings.screen.brightness118';//关键字
+      let domainName = settings.domainName.USER_PROPERTY;
+      try{
+        let value = settings.registerKeyObserver(globalThis.abilityContext, name, domainName, (err, ret) => {
+          console.info("[settings_get_value_118] error is:" + String(err));
+          expect(err.code).assertEqual(201);
+          done();
+        })
+      }catch (err) {
+        console.error("[settings_set_value_118] error = " + err);
+        expect(err == "Error: assertion (valueType == napi_object) failed: Wrong argument[0] type. Object expected.")
+          .assertTrue();
+      }
+      done();
+    });
   })
 }

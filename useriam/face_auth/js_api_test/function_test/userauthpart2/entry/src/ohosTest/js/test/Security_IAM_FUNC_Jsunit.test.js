@@ -602,6 +602,7 @@ export default function userauthTest() {
             expect(12500007).assertEqual(userAuthNorth.UserAuthResultCode.BUSY);
             expect(12500009).assertEqual(userAuthNorth.UserAuthResultCode.LOCKED);
             expect(12500010).assertEqual(userAuthNorth.UserAuthResultCode.NOT_ENROLLED);
+            expect(12500011).assertEqual(userAuthNorth.UserAuthResultCode.CANCELED_FROM_WIDGET);
             console.info('testFace Security_IAM_Func_0107 end');
             done();
         })

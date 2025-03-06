@@ -141,12 +141,17 @@ struct webStorage {
                       console.log('usage: ' + origins[i].usage);
                       console.log('quota: ' + origins[i].quota);
                     }
-                    Utils.emitEvent(origins[0].usage, 20343)
+                    if(origins[0].usage > 0) {
+                      Utils.emitEvent(true, 20343)
+                    } else {
+                      Utils.emitEvent(false, 20343)
+                    }
+
                   })
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-                Utils.emitEvent(String(e.code), 20343)
+                Utils.emitEvent(false, 20343)
               }
               break;
             }
@@ -175,7 +180,7 @@ struct webStorage {
                 webView.WebStorage.getOrigins((error, origins) => {
                   if (error) {
                     console.log('error: ' + JSON.stringify(error));
-                    Utils.emitEvent(error.code + '', 100037)
+                    Utils.emitEvent(false, 100037)
                     return;
                   }
                   for (let i = 0; i < origins.length; i++) {
@@ -183,13 +188,18 @@ struct webStorage {
                     console.log('usage: ' + origins[i].usage);
                     console.log('quota: ' + origins[i].quota);
                   }
-                  let result = origins[0].origin + '_' + (origins[0].quota > 0 ? true : false) + '_' + origins[0].usage
-                  Utils.emitEvent(result, 100037)
+                  // let result = origins[0].origin + '_' + (origins[0].quota > 0 ? true : false) + '_' + origins[0].usage
+                  let result =  origins[0].usage
+                  if(result > 0) {
+                    Utils.emitEvent(true, 100037)
+                  } else {
+                    Utils.emitEvent(false, 100037)
+                  }
                 })
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-                Utils.emitEvent(e.code + '', 100037)
+                Utils.emitEvent(false, 100037)
               }
               break;
             }

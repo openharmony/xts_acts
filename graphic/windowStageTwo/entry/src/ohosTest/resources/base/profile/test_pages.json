@@ -1,6 +1,8 @@
 {
   "src": [
     "testability/pages/Index",
+    "testability/pages/Index1",
+    "testability/pages/Index2",
     "testability/pages/First/index",
     "testability/pages/second/second",
     "testability/pages/second/pageOne",
@@ -13,6 +15,8 @@
     "testability/pages/WindowTest/extension",
     "testability/pages/WindowTest/EmbeddedComponentPage",
     "testability/pages/WindowTest/extensionRect",
-    "testability/pages/WindowTest/EmbeddedComponentRectPage"
+    "testability/pages/WindowTest/EmbeddedComponentRectPage",
+    "testability/pages/shiftAppWindow/subWindow",
+    "testability/pages/shiftAppWindow/mainWindow"
   ]
 }

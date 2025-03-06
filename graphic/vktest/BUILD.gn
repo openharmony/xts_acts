@@ -15,7 +15,7 @@ import("//test/xts/tools/build/suite.gni")
 
 import("//test/xts/acts/graphic/vktest/comm.gni")
 
-ohos_sh_assist_suite("cpVulkan") {
+action("cpVulkan") {
   testonly = true
   script = "cpVulkan.sh"
   outputs = [ "${target_out_dir}/cpVulkan.log" ]
@@ -25,7 +25,6 @@ ohos_sh_assist_suite("cpVulkan") {
     ":vulkanTest",
     "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan:deqp_vk_execute",
   ]
-  part_name = "graphic_2d"
 }
 
 group("vulkanTest") {

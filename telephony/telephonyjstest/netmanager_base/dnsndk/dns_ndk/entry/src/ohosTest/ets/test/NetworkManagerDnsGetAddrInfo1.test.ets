@@ -33,7 +33,7 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     let netid_default = 0
     let netid_valid = 100
     let netid_invalid = 10
-    let netid_unreachable = 110
+    let netid_unreachable = 999
     let function_valid = 0
     let function_null = 1
 

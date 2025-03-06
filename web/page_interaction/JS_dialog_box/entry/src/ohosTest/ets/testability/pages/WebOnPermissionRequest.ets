@@ -67,7 +67,7 @@ struct WebOnPermissionRequest {
             console.info("key==>" + this.str)
             switch (this.str) {
               case "emitPermissionRequestDeny001": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
+                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   try {
                     this.deny = true;
                     this.controller.runJavaScript("getMedia()", (error) => {
@@ -95,7 +95,7 @@ struct WebOnPermissionRequest {
                 }
               }
               case "emitPermissionRequestGrant001": {
-                if (canIUse('SystemCapability.Applications.Contacts')) {
+                if (canIUse('SystemCapability.Multimedia.Camera.Core')) {
                   this.userAgentPC = this.controller.getUserAgent();
                   if ((this.userAgentPC).includes("PC")) {
                     Utils.emitEvent('"grant"', 70322)

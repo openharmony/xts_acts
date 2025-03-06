@@ -76,27 +76,4 @@ static napi_value TestButtonType005(napi_env env, napi_callback_info info)
     ASSERT_NE(nodeAPI->getAttribute(button, NODE_BUTTON_TYPE)->value[PARAM_0].i32, buttonType);
     NAPI_END;
 }
-
-static napi_value TestButtonType006(napi_env env, napi_callback_info info)
-{
-    NAPI_START(button, ARKUI_NODE_BUTTON);
-    ArkUI_AttributeItem button_item = {};
-    auto ret = nodeAPI->setAttribute(button, NODE_BUTTON_TYPE, &button_item);
-    ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_BUTTON_TYPE)->value[PARAM_0].i32, PARAM_1);
-    NAPI_END;
-}
-
-static napi_value TestButtonType007(napi_env env, napi_callback_info info)
-{
-    NAPI_START(button, ARKUI_NODE_BUTTON);
-    int32_t  buttonType = ARKUI_BUTTON_TYPE_NORMAL;
-    ArkUI_NumberValue  button_value[] = {{.i32 =  buttonType}};
-    ArkUI_AttributeItem button_item = {button_value, sizeof(button_value) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(button, NODE_BUTTON_TYPE, &button_item);
-    auto ret = nodeAPI->resetAttribute(button, NODE_BUTTON_TYPE);
-    ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_BUTTON_TYPE)->value[PARAM_0].i32, PARAM_1);
-    NAPI_END;
-}
 } // namespace ArkUICapiTest

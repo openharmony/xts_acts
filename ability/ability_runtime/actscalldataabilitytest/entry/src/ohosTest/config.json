@@ -15,12 +15,7 @@
   "deviceConfig": {},
   "module": {
     "mainAbility": ".TestAbility",
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
+    "deviceType": [],
     "abilities": [
       {
         "skills": [

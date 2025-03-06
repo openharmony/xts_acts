@@ -3,15 +3,18 @@
 <head>
     <meta charset="utf-8">
     <title>WindowEvent</title>
-    <div id="container">OpenNewWindow</div>
-</head>
+    <script>
+        function OpenNewWindow() {
+            window.open('https://www.baidu.com', '_blank', 'resizable,scrollbars,status');
+        }
 
+        window.onload = function() {
+            var container = document.getElementById('container');
+            container.addEventListener('click', OpenNewWindow);
+        };
+    </script>
+</head>
 <body>
-<script>
-    function OpenNewWindow()
-    {
-      window.open('https://www.baidu.com', '_blank', 'resizable,scrollbars,status');
-    }
-</script>
+<div id="container">Open New Window</div>
 </body>
 </html>

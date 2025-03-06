@@ -37,6 +37,7 @@ struct Index {
     Row() {
       Column() {
         TextArea({ text: this.inputValue })
+          .keyboardAppearance(KeyboardAppearance.LIGHT_IMMERSIVE)
           .height('90%')
           .enablePreviewText(true)
           .onChange((value: string) => {

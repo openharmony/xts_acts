@@ -29,9 +29,10 @@ struct ListPage {
       List() {
         ListItem() {
           Text(this.listItemText01)
-            .width('30%')
-            .height(100)
-            .fontSize(14)
+            .align(Alignment.Top)
+            .width('100%')
+            .height('50%')
+            .fontSize(10)
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -48,9 +49,10 @@ struct ListPage {
 
         ListItem() {
           Text(this.listItemText02)
-            .width('30%')
-            .height(100)
-            .fontSize(14)
+            .align(Alignment.Top)
+            .width('100%')
+            .height('50%')
+            .fontSize(10)
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -66,8 +68,8 @@ struct ListPage {
         })
         .border({ width: 2, color: Color.Green })
       }
-      .height(300)
-      .width("90%")
+      .height('5%')
+      .width("30%")
       .border({ width: 3, color: Color.Red })
       .key("list")
       .onDigitalCrown((event: CrownEvent) => {
@@ -77,32 +79,43 @@ struct ListPage {
       Button('testCrownBTN1', { type: ButtonType.Normal, stateEffect: true })
         .borderRadius(8)
         .backgroundColor(0x317aff)
-        .width(120)
+        .width("30%")
         .key('button1')
+        .fontSize(10)
+        .height('2%')
         .onDigitalCrown((event: CrownEvent) => {
           console.info('buttonDigitalCrown: event: ' + event)
         })
+
       Button('testCrownBTN2', { type: ButtonType.Normal, stateEffect: true })
         .borderRadius(8)
         .backgroundColor(0x317aff)
-        .width(120)
+        .width("30%")
+        .height('2%')
         .key('button2')
+        .fontSize(10)
         .onDigitalCrown((undefined) => {
           console.info('buttonDigitalCrown: undefined')
         })
       Text(this.textCrown01)
-        .fontSize(12)
+        .fontSize(10)
         .margin(5)
         .key('text01')
+        .height('1%')
+        .borderWidth(1).borderColor(0xAFEEEE)
         .onDigitalCrown((event: CrownEvent) => {
           console.info('textCrown: event: ' + event)
         })
       Text(this.textCrown02)
-        .fontSize(12).margin(5)
+        .height('1%')
+        .fontSize(10).margin(5)
         .key('text02')
+        .borderWidth(1).borderColor(0xAFEEEE)
         .onDigitalCrown((undefined) => {
           console.info('textCrown: undefined')
         })
-    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
+    }
+    .width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
+    .justifyContent(FlexAlign.Center)
   }
 }

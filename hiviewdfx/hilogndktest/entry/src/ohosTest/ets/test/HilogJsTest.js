@@ -756,6 +756,27 @@ describe('HilogJsTest', function () {
         console.info('testHilogJsApi47 end');
     })
 
+    it('testHilogJsApi48', 2, function () {
+        console.info('testHilogJsApi48 start');
+        const res = hilogndk.ohPrintMsgTest();
+        expect(res).assertEqual(true);
+        console.info('testHilogJsApi48 end');
+    })
+    
+    it('testHilogJsApi49', 2, function () {
+        console.info('testHilogJsApi49 start');
+        const res = hilogndk.ohPrintMsgByLenTest();
+        expect(res).assertEqual(true);
+        console.info('testHilogJsApi49 end');
+    })
+	
+    it('testHilogJsApi50', 2, function () {
+        console.info('testHilogJsApi50 start');
+        const res = hilogndk.ohVPrintTest();
+        expect(res).assertEqual(true);
+        console.info('testHilogJsApi50 end');
+    })
+
     it('SUB_DFX_DFT_DefaultLevel_0100', 0, () => {
       hilog.setMinLogLevel(hilog.LogLevel.INFO);
       let res = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.DEBUG);

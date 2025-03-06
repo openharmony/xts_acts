@@ -16,6 +16,7 @@ group("ActsWebInjectJavascriptTest") {
   if (is_standard_system) {
     deps = [
       "inject_javascript_one:ActsWebInjectJavascriptOneTest",
+      "inject_javascript_three:ActsWebInjectJavacriptThreeTest",
       "inject_javascript_two:ActsWebInjectJavacriptTwoTest",
     ]
   }

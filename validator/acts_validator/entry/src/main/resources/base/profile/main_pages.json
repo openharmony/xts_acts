@@ -11,6 +11,7 @@
     "pages/ArkUI/SwipeGestureTest",
     "pages/ArkUI/TapGesture",
     "pages/ArkUI/TouchMoveTest",
+    "pages/ArkUI/bindSheetTest",
     "pages/ArkUI/CanvasLineWidth",
     "pages/ArkUI/CanvasStrokeStyle",
     "pages/ArkUI/CanvasLineCap",
@@ -28,6 +29,7 @@
     "pages/ArkUI/chipTest",
     "pages/ArkUI/chipGroupTest",
     "pages/ArkUI/DatePickerDialog",
+    "pages/ArkUI/dialogModeTest",
     "pages/ArkUI/Marquee",
     "pages/ArkUI/PatternLockL0_01",
     "pages/ArkUI/PatternLockL0_02",
@@ -51,6 +53,12 @@
     "pages/ArkUI/Refresh",
     "pages/ArkUI/AccessBilityHover",
     "pages/ArkUI/NavigationEnableHoverMode",
+    "pages/ArkUI/AccessibilityThirdFramework00",
+    "pages/ArkUI/AccessibilityThirdFramework01",
+    "pages/ArkUI/CapiHandDetect",
+    "pages/ArkUI/GetBarRect",
+    "pages/ArkUI/GameCtrollerCallBackData",
+    "pages/ArkUI/GameCtronllerCTest",
     "pages/Camera/Camera_index",
     "pages/Camera/CameraPreviewFormat",
     "pages/Camera/CameraPhotoFormat",
@@ -125,7 +133,8 @@
     "pages/ArkUI/Pinchhand",
     "pages/ArkUI/Rotate1hand",
     "pages/ArkUI/Swipehand",
-    "pages/ArkUI/Taphand"
+    "pages/ArkUI/Taphand",
+    "pages/ArkUI/HoverMove"
   ]
 }
 

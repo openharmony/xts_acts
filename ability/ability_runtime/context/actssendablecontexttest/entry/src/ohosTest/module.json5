@@ -20,11 +20,7 @@
     "description": "$string:module_test_desc",
     "srcEntry": "./ets/application/AbilityStage.ets",
     "mainElement": "TestAbility",
-    "deviceTypes": [
-      "wearable",
-      "default",
-      "tablet"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:test_pages",

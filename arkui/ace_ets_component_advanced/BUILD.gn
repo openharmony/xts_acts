@@ -16,17 +16,12 @@ import("//foundation/arkui/ace_engine/ace_config.gni")
 group("componentAdvancedTest") {
   testonly = true
   if (is_standard_system) {
-    if (ace_engine_feature_enable_digital_crown) {
-      deps = [ "ace_ets_component_advanced_picker:componentPickerTest" ]
-    } else {
-      deps = [
-        "ace_ets_component_advanced_arcalphabetindexer:componentArcAlphabetIndexerTest",
-        "ace_ets_component_advanced_arcbutton:componentArcButtonTest",
-        "ace_ets_component_advanced_arclist:componentArcListTest",
-        "ace_ets_component_advanced_arcslider:componentArcSliderTest",
-        "ace_ets_component_advanced_chip:componentChipTest",
-        "ace_ets_component_advanced_list:componentListTest",
-      ]
-    }
+    deps = [
+      "ace_ets_component_advanced_arcalphabetindexer:componentArcAlphabetIndexerTest",
+      "ace_ets_component_advanced_arcbutton:componentArcButtonTest",
+      "ace_ets_component_advanced_arclist:componentArcListTest",
+      "ace_ets_component_advanced_arcslider:componentArcSliderTest",
+      "ace_ets_component_advanced_list:componentListTest",
+    ]
   }
 }

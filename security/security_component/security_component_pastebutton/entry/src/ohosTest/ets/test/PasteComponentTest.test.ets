@@ -103,6 +103,8 @@ export default function pasteComponentTest() {
       expect(obj.$attrs.padding.top).assertEqual('4.00vp');
       expect(obj.$attrs.padding.bottom).assertEqual('4.00vp');
       expect(obj.$attrs.textIconSpace).assertEqual('4.00vp');
+      expect(obj.$attrs.align).assertEqual('Alignment.Center');
+      expect(obj.$attrs.id).assertEqual('keyPaste');
       await Utils.sleep(1000);
       try {
         let clickCallback = async (clickData:events_emitter.EventData) => {

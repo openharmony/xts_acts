@@ -16,6 +16,14 @@
 import testndk from 'libentry.so';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import batteryInfo from '@ohos.batteryInfo';
+import collections from '@arkts.collections';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { fileIo as fs} from '@kit.CoreFileKit';
+
+const delegator = AbilityDelegatorRegistry.getAbilityDelegator();
+const context = delegator.getAppContext().getApplicationContext();
+let BASE_PATH: string = context.filesDir;
+let str_line = 'a'.repeat(1024*1024*2);
 
 let TAG = '[testLog-ets]';
 export default function pasteboardTestNdkTest() {
@@ -66,6 +74,30 @@ export default function pasteboardTestNdkTest() {
       let data = testndk.OH_Pasteboard_GetMimeTypes0300();
       console.info(TAG + "OH_Pasteboard_GetMimeTypes0300 data = " + data);
       expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Pasteboard_SDK_NdkApiTest_0400
+     * @tc.name OH_Pasteboard_GetDataWithNoProgress001
+     * @tc.desc OH_Pasteboard_GetDataWithNoProgress test
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Pasteboard_GetDataWithNoProgress001', 0, async (done: Function) => {
+      let fileFullName = BASE_PATH +'/dstFile.txt';
+      let dirPath = BASE_PATH+"/haps";
+      fs.mkdirSync(dirPath)
+      console.info(TAG + "fileFullName fileFullName = " + fileFullName);
+      console.info(TAG + "fileFullName fileFullName = " + dirPath);
+      let file = fs.openSync(fileFullName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      let writeLen = fs.writeSync(file.fd,"write strings to " + str_line +"\n");
+      fs.closeSync(file);
+      let data = testndk.OH_Pasteboard_GetDataWithNoProgress001();
+      console.info(TAG + "OH_Pasteboard_GetDataWithNoProgress001 data = " + data );
+      fs.rmdirSync(dirPath);
+      expect(data).assertEqual(0);
       done();
     });
 
