@@ -58,6 +58,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/customization:customization",
   "${ACTS_ROOT}/pcs:pcs",
   "${ACTS_ROOT}/appbuild:appbuild",
+  "${ACTS_ROOT}/window:window",
 ]
 
 _all_test_packages_ivi = [
