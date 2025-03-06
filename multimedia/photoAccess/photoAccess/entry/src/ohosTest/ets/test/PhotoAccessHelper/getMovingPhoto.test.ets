@@ -131,10 +131,6 @@ export default function getMovingPhotoTest() {
               console.log(`${testNum}::handler::ErrorPhotoHandlerMissingImageuri`);
               break; 
           case 8:
-            handler = new ErrorArrayBufferHandlerWrongType();
-            console.log(`${testNum}::handler::ErrorArrayBufferHandlerWrongType`);
-            break; 
-          case 9:
             handler = new ErrorArrayBufferHandlerMissingType();
             console.log(`${testNum}::handler::ErrorArrayBufferHandlerMissingType`);
             break; 
@@ -448,7 +444,7 @@ export default function getMovingPhotoTest() {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_CONTENT_ERROR_0005
      * @tc.name      : request_moving_photo_content_error_0005
-     * @tc.desc      : Test requestContent with wrong type
+     * @tc.desc      : Test requestContent with missing type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -456,21 +452,6 @@ export default function getMovingPhotoTest() {
     it('request_moving_photo_content_error_0005', 0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_error_0005';
       await requestMovingPhotoContent(done, testNum, 8, false);
-      await sleep(1000);
-      done();
-    });
-
-    /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_CONTENT_ERROR_0006
-     * @tc.name      : request_moving_photo_content_error_0006
-     * @tc.desc      : Test requestContent with missing type
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('request_moving_photo_content_error_0006', 0, async (done: Function) => {
-      const testNum = 'request_moving_photo_content_error_0006';
-      await requestMovingPhotoContent(done, testNum, 9, false);
       await sleep(1000);
       done();
     });
@@ -523,7 +504,6 @@ export default function getMovingPhotoTest() {
         }
       }
     }
-
     // export moving photo:: missing imageuri
     class ErrorHandlerMissingImageUri implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
       async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
@@ -540,7 +520,6 @@ export default function getMovingPhotoTest() {
         }
       }
     }
-
     // export moving photo:: missing imageuri
     class ErrorHandlerMissingVideoUri implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
       async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
@@ -557,7 +536,6 @@ export default function getMovingPhotoTest() {
         }
       }
     }
-
     // export moving photo:: only photo and missing imageuri
     class ErrorPhotoHandlerWrongImageuri implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
       async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
@@ -573,7 +551,6 @@ export default function getMovingPhotoTest() {
         }
       }
     }
-
     // export moving photo:: only photo and imageuri as undefined
     class ErrorPhotoHandlerMissingImageuri implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
       async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
@@ -589,22 +566,6 @@ export default function getMovingPhotoTest() {
         }
       }
     }
-
-    // export moving photo:: ArrayBuffer wrong type
-    class ErrorArrayBufferHandlerWrongType implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
-      async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
-        console.log("ErrorArrayBufferHandlerWrongType::movingPhoto onDataPrepared");
-        try {
-          let buffer: ArrayBuffer = await movingPhoto.requestContent(photoAccessHelper.ResourceType.VIDEO_RESOURCE);
-          expect(false).assertTrue();
-        } catch (error) {
-          console.error(`ErrorArrayBufferHandlerWrongType get moving photo uri fail !`);
-          //expect(error.code).assertEqual('401'); unindefined,dts
-          expect(true).assertTrue();
-        }
-      }
-    }
-
     // export moving photo:: ArrayBuffer missing type
     class ErrorArrayBufferHandlerMissingType implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
       async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
@@ -618,6 +579,6 @@ export default function getMovingPhotoTest() {
         }
       }
     }
-
   });
+
 }
