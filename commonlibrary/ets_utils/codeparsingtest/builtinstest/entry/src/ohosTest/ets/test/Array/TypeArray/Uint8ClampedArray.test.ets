@@ -1662,5 +1662,1268 @@ export default function Uint8ClampedArrayTest() {
       }
     });
 
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_BYTELENGTH_8100
+     * @tc.name       : testUint8ClampedArrayByteLength0081
+     * @tc.desc       : Testing instance property byteLength of Uint8ClampedArray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayByteLength0081', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayByteLength0081";
+      try {
+        const buffer = new ArrayBuffer(32);
+        const arrayOffSet0 = new Uint8ClampedArray(buffer);
+        expect(arrayOffSet0.byteLength).assertEqual(32);
+        const arrayOffSet8 = new Uint8ClampedArray(buffer, 8);
+        expect(arrayOffSet8.byteLength).assertEqual(24);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_BUFFER_8200
+     * @tc.name       : testUint8ClampedArrayBuffer0082
+     * @tc.desc       : Testing instance property buffer of Uint8ClampedArray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayBuffer0082', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayBuffer0082";
+      try {
+        const buffer = new ArrayBuffer(32);
+        const arrayOffSet0 = new Uint8ClampedArray(buffer);
+        expect(arrayOffSet0.buffer.byteLength).assertEqual(32);
+        const arrayOffSet8 = new Uint8ClampedArray(buffer, 8);
+        expect(arrayOffSet8.buffer.byteLength).assertEqual(32);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_LENGTH_8300
+     * @tc.name       : testUint8ClampedArrayLength0083
+     * @tc.desc       : Testing instance function length of Uint8ClampedArray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayLength0083', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayLength0083";
+      try {
+        const buffer = new ArrayBuffer(32);
+        const arrayOffSet0 = new Uint8ClampedArray(buffer);
+        expect(arrayOffSet0.length).assertEqual(32);
+        const arrayOffSet8 = new Uint8ClampedArray(buffer, 8);
+        expect(arrayOffSet8.length).assertEqual(24);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_8400
+     * @tc.name       : testUint8ClampedArrayConstructor0084
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with string param.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0084', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0084";
+      try {
+        const array = Constants.uint8ClampedConstructTestArray1;
+        expect(array.toString()).assertEqual('');
+        const array2 = Constants.uint8ClampedConstructTestArray2;
+        expect(array2[1]).assertEqual(0);
+        expect(array2.length).assertEqual(56);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_8500
+     * @tc.name       : testUint8ClampedArrayConstructor0085
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int8Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0085', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0085";
+      try {
+        const array = new Int8Array([21, 31])
+        let uint8ClampedArray = new Uint8ClampedArray(array);
+        expect(uint8ClampedArray[0]).assertEqual(21);
+        expect(uint8ClampedArray[1]).assertEqual(31);
+        expect(uint8ClampedArray[3]).assertEqual(undefined);
+        uint8ClampedArray[10] = 3;
+        expect(uint8ClampedArray[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_8600
+     * @tc.name       : testUint8ClampedArrayConstructor0086
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint8ClampedArray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0086', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0086";
+      try {
+        const array = new Uint8ClampedArray([21, 31])
+        let uint8ClampedArray = new Uint8ClampedArray(array);
+        expect(uint8ClampedArray[0]).assertEqual(21);
+        expect(uint8ClampedArray[1]).assertEqual(31);
+        expect(uint8ClampedArray[3]).assertEqual(undefined);
+        uint8ClampedArray[10] = 3;
+        expect(uint8ClampedArray[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_8700
+     * @tc.name       : testUint8ClampedArrayConstructor0087
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint8ClampedArray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0087', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0087";
+      try {
+        const array = new Uint8ClampedArray([21, 31])
+        let uint8ClampedArray = new Uint8ClampedArray(array);
+        expect(uint8ClampedArray[0]).assertEqual(21);
+        expect(uint8ClampedArray[1]).assertEqual(31);
+        expect(uint8ClampedArray[3]).assertEqual(undefined);
+        uint8ClampedArray[10] = 3;
+        expect(uint8ClampedArray[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_8800
+     * @tc.name       : testUint8ClampedArrayConstructor0088
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int16Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0088', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0088";
+      try {
+        const array = new Int16Array([21, 31])
+        let uint8ClampedArray = new Uint8ClampedArray(array);
+        expect(uint8ClampedArray[0]).assertEqual(21);
+        expect(uint8ClampedArray[1]).assertEqual(31);
+        expect(uint8ClampedArray[3]).assertEqual(undefined);
+        uint8ClampedArray[10] = 3;
+        expect(uint8ClampedArray[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_8900
+     * @tc.name       : testUint8ClampedArrayConstructor0089
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint16Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0089', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0089";
+      try {
+        const array = new Uint16Array([21, 31])
+        let uint8ClampedArray = new Uint8ClampedArray(array);
+        expect(uint8ClampedArray[0]).assertEqual(21);
+        expect(uint8ClampedArray[1]).assertEqual(31);
+        expect(uint8ClampedArray[3]).assertEqual(undefined);
+        uint8ClampedArray[10] = 3;
+        expect(uint8ClampedArray[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_9000
+     * @tc.name       : testUint8ClampedArrayConstructor0090
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0090";
+      try {
+        const array = new Int32Array([21, 31])
+        let uint8ClampedArray = new Uint8ClampedArray(array);
+        expect(uint8ClampedArray[0]).assertEqual(21);
+        expect(uint8ClampedArray[1]).assertEqual(31);
+        expect(uint8ClampedArray[3]).assertEqual(undefined);
+        uint8ClampedArray[10] = 3;
+        expect(uint8ClampedArray[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_9100
+     * @tc.name       : testUint8ClampedArrayConstructor0091
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0091', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0091";
+      try {
+        const array = new Uint32Array([21, 31])
+        let uint8ClampedArray = new Uint8ClampedArray(array);
+        expect(uint8ClampedArray[0]).assertEqual(21);
+        expect(uint8ClampedArray[1]).assertEqual(31);
+        expect(uint8ClampedArray[3]).assertEqual(undefined);
+        uint8ClampedArray[10] = 3;
+        expect(uint8ClampedArray[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_9200
+     * @tc.name       : testUint8ClampedArrayConstructor0092
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with BigInt64Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0092', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0092";
+      try {
+        const array = new BigInt64Array([21n, 31n]);
+        new Uint8ClampedArray(array);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect(err.name).assertEqual('TypeError');
+        expect(err.message).assertContain('srcArrayContentType is not equal objContentType.');
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_9300
+     * @tc.name       : testUint8ClampedArrayConstructor0093
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with BigUint64Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0093', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0093";
+      try {
+        const array = new BigUint64Array([21n, 31n]);
+        new Uint8ClampedArray(array);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect(err.name).assertEqual('TypeError');
+        expect(err.message).assertContain('srcArrayContentType is not equal objContentType.');
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_9400
+     * @tc.name       : testUint8ClampedArrayConstructor0094
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0094', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0094";
+      try {
+        const array = new Float32Array([21, 31]);
+        let uint8ClampedArray = new Uint8ClampedArray(array);
+        expect(uint8ClampedArray[0]).assertEqual(21);
+        expect(uint8ClampedArray[1]).assertEqual(31);
+        expect(uint8ClampedArray[3]).assertEqual(undefined);
+        uint8ClampedArray[10] = 3;
+        expect(uint8ClampedArray[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_length_9500
+     * @tc.name       : testUint8ClampedArrayLength0095
+     * @tc.desc       : Testing instance function length of Uint8ClampedArray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayLength0095', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayLength0095";
+      try {
+        let uint8ClampedArray = new Uint8ClampedArray(8);
+        expect(uint8ClampedArray.length).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_FROM_9600
+     * @tc.name       : testUint8ClampedArrayFrom0096
+     * @tc.desc       : Testing static function from of Uint8ClampedArray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayFrom0096', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayFrom0096";
+      try {
+        expect(Constants.uint8ClampedConstructTestArray3[0]).assertEqual(0);
+        expect(Constants.uint8ClampedConstructTestArray3[1]).assertEqual(0);
+        expect(Constants.uint8ClampedConstructTestArray3[2]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_9700
+     * @tc.name       : testUint8ClampedArrayConstructor0097
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0097', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0097";
+      try {
+        let array: Array<number> = new Array<number>(2);
+        let uint8ClampedArray = new Uint8ClampedArray(array);
+        uint8ClampedArray[0] = 21;
+        uint8ClampedArray[1] = 31;
+        expect(uint8ClampedArray[0]).assertEqual(21);
+        expect(uint8ClampedArray[1]).assertEqual(31);
+        expect(uint8ClampedArray[3]).assertEqual(undefined);
+        uint8ClampedArray[10] = 3;
+        expect(uint8ClampedArray[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_9800
+     * @tc.name       : testUint8ClampedArrayConstructor0098
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0098', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0098";
+      try {
+        let array: Array<number> = new Array<number>(2);
+        let uint8ClampedArray = new Uint8ClampedArray(array);
+        uint8ClampedArray[0] = 21;
+        uint8ClampedArray[1] = 31;
+        expect(uint8ClampedArray[0]).assertEqual(21);
+        expect(uint8ClampedArray[1]).assertEqual(31);
+        expect(uint8ClampedArray[3]).assertEqual(undefined);
+        uint8ClampedArray[10] = 3;
+        expect(uint8ClampedArray[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_9900
+     * @tc.name       : testUint8ClampedArrayConstructor0099
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with ArrayBuffer.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0099', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0099";
+      try {
+        let arrayBuffer = new ArrayBuffer(16);
+        let uint8ClampedArray = new Uint8ClampedArray(arrayBuffer);
+        uint8ClampedArray[0] = 21;
+        uint8ClampedArray[1] = 31;
+        expect(uint8ClampedArray[0]).assertEqual(21);
+        expect(uint8ClampedArray[1]).assertEqual(31);
+        expect(uint8ClampedArray[3]).assertEqual(0);
+        uint8ClampedArray[10] = 3;
+        expect(uint8ClampedArray[10]).assertEqual(3);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_10000
+     * @tc.name       : testUint8ClampedArrayConstructor0100
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with ArrayBuffer.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0100";
+      try {
+        let arrayBuffer = new ArrayBuffer(16);
+        let uint8ClampedArray = new Uint8ClampedArray(arrayBuffer, 0, 2);
+        uint8ClampedArray[0] = 21;
+        uint8ClampedArray[1] = 31;
+        expect(uint8ClampedArray[0]).assertEqual(21);
+        expect(uint8ClampedArray[1]).assertEqual(31);
+        expect(uint8ClampedArray[3]).assertEqual(undefined);
+        uint8ClampedArray[10] = 3;
+        expect(uint8ClampedArray[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_FROM_10100
+     * @tc.name       : testUint8ClampedArrayFrom0101
+     * @tc.desc       : Testing static function from of Uint8ClampedArray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayFrom0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayFrom0101";
+      try {
+        expect(Constants.uint8ClampedConstructTestArray4[0]).assertEqual(0);
+        expect(Constants.uint8ClampedConstructTestArray4[1]).assertEqual(0);
+        expect(Constants.uint8ClampedConstructTestArray4[2]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_FROM_10200
+     * @tc.name       : testUint8ClampedArrayFrom0102
+     * @tc.desc       : Testing static function from of Uint8ClampedArray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayFrom0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayFrom0102";
+      try {
+        expect(Constants.uint8ClampedConstructTestArray5[0]).assertEqual(0);
+        expect(Constants.uint8ClampedConstructTestArray5[1]).assertEqual(0);
+        expect(Constants.uint8ClampedConstructTestArray5[2]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_FROM_10300
+     * @tc.name       : testUint8ClampedArrayFrom0103
+     * @tc.desc       : Testing static function from of Uint8ClampedArray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayFrom0103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayFrom0103";
+      try {
+        expect(Constants.uint8ClampedFromTestArray[0]).assertEqual(0);
+        expect(Constants.uint8ClampedFromTestArray[1]).assertEqual(1);
+        expect(Constants.uint8ClampedFromTestArray[2]).assertEqual(2);
+        expect(Constants.uint8ClampedFromTestArray[3]).assertEqual(3);
+        expect(Constants.uint8ClampedFromTestArray[4]).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_OF_10400
+     * @tc.name       : testUint8ClampedArrayOf0104
+     * @tc.desc       : Testing static function of of Uint8ClampedArray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayOf0104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayOf0104";
+      try {
+        expect(Constants.uint8ClampedOfTestUndefined.toString()).assertEqual('0');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_OF_10500
+     * @tc.name       : testUint8ClampedArrayOf0105
+     * @tc.desc       : Testing static function of of Uint8ClampedArray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayOf0105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayOf0105";
+      try {
+        expect(Constants.uint8ClampedOfTestStr.toString()).assertEqual('0');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_OF_10600
+     * @tc.name       : testUint8ClampedArrayOf0106
+     * @tc.desc       : Testing static function of of Uint8ClampedArray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayOf0106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayOf0106";
+      try {
+        expect(Constants.uint8ClampedOfTestNumber1.toString()).assertEqual('123');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_OF_10700
+     * @tc.name       : testUint8ClampedArrayOf0107
+     * @tc.desc       : Testing static function of of Uint8ClampedArray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayOf0107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayOf0107";
+      try {
+        expect(Constants.uint8ClampedOfTestNumber2[0]).assertEqual(1);
+        expect(Constants.uint8ClampedOfTestNumber2[2]).assertEqual(3);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_FROM_10800
+     * @tc.name       : testUint8ClampedArrayFrom0108
+     * @tc.desc       : Testing static function from range length step + 1 => of Uint8Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayFrom0108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayFrom0108";
+      try {
+        expect(Constants.uint8ClampedArrayNumber[0]).assertEqual(0);
+        expect(Constants.uint8ClampedArrayNumber[1]).assertEqual(1);
+        expect(Constants.uint8ClampedArrayNumber[2]).assertEqual(2);
+        expect(Constants.uint8ClampedArrayNumber[3]).assertEqual(3);
+        expect(Constants.uint8ClampedArrayNumber[4]).assertEqual(4);
+        expect(Constants.uint8ClampedArrayNumber[5]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_FROM_10900
+     * @tc.name       : testUint8ClampedArrayFrom0109
+     * @tc.desc       : Testing static function from range length 'A~Z' => of Uint8Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayFrom0109', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayFrom0109";
+      try {
+        expect(Constants.uint8ClampedArrayCharacter[0]).assertEqual(65);
+        expect(Constants.uint8ClampedArrayCharacter[1]).assertEqual(66);
+        expect(Constants.uint8ClampedArrayCharacter[2]).assertEqual(67);
+        expect(Constants.uint8ClampedArrayCharacter[25]).assertEqual(90);
+        expect(Constants.uint8ClampedArrayCharacter[26]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_11000
+     * @tc.name       : testUint8ClampedArrayConstructor0110
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with threshold value([0]),and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0110";
+      try {
+        let array = new Uint8ClampedArray([0]);
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_11100
+     * @tc.name       : testUint8ClampedArrayConstructor0111
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with out of bounds value([-1]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0111', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0111";
+      try {
+        let array = new Uint8ClampedArray([-1]);
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_11200
+     * @tc.name       : testUint8ClampedArrayConstructor0112
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with threshold value([255]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0112', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0112";
+      try {
+        let array = new Uint8ClampedArray([255]);
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_11300
+     * @tc.name       : testUint8ClampedArrayConstructor0113
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with out of bounds value([256]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0113', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0113";
+      try {
+        let array = new Uint8ClampedArray([256]);
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_11400
+     * @tc.name       : testUint8ClampedArrayConstructor0114
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int8Array threshold value([-128]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0114', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0114";
+      try {
+        let array = new Uint8ClampedArray(new Int8Array([-128]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_11500
+     * @tc.name       : testUint8ClampedArrayConstructor0115
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int8Array out of bounds value([-129]),
+     * and get value of index 0 is 127.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0115', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0115";
+      try {
+        let array = new Uint8ClampedArray(new Int8Array([-129]));
+        expect(array[0]).assertEqual(127);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_11600
+     * @tc.name       : testUint8ClampedArrayConstructor0116
+     * @tc.desc       : Testing Constructor of Uint8Array with Int8Array threshold value([127]),
+     * and get value of index 0 is 127.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0116', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0116";
+      try {
+        let array = new Uint8ClampedArray(new Int8Array([127]));
+        expect(array[0]).assertEqual(127);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_11700
+     * @tc.name       : testUint8ClampedArrayConstructor0117
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int8Array value([126]),
+     * and get value of index 0 is 126.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0117', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0117";
+      try {
+        let array = new Uint8ClampedArray(new Uint8Array([126]));
+        expect(array[0]).assertEqual(126);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_11800
+     * @tc.name       : testUint8ClampedArrayConstructor0118
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int8Array out of bounds value([128]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0118', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0118";
+      try {
+        let array = new Uint8ClampedArray(new Int8Array([128]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_11900
+     * @tc.name       : testUint8ClampedArrayConstructor0119
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint8Array threshold value([0]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0119', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0119";
+      try {
+        let array = new Uint8ClampedArray(new Uint8Array([0]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_12000
+     * @tc.name       : testUint8ClampedArrayConstructor0120
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint8Array out of bounds value([-1]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0120";
+      try {
+        let array = new Uint8ClampedArray(new Uint8Array([-1]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_12100
+     * @tc.name       : testUint8ClampedArrayConstructor0121
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint8Array threshold value([255]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0121', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0121";
+      try {
+        let array = new Uint8ClampedArray(new Uint8Array([255]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_12200
+     * @tc.name       : testUint8ClampedArrayConstructor0122
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint8Array out of bounds value([256]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0122', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0122";
+      try {
+        let array = new Uint8ClampedArray(new Uint8Array([256]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_12300
+     * @tc.name       : testUint8ClampedArrayConstructor0123
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint8Array value([254]),
+     * and get value of index 0 is 254.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0123', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0123";
+      try {
+        let array = new Uint8ClampedArray(new Uint8Array([254]));
+        expect(array[0]).assertEqual(254);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_12400
+     * @tc.name       : testUint8ClampedArrayConstructor0124
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int16Array threshold value([-32768]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0124', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0124";
+      try {
+        let array = new Uint8ClampedArray(new Int16Array([-32768]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_12500
+     * @tc.name       : testUint8ClampedArrayConstructor0125
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int16Array out of bounds value([-32769]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0125', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0125";
+      try {
+        let array = new Uint8ClampedArray(new Int16Array([-32769]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_12600
+     * @tc.name       : testUint8ClampedArrayConstructor0126
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int16Array threshold value([32767]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0126', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0126";
+      try {
+        let array = new Uint8ClampedArray(new Int16Array([32767]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_12700
+     * @tc.name       : testUint8ClampedArrayConstructor0127
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int16Array out of bounds value([32768]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0127', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0127";
+      try {
+        let array = new Uint8ClampedArray(new Int16Array([32768]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_12800
+     * @tc.name       : testUint8ClampedArrayConstructor0128
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int16Array value([32766]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0128', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0128";
+      try {
+        let array = new Uint8ClampedArray(new Int16Array([32766]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_12900
+     * @tc.name       : testUint8ClampedArrayConstructor0129
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint16Array threshold value([0]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0129', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0129";
+      try {
+        let array = new Uint8ClampedArray(new Uint16Array([0]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_13000
+     * @tc.name       : testUint8ClampedArrayConstructor0130
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint16Array out of bounds value([-1]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0130";
+      try {
+        let array = new Uint8ClampedArray(new Uint16Array([-1]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_13100
+     * @tc.name       : testUint8ClampedArrayConstructor0131
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint16Array threshold value([65535]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0131', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0131";
+      try {
+        let array = new Uint8ClampedArray(new Uint16Array([65535]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_13200
+     * @tc.name       : testUint8ClampedArrayConstructor0132
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint16Array out of bounds value([65536]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0132', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0132";
+      try {
+        let array = new Uint8ClampedArray(new Uint16Array([65536]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_13300
+     * @tc.name       : testUint8ClampedArrayConstructor0133
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint16Array value([65534]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0133', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0133";
+      try {
+        let array = new Uint8ClampedArray(new Uint16Array([65534]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_13400
+     * @tc.name       : testUint8ClampedArrayConstructor0134
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int32Array threshold value([-2147483648]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0134', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0134";
+      try {
+        let array = new Uint8ClampedArray(new Int32Array([-2147483648]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_13500
+     * @tc.name       : testUint8ClampedArrayConstructor0135
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int32Array out of bounds value([-2147483649]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0135', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0135";
+      try {
+        let array = new Uint8ClampedArray(new Int32Array([-2147483649]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_13600
+     * @tc.name       : testUint8ClampedArrayConstructor0136
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int32Array threshold value([2147483647]),
+     * and get value of index 0 is -1.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0136', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0136";
+      try {
+        let array = new Uint8ClampedArray(new Int32Array([2147483647]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_13700
+     * @tc.name       : testUint8ClampedArrayConstructor0137
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int32Array out of bounds value([2147483648]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0137', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0137";
+      try {
+        let array = new Uint8ClampedArray(new Int32Array([2147483648]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_13800
+     * @tc.name       : testUint8ClampedArrayConstructor0138
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Int32Array value([2147483646]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0138', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0138";
+      try {
+        let array = new Uint8ClampedArray(new Int32Array([2147483646]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_13900
+     * @tc.name       : testUint8ClampedArrayConstructor0139
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint32Array threshold value([0]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0139', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0139";
+      try {
+        let array = new Uint8ClampedArray(new Uint32Array([0]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UINT8_CLAMPED_ARRAY_CONSTRUCTOR_14000
+     * @tc.name       : testUint8ClampedArrayConstructor0140
+     * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint32Array out of bounds value([-1]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUint8ClampedArrayConstructor0140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testUint8ClampedArrayConstructor0140";
+      try {
+        let array = new Uint8ClampedArray(new Uint32Array([-1]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
   })
 }
