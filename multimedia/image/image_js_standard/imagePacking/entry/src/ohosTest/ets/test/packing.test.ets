@@ -380,7 +380,7 @@ export default function imagePacking() {
         done();
         return;
       }
-      globalPacker.packToData(pixelMapList, packingOptions).then(async (data: ESObject) => {
+      globalPacker.packToDataFromPixelmapSequence(pixelMapList, packingOptions).then(async (data: ESObject) => {
         try {
           console.log(`${testNum} testPackingForSequencePromise success`);
           await checkPackingForSequenceResult(data, pictureSize, packingOptions);
@@ -406,7 +406,7 @@ export default function imagePacking() {
         done();
         return;
       }
-      globalPacker.packToData(pixelMapList, packingOptions).then(async (data: ESObject) => {
+      globalPacker.packToDataFromPixelmapSequence(pixelMapList, packingOptions).then(async (data: ESObject) => {
         console.log(`${testNum} testPackingForSequencePromiseError success`);
         expect(false).assertTrue();
         done();
