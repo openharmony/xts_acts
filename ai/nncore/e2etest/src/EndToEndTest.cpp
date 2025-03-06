@@ -16,8 +16,8 @@
 #include <vector>
 #include <gtest/gtest.h>
 
-#include "interfaces/kits/c/neural_network_runtime/neural_network_runtime.h"
-#include "common/log.h"
+#include "neural_network_runtime/neural_network_runtime.h"
+#include "log.h"
 #include "nncore_utils.h"
 
 using namespace testing::ext;
