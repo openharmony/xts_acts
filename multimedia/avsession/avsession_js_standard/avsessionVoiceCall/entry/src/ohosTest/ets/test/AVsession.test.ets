@@ -670,7 +670,7 @@ export default function abilityTest() {
     })
 
     /* *
-     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_TAGGLEFAVORITE_3400
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_TOGGLEFAVORITE_3400
      * @tc.name      : on(taggleFavorite) with avsession does not exit(errcode 6600102)
      * @tc.desc      : test on(taggleFavorite) errcode 6600102
      * @tc.size      : MediumTest
@@ -678,16 +678,16 @@ export default function abilityTest() {
      * @tc.level     : Level2
      */
 
-    it('SUB_MULTIMEDIA_AVSESSION_ON_TAGGLEFAVORITE_3400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_TOGGLEFAVORITE_3400', 2, async (done: Function) => {
       await session.destroy()
       await sleep(500)
       try {
-        await session.on('taggleFavorite', () => {
-          console.info('on taggleFavorite entry11');
+        await session.on('toggleFavorite', () => {
+          console.info('on toggleFavorite entry11');
         });
       } catch (err) {
         let error =err as BusinessError;
-        console.info(`on taggleFavorite entry11 error,error code: ${error.code}, message: ${error.message}`);
+        console.info(`on toggleFavorite entry11 error,error code: ${error.code}, message: ${error.message}`);
         expect(err.code).assertEqual(6600102);
       }
       session = null;
@@ -696,21 +696,21 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_TAGGLEFAVORITE_3500
-     * @tc.name      : off(taggleFavorite) with avsession does not exit(errcode 6600102)
-     * @tc.desc      : test off(taggleFavorite) errcode 6600102
+     * @tc.name      : off(toggleFavorite) with avsession does not exit(errcode 6600102)
+     * @tc.desc      : test off(toggleFavorite) errcode 6600102
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level2
      */
 
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_3500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_TOGGLEFAVORITE_3500', 2, async (done: Function) => {
       await session.destroy()
       await sleep(500)
       try {
-        await session.off('taggleFavorite');
+        await session.off('toggleFavorite');
       } catch (err) {
         let error =err as BusinessError;
-        console.info(`off taggleFavorite entry11 error,error code: ${error.code}, message: ${error.message}`);
+        console.info(`off toggleFavorite entry11 error,error code: ${error.code}, message: ${error.message}`);
         expect(err.code).assertEqual(6600102);
       }
       session = null;
