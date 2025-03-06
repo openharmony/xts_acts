@@ -895,54 +895,6 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
       }
     })
 
-    // /**
-    //  * @tc.number     : testSetWindowTopmostPromiseErrCode401_0100
-    //  * @tc.name       : testSetWindowTopmostPromiseErrCode401_0100
-    //  * @tc.desc       : testSetWindowTopmostPromiseErrCode401_0100
-    //  * @tc.size       : MediumTest
-    //  * @tc.type       : Function
-    //  * @tc.level      : Level 3
-    //  */
-    // it('testSetWindowTopmostPromiseErrCode401_0100', 0, async (done: Function) => {
-    //   {
-    //     let caseName = "testSetWindowTopmostPromiseErrCode401_0100";
-    //     let msgStr = 'jsunittest ' + caseName + ' ';
-    //     console.log(msgStr + 'begin.');
-    //
-    //     let windowConfig: ohosWindow.Configuration = {
-    //       name: "testSetWindowTopmostPromiseErrCode401_0100",
-    //       windowType: ohosWindow.WindowType.TYPE_DIALOG,
-    //       ctx: context,
-    //     };
-    //     let win: ohosWindow.Window | undefined = undefined;
-    //     try {
-    //       win = await ohosWindow.createWindow(windowConfig);
-    //       expect(!!win).assertTrue();
-    //     } catch (err) {
-    //       console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-    //       expect().assertFail();
-    //       done()
-    //     }
-    //
-    //     try {
-    //       await win!.setWindowTopmost(null).then(async () => {
-    //         console.info(msgStr + 'Succeeded in calling setWindowTopmost.');
-    //         expect().assertFail();
-    //       }).catch(async (err: BusinessError) => {
-    //         console.error(msgStr + 'Failed to call setWindowTopmost. Cause: ' + JSON.stringify(err));
-    //         expect(err.code).assertEqual(401);
-    //       });
-    //       await win!.destroyWindow()
-    //       done()
-    //     } catch (exception) {
-    //       console.error(msgStr + 'Failed to set the call setWindowTopmost. Cause:' + JSON.stringify(exception));
-    //       await win!.destroyWindow()
-    //       expect(exception.code).assertEqual(401);
-    //       done()
-    //     }
-    //   }
-    // })
-
     /**
      * @tc.number     : testSetWindowFocusablePromiseErrCode401_0100
      * @tc.name       : testSetWindowFocusablePromiseErrCode401_0100

@@ -14,7 +14,5 @@
 import("//build/ohos_var.gni")
 group("window") {
   testonly = true
-  deps = [
-    "windowErrCode:ActsWindowErrCodeTest",
-  ]
+  deps = [ "windowErrCode:ActsWindowErrCodeTest" ]
 }

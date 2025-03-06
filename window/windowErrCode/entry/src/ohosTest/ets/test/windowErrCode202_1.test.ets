@@ -23,157 +23,6 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
   describe('windowErrCode202_1', () => {
     console.log('describe windowErrCode202_1 start!!!')
 
-
-    // /**
-    //  * @tc.number     : testCompleteTransitionErrCode202_0100
-    //  * @tc.name       : testCompleteTransitionErrCode202_0100
-    //  * @tc.desc       : testCompleteTransitionErrCode202_0100
-    //  * @tc.size       : MediumTest
-    //  * @tc.type       : Function
-    //  * @tc.level      : Level 3
-    //  */
-    //  it('testCompleteTransitionErrCode202_0100', 0, async (done: Function) => {{
-    //   let caseName = "testCompleteTransitionErrCode202_0100";
-    //   let msgStr = 'jsunittest ' + caseName + ' ';
-    //   console.log(msgStr + 'begin.');
-    //
-    //   //
-    //   let testcaseResult = true;
-    //   try {
-    //     ohosWindow.TransitionContext.completeTransition(true);
-    //     console.error(msgStr + 'Succeeded in calling completeTransition.');
-    //     testcaseResult = false;
-    //   } catch (e) {
-    //     console.log(msgStr + 'Failed to call completeTransition. Cause:' + JSON.stringify(e));
-    //     testcaseResult = e.code == 202;
-    //   }
-    //   console.log(msgStr + 'end.');
-    //   expect(testcaseResult).assertTrue();
-    //   done();
-    //
-    // }})
-
-    // /**
-    //  * @tc.number     : testAnimationForShownErrCode202_0100
-    //  * @tc.name       : testAnimationForShownErrCode202_0100
-    //  * @tc.desc       : testAnimationForShownErrCode202_0100
-    //  * @tc.size       : MediumTest
-    //  * @tc.type       : Function
-    //  * @tc.level      : Level 3
-    //  */
-    //  it('testAnimationForShownErrCode202_0100', 0, async (done: Function) => {{
-    //   let caseName = "testAnimationForShownErrCode202_0100";
-    //   let msgStr = 'jsunittest ' + caseName + ' ';
-    //   console.log(msgStr + 'begin.');
-    //
-    //   let testcaseResult = true;
-    //   try {
-    //     let controller: ohosWindow.TransitionController = ohosWindow.getTransitionController();
-    //     controller.animationForShown(ohosWindow.TransitionContext);
-    //     console.error(msgStr + 'Succeeded in calling animationForShown.');
-    //     testcaseResult = false;
-    //   } catch (e) {
-    //     console.log(msgStr + 'Failed to call animationForShown. Cause:' + JSON.stringify(e));
-    //     testcaseResult = e.code == 202;
-    //   }
-    //   console.log(msgStr + 'end.');
-    //   expect(testcaseResult).assertTrue();
-    //   done();
-    //
-    //   }})
-
-    // /**
-    //  * @tc.number     : testAnimationForHiddenErrCode202_0100
-    //  * @tc.name       : testAnimationForHiddenErrCode202_0100
-    //  * @tc.desc       : testAnimationForHiddenErrCode202_0100
-    //  * @tc.size       : MediumTest
-    //  * @tc.type       : Function
-    //  * @tc.level      : Level 3
-    //  */
-    //  it('testAnimationForHiddenErrCode202_0100', 0, async (done: Function) => {{
-    //   let caseName = "testAnimationForHiddenErrCode202_0100";
-    //   let msgStr = 'jsunittest ' + caseName + ' ';
-    //   console.log(msgStr + 'begin.');
-    //
-    //   let testcaseResult = true;
-    //   try {
-    //     let controller: ohosWindow.TransitionController = ohosWindow.getTransitionController();
-    //     controller.animationForHidden(ohosWindow.TransitionContext);
-    //     console.error(msgStr + 'Succeeded in calling animationForHidden.');
-    //     testcaseResult = false;
-    //   } catch (e) {
-    //     console.log(msgStr + 'Failed to call animationForHidden. Cause:' + JSON.stringify(e));
-    //     testcaseResult = e.code == 202;
-    //   }
-    //   console.log(msgStr + 'end.');
-    //   expect(testcaseResult).assertTrue();
-    //   done();
-    //
-    //   }})
-
-    // /**
-    //  * @tc.number     : testMinimizeAllCallbackErrCode202_0100
-    //  * @tc.name       : testMinimizeAllCallbackErrCode202_0100
-    //  * @tc.desc       : testMinimizeAllCallbackErrCode202_0100
-    //  * @tc.size       : MediumTest
-    //  * @tc.type       : Function
-    //  * @tc.level      : Level 3
-    //  */
-    // it('testMinimizeAllCallbackErrCode202_0100', 0, async (done: Function) => {
-    //   let caseName = "testMinimizeAllCallbackErrCode202_0100";
-    //   let msgStr = 'jsunittest ' + caseName + ' ';
-    //   console.log(msgStr + 'begin.');
-    //
-    //   try {
-    //     ohosWindow.minimizeAll(1, async (err: BusinessError) => {
-    //       const errCode: number = err.code;
-    //       if (errCode) {
-    //         console.error(msgStr + 'Failed to call minimizeAll. Cause:' + JSON.stringify(err));
-    //         expect(err.code).assertEqual(202);
-    //         done()
-    //         return;
-    //       }
-    //       console.info(msgStr + 'Succeeded in calling minimizeAll.');
-    //       expect().assertFail();
-    //       done();
-    //     });
-    //   } catch (exception) {
-    //     console.error(msgStr + 'Failed to call minimizeAll. Cause:' + JSON.stringify(exception));
-    //     expect(exception.code).assertEqual(202);
-    //     done()
-    //   }
-    // })
-    //
-    // /**
-    //  * @tc.number     : testMinimizeAllPromiseErrCode202_0100
-    //  * @tc.name       : testMinimizeAllPromiseErrCode202_0100
-    //  * @tc.desc       : testMinimizeAllPromiseErrCode202_0100
-    //  * @tc.size       : MediumTest
-    //  * @tc.type       : Function
-    //  * @tc.level      : Level 3
-    //  */
-    // it('testMinimizeAllPromiseErrCode202_0100', 0, async (done: Function) => {
-    //   let caseName = "testMinimizeAllPromiseErrCode202_0100";
-    //   let msgStr = 'jsunittest ' + caseName + ' ';
-    //   console.log(msgStr + 'begin.');
-    //
-    //   try {
-    //     await ohosWindow.minimizeAll(1).then(async () => {
-    //       console.info(msgStr + 'Succeeded in calling minimizeAll.');
-    //       expect().assertFail();
-    //       done()
-    //     }).catch(async (err: BusinessError) => {
-    //       console.error(msgStr + 'Failed to call minimizeAll. Cause: ' + JSON.stringify(err));
-    //       expect(err.code).assertEqual(202);
-    //       done()
-    //     });
-    //   } catch (exception) {
-    //     console.error(msgStr + 'Failed to set the call minimizeAll. Cause:' + JSON.stringify(exception));
-    //     expect(exception.code).assertEqual(202);
-    //     done()
-    //   }
-    // })
-
     /**
      * @tc.number     : testToggleShownStateForAllAppWindowsCallbackErrCode202_0100
      * @tc.name       : testToggleShownStateForAllAppWindowsCallbackErrCode202_0100
@@ -446,66 +295,6 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       }
     })
 
-    // /**
-    //  * @tc.number     : testGetVisibleWindowInfoPromiseErrCode202_0100
-    //  * @tc.name       : testGetVisibleWindowInfoPromiseErrCode202_0100
-    //  * @tc.desc       : testGetVisibleWindowInfoPromiseErrCode202_0100
-    //  * @tc.size       : MediumTest
-    //  * @tc.type       : Function
-    //  * @tc.level      : Level 3
-    //  */
-    // it('testGetVisibleWindowInfoPromiseErrCode202_0100', 0, async (done: Function) => {
-    //   let caseName = "testGetVisibleWindowInfoPromiseErrCode202_0100";
-    //   let msgStr = 'jsunittest ' + caseName + ' ';
-    //   console.log(msgStr + 'begin.');
-    //
-    //   try {
-    //     await ohosWindow.getVisibleWindowInfo().then(async (result: Array<ohosWindow.WindowInfo>) => {
-    //       console.info(msgStr + 'Succeeded in calling getVisibleWindowInfo.');
-    //       expect().assertFail();
-    //       done()
-    //     }).catch(async (err: BusinessError) => {
-    //       console.error(msgStr + 'Failed to call getVisibleWindowInfo. Cause: ' + JSON.stringify(err));
-    //       expect(err.code).assertEqual(202);
-    //       done()
-    //     });
-    //   } catch (exception) {
-    //     console.error(msgStr + 'Failed to set the call getVisibleWindowInfo. Cause:' + JSON.stringify(exception));
-    //     expect(exception.code).assertEqual(202);
-    //     done()
-    //   }
-    // })
-
-    // /**
-    //  * @tc.number     : testGetSnapshotPromiseErrCode202_0100
-    //  * @tc.name       : testGetSnapshotPromiseErrCode202_0100
-    //  * @tc.desc       : testGetSnapshotPromiseErrCode202_0100
-    //  * @tc.size       : MediumTest
-    //  * @tc.type       : Function
-    //  * @tc.level      : Level 3
-    //  */
-    // it('testGetSnapshotPromiseErrCode202_0100', 0, async (done: Function) => {
-    //   let caseName = "testGetSnapshotPromiseErrCode202_0100";
-    //   let msgStr = 'jsunittest ' + caseName + ' ';
-    //   console.log(msgStr + 'begin.');
-    //
-    //   try {
-    //     await ohosWindow.getSnapshot(1).then(async (result: image.PixelMap) => {
-    //       console.info(msgStr + 'Succeeded in calling getSnapshot.');
-    //       expect().assertFail();
-    //       done()
-    //     }).catch(async (err: BusinessError) => {
-    //       console.error(msgStr + 'Failed to call getSnapshot. Cause: ' + JSON.stringify(err));
-    //       expect(err.code).assertEqual(202);
-    //       done()
-    //     });
-    //   } catch (exception) {
-    //     console.error(msgStr + 'Failed to set the call getSnapshot. Cause:' + JSON.stringify(exception));
-    //     expect(exception.code).assertEqual(202);
-    //     done()
-    //   }
-    // })
-
     /**
      * @tc.number     : testOnSystemBarTintChangeErrCode202_0100
      * @tc.name       : testOnSystemBarTintChangeErrCode202_0100
@@ -533,33 +322,6 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       expect(testcaseResult).assertTrue();
       done();
     })
-
-    // /**
-    //  * @tc.number     : testOff_systemBarTintChangeErrCode202_0100
-    //  * @tc.name       : testOff_systemBarTintChangeErrCode202_0100
-    //  * @tc.desc       : testOff_systemBarTintChangeErrCode202_0100
-    //  * @tc.size       : MediumTest
-    //  * @tc.type       : Function
-    //  * @tc.level      : Level 3
-    //  */
-    // it('testOff_systemBarTintChangeErrCode202_0100', 0, async (done: Function) => {
-    //   let caseName = "testOff_systemBarTintChangeErrCode202_0100";
-    //   let msgStr = 'jsunittest ' + caseName + ' ';
-    //   console.log(msgStr + 'begin.');
-    //
-    //   let testcaseResult = true;
-    //   try {
-    //     ohosWindow.off("systemBarTintChange");
-    //     console.error(msgStr + 'Succeeded in calling off systemBarTintChange.');
-    //     testcaseResult = false;
-    //   } catch (e) {
-    //     console.log(msgStr + 'Failed to call off systemBarTintChange. Cause:' + JSON.stringify(e));
-    //     testcaseResult = e.code == 202;
-    //   }
-    //   console.log(msgStr + 'end.');
-    //   expect(testcaseResult).assertTrue();
-    //   done();
-    // })
 
     /**
      * @tc.number     : testOnGestureNavigationEnabledChangeErrCode202_0100
@@ -589,33 +351,6 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       done();
     })
 
-    // /**
-    //  * @tc.number     : testOff_gestureNavigationEnabledChangeErrCode202_0100
-    //  * @tc.name       : testOff_gestureNavigationEnabledChangeErrCode202_0100
-    //  * @tc.desc       : testOff_gestureNavigationEnabledChangeErrCode202_0100
-    //  * @tc.size       : MediumTest
-    //  * @tc.type       : Function
-    //  * @tc.level      : Level 3
-    //  */
-    // it('testOff_gestureNavigationEnabledChangeErrCode202_0100', 0, async (done: Function) => {
-    //   let caseName = "testOff_gestureNavigationEnabledChangeErrCode202_0100";
-    //   let msgStr = 'jsunittest ' + caseName + ' ';
-    //   console.log(msgStr + 'begin.');
-    //
-    //   let testcaseResult = true;
-    //   try {
-    //     ohosWindow.off("gestureNavigationEnabledChange");
-    //     console.error(msgStr + 'Succeeded in calling off gestureNavigationEnabledChange.');
-    //     testcaseResult = false;
-    //   } catch (e) {
-    //     console.log(msgStr + 'Failed to call off gestureNavigationEnabledChange. Cause:' + JSON.stringify(e));
-    //     testcaseResult = e.code == 202;
-    //   }
-    //   console.log(msgStr + 'end.');
-    //   expect(testcaseResult).assertTrue();
-    //   done();
-    // })
-
     /**
      * @tc.number     : testOnWaterMarkFlagChangeErrCode202_0100
      * @tc.name       : testOnWaterMarkFlagChangeErrCode202_0100
@@ -643,33 +378,6 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       expect(testcaseResult).assertTrue();
       done();
     })
-
-    // /**
-    //  * @tc.number     : testOff_waterMarkFlagChangeErrCode202_0100
-    //  * @tc.name       : testOff_waterMarkFlagChangeErrCode202_0100
-    //  * @tc.desc       : testOff_waterMarkFlagChangeErrCode202_0100
-    //  * @tc.size       : MediumTest
-    //  * @tc.type       : Function
-    //  * @tc.level      : Level 3
-    //  */
-    // it('testOff_waterMarkFlagChangeErrCode202_0100', 0, async (done: Function) => {
-    //   let caseName = "testOff_waterMarkFlagChangeErrCode202_0100";
-    //   let msgStr = 'jsunittest ' + caseName + ' ';
-    //   console.log(msgStr + 'begin.');
-    //
-    //   let testcaseResult = true;
-    //   try {
-    //     ohosWindow.off("waterMarkFlagChange");
-    //     console.error(msgStr + 'Succeeded in calling off waterMarkFlagChange.');
-    //     testcaseResult = false;
-    //   } catch (e) {
-    //     console.log(msgStr + 'Failed to call off waterMarkFlagChange. Cause:' + JSON.stringify(e));
-    //     testcaseResult = e.code == 202;
-    //   }
-    //   console.log(msgStr + 'end.');
-    //   expect(testcaseResult).assertTrue();
-    //   done();
-    // })
 
     /**
      * @tc.number     : testHideCallbackErrCode202_0100
@@ -1159,100 +867,6 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       }
     })
 
-    //   /**
-    //    * @tc.number     : testBindDialogTargetPromiseErrCode202_0200
-    //    * @tc.name       : testBindDialogTargetPromiseErrCode202_0200
-    //    * @tc.desc       : testBindDialogTargetPromiseErrCode202_0200
-    //    * @tc.size       : MediumTest
-    //    * @tc.type       : Function
-    //    * @tc.level      : Level 3
-    //    */
-    //    it('testBindDialogTargetPromiseErrCode202_0200', 0, async () => {{
-    //     let caseName = "testBindDialogTargetPromiseErrCode202_0200";
-    //     let msgStr = 'jsunittest ' + caseName + ' ';
-    //     console.log(msgStr + 'begin.');
-    //
-    //     let windowConfig: ohosWindow.Configuration = {
-    //         name: "testBindDialogTargetPromiseErrCode202_0200",
-    //         windowType: ohosWindow.WindowType.TYPE_DIALOG,
-    //         ctx: context,
-    //       };
-    //       let win: ohosWindow.Window | undefined = undefined;
-    //       try {
-    //         win = await ohosWindow.createWindow(windowConfig);
-    //         expect(!!win).assertTrue();
-    //       } catch (err) {
-    //         console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-    //         expect().assertFail();
-    //       }
-    //
-    //       try {
-    //         await win!.bindDialogTarget(dialogRequest.RequestInfo, ()=>{}).then(async () => {
-    //           console.info(msgStr + 'Succeeded in calling bindDialogTarget.');
-    //           expect().assertFail();
-    //         }).catch(async (err: BusinessError) => {
-    //           console.error(msgStr + 'Failed to call bindDialogTarget. Cause: ' + JSON.stringify(err));
-    //           expect(err.code).assertEqual(202);
-    //         });
-    //         await win!.destroyWindow()
-    //       } catch (exception) {
-    //         console.error(msgStr + 'Failed to set the call bindDialogTarget. Cause:' + JSON.stringify(exception));
-    //         await win!.destroyWindow()
-    //         expect(exception.code).assertEqual(202);
-    //       }
-    //     }})
-    //
-    //
-    //   /**
-    //    * @tc.number     : testBindDialogTargetCallbackErrCode202_0200
-    //    * @tc.name       : testBindDialogTargetCallbackErrCode202_0200
-    //    * @tc.desc       : testBindDialogTargetCallbackErrCode202_0200
-    //    * @tc.size       : MediumTest
-    //    * @tc.type       : Function
-    //    * @tc.level      : Level 3
-    //    */
-    //    it('testBindDialogTargetCallbackErrCode202_0200', 0, async (done: Function) => {{
-    //     let caseName = "testBindDialogTargetCallbackErrCode202_0200";
-    //     let msgStr = 'jsunittest ' + caseName + ' ';
-    //     console.log(msgStr + 'begin.');
-    //
-    //      let windowConfig: ohosWindow.Configuration = {
-    //         name: "testBindDialogTargetCallbackErrCode202_0200",
-    //         windowType: ohosWindow.WindowType.TYPE_DIALOG,
-    //         ctx: context,
-    //       };
-    //       let win: ohosWindow.Window | undefined = undefined;
-    //       try {
-    //         win = await ohosWindow.createWindow(windowConfig);
-    //         expect(!!win).assertTrue();
-    //       } catch (err) {
-    //         console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-    //         expect().assertFail();
-    //         done()
-    //       }
-    //
-    //       try {
-    //         win!.bindDialogTarget(dialogRequest.RequestInfo, ()=>{}, async (err: BusinessError) => {
-    //           await win!.destroyWindow()
-    //           const errCode: number = err.code;
-    //           if (errCode) {
-    //             console.error(msgStr + 'Failed to call bindDialogTarget. Cause:' + JSON.stringify(err));
-    //             expect(err.code).assertEqual(202);
-    //             done()
-    //             return;
-    //           }
-    //           console.info(msgStr + 'Succeeded in calling bindDialogTarget.');
-    //           expect().assertFail();
-    //           done();
-    //         });
-    //       } catch (exception) {
-    //         console.error(msgStr + 'Failed to call bindDialogTarget. Cause:' + JSON.stringify(exception));
-    //         await win!.destroyWindow()
-    //         expect(exception.code).assertEqual(202);
-    //         done()
-    //       }
-    //     }})
-
     /**
      * @tc.number     : testSetTopmostPromiseErrCode202_0100
      * @tc.name       : testSetTopmostPromiseErrCode202_0100
@@ -1430,54 +1044,6 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
 
       }
     })
-
-    // /**
-    //  * @tc.number     : testSetHandwritingFlagPromiseErrCode202_0100
-    //  * @tc.name       : testSetHandwritingFlagPromiseErrCode202_0100
-    //  * @tc.desc       : testSetHandwritingFlagPromiseErrCode202_0100
-    //  * @tc.size       : MediumTest
-    //  * @tc.type       : Function
-    //  * @tc.level      : Level 3
-    //  */
-    // it('testSetHandwritingFlagPromiseErrCode202_0100', 0, async (done: Function) => {
-    //   {
-    //     let caseName = "testSetHandwritingFlagPromiseErrCode202_0100";
-    //     let msgStr = 'jsunittest ' + caseName + ' ';
-    //     console.log(msgStr + 'begin.');
-    //
-    //     let windowConfig: ohosWindow.Configuration = {
-    //       name: "testSetHandwritingFlagPromiseErrCode202_0100",
-    //       windowType: ohosWindow.WindowType.TYPE_DIALOG,
-    //       ctx: context,
-    //     };
-    //     let win: ohosWindow.Window | undefined = undefined;
-    //     try {
-    //       win = await ohosWindow.createWindow(windowConfig);
-    //       expect(!!win).assertTrue();
-    //     } catch (err) {
-    //       console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-    //       expect().assertFail();
-    //       done()
-    //     }
-    //
-    //     try {
-    //       await win!.setHandwritingFlag(true).then(async () => {
-    //         console.info(msgStr + 'Succeeded in calling setHandwritingFlag.');
-    //         expect().assertFail();
-    //       }).catch(async (err: BusinessError) => {
-    //         console.error(msgStr + 'Failed to call setHandwritingFlag. Cause: ' + JSON.stringify(err));
-    //         expect(err.code).assertEqual(202);
-    //       });
-    //       await win!.destroyWindow()
-    //       done()
-    //     } catch (exception) {
-    //       console.error(msgStr + 'Failed to set the call setHandwritingFlag. Cause:' + JSON.stringify(exception));
-    //       await win!.destroyWindow()
-    //       expect(exception.code).assertEqual(202);
-    //       done()
-    //     }
-    //   }
-    // })
 
     /**
      * @tc.number     : testSetForbidSplitMoveCallbackErrCode202_0100
