@@ -26,7 +26,7 @@ export default function EmptyTest() {
       * @tc.type  : Function
       * @tc.level : Level 3
       */
-    it('testTheDevicesNotSupportSyscap001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done) => {
+    it('testTheDevicesNotSupportSyscap001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let a = 1;
       let b = 2;
       expect(a+b).assertEqual(3);
