@@ -1465,5 +1465,1472 @@ export default function Float32ArrayTest() {
       }
     });
 
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_OF_7100
+     * @tc.name       : testFloat32ArrayOf0071
+     * @tc.desc       : Testing static function of of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayOf0071', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayOf0071";
+      try {
+        let array = Float32Array.of();
+        expect(array.toString()).assertEqual('');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_OF_7200
+     * @tc.name       : testFloat32ArrayOf0072
+     * @tc.desc       : Testing static function of of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayOf0072', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayOf0072";
+      try {
+        let array = Float32Array.of(0);
+        array[0] = 3;
+        expect(array[0]).assertEqual(3);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_OF_7300
+     * @tc.name       : testFloat32ArrayOf0073
+     * @tc.desc       : Testing static function of of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayOf0073', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayOf0073";
+      try {
+        let array = Float32Array.of(10);
+        array[0] = 3;
+        expect(array[0]).assertEqual(3);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_OF_7400
+     * @tc.name       : testFloat32ArrayOf0074
+     * @tc.desc       : Testing static function of of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayOf0074', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayOf0074";
+      try {
+        let array = Float32Array.of(10);
+        array[10] = 3;
+        expect(array[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_OF_7500
+     * @tc.name       : testFloat32ArrayOf0075
+     * @tc.desc       : Testing static function of of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayOf0075', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayOf0075";
+      try {
+        let array = Float32Array.of(10);
+        expect(array[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_OF_7600
+     * @tc.name       : testFloat32ArrayOf0076
+     * @tc.desc       : Testing static function of of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayOf0076', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayOf0076";
+      try {
+        let array = Float32Array.of(21, 31);
+        expect(array[0]).assertEqual(21);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_OF_7700
+     * @tc.name       : testFloat32ArrayOf0077
+     * @tc.desc       : Testing static function of of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayOf0077', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayOf0077";
+      try {
+        let array = Float32Array.of(21, 31);
+        expect(array[1]).assertEqual(31);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_OF_7800
+     * @tc.name       : testFloat32ArrayOf0078
+     * @tc.desc       : Testing static function of of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayOf0078', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayOf0078";
+      try {
+        let array = Float32Array.of(21, 31);
+        expect(array[3]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_OF_7900
+     * @tc.name       : testFloat32ArrayOf0079
+     * @tc.desc       : Testing static function of of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayOf0079', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayOf0079";
+      try {
+        let array = Float32Array.of(21, 31);
+        array[10] = 3;
+        expect(array[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_BYTEOFFSET_8000
+     * @tc.name       : testFloat32ArrayByteOffset0080
+     * @tc.desc       : Testing instance property byteOffset of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayByteOffset0080', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayByteOffset0080";
+      try {
+        const buffer = new ArrayBuffer(32);
+        const arrayOffSet0 = new Float32Array(buffer);
+        expect(arrayOffSet0.byteOffset).assertEqual(0);
+        const arrayOffSet8 = new Float32Array(buffer, 8);
+        expect(arrayOffSet8.byteOffset).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_BYTELENGTH_8100
+     * @tc.name       : testFloat32ArrayByteLength0081
+     * @tc.desc       : Testing instance property byteLength of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayByteLength0081', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayByteLength0081";
+      try {
+        const buffer = new ArrayBuffer(32);
+        const arrayOffSet0 = new Float32Array(buffer);
+        expect(arrayOffSet0.byteLength).assertEqual(32);
+        const arrayOffSet8 = new Float32Array(buffer, 8);
+        expect(arrayOffSet8.byteLength).assertEqual(24);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_BUFFER_8200
+     * @tc.name       : testFloat32ArrayBuffer0082
+     * @tc.desc       : Testing instance property buffer of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayBuffer0082', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayBuffer0082";
+      try {
+        const buffer = new ArrayBuffer(32);
+        const arrayOffSet0 = new Float32Array(buffer);
+        expect(arrayOffSet0.buffer.byteLength).assertEqual(32);
+        const arrayOffSet8 = new Float32Array(buffer, 8);
+        expect(arrayOffSet8.buffer.byteLength).assertEqual(32);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_LENGTH_8300
+     * @tc.name       : testFloat32ArrayLength0083
+     * @tc.desc       : Testing instance function length of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayLength0083', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayLength0083";
+      try {
+        const buffer = new ArrayBuffer(32);
+        const arrayOffSet0 = new Float32Array(buffer);
+        expect(arrayOffSet0.length).assertEqual(8);
+        const arrayOffSet8 = new Float32Array(buffer, 8);
+        expect(arrayOffSet8.length).assertEqual(6);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_8400
+     * @tc.name       : testFloat32ArrayConstructor0084
+     * @tc.desc       : Testing Constructor of Float32Array with string param.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayConstructor0084', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayConstructor0084";
+      try {
+        const array = Constants.float32ConstructTestArray1;
+        expect(array.toString()).assertEqual('');
+        const array2 = Constants.float32ConstructTestArray2;
+        expect(array2[1]).assertEqual(0);
+        expect(array2.length).assertEqual(56);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_8500
+     * @tc.name       : testFloat32ArrayConstructor0085
+     * @tc.desc       : Testing Constructor of Float32Array with Int8Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayConstructor0085', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayConstructor0085";
+      try {
+        const array = new Int8Array([21, 31])
+        let float32Array = new Float32Array(array);
+        expect(float32Array[0]).assertEqual(21);
+        expect(float32Array[1]).assertEqual(31);
+        expect(float32Array[3]).assertEqual(undefined);
+        float32Array[10] = 3;
+        expect(float32Array[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_8600
+     * @tc.name       : testFloat32ArrayConstructor0086
+     * @tc.desc       : Testing Constructor of Float32Array with Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayConstructor0086', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayConstructor0086";
+      try {
+        const array = new Float32Array([21, 31])
+        let float32Array = new Float32Array(array);
+        expect(float32Array[0]).assertEqual(21);
+        expect(float32Array[1]).assertEqual(31);
+        expect(float32Array[3]).assertEqual(undefined);
+        float32Array[10] = 3;
+        expect(float32Array[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_8700
+     * @tc.name       : testFloat32ArrayConstructor0087
+     * @tc.desc       : Testing Constructor of Float32Array with Uint8ClampedArray.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayConstructor0087', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayConstructor0087";
+      try {
+        const array = new Uint8ClampedArray([21, 31])
+        let float32Array = new Float32Array(array);
+        expect(float32Array[0]).assertEqual(21);
+        expect(float32Array[1]).assertEqual(31);
+        expect(float32Array[3]).assertEqual(undefined);
+        float32Array[10] = 3;
+        expect(float32Array[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_8800
+     * @tc.name       : testFloat32ArrayConstructor0088
+     * @tc.desc       : Testing Constructor of Float32Array with Int16Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayConstructor0088', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayConstructor0088";
+      try {
+        const array = new Int16Array([21, 31])
+        let float32Array = new Float32Array(array);
+        expect(float32Array[0]).assertEqual(21);
+        expect(float32Array[1]).assertEqual(31);
+        expect(float32Array[3]).assertEqual(undefined);
+        float32Array[10] = 3;
+        expect(float32Array[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_8900
+     * @tc.name       : testFloat32ArrayConstructor0089
+     * @tc.desc       : Testing Constructor of Float32Array with Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayConstructor0089', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayConstructor0089";
+      try {
+        const array = new Float32Array([21, 31])
+        let float32Array = new Float32Array(array);
+        expect(float32Array[0]).assertEqual(21);
+        expect(float32Array[1]).assertEqual(31);
+        expect(float32Array[3]).assertEqual(undefined);
+        float32Array[10] = 3;
+        expect(float32Array[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_9000
+     * @tc.name       : testFloat32ArrayConstructor0090
+     * @tc.desc       : Testing Constructor of Float32Array with Int32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayConstructor0090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayConstructor0090";
+      try {
+        const array = new Int32Array([21, 31])
+        let float32Array = new Float32Array(array);
+        expect(float32Array[0]).assertEqual(21);
+        expect(float32Array[1]).assertEqual(31);
+        expect(float32Array[3]).assertEqual(undefined);
+        float32Array[10] = 3;
+        expect(float32Array[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_9100
+     * @tc.name       : testFloat32ArrayConstructor0091
+     * @tc.desc       : Testing Constructor of Float32Array with Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayConstructor0091', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayConstructor0091";
+      try {
+        const array = new Float32Array([21, 31])
+        let float32Array = new Float32Array(array);
+        expect(float32Array[0]).assertEqual(21);
+        expect(float32Array[1]).assertEqual(31);
+        expect(float32Array[3]).assertEqual(undefined);
+        float32Array[10] = 3;
+        expect(float32Array[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_9200
+     * @tc.name       : testFloat32ArrayConstructor0092
+     * @tc.desc       : Testing Constructor of Float32Array with BigInt64Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayConstructor0092', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayConstructor0092";
+      try {
+        const array = new BigInt64Array([21n, 31n]);
+        let array1 = new Float32Array(array);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect(err.name).assertEqual('TypeError');
+        expect(err.message).assertContain('srcArrayContentType is not equal objContentType.');
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_9300
+     * @tc.name       : testFloat32ArrayConstructor0093
+     * @tc.desc       : Testing Constructor of Float32Array with BigUint64Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayConstructor0093', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayConstructor0093";
+      try {
+        const array = new BigUint64Array([21n, 31n]);
+        new Float32Array(array);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect(err.name).assertEqual('TypeError');
+        expect(err.message).assertContain('srcArrayContentType is not equal objContentType.');
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_9400
+     * @tc.name       : testFloat32ArrayConstructor0094
+     * @tc.desc       : Testing Constructor of Float32Array with Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayConstructor0094', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayConstructor0094";
+      try {
+        const array = new Float32Array([21, 31]);
+        let float32Array = new Float32Array(array);
+        expect(float32Array[0]).assertEqual(21);
+        expect(float32Array[1]).assertEqual(31);
+        expect(float32Array[3]).assertEqual(undefined);
+        float32Array[10] = 3;
+        expect(float32Array[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_length_9500
+     * @tc.name       : testFloat32ArrayLength0095
+     * @tc.desc       : Testing instance function length of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayLength0095', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayLength0095";
+      try {
+        let float32Array = new Float32Array(8);
+        expect(float32Array.length).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_FROM_9600
+     * @tc.name       : testFloat32ArrayFrom0096
+     * @tc.desc       : Testing static function from of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayFrom0096', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayFrom0096";
+      try {
+        expect(Constants.float32ConstructTestArray3[0]).assertNaN();
+        expect(Constants.float32ConstructTestArray3[1]).assertNaN();
+        expect(Constants.float32ConstructTestArray3[2]).assertNaN();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_9700
+     * @tc.name       : testFloat32ArrayConstructor0097
+     * @tc.desc       : Testing Constructor of Float32Array with Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayConstructor0097', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayConstructor0097";
+      try {
+        let array: Array<number> = new Array<number>(2);
+        let float32Array = new Float32Array(array);
+        float32Array[0] = 21;
+        float32Array[1] = 31;
+        expect(float32Array[0]).assertEqual(21);
+        expect(float32Array[1]).assertEqual(31);
+        expect(float32Array[3]).assertEqual(undefined);
+        float32Array[10] = 3;
+        expect(float32Array[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_9800
+     * @tc.name       : testFloat32ArrayConstructor0098
+     * @tc.desc       : Testing Constructor of Float32Array with Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayConstructor0098', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayConstructor0098";
+      try {
+        let array: Array<number> = new Array<number>(2);
+        let float32Array = new Float32Array(array);
+        float32Array[0] = 21;
+        float32Array[1] = 31;
+        expect(float32Array[0]).assertEqual(21);
+        expect(float32Array[1]).assertEqual(31);
+        expect(float32Array[3]).assertEqual(undefined);
+        float32Array[10] = 3;
+        expect(float32Array[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_9900
+     * @tc.name       : testFloat32ArrayConstructor0099
+     * @tc.desc       : Testing Constructor of Float32Array with ArrayBuffer.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayConstructor0099', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayConstructor0099";
+      try {
+        let arrayBuffer = new ArrayBuffer(16);
+        let float32Array = new Float32Array(arrayBuffer);
+        float32Array[0] = 21;
+        float32Array[1] = 31;
+        expect(float32Array[0]).assertEqual(21);
+        expect(float32Array[1]).assertEqual(31);
+        expect(float32Array[3]).assertEqual(0);
+        float32Array[10] = 3;
+        expect(float32Array[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_10000
+     * @tc.name       : testFloat32ArrayConstructor0100
+     * @tc.desc       : Testing Constructor of Float32Array with ArrayBuffer.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayConstructor0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayConstructor0100";
+      try {
+        let arrayBuffer = new ArrayBuffer(16);
+        let float32Array = new Float32Array(arrayBuffer, 0, 2);
+        float32Array[0] = 21;
+        float32Array[1] = 31;
+        expect(float32Array[0]).assertEqual(21);
+        expect(float32Array[1]).assertEqual(31);
+        expect(float32Array[3]).assertEqual(undefined);
+        float32Array[10] = 3;
+        expect(float32Array[10]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_FROM_10100
+     * @tc.name       : testFloat32ArrayFrom0101
+     * @tc.desc       : Testing static function from of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayFrom0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayFrom0101";
+      try {
+        expect(Constants.float32ConstructTestArray4[0]).assertNaN();
+        expect(Constants.float32ConstructTestArray4[1]).assertNaN();
+        expect(Constants.float32ConstructTestArray4[2]).assertNaN();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_FROM_10200
+     * @tc.name       : testFloat32ArrayFrom0102
+     * @tc.desc       : Testing static function from of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayFrom0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayFrom0102";
+      try {
+        expect(Constants.float32ConstructTestArray5[0]).assertNaN();
+        expect(Constants.float32ConstructTestArray5[1]).assertNaN();
+        expect(Constants.float32ConstructTestArray5[2]).assertNaN();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_FROM_10300
+     * @tc.name       : testFloat32ArrayFrom0103
+     * @tc.desc       : Testing static function from of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayFrom0103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayFrom0103";
+      try {
+        expect(Constants.float32FromTestArray[0]).assertEqual(0);
+        expect(Constants.float32FromTestArray[1]).assertEqual(1);
+        expect(Constants.float32FromTestArray[2]).assertEqual(2);
+        expect(Constants.float32FromTestArray[3]).assertEqual(3);
+        expect(Constants.float32FromTestArray[4]).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_OF_10400
+     * @tc.name       : testFloat32ArrayOf0104
+     * @tc.desc       : Testing static function of of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayOf0104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayOf0104";
+      try {
+        expect(Constants.float32OfTestUndefined.toString()).assertEqual('NaN');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_OF_10500
+     * @tc.name       : testFloat32ArrayOf0105
+     * @tc.desc       : Testing static function of of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayOf0105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayOf0105";
+      try {
+        expect(Constants.float32OfTestStr.toString()).assertEqual('NaN');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_OF_10600
+     * @tc.name       : testFloat32ArrayOf0106
+     * @tc.desc       : Testing static function of of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayOf0106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayOf0106";
+      try {
+        expect(Constants.float32OfTestNumber1.toString()).assertEqual('123');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_OF_10700
+     * @tc.name       : testFloat32ArrayOf0107
+     * @tc.desc       : Testing static function of of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayOf0107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayOf0107";
+      try {
+        expect(Constants.float32OfTestNumber2[0]).assertEqual(1);
+        expect(Constants.float32OfTestNumber2[2]).assertEqual(3);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAYFROM_10800
+     * @tc.name       : testFloat32ArrayFrom0108
+     * @tc.desc       : Testing static function from range length step + 1 => of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayFrom0108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayFrom0108";
+      try {
+        expect(Constants.float32ArrayNumber[0]).assertEqual(0);
+        expect(Constants.float32ArrayNumber[1]).assertEqual(1);
+        expect(Constants.float32ArrayNumber[2]).assertEqual(2);
+        expect(Constants.float32ArrayNumber[3]).assertEqual(3);
+        expect(Constants.float32ArrayNumber[4]).assertEqual(4);
+        expect(Constants.float32ArrayNumber[5]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAYFROM_10900
+     * @tc.name       : testFloat32ArrayFrom0109
+     * @tc.desc       : Testing static function from range length 'A~Z' => of Float32Array.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32ArrayFrom0109', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32ArrayFrom0109";
+      try {
+        expect(Constants.float32ArrayCharacter[0]).assertEqual(65);
+        expect(Constants.float32ArrayCharacter[1]).assertEqual(66);
+        expect(Constants.float32ArrayCharacter[2]).assertEqual(67);
+        expect(Constants.float32ArrayCharacter[25]).assertEqual(90);
+        expect(Constants.float32ArrayCharacter[26]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_11000
+     * @tc.name       : testFloat32Constructor0110
+     * @tc.desc       : Testing Constructor of Float32Array with threshold value([-3.4e38]),
+     * and get value of index 0 is -3.3999999521443642e38.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0110";
+      try {
+        let MIN_VALUE = -3.4e38;
+        let array = new Float32Array([MIN_VALUE]);
+        expect(array[0]).assertEqual(-3.3999999521443642e38);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_11100
+     * @tc.name       : testFloat32Constructor0111
+     * @tc.desc       : Testing Constructor of Float32Array with out of bounds value([-3.4028235 * 10^38 -1]),
+     * and get value of index 0 is -3.3999999521443642e38.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0111', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0111";
+      try {
+        let MIN_VALUE = -3.4e38 -1;
+        let array = new Float32Array([MIN_VALUE]);
+        expect(array[0]).assertEqual(-3.3999999521443642e38);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_11200
+     * @tc.name       : testFloat32Constructor0112
+     * @tc.desc       : Testing Constructor of Float32Array with threshold value([3.4028235 * 10^38;]),
+     * and get value of index 0 is 3.4028234663852886e38.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0112', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0112";
+      try {
+        let MAX_VALUE = 3.4028235e38;
+        let array = new Float32Array([MAX_VALUE]);
+        expect(array[0]).assertEqual(3.4028234663852886e38);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_11300
+     * @tc.name       : testFloat32Constructor0113
+     * @tc.desc       : Testing Constructor of Float32Array with out of bounds value([3.4028235 * 10^38 + 1]),
+     * and get value of index 0 is 3.4028234663852886e38.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0113', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0113";
+      try {
+        let MAX_VALUE = 3.4028235e38 + 1;
+        let array = new Float32Array([MAX_VALUE]);
+        expect(array[0]).assertEqual(3.4028234663852886e38);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_11400
+     * @tc.name       : testFloat32Constructor0114
+     * @tc.desc       : Testing Constructor of Float32Array with Int8Array threshold value([-128]),
+     * and get value of index 0 is -128.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0114', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0114";
+      try {
+        let array = new Float32Array(new Int8Array([-128]));
+        expect(array[0]).assertEqual(-128);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_11500
+     * @tc.name       : testFloat32Constructor0115
+     * @tc.desc       : Testing Constructor of Float32Array with Int8Array out of bounds value([-129]),
+     * and get value of index 0 is 127.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0115', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0115";
+      try {
+        let array = new Float32Array(new Int8Array([-129]));
+        expect(array[0]).assertEqual(127);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_11600
+     * @tc.name       : testFloat32Constructor0116
+     * @tc.desc       : Testing Constructor of Float32Array with Int8Array threshold value([127]),
+     * and get value of index 0 is 127.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0116', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0116";
+      try {
+        let array = new Float32Array(new Int8Array([127]));
+        expect(array[0]).assertEqual(127);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_11700
+     * @tc.name       : testFloat32Constructor0117
+     * @tc.desc       : Testing Constructor of Float32Array with Int8Array value([126]),
+     * and get value of index 0 is 126.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0117', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0117";
+      try {
+        let array = new Float32Array(new Int8Array([126]));
+        expect(array[0]).assertEqual(126);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_11800
+     * @tc.name       : testFloat32Constructor0118
+     * @tc.desc       : Testing Constructor of Float32Array with Int8Array out of bounds value([128]),
+     * and get value of index 0 is -128.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0118', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0118";
+      try {
+        let array = new Float32Array(new Int8Array([128]));
+        expect(array[0]).assertEqual(-128);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_11900
+     * @tc.name       : testFloat32Constructor0119
+     * @tc.desc       : Testing Constructor of Float32Array with Uint8ClampedArray threshold value([0]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0119', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0119";
+      try {
+        let array = new Float32Array(new Uint8ClampedArray([0]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_12000
+     * @tc.name       : testFloat32Constructor0120
+     * @tc.desc       : Testing Constructor of Float32Array with Uint8ClampedArray out of bounds value([-1]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0120";
+      try {
+        let array = new Float32Array(new Uint8ClampedArray([-1]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_12100
+     * @tc.name       : testFloat32Constructor0121
+     * @tc.desc       : Testing Constructor of Float32Array with Uint8ClampedArray threshold value([255]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0121', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0121";
+      try {
+        let array = new Float32Array(new Uint8ClampedArray([255]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_12200
+     * @tc.name       : testFloat32Constructor0122
+     * @tc.desc       : Testing Constructor of Float32Array with Uint8ClampedArray out of bounds value([256]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0122', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0122";
+      try {
+        let array = new Float32Array(new Uint8ClampedArray([256]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_12300
+     * @tc.name       : testFloat32Constructor0123
+     * @tc.desc       : Testing Constructor of Float32Array with Uint8ClampedArray value([254]),
+     * and get value of index 0 is -2.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0123', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0123";
+      try {
+        let array = new Float32Array(new Uint8ClampedArray([254]));
+        expect(array[0]).assertEqual(254);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_12400
+     * @tc.name       : testFloat32Constructor0124
+     * @tc.desc       : Testing Constructor of Float32Array with Int16Array threshold value([-32768]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0124', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0124";
+      try {
+        let array = new Float32Array(new Int16Array([-32768]));
+        expect(array[0]).assertEqual(-32768);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_12500
+     * @tc.name       : testFloat32Constructor0125
+     * @tc.desc       : Testing Constructor of Float32Array with Int16Array out of bounds value([-32769]),
+     * and get value of index 0 is 32767.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0125', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0125";
+      try {
+        let array = new Float32Array(new Int16Array([-32769]));
+        expect(array[0]).assertEqual(32767);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_12600
+     * @tc.name       : testFloat32Constructor0126
+     * @tc.desc       : Testing Constructor of Float32Array with Int16Array threshold value([32767]),
+     * and get value of index 0 is 32767.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0126', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0126";
+      try {
+        let array = new Float32Array(new Int16Array([32767]));
+        expect(array[0]).assertEqual(32767);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_12700
+     * @tc.name       : testFloat32Constructor0127
+     * @tc.desc       : Testing Constructor of Float32Array with Int16Array out of bounds value([32768]),
+     * and get value of index 0 is -32768.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0127', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0127";
+      try {
+        let array = new Float32Array(new Int16Array([32768]));
+        expect(array[0]).assertEqual(-32768);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_12800
+     * @tc.name       : testFloat32Constructor0128
+     * @tc.desc       : Testing Constructor of Float32Array with Int16Array value([32766]),
+     * and get value of index 0 is 32766.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0128', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0128";
+      try {
+        let array = new Float32Array(new Int16Array([32766]));
+        expect(array[0]).assertEqual(32766);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_12900
+     * @tc.name       : testFloat32Constructor0129
+     * @tc.desc       : Testing Constructor of Float32Array with Uint16Array threshold value([0]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0129', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0129";
+      try {
+        let array = new Float32Array(new Uint16Array([0]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_13000
+     * @tc.name       : testFloat32Constructor0130
+     * @tc.desc       : Testing Constructor of Float32Array with Uint16Array out of bounds value([-1]),
+     * and get value of index 0 is 65535.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0130";
+      try {
+        let array = new Float32Array(new Uint16Array([-1]));
+        expect(array[0]).assertEqual(65535);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_13100
+     * @tc.name       : testFloat32Constructor0131
+     * @tc.desc       : Testing Constructor of Float32Array with Uint16Array threshold value([65535]),
+     * and get value of index 0 is 65535.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0131', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0131";
+      try {
+        let array = new Float32Array(new Uint16Array([65535]));
+        expect(array[0]).assertEqual(65535);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_13200
+     * @tc.name       : testFloat32Constructor0132
+     * @tc.desc       : Testing Constructor of Float32Array with Uint16Array out of bounds value([65536]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0132', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0132";
+      try {
+        let array = new Float32Array(new Uint16Array([65536]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_13300
+     * @tc.name       : testFloat32Constructor0133
+     * @tc.desc       : Testing Constructor of Float32Array with Uint16Array value([65534]),
+     * and get value of index 0 is 65534.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0133', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0133";
+      try {
+        let array = new Float32Array(new Uint16Array([65534]));
+        expect(array[0]).assertEqual(65534);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_13400
+     * @tc.name       : testFloat32Constructor0134
+     * @tc.desc       : Testing Constructor of Float32Array with Int32Array threshold value([-2147483648]),
+     * and get value of index 0 is -2147483648.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0134', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0134";
+      try {
+        let array = new Float32Array(new Int32Array([-2147483648]));
+        expect(array[0]).assertEqual(-2147483648);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_13500
+     * @tc.name       : testFloat32Constructor0135
+     * @tc.desc       : Testing Constructor of Float32Array with Int32Array out of bounds value([-2147483649]),
+     * and get value of index 0 is 2147483648.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0135', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0135";
+      try {
+        let array = new Float32Array(new Int32Array([-2147483649]));
+        expect(array[0]).assertEqual(2147483648);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_13600
+     * @tc.name       : testFloat32Constructor0136
+     * @tc.desc       : Testing Constructor of Float32Array with Int32Array threshold value([2147483647]),
+     * and get value of index 0 is 2147483648.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0136', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0136";
+      try {
+        let array = new Float32Array(new Int32Array([2147483647]));
+        expect(array[0]).assertEqual(2147483648);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_13700
+     * @tc.name       : testFloat32Constructor0137
+     * @tc.desc       : Testing Constructor of Float32Array with Int32Array out of bounds value([2147483648]),
+     * and get value of index 0 is -2147483648.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0137', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0137";
+      try {
+        let array = new Float32Array(new Int32Array([2147483648]));
+        expect(array[0]).assertEqual(-2147483648);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_13800
+     * @tc.name       : testFloat32Constructor0138
+     * @tc.desc       : Testing Constructor of Float32Array with Int32Array value([2147483646]),
+     * and get value of index 0 is 2147483648.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0138', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0138";
+      try {
+        let array = new Float32Array(new Int32Array([2147483646]));
+        expect(array[0]).assertEqual(2147483648);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_13900
+     * @tc.name       : testFloat32Constructor0139
+     * @tc.desc       : Testing Constructor of Float32Array with Uint32Array threshold value([0]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0139', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0139";
+      try {
+        let array = new Float32Array(new Uint32Array([0]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FLOAT32ARRAY_CONSTRUCTOR_14000
+     * @tc.name       : testFloat32Constructor0140
+     * @tc.desc       : Testing Constructor of Float32Array with Uint32Array out of bounds value([-1]),
+     * and get value of index 0 is 4294967296.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testFloat32Constructor0140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testFloat32Constructor0140";
+      try {
+        let array = new Float32Array(new Uint32Array([-1]));
+        expect(array[0]).assertEqual(4294967296);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+
   })
 }
