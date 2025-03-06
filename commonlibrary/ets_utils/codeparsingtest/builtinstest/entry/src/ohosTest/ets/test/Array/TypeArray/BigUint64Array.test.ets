@@ -1747,5 +1747,1013 @@ export default function BigUint64ArrayTest() {
       }
     });
 
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_8100
+     * @tc.name       : testBigUint64Constructor0081
+     * @tc.desc       : Testing Constructor of BigUint64Array with Int32Array out of bounds value([-2147483649]),
+     * and get value of index 0 is 2147483647n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0081', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0081";
+      try {
+        let array1 = new Int32Array([-2147483649]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(2147483647n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_8200
+     * @tc.name       : testBigUint64Constructor0082
+     * @tc.desc       : Testing Constructor of BigUint64Array with Int32Array threshold value([2147483647]),
+     * and get value of index 0 is 2147483647n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0082', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0082";
+      try {
+        let array1 = new Int32Array([2147483647]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(2147483647n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_8300
+     * @tc.name       : testBigUint64Constructor0083
+     * @tc.desc       : Testing Constructor of BigUint64Array with Int32Array out of bounds value([2147483648]),
+     * and get value of index 0 is 18446744071562067968n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0083', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0083";
+      try {
+        let array1 = new Int32Array([2147483648]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(18446744071562067968n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_8400
+     * @tc.name       : testBigUint64Constructor0084
+     * @tc.desc       : Testing Constructor of BigUint64Array with Int32Array value([2147483646]),
+     * and get value of index 0 is 2147483646n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0084', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0084";
+      try {
+        let array1 = new Int32Array([2147483646]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(2147483646n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_8500
+     * @tc.name       : testBigUint64Constructor0085
+     * @tc.desc       : Testing Constructor of BigUint64Array with Uint32Array threshold value([0]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0085', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0085";
+      try {
+        let array1 = new Uint32Array([0]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(0n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_8600
+     * @tc.name       : testBigUint64Constructor0086
+     * @tc.desc       : Testing Constructor of BigUint64Array with Uint32Array out of bounds value([-1]),
+     * and get value of index 0 is 4294967295n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0086', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0086";
+      try {
+        let array1 = new Uint32Array([-1]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(4294967295n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_8700
+     * @tc.name       : testBigUint64Constructor0087
+     * @tc.desc       : Testing Constructor of BigUint64Array with Uint32Array threshold value([4294967295]),
+     * and get value of index 0 is 4294967295n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0087', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0087";
+      try {
+        let array1 = new Uint32Array([4294967295]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(4294967295n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_8800
+     * @tc.name       : testBigUint64Constructor0088
+     * @tc.desc       : Testing Constructor of BigUint64Array with Uint32Array out of bounds value([4294967296]),
+     * and get value of index 0 is 0n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0088', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0088";
+      try {
+        let array1 = new Uint32Array([4294967296]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(0n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_8900
+     * @tc.name       : testBigUint64Constructor0089
+     * @tc.desc       : Testing Constructor of BigUint64Array with Uint32Array value([4294967294]),
+     * and get value of index 0 is 4294967294n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0089', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0089";
+      try {
+        let array1 = new Uint32Array([4294967294]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(4294967294n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_9000
+     * @tc.name       : testBigUint64Constructor0090
+     * @tc.desc       : Testing Constructor of BigUint64Array with Float32Array threshold value([-3.4028235 * 10^38]),
+     * and get value of index 0 is 0n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0090";
+      try {
+        let MIN_VALUE = -3.4028235e38;
+        let array1 = new Float32Array([MIN_VALUE]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(0n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_9100
+     * @tc.name       : testBigUint64Constructor0091
+     * @tc.desc       : Testing Constructor of BigUint64Array with Float32Array out of bounds value([-3.4028235 * 10^38 -1]),
+     * and get value of index 0 is 0n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0091', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0091";
+      try {
+        let MIN_VALUE = -3.4028235e38 -1;
+        let array1 = new Float32Array([MIN_VALUE]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(0n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_9200
+     * @tc.name       : testBigUint64Constructor0092
+     * @tc.desc       : Testing Constructor of BigUint64Array with Float32Array threshold value([3.4028235 x 10^38]),
+     * and get value of index 0 is 0n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0092', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0092";
+      try {
+        let MAX_VALUE = 3.4028235e38;
+        let array1 = new Float32Array([MAX_VALUE]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(0n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_9300
+     * @tc.name       : testBigUint64Constructor0093
+     * @tc.desc       : Testing Constructor of BigUint64Array with Float32Array out of bounds value([3.4028235 x 10^38 + 1]),
+     * and get value of index 0 is 0n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0093', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0093";
+      try {
+        let MAX_VALUE = 3.4028235e38 + 1;
+        let array1 = new Float32Array([MAX_VALUE]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(0n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_9400
+     * @tc.name       : testBigUint64Constructor0094
+     * @tc.desc       : Testing Constructor of BigUint64Array with Float64Array threshold value([-1.8e308]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0094', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0094";
+      try {
+        let MIN_VALUE = -1.8e308;
+        let array1 = new Float64Array([MIN_VALUE]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect(err.name).assertEqual('RangeError');
+        expect(err.message).assertContain('The number cannot be converted to a BigInt because it is not an integer');
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_9500
+     * @tc.name       : testBigUint64Constructor0095
+     * @tc.desc       : Testing Constructor of BigUint64Array with Float64Array out of bounds value([-1.8e308 -1]),
+     * and get value of index 0 is error.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0095', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0095";
+      try {
+        let MIN_VALUE = -1.8e308 -1;
+        let array1 = new Float64Array([MIN_VALUE]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect(err.name).assertEqual('RangeError');
+        expect(err.message).assertContain('The number cannot be converted to a BigInt because it is not an integer');
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_9600
+     * @tc.name       : testBigUint64Constructor0096
+     * @tc.desc       : Testing Constructor of BigUint64Array with Float64Array threshold value([1.8e308]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0096', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0096";
+      try {
+        let MAX_VALUE = 1.8e308;
+        let array1 = new Float64Array([MAX_VALUE]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect(err.name).assertEqual('RangeError');
+        expect(err.message).assertContain('The number cannot be converted to a BigInt because it is not an integer');
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_9700
+     * @tc.name       : testBigUint64Constructor0097
+     * @tc.desc       : Testing Constructor of BigUint64Array with Float64Array out of bounds value([1.8e308 + 1]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0097', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0097";
+      try {
+        let MAX_VALUE = 1.8e308 + 1;
+        let array1 = new Float64Array([MAX_VALUE]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect(err.name).assertEqual('RangeError');
+        expect(err.message).assertContain('The number cannot be converted to a BigInt because it is not an integer');
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_9800
+     * @tc.name       : testBigUint64Constructor0098
+     * @tc.desc       : Testing Constructor of BigUint64Array with Uint8Array threshold value([-(2^63)]),
+     * and get value of index 0 is 0n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0098', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0098";
+      try {
+        let array1 = new Uint8Array([0]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(0n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_9900
+     * @tc.name       : testBigUint64Constructor0099
+     * @tc.desc       : Testing Constructor of BigUint64Array with Uint8Array out of bounds value([-1]),
+     * and get value of index 0 is 255n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0099', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0099";
+      try {
+        let array1 = new Uint8Array([-1]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(255n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_10000
+     * @tc.name       : testBigUint64Constructor0100
+     * @tc.desc       : Testing Constructor of BigUint64Array with Uint8Array threshold value([255]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0100";
+      try {
+        let array1 = new Uint8Array([255]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(255n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_10100
+     * @tc.name       : testBigUint64Constructor0101
+     * @tc.desc       : Testing Constructor of BigUint64Array with Uint8Array out of bounds value([256]),
+     * and get value of index 0 is 0n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0101";
+      try {
+        let array1 = new Uint8Array([256]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(0n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_10200
+     * @tc.name       : testBigUint64Constructor0102
+     * @tc.desc       : Testing Constructor of BigUint64Array with BigInt64Array threshold value([-2*63]),
+     * and get value of index 0 is 9223372036854775808n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0102";
+      try {
+        const array1 = new BigInt64Array([-9223372036854775808n]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(9223372036854775808n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_10300
+     * @tc.name       : testBigUint64Constructor0103
+     * @tc.desc       : Testing Constructor of BigUint64Array with BigInt64Array out of bounds value([-2*63-1]),
+     * and get value of index 0 is 9223372036854775807n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0103";
+      try {
+        const array1 = new BigInt64Array([-9223372036854775809n]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(9223372036854775807n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_10400
+     * @tc.name       : testBigUint64Constructor0104
+     * @tc.desc       : Testing Constructor of BigUint64Array with BigInt64Array threshold value([2*63 - 1n]),
+     * and get value of index 0 is 9223372036854775807n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0104";
+      try {
+        const array1 = new BigInt64Array([9223372036854775807n]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(9223372036854775807n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAY_CONSTRUCTOR_10500
+     * @tc.name       : testBigUint64Constructor0105
+     * @tc.desc       : Testing Constructor of BigInt64Array with BigUint64Array out of bounds value([2^63n]),
+     * and get value of index 0 is 9223372036854775808n.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64Constructor0105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64Constructor0105";
+      try {
+        const array1 = new BigInt64Array([9223372036854775808n]);
+        let array = new BigUint64Array([BigInt(array1[0])]);
+        expect(array[0]).assertEqual(9223372036854775808n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYOF_10600
+     * @tc.name       : testBigUint64ArrayOf0106
+     * @tc.desc       : Testing static function of, of BigUint64Array value is positive infinity(+infinity).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayOf0106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayOf0106";
+      try {
+        const bigNumber = BigInt(Number.POSITIVE_INFINITY);
+        const array = BigUint64Array.of(bigNumber);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect(err.name).assertEqual('RangeError');
+        expect(err.message).assertContain('The number cannot be converted to a BigInt because it is not an integer');
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYOF_10700
+     * @tc.name       : testBigUint64ArrayOf0107
+     * @tc.desc       : Testing static function of, of BigUint64Array value is negative infinity(-infinity).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayOf0107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayOf0107";
+      try {
+        const bigNumber = BigInt(Number.NEGATIVE_INFINITY);
+        const array = BigUint64Array.of(bigNumber);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect(err.name).assertEqual('RangeError');
+        expect(err.message).assertContain('The number cannot be converted to a BigInt because it is not an integer');
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYOF_10800
+     * @tc.name       : testBigUint64ArrayOf0108
+     * @tc.desc       : Testing static function of, of BigUint64Array value is (NaN).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayOf0108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayOf0108";
+      try {
+        const nanNumber = BigInt(Number.NaN);
+        const array = BigUint64Array.of(nanNumber);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect(err.name).assertEqual('RangeError');
+        expect(err.message).assertContain('The number cannot be converted to a BigInt because it is not an integer');
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYOF_10900
+     * @tc.name       : testBigUint64ArrayOf0109
+     * @tc.desc       : Testing static function of, of BigUint64Array value is bigint(12345678901234567890123456789n).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayOf0109', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayOf0109";
+      try {
+        const array = BigUint64Array.of(12345678901234567890123456789n);
+        expect(array[0]).assertEqual(5097733592125636885n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYOF_11000
+     * @tc.name       : testBigUint64ArrayOf0110
+     * @tc.desc       : Testing static function of, of BigUint64Array threshold value is MAX_NUMBER(2*64 - 1).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayOf0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayOf0110";
+      try {
+        let array = BigInt64Array.of(18446744073709551615n);
+        expect(array[0]).assertEqual(-1n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYOF_11100
+     * @tc.name       : testBigUint64ArrayOf0111
+     * @tc.desc       : Testing static function of, of BigUint64Array threshold value is MIN_NUMBER(0).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayOf0111', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayOf0111";
+      try {
+        let array = BigInt64Array.of(0n);
+        expect(array[0]).assertEqual(0n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYOF_11200
+     * @tc.name       : testBigUint64ArrayOf0112
+     * @tc.desc       : Testing static function of, BigUint64Array value is out of bounds (-1n).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayOf0112', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayOf0112";
+      try {
+        let array = BigUint64Array.of(-1n);
+        expect(array[0]).assertEqual(18446744073709551615n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYOF_11300
+     * @tc.name       : testBigUint64ArrayOf0113
+     * @tc.desc       : Testing static function of, BigUint64Array value is out of bounds (2*63).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayOf0113', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayOf0113";
+      try {
+        let array = BigUint64Array.of(9223372036854775808n);
+        expect(array[0]).assertEqual(9223372036854775808n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYOF_11400
+     * @tc.name       : testBigUint64ArrayOf0114
+     * @tc.desc       : Testing static function of, BigUint64Array value is normal (null).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayOf0114', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayOf0114";
+      try {
+        expect(Constants.bigUint64ArrayNumber3[0]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYFROM_11500
+     * @tc.name       : testBigUint64ArrayFrom0115
+     * @tc.desc       : Testing static function from => func of BigUint64Array, value is infinity (+infinity).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayFrom0115', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayFrom0115";
+      try {
+        const bigNumber = BigInt(Number.POSITIVE_INFINITY);
+        const array = BigUint64Array.from([bigNumber]);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect(err.name).assertEqual('RangeError');
+        expect(err.message).assertContain('The number cannot be converted to a BigInt because it is not an integer');
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYFROM_11600
+     * @tc.name       : testBigUint64ArrayFrom0116
+     * @tc.desc       : Testing static function from => func of BigUint64Array, value is infinity (-infinity).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayFrom0116', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayFrom0116";
+      try {
+        const bigNumber = BigInt(Number.NEGATIVE_INFINITY);
+        const array = BigUint64Array.from([bigNumber]);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect(err.name).assertEqual('RangeError');
+        expect(err.message).assertContain('The number cannot be converted to a BigInt because it is not an integer');
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYFROM_11700
+     * @tc.name       : testBigUint64ArrayFrom0117
+     * @tc.desc       : Testing static function from => func of BigUint64Array, value is normal (NaN).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayFrom0117', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayFrom0117";
+      try {
+        const nanNumber = BigInt(Number.NaN);
+        const array = BigUint64Array.from([nanNumber]);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect(err.name).assertEqual('RangeError');
+        expect(err.message).assertContain('The number cannot be converted to a BigInt because it is not an integer');
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYFROM_11800
+     * @tc.name       : testBigUint64ArrayFrom0118
+     * @tc.desc       : Testing static function from => func of BigUint64Array, value is normal ([1,2,3]).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayFrom0118', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayFrom0118";
+      try {
+        let array = BigUint64Array.from([BigInt(1),BigInt(2),BigInt(3)]);
+        expect(array[0]).assertEqual(1n);
+        expect(array[1]).assertEqual(2n);
+        expect(array[2]).assertEqual(3n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYFROM_11900
+     * @tc.name       : testBigUint64ArrayFrom0119
+     * @tc.desc       : Testing static function from => func of BigUint64Array, value is normal ([1.1,2.83]).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayFrom0119', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayFrom0119";
+      try {
+        let array = BigUint64Array.from([BigInt(1.1),BigInt(2.83)]);
+        expect().assertFail();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect(err.name).assertEqual('RangeError');
+        expect(err.message).assertContain('The number cannot be converted to a BigInt because it is not an integer');
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYFROM_12000
+     * @tc.name       : testBigUint64ArrayFrom0120
+     * @tc.desc       : Testing static function from => func of BigUint64Array, value is normal ([12345678901234567890n]).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayFrom0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayFrom0120";
+      try {
+        let array = BigUint64Array.from([12345678901234567890123456789n]);
+        expect(array[0]).assertEqual(5097733592125636885n);
+        expect(array[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYFROM_12100
+     * @tc.name       : testBigUint64ArrayFrom0121
+     * @tc.desc       : Testing static function from => func of BigUint64Array, value is normal (obj).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayFrom0121', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayFrom0121";
+      try {
+        expect(Constants.bigUint64ConstructTestArray7[0]).assertEqual(undefined);
+        expect(Constants.bigUint64ConstructTestArray7[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYFROM_12200
+     * @tc.name       : testBigUint64ArrayFrom0122
+     * @tc.desc       : Testing static function from => func of BigUint64Array, value is normal (obj).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayFrom0122', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayFrom0122";
+      try {
+        expect(Constants.bigUint64ConstructTestArray8[0]).assertEqual(undefined);
+        expect(Constants.bigUint64ConstructTestArray8[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYFROM_12300
+     * @tc.name       : testBigUint64ArrayFrom0123
+     * @tc.desc       : Testing static function from => func of BigUint64Array, value is normal (obj).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayFrom0123', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayFrom0123";
+      try {
+        expect(Constants.bigUint64ConstructTestArray9[0]).assertEqual(undefined);
+        expect(Constants.bigUint64ConstructTestArray9[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYFROM_12400
+     * @tc.name       : testBigUint64ArrayFrom0124
+     * @tc.desc       : Testing static function from => func of BigUint64Array, value is normal (Sequence).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayFrom0124', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayFrom0124";
+      try {
+        expect(Constants.bigUint64ConstructTestArray10[0]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYFROM_12500
+     * @tc.name       : testBigUint64ArrayFrom0125
+     * @tc.desc       : Testing static function from => func of BigUint64Array, value is normal (Sequence).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayFrom0125', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayFrom0125";
+      try {
+        expect(Constants.bigUint64ConstructTestArray11[0]).assertEqual(5n);
+        expect(Constants.bigUint64ConstructTestArray11[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYFROM_12600
+     * @tc.name       : testBigUint64ArrayFrom0126
+     * @tc.desc       : Testing static function from => func of BigUint64Array, value is normal (Non-array-like objects).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayFrom0126', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayFrom0126";
+      try {
+        expect(Constants.bigUint64ConstructTestArray12[0]).assertEqual(undefined);
+        expect(Constants.bigUint64ConstructTestArray12[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYFROM_12700
+     * @tc.name       : testBigUint64ArrayFrom0127
+     * @tc.desc       : Testing static function from => func of BigUint64Array, value is normal (Non-iterable objects).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayFrom0127', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayFrom0127";
+      try {
+        expect(Constants.bigUint64ConstructTestArray13[0]).assertEqual(1n);
+        expect(Constants.bigUint64ConstructTestArray13[1]).assertEqual(2n);
+        expect(Constants.bigUint64ConstructTestArray13[2]).assertEqual(3n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYFROM_12800
+     * @tc.name       : testBigUint64ArrayFrom0128
+     * @tc.desc       : Testing static function from => func of BigUint64Array, value is normal (sequence).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayFrom0128', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayFrom0128";
+      try {
+        expect(Constants.bigUint64ArrayNumber2[0]).assertEqual('a');
+        expect(Constants.bigUint64ArrayNumber2[1]).assertEqual('b');
+        expect(Constants.bigUint64ArrayNumber2[2]).assertEqual('c');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BIGUINT64ARRAYFROM_12900
+     * @tc.name       : testBigUint64ArrayFrom0129
+     * @tc.desc       : Testing static function from => func of BigUint64Array, value is normal (sequence).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testBigUint64ArrayFrom0129', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testBigUint64ArrayFrom0129";
+      try {
+        expect(Constants.bigUint64ArrayNumber3[0]).assertEqual(undefined);
+        expect(Constants.bigUint64ArrayNumber3[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
   })
 }
