@@ -18,6 +18,7 @@ import { describe, it, expect, beforeAll } from '@ohos/hypium'
 import { photoKeys, fetchOption, getFileAsset, sleep, getPermission, driveFn } from '../common'
 import common from '@ohos.app.ability.common'
 
+
 export default function addRemoveAssetsChangeRequestTest() {
   describe('addRemoveAssetsChangeRequestTest', () => {
     let testContext: common.UIAbilityContext = AppStorage.get('testContext') as common.UIAbilityContext;

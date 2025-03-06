@@ -19,6 +19,7 @@ import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import { Component, Driver, ON } from '@ohos.UiTest';
 import fs, { ReadOptions } from '@ohos.file.fs';
 
+
 import {
   sleep,
   getPermission,

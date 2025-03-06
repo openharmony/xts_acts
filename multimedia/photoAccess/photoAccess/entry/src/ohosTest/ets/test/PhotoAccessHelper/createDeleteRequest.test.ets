@@ -19,6 +19,7 @@ import { driveFn, genRadomStr, getPermission, photoType, sleep } from '../common
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 
+
 export default function createDeleteRequestTest() {
   describe('createDeleteRequestTest', () => {
     let testContext: common.UIAbilityContext = AppStorage.get('testContext') as common.UIAbilityContext;
