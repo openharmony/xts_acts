@@ -175,7 +175,7 @@ export class AsyncLockTest1 {
 }
 
 export class WorkThread {
-  public static workerStageModel = new worker.ThreadWorker('../../workers/Worker.ets');
+  public workerStageModel = new worker.ThreadWorker('../../workers/Worker.ets');
 }
 
 @Concurrent

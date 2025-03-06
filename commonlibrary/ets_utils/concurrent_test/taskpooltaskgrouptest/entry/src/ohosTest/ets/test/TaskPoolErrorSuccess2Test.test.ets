@@ -83,17 +83,16 @@ export default function taskPoolErrorSuccess2Test() {
       let count: number = 0
       let count2: number = 0
 
-      let callBack = (e: ErrorEvent): void => {
-        console.info('======e.message', e.message)
-        count2 ++
-      }
-
       for (let i = 0; i < 10; i++) {
         taskpool.execute(taskGroup).then(() => {
           count ++
-          WorkThread.workerStageModel = new worker.ThreadWorker('../testability/pages/workers/WorkerTaskGroup.ets');
-          WorkThread.workerStageModel.onerror = callBack
-          WorkThread.workerStageModel.postMessage('2')
+          let work = new worker.ThreadWorker('../testability/pages/workers/WorkerTaskGroup.ets');
+          work.onerror = (e: ErrorEvent): void => {
+            console.info('======e.message', e.message)
+            count2 ++
+            work.terminate()
+          }
+          work.postMessage('2')
         })
       }
 
@@ -125,22 +124,21 @@ export default function taskPoolErrorSuccess2Test() {
       let count: number = 0
       let count2: number = 0
 
-      let callBack  = (e: MessageEvents): void => {
-        console.info('======e.message', e.data)
-        try {
-          let s: string[] = []
-          s[0].split('')[1].toString()
-        } catch (e) {
-          count2++
-        }
-      }
-
       for (let i = 0; i < 10; i++) {
         taskpool.execute(taskGroup).then(() => {
           count ++
-          WorkThread.workerStageModel = new worker.ThreadWorker('../testability/pages/workers/WorkerTaskGroup.ets');
-          WorkThread.workerStageModel.onmessage = callBack
-          WorkThread.workerStageModel.postMessage('1')
+          let work = new worker.ThreadWorker('../testability/pages/workers/WorkerTaskGroup.ets');
+          work.onmessage = (e: MessageEvents): void => {
+            console.info('======e.message', e.data)
+            try {
+              let s: string[] = []
+              s[0].split('')[1].toString()
+            } catch (e) {
+              count2++
+              work.terminate()
+            }
+          }
+          work.postMessage('1')
         })
       }
 

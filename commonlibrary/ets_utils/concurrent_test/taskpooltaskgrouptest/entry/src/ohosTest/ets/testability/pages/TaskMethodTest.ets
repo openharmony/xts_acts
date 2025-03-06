@@ -304,19 +304,21 @@ export function waitForTest() {
 @Concurrent
 export function printArgs1001(args: number): number {
   console.info('printArgs: ' + args);
-  Worker1.worker1.onmessage = (e: MessageEvents) => {
+  let work = new worker.ThreadWorker('../../workers/Worker.ets');
+  work.onmessage = (e: MessageEvents) => {
     let data: string = e.data;
     console.info('worker1 onmessage is: ', data);
+    work.terminate()
   }
-  Worker1.worker1.onmessageerror = () => {
+  work.onmessageerror = () => {
     console.info('worker1 onmessageerror');
   }
 
-  Worker1.worker1.onexit = (e: number) => {
+  work.onexit = (e: number) => {
     console.info('worker1 onexit code is: ', e);
   }
 
-  Worker1.worker1.postMessage('1');
+  work.postMessage('1');
 
   return args;
 }
@@ -324,19 +326,22 @@ export function printArgs1001(args: number): number {
 @Concurrent
 export function printArgs1002(args: number): number {
   console.info('printArgs: ' + args);
-  Worker2.worker2.onmessage = (e: MessageEvents) => {
+  let work = new worker.ThreadWorker('../../workers/Worker.ets');
+  work.onmessage = (e: MessageEvents) => {
     let data: string = e.data;
     console.info('worker2 onmessage is: ', data);
+    work.terminate()
   }
-  Worker2.worker2.onmessageerror = () => {
+  work.onmessageerror = () => {
     console.info('worker2 onmessageerror');
+    work.terminate()
   }
 
-  Worker2.worker2.onexit = (e: number) => {
+  work.onexit = (e: number) => {
     console.info('worker2 onexit code is: ', e);
   }
 
-  Worker2.worker2.postMessage('1');
+  work.postMessage('1');
 
   return args;
 }

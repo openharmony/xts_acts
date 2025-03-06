@@ -18,7 +18,7 @@ import { Driver } from '@kit.TestKit';
 import { testUISec, testUISec1 } from './MultipleTask';
 
 export class WorkThread {
-  static workerStageModel = new worker.ThreadWorker('./workers/WorkerTaskGroup.ets');
+  workerStageModel = new worker.ThreadWorker('./workers/WorkerTaskGroup.ets');
 }
 
 @Concurrent
@@ -74,4 +74,14 @@ export function sleep(time: number): Promise<void> {
 
 export declare class ArkTools {
   static forceFullGC(): void;
+}
+
+export function promiseCase(): Promise<void> {
+  let p = new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve()
+    }, 100)
+  }).then(undefined, (error: Error) => {
+  })
+  return p
 }

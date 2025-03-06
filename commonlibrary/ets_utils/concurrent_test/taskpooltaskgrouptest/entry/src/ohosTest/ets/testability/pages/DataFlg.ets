@@ -31,11 +31,11 @@ export class Count4 {
 }
 
 export class Worker1 {
-  public static worker1: worker.ThreadWorker = new worker.ThreadWorker('../../workers/Worker.ets');
+  public worker1: worker.ThreadWorker = new worker.ThreadWorker('../../workers/Worker.ets');
 }
 
 export class Worker2 {
-  public static worker2: worker.ThreadWorker = new worker.ThreadWorker('../../workers/Worker.ets');
+  public worker2: worker.ThreadWorker = new worker.ThreadWorker('../../workers/Worker.ets');
 }
 
 @Sendable

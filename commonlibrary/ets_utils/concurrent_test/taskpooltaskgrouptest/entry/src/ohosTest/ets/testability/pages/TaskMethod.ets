@@ -24,7 +24,7 @@ import {
   WorkThread
 } from './lock';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { MessageEvents, taskpool } from '@kit.ArkTS';
+import { MessageEvents, taskpool, worker } from '@kit.ArkTS';
 
 /**
  * error
@@ -276,19 +276,22 @@ export async function printArgsWait3(a: AsyncLockTest1) {
 @Concurrent
 export async function printArgsWorker1(args: number): Promise<number> {
   console.info('printArgs: ' + args);
-  WorkThread.workerStageModel.onmessage = (e: MessageEvents) => {
+  let work = new worker.ThreadWorker('../../workers/Worker.ets');
+  work.onmessage = (e: MessageEvents) => {
     let data: string = e.data;
     console.info('worker1 onmessage is: ', data);
+    work.terminate()
   }
-  WorkThread.workerStageModel.onmessageerror = () => {
+  work.onmessageerror = () => {
     console.info('worker1 onmessageerror');
+    work.terminate()
   }
 
-  WorkThread.workerStageModel.onexit = (e: number) => {
+  work.onexit = (e: number) => {
     console.info('worker1 onexit code is: ', e);
   }
 
-  WorkThread.workerStageModel.postMessage('1');
+  work.postMessage('1');
   return args;
 }
 

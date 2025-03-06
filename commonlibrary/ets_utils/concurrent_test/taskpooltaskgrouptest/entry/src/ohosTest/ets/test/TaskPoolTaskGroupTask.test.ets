@@ -1144,20 +1144,20 @@ export default function taskPoolTaskGroup() {
       let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup1.addTask(task1);
       taskGroup1.addTask(task2);
-      let callBack = (e: ErrorEvent): void => {
-        try {
-          let s: string[] = []
-          s[0].split('')[1].toString()
-        } catch (e) {
-          Count1++
-          Count2++
-        }
-      }
       for (let i = 0; i < 10; i++) {
         taskpool.execute(taskGroup1).then(() => {
-          WorkThread.workerStageModel = new worker.ThreadWorker('../workers/Worker');
-          WorkThread.workerStageModel.onerror = callBack
-          WorkThread.workerStageModel.postMessage('2')
+          let work = new worker.ThreadWorker('../workers/Worker');
+          work.onerror = (e: ErrorEvent): void => {
+            try {
+              let s: string[] = []
+              s[0].split('')[1].toString()
+            } catch (e) {
+              Count1++
+              Count2++
+              work.terminate()
+            }
+          }
+          work.postMessage('2')
         })
       }
       while (Count1 < 10 || Count2 < 10) {
@@ -1185,20 +1185,21 @@ export default function taskPoolTaskGroup() {
       let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup1.addTask(task1);
       taskGroup1.addTask(task2);
-      let callBack = (e: MessageEvents): void => {
-        try {
-          let s: string[] = []
-          s[0].split('')[1].toString()
-        } catch (e) {
-          Count1++
-          Count2++
-        }
-      }
+
       for (let i = 0; i < 10; i++) {
         taskpool.execute(taskGroup1).then(() => {
-          WorkThread.workerStageModel = new worker.ThreadWorker('../workers/Worker');
-          WorkThread.workerStageModel.onmessage = callBack
-          WorkThread.workerStageModel.postMessage('1')
+          let work = new worker.ThreadWorker('../workers/Worker');
+          work.onmessage = (e: MessageEvents): void => {
+            try {
+              let s: string[] = []
+              s[0].split('')[1].toString()
+            } catch (e) {
+              Count1++
+              Count2++
+              work.terminate()
+            }
+          }
+          work.postMessage('1')
         })
       }
       while (Count1 < 10 || Count2 < 10) {
