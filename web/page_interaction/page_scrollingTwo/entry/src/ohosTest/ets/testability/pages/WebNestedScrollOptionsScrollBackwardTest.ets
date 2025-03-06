@@ -17,6 +17,9 @@ import events_emitter from '@ohos.events.emitter';
 import webView from '@ohos.web.webview';
 import { Driver, UiWindow } from '@ohos.UiTest';
 import Utils from '../../test/Utils';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { Hypium } from '@ohos/hypium';
+import testsuite from '../../test/List.test';
 
 @Entry
 @Component
@@ -29,6 +32,7 @@ struct WebNestedScrollOptionsTest {
   @State scrollForwardEnums: number = NestedScrollMode.SELF_ONLY
   @State scrollBackwardEnums: number = NestedScrollMode.SELF_ONLY
   @State userAgentPC: string = "";
+
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -51,6 +55,14 @@ struct WebNestedScrollOptionsTest {
       }
     }
   }
+
+  aboutToAppear() {
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    console.info('start run testcase!!!')
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+  }
+
 
   build() {
     Column() {
