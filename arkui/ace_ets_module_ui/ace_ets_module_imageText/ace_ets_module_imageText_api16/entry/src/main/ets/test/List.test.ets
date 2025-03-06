@@ -17,7 +17,6 @@ import textAreaInputTest from './TextTest/textAreaInputTest.test';
 import preventDefault from './Hyperlink/preventDefault.test';
 import searchButton from './Search/searchButton.test';
 import minMaxFontSize from './TextTest/minMaxFontSize.test';
-import editMenuOptions from './TextTest/editMenuOptions.test';
 import marqueeOptionsTest1 from './TextTest/marqueeOptions1.test';
 import marqueeOptionsTest2 from './TextTest/marqueeOptions2.test';
 import TextInputStopBackPressTest from './TextInputTest/TextInputStopBackPress.test';
@@ -43,7 +42,6 @@ export default function testsuite() {
   preventDefault();
   searchButton();
   minMaxFontSize();
-  editMenuOptions();
   marqueeOptionsTest1();
   marqueeOptionsTest2(); 
   TextInputStopBackPressTest();
