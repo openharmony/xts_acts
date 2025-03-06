@@ -189,5 +189,28 @@ export default function systemDateTimeSyncJsunit() {
       done();
       console.info("====>----------SUB_systemDateTime_getTimezoneSync_sync_0130 end-----------------");
     });
+
+    /**
+     * @tc.number    SUB_systemDateTime_getUptime_sync_0150
+     * @tc.name      Test systemTimeDate.getCurrentTime
+     * @tc.desc      Obtains the number of milliseconds elapsed since the system was booted, not including deep sleep time.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("SUB_systemDateTime_getUptime_sync_0150", 0, async (done: Function) => {
+      console.info("====>----------SUB_systemDateTime_getUptime_sync_0150 start----------------");
+      try{
+        let errTimeType: systemDateTime.TimeType | undefined;
+        let realTime = systemDateTime.getUptime(errTimeType);
+        console.info("====>SUB_systemDateTime_getUptime_sync_0150 currentTime: " + JSON.stringify(realTime));
+        expect().assertFail();
+        done();
+      }catch(err){
+        expect(err.code).assertEqual(401);
+        console.info(`====>SUB_systemDateTime_getUptime_sync_0150 err.code:${err.code}, err.message:${err.message}`);
+        done();
+      }
+    });
   });
 };
