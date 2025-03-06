@@ -3,6 +3,7 @@
     "MainAbility/pages/index/index",
     "MainAbility/pages/Popup/Maxwidth",
     "MainAbility/pages/promptAction/openPopup",
+    "MainAbility/pages/promptAction/subwindowDialog",
     "MainAbility/pages/promptAction/updatePopup",
     "MainAbility/pages/promptAction/closePopup",
     "MainAbility/pages/timePickerDialog/timePickerDialogEnableHapticFeedback",
