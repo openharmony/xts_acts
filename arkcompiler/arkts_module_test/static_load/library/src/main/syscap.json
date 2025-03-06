@@ -3,7 +3,9 @@
         "general": [],
         "custom": [
             {
-                "xts": []
+                "xts": [
+                    "SystemCapability.Startup.SystemInfo"
+                ]
             }
         ]
     }
