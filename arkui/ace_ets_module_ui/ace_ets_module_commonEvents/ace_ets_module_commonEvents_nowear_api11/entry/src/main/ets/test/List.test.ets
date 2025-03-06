@@ -15,9 +15,11 @@
 import dragAdaptationTest from './DragController/dragAdaptationTest.test';
 import createDragAction from './DragController/createDragAction.test';
 import setForegroundColor from './DragController/setForegroundColor.test';
+import parentX_parentY_strategy_Test from './onChildTouchTestTest/ComAttr_parentX_parentY_strategy.test';
 
 export default function testsuite() {
   dragAdaptationTest()
   createDragAction()
   setForegroundColor()
+  parentX_parentY_strategy_Test();
 }
