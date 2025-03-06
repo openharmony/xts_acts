@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import NativeBundleGetMainElementNameTest from './NativeBundleGetMainElementNameTest';
+import getSignatureInfo from "./getSignatureInfo.test";
 
 export default function testsuite() {
   NativeBundleGetMainElementNameTest();
+  getSignatureInfo();
 }

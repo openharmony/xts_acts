@@ -44,6 +44,11 @@
           }
         ]
       }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.GET_SIGNATURE_INFO"
+      }
     ]
   }
 }
