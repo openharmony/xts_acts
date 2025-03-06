@@ -30,88 +30,31 @@ class TestValues {
   expectValue: ESObject
 }
 
-export default function stateStylesTest() {
+export default function stateStylesTestTwo() {
   let supportView = [
-    'AlphabetIndexer',
-    'Button',
-    'Blank',
     'Checkbox',
     'CheckboxGroup',
-    'DataPanel',
-    'DatePicker',
-    'Divider',
-    'Gauge',
-    'Image',
-    'ImageAnimator',
-    'LoadingProgress',
-    'Marquee',
-    'Menu',
-    'MenuItem',
-    'MenuItemGroup',
-    'Navigation',
-    'NavRouter',
-    'Progress',
-    'QRCode',
     'Radio',
-    'Rating',
-    'ScrollBar',
-    'Search',
-    'Slider',
-    'Text',
-    'TextArea',
-    'TextClock',
-    'TextInput',
-    'TextPicker',
-    'TextTimer',
-    'TimePicker',
     'Toggle',
-    'Badge',
-    'Column',
-    'Counter',
-    'Flex',
-    'GridCol',
-    'GridRow',
-    'Grid',
-    'GridItem',
-    'List',
-    'ListItem',
-    'ListItemGroup',
-    'Navigator',
-    'Panel',
-    'Refresh',
-    'RelativeContainer',
-    'Row',
-    'Scroll',
-    'Stack',
-    'Swiper',
-    'Tabs',
-    'TabContent',
-    'Circle',
-    'Ellipse',
-    'Polyline',
-    'Polygon',
-    'Path',
-    'Rect',
-    'Shape',
-    'Line'
+    'MenuItem'
   ]
 
   let pageConfig: PageConfig = {
-    testName: 'testStateStyles',
-    pageName: 'StateStylesPage',
-    pageUrl: 'MainAbility/pages/stateStyles/StateStylesPage'
+    testName: 'testStateStylesTwo',
+    pageName: 'StateStylesPageTwo',
+    pageUrl: 'MainAbility/pages/stateStyles/StateStylesPageTwo'
   }
 
   let testValues: TestValues[] = [{
-    describe: 'SetDisabled',
+    describe: 'SetSelected',
     setValue: false,
     expectValue: {
-      disabledStyles: 2,
+      selectedStyles: 2,
       normalStyles: 1
     }
   }]
 
-  describe('StateStylesTest', () => {
+  describe('StateStylesTestTwo', () => {
     CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       //Obtain target component information before changes
       let targetBeforeObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
@@ -125,9 +68,11 @@ export default function stateStylesTest() {
 
       //Check results
       console.info('[' + data.caseTag + ']' + 'targetBeforeObj.$attrs.zIndex is:' + targetBeforeObj.$attrs.zIndex);
-      expect(targetBeforeObj.$attrs.zIndex).assertEqual(data.testValue.expectValue.normalStyles);
+      console.info('[' + data.caseTag + ']' + 'data.testValue.expectValue.selectedStyles is:' + data.testValue.expectValue.selectedStyles);
+      expect(targetBeforeObj.$attrs.zIndex).assertEqual(data.testValue.expectValue.selectedStyles);
       console.info('[' + data.caseTag + ']' + 'targetAfterObj.$attrs.zIndex is:' + targetAfterObj.$attrs.zIndex);
-      expect(targetAfterObj.$attrs.zIndex).assertEqual(data.testValue.expectValue.disabledStyles);
+      console.info('[' + data.caseTag + ']' + 'data.testValue.expectValue.normalStyles is:' + data.testValue.expectValue.normalStyles);
+      expect(targetAfterObj.$attrs.zIndex).assertEqual(data.testValue.expectValue.normalStyles);
     });
   })
 }
