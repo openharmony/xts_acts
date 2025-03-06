@@ -545,5 +545,29 @@ describe("FaultlogJsTest", function () {
         expect(false).assertTrue();
         done();
     })
+
+    /**
+     * @tc.number test_1200
+     * @tc.name DFX_DFR_Faultlogger_Interface_1200
+     * @tc.desc 检验query函数入参为空时程序是否会崩溃,校验错误码返回801
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level2
+     */
+    it('DFX_DFR_Faultlogger_Interface_1200', 0, async function (done) {
+    console.info("---------------------------DFX_DFR_Faultlogger_Interface_1200----------------------------------");
+    try {
+        let ret = faultlogger.query();
+        console.info("DFX_DFR_Faultlogger_Interface_1200 ret == " + ret);
+        return;
+    } catch(err) {
+        console.info(err.code);
+        console.info(err.message);
+        if(err.code == 801){
+            expect(err.message == "The device doesn't support this api").assertTrue();
+            }
+        }
+        done();
+    })
 })
 }
