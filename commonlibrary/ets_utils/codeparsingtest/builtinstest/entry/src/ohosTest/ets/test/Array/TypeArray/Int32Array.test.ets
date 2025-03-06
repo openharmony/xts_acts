@@ -1869,5 +1869,1647 @@ export default function Int32ArrayTest() {
       }
     });
 
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_9100
+     * @tc.name       : testInt32Constructor0091
+     * @tc.desc       : Testing Constructor of Int32Array with threshold value([-2147483648]),and get value of index 0 is -2147483648.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0091', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0091";
+      try {
+        let array = new Int32Array([-2147483648]);
+        expect(array[0]).assertEqual(-2147483648);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_9200
+     * @tc.name       : testInt2Constructor0092
+     * @tc.desc       : Testing Constructor of Int32Array with out of bounds value([-2147483649]),
+     * and get value of index 0 is 2147483647.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0092', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0092";
+      try {
+        let array = new Int32Array([-2147483649]);
+        expect(array[0]).assertEqual(2147483647);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_9300
+     * @tc.name       : testInt32Constructor0093
+     * @tc.desc       : Testing Constructor of Int32Array with threshold value([2147483647]),
+     * and get value of index 0 is 2147483647.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0093', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0093";
+      try {
+        let array = new Int32Array([2147483647]);
+        expect(array[0]).assertEqual(2147483647);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_9400
+     * @tc.name       : testInt32Constructor0094
+     * @tc.desc       : Testing Constructor of Int32Array with out of bounds value([2147483648]),
+     * and get value of index 0 is -2147483648.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0094', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0094";
+      try {
+        let array = new Int32Array([2147483648]);
+        expect(array[0]).assertEqual(-2147483648);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_9500
+     * @tc.name       : testInt32Constructor0095
+     * @tc.desc       : Testing Constructor of Int32Array with Uint8Array threshold value([0]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0095', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0095";
+      try {
+        let array = new Int32Array(new Uint8Array([0]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_9600
+     * @tc.name       : testInt32Constructor0096
+     * @tc.desc       : Testing Constructor of Int32Array with Uint8Array out of bounds value([-1]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0096', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0096";
+      try {
+        let array = new Int32Array(new Uint8Array([-1]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_9700
+     * @tc.name       : testInt32Constructor0097
+     * @tc.desc       : Testing Constructor of Int32Array with Uint8Array threshold value([255]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0097', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0097";
+      try {
+        let array = new Int32Array(new Uint8Array([255]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_9800
+     * @tc.name       : testInt32Constructor0098
+     * @tc.desc       : Testing Constructor of Int32Array with Uint8Array value([254]),
+     * and get value of index 0 is 254.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0098', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0098";
+      try {
+        let array = new Int32Array(new Uint8Array([254]));
+        expect(array[0]).assertEqual(254);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_9900
+     * @tc.name       : testInt32Constructor0099
+     * @tc.desc       : Testing Constructor of Int32Array with Uint8Array out of bounds value([256]),
+     * and get value of index 0 is xxx.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0099', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0099";
+      try {
+        let array = new Int32Array(new Uint8Array([256]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_10000
+     * @tc.name       : testInt32Constructor0100
+     * @tc.desc       : Testing Constructor of Int32Array with Uint8ClampedArray threshold value([0]),
+     * and get value of index 0 is xxx.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0100";
+      try {
+        let array = new Int32Array(new Uint8ClampedArray([0]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_10100
+     * @tc.name       : testInt32Constructor0101
+     * @tc.desc       : Testing Constructor of Int32Array with Uint8ClampedArray out of bounds value([-1]),
+     * and get value of index 0 is xxxxx.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0101";
+      try {
+        let array = new Int32Array(new Uint8ClampedArray([-1]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_10200
+     * @tc.name       : testInt32Constructor0102
+     * @tc.desc       : Testing Constructor of Int32Array with Uint8ClampedArray threshold value([255]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0102";
+      try {
+        let array = new Int32Array(new Uint8ClampedArray([255]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_10300
+     * @tc.name       : testInt32Constructor0103
+     * @tc.desc       : Testing Constructor of Int32Array with Uint8ClampedArray out of bounds value([256]),
+     * and get value of index 0 is 255.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0103";
+      try {
+        let array = new Int32Array(new Uint8ClampedArray([256]));
+        expect(array[0]).assertEqual(255);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_10400
+     * @tc.name       : testInt32Constructor0104
+     * @tc.desc       : Testing Constructor of Int32Array with Uint8ClampedArray value([254]),
+     * and get value of index 0 is 254.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0104";
+      try {
+        let array = new Int32Array(new Uint8ClampedArray([254]));
+        expect(array[0]).assertEqual(254);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_10500
+     * @tc.name       : testInt32Constructor0105
+     * @tc.desc       : Testing Constructor of Int32Array with Int16Array threshold value([-32768]),
+     * and get value of index 0 is -32768.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0105";
+      try {
+        let array = new Int32Array(new Int16Array([-32768]));
+        expect(array[0]).assertEqual(-32768);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_10600
+     * @tc.name       : testInt32Constructor0106
+     * @tc.desc       : Testing Constructor of Int32Array with Int16Array out of bounds value([-32769]),
+     * and get value of index 0 is 32767.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0106";
+      try {
+        let array = new Int32Array(new Int16Array([-32769]));
+        expect(array[0]).assertEqual(32767);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_10700
+     * @tc.name       : testInt32Constructor0107
+     * @tc.desc       : Testing Constructor of Int32Array with Int16Array threshold value([32767]),
+     * and get value of index 0 is 32767.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0107";
+      try {
+        let array = new Int32Array(new Int16Array([32767]));
+        expect(array[0]).assertEqual(32767);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_10800
+     * @tc.name       : testInt32Constructor0108
+     * @tc.desc       : Testing Constructor of Int32Array with Int16Array out of bounds value([32768]),
+     * and get value of index 0 is -32768.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0108";
+      try {
+        let array = new Int32Array(new Int16Array([32768]));
+        expect(array[0]).assertEqual(-32768);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_10900
+     * @tc.name       : testInt32Constructor0109
+     * @tc.desc       : Testing Constructor of Int32Array with Int16Array value([32766]),
+     * and get value of index 0 is 32766.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0109', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0109";
+      try {
+        let array = new Int32Array(new Int16Array([32766]));
+        expect(array[0]).assertEqual(32766);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_11000
+     * @tc.name       : testInt32Constructor0110
+     * @tc.desc       : Testing Constructor of Int32Array with Uint16Array threshold value([0]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0110";
+      try {
+        let array = new Int32Array(new Uint16Array([0]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_11100
+     * @tc.name       : testInt32Constructor0111
+     * @tc.desc       : Testing Constructor of Int32Array with Uint16Array out of bounds value([-1]),
+     * and get value of index 0 is 65535.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0111', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0111";
+      try {
+        let array = new Int32Array(new Uint16Array([-1]));
+        expect(array[0]).assertEqual(65535);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_11200
+     * @tc.name       : testInt32Constructor0112
+     * @tc.desc       : Testing Constructor of Int32Array with Uint16Array threshold value([65535]),
+     * and get value of index 0 is 65535.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0112', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0112";
+      try {
+        let array = new Int32Array(new Uint16Array([65535]));
+        expect(array[0]).assertEqual(65535);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_11300
+     * @tc.name       : testInt32Constructor0113
+     * @tc.desc       : Testing Constructor of Int32Array with Uint16Array out of bounds value([65536]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0113', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0113";
+      try {
+        let array = new Int32Array(new Uint16Array([65536]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_11400
+     * @tc.name       : testInt32Constructor0114
+     * @tc.desc       : Testing Constructor of Int32Array with Uint16Array value([65534]),
+     * and get value of index 0 is 65534.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0114', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0114";
+      try {
+        let array = new Int32Array(new Uint16Array([65534]));
+        expect(array[0]).assertEqual(65534);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_11500
+     * @tc.name       : testInt32Constructor0115
+     * @tc.desc       : Testing Constructor of Int32Array with Int8Array threshold value([-128]),
+     * and get value of index 0 is -128.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0115', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0115";
+      try {
+        let array = new Int32Array(new Int8Array([-128]));
+        expect(array[0]).assertEqual(-128);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_11600
+     * @tc.name       : testInt32Constructor0116
+     * @tc.desc       : Testing Constructor of Int32Array with Int8Array out of bounds value([-129]),
+     * and get value of index 0 is 127.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0116', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0116";
+      try {
+        let array = new Int32Array(new Int8Array([-129]));
+        expect(array[0]).assertEqual(127);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_11700
+     * @tc.name       : testInt32Constructor0117
+     * @tc.desc       : Testing Constructor of Int32Array with Int8Array threshold value([127]),
+     * and get value of index 0 is 127.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0117', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0117";
+      try {
+        let array = new Int32Array(new Int8Array([127]));
+        expect(array[0]).assertEqual(127);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_11800
+     * @tc.name       : testInt32Constructor0118
+     * @tc.desc       : Testing Constructor of Int32Array with Int8Array out of bounds value([128]),
+     * and get value of index 0 is -128.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0118', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0118";
+      try {
+        let array = new Int32Array(new Int8Array([128]));
+        expect(array[0]).assertEqual(-128);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_11900
+     * @tc.name       : testInt32Constructor0119
+     * @tc.desc       : Testing Constructor of Int32Array with Int8Array value([126]),
+     * and get value of index 0 is 126.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0119', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0119";
+      try {
+        let array = new Int32Array(new Int8Array([126]));
+        expect(array[0]).assertEqual(126);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_12000
+     * @tc.name       : testInt32Constructor0120
+     * @tc.desc       : Testing Constructor of Int32Array with Uint32Array threshold value([0]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0120";
+      try {
+        let array = new Int32Array(new Uint32Array([0]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_12100
+     * @tc.name       : testInt32Constructor0121
+     * @tc.desc       : Testing Constructor of Int32Array with Uint32Array out of bounds value([-1]),
+     * and get value of index 0 is -1.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0121', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0121";
+      try {
+        let array = new Int32Array(new Uint32Array([-1]));
+        expect(array[0]).assertEqual(-1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_12200
+     * @tc.name       : testInt32Constructor0122
+     * @tc.desc       : Testing Constructor of Int32Array with Uint32Array threshold value([4294967295]),
+     * and get value of index 0 is -1.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0122', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0122";
+      try {
+        let array = new Int32Array(new Uint32Array([4294967295]));
+        expect(array[0]).assertEqual(-1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_12300
+     * @tc.name       : testInt32Constructor0123
+     * @tc.desc       : Testing Constructor of Int32Array with Uint32Array out of bounds value([4294967296]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0123', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0123";
+      try {
+        let array = new Int32Array(new Uint32Array([4294967296]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_12400
+     * @tc.name       : testInt32Constructor0124
+     * @tc.desc       : Testing Constructor of Int32Array with Uint32Array value([4294967294]),
+     * and get value of index 0 is -2.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0124', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0124";
+      try {
+        let array = new Int32Array(new Uint32Array([4294967294]));
+        expect(array[0]).assertEqual(-2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_12500
+     * @tc.name       : testInt32Constructor0125
+     * @tc.desc       : Testing Constructor of Int32Array with Float32Array threshold value([-3.4028235 * 10^38]),
+     * and get value of index 0 is -8.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0125', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0125";
+      try {
+        let MIN_VALUE = -3.4028235 * 10^38;
+        let array = new Int32Array(new Float32Array([MIN_VALUE]));
+        expect(array[0]).assertEqual(-8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_12600
+     * @tc.name       : testInt32Constructor0126
+     * @tc.desc       : Testing Constructor of Int32Array with Float32Array out of bounds value([-3.4028235 * 10^38 -1]),
+     * and get value of index 0 is -5.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0126', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0126";
+      try {
+        let MIN_VALUE = -3.4028235 * 10^38 -1;
+        let array = new Int32Array(new Float32Array([MIN_VALUE]));
+        expect(array[0]).assertEqual(-5);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_12700
+     * @tc.name       : testInt32Constructor0127
+     * @tc.desc       : Testing Constructor of Int32Array with Float32Array threshold value([3.4028235 × 10^38]),
+     * and get value of index 0 is 4.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0127', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0127";
+      try {
+        let MAX_VALUE = 3.4028235 * 10^38;
+        let array = new Int32Array(new Float32Array([MAX_VALUE]));
+        expect(array[0]).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_12800
+     * @tc.name       : testInt32Constructor0128
+     * @tc.desc       : Testing Constructor of Int32Array with Float32Array out of bounds value([3.4028235 × 10^38 + 1]),
+     * and get value of index 0 is 5.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0128', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0128";
+      try {
+        let MAX_VALUE = 3.4028235 * 10^38 + 1;
+        let array = new Int32Array(new Float32Array([MAX_VALUE]));
+        expect(array[0]).assertEqual(5);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_12900
+     * @tc.name       : testInt32Constructor0129
+     * @tc.desc       : Testing Constructor of Int32Array with Float64Array threshold value([-1.8e308]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0129', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0129";
+      try {
+        let MIN_VALUE = -1.8e308;
+        let array = new Int32Array(new Float64Array([MIN_VALUE]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_13000
+     * @tc.name       : testInt32Constructor0130
+     * @tc.desc       : Testing Constructor of Int32Array with Float64Array out of bounds value([-1.8e308 -1]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0130";
+      try {
+        let MIN_VALUE = -1.8e308 -1;
+        let array = new Int32Array(new Float64Array([MIN_VALUE]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_13100
+     * @tc.name       : testInt32Constructor0131
+     * @tc.desc       : Testing Constructor of Int32Array with Float64Array threshold value([1.8e308]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0131', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0131";
+      try {
+        let MAX_VALUE = 1.8e308;
+        let array = new Int32Array(new Float64Array([MAX_VALUE]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_13200
+     * @tc.name       : testInt32Constructor0132
+     * @tc.desc       : Testing Constructor of Int32Array with Float64Array out of bounds value([1.8e308 + 1]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0132', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0132";
+      try {
+        let MAX_VALUE = 1.8e308 + 1;
+        let array = new Int32Array(new Float64Array([MAX_VALUE]));
+        expect(array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_13300
+     * @tc.name       : testInt32Constructor0133
+     * @tc.desc       : Testing Constructor of Int32Array with BigInt64Array threshold value([-(2^63)]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0133', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0133";
+      try {
+        // creat bigInt64Array
+        const bigint64Array = new BigInt64Array([-9223372036854775808n]);
+        console.info(`${TAG} bigint64Array is: ${bigint64Array}`);
+        // new Int32Array
+        const byteLength = bigint64Array.buffer.byteLength;
+        const int32Array  = new Int32Array(byteLength * 3); // because Int32 is 4 byte，BigInt64 is 8 byte，buffer * 2.
+
+        let offset = 0;
+        for (const num of bigint64Array) {
+          // BigInt => Int32Array
+          const bytes = new Int32Array(BigInt(num).toString().split('').map(n => parseInt(n)));
+          console.info(`${TAG} bytes is: ${bytes}`);
+          int32Array .set(bytes, offset);
+          offset += bytes.length;
+        }
+        expect(int32Array[0]).assertEqual(0);
+        expect(int32Array[1]).assertEqual(9);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_13400
+     * @tc.name       : testInt32Constructor0134
+     * @tc.desc       : Testing Constructor of Int32Array with BigInt64Array out of bounds value([-(2^63) -1]),
+     * and get value of index 0 is 9.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0134', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0134";
+      try {
+        // creat bigInt64Array
+        const bigint64Array = new BigInt64Array([-9223372036854775809n]);
+        console.info(`${TAG} bigint64Array is: ${bigint64Array}`);
+        // new Int32Array
+        const byteLength = bigint64Array.buffer.byteLength;
+        const int32Array  = new Int32Array(byteLength * 3); // because Int32 is 4 byte，BigInt64 is 8 byte，buffer * 2.
+
+        let offset = 0;
+        for (const num of bigint64Array) {
+          // BigInt => Int32Array
+          const bytes = new Int32Array(BigInt(num).toString().split('').map(n => parseInt(n)));
+          console.info(`${TAG} bytes is: ${bytes}`);
+          int32Array .set(bytes, offset);
+          offset += bytes.length;
+        }
+        expect(int32Array[0]).assertEqual(9);
+        expect(int32Array[1]).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_13500
+     * @tc.name       : testInt32Constructor0135
+     * @tc.desc       : Testing Constructor of Int32Array with BigInt64Array threshold value([2^63 - 1]),
+     * and get value of index 0 is error.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0135', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0135";
+      try {
+        // creat bigInt64Array
+        const bigint64Array = new BigInt64Array([9223372036854775807n]);
+        console.info(`${TAG} bigint64Array is: ${bigint64Array}`);
+        // new Int32Array
+        const byteLength = bigint64Array.buffer.byteLength;
+        const int32Array  = new Int32Array(byteLength * 3); // because Int32 is 4 byte，BigInt64 is 8 byte，buffer * 2.
+
+        let offset = 0;
+        for (const num of bigint64Array) {
+          // BigInt => Int32Array
+          const bytes = new Int32Array(BigInt(num).toString().split('').map(n => parseInt(n)));
+          console.info(`${TAG} bytes is: ${bytes}`);
+          int32Array .set(bytes, offset);
+          offset += bytes.length;
+        }
+        expect(int32Array[0]).assertEqual(9);
+        expect(int32Array[1]).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_13600
+     * @tc.name       : testInt32Constructor0136
+     * @tc.desc       : Testing Constructor of Int32Array with BigInt64Array out of bounds value([2^63]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0136', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0136";
+      try {
+        // creat bigInt64Array
+        const bigint64Array = new BigInt64Array([9223372036854775808n]);
+        console.info(`${TAG} bigint64Array is: ${bigint64Array}`);
+        // new Int32Array
+        const byteLength = bigint64Array.buffer.byteLength;
+        const int32Array  = new Int32Array(byteLength * 3); // because Int32 is 4 byte，BigInt64 is 8 byte，buffer * 2.
+
+        let offset = 0;
+        for (const num of bigint64Array) {
+          // BigInt => Int32Array
+          const bytes = new Int32Array(BigInt(num).toString().split('').map(n => parseInt(n)));
+          console.info(`${TAG} bytes is: ${bytes}`);
+          int32Array .set(bytes, offset);
+          offset += bytes.length;
+        }
+        expect(int32Array[0]).assertEqual(0);
+        expect(int32Array[1]).assertEqual(9);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_13700
+     * @tc.name       : testInt32Constructor0137
+     * @tc.desc       : Testing Constructor of Int32Array with BigUint64Array threshold value([0]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0137', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0137";
+      try {
+        // creat bigInt64Array
+        const bigUint64Array = new BigUint64Array([0n]);
+        // new Int32Array
+        const byteLength = bigUint64Array.buffer.byteLength;
+        const int32Array  = new Int32Array(byteLength * 2); // because Int32 is 4 byte，BigInt64 is 8 byte，buffer * 2.
+
+        let offset = 0;
+        for (const num of bigUint64Array) {
+          // BigInt => Int32Array
+          const bytes = new Int32Array(BigInt(num).toString().split('').map(n => parseInt(n)));
+          int32Array .set(bytes, offset);
+          offset += bytes.length;
+        }
+        expect(int32Array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_13800
+     * @tc.name       : testInt32Constructor0138
+     * @tc.desc       : Testing Constructor of Int32Array with BigUint64Array out of bounds value([-1]),
+     * and get value of index 0 is 1.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0138', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0138";
+      try {
+        // creat bigInt64Array
+        const bigUint64Array = new BigUint64Array([-1n]);
+        // new Int8Array
+        const byteLength = bigUint64Array.buffer.byteLength;
+        console.info(`${TAG} byteLength is: ${byteLength}`);
+        const int32Array  = new Int32Array(byteLength * 3); // because Int8 is 1 byte，BigInt64 is 8 byte，buffer * 2.
+
+        let offset = 0;
+        for (const num of bigUint64Array) {
+          // BigInt => Int32Array
+          const bytes = new Int32Array(BigInt(num).toString().split('').map(n => parseInt(n)));
+          int32Array.set(bytes, offset);
+          offset += bytes.length;
+        }
+        expect(int32Array[0]).assertEqual(1);
+        expect(int32Array[1]).assertEqual(8);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_13900
+     * @tc.name       : testInt32Constructor0139
+     * @tc.desc       : Testing Constructor of Int32Array with BigUint64Array threshold value([2^64-1n]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0139', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0139";
+      try {
+        // creat bigInt64Array
+        const bigUint64Array = new BigUint64Array([18446744073709551615n]);
+        // new Int8Array
+        const byteLength = bigUint64Array.buffer.byteLength;
+        console.info(`${TAG} byteLength is: ${byteLength}`);
+        const int32Array  = new Int32Array(byteLength * 3); // because Int32 is 4 byte，BigInt64 is 8 byte，buffer * 2.
+
+        let offset = 0;
+        for (const num of bigUint64Array) {
+          // BigInt => Int32Array
+          const bytes = new Int32Array(BigInt(num).toString().split('').map(n => parseInt(n)));
+          int32Array.set(bytes, offset);
+          offset += bytes.length;
+        }
+        expect(int32Array[0]).assertEqual(1);
+        expect(int32Array[2]).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAY_CONSTRUCTOR_14000
+     * @tc.name       : testInt32Constructor0140
+     * @tc.desc       : Testing Constructor of Int32Array with BigUint64Array out of bounds value([2^64n]),
+     * and get value of index 0 is 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32Constructor0140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32Constructor0140";
+      try {
+        // creat bigInt64Array
+        const bigUint64Array = new BigUint64Array([18446744073709551616n]);
+        console.info(`${TAG} BigUint64Array is: ${bigUint64Array}`);
+        // new Int32Array
+        const byteLength = bigUint64Array.buffer.byteLength;
+        const int32Array  = new Int32Array(byteLength * 3); // because Int32 is 4 byte，BigInt64 is 8 byte，buffer * 2.
+
+        let offset = 0;
+        for (const num of bigUint64Array) {
+          // BigInt => Int32Array
+          const bytes = new Int32Array(BigInt(num).toString().split('').map(n => parseInt(n)));
+          console.error(`${TAG} bytes, is: ${bytes}`);
+          int32Array.set(bytes, offset);
+          offset += bytes.length;
+        }
+        expect(int32Array[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYOF_14100
+     * @tc.name       : testInt32ArrayOf0141
+     * @tc.desc       : Testing static function of, of Int32Array value is positive infinity(+infinity).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayOf0141', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayOf0141";
+      try {
+        let infinity = 1 / 0;
+        let array = Int32Array.of(infinity);
+        expect(array[0]).assertEqual(0);
+        expect(array[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYOF_14200
+     * @tc.name       : testInt32ArrayOf0142
+     * @tc.desc       : Testing static function of, of Int32Array value is negative infinity(-infinity).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayOf0142', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayOf0142";
+      try {
+        let infinity = -1 / 0;
+        let array = Int32Array.of(infinity);
+        expect(array[0]).assertEqual(0);
+        expect(array[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYOF_14300
+     * @tc.name       : testInt32ArrayOf0143
+     * @tc.desc       : Testing static function of, of Int32Array value is (NaN).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayOf0143', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayOf0143";
+      try {
+        let nan = 0 / 0;
+        let array = Int32Array.of(nan);
+        expect(array[0]).assertEqual(0);
+        expect(array[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYOF_14400
+     * @tc.name       : testInt32ArrayOf0144
+     * @tc.desc       : Testing static function of, of Int32Array value is bigint(12345678901234567890n).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayOf0144', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayOf0144";
+      try {
+        let bigintValue = BigInt(12345678901234567890n);
+        let numberValue = Number(bigintValue);
+        let int32Array = Int32Array.of(numberValue);
+        console.info(`${TAG} int32Array is: ${int32Array}`);
+        expect(int32Array[0]).assertEqual(-350287872);
+        expect(int32Array[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYOF_14500
+     * @tc.name       : testInt32ArrayOf0145
+     * @tc.desc       : Testing static function of, of Int32Array threshold value is MAX_NUMBER(2147483647).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayOf0145', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayOf0145";
+      try {
+        let array = Int32Array.of(2147483647);
+        expect(array[0]).assertEqual(2147483647);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYOF_14600
+     * @tc.name       : testInt32ArrayOf0146
+     * @tc.desc       : Testing static function of, of Int32Array threshold value is MIN_NUMBER(-2147483648).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayOf0146', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayOf0146";
+      try {
+        let array = Int32Array.of(-2147483648);
+        expect(array[0]).assertEqual(-2147483648);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYOF_14700
+     * @tc.name       : testInt32ArrayOf0147
+     * @tc.desc       : Testing static function of, Int32Array value is out of bounds (-2147483649).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayOf0147', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayOf0147";
+      try {
+        let array = Int32Array.of(-2147483649);
+        expect(array[0]).assertEqual(2147483647);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYOF_14800
+     * @tc.name       : testInt32ArrayOf0148
+     * @tc.desc       : Testing static function of, Int32Array value is out of bounds (2147483648).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayOf0148', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayOf0148";
+      try {
+        let array = Int32Array.of(2147483648);
+        expect(array[0]).assertEqual(-2147483648);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYOF_14900
+     * @tc.name       : testInt32ArrayOf0149
+     * @tc.desc       : Testing static function of, Int32Array value is normal (2147483646).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayOf0149', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayOf0149";
+      try {
+        let array = Int32Array.of(2147483646);
+        expect(array[0]).assertEqual(2147483646);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYOF_15000
+     * @tc.name       : testInt32ArrayOf0150
+     * @tc.desc       : Testing static function of, Int32Array value is normal (null).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayOf0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayOf0150";
+      try {
+        expect(Constants.int32OfTestNumber3[0]).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYFROM_15100
+     * @tc.name       : testInt32ArrayFrom0151
+     * @tc.desc       : Testing static function from => func of Int32Array, value is normal (+infinity).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayFrom0151', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayFrom0151";
+      try {
+        let infinity = 1/0;
+        let array = Int32Array.from([infinity]);
+        expect(array[0]).assertEqual(0);
+        expect(array[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYFROM_15200
+     * @tc.name       : testInt32ArrayFrom0152
+     * @tc.desc       : Testing static function from => func of Int32Array, value is normal (-infinity).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayFrom0152', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayFrom0152";
+      try {
+        let infinity = -1/0;
+        let array = Int32Array.from([infinity]);
+        expect(array[0]).assertEqual(0);
+        expect(array[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYFROM_15300
+     * @tc.name       : testInt32ArrayFrom0153
+     * @tc.desc       : Testing static function from => func of Int32Array, value is normal (NaN).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayFrom0153', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayFrom0153";
+      try {
+        let nan = 0/0;
+        let array = Int32Array.from([nan]);
+        expect(array[0]).assertEqual(0);
+        expect(array[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYFROM_15400
+     * @tc.name       : testInt32ArrayFrom0154
+     * @tc.desc       : Testing static function from => func of Int32Array, value is normal ([1,2,3]).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayFrom0154', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayFrom0154";
+      try {
+        let array = Int32Array.from([1,2,3]);
+        expect(array[0]).assertEqual(1);
+        expect(array[1]).assertEqual(2);
+        expect(array[2]).assertEqual(3);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYFROM_15500
+     * @tc.name       : testInt32ArrayFrom0155
+     * @tc.desc       : Testing static function from => func of Int32Array, value is normal ([1.1,2.83]).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayFrom0155', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayFrom0155";
+      try {
+        let array = Int32Array.from([1.1,2.83]);
+        expect(array[0]).assertEqual(1);
+        expect(array[1]).assertEqual(2);
+        expect(array[2]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYFROM_15600
+     * @tc.name       : testInt32ArrayFrom0156
+     * @tc.desc       : Testing static function from => func of Int32Array, value is normal ([12345678901234567890n]).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayFrom0156', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayFrom0156";
+      try {
+        let bigintValue = BigInt(12345678901234567890n);
+        let numberValue = Number(bigintValue);
+        let array = Int32Array.from([numberValue]);
+        expect(array[0]).assertEqual(-350287872);
+        expect(array[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYFROM_15700
+     * @tc.name       : testInt32ArrayFrom0157
+     * @tc.desc       : Testing static function from => func of Int32Array, value is normal (obj).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayFrom0157', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayFrom0157";
+      try {
+        expect(Constants.int32ConstructTestArray7[0]).assertEqual(1);
+        expect(Constants.int32ConstructTestArray7[1]).assertEqual(2);
+        expect(Constants.int32ConstructTestArray7[2]).assertEqual(3);
+        expect(Constants.int32ConstructTestArray7[3]).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYFROM_15800
+     * @tc.name       : testInt32ArrayFrom0158
+     * @tc.desc       : Testing static function from => func of Int32Array, value is normal (obj).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayFrom0158', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayFrom0158";
+      try {
+        expect(Constants.int32ConstructTestArray8[0]).assertEqual(1);
+        expect(Constants.int32ConstructTestArray8[1]).assertEqual(2);
+        expect(Constants.int32ConstructTestArray8[2]).assertEqual(3);
+        expect(Constants.int32ConstructTestArray8[3]).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYFROM_15900
+     * @tc.name       : testInt32ArrayFrom0159
+     * @tc.desc       : Testing static function from => func of Int32Array, value is normal (obj).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayFrom0159', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayFrom0159";
+      try {
+        expect(Constants.int32ConstructTestArray9[0]).assertEqual(1);
+        expect(Constants.int32ConstructTestArray9[1]).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYFROM_16000
+     * @tc.name       : testInt32ArrayFrom0160
+     * @tc.desc       : Testing static function from => func of Int32Array, value is normal (Sequence).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayFrom0160', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayFrom0160";
+      try {
+        expect(Constants.int32ArrayNumber1[0]).assertEqual(1);
+        expect(Constants.int32ArrayNumber1[1]).assertEqual(2);
+        expect(Constants.int32ArrayNumber1[2]).assertEqual(3);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYFROM_16100
+     * @tc.name       : testInt32ArrayFrom0161
+     * @tc.desc       : Testing static function from => func of Int32Array, value is normal (Sequence).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayFrom0161', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayFrom0161";
+      try {
+        expect(Constants.int32ConstructTestArray10[0]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYFROM_16200
+     * @tc.name       : testInt32ArrayFrom0162
+     * @tc.desc       : Testing static function from => func of Int32Array, value is normal (Sequence).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayFrom0162', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayFrom0162";
+      try {
+        expect(Constants.int32ConstructTestArray11[0]).assertEqual(5);
+        expect(Constants.int32ConstructTestArray11[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYFROM_16300
+     * @tc.name       : testInt32ArrayFrom0163
+     * @tc.desc       : Testing static function from => func of Int32Array, value is normal (Non-array-like objects).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayFrom0163', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayFrom0163";
+      try {
+        expect(Constants.int32ConstructTestArray12[0]).assertEqual(undefined);
+        expect(Constants.int32ConstructTestArray12[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYFROM_16400
+     * @tc.name       : testInt32ArrayFrom0164
+     * @tc.desc       : Testing static function from => func of Int32Array, value is normal (Non-iterable objects).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayFrom0164', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayFrom0164";
+      try {
+        expect(Constants.int32ConstructTestArray13[0]).assertEqual(1);
+        expect(Constants.int32ConstructTestArray13[1]).assertEqual(2);
+        expect(Constants.int32ConstructTestArray13[2]).assertEqual(3);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYFROM_16500
+     * @tc.name       : testInt32ArrayFrom0165
+     * @tc.desc       : Testing static function from => func of Int32Array, value is normal (sequence).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayFrom0165', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayFrom0165";
+      try {
+        expect(Constants.int32ArrayNumber2[0]).assertEqual('a');
+        expect(Constants.int32ArrayNumber2[1]).assertEqual('b');
+        expect(Constants.int32ArrayNumber2[2]).assertEqual('c');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_INT32ARRAYFROM_16600
+     * @tc.name       : testInt32ArrayFrom0166
+     * @tc.desc       : Testing static function from => func of Int32Array, value is normal (sequence).
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testInt32ArrayFrom0166', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testInt32ArrayFrom0166";
+      try {
+        expect(Constants.int32ArrayNumber3[0]).assertEqual(undefined);
+        expect(Constants.int32ArrayNumber3[1]).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
   })
 }
