@@ -606,10 +606,10 @@ function testSetDisallowedPolicy() {
     try {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_MAINTENANCE_MODE, true);
       expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_MAINTENANCE_MODE)).assertTrue();
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_MAINTENANCE_MODE, false);
     } catch (error) {
       expect(false).assertTrue();
     } finally {
-      restrictions.setDisallowedPolicy(SELFWANT, LABEL_MAINTENANCE_MODE, false);
       await adminManager.disableAdmin(SELFWANT);
     }
     done();
