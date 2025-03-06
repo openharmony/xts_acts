@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
 import {
@@ -86,6 +85,36 @@ export default function getAssetsTest () {
       }
     }
 
+    const getAssetsAbnormalCallbackWithInvalidTest = async (done: Function, testNum: string,
+      fetchOps: photoAccessHelper.FetchOptions | "invalid" ) => {
+      try {
+        helper.getAssets(fetchOps as photoAccessHelper.FetchOptions, (err, fetchResult) => {
+          try {
+            if (err !== undefined) {
+              console.info(`${testNum} getAssets failed; err: ${err},  ${err.code}`);
+              expect(false).assertTrue();
+              done();
+            } else {
+              console.info(`${testNum} getAssets suc; fetchResult: ${fetchResult.getCount()}`);
+              fetchResult.close();
+              expect(false).assertTrue();
+              done();
+            }
+            done();
+          } catch (error) {
+            console.info(`${testNum} getAssets failed; error: ${error},  ${error.code}`);
+            expect(false).assertTrue();
+            done();
+          }
+          done();
+        });
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error},  ${error.code}`);
+        expect(error.code).assertEqual('14000011');
+        done();
+      }
+    }
+
     const getAssetsPromiseTest = async (done: Function, testNum: string, fetchOps: photoAccessHelper.FetchOptions,
       expectCount: number) => {
       try {
@@ -108,6 +137,19 @@ export default function getAssetsTest () {
         done();
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
+        done();
+      }
+    }
+
+    const getAssetsAbnormalPromiseWithInvalidTest = async (done: Function, testNum: string,
+      fetchOps: photoAccessHelper.FetchOptions | "invalid") => {
+      try {
+        await helper.getAssets(fetchOps as photoAccessHelper.FetchOptions);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error}, ${error.code}`);
+        expect(error.code).assertEqual('14000011');
         done();
       }
     }
@@ -225,6 +267,30 @@ export default function getAssetsTest () {
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       const expectCount = 1;
       await getAssetsPromiseTest(done, testNum, fetchOps, expectCount);
+    });
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ASSETS_0500
+     * @tc.name      : getAssets_callback_005
+     * @tc.desc      : getAssets image with invalid get wrong code 14000011
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getAssets_callback_005', 2, async (done: Function) => {
+      const testNum = 'getAssets_callback_005';
+      await getAssetsAbnormalCallbackWithInvalidTest(done, testNum, "invalid");
+    });
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ASSETS_0500
+     * @tc.name      : getAssets_promise_005
+     * @tc.desc      : getAssets image with invalid get wrong code 14000011
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getAssets_promise_005', 2, async (done: Function) => {
+      const testNum = 'getAssets_promise_005';
+      await getAssetsAbnormalPromiseWithInvalidTest(done, testNum, "invalid");
     });
   })
 }
