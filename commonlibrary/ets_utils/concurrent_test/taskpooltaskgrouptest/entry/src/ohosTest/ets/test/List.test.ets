@@ -33,7 +33,8 @@ export default function testsuite() {
   taskPoolTaskMultipleUITest();
   taskPoolTaskGroupMultipleTest();
   taskPoolTaskGroupActTest();
+  TaskGroupAbilityTest3();
   TaskGroupAbilityTest();
   TaskGroupAbilityTest2();
-  TaskGroupAbilityTest3();
+
 }
