@@ -569,5 +569,40 @@ describe("FaultlogJsTest", function () {
         }
         done();
     })
+
+    /**
+     * @tc.number test_1300
+     * @tc.name DFX_DFR_Faultlogger_Interface_1300
+     * @tc.desc 检验query函数入参为空时程序是否会崩溃,校验错误码返回801
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level2
+     */
+    it('DFX_DFR_Faultlogger_Interface_1300', 0, async function (done) {
+        console.info("---------------------------DFX_DFR_Faultlogger_Interface_1300----------------------------------");
+        function queryFaultLogCallback(error, ret) {
+            if (error) {
+                console.info('DFX_DFR_Faultlogger_Interface_1100  once error is ' + error);
+            } else {
+                console.info("DFX_DFR_Faultlogger_Interface_1100 query ret length:" + ret.length);
+                expect(ret.length).assertLarger(0);
+                console.info("DFX_DFR_Faultlogger_Interface_1100 check reason, index:" + (ret[0].reason.indexOf("Signal:SIGABRT")));
+                expect(ret[0].reason.indexOf("Signal:SIGABRT") != -1).assertTrue();
+                console.info("DFX_DFR_Faultlogger_Interface_1100 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread info"));
+                expect(ret[0].fullLog.indexOf("Fault thread info") != -1).assertTrue();
+            }
+            done();
+        }
+        try {
+            faultlogger.query(faultlogger.FaultType.CPP_CRASH, queryFaultLogCallback);
+        } catch(err) {
+            console.info(err.code);
+            console.info(err.message);
+            if(err.code == 801){
+                expect(err.message == "The device doesn't support this api").assertTrue();
+                }
+            }
+            done();
+        })
 })
 }
