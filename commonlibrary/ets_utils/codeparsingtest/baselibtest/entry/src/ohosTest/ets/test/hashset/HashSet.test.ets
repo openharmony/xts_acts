@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import { HashSet } from '@kit.ArkTS';
 
 export default function HasSetTest() {
@@ -44,7 +44,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetLength0001', 0, () => {
+    it('testHashSetLength0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetLength0001';
       try {
         const hashSet = new HashSet<number>();
@@ -63,7 +63,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetLength0002', 0, () => {
+    it('testHashSetLength0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetLength0002';
       try {
         const hashSet = new HashSet<number>();
@@ -83,7 +83,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetLength0003', 0, () => {
+    it('testHashSetLength0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetLength0003';
       try {
         const hashSet = new HashSet<number>();
@@ -105,7 +105,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetLength0004', 0, () => {
+    it('testHashSetLength0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetLength0004';
       try {
         const hashSet = new HashSet<number>();
@@ -126,7 +126,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetConstructor0001', 0, () => {
+    it('testHashSetConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetConstructor0001';
       try {
         const hashSet = new HashSet<number>();
@@ -146,7 +146,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetConstructor0002', 0, () => {
+    it('testHashSetConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetConstructor0002';
       try {
         class Tmp {
@@ -174,7 +174,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetIsEmpty0001', 0, () => {
+    it('testHashSetIsEmpty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetIsEmpty0001';
       try {
         const hashSet = new HashSet<number>();
@@ -193,7 +193,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetIsEmpty0002', 0, () => {
+    it('testHashSetIsEmpty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetIsEmpty0002';
       try {
         const hashSet = new HashSet<number>();
@@ -213,7 +213,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetIsEmpty0003', 0, () => {
+    it('testHashSetIsEmpty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetIsEmpty0003';
       try {
         const hashSet = new HashSet<number>();
@@ -234,7 +234,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetIsEmpty0004', 0, () => {
+    it('testHashSetIsEmpty0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetIsEmpty0004';
       try {
         const hashSet = new HashSet<number>();
@@ -255,7 +255,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetHas0001', 0, () => {
+    it('testHashSetHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetHas0001';
       try {
         const hashSet = new HashSet<string>();
@@ -274,7 +274,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetHas0002', 0, () => {
+    it('testHashSetHas0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetHas0002';
       try {
         const hashSet = new HashSet<string>();
@@ -293,7 +293,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetHas0003', 0, () => {
+    it('testHashSetHas0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetHas0003';
       try {
         const hashSet = new HashSet<string>();
@@ -312,7 +312,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetHas0004', 0, () => {
+    it('testHashSetHas0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetHas0004';
       try {
         const hashSet = new HashSet<string>();
@@ -331,7 +331,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetHas0005', 0, () => {
+    it('testHashSetHas0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetHas0005';
       try {
         const hashSet = new HashSet<number>();
@@ -351,7 +351,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetHas0006', 0, () => {
+    it('testHashSetHas0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetHas0006';
       try {
         const hashSet = new HashSet<number>();
@@ -371,7 +371,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetHas0007', 0, () => {
+    it('testHashSetHas0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetHas0007';
       try {
         const hashSet = new HashSet<number>();
@@ -393,7 +393,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetAdd0001', 0, () => {
+    it('testHashSetAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetAdd0001';
       try {
         const hashSet = new HashSet<string>();
@@ -414,7 +414,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetAdd0002', 0, () => {
+    it('testHashSetAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetAdd0002';
       try {
         const hashSet = new HashSet<string>();
@@ -435,7 +435,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetAdd0003', 0, () => {
+    it('testHashSetAdd0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetAdd0003';
       try {
         const hashSet = new HashSet<string>();
@@ -456,7 +456,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetAdd0004', 0, () => {
+    it('testHashSetAdd0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetAdd0004';
       try {
         const hashSet = new HashSet<string>();
@@ -477,7 +477,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetAdd0005', 0, () => {
+    it('testHashSetAdd0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetAdd0005';
       try {
         const hashSet = new HashSet<string>();
@@ -499,7 +499,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetAdd0006', 0, () => {
+    it('testHashSetAdd0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetAdd0006';
       try {
         const hashSet = new HashSet<number>();
@@ -524,7 +524,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetAdd0007', 0, () => {
+    it('testHashSetAdd0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetAdd0007';
       try {
         const hashSet = new HashSet<number>();
@@ -547,7 +547,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetRemove0001', 0, () => {
+    it('testHashSetRemove0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetRemove0001';
       try {
         const hashSet = new HashSet<string>();
@@ -566,7 +566,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetRemove0002', 0, () => {
+    it('testHashSetRemove0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetRemove0002';
       try {
         const hashSet = new HashSet<string>();
@@ -585,7 +585,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetRemove0003', 0, () => {
+    it('testHashSetRemove0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetRemove0003';
       try {
         const hashSet = new HashSet<string>();
@@ -604,7 +604,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetRemove0004', 0, () => {
+    it('testHashSetRemove0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetRemove0004';
       try {
         const hashSet = new HashSet<string>();
@@ -623,7 +623,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetRemove0005', 0, () => {
+    it('testHashSetRemove0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetRemove0005';
       try {
         const hashSet = new HashSet<number>();
@@ -643,7 +643,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetRemove0006', 0, () => {
+    it('testHashSetRemove0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetRemove0006';
       try {
         const hashSet = new HashSet<number>();
@@ -663,7 +663,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetRemove0007', 0, () => {
+    it('testHashSetRemove0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetRemove0007';
       try {
         const hashSet = new HashSet<number>();
@@ -685,7 +685,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetClear0001', 0, () => {
+    it('testHashSetClear0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetClear0001';
       try {
         const hashSet = new HashSet<number>();
@@ -705,7 +705,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetClear0002', 0, () => {
+    it('testHashSetClear0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetClear0002';
       try {
         const hashSet = new HashSet<number>();
@@ -726,7 +726,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetClear0003', 0, () => {
+    it('testHashSetClear0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetClear0003';
       try {
         const hashSet = new HashSet<number>();
@@ -748,7 +748,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetValues0001', 0, () => {
+    it('testHashSetValues0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetValues0001';
       try {
         const hashSet = new HashSet<number>();
@@ -769,7 +769,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetValues0002', 0, () => {
+    it('testHashSetValues0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetValues0002';
       try {
         const hashSet = new HashSet<number>();
@@ -800,7 +800,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetForEach0001', 0, () => {
+    it('testHashSetForEach0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetForEach0001';
       try {
         const hashSet = new HashSet<number>();
@@ -821,7 +821,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetForEach0002', 0, () => {
+    it('testHashSetForEach0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetForEach0002';
       try {
         const hashSet = new HashSet<number>();
@@ -848,7 +848,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetForEach0003', 0, () => {
+    it('testHashSetForEach0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetForEach0003';
       try {
         const hashSet = new HashSet<number>();
@@ -871,12 +871,62 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetForEach0004', 0, () => {
+    it('testHashSetForEach0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetForEach0004';
       try {
         const hashSet = new HashSet<number>();
         hashSet.add(1);
         hashSet.forEach((value?: number) => {
+          hashSet.clear();
+          expect(hashSet.length).assertEqual(0);
+        })
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_HASHSET_FOREACH_0500
+     * @tc.name      : testHashSetForEach0005
+     * @tc.desc      : Testing HashSet has data and ArgThis
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testHashSetForEach0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testHashSetForEach0005';
+      try {
+        const hashSet = new HashSet<number>();
+        const hashSetNew = new HashSet<number>();
+        hashSetNew.add(1);
+        hashSet.add(1);
+        hashSet.forEach((value?: number) => {
+          hashSet.clear();
+          expect(hashSet.length).assertEqual(0);
+        }, hashSetNew)
+        expect(hashSetNew.length).assertEqual(1);
+        expect(hashSetNew.has(1)).assertTrue()
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_HASHSET_FOREACH_0600
+     * @tc.name      : testHashSetForEach0006
+     * @tc.desc      : Testing HashSet has data
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testHashSetForEach0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testHashSetForEach0006';
+      try {
+        const hashSet = new HashSet<number>();
+        hashSet.add(1);
+        hashSet.forEach((value: number, index, hashSet: HashSet<number>) => {
           hashSet.clear();
           expect(hashSet.length).assertEqual(0);
         })
@@ -894,7 +944,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetEntries0001', 0, () => {
+    it('testHashSetEntries0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetEntries0001';
       try {
         const hashSet = new HashSet<number>();
@@ -918,7 +968,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetEntries0002', 0, () => {
+    it('testHashSetEntries0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetEntries0002';
       try {
         const hashSet = new HashSet<number>();
@@ -950,7 +1000,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetEntries0003', 0, () => {
+    it('testHashSetEntries0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetEntries0003';
       try {
         const hashSet = new HashSet<number>();
@@ -976,7 +1026,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetEntries0004', 0, () => {
+    it('testHashSetEntries0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetEntries0003';
       try {
         const hashSet = new HashSet<number>();
@@ -1002,7 +1052,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetSymbolIterator0001', 0, () => {
+    it('testHashSetSymbolIterator0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetSymbolIterator0001';
       try {
         const hashSet = new HashSet<number>();
@@ -1026,7 +1076,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetSymbolIterator0002', 0, () => {
+    it('testHashSetSymbolIterator0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetSymbolIterator0002';
       try {
         const hashSet = new HashSet<number>();
@@ -1058,7 +1108,7 @@ export default function HasSetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHashSetCustom0001', 0, () => {
+    it('testHashSetCustom0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testHashSetCustom0001';
       try {
         class Temp {

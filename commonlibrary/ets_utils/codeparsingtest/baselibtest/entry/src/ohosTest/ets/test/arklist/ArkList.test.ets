@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import { List } from '@kit.ArkTS';
 
 class Temp {
@@ -49,7 +49,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListConstructor0001', 0, () => {
+    it('testListConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListConstructor0001';
       try {
         let list: List<number | string | Array<number | string | boolean> | boolean | bigint |
@@ -69,7 +69,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListAdd0001', 0, () => {
+    it('testListAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListAdd0001';
       try {
         let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -103,7 +103,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListAdd0002', 0, () => {
+    it('testListAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListAdd0002';
       try {
         let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -127,7 +127,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListInsert0001', 0, () => {
+    it('testListInsert0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListInsert0001';
       try {
         let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -155,7 +155,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListInsert0002', 0, () => {
+    it('testListInsert0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListInsert0002';
       try {
         let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -183,7 +183,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListHas0001', 0, () => {
+    it('testListHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListHas0001';
       try {
 
@@ -225,7 +225,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListGet0001', 0, () => {
+    it('testListGet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListGet0001';
       try {
         let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -260,7 +260,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListGetLastIndexOf0001', 0, () => {
+    it('testListGetLastIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListGetLastIndexOf0001';
       try {
         let list: List<number> = new List();
@@ -286,7 +286,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListGetLastIndexOf0002', 0, () => {
+    it('testListGetLastIndexOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListGetLastIndexOf0002';
       try {
         let list: List<number> = new List();
@@ -315,7 +315,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListGetLastIndexOf0003', 0, () => {
+    it('testListGetLastIndexOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListGetLastIndexOf0003';
       try {
         let list: List<number> = new List();
@@ -342,7 +342,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListGetLastIndexOf0004', 0, () => {
+    it('testListGetLastIndexOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListGetLastIndexOf0004';
       try {
         let list: List<number> = new List();
@@ -369,7 +369,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListGetIndexOf0001', 0, () => {
+    it('testListGetIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListGetIndexOf0001';
       try {
         let list: List<number> = new List();
@@ -395,7 +395,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListGetIndexOf0002', 0, () => {
+    it('testListGetIndexOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListGetIndexOf0002';
       try {
         let list: List<number> = new List();
@@ -424,7 +424,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListGetIndexOf0003', 0, () => {
+    it('testListGetIndexOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListGetIndexOf0003';
       try {
         let list: List<number> = new List();
@@ -451,7 +451,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListGetIndexOf0004', 0, () => {
+    it('testListGetIndexOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListGetIndexOf0004';
       try {
         let list: List<number> = new List();
@@ -477,7 +477,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListReplaceAllElement0001', 0, () => {
+    it('testListReplaceAllElement0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListReplaceAllElement0001';
       try {
         let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -523,7 +523,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListSort0001', 0, () => {
+    it('testListSort0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListSort0001';
       try {
         let list: List<number> = new List();
@@ -554,7 +554,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListSort0002', 0, () => {
+    it('testListSort0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListSort0002';
       try {
         let list: List<number> = new List();
@@ -585,7 +585,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListSort0003', 0, () => {
+    it('testListSort0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListSort0003';
       try {
         let list: List<number> = new List();
@@ -615,7 +615,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListSort0004', 0, () => {
+    it('testListSort0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListSort0004';
       try {
         let list: List<number> = new List();
@@ -647,7 +647,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListSet0001', 0, () => {
+    it('testListSet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListSet0001';
       try {
         let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -681,7 +681,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListSet0002', 0, () => {
+    it('testListSet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListSet0002';
       try {
         let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -715,7 +715,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListSet0003', 0, () => {
+    it('testListSet0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListSet0003';
       try {
         let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -748,7 +748,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListSet0004', 0, () => {
+    it('testListSet0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListSet0004';
       try {
         class Temp1 {
@@ -793,7 +793,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListSet0005', 0, () => {
+    it('testListSet0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListSet0005';
       try {
         class Temp1 {
@@ -834,7 +834,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListSet0006', 0, () => {
+    it('testListSet0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListSet0006';
       try {
         class Temp1 {
@@ -875,7 +875,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListSymbolIterator0001', 0, () => {
+    it('testListSymbolIterator0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListSymbolIterator0001';
       try {
         let list: List<number> = new List();
@@ -901,7 +901,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListSymbolIterator0002', 0, () => {
+    it('testListSymbolIterator0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListSymbolIterator0002';
       try {
         let list: List<number> = new List();
@@ -931,7 +931,7 @@ export default function ArkListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testListForEach0001', 0, () => {
+    it('testListForEach0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testListForEach0001';
       try {
         let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -953,6 +953,125 @@ export default function ArkListTest() {
         list.add(`"`);
 
         list.forEach((value, index) => {
+          expect(list.get(Math.floor(index ?? 0))).assertEqual(value);
+        })
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_LIST_FOREACH_0200
+     * @tc.name      : testListForEach0002
+     * @tc.desc      : Testing List forEach
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testListForEach0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testListForEach0002';
+      try {
+        let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
+        Object> = new List();
+        list.add("zhang san");
+        list.add(1);
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
+        list.add(temp);
+        list.add(undefined);
+        list.add(null);
+        list.add(true);
+        let array = [0, 1, 2, undefined];
+        list.add(array);
+        list.add("");
+        list.add("`");
+        list.add("%");
+        list.add(`"`);
+        let index = 0
+        list.forEach((value) => {
+          expect(list.get(Math.floor(index ?? 0))).assertEqual(value);
+          index ++
+        })
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_LIST_FOREACH_0300
+     * @tc.name      : testListForEach0003
+     * @tc.desc      : Testing List forEach
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testListForEach0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testListForEach0003';
+      try {
+        let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
+        Object> = new List();
+        let listNew: List<number> = new List();
+        listNew.add(0)
+        list.add("zhang san");
+        list.add(1);
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
+        list.add(temp);
+        list.add(undefined);
+        list.add(null);
+        list.add(true);
+        let array = [0, 1, 2, undefined];
+        list.add(array);
+        list.add("");
+        list.add("`");
+        list.add("%");
+        list.add(`"`);
+        let index = 0
+        list.forEach((value) => {
+          expect(list.get(Math.floor(index ?? 0))).assertEqual(value);
+          index ++
+        }, listNew)
+        expect(listNew.convertToArray().toString()).assertEqual("0");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_LIST_FOREACH_0400
+     * @tc.name      : testListForEach0004
+     * @tc.desc      : Testing List forEach
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testListForEach0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testListForEach0004';
+      try {
+        let list: List<number | string | Array<number | string | boolean> | boolean | undefined | null |
+        Object> = new List();
+        list.add("zhang san");
+        list.add(1);
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
+        list.add(temp);
+        list.add(undefined);
+        list.add(null);
+        list.add(true);
+        let array = [0, 1, 2, undefined];
+        list.add(array);
+        list.add("");
+        list.add("`");
+        list.add("%");
+        list.add(`"`);
+        list.forEach((value, index, list: List<number | string | Array<number | string | boolean> | boolean |
+        undefined | null | Object>) => {
           expect(list.get(Math.floor(index ?? 0))).assertEqual(value);
         })
       } catch (err) {

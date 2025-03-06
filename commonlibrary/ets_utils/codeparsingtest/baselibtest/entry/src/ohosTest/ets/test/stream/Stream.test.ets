@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import { stream } from '@kit.ArkTS';
 
 function sleep(ms: number) {
@@ -91,7 +91,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0001', 0, () => {
+    it('testStreamWritable0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0001';
       try {
         let writableStream = new TestWritable();
@@ -110,7 +110,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0002', 0, () => {
+    it('testStreamWritable0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0002';
       try {
         let writableStream = new TestWritable();
@@ -129,7 +129,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0003', 0, () => {
+    it('testStreamWritable0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0003';
       try {
         let writableStream = new TestWritable();
@@ -148,7 +148,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0004', 0, () => {
+    it('testStreamWritable0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0004';
       try {
         let writableStream = new TestWritable();
@@ -167,7 +167,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0005', 0, () => {
+    it('testStreamWritable0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0005';
       try {
         let writableStream = new TestWritable();
@@ -186,7 +186,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0006', 0, () => {
+    it('testStreamWritable0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0006';
       try {
         let stringA = 'test';
@@ -209,7 +209,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0007', 0, () => {
+    it('testStreamWritable0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0007';
       try {
         let writableStream = new TestWritable();
@@ -228,7 +228,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0008', 0, () => {
+    it('testStreamWritable0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0008';
       try {
         let writableStream = new TestWritable();
@@ -247,7 +247,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0009', 0, () => {
+    it('testStreamWritable0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0009';
       try {
         let writableStream = new TestWritable();
@@ -266,7 +266,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0010', 0, () => {
+    it('testStreamWritable0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0010';
       try {
         let writableStream = new TestWritable();
@@ -285,7 +285,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0011', 0, () => {
+    it('testStreamWritable0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0011';
       try {
         let writableStream = new TestWritable();
@@ -304,7 +304,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0012', 0, () => {
+    it('testStreamWritable0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0012';
       try {
         let writableStream = new TestWritable();
@@ -323,7 +323,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0013', 0, () => {
+    it('testStreamWritable0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0013';
       try {
         let writableStream = new TestWritable();
@@ -342,7 +342,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0014', 0, () => {
+    it('testStreamWritable0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0014';
       try {
         let writableStream = new TestWritable();
@@ -361,7 +361,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0015', 0, () => {
+    it('testStreamWritable0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0015';
       try {
         let writableStream = new TestWritable();
@@ -380,7 +380,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0016', 0, () => {
+    it('testStreamWritable0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0016';
       try {
         let writableStream = new TestWritable();
@@ -399,7 +399,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0017', 0, () => {
+    it('testStreamWritable0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0017';
       try {
         let writableStream = new TestWritable();
@@ -420,7 +420,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0018', 0, () => {
+    it('testStreamWritable0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0018';
       try {
         let writableStream = new TestWritable();
@@ -441,7 +441,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0019', 0, () => {
+    it('testStreamWritable0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0019';
       try {
         let writableStream = new TestWritable();
@@ -462,7 +462,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0020', 0, () => {
+    it('testStreamWritable0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0020';
       try {
         let writableStream = new TestWritable();
@@ -483,7 +483,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0021', 0, () => {
+    it('testStreamWritable0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0021';
       try {
         let writableStream = new TestWritable();
@@ -502,7 +502,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0022', 0, () => {
+    it('testStreamWritable0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0022';
       try {
         let writableStream = new TestWritable();
@@ -521,7 +521,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0023', 0, () => {
+    it('testStreamWritable0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0023';
       try {
         let writableStream = new TestWritable();
@@ -540,7 +540,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0024', 0, () => {
+    it('testStreamWritable0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0024';
       try {
         let writableStream = new TestWritable();
@@ -559,7 +559,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0025', 0, () => {
+    it('testStreamWritable0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0025';
       try {
         let writableStream = new TestWritable();
@@ -578,7 +578,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0026', 0, () => {
+    it('testStreamWritable0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0026';
       try {
         let writableStream = new TestWritable();
@@ -597,7 +597,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0027', 0, () => {
+    it('testStreamWritable0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0027';
       try {
         let writableStream = new TestWritable();
@@ -616,7 +616,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0028', 0, () => {
+    it('testStreamWritable0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0028';
       try {
         let writableStream = new TestWritable();
@@ -635,7 +635,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritable0029', 0, () => {
+    it('testStreamWritable0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritable0029';
       try {
         const arr = new Uint8Array([21, 31]);
@@ -655,7 +655,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0001', 0, () => {
+    it('testStreamWritableEnd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0001';
       try {
         let writableStream = new TestWritable();
@@ -675,7 +675,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0002', 0, () => {
+    it('testStreamWritableEnd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0002';
       try {
         let writableStream = new TestWritable();
@@ -695,7 +695,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0003', 0, () => {
+    it('testStreamWritableEnd0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0003';
       try {
         let writableStream = new TestWritable();
@@ -715,7 +715,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0004', 0, () => {
+    it('testStreamWritableEnd0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0004';
       try {
         let writableStream = new TestWritable();
@@ -735,7 +735,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0005', 0, () => {
+    it('testStreamWritableEnd0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0005';
       try {
         let writableStream = new TestWritable();
@@ -755,7 +755,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0006', 0, () => {
+    it('testStreamWritableEnd0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0006';
       try {
         let writableStream = new TestWritable();
@@ -775,7 +775,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0007', 0, () => {
+    it('testStreamWritableEnd0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0007';
       try {
         let writableStream = new TestWritable();
@@ -795,7 +795,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0008', 0, () => {
+    it('testStreamWritableEnd0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0008';
       try {
         let writableStream = new TestWritable();
@@ -815,7 +815,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0009', 0, () => {
+    it('testStreamWritableEnd0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0009';
       try {
         let stringA = 'test';
@@ -839,7 +839,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0010', 0, () => {
+    it('testStreamWritableEnd0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0010';
       try {
         let writableStream = new TestWritable();
@@ -859,7 +859,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0011', 0, () => {
+    it('testStreamWritableEnd0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0011';
       try {
         let writableStream = new TestWritable();
@@ -879,7 +879,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0012', 0, () => {
+    it('testStreamWritableEnd0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0012';
       try {
         let writableStream = new TestWritable();
@@ -899,7 +899,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0013', 0, () => {
+    it('testStreamWritableEnd0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0013';
       try {
         let writableStream = new TestWritable();
@@ -919,7 +919,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0014', 0, () => {
+    it('testStreamWritableEnd0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0014';
       try {
         let writableStream = new TestWritable();
@@ -939,7 +939,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0015', 0, () => {
+    it('testStreamWritableEnd0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0015';
       try {
         let writableStream = new TestWritable();
@@ -959,7 +959,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0016', 0, () => {
+    it('testStreamWritableEnd0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0016';
       try {
         let writableStream = new TestWritable();
@@ -979,7 +979,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0017', 0, () => {
+    it('testStreamWritableEnd0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0017';
       try {
         let writableStream = new TestWritable();
@@ -999,7 +999,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0018', 0, () => {
+    it('testStreamWritableEnd0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0018';
       try {
         let writableStream = new TestWritable();
@@ -1019,7 +1019,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0019', 0, () => {
+    it('testStreamWritableEnd0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0019';
       try {
         let writableStream = new TestWritable();
@@ -1041,7 +1041,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0020', 0, () => {
+    it('testStreamWritableEnd0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0020';
       try {
         let writableStream = new TestWritable();
@@ -1063,7 +1063,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0021', 0, () => {
+    it('testStreamWritableEnd0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0021';
       try {
         let writableStream = new TestWritable();
@@ -1085,7 +1085,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0022', 0, () => {
+    it('testStreamWritableEnd0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0022';
       try {
         let writableStream = new TestWritable();
@@ -1107,7 +1107,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0023', 0, () => {
+    it('testStreamWritableEnd0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0023';
       try {
         let writableStream = new TestWritable();
@@ -1127,7 +1127,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0024', 0, () => {
+    it('testStreamWritableEnd0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0024';
       try {
         let writableStream = new TestWritable();
@@ -1147,7 +1147,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0025', 0, () => {
+    it('testStreamWritableEnd0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0025';
       try {
         let writableStream = new TestWritable();
@@ -1167,7 +1167,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0026', 0, () => {
+    it('testStreamWritableEnd0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0026';
       try {
         let writableStream = new TestWritable();
@@ -1187,7 +1187,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0027', 0, () => {
+    it('testStreamWritableEnd0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0027';
       try {
         let writableStream = new TestWritable();
@@ -1207,7 +1207,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0028', 0, () => {
+    it('testStreamWritableEnd0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0028';
       try {
         let writableStream = new TestWritable();
@@ -1227,7 +1227,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0029', 0, () => {
+    it('testStreamWritableEnd0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0029';
       try {
         let writableStream = new TestWritable();
@@ -1247,7 +1247,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0030', 0, () => {
+    it('testStreamWritableEnd0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0030';
       try {
         let writableStream = new TestWritable();
@@ -1267,7 +1267,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStreamWritableEnd0031', 0, () => {
+    it('testStreamWritableEnd0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStreamWritableEnd0031';
       try {
         const arr = new Uint8Array([21, 31]);
@@ -1288,7 +1288,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetDefaultEncoding0001', 0, () => {
+    it('testSetDefaultEncoding0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetDefaultEncoding0001";
       try {
         const x = new stream.Writable;
@@ -1306,7 +1306,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetDefaultEncoding0002', 0, () => {
+    it('testSetDefaultEncoding0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetDefaultEncoding0002";
       try {
         const x = new stream.Writable;
@@ -1324,7 +1324,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetDefaultEncoding0003', 0, () => {
+    it('testSetDefaultEncoding0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetDefaultEncoding0003";
       try {
         const x = new stream.Writable;
@@ -1343,7 +1343,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetDefaultEncoding0004', 0, () => {
+    it('testSetDefaultEncoding0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetDefaultEncoding0004";
       try {
         const x = new stream.Writable;
@@ -1363,7 +1363,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetDefaultEncoding0005', 0, () => {
+    it('testSetDefaultEncoding0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetDefaultEncoding0005";
       try {
         const x = new stream.Writable;
@@ -1384,7 +1384,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCork0001', 0, () => {
+    it('testCork0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCork0001";
       try {
         const x = new stream.Writable;
@@ -1402,7 +1402,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUnCork0001', 0, () => {
+    it('testUnCork0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUnCork0001";
       try {
         const x = new stream.Writable;
@@ -1420,7 +1420,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOn0001', 0, () => {
+    it('testOn0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testOn0001";
       try {
         class TestWritable extends stream.Writable {
@@ -1455,7 +1455,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOn0002', 0, (done: Function) => {
+    it('testOn0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = "testOn0002";
       try {
         let writableStream = new TestWritable();
@@ -1484,7 +1484,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOn0003', 0, (done: Function) => {
+    it('testOn0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = "testOn0003";
       try {
         let writableStream = new TestWritable();
@@ -1513,7 +1513,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOn0004', 0, () => {
+    it('testOn0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testOn0004";
       try {
         let writableStream = new TestWritable();
@@ -1533,7 +1533,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWritableDoInitialize0001', 0, () => {
+    it('testWritableDoInitialize0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWritableDoInitialize0001";
       try {
         class MyWritable extends stream.Writable {
@@ -1566,7 +1566,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDoWrite0001', 0, () => {
+    it('testDoWrite0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDoWrite0001";
       try {
         let writableStream = new TestWritable();
@@ -1585,7 +1585,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDoWritev0001', 0, () => {
+    it('testDoWritev0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testDoWritev0001";
       try {
         let writableStream = new TestWritable();
@@ -1607,7 +1607,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testReadableOptions0001', 0, () => {
+    it('testReadableOptions0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testReadableOptions0001';
       try {
         let value = new stream.Readable();
@@ -1626,7 +1626,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAttribute0001', 0, () => {
+    it('testAttribute0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testAttribute0001';
       try {
         let value = new stream.Readable();
@@ -1645,7 +1645,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAttribute0002', 0, () => {
+    it('testAttribute0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testAttribute0002';
       try {
         let value = new stream.Readable();
@@ -1664,7 +1664,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAttribute0003', 0, () => {
+    it('testAttribute0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testAttribute0003';
       try {
         let value = new stream.Readable();
@@ -1683,7 +1683,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAttribute0004', 0, () => {
+    it('testAttribute0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testAttribute0004';
       try {
         let value = new stream.Readable();
@@ -1702,7 +1702,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAttribute0005', 0, () => {
+    it('testAttribute0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testAttribute0005';
       try {
         let value = new stream.Readable();
@@ -1721,7 +1721,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAttribute0006', 0, () => {
+    it('testAttribute0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testAttribute0006';
       try {
         let value = new stream.Readable();
@@ -1740,7 +1740,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAttribute0007', 0, () => {
+    it('testAttribute0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testAttribute0007';
       try {
         let value = new stream.Readable();
@@ -1759,7 +1759,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConstructor0001', 0, () => {
+    it('testConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConstructor0001';
       try {
         let value = new stream.Readable();
@@ -1777,7 +1777,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConstructor0002', 0, () => {
+    it('testConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConstructor0002';
       try {
         let value = new stream.Readable({
@@ -1797,7 +1797,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0001', 0, () => {
+    it('testRead0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0001';
       try {
         let readableStream = new TestReadable();
@@ -1816,7 +1816,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0002', 0, () => {
+    it('testRead0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0002';
       try {
         let readableStream = new TestReadable();
@@ -1835,7 +1835,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0003', 0, () => {
+    it('testRead0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0003';
       try {
         let readableStream = new TestReadable();
@@ -1854,7 +1854,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0004', 0, () => {
+    it('testRead0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0004';
       try {
         let readableStream = new TestReadable();
@@ -1873,7 +1873,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0005', 0, () => {
+    it('testRead0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0005';
       try {
         let readableStream = new TestReadable();
@@ -1892,7 +1892,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0006', 0, () => {
+    it('testRead0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0006';
       try {
         let readableStream = new TestReadable();
@@ -1911,7 +1911,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0007', 0, () => {
+    it('testRead0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0007';
       try {
         let readableStream = new TestReadable();
@@ -1930,7 +1930,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0008', 0, () => {
+    it('testRead0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0008';
       try {
         let readableStream = new TestReadable();
@@ -1949,7 +1949,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0009', 0, () => {
+    it('testRead0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0009';
       try {
         let readableStream = new TestReadable();
@@ -1968,7 +1968,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0010', 0, () => {
+    it('testRead0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0010';
       try {
         let readableStream = new TestReadable();
@@ -1989,7 +1989,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0011', 0, () => {
+    it('testRead0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0011';
       try {
         let readableStream = new TestReadable();
@@ -2010,7 +2010,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0012', 0, () => {
+    it('testRead0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0012';
       try {
         let readableStream = new TestReadable();
@@ -2031,7 +2031,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0013', 0, () => {
+    it('testRead0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0013';
       try {
         let readableStream = new TestReadable();
@@ -2052,7 +2052,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0014', 0, () => {
+    it('testRead0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0014';
       try {
         let readableStream = new TestReadable();
@@ -2073,7 +2073,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0015', 0, () => {
+    it('testRead0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0015';
       try {
         let readableStream = new TestReadable();
@@ -2094,7 +2094,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0016', 0, () => {
+    it('testRead0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0016';
       try {
         let readableStream = new TestReadable();
@@ -2115,7 +2115,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0017', 0, () => {
+    it('testRead0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0017';
       try {
         let readableStream = new TestReadable();
@@ -2136,7 +2136,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0018', 0, () => {
+    it('testRead0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0018';
       try {
         let readableStream = new TestReadable();
@@ -2157,7 +2157,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRead0019', 0, () => {
+    it('testRead0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testRead0019';
       try {
         let readableStream = new TestReadable();
@@ -2178,7 +2178,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testResume0001', 0, () => {
+    it('testResume0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testResume0001';
       try {
         let readableStream = new TestReadable();
@@ -2197,7 +2197,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPause0001', 0, () => {
+    it('testPause0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPause0001';
       try {
         let readableStream = new TestReadable();
@@ -2216,7 +2216,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetEncoding0001', 0, () => {
+    it('testSetEncoding0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSetEncoding0001';
       try {
         let readableStream = new TestReadable();
@@ -2235,7 +2235,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetEncoding0002', 0, () => {
+    it('testSetEncoding0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSetEncoding0002';
       try {
         let readableStream = new TestReadable();
@@ -2254,7 +2254,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetEncoding0003', 0, () => {
+    it('testSetEncoding0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSetEncoding0003';
       try {
         let readableStream = new TestReadable();
@@ -2273,7 +2273,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetEncoding0004', 0, () => {
+    it('testSetEncoding0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSetEncoding0004';
       try {
         let readableStream = new TestReadable();
@@ -2292,7 +2292,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetEncoding0005', 0, () => {
+    it('testSetEncoding0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testSetEncoding0005';
       try {
         let readableStream = new TestReadable();
@@ -2317,7 +2317,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsPaused0001', 0, () => {
+    it('testIsPaused0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testIsPaused0001';
       try {
         let readableStream = new TestReadable();
@@ -2339,7 +2339,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPipe0001', 0, () => {
+    it('testPipe0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPipe0001';
       try {
         class TestReadable extends stream.Readable {
@@ -2381,7 +2381,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUnpipe0001', 0, (done: Function) => {
+    it('testUnpipe0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = 'testUnpipe0001';
       try {
         class TestReadable extends stream.Readable {
@@ -2434,7 +2434,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOnClose0001', 0, (done: Function) => {
+    it('testOnClose0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = 'testOnClose0001';
       try {
         class TestReadable extends stream.Readable {
@@ -2470,7 +2470,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOnData0001', 0, (done: Function) => {
+    it('testOnData0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = 'testOnData0001';
       try {
         class TestReadable extends stream.Readable {
@@ -2506,7 +2506,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOnEnd0001', 0, (done: Function) => {
+    it('testOnEnd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = 'testOnEnd0001';
       try {
         class TestReadable extends stream.Readable {
@@ -2542,7 +2542,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOnError0001', 0, (done: Function) => {
+    it('testOnError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = 'testOnError0001';
       try {
         class TestReadable extends stream.Readable {
@@ -2579,7 +2579,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOnReadable0001', 0, (done: Function) => {
+    it('testOnReadable0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = 'testOnReadable0001';
       try {
         let readable = new TestReadable();
@@ -2606,7 +2606,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOffClose0001', 0, (done: Function) => {
+    it('testOffClose0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = 'testOffClose0001';
       try {
         class TestReadable extends stream.Readable {
@@ -2643,7 +2643,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOffData0001', 0, (done: Function) => {
+    it('testOffData0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = 'testOffData0001';
       try {
         class TestReadable extends stream.Readable {
@@ -2680,7 +2680,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOffEnd0001', 0, (done: Function) => {
+    it('testOffEnd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = 'testOffEnd0001';
       try {
         class TestReadable extends stream.Readable {
@@ -2717,7 +2717,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOffError0001', 0, (done: Function) => {
+    it('testOffError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = 'testOffError0001';
       try {
         class TestReadable extends stream.Readable {
@@ -2754,7 +2754,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOffReadable0001', 0, (done: Function) => {
+    it('testOffReadable0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = 'testOffReadable0001';
       try {
         class TestReadable extends stream.Readable {
@@ -2792,7 +2792,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testReadableDoInitialize0001', 0, (done: Function) => {
+    it('testReadableDoInitialize0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = 'testReadableDoInitialize0001';
       try {
         class MyReadable extends stream.Readable {
@@ -2826,7 +2826,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDoRead0001', 0, (done: Function) => {
+    it('testDoRead0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = 'testDoRead0001';
       try {
         class TestReadable extends stream.Readable {
@@ -2861,7 +2861,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0001', 0, () => {
+    it('testPush0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0001';
       try {
         let readable = new TestReadable();
@@ -2881,7 +2881,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0002', 0, () => {
+    it('testPush0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0002';
       try {
         let readable = new TestReadable();
@@ -2901,7 +2901,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0003', 0, () => {
+    it('testPush0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0003';
       try {
         let readable = new TestReadable();
@@ -2921,7 +2921,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0004', 0, () => {
+    it('testPush0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0004';
       try {
         let readable = new TestReadable();
@@ -2941,7 +2941,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0005', 0, () => {
+    it('testPush0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0005';
       try {
         let readable = new TestReadable();
@@ -2961,7 +2961,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0006', 0, () => {
+    it('testPush0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0006';
       try {
         let stringA = 'test';
@@ -2985,7 +2985,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0007', 0, () => {
+    it('testPush0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0007';
       try {
         let readable = new TestReadable();
@@ -3005,7 +3005,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0008', 0, () => {
+    it('testPush0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0008';
       try {
         let readable = new TestReadable();
@@ -3025,7 +3025,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0009', 0, () => {
+    it('testPush0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0009';
       try {
         let readable = new TestReadable();
@@ -3044,7 +3044,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0010', 0, () => {
+    it('testPush0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0010';
       try {
         let readable = new TestReadable();
@@ -3063,7 +3063,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0011', 0, () => {
+    it('testPush0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0011';
       try {
         let readable = new TestReadable();
@@ -3082,7 +3082,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0012', 0, () => {
+    it('testPush0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0012';
       try {
         let readable = new TestReadable();
@@ -3101,7 +3101,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0013', 0, () => {
+    it('testPush0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0013';
       try {
         let readable = new TestReadable();
@@ -3120,7 +3120,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0014', 0, () => {
+    it('testPush0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0014';
       try {
         let readable = new TestReadable();
@@ -3139,7 +3139,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0015', 0, () => {
+    it('testPush0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0015';
       try {
         let readable = new TestReadable();
@@ -3158,7 +3158,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0016', 0, () => {
+    it('testPush0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0016';
       try {
         let readable = new TestReadable();
@@ -3177,7 +3177,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPush0017', 0, () => {
+    it('testPush0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPush0017';
       try {
         let readable = new TestReadable();
@@ -3197,7 +3197,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplexConstructor0001', 0, () => {
+    it('testDuplexConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplexConstructor0001';
       try {
         let x = new stream.Duplex();
@@ -3216,7 +3216,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplexConstructor0002', 0, () => {
+    it('testDuplexConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplexConstructor0002';
       try {
         let x = new stream.Duplex();
@@ -3235,7 +3235,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplexConstructor0003', 0, () => {
+    it('testDuplexConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplexConstructor0003';
       try {
         let x = new stream.Duplex();
@@ -3254,7 +3254,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplexConstructor0004', 0, () => {
+    it('testDuplexConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplexConstructor0004';
       try {
         let x = new stream.Duplex();
@@ -3273,7 +3273,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplexConstructor0005', 0, () => {
+    it('testDuplexConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplexConstructor0005';
       try {
         let x = new stream.Duplex();
@@ -3292,7 +3292,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplexConstructor0006', 0, () => {
+    it('testDuplexConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplexConstructor0006';
       try {
         let x = new stream.Duplex();
@@ -3311,7 +3311,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplexConstructor0007', 0, () => {
+    it('testDuplexConstructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplexConstructor0007';
       try {
         let x = new stream.Duplex();
@@ -3330,7 +3330,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0001', 0, () => {
+    it('testDuplex0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0001';
       try {
         let duplex = new stream.Duplex();
@@ -3352,7 +3352,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0002', 0, () => {
+    it('testDuplex0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0002';
       try {
         let duplex = new stream.Duplex();
@@ -3374,7 +3374,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0003', 0, () => {
+    it('testDuplex0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0003';
       try {
         let duplex = new stream.Duplex();
@@ -3396,7 +3396,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0004', 0, () => {
+    it('testDuplex0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0004';
       try {
         let duplex = new stream.Duplex();
@@ -3418,7 +3418,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0005', 0, () => {
+    it('testDuplex0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0005';
       try {
         let duplex = new stream.Duplex();
@@ -3440,7 +3440,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0006', 0, () => {
+    it('testDuplex0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0006';
       try {
         let duplex = new stream.Duplex();
@@ -3462,7 +3462,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0007', 0, () => {
+    it('testDuplex0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0007';
       try {
         let duplexStream = new TestDuplex();
@@ -3487,7 +3487,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0008', 0, () => {
+    it('testDuplex0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0008';
       try {
         let duplex = new stream.Duplex();
@@ -3509,7 +3509,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0009', 0, () => {
+    it('testDuplex0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0009';
       try {
         let duplex = new stream.Duplex();
@@ -3531,7 +3531,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0010', 0, () => {
+    it('testDuplex0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0010';
       try {
         let duplex = new stream.Duplex();
@@ -3558,7 +3558,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0011', 0, () => {
+    it('testDuplex0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0011';
       try {
         let duplex = new stream.Duplex();
@@ -3579,7 +3579,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0012', 0, () => {
+    it('testDuplex0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0012';
       try {
         let duplex = new stream.Duplex();
@@ -3600,7 +3600,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0013', 0, () => {
+    it('testDuplex0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0013';
       try {
         let duplex = new stream.Duplex();
@@ -3621,7 +3621,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0014', 0, () => {
+    it('testDuplex0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0014';
       try {
         let duplex = new stream.Duplex();
@@ -3642,7 +3642,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0015', 0, () => {
+    it('testDuplex0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0015';
       try {
         let duplex = new stream.Duplex();
@@ -3677,7 +3677,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0016', 0, () => {
+    it('testDuplex0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0016';
       try {
         let duplex = new stream.Duplex();
@@ -3704,7 +3704,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0017', 0, () => {
+    it('testDuplex0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0017';
       try {
         let duplex = new stream.Duplex();
@@ -3731,7 +3731,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0018', 0, () => {
+    it('testDuplex0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0018';
       try {
         let duplex = new stream.Duplex();
@@ -3753,7 +3753,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0019', 0, () => {
+    it('testDuplex0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0019';
       try {
         let duplexStream = new TestDuplex();
@@ -3773,7 +3773,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0020', 0, () => {
+    it('testDuplex0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0020';
       try {
         let duplexStream = new TestDuplex();
@@ -3793,7 +3793,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0021', 0, () => {
+    it('testDuplex0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0021';
       try {
         let duplexStream = new TestDuplex();
@@ -3813,7 +3813,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0022', 0, () => {
+    it('testDuplex0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0022';
       try {
         let duplexStream = new TestDuplex();
@@ -3833,7 +3833,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0023', 0, () => {
+    it('testDuplex0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0023';
       try {
         let duplexStream = new TestDuplex();
@@ -3853,7 +3853,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0024', 0, () => {
+    it('testDuplex0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0024';
       try {
         let duplexStream = new TestDuplex();
@@ -3873,7 +3873,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0025', 0, () => {
+    it('testDuplex0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0025';
       try {
         let duplexStream = new TestDuplex();
@@ -3893,7 +3893,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0026', 0, () => {
+    it('testDuplex0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0026';
       try {
         let duplexStream = new TestDuplex();
@@ -3917,7 +3917,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0027', 0, () => {
+    it('testDuplex0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0027';
       try {
         let duplexStream = new TestDuplex();
@@ -3937,7 +3937,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0028', 0, () => {
+    it('testDuplex0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0028';
       try {
         let duplexStream = new TestDuplex();
@@ -3957,7 +3957,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0029', 0, () => {
+    it('testDuplex0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0029';
       try {
         let duplexStream = new TestDuplex();
@@ -3977,7 +3977,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0030', 0, () => {
+    it('testDuplex0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0030';
       try {
         let duplexStream = new TestDuplex();
@@ -3997,7 +3997,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0031', 0, () => {
+    it('testDuplex0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0031';
       try {
         let duplexStream = new TestDuplex();
@@ -4017,7 +4017,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0032', 0, () => {
+    it('testDuplex0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0032';
       try {
         let duplexStream = new TestDuplex();
@@ -4037,7 +4037,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0033', 0, () => {
+    it('testDuplex0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0033';
       try {
         let duplexStream = new TestDuplex();
@@ -4057,7 +4057,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0034', 0, () => {
+    it('testDuplex0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0034';
       try {
         let duplexStream = new TestDuplex();
@@ -4077,7 +4077,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0035', 0, () => {
+    it('testDuplex0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0035';
       try {
         let duplexStream = new TestDuplex();
@@ -4097,7 +4097,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0036', 0, () => {
+    it('testDuplex0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0036';
       try {
         let duplexStream = new TestDuplex();
@@ -4119,7 +4119,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0037', 0, () => {
+    it('testDuplex0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0037';
       try {
         let duplexStream = new TestDuplex();
@@ -4141,7 +4141,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0038', 0, () => {
+    it('testDuplex0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0038';
       try {
         let duplexStream = new TestDuplex();
@@ -4163,7 +4163,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0039', 0, () => {
+    it('testDuplex0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0039';
       try {
         let duplexStream = new TestDuplex();
@@ -4185,7 +4185,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0040', 0, () => {
+    it('testDuplex0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0040';
       try {
         let duplexStream = new TestDuplex();
@@ -4205,7 +4205,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0041', 0, () => {
+    it('testDuplex0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0041';
       try {
         let duplexStream = new TestDuplex();
@@ -4225,7 +4225,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0042', 0, () => {
+    it('testDuplex0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0042';
       try {
         let duplexStream = new TestDuplex();
@@ -4245,7 +4245,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0043', 0, () => {
+    it('testDuplex0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0043';
       try {
         let duplexStream = new TestDuplex();
@@ -4265,7 +4265,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0044', 0, () => {
+    it('testDuplex0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0044';
       try {
         let duplexStream = new TestDuplex();
@@ -4285,7 +4285,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0045', 0, () => {
+    it('testDuplex0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0045';
       try {
         let duplexStream = new TestDuplex();
@@ -4305,7 +4305,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0046', 0, () => {
+    it('testDuplex0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0046';
       try {
         let duplexStream = new TestDuplex();
@@ -4325,7 +4325,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0047', 0, () => {
+    it('testDuplex0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0047';
       try {
         let duplexStream = new TestDuplex();
@@ -4345,7 +4345,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0048', 0, () => {
+    it('testDuplex0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0048';
       try {
         let duplexStream = new TestDuplex();
@@ -4366,7 +4366,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0049', 0, () => {
+    it('testDuplex0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0049';
       try {
         let duplexStream = new TestDuplex();
@@ -4386,7 +4386,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0050', 0, () => {
+    it('testDuplex0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0050';
       try {
         let duplexStream = new TestDuplex();
@@ -4406,7 +4406,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0051', 0, () => {
+    it('testDuplex0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0051';
       try {
         let duplexStream = new TestDuplex();
@@ -4426,7 +4426,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0052', 0, () => {
+    it('testDuplex0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0052';
       try {
         let duplexStream = new TestDuplex();
@@ -4446,7 +4446,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0053', 0, () => {
+    it('testDuplex0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0053';
       try {
         let duplexStream = new TestDuplex();
@@ -4466,7 +4466,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0054', 0, () => {
+    it('testDuplex0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0054';
       try {
         let duplexStream = new TestDuplex();
@@ -4486,7 +4486,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0055', 0, () => {
+    it('testDuplex0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0055';
       try {
         let duplexStream = new TestDuplex();
@@ -4506,7 +4506,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0056', 0, () => {
+    it('testDuplex0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0056';
       try {
         let duplexStream = new TestDuplex();
@@ -4526,7 +4526,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0057', 0, () => {
+    it('testDuplex0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0057';
       try {
         let duplexStream = new stream.Duplex();
@@ -4546,7 +4546,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0058', 0, () => {
+    it('testDuplex0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0058';
       try {
         class TestDuplex extends stream.Duplex {
@@ -4584,7 +4584,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0059', 0, (done: Function) => {
+    it('testDuplex0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = 'testDuplex0059';
       try {
         let duplexStream = new TestDuplex();
@@ -4607,7 +4607,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0060', 0, (done: Function) => {
+    it('testDuplex0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const TAG = 'testDuplex0060';
       try {
         let writeSuccess = false;
@@ -4654,7 +4654,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0061', 0, () => {
+    it('testDuplex0061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0061';
       try {
         let stringChunk = '';
@@ -4688,7 +4688,7 @@ export default function StreamTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDuplex0062', 0, () => {
+    it('testDuplex0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testDuplex0062';
       try {
         class TestTransform extends stream.Transform {
@@ -4715,5 +4715,99 @@ export default function StreamTest() {
         expect().assertFail();
       }
     })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STREAM_21200
+     * @tc.name       : testWrite0063
+     * @tc.desc       : Test the function of the interface Duplex.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testWrite0063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      const TAG = 'testWrite0063';
+
+      class TestWritable1 extends stream.Writable {
+        constructor() {
+          super();
+        }
+
+        doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+          callback();
+        }
+      }
+
+      let res = true;
+      let writableStream = new TestWritable1();
+      let testListenerCalled = false;
+      let testListener = () => {
+        testListenerCalled = true;
+      };
+      writableStream.on('finish', testListener);
+      writableStream.off('finish', testListener);
+      writableStream.write('test');
+      writableStream.end();
+      setTimeout(() => {
+        expect(testListenerCalled.toString()).assertEqual("true")
+        res = testListenerCalled;
+      }, 80);
+      sleep(3000);
+      clearTimeout();
+      expect(res).assertEqual(true);
+      done();
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STREAM_21300
+     * @tc.name       : testUnpipe0002
+     * @tc.desc       : Removes all or specified connected readable streams from the writable stream.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUnpipe0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
+      const TAG = 'testUnpipe0002';
+      try {
+        class TestReadable extends stream.Readable {
+          constructor() {
+            super();
+          }
+
+          doRead(size: number) {
+            readable.push('test');
+            readable.push(null);
+          }
+        }
+        class TestWritable extends stream.Writable {
+          constructor() {
+            super();
+          }
+          doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+            expect(chunk).assertEqual('test');
+            aaa = true;
+            console.info("Readable test pipe", chunk);
+            callback();
+          }
+        }
+        let readable = new TestReadable();
+        let writable = new TestWritable();
+        let aaa = false;
+        readable.pipe(writable);
+        readable.unpipe();
+        readable.on('data', () => {
+          console.info("Readable test unpipe data event writeSuccess");
+        })
+        setTimeout(() => {
+          expect(aaa).assertEqual(true);
+          console.log('Readable test pipe true');
+          done();
+        });
+        sleep(1000);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
   })
 }
