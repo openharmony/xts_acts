@@ -129,7 +129,8 @@ export default function drawingTsPath2Test() {
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + 'reset successes');
+        console.info(msg + `test addArc is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -139,7 +140,8 @@ export default function drawingTsPath2Test() {
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + 'reset successes');
+        console.info(msg + `test addArc is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -149,7 +151,8 @@ export default function drawingTsPath2Test() {
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + 'reset successes');
+        console.info(msg + `test addArc is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -157,7 +160,8 @@ export default function drawingTsPath2Test() {
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + 'reset successes');
+        console.info(msg + `test addArc is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -167,7 +171,8 @@ export default function drawingTsPath2Test() {
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + 'reset successes');
+        console.info(msg + `test addArc is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -177,7 +182,8 @@ export default function drawingTsPath2Test() {
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + 'reset successes');
+        console.info(msg + `test addArc is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -187,7 +193,8 @@ export default function drawingTsPath2Test() {
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + 'reset successes');
+        console.info(msg + `test addArc is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -197,7 +204,8 @@ export default function drawingTsPath2Test() {
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + 'reset successes');
+        console.info(msg + `test addArc is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -207,7 +215,8 @@ export default function drawingTsPath2Test() {
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + 'reset successes');
+        console.info(msg + `test addArc is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -217,7 +226,8 @@ export default function drawingTsPath2Test() {
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + 'reset successes');
+        console.info(msg + `test addArc is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -227,7 +237,8 @@ export default function drawingTsPath2Test() {
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + 'reset successes');
+        console.info(msg + `test addArc is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -237,7 +248,8 @@ export default function drawingTsPath2Test() {
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + 'reset successes');
+        console.info(msg + `test addArc is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -247,7 +259,8 @@ export default function drawingTsPath2Test() {
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + 'reset successes');
+        console.info(msg + `test addArc is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -257,10 +270,10 @@ export default function drawingTsPath2Test() {
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + 'reset successes');
+        console.info(msg + `test addArc is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
     })
-
 
     /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_0900
