@@ -12,12 +12,14 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import { ArrayList } from '@kit.ArkTS';
+
 class Temp {
   age: number = 0
   name: string = ""
 }
+
 export default function ArrayListTest() {
   describe('arrayListTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -48,7 +50,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListLength0001', 0, () => {
+    it('testArrayListLength0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListLength0001';
       try {
         const arrayList = new ArrayList<number>();
@@ -67,12 +69,12 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListConstructor0001', 0, () => {
+    it('testArrayListConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListConstructor0001';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | bigint | Int8Array |
-          Int16Array | Int32Array | undefined | null | Symbol | Uint8Array | Uint16Array | Uint32Array |
-          BigInt64Array | BigUint64Array> = new ArrayList();
+        Int16Array | Int32Array | undefined | null | Symbol | Uint8Array | Uint16Array | Uint32Array |
+        BigInt64Array | BigUint64Array> = new ArrayList();
         expect(arrayList.length).assertEqual(0);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
@@ -88,14 +90,16 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListAdd0001', 0, () => {
+    it('testArrayListAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListAdd0001';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
-          Object> = new ArrayList();
+        Object> = new ArrayList();
         arrayList.add("zhang san");
         arrayList.add(1);
-        arrayList.add({age: 10, name: "zhang"});
+        arrayList.add({
+          age: 10, name: "zhang"
+        });
         arrayList.add(undefined);
         arrayList.add(null);
         arrayList.add(true);
@@ -120,7 +124,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListAdd0002', 0, () => {
+    it('testArrayListAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListAdd0002';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -146,7 +150,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListInsert0001', 0, () => {
+    it('testArrayListInsert0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListInsert0001';
       try {
         let arrayList: ArrayList<number | string> = new ArrayList();
@@ -173,7 +177,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListInsert0002', 0, () => {
+    it('testArrayListInsert0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListInsert0002';
       try {
         let arrayList: ArrayList<number | string> = new ArrayList();
@@ -203,7 +207,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListHas0001', 0, () => {
+    it('testArrayListHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListHas0001';
       try {
 
@@ -211,7 +215,9 @@ export default function ArrayListTest() {
         Object> = new ArrayList();
         arrayList.add("zhang san");
         arrayList.add(1);
-        let temp: Temp = { age: 10, name: "zhang"};
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
         arrayList.add(temp);
         arrayList.add(undefined);
         arrayList.add(null);
@@ -273,14 +279,16 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListGetIndexOf0001', 0, () => {
+    it('testArrayListGetIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListGetIndexOf0001';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
         Object> = new ArrayList();
         arrayList.add("zhang san");
         arrayList.add(1);
-        let temp: Temp = { age: 10, name: "zhang"};
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
         arrayList.add(temp);
         arrayList.add(undefined);
         arrayList.add(null);
@@ -318,14 +326,16 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListGetLastIndexOf0001', 0, () => {
+    it('testArrayListGetLastIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListGetLastIndexOf0001';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
         Object> = new ArrayList();
         arrayList.add("zhang san");
         arrayList.add(1);
-        let temp: Temp = { age: 10, name: "zhang"};
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
         arrayList.add(temp);
         arrayList.add(undefined);
         arrayList.add(null);
@@ -363,14 +373,16 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListRemoveByIndexOf0001', 0, () => {
+    it('testArrayListRemoveByIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListRemoveByIndexOf0001';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
         Object> = new ArrayList();
         arrayList.add("zhang san");
         arrayList.add(1);
-        let temp: Temp = { age: 10, name: "zhang"};
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
         arrayList.add(temp);
         arrayList.add(undefined);
         arrayList.add(null);
@@ -405,14 +417,16 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListRemoveByIndexOf0002', 0, () => {
+    it('testArrayListRemoveByIndexOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testArrayListRemoveByIndexOf0002"
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
         Object> = new ArrayList();
         arrayList.add("zhang san");
         arrayList.add(1);
-        let temp: Temp = { age: 10, name: "zhang"};
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
         arrayList.add(temp);
         arrayList.add(undefined);
         arrayList.add(null);
@@ -441,14 +455,16 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListRemoveByIndexOf0003', 0, () => {
+    it('testArrayListRemoveByIndexOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListRemoveByIndexOf0003'
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
         Object> = new ArrayList();
         arrayList.add("zhang san");
         arrayList.add(1);
-        let temp: Temp = { age: 10, name: "zhang"};
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
         arrayList.add(temp);
         arrayList.add(undefined);
         arrayList.add(null);
@@ -476,14 +492,16 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListRemove0001', 0, () => {
+    it('testArrayListRemove0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListRemove0001';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
         Object> = new ArrayList();
         arrayList.add("zhang san");
         arrayList.add(1);
-        let temp: Temp = { age: 10, name: "zhang"};
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
         arrayList.add(temp);
         arrayList.add(undefined);
         arrayList.add(null);
@@ -530,14 +548,16 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListRemove0002', 0, () => {
+    it('testArrayListRemove0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListRemove0002';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
         Object> = new ArrayList();
         arrayList.add("zhang san");
         arrayList.add(1);
-        let temp: Temp = { age: 10, name: "zhang"};
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
         arrayList.add(temp);
         arrayList.add(undefined);
         arrayList.add(null);
@@ -584,14 +604,16 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListRemoveByRange0001', 0, () => {
+    it('testArrayListRemoveByRange0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListRemoveByRange0001';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
         Object> = new ArrayList();
         arrayList.add("zhang san");
         arrayList.add(1);
-        let temp: Temp = { age: 10, name: "zhang"};
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
         arrayList.add(temp);
         arrayList.add(undefined);
         arrayList.add(null);
@@ -619,14 +641,16 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListRemoveByRange0002', 0, () => {
+    it('testArrayListRemoveByRange0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListRemoveByRange0002';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
         Object> = new ArrayList();
         arrayList.add("zhang san");
         arrayList.add(1);
-        let temp: Temp = { age: 10, name: "zhang"};
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
         arrayList.add(temp);
         arrayList.add(undefined);
         arrayList.add(null);
@@ -655,7 +679,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListReplaceAllElement0001', 0, () => {
+    it('testArrayListReplaceAllElement0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListReplaceAllElement0001';
       try {
         let arrayList: ArrayList<string> = new ArrayList();
@@ -667,7 +691,7 @@ export default function ArrayListTest() {
         arrayList.replaceAllElements((value: string, index: number) => {
           let tmp = value;
           value = tmp + value;
-          let result  = arrayList[index];
+          let result = arrayList[index];
           expect(value).assertEqual(result + result);
           return value;
         })
@@ -685,14 +709,16 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListReplaceAllElement0002', 0, () => {
+    it('testArrayListReplaceAllElement0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListReplaceAllElement0002';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
         Object> = new ArrayList();
         arrayList.add("zhang san");
         arrayList.add(1);
-        let temp: Temp = { age: 10, name: "zhang"};
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
         arrayList.add(temp);
         arrayList.add(undefined);
         arrayList.add(null);
@@ -706,7 +732,7 @@ export default function ArrayListTest() {
 
         arrayList.replaceAllElements((value, index, tempList) => {
           let indexValue = index ?? 0;
-          let length = tempList ? tempList.length -1 : 0;
+          let length = tempList ? tempList.length - 1 : 0;
           if (indexValue === length) {
             let tmp = value as string;
             value = tmp + "add last index";
@@ -728,14 +754,16 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListForEach0001', 0, () => {
+    it('testArrayListForEach0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListForEach0001';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
         Object> = new ArrayList();
         arrayList.add("zhang san");
         arrayList.add(1);
-        let temp: Temp = { age: 10, name: "zhang"};
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
         arrayList.add(temp);
         arrayList.add(undefined);
         arrayList.add(null);
@@ -764,7 +792,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListSort0001', 0, () => {
+    it('testArrayListSort0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListSort0001';
       try {
         let arrayList: ArrayList<number> = new ArrayList();
@@ -793,7 +821,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListSort0002', 0, () => {
+    it('testArrayListSort0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListSort0002';
       try {
         let arrayList: ArrayList<number> = new ArrayList();
@@ -822,7 +850,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListSort0003', 0, () => {
+    it('testArrayListSort0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListSort0003';
       try {
         let arrayList: ArrayList<number | string> = new ArrayList();
@@ -853,7 +881,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListSort0004', 0, () => {
+    it('testArrayListSort0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListSort0004';
       try {
         let arrayList: ArrayList<number | string> = new ArrayList();
@@ -884,7 +912,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListSubArrayList0001', 0, () => {
+    it('testArrayListSubArrayList0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListSubArrayList0001';
       try {
         let arrayList: ArrayList<number | string> = new ArrayList();
@@ -914,7 +942,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListClear0001', 0, () => {
+    it('testArrayListClear0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListClear0001';
       try {
         let arrayList: ArrayList<number | string> = new ArrayList();
@@ -938,7 +966,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListClone0001', 0, () => {
+    it('testArrayListClone0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListClone0001';
       try {
         let arrayList: ArrayList<number | string> = new ArrayList();
@@ -962,7 +990,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListClone0002', 0, () => {
+    it('testArrayListClone0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListClone0002';
       try {
         let arrayList: ArrayList<number | string> = new ArrayList();
@@ -987,7 +1015,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListGetCapacity0001', 0, () => {
+    it('testArrayListGetCapacity0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListGetCapacity0001';
       try {
         let arrayList: ArrayList<number | string> = new ArrayList();
@@ -1014,7 +1042,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListGetCapacity0002', 0, () => {
+    it('testArrayListGetCapacity0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListGetCapacity0002';
       try {
         let arrayList: ArrayList<number | string> = new ArrayList();
@@ -1042,7 +1070,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListConvertToArray0001', 0, () => {
+    it('testArrayListConvertToArray0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListConvertToArray0001';
       try {
         class Dog {
@@ -1054,6 +1082,7 @@ export default function ArrayListTest() {
             this.name = name;
           }
         }
+
         let arrayList: ArrayList<Dog> = new ArrayList();
         let dog = new Dog(1, "jiu jiu");
         arrayList.add(dog);
@@ -1075,7 +1104,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListConvertToArray0002', 0, () => {
+    it('testArrayListConvertToArray0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListConvertToArray0002';
       try {
         class Dog {
@@ -1087,6 +1116,7 @@ export default function ArrayListTest() {
             this.name = name;
           }
         }
+
         class Cat {
           age1: number = 0
           name1: string = ""
@@ -1096,6 +1126,7 @@ export default function ArrayListTest() {
             this.name1 = name;
           }
         }
+
         let arrayList: ArrayList<Dog | Cat> = new ArrayList();
         let dog = new Dog(1, "jiu jiu");
         arrayList.add(dog);
@@ -1117,7 +1148,7 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListIsEmpty0001', 0, () => {
+    it('testArrayListIsEmpty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListIsEmpty0001';
       try {
         let arrayList: ArrayList<number> = new ArrayList();
@@ -1136,14 +1167,16 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListIsEmpty0002', 0, () => {
+    it('testArrayListIsEmpty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListIsEmpty0002';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
         Object> = new ArrayList();
         arrayList.add("zhang san");
         arrayList.add(1);
-        let temp: Temp = { age: 10, name: "zhang"};
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
         arrayList.add(temp);
         arrayList.add(undefined);
         arrayList.add(null);
@@ -1170,14 +1203,16 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListIsEmpty0003', 0, () => {
+    it('testArrayListIsEmpty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListIsEmpty0003';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
         Object> = new ArrayList();
         arrayList.add("zhang san");
         arrayList.add(1);
-        let temp: Temp = { age: 10, name: "zhang"};
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
         arrayList.add(temp);
         arrayList.add(undefined);
         arrayList.add(null);
@@ -1204,14 +1239,16 @@ export default function ArrayListTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testArrayListSymbolIterator0001', 0, () => {
+    it('testArrayListSymbolIterator0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testArrayListSymbolIterator0001';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
         Object> = new ArrayList();
         arrayList.add("zhang san");
         arrayList.add(1);
-        let temp: Temp = { age: 10, name: "zhang"};
+        let temp: Temp = {
+          age: 10, name: "zhang"
+        };
         arrayList.add(temp);
         arrayList.add(undefined);
         arrayList.add(null);
@@ -1234,5 +1271,213 @@ export default function ArrayListTest() {
         expect().assertFail();
       }
     });
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_ARRAYLIST_REPLACEALLELEMENTS_0100
+     * @tc.name      : testArrayListReplaceAllElements0001
+     * @tc.desc      : Testing ArrayList isEmpty
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testArrayListReplaceAllElements0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testArrayListReplaceAllElements0001';
+      try {
+        let arrayList: ArrayList<number> = new ArrayList();
+        arrayList.add(2);
+        arrayList.add(4);
+        arrayList.add(5);
+        arrayList.add(4);
+        arrayList.replaceAllElements((value: number): number => {
+          return value + 1;
+        });
+        expect(arrayList.convertToArray().toString()).assertEqual("3,5,6,5");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_ARRAYLIST_REPLACEALLELEMENTS_0200
+     * @tc.name      : testArrayListReplaceAllElements0002
+     * @tc.desc      : Testing ArrayList isEmpty
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testArrayListReplaceAllElements0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testArrayListReplaceAllElements0002';
+      try {
+        let arrayList: ArrayList<number> = new ArrayList();
+        arrayList.add(2);
+        arrayList.add(4);
+        arrayList.add(5);
+        arrayList.add(4);
+        arrayList.replaceAllElements((value: number): number => {
+          return value - 1;
+        }, undefined);
+        expect(arrayList.convertToArray().toString()).assertEqual("1,3,4,3");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_ARRAYLIST_REPLACEALLELEMENTS_0300
+     * @tc.name      : testArrayListReplaceAllElements0003
+     * @tc.desc      : Testing ArrayList isEmpty
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testArrayListReplaceAllElements0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testArrayListReplaceAllElements0003';
+      try {
+        let arrayList: ArrayList<number> = new ArrayList();
+        let newArrayList: ArrayList<number> = new ArrayList();
+        arrayList.add(2);
+        arrayList.add(4);
+        arrayList.add(5);
+        arrayList.add(4);
+        arrayList.replaceAllElements((value: number): number => {
+          return value - 1;
+        }, newArrayList);
+        expect(arrayList.convertToArray().toString()).assertEqual("1,3,4,3");
+        expect(newArrayList.convertToArray().toString()).assertEqual("");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_ARRAYLIST_REPLACEALLELEMENTS_0300
+     * @tc.name      : testArrayListReplaceAllElements0003
+     * @tc.desc      : Testing ArrayList isEmpty
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testArrayListReplaceAllElements0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testArrayListReplaceAllElements0004';
+      try {
+        let arrayList: ArrayList<number> = new ArrayList();
+        let newArrayList: ArrayList<number> = new ArrayList();
+        arrayList.add(2);
+        arrayList.add(4);
+        arrayList.add(5);
+        arrayList.add(4);
+        newArrayList.add(3);
+        newArrayList.add(5);
+        newArrayList.add(7);
+        arrayList.replaceAllElements((value: number): number => {
+          return value - 1;
+        }, newArrayList);
+        expect(arrayList.convertToArray().toString()).assertEqual("1,3,4,3");
+        expect(newArrayList.convertToArray().toString()).assertEqual("3,5,7");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_ARRAYLIST_FOREACH_0200
+     * @tc.name      : testArrayListForEach0002
+     * @tc.desc      : Testing ArrayList isEmpty
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testArrayListForEach0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testArrayListForEach0002';
+      try {
+        let arrayList: ArrayList<number> = new ArrayList();
+        let newArrayList: ArrayList<number> = new ArrayList();
+        let result: ArrayList<number> = new ArrayList();
+        arrayList.add(2);
+        arrayList.add(4);
+        arrayList.add(5);
+        arrayList.add(4);
+        arrayList.forEach((value: number, index?: number) => {
+          result.add(value);
+          result.add(index);
+        },newArrayList);
+        expect(arrayList.convertToArray().toString()).assertEqual("2,4,5,4");
+        expect(newArrayList.convertToArray().toString()).assertEqual("");
+        expect(result.convertToArray().toString()).assertEqual("2,0,4,1,5,2,4,3");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_ARRAYLIST_FOREACH_0100
+     * @tc.name      : testArrayListForEach0003
+     * @tc.desc      : Testing ArrayList isEmpty
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testArrayListForEach0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testArrayListForEach0003';
+      try {
+        let arrayList: ArrayList<number> = new ArrayList();
+        let newArrayList: ArrayList<number> = new ArrayList();
+        let result: ArrayList<number> = new ArrayList();
+        arrayList.add(2);
+        arrayList.add(4);
+        arrayList.add(5);
+        arrayList.add(4);
+        newArrayList.add(4)
+        arrayList.forEach((value: number, index?: number) => {
+          result.add(value);
+          result.add(index);
+        },newArrayList);
+        expect(arrayList.convertToArray().toString()).assertEqual("2,4,5,4");
+        expect(newArrayList.convertToArray().toString()).assertEqual("4");
+        expect(result.convertToArray().toString()).assertEqual("2,0,4,1,5,2,4,3");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_ARRAYLIST_SYMBOL_0200
+     * @tc.name      : testArrayListSymbol0002
+     * @tc.desc      : Testing ArrayList isEmpty
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testArrayListSymbol0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testArrayListSymbol0002';
+      try {
+        let arrayList: ArrayList<number> = new ArrayList();
+        let result: ArrayList<number> = new ArrayList();
+        arrayList.add(2);
+        arrayList.add(4);
+        arrayList.add(5);
+        arrayList.add(4);
+
+        let numbers: Array<number> = arrayList.convertToArray()
+        for (let item of numbers) {
+          result.add(item)
+        }
+        expect(arrayList.convertToArray().toString()).assertEqual("2,4,5,4");
+        expect(result.convertToArray().toString()).assertEqual("2,4,5,4");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+
+
+
   });
 }
