@@ -900,11 +900,33 @@ export default function drawingTsCanvasPart5Test() {
         console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
+      try {
+        canvas.drawImageRectWithSrc(null, {
+          left: 100, top: 100.2, right: 700, bottom: 700.2
+        }, {
+          left: 200.1, top: 200.2, right: 800.1, bottom: 800.1
+        }, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST), drawing.SrcRectConstraint.FAST);
+        console.info(msg + `test error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
 
       try {
         canvas.drawImageRectWithSrc(pixelMap, null, {
           left: 200.1, top: 200.2, right: 800.1, bottom: 800.1
         }, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST), drawing.SrcRectConstraint.STRICT);
+        console.info(msg + `test error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        canvas.drawImageRectWithSrc(pixelMap, null, {
+          left: 200.1, top: 200.2, right: 800.1, bottom: 800.1
+        }, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST), drawing.SrcRectConstraint.FAST);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
@@ -922,6 +944,16 @@ export default function drawingTsCanvasPart5Test() {
         console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
+      try {
+        canvas.drawImageRectWithSrc(pixelMap, {
+          left: 100, top: 100.2, right: 700, bottom: 700.2
+        }, null, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST), drawing.SrcRectConstraint.FAST);
+        console.info(msg + `test error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
 
       try {
         canvas.drawImageRectWithSrc(pixelMap, {
@@ -929,6 +961,18 @@ export default function drawingTsCanvasPart5Test() {
         }, {
           left: 200.1, top: 200.2, right: 800.1, bottom: 800.1
         }, null, drawing.SrcRectConstraint.STRICT);
+        console.info(msg + `test error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        canvas.drawImageRectWithSrc(pixelMap, {
+          left: 100, top: 100.2, right: 700, bottom: 700.2
+        }, {
+          left: 200.1, top: 200.2, right: 800.1, bottom: 800.1
+        }, null, drawing.SrcRectConstraint.FAST);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {

@@ -130,6 +130,7 @@ export default function drawingTsPath2Test() {
         expect().assertFail()
       } catch (e) {
         console.info(msg + 'reset successes');
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -140,6 +141,7 @@ export default function drawingTsPath2Test() {
         expect().assertFail()
       } catch (e) {
         console.info(msg + 'reset successes');
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -150,6 +152,7 @@ export default function drawingTsPath2Test() {
         expect().assertFail()
       } catch (e) {
         console.info(msg + 'reset successes');
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -158,6 +161,7 @@ export default function drawingTsPath2Test() {
         expect().assertFail()
       } catch (e) {
         console.info(msg + 'reset successes');
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -168,6 +172,7 @@ export default function drawingTsPath2Test() {
         expect().assertFail()
       } catch (e) {
         console.info(msg + 'reset successes');
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -178,6 +183,7 @@ export default function drawingTsPath2Test() {
         expect().assertFail()
       } catch (e) {
         console.info(msg + 'reset successes');
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -188,6 +194,7 @@ export default function drawingTsPath2Test() {
         expect().assertFail()
       } catch (e) {
         console.info(msg + 'reset successes');
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -198,6 +205,7 @@ export default function drawingTsPath2Test() {
         expect().assertFail()
       } catch (e) {
         console.info(msg + 'reset successes');
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -208,6 +216,7 @@ export default function drawingTsPath2Test() {
         expect().assertFail()
       } catch (e) {
         console.info(msg + 'reset successes');
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -218,6 +227,7 @@ export default function drawingTsPath2Test() {
         expect().assertFail()
       } catch (e) {
         console.info(msg + 'reset successes');
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -228,6 +238,7 @@ export default function drawingTsPath2Test() {
         expect().assertFail()
       } catch (e) {
         console.info(msg + 'reset successes');
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -238,6 +249,7 @@ export default function drawingTsPath2Test() {
         expect().assertFail()
       } catch (e) {
         console.info(msg + 'reset successes');
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -248,6 +260,7 @@ export default function drawingTsPath2Test() {
         expect().assertFail()
       } catch (e) {
         console.info(msg + 'reset successes');
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -258,6 +271,7 @@ export default function drawingTsPath2Test() {
         expect().assertFail()
       } catch (e) {
         console.info(msg + 'reset successes');
+        expect(e.code).assertEqual(401);
       }
     })
 
