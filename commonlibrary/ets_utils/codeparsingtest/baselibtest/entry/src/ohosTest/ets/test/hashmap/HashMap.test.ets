@@ -1475,7 +1475,7 @@ export default function HashMapTest() {
         const hashMap = new HashMap<number, number>();
         hashMap.forEach((value?: number, key?: number) => {
           expect(hashMap.length).assertEqual(0);
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -1502,7 +1502,7 @@ export default function HashMapTest() {
           expect(key).assertEqual(index);
           expect(value).assertEqual(index);
           index++;
-        })
+        });
         expect(hashMap.length).assertEqual(3);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
@@ -1527,7 +1527,7 @@ export default function HashMapTest() {
         hashMap.set(2, 2);
         hashMap.forEach((value?: number, key?: number) => {
           expect(hashMap.remove(key)).assertEqual(value);
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -1551,7 +1551,7 @@ export default function HashMapTest() {
         hashMap.set(2, 2);
         hashMap.forEach((value?: number, key?: number) => {
           expect(hashMap.replace(key, value ? value + 1 : 0)).assertEqual(true);
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -1576,7 +1576,7 @@ export default function HashMapTest() {
         hashMap.forEach((value?: number, key?: number) => {
           hashMap.clear();
           expect(hashMap.length).assertEqual(0);
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -1600,7 +1600,7 @@ export default function HashMapTest() {
         hashMap.set(2, 2);
         hashMap.forEach(() => {
           expect(hashMap.length).assertEqual(3);
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -1623,7 +1623,7 @@ export default function HashMapTest() {
         hashMap.forEach((value) => {
           expect(hashMap.length).assertEqual(1);
           expect(value?.toString()).assertEqual("0");
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -1673,7 +1673,7 @@ export default function HashMapTest() {
         hashMap.forEach((value, index, hashMap: HashMap<number, number>) => {
           expect(hashMap.length).assertEqual(1);
           expect(value?.toString()).assertEqual("0");
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();

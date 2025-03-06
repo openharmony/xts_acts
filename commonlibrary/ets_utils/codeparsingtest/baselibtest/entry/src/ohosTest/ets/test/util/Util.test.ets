@@ -2562,18 +2562,15 @@ export default function utilTest() {
      */
     it('testEncode003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEncode003';
-
       class ChildLruBuffer<K, V> extends util.LruBuffer<K, V> {
         constructor(capacity?: number) {
           super(capacity);
         }
-
         afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void {
           if (isEvict === true) {
           }
         }
       }
-
       let lru: ChildLruBuffer<number, number> = new ChildLruBuffer(2);
       lru.put(11, 1);
       lru.put(22, 2);
@@ -2609,7 +2606,6 @@ export default function utilTest() {
      */
     it('testEncode005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testEncode005';
-
       class ChildLRUCache<K, V> extends util.LRUCache<K, V> {
         constructor(capacity?: number) {
           super(capacity);
@@ -2618,7 +2614,6 @@ export default function utilTest() {
         afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void {
         }
       }
-
       let lru = new ChildLRUCache<number, number>(2);
       lru.put(1, 1);
       lru.put(2, 2);
@@ -2661,7 +2656,7 @@ export default function utilTest() {
       let decoder = new util.StringDecoder('utf-8');
       let input = new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
       const writeString = decoder.write(input.slice(0, 5));
-      expect(writeString).assertEqual("你")
+      expect(writeString).assertEqual("你");
       try {
         const endString = decoder.end();
       } catch (e) {

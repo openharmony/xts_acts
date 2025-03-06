@@ -1663,14 +1663,14 @@ export default function LightWeightSetTest() {
       const TAG = "testLightWeightSet0072";
       try {
         let lightWeightSet: LightWeightSet<number> = new LightWeightSet();
-        let str: string = "0"
+        let str: string = "0";
         for (let i = 0; i < 10; i++) {
           lightWeightSet.add(i);
         }
         lightWeightSet.forEach((value, index: number, lightWeightSet: LightWeightSet<number>) => {
           expect(lightWeightSet.getIndexOf(value)).assertEqual(index);
         }, str);
-        expect(str).assertEqual("0")
+        expect(str).assertEqual("0");
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();

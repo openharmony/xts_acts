@@ -4726,7 +4726,6 @@ export default function StreamTest() {
      */
     it('testWrite0063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = 'testWrite0063';
-
       class TestWritable1 extends stream.Writable {
         constructor() {
           super();
@@ -4736,7 +4735,6 @@ export default function StreamTest() {
           callback();
         }
       }
-
       let res = true;
       let writableStream = new TestWritable1();
       let testListenerCalled = false;

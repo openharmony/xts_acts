@@ -268,14 +268,14 @@ export default function QueueTest() {
         let a: C1 = {
           name: "Dylon", age: "13"
         };
-        let b = 'a'
-        let c = 1
-        queue.add(a)
-        queue.add(b)
-        queue.add(c)
+        let b = 'a';
+        let c = 1;
+        queue.add(a);
+        queue.add(b);
+        queue.add(c);
         queue.forEach((value, index): void => {
-          let result = value
-          let result1 = index
+          let result = value;
+          let result1 = index;
           expect(result).assertEqual(value);
           expect(result1).assertEqual(index);
         });
@@ -300,11 +300,11 @@ export default function QueueTest() {
         let a: C1 = {
           name: "Dylon", age: "13"
         };
-        let b = 'a'
-        let c = 1
-        queue.add(a)
-        queue.add(b)
-        queue.add(c)
+        let b = 'a';
+        let c = 1;
+        queue.add(a);
+        queue.add(b);
+        queue.add(c);
         let iter = queue[Symbol.iterator]();
         let temp: IteratorResult<number> = iter.next().value;
         while (temp != undefined) {
@@ -332,13 +332,13 @@ export default function QueueTest() {
         let a: C1 = {
           name: "Dylon", age: "13"
         };
-        let b = 'a'
-        let c = 1
-        queue.add(a)
-        queue.add(b)
-        queue.add(c)
+        let b = 'a';
+        let c = 1;
+        queue.add(a);
+        queue.add(b);
+        queue.add(c);
         while (queue.length) {
-          let item = queue.pop()
+          let item = queue.pop();
           console.log("value:" + item);
         }
       } catch (err) {
@@ -363,11 +363,11 @@ export default function QueueTest() {
         let a: C1 = {
           name: "Dylon", age: "13"
         };
-        let b = 'a'
-        let c = 1
-        queue.add(a)
-        queue.add(b)
-        queue.add(c)
+        let b = 'a';
+        let c = 1;
+        queue.add(a);
+        queue.add(b);
+        queue.add(c);
         queue.forEach((): void => {
           expect(queue.length).assertEqual(3);
         });
@@ -393,7 +393,7 @@ export default function QueueTest() {
         let a: C1 = {
           name: "Dylon", age: "13"
         };
-        queue.add(a)
+        queue.add(a);
         queue.forEach((value): void => {
           expect(queue.getFirst()).assertEqual(value);
         });
@@ -419,7 +419,7 @@ export default function QueueTest() {
         let a: C1 = {
           name: "Dylon", age: "13"
         };
-        queue.add(a)
+        queue.add(a);
         queue.forEach((value, index, queue: Queue<number | string | object>): void => {
           expect(queue.getFirst()).assertEqual(value);
         });
@@ -442,7 +442,7 @@ export default function QueueTest() {
       const TAG = "testQueueForeach0016";
       try {
         let queue: Queue<number | string | object> = new Queue();
-        queue.add(1)
+        queue.add(1);
         queue.forEach((value, index, queue: Queue<number | string | object>): void => {
           expect(queue.getFirst()).assertEqual(value);
         }, queue);

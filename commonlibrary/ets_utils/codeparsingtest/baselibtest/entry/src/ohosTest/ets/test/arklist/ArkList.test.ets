@@ -951,10 +951,9 @@ export default function ArkListTest() {
         list.add("`");
         list.add("%");
         list.add(`"`);
-
         list.forEach((value, index) => {
           expect(list.get(Math.floor(index ?? 0))).assertEqual(value);
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -993,7 +992,7 @@ export default function ArkListTest() {
         list.forEach((value) => {
           expect(list.get(Math.floor(index ?? 0))).assertEqual(value);
           index ++;
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -1073,7 +1072,7 @@ export default function ArkListTest() {
         list.forEach((value, index, list: List<number | string | Array<number | string | boolean> | boolean |
         undefined | null | Object>) => {
           expect(list.get(Math.floor(index ?? 0))).assertEqual(value);
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();

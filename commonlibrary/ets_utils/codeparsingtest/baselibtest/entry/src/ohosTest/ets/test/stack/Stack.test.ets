@@ -442,7 +442,7 @@ export default function StackTest() {
         stack.push(3);
         stack.forEach(() => {
           expect(stack.length).assertEqual(3);
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -464,7 +464,7 @@ export default function StackTest() {
         stack.push(1);
         stack.forEach((value) => {
           expect(stack.locate(value)).assertEqual(0);
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -486,7 +486,7 @@ export default function StackTest() {
         stack.push(1);
         stack.forEach((value, index, stack: Stack<number>) => {
           expect(stack.locate(value)).assertEqual(0);
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();

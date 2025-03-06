@@ -1865,14 +1865,14 @@ export default function TreeSetTest() {
         treeSet.add('BBB');
         treeSet.add('CCC');
         treeSet.add('DDD');
-        treeSet.entries()
+        treeSet.entries();
         let res = treeSet.values();
         expect(res.next().value).assertEqual('DDD');
         expect(res.next().value).assertEqual('CCC');
         expect(res.next().value).assertEqual('BBB');
         expect(res.next().value).assertEqual('AAA');
         let length = treeSet.length;
-        expect(length).assertEqual(4)
+        expect(length).assertEqual(4);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -1895,14 +1895,14 @@ export default function TreeSetTest() {
         treeSet.add('BBB');
         treeSet.add('CCC');
         treeSet.add('DDD');
-        treeSet.entries()
+        treeSet.entries();
         let res = treeSet.values();
-        treeSet.remove("CCC")
+        treeSet.remove("CCC");
         expect(res.next().value).assertEqual('AAA');
         expect(res.next().value).assertEqual('BBB');
         expect(res.next().value).assertEqual('DDD');
         let length = treeSet.length;
-        expect(length).assertEqual(3)
+        expect(length).assertEqual(3);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -1925,10 +1925,10 @@ export default function TreeSetTest() {
         treeSet.add('BBB');
         treeSet.add('CCC');
         treeSet.add('DDD');
-        treeSet.entries()
-        treeSet.clear()
+        treeSet.entries();
+        treeSet.clear();
         let length = treeSet.length;
-        expect(length).assertEqual(0)
+        expect(length).assertEqual(0);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -1953,7 +1953,7 @@ export default function TreeSetTest() {
         treeSet.add('DDD');
         treeSet.forEach((): void => {
         });
-        treeSet.clear()
+        treeSet.clear();
         let length = treeSet.length;
         expect(length).assertEqual(0)
       } catch (err) {
@@ -1979,11 +1979,11 @@ export default function TreeSetTest() {
         treeSet.add('CCC');
         treeSet.add('DDD');
         treeSet.forEach((value): void => {
-          expect(treeSet.has(value)).assertTrue()
+          expect(treeSet.has(value)).assertTrue();
         });
-        treeSet.clear()
+        treeSet.clear();
         let length = treeSet.length;
-        expect(length).assertEqual(0)
+        expect(length).assertEqual(0);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -2009,9 +2009,9 @@ export default function TreeSetTest() {
         treeSet.forEach((value, index, treeSet: TreeSet<string>): void => {
           expect(treeSet.has(value)).assertTrue()
         });
-        treeSet.clear()
+        treeSet.clear();
         let length = treeSet.length;
-        expect(length).assertEqual(0)
+        expect(length).assertEqual(0);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();

@@ -378,10 +378,10 @@ export default function DequeTest() {
       try {
         let deque: Deque<number> = new Deque();
         deque.insertFront(1);
-        deque.insertFront(2)
+        deque.insertFront(2);
         deque.insertEnd(4);
-        deque.insertFront(3)
-        deque.popLast()
+        deque.insertFront(3);
+        deque.popLast();
         let result = deque.getLast();
         expect(result).assertEqual(1);
       } catch (err) {
@@ -402,7 +402,7 @@ export default function DequeTest() {
       const TAG = "tesGetFirst0015";
       try {
         let deque: Deque<number> = new Deque();
-        deque.popLast()
+        deque.popLast();
         let result = deque.getFirst();
         expect(result).assertEqual(undefined);
       } catch (err) {
@@ -424,9 +424,9 @@ export default function DequeTest() {
       try {
         let deque: Deque<number> = new Deque();
         deque.insertFront(1);
-        deque.insertFront(2)
+        deque.insertFront(2);
         deque.insertEnd(4);
-        deque.insertFront(3)
+        deque.insertFront(3);
         let result = deque.getLast();
         expect(result).assertEqual(4);
       } catch (err) {
@@ -470,14 +470,14 @@ export default function DequeTest() {
         let a: C1 = {
           name: "Dylon", age: "13"
         };
-        let b = 'a'
-        let c = 1
-        deque.insertEnd(a)
-        deque.insertEnd(b)
-        deque.insertEnd(c)
+        let b = 'a';
+        let c = 1;
+        deque.insertEnd(a);
+        deque.insertEnd(b);
+        deque.insertEnd(c);
         deque.forEach((item, index) => {
-          let result = item
-          let itemIndex = index
+          let result = item;
+          let itemIndex = index;
           expect(result).assertEqual(item);
           expect(itemIndex).assertEqual(itemIndex);
         })
@@ -505,17 +505,17 @@ export default function DequeTest() {
         };
         let b = 'a'
         let c = 1
-        deque.insertEnd(a)
-        deque.insertEnd(b)
-        deque.insertEnd(c)
+        deque.insertEnd(a);
+        deque.insertEnd(b);
+        deque.insertEnd(c);
         deque.forEach((item, index) => {
-          let result = item
-          let itemIndex = index
+          let result = item;
+          let itemIndex = index;
           expect(result).assertEqual(item);
           expect(itemIndex).assertEqual(itemIndex);
         },res)
         expect(JSON.stringify(deque)).assertEqual('{"0":{"name":"Dylon","age":"13"},"1":"a","2":1}')
-        expect(JSON.stringify(res)).assertEqual("{}")
+        expect(JSON.stringify(res)).assertEqual("{}");
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();

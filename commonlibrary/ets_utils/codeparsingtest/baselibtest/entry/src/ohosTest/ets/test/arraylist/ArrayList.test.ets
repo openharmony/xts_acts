@@ -1466,7 +1466,7 @@ export default function ArrayListTest() {
 
         let numbers: Array<number> = arrayList.convertToArray()
         for (let item of numbers) {
-          result.add(item)
+          result.add(item);
         }
         expect(arrayList.convertToArray().toString()).assertEqual("2,4,5,4");
         expect(result.convertToArray().toString()).assertEqual("2,4,5,4");
@@ -1475,9 +1475,5 @@ export default function ArrayListTest() {
         expect().assertFail();
       }
     });
-
-
-
-
   });
 }

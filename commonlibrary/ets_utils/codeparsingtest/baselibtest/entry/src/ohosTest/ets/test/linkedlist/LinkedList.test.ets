@@ -1064,7 +1064,7 @@ export default function LinkedListTest() {
         linkedList.add(4);
         linkedList.add(5);
         linkedList.add(4);
-        linkedListNew.add(0)
+        linkedListNew.add(0);
         linkedList.forEach((value: number, index?: number) => {
           console.log("value:" + value, "index:" + index);
           expect(linkedList.get(index).toString()).assertEqual(value.toString())
@@ -1092,10 +1092,10 @@ export default function LinkedListTest() {
         linkedList.add(4);
         linkedList.add(5);
         linkedList.add(4);
-        let index = 0
+        let index = 0;
         linkedList.forEach((value: number) => {
           expect(linkedList.get(index).toString()).assertEqual(value.toString());
-          index ++
+          index ++;
         });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);

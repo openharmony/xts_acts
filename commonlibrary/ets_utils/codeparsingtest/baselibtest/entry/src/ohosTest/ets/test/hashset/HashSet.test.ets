@@ -806,7 +806,7 @@ export default function HasSetTest() {
         const hashSet = new HashSet<number>();
         hashSet.forEach((value?: number, key?: number) => {
           expect(hashSet.length).assertEqual(0);
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -832,8 +832,8 @@ export default function HasSetTest() {
         hashSet.forEach((value?: number) => {
           expect(value).assertEqual(index);
           index++;
-        })
-        expect(hashSet.length).assertEqual(3)
+        });
+        expect(hashSet.length).assertEqual(3);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -856,7 +856,7 @@ export default function HasSetTest() {
         hashSet.forEach((value?: number) => {
           hashSet.add(2);
           expect(hashSet.length).assertEqual(2);
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -879,7 +879,7 @@ export default function HasSetTest() {
         hashSet.forEach((value?: number) => {
           hashSet.clear();
           expect(hashSet.length).assertEqual(0);
-        })
+        });
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -904,7 +904,7 @@ export default function HasSetTest() {
         hashSet.forEach((value?: number) => {
           hashSet.clear();
           expect(hashSet.length).assertEqual(0);
-        }, hashSetNew)
+        }, hashSetNew);
         expect(hashSetNew.length).assertEqual(1);
         expect(hashSetNew.has(1)).assertTrue();
       } catch (err) {

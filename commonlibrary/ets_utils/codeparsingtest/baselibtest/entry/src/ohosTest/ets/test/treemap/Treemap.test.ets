@@ -2280,8 +2280,8 @@ export default function TreemapTest() {
         expect(res.next().value).assertEqual(456);
         expect(res.next().value).assertEqual(789);
         expect(res.next().value).assertEqual(666);
-        let length = treeMap.length
-        expect(length).assertEqual(4)
+        let length = treeMap.length;
+        expect(length).assertEqual(4);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.code}`);
         expect().assertFail();
@@ -2313,8 +2313,8 @@ export default function TreemapTest() {
         expect(res.next().value).assertEqual('789');
         expect(res.next().value).assertEqual('456');
         expect(res.next().value).assertEqual('123');
-        let length = treeMap.length
-        expect(length).assertEqual(4)
+        let length = treeMap.length;
+        expect(length).assertEqual(4);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.code}`);
         expect().assertFail();
@@ -2337,13 +2337,13 @@ export default function TreemapTest() {
         treeMap.set('CCC', 789);
         treeMap.set('DDD', 666);
         treeMap.entries();
-        treeMap.remove("BBB")
+        treeMap.remove("BBB");
         let res = treeMap.values();
         expect(res.next().value).assertEqual(123);
         expect(res.next().value).assertEqual(789);
         expect(res.next().value).assertEqual(666);
-        let length = treeMap.length
-        expect(length).assertEqual(3)
+        let length = treeMap.length;
+        expect(length).assertEqual(3);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.code}`);
         expect().assertFail();
@@ -2367,14 +2367,14 @@ export default function TreemapTest() {
         treeMap.set('CCC', 789);
         treeMap.set('DDD', 666);
         treeMap.entries();
-        treeMap.replace("BBB", 555)
+        treeMap.replace("BBB", 555);
         let res = treeMap.values();
         expect(res.next().value).assertEqual(123);
         expect(res.next().value).assertEqual(555);
         expect(res.next().value).assertEqual(789);
         expect(res.next().value).assertEqual(666);
-        let length = treeMap.length
-        expect(length).assertEqual(4)
+        let length = treeMap.length;
+        expect(length).assertEqual(4);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.code}`);
         expect().assertFail();
