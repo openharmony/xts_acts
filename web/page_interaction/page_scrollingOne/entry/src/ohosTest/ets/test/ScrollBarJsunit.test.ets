@@ -19,6 +19,7 @@ import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
+
 export default function scrollBarJsunit() {
   describe('TEST_ScrollBar_Keep',  () => {
     beforeEach(async  (done: Function) =>{
