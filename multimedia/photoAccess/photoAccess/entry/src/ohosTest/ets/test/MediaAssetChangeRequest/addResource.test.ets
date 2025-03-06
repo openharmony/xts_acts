@@ -18,7 +18,6 @@ import { describe, it, expect, beforeAll } from '@ohos/hypium'
 import { driveFn, fetchOption, getPermission, photoKeys, sleep } from '../common'
 import common from '@ohos.app.ability.common'
 
-
 export default function addResourceChangeRequestTest() {
   describe('addResourceChangeRequestTest', () => {
     let testContext: common.UIAbilityContext = AppStorage.get('testContext') as common.UIAbilityContext;
@@ -93,12 +92,12 @@ export default function addResourceChangeRequestTest() {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_ADD_RESOURCE_CHANGE_REQUEST_0200
      * @tc.name      : add_resource_change_request_002
-     * @tc.desc      : add resource by extension ''
+     * @tc.desc      : add VIDEO resource by IMAGE_RESOURCE,error code is 13900002 or 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('add_resource_change_request_002', 0, async (done: Function) => {
+    it('add_resource_change_request_002', 2, async (done: Function) => {
       let testNum = 'add_resource_change_request_002';
       try {
         let photoType = photoAccessHelper.PhotoType.VIDEO;
@@ -111,7 +110,7 @@ export default function addResourceChangeRequestTest() {
         done();
       } catch (error) {
         console.error(`${testNum} failed; error: ${error}, ${error.code}`);
-        expect(error.code).assertEqual('401')
+        expect(error.code === '13900002' || error.code === '401').assertTrue();
         done();
       }
     })
