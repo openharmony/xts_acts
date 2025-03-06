@@ -19,7 +19,6 @@ import { driveFn, genRadomStr, getPermission, photoType, sleep } from '../common
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 
-
 export default function createDeleteRequestTest() {
   describe('createDeleteRequestTest', () => {
     let testContext: common.UIAbilityContext = AppStorage.get('testContext') as common.UIAbilityContext;
@@ -79,6 +78,39 @@ export default function createDeleteRequestTest() {
       }
     });
     /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_CREATE_DELETE_REQUEST_0100
+     * @tc.name      : createDeleteRequest_callback_001
+     * @tc.desc      : createFiles 0 file,error code is 13900020 or 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('createDeleteRequest_callback_001', 2, async (done: Function) => {
+      const testNum = 'createDeleteRequest_callback_001';
+      try {
+        let uriList = await createFiles(0);
+        console.info(`${testNum} uriList: ${JSON.stringify(uriList)}`);
+        helper.createDeleteRequest(uriList, (err) => {
+          try {
+            if (err) {
+              console.info(`${testNum} error ${JSON.stringify(err)}`);
+            } else {
+              console.log(`${testNum} delete suc`);
+            }
+          } catch (error) {
+            console.info(`${testNum} error ${JSON.stringify(error)}`);
+          }
+          expect(false).assertTrue();
+          done();
+        });
+        done();
+      } catch (error) {
+        console.log(`${testNum} success, error code : ${error.code}`)
+        expect(error.code === 13900020 || error.code === 401).assertTrue();
+        done();
+      }
+    });
+    /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_CREATE_DELETE_REQUEST_0000
      * @tc.name      : createDeleteRequest_promise_000
      * @tc.desc      : delete 1 file
@@ -101,6 +133,34 @@ export default function createDeleteRequestTest() {
         done();
       } catch (error) {
         expect(false).assertTrue();
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_CREATE_DELETE_REQUEST_0100
+     * @tc.name      : createDeleteRequest_promise_001
+     * @tc.desc      : createFiles 0 file,error code is 13900020 or 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('createDeleteRequest_promise_001', 2, async (done: Function) => {
+      const testNum = 'createDeleteRequest_promise_001';
+      try {
+        let uriList = await createFiles(0);
+        console.info(`${testNum} uriList: ${JSON.stringify(uriList)}`);
+        helper.createDeleteRequest(uriList)
+          .then(() => {
+            console.log(`${testNum} delete suc`);
+          })
+          .catch((error:BusinessError ) => {
+            console.info(`${testNum} error ${JSON.stringify(error)}`);
+          });
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.log(`${testNum} success, error code : ${error.code}`)
+        expect(error.code === 13900020 || error.code === 401).assertTrue();
         done();
       }
     });
