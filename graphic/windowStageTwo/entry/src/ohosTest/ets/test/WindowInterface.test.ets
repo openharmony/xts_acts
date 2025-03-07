@@ -2592,141 +2592,1478 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
       }
     })
 
-     /**
-     * @tc.number    : test_setSupportedWindowModes_0100
-     * @tc.name      : test_setSupportedWindowModes_0100
-     * @tc.desc      : Test the function value of setWindowTitleMoveEnabled
+    /**
+     * @tc.number    : test_setSupportedWindowModes_001
+     * @tc.name      : test_setSupportedWindowModes_001
+     * @tc.desc      : 传参三个元素
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-  it('test_setSupportedWindowModes_0100', 0, async (done: Function) => {
-     const message = 'test_setSupportedWindowModes_0100';
+    it('test_setSupportedWindowModes_001', 0, async (done: Function) => {
       try {
-        let windowClass = windowStage.getMainWindowSync();
-        await windowClass.setUIContent('testability/pages/Index');
-        await sleep(1000);
-          let windowStageStart = await startAbility(message, context);
-          let promise = windowStageStart.setSupportedWindowModes([
-            bundleManager.SupportWindowMode.FULL_SCREEN,
-            bundleManager.SupportWindowMode.SPLIT, 
-            bundleManager.SupportWindowMode.FLOATING
-            ]);
-          promise.then(async () => {
-            console.info(message+' Succeed in setting window support modes');
-            await terminateAbilityCycle('afterEach')
+        const message = 'test_setSupportedWindowModes_001'
+        let windowStageStart = await startAbility(message, context)
+        let promise = windowStageStart.setSupportedWindowModes([bundleManager.SupportWindowMode.FULL_SCREEN,
+          bundleManager.SupportWindowMode.SPLIT, bundleManager.SupportWindowMode.FLOATING]);
+        promise.then(() => {
+          console.info('Succeed in setting window support modes');
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          if (err.code == 801) {
+            console.error(`The device not support setSupportedWindowModes`);
             expect(true).assertTrue();
             done();
-          }).catch((err:BusinessError) =>{
-              console.error(`${message} Failed to set window support modes. Cause code: ${err.code}, messege:${err.message}`);
-            if (err.code == 801) {
-              console.error(`The device not support setSupportedWindowModes`);
-              done();
-            } else {
-              expect().assertFail();
-              done();
-            }
-          })
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
       } catch (err) {
-        console.error(`${message} Failed to set window support modes 2. Cause code: ${err.code}, messege:${err.message}`);
+        console.error(`Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
         expect().assertFail();
         done();
-      };
+      }
+      ;
     });
-/**
-     * @tc.number    : test_createSubWindowWithOptions_windowRect_0100
-     * @tc.name      : test_createSubWindowWithOptions_windowRect_0100
-     * @tc.desc      : Test the function value of createSubWindowWithOptions
+
+    /**
+     * @tc.number    : test_setSupportedWindowModes_002
+     * @tc.name      : test_setSupportedWindowModes_002
+     * @tc.desc      : 传参4个fullscreen，验证成功设置和801
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_0100', 0, async (done: Function) => {
-      let message = 'test_createSubWindowWithOptions_windowRect_0100';
+    it('test_setSupportedWindowModes_002', 0, async (done: Function) => {
       try {
-        let mainWindow = windowStage.getMainWindowSync();
-        let windowLimits = mainWindow.getWindowLimits();
+        const message = 'test_setSupportedWindowModes_002'
+        let windowStageStart = await startAbility(message, context)
+        let promise = windowStageStart.setSupportedWindowModes([bundleManager.SupportWindowMode.FULL_SCREEN,
+          bundleManager.SupportWindowMode.FULL_SCREEN, bundleManager.SupportWindowMode.FULL_SCREEN,
+          bundleManager.SupportWindowMode.FULL_SCREEN]);
+        promise.then(() => {
+          console.info('Succeed in setting window support modes');
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          if (err.code == 801) {
+            console.error(`The device not support setSupportedWindowModes`);
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+      } catch (err) {
+        console.error(`Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+        expect().assertFail();
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_setSupportedWindowModes_003
+     * @tc.name      : test_setSupportedWindowModes_003
+     * @tc.desc      : 传参列表5个元素，验证401
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_setSupportedWindowModes_003', 0, async (done: Function) => {
+      try {
+        const message = 'test_setSupportedWindowModes_003'
+        let windowStageStart = await startAbility(message, context)
+        let promise = windowStageStart.setSupportedWindowModes([bundleManager.SupportWindowMode.FULL_SCREEN,
+          bundleManager.SupportWindowMode.SPLIT, bundleManager.SupportWindowMode.FLOATING,
+          bundleManager.SupportWindowMode.FLOATING, bundleManager.SupportWindowMode.FLOATING]);
+        promise.then(() => {
+          console.info('Succeed in setting window support modes');
+          expect().assertFail()
+          done()
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          if (err.code == 801 || err.code == 401) {
+            console.error(`The device not support setSupportedWindowModes`);
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+      } catch (err) {
+        console.error(`Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+        expect().assertFail();
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_setSupportedWindowModes_004
+     * @tc.name      : test_setSupportedWindowModes_004
+     * @tc.desc      : 传参[]，验证401
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_setSupportedWindowModes_004', 0, async (done: Function) => {
+      try {
+        const message = 'test_setSupportedWindowModes_004'
+        let windowStageStart = await startAbility(message, context)
+        let promise = windowStageStart.setSupportedWindowModes([]);
+        promise.then(() => {
+          console.info('Succeed in setting window support modes');
+          expect().assertFail()
+          done()
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          if (err.code == 801 || err.code == 401) {
+            console.error(`The device not support setSupportedWindowModes`);
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+      } catch (err) {
+        console.error(`Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+        expect().assertFail();
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_setSupportedWindowModes_005
+     * @tc.name      : test_setSupportedWindowModes_005
+     * @tc.desc      : 传参[split]，验证401
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_setSupportedWindowModes_005', 0, async (done: Function) => {
+      try {
+        const message = 'test_setSupportedWindowModes_005'
+        let windowStageStart = await startAbility(message, context)
+        let promise = windowStageStart.setSupportedWindowModes([bundleManager.SupportWindowMode.SPLIT]);
+        promise.then(() => {
+          console.info('Succeed in setting window support modes');
+          expect().assertFail()
+          done()
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          if (err.code == 801 || err.code == 401) {
+            console.error(`The device not support setSupportedWindowModes`);
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+      } catch (err) {
+        console.error(`Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+        expect().assertFail();
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_setSupportedWindowModes_006
+     * @tc.name      : test_setSupportedWindowModes_006
+     * @tc.desc      : 销毁ability, 验证1300002
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_setSupportedWindowModes_006', 0, async (done: Function) => {
+      try {
+        const message = 'test_setSupportedWindowModes_006'
+        let windowStageStart = await startAbility(message, context)
+        await terminateAbility(message);
+        await sleep(1000);
+        let promise = windowStageStart.setSupportedWindowModes([bundleManager.SupportWindowMode.SPLIT]);
+        promise.then(() => {
+          console.info('Succeed in setting window support modes');
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          if (err.code == 801 || err.code == 1300002) {
+            console.error(`The device not support setSupportedWindowModes`);
+            expect(true).assertTrue();
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+      } catch (err) {
+        console.error(`Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+        if (err.code == 1300002) {
+          expect(true).assertTrue();
+        } else {
+          expect().assertFail();
+        }
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_setSupportedWindowModes_007
+     * @tc.name      : test_setSupportedWindowModes_007
+     * @tc.desc      : [full_screen] ——> [float] ——> [full_screen],验证设置后mode和沉浸式改变
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_setSupportedWindowModes_007', 0, async (done: Function) => {
+      try {
+        const message = 'test_setSupportedWindowModes_007';
+        let windowStageStart = await startAbility(message, context)
+        let promise_primary = windowStageStart.setSupportedWindowModes([bundleManager.SupportWindowMode.FULL_SCREEN]);
+        promise_primary.then(() => {
+          console.info('Succeed in setting window support modes');
+          let status_primary = windowStageStart.getMainWindowSync().getWindowStatus();
+          console.info(`${message} status_primary:${status_primary}, window.WindowStatusType.FULL_SCREEN:${window.WindowStatusType.FULL_SCREEN}`);
+          expect(status_primary).assertEqual(window.WindowStatusType.FULL_SCREEN)
+          let isImmersive_primary = windowStageStart.getMainWindowSync().getImmersiveModeEnabledState();
+          expect(isImmersive_primary).assertTrue();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} primary Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          if (err.code == 801) {
+            console.error(`The device not support setSupportedWindowModes`);
+            expect(true).assertTrue();
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+
+        let promise_float = windowStageStart.setSupportedWindowModes([bundleManager.SupportWindowMode.FLOATING]);
+        promise_float.then(() => {
+          console.info('Succeed in setting window support modes');
+          let status_float = windowStageStart.getMainWindowSync().getWindowStatus();
+          console.info(`${message} status_float:${status_float}, window.WindowStatusType.FLOATING:${window.WindowStatusType.FLOATING}`);
+          expect(status_float).assertEqual(window.WindowStatusType.FLOATING);
+        }).catch((err: BusinessError) => {
+          console.error(`${message} float Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          if (err.code == 801) {
+            console.error(`The device not support setSupportedWindowModes`);
+            expect(true).assertTrue();
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+
+        let promise_fullscreen =
+          windowStageStart.setSupportedWindowModes([bundleManager.SupportWindowMode.FULL_SCREEN]);
+        promise_fullscreen.then(() => {
+          console.info('Succeed in setting window support modes');
+          expect(true).assertTrue();
+          let status_fullscreen = windowStageStart.getMainWindowSync().getWindowStatus();
+          console.info(`${message} status_fullscreen:${status_fullscreen}, window.WindowStatusType.FULL_SCREEN:${window.WindowStatusType.FULL_SCREEN}`);
+          expect(status_fullscreen).assertEqual(window.WindowStatusType.FULL_SCREEN);
+          let isImmersive_fullscreen = windowStageStart.getMainWindowSync().getImmersiveModeEnabledState();
+          expect(isImmersive_fullscreen).assertTrue();
+          done()
+        }).catch((err: BusinessError) => {
+          console.error(`${message} fullscreen Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          if (err.code == 801) {
+            console.error(`The device not support setSupportedWindowModes`);
+            expect(true).assertTrue();
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+      } catch (err) {
+        console.error(`Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+        expect().assertFail();
+        done();
+      }
+      ;
+
+    });
+
+    /**
+     * @tc.number    : test_createSubWindowWithOptions_windowRect_001
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_001
+     * @tc.desc      : left&top为负整数，width&height为最小值
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_createSubWindowWithOptions_windowRect_001', 0, async (done: Function) => {
+      try {
+        const message = 'test_createSubWindowWithOptions_windowRect_001'
+        let limit = context.windowStage.getMainWindowSync().getWindowLimits()
         let options: window.SubWindowOptions = {
-          title: 'title',
+          title: 'subwindow0',
           decorEnabled: false,
           windowRect: {
             left: -100,
             top: -100,
-            width: Number(windowLimits.minWidth),
-            height: Number(windowLimits.minHeight)
+            width: Number(limit.minWidth),
+            height: Number(limit.minHeight)
           }
         };
-        let promise = windowStage.createSubWindowWithOptions('test_createSubWindowWithOptions_windowRect_0100', options);
-        promise.then(async (data) => {
+        let promise = windowStage.createSubWindowWithOptions('subwindow0', options);
+        await promise.then(async (data) => {
+          console.info('succeed in create the subwindow');
           let subWindowClass = data;
-          await subWindowClass.loadContentByName('../testability/pages/newPage');
+          await subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
           await subWindowClass.showWindow();
-          console.info(message+' succeed in create the subwindow');
-          await subWindowClass.destroyWindow();
-          expect(true).assertTrue();
+          await sleep(10000);
+          let windowRealRect = subWindowClass.getWindowProperties().windowRect
+          console.info(`options.windowRect:${JSON.stringify(options.windowRect)},windowRealRect:${JSON.stringify(windowRealRect)}`)
+          expect(options.windowRect?.left).assertEqual(windowRealRect.left);
+          expect(options.windowRect?.top).assertEqual(windowRealRect.top);
+          expect(options.windowRect?.width).assertEqual(windowRealRect.width);
+          expect(options.windowRect?.height).assertEqual(windowRealRect.height);
           done();
         }).catch((err: BusinessError) => {
-          console.error(`Failed to create the subwindow, promise cause code ${err.code}, message ${err.message} `)
-          if (err.code == 801) {
+          console.error(`${message} Failed to create the subwindow, promise cause code: ${err.code}, message: ${err.message} `)
+          if (err.code == 801 || err.code == 401) {
+            expect(true).assertTrue();
             console.error(`The device not support createSubWindowWithOptions`);
-            done();
           } else {
             expect().assertFail();
-            done();
           }
-          
+          done();
         });
       } catch (err) {
         console.error(`Failed to create the subwindow, Cause code ${err.code}, message ${err.message} `);
-        if (err.code == 801) {
-          console.error(`The device not support getWindowLimits`);
-          done();
+        if (err.code == 801 || err.code == 401) {
+          expect(true).assertTrue()
         } else {
-          expect().assertFail();
-          done();
+          expect().assertFail()
         }
-      };
+        done();
+      }
+      ;
     });
-/**
-     * @tc.number    : test_on_windowWillClose_0100
-     * @tc.name      : test_on_windowWillClose_0100
-     * @tc.desc      : Test the function value of windowWillClose
+
+    /**
+     * @tc.number    : test_createSubWindowWithOptions_windowRect_002
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_002
+     * @tc.desc      : left&top为正整数，width&height为最大值
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_0100', 0, async (done: Function) => {
-      let message = 'test_on_windowWillClose_0100';
-      let windowClass = windowStage.getMainWindowSync();
+    it('test_createSubWindowWithOptions_windowRect_002', 0, async (done: Function) => {
+      try {
+        const message = 'test_createSubWindowWithOptions_windowRect_002';
+        let limit = context.windowStage.getMainWindowSync().getWindowLimits();
+        let options: window.SubWindowOptions = {
+          title: 'subwindow0',
+          decorEnabled: false,
+          windowRect: {
+            left: 10000,
+            top: 10000,
+            width: Number(limit.maxWidth),
+            height: Number(limit.maxHeight)
+          }
+        };
+        let promise = windowStage.createSubWindowWithOptions('subwindow0', options);
+        await promise.then(async (data) => {
+          console.info('succeed in create the subwindow');
+          let subWindowClass = data;
+          await subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+          await subWindowClass.showWindow();
+          await sleep(1000);
+          let windowRealRect = subWindowClass.getWindowProperties().windowRect
+          console.info(`options.windowRect:${JSON.stringify(options.windowRect)},windowRealRect:${JSON.stringify(windowRealRect)}`)
+          expect(options.windowRect?.left).assertEqual(windowRealRect.left);
+          expect(options.windowRect?.top).assertEqual(windowRealRect.top);
+          expect(options.windowRect?.width).assertEqual(windowRealRect.width);
+          expect(options.windowRect?.height).assertEqual(windowRealRect.height);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to create the subwindow, promise cause code: ${err.code}, message: ${err.message} `)
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            console.error(`The device not support createSubWindowWithOptions`);
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+      } catch (err) {
+        console.error(`Failed to create the subwindow, Cause code ${err.code}, message ${err.message} `);
+        if (err.code == 801) {
+          expect(true).assertTrue()
+        } else {
+          expect().assertFail()
+        }
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_createSubWindowWithOptions_windowRect_003
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_003
+     * @tc.desc      : left&top为正整数，验证801
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_createSubWindowWithOptions_windowRect_003', 0, async (done: Function) => {
+      try {
+        const message = 'test_createSubWindowWithOptions_windowRect_003'
+        let options: window.SubWindowOptions = {
+          title: 'subwindow0',
+          decorEnabled: false,
+          windowRect: {
+            left: 100,
+            top: 100,
+            width: 300,
+            height: 300
+          }
+        };
+        let promise = windowStage.createSubWindowWithOptions('subwindow0', options);
+        await promise.then(async (data) => {
+          console.info('succeed in create the subwindow');
+          let subWindowClass = data;
+          await subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+          await subWindowClass.showWindow();
+          await sleep(1000);
+          let windowRealRect = subWindowClass.getWindowProperties().windowRect
+          console.info(`options.windowRect:${JSON.stringify(options.windowRect)},windowRealRect:${JSON.stringify(windowRealRect)}`)
+          expect(options.windowRect?.left).assertEqual(windowRealRect.left);
+          expect(options.windowRect?.top).assertEqual(windowRealRect.top);
+          expect(options.windowRect?.width).assertEqual(windowRealRect.width);
+          expect(options.windowRect?.height).assertEqual(windowRealRect.height);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to create the subwindow, promise cause code: ${err.code}, message: ${err.message} `)
+          if (err.code == 801 || err.code == 1300002) {
+            expect(true).assertTrue();
+            console.error(`The device not support createSubWindowWithOptions`);
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+      } catch (err) {
+        console.error(`Failed to create the subwindow, Cause code ${err.code}, message ${err.message} `);
+        expect().assertFail()
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_createSubWindowWithOptions_windowRect_004
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_004
+     * @tc.desc      : left&top为浮点数，width&height为浮点数
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_createSubWindowWithOptions_windowRect_004', 0, async (done: Function) => {
+      try {
+        const message = 'test_createSubWindowWithOptions_windowRect_004';
+        let limit = context.windowStage.getMainWindowSync().getWindowLimits();
+        let options: window.SubWindowOptions = {
+          title: 'title',
+          decorEnabled: false,
+          windowRect: {
+            left: 3.14,
+            top: 6.28,
+            width: Number(limit.maxWidth)-0.1,
+            height: Number(limit.maxHeight)-0.1
+          }
+        };
+        let promise = windowStage.createSubWindowWithOptions('subwindow0', options);
+        await promise.then(async (data) => {
+          console.info('succeed in create the subwindow');
+          let subWindowClass = data;
+          await subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+          await subWindowClass.showWindow();
+          await sleep(1000);
+          let windowRealRect = subWindowClass.getWindowProperties().windowRect
+          console.info(`${message} options.windowRect:${JSON.stringify(options.windowRect)},windowRealRect:${JSON.stringify(windowRealRect)}`)
+          expect(Math.floor(Number(options.windowRect?.left))).assertEqual(Number(windowRealRect.left));
+          expect(Math.floor(Number(options.windowRect?.top))).assertEqual(Number(windowRealRect.top));
+          expect(Math.floor(Number(options.windowRect?.width))).assertEqual(Number(windowRealRect.width));
+          expect(Math.floor(Number(options.windowRect?.height))).assertEqual(Number(windowRealRect.height));
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to create the subwindow, promise cause code: ${err.code}, message: ${err.message} `)
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            console.error(`The device not support createSubWindowWithOptions`);
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+      } catch (err) {
+        console.error(`Failed to create the subwindow, Cause code ${err.code}, message ${err.message} `);
+        if (err.code == 801) {
+          expect(true).assertTrue()
+        } else {
+          expect().assertFail()
+        }
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_createSubWindowWithOptions_windowRect_005
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_005
+     * @tc.desc      : left&top为0，width&height为0
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_createSubWindowWithOptions_windowRect_005', 0, async (done: Function) => {
+      try {
+        const message = 'test_createSubWindowWithOptions_windowRect_005';
+        let limit = context.windowStage.getMainWindowSync().getWindowLimits();
+        let options: window.SubWindowOptions = {
+          title: 'title',
+          decorEnabled: false,
+          windowRect: {
+            left: 0,
+            top: 0,
+            width: 0,
+            height: 0
+          }
+        };
+        let promise = windowStage.createSubWindowWithOptions('subwindow0', options);
+        await promise.then(async (data) => {
+          console.info('succeed in create the subwindow');
+          let subWindowClass = data;
+          await subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+          await subWindowClass.showWindow();
+          await sleep(1000);
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to create the subwindow, promise cause code: ${err.code}, message: ${err.message} `)
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            console.error(`The device not support createSubWindowWithOptions`);
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+      } catch (err) {
+        console.error(`Failed to create the subwindow, Cause code ${err.code}, message ${err.message} `);
+        if (err.code == 401 || err.code == 801) {
+          expect(true).assertTrue();
+        } else {
+          expect().assertFail();
+        }
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_createSubWindowWithOptions_windowRect_006
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_006
+     * @tc.desc      : left&top为正整数，width&height为最大值+1
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_createSubWindowWithOptions_windowRect_006', 0, async (done: Function) => {
+      try {
+        const message = 'test_createSubWindowWithOptions_windowRect_006';
+        let limit = context.windowStage.getMainWindowSync().getWindowLimits();
+        let options: window.SubWindowOptions = {
+          title: 'title',
+          decorEnabled: true,
+          windowRect: {
+            left: 314,
+            top: 628,
+            width: Number(limit.maxWidth) + 1,
+            height: Number(limit.maxHeight) + 1
+          }
+        };
+        let promise = windowStage.createSubWindowWithOptions('subwindow0', options);
+        await promise.then(async (data) => {
+          console.info('succeed in create the subwindow');
+          let subWindowClass = data;
+          await subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+          await subWindowClass.showWindow();
+          await sleep(1000);
+          let windowRealRect = subWindowClass.getWindowProperties().windowRect
+          console.info(`${message} options.windowRect:${JSON.stringify(options.windowRect)},windowRealRect:${JSON.stringify(windowRealRect)}`)
+          expect(Number(options.windowRect?.left)).assertEqual(Number(windowRealRect.left));
+          expect(Number(options.windowRect?.top)).assertEqual(Number(windowRealRect.top));
+          expect(Number(options.windowRect?.width)-1).assertEqual(Number(windowRealRect.width));
+          expect(Number(options.windowRect?.height)-1).assertEqual(Number(windowRealRect.height));
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to create the subwindow, promise cause code: ${err.code}, message: ${err.message} `)
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            console.error(`The device not support createSubWindowWithOptions`);
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+      } catch (err) {
+        console.error(`Failed to create the subwindow, Cause code ${err.code}, message ${err.message} `);
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          console.error(`The device not support getWindowLimits`);
+        } else {
+          expect().assertFail();
+        }
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_createSubWindowWithOptions_windowRect_007
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_007
+     * @tc.desc      : left&top为正整数，width&height为最小值-1
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     *
+     * @tc.level     : Level3
+     */
+    it('test_createSubWindowWithOptions_windowRect_007', 0, async (done: Function) => {
+      try {
+        const message = 'test_createSubWindowWithOptions_windowRect_007';
+        let subwindow0 = await windowStage.createSubWindow('subwindow0');
+        await sleep(1000)
+        let limit = subwindow0.getWindowLimits();
+        await subwindow0.destroyWindow()
+        let options: window.SubWindowOptions = {
+          title: 'title',
+          decorEnabled: false,
+          windowRect: {
+            left: 314,
+            top: 628,
+            width: Number(limit.minWidth) - 1,
+            height: Number(limit.minHeight) - 1
+          }
+        };
+        let promise = windowStage.createSubWindowWithOptions('subwindow1', options);
+        await promise.then(async (data) => {
+          console.info('succeed in create the subwindow');
+          let subWindowClass = data;
+          await subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+          await subWindowClass.showWindow();
+          await sleep(1000);
+          let windowRealRect = subWindowClass.getWindowProperties().windowRect
+          console.info(`${message} options.windowRect:${JSON.stringify(options.windowRect)},windowRealRect:${JSON.stringify(windowRealRect)}`)
+          expect(Number(options.windowRect?.left)).assertEqual(Number(windowRealRect.left));
+          expect(Number(options.windowRect?.top)).assertEqual(Number(windowRealRect.top));
+          expect(Number(options.windowRect?.width)+1).assertEqual(Number(windowRealRect.width));
+          expect(Number(options.windowRect?.height)+1).assertEqual(Number(windowRealRect.height));
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to create the subwindow, promise cause code: ${err.code}, message: ${err.message} `)
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            console.error(`The device not support createSubWindowWithOptions`);
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+      } catch (err) {
+        console.error(`Failed to create the subwindow, Cause code ${err.code}, message ${err.message} `);
+        if (err.code == 801) {
+          expect(true).assertTrue()
+        } else {
+          expect().assertFail()
+        }
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_createSubWindowWithOptions_windowRect_008
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_008
+     * @tc.desc      : left&top为NaN，width&height为NaN
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_createSubWindowWithOptions_windowRect_008', 0, async (done: Function) => {
+      try {
+        const message = 'test_createSubWindowWithOptions_windowRect_008'
+        let options: window.SubWindowOptions = {
+          title: 'title',
+          decorEnabled: false,
+          windowRect: {
+            left: NaN,
+            top: NaN,
+            width: NaN,
+            height: NaN
+          }
+        };
+        let promise = windowStage.createSubWindowWithOptions('subwindow0', options);
+        await promise.then(async (data) => {
+          console.info('succeed in create the subwindow');
+          let subWindowClass = data;
+          await subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+          await subWindowClass.showWindow();
+          await sleep(1000);
+          expect().assertFail()
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to create the subwindow, promise cause code: ${err.code}, message: ${err.message} `)
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            console.error(`The device not support createSubWindowWithOptions`);
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+      } catch (err) {
+        console.error(`Failed to create the subwindow, Cause code ${err.code}, message ${err.message} `);
+        if (err.code == 401) {
+          expect(true).assertTrue()
+        } else {
+          expect().assertFail()
+        }
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_on_windowWillClose_001
+     * @tc.name      : test_on_windowWillClose_001
+     * @tc.desc      : resolve为true,验证窗口不销毁
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_on_windowWillClose_001', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_001'
       let result: boolean = false;
       const callback = () => {
         return new Promise<boolean>((resolve, reject) => {
           result = true;
           resolve(result);
-        });
+        })
       }
       try {
-        windowClass.on('windowWillClose', callback);
+        let windowStageStart = await startAbility(message, context);
+        let windowClassStart = windowStageStart.getMainWindowSync();
+        let windowName = windowClassStart.getUIContext().getWindowName();
+        windowClassStart.on('windowWillClose', callback);
         let driver: Driver = Driver.create()
-        let button = await driver.findComponent(ON.id('EnhanceCloseBtn'))
+        let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
         await button.click();
         await sleep(1000);
-        windowClass.off('windowWillClose');
-        windowClass.recover();
-        expect(result).assertEqual(true);
+        windowClassStart.off('windowWillClose', callback);
+        if (!result) {
+          expect().assertFail();
+        }
+        ;
+        try {
+          const windowClassFind = window.findWindow(windowName)
+          console.info(`The window ${windowClassFind} still exist`);
+        } catch (err) {
+          console.error(`The window does not exist`);
+          expect().assertFail();
+        }
         done();
       } catch (err) {
-        console.error(`Failed to register callback, Cause code ${err.code}, message ${err.message} `);
+        console.error(`${message} Failed to register callback, Cause code ${err.code}, message ${err.message} `);
         if (err.code == 801) {
+          expect(true).assertTrue();
           console.error(`The device not support on(windowWillClose)`);
-          done();
         } else {
           expect().assertFail();
-          done();
-        };
-        
-        };
+        }
+        ;
+        done();
+      }
+      ;
     });
+
+    /**
+     * @tc.number    : test_on_windowWillClose_002
+     * @tc.name      : test_on_windowWillClose_002
+     * @tc.desc      : resolve为false,验证窗口销毁
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_on_windowWillClose_002', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_002'
+      let result: boolean = true;
+      let windowName: string | undefined;
+      const callback = () => {
+        return new Promise<boolean>((resolve, reject) => {
+          result = false;
+          resolve(result);
+        })
+      }
+      try {
+        let windowStageStart = await startAbility(message, context);
+        let windowClassStart = windowStageStart.getMainWindowSync();
+        let windowName = windowClassStart.getUIContext().getWindowName();
+        windowClassStart.on('windowWillClose', callback);
+        let driver: Driver = Driver.create()
+        let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
+        await button.click();
+        await sleep(1000);
+        let startNum = (AppStorage.get('startNum') ? AppStorage.get('startNum') : 0) as number;
+        AppStorage.setOrCreate('startNum', startNum - 1);
+        if (result) {
+          expect().assertFail();
+        }
+        ;
+        try {
+          const windowClassFind = window.findWindow(windowName);
+          console.error(`The window ${windowClassFind} still exist`);
+          windowClassFind.off('windowWillClose');
+          expect().assertFail();
+        } catch (err) {
+          console.info(`The window does not exist`);
+          expect(err.code).assertEqual(1300002);
+        }
+        done();
+      } catch (err) {
+        console.error(`${message} Failed to register callback, Cause code ${err.code}, message ${err.message}`);
+        try {
+          const windowClassFind = window.findWindow(windowName)
+          console.error(`The window ${windowClassFind} still exist`);
+          windowClassFind.off('windowWillClose');
+        } catch (err) {
+          console.info(`The window does not exist`);
+        }
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          console.error(`The device not support on(windowWillClose)`);
+        } else {
+          expect().assertFail();
+        }
+        ;
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_on_windowWillClose_003
+     * @tc.name      : test_on_windowWillClose_0033
+     * @tc.desc      : 回调执行过程中执行off，验证1300002
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_on_windowWillClose_003', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_003'
+      let result: boolean = true;
+      const callback = async () => {
+        await sleep(3000);
+        return new Promise<boolean>((resolve, reject) => {
+          result = false;
+          resolve(result);
+        })
+      }
+      try {
+        let windowStageStart = await startAbility(message, context);
+        let windowClassStart = windowStageStart.getMainWindowSync();
+        windowClassStart.on('windowWillClose', callback);
+        let driver: Driver = Driver.create()
+        let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
+        await button.click();
+        let startNum = (AppStorage.get('startNum') ? AppStorage.get('startNum') : 0) as number;
+        AppStorage.setOrCreate('startNum', startNum - 1);
+        windowClassStart.off('windowWillClose', callback);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.error(`${message} Failed to register callback, Cause code ${err.code}, message ${err.message} `);
+        if (err.code == 1300002 || err.code == 801) {
+          expect(true).assertTrue();
+          console.error(`The device not support on(windowWillClose)`);
+        } else {
+          expect().assertFail();
+        }
+        ;
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_on_windowWillClose_004
+     * @tc.name      : test_on_windowWillClose_004
+     * @tc.desc      : 不注册，执行off
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_on_windowWillClose_004', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_004'
+      if (deviceType != "2in1" && isAutoWindow != 'true') {
+        expect(true).assertTrue();
+        done();
+      } else {
+        try {
+          let windowStageStart = await startAbility(message, context);
+          await sleep(10000);
+          let windowClassFind = windowStageStart.getMainWindowSync();
+          let windowName = windowClassFind.getUIContext().getWindowName();
+          windowClassFind.off('windowWillClose');
+          let driver: Driver = Driver.create();
+          let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
+          await button.click();
+          let startNum = (AppStorage.get('startNum') ? AppStorage.get('startNum') : 0) as number;
+          AppStorage.setOrCreate('startNum', startNum - 1);
+          await sleep(1000);
+          try {
+            const windowClassFind = window.findWindow(windowName)
+            console.error(`The window ${windowClassFind} still exist`);
+            expect().assertFail();
+          } catch (err) {
+            console.info(`The window does not exist`);
+            expect(err.code).assertEqual(1300002)
+          }
+          done();
+        } catch (err) {
+          console.error(`${message} Failed to register callback, Cause code ${err.code}, message ${err.message} `);
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            console.error(`The device not support on(windowWillClose)`);
+          } else {
+            expect().assertFail();
+          }
+          ;
+          done();
+        }
+        ;
+      }
+
+    });
+
+    /**
+     * @tc.number    : test_on_windowWillClose_005
+     * @tc.name      : test_on_windowWillClose_005
+     * @tc.desc      : 执行reject
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_on_windowWillClose_005', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_005';
+      let windowName: string | undefined;
+      const callback = () => {
+        return new Promise<boolean>((resolve, reject) => {
+          reject();
+        })
+      }
+      try {
+        let windowStageStart = await startAbility(message, context);
+        let windowClassStart = windowStageStart.getMainWindowSync();
+        let windowName = windowClassStart.getUIContext().getWindowName();
+        windowClassStart.on('windowWillClose', callback);
+        let driver: Driver = Driver.create()
+        let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
+        await button.click();
+        await sleep(1000);
+        let startNum = (AppStorage.get('startNum') ? AppStorage.get('startNum') : 0) as number;
+        AppStorage.setOrCreate('startNum', startNum - 1);
+        try {
+          const windowClassFind = window.findWindow(windowName);
+          console.error(`The window ${windowClassFind} still exist`);
+          windowClassFind.off('windowWillClose');
+          expect().assertFail();
+        } catch (err) {
+          console.info(`The window does not exist`);
+          expect(err.code).assertEqual(1300002)
+        }
+        done();
+      } catch (err) {
+        console.error(`${message} Failed to register callback, Cause code ${err.code}, message ${err.message} `);
+        try {
+          const windowClassFind = window.findWindow(windowName)
+          console.error(`The window ${windowClassFind} still exist`);
+          windowClassFind.off('windowWillClose');
+        } catch (err) {
+          console.info(`The window does not exist`);
+        }
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          console.error(`The device not support on(windowWillClose)`);
+        } else {
+          expect().assertFail();
+        }
+        ;
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_on_windowWillClose_006
+     * @tc.name      : test_on_windowWillClose_006
+     * @tc.desc      : 注册多个，取消一个
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_on_windowWillClose_006', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_006';
+      let windowName: string | undefined;
+      let result: boolean = true;
+      const callback1 = () => {
+        return new Promise<boolean>((resolve, reject) => {
+          result = false;
+          resolve(result);
+        })
+      }
+      const callback2 = () => {
+        return new Promise<boolean>((resolve, reject) => {
+          let result: boolean = true;
+          resolve(result);
+        })
+      }
+      try {
+        let windowStageStart = await startAbility(message, context);
+        let windowClassStart = windowStageStart.getMainWindowSync()
+        let windowName = windowClassStart.getUIContext().getWindowName();
+        windowClassStart.on('windowWillClose', callback1);
+        windowClassStart.on('windowWillClose', callback2);
+        windowClassStart.off('windowWillClose', callback2);
+        let driver: Driver = Driver.create()
+        let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
+        await button.click();
+        await sleep(1000);
+        let startNum = (AppStorage.get('startNum') ? AppStorage.get('startNum') : 0) as number;
+        AppStorage.setOrCreate('startNum', startNum - 1);
+        if (result) {
+          expect().assertFail();
+        }
+        ;
+        try {
+          const windowClassFind = window.findWindow(windowName);
+          console.error(`The window ${windowClassFind} still exist`);
+          windowClassFind.off('windowWillClose');
+          expect().assertFail();
+        } catch (err) {
+          console.info(`The window does not exist`);
+          expect(err.code).assertEqual(1300002);
+        }
+        done();
+      } catch (err) {
+        console.error(`${message} Failed to register callback, Cause code ${err.code}, message ${err.message} `);
+        try {
+          const windowClassFind = window.findWindow(windowName)
+          console.error(`The window ${windowClassFind} still exist`);
+          windowClassFind.off('windowWillClose');
+        } catch (err) {
+          console.info(`The window does not exist`);
+        }
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          console.error(`The device not support on(windowWillClose)`);
+        } else {
+          expect().assertFail();
+        }
+        ;
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_on_windowWillClose_007
+     * @tc.name      : test_on_windowWillClose_007
+     * @tc.desc      : 注册多个，off所有
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_on_windowWillClose_007', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_007';
+      let windowName: string | undefined;
+      let result: boolean = false;
+      const callback1 = () => {
+        return new Promise<boolean>((resolve, reject) => {
+          result = false;
+          resolve(result);
+        })
+      }
+      const callback2 = () => {
+        return new Promise<boolean>((resolve, reject) => {
+          result = true;
+          resolve(result);
+        })
+      }
+      try {
+        let windowStageStart = await startAbility(message, context);
+        let windowClassStart = windowStageStart.getMainWindowSync();
+        let windowName = windowClassStart.getUIContext().getWindowName();
+        windowClassStart.on('windowWillClose', callback1);
+        windowClassStart.on('windowWillClose', callback2);
+        windowClassStart.off('windowWillClose');
+        let driver: Driver = Driver.create()
+        let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
+        await button.click();
+        await sleep(1000);
+        let startNum = (AppStorage.get('startNum') ? AppStorage.get('startNum') : 0) as number;
+        AppStorage.setOrCreate('startNum', startNum - 1);
+        if (result) {
+          expect().assertFail();
+        }
+        ;
+        try {
+          const windowClassFind = window.findWindow(windowName)
+          console.error(`The window ${windowClassFind} still exist`);
+          windowClassFind.off('windowWillClose');
+          expect().assertFail();
+        } catch (err) {
+          console.info(`The window does not exist`);
+          expect(err.code).assertEqual(1300002);
+        }
+        done();
+      } catch (err) {
+        console.error(`${message} Failed to register callback, Cause code ${err.code}, message ${err.message} `);
+        try {
+          const windowClassFind = window.findWindow(windowName)
+          console.error(`The window ${windowClassFind} still exist`);
+          windowClassFind.off('windowWillClose');
+        } catch (err) {
+          console.info(`The window does not exist`);
+        }
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          console.error(`The device not support on(windowWillClose)`);
+        } else {
+          expect().assertFail();
+        }
+        ;
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_on_windowWillClose_008
+     * @tc.name      : test_on_windowWillClose_008
+     * @tc.desc      : 子窗result为false,验证窗口销毁
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_on_windowWillClose_008', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_008'
+      let result: boolean = true;
+      const callback = () => {
+        return new Promise<boolean>((resolve, reject) => {
+          result = false;
+          resolve(result);
+        })
+      };
+      let options: window.SubWindowOptions = {
+        title: 'subwindow0',
+        decorEnabled: true,
+      };
+
+      try {
+        let promise = windowStage.createSubWindowWithOptions('subwindow0', options);
+        // let promise = windowStage.createSubWindow('subwindow0');
+        await promise.then(async (data) => {
+          const subWindowClass = data;
+          subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+          subWindowClass.showWindow();
+          await sleep(1000);
+          subWindowClass.on('windowWillClose', callback);
+          let driver: Driver = Driver.create();
+          let button = await driver.findComponent(ON.id('EnhanceCloseBtn'))
+          await button.click()
+          try {
+            window.findWindow('subwindow0');
+            console.info(`subwindow0 is existing`);
+            subWindowClass.off('windowWillClose');
+            expect().assertFail();
+          } catch (exception) {
+            console.info(`subwindow0 is not existing`);
+          }
+          expect(result).assertFalse();
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error(`${message} Failed to create subwindow, Cause code ${err.code}, message ${err.message} `);
+          try {
+            const windowClassFind = window.findWindow('subwindow0')
+            console.error(`The window ${windowClassFind} still exist`);
+            windowClassFind.off('windowWillClose');
+          } catch (err) {
+            console.info(`The window does not exist`);
+          }
+          if (err.code == 801 || err.code == 1300002) {
+            expect(true).assertTrue();
+            console.error(`The device not support on(windowWillClose)`);
+          } else {
+            expect().assertFail();
+          }
+          ;
+          done();
+        })
+      } catch (err) {
+        console.error(`Failed to register callback, Cause code ${err.code}, message ${err.message} `);
+        expect().assertFail();
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_on_windowWillClose_009
+     * @tc.name      : test_on_windowWillClose_009
+     * @tc.desc      : 子窗result为true,验证窗口不销毁
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_on_windowWillClose_009', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_009'
+      let result: boolean = false;
+      const callback = () => {
+        return new Promise<boolean>((resolve, reject) => {
+          result = true;
+          resolve(result);
+        })
+      };
+      let options: window.SubWindowOptions = {
+        title: 'subwindow0',
+        decorEnabled: true,
+      };
+      try {
+        let promise = windowStage.createSubWindowWithOptions('subwindow0', options);
+        await promise.then(async (data) => {
+          const subWindowClass = data;
+          subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+          subWindowClass.showWindow();
+          await sleep(1000);
+          subWindowClass.on('windowWillClose', callback);
+          let driver: Driver = Driver.create();
+          let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
+          await button.click()
+          subWindowClass.off('windowWillClose', callback);
+          try {
+            window.findWindow('subwindow0');
+            console.info(`subwindow0 is existing`);
+            subWindowClass.off('windowWillClose', callback);
+          } catch (exception) {
+            console.info(`subwindow0 is not existing`);
+            expect().assertFail();
+          }
+          expect(result).assertTrue();
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error(`${message} Failed to create subwindow, Cause code ${err.code}, message ${err.message}`);
+          try {
+            const windowClassFind = window.findWindow('subwindow0')
+            console.error(`The window ${windowClassFind} still exist`);
+            windowClassFind.off('windowWillClose');
+          } catch (err) {
+            console.info(`The window does not exist`);
+          }
+          if (err.code == 801 || err.code == 1300002) {
+            expect(true).assertTrue();
+            console.error(`The device not support on(windowWillClose)`);
+          } else {
+            expect().assertFail();
+          }
+          ;
+          done();
+        })
+      } catch (err) {
+        console.error(`Failed to register callback, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_on_windowWillClose_010
+     * @tc.name      : test_on_windowWillClose_010
+     * @tc.desc      : 子窗reject,验证窗口销毁
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_on_windowWillClose_010', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_010'
+      const callback = () => {
+        return new Promise<boolean>((resolve, reject) => {
+          reject();
+        })
+      };
+      let options: window.SubWindowOptions = {
+        title: 'subwindow0',
+        decorEnabled: true,
+      };
+      try {
+        let promise = windowStage.createSubWindowWithOptions('subwindow0', options);
+        await promise.then(async (data) => {
+          const subWindowClass = data;
+          subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+          subWindowClass.showWindow();
+          await sleep(1000);
+          subWindowClass.on('windowWillClose', callback);
+          let driver: Driver = Driver.create();
+          let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
+          await button.click()
+          try {
+            window.findWindow('subwindow0');
+            console.info(`subwindow0 is existing`);
+            subWindowClass.off('windowWillClose');
+            expect().assertFail();
+          } catch (exception) {
+            console.info(`subwindow0 is not existing`);
+            expect(true).assertTrue();
+          }
+          ;
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error(`${message} Failed to create subwindow, Cause code ${err.code}, message ${err.message} `);
+          try {
+            const windowClassFind = window.findWindow('subwindow0')
+            console.error(`The window ${windowClassFind} still exist`);
+            windowClassFind.off('windowWillClose');
+          } catch (err) {
+            console.info(`The window does not exist`);
+          }
+          if (err.code == 801 || err.code == 1300002) {
+            expect(true).assertTrue();
+            console.error(`The device not support on(windowWillClose)`);
+          } else {
+            expect().assertFail();
+          }
+          ;
+          done();
+        })
+      } catch (err) {
+        console.error(`Failed to register callback, Cause code ${err.code}, message ${err.message} `);
+        expect().assertFail();
+        done();
+      }
+      ;
+    });
+
+    /**
+     * @tc.number    : test_on_windowWillClose_011
+     * @tc.name      : test_on_windowWillClose_011
+     * @tc.desc      : 销毁前最大化、最小化、还原
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_on_windowWillClose_011', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_011'
+      let windowName: string | undefined;
+      let result: boolean = true;
+      const callback = () => {
+        return new Promise<boolean>(async (resolve, reject) => {
+          await sleep(3000);
+          result = false;
+          console.info(`${message} start resolve`);
+          resolve(result);
+        })
+      }
+      try {
+        let windowStageStart = await startAbility(message, context);
+        let windowClassStart = windowStageStart.getMainWindowSync();
+        let windowName = windowClassStart.getUIContext().getWindowName();
+        windowClassStart.on('windowWillClose', callback);
+        let driver: Driver = Driver.create()
+        let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
+        await button.click();
+        let startNum = (AppStorage.get('startNum') ? AppStorage.get('startNum') : 0) as number;
+        AppStorage.setOrCreate('startNum', startNum - 1);
+        let promise1 = windowClassStart.minimize();
+        await promise1.then(() => {
+          console.info(`${message} succeed minimize window`);
+          expect(true).assertTrue();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to minimize window, Cause code ${err.code}, message ${err.message} `);
+          expect().assertFail();
+          done();
+        });
+        let promise2 = windowClassStart.maximize();
+        await promise2.then(() => {
+          console.info(`${message} succeed maximize window`);
+          expect(true).assertTrue();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to maximize window, Cause code ${err.code}, message ${err.message} `);
+          expect().assertFail();
+          done();
+        });
+        let promise3 = windowClassStart.recover();
+        await promise3.then(() => {
+          console.info(`${message} succeed recover window`);
+          expect(true).assertTrue();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to recover window, Cause code ${err.code}, message ${err.message} `);
+          expect().assertFail();
+          done();
+        });
+        await sleep(4000);
+        console.info(`${message} result: ${result}`)
+        if (result) {
+          expect().assertFail();
+        }
+        ;
+        try {
+          const windowClassFind = window.findWindow(windowName)
+          console.error(`${message} The window ${windowClassFind} still exist`);
+          windowClassFind.off('windowWillClose', callback);
+          expect().assertFail();
+        } catch (err) {
+          console.info(`${message} The window does not exist, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(1300002)
+        }
+        done();
+      } catch (err) {
+        console.error(`${message} Failed to register callback, Cause code ${err.code}, message ${err.message} `);
+        try {
+          const windowClassFind = window.findWindow(windowName)
+          console.error(`${message} The window ${windowClassFind} still exist`);
+          windowClassFind.off('windowWillClose');
+        } catch (err) {
+          console.info(`${message} The window does not exist`);
+        }
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          console.error(`${message} The device not support on(windowWillClose)`);
+        } else {
+          expect().assertFail();
+        }
+        ;
+        done();
+      }
+      ;
+    });
+
+
 
   })
 }
