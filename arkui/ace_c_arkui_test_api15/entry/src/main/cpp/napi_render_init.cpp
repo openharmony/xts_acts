@@ -27,6 +27,8 @@
 #include "listScrollTo/list_scroll_to_test.h"
 #include "gesturetouchcancel/gesture_cancel.h"
 #include "scroll/scroll_backtotop_test.h"
+#include "gestureRecognizer/gestureRecognizer.h"
+#include "eventInfo/eventInfo.h"
 #include "snapShot/snap_shot.h"
 #include "snapShot/container.h"
 
@@ -94,6 +96,14 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"scrollBackToTopTest", nullptr, ScrollBackToTopTest::CreateNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"TestGestureRecognizerFinger001", nullptr, GestureRecognizerTest::TestGestureRecognizerFinger001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestGestureRecognizerGetResult", nullptr, GestureRecognizerTest::GetResult, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"TestEventInfoGetPressedTime001", nullptr, EventInfoTest::TestEventInfoGetPressedTime001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"TestEventInfoGetResult", nullptr, EventInfoTest::GetResult, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
         {"snapShotTest001", nullptr, Manager::CreateNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"TestsnapShotetResult", nullptr, Manager::GetResult, nullptr, nullptr,

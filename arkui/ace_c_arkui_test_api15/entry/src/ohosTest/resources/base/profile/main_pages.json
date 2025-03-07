@@ -26,6 +26,8 @@
     "MainAbility/pages/listScrollTo/ListScrollToTest",
     "MainAbility/pages/gestureCancel/gestureCancel",
     "MainAbility/pages/scroll/ScrollBackToTopTest",
+    "MainAbility/pages/gestureRecognizer/GestureRecognizerTest",
+    "MainAbility/pages/eventInfo/EventInfoCaseTest1",
     "MainAbility/pages/snapShot/snapShotTest"
   ]
 }
