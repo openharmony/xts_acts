@@ -16,3 +16,11 @@
 export interface MyObjects {
   a: number
 }
+
+export function sleep(time: number): Promise<void> {
+  return new Promise((re, je) => {
+    setTimeout(() => {
+      re()
+    }, time)
+  })
+}
