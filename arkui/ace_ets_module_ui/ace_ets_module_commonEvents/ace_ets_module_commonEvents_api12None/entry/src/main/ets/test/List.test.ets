@@ -24,6 +24,11 @@ import gestureDefine6 from './customGestureTest/gestureParallel.test';
 import SwiperGestureHandlerTest from './GestureHandler/SwiperGesture.test';
 import SwipeGestureExample01Test from './SwipeGesture/SwipeGestureExample01Test.test';
 import SwipeGestureExample02Test from './SwipeGesture/SwipeGestureExample02Test.test';
+import onKeyPreImeTest from './onKeyEventTest/onKeyPreIme.test';
+import SwipeGestureTemplateTest from './SwipeGesture/SwipeGestureTemplateTest.test';
+import PanGestureUpdateTest from './PanGesture/PanGestureUpdateTest.test';
+import PinchGestureUpdateTest from './PinchGesture/PinchGestureUpdateTest.test';
+import RotationGestureUpdateTest from './RotationGesture/RotationGestureUpdateTest.test';
 
 
 export default function testsuite() {
@@ -39,6 +44,11 @@ export default function testsuite() {
   SwipeGestureExample03Test();
   SwipeGestureExample02Test();
   SwipeGestureExample01Test();
-  
+  onKeyPreImeTest();
+  SwipeGestureTemplateTest();
+  PanGestureUpdateTest();
+  PinchGestureUpdateTest();
+  RotationGestureUpdateTest();
+
 
 }

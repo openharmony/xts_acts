@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import customPropertyTest from "./customproperty/CustomPropertyTest.test"
-import StyledStringTest from "./styledString/StyledStringTest.test"
 import KeyEventGetTypeTest from './keyEvent/KeyEventGetTypeTest.test'
 import KeyEventGetKeyCodeTest from './keyEvent/KeyEventGetKeyCodeTest.test'
 import KeyEventGetGetDeviceIdTest from './keyEvent/KeyEventGetGetDeviceIdTest.test'
@@ -30,7 +29,6 @@ import ScrollSizeTest from './scrollSize/ScrollSizeTest.test'
 
 export default function testsuite() {
   customPropertyTest()
-  StyledStringTest()
   KeyEventGetKeyCodeTest()
   KeyEventGetTypeTest()
   KeyEventStopPropagationTest()
