@@ -726,6 +726,38 @@ export default function nfcNDEFErrorTest() {
             }
         })
 
+        /**
+         * @tc.number SUB_Communication_NFC_nfcNDEF_js_2100
+         * @tc.name Test makeApplicationRecord NDEF
+         * @tc.desc Test makeApplicationRecord api. The error code is 401
+         * @tc.size MEDIUM
+         * @ since 9
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfcNDEF_js_2100', 0, function () {
+            if (NdefTag != null && NdefTag != undefined) {
+                try{
+                    let ndefMessage = tag.ndef.createNdefMessage('test');
+                    console.info("[NFC_test]ndef21 createNdefMessage result: " + JSON.stringify(ndefMessage));
+                }catch(error){
+                    console.info("[NFC_test]ndef21 createNdefMessage errorcode: " + error.code);
+                    expect(401).assertEqual(error.code);
+                }
+                try{
+                    let makeERecords = tag.ndef.makeApplicationRecord('test');
+                    console.info("[NFC_test]ndef21 makeApplicationRecord result: " + JSON.stringify(makeERecords));
+                    expect(makeERecords instanceof Object).assertTrue()
+                }catch(error){
+                    console.info("[NFC_test]ndef21 makeApplicationRecord errorcode: " + error.code);
+                    expect(401).assertEqual(error.code);
+                }
+            } else {
+                console.info("[NFC_test]NdefTag21 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
+        })
+
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
