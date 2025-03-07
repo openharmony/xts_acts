@@ -12,6 +12,8 @@
     "MainAbility/pages/UIContext/index",
     "MainAbility/pages/UIContext/uiOpenCustomDialogMode",
     "MainAbility/pages/bindSheet/bindSheetRadius",
-    "MainAbility/pages/buttonType/buttonTypeTest"
+    "MainAbility/pages/buttonType/buttonTypeTest",
+    "MainAbility/pages/customDialog/customDialogKeyboardAvoidDistance",
+    "MainAbility/pages/prompt/promptActionKeyboardAvoidDistance"
   ]
 }

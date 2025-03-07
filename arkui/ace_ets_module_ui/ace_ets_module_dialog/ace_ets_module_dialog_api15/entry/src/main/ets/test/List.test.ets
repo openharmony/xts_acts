@@ -23,6 +23,8 @@ import openCustomDialogMode from './prompt/openCustomDialogMode.test'
 import showActionMenuMode from './prompt/showActionMenuMode.test'
 import bindSheetRadius from './bindSheet/bindSheetRadius.test'
 import buttonTypeTest from './buttonType/buttonTypeTest.test';
+import customDialogKeyboardAvoidDistance from './customDialog/customDialogKeyboardAvoidDistance.test';
+import promptActionKeyboardAvoidDistance from './prompt/promptActionKeyboardAvoidDistance.test';
 
 
 export default function testsuite() {
@@ -36,4 +38,6 @@ export default function testsuite() {
   showActionMenuMode()
   bindSheetRadius()
   buttonTypeTest()
+  customDialogKeyboardAvoidDistance()
+  promptActionKeyboardAvoidDistance()
 }
