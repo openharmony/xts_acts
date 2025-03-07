@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Huawei Device Co., Ltd.
+# Copyright (c) 2023 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,18 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-base_root = "../../../../"
-import("$base_root/build/ohos_var.gni")
-import("$base_root/test/xts/tools/build/suite.gni")
+import("//test/xts/tools/build/suite.gni")
 
-group("useriam") {
+ohos_js_app_suite("ActsUserAuthIconTest") {
+  test_hap = true
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "face_auth/js_api_test/function_test/userauth:ActsUserauthTest",
-      "face_auth/js_api_test/function_test/userauthnopermission:ActsUserauthnopermissionTest",
-      "face_auth/js_api_test/function_test/userauthpart2:ActsUserauthTwoTest",
-      "user_auth_icon:ActsUserAuthIconTest",
-    ]
-  }
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsUserAuthIconTest"
+  subsystem_name = "useriam"
+  part_name = "user_auth_framework"
 }
