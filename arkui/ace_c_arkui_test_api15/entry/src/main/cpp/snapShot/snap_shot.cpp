@@ -46,7 +46,7 @@
  static ArkUI_AttributeItem NODE_IMAGE_SRC_Item;
  
  std::vector<int32_t> Manager::result = {};
- std::int32_t g_dataSizeEvent = 2;
+ std::int32_t g_dataSizeEvent = 0;
  const int EVENT_DATA_SIZE_TWO = 2;
  const int EVENT_DATA_SIZE_FIVE = 5;
  
