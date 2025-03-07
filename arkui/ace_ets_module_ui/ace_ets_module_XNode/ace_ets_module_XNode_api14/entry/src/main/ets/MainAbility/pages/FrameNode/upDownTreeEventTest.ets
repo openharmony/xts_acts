@@ -173,8 +173,7 @@ struct UpDownTreeEventIndex {
         })
         .fontSize(20)
         .width(150)
-        .height(150)
-        .margin(20)
+        .height('10%')
 
       Button('upDownTree')
         .id('upDownTree')
@@ -183,25 +182,24 @@ struct UpDownTreeEventIndex {
         })
         .fontSize(20)
         .width(150)
-        .height(150)
-        .margin(20)
+        .height('10%')
 
-      Text(this.attachValue)
+      Text(this.attachValue).height('5%')
         .id('attachValue_id')
-      Text(this.detachValue)
+      Text(this.detachValue).height('5%')
         .id('detachValue_id')
-      Text(this.bindValue)
+      Text(this.bindValue).height('5%')
         .id('bindValue_id')
-      Text(this.willBindValue)
+      Text(this.willBindValue).height('5%')
         .id('willBindValue_id')
-      Text(this.unbindValue)
+      Text(this.unbindValue).height('5%')
         .id('unbindValue_id')
-      Text(this.willUnbindValue)
+      Text(this.willUnbindValue).height('5%')
         .id('willUnbindValue_id')
 
       // 直接点TestValue 1.attach 2.bind 3.willBind
       // 点上下树再点TestValue 1.detach 2.unbind 3.willUnbind
-      Button('TestValue')
+      Button('TestValue').height('10%')
         .id('getTestValue')
         .onClick(()=>{
           if (this.myNodeControllerArray[this.index % this.myNodeControllerArray.length] != null) {
