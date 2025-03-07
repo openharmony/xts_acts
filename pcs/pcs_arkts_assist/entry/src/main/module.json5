@@ -49,8 +49,10 @@
               }
             ]
           }
-        ],
-	    "extensionAbilities": [
+        ]
+      }
+    ],
+    "extensionAbilities": [
             {
               "name": "InputMethodExtensionAbility",
               "srcEntry": "./ets/inputmethodextensionability/InputMethodExtensionAbility.ets",
@@ -58,9 +60,6 @@
               "type": "inputMethod",
               "exported": true
             }
-    ]	
-
-      }
     ]
   }
 }
