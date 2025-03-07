@@ -3,7 +3,8 @@
     "MainAbility/pages/XTSIndex",
     "MainAbility/pages/keydispatchtest/KeydispatchTest",
     "MainAbility/pages/setKeyProcessingMode/setKeyProcessingMode01",
-    "MainAbility/pages/setKeyProcessingMode/setKeyProcessingMode02"
+    "MainAbility/pages/setKeyProcessingMode/setKeyProcessingMode02",
+    "MainAbility/pages/scroll/ScrollBackToTopTest"
 
   ]
 }
