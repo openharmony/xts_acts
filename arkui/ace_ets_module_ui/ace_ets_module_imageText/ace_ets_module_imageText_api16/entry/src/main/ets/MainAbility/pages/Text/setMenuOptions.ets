@@ -18,7 +18,6 @@ import { TextMenuController } from '@ohos.arkui.UIContext';
 @Entry
 @Component
 struct SetMenuOptions1 {
-  @State TextMenuShowMode: string = "Init"
   @State TextMenuController1: TextMenuController = this.getUIContext().getTextMenuController()
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller };
@@ -49,7 +48,7 @@ struct SetMenuOptions1 {
           })
           .height('5%')
           .id('TextArea_SetMenuOptions')
-        Button("DEFAULT").id('button_DEFAULT')
+        Button('DEFAULT').id('button_DEFAULT')
           .height('5%')
           .onClick(() => {
             this.TextMenuController1
