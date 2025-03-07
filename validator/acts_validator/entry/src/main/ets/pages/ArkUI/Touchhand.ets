@@ -14,17 +14,17 @@ limitations under the License.
 import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
 import FirstDialog from '../model/FirstDialog';
-const TAG = '[Clickhand]';
+const TAG = '[Touchhand]';
 @Entry
 @Component
-struct ClickHandExample {
+struct TouchHandExample {
 @State text: string = ''
 @State axisValue: string = ''
-@State name: string = 'Clickhand';
+@State name: string = 'Touchhand';
 @State Vue: boolean = false;
 @State intervalNum: number = 0;
 @State handText: string = '';
-@State StepTips: string = '使用左手和右手对设备上蓝色按钮分别进行点击\n' + '操作步骤:\n' + '1.左手对界面的蓝色按钮进行点击\n' +
+@State StepTips: string = '使用左手和右手对设备上蓝色按钮触摸并移动\n' + '操作步骤:\n' + '1.左手对界面的蓝色按钮进行点击\n' +
 '2.右手对界面的蓝色按钮进行点击\n' +
 '预期结果：\n' + '1.页面显示返回值为1（若显示为0或2，为多模识别异常，用例也通过，若无返回值显示则用例失败）\n' +
 '2.页面显示返回值为2（若显示为0或1，为多模识别异常，用例也通过，若无返回值显示则用例失败）\n'
@@ -146,11 +146,11 @@ params: { result: 'None' }
 
   Column() {
 
-    Button("onClick")
+    Button("onTouch-touches")
       .width(180).height(80).margin(15)
-      .onClick((event)=>{
-        console.log("button hand:"+event.hand);
-        this.handText = event.hand + ""
+      .height(200)
+      .onTouch((event)=>{
+          this.handText = event.touches[0].hand + ""
       })
 
 
