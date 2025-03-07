@@ -32,7 +32,6 @@ const COMPLETED = 'completed';
 const STOPPED = 'stopped';
 const RELEASED = 'released';
 const ERROR = 'error';
-const PAGE_PATH = "testability/pages/Surface"
 let fileDescriptor: media.AVFileDescriptor;
 let avPlayer: media.AVPlayer;
 let mediaTestBase = new MediaTestBase()
