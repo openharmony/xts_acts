@@ -19,7 +19,6 @@
 #include "swiper/swiper_test.h"
 #include "textArea/textArea_letter_spacing.h"
 #include "textpicker/textpicker_columnwidths_test.h"
-#include "scroll/scroll_backtotop_test.h"
 #include "datepicker/datepicker_test.h"
 #include "drag/drag_test.h"
 #include "calendarPicker/calendar_picker_test.h"
@@ -52,8 +51,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"textPickerColumnWidths", nullptr, TextPickerTest::TextPickerColumnWidths,
          nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"scrollBackToTopTest", nullptr, ScrollBackToTopTest::CreateNativeNode, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
         {"TestDragStartDataLoading001", nullptr, DragTest::TestDragStartDataLoading001, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"TestDragDisableDropDataPrefetch002", nullptr, DragTest::TestDragDisableDropDataPrefetch002, nullptr, nullptr,

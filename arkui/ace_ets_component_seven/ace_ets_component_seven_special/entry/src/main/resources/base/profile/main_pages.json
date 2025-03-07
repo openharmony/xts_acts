@@ -36,7 +36,6 @@
         "MainAbility/pages/textTimer",
         "MainAbility/pages/textClockPage",
         "MainAbility/pages/scroll",
-        "MainAbility/pages/waterFlowView",
         "MainAbility/pages/qrCode",
         "MainAbility/pages/list",
         "MainAbility/pages/listItem",

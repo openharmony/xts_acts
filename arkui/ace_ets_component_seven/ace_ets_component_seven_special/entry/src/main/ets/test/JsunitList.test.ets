@@ -47,7 +47,6 @@ import progressJsunit from './Progress.test';
 import textTimerJsunit from './TextTimer.test';
 import textClockJsunit from './TextClockJsunit.test';
 import scrollJsunit from './Scroll.test';
-import waterFlowViewJsunit from './WaterFlowView.test';
 import qrCodeJsunitJsunit from './QrCodeJsunit.test';
 import calendarPickerJsunit from './CalendarPicker.test';
 import listJsunit from './List.test';
@@ -101,7 +100,6 @@ export default function testsuite() {
   gridItemJsunit();
   gridJsunit();
   swiperJsunit();
-  waterFlowViewJsunit();
   scrollJsunit();
   textTimerJsunit();
   textClockJsunit();
