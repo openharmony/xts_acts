@@ -12,19 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import hilog from '@ohos.hilog';
+
 import TestRunner from '@ohos.application.testRunner';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-
 let abilityDelegator = undefined;
 let abilityDelegatorArguments = undefined;
 
 async function onAbilityCreateCallback(): Promise<void> {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'onAbilityCreateCallback');
 }
 
 async function addAbilityMonitorCallback(err: any): Promise<void> {
-    hilog.info(0x0000, 'testTag', 'addAbilityMonitorCallback : %{public}s', JSON.stringify(err) ?? '');
 }
 
 export default class OpenHarmonyTestRunner implements TestRunner {
@@ -32,11 +29,9 @@ export default class OpenHarmonyTestRunner implements TestRunner {
     }
 
     onPrepare(): void {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'OpenHarmonyTestRunner OnPrepare ');
     }
 
     async onRun(): Promise<void> {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'OpenHarmonyTestRunner onRun run');
         abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
         abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         let testAbilityName = abilityDelegatorArguments.bundleName + '.TestAbility';
@@ -50,13 +45,10 @@ export default class OpenHarmonyTestRunner implements TestRunner {
         if (debug === 'true') {
             cmd += ' -D';
         }
-        hilog.info(0x0000, 'testTag', 'cmd : %{public}s', cmd);
+        
         abilityDelegator.executeShellCommand(cmd,
             (err: any, d: any) => {
-                hilog.info(0x0000, 'testTag', 'executeShellCommand : err : %{public}s', JSON.stringify(err) ?? '');
-                hilog.info(0x0000, 'testTag', 'executeShellCommand : data : %{public}s', d.stdResult ?? '');
-                hilog.info(0x0000, 'testTag', 'executeShellCommand : data : %{public}s', d.exitCode ?? '');
+                
             });
-        hilog.info(0x0000, 'testTag', '%{public}s', 'OpenHarmonyTestRunner onRun end');
     }
 }

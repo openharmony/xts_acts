@@ -75,7 +75,7 @@ export default function taskPoolTaskGroupActTest() {
      */
     it('taskPoolTaskGroupActTest1001', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       Count1.count = 0
       Count2.count = 0
@@ -112,7 +112,7 @@ export default function taskPoolTaskGroupActTest() {
      */
     it('taskPoolTaskGroupActTest1002', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       await sleep(1000)
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       Count1.count = 0
@@ -152,7 +152,7 @@ export default function taskPoolTaskGroupActTest() {
      */
     it('taskPoolTaskGroupActTest1003', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       Count1.count = 0
       Count2.count = 0
@@ -188,7 +188,7 @@ export default function taskPoolTaskGroupActTest() {
      */
     it('taskPoolTaskGroupActTest1004', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       Count1.count = 0
       Count2.count = 0
@@ -224,7 +224,7 @@ export default function taskPoolTaskGroupActTest() {
      */
     // it('taskPoolTaskGroupActTest1005', 0, async (Done: Function) => {
     //   // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-    //   hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+    //   
     //   let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
     //   Count1.count = 0
     //   Count2.count = 0
@@ -260,7 +260,7 @@ export default function taskPoolTaskGroupActTest() {
      */
     it('taskPoolTaskGroupActTest1006', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       Count1.count = 0
       Count2.count = 0
@@ -296,7 +296,7 @@ export default function taskPoolTaskGroupActTest() {
      */
     it('taskPoolTaskGroupActTest1007', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       Count1.count = 0
       Count2.count = 0
@@ -332,7 +332,7 @@ export default function taskPoolTaskGroupActTest() {
      */
     it('taskPoolTaskGroupActTest1008', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       Count1.count = 0
       Count2.count = 0

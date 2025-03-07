@@ -87,7 +87,7 @@ export default function taskPoolTaskMultipleTest() {
      */
     it('taskPoolTaskMultipleTest0100', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       const caseName = 'taskPoolTaskMultipleTest0100'
       console.info(`${caseName} test start`)
       await sleep(5000)
@@ -148,7 +148,7 @@ export default function taskPoolTaskMultipleTest() {
      */
     it('taskPoolTaskMultipleTest0200', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       const caseName = 'taskPoolTaskMultipleTest0200'
       console.info(`${caseName} test start`)
       let task1: taskpool.Task = new taskpool.Task(multipleTask2);
@@ -207,7 +207,7 @@ export default function taskPoolTaskMultipleTest() {
      */
     it('taskPoolTaskMultipleTest0300', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       await sleep(5000)
       const caseName = 'taskPoolTaskMultipleTest0300'
       console.info(`${caseName} test start`)
@@ -268,7 +268,7 @@ export default function taskPoolTaskMultipleTest() {
      */
     it('taskPoolTaskMultipleTest0400', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       const caseName = 'taskPoolTaskMultipleTest0400'
       console.info(`${caseName} test start`)
       let task1: taskpool.Task = new taskpool.Task(multipleTask4);
@@ -327,7 +327,7 @@ export default function taskPoolTaskMultipleTest() {
      */
     it('taskPoolTaskMultipleTest0500', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       const caseName = 'taskPoolTaskMultipleTest0500'
       console.info(`${caseName} test start`)
       let task1: taskpool.Task = new taskpool.Task(multipleTask5);

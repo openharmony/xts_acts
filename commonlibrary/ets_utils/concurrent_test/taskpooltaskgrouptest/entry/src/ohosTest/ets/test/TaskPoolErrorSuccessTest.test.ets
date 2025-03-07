@@ -74,7 +74,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskGroupExecute1001', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       taskGroup.addTask(printArgs1, 1);
       taskGroup.addTask(printArgs3, 1);
@@ -112,7 +112,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskGroupExecute1002', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let task1: taskpool.Task = new taskpool.GenericsTask<[number], number>(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.GenericsTask<[number], number>(printArgs3, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -152,7 +152,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskErrorSuccessTest1003', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs2, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -206,7 +206,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskErrorSuccessTest1004', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs2, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -257,7 +257,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskErrorSuccessTest1005', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let task: taskpool.Task = new taskpool.Task(printArgs7, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs8, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -301,7 +301,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskErrorSuccessTest1006', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs2, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -340,7 +340,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskErrorSuccessTest1007', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs2, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -381,7 +381,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskErrorSuccessTest1008', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs2, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -420,7 +420,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskGroupExecute1009', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let asyncLockTest = new AsyncLockTest()
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(asyncLock, asyncLockTest);
@@ -457,7 +457,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskErrorSuccessTest1010', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs2, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -508,7 +508,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskErrorSuccessTest1011', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let task: taskpool.Task = new taskpool.Task(printArgs3, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs4, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -553,7 +553,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskGroupExecute1012', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let asyncLockTest = new AsyncLockTestThen()
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(asyncLock, asyncLockTest);
@@ -592,7 +592,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskGroupExecute1013', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let asyncLockTest = new AsyncLockTestCatch()
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(asyncLock, asyncLockTest);
@@ -629,7 +629,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskGroupExecute1014', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let asyncLockTest = new AsyncLockTestFinally()
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(asyncLock, asyncLockTest);
@@ -666,7 +666,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskGroupExecute1015', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let asyncLockTest = new AsyncLockTestFinally()
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(asyncLock1, asyncLockTest);
@@ -703,7 +703,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskGroupExecute1016', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let asyncLockTest = new AsyncLockTestFinally()
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(asyncLock2, asyncLockTest);
@@ -740,7 +740,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskGroupExecute1017', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let asyncLockTest = new AsyncLockTestFinally()
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(asyncLock3, asyncLockTest);
@@ -777,7 +777,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskGroupExecute1018', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let asyncLockTest = new AsyncLockTest()
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(asyncLock, asyncLockTest);
@@ -814,7 +814,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskGroupExecute1019', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs9, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -849,7 +849,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskGroupExecute1020', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let asyncLockTest = new AsyncLockTest()
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(asyncLock, asyncLockTest);
@@ -886,7 +886,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskGroupExecute1021', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let asyncLockTest = new AsyncLockTest()
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(asyncLock, asyncLockTest);
@@ -923,7 +923,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskGroupExecute1022', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let asyncLockTest = new AsyncLockTestFinally()
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(asyncLock1, asyncLockTest);
@@ -960,7 +960,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskGroupExecute1023', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let asyncLockTest = new AsyncLockTestFinally()
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(asyncLock2, asyncLockTest);
@@ -997,7 +997,7 @@ export default function taskPoolErrorSuccessTest() {
      */
     it('taskPoolTaskGroupExecute1024', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let asyncLockTest = new AsyncLockTestFinally()
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(asyncLock3, asyncLockTest);

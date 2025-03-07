@@ -92,7 +92,7 @@ export default function taskPoolTaskMultipleUITest() {
      */
     it('taskPoolTaskMultipleUITest0100', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       const caseName = 'taskPoolTaskMultipleUITest0100'
       console.info(`${caseName} test start`)
       await sleep(5000)
@@ -134,7 +134,7 @@ export default function taskPoolTaskMultipleUITest() {
      */
     it('taskPoolTaskMultipleUITest0200', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       const caseName = 'taskPoolTaskMultipleUITest0200'
       console.info(`${caseName} test start`)
       let task1: taskpool.Task = new taskpool.Task(multipleUITask3);

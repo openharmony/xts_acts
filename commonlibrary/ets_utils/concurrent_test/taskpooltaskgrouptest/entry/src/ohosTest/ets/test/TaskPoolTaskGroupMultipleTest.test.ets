@@ -91,7 +91,7 @@ export default function taskPoolTaskGroupMultipleTest() {
      */
     it('taskPoolTaskGroupMultipleTest0100', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       const caseName = 'taskPoolTaskGroupMultipleTest0100'
       console.info(`${caseName} test start`)
       let task1: taskpool.Task = new taskpool.Task(printArgs1);
@@ -139,7 +139,7 @@ export default function taskPoolTaskGroupMultipleTest() {
      */
     it('taskPoolTaskGroupMultipleTest0200', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       const caseName = 'taskPoolTaskGroupMultipleTest0200'
       console.info(`${caseName} test start`)
       let task1: taskpool.Task = new taskpool.Task(printArgs1);

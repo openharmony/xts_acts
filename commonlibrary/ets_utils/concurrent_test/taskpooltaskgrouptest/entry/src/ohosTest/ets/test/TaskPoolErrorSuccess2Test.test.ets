@@ -74,7 +74,7 @@ export default function taskPoolErrorSuccess2Test() {
      */
     it('taskPoolTaskGroupExecute1025', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs10, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -115,7 +115,7 @@ export default function taskPoolErrorSuccess2Test() {
      */
     it('taskPoolTaskGroupExecute1026', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs10, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -161,7 +161,7 @@ export default function taskPoolErrorSuccess2Test() {
      */
     it('taskPoolTaskGroupExecute1027', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs11, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -201,7 +201,7 @@ export default function taskPoolErrorSuccess2Test() {
      */
     it('taskPoolTaskGroupExecute1028', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs12, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -241,7 +241,7 @@ export default function taskPoolErrorSuccess2Test() {
      */
     it('taskPoolTaskGroupExecute1029', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs13, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -281,7 +281,7 @@ export default function taskPoolErrorSuccess2Test() {
      */
     it('taskPoolTaskGroupExecute1030', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      
       let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
       let task2: taskpool.Task = new taskpool.Task(printArgs14, 1);
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
