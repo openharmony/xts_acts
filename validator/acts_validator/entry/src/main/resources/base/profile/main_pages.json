@@ -25,10 +25,16 @@
     "pages/ArkUI/CanvasGlobalAlpha",
     "pages/ArkUI/CanvasLineDashOffset",
     "pages/ArkUI/CanvasShadowOffsetY",
-	"pages/ArkUI/chipTest",
+    "pages/ArkUI/chipTest",
     "pages/ArkUI/chipGroupTest",
     "pages/ArkUI/DatePickerDialog",
+    "pages/ArkUI/dialogModeTest",
     "pages/ArkUI/Marquee",
+    "pages/ArkUI/PatternLockL0_01",
+    "pages/ArkUI/PatternLockL0_02",
+    "pages/ArkUI/PatternLockL0_03",
+    "pages/ArkUI/PatternLockL0_04",
+    "pages/ArkUI/PatternLockL2_01",
     "pages/ArkUI/PatternLock",
     "pages/ArkUI/TextPicker",
     "pages/ArkUI/TimePicker",
@@ -46,6 +52,11 @@
     "pages/ArkUI/Refresh",
     "pages/ArkUI/AccessBilityHover",
     "pages/ArkUI/NavigationEnableHoverMode",
+
+    "pages/ArkUI/CapiHandDetect",
+    "pages/ArkUI/GetBarRect",
+    "pages/ArkUI/GameCtrollerCallBackData",
+    "pages/ArkUI/GameCtronllerCTest",
     "pages/Camera/Camera_index",
     "pages/Camera/CameraPreviewFormat",
     "pages/Camera/CameraPhotoFormat",
@@ -112,7 +123,16 @@
     "pages/PCS/SecureScreenLock",
     "pages/PCS/RebootScreenUnlock",
     "pages/ArkUI/AccessibilityProperty",
-    "pages/ArkUI/AccessibilityOptions"
+    "pages/ArkUI/AccessibilityOptions",
+	"pages/ArkUI/Clickhand",
+    "pages/ArkUI/Groupgesturrehand",
+    "pages/ArkUI/Longhand",
+    "pages/ArkUI/Panhand",
+    "pages/ArkUI/Pinchhand",
+    "pages/ArkUI/Rotate1hand",
+    "pages/ArkUI/Swipehand",
+    "pages/ArkUI/Taphand",
+    "pages/ArkUI/HoverMove"
   ]
 }
 

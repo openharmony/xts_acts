@@ -19,7 +19,11 @@ group("multimodalinput") {
     deps = [
       "input_cpp_standard:ActsInputNativeTest",
       "input_js_standard:multimodalinput_js_test",
+      "multimodalinput_ets_hvigor/CapsLock:ActsMultimodalInputCapsLockTest",
+      "multimodalinput_ets_hvigor/InfraredEmitter:ActsMultimodalInputInfraredEmitterTest",
       "multimodalinput_ets_hvigor/InputDevice:ActsMultimodalInputDeviceTest",
+      "multimodalinput_ets_hvigor/KeyCode:ActsMultimodalInputKeyCodeTest",
+      "multimodalinput_ets_hvigor/NoPermission:ActsMultimodalInputNoPermissionTest",
       "multimodalinput_ets_hvigor/Pointer:ActsMultimodalInputPointerTest",
       "multimodalinput_ets_standard:ActsMultimodalInputEtsTest",
       "multimodalinput_ndk_hvigor/InputNdkNormal:ActsMultimodalInputNdkTest",

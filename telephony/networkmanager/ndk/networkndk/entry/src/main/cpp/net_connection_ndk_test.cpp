@@ -17,6 +17,7 @@
 #include <hilog/log.h>
 #include <network/netmanager/net_connection.h>
 #include <network/netmanager/net_connection_type.h>
+#include <string>
 #include <cstdint>
 
 #define NETWORK_LOG_TAG "LogTagNetwork"
@@ -42,10 +43,10 @@ static napi_value OHNetConnGetAddrInfo(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     char host[DEFAULT_HOST_LEN] = {0};
-    size_t size_t1;
-    napi_get_value_string_utf8(env, args[PARAM_INDEX_0], host, DEFAULT_HOST_LEN, &size_t1);
+    size_t sizeT1;
+    napi_get_value_string_utf8(env, args[PARAM_INDEX_0], host, DEFAULT_HOST_LEN, &sizeT1);
     char serv[DEFAULT_SERV_LEN] = {0};
-    napi_get_value_string_utf8(env, args[PARAM_INDEX_1], serv, DEFAULT_SERV_LEN, &size_t1);
+    napi_get_value_string_utf8(env, args[PARAM_INDEX_1], serv, DEFAULT_SERV_LEN, &sizeT1);
     int netid = 0;
     napi_get_value_int32(env, args[PARAM_INDEX_2], &netid);
 
@@ -661,6 +662,33 @@ static napi_value OHNetConnUnregisterAppHttpProxyCallback(napi_env env, napi_cal
     return result;
 }
 
+// 获取pacurl
+static napi_value OHNetConnGetPacUrl(napi_env env, napi_callback_info info)
+{
+    char pacUrl[100];
+    int res = OH_NetConn_GetPacUrl(pacUrl);
+    std::string a = std::string(pacUrl);
+    napi_value result = nullptr;
+    napi_create_string_utf8(env, a.c_str(), a.length(), &result);
+    return result;
+}
+// 设置pacurl
+static napi_value OHNetConnSetPacUrl(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    
+    char pacUrl[1024] = {0};
+    size_t sizeT1;
+    napi_get_value_string_utf8(env, args[0], pacUrl, DEFAULT_HOST_LEN, &sizeT1);
+    
+    int res = OH_NetConn_SetPacUrl(pacUrl);
+    napi_value result = nullptr;
+    napi_create_int32(env, res, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -701,6 +729,8 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, napi_default, nullptr},
         {"OHNetConnUnregisterNetConnCallback", nullptr, OHNetConnUnregisterNetConnCallback, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"OHNetConnGetPacUrl", nullptr, OHNetConnGetPacUrl, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHNetConnSetPacUrl", nullptr, OHNetConnSetPacUrl, nullptr, nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

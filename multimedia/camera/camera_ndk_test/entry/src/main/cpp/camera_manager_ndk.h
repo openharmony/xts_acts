@@ -87,6 +87,7 @@ public:
     NDKCamera(char *str);
 
     bool IsMirror_;
+    bool IsVideoMirror_;
     bool HasFlash_;
     bool IsFlashMode_;
     bool IsExposureMode_;
@@ -147,6 +148,8 @@ public:
     Camera_ErrorCode CameraInputRelease(void);
     Camera_ErrorCode GetSupportedCameras(void);
     Camera_ErrorCode GetCameraOrientation(void);
+    Camera_ErrorCode GetCameraHostName(void);
+    Camera_ErrorCode GetCameraHostType(void);
     Camera_ErrorCode GetSupportedOutputCapability(void);
     Camera_ErrorCode CreatePreviewOutput(void);
     Camera_ErrorCode CreatePhotoOutput(char* photoSurfaceId);
@@ -173,6 +176,8 @@ public:
     Camera_ErrorCode IsMirrorSupported(void);
     Camera_ErrorCode VideoOutputStop(void);
     Camera_ErrorCode VideoOutputRelease(void);
+    Camera_ErrorCode IsVideoMirrorSupported(void);
+    Camera_ErrorCode EnableVideoMirror(bool isEnable);
     Camera_ErrorCode MetadataOutputStart(void);
     Camera_ErrorCode MetadataOutputStop(void);
     Camera_ErrorCode MetadataOutputRelease(void);
@@ -375,6 +380,8 @@ private:
     static std::mutex mtx_;
     volatile bool valid_;
     uint32_t orientation_;
+    char* hostName_;
+    Camera_HostDeviceType hostType_;
     uint32_t cameraDeviceIndex_;
 };
 #endif  // CAMERA_NATIVE_CAMERA_H

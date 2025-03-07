@@ -308,7 +308,21 @@ export default function cameraManagerTest() {
             expect(isEmpty(connectionType)).assertFalse();
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 connection" + i + "Type: " +
               connectionType);
+            let hostDeviceName = mCameraDevicesArrayPromise[i].hostDeviceName
+            expect(isEmpty(hostDeviceName)).assertFalse();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 hostDeviceName" + i + "Type: " +
+              hostDeviceName);
+            let hostDeviceType = mCameraDevicesArrayPromise[i].hostDeviceType
+            expect(isEmpty(hostDeviceType)).assertFalse();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 hostDeviceType" + i + "Type: " +
+              hostDeviceType);
           }
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 hostDeviceType1" + "Type: " +
+            cameraObj.HostDeviceType.UNKNOWN_TYPE);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 hostDeviceType2" + "Type: " +
+            cameraObj.HostDeviceType.PHONE);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 hostDeviceType3" + "Type: " +
+            cameraObj.HostDeviceType.TABLET);
           expect(true).assertTrue();
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 PASSED");
         } else {

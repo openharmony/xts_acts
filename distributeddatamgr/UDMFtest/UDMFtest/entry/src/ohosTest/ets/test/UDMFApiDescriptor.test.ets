@@ -7593,5 +7593,20 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1250 end");
     });
 
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest1260
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1260
+     * @tc.desc      : parameter to getTypeDescriptor()  --parameter are "igeneral.content-form"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1260', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1260 start');
+      expect(UTD.UniformDataType.CONTENT_FORM).assertEqual("general.content-form");
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.CONTENT_FORM);
+      console.log("typeId:" + typeObj.typeId);
+      expect(typeObj.typeId).assertEqual("general.content-form");
+    });
   })
 }

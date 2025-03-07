@@ -13,11 +13,31 @@ include_directories(
 add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
+    keyDisPatchTest/keyEventDispatch_test.cpp
     progress/progress_linear_style_test.cpp
+	focusControl/focus_control.cpp
+    textArea/textArea_letter_spacing.cpp
+    list/list_test.cpp
+    listScrollTo/list_scroll_to_test.cpp
+    node/node_handle_by_id_test.cpp
+    window/get_window_info_test.cpp
+    lazyForEach/lazyforeach_expand_mode_test.cpp
+    gesturetouchcancel/gesture_cancel.cpp
+    scroll/scroll_backtotop_test.cpp
+    component/component.cpp
+    component/grid_component.cpp
+    component/list_component.cpp
+    component/scroll_component.cpp
+    component/waterflow_component.cpp
+    component/button_component.cpp
+    component/text_component.cpp
+    gestureRecognizer/gestureRecognizer.cpp
+    eventInfo/eventInfo.cpp
 )
 
 add_library(nativefunc SHARED
     napi_func_init.cpp
+    listItemGroup/list_item_group_test.cpp
 )
 
 find_library(

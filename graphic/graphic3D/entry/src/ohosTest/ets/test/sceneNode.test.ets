@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { ToneMappingType, ToneMappingSettings, PostProcessSettings, Vec3, Vec4, Color, Quaternion, Position3,  Scale3, NodeType, Container, Node, Geometry, LightType, Light, SpotLight, DirectionalLight,
-   SceneResourceFactory, Scene } from '@ohos.graphics.scene'
+  SceneResourceFactory, Scene } from '@ohos.graphics.scene'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import * as scene3d from '@ohos.graphics.scene'
 
@@ -51,6 +51,7 @@ export default function sceneNodeTest() {
       } catch (err) {
         console.info(msg + " Failed in scene.root?.getNodeByPath('Scene/node_damagedHelmet_-6514') " +
         JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -72,6 +73,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in path = node?.path " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -93,6 +95,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in parentName = node?.parent?.name " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -120,6 +123,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in scene.root?.children.remove(node) " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -142,6 +146,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in scene.root?.children.insertAfter(node,null) " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -195,6 +200,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in node?.layerMask.setEnabled(3, false) " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -315,6 +321,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in node.visible set false " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -346,6 +353,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in cam.fov = 2 " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -371,6 +379,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in cam.nearPlane = 0.5 " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -396,6 +405,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in cam.farPlane = 0.5 " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -423,6 +433,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in cam.enabled = false " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -454,6 +465,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in cam.clearColor = color " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -488,6 +500,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in cam.postProcess = post " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -514,6 +527,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in lig.color = { r: 2, g: 2, b: 2, a: 2 } " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -542,6 +556,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in lig.enabled = false " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -570,6 +585,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in lig.shadowEnabled = false " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -596,6 +612,7 @@ export default function sceneNodeTest() {
         console.info(msg +
           ' Failed in lig = await directionalLight.createLight({name: "Light1"},  LightType.SPOT) ' +
         JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -621,6 +638,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in lig.intensity = 1000 " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -654,6 +672,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in node?.nodeType " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })

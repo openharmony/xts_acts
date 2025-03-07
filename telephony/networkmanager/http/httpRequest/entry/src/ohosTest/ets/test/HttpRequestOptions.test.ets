@@ -2489,7 +2489,8 @@ export default function HttpRequestOptionsTest() {
             console.info(`${caseName} Network connected`);
             let httpRequestOptions: http.HttpRequestOptions = {
               method: http.RequestMethod.GET,
-              resumeTo: 4294967299
+              resumeTo: 4294967299,
+              addressFamily: http.AddressFamily.ONLY_V6
             }
             let httpRequest: http.HttpRequest = http.createHttp();
             httpRequest.request(XTS_TEST_HTTP_URL, httpRequestOptions).then((data: http.HttpResponse) => {
@@ -2533,7 +2534,8 @@ export default function HttpRequestOptionsTest() {
             console.info(`${caseName} Network connected`);
             let httpRequestOptions: http.HttpRequestOptions = {
               method: http.RequestMethod.GET,
-              resumeTo: 0
+              resumeTo: 0,
+              addressFamily: http.AddressFamily.ONLY_V4
             }
             let httpRequest: http.HttpRequest = http.createHttp();
             httpRequest.request(XTS_TEST_HTTP_URL, httpRequestOptions).then((data: http.HttpResponse) => {
@@ -2578,7 +2580,8 @@ export default function HttpRequestOptionsTest() {
             let httpRequestOptions: http.HttpRequestOptions = {
               method: http.RequestMethod.GET,
               resumeFrom: 9999,
-              resumeTo: 333
+              resumeTo: 333,
+              addressFamily: http.AddressFamily.DEFAULT
             }
             let httpRequest: http.HttpRequest = http.createHttp();
             httpRequest.request(XTS_TEST_HTTP_URL, httpRequestOptions).then((data: http.HttpResponse) => {

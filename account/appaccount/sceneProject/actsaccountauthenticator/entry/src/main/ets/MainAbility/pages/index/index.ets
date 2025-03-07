@@ -22,7 +22,7 @@ struct Index {
 
   aboutToAppear(){
     console.info('====>ServiceAbility onStart');
-    var accountMgr = account_appAccount.createAppAccountManager();        
+    let accountMgr = account_appAccount.createAppAccountManager();        
     accountMgr.createAccount("zhangsan", async(data)=>{
         console.info('====>ServiceAbility addAccount 01 onStart');
         console.info('====>ServiceAbility setAppAccess actsaccounttest zhangsan');

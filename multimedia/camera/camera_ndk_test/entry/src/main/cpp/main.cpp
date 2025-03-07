@@ -99,6 +99,28 @@ static napi_value GetCameraOrientation(napi_env env, napi_callback_info info)
     return jsValue;
 }
 
+static napi_value GetCameraHostName(napi_env env, napi_callback_info info)
+{
+    ndkCamera_->GetCameraHostName();
+
+    napi_value jsValue = nullptr;
+
+    napi_create_int32(env, ndkCamera_->GetCameraHostName(), &jsValue);
+
+    return jsValue;
+}
+
+static napi_value GetCameraHostType(napi_env env, napi_callback_info info)
+{
+    ndkCamera_->GetCameraHostType();
+
+    napi_value jsValue = nullptr;
+
+    napi_create_int32(env, ndkCamera_->GetCameraHostType(), &jsValue);
+
+    return jsValue;
+}
+
 
 static napi_value CreateCameraInput(napi_env env, napi_callback_info info)
 {
@@ -387,6 +409,28 @@ static napi_value VideoOutputRelease(napi_env env, napi_callback_info info)
 
     Camera_ErrorCode ret = ndkCamera_->VideoOutputRelease();
     napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value IsVideoMirrorSupported(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+
+    ndkCamera_->IsVideoMirrorSupported();
+    napi_get_boolean(env, ndkCamera_->IsVideoMirror_, &result);
+    return result;
+}
+
+static napi_value EnableVideoMirror(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    bool isEnable;
+    napi_get_value_bool(env, args[0], &isEnable);
+    Camera_ErrorCode code = ndkCamera_->EnableVideoMirror(isEnable);
+    napi_create_int32(env, code, &result);
     return result;
 }
 
@@ -2495,6 +2539,8 @@ static napi_value Init(napi_env env, napi_value exports)
         { "initCamera", nullptr, InitCamera, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "getSupportedCameras", nullptr, GetSupportedCameras, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "getCameraOrientation", nullptr, GetCameraOrientation, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "getCameraHostName", nullptr, GetCameraHostName, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "getCameraHostType", nullptr, GetCameraHostType, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "createCameraInput", nullptr, CreateCameraInput, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "createCameraInputWithPositionAndType", nullptr, CreateCameraInputWithPositionAndType, nullptr, nullptr,
             nullptr, napi_default, nullptr },
@@ -2518,6 +2564,8 @@ static napi_value Init(napi_env env, napi_value exports)
         { "videoOutputStart", nullptr, VideoOutputStart, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "videoOutputStop", nullptr, VideoOutputStop, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "videoOutputRelease", nullptr, VideoOutputRelease, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "isVideoMirrorSupported", nullptr, IsVideoMirrorSupported, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "enableVideoMirror", nullptr, EnableVideoMirror, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "metadataOutputStart", nullptr, MetadataOutputStart, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "metadataOutputStop", nullptr, MetadataOutputStop, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "metadataOutputRelease", nullptr, MetadataOutputRelease, nullptr, nullptr, nullptr, napi_default, nullptr },
