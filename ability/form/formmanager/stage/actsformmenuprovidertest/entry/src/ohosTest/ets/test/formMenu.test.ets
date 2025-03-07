@@ -18,7 +18,7 @@ import { describe, it, expect, beforeEach, beforeAll } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Driver, ON } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base';
-import { emitter } from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 const TAG = 'AddFormMenuItem';
 const DOMAIN = 0xF811;
