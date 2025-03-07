@@ -44,8 +44,13 @@ export default function ndkTest() {
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_0100();
-        expect(result).assertEqual(401);
-        done();
+        if(result == 801){
+          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
+          done();
+        }else{
+          expect(result).assertEqual(401);
+          done();
+        }
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -69,8 +74,13 @@ export default function ndkTest() {
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_0200();
-        expect(result).assertEqual(401);
-        done();
+        if(result == 801){
+          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
+          done();
+        }else{
+          expect(result).assertEqual(401);
+          done();
+        }
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -94,9 +104,14 @@ export default function ndkTest() {
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', `begin of ${TEST_SUITE_NAME} =========`);
         let result = testNapi.ndkStartAbility_0300();
-        expect(result).assertEqual(16000001);
-        hilog.info(0x0000, TAG, '%{public}s', `end of ${TEST_SUITE_NAME} =========`);
-        done();
+        if(result == 801){
+          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
+          done();
+        }else{
+          expect(result).assertEqual(16000001);
+          hilog.info(0x0000, TAG, '%{public}s', `end of ${TEST_SUITE_NAME} =========`);
+          done();
+        }
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -120,8 +135,13 @@ export default function ndkTest() {
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_0400();
-        expect(result).assertEqual(16000001);
-        done();
+        if(result == 801){
+          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
+          done();
+        }else{
+          expect(result).assertEqual(16000001);
+          done();
+        }
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -145,8 +165,13 @@ export default function ndkTest() {
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_0500();
-        expect(result).assertEqual(16000001);
-        done();
+        if(result == 801){
+          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
+          done();
+        }else{
+          expect(result).assertEqual(16000001);
+          done();
+        }
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -170,8 +195,13 @@ export default function ndkTest() {
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_0900();
-        expect(result).assertEqual(16000001);
-        done();
+        if(result == 801){
+          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
+          done();
+        }else{
+          expect(result).assertEqual(16000001);
+          done();
+        }
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -195,6 +225,13 @@ export default function ndkTest() {
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_1000();
+        if(result == 801){
+          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
+          done();
+        }else{
+          expect(result).assertEqual(16000018);
+          done();
+        }
         done();
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -219,8 +256,13 @@ export default function ndkTest() {
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_1100();
-        expect(result).assertEqual(16000001);
-        done();
+        if(result == 801){
+          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
+          done();
+        }else{
+          expect(result).assertEqual(16000001);
+          done();
+        }
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -244,8 +286,13 @@ export default function ndkTest() {
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_1200();
-        expect(result).assertEqual(16000001);
-        done();
+        if(result == 801){
+          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
+          done();
+        }else{
+          expect(result).assertEqual(16000001);
+          done();
+        }
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -295,8 +342,13 @@ export default function ndkTest() {
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_1600();
-        expect(result).assertEqual(16000018);
-        done();
+        if(result == 801){
+          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
+          done();
+        }else{
+          expect(result).assertEqual(16000018);
+          done();
+        }
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
