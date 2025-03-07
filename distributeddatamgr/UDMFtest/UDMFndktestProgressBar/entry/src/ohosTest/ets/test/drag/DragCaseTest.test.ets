@@ -23,7 +23,7 @@ import unifiedDataChannel from '@ohos.data.unifiedDataChannel'
 let TAG = '[ttt]'
 
 async function panAndPinchGesture(id: string) {
-  et driver = Driver.create();
+  let driver = Driver.create();
   let refresh = await driver.findComponent(ON.id(id));
   let rect = await refresh.getBounds();
   let point: PointerMatrix = PointerMatrix.create(1, 999);
