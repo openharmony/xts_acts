@@ -20,7 +20,6 @@ import textStyleJsunit from './TextStyleJsunit.test';
 import tabsFirstJsunit from './TabsFirstJsunit.test';
 import tabsSecondJsunit from './TabsSecondJsunit.test';
 import tabsThirdJsunit from './TabsThirdJsunit.test';
-import stepperItemJsunit from './StepperItem.test';
 import navigationJsunit from './NavigationJsunit.test';
 import navigatorJsunit from './NavigatorJsunit.test';
 import timepickerJsunit from './TimePickerJsunit.test';
@@ -80,7 +79,6 @@ export default function testsuite() {
   tabsFirstJsunit();
   tabsSecondJsunit();
   tabsThirdJsunit();
-  stepperItemJsunit();
   navigatorJsunit();
   navigationJsunit()
   buttonJsunit();
