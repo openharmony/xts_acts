@@ -523,5 +523,25 @@ export default function adsTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number: SUB_CLOUD_AD_SHOW_AD_1400
+     * @tc.name: testShowAd_two_params
+     * @tc.desc: start show ability success.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testShowAd_two_params", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, (done: Function) => {
+      try {
+        hilog.info(Domain, TAG, 'enter testShowAd');
+        advertising.showAd(advertisement, adDisplayOptions);
+        done();
+      } catch (e) {
+        hilog.error(Domain, TAG, 'show ad error, error code is %{public}d, error message is %{public}s.', e.code, e.message);
+        expect(e.code).assertLarger(0);
+        done();
+      }
+    })
   })
 }
