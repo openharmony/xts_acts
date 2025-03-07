@@ -62,9 +62,9 @@ export default function TimePickerDialogEnableHapticFeedbackTest() {
       let timePicker1 = JSON.stringify(obj1.$children[1].$children[0].$children[0].$children[1])
       console.info("[TimePickerDialog_EnableHapticFeedback_001] obj1 is: " + timePicker1);
       console.info("[TimePickerDialog_EnableHapticFeedback_001] obj1 is: " + JSON.stringify(JSON.parse(timePicker1).$attrs.enableHapticFeedback));
+      sendEventByKey('TimePickerDialog1', 10, "")
       expect(JSON.parse(timePicker1).$attrs.enableHapticFeedback).assertEqual(true);
       console.info('[' + tagName + '] END ===========================');
-      sendEventByKey('TimePickerDialog1', 10, "")
       await CommonFunc.sleep(2000);
       done();
     });
@@ -89,9 +89,9 @@ export default function TimePickerDialogEnableHapticFeedbackTest() {
       let timePicker2 = JSON.stringify(obj2.$children[1].$children[0].$children[0].$children[1])
       console.info("[TimePickerDialog_EnableHapticFeedback_002] obj2 is: " + timePicker2);
       console.info("[TimePickerDialog_EnableHapticFeedback_002] obj2 is: " + JSON.stringify(JSON.parse(timePicker2).$attrs.enableHapticFeedback));
-      expect(JSON.parse(timePicker2).$attrs.enableHapticFeedback).assertEqual(false);
-      console.info('[' + tagName + '] END ===========================');
       sendEventByKey('TimePickerDialog2', 10, "")
+      expect(JSON.parse(timePicker2).$attrs.enableHapticFeedback).assertEqual(false);
+      console.info('[' + tagName + '] END ==========================='); 
       await CommonFunc.sleep(2000);
       done();
     });
@@ -116,9 +116,9 @@ export default function TimePickerDialogEnableHapticFeedbackTest() {
       let timePicker3 = JSON.stringify(obj3.$children[1].$children[0].$children[0].$children[1])
       console.info("[TimePickerDialog_EnableHapticFeedback_003] obj3 is: " + timePicker3);
       console.info("[TimePickerDialog_EnableHapticFeedback_003] obj3 is: " + JSON.stringify(JSON.parse(timePicker3).$attrs.enableHapticFeedback));
+      sendEventByKey('TimePickerDialog3', 10, "")
       expect(JSON.parse(timePicker3).$attrs.enableHapticFeedback).assertEqual(true);
       console.info('[' + tagName + '] END ===========================');
-      sendEventByKey('TimePickerDialog3', 10, "")
       await CommonFunc.sleep(2000);
       done();
     });
@@ -143,9 +143,9 @@ export default function TimePickerDialogEnableHapticFeedbackTest() {
       let timePicker4 = JSON.stringify(obj4.$children[1].$children[0].$children[0].$children[1])
       console.info("[TimePickerDialog_EnableHapticFeedback_004] obj4 is: " + timePicker4);
       console.info("[TimePickerDialog_EnableHapticFeedback_004] obj4 is: " + JSON.stringify(JSON.parse(timePicker4).$attrs.enableHapticFeedback));
+      sendEventByKey('TimePickerDialog4', 10, "")
       expect(JSON.parse(timePicker4).$attrs.enableHapticFeedback).assertEqual(true);
       console.info('[' + tagName + '] END ===========================');
-      sendEventByKey('TimePickerDialog4', 10, "")
       await CommonFunc.sleep(2000);
       done();
     });
