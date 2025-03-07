@@ -360,6 +360,52 @@ export default function nfcIsoDepTagTest() {
             }
         })
 
+        /**
+         * @tc.number SUB_Communication_NFC_nfccardEmulationnfc_js_1000
+         * @tc.name Test cardEmulationnfc
+         * @tc.desc Whether to support a certain type of card HceService transmit
+         * @tc.size since 9
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfccardEmulationnfc_js_1000', 0,async function (done)  {
+            let hceService = new cardEmulation.HceService();
+            console.info('[NFC_test]10 hceService state is' + hceService )
+            let responseData = [0x1, 0x2];
+            await hceService.transmit(responseData).then(() =>{
+                console.info('[NFC_test]10 hceService.transmit success ');
+                done();
+            }).catch((err)=> {
+                console.info('[NFC_test]10 hceService.transmit err:  ' + err);
+                expect().assertFail();
+                done();
+            })
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfccardEmulationnfc_js_1100
+         * @tc.name Test cardEmulationnfc
+         * @tc.desc Whether to support a certain type of card HceService transmit
+         * @tc.size since 9
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfccardEmulationnfc_js_1100', 0,async function (done)  {
+            let hceService = new cardEmulation.HceService();
+            console.info('[NFC_test]11 hceService state is' + hceService )
+            let responseData = [0x1, 0x2];
+            hceService.transmit(responseData, (err, data) => {
+                if (err){
+                    console.info('[NFC_test]11 hceService.transmit err: ' + err);
+                    expect().assertFail();
+                    done();
+                } else {
+                    console.info('[NFC_test]11 hceService.transmit data: ' + data);
+                    done();
+                }                          
+            })
+        })
+
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
