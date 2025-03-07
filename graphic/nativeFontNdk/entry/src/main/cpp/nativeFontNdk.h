@@ -62,8 +62,6 @@ napi_value OHDrawingFontGetBounds001(napi_env env, napi_callback_info info);
 napi_value OHDrawingRectDestroyArray001(napi_env env, napi_callback_info info);
 napi_value OHDrawingFontGetPathForGlyph001(napi_env env, napi_callback_info info);
 napi_value OHDrawingFontGetPathForGlyph002(napi_env env, napi_callback_info info);
-napi_value OHDrawingFontGetPathForGlyph003(napi_env env, napi_callback_info info);
-napi_value OHDrawingFontGetPathForGlyph004(napi_env env, napi_callback_info info);
 napi_value OHDrawingRectGetArraySize001(napi_env env, napi_callback_info info);
 napi_value OHDrawingRectGetArrayElement001(napi_env env, napi_callback_info info);
 napi_value OHDrawingCreateTextTab001(napi_env env, napi_callback_info info);
