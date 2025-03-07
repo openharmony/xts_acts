@@ -67,3 +67,7 @@ export const gesturecancelTest: (a: string) => void;
 export const GetTouchEventData: () => object;
 
 export const scrollBackToTopTest: (a: string) => void;
+
+export const snapShotTest001: (a: string) => void;
+
+export const TestsnapShotetResult: () => string[];
