@@ -23,7 +23,7 @@ export default function selectOnSelectJsunit() {
     beforeAll(async () => {
       console.info("flex beforeEach start");
       let options: router.RouterOptions  = {
-        url: 'MainAbility/pages/select',
+        url: 'TestAbility/pages/select',
       }
       try {
         router.clear();
