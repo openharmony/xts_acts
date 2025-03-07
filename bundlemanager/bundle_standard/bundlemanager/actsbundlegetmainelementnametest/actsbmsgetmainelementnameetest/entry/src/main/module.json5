@@ -19,13 +19,7 @@
     "type": "entry",
     "description": "$string:module_desc",
     "mainElement": "no",
-    "deviceTypes": [
-      "wearable",
-      "default",
-      "phone",
-      "tablet",
-      "2in1"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",

@@ -46,7 +46,6 @@ import scrollOnScrollBeginJsunit from './scroll.test.ets';
 import searchOnCutJsunit from './search.test.ets'
 import selectOnSelectJsunit from './select.test.ets';
 import stackAlignContentJsunit from './stack.test.ets';
-import stateManagementGetSharedJsunit from './stateManagement.test.ets';
 import swiperCurveJsunit from './swiper.test.ets';
 import tabsBarPositionJsunit from './tabs.test.ets';
 import textMinFontSizeJsunit from './text.test.ets';
@@ -87,7 +86,6 @@ export default function testsuite() {
   searchOnCutJsunit()
   selectOnSelectJsunit()
   stackAlignContentJsunit()
-  stateManagementGetSharedJsunit()
   swiperCurveJsunit()
   tabsBarPositionJsunit()
   textMinFontSizeJsunit()

@@ -15,7 +15,6 @@
 {
   "license": "",
   "devDependencies": {
-    "@types/libnativefunc.so": "file:./src/main/cpp/types/libnativefunc",
     "@types/libnativerender.so": "file:./src/main/cpp/types/libnativerender"
   },
   "author": "",

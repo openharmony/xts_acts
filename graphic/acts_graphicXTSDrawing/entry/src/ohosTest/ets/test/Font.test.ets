@@ -489,8 +489,24 @@ export default function fontTest() {
       const msg = 'testFontGetMetricsNormal';
       try {
         const font = new drawing.Font();
-        font.getMetrics();
-        console.info(msg + ' getMetrics successed');
+        let metrics = font.getMetrics();
+        console.info(msg + ' getMetrics successed' + JSON.stringify(metrics));
+        expect(metrics.flags !== null).assertTrue();
+        expect(metrics.top !== null).assertTrue();
+        expect(metrics.ascent !== null).assertTrue();
+        expect(metrics.descent !== null).assertTrue();
+        expect(metrics.bottom !== null).assertTrue();
+        expect(metrics.leading !== null).assertTrue();
+        expect(metrics.avgCharWidth !== null).assertTrue();
+        expect(metrics.avgCharWidth !== null).assertTrue();
+        expect(metrics.xMin !== null).assertTrue();
+        expect(metrics.xMax !== null).assertTrue();
+        expect(metrics.xHeight !== null).assertTrue();
+        expect(metrics.capHeight !== null).assertTrue();
+        expect(metrics.underlineThickness !== null).assertTrue();
+        expect(metrics.underlinePosition !== null).assertTrue();
+        expect(metrics.strikethroughThickness !== null).assertTrue();
+        expect(metrics.strikethroughPosition !== null).assertTrue();
       } catch (e) {
         console.info(msg + ` getMetrics errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();

@@ -33,6 +33,7 @@ import gesturecancelTest from "./gesturecancelTest/gesturecancelTest.test"
 import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
 import gestureRecognizerTest from './gestureRecognizer/GestureRecognizerTest.test'
 import EventInfoTest from "./eventInfo/EventInfoTest.test"
+import snapShotTest from './snapShot/snapShotTest.test'
 
 
 export default function testsuite() {
@@ -57,4 +58,5 @@ export default function testsuite() {
    scrollBackToTopTest();
    gestureRecognizerTest();
    EventInfoTest();
+   snapShotTest();
 }

@@ -41,6 +41,17 @@
     "MainAbility/pages/downloadFileButton/FileButtonReceive",
     "MainAbility/pages/downloadFileButton/FileButtonSave",
     "MainAbility/pages/downloadFileButton/FileButtonSaveFile",
-    "MainAbility/pages/downloadFileButton/FileButtonSaveImage"
+    "MainAbility/pages/downloadFileButton/FileButtonSaveImage",
+    "MainAbility/pages/chip/ChipOnClick",
+    "MainAbility/pages/chip/ChipAction",
+    "MainAbility/pages/chip/ChipOnClose",
+    "MainAbility/pages/chip/ChipAction2",
+    "MainAbility/pages/chip/ChipOnClose2",
+    "MainAbility/pages/ChipGroup/startSpace",
+    "MainAbility/pages/ChipGroup/endSpace",
+    "MainAbility/pages/ChipGroup/itemSpace",
+    "MainAbility/pages/chip/localizedLabelMargin",
+    "MainAbility/pages/segmentButton/localizedButtonPadding",
+    "MainAbility/pages/segmentButton/localizedTextPadding"
   ]
 }

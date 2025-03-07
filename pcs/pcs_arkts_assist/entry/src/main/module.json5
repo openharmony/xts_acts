@@ -19,14 +19,7 @@
     "type": "entry",
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
-    "deviceTypes": [
-      "wearable",
-      "phone",
-      "tablet",
-      "2in1",
-      "default",
-      "tv"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",
@@ -58,6 +51,15 @@
           }
         ]
       }
+    ],
+    "extensionAbilities": [
+            {
+              "name": "InputMethodExtensionAbility",
+              "srcEntry": "./ets/inputmethodextensionability/InputMethodExtensionAbility.ets",
+              "description": "$string:EntryAbility_desc",
+              "type": "inputMethod",
+              "exported": true
+            }
     ]
   }
 }

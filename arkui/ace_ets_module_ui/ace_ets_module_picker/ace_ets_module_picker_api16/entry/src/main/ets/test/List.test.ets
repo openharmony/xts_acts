@@ -30,6 +30,15 @@ import PickerCrownSensitivity from './crownSensitivity/Picker.test';
 import TimePickerCrownSensitivity from './crownSensitivity/TimePicker.test';
 import TextPickerCrownSensitivity from './crownSensitivity/TextPicker.test';
 import calendarPickerStartEndTest from './calendarPicker/startEndTest.test';
+import checkBoxOnChangeModifierTest from './checkbox/checkboxOnChangeModifier.test';
+import checkBoxGroupOnChangeModifierTest from './checkboxGroup/checkboxGroupOnChangeModifier.test';
+import radioOnChangeModifierTest from './radio/radioOnChangeModifier.test';
+import ratingOnChangeModifierTest from './rating/ratingOnChangeModifier.test';
+import sliderOnChangeModifierTest from './slider/sliderOnChangeModifier.test';
+import toggleOnChangeModifierTest from './toggle/toggleOnChangeModifier.test';
+import textPickerOnChangeModifierTest from './textPicker/textPickerOnChangeModifier.test';
+import timePickerOnChangeModifierTest from './timePicker/timePickerOnChangeModifier.test';
+import datePickerOnChangeModifierTest from './datePicker/datePickerOnChangeModifier.test';
 
 export default function testsuite() {
   buttonType();
@@ -48,4 +57,13 @@ export default function testsuite() {
   TimePickerCrownSensitivity();
   TextPickerCrownSensitivity();
   calendarPickerStartEndTest();
+  checkBoxOnChangeModifierTest();
+  radioOnChangeModifierTest();
+  checkBoxGroupOnChangeModifierTest();
+  ratingOnChangeModifierTest();
+  sliderOnChangeModifierTest();
+  toggleOnChangeModifierTest();
+  textPickerOnChangeModifierTest();
+  timePickerOnChangeModifierTest();
+  datePickerOnChangeModifierTest();
 }

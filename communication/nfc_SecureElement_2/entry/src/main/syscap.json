@@ -1,16 +1,12 @@
 {
     "devices": {
-        "general": [
-            "tablet",
-            "default",
-            "phone",
-            "2in1",
-            "wearable"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Communication.NFC.Core",
+                    "SystemCapability.Communication.NFC.Tag",
+                    "SystemCapability.Communication.NFC.CardEmulation"
                 ]
             }
         ]

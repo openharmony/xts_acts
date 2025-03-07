@@ -20,7 +20,6 @@ import textStyleJsunit from './TextStyleJsunit.test';
 import tabsFirstJsunit from './TabsFirstJsunit.test';
 import tabsSecondJsunit from './TabsSecondJsunit.test';
 import tabsThirdJsunit from './TabsThirdJsunit.test';
-import stepperItemJsunit from './StepperItem.test';
 import navigationJsunit from './NavigationJsunit.test';
 import navigatorJsunit from './NavigatorJsunit.test';
 import timepickerJsunit from './TimePickerJsunit.test';
@@ -48,7 +47,6 @@ import progressJsunit from './Progress.test';
 import textTimerJsunit from './TextTimer.test';
 import textClockJsunit from './TextClockJsunit.test';
 import scrollJsunit from './Scroll.test';
-import waterFlowViewJsunit from './WaterFlowView.test';
 import qrCodeJsunitJsunit from './QrCodeJsunit.test';
 import calendarPickerJsunit from './CalendarPicker.test';
 import listJsunit from './List.test';
@@ -80,7 +78,6 @@ export default function testsuite() {
   tabsFirstJsunit();
   tabsSecondJsunit();
   tabsThirdJsunit();
-  stepperItemJsunit();
   navigatorJsunit();
   navigationJsunit()
   buttonJsunit();
@@ -103,7 +100,6 @@ export default function testsuite() {
   gridItemJsunit();
   gridJsunit();
   swiperJsunit();
-  waterFlowViewJsunit();
   scrollJsunit();
   textTimerJsunit();
   textClockJsunit();

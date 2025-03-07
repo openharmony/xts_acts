@@ -12,13 +12,7 @@
     "package": "ohos.acts.communication.nfc.nfcdevice",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-      "tablet",
-      "default",
-      "phone",
-      "2in1",
-      "wearable"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "nfc_standard",

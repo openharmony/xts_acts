@@ -12,12 +12,7 @@
     "package": "ohos.acts.dataObject",
     "name": ".entry_test",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-      "default",
-      "tablet",
-      "phone",
-      "2in1"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry_test",

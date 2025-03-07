@@ -15,8 +15,10 @@
 
 import textAreaInputTest from './TextTest/textAreaInputTest.test';
 import TextMenuItemId from './RichEditorTest/TextMenuItemId.test';
+import editMenuOptions from './TextTest/editMenuOptions.test';
 
 export default function testsuite() {
   textAreaInputTest();
   TextMenuItemId();
+  editMenuOptions();
 }

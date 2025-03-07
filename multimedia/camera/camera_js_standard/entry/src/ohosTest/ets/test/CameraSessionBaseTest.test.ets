@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import { BusinessError } from '@ohos.base';
 import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
@@ -910,6 +911,67 @@ export default function cameraSessionTest() {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 ends here");
         done();
       }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_FOCUSSTATECHANGE_0100
+     * @tc.name      : videosession callback on focusStateChange
+     * @tc.desc      : videosession callback on focusStateChange
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_FOCUSSTATECHANGE_0100', 2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_FOCUSSTATECHANGE_0100--------------");
+      try {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_FOCUSSTATECHANGE_0100");
+        mCameraSession.on('focusStateChange', (err: BusinessError, focusState: cameraObj.FocusState) => {
+          if (err !== undefined && err.code !== 0) {
+            console.info(TAG + `Callback Error, errorCode: ${err.code}`);
+            expect().assertFail();
+          }
+          console.info(TAG + `Focus state: ${focusState}`);
+        })
+        mCameraSession.off('focusStateChange');
+        done();
+      } catch (error) {
+        let err = error as BusinessError;
+        console.info(TAG + "SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_FOCUSSTATECHANGE_0100 ERRORCODE: " + err.code);
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_ERROR_0100
+     * @tc.name      : videosession callback on error
+     * @tc.desc      : videosession callback on error
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_ERROR_0100', 2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_ERROR_0100--------------");
+      try {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_ERROR_0100 SUCCESS");
+        mCameraSession.on('error', (err: BusinessError) => {
+          if (!err){
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_ERROR_0100 FAILED! error == null || undefined");
+            expect().assertFail();
+          } else {
+            console.info(`Video session error code: ${err.code}`);
+          }
+        })
+        mCameraSession.off('error');
+        done();
+      } catch (error) {
+        let err = error as BusinessError;
+        console.info(TAG + "SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_CALLBACK_ON_ERROR_0100 ERRORCODE: " + err.code);
+        expect().assertFail();
+        done();
+      }
+      done();
     })
   })
 }

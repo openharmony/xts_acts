@@ -12,13 +12,7 @@
     "package": "com.hidebug.collect.test_test",
     "name": ".entry_test",
     "mainAbility": ".TestAbility",
-    "deviceType": [
-      "tablet",
-      "default",
-      "phone",
-      "2in1",
-      "wearable"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry_test",

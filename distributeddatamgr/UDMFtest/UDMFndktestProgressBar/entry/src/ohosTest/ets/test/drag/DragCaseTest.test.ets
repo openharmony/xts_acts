@@ -18,6 +18,9 @@ import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest'
 import { Point } from '@ohos.UiTest';
 import Utils from '../common/Utils'
 import nativeRender from 'libnativerender.so'
+import unifiedDataChannel from '@ohos.data.unifiedDataChannel'
+ 
+let TAG = '[ttt]'
 
 async function panAndPinchGesture(id: string) {
   let driver = Driver.create();
@@ -44,10 +47,9 @@ export default function DragTest(){
 
   describe('DragTest', () => {
     afterEach(async (done: Function) => {
-      await Utils.sleep(100)
-      done()
+      await Utils.sleep(100);
+      done();
     })
-
     /*
      * @tc.number     : SUB_UDMFndk_CASE_001
      * @tc.name       : UDMFCaseTest001
@@ -57,13 +59,13 @@ export default function DragTest(){
      * @tc.level      : Level 1
      */
     it('UDMFCaseTest001', 0, async (done: Function) => {
-        let PAGE_TAG = 'DragCaseTest1'
-        await Utils.pushPage(`drag/${PAGE_TAG}`)
-        await panAndPinchGesture('image')
+        let PAGE_TAG = 'DragCaseTest1';
+        await Utils.pushPage(`drag/${PAGE_TAG}`);
+        await panAndPinchGesture('image');
         let dataArray: number[] = nativeRender.GetResult();
-        console.log('UDMFCaseTest001', dataArray[0])
-        expect( dataArray[0] == 0 ).assertEqual(true)
-        done()
+        console.log('UDMFCaseTest001', dataArray[0]);
+        expect( dataArray[0] == 0 ).assertEqual(true);
+        done();
     })
 
     /*
@@ -75,16 +77,16 @@ export default function DragTest(){
      * @tc.level      : Level 1
      */
     it('UDMFCaseTest002', 0, async (done: Function) => {
-        let PAGE_TAG = 'DragCaseTest2'
-        await Utils.pushPage(`drag/${PAGE_TAG}`)
-        await panAndPinchGesture('image')
+        let PAGE_TAG = 'DragCaseTest2';
+        await Utils.pushPage(`drag/${PAGE_TAG}`);
+        await panAndPinchGesture('image');
         let dataArray: number[] = nativeRender.GetResult();
-        console.log('UDMFCaseTest002', dataArray[0])
-        expect( dataArray[0] == 0 ).assertEqual(true)
-        done()
+        console.log('UDMFCaseTest002', dataArray[0]);
+        expect( dataArray[0] == 0 ).assertEqual(true);
+        done();
     })
 
-        /*
+    /*
      * @tc.number     : SUB_UDMFndk_CASE_003
      * @tc.name       : UDMFCaseTest003
      * @tc.desc       : testing List maintainVisibleContentPosition
@@ -93,12 +95,12 @@ export default function DragTest(){
      * @tc.level      : Level 1
      */
     it('UDMFCaseTest003', 0, async (done: Function) => {
-        let PAGE_TAG = 'DragCaseTest3'
-        await panAndPinchGesture('image')
+        let PAGE_TAG = 'DragCaseTest3';
+        await panAndPinchGesture('image');
         let dataArray: number[] = nativeRender.GetResult();
-        console.log('UDMFCaseTest003', dataArray[0])
-        expect( dataArray[0] == 0 ).assertEqual(true)
-        done()
+        console.log('UDMFCaseTest003', dataArray[0]);
+        expect( dataArray[0] == 0 ).assertEqual(true);
+        done();
     })
   })
 }

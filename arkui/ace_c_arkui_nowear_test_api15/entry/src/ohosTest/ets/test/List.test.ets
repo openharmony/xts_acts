@@ -15,10 +15,12 @@
 
 import setKeyProcessingMode01 from "./setKeyProcessingMode/setKeyProcessingMode01.test"
 import setKeyProcessingMode02 from "./setKeyProcessingMode/setKeyProcessingMode02.test"
+import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
 import keyDispatchTest from "./keydispatchTest/KeyDispatchTest.test"
 
 export default function testsuite() {
    setKeyProcessingMode01();
    setKeyProcessingMode02();
+   scrollBackToTopTest();
    keyDispatchTest();
 }

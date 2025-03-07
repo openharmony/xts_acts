@@ -19,12 +19,7 @@
     "srcEntry": "./ets/Application/AbilityStage.ts",
     "description": "$string:entry_desc",
     "mainElement": "MainAbility",
-    "deviceTypes": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
+    "deviceTypes": [],
     "requestPermissions": [
       {
         "name": "ohos.permission.INSTALL_BUNDLE"

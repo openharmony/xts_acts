@@ -46,12 +46,7 @@
         "srcLanguage": "js"
       }
     ],
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
+    "deviceType": [],
     "mainAbility": "com.example.myapplication1.MainAbility",
     "distro": {
       "moduleType": "entry",

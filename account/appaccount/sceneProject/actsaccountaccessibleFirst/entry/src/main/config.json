@@ -12,13 +12,7 @@
     "package": "com.example.actsaccountaccessiblefirst",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-      "wearable",
-      "default",
-      "tablet",
-      "phone",
-      "2in1"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

@@ -1,16 +1,11 @@
 {
     "devices": {
-        "general": [
-            "phone",
-            "tablet",
-            "default",
-            "2in1",
-            "wearable"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Communication.Bluetooth.Core",
+                    "SystemCapability.Communication.Bluetooth.Lite"
                 ]
             }
         ]

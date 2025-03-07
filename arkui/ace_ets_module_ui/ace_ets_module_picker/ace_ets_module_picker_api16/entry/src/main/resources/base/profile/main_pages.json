@@ -16,6 +16,15 @@
         "MainAbility/pages/crownSensitivity/TextPicker",
         "MainAbility/pages/crownSensitivity/TimePicker",
 	    "MainAbility/pages/calendarPicker/disableDateRangeAndMarkToday",
-        "MainAbility/pages/calendarPicker/startEndTest"
+        "MainAbility/pages/calendarPicker/startEndTest",
+        "MainAbility/pages/checkbox/checkboxOnChangeModifier",
+        "MainAbility/pages/checkboxGroup/checkboxGroupOnChangeModifier",
+        "MainAbility/pages/radio/radioOnChangeModifier",
+        "MainAbility/pages/rating/ratingOnChangeModifier",
+        "MainAbility/pages/slider/sliderOnChangeModifier",
+        "MainAbility/pages/toggle/toggleOnChangeModifier",
+        "MainAbility/pages/textPicker/textPickerOnChangeModifier",
+        "MainAbility/pages/timePicker/timePickerOnChangeModifier",
+        "MainAbility/pages/datePicker/datePickerOnChangeModifier"
     ]
 }

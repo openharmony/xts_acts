@@ -1,15 +1,12 @@
 {
     "devices": {
-        "general": [
-            "default",
-            "tablet",
-            "phone",
-            "2in1"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Notification.Notification",
+                    "SystemCapability.Notification.ReminderAgent",
+                    "SystemCapability.Notification.NotificationSettings"
                 ]
             }
         ]

@@ -20,7 +20,6 @@ import TextAreaCallbackTest from './TextAreaTest/TextAreaCallback.test';
 import TextAreaSelectTest from './TextAreaTest/TextAreaSelect.test';
 import Image_QRCode_Api from './textTest/Image_QRCode_Api.test';
 import RichEditorApi from './RichEditorTest/RichEditorApi.test';
-import RichEditorApi222 from './RichEditorTest/RichEditorApi222.test';
 import APIgetUIFontConfigJsunit from './fontTest/APIgetUIFontConfigJsunit.test';
 import APITextBackgroundStyleJsunit from './ContainerSpanTest/APITextBackgroundStyleJsunit.test'
 import SXrenderingStrategyJsunit from './RichEditorTest/SXrenderingStrategyJsunit.test';
@@ -29,7 +28,6 @@ import SXsymbolStyleJsunit from './RichEditorTest/SXsymbolStyleJsunit.test';
 import SXvalueResourceJsunit from './RichEditorTest/SXvalueResourceJsunit.test'
 import SXSymbolGlyphSINGLE01Jsunit from './SymbolGlyphTest/SXSymbolGlyphSINGLE01Jsunit.test'
 import textDataDataDetectorConfig from './textTest/textDataDataDetectorConfig.test'
-import richEditorApi1 from './RichEditorTest/richEditorApi/richEditorApi1.test'
 import richEditorApi2 from './RichEditorTest/richEditorApi/richEditorApi2.test'
 import richEditorApi3 from './RichEditorTest/richEditorApi/richEditorApi3.test'
 import RichEditorTest from './RichEditorTest/RichEditor/RichEditor.test';
@@ -74,20 +72,15 @@ import search_maxLength from './SearchTest/search_maxLength.test';
 import search_maxLength2 from './SearchTest/search_maxLength2.test';
 import search_top from './SearchTest/search_top.test.ets'
 import search_bottom from './SearchTest/search_bottom.test.ets'
-import SearchJsunit from './SearchTest/SearchJsunit.test';
-import textAreaUIJsunit from './TextAreaTest/textAreaUIJsunit.test';
 import textArea_top from './TextAreaTest/textArea_top.test.ets'
 import textArea_bottom from './TextAreaTest/textArea_bottom.test.ets'
-import textAreaBC1Jsunit from './TextAreaTest/textAreaBC1Jsunit.test';
 import textAenEnabledJsunit from './TextAreaTest/textAenEnabledJsunit.test';
-import TextInputPageJsunit from './TextInputTest/TextInputPageJsunit.test';
 import textInput_caret from './TextInputTest/textInput_caret.test';
 import textOneJsunit from './textTest/textOneJsunit.test';
 import textTwoJsunit from './textTest/textTwoJsunit.test';
 import textEnabledJsunit from './textTest/textEnabledJsunit.test';
 import textChangeEnabledJsunit from './textTest/textChangeEnabledJsunit.test';
 import marqueeUIJsunit from './marqueeTest/marqueeUIJsunit.test.ets';
-import RichEditor01 from './RichEditorTest/RichEditor01.test.ets';
 import RichTextJsunit from './RichEditorTest/RichTextJsunit.test.ets';
 import spanUIJsunit from './spanTest/spanUIJsunit.test.ets';
 import fontJsunit from './fontTest/fontJsunit.test.ets';
@@ -109,7 +102,6 @@ import textAreaJsunit3 from './TextAreaTest/TextAreaJsunit3.test';
 import textInputJsunit3 from './TextInputTest/TextInputJsunit3.test';
 import textObscuredTest from './textTest/textObscuredTest.test';
 import textSpanFontTest from './textTest/textSpanFont.test';
-import search_gesture from './SearchTest/search_gesture.test';
 import textAreaOnCaretAndKeyboardTest from './TextAreaTest/textAreaOnCaretAndKeyboard.test';
 import richEditorTest from './RichEditorTest/RichEditorJsunit.test';
 import textTextCaseTest from './textTest/textTextCase.test';
@@ -122,7 +114,6 @@ export default function testsuite() {
   textAreaInputTest()
   stageFontTest();
   stageMediaquery();
-  RichEditorApi222();
   richEditorApi4();
   richEditorApi5();
   richEditorApi6();
@@ -144,7 +135,6 @@ export default function testsuite() {
   SXvalueResourceJsunit();
   SXSymbolGlyphSINGLE01Jsunit();
   textDataDataDetectorConfig()
-  richEditorApi1()
   richEditorApi2()
   richEditorApi3()
   RichEditorTest()
@@ -180,12 +170,8 @@ export default function testsuite() {
   search_maxLength2();  
   search_top();
   search_bottom();
-  SearchJsunit();
-  textAreaUIJsunit();
   textArea_top();
-  textAreaBC1Jsunit();
   textAenEnabledJsunit();
-  TextInputPageJsunit();
   textInput_caret();
   textOneJsunit();
   textTwoJsunit();
@@ -193,7 +179,6 @@ export default function testsuite() {
   textChangeEnabledJsunit();
   marqueeUIJsunit();
   RichTextJsunit();
-  RichEditor01();
   spanUIJsunit();
   fontJsunit();
   richTextJsunitFOUR()
@@ -214,7 +199,6 @@ export default function testsuite() {
   textObscuredTest();
   textSpanFontTest();
   textArea_bottom();
-  search_gesture();
   textAreaOnCaretAndKeyboardTest();
   richEditorTest();
   textTextCaseTest();

@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import { convertxml } from '@kit.ArkTS';
 
 function sleep(ms: number) {
@@ -57,7 +57,7 @@ export default function ConvertXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConvertXmlConstructor0001', 0, () => {
+    it('testConvertXmlConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConvertXmlConstructor0001';
       try {
         let xml =
@@ -98,7 +98,7 @@ export default function ConvertXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConvertXmlConstructor0002', 0, () => {
+    it('testConvertXmlConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConvertXmlConstructor0002';
       try {
         let xml =
@@ -139,7 +139,7 @@ export default function ConvertXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConvertXmlConstructor0003', 0, () => {
+    it('testConvertXmlConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConvertXmlConstructor0003';
       try {
         let xml =
@@ -186,7 +186,7 @@ export default function ConvertXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConvertXmlConstructor0004', 0, () => {
+    it('testConvertXmlConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConvertXmlConstructor0004';
       try {
         let xml =
@@ -228,7 +228,7 @@ export default function ConvertXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConvertXmlConstructor0005', 0, () => {
+    it('testConvertXmlConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConvertXmlConstructor0005';
       try {
         let xml =
@@ -275,7 +275,7 @@ export default function ConvertXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConvertXmlConstructor0006', 0, () => {
+    it('testConvertXmlConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConvertXmlConstructor0006';
       try {
         let xml =
@@ -318,7 +318,7 @@ export default function ConvertXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConvertXmlConstructor0007', 0, () => {
+    it('testConvertXmlConstructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConvertXmlConstructor0007';
       try {
         let xml =
@@ -368,7 +368,7 @@ export default function ConvertXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConvertXmlConstructor0008', 0, () => {
+    it('testConvertXmlConstructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConvertXmlConstructor0008';
       try {
         let xml =
@@ -419,7 +419,7 @@ export default function ConvertXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConvertXmlConstructor0009', 0, () => {
+    it('testConvertXmlConstructor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConvertXmlConstructor0009';
       try {
         let xml =
@@ -469,7 +469,7 @@ export default function ConvertXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConvertXmlConstructor0010', 0, () => {
+    it('testConvertXmlConstructor0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConvertXmlConstructor0010';
       try {
         let xml =
@@ -519,7 +519,7 @@ export default function ConvertXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConvertXmlConstructor0011', 0, () => {
+    it('testConvertXmlConstructor0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConvertXmlConstructor0011';
       try {
         let xml =
@@ -571,7 +571,7 @@ export default function ConvertXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConvertXmlConstructor0012', 0, () => {
+    it('testConvertXmlConstructor0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConvertXmlConstructor0012';
       try {
         let xml =
@@ -624,7 +624,7 @@ export default function ConvertXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConvertXmlConstructor0013', 0, () => {
+    it('testConvertXmlConstructor0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConvertXmlConstructor0013';
       try {
         let xml =
@@ -675,7 +675,7 @@ export default function ConvertXmlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConvertXmlConstructor0014', 0, () => {
+    it('testConvertXmlConstructor0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConvertXmlConstructor0014';
       try {
         let xml =
@@ -713,6 +713,44 @@ export default function ConvertXmlTest() {
           "\"_elements\":[{\"_type\":\"text\",\"_text\":\"Happy\"}]},{\"_type\":\"element\",\"_name\":\"todo\"," +
           "\"_parent\":\"note\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Work\"}]},{\"_type\":\"element\"," +
           "\"_name\":\"todo\",\"_parent\":\"note\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONVERTXML_CONSTRUCTOR_1500
+     * @tc.name       : testConvertXmlConstructor0015
+     * @tc.desc       : Testing the convertxml convertToJSObject with ignoreText is false.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testConvertXmlConstructor0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testConvertXmlConstructor0015';
+      try {
+        let xml =
+          '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '    <title>Happy</title>' +
+            '    <todo>Work</todo>' +
+            '    <todo>Play</todo>' +
+            '</note>';
+        let conv = new convertxml.ConvertXML();
+        let options: convertxml.ConvertOptions = {trim : false, declarationKey:"_declaration",
+          instructionKey : "_instruction", attributesKey : "_attributes",
+          textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+          commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+          nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        expect(result).assertEqual("{\"_declaration\":{\"_attributes\":{\"version\":\"" +
+          "1.0\",\"encoding\":\"utf-8\"}},\"_elements\":[{\"_type\":\"element\",\"_name\":\"note\"," +
+          "\"_attributes\":{\"importance\":\"high\",\"logged\":\"true\"},\"_elements\":[{\"_type\":" +
+          "\"element\",\"_name\":\"title\",\"_parent\":\"note\",\"_elements\":[{\"_type\":\"text\",\"_text\":" +
+          "\"Happy\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_parent\":\"note\",\"_elements\":" +
+          "[{\"_type\":\"text\",\"_text\":\"Work\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_parent\"" +
+          ":\"note\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}")
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();

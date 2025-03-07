@@ -20,6 +20,8 @@ group("pageInteraction") {
       "gesture_operation:ActsWebGestureOperationTest",
       "keyboard_mouse_operations:ActsWebKeyboardMouseOperationsTest",
       "page_scrolling:ActsWebPageScrollingTest",
+      "page_scrollingOne:ActsWebPageScrollingOneTest",
+      "page_scrollingTwo:ActsWebPageScrollingTwoTest",
       "picture_text_selection:ActsWebPictureTextSelectionTest",
       "soft_keyboard_avoidance:ActsWebSoftKeyboardAvoidanceTest",
     ]

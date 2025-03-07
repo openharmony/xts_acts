@@ -12,20 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const postFrameCallbackTest: (a: string) => void;
-
-export const testPostFrameCallback: (a: string) => void;
-
-export const swiperAutoPlayTest: (a: string) => void;
-
-export const textAreaLetterSpacing001: (a: string) => void;
-
-export const textInputLetterSpacing002: (a: string) => void;
-
-export const textPickerColumnWidths: (a: string) => void;
-
-export const scrollBackToTopTest: (a: string) => void;
-
 export const TestDragStartDataLoading001: (a: string) => void;
 
 export const TestDragDisableDropDataPrefetch002: (a: string) => void;

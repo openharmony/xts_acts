@@ -15,11 +15,6 @@
 
 #include "common/common.h"
 #include "manager/plugin_manager.h"
-#include "postFrame/post_frame_callback_test.h"
-#include "swiper/swiper_test.h"
-#include "textArea/textArea_letter_spacing.h"
-#include "textpicker/textpicker_columnwidths_test.h"
-#include "scroll/scroll_backtotop_test.h"
 #include "drag/drag_test.h"
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -32,19 +27,6 @@ static napi_value Init(napi_env env, napi_value exports)
     }
 
     napi_property_descriptor desc[] = {
-        {"getContext", nullptr, PluginManager::GetContext, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testPostFrameCallback", nullptr, PostFrameCallbackTest::testPostFrameCallback001,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"swiperAutoPlayTest", nullptr, SwiperTest::swiperAutoPlayTest,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"textAreaLetterSpacing001", nullptr, TextAreaLetterSpacing::textAreaLetterSpacing001,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"textInputLetterSpacing002", nullptr, TextAreaLetterSpacing::textInputLetterSpacing002,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"textPickerColumnWidths", nullptr, TextPickerTest::TextPickerColumnWidths,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"scrollBackToTopTest", nullptr, ScrollBackToTopTest::CreateNativeNode, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
         {"TestDragStartDataLoading001", nullptr, DragTest::TestDragStartDataLoading001, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"TestDragDisableDropDataPrefetch002", nullptr, DragTest::TestDragDisableDropDataPrefetch002, nullptr, nullptr,

@@ -19,12 +19,7 @@
         "type": "entry",
         "description": "$string:phone_entry_dsc",
         "mainElement": "EntryAbility",
-        "deviceTypes": [
-      "wearable",
-            "tablet",
-            "default",
-            "2in1"
-        ],
+        "deviceTypes": [],
         "deliveryWithInstall": true,
         "installationFree": false,
         "uiSyntax": "ets",

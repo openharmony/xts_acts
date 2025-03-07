@@ -18,11 +18,12 @@ import hardwareTest from './Hardware.test';
 import performanceTest from './Performance.test';
 import securityTest from './Security.test';
 import softwareTest from './Software.test';
-
+import optionalSystemCapability from './OptionalSystemCapability.test';
 export default function testsuite() {
   hardwareTest()
   developerModeTest()
   softwareTest()
   securityTest()
   performanceTest()
+  optionalSystemCapability();
 }

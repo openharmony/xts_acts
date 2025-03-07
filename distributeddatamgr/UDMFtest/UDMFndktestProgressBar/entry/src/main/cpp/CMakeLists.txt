@@ -13,23 +13,7 @@ include_directories(
 add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
-    postFrame/post_frame_callback_test.cpp
-    swiper/swiper_test.cpp
-    textArea/textArea_letter_spacing.cpp
-    textpicker/textpicker_columnwidths_test.cpp
-    scroll/scroll_backtotop_test.cpp
-    component/component.cpp
-    component/grid_component.cpp
-    component/list_component.cpp
-    component/scroll_component.cpp
-    component/waterflow_component.cpp
-    component/button_component.cpp
-    component/text_component.cpp
     drag/drag_test.cpp
-)
-
-add_library(nativefunc SHARED
-    napi_func_init.cpp
 )
 
 find_library(
@@ -66,5 +50,3 @@ find_library(
 
 target_link_libraries(nativerender PUBLIC
     libnative_drawing.so libace_napi.z.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libudmf.so)
-target_link_libraries(nativefunc PUBLIC
-libnative_drawing.so libpixelmap.so libace_napi.z.so libudmf.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})

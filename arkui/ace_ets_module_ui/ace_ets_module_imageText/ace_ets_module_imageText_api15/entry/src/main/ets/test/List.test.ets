@@ -26,6 +26,7 @@ import VerticalAlignTest from './ImageAttachmentTest/VerticalAlign.test';
 import ObjectFitTest from './ImageAttachmentTest/ObjectFit.test';
 import ImageSvgFillColorTest from './ImageSvgFillColorTest/ImageSvgFillColor.test';
 import imageMatrix from './imageMatrix/imageMatrix.test';
+import aboutToAppear from './StyledStringTest/aboutToAppear.test';
 
 
 export default function testsuite() {
@@ -42,4 +43,5 @@ export default function testsuite() {
   ObjectFitTest();
   ImageSvgFillColorTest();
   imageMatrix();
+  aboutToAppear();
 }

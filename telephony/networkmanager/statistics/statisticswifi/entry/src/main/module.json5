@@ -19,12 +19,7 @@
     "type": "entry",
     "description": "$string:module_test_desc",
     "mainElement": "MainAbility",
-    "deviceTypes": [
-      "wearable",
-      "default",
-      "tablet",
-      "2in1"
-    ],
+    "deviceTypes": [],
     "requestPermissions": [
       {
         "name": "ohos.permission.GET_NETWORK_INFO"
