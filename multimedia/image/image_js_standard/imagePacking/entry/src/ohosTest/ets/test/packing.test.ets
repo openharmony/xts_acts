@@ -71,10 +71,6 @@ export default function imagePacking() {
     afterAll(() => {
       console.info("afterAll case");
     });
-    const isSupportHdr = () => {
-      return !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
-        display.getDefaultDisplaySync().hdrFormats.length != 0
-    }
     let packingPromise = (done: ESObject, testNum: ESObject, pixFormat: ESObject, arg: ESObject) => {
       let opts: Opts;
       const Color = new ArrayBuffer(96);
@@ -285,6 +281,26 @@ export default function imagePacking() {
         return undefined;
       }
     }
+
+	let isSupportImageFormat = async (fileName: string, format: string) => {
+	  let filePath = ""
+	  let isSupportFormat = false;
+	  let globalImagesource: image.ImageSource;
+	  try {
+		  filePath = filesDir + "/" + fileName;
+		  globalImagesource = image.createImageSource(filePath);
+		  if (globalImagesource != undefined) {
+			isSupportFormat = globalImagesource.supportedFormats.includes(format);
+			console.info('isSupportFormat is ' + isSupportFormat);
+			globalImagesource.release();
+		  }
+		  return isSupportFormat;
+	  } catch (error) {
+		  console.info("getRawFileContent case" + error);
+		  return isSupportFormat;
+	  }
+	  return isSupportFormat;
+	}
 
     let createPixelMapList = async (done: ESObject, picName: ESObject) => {
       console.info("createPixelMapList start");
@@ -2026,10 +2042,11 @@ export default function imagePacking() {
         expect(true).assertTrue();
         done();
       } else {
-        if (!isSupportHdr()) {
-          console.info("device is not support hdr");
-          expect(true).assertTrue();
-          done();
+        let isSupportFormat = await isSupportImageFormat("HDRVividSingleLayer.heic", "image/heic");
+		if (!isSupportFormat) {
+	      console.info("device is not support imageformat heic");
+		  expect(true).assertTrue();
+		  done();
         } else {
           let pixelMapList = await createPixelMapList(done, "HDRVividSingleLayer.heic");
           let packingOptions: image.PackingOptionsForSequence = {
