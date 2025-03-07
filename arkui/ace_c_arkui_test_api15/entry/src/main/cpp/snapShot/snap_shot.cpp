@@ -46,14 +46,14 @@
  static ArkUI_AttributeItem NODE_IMAGE_SRC_Item;
  
  std::vector<int32_t> Manager::result = {};
- std::int32_t g_dataSizeEvent = 0;
+ std::int32_t g_snapShot_dataSizeEvent = 0;
  const int EVENT_DATA_SIZE_TWO = 2;
  const int EVENT_DATA_SIZE_FIVE = 5;
  
  static napi_value SetArrayNapiDataWithGesture(const std::vector<int32_t> &data, napi_env env) {
      napi_value array;
      napi_create_array(env, &array);
-     for (size_t i = PARAM_0; i < g_dataSizeEvent; i++) {
+     for (size_t i = PARAM_0; i < g_snapShot_dataSizeEvent; i++) {
          napi_value num;
          napi_create_int32(env, data[i], &num);
          napi_set_element(env, array, i, num);
