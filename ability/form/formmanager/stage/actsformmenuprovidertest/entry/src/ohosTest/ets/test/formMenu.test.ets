@@ -18,11 +18,13 @@ import { describe, it, expect, beforeEach, beforeAll } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Driver, ON } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base';
+import { emitter } from '@ohos.events.emitter';
 
 const TAG = 'AddFormMenuItem';
 const DOMAIN = 0xF811;
 const PUBLISH_BUNDLE_NAME = 'com.example.menuprovider';
 const cmd = 'hilog -x | grep AddFormMenuItemSuccessAndFormId';
+const ERR_DEVICE_NOT_SUPPORTED = 801;
 const driver: Driver = Driver.create();
 const resourceManager = AbilityDelegatorRegistry?.getAbilityDelegator()?.getAppContext()?.resourceManager;
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -60,6 +62,13 @@ export default function abilityTest() {
      * @tc.level Level 3
      */
     it('testAddFormMenuItem0100', 0, async (done: Function) => {
+      console.log("testAddFormMenuItem0100 start");
+      emitter.on({
+        eventId: ERR_DEVICE_NOT_SUPPORTED 
+      }, () => {
+        console.log(`testAddFormMenuItem0100 emitter callback`);
+        done();
+      });
       const descButton = await driver.findComponent(ON.text(await resourceManager.getStringValue($r('app.string.TestFormAbility_desc'))));
       await sleep(200);
       await descButton?.click();
@@ -81,7 +90,8 @@ export default function abilityTest() {
           console.log("Test failed : " + JSON.stringify(error));
           expect().assertFail();
           done();
-        })
+        });
+      emitter.off(ERR_DEVICE_NOT_SUPPORTED );
     })
   })
 }
