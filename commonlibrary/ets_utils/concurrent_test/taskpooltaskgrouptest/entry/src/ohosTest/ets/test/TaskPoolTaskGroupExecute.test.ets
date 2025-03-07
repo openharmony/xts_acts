@@ -484,7 +484,7 @@ export default function taskPoolTaskGroupExecuteTest() {
         });
       }
 
-      while (count < 10) {
+      while (count < 10 || Count1.count < 10 || Count2.count < 10 || count2 < 10) {
         await sleep(100)
       }
       expect(10).assertEqual(count)
@@ -589,7 +589,7 @@ export default function taskPoolTaskGroupExecuteTest() {
         });
       }
 
-      while (count < 10) {
+      while (count < 10 || Count1.count < 10 || Count2.count < 10 || count2 < 10) {
         await sleep(100)
       }
       expect(10).assertEqual(Count1.count)

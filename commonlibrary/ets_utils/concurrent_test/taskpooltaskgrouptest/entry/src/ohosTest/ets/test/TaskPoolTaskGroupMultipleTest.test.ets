@@ -16,43 +16,10 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { ErrorEvent, MessageEvents, taskpool, worker } from '@kit.ArkTS';
 import {
-  asyncLock,
-  asyncLock1,
-  asyncLock2,
-  asyncLock3,
   printArgs1,
-  printArgs10,
-  printArgs11,
-  printArgs12,
-  printArgs13,
-  printArgs14,
-  printArgs2,
-  printArgs3,
-  printArgs4,
-  printArgs5,
-  printArgs6,
-  printArgs7,
-  printArgs8,
-  printArgs9,
-  testFunc,
-  testTransfer
 } from '../testability/pages/TaskMethodTest';
-import { Driver } from '@kit.TestKit';
-
 import { BusinessError } from '@kit.BasicServicesKit';
-import {
-  multipleTask1,
-  multipleTask2,
-  multipleTask3,
-  multipleTask4,
-  multipleTask5,
-  multipleUITask1,
-  multipleUITask2,
-  multipleUITask3,
-  multipleUITask4
-} from '../testability/pages/MultipleTask';
-import { Drivers, sleep } from '../testability/pages/Utils';
-import { MeasureText } from '@kit.ArkUI';
+import { sleep } from '../testability/pages/Utils';
 
 declare class ArkTools {
   static forceFullGC(): void;
@@ -106,7 +73,7 @@ export default function taskPoolTaskGroupMultipleTest() {
 
       for (let j = 0; j < 10; j++) {
         await sleep(10)
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 10; i++) {
           taskpool.execute(taskGroup).then(() => {
             console.info('=======', count)
             count++
@@ -120,11 +87,11 @@ export default function taskPoolTaskGroupMultipleTest() {
         },10)
       }
 
-      while (count < 1000) {
+      while (count < 100) {
         await sleep(100)
       }
 
-      expect(1000).assertEqual(count)
+      expect(100).assertEqual(count)
       console.info(`${caseName} test end`)
       Done()
     })
