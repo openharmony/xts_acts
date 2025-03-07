@@ -32,6 +32,7 @@ import nodeHandleByIdTest from "./node/NodeHandleByIdTest.test"
 import getWindowInfoTest from "./window/GetWindowInfoTest.test"
 import testLazyForEachExpandMode from "./lazyForEach/testLazyForEachExpandMode.test"
 import gesturecancelTest from "./gesturecancelTest/gesturecancelTest.test"
+import snapShotTest from './snapShot/snapShotTest.test'
 import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
 import gestureRecognizerTest from './gestureRecognizer/GestureRecognizerTest.test'
 import EventInfoTest from "./eventInfo/EventInfoTest.test"
@@ -55,6 +56,7 @@ export default function testsuite() {
    getWindowInfoTest();
    testLazyForEachExpandMode();
    gesturecancelTest();
+   snapShotTest();
    scrollBackToTopTest();
    gestureRecognizerTest();
    EventInfoTest();

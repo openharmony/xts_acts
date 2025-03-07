@@ -23,6 +23,8 @@ add_library(nativerender SHARED
     window/get_window_info_test.cpp
     lazyForEach/lazyforeach_expand_mode_test.cpp
     gesturetouchcancel/gesture_cancel.cpp
+    snapShot/snap_shot.cpp
+    snapShot/container.cpp
     scroll/scroll_backtotop_test.cpp
     component/component.cpp
     component/grid_component.cpp
