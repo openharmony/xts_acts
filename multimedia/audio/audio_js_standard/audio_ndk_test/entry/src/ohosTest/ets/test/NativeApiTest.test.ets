@@ -15,7 +15,7 @@
 
 import myaudioNdk from 'libentry.so'
 import { Driver, ON, MatchPattern } from '@ohos.UiTest'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import { abilityAccessCtrl, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2704,7 +2704,7 @@ export default function audioNDK() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0100', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0100', Level.LEVEL0, async (done: Function) => {
       let streamRendererUsageNum = 1; //AUDIOSTREAM_USAGE_MUSIC
       let streamSampleFormatNum = 4; //F32LE
       let streamSamplingRateNum = 48000;
@@ -2752,8 +2752,9 @@ export default function audioNDK() {
       } catch (err) {
         console.log(`${caseTag} fail: ${JSON.stringify(err)}, ${err.code}`);
         expect(false).assertTrue();
+      } finally {
+        done();
       }
-      done();
     })
 
     /**
@@ -2764,7 +2765,7 @@ export default function audioNDK() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0200', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0200', Level.LEVEL0, async (done: Function) => {
       let streamRendererUsageNum = 2; //AUDIOSTREAM_USAGE_VOICE_COMMUNICATION
       let streamSampleFormatNum = 4; //F32LE
       let streamSamplingRateNum = 32000;
@@ -2812,8 +2813,9 @@ export default function audioNDK() {
       } catch (err) {
         console.log(`${caseTag} fail: ${JSON.stringify(err)}, ${err.code}`);
         expect(false).assertTrue();
+      } finally {
+        done();
       }
-      done();
     })
 
     /**
@@ -2822,9 +2824,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_Audio format f32 latency mode
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level1
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0300', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0300', Level.LEVEL1, async (done: Function) => {
       let streamRendererUsageNum = 2; //AUDIOSTREAM_USAGE_VOICE_COMMUNICATION
       let streamSampleFormatNum = 4; //F32LE
       let streamSamplingRateNum = 48000;
@@ -2872,8 +2874,9 @@ export default function audioNDK() {
       } catch (err) {
         console.log(`${caseTag} fail: ${JSON.stringify(err)}, ${err.code}`);
         expect(false).assertTrue();
+      } finally {
+        done();
       }
-      done();
     })
 
     /**
@@ -2882,9 +2885,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_Audio format f32 latency mode
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level2
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0400', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0400', Level.LEVEL2, async (done: Function) => {
       let streamRendererUsageNum = 2; //AUDIOSTREAM_USAGE_VOICE_COMMUNICATION
       let streamSampleFormatNum = 4; //F32LE
       let streamSamplingRateNum = 48000;
@@ -2932,8 +2935,9 @@ export default function audioNDK() {
       } catch (err) {
         console.log(`${caseTag} fail: ${JSON.stringify(err)}, ${err.code}`);
         expect(false).assertTrue();
+      } finally {
+        done();
       }
-      done();
     })
   })
 }

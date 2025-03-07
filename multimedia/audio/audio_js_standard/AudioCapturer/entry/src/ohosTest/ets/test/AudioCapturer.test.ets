@@ -15,7 +15,7 @@
 
 import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import { Driver, ON, MatchPattern } from '@ohos.UiTest'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { BusinessError, emitter } from '@kit.BasicServicesKit';
@@ -703,17 +703,20 @@ export default function audioCapturer() {
 
       try {
         let capturerDirPath = testContext.filesDir + '/' + fileName;
-        console.info(`${Tag} case5 capturerDirPath is  ${JSON.stringify(capturerDirPath)}`);
+        console.info(`${Tag} recCapturerPromise4 capturerDirPath is  ${JSON.stringify(capturerDirPath)}`);
         let capturerFile = fs.openSync(capturerDirPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 
         let fd = capturerFile.fd;
         console.log(`${Tag} fd-re: ${JSON.stringify(fd)}`);
         if (fd !== null) {
-          console.info(`${Tag} AudioFrameworkRecLog: file fd created`);
+          console.info(`${Tag} recCapturerPromise4: file fd created`);
           expect(true).assertTrue();
         } else {
-          console.info(`${Tag} AudioFrameworkRecLog: Capturer start : ERROR `);
+          console.info(`${Tag} recCapturerPromise4: Capturer start : ERROR `);
           expect(false).assertTrue();
+          fs.close(capturerFile);
+          done();
+          return;
         }
 
         let bufferSize: number = 0;
@@ -730,102 +733,95 @@ export default function audioCapturer() {
         if (audioCap === undefined) {
           console.info(`${Tag} recCapturerPromise4: audioCap is undefined`);
           expect(false).assertTrue();
+          fs.close(capturerFile);
           done();
           return;
         }
 
-        await audioCap.start();
-        console.log(`${Tag} start ok`);
+        try {
+          await audioCap.start();
+          console.log(`${Tag} recCapturerPromise4 start ok`);
 
-        await sleep(2000);
-        console.log(`${Tag} sleep end`);
+          await sleep(2000);
+          console.log(`${Tag} recCapturerPromise4 sleep end`);
 
-        await audioCap.stop();
-        console.log(`${Tag} stop ok`);
-        fs.close(capturerFile);
+          await audioCap.stop();
+          console.log(`${Tag} recCapturerPromise4 stop ok`);
+
+          await audioCap.release();
+          console.log(`${Tag} recCapturerPromise4 release ok`);
+        } catch (err) {
+          console.log(`${Tag} recCapturerPromise4 release err: ${JSON.stringify(err)}`);
+          expect(false).assertTrue();
+        } finally {
+          fs.close(capturerFile);
+          done();
+          return;
+        }
       } catch (err) {
-        console.log(`${Tag} recCapturerPromise4 stop err: ${JSON.stringify(err)}`);
+        console.log(`${Tag} recCapturerPromise4 on err: ${JSON.stringify(err)}`);
         expect(false).assertTrue();
         done();
         return;
       }
-
-      try {
-        await audioCap.release();
-        console.log(`${Tag} recCapturerPromise4 release ok`);
-      } catch (err) {
-        console.log(`${Tag} recCapturerPromise4 release err: ${JSON.stringify(err)}`);
-        expect(false).assertTrue();
-        done();
-        return;
-      }
-      done();
-      return;
     }
 
     let resRendererPromise5 = async (AudioRendererOptions: ESObject, fileName: string) => {
       let audioRen: ESObject;
-      await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
-        audioRen = data;
+      try {
+        audioRen = await audio.createAudioRenderer(AudioRendererOptions);
         console.info(`${Tag}: resRendererPromise5 Created : Success`);
-      }).catch((err: BusinessError) => {
-        console.info(`${Tag}: resRendererPromise5 Created : ERROR : ${err.message}`);
-        expect(false).assertTrue();
-        return;
-      });
 
-      let rendererDirPath = testContext.filesDir + '/' + fileName;
-      console.info(`${Tag} resRendererPromise5 rendererDirPath: `+ rendererDirPath);
-      let musicFile = fs.openSync(rendererDirPath, fs.OpenMode.READ_ONLY);
+        let rendererDirPath = testContext.filesDir + '/' + fileName;
+        console.info(`${Tag} resRendererPromise5 rendererDirPath: `+ rendererDirPath);
+        let musicFile = fs.openSync(rendererDirPath, fs.OpenMode.READ_ONLY);
 
-      let bufferSize: number = 0;
-      let writeDataCallback = (buffer: ArrayBuffer) => {
-        let options: Options = {
-          offset: bufferSize,
-          length: buffer.byteLength
+        let bufferSize: number = 0;
+        let writeDataCallback = (buffer: ArrayBuffer) => {
+          let options: Options = {
+            offset: bufferSize,
+            length: buffer.byteLength
+          };
+
+          try {
+            fs.readSync(musicFile.fd, buffer, options);
+            bufferSize += buffer.byteLength;
+            // 系统会判定buffer有效，正常播放。
+            return audio.AudioDataCallbackResult.VALID;
+          } catch (error) {
+            console.error('resRendererPromise5 Error reading file:', error);
+            // 系统会判定buffer无效，不播放。
+            return audio.AudioDataCallbackResult.INVALID;
+          }
         };
 
+        await audioRen.on('writeData', writeDataCallback);
+        console.info(`${Tag}: resRendererPromise5 on function : SUCCESS`);
+
         try {
-          fs.readSync(musicFile.fd, buffer, options);
-          bufferSize += buffer.byteLength;
-          // 系统会判定buffer有效，正常播放。
-          return audio.AudioDataCallbackResult.VALID;
-        } catch (error) {
-          console.error('resRendererPromise5 Error reading file:', error);
-          // 系统会判定buffer无效，不播放。
-          return audio.AudioDataCallbackResult.INVALID;
+          await audioRen.start();
+          console.log(`${Tag} resRendererPromise5 start ok`);
+
+          await sleep(2000);
+          console.log(`${Tag} resRendererPromise5 sleep end`);
+
+          await audioRen.stop();
+          console.log(`${Tag} resRendererPromise5 stop ok`);
+
+          await audioRen.release();
+          console.log(`${Tag} resRendererPromise5 release ok`);
+        } catch (err) {
+          console.log(`${Tag} resRendererPromise5 err: ${JSON.stringify(err)}`);
+          expect(false).assertTrue();
+        } finally {
+          fs.close(musicFile);
+          return;
         }
-      };
-      await audioRen.on('writeData', writeDataCallback);
-      console.info(`${Tag}:  resRendererPromise5 on function : SUCCESS`);
-
-      await audioRen.start().then(() => {
-        console.info(`${Tag}:  resRendererPromise5 start :SUCCESS`);
-      }).catch((err: BusinessError) => {
-        console.info(`${Tag}: resRendererPromise5 start :ERROR : ${err.message}`);
+      } catch (err) {
+        console.info(`${Tag}: resRendererPromise5 : ERROR : ${err.message}`);
         expect(false).assertTrue();
         return;
-      });
-
-      await sleep(2000);
-
-      await audioRen.stop().then(() => {
-        console.info(`${Tag}: resRendererPromise5 stop : SUCCESS`);
-      }).catch((err: BusinessError) => {
-        console.info(`${Tag}: resRendererPromise5 stop : ERROR : ${err.message}`);
-        expect(false).assertTrue();
-        return;
-      });
-
-      fs.closeSync(musicFile);
-
-      await audioRen.release().then(() => {
-        console.info(`${Tag}: resRendererPromise5 release : SUCCESS`);
-      }).catch((err: BusinessError) => {
-        console.info(`${Tag}: resRendererPromise5 release : ERROR : ${err.message}`);
-        expect(false).assertTrue();
-        return;
-      });
+      }
     }
 
     /**
@@ -4200,9 +4196,9 @@ export default function audioCapturer() {
      * @tc.desc      : CAPTURER_RENDERER_FORMAT_F32LE_Test_0100
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0100', Level.LEVEL0, async (done: Function) => {
       let audioStreamInfo: audio.AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -4254,8 +4250,9 @@ export default function audioCapturer() {
       } catch (err) {
         console.log(`${caseTag} fail: ${JSON.stringify(err)}, ${err.code}`);
         expect(false).assertTrue();
+      } finally {
+        done();
       }
-      done();
     })
 
     /**
@@ -4264,9 +4261,9 @@ export default function audioCapturer() {
      * @tc.desc      : CAPTURER_RENDERER_FORMAT_F32LE_Test_0200
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0200', Level.LEVEL0, async (done: Function) => {
       let audioStreamInfo: audio.AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
         channels: audio.AudioChannel.CHANNEL_1,
@@ -4318,8 +4315,9 @@ export default function audioCapturer() {
       } catch (err) {
         console.log(`${caseTag} fail: ${JSON.stringify(err)}, ${err.code}`);
         expect(false).assertTrue();
+      } finally {
+        done();
       }
-      done();
     })
 
     /**
@@ -4330,7 +4328,7 @@ export default function audioCapturer() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0300', Level.LEVEL2, async (done: Function) => {
       let audioStreamInfo: audio.AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
         channels: audio.AudioChannel.CHANNEL_1,
@@ -4382,8 +4380,9 @@ export default function audioCapturer() {
       } catch (err) {
         console.log(`${caseTag} fail: ${JSON.stringify(err)}, ${err.code}`);
         expect(false).assertTrue();
+      } finally {
+        done();
       }
-      done();
     })
 
     /**
@@ -4394,7 +4393,7 @@ export default function audioCapturer() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0400', Level.LEVEL2, async (done: Function) => {
       let audioStreamInfo: audio.AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_192000,
         channels: audio.AudioChannel.CHANNEL_1,
@@ -4446,8 +4445,9 @@ export default function audioCapturer() {
       } catch (err) {
         console.log(`${caseTag} fail: ${JSON.stringify(err)}, ${err.code}`);
         expect(false).assertTrue();
+      } finally {
+        done();
       }
-      done();
     })
   })
 }
