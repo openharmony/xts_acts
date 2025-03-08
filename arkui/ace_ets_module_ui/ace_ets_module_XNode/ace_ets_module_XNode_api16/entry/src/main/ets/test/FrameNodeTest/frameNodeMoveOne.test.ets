@@ -27,7 +27,7 @@ export default function frameNodeMoveOneTest() {
       try {
         router.clear();
         let pages = router.getState();
-        let result = await router.pushUrl(options);
+        let result = await router.replaceUrl(options);
         console.info("get frameNodeMoveOneTest state pages:" + JSON.stringify(pages));
         if (!("gestureEventTest" == pages.name)) {
           console.info("get frameNodeMoveOneTest pages.name:" + JSON.stringify(pages.name));
@@ -114,10 +114,11 @@ export default function frameNodeMoveOneTest() {
       let strJson2: string = getInspectorByKey('getNodeParentId_id');
       let obj2: Record<string, ESObject> = JSON.parse(strJson2);
       console.info("[frameNodeMoveOneTest_0200] content obj2 is: " + JSON.stringify(obj2.$attrs.content));
-      //expect(obj1.$attrs.content).assertEqual('3');
-      //expect(obj2.$attrs.content).assertEqual('root_id1');
+      expect(obj1.$attrs.content).assertEqual('3');
+      expect(obj2.$attrs.content).assertEqual('root_id1');
       console.info('[frameNodeMoveOneTest_0200] END');
       done();
     });
+
   })
 }
