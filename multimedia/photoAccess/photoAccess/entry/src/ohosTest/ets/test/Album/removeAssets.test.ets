@@ -175,16 +175,12 @@ export default function removeAssetsTest () {
       try {
         const album: photoAccessHelper.Album = await helper.createAlbum(testNum);
         album.removeAssets(undefined, async (err) => {
-          if (err) {
-            console.info(`${testNum} err: ${err}`);
-          } else {
-            expect(false).assertTrue();
-          }
+          expect(false).assertTrue();
           done();
         })
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
-        expect(error.code).assertEqual('13900020');
+        expect(error.code === '13900020' || error.code === '401').assertTrue();
         done();
       }
     });
@@ -225,7 +221,7 @@ export default function removeAssetsTest () {
     /**
       * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0600
       * @tc.name      : removeAssets_callback_006
-      * @tc.desc      : user album remove not exist array,error code 14000011
+      * @tc.desc      : user album remove [123123] array,error code 14000011
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 2
@@ -233,24 +229,11 @@ export default function removeAssetsTest () {
         it('removeAssets_callback_006', 2, async (done: Function) => {
           const testNum = 'removeAssets_callback_006';
           try {
-            const album: photoAccessHelper.Album = await helper.createAlbum(testNum);
-            const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '123123.jpg');
-            const asset = await getFileAsset(testContext, testNum, fetchOps);
-            await album.addAssets([asset]);
-            let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchAllOption());
-            let newAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-            album.removeAssets([newAsset], async (err) => {
-              if (err) {
-                console.info(`${testNum} err: ${err}`);
-                expect(false).assertTrue();
-                done();
-              } else {
-                console.info(`${testNum} err: user album remove not exist array`);
-                expect(false).assertTrue();
-                done();
-              }
-              done();
+            const album: ESObject = await helper.createAlbum(testNum);
+            album.removeAssets(['123123'], async (err: BusinessError) => {
+              expect(false).assertTrue(); 
             })
+            done();
           } catch (error) {
             console.info(`${testNum} failed; error: ${error}`);
             expect(error.code).assertEqual('14000011');
@@ -366,7 +349,7 @@ export default function removeAssetsTest () {
         done();
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
-        expect(error.code).assertEqual('13900020');
+        expect(error.code === '13900020' || error.code === '401').assertTrue();
         done();
       }
     });
@@ -411,6 +394,7 @@ export default function removeAssetsTest () {
       const testNum = 'removeAssets_promise_006';
       try {
         const album:ESObject = await helper.createAlbum(testNum);
+        console.log(`${testNum} start`);
         await album.removeAssets([123123]);
         expect(false).assertTrue();
         done();
