@@ -17,9 +17,11 @@ import commonEventManager from '@ohos.commonEventManager'
 import { notificationManager } from '@kit.NotificationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { common } from '@kit.AbilityKit';
+import { common, wantAgent } from '@kit.AbilityKit';
 import { Driver, ON } from '@kit.TestKit';
 import { CustomGlobal } from '../testability/CustomGlobal';
+import notification from '@ohos.notification';
+import { image } from '@kit.ImageKit';
 
 
 export async function sleep(ms: number): Promise<void> {
@@ -695,6 +697,107 @@ it('Sub_Notification_Ces_Publish_CommonEvent_7900_283', 0, async (done: () => vo
     }
   });
 })
+
+
+
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_287', 0, async (done: Function) => {
+
+      let BundleOption: notification.BundleOption = {
+        bundle: "com.example.secondaryDirectory",
+        uid: 101001
+      }
+      console.info(`${TAG} BundleOption bundle:uid = ${BundleOption.bundle}${BundleOption.uid}`);
+      expect(typeof BundleOption.bundle == 'string').assertTrue()
+      expect(typeof BundleOption.uid == 'number').assertTrue()
+      expect(BundleOption.bundle).assertEqual("com.example.secondaryDirectory")
+      expect(BundleOption.uid).assertEqual(101001)
+      console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_7900_287 END`);
+
+
+      let removeCallback = (err: BusinessError) => {
+        if (err.code) {
+          console.info("remove failed " + JSON.stringify(err));
+          expect(err.code).assertEqual(67108878)
+          done()
+        } else {
+          console.info("whwhwhremove success");
+          expect(false).assertEqual(true)
+          done()
+        }
+      }
+      let bundle: notification.BundleOption = {
+        bundle: "bundleName1",
+      };
+      let notificationKey: notification.NotificationKey = {
+        id: 0,
+        label: "label",
+      };
+      let reason: notification.RemoveReason = notification.RemoveReason.CLICK_REASON_REMOVE;
+      notification.remove(bundle, notificationKey, reason, removeCallback);
+    });
+
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_288', 0, async (done: Function) => {
+
+      const TEST_SUITE_NAME = 'Sub_Notification'
+      const TEST_CASE_NAME = 'Sub_Notification_Ces_Publish_CommonEvent_7900_287'
+      let imagesource = image.createImageSource(getContext()
+        .resourceManager
+        .getMediaContentSync($r("app.media.icon"))
+        .buffer
+        .slice(0));
+      const pixelMap = await imagesource.createPixelMap();
+      let wantAgentData = wantAgent.getWantAgent({
+        wants: [
+          {
+            bundleName: 'com.example.systemAPI',
+            action: "usual.event.REMOVAL_WANTAGENT"
+          }
+        ],
+        actionType: 4,
+        requestCode: 0,
+        actionFlags: [wantAgent.WantAgentFlags.ONE_TIME_FLAG]
+      });
+
+      console.log('Succeeded in creating pixelmap.');
+      let notificationRequest: notificationManager.NotificationRequest = {
+        id: 1,
+        content: {
+          notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+          longText: {
+            title: '',
+            text: 'test_text',
+            additionalText: 'text_additionalText',
+            longText: 'text_longText',
+            briefText: 'text_briefText',
+            expandedTitle: 'text_exoandTitle'
+          }
+        },
+        smallIcon: pixelMap,
+        largeIcon: pixelMap,
+        groupName: "123",
+        removalWantAgent: wantAgentData,
+        badgeNumber: 99,
+        notificationFlags: {
+          soundEnabled: 0,
+          vibrationEnabled: 1
+        }
+      }
+
+      try {
+        notificationManager.publish(notificationRequest, (err) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is :%{public}s', JSON.stringify(err));
+          expect().assertFail();
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+
+    });
 
 
 }) 
