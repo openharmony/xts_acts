@@ -24,6 +24,28 @@ export default function requestSpecialUnitTest() {
   describe('requestSpecialJSTest', () => {
     console.info('====>################################request download Test start');
     let baseContext: common.Context;
+
+    let removeTasks = async () =>{
+      console.info("====>removeTasks start");
+      let filter: request.agent.Filter = {
+        state: request.agent.State.REMOVED,
+      };
+      let tasksId1:Array<string>  = await request.agent.search();
+      console.info("====>removeTasks tasksId1.length: " + tasksId1.length);
+      let tasksId2:Array<string>  = await request.agent.search(filter);
+      console.info("====>removeTasks tasksId2.length: " + tasksId2.length);
+      let tasksId =  tasksId1.filter(item => !tasksId2.includes(item));
+      console.info("====>removeTasks tasksId.length: " + tasksId.length);
+      for (let i = 0; i < tasksId.length; i++){
+        try {
+          await request.agent.remove(tasksId[i]);
+          console.info("====>removeTasks times: " + i);
+        }catch (err) {
+          console.info("====>removeTasks err times: " + i);
+          console.info("====>removeTasks err: " + JSON.stringify(err));
+        }
+      }
+    }
     /**
      * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
      */
@@ -42,6 +64,15 @@ export default function requestSpecialUnitTest() {
         console.info('====>beforeAll requestDownloadTwoJSUnit catch err:'+JSON.stringify(err))
         done();
       }
+    });
+
+    /**
+     * afterAll: Test suite-level cleanup condition, which is executed after the test suite is executed.
+     */
+    afterAll(async (done: Function) => {
+      console.info('====>afterAll removeTasks start');
+      await removeTasks();
+      done();
     });
 
     /**
@@ -212,6 +243,87 @@ export default function requestSpecialUnitTest() {
           done();
         }
       })
+    });
+
+    /*
+     * @tc.number: SUB_Request_Agent_CreateTaskErrorCode_Callback_0100
+     * @tc.name: SUB_Request_Agent_CreateTaskErrorCode_Callback_0100
+     * @tc.desc: create full tasks.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_Request_Agent_CreateTaskErrorCode_Callback_0100', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_0400 is starting-----------------------");
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: 'SUB_Request_Agent_CreateTaskErrorCode_Callback_0100',
+        network: request.agent.Network.WIFI,
+        overwrite: true,
+        mode:request.agent.Mode.BACKGROUND
+      };
+      try {
+        await removeTasks();
+        for (let i = 0; i < 1002; i++){
+          request.agent.create(baseContext, config, async (err:BusinessError ,task: request.agent.Task) =>{
+            try {
+              if(err){
+                console.info("====>SUB_Request_Agent_CreateTaskErrorCode_Callback_0100 create err: " + JSON.stringify(err));
+                expect(err.code).assertEqual(21900004);
+                await removeTasks();
+                done();
+              } else {
+                console.info("====>SUB_Request_Agent_CreateTaskErrorCode_Callback_0100 create times: " + i);
+              }
+            }catch (err) {
+              console.info("====>SUB_Request_Agent_CreateTaskErrorCode_Callback_0100 create catch err: " + JSON.stringify(err));
+              done();
+            }
+          });
+        }
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_CreateTaskErrorCode_Callback_0100 create catch err: " + JSON.stringify(err));
+        expect().assertFail();
+      }
+    });
+
+    /*
+     * @tc.number: SUB_Request_Agent_CreateTaskErrorCode_promise_0100
+     * @tc.name: SUB_Request_Agent_CreateTaskErrorCode_promise_0100
+     * @tc.desc: create full tasks.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_Request_Agent_CreateTaskErrorCode_promise_0100', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_0400 is starting-----------------------");
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: 'SUB_Request_Agent_CreateTaskErrorCode_promise_0100',
+        network: request.agent.Network.WIFI,
+        overwrite: true,
+        mode:request.agent.Mode.BACKGROUND
+      };
+      try {
+        await removeTasks();
+        for (let i = 0; i < 1002; i++){
+          console.info("====>SUB_Request_Agent_CreateTaskErrorCode_promise_0100 create times: " + i);
+          await request.agent.create(baseContext, config);
+        }
+        console.info("====>SUB_Request_Agent_CreateTaskErrorCode_promise_0100 create over");
+        expect().assertFail();
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_CreateTaskErrorCode_promise_0100 create catch err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(21900004);
+        await removeTasks();
+        done();
+      }
     });
 
   });

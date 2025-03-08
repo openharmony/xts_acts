@@ -1073,6 +1073,71 @@ export default function requestDownloadJSUnit() {
     });
 
     /**
+     * @tc.number SUB_REQUEST_Agent_GetTask_Promise_0200
+     * @tc.name   SUB_REQUEST_Agent_GetTask_Promise_0200
+     * @tc.desc   request.agent.getTask(),Promise
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_Agent_GetTask_Promise_0200', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_REQUEST_Agent_GetTask_Promise_0200 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_REQUEST_Agent_GetTask_Promise_0200.txt',
+        network: request.agent.Network.ANY,
+        priority:0,
+        token:'downloadTest'
+      };
+
+      try {
+        let task = await request.agent.create(baseContext, config);
+        let task1 = await request.agent.getTask(baseContext, task.tid, 'downloadTest');
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0200 Succeeded in querying a download task: " + JSON.stringify(task));
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0200 Succeeded in querying a download task1: " + JSON.stringify(task1));
+        let taskStr1 = JSON.stringify(task);
+        let taskStr2 = JSON.stringify(task1);
+        expect(taskStr1 === taskStr2).assertTrue();
+        try {
+          await request.agent.remove(task1.tid);
+          console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0200 remove success: " + task);
+        } catch (err) {
+          console.info('====>SUB_REQUEST_Agent_GetTask_Promise_0200 task not remove: ' + JSON.stringify(task1.tid));
+        }
+        done();
+      } catch (err) {
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0200 Failed: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_Agent_GetTask_Promise_0300
+     * @tc.name   SUB_REQUEST_Agent_GetTask_Promise_0300
+     * @tc.desc   request.agent.getTask(),Promise
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_Agent_GetTask_Promise_0300', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_REQUEST_Agent_GetTask_Promise_0300 is starting-----------------------");
+      try {
+        await request.agent.getTask(baseContext, 'task');
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0300 getTask success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0300 catch: " + JSON.stringify(err));
+        expect(err.code === 21900006);
+        done();
+      }
+    });
+
+    /**
      * @tc.number SUB_Request_Download_TaskGrouping_1000
      * @tc.name   SUB_Request_Download_TaskGrouping_1000
      * @tc.desc   request group task
@@ -1309,6 +1374,78 @@ export default function requestDownloadJSUnit() {
       } catch (err) {
         console.info("====>SUB_Request_Download_TaskGrouping_1700 err: " + JSON.stringify(err));
         expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Download_TaskGrouping_1800
+     * @tc.name   SUB_Request_Download_TaskGrouping_1800
+     * @tc.desc   request group task
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_TaskGrouping_1800', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_TaskGrouping_1800 is starting-----------------------");
+      try {
+        await request.agent.deleteGroup('groupConfig');
+        console.info("====>SUB_Request_Download_TaskGrouping_1800 deleteGroup success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_TaskGrouping_1800 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(21900008);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Download_TaskGrouping_1900
+     * @tc.name   SUB_Request_Download_TaskGrouping_1900
+     * @tc.desc   request group task
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_TaskGrouping_1900', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_TaskGrouping_1900 is starting-----------------------");
+      try {
+        await request.agent.attachGroup(undefined, []);
+        console.info("====>SUB_Request_Download_TaskGrouping_1900 attachGroup success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_TaskGrouping_1900 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Download_TaskGrouping_2000
+     * @tc.name   SUB_Request_Download_TaskGrouping_2000
+     * @tc.desc   request group task
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_TaskGrouping_2000', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_TaskGrouping_2000 is starting-----------------------");
+      try {
+        let notification: request.agent.Notification = {
+        }
+        let groupConfig: request.agent.GroupConfig = {
+          notification: notification
+        }
+        let gid: string = await request.agent.createGroup(groupConfig)
+        console.info("====>SUB_Request_Download_TaskGrouping_2000 createGroup success");
+        await request.agent.attachGroup(gid, ['123456']);
+        console.info("====>SUB_Request_Download_TaskGrouping_2000 attachGroup success");
+        expect().assertFail();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_TaskGrouping_2000 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(21900006);
         done();
       }
     });
