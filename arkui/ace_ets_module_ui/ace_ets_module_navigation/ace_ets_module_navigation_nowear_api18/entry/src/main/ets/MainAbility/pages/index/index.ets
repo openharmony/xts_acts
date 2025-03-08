@@ -23,11 +23,10 @@ import testsuite from '../../../test/List.test'
 struct Index {
 
   aboutToAppear(){
-    console.info("start run testcase!!!!")
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        console.info('start run testcase!!!')
-        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    console.info('start run testcase!!!')
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }
 
   build() {
@@ -45,7 +44,6 @@ struct Index {
       })
       .backgroundColor('#0D9FFB')
       .onClick(() => {
-
       })
     }
     .width('100%')
