@@ -192,7 +192,7 @@ export default function addAssetsTest () {
     /**
       * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ADD_ASSETS_0600
       * @tc.name      : addAssets_callback_006
-      * @tc.desc      : add undefined array to user album,error code 14000011
+      * @tc.desc      : add [123123] array to user album,error code 14000011
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 2
@@ -202,14 +202,9 @@ export default function addAssetsTest () {
       try {
         const album:ESObject = await helper.createAlbum(testNum);
         album.addAssets([123123], async (err:BusinessError) => {
-          if (err) {
-            console.info(`${testNum} err: ${err}`);
-            expect(false).assertTrue();
-          } else {
-            expect(false).assertTrue();
-          }
-          done();
+          expect(false).assertTrue();
         })
+        done();
       } catch (error) {
         console.info(`${testNum} success; error code: ${error.code}`);
         expect(error.code).assertEqual('14000011');
@@ -324,7 +319,7 @@ export default function addAssetsTest () {
     /**
       * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_ADD_ASSETS_0600
       * @tc.name      : addAssets_promise_006
-      * @tc.desc      : add undefined array to user album,error code 14000011
+      * @tc.desc      : add [123123] array to user album,error code 14000011
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 2
