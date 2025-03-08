@@ -1470,7 +1470,7 @@ export default function requestDownloadJSUnit() {
         console.info('====>SUB_REQUEST_DownloadManagement_Download_0500 downloadTask: ' + downloadTask);
         let onProgress = async (receivedSize: number, totalSize: number) => {
           try {
-            downloadTask.off('progress');
+            downloadTask.off('progress', onProgress);
             console.info('====>SUB_REQUEST_DownloadManagement_Download_0500 onProgress success: ');
             let ifDelete: boolean = await downloadTask.delete();
             expect(ifDelete === true).assertTrue();
@@ -1553,6 +1553,67 @@ export default function requestDownloadJSUnit() {
         } catch (error) {
           await deleteTask(downloadTask, downloadFilePath)
           console.info('====>SUB_REQUEST_DownloadManagement_Download_0300 catch error: ' + error);
+        }
+      });
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_DownloadManagement_Download_0310
+     * @tc.desc      download pause task.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DownloadManagement_Download_0310', 0, async (done: Function) => {
+      console.info('-----------------------SUB_REQUEST_DownloadManagement_Download_0310 is starting-----------------------');
+      let downloadFilePath = `${baseContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0310.txt`;
+      console.info('====>downloadFileConfig:' + `${baseContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0310.txt`);
+      let downloadFileConfig: request.DownloadConfig = {
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }
+      request.downloadFile(baseContext, downloadFileConfig, async (err, downloadTask)=>{
+        console.info('====>SUB_REQUEST_DownloadManagement_Download_0310 downloadTask: ' + downloadTask);
+        let onProgress = async (receivedSize: number, totalSize: number) => {
+          try {
+            downloadTask.off('progress');
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0310 onProgress success: ');
+            await downloadTask.pause();
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0310 downloadTask.pause success: ');
+          } catch (err) {
+            await deleteTask(downloadTask, downloadFilePath);
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0310 onProgress err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+
+        let pauseProgress = async () => {
+          try {
+            await deleteTask(downloadTask, downloadFilePath);
+            downloadTask.off('pause', pauseProgress);
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0310 pauseProgress success: ');
+            expect(downloadTask !== null).assertTrue();
+            done();
+          } catch (err) {
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0310 pauseProgress err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+
+        try{
+          if(err){
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0310 downloadFile fail: ' + JSON.stringify(err));
+            expect().assertFail();
+          }
+          downloadTask.on('progress', onProgress);
+          downloadTask.on('pause', pauseProgress);
+        } catch (error) {
+          await deleteTask(downloadTask, downloadFilePath)
+          console.info('====>SUB_REQUEST_DownloadManagement_Download_0310 catch error: ' + error);
         }
       });
     });
