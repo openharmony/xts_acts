@@ -12,8 +12,6 @@
         "MainAbility/pages/crownSensitivity/Picker",
         "MainAbility/pages/crownSensitivity/TextPicker",
         "MainAbility/pages/crownSensitivity/TimePicker",
-	    "MainAbility/pages/calendarPicker/disableDateRangeAndMarkToday",
-        "MainAbility/pages/calendarPicker/startEndTest",
         "MainAbility/pages/checkbox/checkboxOnChangeModifier",
         "MainAbility/pages/checkboxGroup/checkboxGroupOnChangeModifier",
         "MainAbility/pages/radio/radioOnChangeModifier",

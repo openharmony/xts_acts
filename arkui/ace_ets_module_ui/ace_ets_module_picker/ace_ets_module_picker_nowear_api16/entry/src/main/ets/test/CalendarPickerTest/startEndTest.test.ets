@@ -22,7 +22,7 @@ export default function calendarPickerStartEndTest() {
     beforeEach(async (done: Function) => {
       console.info('CalendarPickerStartEndTest beforeEach start');
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/calendarPicker/startEndTest',
+        url: 'MainAbility/pages/CalendarPicker/startEndTest',
       }
       try {
         router.clear();

@@ -15,9 +15,13 @@
 import CalendarPickerOnChangeModifierJsunit from './CalendarPickerTest/calendarPickerOnChangeModifierJsunit.test';
 import selectNode from './select/selectNode.test';
 import columnWidths from './textPicker/columnWidths.test';
+import disableDateRangeAndMarkTodayTest from './CalendarPickerTest/disableDateRangeAndMarkToday.test'
+import calendarPickerStartEndTest from './CalendarPickerTest/startEndTest.test';
 
 export default function testsuite() {
   CalendarPickerOnChangeModifierJsunit();
   selectNode()
   columnWidths()
+  disableDateRangeAndMarkTodayTest()
+  calendarPickerStartEndTest()
 }

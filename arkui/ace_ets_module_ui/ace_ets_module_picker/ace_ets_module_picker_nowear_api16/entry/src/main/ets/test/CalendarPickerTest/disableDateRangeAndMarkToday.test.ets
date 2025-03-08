@@ -22,7 +22,7 @@ export default function disableDateRangeAndMarkTodayTest() {
     beforeEach(async (done: Function) => {
       console.info('DisableDateRangeAndMarkToday beforeEach start');
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/calendarPicker/disableDateRangeAndMarkToday',
+        url: 'MainAbility/pages/CalendarPicker/disableDateRangeAndMarkToday',
       }
       try {
         router.clear();

@@ -22,11 +22,9 @@ import ratingNode from './rating/ratingNode.test';
 import sliderNode from './slider/sliderNode.test';
 import toggleNode from './toggle/toggleNode.test';
 import datePickerMode from './datePicker/DatePickerMode.test';
-import disableDateRangeAndMarkTodayTest from './calendarPicker/disableDateRangeAndMarkToday.test'
 import PickerCrownSensitivity from './crownSensitivity/Picker.test';
 import TimePickerCrownSensitivity from './crownSensitivity/TimePicker.test';
 import TextPickerCrownSensitivity from './crownSensitivity/TextPicker.test';
-import calendarPickerStartEndTest from './calendarPicker/startEndTest.test';
 import checkBoxOnChangeModifierTest from './checkbox/checkboxOnChangeModifier.test';
 import checkBoxGroupOnChangeModifierTest from './checkboxGroup/checkboxGroupOnChangeModifier.test';
 import radioOnChangeModifierTest from './radio/radioOnChangeModifier.test';
@@ -46,11 +44,9 @@ export default function testsuite() {
   sliderNode();
   toggleNode();
   datePickerMode();
-  disableDateRangeAndMarkTodayTest();
   PickerCrownSensitivity();
   TimePickerCrownSensitivity();
   TextPickerCrownSensitivity();
-  calendarPickerStartEndTest();
   checkBoxOnChangeModifierTest();
   radioOnChangeModifierTest();
   checkBoxGroupOnChangeModifierTest();

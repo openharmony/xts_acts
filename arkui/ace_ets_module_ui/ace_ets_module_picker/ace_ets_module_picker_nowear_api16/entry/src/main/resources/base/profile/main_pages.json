@@ -2,6 +2,8 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/CalendarPicker/calendarPickerOnChangeModifier",
+        "MainAbility/pages/CalendarPicker/disableDateRangeAndMarkToday",
+        "MainAbility/pages/CalendarPicker/startEndTest",
         "MainAbility/pages/select/selectNode",
         "MainAbility/pages/textPicker/columnWidths"
     ]

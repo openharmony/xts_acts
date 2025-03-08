@@ -53,7 +53,7 @@ struct TimePickerPage {
     Column() {
       Row() {
         Button('切换12小时制')
-          .height('8%')
+          .height('6%')
           .margin({ top: 5 })
           .key('12hour')
           .onClick(() => {
@@ -63,7 +63,7 @@ struct TimePickerPage {
           })
 
         Button('切换24小时制')
-          .height('8%')
+          .height('6%')
           .margin({ top: 5 })
           .key('24hour')
           .onClick(() => {
@@ -75,7 +75,7 @@ struct TimePickerPage {
 
       Row() {
         Button('切换enableCascade值-true')
-          .height('8%')
+          .height('6%')
           .margin({ top: 5 })
           .key('timePicker-true')
           .onClick(() => {
@@ -84,7 +84,7 @@ struct TimePickerPage {
           })
 
         Button('切换enableCascade值-false')
-          .height('8%')
+          .height('6%')
           .margin({ top: 5 })
           .key('timePicker-false')
           .onClick(() => {
@@ -95,7 +95,7 @@ struct TimePickerPage {
 
       Row() {
         Button('切换enableCascade值-null')
-          .height('8%')
+          .height('6%')
           .margin({ top: 5 })
           .key('timePicker-null')
           .onClick(() => {
@@ -104,7 +104,7 @@ struct TimePickerPage {
           })
 
         Button('切换enableCascade值-undefined')
-          .height('8%')
+          .height('6%')
           .margin({ top: 5 })
           .key('timePicker-undefined')
           .onClick(() => {
@@ -118,7 +118,7 @@ struct TimePickerPage {
       })
         .key('timePicker')
         .width('100%')
-        .height('50%')
+        .height('55%')
         .enableCascade(this.enableCascade)
         .useMilitaryTime(this.isMilitaryTime)
         .onChange((value: TimePickerResult) => {
@@ -131,5 +131,7 @@ struct TimePickerPage {
       Text('minute:' + this.minute).key('minute')
       Text('24hour:false')
     }
+    .width('100%')
+    .height('100%')
   }
 }
