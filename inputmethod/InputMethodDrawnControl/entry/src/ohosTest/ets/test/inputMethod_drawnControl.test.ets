@@ -2769,10 +2769,10 @@ export default function inputMethodDrawnControlJSUnit() {
     */
     it('Sub_Misc_inputMethodEngine_panelInfo_0100', 0, async (done: Function) => {
       let FLG_FLOATING = inputmethodengine.PanelFlag.FLG_FLOATING
-      console.info('====>Sub_Misc_inputMethodEngine_panelInfo_0100 FLAG_FLOATING: ' + FLAG_FLOATING);
+      console.info('====>Sub_Misc_inputMethodEngine_panelInfo_0100 FLG_FLOATING: ' + FLG_FLOATING);
       expect(FLG_FLOATING === 1).assertTrue();
       let FLG_FIXED = inputmethodengine.PanelFlag.FLG_FIXED
-      console.info('====>Sub_Misc_inputMethodEngine_panelInfo_0100 FLAG_FIXED: ' + FLAG_FIXED);
+      console.info('====>Sub_Misc_inputMethodEngine_panelInfo_0100 FLG_FIXED: ' + FLG_FIXED);
       expect(FLG_FIXED === 0).assertTrue();
       let FLAG_CANDIDATE = inputmethodengine.PanelFlag.FLAG_CANDIDATE
       console.info('====>Sub_Misc_inputMethodEngine_panelInfo_0100 FLAG_CANDIDATE: ' + FLAG_CANDIDATE);
@@ -2804,7 +2804,7 @@ export default function inputMethodDrawnControlJSUnit() {
           expect(err.code).assertEqual(401);
           done();
         });
-      }catch{
+      }catch(err){
         console.info(`====>inputmethod_test_switchInputMethod_001 catch err:  ${JSON.stringify(err)}`)
         expect(err.code).assertEqual(401);
         done();
@@ -2830,7 +2830,7 @@ export default function inputMethodDrawnControlJSUnit() {
           expect().assertFail();
           done();
         });
-      }catch{
+      }catch(err){
         console.info(`====>inputmethod_test_switchInputMethod_0020 catch err:  ${JSON.stringify(err)}`)
         expect(err.code).assertEqual(401);
         done();
@@ -2855,7 +2855,7 @@ export default function inputMethodDrawnControlJSUnit() {
           expect(err.code).assertEqual(401);
           done();
         });
-      }catch{
+      }catch(err){
         console.info(`====>inputmethod_test_switchCurrentInputMethodSubtype_0010 catch err:  ${JSON.stringify(err)}`)
         expect(err.code).assertEqual(401);
         done();
@@ -2881,7 +2881,7 @@ export default function inputMethodDrawnControlJSUnit() {
           expect().assertFail();
           done();
         });
-      }catch{
+      }catch(err){
         console.info(`====>inputmethod_test_switchCurrentInputMethodSubtype_0020 catch err:  ${JSON.stringify(err)}`)
         expect(err.code).assertEqual(401);
         done();
@@ -2906,7 +2906,7 @@ export default function inputMethodDrawnControlJSUnit() {
           expect(err.code).assertEqual(401);
           done();
         });
-      }catch{
+      }catch(err){
         console.info(`====>inputmethod_test_switchCurrentInputMethodAndSubtype_0010 catch err:  ${JSON.stringify(err)}`)
         expect(err.code).assertEqual(401);
         done();
@@ -2932,7 +2932,7 @@ export default function inputMethodDrawnControlJSUnit() {
           expect().assertFail();
           done();
         });
-      }catch{
+      }catch(err){
         console.info(`====>inputmethod_test_switchCurrentInputMethodAndSubtype_0020 catch err:  ${JSON.stringify(err)}`)
         expect(err.code).assertEqual(401);
         done();
@@ -2958,7 +2958,7 @@ export default function inputMethodDrawnControlJSUnit() {
           expect(err.code).assertEqual(401);
           done();
         });
-      }catch{
+      }catch(err){
         console.info(`====>inputmethod_test_listInputMethodSubtype_0010 catch err:  ${JSON.stringify(err)}`)
         expect(err.code).assertEqual(401);
         done();
@@ -2985,7 +2985,7 @@ export default function inputMethodDrawnControlJSUnit() {
           expect().assertFail();
           done();
         });
-      }catch{
+      }catch(err){
         console.info(`====>inputmethod_test_listInputMethodSubtype_0020 catch err:  ${JSON.stringify(err)}`)
         expect(err.code).assertEqual(401);
         done();
@@ -3011,7 +3011,7 @@ export default function inputMethodDrawnControlJSUnit() {
           expect(err.code).assertEqual(401);
           done();
         });
-      }catch{
+      }catch(err){
         console.info(`====>inputmethod_test_getInputMethods_0010 catch err:  ${JSON.stringify(err)}`)
         expect(err.code).assertEqual(401);
         done();
@@ -3038,7 +3038,7 @@ export default function inputMethodDrawnControlJSUnit() {
           expect().assertFail();
           done();
         });
-      }catch{
+      }catch(err){
         console.info(`====>inputmethod_test_getInputMethods_0020 catch err:  ${JSON.stringify(err)}`)
         expect(err.code).assertEqual(401);
         done();
@@ -3055,10 +3055,7 @@ export default function inputMethodDrawnControlJSUnit() {
     it('inputmethod_test_updateAttribute_0010', 0, async (done: Function) => {
       try{
         let inputMethodController = inputMethod.getController()
-        let attribute = {
-          textInputType: 0, enterKeyType: undefined
-        }
-        inputMethodController.updateAttribute(attribute).then(data => {
+        inputMethodController.updateAttribute(undefined).then(data => {
           console.info("====>inputmethod_test_updateAttribute_0010 success")
           expect().assertFail();
           done();
@@ -3067,7 +3064,7 @@ export default function inputMethodDrawnControlJSUnit() {
           expect(err.code).assertEqual(401);
           done();
         });
-      }catch{
+      }catch(err){
         console.info(`====>inputmethod_test_updateAttribute_0010 catch err:  ${JSON.stringify(err)}`)
         expect(err.code).assertEqual(401);
         done();
@@ -3084,10 +3081,7 @@ export default function inputMethodDrawnControlJSUnit() {
     it('inputmethod_test_updateAttribute_0020', 0, async (done: Function) => {
       try{
         let inputMethodController = inputMethod.getController()
-        let attribute = {
-          textInputType: 0, enterKeyType: undefined
-        }
-        inputMethodController.updateAttribute(attribute, (err, data) => {
+        inputMethodController.updateAttribute(undefined, (err, data) => {
           if (err) {
             console.info("====>inputmethod_test_updateAttribute_0020 error:" + err);
             expect(err.code).assertEqual(401);
@@ -3097,7 +3091,7 @@ export default function inputMethodDrawnControlJSUnit() {
           expect().assertFail();
           done();
         });
-      }catch{
+      }catch(err){
         console.info(`====>inputmethod_test_updateAttribute_0020 catch err:  ${JSON.stringify(err)}`)
         expect(err.code).assertEqual(401);
         done();
@@ -3114,10 +3108,7 @@ export default function inputMethodDrawnControlJSUnit() {
     it('inputmethod_test_updateCursor_0010', 0, async (done: Function) => {
       try{
         let inputMethodController = inputMethod.getController()
-        let CursorInfo: inputMethod.CursorInfo = {
-          left: 2, top: 2, width: 2, height: undefined
-        };
-        inputMethodController.updateCursor(CursorInfo).then(data => {
+        inputMethodController.updateCursor(undefined).then(data => {
           console.info("====>inputmethod_test_updateCursor_0010 success")
           expect().assertFail();
           done();
@@ -3126,7 +3117,7 @@ export default function inputMethodDrawnControlJSUnit() {
           expect(err.code).assertEqual(401);
           done();
         });
-      }catch{
+      }catch(err){
         console.info(`====>inputmethod_test_updateCursor_0010 catch err:  ${JSON.stringify(err)}`)
         expect(err.code).assertEqual(401);
         done();
@@ -3142,11 +3133,8 @@ export default function inputMethodDrawnControlJSUnit() {
     */
     it('inputmethod_test_updateCursor_0020', 0, async (done: Function) => {
       try{
-        let inputMethodController = inputMethod.getController()
-        let CursorInfo: inputMethod.CursorInfo = {
-          left: 2, top: 2, width: 2, height: undefined
-        };
-        inputMethodController.updateCursor(attribute, (err, data) => {
+        let inputMethodController = inputMethod.getController();
+        inputMethodController.updateCursor(undefined, (err, data) => {
           if (err) {
             console.info("====>inputmethod_test_updateCursor_0020 error:" + err);
             expect(err.code).assertEqual(401);
@@ -3156,7 +3144,7 @@ export default function inputMethodDrawnControlJSUnit() {
           expect().assertFail();
           done();
         });
-      }catch{
+      }catch(err){
         console.info(`====>inputmethod_test_updateCursor_0020 catch err:  ${JSON.stringify(err)}`)
         expect(err.code).assertEqual(401);
         done();
