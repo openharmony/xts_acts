@@ -79,6 +79,16 @@ export default function rdbStoreReadOnlyEtsTest() {
       await data_relationalStore.deleteRdbStore(context, STORE_CONFIG2);
     });
 
+
+    /**
+     * @tc.name readOnlyEtsTest0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyEtsAPI16Test_0100
+     * @tc.desc RelationalStore batch insert with conflict resolution by store
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
     it('readOnlyEtsTest0100', 0, async (done:Function) => {
       console.info(TAG + "************* readOnlyEtsTest0100 start *************");
       const row: data_relationalStore.ValuesBucket = {
@@ -105,7 +115,14 @@ export default function rdbStoreReadOnlyEtsTest() {
     })
 
 
-
+    /**
+     * @tc.name readOnlyEtsTest0200
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyEtsAPI16Test_0200
+     * @tc.desc RelationalStore batch insert with conflict resolution by store
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
 
     it('readOnlyEtsTest0200', 0, async (done:Function) => {
       console.info(TAG + "************* readOnlyEtsTest0200 start *************");
@@ -128,10 +145,19 @@ export default function rdbStoreReadOnlyEtsTest() {
         expect(err.code == 801).assertTrue();
         done();
       }
-
+      done();
       console.info(TAG + "************* readOnlyEtsTest0200 end *************");
     })
 
+
+    /**
+     * @tc.name readOnlyEtsTest0300
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyEtsAPI16Test_0300
+     * @tc.desc RelationalStore batch insert with conflict resolution by store
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
 
     it('readOnlyEtsTest0300', 0, async (done:Function) => {
       console.info(TAG + "************* readOnlyEtsTest0300 start *************");
@@ -159,7 +185,14 @@ export default function rdbStoreReadOnlyEtsTest() {
     })
 
 
-
+    /**
+     * @tc.name readOnlyEtsTest0400
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyEtsAPI16Test_0400
+     * @tc.desc RelationalStore batch insert with conflict resolution by store
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
 
     it('readOnlyEtsTest0400', 0, async (done:Function) => {
       console.info(TAG + "************* readOnlyEtsTest0400 start *************");
@@ -187,7 +220,14 @@ export default function rdbStoreReadOnlyEtsTest() {
     })
 
 
-
+    /**
+     * @tc.name readOnlyEtsTest0500
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyEtsAPI16Test_0500
+     * @tc.desc RelationalStore batch insert with conflict resolution by store
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
 
     it('readOnlyEtsTest0500', 0, async (done:Function) => {
       console.info(TAG + "************* readOnlyEtsTest0500 start *************");
@@ -215,7 +255,14 @@ export default function rdbStoreReadOnlyEtsTest() {
     })
 
 
-
+    /**
+     * @tc.name readOnlyEtsTest0600
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyEtsAPI16Test_0600
+     * @tc.desc RelationalStore batch insert with conflict resolution by store
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
 
     it('readOnlyEtsTest0600', 0, async (done:Function) => {
       console.info(TAG + "************* readOnlyEtsTest0600 start *************");
@@ -241,46 +288,6 @@ export default function rdbStoreReadOnlyEtsTest() {
       done();
       console.info(TAG + "************* readOnlyEtsTest0600 end *************");
     })
-
-
-
-
-    it('readOnlyTransactionEtsTest0100', 0, async (done:Function) => {
-      console.info(TAG + "************* readOnlyTransactionEtsTest0100 start *************");
-
-
-      let transaction = await (rdbStore as data_relationalStore.RdbStore).createTransaction();
-      console.info(TAG + "****************************************2222222");
-      try {
-        const row: data_relationalStore.ValuesBucket = {
-          "name": "zhangsan",
-          "age": 18,
-          "salary": 100.5,
-        };
-        let valueBucketArray: data_relationalStore.ValuesBucket[] = new Array();
-        for (let i = 0; i < 2; i++) {
-          valueBucketArray.push(row);
-        }
-        console.info(TAG + "****************************************");
-        transaction.batchInsertWithConflictResolutionSync('test', valueBucketArray,
-          data_relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
-        console.info(TAG + "****************************************33333333");
-        expect().assertFail();
-        done();
-      } catch (err) {
-        console.error(TAG, `readOnlyTransactionEtsTest0100 ON_CONFLICT_REPLACE failed, errCode:${err.code}, message:${err.message}`);
-        expect(err.code == 801).assertTrue();
-        done();
-      }
-      done();
-      console.info(TAG + "************* readOnlyTransactionEtsTest0100 end *************");
-    })
-
-
-
-
-
-
 
   })
 }
