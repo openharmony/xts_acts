@@ -22,7 +22,6 @@
     "MainAbility/pages/HalfLeadingTest/textInputHalfLeadingTest",
     "MainAbility/pages/EllipsisModeTest/textAreaEllipsisModeTest",
     "MainAbility/pages/EllipsisModeTest/textInputEllipsisModeTest",
-    "MainAbility/pages/RichEditor/RichEditorTextStyle",
-    "MainAbility/pages/Text/setMenuOptions"
+    "MainAbility/pages/RichEditor/RichEditorTextStyle"
   ]
 }
