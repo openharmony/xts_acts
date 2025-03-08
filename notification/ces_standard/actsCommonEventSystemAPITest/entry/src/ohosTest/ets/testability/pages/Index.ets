@@ -17,7 +17,7 @@
 @Component
 struct Index {
   @State message: string = 'Hello World'
-
+  @State pixelMap: image.PixelMap | undefined = undefined;
   build() {
     Row() {
       Column() {
