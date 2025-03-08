@@ -17,10 +17,13 @@ import setKeyProcessingMode01 from "./setKeyProcessingMode/setKeyProcessingMode0
 import setKeyProcessingMode02 from "./setKeyProcessingMode/setKeyProcessingMode02.test"
 import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
 import keyDispatchTest from "./keydispatchTest/KeyDispatchTest.test"
-
+import FocusControlTest3 from "./foucscontrolTest/FocusControlTest3.test"
+import FocusControlTest4 from "./foucscontrolTest/FocusControlTest4.test"
 export default function testsuite() {
    setKeyProcessingMode01();
    setKeyProcessingMode02();
    scrollBackToTopTest();
    keyDispatchTest();
+   FocusControlTest3()
+   FocusControlTest4()
 }

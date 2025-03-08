@@ -24,8 +24,6 @@ import ProgressLinearStyleTest from "./progress/progressLinearStyleTest.test"
 import testLazyForEachExpandMode from "./lazyForEach/testLazyForEachExpandMode.test"
 import FocusControlTest from "./foucscontrolTest/FocusControlTest.test"
 import FocusControlTest2 from "./foucscontrolTest/FocusControlTest2.test"
-import FocusControlTest3 from "./foucscontrolTest/FocusControlTest3.test"
-import FocusControlTest4 from "./foucscontrolTest/FocusControlTest4.test"
 import listCaseTest from "./list/ListCaseTest.test"
 import listScrollToIndexTest from "./listScrollTo/ListScrollToTest.test"
 import listItemGroupNodeAdapterTest from "./listItemGroup/ListItemGroupTest.test"
@@ -49,8 +47,6 @@ export default function testsuite() {
    testLazyForEachExpandMode();
    FocusControlTest();
    FocusControlTest2();
-   FocusControlTest3();
-   FocusControlTest4();
    listCaseTest();
    listScrollToIndexTest();
    listItemGroupNodeAdapterTest();
