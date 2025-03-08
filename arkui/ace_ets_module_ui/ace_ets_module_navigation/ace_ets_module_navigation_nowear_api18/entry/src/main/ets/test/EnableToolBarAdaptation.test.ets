@@ -205,6 +205,8 @@ export default function EnableToolBarAdaptation() {
         await driver.assertComponentExist(ON.type('NavigationMenu'));
         console.info('[EnableToolBarAdaptation_0400] navDestination ROTATION_90 NavigationMenu is exist');
       }
+      await driver.setDisplayRotation(DisplayRotation.ROTATION_0);
+      await driver.delayMs(500);
       console.info('EnableToolBarAdaptation_0400 END');
       done();
     });
