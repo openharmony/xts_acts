@@ -554,7 +554,7 @@ describe("FaultlogJsTest", function () {
      * @tc.type Function
      * @tc.level Level2
      */
-    it('DFX_DFR_Faultlogger_Interface_1200', 2, async (done) {
+    it('DFX_DFR_Faultlogger_Interface_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
     console.info("---------------------------DFX_DFR_Faultlogger_Interface_1200----------------------------------");
     try {
         let ret = faultlogger.query();
@@ -578,17 +578,17 @@ describe("FaultlogJsTest", function () {
      * @tc.type Function
      * @tc.level Level2
      */
-    it('DFX_DFR_Faultlogger_Interface_1300', 2, async (done) => {
+    it('DFX_DFR_Faultlogger_Interface_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_1300----------------------------------");
         function queryFaultLogCallback(error, ret) {
             if (error) {
-                console.info('DFX_DFR_Faultlogger_Interface_1100  once error is ' + error);
+                console.info('DFX_DFR_Faultlogger_Interface_1300  once error is ' + error);
             } else {
-                console.info("DFX_DFR_Faultlogger_Interface_1100 query ret length:" + ret.length);
+                console.info("DFX_DFR_Faultlogger_Interface_1300 query ret length:" + ret.length);
                 expect(ret.length).assertLarger(0);
-                console.info("DFX_DFR_Faultlogger_Interface_1100 check reason, index:" + (ret[0].reason.indexOf("Signal:SIGABRT")));
+                console.info("DFX_DFR_Faultlogger_Interface_1300 check reason, index:" + (ret[0].reason.indexOf("Signal:SIGABRT")));
                 expect(ret[0].reason.indexOf("Signal:SIGABRT") != -1).assertTrue();
-                console.info("DFX_DFR_Faultlogger_Interface_1100 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread info"));
+                console.info("DFX_DFR_Faultlogger_Interface_1300 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread info"));
                 expect(ret[0].fullLog.indexOf("Fault thread info") != -1).assertTrue();
             }
             done();
