@@ -91,17 +91,7 @@ export default function createDeleteRequestTest() {
         let uriList = await createFiles(0);
         console.info(`${testNum} uriList: ${JSON.stringify(uriList)}`);
         helper.createDeleteRequest(uriList, (err) => {
-          try {
-            if (err) {
-              console.info(`${testNum} error ${JSON.stringify(err)}`);
-            } else {
-              console.log(`${testNum} delete suc`);
-            }
-          } catch (error) {
-            console.info(`${testNum} error ${JSON.stringify(error)}`);
-          }
           expect(false).assertTrue();
-          done();
         });
         done();
       } catch (error) {
@@ -149,13 +139,7 @@ export default function createDeleteRequestTest() {
       try {
         let uriList = await createFiles(0);
         console.info(`${testNum} uriList: ${JSON.stringify(uriList)}`);
-        helper.createDeleteRequest(uriList)
-          .then(() => {
-            console.log(`${testNum} delete suc`);
-          })
-          .catch((error:BusinessError ) => {
-            console.info(`${testNum} error ${JSON.stringify(error)}`);
-          });
+        helper.createDeleteRequest(uriList);
         expect(false).assertTrue();
         done();
       } catch (error) {
