@@ -66,6 +66,6 @@ ohos_moduletest_suite("ActsVpeVideoNativModuleTest") {
     "window_manager:libwm",
   ]
 
-  part_name = "av_codec"
+  part_name = "video_processing_engine"
   subsystem_name = "multimedia"
 }
