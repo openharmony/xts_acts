@@ -554,7 +554,7 @@ describe("FaultlogJsTest", function () {
      * @tc.type Function
      * @tc.level Level2
      */
-    it('DFX_DFR_Faultlogger_Interface_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) {
+    it('DFX_DFR_Faultlogger_Interface_1200', 2, async (done) {
     console.info("---------------------------DFX_DFR_Faultlogger_Interface_1200----------------------------------");
     try {
         let ret = faultlogger.query();
@@ -578,7 +578,7 @@ describe("FaultlogJsTest", function () {
      * @tc.type Function
      * @tc.level Level2
      */
-    it('DFX_DFR_Faultlogger_Interface_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('DFX_DFR_Faultlogger_Interface_1300', 2, async (done) => {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_1300----------------------------------");
         function queryFaultLogCallback(error, ret) {
             if (error) {
