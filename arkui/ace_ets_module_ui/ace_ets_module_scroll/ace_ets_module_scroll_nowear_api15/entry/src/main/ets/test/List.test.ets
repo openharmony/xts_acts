@@ -12,10 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import WaterFlowEffectEdge from './WaterFlowTest/WaterFlowEffectEdge.test'
-import WaterComponentContent from './WaterFlowTest/WaterComponentContent.test'
+import WaterFlowBackToTopTest from './WaterFlowTest/WaterFlowBackToTop.test'
+import GridBackToTopTest from './GridTest/GridBackToTop.test'
+import ListBackToTopTest from './ListTest/ListBackToTop.test'
+import ScrollBackToTopTest from './ScrollTest/ScrollBackToTop.test'
 
 export default function testsuite() {
-  WaterFlowEffectEdge()
-  WaterComponentContent();
+  WaterFlowBackToTopTest();
+  GridBackToTopTest();
+  ListBackToTopTest();
+  ScrollBackToTopTest();
 }
