@@ -45,6 +45,7 @@ export class KeyboardController {
       inputMethodAbility.off("inputStop", () => {
         console.log('====>inputMethodEngine delete inputStop notification.');
       });
+      inputMethodEngine.off('inputStart', () =>{})
       try {
         that.mContext.destroy((err) => {
           console.info(TAG + '====>inputMethodEngine destroy err:' + JSON.stringify(err));
@@ -175,6 +176,82 @@ export class KeyboardController {
         case 79:
           console.debug(TAG + '====>Sub_InputMethod_IME_VisualInput_0600 event:' + data.event);
           that.Sub_InputMethod_IME_VisualInput_0600();
+          break;
+        case 80:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0100 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0100();
+          break;
+        case 81:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0200 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0200();
+          break;
+        case 82:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteForward_0100 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_deleteForward_0100();
+          break;
+        case 83:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteForward_0200 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_deleteForward_0200();
+          break;
+        case 84:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_insertText_0100 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_insertText_0100();
+          break;
+        case 85:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_insertText_0200 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_insertText_0200();
+          break;
+        case 86:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getForward_0100 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_getForward_0100();
+          break;
+        case 87:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getForward_0200 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_getForward_0200();
+          break;
+        case 88:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getBackward_0100 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_getBackward_0100();
+          break;
+        case 89:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getBackward_0200 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_getBackward_0200();
+          break;
+        case 90:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_moveCursor_0100 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_moveCursor_0100();
+          break;
+        case 91:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_moveCursor_0200 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_moveCursor_0200();
+          break;
+        case 92:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByRange_0100 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_selectByRange_0100();
+          break;
+        case 93:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByRange_0200 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_selectByRange_0200();
+          break;
+        case 94:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0100 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0100();
+          break;
+        case 95:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0200 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0200();
+          break;
+        case 96:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100();
+          break;
+        case 97:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200();
+          break;
+        case 98:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200();
           break;
       }
     }
@@ -875,5 +952,512 @@ export class KeyboardController {
       }
       commoneventmanager.publish('Sub_InputMethod_IME_VisualInput_0600', commonEventPublishData, this.publishCallback);
     });
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0100() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0100 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.sendKeyFunction(undefined, (err, value) => {
+        if (err) {
+          console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0100 sendKeyFunction err:' + JSON.stringify(err));
+          commonEventPublishData = {
+            data: "SUCCESS"
+          };
+        }
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0100 sendKeyFunction success' );
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0100 catch err: ' + JSON.stringify(err));
+    }
+    commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0100", commonEventPublishData, this.publishCallback);
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0200() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0200 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.sendKeyFunction(undefined).then((data) => {
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0200 Succeed in sendKeyFunction.' + JSON.stringify(data));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0200', commonEventPublishData, this.publishCallback);
+      }).catch((err) => {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+        console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0200 sendKeyFunction error: ' + JSON.stringify(err));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0200', commonEventPublishData, this.publishCallback);
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0200 err: ' + JSON.stringify(err));
+      commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0200", commonEventPublishData, this.publishCallback);
+    }
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_deleteForward_0100() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_deleteForward_0100 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.deleteForward(undefined, (err, result) => {
+        if (err) {
+          console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteForward_0100 sendKeyFunction err:' + JSON.stringify(err));
+          commonEventPublishData = {
+            data: "SUCCESS"
+          };
+        }
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteForward_0100 sendKeyFunction success' );
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteForward_0100 catch err: ' + JSON.stringify(err));
+    }
+    commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_deleteForward_0100", commonEventPublishData, this.publishCallback);
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_deleteForward_0200() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_deleteForward_0200 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.deleteForward(undefined).then((result) => {
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteForward_0200 Succeed in sendKeyFunction.' + JSON.stringify(result));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_deleteForward_0200', commonEventPublishData, this.publishCallback);
+      }).catch((err) => {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+        console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_deleteForward_0200 sendKeyFunction error: ' + JSON.stringify(err));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_deleteForward_0200', commonEventPublishData, this.publishCallback);
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteForward_0200 err: ' + JSON.stringify(err));
+      commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_deleteForward_0200", commonEventPublishData, this.publishCallback);
+    }
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_insertText_0100() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_insertText_0100 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.insertText(undefined, (err, result) => {
+        if (err) {
+          console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_insertText_0100 sendKeyFunction err:' + JSON.stringify(err));
+          commonEventPublishData = {
+            data: "SUCCESS"
+          };
+        }
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_insertText_0100 sendKeyFunction success' );
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_insertText_0100 catch err: ' + JSON.stringify(err));
+    }
+    commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_insertText_0100", commonEventPublishData, this.publishCallback);
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_insertText_0200() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_insertText_0200 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.insertText(undefined).then((result) => {
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_insertText_0200 Succeed in sendKeyFunction.' + JSON.stringify(result));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_insertText_0200', commonEventPublishData, this.publishCallback);
+      }).catch((err) => {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+        console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_insertText_0200 sendKeyFunction error: ' + JSON.stringify(err));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_insertText_0200', commonEventPublishData, this.publishCallback);
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_insertText_0200 err: ' + JSON.stringify(err));
+      commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_insertText_0200", commonEventPublishData, this.publishCallback);
+    }
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_getForward_0100() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_getForward_0100 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.getForward(undefined, (err, result) => {
+        if (err) {
+          console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getForward_0100 sendKeyFunction err:' + JSON.stringify(err));
+          commonEventPublishData = {
+            data: "SUCCESS"
+          };
+        }
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getForward_0100 sendKeyFunction success' );
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getForward_0100 catch err: ' + JSON.stringify(err));
+    }
+    commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_getForward_0100", commonEventPublishData, this.publishCallback);
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_getForward_0200() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_getForward_0200 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.getForward(undefined).then((result) => {
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getForward_0200 Succeed in sendKeyFunction.' + JSON.stringify(result));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_getForward_0200', commonEventPublishData, this.publishCallback);
+      }).catch((err) => {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+        console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_getForward_0200 sendKeyFunction error: ' + JSON.stringify(err));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_getForward_0200', commonEventPublishData, this.publishCallback);
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getForward_0200 err: ' + JSON.stringify(err));
+      commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_getForward_0200", commonEventPublishData, this.publishCallback);
+    }
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_getBackward_0100() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_getBackward_0100 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.getBackward(undefined, (err, result) => {
+        if (err) {
+          console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getBackward_0100 sendKeyFunction err:' + JSON.stringify(err));
+          commonEventPublishData = {
+            data: "SUCCESS"
+          };
+        }
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getBackward_0100 sendKeyFunction success' );
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getBackward_0100 catch err: ' + JSON.stringify(err));
+    }
+    commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_getBackward_0100", commonEventPublishData, this.publishCallback);
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_getBackward_0200() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_getBackward_0200 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.getBackward(undefined).then((result) => {
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getBackward_0200 Succeed in sendKeyFunction.' + JSON.stringify(result));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_getBackward_0200', commonEventPublishData, this.publishCallback);
+      }).catch((err) => {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+        console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_getBackward_0200 sendKeyFunction error: ' + JSON.stringify(err));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_getBackward_0200', commonEventPublishData, this.publishCallback);
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getBackward_0200 err: ' + JSON.stringify(err));
+      commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_getBackward_0200", commonEventPublishData, this.publishCallback);
+    }
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_moveCursor_0100() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_moveCursor_0100 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.moveCursor(undefined, (err) => {
+        if (err) {
+          console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_moveCursor_0100 sendKeyFunction err:' + JSON.stringify(err));
+          commonEventPublishData = {
+            data: "SUCCESS"
+          };
+        }
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_moveCursor_0100 sendKeyFunction success' );
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_moveCursor_0100 catch err: ' + JSON.stringify(err));
+    }
+    commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_moveCursor_0100", commonEventPublishData, this.publishCallback);
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_moveCursor_0200() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_moveCursor_0200 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.moveCursor(undefined).then( () => {
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_moveCursor_0200 Succeed in sendKeyFunction.');
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_moveCursor_0200', commonEventPublishData, this.publishCallback);
+      }).catch((err) => {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+        console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_moveCursor_0200 sendKeyFunction error: ' + JSON.stringify(err));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_moveCursor_0200', commonEventPublishData, this.publishCallback);
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_moveCursor_0200 err: ' + JSON.stringify(err));
+      commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_moveCursor_0200", commonEventPublishData, this.publishCallback);
+    }
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_selectByRange_0100() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_selectByRange_0100 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.selectByRange(undefined, (err) => {
+        if (err) {
+          console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByRange_0100 sendKeyFunction err:' + JSON.stringify(err));
+          commonEventPublishData = {
+            data: "SUCCESS"
+          };
+        }
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByRange_0100 sendKeyFunction success' );
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByRange_0100 catch err: ' + JSON.stringify(err));
+    }
+    commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_selectByRange_0100", commonEventPublishData, this.publishCallback);
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_selectByRange_0200() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_selectByRange_0200 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.selectByRange(undefined).then( () => {
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByRange_0200 Succeed in sendKeyFunction.');
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_selectByRange_0200', commonEventPublishData, this.publishCallback);
+      }).catch((err) => {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+        console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_selectByRange_0200 sendKeyFunction error: ' + JSON.stringify(err));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_selectByRange_0200', commonEventPublishData, this.publishCallback);
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByRange_0200 err: ' + JSON.stringify(err));
+      commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_selectByRange_0200", commonEventPublishData, this.publishCallback);
+    }
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0100() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0100 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.selectByMovement(undefined, (err) => {
+        if (err) {
+          console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0100 sendKeyFunction err:' + JSON.stringify(err));
+          commonEventPublishData = {
+            data: "SUCCESS"
+          };
+        }
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0100 sendKeyFunction success' );
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0100 catch err: ' + JSON.stringify(err));
+    }
+    commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0100", commonEventPublishData, this.publishCallback);
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0200() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0200 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.selectByMovement(undefined).then( () => {
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0200 Succeed in sendKeyFunction.');
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0200', commonEventPublishData, this.publishCallback);
+      }).catch((err) => {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+        console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0200 sendKeyFunction error: ' + JSON.stringify(err));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0200', commonEventPublishData, this.publishCallback);
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0200 err: ' + JSON.stringify(err));
+      commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0200", commonEventPublishData, this.publishCallback);
+    }
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.sendExtendAction(undefined, (err) => {
+        if (err) {
+          console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100 sendKeyFunction err:' + JSON.stringify(err));
+          commonEventPublishData = {
+            data: "SUCCESS"
+          };
+        }
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100 sendKeyFunction success' );
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100 catch err: ' + JSON.stringify(err));
+    }
+    commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100", commonEventPublishData, this.publishCallback);
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      this.TextInputClient.sendExtendAction(undefined).then( () => {
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 Succeed in sendKeyFunction.');
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200', commonEventPublishData, this.publishCallback);
+      }).catch((err) => {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+        console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 sendKeyFunction error: ' + JSON.stringify(err));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200', commonEventPublishData, this.publishCallback);
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 err: ' + JSON.stringify(err));
+      commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200", commonEventPublishData, this.publishCallback);
+    }
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200() {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 data');
+    let commonEventPublishData = {
+        data: "FAILED"
+    };
+    try{
+      inputMethodEngine.on("inputStart", async (KeyboardDelegate, InputClient) => {
+        inputMethodEngine.off('inputStart');
+        InputClient.sendPrivateCommand(undefined).then( () => {
+          console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 Succeed in sendKeyFunction.');
+          commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200', commonEventPublishData, this.publishCallback);
+        }).catch((err) => {
+          commonEventPublishData = {
+            data: 'SUCCESS'
+          };
+          console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 sendKeyFunction error: ' + JSON.stringify(err));
+          commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200', commonEventPublishData, this.publishCallback);
+        });
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 err: ' + JSON.stringify(err));
+      commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200", commonEventPublishData, this.publishCallback);
+    }
   }
 }
