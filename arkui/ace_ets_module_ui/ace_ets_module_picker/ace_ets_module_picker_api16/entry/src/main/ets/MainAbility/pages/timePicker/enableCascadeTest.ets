@@ -53,6 +53,7 @@ struct TimePickerPage {
     Column() {
       Row() {
         Button('切换12小时制')
+          .height('8%')
           .margin({ top: 5 })
           .key('12hour')
           .onClick(() => {
@@ -62,6 +63,7 @@ struct TimePickerPage {
           })
 
         Button('切换24小时制')
+          .height('8%')
           .margin({ top: 5 })
           .key('24hour')
           .onClick(() => {
@@ -73,6 +75,7 @@ struct TimePickerPage {
 
       Row() {
         Button('切换enableCascade值-true')
+          .height('8%')
           .margin({ top: 5 })
           .key('timePicker-true')
           .onClick(() => {
@@ -81,6 +84,7 @@ struct TimePickerPage {
           })
 
         Button('切换enableCascade值-false')
+          .height('8%')
           .margin({ top: 5 })
           .key('timePicker-false')
           .onClick(() => {
@@ -91,6 +95,7 @@ struct TimePickerPage {
 
       Row() {
         Button('切换enableCascade值-null')
+          .height('8%')
           .margin({ top: 5 })
           .key('timePicker-null')
           .onClick(() => {
@@ -99,6 +104,7 @@ struct TimePickerPage {
           })
 
         Button('切换enableCascade值-undefined')
+          .height('8%')
           .margin({ top: 5 })
           .key('timePicker-undefined')
           .onClick(() => {
@@ -121,8 +127,8 @@ struct TimePickerPage {
           this.selectedTime.setHours(value.hour, value.minute)
           console.info('select current date is: ' + JSON.stringify(value))
         })
-      Text('hour:' + this.hour).fontSize(20).margin(10).key('hour')
-      Text('minute:' + this.minute).fontSize(20).margin(10).key('minute')
+      Text('hour:' + this.hour).key('hour')
+      Text('minute:' + this.minute).key('minute')
       Text('24hour:false')
     }
   }

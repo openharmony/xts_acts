@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 import timePickerDialogEnableHapticFeedback from './timePickerDialog/timePickerDialogEnableHapticFeedback.test'
+import buttonType from './buttonType/buttonTypeApi.test';
 export default function testsuite() {
     timePickerDialogEnableHapticFeedback();
+    buttonType()
 }

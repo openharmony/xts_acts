@@ -1,6 +1,7 @@
 {
   "src": [
     "MainAbility/pages/index/index",
-    "MainAbility/pages/timePickerDialog/timePickerDialogEnableHapticFeedback"
+    "MainAbility/pages/timePickerDialog/timePickerDialogEnableHapticFeedback",
+    "MainAbility/pages/buttonType/buttonTypeApi"
   ]
 }
