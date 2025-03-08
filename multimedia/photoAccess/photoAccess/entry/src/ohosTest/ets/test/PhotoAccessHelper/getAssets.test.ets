@@ -89,25 +89,9 @@ export default function getAssetsTest () {
       fetchOps: photoAccessHelper.FetchOptions | "invalid" ) => {
       try {
         helper.getAssets(fetchOps as photoAccessHelper.FetchOptions, (err, fetchResult) => {
-          try {
-            if (err !== undefined) {
-              console.info(`${testNum} getAssets failed; err: ${err},  ${err.code}`);
-              expect(false).assertTrue();
-              done();
-            } else {
-              console.info(`${testNum} getAssets suc; fetchResult: ${fetchResult.getCount()}`);
-              fetchResult.close();
-              expect(false).assertTrue();
-              done();
-            }
-            done();
-          } catch (error) {
-            console.info(`${testNum} getAssets failed; error: ${error},  ${error.code}`);
-            expect(false).assertTrue();
-            done();
-          }
-          done();
+          expect(false).assertTrue();
         });
+        done();
       } catch (error) {
         console.info(`${testNum} failed; error: ${error},  ${error.code}`);
         expect(error.code).assertEqual('14000011');
