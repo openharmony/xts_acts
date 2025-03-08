@@ -281,7 +281,7 @@ export default function GetabilityInfo() {
             expect(data.description).assertEqual("$string:mainability_description");
             expect(data.icon).assertEqual("$media:icon");
             expect(data.isVisible).assertEqual(true);
-            expect(data.deviceTypes[0]).assertEqual("default");
+            expect(data.deviceTypes.length).assertEqual(0);
             expect(data.process).assertEqual("com.example.third1");
             expect(data.uri).assertEqual("");
             expect(data.moduleName).assertEqual("entry");
