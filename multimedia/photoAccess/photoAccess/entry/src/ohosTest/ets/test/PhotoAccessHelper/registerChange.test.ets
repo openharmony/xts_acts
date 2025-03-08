@@ -245,19 +245,18 @@ export default function registerChangeTest () {
      * @tc.level     : Level 2
      */
         it('registerChange_callback_014', 2, async (done: Function) => {
-          const testNum = 'registerChange_callback_012';
+          const testNum = 'registerChange_callback_014';
           try {
             let albumUri:ESObject = undefined;
             helper.registerChange(albumUri, false, async (changeData) => {
-              done();
+              expect(false).assertTrue();
             });
-            expect(false).assertTrue();
             done();
           } catch (error) {
             console.log(`${testNum}: tryError: ${error}`);
             expect(error.code === '13900020' || error.code === '401').assertTrue();
             done();
-          }
+          } 
         });
 
     /**
