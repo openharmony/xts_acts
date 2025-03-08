@@ -84,6 +84,7 @@ export default function addResourceChangeRequestTest() {
         done();
       } catch (error) {
         console.info(`${testNum} succeed to detect invalid fileUri`);
+        expect(error.code === '13900002' || error.code === '401').assertTrue();
         done();
       }
     })
@@ -95,9 +96,9 @@ export default function addResourceChangeRequestTest() {
      * @tc.desc      : add VIDEO resource by IMAGE_RESOURCE,error code is 13900002 or 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('add_resource_change_request_002', 2, async (done: Function) => {
+    it('add_resource_change_request_002', 0, async (done: Function) => {
       let testNum = 'add_resource_change_request_002';
       try {
         let photoType = photoAccessHelper.PhotoType.VIDEO;
