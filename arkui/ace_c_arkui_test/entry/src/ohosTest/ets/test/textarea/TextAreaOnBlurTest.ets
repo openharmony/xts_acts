@@ -15,6 +15,7 @@
 
 import { describe, it, expect, afterEach } from '@ohos/hypium';
 import Utils from '../common/Utils';
+import { Driver } from '@ohos.UiTest';
 
 export default function textAreaOnBlurTest() {
 
@@ -35,9 +36,15 @@ export default function textAreaOnBlurTest() {
      */
     it('testTextAreaOnBlur001', 0, async (done: Function) => {
       let PAGE_TAG = 'TextAreaOnBlurTest';
+      let driver: Driver = Driver.create();
+      await Utils.sleep(500);
       await Utils.pushPage(`textarea/${PAGE_TAG}`);
       await Utils.clickComponent('TextAreaOnBlur');
+      await Utils.sleep(500);
+      await driver.triggerKey(2070)
       await Utils.clickComponent('TextAreaOnFocusCompare');
+      await Utils.sleep(500);
+      await driver.triggerKey(2070)
       await Utils.sleep(3000);
       expect(Utils.getComponentInfoByKey('TextAreaOnBlur').$attrs.backgroundColor).assertEqual('#FFFF0000');
       done();
