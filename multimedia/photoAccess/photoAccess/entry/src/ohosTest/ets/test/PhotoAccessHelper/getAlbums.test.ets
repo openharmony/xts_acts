@@ -184,28 +184,19 @@ export default function getAlbumsTest () {
     it('getAlbums_callback_003', 2, async (done: Function) => {
       const testNum = 'getAlbums_callback_003';
       try {
-        // Firstly, create an album
         let albumName = testNum;
         const fetchOps = fetchOption(testNum, albumKeys.ALBUM_NAME, albumName);
         helper.getAlbums(123123, albumSubtype.USER_GENERIC, fetchOps, async (err, fetchResult) => {
-          try {
-            if (err != undefined) {
-              console.info(`${testNum} getAlbums failed, err: ${err}`);
-              expect(false).assertTrue();
-              done();
-            }
-          } catch (error) {
-            console.info(`${testNum} getAlbums failed, error: ${error}`);
-            expect(false).assertTrue();
-            done();
-          }
+          expect(false).assertTrue();
         });
+        done();
       } catch (error) {
         console.info(`${testNum} failed, error code: ${error.code}`);
         expect(error.code === '13900020' || error.code === '401').assertTrue();
         done();
       }
     });
+
     //promise
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0000
