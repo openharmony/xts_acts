@@ -39,11 +39,13 @@ export default function textAreaOnBlurTest() {
       let driver: Driver = Driver.create();
       await Utils.sleep(500);
       await Utils.pushPage(`textarea/${PAGE_TAG}`);
+      await Utils.sleep(500);
+      await driver.triggerKey(2070)
       await Utils.clickComponent('TextAreaOnBlur');
       await Utils.sleep(500);
       await driver.triggerKey(2070)
       await Utils.clickComponent('TextAreaOnFocusCompare');
-      await Utils.sleep(500);
+      await Utils.sleep(1000);
       await driver.triggerKey(2070)
       await Utils.sleep(3000);
       expect(Utils.getComponentInfoByKey('TextAreaOnBlur').$attrs.backgroundColor).assertEqual('#FFFF0000');
