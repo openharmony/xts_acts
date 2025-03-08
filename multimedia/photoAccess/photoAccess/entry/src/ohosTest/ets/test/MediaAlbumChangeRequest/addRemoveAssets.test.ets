@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
+import { describe, it, expect, beforeAll } from '@ohos/hypium'
 import { photoKeys, fetchOption, getFileAsset, sleep, getPermission, driveFn } from '../common'
 import common from '@ohos.app.ability.common'
 
@@ -103,12 +103,12 @@ export default function addRemoveAssetsChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('add_remove_assets_change_request_002', Level.LEVLE2, async (done: Function) => {
+    it('add_remove_assets_change_request_002', 2, async (done: Function) => {
       let testNum:string = 'add_remove_assets_change_request_002';
       try {
         let album:ESObject = await helper.createAlbum(testNum);
         let albumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
-        const asset = null;
+        const asset: ESObject = null;
         albumChangeRequest.removeAssets([asset]);
         expect(false).assertTrue();
         done();
@@ -116,11 +116,9 @@ export default function addRemoveAssetsChangeRequestTest() {
         if(error.code === `14000016`){
           console.log(`${testNum} success; error: ${error}`);
           expect(true).assertTrue();
-          done();
         } else {
           console.log(`${testNum} success; error: ${error.code}`);
           expect(error.code === '13900020' || error.code === '401').assertTrue();
-          done();
         }
         done();
       }
