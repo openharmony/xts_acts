@@ -33,6 +33,7 @@ group("ActsAceEtsModulePickerTest") {
       "ace_ets_module_picker_nowear_api11:ActsAceEtsModulePickerNoWearApi11Test",
       "ace_ets_module_picker_nowear_api12:ActsAceEtsModulePickerNoWearApi12Test",
       "ace_ets_module_picker_nowear_api16:ActsAceEtsModulePickerNoWearApi16Test",
+      "ace_ets_module_picker_nowear_api18:ActsAceEtsModulePickerNoWearApi18Test",
     ]
   }
 }
