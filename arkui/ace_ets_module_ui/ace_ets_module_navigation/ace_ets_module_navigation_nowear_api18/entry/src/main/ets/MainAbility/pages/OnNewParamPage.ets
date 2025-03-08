@@ -2,7 +2,7 @@ class NavParam {
   constructor(msg: string) {
     this.msg = msg
   }
-  msg: string = '__NA__'
+  msg: string = ''
 }
 
 @Entry
@@ -107,7 +107,7 @@ struct lifeCyclePush {
     })
     .onNewParam((param: ESObject) => {
       this.paramString = param;
-      console.log("TestTag", this.name, 'onNewParam, param: ' + JSON.stringify(param))
+      console.log('TestTag', this.name, 'onNewParam, param: ' + JSON.stringify(param))
     })
   }
 }
