@@ -23,7 +23,7 @@ export default function EnableToolBarAdaptation() {
     beforeEach(async (done: Function) => {
       console.info('EnableToolBarAdaptation beforeEach start');
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Navigation/EnableToolBarAdaptation',
+        url: 'MainAbility/pages/EnableToolBarAdaptation',
       }
       try {
         router.clear();

@@ -23,7 +23,7 @@ export default function OnNewParamPage() {
     beforeEach(async (done: Function) => {
       console.info("OnNewParamPage beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Navigation/OnNewParamPage',
+        url: 'MainAbility/pages/OnNewParamPage',
       }
       try {
         router.clear();
