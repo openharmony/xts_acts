@@ -15,6 +15,7 @@
 
 import { describe, it, expect, afterEach } from '@ohos/hypium';
 import Utils from '../common/Utils';
+import { Driver } from '@ohos.UiTest';
 
 export default function textAreaKeyTest() {
 
@@ -34,9 +35,15 @@ export default function textAreaKeyTest() {
      * @tc.level: Level 1
      */
     it('testTextAreaKey001', 0, async (done: Function) => {
+      let driver: Driver = Driver.create();
+      await Utils.sleep(500);
       let PAGE_TAG = 'TextAreaKeyTest';
       await Utils.pushPage(`textarea/${PAGE_TAG}`);
+      await Utils.sleep(500);
+      await driver.triggerKey(2070)
       await Utils.clickComponent('KEY');
+      await Utils.sleep(500);
+      await driver.triggerKey(2070)
       await Utils.sleep(3000);
       expect(Utils.getComponentInfoByKey('KEY').$attrs.backgroundColor).assertEqual('#FFFF0000');
       done();

@@ -577,7 +577,7 @@ import textAreaOnBlurTest from './textarea/TextAreaOnBlurTest'
 import textAreaKeyTest from './textarea/TextAreaKeyTest'
 import textInputKeyTest from './textinput/TextInputKeyTest'
 import textAreaOnChangeTest from './textarea/TextAreaOnChangeTest'
-import textAreaOnPasteTest from './textarea/TextAreaOnPasteTest.test'
+
 import progressStyleTest from './progress/ProgressStyleTest'
 import progressTotalTest from './progress/ProgressTotalTest.test'
 import progressValueTest from './progress/ProgressValueTest.test'
@@ -606,8 +606,7 @@ import textInputLineHeightTest from './textinput/TextInputLineHeightTest.test'
 import textInputOnBlurTest from './textinput/TextInputOnBlurTest.test'
 import textInputOnFocusTest from './textinput/TextInputOnFocusTest.test'
 import textInputOnSubmitTest from './textinput/TextInputOnSubmitTest.test'
-import textInputOnCutTest from './textinput/TextInputOnCutTest.test'
-import textInputOnPasteTest from './textinput/TextInputOnPasteTest.test'
+
 import textInputDefaultFocusTest from './textinput/TextInputDefaultFocusTest'
 import TestArkUIAddApi from './arkApi/arkApi.test'
 import testArkUI from './arkApi/arkUIApiTest.test'
@@ -1427,7 +1426,7 @@ export default function testsuite() {
   textAreaOnFocusTest()
   textAreaOnBlurTest()
   textAreaOnChangeTest()
-  textAreaOnPasteTest()
+
   textAreaDefaultFocusTest()
   textAreaResponseRegionTest()
   refreshOnStateChangeTest()
@@ -1437,8 +1436,7 @@ export default function testsuite() {
   buttonOnClickTest()
   textInputOnBlurTest()
   textInputOnSubmitTest()
-  textInputOnCutTest()
-  textInputOnPasteTest()
+
   customComponentOnMeasureTest()
   customComponentOnLayoutTest()
   customComponentOnDrawTest()

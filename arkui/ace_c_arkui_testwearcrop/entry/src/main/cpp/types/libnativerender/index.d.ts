@@ -20,3 +20,8 @@ export const calendarPickerEnabledTest: (a: string) => void;
 
 export const calendarPickerOnChangeTest: (a: string) => void;
 
+export const textAreaOnPasteTest: (a: string) => void;
+
+export const textInputOnCutTest: (a: string) => void;
+
+export const textInputOnPasteTest: (a: string) => void;
