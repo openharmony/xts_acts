@@ -4,7 +4,8 @@
     "MainAbility/pages/keydispatchtest/KeydispatchTest",
     "MainAbility/pages/setKeyProcessingMode/setKeyProcessingMode01",
     "MainAbility/pages/setKeyProcessingMode/setKeyProcessingMode02",
-    "MainAbility/pages/scroll/ScrollBackToTopTest"
-
+    "MainAbility/pages/scroll/ScrollBackToTopTest",
+    "MainAbility/pages/focuscontrol/focuscontrol3x",
+    "MainAbility/pages/focuscontrol/focuscontrol4"
   ]
 }

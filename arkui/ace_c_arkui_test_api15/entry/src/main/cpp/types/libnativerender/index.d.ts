@@ -54,9 +54,7 @@ export const FocusControlTest_001: (a: string) => void;
 
 export const FocusControlTest_002: (a: string) => void;
 
-export const FocusControlTest_003: (a: string) => void;
 
-export const FocusControlTest_004: (a: string) => void;
 
 export const listTestCallback: (a: string) => void;
 

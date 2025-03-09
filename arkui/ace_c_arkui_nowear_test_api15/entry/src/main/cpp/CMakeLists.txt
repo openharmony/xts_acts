@@ -23,6 +23,7 @@ add_library(nativerender SHARED
     component/button_component.cpp
     component/text_component.cpp
     keyDisPatchTest/keyEventDispatch_test.cpp
+    focusControl/focus_control.cpp
 )
 
 add_library(nativefunc SHARED
