@@ -120,10 +120,11 @@ export default function customDialogKeyboardAvoidDistance() {
       console.info('[CustomDialog_keyboard_2] left: ' + keyboard.left + ', top: ' + keyboard.top +
         ', right:' + keyboard.right + ', bottom:' + keyboard.bottom + ',middle:' + middle);
       let keyboardAvoidDistance = keyboard.top - customDialog.bottom;
-      expect(keyboardAvoidDistance).assertEqual(24);
+      let str = vp2px(16).toFixed(2).toString();
       let cancelButton: Component = await driver.findComponent(ON.text('取消'));
       await CommonFunc.sleep(300);
       await cancelButton?.click();
+      expect(JSON.stringify(keyboardAvoidDistance) + '.00').assertEqual(str);
       console.info('customDialogKeyboardAvoidDistance_0200 END');
       done();
     });
@@ -163,10 +164,11 @@ export default function customDialogKeyboardAvoidDistance() {
       console.info('[CustomDialog_keyboard_2] left: ' + keyboard.left + ', top: ' + keyboard.top +
         ', right:' + keyboard.right + ', bottom:' + keyboard.bottom + ',middle:' + middle);
       let keyboardAvoidDistance = keyboard.top - customDialog.bottom;
-      expect(keyboardAvoidDistance).assertEqual(24);
+      let str = vp2px(16).toFixed(2).toString();
       let cancelButton: Component = await driver.findComponent(ON.text('取消'));
       await CommonFunc.sleep(300);
       await cancelButton?.click();
+      expect(JSON.stringify(keyboardAvoidDistance) + '.00').assertEqual(str);
       console.info('customDialogKeyboardAvoidDistance_0300 END');
       done();
     });
