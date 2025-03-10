@@ -124,13 +124,6 @@ struct frameNodeMoveTwo {
         Text(`${this.frame3ChildCount}`).height('5%').id('frame3ChildCount')
       }
 
-      // Button('child count').height('10%').id('count_id')
-      //   .onClick(() => {
-      //     this.frame1ChildCount = this.myNodeController1.rootNode!.getFirstChild()!.getChildrenCount();
-      //     this.frame2ChildCount = this.myNodeController2.rootNode!.getFirstChild()!.getChildrenCount();
-      //     this.frame3ChildCount = this.myNodeController3.rootNode!.getFirstChild()!.getChildrenCount();
-      //   })
-
       Button('CustomPopupOptions').height('10%').id('customPopupOptions_id')
         .onClick(() => {
           const uiContext: UIContext = this.getUIContext();
