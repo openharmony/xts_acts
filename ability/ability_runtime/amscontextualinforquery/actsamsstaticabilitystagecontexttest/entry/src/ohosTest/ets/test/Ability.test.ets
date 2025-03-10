@@ -191,7 +191,7 @@ export default function abilityTest() {
             expect(data.abilitiesInfo[0].moduleName).assertEqual('com.acts.stabilitystagecontext');
             expect(data.extensionAbilitiesInfo.length).assertEqual(0);
             expect(data.metadata.length).assertEqual(0);
-			      expect(data.deviceTypes.length).assertEqual(0);
+			expect(data.deviceTypes.length).assertEqual(0);
             expect(data.installationFree).assertEqual(false);
             expect(data.hashValue).assertEqual('');
             expect(data.type).assertEqual(bundleManager.ModuleType.ENTRY);
