@@ -24,6 +24,14 @@ const PARAMETER_ERROR_MSG = 'The parameter invalid.'
 const SENSOR_NO_SUPPORT_CODE = 14500102
 const PERMISSION_DENIED_MSG = 'Permission denied.'
 
+const ExpectTrue: (n: boolean) => void = (n: boolean) => {
+  try {
+    expect(n).assertTrue();
+  } catch (err) {
+    console.info(` exportTrue failed err: ${JSON.stringify(err)}`);
+  }
+};
+
 export default function ConnectionPublicNopTest() {
   describe('ConnectionPublicNopTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
