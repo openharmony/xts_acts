@@ -2,6 +2,7 @@
   "src": [
     "MainAbility/pages/index/index",
     "MainAbility/pages/Text/textAreaInputTest",
-    "MainAbility/pages/Text/editMenuIdAIWriter"
+    "MainAbility/pages/Text/editMenuIdAIWriter",
+    "MainAbility/pages/MovingPhotoView/MovingPhotoView"
   ]
 }
