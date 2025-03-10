@@ -95,27 +95,18 @@ napi_value StyledStringTest::testStyledString001(napi_env env, napi_callback_inf
         size_t resultSize2;
         OH_ArkUI_MarshallStyledStringDescriptor(buffer2, resultSize, styledStringDescriber, &resultSize2);
 
-        // 验证反序列化后的buffer2是否和data_bytes一致。
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testStyledString001",
-                     "序列化前数组长度:[%{public}zu],序列化后数组长度：[%{public}zu]", arraySize, resultSize2);
-        ASSERT_EQ(arraySize, resultSize2);
-        if (arraySize == resultSize2) {
-            bool isAllEqual = true;
-            for (size_t i = 0; i < arraySize; i++) {
-                if (data_bytes[i] != buffer2[i]) {
-                    isAllEqual = false;
-                    break;
-                }
-            }
-            ASSERT_EQ(isAllEqual, LIG);
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testStyledString001", "序列化前后的数组是否完全一致：[%{public}d]",
-                         isAllEqual);
-            napi_create_int32(env, SUCC, &result);
-        }
-        else {
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testStyledString001", "序列化前后的数组不完全一致");
-            napi_create_int32(env, FAIL, &result);
-        }
+        auto *styledStringDescriber1 = OH_ArkUI_StyledString_Descriptor_Create();
+        // 反序列化接口，把buffer2信息写到styledStringDescriber1。
+        auto status1 = OH_ArkUI_UnmarshallStyledStringDescriptor(buffer2, resultSize2, styledStringDescriber1);
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "testStyledString001", 
+            "UnmarshallingStyledStringDescriber status1 is %{public}d", status1);
+        ASSERT_EQ(status1, 0);
+        // (c++)属性字符串 -> html
+        auto html1 = OH_ArkUI_ConvertToHtml(styledStringDescriber1);
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "testStyledString001", "html1 is: %{public}s", html1);
+        // 比较原始值直接反序列化解析的html与将原始值经过序列化和反序列化解析的html进行对比
+        ASSERT_STREQ(html, html1);
+        napi_create_int32(env, SUCC, &result);
 
         free(buffer);
         free(buffer2);
