@@ -87,6 +87,7 @@ export default function OnNewParamPage() {
       console.info('[OnNewParamPage_0100] component obj1 is: ' + JSON.stringify(obj1));
       console.info('[OnNewParamPage_0100] content obj1 is: ' + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('');
+      await driver.delayMs(500);
 
       let btn4: Component = await driver.findComponent(ON.id('moveId'));
       await btn4.click()
@@ -98,6 +99,7 @@ export default function OnNewParamPage() {
       console.info('[OnNewParamPage_0100] component obj2 is: ' + JSON.stringify(obj2));
       console.info('[OnNewParamPage_0100] content obj2 is: ' + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual('{"msg":"MOVE_TO_TOP_SINGLETON"}');
+      await driver.delayMs(500);
 
       let btn5: Component = await driver.findComponent(ON.id('popId'));
       await btn5.click()
