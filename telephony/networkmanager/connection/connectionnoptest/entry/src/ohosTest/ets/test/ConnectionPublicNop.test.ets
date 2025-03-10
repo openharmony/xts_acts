@@ -340,6 +340,87 @@ export default function ConnectionPublicNopTest() {
       }
       console.info('--------testNetworkMgrConnectionReportNetConnectedNop0700----after----');
     })
+
+    /**
+     * @tc.number : SUB_Telephony_Connection_getAddressesByNameNop_0100
+     * @tc.name   : testConnectionGetAddressesByNameNop0100
+     * @tc.desc   : AddressesByName Permission denied
+     * @tc.level  : Level 3
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     */
+    it("testConnectionGetAddressesByNameNop0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      const caseName: string = 'testConnectionGetAddressesByNameNop0100';
+      console.info(`${caseName}---Start`);
+      try{
+        connection.getAddressesByName("www.baidu.com", (error: BusinessError, data: connection.NetAddress[]) => {
+          if (error) {
+            console.error(`${caseName} Failed to get addresses. Code:${error.code}, message:${error.message}`);
+            ExpectTrue(error.code == 201);
+          }else {
+            console.info(`${caseName} success to get addressta: ` + JSON.stringify(data));
+            ExpectTrue(false);
+          }
+          done();
+        });
+      }catch (err){
+        console.log(`${caseName} --test end`);
+        console.log(`${caseName} catch err is `,JSON.stringify(err));
+        ExpectTrue(false);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number : SUB_Telephony_Connection_getAddressesByNameNop_0200
+     * @tc.name   : testConnectionGetAddressesByNameNop0200
+     * @tc.desc   : AddressesByName Permission denied
+     * @tc.level  : Level 3
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     */
+    it("testConnectionGetAddressesByNameNop0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      const caseName: string = 'testConnectionGetAddressesByNameNop0200';
+      console.info(`${caseName}---Start`);
+      try{
+        connection.getAddressesByName("www.baidu.com").then((data :connection.NetAddress[] )=>{
+          console.log(`${caseName} Succeeded to get data:`, JSON.stringify(data))
+        }).catch((error:BusinessError)=>{
+          console.error(`${caseName} Failed to get addresses. Code:${error.code}, message:${error.message}`);
+          ExpectTrue(error.code == 201);
+          done();
+        })
+      }catch (err){
+        console.log(`${caseName} --test end`);
+        console.log(`${caseName} catch err is `,JSON.stringify(err));
+        ExpectTrue(false);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number : SUB_Telephony_Connection_SetPacNop_0100
+     * @tc.name   : testTelephonyConnectionSetPacNop0100
+     * @tc.desc   : set PacUrl No Permission
+     * @tc.level  : Level 3
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     */
+    it('testTelephonyConnectionSetPacNop0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      const caseName: string = 'testTelephonyConnectionSetPacNop0100';
+      console.info(`${caseName}---Start`);
+      try{
+        connection.setPacUrl("a/b")
+        ExpectTrue(false)
+      }catch (err){
+        console.log(`${caseName} --test end`);
+        console.log(`${caseName} catch err is `,JSON.stringify(err));
+        ExpectTrue(err.code == 201);
+        done();
+      }
+    })
+
     })
 }
+
 

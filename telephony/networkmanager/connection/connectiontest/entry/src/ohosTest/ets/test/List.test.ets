@@ -17,11 +17,13 @@ import connectionPublicTest from './ConnectionPublic.test';
 import ConnectionTest from './Connection.test';
 import EmptyTest from './Empty.test';
 import sim from '@ohos.telephony.sim';
+import connectionErrorTest from './ConnectionErrorCode.test';
 
 export default function testsuite() {
     if (sim.getMaxSimCount()>1){
         connectionPublicTest();
         ConnectionTest();
+        connectionErrorTest();
     }
     else{
         EmptyTest()
