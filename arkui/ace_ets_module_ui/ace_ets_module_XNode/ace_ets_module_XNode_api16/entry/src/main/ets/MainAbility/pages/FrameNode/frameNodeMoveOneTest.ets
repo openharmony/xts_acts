@@ -31,7 +31,7 @@ class MyNodeController extends NodeController {
   node2: FrameNode | null = null
   stackBlue: FrameNode | null = null
   child3: FrameNode | null = null
-  textNode: FrameNode | null = null
+  public textNode: FrameNode | null = null
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.uiContext = uiContext
