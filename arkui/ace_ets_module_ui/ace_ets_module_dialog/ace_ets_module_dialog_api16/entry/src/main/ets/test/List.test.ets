@@ -13,8 +13,11 @@
  * limitations under the License.
  */
 import maxWidth from './PopupTest/Maxwidth.test'
+import openMenu from './promptActionTest/openMenu.test.ets'
 import openPopup from './promptActionTest/openPopup.test'
+import updateMenu from './promptActionTest/updateMenu.test.ets'
 import updatePopup from './promptActionTest/updatePopup.test'
+import closeMenu from './promptActionTest/closeMenu.test.ets'
 import closePopup from './promptActionTest/closePopup.test'
 import subwindowDialog from './promptActionTest/subwindowDialog.test'
 import datePickerDialogMode from './datePickerDialogTest/DatePickerDialogMode.test';
@@ -25,8 +28,11 @@ import menuFontsizeModifierTest from './MenuTest/menuFontsizeModifierTest.test'
 import menuBindMenuModifierTest from './MenuTest/menuBindMenuModifierTest.test'
 export default function testsuite() {
     maxWidth();
+    openMenu();
     openPopup();
+    updateMenu();
     updatePopup();
+    closeMenu();
     closePopup();
     subwindowDialog();
     datePickerDialogMode();
