@@ -52,10 +52,10 @@ class MyNodeController extends NodeController {
 }
 
 class MyNodeController2 extends NodeController {
-  uiContext: UIContext | null = null
-  rootNode: FrameNode | null = null
-  stackNode: FrameNode | null = null
-  columnNode: FrameNode | null = null
+  public uiContext: UIContext | null = null
+  public rootNode: FrameNode | null = null
+  public stackNode: FrameNode | null = null
+  public columnNode: FrameNode | null = null
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.uiContext = uiContext
