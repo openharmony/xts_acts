@@ -22,15 +22,15 @@ function buildText(string: string) {
 }
 
 class MyNodeController extends NodeController {
-  uiContext: UIContext | null = null
-  rootNode: FrameNode | null = null
-  builderRootNode: FrameNode | null = null
-  nativeNode: FrameNode | null = null
-  nativeNode2: FrameNode | null = null
-  node1: FrameNode | null = null
-  node2: FrameNode | null = null
-  stackBlue: FrameNode | null = null
-  child3: FrameNode | null = null
+  public uiContext: UIContext | null = null
+  public rootNode: FrameNode | null = null
+  public builderRootNode: FrameNode | null = null
+  public nativeNode: FrameNode | null = null
+  public nativeNode2: FrameNode | null = null
+  public node1: FrameNode | null = null
+  public node2: FrameNode | null = null
+  public stackBlue: FrameNode | null = null
+  public child3: FrameNode | null = null
   public textNode: FrameNode | null = null
 
   makeNode(uiContext: UIContext): FrameNode | null {
