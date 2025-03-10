@@ -769,7 +769,7 @@ export class MyClass {
 }
 
 @Sendable
-export class myClassAble {
+export class MyClassAble {
   public id: number;
   public name: string;
 
@@ -784,7 +784,7 @@ export class myClassAble {
 }
 
 @Concurrent
-export function sendAbleClassTaskFunction1(args: myClassAble): myClassAble {
+export function sendAbleClassTaskFunction1(args: MyClassAble): MyClassAble {
   console.log(`Task 2 is running with input: ${args}`);
   args.id
   console.log(`Task 2 is running with myclass: ${args}` + args.id);
@@ -792,7 +792,7 @@ export function sendAbleClassTaskFunction1(args: myClassAble): myClassAble {
 }
 
 @Concurrent
-export function sendAbleClassTaskFunction2(args: myClassAble): myClassAble {
+export function sendAbleClassTaskFunction2(args: MyClassAble): MyClassAble {
   console.log(`Task 2 is running with input: ${args}`);
   args.greet()
   console.log(`Task 2 is running with myclass: ${args}` + args.greet());

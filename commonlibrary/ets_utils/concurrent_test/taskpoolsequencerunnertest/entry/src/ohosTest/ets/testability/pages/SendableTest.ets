@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { ArkTSUtils } from "@kit.ArkTS";
+import { ArkTSUtils } from '@kit.ArkTS';
 
 @Sendable
 export class BaseClass {

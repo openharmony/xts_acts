@@ -17,7 +17,7 @@ import { ArkTSUtils } from '@kit.ArkTS';
 @Sendable
 export class BaseClass {
   private str: string = 'sendable: BaseClass';
-  static num: number = 10;
+  public static num: number = 10;
   public str1: string = 'sendable: this is BaseClass\'s string';
   public num1: number = 5;
   public isDone1: boolean = false;
