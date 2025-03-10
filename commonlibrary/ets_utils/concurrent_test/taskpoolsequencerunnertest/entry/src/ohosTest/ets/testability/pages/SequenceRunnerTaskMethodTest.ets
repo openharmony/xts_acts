@@ -726,22 +726,22 @@ export function unionTaskFunction4(args: union4): union4 {
   return args;
 }
 
-enum enumTest { Red, Green, Blue }
+enum EnumTest { RED }
 
 @Concurrent
-export function enumTaskFunction1(args: enumTest): enumTest {
+export function enumTaskFunction1(args: EnumTest): EnumTest {
   console.log(`Task 2 is running with input: ${args}`);
   return args;
 }
 
 @Concurrent
-export function enumTaskFunction2(args: enumTest): enumTest {
+export function enumTaskFunction2(args: EnumTest): EnumTest {
   console.log(`Task 2 is running with input: ${args}`);
   return args;
 }
 
 @Concurrent
-export function enumTaskFunction3(args: enumTest): enumTest {
+export function enumTaskFunction3(args: EnumTest): EnumTest {
   console.log(`Task 2 is running with input: ${args}`);
   let s: string[] = []
   s[0].split('')[1].toString()
@@ -749,7 +749,7 @@ export function enumTaskFunction3(args: enumTest): enumTest {
 }
 
 @Concurrent
-export function enumTaskFunction4(args: enumTest): enumTest {
+export function enumTaskFunction4(args: EnumTest): EnumTest {
   console.log(`Task 2 is running with input: ${args}`);
   let s: string[] = []
   s[0].split('')[1].toString()

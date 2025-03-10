@@ -51,14 +51,14 @@ import {
   enumTaskFunction4,
   classTaskFunction1,
   classTaskFunction2,
-  myClass,
+  MyClass,
   isInterfaceTaskFunction1,
   isInterfaceTaskFunction2,
   isInterfaceTaskFunction3,
   isInterfaceTaskFunction4,
   sendAbleClassTaskFunction1,
   sendAbleClassTaskFunction2,
-  myClassAble,
+  MyClassAble,
   sampleFunction,
   printSendableFunction1,
   printSendableFunction2,
@@ -949,8 +949,8 @@ export default function sequenceRunnerAbilityTest_2() {
       
       task1Count = 0;
       task2Count = 0;
-      let myclass1 = new myClass(1,);
-      let myclass2 = new myClass(2,);
+      let myclass1 = new MyClass(1,);
+      let myclass2 = new MyClass(2,);
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       await sleep(100);
 
@@ -1022,8 +1022,8 @@ export default function sequenceRunnerAbilityTest_2() {
       
       task1Count = 0;
       task2Count = 0;
-      let myclass1 = new myClassAble(1, 'test1');
-      let myclass2 = new myClassAble(2, 'test2');
+      let myclass1 = new MyClassAble(1, 'test1');
+      let myclass2 = new MyClassAble(2, 'test2');
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       await sleep(100);
 
