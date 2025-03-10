@@ -13,9 +13,9 @@
 * limitations under the License.
 */
 
-import { worker } from "@kit.ArkTS";
-import { Driver } from "@kit.TestKit";
-import { testUISec, testUISec1 } from "./MultipleTask";
+import { worker } from '@kit.ArkTS';
+import { Driver } from '@kit.TestKit';
+import { testUISec, testUISec1 } from './MultipleTask';
 
 export class WorkThread {
   public workerStageModel = new worker.ThreadWorker('./workers/WorkerTaskGroup.ets');

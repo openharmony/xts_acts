@@ -756,7 +756,7 @@ export function enumTaskFunction4(args: enumTest): enumTest {
   return args;
 }
 
-export class myClass {
+export class MyClass {
   public id: number;
 
   constructor(id: number,) {
@@ -800,7 +800,7 @@ export function sendAbleClassTaskFunction2(args: myClassAble): myClassAble {
 }
 
 @Concurrent
-export function classTaskFunction1(args: myClass): myClass {
+export function classTaskFunction1(args: MyClass): MyClass {
   console.log(`Task 2 is running with input: ${args}`);
   args.id
   console.log(`Task 2 is running with myclass: ${args}` + args.id);
@@ -808,7 +808,7 @@ export function classTaskFunction1(args: myClass): myClass {
 }
 
 @Concurrent
-export function classTaskFunction2(args: myClass): myClass {
+export function classTaskFunction2(args: MyClass): MyClass {
   console.log(`Task 2 is running with input: ${args}`);
   args.greet()
   console.log(`Task 2 is running with myclass: ${args}` + args.greet());
@@ -817,8 +817,8 @@ export function classTaskFunction2(args: myClass): myClass {
 
 @Sendable
 class CustomData implements lang.ISendable {
-  id: number;
-  name: string;
+  public id: number;
+  public name: string;
 
   constructor(id: number, name: string) {
     this.id = id;

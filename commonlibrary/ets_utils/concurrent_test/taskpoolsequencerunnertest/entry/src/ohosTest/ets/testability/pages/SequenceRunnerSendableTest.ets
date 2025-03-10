@@ -12,12 +12,12 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { ArkTSUtils } from "@kit.ArkTS";
+import { ArkTSUtils } from '@kit.ArkTS';
 
 @Sendable
 export class BaseClass {
   private str: string = 'sendable: BaseClass';
-  static num: number = 10;
+  public static num: number = 10;
   public str1: string = 'sendable: this is BaseClass\'s string';
   public num1: number = 5;
   public isDone1: boolean = false;
@@ -77,14 +77,14 @@ export class AsyncLock {
   public count_: number = 1;
 
   public async getCount(): Promise<number> {
-    let lock: ArkTSUtils.locks.AsyncLock = ArkTSUtils.locks.AsyncLock.request("lock_1");
+    let lock: ArkTSUtils.locks.AsyncLock = ArkTSUtils.locks.AsyncLock.request('lock_1');
     return lock.lockAsync(() => {
       return this.count_;
     })
   }
 
   public async setCount(count: number) {
-    let lock: ArkTSUtils.locks.AsyncLock = ArkTSUtils.locks.AsyncLock.request("lock_1");
+    let lock: ArkTSUtils.locks.AsyncLock = ArkTSUtils.locks.AsyncLock.request('lock_1');
     await lock.lockAsync(() => {
       this.count_ = count;
     })

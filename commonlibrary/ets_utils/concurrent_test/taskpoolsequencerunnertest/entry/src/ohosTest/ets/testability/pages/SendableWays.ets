@@ -1,5 +1,3 @@
-import { ArkTSUtils } from "@kit.ArkTS";
-
 /*
 * Copyright (C) 2024 HiHope Open Source Organization.
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +12,8 @@ import { ArkTSUtils } from "@kit.ArkTS";
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+import { ArkTSUtils } from '@kit.ArkTS';
+
 @Sendable
 export class BaseClass {
   private str: string = 'sendable: BaseClass';
@@ -56,7 +56,7 @@ export class BaseClass {
 
 @Sendable
 export class DeriveClass extends BaseClass {
-  name: string = 'sendable: this is DeriveClass';
+  public name: string = 'sendable: this is DeriveClass';
 
   printName() {
     console.info(this.name);

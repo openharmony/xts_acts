@@ -71,7 +71,7 @@ export function printArgs5(arg: number): number {
   }
 
   if (taskpool.Task.isCanceled()) {
-    console.info("==== task has been canceled after 2s sleep.");
+    console.info('==== task has been canceled after 2s sleep.');
     return arg + 1;
   }
 
@@ -94,7 +94,7 @@ export function printArgs6(arg: number): number {
   }
 
   if (taskpool.Task.isCanceled()) {
-    console.info("==== task has been canceled after 2s sleep.");
+    console.info('==== task has been canceled after 2s sleep.');
     return arg + 1;
   }
 

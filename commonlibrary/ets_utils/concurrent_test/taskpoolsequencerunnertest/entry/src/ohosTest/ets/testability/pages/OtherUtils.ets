@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { worker } from "@kit.ArkTS";
+import { worker } from '@kit.ArkTS';
 
 export class WorkThread {
   public workerStageModel = new worker.ThreadWorker('./workers/WorkerTaskRqRunnerTask');

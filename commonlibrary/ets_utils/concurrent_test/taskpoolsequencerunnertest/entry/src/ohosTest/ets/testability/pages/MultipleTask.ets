@@ -12,12 +12,12 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { ArkTools, Contexts, sleep, test2, testUI, testUI1 } from "./Utils"
-import fs from "@ohos.file.fs"
-import { taskpool, worker } from "@kit.ArkTS"
-import { Driver } from "@kit.TestKit"
-import { asyncLockWork, printArgs1, setTimeOutWork } from "./TaskMethodTest"
-import { MeasureText } from "@kit.ArkUI"
+import { ArkTools, Contexts, sleep, test2, testUI, testUI1 } from './Utils'
+import fs from '@ohos.file.fs'
+import { taskpool, worker } from '@kit.ArkTS'
+import { Driver } from '@kit.TestKit'
+import { asyncLockWork, printArgs1, setTimeOutWork } from './TaskMethodTest'
+import { MeasureText } from '@kit.ArkUI'
 
 
 @Concurrent

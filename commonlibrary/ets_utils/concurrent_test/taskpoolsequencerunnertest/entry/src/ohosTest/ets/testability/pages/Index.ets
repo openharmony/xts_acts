@@ -24,14 +24,6 @@ import { Contexts } from './Utils';
 struct Index {
   @State message: string = 'Hello World';
 
-  aboutToAppear(): void {
-    let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-    abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-    let abilityDelegatorArguments: abilityDelegatorRegistry.AbilityDelegatorArgs;
-    abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
-    hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
-  }
   onPageShow(): void {
     Contexts.contexts = getContext(this)
     Contexts.path = Contexts.contexts.cacheDir
@@ -42,7 +34,7 @@ struct Index {
     RelativeContainer() {
       Text(this.message)
         .id('HelloWorld')
-        .fontSize($r('app.float.page_text_font_size'))
+        .fontSize(50)
         .fontWeight(FontWeight.Bold)
         .alignRules({
           center: { anchor: '__container__', align: VerticalAlign.Center },
