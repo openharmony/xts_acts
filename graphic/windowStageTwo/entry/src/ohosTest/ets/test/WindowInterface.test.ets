@@ -2611,7 +2611,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           expect(true).assertTrue();
           done();
         }).catch((err: BusinessError) => {
-          console.error(`${message} Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          console.error(`${message} Failed to set window support modes. Cause code:${err.code}, messege:${err.message}`);
           if (err.code == 801) {
             console.error(`The device not support setSupportedWindowModes`);
             expect(true).assertTrue();
@@ -2622,7 +2622,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           done();
         });
       } catch (err) {
-        console.error(`Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+        console.error(`Failed to set window support modes. Cause code:${err.code}, messege:${err.message}`);
         expect().assertFail();
         done();
       }
@@ -2649,7 +2649,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           expect(true).assertTrue();
           done();
         }).catch((err: BusinessError) => {
-          console.error(`${message} Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          console.error(`${message} Failed to set window support modes. Cause code:${err.code}, messege:${err.message}`);
           if (err.code == 801) {
             console.error(`The device not support setSupportedWindowModes`);
             expect(true).assertTrue();
@@ -2660,7 +2660,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           done();
         });
       } catch (err) {
-        console.error(`Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+        console.error(`Failed to set window support modes. Cause code:${err.code}, messege:${err.message}`);
         expect().assertFail();
         done();
       }
@@ -2687,7 +2687,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           expect().assertFail()
           done()
         }).catch((err: BusinessError) => {
-          console.error(`${message} Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          console.error(`${message} Failed to set window support modes. Cause code:${err.code}, messege:${err.message}`);
           if (err.code == 801 || err.code == 401) {
             console.error(`The device not support setSupportedWindowModes`);
             expect(true).assertTrue();
@@ -2698,7 +2698,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           done();
         });
       } catch (err) {
-        console.error(`Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+        console.error(`Failed to set window support modes. Cause code:${err.code}, messege:${err.message}`);
         expect().assertFail();
         done();
       }
@@ -2723,7 +2723,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           expect().assertFail()
           done()
         }).catch((err: BusinessError) => {
-          console.error(`${message} Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          console.error(`${message} Failed to set window support modes. Cause code:${err.code}, messege:${err.message}`);
           if (err.code == 801 || err.code == 401) {
             console.error(`The device not support setSupportedWindowModes`);
             expect(true).assertTrue();
@@ -2734,7 +2734,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           done();
         });
       } catch (err) {
-        console.error(`Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+        console.error(`Failed to set window support modes. Cause code:${err.code}, messege:${err.message}`);
         expect().assertFail();
         done();
       }
@@ -2759,7 +2759,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           expect().assertFail()
           done()
         }).catch((err: BusinessError) => {
-          console.error(`${message} Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          console.error(`${message} Failed to set window support modes. Cause code:${err.code}, messege:${err.message}`);
           if (err.code == 801 || err.code == 401) {
             console.error(`The device not support setSupportedWindowModes`);
             expect(true).assertTrue();
@@ -2770,7 +2770,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           done();
         });
       } catch (err) {
-        console.error(`Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+        console.error(`Failed to set window support modes. Cause code:${err.code}, messege:${err.message}`);
         expect().assertFail();
         done();
       }
@@ -2797,7 +2797,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           expect().assertFail();
           done();
         }).catch((err: BusinessError) => {
-          console.error(`${message} Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          console.error(`${message} Failed to set window support modes. Cause code:${err.code}, messege:${err.message}`);
           if (err.code == 801 || err.code == 1300002) {
             console.error(`The device not support setSupportedWindowModes`);
             expect(true).assertTrue();
@@ -2807,7 +2807,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           done();
         });
       } catch (err) {
-        console.error(`Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+        console.error(`Failed to set window support modes. Cause code:${err.code}, messege:${err.message}`);
         if (err.code == 1300002) {
           expect(true).assertTrue();
         } else {
@@ -2839,7 +2839,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           let isImmersive_primary = windowStageStart.getMainWindowSync().getImmersiveModeEnabledState();
           expect(isImmersive_primary).assertTrue();
         }).catch((err: BusinessError) => {
-          console.error(`${message} primary Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          console.error(`${message} primary Failed to set window support modes. Cause code:${err.code}, messege:${err.message}`);
           if (err.code == 801) {
             console.error(`The device not support setSupportedWindowModes`);
             expect(true).assertTrue();
@@ -2856,7 +2856,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           console.info(`${message} status_float:${status_float}, window.WindowStatusType.FLOATING:${window.WindowStatusType.FLOATING}`);
           expect(status_float).assertEqual(window.WindowStatusType.FLOATING);
         }).catch((err: BusinessError) => {
-          console.error(`${message} float Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          console.error(`${message} float Failed to set window support modes. Cause code:${err.code}, messege:${err.message}`);
           if (err.code == 801) {
             console.error(`The device not support setSupportedWindowModes`);
             expect(true).assertTrue();
@@ -2878,7 +2878,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           expect(isImmersive_fullscreen).assertTrue();
           done()
         }).catch((err: BusinessError) => {
-          console.error(`${message} fullscreen Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+          console.error(`${message} fullscreen Failed to set window support modes. Cause code:${err.code}, messege:${err.message}`);
           if (err.code == 801) {
             console.error(`The device not support setSupportedWindowModes`);
             expect(true).assertTrue();
@@ -2888,7 +2888,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           done();
         });
       } catch (err) {
-        console.error(`Failed to set window support modes. Cause code"${err.code}, messege:${err.message}`);
+        console.error(`Failed to set window support modes. Cause code:${err.code}, messege:${err.message}`);
         expect().assertFail();
         done();
       }
