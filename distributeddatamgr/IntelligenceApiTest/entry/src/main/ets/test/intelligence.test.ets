@@ -468,6 +468,11 @@ export default function intelligenceTest() {
               console.info(TAG + "loadModel result 1000 :");
               done();
             })
+            data.releaseModel()
+            .then(() => {
+              console.info(TAG + "releaseModel result 1100 :");
+              done();
+            })
           })
       } else {
         intelligence.getImageEmbeddingModel(imageConfig)
@@ -505,6 +510,11 @@ export default function intelligenceTest() {
             data.releaseModel()
             .then(() => {
               console.info(TAG + "releaseModel result 1100 :");
+              done();
+            })
+            .catch((err:BusinessError) => {
+              console.info(TAG + "getEmbedding result" + err.code);
+              expect(err.code).assertEqual(31300000);
               done();
             })
           })
