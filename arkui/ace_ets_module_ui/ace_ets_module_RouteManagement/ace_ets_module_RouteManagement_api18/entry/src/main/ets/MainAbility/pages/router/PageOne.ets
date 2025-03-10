@@ -1,6 +1,6 @@
 import { router } from '@kit.ArkUI'
 
-class routeParam {
+class RouteParam {
   constructor(msg: string) {
     this.msg = msg
   }
@@ -32,7 +32,7 @@ struct PageOne {
         Text(this.paramString).id('paramId').height('10%')
         Button('pushUrl PageOne Single')
           .onClick(() => {
-            router.pushUrl({ url: 'pages/PageOne', params: new routeParam('pushUrl One Single') }, router.RouterMode.Single)
+            router.pushUrl({ url: 'pages/PageOne', params: new RouteParam('pushUrl One Single') }, router.RouterMode.Single)
           })
           .id('pushUrlId')
           .height('10%')
