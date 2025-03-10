@@ -16,7 +16,7 @@
 import certManager from '@ohos.security.certManager';
 import { BusinessError } from '@ohos.base';
 import buffer from '@ohos.buffer';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import * as signVerifyPromise from './utils/signAndVerify/signVerifyPromise';
 
 let caCert = new Uint8Array([0x30, 0x82, 0x04, 0x31, 0x30, 0x82, 0x03, 0x19, 0xa0, 0x03, 0x02, 0x01, 0x02, 0x02, 0x01, 0x00,
@@ -262,7 +262,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.type Function
      * @tc.level Level1
      */
-    it('Security_CertManager_InstallPrivateCertificate_Func_0010', 0, async (done: Function) => {
+    it('Security_CertManager_InstallPrivateCertificate_Func_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('Security_CertManager_InstallPrivateCertificate_Func_0010 start');
       let keyUri: string | undefined;
       let pwd = '123456';
