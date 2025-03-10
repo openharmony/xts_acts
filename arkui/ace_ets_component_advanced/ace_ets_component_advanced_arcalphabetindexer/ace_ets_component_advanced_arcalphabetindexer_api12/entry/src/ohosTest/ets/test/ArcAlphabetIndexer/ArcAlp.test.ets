@@ -25,7 +25,7 @@ interface optionsObj {
 
 function dataPanelDefaultStrokeWidth(sysWidth: Resource) {
   let resourceStrokeWidth = getContext().resourceManager.getNumber(sysWidth.id)
-  let newStrokeWidth: string = px2vp(resourceStrokeWidth) + '.00vp'
+  let newStrokeWidth: string = Math.round(px2vp(resourceStrokeWidth)) + '.00vp'
   return newStrokeWidth;
 }
 
