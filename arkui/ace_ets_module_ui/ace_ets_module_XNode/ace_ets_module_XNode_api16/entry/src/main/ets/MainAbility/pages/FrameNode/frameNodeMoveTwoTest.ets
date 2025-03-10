@@ -15,12 +15,12 @@
 import { FrameNode, NodeController, UIContext, typeNode } from '@kit.ArkUI'
 
 class MyNodeController extends NodeController {
-  uiContext: UIContext | null = null
-  rootNode: FrameNode | null = null
-  stackNode: FrameNode | null = null
-  ColumnNode: FrameNode | null = null
-  Button: FrameNode | null = null
-  buttonText: string = ''
+  public uiContext: UIContext | null = null
+  public rootNode: FrameNode | null = null
+  public stackNode: FrameNode | null = null
+  public columnNode: FrameNode | null = null
+  public button: FrameNode | null = null
+  public buttonText: string = ''
 
   constructor(buttonText:string) {
     super()
@@ -32,20 +32,20 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext)
 
     const stack = typeNode.createNode(this.uiContext, 'Stack')
-    const Column = typeNode.createNode(this.uiContext, 'Column')
+    const column = typeNode.createNode(this.uiContext, 'Column')
     const button = typeNode.createNode(this.uiContext, 'Button')
     stack.attribute.id('Stack')
     stack.attribute.backgroundColor(Color.Green)
     button.attribute.width(200)
     button.attribute.height(100)
     button.initialize(this.buttonText)
-    Column.attribute.id('Column')
+    column.attribute.id('Column')
     this.stackNode = stack
-    this.ColumnNode = Column
-    this.Button = button
+    this.columnNode = column
+    this.button = button
     this.rootNode.appendChild(this.stackNode)
-    this.rootNode.appendChild(this.ColumnNode)
-    this.stackNode.appendChild(this.Button)
+    this.rootNode.appendChild(this.columnNode)
+    this.stackNode.appendChild(this.button)
 
     return this.rootNode
   }
@@ -55,15 +55,15 @@ class MyNodeController2 extends NodeController {
   uiContext: UIContext | null = null
   rootNode: FrameNode | null = null
   stackNode: FrameNode | null = null
-  ColumnNode: FrameNode | null = null
+  columnNode: FrameNode | null = null
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.uiContext = uiContext
     this.rootNode = new FrameNode(uiContext)
 
-    const Column = typeNode.createNode(this.uiContext, 'Column')
-    this.ColumnNode = Column
-    this.rootNode.appendChild(this.ColumnNode)
+    const column = typeNode.createNode(this.uiContext, 'Column')
+    this.columnNode = column
+    this.rootNode.appendChild(this.columnNode)
 
     return this.rootNode
   }
@@ -85,7 +85,7 @@ struct frameNodeMoveTwo {
 
       Column() {
         Text('Custom Popup').fontSize(10)
-      }.id("kkkColumn")
+      }
     }.width('100%').height(100).padding(5).id('popup_id')
     .onClick(() => {
       const uiContext: UIContext = this.getUIContext();
@@ -94,10 +94,15 @@ struct frameNodeMoveTwo {
       if (node2){
         console.log('kkk2 getNode2 successfully');
       }
-      if (this.myNodeController3.ColumnNode) {
+      if (this.myNodeController3.columnNode) {
         console.log('kkk2 myNodeController3.ColumnNode');
       }
-      node2?.moveTo(this.myNodeController3.ColumnNode, 0)
+      node2?.moveTo(this.myNodeController3.columnNode, 0)
+
+      this.frame1ChildCount = this.myNodeController1.rootNode!.getFirstChild()!.getChildrenCount();
+      this.frame2ChildCount = this.myNodeController2.rootNode!.getFirstChild()!.getChildrenCount();
+      this.frame3ChildCount = this.myNodeController3.rootNode!.getFirstChild()!.getChildrenCount();
+
     })
   }
 
@@ -105,7 +110,7 @@ struct frameNodeMoveTwo {
   private myNodeController2: MyNodeController = new MyNodeController('button2')
 
   move() {
-    this.myNodeController1.stackNode?.moveTo(this.myNodeController2.ColumnNode, 1)
+    this.myNodeController1.stackNode?.moveTo(this.myNodeController2.columnNode, 1)
   }
 
   build() {
@@ -119,12 +124,12 @@ struct frameNodeMoveTwo {
         Text(`${this.frame3ChildCount}`).height('5%').id('frame3ChildCount')
       }
 
-      Button('child count').height('10%').id('count_id')
-        .onClick(() => {
-          this.frame1ChildCount = this.myNodeController1.rootNode!.getFirstChild()!.getChildrenCount();
-          this.frame2ChildCount = this.myNodeController2.rootNode!.getFirstChild()!.getChildrenCount();
-          this.frame3ChildCount = this.myNodeController3.rootNode!.getFirstChild()!.getChildrenCount();
-        })
+      // Button('child count').height('10%').id('count_id')
+      //   .onClick(() => {
+      //     this.frame1ChildCount = this.myNodeController1.rootNode!.getFirstChild()!.getChildrenCount();
+      //     this.frame2ChildCount = this.myNodeController2.rootNode!.getFirstChild()!.getChildrenCount();
+      //     this.frame3ChildCount = this.myNodeController3.rootNode!.getFirstChild()!.getChildrenCount();
+      //   })
 
       Button('CustomPopupOptions').height('10%').id('customPopupOptions_id')
         .onClick(() => {
