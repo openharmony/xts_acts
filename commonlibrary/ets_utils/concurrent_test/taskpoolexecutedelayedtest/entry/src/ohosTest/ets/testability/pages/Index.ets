@@ -16,8 +16,6 @@
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { Hypium } from '@ohos/hypium';
-import testsuite from '../../test/List.test';
-import { Contexts } from './Utils';
 
 @Entry
 @Component

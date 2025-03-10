@@ -13,25 +13,57 @@
 * limitations under the License.
 */
 {
-  "apiType": "stageMode",
-  "buildOption": {
-    "sourceOption": {
-      "workers": [
-        './src/ohosTest/ets/testability/pages/workers/WorkerTaskGroup.ets',
-        './src/ohosTest/ets/testability/pages/workers/WorkerTaskGroup1.ets',
-        './src/ohosTest/ets/testability/pages/workers/WorkerTaskGroup2.ets',
-        './src/ohosTest/ets/testability/pages/workers/WorkerTaskGroup3.ets',
-        './src/ohosTest/ets/testability/pages/workers/WorkerTaskGroup4.ets',
-        './src/ohosTest/ets/workers/Worker.ets'
-      ]
-    }
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "material": {
+          "certpath": "C:/Users/tang_lizhen/.ohos/config/openharmony/ddd_TaskpoolExecuteDelayedExecute_gwjKQYRpAj6813M6E5DUCJQfa3nBvxnFHehBUISUJAA=.cer",
+          "storePassword": "00000019C10ACE20CF5492DBCC0AA1FD8983009F6D933807A6A7BBDB095EDC60BBDE4C58B515FEC624",
+          "keyAlias": "debugKey",
+          "keyPassword": "00000019B9A5B58E2E05DC27607E70244EDEE82A270325B30E797B99823B0DF7D7BB1A0F868A7483FD",
+          "profile": "C:/Users/tang_lizhen/.ohos/config/openharmony/ddd_TaskpoolExecuteDelayedExecute_gwjKQYRpAj6813M6E5DUCJQfa3nBvxnFHehBUISUJAA=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:/Users/tang_lizhen/.ohos/config/openharmony/ddd_TaskpoolExecuteDelayedExecute_gwjKQYRpAj6813M6E5DUCJQfa3nBvxnFHehBUISUJAA=.p12"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": 14,
+        "compileSdkVersion": 14,
+        "runtimeOS": "OpenHarmony",
+        "buildOption": {
+          "strictMode": {
+            "caseSensitiveCheck": true,
+            "useNormalizedOHMUrl": true
+          }
+        }
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
   },
-  "targets": [
+  "modules": [
     {
-      "name": "default"
-    },
-    {
-      "name": "ohosTest",
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
     }
   ]
 }
