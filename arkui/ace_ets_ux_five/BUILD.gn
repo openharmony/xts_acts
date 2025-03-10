@@ -11,15 +11,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import("//foundation/arkui/ace_engine/ace_config.gni")
 group("UxFiveTest") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "ace_ets_component_Checkbox:CheckboxTest",
-      "ace_ets_component_Dialog:DialogTest",
-      "ace_ets_component_ModelSheet:ModelSheetTest",
-      "ace_ets_component_Refresh:RefreshTest",
-      "ace_ets_component_Select:SelectTest",
-    ]
+    if (ace_engine_feature_wearable) {
+      deps = [
+        "ace_ets_component_Checkbox:CheckboxTest",
+        "ace_ets_component_Dialog:DialogTest",
+        "ace_ets_component_ModelSheet:ModelSheetTest",
+        "ace_ets_component_Refresh:RefreshTest",
+      ]
+    } else {
+      deps = [
+        "ace_ets_component_Checkbox:CheckboxTest",
+        "ace_ets_component_Dialog:DialogTest",
+        "ace_ets_component_ModelSheet:ModelSheetTest",
+        "ace_ets_component_Refresh:RefreshTest",
+        "ace_ets_component_Select:SelectTest",
+      ]
+    }
   }
 }
