@@ -16,7 +16,6 @@
 import unicodeTest from './onKeyEventTest/unicode.test';
 import defaultFocus from './FocusView/defaultFocus.test';
 import tabStopApiTest from './tabStopApiTest/tabStopApiTest.test';
-import activeApiTest from './UIContext/FocusController/activeApiTest.test';
 import TapGestureAllowedTypesTest from './GestureAllowedTypes/TapGestureAllowedTypesTest.test';
 import LongPressGestureAllowedTypesTest from './GestureAllowedTypes/LongPressGestureAllowedTypesTest.test';
 import PinchGestureAllowedTypesTest from './GestureAllowedTypes/PinchGestureAllowedTypesTest.test';
@@ -26,14 +25,10 @@ import SwipeGestureAllowedTypesTest from './GestureAllowedTypes/SwipeGestureAllo
 import TapGestureHandlerAllowedTypesTest from './GestureHandlerAllowedTypes/TapGestureHandlerAllowedTypesTest.test';
 import LongPressGestureHandlerAllowedTypesTest from './GestureHandlerAllowedTypes/LongPressGestureHandlerAllowedTypesTest.test';
 import PinchGestureHandlerAllowedTypesTest from './GestureHandlerAllowedTypes/PinchGestureHandlerAllowedTypesTest.test';
-import PanGestureHandlerAllowedTypesTest from './GestureHandlerAllowedTypes/PanGestureHandlerAllowedTypesTest.test';
-import RotationGestureHandlerAllowedTypesTest from './GestureHandlerAllowedTypes/RotationGestureHandlerAllowedTypesTest.test';
-import SwipeGestureHandlerAllowedTypesTest from './GestureHandlerAllowedTypes/SwipeGestureHandlerAllowedTypesTest.test';
 export default function testsuite() {
   unicodeTest();
   defaultFocus();
   tabStopApiTest();
-  activeApiTest();
   TapGestureAllowedTypesTest();
   LongPressGestureAllowedTypesTest();
   PinchGestureAllowedTypesTest();
@@ -43,7 +38,4 @@ export default function testsuite() {
   TapGestureHandlerAllowedTypesTest();
   LongPressGestureHandlerAllowedTypesTest();
   PinchGestureHandlerAllowedTypesTest();
-  PanGestureHandlerAllowedTypesTest();
-  RotationGestureHandlerAllowedTypesTest();
-  SwipeGestureHandlerAllowedTypesTest();
 }

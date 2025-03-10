@@ -21,7 +21,10 @@
             "./testSelinuxFileLable.py",
             "./testSystemCoreInternetPermission.py",
             "./testTrustedRootCaExist.py",
-            "./testSupportHdc.py"
+            "./testSupportHdc.py",
+            "./testSysCapNameOnly.py",
+            "./testPowerShell.py",
+            "./testPowerWakeUp.py"
         ]
     },
     "kits": [

@@ -14,7 +14,16 @@ add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
     setKeyProcessingMode/key_processing_mode.cpp
+    scroll/scroll_backtotop_test.cpp
+    component/component.cpp
+    component/grid_component.cpp
+    component/list_component.cpp
+    component/scroll_component.cpp
+    component/waterflow_component.cpp
+    component/button_component.cpp
+    component/text_component.cpp
     keyDisPatchTest/keyEventDispatch_test.cpp
+    focusControl/focus_control.cpp
 )
 
 add_library(nativefunc SHARED

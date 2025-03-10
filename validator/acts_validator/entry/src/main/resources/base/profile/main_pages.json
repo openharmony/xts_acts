@@ -126,15 +126,11 @@
     "pages/PCS/RebootScreenUnlock",
     "pages/ArkUI/AccessibilityProperty",
     "pages/ArkUI/AccessibilityOptions",
-	"pages/ArkUI/Clickhand",
-    "pages/ArkUI/Groupgesturrehand",
-    "pages/ArkUI/Longhand",
-    "pages/ArkUI/Panhand",
-    "pages/ArkUI/Pinchhand",
-    "pages/ArkUI/Rotate1hand",
-    "pages/ArkUI/Swipehand",
+    "pages/ArkUI/HoverMove",
+    "pages/ArkUI/Clickhand",
     "pages/ArkUI/Taphand",
-    "pages/ArkUI/HoverMove"
+    "pages/ArkUI/Touchhand",
+    "pages/ArkUI/HoverSpen"
   ]
 }
 

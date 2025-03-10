@@ -14,22 +14,17 @@
  */
 
 
-import buttonType from './buttonType/buttonTypeApi.test';
 import checkboxNode from './checkbox/checkboxNode.test';
 import checkboxGroupNode from './checkboxGroup/checkboxGroupNode.test';
 import enableCascadeTest from './timePicker/enableCascadeTest.test';
 import radioNode from './radio/radioNode.test';
 import ratingNode from './rating/ratingNode.test';
-import selectNode from './select/selectNode.test';
 import sliderNode from './slider/sliderNode.test';
 import toggleNode from './toggle/toggleNode.test';
-import columnWidths from './textPicker/columnWidths.test';
 import datePickerMode from './datePicker/DatePickerMode.test';
-import disableDateRangeAndMarkTodayTest from './calendarPicker/disableDateRangeAndMarkToday.test'
 import PickerCrownSensitivity from './crownSensitivity/Picker.test';
 import TimePickerCrownSensitivity from './crownSensitivity/TimePicker.test';
 import TextPickerCrownSensitivity from './crownSensitivity/TextPicker.test';
-import calendarPickerStartEndTest from './calendarPicker/startEndTest.test';
 import checkBoxOnChangeModifierTest from './checkbox/checkboxOnChangeModifier.test';
 import checkBoxGroupOnChangeModifierTest from './checkboxGroup/checkboxGroupOnChangeModifier.test';
 import radioOnChangeModifierTest from './radio/radioOnChangeModifier.test';
@@ -41,22 +36,17 @@ import timePickerOnChangeModifierTest from './timePicker/timePickerOnChangeModif
 import datePickerOnChangeModifierTest from './datePicker/datePickerOnChangeModifier.test';
 
 export default function testsuite() {
-  buttonType();
   enableCascadeTest();
   checkboxNode();
   checkboxGroupNode();
   radioNode();
   ratingNode();
-  selectNode();
   sliderNode();
   toggleNode();
-  columnWidths();
   datePickerMode();
-  disableDateRangeAndMarkTodayTest();
   PickerCrownSensitivity();
   TimePickerCrownSensitivity();
   TextPickerCrownSensitivity();
-  calendarPickerStartEndTest();
   checkBoxOnChangeModifierTest();
   radioOnChangeModifierTest();
   checkBoxGroupOnChangeModifierTest();

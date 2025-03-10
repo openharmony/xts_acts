@@ -11,5 +11,5 @@ endif()
 include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include)
 
-add_library(nativeFontNdk SHARED nativeFontNdk.cpp)
+add_library(nativeFontNdk SHARED nativeFontNdk.cpp nativeFontNdk1.cpp nativeFontNdk2.cpp)
 target_link_libraries(nativeFontNdk PUBLIC libace_napi.z.so libnative_drawing.so libhilog_ndk.z.so)

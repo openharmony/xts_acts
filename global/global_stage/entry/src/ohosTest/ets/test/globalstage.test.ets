@@ -15,7 +15,7 @@
 
 import resourceManager from '@ohos.resourceManager';
 import Ability from '@ohos.app.ability.UIAbility'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import sendableResourceManager from '@ohos.sendableResourceManager';
 import { GlobalContext } from '../test/global';
@@ -2169,6 +2169,1656 @@ export default function globalStageTest() {
         expect(e.code == '9001005').assertTrue();
       }
     })
+
+    /**
+     * @tc.number    : getStringArrayValue_stage_test_0300
+     * @tc.name      : getStringArrayValue_stage_test_0300
+     * @tc.desc      : errcode 9001001 in callback mode
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayValue_stage_test_0300', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayValue({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }, (err: BusinessError) => {
+        console.log('getStringArrayValue_stage_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : getStringArrayValue_stage_test_0400
+     * @tc.name      : getStringArrayValue_stage_test_0400
+     * @tc.desc      : errcode 9001002 in callback mode
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayValue_stage_test_0400', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayValue({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.module_test_desc').id
+      }, (err: BusinessError) => {
+        console.log('getStringArrayValue_stage_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : getStringArrayValue_stage_test_0500
+     * @tc.name      : getStringArrayValue_stage_test_0500
+     * @tc.desc      : errcode 9001006 in callback mode
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayValue_stage_test_0500', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayValue({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.strarray.sizeListThree').id
+      }, (err: BusinessError) => {
+        console.log('getStringArrayValue_stage_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : getStringArrayValue_stage_test_0600
+     * @tc.name      : getStringArrayValue_stage_test_0600
+     * @tc.desc      : errcode 401 in callback mode
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayValue_stage_test_0600', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayValue({
+        bundleName: "error",
+        moduleName: "error",
+        id: $r('app.strarray.sizeList').id
+      }, (err: BusinessError) => {
+        console.log('getStringArrayValue_stage_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual(401);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : getStringArrayValue_stage_test_0700
+     * @tc.name      : getStringArrayValue_stage_test_0700
+     * @tc.desc      : errcode 9001001 in promise mode
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayValue_stage_test_0700', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayValue({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getStringArrayValue_stage_test_0700 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : getStringArrayValue_stage_test_0800
+     * @tc.name      : getStringArrayValue_stage_test_0800
+     * @tc.desc      : errcode 9001002 in promise mode
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayValue_stage_test_0800', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayValue({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.module_test_desc').id
+      }).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getStringArrayValue_stage_test_0800 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : getStringArrayValue_stage_test_0900
+     * @tc.name      : getStringArrayValue_stage_test_0900
+     * @tc.desc      : errcode 9001006 in promise mode
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayValue_stage_test_0900', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayValue({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.strarray.sizeListThree').id
+      }).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getStringArrayValue_stage_test_0900 error code:' + err.code);
+        expect(err.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : getStringArrayValue_stage_test_1000
+     * @tc.name      : getStringArrayValue_stage_test_1000
+     * @tc.desc      : errcode 401 in promise mode
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayValue_stage_test_1000', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayValue({
+        bundleName: "error",
+        moduleName: "error",
+        id: $r('app.strarray.sizeList').id
+      }).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getStringArrayValue_stage_test_1000 error code:' + err.code);
+        expect(err.code).assertEqual(401);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : getMediaContent_stage_test_0500
+     * @tc.name      : getMediaContent_stage_test_0500
+     * @tc.desc      : errcode 9001001 in callback mode
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getMediaContent_stage_test_0500', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }, (err: BusinessError) => {
+        console.log('getMediaContent_stage_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : getMediaContent_stage_test_0600
+     * @tc.name      : getMediaContent_stage_test_0600
+     * @tc.desc      : errcode 9001002 in callback mode
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getMediaContent_stage_test_0600', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.module_test_desc').id
+      }, (err: BusinessError) => {
+        console.log('getMediaContent_stage_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : getMediaContent_stage_test_0700
+     * @tc.name      : getMediaContent_stage_test_0700
+     * @tc.desc      : errcode 401 in callback mode
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getMediaContent_stage_test_0700', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent({
+        bundleName: "error",
+        moduleName: "error",
+        id: $r('app.media.icon').id
+      }, (err: BusinessError) => {
+        console.log('getMediaContent_stage_test_0700 error code:' + err.code);
+        expect(err.code).assertEqual(401);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : getMediaContent_stage_test_0800
+     * @tc.name      : getMediaContent_stage_test_0800
+     * @tc.desc      : errcode 9001001 in callback mode with density
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getMediaContent_stage_test_0800', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }, 0, (err: BusinessError) => {
+        console.log('getMediaContent_stage_test_0800 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : getMediaContent_stage_test_0900
+     * @tc.name      : getMediaContent_stage_test_0900
+     * @tc.desc      : errcode 9001002 in callback mode with density
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getMediaContent_stage_test_0900', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.module_test_desc').id
+      }, 0, (err: BusinessError) => {
+        console.log('getMediaContent_stage_test_0900 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : getMediaContent_stage_test_1000
+     * @tc.name      : getMediaContent_stage_test_1000
+     * @tc.desc      : errcode 401 in callback mode with density
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getMediaContent_stage_test_1000', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent({
+        bundleName: "error",
+        moduleName: "error",
+        id: $r('app.media.icon').id
+      }, 0, (err: BusinessError) => {
+        console.log('getMediaContent_stage_test_1000 error code:' + err.code);
+        expect(err.code).assertEqual(401);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number    : getMediaContent_stage_test_1100
+     * @tc.name      : getMediaContent_stage_test_1100
+     * @tc.desc      : errcode 9001001 in promise mode
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getMediaContent_stage_test_1100', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContent_stage_test_1100 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_1200
+     * @tc.name     : getMediaContent_stage_test_1200
+     * @tc.desc     : errcode 9001002 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_1200', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.module_test_desc').id
+      }).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContent_stage_test_1200 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_1300
+     * @tc.name     : getMediaContent_stage_test_1300
+     * @tc.desc     : errcode 401 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_1300', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent({
+        bundleName: "error",
+        moduleName: "error",
+        id: $r('app.media.icon').id
+      }).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContent_stage_test_1300 error code:' + err.code);
+        expect(err.code).assertEqual(401);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_1400
+     * @tc.name     : getMediaContent_stage_test_1400
+     * @tc.desc     : errcode 9001001 in promise mode with density
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_1400', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }, 0).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContent_stage_test_1400 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_1500
+     * @tc.name     : getMediaContent_stage_test_1500
+     * @tc.desc     : errcode 9001002 in promise mode with density
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_1500', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.module_test_desc').id
+      }, 0).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContent_stage_test_1500 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_1600
+     * @tc.name     : getMediaContent_stage_test_1600
+     * @tc.desc     : errcode 401 in promise mode with density
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_1600', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent({
+        bundleName: "error",
+        moduleName: "error",
+        id: $r('app.media.icon').id
+      }, 0).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContent_stage_test_1600 error code:' + err.code);
+        expect(err.code).assertEqual(401);
+        done();
+      })
+    })
+
+
+    /**
+     * @tc.number   : getStringValue_stage_test_0300
+     * @tc.name     : getStringValue_stage_test_0300
+     * @tc.desc     : errcode 401 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringValue_stage_test_0300', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringValue({
+        bundleName: "error",
+        moduleName: "error",
+        id: $r('app.string.app_name').id
+      }).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getStringValue_stage_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual(401);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_1100
+     * @tc.name     : getStringArrayValue_stage_test_1100
+     * @tc.desc     : errcode 9001001 in callback mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayValue_stage_test_1100', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayValue(0x01234567, (err: BusinessError) => {
+        console.log('getStringArrayValue_stage_test_1100 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_1200
+     * @tc.name     : getStringArrayValue_stage_test_1200
+     * @tc.desc     : errcode 9001002 in callback mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayValue_stage_test_1200', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayValue($r('app.string.module_test_desc').id, (err: BusinessError) => {
+        console.log('getStringArrayValue_stage_test_1200 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_1300
+     * @tc.name     : getStringArrayValue_stage_test_1300
+     * @tc.desc     : errcode 9001006 in callback mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayValue_stage_test_1300', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayValue($r('app.strarray.sizeListThree').id, (err: BusinessError) => {
+        console.log('getStringArrayValue_stage_test_1300 error code:' + err.code);
+        expect(err.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_1400
+     * @tc.name     : getStringArrayValue_stage_test_1400
+     * @tc.desc     : errcode 9001001 in promise mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayValue_stage_test_1400', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayValue(0x01234567).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getStringArrayValue_stage_test_1400 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_1500
+     * @tc.name     : getStringArrayValue_stage_test_1500
+     * @tc.desc     : errcode 9001002 in promise mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayValue_stage_test_1500', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayValue($r('app.string.module_test_desc').id).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getStringArrayValue_stage_test_1500 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayValue_stage_test_1600
+     * @tc.name     : getStringArrayValue_stage_test_1600
+     * @tc.desc     : errcode 9001006 in promise mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayValue_stage_test_1600', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayValue($r('app.strarray.sizeListThree').id).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getStringArrayValue_stage_test_1600 error code:' + err.code);
+        expect(err.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_1700
+     * @tc.name     : getMediaContent_stage_test_1700
+     * @tc.desc     : errcode 9001001 in callback mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_1700', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent(0x01234567, (err: BusinessError) => {
+        console.log('getMediaContent_stage_test_1700 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_1800
+     * @tc.name     : getMediaContent_stage_test_1800
+     * @tc.desc     : errcode 9001002 in callback mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_1800', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent($r('app.string.module_test_desc').id, (err: BusinessError) => {
+        console.log('getMediaContent_stage_test_1800 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_1900
+     * @tc.name     : getMediaContent_stage_test_1900
+     * @tc.desc     : errcode 9001001 in callback mode with density by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_1900', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent(0x01234567, 0, (err: BusinessError) => {
+        console.log('getMediaContent_stage_test_1900 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_2000
+     * @tc.name     : getMediaContent_stage_test_2000
+     * @tc.desc     : errcode 9001002 in callback mode with density by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_2000', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent($r('app.string.module_test_desc').id, 0, (err: BusinessError) => {
+        console.log('getMediaContent_stage_test_2000 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_2100
+     * @tc.name     : getMediaContent_stage_test_2100
+     * @tc.desc     : errcode 9001001 in promise mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_2100', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent(0x01234567).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContent_stage_test_2100 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_2200
+     * @tc.name     : getMediaContent_stage_test_2200
+     * @tc.desc     : errcode 9001002 in promise mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_2200', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent($r('app.string.module_test_desc').id).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContent_stage_test_2200 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_2300
+     * @tc.name     : getMediaContent_stage_test_2300
+     * @tc.desc     : errcode 9001001 in promise mode with density by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_2300', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent(0x01234567, 0).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContent_stage_test_2300 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContent_stage_test_2400
+     * @tc.name     : getMediaContent_stage_test_2400
+     * @tc.desc     : errcode 9001002 in promise mode with density by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContent_stage_test_2400', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContent($r('app.string.module_test_desc').id, 0).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContent_stage_test_2400 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_0500
+     * @tc.name     : getMediaContentBase64_stage_test_0500
+     * @tc.desc     : errcode 9001001 in callback mode by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_0500', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }, (err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_0600
+     * @tc.name     : getMediaContentBase64_stage_test_0600
+     * @tc.desc     : errcode 9001002 in callback mode by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_0600', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringTwo').id
+      }, (err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_0700
+     * @tc.name     : getMediaContentBase64_stage_test_0700
+     * @tc.desc     : errcode 401 in callback mode by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_0700', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64({
+        bundleName: "error",
+        moduleName: "error",
+        id: $r('app.media.icon').id
+      }, (err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_0700 error code:' + err.code);
+        expect(err.code).assertEqual(401);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_0800
+     * @tc.name     : getMediaContentBase64_stage_test_0800
+     * @tc.desc     : errcode 9001001 in callback mode with density by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_0800', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }, 0, (err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_0800 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_0900
+     * @tc.name     : getMediaContentBase64_stage_test_0900
+     * @tc.desc     : errcode 9001002 in callback mode with density by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_0900', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringTwo').id
+      }, 0, (err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_0900 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_1000
+     * @tc.name     : getMediaContentBase64_stage_test_1000
+     * @tc.desc     : errcode 401 in callback mode with density by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_1000', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64({
+        bundleName: "error",
+        moduleName: "error",
+        id: $r('app.media.icon').id
+      }, 0, (err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_1000 error code:' + err.code);
+        expect(err.code).assertEqual(401);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_1100
+     * @tc.name     : getMediaContentBase64_stage_test_1100
+     * @tc.desc     : errcode 9001001 in promise mode by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_1100', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_1000 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_1200
+     * @tc.name     : getMediaContentBase64_stage_test_1200
+     * @tc.desc     : errcode 9001002 in promise mode by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_1200', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringTwo').id
+      }).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_1200 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_1300
+     * @tc.name     : getMediaContentBase64_stage_test_1300
+     * @tc.desc     : errcode 401 in promise mode by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_1300', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64({
+        bundleName: "error",
+        moduleName: "error",
+        id: $r('app.media.icon').id
+      }).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_1300 error code:' + err.code);
+        expect(err.code).assertEqual(401);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_1400
+     * @tc.name     : getMediaContentBase64_stage_test_1400
+     * @tc.desc     : errcode 9001001 in promise mode by resObject with density
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_1400', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }, 0).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_1400 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_1500
+     * @tc.name     : getMediaContentBase64_stage_test_1500
+     * @tc.desc     : errcode 9001002 in promise mode by resObject with density
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_1500', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringTwo').id
+      }, 0).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_1500 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_1600
+     * @tc.name     : getMediaContentBase64_stage_test_1600
+     * @tc.desc     : errcode 401 in promise mode by resObject with density
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_1600', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64({
+        bundleName: "error",
+        moduleName: "error",
+        id: $r('app.media.icon').id
+      }, 0).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_1600 error code:' + err.code);
+        expect(err.code).assertEqual(401);
+        done();
+      })
+    })
+
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_1700
+     * @tc.name     : getMediaContentBase64_stage_test_1700
+     * @tc.desc     : errcode 9001001 in callback mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_1700', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64(0x01234567, (err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_1600 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_1800
+     * @tc.name     : getMediaContentBase64_stage_test_1800
+     * @tc.desc     : errcode 9001002 in callback mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_1800', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64($r('app.string.test_stringTwo').id, (err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_1600 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_1900
+     * @tc.name     : getMediaContentBase64_stage_test_1900
+     * @tc.desc     : errcode 9001001 in callback mode with density by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_1900', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64(0x01234567, 0, (err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_1900 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_2000
+     * @tc.name     : getMediaContentBase64_stage_test_2000
+     * @tc.desc     : errcode 9001002 in callback mode with density by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_2000', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64($r('app.string.test_stringTwo').id, 0, (err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_2000 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_2100
+     * @tc.name     : getMediaContentBase64_stage_test_2100
+     * @tc.desc     : errcode 9001001 in promise mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_2100', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64(0x01234567).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_2100 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_2200
+     * @tc.name     : getMediaContentBase64_stage_test_2200
+     * @tc.desc     : errcode 9001002 in promise mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_2200', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64($r('app.string.test_stringTwo').id).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_2200 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_2300
+     * @tc.name     : getMediaContentBase64_stage_test_2300
+     * @tc.desc     : errcode 9001001 in promise mode by resId with density
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_2300', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64(0x01234567, 0).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_2300 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+
+    /**
+     * @tc.number   : getMediaContentBase64_stage_test_2400
+     * @tc.name     : getMediaContentBase64_stage_test_2400
+     * @tc.desc     : errcode 9001002 in promise mode by resId with density
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentBase64_stage_test_2400', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaContentBase64($r('app.string.test_stringTwo').id, 0).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaContentBase64_stage_test_2400 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+
+    /**
+     * @tc.number   : getPluralStringValue_stage_test_0300
+     * @tc.name     : getPluralStringValue_stage_test_0300
+     * @tc.desc     : errcode 9001001 in callback mode by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+
+    it('getPluralStringValue_stage_test_0300', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringValue({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }, 2, (err: BusinessError) => {
+        console.log('getPluralStringValue_stage_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+
+    /**
+     * @tc.number   : getPluralStringValue_stage_test_0400
+     * @tc.name     : getPluralStringValue_stage_test_0400
+     * @tc.desc     : errcode 9001002 in callback mode by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+
+    it('getPluralStringValue_stage_test_0400', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringValue({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.media.icon').id
+      }, 2, (err: BusinessError) => {
+        console.log('getPluralStringValue_stage_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+
+    /**
+     * @tc.number   : getPluralStringValue_stage_test_0500
+     * @tc.name     : getPluralStringValue_stage_test_0500
+     * @tc.desc     : errcode 9001006 in callback mode by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getPluralStringValue_stage_test_0500', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringValue({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.plural.plural_name_loop').id
+      }, 2, (err: BusinessError) => {
+        console.log('getPluralStringValue_stage_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getPluralStringValue_stage_test_0600
+     * @tc.name     : getPluralStringValue_stage_test_0600
+     * @tc.desc     : errcode 401 in callback mode by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getPluralStringValue_stage_test_0600', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringValue({
+        bundleName: "error",
+        moduleName: "error",
+        id: $r('app.plural.plural_name').id
+      }, 2, (err: BusinessError) => {
+        console.log('getPluralStringValue_stage_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual(401);
+        done();
+      })
+    })
+
+
+    /**
+     * @tc.number   : getPluralStringValue_stage_test_0700
+     * @tc.name     : getPluralStringValue_stage_test_0700
+     * @tc.desc     : errcode 9001001 in promise mode by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getPluralStringValue_stage_test_0700', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringValue({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }, 2).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getPluralStringValue_stage_test_0700 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getPluralStringValue_stage_test_0800
+     * @tc.name     : getPluralStringValue_stage_test_0800
+     * @tc.desc     : errcode 9001002 in promise mode by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getPluralStringValue_stage_test_0800', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringValue({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.media.icon').id
+      }, 2).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getPluralStringValue_stage_test_0800 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getPluralStringValue_stage_test_0900
+     * @tc.name     : getPluralStringValue_stage_test_0900
+     * @tc.desc     : errcode 9001006 in promise mode by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getPluralStringValue_stage_test_0900', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringValue({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.plural.plural_name_loop').id
+      }, 2).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getPluralStringValue_stage_test_0900 error code:' + err.code);
+        expect(err.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+
+    /**
+     * @tc.number   : getPluralStringValue_stage_test_1000
+     * @tc.name     : getPluralStringValue_stage_test_1000
+     * @tc.desc     : errcode 401 in promise mode by resObject
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getPluralStringValue_stage_test_1000', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringValue({
+        bundleName: "error",
+        moduleName: "error",
+        id: $r('app.plural.plural_name').id
+      }, 2).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getPluralStringValue_stage_test_1000 error code:' + err.code);
+        expect(err.code).assertEqual(401);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getPluralStringValue_stage_test_1100
+     * @tc.name     : getPluralStringValue_stage_test_1100
+     * @tc.desc     : errcode 9001001 in callback mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getPluralStringValue_stage_test_1100', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringValue(0x01234567, 2, (err: BusinessError) => {
+        console.log('getPluralStringValue_stage_test_1100 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getPluralStringValue_stage_test_1200
+     * @tc.name     : getPluralStringValue_stage_test_1200
+     * @tc.desc     : errcode 9001001 in callback mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getPluralStringValue_stage_test_1200', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringValue($r('app.media.icon').id, 2, (err: BusinessError) => {
+        console.log('getPluralStringValue_stage_test_1200 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getPluralStringValue_stage_test_1300
+     * @tc.name     : getPluralStringValue_stage_test_1300
+     * @tc.desc     : errcode 9001006 in callback mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getPluralStringValue_stage_test_1300', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringValue($r('app.plural.plural_name_loop').id, 2, (err: BusinessError) => {
+        console.log('getPluralStringValue_stage_test_1300 error code:' + err.code);
+        expect(err.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getPluralStringValue_stage_test_1400
+     * @tc.name     : getPluralStringValue_stage_test_1400
+     * @tc.desc     : errcode 9001001 in callback mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getPluralStringValue_stage_test_1400', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringValue(0x01234567, 2).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getPluralStringValue_stage_test_1400 error code:' + err.code);
+        expect(err.code).assertEqual(9001001);
+        done();
+      })
+    })
+
+
+    /**
+     * @tc.number   : getPluralStringValue_stage_test_1500
+     * @tc.name     : getPluralStringValue_stage_test_1500
+     * @tc.desc     : errcode 9001002 in promise mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 1
+     */
+    it('getPluralStringValue_stage_test_1500', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringValue($r('app.media.icon').id, 2).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getPluralStringValue_stage_test_1500 error code:' + err.code);
+        expect(err.code).assertEqual(9001002);
+        done();
+      })
+    })
+
+
+    /**
+     * @tc.number   : getPluralStringValue_stage_test_1600
+     * @tc.name     : getPluralStringValue_stage_test_1600
+     * @tc.desc     : errcode 9001006 in promise mode by resId
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getPluralStringValue_stage_test_1600', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringValue($r('app.plural.plural_name_loop').id, 2).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getPluralStringValue_stage_test_1600 error code:' + err.code);
+        expect(err.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringByName_stage_test_0100
+     * @tc.name     : getStringByName_stage_test_0100
+     * @tc.desc     : errcode 9001003 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringByName_stage_test_0100', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringByName('', (err: BusinessError) => {
+        console.log('getStringByName_stage_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringByName_stage_test_0200
+     * @tc.name     : getStringByName_stage_test_0200
+     * @tc.desc     : errcode 9001006 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringByName_stage_test_0200', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringByName('test_stringLoopA', (err: BusinessError) => {
+        console.log('getStringByName_stage_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+
+    /**
+     * @tc.number   : getStringByName_stage_test_0300
+     * @tc.name     : getStringByName_stage_test_0300
+     * @tc.desc     : errcode 9001003 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringByName_stage_test_0300', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringByName('').then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getStringByName_stage_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringByName_stage_test_0400
+     * @tc.name     : getStringByName_stage_test_0400
+     * @tc.desc     : errcode 9001006 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringByName_stage_test_0400', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringByName('test_stringLoopA').then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getStringByName_stage_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayByName_stage_test_0100
+     * @tc.name     : getStringArrayByName_stage_test_0100
+     * @tc.desc     : errcode 9001003 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayByName_stage_test_0100', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayByName('', (err: BusinessError) => {
+        console.log('getStringArrayByName_stage_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayByName_stage_test_0200
+     * @tc.name     : getStringArrayByName_stage_test_0200
+     * @tc.desc     : errcode 9001006 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayByName_stage_test_0200', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayByName('sizeListThree', (err: BusinessError) => {
+        console.log('getStringArrayByName_stage_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayByName_stage_test_0300
+     * @tc.name     : getStringArrayByName_stage_test_0300
+     * @tc.desc     : errcode 9001003 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayByName_stage_test_0300', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayByName('').then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getStringArrayByName_stage_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayByName_stage_test_0400
+     * @tc.name     : getStringArrayByName_stage_test_0400
+     * @tc.desc     : errcode 9001006 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayByName_stage_test_0400', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getStringArrayByName('sizeListThree').then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getStringArrayByName_stage_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaByName_test_0300
+     * @tc.name     : getMediaByName_test_0300
+     * @tc.desc     : errcode 9001003 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaByName_test_0300', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaByName('', (err: BusinessError) => {
+        console.log('getMediaByName_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaByName_test_0400
+     * @tc.name     : getMediaByName_test_0400
+     * @tc.desc     : errcode 9001003 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaByName_test_0400', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaByName('', 0, (err: BusinessError) => {
+        console.log('getMediaByName_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaByName_test_0500
+     * @tc.name     : getMediaByName_test_0500
+     * @tc.desc     : errcode 9001003 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaByName_test_0500', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaByName('').then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaByName_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaByName_test_0600
+     * @tc.name     : getMediaByName_test_0600
+     * @tc.desc     : errcode 9001003 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaByName_test_0600', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaByName('', 0).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaByName_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaBase64ByName_test_0300
+     * @tc.name     : getMediaBase64ByName_test_0300
+     * @tc.desc     : errcode 9001003 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaBase64ByName_test_0300', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaBase64ByName('', (err: BusinessError) => {
+        console.log('getMediaBase64ByName_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaBase64ByName_test_0400
+     * @tc.name     : getMediaBase64ByName_test_0400
+     * @tc.desc     : errcode 9001003 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaBase64ByName_test_0400', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaBase64ByName('', 0, (err: BusinessError) => {
+        console.log('getMediaBase64ByName_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaBase64ByName_test_0500
+     * @tc.name     : getMediaBase64ByName_test_0500
+     * @tc.desc     : errcode 9001003 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaBase64ByName_test_0500', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaBase64ByName('').then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaBase64ByName_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaBase64ByName_test_0600
+     * @tc.name     : getMediaBase64ByName_test_0600
+     * @tc.desc     : errcode 9001003 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaBase64ByName_test_0600', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getMediaBase64ByName('', 0).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getMediaBase64ByName_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getPluralStringByName_test_0100
+     * @tc.name     : getPluralStringByName_test_0100
+     * @tc.desc     : errcode 9001003 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getPluralStringByName_test_0100', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringByName('', 0, (err: BusinessError) => {
+        console.log('getPluralStringByName_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getPluralStringByName_test_0200
+     * @tc.name     : getPluralStringByName_test_0200
+     * @tc.desc     : errcode 9001006 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getPluralStringByName_test_0200', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringByName('plural_name_loop', 0, (err: BusinessError) => {
+        console.log('getPluralStringByName_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getPluralStringByName_test_0300
+     * @tc.name     : getPluralStringByName_test_0300
+     * @tc.desc     : errcode 9001003 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getPluralStringByName_test_0300', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringByName('', 0).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getPluralStringByName_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getPluralStringByName_test_0400
+     * @tc.name     : getPluralStringByName_test_0400
+     * @tc.desc     : errcode 9001006 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getPluralStringByName_test_0400', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getPluralStringByName('plural_name_loop', 0).then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getPluralStringByName_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual(9001006);
+        done();
+      })
+    })
+
     console.log('*************end globalStageTest*************');
   })
 }

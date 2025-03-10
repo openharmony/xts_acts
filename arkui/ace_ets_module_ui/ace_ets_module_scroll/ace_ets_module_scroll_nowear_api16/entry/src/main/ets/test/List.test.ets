@@ -14,10 +14,8 @@
  */
 import WaterFlowEffectEdge from './WaterFlowTest/WaterFlowEffectEdge.test'
 import WaterComponentContent from './WaterFlowTest/WaterComponentContent.test'
-import WaterFlowBackToTopTest from './WaterFlowTest/WaterFlowBackToTop.test'
 
 export default function testsuite() {
   WaterFlowEffectEdge()
   WaterComponentContent();
-  WaterFlowBackToTopTest();
 }

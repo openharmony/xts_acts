@@ -89,13 +89,11 @@
 #include "textarea/textarea_key_test.h"
 #include "textinput/textinput_key_test.h"
 #include "textarea/textarea_onchange_test.h"
-#include "textarea/textarea_onpaste_test.h"
+
 #include "slider/slider_onchange_test.h"
 #include "textinput/textinput_onblur_test.h"
 #include "textinput/textinput_onfocus_test.h"
 #include "textinput/textinput_onsubmit_test.h"
-#include "textinput/textinput_oncut_test.h"
-#include "textinput/textinput_onpaste_test.h"
 #include "gesture/gesture_test.h"
 #include "gestureScroll/gesture_interfaceTest.h"
 #include "gesture/gesture_creategesture_test.h"
@@ -448,8 +446,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"textAreaOnChangeTest", nullptr, TextAreaOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"textAreaOnPasteTest", nullptr, TextAreaOnPasteTest::CreateNativeNode, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
         {"sliderOnChangeTest", nullptr, SliderOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"textInputOnFocusTest", nullptr, TextInputOnFocusTest::CreateNativeNode, nullptr, nullptr, nullptr,
@@ -457,10 +453,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"textInputOnBlurTest", nullptr, TextInputOnBlurTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"textInputOnSubmitTest", nullptr, TextInputOnSubmitTest::CreateNativeNode, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"textInputOnCutTest", nullptr, TextInputOnCutTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"textInputOnPasteTest", nullptr, TextInputOnPasteTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"scrollScrollToLinearTest", nullptr, ScrollScrollToTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},

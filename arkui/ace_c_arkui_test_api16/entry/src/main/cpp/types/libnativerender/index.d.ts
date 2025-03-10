@@ -28,8 +28,6 @@ export const textInputLetterSpacing002: (a: string) => void;
 
 export const textPickerColumnWidths: (a: string) => void;
 
-export const scrollBackToTopTest: (a: string) => void;
-
 export const TestDragStartDataLoading001: (a: string) => void;
 
 export const TestDragDisableDropDataPrefetch002: (a: string) => void;

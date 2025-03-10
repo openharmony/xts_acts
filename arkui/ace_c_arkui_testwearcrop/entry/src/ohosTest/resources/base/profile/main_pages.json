@@ -2,6 +2,9 @@
   "src": [
     "MainAbility/pages/XTSIndex",
     "MainAbility/pages/calendarpicker/CalendarPickerEnabledTest",
-    "MainAbility/pages/calendarpicker/CalendarPickerOnChangeTest"  
+    "MainAbility/pages/calendarpicker/CalendarPickerOnChangeTest",
+    "MainAbility/pages/textarea/TextAreaOnPasteTest",
+    "MainAbility/pages/textinput/TextInputOnCutTest",
+    "MainAbility/pages/textinput/TextInputOnPasteTest"
   ]
 }

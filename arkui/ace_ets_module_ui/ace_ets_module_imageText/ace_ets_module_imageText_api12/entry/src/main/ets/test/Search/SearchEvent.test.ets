@@ -59,6 +59,8 @@ export default function SearchEvent() {
       let text = await driver.findComponent(ON.id('SearchEvent'));
       await text.inputText('9');
       await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('SearchEventText')
       let strJson2 = getInspectorByKey('SearchEventText2');
       await CommonFunc.sleep(200);
@@ -91,6 +93,8 @@ export default function SearchEvent() {
       let text = await driver.findComponent(ON.id('SearchEvent2'));
       let point = await text.getBoundsCenter();
       await driver.inputText(point, '9');
+      await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('SearchEventText')
       let strJson2 = getInspectorByKey('SearchEventText2');
@@ -125,6 +129,8 @@ export default function SearchEvent() {
       let point = await text.getBoundsCenter();
       await driver.inputText(point, '123');
       await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('SearchEventText')
       let strJson2 = getInspectorByKey('SearchEventText2');
       await CommonFunc.sleep(200);
@@ -157,6 +163,8 @@ export default function SearchEvent() {
       let text = await driver.findComponent(ON.id('SearchEvent2'));
       let point = await text.getBoundsCenter();
       await driver.inputText(point, '3');
+      await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('SearchEventText')
       let strJson2 = getInspectorByKey('SearchEventText2');
@@ -192,6 +200,8 @@ export default function SearchEvent() {
       await button.click();
       await CommonFunc.sleep(1000);
       await text.inputText('123');
+      await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('SearchEventText3')
       let strJson2 = getInspectorByKey('SearchEventText4');

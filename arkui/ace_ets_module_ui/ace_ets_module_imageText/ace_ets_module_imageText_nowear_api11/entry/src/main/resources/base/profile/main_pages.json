@@ -10,6 +10,14 @@
         "MainAbility/pages/TextInput/TextinputSec",
         "MainAbility/pages/text/TextDrag",
         "MainAbility/pages/text/positionSetting",
-        "MainAbility/pages/text/TextState"
+        "MainAbility/pages/text/TextState",
+        "MainAbility/pages/RichEditor/RichEditor01",
+        "MainAbility/pages/RichEditor/RichEditorApi2",
+        "MainAbility/pages/RichEditor/richEditorApi/richEditorApi1",
+        "MainAbility/pages/TextArea/textAreaUI",
+        "MainAbility/pages/TextArea/textAreaBC1",
+        "MainAbility/pages/TextInput/TextInputPage",
+        "MainAbility/pages/Search/SearchGesture",
+        "MainAbility/pages/Search/SearchPage"
     ]
 }

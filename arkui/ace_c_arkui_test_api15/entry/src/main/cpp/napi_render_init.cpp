@@ -26,7 +26,10 @@
 #include "list/list_test.h"
 #include "listScrollTo/list_scroll_to_test.h"
 #include "gesturetouchcancel/gesture_cancel.h"
-#include "scroll/scroll_backtotop_test.h"
+#include "gestureRecognizer/gestureRecognizer.h"
+#include "eventInfo/eventInfo.h"
+#include "snapShot/snap_shot.h"
+#include "snapShot/container.h"
 
 
 namespace ArkUICapiTest {
@@ -79,10 +82,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"FocusControlTest_002", nullptr, FocusControlTest::FocusControlTest_002,
          nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"FocusControlTest_003", nullptr, FocusControlTest::FocusControlTest_003,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"FocusControlTest_004", nullptr, FocusControlTest::FocusControlTest_004,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
         {"listTestCallback", nullptr, ListTest::ListCaseTest, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"listScrollToTestCallback", nullptr, ListScrollToTest::ListScrollToIndexTest, nullptr, nullptr,
          nullptr, napi_default, nullptr},
@@ -90,8 +89,18 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetTouchEventData", nullptr, GestureInterfaceCancelTest::GetTouchEventData,
          nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"scrollBackToTopTest", nullptr, ScrollBackToTopTest::CreateNativeNode, nullptr, nullptr,
+        {"TestGestureRecognizerFinger001", nullptr, GestureRecognizerTest::TestGestureRecognizerFinger001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestGestureRecognizerGetResult", nullptr, GestureRecognizerTest::GetResult, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"TestEventInfoGetPressedTime001", nullptr, EventInfoTest::TestEventInfoGetPressedTime001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"TestEventInfoGetResult", nullptr, EventInfoTest::GetResult, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"snapShotTest001", nullptr, Manager::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"TestsnapShotetResult", nullptr, Manager::GetResult, nullptr, nullptr,
+         nullptr, napi_default, nullptr}, 
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
