@@ -18,7 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
-export default function OnNewParamPage() {
+export default function OnNewParamRouter() {
   describe('OnNewParamRouter', () => {
     beforeEach(async (done: Function) => {
       console.info("OnNewParamRouter beforeEach start");
