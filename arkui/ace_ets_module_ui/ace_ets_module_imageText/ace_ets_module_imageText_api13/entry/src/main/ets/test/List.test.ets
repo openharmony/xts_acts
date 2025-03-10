@@ -16,7 +16,6 @@
 import textAreaInputTest from './TextTest/textAreaInputTest.test';
 import TextMenuType from './TextTest/TextMenuType.test';
 import RichEditorMenuType from './RichEditorTest/RichEditorMenuType.test';
-import MovingPhotoViewTest from './MovingPhotoViewTest/MovingPhotoView.test';
 import RichEditorStyledStringTest from './RichEditorTest/RichEditorStyledStringTest.test';
 import StyledStringUrl from './TextTest/StyledStringTest.test';
 
@@ -25,6 +24,5 @@ export default function testsuite() {
   TextMenuType();
   RichEditorMenuType();
   StyledStringUrl();
-  MovingPhotoViewTest();
   RichEditorStyledStringTest();
 }

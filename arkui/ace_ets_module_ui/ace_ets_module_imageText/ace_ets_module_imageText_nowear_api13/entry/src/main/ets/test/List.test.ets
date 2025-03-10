@@ -15,8 +15,10 @@
 
 import textAreaInputTest from './TextTest/textAreaInputTest.test';
 import editMenuIdAIWriterTest from './TextTest/editMenuIdAIWriter.test';
+import MovingPhotoViewTest from './MovingPhotoViewTest/MovingPhotoView.test';
 
 export default function testsuite() {
   textAreaInputTest();
   editMenuIdAIWriterTest();
+  MovingPhotoViewTest();
 }
