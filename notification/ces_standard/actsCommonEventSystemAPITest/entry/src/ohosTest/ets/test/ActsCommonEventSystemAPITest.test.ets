@@ -475,85 +475,166 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
 
 
 it('Sub_Notification_Ces_Publish_CommonEvent_7900_284', 0, async (done: () => void) => {
-  try {
-    notificationManager.setBadgeNumber(null, (err) => {
-      console.log(`setBadgeNumber failed, error code: ${err.code}, message: ${err.message}`)
-      if (err.code == 801) {
-        expect(true).assertTrue()
-        done()
-      } else {
-        expect(false).assertTrue()
-        done()
+      try {
+        notificationManager.setBadgeNumber(null, (err) => {
+          console.log(`setBadgeNumber failed, error code: ${err.code}, message: ${err.message}`)
+          if (err.code == 801) {
+            expect(true).assertTrue()
+            done()
+          } else {
+            expect(false).assertTrue()
+            done()
+          }
+        })
+      } catch (err) {
+        console.log(`setBadgeNumber failed, catch error code: ${err.code}, message: ${err.message}`)
+        if (err.code == 801) {
+          expect(true).assertTrue()
+          done()
+        } else {
+          expect(err.code).assertEqual(401)
+          done()
+        }
       }
+
+
+      // 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+      let subscriber: commonEventManager.CommonEventSubscriber;
+      // 订阅者信息
+      let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["event284"],
+        publisherBundleName: 'com.example.myapplication'
+      };
+
+      commonEventManager.createSubscriber(subscribeInfo, async (err, commonEventSubscriber) => {
+        if (err) {
+          console.info(`Sub_Notification_Ces_Publish_CommonEvent_7900_284 err, error code: ${err.code}, message: ${err.message}`)
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info(`Sub_Notification_Ces_Publish_CommonEvent_7900_284 success ${commonEventSubscriber}`)
+          subscriber = commonEventSubscriber
+
+          try {
+            subscriber.getCode(null)
+          }catch (err) {
+            console.info(`${TAG} getCode err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.setCode(null, (err) => {
+              console.info(`${TAG} setCode id success`)
+              expect(false).assertTrue()
+              done()
+            })
+          } catch (err) {
+            console.info(`${TAG} setCode err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.getData(null)
+          }catch (err) {
+            console.info(`${TAG} getData err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.setData(null, (err) => {
+              console.info(`setData_1 err, error code: ${err.code}, message: ${err.message}`)
+              expect(false).assertTrue()
+              done()
+            })
+          } catch (err) {
+            console.info(`${TAG} setData err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.clearAbortCommonEvent(null)
+          }catch (err) {
+            console.info(`${TAG} clearAbortCommonEvent err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+
+          try {
+            subscriber.setCodeAndData(null, 'data02', (err) => {
+              console.info(`${TAG} setCodeAndData id success`)
+              expect(false).assertTrue()
+              done()
+            })
+          } catch (err) {
+            console.info(`${TAG} setCodeAndData err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.isOrderedCommonEvent(null)
+          }catch (err) {
+            console.info(`${TAG} isOrderedCommonEvent err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.isStickyCommonEvent(null)
+          }catch (err) {
+            console.info(`${TAG} isStickyCommonEvent err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.abortCommonEvent(null)
+          }catch (err) {
+            console.info(`${TAG} abortCommonEvent err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.clearAbortCommonEvent(null)
+          }catch (err) {
+            console.info(`${TAG} clearAbortCommonEvent err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.getAbortCommonEvent(null)
+          }catch (err) {
+            console.info(`${TAG} getAbortCommonEvent err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.getSubscribeInfo(null)
+          }catch (err) {
+            console.info(`${TAG} getSubscribeInfo err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.finishCommonEvent(null)
+          }catch (err) {
+            console.info(`${TAG} finishCommonEvent err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+        }
+      })
     })
-  } catch (err) {
-    console.log(`setBadgeNumber failed, catch error code: ${err.code}, message: ${err.message}`)
-    if (err.code == 801) {
-      expect(true).assertTrue()
-      done()
-    } else {
-      expect(err.code).assertEqual(401)
-      done()
-    }
-  }
-
-
-  // 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
-  let subscriber: commonEventManager.CommonEventSubscriber;
-  // 订阅者信息
-  let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-    events: ["event284"],
-    publisherBundleName: 'com.example.myapplication'
-  };
-
-  commonEventManager.createSubscriber(subscribeInfo, async (err, commonEventSubscriber) => {
-    if (err) {
-      console.info(`Sub_Notification_Ces_Publish_CommonEvent_7900_284 err, error code: ${err.code}, message: ${err.message}`)
-      expect(false).assertTrue()
-      done()
-    } else {
-      console.info(`Sub_Notification_Ces_Publish_CommonEvent_7900_284 success ${commonEventSubscriber}`)
-      subscriber = commonEventSubscriber
-
-      try {
-        subscriber.setCode(null, (err) => {
-          console.info(`${TAG} setCode id success`)
-          expect(false).assertTrue()
-          done()
-        })
-      } catch (err) {
-        console.info(`${TAG} setCode err: ${err.code}, errMes: ${err.message}`)
-        expect(err.code).assertEqual(401)
-        done()
-      }
-
-      try {
-        subscriber.setData(null, (err) => {
-          console.info(`setData_1 err, error code: ${err.code}, message: ${err.message}`)
-          expect(false).assertTrue()
-          done()
-        })
-      } catch (err) {
-        console.info(`${TAG} setCodeAndData err: ${err.code}, errMes: ${err.message}`)
-        expect(err.code).assertEqual(401)
-        done()
-      }
-
-      try {
-        subscriber.setCodeAndData(null, 'data02', (err) => {
-          console.info(`${TAG} setCodeAndData id success`)
-          expect(false).assertTrue()
-          done()
-        })
-      } catch (err) {
-        console.info(`${TAG} setCodeAndData err: ${err.code}, errMes: ${err.message}`)
-        expect(err.code).assertEqual(401)
-        done()
-      }
-
-    }
-  })
-})
 
 
 it('Sub_Notification_Ces_Publish_CommonEvent_7900_282', 0, async (done: Function) => {
