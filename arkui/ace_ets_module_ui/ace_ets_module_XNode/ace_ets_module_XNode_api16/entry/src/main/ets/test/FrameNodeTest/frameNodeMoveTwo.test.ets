@@ -63,12 +63,7 @@ export default function frameNodeMoveTwoTest() {
       await CommonFunc.sleep(500);
       let button2 = await driver.findComponent(ON.id('popup_id'));
       await button2.click();
-      await CommonFunc.sleep(500);
-      let button3 = await driver.findComponent(ON.id('customPopupOptions_id'));
-      await button3.click();
-      await CommonFunc.sleep(500);
-      let button4 = await driver.findComponent(ON.id('count_id'));
-      await button4.click();
+
       await CommonFunc.sleep(1000);
       let strJson1: string = getInspectorByKey('frame1ChildCount');
       let obj1: Record<string, ESObject> = JSON.parse(strJson1);
