@@ -127,7 +127,7 @@ struct Dest {
     })
     .onNewParam((param: ESObject) => {
       this.paramString = JSON.stringify(param);
-      console.log("TestTag", this.name, 'onNewParam, param: ' + JSON.stringify(param))
+      console.log('TestTag', this.name, 'onNewParam, param: ' + JSON.stringify(param))
     })
   }
 }
