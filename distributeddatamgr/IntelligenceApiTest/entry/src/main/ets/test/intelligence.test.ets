@@ -241,7 +241,12 @@ export default function intelligenceTest() {
             .then((loadData) => {
               console.info(TAG + "loadModel result:" + loadData);
               expect(loadData).assertEqual(true);
-          })
+            })
+            data.releaseModel()
+                .then(() => {
+                  console.info(TAG + "releaseModel result 0500:");
+                  done();
+                })
           })
           done();
       } else {
@@ -280,6 +285,11 @@ export default function intelligenceTest() {
               data.releaseModel()
                 .then(() => {
                   console.info(TAG + "releaseModel result 0600:");
+                  done();
+                })
+                .catch((err:BusinessError) => {
+                  console.info(TAG + "getEmbedding result" + err.code);
+                  expect(err.code).assertEqual(31300000);
                   done();
                 })
               })
