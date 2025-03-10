@@ -2,7 +2,7 @@ class NavParam {
   constructor(msg: string) {
     this.msg = msg
   }
-  msg: string = ''
+  private msg: string = ''
 }
 
 @Entry
