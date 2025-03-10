@@ -49,7 +49,7 @@ export function exportObj(): any {
 
 export const exportObj2 = {
   a: 1
-}
+};
 
 export function any(obj: any): any {
   return obj;

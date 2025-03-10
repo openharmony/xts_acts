@@ -14,7 +14,7 @@
 */
 
 
-export function isArrayEqual(arr1: Array<number | undefined | string>, arr2: Array<number | undefined | string>): any{
+export function isArrayEqual(arr1: Array<number | undefined | string>, arr2: Array<number | undefined | string>): any {
   if (arr1.length !== arr2.length) {
     return false;
   }
