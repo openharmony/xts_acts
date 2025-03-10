@@ -12,11 +12,10 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { hilog } from '@kit.PerformanceAnalysisKit';
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { ArkTSUtils, collections, lang, taskpool } from '@kit.ArkTS';
 import {
-  printAny1,
   printArgs1,
   printArgs2,
   printArgs3,
@@ -25,42 +24,14 @@ import {
   printArray2,
   printArray3,
   printArray4,
-  printArrayBuffer1,
-  printArrayBuffer2,
-  printArrayBuffer3,
-  printArrayBuffer4,
-  printASON1,
-  printASON2,
-  printASON3,
-  printASON4,
-  printAsyncLock1,
-  printAsyncLock2,
-  printAsyncLock3,
-  printAsyncLock4,
   printBigint1,
   printBigint2,
   printBigint3,
   printBigint4,
-  printBitVector1,
-  printBitVector2,
-  printBitVector3,
-  printBitVector4,
   printBoolean1,
   printBoolean2,
   printBoolean3,
   printBoolean4,
-  printConcatArray1,
-  printConcatArray2,
-  printConcatArray3,
-  printConcatArray4,
-  printEnum1,
-  printEnum2,
-  printEnum3,
-  printEnum4,
-  printFloat32Array1,
-  printFloat32Array2,
-  printFloat32Array3,
-  printFloat32Array4,
   printInt16Array1,
   printInt16Array2,
   printInt16Array3,
@@ -73,10 +44,6 @@ import {
   printInt8Array2,
   printInt8Array3,
   printInt8Array4,
-  printISendable1,
-  printISendable2,
-  printISendable3,
-  printISendable4,
   printMap1,
   printMap2,
   printMap3,
@@ -87,10 +54,6 @@ import {
   printNull2,
   printNull3,
   printNull4,
-  printSendableFunction1,
-  printSendableFunction2,
-  printSendableTestClass1,
-  printSendableTestClass2,
   printSet1,
   printSet2,
   printSet3,
@@ -113,19 +76,10 @@ import {
   printUint8Array2,
   printUint8Array3,
   printUint8Array4,
-  printUint8ClampedArray1,
-  printUint8ClampedArray2,
-  printUint8ClampedArray3,
-  printUint8ClampedArray4,
   printUndefined1,
   printUndefined2,
   printUndefined3,
   printUndefined4,
-  printUnion1,
-  printUnion2,
-  printUnion3,
-  printUnion4,
-  sampleFunction
 } from '../testability/pages/TaskMethods';
 import {
   Count1,
@@ -140,9 +94,6 @@ import {
   CountStr2,
   CountUndefined1,
   CountUndefined2,
-  MyClass,
-  MyEnum,
-  SendableTestClass
 } from '../testability/pages/TaskDataFlg';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { AsyncLock } from '../testability/pages/SendableTest';

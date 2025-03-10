@@ -14,7 +14,6 @@
 */
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import { webview } from '@kit.ArkWeb';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ErrorEvent, MessageEvents, taskpool, worker } from '@kit.ArkTS';
 import {
@@ -24,21 +23,13 @@ import {
   printArgsLock1,
   printArgsLock3,
   printArgsLock5,
-
   printArgsLock7,
-
   printArgsPromise1,
-
   printArgsPromise3,
-
   printArgsPromise5,
-
   printArgsPromise7,
-
   printArgsSettimeout1,
-
   printArgsSettimeout3,
-
   printArgsTaskpool,
   printArgsTaskpool1,
   printArgsTaskpool2,

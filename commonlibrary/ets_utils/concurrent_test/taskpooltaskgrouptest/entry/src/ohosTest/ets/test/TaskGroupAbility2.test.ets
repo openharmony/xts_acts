@@ -16,15 +16,6 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { ArkTSUtils, collections, lang, taskpool } from '@kit.ArkTS';
 import {
-  printAny1,
-  printArgs1,
-  printArgs2,
-  printArgs3,
-  printArgs4,
-  printArray1,
-  printArray2,
-  printArray3,
-  printArray4,
   printArrayBuffer1,
   printArrayBuffer2,
   printArrayBuffer3,
@@ -37,18 +28,10 @@ import {
   printAsyncLock2,
   printAsyncLock3,
   printAsyncLock4,
-  printBigint1,
-  printBigint2,
-  printBigint3,
-  printBigint4,
   printBitVector1,
   printBitVector2,
   printBitVector3,
   printBitVector4,
-  printBoolean1,
-  printBoolean2,
-  printBoolean3,
-  printBoolean4,
   printConcatArray1,
   printConcatArray2,
   printConcatArray3,
@@ -61,66 +44,16 @@ import {
   printFloat32Array2,
   printFloat32Array3,
   printFloat32Array4,
-  printInt16Array1,
-  printInt16Array2,
-  printInt16Array3,
-  printInt16Array4,
-  printInt32Array1,
-  printInt32Array2,
-  printInt32Array3,
-  printInt32Array4,
-  printInt8Array1,
-  printInt8Array2,
-  printInt8Array3,
-  printInt8Array4,
-  printISendable1,
-  printISendable2,
-  printISendable3,
-  printISendable4,
-  printMap1,
-  printMap2,
-  printMap3,
-  printMap4,
   printMyClass1,
   printMyClass2,
-  printNull1,
-  printNull2,
-  printNull3,
-  printNull4,
-  printSendableFunction1,
-  printSendableFunction2,
   printSendableTestClass1,
   printSendableTestClass2,
-  printSet1,
-  printSet2,
-  printSet3,
-  printSet4,
   printSharedArrayBuffer3,
   printSharedArrayBuffer4,
-  printStr1,
-  printStr2,
-  printStr3,
-  printStr4,
-  printUint16Array1,
-  printUint16Array2,
-  printUint16Array3,
-  printUint16Array4,
-  printUint32Array1,
-  printUint32Array2,
-  printUint32Array3,
-  printUint32Array4,
-  printUint8Array1,
-  printUint8Array2,
-  printUint8Array3,
-  printUint8Array4,
   printUint8ClampedArray1,
   printUint8ClampedArray2,
   printUint8ClampedArray3,
   printUint8ClampedArray4,
-  printUndefined1,
-  printUndefined2,
-  printUndefined3,
-  printUndefined4,
   printUnion1,
   printUnion2,
   printUnion3,
@@ -132,14 +65,6 @@ import {
   Count2,
   Count3,
   Count4,
-  CountBigint1,
-  CountBigint2,
-  CountBol1,
-  CountBol2,
-  CountStr1,
-  CountStr2,
-  CountUndefined1,
-  CountUndefined2,
   MyClass,
   MyEnum,
   SendableTestClass
@@ -360,8 +285,12 @@ export default function TaskGroupAbilityTest2() {
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       let arraybuffer1 = new ArrayBuffer(1);
       let arraybuffer2 = new ArrayBuffer(2);
-      taskGroup.addTask(printArrayBuffer1, arraybuffer1);
-      taskGroup.addTask(printArrayBuffer2, arraybuffer2);
+      let task1 = new taskpool.Task(printArrayBuffer1, arraybuffer1)
+      let task2 = new taskpool.Task(printArrayBuffer2, arraybuffer2)
+      task1.setTransferList([])
+      task2.setTransferList([])
+      taskGroup.addTask(task1);
+      taskGroup.addTask(task2);
 
       Count1.count = 0;
       Count2.count = 0;
@@ -397,8 +326,12 @@ export default function TaskGroupAbilityTest2() {
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       let arraybuffer1 = new ArrayBuffer(1 * 1);
       let arraybuffer2 = new ArrayBuffer(2 * 2);
-      taskGroup.addTask(printArrayBuffer3, arraybuffer1);
-      taskGroup.addTask(printArrayBuffer4, arraybuffer2);
+      let task1 = new taskpool.Task(printArrayBuffer3, arraybuffer1)
+      let task2 = new taskpool.Task(printArrayBuffer4, arraybuffer2)
+      task1.setTransferList([])
+      task2.setTransferList([])
+      taskGroup.addTask(task1);
+      taskGroup.addTask(task2);
 
       let count: number = 0;
       const promises: Promise<void>[] = [];

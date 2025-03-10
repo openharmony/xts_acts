@@ -12,33 +12,9 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { hilog } from '@kit.PerformanceAnalysisKit';
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { ErrorEvent, MessageEvents, taskpool, worker } from '@kit.ArkTS';
-import {
-  asyncLock,
-  asyncLock1,
-  asyncLock2,
-  asyncLock3,
-  printArgs1,
-  printArgs10,
-  printArgs11,
-  printArgs12,
-  printArgs13,
-  printArgs14,
-  printArgs2,
-  printArgs3,
-  printArgs4,
-  printArgs5,
-  printArgs6,
-  printArgs7,
-  printArgs8,
-  printArgs9,
-  testFunc,
-  testTransfer
-} from '../testability/pages/TaskMethodTest';
-import { Driver } from '@kit.TestKit';
-
 import { BusinessError } from '@kit.BasicServicesKit';
 import {
   multipleTask1,
