@@ -716,40 +716,39 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOnWindowRectChangeErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOnWindowRectChangeErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOnWindowRectChangeErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testOnWindowRectChangeErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testOnWindowRectChangeErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.on(null, (res: ohosWindow.RectChangeOptions) => {
-          });
-          console.error(msgStr + 'Succeeded in calling on WindowRectChange.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call on WindowRectChange. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.on(null, (res: ohosWindow.RectChangeOptions) => {
+        });
+        console.error(msgStr + 'Succeeded in calling on WindowRectChange.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call on WindowRectChange. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -762,40 +761,39 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOffWindowRectChangeErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOffWindowRectChangeErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOffWindowRectChangeErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testOffWindowRectChangeErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testOffWindowRectChangeErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.off(null, (res: ohosWindow.RectChangeOptions) => {
-          });
-          console.error(msgStr + 'Succeeded in calling off WindowRectChange.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call off WindowRectChange. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.off(null, (res: ohosWindow.RectChangeOptions) => {
+        });
+        console.error(msgStr + 'Succeeded in calling off WindowRectChange.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call off WindowRectChange. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -808,29 +806,27 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testLoadContentByNameCallbackErrCode401_0300', 0, async (done: Function) => {
-      {
-        let caseName = "testLoadContentByNameCallbackErrCode401_0300";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testLoadContentByNameCallbackErrCode401_0300";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        try {
-          windowStage!.loadContentByName(null, async (err: BusinessError) => {
-            const errCode: number = err.code;
-            if (errCode) {
-              console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(err));
-              expect(err.code).assertEqual(401);
-              done()
-              return;
-            }
-            console.info(msgStr + 'Succeeded in calling loadContentByName.');
-            expect().assertFail();
-            done();
-          });
-        } catch (exception) {
-          console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(exception));
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+      try {
+        windowStage!.loadContentByName(null, async (err: BusinessError) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(err));
+            expect(err.code).assertEqual(401);
+            done()
+            return;
+          }
+          console.info(msgStr + 'Succeeded in calling loadContentByName.');
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(exception));
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
 
@@ -843,29 +839,27 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testLoadContentByNameCallbackErrCode401_0400', 0, async (done: Function) => {
-      {
-        let caseName = "testLoadContentByNameCallbackErrCode401_0400";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testLoadContentByNameCallbackErrCode401_0400";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        try {
-          windowStage!.loadContentByName(null, null, async (err: BusinessError) => {
-            const errCode: number = err.code;
-            if (errCode) {
-              console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(err));
-              expect(err.code).assertEqual(401);
-              done()
-              return;
-            }
-            console.info(msgStr + 'Succeeded in calling loadContentByName.');
-            expect().assertFail();
-            done();
-          });
-        } catch (exception) {
-          console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(exception));
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+      try {
+        windowStage!.loadContentByName(null, null, async (err: BusinessError) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(err));
+            expect(err.code).assertEqual(401);
+            done()
+            return;
+          }
+          console.info(msgStr + 'Succeeded in calling loadContentByName.');
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(exception));
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
 
@@ -878,25 +872,23 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testLoadContentByNamePromiseErrCode401_0200', 0, async (done: Function) => {
-      {
-        let caseName = "testLoadContentByNamePromiseErrCode401_0200";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testLoadContentByNamePromiseErrCode401_0200";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        try {
-          await windowStage.loadContentByName(null).then(async () => {
-            console.info(msgStr + 'Succeeded in calling loadContentByName.');
-            expect().assertFail();
-          }).catch(async (err: BusinessError) => {
-            console.error(msgStr + 'Failed to call loadContentByName. Cause: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
-          });
-          done()
-        } catch (exception) {
-          console.error(msgStr + 'Failed to set the call loadContentByName. Cause:' + JSON.stringify(exception));
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+      try {
+        await windowStage.loadContentByName(null).then(async () => {
+          console.info(msgStr + 'Succeeded in calling loadContentByName.');
+          expect().assertFail();
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call loadContentByName. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(401);
+        });
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call loadContentByName. Cause:' + JSON.stringify(exception));
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
 
@@ -909,24 +901,22 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOnWindowStageEventErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOnWindowStageEventErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOnWindowStageEventErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let testcaseResult = true;
-        try {
-          windowStage.on(null, (res: ohosWindow.WindowStageEventType) => {
-          });
-          console.error(msgStr + 'Succeeded in calling on WindowStageEvent.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call on WindowStageEvent. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
+      try {
+        windowStage.on(null, (res: ohosWindow.WindowStageEventType) => {
+        });
+        console.error(msgStr + 'Succeeded in calling on WindowStageEvent.');
+        expect().assertFail();
         console.log(msgStr + 'end.');
-        expect(testcaseResult).assertTrue();
-        done();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call on WindowStageEvent. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -939,24 +929,22 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOffWindowStageEventErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOffWindowStageEventErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOffWindowStageEventErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let testcaseResult = true;
-        try {
-          windowStage.off(null, (res: ohosWindow.WindowStageEventType) => {
-          });
-          console.error(msgStr + 'Succeeded in calling off WindowStageEvent.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call off WindowStageEvent. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
+      try {
+        windowStage.off(null, (res: ohosWindow.WindowStageEventType) => {
+        });
+        console.error(msgStr + 'Succeeded in calling off WindowStageEvent.');
+        expect().assertFail();
         console.log(msgStr + 'end.');
-        expect(testcaseResult).assertTrue();
-        done();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call off WindowStageEvent. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -969,24 +957,22 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOnWindowStageCloseErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOnWindowStageCloseErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOnWindowStageCloseErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let testcaseResult = true;
-        try {
-          windowStage.on(null, () => {
-          });
-          console.error(msgStr + 'Succeeded in calling on WindowStageClose.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call on WindowStageClose. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
+      try {
+        windowStage.on(null, () => {
+        });
+        console.error(msgStr + 'Succeeded in calling on WindowStageClose.');
+        expect().assertFail();
         console.log(msgStr + 'end.');
-        expect(testcaseResult).assertTrue();
-        done();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call on WindowStageClose. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -999,24 +985,22 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOffWindowStageCloseErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOffWindowStageCloseErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOffWindowStageCloseErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let testcaseResult = true;
-        try {
-          windowStage.off(null, () => {
-          });
-          console.error(msgStr + 'Succeeded in calling off WindowStageClose.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call off WindowStageClose. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
+      try {
+        windowStage.off(null, () => {
+        });
+        console.error(msgStr + 'Succeeded in calling off WindowStageClose.');
+        expect().assertFail();
         console.log(msgStr + 'end.');
-        expect(testcaseResult).assertTrue();
-        done();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call off WindowStageClose. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -1029,23 +1013,21 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetDefaultDensityEnabledErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetDefaultDensityEnabledErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetDefaultDensityEnabledErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let testcaseResult = true;
-        try {
-          windowStage.setDefaultDensityEnabled(null);
-          console.error(msgStr + 'Succeeded in calling setDefaultDensityEnabled.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call setDefaultDensityEnabled. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
+      try {
+        windowStage.setDefaultDensityEnabled(null);
+        console.error(msgStr + 'Succeeded in calling setDefaultDensityEnabled.');
+        expect().assertFail();
         console.log(msgStr + 'end.');
-        expect(testcaseResult).assertTrue();
-        done();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call setDefaultDensityEnabled. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -1058,23 +1040,21 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetCustomDensityErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetCustomDensityErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetCustomDensityErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let testcaseResult = true;
-        try {
-          windowStage.setCustomDensity(null)
-          console.error(msgStr + 'Succeeded in calling setCustomDensity.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call setCustomDensity. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
+      try {
+        windowStage.setCustomDensity(null)
+        console.error(msgStr + 'Succeeded in calling setCustomDensity.');
+        expect().assertFail();
         console.log(msgStr + 'end.');
-        expect(testcaseResult).assertTrue();
-        done();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call setCustomDensity. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -1087,25 +1067,23 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetWindowRectAutoSavePromiseErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetWindowRectAutoSavePromiseErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetWindowRectAutoSavePromiseErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        try {
-          await windowStage.setWindowRectAutoSave(null).then(async () => {
-            console.info(msgStr + 'Succeeded in calling setWindowRectAutoSave.');
-            expect().assertFail();
-          }).catch(async (err: BusinessError) => {
-            console.error(msgStr + 'Failed to call setWindowRectAutoSave. Cause: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
-          });
-          done()
-        } catch (exception) {
-          console.error(msgStr + 'Failed to set the call setWindowRectAutoSave. Cause:' + JSON.stringify(exception));
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+      try {
+        await windowStage.setWindowRectAutoSave(null).then(async () => {
+          console.info(msgStr + 'Succeeded in calling setWindowRectAutoSave.');
+          expect().assertFail();
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call setWindowRectAutoSave. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(401);
+        });
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setWindowRectAutoSave. Cause:' + JSON.stringify(exception));
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
   })
