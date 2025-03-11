@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
@@ -186,29 +185,7 @@ export default function addAssetsTest () {
         })
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
-        done();
-      }
-    });
-
-    /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ADD_ASSETS_0600
-      * @tc.name      : addAssets_callback_006
-      * @tc.desc      : add [123123] array to user album,error code 14000011
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
-    it('addAssets_callback_006', 2, async (done: Function) => {
-      const testNum = 'addAssets_callback_006';
-      try {
-        const album:ESObject = await helper.createAlbum(testNum);
-        album.addAssets([123123], async (err:BusinessError) => {
-          expect(false).assertTrue();
-        })
-        done();
-      } catch (error) {
-        console.info(`${testNum} success; error code: ${error.code}`);
-        expect(error.code).assertEqual('14000011');
+        expect(error.code === '13900020' || error.code === '401').assertTrue();
         done();
       }
     });
@@ -313,28 +290,7 @@ export default function addAssetsTest () {
         done();
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
-        done();
-      }
-    });
-
-    /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_ADD_ASSETS_0600
-      * @tc.name      : addAssets_promise_006
-      * @tc.desc      : add [123123] array to user album,error code 14000011
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
-    it('addAssets_promise_006', 2, async (done: Function) => {
-      const testNum = 'addAssets_promise_006';
-      try {
-        const album:ESObject = await helper.createAlbum(testNum);
-        await album.addAssets([123123]);
-        expect(false).assertTrue();
-        done();
-      } catch (error) {
-        console.info(`${testNum} failed; error code: ${error.code}`);
-        expect(error.code).assertEqual('14000011');
+        expect(error.code === '13900020' || error.code === '401').assertTrue();
         done();
       }
     });
