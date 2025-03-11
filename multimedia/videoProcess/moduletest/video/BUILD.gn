@@ -65,4 +65,7 @@ ohos_moduletest_suite("ActsVpeVideoNativModuleTest") {
     "media_foundation:native_media_core",
     "window_manager:libwm",
   ]
+
+  part_name = "video_processing_engine"
+  subsystem_name = "multimedia"
 }

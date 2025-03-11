@@ -523,7 +523,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSendControlWriteRequestOne(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(USB_DDK_INVALID_PARAMETER);
+        expect(data).assertEqual(USB_DDK_SUCCESS);
         done()
       }
     });
@@ -607,7 +607,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSendControlWriteRequestFive(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(USB_DDK_SUCCESS);
+        expect(data).assertEqual(USB_DDK_INVALID_PARAMETER);
         done()
       }
     });

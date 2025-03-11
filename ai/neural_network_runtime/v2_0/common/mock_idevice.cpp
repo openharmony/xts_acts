@@ -19,8 +19,8 @@
 #include "mock_idevice.h"
 #include "hdi_device_v2_0.h"
 #include "hdi_returncode_utils.h"
-#include "common/log.h"
-#include "common/utils.h"
+#include "log.h"
+#include "utils.h"
 #include "nnbackend.h"
 #include "backend_registrar.h"
 

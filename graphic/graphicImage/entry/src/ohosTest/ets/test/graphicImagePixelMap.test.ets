@@ -1007,6 +1007,132 @@ export default function graphicImagePixelMapTest() {
       })
     });
 
-    
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_044
+     * @tc.name      : testARGB_8888
+     * @tc.desc      :  1.create color/opts
+                        2.create PixelMap
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testARGB_8888", 0, async (done:Function)=>  {
+      let msg = '=====testARGB_8888====='
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.ARGB_8888 , size: { height: 4, width: 6 } }
+      console.log(msg + " Example begin! ")
+      image.createPixelMap(color, opts).then(async (pixelMap: image.PixelMap) => {
+        console.info( msg + ' Succeeded in creating pixelMap.');
+        console.log(msg + ' Example end !')
+        expect(true).assertTrue();
+        done();
+      }).catch((error: BusinessError) => {
+        console.error( msg + ` Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+        expect().assertFail();
+        done();
+      })
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_045
+     * @tc.name      : testCreateScaledPixelMap
+     * @tc.desc      :  1.create PixelMap
+                        2.create scaleX/scaleY
+                        3.use createScaledPixelMap
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testCreateScaledPixelMap", 0, async (done:Function)=>  {
+      let msg = '=====testCreateScaledPixelMap====='
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      console.log(msg + " Example begin! ")
+      image.createPixelMap(color, opts).then(async(pixelMap: image.PixelMap) => {
+        console.info( msg + ' Succeeded in creating pixelMap.');
+        let scaleX: number = 2.0;
+        let scaleY: number = 1.0;
+        if (pixelMap != undefined) {
+            pixelMap.createScaledPixelMap(scaleX, scaleY, image.AntiAliasingLevel.LOW).then((scaledPixelMap: image.PixelMap) => {
+            console.info(msg + ' Succeeded in creating scaledPixelMap.');
+            expect(true).assertTrue();
+            done();
+          }).catch((error: BusinessError) => {
+            console.error(msg + ` Failed to create scaledPixelMap. Error code is ${error.code}, error message is ${error.message}`);
+            expect().assertFail();
+            done();
+          })
+        }
+      }).catch((error: BusinessError) => {
+        console.info( msg + ' Faild in .' + error);
+        console.info( msg + ' Faild in .' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_046
+     * @tc.name      : testCreateScaledPixelMapSync
+     * @tc.desc      :  1.create PixelMap
+                        2.create scaleX/scaleY
+                        3.use createScaledPixelMapSync
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testCreateScaledPixelMapSync", 0, async (done:Function)=>  {
+      let msg = '=====testCreateScaledPixelMapSync====='
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      console.log(msg + " Example begin! ")
+      image.createPixelMap(color, opts).then(async(pixelMap: image.PixelMap) => {
+        console.info( msg + ' Succeeded in creating pixelMap.');
+        let scaleX: number = 2.0;
+        let scaleY: number = 1.0;
+        if (pixelMap != undefined) {
+          let scaledPixelMap = pixelMap.createScaledPixelMapSync(scaleX, scaleY, image.AntiAliasingLevel.LOW);
+          console.info(msg + ' Succeeded in creating scaledPixelMap.');
+          expect(true).assertTrue();
+          done();
+        }
+      }).catch((error: BusinessError) => {
+        console.info( msg + ' Faild in .' + error);
+        console.info( msg + ' Faild in .' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_047
+     * @tc.name      : testCreateScaledPixelMapSync
+     * @tc.desc      :  1.create PixelMap
+                        2.create scaleX/scaleY
+                        3.use createScaledPixelMapSync
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testCreateScaledPixelMapSync", 0, async (done:Function)=>  {
+      let msg = '=====testCreateScaledPixelMapSync====='
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      console.log(msg + " Example begin! ")
+      image.createPixelMap(color, opts).then(async(pixelMap: image.PixelMap) => {
+        console.info( msg + ' Succeeded in creating pixelMap.');
+        if (pixelMap != undefined) {
+          let clonedPixelMap = pixelMap.cloneSync();
+          console.info(msg + ' Succeeded in creating cloneSync.');
+          expect(true).assertTrue();
+          done();
+        }
+      }).catch((error: BusinessError) => {
+        console.info( msg + ' Faild in .' + error);
+        console.info( msg + ' Faild in .' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+    });
   })
 }

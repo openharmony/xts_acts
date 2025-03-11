@@ -26,11 +26,16 @@ import EmptyTest from './Empty.test';
 import ContactsTest from './Contacts.test';
 import AddContactViaUITest from './AddContactViaUI.test';
 import SaveToExistingContactViaUITest from './SaveToExistingContactViaUI.test';
+import SelectContactsTest from './SelectContacts.test';
+import { deviceInfo } from '@kit.BasicServicesKit'
 import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
   if (sim.getMaxSimCount()!=0){
     AddContactTest();
+    if (deviceInfo.deviceType !== 'wearable') {
+      SelectContactsTest();
+    }
     AddContactViaUITest();
     SaveToExistingContactViaUITest();
     QueryKeyTest();

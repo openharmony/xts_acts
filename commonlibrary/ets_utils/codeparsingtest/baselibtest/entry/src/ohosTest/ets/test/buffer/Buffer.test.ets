@@ -4,7 +4,7 @@
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
-*     http://www.apache.org/licenses/LICENSE-2.0
+*http://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
 * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,13 +14,24 @@
 */
 
 import buffer from '@ohos.buffer';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { afterEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 let TAG = "testAlloc0001";
 
 function isIteratorEmpty<T>(iterator: Iterator<T>): boolean {
   const firstResult = iterator.next();
   return firstResult.done === true;
+}
+
+
+function sleep(time: number) {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve()
+    }, time)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
 }
 
 interface Options {
@@ -30,16 +41,22 @@ interface Options {
 
 export default function BufferTest() {
   describe('bufferTest', () => {
-
+    afterEach(async (done: Function) => {
+      // Presets a clear action, which is performed after each unit test case ends.
+      // The number of execution times is the same as the number of test cases defined by **it**.
+      // This API supports only one parameter: clear action function.
+      await sleep(10);
+      done();
+    })
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_0100
-    * @tc.name       : testAlloc0001
-    * @tc.desc       : Testing alloc interface with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAlloc0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_0100
+     * @tc.name  : testAlloc0001
+     * @tc.desc  : Testing alloc interface with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAlloc0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAlloc0001";
       try {
         let size = 10;
@@ -52,14 +69,14 @@ export default function BufferTest() {
     })
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_0200
-    * @tc.name       : testAlloc0002
-    * @tc.desc       : Testing alloc for buffer with value '4294967296'
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAlloc0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_0200
+     * @tc.name  : testAlloc0002
+     * @tc.desc  : Testing alloc for buffer with value '4294967296'
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAlloc0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAlloc0002";
       try {
         let size = 4294967296;
@@ -72,14 +89,14 @@ export default function BufferTest() {
     })
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_0300
-    * @tc.name       : testAlloc0003
-    * @tc.desc       : Testing alloc for parameter with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAlloc0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_0300
+     * @tc.name  : testAlloc0003
+     * @tc.desc  : Testing alloc for parameter with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAlloc0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAlloc0003";
       try {
         buffer.alloc(undefined);
@@ -90,14 +107,14 @@ export default function BufferTest() {
     })
 
     /*
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_0400
-     * @tc.name       : testAlloc0004
-     * @tc.desc       : Testing alloc for parameter with value null.
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_0400
+      * @tc.name  : testAlloc0004
+      * @tc.desc  : Testing alloc for parameter with value null.
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
      */
-    it('testAlloc0004', 0, () => {
+    it('testAlloc0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAlloc0004";
       try {
         buffer.alloc(null);
@@ -108,14 +125,14 @@ export default function BufferTest() {
     })
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_0500
-    * @tc.name       : testAlloc0005
-    * @tc.desc       : Testing alloc for buffer,the second parameter is empty string.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_0500
+     * @tc.name: testAlloc0005
+     * @tc.desc: Testing alloc for buffer,the second parameter is empty string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
     */
-    it('testAlloc0005', 0, () => {
+    it('testAlloc0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAlloc0005";
       try {
         let buf = buffer.alloc(10, ' ');
@@ -127,14 +144,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_0600
-    * @tc.name       : testAlloc0006
-    * @tc.desc       : Testing alloc for buffer,the second parameter is null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAlloc0006', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_0600
+     * @tc.name  : testAlloc0006
+     * @tc.desc  : Testing alloc for buffer,the second parameter is null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAlloc0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAlloc0006";
       try {
         let buf = buffer.alloc(10, null);
@@ -146,14 +163,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_0700
-    * @tc.name       : testAlloc0007
-    * @tc.desc       : Testing alloc for buffer,the second parameter is buffer type.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAlloc0007', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_0700
+     * @tc.name  : testAlloc0007
+     * @tc.desc  : Testing alloc for buffer,the second parameter is buffer type.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAlloc0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAlloc0007";
       try {
         let buf1 = buffer.alloc(10);
@@ -166,14 +183,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_0900
-    * @tc.name       : testAlloc0009
-    * @tc.desc       : Testing alloc,the second and third parameter is string and null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAlloc0009', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_0900
+     * @tc.name  : testAlloc0009
+     * @tc.desc  : Testing alloc,the second and third parameter is string and null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAlloc0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAlloc0009";
       try {
         let buf = buffer.alloc(10, "ab$#", null);
@@ -184,14 +201,14 @@ export default function BufferTest() {
       }
     });
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_1000
-    * @tc.name       : testAlloc0010
-    * @tc.desc       : Testing alloc for parameter with value 0.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAlloc0010', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_1000
+     * @tc.name  : testAlloc0010
+     * @tc.desc  : Testing alloc for parameter with value 0.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAlloc0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAlloc0010";
       try {
         let buf = buffer.alloc(0);
@@ -203,14 +220,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_1200
-    * @tc.name       : testAlloc0012
-    * @tc.desc       : Testing alloc for parameter with value (0，bufferOBJ).
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAlloc0012', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_1200
+     * @tc.name  : testAlloc0012
+     * @tc.desc  : Testing alloc for parameter with value (0，bufferOBJ).
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAlloc0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAlloc0012";
       try {
         let buf1 = buffer.alloc(10);
@@ -224,14 +241,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_1300
-    * @tc.name       : testAlloc0013
-    * @tc.desc       : Testing alloc for buffer with value -5.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAlloc0013', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_1300
+     * @tc.name  : testAlloc0013
+     * @tc.desc  : Testing alloc for buffer with value -5.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAlloc0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAlloc0013";
       try {
         buffer.alloc(-5);
@@ -242,14 +259,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_1400
-    * @tc.name       : testAlloc0014
-    * @tc.desc       : Testing alloc for buffer with value 5.5.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAlloc0014', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_1400
+     * @tc.name  : testAlloc0014
+     * @tc.desc  : Testing alloc for buffer with value 5.5.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAlloc0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAlloc0014";
       try {
         let buf = buffer.alloc(5.5);
@@ -261,14 +278,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZED_0100
-    * @tc.name       : testAllocUninitialized0001
-    * @tc.desc       : Testing allocUninitialized for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAllocUninitialized0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZED_0100
+     * @tc.name  : testAllocUninitialized0001
+     * @tc.desc  : Testing allocUninitialized for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAllocUninitialized0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAllocUninitialized0001";
       try {
         let buf = buffer.allocUninitialized(10);
@@ -280,14 +297,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZED_0200
-    * @tc.name       : testAllocUninitialized0002
-    * @tc.desc       : Testing allocUninitialized for buffer with value 0.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAllocUninitialized0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZED_0200
+     * @tc.name  : testAllocUninitialized0002
+     * @tc.desc  : Testing allocUninitialized for buffer with value 0.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAllocUninitialized0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAllocUninitialized0002";
       try {
         let buf = buffer.allocUninitialized(0);
@@ -299,14 +316,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : testAllocUninitialized0003
-    * @tc.name       : testAllocUninitialized0003
-    * @tc.desc       : Testing allocUninitialized for buffer with value -5.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAllocUninitialized0003', 0, () => {
+     * @tc.number: testAllocUninitialized0003
+     * @tc.name  : testAllocUninitialized0003
+     * @tc.desc  : Testing allocUninitialized for buffer with value -5.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAllocUninitialized0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAllocUninitialized0003";
       try {
         let buf = buffer.allocUninitialized(-5);
@@ -317,14 +334,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZED_0400
-    * @tc.name       : testAllocUninitialized0004
-    * @tc.desc       : Testing allocUninitialized for buffer with value 5.5.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAllocUninitialized0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZED_0400
+     * @tc.name  : testAllocUninitialized0004
+     * @tc.desc  : Testing allocUninitialized for buffer with value 5.5.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAllocUninitialized0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAllocUninitialized0004";
       try {
         let buf = buffer.allocUninitialized(5.5);
@@ -336,14 +353,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZED_0500
-    * @tc.name       : testAllocUninitialized0005
-    * @tc.desc       : Testing allocUninitialized for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAllocUninitialized0005', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZED_0500
+     * @tc.name  : testAllocUninitialized0005
+     * @tc.desc  : Testing allocUninitialized for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAllocUninitialized0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAllocUninitialized0005";
       try {
         let buf = buffer.allocUninitialized(undefined);
@@ -355,14 +372,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZED_0600
-    * @tc.name       : testAllocUninitialized0006
-    * @tc.desc       : Testing allocUninitialized for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAllocUninitialized0006', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZED_0600
+     * @tc.name  : testAllocUninitialized0006
+     * @tc.desc  : Testing allocUninitialized for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAllocUninitialized0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAllocUninitialized0006";
       try {
         let buf = buffer.allocUninitialized(null);
@@ -374,14 +391,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZEDFROMPOOL_0100
-    * @tc.name       : testAllocUninitializedFromPool0001
-    * @tc.desc       : Testing allocUninitializedFromPool for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAllocUninitializedFromPool0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZEDFROMPOOL_0100
+     * @tc.name  : testAllocUninitializedFromPool0001
+     * @tc.desc  : Testing allocUninitializedFromPool for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAllocUninitializedFromPool0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAllocUninitializedFromPool0001";
       try {
         let buf = buffer.allocUninitializedFromPool(10);
@@ -393,14 +410,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZEDFROMPOOL_0200
-    * @tc.name       : testAllocUninitializedFromPool0002
-    * @tc.desc       : Testing allocUninitializedFromPool for buffer with value 0.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAllocUninitializedFromPool0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZEDFROMPOOL_0200
+     * @tc.name  : testAllocUninitializedFromPool0002
+     * @tc.desc  : Testing allocUninitializedFromPool for buffer with value 0.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAllocUninitializedFromPool0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAllocUninitializedFromPool0002";
       try {
         let buf = buffer.allocUninitializedFromPool(0);
@@ -412,14 +429,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZEDFROMPOOL_0300
-    * @tc.name       : testAllocUninitializedFromPool0003
-    * @tc.desc       : Testing allocUninitializedFromPool for buffer with value -5.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAllocUninitializedFromPool0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZEDFROMPOOL_0300
+     * @tc.name  : testAllocUninitializedFromPool0003
+     * @tc.desc  : Testing allocUninitializedFromPool for buffer with value -5.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAllocUninitializedFromPool0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAllocUninitializedFromPool0003";
       try {
         let buf = buffer.allocUninitializedFromPool(-5);
@@ -431,14 +448,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZEDFROMPOOL_0400
-    * @tc.name       : testAllocUninitializedFromPool0004
-    * @tc.desc       : Testing allocUninitializedFromPool for buffer with value 5.5.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAllocUninitializedFromPool0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZEDFROMPOOL_0400
+     * @tc.name  : testAllocUninitializedFromPool0004
+     * @tc.desc  : Testing allocUninitializedFromPool for buffer with value 5.5.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAllocUninitializedFromPool0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAllocUninitializedFromPool0004";
       try {
         let buf = buffer.allocUninitializedFromPool(5.5);
@@ -450,14 +467,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZEDFROMPOOL_0500
-    * @tc.name       : testAllocUninitializedFromPool0005
-    * @tc.desc       : Testing allocUninitializedFromPool for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAllocUninitializedFromPool0005', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZEDFROMPOOL_0500
+     * @tc.name  : testAllocUninitializedFromPool0005
+     * @tc.desc  : Testing allocUninitializedFromPool for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAllocUninitializedFromPool0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAllocUninitializedFromPool0005";
       try {
         let buf = buffer.allocUninitializedFromPool(undefined);
@@ -469,14 +486,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZEDFROMPOOL_0600
-    * @tc.name       : testAllocUninitializedFromPool0006
-    * @tc.desc       : Testing allocUninitializedFromPool for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testAllocUninitializedFromPool0006', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ALLOCUNINITIALIZEDFROMPOOL_0600
+     * @tc.name  : testAllocUninitializedFromPool0006
+     * @tc.desc  : Testing allocUninitializedFromPool for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testAllocUninitializedFromPool0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testAllocUninitializedFromPool0006";
       try {
         let buf = buffer.allocUninitializedFromPool(null);
@@ -488,14 +505,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_0100
-    * @tc.name       : testByteLength0001
-    * @tc.desc       : Testing byteLength for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testByteLength0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_0100
+     * @tc.name  : testByteLength0001
+     * @tc.desc  : Testing byteLength for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testByteLength0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testByteLength0001";
       try {
         let byteLen = buffer.byteLength("abcd");
@@ -507,14 +524,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_0200
-    * @tc.name       : testByteLength0002
-    * @tc.desc       : Testing byteLength for buffer with value '测试'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testByteLength0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_0200
+     * @tc.name  : testByteLength0002
+     * @tc.desc  : Testing byteLength for buffer with value '测试'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testByteLength0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testByteLength0002";
       try {
         let byteLen = buffer.byteLength("测试");
@@ -526,14 +543,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_0300
-    * @tc.name       : testByteLength0003
-    * @tc.desc       : Testing byteLength for buffer with value '$&@*%'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testByteLength0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_0300
+     * @tc.name  : testByteLength0003
+     * @tc.desc  : Testing byteLength for buffer with value '$&@*%'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testByteLength0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testByteLength0003";
       try {
         let byteLen = buffer.byteLength("$&@*%");
@@ -545,14 +562,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_0600
-    * @tc.name       : testByteLength0006
-    * @tc.desc       : Testing byteLength for buffer with uint8array objects.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testByteLength0006', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_0600
+     * @tc.name  : testByteLength0006
+     * @tc.desc  : Testing byteLength for buffer with uint8array objects.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testByteLength0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testByteLength0006";
       try {
         let uintarr = new Uint8Array(2);
@@ -567,14 +584,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_0700
-    * @tc.name       : testByteLength0007
-    * @tc.desc       : Testing byteLength for buffer with buffer objects.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testByteLength0007', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_0700
+     * @tc.name  : testByteLength0007
+     * @tc.desc  : Testing byteLength for buffer with buffer objects.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testByteLength0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testByteLength0007";
       try {
         let buf1 = buffer.from("abc");
@@ -587,14 +604,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_0800
-    * @tc.name       : testByteLength0008
-    * @tc.desc       : Testing byteLength for buffer with buffer objects.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testByteLength0008', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_0800
+     * @tc.name  : testByteLength0008
+     * @tc.desc  : Testing byteLength for buffer with buffer objects.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testByteLength0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testByteLength0008";
       try {
         let buf1 = buffer.alloc(8);
@@ -607,14 +624,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_0900
-    * @tc.name       : testByteLength0009
-    * @tc.desc       : Testing byteLength for buffer with value empty string.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testByteLength0009', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_0900
+     * @tc.name  : testByteLength0009
+     * @tc.desc  : Testing byteLength for buffer with value empty string.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testByteLength0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testByteLength0009";
       try {
         let buf1 = buffer.from("");
@@ -627,14 +644,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_1000
-    * @tc.name       : testByteLength0010
-    * @tc.desc       : Testing byteLength for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testByteLength0010', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_1000
+     * @tc.name  : testByteLength0010
+     * @tc.desc  : Testing byteLength for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testByteLength0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testByteLength0010";
       try {
         let byteLen = buffer.byteLength(undefined);
@@ -646,14 +663,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_1100
-    * @tc.name       : testByteLength0011
-    * @tc.desc       : Testing byteLength for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testByteLength0011', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BYTELENGTH_1100
+     * @tc.name  : testByteLength0011
+     * @tc.desc  : Testing byteLength for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testByteLength0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testByteLength0011";
       try {
         let byteLen = buffer.byteLength(null);
@@ -665,14 +682,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ISBUFFER_0100
-    * @tc.name       : testIsBuffer0001
-    * @tc.desc       : Testing isBuffer for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testIsBuffer0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ISBUFFER_0100
+     * @tc.name  : testIsBuffer0001
+     * @tc.desc  : Testing isBuffer for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testIsBuffer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIsBuffer0001";
       try {
         let buf = buffer.alloc(1);
@@ -685,14 +702,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ISBUFFER_0200
-    * @tc.name       : testIsBuffer0002
-    * @tc.desc       : Testing isBuffer for buffer with object value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testIsBuffer0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ISBUFFER_0200
+     * @tc.name  : testIsBuffer0002
+     * @tc.desc  : Testing isBuffer for buffer with object value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testIsBuffer0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIsBuffer0002";
       try {
         let obj = new Object(1);
@@ -705,14 +722,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ISBUFFER_0300
-    * @tc.name       : testIsBuffer0003
-    * @tc.desc       : Testing isBuffer for buffer with value '[]'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testIsBuffer0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ISBUFFER_0300
+     * @tc.name  : testIsBuffer0003
+     * @tc.desc  : Testing isBuffer for buffer with value '[]'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testIsBuffer0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIsBuffer0003";
       try {
         let flag = buffer.isBuffer([]);
@@ -724,14 +741,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ISBUFFER_0400
-    * @tc.name       : testIsBuffer0004
-    * @tc.desc       : Testing isBuffer for buffer with value string type.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testIsBuffer0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ISBUFFER_0400
+     * @tc.name  : testIsBuffer0004
+     * @tc.desc  : Testing isBuffer for buffer with value string type.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testIsBuffer0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIsBuffer0004";
       try {
         let flag = buffer.isBuffer('ABC');
@@ -743,14 +760,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ISBUFFER_0500
-    * @tc.name       : testIsBuffer0005
-    * @tc.desc       : Testing isBuffer for buffer with value empty string.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testIsBuffer0005', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ISBUFFER_0500
+     * @tc.name  : testIsBuffer0005
+     * @tc.desc  : Testing isBuffer for buffer with value empty string.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testIsBuffer0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIsBuffer0005";
       try {
         let flag = buffer.isBuffer('');
@@ -762,14 +779,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ISBUFFER_0600
-    * @tc.name       : testIsBuffer0006
-    * @tc.desc       : testing alloc for buffer with normal value
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testIsBuffer0006', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ISBUFFER_0600
+     * @tc.name  : testIsBuffer0006
+     * @tc.desc  : testing alloc for buffer with normal value
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testIsBuffer0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIsBuffer0006";
       try {
         let flag = buffer.isBuffer(5);
@@ -781,14 +798,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ISBUFFER_0700
-    * @tc.name       : testIsBuffer0007
-    * @tc.desc       : Testing isBuffer for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testIsBuffer0007', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ISBUFFER_0700
+     * @tc.name  : testIsBuffer0007
+     * @tc.desc  : Testing isBuffer for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testIsBuffer0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIsBuffer0007";
       try {
         let flag = buffer.isBuffer(undefined);
@@ -800,14 +817,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ISBUFFER_0800
-    * @tc.name       : testIsBuffer0008
-    * @tc.desc       : Testing isBuffer for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testIsBuffer0008', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ISBUFFER_0800
+     * @tc.name  : testIsBuffer0008
+     * @tc.desc  : Testing isBuffer for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testIsBuffer0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIsBuffer0008";
       try {
         let flag = buffer.isBuffer(null);
@@ -819,14 +836,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ISCODEING_0100
-    * @tc.name       : testIsEncoding0001
-    * @tc.desc       : Testing isEncoding for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testIsEncoding0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ISCODEING_0100
+     * @tc.name  : testIsEncoding0001
+     * @tc.desc  : Testing isEncoding for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testIsEncoding0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIsEncoding0001";
       try {
         let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
@@ -842,14 +859,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ISCODEING_0200
-    * @tc.name       : testIsEncoding0002
-    * @tc.desc       : Testing isEncoding for buffer with value gbk.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testIsEncoding0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ISCODEING_0200
+     * @tc.name  : testIsEncoding0002
+     * @tc.desc  : Testing isEncoding for buffer with value gbk.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testIsEncoding0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIsEncoding0002";
       try {
         let flag = buffer.isEncoding('gbk');
@@ -861,14 +878,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ISCODEING_0300
-    * @tc.name       : testIsEncoding0003
-    * @tc.desc       : Testing isEncoding for buffer with value empty string.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testIsEncoding0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ISCODEING_0300
+     * @tc.name  : testIsEncoding0003
+     * @tc.desc  : Testing isEncoding for buffer with value empty string.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testIsEncoding0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIsEncoding0003";
       try {
         let flag = buffer.isEncoding('');
@@ -880,14 +897,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ISCODEING_0400
-    * @tc.name       : testIsEncoding0004
-    * @tc.desc       : Testing isEncoding for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testIsEncoding0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ISCODEING_0400
+     * @tc.name  : testIsEncoding0004
+     * @tc.desc  : Testing isEncoding for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testIsEncoding0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIsEncoding0004";
       try {
         let flag = buffer.isEncoding(undefined);
@@ -899,14 +916,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ISCODEING_0500
-    * @tc.name       : testIsEncoding0005
-    * @tc.desc       : Testing isEncoding for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testIsEncoding0005', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_ISCODEING_0500
+     * @tc.name  : testIsEncoding0005
+     * @tc.desc  : Testing isEncoding for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testIsEncoding0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIsEncoding0005";
       try {
         let flag = buffer.isEncoding(null);
@@ -918,14 +935,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_0100
-    * @tc.name       : testStaticCompare0001
-    * @tc.desc       : Testing compare with value '1235' and '1236'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testStaticCompare0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_0100
+     * @tc.name  : testStaticCompare0001
+     * @tc.desc  : Testing compare with value '1235' and '1236'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testStaticCompare0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testStaticCompare0001";
       try {
         let buf1 = buffer.from("1236");
@@ -939,14 +956,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_0200
-    * @tc.name       : testStaticCompare0002
-    * @tc.desc       : Testing compare with value '1236' and '1235'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testStaticCompare0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_0200
+     * @tc.name  : testStaticCompare0002
+     * @tc.desc  : Testing compare with value '1236' and '1235'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testStaticCompare0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testStaticCompare0002";
       try {
         let buf1 = buffer.from("1235");
@@ -960,14 +977,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_0300
-    * @tc.name       : testStaticCompare0003
-    * @tc.desc       : Testing compare with value '测试一' and '测试二'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testStaticCompare0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_0300
+     * @tc.name  : testStaticCompare0003
+     * @tc.desc  : Testing compare with value '测试一' and '测试二'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testStaticCompare0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testStaticCompare0003";
       try {
         let buf1 = buffer.from("测试一");
@@ -981,14 +998,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_0400
-    * @tc.name       : testStaticCompare0004
-    * @tc.desc       : Testing compare with value '测试$&*' and '测试$&*'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testStaticCompare0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_0400
+     * @tc.name  : testStaticCompare0004
+     * @tc.desc  : Testing compare with value '测试$&*' and '测试$&*'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testStaticCompare0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testStaticCompare0004";
       try {
         let buf1 = buffer.from("测试$&*");
@@ -1002,14 +1019,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_0500
-    * @tc.name       : testStaticCompare0005
-    * @tc.desc       : Testing compare with value '1236' and '1236'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testStaticCompare0005', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_0500
+     * @tc.name  : testStaticCompare0005
+     * @tc.desc  : Testing compare with value '1236' and '1236'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testStaticCompare0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testStaticCompare0005";
       try {
         let buf1 = buffer.from("1236");
@@ -1023,14 +1040,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_0800
-    * @tc.name       : testStaticCompare0008
-    * @tc.desc       : Testing compare with value undefined and undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testStaticCompare0008', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_0800
+     * @tc.name  : testStaticCompare0008
+     * @tc.desc  : Testing compare with value undefined and undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testStaticCompare0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testStaticCompare0008";
       try {
         let res = buffer.compare(undefined, undefined);
@@ -1042,14 +1059,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_0900
-    * @tc.name       : testStaticCompare0009
-    * @tc.desc       : Testing compare with value null and null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testStaticCompare0009', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_0900
+     * @tc.name  : testStaticCompare0009
+     * @tc.desc  : Testing compare with value null and null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testStaticCompare0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testStaticCompare0009";
       try {
         let res = buffer.compare(null, null);
@@ -1061,14 +1078,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_1000
-    * @tc.name       : testStaticCompare0010
-    * @tc.desc       : Testing compare with value buffer and buffer.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testStaticCompare0010', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_1000
+     * @tc.name  : testStaticCompare0010
+     * @tc.desc  : Testing compare with value buffer and buffer.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testStaticCompare0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testStaticCompare0010";
       let buf1 = buffer.from("1");
       let buf2 = buffer.from("abc");
@@ -1082,14 +1099,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_1100
-    * @tc.name       : testStaticCompare0011
-    * @tc.desc       : Testing compare with value buffer and uint8array type.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testStaticCompare0011', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_STATICCOMPARE_1100
+     * @tc.name  : testStaticCompare0011
+     * @tc.desc  : Testing compare with value buffer and uint8array type.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testStaticCompare0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testStaticCompare0011";
       try {
         let buf1 = buffer.from("1abc");
@@ -1106,14 +1123,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COMPARE_0100
-    * @tc.name       : testCompare0001
-    * @tc.desc       : Testing compare with value '1236' and '1235'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testCompare0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_COMPARE_0100
+     * @tc.name  : testCompare0001
+     * @tc.desc  : Testing compare with value '1236' and '1235'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testCompare0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testCompare0001";
       try {
         let buf1 = buffer.from("1236");
@@ -1127,14 +1144,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COMPARE_0300
-    * @tc.name       : testCompare0003
-    * @tc.desc       : Testing compare with value (1236,1235,-1).
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testCompare0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_COMPARE_0300
+     * @tc.name  : testCompare0003
+     * @tc.desc  : Testing compare with value (1236,1235,-1).
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testCompare0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testCompare0003";
       let buf1 = buffer.from("1236");
       let buf2 = buffer.from("1235");
@@ -1148,14 +1165,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONTACT_0100
-    * @tc.name       : testConcat0001
-    * @tc.desc       : Testing concat with value '1236, 1235'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testConcat0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_CONTACT_0100
+     * @tc.name  : testConcat0001
+     * @tc.desc  : Testing concat with value '1236, 1235'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testConcat0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testConcat0001";
       try {
         let buf1 = buffer.from("1236");
@@ -1170,14 +1187,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONTACT_0200
-    * @tc.name       : testConcat0002
-    * @tc.desc       : Testing concat with value '测试, $&*'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testConcat0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_CONTACT_0200
+     * @tc.name  : testConcat0002
+     * @tc.desc  : Testing concat with value '测试, $&*'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testConcat0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testConcat0002";
       try {
         let buf1 = buffer.from("测试");
@@ -1192,14 +1209,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONTACT_0400
-    * @tc.name       : testConcat0004
-    * @tc.desc       : Testing concat with value 'buffer, buffer'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testConcat0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_CONTACT_0400
+     * @tc.name  : testConcat0004
+     * @tc.desc  : Testing concat with value 'buffer, buffer'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testConcat0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testConcat0004";
       try {
         let buf1 = buffer.from("123$");
@@ -1215,14 +1232,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONTACT_0500
-    * @tc.name       : testConcat0005
-    * @tc.desc       : Testing concat with value 'buffer,-1'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testConcat0005', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_CONTACT_0500
+     * @tc.name  : testConcat0005
+     * @tc.desc  : Testing concat with value 'buffer,-1'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testConcat0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testConcat0005";
       let buf1 = buffer.from("123$");
       let buf2 = buffer.from("*35");
@@ -1236,14 +1253,14 @@ export default function BufferTest() {
     });
 
     /*
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_CONTACT_0700
-     * @tc.name       : testConcat0007
-     * @tc.desc       : Testing concat with value 'undefined, undefined'.
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testConcat0007', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_CONTACT_0700
+     * @tc.name: testConcat0007
+     * @tc.desc: Testing concat with value 'undefined, undefined'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+    */
+    it('testConcat0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testConcat0007";
       try {
         let buf = buffer.concat(undefined, undefined);
@@ -1256,14 +1273,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TRANSCODE_0100
-    * @tc.name       : testTranscode0001
-    * @tc.desc       : Testing transcode with value 'buf1, "ascii", "ucs2"'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testTranscode0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_TRANSCODE_0100
+     * @tc.name  : testTranscode0001
+     * @tc.desc  : Testing transcode with value 'buf1, "ascii", "ucs2"'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testTranscode0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testTranscode0001";
       try {
         let buf1 = buffer.from("1236");
@@ -1277,14 +1294,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TRANSCODE_0200
-    * @tc.name       : testTranscode0002
-    * @tc.desc       : Testing transcode with value 'buf1, "utf8", "ucs2"'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testTranscode0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_TRANSCODE_0200
+     * @tc.name: testTranscode0002
+     * @tc.desc: Testing transcode with value 'buf1, "utf8", "ucs2"'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it('testTranscode0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testTranscode0002";
       try {
         let buf1 = buffer.from("测试");
@@ -1298,14 +1315,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TRANSCODE_0600
-    * @tc.name       : testTranscode0006
-    * @tc.desc       : Testing transcode with value 'undefined, "utf8", "ascii"'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testTranscode0006', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_TRANSCODE_0600
+     * @tc.name: testTranscode0006
+     * @tc.desc: Testing transcode with value 'undefined, "utf8", "ascii"'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it('testTranscode0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testTranscode0006";
       try {
         let buf = buffer.transcode(undefined, "utf8", "ascii");
@@ -1317,14 +1334,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_TRANSCODE_0700
-    * @tc.name       : testTranscode0007
-    * @tc.desc       : Testing transcode with value 'null, "utf8", "ascii"'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_TRANSCODE_0700
+      * @tc.name: testTranscode0007
+     * @tc.desc: Testing transcode with value 'null, "utf8", "ascii"'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
     */
-    it('testTranscode0007', 0, () => {
+    it('testTranscode0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testTranscode0007";
       try {
         let buf = buffer.transcode(null, "utf8", "ascii");
@@ -1336,14 +1353,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FILL_0100
-    * @tc.name       : testFill0001
-    * @tc.desc       : Testing fill with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testFill0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_FILL_0100
+     * @tc.name: testFill0001
+     * @tc.desc: Testing fill with normal value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it('testFill0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFill0001";
       try {
         let buf = buffer.alloc(3).fill("abc");
@@ -1356,14 +1373,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FILL_0200
-    * @tc.name       : testFill0002
-    * @tc.desc       : Testing fill with value '('F1刘FG', 0, 10, codeType)'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testFill0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_FILL_0200
+     * @tc.name: testFill0002
+     * @tc.desc: Testing fill with value '('F1刘FG', 0, 10, codeType)'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it('testFill0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFill0002";
       try {
         const buf1 = buffer.alloc(10).fill('F1刘FG', 0, 10, 'hex');
@@ -1400,14 +1417,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FILL_0300
-    * @tc.name       : testFill0003
-    * @tc.desc       : Testing fill with value '$*$'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testFill0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_FILL_0300
+     * @tc.name: testFill0003
+     * @tc.desc: Testing fill with value '$*$'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it('testFill0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFill0003";
       try {
         let buf = buffer.alloc(3).fill("$*$");
@@ -1420,14 +1437,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FILL_0400
-    * @tc.name       : testFill0004
-    * @tc.desc       : Testing fill with value '"$*$", -1'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testFill0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_FILL_0400
+     * @tc.name: testFill0004
+     * @tc.desc: Testing fill with value '"$*$", -1'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it('testFill0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFill0004";
       try {
         let buf = buffer.alloc(3).fill("$*$", -1);
@@ -1439,14 +1456,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FILL_0500
-    * @tc.name       : testFill0005
-    * @tc.desc       : Testing fill with value '"$*$", 0, 5'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testFill0005', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_FILL_0500
+     * @tc.name: testFill0005
+     * @tc.desc: Testing fill with value '"$*$", 0, 5'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it('testFill0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFill0005";
       try {
         let buf = buffer.alloc(3).fill("$*$", 0, 5);
@@ -1463,9 +1480,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the write interface with a normal value 'abcde' and an out-of-range 'offset' value of -1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWrite0006", 0, () => {
+    it("testWrite0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(8);
       try {
         let offset = buf.write("abcde", -1);
@@ -1481,9 +1498,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the write interface with a normal value 'abcde', a normal 'offset' value of 1, and an out-of-range 'length' value of 9.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWrite0007", 0, () => {
+    it("testWrite0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(8);
       try {
         let offset = buf.write("abcde", 1, 9);
@@ -1499,9 +1516,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the write interface with normal value ''.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWrite0009", 0, () => {
+    it("testWrite0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWrite0009";
       try {
         let buf = buffer.alloc(0);
@@ -1521,9 +1538,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the write interface with undefined .
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWrite0010", 0, () => {
+    it("testWrite0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(8);
       try {
         let offset = buf.write(undefined);
@@ -1539,9 +1556,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the write interface with null .
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWrite0011", 0, () => {
+    it("testWrite0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(8);
       try {
         let offset = buf.write(null);
@@ -1557,9 +1574,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeBigInt64BE interface with two parameters: 0x0102030405060708n and 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteBigInt64BE0001", 0, () => {
+    it("testWriteBigInt64BE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteBigInt64BE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -1577,9 +1594,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeBigInt64BE interface with a normal value 0x0102030405060708n and an out-of-range 'offset' value of 1, where 'offset' must be >= 0 and <= 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteBigInt64BE0002", 0, () => {
+    it("testWriteBigInt64BE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeBigInt64BE(0x0102030405060708n, 1);
@@ -1595,9 +1612,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeBigInt64BE interface with undefined .
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteBigInt64BE0003", 0, () => {
+    it("testWriteBigInt64BE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeBigInt64BE(undefined);
@@ -1613,9 +1630,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeBigInt64BE interface with null .
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteBigInt64BE0004", 0, () => {
+    it("testWriteBigInt64BE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeBigInt64BE(null);
@@ -1631,9 +1648,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeBigInt64LE interface with two parameters: 0x0102030405060708n and 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteBigInt64LE0001", 0, () => {
+    it("testWriteBigInt64LE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteBigInt64LE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -1651,9 +1668,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeBigInt64LE interface with out-of-range 'offset' value of 1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteBigInt64LE0002", 0, () => {
+    it("testWriteBigInt64LE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeBigInt64LE(0x0102030405060708n, 1);
@@ -1669,9 +1686,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeBigInt64LE interface with undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteBigInt64LE0003", 0, () => {
+    it("testWriteBigInt64LE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeBigInt64LE(undefined);
@@ -1687,9 +1704,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeBigInt64LE interface with null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteBigInt64LE0004", 0, () => {
+    it("testWriteBigInt64LE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeBigInt64LE(null);
@@ -1705,9 +1722,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt16BE interface with two parameters: 0xdecafafecacefaden and 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteBigUInt64BE0001", 0, () => {
+    it("testWriteBigUInt64BE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteBigUInt64BE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -1725,9 +1742,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt16BE interface with out-of-range 'offset' value of -1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteBigUInt64BE0002", 0, () => {
+    it("testWriteBigUInt64BE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeBigUInt64BE(0xdecafafecacefaden, 1);
@@ -1743,9 +1760,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt16BE interface with undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteBigUInt64BE0003", 0, () => {
+    it("testWriteBigUInt64BE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeBigUInt64BE(undefined);
@@ -1761,9 +1778,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt16BE interface with null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteBigUInt64BE0004", 0, () => {
+    it("testWriteBigUInt64BE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeBigUInt64BE(null);
@@ -1779,9 +1796,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeBigUInt64LE interface with two parameters: 0xdecafafecacefaden and 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteBigUInt64LE0001", 0, () => {
+    it("testWriteBigUInt64LE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteBigUInt64LE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -1799,9 +1816,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeBigUInt64LE interface with out-of-range 'offset' value of 1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteBigUInt64LE0002", 0, () => {
+    it("testWriteBigUInt64LE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeBigUInt64LE(0xdecafafecacefaden, 1);
@@ -1817,9 +1834,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeBigUInt64LE interface with undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteBigUInt64LE0003", 0, () => {
+    it("testWriteBigUInt64LE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeBigUInt64LE(undefined);
@@ -1835,9 +1852,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeBigUInt64LE interface with null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteBigUInt64LE0004", 0, () => {
+    it("testWriteBigUInt64LE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeBigUInt64LE(null);
@@ -1853,9 +1870,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeDoubleBE interface with two parameters: 123.456 and 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteDoubleBE0001", 0, () => {
+    it("testWriteDoubleBE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteDoubleBE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -1874,9 +1891,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeDoubleBE interface with a normal value of 123.456 and an out-of-range 'offset' value of 1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteDoubleBE0002", 0, () => {
+    it("testWriteDoubleBE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeDoubleBE(123.456, 1);
@@ -1892,9 +1909,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeDoubleBE interface with undefined .
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteDoubleBE0003", 0, () => {
+    it("testWriteDoubleBE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeDoubleBE(undefined);
@@ -1910,9 +1927,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeDoubleBE interface with null .
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteDoubleBE0004", 0, () => {
+    it("testWriteDoubleBE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeDoubleBE(null);
@@ -1928,9 +1945,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeDoubleLE interface with two parameters: 123.456 and 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteDoubleLE0001", 0, () => {
+    it("testWriteDoubleLE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteDoubleLE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -1948,9 +1965,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeDoubleLE interface with a normal value of 123.456 and an out-of-range 'offset' value of 1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteDoubleLE0002", 0, () => {
+    it("testWriteDoubleLE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeDoubleLE(123.456, 1);
@@ -1966,9 +1983,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeDoubleLE interface with undefined .
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteDoubleLE0003", 0, () => {
+    it("testWriteDoubleLE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeDoubleLE(undefined);
@@ -1984,9 +2001,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeDoubleBE interface with null .
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteDoubleLE0004", 0, () => {
+    it("testWriteDoubleLE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(8);
       try {
         let ref = buf.writeDoubleLE(null);
@@ -2002,9 +2019,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeFloatBE interface with two parameters: 0xcabcbcbc and 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteFloatBE0001", 0, () => {
+    it("testWriteFloatBE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteFloatBE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -2022,9 +2039,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeFloatBE interface with an out-of-range 'offset' value of 5, where 'offset' must be >= 0 and <= 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteFloatBE0002", 0, () => {
+    it("testWriteFloatBE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeFloatBE(0xcabcbcbc, 5);
@@ -2040,9 +2057,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeFloatBE interface with undefined .
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteFloatBE0003", 0, () => {
+    it("testWriteFloatBE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeFloatBE(undefined);
@@ -2058,9 +2075,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeFloatBE interface with null .
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteFloatBE0004", 0, () => {
+    it("testWriteFloatBE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeFloatBE(null);
@@ -2076,9 +2093,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeFloatLE interface with two parameters: 0xcabcbcbc and 12.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteFloatLE0001", 0, () => {
+    it("testWriteFloatLE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteFloatLE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(16);
@@ -2096,9 +2113,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeFloatLE interface with a normal value of 0xcabcbcbc and an out-of-range 'offset' value of 5.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteFloatLE0002", 0, () => {
+    it("testWriteFloatLE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeFloatLE(0xcabcbcbc, 5);
@@ -2114,9 +2131,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeFloatLE interface with undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteFloatLE0003", 0, () => {
+    it("testWriteFloatLE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeFloatLE(undefined);
@@ -2132,9 +2149,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeFloatLE interface with null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteFloatLE0004", 0, () => {
+    it("testWriteFloatLE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeFloatLE(null);
@@ -2148,12 +2165,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WriteInt8_0100
      * @tc.name: testWriteInt80001
      * @tc.desc: Testing the writeInt8 interface with value to buf at the specified offset.
-     *           value must be a valid signed 8-bit integer.
+     * value must be a valid signed 8-bit integer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt80001", 0, () => {
+    it("testWriteInt80001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteInt80001";
       try {
         let buf = buffer.allocUninitializedFromPool(2);
@@ -2171,9 +2188,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt8 interface with value 2 and an out-of-range 'offset' value of -1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt80002", 0, () => {
+    it("testWriteInt80002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(2);
       try {
         let ref = buf.writeInt8(2, -1);
@@ -2187,12 +2204,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WriteInt8_0300
      * @tc.name: testWriteInt80003
      * @tc.desc: Testing the writeInt8 interface with two parameters: 0x13245 and out of range "value" 0
-     *           it must be >= -128 and <= 127. Received value is: 78405.
+     * it must be >= -128 and <= 127. Received value is: 78405.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt80003", 0, () => {
+    it("testWriteInt80003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(2);
       try {
         let ref = buf.writeInt8(0x13245, 0);
@@ -2208,9 +2225,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt8 interface with undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt80004", 0, () => {
+    it("testWriteInt80004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(2);
       try {
         let ref = buf.writeInt8(undefined);
@@ -2226,9 +2243,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt8 interface with null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt80005", 0, () => {
+    it("testWriteInt80005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(2);
       try {
         let ref = buf.writeInt8(null);
@@ -2244,9 +2261,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt16BE interface with two parameters: 0x7bca and 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt16BE0001", 0, () => {
+    it("testWriteInt16BE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteInt16BE0001";
       try {
         let buf = buffer.alloc(2);
@@ -2264,9 +2281,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt16BE interface with out of range "offset" -1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt16BE0002", 0, () => {
+    it("testWriteInt16BE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(2);
       try {
         let ref = buf.writeInt16BE(0x7bca, -1);
@@ -2280,12 +2297,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WriteInt16BE_0300
      * @tc.name: testWriteInt16BE0003
      * @tc.desc: Testing the writeInt16BE interface with out of range "value" 0
-     *           It must be >= -32768 and <= 32767. Received value is: 1193046.
+     * It must be >= -32768 and <= 32767. Received value is: 1193046.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt16BE0003", 0, () => {
+    it("testWriteInt16BE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(2);
       try {
         let ref = buf.writeInt16BE(0x123456, 0);
@@ -2301,9 +2318,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt16BE interface with out of range "offset" 1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt16BE0004", 0, () => {
+    it("testWriteInt16BE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(2);
       try {
         let ref = buf.writeInt16BE(0x7bca, 1);
@@ -2319,9 +2336,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt16BE interface with undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt16BE0005", 0, () => {
+    it("testWriteInt16BE0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(2);
       try {
         let ref = buf.writeInt16BE(undefined);
@@ -2337,9 +2354,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt16BE interface with null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt16BE0006", 0, () => {
+    it("testWriteInt16BE0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(2);
       try {
         let ref = buf.writeInt16BE(null);
@@ -2355,9 +2372,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt16LE interface with two parameters: 0x1234 and 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt16LE0001", 0, () => {
+    it("testWriteInt16LE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteDoubleLE0001";
       try {
         let buf = buffer.alloc(2);
@@ -2375,9 +2392,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt16LE interface with out-of-range 'offset' value of -1
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt16LE0002", 0, () => {
+    it("testWriteInt16LE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(2);
       try {
         let ref = buf.writeInt16LE(0x7bca, -1);
@@ -2391,12 +2408,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WriteInt16LE_0300
      * @tc.name: testWriteInt16LE0003
      * @tc.desc: Testing the writeInt16LE interface with out of range "value" 0
-     *           It must be >= -32768 and <= 32767. Received value is: 1193046.
+     * It must be >= -32768 and <= 32767. Received value is: 1193046.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt16LE0003", 0, () => {
+    it("testWriteInt16LE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(2);
       try {
         let ref = buf.writeInt16LE(0x123456, 0);
@@ -2412,9 +2429,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt16LE interface with out-of-range 'offset' value of 1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt16LE0004", 0, () => {
+    it("testWriteInt16LE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(2);
       try {
         let ref = buf.writeInt16LE(0x1234, 1);
@@ -2430,9 +2447,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt16LE interface with undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt16LE0005", 0, () => {
+    it("testWriteInt16LE0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(2);
       try {
         let ref = buf.writeInt16LE(undefined);
@@ -2448,9 +2465,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt16LE interface with null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt16LE0006", 0, () => {
+    it("testWriteInt16LE0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(2);
       try {
         let ref = buf.writeInt16LE(null);
@@ -2466,9 +2483,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt32BE interface with two parameters: 0x12345678 and 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt32BE0001", 0, () => {
+    it("testWriteInt32BE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteInt32BE0001";
       try {
         let buf = buffer.alloc(4);
@@ -2486,9 +2503,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt32BE interface with out-of-range 'offset' value of -1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt32BE0002", 0, () => {
+    it("testWriteInt32BE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(4);
       try {
         let ref = buf.writeInt32BE(0x12345678, -1);
@@ -2502,12 +2519,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WriteInt32BE_0300
      * @tc.name: testWriteInt32BE0003
      * @tc.desc: Testing the writeInt32BE interface with out of range "value" 0
-     *           It must be >= -2147483648 and <= 2147483647. Received value is: 4886718345.
+     * It must be >= -2147483648 and <= 2147483647. Received value is: 4886718345.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt32BE0003", 0, () => {
+    it("testWriteInt32BE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(4);
       try {
         let ref = buf.writeInt32BE(0x123456789, 0);
@@ -2523,9 +2540,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt32BE interface with out-of-range 'offset' value of 1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt32BE0004", 0, () => {
+    it("testWriteInt32BE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(4);
       try {
         let ref = buf.writeInt32BE(0x12345678, 1);
@@ -2541,9 +2558,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt32BE function with undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt32BE0006", 0, () => {
+    it("testWriteInt32BE0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(4);
       try {
         let ref = buf.writeInt32BE(undefined);
@@ -2559,9 +2576,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt32BE function with null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt32BE0007", 0, () => {
+    it("testWriteInt32BE0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(4);
       try {
         let ref = buf.writeInt32BE(null);
@@ -2577,9 +2594,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt32LE interface with two parameters: 0x12345678 and 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt32LE0001", 0, () => {
+    it("testWriteInt32LE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteInt32LE0001";
       try {
         let buf = buffer.alloc(4);
@@ -2597,9 +2614,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt32LE interface with out-of-range 'offset' value of -1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt32LE0002", 0, () => {
+    it("testWriteInt32LE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(4);
       try {
         let ref = buf.writeInt32LE(0x12345678, -1);
@@ -2613,12 +2630,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WriteInt32LE_0300
      * @tc.name: testWriteInt32LE0003
      * @tc.desc: Testing the writeInt32LE interface with out of range "value" 0
-     *           It must be >= -2147483648 and <= 2147483647. Received value is: 4886718345.
+     * It must be >= -2147483648 and <= 2147483647. Received value is: 4886718345.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt32LE0003", 0, () => {
+    it("testWriteInt32LE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(4);
       try {
         let ref = buf.writeInt32LE(0x123456789, 0)
@@ -2634,9 +2651,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt32LE interface with out-of-range 'offset' value of -1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt32LE0004", 0, () => {
+    it("testWriteInt32LE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(4);
       try {
         let ref = buf.writeInt32LE(0x12345678, 1);
@@ -2652,9 +2669,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt32LE interface with undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt32LE0005", 0, () => {
+    it("testWriteInt32LE0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(4);
       try {
         let ref = buf.writeInt32LE(undefined);
@@ -2670,9 +2687,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt32LE interface with null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteInt32LE0006", 0, () => {
+    it("testWriteInt32LE0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.alloc(4);
       try {
         let ref = buf.writeInt32LE(null);
@@ -2688,9 +2705,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeIntBE interface with three parameters: 0x1234567890ab, 0, 6.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteIntBE0001", 0, () => {
+    it("testWriteIntBE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteIntBE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(6);
@@ -2708,9 +2725,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeIntBE interface with out-of-range 'offset' value of 1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteIntBE0002", 0, () => {
+    it("testWriteIntBE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(6);
       try {
         let ref = buf.writeIntBE(0x1234567890ab, 1, 6);
@@ -2726,9 +2743,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeIntBE interface with out-of-range 'offset' value of -1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteIntBE0003", 0, () => {
+    it("testWriteIntBE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(6);
       try {
         let ref = buf.writeIntBE(0x1234567890ab, -1, 6);
@@ -2744,9 +2761,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeIntBE interface with undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteIntBE0004", 0, () => {
+    it("testWriteIntBE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(6);
       try {
         let ref = buf.writeIntBE(undefined, 0, 6);
@@ -2762,9 +2779,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeIntBE interface with null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteIntBE0005", 0, () => {
+    it("testWriteIntBE0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(6);
       try {
         let ref = buf.writeIntBE(null, 0, 6);
@@ -2780,9 +2797,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeIntLE interface with three parameters: 0x1234567890ab, 0, 6.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteIntLE0001", 0, () => {
+    it("testWriteIntLE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteIntLE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(6);
@@ -2800,9 +2817,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeIntLE interface with out-of-range 'offset' value of 1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteIntLE0002", 0, () => {
+    it("testWriteIntLE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(6);
       try {
         let ref = buf.writeIntLE(0x1234567890ab, 1, 6);
@@ -2818,9 +2835,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeIntLE interface with undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteIntLE0003", 0, () => {
+    it("testWriteIntLE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(6);
       try {
         let ref = buf.writeIntLE(undefined, 0, 6);
@@ -2836,9 +2853,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeIntLE interface with undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteIntLE0004", 0, () => {
+    it("testWriteIntLE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(6);
       try {
         let ref = buf.writeIntLE(null, 0, 6);
@@ -2854,9 +2871,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt8 interface with two parameters: 0x42 and 3.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt80001", 0, () => {
+    it("testWriteUInt80001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUInt80001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -2874,9 +2891,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt8 interface with out-of-range 'offset' value of -1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt80002", 0, () => {
+    it("testWriteUInt80002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeUInt8(0x42, -1);
@@ -2892,9 +2909,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt8 interface with two parameters: 0x42 and 1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt80003", 0, () => {
+    it("testWriteUInt80003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUInt80003";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -2912,9 +2929,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt8 interface with undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt80004", 0, () => {
+    it("testWriteUInt80004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeUInt8(undefined);
@@ -2930,9 +2947,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt8 interface with null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt80005", 0, () => {
+    it("testWriteUInt80005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeUInt8(null);
@@ -2948,9 +2965,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt16BE interface with two parameters: 0xdead and 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt16BE0001", 0, () => {
+    it("testWriteUInt16BE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUInt16BE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -2966,12 +2983,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WriteUInt16BE_0200
      * @tc.name: testWriteUInt16BE0002
      * @tc.desc: Testing the writeUInt16BE interface with out-of-range "value"
-     *           It must be >= 0 and <= 65535. Received value is: 14593532.
+     * It must be >= 0 and <= 65535. Received value is: 14593532.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt16BE0002", 0, () => {
+    it("testWriteUInt16BE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeUInt16BE(0xdeadfc, 0);
@@ -2987,9 +3004,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt16BE interface with  out-of-range 'offset' value of -1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt16BE0003", 0, () => {
+    it("testWriteUInt16BE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeUInt16BE(0xdead, -1);
@@ -3005,9 +3022,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt16BE interface with two parameters: 0xdead and 1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt16BE0004", 0, () => {
+    it("testWriteUInt16BE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUInt16BE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3025,9 +3042,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeInt16BE interface with undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt16BE0005", 0, () => {
+    it("testWriteUInt16BE0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeUInt16BE(undefined);
@@ -3043,9 +3060,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt16BE interface with null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt16BE0006", 0, () => {
+    it("testWriteUInt16BE0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeUInt16BE(null);
@@ -3061,9 +3078,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt16LE interface with two parameters: 0xdead and 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt16LE0001", 0, () => {
+    it("testWriteUInt16LE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUInt16LE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3079,12 +3096,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WriteUInt16LE_0200
      * @tc.name: testWriteUInt16LE0002
      * @tc.desc: Testing the writeUInt16LE interface with out-of-range "value"
-     *           It must be >= 0 and <= 65535. Received value is: 14593532.
+     * It must be >= 0 and <= 65535. Received value is: 14593532.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt16LE0002", 0, () => {
+    it("testWriteUInt16LE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeUInt16LE(0xdeadfc, 0);
@@ -3100,9 +3117,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt16LE interface with  out-of-range 'offset' value of -1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt16LE0003", 0, () => {
+    it("testWriteUInt16LE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeUInt16LE(0xdead, -1);
@@ -3118,9 +3135,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt16LE interface with two parameters: 0xdead and 1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt16LE0004", 0, () => {
+    it("testWriteUInt16LE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUInt16LE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3138,9 +3155,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt16LE interface with undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt16LE0005", 0, () => {
+    it("testWriteUInt16LE0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeUInt16LE(undefined);
@@ -3156,9 +3173,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt16LE interface with null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt16LE0006", 0, () => {
+    it("testWriteUInt16LE0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeUInt16LE(null);
@@ -3174,9 +3191,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt32BE interface with two parameters: 0xfeedface and 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt32BE001", 0, () => {
+    it("testWriteUInt32BE001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteDoubleLE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3194,9 +3211,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt32BE interface with out-of-range 'offset' value of -1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt32BE0002", 0, () => {
+    it("testWriteUInt32BE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeUInt32BE(0xfeedface, -1);
@@ -3212,9 +3229,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt32BE interface with out-of-range 'offset' value of 1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt32BE0003", 0, () => {
+    it("testWriteUInt32BE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeUInt32BE(0xfeedface, 1);
@@ -3230,9 +3247,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt32BE interface with undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt32BE0004", 0, () => {
+    it("testWriteUInt32BE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeUInt32BE(undefined);
@@ -3248,9 +3265,9 @@ export default function BufferTest() {
      * @tc.desc: Testing the writeUInt32BE interface with null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testWriteUInt32BE0005", 0, () => {
+    it("testWriteUInt32BE0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let buf = buffer.allocUninitializedFromPool(4);
       try {
         let ref = buf.writeUInt32BE(null);
@@ -3261,14 +3278,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINT32LE_0100
-    * @tc.name       : testWriteUInt32LE0001
-    * @tc.desc       : Testing writeUInt32LE with value '0xfeedface, 0'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUInt32LE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINT32LE_0100
+     * @tc.name  : testWriteUInt32LE0001
+     * @tc.desc  : Testing writeUInt32LE with value '0xfeedface, 0'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUInt32LE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUInt32LE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3281,14 +3298,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINT32LE_0200
-    * @tc.name       : testWriteUInt32LE0002
-    * @tc.desc       : Testing writeUInt32LE with value '0xfeedface, -1'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUInt32LE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINT32LE_0200
+     * @tc.name  : testWriteUInt32LE0002
+     * @tc.desc  : Testing writeUInt32LE with value '0xfeedface, -1'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUInt32LE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUInt32LE0002";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3301,14 +3318,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINT32LE_0300
-    * @tc.name       : testWriteUInt32LE0003
-    * @tc.desc       : Testing writeUInt32LE with value '0xfeedface, 1'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUInt32LE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINT32LE_0300
+     * @tc.name  : testWriteUInt32LE0003
+     * @tc.desc  : Testing writeUInt32LE with value '0xfeedface, 1'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUInt32LE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUInt32LE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3321,14 +3338,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINT32LE_0400
-    * @tc.name       : testWriteUInt32LE0004
-    * @tc.desc       : Testing writeUInt32LE with value 'undefined'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUInt32LE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINT32LE_0400
+     * @tc.name  : testWriteUInt32LE0004
+     * @tc.desc  : Testing writeUInt32LE with value 'undefined'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUInt32LE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUInt32LE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3341,14 +3358,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINT32LE_0500
-    * @tc.name       : testWriteUInt32LE0005
-    * @tc.desc       : Testing writeUInt32LE with value 'null'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUInt32LE0005', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINT32LE_0500
+     * @tc.name  : testWriteUInt32LE0005
+     * @tc.desc  : Testing writeUInt32LE with value 'null'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUInt32LE0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUInt32LE0005";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3361,14 +3378,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTBE_0100
-    * @tc.name       : testWriteUIntBE0001
-    * @tc.desc       : Testing writeUIntBE with value '0x13141516, 0, 4'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUIntBE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTBE_0100
+     * @tc.name  : testWriteUIntBE0001
+     * @tc.desc  : Testing writeUIntBE with value '0x13141516, 0, 4'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUIntBE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUIntBE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3381,14 +3398,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTBE_0200
-    * @tc.name       : testWriteUIntBE0002
-    * @tc.desc       : Testing writeUIntBE with value '0x13141516, 0, 1'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUIntBE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTBE_0200
+     * @tc.name  : testWriteUIntBE0002
+     * @tc.desc  : Testing writeUIntBE with value '0x13141516, 0, 1'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUIntBE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUIntBE0002";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3401,14 +3418,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTBE_0300
-    * @tc.name       : testWriteUIntBE0003
-    * @tc.desc       : Testing writeUIntBE with value '0x13141516, 1, 4'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUIntBE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTBE_0300
+     * @tc.name  : testWriteUIntBE0003
+     * @tc.desc  : Testing writeUIntBE with value '0x13141516, 1, 4'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUIntBE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUIntBE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3421,14 +3438,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTBE_0400
-    * @tc.name       : testWriteUIntBE0004
-    * @tc.desc       : Testing writeUIntBE with value '0x13141516, 1, 4'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUIntBE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTBE_0400
+     * @tc.name  : testWriteUIntBE0004
+     * @tc.desc  : Testing writeUIntBE with value '0x13141516, 1, 4'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUIntBE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUIntBE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(5);
@@ -3441,14 +3458,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTBE_0500
-    * @tc.name       : testWriteUIntBE0005
-    * @tc.desc       : Testing writeUIntBE with value 'undefined, 1, 4'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUIntBE0005', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTBE_0500
+     * @tc.name  : testWriteUIntBE0005
+     * @tc.desc  : Testing writeUIntBE with value 'undefined, 1, 4'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUIntBE0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUIntBE0005";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3461,14 +3478,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTBE_0600
-    * @tc.name       : testWriteUIntBE0006
-    * @tc.desc       : Testing writeUIntBE with value 'null, 1, 4'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUIntBE0006', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTBE_0600
+     * @tc.name  : testWriteUIntBE0006
+     * @tc.desc  : Testing writeUIntBE with value 'null, 1, 4'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUIntBE0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUIntBE0006";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3481,14 +3498,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTLE_0100
-    * @tc.name       : testWriteUIntLE0001
-    * @tc.desc       : Testing writeUIntLE with value '0x13141516, 0, 4'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUIntLE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTLE_0100
+     * @tc.name  : testWriteUIntLE0001
+     * @tc.desc  : Testing writeUIntLE with value '0x13141516, 0, 4'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUIntLE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUIntLE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3501,14 +3518,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTLE_0200
-    * @tc.name       : testWriteUIntLE0002
-    * @tc.desc       : Testing writeUIntLE with value '0x13141516, 0, 1'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUIntLE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTLE_0200
+     * @tc.name  : testWriteUIntLE0002
+     * @tc.desc  : Testing writeUIntLE with value '0x13141516, 0, 1'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUIntLE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUIntLE0002";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3520,14 +3537,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTLE_0300
-    * @tc.name       : testWriteUIntLE0003
-    * @tc.desc       : Testing writeUIntLE with value '0x13141516, 1, 4'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUIntLE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTLE_0300
+     * @tc.name  : testWriteUIntLE0003
+     * @tc.desc  : Testing writeUIntLE with value '0x13141516, 1, 4'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUIntLE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUIntLE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3539,14 +3556,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTLE_0400
-    * @tc.name       : testWriteUIntLE0004
-    * @tc.desc       : Testing writeUIntLE with value 'buffer.allocUninitializedFromPool(5),1,4'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUIntLE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTLE_0400
+     * @tc.name  : testWriteUIntLE0004
+     * @tc.desc  : Testing writeUIntLE with value 'buffer.allocUninitializedFromPool(5),1,4'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUIntLE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUIntLE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(5);
@@ -3559,14 +3576,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTLE_0500
-    * @tc.name       : testWriteUIntLE0005
-    * @tc.desc       : Testing writeUIntLE for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUIntLE0005', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTLE_0500
+     * @tc.name  : testWriteUIntLE0005
+     * @tc.desc  : Testing writeUIntLE for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUIntLE0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUIntLE0005";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3579,14 +3596,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTLE_0600
-    * @tc.name       : testWriteUIntLE0006
-    * @tc.desc       : Testing writeUIntLE for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testWriteUIntLE0006', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEUINTLE_0600
+     * @tc.name  : testWriteUIntLE0006
+     * @tc.desc  : Testing writeUIntLE for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testWriteUIntLE0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testWriteUIntLE0006";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -3599,14 +3616,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGINT64BE_0100
-    * @tc.name       : testReadBigInt64BE0001
-    * @tc.desc       : Testing readBigInt64BE for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadBigInt64BE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGINT64BE_0100
+     * @tc.name  : testReadBigInt64BE0001
+     * @tc.desc  : Testing readBigInt64BE for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadBigInt64BE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadBigInt64BE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3620,14 +3637,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGINT64BE_0200
-    * @tc.name       : testReadBigInt64BE0002
-    * @tc.desc       : Testing readBigInt64BE for buffer with value 1.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadBigInt64BE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGINT64BE_0200
+     * @tc.name  : testReadBigInt64BE0002
+     * @tc.desc  : Testing readBigInt64BE for buffer with value 1.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadBigInt64BE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadBigInt64BE0002";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3641,14 +3658,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGINT64BE_0300
-    * @tc.name       : testReadBigInt64BE0003
-    * @tc.desc       : Testing readBigInt64BE for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadBigInt64BE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGINT64BE_0300
+     * @tc.name  : testReadBigInt64BE0003
+     * @tc.desc  : Testing readBigInt64BE for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadBigInt64BE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadBigInt64BE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3662,14 +3679,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGINT64BE_0400
-    * @tc.name       : testReadBigInt64BE0004
-    * @tc.desc       : Testing readBigInt64BE for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadBigInt64BE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGINT64BE_0400
+     * @tc.name  : testReadBigInt64BE0004
+     * @tc.desc  : Testing readBigInt64BE for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadBigInt64BE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadBigInt64BE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3683,14 +3700,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGINT64LE_0100
-    * @tc.name       : testReadBigInt64LE0001
-    * @tc.desc       : Testing readBigInt64LE for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadBigInt64LE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGINT64LE_0100
+     * @tc.name  : testReadBigInt64LE0001
+     * @tc.desc  : Testing readBigInt64LE for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadBigInt64LE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadBigInt64LE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3704,14 +3721,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGINT64LE_0200
-    * @tc.name       : testReadBigInt64LE0002
-    * @tc.desc       : Testing readBigInt64LE for buffer with value 1.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadBigInt64LE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGINT64LE_0200
+     * @tc.name  : testReadBigInt64LE0002
+     * @tc.desc  : Testing readBigInt64LE for buffer with value 1.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadBigInt64LE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadBigInt64LE0002";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3725,14 +3742,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGINT64LE_0300
-    * @tc.name       : testReadBigInt64LE0003
-    * @tc.desc       : Testing readBigInt64LE for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadBigInt64LE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGINT64LE_0300
+     * @tc.name  : testReadBigInt64LE0003
+     * @tc.desc  : Testing readBigInt64LE for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadBigInt64LE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadBigInt64LE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3746,14 +3763,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGINT64LE_0400
-    * @tc.name       : testReadBigInt64LE0004
-    * @tc.desc       : Testing readBigInt64LE for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadBigInt64LE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGINT64LE_0400
+     * @tc.name  : testReadBigInt64LE0004
+     * @tc.desc  : Testing readBigInt64LE for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadBigInt64LE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadBigInt64LE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3767,14 +3784,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGUINT64BE_0100
-    * @tc.name       : testReadBigUInt64BE0001
-    * @tc.desc       : Testing readBigUInt64BE for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadBigUInt64BE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGUINT64BE_0100
+     * @tc.name  : testReadBigUInt64BE0001
+     * @tc.desc  : Testing readBigUInt64BE for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadBigUInt64BE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadBigUInt64BE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3788,14 +3805,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGUINT64BE_0200
-    * @tc.name       : testReadBigUInt64BE0002
-    * @tc.desc       : Testing readBigUInt64BE for buffer with value 1.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadBigUInt64BE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGUINT64BE_0200
+     * @tc.name  : testReadBigUInt64BE0002
+     * @tc.desc  : Testing readBigUInt64BE for buffer with value 1.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadBigUInt64BE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadBigUInt64BE0002";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3809,14 +3826,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGUINT64BE_0300
-    * @tc.name       : testReadBigUInt64BE0003
-    * @tc.desc       : Testing readBigUInt64BE for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadBigUInt64BE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGUINT64BE_0300
+     * @tc.name  : testReadBigUInt64BE0003
+     * @tc.desc  : Testing readBigUInt64BE for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadBigUInt64BE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadBigUInt64BE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3830,14 +3847,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGUINT64BE_0400
-    * @tc.name       : testReadBigUInt64BE0004
-    * @tc.desc       : Testing readBigUInt64BE for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadBigUInt64BE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITEBIGUINT64BE_0400
+     * @tc.name  : testReadBigUInt64BE0004
+     * @tc.desc  : Testing readBigUInt64BE for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadBigUInt64BE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadBigUInt64BE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3851,14 +3868,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READBIGUINT64LE_0100
-    * @tc.name       : testReadBigUInt64LE0001
-    * @tc.desc       : Testing readBigUInt64LE for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadBigUInt64LE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READBIGUINT64LE_0100
+     * @tc.name  : testReadBigUInt64LE0001
+     * @tc.desc  : Testing readBigUInt64LE for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadBigUInt64LE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadBigUInt64LE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3872,14 +3889,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READBIGUINT64LE_0200
-    * @tc.name       : testReadBigUInt64LE0002
-    * @tc.desc       : Testing readBigUInt64LE for buffer with value 1.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadBigUInt64LE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READBIGUINT64LE_0200
+     * @tc.name  : testReadBigUInt64LE0002
+     * @tc.desc  : Testing readBigUInt64LE for buffer with value 1.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadBigUInt64LE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadBigUInt64LE0002";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3893,14 +3910,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READBIGUINT64LE_0300
-    * @tc.name       : testReadBigUInt64BE0003
-    * @tc.desc       : Testing readBigUInt64LE for buffer with undefined value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadBigUInt64LE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READBIGUINT64LE_0300
+     * @tc.name  : testReadBigUInt64BE0003
+     * @tc.desc  : Testing readBigUInt64LE for buffer with undefined value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadBigUInt64LE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadBigUInt64LE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3914,14 +3931,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READBIGUINT64LE_0400
-    * @tc.name       : testReadBigUInt64LE0004
-    * @tc.desc       : Testing readBigUInt64LE for buffer with null value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadBigUInt64LE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READBIGUINT64LE_0400
+     * @tc.name  : testReadBigUInt64LE0004
+     * @tc.desc  : Testing readBigUInt64LE for buffer with null value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadBigUInt64LE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadBigUInt64LE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3935,14 +3952,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READDOUBLEBE_0100
-    * @tc.name       : testReadDoubleBE0001
-    * @tc.desc       : Testing readDoubleBE for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadDoubleBE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READDOUBLEBE_0100
+     * @tc.name  : testReadDoubleBE0001
+     * @tc.desc  : Testing readDoubleBE for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadDoubleBE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadDoubleBE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3956,14 +3973,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READDOUBLEBE_0200
-    * @tc.name       : testReadDoubleBE0002
-    * @tc.desc       : Testing readDoubleBE for buffer with value 1.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadDoubleBE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READDOUBLEBE_0200
+     * @tc.name  : testReadDoubleBE0002
+     * @tc.desc  : Testing readDoubleBE for buffer with value 1.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadDoubleBE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadDoubleBE0002";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3977,14 +3994,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READDOUBLEBE_0300
-    * @tc.name       : testReadDoubleBE0003
-    * @tc.desc       : Testing readDoubleBE for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadDoubleBE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READDOUBLEBE_0300
+     * @tc.name  : testReadDoubleBE0003
+     * @tc.desc  : Testing readDoubleBE for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadDoubleBE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadDoubleBE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -3998,14 +4015,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READDOUBLEBE_0400
-    * @tc.name       : testReadDoubleBE0004
-    * @tc.desc       : Testing readDoubleBE for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadDoubleBE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READDOUBLEBE_0400
+     * @tc.name  : testReadDoubleBE0004
+     * @tc.desc  : Testing readDoubleBE for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadDoubleBE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadDoubleBE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -4019,14 +4036,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READDOUBLELE_0100
-    * @tc.name       : testReadDoubleLE0001
-    * @tc.desc       : Testing readDoubleLE for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadDoubleLE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READDOUBLELE_0100
+     * @tc.name  : testReadDoubleLE0001
+     * @tc.desc  : Testing readDoubleLE for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadDoubleLE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadDoubleLE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -4040,14 +4057,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READDOUBLELE_0200
-    * @tc.name       : testReadDoubleLE0002
-    * @tc.desc       : Testing readDoubleLE for buffer with value 1.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadDoubleLE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READDOUBLELE_0200
+     * @tc.name  : testReadDoubleLE0002
+     * @tc.desc  : Testing readDoubleLE for buffer with value 1.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadDoubleLE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadDoubleLE0002";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -4061,14 +4078,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READDOUBLELE_0300
-    * @tc.name       : testReadDoubleLE0003
-    * @tc.desc       : Testing readDoubleLE for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadDoubleLE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READDOUBLELE_0300
+     * @tc.name  : testReadDoubleLE0003
+     * @tc.desc  : Testing readDoubleLE for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadDoubleLE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadDoubleLE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -4082,14 +4099,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READDOUBLELE_0400
-    * @tc.name       : testReadDoubleLE0004
-    * @tc.desc       : Testing readDoubleLE for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadDoubleLE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READDOUBLELE_0400
+     * @tc.name  : testReadDoubleLE0004
+     * @tc.desc  : Testing readDoubleLE for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadDoubleLE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadDoubleLE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(8);
@@ -4103,14 +4120,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READFLOATBE_0100
-    * @tc.name       : testReadFloatBE0001
-    * @tc.desc       : Testing readFloatBE for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadFloatBE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READFLOATBE_0100
+     * @tc.name  : testReadFloatBE0001
+     * @tc.desc  : Testing readFloatBE for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadFloatBE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadFloatBE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -4124,14 +4141,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READFLOATBE_0200
-    * @tc.name       : testReadFloatBE0002
-    * @tc.desc       : Testing readFloatBE for buffer with value 1.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadFloatBE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READFLOATBE_0200
+     * @tc.name  : testReadFloatBE0002
+     * @tc.desc  : Testing readFloatBE for buffer with value 1.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadFloatBE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadFloatBE0002";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -4145,14 +4162,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READFLOATBE_0300
-    * @tc.name       : testReadFloatBE0003
-    * @tc.desc       : Testing readFloatBE for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadFloatBE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READFLOATBE_0300
+     * @tc.name  : testReadFloatBE0003
+     * @tc.desc  : Testing readFloatBE for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadFloatBE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadFloatBE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -4166,14 +4183,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READFLOATBE_0400
-    * @tc.name       : testReadFloatBE0004
-    * @tc.desc       : Testing readFloatBE for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadFloatBE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READFLOATBE_0400
+     * @tc.name  : testReadFloatBE0004
+     * @tc.desc  : Testing readFloatBE for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadFloatBE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadFloatBE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -4187,14 +4204,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READFLOATLE_0100
-    * @tc.name       : testReadFloatLE0001
-    * @tc.desc       : Testing readFloatLE for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadFloatLE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READFLOATLE_0100
+     * @tc.name  : testReadFloatLE0001
+     * @tc.desc  : Testing readFloatLE for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadFloatLE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadFloatLE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -4208,14 +4225,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READFLOATLE_0200
-    * @tc.name       : testReadFloatLE0002
-    * @tc.desc       : Testing readFloatLE for buffer with value 1.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadFloatLE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READFLOATLE_0200
+     * @tc.name  : testReadFloatLE0002
+     * @tc.desc  : Testing readFloatLE for buffer with value 1.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadFloatLE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadFloatLE0002";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -4229,14 +4246,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READFLOATLE_0300
-    * @tc.name       : testReadFloatLE0003
-    * @tc.desc       : Testing readFloatLE for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadFloatLE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READFLOATLE_0300
+     * @tc.name  : testReadFloatLE0003
+     * @tc.desc  : Testing readFloatLE for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadFloatLE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadFloatLE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -4250,14 +4267,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READFLOATLE_0400
-    * @tc.name       : testReadFloatLE0004
-    * @tc.desc       : Testing readFloatLE for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadFloatLE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READFLOATLE_0400
+     * @tc.name  : testReadFloatLE0004
+     * @tc.desc  : Testing readFloatLE for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadFloatLE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadFloatLE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -4271,14 +4288,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT_0100
-    * @tc.name       : testReadInt80001
-    * @tc.desc       : Testing readInt8 for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt80001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT_0100
+     * @tc.name  : testReadInt80001
+     * @tc.desc  : Testing readInt8 for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt80001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt80001";
       try {
         let buf = buffer.allocUninitializedFromPool(2);
@@ -4292,14 +4309,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT_0200
-    * @tc.name       : testReadInt80002
-    * @tc.desc       : Testing readInt8 for buffer with value 2.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt80002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT_0200
+     * @tc.name  : testReadInt80002
+     * @tc.desc  : Testing readInt8 for buffer with value 2.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt80002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt80002";
       try {
         let buf = buffer.allocUninitializedFromPool(2);
@@ -4313,14 +4330,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT_0300
-    * @tc.name       : testReadInt80003
-    * @tc.desc       : Testing readInt8 for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt80003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT_0300
+     * @tc.name  : testReadInt80003
+     * @tc.desc  : Testing readInt8 for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt80003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt80003";
       try {
         let buf = buffer.allocUninitializedFromPool(2);
@@ -4334,14 +4351,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT_0400
-    * @tc.name       : testReadInt80004
-    * @tc.desc       : Testing readInt8 for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt80004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT_0400
+     * @tc.name  : testReadInt80004
+     * @tc.desc  : Testing readInt8 for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt80004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt80004";
       try {
         let buf = buffer.allocUninitializedFromPool(2);
@@ -4355,14 +4372,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT16BE_0100
-    * @tc.name       : testReadInt16BE0001
-    * @tc.desc       : Testing readInt16BE for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt16BE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT16BE_0100
+     * @tc.name  : testReadInt16BE0001
+     * @tc.desc  : Testing readInt16BE for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt16BE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt16BE0001";
       try {
         let buf = buffer.alloc(2);
@@ -4376,14 +4393,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT16BE_0200
-    * @tc.name       : testReadInt16BE0002
-    * @tc.desc       : Testing readInt16BE for buffer with value 1.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt16BE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT16BE_0200
+     * @tc.name  : testReadInt16BE0002
+     * @tc.desc  : Testing readInt16BE for buffer with value 1.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt16BE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt16BE0002";
       try {
         let buf = buffer.alloc(2);
@@ -4396,14 +4413,14 @@ export default function BufferTest() {
       }
     });
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT16BE_0300
-    * @tc.name       : testReadInt16BE0003
-    * @tc.desc       : Testing readInt16BE for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt16BE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT16BE_0300
+     * @tc.name  : testReadInt16BE0003
+     * @tc.desc  : Testing readInt16BE for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt16BE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt16BE0003";
       try {
         let buf = buffer.alloc(2);
@@ -4417,14 +4434,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT16BE_0400
-    * @tc.name       : testReadInt16BE0004
-    * @tc.desc       : Testing readInt16BE for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt16BE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT16BE_0400
+     * @tc.name  : testReadInt16BE0004
+     * @tc.desc  : Testing readInt16BE for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt16BE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt16BE0004";
       try {
         let buf = buffer.alloc(2);
@@ -4438,14 +4455,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT16LE_0100
-    * @tc.name       : testReadInt16LE0001
-    * @tc.desc       : Testing readInt16LE for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt16LE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT16LE_0100
+     * @tc.name  : testReadInt16LE0001
+     * @tc.desc  : Testing readInt16LE for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt16LE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt16LE0001";
       try {
         let buf = buffer.alloc(2);
@@ -4459,14 +4476,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT16LE_0200
-    * @tc.name       : testReadInt16LE0002
-    * @tc.desc       : Testing readInt16LE for buffer with value 1.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt16LE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT16LE_0200
+     * @tc.name  : testReadInt16LE0002
+     * @tc.desc  : Testing readInt16LE for buffer with value 1.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt16LE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt16LE0002";
       try {
         let buf = buffer.alloc(2);
@@ -4479,14 +4496,14 @@ export default function BufferTest() {
       }
     });
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT16LE_0300
-    * @tc.name       : testReadInt16LE0003
-    * @tc.desc       : Testing readInt16LE for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt16LE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT16LE_0300
+     * @tc.name  : testReadInt16LE0003
+     * @tc.desc  : Testing readInt16LE for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt16LE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt16LE0003";
       try {
         let buf = buffer.alloc(2);
@@ -4500,14 +4517,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT16LE_0400
-    * @tc.name       : testReadInt16LE0004
-    * @tc.desc       : Testing readInt16LE for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt16LE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT16LE_0400
+     * @tc.name  : testReadInt16LE0004
+     * @tc.desc  : Testing readInt16LE for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt16LE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt16LE0004";
       try {
         let buf = buffer.alloc(2);
@@ -4521,14 +4538,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT32BE_0100
-    * @tc.name       : testReadInt32BE0001
-    * @tc.desc       : Testing readInt32BE for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt32BE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT32BE_0100
+     * @tc.name  : testReadInt32BE0001
+     * @tc.desc  : Testing readInt32BE for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt32BE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt32BE0001";
       try {
         let buf = buffer.alloc(4);
@@ -4542,14 +4559,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT32BE_0200
-    * @tc.name       : testReadInt32BE0002
-    * @tc.desc       : Testing readInt32BE for buffer with value 1.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt32BE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT32BE_0200
+     * @tc.name  : testReadInt32BE0002
+     * @tc.desc  : Testing readInt32BE for buffer with value 1.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt32BE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt32BE0002";
       try {
         let buf = buffer.alloc(4);
@@ -4563,14 +4580,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT32BE_0400
-    * @tc.name       : testReadInt32BE0004
-    * @tc.desc       : Testing readInt32BE for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt32BE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT32BE_0400
+     * @tc.name  : testReadInt32BE0004
+     * @tc.desc  : Testing readInt32BE for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt32BE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt32BE0004";
       try {
         let buf = buffer.alloc(4);
@@ -4584,14 +4601,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT32BE_0500
-    * @tc.name       : testReadInt32BE0005
-    * @tc.desc       : Testing readInt32BE for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt32BE0005', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT32BE_0500
+     * @tc.name  : testReadInt32BE0005
+     * @tc.desc  : Testing readInt32BE for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt32BE0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt32BE0005";
       try {
         let buf = buffer.alloc(4);
@@ -4605,14 +4622,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT32LE_0100
-    * @tc.name       : testReadInt32LE0001
-    * @tc.desc       : Testing readInt32LE for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt32LE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT32LE_0100
+     * @tc.name  : testReadInt32LE0001
+     * @tc.desc  : Testing readInt32LE for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt32LE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt32LE0001";
       try {
         let buf = buffer.alloc(4);
@@ -4626,14 +4643,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT32LE_0200
-    * @tc.name       : testReadInt32LE0002
-    * @tc.desc       : Testing readInt32LE for buffer with value 1.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt32LE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT32LE_0200
+     * @tc.name  : testReadInt32LE0002
+     * @tc.desc  : Testing readInt32LE for buffer with value 1.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt32LE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt32LE0002";
       try {
         let buf = buffer.alloc(4);
@@ -4647,14 +4664,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT32LE_0300
-    * @tc.name       : testReadInt32LE0003
-    * @tc.desc       : Testing readInt32LE for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt32LE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT32LE_0300
+     * @tc.name  : testReadInt32LE0003
+     * @tc.desc  : Testing readInt32LE for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt32LE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt32LE0003";
       try {
         let buf = buffer.alloc(4);
@@ -4668,14 +4685,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINT32LE_0400
-    * @tc.name       : testReadInt32LE0004
-    * @tc.desc       : Testing readInt32LE for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadInt32LE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINT32LE_0400
+     * @tc.name  : testReadInt32LE0004
+     * @tc.desc  : Testing readInt32LE for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadInt32LE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadInt32LE0004";
       try {
         let buf = buffer.alloc(4);
@@ -4689,14 +4706,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINTBE_0100
-    * @tc.name       : testReadIntBE0001
-    * @tc.desc       : Testing readIntBE for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadIntBE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINTBE_0100
+     * @tc.name  : testReadIntBE0001
+     * @tc.desc  : Testing readIntBE for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadIntBE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadIntBE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(6);
@@ -4710,14 +4727,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINTBE_0200
-    * @tc.name       : testReadIntBE0002
-    * @tc.desc       : Testing readIntBE for buffer with value '(2, 5)'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadIntBE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINTBE_0200
+     * @tc.name  : testReadIntBE0002
+     * @tc.desc  : Testing readIntBE for buffer with value '(2, 5)'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadIntBE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadIntBE0002";
       try {
         let buf = buffer.allocUninitializedFromPool(6);
@@ -4731,14 +4748,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINTBE_0300
-    * @tc.name       : testReadIntBE0003
-    * @tc.desc       : Testing readIntBE for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadIntBE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINTBE_0300
+     * @tc.name  : testReadIntBE0003
+     * @tc.desc  : Testing readIntBE for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadIntBE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadIntBE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(6);
@@ -4752,14 +4769,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINTBE_0400
-    * @tc.name       : testReadIntBE0004
-    * @tc.desc       : Testing readIntBE for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadIntBE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINTBE_0400
+     * @tc.name  : testReadIntBE0004
+     * @tc.desc  : Testing readIntBE for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadIntBE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadIntBE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(6);
@@ -4773,14 +4790,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINTLE_0100
-    * @tc.name       : testReadIntLE0001
-    * @tc.desc       : Testing readIntLE for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadIntLE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINTLE_0100
+     * @tc.name  : testReadIntLE0001
+     * @tc.desc  : Testing readIntLE for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadIntLE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadIntLE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(6);
@@ -4794,14 +4811,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINTLE_0200
-    * @tc.name       : testReadIntLE0002
-    * @tc.desc       : Testing readIntLE for buffer with value '(2, 5)'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadIntLE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINTLE_0200
+     * @tc.name  : testReadIntLE0002
+     * @tc.desc  : Testing readIntLE for buffer with value '(2, 5)'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadIntLE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadIntLE0002";
       try {
         let buf = buffer.allocUninitializedFromPool(6);
@@ -4815,14 +4832,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINTLE_0300
-    * @tc.name       : testReadIntLE0003
-    * @tc.desc       : Testing readIntLE for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadIntLE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINTLE_0300
+     * @tc.name  : testReadIntLE0003
+     * @tc.desc  : Testing readIntLE for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadIntLE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadIntLE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(6);
@@ -4836,14 +4853,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READINTLE_0400
-    * @tc.name       : testReadIntLE0004
-    * @tc.desc       : Testing readIntLE for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadIntLE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READINTLE_0400
+     * @tc.name  : testReadIntLE0004
+     * @tc.desc  : Testing readIntLE for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadIntLE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadIntLE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(6);
@@ -4857,14 +4874,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READUINT8_0100
-    * @tc.name       : testReadIntLE0001
-    * @tc.desc       : Testing readUInt8 for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadUInt80001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READUINT8_0100
+     * @tc.name  : testReadIntLE0001
+     * @tc.desc  : Testing readUInt8 for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadUInt80001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt80001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -4878,14 +4895,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READUINT8_0200
-    * @tc.name       : testReadIntLE0002
-    * @tc.desc       : Testing readUInt8 for buffer with value '4'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadUInt80002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READUINT8_0200
+     * @tc.name  : testReadIntLE0002
+     * @tc.desc  : Testing readUInt8 for buffer with value '4'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadUInt80002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt80002";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -4899,14 +4916,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READUINT8_0300
-    * @tc.name       : testReadIntLE0003
-    * @tc.desc       : Testing readUInt8 for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadUInt80003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READUINT8_0300
+     * @tc.name  : testReadIntLE0003
+     * @tc.desc  : Testing readUInt8 for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadUInt80003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt80003";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -4920,14 +4937,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READUINT8_0400
-    * @tc.name       : testReadIntLE0004
-    * @tc.desc       : Testing readUInt8 for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadUInt80004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READUINT8_0400
+     * @tc.name  : testReadIntLE0004
+     * @tc.desc  : Testing readUInt8 for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadUInt80004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt80004";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -4941,14 +4958,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READUINT16BE_0100
-    * @tc.name       : testReadUInt16BE0001
-    * @tc.desc       : Testing readUInt16BE for buffer with normal value.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadUInt16BE0001', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READUINT16BE_0100
+     * @tc.name  : testReadUInt16BE0001
+     * @tc.desc  : Testing readUInt16BE for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadUInt16BE0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt16BE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -4962,14 +4979,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READUINT16BE_0200
-    * @tc.name       : testReadUInt16BE0002
-    * @tc.desc       : Testing readUInt16BE for buffer with value '3'.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadUInt16BE0002', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READUINT16BE_0200
+     * @tc.name  : testReadUInt16BE0002
+     * @tc.desc  : Testing readUInt16BE for buffer with value '3'.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadUInt16BE0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt16BE0002";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -4983,14 +5000,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READUINT16BE_0300
-    * @tc.name       : testReadUInt16BE0003
-    * @tc.desc       : Testing readUInt16BE for buffer with value undefined.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadUInt16BE0003', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READUINT16BE_0300
+     * @tc.name  : testReadUInt16BE0003
+     * @tc.desc  : Testing readUInt16BE for buffer with value undefined.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadUInt16BE0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt16BE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -5004,14 +5021,14 @@ export default function BufferTest() {
     });
 
     /*
-    * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READUINT16BE_0400
-    * @tc.name       : testReadUInt16BE0004
-    * @tc.desc       : Testing readUInt16BE for buffer with value null.
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testReadUInt16BE0004', 0, () => {
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READUINT16BE_0400
+     * @tc.name  : testReadUInt16BE0004
+     * @tc.desc  : Testing readUInt16BE for buffer with value null.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testReadUInt16BE0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt16BE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -5030,9 +5047,9 @@ export default function BufferTest() {
      * @tc.desc: Test the equals interface by two identical buffers which content is numerical string
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 3
      */
-    it("testEquals0001", 0, () => {
+    it("testEquals0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testEquals0001";
       try {
         let buf1 = buffer.from("1236");
@@ -5051,9 +5068,9 @@ export default function BufferTest() {
      * @tc.desc: Test the equals interface by two identical buffers which content is include chinese string
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testEquals0002", 0, () => {
+    it("testEquals0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testEquals0002";
       try {
         let buf1 = buffer.from("1236测试");
@@ -5072,9 +5089,9 @@ export default function BufferTest() {
      * @tc.desc: Test the equals interface by two different buffers.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testEquals0003", 0, () => {
+    it("testEquals0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testEquals0003";
       try {
         let buf1 = buffer.from("O@O");
@@ -5093,9 +5110,9 @@ export default function BufferTest() {
      * @tc.desc: Test the equals interface by passing the parameter undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testEquals0004", 0, () => {
+    it("testEquals0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testEquals0004";
       let buf = buffer.from("test");
       try {
@@ -5111,9 +5128,9 @@ export default function BufferTest() {
      * @tc.desc: Test the equals interface by passing the parameter null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testEquals0005", 0, () => {
+    it("testEquals0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testEquals0005";
       let buf = buffer.from("test");
       try {
@@ -5129,9 +5146,9 @@ export default function BufferTest() {
      * @tc.desc: Test the equals interface by two different type buffers.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testEquals0006", 0, () => {
+    it("testEquals0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testEquals0006"
       let buf = buffer.from("ABC");
       try {
@@ -5149,9 +5166,9 @@ export default function BufferTest() {
      * @tc.desc: Test the subarray interface by pass the parameter start is 0 and end is 3.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testSubarray0001", 0, () => {
+    it("testSubarray0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testSubarray0001";
       try {
         let buf = buffer.from("1236");
@@ -5170,9 +5187,9 @@ export default function BufferTest() {
      * @tc.desc: Test the subarray interface by pass the parameter undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testSubarray0002", 0, () => {
+    it("testSubarray0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testSubarray0002";
       try {
         let buf = buffer.from("1236");
@@ -5191,9 +5208,9 @@ export default function BufferTest() {
      * @tc.desc: Test the subarray interface by pass the parameter null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testSubarray0003", 0, () => {
+    it("testSubarray0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testSubarray0003";
       try {
         let buf = buffer.from("1236");
@@ -5212,9 +5229,9 @@ export default function BufferTest() {
      * @tc.desc: Test the subarray interface by pass the parameter start is 3 and end is 4.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testSubarray0004", 0, () => {
+    it("testSubarray0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testSubarray0004";
       try {
         let buf1 = buffer.from("1236");
@@ -5234,9 +5251,9 @@ export default function BufferTest() {
      * @tc.desc: Test the subarray interface by pass the parameter start is -3 and end is 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testSubarray0005", 0, () => {
+    it("testSubarray0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testSubarray0005";
       try {
         let buf1 = buffer.from("1236");
@@ -5254,9 +5271,9 @@ export default function BufferTest() {
      * @tc.desc: Test the subarray interface by pass the parameter start is 6 and end is 9.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testSubarray0006", 0, () => {
+    it("testSubarray0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testSubarray0006";
       try {
         let buf = buffer.from("1236");
@@ -5271,12 +5288,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_COPY_0100
      * @tc.name: testCopy0001
      * @tc.desc: Test the copy interface by copying one buffer of numeric string type  to other buffer of numeric
-     *           string type.
+     * string type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testCopy0001", 0, () => {
+    it("testCopy0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testCopy0001";
       try {
         let buf1 = buffer.from("1236");
@@ -5296,12 +5313,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_COPY_0200
      * @tc.name: testCopy0002
      * @tc.desc: Test the copy interface by copying one buffer of chinese string type  to other buffer of numeric
-     *           string type,and setting the parameter targetStart to 2,sourceStart to 1,sourceStart to 3.
+     * string type,and setting the parameter targetStart to 2,sourceStart to 1,sourceStart to 3.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testCopy0002", 0, () => {
+    it("testCopy0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testCopy0002";
       try {
         let buf1 = buffer.from("abcdefg");
@@ -5320,12 +5337,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_COPY_0300
      * @tc.name: testCopy0003
      * @tc.desc: Test the copy interface by copying one buffer of special string type  to other buffer of empty
-     *           string type.
+     * string type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testCopy0003", 0, () => {
+    it("testCopy0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testCopy0003";
       try {
         let buf1 = buffer.from("ab$#");
@@ -5343,9 +5360,9 @@ export default function BufferTest() {
      * @tc.desc: Test the copy interface by copying one buffer which length is large than another to other buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testCopy0004", 0, () => {
+    it("testCopy0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testCopy0004";
       try {
         let buf1 = buffer.from("123656");
@@ -5364,12 +5381,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_COPY_0500
      * @tc.name: testCopy0005
      * @tc.desc: Test the copy interface by copying one buffer to other buffer,and passing the parameter sourceStart
-     *           to -1.
+     * to -1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testCopy0005", 0, () => {
+    it("testCopy0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testCopy0005";
       let buf1 = buffer.from("123656");
       let buf2 = buffer.from("1235");
@@ -5387,9 +5404,9 @@ export default function BufferTest() {
      * @tc.desc: Test the copy interface by copying one buffer which length is smaller than another to other buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testCopy0006", 0, () => {
+    it("testCopy0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testCopy0006";
       try {
         let buf1 = buffer.from("ab$#");
@@ -5409,9 +5426,9 @@ export default function BufferTest() {
      * @tc.desc: Test the copy interface by passing the parameter target undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testCopy0007", 0, () => {
+    it("testCopy0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testCopy0007";
       try {
         let buf = buffer.from("12356");
@@ -5428,9 +5445,9 @@ export default function BufferTest() {
      * @tc.desc: Test the copy interface by passing the parameter target null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testCopy0008", 0, () => {
+    it("testCopy0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testCopy0008";
       try {
         let buf = buffer.from("12356");
@@ -5447,9 +5464,9 @@ export default function BufferTest() {
      * @tc.desc: Test the copy interface by copying one buffer of string type to other buffer of array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testCopy0009", 0, () => {
+    it("testCopy0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testCopy0009";
       try {
         let buf1 = buffer.from("123656");
@@ -5473,9 +5490,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by source buffer of numerical string type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0001", 0, () => {
+    it("testToString0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0001";
       try {
         let buf = buffer.from("1236");
@@ -5493,9 +5510,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by source buffer of chinese string type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0002", 0, () => {
+    it("testToString0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0002";
       try {
         let buf = buffer.from("张三");
@@ -5513,9 +5530,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by passing the parameter encoding to "binary".
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0003", 0, () => {
+    it("testToString0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0003";
       try {
         let buf = buffer.from("abc");
@@ -5533,9 +5550,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by passing the parameter encoding to "ascii".
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0004", 0, () => {
+    it("testToString0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0004";
       try {
         let buf = buffer.from("abc");
@@ -5553,9 +5570,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by passing the parameter encoding to "base64".
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0005", 0, () => {
+    it("testToString0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0005";
       try {
         let buf = buffer.from("abc");
@@ -5573,9 +5590,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by passing the parameter encoding to "hex".
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0006", 0, () => {
+    it("testToString0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0006";
       try {
         let buf = buffer.from("abc");
@@ -5593,9 +5610,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by passing the parameter encoding to "latin1".
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0007", 0, () => {
+    it("testToString0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0007";
       try {
         let buf = buffer.from("abc");
@@ -5613,9 +5630,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by passing the parameter encoding to "ucs2".
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0008", 0, () => {
+    it("testToString0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0008";
       try {
         let buf = buffer.from("abc");
@@ -5633,9 +5650,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by passing the parameter encoding to "utf16le".
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0009", 0, () => {
+    it("testToString0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0009";
       try {
         let buf = buffer.from("abc");
@@ -5653,9 +5670,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by source buffer of special string type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0010", 0, () => {
+    it("testToString0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0010";
       try {
         let buf = buffer.from("!@#$%^&*");
@@ -5672,9 +5689,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by source buffer of long string type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0011", 0, () => {
+    it("testToString0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0011";
       try {
         let str =
@@ -5696,9 +5713,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by passing the parameter encoding to illegal value.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0012", 0, () => {
+    it("testToString0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0012"
       let buf = buffer.from("abc");
       try {
@@ -5715,9 +5732,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by passing the parameter encoding to undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0013", 0, () => {
+    it("testToString0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0013";
       try {
         let buf = buffer.from("abc");
@@ -5734,9 +5751,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by passing the parameter encoding to null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0014", 0, () => {
+    it("testToString0014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0014";
       try {
         let buf = buffer.from("abc");
@@ -5753,9 +5770,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by passing the parameter encoding to "binary", start to 1, and end to 2.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0015", 0, () => {
+    it("testToString0015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0015";
       try {
         let buf = buffer.from("abc");
@@ -5772,9 +5789,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by passing the parameter encoding to "binary", start to -1, and end to 2.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0016", 0, () => {
+    it("testToString0016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0016";
       try {
         let buf = buffer.from("abc");
@@ -5791,9 +5808,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toString interface by passing the parameter encoding to "binary", start to 1, and end to 2.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToString0017", 0, () => {
+    it("testToString0017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToString0017";
       try {
         let buf = buffer.from("abc");
@@ -5810,9 +5827,9 @@ export default function BufferTest() {
      * @tc.desc: Test the toJSON interface source buffer of numerical string type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testToJSON0001", 0, () => {
+    it("testToJSON0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testToJSON0001";
       try {
         let buf = buffer.from("1236");
@@ -5829,9 +5846,9 @@ export default function BufferTest() {
      * @tc.desc: Test the indexOf interface by passing the parameter value to a character string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIndexOf0001", 0, () => {
+    it("testIndexOf0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIndexOf0001";
       try {
         let buf = buffer.from("13236");
@@ -5849,9 +5866,9 @@ export default function BufferTest() {
      * @tc.desc: Test the indexOf interface by passing the parameter value to a character string, and byteOffset to 2.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIndexOf0002", 0, () => {
+    it("testIndexOf0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIndexOf0002";
       try {
         let buf = buffer.from("13236");
@@ -5869,9 +5886,9 @@ export default function BufferTest() {
      * @tc.desc: Test the indexOf interface by passing the parameter value to two character string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIndexOf0003", 0, () => {
+    it("testIndexOf0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIndexOf0003";
       try {
         let buf = buffer.from("13236235");
@@ -5889,9 +5906,9 @@ export default function BufferTest() {
      * @tc.desc: Test the indexOf interface by passing the parameter value to special string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIndexOf0004", 0, () => {
+    it("testIndexOf0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIndexOf0004";
       try {
         let buf = buffer.from("测试特殊字符$#@!");
@@ -5909,9 +5926,9 @@ export default function BufferTest() {
      * @tc.desc: Test the indexOf interface by passing the parameter value to two character string, and byteOffset to 3.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIndexOf0005", 0, () => {
+    it("testIndexOf0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIndexOf0005";
       try {
         let buf = buffer.from("13236235");
@@ -5929,9 +5946,9 @@ export default function BufferTest() {
      * @tc.desc: Test the indexOf interface by passing the parameter value which is not in the buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIndexOf0006", 0, () => {
+    it("testIndexOf0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIndexOf0006";
       try {
         let buf = buffer.from("13236");
@@ -5950,9 +5967,9 @@ export default function BufferTest() {
      * encode is "BufferEncoding".
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIndexOf0007", 0, () => {
+    it("testIndexOf0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIndexOf0007";
       try {
         let encodeArr: buffer.BufferEncoding[] = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
@@ -5974,9 +5991,9 @@ export default function BufferTest() {
      * @tc.desc: Test the indexOf interface by passing the parameter value to empty string,
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIndexOf0008", 0, () => {
+    it("testIndexOf0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIndexOf0008";
       try {
         let buf = buffer.from("123");
@@ -5993,9 +6010,9 @@ export default function BufferTest() {
      * @tc.desc: Test the indexOf interface by passing the parameter value to one space string,
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIndexOf0009", 0, () => {
+    it("testIndexOf0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIndexOf0009";
       try {
         let buf = buffer.from("123 ");
@@ -6012,9 +6029,9 @@ export default function BufferTest() {
      * @tc.desc: Test the indexOf interface by passing the parameter value to undefined,
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIndexOf0010", 0, () => {
+    it("testIndexOf0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIndexOf0010"
       let buf = buffer.from("123");
       try {
@@ -6032,9 +6049,9 @@ export default function BufferTest() {
      * @tc.desc: Test the indexOf interface by passing the parameter value to null,
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIndexOf0011", 0, () => {
+    it("testIndexOf0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIndexOf0011"
       let buf = buffer.from("123");
       try {
@@ -6052,9 +6069,9 @@ export default function BufferTest() {
      * @tc.desc: Test the lastIndexOf interface by passing the parameter value to a character string which is in the buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testLastIndexOf0001", 0, () => {
+    it("testLastIndexOf0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testLastIndexOf0001";
       try {
         let buf = buffer.from("13236");
@@ -6073,9 +6090,9 @@ export default function BufferTest() {
      * and byteOffset to 2.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testLastIndexOf0002", 0, () => {
+    it("testLastIndexOf0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testLastIndexOf0002";
       try {
         let buf = buffer.from("13236");
@@ -6093,9 +6110,9 @@ export default function BufferTest() {
      * @tc.desc: Test the lastIndexOf interface by passing the parameter value to two character string which is in the buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testLastIndexOf0003", 0, () => {
+    it("testLastIndexOf0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testLastIndexOf0003";
       try {
         let buf = buffer.from("13236235");
@@ -6114,9 +6131,9 @@ export default function BufferTest() {
      * and byteOffset to 3.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testLastIndexOf0004", 0, () => {
+    it("testLastIndexOf0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testLastIndexOf0004";
       try {
         let buf = buffer.from("13236235");
@@ -6134,9 +6151,9 @@ export default function BufferTest() {
      * @tc.desc: Test the lastIndexOf interface by passing the parameter value which is not in the buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testLastIndexOf0005", 0, () => {
+    it("testLastIndexOf0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testLastIndexOf0005";
       try {
         let buf = buffer.from("13236");
@@ -6155,9 +6172,9 @@ export default function BufferTest() {
      * and encode to "BufferEncoding"
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testLastIndexOf0006", 0, () => {
+    it("testLastIndexOf0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testLastIndexOf0006";
       try {
         let encodeArr: buffer.BufferEncoding[] = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
@@ -6179,9 +6196,9 @@ export default function BufferTest() {
      * @tc.desc: Test the indexOf interface by passing the parameter value to empty string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testLastIndexOf0007", 0, () => {
+    it("testLastIndexOf0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testLastIndexOf0007"
       let buf = buffer.from("123");
       try {
@@ -6198,9 +6215,9 @@ export default function BufferTest() {
      * @tc.desc: Test the indexOf interface by passing the parameter value to space string which is in the buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testLastIndexOf0008", 0, () => {
+    it("testLastIndexOf0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testLastIndexOf0008"
       let buf = buffer.from("123 ");
       try {
@@ -6217,9 +6234,9 @@ export default function BufferTest() {
      * @tc.desc: Test the indexOf interface by passing the parameter value to undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testLastIndexOf0009", 0, () => {
+    it("testLastIndexOf0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testLastIndexOf0009";
       let buf = buffer.from("123 ");
       try {
@@ -6237,9 +6254,9 @@ export default function BufferTest() {
      * @tc.desc: Test the indexOf interface by passing the parameter value to undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testLastIndexOf0010", 0, () => {
+    it("testLastIndexOf0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testLastIndexOf0010";
       let buf = buffer.from("123 ");
       try {
@@ -6257,9 +6274,9 @@ export default function BufferTest() {
      * @tc.desc: Test the indexOf interface by passing the parameter offset to abnormal value.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testLastIndexOf0013", 0, () => {
+    it("testLastIndexOf0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testLastIndexOf0013"
       let buf = buffer.from("13236235");
       try {
@@ -6276,9 +6293,9 @@ export default function BufferTest() {
      * @tc.desc: Test the includes interface by passing the parameter value to a numerical string which is in the buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIncludes0001", 0, () => {
+    it("testIncludes0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIncludes0001";
       try {
         let buf = buffer.from("13236");
@@ -6297,9 +6314,9 @@ export default function BufferTest() {
      * and byteOffset to 2.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIncludes0002", 0, () => {
+    it("testIncludes0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIncludes0002";
       try {
         let buf = buffer.from("13236");
@@ -6317,9 +6334,9 @@ export default function BufferTest() {
      * @tc.desc: Test the includes interface by passing the parameter value to two numerical string which is in the buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIncludes0003", 0, () => {
+    it("testIncludes0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIncludes0003";
       try {
         let buf = buffer.from("13236");
@@ -6338,9 +6355,9 @@ export default function BufferTest() {
      * and byteOffset to 2.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIncludes0004", 0, () => {
+    it("testIncludes0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIncludes0004";
       try {
         let buf = buffer.from("13236");
@@ -6358,9 +6375,9 @@ export default function BufferTest() {
      * @tc.desc: Test the includes interface by passing the parameter value to special string which is in the buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIncludes0005", 0, () => {
+    it("testIncludes0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIncludes0005";
       try {
         let buf = buffer.from("测试特殊字符$#@!");
@@ -6380,9 +6397,9 @@ export default function BufferTest() {
      * @tc.desc: Test the includes interface by passing the parameter value to string which is not in the buffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIncludes0006", 0, () => {
+    it("testIncludes0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIncludes0006";
       try {
         let buf = buffer.from("13236");
@@ -6401,9 +6418,9 @@ export default function BufferTest() {
      * to 0, encode to "BufferEncoding"
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIncludes0007", 0, () => {
+    it("testIncludes0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIncludes0007";
       try {
         let encodeArr: buffer.BufferEncoding[] = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
@@ -6425,9 +6442,9 @@ export default function BufferTest() {
      * @tc.desc: Test the includes interface by passing the parameter value to number but source buffer of string type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIncludes0008", 0, () => {
+    it("testIncludes0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIncludes0008";
       try {
         let buf = buffer.from("13236");
@@ -6444,9 +6461,9 @@ export default function BufferTest() {
      * @tc.desc: Test the includes interface by passing the parameter value to empty string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIncludes0009", 0, () => {
+    it("testIncludes0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIncludes0009";
       try {
         let buf = buffer.from("13236");
@@ -6463,9 +6480,9 @@ export default function BufferTest() {
      * @tc.desc: Test the includes interface by passing the parameter value to undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIncludes0010", 0, () => {
+    it("testIncludes0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIncludes0010";
       try {
         let buf = buffer.from("13236");
@@ -6482,9 +6499,9 @@ export default function BufferTest() {
      * @tc.desc: Test the includes interface by passing the parameter value to null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIncludes0011", 0, () => {
+    it("testIncludes0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIncludes0011";
       try {
         let buf = buffer.from("13236");
@@ -6499,12 +6516,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_1200
      * @tc.name: testIncludes0012
      * @tc.desc: Test the includes interface by passing the parameter value which is in the source buffer and
-     *           byteOffset to -1.
+     * byteOffset to -1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIncludes0012", 0, () => {
+    it("testIncludes0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIncludes0012";
       try {
         let buf = buffer.from("13236");
@@ -6519,12 +6536,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_INCLUDES_1300
      * @tc.name: testIncludes0013
      * @tc.desc: Test the includes interface by passing the parameter value which is in the source buffer and
-     *           and byteOffset to undefined.
+     * and byteOffset to undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testIncludes0013", 0, () => {
+    it("testIncludes0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testIncludes0013";
       try {
         let buf = buffer.from("13236");
@@ -6542,9 +6559,9 @@ export default function BufferTest() {
      * @tc.desc: Test the swap16 interface by source buffer which size is multiple of 16-bits.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testSwap160001", 0, () => {
+    it("testSwap160001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testSwap160001";
       try {
         let buf = buffer.from("1323");
@@ -6563,9 +6580,9 @@ export default function BufferTest() {
      * @tc.desc: Test the swap16 interface by source buffer which size is not multiple of 16-bits.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testSwap160002", 0, () => {
+    it("testSwap160002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testSwap160002";
       let buf = buffer.from("132");
       try {
@@ -6582,9 +6599,9 @@ export default function BufferTest() {
      * @tc.desc: Test the swap16 interface by source buffer which size is 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testSwap160003", 0, () => {
+    it("testSwap160003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testSwap160003";
       try {
         let buf = buffer.from("");
@@ -6602,9 +6619,9 @@ export default function BufferTest() {
      * @tc.desc: Test the swap32 interface by source buffer which size is multiple of 32-bits.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testSwap320001", 0, () => {
+    it("testSwap320001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testSwap320001";
       try {
         let buf1 = buffer.from("1234");
@@ -6623,9 +6640,9 @@ export default function BufferTest() {
      * @tc.desc: Test the swap32 interface by source buffer which size is multiple of 32-bits.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testSwap320002", 0, () => {
+    it("testSwap320002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testSwap320002";
       let buf = buffer.from("132");
       try {
@@ -6642,9 +6659,9 @@ export default function BufferTest() {
      * @tc.desc: Test the swap32 interface by source buffer which size is 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testSwap320003", 0, () => {
+    it("testSwap320003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testSwap320003";
       try {
         let buf = buffer.from("");
@@ -6662,9 +6679,9 @@ export default function BufferTest() {
      * @tc.desc: Test the swap64 interface by source buffer which size is multiple of 64-bits .
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testSwap640001", 0, () => {
+    it("testSwap640001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testSwap640001";
       try {
         let buf = buffer.from("12345678");
@@ -6683,9 +6700,9 @@ export default function BufferTest() {
      * @tc.desc: Test the swap64 interface by source buffer which size is not multiple of 64-bits.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testSwap640002", 0, () => {
+    it("testSwap640002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testSwap640002";
       let buf = buffer.from("1234567");
       try {
@@ -6702,9 +6719,9 @@ export default function BufferTest() {
      * @tc.desc: Test the swap64 interface by source buffer which size is 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testSwap640003", 0, () => {
+    it("testSwap640003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testSwap640003";
       try {
         let buf = buffer.from("");
@@ -6722,9 +6739,9 @@ export default function BufferTest() {
      * @tc.desc: Test the keys interface by source buffer which created from uint8Array.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testKeys0001", 0, () => {
+    it("testKeys0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testKeys0001";
       try {
         let buf = buffer.from("1234");
@@ -6746,9 +6763,9 @@ export default function BufferTest() {
      * @tc.desc: Test the keys interface by source buffer created from uint8Array.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testKeys0002", 0, () => {
+    it("testKeys0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testKeys0002";
       try {
         let uArr = new Uint8Array(4);
@@ -6774,9 +6791,9 @@ export default function BufferTest() {
      * @tc.desc: Test the keys interface by source buffer which size is 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testKeys0003", 0, () => {
+    it("testKeys0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testKeys0003";
       try {
         let buf = buffer.from("");
@@ -6793,9 +6810,9 @@ export default function BufferTest() {
      * @tc.desc: Test the values interface by source buffer which created from string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testValues0001", 0, () => {
+    it("testValues0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testValues0001";
       try {
         let buf = buffer.from("1234");
@@ -6817,9 +6834,9 @@ export default function BufferTest() {
      * @tc.desc: Test the values interface by source buffer which created from uint8Array.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testValues0002", 0, () => {
+    it("testValues0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testValues0002";
       try {
         let uArr = new Uint8Array(4);
@@ -6845,9 +6862,9 @@ export default function BufferTest() {
      * @tc.desc: Test the values interface by source buffer which size is 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testValues0003", 0, () => {
+    it("testValues0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testValues0003";
       try {
         let buf = buffer.from("");
@@ -6864,9 +6881,9 @@ export default function BufferTest() {
      * @tc.desc: Test the entries interface by source buffer which created from string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testEntries0001", 0, () => {
+    it("testEntries0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testEntries0001";
       try {
         let buf = buffer.from("1234");
@@ -6889,9 +6906,9 @@ export default function BufferTest() {
      * @tc.desc: Test the entries interface by source buffer which created from Uint8Array.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testEntries0002", 0, () => {
+    it("testEntries0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testEntries0001";
       try {
         let uArr = new Uint8Array(4);
@@ -6919,9 +6936,9 @@ export default function BufferTest() {
      * @tc.desc: Test the from interface by Coping the passed buffer data onto a new Buffer instance.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0001", 0, () => {
+    it("testFrom0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFrom0001";
       try {
         let uArr = new Uint8Array(3);
@@ -6941,12 +6958,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_FROM_0200
      * @tc.name: testFrom0002
      * @tc.desc: Test the from interface by Allocatting a new Buffer using an array of bytes in the range 0 – 255.
-     *           Array entries outside that range will be truncated to fit into it.
+     * Array entries outside that range will be truncated to fit into it.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0002", 0, () => {
+    it("testFrom0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFrom0002";
       try {
         const buf = buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
@@ -6964,9 +6981,9 @@ export default function BufferTest() {
      * @tc.desc: Test the from interface by creatting a view of the ArrayBuffer without copying the underlying memory.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0003", 0, () => {
+    it("testFrom0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFrom0003";
       try {
         const arr = new Uint8Array(2);
@@ -6990,9 +7007,9 @@ export default function BufferTest() {
      * @tc.desc: Test the from interface by creatting a view of the ArrayBuffer without copying the underlying memory.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0004", 0, () => {
+    it("testFrom0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFrom0004";
       try {
         const arr = new Uint8Array(2);
@@ -7016,9 +7033,9 @@ export default function BufferTest() {
      * @tc.desc: Test the from interface by Copping the passed buffer data onto a new Buffer instance.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0005", 0, () => {
+    it("testFrom0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFrom0005";
       try {
         const buf1 = buffer.from('buffer');
@@ -7038,12 +7055,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_FROM_0600
      * @tc.name: testFrom0006
      * @tc.desc: Test the from interface by Creatting a new Buffer containing string. The encoding parameter identifies
-     *           the character encoding to be used when converting string into bytes.
+     * the character encoding to be used when converting string into bytes.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0006", 0, () => {
+    it("testFrom0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFrom0006";
       try {
         const buf1 = buffer.from('this is a test');
@@ -7062,9 +7079,9 @@ export default function BufferTest() {
      * the character encoding to be used when converting string into bytes.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0007", 0, () => {
+    it("testFrom0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFrom0007";
       try {
         const buf1 = buffer.from('F1刘FG', 'hex');
@@ -7132,12 +7149,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_FROM_0800
      * @tc.name: testFrom0008
      * @tc.desc: Test the from interface For the object whose value returned by valueof() function is strictly equal to
-     *           object or supports symbol To primitive object, a new buffer instance is created.
+     * object or supports symbol To primitive object, a new buffer instance is created.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0008", 0, () => {
+    it("testFrom0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFrom0008";
       try {
         const buf = buffer.from(new String('this is a test'));
@@ -7153,12 +7170,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_FROM_0900
      * @tc.name: testFrom0009
      * @tc.desc: Test the from interface for the object whose value returned by valueof() function is strictly equal
-     *            to object or supports symbol To primitive object, a new buffer instance is created.
+     *  to object or supports symbol To primitive object, a new buffer instance is created.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0009", 0, () => {
+    it("testFrom0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFrom0009";
       try {
         class Foo {
@@ -7185,12 +7202,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_FROM_1000
      * @tc.name: testFrom0010
      * @tc.desc: Test the from interface by creating a new buffer containing a newline character string. Creating using
-     *            base64 encoding
+     *  base64 encoding
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0010", 0, () => {
+    it("testFrom0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFrom0010";
       try {
         const str =
@@ -7209,9 +7226,9 @@ export default function BufferTest() {
      * @tc.desc: Test the from interface by pass the parameter array to undefined
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0011", 0, () => {
+    it("testFrom0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFrom0011";
       try {
         buffer.from(undefined);
@@ -7227,9 +7244,9 @@ export default function BufferTest() {
      * @tc.desc: Test the from interface by pass the parameter array to null
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0012", 0, () => {
+    it("testFrom0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFrom0012";
       try {
         buffer.from(null);
@@ -7245,9 +7262,9 @@ export default function BufferTest() {
      * @tc.desc: Test the from interface by pass the parameter byteOffset is outside of the range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0013", 0, () => {
+    it("testFrom0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFrom0013";
       let arrayBuffer = new ArrayBuffer(5);
       let array = new Int8Array(arrayBuffer);
@@ -7269,9 +7286,9 @@ export default function BufferTest() {
      * @tc.desc: Test the from interface by copping a buffer which is created from "Uint8Array" and pass byteOffset to -1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0014", 0, () => {
+    it("testFrom0014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFrom0014";
       try {
         let buf = new Uint8Array([97, 98]);
@@ -7287,12 +7304,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_FROM_1500
      * @tc.name: testFrom0015
      * @tc.desc: Test the from interface by copping a buffer which is created from "Uint8Array" and pass byteOffset to -1
-     *           and lenrth to -1.
+     * and lenrth to -1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0015", 0, () => {
+    it("testFrom0015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFrom0015";
       try {
         let buf = new Uint8Array([97, 98]);
@@ -7310,9 +7327,9 @@ export default function BufferTest() {
      * @tc.desc: Test the from interface by The buffer handles a uint8array and decodes it with base64 and base64url.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0016", 0, () => {
+    it("testFrom0016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = 'TestFrom0016';
       try {
         let array = new Uint8Array([252, 11, 3, 67, 237, 118, 91, 177, 43]);
@@ -7367,9 +7384,9 @@ export default function BufferTest() {
      * @tc.desc: Test the from interface by Creating a new Buffer containing empty string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testFrom0017", 0, () => {
+    it("testFrom0017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testFrom0017";
       try {
         const buf = buffer.from("");
@@ -7387,9 +7404,9 @@ export default function BufferTest() {
      * @tc.desc: Test the from interface by Creating a new Blob object containing a concatenation of the given sources.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobConstructor0001", 0, async () => {
+    it("testBlobConstructor0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       TAG = "testBlobConstructor0001";
       try {
         let option: Options = {
@@ -7417,9 +7434,9 @@ export default function BufferTest() {
      * @tc.desc: Test the from interface by Creating a new Blob object containing a concatenation of the given sources.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobConstructor0002", 0, async () => {
+    it("testBlobConstructor0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       TAG = "testBlobConstructor0002";
       try {
         let arrBuf = new ArrayBuffer(3);
@@ -7450,9 +7467,9 @@ export default function BufferTest() {
      * @tc.desc: Test the from interface by Creating a new Blob object containing a concatenation of the given sources.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobConstructor0003", 0, async () => {
+    it("testBlobConstructor0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       TAG = "testBlobConstructor0003";
       try {
         let uint8arr = new Uint8Array(3);
@@ -7482,9 +7499,9 @@ export default function BufferTest() {
      * @tc.desc: Test the from interface by Creating a new Blob object containing a concatenation of the given sources.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobConstructor0004", 0, async () => {
+    it("testBlobConstructor0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       TAG = "testBlobConstructor0004";
       try {
         let arrBuf = new ArrayBuffer(3);
@@ -7498,7 +7515,7 @@ export default function BufferTest() {
         let view = new DataView(arrBuf);
         let blob2 = new buffer.Blob([view], option);
         await blob2.text().then((value) => {
-          try{
+          try {
             expect(value).assertEqual("abc");
           } catch (err) {
             console.error(`${TAG} err is ${err}`);
@@ -7516,9 +7533,9 @@ export default function BufferTest() {
      * @tc.desc: Test the from interface by Creating a new Blob object containing a concatenation of the given sources.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobConstructor0005", 0, async () => {
+    it("testBlobConstructor0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       TAG = "testBlobConstructor0005";
       try {
         let option: Options = {
@@ -7546,9 +7563,9 @@ export default function BufferTest() {
      * @tc.desc: Test the from interface by Creating a new Blob object containing a concatenation of the given sources.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobConstructor0006", 0, async () => {
+    it("testBlobConstructor0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       TAG = "testBlobConstructor0006";
       try {
         new buffer.Blob(["a", "b", "c"], 10);
@@ -7565,9 +7582,9 @@ export default function BufferTest() {
      * @tc.desc: Test the arrayBuffer interface by blob fulfills with an <ArrayBuffer> containing a copy of the Blob data.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobArrayBuffer0100", 0, async () => {
+    it("testBlobArrayBuffer0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       TAG = "testBlobArrayBuffer0100";
       try {
         let option: Options = {
@@ -7597,9 +7614,9 @@ export default function BufferTest() {
      * @tc.desc: Test the text interface by buffer fulfills with the contents of the Blob decoded as a UTF-8 string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobText0001", 0, async () => {
+    it("testBlobText0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       TAG = "testBlobText0001";
       try {
         let option: Options = {
@@ -7626,9 +7643,9 @@ export default function BufferTest() {
      * @tc.desc: Test the slice interface by passing the parameter start to 0,end to 1.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobSlice0001", 0, async () => {
+    it("testBlobSlice0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       TAG = "testBlobSlice0001";
       try {
         let option: Options = {
@@ -7656,9 +7673,9 @@ export default function BufferTest() {
      * @tc.desc: Test the slice interface by passing the parameter start to -1,end to 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobSlice0002", 0, async () => {
+    it("testBlobSlice0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       TAG = "testBlobSlice0002";
       try {
         let option: Options = {
@@ -7686,9 +7703,9 @@ export default function BufferTest() {
      * @tc.desc: Test the size interface by creating buffer which length is 3.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobSize0001", 0, () => {
+    it("testBlobSize0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testBlobSize0001";
       try {
         let sources = ["a", "b", "c"]
@@ -7707,9 +7724,9 @@ export default function BufferTest() {
      * @tc.desc: Test the size interface by creating buffer which length is 0.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobSize0002", 0, () => {
+    it("testBlobSize0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testBlobSize0002";
       try {
         let blob = new buffer.Blob([]);
@@ -7725,12 +7742,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BLOBSIZE_0300
      * @tc.name: testBlobSize0003
      * @tc.desc: Test the size interface by creating buffer which length is 3 and content include chinese string
-     *           、special string.
+     * 、special string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobSize0003", 0, () => {
+    it("testBlobSize0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testBlobSize0003";
       try {
         let sources = ["测试", "$#", "c"];
@@ -7749,9 +7766,9 @@ export default function BufferTest() {
      * @tc.desc: Test the type interface by creating buffer which type is mine.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobType0001", 0, () => {
+    it("testBlobType0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testBlobType0001";
       try {
         let option: Options = {
@@ -7773,9 +7790,9 @@ export default function BufferTest() {
      * @tc.desc: Test the type interface by creating buffer which type is empty.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobType0002", 0, () => {
+    it("testBlobType0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testBlobType0002";
       try {
         let sources = ["a", "b", "c"]
@@ -7793,9 +7810,9 @@ export default function BufferTest() {
      * @tc.desc: Test the type interface by creating buffer which length is 4.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobLength0001", 0, () => {
+    it("testBlobLength0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testBlobLength0001";
       try {
         let buf = buffer.from("1236");
@@ -7813,9 +7830,9 @@ export default function BufferTest() {
      * @tc.desc: Test the type interface by assigning a value to length.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobLength0002", 0, () => {
+    it("testBlobLength0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testBlobLength0002";
       let buf = buffer.from("1236");
       try {
@@ -7832,9 +7849,9 @@ export default function BufferTest() {
      * @tc.desc: Test the type interface by creating buffer which content include chinese and special string.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobLength0003", 0, () => {
+    it("testBlobLength0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testBlobLength0003";
       try {
         let buf = buffer.from("测试特殊字符$#@!");
@@ -7852,9 +7869,9 @@ export default function BufferTest() {
      * @tc.desc: Test the byteOffset interface by creating buffer by "from" interface.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobByteOffset0001", 0, () => {
+    it("testBlobByteOffset0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testBlobByteOffset0001";
       try {
         let buf = buffer.from("1236");
@@ -7872,9 +7889,9 @@ export default function BufferTest() {
      * @tc.desc: Test the byteOffset interface by creating buffer by "alloc" interface.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobByteOffset0002", 0, () => {
+    it("testBlobByteOffset0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testBlobByteOffset0002";
       try {
         let buf = buffer.alloc(10);
@@ -7892,9 +7909,9 @@ export default function BufferTest() {
      * @tc.desc: Test the byteOffset interface by creating buffer by "allocUninitializedFromPool" interface.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobByteOffset0003", 0, () => {
+    it("testBlobByteOffset0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testBlobByteOffset0003";
       try {
         let buf = buffer.allocUninitializedFromPool(10);
@@ -7912,9 +7929,9 @@ export default function BufferTest() {
      * @tc.desc: Test the byteOffset interface by creating buffer by "allocUninitialized" interface.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobByteOffset0004", 0, () => {
+    it("testBlobByteOffset0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testBlobByteOffset0004";
       try {
         let buf = buffer.allocUninitialized(10);
@@ -7932,9 +7949,9 @@ export default function BufferTest() {
      * @tc.desc: Test the byteOffset interface by creating buffer assign a value to 'byteOffset'.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testBlobByteOffset0005", 0, () => {
+    it("testBlobByteOffset0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testBlobByteOffset0005";
       let buf = buffer.from("1236");
       try {
@@ -7949,12 +7966,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READUINT16LE_0100
      * @tc.name: testReadUInt16LE0001
      * @tc.desc: Test the readUInt16LE interface by Reading an unsigned, little-endian 16-bit integer from buf at the
-     *           specified offset.
+     * specified offset.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUInt16LE0001", 0, () => {
+    it("testReadUInt16LE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt16LE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -7973,9 +7990,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUInt16LE interface by passing the parameter offset out of range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUInt16LE0002", 0, () => {
+    it("testReadUInt16LE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt16LE0002";
       let buf = buffer.allocUninitializedFromPool(4);
       buf.writeUInt16LE(0x1234, 0);
@@ -7993,9 +8010,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUInt16LE interface by passing the parameter offset to undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUInt16LE0003", 0, () => {
+    it("testReadUInt16LE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt16LE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -8013,9 +8030,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUInt16LE interface by passing the parameter offset to null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUInt16LE0004", 0, () => {
+    it("testReadUInt16LE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt16LE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -8031,12 +8048,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READUINT32BE_0100
      * @tc.name: testReadUInt32BE0001
      * @tc.desc: Test the readUInt32BE interface by Reading an unsigned, big-endian 32-bit integer from buf at the
-     *           specified offset.
+     * specified offset.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUInt32BE0001", 0, () => {
+    it("testReadUInt32BE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt32BE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -8055,9 +8072,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUInt32BE interface by passing the parameter offset out of range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUInt32BE0002", 0, () => {
+    it("testReadUInt32BE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt32BE0002";
       let buf = buffer.allocUninitializedFromPool(4);
       buf.writeUInt32BE(0x12345678, 0);
@@ -8075,9 +8092,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUInt32BE interface by passing the parameter offset to undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUInt32BE0003", 0, () => {
+    it("testReadUInt32BE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt32BE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -8095,9 +8112,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUInt32BE interface by passing the parameter offset to null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUInt32BE0004", 0, () => {
+    it("testReadUInt32BE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt32BE0004-";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -8113,12 +8130,12 @@ export default function BufferTest() {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READUINT32LE_0100
      * @tc.name: testReadUInt32LE0001
      * @tc.desc: Test the readUInt32LE interface by Reading an unsigned, little-endian 32-bit integer from buf at the
-     *           specified offset.
+     * specified offset.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUInt32LE0001", 0, () => {
+    it("testReadUInt32LE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt32LE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -8137,9 +8154,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUInt32LE interface by passing the parameter offset out of range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUInt32LE0002", 0, () => {
+    it("testReadUInt32LE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt32LE0002";
       let buf = buffer.allocUninitializedFromPool(4);
       buf.writeUInt32LE(0x12345678, 0);
@@ -8156,9 +8173,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUInt32LE interface by passing the parameter offset to undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUInt32LE0003", 0, () => {
+    it("testReadUInt32LE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt32LE0003";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -8176,9 +8193,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUInt32LE interface by passing the parameter offset to null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUInt32LE0004", 0, () => {
+    it("testReadUInt32LE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUInt32LE0004";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -8196,9 +8213,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUIntBE interface by reading an unsigned 8-bit integer from buf at the specified offset.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUIntBE0001", 0, () => {
+    it("testReadUIntBE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUIntBE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -8217,9 +8234,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUIntBE interface by passing the parameter offset out of range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUIntBE0002", 0, () => {
+    it("testReadUIntBE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUIntBE0002";
       let buf = buffer.allocUninitializedFromPool(4);
       buf.writeUIntBE(0x13141516, 0, 4);
@@ -8236,9 +8253,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUIntBE interface by passing the parameter offset to undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUIntBE0003", 0, () => {
+    it("testReadUIntBE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUIntBE0003";
       let buf = buffer.allocUninitializedFromPool(4);
       buf.writeUIntBE(0x13141516, 0, 4);
@@ -8255,9 +8272,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUIntBE interface by passing the parameter offset to undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUIntBE0004", 0, () => {
+    it("testReadUIntBE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUIntBE0004";
       let buf = buffer.allocUninitializedFromPool(4);
       buf.writeUIntBE(0x13141516, 0, 4);
@@ -8274,9 +8291,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUIntLE interface by reading an unsigned 8-bit integer from buf at the specified offset.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUIntLE0001", 0, () => {
+    it("testReadUIntLE0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUIntLE0001";
       try {
         let buf = buffer.allocUninitializedFromPool(4);
@@ -8295,9 +8312,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUIntLE interface by passing the parameter offset out of range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUIntLE0002", 0, () => {
+    it("testReadUIntLE0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUIntLE0002";
       let buf = buffer.allocUninitializedFromPool(4);
       buf.writeUIntLE(0x13141516, 0, 4);
@@ -8315,9 +8332,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUIntLE interface by passing the parameter offset to undefined.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUIntLE0003", 0, () => {
+    it("testReadUIntLE0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUIntLE0003";
       let buf = buffer.allocUninitializedFromPool(4);
       buf.writeUIntLE(0x13141516, 0, 4);
@@ -8335,9 +8352,9 @@ export default function BufferTest() {
      * @tc.desc: Test the readUIntLE interface by passing the parameter offset to null.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 3
      */
-    it("testReadUIntLE0004", 0, () => {
+    it("testReadUIntLE0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       TAG = "testReadUIntLE0004";
       let buf = buffer.allocUninitializedFromPool(4);
       buf.writeUIntLE(0x13141516, 0, 4);
@@ -8349,5 +8366,714 @@ export default function BufferTest() {
         expect(err.code).assertEqual(401);
       }
     })
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_COMPARE_0100
+     * @tc.name: testBufferCompare0001
+     * @tc.desc: Test BUFFER.COMPARE
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it("testBufferCompare0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testBufferCompare0001";
+      try {
+        let buf1 = buffer.from([1, 2, 3, 4, 5, 6, 7, 8]);
+        let buf2 = buffer.from([8, 7, 6, 5, 4, 3, 2, 1]);
+        let result = buf1.compare(buf2);
+        expect(result).assertEqual(-1);
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_COMPARE_0200
+     * @tc.name: testBufferCompare0002
+     * @tc.desc: Test BUFFER.COMPARE
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it("testBufferCompare0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testBufferCompare0002";
+      try {
+        let buf1 = buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+        let buf2 = buffer.from([5, 6, 7, 8, 9, 1, 2, 3, 4]);
+        let result = buf1.compare(buf2, 8);
+        expect(result).assertEqual(-1);
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_COMPARE_0300
+     * @tc.name: testBufferCompare0003
+     * @tc.desc: Test BUFFER.COMPARE
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it("testBufferCompare0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testBufferCompare0003";
+      try {
+        let buf1 = buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+        let buf2 = buffer.from([5, 6, 7, 8, 9, 1, 2, 3, 4]);
+        let result = buf1.compare(buf2, 0, 5);
+        expect(result).assertEqual(-1);
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_COMPARE_0400
+     * @tc.name: testBufferCompare0004
+     * @tc.desc: Test BUFFER.COMPARE
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it("testBufferCompare0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testBufferCompare0004";
+      try {
+        let buf1 = buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+        let buf2 = buffer.from([5, 6, 7, 8, 9, 1, 2, 3, 4]);
+        let result = buf1.compare(buf2, 0, 6, 4);
+        expect(result).assertEqual(-1);
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_COMPARE_0500
+     * @tc.name: testBufferCompare0005
+     * @tc.desc: Test BUFFER.COMPARE
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it("testBufferCompare0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testBufferCompare0005";
+      try {
+        let buf1 = buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+        let buf2 = buffer.from([5, 6, 7, 8, 9, 1, 2, 3, 4]);
+        let result = buf1.compare(buf2, 5, 9, 0, 4);
+        expect(result).assertEqual(0);
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_COMPARE_0500
+     * @tc.name: testBufferCompare0005
+     * @tc.desc: Test BUFFER.COMPARE
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it("testBufferCompare0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testBufferCompare0006";
+      try {
+        let buf1 = buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+        let buf2 = buffer.from([5, 6, 7, 8, 9, 1, 2, 3, 4]);
+        let result = buf1.compare(buf2, Infinity, 9, 0, 4);
+      } catch (err) {
+        expect(err.code).assertEqual(10200001)
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_COMPARE_0600
+     * @tc.name: testBufferCompare0005
+     * @tc.desc: Test BUFFER.COMPARE
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it("testBufferCompare0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testBufferCompare0007";
+      try {
+        let buf1 = buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+        let buf2 = buffer.from([5, 6, 7, 8, 9, 1, 2, 3, 4]);
+        let result = buf1.compare(buf2, Infinity, 9, 0, 4);
+      } catch (err) {
+        expect(err.code).assertEqual(10200001)
+      }
+    })
+
+    /*
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READ_0100
+     * @tc.name  : testRead0001
+     * @tc.desc  : Testing readBigUInt64BE for null
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testRead0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testRead0001";
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        buf.writeBigUInt64BE(0xdecafafecacefaden, 0);
+        let ref = buf.readBigUInt64BE().toString(16);
+        expect(ref).assertEqual("decafafecacefade");
+      } catch (err) {
+        console.error(`${TAG} is fail,err is ${err}`);
+        expect().assertFail();
+      }
+    });
+
+
+    /*
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READ_0200
+     * @tc.name  : testRead0002
+     * @tc.desc  : Testing readBigInt64LE for buffer with normal value.
+     * @tc.size: MediumTest
+     * @tc.type  : Function
+     * @tc.level: Level 3
+     */
+    it('testRead0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testRead0002";
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        buf.writeBigInt64BE(0x0102030405060708n, 0);
+        let ref = buf.readBigInt64LE().toString(16);
+        expect(ref).assertEqual("807060504030201");
+      } catch (err) {
+        console.error(`${TAG} is fail,err is ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READ_0300
+      * @tc.name  : testRead0003
+      * @tc.desc  : Testing readBigUInt64BE for buffer with normal value.
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+  */
+    it('testRead0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testRead0003";
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        buf.writeBigUInt64BE(0xdecafafecacefaden, 0);
+        let ref = buf.readBigUInt64BE().toString(16);
+        expect(ref).assertEqual("decafafecacefade");
+      } catch (err) {
+        console.error(`${TAG} is fail,err is ${err}`);
+        expect().assertFail();
+      }
+    });
+
+
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READ_0400
+      * @tc.name  : testRead0004
+      * @tc.desc  : Testing readBigUInt64LE for buffer with normal value.
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testRead0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testRead0004";
+      try {
+        let buf = buffer.allocUninitializedFromPool(8);
+        buf.writeBigUInt64LE(0xdecafafecacefaden, 0);
+        let ref = buf.readBigUInt64LE().toString(16);
+        expect(ref).assertEqual("decafafecacefade");
+      } catch (err) {
+        console.error(`${TAG} is fail,err is ${err}`);
+        expect().assertFail();
+      }
+    });
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READ_0500
+      * @tc.name  : testRead0005
+      * @tc.desc  : Testing readFloatBE for buffer with normal value.
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testRead0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testRead0005";
+      try {
+        let buf = buffer.allocUninitializedFromPool(4);
+        buf.writeFloatBE(0xcabcbcbc, 0);
+        let ref = buf.readFloatBE().toString(16);
+        expect(ref).assertEqual("cabcbd00");
+      } catch (err) {
+        console.error(`${TAG} is fail,err is ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READ_0600
+      * @tc.name  : testRead0006
+      * @tc.desc  : Testing readFloatLE for buffer with normal value.
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testRead0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testRead0006";
+      try {
+        let buf = buffer.allocUninitializedFromPool(4);
+        buf.writeFloatLE(0xcabcbcbc, 0);
+        let ref = buf.readFloatLE().toString(16);
+        expect(ref).assertEqual("cabcbd00");
+      } catch (err) {
+        console.error(`${TAG} is fail,err is ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READ_0700
+      * @tc.name  : testRead0007
+      * @tc.desc  : Testing readInt8 for buffer with normal value.
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testRead0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testRead0007";
+      try {
+        const str =
+          `MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC/OgIQLaulKklB\npZltSaWwM3Cnzcmvh+LoqYFYjCePUxnoJRDusFqy4sjwBx9fn/XSxxJ9A0KxMtXa\nr7YFjwQo3FsIjLZ3+8wS+Kydcg==`;
+        const buf = buffer.from(str, 'base64');
+        let ref = buf.readInt8();
+        expect(ref).assertEqual(48);
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /*
+    * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READ_0800
+    * @tc.name  : testRead0008
+    * @tc.desc  : Testing readInt16BE for buffer with normal value.
+    * @tc.size: MediumTest
+    * @tc.type  : Function
+    * @tc.level: Level 3
+  */
+    it('testRead0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testRead0008";
+      try {
+        let buf = buffer.alloc(2);
+        buf.writeInt16BE(0x1234, 0);
+        let ref = buf.readInt16BE().toString(16);
+        expect(ref).assertEqual("1234");
+      } catch (err) {
+        console.error(`${TAG} is fail,err is ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READ_0900
+      * @tc.name  : testRead0009
+      * @tc.desc  : Testing readInt16LE for buffer with normal value.
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testRead0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testRead0009";
+      try {
+        let buf = buffer.alloc(2);
+        buf.writeInt16LE(0x1234, 0);
+        let ref = buf.readInt16LE().toString(16);
+        expect(ref).assertEqual("1234");
+      } catch (err) {
+        console.error(`${TAG} is fail,err is ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READ_1000
+      * @tc.name  : testRead0010
+      * @tc.desc  : Testing readInt32BE for buffer with normal value.
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testRead0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testRead0010";
+      try {
+        let buf = buffer.alloc(4);
+        buf.writeInt32BE(0x12345678, 0);
+        let ref = buf.readInt32BE().toString(16);
+        expect(ref).assertEqual("12345678");
+      } catch (err) {
+        console.error(`${TAG} is fail,err is ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READ_1100
+      * @tc.name  : testRead0010
+      * @tc.desc  : Testing readInt32LE for buffer with normal value.
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testRead0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testRead0011";
+      try {
+        let buf = buffer.alloc(4);
+        buf.writeInt32LE(0x12345678, 0);
+        let ref = buf.readInt32LE().toString(16);
+        expect(ref).assertEqual("12345678");
+      } catch (err) {
+        console.error(`${TAG} is fail,err is ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READ_1200
+      * @tc.name  : testRead0012
+      * @tc.desc  : Testing readUInt8 for buffer with normal value.
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testRead0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testRead0012";
+      try {
+        let buf = buffer.allocUninitializedFromPool(4);
+        buf.writeUInt8(0x42);
+        let ref = buf.readUInt8().toString(16);
+        expect(ref).assertEqual("42");
+      } catch (err) {
+        console.error(`${TAG} is fail,err is ${err}`);
+        expect().assertFail();
+      }
+    });
+
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READ_1300
+      * @tc.name  : testRead0013
+      * @tc.desc  : Testing readUInt16BE for buffer with normal value.
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testRead0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testRead0013";
+      try {
+        let buf = buffer.allocUninitializedFromPool(4);
+        buf.writeUInt16BE(0x1234, 0);
+        let ref = buf.readUInt16BE().toString(16);
+        expect(ref).assertEqual("1234");
+      } catch (err) {
+        console.error(`${TAG} is fail,err is ${err}`);
+        expect().assertFail();
+      }
+    });
+
+
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READ_1400
+      * @tc.name  : testRead0014
+      * @tc.desc  : Testing readUInt16BE for buffer with normal value.
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testRead0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testRead0014";
+      try {
+        let buf = buffer.allocUninitializedFromPool(4);
+        buf.writeUInt16LE(0x1234, 0);
+        let ref = buf.readUInt16LE().toString(16);
+        expect(ref).assertEqual("1234");
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READ_1500
+      * @tc.name  : testRead0015
+      * @tc.desc  : Testing readUInt32BE for buffer with normal value.
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testRead0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testRead0015";
+      try {
+        let buf = buffer.allocUninitializedFromPool(4);
+        buf.writeUInt32BE(0x12345678, 0);
+        let ref = buf.readUInt32BE().toString(16);
+        expect(ref).assertEqual("12345678");
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect(err.code).assertEqual(401);
+      }
+    })
+
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_READ_1600
+      * @tc.name  : testRead0016
+      * @tc.desc  : Testing readUInt32LE for buffer with normal value.
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testRead0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testRead0016";
+      try {
+        let buf = buffer.allocUninitializedFromPool(4);
+        buf.writeUInt32LE(0x12345678, 0);
+        let ref = buf.readUInt32LE().toString(16);
+        expect(ref).assertEqual("12345678");
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect(err.code).assertEqual(401);
+      }
+    })
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_TOSTING_1800
+      * @tc.name  : testToString0018
+      * @tc.desc  : Testing toString
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testToString0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testToString0018";
+      try {
+        let buf = buffer.from([1, 2, 3, 4]);
+        let ref = buf.toString('utf8');
+        expect(encodeURI(ref)).assertEqual("%01%02%03%04");
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_TOSTING_1900
+      * @tc.name  : testToString0019
+      * @tc.desc  : Testing toString
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testToString0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testToString0019";
+      try {
+        let buf = buffer.from([1, 2, 3, 4]);
+        let ref = buf.toString('utf8', 1);
+        expect(encodeURI(ref)).assertEqual("%02%03%04");
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+
+    /*
+    * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_TOSTING_2000
+    * @tc.name  : testToString0020
+    * @tc.desc  : Testing toString
+    * @tc.size: MediumTest
+    * @tc.type  : Function
+    * @tc.level: Level 3
+   */
+    it('testToString0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testToString0020";
+      try {
+        let buf = buffer.from([1, 2, 3, 4]);
+        let ref = buf.toString('utf8', 1, 2);
+        expect(encodeURI(ref)).assertEqual("%02");
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+    /*
+    * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_TOSTING_2100
+    * @tc.name  : testToString0021
+    * @tc.desc  : Testing toString
+    * @tc.size: MediumTest
+    * @tc.type  : Function
+    * @tc.level: Level 3
+   */
+    it('testToString0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testToString0021";
+      try {
+        let buf = buffer.from([1, 2, 3, 4]);
+        let ref = buf.toString();
+        expect(encodeURI(ref)).assertEqual("%01%02%03%04");
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+    /*
+    * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITE_0100
+    * @tc.name  : testToString0021
+    * @tc.desc  : Testing write
+    * @tc.size: MediumTest
+    * @tc.type  : Function
+    * @tc.level: Level 3
+   */
+    it('testWrite0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testWrite0001";
+      try {
+        let buf = buffer.alloc(256);
+        let len = buf.write('\u00bd + \u00bc = \u00be', 0);
+        expect(encodeURI(len.toString())).assertEqual("12");
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+    /*
+    * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITE_0200
+    * @tc.name  : testWrite0002
+    * @tc.desc  : Testing write
+    * @tc.size: MediumTest
+    * @tc.type  : Function
+    * @tc.level: Level 3
+   */
+    it('testWrite0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testWrite0002";
+      try {
+        let buffer1 = buffer.alloc(10);
+        let length = buffer1.write('abcd', 8);
+        expect(length).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+    /*
+    * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITE_0300
+    * @tc.name  : testWrite0003
+    * @tc.desc  : Testing write
+    * @tc.size: MediumTest
+    * @tc.type  : Function
+    * @tc.level: Level 3
+   */
+    it('testWrite0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testWrite0003";
+      try {
+        let buffer1 = buffer.alloc(10);
+        let length = buffer1.write('abcd', 0, 1);
+        expect(length).assertEqual(1);
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_WRITE_0400
+      * @tc.name  : testWrite0004
+      * @tc.desc  : Testing write
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testWrite0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testWrite0004";
+      try {
+        let buffer1 = buffer.alloc(10);
+        let length = buffer1.write('abcd', 0, 3, "utf-8");
+        expect(length).assertEqual(3);
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+    /*
+        * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_SLICE_0100
+        * @tc.name  : testSlice0001
+        * @tc.desc  : Testing slice
+        * @tc.size: MediumTest
+        * @tc.type  : Function
+        * @tc.level: Level 3
+       */
+    it('testSlice0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testSlice0001";
+      try {
+        let blob: buffer.Blob = new buffer.Blob(['a', 'b', 'c']);
+        let result = blob.slice();
+        expect(result.size).assertEqual(3);
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_SLICE_0200
+      * @tc.name  : testSlice0002
+      * @tc.desc  : Testing slice
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+     */
+    it('testSlice0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testSlice0002";
+      try {
+        let blob: buffer.Blob = new buffer.Blob(['a', 'b', 'c']);
+        let result = blob.slice(1);
+        expect(result.size).assertEqual(3);
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_SLICE_0300
+      * @tc.name  : testSlice0003
+      * @tc.desc  : Testing slice
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testSlice0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testSlice0003";
+      try {
+        let blob: buffer.Blob = new buffer.Blob(['a', 'b', 'c', "d"]);
+        let result = blob.slice(1, 2);
+        expect(result.size).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+    /*
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_SLICE_0400
+      * @tc.name  : testSlice0004
+      * @tc.desc  : Testing slice
+      * @tc.size: MediumTest
+      * @tc.type  : Function
+      * @tc.level: Level 3
+    */
+    it('testSlice0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      TAG = "testSlice0004";
+      try {
+        let blob: buffer.Blob = new buffer.Blob(['a', 'b', 'c']);
+        let result = blob.slice(1, 2, "Number");
+        expect(result.size).assertEqual(3);
+      } catch (err) {
+        console.error(`${TAG} err is ${err}`);
+        expect().assertFail();
+      }
+    })
+
   })
 }

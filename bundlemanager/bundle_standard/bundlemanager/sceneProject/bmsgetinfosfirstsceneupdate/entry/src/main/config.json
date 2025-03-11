@@ -15,12 +15,7 @@
     "name": "com.example.third1.BmsThirdBundle1",
     "mainAbility": "com.example.third1.MainAbility",
     "colorMode": "dark",
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
+    "deviceType": [],
     "distro": {
       "moduleType": "entry",
       "installationFree": false,

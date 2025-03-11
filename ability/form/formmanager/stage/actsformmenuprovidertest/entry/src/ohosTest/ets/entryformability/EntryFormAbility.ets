@@ -30,7 +30,7 @@ export default class EntryFormAbility extends FormExtensionAbility {
   onCastToNormalForm(formId: string) {
   }
 
-  onUpdateForm(formId: string) {
+  onUpdateForm(formId: string, wantParams?: Record<string, Object>) {
     console.log('===>  onUpdateForm')
     let bindingData = formBindingData.createFormBindingData({
       newValue: 'default updated'
@@ -55,5 +55,7 @@ export default class EntryFormAbility extends FormExtensionAbility {
 
   onAcquireFormState(want: Want) {
     return formInfo.FormState.READY;
+  }
+  onStop() {
   }
 };

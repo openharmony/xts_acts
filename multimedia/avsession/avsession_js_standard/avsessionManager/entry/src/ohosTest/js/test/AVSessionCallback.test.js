@@ -844,6 +844,48 @@ export default function AVSessionCallback() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2000
+         * @tc.name      : setAVMetadata - callback - set singleLyricText
+         * @tc.desc      : Testing call setAVMetadata(callback) set singleLyricText
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2000', 0, async function (done) {
+            let metadata = {
+                assetId: '121278',
+                singleLyricText: 'dream it possible'
+            };
+            try {
+                session.setAVMetadata(metadata, (err) => {
+                    if (err) {
+                        console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    } else {
+                        controller.getAVMetadata((err, data) => {
+                            if (err) {
+                                console.info(`TestLog: Get singleLyricText error: code: ${err.code}, message: ${err.message}`);
+                                expect(false).assertTrue();
+                            } else if (data) {
+                                console.info('TestLog: Get singleLyricText Successfully');
+                                expect(data.assetId).assertEqual(metadata.assetId);
+                                expect(data.singleLyricText).assertEqual(metadata.singleLyricText);
+                            } else {
+                                console.info(`TestLog: Get singleLyricText failed:${data}`);
+                                expect(false).assertTrue();
+                            }
+                            done();
+                        })
+                    }
+                })
+            } catch (err) {
+                console.info(`TestLog: set & get singleLyricText error: code: ${err.code}, message: ${err.message}`);
+                expect().assertFail();
+                done();
+            }
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0100
          * @tc.name      : setAVPlaybackState - callback - set state & activeItemId
          * @tc.desc      : Testing call setAVPlaybackState(callback) set state & activeItemId

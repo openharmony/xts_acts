@@ -584,7 +584,7 @@ export default function requestUploadJSUnit() {
           expect(true).assertEqual(uploadTask != undefined);
           uploadTask.on('progress', progressCallback);
           console.info('====>SUB_REQUEST_FileUpload_MonitoringProgress_0200 onProgress');
-          uploadTask.off('progress', progressCallback);
+          uploadTask.off('progress');
           console.info('====>SUB_REQUEST_FileUpload_MonitoringProgress_0200 offProgress');
           expect(flags).assertTrue();
           await deleteTask(uploadTask);
@@ -663,7 +663,7 @@ export default function requestUploadJSUnit() {
           expect(true).assertEqual(uploadTask != undefined);
           uploadTask.on('headerReceive', headerCallback);
           console.info('====>SUB_REQUEST_FileUpload_MonitoringProgress_0400 onHeader');
-          uploadTask.off('headerReceive', headerCallback);
+          uploadTask.off('headerReceive');
           console.info('====>SUB_REQUEST_FileUpload_MonitoringProgress_0400 offHeader');
           expect(flags).assertTrue();
           await deleteTask(uploadTask);
@@ -1871,6 +1871,134 @@ export default function requestUploadJSUnit() {
       }catch (err) {
         console.info('====>SUB_Request_Agent_MultipleFiles_0300 creat err: ' + JSON.stringify(err));
         expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    SUB_Request_FileUpload_ErrorCode_0100
+     * @tc.name      SUB_Request_FileUpload_ErrorCode_0100
+     * @tc.desc      different index,begins and ends.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('SUB_Request_FileUpload_ErrorCode_0100', 0, async (done: Function) => {
+      let config: request.UploadConfig = {
+        url: 'http://127.0.0.1:8080',
+        header: { 'Accept': '*/*' },
+        method: "POST",
+        files: [{ filename: "text", name: "text", uri: "internal://cache/text.txt", type: "txt" }],
+        data: [{ name: "name123", value: "123" }],
+      }
+      console.info('====>SUB_Request_FileUpload_ErrorCode_0100 config_multi: ' + JSON.stringify(config));
+      try {
+        request.uploadFile(baseContext, config, async (err, uploadTask)=>{
+          try{
+            if (err) {
+              console.info('====>SUB_Request_FileUpload_ErrorCode_0100 downloadFile fail: ' + JSON.stringify(err));
+              expect().assertFail();
+            }
+          }catch(err){
+            console.info('====>SUB_Request_FileUpload_ErrorCode_0100 catch err: ' + JSON.stringify(err));
+          }
+        });
+      }catch (err) {
+        console.info('====>SUB_Request_FileUpload_ErrorCode_0100 uploadFile err: ' + JSON.stringify(err));
+        expect(err.code).assertEqual(13400002);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    SUB_Request_FileUpload_ErrorCode_0200
+     * @tc.name      SUB_Request_FileUpload_ErrorCode_0200
+     * @tc.desc      different index,begins and ends.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('SUB_Request_FileUpload_ErrorCode_0200', 0, async (done: Function) => {
+      let config: request.UploadConfig = {
+        url: 'http://127.0.0.1:8080',
+        header: { 'Accept': '*/*' },
+        method: "POST",
+        files: [{ filename: "text", name: "text", uri: "internal://cache/text.txt", type: "txt" }],
+        data: [{ name: "name123", value: "123" }],
+      }
+      console.info('====>SUB_Request_FileUpload_ErrorCode_0200 config_multi: ' + JSON.stringify(config));
+      try {
+        await request.uploadFile(baseContext, config);
+        console.info('====>SUB_Request_FileUpload_ErrorCode_0200 uploadFile success');
+        expect().assertFail();
+        done();
+      }catch (err) {
+        console.info('====>SUB_Request_FileUpload_ErrorCode_0200 uploadFile err: ' + JSON.stringify(err));
+        expect(err.code).assertEqual(13400002);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    SUB_Request_FileUpload_ErrorCode_0300
+     * @tc.name      SUB_Request_FileUpload_ErrorCode_0300
+     * @tc.desc      different index,begins and ends.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('SUB_Request_FileUpload_ErrorCode_0300', 0, async (done: Function) => {
+      let config: request.UploadConfig = {
+        url: 'upload',
+        header: { 'Accept': '*/*' },
+        method: "POST",
+        files: [{ filename: "test", name: "test", uri: "internal://cache/test.txt", type: "txt" }],
+        data: [{ name: "name123", value: "123" }],
+      }
+      console.info('====>SUB_Request_FileUpload_ErrorCode_0300 config_multi: ' + JSON.stringify(config));
+      try {
+        request.uploadFile(baseContext, config, (err: BusinessError, uploadTask: request.UploadTask)=>{
+          try{
+            if (err) {
+              console.info('====>SUB_Request_FileUpload_ErrorCode_0300 downloadFile fail: ' + JSON.stringify(err));
+              expect().assertFail();
+            }
+          }catch(err){
+            console.info('====>SUB_Request_FileUpload_ErrorCode_0300 catch err: ' + JSON.stringify(err));
+          }
+        });
+      }catch (err) {
+        console.info('====>SUB_Request_FileUpload_ErrorCode_0300 uploadFile err: ' + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    SUB_Request_FileUpload_ErrorCode_0400
+     * @tc.name      SUB_Request_FileUpload_ErrorCode_0400
+     * @tc.desc      different index,begins and ends.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('SUB_Request_FileUpload_ErrorCode_0400', 0, async (done: Function) => {
+      let config: request.UploadConfig = {
+        url: 'upload',
+        header: { 'Accept': '*/*' },
+        method: "POST",
+        files: [{ filename: "test", name: "test", uri: "internal://cache/test.txt", type: "txt" }],
+        data: [{ name: "name123", value: "123" }],
+      }
+      console.info('====>SUB_Request_FileUpload_ErrorCode_0400 config_multi: ' + JSON.stringify(config));
+      try {
+        await request.uploadFile(baseContext, config);
+        console.info('====>SUB_Request_FileUpload_ErrorCode_0400 uploadFile success');
+        expect().assertFail();
+        done();
+      }catch (err) {
+        console.info('====>SUB_Request_FileUpload_ErrorCode_0400 uploadFile err: ' + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
       }
     });
 

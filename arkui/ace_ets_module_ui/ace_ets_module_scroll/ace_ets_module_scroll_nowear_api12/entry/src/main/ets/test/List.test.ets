@@ -57,6 +57,7 @@ import waterFlowFling1 from './WaterFlowTest/waterFlowFling1.test';
 import waterFlowFling2 from './WaterFlowTest/waterFlowFling2.test';
 import WaterFlowFlingCallback from './WaterFlowTest/WaterFlowFlingCallback.test';
 import WaterFlowScrollEdgeCallbackJsunit from './WaterFlowTest/WaterFlowScrollEdgeCallback.test';
+import waterFlowViewJsunit from './WaterFlowView.test';
 
 export default function testsuite() {
   waterFlowLayoutMode()
@@ -104,4 +105,5 @@ export default function testsuite() {
   waterFlowFling2()
   WaterFlowFlingCallback()
   WaterFlowScrollEdgeCallbackJsunit()
+  waterFlowViewJsunit();
 }

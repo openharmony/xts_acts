@@ -14,12 +14,7 @@
     "package": "com.example.third1.entry",
     "name": "com.example.third1.BmsThirdBundle1",
     "colorMode": "light",
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
+    "deviceType": [],
     "distro": {
       "moduleType": "entry",
       "installationFree": false,

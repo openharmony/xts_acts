@@ -1,13 +1,12 @@
 {
     "devices": {
-        "general": [
-            "default",
-            "tablet"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.MiscServices.Download",
+                    "SystemCapability.MiscServices.Upload",
+                    "SystemCapability.Request.FileTransferAgent"
                 ]
             }
         ]

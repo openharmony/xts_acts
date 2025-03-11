@@ -1,7 +1,6 @@
 {
   "src": [
     "MainAbility/pages/XTSIndex",
-    "MainAbility/pages/keydispatchtest/KeydispatchTest",
     "MainAbility/pages/checkboxgroup/CheckboxGroupGroupTest",
     "MainAbility/pages/checkboxgroup/CheckboxGroupSelectAllTest",
     "MainAbility/pages/checkbox/CheckboxGroupTest",
@@ -21,11 +20,11 @@
     "MainAbility/pages/lazyForEach/TestLazyForEachExpandMode009",
      "MainAbility/pages/focuscontrol/focuscontrol",
     "MainAbility/pages/focuscontrol/focuscontrol2",
-    "MainAbility/pages/focuscontrol/focuscontrol3x",
-    "MainAbility/pages/focuscontrol/focuscontrol4",
     "MainAbility/pages/list/ListCaseTest",
     "MainAbility/pages/listScrollTo/ListScrollToTest",
-     "MainAbility/pages/gestureCancel/gestureCancel"
-
+    "MainAbility/pages/gestureCancel/gestureCancel",
+    "MainAbility/pages/gestureRecognizer/GestureRecognizerTest",
+    "MainAbility/pages/eventInfo/EventInfoCaseTest1",
+    "MainAbility/pages/snapShot/snapShotTest"
   ]
 }

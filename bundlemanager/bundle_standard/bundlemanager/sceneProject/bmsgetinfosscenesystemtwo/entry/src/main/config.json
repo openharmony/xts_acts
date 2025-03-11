@@ -14,12 +14,7 @@
     "package": "com.example.system2",
     "name": ".BmsSystemBundle1",
     "mainAbility": "com.example.system2.MainAbility",
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

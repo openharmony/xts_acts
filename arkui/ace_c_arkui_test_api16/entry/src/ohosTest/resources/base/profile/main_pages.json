@@ -7,9 +7,12 @@
     "MainAbility/pages/textArea/TextAreaLetterSpacing",
     "MainAbility/pages/textInput/TextInputLetterSpacing",
     "MainAbility/pages/textPicker/TextPickerColumnWidthsTest",
-    "MainAbility/pages/scroll/ScrollBackToTopTest",
+    "MainAbility/pages/datePicker/TestDatePickerMode",
     "MainAbility/pages/drag/DragCaseTest1",
     "MainAbility/pages/drag/DragCaseTest2",
-    "MainAbility/pages/drag/DragCaseTest3"
+    "MainAbility/pages/drag/DragCaseTest3",
+    "MainAbility/pages/calendarPicker/CalendarPickerMarkTodayTest",
+    "MainAbility/pages/calendarPicker/TestCalendarPickerDate",
+    "MainAbility/pages/ExpectedFrameRateRange/ExpectedFrameRateRangeCallback"
   ]
 }

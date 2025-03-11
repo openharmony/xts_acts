@@ -30,7 +30,7 @@ struct ListPage {
         ListItem() {
           Text(this.listItemText01)
             .width('30%')
-            .height(100)
+            .height('40%')
             .fontSize(14)
             .textAlign(TextAlign.Center)
             .borderRadius(10)
@@ -49,7 +49,7 @@ struct ListPage {
         ListItem() {
           Text(this.listItemText02)
             .width('30%')
-            .height(100)
+            .height('40%')
             .fontSize(14)
             .textAlign(TextAlign.Center)
             .borderRadius(10)
@@ -66,7 +66,7 @@ struct ListPage {
         })
         .border({ width: 2, color: Color.Green })
       }
-      .height(300)
+      .height('40%')
       .width("90%")
       .border({ width: 3, color: Color.Red })
       .key("list")

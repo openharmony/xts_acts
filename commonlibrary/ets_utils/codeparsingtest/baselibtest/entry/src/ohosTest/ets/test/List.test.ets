@@ -25,19 +25,20 @@ import treeSetTest from './treeset/TreeSet.test';
 import hashSetTest from './hashset/HashSet.test';
 import hashMapTest from './hashmap/HashMap.test';
 import arkListTest from './arklist/ArkList.test';
-import arrayListTest from './arraylist/ArrayList.test'
-import xmlTest from './xml/Xml.test'
-import convertXmlTest from './convertxml/ConvertXml.test'
-import queueTest from './queue/Queue.test'
-import stackTest from './stack/Stack.test'
-import dequeTest from './deque/Deque.test'
-import lightWeightSetTest from './lightweightset/LightWeightSet.test'
-import lightWeightMapTest from './lightweightmap/LightWeightMap.test'
-import linkedListTest from './linkedlist/LinkedList.test'
-import plainArrayTest from './plainarray/PlainArray.test'
-import stringDecoderTest from './stringDecoder/StringDecoder.test'
-import streamTest from './stream/Stream.test'
-import specialChar from './specialchar/SpecialChar.test'
+import arrayListTest from './arraylist/ArrayList.test';
+import xmlTest from './xml/Xml.test';
+import convertXmlTest from './convertxml/ConvertXml.test';
+import queueTest from './queue/Queue.test';
+import stackTest from './stack/Stack.test';
+import dequeTest from './deque/Deque.test';
+import lightWeightSetTest from './lightweightset/LightWeightSet.test';
+import lightWeightMapTest from './lightweightmap/LightWeightMap.test';
+import linkedListTest from './linkedlist/LinkedList.test';
+import plainArrayTest from './plainarray/PlainArray.test';
+import stringDecoderTest from './stringDecoder/StringDecoder.test';
+import streamTest from './stream/Stream.test';
+import specialChar from './specialchar/SpecialChar.test';
+import consoleTest from './console/Console.test';
 
 export default function testsuite() {
   bufferTest();
@@ -65,4 +66,5 @@ export default function testsuite() {
   stringDecoderTest()
   streamTest()
   specialChar();
+  consoleTest()
 }

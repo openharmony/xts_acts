@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- import {MessageManager,Callback} from '../../utils/MessageManager';
+import { MessageManager, Callback } from '../../utils/MessageManager';
 
 @Entry
 @Component
@@ -39,54 +39,53 @@ struct SliderExample {
   @State showTips: boolean = true
   @State trackThickness: string = '10px'
   @State modeT: string = 'mode'
-
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager = new MessageManager()
 
   onPageShow() {
     console.info('slider onPageShow')
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message: ESObject) => {
+    let callback: Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'vInSetValueOne') {
-          this.vInSetValueOne = message.value
+        this.vInSetValueOne = message.value
       }
       if (message.name == 'style') {
-          this.style = message.value
+        this.style = message.value
       }
       if (message.name == 'directionT') {
-          this.directionT = message.value
+        this.directionT = message.value
       }
       if (message.name == 'reverse') {
-          this.reverse = message.value
+        this.reverse = message.value
       }
       if (message.name == 'min') {
-          this.min = message.value
+        this.min = message.value
       }
       if (message.name == 'max') {
-          this.max = message.value
+        this.max = message.value
       }
       if (message.name == 'step') {
-          this.step = message.value
+        this.step = message.value
       }
       if (message.name == 'blockColor') {
-          this.blockColor = message.value
+        this.blockColor = message.value
       }
       if (message.name == 'trackColor') {
-          this.trackColor = message.value
+        this.trackColor = message.value
       }
       if (message.name == 'selectedColor') {
-          this.selectedColor = message.value
+        this.selectedColor = message.value
       }
       if (message.name == 'showSteps') {
-          this.showSteps = message.value
+        this.showSteps = message.value
       }
       if (message.name == 'showTips') {
-          this.showTips = message.value
+        this.showTips = message.value
       }
       if (message.name == 'trackThickness') {
-          this.trackThickness = message.value
+        this.trackThickness = message.value
       }
 
     }
@@ -94,153 +93,54 @@ struct SliderExample {
   }
 
   build() {
-    Column({ space: 8 }) {
-      Text('outset slider').fontSize(9).fontColor(0xCCCCCC).width('90%').margin(15)
-      Row() {
+    Column() {
+      Row(){
+        Text(this.vInSetValueOne + "").fontSize(9).fontColor(0xCCCCCC).key('tex')
+        Text(this.modeT).fontSize(9).fontColor(0xCCCCCC).key('modeT')
         Slider({
-          value: this.outSetValueOne,
-          min: 0,
-          max: 100,
-          style: SliderStyle.OutSet
+          value: this.vOutSetValueOne,
+          style: SliderStyle.OutSet,
+          direction: Axis.Vertical
         })
-          .showTips(true)
+          .blockColor(this.blockColor)
+          .trackColor(this.trackColor)
+          .selectedColor(this.selectedColor)
+          .showTips(this.showTips)
+          .trackThickness(this.trackThickness)
+          .showSteps(this.showSteps)
           .onChange((value: number, mode: SliderChangeMode) => {
-            this.outSetValueOne = value
+            this.vOutSetValueOne = value
             console.info('value:' + value + 'mode:' + mode.toString())
           })
-        // toFixed(0)将滑动条返回值处理为整数精度
-        Text(this.outSetValueOne.toFixed(0)).fontSize(12)
+          .key('sliderA')
+
       }
-      .width('80%')
-      Row() {
+      .justifyContent(FlexAlign.Start)
+      .height('50%')
+      Column() {
         Slider({
-          value: this.outSetValueTwo,
-          step: 10,
-          style: SliderStyle.OutSet
-        })
-          .showSteps(true)
+          value: this.vInSetValueOne,
+          style: this.style,
+          direction: this.directionT,
+          reverse: this.reverse, // 竖向的Slider默认是上端是min值，下端是max值，因此想要从下往上滑动，需要设置reverse为true
+          min: this.min,
+          max: this.max,
+          step: this.step
+        }).showTips(true)
           .onChange((value: number, mode: SliderChangeMode) => {
-            this.outSetValueTwo = value
-            console.info('value:' + value + 'mode:' + mode.toString())
-          })
-        Text(this.outSetValueTwo.toFixed(0)).fontSize(12)
-      }
-      .width('80%')
-
-      Text('inset slider').fontSize(9).fontColor(0xCCCCCC).width('90%').margin(15)
-      Row() {
-        Slider({
-          value: this.inSetValueOne,
-          min: 0,
-          max: 100,
-          style: SliderStyle.InSet
-        })
-          .blockColor('#191970')
-          .trackColor('#ADD8E6')
-          .selectedColor('#4169E1')
-          .showTips(true)
+            this.vInSetValueOne = value
+            console.info('value:' + value + 'm`ode:' + mode.toString())
+          }).key('sliderConstructor')
+        Slider().showTips(true)
           .onChange((value: number, mode: SliderChangeMode) => {
-            this.inSetValueOne = value
-            console.info('value:' + value + 'mode:' + mode.toString())
-          })
-        Text(this.inSetValueOne.toFixed(0)).fontSize(12)
+            this.vInSetValueOne1 = value
+            this.modeT = mode.toString()
+            console.info('value:' + value + 'm`ode:' + mode.toString())
+          }).key('sliderConstructor2')
       }
-      .width('80%')
-      Row() {
-        Slider({
-          value: this.inSetValueTwo,
-          step: 10,
-          style: SliderStyle.InSet
-        })
-          .blockColor('#191970')
-          .trackColor('#ADD8E6')
-          .selectedColor('#4169E1')
-          .showSteps(true)
-          .showTips(true)
-          .onChange((value: number, mode: SliderChangeMode) => {
-            this.inSetValueTwo = value
-            console.info('value:' + value + 'mode:' + mode.toString())
-          })
-        Text(this.inSetValueTwo.toFixed(0)).fontSize(12)
-      }
-      .width('80%')
-
-      Row() {
-        Column() {
-          Text('vertical outset slider').fontSize(9).fontColor(0xCCCCCC).width('50%').margin(15)
-          Row() {
-            Slider({
-              value: this.vOutSetValueOne,
-              style: SliderStyle.OutSet,
-              direction: Axis.Vertical
-            })
-              .blockColor(this.blockColor)
-              .trackColor(this.trackColor)
-              .selectedColor(this.selectedColor)
-              .showTips(this.showTips)
-              .trackThickness(this.trackThickness)
-              .showSteps(this.showSteps)
-              .onChange((value: number, mode: SliderChangeMode) => {
-                this.vOutSetValueOne = value
-                console.info('value:' + value + 'mode:' + mode.toString())
-              }).key('sliderA')
-            Slider({
-              value: this.vOutSetValueTwo,
-              step: 10,
-              style: SliderStyle.OutSet,
-              direction: Axis.Vertical
-            })
-              .blockColor('#191970')
-              .trackColor('#ADD8E6')
-              .selectedColor('#4169E1')
-              .showSteps(true)
-              .onChange((value: number, mode: SliderChangeMode) => {
-                this.vOutSetValueTwo = value
-                console.info('value:' + value + 'mode:' + mode.toString())
-              })
-          }
-        }.width('50%').height(300)
-
-        Column() {
-          Text(this.vInSetValueOne+"").fontSize(9).fontColor(0xCCCCCC).width('50%').margin(15).key('tex')
-          Text(this.modeT).fontSize(9).fontColor(0xCCCCCC).width('50%').margin(15).key('modeT')
-          Row() {
-            Slider({
-              value: this.vInSetValueOne,
-              style: this.style,
-              direction: this.directionT,
-              reverse: this.reverse,// 竖向的Slider默认是上端是min值，下端是max值，因此想要从下往上滑动，需要设置reverse为true
-              min:this.min,
-              max:this.max,
-              step:this.step
-            }).showTips(true)
-              .onChange((value: number, mode: SliderChangeMode) => {
-                this.vInSetValueOne = value
-                console.info('value:' + value + 'm`ode:' + mode.toString())
-              }).key('sliderConstructor')
-
-            Slider({
-              value: this.vInSetValueTwo,
-              step: 10,
-              style: SliderStyle.InSet,
-              direction: Axis.Vertical,
-              reverse: true
-            }).showSteps(true)
-              .onChange((value: number, mode: SliderChangeMode) => {
-                this.vInSetValueTwo = value
-                console.info('value:' + value + 'mode:' + mode.toString())
-              })
-
-            Slider().showTips(true)
-              .onChange((value: number, mode: SliderChangeMode) => {
-                this.vInSetValueOne1 = value
-                this.modeT = mode.toString()
-                console.info('value:' + value + 'm`ode:' + mode.toString())
-              }).key('sliderConstructor2')
-
-          }
-        }.width('50%').height(300)
-      }
-    }.width('100%')
+      .height('40%')
+    }
+    .width('100%')
+    .height('100%')
   }
 }

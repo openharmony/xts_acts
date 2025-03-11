@@ -104,7 +104,7 @@ export default function startAbilityWantParamTest() {
           fail(done);
         }).catch((error:BusinessError) => {
           console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} error :${JSON.stringify(error)}}`);
-          if (targetVersion >= 16) {
+          if (targetVersion >= 18) {
             expect(error.code).assertEqual(16000050);
           } else {
             expect(error.code).assertEqual(2097167);
@@ -121,8 +121,8 @@ export default function startAbilityWantParamTest() {
      * @tc.number    : SUB_Ability_AbilityBase_WantParam_WantParametersJs_0700
      * @tc.name      : In the parameters carried by want, the type is FD and the value is 0
      * @tc.desc      : test startAbility want parameters："keyFd":{"type":"FD", "value":0}.
-     *                 if api < 16, expecting start ability failure and the error code is 2097167. Actually,
-     *                 if api >= 16, expecting start ability failure and the error code is 16000050. Actually,
+     *                 if api < 18, expecting start ability failure and the error code is 2097167. Actually,
+     *                 if api >= 18, expecting start ability failure and the error code is 16000050. Actually,
      *                 the ability can be started successful.
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -192,8 +192,8 @@ export default function startAbilityWantParamTest() {
      * @tc.number    : SUB_Ability_AbilityBase_WantParam_WantParametersJs_1000
      * @tc.name      : The type is a RemoteObject and the value is a remoteObj in the parameters carried by want
      * @tc.desc      : test startAbility want parameters："keyRemoteObj":{"type":"RemoteObject", "value":remoteObj is empty}
-     *                 if api < 16, expecting start ability failure and the error code is 2097167. Actually,
-     *                 if api >= 16, expecting start ability failure and the error code is 16000050. Actually,
+     *                 if api < 18, expecting start ability failure and the error code is 2097167. Actually,
+     *                 if api >= 18, expecting start ability failure and the error code is 16000050. Actually,
      *                 can be started successfully
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -543,7 +543,7 @@ export default function startAbilityWantParamTest() {
           done();
         }, (error:BusinessError) => {
           console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} error :${JSON.stringify(error)}}`);
-          if (targetVersion >= 16) {
+          if (targetVersion >= 18) {
             expect(error.code).assertEqual(16000050);
           } else {
             expect(error.code).assertEqual(2097167);

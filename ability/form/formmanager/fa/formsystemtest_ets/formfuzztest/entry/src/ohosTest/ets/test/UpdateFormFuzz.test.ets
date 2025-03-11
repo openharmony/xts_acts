@@ -37,11 +37,11 @@ export const updateFormFuzzTest = (describeName:string, filterParameter:number) 
       it(`${callbackName}_${tcNumber}`, filterParameter, async (done:Function) => {
         const dataType:string = DATA_TYPE_LIST[i];
         const formId:string = getFuzzData(dataType) as string;
-        let formBindingData:formBindingData.FormBindingData | null = null;
+        let bindingData:formBindingData.FormBindingData | null = formBindingData.createFormBindingData('');
         console.log(`${callbackName} ${tcNumber} formId typeof: ${typeof formId}`);
-        console.log(`${callbackName} ${tcNumber} formBindingData typeof: ${typeof formBindingData}`);
+        console.log(`${callbackName} ${tcNumber} bindingData typeof: ${typeof bindingData}`);
         try {
-          formProvider.updateForm(formId, formBindingData, (error, data) => {
+          formProvider.updateForm(formId, bindingData, (error, data) => {
             console.log(`${callbackName} ${tcNumber} updateForm data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
             expect(data).assertUndefined();
             expect(error.code).assertEqual(ERR_ADD_INVALID_PARAM_CODE);

@@ -1,13 +1,11 @@
 {
     "devices": {
-        "general": [
-            "default",
-            "tablet"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Sensors.MiscDevice",
+                    "SystemCapability.Sensors.MiscDevice.Lite"
                 ]
             }
         ]

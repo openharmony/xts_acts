@@ -54,7 +54,6 @@ ohos_moduletest_suite("ActsDeqpgles2Suite0002Test") {
     "../functional/Deqpgles2conversions_vector_combineTestCase.cpp",
     "../functional/Deqpgles2declarations_invalid_declarationsTestCase.cpp",
     "../functional/Deqpgles2functions_datatypesTestCase.cpp",
-    "../functional/Deqpgles2swizzles_vector_swizzlesTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

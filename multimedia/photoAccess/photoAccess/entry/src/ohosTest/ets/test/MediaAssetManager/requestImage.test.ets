@@ -199,7 +199,7 @@ export default function requestImageTest() {
         console.error(`${testNum} failed; error: ${error}`);
         expect(false).assertTrue();
         done();
-      } 
+      }
     });
 
     /**
@@ -224,7 +224,7 @@ export default function requestImageTest() {
           }
         }
         let requestOptions : photoAccessHelper.RequestOptions = {
-          deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE, 
+          deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
           sourceMode: photoAccessHelper.SourceMode.EDITED_MODE,
         }
         const handler = new MediaHandler;
@@ -232,6 +232,40 @@ export default function requestImageTest() {
       } catch (error) {
         console.error(`${testNum} failed; error: ${error}`);
         expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_IMAGE_0600
+     * @tc.name      : request_image_006
+     * @tc.desc      : request image error code 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('request_image_006', 2, async (done: Function) => {
+      let testNum = 'request_image_006';
+      try {
+        let photoAsset = null;
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<image.ImageSource> {
+          onDataPrepared(data: image.ImageSource) {
+            console.info(`${testNum} succeed`);
+            expect(false).assertTrue();
+            done();
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+          deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
+          sourceMode: photoAccessHelper.SourceMode.EDITED_MODE,
+        }
+        const handler = new MediaHandler;
+        photoAccessHelper.MediaAssetManager.requestImage(testContext, photoAsset, requestOptions, handler)
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.log(`${testNum} success; error.code: ${error.code}`); 
+        expect(error.code).assertEqual(`401`);
         done();
       }
     });
@@ -278,6 +312,42 @@ export default function requestImageTest() {
       }
     })
 
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_QUICK_REQUEST_IMAGE_0002
+     * @tc.name      : quick_request_image_002
+     * @tc.desc      : quick request image error code 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('quick_request_image_002', 2, async (done: Function) => {
+      let testNum = 'quick_request_image_002';
+      try {
+        let photoAsset = null;
+        class MediaHandler implements photoAccessHelper.QuickImageDataHandler<image.Picture> {
+          onDataPrepared(data: image.Picture, imageSource: image.ImageSource) {
+            if (data === undefined && imageSource === undefined) {
+              console.error(`${testNum} :: Error occurred when preparing data !`);
+              expect(false).assertTrue();
+              done();
+            }
+            console.info(`${testNum} :: on image data prepared success`);
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+          deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
+        }
+        const handler = new MediaHandler();
+        let requestId: string = await photoAccessHelper.MediaAssetManager.quickRequestImage(null, photoAsset, requestOptions, handler);
+        console.log(`${testNum} :: quick request failed, requestId = ${requestId}`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.log(`${testNum} success; error.code: ${error.code}`); 
+        expect(error.code).assertEqual(`401`);
+        done();
+      }
+    })
 
   });
 }

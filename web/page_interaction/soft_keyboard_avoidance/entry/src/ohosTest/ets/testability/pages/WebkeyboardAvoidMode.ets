@@ -73,7 +73,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171701)
               })
               break;
@@ -95,7 +95,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171702)
               })
               break;
@@ -117,7 +117,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171703)
               })
               break;
@@ -139,7 +139,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171704)
               })
               break;
@@ -161,7 +161,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171705)
               })
               break;
@@ -183,7 +183,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171706)
               })
               break;
@@ -205,7 +205,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171707)
               })
               break;
@@ -227,7 +227,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171708)
               })
               break;
@@ -249,7 +249,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171709)
               })
               break;
@@ -271,7 +271,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171710)
               })
               break;
@@ -293,7 +293,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171711)
               })
               break;
@@ -315,7 +315,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171712)
               })
               break;
@@ -337,7 +337,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeightOne()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171713)
               })
               break;
@@ -359,7 +359,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeightOne()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171714)
               })
               break;
@@ -381,7 +381,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeightOne()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171715)
               })
               break;
@@ -403,7 +403,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeightOne()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171716)
               })
               break;
@@ -425,7 +425,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeightOne()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171717)
               })
               break;
@@ -447,7 +447,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeightOne()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171718)
               })
               break;
@@ -469,7 +469,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171719)
               })
               break;
@@ -491,7 +491,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171720)
               })
               break;
@@ -513,7 +513,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171721)
               })
               break;
@@ -535,7 +535,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171722)
               })
               break;
@@ -557,7 +557,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171723)
               })
               break;
@@ -579,7 +579,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171724)
               })
               break;
@@ -601,7 +601,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171725)
               })
               break;
@@ -623,7 +623,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171726)
               })
               break;
@@ -645,7 +645,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171727)
               })
               break;
@@ -667,7 +667,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171728)
               })
               break;
@@ -689,7 +689,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171729)
               })
               break;
@@ -711,7 +711,7 @@ struct WebkeyboardAvoidMode {
               await buttonOne.click()
               await Utils.sleep(4000);
               this.controller.runJavaScript("checkHeight()", (error, result) => {
-                console.log('The checkHeight() return value is: ${result}')
+                console.log('The checkHeight() return value is: result')
                 Utils.emitEvent(result, 171730)
               })
               break;

@@ -12,14 +12,7 @@
     "package": "com.acts.pcs.jstest",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-      "wearable",
-      "phone",
-      "tablet",
-      "2in1",
-      "default",
-      "tv"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

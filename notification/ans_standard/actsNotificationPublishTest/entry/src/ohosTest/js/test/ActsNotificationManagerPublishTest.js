@@ -661,6 +661,31 @@ export default function ActsNotificationManagerPublishTest() {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
         done();
       }
+      notificationRequest = {
+        id: 401,
+        content: {
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_CONVERSATION,
+          normal: {
+            title: '',
+            text: 'test_text',
+            additionalText: 'text_additionalText'
+          }
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+      try {
+        notificationManager.publish(notificationRequest, (err) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is :%{public}s', JSON.stringify(err));
+          expect().assertFail();
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
     })
 
     /*

@@ -1,16 +1,12 @@
 {
     "devices": {
-        "general": [
-            "tablet",
-            "default",
-            "phone",
-            "2in1",
-            "wearable"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask",
+                    "SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask",
+                    "SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply"
                 ]
             }
         ]

@@ -17,16 +17,27 @@ group("ActsAceEtsModuleLayoutTest") {
   testonly = true
   if (ace_engine_feature_wearable) {
     deps = [
-      "ace_ets_module_layout_api11:ActsAceEtsModuleLayoutApi11Test",
+      "ace_ets_module_layout_api11/ace_ets_module_layout_01_api11:ActsAceEtsModuleLayoutApi11Test",
+      "ace_ets_module_layout_api11/ace_ets_module_layout_02_api11:ActsAceEtsModuleLayout02Api11Test",
+      "ace_ets_module_layout_api11/ace_ets_module_layout_03_api11:ActsAceEtsModuleLayout03Api11Test",
+      "ace_ets_module_layout_api11/ace_ets_module_layout_04_api11:ActsAceEtsModuleLayout04Api11Test",
+      "ace_ets_module_layout_api11/ace_ets_module_layout_05_api11:ActsAceEtsModuleLayout05Api11Test",
+      "ace_ets_module_layout_api11/ace_ets_module_layout_06_api11:ActsAceEtsModuleLayout06Api11Test",
       "ace_ets_module_layout_api12:ActsAceEtsModuleLayoutApi12Test",
       "ace_ets_module_layout_api14:ActsAceEtsModuleLayoutApi14Test",
     ]
   } else {
     deps = [
-      "ace_ets_module_layout_api11:ActsAceEtsModuleLayoutApi11Test",
+      "ace_ets_module_layout_api11/ace_ets_module_layout_01_api11:ActsAceEtsModuleLayoutApi11Test",
+      "ace_ets_module_layout_api11/ace_ets_module_layout_02_api11:ActsAceEtsModuleLayout02Api11Test",
+      "ace_ets_module_layout_api11/ace_ets_module_layout_03_api11:ActsAceEtsModuleLayout03Api11Test",
+      "ace_ets_module_layout_api11/ace_ets_module_layout_04_api11:ActsAceEtsModuleLayout04Api11Test",
+      "ace_ets_module_layout_api11/ace_ets_module_layout_05_api11:ActsAceEtsModuleLayout05Api11Test",
+      "ace_ets_module_layout_api11/ace_ets_module_layout_06_api11:ActsAceEtsModuleLayout06Api11Test",
       "ace_ets_module_layout_api12:ActsAceEtsModuleLayoutApi12Test",
       "ace_ets_module_layout_api14:ActsAceEtsModuleLayoutApi14Test",
       "ace_ets_module_layout_nowear_api11:ActsAceEtsModuleLayoutNowearApi11Test",
+      "ace_ets_module_layout_nowear_api12:ActsAceEtsModuleLayoutNowearApi12Test",
     ]
   }
 }

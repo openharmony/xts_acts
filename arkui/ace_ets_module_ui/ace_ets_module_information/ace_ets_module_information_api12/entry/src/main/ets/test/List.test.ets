@@ -12,32 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import gaugeColorsJsunit from './Gauge/gauge.test';
 import ProgressMask from './progressTest/ProgressMask.test';
+import progressScaleCountJsunit from './progressTest/progress.test';
 import BounceSymbolEffect_APITest from './SymbolGlyphTest/SymbolGlyph_APITest/BounceSymbolEffect_APITest';
 import ReplaceSymbolEffect_APITest from './SymbolGlyphTest/SymbolGlyph_APITest/ReplaceSymbolEffect_APITest';
-import ACTION_FIRST_APITest from './TabsTest/AnimationMode_APITest/ACTION_FIRST_APITest'
-import CONTENT_FIRST_APITest from './TabsTest/AnimationMode_APITest/CONTENT_FIRST_APITest'
-import NO_ANIMATION_APITest from './TabsTest/AnimationMode_APITest/NO_ANIMATION_APITest'
+import ACTION_FIRST_APITest from './TabsTest/AnimationMode_APITest/ACTION_FIRST_APITest';
+import CONTENT_FIRST_APITest from './TabsTest/AnimationMode_APITest/CONTENT_FIRST_APITest';
+import NO_ANIMATION_APITest from './TabsTest/AnimationMode_APITest/NO_ANIMATION_APITest';
 import PatternLockActivateCircleStyle1 from './PatternLockTest/PatternLockActivateCircleStyle1.test';
-import startSpaceTest from './ChipGroupTest/startSpaceTest.test'
-import endSpaceTest from './ChipGroupTest/endSpaceTest.test'
-import itemSpaceTest from './ChipGroupTest/itemSpaceTest.test'
-import localizedLabelMarginTest from './ChipTest/localizedLabelMarginTest';
-import localizedButtonPaddingTest from './SegmentButtonTest/localizedButtonPaddingTest';
-import localizedTextPadding from './SegmentButtonTest/localizedTextPadding';
 
 export default function testsuite() {
-    ProgressMask()
+    gaugeColorsJsunit();
+    ProgressMask();
+    progressScaleCountJsunit();
     BounceSymbolEffect_APITest();
     ReplaceSymbolEffect_APITest();
     ACTION_FIRST_APITest();
     CONTENT_FIRST_APITest();
     NO_ANIMATION_APITest();
     PatternLockActivateCircleStyle1();
-    startSpaceTest();
-    endSpaceTest();
-    itemSpaceTest();
-    localizedLabelMarginTest();
-    localizedButtonPaddingTest();
-    localizedTextPadding();
 }

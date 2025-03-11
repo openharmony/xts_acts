@@ -1,14 +1,13 @@
 {
     "devices": {
-        "general": [
-            "default",
-            "tablet",
-            "2in1"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Driver.HID.Extension",
+                    "SystemCapability.Driver.ExternalDevice",
+                    "SystemCapability.Driver.USB.Extension",
+                    "SystemCapability.Driver.DDK.Extension"
                 ]
             }
         ]

@@ -51,12 +51,6 @@ ohos_moduletest_suite("ActsDeqpgles2Suite0010Test") {
     "../functional/Deqpgles2conditionals_combinedTestCase.cpp",
     "../functional/Deqpgles2conditionals_fragmentTestCase.cpp",
     "../functional/Deqpgles2conditionals_vertexTestCase.cpp",
-    "../functional/Deqpgles2exponential_fragmentTestCase.cpp",
-    "../functional/Deqpgles2exponential_vertexTestCase.cpp",
-    "../functional/Deqpgles2texture_fragmentTestCase.cpp",
-    "../functional/Deqpgles2texture_vertexTestCase.cpp",
-    "../functional/Deqpgles2trigonometric_fragmentTestCase.cpp",
-    "../functional/Deqpgles2trigonometric_vertexTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

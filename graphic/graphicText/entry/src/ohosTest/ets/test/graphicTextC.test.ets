@@ -124,5 +124,100 @@ export default function graphicTextCTest() {
       }
     })
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_068
+     * @tc.name      : testWordBreak
+     * @tc.desc      : Enumeration of the word breaking policy.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testWordBreak', 2, async (done:Function)=> {
+      let msg = "====testWordBreak===="
+      console.info(msg + ' begin ');
+      try {
+        console.info(msg + ' Succeeded in SystemFontType.');
+        expect(text.WordBreak.BREAK_HYPHEN == 3).assertTrue()
+        expect(true).assertTrue()
+        done()
+      } catch (err) {
+        console.log(msg + " Faild in text.WordBreak " + JSON.stringify(err))
+        console.log(msg + " Faild in text.WordBreak " + err)
+        expect().assertFail()
+        done()
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_069
+     * @tc.name      : testWordBreak_write
+     * @tc.desc      : Enumeration of the word breaking policy.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testWordBreak_write', 2, async (done:Function)=> {
+      let msg = "testWordBreak_write"
+      console.info(msg + 'begin');
+      let decoration : text.Decoration = {
+        textDecoration: text.TextDecorationType.UNDERLINE,
+        color: {
+          alpha: 255, red: 255, green: 0, blue: 0
+        },
+        decorationStyle : text.TextDecorationStyle.SOLID,
+        decorationThicknessScale : 20
+      };
+      try {
+        let myTextStyle : text.TextStyle = {
+          decoration: decoration,
+          color: {
+            alpha: 255, red: 255, green: 0, blue: 0
+          },
+          fontWeight : text.FontWeight.W100,
+          fontStyle : text.FontStyle.ITALIC,
+          baseline : text.TextBaseline.ALPHABETIC,
+          fontFamilies : Array<string>("123"),
+          fontSize : 30,
+          letterSpacing : 20,
+          wordSpacing : 20,
+          heightScale : 20,
+          halfLeading : true,
+          heightOnly : true,
+          ellipsis : "456",
+          ellipsisMode : text.EllipsisMode.START,
+          locale : "789"
+        };
+        let myParagraphStyle: text.ParagraphStyle = {
+          textStyle: myTextStyle,
+          align: 3,
+          wordBreak: text.WordBreak.BREAK_HYPHEN
+        };
+        try {
+          let fontCollection = text.FontCollection.getGlobalInstance();
+          console.log(msg + ' text.FontCollection.getGlobalInstance OK, fontCollection is  ' + JSON.stringify(fontCollection) )
+          console.log(msg + ' text.FontCollection.getGlobalInstance OK, fontCollection is  ' + fontCollection )
+          try {
+            let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+            console.log(msg + ' Succeed in text.ParagraphBuilder')
+            expect(true).assertTrue()
+            done()
+          } catch (err) {
+            console.info(msg + ' Failed in fontCollection.ParagraphBuilder.    Cause: ' + JSON.stringify(err));
+            console.info(msg + ' Failed in fontCollection.ParagraphBuilder.    Cause: ' + err);
+            expect().assertFail();
+            done()
+          }
+        } catch (err) {
+          console.info(msg + ' Failed in fontCollection.loadFontSync.    Cause: ' + JSON.stringify(err));
+          console.info(msg + ' Failed in fontCollection.loadFontSync.    Cause: ' + err);
+          expect().assertFail();
+          done()
+        }
+      } catch (err) {
+        console.info(msg + 'test TextStyle error ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
+    })
   })
 }

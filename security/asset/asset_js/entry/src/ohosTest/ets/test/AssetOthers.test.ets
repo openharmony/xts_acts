@@ -201,6 +201,10 @@ export default function AssetOthers() {
         expect(asset.SyncType.TRUSTED_ACCOUNT).assertEqual(4);
         expect(asset.OperationType.NEED_SYNC).assertEqual(0);
         expect(asset.OperationType.NEED_LOGOUT).assertEqual(1);
+        expect(asset.Tag.WRAP_TYPE).assertEqual(asset.TagType.NUMBER | 0x49);
+        expect(asset.Tag.GROUP_ID).assertEqual(asset.TagType.BYTES | 0x48);
+        expect(asset.WrapType.NEVER).assertEqual(0);
+        expect(asset.WrapType.TRUSTED_ACCOUNT).assertEqual(1);
       }catch(e) {
           aw.assetLog(e);
       }

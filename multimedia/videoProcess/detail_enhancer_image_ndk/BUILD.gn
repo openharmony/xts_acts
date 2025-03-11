@@ -83,4 +83,7 @@ ohos_moduletest_suite("ActsDetailEnhancerImageNdkUnitTest") {
   if (has_skia) {
     defines += [ "SKIA_ENABLE" ]
   }
+
+  part_name = "video_processing_engine"
+  subsystem_name = "multimedia"
 }

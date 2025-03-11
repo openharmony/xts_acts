@@ -58,10 +58,7 @@ export default function zIndexTest() {
     'Rating',
     'ScrollBar',
     'Search',
-    'Select',
     'Slider',
-    'Stepper',
-    'StepperItem',
     'Text',
     'TextArea',
     'TextClock',
@@ -72,10 +69,8 @@ export default function zIndexTest() {
     'Toggle',
     'Badge',
     'Column',
-    'ColumnSplit',
     'Counter',
     'Flex',
-    'FlowItem',
     'GridCol',
     'GridRow',
     'Grid',
@@ -88,9 +83,7 @@ export default function zIndexTest() {
     'Refresh',
     'RelativeContainer',
     'Row',
-    'RowSplit',
     'Scroll',
-    'SideBarContainer',
     'Stack',
     'Swiper',
     'Tabs',
@@ -102,8 +95,7 @@ export default function zIndexTest() {
     'Path',
     'Rect',
     'Shape',
-    'Line',
-    'WaterFlow'
+    'Line'
   ]
 
   //Custom params.

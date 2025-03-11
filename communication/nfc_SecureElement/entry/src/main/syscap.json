@@ -1,14 +1,12 @@
 {
     "devices": {
-        "general": [
-            "tablet",
-            "default",
-            "phone"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Communication.NFC.Core",
+                    "SystemCapability.Communication.NFC.Tag",
+                    "SystemCapability.Communication.NFC.CardEmulation"
                 ]
             }
         ]

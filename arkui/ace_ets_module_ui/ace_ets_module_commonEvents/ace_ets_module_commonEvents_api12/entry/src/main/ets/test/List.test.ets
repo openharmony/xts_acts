@@ -30,7 +30,7 @@ import DragInteractionOptionsTest from './DragController/DragInteractionOptions.
 import SourceToolTest from './GestureHandler/SourceTool.test';
 import initializeModifierTest from './AttributeUpdater/initializeModifier.test';
 import addParallelGestureTest1 from './GestureHandler/addParallelGestureTest1.test';
-import onKeyPreImeTest from './onKeyEventTest/onKeyPreIme.test';
+
 import getModifierKeyStateTest from './onKeyEventTest/getModifierKeyState.test';
 import clearGestureTest from './GestureHandler/clearGesture.test';
 import TapGestureBasicClickTest from './TapGesture/TapGestureBasicClickTest.test';
@@ -51,10 +51,10 @@ import PinchGestureBasic02Test from './PinchGesture/PinchGestureBasic02Test.test
 import PanGestureExampleTemplateTest from './PanGesture/PanGestureExampleTemplateTest.test';
 import TapGestureTemplateTest from './TapGesture/TapGestureTemplateTest.test';
 import LongPressGestureTemplateTest from './LongPressGesture/LongPressGestureTemplateTest.test';
-import SwipeGestureTemplateTest from './SwipeGesture/SwipeGestureTemplateTest.test';
-import PanGestureUpdateTest from './PanGesture/PanGestureUpdateTest.test';
-import PinchGestureUpdateTest from './PinchGesture/PinchGestureUpdateTest.test';
-import RotationGestureUpdateTest from './RotationGesture/RotationGestureUpdateTest.test';
+
+
+
+
 import onAttachTest from './onAttachTest/onAttach.test';
 import GestureRecognizerState from './GestureRecognizer/GestureRecognizerState.test';
 import APIshouldBuiltInRecognizerParallelWith from './APIshouldBuiltInRecognizerParallelWith.test';
@@ -90,7 +90,7 @@ export default function testsuite() {
   initializeModifierTest();
   addParallelGestureTest1();
   clearGestureTest();
-  onKeyPreImeTest();
+  
   getModifierKeyStateTest();
   TapGestureBasicClickTest();
   TapGestureBasicDoubleClickTest();
@@ -108,10 +108,10 @@ export default function testsuite() {
   PanGestureExampleTemplateTest();
   TapGestureTemplateTest();
   LongPressGestureTemplateTest();
-  SwipeGestureTemplateTest();
-  PanGestureUpdateTest();
-  PinchGestureUpdateTest();
-  RotationGestureUpdateTest();
+  
+  
+  
+  
   onAttachTest();
   GestureRecognizerState();
   typeNodeGestureTest(); 

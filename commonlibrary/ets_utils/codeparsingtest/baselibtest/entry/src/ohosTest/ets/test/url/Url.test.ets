@@ -1,5 +1,6 @@
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import Url from '@ohos.url';
+import { ArrayList } from '@kit.ArkTS';
 
 let str2 =
   '%21%21%22%22%23%23%24%24%25%25%27%27%28%28%29%29**%2B%2B%2C%2C--..%2F%2F%3A%3A%3B%3B%3C%3C%3D%3D%3E%3E%3F%3F%40%40%5B%5B%5C%5C%5D%5D%5E%5E__%60%60%7B%7B%7C%7C%7D%7D%7E%7E';
@@ -38,7 +39,7 @@ export default function urlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParamsEntries0001', 0, () => {
+    it('testParamsEntries0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsEntries0001";
       try {
         const params = new Url.URLParams("key1=value1&key2=value2");
@@ -62,7 +63,7 @@ export default function urlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParamsEntries0002', 0, () => {
+    it('testParamsEntries0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsEntries0002";
       try {
         const params = new Url.URLParams("");
@@ -86,7 +87,7 @@ export default function urlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParamsEntries0003', 0, () => {
+    it('testParamsEntries0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsEntries0003";
       try {
         const params = new Url.URLParams([["key1", "value1"], ["key2", "value2"]]);
@@ -111,7 +112,7 @@ export default function urlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParamsEntries0004', 0, () => {
+    it('testParamsEntries0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsEntries0004";
       try {
         const params = new Url.URLParams([]);
@@ -135,7 +136,7 @@ export default function urlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParamsEntries0005', 0, () => {
+    it('testParamsEntries0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsEntries0005";
       try {
         const params = new Url.URLParams({
@@ -162,7 +163,7 @@ export default function urlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParamsEntries0006', 0, () => {
+    it('testParamsEntries0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsEntries0006";
       try {
         const params = new Url.URLParams({});
@@ -186,7 +187,7 @@ export default function urlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParamsEntries0007', 0, () => {
+    it('testParamsEntries0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsEntries0007";
       try {
         const url = new Url.URL('http://username:password@host:8080/directory/file?foo=1&bar=2');
@@ -208,7 +209,7 @@ export default function urlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParamsEntries0008', 0, () => {
+    it('testParamsEntries0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsEntries0008";
       try {
         const url = new Url.URL('http://username:password@host:8080/directory/file');
@@ -230,7 +231,7 @@ export default function urlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParamsEntries0009', 0, () => {
+    it('testParamsEntries0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsEntries0009";
       try {
         const url = new Url.URL('http://username:password@host:8080/directory/file?foo=1&bar=2');
@@ -252,7 +253,7 @@ export default function urlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParamsEntries0010', 0, () => {
+    it('testParamsEntries0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsEntries0010";
       try {
         const url = new Url.URL('http://username:password@host:8080/directory/file');
@@ -271,9 +272,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams.append() to validate it correctly adds new key-value pairs.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParamsEntriesAppend0001', 0, () => {
+    it('testParamsEntriesAppend0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsEntriesAppend0001";
       try {
         const params = new Url.URLParams("key1=value1&key2=value2");
@@ -295,7 +296,7 @@ export default function urlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParamsEntriesAppend0002', 0, () => {
+    it('testParamsEntriesAppend0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsEntriesAppend0002";
       try {
         const params = new Url.URLParams("key1=value1&key2=value2");
@@ -314,9 +315,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams.append() to validate it correctly adds new key-value pairs.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParamsEntriesAppend0003', 0, () => {
+    it('testParamsEntriesAppend0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsEntriesAppend0003";
       try {
         const params = new Url.URLParams("key1=value1&key2=value2");
@@ -339,9 +340,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams.append() to validate adding a key with the same name and different values.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParamsEntriesAppend0004', 0, () => {
+    it('testParamsEntriesAppend0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsEntriesAppend0004";
       try {
         const params = new Url.URLParams("key1=value1&key2=value2");
@@ -360,9 +361,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams.append() to validate adding multiple keys with the same name.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParamsEntriesAppend0005', 0, () => {
+    it('testParamsEntriesAppend0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsEntriesAppend0005";
       try {
         const params = new Url.URLParams("key1=value1&key2=value2");
@@ -381,9 +382,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams.append() to validate key-value pairs with special characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParamsEntriesAppend0006', 0, () => {
+    it('testParamsEntriesAppend0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsEntriesAppend0006";
       try {
         const params = new Url.URLParams("key1=value1&key2=value2");
@@ -406,9 +407,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams.delete() to validate it correctly deletes key-value pairs.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParamsDelete0001', 0, () => {
+    it('testParamsDelete0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsDelete0001";
       try {
         const params = new Url.URLParams("key1=value1&key2=value2");
@@ -436,7 +437,7 @@ export default function urlTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testParamsDelete0002', 0, () => {
+    it('testParamsDelete0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsDelete0002";
       try {
         const params = new Url.URLParams("key1=value1&key2=value2");
@@ -455,9 +456,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams.delete() to validate it handles deleting keys with special characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParamsDelete0003', 0, () => {
+    it('testParamsDelete0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsDelete0003";
       try {
         const params = new Url.URLParams("key1=value1&key2=value2");
@@ -479,9 +480,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams.delete() to validate it correctly deletes all instances of a key.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParamsDelete0004', 0, () => {
+    it('testParamsDelete0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsDelete0004";
       try {
         const params = new Url.URLParams("key1=value1&key2=value2&key1=newValue1&key1=anotherValue1");
@@ -500,9 +501,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams.delete() to validate it correctly updates the URLParams object after deletion.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParamsDelete0005', 0, () => {
+    it('testParamsDelete0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsDelete0005";
       try {
         const params = new Url.URLParams("key1=value1&key2=value2&ma+%E5%A4%A7=jk%EF%BF%A5");
@@ -521,9 +522,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams.delete() to validate it correctly handles empty URLParams.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParamsDelete0006', 0, () => {
+    it('testParamsDelete0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParamsDelete0006";
       try {
         const params = new Url.URLParams("");
@@ -543,9 +544,9 @@ export default function urlTest() {
      *                  handling of empty parameters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParseAndIterateParams0001', 0, () => {
+    it('testParseAndIterateParams0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseAndIterateParams0001";
       try {
         let searchParamsObject = new Url.URLParams("");
@@ -564,9 +565,9 @@ export default function urlTest() {
      *                  ensure correct parsing and retrieval of all values.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParseAndIterateParams0002', 0, () => {
+    it('testParseAndIterateParams0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseAndIterateParams0002";
       try {
         let searchParamsObject = new Url.URLParams("a=1&cc=2&ac=3&b=4&a=1&cc=2&ac=3&b=4&a=1&cc=2&ac=3&b=4");
@@ -584,9 +585,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams parsing and iteration to ensure values are correctly appended and retrieved.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParseAndIterateParams0003', 0, () => {
+    it('testParseAndIterateParams0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseAndIterateParams0003";
       try {
         let searchParamsObject = new Url.URLParams("a=1&cc=2&ac=3&b=4");
@@ -616,9 +617,9 @@ export default function urlTest() {
      *                  handling of empty parameters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParseAndForeachParams0001', 0, () => {
+    it('testParseAndForeachParams0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseAndForeachParams0001";
       try {
         const myURLObject = Url.URL.parseURL('https://developer.exampleUrl/?');
@@ -640,9 +641,9 @@ export default function urlTest() {
      *                  ensure correct parsing and retrieval of all values.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParseAndForeachParams0002', 0, () => {
+    it('testParseAndForeachParams0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseAndForeachParams0002";
       try {
         const myURLObject =
@@ -669,9 +670,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams parsing and iteration to ensure values are correctly appended and retrieved.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParseAndForeachParams0003', 0, () => {
+    it('testParseAndForeachParams0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseAndForeachParams0003";
       try {
         const myURLObject = Url.URL.parseURL('https://developer.exampleUrl/?a=1&cc=2&ac=3&b=4');
@@ -698,9 +699,9 @@ export default function urlTest() {
      *                  handling of empty parameters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParseAndIterateParamsSymbol0001', 0, () => {
+    it('testParseAndIterateParamsSymbol0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseAndIterateParamsSymbol0001";
       try {
         const paramsObject = new Url.URLParams('');
@@ -720,9 +721,9 @@ export default function urlTest() {
      *                  sets of parameters correctly.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParseAndIterateParamsSymbol0002', 0, () => {
+    it('testParseAndIterateParamsSymbol0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseAndIterateParamsSymbol0002";
       try {
         const paramsObject = new Url.URLParams('a=1&cc=2&ac=3&b=4&a=1&cc=2&ac=3&b=4&a=1&cc=2&ac=3&b=4');
@@ -751,9 +752,9 @@ export default function urlTest() {
      *                  and retrieved.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testParseAndIterateParamsSymbol0003', 0, () => {
+    it('testParseAndIterateParamsSymbol0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseAndIterateParamsSymbol0003";
       try {
         const paramsObject = new Url.URLParams('a=1&cc=2&ac=3&b=4');
@@ -780,9 +781,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams getAll() method for key "" to ensure all values are correctly retrieved.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetAllValuesForKey0001', 0, () => {
+    it('testGetAllValuesForKey0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetAllValuesForKey0001";
       try {
         let searchParamsObject = new Url.URLParams("=1&=2&b=3&b=4&c=5");
@@ -804,9 +805,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams getAll() method for key "b" to ensure all values are correctly retrieved.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetAllValuesForKey0002', 0, () => {
+    it('testGetAllValuesForKey0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetAllValuesForKey0002";
       try {
         let searchParamsObject = new Url.URLParams("b=1&b=2&b=3&b=4&c=5");
@@ -828,9 +829,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams getAll() method for key "c" to ensure all values are correctly retrieved.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetAllValuesForKey0003', 0, () => {
+    it('testGetAllValuesForKey0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetAllValuesForKey0003";
       try {
         let searchParamsObject = new Url.URLParams("a=1&a=2&b=3&b=4&c=5");
@@ -853,9 +854,9 @@ export default function urlTest() {
      *                  is returned.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetAllValuesForKey0004', 0, () => {
+    it('testGetAllValuesForKey0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetAllValuesForKey0004";
       try {
         let searchParamsObject = new Url.URLParams("a=1&a=2&b=3&b=4&c=5");
@@ -875,9 +876,9 @@ export default function urlTest() {
      *                  "耄耋鍟毗粢ASGDDest1312%#^$%" to ensure all values are correctly retrieved.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetAllValuesForKey0005', 0, () => {
+    it('testGetAllValuesForKey0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetAllValuesForKey0005";
       try {
         let searchParamsObject = new Url.URLParams("耄耋鍟毗粢ASGDDest1312%#^$%=1&a=2&b=3&" +
@@ -900,9 +901,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams get() method for key "" to ensure the first value is correctly retrieved.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetValueForKey0001', 0, () => {
+    it('testGetValueForKey0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetValueForKey0001";
       try {
         let searchParamsObject = new Url.URLParams("=1&=2&b=3&b=4&c=5");
@@ -921,9 +922,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams get() method for key "b" to ensure the first value is correctly retrieved.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetValueForKey0002', 0, () => {
+    it('testGetValueForKey0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetValueForKey0002";
       try {
         let searchParamsObject = new Url.URLParams("b=1&b=2&b=3&b=4&c=5");
@@ -942,9 +943,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams get() method for key "c" to ensure the first value is correctly retrieved.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetValueForKey0003', 0, () => {
+    it('testGetValueForKey0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetValueForKey0003";
       try {
         let searchParamsObject = new Url.URLParams("a=1&a=2&b=3&b=4&c=5");
@@ -963,9 +964,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams get() method for a non-existing key "d" to ensure null is returned.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetValueForKey0004', 0, () => {
+    it('testGetValueForKey0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetValueForKey0004";
       try {
         let searchParamsObject = new Url.URLParams("a=1&a=2&b=3&b=4&c=5");
@@ -984,9 +985,9 @@ export default function urlTest() {
      *                  "耄耋鍟毗粢ASGDDest1312%#^$%" to ensure the first value is correctly retrieved.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetValueForKey0005', 0, () => {
+    it('testGetValueForKey0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetValueForKey0005";
       try {
         let searchParamsObject = new Url.URLParams("耄耋鍟毗粢ASGDDest1312%#^$%=1&a=2&b=3&" +
@@ -1007,9 +1008,9 @@ export default function urlTest() {
      *                  ensuring the method correctly retrieves the first value.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetValueForKey0006', 0, () => {
+    it('testGetValueForKey0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetValueForKey0006";
       try {
         interface KeyValue {
@@ -1069,9 +1070,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams has() method for key "" to ensure it correctly identifies existence.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testHasKey0001', 0, () => {
+    it('testHasKey0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHasKey0001";
       try {
         let searchParamsObject = new Url.URLParams("=1&=2&b=3&b=4&c=5");
@@ -1089,9 +1090,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams has() method for key "b" to ensure it correctly identifies existence.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testHasKey0002', 0, () => {
+    it('testHasKey0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHasKey0002";
       try {
         let searchParamsObject = new Url.URLParams("b=1&b=2&b=3&b=4&c=5");
@@ -1109,9 +1110,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams has() method for key "c" to ensure it correctly identifies existence.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testHasKey0003', 0, () => {
+    it('testHasKey0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHasKey0003";
       try {
         let searchParamsObject = new Url.URLParams("a=1&a=2&b=3&b=4&c=5");
@@ -1129,9 +1130,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams has() method for a non-existing key "d" to ensure it correctly identifies non-existence.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testHasKey0004', 0, () => {
+    it('testHasKey0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHasKey0004";
       try {
         let searchParamsObject = new Url.URLParams("a=1&a=2&b=3&b=4&c=5");
@@ -1150,9 +1151,9 @@ export default function urlTest() {
      *                  to ensure the method correctly identifies the existence of the key.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testHasKey0005', 0, () => {
+    it('testHasKey0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHasKey0005";
       try {
         interface KeyTestCase {
@@ -1186,9 +1187,9 @@ export default function urlTest() {
      *                  to ensure the method correctly identifies the non-existence of these keys.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testHasKey0006', 0, () => {
+    it('testHasKey0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testHasKey0006";
       try {
         interface KeyTestCase {
@@ -1228,9 +1229,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLSearchParams set() method with an empty name.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSetKeyAndValue0001', 0, () => {
+    it('testSetKeyAndValue0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetKeyAndValue0001";
       try {
         let searchParamsObject = new Url.URLParams("a=1&b=2");
@@ -1251,9 +1252,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLSearchParams set() method with an empty value.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSetKeyAndValue0002', 0, () => {
+    it('testSetKeyAndValue0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetKeyAndValue0002";
       try {
         let searchParamsObject = new Url.URLParams("a=1&b=2");
@@ -1274,9 +1275,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLSearchParams set() method with an empty name and empty value.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSetKeyAndValue0003', 0, () => {
+    it('testSetKeyAndValue0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetKeyAndValue0003";
       try {
         let searchParamsObject = new Url.URLParams("a=1&b=2");
@@ -1297,9 +1298,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLSearchParams set() method with multiple duplicate keys.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSetKeyAndValue0004', 0, () => {
+    it('testSetKeyAndValue0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetKeyAndValue0004";
       try {
         let paramsObject = new Url.URLParams('name=Jonathan&name=YH&name=DKH');
@@ -1318,9 +1319,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLSearchParams set() method with a single key.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSetKeyAndValue0005', 0, () => {
+    it('testSetKeyAndValue0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetKeyAndValue0005";
       try {
         let paramsObject = new Url.URLParams('name=Jonathan');
@@ -1339,9 +1340,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLSearchParams set() method with a non-existent key.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSetKeyAndValue0006', 0, () => {
+    it('testSetKeyAndValue0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetKeyAndValue0006";
       try {
         let paramsObject = new Url.URLParams('a=1&b=2');
@@ -1362,9 +1363,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLSearchParams set() method with a key containing special characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSetKeyAndValue0007', 0, () => {
+    it('testSetKeyAndValue0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetKeyAndValue0007";
       try {
         let paramsObject = new Url.URLParams('a=1&b=2');
@@ -1386,9 +1387,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLSearchParams set() method with encoded characters in key and value.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSetKeyAndValue0008', 0, () => {
+    it('testSetKeyAndValue0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetKeyAndValue0008";
       try {
         let paramsObject = new Url.URLParams('a=1&b=2');
@@ -1419,9 +1420,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams sort() method to ensure parameters are sorted correctly.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSort0001', 0, () => {
+    it('testSort0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSort0001";
       try {
         let paramsObject = new Url.URLParams('name=Jonathan&name=YH&name=DKH');
@@ -1451,9 +1452,9 @@ export default function urlTest() {
      *                  values are sorted by adding order correctly.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSort0002', 0, () => {
+    it('testSort0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSort0002";
       try {
         let paramsObject = new Url.URLParams('1=3&1=6');
@@ -1486,9 +1487,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams sort() method to ensure parameters with special characters are sorted correctly.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSort0003', 0, () => {
+    it('testSort0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSort0003";
       try {
         let paramsObject = new Url.URLParams('key@1=value1&key#2=value2');
@@ -1517,9 +1518,9 @@ export default function urlTest() {
      *                  in values are sorted correctly.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSort0004', 0, () => {
+    it('testSort0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSort0004";
       try {
         let paramsObject = new Url.URLParams('key1=value&key2=world!');
@@ -1547,9 +1548,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams keys() method with mixed string types: numbers and characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testKeysIterableIterator0001', 0, () => {
+    it('testKeysIterableIterator0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testKeysIterableIterator0001";
       try {
         let paramsObject = new Url.URLParams('1=value1&5=value2&a=value3');
@@ -1575,9 +1576,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams keys() method with keys containing special characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testKeysIterableIterator0002', 0, () => {
+    it('testKeysIterableIterator0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testKeysIterableIterator0002";
       try {
         let paramsObject = new Url.URLParams('key@1=value1&key#2=value2&key*3=value3');
@@ -1603,9 +1604,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams keys() method with add, query, delete, and query operations.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testKeysIterableIterator0003', 0, () => {
+    it('testKeysIterableIterator0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testKeysIterableIterator0003";
       try {
         let paramsObject = new Url.URLParams();
@@ -1634,9 +1635,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams values() method with mixed key formats (numbers and characters).
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testValuesIterableIterator0001', 0, () => {
+    it('testValuesIterableIterator0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testValuesIterableIterator0001";
       try {
         let paramsObject = new Url.URLParams('key1=1&key2=5&key3=a&key4=ad&key6=ab&key5=c');
@@ -1655,9 +1656,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams values() method with values containing special characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testValuesIterableIterator0002', 0, () => {
+    it('testValuesIterableIterator0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testValuesIterableIterator0002";
       try {
         let paramsObject = new Url.URLParams('key1=value@#1&key2=value*2&key3=value(3)');
@@ -1683,9 +1684,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams values() method with add, query, delete, and query operations.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testValuesIterableIterator0003', 0, () => {
+    it('testValuesIterableIterator0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testValuesIterableIterator0003";
       try {
         let paramsObject = new Url.URLParams();
@@ -1717,9 +1718,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLParams for handling special characters in query values.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSpecial0001', 0, () => {
+    it('testSpecial0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSpecial0001";
       try {
         let params1 = new Url.URLParams('fod=!!#%(())**++-..//::<<==>>??[');
@@ -1743,9 +1744,9 @@ export default function urlTest() {
      * @tc.desc       : Testing append for handling special characters in query values.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSpecial0002', 0, () => {
+    it('testSpecial0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSpecial0002";
       try {
         let params = new Url.URLParams('bard=2');
@@ -1768,9 +1769,9 @@ export default function urlTest() {
      * @tc.desc       : Testing getAll for handling multiple values with special characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSpecial0003', 0, () => {
+    it('testSpecial0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSpecial0003";
       try {
         let params = new Url.URLParams('bard=2');
@@ -1792,9 +1793,9 @@ export default function urlTest() {
      * @tc.desc       : Testing set for handling special characters in query values.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSpecial0004', 0, () => {
+    it('testSpecial0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSpecial0004";
       try {
         let params = new Url.URLParams('bard=2');
@@ -1824,9 +1825,9 @@ export default function urlTest() {
      * @tc.desc       : Testing values for handling multiple values with special characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSpecial0005', 0, () => {
+    it('testSpecial0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSpecial0005";
       try {
         let params = new Url.URLParams('bard=2');
@@ -1849,9 +1850,9 @@ export default function urlTest() {
      * @tc.desc       : Testing entries for handling keys and values with special characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSpecial0006', 0, () => {
+    it('testSpecial0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSpecial0006";
       try {
         let Params1 = new Url.URLParams('nan=po&fod=!!""##' +
@@ -1890,9 +1891,9 @@ export default function urlTest() {
      * @tc.desc       : Testing forEach for handling keys and values with special characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSpecial0007', 0, () => {
+    it('testSpecial0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSpecial0007";
       try {
         let params = new Url.URLParams('nan=po&fod=!!""##$$%' +
@@ -1917,9 +1918,9 @@ export default function urlTest() {
      * @tc.desc       : Testing parseURL for handling special characters in query parameters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSpecial0008', 0, () => {
+    it('testSpecial0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSpecial0008";
       try {
         let url = 'https://developer.mozilla.org/?fod=!!""##$$%%\'\'(())**++,,--..' +
@@ -1939,9 +1940,9 @@ export default function urlTest() {
      * @tc.desc       : Testing delete for handling keys with special characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSpecial0009', 0, () => {
+    it('testSpecial0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSpecial0009";
       try {
         let str1 = '!!""##$$%%\'\'(())**++,,--.' +
@@ -1978,9 +1979,9 @@ export default function urlTest() {
      * @tc.desc       : Testing getting values using keys with special characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSpecial0010', 0, () => {
+    it('testSpecial0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSpecial0010";
       try {
         let params1 = new Url.URLParams('key1=value1&!!""##$$%%=value');
@@ -2009,9 +2010,9 @@ export default function urlTest() {
      * @tc.desc       : Testing has method for checking existence of keys with special characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSpecial0011', 0, () => {
+    it('testSpecial0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSpecial0011";
       try {
         let str1 = '!!""##$$%%\'\'(())**  ,,--..//::;;<<>>??@@[[\\\\]]^^__``{{||}}~~';
@@ -2030,9 +2031,9 @@ export default function urlTest() {
      * @tc.desc       : Testing sort method for URL parameters with special characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSpecial0012', 0, () => {
+    it('testSpecial0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSpecial0012";
       try {
         let str1 = "%21%21%22%22%23%23%24%24%25%25%27%27%28%28%29%29**++%2C%2C--..%" +
@@ -2074,9 +2075,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLSearchParams for special characters extraction.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSpecial0013', 0, () => {
+    it('testSpecial0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSpecial0013";
       try {
         let str1 = '!!""##$$%%\'\'(())**  ,,--..//::;;<<==>>??@@[[\\\\]]^^__``{{||}}~~';
@@ -2116,9 +2117,9 @@ export default function urlTest() {
      * @tc.desc       : Testing URLSearchParams for additional special characters extraction.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSpecial0014', 0, () => {
+    it('testSpecial0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSpecial0014";
       try {
         let str1 = 'nan=po&fod=%21%21%22%22%23%23%24%24%25%25&=&%27%27%28%28%29' +
@@ -2148,6 +2149,60 @@ export default function urlTest() {
       }
     });
 
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_URLPARAMS_SYMBOL_1300
+     * @tc.name       : testSymbol0001
+     * @tc.desc       : Testing URLSearchParams for special characters extraction.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSymbol0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testSymbol0001";
+      try {
+        const paramsObject = new Url.URLParams('fod=bay&edg=bap');
+        let iter: Iterable<Object[]> = paramsObject[Symbol.iterator]();
+        let pairs = Array.from(iter);
+        let res1 = new ArrayList<string>();
+        for (let pair of pairs) {
+          res1.add(pair[0].toString());
+          res1.add(pair[1].toString());
+        }
+        expect(res1.length).assertEqual(4);
+        expect(res1.convertToArray().toString()).assertEqual("fod,bay,edg,bap");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
+
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_URLPARAMS_SYMBOL_1300
+     * @tc.name       : testSymbol0002
+     * @tc.desc       : Testing URLSearchParams for special characters extraction.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSymbol0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = "testSymbol0002";
+      try {
+        const paramsObject = new Url.URLSearchParams('fod=bay&edg=bap');
+        let iter: Iterable<Object[]> = paramsObject[Symbol.iterator]();
+        let pairs = Array.from(iter);
+        let res1 = new ArrayList<string>();
+        for (let pair of pairs) {
+          res1.add(pair[0].toString());
+          res1.add(pair[1].toString());
+        }
+        expect(res1.length).assertEqual(4);
+        expect(res1.convertToArray().toString()).assertEqual("fod,bay,edg,bap");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect().assertFail();
+      }
+    });
 
   })
 }

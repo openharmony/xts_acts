@@ -18,21 +18,19 @@ struct TextPickerTextStyleAnimation {
         .key('TextPickerAnimation')
         .disableTextStyleAnimation(this.textStyleAnimation)
         .defaultTextStyle({ minFontSize: this.minFontSize, maxFontSize: this.maxFontSize, overflow: this.overflow })
-        .margin({ bottom: 15 })
-
 
       Row() {
         Button("true")
-          .fontSize(12)
-          .height('8%')
+          .fontSize(10)
+          .height('5%')
           .key('TextStyleAnimation_TRUE')
           .onClick(() => {
             this.textStyleAnimation = true
           })
 
         Button("false")
-          .fontSize(12)
-          .height('8%')
+          .fontSize(10)
+          .height('5%')
           .key('TextStyleAnimation_FALSE')
           .onClick(() => {
             this.textStyleAnimation = false
@@ -41,16 +39,16 @@ struct TextPickerTextStyleAnimation {
 
       Row() {
         Button("undefined")
-          .fontSize(12)
-          .height('8%')
+          .fontSize(10)
+          .height('5%')
           .key('TextStyleAnimation_UNDEFINED')
           .onClick(() => {
             this.textStyleAnimation = undefined
           })
 
         Button("null")
-          .fontSize(12)
-          .height('8%')
+          .fontSize(10)
+          .height('5%')
           .key('TextStyleAnimation_NULL')
           .onClick(() => {
             this.textStyleAnimation = null

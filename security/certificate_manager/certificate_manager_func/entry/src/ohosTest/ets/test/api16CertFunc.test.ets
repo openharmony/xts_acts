@@ -16,7 +16,7 @@
 import certManager from '@ohos.security.certManager';
 import { BusinessError } from '@ohos.base';
 import buffer from '@ohos.buffer';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import * as signVerifyPromise from './utils/signAndVerify/signVerifyPromise';
 
 let caCert = new Uint8Array([0x30, 0x82, 0x04, 0x31, 0x30, 0x82, 0x03, 0x19, 0xa0, 0x03, 0x02, 0x01, 0x02, 0x02, 0x01, 0x00,
@@ -253,6 +253,176 @@ export default function api16CertFuncTestUnit() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
+
+    /**
+     * @tc.number Security_CertManager_InstallPrivateCertificate_Func_0010
+     * @tc.name Test installPrivateCertificate
+     * @tc.desc normal test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('Security_CertManager_InstallPrivateCertificate_Func_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      console.info('Security_CertManager_InstallPrivateCertificate_Func_0010 start');
+      let keyUri: string | undefined;
+      let pwd = '123456';
+      let alias = 'appCertAliasDemoEcc';
+      let level = certManager.AuthStorageLevel.EL1;
+
+      try {
+        let result: certManager.CMResult = await certManager.installPrivateCertificate(new Uint8Array(priEccCredData), pwd, alias, level);
+        console.info('Security_CertManager_InstallPrivateCertificate_Func_0010 installPrivateCertificate promise success! uri:' + JSON.stringify(result.uri))
+        keyUri = result.uri;
+      } catch (e) {
+        console.log("Security_CertManager_InstallPrivateCertificate_Func_0010: e.code " + e.code);
+      }
+
+      if (keyUri != undefined) {
+        await certManager.uninstallPrivateCertificate(keyUri);
+      } else {
+        console.error("Security_CertManager_InstallPrivateCertificate_Func_0010 keyUri is undefined!");
+        expect(null).assertFail();
+      }
+      console.log("Security_CertManager_InstallPrivateCertificate_Func_0010: success.");
+      done();
+    });
+
+    /**
+     * @tc.number Security_CertManager_InstallPrivateCertificate_Func_0011
+     * @tc.name Test installPrivateCertificate
+     * @tc.desc normal test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('Security_CertManager_InstallPrivateCertificate_Func_0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      console.info('Security_CertManager_InstallPrivateCertificate_Func_0011 start');
+      let keyUri: string | undefined;
+      let pwd = '123456';
+      let alias = 'appCertAliasDemoEcc';
+      let level = certManager.AuthStorageLevel.EL2;
+
+      try {
+        let result: certManager.CMResult = await certManager.installPrivateCertificate(new Uint8Array(priEccCredData), pwd, alias, level);
+        console.info('Security_CertManager_InstallPrivateCertificate_Func_0011 installPrivateCertificate promise success! uri:' + JSON.stringify(result.uri))
+        keyUri = result.uri;
+      } catch (e) {
+        console.log("Security_CertManager_InstallPrivateCertificate_Func_0011: e.code " + e.code);
+      }
+
+      if (keyUri != undefined) {
+        await certManager.uninstallPrivateCertificate(keyUri);
+      } else {
+        console.error("Security_CertManager_InstallPrivateCertificate_Func_0011 keyUri is undefined!");
+        expect(null).assertFail();
+      }
+      console.log("Security_CertManager_InstallPrivateCertificate_Func_0011: success.");
+      done();
+    });
+
+    /**
+     * @tc.number Security_CertManager_InstallPrivateCertificate_Func_0012
+     * @tc.name Test installPrivateCertificate
+     * @tc.desc normal test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level1
+     */
+    it('Security_CertManager_InstallPrivateCertificate_Func_0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      console.info('Security_CertManager_InstallPrivateCertificate_Func_0012 start');
+      let keyUri: string | undefined;
+      let pwd = '123456';
+      let alias = 'appCertAliasDemoEcc';
+      let level = certManager.AuthStorageLevel.EL4;
+
+      try {
+        let result: certManager.CMResult = await certManager.installPrivateCertificate(new Uint8Array(priEccCredData), pwd, alias, level);
+        console.info('Security_CertManager_InstallPrivateCertificate_Func_0012 installPrivateCertificate promise success! uri:' + JSON.stringify(result.uri))
+        keyUri = result.uri;
+      } catch (e) {
+        console.log("Security_CertManager_InstallPrivateCertificate_Func_0012: e.code " + e.code);
+      }
+
+      if (keyUri != undefined) {
+        await certManager.uninstallPrivateCertificate(keyUri);
+      } else {
+        console.error("Security_CertManager_InstallPrivateCertificate_Func_0012 keyUri is undefined!");
+        expect(null).assertFail();
+      }
+      console.log("Security_CertManager_InstallPrivateCertificate_Func_0012: success.");
+      done();
+    });
+
+    /**
+     * @tc.number Security_CertManager_InstallPrivateCertificate_Func_0013
+     * @tc.name Test installPrivateCertificate
+     * @tc.desc normal test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level2
+     */
+    it('Security_CertManager_InstallPrivateCertificate_Func_0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.info('Security_CertManager_InstallPrivateCertificate_Func_0013 start');
+      let keyUri: string | undefined;
+      let pwd = '123456';
+      let alias = 'appCertAliasDemoEcc';
+      let level = 666;
+
+      try {
+        let result: certManager.CMResult = await certManager.installPrivateCertificate(new Uint8Array(priEccCredData), pwd, alias, level);
+      } catch (e) {
+        console.log("Security_CertManager_InstallPrivateCertificate_Func_0013: e.code " + e.code);
+        expect(e.code).assertEqual(401);
+      }
+      console.log("Security_CertManager_InstallPrivateCertificate_Func_0013: success.");
+      done();
+    });
+
+    /**
+     * @tc.number Security_CertManager_InstallPrivateCertificate_Func_0014
+     * @tc.name Test installPrivateCertificate
+     * @tc.desc normal test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('Security_CertManager_InstallPrivateCertificate_Func_0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('Security_CertManager_InstallPrivateCertificate_Func_0014 start');
+      let keyUri: string | undefined;
+      let pwd = '123456';
+      let alias = 'appCertAliasDemoEcc';
+      let level = certManager.AuthStorageLevel.EL1;
+      try {
+        let result: certManager.CMResult = await certManager.installPrivateCertificate(new Uint8Array(priEccCredData), pwd, alias, level);
+        console.info('Security_CertManager_InstallPrivateCertificate_Func_0014 installPrivateCertificate promise success! uri:' + JSON.stringify(result.uri))
+        keyUri = result.uri;
+      } catch (e) {
+        console.log("Security_CertManager_InstallPrivateCertificate_Func_0014: e.code " + e.code);
+      }
+
+      const promise = await certManager.installPrivateCertificate(new Uint8Array(priEccCredData), pwd, alias, level)
+      Promise.allSettled([promise, promise, promise, promise, promise, promise, promise, promise, promise, promise]).then(results => {
+        console.log('Security_CertManager_InstallPrivateCertificate_Func_0014 results is ' + results);
+        results.forEach(result =>{
+          console.log('Security_CertManager_InstallPrivateCertificate_Func_0014 result.status is ' + result.status);
+          if (result.status === 'fulfilled') {
+            console.log('Security_CertManager_InstallPrivateCertificate_Func_0014 result.value is ' + result.value.uri);
+          } else {
+            console.log('Security_CertManager_InstallPrivateCertificate_Func_0014 result.reason is ' + result.reason);
+            expect(null).assertFail();
+          }
+        })
+      })
+
+      if (keyUri != undefined) {
+        await certManager.uninstallPrivateCertificate(keyUri);
+      } else {
+        console.error("Security_CertManager_InstallPrivateCertificate_Func_0014 keyUri is undefined!");
+        expect(null).assertFail();
+      }
+      console.log("Security_CertManager_InstallPrivateCertificate_Func_0014: success.");
+      done();
+    });
 
     /**
      * @tc.number SUB_Security_CertManager_GetCertificateStorePath_Func_0010

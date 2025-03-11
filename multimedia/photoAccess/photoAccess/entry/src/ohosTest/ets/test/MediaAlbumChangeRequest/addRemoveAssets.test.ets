@@ -94,5 +94,34 @@ export default function addRemoveAssetsChangeRequestTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_ADD_REMOVE_ASSETS_CHANGE_REQUEST_0200
+     * @tc.name      : add_remove_assets_change_request_002
+     * @tc.desc      : remove null assets, error code 401 or 13900020
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('add_remove_assets_change_request_002', 2, async (done: Function) => {
+      let testNum:string = 'add_remove_assets_change_request_002';
+      try {
+        let album:ESObject = await helper.createAlbum(testNum);
+        let albumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+        const asset:ESObject = null;
+        albumChangeRequest.removeAssets([asset]);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        if(error.code === `14000016`){
+          console.log(`${testNum} success; error: ${error}`);
+          expect(true).assertTrue();
+        } else {
+          console.log(`${testNum} success; error: ${error.code}`);
+          expect(error.code === '13900020' || error.code === '401').assertTrue();
+        }
+        done();
+      }
+    })
   })
 }

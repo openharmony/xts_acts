@@ -1858,6 +1858,7 @@ export default function audioManagerApi9() {
       let maxVolume = await audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA)
       let minVolume = await audioManager.getMinVolume(audio.AudioVolumeType.MEDIA)
       await audioManager.setVolume(audio.AudioVolumeType.MEDIA, maxVolume)
+      await sleep(50);
       audioVolumeManager.on('volumeChange', (VolumeEvent) => {
         console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100 VolumeEvent.volumeType: ${VolumeEvent.volumeType}, VolumeEvent.volume:${VolumeEvent.volume}, VolumeEvent.updateUi:${VolumeEvent.updateUi}`);
         expect(VolumeEvent.volumeType).assertEqual(audio.AudioVolumeType.MEDIA);

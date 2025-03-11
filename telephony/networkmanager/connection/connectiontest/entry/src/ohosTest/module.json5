@@ -19,12 +19,7 @@
     "type": "feature",
     "description": "$string:module_test_desc",
     "mainElement": "TestAbility",
-    "deviceTypes": [
-      "wearable",
-      "default",
-      "tablet",
-      "2in1"
-    ],
+    "deviceTypes": [],
     "requestPermissions": [
       {
         "name" :  "ohos.permission.INTERNET"

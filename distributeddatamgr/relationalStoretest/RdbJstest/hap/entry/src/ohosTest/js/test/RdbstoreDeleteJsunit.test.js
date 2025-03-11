@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -354,6 +354,184 @@ describe('rdbStoreDeleteTest', function () {
         done()
         console.info(TAG + '************* testRdbStoreDelete0006 end *************');
     })
-
+    /**
+     * @tc.name setDistributedTables success
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0700
+     * @tc.desc setDistributedTables success
+     */
+        it('dataRdbTest001', 0, async function (done) {
+            console.info(TAG + "************* dataRdbTest001 start *************");
+            try {
+                let u8 = new Uint8Array([1, 2, 3]);
+                const record = {
+                  "name": "Jim",
+                  "age": 30,
+                  'salary': 100.5,
+                  'blobType': u8,
+               }
+              rdbStore.setDistributedTables(['test'],async(err)=>{
+                console.info(TAG + "set test to be distributed table success");
+                await rdbStore.insert("test", record)
+                let predicates = new dataRdb.RdbPredicates("test");
+                predicates.equalTo("age", 30);
+                let resultSet = await rdbStore.query(predicates)
+                expect(1).assertEqual(resultSet.rowCount)
+                console.info(TAG + "query success,resultSet.rowCount is " + resultSet.rowCount)
+              })
+            } catch (err) {
+              console.info(TAG + "set test to be distributed table failed");
+              expect(null).assertFail();
+            }
+            done()
+            console.info(TAG + "************* dataRdbTest001 end *************");
+          })
+      
+          /**
+           * @tc.name update success
+           * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0800
+           * @tc.desc update success
+           */
+          it('dataRdbTest002', 0, async function (done) {
+            console.info(TAG + "************* dataRdbTest002 start *************");
+            let u8 = new Uint8Array([1, 2, 3]);
+            {
+            const record = {
+              "name": "Jim",
+              "age": 30,
+              'salary': 100.5,
+              'blobType': u8,
+            }
+            await rdbStore.insert("test", record)
+            }
+            let predicates = new dataRdb.RdbPredicates("test");
+            predicates.equalTo("age", 30);
+            let u9 = new Uint8Array([1, 2, 3])
+            const valueBucket = {
+              "name": "cathy",
+              "age": 18,
+              'salary': 100.5,
+              'blobType': u9,
+            }
+            rdbStore.update(valueBucket, predicates, async(err, rows) => {
+              if (err == null) {
+                console.info(TAG + "update one record success,rows is " + rows)
+                expect(1).assertEqual(rows)
+                done()
+              }
+              else{
+                console.log(TAG + "Updated failed ")
+                expect(null).assertFail();
+                done()
+              }
+            })
+            console.info(TAG + "************* dataRdbTest002 end *************");
+          })
+      
+          /**
+           * @tc.name query success
+           * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_0900
+           * @tc.desc query success
+           */
+          it('dataRdbTest003', 0, async function (done) {
+            console.info(TAG + "************* dataRdbTest003 start *************");
+            let u8 = new Uint8Array([1, 2, 3]);
+            {
+            const record = {
+              "name": "Jim",
+              "age": 30,
+              'salary': 100.5,
+              'blobType': u8,
+            }
+            await rdbStore.insert("test", record)
+            }
+            let predicates = new dataRdb.RdbPredicates("test");
+            predicates.equalTo("age", 30);
+            rdbStore.query(predicates,["ID", "NAME", "AGE"], async(err, resultSet) => {
+              if (err == null) {
+                console.info(TAG + "query one record success,resultSet.rowCount is " + resultSet.rowCount)
+                expect(1).assertEqual(resultSet.rowCount)
+                done()
+              }
+              else{
+                console.log(TAG + "query failed ")
+                expect(null).assertFail();
+                done()
+              }
+            })
+            console.info(TAG + "************* dataRdbTest003 end *************");
+          })
+          /**
+           * @tc.name querysql success
+           * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_1000
+           * @tc.desc querysql success
+           */
+          it('dataRdbTest004', 0, async function (done) {
+            console.info(TAG + "************* dataRdbTest004 start *************");
+            let u8 = new Uint8Array([1, 2, 3]);
+            {
+            const record = {
+              "name": "Jim",
+              "age": 30,
+              'salary': 100.5,
+              'blobType': u8,
+            }
+            await rdbStore.insert("test", record)
+            }
+            rdbStore.querySql("SELECT * FROM TEST  WHERE name = ?",["Jim"], async(err, resultSet) => {
+              if (err == null) {
+                console.info(TAG + "querysql success,resultSet.rowCount is " + resultSet.rowCount)
+                expect(1).assertEqual(resultSet.rowCount)
+                done()
+              }
+              else{
+                console.log(TAG + "querysql failed ")
+                expect(null).assertFail();
+                done()
+              }
+            })
+            console.info(TAG + "************* dataRdbTest004 end *************");
+          })
+      
+          /**
+           * @tc.name executesql success
+           * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_1100
+           * @tc.desc executesql success
+           */
+          it('dataRdbTest005', 0, async function (done) {
+            console.info(TAG + "************* dataRdbTest005 start *************");
+            let u8 = new Uint8Array([1, 2, 3]);
+            {
+            const record = {
+              "name": "Jim",
+              "age": 30,
+              'salary': 100.5,
+              'blobType': u8,
+            }
+            await rdbStore.insert("test", record)
+            }
+            rdbStore.executeSql("delete FROM TEST  WHERE name = ?",["Jim"], async(err) => {
+              if (err == null) {
+                console.info(TAG + "executesql success")
+              rdbStore.querySql("SELECT * FROM TEST  WHERE name = ?",["Jim"], async(err, resultSet) => {
+              if (err == null) {
+                console.info(TAG + "querysql success,resultSet.rowCount is " + resultSet.rowCount)
+                expect(0).assertEqual(resultSet.rowCount)
+                done()
+              }
+              else{
+                console.log(TAG + "querysql failed ")
+                expect(null).assertFail();
+                done()
+              }
+            })
+            }
+            else{
+                console.log(TAG + "executesql failed ")
+                expect(null).assertFail();
+                done()
+            }
+            })
+            console.info(TAG + "************* dataRdbTest005 end *************");
+          })
     console.info(TAG + '*************Unit Test End*************');
 })}

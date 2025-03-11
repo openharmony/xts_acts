@@ -68,7 +68,9 @@ async function permissionClick() {
    //AudioRenderCapturerInterruptUnitTest()
    //AudioVoiceMessageCapturer()
    //AudioCapturerInterruptUnitTest()()
-   AudioPlaybackCapturer();
+   if (canIUse("SystemCapability.Multimedia.Audio.PlaybackCapture")) {
+     AudioPlaybackCapturer();
+   }
  }
 
 

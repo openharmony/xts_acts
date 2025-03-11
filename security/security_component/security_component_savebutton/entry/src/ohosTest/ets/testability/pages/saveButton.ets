@@ -46,6 +46,7 @@ struct saveButton {
   @State clipSet: boolean = false
   @State columnWidth: string = '100%'
   @State columnHeight: string = '100%'
+  @State sbAlign: Alignment = Alignment.Center
   @State maxFontSize: number | undefined = undefined
   @State minFontSize: number | undefined = undefined
   @State maxFontScale: number | undefined = undefined
@@ -143,6 +144,9 @@ struct saveButton {
       if (eventData.data.columnHeight != null) {
         this.columnHeight = eventData.data.columnHeight;
       }
+      if (eventData.data.columnHeight != null) {
+        this.sbAlign = eventData.data.align;
+      }
     }
   }
 
@@ -200,6 +204,7 @@ struct saveButton {
             .borderRadius(this.borderRad)
             .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
             .textIconSpace(this.middle)
+            .align(this.sbAlign)
             .maxLines(this.maxLines)
             .maxFontSize(this.maxFontSize)
             .minFontSize(this.minFontSize)
@@ -209,7 +214,7 @@ struct saveButton {
             .enabled(this.enable)
             .alignRules(this.alignRule)
             .chainMode(this.chainDirection, this.chainStyle)
-            .key("keySave")
+            .id("keySave")
         }.width(100)
       }.width('100%').alignItems(HorizontalAlign.Center)
     }.height('100%')

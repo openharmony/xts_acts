@@ -1598,8 +1598,14 @@ export class KeyboardController {
       }
       inputMethodAbility.createPanel(this.mContext, panelInfo).then(async(inputPanel: inputMethodEngine.Panel) => {
         if(inputPanel){
-          await inputPanel.resize(500, 100);
-          await inputPanel.moveTo(0, 500);
+          let wid  = Math.floor(this.display_info.width * 0.4);
+          let hei = Math.floor(this.display_info.height * 0.5);
+          console.info(TAG + `====>Sub_InputMethod_IME_Dragging_0900 wid: ${wid},hei: ${hei}`);
+          await inputPanel.resize(wid, hei);
+          let wid_  = Math.floor(this.display_info.width * 0.3);
+          let hei_ = Math.floor(this.display_info.height * 0.4);
+          console.info(TAG + `====>Sub_InputMethod_IME_Dragging_0900 wid_: ${wid_},hei_: ${hei_}`);
+          await inputPanel.moveTo(wid_, hei_);
           console.info(TAG + '====>Sub_InputMethod_IME_Dragging_0900 creat panel success!');
           let displayId = await inputPanel.getDisplayId();
           console.info(TAG + '====>Sub_InputMethod_IME_Dragging_0900 getDisplayId success!');
@@ -2219,8 +2225,8 @@ export class KeyboardController {
     };
     try{
       let enhancedPanelRect: inputMethodEngine.EnhancedPanelRect = {
-        landscapeRect: { left: 0, top: 500, width: 400, height: 300},
-        portraitRect: { left: 0, top: 1500, width: 300, height: 2100},
+        landscapeRect: { left: 0, top: 500, width: 400, height: this.display_info.width},
+        portraitRect: { left: 0, top: 1500, width: 300, height: this.display_info.height},
         landscapeAvoidY: 20,
         landscapeInputRegion:[{ left: 0, top: 500, width: this.display_info.height, height: 600},{ left: 0, top: 247, width: this.display_info.height, height: 150}],
         portraitAvoidY: 20,

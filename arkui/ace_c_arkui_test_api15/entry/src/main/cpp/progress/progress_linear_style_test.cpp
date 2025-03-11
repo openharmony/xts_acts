@@ -81,6 +81,30 @@ static ArkUI_NodeHandle CreateChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI1)
     ArkUI_AttributeItem progress1 = {.string = "progress1"};
     nodeAPI1->setAttribute(rootNodeProgress1, NODE_ID, &progress1);
 
+    auto rootNodeProgress2 = nodeAPI1->createNode(ARKUI_NODE_PROGRESS);
+    ArkUI_NumberValue value6[] = {300.0f};
+    ArkUI_AttributeItem item6 = {value6, sizeof(value6) / sizeof(ArkUI_NumberValue)};
+    nodeAPI1->setAttribute(rootNodeProgress2, NODE_WIDTH, &item6);
+    value6[0].f32 = 100.0f;
+    nodeAPI1->setAttribute(rootNodeProgress2, NODE_HEIGHT, &item6);
+    ArkUI_NumberValue value7[] = {{.f32 = 50.0f}};
+    ArkUI_AttributeItem item7 = {value7, sizeof(value7) / sizeof(ArkUI_NumberValue), nullptr, nullptr};
+    nodeAPI1->setAttribute(rootNodeProgress2, NODE_PROGRESS_VALUE, &item7);
+    nodeAPI1->addChild(column, rootNodeProgress2);
+    bool boolSmoothEffectEnabled =
+        OH_ArkUI_ProgressLinearStyleOption_GetSmoothEffectEnabled(linearStyleOption) ? false : true;
+    bool boolScanEffectEnabled =
+        OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(linearStyleOption) ? false : true;
+    float floatStrokeWidth = OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(linearStyleOption) + 10.0f;
+    float floatStrokeRadius = OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(linearStyleOption) + 10.0f;
+    OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled(linearStyleOption, boolScanEffectEnabled);
+    OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled(linearStyleOption, boolSmoothEffectEnabled);
+    OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth(linearStyleOption, floatStrokeWidth);
+    OH_ArkUI_ProgressLinearStyleOption_SetStrokeRadius(linearStyleOption, floatStrokeRadius);
+    nodeAPI1->setAttribute(rootNodeProgress2, NODE_PROGRESS_LINEAR_STYLE, &linearStyleItem);
+    ArkUI_AttributeItem progress2 = {.string = "progress2"};
+    nodeAPI1->setAttribute(rootNodeProgress2, NODE_ID, &progress2);
+
     return column;
 }
 
@@ -123,3 +147,4 @@ napi_value ProgressLinearStyleTest::ProgressLinearStyleTest001(napi_env env, nap
 }
 
 } // namespace ArkUICapiTest
+ 

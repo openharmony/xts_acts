@@ -88,6 +88,8 @@ export default function saveComponentTest() {
       expect(obj.$attrs.padding.top).assertEqual('4.00vp');
       expect(obj.$attrs.padding.bottom).assertEqual('4.00vp');
       expect(obj.$attrs.textIconSpace).assertEqual('4.00vp');
+      expect(obj.$attrs.align).assertEqual('Alignment.Center');
+      expect(obj.$attrs.id).assertEqual('keySave');
       await Utils.sleep(1000);
       try {
         let clickCallback = async (clickData:events_emitter.EventData) => {
@@ -2345,7 +2347,7 @@ export default function saveComponentTest() {
     });
 
     /**
-     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Save_2200
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Save_2300
      * @tc.name Test_Security_Button_Save_2300
      * @tc.desc Test SecurityComponent attr "enbale, max/minFontsize, max/minFontScale, heightAdaptivePolicy, maxLines,
      * alignRules(AlignRuleOption), chainMode" and result in Authorization is passed
@@ -2459,8 +2461,8 @@ export default function saveComponentTest() {
     });
 
     /**
-     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Save_2200
-     * @tc.name Test_Security_Button_Save_2300
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_Save_2400
+     * @tc.name Test_Security_Button_Save_2400
      * @tc.desc Test SecurityComponent attr "alignRules(LocalizedAlignRuleOptions)" and result in Authorization is passed
      * @tc.size MEDIUM
      * @tc.type Function
@@ -2468,7 +2470,7 @@ export default function saveComponentTest() {
      * @tc.require
      */
     it('Test_Security_Button_Save_2400', 0, async (done:Function) => {
-      console.info('====>[Test_Security_Button_Save_2300] START====');
+      console.info('====>[Test_Security_Button_Save_2400] START====');
       await Utils.sleep(1000);
       try {
         let eventData:events_emitter.EventData = {

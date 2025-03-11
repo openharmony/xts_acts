@@ -23,7 +23,7 @@ import hdrCapability from '@ohos.graphics.hdrCapability';
 import display from '@ohos.display';
 
 export default function imagePixelMapFramework() {
-    describe('imagePixelMapFramework', function () {
+    describe('imagePixelMapFramework', async function () {
         let globalpixelmap;
         let globalImagesource;
         let globalreceiver;
@@ -37,8 +37,21 @@ export default function imagePixelMapFramework() {
         const CONVERTPIXELFOMAT_ERRORCODE = 62980115;
         let context;
         let filesDir;
+        let isSupportHdr = false;
         beforeAll(async function () {
             console.info('beforeAll case');
+            isSupportHdr = await fs.access('/system/lib64/ndk/libvideo_processing_capi_impl.so').then((res) => {
+                if (res) {
+                  console.info("file exists");
+                  return true;
+                } else {
+                  console.info("file not exists");
+                  return false;
+                }
+              }).catch((err) => {
+                console.error("access failed with error message: " + err.message + ", error code: " + err.code);
+                return false;
+            });
             context = await featureAbility.getContext();
             filesDir = await context.getFilesDir();
         })
@@ -668,11 +681,6 @@ export default function imagePixelMapFramework() {
                 expect(error.code == CONVERTPIXELFOMAT_ERRORCODE).assertTrue();
                 done();
             }
-        }
-
-        const isSupportHdr = () => {
-            return !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
-              display.getDefaultDisplaySync().hdrFormats.length != 0
         }
 
         /**
@@ -2256,7 +2264,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0100', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0100')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2282,7 +2290,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0200', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0200')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2308,7 +2316,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0300', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0300')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2334,7 +2342,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0400', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0400')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2360,7 +2368,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0500', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0500')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2386,7 +2394,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0600', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0600')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2412,7 +2420,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0700', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0700')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2438,7 +2446,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0800', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0800')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2464,7 +2472,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0900', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_0900')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2490,7 +2498,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1000', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1000')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2516,7 +2524,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1100', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1100')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2542,7 +2550,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1200', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1200')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2568,7 +2576,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1300', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1300')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2594,7 +2602,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1400', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1400')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2620,7 +2628,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1500', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1500')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2646,7 +2654,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1600', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1600')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2672,7 +2680,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1700', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1700')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2698,7 +2706,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1800', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1800')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2724,7 +2732,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1900', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1900')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2750,7 +2758,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2000', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2000')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2776,7 +2784,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2100', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2100')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2802,7 +2810,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2200', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2200')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2828,7 +2836,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2300', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2300')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2854,7 +2862,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2400', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2400')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2880,7 +2888,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2500', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2500')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2906,7 +2914,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2600', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2600')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2932,7 +2940,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2700', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2700')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2958,7 +2966,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2800', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2800')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -2984,7 +2992,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0100', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0100')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -3009,7 +3017,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0200', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0200')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -3034,7 +3042,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0300', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0300')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -3059,7 +3067,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0400', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0400')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -3084,7 +3092,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0500', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0500')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -3109,7 +3117,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0600', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0600')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -3134,7 +3142,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0700', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0700')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -3159,7 +3167,7 @@ export default function imagePixelMapFramework() {
          */
          it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0800', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0800')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -3184,7 +3192,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0900', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_0900')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();
@@ -3209,7 +3217,7 @@ export default function imagePixelMapFramework() {
          */
         it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1000', 0, async function (done) {
             let logger = loger('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1000')
-            if (!isSupportHdr()) {
+            if (!isSupportHdr) {
                 logger.log('device is not support hdr');
                 expect(true).assertTrue();
                 done();

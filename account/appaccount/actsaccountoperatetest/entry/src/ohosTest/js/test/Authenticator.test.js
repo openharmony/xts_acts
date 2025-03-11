@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -857,22 +857,32 @@ export default function ActsAccountAppAccess() {
         */
         it('ActsAccountCreateAccountImplicitly_0100', 0, async function (done) {
             console.info("====>ActsAccountCreateAccountImplicitly_0100 start====");
-            var appAccountManager = account.createAppAccountManager();
-            var options = {authType: "PIN", requiredLabels:['male', '30-40'], parameters: ['sex', 'age']}
-            console.info("====>start finish====");
-            appAccountManager.createAccountImplicitly("com.acts.accountauthenticator", options, {
-                onResult: async (resultCode, resultData)=>{
-                    console.info("====>ActsAccountCreateAccountImplicitly_0100 resultcode:" + JSON.stringify(resultCode));
-                    expect(resultCode).assertEqual(0)
-                    console.info("====>ActsAccountCreateAccountImplicitly_0100 resultData:" + JSON.stringify(resultData));
-                    expect(resultData.account.name).assertEqual("createNewAccountName") 
-                    expect(resultData.account.owner).assertEqual("com.acts.accountauthenticator")
-                    done();
-                    },
-                onRequestRedirected:null,
-                onRequestContinued: function(){ 
-                    console.info("====>ActsAccountCreateAccountImplicitly_0100 onRequestContinued")
-                    }
+            let appAccountManager = account.createAppAccountManager();
+            let setOptions = {
+                properties : { prop1 : "remove", prop2 : "createNewAccountName"}
+            };
+            let options = {authType: "PIN", requiredLabels:['male', '30-40'], parameters: ['sex', 'age']}
+            console.info("====>start setAuthenticatorProperties");
+            appAccountManager.setAuthenticatorProperties(owner, setOptions, {
+                onResult: async (resultCode, resultData) => {
+                    console.info("====>resultcode:" + JSON.stringify(resultCode));
+                    console.info("====>start createAccountImplicitly");
+                    appAccountManager.createAccountImplicitly("com.acts.accountauthenticator", options, {
+                        onResult: async (resultCode, resultData)=>{
+                            console.info("====>ActsAccountCreateAccountImplicitly_0100 resultcode:" + JSON.stringify(resultCode));
+                            expect(resultCode).assertEqual(0)
+                            console.info("====>ActsAccountCreateAccountImplicitly_0100 resultData:" + JSON.stringify(resultData));
+                            expect(resultData.account.name).assertEqual("createNewAccountName")
+                            expect(resultData.account.owner).assertEqual("com.acts.accountauthenticator")
+                            done();
+                        },
+                        onRequestRedirected:null,
+                        onRequestContinued: function(){
+                            console.info("====>ActsAccountCreateAccountImplicitly_0100 onRequestContinued")
+                        }
+                    });
+                },
+                onRequestRedirected: null,
             });
         });
 
@@ -887,20 +897,30 @@ export default function ActsAccountAppAccess() {
         it('ActsAccountCreateAccountImplicitly_0200', 0, async function (done) {
             console.info("====>ActsAccountCreateAccountImplicitly_0100 start====");
             var appAccountManager = account.createAppAccountManager();
-            console.info("====>start finish====");
-            appAccountManager.createAccountImplicitly("com.acts.accountauthenticator", {
-                onResult: async (resultCode, resultData)=>{
-                    console.info("====>ActsAccountCreateAccountImplicitly_0200 resultcode:" + JSON.stringify(resultCode));
-                    expect(resultCode).assertEqual(0)
-                    console.info("====>ActsAccountCreateAccountImplicitly_0200 resultData:" + JSON.stringify(resultData));
-                    expect(resultData.account.name).assertEqual("createNewAccountName") 
-                    expect(resultData.account.owner).assertEqual("com.acts.accountauthenticator")
-                    done();
-                    },
-                onRequestRedirected:null,
-                onRequestContinued: function(){ 
-                    console.info("====>ActsAccountCreateAccountImplicitly_0200 onRequestContinued")
-                    }
+            let setOptions = {
+                properties : { prop1 : "remove", prop2 : "createNewAccountName"}
+            };
+            console.info("====>start setAuthenticatorProperties");
+            appAccountManager.setAuthenticatorProperties(owner, setOptions, {
+                onResult: async (resultCode, resultData) => {
+                    console.info("====>resultcode:" + JSON.stringify(resultCode));
+                    console.info("====>start createAccountImplicitly");
+                    appAccountManager.createAccountImplicitly("com.acts.accountauthenticator", {
+                        onResult: async (resultCode, resultData)=>{
+                            console.info("====>ActsAccountCreateAccountImplicitly_0200 resultcode:" + JSON.stringify(resultCode));
+                            expect(resultCode).assertEqual(0)
+                            console.info("====>ActsAccountCreateAccountImplicitly_0200 resultData:" + JSON.stringify(resultData));
+                            expect(resultData.account.name).assertEqual("createNewAccountName")
+                            expect(resultData.account.owner).assertEqual("com.acts.accountauthenticator")
+                            done();
+                        },
+                        onRequestRedirected:null,
+                        onRequestContinued: function(){
+                            console.info("====>ActsAccountCreateAccountImplicitly_0200 onRequestContinued")
+                        }
+                    });
+                },
+                onRequestRedirected: null,
             });
         });
     })

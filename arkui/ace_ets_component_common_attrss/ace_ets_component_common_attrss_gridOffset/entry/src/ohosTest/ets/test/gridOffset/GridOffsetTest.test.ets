@@ -62,10 +62,7 @@ export default function gridOffsetTest() {
     'Rating',
     'ScrollBar',
     'Search',
-    'Select',
     'Slider',
-    'Stepper',
-    'StepperItem',
     'Text',
     'TextArea',
     'TextClock',
@@ -76,10 +73,8 @@ export default function gridOffsetTest() {
     'Toggle',
     'Badge',
     'Column',
-    'ColumnSplit',
     'Counter',
     'Flex',
-    'FlowItem',
     'GridCol',
     'GridRow',
     'Grid',
@@ -92,9 +87,7 @@ export default function gridOffsetTest() {
     'Refresh',
     'RelativeContainer',
     'Row',
-    'RowSplit',
     'Scroll',
-    'SideBarContainer',
     'Stack',
     'Swiper',
     'Tabs',
@@ -106,8 +99,7 @@ export default function gridOffsetTest() {
     'Path',
     'Rect',
     'Shape',
-    'Line',
-    'WaterFlow'
+    'Line'
   ]
 
   //Custom params.

@@ -82,11 +82,11 @@ struct OnWindowNew {
                       length = origins.length;
                       console.log(`length is: ${length}`);
 
-                       for (let i = 0; i < origins.length; i++) {
-                                        console.log('origin: ' + origins[i].origin);
-                                        console.log('usage: ' + origins[i].usage);
-                                        console.log('quota: ' + origins[i].quota);
-                                      }
+                      for (let i = 0; i < origins.length; i++) {
+                        console.log('origin: ' + origins[i].origin);
+                        console.log('usage: ' + origins[i].usage);
+                        console.log('quota: ' + origins[i].quota);
+                      }
 
 
                       Utils.emitEventTwo(1, length, 7166);

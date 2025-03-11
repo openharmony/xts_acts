@@ -26,6 +26,7 @@ import AVPlayerAmr from './AVPlayerAmrTest.test'
 import AVPlayerMediaSource from './AVPlayerMediaSource.test'
 import AVPlayerSelectTrackTest from './AVPlayerSelectTrackTest.test'
 import AVPlayerFlvFuncTest from './AVPlayerFlvFuncTest.test'
+import AVPlayerPostProcessorTest from './AVPlayerPostProcessorTest.test'
 
 export default function testsuite() {
   // AVPlayerHlsFuncTest()
@@ -42,4 +43,5 @@ export default function testsuite() {
   AVPlayerMediaSource();
   AVPlayerSelectTrackTest();
   AVPlayerFlvFuncTest();
+  AVPlayerPostProcessorTest();
 }

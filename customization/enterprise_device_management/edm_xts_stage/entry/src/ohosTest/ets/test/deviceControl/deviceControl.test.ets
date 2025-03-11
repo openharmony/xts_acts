@@ -20,6 +20,7 @@ import adminManager from '@ohos.enterprise.adminManager';
 import deviceControl from '@ohos.enterprise.deviceControl';
 
 const LOCK_SCREEN: string = "lockScreen";
+const OPERATE_DEVICE: string = "operateDevice";
 
 export default function deviceControlTest() {
   describe('deviceControl_test', () => {
@@ -82,6 +83,87 @@ function testOperateDevice() {
       expect(true).assertTrue();
     } catch (error) {
       expect(false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_OPERATE_DEVICE_JS_0004
+   * @tc.name      : test_operate_device_0004
+   * @tc.desc      : test deviceControl operateDevice with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_operate_device_0004", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      deviceControl.operateDevice(null, LOCK_SCREEN);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_OPERATE_DEVICE_JS_0005
+   * @tc.name      : test_operate_device_0005
+   * @tc.desc      : test deviceControl operateDevice without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_operate_device_0005", 0, async (done: Function) => {
+    try {
+      deviceControl.operateDevice(SELFWANT, LOCK_SCREEN, OPERATE_DEVICE);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_OPERATE_DEVICE_JS_0006
+   * @tc.name      : test_operate_device_0006
+   * @tc.desc      : test deviceControl operateDevice with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_operate_device_0006", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      deviceControl.operateDevice(SELFWANT, LOCK_SCREEN, OPERATE_DEVICE);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_OPERATE_DEVICE_JS_0007
+   * @tc.name      : test_operate_device_0007
+   * @tc.desc      : test deviceControl operateDevice with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_operate_device_0007", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      deviceControl.operateDevice(null, LOCK_SCREEN, OPERATE_DEVICE);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }

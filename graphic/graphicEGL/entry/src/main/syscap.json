@@ -1,15 +1,11 @@
 {
     "devices": {
-        "general": [
-            "wearable",
-            "default",
-            "tablet",
-            "2in1"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.WindowManager.WindowManager.Core",
+                    "SystemCapability.Window.SessionManager"
                 ]
             }
         ]

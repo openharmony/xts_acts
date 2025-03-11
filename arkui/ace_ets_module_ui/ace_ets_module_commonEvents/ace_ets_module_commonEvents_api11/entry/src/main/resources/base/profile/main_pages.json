@@ -6,7 +6,7 @@
         "MainAbility/pages/onAppear/appear",
         "MainAbility/pages/keyboardShortcut/ShortcutKey",
         "MainAbility/pages/onAppear/aboutToAppear",
-        "MainAbility/pages/onChildTouchTest/parentX",
+        
         "MainAbility/pages/onGestureJudgeBegin/onGesture",
         "MainAbility/pages/DragController/createDragAction",
         "MainAbility/pages/DragController/setForegroundColor",

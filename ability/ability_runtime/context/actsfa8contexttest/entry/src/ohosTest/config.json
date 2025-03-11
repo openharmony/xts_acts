@@ -12,11 +12,7 @@
     "package": "com.example.entry",
     "name": ".entry_test",
     "mainAbility": ".TestAbility",
-    "deviceType": [
-      "wearable",
-      "default",
-      "tablet"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry_test",

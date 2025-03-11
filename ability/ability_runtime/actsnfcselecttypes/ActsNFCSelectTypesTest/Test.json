@@ -33,6 +33,15 @@
                 "power-shell setmode 602",
                 "uinput -T -m 300 2700 280 200"
             ]
-        }
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "setenforce 0"
+            ],
+            "teardown-command": [
+                "setenforce 1"
+            ]
+          }
     ]
 }

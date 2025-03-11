@@ -448,12 +448,14 @@ export default function requestDownloadTwoUnitTest() {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: 'https://gitee.com/xxxxxxx/download/v1.0/test.apk',
+        headers: {"Content-Type": "application/json"},
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_Misc_REQUEST_On_Download_Failed_0030.txt',
         network: request.agent.Network.WIFI,
         overwrite: true,
-        mode:request.agent.Mode.FOREGROUND
+        mode:request.agent.Mode.FOREGROUND,
+        extras: {}
       };
 
       try {
@@ -671,6 +673,52 @@ export default function requestDownloadTwoUnitTest() {
         await task.start();
       }catch(err){
         console.info('====>SUB_Misc_REQUEST_Search_Promise_0070 create throw_err:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      };
+    });
+
+    /**
+     * @tc.number    SUB_Misc_REQUEST_Search_Promise_0071
+     * @tc.name    SUB_Misc_REQUEST_Search_Promise_0071
+     * @tc.desc      search the download task.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_Search_Promise_0071', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Misc_REQUEST_Search_Promise_0071 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        saveas: './SUB_Misc_REQUEST_Search_Promise_0071.txt',
+        network: request.agent.Network.WIFI,
+        overwrite: true,
+        mode:request.agent.Mode.FOREGROUND,
+      };
+      let task:request.agent.Task;
+      let onCompletedCallback = async (progress: request.agent.Progress) =>{
+        try {
+          task.off('completed', onCompletedCallback);
+          console.info('====>SUB_Misc_REQUEST_Search_Promise_0071 onCompletedCallback start');
+          let data:Array<string> = await request.agent.search();
+          let ifIncludes = data.includes(task.tid);
+          console.info(`${task.tid} ${ifIncludes} Succeeded in searching a download task. data: ${data}`);
+          expect(ifIncludes).assertEqual(true);
+          done();
+        }catch (err) {
+          console.info('====>SUB_Misc_REQUEST_Search_Promise_0071 tid not includes: ' + JSON.stringify(err));
+          done();
+        }
+      };
+
+      try {
+        task = await request.agent.create(baseContext, config);
+        task.on('completed', onCompletedCallback);
+        await task.start();
+      }catch(err){
+        console.info('====>SUB_Misc_REQUEST_Search_Promise_0071 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1021,6 +1069,110 @@ export default function requestDownloadTwoUnitTest() {
     });
 
     /**
+     * @tc.number    SUB_Misc_REQUEST_ShowErrorCode_Callback_0010
+     * @tc.name    SUB_Misc_REQUEST_ShowErrorCode_Callback_0010
+     * @tc.desc      show the download task.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_ShowErrorCode_Callback_0010',0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Misc_REQUEST_ShowErrorCode_Callback_0010 is starting-----------------------");
+      try {
+        request.agent.show(undefined, (err, taskInfo)=>{
+          try{
+            if(err){
+              console.info('====>SUB_Misc_REQUEST_ShowErrorCode_Callback_0010 err:' + JSON.stringify(err));
+              expect().assertFail();
+            }
+          }catch(err){
+            console.info('====>SUB_Misc_REQUEST_ShowErrorCode_Callback_0010 show throw_err:' + JSON.stringify(err));
+            done();
+          };
+        });
+      }catch (err) {
+        console.info('====>SUB_Misc_REQUEST_ShowErrorCode_Callback_0010 catch err:' + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    SUB_Misc_REQUEST_ShowErrorCode_Promise_0010
+     * @tc.name    SUB_Misc_REQUEST_ShowErrorCode_Promise_0010
+     * @tc.desc      show the download task.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_ShowErrorCode_Promise_0010',0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Misc_REQUEST_ShowErrorCode_Promise_0010 is starting-----------------------");
+      try {
+        await request.agent.show(undefined);
+        console.info("====>SUB_Misc_REQUEST_ShowErrorCode_Promise_0010 show success");
+        expect().assertFail();
+      }catch (err) {
+        console.info('====>SUB_Misc_REQUEST_ShowErrorCode_Promise_0010 catch err:' + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    SUB_Misc_REQUEST_ShowErrorCode_Callback_0020
+     * @tc.name    SUB_Misc_REQUEST_ShowErrorCode_Callback_0020
+     * @tc.desc      show the download task.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_ShowErrorCode_Callback_0020',0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Misc_REQUEST_ShowErrorCode_Callback_0020 is starting-----------------------");
+      try {
+        request.agent.show("undefined", (err, taskInfo)=>{
+          try{
+            if(err){
+              console.info('====>SUB_Misc_REQUEST_ShowErrorCode_Callback_0020 err:' + JSON.stringify(err));
+              expect(err.code).assertEqual(21900006);
+              done();
+            }else{
+              console.info('====>SUB_Misc_REQUEST_ShowErrorCode_Callback_0020 failed');
+              expect().assertFail();
+            }
+          }catch(err){
+            console.info('====>SUB_Misc_REQUEST_ShowErrorCode_Callback_0020 show throw_err:' + JSON.stringify(err));
+            done();
+          };
+        });
+      }catch (err) {
+        console.info('====>SUB_Misc_REQUEST_ShowErrorCode_Callback_0020 catch err:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    SUB_Misc_REQUEST_ShowErrorCode_Promise_0020
+     * @tc.name    SUB_Misc_REQUEST_ShowErrorCode_Promise_0020
+     * @tc.desc      show the download task.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_ShowErrorCode_Promise_0020',0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Misc_REQUEST_ShowErrorCode_Promise_0020 is starting-----------------------");
+      try {
+        await request.agent.show("undefined");
+        console.info("====>SUB_Misc_REQUEST_ShowErrorCode_Promise_0020 show success");
+        expect().assertFail();
+      }catch (err) {
+        console.info('====>SUB_Misc_REQUEST_ShowErrorCode_Promise_0020 catch err:' + JSON.stringify(err));
+        expect(err.code).assertEqual(21900006);
+        done();
+      }
+    });
+
+    /**
      * @tc.number    SUB_Misc_REQUEST_Search_Callback_0010
      * @tc.name    SUB_Misc_REQUEST_Search_Callback_0010
      * @tc.desc      search the download task.
@@ -1067,6 +1219,57 @@ export default function requestDownloadTwoUnitTest() {
         await task.start();
       }catch(err){
         console.info('====>SUB_Misc_REQUEST_Search_Callback_0010 create throw_err:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      };
+    });
+
+    /**
+     * @tc.number    SUB_Misc_REQUEST_Search_Callback_0011
+     * @tc.name    SUB_Misc_REQUEST_Search_Callback_0011
+     * @tc.desc      search the download task.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_Search_Callback_0011', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0011 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        saveas: './SUB_Misc_REQUEST_Search_Callback_0011.txt',
+        network: request.agent.Network.WIFI,
+        overwrite: true,
+        mode:request.agent.Mode.FOREGROUND,
+      };
+      let task:request.agent.Task;
+
+      let onCompletedCallback = (progress: request.agent.Progress) =>{
+        task.off('completed', onCompletedCallback);
+        console.info('====>SUB_Misc_REQUEST_Search_Callback_0011 onCompletedCallback start');
+        request.agent.search((err, data)=>{
+          try{
+            if(err){
+              console.info('====>SUB_Misc_REQUEST_Search_Callback_0011 err:' + JSON.stringify(err));
+              expect().assertFail();
+              done();
+            }
+            expect(data.includes(task.tid)).assertEqual(true);
+            done();
+          }catch(err){
+            console.info('====>SUB_Misc_REQUEST_Search_Callback_0011 search throw_err:' + JSON.stringify(err));
+            done();
+          };
+        });
+      };
+
+      try {
+        task = await request.agent.create(baseContext, config);
+        task.on('completed', onCompletedCallback);
+        await task.start();
+      }catch(err){
+        console.info('====>SUB_Misc_REQUEST_Search_Callback_0011 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1666,6 +1869,109 @@ export default function requestDownloadTwoUnitTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number    SUB_Misc_REQUEST_TouchErrorCode_Callback_0010
+     * @tc.name    SUB_Misc_REQUEST_TouchErrorCode_Callback_0010
+     * @tc.desc      touch the download task.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_TouchErrorCode_Callback_0010',0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Misc_REQUEST_TouchErrorCode_Callback_0010 is starting-----------------------");
+      try {
+        request.agent.touch(undefined, '', (err, taskInfo)=>{
+          try{
+            if(err){
+              console.info('====>SUB_Misc_REQUEST_TouchErrorCode_Callback_0010 err:' + JSON.stringify(err));
+              expect().assertFail();
+            }
+          }catch(err){
+            console.info('====>SUB_Misc_REQUEST_TouchErrorCode_Callback_0010 touch throw_err:' + JSON.stringify(err));
+            done();
+          };
+        });
+      }catch (err) {
+        console.info('====>SUB_Misc_REQUEST_TouchErrorCode_Callback_0010 catch err:' + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    SUB_Misc_REQUEST_TouchErrorCode_Promise_0010
+     * @tc.name    SUB_Misc_REQUEST_TouchErrorCode_Promise_0010
+     * @tc.desc      touch the download task.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_TouchErrorCode_Promise_0010',0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Misc_REQUEST_TouchErrorCode_Promise_0010 is starting-----------------------");
+      try {
+        await request.agent.touch(undefined, '');
+        console.info("====>SUB_Misc_REQUEST_TouchErrorCode_Promise_0010 touch success");
+        expect().assertFail();
+      }catch (err) {
+        console.info('====>SUB_Misc_REQUEST_TouchErrorCode_Promise_0010 catch err:' + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    SUB_Misc_REQUEST_TouchErrorCode_Callback_0020
+     * @tc.name    SUB_Misc_REQUEST_TouchErrorCode_Callback_0020
+     * @tc.desc      touch the download task.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_TouchErrorCode_Callback_0020',0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Misc_REQUEST_TouchErrorCode_Callback_0020 is starting-----------------------");
+      try {
+        request.agent.touch('123', 'downloadTest', async (err, taskInfo)=>{
+          try{
+            if(err){
+              console.info('====>SUB_Misc_REQUEST_TouchErrorCode_Callback_0020 err:' + JSON.stringify(err));
+              expect(err.code).assertEqual(21900006);
+              done();
+            }else{
+              console.info('====>SUB_Misc_REQUEST_TouchErrorCode_Callback_0020 failed');
+              expect().assertFail();
+            }
+          }catch(err){
+            console.info('====>SUB_Misc_REQUEST_TouchErrorCode_Callback_0020 touch throw_err:' + JSON.stringify(err));
+            done();
+          };
+        });
+      }catch (err) {
+        console.info('====>SUB_Misc_REQUEST_TouchErrorCode_Callback_0020 catch err:' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    SUB_Misc_REQUEST_TouchErrorCode_Promise_0020
+     * @tc.name    SUB_Misc_REQUEST_TouchErrorCode_Promise_0020
+     * @tc.desc      touch the download task.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_TouchErrorCode_Promise_0020',0, async (done: Function) => {
+      console.info("====>-----------------------SUB_Misc_REQUEST_TouchErrorCode_Promise_0020 is starting-----------------------");
+      try {
+        await request.agent.touch('123', 'downloadTest');
+        console.info("====>SUB_Misc_REQUEST_TouchErrorCode_Promise_0020 touch success");
+        expect().assertFail();
+      }catch (err) {
+        console.info('====>SUB_Misc_REQUEST_TouchErrorCode_Promise_0020 catch err:' + JSON.stringify(err));
+        expect(err.code).assertEqual(21900006);
+        done();
+      }
+    });
 
     /**
      * @tc.number SUB_REQUEST_On_Download_Progress_0500

@@ -15,12 +15,31 @@
 
 import myaudioNdk from 'libentry.so'
 import { Driver, ON, MatchPattern } from '@ohos.UiTest'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import { abilityAccessCtrl, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const Tag = 'audio_ndk_test:'
 const TEST_PASS = 0; // success result
+
+export class AudioData {
+  streamRendererUsageNum: number;
+  streamSourceTypeNum: number;
+  streamSamplingRateNum: number;
+  streamSampleFormatNum: number;
+  streamChannelCountNum: number;
+  streamLatencyModeNum: number;
+
+  constructor(streamRendererUsageNum: number, streamSourceTypeNum: number, streamSamplingRateNum: number,
+    streamSampleFormatNum: number, streamChannelCountNum: number, streamLatencyModeNum: number) {
+    this.streamRendererUsageNum = streamRendererUsageNum;
+    this.streamSourceTypeNum = streamSourceTypeNum;
+    this.streamSampleFormatNum = streamSampleFormatNum;
+    this.streamSamplingRateNum = streamSamplingRateNum;
+    this.streamChannelCountNum = streamChannelCountNum;
+    this.streamLatencyModeNum = streamLatencyModeNum;
+  }
+}
 
 function sleep(ms: number) {
   return new Promise<number>(resolve => setTimeout(resolve, ms));
@@ -2675,6 +2694,250 @@ export default function audioNDK() {
         `audioRendererSetDefaultOutputDevice_03: ${result}`);
       expect(result).assertEqual(0)
       done()
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0100
+     * @tc.name      : test OH_Audio format f32 normal
+     * @tc.desc      : test OH_Audio format f32 normal
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0100', Level.LEVEL0, async (done: Function) => {
+      let streamRendererUsageNum = 1; //AUDIOSTREAM_USAGE_MUSIC
+      let streamSampleFormatNum = 4; //F32LE
+      let streamSamplingRateNum = 48000;
+      let streamChannelCountNum = 2;
+      let streamSourceTypeNum = 0; //AUDIOSTREAM_SOURCE_TYPE_MIC
+      let streamLatencyModeNum = 0;   //AUDIOSTREAM_LATENCY_MODE_NORMAL
+
+      let caseTag: string = "SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0100";
+
+      try {
+        let mydata = new AudioData(streamRendererUsageNum, streamSourceTypeNum, streamSamplingRateNum,
+            streamSampleFormatNum,  streamChannelCountNum, streamLatencyModeNum);
+
+        myaudioNdk.audioCapturerInit(mydata);
+        console.log(`${caseTag} audioCapturerInit success`);
+
+        myaudioNdk.audioCapturerStart();
+        console.log(`${caseTag} audioCapturerStart success`);
+
+        await sleep(1000);
+
+        myaudioNdk.audioCapturerStop();
+        console.log(`${caseTag} audioCapturerStop success`);
+
+        myaudioNdk.audioCapturerRelease();
+        console.log(`${caseTag} audioCapturerRelease success`);
+
+        await sleep(200);
+
+        myaudioNdk.audioRendererInit(mydata);
+        console.log(`${caseTag} audioRendererInit success`);
+
+        myaudioNdk.audioRendererStart();
+        console.log(`${caseTag} audioRendererStart success`);
+
+        await sleep(1000);
+
+        myaudioNdk.audioRendererStop();
+        console.log(`${caseTag} audioRendererStop success`);
+          
+        myaudioNdk.audioRendererRelease();
+        console.log(`${caseTag} audioRendererRelease success`);
+        
+        expect(true).assertTrue();
+      } catch (err) {
+        console.log(`${caseTag} fail: ${JSON.stringify(err)}, ${err.code}`);
+        expect(false).assertTrue();
+      } finally {
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0200
+     * @tc.name      : test OH_Audio format f32 normal
+     * @tc.desc      : test OH_Audio format f32 normal
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0200', Level.LEVEL0, async (done: Function) => {
+      let streamRendererUsageNum = 2; //AUDIOSTREAM_USAGE_VOICE_COMMUNICATION
+      let streamSampleFormatNum = 4; //F32LE
+      let streamSamplingRateNum = 32000;
+      let streamChannelCountNum = 2;
+      let streamSourceTypeNum = 0; //AUDIOSTREAM_SOURCE_TYPE_MIC
+      let streamLatencyModeNum = 0;   //AUDIOSTREAM_LATENCY_MODE_NORMAL
+
+      let caseTag: string = "SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0200";
+
+      try {
+        let mydata = new AudioData(streamRendererUsageNum, streamSourceTypeNum, streamSamplingRateNum,
+            streamSampleFormatNum,  streamChannelCountNum, streamLatencyModeNum);
+
+        myaudioNdk.audioCapturerInit(mydata);
+        console.log(`${caseTag} audioCapturerInit success`);
+
+        myaudioNdk.audioCapturerStart();
+        console.log(`${caseTag} audioCapturerStart success`);
+
+        await sleep(1000);
+
+        myaudioNdk.audioCapturerStop();
+        console.log(`${caseTag} audioCapturerStop success`);
+
+        myaudioNdk.audioCapturerRelease();
+        console.log(`${caseTag} audioCapturerRelease success`);
+
+        await sleep(200);
+
+        myaudioNdk.audioRendererInit(mydata);
+        console.log(`${caseTag} audioRendererInit success`);
+
+        myaudioNdk.audioRendererStart();
+        console.log(`${caseTag} audioRendererStart success`);
+
+        await sleep(1000);
+
+        myaudioNdk.audioRendererStop();
+        console.log(`${caseTag} audioRendererStop success`);
+          
+        myaudioNdk.audioRendererRelease();
+        console.log(`${caseTag} audioRendererRelease success`);
+        
+        expect(true).assertTrue();
+      } catch (err) {
+        console.log(`${caseTag} fail: ${JSON.stringify(err)}, ${err.code}`);
+        expect(false).assertTrue();
+      } finally {
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0300
+     * @tc.name      : test OH_Audio format f32 latency mode
+     * @tc.desc      : test OH_Audio format f32 latency mode
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0300', Level.LEVEL1, async (done: Function) => {
+      let streamRendererUsageNum = 2; //AUDIOSTREAM_USAGE_VOICE_COMMUNICATION
+      let streamSampleFormatNum = 4; //F32LE
+      let streamSamplingRateNum = 48000;
+      let streamChannelCountNum = 2;
+      let streamSourceTypeNum = 0; //AUDIOSTREAM_SOURCE_TYPE_MIC
+      let streamLatencyModeNum = 1;   //AUDIOSTREAM_LATENCY_MODE_FAST
+
+      let caseTag: string = "SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0300";
+
+      try {
+        let mydata = new AudioData(streamRendererUsageNum, streamSourceTypeNum, streamSamplingRateNum,
+            streamSampleFormatNum,  streamChannelCountNum, streamLatencyModeNum);
+
+        myaudioNdk.audioCapturerInit(mydata);
+        console.log(`${caseTag} audioCapturerInit success`);
+
+        myaudioNdk.audioCapturerStart();
+        console.log(`${caseTag} audioCapturerStart success`);
+
+        await sleep(1000);
+
+        myaudioNdk.audioCapturerStop();
+        console.log(`${caseTag} audioCapturerStop success`);
+
+        myaudioNdk.audioCapturerRelease();
+        console.log(`${caseTag} audioCapturerRelease success`);
+
+        await sleep(200);
+
+        myaudioNdk.audioRendererInit(mydata);
+        console.log(`${caseTag} audioRendererInit success`);
+
+        myaudioNdk.audioRendererStart();
+        console.log(`${caseTag} audioRendererStart success`);
+
+        await sleep(1000);
+
+        myaudioNdk.audioRendererStop();
+        console.log(`${caseTag} audioRendererStop success`);
+          
+        myaudioNdk.audioRendererRelease();
+        console.log(`${caseTag} audioRendererRelease success`);
+        
+        expect(true).assertTrue();
+      } catch (err) {
+        console.log(`${caseTag} fail: ${JSON.stringify(err)}, ${err.code}`);
+        expect(false).assertTrue();
+      } finally {
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0400
+     * @tc.name      : test OH_Audio format f32 latency mode
+     * @tc.desc      : test OH_Audio format f32 latency mode
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0400', Level.LEVEL2, async (done: Function) => {
+      let streamRendererUsageNum = 2; //AUDIOSTREAM_USAGE_VOICE_COMMUNICATION
+      let streamSampleFormatNum = 4; //F32LE
+      let streamSamplingRateNum = 48000;
+      let streamChannelCountNum = 1;
+      let streamSourceTypeNum = 0; //AUDIOSTREAM_SOURCE_TYPE_MIC
+      let streamLatencyModeNum = 1;   //AUDIOSTREAM_LATENCY_MODE_FAST
+
+      let caseTag: string = "SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0400";
+
+      try {
+        let mydata = new AudioData(streamRendererUsageNum, streamSourceTypeNum, streamSamplingRateNum,
+            streamSampleFormatNum,  streamChannelCountNum, streamLatencyModeNum);
+
+        myaudioNdk.audioCapturerInit(mydata);
+        console.log(`${caseTag} audioCapturerInit success`);
+
+        myaudioNdk.audioCapturerStart();
+        console.log(`${caseTag} audioCapturerStart success`);
+
+        await sleep(1000);
+
+        myaudioNdk.audioCapturerStop();
+        console.log(`${caseTag} audioCapturerStop success`);
+
+        myaudioNdk.audioCapturerRelease();
+        console.log(`${caseTag} audioCapturerRelease success`);
+
+        await sleep(200);
+
+        myaudioNdk.audioRendererInit(mydata);
+        console.log(`${caseTag} audioRendererInit success`);
+
+        myaudioNdk.audioRendererStart();
+        console.log(`${caseTag} audioRendererStart success`);
+
+        await sleep(1000);
+
+        myaudioNdk.audioRendererStop();
+        console.log(`${caseTag} audioRendererStop success`);
+          
+        myaudioNdk.audioRendererRelease();
+        console.log(`${caseTag} audioRendererRelease success`);
+        
+        expect(true).assertTrue();
+      } catch (err) {
+        console.log(`${caseTag} fail: ${JSON.stringify(err)}, ${err.code}`);
+        expect(false).assertTrue();
+      } finally {
+        done();
+      }
     })
   })
 }

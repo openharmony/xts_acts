@@ -45,7 +45,8 @@
         "MainAbility/pages/WaterFlow/waterFlowFling1",
         "MainAbility/pages/WaterFlow/waterFlowFling2",
         "MainAbility/pages/WaterFlow/WaterFlowFlingCallback",
-        "MainAbility/pages/WaterFlow/WaterFlowScrollEdgeCallback"
+        "MainAbility/pages/WaterFlow/WaterFlowScrollEdgeCallback",
+        "MainAbility/pages/waterFlowView"
 		
     ]
 }

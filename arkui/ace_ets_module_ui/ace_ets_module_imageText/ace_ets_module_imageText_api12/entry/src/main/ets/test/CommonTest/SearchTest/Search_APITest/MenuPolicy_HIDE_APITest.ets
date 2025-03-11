@@ -55,13 +55,19 @@ export default function MenuPolicy_HIDE_APITest() {
       let textComponent = await driver.findComponent(ON.id('Search'));
       await textComponent.click()
       await CommonFunc.sleep(500);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       await textComponent.inputText("hello")
       await CommonFunc.sleep(2000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       let btn: Component = await driver.findComponent(ON.id('btn'));
       await btn.click();
       await CommonFunc.sleep(2000);
       await textComponent.inputText("123")
       await CommonFunc.sleep(2000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       let MenuPolicy = getInspectorByKey('MenuPolicy_HIDE');
       console.info("[MenuPolicy_HIDE_APITest_0100] Tabs animationMode attrs is: " + JSON.stringify(JSON.parse(MenuPolicy).$attrs));
       expect(JSON.parse(MenuPolicy).$attrs.content).assertEqual('HIDE');

@@ -152,5 +152,26 @@ export default function deviceInfoTest() {
       }
       done();
     });
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_DEVICE_INFO_JS_0700
+     * @tc.name      : test_get_device_info_0700
+     * @tc.desc      : test deviceInfo getDeviceInfo with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_get_device_info_0700", 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        deviceInfo.getDeviceInfo(null, LABEL_DEVICE_NAME);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    });
   })
 }

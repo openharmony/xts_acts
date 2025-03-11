@@ -13,6 +13,11 @@
 * limitations under the License.
 */
 import continuationManagerTest from './ContinuationManagerJsunit.test.js'
+import EmptyTest from './Empty.test.js'
 export default function testsuite() {
-continuationManagerTest()
+    if (canIUse("SystemCapability.Ability.DistributedAbilityManager")) {
+        continuationManagerTest()
+    } else {
+        EmptyTest()
+    }
 }

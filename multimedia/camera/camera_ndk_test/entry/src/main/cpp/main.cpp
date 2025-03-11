@@ -456,6 +456,28 @@ static napi_value VideoOutputRelease(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value IsVideoMirrorSupported(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+
+    ndkCamera_->IsVideoMirrorSupported();
+    napi_get_boolean(env, ndkCamera_->IsVideoMirror_, &result);
+    return result;
+}
+
+static napi_value EnableVideoMirror(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    bool isEnable;
+    napi_get_value_bool(env, args[0], &isEnable);
+    Camera_ErrorCode code = ndkCamera_->EnableVideoMirror(isEnable);
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
 static napi_value MetadataOutputStart(napi_env env, napi_callback_info info)
 {
     napi_value result;
@@ -2590,6 +2612,8 @@ static napi_value Init(napi_env env, napi_value exports)
         { "videoOutputStart", nullptr, VideoOutputStart, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "videoOutputStop", nullptr, VideoOutputStop, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "videoOutputRelease", nullptr, VideoOutputRelease, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "isVideoMirrorSupported", nullptr, IsVideoMirrorSupported, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "enableVideoMirror", nullptr, EnableVideoMirror, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "metadataOutputStart", nullptr, MetadataOutputStart, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "metadataOutputStop", nullptr, MetadataOutputStop, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "metadataOutputRelease", nullptr, MetadataOutputRelease, nullptr, nullptr, nullptr, napi_default, nullptr },

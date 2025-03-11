@@ -12,11 +12,7 @@
     "package": "ohos.acts.aafwk.test.faauxiliary",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-      "wearable",
-      "default",
-      "tablet"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

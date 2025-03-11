@@ -16,7 +16,6 @@ group("ActsAceEtsModulePickerTest") {
   testonly = true
   if (ace_engine_feature_wearable) {
     deps = [
-      "ace_ets_module_picker_api11:ActsAceEtsModulePickerApi11Test",
       "ace_ets_module_picker_api12:ActsAceEtsModulePickerApi12Test",
       "ace_ets_module_picker_api13:ActsAceEtsModulePickerApi13Test",
       "ace_ets_module_picker_api15:ActsAceEtsModulePickerApi15Test",
@@ -32,6 +31,8 @@ group("ActsAceEtsModulePickerTest") {
       "ace_ets_module_picker_api16:ActsAceEtsModulePickerApi16Test",
       "ace_ets_module_picker_nowear_api11:ActsAceEtsModulePickerNoWearApi11Test",
       "ace_ets_module_picker_nowear_api12:ActsAceEtsModulePickerNoWearApi12Test",
+      "ace_ets_module_picker_nowear_api16:ActsAceEtsModulePickerNoWearApi16Test",
+      "ace_ets_module_picker_nowear_api18:ActsAceEtsModulePickerNoWearApi18Test",
     ]
   }
 }

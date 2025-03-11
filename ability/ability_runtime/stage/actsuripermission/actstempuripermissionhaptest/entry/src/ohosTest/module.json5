@@ -19,13 +19,7 @@
     "type": "entry",
     "description": "$string:phone_entry_dsc",
     "mainElement": "MainAbility",
-    "deviceTypes": [
-      "wearable",
-      "default",
-      "tablet",
-      "2in1",
-      "phone"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:test_pages",

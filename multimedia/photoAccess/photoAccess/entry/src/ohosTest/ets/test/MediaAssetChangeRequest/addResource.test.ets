@@ -84,8 +84,37 @@ export default function addResourceChangeRequestTest() {
         done();
       } catch (error) {
         console.info(`${testNum} succeed to detect invalid fileUri`);
+        expect(error.code === '13900002' || error.code === '401').assertTrue();
         done();
       }
     })
+
+    
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_ADD_RESOURCE_CHANGE_REQUEST_0200
+     * @tc.name      : add_resource_change_request_002
+     * @tc.desc      : add VIDEO resource by IMAGE_RESOURCE,error code is 13900002 or 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('add_resource_change_request_002', 0, async (done: Function) => {
+      let testNum = 'add_resource_change_request_002';
+      try {
+        let photoType = photoAccessHelper.PhotoType.VIDEO;
+        let extension = 'mp4';
+        let assetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(testContext, photoType, extension);
+        console.info(`assetChangeRequest is declared successfully`);
+        assetChangeRequest.addResource(photoAccessHelper.ResourceType.IMAGE_RESOURCE, new ArrayBuffer(1024));
+        console.info(`${testNum} succeed to add resource by ArrayBuffer`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error}, ${error.code}`);
+        expect(error.code === '13900002' || error.code === '401').assertTrue();
+        done();
+      }
+    })
+  
   })
 }

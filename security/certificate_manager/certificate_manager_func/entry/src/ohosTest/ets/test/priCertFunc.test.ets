@@ -127,6 +127,9 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
       expect(certManager.CmKeyDigest.CM_DIGEST_SHA512).assertEqual(6);
       expect(certManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN).assertEqual(4);
       expect(certManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY).assertEqual(8);
+      expect(certManager.AuthStorageLevel.EL1).assertEqual(1);
+      expect(certManager.AuthStorageLevel.EL2).assertEqual(2);
+      expect(certManager.AuthStorageLevel.EL4).assertEqual(4);
       done();
     });
 

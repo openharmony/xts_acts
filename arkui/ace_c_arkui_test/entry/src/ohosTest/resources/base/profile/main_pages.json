@@ -150,7 +150,7 @@
     "MainAbility/pages/textarea/TextAreaKeyTest",
     "MainAbility/pages/textinput/TextInputKeyTest",
     "MainAbility/pages/textarea/TextAreaOnChangeTest",
-    "MainAbility/pages/textarea/TextAreaOnPasteTest",
+
     "MainAbility/pages/textarea/TextAreaOnTextSelectionChangeTest",
     "MainAbility/pages/textarea/TextAreaOnContentScrollTest",
     "MainAbility/pages/textarea/TextAreaOnContentDidChangeTest",
@@ -162,8 +162,7 @@
     "MainAbility/pages/textinput/TextInputOnBlurTest",
     "MainAbility/pages/textinput/TextInputOnFocusTest",
     "MainAbility/pages/textinput/TextInputOnSubmitTest",
-    "MainAbility/pages/textinput/TextInputOnCutTest",
-    "MainAbility/pages/textinput/TextInputOnPasteTest",
+
     "MainAbility/pages/textinput/TextInputOnTextSelectionChangeTest",
     "MainAbility/pages/textinput/TextInputOnContentScrollTest",
     "MainAbility/pages/textinput/TextInputOnContentDidChangeTest",

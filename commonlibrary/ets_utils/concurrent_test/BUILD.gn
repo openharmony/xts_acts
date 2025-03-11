@@ -20,6 +20,7 @@ group("concurrent_test") {
       "collectionstaskpooltest:ActsCollectionsTaskPoolTest",
       "collectionstest:ActsCollectionsTest",
       "concurrentlibtest:ActsConcurrentLibTest",
+      "taskpooltaskgrouptest:ActsTaskPoolTaskGroupTest",
     ]
   }
 }

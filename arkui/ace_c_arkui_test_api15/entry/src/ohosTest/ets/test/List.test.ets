@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import keyDispatchTest from "./keydispatchTest/KeyDispatchTest.test"
+
 import nodeHandleByIdTest from "./node/NodeHandleByIdTest.test"
 import getWindowInfoTest from "./window/GetWindowInfoTest.test"
 import checkboxGroupTest from "./checkbox/CheckboxGroupTest.test"
@@ -24,17 +24,18 @@ import ProgressLinearStyleTest from "./progress/progressLinearStyleTest.test"
 import testLazyForEachExpandMode from "./lazyForEach/testLazyForEachExpandMode.test"
 import FocusControlTest from "./foucscontrolTest/FocusControlTest.test"
 import FocusControlTest2 from "./foucscontrolTest/FocusControlTest2.test"
-import FocusControlTest3 from "./foucscontrolTest/FocusControlTest3.test"
-import FocusControlTest4 from "./foucscontrolTest/FocusControlTest4.test"
 import listCaseTest from "./list/ListCaseTest.test"
 import listScrollToIndexTest from "./listScrollTo/ListScrollToTest.test"
 import listItemGroupNodeAdapterTest from "./listItemGroup/ListItemGroupTest.test"
 import gesturecancelTest from "./gesturecancelTest/gesturecancelTest.test"
+import gestureRecognizerTest from './gestureRecognizer/GestureRecognizerTest.test'
+import EventInfoTest from "./eventInfo/EventInfoTest.test"
+import snapShotTest from './snapShot/snapShotTest.test'
 
 
 export default function testsuite() {
 
-   keyDispatchTest();
+   
    nodeHandleByIdTest();
    getWindowInfoTest();
    checkboxGroupTest();
@@ -45,10 +46,11 @@ export default function testsuite() {
    testLazyForEachExpandMode();
    FocusControlTest();
    FocusControlTest2();
-   FocusControlTest3();
-   FocusControlTest4();
    listCaseTest();
    listScrollToIndexTest();
    listItemGroupNodeAdapterTest();
    gesturecancelTest();
+   gestureRecognizerTest();
+   EventInfoTest();
+   snapShotTest();
 }

@@ -19,7 +19,7 @@
     "type": "feature",
     "description": "$string:module_test_desc",
     "mainElement": "TestAbility",
-    "deviceTypes": ["default", "tablet", "2in1", "wearable"],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:test_pages",
@@ -47,31 +47,7 @@
     ],
     "requestPermissions": [
       {
-        "name": "ohos.permission.PLACE_CALL"
-      },
-      {
-        "name": "ohos.permission.SET_TELEPHONY_STATE"
-      },
-      {
-        "name": "ohos.permission.ANSWER_CALL"
-      },
-      {
-        "name": "ohos.permission.READ_CALL_LOG"
-      },
-      {
-        "name": "ohos.permission.WRITE_CALL_LOG"
-      },
-      {
-        "name": "ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS"
-      },
-      {
         "name": "ohos.permission.CLEAN_BACKGROUND_PROCESSES"
-      },
-      {
-        "name": "ohos.permission.GET_SENSITIVE_PERMISSIONS"
-      },
-      {
-        "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
       }
     ]
   }

@@ -55,7 +55,7 @@ include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include
                     ${OPENHARMONY_ROOT_PATH}/third_party/bounds_checking_function/include
                     ${OPENHARMONY_ROOT_PATH}/third_party/bounds_checking_function/src
-                    ${OPENHARMONY_ROOT_PATH}/third_party/node/jsvm/interface/kits
+                    ${OPENHARMONY_ROOT_PATH}/arkcompiler/jsvm/interface/kits
                     jsvmtest
                     jsvmtest/unittests/wasm-def)
 add_library(entry2 SHARED ${src_sec}

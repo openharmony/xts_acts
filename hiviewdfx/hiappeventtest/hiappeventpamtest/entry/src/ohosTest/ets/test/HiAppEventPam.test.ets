@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, TestType, Level, Size} from '@ohos/hypium'
 import hiAppEvent from '@ohos.hiviewdfx.hiAppEvent'
 import { BusinessError } from '@ohos.base'
 
@@ -22,7 +22,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_0100
      * @tc.name testHiAppEventSetPam01
-     * @tc.desc 验证setEventParam接口可设置事件关联自定义参数，并通过onReceive回调获取
+     * @tc.desc 验证setEventParam接口可设置事件关联自定义参数,并通过onReceive回调获取
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -42,13 +42,13 @@ export default function HiAppEventPamTest() {
           name: "watcher0100",
           appEventFilters: [{domain: "t"}, {domain: "Test_123domain_Test_123domain_TE"}, {domain: "test_domain"},
             {domain: "test_domain123"}],
-          onReceive: (domain, groups) => {
+          onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
             console.log('testHiAppEventSetPam01 onReceive domain=', domain)
             expect(domain == "t" || domain == "Test_123domain_Test_123domain_TE" || domain == "test_domain" ||
               domain == "test_domain123").assertTrue();
-            for (const group of groups) {
-              console.log('testHiAppEventSetPam01 onReceive eventName=', group.name)
-              for (const info of group.appEventInfos) {
+            for (const eventGroup of appEventGroups) {
+              console.log('testHiAppEventSetPam01 onReceive eventName=', eventGroup.name)
+              for (const info of eventGroup.appEventInfos) {
                 console.log(`testHiAppEventSetPam01 onReceive event=${JSON.stringify(info)}`)
                 console.log('testHiAppEventSetPam01 onReceive eventType=', info.eventType)
                 console.log('testHiAppEventSetPam01 onReceive params=', JSON.stringify(info.params))
@@ -183,7 +183,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_0200
      * @tc.name testHiAppEventSetPam02
-     * @tc.desc 验证setEventParam接口可设置事件关联自定义参数，并通过onTrigger回调获取
+     * @tc.desc 验证setEventParam接口可设置事件关联自定义参数,并通过onTrigger回调获取
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -264,7 +264,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_0300
      * @tc.name testHiAppEventSetPam03
-     * @tc.desc 验证setEventParam接口domain下划线结尾，返回错误码11101001
+     * @tc.desc 验证setEventParam接口domain下划线结尾,返回错误码11101001
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -292,7 +292,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_0400
      * @tc.name testHiAppEventSetPam04
-     * @tc.desc 验证setEventParam接口domain包含特殊字符，返回错误码11101001
+     * @tc.desc 验证setEventParam接口domain包含特殊字符,返回错误码11101001
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -320,7 +320,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_0500
      * @tc.name testHiAppEventSetPam05
-     * @tc.desc 验证setEventParam接口domain以数字开头，返回错误码11101001
+     * @tc.desc 验证setEventParam接口domain以数字开头,返回错误码11101001
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -348,7 +348,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_0600
      * @tc.name testHiAppEventSetPam06
-     * @tc.desc 验证setEventParam接口domain为空，返回错误码11101001
+     * @tc.desc 验证setEventParam接口domain为空,返回错误码11101001
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -376,7 +376,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_0700
      * @tc.name testHiAppEventSetPam07
-     * @tc.desc 验证setEventParam接口domain为33字节，返回错误码11101001
+     * @tc.desc 验证setEventParam接口domain为33字节,返回错误码11101001
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -404,7 +404,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_0800
      * @tc.name testHiAppEventSetPam08
-     * @tc.desc 验证setEventParam接口domain为undefined，返回错误码401
+     * @tc.desc 验证setEventParam接口domain为undefined,返回错误码401
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -434,7 +434,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_0900
      * @tc.name testHiAppEventSetPam09
-     * @tc.desc 验证setEventParam接口name下划线结尾，返回错误码11101002
+     * @tc.desc 验证setEventParam接口name下划线结尾,返回错误码11101002
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -462,7 +462,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_1000
      * @tc.name testHiAppEventSetPam10
-     * @tc.desc 验证setEventParam接口name包含特殊字符，返回错误码11101002
+     * @tc.desc 验证setEventParam接口name包含特殊字符,返回错误码11101002
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -490,7 +490,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_1100
      * @tc.name testHiAppEventSetPam11
-     * @tc.desc 验证setEventParam接口name以数字开头，返回错误码11101002
+     * @tc.desc 验证setEventParam接口name以数字开头,返回错误码11101002
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -518,7 +518,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_1200
      * @tc.name testHiAppEventSetPam12
-     * @tc.desc 验证setEventParam接口name为空，返回错误码11101002
+     * @tc.desc 验证setEventParam接口name为空,返回错误码11101002
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -548,7 +548,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_1300
      * @tc.name testHiAppEventSetPam13
-     * @tc.desc 验证setEventParam接口name49字节，返回错误码11101002
+     * @tc.desc 验证setEventParam接口name49字节,返回错误码11101002
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -577,7 +577,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_1400
      * @tc.name testHiAppEventSetPam14
-     * @tc.desc 验证setEventParam接口name为undefined，返回错误码401
+     * @tc.desc 验证setEventParam接口name为undefined,返回错误码401
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -607,7 +607,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_1500
      * @tc.name testHiAppEventSetPam15
-     * @tc.desc 验证setEventParam接口paramname下划线结尾，返回错误码11101005
+     * @tc.desc 验证setEventParam接口paramname下划线结尾,返回错误码11101005
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -635,7 +635,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_1600
      * @tc.name testHiAppEventSetPam16
-     * @tc.desc 验证setEventParam接口paramname包含特殊字符，返回错误码11101005
+     * @tc.desc 验证setEventParam接口paramname包含特殊字符,返回错误码11101005
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -663,7 +663,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_1700
      * @tc.name testHiAppEventSetPam17
-     * @tc.desc 验证setEventParam接口paramname下划线结尾，返回错误码11101005
+     * @tc.desc 验证setEventParam接口paramname下划线结尾,返回错误码11101005
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -691,7 +691,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_1800
      * @tc.name testHiAppEventSetPam18
-     * @tc.desc 验证setEventParam接口paramname为空，返回错误码11101005
+     * @tc.desc 验证setEventParam接口paramname为空,返回错误码11101005
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -719,7 +719,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_1900
      * @tc.name testHiAppEventSetPam19
-     * @tc.desc 验证setEventParam接口paramname为33字节，返回错误码11101005
+     * @tc.desc 验证setEventParam接口paramname为33字节,返回错误码11101005
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -747,7 +747,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_2000
      * @tc.name testHiAppEventSetPam20
-     * @tc.desc 验证setEventParam接口paramvalue为超长字符串，返回错误码11101004
+     * @tc.desc 验证setEventParam接口paramvalue为超长字符串,返回错误码11101004
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -779,7 +779,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_SetPam_2100
      * @tc.name testHiAppEventSetPam21
-     * @tc.desc 验证setEventParam接口自定义参数设置65个，返回错误码11101007
+     * @tc.desc 验证setEventParam接口自定义参数设置65个,返回错误码11101007
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -941,7 +941,7 @@ export default function HiAppEventPamTest() {
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Sub_7200
      * @tc.name testHiAppEventSub72
-     * @tc.desc 验证setRow接口设置条数为0，返回错误码11104001
+     * @tc.desc 验证setRow接口设置条数为0,返回错误码11104001
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -970,18 +970,49 @@ export default function HiAppEventPamTest() {
     })
 
     /**
-     * @tc.number SUB_DFX_DFT_HiAppEvent_Sub_7300
+     * @tc.number SUB_DFX_DFT_HiAppEvent_Sub_73
      * @tc.name testHiAppEventSub73
+     * @tc.desc 验证setRow接口设置条数为0,返回错误码401
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiAppEventSub73',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      console.info('testHiAppEventSub73 start');
+      try {
+        let holder = hiAppEvent.addWatcher({
+          name: "watcher73",
+          appEventFilters: [{
+            domain: hiAppEvent.domain.OS,
+            names: ["test_name"]
+          }],
+        });
+        holder.setRow(null);
+        expect(false).assertTrue();
+        done()
+      } catch (err) {
+        console.error(`testHiAppEventSub73 > error code: ${err.code}, error msg: ${err.message}`);
+        hiAppEvent.removeWatcher({
+          "name": "watcher73"
+        })
+        expect(err.code == 401).assertTrue()
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_HiAppEvent_Sub_7400
+     * @tc.name testHiAppEventSub74
      * @tc.desc 验证hiappevent订阅setRow接口默认设置取出的应用事件包的数据条数为1
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSub73', 0, async (done:Function) => {
-      console.info('testHiAppEventSub73 start');
+    it('testHiAppEventSub74', 0, async (done:Function) => {
+      console.info('testHiAppEventSub74 start');
       try {
         let holder = hiAppEvent.addWatcher({
-          name: "watcher73",
+          name: "watcher74",
           appEventFilters: [{
             domain: hiAppEvent.domain.OS,
             names: ["test_name"]
@@ -994,15 +1025,15 @@ export default function HiAppEventPamTest() {
             name: "test_name",
             eventType: hiAppEvent.EventType.FAULT,
             params: {
-              "key_int": 73
+              "key_int": 74
             }
           }, (err, value) => {
             if (err) {
-              console.error(`testHiAppEventSub73 failed to write event because ${err.code}`);
+              console.error(`testHiAppEventSub74 failed to write event because ${err.code}`);
               expect().assertFail();
               done();
             }
-            console.log(`testHiAppEventSub73 success to write event: ${value}`)
+            console.log(`testHiAppEventSub74 success to write event: ${value}`)
           });
         }
         setTimeout(() => {
@@ -1013,24 +1044,24 @@ export default function HiAppEventPamTest() {
                 return;
               }
               expect(eventPkg.row == 1).assertTrue()
-              console.info("testHiAppEventSub73 eventPkg.packageId=" + eventPkg.packageId);
-              console.info("testHiAppEventSub73 eventPkg.row=" + eventPkg.row);
-              console.info("testHiAppEventSub73 eventPkg.size=" + eventPkg.size);
+              console.info("testHiAppEventSub74 eventPkg.packageId=" + eventPkg.packageId);
+              console.info("testHiAppEventSub74 eventPkg.row=" + eventPkg.row);
+              console.info("testHiAppEventSub74 eventPkg.size=" + eventPkg.size);
               for (const eventInfo of eventPkg.appEventInfos) {
-                console.info("testHiAppEventSub73 eventPkg.appEventInfo=" + JSON.stringify(eventInfo));
+                console.info("testHiAppEventSub74 eventPkg.appEventInfo=" + JSON.stringify(eventInfo));
               }
             }
           }
         }, 3000)
         setTimeout(() => {
           hiAppEvent.removeWatcher({
-            "name": "watcher73"
+            "name": "watcher74"
           })
           done()
-          console.info('testHiAppEventSub73 end')
+          console.info('testHiAppEventSub74 end')
         }, 5000)
       } catch (err) {
-        console.error(`testHiAppEventSub73 > error code: ${err.code}, error msg: ${err.message}`);
+        console.error(`testHiAppEventSub74 > error code: ${err.code}, error msg: ${err.message}`);
         expect(false).assertTrue()
         done();
       }

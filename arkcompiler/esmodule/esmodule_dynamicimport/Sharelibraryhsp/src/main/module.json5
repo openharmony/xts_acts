@@ -19,12 +19,7 @@
     "name": "Sharelibraryhsp",
     "type": "shared",
     "description": "$string:shared_desc",
-    "deviceTypes": [
-      "wearable",
-      "default",
-      "tablet",
-      "2in1"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "pages": "$profile:main_pages"
   }

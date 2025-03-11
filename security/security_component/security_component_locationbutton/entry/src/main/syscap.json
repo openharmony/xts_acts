@@ -1,12 +1,6 @@
 {
     "devices": {
-        "general": [
-            "tablet",
-            "default",
-            "phone",
-            "2in1",
-            "wearable"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [

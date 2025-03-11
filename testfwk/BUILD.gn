@@ -10,15 +10,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 import("//build/ohos_var.gni")
+import("//foundation/arkui/ace_engine/ace_config.gni")
 
 group("testfwk") {
   testonly = true
-  if (is_standard_system) {
+  if (ace_engine_feature_wearable) {
     deps = [
       "uitest:ActsUiTest",
       "uitestScene:ActsUiTestScene",
+    ]
+  } else {
+    deps = [
+      "uitest:ActsUiTest",
+      "uitestScene:ActsUiTestScene",
+      "uitest_quarantine:ActsUiTestQuarTest",
     ]
   }
 }

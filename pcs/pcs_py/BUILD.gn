@@ -34,10 +34,13 @@ ohos_copy("PyTestCase") {
     "./testMinimumComponentSet.py",
     "./testPermissionName.py",
     "./testPermissionsNotMissing.py",
+    "./testPowerShell.py",
+    "./testPowerWakeUp.py",
     "./testRealRandomGenerate.py",
     "./testSDCardMount.py",
     "./testSelinuxFileLable.py",
     "./testSupportHdc.py",
+    "./testSysCapNameOnly.py",
     "./testSystemCoreInternetPermission.py",
     "./testTrustedRootCaExist.py",
   ]

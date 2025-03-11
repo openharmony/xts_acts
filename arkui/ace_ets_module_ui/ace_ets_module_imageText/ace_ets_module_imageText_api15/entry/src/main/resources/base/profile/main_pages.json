@@ -13,6 +13,7 @@
     "MainAbility/pages/ImageAttachment/VerticalAlign",
     "MainAbility/pages/ImageAttachment/ObjectFit",
     "MainAbility/pages/ImageSvgFillColor/ImageSvgFillColor",
-    "MainAbility/pages/imageMatrix/imageMatrix"
+    "MainAbility/pages/imageMatrix/imageMatrix",
+    "MainAbility/pages/StyledString/aboutToAppear"
   ]
 }

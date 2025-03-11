@@ -99,12 +99,7 @@
         "srcPath": "MainAbilityA"
       }
     ],
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
+    "deviceType": [],
     "mainAbility": "com.example.third3.MainAbility",
     "distro": {
       "moduleType": "feature",

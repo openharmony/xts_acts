@@ -54,9 +54,13 @@ export default function TextAreaTest() {
       let button = await driver.findComponent(ON.id('TextArea_5'));
       await button.click();
       await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       await button.inputText("hello")
 	  await driver.triggerKey(2047)
       await CommonFunc.sleep(2000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextArea_1');
       let obj: ESObject = JSON.parse(strJson);
       let strJson1 = getInspectorByKey('TextArea_2');
@@ -82,8 +86,12 @@ export default function TextAreaTest() {
       let button = await driver.findComponent(ON.id('TextArea_6'));
       await button.click();
       await CommonFunc.sleep(1000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       await button.clearText()
       await CommonFunc.sleep(3000);
+	  await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TextArea_3');
       let obj: ESObject = JSON.parse(strJson);
       let strJson1 = getInspectorByKey('TextArea_4');

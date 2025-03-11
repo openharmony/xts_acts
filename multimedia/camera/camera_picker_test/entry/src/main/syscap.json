@@ -1,14 +1,10 @@
 {
     "devices": {
-        "general": [
-            "phone",
-            "tablet",
-            "2in1"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Multimedia.Camera.Core"
                 ]
             }
         ]

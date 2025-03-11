@@ -23,6 +23,7 @@ import { Permissions } from '@ohos.abilityAccessCtrl';
 import { mContext } from '../testability/TestAbility'
 
 let calendarMgr: calendarManager.CalendarManager;
+let calendarMgrErr: calendarManager.CalendarManager;
 
 function sleep(numberMillis: number) {
   let now = new Date();
@@ -57,6 +58,7 @@ export default function CalendarManagerTest() {
       console.info("beforeAll case");
       try {
         let permissions: Permissions[] = ["ohos.permission.WRITE_CALENDAR", "ohos.permission.READ_CALENDAR"];
+        calendarMgrErr = calendarManager?.getCalendarManager(mContext);
         let atManager = abilityAccessCtrl.createAtManager();
         atManager.requestPermissionsFromUser(mContext, permissions, (err, result) => {
           if (err) {
@@ -148,6 +150,90 @@ export default function CalendarManagerTest() {
     it("SUB_Application_CalendarManagerApi_test_0400", 0, () => {
       expect(calendarManager.AttendeeRole.ORGANIZER == 'organizer').assertTrue();
       expect(calendarManager.AttendeeRole.PARTICIPANT == 'participant').assertTrue();
+    });
+
+    /*
+   * @tc.number  SUB_Application_CalendarManagerApi_CreateCalendar_AsyncNoPermission_0100
+   * @tc.name    Create a Calendar object based on the calendar account information type entry as LOCAL.
+   * @tc.desc    Function test
+   * @tc.size    SmallTest
+   * @tc.type    User
+   * @tc.level   Level 2
+   */
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_AsyncNoPermission_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_AsyncCreateCalendar_NoPermission_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: 'HUAWEI日历',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地账户'
+      }
+      calendarMgrErr?.createCalendar(CalendarAccounts, (err, data) => {
+        if (err) {
+          console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          expect(err.code).assertEqual(201);
+        } else {
+          console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
+          expect(data.id != null).assertTrue();
+          return;
+        }
+      });
+    });
+
+    /*
+    * @tc.number  SUB_Application_CalendarManagerApi_CreateCalendar_AsyncParametersErr_0100
+    * @tc.name    Create a Calendar object based on the calendar account information type entry as LOCAL.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_AsyncParametersErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_CreateCalendar_AsyncParametersErr_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: 'HUAWEI日历',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地账户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts, (err, data) => {
+        if (err) {
+          console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          expect(err.code).assertEqual(401);
+        } else {
+          console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
+          expect(data.id != null).assertTrue();
+          return;
+        }
+      });
+    });
+
+    /*
+    * @tc.number  SUB_Application_CalendarManagerApi_CreateCalendar_AsyncDeviceErr_0100
+    * @tc.name    Create a Calendar object based on the calendar account information type entry as LOCAL.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_AsyncDeviceErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_CreateCalendar_AsyncDeviceErr_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: 'HUAWEI日历',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地账户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts, (err, data) => {
+        if (err) {
+          console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          expect(err.code).assertEqual(801);
+        } else {
+          console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
+          expect(data.id != null).assertTrue();
+          return;
+        }
+      });
     });
 
     /*
@@ -259,6 +345,84 @@ export default function CalendarManagerTest() {
     });
 
     /*
+     * @tc.number  SUB_Application_CalendarManagerApi_CreateCalendar_PromiseNoPermission_0100
+     * @tc.name    Create a Calendar object based on the calendar account information type entry as SUBSCRIBED.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_PromiseNoPermission_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_CreateCalendar_PromiseNoPermission_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '订阅帐户',
+        type: calendarManager.CalendarType.SUBSCRIBED,
+        displayName: '订阅帐户'
+      }
+      calendarMgrErr?.createCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + `Succeeded in creating calendar, data: ${JSON.stringify(data)}`);
+        expect(data.id != null).assertTrue();
+        return;
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
+        expect().assertFail();
+        expect(err.code).assertEqual(201);
+      });
+    });
+
+    /*
+   * @tc.number  SUB_Application_CalendarManagerApi_CreateCalendar_PromiseParametersErr_0100
+   * @tc.name    Create a Calendar object based on the calendar account information type entry as SUBSCRIBED.
+   * @tc.desc    Function test
+   * @tc.size    SmallTest
+   * @tc.type    User
+   * @tc.level   Level 2
+   */
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_PromiseParametersErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_CreateCalendar_PromiseParametersErr_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '订阅帐户',
+        type: calendarManager.CalendarType.SUBSCRIBED,
+        displayName: '订阅帐户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + `Succeeded in creating calendar, data: ${JSON.stringify(data)}`);
+        expect(data.id != null).assertTrue();
+        return;
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
+        expect().assertFail();
+        expect(err.code).assertEqual(401);
+      });
+    });
+
+    /*
+    * @tc.number  SUB_Application_CalendarManagerApi_CreateCalendar_PromiseDeviceErr_0100
+    * @tc.name    Create a Calendar object based on the calendar account information type entry as SUBSCRIBED.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
+    it("SUB_Application_CalendarManagerApi_CreateCalendar_PromiseDeviceErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_CreateCalendar_PromiseDeviceErr_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '订阅帐户',
+        type: calendarManager.CalendarType.SUBSCRIBED,
+        displayName: '订阅帐户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + `Succeeded in creating calendar, data: ${JSON.stringify(data)}`);
+        expect(data.id != null).assertTrue();
+        return;
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
+        expect().assertFail();
+        expect(err.code).assertEqual(801);
+      });
+    });
+
+    /*
      * @tc.number  SUB_Application_CalendarManagerApi_CreateCalendar_Promise_0100
      * @tc.name    Create a Calendar object based on the calendar account information type entry as SUBSCRIBED.
      * @tc.desc    Function test
@@ -278,8 +442,95 @@ export default function CalendarManagerTest() {
         expect(data.id != null).assertTrue();
         return;
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
         expect().assertFail();
+      });
+    });
+
+    /*
+    * @tc.number  SUB_Application_CalendarManagerApi_GetCalendar_NoPermission_0100
+    * @tc.name    Gets the specified Calendar object.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
+    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncNoPermission_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_AsyncNoPermission_0100';
+      calendarMgrErr?.getCalendar((err, data) => {
+        if (err) {
+          radio.isRadioOn((error) => {
+            if (error) {
+              console.info("RK device , no modem")
+            } else {
+              console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
+              expect().assertFail();
+              expect(err.code).assertEqual(201);
+            }
+          })
+        } else {
+          console.info(CaseName + "Succeeded in get specified calendar type is LOCAl" + JSON.stringify(data));
+          expect(data.id != null).assertTrue();
+          return;
+        }
+      });
+    });
+
+    /*
+   * @tc.number  SUB_Application_CalendarManagerApi_GetCalendar_AsyncParametersErr_0100
+   * @tc.name    Gets the specified Calendar object.
+   * @tc.desc    Function test
+   * @tc.size    SmallTest
+   * @tc.type    User
+   * @tc.level   Level 2
+   */
+    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncParametersErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_AsyncParametersErr_0100';
+      calendarMgr?.getCalendar((err, data) => {
+        if (err) {
+          radio.isRadioOn((error) => {
+            if (error) {
+              console.info("RK device , no modem")
+            } else {
+              console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
+              expect().assertFail();
+              expect(err.code).assertEqual(401);
+            }
+          })
+        } else {
+          console.info(CaseName + "Succeeded in get specified calendar type is LOCAl" + JSON.stringify(data));
+          expect(data.id != null).assertTrue();
+          return;
+        }
+      });
+    });
+
+    /*
+  * @tc.number  SUB_Application_CalendarManagerApi_GetCalendar_AsyncDeviceErr_0100
+  * @tc.name    Gets the specified Calendar object.
+  * @tc.desc    Function test
+  * @tc.size    SmallTest
+  * @tc.type    User
+  * @tc.level   Level 2
+  */
+    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncDeviceErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_AsyncDeviceErr_0100';
+      calendarMgr?.getCalendar((err, data) => {
+        if (err) {
+          radio.isRadioOn((error) => {
+            if (error) {
+              console.info("RK device , no modem")
+            } else {
+              console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
+              expect().assertFail();
+              expect(err.code).assertEqual(801);
+            }
+          })
+        } else {
+          console.info(CaseName + "Succeeded in get specified calendar type is LOCAl" + JSON.stringify(data));
+          expect(data.id != null).assertTrue();
+          return;
+        }
       });
     });
 
@@ -342,6 +593,90 @@ export default function CalendarManagerTest() {
     });
 
     /*
+    * @tc.number  SUB_Application_CalendarManagerApi_GetCalendar_AsyncNoPermission_0300
+    * @tc.name    Gets the specified Calendar object.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
+    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncNoPermission_0300", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_AsyncNoPermission_0300';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: 'xx生日账户',
+        type: calendarManager.CalendarType.BIRTHDAY,
+        displayName: '生日账户'
+      }
+      calendarMgrErr?.getCalendar(CalendarAccounts, (err, data) => {
+        if (err) {
+          console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          expect(err.code).assertEqual(201);
+        } else {
+          console.info(CaseName + "Succeeded in get specified calendar type is BIRTHDAY" + JSON.stringify(data));
+          expect(data.id != null).assertTrue();
+          return;
+        }
+      });
+    });
+
+    /*
+     * @tc.number  SUB_Application_CalendarManagerApi_GetCalendar_AsyncParametersErr_0300
+     * @tc.name    Gets the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncParametersErr_0300", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_AsyncParametersErr_0300';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: 'xx生日账户',
+        type: calendarManager.CalendarType.BIRTHDAY,
+        displayName: '生日账户'
+      }
+      calendarMgr?.getCalendar(CalendarAccounts, (err, data) => {
+        if (err) {
+          console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          expect(err.code).assertEqual(401);
+        } else {
+          console.info(CaseName + "Succeeded in get specified calendar type is BIRTHDAY" + JSON.stringify(data));
+          expect(data.id != null).assertTrue();
+          return;
+        }
+      });
+    });
+
+    /*
+     * @tc.number  SUB_Application_CalendarManagerApi_GetCalendar_AsyncDeviceErr_0300
+     * @tc.name    Gets the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_GetCalendar_AsyncDeviceErr_0300", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_AsyncDeviceErr_0300';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: 'xx生日账户',
+        type: calendarManager.CalendarType.BIRTHDAY,
+        displayName: '生日账户'
+      }
+      calendarMgr?.getCalendar(CalendarAccounts, (err, data) => {
+        if (err) {
+          console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          expect(err.code).assertEqual(801);
+        } else {
+          console.info(CaseName + "Succeeded in get specified calendar type is BIRTHDAY" + JSON.stringify(data));
+          expect(data.id != null).assertTrue();
+          return;
+        }
+      });
+    });
+
+    /*
      * @tc.number  SUB_Application_CalendarManagerApi_GetCalendar_Async_0300
      * @tc.name    Gets the specified Calendar object.
      * @tc.desc    Function test
@@ -392,6 +727,83 @@ export default function CalendarManagerTest() {
           expect(data.id != null).assertTrue();
           return;
         }
+      });
+    });
+
+    /*
+     * @tc.number  SUB_Application_CalendarManagerApi_GetCalendar_PromiseNoPermission_0100
+     * @tc.name    Gets the default Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_GetCalendar_PromiseNoPermission_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_PromiseNoPermission_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '订阅帐户',
+        type: calendarManager.CalendarType.SUBSCRIBED,
+        displayName: '订阅帐户'
+      }
+      calendarMgrErr?.getCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
+        expect(data.id != null).assertTrue();
+        return;
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + "Failed to delete calendar type is SUBSCRIBED" + JSON.stringify(err));
+        expect(err.code).assertEqual(201);
+      });
+    });
+
+    /*
+    * @tc.number  SUB_Application_CalendarManagerApi_GetCalendar_PromiseParametersErr_0100
+    * @tc.name    Gets the default Calendar object.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
+    it("SUB_Application_CalendarManagerApi_GetCalendar_PromiseParametersErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_PromiseParametersErr_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '订阅帐户',
+        type: calendarManager.CalendarType.SUBSCRIBED,
+        displayName: '订阅帐户'
+      }
+      calendarMgr?.getCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
+        expect(data.id != null).assertTrue();
+        return;
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + "Failed to delete calendar type is SUBSCRIBED" + JSON.stringify(err));
+        expect().assertFail();
+        expect(err.code).assertEqual(401);
+      });
+    });
+
+    /*
+    * @tc.number  SUB_Application_CalendarManagerApi_GetCalendar_PromiseDeviceErr_0100
+    * @tc.name    Gets the default Calendar object.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
+    it("SUB_Application_CalendarManagerApi_GetCalendar_PromiseDeviceErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetCalendar_PromiseDeviceErr_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '订阅帐户',
+        type: calendarManager.CalendarType.SUBSCRIBED,
+        displayName: '订阅帐户'
+      }
+      calendarMgr?.getCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
+        expect(data.id != null).assertTrue();
+        return;
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + "Failed to delete calendar type is SUBSCRIBED" + JSON.stringify(err));
+        expect().assertFail();
+        expect(err.code).assertEqual(801);
       });
     });
 
@@ -447,6 +859,75 @@ export default function CalendarManagerTest() {
     });
 
     /*
+     * @tc.number  SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncNoPermission_0100
+     * @tc.name    Gets the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncNoPermission_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncNoPermission_0100';
+      calendarMgrErr?.getAllCalendars((err, data) => {
+        if (err) {
+          console.info(CaseName + `Failed to get AllCalendars, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          expect(err.code).assertEqual(201);
+        } else {
+          console.info(CaseName + "Succeeded in get AllCalendars" + JSON.stringify(data));
+          expect(data != null).assertTrue();
+          return;
+        }
+      });
+    });
+
+    /*
+     * @tc.number  SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncParametersErr_0100
+     * @tc.name    Gets the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncParametersErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncParametersErr_0100';
+      calendarMgr?.getAllCalendars((err, data) => {
+        if (err) {
+          console.info(CaseName + `Failed to get AllCalendars, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          expect(err.code).assertEqual(401);
+        } else {
+          console.info(CaseName + "Succeeded in get AllCalendars" + JSON.stringify(data));
+          expect(data != null).assertTrue();
+          return;
+        }
+      });
+    });
+
+    /*
+     * @tc.number  SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncDeviceErr_0100
+     * @tc.name    Gets the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncDeviceErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_AsyncDeviceErr_0100';
+      calendarMgr?.getAllCalendars((err, data) => {
+        if (err) {
+          console.info(CaseName + `Failed to get AllCalendars, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          expect(err.code).assertEqual(801);
+        } else {
+          console.info(CaseName + "Succeeded in get AllCalendars" + JSON.stringify(data));
+          expect(data != null).assertTrue();
+          return;
+        }
+      });
+    });
+
+    /*
      * @tc.number  SUB_Application_CalendarManagerApi_GetAllCalendars_Async_0100
      * @tc.name    Gets the specified Calendar object.
      * @tc.desc    Function test
@@ -469,6 +950,69 @@ export default function CalendarManagerTest() {
     });
 
     /*
+     * @tc.number  SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseNoPermission_0100
+     * @tc.name    Gets all Calendar objects created by the current application and the default Calendar objects.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseNoPermission_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseNoPermission_0100';
+      calendarMgrErr?.getAllCalendars().then((data) => {
+        console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
+        expect(data != null).assertTrue();
+        return;
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + "Failed to delete calendar type is SUBSCRIBED" + JSON.stringify(err));
+        expect().assertFail();
+        expect(err.code).assertEqual(201);
+      });
+    });
+
+    /*
+     * @tc.number  SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseParametersErr_0100
+     * @tc.name    Gets all Calendar objects created by the current application and the default Calendar objects.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseParametersErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseParametersErr_0100';
+      calendarMgr?.getAllCalendars().then((data) => {
+        console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
+        expect(data != null).assertTrue();
+        return;
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + "Failed to delete calendar type is SUBSCRIBED" + JSON.stringify(err));
+        expect().assertFail();
+        expect(err.code).assertEqual(401);
+      });
+    });
+
+    /*
+    * @tc.number  SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseDeviceErr_0100
+    * @tc.name    Gets all Calendar objects created by the current application and the default Calendar objects.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
+    it("SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseDeviceErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_PromiseDeviceErr_0100';
+      calendarMgr?.getAllCalendars().then((data) => {
+        console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
+        expect(data != null).assertTrue();
+        return;
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + "Failed to delete calendar type is SUBSCRIBED" + JSON.stringify(err));
+        expect().assertFail();
+        expect(err.code).assertEqual(801);
+      });
+    });
+
+    /*
      * @tc.number  SUB_Application_CalendarManagerApi_GetAllCalendars_Promise_0100
      * @tc.name    Gets all Calendar objects created by the current application and the default Calendar objects.
      * @tc.desc    Function test
@@ -484,6 +1028,105 @@ export default function CalendarManagerTest() {
         return;
       }).catch((err: BusinessError) => {
         console.info(CaseName + "Failed to delete calendar type is SUBSCRIBED" + JSON.stringify(err));
+        expect().assertFail();
+      });
+    });
+
+    /*
+    * @tc.number  SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncNoPermission_0100
+    * @tc.name    Deletes the specified Calendar object.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncNoPermission_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncNoPermission_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
+        calendarMgrErr?.deleteCalendar(data, (err, data) => {
+          if (err) {
+            console.info(CaseName + `Failed to delete calendar, Code is ${err.code}, message is ${err.message}`);
+            expect().assertFail();
+            expect(err.code).assertEqual(201);
+          } else {
+            console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
+            return;
+          }
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+     * @tc.number  SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncParametersErr_0100
+     * @tc.name    Deletes the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncParametersErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncParametersErr_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
+        calendarMgr?.deleteCalendar(data, (err, data) => {
+          if (err) {
+            console.info(CaseName + `Failed to delete calendar, Code is ${err.code}, message is ${err.message}`);
+            expect().assertFail();
+            expect(err.code).assertEqual(401);
+          } else {
+            console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
+            return;
+          }
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+     * @tc.number  SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncDeviceErr_0100
+     * @tc.name    Deletes the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncDeviceErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_AsyncDeviceErr_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
+        calendarMgr?.deleteCalendar(data, (err, data) => {
+          if (err) {
+            console.info(CaseName + `Failed to delete calendar, Code is ${err.code}, message is ${err.message}`);
+            expect().assertFail();
+            expect(err.code).assertEqual(801);
+          } else {
+            console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
+            return;
+          }
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
         expect().assertFail();
       });
     });
@@ -543,6 +1186,99 @@ export default function CalendarManagerTest() {
         }).catch((err: BusinessError) => {
           console.info(CaseName + `Failed to delete calendar, Code is ${err.code}, message is ${err.message}`);
           expect().assertFail();
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+     * @tc.number  SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseNoPermission_0100
+     * @tc.name    Deletes the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseNoPermission_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseNoPermission_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
+        calendarMgrErr?.deleteCalendar(data).then((data) => {
+          console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
+          return;
+        }).catch((err: BusinessError) => {
+          console.info(CaseName + `Failed to delete calendar, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          expect(err.code).assertEqual(201);
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+     * @tc.number  SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseParametersErr_0100
+     * @tc.name    Deletes the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseParametersErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseParametersErr_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
+        calendarMgr?.deleteCalendar(data).then((data) => {
+          console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
+          return;
+        }).catch((err: BusinessError) => {
+          console.info(CaseName + `Failed to delete calendar, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          expect(err.code).assertEqual(401);
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+     * @tc.number  SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseDeviceErr_0100
+     * @tc.name    Deletes the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseDeviceErr_0100", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_DeleteCalendar_PromiseDeviceErr_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
+        calendarMgr?.deleteCalendar(data).then((data) => {
+          console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
+          return;
+        }).catch((err: BusinessError) => {
+          console.info(CaseName + `Failed to delete calendar, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          expect(err.code).assertEqual(801);
         });
       }).catch((err: BusinessError) => {
         console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
@@ -991,7 +1727,7 @@ export default function CalendarManagerTest() {
           expect().assertFail();
         });
       }).catch((err: BusinessError) => {
-        console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
         expect().assertFail();
       });
     });
@@ -1259,6 +1995,76 @@ export default function CalendarManagerTest() {
     });
 
     /*
+    * @tc.number  SUB_Application_CalendarManagerApi_GetEvents_Promise_0400
+    * @tc.name    Example Query all events in Calendar By FilterByTitle.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
+    it("SUB_Application_CalendarManagerApi_GetEvents_Promise_0400", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetEvents_Promise_0400';
+      const filter = calendarManager.EventFilter.filterByTitle('开会日程');
+
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
+        Calendar.getEvents(filter).then((data) => {
+          console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
+          let data1: calendarManager.Event[];
+          data1 = data;
+          expect(data != null).assertTrue();
+          expect(data1[0].id != 0).assertTrue();
+          return;
+        }).catch((err: BusinessError) => {
+          console.error(CaseName + `Failed to get events, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+    * @tc.number  SUB_Application_CalendarManagerApi_GetEvents_Promise_0500
+    * @tc.name    Example Query all events in Calendar By FilterByTitle.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
+    it("SUB_Application_CalendarManagerApi_GetEvents_Promise_0500", 0, () => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_GetEvents_Promise_0500';
+
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
+        Calendar.getEvents().then((data) => {
+          console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
+          expect(data != null).assertTrue();
+          return;
+        }).catch((err: BusinessError) => {
+          console.error(CaseName + `Failed to get events, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
      * @tc.number  SUB_Application_CalendarManagerApi_DeleteEvent_Async_0100
      * @tc.name    Delete an agenda.
      * @tc.desc    Function test
@@ -1500,6 +2306,605 @@ export default function CalendarManagerTest() {
       } catch (err) {
         console.info(CaseName + "Failed to editEvent" + JSON.stringify(err));
       }
+    });
+
+    /*
+     * @tc.number  SUB_2Application_CalendarManagerApi_GetEvents_Promise_0100
+     * @tc.name    Example Query all events in Calendar By FilterById.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_2Application_CalendarManagerApi_GetEvents_Promise_0100", 0, () => {
+      let CaseName = 'SUB_2Application_CalendarManagerApi_GetEvents_Promise_0100';
+      const filter = calendarManager.EventFilter.filterById([0, 1]);
+      const columns: (keyof calendarManager.Event)[] = ['title', 'type', 'startTime', 'endTime'];
+
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+
+      let Schedule: calendarManager.Event = {
+        id: 100,
+        title: '',
+        location: {
+          location: 'xx大礼堂',
+          longitude: 116.3,
+          latitude: 39.9,
+        },
+        isAllDay: true,
+        attendee: [
+          {
+            name: '小王',
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.ORGANIZER
+          },
+          {
+            name: '小李',
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.PARTICIPANT
+          },
+          {
+            name: '老李',
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.PARTICIPANT
+          }
+        ],
+        timeZone: 'UTC',
+        reminderTime: [1],
+        description: '',
+        service: {
+          type: calendarManager.ServiceType.MEETING,
+          uri: '',
+          description: ''
+        },
+        type: calendarManager.EventType.IMPORTANT,
+        startTime: new Date().getTime(),
+        endTime: new Date().getTime() + 60 * 60 * 3000
+      }
+
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
+        Calendar.getEvents(filter, columns).then((data) => {
+          console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
+          expect(data != null).assertTrue();
+          return;
+        }).catch((err: BusinessError) => {
+          console.error(CaseName + `Failed to get events, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+     * @tc.number  SUB_2Application_CalendarManagerApi_GetEvents_Promise_0200
+     * @tc.name    Example Query all events in Calendar By FilterById.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_2Application_CalendarManagerApi_GetEvents_Promise_0200", 0, () => {
+      let CaseName = 'SUB_2Application_CalendarManagerApi_GetEvents_Promise_0200';
+      const filter = calendarManager.EventFilter.filterById([0, 1]);
+      const columns: (keyof calendarManager.Event)[] = ['title', 'type', 'startTime', 'endTime'];
+
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+
+      let Schedule: calendarManager.Event = {
+        id: 100,
+        title: '',
+        location: {
+          location: 'xx大礼堂',
+          longitude: 116.3,
+          latitude: 39.9,
+        },
+        isAllDay: true,
+        attendee: [
+          {
+            name: '小王',
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.ORGANIZER
+          },
+          {
+            name: '小李',
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.PARTICIPANT
+          },
+          {
+            name: '老李',
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.PARTICIPANT
+          }
+        ],
+        timeZone: 'UTC',
+        reminderTime: [1],
+        description: '',
+        service: {
+          type: calendarManager.ServiceType.MEETING,
+          uri: '',
+          description: ''
+        },
+        type: calendarManager.EventType.IMPORTANT,
+        startTime: new Date().getTime(),
+        endTime: new Date().getTime() + 60 * 60 * 3000
+      }
+      
+
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
+        Calendar.getEvents(filter).then((data) => {
+          console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
+          expect(data != null).assertTrue();
+          return;
+        }).catch((err: BusinessError) => {
+          console.error(CaseName + `Failed to get events, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+     * @tc.number  SUB_2Application_CalendarManagerApi_GetEvents_Promise_0300
+     * @tc.name    Example Query all events in Calendar By FilterById.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_2Application_CalendarManagerApi_GetEvents_Promise_0300", 0, () => {
+      let CaseName = 'SUB_2Application_CalendarManagerApi_GetEvents_Promise_0300';
+      const filter = calendarManager.EventFilter.filterById([0, 1]);
+      const columns: (keyof calendarManager.Event)[] = ['title', 'type', 'startTime', 'endTime'];
+
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
+        Calendar.getEvents(columns).then((data) => {
+          console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
+          expect(data != null).assertTrue();
+          return;
+        }).catch((err: BusinessError) => {
+          console.error(CaseName + `Failed to get events, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+     * @tc.number  SUB_2Application_CalendarManagerApi_GetEvents_Promise_0400
+     * @tc.name    Example Query all events in Calendar By FilterById.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_2Application_CalendarManagerApi_GetEvents_Promise_0400", 0, () => {
+      let CaseName = 'SUB_2Application_CalendarManagerApi_GetEvents_Promise_0400';
+      const filter = calendarManager.EventFilter.filterById([0, 1]);
+      const columns: (keyof calendarManager.Event)[] = ['title', 'type', 'startTime', 'endTime'];
+
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
+        Calendar.getEvents().then((data) => {
+          console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
+          expect(data != null).assertTrue();
+          return;
+        }).catch((err: BusinessError) => {
+          console.error(CaseName + `Failed to get events, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+     * @tc.number  SUB_2Application_CalendarManagerApi_GetAccount_0100
+     * @tc.name    Get calendar account information.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_2Application_CalendarManagerApi_GetAccount_0100", 0, () => {
+      let CaseName = 'SUB_2Application_CalendarManagerApi_GetAccount_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '生日帐户',
+        type: calendarManager.CalendarType.BIRTHDAY,
+        displayName: '生日帐户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
+        let calendarAccounts = Calendar.getAccount();
+        expect(calendarAccounts.name != '').assertTrue();
+        console.info("get account success " + JSON.stringify(calendarAccounts));
+        return;
+      }).catch((err: BusinessError) => {
+        if(err.code == 201) {
+          console.info('权限错误')
+        } else if (err.code == 401) {
+          console.info('API参数错误')
+        } else if (err.code == 801) {
+          console.info('当前设备不支持API')
+        }
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+     * @tc.number  SUB_2Application_CalendarManagerApi_CreateCalendar_Async_0100
+     * @tc.name    Create a Calendar object based on the calendar account information type entry as LOCAL.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_2Application_CalendarManagerApi_CreateCalendar_Async_0100", 0, () => {
+      let CaseName = 'SUB_2Application_CalendarManagerApi_CreateCalendar_Async_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '日历',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地账户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts, (err, data) => {
+        if (err) {
+          if(err.code == 201) {
+            console.info('权限错误')
+          } else if (err.code == 401) {
+            console.info('API参数错误')
+          } else if (err.code == 801) {
+            console.info('当前设备不支持API')
+          }
+          console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+        } else {
+          console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
+          expect(data.id != null).assertTrue();
+          return;
+        }
+      });
+    });
+
+    /*
+     * @tc.number  SUB_2Application_CalendarManagerApi_DeleteCalendar_Async_0100
+     * @tc.name    Deletes the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_2Application_CalendarManagerApi_DeleteCalendar_Async_0100", 0, () => {
+      let CaseName = 'SUB_2Application_CalendarManagerApi_DeleteCalendar_Async_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
+        calendarMgr?.deleteCalendar(data, (err, data) => {
+          if (err) {
+            if(err.code == 201) {
+              console.info('权限错误')
+            } else if (err.code == 401) {
+              console.info('API参数错误')
+            } else if (err.code == 801) {
+              console.info('当前设备不支持API')
+            }
+            console.info(CaseName + `Failed to delete calendar, Code is ${err.code}, message is ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
+            return;
+          }
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+     * @tc.number  SUB_2Application_CalendarManagerApi_DeleteCalendar_Promise_0100
+     * @tc.name    Deletes the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_2Application_CalendarManagerApi_DeleteCalendar_Promise_0100", 0, () => {
+      let CaseName = 'SUB_2Application_CalendarManagerApi_DeleteCalendar_Promise_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+      calendarMgr?.createCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
+        calendarMgr?.deleteCalendar(data).then((data) => {
+          console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
+          return;
+        }).catch((err: BusinessError) => {
+          if(err.code == 201) {
+            console.info('权限错误')
+          } else if (err.code == 401) {
+            console.info('API参数错误')
+          } else if (err.code == 801) {
+            console.info('当前设备不支持API')
+          }
+          console.info(CaseName + `Failed to delete calendar, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+     * @tc.number  SUB_2Application_CalendarManagerApi_GetCalendar_Promise_0100
+     * @tc.name    Gets the default Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_2Application_CalendarManagerApi_GetCalendar_Promise_0100", 0, () => {
+      let CaseName = 'SUB_2Application_CalendarManagerApi_GetCalendar_Promise_0100';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '订阅帐户',
+        type: calendarManager.CalendarType.SUBSCRIBED,
+        displayName: '订阅帐户'
+      }
+      calendarMgr?.getCalendar(CalendarAccounts).then((data) => {
+        console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
+        expect(data.id != null).assertTrue();
+        return;
+      }).catch((err: BusinessError) => {
+        if(err.code == 201) {
+          console.info('权限错误')
+        } else if (err.code == 401) {
+          console.info('API参数错误')
+        } else if (err.code == 801) {
+          console.info('当前设备不支持API')
+        }
+        console.info(CaseName + "Failed to delete calendar type is SUBSCRIBED" + JSON.stringify(err));
+        expect().assertFail();
+      });
+    });
+
+    /*
+     * @tc.number  SUB_2Application_CalendarManagerApi_GetCalendar_Async_0400
+     * @tc.name    Gets the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_2Application_CalendarManagerApi_GetCalendar_Async_0400", 0, () => {
+      let CaseName = 'SUB_2Application_CalendarManagerApi_GetCalendar_Async_0400';
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: 'CalDAV协议帐户',
+        type: calendarManager.CalendarType.CALDAV,
+        displayName: '支持CalDAV协议帐户'
+      }
+      calendarMgr?.getCalendar(CalendarAccounts, (err, data) => {
+        if (err) {
+          if(err.code == 201) {
+            console.info('权限错误')
+          } else if (err.code == 401) {
+            console.info('API参数错误')
+          } else if (err.code == 801) {
+            console.info('当前设备不支持API')
+          }
+          console.info(CaseName + `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+        } else {
+          console.info(CaseName + "Succeeded in get specified calendar type is CALDAV" + JSON.stringify(data));
+          expect(data.id != null).assertTrue();
+          return;
+        }
+      });
+    });
+
+    /*
+     * @tc.number  SUB_2Application_CalendarManagerApi_GetCalendar_Async_0100
+     * @tc.name    Gets the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_2Application_CalendarManagerApi_GetCalendar_Async_0100", 0, () => {
+      let CaseName = 'SUB_2Application_CalendarManagerApi_GetCalendar_Async_0100';
+      calendarMgr?.getCalendar((err, data) => {
+        if (err) {
+          if(err.code == 201) {
+            console.info('权限错误')
+          } else if (err.code == 401) {
+            console.info('API参数错误')
+          } else if (err.code == 801) {
+            console.info('当前设备不支持API')
+          }
+          radio.isRadioOn((error) => {
+            if (error) {
+              console.info("RK device , no modem")
+            } else {
+              console.info(CaseName +
+                `Failed to get specified calendar, Code is ${err.code}, message is ${err.message}`);
+              expect().assertFail();
+            }
+          })
+        } else {
+          console.info(CaseName + "Succeeded in get specified calendar type is LOCAl" + JSON.stringify(data));
+          expect(data.id != null).assertTrue();
+          return;
+        }
+      });
+    });
+
+    /*
+     * @tc.number  SUB_2Application_CalendarManagerApi_GetAllCalendars_Promise_0100
+     * @tc.name    Gets all Calendar objects created by the current application and the default Calendar objects.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_2Application_CalendarManagerApi_GetAllCalendars_Promise_0100", 0, () => {
+      let CaseName = 'SUB_2Application_CalendarManagerApi_GetAllCalendars_Promise_0100';
+      calendarMgr?.getAllCalendars().then((data) => {
+        console.info(CaseName + `Succeeded in deleting calendar, data: ${JSON.stringify(data)}`);
+        expect(data != null).assertTrue();
+        return;
+      }).catch((err: BusinessError) => {
+        if(err.code == 201) {
+          console.info('权限错误')
+        } else if (err.code == 401) {
+          console.info('API参数错误')
+        } else if (err.code == 801) {
+          console.info('当前设备不支持API')
+        }
+        console.info(CaseName + "Failed to delete calendar type is SUBSCRIBED" + JSON.stringify(err));
+        expect().assertFail();
+      });
+    });
+
+    /*
+     * @tc.number  SUB_2Application_CalendarManagerApi_GetAllCalendars_Async_0100
+     * @tc.name    Gets the specified Calendar object.
+     * @tc.desc    Function test
+     * @tc.size    SmallTest
+     * @tc.type    User
+     * @tc.level   Level 2
+     */
+    it("SUB_2Application_CalendarManagerApi_GetAllCalendars_Async_0100", 0, () => {
+      let CaseName = 'SUB_2Application_CalendarManagerApi_GetAllCalendars_Async_0100';
+      calendarMgr?.getAllCalendars((err, data) => {
+        if (err) {
+          if(err.code == 201) {
+            console.info('权限错误')
+          } else if (err.code == 401) {
+            console.info('API参数错误')
+          } else if (err.code == 801) {
+            console.info('当前设备不支持API')
+          }
+          console.info(CaseName + `Failed to get AllCalendars, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+        } else {
+          console.info(CaseName + "Succeeded in get AllCalendars" + JSON.stringify(data));
+          expect(data != null).assertTrue();
+          return;
+        }
+      });
+    });
+
+    /*
+    * @tc.number  SUB_2Application_CalendarManagerApi_QueryEventInstances_Promise_0100
+    * @tc.name    Example Query all events in Calendar.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
+    it("SUB_2Application_CalendarManagerApi_QueryEventInstances_Promise_0100", 0, () => {
+      let CaseName = 'SUB_2Application_CalendarManagerApi_QueryEventInstances_Promise_0100';
+      const filter = calendarManager.EventFilter.filterById([0, 1]);
+      const columns: (keyof calendarManager.Event)[] = ['title', 'type', 'startTime', 'endTime',
+        "instanceStartTime", "instanceEndTime"];
+
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+
+      let Schedule: calendarManager.Event = {
+        id: 100,
+        title: '',
+        location: {
+          location: 'xx大礼堂',
+          longitude: 116.3,
+          latitude: 39.9,
+        },
+        isAllDay: false,
+        attendee: [
+          {
+            name: '小王',
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.ORGANIZER
+          },
+          {
+            name: '小李',
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.PARTICIPANT
+          },
+          {
+            name: '老李',
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.PARTICIPANT
+          }
+        ],
+        timeZone: 'UTC',
+        reminderTime: [1],
+        description: '',
+        service: {
+          type: calendarManager.ServiceType.MEETING,
+          uri: '',
+          description: ''
+        },
+        type: calendarManager.EventType.IMPORTANT,
+        startTime: new Date().getTime(),
+        endTime: new Date().getTime() + 60 * 60 * 3000,
+        instanceStartTime: new Date().getTime(),
+        instanceEndTime: new Date().getTime() + 60 * 60 * 3000
+      }
+
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
+        Calendar.queryEventInstances(new Date().getTime(), new Date().getTime() + 60 * 60 * 3000,
+          undefined, columns).then((data) => {
+          console.info(CaseName + "Succeeded in getting event instances" + JSON.stringify(data));
+          expect(data != null).assertTrue();
+          return;
+        }).catch((err: BusinessError) => {
+          console.error(CaseName + `Failed to get event instances, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
     });
 
   });

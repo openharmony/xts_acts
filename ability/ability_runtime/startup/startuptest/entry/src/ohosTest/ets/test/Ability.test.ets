@@ -16,7 +16,10 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import common from '@ohos.app.ability.common';
 import ability from '@ohos.ability.ability';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { Driver, ON, MatchPattern } from '@ohos.UiTest';
 
+let driver = Driver.create();
+const DELY_TIME = 5000;
 export default function abilityTest() {
   let testContext: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>("testContext") as common.UIAbilityContext;
   console.log("du.yuan testContext:", testContext)
@@ -59,6 +62,14 @@ export default function abilityTest() {
         expect(startResult).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -85,6 +96,14 @@ export default function abilityTest() {
         expect(startOrder.indexOf('startupSampleInit3') != -1).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -114,6 +133,14 @@ export default function abilityTest() {
         expect(startOrder.indexOf('startupSampleInit8') != -1).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -140,6 +167,14 @@ export default function abilityTest() {
         expect(code).assertEqual(28800002)
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -166,6 +201,14 @@ export default function abilityTest() {
         expect(code).assertEqual(28800002)
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -192,6 +235,14 @@ export default function abilityTest() {
         expect(hasInit003).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -220,6 +271,14 @@ export default function abilityTest() {
         expect(startOrder.indexOf('Sample_007') != -1).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -251,6 +310,14 @@ export default function abilityTest() {
         expect(startupSampleComp).assertFalse()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -275,6 +342,14 @@ export default function abilityTest() {
         expect(res).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -299,6 +374,14 @@ export default function abilityTest() {
         expect(res).assertFalse()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -326,6 +409,14 @@ export default function abilityTest() {
         expect(startResult).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -355,6 +446,14 @@ export default function abilityTest() {
         expect(startOrder.indexOf('startupSampleInit3') != -1).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -387,6 +486,14 @@ export default function abilityTest() {
         expect(startOrder.indexOf('startupSampleInit8') != -1).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -416,6 +523,14 @@ export default function abilityTest() {
         expect(code).assertEqual(28800002)
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -445,6 +560,14 @@ export default function abilityTest() {
         expect(code).assertEqual(28800002)
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -474,6 +597,14 @@ export default function abilityTest() {
         expect(hasInit003).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -505,6 +636,14 @@ export default function abilityTest() {
         expect(startOrder.indexOf('Sample_007') != -1).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -538,6 +677,14 @@ export default function abilityTest() {
         expect(startupSampleComp).assertFalse()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -565,6 +712,14 @@ export default function abilityTest() {
         expect(res).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -592,6 +747,14 @@ export default function abilityTest() {
         expect(res).assertFalse()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -619,6 +782,14 @@ export default function abilityTest() {
         expect(code == 401).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -646,6 +817,14 @@ export default function abilityTest() {
         expect(code == 401).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -673,6 +852,14 @@ export default function abilityTest() {
         expect(code == 401).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -700,6 +887,14 @@ export default function abilityTest() {
         expect(code == 16000050).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -727,6 +922,14 @@ export default function abilityTest() {
         expect(code == 401).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -754,6 +957,14 @@ export default function abilityTest() {
         expect(code == 401).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
 
     /**
@@ -789,6 +1000,14 @@ export default function abilityTest() {
         expect(apiResult[10]).assertTrue()
         done();
       })
+      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
+      console.log(TAG + " is need to click " + JSON.stringify(allowed));
+      if(allowed){
+        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
+        if(buttons && buttons.length > 0){
+          await buttons[buttons.length - 1].click();
+        }
+      }
     })
   })
 }
