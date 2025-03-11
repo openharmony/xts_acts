@@ -30,42 +30,40 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetWindowTouchablePromiseErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetWindowTouchablePromiseErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetWindowTouchablePromiseErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetWindowTouchablePromiseErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetWindowTouchablePromiseErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
+
+      try {
+        await win!.setWindowTouchable(null).then(async () => {
+          console.info(msgStr + 'Succeeded in calling setWindowTouchable.');
           expect().assertFail();
-          done()
-        }
-
-        try {
-          await win!.setWindowTouchable(null).then(async () => {
-            console.info(msgStr + 'Succeeded in calling setWindowTouchable.');
-            expect().assertFail();
-          }).catch(async (err: BusinessError) => {
-            console.error(msgStr + 'Failed to call setWindowTouchable. Cause: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
-          });
-          await win!.destroyWindow()
-          done()
-        } catch (exception) {
-          console.error(msgStr + 'Failed to set the call setWindowTouchable. Cause:' + JSON.stringify(exception));
-          await win!.destroyWindow()
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call setWindowTouchable. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(401);
+        });
+        await win!.destroyWindow()
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setWindowTouchable. Cause:' + JSON.stringify(exception));
+        await win!.destroyWindow()
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
 
@@ -78,46 +76,44 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetWindowTouchableCallbackErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetWindowTouchableCallbackErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetWindowTouchableCallbackErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetWindowTouchableCallbackErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetWindowTouchableCallbackErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        try {
-          win!.setWindowTouchable(null, async (err: BusinessError) => {
-            await win!.destroyWindow()
-            const errCode: number = err.code;
-            if (errCode) {
-              console.error(msgStr + 'Failed to call setWindowTouchable. Cause:' + JSON.stringify(err));
-              expect(err.code).assertEqual(401);
-              done()
-              return;
-            }
-            console.info(msgStr + 'Succeeded in calling setWindowTouchable.');
-            expect().assertFail();
-            done();
-          });
-        } catch (exception) {
-          console.error(msgStr + 'Failed to call setWindowTouchable. Cause:' + JSON.stringify(exception));
+      try {
+        win!.setWindowTouchable(null, async (err: BusinessError) => {
           await win!.destroyWindow()
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(msgStr + 'Failed to call setWindowTouchable. Cause:' + JSON.stringify(err));
+            expect(err.code).assertEqual(401);
+            done()
+            return;
+          }
+          console.info(msgStr + 'Succeeded in calling setWindowTouchable.');
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to call setWindowTouchable. Cause:' + JSON.stringify(exception));
+        await win!.destroyWindow()
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
 
@@ -130,42 +126,40 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetRaiseByClickEnabledPromiseErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetRaiseByClickEnabledPromiseErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetRaiseByClickEnabledPromiseErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetRaiseByClickEnabledPromiseErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetRaiseByClickEnabledPromiseErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
+
+      try {
+        await win!.setRaiseByClickEnabled(null).then(async () => {
+          console.info(msgStr + 'Succeeded in calling setRaiseByClickEnabled.');
           expect().assertFail();
-          done()
-        }
-
-        try {
-          await win!.setRaiseByClickEnabled(null).then(async () => {
-            console.info(msgStr + 'Succeeded in calling setRaiseByClickEnabled.');
-            expect().assertFail();
-          }).catch(async (err: BusinessError) => {
-            console.error(msgStr + 'Failed to call setRaiseByClickEnabled. Cause: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
-          });
-          await win!.destroyWindow()
-          done()
-        } catch (exception) {
-          console.error(msgStr + 'Failed to set the call setRaiseByClickEnabled. Cause:' + JSON.stringify(exception));
-          await win!.destroyWindow()
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call setRaiseByClickEnabled. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(401);
+        });
+        await win!.destroyWindow()
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setRaiseByClickEnabled. Cause:' + JSON.stringify(exception));
+        await win!.destroyWindow()
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
 
@@ -178,46 +172,44 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetResizeByDragEnabledCallbackErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetResizeByDragEnabledCallbackErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetResizeByDragEnabledCallbackErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetResizeByDragEnabledCallbackErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetResizeByDragEnabledCallbackErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        try {
-          win!.setResizeByDragEnabled(null, async (err: BusinessError) => {
-            await win!.destroyWindow()
-            const errCode: number = err.code;
-            if (errCode) {
-              console.error(msgStr + 'Failed to call setResizeByDragEnabled. Cause:' + JSON.stringify(err));
-              expect(err.code).assertEqual(401);
-              done()
-              return;
-            }
-            console.info(msgStr + 'Succeeded in calling setResizeByDragEnabled.');
-            expect().assertFail();
-            done();
-          });
-        } catch (exception) {
-          console.error(msgStr + 'Failed to call setResizeByDragEnabled. Cause:' + JSON.stringify(exception));
+      try {
+        win!.setResizeByDragEnabled(null, async (err: BusinessError) => {
           await win!.destroyWindow()
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(msgStr + 'Failed to call setResizeByDragEnabled. Cause:' + JSON.stringify(err));
+            expect(err.code).assertEqual(401);
+            done()
+            return;
+          }
+          console.info(msgStr + 'Succeeded in calling setResizeByDragEnabled.');
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to call setResizeByDragEnabled. Cause:' + JSON.stringify(exception));
+        await win!.destroyWindow()
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
 
@@ -230,42 +222,40 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetResizeByDragEnabledPromiseErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetResizeByDragEnabledPromiseErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetResizeByDragEnabledPromiseErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetResizeByDragEnabledPromiseErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetResizeByDragEnabledPromiseErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
+
+      try {
+        await win!.setResizeByDragEnabled(null).then(async () => {
+          console.info(msgStr + 'Succeeded in calling setResizeByDragEnabled.');
           expect().assertFail();
-          done()
-        }
-
-        try {
-          await win!.setResizeByDragEnabled(null).then(async () => {
-            console.info(msgStr + 'Succeeded in calling setResizeByDragEnabled.');
-            expect().assertFail();
-          }).catch(async (err: BusinessError) => {
-            console.error(msgStr + 'Failed to call setResizeByDragEnabled. Cause: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
-          });
-          await win!.destroyWindow()
-          done()
-        } catch (exception) {
-          console.error(msgStr + 'Failed to set the call setResizeByDragEnabled. Cause:' + JSON.stringify(exception));
-          await win!.destroyWindow()
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call setResizeByDragEnabled. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(401);
+        });
+        await win!.destroyWindow()
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setResizeByDragEnabled. Cause:' + JSON.stringify(exception));
+        await win!.destroyWindow()
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
 
@@ -278,42 +268,40 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetWindowLimitsPromiseErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetWindowLimitsPromiseErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetWindowLimitsPromiseErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetWindowLimitsPromiseErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetWindowLimitsPromiseErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
+
+      try {
+        await win!.setWindowLimits(null).then(async () => {
+          console.info(msgStr + 'Succeeded in calling setWindowLimits.');
           expect().assertFail();
-          done()
-        }
-
-        try {
-          await win!.setWindowLimits(null).then(async () => {
-            console.info(msgStr + 'Succeeded in calling setWindowLimits.');
-            expect().assertFail();
-          }).catch(async (err: BusinessError) => {
-            console.error(msgStr + 'Failed to call setWindowLimits. Cause: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
-          });
-          await win!.destroyWindow()
-          done()
-        } catch (exception) {
-          console.error(msgStr + 'Failed to set the call setWindowLimits. Cause:' + JSON.stringify(exception));
-          await win!.destroyWindow()
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call setWindowLimits. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(401);
+        });
+        await win!.destroyWindow()
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setWindowLimits. Cause:' + JSON.stringify(exception));
+        await win!.destroyWindow()
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
 
@@ -326,39 +314,38 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testKeepKeyboardOnFocusErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testKeepKeyboardOnFocusErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testKeepKeyboardOnFocusErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testKeepKeyboardOnFocusErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testKeepKeyboardOnFocusErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.keepKeyboardOnFocus(null);
-          console.error(msgStr + 'Succeeded in calling keepKeyboardOnFocus.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call keepKeyboardOnFocus. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.keepKeyboardOnFocus(null);
+        console.error(msgStr + 'Succeeded in calling keepKeyboardOnFocus.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call keepKeyboardOnFocus. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -371,39 +358,38 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetWindowDecorVisibleErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetWindowDecorVisibleErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetWindowDecorVisibleErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetWindowDecorVisibleErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetWindowDecorVisibleErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.setWindowDecorVisible(null);
-          console.error(msgStr + 'Succeeded in calling setWindowDecorVisible.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call setWindowDecorVisible. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.setWindowDecorVisible(null);
+        console.error(msgStr + 'Succeeded in calling setWindowDecorVisible.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call setWindowDecorVisible. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -416,39 +402,38 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetWindowTitleMoveEnabledErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetWindowTitleMoveEnabledErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetWindowTitleMoveEnabledErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetWindowTitleMoveEnabledErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetWindowTitleMoveEnabledErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.setWindowTitleMoveEnabled(null);
-          console.error(msgStr + 'Succeeded in calling setWindowTitleMoveEnabled.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call setWindowTitleMoveEnabled. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.setWindowTitleMoveEnabled(null);
+        console.error(msgStr + 'Succeeded in calling setWindowTitleMoveEnabled.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call setWindowTitleMoveEnabled. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -461,42 +446,40 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetWindowTitlePromiseErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetWindowTitlePromiseErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetWindowTitlePromiseErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetWindowTitlePromiseErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetWindowTitlePromiseErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
+
+      try {
+        await win!.setWindowTitle(null).then(async () => {
+          console.info(msgStr + 'Succeeded in calling setWindowTitle.');
           expect().assertFail();
-          done()
-        }
-
-        try {
-          await win!.setWindowTitle(null).then(async () => {
-            console.info(msgStr + 'Succeeded in calling setWindowTitle.');
-            expect().assertFail();
-          }).catch(async (err: BusinessError) => {
-            console.error(msgStr + 'Failed to call setWindowTitle. Cause: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
-          });
-          await win!.destroyWindow()
-          done()
-        } catch (exception) {
-          console.error(msgStr + 'Failed to set the call setWindowTitle. Cause:' + JSON.stringify(exception));
-          await win!.destroyWindow()
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call setWindowTitle. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(401);
+        });
+        await win!.destroyWindow()
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setWindowTitle. Cause:' + JSON.stringify(exception));
+        await win!.destroyWindow()
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
 
@@ -509,39 +492,38 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetWindowDecorHeightErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetWindowDecorHeightErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetWindowDecorHeightErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetWindowDecorHeightErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetWindowDecorHeightErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.setWindowDecorHeight(null);
-          console.error(msgStr + 'Succeeded in calling setWindowDecorHeight.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call setWindowDecorHeight. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.setWindowDecorHeight(null);
+        console.error(msgStr + 'Succeeded in calling setWindowDecorHeight.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call setWindowDecorHeight. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -554,39 +536,38 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetWindowTitleButtonVisibleErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetWindowTitleButtonVisibleErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetWindowTitleButtonVisibleErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetWindowTitleButtonVisibleErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetWindowTitleButtonVisibleErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.setWindowTitleButtonVisible(null, null, null);
-          console.error(msgStr + 'Succeeded in calling setWindowTitleButtonVisible.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call setWindowTitleButtonVisible. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.setWindowTitleButtonVisible(null, null, null);
+        console.error(msgStr + 'Succeeded in calling setWindowTitleButtonVisible.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call setWindowTitleButtonVisible. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -599,40 +580,39 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOnWindowTitleButtonRectChangeErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOnWindowTitleButtonRectChangeErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOnWindowTitleButtonRectChangeErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testOnWindowTitleButtonRectChangeErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testOnWindowTitleButtonRectChangeErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.on(null, (res: ohosWindow.TitleButtonRect) => {
-          });
-          console.error(msgStr + 'Succeeded in calling on windowTitleButtonRectChange.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call on windowTitleButtonRectChange. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.on(null, (res: ohosWindow.TitleButtonRect) => {
+        });
+        console.error(msgStr + 'Succeeded in calling on windowTitleButtonRectChange.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call on windowTitleButtonRectChange. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -645,40 +625,39 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOffWindowTitleButtonRectChangeErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOffWindowTitleButtonRectChangeErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOffWindowTitleButtonRectChangeErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testOffWindowTitleButtonRectChangeErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testOffWindowTitleButtonRectChangeErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.off(null, (res: ohosWindow.TitleButtonRect) => {
-          });
-          console.error(msgStr + 'Succeeded in calling off windowTitleButtonRectChange.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call off windowTitleButtonRectChange. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.off(null, (res: ohosWindow.TitleButtonRect) => {
+        });
+        console.error(msgStr + 'Succeeded in calling off windowTitleButtonRectChange.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call off windowTitleButtonRectChange. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -691,42 +670,40 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetWindowMaskPromiseErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetWindowMaskPromiseErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetWindowMaskPromiseErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetWindowMaskPromiseErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetWindowMaskPromiseErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
+
+      try {
+        await win!.setWindowMask(null).then(async () => {
+          console.info(msgStr + 'Succeeded in calling setWindowMask.');
           expect().assertFail();
-          done()
-        }
-
-        try {
-          await win!.setWindowMask(null).then(async () => {
-            console.info(msgStr + 'Succeeded in calling setWindowMask.');
-            expect().assertFail();
-          }).catch(async (err: BusinessError) => {
-            console.error(msgStr + 'Failed to call setWindowMask. Cause: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
-          });
-          await win!.destroyWindow()
-          done()
-        } catch (exception) {
-          console.error(msgStr + 'Failed to set the call setWindowMask. Cause:' + JSON.stringify(exception));
-          await win!.destroyWindow()
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call setWindowMask. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(401);
+        });
+        await win!.destroyWindow()
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setWindowMask. Cause:' + JSON.stringify(exception));
+        await win!.destroyWindow()
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
 
