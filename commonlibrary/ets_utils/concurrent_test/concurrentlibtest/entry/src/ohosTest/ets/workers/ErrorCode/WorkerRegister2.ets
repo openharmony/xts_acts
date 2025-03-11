@@ -20,8 +20,8 @@ const workerPort = worker.workerPort;
 let task: taskpool.Task = new taskpool.Task(printNum, 10)
 workerPort.onmessage = (e: MessageEvents): void => {
     try{
-        let res : string = workerPort.callGlobalCallObjectMethod("myObj", "getMessageWithInput", 0, task) as string;
-        console.info("worker:", res) //worker: this is a message from TestObj with input: hello there!
+        let res : string = workerPort.callGlobalCallObjectMethod('myObj', 'getMessageWithInput', 0, task) as string;
+        console.info('worker:', res) //worker: this is a message from TestObj with input: hello there!
     }catch (e) {
         //打印 10200006
         console.log(`testThreadWorkerErrorCode0020 main onexit code: ` + JSON.stringify(e));

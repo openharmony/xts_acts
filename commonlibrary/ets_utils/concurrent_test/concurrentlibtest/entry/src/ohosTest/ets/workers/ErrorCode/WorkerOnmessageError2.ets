@@ -18,14 +18,12 @@ import { ErrorEvent } from '@kit.ArkTS';
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
 workerPort.onmessage = (e: MessageEvents) => {
-  // throw new Error('error')
   console.info(`worker: worker receive data ${e.data}`);
   workerPort.postMessage(e.data);
 }
-// workerPort.close()
 workerPort.onmessageerror = (err: MessageEvents) => {
-  console.log("testThreadWorkerErrorCode0027 worker.ets onmessageerror",err);
+  console.log('testThreadWorkerErrorCode0027 worker.ets onmessageerror',err);
 }
 workerPort.onerror = (err: ErrorEvent) => {
-  console.log("testThreadWorkerErrorCode0027 worker.ets onmessageerror",err);
+  console.log('testThreadWorkerErrorCode0027 worker.ets onmessageerror',err);
 }

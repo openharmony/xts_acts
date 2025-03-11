@@ -17,11 +17,10 @@ import worker, { MessageEvents, ThreadWorkerGlobalScope } from '@ohos.worker';
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
 workerPort.onmessage = (e: MessageEvents) => {
-  // throw new Error('error')
   console.info(`worker: worker receive data ${e.data}`);
   workerPort.postMessage(e.data);
 }
-// workerPort.close()
+
 workerPort.onmessageerror = (err: MessageEvents) => {
-  console.log("worker.ets onmessageerror",JSON.stringify(err));
+  console.log('worker.ets onmessageerror',JSON.stringify(err));
 }

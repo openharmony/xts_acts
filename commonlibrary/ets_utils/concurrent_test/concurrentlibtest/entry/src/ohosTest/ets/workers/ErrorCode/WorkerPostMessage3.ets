@@ -17,5 +17,5 @@ import worker, { MessageEvents, ThreadWorkerGlobalScope } from '@ohos.worker';
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents): void => {
   workerPort.close()
-  workerPort.postMessage("receive data from main thread");
+  workerPort.postMessage('receive data from main thread');
 }
