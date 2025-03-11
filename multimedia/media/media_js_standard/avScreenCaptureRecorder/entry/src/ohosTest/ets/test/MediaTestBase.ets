@@ -173,13 +173,7 @@ export default class MediaTestBase {
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
           console.error('avScreenCaptureRecorder skipPrivacyMode failed, error: ' + err.message);
-          if (err.code == 5400103) {
-            //rk板或者其他没sceneboard的设备上，都会报5400103的错误码；
-            this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
-          } else {
-            console.error('avScreenCaptureRecorder init failed, error: ' + err.message);
-            expect().assertFail()
-          }
+          expect().assertFail()
         })
 
         break;
