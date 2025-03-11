@@ -3322,6 +3322,8 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
+      await inputMethod.getController().detach();
+
       let subscriberCallback = async (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info("====>Sub_InputMethod_IME_Attach_0100 subscriberCallback data:" + JSON.stringify(data));
         if (data.data == "on_SUCCESS"){
@@ -3331,11 +3333,12 @@ export default function inputMethodWindManageAbility() {
             }
           }
           await inputMethod.getController().attach(true, ATTRIBUTE, inputMethod.RequestKeyboardReason.NONE);
+          console.info("====>Sub_InputMethod_IME_Attach_0100 attach success");
         }else {
           commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
           expect(data.data).assertEqual("SUCCESS");
           await inputMethod.getController().detach();
-          console.info("====>Sub_InputMethod_IME_ShowTextInput_0100 end");
+          console.info("====>Sub_InputMethod_IME_Attach_0100 end");
           done();
         }
       }
@@ -3393,6 +3396,8 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
+      await inputMethod.getController().detach();
+
       let subscriberCallback = async (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info("====>Sub_InputMethod_IME_Attach_0200 subscriberCallback data:" + JSON.stringify(data));
         if (data.data == "on_SUCCESS"){
@@ -3402,11 +3407,12 @@ export default function inputMethodWindManageAbility() {
             }
           }
           await inputMethod.getController().attach(true, ATTRIBUTE, inputMethod.RequestKeyboardReason.MOUSE);
+          console.info("====>Sub_InputMethod_IME_Attach_0200 attach success");
         }else {
           commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
           expect(data.data).assertEqual("SUCCESS");
           await inputMethod.getController().detach();
-          console.info("====>Sub_InputMethod_IME_ShowTextInput_0100 end");
+          console.info("====>Sub_InputMethod_IME_Attach_0200 end");
           done();
         }
       }
@@ -3464,6 +3470,8 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
+      await inputMethod.getController().detach();
+
       let subscriberCallback = async (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info("====>Sub_InputMethod_IME_Attach_0300 subscriberCallback data:" + JSON.stringify(data));
         if (data.data == "on_SUCCESS"){
@@ -3473,11 +3481,12 @@ export default function inputMethodWindManageAbility() {
             }
           }
           await inputMethod.getController().attach(true, ATTRIBUTE, inputMethod.RequestKeyboardReason.TOUCH);
+          console.info("====>Sub_InputMethod_IME_Attach_0300 attach success");
         }else {
           commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
           expect(data.data).assertEqual("SUCCESS");
           await inputMethod.getController().detach();
-          console.info("====>Sub_InputMethod_IME_ShowTextInput_0100 end");
+          console.info("====>Sub_InputMethod_IME_Attach_0300 end");
           done();
         }
       }
@@ -3535,6 +3544,8 @@ export default function inputMethodWindManageAbility() {
         }
       }
 
+      await inputMethod.getController().detach();
+
       let subscriberCallback = async (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info("====>Sub_InputMethod_IME_Attach_0400 subscriberCallback data:" + JSON.stringify(data));
         if (data.data == "on_SUCCESS"){
@@ -3544,11 +3555,12 @@ export default function inputMethodWindManageAbility() {
             }
           }
           await inputMethod.getController().attach(true, ATTRIBUTE, inputMethod.RequestKeyboardReason.OTHER);
+          console.info("====>Sub_InputMethod_IME_Attach_0400 attach success");
         }else {
           commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
           expect(data.data).assertEqual("SUCCESS");
           await inputMethod.getController().detach();
-          console.info("====>Sub_InputMethod_IME_ShowTextInput_0100 end");
+          console.info("====>Sub_InputMethod_IME_Attach_0400 end");
           done();
         }
       }
@@ -3611,6 +3623,7 @@ export default function inputMethodWindManageAbility() {
           textInputType: 0, enterKeyType: 0
         }
       }
+      await inputMethod.getController().detach();
       await inputMethod.getController().attach(false, ATTRIBUTE);
 
       let unSubscriberCallback = (err: BusinessError) => {
@@ -3628,6 +3641,7 @@ export default function inputMethodWindManageAbility() {
         if (data.data == "on_SUCCESS"){
           await sleep(100);
           await inputMethod.getController().showTextInput(0);
+          console.info("====>Sub_InputMethod_IME_ShowTextInput_0100 showTextInput success");
         }else {
           commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
           expect(data.data).assertEqual("SUCCESS");
@@ -3684,6 +3698,7 @@ export default function inputMethodWindManageAbility() {
           textInputType: 0, enterKeyType: 0
         }
       }
+      await inputMethod.getController().detach();
       await inputMethod.getController().attach(false, ATTRIBUTE);
 
       let unSubscriberCallback = (err: BusinessError) => {
@@ -3701,6 +3716,7 @@ export default function inputMethodWindManageAbility() {
         if (data.data == "on_SUCCESS"){
           await sleep(100);
           await inputMethod.getController().showTextInput(1);
+          console.info("====>Sub_InputMethod_IME_ShowTextInput_0200 showTextInput success");
         }else {
           commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
           expect(data.data).assertEqual("SUCCESS");
@@ -3757,6 +3773,7 @@ export default function inputMethodWindManageAbility() {
           textInputType: 0, enterKeyType: 0
         }
       }
+      await inputMethod.getController().detach();
       await inputMethod.getController().attach(false, ATTRIBUTE);
 
       let unSubscriberCallback = (err: BusinessError) => {
@@ -3774,6 +3791,7 @@ export default function inputMethodWindManageAbility() {
         if (data.data == "on_SUCCESS"){
           await sleep(100);
           await inputMethod.getController().showTextInput(2);
+          console.info("====>Sub_InputMethod_IME_ShowTextInput_0300 showTextInput success");
         }else {
           commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
           expect(data.data).assertEqual("SUCCESS");
@@ -3830,6 +3848,7 @@ export default function inputMethodWindManageAbility() {
           textInputType: 0, enterKeyType: 0
         }
       }
+      await inputMethod.getController().detach();
       await inputMethod.getController().attach(false, ATTRIBUTE);
 
       let unSubscriberCallback = (err: BusinessError) => {
@@ -3847,6 +3866,7 @@ export default function inputMethodWindManageAbility() {
         if (data.data == "on_SUCCESS"){
           await sleep(100);
           await inputMethod.getController().showTextInput(20);
+          console.info("====>Sub_InputMethod_IME_ShowTextInput_0400 showTextInput success");
         }else {
           commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
           expect(data.data).assertEqual("SUCCESS");
