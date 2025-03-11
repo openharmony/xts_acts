@@ -30,39 +30,38 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOpacityErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOpacityErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOpacityErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testOpacityErrCode202_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testOpacityErrCode202_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.opacity(1);
-          console.error(msgStr + 'Succeeded in calling opacity.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call opacity. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 202;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.opacity(1);
+        console.error(msgStr + 'Succeeded in calling opacity.');
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call opacity. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(202);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -75,40 +74,39 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testScaleErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testScaleErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testScaleErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testScaleErrCode202_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testScaleErrCode202_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          let param: ohosWindow.ScaleOptions = {};
-          win!.scale(param);
-          console.error(msgStr + 'Succeeded in calling scale.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call scale. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 202;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        let param: ohosWindow.ScaleOptions = {};
+        win!.scale(param);
+        console.error(msgStr + 'Succeeded in calling scale.');
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call scale. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(202);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -121,40 +119,39 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testRotateErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testRotateErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testRotateErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testRotateErrCode202_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testRotateErrCode202_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          let param: ohosWindow.RotateOptions = {}
-          win!.rotate(param);
-          console.error(msgStr + 'Succeeded in calling rotate.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call rotate. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 202;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        let param: ohosWindow.RotateOptions = {}
+        win!.rotate(param);
+        console.error(msgStr + 'Succeeded in calling rotate.');
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call rotate. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(202);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -167,40 +164,39 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testTranslateErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testTranslateErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testTranslateErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testTranslateErrCode202_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testTranslateErrCode202_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          let param: ohosWindow.TranslateOptions = {}
-          win!.translate(param);
-          console.error(msgStr + 'Succeeded in calling translate.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call translate. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 202;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        let param: ohosWindow.TranslateOptions = {}
+        win!.translate(param);
+        console.error(msgStr + 'Succeeded in calling translate.');
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call translate. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(202);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -213,39 +209,38 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testGetTransitionControllerErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testGetTransitionControllerErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testGetTransitionControllerErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testGetTransitionControllerErrCode202_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testGetTransitionControllerErrCode202_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.getTransitionController();
-          console.error(msgStr + 'Succeeded in calling getTransitionController.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call getTransitionController. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 202;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.getTransitionController();
+        console.error(msgStr + 'Succeeded in calling getTransitionController.');
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call getTransitionController. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(202);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -258,39 +253,38 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetBlurErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetBlurErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetBlurErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetBlurErrCode202_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetBlurErrCode202_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.setBlur(1);
-          console.error(msgStr + 'Succeeded in calling setBlur.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call setBlur. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 202;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.setBlur(1);
+        console.error(msgStr + 'Succeeded in calling setBlur.');
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call setBlur. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(202);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -303,39 +297,38 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetBackdropBlurErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetBackdropBlurErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetBackdropBlurErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetBackdropBlurErrCode202_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetBackdropBlurErrCode202_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.setBackdropBlur(1);
-          console.error(msgStr + 'Succeeded in calling setBackdropBlur.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call setBackdropBlur. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 202;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.setBackdropBlur(1);
+        console.error(msgStr + 'Succeeded in calling setBackdropBlur.');
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call setBackdropBlur. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(202);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -348,39 +341,38 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetBackdropBlurStyleErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetBackdropBlurStyleErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetBackdropBlurStyleErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetBackdropBlurStyleErrCode202_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetBackdropBlurStyleErrCode202_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.setBackdropBlurStyle(ohosWindow.BlurStyle.THIN);
-          console.error(msgStr + 'Succeeded in calling setBackdropBlurStyle.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call setBackdropBlurStyle. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 202;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.setBackdropBlurStyle(ohosWindow.BlurStyle.THIN);
+        console.error(msgStr + 'Succeeded in calling setBackdropBlurStyle.');
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call setBackdropBlurStyle. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(202);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -393,39 +385,38 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetShadowErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetShadowErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetShadowErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetShadowErrCode202_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetShadowErrCode202_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.setShadow(1);
-          console.error(msgStr + 'Succeeded in calling setShadow.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call setShadow. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 202;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.setShadow(1);
+        console.error(msgStr + 'Succeeded in calling setShadow.');
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call setShadow. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(202);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -438,39 +429,38 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetCornerRadiusErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetCornerRadiusErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetCornerRadiusErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetCornerRadiusErrCode202_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetCornerRadiusErrCode202_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.setCornerRadius(1);
-          console.error(msgStr + 'Succeeded in calling setCornerRadius.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call setCornerRadius. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 202;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.setCornerRadius(1);
+        console.error(msgStr + 'Succeeded in calling setCornerRadius.');
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call setCornerRadius. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(202);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -532,46 +522,44 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetTouchableAreasErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetTouchableAreasErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetTouchableAreasErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetTouchableAreasErrCode202_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetTouchableAreasErrCode202_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          let rect: ohosWindow.Rect = {
-            left: 10,
-            top: 10,
-            width: 10,
-            height: 10
-          }
-          win!.setTouchableAreas([rect]);
-          console.error(msgStr + 'Succeeded in calling setTouchableAreas.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call setTouchableAreas. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 202;
+      try {
+        let rect: ohosWindow.Rect = {
+          left: 10,
+          top: 10,
+          width: 10,
+          height: 10
         }
-        console.log(msgStr + 'end.');
+        win!.setTouchableAreas([rect]);
+        console.error(msgStr + 'Succeeded in calling setTouchableAreas.');
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
-
+        console.log(msgStr + 'end.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call setTouchableAreas. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(202);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -584,40 +572,38 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetTitleButtonVisibleErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetTitleButtonVisibleErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetTitleButtonVisibleErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetTitleButtonVisibleErrCode202_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetTitleButtonVisibleErrCode202_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.setTitleButtonVisible(true, true, true);
-          console.error(msgStr + 'Succeeded in calling setTitleButtonVisible.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call setTitleButtonVisible. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 202;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.setTitleButtonVisible(true, true, true);
+        console.error(msgStr + 'Succeeded in calling setTitleButtonVisible.');
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
-
+        console.log(msgStr + 'end.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call setTitleButtonVisible. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(202);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -676,24 +662,21 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testDisableWindowDecorErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testDisableWindowDecorErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testDisableWindowDecorErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let testcaseResult = true;
-        try {
-          windowStage.disableWindowDecor();
-          console.error(msgStr + 'Succeeded in calling disableWindowDecor.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call disableWindowDecor. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 202;
-        }
+      try {
+        windowStage.disableWindowDecor();
+        console.error(msgStr + 'Succeeded in calling disableWindowDecor.');
         console.log(msgStr + 'end.');
-        expect(testcaseResult).assertTrue();
-        done();
-
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call disableWindowDecor. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(202);
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -706,23 +689,20 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetShowOnLockScreenErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetShowOnLockScreenErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
-
-        let testcaseResult = true;
-        try {
-          windowStage.setShowOnLockScreen(true);
-          console.error(msgStr + 'Succeeded in calling setShowOnLockScreen.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call setShowOnLockScreen. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 202;
-        }
+      let caseName = "testSetShowOnLockScreenErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        windowStage.setShowOnLockScreen(true);
+        console.error(msgStr + 'Succeeded in calling setShowOnLockScreen.');
         console.log(msgStr + 'end.');
-        expect(testcaseResult).assertTrue();
-        done();
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call setShowOnLockScreen. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(202);
+        console.log(msgStr + 'end.');
+        done()
       }
     })
   })
