@@ -16,7 +16,7 @@ import worker, { MessageEvents, ThreadWorkerGlobalScope } from '@ohos.worker';
 import { Sleep } from '../../test/utils/utils';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
-// workerPort.close()
+
 workerPort.onmessage = (e: MessageEvents) => {
   let data:number=e.data;
   console.info(`worker: worker receive data ${e.data}`);
@@ -31,5 +31,5 @@ workerPort.onmessage = (e: MessageEvents) => {
  workerPort.close()
 }
 workerPort.onmessageerror = (err: MessageEvents) => {
-  console.log("testThreadWorkerErrorCode0008 worker.ets onmessageerror",JSON.stringify(err));
+  console.log('testThreadWorkerErrorCode0008 worker.ets onmessageerror',JSON.stringify(err));
 }
