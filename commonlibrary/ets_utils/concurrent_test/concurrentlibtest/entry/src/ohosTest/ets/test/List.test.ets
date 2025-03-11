@@ -13,12 +13,19 @@
 * limitations under the License.
 */
 
-import TaskPoolTest from './taskpool/TaskPool.test.ets';
+
 import arkTSUtilsTest from './arkTSUtils/ArkTSUtils.test';
+import TaskPoolTest from './taskpool/TaskPool.test';
+import TaskPoolErrorCodeTest from './taskpool/TaskpoolErrorCode.test';
 import workerTest from './worker/Worker.test';
+import workerAddTest from './worker/WorkerAdd.test';
+import workerErrorCodeTest from './worker/WorkerErrorCode.test';
 
 export default function testsuite() {
   arkTSUtilsTest();
   TaskPoolTest();
   workerTest();
+  TaskPoolErrorCodeTest();
+  workerAddTest();
+  workerErrorCodeTest()
 }

@@ -76,7 +76,26 @@
         "./src/ohosTest/ets/workers/sharedSendable/WorkerPostMessageAsyncLock.ets",
         "./src/ohosTest/ets/workers/sharedSendable/WorkerPostMessageAson.ets",
         "./src/ohosTest/ets/workers/sharedSendable/WorkerPostMessageSendableClass.ets",
-        "./src/ohosTest/ets/workers/sharedSendable/WorkerPostMessageImplSendableClass.ets"
+        "./src/ohosTest/ets/workers/sharedSendable/WorkerPostMessageImplSendableClass.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerMessageEvent.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerClose.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerData.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerOnmessage1.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerOnmessage2.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerOnmessageError1.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerOnmessageError2.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerPostMessage1.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerPostMessage2.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerPostMessage3.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerPostMessage4.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerPostMessage5.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerPostMessage6.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerRegister1.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerRegister2.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerRegister3.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerRegister4.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerRegister5.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerDataWorker.ets"
       ]
     }
   },
