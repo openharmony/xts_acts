@@ -51,8 +51,13 @@ export default function mouseEventTest() {
     it('Mouse1_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('Mouse1_0100 START');
+      let areaObj = CommonFunc.getComponentRectOnScreen('mouse');
+      let areaHeight = areaObj.bottom - areaObj.top
+      let areaWidth = areaObj.right - areaObj.left
+      let mouseX = Math.round(areaObj.left + areaWidth * 0.5)
+      let mouseY = Math.round(areaObj.top + areaHeight * 0.5)
       let driver = await Driver.create();
-      await driver.mouseClick({x:500, y:500}, MouseButton.MOUSE_BUTTON_LEFT);
+      await driver.mouseClick({x: mouseX, y: mouseY}, MouseButton.MOUSE_BUTTON_LEFT);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('value');
       let obj: ESObject = JSON.parse(strJson);

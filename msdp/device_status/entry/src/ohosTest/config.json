@@ -11,12 +11,7 @@
   "module": {
     "package": "com.example.mydevicestatusapp",
     "name": ".entry_test",
-    "deviceType": [
-      "tablet",
-      "default",
-      "phone",
-      "2in1"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry_test",

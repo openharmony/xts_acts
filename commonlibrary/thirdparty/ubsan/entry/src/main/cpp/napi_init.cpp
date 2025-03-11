@@ -584,6 +584,42 @@ __attribute__((optnone)) static napi_value NoReturn(napi_env env, napi_callback_
     return result;
 }
 
+__attribute__((optnone)) static napi_value ShiftBaseIntMax(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    int x = -1;
+    int res = param << x;
+    std::string bufferLog = GetBuffer(getpid());
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:595:21", bufferLog) &&
+        CheckUBSanLog("runtime error: shift exponent -1 is negative", bufferLog);
+    int checkRes = findUBSanLog ? 1 : 0;
+    napi_value result = nullptr;
+    napi_create_int32(env, checkRes, &result);
+    return result;
+}
+
+__attribute__((optnone)) static napi_value ShiftBaseIntMin(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+    int x = 1;
+    int res = param << x;
+    std::string bufferLog = GetBuffer(getpid());
+    bool findUBSanLog = CheckUBSanLog("napi_init.cpp:613:21", bufferLog) &&
+        CheckUBSanLog("runtime error: left shift of negative value -2147483648", bufferLog);
+    int checkRes = findUBSanLog ? 1 : 0;
+    napi_value result = nullptr;
+    napi_create_int32(env, checkRes, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -607,7 +643,9 @@ static napi_value Init(napi_env env, napi_value exports)
         { "undefinedBool", nullptr, UndefinedBool, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "vlaBound", nullptr, VlaBound, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "unreachable", nullptr, Unreachable, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "noReturn", nullptr, NoReturn, nullptr, nullptr, nullptr, napi_default, nullptr }
+        { "noReturn", nullptr, NoReturn, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "shiftBaseIntMax", nullptr, ShiftBaseIntMax, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "shiftBaseIntMin", nullptr, ShiftBaseIntMin, nullptr, nullptr, nullptr, napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

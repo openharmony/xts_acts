@@ -11,12 +11,7 @@
   "module": {
     "package": "ohos.resmgr.test",
     "name": ".entry",
-    "deviceType": [
-      "tablet",
-      "default",
-      "phone",
-      "2in1"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

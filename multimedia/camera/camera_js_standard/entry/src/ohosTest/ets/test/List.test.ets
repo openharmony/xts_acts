@@ -35,11 +35,14 @@ import cameraSessionAutoDeviceSwitchTest from './CameraSessionAutoDeviceSwitchTe
 import CameraMirrorTest from './CameraMirrorTest.test.ets'
 import CameraVideoMirrorTest from './CameraVideoMirrorTest.test.ets'
 import CameraVideoQualityPrioritizationTest from './CameraVideoQualityPrioritizationTest.test.ets'
+import CameraNoPermissionErrorCodeTest from './CameraNoPermissionErrorCodeTest.test.ets'
 
 let TAG = 'CameraModuleTest: '
 
 export default function cameraKit() {
   console.info(TAG + 'Entering cameraKit')
+  //无权限优先执行
+  CameraNoPermissionErrorCodeTest()
   CameraVideoQualityPrioritizationTest()
   cameraTorchTest()
   cameraInputTest()

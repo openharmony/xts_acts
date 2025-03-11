@@ -17,14 +17,7 @@
     "package": "com.acts.pcs.jstest",
     "name": ".entry_test",
     "mainAbility": ".TestAbility",
-    "deviceType": [
-      "wearable",
-      "phone",
-      "tablet",
-      "2in1",
-      "default",
-      "tv"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry_test",

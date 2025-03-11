@@ -1,15 +1,22 @@
 {
     "devices": {
-        "general": [
-            "wearable",
-            "default",
-            "tablet",
-            "2in1"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Multimedia.Media.AVTranscoder",
+                    "SystemCapability.Multimedia.Media.AVMetadataExtractor",
+                    "SystemCapability.Multimedia.Media.AVImageGenerator",
+                    "SystemCapability.Multimedia.SystemSound.Core",
+                    "SystemCapability.Multimedia.AudioHaptic.Core",
+                    "SystemCapability.Multimedia.Media.SoundPool",
+                    "SystemCapability.Multimedia.Media.AVScreenCapture",
+                    "SystemCapability.Multimedia.Media.AudioPlayer",
+                    "SystemCapability.Multimedia.Media.VideoPlayer",
+                    "SystemCapability.Multimedia.Media.AudioRecorder",
+                    "SystemCapability.Multimedia.Media.VideoRecorder",
+                    "SystemCapability.Multimedia.Media.AVPlayer",
+                    "SystemCapability.Multimedia.Media.AVRecorder"
                 ]
             }
         ]

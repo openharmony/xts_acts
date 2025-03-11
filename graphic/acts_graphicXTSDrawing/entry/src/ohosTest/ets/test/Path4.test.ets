@@ -72,16 +72,34 @@ export default function drawingTsPath4Test() {
         matrix.setMatrix([5, 0, 0, 0, 1, 2, 0, 0, 1]);
         flag = path.getMatrix(false, 10, matrix, drawing.PathMeasureMatrixFlags.GET_POSITION_MATRIX);
         expect(flag).assertTrue();
+        let flag2: boolean;
+        flag2 = path.getMatrix(false, 10, matrix, drawing.PathMeasureMatrixFlags.GET_TANGENT_MATRIX);
+        expect(flag2).assertTrue();
+        let flag3: boolean;
+        flag3 = path.getMatrix(false, 10, matrix, drawing.PathMeasureMatrixFlags.GET_POSITION_AND_TANGENT_MATRIX);
+        expect(flag3).assertTrue();
 
         matrix = new drawing.Matrix();
         matrix.setMatrix([5, 0, 0, 0, 1, 2, 0, 0, 1]);
         flag = path.getMatrix(true, 0, matrix, drawing.PathMeasureMatrixFlags.GET_POSITION_MATRIX);
         expect(flag).assertTrue();
+        let flag2: boolean;
+        flag2 = path.getMatrix(true, 0, matrix, drawing.PathMeasureMatrixFlags.GET_TANGENT_MATRIX);
+        expect(flag2).assertTrue();
+        let flag3: boolean;
+        flag3 = path.getMatrix(true, 0, matrix, drawing.PathMeasureMatrixFlags.GET_POSITION_AND_TANGENT_MATRIX);
+        expect(flag3).assertTrue();
 
         matrix = new drawing.Matrix();
         matrix.setMatrix([5, 0, 0, 0, 1, 2, 0, 0, 1]);
         flag = path.getMatrix(true, -1, matrix, drawing.PathMeasureMatrixFlags.GET_POSITION_MATRIX);
         expect(flag).assertTrue();
+        let flag2: boolean;
+        flag2 = path.getMatrix(true, -1, matrix, drawing.PathMeasureMatrixFlags.GET_TANGENT_MATRIX);
+        expect(flag2).assertTrue();
+        let flag3: boolean;
+        flag3 = path.getMatrix(true, -1, matrix, drawing.PathMeasureMatrixFlags.GET_POSITION_AND_TANGENT_MATRIX);
+        expect(flag3).assertTrue();
 
         console.info(msg + 'reset successes');
       } catch (e) {
@@ -1465,14 +1483,44 @@ export default function drawingTsPath4Test() {
     it('testPathOpToNull', 3, () => {
       const msg = 'testPathOpToNull';
       const path = new drawing.Path();
-
-
       try {
         path.op(null, drawing.PathOp.DIFFERENCE);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
         console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        path.op(null, drawing.PathOp.INTERSECT);
+        console.info(msg + `test INTERSECT error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test INTERSECT successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        path.op(null, drawing.PathOp.UNION);
+        console.info(msg + `test UNION error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test UNION successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        path.op(null, drawing.PathOp.XOR);
+        console.info(msg + `test XOR error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test XOR successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        path.op(null, drawing.PathOp.REVERSE_DIFFERENCE);
+        console.info(msg + `test REVERSE_DIFFERENCE error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test REVERSE_DIFFERENCE successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
 
@@ -1491,6 +1539,38 @@ export default function drawingTsPath4Test() {
         expect().assertFail()
       } catch (e) {
         console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        path.op(undefined, drawing.PathOp.INTERSECT);
+        console.info(msg + `test INTERSECT error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test INTERSECT successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        path.op(undefined, drawing.PathOp.UNION);
+        console.info(msg + `test UNION	error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test UNION successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        path.op(undefined, drawing.PathOp.XOR);
+        console.info(msg + `test XOR	error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test XOR successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        path.op(undefined, drawing.PathOp.REVERSE_DIFFERENCE);
+        console.info(msg + `test REVERSE_DIFFERENCE	error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test REVERSE_DIFFERENCE successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
 

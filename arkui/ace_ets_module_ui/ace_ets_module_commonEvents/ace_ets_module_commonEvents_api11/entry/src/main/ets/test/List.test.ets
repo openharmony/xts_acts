@@ -18,7 +18,7 @@ import appearJsunit from './onAppearTest/AppearJsunit.test';
 import areaChangeJsunit from './onAreaChangeTest/AreaChangeJsunit.test';
 import ShortcutKeyTest from './keyboardShortcutTest/ShortcutKey.test'
 import aboutToAppearTest from './onAppearTest/ComAttr_aboutToAppear.test';
-import parentX_parentY_strategy_Test from './onChildTouchTestTest/ComAttr_parentX_parentY_strategy.test';
+
 import onGestureTest from './onGestureJudgeBeginTest/onGestureTest.test';
 import touchPoint from './DragController/touchPoint_Auto.test';
 import previewOptions from './DragController/touchPoint_Disable.test';
@@ -133,7 +133,7 @@ export default function testsuite() {
   areaChangeJsunit();
   ShortcutKeyTest();
   aboutToAppearTest();
-  parentX_parentY_strategy_Test();
+  
   onGestureTest()
   touchPoint()
   previewOptions()

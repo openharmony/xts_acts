@@ -18,25 +18,32 @@ import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest'
 import { Point } from '@ohos.UiTest';
 import Utils from '../common/Utils'
 import nativeRender from 'libnativerender.so'
+import unifiedDataChannel from '@ohos.data.unifiedDataChannel'
+ 
+let TAG = '[ttt]'
 
 async function panAndPinchGesture(id: string) {
   let driver = Driver.create();
   let refresh = await driver.findComponent(ON.id(id));
   let rect = await refresh.getBounds();
   let point: PointerMatrix = PointerMatrix.create(1, 999);
-  let dragStartPoint1: Point = { x: (rect.left + rect.right) / 2, y: (rect.top + rect.bottom) / 2 };
+  let point_x = Math.ceil((rect.left + rect.right) / 2);
+  let point_y = Math.ceil((rect.top + rect.bottom) / 2 )
+  let dragStartPoint1: Point = { x: point_x, y: point_y};
+  console.log(TAG, 'dragStartPoint1=' + JSON.stringify(dragStartPoint1));
   for (let i = 0; i < 990; i++) {
     point.setPoint(0, i, dragStartPoint1);
   }
-  point.setPoint(0, 990, { x: (rect.left + rect.right) / 2, y: (rect.top + rect.bottom) / 2 + 20});
-  point.setPoint(0, 991, { x: (rect.left + rect.right) / 2, y: (rect.top + rect.bottom) / 2 + 40});
-  point.setPoint(0, 992, { x: (rect.left + rect.right) / 2, y: (rect.top + rect.bottom) / 2 + 60});
-  point.setPoint(0, 993, { x: (rect.left + rect.right) / 2, y: (rect.top + rect.bottom) / 2 + 80});
-  point.setPoint(0, 994, { x: (rect.left + rect.right) / 2, y: (rect.top + rect.bottom) / 2 + 100});
-  point.setPoint(0, 995, { x: (rect.left + rect.right) / 2, y: (rect.top + rect.bottom) / 2 + 120});
-  point.setPoint(0, 996, { x: (rect.left + rect.right) / 2, y: (rect.top + rect.bottom) / 2 + 140});
-  point.setPoint(0, 997, { x: (rect.left + rect.right) / 2, y: (rect.top + rect.bottom) / 2 + 160});
-  point.setPoint(0, 998, { x: (rect.left + rect.right) / 2, y: (rect.top + rect.bottom) / 2 + 200});
+ 
+  point.setPoint(0, 990, { x: point_x, y: point_y + 20});
+  point.setPoint(0, 991, { x: point_x, y: point_y + 40});
+  point.setPoint(0, 992, { x: point_x, y: point_y + 60});
+  point.setPoint(0, 993, { x: point_x, y: point_y + 80});
+  point.setPoint(0, 994, { x: point_x, y: point_y + 100});
+  point.setPoint(0, 995, { x: point_x, y: point_y + 120});
+  point.setPoint(0, 996, { x: point_x, y: point_y + 140});
+  point.setPoint(0, 997, { x: point_x, y: point_y + 160});
+  point.setPoint(0, 998, { x: point_x, y: point_y + 200});
   await driver.injectMultiPointerAction(point);
 }
 
@@ -44,10 +51,9 @@ export default function DragTest(){
 
   describe('DragTest', () => {
     afterEach(async (done: Function) => {
-      await Utils.sleep(100)
-      done()
+      await Utils.sleep(100);
+      done();
     })
-
     /*
      * @tc.number     : SUB_UDMFndk_CASE_001
      * @tc.name       : UDMFCaseTest001
@@ -57,13 +63,13 @@ export default function DragTest(){
      * @tc.level      : Level 1
      */
     it('UDMFCaseTest001', 0, async (done: Function) => {
-        let PAGE_TAG = 'DragCaseTest1'
-        await Utils.pushPage(`drag/${PAGE_TAG}`)
-        await panAndPinchGesture('image')
+        let PAGE_TAG = 'DragCaseTest1';
+        await Utils.pushPage(`drag/${PAGE_TAG}`);
+        await panAndPinchGesture('image');
         let dataArray: number[] = nativeRender.GetResult();
-        console.log('UDMFCaseTest001', dataArray[0])
-        expect( dataArray[0] == 0 ).assertEqual(true)
-        done()
+        console.log('UDMFCaseTest001', dataArray[0]);
+        expect( dataArray[0] == 0 ).assertEqual(true);
+        done();
     })
 
     /*
@@ -75,16 +81,16 @@ export default function DragTest(){
      * @tc.level      : Level 1
      */
     it('UDMFCaseTest002', 0, async (done: Function) => {
-        let PAGE_TAG = 'DragCaseTest2'
-        await Utils.pushPage(`drag/${PAGE_TAG}`)
-        await panAndPinchGesture('image')
+        let PAGE_TAG = 'DragCaseTest2';
+        await Utils.pushPage(`drag/${PAGE_TAG}`);
+        await panAndPinchGesture('image');
         let dataArray: number[] = nativeRender.GetResult();
-        console.log('UDMFCaseTest002', dataArray[0])
-        expect( dataArray[0] == 0 ).assertEqual(true)
-        done()
+        console.log('UDMFCaseTest002', dataArray[0]);
+        expect( dataArray[0] == 0 ).assertEqual(true);
+        done();
     })
 
-        /*
+    /*
      * @tc.number     : SUB_UDMFndk_CASE_003
      * @tc.name       : UDMFCaseTest003
      * @tc.desc       : testing List maintainVisibleContentPosition
@@ -93,12 +99,12 @@ export default function DragTest(){
      * @tc.level      : Level 1
      */
     it('UDMFCaseTest003', 0, async (done: Function) => {
-        let PAGE_TAG = 'DragCaseTest3'
-        await panAndPinchGesture('image')
+        let PAGE_TAG = 'DragCaseTest3';
+        await panAndPinchGesture('image');
         let dataArray: number[] = nativeRender.GetResult();
-        console.log('UDMFCaseTest003', dataArray[0])
-        expect( dataArray[0] == 0 ).assertEqual(true)
-        done()
+        console.log('UDMFCaseTest003', dataArray[0]);
+        expect( dataArray[0] == 0 ).assertEqual(true);
+        done();
     })
   })
 }

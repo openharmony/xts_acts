@@ -1,14 +1,18 @@
 {
     "devices": {
-        "general": [
-            "default",
-            "tablet",
-            "2in1"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.BundleManager.BundleFramework",
+                    "SystemCapability.BundleManager.Zlib",
+                    "SystemCapability.BundleManager.BundleFramework.AppControl",
+                    "SystemCapability.BundleManager.BundleFramework.Core",
+                    "SystemCapability.BundleManager.BundleFramework.FreeInstall",
+                    "SystemCapability.BundleManager.BundleFramework.Launcher",
+                    "SystemCapability.BundleManager.BundleFramework.DefaultApp",
+                    "SystemCapability.BundleManager.BundleFramework.Resource",
+                    "SystemCapability.BundleManager.BundleFramework.Overlay"
                 ]
             }
         ]

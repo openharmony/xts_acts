@@ -297,6 +297,7 @@ ArkUI_NodeHandle testColorAndFontChangeExampleFalse(ArkUI_NativeNodeAPI_1 *nodeA
     //跨语言开关
     OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(option, false);
     OH_ArkUI_NodeUtils_SetCrossLanguageOption(capiNode, option);
+    OH_ArkUI_NodeUtils_GetCrossLanguageOption(capiNode, option);
     bool crossLanguageAttributeSetting = OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(option);
     OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "xsx crossLanguageAttributeSetting=%{public}d",
                  crossLanguageAttributeSetting);

@@ -1041,15 +1041,25 @@ describe('hiSysEventJsTest', function () {
 		console.info('testHiSysEventApi24 start')
 		try {
 			hiSysEvent.write({
-				domain: "ACCOUNT",
-				name: "PERMISSION_EXCEPTION",
-				eventType: hiSysEvent.EventType.SECURITY,
+				domain: "WORKSCHEDULER",
+				name: "WORK_ADD",
+				eventType: hiSysEvent.EventType.STATISTIC,
 				params: {
-					PID: 487
+					PID: 487,
+					UID: 147,
+					TYPE: "type",
+					WORKID: "work_001",
+					INTERVAL: 60,
+					TRIGGER: "time",
+					NAME: "test_task"
 				}
 			},(err, value) => {
 				if (err) {
+					console.error(`testHiSysEventApi24 json-callback-error code=${err.code}`);
+					done();
 				} else {
+					console.log(`testHiSysEventApi24 json-callback-success value=${value}`);
+					console.log(`testHiSysEventApi24  domain is WORKSCHEDULE`);
 				}
 			});
 			setTimeout(() => {
@@ -1058,8 +1068,8 @@ describe('hiSysEventJsTest', function () {
 					endTime: -1,
 					maxEvents: 1,
 				}, [{
-					domain: "ACCOUNT",
-					names: ["PERMISSION_EXCEPTION"],
+					domain: "WORKSCHEDULER",
+					names: ["WORK_ADD"],
 				}], {
 					onQuery: function (infos) {
 						console.info(`testHiSysEventApi24: onQuery...`)
@@ -1069,7 +1079,7 @@ describe('hiSysEventJsTest', function () {
 							for (let i = 0; i < infos.length; i++) {
 								let item = infos[i];
 								console.info(`testHiSysEventApi24: domain is ${item.domain}, name is ${item.name},
-																   eventType is ${item.eventType}`)
+																eventType is ${item.eventType}`)
 								if (item.params instanceof Object) {
 									for (const key in item.params) {
 										console.info(`testHiSysEventApi24: ${key}: ${item.params[key]}`)

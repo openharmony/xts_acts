@@ -33,6 +33,8 @@ const BUNDLE = 'MyApp_';
 const TAG = '[Sample_MyApp]';
 const DOMAIN = 0xF811;
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+let isAppSelectorExist = true;
+let selectorName = "wei.hmsapp.appgallery";
 
 function sleep(time:number) {
   return new Promise<void>((resolve, reject) => {
@@ -40,6 +42,28 @@ function sleep(time:number) {
       resolve();
     }, time)
   });
+}
+
+async function checkAppSelectorExist() {
+  try {
+    let cmd = 'bm dump -n com.hua' + selectorName;
+    await abilityDelegator.executeShellCommand(cmd)
+      .then((data) => {
+        console.info('executeShellCommand success ' + JSON.stringify(data));
+        if (!data.stdResult.includes(selectorName)) {
+          console.info('app selector name do not exist');
+          return;
+        }
+        if (data.stdResult.includes("AppSelectorExtensionAbility")) {
+          console.info("AppSelectorExtensionAbility exists");
+        } else {
+          console.info("AppSelectorExtensionAbility do not exists");
+          isAppSelectorExist = false;
+        }
+      })
+  } catch (error) {
+    console.info("executeShellCommand failed ");
+  }
 }
 
 async function judgeDialog(done: Function) {
@@ -83,6 +107,13 @@ async function judgeDialog(done: Function) {
 
 export default function abilityTest() {
   describe('ActsAppTest', () => {
+
+    beforeAll(async (done: Function) => {
+      await checkAppSelectorExist();
+      console.info("isAppSelectorExist is " + isAppSelectorExist);
+      done();
+    })
+
     beforeEach(async (done:Function) => {
       setTimeout(() => {
         console.info('====>beforeEach called');
@@ -129,6 +160,10 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
+      if (!isAppSelectorExist) {
+        done();
+        return;
+      }
       await judgeDialog(done);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0100 end');
     })
@@ -159,6 +194,10 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
+      if (!isAppSelectorExist) {
+        done();
+        return;
+      }
       await judgeDialog(done);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0200 end');
     })
@@ -189,6 +228,10 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
+      if (!isAppSelectorExist) {
+        done();
+        return;
+      }
       await judgeDialog(done);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0300 end');
     })
@@ -219,6 +262,10 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
+      if (!isAppSelectorExist) {
+        done();
+        return;
+      }
       await judgeDialog(done);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0400 end');
     })
@@ -251,6 +298,10 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
+      if (!isAppSelectorExist) {
+        done();
+        return;
+      }
       await judgeDialog(done);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0500 end');
     })
@@ -282,6 +333,10 @@ export default function abilityTest() {
       );
       await driver.delayMs(2000);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0600: apptest1,apptest2,apptest3,apptest4 notExist');
+      if (!isAppSelectorExist) {
+        done();
+        return;
+      }
       await judgeDialog(done);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0600 end');
     })
@@ -314,6 +369,10 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
+      if (!isAppSelectorExist) {
+        done();
+        return;
+      }
       await judgeDialog(done);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0700 end');
     })
@@ -346,6 +405,10 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
+      if (!isAppSelectorExist) {
+        done();
+        return;
+      }
       await judgeDialog(done);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0800 end');
     })

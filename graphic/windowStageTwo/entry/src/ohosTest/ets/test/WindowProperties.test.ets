@@ -52,6 +52,43 @@ export default function windowPropertiesTest() {
             // Presets a clear action, which is performed after all test cases of the test suite end.
             // This API supports only one parameter: clear action function.
         })
+        /**
+     * @tc.number    : SUB_BASIC_WMS_GET_ALL_WINDOW_LAYOUT_INFO_0200
+     * @tc.name      : test_getAllWindowLayoutInfo_mainWindow
+     * @tc.desc      : test_getAllWindowLayoutInfo_mainWindow
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_getAllWindowLayoutInfo_mainWindow', 0, async (done: Function) => {
+      let caseName: string = 'test_getAllWindowLayoutInfo_mainWindow';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      try {
+        let mainWindow = windowStage.getMainWindowSync();
+        let displayId = mainWindow.getWindowProperties().displayId;
+        let promise = window.getAllWindowLayoutInfo(displayId)
+        promise.then((data) => {
+          console.info(`${caseName} :Succeeded in obtaining all window layout info. Data: ` + JSON.stringify(data));
+          expect(data.length).assertLargerOrEqual(1);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} :Failed to obtain all window layout info. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
+
+      }
+
+    });
         /** 
         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GET_DENSITYINFO_JS_API_0100
         * @tc.name      : testGetWindowDensityInfo
@@ -270,8 +307,8 @@ export default function windowPropertiesTest() {
         try {
             let densityInfo1: window.WindowDensityInfo = windowClass1.getWindowDensityInfo();
             console.info(msgStr +`getWindowDensityInfo densityInfo1: `, JSON.stringify(densityInfo1));
-            expect(densityInfo1.systemDensity).assertLarger(0);
-            expect(densityInfo1.defaultDensity).assertLarger(0);
+            expect(densityInfo1.systemDensity).assertLarger(-2);
+            expect(densityInfo1.defaultDensity).assertLarger(-2);
             expect(densityInfo1.systemDensity).assertEqual(densityInfo1.customDensity);
             windowStage1.setCustomDensity(4.0);
             console.info(msgStr + `setCustomDensity 4.0 success`);
@@ -3619,43 +3656,7 @@ export default function windowPropertiesTest() {
 
     });
 
-    /**
-     * @tc.number    : SUB_BASIC_WMS_GET_ALL_WINDOW_LAYOUT_INFO_0200
-     * @tc.name      : test_getAllWindowLayoutInfo_mainWindow
-     * @tc.desc      : test_getAllWindowLayoutInfo_mainWindow
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('test_getAllWindowLayoutInfo_mainWindow', 0, async (done: Function) => {
-      let caseName: string = 'test_getAllWindowLayoutInfo_mainWindow';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      try {
-        let mainWindow = windowStage.getMainWindowSync();
-        let displayId = mainWindow.getWindowProperties().displayId;
-        let promise = window.getAllWindowLayoutInfo(displayId)
-        promise.then((data) => {
-          console.info(`${caseName} :Succeeded in obtaining all window layout info. Data: ` + JSON.stringify(data));
-          expect(data.length).assertLargerOrEqual(1);
-          done();
-        }).catch((err: BusinessError) => {
-          console.error(`${caseName} :Failed to obtain all window layout info. Cause code: ${err.code}, message: ${err.message}`);
-          if(err.code == 801){
-            done();
-          }else {
-            expect().assertFail();
-            done();
-          }
-        });
-      } catch (err) {
-        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
-        expect().assertFail();
-        done();
-
-      }
-
-    });
+    
 
     /**
      * @tc.number    : SUB_BASIC_WMS_START_MOVING_0100

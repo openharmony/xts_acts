@@ -16,7 +16,6 @@ add_library(nativerender SHARED
     checkboxgroup/checkboxgroup_group_test.cpp
     checkboxgroup/checkboxgroup_selectall_test.cpp
     checkbox/checkbox_group_test.cpp
-    keyDisPatchTest/keyEventDispatch_test.cpp
     node/node_handle_by_id_test.cpp
     window/get_window_info_test.cpp
     progress/progress_linear_style_test.cpp
@@ -25,6 +24,17 @@ add_library(nativerender SHARED
     list/list_test.cpp
     listScrollTo/list_scroll_to_test.cpp
     gesturetouchcancel/gesture_cancel.cpp
+    component/component.cpp
+    component/grid_component.cpp
+    component/list_component.cpp
+    component/scroll_component.cpp
+    component/waterflow_component.cpp
+    component/button_component.cpp
+    component/text_component.cpp
+    gestureRecognizer/gestureRecognizer.cpp
+    eventInfo/eventInfo.cpp
+    snapShot/snap_shot.cpp
+    snapShot/container.cpp
 )
 
 add_library(nativefunc SHARED

@@ -12,11 +12,7 @@
     "package": "com.example.appliFeature_test",
     "name": ".appliFeature_test",
     "mainAbility": ".TestAbility",
-    "deviceType": [
-      "wearable",
-      "phone",
-      "tablet"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "appliFeature_test",

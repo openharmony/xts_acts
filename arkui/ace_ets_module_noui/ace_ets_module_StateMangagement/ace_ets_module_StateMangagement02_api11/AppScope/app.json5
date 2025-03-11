@@ -15,7 +15,7 @@
 
 {
   "app": {
-    "bundleName": "com.arkui.ace.StateMangagement02",
+    "bundleName": "com.arkui.ace.StateMangagement02.api11",
     "vendor": "example",
     "versionCode": 1000000,
     "versionName": "1.0.0",

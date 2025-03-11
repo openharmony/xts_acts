@@ -177,7 +177,7 @@ export default function ActsGetgroupdirTest() {
         let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
         console.log("AMS_getGroupDir_007" + ' is need to click ' + JSON.stringify(allowed));
         if(allowed){
-          let buttons = await driver.findComponents(ON.text('本次允许'));
+          let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
           if(buttons && buttons.length > 0){
             await buttons[buttons.length - 1].click();
           }
@@ -228,7 +228,7 @@ export default function ActsGetgroupdirTest() {
         let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
         console.log('AMS_getGroupDir_008' + ' is need to click ' + JSON.stringify(allowed));
         if(allowed){
-          let buttons = await driver.findComponents(ON.text('本次允许'));
+          let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
           if(buttons && buttons.length > 0){
             await buttons[buttons.length - 1].click();
           }

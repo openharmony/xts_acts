@@ -19,12 +19,7 @@
     "type": "feature",
     "description": "$string:module_desc",
     "mainElement": "MainAbility",
-    "deviceTypes": [
-      "tablet",
-      "default",
-      "wearable",
-      "2in1"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",

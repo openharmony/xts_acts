@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterAll, it, expect } from "@ohos/hypium";
-import { ENTINFO1, SELFWANT, SELFHAPNAME, DEFAULT_USER_ID, INVALID_USER_ID, appIdsInit } from "../commom.ets";
+import { describe, beforeAll, afterAll, it, expect, Level } from "@ohos/hypium";
+import { ENTINFO1, SELFWANT, SELFHAPNAME, DEFAULT_USER_ID, INVALID_USER_ID, appIdsInit,
+  INVALID_WANT } from "../commom.ets";
 
 import accountManager from '@ohos.enterprise.accountManager';
 import adminManager from '@ohos.enterprise.adminManager';
@@ -111,7 +112,7 @@ export default function accountManagerTest() {
     })
 
     /**
-     * @tc.number disallowOsAccountAddition_test_003
+     * @tc.number disallowOsAccountAddition_test_004
      * @tc.name test disallowOsAccountAddition method
      * @tc.desc disallowOsAccountAddition with normal admin and with accountId
      * @tc.level Level 2
@@ -446,6 +447,50 @@ export default function accountManagerTest() {
       }
       done();
       console.info(' --- isOsAccountAdditionDisallowed_test_004  -------- END --------');
+    })
+
+    /**
+     * @tc.number isOsAccountAdditionDisallowed_test_005
+     * @tc.name test isOsAccountAdditionDisallowed method
+     * @tc.desc isOsAccountAdditionDisallowed with normal admin and with accountId
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
+    it("isOsAccountAdditionDisallowed_test_005", Level.LEVEL2, async (done: Function) => {
+      console.info(' --- isOsAccountAdditionDisallowed_test_005  -------- START --------');
+      try {
+        accountManager.isOsAccountAdditionDisallowed(INVALID_WANT, DEFAULT_USER_ID);
+        console.info(' --- isOsAccountAdditionDisallowed_test_005 error is expected, but it done.');
+        expect(false).assertTrue();
+      } catch (error) {
+        console.info(' --- isOsAccountAdditionDisallowed_test_005 error 9200002 is expected, actually catch: ' + error.code);
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+      console.info(' --- isOsAccountAdditionDisallowed_test_005  -------- END --------');
+    })
+
+    /**
+     * @tc.number isOsAccountAdditionDisallowed_test_006
+     * @tc.name test isOsAccountAdditionDisallowed method
+     * @tc.desc isOsAccountAdditionDisallowed with normal admin and with accountId
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
+    it("isOsAccountAdditionDisallowed_test_006", Level.LEVEL2, async (done: Function) => {
+      console.info(' --- isOsAccountAdditionDisallowed_test_006  -------- START --------');
+      try {
+        accountManager.isOsAccountAdditionDisallowed(INVALID_WANT);
+        console.info(' --- isOsAccountAdditionDisallowed_test_006 error is expected, but it done.');
+        expect(false).assertTrue();
+      } catch (error) {
+        console.info(' --- isOsAccountAdditionDisallowed_test_006 error 9200002 is expected, actually catch: ' + error.code);
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+      console.info(' --- isOsAccountAdditionDisallowed_test_006  -------- END --------');
     })
 
     /**

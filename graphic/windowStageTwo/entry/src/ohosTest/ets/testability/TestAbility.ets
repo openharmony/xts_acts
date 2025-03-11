@@ -50,6 +50,8 @@ export default class TestAbility extends UIAbility {
     });
     AppStorage.setOrCreate('context',this.context);
     AppStorage.setOrCreate('windowStage',windowStage);
+    let mainWindow = windowStage.getMainWindowSync();
+    AppStorage.setOrCreate('mainWindow',mainWindow);
   }
 
   onWindowStageDestroy() {

@@ -16,13 +16,7 @@
         "package": "ohos.acts.resourceschedule.workscheduler.js.function",
         "name": ".entry",
         "mainAbility": ".MainAbility",
-        "deviceType": [
-            "wearable",
-            "tablet",
-            "default",
-            "phone",
-            "2in1"
-        ],
+        "deviceType": [],
         "distro": {
             "deliveryWithInstall": true,
             "moduleName": "entry",

@@ -17,15 +17,10 @@
         "MainAbility/pages/Provide/provideParent5",
         "MainAbility/pages/Provide/provideParent6",
         "MainAbility/pages/Zhuang/link1",
-        "MainAbility/pages/Zhuang/link2",
         "MainAbility/pages/Zhuang/Prop1",
-        "MainAbility/pages/Zhuang/Prop2",
         "MainAbility/pages/Zhuang/provide1",
-        "MainAbility/pages/Zhuang/provide2",
         "MainAbility/pages/Zhuang/state1",
-        "MainAbility/pages/Zhuang/state2",
         "MainAbility/pages/Zhuang/ObjectLink1",
-        "MainAbility/pages/Zhuang/ObjectLink2",
         "MainAbility/pages/@state/ConsumeArray",
         "MainAbility/pages/@state/ConsumeArray1",
         "MainAbility/pages/@state/ConsumeColor",
@@ -52,7 +47,6 @@
         "MainAbility/pages/@state/StateColor",
         "MainAbility/pages/@state/StateHight",
         "MainAbility/pages/@state/StateNumber",
-
         "MainAbility/pages/Zhuang/StorageDeprecated",
         "MainAbility/pages/Zhuang/Persistent0040"
     ]

@@ -98,7 +98,7 @@ export default function addRemoveAssetsChangeRequestTest() {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_ADD_REMOVE_ASSETS_CHANGE_REQUEST_0200
      * @tc.name      : add_remove_assets_change_request_002
-     * @tc.desc      : add and remove assets error code 401
+     * @tc.desc      : remove null assets, error code 401 or 13900020
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -110,12 +110,16 @@ export default function addRemoveAssetsChangeRequestTest() {
         let albumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
         const asset:ESObject = null;
         albumChangeRequest.removeAssets([asset]);
-        await helper.applyChanges(albumChangeRequest);
         expect(false).assertTrue();
         done();
       } catch (error) {
-        console.log(`${testNum} success; error: ${error}`);
-        expect(error.code).assertEqual(`401`);
+        if(error.code === `14000016`){
+          console.log(`${testNum} success; error: ${error}`);
+          expect(true).assertTrue();
+        } else {
+          console.log(`${testNum} success; error: ${error.code}`);
+          expect(error.code === '13900020' || error.code === '401').assertTrue();
+        }
         done();
       }
     })

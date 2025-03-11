@@ -80,7 +80,7 @@ export default function abilityDelegatorStage() {
         }, (err: BusinessError, data: void) => {
           console.info('startAbility callback err ' + JSON.stringify(err.code));
           if (err) {
-            if (targetVersion >= 16) {
+            if (targetVersion >= 18) {
               expect(err.code).assertEqual(16000001);
             } else {
               expect(err.code).assertEqual(2097152);
@@ -122,7 +122,7 @@ export default function abilityDelegatorStage() {
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, 'abilityDelegatorStageTag', '%{public}s',
             'SUB_Ability_AbilityTools_AbilityDelegator_Stage_12800 failed');
-          if (targetVersion >= 16) {
+          if (targetVersion >= 18) {
             expect(err.code).assertEqual(16000001);
           } else {
             expect(err.code).assertEqual(2097152);

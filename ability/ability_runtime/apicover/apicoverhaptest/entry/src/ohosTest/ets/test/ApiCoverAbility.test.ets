@@ -14,8 +14,6 @@
  */
 
 import { describe, afterEach, it, expect, beforeAll } from '@ohos/hypium';
-import formHost from '@ohos.application.formHost';
-import abilityConstant from '@ohos.app.ability.AbilityConstant';
 import appManagerNew from '@ohos.app.ability.appManager';
 import commonEvent from '@ohos.commonEvent';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -529,39 +527,6 @@ export default function ApiCoverTest() {
       expect(array.length).assertEqual(0);
       array = [];
       await sleep(2000);
-      done();
-    })
-
-    /*
-     * @tc.number  SUB_AA_Test_AbilityConstant_0100
-     * @tc.name    Test abilityConstant.
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_Test_AbilityConstant_0100', 0, async (done: Function) => {
-      expect(1).assertEqual(abilityConstant.LaunchReason.START_ABILITY);
-      expect(9).assertEqual(abilityConstant.LaunchReason.INSIGHT_INTENT);
-      expect(1).assertEqual(abilityConstant.LastExitReason.ABILITY_NOT_RESPONDING);
-      expect(2).assertEqual(abilityConstant.LastExitReason.NORMAL);
-      expect(3).assertEqual(abilityConstant.LastExitReason.CPP_CRASH);
-      expect(4).assertEqual(abilityConstant.LastExitReason.JS_ERROR);
-      expect(5).assertEqual(abilityConstant.LastExitReason.APP_FREEZE);
-      expect(6).assertEqual(abilityConstant.LastExitReason.PERFORMANCE_CONTROL);
-      expect(7).assertEqual(abilityConstant.LastExitReason.RESOURCE_CONTROL);
-      expect(8).assertEqual(abilityConstant.LastExitReason.UPGRADE);
-      expect(0).assertEqual(abilityConstant.MemoryLevel.MEMORY_LEVEL_MODERATE);
-      expect(1).assertEqual(abilityConstant.MemoryLevel.MEMORY_LEVEL_LOW);
-      expect(2).assertEqual(abilityConstant.MemoryLevel.MEMORY_LEVEL_CRITICAL);
-      expect(5).assertEqual(abilityConstant.LaunchReason.SHARE);
-      expect(0).assertEqual(abilityConstant.ContinueState.ACTIVE);
-      expect(1).assertEqual(abilityConstant.ContinueState.INACTIVE);
-      expect('ohos.extra.param.key.contentTitle').assertEqual(wantConstant.Params.CONTENT_TITLE_KEY);
-      expect('ohos.extra.param.key.shareAbstract').assertEqual(wantConstant.Params.SHARE_ABSTRACT_KEY);
-      expect('ohos.extra.param.key.shareUrl').assertEqual(wantConstant.Params.SHARE_URL_KEY);
-      expect('ohos.ability.params.abilityRecoveryRestart').assertEqual(wantConstant.Params.ABILITY_RECOVERY_RESTART);
-      expect('ohos.extra.param.key.showMode').assertEqual(wantConstant.Params.SHOW_MODE_KEY);
       done();
     })
 

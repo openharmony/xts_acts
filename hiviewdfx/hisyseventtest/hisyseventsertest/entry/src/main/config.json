@@ -11,13 +11,7 @@
   "module": {
     "package": "ohos.acts.hiviewdfx.hisysevent.ser.function",
     "name": ".entry",
-    "deviceType": [
-      "wearable",
-      "tablet",
-      "default",
-      "phone",
-      "2in1"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

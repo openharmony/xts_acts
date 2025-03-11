@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import deviceInfo from '@ohos.deviceInfo';
 
 import account from '@ohos.account.distributedAccount'
@@ -1452,6 +1452,122 @@ export default function ActsDAGetSetTest() {
             } catch (err) {
                 console.info('====>SUB_Account_DistributedAccount_ErrCode_0500 catch exception: ' + JSON.stringify(err));
                 expect().assertFail();
+                done();
+            }
+        });
+
+        /*
+        * @tc.number    : DAErrCodeCheck_0100
+        * @tc.name      : test interface setOsAccountDistributedInfo callback
+        * @tc.desc      : 401 err code check
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        */
+        it('DAErrCodeCheck_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+            let tag = "====>DAErrCodeCheck_0100 "
+            console.info(tag + "start====");
+            let distributedAccountManager = account.getDistributedAccountAbility();
+            console.info(tag + "start setOsAccountDistributedInfo");
+            try {
+                distributedAccountManager.setOsAccountDistributedInfo(null, (err, data) => {
+                    console.info(tag + "err: " + JSON.stringify(err));
+                    console.info(tag + "data: " + JSON.stringify(data));
+                    try {
+                        expect().assertFail();
+                    } catch (err) {
+                        console.info(tag + "Assert Fail: " + JSON.stringify(err));
+                    }
+                    done();
+                });
+            } catch (err) {
+                console.info(tag + "catch err: " + JSON.stringify(err));
+                console.info(tag + "end====");
+                expect(err.code).assertEqual(401);
+                done();
+            }
+        });
+
+        /*
+        * @tc.number    : DAErrCodeCheck_0200
+        * @tc.name      : test interface setOsAccountDistributedInfo promise
+        * @tc.desc      : 401 err code check
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        */
+        it('DAErrCodeCheck_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+            let tag = "====>DAErrCodeCheck_0200 "
+            console.info(tag + "start====");
+            let distributedAccountManager = account.getDistributedAccountAbility();
+            console.info(tag + "start setOsAccountDistributedInfo");
+            try {
+                let data = await distributedAccountManager.setOsAccountDistributedInfo(null);
+                console.info(tag + "data: " + JSON.stringify(data));
+                expect().assertFail();
+                done();
+            } catch (err) {
+                console.info(tag + "catch err: " + JSON.stringify(err));
+                console.info(tag + "end====");
+                expect(err.code).assertEqual(401);
+                done();
+            }
+        });
+
+        /*
+        * @tc.number    : DAErrCodeCheck_0300
+        * @tc.name      : test interface setOsAccountDistributedInfo callback
+        * @tc.desc      : 401 err code check
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        */
+        it('DAErrCodeCheck_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+            let tag = "====>DAErrCodeCheck_0300 "
+            console.info(tag + "start====");
+            let distributedAccountManager = account.getDistributedAccountAbility();
+            console.info(tag + "start setOsAccountDistributedInfo");
+            try {
+                distributedAccountManager.setOsAccountDistributedInfo(undefined, (err, data) => {
+                    console.info(tag + "err: " + JSON.stringify(err));
+                    console.info(tag + "data: " + JSON.stringify(data));
+                    try {
+                        expect().assertFail();
+                    } catch (err) {
+                        console.info(tag + "Assert Fail: " + JSON.stringify(err));
+                    }
+                    done();
+                });
+            } catch (err) {
+                console.info(tag + "catch err: " + JSON.stringify(err));
+                console.info(tag + "end====");
+                expect(err.code).assertEqual(401);
+                done();
+            }
+        });
+
+        /*
+        * @tc.number    : DAErrCodeCheck_0400
+        * @tc.name      : test interface setOsAccountDistributedInfo promise
+        * @tc.desc      : 401 err code check
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        */
+        it('DAErrCodeCheck_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+            let tag = "====>DAErrCodeCheck_0400 "
+            console.info(tag + "start====");
+            let distributedAccountManager = account.getDistributedAccountAbility();
+            console.info(tag + "start setOsAccountDistributedInfo");
+            try {
+                let data = await distributedAccountManager.setOsAccountDistributedInfo(undefined);
+                console.info(tag + "data: " + JSON.stringify(data));
+                expect().assertFail();
+                done();
+            } catch (err) {
+                console.info(tag + "catch err: " + JSON.stringify(err));
+                console.info(tag + "end====");
+                expect(err.code).assertEqual(401);
                 done();
             }
         });

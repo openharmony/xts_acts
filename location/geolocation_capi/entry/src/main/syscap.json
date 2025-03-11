@@ -1,13 +1,14 @@
 {
     "devices": {
-        "general": [
-            "default",
-            "tablet"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Location.Location.Core",
+                    "SystemCapability.Location.Location.Gnss",
+                    "SystemCapability.Location.Location.Geofence",
+                    "SystemCapability.Location.Location.Geocoder",
+                    "SystemCapability.Location.Location.Lite"
                 ]
             }
         ]

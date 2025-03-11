@@ -12,12 +12,7 @@
     "package": "com.example.actsaccountsceneonoff",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-      "tablet",
-      "default",
-      "2in1",
-      "wearable"
-    ],
+    "deviceType": [],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

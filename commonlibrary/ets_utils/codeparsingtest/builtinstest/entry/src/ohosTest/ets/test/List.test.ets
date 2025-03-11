@@ -18,6 +18,17 @@ import typedArrayTest from './TypedArray/TypedArray.test';
 import errorTest from './Error/Error.test';
 import weakRefTest from './WeakRef/WeakRef.test';
 import weakSetTest from './WeakSet/WeakSet.test';
+import Int8ArrayTest from './Array/TypeArray/Int8Array.test';
+import Int16ArrayTest from './Array/TypeArray/Int16Array.test';
+import Int32ArrayTest from './Array/TypeArray/Int32Array.test';
+import BigInt64ArrayTest from './Array/TypeArray/BigInt64Array.test';
+import BigUint64ArrayTest from './Array/TypeArray/BigUint64Array.test';
+import Float32ArrayTest from './Array/TypeArray/Float32Array.test';
+import Uint8ArrayTest from './Array/TypeArray/Uint8Array.test';
+import Uint8ClampedArrayTest from './Array/TypeArray/Uint8ClampedArray.test';
+import Uint16ArrayTest from './Array/TypeArray/Uint16Array.test';
+import Uint32ArrayTest from './Array/TypeArray/Uint32Array.test';
+import Float64ArrayTest from './Array/TypeArray/Float64Array.test';
 
 export default function testsuite() {
   booleanTest();
@@ -40,4 +51,15 @@ export default function testsuite() {
   errorTest();
   weakRefTest();
   weakSetTest();
+  Int8ArrayTest();
+  Int16ArrayTest();
+  Int32ArrayTest();
+  BigInt64ArrayTest();
+  BigUint64ArrayTest();
+  Float32ArrayTest();
+  Uint8ArrayTest();
+  Uint8ClampedArrayTest();
+  Uint16ArrayTest();
+  Uint32ArrayTest();
+  Float64ArrayTest();
 }

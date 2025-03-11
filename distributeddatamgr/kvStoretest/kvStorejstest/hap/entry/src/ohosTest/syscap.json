@@ -1,16 +1,11 @@
 {
     "devices": {
-        "general": [
-            "wearable",
-            "tablet",
-            "default",
-            "phone",
-            "2in1"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.DistributedDataManager.KVStore.Core",
+                    "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
                 ]
             }
         ]

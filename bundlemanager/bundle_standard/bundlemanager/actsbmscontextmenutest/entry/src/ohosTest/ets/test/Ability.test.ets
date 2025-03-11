@@ -67,11 +67,7 @@ export default function abilityTest() {
       expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
       expect(data.hapModulesInfo[0].extensionAbilitiesInfo.length).assertEqual(0);
       expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
-      expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(4);
-      expect(data.hapModulesInfo[0].deviceTypes[0]).assertEqual("default");
-      expect(data.hapModulesInfo[0].deviceTypes[1]).assertEqual("tablet");
-      expect(data.hapModulesInfo[0].deviceTypes[2]).assertEqual("2in1");
-      expect(data.hapModulesInfo[0].deviceTypes[3]).assertEqual("wearable");
+      expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(0);
       expect(data.hapModulesInfo[0].installationFree).assertFalse();
       expect(data.hapModulesInfo[0].hashValue).assertEqual("");
       expect(data.hapModulesInfo[0].fileContextMenuConfig)

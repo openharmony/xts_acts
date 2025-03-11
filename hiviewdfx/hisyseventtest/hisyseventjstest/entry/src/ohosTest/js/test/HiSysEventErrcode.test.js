@@ -1014,8 +1014,8 @@ describe('hiSysEventErrcodeTest', function () {
 					endTime: 1686827195834,
 					maxEvents: 1,
 				}, [{
-					domain: "RELIABILITY" ,
-					names: ["STACK"],
+					domain: "HIVIEWDFX" ,
+					names: ["SYS_USAGE"],
 				}], {
 					onQuery: function (infos) {
 					},

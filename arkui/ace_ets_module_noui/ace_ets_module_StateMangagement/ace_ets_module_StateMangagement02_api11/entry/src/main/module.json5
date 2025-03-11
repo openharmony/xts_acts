@@ -20,12 +20,7 @@
     "srcEntry": "./ets/Application/AbilityStage.ts",
     "description": "$string:phone_entry_dsc",
     "mainElement": "EntryAbility",
-    "deviceTypes": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",
@@ -37,7 +32,7 @@
     ],
     "abilities": [
       {
-        "name": "com.arkui.ace.StateMangagement02.EntryAbility",
+        "name": "com.arkui.ace.StateMangagement02.api11.EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ets",
         "description": "$string:phone_entry_main",
         "icon": "$media:icon",

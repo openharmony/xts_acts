@@ -1952,7 +1952,7 @@ export default function UiTest() {
             await driver.fling({x: center.x, y:Math.floor(center.y + (rect.bottom - rect.top) / 4)},
                 {x: center.x, y:Math.floor(center.y - (rect.bottom - rect.top) / 4)}, 20, 600)
             await driver.delayMs(1000)
-            let text = await driver.findComponent(ON.text('next page'))
+            let text = await driver.findComponent(ON.text('toast'))
             expect(text == null).assertTrue()
             await stopApplication('com.uitestScene.acts')
         })

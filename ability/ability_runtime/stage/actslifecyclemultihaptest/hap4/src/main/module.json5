@@ -19,11 +19,7 @@
         "srcEntry": "./ets/Application/AbilityStage.ts",
         "description": "$string:hap4_desc",
         "mainElement": "Hap4MainAbility1",
-        "deviceTypes": [
-            "default",
-            "tablet",
-            "2in1"
-        ],
+        "deviceTypes": [],
         "deliveryWithInstall": true,
         "installationFree": false,
         "uiSyntax": "ets",

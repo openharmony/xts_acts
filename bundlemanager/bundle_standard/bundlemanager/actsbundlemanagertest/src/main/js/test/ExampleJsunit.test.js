@@ -1842,6 +1842,7 @@ describe('ActsBundleManagerTest', function () {
     it('AbilityTypeTest_0100', 0, async function (done) {
         expect(demo.AbilitySubType.CA).assertEqual(1);
         expect(demo.AbilityType.UNKNOWN).assertEqual(0);
+        expect(demo.AbilityType.SERVICE).assertEqual(2);
         expect(demo.AbilityType.DATA).assertEqual(3);
         expect(demo.ColorMode.AUTO_MODE).assertEqual(-1);
         expect(demo.ColorMode.DARK_MODE).assertEqual(0);

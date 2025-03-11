@@ -46,6 +46,10 @@ static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         { "add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr }
+        { "getContext", nullptr, GetContext, nullptr, nullptr, nullptr, napi_default, nullptr }
+        { "createNativeNode", nullptr, CreateNativeNode, nullptr, nullptr, nullptr, napi_default, nullptr }
+        { "createNativeNodeFalse", nullptr, CreateNativeNodeFalse, nullptr, nullptr, nullptr, napi_default, nullptr }
+        { "upDateNativeNode", nullptr, UpdateNativeNode, nullptr, nullptr, nullptr, napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

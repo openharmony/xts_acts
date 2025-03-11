@@ -16,3 +16,13 @@
 export const KeyProcessingMode001: (a: string) => void;
 
 export const KeyProcessingMode002: (a: string) => void;
+
+export const KeyEventPatchTest: (a: string) => void;
+
+export const GetKeyEventData: () => object;
+
+export const scrollBackToTopTest: (a: string) => void;
+
+export const FocusControlTest_003: (a: string) => void;
+
+export const FocusControlTest_004: (a: string) => void;

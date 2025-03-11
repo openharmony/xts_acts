@@ -17,11 +17,13 @@ import commonEventManager from '@ohos.commonEventManager'
 import { notificationManager } from '@kit.NotificationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { common } from '@kit.AbilityKit';
+import { common, wantAgent } from '@kit.AbilityKit';
 import { Driver, ON } from '@kit.TestKit';
+import { CustomGlobal } from '../testability/CustomGlobal';
+import notification from '@ohos.notification';
+import { image } from '@kit.ImageKit';
 
 
-let ctx:common.UIAbilityContext = getContext(this) as common.UIAbilityContext;
 export async function sleep(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms));
 };
@@ -472,126 +474,29 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
     })
 
 
-    it('Sub_Notification_Ces_Publish_CommonEvent_7900_282', 0, async (done: Function) => {
-      notificationManager.requestEnableNotification((err) => {
-        if (err) {
-          console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
-        } else {
-          console.info("requestEnableNotification success");
-        }
-      });
-
-      notificationManager.requestEnableNotification((err) => {
-        console.error(`requestEnableNotification1 failed, code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(1600013)
-      });
-
-      await notificationManager.requestEnableNotification().then(() => {
-        console.info(`${TAG} requestEnableNotification Promise success`)
-        expect(false).assertTrue()
-        done()
-      }).catch((err:BusinessError) => {
-        console.info(`${TAG} requestEnableNotification Promise err: ${err.code}, errMes: ${err.message}`)
-        expect(err.code).assertEqual(1600013)
-      })
-
-
-      notificationManager.requestEnableNotification(ctx, (err) => {
-        console.error(`requestEnableNotification2 failed, code is ${err.code}, message is ${err.message}`);
-        expect(err.code).assertEqual(1600013)
-      });
-
-      await notificationManager.requestEnableNotification(ctx).then(() => {
-        console.info(`${TAG} requestEnableNotification Promise success`)
-        expect(false).assertTrue()
-        done()
-      }).catch(async (err: BusinessError) => {
-        console.info(`${TAG} requestEnableNotification2 Promise err: ${err.code}, errMes: ${err.message}`)
-        expect(err.code).assertEqual(1600013)
-      });
-
-
-
-      await sleep(1500)
-      let driver = Driver.create();
-      await sleep(500)
-      let button = await driver.findComponent(ON.text('允许'));
-      hilog.info(0x0000, 'testTag', `button is ${JSON.stringify(button)}`);
-      await sleep(500);
-      await button.click();
-      await sleep(1000);
-
-      for (let index = 0; index <= 9; index++) {
-        let notificationRequest: notificationManager.NotificationRequest = {
-          id: index,
-          content: {
-            notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-            normal: {
-              title: 'text_title',
-              text: 'text_text',
-              additionalText: 'test_Publish'
-            }
-          }
-        }
-        notificationManager.publish(notificationRequest, (err) => {
-          if (err) {
-            console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(err.code).assertEqual(1600009);
-            done()
-          } else {
-            console.info(`${TAG} publish AsyncCallback success`)
-            expect(true).assertTrue()
-          }
-        })
-      }
-
-      await sleep(500);
-      let notificationRequest: notificationManager.NotificationRequest = {
-        id: 10,
-        content: {
-          notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-          normal: {
-            title: 'text_title',
-            text: 'text_text',
-            additionalText: 'test_Publish'
-          }
-        }
-      }
-      notificationManager.publish(notificationRequest, (err) => {
-        if (err) {
-          console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-          expect(err.code).assertEqual(1600009);
-          done()
-        } else {
-          expect(false).assertTrue()
-          done()
-        }
-      })
-    })
-
-    it('Sub_Notification_Ces_Publish_CommonEvent_7900_284', 0, async (done: () => void) => {
-
+it('Sub_Notification_Ces_Publish_CommonEvent_7900_284', 0, async (done: () => void) => {
       try {
         notificationManager.setBadgeNumber(null, (err) => {
           console.log(`setBadgeNumber failed, error code: ${err.code}, message: ${err.message}`)
-          if(err.code == 801){
+          if (err.code == 801) {
             expect(true).assertTrue()
             done()
-          }else{
+          } else {
             expect(false).assertTrue()
             done()
           }
         })
       } catch (err) {
         console.log(`setBadgeNumber failed, catch error code: ${err.code}, message: ${err.message}`)
-        if(err.code == 801){
+        if (err.code == 801) {
           expect(true).assertTrue()
           done()
-        }else{
+        } else {
           expect(err.code).assertEqual(401)
           done()
         }
       }
+
 
       // 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
       let subscriber: commonEventManager.CommonEventSubscriber;
@@ -611,16 +516,53 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
           subscriber = commonEventSubscriber
 
           try {
+            subscriber.getCode(null)
+          }catch (err) {
+            console.info(`${TAG} getCode err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
             subscriber.setCode(null, (err) => {
               console.info(`${TAG} setCode id success`)
               expect(false).assertTrue()
               done()
             })
-          }catch (err) {
+          } catch (err) {
             console.info(`${TAG} setCode err: ${err.code}, errMes: ${err.message}`)
             expect(err.code).assertEqual(401)
             done()
           }
+
+          try {
+            subscriber.getData(null)
+          }catch (err) {
+            console.info(`${TAG} getData err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.setData(null, (err) => {
+              console.info(`setData_1 err, error code: ${err.code}, message: ${err.message}`)
+              expect(false).assertTrue()
+              done()
+            })
+          } catch (err) {
+            console.info(`${TAG} setData err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.clearAbortCommonEvent(null)
+          }catch (err) {
+            console.info(`${TAG} clearAbortCommonEvent err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
 
           try {
             subscriber.setCodeAndData(null, 'data02', (err) => {
@@ -628,14 +570,315 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
               expect(false).assertTrue()
               done()
             })
-          }catch (err) {
+          } catch (err) {
             console.info(`${TAG} setCodeAndData err: ${err.code}, errMes: ${err.message}`)
             expect(err.code).assertEqual(401)
             done()
           }
+
+          try {
+            subscriber.isOrderedCommonEvent(null)
+          }catch (err) {
+            console.info(`${TAG} isOrderedCommonEvent err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.isStickyCommonEvent(null)
+          }catch (err) {
+            console.info(`${TAG} isStickyCommonEvent err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.abortCommonEvent(null)
+          }catch (err) {
+            console.info(`${TAG} abortCommonEvent err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.clearAbortCommonEvent(null)
+          }catch (err) {
+            console.info(`${TAG} clearAbortCommonEvent err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.getAbortCommonEvent(null)
+          }catch (err) {
+            console.info(`${TAG} getAbortCommonEvent err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.getSubscribeInfo(null)
+          }catch (err) {
+            console.info(`${TAG} getSubscribeInfo err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
+          try {
+            subscriber.finishCommonEvent(null)
+          }catch (err) {
+            console.info(`${TAG} finishCommonEvent err: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(401)
+            done()
+          }
+
         }
       })
     })
+
+
+it('Sub_Notification_Ces_Publish_CommonEvent_7900_282', 0, async (done: Function) => {
+  notificationManager.requestEnableNotification(CustomGlobal.context)
+
+  await sleep(1000)
+  notificationManager.requestEnableNotification((err) => {
+    console.error(`requestEnableNotification1 failed, code is ${err.code}, message is ${err.message}`);
+    expect(err.code).assertEqual(1600013)
+  });
+
+  await notificationManager.requestEnableNotification().then(() => {
+    console.info(`${TAG} requestEnableNotification Promise success`)
+    expect(false).assertTrue()
+    done()
+  }).catch((err: BusinessError) => {
+    console.info(`${TAG} requestEnableNotification Promise err: ${err.code}, errMes: ${err.message}`)
+    expect(err.code).assertEqual(1600013)
+  })
+
+  await sleep(500)
+  notificationManager.requestEnableNotification(CustomGlobal.context, (err) => {
+    console.error(`requestEnableNotification2 failed, code is ${err.code}, message is ${err.message}`);
+    expect(err.code).assertEqual(1600013)
+  });
+
+  await sleep(500)
+  notificationManager.requestEnableNotification(CustomGlobal.context).then(() => {
+    console.info(`${TAG} requestEnableNotification Promise success`)
+    expect(false).assertTrue()
+    done()
+  }).catch(async (err: BusinessError) => {
+    console.info(`${TAG} requestEnableNotification2 Promise err: ${err.code}, errMes: ${err.message}`)
+    expect(err.code).assertEqual(1600013)
+  });
+
+  await sleep(1000)
+  let driver = Driver.create();
+  await sleep(500)
+  let button = await driver.findComponent(ON.text("允许",0));
+  hilog.info(0x0000, 'testTag', `button is ${JSON.stringify(button)}`);
+  await sleep(500);
+  if (button !== null) {
+    console.log('button not is null')
+    await button.click();
+    console.log('button not click')
+    await sleep(500);
+  } else {
+    console.log(`button is null`)
+  }
+  console.info(`button is success`)
+
+  let  index1 = 0;
+  let publishCallback = (err: BusinessError): void => {
+    index1+=1
+    console.info(`index1:` + index1)
+    if (index1 == 11){
+      console.info(`fail in publishing notification:` + err.code)
+      expect(err.code).assertEqual(1600009);
+      done()
+    }else {
+      console.info(`publishing notification:` + err)
+      expect(err).assertEqual(null);
+    }
+  }
+
+  for (let index = 0; index <= 10; index++) {
+    let notificationRequest: notificationManager.NotificationRequest = {
+      id: index,
+      content: {
+        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        normal: {
+          title: 'text_title',
+          text: 'text_text',
+          additionalText: 'test_Publish'
+        }
+      }
+    }
+    notificationManager.publish(notificationRequest, publishCallback)
+    await sleep(60)
+  }
+
+  for (let index = 0; index <= 10; index++) {
+    let notificationRequest: notificationManager.NotificationRequest = {
+      id: index,
+      content: {
+        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        normal: {
+          title: 'text_title',
+          text: 'text_text',
+          additionalText: 'test_Publish'
+        }
+      }
+    }
+    await notificationManager.publish(notificationRequest).then(() => {
+      console.info(`${TAG} publish Promise success`)
+      expect(true).assertTrue()
+    }).catch(async (err: BusinessError) => {
+      console.info(`${TAG} publish Promise err: ${err.code}, errMes: ${err.message}`)
+      if (index == 10) {
+        expect(err.code).assertEqual(1600009)
+        done()
+      }else {
+        expect(false).assertTrue()
+        done()
+      }
+    });
+  }
+
+})
+
+
+it('Sub_Notification_Ces_Publish_CommonEvent_7900_283', 0, async (done: () => void) => {
+
+  notificationManager.openNotificationSettings(CustomGlobal.context).then(() => {
+    expect(true).assertTrue();
+  }).catch((err: BusinessError) => {
+    console.error(TAG + "openNotificationSettings: " + JSON.stringify(err));
+    if (err.code == 801) {
+      expect(true).assertTrue();
+      done();
+    } else {
+      expect().assertFail();
+      done();
+    }
+  });
+
+  await sleep(2000)
+
+  await notificationManager.openNotificationSettings(CustomGlobal.context).then(() => {
+    expect(false).assertTrue();
+    done()
+  }).catch((err: BusinessError) => {
+    console.error(TAG + "openNotificationSettings: " + JSON.stringify(err));
+    if (err.code == 801) {
+      expect(true).assertTrue();
+      done();
+    } else {
+      expect(err.code).assertEqual(1600018)
+      done()
+    }
+  });
+})
+
+
+
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_287', 0, async (done: Function) => {
+
+      let BundleOption: notification.BundleOption = {
+        bundle: "com.example.secondaryDirectory",
+        uid: 101001
+      }
+      console.info(`${TAG} BundleOption bundle:uid = ${BundleOption.bundle}${BundleOption.uid}`);
+      expect(typeof BundleOption.bundle == 'string').assertTrue()
+      expect(typeof BundleOption.uid == 'number').assertTrue()
+      expect(BundleOption.bundle).assertEqual("com.example.secondaryDirectory")
+      expect(BundleOption.uid).assertEqual(101001)
+      console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_7900_287 END`);
+
+
+      let removeCallback = (err: BusinessError) => {
+        if (err.code) {
+          console.info("remove failed " + JSON.stringify(err));
+          expect(err.code).assertEqual(67108878)
+          done()
+        } else {
+          console.info("whwhwhremove success");
+          expect(false).assertEqual(true)
+          done()
+        }
+      }
+      let bundle: notification.BundleOption = {
+        bundle: "bundleName1",
+      };
+      let notificationKey: notification.NotificationKey = {
+        id: 0,
+        label: "label",
+      };
+      let reason: notification.RemoveReason = notification.RemoveReason.CLICK_REASON_REMOVE;
+      notification.remove(bundle, notificationKey, reason, removeCallback);
+    });
+
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_288', 0, async (done: Function) => {
+
+      const TEST_SUITE_NAME = 'Sub_Notification'
+      const TEST_CASE_NAME = 'Sub_Notification_Ces_Publish_CommonEvent_7900_287'
+      let imagesource = image.createImageSource(getContext()
+        .resourceManager
+        .getMediaContentSync($r("app.media.icon"))
+        .buffer
+        .slice(0));
+      const pixelMap = await imagesource.createPixelMap();
+      let wantAgentData = wantAgent.getWantAgent({
+        wants: [
+          {
+            bundleName: 'com.example.systemAPI',
+            action: "usual.event.REMOVAL_WANTAGENT"
+          }
+        ],
+        actionType: 4,
+        requestCode: 0,
+        actionFlags: [wantAgent.WantAgentFlags.ONE_TIME_FLAG]
+      });
+
+      console.log('Succeeded in creating pixelmap.');
+      let notificationRequest: notificationManager.NotificationRequest = {
+        id: 1,
+        content: {
+          notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+          longText: {
+            title: '',
+            text: 'test_text',
+            additionalText: 'text_additionalText',
+            longText: 'text_longText',
+            briefText: 'text_briefText',
+            expandedTitle: 'text_exoandTitle'
+          }
+        },
+        smallIcon: pixelMap,
+        largeIcon: pixelMap,
+        groupName: "123",
+        removalWantAgent: wantAgentData,
+        badgeNumber: 99,
+        notificationFlags: {
+          soundEnabled: 0,
+          vibrationEnabled: 1
+        }
+      }
+
+      try {
+        notificationManager.publish(notificationRequest, (err) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is :%{public}s', JSON.stringify(err));
+          expect().assertFail();
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+
+    });
 
 
 }) 

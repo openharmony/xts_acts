@@ -4,9 +4,6 @@
         "MainAbility/pages/index/second",
         "MainAbility/pages/List/ListSwipe",
         "MainAbility/pages/Scroll/ScrollEffectEdge",
-        "MainAbility/pages/Tabs/TabBarComponentContent",
-        "MainAbility/pages/List/ListBackToTop",
-        "MainAbility/pages/Grid/GridBackToTop",
-        "MainAbility/pages/Scroll/ScrollBackToTop"
+        "MainAbility/pages/Tabs/TabBarComponentContent"
     ]
 }

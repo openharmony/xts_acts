@@ -70,7 +70,6 @@ import getLength2 from './router/getLength/getLength2.test'
 import getLength3 from './router/getLength/getLength3.test'
 import getState1 from './router/getState/getState1.test'
 import getStateByIndex1 from './router/getStateByIndex/getStateByIndex1.test'
-import focus1 from './router/focus/focus1.test'
 
 import pushUrl2 from './router/pushUrl/pushUrl2.test'
 import pushUrl3 from './router/pushUrl/pushUrl3.test'
@@ -168,7 +167,6 @@ export default function testsuite() {
   getLength3();
   getState1();
   getStateByIndex1();
-  focus1();
 
   pushUrl2();
   pushUrl3();

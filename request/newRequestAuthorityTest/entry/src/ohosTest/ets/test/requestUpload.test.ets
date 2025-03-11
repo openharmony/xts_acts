@@ -522,14 +522,20 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_REQUEST_Upload_broadcastEvent_0100', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Upload_broadcastEvent_0100 is starting-----------------------");
-      let attachments: Array<request.agent.FormItem> = [{
-        name: "uploadTest",
-        value: {
-          path: "./test.txt",
-          filename: "test.txt",
-          mimeType: "application/octet-stream"
+      let attachments: Array<request.agent.FormItem> = [
+        {
+          name: "uploadTest",
+          value: {
+            path: "./test.txt",
+            filename: "test.txt",
+            mimeType: "application/octet-stream"
+          }
+       },
+        {
+          name: "uploadTest1",
+          value: 'broadcastEventUploadTest'
         }
-      }];
+      ];
       let config:request.agent.Config = {
         action: request.agent.Action.UPLOAD,
         url: 'http://127.0.0.1:8080',

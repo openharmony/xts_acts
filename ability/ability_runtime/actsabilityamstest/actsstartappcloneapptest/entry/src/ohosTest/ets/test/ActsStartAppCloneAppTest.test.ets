@@ -13,19 +13,45 @@
  * limitations under the License.
  */
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { describe, beforeAll, it, expect, afterEach, beforeEach, } from '@ohos/hypium';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import commonEvent from '@ohos.commonEventManager';
 import { Driver, MatchPattern, ON } from '@ohos.UiTest';
 
+let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 const TAG = 'AbilityRuntime';
 const TEST_SUITE_NAME: string = 'AppcloneChose';
 let testAbilityContext: common.UIAbilityContext;
 let driver = Driver.create();
+let isAppSelectorExist = true;
+let selectorName = "wei.hmsapp.appgallery";
 
 function sleep(time: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, time));
+}
+
+async function checkAppSelectorExist() {
+  try {
+    let cmd = 'bm dump -n com.hua' + selectorName;
+    await abilityDelegator.executeShellCommand(cmd)
+      .then((data) => {
+        console.info('executeShellCommand success ' + JSON.stringify(data));
+        if (!data.stdResult.includes(selectorName)) {
+          console.info('app selector name do not exist');
+          return;
+        }
+        if (data.stdResult.includes("AppSelectorExtensionAbility")) {
+          console.info("AppSelectorExtensionAbility exists");
+        } else {
+          console.info("AppSelectorExtensionAbility do not exists");
+          isAppSelectorExist = false;
+        }
+      })
+  } catch (error) {
+    console.info("executeShellCommand failed ");
+  }
 }
 
 export default function actsStartAppCloneAppTest() {
@@ -68,8 +94,11 @@ export default function actsStartAppCloneAppTest() {
             break;
         }
       }
-    beforeAll(() => {
+    beforeAll(async (done: Function) => {
       testAbilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext;
+      await checkAppSelectorExist();
+      console.info("isAppSelectorExist " + isAppSelectorExist);
+      done();
     })
 
     beforeEach(() => {
@@ -370,6 +399,10 @@ export default function actsStartAppCloneAppTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} startAbility succeed`);
         });
         await sleep(1500);
+        if (!isAppSelectorExist) {
+          done();
+          return;
+        }
         try {
           let allowedButton = await driver.findComponent(ON.text('允许', MatchPattern.CONTAINS));
           hilog.info(0x0000, TAG, '%{public}s',

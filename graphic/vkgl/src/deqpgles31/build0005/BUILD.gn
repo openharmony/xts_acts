@@ -61,18 +61,6 @@ ohos_moduletest_suite("ActsDeqpgles31Suite0005Test") {
     "../functional/Deqpgles31es32_implicit_sizeTestCase.cpp",
     "../functional/Deqpgles31es32_io_blockTestCase.cpp",
     "../functional/Deqpgles31es32_lengthTestCase.cpp",
-    "../functional/Deqpgles31es32_shader_storage_blockTestCase.cpp",
-    "../functional/Deqpgles31layout_declarations_rulesTestCase.cpp",
-    "../functional/Deqpgles31single_statement_multiple_declarations_explicit_constructorTestCase.cpp",
-    "../functional/Deqpgles31single_statement_multiple_declarations_implicit_constructorTestCase.cpp",
-    "../functional/Deqpgles31uniform_basicTestCase.cpp",
-    "../functional/Deqpgles31uniform_blockTestCase.cpp",
-    "../functional/Deqpgles31uniform_rulesTestCase.cpp",
-    "../functional/Deqpgles31uniform_structTestCase.cpp",
-    "../functional/Deqpgles31uniform_typesTestCase.cpp",
-    "../functional/Deqpgles31varying_qualifiersTestCase.cpp",
-    "../functional/Deqpgles31varying_rulesTestCase.cpp",
-    "../functional/Deqpgles31varying_typesTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

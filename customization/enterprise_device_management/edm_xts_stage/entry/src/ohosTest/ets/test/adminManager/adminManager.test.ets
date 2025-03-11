@@ -124,8 +124,8 @@ export default function adminManagerTest() {
 
     /**
      * @tc.number    : SUB_CUSTOMIZATION_EDM_UNSUBSCRIBEMANAGEDEVENTSYNC_002
-     * @tc.name      : test_subscribeManagedEventSync_002
-     * @tc.desc      : test subscribeManagedEventSync method with Active admin
+     * @tc.name      : test_unsubscribeManagedEventSync_002
+     * @tc.desc      : test unsubscribeManagedEventSync method with Active admin
      * @tc.level     : Level 2
      * @tc.type      : Function
      * @tc.size      : MediumTest
@@ -145,8 +145,8 @@ export default function adminManagerTest() {
 
     /**
      * @tc.number    : SUB_CUSTOMIZATION_EDM_UNSUBSCRIBEMANAGEDEVENTSYNC_003
-     * @tc.name      : test_subscribeManagedEventSync_003
-     * @tc.desc      : test subscribeManagedEventSync method with Active admin
+     * @tc.name      : test_unsubscribeManagedEventSync_003
+     * @tc.desc      : test unsubscribeManagedEventSync method with Active admin
      * @tc.level     : Level 2
      * @tc.type      : Function
      * @tc.size      : MediumTest
@@ -166,8 +166,8 @@ export default function adminManagerTest() {
 
     /**
      * @tc.number    : SUB_CUSTOMIZATION_EDM_UNSUBSCRIBEMANAGEDEVENTSYNC_004
-     * @tc.name      : test_subscribeManagedEventSync_004
-     * @tc.desc      : test subscribeManagedEventSync method with super admin
+     * @tc.name      : test_unsubscribeManagedEventSync_004
+     * @tc.desc      : test unsubscribeManagedEventSync method with super admin
      * @tc.level     : Level 2
      * @tc.type      : Function
      * @tc.size      : MediumTest
@@ -742,6 +742,80 @@ export default function adminManagerTest() {
         expect(false).assertTrue();
       }
       done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_DISABLEADMIN_001
+     * @tc.name      : test_disableAdmin_001
+     * @tc.desc      : test disableAdmin method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_disableAdmin_001", 0, async (done: Function) => {
+      try {
+        await adminManager.disableAdmin(SELFWANT);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9200005).assertTrue();
+      } 
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_DISABLEADMIN_002
+     * @tc.name      : test_disableAdmin_002
+     * @tc.desc      : test disableAdmin method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_disableAdmin_002", 0, async (done: Function) => {
+      try {
+        await adminManager.disableAdmin(null);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      } 
+      done();
+
+      /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_DISABLEADMIN_003
+     * @tc.name      : test_disableAdmin_003
+     * @tc.desc      : test disableAdmin method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_disableAdmin_003", 0, async (done: Function) => {
+      try {
+        let userId: number = 100;
+        await adminManager.disableAdmin(SELFWANT, userId);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9200005).assertTrue();
+      } 
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_DISABLEADMIN_004
+     * @tc.name      : test_disableAdmin_004
+     * @tc.desc      : test disableAdmin method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_disableAdmin_004", 0, async (done: Function) => {
+      try {
+        let userId: number = 100;
+        await adminManager.disableAdmin(null, userId);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      } 
+      done();
+    })
     })
   })
 }

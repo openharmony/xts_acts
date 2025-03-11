@@ -12,6 +12,7 @@
     "MainAbility/pages/subHeader/subHeaderAccessibilityPage",
     "MainAbility/pages/composeTitleBar/composeTitleBarAccessibilityPage",
     "MainAbility/pages/selectTitleBar/selectTitleBarAccessibilityPage",
-    "MainAbility/pages/tabTitleBar/tabTitleBarAccessibilityPage"
+    "MainAbility/pages/tabTitleBar/tabTitleBarAccessibilityPage",
+    "MainAbility/pages/toolBarV2/ToolBarV2AccessibilityPage"
   ]
 }

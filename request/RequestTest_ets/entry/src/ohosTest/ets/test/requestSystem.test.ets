@@ -71,6 +71,7 @@ export default function requestSystemJSUnit() {
           uri: 'internal://cache/test.txt',
           name: 'file',
           filename: 'file.txt',
+          type: "",
         },
       ]
 
@@ -100,6 +101,58 @@ export default function requestSystemJSUnit() {
         done();
       }
       console.info("====>-----------------------SUB_REQUESTSYSTEM_UPLOAD_API_0001 end-----------------------");
+    });
+
+    /**
+     * @tc.number: ohos.SUB_REQUESTSYSTEM_UPLOAD_API_0002
+     * @tc.name: ohos.SUB_REQUESTSYSTEM_UPLOAD_API_0002
+     * @tc.desc: Upload files.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('SUB_REQUESTSYSTEM_UPLOAD_API_0002', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_REQUESTSYSTEM_UPLOAD_API_0002 start-----------------------");
+      let files: Array<ESObject> = [
+        {
+          uri: 'internal://cache/test.txt',
+          name: 'file',
+          filename: 'file.txt',
+        },
+      ]
+
+      let data: Array<ESObject> = [
+        {
+          name: 'name1',
+          value: 'value',
+        },
+      ]
+
+      let UploadRequestOptions: ESObject = {
+        url: 'http://www.path.com',
+        method: 'POST',
+        files: files,
+        data: data,
+        complete: () => {
+          console.info('====>SUB_REQUESTSYSTEM_UPLOAD_API_0002 upload complete');
+        },
+        success: (data: object) => {
+          console.info('====>SUB_REQUESTSYSTEM_UPLOAD_API_0002 upload success, code:' + JSON.stringify(data));
+        },
+        fail: (data:string, code:number) => {
+          console.info('====>SUB_REQUESTSYSTEM_UPLOAD_API_0002 upload fail data: ' + data + 'code: ' + code);
+        },
+      }
+      try{
+        request.upload(UploadRequestOptions);
+        console.info('====>SUB_REQUESTSYSTEM_UPLOAD_API_0002 upload');
+        expect(UploadRequestOptions !== undefined).assertEqual(true);
+        done();
+      }catch(err){
+        console.info('====>SUB_REQUESTSYSTEM_UPLOAD_API_0002 upload catch err:' + err);
+        done();
+      }
+      console.info("====>-----------------------SUB_REQUESTSYSTEM_UPLOAD_API_0002 end-----------------------");
     });
 
     /**

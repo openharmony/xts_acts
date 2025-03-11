@@ -1,17 +1,10 @@
 {
     "devices": {
-        "general": [
-            "default",
-            "tablet",
-            "2in1",
-            "wearable",
-            "car",
-            "tv"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Web.Webview.Core"
                 ]
             }
         ]

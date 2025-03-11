@@ -24,11 +24,7 @@
       }
     ],
     "mainElement": "EntryAbility",
-    "deviceTypes": [
-      "wearable",
-      "default",
-      "tablet"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",

@@ -17,12 +17,7 @@
   "module": {
     "name": "sharedHspOne_test",
     "type": "feature",
-    "deviceTypes": [
-      "wearable",
-      "default",
-      "tablet",
-      "2in1"
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false
   }

@@ -13,9 +13,7 @@
  * limitations under the License.
  */
 
-export const KeyEventPatchTest: (a: string) => void;
 
-export const GetKeyEventData: () => object;
 
 export const checkboxGroupGroupTest: (a:string) => void;
 
@@ -56,9 +54,7 @@ export const FocusControlTest_001: (a: string) => void;
 
 export const FocusControlTest_002: (a: string) => void;
 
-export const FocusControlTest_003: (a: string) => void;
 
-export const FocusControlTest_004: (a: string) => void;
 
 export const listTestCallback: (a: string) => void;
 
@@ -67,3 +63,14 @@ export const listScrollToTestCallback: (a: string) => void;
 export const gesturecancelTest: (a: string) => void;
 
 export const GetTouchEventData: () => object;
+
+export const TestGestureRecognizerFinger001: (a: string) => void;
+
+export const TestGestureRecognizerGetResult: () => string[];
+
+export const TestEventInfoGetPressedTime001: (a: string) => void;
+
+export const TestEventInfoGetResult: () => string[];
+export const snapShotTest001: (a: string) => void;
+
+export const TestsnapShotetResult: () => string[];

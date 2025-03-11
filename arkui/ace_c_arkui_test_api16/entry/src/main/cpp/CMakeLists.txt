@@ -17,16 +17,14 @@ add_library(nativerender SHARED
     swiper/swiper_test.cpp
     textArea/textArea_letter_spacing.cpp
     textpicker/textpicker_columnwidths_test.cpp
-    scroll/scroll_backtotop_test.cpp
     component/component.cpp
-    component/grid_component.cpp
-    component/list_component.cpp
-    component/scroll_component.cpp
-    component/waterflow_component.cpp
-    component/button_component.cpp
-    component/text_component.cpp
+    component/calendarPicker_component.cpp  
+    component/datepicker_component.cpp
+    datepicker/datepicker_test.cpp
     drag/drag_test.cpp
     calendarPicker/calendar_picker_test.cpp
+    calendarPicker/calendarPicker_date_test.cpp
+    ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.cpp
 )
 
 add_library(nativefunc SHARED

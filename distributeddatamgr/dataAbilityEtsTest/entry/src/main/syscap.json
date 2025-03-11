@@ -1,15 +1,12 @@
 {
     "devices": {
-        "general": [
-            "default",
-            "tablet",
-            "phone",
-            "2in1"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.DistributedDataManager.DataShare.Core",
+                    "SystemCapability.DistributedDataManager.DataShare.Consumer",
+                    "SystemCapability.DistributedDataManager.DataShare.Provider"
                 ]
             }
         ]

@@ -3,7 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "com.arkui.ace.StateMangagement02",
+        "bundle-name": "com.arkui.ace.StateMangagement02.api11",
         "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": "180000"

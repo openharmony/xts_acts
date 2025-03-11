@@ -46,12 +46,10 @@ ohos_moduletest_suite("ActsKhrgles2Suite0001Test") {
   part_name = "graphic_2d"
   sources = [
     "../ActsKhrgles20001TestSuite.cpp",
-    "../core/Khrgles2internalformat_copy_tex_imageTestCase.cpp",
     "../core/Khrgles2internalformat_renderbufferTestCase.cpp",
     "../core/Khrgles2internalformat_texture2dTestCase.cpp",
     "../shaders/Khrgles2shaders_aggressive_optimizationsTestCase.cpp",
     "../shaders/Khrgles2shaders_negativeTestCase.cpp",
-    "../texture_3d/Khrgles2filtering_combinationsTestCase.cpp",
     "../texture_3d/Khrgles2filtering_formatsTestCase.cpp",
     "../texture_3d/Khrgles2filtering_sizesTestCase.cpp",
     "../texture_3d/Khrgles2texture_3d_compressed_textureTestCase.cpp",

@@ -1,14 +1,14 @@
 {
     "devices": {
-        "general": [
-            "default",
-            "tablet",
-            "2in1"
-        ],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.DistributedDataManager.CloudSync.Client",
+                    "SystemCapability.DistributedDataManager.CloudSync.Server",
+                    "SystemCapability.DistributedDataManager.CloudSync.Config",
+                    "SystemCapability.DistributedDataManager.RelationalStore.Core",
+                    "SystemCapability.DistributedDataManager.CommonType"
                 ]
             }
         ]

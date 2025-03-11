@@ -75,7 +75,7 @@ export default function StartAbilityForResultTest() {
         }).catch((error:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${error}`);
           expect(error.code == undefined).assertFalse();
-          if (targetVersion >= 16) {
+          if (targetVersion >= 18) {
             expect(error.code).assertEqual(16000001);
           } else {
             expect(error.code).assertEqual(2097152);
@@ -112,7 +112,7 @@ export default function StartAbilityForResultTest() {
         }).catch((error:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${error}`);
           expect(error.code == undefined).assertFalse();
-          if (targetVersion >= 16) {
+          if (targetVersion >= 18) {
             expect(error.code).assertEqual(16000001);
           } else {
             expect(error.code).assertEqual(2097152);
@@ -227,7 +227,7 @@ export default function StartAbilityForResultTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
         }).catch((err:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
-          if (targetVersion >= 16) {
+          if (targetVersion >= 18) {
             expect(err.code).assertEqual(16000001);
           } else {
             expect(err.code).assertEqual(2097152);
@@ -270,7 +270,7 @@ export default function StartAbilityForResultTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
         }).catch((err:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
-          if (targetVersion >= 16) {
+          if (targetVersion >= 18) {
             expect(err.code).assertEqual(16000001);
           } else {
             expect(err.code).assertEqual(2097152);
