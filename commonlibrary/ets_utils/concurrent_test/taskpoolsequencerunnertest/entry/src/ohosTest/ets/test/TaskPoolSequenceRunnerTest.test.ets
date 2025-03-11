@@ -90,7 +90,7 @@ export default function TaskPoolSequenceRunnerTest() {
         })
       }
 
-      while (Count1.count < 10) {
+      while (Count1.count < 10 || Count2.count < 10) {
         await sleep(500)
       }
       expect(10).assertEqual(Count1.count)
@@ -146,7 +146,7 @@ export default function TaskPoolSequenceRunnerTest() {
         }
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(1000)
       }
 
@@ -190,7 +190,7 @@ export default function TaskPoolSequenceRunnerTest() {
 
       }
 
-      while (Count1.count < 10) {
+      while (Count1.count < 10 || Count2.count < 10) {
         await sleep(1000)
       }
 
@@ -241,7 +241,7 @@ export default function TaskPoolSequenceRunnerTest() {
 
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(1000)
       }
 
@@ -288,7 +288,7 @@ export default function TaskPoolSequenceRunnerTest() {
         })
       }
 
-      while (Count1.count < 10) {
+      while (Count1.count < 10 || Count2.count < 10) {
         await sleep(1000)
       }
 
@@ -336,7 +336,7 @@ export default function TaskPoolSequenceRunnerTest() {
         taskpool.cancel(task2)
       }
 
-      while (Count1.count < 10) {
+      while (Count1.count < 10 || Count2.count < 10) {
         await sleep(1000)
       }
 
@@ -461,7 +461,7 @@ export default function TaskPoolSequenceRunnerTest() {
           console.error(`sendable: task2 execute Code is ${e.code}, message is ${e.message}`);
         })
       }
-      while (res1 < 55) {
+      while (res1 < 55 || res2 < 55) {
         await sleep(1000)
       }
       expect(55).assertEqual(res1)
@@ -508,7 +508,7 @@ export default function TaskPoolSequenceRunnerTest() {
         })
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(1000)
       }
 
@@ -560,7 +560,7 @@ export default function TaskPoolSequenceRunnerTest() {
         })
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(1000)
       }
 
@@ -608,7 +608,7 @@ export default function TaskPoolSequenceRunnerTest() {
         })
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(1000)
       }
 
@@ -670,7 +670,7 @@ export default function TaskPoolSequenceRunnerTest() {
         })
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(1000)
       }
 
@@ -721,7 +721,7 @@ export default function TaskPoolSequenceRunnerTest() {
         })
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(1000)
       }
 
@@ -778,7 +778,7 @@ export default function TaskPoolSequenceRunnerTest() {
         })
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(1000)
       }
 
@@ -826,7 +826,7 @@ export default function TaskPoolSequenceRunnerTest() {
         })
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(1000)
       }
 
@@ -882,7 +882,7 @@ export default function TaskPoolSequenceRunnerTest() {
         })
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(1000)
       }
 
@@ -930,7 +930,7 @@ export default function TaskPoolSequenceRunnerTest() {
         })
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(1000)
       }
 
@@ -984,7 +984,7 @@ export default function TaskPoolSequenceRunnerTest() {
         })
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(1000)
       }
 
