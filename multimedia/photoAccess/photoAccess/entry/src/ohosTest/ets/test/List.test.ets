@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import getPhotoAccessHelperTest from './getPhotoAccessHelper.test';
 import provisionResourcesTest from './provisionResources.test';
 import checkAlbumAttrTest from './AbsAlbum/checkAttr.test';
@@ -83,6 +82,7 @@ import getSendableAlbumsTest from './Sendable/Album/getSendableAlbums.test'
 import sendableAlbumModifyTest from './Sendable/Album/sendableAlbumModify.test'
 import cloneAssetTest from './PhotoAsset/cloneAsset.test';
 import getSupportedPhotoFormatsTest from './PhotoAccessHelper/getSupportedPhotoFormats';
+import setTest from './PhotoAsset/set.test.ets';
 
 export default function testsuite() {
   provisionResourcesTest();
@@ -155,4 +155,5 @@ export default function testsuite() {
   setOrientationChangeRequestTest();
   cloneAssetTest();
   getSupportedPhotoFormatsTest();
+  setTest();
 }
