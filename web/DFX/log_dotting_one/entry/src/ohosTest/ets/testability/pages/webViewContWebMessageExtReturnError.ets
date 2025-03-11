@@ -114,7 +114,7 @@ struct webViewContWebMessageExtReturnError {
                   }
                   if (result) {
                     this.webResult = result
-                    console.info(`The postArrayToApp() return value is: ${result}`)
+                    console.info('The postArrayToApp() return value is: result')
                   }
                 });
               this.nativePort.onMessageEventExt((result) => {
@@ -184,7 +184,7 @@ struct webViewContWebMessageExtReturnError {
                   }
                   if (result) {
                     this.webResult = result
-                    console.info(`The postBooleanToApp() return value is: ${result}`)
+                    console.info('The postBooleanToApp() return value is: result')
                   }
                 });
               this.nativePort.onMessageEventExt((result) => {
@@ -219,7 +219,7 @@ struct webViewContWebMessageExtReturnError {
                   }
                   if (result) {
                     this.webResult = result
-                    console.info(`The postNumberToApp() return value is: ${result}`)
+                    console.info('The postNumberToApp() return value is: result')
                   }
                 });
               this.nativePort.onMessageEventExt((result) => {
@@ -254,7 +254,7 @@ struct webViewContWebMessageExtReturnError {
                   }
                   if (result) {
                     this.webResult = result
-                    console.info(`The postStringToApp() return value is: ${result}`)
+                    console.info('The postStringToApp() return value is: result')
                   }
                 });
               this.nativePort.onMessageEventExt((result) => {
