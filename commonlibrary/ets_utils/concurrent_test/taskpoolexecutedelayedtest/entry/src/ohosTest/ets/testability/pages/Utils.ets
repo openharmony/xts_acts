@@ -91,7 +91,7 @@ export class CustomError implements BusinessError {
   }
 }
 
-export const defError = new CustomError(-1000, "", "")
+export const defError = new CustomError(-1000, '', '')
 
 export function test3(block: () => void) {
   block()

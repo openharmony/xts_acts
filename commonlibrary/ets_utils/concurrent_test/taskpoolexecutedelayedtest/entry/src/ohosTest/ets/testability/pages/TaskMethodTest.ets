@@ -303,49 +303,49 @@ export function waitForTest() {
 // 定义一个打印参数的任务函数
 @Concurrent
 export function printArgs(args: number): void {
-  console.info("printArgs: " + args);
+  console.info('printArgs: ' + args);
 }
 
 export function printArgsError(args: number): void {
   if (args < 0) {
-    throw new Error("Invalid argument: args cannot be negative.");
+    throw new Error('Invalid argument: args cannot be negative.');
   }
-  console.info("printArgs: " + args);
+  console.info('printArgs: ' + args);
 }
 
 // 定义一个耗时等于延时时间的任务函数
 @Concurrent
 export function timedTask(duration: number): void {
-  console.info("timedTask started");
+  console.info('timedTask started');
   const start = Date.now();
   while (Date.now() - start < duration) {} // 模拟耗时操作
-  console.info("timedTask completed");
+  console.info('timedTask completed');
 }
 
 // 定义一个耗时等于延时时间的任务函数
 @Concurrent
 export function timedTaskError(duration: number): void {
-  console.info("timedTask started");
+  console.info('timedTask started');
   const start = Date.now();
   while (Date.now() - start < duration) {} // 模拟耗时操作
-  throw new Error("Invalid argument: args cannot be negative.");
+  throw new Error('Invalid argument: args cannot be negative.');
 }
 
 // 定义一个耗时较长的任务函数
 @Concurrent
 export function longTask(): void {
-  console.info("longTask started");
+  console.info('longTask started');
   for (let i = 0; i < 10000000; i++) {} // 模拟耗时操作
-  console.info("longTask completed");
+  console.info('longTask completed');
 }
 
 // 定义一个耗时较长的任务函数
 @Concurrent
 export function longTaskError(): void {
-  console.info("longTask started");
+  console.info('longTask started');
   for (let i = 0; i < 10000000; i++) {} // 模拟耗时操作
-  console.info("longTask completed");
-  throw new Error("Invalid argument: args cannot be negative.");
+  console.info('longTask completed');
+  throw new Error('Invalid argument: args cannot be negative.');
 }
 
 @Concurrent
@@ -416,7 +416,7 @@ export async function testFun2_Err(cycleCount: number, step: number) {
 
 @Concurrent
 export async function testFun3(cycleCount: number, text: string) {
-  let textWidthList: Array<number> = []
+  let textWidthList: number[] = []
   for (let i = 0; i < cycleCount; i++) {
     textWidthList.push(MeasureText.measureText({ textContent: text }))
   }
@@ -425,7 +425,7 @@ export async function testFun3(cycleCount: number, text: string) {
 
 @Concurrent
 export async function testFun3_Err(cycleCount: number, text: string) {
-  let textWidthList: Array<number> = []
+  let textWidthList: number[] = []
   for (let i = 0; i < cycleCount; i++) {
     textWidthList.push(MeasureText.measureText({ textContent: text }))
     throw defError
@@ -462,7 +462,7 @@ export async function testFun4_Err(step: number) {
 
 @Concurrent
 export async function testFun5(text: string) {
-  let textWidthList: Array<number> = []
+  let textWidthList: number[] = []
   let inner = async () => {
     textWidthList.push(await new Promise<number>((resolve, _) => {
       resolve(MeasureText.measureText({ textContent: text }))
@@ -474,7 +474,7 @@ export async function testFun5(text: string) {
 
 @Concurrent
 export async function testFun5_Err(text: string) {
-  let textWidthList: Array<number> = []
+  let textWidthList: number[] = []
   let inner = async () => {
     textWidthList.push(await new Promise<number>((resolve, _) => {
       resolve(MeasureText.measureText({ textContent: text }))
