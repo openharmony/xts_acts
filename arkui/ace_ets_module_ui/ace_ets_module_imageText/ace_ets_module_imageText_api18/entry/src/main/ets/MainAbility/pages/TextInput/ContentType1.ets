@@ -20,37 +20,37 @@ struct ContentType1 {
     Column({ space: 1 }) {
       Text('ContentType新增API16枚举类型').height('5%')
       TextInput({ placeholder: 'PASSPORT_NUMBER' })
-        .id("ContentType_PASSPORT_NUMBER")
+        .id('ContentType_PASSPORT_NUMBER')
         .contentType(ContentType.PASSPORT_NUMBER)
         .height('13%')
 
       TextInput({ placeholder: 'VALIDITY' })
-        .id("ContentType_VALIDITY")
+        .id('ContentType_VALIDITY')
         .contentType(ContentType.VALIDITY)
         .height('13%')
 
       TextInput({ placeholder: 'ISSUE_AT' })
-        .id("ContentType_ISSUE_AT")
+        .id('ContentType_ISSUE_AT')
         .contentType(ContentType.ISSUE_AT)
         .height('13%')
 
       TextInput({ placeholder: 'ORGANIZATION' })
-        .id("ContentType_ORGANIZATION")
+        .id('ContentType_ORGANIZATION')
         .contentType(ContentType.ORGANIZATION)
         .height('13%')
 
       TextInput({ placeholder: 'TAX_ID' })
-        .id("ContentType_TAX_ID")
+        .id('ContentType_TAX_ID')
         .contentType(ContentType.TAX_ID)
         .height('13%')
 
       TextInput({ placeholder: 'ADDRESS_CITY_AND_STATE' })
-        .id("ContentType_ADDRESS_CITY_AND_STATE")
+        .id('ContentType_ADDRESS_CITY_AND_STATE')
         .contentType(ContentType.ADDRESS_CITY_AND_STATE)
         .height('13%')
 
       TextInput({ placeholder: 'DEFAULT' })
-        .id("ContentType_DEFAULT")
+        .id('ContentType_DEFAULT')
         .height('13%')
     }.width('100%')
   }
