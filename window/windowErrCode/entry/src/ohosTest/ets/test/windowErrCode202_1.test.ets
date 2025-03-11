@@ -308,19 +308,18 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
 
-      let testcaseResult = true;
       try {
-        ohosWindow.on("systemBarTintChange", (res: ohosWindow.SystemBarTintState) => {
-        });
+        const callback = (res: ohosWindow.SystemBarTintState) => {
+        }
+        ohosWindow.on("systemBarTintChange", callback);
         console.error(msgStr + 'Succeeded in calling on systemBarTintChange.');
-        testcaseResult = false;
+        expect().assertFail();
+        done()
       } catch (e) {
         console.log(msgStr + 'Failed to call on systemBarTintChange. Cause:' + JSON.stringify(e));
-        testcaseResult = e.code == 202;
+        expect(e.code).assertEqual(202);
+        done()
       }
-      console.log(msgStr + 'end.');
-      expect(testcaseResult).assertTrue();
-      done();
     })
 
     /**
@@ -336,19 +335,18 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
 
-      let testcaseResult = true;
       try {
-        ohosWindow.on("gestureNavigationEnabledChange", (res: boolean) => {
-        });
+        const callback = (res: boolean) => {
+        };
+        ohosWindow.on("gestureNavigationEnabledChange", callback);
         console.error(msgStr + 'Succeeded in calling on gestureNavigationEnabledChange.');
-        testcaseResult = false;
+        expect().assertFail();
+        done()
       } catch (e) {
         console.log(msgStr + 'Failed to call on gestureNavigationEnabledChange. Cause:' + JSON.stringify(e));
-        testcaseResult = e.code == 202;
+        expect(e.code).assertEqual(202);
+        done()
       }
-      console.log(msgStr + 'end.');
-      expect(testcaseResult).assertTrue();
-      done();
     })
 
     /**
@@ -364,19 +362,18 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
 
-      let testcaseResult = true;
       try {
-        ohosWindow.on("waterMarkFlagChange", (res: boolean) => {
-        });
+        const callback = (res: boolean) => {
+        };
+        ohosWindow.on("waterMarkFlagChange", callback);
         console.error(msgStr + 'Succeeded in calling on waterMarkFlagChange.');
-        testcaseResult = false;
+        expect().assertFail();
+        done()
       } catch (e) {
         console.log(msgStr + 'Failed to call on waterMarkFlagChange. Cause:' + JSON.stringify(e));
-        testcaseResult = e.code == 202;
+        expect(e.code).assertEqual(202);
+        done()
       }
-      console.log(msgStr + 'end.');
-      expect(testcaseResult).assertTrue();
-      done();
     })
 
     /**
@@ -984,19 +981,20 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
         done()
       }
 
-      let testcaseResult = true;
       try {
         win!.setWakeUpScreen(true);
         console.error(msgStr + 'Succeeded in calling setWakeUpScreen.');
-        testcaseResult = false;
+        expect().assertFail();
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       } catch (e) {
         console.log(msgStr + 'Failed to call setWakeUpScreen. Cause:' + JSON.stringify(e));
-        testcaseResult = e.code == 202;
+        expect(e.code).assertEqual(202);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
-      console.log(msgStr + 'end.');
-      await win!.destroyWindow()
-      expect(testcaseResult).assertTrue();
-      done();
     })
 
     /**
@@ -1008,40 +1006,39 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetSnapshotSkipErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetSnapshotSkipErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetSnapshotSkipErrCode202_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let caseName = "testSetSnapshotSkipErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let testcaseResult = true;
-        try {
-          win!.setSnapshotSkip(true);
-          console.error(msgStr + 'Succeeded in calling setSnapshotSkip.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call setSnapshotSkip. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 202;
-        }
-        console.log(msgStr + 'end.');
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetSnapshotSkipErrCode202_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
+
+      try {
+        win!.setSnapshotSkip(true);
+        console.error(msgStr + 'Succeeded in calling setSnapshotSkip.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
+        console.log(msgStr + 'end.');
         done();
-
+      } catch (e) {
+        console.log(msgStr + 'Failed to call setSnapshotSkip. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(202);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done();
       }
     })
 
@@ -1054,46 +1051,44 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetForbidSplitMoveCallbackErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetForbidSplitMoveCallbackErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetForbidSplitMoveCallbackErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetForbidSplitMoveCallbackErrCode202_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetForbidSplitMoveCallbackErrCode202_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        try {
-          win!.setForbidSplitMove(true, async (err: BusinessError) => {
-            await win!.destroyWindow()
-            const errCode: number = err.code;
-            if (errCode) {
-              console.error(msgStr + 'Failed to call setForbidSplitMove. Cause:' + JSON.stringify(err));
-              expect(err.code).assertEqual(202);
-              done()
-              return;
-            }
-            console.info(msgStr + 'Succeeded in calling setForbidSplitMove.');
-            expect().assertFail();
-            done();
-          });
-        } catch (exception) {
-          console.error(msgStr + 'Failed to call setForbidSplitMove. Cause:' + JSON.stringify(exception));
+      try {
+        win!.setForbidSplitMove(true, async (err: BusinessError) => {
           await win!.destroyWindow()
-          expect(exception.code).assertEqual(202);
-          done()
-        }
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(msgStr + 'Failed to call setForbidSplitMove. Cause:' + JSON.stringify(err));
+            expect(err.code).assertEqual(202);
+            done()
+            return;
+          }
+          console.info(msgStr + 'Succeeded in calling setForbidSplitMove.');
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to call setForbidSplitMove. Cause:' + JSON.stringify(exception));
+        await win!.destroyWindow()
+        expect(exception.code).assertEqual(202);
+        done()
       }
     })
 
@@ -1106,42 +1101,40 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetForbidSplitMovePromiseErrCode202_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetForbidSplitMovePromiseErrCode202_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetForbidSplitMovePromiseErrCode202_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetForbidSplitMovePromiseErrCode202_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetForbidSplitMovePromiseErrCode202_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
+
+      try {
+        await win!.setForbidSplitMove(true).then(async () => {
+          console.info(msgStr + 'Succeeded in calling setForbidSplitMove.');
           expect().assertFail();
-          done()
-        }
-
-        try {
-          await win!.setForbidSplitMove(true).then(async () => {
-            console.info(msgStr + 'Succeeded in calling setForbidSplitMove.');
-            expect().assertFail();
-          }).catch(async (err: BusinessError) => {
-            console.error(msgStr + 'Failed to call setForbidSplitMove. Cause: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(202);
-          });
-          await win!.destroyWindow()
-          done()
-        } catch (exception) {
-          console.error(msgStr + 'Failed to set the call setForbidSplitMove. Cause:' + JSON.stringify(exception));
-          await win!.destroyWindow()
-          expect(exception.code).assertEqual(202);
-          done()
-        }
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call setForbidSplitMove. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(202);
+        });
+        await win!.destroyWindow()
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setForbidSplitMove. Cause:' + JSON.stringify(exception));
+        await win!.destroyWindow()
+        expect(exception.code).assertEqual(202);
+        done()
       }
     })
   })
