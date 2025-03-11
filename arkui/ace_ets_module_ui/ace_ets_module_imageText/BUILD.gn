@@ -23,6 +23,7 @@ group("ActsAceEtsModuleImageTextTest") {
       "ace_ets_module_imageText_api14:ActsAceEtsModuleImageTextApi14Test",
       "ace_ets_module_imageText_api15:ActsAceEtsModuleImageTextApi15Test",
       "ace_ets_module_imageText_api16:ActsAceEtsModuleImageTextApi16Test",
+      "ace_ets_module_imageText_api18:ActsAceEtsModuleImageTextApi18Test",
     ]
   } else {
     deps = [
@@ -33,6 +34,7 @@ group("ActsAceEtsModuleImageTextTest") {
       "ace_ets_module_imageText_api14:ActsAceEtsModuleImageTextApi14Test",
       "ace_ets_module_imageText_api15:ActsAceEtsModuleImageTextApi15Test",
       "ace_ets_module_imageText_api16:ActsAceEtsModuleImageTextApi16Test",
+      "ace_ets_module_imageText_api18:ActsAceEtsModuleImageTextApi18Test",
       "ace_ets_module_imageText_nowear_api11:ActsAceEtsModuleImageTextNowearApi11Test",
       "ace_ets_module_imageText_nowear_api12:ActsAceEtsModuleImageTextNowearApi12Test",
       "ace_ets_module_imageText_nowear_api13:ActsAceEtsModuleImageTextNowearApi13Test",
