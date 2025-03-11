@@ -285,6 +285,7 @@ export default function intelligenceTest() {
               data.releaseModel()
                 .then(() => {
                   console.info(TAG + "releaseModel result 0600:");
+                  expect().assertFail();
                   done();
                 })
                 .catch((err:BusinessError) => {
@@ -510,6 +511,7 @@ export default function intelligenceTest() {
             data.releaseModel()
             .then(() => {
               console.info(TAG + "releaseModel result 1100 :");
+              expect().assertFail();
               done();
             })
             .catch((err:BusinessError) => {
