@@ -200,13 +200,16 @@ export default function sendableImageSource() {
       await ability()
       let driver = Driver.create()
       await sleep(500)
-      let button = await driver.findComponent(ON.text('允许', MatchPattern.EQUALS))
-      console.info('button is ' + JSON.stringify(button))
-      if (button != undefined) {
+      for (let i = 0; i < 4; i ++) {
+        await sleep(1000);
+        let button = await driver.findComponent(ON.text('允许', MatchPattern.EQUALS))
         console.info('button is ' + JSON.stringify(button))
-        await button?.click()
+        if (button != undefined) {
+            console.info('button is ' + JSON.stringify(button))
+            await button?.click()
+        }
       }
-      sleep(3000)
+      sleep(2000)
     })
 
     let ability = async () => {
@@ -1743,6 +1746,7 @@ export default function sendableImageSource() {
           done();
         }
       })
+      done();
     })
 
     /**
