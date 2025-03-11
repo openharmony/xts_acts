@@ -2663,7 +2663,7 @@ export default function sendableImageSource() {
       })
       done();
     })
- 
+
     /**
      * @tc.number    : testImageSourceReadNextImage0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_READ_NEXT_IMAGE_0100
