@@ -1041,6 +1041,7 @@ export default function executeDelayedTaskErrorTest() {
       const caseName = 'executeDelayedTaskErrorTest3100';
       console.info(`${caseName} test start`);
       let num = 0;
+
       const nTask: taskpool.Task = new taskpool.Task(normalTask, caseName);
       const eTask: taskpool.Task = new taskpool.Task(errorTask2, caseName);
 
