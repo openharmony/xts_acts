@@ -3337,8 +3337,8 @@ export default function inputMethodDrawnControlJSUnit() {
     it('SUB_Misc_inputMethod_showTextInput_Promise_0101', 0, async (done: Function) => {
       try {
         let inputMethodController = inputMethod.getController()
-        inputMethodController.detach()
-        inputMethodController.showTextInput(inputMethod.RequestKeyboardReason.TOUCH)
+        await inputMethodController.detach()
+        await inputMethodController.showTextInput(inputMethod.RequestKeyboardReason.TOUCH)
         console.info("====>SUB_Misc_inputMethod_showTextInput_Promise_0101 on('handleExtendAction') Success:");
         expect().assertFail();
       } catch (err) {
