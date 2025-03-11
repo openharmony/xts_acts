@@ -86,7 +86,7 @@ export default function builtinsArrayMapTest() {
      */
     it('buildinsArrayMapTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = [1, , 3]
-      let result = mapTimer2(array)
+      let result: number[] = mapTimer2(array)
       expect(result[0]).assertEqual(2)
       expect(result[1]).assertUndefined()
       expect(result[2]).assertEqual(6)
@@ -104,7 +104,7 @@ export default function builtinsArrayMapTest() {
      */
     it('buildinsArrayMapTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = []
-      let result = mapTimer2(array)
+      let result: number[] = mapTimer2(array)
       expect(result.length).assertEqual(0)
       Done()
     })
