@@ -16,6 +16,7 @@
 import { worker } from '@kit.ArkTS';
 import { Driver } from '@kit.TestKit';
 import { testUISec, testUISec1 } from './MultipleTask';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export class  WorkThread {
   public  workerStageModel = new worker.ThreadWorker('./workers/WorkerTaskGroup.ets');
@@ -74,4 +75,24 @@ export function sleep(time: number): Promise<void> {
 
 export declare class ArkTools {
   static forceFullGC(): void;
+}
+
+export class CustomError implements BusinessError {
+  code: number
+  data?: void | undefined
+  name: string
+  message: string
+  stack?: string | undefined
+
+  constructor(code: number, name: string, message: string) {
+    this.code = code;
+    this.name = name;
+    this.message = message;
+  }
+}
+
+export const defError = new CustomError(-1000, "", "")
+
+export function test3(block: () => void) {
+  block()
 }

@@ -15,7 +15,8 @@
 
 import { AsyncLockTest, AsyncLockTest1, BaseClass, DeriveClass } from './SendableTest';
 import { taskpool, worker } from '@kit.ArkTS';
-import { sleep, test, test1, WorkThread } from './Utils';
+import { defError, sleep, test, test1, WorkThread } from './Utils';
+import { MeasureText } from '@kit.ArkUI';
 
 @Concurrent
 export function printArgs1(args: number): number {
@@ -297,4 +298,189 @@ export async function setTimeOutWork() {
 @Concurrent
 export function waitForTest() {
 
+}
+
+// 定义一个打印参数的任务函数
+@Concurrent
+export function printArgs(args: number): void {
+  console.info("printArgs: " + args);
+}
+
+export function printArgsError(args: number): void {
+  if (args < 0) {
+    throw new Error("Invalid argument: args cannot be negative.");
+  }
+  console.info("printArgs: " + args);
+}
+
+// 定义一个耗时等于延时时间的任务函数
+@Concurrent
+export function timedTask(duration: number): void {
+  console.info("timedTask started");
+  const start = Date.now();
+  while (Date.now() - start < duration) {} // 模拟耗时操作
+  console.info("timedTask completed");
+}
+
+// 定义一个耗时等于延时时间的任务函数
+@Concurrent
+export function timedTaskError(duration: number): void {
+  console.info("timedTask started");
+  const start = Date.now();
+  while (Date.now() - start < duration) {} // 模拟耗时操作
+  throw new Error("Invalid argument: args cannot be negative.");
+}
+
+// 定义一个耗时较长的任务函数
+@Concurrent
+export function longTask(): void {
+  console.info("longTask started");
+  for (let i = 0; i < 10000000; i++) {} // 模拟耗时操作
+  console.info("longTask completed");
+}
+
+// 定义一个耗时较长的任务函数
+@Concurrent
+export function longTaskError(): void {
+  console.info("longTask started");
+  for (let i = 0; i < 10000000; i++) {} // 模拟耗时操作
+  console.info("longTask completed");
+  throw new Error("Invalid argument: args cannot be negative.");
+}
+
+@Concurrent
+export async function testFun1(step: number) {
+  let points = 0;
+  points += step;
+  //函数局部成员场景
+  let inner = async (args: number) => {
+    console.info('printArgs: ' + args);
+    return await new Promise<number>((resolve, _) => {
+      resolve(++args)
+    })
+  }
+  await inner(points);
+  //调用其他文件函数场景
+  (await import('./Utils')).test3(() => {
+    points += step;
+  });
+  console.info('printArgs: ' + points);
+  return points;
+}
+
+@Concurrent
+export async function testFun1_Err(step: number) {
+  let points = 0;
+  points += step;
+  //函数局部成员场景
+  let inner = async (args: number) => {
+    console.info('printArgs: ' + args);
+    return await new Promise<number>((resolve, _) => {
+      resolve(++args)
+    })
+  }
+  await inner(points);
+  //调用其他文件函数场景
+  (await import('./Utils')).test3(() => {
+    points += step;
+    //抛出自定义异常
+    throw defError;
+  });
+  console.info('printArgs: ' + points);
+  return points;
+}
+
+@Concurrent
+export async function testFun2(cycleCount: number, step: number) {
+  let points = 0;
+  for (let i = 0; i < cycleCount; i++) {
+    points = await new Promise<number>((resolve, _) => {
+      resolve(points + step)
+    })
+  }
+  return points
+}
+
+@Concurrent
+export async function testFun2_Err(cycleCount: number, step: number) {
+  let points = 0;
+  for (let i = 0; i < cycleCount; i++) {
+    points = await new Promise<number>((resolve, _) => {
+      resolve(points + step)
+    })
+    throw defError
+  }
+  return points
+}
+
+
+@Concurrent
+export async function testFun3(cycleCount: number, text: string) {
+  let textWidthList: Array<number> = []
+  for (let i = 0; i < cycleCount; i++) {
+    textWidthList.push(MeasureText.measureText({ textContent: text }))
+  }
+  return textWidthList;
+}
+
+@Concurrent
+export async function testFun3_Err(cycleCount: number, text: string) {
+  let textWidthList: Array<number> = []
+  for (let i = 0; i < cycleCount; i++) {
+    textWidthList.push(MeasureText.measureText({ textContent: text }))
+    throw defError
+  }
+  return textWidthList;
+}
+
+
+@Concurrent
+export async function testFun4(step: number) {
+  let points = 0;
+  return await new Promise<number>(async (resolve, _) => {
+    points += step;
+    await new Promise<number>(async (resolve, _) => {
+      points += step;
+      resolve(points)
+    })
+    resolve(points)
+  })
+}
+
+@Concurrent
+export async function testFun4_Err(step: number) {
+  let points = 0;
+  return await new Promise<number>(async (resolve, _) => {
+    points += step;
+    await new Promise<number>(async (resolve, _) => {
+      points += step;
+      resolve(points)
+    })
+    throw defError
+  })
+}
+
+@Concurrent
+export async function testFun5(text: string) {
+  let textWidthList: Array<number> = []
+  let inner = async () => {
+    textWidthList.push(await new Promise<number>((resolve, _) => {
+      resolve(MeasureText.measureText({ textContent: text }))
+    }))
+  }
+  await inner()
+  return textWidthList
+}
+
+@Concurrent
+export async function testFun5_Err(text: string) {
+  let textWidthList: Array<number> = []
+  let inner = async () => {
+    textWidthList.push(await new Promise<number>((resolve, _) => {
+      resolve(MeasureText.measureText({ textContent: text }))
+    }))
+    throw defError
+  }
+  await inner()
+  return textWidthList
 }
