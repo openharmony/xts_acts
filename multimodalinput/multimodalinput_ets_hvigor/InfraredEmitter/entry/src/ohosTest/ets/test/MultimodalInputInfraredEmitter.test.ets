@@ -243,7 +243,6 @@ export default function MultimodalInputInfraredEmitterTest() {
      */
     it("SUB_MMI_Input_Api_InfraredEmitter_getInfraredFrequencies_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_getInfraredFrequencies_0100";
-      let ifGetInfraredFrequenciesSuccess = 0;
       try {
         let frequencies: infraredEmitter.InfraredFrequency[] = [{
           max: 0,
@@ -251,11 +250,10 @@ export default function MultimodalInputInfraredEmitterTest() {
         }];
         frequencies = infraredEmitter.getInfraredFrequencies();
         console.info(`${caseName} getInfraredFrequencies success, frequencies: ${JSON.stringify(frequencies)}`);
-        ifGetInfraredFrequenciesSuccess++;
-        ExpectTrue(ifGetInfraredFrequenciesSuccess == 1);
+        ExpectTrue(Array.isArray(frequencies));
         done();
       } catch (error) {
-        console.info(`${caseName} transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        console.info(`${caseName} get infrared frequencies failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
         done();
       }
