@@ -33,6 +33,7 @@ export class KeyboardController {
   private nonBarPosition: number = 0;
   private keyboardController: inputmethodengine.KeyboardController;
   private TextInputClient: inputmethodengine.TextInputClient;
+  private InputClient: inputmethodengine.InputClient;
 
   constructor(context) {
     this.mContext = context;
@@ -46,6 +47,8 @@ export class KeyboardController {
         console.log('====>inputMethodEngine delete inputStop notification.');
       });
       inputMethodEngine.off('inputStart', () =>{})
+      inputMethodAbility.off('inputStart', () =>{})
+      inputMethodAbility.off('inputStart')
       try {
         that.mContext.destroy((err) => {
           console.info(TAG + '====>inputMethodEngine destroy err:' + JSON.stringify(err));
@@ -59,6 +62,10 @@ export class KeyboardController {
       this.keyboardController = keyboardController;
       this.TextInputClient = TextInputClient
       console.info(TAG + '====>inputMethodEngine inputStart into');
+    })
+    inputMethodAbility.on('inputStart', async (keyboardController, InputClient) => {
+      this.InputClient = InputClient
+      console.info(TAG + '====>inputMethodAbility inputStart into');
     })
 
     function subscriberCallback(err, data) {
@@ -252,6 +259,10 @@ export class KeyboardController {
         case 98:
           console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200 event:' + data.event);
           that.Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200();
+          break;
+        case 99:
+          console.debug(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0601 event:' + data.event);
+          that.Sub_InputMethod_IMF_SecurityKeyboard_0601();
           break;
       }
     }
@@ -960,7 +971,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.sendKeyFunction(undefined, (err, value) => {
+      this.InputClient.sendKeyFunction(undefined, (err, value) => {
         if (err) {
           console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0100 sendKeyFunction err:' + JSON.stringify(err));
           commonEventPublishData = {
@@ -986,7 +997,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.sendKeyFunction(undefined).then((data) => {
+      this.InputClient.sendKeyFunction(undefined).then((data) => {
         console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0200 Succeed in sendKeyFunction.' + JSON.stringify(data));
         commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0200', commonEventPublishData, this.publishCallback);
       }).catch((err) => {
@@ -1013,7 +1024,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.deleteForward(undefined, (err, result) => {
+      this.InputClient.deleteForward(undefined, (err, result) => {
         if (err) {
           console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteForward_0100 sendKeyFunction err:' + JSON.stringify(err));
           commonEventPublishData = {
@@ -1039,7 +1050,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.deleteForward(undefined).then((result) => {
+      this.InputClient.deleteForward(undefined).then((result) => {
         console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteForward_0200 Succeed in sendKeyFunction.' + JSON.stringify(result));
         commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_deleteForward_0200', commonEventPublishData, this.publishCallback);
       }).catch((err) => {
@@ -1066,7 +1077,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.insertText(undefined, (err, result) => {
+      this.InputClient.insertText(undefined, (err, result) => {
         if (err) {
           console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_insertText_0100 sendKeyFunction err:' + JSON.stringify(err));
           commonEventPublishData = {
@@ -1092,7 +1103,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.insertText(undefined).then((result) => {
+      this.InputClient.insertText(undefined).then((result) => {
         console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_insertText_0200 Succeed in sendKeyFunction.' + JSON.stringify(result));
         commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_insertText_0200', commonEventPublishData, this.publishCallback);
       }).catch((err) => {
@@ -1119,7 +1130,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.getForward(undefined, (err, result) => {
+      this.InputClient.getForward(undefined, (err, result) => {
         if (err) {
           console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getForward_0100 sendKeyFunction err:' + JSON.stringify(err));
           commonEventPublishData = {
@@ -1145,7 +1156,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.getForward(undefined).then((result) => {
+      this.InputClient.getForward(undefined).then((result) => {
         console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getForward_0200 Succeed in sendKeyFunction.' + JSON.stringify(result));
         commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_getForward_0200', commonEventPublishData, this.publishCallback);
       }).catch((err) => {
@@ -1172,7 +1183,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.getBackward(undefined, (err, result) => {
+      this.InputClient.getBackward(undefined, (err, result) => {
         if (err) {
           console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getBackward_0100 sendKeyFunction err:' + JSON.stringify(err));
           commonEventPublishData = {
@@ -1198,7 +1209,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.getBackward(undefined).then((result) => {
+      this.InputClient.getBackward(undefined).then((result) => {
         console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getBackward_0200 Succeed in sendKeyFunction.' + JSON.stringify(result));
         commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_getBackward_0200', commonEventPublishData, this.publishCallback);
       }).catch((err) => {
@@ -1225,7 +1236,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.moveCursor(undefined, (err) => {
+      this.InputClient.moveCursor(undefined, (err) => {
         if (err) {
           console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_moveCursor_0100 sendKeyFunction err:' + JSON.stringify(err));
           commonEventPublishData = {
@@ -1251,7 +1262,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.moveCursor(undefined).then( () => {
+      this.InputClient.moveCursor(undefined).then( () => {
         console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_moveCursor_0200 Succeed in sendKeyFunction.');
         commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_moveCursor_0200', commonEventPublishData, this.publishCallback);
       }).catch((err) => {
@@ -1278,7 +1289,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.selectByRange(undefined, (err) => {
+      this.InputClient.selectByRange(undefined, (err) => {
         if (err) {
           console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByRange_0100 sendKeyFunction err:' + JSON.stringify(err));
           commonEventPublishData = {
@@ -1304,7 +1315,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.selectByRange(undefined).then( () => {
+      this.InputClient.selectByRange(undefined).then( () => {
         console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByRange_0200 Succeed in sendKeyFunction.');
         commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_selectByRange_0200', commonEventPublishData, this.publishCallback);
       }).catch((err) => {
@@ -1331,7 +1342,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.selectByMovement(undefined, (err) => {
+      this.InputClient.selectByMovement(undefined, (err) => {
         if (err) {
           console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0100 sendKeyFunction err:' + JSON.stringify(err));
           commonEventPublishData = {
@@ -1357,7 +1368,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.selectByMovement(undefined).then( () => {
+      this.InputClient.selectByMovement(undefined).then( () => {
         console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0200 Succeed in sendKeyFunction.');
         commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0200', commonEventPublishData, this.publishCallback);
       }).catch((err) => {
@@ -1384,7 +1395,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.sendExtendAction(undefined, (err) => {
+      this.InputClient.sendExtendAction(undefined, (err) => {
         if (err) {
           console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100 sendKeyFunction err:' + JSON.stringify(err));
           commonEventPublishData = {
@@ -1410,7 +1421,7 @@ export class KeyboardController {
         data: "FAILED"
     };
     try{
-      this.TextInputClient.sendExtendAction(undefined).then( () => {
+      this.InputClient.sendExtendAction(undefined).then( () => {
         console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 Succeed in sendKeyFunction.');
         commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200', commonEventPublishData, this.publishCallback);
       }).catch((err) => {
@@ -1432,32 +1443,64 @@ export class KeyboardController {
   }
 
   async Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200() {
-    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 data');
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200 data');
     let commonEventPublishData = {
         data: "FAILED"
     };
     try{
-      inputMethodEngine.on("inputStart", async (KeyboardDelegate, InputClient) => {
-        inputMethodEngine.off('inputStart');
-        InputClient.sendPrivateCommand(undefined).then( () => {
-          console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 Succeed in sendKeyFunction.');
-          commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200', commonEventPublishData, this.publishCallback);
+        let record: Record<string, inputmethodengine.CommandDataType> = {
+            "valueString1": "abcdefg",
+            "valueString2": true,
+            "valueString3": 500,
+            "valueString4": 400,
+            "valueString5": 300,
+            "valueString6": 200,
+        }
+        this.InputClient.sendPrivateCommand(record).then( () => {
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200 Succeed in sendKeyFunction.');
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200', commonEventPublishData, this.publishCallback);
         }).catch((err) => {
-          commonEventPublishData = {
+        commonEventPublishData = {
             data: 'SUCCESS'
-          };
-          console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 sendKeyFunction error: ' + JSON.stringify(err));
-          commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200', commonEventPublishData, this.publishCallback);
+        };
+        console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200 sendKeyFunction error: ' + JSON.stringify(err));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200', commonEventPublishData, this.publishCallback);
         });
-      });
     } catch (err) {
       if (err.code === 401) {
         commonEventPublishData = {
           data: 'SUCCESS'
         };
       }
-      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 err: ' + JSON.stringify(err));
-      commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200", commonEventPublishData, this.publishCallback);
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200 err: ' + JSON.stringify(err));
+      commoneventmanager.publish("Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200", commonEventPublishData, this.publishCallback);
+    }
+  }
+
+  private async Sub_InputMethod_IMF_SecurityKeyboard_0601() {
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    console.info(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0601 success');
+    let panelInfo1={
+      type: 0,
+      flag:1
+    }
+    let inputPanel =  await inputMethodAbility.createPanel(this.mContext,panelInfo1)
+    try {
+      let isPrivacyMode: boolean = true;
+      inputPanel.setPrivacyMode(isPrivacyMode);
+      console.info(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0601 setPrivacyMode success');
+      commoneventmanager.publish('Sub_InputMethod_IMF_SecurityKeyboard_0601', commonEventPublishData, this.publishCallback);
+    } catch (error) {
+      if (error.code === 201) {
+        commonEventPublishData = {
+          data: "SUCCESS"
+        };
+      }
+      await inputMethodAbility.destroyPanel(inputPanel)
+      console.info(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0601 catch error: ' + JSON.stringify(error));
+      commoneventmanager.publish('Sub_InputMethod_IMF_SecurityKeyboard_0601', commonEventPublishData, this.publishCallback);
     }
   }
 }
