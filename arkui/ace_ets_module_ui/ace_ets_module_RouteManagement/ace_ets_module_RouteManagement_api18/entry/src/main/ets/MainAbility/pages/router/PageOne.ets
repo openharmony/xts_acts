@@ -1,4 +1,5 @@
 import { router } from '@kit.ArkUI'
+import events_emitter from '@ohos.events.emitter';
 
 class RouteParam {
   constructor(msg: string) {
@@ -10,7 +11,6 @@ class RouteParam {
 @Entry({routeName: 'nickNameOne'})
 @Component
 struct PageOne {
-  @State paramString: string = '';
 
   aboutToAppear(): void {
     console.log('PageOne aboutToAppear');
@@ -23,22 +23,38 @@ struct PageOne {
 
   onNewParam(param: ESObject) {
     console.log('PageOne onNewParam, param: ' + JSON.stringify(param));
-    this.paramString = JSON.stringify(param);
+    let backData: events_emitter.EventData = {
+      data: {
+        'paramString': JSON.stringify(param)
+      }
+    }
+
+    let eventIdNum = 51;
+    if (JSON.stringify(param) === '"test string"') {
+      eventIdNum = 52;
+    } else if (JSON.stringify(param) === '20') {
+      eventIdNum = 53;
+    }
+    let backEvent: events_emitter.InnerEvent = {
+      eventId: eventIdNum,
+      priority: events_emitter.EventPriority.LOW
+    }
+    console.info('onNewParam start to emit action state')
+    events_emitter.emit(backEvent, backData)
   }
 
   build() {
     Navigation() {
       Column() {
-        Text(this.paramString).id('paramId').height('10%')
         Button('pushUrl PageOne Single')
           .onClick(() => {
-            router.pushUrl({ url: 'pages/PageOne', params: new RouteParam('pushUrl One Single') }, router.RouterMode.Single)
+            router.pushUrl({ url: 'MainAbility/pages/router/PageOne', params: new RouteParam('pushUrl One Single') }, router.RouterMode.Single)
           })
           .id('pushUrlId')
           .height('10%')
         Button('replaceUrl PageOne Single')
           .onClick(() => {
-            router.replaceUrl({ url: 'pages/PageOne', params: 'test string'}, router.RouterMode.Single)
+            router.replaceUrl({ url: 'MainAbility/pages/router/PageOne', params: 'test string'}, router.RouterMode.Single)
           })
           .id('replaceUrlId')
           .height('10%')
