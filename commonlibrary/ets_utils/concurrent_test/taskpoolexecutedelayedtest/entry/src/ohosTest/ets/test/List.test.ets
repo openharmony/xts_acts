@@ -13,9 +13,15 @@
 * limitations under the License.
 */
 
+import executeDelayedTaskErrorTest from './ExecuteDelayedTaskError.test';
 import taskPoolExecuteDelayedMultipleTest from './TaskPoolExecuteDelayedMultipleTest.test';
+import taskPoolExecuteDelayedTimeConsumTest from './taskPoolExecuteDelayedTimeConsumTest';
+import taskPoolTaskExecuteDelayedTest from './TaskPoolTaskExecuteDelayed.test';
 
 
 export default function testsuite() {
   taskPoolExecuteDelayedMultipleTest();
+  taskPoolExecuteDelayedTimeConsumTest();
+  taskPoolTaskExecuteDelayedTest();
+  executeDelayedTaskErrorTest();
 }
