@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import { inputDevice } from '@kit.InputKit';
 import { inputConsumer } from '@kit.InputKit';
 
@@ -587,6 +587,50 @@ export default function MultimodalInputDeviceTest() {
       } catch (error) {
         console.info(`${caseName} failed to get capslock state, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectTrue(error.code == 3900002);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_IptDev_on_0100
+     * @tc.name: SUB_MMI_Input_Api_IptDev_on_0100
+     * @tc.desc: Test callback on and off interfaces to cancel the hot swap event for the specified input device.
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_IptDev_on_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_IptDev_on_0100";
+      try {
+        const callback = null;
+        inputDevice.on("change", callback);
+        ExpectFalse(true);
+        done();
+      } catch (error) {
+        console.info(`${caseName} Get device info failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectTrue(error.code == 401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_IptDev_off_0200
+     * @tc.name: SUB_MMI_Input_Api_IptDev_off_0200
+     * @tc.desc: Test callback on and off interfaces to cancel the hot swap event for the specified input device.
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_IptDev_off_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_IptDev_off_0200";
+      try {
+        const callback = null;
+        inputDevice.off("change", callback);
+        ExpectFalse(true);
+        done();
+      } catch (error) {
+        console.info(`${caseName} Cancel listening device event failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectTrue(error.code == 401);
         done();
       }
     });
