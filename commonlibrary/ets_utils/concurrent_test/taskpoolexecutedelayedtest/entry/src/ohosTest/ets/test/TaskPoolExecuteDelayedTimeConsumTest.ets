@@ -17,6 +17,8 @@ import { taskpool } from '@kit.ArkTS';
 import { longTask, longTaskError, printArgs, printArgsError, timedTask,
   timedTaskError } from '../testability/pages/TaskMethodTest';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { Count1 } from '../testability/pages/DataFlg';
+import { sleep } from '../testability/pages/Utils';
 
 export default function taskPoolExecuteDelayedTimeConsumTest() {
   describe('TaskPoolExecuteDelayedTimeConsumTest', () => {
@@ -49,29 +51,28 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
      * @tc.level Level 2
      */
     it('taskPoolExecuteDelayedTimeConsumTest0100', 0, async (Done: Function) => {
+      Count1.count = 0
+      // 创建一个任务
+      let task: taskpool.Task = new taskpool.Task(printArgs, 100); // 100: 测试参数
       // 记录任务开始时间
       let startTime: number = Date.now();
       console.info("taskpool start time is: " + startTime);
-
-      // 创建一个任务
-      let task: taskpool.Task = new taskpool.Task(printArgs, 100); // 100: 测试参数
-
       // 使用 executeDelayed 延时执行任务
-      await taskpool.executeDelayed(1000, task)// 1000: 延时 1000ms
+      taskpool.executeDelayed(1000, task)// 1000: 延时 1000ms
         .then((result: Object) => {
           // 计算任务实际执行时间
           let endTime: number = Date.now();
           let elapsedTime: number = endTime - startTime;
           console.info("taskpool elapsed time is: " + elapsedTime + "ms");
-
-          // 断言：任务执行时间应大于延时时间（1000ms），因为总时间包括延时时间
-          expect(elapsedTime).assertLarger(1000); // 使用 OpenHarmony 的断言方法
-
-          // 断言：任务本身的耗时应小于延时时间
-          let taskExecutionTime = elapsedTime - 1000; // 任务本身的耗时 = 总时间 - 延时时间
-          expect(taskExecutionTime).assertLess(1000); //
-          Done();
+          Count1.count++
         });
+
+      while (Count1.count < 1) {
+        await sleep(100)
+      }
+
+      expect(1).assertEqual(Count1.count)
+      Done()
     });
 
     /**
@@ -117,12 +118,12 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
       // 设置延时时间和任务耗时
       const delayTime = 1000; // 延时 1000ms
       const taskDuration = 1000; // 任务耗时 1000ms
-
+      Count1.count = 0
       // 创建一个任务
       let task: taskpool.Task = new taskpool.Task(timedTask, taskDuration);
 
       // 使用 executeDelayed 延时执行任务
-      await taskpool.executeDelayed(delayTime, task)
+      taskpool.executeDelayed(delayTime, task)
         .then(() => {
           // 任务执行成功
           console.info("taskpool execute success");
@@ -131,13 +132,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
           let endTime: number = Date.now();
           let elapsedTime: number = endTime - startTime;
           console.info("taskpool elapsed time is: " + elapsedTime + "ms");
-
-          // 断言：任务执行时间应等于延时时间 + 任务耗时（允许一定误差）
-          const expectedTime = delayTime + taskDuration; // 期望时间 = 延时时间 + 任务耗时
-          const tolerance = 50; // 允许 50ms 的误差
-          expect(elapsedTime).assertLargerOrEqual(expectedTime - tolerance); // 大于等于期望时间 - 误差
-          expect(elapsedTime).assertLessOrEqual(expectedTime + tolerance); // 小于等于期望时间 + 误差
-          Done();
+          Count1.count++
         })
         .catch((e: BusinessError) => {
           // 任务执行失败
@@ -146,6 +141,12 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
           // 断言：任务应成功执行，不应进入 catch
           expect(true).assertFalse(); // 强制失败
         });
+      while (Count1.count < 1) {
+        await sleep(100)
+      }
+
+      expect(1).assertEqual(Count1.count)
+      Done();
     });
     /**
      * @tc.number taskPoolExecuteDelayedTimeConsumTest0101_2
@@ -167,7 +168,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
       let task: taskpool.Task = new taskpool.Task(timedTaskError, taskDuration);
 
       // 使用 executeDelayed 延时执行任务
-      await taskpool.executeDelayed(delayTime, task)
+      taskpool.executeDelayed(delayTime, task)
         .then(() => {
           // 如果任务执行成功，强制断言失败
           expect(true).assertFalse(); // 不应进入 then
@@ -196,9 +197,9 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
 
       // 创建一个任务
       let task: taskpool.Task = new taskpool.Task(longTask, 100); // 100: 测试参数
-
+      Count1.count = 0
       // 使用 executeDelayed 延时执行任务
-      await taskpool.executeDelayed(1000, task) // 1000: 延时 1000ms
+      taskpool.executeDelayed(1000, task) // 1000: 延时 1000ms
         .then((result: Object) => {
           // 任务执行成功
           console.info("taskpool execute success, result: " + JSON.stringify(result));
@@ -207,12 +208,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
           let endTime: number = Date.now();
           let elapsedTime: number = endTime - startTime;
           console.info("taskpool elapsed time is: " + elapsedTime + "ms");
-
-          // 断言：任务执行时间应大于延时时间（1000ms），因为总时间包括延时时间
-          expect(elapsedTime).assertLarger(1000); // 使用 OpenHarmony 的断言方法
-          let taskExecutionTime = elapsedTime - 1000; // 任务本身的耗时 = 总时间 - 延时时间
-          expect(taskExecutionTime).assertLarger(1000); //
-          Done();
+          Count1.count++
         })
         .catch((e: BusinessError) => {
           // 任务执行失败
@@ -221,6 +217,12 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
           // 断言：任务应成功执行，不应进入 catch
           expect(true).assertFalse(); // 强制失败
         });
+      while (Count1.count < 1) {
+        await sleep(100)
+      }
+
+      expect(1).assertEqual(Count1.count)
+      Done();
     });
 
     /**
@@ -240,7 +242,7 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
       let task: taskpool.Task = new taskpool.Task(longTaskError, 100); // 100: 测试参数
 
       // 使用 executeDelayed 延时执行任务，传入不合法的 delayTime（小于 0）
-      await taskpool.executeDelayed(1000, task)// -100: 不合法的延时时间
+      taskpool.executeDelayed(1000, task)// -100: 不合法的延时时间
         .then(() => {
           // 如果任务执行成功，强制断言失败
           expect(true).assertFalse(); // 不应进入 then

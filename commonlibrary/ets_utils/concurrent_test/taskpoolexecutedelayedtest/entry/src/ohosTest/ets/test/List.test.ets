@@ -15,7 +15,7 @@
 
 import executeDelayedTaskErrorTest from './ExecuteDelayedTaskError.test';
 import taskPoolExecuteDelayedMultipleTest from './TaskPoolExecuteDelayedMultipleTest.test';
-import taskPoolExecuteDelayedTimeConsumTest from './taskPoolExecuteDelayedTimeConsumTest';
+import taskPoolExecuteDelayedTimeConsumTest from './TaskPoolExecuteDelayedTimeConsumTest';
 import taskPoolTaskExecuteDelayedTest from './TaskPoolTaskExecuteDelayed.test';
 
 
