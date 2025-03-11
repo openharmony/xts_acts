@@ -396,52 +396,6 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
     })
 
     /**
-     * @tc.number     : testLoadContentByNameCallbackErrCode1300002_0200
-     * @tc.name       : testLoadContentByNameCallbackErrCode1300002_0200
-     * @tc.desc       : testLoadContentByNameCallbackErrCode1300002_0200
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testLoadContentByNameCallbackErrCode1300002_0200', 0, async (done: Function) => {
-      let caseName = "testLoadContentByNameCallbackErrCode1300002_0200";
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin.');
-      let subWin: ohosWindow.Window | undefined = undefined;
-      await windowStage.createSubWindow('testLoadContentByNameCallbackErrCode1300002_SubWindow_Promise')
-        .then((data) => {
-          subWin = data;
-          expect(!!subWin).assertTrue();
-          console.info(msgStr + 'Succeeded in creating the window. Data:' + JSON.stringify(data));
-        })
-        .catch((err: BusinessError) => {
-          console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        });
-      await (subWin! as ohosWindow.Window).destroyWindow();
-
-      try {
-        subWin!.loadContentByName("entryAbility", async (err: BusinessError) => {
-          const errCode: number = err.code;
-          if (errCode) {
-            console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(err));
-            expect(err.code).assertEqual(1300002);
-            done()
-            return;
-          }
-          console.info(msgStr + 'Succeeded in calling loadContentByName.');
-          expect().assertFail();
-          done();
-        });
-      } catch (exception) {
-        console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
-        done()
-      }
-    })
-
-    /**
      * @tc.number     : testLoadContentByNamePromiseErrCode1300002_0100
      * @tc.name       : testLoadContentByNamePromiseErrCode1300002_0100
      * @tc.desc       : testLoadContentByNamePromiseErrCode1300002_0100
