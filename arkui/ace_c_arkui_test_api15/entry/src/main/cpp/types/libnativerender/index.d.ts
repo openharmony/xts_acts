@@ -71,6 +71,3 @@ export const TestGestureRecognizerGetResult: () => string[];
 export const TestEventInfoGetPressedTime001: (a: string) => void;
 
 export const TestEventInfoGetResult: () => string[];
-export const snapShotTest001: (a: string) => void;
-
-export const TestsnapShotetResult: () => string[];

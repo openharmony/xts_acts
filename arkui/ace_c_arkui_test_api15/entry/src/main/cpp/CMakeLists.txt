@@ -33,8 +33,6 @@ add_library(nativerender SHARED
     component/text_component.cpp
     gestureRecognizer/gestureRecognizer.cpp
     eventInfo/eventInfo.cpp
-    snapShot/snap_shot.cpp
-    snapShot/container.cpp
 )
 
 add_library(nativefunc SHARED

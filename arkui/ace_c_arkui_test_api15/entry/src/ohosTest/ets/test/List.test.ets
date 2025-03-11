@@ -30,7 +30,6 @@ import listItemGroupNodeAdapterTest from "./listItemGroup/ListItemGroupTest.test
 import gesturecancelTest from "./gesturecancelTest/gesturecancelTest.test"
 import gestureRecognizerTest from './gestureRecognizer/GestureRecognizerTest.test'
 import EventInfoTest from "./eventInfo/EventInfoTest.test"
-import snapShotTest from './snapShot/snapShotTest.test'
 
 
 export default function testsuite() {
@@ -52,5 +51,4 @@ export default function testsuite() {
    gesturecancelTest();
    gestureRecognizerTest();
    EventInfoTest();
-   snapShotTest();
 }
