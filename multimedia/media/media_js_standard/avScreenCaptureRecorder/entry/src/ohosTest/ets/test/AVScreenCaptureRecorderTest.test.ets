@@ -166,6 +166,7 @@ export default function AVScreenCaptureRecorderTest() {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200 start')
 
@@ -214,6 +215,7 @@ export default function AVScreenCaptureRecorderTest() {
         console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0201 start')
 
