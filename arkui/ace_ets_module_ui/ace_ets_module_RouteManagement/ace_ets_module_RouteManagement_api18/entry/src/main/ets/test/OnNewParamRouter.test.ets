@@ -17,6 +17,7 @@ import CommonFunc from '../MainAbility/common/Common';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import events_emitter from '@ohos.events.emitter'
 
 export default function OnNewParamRouter() {
   describe('OnNewParamRouter', () => {
@@ -56,6 +57,10 @@ export default function OnNewParamRouter() {
      */
     it('OnNewParamRouter_0100', 0, async (done: Function) => {
       console.info('OnNewParamRouter_0100 START');
+      let indexEvent: events_emitter.InnerEvent = {
+        eventId: 51,
+        priority: events_emitter.EventPriority.LOW
+      }
       await CommonFunc.sleep(500);
 
       let driver = Driver.create();
@@ -66,19 +71,25 @@ export default function OnNewParamRouter() {
       console.info('[OnNewParamRouter_0100] btn1 click');
       await driver.delayMs(1000);
 
+      let callback = (indexEvent: events_emitter.EventData) => {
+        console.info('OnNewParamRouter_0100 get state result is: ' + JSON.stringify(indexEvent))
+        try {
+          expect(indexEvent.data?.paramString).assertEqual('{"msg":"pushUrl One Single"}');
+        } catch (err) {
+          console.info('OnNewParamRouter_0100 get state result is err: ' + JSON.stringify(err));
+        }
+        console.info('[OnNewParamRouter_0100] END');
+        done();
+      }
+      try {
+        events_emitter.on(indexEvent, callback);
+      } catch (err) {
+        console.info('OnNewParamRouter_0100 on events_emitter err : ' + JSON.stringify(err));
+      }
+
       let btn2: Component = await driver.findComponent(ON.id('pushUrlId'));
       await btn2.click()
       console.info('[OnNewParamRouter_0100] btn2 click');
-      await driver.delayMs(1000);
-
-      let strJson: string = getInspectorByKey('paramId');
-      let obj: Record<string, ESObject> = JSON.parse(strJson);
-      console.info('[OnNewParamRouter_0100] component obj is: ' + JSON.stringify(obj));
-      console.info('[OnNewParamRouter_0100] content obj is: ' + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('{"msg":"pushUrl One Single"}');
-
-      console.info('OnNewParamRouter_0100 END');
-      done();
     });
 
     /**
@@ -89,24 +100,39 @@ export default function OnNewParamRouter() {
      */
     it('OnNewParamRouter_0200', 0, async (done: Function) => {
       console.info('OnNewParamRouter_0200 START');
+      let indexEvent: events_emitter.InnerEvent = {
+        eventId: 52,
+        priority: events_emitter.EventPriority.LOW
+      }
       await CommonFunc.sleep(500);
 
       let driver = Driver.create();
       await driver.delayMs(500);
 
+      let btn1: Component = await driver.findComponent(ON.id('pushId'));
+      await btn1.click()
+      console.info('[OnNewParamRouter_0100] btn1 click');
+      await driver.delayMs(1000);
+
+      let callback = (indexEvent: events_emitter.EventData) => {
+        console.info('OnNewParamRouter_0200 get state result is: ' + JSON.stringify(indexEvent))
+        try {
+          expect(indexEvent.data?.paramString).assertEqual('"test string"');
+        } catch (err) {
+          console.info('OnNewParamRouter_0200 get state result is err: ' + JSON.stringify(err));
+        }
+        console.info('[OnNewParamRouter_0200] END');
+        done();
+      }
+      try {
+        events_emitter.on(indexEvent, callback);
+      } catch (err) {
+        console.info('OnNewParamRouter_0200 on events_emitter err : ' + JSON.stringify(err));
+      }
+
       let btn2: Component = await driver.findComponent(ON.id('replaceUrlId'));
       await btn2.click()
       console.info('[OnNewParamRouter_0200] btn2 click');
-      await driver.delayMs(1000);
-
-      let strJson: string = getInspectorByKey('paramId');
-      let obj: Record<string, ESObject> = JSON.parse(strJson);
-      console.info('[OnNewParamRouter_0200] component obj is: ' + JSON.stringify(obj));
-      console.info('[OnNewParamRouter_0200] content obj is: ' + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('test string');
-
-      console.info('OnNewParamRouter_0200 END');
-      done();
     });
 
     /**
@@ -117,26 +143,40 @@ export default function OnNewParamRouter() {
      */
     it('OnNewParamRouter_0300', 0, async (done: Function) => {
       console.info('OnNewParamRouter_0300 START');
+      let indexEvent: events_emitter.InnerEvent = {
+        eventId: 53,
+        priority: events_emitter.EventPriority.LOW
+      }
       await CommonFunc.sleep(500);
 
       let driver = Driver.create();
       await driver.delayMs(500);
 
+      let btn1: Component = await driver.findComponent(ON.id('pushId'));
+      await btn1.click()
+      console.info('[OnNewParamRouter_0100] btn1 click');
+      await driver.delayMs(1000);
+
+      let callback = (indexEvent: events_emitter.EventData) => {
+        console.info('OnNewParamRouter_0300 get state result is: ' + JSON.stringify(indexEvent))
+        try {
+          expect(indexEvent.data?.paramString).assertEqual('20');
+        } catch (err) {
+          console.info('OnNewParamRouter_0300 get state result is err: ' + JSON.stringify(err));
+        }
+        console.info('[OnNewParamRouter_0300] END');
+        done();
+      }
+      try {
+        events_emitter.on(indexEvent, callback);
+      } catch (err) {
+        console.info('OnNewParamRouter_0300 on events_emitter err : ' + JSON.stringify(err));
+      }
+
       let btn2: Component = await driver.findComponent(ON.id('pushNamedId'));
       await btn2.click()
       console.info('[OnNewParamRouter_0300] btn2 click');
-      await driver.delayMs(1000);
-
-      let strJson: string = getInspectorByKey('paramId');
-      let obj: Record<string, ESObject> = JSON.parse(strJson);
-      console.info('[OnNewParamRouter_0300] component obj is: ' + JSON.stringify(obj));
-      console.info('[OnNewParamRouter_0300] content obj is: ' + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('20');
-
-      console.info('OnNewParamRouter_0300 END');
-      done();
     });
-
 
   })
 }
