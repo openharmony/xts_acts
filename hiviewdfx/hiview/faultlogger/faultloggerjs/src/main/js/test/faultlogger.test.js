@@ -15,7 +15,7 @@
 import faultlogger from '@ohos.faultLogger'
 import hiSysEvent from '@ohos.hiSysEvent'
 import faultloggerTestNapi from "libfaultlogger_test_napi_xts.so"
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size} from '@ohos/hypium'
 export default function FaultlogJsTest() {
 
 describe("FaultlogJsTest", function () {
