@@ -92,7 +92,6 @@ export default function builtinsStatementBlockTest() {
       Done()
     })
 
-
     /**
      * @tc.number SUB_BUILDINS_STATEMENT_BLOCK_TEST_0300
      * @tc.name builtinsStatementBlockTest1003
@@ -129,7 +128,6 @@ export default function builtinsStatementBlockTest() {
       Done()
 
     })
-
 
     /**
      * @tc.number SUB_BUILDINS_STATEMENT_BLOCK_TEST_0400
@@ -453,5 +451,4 @@ export default function builtinsStatementBlockTest() {
       Done()
     })
   })
-
 }

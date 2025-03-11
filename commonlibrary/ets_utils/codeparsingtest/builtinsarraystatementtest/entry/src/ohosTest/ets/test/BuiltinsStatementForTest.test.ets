@@ -1808,6 +1808,5 @@ export default function builtinsStatementForTest() {
         expect(counts[9]).assertEqual(59049)
         Done();
       });
-
   })
 }

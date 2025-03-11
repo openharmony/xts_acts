@@ -1794,6 +1794,5 @@ export default function builtinsStatementIfTest() {
       } catch (e) {
       }
     })
-
   })
 }

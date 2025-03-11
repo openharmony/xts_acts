@@ -12,14 +12,15 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-export function throwDivisor(a: number, b: number) {
+
+export function throwDivisor(a: number, b: number): number {
   if (b === 0) {
     throw new Error('The divisor cannot be zero');
   }
   return a / b;
 }
 
-export function throwUsers(username: string, age: number) {
+export function throwUsers(username: string, age: number): void {
   if (username && username.length < 3) {
     throw new Error('The username must contain at least 3 characters');
   }
@@ -32,7 +33,7 @@ export function throwUsers(username: string, age: number) {
 
 }
 
-export function positiveNumbers(numbers: number[]) {
+export function positiveNumbers(numbers: number[]) : void{
   for (let i = 0; i < numbers.length; i++) {
     const num = numbers[i];
     if (num == 0) {
@@ -46,7 +47,7 @@ export function positiveNumbers(numbers: number[]) {
   console.log('All numbers are valid');
 }
 
-export function UserWithAddressAddress(username: string, age: number, address: string) {
+export function UserWithAddressAddress(username: string, age: number, address: string): void {
   if (username.length < 3) {
     throw new Error('Username too short: must be at least 3 characters long');
   }
@@ -61,7 +62,7 @@ export function UserWithAddressAddress(username: string, age: number, address: s
   }
 }
 
-export function testTryCatch() {
+export function testTryCatch(): boolean {
   try {
   } catch (error) {
     console.error('An error occurred:', error);
@@ -71,7 +72,7 @@ export function testTryCatch() {
   return true;
 }
 
-export function Input(input: string) {
+export function Input(input: string): string {
   try {
     if (input.length < 3) {
       throw new Error('Input too short: must be at least 3 characters long');
@@ -86,7 +87,7 @@ export function Input(input: string) {
   return input
 }
 
-export function Input2(a: number, b: number) {
+export function Input2(a: number, b: number): number | null {
   if (b === 0) {
     console.log('Warning: Division by zero is not allowed. Returning null.');
     return null;
@@ -109,28 +110,28 @@ export function asyncInput(prompt: string): Promise<string> {
   });
 }
 
-export function nestedTryFinally(Resourcmessage: string) {
+export function nestedTryFinally(resourceMessage: string): string {
   try {
     console.log('Get the outer resources');
-    Resourcmessage = 'Get the outer resources'
+    resourceMessage = 'Get the outer resources'
     try {
       console.log('Get the inner layer resources');
-      Resourcmessage = Resourcmessage + '\nGet the inner layer resources'
+      resourceMessage = resourceMessage + '\nGet the inner layer resources'
       if (Math.random() > 1) {
         throw new Error('Simulate anomalies');
       }
       console.log('Normal execution is complete');
     } finally {
       console.log('Release the inner layer resources');
-      Resourcmessage = Resourcmessage + '\nRelease the inner layer resources'
+      resourceMessage = resourceMessage + '\nRelease the inner layer resources'
     }
   } catch (error) {
     console.error('An exception was caught:', error.message);
   } finally {
     console.log('Release outer resources');
-    Resourcmessage = Resourcmessage + '\nRelease outer resources'
+    resourceMessage = resourceMessage + '\nRelease outer resources'
   }
-  return Resourcmessage
+  return resourceMessage
 }
 
 export function bubbleSort(arr: Array<number>): Array<number> {
@@ -176,7 +177,7 @@ export function processArray(arr: number[]): string[] {
   return result;
 }
 
-export function processString(input: string | undefined | null) {
+export function processString(input: string | undefined | null): string {
   let joinedString = '';
   if (!input) {
     console.log('Input is empty or undefined.');
@@ -202,7 +203,7 @@ export function sdkMethod2(value: string): string {
   return `Processed value: ${value}`;
 }
 
-export function processMap(inputMap: Map<string, string>) {
+export function processMap(inputMap: Map<string, string>): string[] {
   let results: string[] = [];
   if (!inputMap || inputMap.size === 0) {
     console.log('Input map is empty or undefined.');
@@ -222,7 +223,7 @@ export function processMap(inputMap: Map<string, string>) {
   return results;
 }
 
-export function processSet(inputSet: Set<string>) {
+export function processSet(inputSet: Set<string>): string[] {
   let results: string[] = [];
   if (!inputSet || inputSet.size === 0) {
     console.log('Input set is empty or undefined.');
@@ -241,7 +242,7 @@ export function processSet(inputSet: Set<string>) {
   return results;
 }
 
-export function processSetWithIterator(inputSet: Set<string>) {
+export function processSetWithIterator(inputSet: Set<string>): string[] {
   let results: string[] = [];
   if (!inputSet || inputSet.size === 0) {
     console.log('Input set is empty or undefined.');

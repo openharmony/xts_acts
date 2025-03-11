@@ -894,6 +894,5 @@ export default function BuiltinsStatementContinueTest() {
         expect(allTasksSuccess).assertFalse();
         Done();
       });
-
   })
 }

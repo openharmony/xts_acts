@@ -1228,8 +1228,7 @@ export default function builtinsStatementForOfTest() {
           foundValue = element;
           break;
         }
-      }
-      ;
+      };
       expect(30).assertEqual(foundValue);
       expect('').assertEqual(currentIndex);
       Done();

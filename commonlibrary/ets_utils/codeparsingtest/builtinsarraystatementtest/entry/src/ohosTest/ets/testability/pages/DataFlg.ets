@@ -13,9 +13,9 @@
 * limitations under the License.
 */
 export class Count1 {
-  static count: number = 0
+  public static count: number = 0
 }
 
 export class Count2 {
-  static count: number = 0
+  public static count: number = 0
 }
