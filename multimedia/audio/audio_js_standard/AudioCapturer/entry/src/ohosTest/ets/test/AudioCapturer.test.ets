@@ -4209,16 +4209,10 @@ export default function audioCapturer() {
         source: audio.SourceType.SOURCE_TYPE_MIC,
         capturerFlags: 0
       }
-      let audioPlaybackCaptureConfig: audio.AudioPlaybackCaptureConfig = {
-        filterOptions: {
-          usages: [audio.StreamUsage.STREAM_USAGE_MEDIA]
-        }
-      }
 
       let audioCapturerOptions: audio.AudioCapturerOptions = {
         streamInfo: audioStreamInfo,
-        capturerInfo: audioCapturerInfo,
-        playbackCaptureConfig: audioPlaybackCaptureConfig
+        capturerInfo: audioCapturerInfo
       }
 
       let audioRendererInfo: audio.AudioRendererInfo = {
@@ -4226,14 +4220,9 @@ export default function audioCapturer() {
         rendererFlags: 0
       }
 
-      let AudioPrivacyType: ESObject = {
-        privacyType: audio.AudioPrivacyType.PRIVACY_TYPE_PUBLIC
-      }
-
       let AudioRendererOptions: audio.AudioRendererOptions = {
         streamInfo: audioStreamInfo,
-        rendererInfo: audioRendererInfo,
-        privacyType: AudioPrivacyType
+        rendererInfo: audioRendererInfo
       }
 
       let caseTag: string = "SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0100";
@@ -4274,16 +4263,10 @@ export default function audioCapturer() {
         source: audio.SourceType.SOURCE_TYPE_MIC,
         capturerFlags: 0
       }
-      let audioPlaybackCaptureConfig: audio.AudioPlaybackCaptureConfig = {
-        filterOptions: {
-          usages: [audio.StreamUsage.STREAM_USAGE_MEDIA]
-        }
-      }
 
       let audioCapturerOptions: audio.AudioCapturerOptions = {
         streamInfo: audioStreamInfo,
-        capturerInfo: audioCapturerInfo,
-        playbackCaptureConfig: audioPlaybackCaptureConfig
+        capturerInfo: audioCapturerInfo
       }
 
       let audioRendererInfo: audio.AudioRendererInfo = {
@@ -4291,14 +4274,9 @@ export default function audioCapturer() {
         rendererFlags: 0
       }
 
-      let AudioPrivacyType: ESObject = {
-        privacyType: audio.AudioPrivacyType.PRIVACY_TYPE_PUBLIC
-      }
-
       let AudioRendererOptions: audio.AudioRendererOptions = {
         streamInfo: audioStreamInfo,
-        rendererInfo: audioRendererInfo,
-        privacyType: AudioPrivacyType
+        rendererInfo: audioRendererInfo
       }
 
       let caseTag: string = "SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0200";
@@ -4336,19 +4314,13 @@ export default function audioCapturer() {
         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
       }
       let audioCapturerInfo: audio.AudioCapturerInfo = {
-        source: audio.SourceType.SOURCE_TYPE_MIC,
+        source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION,
         capturerFlags: 0
-      }
-      let audioPlaybackCaptureConfig: audio.AudioPlaybackCaptureConfig = {
-        filterOptions: {
-          usages: [audio.StreamUsage.STREAM_USAGE_MEDIA]
-        }
       }
 
       let audioCapturerOptions: audio.AudioCapturerOptions = {
         streamInfo: audioStreamInfo,
-        capturerInfo: audioCapturerInfo,
-        playbackCaptureConfig: audioPlaybackCaptureConfig
+        capturerInfo: audioCapturerInfo
       }
 
       let audioRendererInfo: audio.AudioRendererInfo = {
@@ -4356,14 +4328,9 @@ export default function audioCapturer() {
         rendererFlags: 0
       }
 
-      let AudioPrivacyType: ESObject = {
-        privacyType: audio.AudioPrivacyType.PRIVACY_TYPE_PUBLIC
-      }
-
       let AudioRendererOptions: audio.AudioRendererOptions = {
         streamInfo: audioStreamInfo,
-        rendererInfo: audioRendererInfo,
-        privacyType: AudioPrivacyType
+        rendererInfo: audioRendererInfo
       }
 
       let caseTag: string = "SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0300";
@@ -4404,16 +4371,10 @@ export default function audioCapturer() {
         source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION,
         capturerFlags: 0
       }
-      let audioPlaybackCaptureConfig: audio.AudioPlaybackCaptureConfig = {
-        filterOptions: {
-          usages: [audio.StreamUsage.STREAM_USAGE_MEDIA]
-        }
-      }
 
       let audioCapturerOptions: audio.AudioCapturerOptions = {
         streamInfo: audioStreamInfo,
-        capturerInfo: audioCapturerInfo,
-        playbackCaptureConfig: audioPlaybackCaptureConfig
+        capturerInfo: audioCapturerInfo
       }
 
       let audioRendererInfo: audio.AudioRendererInfo = {
@@ -4421,14 +4382,9 @@ export default function audioCapturer() {
         rendererFlags: 0
       }
 
-      let AudioPrivacyType: ESObject = {
-        privacyType: audio.AudioPrivacyType.PRIVACY_TYPE_PUBLIC
-      }
-
       let AudioRendererOptions: audio.AudioRendererOptions = {
         streamInfo: audioStreamInfo,
-        rendererInfo: audioRendererInfo,
-        privacyType: AudioPrivacyType
+        rendererInfo: audioRendererInfo
       }
 
       let caseTag: string = "SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0400";
