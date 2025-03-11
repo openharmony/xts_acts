@@ -14,7 +14,6 @@
       "run-command": [
 
           "power-shell wakeup",
-          "uinput -T -g 100 100 500 500",
           "hidumper -s 3301 -a -t"
       ],
       "teardown-command":[
