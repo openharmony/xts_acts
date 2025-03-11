@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
@@ -174,30 +173,29 @@ export default function getAlbumsTest () {
         done();
       }
     });
+    //得和之前合并的代码对照一下
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ALBUMS_0300
-     * @tc.name      : getAlbums_callback_003
-     * @tc.desc      : get user albums by albumName error code 13900020 or 401
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ALBUMS_0400
+     * @tc.name      : getAlbums_callback_004
+     * @tc.desc      : get an user album
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getAlbums_callback_003', 2, async (done: Function) => {
-      const testNum = 'getAlbums_callback_003';
+    it('getAlbums_callback_004', 2, async (done: Function) => {
+      const testNum = 'getAlbums_callback_004';
       try {
-        let albumName = testNum;
-        const fetchOps = fetchOption(testNum, albumKeys.ALBUM_NAME, albumName);
-        helper.getAlbums(123123, albumSubtype.USER_GENERIC, fetchOps, async (err, fetchResult) => {
+        helper.getAlbums(albumType.USER, 123123, async (err, fetchResult) => {
           expect(false).assertTrue();
+          console.info(`${testNum} getAlbums failed, error: ${err}`);
+          done();
         });
-        done();
       } catch (error) {
-        console.info(`${testNum} failed, error code: ${error.code}`);
+        console.info(`${testNum} failed, error: ${JSON.stringify(error)}`);
         expect(error.code === '13900020' || error.code === '401').assertTrue();
         done();
       }
     });
-
     //promise
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0000
@@ -370,6 +368,36 @@ export default function getAlbumsTest () {
       } catch (error) {
         console.info(`${testNum} failed, error: ${error}`);
         expect(false).assertTrue();
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0500
+     * @tc.name      : getAlbums_promise_005
+     * @tc.desc      : get user albums by orderByDesc
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getAlbums_promise_005', 2, async (done: Function) => {
+      const testNum = 'getAlbums_promise_005';
+      try {
+        const albumNames = ['m'];
+        for (let i = 0; i < albumNames.length; i++) {
+          await helper.createAlbum(albumNames[i]);
+        }
+        const predicates = new dataSharePredicates.DataSharePredicates();
+        predicates.in(albumKeys.ALBUM_NAME, albumNames).orderByDesc(albumKeys.ALBUM_NAME);
+        const fetchOps: photoAccessHelper.FetchOptions = {
+          fetchColumns: ['error'],
+          predicates: predicates
+        };
+        const fetchResult = await helper.getAlbums(albumType.USER, albumSubtype.USER_GENERIC, fetchOps);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed, error: ${error.code}`);
+        expect(error.code === '13900020' || error.code === '401').assertTrue();
         done();
       }
     });
