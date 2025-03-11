@@ -97,11 +97,6 @@ export class KeyboardController {
       this.InputClient = InputClient
       console.info(TAG + '====>inputMethodAbility inputStart into');      
     })
-
-    inputmethodengine.getKeyboardDelegate().on('editorAttributeChanged',(attr:inputMethodEngine.EditorAttribute)=>{
-      console.info(TAG + `====>on_EditorAttribute_callback = ${JSON.stringify(attr)} immersiveMode = ${attr.immersiveMode}`); 
-      this.set_IMMERSIVE(attr.immersiveMode) 
-    })
     
     let subscriberCallback = (err, data) => {
       console.debug(TAG + '====>receive event err: ' + JSON.stringify(err));
@@ -2637,6 +2632,11 @@ export class KeyboardController {
     let commonEventPublishData = {
         data: "FAILED"
     };
+    inputmethodengine.getKeyboardDelegate().on('editorAttributeChanged',(attr:inputMethodEngine.EditorAttribute)=>{
+      console.info(TAG + `====>on_EditorAttribute_callback = ${JSON.stringify(attr)} immersiveMode = ${attr.immersiveMode}`); 
+      this.immersive = attr.immersiveMode
+      inputmethodengine.getKeyboardDelegate().off('editorAttributeChanged')
+    })
     try{
       let t = setTimeout(() => {
         clearTimeout(t);
@@ -2678,18 +2678,6 @@ export class KeyboardController {
       console.info(TAG + '====>Sub_InputMethod_IME_Immersive_0500 cathch err: ' + JSON.stringify(err));
     }
     commoneventmanager.publish("Sub_InputMethod_IME_Immersive_0500", commonEventPublishData, this.publishCallback);
-  }
-
-  public set_IMMERSIVE(immersive:inputMethodEngine.ImmersiveMode){
-    try{
-      this.softKeyboardPanel?.setImmersiveMode(immersive);
-      console.info(TAG + `====>this.panel ${this.softKeyboardPanel} `);
-      console.info(TAG + `====>setImmersiveMode ${immersive} success`);
-      this.immersive = this.softKeyboardPanel?.getImmersiveMode();
-      console.info(TAG + `====>getImmersiveMode ${this.immersive} `);
-    }catch(err){
-      console.info(TAG + `====>setImmersiveMode err! errCode: ${err.code} ,errMessage: ${err.message}`);
-    }
   }
 
   private Sub_Misc_inputMethod_Panel_createPanelCallback_0011(): void {
@@ -3079,7 +3067,7 @@ export class KeyboardController {
           landscapeRect: { left: 100, top: 100, width: this.display_info.width*10, height: this.display_info.height*10},
           portraitRect: { left: 100, top: 100, width: this.display_info.height*10, height: this.display_info.width*10}
       }
-      this.softKeyboardPanel.adjustPanelRect(inputMethodEngine.PanelFlag.FLG_FIXED, keyboardRect);
+      this.softKeyboardPanel.adjustPanelRect(undefined, keyboardRect);
       console.info(TAG + '====>Sub_InputMethod_IME_ScreenRotation_0101 startAbility success' );
     } catch (err) {
       if (err.code === 401) {
