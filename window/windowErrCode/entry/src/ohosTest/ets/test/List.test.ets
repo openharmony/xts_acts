@@ -19,7 +19,8 @@ import windowErrCode401_1 from './windowErrCode401_1.test'
 import windowErrCode401_2 from './windowErrCode401_2.test'
 import windowErrCode401_3 from './windowErrCode401_3.test'
 import windowErrCode1300002_1 from './windowErrCode1300002_1.test'
-
+import windowErrCode1300002_2 from './windowErrCode1300002_2.test'
+import windowErrCode1300004 from './windowErrCode1300004.test'
 export default function testsuite() {
   windowErrCode202_1(globalThis.abilityContext, globalThis.windowStage)
   windowErrCode202_2(globalThis.abilityContext, globalThis.windowStage)
@@ -27,4 +28,6 @@ export default function testsuite() {
   windowErrCode401_2(globalThis.abilityContext, globalThis.windowStage)
   windowErrCode401_3(globalThis.abilityContext, globalThis.windowStage)
   windowErrCode1300002_1(globalThis.abilityContext, globalThis.windowStage)
+  windowErrCode1300002_2(globalThis.abilityContext, globalThis.windowStage)
+  windowErrCode1300004(globalThis.abilityContext, globalThis.windowStage)
 }
