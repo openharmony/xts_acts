@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import getPhotoAccessHelperTest from './getPhotoAccessHelper.test';
 import provisionResourcesTest from './provisionResources.test';
 import checkAlbumAttrTest from './AbsAlbum/checkAttr.test';

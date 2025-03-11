@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
 import { photoKeys, fetchOption, getFileAsset, sleep, getPermission, driveFn } from '../common'
