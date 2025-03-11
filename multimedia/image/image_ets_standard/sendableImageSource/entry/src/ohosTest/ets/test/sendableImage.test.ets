@@ -200,7 +200,7 @@ export default function sendableImageSource() {
       await ability()
       let driver = Driver.create()
       await sleep(500)
-      for (let i = 0; i < 4; i ++) {
+      for (let i = 0; i < 2; i ++) {
         await sleep(1000);
         let button = await driver.findComponent(ON.text('允许', MatchPattern.EQUALS))
         console.info('button is ' + JSON.stringify(button))
