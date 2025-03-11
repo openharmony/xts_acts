@@ -12,32 +12,29 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-
-import builtinsArrayConcatTest from './BuiltinsArrayConcatTest.test';
-import builtinsArrayCopyWithinTest from './BuiltinsArrayCopyWithinTest.test';
-import builtinsArrayEntriesTest from './BuiltinsArrayEntriesTest.test';
-import builtinsArrayEveryTest from './BuiltinsArrayEveryTest.test';
-import builtinsArrayIsArrayTest from './BuiltinsArrayIsArray.test';
-import builtinsArrayOfTest from './BuiltinsArrayOf.test';
-import builtinsArrayPopTest from './BuiltinsArrayPop.test';
-import builtinsArrayPushTest from './BuiltinsArrayPush.test';
-import builtinsArrayReverseTest from './BuiltinsArrayReverseTest.test';
-import builtinsArrayShiftTest from './BuiltinsArrayShift.test';
-import builtinsArrayUnshiftTest from './BuiltinsArrayUnshift.test';
-import builtinsArrayValuesTest from './BuiltinsArrayValues.test';
+import builtinsStatementBlockTest from "./BuiltinsStatementBlockTest.test";
+import BuiltinsStatementBreakTest from "./BuiltinsStatementBreakTest.test";
+import BuiltinsStatementContinueTest from "./BuiltinsStatementContinueTest.test";
+import builtinsStatementForOfTest from "./BuiltinsStatementForOfTest.test";
+import builtinsStatementForTest from "./BuiltinsStatementForTest.test";
+import builtinsStatementIfTest from "./BuiltinsStatementIfTest.test";
+import builtinsStatementThrowTest from "./BuiltinsStatementThrowTest.test";
+import builtinsStatementTry from "./BuiltinsStatementTryTest.test";
+import builtinsStatementWhileTest from "./BuiltinsStatementWhile.test";
+import builtinsStatementReturnTest from "./StatementReturnTest.test";
+import builtinsStatementSwitchTest from "./StatementSwitchTest.test";
 
 
 export default function testsuite() {
-  builtinsArrayConcatTest();
-  builtinsArrayEntriesTest();
-  builtinsArrayCopyWithinTest();
-  builtinsArrayEveryTest();
-  builtinsArrayIsArrayTest();
-  builtinsArrayOfTest();
-  builtinsArrayPopTest();
-  builtinsArrayPushTest();
-  builtinsArrayShiftTest();
-  builtinsArrayUnshiftTest();
-  builtinsArrayValuesTest();
-  builtinsArrayReverseTest();
+  builtinsStatementBlockTest();
+  builtinsStatementForOfTest();
+  builtinsStatementThrowTest();
+  builtinsStatementTry();
+  builtinsStatementIfTest();
+  BuiltinsStatementBreakTest();
+  BuiltinsStatementContinueTest();
+  builtinsStatementForTest();
+  builtinsStatementReturnTest();
+  builtinsStatementSwitchTest();
+  builtinsStatementWhileTest();
 }
