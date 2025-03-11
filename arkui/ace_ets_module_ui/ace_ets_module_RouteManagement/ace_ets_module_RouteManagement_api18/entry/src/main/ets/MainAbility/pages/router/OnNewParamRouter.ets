@@ -8,7 +8,7 @@ struct OnNewParamRouter {
       Column() {
         Button('push pageOne')
           .onClick(() => {
-            router.pushUrl({ url: 'pages/PageOne'})
+            router.pushUrl({ url: 'pages/router/PageOne'})
           })
           .id('pushId')
           .height('10%')
