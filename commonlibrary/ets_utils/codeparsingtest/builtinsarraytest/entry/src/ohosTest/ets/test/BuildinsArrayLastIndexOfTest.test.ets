@@ -310,7 +310,7 @@ export default function builtinsArrayLastIndexOfTest() {
      * @tc.level Level 2
      */
     it('buildinsArrayLastIndexOfTest1019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      let result = lastIndexOf([1, exportObj2, exportObj2, 3, 4], exportObj2)
+      let result: number = lastIndexOf([1, exportObj2, exportObj2, 3, 4], exportObj2)
       expect(result).assertEqual(2)
       Done()
     })
