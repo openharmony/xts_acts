@@ -173,7 +173,7 @@ export default class MediaTestBase {
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
           console.error('avScreenCaptureRecorder skipPrivacyMode failed, error: ' + err.message);
-            expect().assertFail()
+          expect().assertFail()
         })
 
         break;
