@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
 import { photoKeys, fetchOption, getFileAsset, sleep, getPermission, driveFn } from '../common'
@@ -99,7 +98,7 @@ export default function addRemoveAssetsChangeRequestTest() {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_ADD_REMOVE_ASSETS_CHANGE_REQUEST_0200
      * @tc.name      : add_remove_assets_change_request_002
-     * @tc.desc      : remove null assets, error code 401 or 13900020
+     * @tc.desc      : add and remove assets error code 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -111,16 +110,78 @@ export default function addRemoveAssetsChangeRequestTest() {
         let albumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
         const asset:ESObject = null;
         albumChangeRequest.removeAssets([asset]);
+        await helper.applyChanges(albumChangeRequest);
         expect(false).assertTrue();
         done();
       } catch (error) {
-        if(error.code === `14000016`){
-          console.log(`${testNum} success; error: ${error}`);
-          expect(true).assertTrue();
-        } else {
-          console.log(`${testNum} success; error: ${error.code}`);
-          expect(error.code === '13900020' || error.code === '401').assertTrue();
-        }
+        console.log(`${testNum} success; error: ${error}`);
+        expect(error.code).assertEqual(`401`);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_ADD_REMOVE_ASSETS_CHANGE_REQUEST_0200
+     * @tc.name      : add_remove_assets_change_request_002
+     * @tc.desc      : add and remove assets error code 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('add_remove_assets_change_request_003', 2, async (done: Function) => {
+      let testNum:string = 'add_remove_assets_change_request_003';
+      try {
+        let albumChangeRequest: ESObject = undefined;
+        await helper.applyChanges(albumChangeRequest);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.log(`${testNum} success; error: ${error}`);
+        expect(error.code).assertEqual(`401`);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_ADD_REMOVE_ASSETS_CHANGE_REQUEST_0200
+     * @tc.name      : add_remove_assets_change_request_002
+     * @tc.desc      : add and remove assets error code 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('add_remove_assets_change_request_004', 2, async (done: Function) => {
+      let testNum:string = 'add_remove_assets_change_request_004';
+      try {
+        let albumChangeRequest: ESObject = ['123123'];
+        await helper.applyChanges(albumChangeRequest);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.log(`${testNum} success; error: ${error}`);
+        expect(error.code).assertEqual(`401`);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_ADD_REMOVE_ASSETS_CHANGE_REQUEST_0200
+     * @tc.name      : add_remove_assets_change_request_002
+     * @tc.desc      : add and remove assets error code 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('add_remove_assets_change_request_005', 2, async (done: Function) => {
+      let testNum:string = 'add_remove_assets_change_request_005';
+      try {
+        let albumChangeRequest: ESObject = null;
+        await helper.applyChanges(albumChangeRequest);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.log(`${testNum} success; error: ${error}`);
+        expect(error.code).assertEqual(`401`);
         done();
       }
     })
