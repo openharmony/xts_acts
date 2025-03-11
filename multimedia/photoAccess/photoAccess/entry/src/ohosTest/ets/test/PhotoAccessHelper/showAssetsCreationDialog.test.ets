@@ -117,6 +117,24 @@ export default function showAssetsCreationDialogTest() {
       }
     }
 
+    const showAssetCreationDialogError = async (done: Function, testNum: string, fileUriList: Array<string>,
+      photoCreationConfigs: Array<photoAccessHelper.PhotoCreationConfig>, allowFlag: boolean) => {
+        try {
+          let desFileUris: Array<string> = [];
+          let buttonText = allowFlag ? '允许' : '禁止';
+          phAccessHelper.showAssetsCreationDialog(fileUriList, photoCreationConfigs).then((data) => {
+          console.log(`${testNum} :: showAssetsCreationDialog :: data length is ${data.length}`);
+          desFileUris = data;
+          expect(false).assertTrue();
+          done();
+        });
+        } catch (error) {
+          console.error(`${testNum} :: showAssetsCreationDialogPromise error, err is ${error}`);
+          expect(error.code === 13900020 || error.code === 401).assertTrue();
+          done();
+        }
+      }
+
     /**
      * @tc.number    : Sub_PhotoAccess_Helper_Show_Creations_Dialog_001
      * @tc.name      : show_asset_create_dialog_001
@@ -163,6 +181,28 @@ export default function showAssetsCreationDialogTest() {
         }
       ];
       await showAssetCreationDialog(done, testNum, fileUriList, photoCreationConfigs, true);
+    })
+
+    /**
+     * @tc.number    : Sub_PhotoAccess_Helper_Show_Creations_Dialog_003
+     * @tc.name      : show_asset_create_dialog_003
+     * @tc.desc      : show dialog to add mediaLibrary resource, then not allow,fileUriList is undefined,error code is 13900020 or 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("show_asset_create_dialog_003", 2, async (done: Function) => {
+      const testNum = "show_asset_create_dialog_003";
+      let fileUriList: ESObject = undefined;
+      let photoCreationConfigs: Array<photoAccessHelper.PhotoCreationConfig> = [
+        {
+          title: 'showAssetsCreationDialogTest',
+          fileNameExtension: '123123',
+          photoType: photoAccessHelper.PhotoType.IMAGE,
+          subtype: photoAccessHelper.PhotoSubtype.DEFAULT,
+        }
+      ];
+      await showAssetCreationDialogError(done, testNum, fileUriList, photoCreationConfigs, false);
     })
 
   })
