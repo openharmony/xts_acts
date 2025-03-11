@@ -479,40 +479,39 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOffScreenshotErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOffScreenshotErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOffScreenshotErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testOffScreenshotErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testOffScreenshotErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.off(null, () => {
-          });
-          console.error(msgStr + 'Succeeded in calling off screenshot.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call off screenshot. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.off(null, () => {
+        });
+        console.error(msgStr + 'Succeeded in calling off screenshot.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call off screenshot. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -525,40 +524,39 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOnDialogTargetTouchErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOnDialogTargetTouchErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOnDialogTargetTouchErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testOnDialogTargetTouchErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testOnDialogTargetTouchErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.on(null, () => {
-          });
-          console.error(msgStr + 'Succeeded in calling on dialogTargetTouch.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call on dialogTargetTouch. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.on(null, () => {
+        });
+        console.error(msgStr + 'Succeeded in calling on dialogTargetTouch.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call on dialogTargetTouch. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -571,40 +569,39 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOffDialogTargetTouchErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOffDialogTargetTouchErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOffDialogTargetTouchErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testOffDialogTargetTouchErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testOffDialogTargetTouchErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.off(null, () => {
-          });
-          console.error(msgStr + 'Succeeded in calling off dialogTargetTouch.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call off dialogTargetTouch. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.off(null, () => {
+        });
+        console.error(msgStr + 'Succeeded in calling off dialogTargetTouch.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call off dialogTargetTouch. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -617,40 +614,39 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOnWindowEventErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOnWindowEventErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOnWindowEventErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testOnWindowEventErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testOnWindowEventErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.on(null, (res: ohosWindow.WindowEventType) => {
-          });
-          console.error(msgStr + 'Succeeded in calling on windowEvent.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call on windowEvent. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.on(null, (res: ohosWindow.WindowEventType) => {
+        });
+        console.error(msgStr + 'Succeeded in calling on windowEvent.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call on windowEvent. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -663,40 +659,39 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOffWindowEventErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOffWindowEventErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOffWindowEventErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testOffWindowEventErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testOffWindowEventErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.off(null, (res: ohosWindow.WindowEventType) => {
-          });
-          console.error(msgStr + 'Succeeded in calling off windowEvent.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call off windowEvent. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.off(null, (res: ohosWindow.WindowEventType) => {
+        });
+        console.error(msgStr + 'Succeeded in calling off windowEvent.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call off windowEvent. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -709,40 +704,39 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOnWindowStatusChangeErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOnWindowStatusChangeErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOnWindowStatusChangeErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testOnWindowStatusChangeErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testOnWindowStatusChangeErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.on(null, (res: ohosWindow.WindowStatusType) => {
-          });
-          console.error(msgStr + 'Succeeded in calling on windowStatusChange.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call on windowStatusChange. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.on(null, (res: ohosWindow.WindowStatusType) => {
+        });
+        console.error(msgStr + 'Succeeded in calling on windowStatusChange.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call on windowStatusChange. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -755,40 +749,39 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOffWindowStatusChangeErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOffWindowStatusChangeErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOffWindowStatusChangeErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testOffWindowStatusChangeErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testOffWindowStatusChangeErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.off(null, (res: ohosWindow.WindowStatusType) => {
-          });
-          console.error(msgStr + 'Succeeded in calling off windowStatusChange.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call off windowStatusChange. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.off(null, (res: ohosWindow.WindowStatusType) => {
+        });
+        console.error(msgStr + 'Succeeded in calling off windowStatusChange.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call off windowStatusChange. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -801,40 +794,39 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOnSubWindowCloseErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOnSubWindowCloseErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOnSubWindowCloseErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testOnSubWindowCloseErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testOnSubWindowCloseErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.on(null, () => {
-          });
-          console.error(msgStr + 'Succeeded in calling on subWindowClose.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call on subWindowClose. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.on(null, () => {
+        });
+        console.error(msgStr + 'Succeeded in calling on subWindowClose.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call on subWindowClose. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -847,40 +839,39 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testOffSubWindowCloseErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testOffSubWindowCloseErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testOffSubWindowCloseErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testOffSubWindowCloseErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testOffSubWindowCloseErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        let testcaseResult = true;
-        try {
-          win!.off(null, () => {
-          });
-          console.error(msgStr + 'Succeeded in calling off subWindowClose.');
-          testcaseResult = false;
-        } catch (e) {
-          console.log(msgStr + 'Failed to call off subWindowClose. Cause:' + JSON.stringify(e));
-          testcaseResult = e.code == 401;
-        }
-        console.log(msgStr + 'end.');
+      try {
+        win!.off(null, () => {
+        });
+        console.error(msgStr + 'Succeeded in calling off subWindowClose.');
+        expect().assertFail();
         await win!.destroyWindow()
-        expect(testcaseResult).assertTrue();
-        done();
+        console.log(msgStr + 'end.');
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call off subWindowClose. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(401);
+        await win!.destroyWindow()
+        console.log(msgStr + 'end.');
+        done()
       }
     })
 
@@ -893,42 +884,40 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetWindowFocusablePromiseErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetWindowFocusablePromiseErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetWindowFocusablePromiseErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetWindowFocusablePromiseErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetWindowFocusablePromiseErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
+
+      try {
+        await win!.setWindowFocusable(null).then(async () => {
+          console.info(msgStr + 'Succeeded in calling setWindowFocusable.');
           expect().assertFail();
-          done()
-        }
-
-        try {
-          await win!.setWindowFocusable(null).then(async () => {
-            console.info(msgStr + 'Succeeded in calling setWindowFocusable.');
-            expect().assertFail();
-          }).catch(async (err: BusinessError) => {
-            console.error(msgStr + 'Failed to call setWindowFocusable. Cause: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
-          });
-          await win!.destroyWindow()
-          done()
-        } catch (exception) {
-          console.error(msgStr + 'Failed to set the call setWindowFocusable. Cause:' + JSON.stringify(exception));
-          await win!.destroyWindow()
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call setWindowFocusable. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(401);
+        });
+        await win!.destroyWindow()
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setWindowFocusable. Cause:' + JSON.stringify(exception));
+        await win!.destroyWindow()
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
 
@@ -941,46 +930,44 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetWindowFocusableCallbackErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetWindowFocusableCallbackErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetWindowFocusableCallbackErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetWindowFocusableCallbackErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetWindowFocusableCallbackErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        try {
-          win!.setWindowFocusable(null, async (err: BusinessError) => {
-            await win!.destroyWindow()
-            const errCode: number = err.code;
-            if (errCode) {
-              console.error(msgStr + 'Failed to call setWindowFocusable. Cause:' + JSON.stringify(err));
-              expect(err.code).assertEqual(401);
-              done()
-              return;
-            }
-            console.info(msgStr + 'Succeeded in calling setWindowFocusable.');
-            expect().assertFail();
-            done();
-          });
-        } catch (exception) {
-          console.error(msgStr + 'Failed to call setWindowFocusable. Cause:' + JSON.stringify(exception));
+      try {
+        win!.setWindowFocusable(null, async (err: BusinessError) => {
           await win!.destroyWindow()
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(msgStr + 'Failed to call setWindowFocusable. Cause:' + JSON.stringify(err));
+            expect(err.code).assertEqual(401);
+            done()
+            return;
+          }
+          console.info(msgStr + 'Succeeded in calling setWindowFocusable.');
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to call setWindowFocusable. Cause:' + JSON.stringify(exception));
+        await win!.destroyWindow()
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
 
@@ -993,42 +980,40 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetWindowKeepScreenOnPromiseErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetWindowKeepScreenOnPromiseErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetWindowKeepScreenOnPromiseErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetWindowKeepScreenOnPromiseErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetWindowKeepScreenOnPromiseErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
+
+      try {
+        await win!.setWindowKeepScreenOn(null).then(async () => {
+          console.info(msgStr + 'Succeeded in calling setWindowKeepScreenOn.');
           expect().assertFail();
-          done()
-        }
-
-        try {
-          await win!.setWindowKeepScreenOn(null).then(async () => {
-            console.info(msgStr + 'Succeeded in calling setWindowKeepScreenOn.');
-            expect().assertFail();
-          }).catch(async (err: BusinessError) => {
-            console.error(msgStr + 'Failed to call setWindowKeepScreenOn. Cause: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
-          });
-          await win!.destroyWindow()
-          done()
-        } catch (exception) {
-          console.error(msgStr + 'Failed to set the call setWindowKeepScreenOn. Cause:' + JSON.stringify(exception));
-          await win!.destroyWindow()
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call setWindowKeepScreenOn. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(401);
+        });
+        await win!.destroyWindow()
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setWindowKeepScreenOn. Cause:' + JSON.stringify(exception));
+        await win!.destroyWindow()
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
 
@@ -1041,46 +1026,44 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetWindowKeepScreenOnCallbackErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetWindowKeepScreenOnCallbackErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetWindowKeepScreenOnCallbackErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetWindowKeepScreenOnCallbackErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetWindowKeepScreenOnCallbackErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        try {
-          win!.setWindowKeepScreenOn(null, async (err: BusinessError) => {
-            await win!.destroyWindow()
-            const errCode: number = err.code;
-            if (errCode) {
-              console.error(msgStr + 'Failed to call setWindowKeepScreenOn. Cause:' + JSON.stringify(err));
-              expect(err.code).assertEqual(401);
-              done()
-              return;
-            }
-            console.info(msgStr + 'Succeeded in calling setWindowKeepScreenOn.');
-            expect().assertFail();
-            done();
-          });
-        } catch (exception) {
-          console.error(msgStr + 'Failed to call setWindowKeepScreenOn. Cause:' + JSON.stringify(exception));
+      try {
+        win!.setWindowKeepScreenOn(null, async (err: BusinessError) => {
           await win!.destroyWindow()
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(msgStr + 'Failed to call setWindowKeepScreenOn. Cause:' + JSON.stringify(err));
+            expect(err.code).assertEqual(401);
+            done()
+            return;
+          }
+          console.info(msgStr + 'Succeeded in calling setWindowKeepScreenOn.');
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to call setWindowKeepScreenOn. Cause:' + JSON.stringify(exception));
+        await win!.destroyWindow()
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
 
@@ -1093,42 +1076,40 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetWindowPrivacyModePromiseErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetWindowPrivacyModePromiseErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetWindowPrivacyModePromiseErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetWindowPrivacyModePromiseErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetWindowPrivacyModePromiseErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
+
+      try {
+        await win!.setWindowPrivacyMode(null).then(async () => {
+          console.info(msgStr + 'Succeeded in calling setWindowPrivacyMode.');
           expect().assertFail();
-          done()
-        }
-
-        try {
-          await win!.setWindowPrivacyMode(null).then(async () => {
-            console.info(msgStr + 'Succeeded in calling setWindowPrivacyMode.');
-            expect().assertFail();
-          }).catch(async (err: BusinessError) => {
-            console.error(msgStr + 'Failed to call setWindowPrivacyMode. Cause: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
-          });
-          await win!.destroyWindow()
-          done()
-        } catch (exception) {
-          console.error(msgStr + 'Failed to set the call setWindowPrivacyMode. Cause:' + JSON.stringify(exception));
-          await win!.destroyWindow()
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call setWindowPrivacyMode. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(401);
+        });
+        await win!.destroyWindow()
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setWindowPrivacyMode. Cause:' + JSON.stringify(exception));
+        await win!.destroyWindow()
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
 
@@ -1141,46 +1122,44 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
      * @tc.level      : Level 3
      */
     it('testSetWindowPrivacyModeCallbackErrCode401_0100', 0, async (done: Function) => {
-      {
-        let caseName = "testSetWindowPrivacyModeCallbackErrCode401_0100";
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin.');
+      let caseName = "testSetWindowPrivacyModeCallbackErrCode401_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
 
-        let windowConfig: ohosWindow.Configuration = {
-          name: "testSetWindowPrivacyModeCallbackErrCode401_0100",
-          windowType: ohosWindow.WindowType.TYPE_DIALOG,
-          ctx: context,
-        };
-        let win: ohosWindow.Window | undefined = undefined;
-        try {
-          win = await ohosWindow.createWindow(windowConfig);
-          expect(!!win).assertTrue();
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
-          expect().assertFail();
-          done()
-        }
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetWindowPrivacyModeCallbackErrCode401_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let win: ohosWindow.Window | undefined = undefined;
+      try {
+        win = await ohosWindow.createWindow(windowConfig);
+        expect(!!win).assertTrue();
+      } catch (err) {
+        console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done()
+      }
 
-        try {
-          win!.setWindowPrivacyMode(null, async (err: BusinessError) => {
-            await win!.destroyWindow()
-            const errCode: number = err.code;
-            if (errCode) {
-              console.error(msgStr + 'Failed to call setWindowPrivacyMode. Cause:' + JSON.stringify(err));
-              expect(err.code).assertEqual(401);
-              done()
-              return;
-            }
-            console.info(msgStr + 'Succeeded in calling setWindowPrivacyMode.');
-            expect().assertFail();
-            done();
-          });
-        } catch (exception) {
-          console.error(msgStr + 'Failed to call setWindowPrivacyMode. Cause:' + JSON.stringify(exception));
+      try {
+        win!.setWindowPrivacyMode(null, async (err: BusinessError) => {
           await win!.destroyWindow()
-          expect(exception.code).assertEqual(401);
-          done()
-        }
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(msgStr + 'Failed to call setWindowPrivacyMode. Cause:' + JSON.stringify(err));
+            expect(err.code).assertEqual(401);
+            done()
+            return;
+          }
+          console.info(msgStr + 'Succeeded in calling setWindowPrivacyMode.');
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to call setWindowPrivacyMode. Cause:' + JSON.stringify(exception));
+        await win!.destroyWindow()
+        expect(exception.code).assertEqual(401);
+        done()
       }
     })
   })
