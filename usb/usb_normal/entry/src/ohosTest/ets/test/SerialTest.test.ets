@@ -661,7 +661,7 @@ export default function SerialTest() {
         expect().assertFail();
       } catch (error) {
         console.error(TAG, 'testClose002 catch err code: ', error.code, ', message: ', error.message);
-        expect(error.code).assertEqual(31400004);
+        expect(error.code).assertEqual(31400005);
         done();
       }
     })
