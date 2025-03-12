@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-import { ServiceExtensionAbility } from '@kit.AbilityKit';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import common from '@ohos.app.ability.common';

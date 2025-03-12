@@ -333,15 +333,15 @@ export default function startAbilityOpenLink() {
           let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
             console.log("OpenLink subscribeCallBack success")
             if (data.event == 'ACTS_TEST_OPENLINK') {
-                context.openLink(link, openLinkOptions, (err, data) => {
-                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
+              context.openLink(link, openLinkOptions, (err, data) => {
+                console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
+              })
+                .then(() => undefined)
+                .catch((err: BusinessError) => {
+                  console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
+                  expect(err.code).assertEqual(16000019);
+                  commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
                 })
-                  .then(() => undefined)
-                  .catch((err: BusinessError) => {
-                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
-                    expect(err.code).assertEqual(16000019);
-                    done();
-                  })
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
               setTimeout(() => {
@@ -391,7 +391,7 @@ export default function startAbilityOpenLink() {
                   .catch((err: BusinessError) => {
                     console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
                     expect(err.code).assertEqual(16000019);
-                    done();
+                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
                   })
               }, 500);
             }
@@ -443,7 +443,7 @@ export default function startAbilityOpenLink() {
                   .catch((err: BusinessError) => {
                     console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
                     expect(err.code).assertEqual(16000019);
-                    done();
+                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
                   })
               }, 500);
             }
@@ -491,7 +491,7 @@ export default function startAbilityOpenLink() {
                   .catch((err: BusinessError) => {
                     console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
                     expect(err.code).assertEqual(16000019);
-                    done();
+                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
                   })
               }, 500);
             }
@@ -539,7 +539,7 @@ export default function startAbilityOpenLink() {
                   .catch((err: BusinessError) => {
                     console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
                     expect(err.code).assertEqual(16000019);
-                    done();
+                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
                   })
               }, 500);
             }
@@ -685,7 +685,7 @@ export default function startAbilityOpenLink() {
                   .catch((err: BusinessError) => {
                     console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
                     expect(err.code).assertEqual(16000019);
-                    done();
+                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
                   })
               }, 500);
             }
@@ -761,7 +761,7 @@ export default function startAbilityOpenLink() {
     it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2000', 0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2000`;
       console.log(`${tag}, it begin`);
-      link = 'https://www.example12.com'
+      link = 'https://www.example20.com'
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
@@ -780,6 +780,7 @@ export default function startAbilityOpenLink() {
                 })
                   .catch((err: BusinessError) => {
                     console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
+                    // commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
                     expect().assertFail();
                     done();
                   })
@@ -857,7 +858,7 @@ export default function startAbilityOpenLink() {
     it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2100', 0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2100`;
       console.log(`${tag}, it begin`);
-      link = 'https://www.example12.com'
+      link = 'https://www.example21.com'
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
@@ -928,7 +929,7 @@ export default function startAbilityOpenLink() {
                   .catch((err: BusinessError) => {
                     console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
                     expect(err.code).assertEqual(16000019);
-                    done();
+                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
                   })
               }, 500);
             }
@@ -978,7 +979,7 @@ export default function startAbilityOpenLink() {
                   .catch((err: BusinessError) => {
                     console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
                     expect(err.code).assertEqual(16000019);
-                    done();
+                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
                   })
               }, 500);
             }
@@ -1033,7 +1034,7 @@ export default function startAbilityOpenLink() {
                   if (err.code) {
                     console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
                     expect(err.code).assertEqual(16000019);
-                    done();
+                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
                   }
                 })
               }, 500);
@@ -1088,7 +1089,7 @@ export default function startAbilityOpenLink() {
                   if (err.code) {
                     console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
                     expect(err.code).assertEqual(16000019);
-                    done();
+                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
                   }
                 })
               }, 500);
@@ -1145,7 +1146,7 @@ export default function startAbilityOpenLink() {
                 }).catch((err: BusinessError) => {
                   console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
                   expect(err.code).assertEqual(16000019);
-                  done();
+                  commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
                 })
               }, 500);
             }
@@ -1263,7 +1264,7 @@ export default function startAbilityOpenLink() {
                   .catch((err: BusinessError) => {
                     console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
                     expect(err.code).assertEqual(16000019);
-                    done();
+                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
                   })
               }, 500);
             }
@@ -1319,7 +1320,7 @@ export default function startAbilityOpenLink() {
                 }).catch((err: BusinessError) => {
                   console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
                   expect(err.code).assertEqual(16000019);
-                  done();
+                  commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
                 })
               }, 500);
             }

@@ -31,16 +31,10 @@ export default class UiAbility17 extends UIAbility {
     console.info('UiAbility17 JSON.stringify(want) is', JSON.stringify(want.parameters));
     if (want.parameters.appLinkingOnly == true) {
       console.info('====>SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_3100 appLinkingOnly==true');
-      if(!want.parameters.ohos.extra.param.key.showMode && want.parameters.callerBundleName == 'ohos.example.myapplication'){
-        commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-          console.info('====>SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_3100 publish ACTS_TEST_DESTROY');
-        })
-      }
-    } else {
-      let showMode:string = 'ohos.extra.param.key.showMode'
-      let callerBundleName:string = 'ohos.aafwk.param.callerBundleName'
-      console.info('====>SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_3100 appLinkingOnly==false');
-      if(JSON.stringify(want.parameters)==`{"appLinkingOnly":false,"component.startup.newRules":true,"debugApp":false,"moduleName":' +
+      commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+        console.info('====>SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_3100 publish ACTS_TEST_DESTROY');
+      })
+    } else if(JSON.stringify(want.parameters)==`{"appLinkingOnly":false,"component.startup.newRules":true,"debugApp":false,"moduleName":' +
         '"entry_test","ohos.aafwk.param.callerAbilityName":"TestAbility","ohos.aafwk.param.callerAppId":"' +
         'ohos.example.myapplication_BJddqdiM3KY3FXFSfvHKJns1AqfVSz/DWwPm7HD7IECVLegY7g3PZbT8Nl7DR16bZevLmeJSnDjlKt' +
         'Azee/GOwk=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"ohos.example.myapp' +
@@ -48,11 +42,10 @@ export default class UiAbility17 extends UIAbility {
         'erUid":20010043,"ohos.aafwk.param.startAbilityForResult":true,"ohos.aafwk.param.startTime":"1741696793704","oh' +
         'os.anco.param.missionId":237,"ohos.extra.param.key.appCloneIndex":0,"ohos.extra.param.key.callerRequestCod' +
         'e":"382853384765441","ohos.param.callerAppCloneIndex":0,"send_to_erms_targetLinkFeature":"","send_to_erms_tar' +
-        'getLinkType":3}`){
-        commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-          console.info('====>SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_3100 publish ACTS_TEST_DESTROY');
-        })
-      }
+        'getLinkType":3}`) {
+      commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+        console.info('====>SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_3100 publish ACTS_TEST_DESTROY');
+      })
     }
   }
 

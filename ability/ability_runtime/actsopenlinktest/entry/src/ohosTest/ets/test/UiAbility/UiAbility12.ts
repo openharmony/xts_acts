@@ -27,12 +27,11 @@ export default class UiAbility12 extends UIAbility {
     console.info('UiAbility12 onCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     let uri = want?.uri
+    globalThis.uiAbilityContext12 = this.context
     console.info('UiAbility12 JSON.stringify(want) is', JSON.stringify(want));
     console.info('UiAbility12 JSON.stringify(want) is', JSON.stringify(want.parameters));
     if (want.parameters.appLinkingOnly == false) {
-      commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-        console.info('====>SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2100 publish ACTS_TEST_DESTROY');
-      })
+      console.info('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1900 get want success');
     }
   }
 
@@ -50,6 +49,20 @@ export default class UiAbility12 extends UIAbility {
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+    });
+    globalThis.uiAbilityContext12.terminateSelfWithResult(
+      {
+        resultCode: 100,
+        want: {
+          parameters: {
+            keyString: 'NextCase',
+          }
+        }
+      }, () => {
+      console.log("====>terminateSelfWithResult success====>")
+      commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+        console.info('====>SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1900 publish ACTS_TEST_DESTROY');
+      });
     });
   }
 
