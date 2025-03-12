@@ -120,9 +120,10 @@ export default function AVScreenCaptureRecorderMicro() {
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1200 start')
       let result: number = myScreenCaptureNdk.OHAVMuxerByAddTrackH265();
       if (result != 0) {
-        console.info('Failed to obtain the default videoProfiles object.Not support usb camera');
+        console.info('Failed to obtain the default videoProfiles object.Not support AddTrackH265');
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1200 start')
 
