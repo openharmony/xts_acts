@@ -19,11 +19,14 @@ import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
 import keyDispatchTest from "./keydispatchTest/KeyDispatchTest.test"
 import FocusControlTest3 from "./foucscontrolTest/FocusControlTest3.test"
 import FocusControlTest4 from "./foucscontrolTest/FocusControlTest4.test"
+import snapShotTest from './snapShot/snapShotTest.test'
+
 export default function testsuite() {
    setKeyProcessingMode01();
    setKeyProcessingMode02();
    scrollBackToTopTest();
    keyDispatchTest();
-   FocusControlTest3()
-   FocusControlTest4()
+   FocusControlTest3();
+   FocusControlTest4();
+   snapShotTest();
 }
