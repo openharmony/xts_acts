@@ -46,35 +46,38 @@ export default function AnimationJsunit() {
       await CommonFunc.sleep(1000);
       console.info("overlay after each called");
     });
-	
-	  /**
+
+     /**
      * @tc.number: SUB_ACE_TS_COMPONENT_AR000IGJGH_01
      * @tc.name : AnimationJsunit_0100
      * @tc.desc : Does the component size change after playback
      */
-	 
+
     it('AnimationJsunit_0100', 0, async (done: Function) => {
       console.info('[AnimationJsunit_0100] START');
       let driver = await Driver.create()
-	  await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(1000);
       let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
       let button_Bottom = await scrollBar.scrollSearch(ON.id('interpolating-springn'));
       await button_Bottom.click();
       await CommonFunc.sleep(1000);
-	  let button_Bottom2 = await scrollBar.scrollSearch(ON.id('create'));
+      let button_Bottom2 = await scrollBar.scrollSearch(ON.id('create'));
       await button_Bottom2.click();
-	  await CommonFunc.sleep(1000);
-	  let button_Bottom3 = await scrollBar.scrollSearch(ON.id('play'));
+      await CommonFunc.sleep(1000);
+      let button_Bottom3 = await scrollBar.scrollSearch(ON.id('play'));
       await button_Bottom3.click();
-	  await CommonFunc.sleep(1000);
-	  let strJson = getInspectorByKey('onframe-value');
+      await CommonFunc.sleep(1000);
+      let finishBtn = await scrollBar.scrollSearch(ON.id('finish'));
+      await finishBtn.click();
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('onframe-value');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[AnimationJsunit_0100] obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content>'100').assertTrue();
       console.info('[AnimationJsunit_0100] END');
       done();
     });
-	
+
 	 /**
      * @tc.number: SUB_ACE_TS_COMPONENT_AR000IGJGH_02
      * @tc.name : AnimationJsunit_0200
