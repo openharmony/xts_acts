@@ -118,7 +118,7 @@ struct webViewContJavaScriptError {
                     }
                     if (result) {
                       this.webResult = result;
-                      console.info(`The test() return value is: ${result}`);
+                      console.info('The test() return value is: result');
                     }
                   });
               } catch (error) {
