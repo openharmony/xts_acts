@@ -108,7 +108,8 @@ export default function sequenceRunnerAbilityTest_2() {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })
-    beforeEach(() => {
+    beforeEach(async () => {
+      await sleep(100);
       //正常计数
       task1Count = 0;
       task2Count = 0;
@@ -147,7 +148,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(uint_32_arrayTaskFunction1, 1);
@@ -198,7 +198,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task3: taskpool.Task = new taskpool.Task(uint_32_arrayTaskFunction3, 3);
@@ -263,7 +262,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(arrayBufferTaskFunction1, 1);
@@ -314,7 +312,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task3: taskpool.Task = new taskpool.Task(arrayBufferTaskFunction3, 3);
@@ -379,7 +376,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(sharedArrayBufferTaskFunction1, 1);
@@ -430,7 +426,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task3: taskpool.Task = new taskpool.Task(sharedArrayBufferTaskFunction3, 3);
@@ -495,7 +490,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(concatArrayTaskFunction1, 1);
@@ -546,7 +540,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task3: taskpool.Task = new taskpool.Task(concatArrayTaskFunction3, 3);
@@ -611,7 +604,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(bitVectorTaskFunction1, 1);
@@ -662,7 +654,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task3: taskpool.Task = new taskpool.Task(bitVectorTaskFunction3, 3);
@@ -727,7 +718,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(unionTaskFunction1, 1);
@@ -778,7 +768,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task3: taskpool.Task = new taskpool.Task(unionTaskFunction3, 3);
@@ -843,7 +832,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(enumTaskFunction1, 1);
@@ -894,7 +882,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task3: taskpool.Task = new taskpool.Task(enumTaskFunction3, 3);
@@ -962,7 +949,6 @@ export default function sequenceRunnerAbilityTest_2() {
       let myclass1 = new MyClass(1,);
       let myclass2 = new MyClass(2,);
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(classTaskFunction1, myclass1);
@@ -1035,7 +1021,6 @@ export default function sequenceRunnerAbilityTest_2() {
       let myclass1 = new MyClassAble(1, 'test1');
       let myclass2 = new MyClassAble(2, 'test2');
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(sendAbleClassTaskFunction1, myclass1);
@@ -1103,7 +1088,7 @@ export default function sequenceRunnerAbilityTest_2() {
       let iSendable1: lang.ISendable = 1
       let iSendable2: lang.ISendable = "test2"
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
+
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(isInterfaceTaskFunction1, iSendable1);
         let task2: taskpool.Task = new taskpool.Task(isInterfaceTaskFunction2, iSendable2);
@@ -1153,7 +1138,6 @@ export default function sequenceRunnerAbilityTest_2() {
       let iSendable3: lang.ISendable = 1
       let iSendable4: lang.ISendable = "test2"
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task3: taskpool.Task = new taskpool.Task(isInterfaceTaskFunction3, iSendable3);
@@ -1218,7 +1202,7 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
+
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(printSendableFunction1, sampleFunction);
         let task2: taskpool.Task = new taskpool.Task(printSendableFunction2, sampleFunction);
@@ -1257,7 +1241,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(unitClampedArrayTaskFunction1, 1);
@@ -1308,7 +1291,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task3: taskpool.Task = new taskpool.Task(unitClampedArrayTaskFunction3, 3);
@@ -1373,7 +1355,6 @@ export default function sequenceRunnerAbilityTest_2() {
       task1Count = 0;
       task2Count = 0;
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(anyTaskFunction1, 'test1', 'test2');
@@ -1426,7 +1407,6 @@ export default function sequenceRunnerAbilityTest_2() {
       let ason1: ArkTSUtils.ASON.ISendable = ArkTSUtils.ASON.stringify(new collections.Array(1, 2, 3))
       let ason2: ArkTSUtils.ASON.ISendable = ArkTSUtils.ASON.stringify(new collections.Array(4, 5, 6))
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(printASON1, ason1);
@@ -1479,7 +1459,6 @@ export default function sequenceRunnerAbilityTest_2() {
       let ason3: ArkTSUtils.ASON.ISendable = ArkTSUtils.ASON.stringify(new collections.Array(1, 2, 3))
       let ason4: ArkTSUtils.ASON.ISendable = ArkTSUtils.ASON.stringify(new collections.Array(4, 5, 6))
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task3: taskpool.Task = new taskpool.Task(printASON3, ason3);
@@ -1549,7 +1528,6 @@ export default function sequenceRunnerAbilityTest_2() {
       let asn2 = asyncLock2.count_
 
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(printAsyncLock1, asn1);
@@ -1604,7 +1582,6 @@ export default function sequenceRunnerAbilityTest_2() {
       let asn3 = asyncLock1.count_
       let asn4 = asyncLock2.count_
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-      await sleep(100);
 
       for (let i = 0; i < 10; i++) {
         let task3: taskpool.Task = new taskpool.Task(printAsyncLock3, asn3);
