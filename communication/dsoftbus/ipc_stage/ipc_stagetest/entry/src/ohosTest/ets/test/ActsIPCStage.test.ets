@@ -98,6 +98,12 @@ class TestProxy {
   }
 }
 
+class MyregisterDeathRecipient implements rpc.DeathRecipient {
+  onRemoteDied() {
+    console.info("server died");
+  }
+}
+
 export default function ActsRpcClientEtsTest() {
   describe('ActsRpcClientEtsTest', () => {
     console.info("-----------------------SUB_DSoftbus_IPC_API_Stage_MessageSequence_Test is starting-----------------------");
@@ -7329,6 +7335,218 @@ export default function ActsRpcClientEtsTest() {
         expect(error == null).assertTrue();
       }
       console.info("--------------------end SUB_DSoftbus_IPC_API_Stage_MessageSequence_2230--------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0010
+    * @tc.name    : test getLocalInterface searches for objects based on descriptors
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0010", 0, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0010---------------------------");
+      try {
+        let res = gIRemoteObject.getLocalInterface("rpcTestAbility");
+        console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0010 getLocalInterface: " + res);
+        expect(res != null).assertTrue();
+      } catch (error) {
+        console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_RemoteProxy_testcase error: " + error);
+        let errCode = `${rpc.ErrorCode.ONLY_REMOTE_OBJECT_PERMITTED_ERROR}`;
+        expect(error.code == errCode).assertTrue();
+        expect(error.message != null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0010---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0020
+    * @tc.name    : test getLocalInterface 1900005 searches for objects based on descriptors
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0020", 0, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0020---------------------------");
+      try {
+        gIRemoteObject.getLocalInterface(null);
+      } catch (error) {
+        console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_RemoteProxy_testcase error: " + error);
+        let errCode = `${rpc.ErrorCode.ONLY_REMOTE_OBJECT_PERMITTED_ERROR}`;
+        expect(error.code == errCode).assertTrue();
+        expect(error.message != null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0020---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0030
+    * @tc.name    : test Call isobjectdead to check whether the object is dead
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0030", 0, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0030---------------------------");
+      try {
+        let recipient = new MyregisterDeathRecipient();
+        let isDead = gIRemoteObject.isObjectDead();
+        expect(isDead == false).assertTrue();
+        gIRemoteObject.registerDeathRecipient(recipient, 0);
+        let isDead1 = gIRemoteObject.isObjectDead();
+        expect(isDead1 == false).assertTrue();
+        gIRemoteObject.unregisterDeathRecipient(recipient, 0);
+        gIRemoteObject.registerDeathRecipient(recipient, 0);
+        gIRemoteObject.unregisterDeathRecipient(recipient, 0);
+        gIRemoteObject.unregisterDeathRecipient(recipient, 0);
+        let isDead2 = gIRemoteObject.isObjectDead();
+        expect(isDead2 == false).assertTrue();
+      } catch (error) {
+        console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_RemoteProxy_testcase error: " + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0030---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0040
+    * @tc.name    : test Call registerDeathRecipient to register the death notification
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0040", 0, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0040---------------------------");
+      try {
+        let recipient = new MyregisterDeathRecipient();
+        gIRemoteObject.registerDeathRecipient(recipient, 0);
+        gIRemoteObject.registerDeathRecipient(recipient, 0);
+        gIRemoteObject.unregisterDeathRecipient(recipient, 0);
+        gIRemoteObject.unregisterDeathRecipient(recipient, 0);
+        gIRemoteObject.unregisterDeathRecipient(recipient, 0);
+        console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0040: unregisterDeathRecipient2 is success");
+        expect(recipient != null).assertTrue();
+      } catch (error) {
+        console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_RemoteProxy_testcase error: " + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0040---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0050
+    * @tc.name    : test registerDeathRecipient Validates the interface flags input parameter boundary value
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0050", 0, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0050---------------------------");
+      try {
+        let recipient = new MyregisterDeathRecipient();
+        gIRemoteObject.registerDeathRecipient(recipient, -(2 * G));
+        gIRemoteObject.unregisterDeathRecipient(recipient, -(2 * G));
+        console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0050: unregisterDeathRecipient2 is success");
+        expect(recipient != null).assertTrue();
+      } catch (error) {
+        console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_RemoteProxy_testcase error: " + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0050---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0060
+    * @tc.name    : test registerDeathRecipient Validates the interface flags input parameter boundary value
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0060", 0, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0060---------------------------");
+      try {
+        let recipient = new MyregisterDeathRecipient();
+        gIRemoteObject.registerDeathRecipient(recipient, (2 * G - 1));
+        gIRemoteObject.unregisterDeathRecipient(recipient, (2 * G - 1));
+        console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0060: unregisterDeathRecipient2 is success");
+        expect(recipient != null).assertTrue();
+      } catch (error) {
+        console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_RemoteProxy_testcase error: " + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0060---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0070
+    * @tc.name    : test registerDeathRecipient Validates the interface flags input parameter boundary value
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0070", 0, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0070---------------------------");
+      try {
+        let recipient = new MyregisterDeathRecipient();
+        gIRemoteObject.registerDeathRecipient(recipient, 2 * G);
+        gIRemoteObject.unregisterDeathRecipient(recipient, 2 * G);
+        console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0070: unregisterDeathRecipient2 is success");
+        expect(recipient != null).assertTrue();
+      } catch (error) {
+        console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_RemoteProxy_testcase error: " + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0070---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0080
+    * @tc.name    : test registerDeathRecipient Validates the interface flags input parameter boundary value
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0080", 0, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0080---------------------------");
+      try {
+        let recipient = new MyregisterDeathRecipient();
+        gIRemoteObject.registerDeathRecipient(recipient, -(2 * G + 1));
+        gIRemoteObject.unregisterDeathRecipient(recipient, -(2 * G + 1));
+        console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0080: unregisterDeathRecipient is success");
+        expect(recipient != null).assertTrue();
+      } catch (error) {
+        console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_RemoteProxy_testcase error: " + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0080---------------------------");
+    });
+
+    /*
+    * @tc.number  : SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0090
+    * @tc.name    : test getDescriptor to get the object interface description
+    * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改RPC中定义的数据结构和接口，并提供对应完整实现
+    * @tc.level   : 3
+    * @tc.type    : Compatibility
+    * @tc.size    : MediumTest
+    */
+    it("SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0090", 0, async () => {
+      console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0090---------------------------");
+      try {
+        let result = gIRemoteObject.getDescriptor();
+        expect(result).assertEqual("rpcTestAbility");
+      } catch (error) {
+        console.info(logTag + "SUB_DSoftbus_IPC_API_Stage_RemoteProxy_testcase error: " + error);
+        expect(error == null).assertTrue();
+      }
+      console.info("---------------------end SUB_DSoftbus_IPC_API_Stage_RemoteProxy_0090---------------------------");
     });
     console.info("-----------------------SUB_DSoftbus_IPC_API_Stage_MessageSequence_Test is end-----------------------");
   })
