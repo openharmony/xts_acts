@@ -93,7 +93,6 @@ struct WebZoomAccessTest {
                   this.userAgentPC = this.controller.getUserAgent();
                   this.zoomAccess = true;
                   await Utils.sleep(2000)
-                  // await Utils.fingerZoom('WebZoomAccessTestWebView', true);
                   if ((this.userAgentPC).includes("Wearable")) {
                     let driver: Driver = Driver.create();
                     let pointers: PointerMatrix = PointerMatrix.create(2, 3);
@@ -132,7 +131,6 @@ struct WebZoomAccessTest {
                   this.zoomAccess = true;
                   this.flag = true;
                   await Utils.sleep(2000)
-                  // await Utils.fingerZoom('WebZoomAccessTestWebView', true);
                   if ((this.userAgentPC).includes("Wearable")){
                     let driver: Driver = Driver.create();
                     let pointers: PointerMatrix = PointerMatrix.create(2, 3);
@@ -160,7 +158,6 @@ struct WebZoomAccessTest {
                   }
                   await Utils.sleep(2000)
                   this.flag = false;
-                  // this.userAgentPC = this.controller.getUserAgent();
                   if ((this.userAgentPC).includes("PC")) {
                     await Utils.pinchInComponent('WebZoomAccessTestWebView')
                   }else if((this.userAgentPC).includes("Wearable")){
