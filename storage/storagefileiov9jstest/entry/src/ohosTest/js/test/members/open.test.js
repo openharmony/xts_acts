@@ -14,8 +14,9 @@
  */
 
 import {
-  fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum, describe, it, expect,
+  fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum, describe, it, expect, randomString
 } from '../Common';
+import { TestType, Size, Level } from '@ohos/hypium';
 
 export default function fileIOOpen() {
   describe('fileIO_fs_open', function () {
@@ -30,7 +31,7 @@ export default function fileIOOpen() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_open_sync_000', 0, async function () {
+  it('fileIO_test_open_sync_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_open_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -57,7 +58,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_sync_001', 0, async function () {
+  it('fileIO_test_open_sync_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_open_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -84,7 +85,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_sync_002', 0, async function () {
+  it('fileIO_test_open_sync_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_open_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -113,7 +114,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_sync_003', 0, function () {
+  it('fileIO_test_open_sync_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       fileIO.openSync();
       expect(false).assertTrue();
@@ -133,7 +134,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_sync_004', 0, async function () {
+  it('fileIO_test_open_sync_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_open_sync_004');
 
     try {
@@ -157,7 +158,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_sync_005', 0, async function () {
+  it('fileIO_test_open_sync_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_open_sync_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -184,7 +185,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_sync_006', 0, async function () {
+  it('fileIO_test_open_sync_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_open_sync_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -214,7 +215,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_sync_007', 0, async function () {
+  it('fileIO_test_open_sync_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_open_sync_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -239,7 +240,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_sync_008', 0, async function () {
+  it('fileIO_test_open_sync_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_open_sync_008');
     fileIO.mkdirSync(dpath);
 
@@ -263,7 +264,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_sync_009', 0, async function () {
+  it('fileIO_test_open_sync_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_open_sync_009');
     expect(prepareFile(fpath, '')).assertTrue();
 
@@ -287,7 +288,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_sync_010', 0, async function () {
+  it('fileIO_test_open_sync_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_open_sync_010');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -312,7 +313,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_sync_012', 0, async function () {
+  it('fileIO_test_open_sync_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_open_sync_012');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -336,7 +337,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_sync_013', 0, async function () {
+  it('fileIO_test_open_sync_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
 
     try {
       fileIO.openSync(-1, fileIO.OpenMode.READ_WRITE);
@@ -357,7 +358,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_sync_014', 0, async function () {
+  it('fileIO_test_open_sync_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_open_sync_012');
     fileIO.mkdirSync(dpath);
 
@@ -402,6 +403,29 @@ export default function fileIOOpen() {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_OPEN_SYNC_1600
+   * @tc.name fileIO_test_open_sync_016
+   * @tc.desc Test openSync() interfaces. mode=0o102.
+   * File name too long.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_open_sync_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    let fpath = await nextFileName('fileIO_test_open_sync_016');
+    let fpath1 = fpath + randomString(250);
+
+    try {
+      let file = fileIO.openSync(fpath1, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
+      expect(false).assertTrue();
+    } catch (e) {
+      console.log('fileIO_test_open_sync_016 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900030 && e.message == 'File name too long').assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0000
    * @tc.name fileIO_test_open_async_000
    * @tc.desc Test open() interfaces. mode=0o0. Promise.
@@ -411,7 +435,7 @@ export default function fileIOOpen() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_open_async_000', 0, async function (done) {
+  it('fileIO_test_open_async_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -441,7 +465,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_001', 0, async function (done) {
+  it('fileIO_test_open_async_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -476,7 +500,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_002', 0, async function (done) {
+  it('fileIO_test_open_async_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let length = 20;
@@ -507,7 +531,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_003', 0, async function (done) {
+  it('fileIO_test_open_async_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let length = 20;
@@ -543,7 +567,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_004', 0, async function (done) {
+  it('fileIO_test_open_async_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_004');
 
     try {
@@ -566,7 +590,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_005', 0, async function (done) {
+  it('fileIO_test_open_async_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_005');
 
     try {
@@ -593,7 +617,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_006', 0, async function () {
+  it('fileIO_test_open_async_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_open_async_006');
 
     try {
@@ -620,7 +644,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_007', 0, async function (done) {
+  it('fileIO_test_open_async_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 
     try {
       await fileIO.open(-1, fileIO.OpenMode.READ_WRITE);
@@ -642,7 +666,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_008', 0, async function (done) {
+  it('fileIO_test_open_async_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 
     try {
       fileIO.open(-1, fileIO.OpenMode.READ_WRITE, (err) => {
@@ -665,7 +689,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_009', 0, async function (done) {
+  it('fileIO_test_open_async_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_009');
 
     try {
@@ -690,7 +714,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_010', 0, async function (done) {
+  it('fileIO_test_open_async_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_010');
 
     try {
@@ -720,7 +744,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_011', 0, async function (done) {
+  it('fileIO_test_open_async_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_011');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -750,7 +774,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_012', 0, async function (done) {
+  it('fileIO_test_open_async_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_012');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -785,7 +809,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_013', 0, async function (done) {
+  it('fileIO_test_open_async_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_013');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let length = 100;
@@ -817,7 +841,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_014', 0, async function (done) {
+  it('fileIO_test_open_async_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_014');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let length = 100;
@@ -854,7 +878,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_015', 0, async function (done) {
+  it('fileIO_test_open_async_015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_015');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -880,7 +904,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_016', 0, async function (done) {
+  it('fileIO_test_open_async_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_016');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -911,7 +935,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_017', 0, async function (done) {
+  it('fileIO_test_open_async_017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_open_async_017');
     fileIO.mkdirSync(dpath);
 
@@ -936,7 +960,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_018', 0, async function (done) {
+  it('fileIO_test_open_async_018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_open_async_018');
     fileIO.mkdirSync(dpath);
 
@@ -966,7 +990,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_019', 0, async function (done) {
+  it('fileIO_test_open_async_019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_019');
     expect(prepareFile(fpath, '')).assertTrue();
 
@@ -991,7 +1015,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_020', 0, async function (done) {
+  it('fileIO_test_open_async_020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_020');
     expect(prepareFile(fpath, '')).assertTrue();
 
@@ -1020,7 +1044,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_021', 0, async function (done) {
+  it('fileIO_test_open_async_021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_021');
     expect(prepareFile(fpath, '')).assertTrue();
 
@@ -1049,7 +1073,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_022', 0, async function (done) {
+  it('fileIO_test_open_async_022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_022');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1075,7 +1099,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_023', 0, async function (done) {
+  it('fileIO_test_open_async_023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_023');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1106,7 +1130,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_027', 0, async function (done) {
+  it('fileIO_test_open_async_027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_027');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1132,7 +1156,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_028', 0, async function (done) {
+  it('fileIO_test_open_async_028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_028');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1163,7 +1187,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_029', 0, async function (done) {
+  it('fileIO_test_open_async_029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_open_async_029');
     fileIO.mkdirSync(dpath);
 
@@ -1188,7 +1212,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_030', 0, async function (done) {
+  it('fileIO_test_open_async_030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_open_async_030');
     fileIO.mkdirSync(dpath);
 
@@ -1217,7 +1241,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_031', 0, async function (done) {
+  it('fileIO_test_open_async_031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_031');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file;
@@ -1248,7 +1272,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_async_032', 3, async function (done) {
+  it('fileIO_test_open_async_032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_open_async_032');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1275,6 +1299,58 @@ export default function fileIOOpen() {
       });
     } catch (e) {
       console.log('fileIO_test_open_async_032 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_3300
+   * @tc.name fileIO_test_open_async_033
+   * @tc.desc Test open() interfaces. mode=0o102. Promise.
+   * File name too long.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_open_async_033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    let fpath = await nextFileName('fileIO_test_open_async_033');
+    let fpath1 = fpath + randomString(250);
+
+    try {
+      let file = await fileIO.open(fpath1, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
+      expect(false).assertTrue();
+    } catch (e) {
+      console.log('fileIO_test_open_async_033 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900030 && e.message == 'File name too long').assertTrue();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_3400
+   * @tc.name fileIO_test_open_async_034
+   * @tc.desc Test open() interfaces. mode=0o102. Callback.
+   * File name too long.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_open_async_034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    let fpath = await nextFileName('fileIO_test_open_async_034');
+    let fpath1 = fpath + randomString(250);
+
+    try {
+      fileIO.open(fpath1, fileIO.OpenMode.CREATE | fileIO.OpenMode.WRITE_ONLY, (err, file) => {
+        if(err) {
+          console.log('fileIO_test_open_async_034 error package: ' + err.message + ', code: ' + err.code);
+          expect(err.code == 13900030 && err.message == 'File name too long').assertTrue();
+          done();
+        }
+      });
+    } catch (e) {
+      console.log('fileIO_test_open_async_010 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });

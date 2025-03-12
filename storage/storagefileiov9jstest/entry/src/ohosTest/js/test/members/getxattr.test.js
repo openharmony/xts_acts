@@ -17,6 +17,7 @@ import {
     FILE_CONTENT, prepareFile, nextFileName, describe, it, expect
   } from '../Common';
 import fs from '@ohos.file.fs';
+import { TestType, Size, Level } from '@ohos/hypium';
 
 export default function fileIOGetxattr() {
 describe('fileIO_test_getxattr', function () {
@@ -31,7 +32,7 @@ describe('fileIO_test_getxattr', function () {
    * @tc.level Level 3
    * @tc.require
    */  
-  it('test_FileIO_Getxattr_Sync_001', 3, async function () {
+  it('test_FileIO_Getxattr_Sync_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
     let fpath = await nextFileName('test_FileIO_Getxattr_Sync_001');
     let attrKey = 'user.comment';
     let attrValue = 'Test file.';
@@ -48,6 +49,29 @@ describe('fileIO_test_getxattr', function () {
     }
    });
 
+   /**
+   * @tc.number SUB_BASIC_FM_FileAPI_FileIo_GETXATTR_Sync_0200
+   * @tc.name test_FileIO_Getxattr_Sync_002
+   * @tc.desc Test getxattr() interface.
+   * Invalid argument.
+   * @tc.size MediumTest
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */  
+  it('test_FileIO_Getxattr_Sync_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
+    let fpath = await nextFileName('test_FileIO_Getxattr_Sync_002');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    
+    try {
+      fs.getxattrSync(fpath);
+      expect(false).assertTrue();
+    } catch (e) {
+      console.log('test_FileIO_Getxattr_Sync_002 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+    }
+   });
+
   /**
    * @tc.number SUB_BASIC_FM_FileAPI_FileIo_GETXATTR_ASync_0100
    * @tc.name test_FileIO_Getxattr_ASync_001
@@ -58,7 +82,7 @@ describe('fileIO_test_getxattr', function () {
    * @tc.level Level 3
    * @tc.require
    */  
-  it('test_FileIO_Getxattr_ASync_001', 3, async function (done) {
+  it('test_FileIO_Getxattr_ASync_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
    let fpath = await nextFileName('test_FileIO_Getxattr_ASync_001');
    let attrKey = 'user.comment';
    let attrValue = 'Test file.';
@@ -78,5 +102,33 @@ describe('fileIO_test_getxattr', function () {
      expect(false).assertTrue();
    }
   });
+
+  /**
+   * @tc.number SUB_BASIC_FM_FileAPI_FileIo_GETXATTR_ASync_0200
+   * @tc.name test_FileIO_Getxattr_ASync_002
+   * @tc.desc Test getxattr() interface.
+   * Invalid argument.
+   * @tc.size MediumTest
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */  
+  it('test_FileIO_Getxattr_ASync_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    let fpath = await nextFileName('test_FileIO_Getxattr_ASync_002');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    
+    try {
+      fs.getxattr(fpath).then((attrValue) => {
+        console.info("test_FileIO_Getxattr_ASync_002 value is: " + attrValue);
+      }).catch((err) => {
+        console.error("test_FileIO_Getxattr_ASync_002 get extended attribute with error message: " + err.message + ", error code: " + err.code);
+        expect(false).assertTrue();
+      });
+    } catch (e) {
+      console.log('test_FileIO_Getxattr_ASync_002 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900020  && e.message == 'Invalid argument').assertTrue();
+      done();
+    }
+   });  
 });
 }

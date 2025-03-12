@@ -18,6 +18,7 @@ import {
     describe, it, expect
 } from '../Common';
 import fs from '@ohos.file.fs';
+import { TestType, Size, Level } from '@ohos/hypium';
 
 const wpath = 'data/storage/el2/base/write.txt';
 export function initReadfile(fpath) {
@@ -48,7 +49,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_sync_000', 0, async function () {
+    it('fileIO_create_randomaccessfile_sync_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_000');
         expect(prepareFile(fpath, '')).assertTrue();
 
@@ -73,7 +74,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_sync_001', 0, async function () {
+    it('fileIO_create_randomaccessfile_sync_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_001');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -100,7 +101,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_sync_002', 0, async function () {
+    it('fileIO_create_randomaccessfile_sync_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_002');
 
         try {
@@ -126,7 +127,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_sync_003', 0, async function () {
+    it('fileIO_create_randomaccessfile_sync_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_003');
 
         try {
@@ -239,7 +240,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_sync_008', 0, async function () {
+    it('fileIO_create_randomaccessfile_sync_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_008');
         expect(prepareFile(fpath, '')).assertTrue();
 
@@ -287,7 +288,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_sync_010', 0, async function () {
+    it('fileIO_create_randomaccessfile_sync_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_010');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -313,7 +314,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_sync_011', 0, async function () {
+    it('fileIO_create_randomaccessfile_sync_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_011');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -366,7 +367,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_sync_013', 0, async function () {
+    it('fileIO_create_randomaccessfile_sync_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_013');
         expect(prepareFile(fpath, '')).assertTrue();
 
@@ -391,7 +392,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_sync_014', 0, async function () {
+    it('fileIO_create_randomaccessfile_sync_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_014');
         expect(prepareFile(fpath, '')).assertTrue();
 
@@ -438,7 +439,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_sync_016', 0, async function () {
+    it('fileIO_create_randomaccessfile_sync_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_016');
         initReadfile(fpath);
         const readfile = fileIO.openSync(fpath, fs.OpenMode.READ_ONLY);
@@ -473,7 +474,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_sync_017', 0, async function () {
+    it('fileIO_create_randomaccessfile_sync_017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_017');
         initReadfile(fpath);
         let size = fs.lstatSync(fpath).size;
@@ -510,7 +511,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_sync_018', 0, async function () {
+    it('fileIO_create_randomaccessfile_sync_018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_018');
         initReadfile(fpath);
         let size = fs.lstatSync(fpath).size;
@@ -538,6 +539,52 @@ describe('fileIO_create_randomAccessFile', function () {
         }
     });
 
+     /**
+     * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_SYNC_1900
+     * @tc.name fileIO_create_randomaccessfile_sync_019
+     * @tc.desc Test createRandomAccessFileSync() interface. Invalid argument
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+     it('fileIO_create_randomaccessfile_sync_019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+        let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_019');
+        initReadfile(fpath);
+        const readfile = fileIO.openSync(fpath, fs.OpenMode.READ_ONLY);
+
+        try {
+            let rs = fs.createRandomAccessFileSync(readfile).getReadStream(1);
+            expect(false).assertTrue();
+        } catch (err) {
+            console.info('fileIO_create_randomaccessfile_sync_019 has failed for ' + err.message + ', code: ' + err.code);
+            expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
+        }
+    });
+
+    /**
+     * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_SYNC_2000
+     * @tc.name fileIO_create_randomaccessfile_sync_020
+     * @tc.desc Test createRandomAccessFileSync() interface. Invalid argument
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('fileIO_create_randomaccessfile_sync_020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+        let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_020');
+        initReadfile(fpath);
+        const writefile = fileIO.openSync(wpath, fs.OpenMode.WRITE_ONLY);
+
+        try {
+            let ws = fs.createRandomAccessFileSync(writefile).getWriteStream(1);
+            expect(false).assertTrue();
+        } catch (err) {
+            console.info('fileIO_create_randomaccessfile_sync_020 has failed for ' + err.message + ', code: ' + err.code);
+            expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
+        }
+    });
+
     /**
      * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_ASYNC_0000
      * @tc.name fileIO_create_randomaccessfile_async_000
@@ -548,7 +595,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_async_000', 0, async function (done) {
+    it('fileIO_create_randomaccessfile_async_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_async_000');
         expect(prepareFile(fpath, '')).assertTrue();
 
@@ -574,7 +621,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_async_001', 0, async function (done) {
+    it('fileIO_create_randomaccessfile_async_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_async_001');
 
         try {
@@ -602,7 +649,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_async_002', 0, async function (done) {
+    it('fileIO_create_randomaccessfile_async_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_async_002');
 
         try {
@@ -630,7 +677,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_async_003', 0, async function (done) {
+    it('fileIO_create_randomaccessfile_async_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_async_003');
 
         try {
@@ -728,7 +775,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_async_007', 0, async function (done) {
+    it('fileIO_create_randomaccessfile_async_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_async_007');
         let file = fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -755,7 +802,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_async_008', 0, async function (done) {
+    it('fileIO_create_randomaccessfile_async_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_async_008');
         expect(prepareFile(fpath, '')).assertTrue();
 
@@ -806,7 +853,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_async_010', 0, async function (done) {
+    it('fileIO_create_randomaccessfile_async_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_async_010');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -833,7 +880,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_async_011', 0, async function (done) {
+    it('fileIO_create_randomaccessfile_async_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_async_011');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -887,7 +934,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_async_013', 0, async function (done) {
+    it('fileIO_create_randomaccessfile_async_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_async_013');
         expect(prepareFile(fpath, '')).assertTrue();
 
@@ -913,7 +960,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_async_014', 0, async function (done) {
+    it('fileIO_create_randomaccessfile_async_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_async_014');
         expect(prepareFile(fpath, '')).assertTrue();
 
@@ -961,7 +1008,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 3
      * @tc.require
      */
-     it('fileIO_create_randomaccessfile_async_016', 0, async function () {
+     it('fileIO_create_randomaccessfile_async_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_async_016');
         initReadfile(fpath);
         let size = fs.lstatSync(fpath).size;
@@ -998,7 +1045,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_create_randomaccessfile_async_018', 0, async function () {
+    it('fileIO_create_randomaccessfile_async_018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_create_randomaccessfile_async_018');
         initReadfile(fpath);
         let size = fs.lstatSync(fpath).size;
@@ -1035,7 +1082,7 @@ describe('fileIO_create_randomAccessFile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_multithreaded_replication_000', 0, async function (done) {
+    it('fileIO_randomaccessfile_multithreaded_replication_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let srcpath = await nextFileName('fileIO_randomaccessfile_multithreaded_replication_000');
         let dstpath = await nextFileName('fileIO_randomaccessfile_multithreaded_replication_000_1');
         let length = 4096;

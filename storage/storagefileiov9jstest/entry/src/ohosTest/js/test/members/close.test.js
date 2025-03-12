@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, nextFileName, prepareFile, describe, it, expect, 
 } from '../Common';
+import { TestType, Size, Level } from '@ohos/hypium';
 
 export default function fileIOClose() {
 describe('fileIO_fs_close', function () {
@@ -30,7 +31,7 @@ describe('fileIO_fs_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-   it('fileIO_test_close_sync_000', 0, async function () {
+   it('fileIO_test_close_sync_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async function () {
     let fpath = await nextFileName('fileIO_test_close_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -54,7 +55,7 @@ describe('fileIO_fs_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_close_sync_001', 0, async function () {
+  it('fileIO_test_close_sync_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async function () {
     let fpath = await nextFileName('fileIO_test_close_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -78,7 +79,7 @@ describe('fileIO_fs_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_test_close_sync_002', 0, async function () {
+   it('fileIO_test_close_sync_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async function () {
     let fpath = await nextFileName('fileIO_test_close_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -105,7 +106,7 @@ describe('fileIO_fs_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_close_sync_003', 0, async function () {
+  it('fileIO_test_close_sync_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async function () {
     let fpath = await nextFileName('fileIO_test_close_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -131,7 +132,7 @@ describe('fileIO_fs_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_close_sync_004', 0, function () {
+  it('fileIO_test_close_sync_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  function () {
 
     try {
       fileIO.closeSync();
@@ -152,7 +153,7 @@ describe('fileIO_fs_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_close_sync_005', 0, function () {
+  it('fileIO_test_close_sync_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  function () {
 
     try {
       fileIO.closeSync(-1);
@@ -173,7 +174,7 @@ describe('fileIO_fs_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_close_async_000', 0, async function (done) {
+  it('fileIO_test_close_async_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async function (done) {
     let fpath = await nextFileName('fileIO_test_close_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -203,7 +204,7 @@ describe('fileIO_fs_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_close_async_001', 0, async function (done) {
+  it('fileIO_test_close_async_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async function (done) {
     let fpath = await nextFileName('fileIO_test_close_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -233,7 +234,7 @@ describe('fileIO_fs_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_close_async_002', 0, async function (done) {
+  it('fileIO_test_close_async_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async function (done) {
     let fpath = await nextFileName('fileIO_test_close_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -258,7 +259,7 @@ describe('fileIO_fs_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_close_async_003', 0, async function (done) {
+  it('fileIO_test_close_async_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async function (done) {
     let fpath = await nextFileName('fileIO_test_close_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -283,7 +284,7 @@ describe('fileIO_fs_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_close_async_004', 0, async function (done) {
+  it('fileIO_test_close_async_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async function (done) {
     let fpath = await nextFileName('fileIO_test_close_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -311,7 +312,7 @@ describe('fileIO_fs_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_close_async_005', 0, async function (done) {
+  it('fileIO_test_close_async_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async function (done) {
     let fpath = await nextFileName('fileIO_test_close_async_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -338,7 +339,7 @@ describe('fileIO_fs_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_close_async_006', 0, async function (done) {
+  it('fileIO_test_close_async_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async function (done) {
     let fpath = await nextFileName('fileIO_test_close_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -365,7 +366,7 @@ describe('fileIO_fs_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_close_async_007', 0, async function (done) {
+  it('fileIO_test_close_async_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async function (done) {
 
     try {
       await fileIO.close(-1);
@@ -387,7 +388,7 @@ describe('fileIO_fs_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_close_async_008', 0, async function (done) {
+  it('fileIO_test_close_async_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async function (done) {
 
     try {
       await fileIO.close();
@@ -396,6 +397,43 @@ describe('fileIO_fs_close', function () {
       console.log('fileIO_test_close_async_008 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
       done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_CLOSE_ASYNC_0900
+   * @tc.name fileIO_test_close_async_009
+   * @tc.desc Test close() interfaces. Callback.
+   * Bad file descriptor.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_close_async_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async function (done) {
+    let fpath = await nextFileName('fileIO_test_close_async_009');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+      let fd = file.fd;
+      fileIO.close(file, (err) => {
+        if (err) {
+          console.log('fileIO_test_close_async_009 error package: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+      })
+      fileIO.close(fd, (err) => {
+        if (err) {
+          console.log('fileIO_test_close_async_009 close error: {message: ' + err.message + ', code: ' + err.code + '}');
+          fileIO.unlinkSync(fpath);
+          expect(err.code == 13900008 && err.message == 'Bad file descriptor').assertTrue();
+          done();
+        }
+      });
+    } catch (e) {
+      console.log('fileIO_test_close_async_009 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
     }
   });
 });
