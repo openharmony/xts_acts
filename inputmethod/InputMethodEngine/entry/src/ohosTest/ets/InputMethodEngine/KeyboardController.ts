@@ -1449,12 +1449,12 @@ export class KeyboardController {
     };
     try {
         let record: Record<string, inputmethodengine.CommandDataType> = {
-            "valueString1": "abcdefg",
-            "valueString2": true,
-            "valueString3": 500,
-            "valueString4": 400,
-            "valueString5": 300,
-            "valueString6": 200,
+            'valueString1': 'abcdefg',
+            'valueString2': true,
+            'valueString3': 500,
+            'valueString4': 400,
+            'valueString5': 300,
+            'valueString6': 200,
         };
         this.InputClient.sendPrivateCommand(record).then( () => {
           console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200 Succeed in sendKeyFunction.');
@@ -1486,7 +1486,7 @@ export class KeyboardController {
       type: 0,
       flag:1
     };
-    let inputPanel =  await inputMethodAbility.createPanel(this.mContext, panelInfo1)
+    let inputPanel = await inputMethodAbility.createPanel(this.mContext, panelInfo1);
     try {
       let isPrivacyMode: boolean = true;
       inputPanel.setPrivacyMode(isPrivacyMode);
