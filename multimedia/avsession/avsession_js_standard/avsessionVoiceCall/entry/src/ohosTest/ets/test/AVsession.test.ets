@@ -116,19 +116,25 @@ export default function abilityTest() {
      */
 
     it('SUB_MULTIMEDIA_AVSESSION_GETAVCASTCONTROLLER_PROMISE_1100', 2, async (done: Function) => {
-      await session.destroy()
-      await sleep(500)
-      let aVCastController: avSession.AVCastController;
-      await session.getAVCastController().then((avcontroller: avSession.AVCastController) => {
-        aVCastController = avcontroller;
-        console.info('getAVCastController11 : SUCCESS');
-        expect(false).assertTrue();
-      }).catch((err: BusinessError) => {
-          console.info(`getAVCastController11 BusinessError: code: ${err.code}, message: ${err.message}`);
-          expect(err.code).assertEqual(6600102);
-      });
-      session = null;
-      done();
+      const isExtendedDisplayCast = canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast');
+      if (isExtendedDisplayCast) {
+        await session.destroy()
+        await sleep(500)
+        let aVCastController: avSession.AVCastController;
+        await session.getAVCastController().then((avcontroller: avSession.AVCastController) => {
+            aVCastController = avcontroller;
+            console.info('getAVCastController11 : SUCCESS');
+            expect(false).assertTrue();
+        }).catch((err: BusinessError) => {
+            console.info(`getAVCastController11 BusinessError: code: ${err.code}, message: ${err.message}`);
+            expect(err.code).assertEqual(6600102);
+        });
+        session = null;
+        done();
+      } else {
+       console.info(`SystemCapability.Multimedia.AVSession.ExtendedDisplayCast false`);
+       done();
+      }
     })
 
 
