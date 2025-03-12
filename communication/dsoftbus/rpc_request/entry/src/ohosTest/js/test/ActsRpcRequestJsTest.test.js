@@ -680,7 +680,53 @@ export default function ActsRpcRequestJsTest() {
                 data.reclaim();
             }
             console.info("--------------------end SUB_DSoftbus_IPC_API_OnRemoteRequest_1600--------------------");
-        });         
+        });
+        
+        /*
+        * @tc.number : SUB_DSoftbus_IPC_API_Errorcode_0000
+        * @tc.name   : test errorcode data verification
+        * @tc.desc   : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+        * @tc.level  : 3   
+        * @tc.type   : Compatibility
+        * @tc.size   : MediumTest
+        */
+        it("SUB_DSoftbus_IPC_API_Errorcode_0000", 0,async function(){
+            console.info("---------------------start SUB_DSoftbus_IPC_API_Errorcode_0000---------------------------");
+            try{
+                let errCode401 = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`;
+                expect(errCode401).assertEqual("401");
+                let errCode1900001 = `${rpc.ErrorCode.OS_MMAP_ERROR}`;
+                expect(errCode1900001).assertEqual("1900001");
+                let errCode1900002 = `${rpc.ErrorCode.OS_IOCTL_ERROR}`;
+                expect(errCode1900002).assertEqual("1900002");
+                let errCode1900003 = `${rpc.ErrorCode.WRITE_TO_ASHMEM_ERROR}`;
+                expect(errCode1900003).assertEqual("1900003");
+                let errCode1900004 = `${rpc.ErrorCode.READ_FROM_ASHMEM_ERROR}`;
+                expect(errCode1900004).assertEqual("1900004");
+                let errCode1900005 = `${rpc.ErrorCode.ONLY_PROXY_OBJECT_PERMITTED_ERROR}`;
+                expect(errCode1900005).assertEqual("1900005");
+                let errCode1900006 = `${rpc.ErrorCode.ONLY_REMOTE_OBJECT_PERMITTED_ERROR}`;
+                expect(errCode1900006).assertEqual("1900006");
+                let errCode1900007 = `${rpc.ErrorCode.COMMUNICATION_ERROR}`;
+                expect(errCode1900007).assertEqual("1900007");
+                let errCode1900008 = `${rpc.ErrorCode.PROXY_OR_REMOTE_OBJECT_INVALID_ERROR}`;
+                expect(errCode1900008).assertEqual("1900008");
+                let errCode1900009 = `${rpc.ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR}`;
+                expect(errCode1900009).assertEqual("1900009");
+                let errCode1900010 = `${rpc.ErrorCode.READ_DATA_FROM_MESSAGE_SEQUENCE_ERROR}`;
+                expect(errCode1900010).assertEqual("1900010");
+                let errCode1900011 = `${rpc.ErrorCode.PARCEL_MEMORY_ALLOC_ERROR}`;
+                expect(errCode1900011).assertEqual("1900011");
+                let errCode1900012 = `${rpc.ErrorCode.CALL_JS_METHOD_ERROR}`;
+                expect(errCode1900012).assertEqual("1900012");
+                let errCode1900013 = `${rpc.ErrorCode.OS_DUP_ERROR}`;
+                expect(errCode1900013).assertEqual("1900013");
+            } catch (error) {
+                console.info("SUB_DSoftbus_IPC_API_OnRemoteRequest_testcase error is:" + error);
+                expect(error.message == null).assertTrue();
+            }
+            console.info("---------------------end SUB_DSoftbus_IPC_API_Errorcode_0000---------------------------");
+        });
 
         /*
         * @tc.number : SUB_DSoftbus_IPC_API_Errorcode_0100
@@ -4389,6 +4435,30 @@ export default function ActsRpcRequestJsTest() {
                 expect(error.message != null).assertTrue();
             }
             console.info("---------------------end SUB_DSoftbus_IPC_API_Errorcode_15600 ---------------------------");
+        });
+
+        /*
+        * @tc.number : SUB_DSoftbus_IPC_API_Errorcode_15700
+        * @tc.name   : test readAshmem interface, illegal value verification
+        * @tc.desc   : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
+        * @tc.level  : 3   
+        * @tc.type   : Compatibility
+        * @tc.size   : MediumTest
+        */
+        it("SUB_DSoftbus_IPC_API_Errorcode_15700", 0,async function(){
+            console.info("---------------------start SUB_DSoftbus_IPC_API_Errorcode_15700---------------------------");
+            try{
+                let ashmem = rpc.Ashmem.create("ashmem", 1024 * 1024);
+                ashmem.setProtectionType(rpc.Ashmem.PROT_WRITE, rpc.Ashmem.PROT_READ);
+                console.info("SUB_DSoftbus_IPC_API_Ashmem_0450: run setProtectionType is success");
+                ashmem.unmapAshmem();
+                ashmem.closeAshmem();
+            } catch (error) {
+                console.info("SUB_DSoftbus_IPC_API_OnRemoteRequest_testcase error is:" + error);
+                expect(error.code == 401).assertTrue();
+                expect(error.message != null).assertTrue();
+            }
+            console.info("---------------------end SUB_DSoftbus_IPC_API_Errorcode_15700 ---------------------------");
         });
         console.info("-----------------------SUB_DSoftbus_IPC_API_OnRemoteRequest_Test is end-----------------------");
     });
