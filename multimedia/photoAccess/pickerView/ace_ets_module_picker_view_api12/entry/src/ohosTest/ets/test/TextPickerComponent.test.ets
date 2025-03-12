@@ -555,11 +555,7 @@ export default function TextPicker() {
         let result: PhotoPickerResult = event?.data?.msg.selectMode;
         console.info('testPicker09 result event.data.msg.selectMode=:' + result);
         console.info('testPicker09 result expect =:' + expectResult);
-        if (result != null && result != undefined) {
-          expect(result).assertEqual(expectResult);
-        } else {
-          expect(expectResult).assertEqual(SelectMode.SINGLE_SELECT);
-        }
+        expect(result).assertEqual(expectResult);
       }
       let event: events_emitter.InnerEvent = {
         eventId: code,
