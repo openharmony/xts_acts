@@ -25,8 +25,7 @@ import AVTransCoderTest from './Transcoder.test'
 import AVPlayerAmr from './AVPlayerAmrTest.test'
 import AVPlayerMediaSource from './AVPlayerMediaSource.test'
 import AVPlayerSelectTrackTest from './AVPlayerSelectTrackTest.test'
-import AVPlayerFlvFuncTest from './AVPlayerFlvFuncTest.test'
-import AVPlayerPostProcessorTest from './AVPlayerPostProcessorTest.test'
+import PreDownLoadTest from './PreDownLoadTest.test'
 
 export default function testsuite() {
   // AVPlayerHlsFuncTest()
@@ -42,6 +41,5 @@ export default function testsuite() {
   AVPlayerAmr();
   AVPlayerMediaSource();
   AVPlayerSelectTrackTest();
-  AVPlayerFlvFuncTest();
-  AVPlayerPostProcessorTest();
+  PreDownLoadTest();
 }
