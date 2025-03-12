@@ -14,12 +14,13 @@
  */
 
 import overlay from '@ohos.bundle.overlay';
+import { BusinessError } from '@kit.BasicServicesKit';
 import Utils from "./Utils";
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 const MODULE_NAME = "entry_test";
 const MODULE_NAME1 = "test1";
-const MODULE_NAME2 = "stage1";
+const MODULE_NAME2 = "hsp";
 const ERROR_INCOMING_MODULE_NAME_NOT_INSTALL = 17700002;
 const ERROR_INCOMING_MODULE_NAME_IS_OVERLAY = 17700034;
 const ERROR_CODE = 401;
@@ -80,8 +81,38 @@ export default function getTargetOverlayModuleInfos() {
         console.info("GetTargetOverlayModuleInfosModuleNameNotInstall callback catch" + JSON.stringify(e));
         expect(e.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
       }
-
     })
+
+    /*
+     * @tc.number: Sub_Bms_Framework_Overlay_Query_0810
+     * @tc.name: GetTargetOverlayModuleInfosModuleNameNotOverlay
+     * @tc.desc: The query fails when the incoming moduleName is not overlay
+     */
+    it('GetTargetOverlayModuleInfosModuleNameNotOverlay', 0, async () => {
+      try {
+        await overlay.getTargetOverlayModuleInfos(MODULE_NAME2).then(data => {
+          console.info("GetTargetOverlayModuleInfosModuleNameNotOverlay result" + JSON.stringify(data));
+          expect().assertFail();
+        }).catch((err: BusinessError) => {
+          console.info("GetTargetOverlayModuleInfosModuleNameNotOverlay fail" + JSON.stringify(err));
+          expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_IS_OVERLAY);
+      });
+      }catch (e) {
+        console.info("GetTargetOverlayModuleInfosModuleNameNotOverlay  catch" + JSON.stringify(e));
+        expect().assertFail();
+      }
+      try {
+        overlay.getTargetOverlayModuleInfos(MODULE_NAME2, (err, data) => {
+          console.info("GetTargetOverlayModuleInfosModuleNameNotOverlay result" + JSON.stringify(data));
+          console.info("GetTargetOverlayModuleInfosModuleNameNotOverlay fail" + JSON.stringify(err));
+          expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_IS_OVERLAY);
+        });
+      }catch (e) {
+        console.info("GetTargetOverlayModuleInfosModuleNameNotOverlay callback catch" + JSON.stringify(e));
+          expect().assertFail();
+      }
+    })
+
 
   })
 }
