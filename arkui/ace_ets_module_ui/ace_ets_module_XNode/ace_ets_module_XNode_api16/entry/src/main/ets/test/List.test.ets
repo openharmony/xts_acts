@@ -13,7 +13,11 @@
  * limitations under the License.
  */
 import frameNodeIsVisibleTest from './FrameNodeTest/frameNodeIsVisible.test';
+import frameNodeMoveOneTest from './FrameNodeTest/frameNodeMoveOne.test';
+import frameNodeMoveTwoTest from './FrameNodeTest/frameNodeMoveTwo.test';
 
 export default function testsuite() {
   frameNodeIsVisibleTest();
+  frameNodeMoveOneTest();
+  frameNodeMoveTwoTest();
 }
