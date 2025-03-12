@@ -173,7 +173,7 @@ export default class MediaTestBase {
         await avScreenCaptureRecorder?.skipPrivacyMode(windowAllIds).then(() => {
           console.info('avScreenCaptureRecorder skipPrivacyMode success');
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
-        }).catch((err: BusinessError) => {
+        }).catch(async (err: BusinessError) => {
           console.error('avScreenCaptureRecorder skipPrivacyMode failed, error: ' + err.message);
           let cansys = await this.isSupportSceneboard();
           console.info('isSupportSceneboard result cansys', JSON.stringify(cansys));
