@@ -1056,5 +1056,392 @@ export default function MultimodalInputPointerTest() {
         });
       });
     });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Pointer_getPointerStyleSync_0200
+     * @tc.name: SUB_MMI_Input_Api_Pointer_getPointerStyleSync_0200
+     * @tc.desc: Test getPointerStyleSync interface to get the mouse style type.
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_Pointer_getPointerStyleSync_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_Pointer_getPointerStyleSync_0200";
+      try {
+        let windowId = -10000;
+        let style: pointer.PointerStyle = pointer.getPointerStyleSync(windowId);
+        console.info(`${caseName} Get pointer style success, style: ${JSON.stringify(style)}`);
+        ExpectFalse(true);
+        done();
+      } catch (error) {
+        console.info(`${caseName} Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectTrue(error.code == 401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Pointer_setPointerVisibleSync_0200
+     * @tc.name: SUB_MMI_Input_Api_Pointer_setPointerVisibleSync_0200
+     * @tc.desc: Test setPointerVisibleSync interface to show or hide the mouse pointer.
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_Pointer_setPointerVisibleSync_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_Pointer_setPointerVisibleSync_0200";
+      let ifSetPointerVisibleSyncSuccess = 0;
+      try {
+        pointer.setPointerVisibleSync(false);
+        console.info(`${caseName} Set pointer visible success`);
+        ifSetPointerVisibleSyncSuccess++;
+        ExpectTrue(ifSetPointerVisibleSyncSuccess == 1);
+        done();
+      } catch (error) {
+        console.info(`${caseName} Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectFalse(true);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0200
+     * @tc.name: SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0200
+     * @tc.desc: Test setCustomCursorSync interface to set the custom cursor style.
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0200";
+      const svgFileData = getContext().resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
+        const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
+        let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
+        let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
+        svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+          window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
+            let windowId = win.getWindowProperties().id;
+            let ifSetCustomCursorSyncSuccess = 0;
+            try {
+              let focusX = 25;
+              pointer.setCustomCursorSync(windowId, pixelMap, focusX);
+              console.info(`${caseName} setCustomCursorSync success`);
+              ifSetCustomCursorSyncSuccess++;
+              ExpectTrue(ifSetCustomCursorSyncSuccess == 1);
+              done();
+            } catch (error) {
+              console.info(`${caseName} setCustomCursorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              ExpectFalse(true);
+              done();
+            }
+          });
+        });
+      });
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0300
+     * @tc.name: SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0300
+     * @tc.desc: Test setCustomCursorSync interface to set the custom cursor style.
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0300";
+      const svgFileData = getContext().resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
+        const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
+        let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
+        let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
+        svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+          window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
+            let windowId = win.getWindowProperties().id;
+            let ifSetCustomCursorSyncSuccess = 0;
+            try {
+              let focusY = 25;
+              pointer.setCustomCursorSync(windowId, pixelMap, focusY);
+              console.info(`${caseName} setCustomCursorSync success`);
+              ifSetCustomCursorSyncSuccess++;
+              ExpectTrue(ifSetCustomCursorSyncSuccess == 1);
+              done();
+            } catch (error) {
+              console.info(`${caseName} setCustomCursorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              ExpectFalse(true);
+              done();
+            }
+          });
+        });
+      });
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0400
+     * @tc.name: SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0400
+     * @tc.desc: Test setCustomCursorSync interface to set the custom cursor style.
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0400";
+      const svgFileData = getContext().resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
+        const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
+        let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
+        let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
+        svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+          window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
+            let windowId = win.getWindowProperties().id;
+            let ifSetCustomCursorSyncSuccess = 0;
+            try {
+              pointer.setCustomCursorSync(windowId, pixelMap);
+              console.info(`${caseName} setCustomCursorSync success`);
+              ifSetCustomCursorSyncSuccess++;
+              ExpectTrue(ifSetCustomCursorSyncSuccess == 1);
+              done();
+            } catch (error) {
+              console.info(`${caseName} setCustomCursorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              ExpectFalse(true);
+              done();
+            }
+          });
+        });
+      });
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0500
+     * @tc.name: SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0500
+     * @tc.desc: Test setCustomCursorSync interface to set the custom cursor style.
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0500";
+      const svgFileData = getContext().resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
+        const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
+        let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
+        let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
+        svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+          window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
+            let windowId = -10000;
+            try {
+              pointer.setCustomCursorSync(windowId, pixelMap, 0, 0);
+              console.info(`${caseName} setCustomCursorSync success`);
+              ExpectFalse(true);
+              done();
+            } catch (error) {
+              console.info(`${caseName} setCustomCursorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              ExpectTrue(error.code == 401);
+              done();
+            }
+          });
+        });
+      });
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0600
+     * @tc.name: SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0600
+     * @tc.desc: Test setCustomCursorSync interface to set the custom cursor style.
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0600";
+      const svgFileData = getContext().resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
+        const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
+        let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
+        let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
+        svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+          window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
+            let windowId = win.getWindowProperties().id;
+            try {
+              pointer.setCustomCursorSync(windowId, pixelMap, -25, 0);
+              console.info(`${caseName} setCustomCursorSync success`);
+              ExpectFalse(true);
+              done();
+            } catch (error) {
+              console.info(`${caseName} setCustomCursorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              ExpectTrue(error.code == 401);
+              done();
+            }
+          });
+        });
+      });
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0700
+     * @tc.name: SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0700
+     * @tc.desc: Test setCustomCursorSync interface to set the custom cursor style.
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0700";
+      const svgFileData = getContext().resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
+        const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
+        let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
+        let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
+        svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+          window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
+            let windowId = win.getWindowProperties().id;
+            try {
+              pointer.setCustomCursorSync(windowId, pixelMap, 25, -1);
+              console.info(`${caseName} setCustomCursorSync success`);
+              ExpectFalse(true);
+              done();
+            } catch (error) {
+              console.info(`${caseName} setCustomCursorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              ExpectTrue(error.code == 401);
+              done();
+            }
+          });
+        });
+      });
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Pointer_setCustomCursor_2000
+     * @tc.name: SUB_MMI_Input_Api_Pointer_setCustomCursor_2000
+     * @tc.desc: Test promise setCustomCursor interface to set the custom cursor style.
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_2000";
+      getContext().resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
+        const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
+        let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
+        let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
+        svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+          window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
+            let windowId = -10000;
+            try {
+              pointer.setCustomCursor(windowId, pixelMap).then(() => {
+                console.info(`${caseName} setCustomCursor success`);
+                ExpectFalse(true);
+                done();
+              });
+            } catch (error) {
+              console.info(`${caseName} setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              ExpectTrue(error.code == 401);
+              done();
+            }
+          });
+        });
+      });
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Pointer_setCustomCursor_2100
+     * @tc.name: SUB_MMI_Input_Api_Pointer_setCustomCursor_2100
+     * @tc.desc: Test promise setCustomCursor interface to set the custom cursor style.
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_2100";
+      getContext().resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
+        const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
+        let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
+        let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
+        svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+          window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
+            let windowId = win.getWindowProperties().id;
+            let ifSetCustomCursorSuccess = 0;
+            try {
+              let focusX = 25;
+              pointer.setCustomCursor(windowId, pixelMap, focusX).then(() => {
+                console.info(`${caseName} setCustomCursor success`);
+                ifSetCustomCursorSuccess++;
+                ExpectTrue(ifSetCustomCursorSuccess == 1);
+                done();
+              });
+            } catch (error) {
+              console.info(`${caseName} setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              ExpectFalse(true);
+              done();
+            }
+          });
+        });
+      });
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Pointer_setCustomCursor_2200
+     * @tc.name: SUB_MMI_Input_Api_Pointer_setCustomCursor_2200
+     * @tc.desc: Test promise setCustomCursor interface to set the custom cursor style.
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_2200";
+      getContext().resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
+        const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
+        let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
+        let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
+        svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+          window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
+            let windowId = win.getWindowProperties().id;
+            let ifSetCustomCursorSuccess = 0;
+            try {
+              let focusY = 0;
+              pointer.setCustomCursor(windowId, pixelMap, focusY).then(() => {
+                console.info(`${caseName} setCustomCursor success`);
+                ifSetCustomCursorSuccess++;
+                ExpectTrue(ifSetCustomCursorSuccess == 1);
+                done();
+              });
+            } catch (error) {
+              console.info(`${caseName} setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              ExpectFalse(true);
+              done();
+            }
+          });
+        });
+      });
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Pointer_setCustomCursor_2300
+     * @tc.name: SUB_MMI_Input_Api_Pointer_setCustomCursor_2300
+     * @tc.desc: Test promise setCustomCursor interface to set the custom cursor style.
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_2300";
+      getContext().resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
+        const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
+        let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
+        let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
+        svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+          window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
+            let windowId = win.getWindowProperties().id;
+            let ifSetCustomCursorSuccess = 0;
+            try {
+              pointer.setCustomCursor(windowId, pixelMap, 25, 25).then(() => {
+                console.info(`${caseName} setCustomCursor success`);
+                ifSetCustomCursorSuccess++;
+                ExpectTrue(ifSetCustomCursorSuccess == 1);
+                done();
+              });
+            } catch (error) {
+              console.info(`${caseName} setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              ExpectFalse(true);
+              done();
+            }
+          });
+        });
+      });
+    });
   });
 }
