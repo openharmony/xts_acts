@@ -55,15 +55,15 @@ static ArkUI_NodeHandle CreateChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI)
     nodeAPI->setAttribute(column1, NODE_ID, &column1_id);
     ArkUI_AttributeItem column2_id = {.string = "column2_id"};
     nodeAPI->setAttribute(column2, NODE_ID, &column2_id);
-    ArkUI_NumberValue value[] = {480};
+    ArkUI_NumberValue value[] = {200};
     ArkUI_AttributeItem item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(column, NODE_WIDTH, &item);
     nodeAPI->setAttribute(column1, NODE_WIDTH, &item);
     nodeAPI->setAttribute(column2, NODE_WIDTH, &item);
-    ArkUI_NumberValue value1[] = {480};
+    ArkUI_NumberValue value1[] = {200};
     ArkUI_AttributeItem item1 = {value1, sizeof(value1) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(column, NODE_HEIGHT, &item1);
-    ArkUI_NumberValue value2[] = {250};
+    ArkUI_NumberValue value2[] = {100};
     ArkUI_AttributeItem item2 = {value2, sizeof(value2) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(column1, NODE_HEIGHT, &item2);
     nodeAPI->setAttribute(column2, NODE_HEIGHT, &item2);
@@ -119,7 +119,7 @@ static ArkUI_NodeHandle CreateChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI)
     nodeAPI->setAttribute(text3, NODE_WIDTH, &item5);
     nodeAPI->setAttribute(text4, NODE_WIDTH, &item5);
 
-    ArkUI_NumberValue value6[] = {30};
+    ArkUI_NumberValue value6[] = {10};
     ArkUI_AttributeItem item6 = {value6, sizeof(value6) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(text, NODE_HEIGHT, &item6);
     nodeAPI->setAttribute(text1, NODE_HEIGHT, &item6);
