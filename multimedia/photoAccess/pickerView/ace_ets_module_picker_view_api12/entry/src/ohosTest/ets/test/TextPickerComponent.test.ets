@@ -553,7 +553,7 @@ export default function TextPicker() {
       let callback = (event: events_emitter.EventData) => {
         let expectResult: number = pickerOptions.selectMode ?? SelectMode.MULTI_SELECT;
         let result: PhotoPickerResult = event?.data?.msg.selectMode;
-        console.info('testPicker09 result event.data.msg.selectMode=:' + result);
+        console.info('testPicker09 result event.data.msg=:' + result);
         console.info('testPicker09 result expect =:' + expectResult);
         expect(result).assertEqual(expectResult);
       }
