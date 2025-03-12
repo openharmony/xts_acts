@@ -63,14 +63,17 @@ export default function uitestDriverErrorTest() {
     it('test_findComponent_17000002', Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_findComponent_17000002 start`);
       try {
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let driver: Driver = Driver.create();
+        let on  = ON.enabled(true);
         driver.delayMs(waitUiReadyMs * 5);
-        await driver.findComponent(ON.text('MainPage'));
+        await driver.findComponent(on);
         expect().assertFail();
       }catch (e) {
         console.log(`${TestTag}, test_findComponent_17000002 error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(AsyncErrorCode);
       }
+      await stopApplication('com.uitestScene.acts');
       await sleep(waitUiReadyMs * 8);
       console.log(`${TestTag}, test_findComponent_17000002 end`);
     })
@@ -83,15 +86,18 @@ export default function uitestDriverErrorTest() {
     it('test_findComponents_17000002', Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_findComponents_17000002 start`);
       try {
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let driver: Driver = Driver.create();
+        let on  = ON.enabled(true);
         driver.delayMs(waitUiReadyMs * 5);
-        await driver.findComponents(ON.text('MainPage'));
+        await driver.findComponents(on);
         expect().assertFail();
       }catch (e) {
         console.log(`${TestTag}, test_findComponents_17000002 error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(AsyncErrorCode);
       }
       await sleep(waitUiReadyMs * 8);
+      await stopApplication('com.uitestScene.acts');
       console.log(`${TestTag}, test_findComponents_17000002 end`);
     })
 
@@ -123,16 +129,19 @@ export default function uitestDriverErrorTest() {
    */
     it('test_waitForComponent_17000002', Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_waitForComponent_17000002 start`);
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
       try {
         let driver: Driver = Driver.create();
+        let on  = ON.enabled(true);
         driver.delayMs(waitUiReadyMs * 5);
-        await driver.waitForComponent(ON.text('next page'), waitUiReadyMs);
+        await driver.waitForComponent(on, waitUiReadyMs);
         expect().assertFail();
       }catch (e) {
         console.log(`${TestTag}, test_waitForComponent_17000002 error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(AsyncErrorCode);
       }
-      await sleep(waitUiReadyMs * 8);
+      await sleep(waitUiReadyMs * 8)
+      await stopApplication('com.uitestScene.acts');
       console.log(`${TestTag}, test_waitForComponent_17000002 end`);
     })
 
@@ -147,7 +156,7 @@ export default function uitestDriverErrorTest() {
       await sleep(waitUiReadyMs);
       try {
         let driver: Driver = Driver.create();
-        let on  = ON.enabled(true)
+        let on  = ON.enabled(true);
         driver.delayMs(waitUiReadyMs * 5);
         await driver.assertComponentExist(on);
         expect().assertFail();
