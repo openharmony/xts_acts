@@ -729,7 +729,7 @@ describe('fileIO_create_randomAccessFile', function () {
      */
     it('fileIO_create_randomaccessfile_async_005', 3, async function (done) {
         try {
-            fileIO.createRandomAccessFile(-1, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function(err) {
+            fileIO.createRandomAccessFile(-1, 0, function(err) {
             });
             expect(false).assertTrue();
         } catch(err) {
