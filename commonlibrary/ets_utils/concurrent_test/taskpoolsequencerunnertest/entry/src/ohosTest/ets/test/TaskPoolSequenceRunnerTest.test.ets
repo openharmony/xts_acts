@@ -310,9 +310,8 @@ export default function TaskPoolSequenceRunnerTest() {
       Count2.count = 0
 
       for (let i = 0; i < 10; i++) {
-        await sleep(100)
-        let task1: taskpool.Task = new taskpool.Task("Task1", printArgs5, 1);
-        let task2: taskpool.Task = new taskpool.Task("Task2", printArgs6, 1);
+        let task1: taskpool.Task = new taskpool.Task(printArgs5, 1);
+        let task2: taskpool.Task = new taskpool.Task(printArgs6, 1);
         sequenceRunner.execute(task1).then(() => {
         }).catch((e: Error) => {
           Count1.count++
