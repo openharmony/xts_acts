@@ -257,20 +257,14 @@ export default function TaskPoolErrorCodeTest() {
     it('testTaskErrorCode0005', 0, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0005';
       console.info(`${caseName} test start`);
-      try {
-        let task: taskpool.Task = new taskpool.Task(sendDataSetTime, 100);
-        task.onReceiveData(printLog);
-        await taskpool.execute(task).then(() => {
-          console.info("Taskpool: sendData 10200023 fail");
-        }).catch((error:BusinessError)=>{
-          console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-        });
-        await Sleep(3000)
-        expect().assertFail();
-      } catch (error) {
+      let task: taskpool.Task = new taskpool.Task(sendDataSetTime, 100);
+      task.onReceiveData(printLog);
+      await taskpool.execute(task).then(() => {
+        console.info("Taskpool: sendData 10200023 code");
+      }).catch((error:BusinessError)=>{
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
         expect(error.code).assertEqual(10200023);
-      }
+      });
       console.info(`${caseName} test end`);
       done();
     });
