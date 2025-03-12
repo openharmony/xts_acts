@@ -3891,8 +3891,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeRemoteObject(token);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
-                let errCode = `${rpc.ErrorCode.PROXY_OR_REMOTE_OBJECT_INVALID_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900008).assertTrue();
                 expect(error.message != null).assertTrue();
             } finally {
                 data.reclaim();
@@ -5459,8 +5458,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeRemoteObject(token);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageSequence_testcase error is:" + error);
-                let errCode = `${rpc.ErrorCode.PROXY_OR_REMOTE_OBJECT_INVALID_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900008).assertTrue();
                 expect(error.message != null).assertTrue();
             } finally {
                 data.reclaim();
@@ -11708,8 +11706,7 @@ export default function ActsRpcClientJsTest() {
                 data.writeRemoteObject(token);
             } catch (error) {
                 console.info("SUB_DSoftbus_IPC_API_MessageParcel error is:" + error);
-                let errCode = `${rpc.ErrorCode.PROXY_OR_REMOTE_OBJECT_INVALID_ERROR}`;
-                expect(error.code == errCode).assertTrue();
+                expect(error.code == 1900008).assertTrue();
                 expect(error.message != null).assertTrue();
             } finally {
                 data.reclaim();
