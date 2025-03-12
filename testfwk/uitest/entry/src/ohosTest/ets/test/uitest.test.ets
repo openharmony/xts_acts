@@ -1093,22 +1093,22 @@ export default function UiTest() {
          * @tc.desc: swipe on the screen between the specified points with mouse.
          */
         it('testMouseMoveWithTrack', 0, async () => {
-          await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-          let driver = Driver.create()
-          await driver.delayMs(waitUiReadyMs)
-          let Button = await driver.findComponent(ON.id('jump'))
-          if (Button == null) {
-            let scorll = await driver.findComponent(ON.type('Scroll'))
-            Button = await scorll.scrollSearch(ON.id('jump'))
-          }
-          let center = await Button.getBoundsCenter()
-          await driver.mouseMoveTo(center)
-          await driver.delayMs(waitUiReadyMs)
-          await driver.mouseMoveWithTrack(center,{x:20,y:20}, 600)
-          await driver.delayMs(waitUiReadyMs)
-          let newButton = await driver.findComponent(ON.text('jump'))
-          expect(newButton == null).assertTrue()
-    })
+           await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+           let driver = Driver.create()
+           await driver.delayMs(waitUiReadyMs)
+           let Button = await driver.findComponent(ON.id('jump'))
+           if (Button == null) {
+              let scorll = await driver.findComponent(ON.type('Scroll'))
+              Button = await scorll.scrollSearch(ON.id('jump'))
+            }
+            let center = await Button.getBoundsCenter()
+            await driver.mouseMoveTo(center)
+            await driver.delayMs(waitUiReadyMs)
+            await driver.mouseMoveWithTrack(center, center, 600)
+            await driver.delayMs(waitUiReadyMs)
+            let newButton = await driver.findComponent(ON.text('jump'))
+            expect(newButton == null).assertTrue()
+        }) 
 
 
         /*
