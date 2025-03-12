@@ -95,7 +95,8 @@
         "./src/ohosTest/ets/workers/ErrorCode/WorkerRegister3.ets",
         "./src/ohosTest/ets/workers/ErrorCode/WorkerRegister4.ets",
         "./src/ohosTest/ets/workers/ErrorCode/WorkerRegister5.ets",
-        "./src/ohosTest/ets/workers/ErrorCode/WorkerDataWorker.ets"
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerDataWorker.ets",
+        "./src/ohosTest/ets/workers/ErrorCode/WorkerData1.ets"
       ]
     }
   },

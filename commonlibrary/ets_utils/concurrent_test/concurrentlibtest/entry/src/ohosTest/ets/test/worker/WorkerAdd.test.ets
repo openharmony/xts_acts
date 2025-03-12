@@ -210,13 +210,13 @@ export default function workerAddTest() {
       const caseName = "testThreadWorkerAdd0006";
       try {
         let state: boolean = false;
-        const workerInstance :worker.ThreadWorker= new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {priority: ThreadWorkerPriority.IDLE });
+        const workerInstance :worker.ThreadWorker= new worker.ThreadWorker("../../workers/ErrorCode/WorkerData1", {priority: ThreadWorkerPriority.IDLE });
         let buffer = new ArrayBuffer(8);
         workerInstance.postMessage(buffer, [buffer]);
-        workerInstance.postMessage(10);
         workerInstance.onmessage = (e) => {
           console.log(`${caseName} result: ` + JSON.stringify(e));
-          expect(e.data,).assertInstanceOf('ArrayBuffer');
+          let data:ArrayBuffer=e.data;
+          expect(data.byteLength).assertEqual(8);
           workerInstance.terminate();
         }
         workerInstance.onexit = (code) => {
