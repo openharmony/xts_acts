@@ -989,7 +989,7 @@ export default function sequenceRunnerAbilityTest_2() {
           console.error(`${caseName}error message e: ${JSON.stringify(e)}+e`)
         }
       }
-      while (task1Count < 10 && task2Count < 10) {
+      while (task1Count < 10 && task4Count < 10) {
         await sleep(100);
       }
       expect(10).assertEqual(task1Count);
