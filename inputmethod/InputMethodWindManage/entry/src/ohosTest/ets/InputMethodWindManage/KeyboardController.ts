@@ -1125,7 +1125,7 @@ export class KeyboardController {
     console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offShow_0190 success');
     try {
       if (this.softKeyboardPanel !== null) {
-        this.softKeyboardPanel.on('show', async (err, data) => {
+        this.softKeyboardPanel.on('show', async (err) => {
           console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offShow_0190 offShow if success: ' + JSON.stringify(err));
           this.softKeyboardPanel.off('show');
           count += 1;
@@ -1177,7 +1177,7 @@ export class KeyboardController {
     console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offHide_0200 success');
     try {
       if (this.softKeyboardPanel !== null) {
-        this.softKeyboardPanel.on('hide', async (err, data) => {
+        this.softKeyboardPanel.on('hide', async (err) => {
           console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offHide_0200 offHide if success: ' + JSON.stringify(err));
           this.softKeyboardPanel.off('hide');
           count += 1;
@@ -1421,7 +1421,7 @@ export class KeyboardController {
             if (typeof (WindowInfo) === 'object' && typeof (WindowInfo.rect) === 'object' && typeof (WindowInfo.status) === 'number') {
               commonEventPublishData = {
                 data: "SUCCESS"
-              }
+              };
             };
             console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 getCallingWindowInfo WindowInfo:  success');
           } catch (err) {
@@ -1429,7 +1429,7 @@ export class KeyboardController {
             console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 getCallingWindowInf0 err: ' + JSON.stringify(err.code));
             console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 getCallingWindowInfO err: ' + err);
           };
-          commoneventmanager.publish("SUB_InputMethod_IME_SplitScreen_0100", commonEventPublishData, this.publishCallback);
+          commoneventmanager.publish('SUB_InputMethod_IME_SplitScreen_0100', commonEventPublishData, this.publishCallback);
 
         }, 500);
 
@@ -1540,12 +1540,12 @@ export class KeyboardController {
         });
         let flage:boolean = true;
         let t1 = setInterval(async () => {
-          if(flage === true){
+          if (flage === true) {
             flage = false;
             console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0200 display_info.width: ' + this.display_info.width);
             console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0200 display_info.height: ' + this.display_info.height);
             await this.softKeyboardPanel.resize(200, 120);
-          }else{
+          } else {
             flage = true;
             console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0200 display_info.width: ' + this.display_info.width);
             console.info(TAG + '====>Sub_Misc_inputMethod_Panel_onSizeChange_0200 display_info.height: ' + this.display_info.height);
@@ -1553,7 +1553,7 @@ export class KeyboardController {
           };
           timeCount += 1;
           console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 timeCount: ' + timeCount);
-          if (timeCount ===2){
+          if (timeCount ===2) {
             clearInterval(t1)
             console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 clearInterval success');
           };
@@ -1561,7 +1561,7 @@ export class KeyboardController {
 
         let t2 = setTimeout(() => {
           console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 count: ' + count);
-          if (count === 1){
+          if (count === 1) {
             commonEventPublishData = {
               data: 'SUCCESS'
             };
@@ -3064,7 +3064,7 @@ export class KeyboardController {
     let commonEventPublishData = {
         data: "FAILED"
     };
-    try{
+    try {
       let keyboardRect: inputMethodEngine.PanelRect = {
           landscapeRect: { left: 100, top: 100, width: this.display_info.width * 10, height: this.display_info.height * 10},
           portraitRect: { left: 100, top: 100, width: this.display_info.height * 10, height: this.display_info.width * 10}
@@ -3079,7 +3079,7 @@ export class KeyboardController {
       };
       console.info(TAG + '====>Sub_InputMethod_IME_ScreenRotation_0101 err: ' + JSON.stringify(err));
     };
-    commoneventmanager.publish("Sub_InputMethod_IME_ScreenRotation_0101", commonEventPublishData, this.publishCallback);
+    commoneventmanager.publish('Sub_InputMethod_IME_ScreenRotation_0101', commonEventPublishData, this.publishCallback);
   }
 
 }
