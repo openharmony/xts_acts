@@ -397,55 +397,42 @@ export default function sequenceRunnerAbilityTest() {
       task2Count = 0;
       task3Count = 0;
       task4Count = 0;
-      console.log('33333333331')
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       await sleep(100);
-      console.log('33333333332')
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(booleanTaskFunction1, true);
         let task2: taskpool.Task = new taskpool.Task(booleanTaskFunction2, true);
         try {
-          console.log('33333333333')
           sequenceRunner.execute(task1).then((result) => {
-            console.log('555555555555')
             console.log(`${caseName}Execution ${i + 1}: ${result}`);
             er = result.toString();
             task1Count++;
             array1[i] = er;
             er = '';
-            console.log('555555555555_1')
           }).catch((error: BusinessError) => {
-            console.log('33333333333_1')
             expect(error.message).assertContain('Cannot read property split of undefined')
             task3Count++;
             console.error(`${caseName}error message error1300: ${JSON.stringify(error)}`)
           })
         } catch (e) {
-          console.log('33333333333_2')
           console.error(`${caseName}error message eee: ${JSON.stringify(e)}+e`)
         }
         try {
-          console.log('33333333334')
           sequenceRunner.execute(task2).then((result) => {
-            console.log('555555555556')
             console.log(`${caseName}Execution ${i + 1}: ${result}`);
             ir = result.toString();
             task2Count++;
             array2[i] = ir;
             ir = '';
-            console.log('555555555556_1')
           }).catch((error: BusinessError) => {
-            console.log('33333333334_1')
             expect(error.message).assertContain('Cannot read property split of undefined')
             task4Count++;
             console.error(`error message error3: ${JSON.stringify(error)}`)
           })
         } catch (e) {
-          console.log('33333333334_2')
           console.error(`${caseName}error message e3: ${JSON.stringify(e)}+e`)
         }
       }
-      console.log('7777777777777')
       await sleep(1000);
       while (task1Count < 10 && task2Count < 10) {
         await sleep(100);

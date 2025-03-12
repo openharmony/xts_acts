@@ -92,7 +92,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
         }
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(500)
       }
       await sleep(500)
@@ -148,7 +148,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
         }
 
       }
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(500)
       }
       await sleep(500)
@@ -197,7 +197,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
         }
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(500)
       }
 
@@ -295,7 +295,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
         }
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(500)
       }
 
@@ -317,7 +317,6 @@ export default function SequenceRunnerErrorSuccess2Test() {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
       let count2: number = 0
-
 
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(printArgs1, 1)
@@ -345,7 +344,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
         }
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(500)
       }
 

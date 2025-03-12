@@ -90,7 +90,7 @@ export default function SequenceRunnerErrorSuccessTest() {
         })
       }
 
-      while (Count1.count < 10) {
+      while (Count1.count < 10 || Count3.count < 10) {
         await sleep(500)
       }
       expect(10).assertEqual(Count1.count)
@@ -134,7 +134,7 @@ export default function SequenceRunnerErrorSuccessTest() {
 
       }
 
-      while (Count1.count < 10) {
+      while (Count1.count < 10 || Count3.count < 10) {
         await sleep(500)
       }
       expect(10).assertEqual(Count1.count)
@@ -183,7 +183,7 @@ export default function SequenceRunnerErrorSuccessTest() {
         })
       }
 
-      while (Count1.count < 10) {
+      while (Count1.count < 10 || Count3.count < 10 || count1 < 10 || count3 < 10) {
         await sleep(500)
       }
       expect(10).assertEqual(Count1.count)
@@ -239,7 +239,7 @@ export default function SequenceRunnerErrorSuccessTest() {
         })
       }
 
-      while (Count1.count < 10) {
+      while (Count1.count < 10 || Count3.count < 10 || count1 < 10 || count3 < 10) {
         await sleep(500)
       }
       expect(10).assertEqual(Count1.count)
@@ -297,7 +297,7 @@ export default function SequenceRunnerErrorSuccessTest() {
         })
       }
 
-      while (Count1.count < 10) {
+      while (Count1.count < 10 || Count4.count < 10 || count4 < 10) {
         await sleep(500)
       }
       expect(10).assertEqual(Count1.count)
@@ -352,7 +352,7 @@ export default function SequenceRunnerErrorSuccessTest() {
 
       }
 
-      while (Count1.count < 10) {
+      while (Count1.count < 10 || Count2.count < 10 || count1 < 10 || count2 < 10) {
         await sleep(500)
       }
       expect(10).assertEqual(Count1.count)
@@ -375,7 +375,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess020700', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
       let count2: number = 0
@@ -410,7 +409,7 @@ export default function SequenceRunnerErrorSuccessTest() {
 
       }
 
-      while (Count1.count < 10) {
+      while (Count1.count < 10 || Count2.count < 10 || count1 < 10 || count2 < 10) {
         await sleep(500)
       }
       expect(10).assertEqual(Count1.count)
@@ -433,7 +432,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess020800', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       Count1.count = 0
       Count3.count = 0
@@ -467,7 +465,7 @@ export default function SequenceRunnerErrorSuccessTest() {
 
       }
 
-      while (Count1.count < 10) {
+      while (Count1.count < 10 || Count3.count < 10) {
         await sleep(500)
       }
       expect(10).assertEqual(Count1.count)
@@ -488,7 +486,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess020900', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       Count1.count = 0
       Count3.count = 0
@@ -521,7 +518,7 @@ export default function SequenceRunnerErrorSuccessTest() {
 
       }
 
-      while (Count1.count < 10) {
+      while (Count1.count < 10 || Count3.count < 10) {
         await sleep(500)
       }
       expect(10).assertEqual(Count1.count)
@@ -542,7 +539,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess021000', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let equenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       Count1.count = 0
       Count3.count = 0
@@ -572,7 +568,7 @@ export default function SequenceRunnerErrorSuccessTest() {
 
       }
 
-      while (Count1.count < 10) {
+      while (Count1.count < 10 || Count3.count < 10) {
         await sleep(500)
       }
       expect(10).assertEqual(Count1.count)
@@ -592,7 +588,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess021100', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let asyncLockTest = new AsyncLockTest()
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
@@ -642,7 +637,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess021200', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let asyncLockThenTest = new AsyncLockTestThen()
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
@@ -692,7 +686,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess021300', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let asyncLockCatchTest = new AsyncLockTestCatch()
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
@@ -742,7 +735,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess021400', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let asyncLockFinallyTest = new AsyncLockTestFinally()
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
@@ -792,7 +784,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess021500', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let asyncLockTest = new AsyncLockTest()
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
@@ -842,7 +833,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess021600', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let asyncLockThenTest = new AsyncLockTestThen()
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
@@ -892,7 +882,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess021700', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let asyncLockCatchTest = new AsyncLockTestCatch()
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
@@ -942,7 +931,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess021800', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let asyncLockFinallyTest = new AsyncLockTestFinally()
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
@@ -970,7 +958,6 @@ export default function SequenceRunnerErrorSuccessTest() {
         } catch (e) {
           console.error(`taskpool: error code: ${e.code}, info: ${e.message}`);
         }
-
       }
 
       while (count1 < 10) {
@@ -993,8 +980,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess021900', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
-
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
       let count1: number = 0
@@ -1021,10 +1006,9 @@ export default function SequenceRunnerErrorSuccessTest() {
         } catch (e) {
           console.error(`taskpool: error code: ${e.code}, info: ${e.message}`);
         }
-
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(500)
       }
 
@@ -1044,8 +1028,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess022000', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
-
       let asyncLockTest = new AsyncLockTest()
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
@@ -1081,10 +1063,9 @@ export default function SequenceRunnerErrorSuccessTest() {
         } catch (e) {
           console.error(`taskpool: error code: ${e.code}, info: ${e.message}`);
         }
-
       }
 
-      while (count1 < 10) {
+      while (count1 < 10 || count2 < 10) {
         await sleep(500)
       }
 
@@ -1104,8 +1085,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess022100', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
-
       let asyncLockTest = new AsyncLockTest()
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
@@ -1136,7 +1115,6 @@ export default function SequenceRunnerErrorSuccessTest() {
         } catch (e) {
           console.error(`taskpool: error code: ${e.code}, info: ${e.message}`);
         }
-
       }
 
       while (count1 < 10) {
@@ -1159,8 +1137,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess022200', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
-
       let asyncLockThenTest = new AsyncLockTestThen()
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
@@ -1190,7 +1166,6 @@ export default function SequenceRunnerErrorSuccessTest() {
         } catch (e) {
           console.error(`taskpool: error code: ${e.code}, info: ${e.message}`);
         }
-
       }
 
       while (count1 < 10) {
@@ -1213,8 +1188,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess022300', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
-
       let asyncLockCatchTest = new AsyncLockTestCatch()
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
@@ -1267,8 +1240,6 @@ export default function SequenceRunnerErrorSuccessTest() {
      */
     it('TestSequenceRunnerErrorSuccess022400', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
-
       let asyncLockFinallyTest = new AsyncLockTestFinally()
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 

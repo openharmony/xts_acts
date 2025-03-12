@@ -68,8 +68,8 @@ export default function taskPoolSequenceRunnerActTest() {
         const task1: taskpool.Task = new taskpool.Task(printArgs10, 1);
         const task2: taskpool.Task = new taskpool.Task(printArgs10, 2);
 
-        // 顺序执行任务
-        await runner.execute(task1).then((result) => {
+        // 并发执行任务
+        runner.execute(task1).then((result) => {
           count1++;
           let work = new worker.ThreadWorker('../testability/pages/workers/WorkerTaskGroup.ets');
           work.postMessage('1')
@@ -80,7 +80,7 @@ export default function taskPoolSequenceRunnerActTest() {
           console.error( 'testTag', 'Task1 Error: %{public}s', err.message);
         });
 
-        await runner.execute(task2).then((result) => {
+        runner.execute(task2).then((result) => {
           count2++;
           let work = new worker.ThreadWorker('../testability/pages/workers/WorkerTaskGroup.ets');
           work.postMessage('1')

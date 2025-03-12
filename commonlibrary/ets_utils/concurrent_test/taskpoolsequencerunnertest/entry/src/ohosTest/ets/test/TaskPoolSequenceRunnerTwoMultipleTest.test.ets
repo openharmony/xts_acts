@@ -68,7 +68,6 @@ export default function taskPoolSequenceRunnerTwoMultipleTest() {
       }
 
       let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-
       let count: number = 0
 
       for (let i = 0; i < 100; i++) {
@@ -117,7 +116,6 @@ export default function taskPoolSequenceRunnerTwoMultipleTest() {
       let runner4: taskpool.SequenceRunner = new taskpool.SequenceRunner(taskpool.Priority.MEDIUM);
 
       let count: number = 0
-
       let runner: Array<taskpool.SequenceRunner> = [
         runner1,
         runner2,

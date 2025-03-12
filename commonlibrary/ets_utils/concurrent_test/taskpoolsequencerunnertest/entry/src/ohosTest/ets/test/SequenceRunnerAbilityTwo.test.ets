@@ -109,6 +109,16 @@ export default function sequenceRunnerAbilityTest_2() {
       // This API supports only one parameter: preset action function.
     })
     beforeEach(() => {
+      //正常计数
+      task1Count = 0;
+      task2Count = 0;
+      //异常计数
+      task3Count = 0;
+      task4Count = 0;
+      array1 = [];
+      array2 = [];
+      er = '';
+      ir = '';
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.

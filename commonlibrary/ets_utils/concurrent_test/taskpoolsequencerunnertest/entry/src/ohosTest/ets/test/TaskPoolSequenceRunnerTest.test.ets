@@ -66,7 +66,6 @@ export default function TaskPoolSequenceRunnerTest() {
     it('TestSequenceRunner0100', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-
       Count1.count = 0
       Count2.count = 0
 
@@ -111,7 +110,6 @@ export default function TaskPoolSequenceRunnerTest() {
     it('TestSequenceRunner0200', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-
       Count3.count = 0
       Count4.count = 0
       let count1: number = 0
@@ -171,7 +169,6 @@ export default function TaskPoolSequenceRunnerTest() {
     it('TestSequenceRunner0300', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-
       Count1.count = 0
       Count2.count = 0
 
@@ -187,7 +184,6 @@ export default function TaskPoolSequenceRunnerTest() {
           Count2.count++
           console.log("count2:" + Count2.count)
         })
-
       }
 
       while (Count1.count < 10 || Count2.count < 10) {
@@ -212,7 +208,6 @@ export default function TaskPoolSequenceRunnerTest() {
     it('TestSequenceRunner0400', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-
       Count3.count = 0
       Count4.count = 0
       let count1: number = 0
@@ -268,7 +263,6 @@ export default function TaskPoolSequenceRunnerTest() {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let name1: String = ''
       let name2: String = ''
-
       Count1.count = 0
       Count2.count = 0
 
@@ -312,7 +306,6 @@ export default function TaskPoolSequenceRunnerTest() {
     it('TestSequenceRunner0600', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
-
       Count1.count = 0
       Count2.count = 0
 
@@ -540,6 +533,7 @@ export default function TaskPoolSequenceRunnerTest() {
         let task1: taskpool.Task = new taskpool.Task(printArgs3, Count3.count)
         let task2: taskpool.Task = new taskpool.Task(printArgs4, Count4.count)
         task1.onEnqueued(() => {
+          Count1.count++
           console.info("taskpool: onEnqueued" + count1)
         });
         sequenceRunner.execute(task1).then(() => {
@@ -550,6 +544,7 @@ export default function TaskPoolSequenceRunnerTest() {
         })
 
         task2.onEnqueued(() => {
+          Count2.count++
           console.info("taskpool: onEnqueued" + count2)
         });
         sequenceRunner.execute(task2).then(() => {
@@ -560,12 +555,14 @@ export default function TaskPoolSequenceRunnerTest() {
         })
       }
 
-      while (count1 < 10 || count2 < 10) {
+      while (count1 < 10 || count2 < 10 || Count1.count < 10 || Count2.count < 10) {
         await sleep(1000)
       }
 
       expect(10).assertEqual(count1)
       expect(10).assertEqual(count2)
+      expect(10).assertEqual(Count1.count)
+      expect(10).assertEqual(Count2.count)
       Count3.count = 0
       Count4.count = 0
       Done()
@@ -701,7 +698,6 @@ export default function TaskPoolSequenceRunnerTest() {
       for (let i = 0; i < 10; i++) {
         let task1: taskpool.Task = new taskpool.Task(printArgs3, 1)
         let task2: taskpool.Task = new taskpool.Task(printArgs4, 1)
-
         task1.onExecutionFailed((e: Error) => {
           count1++
           console.info("task1.count1:" + count1)
@@ -746,7 +742,6 @@ export default function TaskPoolSequenceRunnerTest() {
       let count2: number = 0
 
       for (let i = 0; i < 10; i++) {
-
         let task1: taskpool.Task = new taskpool.Task(printArgs3, 1)
         let task2: taskpool.Task = new taskpool.Task(printArgs4, 1)
 
@@ -798,7 +793,6 @@ export default function TaskPoolSequenceRunnerTest() {
      */
     it('sequenceRunner1500', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
       let count2: number = 0
@@ -846,7 +840,6 @@ export default function TaskPoolSequenceRunnerTest() {
      */
     it('sequenceRunner1600', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
       let count2: number = 0
@@ -902,7 +895,6 @@ export default function TaskPoolSequenceRunnerTest() {
      */
     it('sequenceRunner1700', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
       let count2: number = 0
@@ -950,7 +942,6 @@ export default function TaskPoolSequenceRunnerTest() {
      */
     it('sequenceRunner1800', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1: number = 0
       let count2: number = 0
@@ -1004,7 +995,6 @@ export default function TaskPoolSequenceRunnerTest() {
      */
     it('sequenceRunner1900', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
       for (let i = 0; i < 10; i++) {
@@ -1039,7 +1029,6 @@ export default function TaskPoolSequenceRunnerTest() {
      */
     it('sequenceRunner2000', 0, async (Done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
       for (let i = 0; i < 10; i++) {
