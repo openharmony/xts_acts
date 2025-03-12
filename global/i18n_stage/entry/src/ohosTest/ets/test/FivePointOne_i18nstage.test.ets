@@ -503,7 +503,7 @@ export default function FivePointOne_i18nStageTest() {
       let date: Date = new Date(2024, 11, 13, 6, 30, 25);
       let skeletonFormatter: i18n.SimpleDateTimeFormat = i18n.getSimpleDateTimeFormatBySkeleton("yMdhms", locale);
       let dateFormatted: string = skeletonFormatter.format(date);
-      expect(dateFormatted == "2021/12/13 上午6:30:25").assertTrue();
+      expect(dateFormatted == "2024/12/13 上午6:30:25").assertTrue();
     })
 
     console.log('*************end FivePointOne_i18nStageTest*************');
