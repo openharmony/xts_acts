@@ -1,13 +1,13 @@
 /**
- * Copyright (c) 2025 Shenzhen Kaihong Digital Industry Development Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -26,7 +26,7 @@ export default class UiAbility04 extends UIAbility {
   onCreate(want, launchParam) {
     console.info('UiAbility04 onCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    // globalThis.uiAbilityContext4 = this.context
+    globalThis.uiAbilityContext4 = this.context
     let uri = want?.uri
     console.info('UiAbility04 JSON.stringify(want) is',JSON.stringify(want));
     if(want.parameters.appLinkingOnly == true){
@@ -49,27 +49,24 @@ export default class UiAbility04 extends UIAbility {
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
     });
-    // globalThis.uiAbilityContext4.terminateSelfWithResult(
-    //   {
-    //     resultCode: 100,
-    //     want: {
-    //       parameters: {
-    //         keyString: 'str',
-    //         keyNumber: 200,
-    //         keyObj: {
-    //           keyObjKey: 'objValue',
-    //         }
-    //       }
-    //     }
-    //   }, () => {
-    //   console.log("====>terminateSelfWithResult success====>")
-    //   commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-    //     console.info('====>SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2200 publish ACTS_TEST_DESTROY');
-    //   })
-    // });
-    commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-      console.info('====>SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2200 publish ACTS_TEST_DESTROY');
-    })
+    globalThis.uiAbilityContext4.terminateSelfWithResult(
+      {
+        resultCode: 100,
+        want: {
+          parameters: {
+            keyString: 'str',
+            keyNumber: 200,
+            keyObj: {
+              keyObjKey: 'objValue',
+            }
+          }
+        }
+      }, () => {
+      console.log("====>terminateSelfWithResult success====>")
+      commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+        console.info('====>SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2200 publish ACTS_TEST_DESTROY');
+      })
+    });
   }
 
   onWindowStageDestroy() {

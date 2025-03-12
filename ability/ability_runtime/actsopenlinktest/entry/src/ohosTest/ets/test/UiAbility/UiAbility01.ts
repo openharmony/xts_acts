@@ -1,13 +1,13 @@
 /**
- * Copyright (c) 2025 Shenzhen Kaihong Digital Industry Development Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -31,9 +31,6 @@ export default class UiAbility01 extends UIAbility {
     console.info('UiAbility01 JSON.stringify(want) is',JSON.stringify(want));
     if(want.parameters.appLinkingOnly == false){
       console.log("SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1000 appLinkingOnly == false  ")
-      // commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-      //   console.info('====>SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1000 publish ACTS_TEST_DESTROY');
-      // });
     }
   }
 
@@ -42,7 +39,6 @@ export default class UiAbility01 extends UIAbility {
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
-    // Main window is created, set main page for this ability
     console.info('UiAbility01 onWindowStageCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
@@ -56,12 +52,10 @@ export default class UiAbility01 extends UIAbility {
   }
 
   onWindowStageDestroy() {
-    // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
   onForeground() {
-    // Ability has brought to foreground
     console.info('UiAbility01 onForeground');
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
     globalThis.uiAbilityContext1.terminateSelfWithResult(
