@@ -185,7 +185,7 @@ export default function BitVectorTest() {
         bitVector.push(1);
         bitVector.push(1);
         bitVector.push(1);
-        let res0 = bitVector.has(1, 3, 5);
+        let res0 = bitVector.has(1, 3, 6);
         expect(res0).assertEqual(true);
         let res1 = bitVector.has(1, 0, 2);
         expect(res1).assertEqual(false);
@@ -219,7 +219,7 @@ export default function BitVectorTest() {
           expect(err.name).assertEqual(`BusinessError`);
           expect(err.code).assertEqual(10200001);
           expect(err.message)
-            .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && < 8. Received value is: -3`);
+            .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: -3`);
         }
     });
     /**
@@ -274,7 +274,7 @@ export default function BitVectorTest() {
           expect(err.name).assertEqual(`BusinessError`);
           expect(err.code).assertEqual(10200001);
           expect(err.message)
-            .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && < 8. Received value is: -3`);
+            .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: -3`);
         }
     });
     /**
@@ -296,7 +296,7 @@ export default function BitVectorTest() {
         bitVector.push(1);
         bitVector.push(0);
         try {
-          let res = bitVector.has(0, -3, 7);
+          let res = bitVector.has(0, -3, 8);
           expect(true).assertEqual(false);
         } catch (err) {
           expect(err.name).assertEqual(`BusinessError`);
@@ -328,7 +328,7 @@ export default function BitVectorTest() {
         expect(bitVector.length).assertEqual(64);
         let res0 = bitVector.has(1, 0, 31);
         expect(res0).assertEqual(false);
-        let res1 = bitVector.has(1, 32, 63);
+        let res1 = bitVector.has(1, 32, 64);
         expect(res1).assertEqual(true);
         let res2 = bitVector.has(0, 0, 32);
         expect(res2).assertEqual(true);
@@ -358,7 +358,7 @@ export default function BitVectorTest() {
         expect(bitVector.length).assertEqual(bitVectorLength + 10);
         let res0 = bitVector.has(1, 10, 41);
         expect(res0).assertEqual(false);
-        let res1 = bitVector.has(1, 42, (bitVectorLength + 10) - 1);
+        let res1 = bitVector.has(1, 42, bitVectorLength + 10);
         expect(res1).assertEqual(true);
         let res2 = bitVector.has(0, 10, 42);
         expect(res2).assertEqual(true);

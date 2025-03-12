@@ -126,7 +126,7 @@ export default function collectionsBitVectorTest() {
       await taskpool.execute(test001, t).catch((err: Error) => {
         console.log("taskpool execute fail" + err);
       })
-      if (await t.Has(0, 0, 0)) {
+      if (await t.Has(0, 0, 1)) {
           console.info("SendableTest: test success");
       } else {
           console.error("SendableTest: test fail");
