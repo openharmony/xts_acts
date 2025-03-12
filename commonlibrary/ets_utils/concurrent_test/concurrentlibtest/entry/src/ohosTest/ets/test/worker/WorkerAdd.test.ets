@@ -14,7 +14,7 @@
  */
 
 import { describe, it, expect, afterEach } from '@ohos/hypium';
-import { JSON, MessageEvents, worker } from '@kit.ArkTS';
+import { JSON, MessageEvents, worker, ThreadWorkerPriority } from '@kit.ArkTS';
 import { Sleep } from '../utils/utils';
 
 declare class ArkTools {
