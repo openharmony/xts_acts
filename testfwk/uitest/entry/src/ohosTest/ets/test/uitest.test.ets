@@ -890,7 +890,7 @@ export default function UiTest() {
             console.log(TestTag, 'testScrollSearchVertical end');
         })
 
-        
+
 
         /*
         * @tc.number: UiTest_API16_019
@@ -1085,30 +1085,34 @@ export default function UiTest() {
             expect(text == 'longClick').assertTrue()
         })
 
-        
+
 
         /*
          * @tc.number: uiTest_11004
          * @tc.name: testMouseMoveWithTrack
          * @tc.desc: swipe on the screen between the specified points with mouse.
          */
-        it('testMouseMoveWithTrack', 0, async () => {
+		it('testMouseMoveWithTrack', 0, async () => {
            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
            let driver = Driver.create()
            await driver.delayMs(waitUiReadyMs)
            let Button = await driver.findComponent(ON.id('jump'))
            if (Button == null) {
-              let scorll = await driver.findComponent(ON.type('Scroll'))
-              Button = await scorll.scrollSearch(ON.id('jump'))
+             let scorll = await driver.findComponent(ON.type('Scroll'))
+             Button = await scorll.scrollSearch(ON.id('jump'))
             }
             let center = await Button.getBoundsCenter()
             await driver.mouseMoveTo(center)
             await driver.delayMs(waitUiReadyMs)
-            await driver.mouseMoveWithTrack(center, center, 600)
+            let checkBox = await driver.findComponent(ON.type('Checkbox'))
+            if (checkBox != null) {
+               let center2 = await checkBox.getBoundsCenter()
+               await driver.mouseMoveWithTrack(center, center2, 600)
+            }
             await driver.delayMs(waitUiReadyMs)
             let newButton = await driver.findComponent(ON.text('jump'))
             expect(newButton == null).assertTrue()
-        }) 
+        })
 
 
         /*
@@ -1239,7 +1243,7 @@ export default function UiTest() {
             expect(bounds1.right >= bounds2.right).assertTrue()
         })
 
-        
+
 
         /*
          * @tc.number: uiTest_10003
@@ -1817,7 +1821,7 @@ export default function UiTest() {
             await stopApplication('com.uitestScene.acts')
         })
 
-        
+
 
         /*
          * @tc.number: uiTest_9024
@@ -2388,9 +2392,9 @@ export default function UiTest() {
             await stopApplication('com.uitestScene.acts')
         })
 
-        
 
-        
+
+
 
         /*
          * @tc.number: uiTest_9051
@@ -2404,7 +2408,7 @@ export default function UiTest() {
             await stopApplication('com.uitestScene.acts')
         })
 
-        
+
 
         /*
          * @tc.number: uiTest_9053
@@ -2419,9 +2423,9 @@ export default function UiTest() {
             await stopApplication('com.uitestScene.acts')
         })
 
-        
 
-        
+
+
 
         /*
          * @tc.number: uiTest_9056
