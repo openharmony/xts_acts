@@ -1093,27 +1093,23 @@ export default function UiTest() {
          * @tc.desc: swipe on the screen between the specified points with mouse.
          */
         it('testMouseMoveWithTrack', 0, async () => {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            await driver.delayMs(waitUiReadyMs)
-            let Button1 = await driver.findComponent(ON.id('jump'))
-            if (Button1 == null) {
-                let scorll = await driver.findComponent(ON.type('Scroll'))
-                Button1 = await scorll.scrollSearch(ON.id('jump'))
-            }
-            let Button2 = await driver.findComponent(ON.text('next page'))
-            if (Button2 == null) {
-                let scorll = await driver.findComponent(ON.type('Scroll'))
-                Button2 = await scorll.scrollSearch(ON.id('next page'))
-            }
-            let center1 = await Button1.getBoundsCenter()
-            let center2 = await Button2.getBoundsCenter()
-            await driver.mouseMoveTo(center1)
-            await driver.delayMs(waitUiReadyMs)
-            await driver.mouseMoveWithTrack(center1, center2, 600)
-            await driver.delayMs(waitUiReadyMs)
-            let newButton = await driver.findComponent(ON.text('jump'))
-            expect(newButton == null).assertTrue()
-        })
+          await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+          let driver = Driver.create()
+          await driver.delayMs(waitUiReadyMs)
+          let Button = await driver.findComponent(ON.id('jump'))
+          if (Button == null) {
+            let scorll = await driver.findComponent(ON.type('Scroll'))
+            Button = await scorll.scrollSearch(ON.id('jump'))
+          }
+          let center = await Button.getBoundsCenter()
+          await driver.mouseMoveTo(center)
+          await driver.delayMs(waitUiReadyMs)
+          await driver.mouseMoveWithTrack(center,{x:20,y:20}, 600)
+          await driver.delayMs(waitUiReadyMs)
+          let newButton = await driver.findComponent(ON.text('jump'))
+          expect(newButton == null).assertTrue()
+    })
+
 
         /*
          * @tc.number: uiTest_11005
