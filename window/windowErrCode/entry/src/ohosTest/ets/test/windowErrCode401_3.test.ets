@@ -55,7 +55,7 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setWindowTouchable. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()
@@ -101,7 +101,7 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to call setWindowTouchable. Cause:' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect().assertFail();
             done()
             return;
           }
@@ -158,7 +158,7 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call setRaiseByClickEnabled. Cause:' + JSON.stringify(exception));
         await win!.destroyWindow()
-        expect(exception.code).assertEqual(401);
+        expect().assertFail();
         done()
       }
     })
@@ -197,7 +197,7 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to call setResizeByDragEnabled. Cause:' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect().assertFail();
             done()
             return;
           }
@@ -247,7 +247,7 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setResizeByDragEnabled. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()
@@ -293,7 +293,7 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setWindowLimits. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()
@@ -471,7 +471,7 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setWindowTitle. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()
@@ -695,7 +695,7 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setWindowMask. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()
@@ -798,6 +798,63 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
     })
 
     /**
+     * @tc.number     : testSetTitleAndDockHoverShownPromiseErrCode401_0100
+     * @tc.name       : testSetTitleAndDockHoverShownPromiseErrCode401_0100
+     * @tc.desc       : testSetTitleAndDockHoverShownPromiseErrCode401_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testSetTitleAndDockHoverShownPromiseErrCode401_0100', 0, async (done: Function) => {
+      {
+        let caseName = "testSetTitleAndDockHoverShownPromiseErrCode401_0100";
+        let msgStr = 'jsunittest ' + caseName + ' ';
+        console.log(msgStr + 'begin.');
+
+        let windowConfig: ohosWindow.Configuration = {
+          name: "testSetTitleAndDockHoverShownPromiseErrCode401_0100",
+          windowType: ohosWindow.WindowType.TYPE_DIALOG,
+          ctx: context,
+        };
+        let win: ohosWindow.Window | undefined = undefined;
+        try {
+          win = await ohosWindow.createWindow(windowConfig);
+          expect(!!win).assertTrue();
+        } catch (err) {
+          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+          expect().assertFail();
+          done()
+        }
+
+        try {
+          await win!.setTitleAndDockHoverShown(null, null).then(async () => {
+            console.info(msgStr + 'Succeeded in calling setTitleAndDockHoverShown.');
+            expect().assertFail();
+          }).catch(async (err: BusinessError) => {
+            console.error(msgStr + 'Failed to call setTitleAndDockHoverShown. Cause: ' + JSON.stringify(err));
+            if (err.code == 801) {
+              console.info(msgStr + '此设备不支持setTitleAndDockHoverShown能力.');
+            } else {
+              expect(err.code).assertEqual(401);
+            }
+          });
+          await win!.destroyWindow()
+          done()
+        } catch (exception) {
+          console.error(msgStr + 'Failed to set the call setTitleAndDockHoverShown. Cause:' +
+          JSON.stringify(exception));
+          await win!.destroyWindow()
+          if (exception.code == 801) {
+            console.info(msgStr + '此设备不支持setTitleAndDockHoverShown能力.');
+          } else {
+            expect().assertFail();
+          }
+          done()
+        }
+      }
+    })
+
+    /**
      * @tc.number     : testLoadContentByNameCallbackErrCode401_0300
      * @tc.name       : testLoadContentByNameCallbackErrCode401_0300
      * @tc.desc       : testLoadContentByNameCallbackErrCode401_0300
@@ -815,7 +872,7 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect().assertFail();
             done()
             return;
           }
@@ -848,7 +905,7 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect().assertFail();
             done()
             return;
           }
@@ -882,7 +939,7 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call loadContentByName. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
         });
         done()
       } catch (exception) {
@@ -1059,6 +1116,46 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
     })
 
     /**
+     * @tc.number     : testSetWindowModalPromiseErrCode401_0100
+     * @tc.name       : testSetWindowModalPromiseErrCode401_0100
+     * @tc.desc       : testSetWindowModalPromiseErrCode401_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testSetWindowModalPromiseErrCode401_0100', 0, async (done: Function) => {
+      {
+        let caseName = "testSetWindowModalPromiseErrCode401_0100";
+        let msgStr = 'jsunittest ' + caseName + ' ';
+        console.log(msgStr + 'begin.');
+
+        try {
+          await windowStage.setWindowModal(null).then(async () => {
+            console.info(msgStr + 'Succeeded in calling setWindowModal.');
+            expect().assertFail();
+          }).catch(async (err: BusinessError) => {
+            console.error(msgStr + 'Failed to call setWindowModal. Cause: ' + JSON.stringify(err));
+            if (err.code == 801) {
+              console.info(msgStr + '此设备不支持setWindowModal能力.');
+            } else {
+              expect().assertFail();
+            }
+          });
+          done()
+        } catch (exception) {
+          console.error(msgStr + 'Failed to set the call setWindowModal. Cause:' + JSON.stringify(exception));
+          if (exception.code == 801) {
+            console.info(msgStr + '此设备不支持setWindowModal能力.');
+            done();
+          } else {
+            expect(exception.code).assertEqual(401);
+            done();
+          }
+        }
+      }
+    })
+
+    /**
      * @tc.number     : testSetWindowRectAutoSavePromiseErrCode401_0100
      * @tc.name       : testSetWindowRectAutoSavePromiseErrCode401_0100
      * @tc.desc       : testSetWindowRectAutoSavePromiseErrCode401_0100
@@ -1077,7 +1174,7 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setWindowRectAutoSave. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
         });
         done()
       } catch (exception) {

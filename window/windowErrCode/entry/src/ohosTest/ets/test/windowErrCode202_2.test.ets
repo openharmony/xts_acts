@@ -507,7 +507,7 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
           console.error(msgStr + 'Failed to set the call setSingleFrameComposerEnabled. Cause:' +
           JSON.stringify(exception));
           await win!.destroyWindow()
-          expect(exception.code).assertEqual(202);
+          expect().assertFail();
           done()
         }
       }
@@ -641,7 +641,7 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call enableDrag. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(202);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()

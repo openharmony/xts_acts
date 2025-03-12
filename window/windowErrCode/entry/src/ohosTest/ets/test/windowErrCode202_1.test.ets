@@ -51,7 +51,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to call toggleShownStateForAllAppWindows. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(202);
+        expect().assertFail();
         done()
       }
     })
@@ -82,7 +82,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call toggleShownStateForAllAppWindows. Cause:' +
         JSON.stringify(exception));
-        expect(exception.code).assertEqual(202);
+        expect().assertFail();
         done()
       }
     })
@@ -106,7 +106,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
             const errCode: number = err.code;
             if (errCode) {
               console.error(msgStr + 'Failed to call setWindowLayoutMode. Cause:' + JSON.stringify(err));
-              expect(err.code).assertEqual(202);
+              expect().assertFail();
               done()
               return;
             }
@@ -141,7 +141,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
           done()
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setWindowLayoutMode. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(202);
+          expect().assertFail();
           done()
         });
       } catch (exception) {
@@ -179,7 +179,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to call setGestureNavigationEnabled. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(202);
+        expect().assertFail();
         done()
       }
     })
@@ -210,7 +210,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call setGestureNavigationEnabled. Cause:' +
         JSON.stringify(exception));
-        expect(exception.code).assertEqual(202);
+        expect().assertFail();
         done()
       }
     })
@@ -242,7 +242,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to call setWaterMarkImage. Cause:' + JSON.stringify(err));
-            expect(err.code).assertEqual(202);
+            expect().assertFail();
             done()
             return;
           }
@@ -285,7 +285,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
           done()
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setWaterMarkImage. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(202);
+          expect().assertFail();
           done()
         });
       } catch (exception) {
@@ -420,7 +420,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       } catch (exception) {
         console.error(msgStr + 'Failed to call hide. Cause:' + JSON.stringify(exception));
         await win!.destroyWindow()
-        expect(exception.code).assertEqual(202);
+        expect().assertFail();
         done()
       }
     })
@@ -465,7 +465,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call hide. Cause:' + JSON.stringify(exception));
         await win!.destroyWindow()
-        expect(exception.code).assertEqual(202);
+        expect().assertFail();
         done()
       }
     })
@@ -514,7 +514,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       } catch (exception) {
         console.error(msgStr + 'Failed to call hideWithAnimation. Cause:' + JSON.stringify(exception));
         await win!.destroyWindow()
-        expect(exception.code).assertEqual(202);
+        expect().assertFail();
         done()
       }
     })
@@ -559,7 +559,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call hideWithAnimation. Cause:' + JSON.stringify(exception));
         await win!.destroyWindow()
-        expect(exception.code).assertEqual(202);
+        expect().assertFail();
         done()
       }
     })
@@ -608,7 +608,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       } catch (exception) {
         console.error(msgStr + 'Failed to call showWithAnimation. Cause:' + JSON.stringify(exception));
         await win!.destroyWindow()
-        expect(exception.code).assertEqual(202);
+        expect().assertFail();
         done()
       }
     })
@@ -653,7 +653,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call showWithAnimation. Cause:' + JSON.stringify(exception));
         await win!.destroyWindow()
-        expect(exception.code).assertEqual(202);
+        expect().assertFail();
         done()
       }
     })
@@ -691,7 +691,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to call setWindowMode. Cause:' + JSON.stringify(err));
-            expect(err.code).assertEqual(202);
+            expect().assertFail();
             done()
             return;
           }
@@ -740,7 +740,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setWindowMode. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(202);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()
@@ -794,7 +794,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
             expect().assertFail();
           }).catch(async (err: BusinessError) => {
             console.error(msgStr + 'Failed to call bindDialogTarget. Cause: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(202);
+            expect().assertFail();
           });
           await win!.destroyWindow()
         } catch (exception) {
@@ -847,7 +847,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
             const errCode: number = err.code;
             if (errCode) {
               console.error(msgStr + 'Failed to call bindDialogTarget. Cause:' + JSON.stringify(err));
-              expect(err.code).assertEqual(202);
+              expect().assertFail();
               done()
               return;
             }
@@ -897,7 +897,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setTopmost. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(202);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()
@@ -942,7 +942,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call requestFocus. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(202);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()
@@ -1087,7 +1087,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       } catch (exception) {
         console.error(msgStr + 'Failed to call setForbidSplitMove. Cause:' + JSON.stringify(exception));
         await win!.destroyWindow()
-        expect(exception.code).assertEqual(202);
+        expect().assertFail();
         done()
       }
     })
@@ -1133,7 +1133,7 @@ export default function windowErrCode202_1(context: common.UIAbilityContext, win
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call setForbidSplitMove. Cause:' + JSON.stringify(exception));
         await win!.destroyWindow()
-        expect(exception.code).assertEqual(202);
+        expect().assertFail();
         done()
       }
     })

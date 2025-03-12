@@ -59,7 +59,7 @@ export default function windowErrCode1300002_2(context: common.UIAbilityContext,
         done()
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call recover. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })
@@ -102,7 +102,7 @@ export default function windowErrCode1300002_2(context: common.UIAbilityContext,
         done()
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call restore. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })
@@ -221,7 +221,7 @@ export default function windowErrCode1300002_2(context: common.UIAbilityContext,
         done()
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call setWindowTitle. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })
@@ -457,7 +457,7 @@ export default function windowErrCode1300002_2(context: common.UIAbilityContext,
         done()
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call enableLandscapeMultiWindow. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })
@@ -495,7 +495,7 @@ export default function windowErrCode1300002_2(context: common.UIAbilityContext,
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call startMoving. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(1300002);
+          expect().assertFail();
         });
         done()
       } catch (exception) {
@@ -544,7 +544,7 @@ export default function windowErrCode1300002_2(context: common.UIAbilityContext,
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call disableLandscapeMultiWindow. Cause:' +
         JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })
@@ -626,7 +626,7 @@ export default function windowErrCode1300002_2(context: common.UIAbilityContext,
         done()
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call setWindowGrayScale. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })
@@ -743,7 +743,7 @@ export default function windowErrCode1300002_2(context: common.UIAbilityContext,
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call createSubWindowWithOptions. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(1300002);
+          expect().assertFail();
         });
         done()
       } catch (exception) {
@@ -790,7 +790,7 @@ export default function windowErrCode1300002_2(context: common.UIAbilityContext,
         done()
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call setTitleAndDockHoverShown. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })

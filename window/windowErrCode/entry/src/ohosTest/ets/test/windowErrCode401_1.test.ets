@@ -41,7 +41,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           done()
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call shiftAppWindowFocus. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
           done()
         });
       } catch (exception) {
@@ -70,7 +70,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           done()
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call getWindowsByCoordinate. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
           done()
         });
       } catch (exception) {
@@ -100,7 +100,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           done()
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call getAllWindowLayoutInfo. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
           done()
         });
       } catch (exception) {
@@ -144,7 +144,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call moveWindowTo. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()
@@ -190,7 +190,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to call moveWindowTo. Cause:' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect().assertFail();
             done()
             return;
           }
@@ -240,7 +240,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call moveWindowToAsync. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()
@@ -286,7 +286,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call moveWindowToGlobal. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()
@@ -332,7 +332,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to call moveWindowTo. Cause:' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect().assertFail();
             done()
             return;
           }
@@ -382,7 +382,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call moveWindowToGlobal. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()
@@ -428,7 +428,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to call setWindowSystemBarEnable. Cause:' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect().assertFail();
             done()
             return;
           }
@@ -478,7 +478,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setWindowSystemBarEnable. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()
@@ -523,7 +523,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setSpecificSystemBarEnabled. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()
@@ -570,7 +570,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setGestureBackEnabled. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()
@@ -616,7 +616,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setPreferredOrientation. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()
@@ -662,7 +662,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to call setPreferredOrientation. Cause:' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect().assertFail();
             done()
             return;
           }
@@ -712,7 +712,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect().assertFail();
             done()
             return;
           }
@@ -763,7 +763,7 @@ export default function windowErrCode401_1(context: common.UIAbilityContext, win
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call loadContentByName. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
         });
         await win!.destroyWindow()
         done()

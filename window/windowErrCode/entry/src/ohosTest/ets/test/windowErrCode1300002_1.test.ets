@@ -58,7 +58,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
         done()
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call moveWindowToAsync. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })
@@ -100,7 +100,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
         done()
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call moveWindowToGlobal. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })
@@ -146,7 +146,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
         done()
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call moveWindowToGlobal. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })
@@ -268,7 +268,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call setSpecificSystemBarEnabled. Cause:' +
         JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })
@@ -390,7 +390,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })
@@ -434,7 +434,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
         done()
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call loadContentByName. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })
@@ -823,7 +823,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setWindowTopmost. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(1300002);
+          expect().assertFail();
         });
         done()
       } catch (exception) {
@@ -864,7 +864,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to call setAspectRatio. Cause:' + JSON.stringify(err));
-            expect(err.code).assertEqual(1300002);
+            expect().assertFail();
             done()
             return;
           }
@@ -911,7 +911,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setAspectRatio. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(1300002);
+          expect().assertFail();
         });
         done()
       } catch (exception) {
@@ -952,7 +952,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + 'Failed to call resetAspectRatio. Cause:' + JSON.stringify(err));
-            expect(err.code).assertEqual(1300002);
+            expect().assertFail();
             done()
             return;
           }
@@ -999,7 +999,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call resetAspectRatio. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(1300002);
+          expect().assertFail();
         });
         done()
       } catch (exception) {
@@ -1050,7 +1050,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to call minimize. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })
@@ -1092,7 +1092,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
         done()
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call minimize. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })
@@ -1129,7 +1129,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
           expect().assertFail();
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call maximize. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(1300002);
+          expect().assertFail();
         });
         done()
       } catch (exception) {
@@ -1180,7 +1180,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to call setResizeByDragEnabled. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })
@@ -1222,7 +1222,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
         done()
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call setResizeByDragEnabled. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })
@@ -1308,7 +1308,7 @@ export default function windowErrCode1300002_1(context: common.UIAbilityContext,
         done()
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call setWindowLimits. Cause:' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
         done()
       }
     })

@@ -22,6 +22,45 @@ export default function windowErrCode1300004(context: common.UIAbilityContext, w
     console.log('describe windowErrCode1300004 start!!!')
 
     /**
+     * @tc.number     : testOnSubWindowCloseErrCode1300004_0100
+     * @tc.name       : testOnSubWindowCloseErrCode1300004_0100
+     * @tc.desc       : testOnSubWindowCloseErrCode1300004_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOnSubWindowCloseErrCode1300004_0100', 0, async (done: Function) => {
+      let caseName = "testOnSubWindowCloseErrCode1300004_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+
+      let mainWindow: ohosWindow.Window | undefined;
+      await windowStage.getMainWindow().then((data) => {
+        mainWindow = data;
+        console.info(caseName + ' ' + 'Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      }).catch((err: BusinessError) => {
+        console.error(caseName + ' ' + 'Failed in obtaining the main window. Cuase: ' + JSON.stringify(err));
+        done()
+      });
+      expect(!!mainWindow).assertTrue();
+
+      try {
+        mainWindow!.on('subWindowClose', () => {
+        });
+        console.error(msgStr + 'Succeeded in calling on_subWindowClose.');
+        expect().assertFail();
+        done();
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call on_subWindowClose. Cause:' + JSON.stringify(exception));
+        if (exception.code == 801) {
+          console.info(msgStr + '此设备不支持on_subWindowClose能力.');
+        } else {
+          expect(exception.code).assertEqual(1300004);
+        }
+        done();
+      }
+    })
+    /**
      * @tc.number     : testMaximizePromiseErrCode1300004_0100
      * @tc.name       : testMaximizePromiseErrCode1300004_0100
      * @tc.desc       : testMaximizePromiseErrCode1300004_0100
@@ -56,7 +95,7 @@ export default function windowErrCode1300004(context: common.UIAbilityContext, w
           done()
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call maximize. Cause: ' + JSON.stringify(err));
-          expect(err.code).assertEqual(1300004);
+          expect().assertFail();
           done()
         });
       } catch (exception) {
