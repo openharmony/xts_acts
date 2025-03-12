@@ -109,9 +109,9 @@ struct WebViewMenuShowResult {
             case "emitCopy001": {
               this.userAgentPC = this.controller.getUserAgent();
               if ((this.userAgentPC).includes("Wearable")) {
-                  Utils.emitEvent(true, 3502)
-                  break;
-                } 
+                Utils.emitEvent(true, 3502)
+                break;
+              }
               let driver: Driver = Driver.create();
               webView.WebviewController.setWebDebuggingAccess(true);
               let atManager = abilityAccessCtrl.createAtManager();
