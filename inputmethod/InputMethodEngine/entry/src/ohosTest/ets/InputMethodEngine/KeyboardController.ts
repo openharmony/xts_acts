@@ -22,7 +22,7 @@ import commoneventmanager from '@ohos.commonEventManager';
 let inputMethodEngine = inputmethodengine.getInputMethodEngine();
 let inputKeyboardDelegate = inputmethodengine.createKeyboardDelegate();
 let inputMethodAbility = inputmethodengine.getInputMethodAbility();
-const TAG = "keyboardController";
+const TAG = 'keyboardController';
 
 export class KeyboardController {
   mContext;
@@ -42,8 +42,8 @@ export class KeyboardController {
   public onCreate(): void {
     this.initWindow();
     let that = this;
-    inputMethodAbility.on("inputStop", () => {
-      inputMethodAbility.off("inputStop", () => {
+    inputMethodAbility.on('inputStop', () => {
+      inputMethodAbility.off('inputStop', () => {
         console.log('====>inputMethodEngine delete inputStop notification.');
       });
       inputMethodEngine.off('inputStart', () =>{})
@@ -268,7 +268,7 @@ export class KeyboardController {
     }
 
     var commonEventSubscribeInfo = {
-      events: ["inputMethodEngineTest"]
+      events: ['inputMethodEngineTest']
     };
 
     var subscriber;
@@ -346,7 +346,7 @@ export class KeyboardController {
 
   private inputMethodEngine_test_getKeyboardDelegate_001(): void {
     console.info(TAG + '====>receive inputMethodEngine_test_getKeyboardDelegate_001 data');
-    if (typeof (inputKeyboardDelegate) === "object") {
+    if (typeof (inputKeyboardDelegate) === 'object') {
       console.info(TAG + '====>receive inputMethodEngine_test_getKeyboardDelegate_001 object');
       var commonEventPublishData = {
         data: 'SUCCESS'
@@ -833,18 +833,18 @@ export class KeyboardController {
     let t = setTimeout(async () => {
       clearTimeout(t);
       inputKeyboardDelegate.on('cursorContextChange', (x, y, h) => {
-        console.info(TAG + "====>inputKeyboardDelegate.on('cursorContextChange') count: " + count);
+        console.info(TAG + '====>inputKeyboardDelegate.on("cursorContextChange") count: ' + count);
         if (count === 1) {
           inputKeyboardDelegate.off('cursorContextChange');
           console.info(TAG + '====>inputMethodEngine_test_074 inputKeyboardDelegate.off');
         }
         count += 1;
-        console.info(TAG + '====>inputMethodEngine_test_074 x,y,z: ' + x + "---" + y + "---" + h);
+        console.info(TAG + '====>inputMethodEngine_test_074 x,y,z: ' + x + '---' + y + '---' + h);
       });
 
       let loop = 0;
       let t1 = setInterval(async () => {
-        await this.TextInputClient.insertText("ttt");
+        await this.TextInputClient.insertText('ttt');
         console.info(TAG + '====>keyboardController.insertText count: ' + count);
         console.info(TAG + '====>keyboardController.insertText loop: ' + loop);
         loop += 1;
@@ -876,8 +876,8 @@ export class KeyboardController {
       commonEventPublishData = {
         data: 'SUCCESS'
       };
-      console.info(TAG + '====>inputMethodEngine_test_076 oldBegin,oldEnd,newBegin,newEnd: ' + oldBegin + "---" +
-        oldEnd + "---" + newBegin + "---" + newEnd);
+      console.info(TAG + '====>inputMethodEngine_test_076 oldBegin,oldEnd,newBegin,newEnd: ' + oldBegin + '---' +
+        oldEnd + '---' + newBegin + '---' + newEnd);
     });
 
     let t = setTimeout(() => {
@@ -893,7 +893,7 @@ export class KeyboardController {
     console.info(TAG + '====>receive inputMethodEngine_test_077 success');
     let count = 0;
     inputKeyboardDelegate.on('textChange', (text) => {
-      console.info(TAG + "====>inputKeyboardDelegate.on('textChange') count:" + count);
+      console.info(TAG + '====>inputKeyboardDelegate.on("textChange") count:' + count);
       if (count === 1) {
         inputKeyboardDelegate.off('textChange');
       }
@@ -1445,7 +1445,7 @@ export class KeyboardController {
   async Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200(): Promise<void> {
     console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200 data');
     let commonEventPublishData = {
-        data: "FAILED"
+        data: 'FAILED'
     };
     try {
         let record: Record<string, inputmethodengine.CommandDataType> = {
