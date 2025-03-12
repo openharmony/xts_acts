@@ -458,7 +458,7 @@ export class KeyboardController {
   }
 
   public GetArrayBufferString(buffer: ArrayBuffer): string {
-    const decoder = util.TextDecoder.create('"utf-8"');
+    const decoder = util.TextDecoder.create('utf-8');
     const str = decoder.decodeWithStream(new Uint8Array(buffer));
     return str;
   }
@@ -1125,8 +1125,7 @@ export class KeyboardController {
     console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offShow_0190 success');
     try {
       if (this.softKeyboardPanel !== null) {
-        this.softKeyboardPanel.on('show', async (err) => {
-          console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offShow_0190 offShow if success: ' + JSON.stringify(err));
+        this.softKeyboardPanel.on('show', async () => {
           this.softKeyboardPanel.off('show');
           count += 1;
           console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offShow_0190 off Show count: ' + count);
@@ -1177,8 +1176,7 @@ export class KeyboardController {
     console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offHide_0200 success');
     try {
       if (this.softKeyboardPanel !== null) {
-        this.softKeyboardPanel.on('hide', async (err) => {
-          console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offHide_0200 offHide if success: ' + JSON.stringify(err));
+        this.softKeyboardPanel.on('hide', async () => {
           this.softKeyboardPanel.off('hide');
           count += 1;
           console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offHide_0200 off hide count: ' + count);
@@ -1420,7 +1418,7 @@ export class KeyboardController {
             console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 getCallingWindowInfo  status: ' + JSON.stringify(WindowInfo.status));
             if (typeof (WindowInfo) === 'object' && typeof (WindowInfo.rect) === 'object' && typeof (WindowInfo.status) === 'number') {
               commonEventPublishData = {
-                data: "SUCCESS"
+                data: 'SUCCESS'
               };
             };
             console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0100 getCallingWindowInfo WindowInfo:  success');
@@ -1447,7 +1445,7 @@ export class KeyboardController {
   private async Sub_InputMethod_IME_ScreenRotation_0100(): Promise<void> {
     console.info(TAG + '====>receive Sub_InputMethod_IME_ScreenRotation_0100 data');
     let commonEventPublishData = {
-        data: "FAILED"
+        data: 'FAILED'
     };
     try{
         let keyboardRect: inputMethodEngine.PanelRect = {
@@ -1456,19 +1454,19 @@ export class KeyboardController {
         };
         this.softKeyboardPanel.adjustPanelRect(inputMethodEngine.PanelFlag.FLG_FIXED, keyboardRect);
         commonEventPublishData = {
-          data: "SUCCESS"
+          data: 'SUCCESS'
         };
         console.info(TAG + '====>Sub_InputMethod_IME_ScreenRotation_0100 startAbility success' );
     } catch (err) {
         console.info(TAG + '====>Sub_InputMethod_IME_ScreenRotation_0100 err: ' + JSON.stringify(err));
     };
-    commoneventmanager.publish("Sub_InputMethod_IME_ScreenRotation_0100", commonEventPublishData, this.publishCallback);
+    commoneventmanager.publish('Sub_InputMethod_IME_ScreenRotation_0100', commonEventPublishData, this.publishCallback);
   }
 
   private async Sub_InputMethod_IME_ScreenRotation_0200(): Promise<void> {
     console.info(TAG + '====>receive Sub_InputMethod_IME_ScreenRotation_0200 data');
     let commonEventPublishData = {
-        data: "FAILED"
+        data: 'FAILED'
     };
     try{
         let keyboardRect: inputMethodEngine.PanelRect = {
@@ -1477,13 +1475,13 @@ export class KeyboardController {
         };
         this.softKeyboardPanel.adjustPanelRect(inputMethodEngine.PanelFlag.FLG_FLOATING, keyboardRect);
         commonEventPublishData = {
-          data: "SUCCESS"
+          data: 'SUCCESS'
         };
         console.info(TAG + '====>Sub_InputMethod_IME_ScreenRotation_0200 startAbility success' );
     } catch (err) {
         console.info(TAG + '====>Sub_InputMethod_IME_ScreenRotation_0200 err: ' + JSON.stringify(err));
     };
-    commoneventmanager.publish("Sub_InputMethod_IME_ScreenRotation_0200", commonEventPublishData, this.publishCallback);
+    commoneventmanager.publish('Sub_InputMethod_IME_ScreenRotation_0200', commonEventPublishData, this.publishCallback);
   }
 
   private async Sub_Misc_inputMethod_Panel_onSizeChange_0100(): Promise<void> {
@@ -1553,7 +1551,7 @@ export class KeyboardController {
           };
           timeCount += 1;
           console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 timeCount: ' + timeCount);
-          if (timeCount ===2) {
+          if (timeCount === 2) {
             clearInterval(t1)
             console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 clearInterval success');
           };
@@ -2015,7 +2013,7 @@ export class KeyboardController {
       commonEventPublishData = {
         data: 'on_SUCCESS'
       };
-      commoneventmanager.publish("Sub_InputMethod_IME_ShowTextInput_0100", commonEventPublishData, this.publishCallback);
+      commoneventmanager.publish('Sub_InputMethod_IME_ShowTextInput_0100', commonEventPublishData, this.publishCallback);
     } catch (error) {
       console.info(TAG + '====>receive Sub_InputMethod_IME_ShowTextInput_0100 catch error: ' + JSON.stringify(error));
     }
@@ -2353,11 +2351,11 @@ export class KeyboardController {
       if (err.code === 401) {
         console.info(TAG + '====>Sub_InputMethod_IME_FullScreenAbnormal_0800 Failed to adjustPanelRect err is ' + err);
         commonEventPublishData = {
-          data: "SUCCESS"
+          data: 'SUCCESS'
         };
       }
     };
-    commoneventmanager.publish("Sub_InputMethod_IME_FullScreenAbnormal_0800", commonEventPublishData, this.publishCallback);
+    commoneventmanager.publish('Sub_InputMethod_IME_FullScreenAbnormal_0800', commonEventPublishData, this.publishCallback);
   }
 
   private async Sub_InputMethod_IME_FullScreenAbnormal_0900(): Promise<void> {
@@ -2590,7 +2588,7 @@ export class KeyboardController {
   private async Sub_InputMethod_IME_Immersive_1000(): Promise<void> {
     console.info(TAG + '====>receive Sub_InputMethod_IME_Immersive_1000 data');
     let commonEventPublishData = {
-        data: "FAILED"
+        data: 'FAILED'
     };
     try {
       this.softKeyboardPanel.setImmersiveMode(inputMethodEngine.ImmersiveMode.LIGHT_IMMERSIVE);
@@ -3062,7 +3060,7 @@ export class KeyboardController {
   private async Sub_InputMethod_IME_ScreenRotation_0101(): Promise<void> {
     console.info(TAG + '====>receive Sub_InputMethod_IME_ScreenRotation_0101 data');
     let commonEventPublishData = {
-        data: "FAILED"
+        data: 'FAILED'
     };
     try {
       let keyboardRect: inputMethodEngine.PanelRect = {
