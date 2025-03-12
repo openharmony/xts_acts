@@ -18,6 +18,8 @@ import commonEventManager from '@ohos.commonEventManager';
 import router from '@ohos.router'
 import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import advertising from '@ohos.advertising';
+import webview from '@ohos.web.webview';
+import MyController from './MyController'
 
 const TAG: string = 'AdTestTag';
 const Domain: number = 0x0000;
@@ -539,6 +541,88 @@ export default function adsTest() {
         done();
       } catch (e) {
         hilog.error(Domain, TAG, 'show ad error, error code is %{public}d, error message is %{public}s.', e.code, e.message);
+        expect(e.code).assertLarger(0);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_CLOUD_AD_DELETE_WEB_INTERFACE_1500
+     * @tc.name: testDeleteWebAdInterface
+     * @tc.desc: testDeleteWebAdInterface.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testDeleteWebAdInterface_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, (done: Function) => {
+      try {
+        hilog.info(Domain, TAG, 'enter testShowAd');
+        advertising.deleteWebAdInterface(null, true);
+        done();
+      } catch (e) {
+        hilog.error(Domain, TAG, 'deleteWebAdInterface error, error code is %{public}d, error message is %{public}s.', e.code, e.message);
+        expect(e.code == 401).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_CLOUD_AD_DELETE_WEB_INTERFACE_1600
+     * @tc.name: testDeleteWebAdInterface_21800001
+     * @tc.desc: testDeleteWebAdInterface_21800001.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testDeleteWebAdInterface_21800001", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, (done: Function) => {
+      try {
+        let webController: webview.WebviewController = new MyController();
+        hilog.info(Domain, TAG, 'enter testShowAd');
+        advertising.deleteWebAdInterface(webController, true);
+        done();
+      } catch (e) {
+        hilog.error(Domain, TAG, 'deleteWebAdInterface error, error code is %{public}d, error message is %{public}s.', e.code, e.message);
+        expect(e.code == 21800001).assertTrue();
+        done();
+      }
+    })
+
+
+    /**
+     * @tc.number: SUB_CLOUD_AD_REGISTER_WEB_INTERFACE_1700
+     * @tc.name: tesRegisterWebAdInterface_three_param
+     * @tc.desc: tesRegisterWebAdInterface_three_param.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("tesRegisterWebAdInterface_three_param", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        let webController: webview.WebviewController = new webview.WebviewController();
+        advertising.registerWebAdInterface(webController, uiContext, true);
+        done();
+      } catch (e) {
+        expect(e.code).assertLarger(0);
+        done()
+      }
+    })
+
+    /**
+     * @tc.number: SUB_CLOUD_AD_DELETE_WEB_INTERFACE_1800
+     * @tc.name: testDeleteWebAdInterface
+     * @tc.desc: testDeleteWebAdInterface.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testDeleteWebAdInterface", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, (done: Function) => {
+      try {
+        hilog.info(Domain, TAG, 'enter testShowAd');
+        let webController: webview.WebviewController = new webview.WebviewController();
+        advertising.deleteWebAdInterface(webController, true);
+        done();
+      } catch (e) {
+        hilog.error(Domain, TAG, 'deleteWebAdInterface error, error code is %{public}d, error message is %{public}s.', e.code, e.message);
         expect(e.code).assertLarger(0);
         done();
       }
