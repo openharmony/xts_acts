@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
 import { ValuesBucket } from '@ohos.data.ValuesBucket';
 import common from "@ohos.app.ability.common";
@@ -96,7 +96,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetColumnNames001", 0, async (done: Function) => {
+    it("testResultSetColumnNames001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetColumnNames001 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -118,7 +118,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetColumnCount001", 0, async (done: Function) => {
+    it("testResultSetColumnCount001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetColumnCount001 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -140,7 +140,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetColumnCount002", 0, async (done: Function) => {
+    it("testResultSetColumnCount002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetColumnCount002 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -163,7 +163,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetRowCount001", 0, async (done: Function) => {
+    it("testResultSetRowCount001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetRowCount001 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -183,7 +183,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetRowCount002", 0, async (done: Function) => {
+    it("testResultSetRowCount002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetRowCount002 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       predicates.equalTo("name", "wangwu");
@@ -204,7 +204,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetRowCount003", 0, async (done: Function) => {
+    it("testResultSetRowCount003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetRowCount003 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       predicates.equalTo("data1", "hello");
@@ -225,7 +225,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetRowCount004", 0, async (done: Function) => {
+    it("testResultSetRowCount004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetRowCount004 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       predicates.equalTo("data1", "hello");
@@ -247,7 +247,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetRowIndex001", 0, async (done: Function) => {
+    it("testResultSetRowIndex001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetRowIndex001 *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -279,7 +279,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetRowIndex002", 0, async (done: Function) => {
+    it("testResultSetRowIndex002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetRowIndex002 *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -307,7 +307,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsAtFirstRow001", 0, async (done: Function) => {
+    it("testResultSetIsAtFirstRow001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsAtFirstRow001 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -339,7 +339,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsAtFirstRow002", 0, async (done: Function) => {
+    it("testResultSetIsAtFirstRow002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsAtFirstRow002 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -361,7 +361,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsAtFirstRow003", 0, async (done: Function) => {
+    it("testResultSetIsAtFirstRow003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsAtFirstRow003 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -394,7 +394,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsAtFirstRow004", 0, async (done: Function) => {
+    it("testResultSetIsAtFirstRow004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsAtFirstRow004 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -422,7 +422,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsAtFirstRow005", 0, async (done: Function) => {
+    it("testResultSetIsAtFirstRow005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsAtFirstRow005 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -455,7 +455,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsAtFirstRow006", 0, async (done: Function) => {
+    it("testResultSetIsAtFirstRow006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsAtFirstRow006 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -488,7 +488,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsAtLastRow001", 0, async (done: Function) => {
+    it("testResultSetIsAtLastRow001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsAtLastRow001 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -516,7 +516,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsAtLastRow002", 0, async (done: Function) => {
+    it("testResultSetIsAtLastRow002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsAtLastRow002 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -538,7 +538,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsAtLastRow003", 0, async (done: Function) => {
+    it("testResultSetIsAtLastRow003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsAtLastRow003 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -571,7 +571,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsAtLastRow004", 0, async (done: Function) => {
+    it("testResultSetIsAtLastRow004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsAtLastRow004 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -603,7 +603,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsAtLastRow005", 0, async (done: Function) => {
+    it("testResultSetIsAtLastRow005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsAtLastRow005 start *************");
       try {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -636,7 +636,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsAtLastRow006", 0, async (done: Function) => {
+    it("testResultSetIsAtLastRow006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsAtLastRow006 start *************");
       try {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -668,7 +668,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsEnded001", 0, async (done: Function) => {
+    it("testResultSetIsEnded001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       try {
         console.info(TAG + "************* testResultSetIsEnded001 start *************");
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -703,7 +703,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsEnded002", 0, async (done: Function) => {
+    it("testResultSetIsEnded002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsEnded002 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -729,7 +729,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsEnded003", 0, async (done: Function) => {
+    it("testResultSetIsEnded003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsEnded003 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -749,7 +749,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsStarted001", 0, async (done: Function) => {
+    it("testResultSetIsStarted001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsStarted001 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -768,7 +768,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsStarted002", 0, async (done: Function) => {
+    it("testResultSetIsStarted002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsStarted002 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -788,7 +788,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsStarted003", 0, async (done: Function) => {
+    it("testResultSetIsStarted003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsStarted003 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -810,7 +810,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsClosed001", 0, async (done: Function) => {
+    it("testResultSetIsClosed001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsClosed001 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -832,7 +832,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsClosed002", 0, async (done: Function) => {
+    it("testResultSetIsClosed002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsClosed002 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -852,7 +852,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsClosed003", 0, async (done: Function) => {
+    it("testResultSetIsClosed003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsClosed003 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       predicates.equalTo("name", "wangwu");
@@ -873,7 +873,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetColumnIndex001", 0, async (done: Function) => {
+    it("testResultSetGetColumnIndex001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetColumnIndex001 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -896,7 +896,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetColumnIndex002", 0, async (done: Function) => {
+    it("testResultSetGetColumnIndex002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetColumnIndex002 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -919,7 +919,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetColumnIndex003", 0, async (done: Function) => {
+    it("testResultSetGetColumnIndex003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetColumnIndex003 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -941,7 +941,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetColumnName001", 0, async (done: Function) => {
+    it("testResultSetGetColumnName001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetColumnName001 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -965,7 +965,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetColumnName002", 0, async (done: Function) => {
+    it("testResultSetGetColumnName002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetColumnName002 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -990,7 +990,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetColumnName003", 0, async (done: Function) => {
+    it("testResultSetGetColumnName003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetColumnName003 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -1013,7 +1013,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetColumnName004", 0, async (done: Function) => {
+    it("testResultSetGetColumnName004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetColumnName004 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -1037,7 +1037,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoTo001", 0, async (done: Function) => {
+    it("testResultSetGoTo001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoTo001 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -1063,7 +1063,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoTo002", 0, async (done: Function) => {
+    it("testResultSetGoTo002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoTo002 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -1088,7 +1088,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoTo003", 0, async (done: Function) => {
+    it("testResultSetGoTo003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoTo003 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -1115,7 +1115,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoTo004", 0, async (done: Function) => {
+    it("testResultSetGoTo004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoTo004 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -1142,7 +1142,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToRow001", 0, async (done: Function) => {
+    it("testResultSetGoToRow001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToRow001 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -1169,7 +1169,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToRow002", 0, async (done: Function) => {
+    it("testResultSetGoToRow002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToRow002 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -1196,7 +1196,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToRow003", 0, async (done: Function) => {
+    it("testResultSetGoToRow003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToRow003 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -1225,7 +1225,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToRow004", 0, async (done: Function) => {
+    it("testResultSetGoToRow004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToRow004 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -1253,7 +1253,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToFirstRow001", 0, async (done: Function) => {
+    it("testResultSetGoToFirstRow001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToFirstRow001 start *************");
 
       let predicates = await new relationalStore.RdbPredicates("test");
@@ -1275,7 +1275,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToFirstRow002", 0, async (done: Function) => {
+    it("testResultSetGoToFirstRow002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToFirstRow002 start *************");
 
       let predicates = await new relationalStore.RdbPredicates("test");
@@ -1297,7 +1297,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToFirstRow003", 0, async (done: Function) => {
+    it("testResultSetGoToFirstRow003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToFirstRow003 start *************");
 
       let predicates = await new relationalStore.RdbPredicates("test");
@@ -1321,7 +1321,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToLastRow001", 0, async (done: Function) => {
+    it("testResultSetGoToLastRow001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToLastRow001 start *************");
 
       let predicates = await new relationalStore.RdbPredicates("test");
@@ -1343,7 +1343,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToLastRow002", 0, async (done: Function) => {
+    it("testResultSetGoToLastRow002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToLastRow002 start *************");
 
       let predicates = await new relationalStore.RdbPredicates("test");
@@ -1365,7 +1365,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToLastRow003", 0, async (done: Function) => {
+    it("testResultSetGoToLastRow003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToLastRow003 start *************");
 
       let predicates = await new relationalStore.RdbPredicates("test");
@@ -1389,7 +1389,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToNextRow001", 0, async (done: Function) => {
+    it("testResultSetGoToNextRow001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToNextRow001 start *************");
 
       let predicates = await new relationalStore.RdbPredicates("test");
@@ -1410,7 +1410,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToNextRow002", 0, async (done: Function) => {
+    it("testResultSetGoToNextRow002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToNextRow002 start *************");
 
       let predicates = await new relationalStore.RdbPredicates("test");
@@ -1431,7 +1431,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToNextRow003", 0, async (done: Function) => {
+    it("testResultSetGoToNextRow003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToNextRow003 start *************");
 
       let predicates = await new relationalStore.RdbPredicates("test");
@@ -1455,7 +1455,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToNextRow004", 0, async (done: Function) => {
+    it("testResultSetGoToNextRow004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToNextRow004 start *************");
 
       let predicates = await new relationalStore.RdbPredicates("test");
@@ -1476,7 +1476,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToPreviousRow001", 0, async (done: Function) => {
+    it("testResultSetGoToPreviousRow001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToPreviousRow001 start *************");
 
       let predicates = await new relationalStore.RdbPredicates("test");
@@ -1496,7 +1496,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToPreviousRow002", 0, async (done: Function) => {
+    it("testResultSetGoToPreviousRow002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToPreviousRow002 start *************");
 
       let predicates = await new relationalStore.RdbPredicates("test");
@@ -1517,7 +1517,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToPreviousRow003", 0, async (done: Function) => {
+    it("testResultSetGoToPreviousRow003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToPreviousRow003 start *************");
 
       let predicates = await new relationalStore.RdbPredicates("test");
@@ -1541,7 +1541,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToPreviousRow004", 0, async (done: Function) => {
+    it("testResultSetGoToPreviousRow004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToPreviousRow004 start *************");
 
       let predicates = await new relationalStore.RdbPredicates("test");
@@ -1564,7 +1564,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetBlob001", 0, async (done: Function) => {
+    it("testResultSetGetBlob001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetBlob001 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -1596,7 +1596,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetBlob002", 0, async (done: Function) => {
+    it("testResultSetGetBlob002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetBlob002 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -1629,7 +1629,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetString001", 0, async (done: Function) => {
+    it("testResultSetGetString001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetString001 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -1657,7 +1657,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetString002", 0, async (done: Function) => {
+    it("testResultSetGetString002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetString002 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -1685,7 +1685,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetString003", 0, async (done: Function) => {
+    it("testResultSetGetString003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetString003 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -1713,7 +1713,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetString004", 0, async (done: Function) => {
+    it("testResultSetGetString004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetString004 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -1745,7 +1745,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetLong001", 0, async (done: Function) => {
+    it("testResultSetGetLong001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetLong001 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -1775,7 +1775,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetLong002", 0, async (done: Function) => {
+    it("testResultSetGetLong002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetLong002 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -1804,7 +1804,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetLong003", 0, async (done: Function) => {
+    it("testResultSetGetLong003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetLong003 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -1833,7 +1833,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetLong004", 0, async (done: Function) => {
+    it("testResultSetGetLong004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetLong004 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -1862,7 +1862,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetLong005", 0, async (done: Function) => {
+    it("testResultSetGetLong005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetLong005 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -1891,7 +1891,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetLong006", 0, async (done: Function) => {
+    it("testResultSetGetLong006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetLong006 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -1921,7 +1921,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetDouble001", 0, async (done: Function) => {
+    it("testResultSetGetDouble001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetDouble001 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -1946,7 +1946,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetDouble002", 0, async (done: Function) => {
+    it("testResultSetGetDouble002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetDouble002 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -1971,7 +1971,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetDouble003", 0, async (done: Function) => {
+    it("testResultSetGetDouble003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetDouble003 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -1996,7 +1996,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetDouble004", 0, async (done: Function) => {
+    it("testResultSetGetDouble004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetDouble004 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -2021,7 +2021,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetDouble005", 0, async (done: Function) => {
+    it("testResultSetGetDouble005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetDouble005 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -2053,7 +2053,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetDouble006", 0, async (done: Function) => {
+    it("testResultSetGetDouble006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetDouble006 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -2085,7 +2085,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetDouble007", 0, async (done: Function) => {
+    it("testResultSetGetDouble007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetGetDouble007 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -2117,7 +2117,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsColumnNull001", 0, async (done: Function) => {
+    it("testResultSetIsColumnNull001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsColumnNull001 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -2144,7 +2144,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsColumnNull002", 0, async (done: Function) => {
+    it("testResultSetIsColumnNull002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsColumnNull002 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -2169,7 +2169,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsColumnNull003", 0, async (done: Function) => {
+    it("testResultSetIsColumnNull003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsColumnNull003 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -2195,7 +2195,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsColumnNull004", 0, async (done: Function) => {
+    it("testResultSetIsColumnNull004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsColumnNull004 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -2226,7 +2226,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsColumnNull005", 0, async (done: Function) => {
+    it("testResultSetIsColumnNull005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsColumnNull005 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -2257,7 +2257,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetIsColumnNull006", 0, async (done: Function) => {
+    it("testResultSetIsColumnNull006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetIsColumnNull006 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -2289,7 +2289,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetClose001", 0, async (done: Function) => {
+    it("testResultSetClose001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetClose001 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
@@ -2312,7 +2312,7 @@ export default function rdbResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetClose002", 0, async (done: Function) => {
+    it("testResultSetClose002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testResultSetClose002 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");

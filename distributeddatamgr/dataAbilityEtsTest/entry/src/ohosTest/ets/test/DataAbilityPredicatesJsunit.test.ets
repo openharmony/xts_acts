@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataRdb from '@ohos.data.rdb';
 import dataAbility from '@ohos.data.dataAbility';
 import common from "@ohos.app.ability.common";
@@ -133,7 +133,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEqualTo0001', 0, async (done: Function) => {
+    it('testEqualTo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testEqualTo0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -155,7 +155,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEqualTo0002', 0, async (done: Function) => {
+    it('testEqualTo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testEqualTo0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -178,7 +178,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEqualTo0003', 0, async (done: Function) => {
+    it('testEqualTo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testEqualTo0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -201,7 +201,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEqualTo0004', 0, async (done: Function) => {
+    it('testEqualTo0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testEqualTo0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -224,7 +224,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEqualTo0005', 0, async (done: Function) => {
+    it('testEqualTo0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testEqualTo0005 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -247,7 +247,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEqualTo0006', 0, async (done: Function) => {
+    it('testEqualTo0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testEqualTo0006 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -270,7 +270,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEqualTo0007', 0, async (done: Function) => {
+    it('testEqualTo0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testEqualTo0007 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -293,7 +293,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEqualTo0008', 0, async (done: Function) => {
+    it('testEqualTo0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testEqualTo0008 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -317,7 +317,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNotEqualTo0001', 0, async (done: Function) => {
+    it('testNotEqualTo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testNotEqualTo0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -340,7 +340,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNotEqualTo0002', 0, async (done: Function) => {
+    it('testNotEqualTo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testNotEqualTo0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -364,7 +364,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNotEqualTo0003', 0, async (done: Function) => {
+    it('testNotEqualTo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testNotEqualTo0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -387,7 +387,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNotEqualTo0004', 0, async (done: Function) => {
+    it('testNotEqualTo0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testNotEqualTo0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -410,7 +410,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNotEqualTo0005', 0, async (done: Function) => {
+    it('testNotEqualTo0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testNotEqualTo0005 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -433,7 +433,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNotEqualTo0006', 0, async (done: Function) => {
+    it('testNotEqualTo0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testNotEqualTo0006 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -456,7 +456,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNotEqualTo0007', 0, async (done: Function) => {
+    it('testNotEqualTo0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testNotEqualTo0007 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -479,7 +479,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNotEqualTo0008', 0, async (done: Function) => {
+    it('testNotEqualTo0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testNotEqualTo0008 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -502,7 +502,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsNull0001', 0, async (done: Function) => {
+    it('testIsNull0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testIsNull001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.isNull("primLongValue");
@@ -523,7 +523,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsNull0002', 0, async (done: Function) => {
+    it('testIsNull0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testIsNull0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.isNull("longValue");
@@ -544,7 +544,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsNull0003', 0, async (done: Function) => {
+    it('testIsNull0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testIsNull0003 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.isNull("stringValue");
@@ -565,7 +565,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsNull0004', 0, async (done: Function) => {
+    it('testIsNull0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testIsNull0004 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.isNull("stringValueX");
@@ -586,7 +586,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsNotNull0001', 0, async (done: Function) => {
+    it('testIsNotNull0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testIsNotNull0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.isNotNull("primLongValue");
@@ -607,7 +607,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsNotNull0002', 0, async (done: Function) => {
+    it('testIsNotNull0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testIsNotNull0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.isNotNull("longValue");
@@ -628,7 +628,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsNotNull0003', 0, async (done: Function) => {
+    it('testIsNotNull0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testIsNotNull0003 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.isNotNull("stringValue");
@@ -649,7 +649,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsNotNull0004', 0, async (done: Function) => {
+    it('testIsNotNull0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testIsNotNull0004 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.isNotNull("stringValueX");
@@ -670,7 +670,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0001', 0, async (done: Function) => {
+    it('testGreaterThan0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGreaterThan0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -693,7 +693,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0002', 0, async (done: Function) => {
+    it('testGreaterThan0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGreaterThan0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -716,7 +716,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0003', 0, async (done: Function) => {
+    it('testGreaterThan0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGreaterThan0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -739,7 +739,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0004', 0, async (done: Function) => {
+    it('testGreaterThan0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGreaterThan0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -763,7 +763,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0005', 0, async (done: Function) => {
+    it('testGreaterThan0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGreaterThan0005 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -786,7 +786,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0006', 0, async (done: Function) => {
+    it('testGreaterThan0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGreaterThan0006 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -809,7 +809,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0007', 0, async (done: Function) => {
+    it('testGreaterThan0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGreaterThan0007 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -832,7 +832,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThan0008', 0, async (done: Function) => {
+    it('testGreaterThan0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGreaterThan0008 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -855,7 +855,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0001', 0, async (done: Function) => {
+    it('testGreaterThanOrEqualTo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGreaterThanOrEqualTo0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -878,7 +878,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0002', 0, async (done: Function) => {
+    it('testGreaterThanOrEqualTo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGreaterThanOrEqualTo0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -901,7 +901,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0003', 0, async (done: Function) => {
+    it('testGreaterThanOrEqualTo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGreaterThanOrEqualTo0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -924,7 +924,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGreaterThanOrEqualTo0004', 0, async (done: Function) => {
+    it('testGreaterThanOrEqualTo0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGreaterThanOrEqualTo0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -947,7 +947,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0001', 0, async (done: Function) => {
+    it('testLessThan0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLessThan0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -970,7 +970,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0002', 0, async (done: Function) => {
+    it('testLessThan0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLessThan0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -993,7 +993,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0003', 0, async (done: Function) => {
+    it('testLessThan0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLessThan0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1016,7 +1016,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0004', 0, async (done: Function) => {
+    it('testLessThan0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLessThan0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1040,7 +1040,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0005', 0, async (done: Function) => {
+    it('testLessThan0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLessThan0005 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1063,7 +1063,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0006', 0, async (done: Function) => {
+    it('testLessThan0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLessThan0006 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1086,7 +1086,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0007', 0, async (done: Function) => {
+    it('testLessThan0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLessThan0007 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1109,7 +1109,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThan0008', 0, async (done: Function) => {
+    it('testLessThan0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLessThan0008 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1133,7 +1133,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0001', 0, async (done: Function) => {
+    it('testLessThanOrEqualTo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLessThanOrEqualTo0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1156,7 +1156,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0002', 0, async (done: Function) => {
+    it('testLessThanOrEqualTo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLessThanOrEqualTo0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1179,7 +1179,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0003', 0, async (done: Function) => {
+    it('testLessThanOrEqualTo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLessThanOrEqualTo0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1202,7 +1202,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLessThanOrEqualTo0004', 0, async (done: Function) => {
+    it('testLessThanOrEqualTo0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLessThanOrEqualTo0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1225,7 +1225,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBetween0001', 0, async (done: Function) => {
+    it('testBetween0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBetween0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1248,7 +1248,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBetween0002', 0, async (done: Function) => {
+    it('testBetween0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBetween0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1271,7 +1271,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBetween0003', 0, async (done: Function) => {
+    it('testBetween0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBetween0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1294,7 +1294,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBetween0004', 0, async (done: Function) => {
+    it('testBetween0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBetween0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1317,7 +1317,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBetween0005', 0, async (done: Function) => {
+    it('testBetween0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBetween0005 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1340,7 +1340,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBetween0006', 0, async (done: Function) => {
+    it('testBetween0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBetween0006 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1363,7 +1363,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBetween0007', 0, async (done: Function) => {
+    it('testBetween0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBetween0007 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1386,7 +1386,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBetween0008', 0, async (done: Function) => {
+    it('testBetween0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBetween0008 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1409,7 +1409,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNotBetween0001', 0, async (done: Function) => {
+    it('testNotBetween0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testNotBetween0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1433,7 +1433,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNotBetween0002', 0, async (done: Function) => {
+    it('testNotBetween0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testNotBetween0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1457,7 +1457,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNotBetween0003', 0, async (done: Function) => {
+    it('testNotBetween0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testNotBetween0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1481,7 +1481,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNotBetween0004', 0, async (done: Function) => {
+    it('testNotBetween0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testNotBetween0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1505,7 +1505,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGlob0001', 0, async (done: Function) => {
+    it('testGlob0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGlob0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1529,7 +1529,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGlob0002', 0, async (done: Function) => {
+    it('testGlob0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGlob0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1553,7 +1553,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGlob0003', 0, async (done: Function) => {
+    it('testGlob0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGlob0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1577,7 +1577,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGlob0004', 0, async (done: Function) => {
+    it('testGlob0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGlob0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1601,7 +1601,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGlob0005', 0, async (done: Function) => {
+    it('testGlob0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGlob0005 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1625,7 +1625,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGlob0006', 0, async (done: Function) => {
+    it('testGlob0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGlob0006 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -1649,7 +1649,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testContains0001', 0, async (done: Function) => {
+    it('testContains0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testContains0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.contains("stringValue", "DEF");
@@ -1670,7 +1670,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testContains0002', 0, async (done: Function) => {
+    it('testContains0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testContains0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.contains("stringValue", "DEFX");
@@ -1691,7 +1691,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testContains0003', 0, async (done: Function) => {
+    it('testContains0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testContains0003 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.contains("characterValue", "中");
@@ -1712,7 +1712,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testContains0004', 0, async (done: Function) => {
+    it('testContains0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testContains0004 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.contains("characterValue", "#");
@@ -1733,7 +1733,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBeginsWith0001', 0, async (done: Function) => {
+    it('testBeginsWith0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBeginsWith0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.beginsWith("stringValue", "ABC");
@@ -1754,7 +1754,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBeginsWith0002', 0, async (done: Function) => {
+    it('testBeginsWith0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBeginsWith0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.beginsWith("stringValue", "ABCX");
@@ -1775,7 +1775,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBeginsWith0003', 0, async (done: Function) => {
+    it('testBeginsWith0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBeginsWith0003 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.beginsWith("characterValue", "中");
@@ -1796,7 +1796,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBeginsWith0004', 0, async (done: Function) => {
+    it('testBeginsWith0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBeginsWith0004 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.beginsWith("characterValue", "#");
@@ -1817,7 +1817,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEndsWith0001', 0, async (done: Function) => {
+    it('testEndsWith0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testEndsWith0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.endsWith("stringValue", "LMN");
@@ -1838,7 +1838,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEndsWith0002', 0, async (done: Function) => {
+    it('testEndsWith0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testEndsWith0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.endsWith("stringValue", "LMNX");
@@ -1859,7 +1859,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEndsWith0003', 0, async (done: Function) => {
+    it('testEndsWith0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testEndsWith0003 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.endsWith("characterValue", "中");
@@ -1880,7 +1880,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEndsWith0004', 0, async (done: Function) => {
+    it('testEndsWith0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testEndsWith0004 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.endsWith("characterValue", "#");
@@ -1901,7 +1901,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLike0001', 0, async (done: Function) => {
+    it('testLike0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLike0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "%LMN%");
@@ -1922,7 +1922,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLike0002', 0, async (done: Function) => {
+    it('testLike0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLike0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "%LMNX%");
@@ -1943,7 +1943,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLike0003', 0, async (done: Function) => {
+    it('testLike0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLike0003 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("characterValue", "%中%");
@@ -1964,7 +1964,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLike0004', 0, async (done: Function) => {
+    it('testLike0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLike0004 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("characterValue", "%#%");
@@ -1985,7 +1985,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBeginWrap0001', 0, async (done: Function) => {
+    it('testBeginWrap0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBeginWrap0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2013,7 +2013,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBeginWrap0002', 0, async (done: Function) => {
+    it('testBeginWrap0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBeginWrap0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2039,7 +2039,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBeginWrap0003', 0, async (done: Function) => {
+    it('testBeginWrap0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBeginWrap0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2065,7 +2065,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBeginWrap0004', 0, async (done: Function) => {
+    it('testBeginWrap0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBeginWrap0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2090,7 +2090,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBeginWrap0005', 0, async (done: Function) => {
+    it('testBeginWrap0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testBeginWrap0005 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2115,7 +2115,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnd0001', 0, async (done: Function) => {
+    it('testAnd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testAnd0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2140,7 +2140,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnd0002', 0, async (done: Function) => {
+    it('testAnd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testAnd0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2168,7 +2168,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnd0003', 0, async (done: Function) => {
+    it('testAnd0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testAnd0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2191,7 +2191,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnd0004', 0, async (done: Function) => {
+    it('testAnd0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testAnd0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2214,7 +2214,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOrder0001', 0, async (done: Function) => {
+    it('testOrder0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testOrder0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2243,7 +2243,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOrder0002', 0, async (done: Function) => {
+    it('testOrder0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testOrder0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2272,7 +2272,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOrder0003', 0, async (done: Function) => {
+    it('testOrder0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testOrder0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2295,7 +2295,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOrder0004', 0, async (done: Function) => {
+    it('testOrder0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testOrder0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2318,7 +2318,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLimit0001', 0, async (done: Function) => {
+    it('testLimit0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLimit0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(1);
@@ -2339,7 +2339,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLimit0002', 0, async (done: Function) => {
+    it('testLimit0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLimit0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3);
@@ -2360,7 +2360,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLimit0003', 0, async (done: Function) => {
+    it('testLimit0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLimit0003 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(100);
@@ -2381,7 +2381,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLimit0004', 0, async (done: Function) => {
+    it('testLimit0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLimit0004 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "中").limitAs(1);
@@ -2402,7 +2402,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLimit0005', 0, async (done: Function) => {
+    it('testLimit0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLimit0005 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(0);
@@ -2423,7 +2423,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLimit0006', 0, async (done: Function) => {
+    it('testLimit0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testLimit0006 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(-1);
@@ -2444,7 +2444,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOffset0001', 0, async (done: Function) => {
+    it('testOffset0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testOffset0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(1);
@@ -2465,7 +2465,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOffset0002', 0, async (done: Function) => {
+    it('testOffset0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testOffset0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(0);
@@ -2486,7 +2486,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOffset0003', 0, async (done: Function) => {
+    it('testOffset0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testOffset0003 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(5);
@@ -2507,7 +2507,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOffset0004', 0, async (done: Function) => {
+    it('testOffset0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testOffset0004 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(-1);
@@ -2528,7 +2528,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCreate0001', 0, async (done: Function) => {
+    it('testCreate0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testCreate0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -2546,7 +2546,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCreate0002', 0, async (done: Function) => {
+    it('testCreate0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testCreate0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         let predicates = dataAbility.createRdbPredicates("test", dataAbilityPredicates);
@@ -2565,7 +2565,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGroupBy0001', 0, async (done: Function) => {
+    it('testGroupBy0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGroupBy0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").groupBy(["characterValue"]);
@@ -2586,7 +2586,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGroupBy0002', 0, async (done: Function) => {
+    it('testGroupBy0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testGroupBy0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").groupBy(["characterValueX"]);
@@ -2607,7 +2607,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIndexedBy0001', 0, async () => {
+    it('testIndexedBy0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async () => {
         console.info(TAG + "************* testIndexedBy0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         const SQL_CREATE_INDEX = 'CREATE INDEX characterValue_INDEX ON AllDataType(characterValue)'
@@ -2629,7 +2629,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIndexedBy0002', 0, async () => {
+    it('testIndexedBy0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async () => {
         console.info(TAG + "************* testIndexedBy0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").indexedBy("characterValue");
@@ -2648,7 +2648,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNotIn0001', 0, async (done: Function) => {
+    it('testNotIn0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testNotIn0001 start *************");
         let values = [1, -2147483648];
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2670,7 +2670,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNotIn0002', 0, async (done: Function) => {
+    it('testNotIn0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testNotIn0002 start *************");
         let values = [1, 2147483647];
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2692,7 +2692,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNotIn0003', 0, async (done: Function) => {
+    it('testNotIn0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testNotIn0003 start *************");
         let values = [-2147483648, 2147483647];
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2714,7 +2714,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIn0001', 0, async (done: Function) => {
+    it('testIn0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testIn0001 start *************");
         let values = [Number.MIN_VALUE.toString()];
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2734,7 +2734,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIn0002', 0, async (done: Function) => {
+    it('testIn0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testIn0002 start *************");
         let values = ["1.0"];
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2754,7 +2754,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIn0003', 0, async (done: Function) => {
+    it('testIn0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testIn0003 start *************");
         let values = [DOUBLE_MAX.toString()];
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -2774,7 +2774,7 @@ describe('dataAbilityPredicatesTest', () => {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIn0004', 0, async (done: Function) => {
+    it('testIn0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
         console.info(TAG + "************* testIn0004 start *************");
         let values = [Number.MIN_VALUE.toString(), "1.0", DOUBLE_MAX.toString()];
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();

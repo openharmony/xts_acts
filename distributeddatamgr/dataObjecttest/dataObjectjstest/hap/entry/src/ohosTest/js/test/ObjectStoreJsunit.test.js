@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import distributedObject from '@ohos.data.distributedDataObject';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
@@ -111,7 +111,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testOn001', 0, function (done) {
+        it('testOn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testOn001 start *************");
             let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session1");
@@ -147,7 +147,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testOn002', 0, function (done) {
+        it('testOn002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testOn002 start *************");
             let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session2");
@@ -181,7 +181,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testOn003', 0, function (done) {
+        it('testOn003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testOn003 start *************");
             let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session3");
@@ -222,7 +222,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testOn004', 0, function (done) {
+        it('testOn004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testOn004 start *************");
             let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session4");
@@ -249,7 +249,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testOff001', 0, function (done) {
+        it('testOff001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testOff001 start *************");
             let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session5");
@@ -296,7 +296,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testOff002', 0, function (done) {
+        it('testOff002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testOff002 start *************");
             let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session6");
@@ -332,7 +332,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testMultiObjectOn001', 0, function (done) {
+        it('testMultiObjectOn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testMultiObjectOn001 start *************");
             let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session7");
@@ -389,7 +389,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testMultiObjectOff001', 0, function (done) {
+        it('testMultiObjectOff001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testMultiObjectOff001 start *************");
             let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session8");
@@ -468,7 +468,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testChangeSession001', 0, function (done) {
+        it('testChangeSession001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testChangeSession001 start *************");
             let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session9");
@@ -523,7 +523,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testUndefinedType001', 0, function (done) {
+        it('testUndefinedType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testUndefinedType001 start *************");
             let undefined_object = distributedObject.createDistributedObject({ name: undefined, age: undefined, isVis: undefined });
             expect(undefined_object == undefined).assertEqual(false);
@@ -546,7 +546,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testGenSessionId001', 0, function (done) {
+        it('testGenSessionId001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testGenSessionId001 start *************");
             let sessionId = distributedObject.genSessionId();
             expect(sessionId != null && sessionId.length > 0 && typeof (sessionId) == 'string').assertEqual(true);
@@ -562,7 +562,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testGenSessionId002', 0, function (done) {
+        it('testGenSessionId002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testGenSessionId002 start *************");
             let sessionId1 = distributedObject.genSessionId();
             let sessionId2 = distributedObject.genSessionId();
@@ -580,7 +580,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testOnStatus001', 0, function (done) {
+        it('testOnStatus001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testOnStatus001 start *************");
             console.info(TAG + "start watch status");
             let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
@@ -601,7 +601,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testOnStatus002', 0, function (done) {
+        it('testOnStatus002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testOnStatus002 start *************");
             console.info(TAG + "start watch status");
             let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
@@ -629,7 +629,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testOnStatus003', 0, function (done) {
+        it('testOnStatus003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testOnStatus003 start *************");
             console.info(TAG + "start watch status");
             let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
@@ -655,7 +655,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testComplex001', 0, function (done) {
+        it('testComplex001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testComplex001 start *************");
             let complexObject = distributedObject.createDistributedObject({
                 name: undefined,
@@ -694,7 +694,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testMaxSize001', 0, function (done) {
+        it('testMaxSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testMaxSize001 start *************");
             let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session13");
@@ -728,7 +728,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testPerformance001', 0, function (done) {
+        it('testPerformance001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info(TAG + "************* testPerformance001 start *************");
             let complexObject = distributedObject.createDistributedObject({
                 name: undefined,
@@ -778,7 +778,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-        it('testSave001', 0, async function (done) {
+        it('testSave001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testSave001 start *************");
             let g_object = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             expect(g_object == undefined).assertEqual(false);
@@ -817,7 +817,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-         it('testSave002', 0, async function (done) {
+         it('testSave002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testSave002 start *************");
             let g_object = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             expect(g_object == undefined).assertEqual(false);
@@ -857,7 +857,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-         it('testRevokeSave001', 0, async function (done) {
+         it('testRevokeSave001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRevokeSave001 start *************");
             let g_object = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             expect(g_object == undefined).assertEqual(false);
@@ -906,7 +906,7 @@ export default function objectStoreTest() {
          * @tc.size: MediumTest
          * @tc.level: Level 2
          */
-         it('testRevokeSave002', 0, async function () {
+         it('testRevokeSave002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             console.info(TAG + "************* testRevokeSave002 start *************");
             let g_object = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             expect(g_object == undefined).assertEqual(false);

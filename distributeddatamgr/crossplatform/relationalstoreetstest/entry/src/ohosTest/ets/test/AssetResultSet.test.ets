@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_relationalStore from '@ohos.data.relationalStore'
 import common from "@ohos.app.ability.common";
 
@@ -115,7 +115,7 @@ export default function relationalStoreAssetResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testAssetResultSetGetAsset0001', 0, async (done: Function) => {
+    it('testAssetResultSetGetAsset0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await createTest();
       console.log(TAG + "************* testAssetResultSetGetAsset0001 start *************");
       let predicates = await new data_relationalStore.RdbPredicates("test")
@@ -149,7 +149,7 @@ export default function relationalStoreAssetResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testAssetResultSetGetAsset0002', 0, async () => {
+    it('testAssetResultSetGetAsset0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       await createTest();
       console.log(TAG + "************* testAssetResultSetGetAsset0002 start *************");
       let predicates = await new data_relationalStore.RdbPredicates("test")
@@ -175,7 +175,7 @@ export default function relationalStoreAssetResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testAssetResultSetGetAssets0001', 0, async (done: Function) => {
+    it('testAssetResultSetGetAssets0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await createTest();
       console.log(TAG + "************* testAssetResultSetGetAssets0001 start *************");
       let predicates = await new data_relationalStore.RdbPredicates("test")
@@ -212,7 +212,7 @@ export default function relationalStoreAssetResultSetTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testAssetResultSetGetAssets0002', 0, async () => {
+    it('testAssetResultSetGetAssets0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       await createTest();
       console.log(TAG + "************* testAssetResultSetGetAssets0002 start *************");
       let predicates = await new data_relationalStore.RdbPredicates("test")

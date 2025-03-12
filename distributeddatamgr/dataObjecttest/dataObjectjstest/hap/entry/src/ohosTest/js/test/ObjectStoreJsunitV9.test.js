@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import distributedObject from '@ohos.data.distributedDataObject';
 import commonType from '@ohos.data.commonType';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -87,7 +87,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_001', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_001 start *************");
         let g_object;
         try {
@@ -128,7 +128,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_002', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_002 start *************");
         let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -158,7 +158,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_003', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_003 start *************");
         let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -185,7 +185,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_004', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_004 start *************");
         let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -210,7 +210,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_005', 0, function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_005 start *************");
         let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -247,7 +247,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_On_001', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_On_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_001 start *************");
         let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -295,7 +295,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_On_002', 0, function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_On_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_002 start *************");
         let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -333,7 +333,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_On_003', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_On_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_003 start *************");
         let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -373,7 +373,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_Off_001', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_Off_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Off_001 start *************");
         let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -423,7 +423,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_Off_002', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_Off_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Off_002 start *************");
         let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -458,7 +458,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_OnStatus_001', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_OnStatus_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_OnStatus_001 start *************");
         console.info(TAG + "start watch status");
         let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
@@ -488,7 +488,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_OnStatus_002', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_OnStatus_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_OnStatus_002 start *************");
         console.info(TAG + "start watch status");
         let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
@@ -516,7 +516,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_Save_001', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_Save_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_001 start *************");
         console.info(TAG + "************* V9testSave001 start *************");
         let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
@@ -560,7 +560,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_Save_002', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_Save_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_002 start *************");
         let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -602,7 +602,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_001', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_001 start *************");
         let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -652,7 +652,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002', 0, async function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002 start *************");
         let g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object != undefined).assertEqual(true);
@@ -702,7 +702,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_NumberMax_0100', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_NumberMax_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_NumberMax_0100 start *************");
         try {
             let  g_object;
@@ -724,7 +724,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_NumberMin_0100', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_NumberMin_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_NumberMin_0100 start *************");
         try {
             let  g_object;
@@ -746,7 +746,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0100', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0100 start *************");
         try {
             let  g_object;
@@ -768,7 +768,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0200', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0200 start *************");
         try {
             let  g_object;
@@ -791,7 +791,7 @@ describe('objectStoreTestV9', function () {
 	 * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('V9testbindAssetStore010', 0, async function (done) {
+    it('V9testbindAssetStore010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* V9testbindAssetStore010 start *************");
         let g_object = distributedObject.create(context, {
             title:"bindAssettest-title",
@@ -884,7 +884,7 @@ describe('objectStoreTestV9', function () {
 	 * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('V9testbindAssetStorePromise010', 0, async function (done) {
+    it('V9testbindAssetStorePromise010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* V9testbindAssetStorePromise010 start *************");
         let g_object = distributedObject.create(context, {
             title:"bindAssettest-title",
@@ -976,7 +976,7 @@ describe('objectStoreTestV9', function () {
 	 * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('V9testbindAssetStore020', 0, async function (done) {
+    it('V9testbindAssetStore020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* V9testbindAssetStore020 start *************");
         let g_object = distributedObject.create(context, {
             title:"bindAssettest-title",
@@ -1070,7 +1070,7 @@ describe('objectStoreTestV9', function () {
 	 * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('V9testbindAssetStore030', 0, async function (done) {
+    it('V9testbindAssetStore030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* V9testbindAssetStore030 start *************");
         let g_object = distributedObject.create(context, {
             title:"bindAssettest-title",
@@ -1163,7 +1163,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('V9testbindAssetStore002', 0, async function (done) {
+    it('V9testbindAssetStore002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* V9testbindAssetStore002 start *************");
         let g_object = distributedObject.create(context, {
             title:"bindAssettest-title",
@@ -1222,7 +1222,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('V9testbindAssetStore003', 0, async function (done) {
+    it('V9testbindAssetStore003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* V9testbindAssetStore003 start *************");
         let g_object = distributedObject.create(context, {
             title:"bindAssettest-title",
@@ -1281,7 +1281,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('V9testbindAssetStore004', 0, async function (done) {
+    it('V9testbindAssetStore004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* V9testbindAssetStore004 start *************");
         let g_object = distributedObject.create(context, {
             title:"bindAssettest-title",
@@ -1340,7 +1340,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('V9testbindAssetStore005', 0, async function (done) {
+    it('V9testbindAssetStore005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* V9testbindAssetStore005 start *************");
         let g_object = distributedObject.create(context, {
             title:"bindAssettest-title",
@@ -1399,7 +1399,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('V9testbindAssetStore006', 0, async function (done) {
+    it('V9testbindAssetStore006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* V9testbindAssetStore006 start *************");
         let g_object = distributedObject.create(context, {
             title:"bindAssettest-title",
@@ -1458,7 +1458,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('V9testbindAssetStore007', 0, async function (done) {
+    it('V9testbindAssetStore007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* V9testbindAssetStore007 start *************");
         let g_object = distributedObject.create(context, {
             title:"bindAssettest-title",
@@ -1518,7 +1518,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('V9testbindAssetStore008', 0, async function (done) {
+    it('V9testbindAssetStore008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* V9testbindAssetStore008 start *************");
         let g_object = distributedObject.create(context, {
             title:"bindAssettest-title",
@@ -1577,7 +1577,7 @@ describe('objectStoreTestV9', function () {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('V9testModifyAsset001', 0, async function () {
+    it('V9testModifyAsset001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
         console.log(TAG + "************* V9testModifyAsset001 start *************");
         let g_object;
         const attachment = {

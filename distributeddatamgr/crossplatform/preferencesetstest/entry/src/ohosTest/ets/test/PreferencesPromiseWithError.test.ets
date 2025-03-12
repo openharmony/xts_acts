@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_preferences from "@ohos.data.preferences";
 import common from "@ohos.app.ability.common";
 import { BusinessError } from '@ohos.base';
@@ -51,7 +51,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPromiseWithError0001", 0, async (done: Function) => {
+    it("testPreferencesPromiseWithError0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testPreferencesPromiseWithError0001 begin.");
       try {
         if (mPreference === undefined) {
@@ -117,7 +117,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGetPromise0001", 0, async (done: Function) => {
+    it("testMpreferencesGetPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesGetPromise0001 begin.");
       try {
         mPreference
@@ -146,7 +146,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGetPromise0002", 0, async (done: Function) => {
+    it("testMpreferencesGetPromise0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesPromise0002 begin.");
       try {
         await mPreference.put(KEY_TEST_STRING_ELEMENT, "123");
@@ -177,7 +177,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGetPromise0003", 0, async (done: Function) => {
+    it("testMpreferencesGetPromise0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesGetPromise0003 begin.");
       try {
         await mPreference.put(KEY_TEST_STRING_ELEMENT, "123");
@@ -207,7 +207,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGetSyncWithError0001", 0, async (done: Function) => {
+    it("testMpreferencesGetSyncWithError0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesGetSyncWithError0001 begin.");
       try {
         mPreference.getSync(1233);
@@ -229,7 +229,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGetSyncWithError0002", 0, async (done: Function) => {
+    it("testMpreferencesGetSyncWithError0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesGetSyncWithError0002 begin.");
       try {
         await mPreference.put(KEY_TEST_STRING_ELEMENT, "123");
@@ -252,7 +252,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGetSyncWithError0003", 0, async (done: Function) => {
+    it("testMpreferencesGetSyncWithError0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesGetSyncWithError0003 begin.");
       try {
         await mPreference.put(KEY_TEST_STRING_ELEMENT, "123");
@@ -275,7 +275,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGetALLPromise0001", 0, async (done: Function) => {
+    it("testMpreferencesGetALLPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesGetALLPromise0001 begin.");
       try {
         mPreference
@@ -303,7 +303,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesHasPromise0001", 0, async (done: Function) => {
+    it("testMpreferencesHasPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesHasPromise0001 begin.");
       try {
         mPreference
@@ -332,7 +332,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesHasPromise0002", 0, async (done: Function) => {
+    it("testMpreferencesHasPromise0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesHasPromise0002 begin.");
       try {
         mPreference
@@ -359,7 +359,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutPromise0001", 0, async (done: Function) => {
+    it("testMpreferencesPutPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesPutPromise0001 begin.");
       try {
         mPreference
@@ -388,7 +388,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutPromise0002", 0, async (done: Function) => {
+    it("testMpreferencesPutPromise0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesPutPromise0002 begin.");
       try {
         mPreference
@@ -419,7 +419,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutPromise0003", 0, async (done: Function) => {
+    it("testMpreferencesPutPromise0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesPutPromise0003 begin.");
       try {
         mPreference
@@ -451,7 +451,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutPromise0004", 0, async (done: Function) => {
+    it("testMpreferencesPutPromise0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesPutPromise0004 begin.");
       try {
         mPreference
@@ -481,7 +481,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutPromise0005", 0, async (done: Function) => {
+    it("testMpreferencesPutPromise0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesPutPromise0005 begin.");
       try {
         mPreference
@@ -511,7 +511,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutSyncWithError0001", 0, async (done: Function) => {
+    it("testMpreferencesPutSyncWithError0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesPutSyncWithError0001 begin.");
       try {
         mPreference.putSync(1233);
@@ -533,7 +533,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutSyncWithError0002", 0, async (done: Function) => {
+    it("testMpreferencesPutSyncWithError0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesPutSyncWithError0002 begin.");
       try {
         mPreference.putSync(KEY_TEST_STRING_ELEMENT, "");
@@ -556,7 +556,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutSyncWithError0003", 0, async (done: Function) => {
+    it("testMpreferencesPutSyncWithError0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesPutSyncWithError0003 begin.");
       try {
         mPreference.putSync(KEY_TEST_STRING_ELEMENT, " ");
@@ -579,7 +579,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutSyncWithError0004", 0, async (done: Function) => {
+    it("testMpreferencesPutSyncWithError0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesPutSyncWithError0004 begin.");
       try {
         mPreference.putSync(-1, 123);
@@ -600,7 +600,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutSyncWithError0005", 0, async (done: Function) => {
+    it("testMpreferencesPutSyncWithError0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesPutSyncWithError0005 begin.");
       try {
         mPreference.putSync(KEY_TEST_STRING_ELEMENT, null);
@@ -621,7 +621,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesDeletePromise0001", 0, async (done: Function) => {
+    it("testMpreferencesDeletePromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesDeletePromise0001 begin.");
       try {
         mPreference
@@ -650,7 +650,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesDeletePromise0002", 0, async (done: Function) => {
+    it("testMpreferencesDeletePromise0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesDeletePromise0002 begin.");
       try {
         mPreference
@@ -677,7 +677,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesClearPromise0001", 0, async (done: Function) => {
+    it("testMpreferencesClearPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesClearPromise0001 begin.");
       try {
         mPreference
@@ -705,7 +705,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesFlushPromise0001", 0, async (done: Function) => {
+    it("testMpreferencesFlushPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("testMpreferencesFlushPromise0001 begin.");
       try {
         mPreference

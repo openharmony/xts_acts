@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
 import { ValuesBucket } from '@ohos.data.ValuesBucket';
 import common from "@ohos.app.ability.common";
@@ -64,7 +64,7 @@ export default function rdbstoreTransactionTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreTransaction001", 0, async (done: Function) => {
+    it("testRdbStoreTransaction001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreTransaction001 start *************");
       await rdbStore.beginTransaction();
       const valueBucket: ValuesBucket = {
@@ -96,7 +96,7 @@ export default function rdbstoreTransactionTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreTransaction002", 0, async (done: Function) => {
+    it("testRdbStoreTransaction002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreTransaction002 start *************");
       await rdbStore.beginTransaction();
       const valueBucket1: ValuesBucket = {
@@ -145,7 +145,7 @@ export default function rdbstoreTransactionTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreTransaction003", 0, async (done: Function) => {
+    it("testRdbStoreTransaction003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreTransaction003 start *************");
       let predicates1 = new relationalStore.RdbPredicates("test");
       let resultSet1 = await rdbStore.query(predicates1);
@@ -176,7 +176,7 @@ export default function rdbstoreTransactionTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreTransaction004", 0, async (done: Function) => {
+    it("testRdbStoreTransaction004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreTransaction004 start *************");
       await rdbStore.beginTransaction();
       const valueBucket: ValuesBucket = {
@@ -221,7 +221,7 @@ export default function rdbstoreTransactionTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreRollBack001", 0, async (done: Function) => {
+    it("testRdbStoreRollBack001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreRollBack001 start *************");
       await rdbStore.beginTransaction();
       const valueBucket1: ValuesBucket = {
@@ -266,7 +266,7 @@ export default function rdbstoreTransactionTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreRollBack002", 0, async (done: Function) => {
+    it("testRdbStoreRollBack002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreRollBack002 start *************");
       try {
         await rdbStore.beginTransaction();

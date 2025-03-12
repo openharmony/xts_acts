@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
 import { ValueType } from '@ohos.data.ValuesBucket';
 import common from "@ohos.app.ability.common";
@@ -155,7 +155,7 @@ export default function rdbStoreQuerySqlTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreQuerySql001", 0, async (done: Function) => {
+    it("testRdbStoreQuerySql001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "testRdbStoreQuerySql001 begin.");
       rdbStore.querySql("SELECT * FROM user INNER JOIN Book ON user.userId = Book.id WHERE Book.name = 'sanguo'", async (err, resultSet) => {
         if (err) {
@@ -188,7 +188,7 @@ export default function rdbStoreQuerySqlTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreQuerySql002", 0, async (done: Function) => {
+    it("testRdbStoreQuerySql002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "testRdbStoreQuerySql002 begin.");
       rdbStore.querySql("SELECT * FROM user INNER JOIN Book ON user.userId = Book.id WHERE Book.name = ?", ["sanguo"], async (err, resultSet) => {
         if (err) {
@@ -221,7 +221,7 @@ export default function rdbStoreQuerySqlTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreQuerySql003", 0, async (done: Function) => {
+    it("testRdbStoreQuerySql003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "testRdbStoreQuerySql003 begin.");
       let resultSet = await rdbStore.querySql("SELECT * FROM user INNER JOIN Book ON user.userId = Book.id WHERE Book.name = 'sanguo'");
       expect(1).assertEqual(resultSet.rowCount);
@@ -246,7 +246,7 @@ export default function rdbStoreQuerySqlTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreQuerySql004", 0, async (done: Function) => {
+    it("testRdbStoreQuerySql004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "testRdbStoreQuerySql004 begin.");
       let resultSet = await rdbStore.querySql("SELECT * FROM user INNER JOIN Book ON user.userId = Book.id WHERE Book.name = ?", ["sanguo"]);
       expect(1).assertEqual(resultSet.rowCount);
@@ -272,7 +272,7 @@ export default function rdbStoreQuerySqlTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreQuerySql005", 0, async (done: Function) => {
+    it("testRdbStoreQuerySql005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + " testRdbStoreQuerySql005 begin.");
       try {
         rdbStore.querySql("SELECT * FROM user INNER JOIN Book ON user.userId = Book.id WHERE Book.name = 'hongloumeng'", async (err, resultSet) => {
@@ -303,7 +303,7 @@ export default function rdbStoreQuerySqlTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreQuerySql006", 0, async (done: Function) => {
+    it("testRdbStoreQuerySql006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + " testRdbStoreQuerySql006 begin.");
       try {
         rdbStore.querySql("SELECT * FROM user INNER JOIN Book ON user.userId = Book.id WHERE Book.name = 'maoxuan'", async (err, resultSet) => {
