@@ -579,7 +579,8 @@ export default function MultimodalInputDeviceTest() {
     it("SUB_MMI_Input_Api_IptDev_isFunctionKeyEnabled_0300", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_isFunctionKeyEnabled_0300";
       try {
-        await inputDevice.isFunctionKeyEnabled(1).then((state1) => {
+        let CAPS_LOCK: inputDevice.FunctionKey.CAPS_LOCK = 1;
+        await inputDevice.isFunctionKeyEnabled(CAPS_LOCK).then((state1) => {
           console.info(`${caseName} capslock state1: ${JSON.stringify(state1)}`);
           ExpectTrue(Number(state1) == 0 || Number(state1) == 1);
           done();
