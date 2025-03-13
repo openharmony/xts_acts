@@ -871,7 +871,7 @@ export default function globalStageTest() {
         locale: 'en-US',
         direction: resourceManager.Direction.DIRECTION_HORIZONTAL,
         deviceType: resourceManager.DeviceType.DEVICE_TYPE_PHONE,
-        colorMode: 1,
+        colorMode: resourceManager.ColorMode.LIGHT,
         screenDensity: resourceManager.ScreenDensity.SCREEN_SDPI
       }
 
@@ -888,7 +888,7 @@ export default function globalStageTest() {
         locale: 'en-US',
         direction: resourceManager.Direction.DIRECTION_HORIZONTAL,
         deviceType: resourceManager.DeviceType.DEVICE_TYPE_PHONE,
-        colorMode: 1,
+        colorMode: resourceManager.ColorMode.DARK,
         screenDensity: resourceManager.ScreenDensity.SCREEN_SDPI
       }
 
@@ -912,6 +912,10 @@ export default function globalStageTest() {
       }
       let value = sendableResourceManager.resourceToSendableResource(resource);
       console.log('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010_value' + value.type);
+      expect(value.bundleName == 'com.example.myapplication').assertTrue();
+      expect(value.moduleName == 'entry').assertTrue();
+      expect(value.id != null).assertTrue();
+      expect(value.params != null).assertTrue();
       expect(value.type == 10001).assertTrue();
     })
 
@@ -3818,6 +3822,1128 @@ export default function globalStageTest() {
         done();
       })
     })
+
+    /**
+     * @tc.number   : getStringSync_test_0100
+     * @tc.name     : getStringSync_test_0100
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0100', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getStringSync($r('app.color.color_test1').id)
+      } catch (err) {
+        console.log('getStringSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_0200
+     * @tc.name     : getStringSync_test_0200
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0200', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getStringSync($r('app.string.test_stringLoopA').id)
+      } catch (err) {
+        console.log('getStringSync_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_0300
+     * @tc.name     : getStringSync_test_0300
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0300', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getStringSync($r('app.color.color_test1').id, 'test', 1)
+      } catch (err) {
+        console.log('getStringSync_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_0400
+     * @tc.name     : getStringSync_test_0400
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0400', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getStringSync($r('app.string.test_stringLoopA').id, 'test', 1)
+      } catch (err) {
+        console.log('getStringSync_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_0500
+     * @tc.name     : getStringSync_test_0500
+     * @tc.desc     : errcode 9001007
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0500', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getStringSync($r('app.string.test_stringTwentyThree').id, 'test', 1)
+      } catch (err) {
+        console.log('getStringSync_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual('9001007');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_0600
+     * @tc.name     : getStringSync_test_0600
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0600', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getStringSync(0x01234567)
+      } catch (err) {
+        console.log('getStringSync_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_0700
+     * @tc.name     : getStringSync_test_0700
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0700', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getStringSync(0x01234567, 'aaa', 0)
+      } catch (err) {
+        console.log('getStringSync_test_0700 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_0800
+     * @tc.name     : getStringSync_test_0800
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0800', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      };
+      try {
+        res.resourceManager.getStringSync(resource)
+      } catch (err) {
+        console.log('getStringSync_test_0800 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_0900
+     * @tc.name     : getStringSync_test_0900
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0900', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.color.color_test1').id
+      };
+      try {
+        res.resourceManager.getStringSync(resource)
+      } catch (err) {
+        console.log('getStringSync_test_0900 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_1000
+     * @tc.name     : getStringSync_test_1000
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_1000', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringLoopA').id
+      };
+      try {
+        res.resourceManager.getStringSync(resource)
+      } catch (err) {
+        console.log('getStringSync_test_1000 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_1100
+     * @tc.name     : getStringSync_test_1100
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_1100', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      };
+      try {
+        res.resourceManager.getStringSync(resource, 'aaa', 0)
+      } catch (err) {
+        console.log('getStringSync_test_1100 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_1200
+     * @tc.name     : getStringSync_test_1200
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_1200', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.color.color_test1').id
+      };
+      try {
+        res.resourceManager.getStringSync(resource, 'aaa', 0)
+      } catch (err) {
+        console.log('getStringSync_test_1200 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_1300
+     * @tc.name     : getStringSync_test_1300
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_1300', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringLoopA').id
+      };
+      try {
+        res.resourceManager.getStringSync(resource, 'aaa', 0)
+      } catch (err) {
+        console.log('getStringSync_test_1300 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringByNameSync_test_0100
+     * @tc.name     : getStringByNameSync_test_0100
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringByNameSync_test_0100', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getStringByNameSync('test_stringLoopB')
+      } catch (err) {
+        console.log('getStringByNameSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringByNameSync_test_0300
+     * @tc.name     : getStringByNameSync_test_0300
+     * @tc.desc     : errcode 9001003
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringByNameSync_test_0300', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getStringByNameSync('boolean_2', 'aaa', 1)
+      } catch (err) {
+        console.log('getStringByNameSync_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual('9001003');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringByNameSync_test_0400
+     * @tc.name     : getStringByNameSync_test_0400
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringByNameSync_test_0400', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getStringByNameSync('test_stringLoopB', 'aaa', 1)
+      } catch (err) {
+        console.log('getStringByNameSync_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getBoolean_test_0100
+     * @tc.name     : getBoolean_test_0100
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_0100', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getBoolean($r("app.boolean.boolean_4").id)
+      } catch (err) {
+        console.log('getBoolean_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getBoolean_test_0200
+     * @tc.name     : getBoolean_test_0200
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_0200', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getBoolean(0x01234567)
+      } catch (err) {
+        console.log('getBoolean_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+
+    /**
+     * @tc.number   : getBoolean_test_0300
+     * @tc.name     : getBoolean_test_0300
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_0300', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.boolean.boolean_4').id
+      };
+      try {
+        res.resourceManager.getBoolean(resource)
+      } catch (err) {
+        console.log('getBoolean_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getBoolean_test_0400
+     * @tc.name     : getBoolean_test_0400
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_0400', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      };
+      try {
+        res.resourceManager.getBoolean(resource)
+      } catch (err) {
+        console.log('getBoolean_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+
+    /**
+     * @tc.number   : getBoolean_test_0500
+     * @tc.name     : getBoolean_test_0500
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_0500', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getBoolean($r('app.color.color_test1').id)
+      } catch (err) {
+        console.log('getBoolean_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getBoolean_test_0600
+     * @tc.name     : getBoolean_test_0600
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_0600', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.color.color_test1').id
+      };
+      try {
+        res.resourceManager.getBoolean(resource)
+      } catch (err) {
+        console.log('getBoolean_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getBooleanByName_test_0100
+     * @tc.name     : getBooleanByName_test_0100
+     * @tc.desc     : errcode 9001003
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBooleanByName_test_0100', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getBooleanByName("")
+      } catch (err) {
+        console.log('getBooleanByName_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001003');
+      }
+    })
+
+    /**
+     * @tc.number   : getBooleanByName_test_0200
+     * @tc.name     : getBooleanByName_test_0200
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBooleanByName_test_0200', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getBooleanByName("boolean_4")
+      } catch (err) {
+        console.log('getBooleanByName_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getNumber_test_0100
+     * @tc.name     : getNumber_test_0100
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumber_test_0100', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getNumber(0x01234567)
+      } catch (err) {
+        console.log('getNumber_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getNumber_test_0200
+     * @tc.name     : getNumber_test_0200
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumber_test_0200', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getNumber($r('app.color.color_test1').id)
+      } catch (err) {
+        console.log('getNumber_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getNumber_test_0300
+     * @tc.name     : getNumber_test_0300
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumber_test_0300', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getNumber($r('app.float.float_loopA').id)
+      } catch (err) {
+        console.log('getNumber_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getNumber_test_0400
+     * @tc.name     : getNumber_test_0400
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumber_test_0400', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }
+      try {
+        res.resourceManager.getNumber(resource)
+      } catch (err) {
+        console.log('getNumber_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getNumber_test_0500
+     * @tc.name     : getNumber_test_0500
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumber_test_0500', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.color.color_test1').id
+      }
+      try {
+        res.resourceManager.getNumber(resource)
+      } catch (err) {
+        console.log('getNumber_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getNumber_test_0600
+     * @tc.name     : getNumber_test_0600
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumber_test_0600', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.float.float_loopA').id
+      }
+      try {
+        res.resourceManager.getNumber(resource)
+      } catch (err) {
+        console.log('getNumber_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getNumberByName_test_0100
+     * @tc.name     : getNumberByName_test_0100
+     * @tc.desc     : errcode 9001003
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumberByName_test_0100', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getNumberByName('')
+      } catch (err) {
+        console.log('getNumberByName_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001003');
+      }
+    })
+
+    /**
+     * @tc.number   : getNumberByName_test_0200
+     * @tc.name     : getNumberByName_test_0200
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumberByName_test_0200', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getNumberByName('float_loopA')
+      } catch (err) {
+        console.log('getNumberByName_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getRawFileContent_test_0100
+     * @tc.name     : getRawFileContent_test_0100
+     * @tc.desc     : errcode 9001005 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getRawFileContent_test_0100', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getRawFileContent('plural_name_loop', (err: BusinessError) => {
+        console.log('getRawFileContent_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual(9001005);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getRawFileContent_test_0200
+     * @tc.name     : getRawFileContent_test_0200
+     * @tc.desc     : errcode 9001005 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getRawFileContent_test_0200', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getRawFileContent('plural_name_loop').then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getRawFileContent_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual(9001005);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getRawFd_test_0100
+     * @tc.name     : getRawFd_test_0100
+     * @tc.desc     : errcode 9001005 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getRawFd_test_0100', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getRawFd('plural_name_loop', (err: BusinessError) => {
+        console.log('getRawFd_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual(9001005);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getRawFd_test_0200
+     * @tc.name     : getRawFd_test_0200
+     * @tc.desc     : errcode 9001005 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getRawFd_test_0200', Level.LEVEL3, async (done: Function) => {
+      res.resourceManager.getRawFd('plural_name_loop').then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getRawFd_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual(9001005);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_0200
+     * @tc.name     : getDrawableDescriptor_stage_test_0200
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_0200', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getDrawableDescriptor(0x01234567)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_0300
+     * @tc.name     : getDrawableDescriptor_stage_test_0300
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_0300', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getDrawableDescriptor($r('app.color.color_test1').id)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_0400
+     * @tc.name     : getDrawableDescriptor_stage_test_0400
+     * @tc.desc     : errcode 9001001 debsity?
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_0400', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getDrawableDescriptor(0x01234567, 0)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_0500
+     * @tc.name     : getDrawableDescriptor_stage_test_0500
+     * @tc.desc     : errcode 9001002 density
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_0500', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getDrawableDescriptor($r('app.color.color_test1').id, 0)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_0600
+     * @tc.name     : getDrawableDescriptor_stage_test_0600
+     * @tc.desc     : errcode 9001001 density? type?
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_0600', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getDrawableDescriptor(0x01234567, 0, 1)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_0700
+     * @tc.name     : getDrawableDescriptor_stage_test_0700
+     * @tc.desc     : errcode 9001002 density? type?
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_0700', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getDrawableDescriptor($r('app.color.color_test1').id, 0, 1)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_0700 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_0800
+     * @tc.name     : getDrawableDescriptor_stage_test_0800
+     * @tc.desc     : errcode 9001001 Resource
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_0800', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }
+      try {
+        res.resourceManager.getDrawableDescriptor(resource)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_0800 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_0900
+     * @tc.name     : getDrawableDescriptor_stage_test_0900
+     * @tc.desc     : errcode 9001002 Resource
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_0900', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.color.color_test1').id
+      }
+      try {
+        res.resourceManager.getDrawableDescriptor(resource)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_0900 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_1000
+     * @tc.name     : getDrawableDescriptor_stage_test_1000
+     * @tc.desc     : errcode 9001001 Resource density?
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_1000', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }
+      try {
+        res.resourceManager.getDrawableDescriptor(resource, 0)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_1000 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_1100
+     * @tc.name     : getDrawableDescriptor_stage_test_1100
+     * @tc.desc     : errcode 9001002 Resource  debsity?
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_1100', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.color.color_test1').id
+      }
+      try {
+        res.resourceManager.getDrawableDescriptor(resource, 0)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_1100 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_1200
+     * @tc.name     : getDrawableDescriptor_stage_test_1200
+     * @tc.desc     : errcode 9001001 Resource debsity? type?
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_1200', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }
+      try {
+        res.resourceManager.getDrawableDescriptor(resource, 0, 1)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_1200 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_1300
+     * @tc.name     : getDrawableDescriptor_stage_test_1300
+     * @tc.desc     : errcode 9001002 Resource
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_1300', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.color.color_test1').id
+      }
+      try {
+        res.resourceManager.getDrawableDescriptor(resource, 0, 1)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_1300 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptorByName_test_0100
+     * @tc.name     : getDrawableDescriptorByName_test_0100
+     * @tc.desc     : errcode 9001003 debsity? type?
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptorByName_test_0100', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getDrawableDescriptorByName('test_stringLoopA', 0, 1)
+      } catch (err) {
+        console.log('getDrawableDescriptorByName_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001003');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptorByName_test_0200
+     * @tc.name     : getDrawableDescriptorByName_test_0200
+     * @tc.desc     : errcode 9001003 debsity?
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptorByName_test_0200', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getDrawableDescriptorByName('', 0)
+      } catch (err) {
+        console.log('getDrawableDescriptorByName_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001003');
+      }
+    })
+
+    /**
+     * @tc.number   : getRawFdSync_test_0100
+     * @tc.name     : getRawFdSync_test_0100
+     * @tc.desc     : errcode 9001005
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getRawFdSync_test_0100', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getRawFdSync('notExist')
+      } catch (err) {
+        console.log('getRawFdSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001005');
+      }
+    })
+
+    /**
+     * @tc.number   : closeRawFdSync_test_0100
+     * @tc.name     : closeRawFdSync_test_0100
+     * @tc.desc     : errcode 9001005
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('closeRawFdSync_test_0100', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.closeRawFdSync('notExist')
+      } catch (err) {
+        console.log('closeRawFdSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001005');
+      }
+    })
+
+    /**
+     * @tc.number   : getRawFileListSync_test_0100
+     * @tc.name     : getRawFileListSync_test_0100
+     * @tc.desc     : errcode 9001005
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getRawFileListSync_test_0100', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getRawFileListSync('notExist')
+      } catch (err) {
+        console.log('getRawFileListSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001005');
+      }
+    })
+
+    /**
+     * @tc.number   : getRawFileContentSync_test_0100
+     * @tc.name     : getRawFileContentSync_test_0100
+     * @tc.desc     : errcode 9001005
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getRawFileContentSync_test_0100', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getRawFileContentSync('notExist')
+      } catch (err) {
+        console.log('getRawFileContentSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001005');
+      }
+    })
+
+    /**
+     * @tc.number   : getMediaContentSync_test_0100
+     * @tc.name     : getMediaContentSync_test_0100
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentSync_test_0100', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getMediaContentSync(0x01234567)
+      } catch (err) {
+        console.log('getMediaContentSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getMediaContentSync_test_0200
+     * @tc.name     : getMediaContentSync_test_0200
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentSync_test_0200', Level.LEVEL3, () => {
+      try {
+        res.resourceManager.getMediaContentSync($r('app.color.color_test1').id)
+      } catch (err) {
+        console.log('getMediaContentSync_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getMediaContentSync_test_0300
+     * @tc.name     : getMediaContentSync_test_0300
+     * @tc.desc     : errcode 9001001 Resource density
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentSync_test_0300', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }
+      try {
+        res.resourceManager.getMediaContentSync(resource)
+      } catch (err) {
+        console.log('getMediaContentSync_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getMediaContentSync_test_0400
+     * @tc.name     : getMediaContentSync_test_0400
+     * @tc.desc     : errcode 9001002 Resource density
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentSync_test_0400', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.color.color_test1').id
+      }
+      try {
+        res.resourceManager.getMediaContentSync(resource)
+      } catch (err) {
+        console.log('getMediaContentSync_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+
+    /**
+     * @tc.number    : getMediaContentSync_test_0500
+     * @tc.name      : getMediaContentSync_test_0500
+     * @tc.desc      : getMediaContentSync with res id density
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('getMediaContentSync_test_0500', 0, () => {
+      let value: Uint8Array = res.resourceManager.getMediaContentSync($r('app.media.icon').id, 0);
+      console.log('getMediaContentSync_test_0500 1' + value);
+      expect(value !== null).assertTrue();
+    })
+
+    /**
+     * @tc.number    : getMediaContentSync_test_0600
+     * @tc.name      : getMediaContentSync_test_0600
+     * @tc.desc      : getMediaContentSync with resource object density
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('getMediaContentSync_test_0600', 0, () => {
+      let value: Uint8Array = res.resourceManager.getMediaContentSync({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.media.icon').id
+      }, 0);
+      console.log('getMediaContentSync_test_0600 1' + value);
+      expect(value !== null).assertTrue();
+    })
+
 
     console.log('*************end globalStageTest*************');
   })
