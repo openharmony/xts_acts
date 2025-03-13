@@ -477,6 +477,7 @@
     "MainAbility/pages/RichEditorDoubleClick/RichEditorDoubleClick018",
     "MainAbility/pages/RichEditorDoubleClick/RichEditorDoubleClick019",
 
-    "MainAbility/pages/RichEditorScroll/RichEditorScroll001"
+    "MainAbility/pages/RichEditorScroll/RichEditorScroll001",
+    "MainAbility/pages/StyledString/getStyles"
   ]
 }

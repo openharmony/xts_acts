@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,14 +13,9 @@
  * limitations under the License.
  */
 
-import textAreaInputTest from './TextTest/textAreaInputTest.test';
-import ContentTypeTest1 from './TextInputTest/ContentType1.test';
-import ContentTypeTest2 from './TextInputTest/ContentType2.test';
-import symbolGlyphFontScaleTest from './FontScaleTest/symbolGlyphFontScaleTest.test';
-
-export default function testsuite() {
-  textAreaInputTest();
-  ContentTypeTest1();
-  ContentTypeTest2();
-  symbolGlyphFontScaleTest();
+export default class RectValue {
+  left: number = 0;
+  top: number = 0;
+  right: number = 0;
+  bottom: number = 0;
 }

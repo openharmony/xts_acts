@@ -494,6 +494,8 @@ import TextCommonTextComputing7 from './TextTest/MeasureSizeTest/TextCommonTextC
 import TextCommonTextComputing8 from './TextTest/MeasureSizeTest/TextCommonTextComputing8.test';
 import TextCommonTextComputing9 from './TextTest/MeasureSizeTest/TextCommonTextComputing9.test';
 
+import getStyles from './StyledString/getStyles.test';
+
 export default function testsuite() {
   TextCommonTextComputing1();
   TextCommonTextComputing2();
@@ -966,4 +968,5 @@ export default function testsuite() {
   RichEditorDoubleClick019();
 
   RichEditorScroll001();
+  getStyles();
 }

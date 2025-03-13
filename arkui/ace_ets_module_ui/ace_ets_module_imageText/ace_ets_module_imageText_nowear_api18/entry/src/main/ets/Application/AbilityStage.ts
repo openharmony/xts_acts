@@ -12,15 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import AbilityStage from "@ohos.app.ability.AbilityStage"
 
-import textAreaInputTest from './TextTest/textAreaInputTest.test';
-import ContentTypeTest1 from './TextInputTest/ContentType1.test';
-import ContentTypeTest2 from './TextInputTest/ContentType2.test';
-import symbolGlyphFontScaleTest from './FontScaleTest/symbolGlyphFontScaleTest.test';
-
-export default function testsuite() {
-  textAreaInputTest();
-  ContentTypeTest1();
-  ContentTypeTest2();
-  symbolGlyphFontScaleTest();
+export default class MyAbilityStage extends AbilityStage {
+    onCreate() {
+        console.log("[Demo] MyAbilityStage onCreate")
+        globalThis.stageOnCreateRun = 1;
+        globalThis.stageContext = this.context;
+    }
 }
