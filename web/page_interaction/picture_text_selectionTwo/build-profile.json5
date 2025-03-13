@@ -12,16 +12,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import webViewControllerHitTest from './WebViewControllerHitTest.test'
-import webviewSelectionMenuOptions from './webviewSelectionMenuOptions.test'
-import webControllerHitTest from './WebControllerHitTest.test'
-import webViewMenuInputFieldType from './webViewMenuInputFieldType.test'
-import webInitTest from './WebInitTest.test'
-
-export default function testsuite() {
-  webInitTest()
-  webviewSelectionMenuOptions()
-  webViewMenuInputFieldType()
-  webViewControllerHitTest()
-  webControllerHitTest()
+{
+  "app": {
+    "signingConfigs": [],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": 16,
+        "targetSdkVersion": 16,
+        "compileSdkVersion": 18
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
 }

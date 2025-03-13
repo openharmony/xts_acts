@@ -12,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import webViewControllerHitTest from './WebViewControllerHitTest.test'
-import webviewSelectionMenuOptions from './webviewSelectionMenuOptions.test'
-import webControllerHitTest from './WebControllerHitTest.test'
-import webViewMenuInputFieldType from './webViewMenuInputFieldType.test'
-import webInitTest from './WebInitTest.test'
-
-export default function testsuite() {
-  webInitTest()
-  webviewSelectionMenuOptions()
-  webViewMenuInputFieldType()
-  webViewControllerHitTest()
-  webControllerHitTest()
+{
+  "apiType": "stageMode",
+  "buildOption": {
+  },
+  "targets": [
+    {
+      "name": "default",
+    },
+    {
+      "name": "ohosTest",
+    }
+  ]
 }

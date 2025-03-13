@@ -12,16 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import webViewControllerHitTest from './WebViewControllerHitTest.test'
-import webviewSelectionMenuOptions from './webviewSelectionMenuOptions.test'
-import webControllerHitTest from './WebControllerHitTest.test'
-import webViewMenuInputFieldType from './webViewMenuInputFieldType.test'
-import webInitTest from './WebInitTest.test'
-
-export default function testsuite() {
-  webInitTest()
-  webviewSelectionMenuOptions()
-  webViewMenuInputFieldType()
-  webViewControllerHitTest()
-  webControllerHitTest()
+{
+  "app": {
+    "bundleName": "com.pageInteractionTwo.test",
+    "vendor": "example",
+    "versionCode": 1000000,
+    "versionName": "1.0.0",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name"
+  }
 }

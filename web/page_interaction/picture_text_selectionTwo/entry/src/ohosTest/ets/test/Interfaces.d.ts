@@ -12,16 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import webViewControllerHitTest from './WebViewControllerHitTest.test'
-import webviewSelectionMenuOptions from './webviewSelectionMenuOptions.test'
-import webControllerHitTest from './WebControllerHitTest.test'
-import webViewMenuInputFieldType from './webViewMenuInputFieldType.test'
-import webInitTest from './WebInitTest.test'
 
-export default function testsuite() {
-  webInitTest()
-  webviewSelectionMenuOptions()
-  webViewMenuInputFieldType()
-  webViewControllerHitTest()
-  webControllerHitTest()
+export interface JsProxyObject {
+  test(res: object);
+
+  toString(res: string);
+
+  register(res: object);
+}
+
+export class ComponentInfo {
+  $type: string;
+  $rect: Object[];
+}
+
+export class RectInfo {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
 }
