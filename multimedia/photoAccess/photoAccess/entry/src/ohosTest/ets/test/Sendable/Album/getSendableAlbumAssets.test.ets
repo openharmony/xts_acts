@@ -17,6 +17,7 @@ import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
 import common from '@ohos.app.ability.common';
+
 import {
   sleep,
   genRadomStr,

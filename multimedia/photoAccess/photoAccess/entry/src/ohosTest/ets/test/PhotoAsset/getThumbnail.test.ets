@@ -23,6 +23,7 @@ export default function getThumbnailTest() {
 
   const fileNameList = ["getThumb.jpg", "getThumb.mp4"];
 
+
   describe('getThumbnailTest', () => {
     let testContext: common.UIAbilityContext = AppStorage.get('testContext') as common.UIAbilityContext;
      let getThumbnailCallback1 = async(done: Function, testNum: string, fetchOps: ESObject) => {
