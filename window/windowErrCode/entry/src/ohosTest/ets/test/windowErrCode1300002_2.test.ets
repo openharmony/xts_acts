@@ -15,14 +15,56 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
-import common from '@ohos.app.ability.common';
+import { common, StartOptions, bundleManager } from '@kit.AbilityKit';
+import Want from '@ohos.app.ability.Want';
+
+let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
+
+async function startAbility(caseName: string, context: common.UIAbilityContext, options?: StartOptions) {
+  let want: Want = {
+    bundleName: AppStorage.get('bundleName'),
+    abilityName: 'StartAbility'
+  };
+  if (options) {
+    await context.startAbility(want, options).then(() => {
+      console.info(`${caseName} Succeeded in starting ability.`);
+    }).catch((err: BusinessError) => {
+      console.info(`${caseName} Failed in starting ability. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  } else {
+    await context.startAbility(want).then(() => {
+      console.info(`${caseName} Succeeded in starting ability.`);
+    }).catch((err: BusinessError) => {
+      console.info(`${caseName} Failed in starting ability. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  }
+  await sleep(1000)
+  let windowStageStart = AppStorage.get('windowStageStart') as ohosWindow.WindowStage;
+  return windowStageStart
+}
+
+async function terminateAbility(caseName: string) {
+  let pageContext = AppStorage.get('pageContext') as common.UIAbilityContext
+  try {
+    if (pageContext !== null && pageContext !== undefined) {
+      console.log(`${caseName} terminateSelf begin`);
+    }
+    await pageContext.terminateSelf().then(() => {
+      console.log(`${caseName} terminateSelf success`);
+    }).catch((err: BusinessError) => {
+      console.error(`${caseName} terminateSelf fail, err: ${JSON.stringify(err)}`);
+    });
+  } catch (e) {
+    console.error(`${caseName} pageContext.terminateSelf fail, err: ${JSON.stringify(e)}`);
+  }
+  await sleep(1000)
+}
 
 export default function windowErrCode1300002_2() {
   describe('windowErrCode1300002_2', () => {
     console.log('describe windowErrCode1300002_2 start!!!')
-    let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
-    let context : common.UIAbilityContext;
-    let windowStage:ohosWindow.WindowStage;
+    let context: common.UIAbilityContext;
+    let windowStage: ohosWindow.WindowStage;
 
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
@@ -800,6 +842,316 @@ export default function windowErrCode1300002_2() {
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call setTitleAndDockHoverShown. Cause:' + JSON.stringify(exception));
         expect().assertFail();
+        done()
+      }
+    })
+
+    /**
+     * @tc.number     : testLoadContentByNameCallbackErrCode1300002_0100
+     * @tc.name       : testLoadContentByNameCallbackErrCode1300002_0100
+     * @tc.desc       : testLoadContentByNameCallbackErrCode1300002_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testLoadContentByNameCallbackErrCode1300002_0100', 0, async (done: Function) => {
+      let caseName = "testLoadContentByNameCallbackErrCode1300002_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+
+      let windowStageStart = await startAbility(caseName, context);
+      await terminateAbility(caseName);
+      try {
+        let storage: LocalStorage = new LocalStorage();
+        windowStageStart!.loadContentByName("entryAbility", storage, async (err: BusinessError) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(err));
+            expect(err.code).assertEqual(1300002);
+            done()
+            return;
+          }
+          console.info(msgStr + 'Succeeded in calling loadContentByName.');
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(exception));
+        expect().assertFail();
+        done()
+      }
+    })
+
+    /**
+     * @tc.number     : testLoadContentByNameCallbackErrCode1300002_0200
+     * @tc.name       : testLoadContentByNameCallbackErrCode1300002_0200
+     * @tc.desc       : testLoadContentByNameCallbackErrCode1300002_0200
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testLoadContentByNameCallbackErrCode1300002_0200', 0, async (done: Function) => {
+      let caseName = "testLoadContentByNameCallbackErrCode1300002_0200";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+
+      let windowStageStart = await startAbility(caseName, context);
+      await terminateAbility(caseName);
+      try {
+        windowStageStart!.loadContentByName("entryAbility", async (err: BusinessError) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(err));
+            expect(err.code).assertEqual(1300002);
+            done()
+            return;
+          }
+          console.info(msgStr + 'Succeeded in calling loadContentByName.');
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to call loadContentByName. Cause:' + JSON.stringify(exception));
+        expect().assertFail();
+        done()
+      }
+    })
+
+    /**
+     * @tc.number     : testLoadContentByNamePromiseErrCode1300002_0100
+     * @tc.name       : testLoadContentByNamePromiseErrCode1300002_0100
+     * @tc.desc       : testLoadContentByNamePromiseErrCode1300002_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testLoadContentByNamePromiseErrCode1300002_0100', 0, async (done: Function) => {
+      let caseName = "testLoadContentByNamePromiseErrCode1300002_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+
+      let windowStageStart = await startAbility(caseName, context);
+      await terminateAbility(caseName);
+
+      try {
+        let storage: LocalStorage = new LocalStorage();
+        await windowStageStart.loadContentByName("entryability", storage).then(async () => {
+          console.info(msgStr + 'Succeeded in calling loadContentByName.');
+          expect().assertFail();
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call loadContentByName. Cause: ' + JSON.stringify(err));
+          expect(err.code).assertEqual(1300002);
+        });
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call loadContentByName. Cause:' + JSON.stringify(exception));
+        expect().assertFail();
+        done()
+      }
+    })
+
+    /**
+     * @tc.number     : testOn_windowStageEventErrCode1300002_0100
+     * @tc.name       : testOn_windowStageEventErrCode1300002_0100
+     * @tc.desc       : testOn_windowStageEventErrCode1300002_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOnWindowStageEventErrCode1300002_0100', 0, async (done: Function) => {
+      let caseName = "testOnWindowStageEventErrCode1300002_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+
+      let windowStageStart = await startAbility(caseName, context);
+      await terminateAbility(caseName);
+
+      try {
+        const callback = (res: ohosWindow.WindowStageEventType) => {
+        };
+        windowStageStart.on("windowStageEvent", callback);
+        console.error(msgStr + 'Succeeded in calling on windowStageEvent.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call on windowStageEvent. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(1300002);
+        done()
+      }
+    })
+
+    /**
+     * @tc.number     : testOff_windowStageEventErrCode1300002_0100
+     * @tc.name       : testOff_windowStageEventErrCode1300002_0100
+     * @tc.desc       : testOff_windowStageEventErrCode1300002_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOffWindowStageEventErrCode1300002_0100', 0, async (done: Function) => {
+      let caseName = "testOffWindowStageEventErrCode1300002_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+
+      let windowStageStart = await startAbility(caseName, context);
+      await terminateAbility(caseName);
+
+      try {
+        const callback = (res: ohosWindow.WindowStageEventType) => {
+        };
+        windowStageStart.off("windowStageEvent", callback);
+        console.error(msgStr + 'Succeeded in calling off windowStageEvent.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call off windowStageEvent. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(1300002);
+        done()
+      }
+    })
+
+    /**
+     * @tc.number     : testOn_windowStageCloseErrCode1300002_0100
+     * @tc.name       : testOn_windowStageCloseErrCode1300002_0100
+     * @tc.desc       : testOn_windowStageCloseErrCode1300002_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOnWindowStageCloseErrCode1300002_0100', 0, async (done: Function) => {
+      let caseName = "testOnWindowStageCloseErrCode1300002_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let windowStageStart = await startAbility(caseName, context);
+      await terminateAbility(caseName);
+
+      try {
+        const callback = () => {
+        };
+        windowStageStart.on("windowStageClose", callback);
+        console.error(msgStr + 'Succeeded in calling on windowStageClose.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call on windowStageClose. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(1300002);
+        done()
+      }
+    })
+
+    /**
+     * @tc.number     : testOff_windowStageCloseErrCode1300002_0100
+     * @tc.name       : testOff_windowStageCloseErrCode1300002_0100
+     * @tc.desc       : testOff_windowStageCloseErrCode1300002_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOff_windowStageCloseErrCode1300002_0100', 0, async (done: Function) => {
+      let caseName = "testOff_windowStageCloseErrCode1300002_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+
+      let windowStageStart = await startAbility(caseName, context);
+      await terminateAbility(caseName);
+      try {
+        const callback = () => {
+        };
+        windowStageStart.off("windowStageClose", callback);
+        console.error(msgStr + 'Succeeded in calling off windowStageClose.');
+        expect().assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + 'Failed to call off windowStageClose. Cause:' + JSON.stringify(e));
+        expect(e.code).assertEqual(1300002);
+        done()
+      }
+    })
+    /**
+     * @tc.number     : testRemoveStartingWindowPromiseErrCode1300002_0100
+     * @tc.name       : testRemoveStartingWindowPromiseErrCode1300002_0100
+     * @tc.desc       : testRemoveStartingWindowPromiseErrCode1300002_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testRemoveStartingWindowPromiseErrCode1300002_0100', 0, async (done: Function) => {
+      let caseName = "testRemoveStartingWindowPromiseErrCode1300002_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let windowStageStart = await startAbility(caseName, context);
+      await terminateAbility(caseName);
+      try {
+        await windowStageStart.removeStartingWindow().then(async () => {
+          console.info(msgStr + 'Succeeded in calling removeStartingWindow.');
+          expect().assertFail();
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call removeStartingWindow. Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        });
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call removeStartingWindow. Cause:' + JSON.stringify(exception));
+        expect(exception.code).assertEqual(1300002);
+        done()
+      }
+    })
+    /**
+     * @tc.number     : testSetWindowRectAutoSavePromiseErrCode1300002_0100
+     * @tc.name       : testSetWindowRectAutoSavePromiseErrCode1300002_0100
+     * @tc.desc       : testSetWindowRectAutoSavePromiseErrCode1300002_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testSetWindowRectAutoSavePromiseErrCode1300002_0100', 0, async (done: Function) => {
+      let caseName = "testSetWindowRectAutoSavePromiseErrCode1300002_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let windowStageStart = await startAbility(caseName, context);
+      await terminateAbility(caseName);
+      try {
+        await windowStageStart.setWindowRectAutoSave(true).then(async () => {
+          console.info(msgStr + 'Succeeded in calling setWindowRectAutoSave.');
+          expect().assertFail();
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call setWindowRectAutoSave. Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        });
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setWindowRectAutoSave. Cause:' + JSON.stringify(exception));
+        expect(exception.code).assertEqual(1300002);
+        done()
+      }
+    })
+
+    /**
+     * @tc.number     : testIsWindowRectAutoSavePromiseErrCode1300002_0100
+     * @tc.name       : testIsWindowRectAutoSavePromiseErrCode1300002_0100
+     * @tc.desc       : testIsWindowRectAutoSavePromiseErrCode1300002_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testIsWindowRectAutoSavePromiseErrCode1300002_0100', 0, async (done: Function) => {
+      let caseName = "testIsWindowRectAutoSavePromiseErrCode1300002_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let windowStageStart = await startAbility(caseName, context);
+      await terminateAbility(caseName);
+      try {
+        await windowStageStart.isWindowRectAutoSave().then(async () => {
+          console.info(msgStr + 'Succeeded in calling isWindowRectAutoSave.');
+          expect().assertFail();
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call isWindowRectAutoSave. Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        });
+        done()
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call isWindowRectAutoSave. Cause:' + JSON.stringify(exception));
+        expect(exception.code).assertEqual(1300002);
         done()
       }
     })
