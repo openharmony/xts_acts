@@ -355,6 +355,21 @@ export default function getMovingPhotoTest() {
       await requestMovingPhotoErrorContent(done, testNum, cacelFlag);
     });
     /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_CONTENT_0007
+     * @tc.name      : request_moving_photo_content_0007
+     * @tc.desc      : request moving photo error code 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('request_moving_photo_content_0007', 2, async (done: Function) => {
+      const cacelFlag = false;
+      const expectFlag = true;
+      const testNum = 'request_moving_photo_content_0007';
+      const fileList: Array<string> = ["ImageFile.jpg", "VideoFile.mp4"];
+      await requestMovingPhotoErrorContent(done, testNum, cacelFlag);
+    });
+    /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_LOAD_MOVING_PHOTO_001
      * @tc.name      : load_moving_photo_from_sandbox_001
      * @tc.desc      : load moving photo from sandbox
