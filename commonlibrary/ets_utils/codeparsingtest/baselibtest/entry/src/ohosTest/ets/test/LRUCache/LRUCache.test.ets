@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it } from '@ohos/hypium';
 import { util } from '@kit.ArkTS';
 
 function sleep(ms: number): Promise<void> {
@@ -23,6 +23,9 @@ function sleep(ms: number): Promise<void> {
 
 export default function LRUCatchTest() {
   describe('ActsLRUCatchTest', () => {
+    beforeEach(() => {
+      sleep(20);
+    })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_LRU_CACHE_0100
      * @tc.name       : testLRUCachePutKey0001
