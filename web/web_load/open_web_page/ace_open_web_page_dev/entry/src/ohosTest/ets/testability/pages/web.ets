@@ -120,7 +120,7 @@ struct Index {
             }
             case "emitLoadUrl": {
               this.controller.loadUrl({ url: "resource://rawfile/index.html" });
-              await Uitls.sleep(18000);
+              await Utils.sleep(18000);
               setTimeout(() => {
                 this.controller.runJavaScript({
                   script: "getTitle()", callback: (res) => {
