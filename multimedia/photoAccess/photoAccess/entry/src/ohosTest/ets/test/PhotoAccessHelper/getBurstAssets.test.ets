@@ -171,7 +171,7 @@ export default function getBurstAssetsTest () {
     /**
      * @tc.number    : Sub_PhotoAccess_Helper_Get_BurstAssets_002
      * @tc.name      : get_burst_assets_image_002
-     * @tc.desc      : getBurstAssets image,burstKey is [123123]
+     * @tc.desc      : getBurstAssets image,burstKey is [123123],error code 13900020 or 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -196,7 +196,7 @@ export default function getBurstAssetsTest () {
     /**
      * @tc.number    : Sub_PhotoAccess_Helper_Get_BurstAssets_002
      * @tc.name      : get_burst_assets_image_002
-     * @tc.desc      : getBurstAssets image,burstKey is [123123]
+     * @tc.desc      : getBurstAssets image,ops is undefined,error code 13900020 or 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
