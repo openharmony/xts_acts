@@ -3328,12 +3328,12 @@ export default function windowPropertiesTest() {
                 console.info(`${caseName} windowClass2 isFocused is: ${isFocused2}`);
                 expect(isFocused1).assertFalse();
                 expect(isFocused2).assertTrue();
-                await windowClass1.destroyWindow();
-                await windowClass2.destroyWindow();
+                await windowClass1?.destroyWindow();
+                await windowClass2?.destroyWindow();
                 done();
             } catch (exception) {
-                await windowClass1.destroyWindow();
-                await windowClass2.destroyWindow();
+                await windowClass1?.destroyWindow();
+                await windowClass2?.destroyWindow();
                 console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
                 expect().assertFail();
                 done();
