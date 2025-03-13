@@ -17,9 +17,18 @@ import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 
-export default function windowErrCode1300004(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage) {
+export default function windowErrCode1300004() {
   describe('windowErrCode1300004', () => {
     console.log('describe windowErrCode1300004 start!!!')
+    let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
+    let context : common.UIAbilityContext;
+    let windowStage:ohosWindow.WindowStage;
+
+    beforeAll(() => {
+      context = AppStorage.get('context') as common.UIAbilityContext;
+      console.log('windowTest context: ' + JSON.stringify(context))
+      windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
+    })
 
     /**
      * @tc.number     : testOnSubWindowCloseErrCode1300004_0100
@@ -53,13 +62,64 @@ export default function windowErrCode1300004(context: common.UIAbilityContext, w
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call on_subWindowClose. Cause:' + JSON.stringify(exception));
         if (exception.code == 801) {
-          console.info(msgStr + '���豸��֧��on_subWindowClose����.');
+          console.info(msgStr + '此设备不支持on_subWindowClose能力.');
         } else {
           expect(exception.code).assertEqual(1300004);
         }
         done();
       }
     })
+    /**
+     * @tc.number     : testSetRaiseByClickEnabledPromiseErrCode1300004_0100
+     * @tc.name       : testSetRaiseByClickEnabledPromiseErrCode1300004_0100
+     * @tc.desc       : testSetRaiseByClickEnabledPromiseErrCode1300004_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testSetRaiseByClickEnabledPromiseErrCode1300004_0100', 0, async (done: Function) => {
+      let caseName = "testSetRaiseByClickEnabledPromiseErrCode1300004_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetRaiseByClickEnabledPromiseErrCode1300004_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let tempWnd: ohosWindow.Window | void;
+      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
+        console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      expect(!!tempWnd).assertTrue();
+      await (tempWnd as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
+      await (tempWnd as ohosWindow.Window).showWindow();
+
+      try {
+        await (tempWnd as ohosWindow.Window)!.setRaiseByClickEnabled(true).then(async () => {
+          console.info(msgStr + 'Succeeded in calling setRaiseByClickEnabled.');
+          expect().assertFail();
+          done()
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call setRaiseByClickEnabled. Cause: ' + JSON.stringify(err));
+          await (tempWnd! as ohosWindow.Window).destroyWindow();
+          if (err.code == 801) {
+            console.info(msgStr + '此设备不支持setWindowTitleMoveEnabled能力.');
+          } else {
+            expect(err.code).assertEqual(1300004);
+          }
+          done()
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setRaiseByClickEnabled. Cause:' + JSON.stringify(exception));
+        expect(exception.code).assertEqual(1300004);
+        await (tempWnd! as ohosWindow.Window).destroyWindow();
+        done()
+      }
+    })
+
     /**
      * @tc.number     : testMaximizePromiseErrCode1300004_0100
      * @tc.name       : testMaximizePromiseErrCode1300004_0100
@@ -102,6 +162,192 @@ export default function windowErrCode1300004(context: common.UIAbilityContext, w
         console.error(msgStr + 'Failed to set the call maximize. Cause:' + JSON.stringify(exception));
         expect(exception.code).assertEqual(1300004);
         done()
+      }
+    })
+    /**
+     * @tc.number     : testSetWindowTitleMoveEnabledErrCode1300004_0100
+     * @tc.name       : testSetWindowTitleMoveEnabledErrCode1300004_0100
+     * @tc.desc       : testSetWindowTitleMoveEnabledErrCode1300004_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testSetWindowTitleMoveEnabledErrCode1300004_0100', 0, async (done: Function) => {
+      let caseName = "testSetWindowTitleMoveEnabledErrCode1300004_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetWindowTitleMoveEnabledErrCode1300004_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let tempWnd: ohosWindow.Window | void;
+      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
+        console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      expect(!!tempWnd).assertTrue();
+      await (tempWnd as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
+      await (tempWnd as ohosWindow.Window).showWindow();
+
+      try {
+        (tempWnd! as ohosWindow.Window).setWindowTitleMoveEnabled(true);
+        console.error(msgStr + 'Succeeded in calling setWindowTitleMoveEnabled.');
+        expect().assertFail();
+        await (tempWnd! as ohosWindow.Window).destroyWindow();
+        done();
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setWindowTitleMoveEnabled. Cause:' +
+        JSON.stringify(exception));
+        await (tempWnd! as ohosWindow.Window).destroyWindow();
+        if (exception.code == 801) {
+          console.info(msgStr + '此设备不支持setWindowTitleMoveEnabled能力.');
+        } else {
+          expect(exception.code).assertEqual(1300004);
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : testSetDecorButtonStyleErrCode1300004_0100
+     * @tc.name       : testSetDecorButtonStyleErrCode1300004_0100
+     * @tc.desc       : testSetDecorButtonStyleErrCode1300004_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testSetDecorButtonStyleErrCode1300004_0100', 0, async (done: Function) => {
+      let caseName = "testSetDecorButtonStyleErrCode1300004_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetDecorButtonStyleErrCode1300004_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let tempWnd: ohosWindow.Window | void;
+      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
+        console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      expect(!!tempWnd).assertTrue();
+      await (tempWnd as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
+      await (tempWnd as ohosWindow.Window).showWindow();
+
+      try {
+        // let param: ohosWindow.DecorButtonStyle = {}
+        (tempWnd as ohosWindow.Window).setDecorButtonStyle((tempWnd as ohosWindow.Window).getDecorButtonStyle());
+        console.error(msgStr + 'Succeeded in calling setDecorButtonStyle.');
+        await (tempWnd! as ohosWindow.Window).destroyWindow();
+        expect().assertFail();
+        done();
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setDecorButtonStyle. Cause:' + JSON.stringify(exception));
+        await (tempWnd! as ohosWindow.Window).destroyWindow();
+        if (exception.code == 801) {
+          console.info(msgStr + '此设备不支持setDecorButtonStyle能力.');
+        } else {
+          expect(exception.code).assertEqual(1300004);
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : testGetDecorButtonStyleErrCode1300004_0100
+     * @tc.name       : testGetDecorButtonStyleErrCode1300004_0100
+     * @tc.desc       : testGetDecorButtonStyleErrCode1300004_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testGetDecorButtonStyleErrCode1300004_0100', 0, async (done: Function) => {
+      let caseName = "testGetDecorButtonStyleErrCode1300004_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testGetDecorButtonStyleErrCode1300004_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let tempWnd: ohosWindow.Window | void;
+      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
+        console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      expect(!!tempWnd).assertTrue();
+      await (tempWnd as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
+      await (tempWnd as ohosWindow.Window).showWindow();
+
+      try {
+        (tempWnd as ohosWindow.Window).getDecorButtonStyle();
+        console.error(msgStr + 'Succeeded in calling getDecorButtonStyle.');
+        expect().assertFail();
+        await (tempWnd! as ohosWindow.Window).destroyWindow();
+        done();
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call getDecorButtonStyle. Cause:' + JSON.stringify(exception));
+        await (tempWnd! as ohosWindow.Window).destroyWindow();
+        if (exception.code == 801) {
+          console.info(msgStr + '此设备不支持getDecorButtonStyle能力.');
+        } else {
+          expect(exception.code).assertEqual(1300004);
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : testSetWindowTitleButtonVisibleErrCode1300004_0100
+     * @tc.name       : testSetWindowTitleButtonVisibleErrCode1300004_0100
+     * @tc.desc       : testSetWindowTitleButtonVisibleErrCode1300004_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testSetWindowTitleButtonVisibleErrCode1300004_0100', 0, async (done: Function) => {
+      let caseName = "testSetWindowTitleButtonVisibleErrCode1300004_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testTouchOutside_OnDialogWindow_ClickMainWindow",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let tempWnd: ohosWindow.Window | void;
+      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
+        console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      expect(!!tempWnd).assertTrue();
+      await (tempWnd as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
+      await (tempWnd as ohosWindow.Window).showWindow();
+
+      try {
+        (tempWnd as ohosWindow.Window).setWindowTitleButtonVisible(true, true, true);
+        console.error(msgStr + 'Succeeded in calling setWindowTitleButtonVisible.');
+        expect().assertFail();
+        await (tempWnd! as ohosWindow.Window).destroyWindow();
+        done();
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setWindowTitleButtonVisible. Cause:' +
+        JSON.stringify(exception));
+        await (tempWnd! as ohosWindow.Window).destroyWindow();
+        if (exception.code == 801) {
+          console.info(msgStr + '此设备不支持getDecorButtonStyle能力.');
+        } else {
+          expect(exception.code).assertEqual(1300004);
+        }
+        done();
       }
     })
 
@@ -186,5 +432,58 @@ export default function windowErrCode1300004(context: common.UIAbilityContext, w
         done();
       }
     })
+    /**
+     * @tc.number     : testSetTitleAndDockHoverShownPromiseErrCode1300004_0100
+     * @tc.name       : testSetTitleAndDockHoverShownPromiseErrCode1300004_0100
+     * @tc.desc       : testSetTitleAndDockHoverShownPromiseErrCode1300004_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testSetTitleAndDockHoverShownPromiseErrCode1300004_0100', 0, async (done: Function) => {
+      let caseName = "testSetTitleAndDockHoverShownPromiseErrCode1300004_0100";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+
+      let windowConfig: ohosWindow.Configuration = {
+        name: "testSetTitleAndDockHoverShownPromiseErrCode1300004_0100",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context,
+      };
+      let tempWnd: ohosWindow.Window | void;
+      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
+        console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      expect(!!tempWnd).assertTrue();
+      await (tempWnd as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
+      await (tempWnd as ohosWindow.Window).showWindow();
+
+      try {
+        await (tempWnd as ohosWindow.Window).setTitleAndDockHoverShown(true, true).then(async () => {
+          console.info(msgStr + 'Succeeded in calling setTitleAndDockHoverShown.');
+          expect().assertFail();
+          done()
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + 'Failed to call setTitleAndDockHoverShown. Cause: ' + JSON.stringify(err));
+          await (tempWnd! as ohosWindow.Window).destroyWindow();
+          if (err.code == 801) {
+            console.info(msgStr + '此设备不支持setTitleAndDockHoverShown能力.');
+          } else {
+            expect(err.code).assertEqual(1300004);
+          }
+          done()
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the call setTitleAndDockHoverShown. Cause:' +
+        JSON.stringify(exception));
+        await (tempWnd! as ohosWindow.Window).destroyWindow();
+        expect(exception.code).assertEqual(1300004);
+        done()
+      }
+    })
+
+
   })
 }

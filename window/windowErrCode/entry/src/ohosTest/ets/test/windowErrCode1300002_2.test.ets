@@ -17,9 +17,18 @@ import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 
-export default function windowErrCode1300002_2(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage) {
+export default function windowErrCode1300002_2() {
   describe('windowErrCode1300002_2', () => {
     console.log('describe windowErrCode1300002_2 start!!!')
+    let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
+    let context : common.UIAbilityContext;
+    let windowStage:ohosWindow.WindowStage;
+
+    beforeAll(() => {
+      context = AppStorage.get('context') as common.UIAbilityContext;
+      console.log('windowTest context: ' + JSON.stringify(context))
+      windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
+    })
 
     /**
      * @tc.number     : testRecoverPromiseErrCode1300002_0100

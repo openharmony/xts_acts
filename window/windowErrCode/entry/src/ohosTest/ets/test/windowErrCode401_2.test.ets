@@ -17,9 +17,18 @@ import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 
-export default function windowErrCode401_2(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage) {
+export default function windowErrCode401_2() {
   describe('windowErrCode401_2', () => {
     console.log('describe windowErrCode401_2 start!!!')
+    let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
+    let context : common.UIAbilityContext;
+    let windowStage:ohosWindow.WindowStage;
+
+    beforeAll(() => {
+      context = AppStorage.get('context') as common.UIAbilityContext;
+      console.log('windowTest context: ' + JSON.stringify(context))
+      windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
+    })
 
     /**
      * @tc.number     : testOnTouchOutsideErrCode401_0100
@@ -911,7 +920,7 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
           }).catch(async (err: BusinessError) => {
             console.error(msgStr + 'Failed to call setWindowTopmost. Cause: ' + JSON.stringify(err));
             if (err.code == 801) {
-              console.info(msgStr + '此设备不支持setWindowTopmost能力.');
+              console.info(msgStr + '姝よ澶囦笉鏀寔setWindowTopmost鑳藉姏.');
             } else {
               expect().assertFail();
             }
@@ -922,7 +931,7 @@ export default function windowErrCode401_2(context: common.UIAbilityContext, win
           console.error(msgStr + 'Failed to set the call setWindowTopmost. Cause:' + JSON.stringify(exception));
           await win!.destroyWindow()
           if (exception.code == 801) {
-            console.info(msgStr + '此设备不支持setWindowTopmost能力.');
+            console.info(msgStr + '姝よ澶囦笉鏀寔setWindowTopmost鑳藉姏.');
             done();
           } else {
             expect(exception.code).assertEqual(401);

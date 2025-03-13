@@ -19,9 +19,18 @@ import common from '@ohos.app.ability.common';
 import { image } from '@kit.ImageKit';
 import rpc from '@ohos.rpc';
 
-export default function windowErrCode202_1(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage) {
+export default function windowErrCode202_1() {
   describe('windowErrCode202_1', () => {
     console.log('describe windowErrCode202_1 start!!!')
+    let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
+    let context : common.UIAbilityContext;
+    let windowStage:ohosWindow.WindowStage;
+
+    beforeAll(() => {
+      context = AppStorage.get('context') as common.UIAbilityContext;
+      console.log('windowTest context: ' + JSON.stringify(context))
+      windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
+    })
 
     /**
      * @tc.number     : testToggleShownStateForAllAppWindowsCallbackErrCode202_0100

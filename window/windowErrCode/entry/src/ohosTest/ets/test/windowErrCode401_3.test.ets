@@ -17,9 +17,19 @@ import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 
-export default function windowErrCode401_3(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage) {
+export default function windowErrCode401_3() {
   describe('windowErrCode401_3', () => {
     console.log('describe windowErrCode401_3 start!!!')
+
+    let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
+    let context : common.UIAbilityContext;
+    let windowStage:ohosWindow.WindowStage;
+
+    beforeAll(() => {
+      context = AppStorage.get('context') as common.UIAbilityContext;
+      console.log('windowTest context: ' + JSON.stringify(context))
+      windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
+    })
 
     /**
      * @tc.number     : testSetWindowTouchablePromiseErrCode401_0100
@@ -833,7 +843,7 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
           }).catch(async (err: BusinessError) => {
             console.error(msgStr + 'Failed to call setTitleAndDockHoverShown. Cause: ' + JSON.stringify(err));
             if (err.code == 801) {
-              console.info(msgStr + '此设备不支持setTitleAndDockHoverShown能力.');
+              console.info(msgStr + '姝よ澶囦笉鏀寔setTitleAndDockHoverShown鑳藉姏.');
             } else {
               expect(err.code).assertEqual(401);
             }
@@ -845,7 +855,7 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
           JSON.stringify(exception));
           await win!.destroyWindow()
           if (exception.code == 801) {
-            console.info(msgStr + '此设备不支持setTitleAndDockHoverShown能力.');
+            console.info(msgStr + '姝よ澶囦笉鏀寔setTitleAndDockHoverShown鑳藉姏.');
           } else {
             expect().assertFail();
           }
@@ -1136,7 +1146,7 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
           }).catch(async (err: BusinessError) => {
             console.error(msgStr + 'Failed to call setWindowModal. Cause: ' + JSON.stringify(err));
             if (err.code == 801) {
-              console.info(msgStr + '此设备不支持setWindowModal能力.');
+              console.info(msgStr + '姝よ澶囦笉鏀寔setWindowModal鑳藉姏.');
             } else {
               expect().assertFail();
             }
@@ -1145,7 +1155,7 @@ export default function windowErrCode401_3(context: common.UIAbilityContext, win
         } catch (exception) {
           console.error(msgStr + 'Failed to set the call setWindowModal. Cause:' + JSON.stringify(exception));
           if (exception.code == 801) {
-            console.info(msgStr + '此设备不支持setWindowModal能力.');
+            console.info(msgStr + '姝よ澶囦笉鏀寔setWindowModal鑳藉姏.');
             done();
           } else {
             expect(exception.code).assertEqual(401);
