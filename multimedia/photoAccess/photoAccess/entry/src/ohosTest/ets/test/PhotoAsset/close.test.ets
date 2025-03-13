@@ -80,23 +80,6 @@ async function closeErrorCallbackTest (done:Function, testNum:string, fetchOps:E
   }
 }
 
-async function closeErrorCallbackTest1 (done:Function, testNum:string, fetchOps:ESObject) {
-  let testContext: common.UIAbilityContext = AppStorage.get('testContext') as common.UIAbilityContext;
-  try {
-    const asset:ESObject = await getFileAsset(testContext, testNum, fetchOps);
-    const fd: ESObject = undefined;
-    console.info(`${testNum} fd: ${fd}`);
-    asset.close(fd, async (err:BusinessError) => {
-      expect(false).assertTrue();
-    })
-    done();
-  } catch (error) {
-    console.info(`${testNum} failed; error: ${error}`);
-    expect(error.code === '13900020' || error.code === '401').assertTrue();
-    done();
-  }
-}
-
 async function closePromiseTest (done:Function, testNum:string, fetchOps:ESObject) {
   try {
     let testContext: common.UIAbilityContext = AppStorage.get('testContext') as common.UIAbilityContext;
@@ -187,7 +170,7 @@ export default function closeTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_FILE_ASSET_CLOSE_CALLBACK_0200
      * @tc.name      : photoAsset_close_callback_002
-     * @tc.desc      : video asset close
+     * @tc.desc      : video asset close, fd is array<string>, error code 13900020 or 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -196,20 +179,6 @@ export default function closeTest () {
       const testNum = 'photoAsset_close_callback_002';
       const fetchOps:ESObject = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       await closeErrorCallbackTest(done, testNum, fetchOps);
-    });
-
-    /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_FILE_ASSET_CLOSE_CALLBACK_0300
-     * @tc.name      : photoAsset_close_callback_003
-     * @tc.desc      : video asset close
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('photoAsset_close_callback_003', 2, async (done:Function)=> {
-      const testNum = 'photoAsset_close_callback_003';
-      const fetchOps:ESObject = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
-      await closeErrorCallbackTest1(done, testNum, fetchOps);
     });
 
     /**
@@ -243,7 +212,7 @@ export default function closeTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_FILE_ASSET_CLOSE_PROMISE_0200
      * @tc.name      : photoAsset_close_promise_002
-     * @tc.desc      : video asset close
+     * @tc.desc      : video asset close, fd is array<string>, error code 13900020 or 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
