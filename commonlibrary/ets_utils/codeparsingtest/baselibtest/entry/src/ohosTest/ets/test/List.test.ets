@@ -39,6 +39,7 @@ import stringDecoderTest from './stringDecoder/StringDecoder.test';
 import streamTest from './stream/Stream.test';
 import specialChar from './specialchar/SpecialChar.test';
 import consoleTest from './console/Console.test';
+import LRUCacheTest from './LRUCache/LRUCache.test';
 
 export default function testsuite() {
   bufferTest();
@@ -66,5 +67,6 @@ export default function testsuite() {
   stringDecoderTest()
   streamTest()
   specialChar();
-  consoleTest()
+  consoleTest();
+  LRUCacheTest();
 }

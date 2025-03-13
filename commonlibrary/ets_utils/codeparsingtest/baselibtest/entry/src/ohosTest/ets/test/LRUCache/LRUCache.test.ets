@@ -15,6 +15,12 @@
 import { describe, expect, it } from '@ohos/hypium';
 import { util } from '@kit.ArkTS';
 
+function sleep(ms: number): Promise<void> {
+  return new Promise<void>((resolve: () => void) => {
+    setTimeout(resolve, ms);
+  });
+}
+
 export default function LRUCatchTest() {
   describe('ActsLRUCatchTest', () => {
     /**
