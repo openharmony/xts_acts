@@ -465,6 +465,123 @@ export default function windowErrCode202_2(context: common.UIAbilityContext, win
     })
 
     /**
+     * @tc.number     : testHideNonSystemFloatingWindowsCallbackErrCode202_0100
+     * @tc.name       : testHideNonSystemFloatingWindowsCallbackErrCode202_0100
+     * @tc.desc       : testHideNonSystemFloatingWindowsCallbackErrCode202_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testHideNonSystemFloatingWindowsCallbackErrCode202_0100', 0, async (done: Function) => {
+      {
+        let caseName = "testHideNonSystemFloatingWindowsCallbackErrCode202_0100";
+        let msgStr = 'jsunittest ' + caseName + ' ';
+        console.log(msgStr + 'begin.');
+
+        let windowConfig: ohosWindow.Configuration = {
+          name: "testHideNonSystemFloatingWindowsCallbackErrCode202_0100",
+          windowType: ohosWindow.WindowType.TYPE_DIALOG,
+          ctx: context,
+        };
+        let win: ohosWindow.Window | undefined = undefined;
+        try {
+          win = await ohosWindow.createWindow(windowConfig);
+          expect(!!win).assertTrue();
+        } catch (err) {
+          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+          expect().assertFail();
+          done()
+        }
+
+        try {
+          win!.hideNonSystemFloatingWindows(true, async (err: BusinessError) => {
+            await win!.destroyWindow()
+            const errCode: number = err.code;
+            if (errCode) {
+              console.error(msgStr + 'Failed to call hideNonSystemFloatingWindows. Cause:' + JSON.stringify(err));
+              if (err.code == 801) {
+                console.info(msgStr + '此设备不支持hideNonSystemFloatingWindows能力.');
+              } else {
+                expect(err.code).assertEqual(202);
+              }
+              done()
+              return;
+            }
+            console.info(msgStr + 'Succeeded in calling hideNonSystemFloatingWindows.');
+            expect().assertFail();
+            done();
+          });
+        } catch (exception) {
+          console.error(msgStr + 'Failed to call hideNonSystemFloatingWindows. Cause:' + JSON.stringify(exception));
+          await win!.destroyWindow()
+          if (exception.code == 801) {
+            console.info(msgStr + '此设备不支持hideNonSystemFloatingWindows能力.');
+          } else {
+            expect().assertFail();
+          }
+          done()
+        }
+      }
+    })
+
+    /**
+     * @tc.number     : testHideNonSystemFloatingWindowsPromiseErrCode202_0100
+     * @tc.name       : testHideNonSystemFloatingWindowsPromiseErrCode202_0100
+     * @tc.desc       : testHideNonSystemFloatingWindowsPromiseErrCode202_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testHideNonSystemFloatingWindowsPromiseErrCode202_0100', 0, async (done: Function) => {
+      {
+        let caseName = "testHideNonSystemFloatingWindowsPromiseErrCode202_0100";
+        let msgStr = 'jsunittest ' + caseName + ' ';
+        console.log(msgStr + 'begin.');
+
+        let windowConfig: ohosWindow.Configuration = {
+          name: "testHideNonSystemFloatingWindowsPromiseErrCode202_0100",
+          windowType: ohosWindow.WindowType.TYPE_DIALOG,
+          ctx: context,
+        };
+        let win: ohosWindow.Window | undefined = undefined;
+        try {
+          win = await ohosWindow.createWindow(windowConfig);
+          expect(!!win).assertTrue();
+        } catch (err) {
+          console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
+          expect().assertFail();
+          done()
+        }
+
+        try {
+          await win!.hideNonSystemFloatingWindows(true).then(async () => {
+            console.info(msgStr + 'Succeeded in calling hideNonSystemFloatingWindows.');
+            expect().assertFail();
+          }).catch(async (err: BusinessError) => {
+            console.error(msgStr + 'Failed to call hideNonSystemFloatingWindows. Cause: ' + JSON.stringify(err));
+            if (err.code == 801) {
+              console.info(msgStr + '此设备不支持hideNonSystemFloatingWindows能力.');
+            } else {
+              expect(err.code).assertEqual(202);
+            }
+          });
+          await win!.destroyWindow()
+          done()
+        } catch (exception) {
+          console.error(msgStr + 'Failed to set the call hideNonSystemFloatingWindows. Cause:' +
+          JSON.stringify(exception));
+          await win!.destroyWindow()
+          if (exception.code == 801) {
+            console.info(msgStr + '此设备不支持hideNonSystemFloatingWindows能力.');
+          } else {
+            expect().assertFail();
+          }
+          done()
+        }
+      }
+    })
+
+    /**
      * @tc.number     : testSetSingleFrameComposerEnabledPromiseErrCode202_0100
      * @tc.name       : testSetSingleFrameComposerEnabledPromiseErrCode202_0100
      * @tc.desc       : testSetSingleFrameComposerEnabledPromiseErrCode202_0100
