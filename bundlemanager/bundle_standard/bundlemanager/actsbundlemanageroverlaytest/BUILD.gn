@@ -13,6 +13,14 @@
 
 import("//test/xts/tools/build/suite.gni")
 
+ohos_app_assist_suite("ActsBundleMgrOverlayEtsDemo") {
+  hap_name = "ActsBundleMgrOverlayEtsDemo"
+  testonly = true
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
+  certificate_profile = "./signature/openharmony_sx.p7b"
+}
+
 ohos_js_app_suite("ActsBundleMgrOverlayEtsTest") {
   test_hap = true
   testonly = true
@@ -20,4 +28,5 @@ ohos_js_app_suite("ActsBundleMgrOverlayEtsTest") {
   hap_name = "ActsBundleMgrOverlayEtsTest"
   subsystem_name = "bundlemanager"
   part_name = "bundle_framework"
+  deps = [ ":ActsBundleMgrOverlayEtsDemo" ]
 }
