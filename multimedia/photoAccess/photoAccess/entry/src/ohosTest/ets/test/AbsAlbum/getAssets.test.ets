@@ -68,7 +68,7 @@ export default function albumGetAssetsTest () {
     /**
       * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ASSETS_0100
       * @tc.name      : album_getAssets_callback_001
-      * @tc.desc      : File that does not exist album getAssets,error code is 14000011
+      * @tc.desc      : album getAssets File that does not exist,error code is 14000011
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 2
@@ -81,7 +81,33 @@ export default function albumGetAssetsTest () {
         fetchResult.close();
         const fetchOps: ESObject = 123123;
         album.getAssets(fetchOps, async (err, fetchResult) => {
-          expect(false).assertTrue();
+          fetchResult.close();
+        })
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error.code}`);
+        expect(error.code === '14000011').assertTrue();
+        done();
+      }
+    });
+
+    /**
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ASSETS_0200
+      * @tc.name      : album_getAssets_callback_002
+      * @tc.desc      : album getAssets undefined,error code is 14000011
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
+    it('album_getAssets_callback_002', 2, async (done: Function) => {
+      const testNum = 'album_getAssets_callback_002';
+      try {
+        const fetchResult = await helper.getAlbums(albumType.SYSTEM, albumSubtype.IMAGE);
+        const album = await fetchResult.getFirstObject();
+        fetchResult.close();
+        const fetchOps: ESObject = undefined;
+        album.getAssets(fetchOps, async (err, fetchResult) => {
           fetchResult.close();
         })
         expect(false).assertTrue();
@@ -123,7 +149,7 @@ export default function albumGetAssetsTest () {
     /**
       * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ASSETS_0100
       * @tc.name      : album_getAssets_promise_001
-      * @tc.desc      : File that does not exist album getAssets,error code is 401 or 13900020
+      * @tc.desc      : getAssets File that does not exist album,error code is 14000011
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 2
@@ -136,9 +162,32 @@ export default function albumGetAssetsTest () {
         fetchResult.close();
         const fetchOps: ESObject = 123123;
         album.getAssets(fetchOps);
-        console.log(`${testNum} end`);
         expect(false).assertTrue();
-        console.log(`${testNum} failed!!!!!`);
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error.code}`);
+        expect(error.code === '14000011').assertTrue();
+        done();
+      }
+    });
+
+    /**
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ASSETS_0100
+      * @tc.name      : album_getAssets_promise_001
+      * @tc.desc      : album getAssets undefined,error code is 14000011
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
+    it('album_getAssets_promise_002', 2, async (done: Function) => {
+      const testNum = 'album_getAssets_promise_002';
+      try {
+        const fetchResult = await helper.getAlbums(albumType.SYSTEM, albumSubtype.IMAGE);
+        const album = await fetchResult.getFirstObject();
+        fetchResult.close();
+        const fetchOps: ESObject = undefined;
+        album.getAssets(fetchOps);
+        expect(false).assertTrue();
         done();
       } catch (error) {
         console.info(`${testNum} failed; error: ${error.code}`);
