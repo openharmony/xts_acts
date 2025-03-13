@@ -15,7 +15,7 @@
 import hilog from '@ohos.hilog';
 import bundle from '@ohos.bundle.bundleManager';
 import overlay from '@ohos.bundle.overlay';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect ,TestType ,Size ,Level } from '@ohos/hypium'
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const MODULE_NAME = "entry_test";
@@ -232,19 +232,18 @@ export default function abilityTest() {
       }
     })
 
-    
     /*
      * @tc.number: Sub_Bms_Framework_Overlay_Query_0300
      * @tc.name: GetOverlayModuleInfoModuleNameNotInstall
      * @tc.desc: The query fails when the incoming moduleName is not installed
      */
-    it('GetOverlayModuleInfoModuleNameNotInstall', 0, async  () =>{
+    it('GetOverlayModuleInfoModuleNameNotInstall',  TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async  (done: Function) =>{
       try {
         await overlay.getOverlayModuleInfo(MODULE_NAME1).then(data => {
           console.info("GetOverlayModuleInfoModuleNameNotInstall result" + JSON.stringify(data));
           expect().assertFail();
         }).catch((err: BusinessError) => {
-          console.info("getAppCloneIdentityUnPermissionApi14 promise " + JSON.stringify(err));
+          console.info("GetOverlayModuleInfoModuleNameNotInstall promise " + JSON.stringify(err));
           expect(err.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
         })
       }catch (e) {
@@ -256,25 +255,27 @@ export default function abilityTest() {
           console.info("GetOverlayModuleInfoModuleNameNotInstall result" + JSON.stringify(data));
           console.info("GetOverlayModuleInfoModuleNameNotInstall fail" + JSON.stringify(err));
           expect(err.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
+          done();
         });
       }catch (e) {
         console.info("GetOverlayModuleInfoModuleNameNotInstall callback catch" + JSON.stringify(e));
         expect().assertFail();
+        done();
       }
     })
 
     /*
      * @tc.number: Sub_Bms_Framework_Overlay_Query_0400
      * @tc.name: GetOverlayModuleInfoModuleNameNotOverlay
-     * @tc.desc: Failed to set when the incoming moduleName is not overlay
+     * @tc.desc: The query fails when the incoming moduleName is not overlay
      */
-    it('GetOverlayModuleInfoModuleNameNotOverlay', 0, async  () =>{
+    it('GetOverlayModuleInfoModuleNameNotOverlay',  TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async  (done: Function) =>{
       try {
         await overlay.getOverlayModuleInfo(MODULE_NAME).then(data => {
           console.info("GetOverlayModuleInfoModuleNameNotOverlay result" + JSON.stringify(data));
           expect().assertFail();
         }).catch((err: BusinessError) => {
-          console.info("getAppCloneIdentityUnPermissionApi14 promise " + JSON.stringify(err));
+          console.info("GetOverlayModuleInfoModuleNameNotOverlay promise " + JSON.stringify(err));
           expect(err.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
         })
       }catch (e) {
@@ -286,10 +287,12 @@ export default function abilityTest() {
           console.info("GetOverlayModuleInfoModuleNameNotOverlay result" + JSON.stringify(data));
           console.info("GetOverlayModuleInfoModuleNameNotOverlay fail" + JSON.stringify(err));
           expect(err.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
+          done();
         });
       }catch (e) {
         console.info("GetOverlayModuleInfoModuleNameNotOverlay callback catch" + JSON.stringify(e));
         expect().assertFail();
+        done();
       }
     })
 

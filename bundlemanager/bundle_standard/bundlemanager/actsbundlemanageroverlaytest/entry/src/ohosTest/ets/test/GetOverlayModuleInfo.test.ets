@@ -16,7 +16,7 @@
 import overlay from '@ohos.bundle.overlay';
 import { BusinessError } from '@kit.BasicServicesKit';
 import Utils from "./Utils";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect ,TestType ,Size ,Level } from "@ohos/hypium"
 
 const MODULE_NAME = "entry_test";
 const MODULE_NAME1 = "test1";
@@ -60,9 +60,9 @@ export default function getOverlayModuleInfo() {
     /*
      * @tc.number: Sub_Bms_Framework_Overlay_Query_0410
      * @tc.name: GetOverlayModuleInfoModuleNameNotExisted
-     * @tc.desc: Failed to set when the incoming moduleName is not existed
+     * @tc.desc: The query fails when the incoming moduleName is not existed
      */
-    it('GetOverlayModuleInfoModuleNameNotExisted', 0, async  () =>{
+    it('GetOverlayModuleInfoModuleNameNotExisted', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async  () =>{
       try {
         await overlay.getOverlayModuleInfo(MODULE_NAME1).then(data => {
           console.info("GetOverlayModuleInfoModuleNameNotExisted result" + JSON.stringify(data));
@@ -87,13 +87,12 @@ export default function getOverlayModuleInfo() {
         }
     })
 
-
     /*
      * @tc.number: Sub_Bms_Framework_Overlay_Query_0420
      * @tc.name: GetOverlayModuleInfoModuleNotOverlay
-     * @tc.desc: Failed to set when the incoming moduleName is not overlay
+     * @tc.desc: The query fails when the incoming moduleName is not overlay
      */
-    it('GetOverlayModuleInfoModuleNotOverlay', 0, async  () =>{
+    it('GetOverlayModuleInfoModuleNotOverlay', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async  () =>{
       try {
         await overlay.getOverlayModuleInfo(MODULE_NAME3).then(data => {
           console.info("GetOverlayModuleInfoModuleNotOverlay result" + JSON.stringify(data));

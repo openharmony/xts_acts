@@ -16,7 +16,7 @@
 import overlay from '@ohos.bundle.overlay';
 import { BusinessError } from '@kit.BasicServicesKit';
 import Utils from "./Utils";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect ,TestType ,Size ,Level } from "@ohos/hypium"
 
 const MODULE_NAME = "entry_test";
 const MODULE_NAME1 = "test1";
@@ -88,7 +88,7 @@ export default function getTargetOverlayModuleInfos() {
      * @tc.name: GetTargetOverlayModuleInfosModuleNameNotOverlay
      * @tc.desc: The query fails when the incoming moduleName is not overlay
      */
-    it('GetTargetOverlayModuleInfosModuleNameNotOverlay', 0, async () => {
+    it('GetTargetOverlayModuleInfosModuleNameNotOverlay', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       try {
         await overlay.getTargetOverlayModuleInfos(MODULE_NAME2).then(data => {
           console.info("GetTargetOverlayModuleInfosModuleNameNotOverlay result" + JSON.stringify(data));
