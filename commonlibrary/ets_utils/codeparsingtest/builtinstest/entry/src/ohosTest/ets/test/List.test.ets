@@ -29,6 +29,7 @@ import Uint8ClampedArrayTest from './Array/TypeArray/Uint8ClampedArray.test';
 import Uint16ArrayTest from './Array/TypeArray/Uint16Array.test';
 import Uint32ArrayTest from './Array/TypeArray/Uint32Array.test';
 import Float64ArrayTest from './Array/TypeArray/Float64Array.test';
+import LRUCacheTest from './LRUCache/LRUCache.test';
 
 export default function testsuite() {
   booleanTest();
@@ -62,4 +63,5 @@ export default function testsuite() {
   Uint16ArrayTest();
   Uint32ArrayTest();
   Float64ArrayTest();
+  LRUCacheTest();
 }
