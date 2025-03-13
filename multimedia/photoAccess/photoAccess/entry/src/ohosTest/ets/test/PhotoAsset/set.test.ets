@@ -17,14 +17,6 @@ import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import { describe, it, expect, beforeAll } from "@ohos/hypium";
 import {
-  photoKeys,
-  photoFetchOption,
-  getFileAsset,
-  getAssetId,
-  isNum,
-  photoType,
-  getBurstKey,
-  pushCreateAsset,
   sleep,
   getPermission,
   driveFn
@@ -120,7 +112,7 @@ export default function setTest() {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_0100
      * @tc.name      : set_photo_title_001
-     * @tc.desc      : image get photoKeys.URI
+     * @tc.desc      : set photo title '', error code 14000014
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -134,7 +126,7 @@ export default function setTest() {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_0100
      * @tc.name      : set_photo_title_001
-     * @tc.desc      : image get photoKeys.URI
+     * @tc.desc      : set photo title ['123123', '123123'], error code 14000014
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
