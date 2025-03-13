@@ -84,155 +84,10 @@ export default function startAbilityOpenLink() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0700
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0700', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0700`;
-      console.log(`${tag}, it begin`);
-
-      try {
-        context.openLink(null)
-          .catch((error: BusinessError) => {
-            console.info(`#${tag}# open link err : ${error}`);
-            done();
-          })
-      } catch (err) {
-        console.info(`#${tag}# open fail : ${err}`);
-        expect(err.code).assertEqual(invalidParamErrNo);
-        done();
-      }
-    });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0600
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0600', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0600`;
-      console.log(`${tag}, it begin`);
-
-      try {
-        context.openLink(undefined)
-          .catch((error: BusinessError) => {
-            console.info(`#${tag}# open link err : ${error}`);
-            done();
-          })
-      } catch (err) {
-        console.info(`#${tag}# open fail : ${err}`);
-        expect(err.code).assertEqual(invalidParamErrNo);
-        done();
-      }
-    });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0900
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0900', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0900`;
-      console.log(`${tag}, it begin`);
-      try {
-        context.openLink('test')
-          .catch((error: BusinessError) => {
-            console.info(`#${tag}# open link err : ${error}`);
-          })
-      } catch (err) {
-        console.info(`#${tag}# open fail : ${err}`);
-        expect(err.code).assertEqual(invalidParamErrNo);
-        done();
-      }
-    });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1000
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1000', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1000`;
-      console.log(`${tag}, it begin`);
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
-              done();
-            }, 1000);
-          }
-          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
-            if (data.event == 'ACTS_TEST_OPENLINK') {
-              setTimeout(() => {
-                try {
-                  context.openLink(link, {
-                    appLinkingOnly: false
-                  })
-                    .catch((error: BusinessError) => {
-                      console.info(`#${tag}# open link err : ${error}`);
-                    })
-                } catch (err) {
-                  console.info(`#${tag}# open fail : ${err}`);
-                }
-              }, 500);
-            }
-            if (data.event == 'ACTS_TEST_DESTROY') {
-              setTimeout(() => {
-                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-              }, 500);
-            }
-          }
-          commonEventManager.subscribe(subscriber, subscribeCallBack);
-          setTimeout(() => {
-            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
-          }, 100)
-        })
-    });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0800
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0800', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0800`;
-      link = 'https://'
-      console.log(`${tag}, it begin`);
-      try {
-        context.openLink(link)
-          .catch((error: BusinessError) => {
-            console.info(`#${tag}# open link err : ${error}`);
-          })
-      } catch (err) {
-        console.info(`#${tag}# open fail : ${err}`);
-        expect(err.code).assertEqual(invalidParamErrNo);
-        done();
-      }
-    });
-
-    /*
      * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0400
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
+     * @tc.name   : UIAbilityContext calls openLink with only one parameter, where the link has a
+     * corresponding UIAbility.
+     * @tc.desc   : Function test
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -283,8 +138,9 @@ export default function startAbilityOpenLink() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0500
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
+     * @tc.name   : UIAbilityContext calls openLink with only one parameter, where the link has no
+     * corresponding UIAbility.
+     * @tc.desc   : Function test
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -309,18 +165,118 @@ export default function startAbilityOpenLink() {
       }
     });
 
+
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2400
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0600
+     * @tc.name   : UIAbilityContext calls openLink with only one parameter, where the link is undefined.
+     * @tc.desc   : Function test
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2400', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2400`;
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0600', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0600`;
       console.log(`${tag}, it begin`);
-      link = 'https://www.example3.com'
+
+      try {
+        context.openLink(undefined)
+          .catch((error: BusinessError) => {
+            console.info(`#${tag}# open link err : ${error}`);
+            done();
+          })
+      } catch (err) {
+        console.info(`#${tag}# open fail : ${err}`);
+        expect(err.code).assertEqual(invalidParamErrNo);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0700
+     * @tc.name   : UIAbilityContext calls openLink with only one parameter, where the link is null.
+     * @tc.desc   : Function test
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0700', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0700`;
+      console.log(`${tag}, it begin`);
+
+      try {
+        context.openLink(null)
+          .catch((error: BusinessError) => {
+            console.info(`#${tag}# open link err : ${error}`);
+            done();
+          })
+      } catch (err) {
+        console.info(`#${tag}# open fail : ${err}`);
+        expect(err.code).assertEqual(invalidParamErrNo);
+        done();
+      }
+    });
+
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0800
+     * @tc.name   : UIAbilityContext calls openLink with only one parameter, where the link is only "https://".
+     * @tc.desc   : Function test
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0800', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0800`;
+      link = 'https://'
+      console.log(`${tag}, it begin`);
+      try {
+        context.openLink(link)
+          .catch((error: BusinessError) => {
+            console.info(`#${tag}# open link err : ${error}`);
+          })
+      } catch (err) {
+        console.info(`#${tag}# open fail : ${err}`);
+        expect(err.code).assertEqual(invalidParamErrNo);
+        done();
+      }
+    });
+
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0900
+     * @tc.name   : UIAbilityContext calls openLink with only one parameter, where the link is a normal string.
+     * @tc.desc   : Function test
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0900', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_0900`;
+      console.log(`${tag}, it begin`);
+      try {
+        context.openLink('test')
+          .catch((error: BusinessError) => {
+            console.info(`#${tag}# open link err : ${error}`);
+          })
+      } catch (err) {
+        console.info(`#${tag}# open fail : ${err}`);
+        expect(err.code).assertEqual(invalidParamErrNo);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1000
+     * @tc.name   : UIAbilityContext calls openLink with only one parameter, where the link does not start with "https".
+     * @tc.desc   : Function test
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1000', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1000`;
+      console.log(`${tag}, it begin`);
+      link = 'example1://www.example1.com';
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
@@ -333,15 +289,565 @@ export default function startAbilityOpenLink() {
           let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
             console.log("OpenLink subscribeCallBack success")
             if (data.event == 'ACTS_TEST_OPENLINK') {
-              context.openLink(link, openLinkOptions, (err, data) => {
-                console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
-              })
-                .then(() => undefined)
-                .catch((err: BusinessError) => {
-                  console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
-                  expect(err.code).assertEqual(16000019);
-                  commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+              setTimeout(() => {
+                try {
+                  context.openLink(link, {
+                    appLinkingOnly: false
+                  })
+                    .catch((error: BusinessError) => {
+                      console.info(`#${tag}# open link err : ${error}`);
+                    })
+                } catch (err) {
+                  console.info(`#${tag}# open fail : ${err}`);
+                }
+              }, 500);
+            }
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              setTimeout(() => {
+                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+              }, 500);
+            }
+          }
+          commonEventManager.subscribe(subscriber, subscribeCallBack);
+          setTimeout(() => {
+            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
+          }, 100)
+        })
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1100
+     * @tc.name   : UIAbilityContext calls openLink with two parameters: the link format is correct and has a
+     * corresponding UIAbility, appLinkingOnly is set to true, and parameters are not configured.
+     * @tc.desc   : Function test
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1100', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1100`;
+      console.log(`${tag}, it begin`);
+      link = 'https://www.example13.com'
+      commonEventManager.createSubscriber(ACTS_EVENT)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          let unSubscribeCallback = () => {
+            setTimeout(async () => {
+              console.info(`====>${tag} unSubscribeCallback`);
+              done();
+            }, 1000);
+          }
+          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
+            console.log("OpenLink subscribeCallBack success")
+            if (data.event == 'ACTS_TEST_OPENLINK') {
+              setTimeout(() => {
+                context.openLink(link, {
+                  appLinkingOnly: true
+                }, (err, data) => {
+                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
                 })
+                  .catch((err: BusinessError) => {
+                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
+                    expect(err.code).assertEqual(16000019);
+                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+                  })
+              }, 500);
+            }
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              setTimeout(() => {
+                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+              }, 500);
+            }
+          }
+          commonEventManager.subscribe(subscriber, subscribeCallBack);
+          setTimeout(() => {
+            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
+          }, 100)
+        })
+    });
+
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1200
+     * @tc.name   : UIAbilityContext calls openLink with two parameters: the link format is correct but has no
+     * corresponding UIAbility, appLinkingOnly is set to true, and parameters are not configured.
+     * @tc.desc   : Function test
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1200', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1200`;
+      console.log(`${tag}, it begin`);
+      link = 'https://test'
+      commonEventManager.createSubscriber(ACTS_EVENT)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          let unSubscribeCallback = () => {
+            setTimeout(async () => {
+              console.info(`====>${tag} unSubscribeCallback`);
+              done();
+            }, 1000);
+          }
+          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
+            console.log("OpenLink subscribeCallBack success")
+            if (data.event == 'ACTS_TEST_OPENLINK') {
+              setTimeout(() => {
+                context.openLink(link, {
+                  appLinkingOnly: true
+                }, (err, data) => {
+                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
+                })
+                  .catch((err: BusinessError) => {
+                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
+                    expect(err.code).assertEqual(16000019);
+                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+                  })
+              }, 500);
+            }
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              setTimeout(() => {
+                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+              }, 500);
+            }
+          }
+          commonEventManager.subscribe(subscriber, subscribeCallBack);
+          setTimeout(() => {
+            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
+          }, 100)
+        })
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1300
+     * @tc.name   : UIAbilityContext calls openLink with two parameters: the link format only corresponds to a
+     * ServiceExtension, appLinkingOnly is set to true, and parameters are not configured.
+     * @tc.desc   : Function test
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1300', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1300`;
+      console.log(`${tag}, it begin`);
+      link = 'https://www.example6.com'
+      commonEventManager.createSubscriber(ACTS_EVENT)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          let unSubscribeCallback = () => {
+            setTimeout(async () => {
+              console.info(`====>${tag} unSubscribeCallback`);
+              done();
+            }, 1000);
+          }
+          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
+            console.log("OpenLink subscribeCallBack success")
+            if (data.event == 'ACTS_TEST_OPENLINK') {
+              setTimeout(() => {
+                context.openLink(link, openLinkOptionsService, (err, data) => {
+                  console.log(tag, 'open link success. Callback result:', JSON.stringify(data));
+                })
+                  .catch((err: BusinessError) => {
+                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
+                    expect(err.code).assertEqual(16000019);
+                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+                  })
+              }, 500);
+            }
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              setTimeout(() => {
+                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+              }, 500);
+            }
+          }
+          commonEventManager.subscribe(subscriber, subscribeCallBack);
+          setTimeout(() => {
+            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
+          }, 100)
+        })
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1400
+     * @tc.name   : UIAbilityContext calls openLink with two parameters: the link format only corresponds to a
+     * UIExtension, appLinkingOnly is set to true, and parameters are not configured.
+     * @tc.desc   : Function test
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1400', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1400`;
+      console.log(`${tag}, it begin`);
+      link = 'https://www.example7.com'
+      commonEventManager.createSubscriber(ACTS_EVENT)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          let unSubscribeCallback = () => {
+            setTimeout(async () => {
+              console.info(`====>${tag} unSubscribeCallback`);
+              done();
+            }, 1000);
+          }
+          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
+            console.log("OpenLink subscribeCallBack success")
+            if (data.event == 'ACTS_TEST_OPENLINK') {
+              setTimeout(() => {
+                context.openLink(link, openLinkOptionsService, (err, data) => {
+                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
+                })
+                  .catch((err: BusinessError) => {
+                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
+                    expect(err.code).assertEqual(16000019);
+                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+                  })
+              }, 500);
+            }
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              setTimeout(() => {
+                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+              }, 500);
+            }
+          }
+          commonEventManager.subscribe(subscriber, subscribeCallBack);
+          setTimeout(() => {
+            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
+          }, 100)
+        })
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1500
+     * @tc.name   : UIAbilityContext calls openLink with two parameters: the link format has a corresponding UIAbility,
+     * appLinkingOnly is set to true, and parameters are configured.
+     * @tc.desc   : Function test
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1500', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1500`;
+      console.log(`${tag}, it begin`);
+      link = 'https://www.example10.com'
+      commonEventManager.createSubscriber(ACTS_EVENT)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          let unSubscribeCallback = () => {
+            setTimeout(async () => {
+              console.info(`====>${tag} unSubscribeCallback`);
+              done();
+            }, 1000);
+          }
+          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
+            console.log("OpenLink subscribeCallBack success")
+            if (data.event == 'ACTS_TEST_OPENLINK') {
+              setTimeout(() => {
+                context.openLink(link, openLinkOptions, (err, data) => {
+                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
+                })
+                  .catch((err: BusinessError) => {
+                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
+                    expect(err.code).assertEqual(16000019);
+                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+                  })
+              }, 500);
+            }
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              setTimeout(() => {
+                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+              }, 500);
+            }
+          }
+          commonEventManager.subscribe(subscriber, subscribeCallBack);
+          setTimeout(() => {
+            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
+          }, 100)
+        })
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1600
+     * @tc.name   : UIAbilityContext calls openLink with two parameters: the link format has a corresponding UIAbility,
+     * appLinkingOnly is set to false, and parameters are configured.
+     * @tc.desc   : Function test
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1600', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1600`;
+      console.log(`${tag}, it begin`);
+      link = 'https://www.example9.com'
+      commonEventManager.createSubscriber(ACTS_EVENT)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          let unSubscribeCallback = () => {
+            setTimeout(async () => {
+              console.info(`====>${tag} unSubscribeCallback`);
+              done();
+            }, 1000);
+          }
+          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
+            console.log("OpenLink subscribeCallBack success")
+            if (data.event == 'ACTS_TEST_OPENLINK') {
+              setTimeout(() => {
+                context.openLink(link, openLinkOptionsFalse, (err, data) => {
+                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
+                })
+                  .catch((err: BusinessError) => {
+                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
+                    expect().assertFail();
+                    done();
+                  })
+              }, 500);
+            }
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              setTimeout(() => {
+                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+              }, 500);
+            }
+          }
+          commonEventManager.subscribe(subscriber, subscribeCallBack);
+          setTimeout(() => {
+            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
+          }, 100)
+        })
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1700
+     * @tc.name   : UIAbilityContext calls openLink with two parameters: the link format has a corresponding UIAbility,
+     * appLinkingOnly is set to false, and parameters are not configured.
+     * @tc.desc   : Function test
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1700', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1700`;
+      console.log(`${tag}, it begin`);
+      link = 'https://www.example8.com'
+      commonEventManager.createSubscriber(ACTS_EVENT)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          let unSubscribeCallback = () => {
+            setTimeout(async () => {
+              console.info(`====>${tag} unSubscribeCallback`);
+              done();
+            }, 1000);
+          }
+          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
+            console.log("OpenLink subscribeCallBack success")
+            if (data.event == 'ACTS_TEST_OPENLINK') {
+              setTimeout(() => {
+                context.openLink(link, {
+                  appLinkingOnly: false
+                }, (err, data) => {
+                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
+                })
+                  .catch((err: BusinessError) => {
+                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
+                    expect().assertFail();
+                    done();
+                  })
+              }, 500);
+            }
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              setTimeout(() => {
+                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+              }, 500);
+            }
+          }
+          commonEventManager.subscribe(subscriber, subscribeCallBack);
+          setTimeout(() => {
+            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
+          }, 100)
+        })
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1800
+     * @tc.name   : UIAbilityContext calls openLink with two parameters: the link format has a corresponding UIAbility,
+     * appLinkingOnly is not configured, and parameters are configured.
+     * @tc.desc   : Function test
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1800', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1800`;
+      console.log(`${tag}, it begin`);
+      link = 'https://www.example11.com'
+      commonEventManager.createSubscriber(ACTS_EVENT)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          let unSubscribeCallback = () => {
+            setTimeout(async () => {
+              console.info(`====>${tag} unSubscribeCallback`);
+              done();
+            }, 1000);
+          }
+          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
+            console.log("OpenLink subscribeCallBack success")
+            if (data.event == 'ACTS_TEST_OPENLINK') {
+              setTimeout(() => {
+                context.openLink(link, openLinkOptionsOnlyParam, (err, data) => {
+                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
+                })
+                  .catch((err: BusinessError) => {
+                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
+                    expect().assertFail();
+                    done();
+                  })
+              }, 500);
+            }
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              setTimeout(() => {
+                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+              }, 500);
+            }
+          }
+          commonEventManager.subscribe(subscriber, subscribeCallBack);
+          setTimeout(() => {
+            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
+          }, 100)
+        })
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1900
+     * @tc.name   : UIAbilityContext calls openLink with two parameters: the link format has a corresponding UIAbility,
+     * and options are configured as undefined.
+     * @tc.desc   : Function test
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1900', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1900`;
+      console.log(`${tag}, it begin`);
+      link = 'https://www.example12.com'
+      commonEventManager.createSubscriber(ACTS_EVENT)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          let unSubscribeCallback = () => {
+            setTimeout(async () => {
+              console.info(`====>${tag} unSubscribeCallback`);
+              done();
+            }, 1000);
+          }
+          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
+            console.log("OpenLink subscribeCallBack success")
+            if (data.event == 'ACTS_TEST_OPENLINK') {
+              setTimeout(() => {
+                context.openLink(link, undefined, (err, data) => {
+                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
+                })
+                  .catch((err: BusinessError) => {
+                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
+                    expect().assertFail();
+                    done();
+                  })
+              }, 500);
+            }
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              setTimeout(() => {
+                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+              }, 500);
+            }
+          }
+          commonEventManager.subscribe(subscriber, subscribeCallBack);
+          setTimeout(() => {
+            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
+          }, 100)
+        })
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2000
+     * @tc.name   : UIAbilityContext calls openLink with two parameters: the link format has a corresponding UIAbility,
+     * and options are configured as null.
+     * @tc.desc   : Function test
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2000', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2000`;
+      console.log(`${tag}, it begin`);
+      link = 'https://www.example20.com'
+      commonEventManager.createSubscriber(ACTS_EVENT)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          let unSubscribeCallback = () => {
+            setTimeout(async () => {
+              console.info(`====>${tag} unSubscribeCallback`);
+              done();
+            }, 1000);
+          }
+          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
+            console.log("OpenLink subscribeCallBack success")
+            if (data.event == 'ACTS_TEST_OPENLINK') {
+              setTimeout(() => {
+                context.openLink(link, null, (err, data) => {
+                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
+                })
+                  .catch((err: BusinessError) => {
+                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
+                    // commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+                    expect().assertFail();
+                    done();
+                  })
+              }, 500);
+            }
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              setTimeout(() => {
+                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+              }, 500);
+            }
+          }
+          commonEventManager.subscribe(subscriber, subscribeCallBack);
+          setTimeout(() => {
+            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
+          }, 100)
+        })
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2100
+     * @tc.name   : UIAbilityContext calls openLink with two parameters: the link format has a corresponding UIAbility,
+     * and options are configured as an empty object.
+     * @tc.desc   : Function test
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2100', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2100`;
+      console.log(`${tag}, it begin`);
+      link = 'https://www.example21.com'
+      commonEventManager.createSubscriber(ACTS_EVENT)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          let unSubscribeCallback = () => {
+            setTimeout(async () => {
+              console.info(`====>${tag} unSubscribeCallback`);
+              done();
+            }, 1000);
+          }
+          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
+            console.log("OpenLink subscribeCallBack success")
+            if (data.event == 'ACTS_TEST_OPENLINK') {
+              setTimeout(() => {
+                context.openLink(link, {}, (err, data) => {
+                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
+                })
+                  .catch((err: BusinessError) => {
+                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
+                    expect().assertFail();
+                    done();
+                  })
+              }, 500);
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
               setTimeout(() => {
@@ -358,8 +864,9 @@ export default function startAbilityOpenLink() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2200
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
+     * @tc.name   : UIAbilityContext calls openLink with three valid parameters, where terminateSelfWithResult is used
+     * to close the launched UIAbility.
+     * @tc.desc   : Function test
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -410,8 +917,9 @@ export default function startAbilityOpenLink() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2300
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
+     * @tc.name   : UIAbilityContext calls openLink with three valid parameters, where terminateSelf is used to close
+     * the launched UIAbility.
+     * @tc.desc   : Function test
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -461,17 +969,18 @@ export default function startAbilityOpenLink() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1300
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2400
+     * @tc.name   : UIAbilityContext calls openLink with the first two valid parameters, where the callback is
+     * undefined.
+     * @tc.desc   : Function test
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1300', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1300`;
+    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2400', 0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2400`;
       console.log(`${tag}, it begin`);
-      link = 'https://www.example6.com'
+      link = 'https://www.example3.com'
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
@@ -484,16 +993,15 @@ export default function startAbilityOpenLink() {
           let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
             console.log("OpenLink subscribeCallBack success")
             if (data.event == 'ACTS_TEST_OPENLINK') {
-              setTimeout(() => {
-                context.openLink(link, openLinkOptionsService, (err, data) => {
-                  console.log(tag, 'open link success. Callback result:', JSON.stringify(data));
+              context.openLink(link, openLinkOptions, (err, data) => {
+                console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
+              })
+                .then(() => undefined)
+                .catch((err: BusinessError) => {
+                  console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
+                  expect(err.code).assertEqual(16000019);
+                  commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
                 })
-                  .catch((err: BusinessError) => {
-                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
-                    expect(err.code).assertEqual(16000019);
-                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-                  })
-              }, 500);
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
               setTimeout(() => {
@@ -507,500 +1015,11 @@ export default function startAbilityOpenLink() {
           }, 100)
         })
     });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1400
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1400', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1400`;
-      console.log(`${tag}, it begin`);
-      link = 'https://www.example7.com'
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
-              done();
-            }, 1000);
-          }
-          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
-            if (data.event == 'ACTS_TEST_OPENLINK') {
-              setTimeout(() => {
-                context.openLink(link, openLinkOptionsService, (err, data) => {
-                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
-                })
-                  .catch((err: BusinessError) => {
-                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
-                    expect(err.code).assertEqual(16000019);
-                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-                  })
-              }, 500);
-            }
-            if (data.event == 'ACTS_TEST_DESTROY') {
-              setTimeout(() => {
-                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-              }, 500);
-            }
-          }
-          commonEventManager.subscribe(subscriber, subscribeCallBack);
-          setTimeout(() => {
-            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
-          }, 100)
-        })
-    });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1700
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1700', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1700`;
-      console.log(`${tag}, it begin`);
-      link = 'https://www.example8.com'
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
-              done();
-            }, 1000);
-          }
-          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
-            if (data.event == 'ACTS_TEST_OPENLINK') {
-              setTimeout(() => {
-                context.openLink(link, {
-                  appLinkingOnly: false
-                }, (err, data) => {
-                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
-                })
-                  .catch((err: BusinessError) => {
-                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
-                    expect().assertFail();
-                    done();
-                  })
-              }, 500);
-            }
-            if (data.event == 'ACTS_TEST_DESTROY') {
-              setTimeout(() => {
-                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-              }, 500);
-            }
-          }
-          commonEventManager.subscribe(subscriber, subscribeCallBack);
-          setTimeout(() => {
-            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
-          }, 100)
-        })
-    });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1600
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1600', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1600`;
-      console.log(`${tag}, it begin`);
-      link = 'https://www.example9.com'
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
-              done();
-            }, 1000);
-          }
-          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
-            if (data.event == 'ACTS_TEST_OPENLINK') {
-              setTimeout(() => {
-                context.openLink(link, openLinkOptionsFalse, (err, data) => {
-                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
-                })
-                  .catch((err: BusinessError) => {
-                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
-                    expect().assertFail();
-                    done();
-                  })
-              }, 500);
-            }
-            if (data.event == 'ACTS_TEST_DESTROY') {
-              setTimeout(() => {
-                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-              }, 500);
-            }
-          }
-          commonEventManager.subscribe(subscriber, subscribeCallBack);
-          setTimeout(() => {
-            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
-          }, 100)
-        })
-    });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1500
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1500', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1500`;
-      console.log(`${tag}, it begin`);
-      link = 'https://www.example10.com'
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
-              done();
-            }, 1000);
-          }
-          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
-            if (data.event == 'ACTS_TEST_OPENLINK') {
-              setTimeout(() => {
-                context.openLink(link, openLinkOptions, (err, data) => {
-                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
-                })
-                  .catch((err: BusinessError) => {
-                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
-                    expect(err.code).assertEqual(16000019);
-                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-                  })
-              }, 500);
-            }
-            if (data.event == 'ACTS_TEST_DESTROY') {
-              setTimeout(() => {
-                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-              }, 500);
-            }
-          }
-          commonEventManager.subscribe(subscriber, subscribeCallBack);
-          setTimeout(() => {
-            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
-          }, 100)
-        })
-    });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1800
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1800', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1800`;
-      console.log(`${tag}, it begin`);
-      link = 'https://www.example11.com'
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
-              done();
-            }, 1000);
-          }
-          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
-            if (data.event == 'ACTS_TEST_OPENLINK') {
-              setTimeout(() => {
-                context.openLink(link, openLinkOptionsOnlyParam, (err, data) => {
-                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
-                })
-                  .catch((err: BusinessError) => {
-                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
-                    expect().assertFail();
-                    done();
-                  })
-              }, 500);
-            }
-            if (data.event == 'ACTS_TEST_DESTROY') {
-              setTimeout(() => {
-                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-              }, 500);
-            }
-          }
-          commonEventManager.subscribe(subscriber, subscribeCallBack);
-          setTimeout(() => {
-            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
-          }, 100)
-        })
-    });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2000
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2000', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2000`;
-      console.log(`${tag}, it begin`);
-      link = 'https://www.example20.com'
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
-              done();
-            }, 1000);
-          }
-          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
-            if (data.event == 'ACTS_TEST_OPENLINK') {
-              setTimeout(() => {
-                context.openLink(link, null, (err, data) => {
-                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
-                })
-                  .catch((err: BusinessError) => {
-                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
-                    // commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-                    expect().assertFail();
-                    done();
-                  })
-              }, 500);
-            }
-            if (data.event == 'ACTS_TEST_DESTROY') {
-              setTimeout(() => {
-                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-              }, 500);
-            }
-          }
-          commonEventManager.subscribe(subscriber, subscribeCallBack);
-          setTimeout(() => {
-            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
-          }, 100)
-        })
-    });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1900
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1900', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1900`;
-      console.log(`${tag}, it begin`);
-      link = 'https://www.example12.com'
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
-              done();
-            }, 1000);
-          }
-          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
-            if (data.event == 'ACTS_TEST_OPENLINK') {
-              setTimeout(() => {
-                context.openLink(link, undefined, (err, data) => {
-                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
-                })
-                  .catch((err: BusinessError) => {
-                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
-                    expect().assertFail();
-                    done();
-                  })
-              }, 500);
-            }
-            if (data.event == 'ACTS_TEST_DESTROY') {
-              setTimeout(() => {
-                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-              }, 500);
-            }
-          }
-          commonEventManager.subscribe(subscriber, subscribeCallBack);
-          setTimeout(() => {
-            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
-          }, 100)
-        })
-    });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2100
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2100', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2100`;
-      console.log(`${tag}, it begin`);
-      link = 'https://www.example21.com'
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
-              done();
-            }, 1000);
-          }
-          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
-            if (data.event == 'ACTS_TEST_OPENLINK') {
-              setTimeout(() => {
-                context.openLink(link, {}, (err, data) => {
-                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
-                })
-                  .catch((err: BusinessError) => {
-                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
-                    expect().assertFail();
-                    done();
-                  })
-              }, 500);
-            }
-            if (data.event == 'ACTS_TEST_DESTROY') {
-              setTimeout(() => {
-                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-              }, 500);
-            }
-          }
-          commonEventManager.subscribe(subscriber, subscribeCallBack);
-          setTimeout(() => {
-            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
-          }, 100)
-        })
-    });
-
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1200
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1200', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1200`;
-      console.log(`${tag}, it begin`);
-      link = 'https://test'
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
-              done();
-            }, 1000);
-          }
-          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
-            if (data.event == 'ACTS_TEST_OPENLINK') {
-              setTimeout(() => {
-                context.openLink(link, {
-                  appLinkingOnly: true
-                }, (err, data) => {
-                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
-                })
-                  .catch((err: BusinessError) => {
-                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
-                    expect(err.code).assertEqual(16000019);
-                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-                  })
-              }, 500);
-            }
-            if (data.event == 'ACTS_TEST_DESTROY') {
-              setTimeout(() => {
-                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-              }, 500);
-            }
-          }
-          commonEventManager.subscribe(subscriber, subscribeCallBack);
-          setTimeout(() => {
-            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
-          }, 100)
-        })
-    });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1100
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1100', 0, (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_1100`;
-      console.log(`${tag}, it begin`);
-      link = 'https://www.example13.com'
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
-              done();
-            }, 1000);
-          }
-          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
-            if (data.event == 'ACTS_TEST_OPENLINK') {
-              setTimeout(() => {
-                context.openLink(link, {
-                  appLinkingOnly: true
-                }, (err, data) => {
-                  console.log(tag, 'open link success. Callback result:' + JSON.stringify(data));
-                })
-                  .catch((err: BusinessError) => {
-                    console.log(tag, `open link failed. Code is ${err.code}, message is ${err.message}`);
-                    expect(err.code).assertEqual(16000019);
-                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-                  })
-              }, 500);
-            }
-            if (data.event == 'ACTS_TEST_DESTROY') {
-              setTimeout(() => {
-                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-              }, 500);
-            }
-          }
-          commonEventManager.subscribe(subscriber, subscribeCallBack);
-          setTimeout(() => {
-            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
-          }, 100)
-        })
-    });
-
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_2900
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
+     * @tc.name   : UIAbilityContext.startAbility is compatible with appLinking, and appLinkingOnly is set to true.
+     * @tc.desc   : Function test
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -1054,8 +1073,8 @@ export default function startAbilityOpenLink() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_3000
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
+     * @tc.name   : UIAbilityContext.startAbility is compatible with appLinking, and appLinkingOnly is set to false.
+     * @tc.desc   : Function test
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -1109,8 +1128,9 @@ export default function startAbilityOpenLink() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_3100
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
+     * @tc.name   : UIAbilityContext.startAbilityForResult is compatible with appLinking, and appLinkingOnly is set
+     * to true.
+     * @tc.desc   : Function test
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -1165,8 +1185,9 @@ export default function startAbilityOpenLink() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_3200
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
+     * @tc.name   : UIAbilityContext.startAbilityForResult is compatible with appLinking, and appLinkingOnly is
+     * set to false.
+     * @tc.desc   : Function test
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -1227,8 +1248,8 @@ export default function startAbilityOpenLink() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_3900
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
+     * @tc.name   : UIAbilityContext.openLink handles reserved parameters.
+     * @tc.desc   : Function test
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -1283,8 +1304,9 @@ export default function startAbilityOpenLink() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StartAbility_OpenLink_4500
-     * @tc.name   : The input parameter 'link' is empty
-     * @tc.desc   : Call the openLink interface through context, and catch parameter invalid exception
+     * @tc.name   : UIAbilityContext.startAbilityForResult is compatible with appLinking, and appLinkingOnly is set to
+     * true, but the target application does not exist.
+     * @tc.desc   : Function test
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
