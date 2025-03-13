@@ -1152,12 +1152,12 @@ export default function windowPropertiesTest() {
             try {
                 windowClass.on('windowSizeChange', async (data) => {
                     console.info(`${caseName} Succeeded window rect changes. Data: ${JSON.stringify(data)}`);
-                    expect(data.width).assertEqual(1000);
+                    expect(data.width).assertEqual(1500);
                     expect(data.height).assertEqual(500);
                     windowClass.off('windowSizeChange');
                     done();
                 });
-                await windowClass.resize(1000, 500);
+                await windowClass.resize(1500, 500);
                 console.info(`${caseName} Succeeded in changing the window size.`);
             } catch (error) {
                 if (error.code == 1300002) {
@@ -2974,20 +2974,23 @@ export default function windowPropertiesTest() {
          */
         it('testSetSubWindowMask', 0, async (done: Function) => {
             let caseName = 'TestSetSubWindowMask';
+            let subWindow: window.Window | undefined;
             try {
-                let subWindow = await windowStage.createSubWindow('subWindowMask');
+                subWindow = await windowStage.createSubWindow('subWindowMask');
                 console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(subWindow));
-                await subWindow.showWindow();
+                await subWindow?.showWindow();
                 let windowMask: Array<Array<number>> = [
                     [0, 0, 0, 1, 0, 0, 0],
                     [0, 0, 1, 1, 1, 0, 0],
                     [0, 1, 1, 0, 1, 1, 0],
                     [1, 1, 0, 0, 0, 1, 1]
                 ];
-                await subWindow.setWindowMask(windowMask);
+                await subWindow?.setWindowMask(windowMask);
                 console.info(`${caseName} Succeeded in setting the window mask.`);
+                await subWindow?.destroyWindow();
                 done();
             } catch (exception) {
+                await subWindow?.destroyWindow();
                 if (exception.code === 801) {
                     console.info(`${caseName} The current device not support to set sub window mask`)
                     done();
@@ -3306,25 +3309,31 @@ export default function windowPropertiesTest() {
          */
         it('testGetTopSubWindowFocused', 0, async (done: Function) => {
             let caseName = 'TestGetTopSubWindowFocused';
+            let windowClass1: window.Window | undefined;
+            let windowClass2: window.Window | undefined;
             try {
-                const windowClass1 = await windowStage.createSubWindow('subwindow1');
+                windowClass1 = await windowStage.createSubWindow('subwindow1');
                 console.info(`${caseName} Succeeded in creating the sub window 1.`);
-                windowClass1.setUIContent("testability/pages/First/index2");
-                await windowClass1.showWindow();
+                windowClass1?.setUIContent("testability/pages/First/index2");
+                await windowClass1?.showWindow();
                 await sleep(1000);
-                const windowClass2 = await windowStage.createSubWindow('subwindow2');
+                windowClass2 = await windowStage.createSubWindow('subwindow2');
                 console.info(`${caseName} Succeeded in creating the sub window 2.`);
-                windowClass2.setUIContent("testability/pages/First/index3");
-                await windowClass2.showWindow();
+                windowClass2?.setUIContent("testability/pages/First/index3");
+                await windowClass2?.showWindow();
                 await sleep(1000);
-                const isFocused1 = windowClass1.isFocused();
-                const isFocused2 = windowClass2.isFocused();
+                const isFocused1 = windowClass1?.isFocused();
+                const isFocused2 = windowClass2?.isFocused();
                 console.info(`${caseName} windowClass1 isFocused is: ${isFocused1}`);
                 console.info(`${caseName} windowClass2 isFocused is: ${isFocused2}`);
                 expect(isFocused1).assertFalse();
                 expect(isFocused2).assertTrue();
+                await windowClass1.destroyWindow();
+                await windowClass2.destroyWindow();
                 done();
             } catch (exception) {
+                await windowClass1.destroyWindow();
+                await windowClass2.destroyWindow();
                 console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
                 expect().assertFail();
                 done();
