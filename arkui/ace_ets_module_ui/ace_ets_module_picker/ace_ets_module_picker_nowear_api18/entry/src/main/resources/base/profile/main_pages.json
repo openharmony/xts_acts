@@ -2,6 +2,8 @@
   "src": [
     "MainAbility/pages/index/index",
     "MainAbility/pages/datePickerDialog/DatePickerDialogMode",
-    "MainAbility/pages/timePickerDialog/timePickerDialogEnableHapticFeedback"
+    "MainAbility/pages/timePickerDialog/timePickerDialogEnableHapticFeedback",
+    "MainAbility/pages/CalendarPicker/disableDateRangeAndMarkToday",
+    "MainAbility/pages/CalendarPicker/dialogDisableDateRangeAndMarkToday"
   ]
 }

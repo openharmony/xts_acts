@@ -9,7 +9,6 @@
     "MainAbility/pages/promptAction/updatePopup",
     "MainAbility/pages/promptAction/closeMenu",
     "MainAbility/pages/promptAction/closePopup",
-    "MainAbility/pages/calendarPickerDialog/disableDateRangeAndMarkToday",
     "MainAbility/pages/calendarPickerDialog/startEndTest",
     "MainAbility/pages/Menu/menuFontsizeModifier",
     "MainAbility/pages/Menu/menuitemOnChangeModifier",
