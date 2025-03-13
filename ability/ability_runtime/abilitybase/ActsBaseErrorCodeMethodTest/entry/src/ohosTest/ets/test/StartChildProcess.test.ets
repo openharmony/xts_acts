@@ -15,9 +15,9 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { childProcessManager, systemParameterEnhance } from '@kit.AbilityKit';
-
-let mpEnable: Boolean;
+import { childProcessManager } from '@kit.AbilityKit';
+import { systemParameterEnhance } from '@kit.BasicServicesKit';
+let mpEnable: string;
 const PARAM_INVALID = 401;
 export default function ndkTest() {
   describe('ChildProcessTest', () => {
@@ -26,7 +26,7 @@ export default function ndkTest() {
         mpEnable = systemParameterEnhance.getSync('persist.sys.abilityms.multi_process_model');
       } catch (err) {
         console.error(`ACTS_NativeStartChildProcess Get system parameter error: ${JSON.stringify(err)}`);
-        mpEnable = false;
+        mpEnable = 'fail';
       }
     })
     beforeEach(() => {})
@@ -44,7 +44,7 @@ export default function ndkTest() {
     it('SUB_Ability_AbilityBase_startChildProcess_0100', 0, async (done: Function) => {
       let tag = `SUB_AA_ChildProcessManager_startChildProcess_0100`;
       console.log(`${tag}, it begin`);
-      if(mpEnable == true){
+      if(mpEnable == 'true'){
         try {
           await childProcessManager.startChildProcess('./ets/process/AProcess.ts', undefined).then((pid)=>{
             console.log(`${tag} startChildProcess success, pid: ${pid}`);
@@ -60,7 +60,7 @@ export default function ndkTest() {
           expect(err?.code).assertEqual(PARAM_INVALID)
           done();
         }
-      }else if(mpEnable == false){
+      }else if(mpEnable == 'false'){
         console.error(`${tag} startChildProcess error, current device not support.`);
         done();
       }else{
@@ -81,7 +81,7 @@ export default function ndkTest() {
     it('SUB_Ability_AbilityBase_startChildProcess_0200', 0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_0200`;
       console.log(`${tag}, it begin`);
-      if(mpEnable == true){
+      if(mpEnable == 'true'){
         try {
           childProcessManager.startChildProcess('./ets/process/AProcess.ts', undefined, ()=>{
             try{expect().assertFail();}catch(e){}
@@ -92,7 +92,7 @@ export default function ndkTest() {
           expect(err?.code).assertEqual(PARAM_INVALID)
           done();
         }
-      }else if(mpEnable == false){
+      }else if(mpEnable == 'false'){
         console.error(`${tag} startChildProcess error, current device not support.`);
         done();
       }else{
@@ -114,7 +114,7 @@ export default function ndkTest() {
     it('SUB_Ability_AbilityBase_startChildProcess_0300', 0, async (done: Function) => {
       let tag = `SUB_AA_ChildProcessManager_startChildProcess_0300`;
       console.log(`${tag}, it begin`);
-      if(mpEnable == true){
+      if(mpEnable == 'true'){
         try {
           await childProcessManager.startChildProcess(undefined, childProcessManager.StartMode.SELF_FORK).then((pid)=>{
             console.log(`${tag} startChildProcess success, pid: ${pid}`);
@@ -130,7 +130,7 @@ export default function ndkTest() {
           expect(err?.code).assertEqual(PARAM_INVALID)
           done();
         }
-      }else if(mpEnable == false){
+      }else if(mpEnable == 'false'){
         console.error(`${tag} startChildProcess error, current device not support.`);
         done();
       }else{
@@ -151,7 +151,7 @@ export default function ndkTest() {
     it('SUB_Ability_AbilityBase_startChildProcess_0400', 0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_0400`;
       console.log(`${tag}, it begin`);
-      if(mpEnable == true){
+      if(mpEnable == 'true'){
         try {
           childProcessManager.startChildProcess(undefined, childProcessManager.StartMode.SELF_FORK, ()=>{
             try{expect().assertFail();}catch(e){}
@@ -162,7 +162,7 @@ export default function ndkTest() {
           expect(err?.code).assertEqual(PARAM_INVALID)
           done();
         }
-      }else if(mpEnable == false){
+      }else if(mpEnable == 'false'){
         console.error(`${tag} startChildProcess error, current device not support.`);
         done();
       }else{
@@ -185,7 +185,7 @@ export default function ndkTest() {
     it('SUB_Ability_AbilityBase_startChildProcess_0500', 0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_0500`;
       console.log(`${tag}, it begin`);
-      if(mpEnable == true){
+      if(mpEnable == 'true'){
         try {
           await childProcessManager.startChildProcess(undefined, childProcessManager.StartMode.APP_SPAWN_FORK)
             .then((pid)=>{
@@ -202,7 +202,7 @@ export default function ndkTest() {
           expect(err?.code).assertEqual(PARAM_INVALID)
           done();
         }
-      }else if(mpEnable == false){
+      }else if(mpEnable == 'false'){
         console.error(`${tag} startChildProcess error, current device not support.`);
         done();
       }else{
@@ -223,7 +223,7 @@ export default function ndkTest() {
     it('SUB_Ability_AbilityBase_startChildProcess_0600', 0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_0600`;
       console.log(`${tag}, it begin`);
-      if(mpEnable == true){
+      if(mpEnable == 'true'){
         try {
           childProcessManager.startChildProcess(undefined, childProcessManager.StartMode.APP_SPAWN_FORK, ()=>{
             try{expect().assertFail();}catch(e){}
@@ -234,7 +234,7 @@ export default function ndkTest() {
           expect(err?.code).assertEqual(PARAM_INVALID)
           done();
         }
-      }else if(mpEnable == false){
+      }else if(mpEnable == 'false'){
         console.error(`${tag} startChildProcess error, current device not support.`);
         done();
       }else{
@@ -256,7 +256,7 @@ export default function ndkTest() {
     it('SUB_Ability_AbilityBase_startChildProcess_0700', 0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_0700`;
       console.log(`${tag}, it begin`);
-      if(mpEnable == true){
+      if(mpEnable == 'true'){
         try {
           await childProcessManager.startChildProcess('./ets/process/AProcess.ts', null).then((pid)=>{
             console.log(`${tag} startChildProcess success, pid: ${pid}`);
@@ -272,7 +272,7 @@ export default function ndkTest() {
           expect(err?.code).assertEqual(PARAM_INVALID)
           done();
         }
-      }else if(mpEnable == false){
+      }else if(mpEnable == 'false'){
         console.error(`${tag} startChildProcess error, current device not support.`);
         done();
       }else{
@@ -293,7 +293,7 @@ export default function ndkTest() {
     it('SUB_Ability_AbilityBase_startChildProcess_0800', 0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_0800`;
       console.log(`${tag}, it begin`);
-      if(mpEnable == true){
+      if(mpEnable == 'true'){
         try {
           childProcessManager.startChildProcess('./ets/process/AProcess.ts', null, ()=>{
             try{expect().assertFail();}catch(e){}
@@ -304,7 +304,7 @@ export default function ndkTest() {
           expect(err?.code).assertEqual(PARAM_INVALID)
           done();
         }
-      }else if(mpEnable == false){
+      }else if(mpEnable == 'false'){
         console.error(`${tag} startChildProcess error, current device not support.`);
         done();
       }else{
@@ -326,7 +326,7 @@ export default function ndkTest() {
     it('SUB_Ability_AbilityBase_startChildProcess_0900', 0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_0900`;
       console.log(`${tag}, it begin`);
-      if(mpEnable == true){
+      if(mpEnable == 'true'){
         try {
           await childProcessManager.startChildProcess(null, childProcessManager.StartMode.SELF_FORK).then((pid)=>{
             console.log(`${tag} startChildProcess success, pid: ${pid}`);
@@ -342,7 +342,7 @@ export default function ndkTest() {
           expect(err?.code).assertEqual(PARAM_INVALID)
           done();
         }
-      }else if(mpEnable == false){
+      }else if(mpEnable == 'false'){
         console.error(`${tag} startChildProcess error, current device not support.`);
         done();
       }else{
@@ -363,7 +363,7 @@ export default function ndkTest() {
     it('SUB_Ability_AbilityBase_startChildProcess_1000', 0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_1000`;
       console.log(`${tag}, it begin`);
-      if(mpEnable == true){
+      if(mpEnable == 'true'){
         try {
           childProcessManager.startChildProcess(null, childProcessManager.StartMode.SELF_FORK, ()=>{
             try{expect().assertFail();}catch(e){}
@@ -374,7 +374,7 @@ export default function ndkTest() {
           expect(err?.code).assertEqual(PARAM_INVALID)
           done();
         }
-      }else if(mpEnable == false){
+      }else if(mpEnable == 'false'){
         console.error(`${tag} startChildProcess error, current device not support.`);
         done();
       }else{
@@ -397,7 +397,7 @@ export default function ndkTest() {
     it('SUB_Ability_AbilityBase_startChildProcess_1100', 0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_1100`;
       console.log(`${tag}, it begin`);
-      if(mpEnable == true){
+      if(mpEnable == 'true'){
         try {
           await childProcessManager.startChildProcess(null, childProcessManager.StartMode.APP_SPAWN_FORK)
             .then((pid)=>{
@@ -414,7 +414,7 @@ export default function ndkTest() {
           expect(err?.code).assertEqual(PARAM_INVALID)
           done();
         }
-      }else if(mpEnable == false){
+      }else if(mpEnable == 'false'){
         console.error(`${tag} startChildProcess error, current device not support.`);
         done();
       }else{
@@ -435,7 +435,7 @@ export default function ndkTest() {
     it('SUB_Ability_AbilityBase_startChildProcess_1200', 0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_startChildProcess_1200`;
       console.log(`${tag}, it begin`);
-      if(mpEnable == true){
+      if(mpEnable == 'true'){
         try {
           childProcessManager.startChildProcess(null, childProcessManager.StartMode.APP_SPAWN_FORK, ()=>{
             try{expect().assertFail();}catch(e){}
@@ -446,7 +446,7 @@ export default function ndkTest() {
           expect(err?.code).assertEqual(PARAM_INVALID)
           done();
         }
-      }else if(mpEnable == false){
+      }else if(mpEnable == 'false'){
         console.error(`${tag} startChildProcess error, current device not support.`);
         done();
       }else{

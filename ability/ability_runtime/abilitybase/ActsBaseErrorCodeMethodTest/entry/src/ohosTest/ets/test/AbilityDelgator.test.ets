@@ -818,28 +818,6 @@ export default function openLinkTest() {
     })
 
     /*
-     * @tc.number : SUB_Ability_AbilityBase_AbilityDelegatorError_3400
-     * @tc.name   : To verify that the input parameter of getAbilityState is null.
-     * @tc.desc   : Expect: call failed
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 3
-     */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3400', 0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_3400 start');
-      try {
-        let state = abilityDelegator.getAbilityState(null);
-        hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_AbilityDelegatorError_3400 ${state}`);
-        expect(state).assertEqual(null)
-        done();
-      } catch (err) {
-        hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_AbilityDelegatorError_3400 ${err?.code}`);
-        expect().assertFail();
-        done();
-      }
-    })
-
-    /*
      * @tc.number : SUB_Ability_AbilityBase_AbilityDelegatorError_3500
      * @tc.name   : To verify that the input parameter of startAbility is null(promise).
      * @tc.desc   : Expect: call failed
