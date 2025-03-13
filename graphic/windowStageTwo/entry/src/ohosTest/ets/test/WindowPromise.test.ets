@@ -1938,7 +1938,7 @@ export default function windowPromiseTest() {
             expect(time).assertLess(3000);
             expect(time).assertLarger(1500);
             subWindowClass.off('noInteractionDetected');
-            subWindowClass.hide();
+            subWindowClass.destroyWindow();
             done();
           });
           time1 = new Date().getTime();
