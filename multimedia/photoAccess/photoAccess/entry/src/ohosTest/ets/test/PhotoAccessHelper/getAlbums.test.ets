@@ -173,11 +173,33 @@ export default function getAlbumsTest () {
         done();
       }
     });
-    //得和之前合并的代码对照一下
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ALBUMS_0300
+     * @tc.name      : getAlbums_callback_003
+     * @tc.desc      : get user albums by albumName error code 13900020 or 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getAlbums_callback_003', 2, async (done: Function) => {
+      const testNum = 'getAlbums_callback_003';
+      try {
+        let albumName = testNum;
+        const fetchOps = fetchOption(testNum, albumKeys.ALBUM_NAME, albumName);
+        helper.getAlbums(123123, albumSubtype.USER_GENERIC, fetchOps, async (err, fetchResult) => {
+          expect(false).assertTrue();
+        });
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed, error code: ${error.code}`);
+        expect(error.code === '13900020' || error.code === '401').assertTrue();
+        done();
+      }
+    }); 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ALBUMS_0400
      * @tc.name      : getAlbums_callback_004
-     * @tc.desc      : get an user album
+     * @tc.desc      : get an user album without fetchOption,error code 13900020 or 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -374,7 +396,7 @@ export default function getAlbumsTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0500
      * @tc.name      : getAlbums_promise_005
-     * @tc.desc      : get user albums by orderByDesc
+     * @tc.desc      : get user albums with error FetchOptions, error code 13900020 or 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
