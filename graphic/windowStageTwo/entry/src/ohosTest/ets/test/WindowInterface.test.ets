@@ -2593,16 +2593,16 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     })
 
     /**
-     * @tc.number    : test_setSupportedWindowModes_001
-     * @tc.name      : test_setSupportedWindowModes_001
+     * @tc.number    : SUB_BASIC_WMS_SET_SUPPORTED_WINDOW_MODES_0100
+     * @tc.name      : test_setSupportedWindowModes_threeElement
      * @tc.desc      : 传参三个元素
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_001', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_threeElement', 0, async (done: Function) => {
       try {
-        const message = 'test_setSupportedWindowModes_001'
+        const message = 'test_setSupportedWindowModes_threeElement'
         let windowStageStart = await startAbility(message, context)
         let promise = windowStageStart.setSupportedWindowModes([bundleManager.SupportWindowMode.FULL_SCREEN,
           bundleManager.SupportWindowMode.SPLIT, bundleManager.SupportWindowMode.FLOATING]);
@@ -2630,16 +2630,16 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_setSupportedWindowModes_002
-     * @tc.name      : test_setSupportedWindowModes_002
+     * @tc.number    : SUB_BASIC_WMS_SET_SUPPORTED_WINDOW_MODES_0200
+     * @tc.name      : test_setSupportedWindowModes_fourSameElement
      * @tc.desc      : 传参4个fullscreen，验证成功设置和801
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_002', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_fourSameElement', 0, async (done: Function) => {
       try {
-        const message = 'test_setSupportedWindowModes_002'
+        const message = 'test_setSupportedWindowModes_fourSameElement'
         let windowStageStart = await startAbility(message, context)
         let promise = windowStageStart.setSupportedWindowModes([bundleManager.SupportWindowMode.FULL_SCREEN,
           bundleManager.SupportWindowMode.FULL_SCREEN, bundleManager.SupportWindowMode.FULL_SCREEN,
@@ -2668,16 +2668,16 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_setSupportedWindowModes_003
-     * @tc.name      : test_setSupportedWindowModes_003
+     * @tc.number    : SUB_BASIC_WMS_SET_SUPPORTED_WINDOW_MODES_0300
+     * @tc.name      : test_setSupportedWindowModes_fiveElement
      * @tc.desc      : 传参列表5个元素，验证401
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_003', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_fiveElement', 0, async (done: Function) => {
       try {
-        const message = 'test_setSupportedWindowModes_003'
+        const message = 'test_setSupportedWindowModes_fiveElement'
         let windowStageStart = await startAbility(message, context)
         let promise = windowStageStart.setSupportedWindowModes([bundleManager.SupportWindowMode.FULL_SCREEN,
           bundleManager.SupportWindowMode.SPLIT, bundleManager.SupportWindowMode.FLOATING,
@@ -2706,16 +2706,16 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_setSupportedWindowModes_004
-     * @tc.name      : test_setSupportedWindowModes_004
+     * @tc.number    : SUB_BASIC_WMS_SET_SUPPORTED_WINDOW_MODES_0400
+     * @tc.name      : test_setSupportedWindowModes_nullElement
      * @tc.desc      : 传参[]，验证401
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_004', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_nullElement', 0, async (done: Function) => {
       try {
-        const message = 'test_setSupportedWindowModes_004'
+        const message = 'test_setSupportedWindowModes_nullElement'
         let windowStageStart = await startAbility(message, context)
         let promise = windowStageStart.setSupportedWindowModes([]);
         promise.then(() => {
@@ -2742,16 +2742,16 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_setSupportedWindowModes_005
-     * @tc.name      : test_setSupportedWindowModes_005
+     * @tc.number    : SUB_BASIC_WMS_SET_SUPPORTED_WINDOW_MODES_0500
+     * @tc.name      : test_setSupportedWindowModes_onlySplit
      * @tc.desc      : 传参[split]，验证401
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_005', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_onlySplit', 0, async (done: Function) => {
       try {
-        const message = 'test_setSupportedWindowModes_005'
+        const message = 'test_setSupportedWindowModes_onlySplit'
         let windowStageStart = await startAbility(message, context)
         let promise = windowStageStart.setSupportedWindowModes([bundleManager.SupportWindowMode.SPLIT]);
         promise.then(() => {
@@ -2778,16 +2778,16 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_setSupportedWindowModes_006
-     * @tc.name      : test_setSupportedWindowModes_006
+     * @tc.number    : SUB_BASIC_WMS_SET_SUPPORTED_WINDOW_MODES_0600
+     * @tc.name      : test_setSupportedWindowModes_afterTerminateAbility
      * @tc.desc      : 销毁ability, 验证1300002
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_006', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_afterTerminateAbility', 0, async (done: Function) => {
       try {
-        const message = 'test_setSupportedWindowModes_006'
+        const message = 'test_setSupportedWindowModes_afterTerminateAbility'
         let windowStageStart = await startAbility(message, context)
         await terminateAbility(message);
         await sleep(1000);
@@ -2819,16 +2819,16 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_setSupportedWindowModes_007
-     * @tc.name      : test_setSupportedWindowModes_007
+     * @tc.number    : SUB_BASIC_WMS_SET_SUPPORTED_WINDOW_MODES_0700
+     * @tc.name      : test_setSupportedWindowModes_modeChange_isImmersive
      * @tc.desc      : [full_screen] ——> [float] ——> [full_screen],验证设置后mode和沉浸式改变
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_007', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_modeChange_isImmersive', 0, async (done: Function) => {
       try {
-        const message = 'test_setSupportedWindowModes_007';
+        const message = 'test_setSupportedWindowModes_modeChange_isImmersive';
         let windowStageStart = await startAbility(message, context)
         let promise_primary = windowStageStart.setSupportedWindowModes([bundleManager.SupportWindowMode.FULL_SCREEN]);
         promise_primary.then(() => {
@@ -2897,16 +2897,16 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_createSubWindowWithOptions_windowRect_001
-     * @tc.name      : test_createSubWindowWithOptions_windowRect_001
-     * @tc.desc      : left&top为负整数，width&height为最小值
+     * @tc.number    : SUB_BASIC_WMS_OPTION_ADD_PARAMETER_WINDOW_RECT_0100
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_negativeLeftTop_minWidthHeight
+     * @tc.desc      : LeftTop为负整数，WidthHeight为最小值
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_001', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_negativeLeftTop_minWidthHeight', 0, async (done: Function) => {
       try {
-        const message = 'test_createSubWindowWithOptions_windowRect_001'
+        const message = 'test_createSubWindowWithOptions_windowRect_negativeLeftTop_minWidthHeight'
         let limit = context.windowStage.getMainWindowSync().getWindowLimits()
         let options: window.SubWindowOptions = {
           title: 'subwindow0',
@@ -2955,16 +2955,16 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_createSubWindowWithOptions_windowRect_002
-     * @tc.name      : test_createSubWindowWithOptions_windowRect_002
-     * @tc.desc      : left&top为正整数，width&height为最大值
+     * @tc.number    : SUB_BASIC_WMS_OPTION_ADD_PARAMETER_WINDOW_RECT_0200
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_positiveLeftTop_maxWidthHeight
+     * @tc.desc      : LeftTop为正整数，WidthHeight为最大值
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_002', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_positiveLeftTop_maxWidthHeight', 0, async (done: Function) => {
       try {
-        const message = 'test_createSubWindowWithOptions_windowRect_002';
+        const message = 'test_createSubWindowWithOptions_windowRect_positiveLeftTop_maxWidthHeight';
         let limit = context.windowStage.getMainWindowSync().getWindowLimits();
         let options: window.SubWindowOptions = {
           title: 'subwindow0',
@@ -3013,16 +3013,16 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_createSubWindowWithOptions_windowRect_003
-     * @tc.name      : test_createSubWindowWithOptions_windowRect_003
-     * @tc.desc      : left&top为正整数，验证801
+     * @tc.number    : SUB_BASIC_WMS_OPTION_ADD_PARAMETER_WINDOW_RECT_0300
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_801
+     * @tc.desc      : LeftTop为正整数，验证801
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_003', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_801', 0, async (done: Function) => {
       try {
-        const message = 'test_createSubWindowWithOptions_windowRect_003'
+        const message = 'test_createSubWindowWithOptions_windowRect_801'
         let options: window.SubWindowOptions = {
           title: 'subwindow0',
           decorEnabled: false,
@@ -3066,16 +3066,16 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_createSubWindowWithOptions_windowRect_004
-     * @tc.name      : test_createSubWindowWithOptions_windowRect_004
-     * @tc.desc      : left&top为浮点数，width&height为浮点数
+     * @tc.number    : SUB_BASIC_WMS_OPTION_ADD_PARAMETER_WINDOW_RECT_0400
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_floatLeftTop_floatWidthHeight
+     * @tc.desc      : LeftTop为浮点数，WidthHeight为浮点数
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_004', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_floatLeftTop_floatWidthHeight', 0, async (done: Function) => {
       try {
-        const message = 'test_createSubWindowWithOptions_windowRect_004';
+        const message = 'test_createSubWindowWithOptions_windowRect_floatLeftTop_floatWidthHeight';
         let limit = context.windowStage.getMainWindowSync().getWindowLimits();
         let options: window.SubWindowOptions = {
           title: 'title',
@@ -3124,16 +3124,16 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_createSubWindowWithOptions_windowRect_005
-     * @tc.name      : test_createSubWindowWithOptions_windowRect_005
-     * @tc.desc      : left&top为0，width&height为0
+     * @tc.number    : SUB_BASIC_WMS_OPTION_ADD_PARAMETER_WINDOW_RECT_0500
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_0LeftTop_0WidthHeight
+     * @tc.desc      : LeftTop为0，WidthHeight为0
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_005', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_0LeftTop_0WidthHeight', 0, async (done: Function) => {
       try {
-        const message = 'test_createSubWindowWithOptions_windowRect_005';
+        const message = 'test_createSubWindowWithOptions_windowRect_0LeftTop_0WidthHeight';
         let limit = context.windowStage.getMainWindowSync().getWindowLimits();
         let options: window.SubWindowOptions = {
           title: 'title',
@@ -3177,16 +3177,16 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_createSubWindowWithOptions_windowRect_006
-     * @tc.name      : test_createSubWindowWithOptions_windowRect_006
-     * @tc.desc      : left&top为正整数，width&height为最大值+1
+     * @tc.number    : SUB_BASIC_WMS_OPTION_ADD_PARAMETER_WINDOW_RECT_0600
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_maxAboveWidthHeight
+     * @tc.desc      : LeftTop为正整数，WidthHeight为最大值+1
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_006', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_maxAboveWidthHeight', 0, async (done: Function) => {
       try {
-        const message = 'test_createSubWindowWithOptions_windowRect_006';
+        const message = 'test_createSubWindowWithOptions_windowRect_maxAboveWidthHeight';
         let limit = context.windowStage.getMainWindowSync().getWindowLimits();
         let options: window.SubWindowOptions = {
           title: 'title',
@@ -3236,17 +3236,17 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_createSubWindowWithOptions_windowRect_007
-     * @tc.name      : test_createSubWindowWithOptions_windowRect_007
-     * @tc.desc      : left&top为正整数，width&height为最小值-1
+     * @tc.number    : SUB_BASIC_WMS_OPTION_ADD_PARAMETER_WINDOW_RECT_0700
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_followMinWidthHeight
+     * @tc.desc      : LeftTop为正整数，WidthHeight为最小值-1
      * @tc.size      : MediumTest
      * @tc.type      : Function
      *
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_007', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_followMinWidthHeight', 0, async (done: Function) => {
       try {
-        const message = 'test_createSubWindowWithOptions_windowRect_007';
+        const message = 'test_createSubWindowWithOptions_windowRect_followMinWidthHeight';
         let subwindow0 = await windowStage.createSubWindow('subwindow0');
         await sleep(1000)
         let limit = subwindow0.getWindowLimits();
@@ -3298,16 +3298,16 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_createSubWindowWithOptions_windowRect_008
-     * @tc.name      : test_createSubWindowWithOptions_windowRect_008
-     * @tc.desc      : left&top为NaN，width&height为NaN
+     * @tc.number    : SUB_BASIC_WMS_OPTION_ADD_PARAMETER_WINDOW_RECT_0800
+     * @tc.name      : test_createSubWindowWithOptions_windowRect_NaNLeftTopWidthHeight
+     * @tc.desc      : LeftTop为NaN，WidthHeight为NaN
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_008', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_NaNLeftTopWidthHeight', 0, async (done: Function) => {
       try {
-        const message = 'test_createSubWindowWithOptions_windowRect_008'
+        const message = 'test_createSubWindowWithOptions_windowRect_NaNLeftTopWidthHeight'
         let options: window.SubWindowOptions = {
           title: 'title',
           decorEnabled: false,
@@ -3350,15 +3350,15 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_on_windowWillClose_001
-     * @tc.name      : test_on_windowWillClose_001
+     * @tc.number    : SUB_BASIC_WMS_ON_WINDOW_WILL_CLOSE_0100
+     * @tc.name      : test_on_windowWillClose_resolve_true
      * @tc.desc      : resolve为true,验证窗口不销毁
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_001', 0, async (done: Function) => {
-      const message = 'test_on_windowWillClose_001'
+    it('test_on_windowWillClose_resolve_true', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_resolve_true'
       let result: boolean = false;
       const callback = () => {
         return new Promise<boolean>((resolve, reject) => {
@@ -3403,15 +3403,15 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_on_windowWillClose_002
-     * @tc.name      : test_on_windowWillClose_002
+     * @tc.number    : SUB_BASIC_WMS_ON_WINDOW_WILL_CLOSE_0200
+     * @tc.name      : test_on_windowWillClose_resolve_false
      * @tc.desc      : resolve为false,验证窗口销毁
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_002', 0, async (done: Function) => {
-      const message = 'test_on_windowWillClose_002'
+    it('test_on_windowWillClose_resolve_false', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_resolve_false'
       let result: boolean = true;
       let windowName: string | undefined;
       const callback = () => {
@@ -3467,15 +3467,15 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_on_windowWillClose_003
-     * @tc.name      : test_on_windowWillClose_0033
+     * @tc.number    : SUB_BASIC_WMS_ON_WINDOW_WILL_CLOSE_0300
+     * @tc.name      : test_on_windowWillClose_executeAfterOff
      * @tc.desc      : 回调执行过程中执行off，验证1300002
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_003', 0, async (done: Function) => {
-      const message = 'test_on_windowWillClose_003'
+    it('test_on_windowWillClose_executeAfterOff', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_executeAfterOff'
       let result: boolean = true;
       const callback = async () => {
         await sleep(3000);
@@ -3511,15 +3511,15 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_on_windowWillClose_004
-     * @tc.name      : test_on_windowWillClose_004
+     * @tc.number    : SUB_BASIC_WMS_ON_WINDOW_WILL_CLOSE_0400
+     * @tc.name      : test_on_windowWillClose_offWithoutOn
      * @tc.desc      : 不注册，执行off
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_004', 0, async (done: Function) => {
-      const message = 'test_on_windowWillClose_004'
+    it('test_on_windowWillClose_offWithoutOn', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_offWithoutOn'
       if (deviceType != "2in1" && isAutoWindow != 'true') {
         expect(true).assertTrue();
         done();
@@ -3562,15 +3562,15 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_on_windowWillClose_005
-     * @tc.name      : test_on_windowWillClose_005
+     * @tc.number    : SUB_BASIC_WMS_ON_WINDOW_WILL_CLOSE_0500
+     * @tc.name      : test_on_windowWillClose_reject
      * @tc.desc      : 执行reject
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_005', 0, async (done: Function) => {
-      const message = 'test_on_windowWillClose_005';
+    it('test_on_windowWillClose_reject', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_reject';
       let windowName: string | undefined;
       const callback = () => {
         return new Promise<boolean>((resolve, reject) => {
@@ -3620,15 +3620,15 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_on_windowWillClose_006
-     * @tc.name      : test_on_windowWillClose_006
+     * @tc.number    : SUB_BASIC_WMS_ON_WINDOW_WILL_CLOSE_0600
+     * @tc.name      : test_on_windowWillClose_multiOn_UniqueOff
      * @tc.desc      : 注册多个，取消一个
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_006', 0, async (done: Function) => {
-      const message = 'test_on_windowWillClose_006';
+    it('test_on_windowWillClose_multiOn_UniqueOff', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_multiOn_UniqueOff';
       let windowName: string | undefined;
       let result: boolean = true;
       const callback1 = () => {
@@ -3692,15 +3692,15 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_on_windowWillClose_007
-     * @tc.name      : test_on_windowWillClose_007
+     * @tc.number    : SUB_BASIC_WMS_ON_WINDOW_WILL_CLOSE_0700
+     * @tc.name      : test_on_windowWillClose_multiOn_AllOff
      * @tc.desc      : 注册多个，off所有
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_007', 0, async (done: Function) => {
-      const message = 'test_on_windowWillClose_007';
+    it('test_on_windowWillClose_multiOn_AllOff', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_multiOn_AllOff';
       let windowName: string | undefined;
       let result: boolean = false;
       const callback1 = () => {
@@ -3764,15 +3764,15 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_on_windowWillClose_008
-     * @tc.name      : test_on_windowWillClose_008
+     * @tc.number    : SUB_BASIC_WMS_ON_WINDOW_WILL_CLOSE_0800
+     * @tc.name      : test_on_windowWillClose_subWindow_result_false
      * @tc.desc      : 子窗result为false,验证窗口销毁
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_008', 0, async (done: Function) => {
-      const message = 'test_on_windowWillClose_008'
+    it('test_on_windowWillClose_subWindow_result_false', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_subWindow_result_false'
       let result: boolean = true;
       const callback = () => {
         return new Promise<boolean>((resolve, reject) => {
@@ -3834,15 +3834,15 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_on_windowWillClose_009
-     * @tc.name      : test_on_windowWillClose_009
+     * @tc.number    : SUB_BASIC_WMS_ON_WINDOW_WILL_CLOSE_0900
+     * @tc.name      : test_on_windowWillClose_subWindow_result_true
      * @tc.desc      : 子窗result为true,验证窗口不销毁
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_009', 0, async (done: Function) => {
-      const message = 'test_on_windowWillClose_009'
+    it('test_on_windowWillClose_subWindow_result_true', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_subWindow_result_true'
       let result: boolean = false;
       const callback = () => {
         return new Promise<boolean>((resolve, reject) => {
@@ -3903,15 +3903,15 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_on_windowWillClose_010
-     * @tc.name      : test_on_windowWillClose_010
+     * @tc.number    : SUB_BASIC_WMS_ON_WINDOW_WILL_CLOSE_1000
+     * @tc.name      : test_on_windowWillClose_subWindow_reject
      * @tc.desc      : 子窗reject,验证窗口销毁
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_010', 0, async (done: Function) => {
-      const message = 'test_on_windowWillClose_010'
+    it('test_on_windowWillClose_subWindow_reject', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_subWindow_reject'
       const callback = () => {
         return new Promise<boolean>((resolve, reject) => {
           reject();
@@ -3970,15 +3970,15 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
     });
 
     /**
-     * @tc.number    : test_on_windowWillClose_011
-     * @tc.name      : test_on_windowWillClose_011
+     * @tc.number    : SUB_BASIC_WMS_ON_WINDOW_WILL_CLOSE_1100
+     * @tc.name      : test_on_windowWillClose_minimize_maximize_recover_beforeOff
      * @tc.desc      : 销毁前最大化、最小化、还原
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_011', 0, async (done: Function) => {
-      const message = 'test_on_windowWillClose_011'
+    it('test_on_windowWillClose_minimize_maximize_recover_beforeOff', 0, async (done: Function) => {
+      const message = 'test_on_windowWillClose_minimize_maximize_recover_beforeOff'
       let windowName: string | undefined;
       let result: boolean = true;
       const callback = () => {
