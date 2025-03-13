@@ -44,7 +44,8 @@
         ],
         "backgroundModes": [
           "audioPlayback",
-          "location"
+          "location",
+          "bluetoothInteraction"
         ]
       }
     ],
