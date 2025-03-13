@@ -843,7 +843,7 @@ export default function settingUiJsunit() {
 
     it('open_manager_settings_120', 0, async (done:Function) => {
       try{
-        let value = settings.openNetworkManagerSettings(null);
+        let value = settings.openNetworkManagerSettings(globalThis.xcomponentContext1);
         expect(true).assertTrue();
         done();
       }catch (err) {
