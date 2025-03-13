@@ -26,6 +26,9 @@ add_library(nativerender SHARED
     snapShot/snap_shot.cpp
     snapShot/container.cpp
     scroll/scroll_backtotop_test.cpp
+    checkboxgroup/checkboxgroup_group_test.cpp
+    checkboxgroup/checkboxgroup_selectall_test.cpp
+    checkbox/checkbox_group_test.cpp
     component/component.cpp
     component/grid_component.cpp
     component/list_component.cpp

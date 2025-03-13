@@ -37,6 +37,12 @@ export const listTestCallback: (a: string) => void;
 
 export const listScrollToTestCallback: (a: string) => void;
 
+export const checkboxGroupGroupTest: (a:string) => void;
+
+export const checkboxGroupSelectAllTest: (a:string) => void;
+
+export const checkboxGroupTest: (a:string) => void;
+
 export const testNodeHandleById: (a: string) => void;
 
 export const testGetWindowInfo: (a: string) => void;
