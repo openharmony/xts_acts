@@ -99,6 +99,7 @@ export default function windowErrCode1300004() {
 
       try {
         await (tempWnd as ohosWindow.Window)!.setRaiseByClickEnabled(true).then(async () => {
+          await (tempWnd! as ohosWindow.Window).destroyWindow();
           console.info(msgStr + 'Succeeded in calling setRaiseByClickEnabled.');
           expect().assertFail();
           done()
@@ -151,16 +152,19 @@ export default function windowErrCode1300004() {
       try {
         await win!.maximize(ohosWindow.MaximizePresentation.EXIT_IMMERSIVE).then(async () => {
           console.info(msgStr + 'Succeeded in calling maximize.');
+          await (win! as ohosWindow.Window).destroyWindow();
           expect().assertFail();
           done()
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call maximize. Cause: ' + JSON.stringify(err));
+          await (win! as ohosWindow.Window).destroyWindow();
           expect().assertFail();
           done()
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call maximize. Cause:' + JSON.stringify(exception));
         expect(exception.code).assertEqual(1300004);
+        await (win! as ohosWindow.Window).destroyWindow();
         done()
       }
     })
@@ -383,11 +387,13 @@ export default function windowErrCode1300004() {
         (win as ohosWindow.Window).setImmersiveModeEnabledState(true);
         console.error(msgStr + 'Succeeded in calling setImmersiveModeEnabledState.');
         expect().assertFail();
+        await (win! as ohosWindow.Window).destroyWindow();
         done();
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call setImmersiveModeEnabledState. Cause:' +
         JSON.stringify(exception));
         expect(exception.code).assertEqual(1300004);
+        await (win! as ohosWindow.Window).destroyWindow();
         done();
       }
     })
@@ -424,11 +430,13 @@ export default function windowErrCode1300004() {
         (win as ohosWindow.Window).getImmersiveModeEnabledState();
         console.error(msgStr + 'Succeeded in calling getImmersiveModeEnabledState.');
         expect().assertFail();
+        await (win! as ohosWindow.Window).destroyWindow();
         done();
       } catch (exception) {
         console.error(msgStr + 'Failed to set the call getImmersiveModeEnabledState. Cause:' +
         JSON.stringify(exception));
         expect(exception.code).assertEqual(1300004);
+        await (win! as ohosWindow.Window).destroyWindow();
         done();
       }
     })
@@ -464,6 +472,7 @@ export default function windowErrCode1300004() {
         await (tempWnd as ohosWindow.Window).setTitleAndDockHoverShown(true, true).then(async () => {
           console.info(msgStr + 'Succeeded in calling setTitleAndDockHoverShown.');
           expect().assertFail();
+          await (tempWnd! as ohosWindow.Window).destroyWindow();
           done()
         }).catch(async (err: BusinessError) => {
           console.error(msgStr + 'Failed to call setTitleAndDockHoverShown. Cause: ' + JSON.stringify(err));
@@ -483,7 +492,5 @@ export default function windowErrCode1300004() {
         done()
       }
     })
-
-
   })
 }
