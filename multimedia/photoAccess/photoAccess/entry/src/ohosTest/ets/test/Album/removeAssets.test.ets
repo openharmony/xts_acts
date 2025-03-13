@@ -165,7 +165,7 @@ export default function removeAssetsTest () {
     /**
       * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0400
       * @tc.name      : removeAssets_callback_004
-      * @tc.desc      : user album remove undefined array
+      * @tc.desc      : user album remove undefined array,error code 13900020
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 2
@@ -175,11 +175,7 @@ export default function removeAssetsTest () {
       try {
         const album: photoAccessHelper.Album = await helper.createAlbum(testNum);
         album.removeAssets(undefined, async (err) => {
-          if (err) {
-            console.info(`${testNum} err: ${err}`);
-          } else {
-            expect(false).assertTrue();
-          }
+          expect(false).assertTrue();
           done();
         })
       } catch (error) {
@@ -222,6 +218,29 @@ export default function removeAssetsTest () {
       }
     });
 
+    /**
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0600
+      * @tc.name      : removeAssets_callback_006
+      * @tc.desc      : user album remove [123123] array,error code 14000011
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
+    it('removeAssets_callback_006', 2, async (done: Function) => {
+      const testNum = 'removeAssets_callback_006';
+      try {
+        const album: ESObject = await helper.createAlbum(testNum);
+        album.removeAssets(['123123'], async (err: BusinessError) => {
+          expect(false).assertTrue(); 
+        })
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(error.code).assertEqual('14000011');
+        done();
+      }
+    });
+    
     //promise
     /**
       * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0000
@@ -316,7 +335,7 @@ export default function removeAssetsTest () {
     /**
       * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0400
       * @tc.name      : removeAssets_promise_004
-      * @tc.desc      : user album remove undefined array
+      * @tc.desc      : user album remove undefined array,error code 13900020
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 2
@@ -359,6 +378,29 @@ export default function removeAssetsTest () {
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
         expect(false).assertTrue();
+        done();
+      }
+    });
+    
+    /**
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0600
+      * @tc.name      : removeAssets_promise_006
+      * @tc.desc      : user album remove 123123 array,error code 14000011
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
+    it('removeAssets_promise_006', 2, async (done: Function) => {
+      const testNum = 'removeAssets_promise_006';
+      try {
+        const album:ESObject = await helper.createAlbum(testNum);
+        console.log(`${testNum} start`);
+        await album.removeAssets([123123]);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(error.code).assertEqual('14000011');
         done();
       }
     });
