@@ -16,6 +16,7 @@ import media from '@ohos.multimedia.media'
 import MediaTestBase from './MediaTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
+import myScreenCaptureNdk from 'libentry.so';
 
 let mediaTestBase = new MediaTestBase()
 
@@ -160,6 +161,14 @@ export default function AVScreenCaptureRecorderTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200', 0, async (done: Function) => {
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200 start')
+      let result: number = myScreenCaptureNdk.OHAVMuxerByAddTrackH265();
+      if (result != 0) {
+        console.info('Failed to obtain the default videoProfiles object.Not support AddTrackH265');
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200 start')
 
       let mySteps = new Array(
         // create
@@ -200,6 +209,14 @@ export default function AVScreenCaptureRecorderTest() {
         * @tc.level     : Level 1
     */
     it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0201', 0, async (done: Function) => {
+      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0201 start')
+      let result: number = myScreenCaptureNdk.OHAVMuxerByAddTrackH265();
+      if (result != 0) {
+        console.info('Failed to obtain the default videoProfiles object.Not support AddTrackH265');
+        expect(true).assertTrue();
+        done();
+        return;
+      }
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0201 start')
 
       let mySteps = new Array(

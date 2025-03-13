@@ -13,6 +13,14 @@
 
 import("//test/xts/tools/build/suite.gni")
 
+ohos_app_assist_suite("demo_ndk_main") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAvScreenCaptureRecorderJsMainTest"
+  part_name = "player_framework"
+  subsystem_name = "multimedia"
+}
+
 ohos_js_app_suite("av_screen_capture_recorder_js_hap") {
   test_hap = true
   testonly = true
@@ -20,4 +28,5 @@ ohos_js_app_suite("av_screen_capture_recorder_js_hap") {
   hap_name = "ActsAvScreenCaptureRecorderJsTest"
   part_name = "player_framework"
   subsystem_name = "multimedia"
+  deps = [ ":demo_ndk_main" ]
 }
