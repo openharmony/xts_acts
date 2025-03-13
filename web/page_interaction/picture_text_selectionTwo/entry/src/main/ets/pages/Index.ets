@@ -12,16 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import webViewControllerHitTest from './WebViewControllerHitTest.test'
-import webviewSelectionMenuOptions from './webviewSelectionMenuOptions.test'
-import webControllerHitTest from './WebControllerHitTest.test'
-import webViewMenuInputFieldType from './webViewMenuInputFieldType.test'
-import webInitTest from './WebInitTest.test'
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
 
-export default function testsuite() {
-  webInitTest()
-  webviewSelectionMenuOptions()
-  webViewMenuInputFieldType()
-  webViewControllerHitTest()
-  webControllerHitTest()
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 }
