@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import datePickerMode from './datePicker/DatePickerMode.test';
+import TimePickerStartAndEnd from './timePicker/timePickerStartAndEnd.test';
 
 export default function testsuite() {
     datePickerMode()
+    TimePickerStartAndEnd();
 }
