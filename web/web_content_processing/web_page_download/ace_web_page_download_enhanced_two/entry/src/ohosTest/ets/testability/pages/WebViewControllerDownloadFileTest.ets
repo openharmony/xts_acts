@@ -72,9 +72,9 @@ struct WebViewControllerDownloadFileTest {
             case "testDownloadFile001": {
               try {
                 this.savePath = 'data/'
-                await Utils.sleep(1000)
+                await Utils.sleep(18000)
                 this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(3000)
+                await Utils.sleep(18000)
                 Utils.emitEvent(this.lastErrorCode, 79300)
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
@@ -85,13 +85,13 @@ struct WebViewControllerDownloadFileTest {
             case "testDownloadFile002": {
               try {
                 this.savePath = Utils.getSandboxFileDir() + 'testDownloadFileFile.exe'
-                await Utils.sleep(1000)
+                await Utils.sleep(18000)
                 this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(1000)
+                await Utils.sleep(18000)
                 if (this.cancelDownloadItem) {
                   this.cancelDownloadItem.cancel()
                 }
-                await Utils.sleep(2000)
+                await Utils.sleep(18000)
                 Utils.emitEvent(this.lastErrorCode, 79302)
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;

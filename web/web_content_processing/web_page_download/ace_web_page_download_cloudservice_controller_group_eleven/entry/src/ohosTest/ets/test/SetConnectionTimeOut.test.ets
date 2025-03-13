@@ -169,9 +169,9 @@ export default function SetConnectionTimeOut() {
       router.pushUrl({
         url: "testability/pages/SetConnectionTimeOut4"
       })
-      await driver.delayMs(2000)
+      await driver.delayMs(18000)
       sendEventByKey('001', 10, '')
-      await driver.delayMs(2000)
+      await driver.delayMs(18000)
       sendEventByKey('002', 10, '')
       await driver.delayMs(10000)
       expect(flg).assertTrue()
