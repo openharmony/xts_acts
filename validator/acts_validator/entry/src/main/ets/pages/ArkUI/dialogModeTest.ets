@@ -52,8 +52,10 @@ struct dialogModeTest {
   @State name: string = 'dialogModeTest';
   @State stepTips: string =
     '操作步骤:\n' +
-      '1、点击按钮切换immersiveMode的值，观察各类弹窗的蒙层效果\n' + '\n' +
-      '预期结果：当immersiveMode的值为EXTEND时弹窗蒙层可扩展至覆盖状态栏和导航条，其余情况避开状态栏和导航条\n';
+      '1、点击按钮切换immersiveMode的值，观察各类弹窗的蒙层效果\n' + 
+      '预期结果：\n' +
+      '1、非自由子窗口中，当immersiveMode的值为EXTEND时弹窗蒙层可扩展至覆盖状态栏和导航条，其余情况避开状态栏和导航条\n'+
+      '2、自由窗口设备（PC端）直接按照失败处理走豁免'
   @State isVue: boolean = false;
   @State intervalNum: number = 0;
   // 默认不支持
@@ -168,6 +170,9 @@ struct dialogModeTest {
 
       Column({ space: 10 }) {
         Column({ space: 5 }) {
+          Text('此用例在非自由子窗口下生效,自由窗口设备（PC端）直接按照失败处理走豁免')
+            .fontSize(20)
+            .fontColor(Color.Red)
 
           Button('immersiveMode:DEFAULT').onClick((event: ClickEvent) => {
             this.immersiveMode = ImmersiveMode.DEFAULT
@@ -376,7 +381,6 @@ struct dialogModeTest {
 
         }
       }
-      .id('')
       .height('80%')
       .width('100%')
       .backgroundColor(Color.White)
