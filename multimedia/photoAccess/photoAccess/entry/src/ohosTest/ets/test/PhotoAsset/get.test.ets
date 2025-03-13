@@ -1101,7 +1101,7 @@ export default function getTest() {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_DATE_TAKEN_MS_002
      * @tc.name      : get_video_date_taken_ms_002
-     * @tc.desc      : video get photoKeys.DATE_TAKEN_MS
+     * @tc.desc      : video get key '', error code 14000014
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -1118,15 +1118,15 @@ export default function getTest() {
       });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_DATE_TAKEN_MS_002
-     * @tc.name      : get_video_date_taken_ms_002
-     * @tc.desc      : video get photoKeys.DATE_TAKEN_MS
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_DATE_TAKEN_MS_003
+     * @tc.name      : get_video_date_taken_ms_003
+     * @tc.desc      : video get key undefined, error code 13900020 or 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_date_taken_ms_004', 2, async (done: Function) => {
-      const testNum = 'get_video_date_taken_ms_004';
+    it('get_video_date_taken_ms_003', 2, async (done: Function) => {
+      const testNum = 'get_video_date_taken_ms_003';
       const displayName = 'getTest.mp4';
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
       let asset = await getFileAsset(testContext, testNum, fetchOps);
