@@ -30,6 +30,12 @@ let orderField_ORDER_BY_RULE_NAME :netFirewall.NetFirewallOrderField;
 let orderField_ORDER_BY_RECORD_TIME :netFirewall.NetFirewallOrderField;
 let orderType_ORDER_ASC :netFirewall.NetFirewallOrderType;
 let orderType_ORDER_DESC :netFirewall.NetFirewallOrderType;
+const ruleParam: netFirewall.RequestParam = {
+  page: 1,
+  pageSize: 10,
+  orderField: netFirewall.NetFirewallOrderField.ORDER_BY_RULE_NAME,
+  orderType: netFirewall.NetFirewallOrderType.ORDER_ASC
+};
 
 function getNetfirewallEnum(){
   try {
@@ -58,11 +64,30 @@ function getNetfirewallEnum(){
     orderType_ORDER_DESC = 100
   }
 }
+const updateCurrentId: (caseName: string) => void = async (caseName: string)=>{
+  await netFirewall.getNetFirewallRules(userId, ruleParam).then((result: netFirewall.FirewallRulePage) => {
+    Current_Ruler_ID = result.data[0].id == undefined ? 1: result.data[0].id;
+  }, (error: BusinessError) => {
+    console.error(caseName, "get firewall rules failed: " + JSON.stringify(error));
+  });
+}
+const removedAll:  () => void = async ()=>{
+  let i = 0
+  while (i<200){
+    i++;
+    await updateCurrentId("remove 调用的")
+    await netFirewall.removeNetFirewallRule(userId,Current_Ruler_ID).catch((error : BusinessError) => {
+      i = 2000
+      console.error("delete firewall rule failed: " + JSON.stringify(error));
+    });
+  }
+}
 
 export default function netfirewallTest() {
   describe('netfriewallTest',  () => {
-    beforeAll(()=>{
-      getNetfirewallEnum();
+    beforeAll(async ()=>{
+      await getNetfirewallEnum();
+      await removedAll();
     })
 
     /**
@@ -407,3 +432,4 @@ export default function netfirewallTest() {
     })
   })
 }
+

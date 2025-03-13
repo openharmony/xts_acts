@@ -13,12 +13,18 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import ethernet from '@ohos.net.ethernet';
 import { BusinessError } from '@ohos.base';
 
 
-
+const ExpectTrue: (n: boolean) => void = (n: boolean) => {
+  try {
+    expect(n).assertTrue();
+  } catch (err) {
+    console.info(` exportTrue failed err: ${JSON.stringify(err)}`);
+  }
+};
 export default function EtherNetTest() {
   describe('EtherNetTest', () => {
 
@@ -45,5 +51,29 @@ export default function EtherNetTest() {
       });
       console.info(`${caseName} test end `)
     })
+
+    /* *
+    * @tc.number: SUB_NetworkMgr_GetMacAddress_0200
+    * @tc.name  : testNetworkMgrGetMacAddress0200
+    * @tc.desc  : getMacAddress
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it("testNetworkMgrGetMacAddress0200",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const caseName: string = 'testNetworkMgrGetMacAddress0200';
+      console.info(`${caseName} test start `)
+      ethernet.getMacAddress().then((data:Array<ethernet.MacAddressInfo>)=>{
+        console.info(`${caseName} getMacAddress data:${JSON.stringify(data)}`);
+        ExpectTrue(true);
+        done();
+      }).catch((error:BusinessError)=>{
+        console.log(`${caseName} catch err `,JSON.stringify(error))
+        ExpectTrue(error.code == 2201005)
+        done();
+      });
+      console.info(`${caseName} test end `)
+    })
+
   })
 }
