@@ -11,6 +11,14 @@
     {
       "name": "color_world",
       "value": "#ff0000ff"
+    },
+    {
+      "name": "maxFontScale",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "minFontScale",
+      "value": "#FFFFFF"
     }
   ]
 }

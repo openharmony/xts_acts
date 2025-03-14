@@ -12,6 +12,7 @@
     "MainAbility/pages/drag/DragCaseTest3",
     "MainAbility/pages/calendarPicker/CalendarPickerMarkTodayTest",
     "MainAbility/pages/calendarPicker/TestCalendarPickerDate",
-    "MainAbility/pages/ExpectedFrameRateRange/ExpectedFrameRateRangeCallback"
+    "MainAbility/pages/ExpectedFrameRateRange/ExpectedFrameRateRangeCallback",
+    "MainAbility/pages/move/TestNodeUtilMove001"
   ]
 }

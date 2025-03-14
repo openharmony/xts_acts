@@ -23,6 +23,7 @@ add_library(nativerender SHARED
     calendarPicker/calendar_picker_test.cpp
     calendarPicker/calendarPicker_date_test.cpp
     ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.cpp
+    move/node_util_move_test.cpp
 )
 
 add_library(nativefunc SHARED

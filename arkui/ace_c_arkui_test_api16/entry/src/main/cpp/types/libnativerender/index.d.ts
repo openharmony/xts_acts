@@ -36,3 +36,5 @@ export const GetResult: () => number[];
 export const calendarPickerTest: (a: string) => void;
 
 export const testExpectedFrameRateRangeCallback: (a: string) => void;
+
+export const testNodeUtilMove001: (a: string) => void;
