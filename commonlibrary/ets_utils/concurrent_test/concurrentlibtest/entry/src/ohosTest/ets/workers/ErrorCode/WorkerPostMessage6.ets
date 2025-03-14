@@ -17,12 +17,14 @@ import { taskpool } from '@kit.ArkTS';
 import { printNum } from '../../test/worker/WorkerErrorCode.test';
 
 let task: taskpool.Task = new taskpool.Task(printNum, 10)
+
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+
 workerPort.onmessage = (e: MessageEvents): void => {
-  try{
+  try {
     workerPort.postMessageWithSharedSendable(task);
-  }catch (e) {
-    //打印 10200006
+  } catch (e) {
+    //print 10200006
     console.log(`testThreadWorkerErrorCode0018 main onexit code: ` + JSON.stringify(e));
   }
 }

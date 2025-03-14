@@ -16,12 +16,12 @@ import worker, { MessageEvents, ThreadWorkerGlobalScope } from '@ohos.worker';
 import { Sleep } from '../../test/utils/utils';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
-workerPort.onmessage =async  (e: MessageEvents) => {
+workerPort.onmessage = async (e: MessageEvents) => {
   console.info(`worker: worker receive data ${e.data}`);
   await Sleep(2000)
   workerPort.close()
   workerPort.postMessage(e.data);
 }
 workerPort.onmessageerror = (err: MessageEvents) => {
-  console.log('worker.ets onmessageerror',err);
+  console.log('worker.ets onmessageerror', err);
 }

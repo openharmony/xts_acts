@@ -16,10 +16,9 @@ import { ErrorEvent, MessageEvent, MessageEvents, ThreadWorkerGlobalScope, worke
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
-
 workerPort.onmessage = (e: MessageEvent<number>) => {
   let data = e.data as number;
-    workerPort.postMessage(data);
+  workerPort.postMessage(data);
 };
 
 workerPort.onmessageerror = (event: MessageEvents) => {

@@ -17,6 +17,7 @@ import { taskpool } from '@kit.ArkTS';
 import { printNum } from '../../test/worker/WorkerErrorCode.test';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+
 let task: taskpool.Task = new taskpool.Task(printNum, 10)
 workerPort.onmessage = (e: MessageEvents): void => {
   console.info(`worker: worker receive data ${e.data}`);

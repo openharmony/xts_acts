@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, afterEach } from '@ohos/hypium';
+import { describe, it, expect, afterEach, TestType, Level, Size } from '@ohos/hypium';
 import { JSON, MessageEvents, worker, ThreadWorkerPriority } from '@kit.ArkTS';
 import { Sleep } from '../utils/utils';
 
@@ -25,7 +25,6 @@ export default function workerAddTest() {
   describe('workerAddTest', () => {
 
     afterEach(async () => {
-      // 等待用例创建的 worker 实例释放
       await Sleep(50);
     })
     /**
@@ -36,26 +35,27 @@ export default function workerAddTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorkerAdd0001', 0,async  (done: Function) => {
+    it('testThreadWorkerAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerAdd0001";
       try {
-            let state: boolean = false;
-            const workerInstance :worker.ThreadWorker= new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {priority: ThreadWorkerPriority.HIGH });
-            const message = 'message';
-            workerInstance.postMessage(message);
-            workerInstance.onmessage = (e) => {
-              console.log(`${caseName} result: ` + JSON.stringify(e));
-              expect(e.data).assertEqual('message');
-              workerInstance.terminate();
-            }
-            workerInstance.onexit = (code) => {
-              console.log(`${caseName} main onexit code: ` + JSON.stringify(code));
-              state = true;
-            }
-            while (!state) {
-              await Sleep(100);
-            }
-            done()
+        let state: boolean = false;
+        const workerInstance: worker.ThreadWorker =
+          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.HIGH });
+        const message = 'message';
+        workerInstance.postMessage(message);
+        workerInstance.onmessage = (e) => {
+          console.log(`${caseName} result: ` + JSON.stringify(e));
+          expect(e.data).assertEqual('message');
+          workerInstance.terminate();
+        }
+        workerInstance.onexit = (code) => {
+          console.log(`${caseName} main onexit code: ` + JSON.stringify(code));
+          state = true;
+        }
+        while (!state) {
+          await Sleep(100);
+        }
+        done()
       } catch (err) {
         console.error(`${caseName} failed, error: ${err.message}`);
         expect().assertFail();
@@ -70,11 +70,12 @@ export default function workerAddTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorkerAdd0002', 0,async  (done: Function) => {
+    it('testThreadWorkerAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerAdd0002";
       try {
         let state: boolean = false;
-        const workerInstance :worker.ThreadWorker= new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {priority: ThreadWorkerPriority.MEDIUM });
+        const workerInstance: worker.ThreadWorker =
+          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.MEDIUM });
         const message = 'message';
         workerInstance.postMessage(message);
         workerInstance.onmessage = (e) => {
@@ -104,11 +105,12 @@ export default function workerAddTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorkerAdd0003', 0,async  (done: Function) => {
+    it('testThreadWorkerAdd0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerAdd0003";
       try {
         let state: boolean = false;
-        const workerInstance :worker.ThreadWorker= new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {priority: ThreadWorkerPriority.LOW });
+        const workerInstance: worker.ThreadWorker =
+          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.LOW });
         const message = 'message';
         workerInstance.postMessage(message);
         workerInstance.onmessage = (e) => {
@@ -138,11 +140,12 @@ export default function workerAddTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorkerAdd0004', 0,async  (done: Function) => {
+    it('testThreadWorkerAdd0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerAdd0004";
       try {
         let state: boolean = false;
-        const workerInstance :worker.ThreadWorker= new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", {priority: ThreadWorkerPriority.IDLE });
+        const workerInstance: worker.ThreadWorker =
+          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData", { priority: ThreadWorkerPriority.IDLE });
         const message = 'message';
         workerInstance.postMessage(message);
         workerInstance.onmessage = (e) => {
@@ -172,15 +175,17 @@ export default function workerAddTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorkerAdd0005', 0,async  (done: Function) => {
+    it('testThreadWorkerAdd0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerAdd0005";
       try {
         let state: boolean = false;
-        const workerInstance :worker.ThreadWorker= new worker.ThreadWorker("../../workers/ErrorCode//WorkerMessageEvent", {priority: ThreadWorkerPriority.IDLE });
+        const workerInstance: worker.ThreadWorker =
+          new worker.ThreadWorker("../../workers/ErrorCode//WorkerMessageEvent",
+            { priority: ThreadWorkerPriority.IDLE });
         workerInstance.postMessage(10);
         workerInstance.onmessage = (e) => {
           console.log(`${caseName} result: ` + JSON.stringify(e));
-          let result:number=e.data as number;
+          let result: number = e.data as number;
           expect(result).assertEqual(10);
           workerInstance.terminate();
         }
@@ -206,16 +211,17 @@ export default function workerAddTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorkerAdd0006', 0,async  (done: Function) => {
+    it('testThreadWorkerAdd0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerAdd0006";
       try {
         let state: boolean = false;
-        const workerInstance :worker.ThreadWorker= new worker.ThreadWorker("../../workers/ErrorCode/WorkerData1", {priority: ThreadWorkerPriority.IDLE });
+        const workerInstance: worker.ThreadWorker =
+          new worker.ThreadWorker("../../workers/ErrorCode/WorkerData1", { priority: ThreadWorkerPriority.IDLE });
         let buffer = new ArrayBuffer(8);
         workerInstance.postMessage(buffer, [buffer]);
         workerInstance.onmessage = (e) => {
           console.log(`${caseName} result: ` + JSON.stringify(e));
-          let data:ArrayBuffer=e.data;
+          let data: ArrayBuffer = e.data;
           expect(data.byteLength).assertEqual(8);
           workerInstance.terminate();
         }

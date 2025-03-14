@@ -15,6 +15,7 @@
 import worker, { MessageEvents, ThreadWorkerGlobalScope } from '@ohos.worker';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+
 workerPort.onmessage = (e: MessageEvents) => {
   workerPort.close()
   let buffer = new ArrayBuffer(8);

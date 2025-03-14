@@ -22,5 +22,5 @@ workerPort.onmessage = (e: MessageEvents) => {
 }
 
 workerPort.onmessageerror = (err: MessageEvents) => {
-  console.log('worker.ets onmessageerror',JSON.stringify(err));
+  console.log('worker.ets onmessageerror', JSON.stringify(err));
 }

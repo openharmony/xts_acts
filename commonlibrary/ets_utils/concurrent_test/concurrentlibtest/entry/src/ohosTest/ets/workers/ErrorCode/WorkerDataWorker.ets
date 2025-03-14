@@ -20,6 +20,6 @@ parentPort.onmessage = (e: MessageEvents) => {
   console.info(`worker: worker receive data ${e.data}`);
   parentPort.postMessage(e.data);
 }
-parentPort.onerror=(err:ErrorEvent)=>{
+parentPort.onerror = (err: ErrorEvent) => {
   console.error(`fail,error: ${err.message}`)
 }

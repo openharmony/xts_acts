@@ -12,21 +12,13 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { ArkTSUtils, collections, HashMap, JSON, lang, taskpool } from '@kit.ArkTS';
 import { BusinessError } from '@ohos.base';
 import { delay, getTaskStateByTaskName } from '../utils/taskPoolCommon';
-import {
+import { inspectStatus, additionDelay, printArgs } from '../utils/taskPoolTask';
 
-  inspectStatus,
-  additionDelay,
-  printArgs,
-} from '../utils/taskPoolTask';
-
-import {
-  testTransfer,
-  Concurrent,
-} from '../utils/taskPool';
+import { testTransfer, Concurrent } from '../utils/taskPool';
 import { Sleep } from '../utils/utils';
 
 declare class ArkTools {
@@ -86,17 +78,18 @@ function sendDataParameters(num: number): number {
 
 @Concurrent
 function sendDataSetTime(num: number): number {
-  let res:number=0;
-  setTimeout(()=>{
-    try{
+  let res: number = 0;
+  setTimeout(() => {
+    try {
       taskpool.Task.sendData(1);
     } catch (e) {
       console.info(`testTaskErrorCode0005 catch error: code => ${e.code} message => ${e.message}`);
-      res=e.code
+      res = e.code
     }
-  },100)
+  }, 100)
   return res;
 }
+
 function printLog(data: number): void {
   sendDataSetTime(data);
 }
@@ -106,7 +99,7 @@ function test1(): void {
 }
 
 @Concurrent
-function test2(args:number) {
+function test2(args: number) {
   let t = Date.now()
   while ((Date.now() - t) < 100) {
     continue;
@@ -115,6 +108,7 @@ function test2(args:number) {
   hashMap1.set('a', args);
   return hashMap1;
 }
+
 @Concurrent
 function printStr(args: string): string {
   console.info("printNum: " + args);
@@ -126,6 +120,7 @@ function printStrNo(args: string): string {
   console.info("printNum: " + args);
   return args;
 }
+
 @Concurrent
 function printTask(args: taskpool.Task): taskpool.Task {
   console.info("printNum: " + args);
@@ -142,11 +137,11 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0001', 0, async (done: Function) => {
+    it('testTaskErrorCode0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0001';
       console.info(`${caseName} test start`);
       try {
-        let task: taskpool.Task = new taskpool.Task(printNumNoConcurrent,100);
+        let task: taskpool.Task = new taskpool.Task(printNumNoConcurrent, 100);
         taskpool.execute(task).then(() => {
           console.info("Taskpool: constructor 10200014 fail");
         });
@@ -166,12 +161,12 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0002', 0, async (done: Function) => {
+    it('testTaskErrorCode0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0002';
       console.info(`${caseName} test start`);
       try {
         let taskName: string = "taskName";
-        let task: taskpool.Task = new taskpool.Task(taskName,printNumNoConcurrent,100);
+        let task: taskpool.Task = new taskpool.Task(taskName, printNumNoConcurrent, 100);
         let name: string = task.name;
         taskpool.execute(task).then(() => {
           console.info("Taskpool: constructor11 10200014 fail");
@@ -193,7 +188,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0003', 0, async (done: Function) => {
+    it('testTaskErrorCode0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0003';
       console.info(`${caseName} test start`);
       try {
@@ -222,26 +217,26 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0004', 0, async (done: Function) => {
+    it('testTaskErrorCode0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0004';
       console.info(`${caseName} test start`);
-        let num=0;
-        let task: taskpool.Task = new taskpool.Task(printNum, 100);
-        task.onReceiveData((data: number) => {
-          console.info(`${caseName} onReceiveData res : ` + data);
-        });
-        await taskpool.execute(task).then(() => {
-          console.info("Taskpool: sendData 10200022 fail");
-        });
-        try{
-          taskpool.Task.sendData(4);
-        } catch (error) {
-          console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-          num=error.code
-        }
-        await promiseCase()
-        console.info(`${caseName} catch error: code => ${num}`);
-        expect(num).assertEqual(10200022);
+      let num = 0;
+      let task: taskpool.Task = new taskpool.Task(printNum, 100);
+      task.onReceiveData((data: number) => {
+        console.info(`${caseName} onReceiveData res : ` + data);
+      });
+      await taskpool.execute(task).then(() => {
+        console.info("Taskpool: sendData 10200022 fail");
+      });
+      try {
+        taskpool.Task.sendData(4);
+      } catch (error) {
+        console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        num = error.code
+      }
+      await promiseCase()
+      console.info(`${caseName} catch error: code => ${num}`);
+      expect(num).assertEqual(10200022);
       console.info(`${caseName} test end`);
       done();
     });
@@ -254,14 +249,14 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0005', 0, async (done: Function) => {
+    it('testTaskErrorCode0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0005';
       console.info(`${caseName} test start`);
       let task: taskpool.Task = new taskpool.Task(sendDataSetTime, 100);
       task.onReceiveData(printLog);
       await taskpool.execute(task).then(() => {
         console.info("Taskpool: sendData 10200023 code");
-      }).catch((error:BusinessError)=>{
+      }).catch((error: BusinessError) => {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
         expect(error.code).assertEqual(10200023);
       });
@@ -277,7 +272,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0006', 0, async (done: Function) => {
+    it('testTaskErrorCode0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0006';
       console.info(`${caseName} test start`);
       try {
@@ -314,13 +309,13 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0007', 0, async (done: Function) => {
+    it('testTaskErrorCode0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0007';
       console.info(`${caseName} test start`);
       try {
-        let task1:taskpool.Task = new taskpool.Task(delay, 100);
-        let task2:taskpool.Task = new taskpool.Task(delay, 200);
-        let task3:taskpool.Task = new taskpool.Task(delay, 200);
+        let task1: taskpool.Task = new taskpool.Task(delay, 100);
+        let task2: taskpool.Task = new taskpool.Task(delay, 200);
+        let task3: taskpool.Task = new taskpool.Task(delay, 200);
         task1.addDependency(task2);
         task2.addDependency(task3);
         task3.addDependency(task1);
@@ -354,13 +349,13 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0008', 0, async (done: Function) => {
+    it('testTaskErrorCode0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0008';
       console.info(`${caseName} test start`);
       try {
         let task1: taskpool.Task = new taskpool.Task(printNum, 100); // 100: test number
         taskpool.executePeriodically(1000, task1); // 1000: period is 1000ms
-        let task2:taskpool.Task = new taskpool.Task(delay, 100);
+        let task2: taskpool.Task = new taskpool.Task(delay, 100);
         task1.addDependency(task2);
         console.info("dependency: add dependency end");
         console.info("dependency: start execute second")
@@ -388,18 +383,18 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0009', 0, async (done: Function) => {
+    it('testTaskErrorCode0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0009';
       console.info(`${caseName} test start`);
       try {
-        let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
-          let task1:taskpool.Task = new taskpool.Task(additionDelay, 1000);
-          runner.execute(task1).then(() => {
-            console.info("asyncRunner: task" +  " done.");
-          }).catch((e: BusinessError) => {
-            console.info("asyncRunner: task" +  " error." + e.code + "-" + e.message);
-          });
-        let task2:taskpool.Task = new taskpool.Task(delay, 100);
+        let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
+        let task1: taskpool.Task = new taskpool.Task(additionDelay, 1000);
+        runner.execute(task1).then(() => {
+          console.info("asyncRunner: task" + " done.");
+        }).catch((e: BusinessError) => {
+          console.info("asyncRunner: task" + " error." + e.code + "-" + e.message);
+        });
+        let task2: taskpool.Task = new taskpool.Task(delay, 100);
         task1.addDependency(task2);
         await promiseCase()
         expect().assertFail();
@@ -418,12 +413,12 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0010', 0, async (done: Function) => {
+    it('testTaskErrorCode0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0010';
       console.info(`${caseName} test start`);
       try {
-        let task1:taskpool.Task = new taskpool.Task(delay, 100);
-        let task2:taskpool.Task = new taskpool.Task(delay, 200);
+        let task1: taskpool.Task = new taskpool.Task(delay, 100);
+        let task2: taskpool.Task = new taskpool.Task(delay, 200);
         task1.removeDependency(task2);
         console.info("dependency: start execute second")
         taskpool.execute(task1).then(() => {
@@ -450,13 +445,13 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0011', 0, async (done: Function) => {
+    it('testTaskErrorCode0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0011';
       console.info(`${caseName} test start`);
       try {
         let task1: taskpool.Task = new taskpool.Task(printNum, 100); // 100: test number
         taskpool.executePeriodically(1000, task1); // 1000: period is 1000ms
-        let task2:taskpool.Task = new taskpool.Task(delay, 100);
+        let task2: taskpool.Task = new taskpool.Task(delay, 100);
         task1.addDependency(task2);
         task1.removeDependency(task2);
         console.info("dependency: start execute second")
@@ -484,18 +479,18 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0012', 0, async (done: Function) => {
+    it('testTaskErrorCode0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0012';
       console.info(`${caseName} test start`);
       try {
-        let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
-        let task1:taskpool.Task = new taskpool.Task(additionDelay, 1000);
+        let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
+        let task1: taskpool.Task = new taskpool.Task(additionDelay, 1000);
         runner.execute(task1).then(() => {
-          console.info("asyncRunner: task" +  " done.");
+          console.info("asyncRunner: task" + " done.");
         }).catch((e: BusinessError) => {
-          console.info("asyncRunner: task" +  " error." + e.code + "-" + e.message);
+          console.info("asyncRunner: task" + " error." + e.code + "-" + e.message);
         });
-        let task2:taskpool.Task = new taskpool.Task(delay, 100);
+        let task2: taskpool.Task = new taskpool.Task(delay, 100);
         task1.addDependency(task2);
         task1.removeDependency(task2);
         await promiseCase()
@@ -515,15 +510,15 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0013', 0, async (done: Function) => {
+    it('testTaskErrorCode0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0013';
       console.info(`${caseName} test start`);
       try {
         let task: taskpool.Task = new taskpool.Task(delay, 1);
-        taskpool.execute(task).then(()=> {
+        taskpool.execute(task).then(() => {
           console.info("taskpool: execute task success")
         });
-        task.onEnqueued(()=>{
+        task.onEnqueued(() => {
           console.info("taskpool: onEnqueued")
         });
         await promiseCase()
@@ -543,15 +538,15 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0014', 0, async (done: Function) => {
+    it('testTaskErrorCode0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0014';
       console.info(`${caseName} test start`);
       try {
         let task: taskpool.Task = new taskpool.Task(delay, 1);
-        taskpool.execute(task).then(()=> {
+        taskpool.execute(task).then(() => {
           console.info("taskpool: execute task success")
         });
-        task.onEnqueued(()=>{
+        task.onEnqueued(() => {
           console.info("taskpool: onEnqueued")
         });
         await promiseCase()
@@ -571,15 +566,15 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0015', 0, async (done: Function) => {
+    it('testTaskErrorCode0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0015';
       console.info(`${caseName} test start`);
       try {
         let task: taskpool.Task = new taskpool.Task(delay, 1);
-        taskpool.execute(task).then(()=> {
+        taskpool.execute(task).then(() => {
           console.info("taskpool: execute task success")
         });
-        task.onStartExecution(()=>{
+        task.onStartExecution(() => {
           console.info("taskpool: onStartExecution")
         });
         await promiseCase()
@@ -599,17 +594,17 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0016', 0, async (done: Function) => {
+    it('testTaskErrorCode0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0016';
       console.info(`${caseName} test start`);
       try {
         let task2 = new taskpool.Task(test2, 1);
-        taskpool.execute(task2).then(()=>{
+        taskpool.execute(task2).then(() => {
           console.info("taskpool: execute task success")
-        }).catch((e:BusinessError)=>{
+        }).catch((e: BusinessError) => {
           console.error(`taskpool: error code: ${e.code}, error info: ${e.message}`);
         })
-        task2.onExecutionFailed((e:Error)=>{
+        task2.onExecutionFailed((e: Error) => {
           console.info("taskpool: onExecutionFailed error is " + e);
         })
         await promiseCase()
@@ -629,15 +624,15 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0017', 0, async (done: Function) => {
+    it('testTaskErrorCode0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0017';
       console.info(`${caseName} test start`);
       try {
         let task: taskpool.Task = new taskpool.Task(delay, 1);
-        taskpool.execute(task).then(()=> {
+        taskpool.execute(task).then(() => {
           console.info("taskpool: execute task success")
         });
-        task.onExecutionSucceeded(()=>{
+        task.onExecutionSucceeded(() => {
           console.info("taskpool: onExecutionSucceeded")
         });
         await promiseCase()
@@ -657,13 +652,13 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0018', 0, async (done: Function) => {
+    it('testTaskErrorCode0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0018';
       console.info(`${caseName} test start`);
       try {
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
         taskGroup.addTask(printNumNoConcurrent, 100); // 100: test number
-        taskpool.execute(taskGroup).then(()=> {
+        taskpool.execute(taskGroup).then(() => {
           console.info("taskpool: execute task success")
         });
         await promiseCase()
@@ -683,13 +678,13 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0019', 0, async (done: Function) => {
+    it('testTaskErrorCode0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0019';
       console.info(`${caseName} test start`);
       try {
-        let task1:taskpool.Task = new taskpool.Task(printNum, test1);
-        let task2:taskpool.Task = new taskpool.Task(printNum, test1);
-        let runner:taskpool.SequenceRunner = new taskpool.SequenceRunner();
+        let task1: taskpool.Task = new taskpool.Task(printNum, test1);
+        let task2: taskpool.Task = new taskpool.Task(printNum, test1);
+        let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
         runner.execute(task1).then(() => {
           console.info("seqrunner: task1 done.");
         });
@@ -713,13 +708,13 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0020', 0, async (done: Function) => {
+    it('testTaskErrorCode0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0020';
       console.info(`${caseName} test start`);
       try {
-        let task1:taskpool.Task = new taskpool.Task(printNum, 100);
-        let task2:taskpool.Task = new taskpool.Task(printNum, 200);
-        let runner:taskpool.SequenceRunner = new taskpool.SequenceRunner();
+        let task1: taskpool.Task = new taskpool.Task(printNum, 100);
+        let task2: taskpool.Task = new taskpool.Task(printNum, 200);
+        let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
         task1.addDependency(task2);
         runner.execute(task1).then(() => {
           console.info("seqrunner: task1 done.");
@@ -744,13 +739,13 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0021', 0, async (done: Function) => {
+    it('testTaskErrorCode0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0021';
       console.info(`${caseName} test start`);
       try {
-        let task:taskpool.Task = new taskpool.Task(printNum, 100);
+        let task: taskpool.Task = new taskpool.Task(printNum, 100);
         taskpool.executePeriodically(1000, task);
-        let runner:taskpool.SequenceRunner = new taskpool.SequenceRunner();
+        let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
         runner.execute(task).then(() => {
           console.info("seqrunner: task1 done.");
         });
@@ -771,16 +766,16 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0022', 0, async (done: Function) => {
+    it('testTaskErrorCode0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0022';
       console.info(`${caseName} test start`);
       try {
-        let task:taskpool.Task = new taskpool.Task(printNum, 100);
-        let runner1:taskpool.AsyncRunner = new taskpool.AsyncRunner(5);
+        let task: taskpool.Task = new taskpool.Task(printNum, 100);
+        let runner1: taskpool.AsyncRunner = new taskpool.AsyncRunner(5);
         runner1.execute(task).then(() => {
           console.info("seqrunner: task1 done.");
         });
-        let runner:taskpool.SequenceRunner = new taskpool.SequenceRunner();
+        let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
         runner.execute(task).then(() => {
           console.info("seqrunner: task1 done.");
         });
@@ -801,7 +796,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0023', 0, async (done: Function) => {
+    it('testTaskErrorCode0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0023';
       console.info(`${caseName} test start`);
       try {
@@ -826,13 +821,15 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0024', 0, async (done: Function) => {
+    it('testTaskErrorCode0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0024';
       console.info(`${caseName} test start`);
       try {
         let taskName: string = "taskName";
-        let task1: taskpool.Task = new taskpool.GenericsTask<[string], string>(taskName,printStr, "this is my first LongTask");
-        let task2: taskpool.Task = new taskpool.GenericsTask<[string], string>(taskName,printStrNo, "this is my first LongTask");
+        let task1: taskpool.Task =
+          new taskpool.GenericsTask<[string], string>(taskName, printStr, "this is my first LongTask");
+        let task2: taskpool.Task =
+          new taskpool.GenericsTask<[string], string>(taskName, printStrNo, "this is my first LongTask");
         let name: string = task2.name;
         taskpool.execute(task1)
         taskpool.execute(task2)
@@ -853,7 +850,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0025', 0, async (done: Function) => {
+    it('testTaskErrorCode0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0025';
       console.info(`${caseName} test start`);
       try {
@@ -876,7 +873,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0026', 0, async (done: Function) => {
+    it('testTaskErrorCode0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0026';
       console.info(`${caseName} test start`);
       try {
@@ -899,11 +896,11 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0027', 0, async (done: Function) => {
+    it('testTaskErrorCode0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0027';
       console.info(`${caseName} test start`);
       try {
-        let task:taskpool.Task = new taskpool.Task(printNum, 100);
+        let task: taskpool.Task = new taskpool.Task(printNum, 100);
         taskpool.executePeriodically(1000, task);
         taskpool.execute(task)
         await promiseCase()
@@ -923,12 +920,12 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0028', 0, async (done: Function) => {
+    it('testTaskErrorCode0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0028';
       console.info(`${caseName} test start`);
       try {
-        let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
-        let task:taskpool.Task = new taskpool.Task(additionDelay, 1000);
+        let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
+        let task: taskpool.Task = new taskpool.Task(additionDelay, 1000);
         runner.execute(task).then(() => {
           console.info("seqrunner: task1 done.");
         });
@@ -950,11 +947,11 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0029', 0, async (done: Function) => {
+    it('testTaskErrorCode0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0029';
       console.info(`${caseName} test start`);
       try {
-        let task3:taskpool.Task = new taskpool.Task(printNum, 1000);
+        let task3: taskpool.Task = new taskpool.Task(printNum, 1000);
         let task1: taskpool.Task = new taskpool.GenericsTask<[taskpool.Task], taskpool.Task>(printTask, task3);
         let task2: taskpool.Task = new taskpool.GenericsTask<[taskpool.Task], taskpool.Task>(printTask, task3);
         taskpool.execute<[number], number>(task1, taskpool.Priority.LOW)
@@ -976,7 +973,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0030', 0, async (done: Function) => {
+    it('testTaskErrorCode0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0030';
       console.info(`${caseName} test start`);
       try {
@@ -1001,12 +998,12 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0031', 0, async (done: Function) => {
+    it('testTaskErrorCode0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0031';
       console.info(`${caseName} test start`);
       try {
         let task1: taskpool.Task = new taskpool.GenericsTask<[number], number>(printNum, 100);
-        taskpool.executePeriodically<[number], number>(100,task1, taskpool.Priority.LOW)
+        taskpool.executePeriodically<[number], number>(100, task1, taskpool.Priority.LOW)
         taskpool.execute<[number], number>(task1, taskpool.Priority.HIGH)
         await promiseCase()
         expect().assertFail();
@@ -1025,11 +1022,11 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0032', 0, async (done: Function) => {
+    it('testTaskErrorCode0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0032';
       console.info(`${caseName} test start`);
       try {
-        let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
+        let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
         let task1: taskpool.Task = new taskpool.GenericsTask<[number], number>(printNum, 100);
         runner.execute(task1).then(() => {
           console.info("seqrunner: task1 done.");
@@ -1052,13 +1049,13 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0033', 0, async (done: Function) => {
+    it('testTaskErrorCode0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0033';
       console.info(`${caseName} test start`);
       try {
         let task1: taskpool.Task = new taskpool.Task(printNum, 100)
         let task: taskpool.Task = new taskpool.Task(printTask, task1)
-        taskpool.executeDelayed(500, task).catch((error:BusinessError)=>{
+        taskpool.executeDelayed(500, task).catch((error: BusinessError) => {
           console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
           expect(error.code).assertEqual(10200006);
         })
@@ -1078,20 +1075,20 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0034', 0, async (done: Function) => {
+    it('testTaskErrorCode0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0034';
       console.info(`${caseName} test start`);
-        let num=0;
-        let task: taskpool.Task = new taskpool.Task(printNumNoConcurrent, 100)
-        taskpool.executeDelayed(100, task).catch((error:BusinessError)=>{
-          console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-          expect(error.code).assertEqual(10200014);
-          num++;
-        })
-        while (num<1){
-          await promiseCase();
-        }
-        await asyncSleep(1000)
+      let num = 0;
+      let task: taskpool.Task = new taskpool.Task(printNumNoConcurrent, 100)
+      taskpool.executeDelayed(100, task).catch((error: BusinessError) => {
+        console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect(error.code).assertEqual(10200014);
+        num++;
+      })
+      while (num < 1) {
+        await promiseCase();
+      }
+      await asyncSleep(1000)
       console.info(`${caseName} test end`);
       done();
     });
@@ -1103,7 +1100,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0035', 0, async (done: Function) => {
+    it('testTaskErrorCode0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0035';
       console.info(`${caseName} test start`);
       try {
@@ -1126,11 +1123,11 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0036', 0, async (done: Function) => {
+    it('testTaskErrorCode0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0036';
       console.info(`${caseName} test start`);
       try {
-        let task:taskpool.Task = new taskpool.Task(printNum, 100);
+        let task: taskpool.Task = new taskpool.Task(printNum, 100);
         taskpool.executePeriodically(1000, task);
         taskpool.executeDelayed(100, task)
         await promiseCase()
@@ -1150,12 +1147,12 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0037', 0, async (done: Function) => {
+    it('testTaskErrorCode0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0037';
       console.info(`${caseName} test start`);
       try {
-        let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
-        let task:taskpool.Task = new taskpool.Task(additionDelay, 1000);
+        let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
+        let task: taskpool.Task = new taskpool.Task(additionDelay, 1000);
         runner.execute(task).then(() => {
           console.info("seqrunner: task1 done.");
         });
@@ -1177,12 +1174,12 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0038', 0, async (done: Function) => {
+    it('testTaskErrorCode0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0038';
       console.info(`${caseName} test start`);
       try {
         let task1: taskpool.Task = new taskpool.GenericsTask<[number], number>(printNum, 100);
-        taskpool.executeDelayed<[number], number>(-100,task1, taskpool.Priority.LOW)
+        taskpool.executeDelayed<[number], number>(-100, task1, taskpool.Priority.LOW)
         await promiseCase()
         expect().assertFail();
       } catch (error) {
@@ -1200,13 +1197,13 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0039', 0, async (done: Function) => {
+    it('testTaskErrorCode0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0039';
       console.info(`${caseName} test start`);
       try {
         let task1: taskpool.Task = new taskpool.GenericsTask<[number], number>(printNum, 100);
-        taskpool.executePeriodically<[number], number>(100,task1, taskpool.Priority.LOW)
-        taskpool.executeDelayed<[number], number>(100,task1, taskpool.Priority.HIGH)
+        taskpool.executePeriodically<[number], number>(100, task1, taskpool.Priority.LOW)
+        taskpool.executeDelayed<[number], number>(100, task1, taskpool.Priority.HIGH)
         await promiseCase()
         expect().assertFail();
       } catch (error) {
@@ -1224,16 +1221,16 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0040', 0, async (done: Function) => {
+    it('testTaskErrorCode0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0040';
       console.info(`${caseName} test start`);
       try {
-        let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
+        let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
         let task1: taskpool.Task = new taskpool.GenericsTask<[number], number>(printNum, 100);
         runner.execute(task1).then(() => {
           console.info("seqrunner: task1 done.");
         });
-        taskpool.executeDelayed<[number], number>(100,task1, taskpool.Priority.HIGH)
+        taskpool.executeDelayed<[number], number>(100, task1, taskpool.Priority.HIGH)
         await promiseCase()
         expect().assertFail();
       } catch (error) {
@@ -1251,7 +1248,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0041', 0, async (done: Function) => {
+    it('testTaskErrorCode0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0041';
       console.info(`${caseName} test start`);
       try {
@@ -1274,7 +1271,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0042', 0, async (done: Function) => {
+    it('testTaskErrorCode0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0042';
       console.info(`${caseName} test start`);
       try {
@@ -1297,7 +1294,7 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0043', 0, async (done: Function) => {
+    it('testTaskErrorCode0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0043';
       console.info(`${caseName} test start`);
       try {
@@ -1320,11 +1317,11 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0044', 0, async (done: Function) => {
+    it('testTaskErrorCode0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0044';
       console.info(`${caseName} test start`);
       try {
-        let task:taskpool.Task = new taskpool.Task(printNum, 100);
+        let task: taskpool.Task = new taskpool.Task(printNum, 100);
         taskpool.execute(task)
         taskpool.executePeriodically(1000, task);
         await promiseCase()
@@ -1344,12 +1341,12 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0045', 0, async (done: Function) => {
+    it('testTaskErrorCode0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0045';
       console.info(`${caseName} test start`);
       try {
-        let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
-        let task:taskpool.Task = new taskpool.Task(additionDelay, 1000);
+        let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
+        let task: taskpool.Task = new taskpool.Task(additionDelay, 1000);
         runner.execute(task).then(() => {
           console.info("seqrunner: task1 done.");
         });
@@ -1371,15 +1368,15 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0046', 0, async (done: Function) => {
+    it('testTaskErrorCode0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0046';
       console.info(`${caseName} test start`);
       try {
-        let task3:taskpool.Task = new taskpool.Task(printNum, 1000);
+        let task3: taskpool.Task = new taskpool.Task(printNum, 1000);
         let task1: taskpool.Task = new taskpool.GenericsTask<[taskpool.Task], taskpool.Task>(printTask, task3);
         let task2: taskpool.Task = new taskpool.GenericsTask<[taskpool.Task], taskpool.Task>(printTask, task3);
-        taskpool.executePeriodically<[number], number>(1000,task1, taskpool.Priority.LOW)
-        taskpool.executePeriodically<[number], number>(1000,task2, taskpool.Priority.HIGH)
+        taskpool.executePeriodically<[number], number>(1000, task1, taskpool.Priority.LOW)
+        taskpool.executePeriodically<[number], number>(1000, task2, taskpool.Priority.HIGH)
         await promiseCase()
         expect().assertFail();
       } catch (error) {
@@ -1397,14 +1394,14 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0047', 0, async (done: Function) => {
+    it('testTaskErrorCode0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0047';
       console.info(`${caseName} test start`);
       try {
         let task1: taskpool.Task = new taskpool.GenericsTask<[number], number>(printNumNoConcurrent, 100);
         let task2: taskpool.Task = new taskpool.GenericsTask<[number], number>(printNumNoConcurrent, 100);
-        taskpool.executePeriodically<[number], number>(1000,task1, taskpool.Priority.LOW)
-        taskpool.executePeriodically<[number], number>(1000,task2, taskpool.Priority.HIGH)
+        taskpool.executePeriodically<[number], number>(1000, task1, taskpool.Priority.LOW)
+        taskpool.executePeriodically<[number], number>(1000, task2, taskpool.Priority.HIGH)
         await promiseCase()
         expect().assertFail();
       } catch (error) {
@@ -1422,12 +1419,12 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0048', 0, async (done: Function) => {
+    it('testTaskErrorCode0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0048';
       console.info(`${caseName} test start`);
       try {
         let task1: taskpool.Task = new taskpool.GenericsTask<[number], number>(printNum, 100);
-        taskpool.executePeriodically<[number], number>(-100,task1, taskpool.Priority.LOW)
+        taskpool.executePeriodically<[number], number>(-100, task1, taskpool.Priority.LOW)
         await promiseCase()
         expect().assertFail();
       } catch (error) {
@@ -1445,13 +1442,13 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0049', 0, async (done: Function) => {
+    it('testTaskErrorCode0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0049';
       console.info(`${caseName} test start`);
       try {
         let task1: taskpool.Task = new taskpool.GenericsTask<[number], number>(printNum, 100);
-        taskpool.execute<[number], number>(task1,taskpool.Priority.HIGH)
-        taskpool.executePeriodically<[number], number>(100,task1, taskpool.Priority.LOW)
+        taskpool.execute<[number], number>(task1, taskpool.Priority.HIGH)
+        taskpool.executePeriodically<[number], number>(100, task1, taskpool.Priority.LOW)
         await promiseCase()
         expect().assertFail();
       } catch (error) {
@@ -1469,16 +1466,16 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0050', 0, async (done: Function) => {
+    it('testTaskErrorCode0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0050';
       console.info(`${caseName} test start`);
       try {
-        let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
+        let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
         let task1: taskpool.Task = new taskpool.GenericsTask<[number], number>(printNum, 100);
         runner.execute(task1).then(() => {
           console.info("seqrunner: task1 done.");
         });
-        taskpool.executePeriodically<[number], number>(100,task1, taskpool.Priority.MEDIUM)
+        taskpool.executePeriodically<[number], number>(100, task1, taskpool.Priority.MEDIUM)
         await promiseCase()
         expect().assertFail();
       } catch (error) {
@@ -1496,12 +1493,12 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0051', 0, async (done: Function) => {
+    it('testTaskErrorCode0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0051';
       console.info(`${caseName} test start`);
       try {
         let task1: taskpool.Task = new taskpool.Task(inspectStatus, 100);
-            taskpool.cancel(task1);
+        taskpool.cancel(task1);
         await promiseCase()
         expect().assertFail();
       } catch (error) {
@@ -1519,32 +1516,32 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0052', 0, async (done: Function) => {
+    it('testTaskErrorCode0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0052';
       console.info(`${caseName} test start`);
-        let taskArr=new Array<taskpool.Task>()
-        let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner(10);
-        let count=0;
-        let arr:number[]=[];
-        for (let i = 0; i < 100; i++) {
-          let task: taskpool.Task = new taskpool.Task(inspectStatus, 100);
-          taskArr.push(task)
-          runner.execute(task).then(() => {
-            console.info("seqrunner: task1 done.");
-            count++;
-          }).catch((error:BusinessError)=>{
-            console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-            count++;
-            arr.push(error.code)
-          });
-        }
-        for (let i = 50; i <70; i++) {
-          taskpool.cancel(taskArr[i]);
-        }
-        while (count<100){
-          await promiseCase();
-        }
-        expect(arr.includes(10200055)).assertTrue();
+      let taskArr = new Array<taskpool.Task>()
+      let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner(10);
+      let count = 0;
+      let arr: number[] = [];
+      for (let i = 0; i < 100; i++) {
+        let task: taskpool.Task = new taskpool.Task(inspectStatus, 100);
+        taskArr.push(task)
+        runner.execute(task).then(() => {
+          console.info("seqrunner: task1 done.");
+          count++;
+        }).catch((error: BusinessError) => {
+          console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+          count++;
+          arr.push(error.code)
+        });
+      }
+      for (let i = 50; i < 70; i++) {
+        taskpool.cancel(taskArr[i]);
+      }
+      while (count < 100) {
+        await promiseCase();
+      }
+      expect(arr.includes(10200055)).assertTrue();
       console.info(`${caseName} test end`);
       done();
     });
@@ -1556,13 +1553,13 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0053', 0, async (done: Function) => {
+    it('testTaskErrorCode0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0053';
       console.info(`${caseName} test start`);
       try {
         let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
         taskGroup1.addTask(printArgs, 10);
-            taskpool.cancel(taskGroup1);
+        taskpool.cancel(taskGroup1);
         await promiseCase()
         expect().assertFail();
       } catch (error) {
@@ -1580,12 +1577,12 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0054', 0, async (done: Function) => {
+    it('testTaskErrorCode0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0054';
       console.info(`${caseName} test start`);
       try {
         let task1: taskpool.Task = new taskpool.GenericsTask<[number], number>(inspectStatus, 100);
-            taskpool.cancel(task1);
+        taskpool.cancel(task1);
         await promiseCase()
         expect().assertFail();
       } catch (error) {
@@ -1603,29 +1600,29 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0055', 0, async (done: Function) => {
+    it('testTaskErrorCode0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0055';
       console.info(`${caseName} test start`);
-      let taskArr=new Array<taskpool.Task>()
-      let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner(10);
-      let count=0;
-      let arr:number[]=[];
+      let taskArr = new Array<taskpool.Task>()
+      let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner(10);
+      let count = 0;
+      let arr: number[] = [];
       for (let i = 0; i < 100; i++) {
         let task: taskpool.Task = new taskpool.GenericsTask<[number], number>(inspectStatus, 100);
         taskArr.push(task)
         runner.execute(task).then(() => {
           console.info(`cancel2 ${caseName} then`);
           count++;
-        }).catch((error:BusinessError)=>{
+        }).catch((error: BusinessError) => {
           console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
           count++;
           arr.push(error.code)
         });
       }
-      for (let i = 20; i <30; i++) {
+      for (let i = 20; i < 30; i++) {
         taskpool.cancel(taskArr[i]);
       }
-      while (count<100){
+      while (count < 100) {
         await promiseCase();
       }
       expect(arr.includes(10200055)).assertTrue();
@@ -1640,11 +1637,11 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0056', 0, async (done: Function) => {
+    it('testTaskErrorCode0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0056';
       console.info(`${caseName} test start`);
       try {
-        let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
+        let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
         let task: taskpool.Task = new taskpool.Task(printNum, test1)
         runner.execute(task)
         await promiseCase()
@@ -1664,11 +1661,11 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0057', 0, async (done: Function) => {
+    it('testTaskErrorCode0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0057';
       console.info(`${caseName} test start`);
       try {
-        let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
+        let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
         let task1: taskpool.Task = new taskpool.Task(printNum, 100)
         let task2: taskpool.Task = new taskpool.Task(printNum, 100)
         task1.addDependency(task2)
@@ -1691,11 +1688,11 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0058', 0, async (done: Function) => {
+    it('testTaskErrorCode0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0058';
       console.info(`${caseName} test start`);
       try {
-        let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
+        let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
         let task: taskpool.Task = new taskpool.Task(printNum, 100)
         taskpool.executePeriodically(1000, task);
         runner.execute(task)
@@ -1716,20 +1713,20 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0059', 0, async (done: Function) => {
+    it('testTaskErrorCode0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0059';
       console.info(`${caseName} test start`);
-        let num=0;
-        let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
-        for (let i = 0; i < 30; i++) {
-          let task1: taskpool.Task = new taskpool.Task(printNum, 100)
-          runner.execute(task1).catch((error:BusinessError)=>{
-            console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
-            num=error.code
-          });
-        }
-        await Sleep(1000)
-        expect(num).assertEqual(10200054);
+      let num = 0;
+      let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
+      for (let i = 0; i < 30; i++) {
+        let task1: taskpool.Task = new taskpool.Task(printNum, 100)
+        runner.execute(task1).catch((error: BusinessError) => {
+          console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+          num = error.code
+        });
+      }
+      await Sleep(1000)
+      expect(num).assertEqual(10200054);
       console.info(`${caseName} test end`);
       done();
     });
@@ -1741,12 +1738,12 @@ export default function TaskPoolErrorCodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testTaskErrorCode0060', 0, async (done: Function) => {
+    it('testTaskErrorCode0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testTaskErrorCode0060';
       console.info(`${caseName} test start`);
       try {
-        let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
-        let task:taskpool.Task = new taskpool.Task(additionDelay, 1000);
+        let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
+        let task: taskpool.Task = new taskpool.Task(additionDelay, 1000);
         taskpool.execute(task)
         runner.execute(task).then(() => {
           console.info("seqrunner: task1 done.");

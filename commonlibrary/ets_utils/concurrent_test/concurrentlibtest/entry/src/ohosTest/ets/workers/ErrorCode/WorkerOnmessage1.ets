@@ -18,18 +18,19 @@ import { Sleep } from '../../test/utils/utils';
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
 workerPort.onmessage = (e: MessageEvents) => {
-  let data:number=e.data;
+  let data: number = e.data;
   console.info(`worker: worker receive data ${e.data}`);
-  setTimeout(()=>{
-    try{
+  setTimeout(() => {
+    try {
       workerPort.postMessage(e.data);
     } catch (err) {
       console.error(`testThreadWorkerErrorCode0008 failed, error: ${err.code} =>${err.message}`);
     }
-  },320)
+  }, 320)
   Sleep(300)
- workerPort.close()
+  workerPort.close()
 }
+
 workerPort.onmessageerror = (err: MessageEvents) => {
-  console.log('testThreadWorkerErrorCode0008 worker.ets onmessageerror',JSON.stringify(err));
+  console.log('testThreadWorkerErrorCode0008 worker.ets onmessageerror', JSON.stringify(err));
 }

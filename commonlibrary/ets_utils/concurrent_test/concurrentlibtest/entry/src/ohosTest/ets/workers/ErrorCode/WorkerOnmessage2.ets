@@ -13,12 +13,14 @@
  * limitations under the License.
  */
 import worker, { MessageEvents, ThreadWorkerGlobalScope } from '@ohos.worker';
+
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
 workerPort.onmessage = (e: MessageEvents) => {
   console.info(`worker: worker receive data ${e.data}`);
   workerPort.postMessage(e.data);
 }
+
 workerPort.onmessageerror = (err: MessageEvents) => {
-  console.log('worker.ets onmessageerror',err);
+  console.log('worker.ets onmessageerror', err);
 }

@@ -15,12 +15,14 @@
 import worker, { MessageEvents, ThreadWorkerGlobalScope } from '@ohos.worker';
 
 const workerPort = worker.workerPort;
+
 workerPort.onmessage = (e: MessageEvents): void => {
-    try{
-        let res : string = workerPort.callGlobalCallObjectMethod('myObj', 'getMessageWithInput', 0, 'hello there!') as string;
-        console.info('worker:', res) //worker: this is a message from TestObj with input: hello there!
-    }catch (e) {
-        //打印 10200019
-        console.log(`testThreadWorkerErrorCode0021 main onexit code: ` + JSON.stringify(e));
-    }
+  try {
+    let res: string =
+      workerPort.callGlobalCallObjectMethod('myObj', 'getMessageWithInput', 0, 'hello there!') as string;
+    console.info('worker:', res) //worker: this is a message from TestObj with input: hello there!
+  } catch (e) {
+    //print 10200019
+    console.log(`testThreadWorkerErrorCode0021 main onexit code: ` + JSON.stringify(e));
+  }
 }

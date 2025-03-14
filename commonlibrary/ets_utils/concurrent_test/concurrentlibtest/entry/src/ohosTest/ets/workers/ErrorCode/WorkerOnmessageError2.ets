@@ -21,9 +21,11 @@ workerPort.onmessage = (e: MessageEvents) => {
   console.info(`worker: worker receive data ${e.data}`);
   workerPort.postMessage(e.data);
 }
+
 workerPort.onmessageerror = (err: MessageEvents) => {
-  console.log('testThreadWorkerErrorCode0027 worker.ets onmessageerror',err);
+  console.log('testThreadWorkerErrorCode0027 worker.ets onmessageerror', err);
 }
+
 workerPort.onerror = (err: ErrorEvent) => {
-  console.log('testThreadWorkerErrorCode0027 worker.ets onmessageerror',err);
+  console.log('testThreadWorkerErrorCode0027 worker.ets onmessageerror', err);
 }
