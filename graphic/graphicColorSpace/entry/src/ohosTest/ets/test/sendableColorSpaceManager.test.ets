@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { colorSpaceManager, sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 import { collections } from '@kit.ArkTS';
 
@@ -285,9 +285,41 @@ export default function sendableColorSpaceManagerTest() {
       }
     })
 
-
-
-
-
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICCOLORSPACE_JS_API_0170
+     * @tc.name      : testCreateErrorCode
+     * @tc.desc      : test sendableColorSpaceManager.create ErrorCode
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testCreateErrorCode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msg = "====testCreateErrorCode===="
+      console.log(msg + ' begin')
+      try {
+        let colorSpace: sendableColorSpaceManager.ColorSpaceManager;
+        try{
+          colorSpace = sendableColorSpaceManager.create(100);
+          console.info(msg + 'Succeeded in sendableColorSpaceManager.create. ERROR!!!');
+          expect().assertFail();
+          done()
+        }catch(error){
+          if(error.code == 401){
+            console.log(msg + ' Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. ')
+            console.log(msg + ' Case End Successfully')
+            expect(true).assertTrue()
+            done()
+          }else{
+            console.error(`Failed to do layout, error: ${JSON.stringify(error)} message: ${error.message}`);
+            expect().assertFail();
+            done()
+          }
+        }       
+      } catch (exception) {
+        console.error(msg + 'Failed to sendableColorSpaceManager.create. Cause:' + JSON.stringify(exception));
+        expect().assertFail()
+        done()
+      }
+    })
   })
 }
