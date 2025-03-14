@@ -14,7 +14,9 @@
  */
 
 import datePickerTest from "./datepicker/DatePickerMode.test"
+import textPickerEnableHapticFeedbackTest from "./textpicker/textPickerEnableHapticFeedback.test"
 
 export default function testsuite() {
   datePickerTest();
+  textPickerEnableHapticFeedbackTest();
 }
