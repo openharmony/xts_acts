@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
 import { ValuesBucket } from '@ohos.data.ValuesBucket';
 import { BusinessError } from '@ohos.base';
@@ -71,7 +71,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("testRdbStoreVersion001", 0, async (done: Function) => {
+    it("testRdbStoreVersion001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
       console.log(TAG + "************* testRdbStoreVersion001 start *************");
       rdbStore.version = 3;
       expect(3).assertEqual(rdbStore.version);
@@ -87,7 +87,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("testRdbStoreVersionError001", 0, async (done: Function) => {
+    it("testRdbStoreVersionError001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  async (done: Function) => {
       console.log(TAG + "************* testRdbStoreVersionError001 start *************");
       try {
         rdbStore.version = -1;
@@ -109,7 +109,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsert001", 0, async (done: Function) => {
+    it("testRdbStoreInsert001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsert001 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -168,7 +168,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsertError0011", 0, async (done: Function) => {
+    it("testRdbStoreInsertError0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsertError0011 start *************");
       const valueBucket: ValuesBucket = {
         name: "zhangsan",
@@ -196,7 +196,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsertError0012", 0, async (done: Function) => {
+    it("testRdbStoreInsertError0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsertError0012 start *************");
       const valueBucket: ValuesBucket = {
         name: "zhangsan",
@@ -224,7 +224,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsert002", 0, async (done: Function) => {
+    it("testRdbStoreInsert002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsert002 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -269,7 +269,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsertError0021", 0, async (done: Function) => {
+    it("testRdbStoreInsertError0021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsertError0021 start *************");
 
       const valueBucket: ValuesBucket = {
@@ -298,7 +298,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsertError0022", 0, async (done: Function) => {
+    it("testRdbStoreInsertError0022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsertError0022 start *************");
 
       const valueBucket: ValuesBucket = {
@@ -327,7 +327,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsert003", 0, async (done: Function) => {
+    it("testRdbStoreInsert003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsert003 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -386,7 +386,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsertError0031", 0, async (done: Function) => {
+    it("testRdbStoreInsertError0031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsertError0031 start *************");
 
       const valueBucket: ValuesBucket = {
@@ -415,7 +415,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsertError0032", 0, async (done: Function) => {
+    it("testRdbStoreInsertError0032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsertError0032 start *************");
 
       const valueBucket: ValuesBucket = {
@@ -445,7 +445,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsert004", 0, async (done: Function) => {
+    it("testRdbStoreInsert004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsert004 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -490,7 +490,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsertError0041", 0, async (done: Function) => {
+    it("testRdbStoreInsertError0041", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsertError0041 start *************");
 
       const valueBucket: ValuesBucket = {
@@ -520,7 +520,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsertError0042", 0, async (done: Function) => {
+    it("testRdbStoreInsertError0042", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsertError0042 start *************");
 
       const valueBucket: ValuesBucket = {
@@ -549,7 +549,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsert001", 0, async (done: Function) => {
+    it("testRdbStoreBatchInsert001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsert001 start *************");
       try {
         const valueBucket1: ValuesBucket = {
@@ -620,7 +620,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsertError0011", 0, async (done: Function) => {
+    it("testRdbStoreBatchInsertError0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsertError0011 start *************");
       const valueBucket1: ValuesBucket = {
         name: "zhangsan",
@@ -668,7 +668,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsertError0012", 0, async (done: Function) => {
+    it("testRdbStoreBatchInsertError0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsertError0012 start *************");
       const valueBucket1: ValuesBucket = {
         name: "zhangsan",
@@ -715,7 +715,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsertError0013", 0, async (done: Function) => {
+    it("testRdbStoreBatchInsertError0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsertError0013 start *************");
       const valueBucket1: ValuesBucket = {
         name: "zhangsan",
@@ -762,7 +762,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsertError0014", 0, async (done: Function) => {
+    it("testRdbStoreBatchInsertError0014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsertError0014 start *************");
       const valueBucket1: ValuesBucket = {
         name: "zhangsan",
@@ -805,7 +805,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsertError0015", 0, async (done: Function) => {
+    it("testRdbStoreBatchInsertError0015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsertError0015 start *************");
       const valueBucket1: ValuesBucket = {
         name: "zhangsan",
@@ -852,7 +852,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsert002", 0, async (done: Function) => {
+    it("testRdbStoreBatchInsert002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsert002 start *************");
       try {
         const valueBucket1: ValuesBucket = {
@@ -906,7 +906,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsertError0021", 0, async (done: Function) => {
+    it("testRdbStoreBatchInsertError0021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsertError0021 start *************");
       const valueBucket1: ValuesBucket = {
         name: "zhangsan",
@@ -953,7 +953,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsertError0022", 0, async (done: Function) => {
+    it("testRdbStoreBatchInsertError0022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsertError0022 start *************");
       const valueBucket1: ValuesBucket = {
         name: "zhangsan",

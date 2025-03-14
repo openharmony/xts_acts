@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataPreferences from "@ohos.data.preferences";
 import common from "@ohos.app.ability.common";
 
@@ -47,7 +47,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferences001", 0, async (done: Function) => {
+    it("testPreferencesGetPreferences001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         // @ts-ignore
         await dataPreferences.getPreferences(context, -1, (err, preferences) => {
@@ -76,7 +76,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferences002", 0, async (done: Function) => {
+    it("testPreferencesDeletePreferences002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -112,7 +112,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferences003", 0, async (done: Function) => {
+    it("testPreferencesDeletePreferences003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -151,7 +151,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCache002", 0, async (done: Function) => {
+    it("testRemovePreferencesFromCache002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -186,7 +186,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetPreferencesHelper0003", 0, async (done: Function) => {
+    it("testGetPreferencesHelper0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         // @ts-ignore
         let perference = await dataPreferences.getPreferences(context, -1);
@@ -208,7 +208,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetPreferencesHelper0004", 0, async (done: Function) => {
+    it("testGetPreferencesHelper0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         // @ts-ignore
         let perference = await dataPreferences.getPreferences(context);
@@ -229,7 +229,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCacheHelper0002", 0, async (done: Function) => {
+    it("testRemovePreferencesFromCacheHelper0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore
@@ -251,7 +251,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCacheHelper0003", 0, async (done: Function) => {
+    it("testRemovePreferencesFromCacheHelper0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore
@@ -273,7 +273,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeleteHelper0002", 0, async (done: Function) => {
+    it("testPreferencesDeleteHelper0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore
@@ -295,7 +295,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeleteHelper0003", 0, async (done: Function) => {
+    it("testPreferencesDeleteHelper0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore
@@ -317,7 +317,7 @@ export default function preferencesIgnoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeleteHelper0004", 0, async (done: Function) => {
+    it("testPreferencesDeleteHelper0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
 import { ValuesBucket } from '@ohos.data.ValuesBucket';
 import { BusinessError } from '@ohos.base';
@@ -104,7 +104,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreExecuteSql001", 0, async (done: Function) => {
+    it("testRdbStoreExecuteSql001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreExecuteSql001 start *************");
       rdbStore.executeSql("DELETE FROM test WHERE name = 'zhangsan'", async (err) => {
         if (err) {
@@ -129,7 +129,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreExecuteSql002", 0, async (done: Function) => {
+    it("testRdbStoreExecuteSql002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreExecuteSql002 start *************");
       rdbStore.executeSql("DELETE FROM test WHERE age = ? OR age = ?", ["18", "28"], async (err) => {
         if (err) {
@@ -154,7 +154,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreExecuteSql003", 0, async (done: Function) => {
+    it("testRdbStoreExecuteSql003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreExecuteSql003 start *************");
       let promise = rdbStore.executeSql("DELETE FROM test WHERE name = 'zhangsan'");
       promise
@@ -180,7 +180,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreExecuteSql004", 0, async (done: Function) => {
+    it("testRdbStoreExecuteSql004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreExecuteSql004 start *************");
       let promise = rdbStore.executeSql("DELETE FROM test WHERE age = ? OR age = ?", ["18", "28"]);
       promise

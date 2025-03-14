@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
 import { ValuesBucket } from '@ohos.data.ValuesBucket';
 import { BusinessError } from '@ohos.base';
@@ -76,7 +76,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate001", 0, async (done: Function) => {
+    it("testRdbStoreUpdate001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate001 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -135,7 +135,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate002", 0, async () => {
+    it("testRdbStoreUpdate002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async () => {
       console.info(TAG + "************* testRdbStoreUpdate002 start *************");
       try {
         const emptyBucket : ValuesBucket = {};
@@ -159,7 +159,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate003", 0, async (done: Function) => {
+    it("testRdbStoreUpdate003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate003 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -198,7 +198,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate004", 0, async (done: Function) => {
+    it("testRdbStoreUpdate004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate004 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -239,7 +239,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate005", 0, async (done: Function) => {
+    it("testRdbStoreUpdate005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate005 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -279,7 +279,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate006", 0, async (done: Function) => {
+    it("testRdbStoreUpdate006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate006 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -325,7 +325,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate007", 0, async () => {
+    it("testRdbStoreUpdate007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async () => {
       console.info(TAG + "************* testRdbStoreUpdate007 start *************");
       try {
         const emptyBucket: ValuesBucket = {};
@@ -350,7 +350,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate008", 0, async (done: Function) => {
+    it("testRdbStoreUpdate008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate008 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -390,7 +390,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate009", 0, async () => {
+    it("testRdbStoreUpdate009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async () => {
       console.info(TAG + "************* testRdbStoreUpdate009 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -421,7 +421,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate010", 0, async () => {
+    it("testRdbStoreUpdate010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async () => {
       console.info(TAG + "************* testRdbStoreUpdate010 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -452,7 +452,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate011", 0, async (done: Function) => {
+    it("testRdbStoreUpdate011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate011 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -510,7 +510,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate012", 0, async (done: Function) => {
+    it("testRdbStoreUpdate012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate012 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -556,7 +556,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate013", 0, async (done: Function) => {
+    it("testRdbStoreUpdate013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate013 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -615,7 +615,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate014", 0, async (done: Function) => {
+    it("testRdbStoreUpdate014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate014 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -661,7 +661,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate015", 0, async (done: Function) => {
+    it("testRdbStoreUpdate015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate015 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -722,7 +722,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate016", 0, async (done: Function) => {
+    it("testRdbStoreUpdate016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate016 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -768,7 +768,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate017", 0, async (done: Function) => {
+    it("testRdbStoreUpdate017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate017 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -829,7 +829,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate018", 0, async (done: Function) => {
+    it("testRdbStoreUpdate018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate018 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -875,7 +875,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate019", 0, async (done: Function) => {
+    it("testRdbStoreUpdate019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate019 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -936,7 +936,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate020", 0, async (done: Function) => {
+    it("testRdbStoreUpdate020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate020 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -982,7 +982,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate021", 0, async (done: Function) => {
+    it("testRdbStoreUpdate021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate021 start *************");
       try {
         const valueBucket: ValuesBucket = {
@@ -1043,7 +1043,7 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate022", 0, async (done: Function) => {
+    it("testRdbStoreUpdate022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate022 start *************");
       try {
         const valueBucket: ValuesBucket = {

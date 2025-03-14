@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataPreferences from "@ohos.data.preferences";
 import common from "@ohos.app.ability.common";
 import { BusinessError } from '@ohos.base';
@@ -49,7 +49,7 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetPreferencesHelper0001", 0, async () => {
+    it("testGetPreferencesHelper0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       mPreferences = await dataPreferences.getPreferences(context, NAME);
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       await mPreferences.flush();
@@ -65,7 +65,7 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetPreferencesHelper0002", 0, async (done: Function) => {
+    it("testGetPreferencesHelper0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const promise = dataPreferences.getPreferences(context, NAME);
       let preferences: dataPreferences.Preferences;
       promise
@@ -92,7 +92,7 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCacheHelper0001", 0, async (done: Function) => {
+    it("testRemovePreferencesFromCacheHelper0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let preferences = await dataPreferences.getPreferences(context, NAME);
       const promise = dataPreferences.removePreferencesFromCache(context, NAME);
       promise
@@ -114,7 +114,7 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCacheHelper0004", 0, async (done: Function) => {
+    it("testRemovePreferencesFromCacheHelper0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let preferences = await dataPreferences.getPreferences(context, NAME);
       await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
       preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err, ret) => {
@@ -144,7 +144,7 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCacheHelper0005", 0, async (done: Function) => {
+    it("testRemovePreferencesFromCacheHelper0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let preferences = await dataPreferences.getPreferences(context, {
         name: NAME
       });
@@ -170,7 +170,7 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCacheHelper0006", 0, async (done: Function) => {
+    it("testRemovePreferencesFromCacheHelper0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let preferences = await dataPreferences.getPreferences(context, {
         name: NAME
       });
@@ -204,7 +204,7 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeleteHelper0001", 0, async (done: Function) => {
+    it("testPreferencesDeleteHelper0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let preferences = await dataPreferences.getPreferences(context, NAME);
       const promise = dataPreferences.deletePreferences(context, NAME);
       promise
@@ -227,7 +227,7 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeleteHelper0004", 0, async (done: Function) => {
+    it("testPreferencesDeleteHelper0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let preferences = await dataPreferences.getPreferences(context, NAME);
       await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
       preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err, ret) => {
@@ -257,7 +257,7 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeleteHelper0005", 0, async (done: Function) => {
+    it("testPreferencesDeleteHelper0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let preferences = await dataPreferences.getPreferences(context, {
         name: NAME
       });
@@ -284,7 +284,7 @@ export default function preferencesHelperTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeleteHelper0006", 0, async (done: Function) => {
+    it("testPreferencesDeleteHelper0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let preferences = await dataPreferences.getPreferences(context, {
         name: NAME
       });
@@ -318,7 +318,7 @@ export default function preferencesHelperTest() {
      * @tc.type    : Function
      * @tc.level   : Level 0
      */
-    it("testMaxKeyLength001", 0, () => {
+    it("testMaxKeyLength001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(dataPreferences.MAX_KEY_LENGTH == 1024).assertTrue();
     });
 
@@ -330,7 +330,7 @@ export default function preferencesHelperTest() {
      * @tc.type    : Function
      * @tc.level   : Level 0
      */
-    it("testMaxValueLength001", 0, () => {
+    it("testMaxValueLength001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(dataPreferences.MAX_VALUE_LENGTH == 16*1024*1024).assertTrue();
     });
 
@@ -342,7 +342,7 @@ export default function preferencesHelperTest() {
      * @tc.type    : Function
      * @tc.level   : Level 2
      */
-    it("testPreferencesOn001", 0, async () => {
+    it("testPreferencesOn001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       try {
         await mPreferences.clear();
         let observer = (key: string) => {
@@ -366,7 +366,7 @@ export default function preferencesHelperTest() {
      * @tc.type    : Function
      * @tc.level   : Level 2
      */
-    it("testPreferencesOn002", 0, async () => {
+    it("testPreferencesOn002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       try {
         await mPreferences.clear();
         let observer = (key: string) => {
@@ -389,7 +389,7 @@ export default function preferencesHelperTest() {
      * @tc.type    : Function
      * @tc.level   : Level 2
      */
-    it("testPreferencesOn003", 0, async () => {
+    it("testPreferencesOn003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       try {
         await mPreferences.clear();
         let observer = (key: string) => {
@@ -412,7 +412,7 @@ export default function preferencesHelperTest() {
      * @tc.type    : Function
      * @tc.level   : Level 2
      */
-    it("testPreferencesOn004", 0, async () => {
+    it("testPreferencesOn004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       try {
         await mPreferences.clear();
         let observer = (key: string) => {
@@ -435,7 +435,7 @@ export default function preferencesHelperTest() {
      * @tc.type    : Function
      * @tc.level   : Level 2
      */
-    it("testPreferencesOff001", 0, async () => {
+    it("testPreferencesOff001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       try {
         await mPreferences.clear();
         let isTrigger = false;
@@ -463,7 +463,7 @@ export default function preferencesHelperTest() {
      * @tc.type    : Function
      * @tc.level   : Level 2
      */
-    it("testPreferencesOff002", 0, async () => {
+    it("testPreferencesOff002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       try {
         await mPreferences.clear();
         let isTrigger = false;
@@ -491,7 +491,7 @@ export default function preferencesHelperTest() {
      * @tc.type    : Function
      * @tc.level   : Level 2
      */
-    it("testPreferencesOff003", 0, async () => {
+    it("testPreferencesOff003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       try {
         await mPreferences.clear();
         let isTrigger = false;
@@ -516,7 +516,7 @@ export default function preferencesHelperTest() {
      * @tc.type    : Function
      * @tc.level   : Level 2
      */
-    it("testPreferencesOff004", 0, async () => {
+    it("testPreferencesOff004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       try {
         await mPreferences.clear();
         let isTrigger = false;
