@@ -176,7 +176,7 @@ export default function sequenceRunnerAbilityTest() {
           console.error(`${caseName}error message e: ${JSON.stringify(e)}+e`)
         }
       }
-      while (task1Count < 10 && task2Count < 10) {
+      while (task1Count < 10 || task2Count < 10) {
         await sleep(100)
       }
       expect("task1".repeat(10)).assertEqual(array1.join(''));
@@ -244,7 +244,7 @@ export default function sequenceRunnerAbilityTest() {
       }
       await Promise.all(promises);
       await sleep(1000);
-      while (task3Count < 10 && task4Count < 10) {
+      while (task3Count < 10 || task4Count < 10) {
         await sleep(100);
       }
       expect(0).assertEqual(task1Count);
@@ -297,7 +297,7 @@ export default function sequenceRunnerAbilityTest() {
         });
       }
 
-      while (task1Count < 10 && task2Count < 10) {
+      while (task1Count < 10 || task2Count < 10) {
         await sleep(100);
       }
 
@@ -365,7 +365,7 @@ export default function sequenceRunnerAbilityTest() {
       }
       await Promise.all(promises);
       await sleep(1000);
-      while (task3Count < 10 && task4Count < 10) {
+      while (task3Count < 10 || task4Count < 10) {
         await sleep(100);
       }
       expect(0).assertEqual(task1Count);
@@ -434,7 +434,7 @@ export default function sequenceRunnerAbilityTest() {
         }
       }
       await sleep(1000);
-      while (task1Count < 10 && task2Count < 10) {
+      while (task1Count < 10 || task2Count < 10) {
         await sleep(100);
       }
       expect(10).assertEqual(task1Count);
@@ -501,7 +501,7 @@ export default function sequenceRunnerAbilityTest() {
           console.error(`${caseName}error message e3: ${JSON.stringify(e)}` + e)
         }
       }
-      while (task3Count < 10 && task4Count < 10) {
+      while (task3Count < 10 || task4Count < 10) {
         await sleep(100);
       }
       expect(0).assertEqual(task1Count);
@@ -553,7 +553,7 @@ export default function sequenceRunnerAbilityTest() {
         });
       }
 
-      while (task1Count < 10 && task2Count < 10) {
+      while (task1Count < 10 || task2Count < 10) {
         await sleep(100);
       }
 
@@ -619,7 +619,7 @@ export default function sequenceRunnerAbilityTest() {
           console.error(`${caseName}error message e: ${JSON.stringify(e)}+e`)
         }
       }
-      while (task3Count < 10 && task4Count < 10) {
+      while (task3Count < 10 || task4Count < 10) {
         await sleep(100);
       }
       expect(0).assertEqual(task1Count);
@@ -669,7 +669,7 @@ export default function sequenceRunnerAbilityTest() {
         });
       }
 
-      while (task1Count < 10 && task2Count < 10) {
+      while (task1Count < 10 || task2Count < 10) {
         await sleep(100);
       }
 
@@ -735,7 +735,7 @@ export default function sequenceRunnerAbilityTest() {
           console.error(`${caseName}error message e: ${JSON.stringify(e)}+e`)
         }
       }
-      while (task3Count < 10 && task4Count < 10) {
+      while (task3Count < 10 || task4Count < 10) {
         await sleep(100);
       }
       expect(0).assertEqual(task1Count);
@@ -785,7 +785,7 @@ export default function sequenceRunnerAbilityTest() {
         });
       }
 
-      while (task1Count < 10 && task2Count < 10) {
+      while (task1Count < 10 || task2Count < 10) {
         await sleep(100);
       }
 
@@ -851,7 +851,7 @@ export default function sequenceRunnerAbilityTest() {
           console.error(`${caseName}error message e: ${JSON.stringify(e)}+e`)
         }
       }
-      while (task3Count < 10 && task4Count < 10) {
+      while (task3Count < 10 || task4Count < 10) {
         await sleep(100);
       }
       expect(0).assertEqual(task1Count);
@@ -903,7 +903,7 @@ export default function sequenceRunnerAbilityTest() {
         });
       }
 
-      while (task1Count < 10 && task2Count < 10) {
+      while (task1Count < 10 || task2Count < 10) {
         await sleep(100);
       }
 
@@ -969,7 +969,7 @@ export default function sequenceRunnerAbilityTest() {
           console.error(`${caseName}error message e: ${JSON.stringify(e)}+e`)
         }
       }
-      while (task3Count < 10 && task4Count < 10) {
+      while (task3Count < 10 || task4Count < 10) {
         await sleep(100);
       }
       expect(0).assertEqual(task1Count);
@@ -1021,7 +1021,7 @@ export default function sequenceRunnerAbilityTest() {
         });
       }
 
-      while (task1Count < 10 && task2Count < 10) {
+      while (task1Count < 10 || task2Count < 10) {
         await sleep(100);
       }
 
@@ -1085,7 +1085,7 @@ export default function sequenceRunnerAbilityTest() {
           console.error(`${caseName}error message e: ${JSON.stringify(e)}+e`)
         }
       }
-      while (task3Count < 10 && task4Count < 10) {
+      while (task3Count < 10 || task4Count < 10) {
         await sleep(100);
       }
       expect(0).assertEqual(task1Count);
@@ -1138,7 +1138,7 @@ export default function sequenceRunnerAbilityTest() {
         });
       }
 
-      while (task1Count < 10 && task2Count < 10) {
+      while (task1Count < 10 || task2Count < 10) {
         await sleep(100);
       }
 
@@ -1202,7 +1202,7 @@ export default function sequenceRunnerAbilityTest() {
           console.error(`${caseName}error message e: ${JSON.stringify(e)}+e`)
         }
       }
-      while (task3Count < 10 && task4Count < 10) {
+      while (task3Count < 10 || task4Count < 10) {
         await sleep(100);
       }
       expect(0).assertEqual(task1Count);
@@ -1254,7 +1254,7 @@ export default function sequenceRunnerAbilityTest() {
         });
       }
 
-      while (task1Count < 10 && task2Count < 10) {
+      while (task1Count < 10 || task2Count < 10) {
         await sleep(100);
       }
 
@@ -1318,7 +1318,7 @@ export default function sequenceRunnerAbilityTest() {
           console.error(`${caseName}error message e: ${JSON.stringify(e)}+e`)
         }
       }
-      while (task3Count < 10 && task4Count < 10) {
+      while (task3Count < 10 || task4Count < 10) {
         await sleep(100);
       }
       expect(0).assertEqual(task1Count);
@@ -1370,7 +1370,7 @@ export default function sequenceRunnerAbilityTest() {
         });
       }
 
-      while (task1Count < 10 && task2Count < 10) {
+      while (task1Count < 10 || task2Count < 10) {
         await sleep(100);
       }
 
@@ -1434,7 +1434,7 @@ export default function sequenceRunnerAbilityTest() {
           console.error(`${caseName}error message e: ${JSON.stringify(e)}+e`)
         }
       }
-      while (task3Count < 10 && task4Count < 10) {
+      while (task3Count < 10 || task4Count < 10) {
         await sleep(100);
       }
       expect(0).assertEqual(task1Count);
@@ -1486,7 +1486,7 @@ export default function sequenceRunnerAbilityTest() {
         });
       }
 
-      while (task1Count < 10 && task2Count < 10) {
+      while (task1Count < 10 || task2Count < 10) {
         await sleep(100);
       }
 
@@ -1550,7 +1550,7 @@ export default function sequenceRunnerAbilityTest() {
           console.error(`${caseName}error message e: ${JSON.stringify(e)}+e`)
         }
       }
-      while (task3Count < 10 && task4Count < 10) {
+      while (task3Count < 10 || task4Count < 10) {
         await sleep(100);
       }
       expect(0).assertEqual(task1Count);
@@ -1602,7 +1602,7 @@ export default function sequenceRunnerAbilityTest() {
         });
       }
 
-      while (task1Count < 10 && task2Count < 10) {
+      while (task1Count < 10 || task2Count < 10) {
         await sleep(100);
       }
 
@@ -1666,7 +1666,7 @@ export default function sequenceRunnerAbilityTest() {
           console.error(`${caseName}error message e: ${JSON.stringify(e)}+e`)
         }
       }
-      while (task3Count < 10 && task4Count < 10) {
+      while (task3Count < 10 || task4Count < 10) {
         await sleep(100);
       }
       expect(0).assertEqual(task1Count);
@@ -1718,7 +1718,7 @@ export default function sequenceRunnerAbilityTest() {
         });
       }
 
-      while (task1Count < 10 && task2Count < 10) {
+      while (task1Count < 10 || task2Count < 10) {
         await sleep(100);
       }
 
@@ -1782,7 +1782,7 @@ export default function sequenceRunnerAbilityTest() {
           console.error(`${caseName}error message e: ${JSON.stringify(e)}+e`)
         }
       }
-      while (task3Count < 10 && task4Count < 10) {
+      while (task3Count < 10 || task4Count < 10) {
         await sleep(100);
       }
       expect(0).assertEqual(task1Count);
@@ -1835,7 +1835,7 @@ export default function sequenceRunnerAbilityTest() {
         });
       }
 
-      while (task1Count < 10 && task2Count < 10) {
+      while (task1Count < 10 || task2Count < 10) {
         await sleep(100);
       }
 
@@ -1899,7 +1899,7 @@ export default function sequenceRunnerAbilityTest() {
           console.error(`${caseName}error message e: ${JSON.stringify(e)}+e`)
         }
       }
-      while (task3Count < 10 && task4Count < 10) {
+      while (task3Count < 10 || task4Count < 10) {
         await sleep(100);
       }
       expect(0).assertEqual(task1Count);
