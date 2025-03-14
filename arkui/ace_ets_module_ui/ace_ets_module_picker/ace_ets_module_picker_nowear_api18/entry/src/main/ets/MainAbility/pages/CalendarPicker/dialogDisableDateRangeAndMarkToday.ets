@@ -20,7 +20,7 @@ let environmentCallback: EnvironmentCallback
 
 @Entry
 @Component
-struct CalendarPickerExample {
+struct CalendarPickerDialogExample {
   @State selectedDate: Date = new Date('2025-01-02')
   @State startDate: Date = new Date('2025-01-01')
   @State endDate: Date = new Date('2025-02-28')
