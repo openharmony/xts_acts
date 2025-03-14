@@ -16,6 +16,7 @@
 #include "common/common.h"
 #include "manager/plugin_manager.h"
 #include "calendarPicker/calendar_picker_test.h"
+#include "calendarPicker/calendarPicker_date_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -30,6 +31,8 @@ static napi_value Init(napi_env env, napi_value exports)
     napi_property_descriptor desc[] = {
         { "getContext", nullptr, PluginManager::GetContext, nullptr, nullptr, nullptr, napi_default, nullptr },
         {"calendarPickerTest", nullptr, CalendarPickerTest::CalendarPickerMarkTodayTest,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        { "testCalendarPickerDate", nullptr, CalendarPickerStartEndTest::CalendarPickerDateTest,
             nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {

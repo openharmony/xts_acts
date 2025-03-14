@@ -13,8 +13,10 @@
  * limitations under the License.
  */
 
+import calendarPickerDateTest from "./calendarPicker/CalendarPickerDate.test"
 import calendarPickerTest from "./calendarPicker/CalendarPickerMarkTodayTest.test"
 
 export default function testsuite() {
+   calendarPickerDateTest();
    calendarPickerTest();
 }

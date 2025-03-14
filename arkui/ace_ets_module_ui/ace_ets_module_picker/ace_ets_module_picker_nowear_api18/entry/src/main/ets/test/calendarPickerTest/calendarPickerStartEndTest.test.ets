@@ -22,13 +22,13 @@ export default function calendarPickerStartEndTest() {
     beforeEach(async (done: Function) => {
       console.info('CalendarPickerStartEndTest beforeEach start');
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/CalendarPicker/startEndTest',
+        url: 'MainAbility/pages/calendarPicker/calendarPickerStartEndTest',
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info('get CalendarPickerTestAddApi state pages:' + JSON.stringify(pages));
-        if (!('startEndTest' == pages.name)) {
+        if (!('calendarPickerStarCalendarPickerStartEndTesttEndTest' == pages.name)) {
           console.info('get CalendarPickerTestAddApi pages.name:' + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2500);
@@ -77,8 +77,8 @@ export default function calendarPickerStartEndTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("CalendarPickerStartEndTest_002 " + obj.$attrs.start)
       console.info("CalendarPickerStartEndTest_002 " + obj.$attrs.end)
-      expect(obj.$attrs.start).assertEqual('undefined')
-      expect(obj.$attrs.end).assertEqual('undefined')
+      expect(obj.$attrs.start).assertEqual(undefined)
+      expect(obj.$attrs.end).assertEqual(undefined)
       console.info('CalendarPickerStartEndTest_002 END');
       done();
     });
@@ -98,8 +98,8 @@ export default function calendarPickerStartEndTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("CalendarPickerStartEndTest_003 " + obj.$attrs.start)
       console.info("CalendarPickerStartEndTest_003 " + obj.$attrs.end)
-      expect(obj.$attrs.start).assertEqual('undefined')
-      expect(obj.$attrs.end).assertEqual('undefined')
+      expect(obj.$attrs.start).assertEqual(undefined)
+      expect(obj.$attrs.end).assertEqual(undefined)
       console.info('CalendarPickerStartEndTest_003 END');
       done();
     });
@@ -119,8 +119,8 @@ export default function calendarPickerStartEndTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("CalendarPickerStartEndTest_004 " + obj.$attrs.start)
       console.info("CalendarPickerStartEndTest_004 " + obj.$attrs.end)
-      expect(obj.$attrs.start).assertEqual('undefined')
-      expect(obj.$attrs.end).assertEqual('undefined')
+      expect(obj.$attrs.start).assertEqual(undefined)
+      expect(obj.$attrs.end).assertEqual(undefined)
       console.info('CalendarPickerStartEndTest_004 END');
       done();
     });
