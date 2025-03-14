@@ -264,6 +264,16 @@ export class KeyboardController {
           console.debug(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0601 event:' + data.event);
           that.Sub_InputMethod_IMF_SecurityKeyboard_0601();
           break;
+        case 100:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100();
+          break;
+        case 101:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200();
+        case 102:
+          console.debug(TAG + '====>SUB_InputMethod_IME_PrivateDateTransferred_1101 event:' + data.event);
+          that.SUB_InputMethod_IME_PrivateDateTransferred_1101();
       }
     }
 
@@ -1502,5 +1512,77 @@ export class KeyboardController {
       console.info(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0601 catch error: ' + JSON.stringify(error));
       commoneventmanager.publish('Sub_InputMethod_IMF_SecurityKeyboard_0601', commonEventPublishData, this.publishCallback);
     }
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100(): Promise<void> {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100 data');
+    let commonEventPublishData = {
+        data: 'FAILED'
+    };
+    try {
+      this.InputClient.deleteBackward(undefined, (err, result) => {
+        if (err) {
+          console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100 sendKeyFunction err:' + JSON.stringify(err));
+          commonEventPublishData = {
+            data: 'SUCCESS'
+          };
+        }
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100 sendKeyFunction success' );
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100 catch err: ' + JSON.stringify(err));
+    }
+    commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100', commonEventPublishData, this.publishCallback);
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200(): Promise<void> {
+    console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200 data');
+    let commonEventPublishData = {
+        data: 'FAILED'
+    };
+    try {
+      this.InputClient.deleteBackward(undefined).then((result) => {
+        console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200 Succeed in sendKeyFunction.' + JSON.stringify(result));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200', commonEventPublishData, this.publishCallback);
+      }).catch((err) => {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+        console.info(TAG + '====>receive Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200 sendKeyFunction error: ' + JSON.stringify(err));
+        commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200', commonEventPublishData, this.publishCallback);
+      });
+    } catch (err) {
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200 err: ' + JSON.stringify(err));
+      commoneventmanager.publish('Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200', commonEventPublishData, this.publishCallback);
+    }
+  }
+
+  async SUB_InputMethod_IME_PrivateDateTransferred_1101(): Promise<void> {
+    console.info(TAG + '====>receive SUB_InputMethod_IME_PrivateDateTransferred_1101 data');
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      await this.mContext.startAbility(undefined);
+      console.info(TAG + '====>SUB_InputMethod_IME_PrivateDateTransferred_1101 startAbility success');
+    } catch (err) {
+      console.info(TAG + '====>SUB_InputMethod_IME_PrivateDateTransferred_1101 err: ' + JSON.stringify(err));
+      if (err.code === 401) {
+        commonEventPublishData = {
+          data: "SUCCESS"
+        };
+      }
+    };
+    commoneventmanager.publish('SUB_InputMethod_IME_PrivateDateTransferred_1101', commonEventPublishData, this.publishCallback);
   }
 }
